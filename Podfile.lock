@@ -1,0 +1,49 @@
+PODS:
+  - LlamaKit (0.1.1)
+  - M13OrderedDictionary (1.0.6)
+  - MagicalRecord (2.3.0-beta.5):
+    - MagicalRecord/Core (= 2.3.0-beta.5)
+  - MagicalRecord/Core (2.3.0-beta.5)
+  - ObjectiveDDP (0.1.8):
+    - M13OrderedDictionary
+    - SocketRocket (= 0.3.1-beta2)
+  - ReactiveCocoa (3.0.0-alpha.1):
+    - LlamaKit (= 0.1.1)
+    - ReactiveCocoa/UI (= 3.0.0-alpha.1)
+  - ReactiveCocoa/Core (3.0.0-alpha.1):
+    - LlamaKit (= 0.1.1)
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (3.0.0-alpha.1):
+    - LlamaKit (= 0.1.1)
+  - ReactiveCocoa/UI (3.0.0-alpha.1):
+    - LlamaKit (= 0.1.1)
+    - ReactiveCocoa/Core
+  - Reveal-iOS-SDK (1.0.7)
+  - SocketRocket (0.3.1-beta2)
+
+DEPENDENCIES:
+  - MagicalRecord (from `https://github.com/magicalpanda/MagicalRecord.git`, tag `v2.3.0-beta.5`)
+  - ObjectiveDDP (~> 0.1.8)
+  - ReactiveCocoa (= 3.0.0-alpha.1)
+  - Reveal-iOS-SDK (~> 1.0)
+
+EXTERNAL SOURCES:
+  MagicalRecord:
+    :git: https://github.com/magicalpanda/MagicalRecord.git
+    :tag: v2.3.0-beta.5
+
+CHECKOUT OPTIONS:
+  MagicalRecord:
+    :git: https://github.com/magicalpanda/MagicalRecord.git
+    :tag: v2.3.0-beta.5
+
+SPEC CHECKSUMS:
+  LlamaKit: 430d2ae678888d13fe87f8a01d0c4fb69c06eb93
+  M13OrderedDictionary: 8f721284b4960aabaf567b7894911a45cb9c71b0
+  MagicalRecord: 5b7e807bc07c5d642af1f7d894b7fe0d3c317ca2
+  ObjectiveDDP: 1b9b2074d4d5cdbdc9e83536a2491629f9f4332c
+  ReactiveCocoa: 90459e39e5d18f55e145237fcf6e1fb72fff0eb3
+  Reveal-iOS-SDK: 7ee5e9b37ef13dcd93ae1736c1b72c7c650da3e3
+  SocketRocket: 79a68ae186063c65e1fe6f638b1ae2927aa5f304
+
+COCOAPODS: 0.36.0.beta.1
