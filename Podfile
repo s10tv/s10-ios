@@ -3,6 +3,7 @@ platform :ios, '8.0'
 inhibit_all_warnings!
 
 pod 'ObjectiveDDP', '~> 0.1.8'
+pod 'SwipeView', '~> 1.3'
 
 # Update these to latest when ready
 pod 'ReactiveCocoa', '3.0.0-alpha.1'
