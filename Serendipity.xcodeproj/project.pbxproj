@@ -29,6 +29,8 @@
 		EA5634ED1A77428F00F62B52 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E71A77428F00F62B52 /* Connection.swift */; };
 		EA5634EE1A77428F00F62B52 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E81A77428F00F62B52 /* Message.swift */; };
 		EA5634EF1A77428F00F62B52 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E91A77428F00F62B52 /* User.swift */; };
+		EA6A42391A78D72E008C609F /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6A42381A78D72E008C609F /* SignupViewController.swift */; };
+		EA6A423B1A78D749008C609F /* SignupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA6A423A1A78D749008C609F /* SignupView.xib */; };
 		EA9E17DB1A779409001FEE77 /* TestFile.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9E17DA1A779409001FEE77 /* TestFile.m */; };
 		EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
 		EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35461A74CC6900E0C65D /* Main.storyboard */; };
@@ -61,6 +63,8 @@
 		EA5634E71A77428F00F62B52 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		EA5634E81A77428F00F62B52 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EA5634E91A77428F00F62B52 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		EA6A42381A78D72E008C609F /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		EA6A423A1A78D749008C609F /* SignupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignupView.xib; sourceTree = "<group>"; };
 		EA9E17DA1A779409001FEE77 /* TestFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestFile.m; sourceTree = "<group>"; };
 		EA9E17DC1A779412001FEE77 /* TestFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestFile.h; sourceTree = "<group>"; };
 		EA9F353A1A74CC6900E0C65D /* Serendipity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Serendipity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -212,6 +216,8 @@
 			children = (
 				EAFD13CA1A778B5800754556 /* ProfileViewController.swift */,
 				EAFD13CF1A778C1F00754556 /* ProfileView.xib */,
+				EA6A42381A78D72E008C609F /* SignupViewController.swift */,
+				EA6A423A1A78D749008C609F /* SignupView.xib */,
 			);
 			path = "User Interface";
 			sourceTree = "<group>";
@@ -311,6 +317,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAFD13D01A778C1F00754556 /* ProfileView.xib in Resources */,
+				EA6A423B1A78D749008C609F /* SignupView.xib in Resources */,
 				EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */,
 				EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */,
 				EA9F354A1A74CC6900E0C65D /* Images.xcassets in Resources */,
@@ -383,6 +390,7 @@
 				EA5634EB1A77428F00F62B52 /* _Message.swift in Sources */,
 				EA5634E11A7741FF00F62B52 /* Serendipity.xcdatamodeld in Sources */,
 				EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */,
+				EA6A42391A78D72E008C609F /* SignupViewController.swift in Sources */,
 				EA5634EF1A77428F00F62B52 /* User.swift in Sources */,
 				EA5634EE1A77428F00F62B52 /* Message.swift in Sources */,
 				EA9E17DB1A779409001FEE77 /* TestFile.m in Sources */,
