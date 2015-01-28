@@ -37,6 +37,7 @@
 		EA9F354A1A74CC6900E0C65D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Images.xcassets */; };
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
 		EA9F35591A74CC6900E0C65D /* SerendipityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F35581A74CC6900E0C65D /* SerendipityTests.swift */; };
+		EAF4D73F1A79980600D35330 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF4D73E1A79980600D35330 /* RootViewController.swift */; };
 		EAFD13CB1A778B5800754556 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFD13CA1A778B5800754556 /* ProfileViewController.swift */; };
 		EAFD13CE1A778BAE00754556 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFD13CD1A778BAE00754556 /* BaseViewController.swift */; };
 		EAFD13D01A778C1F00754556 /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAFD13CF1A778C1F00754556 /* ProfileView.xib */; };
@@ -77,6 +78,7 @@
 		EA9F35571A74CC6900E0C65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA9F35581A74CC6900E0C65D /* SerendipityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerendipityTests.swift; sourceTree = "<group>"; };
 		EA9F35621A74CD8800E0C65D /* Serendipity-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Serendipity-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		EAF4D73E1A79980600D35330 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		EAFD13CA1A778B5800754556 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		EAFD13CD1A778BAE00754556 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		EAFD13CF1A778C1F00754556 /* ProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
@@ -214,10 +216,11 @@
 		EAFD13C91A778B4500754556 /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
-				EAFD13CA1A778B5800754556 /* ProfileViewController.swift */,
-				EAFD13CF1A778C1F00754556 /* ProfileView.xib */,
+				EAF4D73E1A79980600D35330 /* RootViewController.swift */,
 				EA6A42381A78D72E008C609F /* SignupViewController.swift */,
 				EA6A423A1A78D749008C609F /* SignupView.xib */,
+				EAFD13CA1A778B5800754556 /* ProfileViewController.swift */,
+				EAFD13CF1A778C1F00754556 /* ProfileView.xib */,
 			);
 			path = "User Interface";
 			sourceTree = "<group>";
@@ -388,6 +391,7 @@
 				EAFD13CE1A778BAE00754556 /* BaseViewController.swift in Sources */,
 				EAFD13CB1A778B5800754556 /* ProfileViewController.swift in Sources */,
 				EA5634EB1A77428F00F62B52 /* _Message.swift in Sources */,
+				EAF4D73F1A79980600D35330 /* RootViewController.swift in Sources */,
 				EA5634E11A7741FF00F62B52 /* Serendipity.xcdatamodeld in Sources */,
 				EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */,
 				EA6A42391A78D72E008C609F /* SignupViewController.swift in Sources */,

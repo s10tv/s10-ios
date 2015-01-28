@@ -16,15 +16,17 @@ class SignupViewController : BaseViewController, FBLoginViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         fbLoginView.delegate = self
-        
     }
     
     func loginViewFetchedUserInfo(loginView: FBLoginView!, user: FBGraphUser!) {
-        println("login fetched user info \(user)")
+//        let data = FBSession.activeSession().accessTokenData
+//        println("access token \(data.accessToken) expire \(data.expirationDate) userid \(data.userID) appid \(data.appID)")
+//        println("login fetched user info \(user)")
+        let root = self.navigationController as RootViewController
+        root.showProfile(nil, animated: true)
     }
     
     func loginView(loginView: FBLoginView!, handleError error: NSError!) {
         println("login errored \(error)")
     }
-    
 }
