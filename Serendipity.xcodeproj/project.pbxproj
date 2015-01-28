@@ -29,18 +29,32 @@
 		EA5634ED1A77428F00F62B52 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E71A77428F00F62B52 /* Connection.swift */; };
 		EA5634EE1A77428F00F62B52 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E81A77428F00F62B52 /* Message.swift */; };
 		EA5634EF1A77428F00F62B52 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E91A77428F00F62B52 /* User.swift */; };
-		EA6A42391A78D72E008C609F /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6A42381A78D72E008C609F /* SignupViewController.swift */; };
-		EA6A423B1A78D749008C609F /* SignupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA6A423A1A78D749008C609F /* SignupView.xib */; };
 		EA9E17DB1A779409001FEE77 /* TestFile.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9E17DA1A779409001FEE77 /* TestFile.m */; };
 		EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
 		EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35461A74CC6900E0C65D /* Main.storyboard */; };
 		EA9F354A1A74CC6900E0C65D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Images.xcassets */; };
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
 		EA9F35591A74CC6900E0C65D /* SerendipityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F35581A74CC6900E0C65D /* SerendipityTests.swift */; };
-		EAF4D73F1A79980600D35330 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF4D73E1A79980600D35330 /* RootViewController.swift */; };
-		EAFD13CB1A778B5800754556 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFD13CA1A778B5800754556 /* ProfileViewController.swift */; };
+		EAF4D7581A79AA5E00D35330 /* ChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF4D7451A79AA5E00D35330 /* ChatView.xib */; };
+		EAF4D7591A79AA5E00D35330 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF4D7461A79AA5E00D35330 /* ChatViewController.swift */; };
+		EAF4D75A1A79AA5E00D35330 /* ConnectionsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF4D7471A79AA5E00D35330 /* ConnectionsView.xib */; };
+		EAF4D75B1A79AA5E00D35330 /* ConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF4D7481A79AA5E00D35330 /* ConnectionsViewController.swift */; };
+		EAF4D75C1A79AA5E00D35330 /* DiscoverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF4D7491A79AA5E00D35330 /* DiscoverView.xib */; };
+		EAF4D75D1A79AA5E00D35330 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF4D74A1A79AA5E00D35330 /* DiscoverViewController.swift */; };
+		EAF4D75E1A79AA5E00D35330 /* EditProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF4D74B1A79AA5E00D35330 /* EditProfileView.xib */; };
+		EAF4D75F1A79AA5E00D35330 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF4D74C1A79AA5E00D35330 /* EditProfileViewController.swift */; };
+		EAF4D7601A79AA5E00D35330 /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF4D74D1A79AA5E00D35330 /* ProfileView.xib */; };
+		EAF4D7611A79AA5E00D35330 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF4D74E1A79AA5E00D35330 /* ProfileViewController.swift */; };
+		EAF4D7621A79AA5E00D35330 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF4D74F1A79AA5E00D35330 /* RootViewController.swift */; };
+		EAF4D7631A79AA5E00D35330 /* SignupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF4D7501A79AA5E00D35330 /* SignupView.xib */; };
+		EAF4D7641A79AA5E00D35330 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF4D7511A79AA5E00D35330 /* SignupViewController.swift */; };
+		EAF4D7651A79AA5E00D35330 /* StorylineView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF4D7521A79AA5E00D35330 /* StorylineView.xib */; };
+		EAF4D7661A79AA5E00D35330 /* StorylineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF4D7531A79AA5E00D35330 /* StorylineViewController.swift */; };
+		EAF4D7671A79AA5E00D35330 /* VideoPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF4D7541A79AA5E00D35330 /* VideoPlayerView.xib */; };
+		EAF4D7681A79AA5E00D35330 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF4D7551A79AA5E00D35330 /* VideoPlayerViewController.swift */; };
+		EAF4D7691A79AA5E00D35330 /* VideoRecorderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF4D7561A79AA5E00D35330 /* VideoRecorderView.xib */; };
+		EAF4D76A1A79AA5E00D35330 /* VideoRecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF4D7571A79AA5E00D35330 /* VideoRecorderViewController.swift */; };
 		EAFD13CE1A778BAE00754556 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFD13CD1A778BAE00754556 /* BaseViewController.swift */; };
-		EAFD13D01A778C1F00754556 /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAFD13CF1A778C1F00754556 /* ProfileView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,8 +78,6 @@
 		EA5634E71A77428F00F62B52 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		EA5634E81A77428F00F62B52 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EA5634E91A77428F00F62B52 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		EA6A42381A78D72E008C609F /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
-		EA6A423A1A78D749008C609F /* SignupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignupView.xib; sourceTree = "<group>"; };
 		EA9E17DA1A779409001FEE77 /* TestFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestFile.m; sourceTree = "<group>"; };
 		EA9E17DC1A779412001FEE77 /* TestFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestFile.h; sourceTree = "<group>"; };
 		EA9F353A1A74CC6900E0C65D /* Serendipity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Serendipity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -78,10 +90,26 @@
 		EA9F35571A74CC6900E0C65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA9F35581A74CC6900E0C65D /* SerendipityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerendipityTests.swift; sourceTree = "<group>"; };
 		EA9F35621A74CD8800E0C65D /* Serendipity-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Serendipity-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
-		EAF4D73E1A79980600D35330 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
-		EAFD13CA1A778B5800754556 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		EAF4D7451A79AA5E00D35330 /* ChatView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatView.xib; sourceTree = "<group>"; };
+		EAF4D7461A79AA5E00D35330 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		EAF4D7471A79AA5E00D35330 /* ConnectionsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionsView.xib; sourceTree = "<group>"; };
+		EAF4D7481A79AA5E00D35330 /* ConnectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionsViewController.swift; sourceTree = "<group>"; };
+		EAF4D7491A79AA5E00D35330 /* DiscoverView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverView.xib; sourceTree = "<group>"; };
+		EAF4D74A1A79AA5E00D35330 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
+		EAF4D74B1A79AA5E00D35330 /* EditProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileView.xib; sourceTree = "<group>"; };
+		EAF4D74C1A79AA5E00D35330 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		EAF4D74D1A79AA5E00D35330 /* ProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
+		EAF4D74E1A79AA5E00D35330 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		EAF4D74F1A79AA5E00D35330 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		EAF4D7501A79AA5E00D35330 /* SignupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignupView.xib; sourceTree = "<group>"; };
+		EAF4D7511A79AA5E00D35330 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		EAF4D7521A79AA5E00D35330 /* StorylineView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StorylineView.xib; sourceTree = "<group>"; };
+		EAF4D7531A79AA5E00D35330 /* StorylineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorylineViewController.swift; sourceTree = "<group>"; };
+		EAF4D7541A79AA5E00D35330 /* VideoPlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoPlayerView.xib; sourceTree = "<group>"; };
+		EAF4D7551A79AA5E00D35330 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
+		EAF4D7561A79AA5E00D35330 /* VideoRecorderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoRecorderView.xib; sourceTree = "<group>"; };
+		EAF4D7571A79AA5E00D35330 /* VideoRecorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoRecorderViewController.swift; sourceTree = "<group>"; };
 		EAFD13CD1A778BAE00754556 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		EAFD13CF1A778C1F00754556 /* ProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -175,7 +203,7 @@
 			children = (
 				EAFD13CC1A778BA400754556 /* Classes */,
 				EA5634DE1A7741FF00F62B52 /* Models */,
-				EAFD13C91A778B4500754556 /* User Interface */,
+				EAF4D7441A79AA5E00D35330 /* User Interface */,
 				EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */,
 				EA9E17DA1A779409001FEE77 /* TestFile.m */,
 				EA9E17DC1A779412001FEE77 /* TestFile.h */,
@@ -213,14 +241,28 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		EAFD13C91A778B4500754556 /* User Interface */ = {
+		EAF4D7441A79AA5E00D35330 /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
-				EAF4D73E1A79980600D35330 /* RootViewController.swift */,
-				EA6A42381A78D72E008C609F /* SignupViewController.swift */,
-				EA6A423A1A78D749008C609F /* SignupView.xib */,
-				EAFD13CA1A778B5800754556 /* ProfileViewController.swift */,
-				EAFD13CF1A778C1F00754556 /* ProfileView.xib */,
+				EAF4D74F1A79AA5E00D35330 /* RootViewController.swift */,
+				EAF4D7451A79AA5E00D35330 /* ChatView.xib */,
+				EAF4D7461A79AA5E00D35330 /* ChatViewController.swift */,
+				EAF4D7471A79AA5E00D35330 /* ConnectionsView.xib */,
+				EAF4D7481A79AA5E00D35330 /* ConnectionsViewController.swift */,
+				EAF4D7491A79AA5E00D35330 /* DiscoverView.xib */,
+				EAF4D74A1A79AA5E00D35330 /* DiscoverViewController.swift */,
+				EAF4D74B1A79AA5E00D35330 /* EditProfileView.xib */,
+				EAF4D74C1A79AA5E00D35330 /* EditProfileViewController.swift */,
+				EAF4D74D1A79AA5E00D35330 /* ProfileView.xib */,
+				EAF4D74E1A79AA5E00D35330 /* ProfileViewController.swift */,
+				EAF4D7501A79AA5E00D35330 /* SignupView.xib */,
+				EAF4D7511A79AA5E00D35330 /* SignupViewController.swift */,
+				EAF4D7521A79AA5E00D35330 /* StorylineView.xib */,
+				EAF4D7531A79AA5E00D35330 /* StorylineViewController.swift */,
+				EAF4D7541A79AA5E00D35330 /* VideoPlayerView.xib */,
+				EAF4D7551A79AA5E00D35330 /* VideoPlayerViewController.swift */,
+				EAF4D7561A79AA5E00D35330 /* VideoRecorderView.xib */,
+				EAF4D7571A79AA5E00D35330 /* VideoRecorderViewController.swift */,
 			);
 			path = "User Interface";
 			sourceTree = "<group>";
@@ -319,9 +361,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAFD13D01A778C1F00754556 /* ProfileView.xib in Resources */,
-				EA6A423B1A78D749008C609F /* SignupView.xib in Resources */,
+				EAF4D75A1A79AA5E00D35330 /* ConnectionsView.xib in Resources */,
+				EAF4D75C1A79AA5E00D35330 /* DiscoverView.xib in Resources */,
+				EAF4D7691A79AA5E00D35330 /* VideoRecorderView.xib in Resources */,
+				EAF4D75E1A79AA5E00D35330 /* EditProfileView.xib in Resources */,
+				EAF4D7581A79AA5E00D35330 /* ChatView.xib in Resources */,
+				EAF4D7651A79AA5E00D35330 /* StorylineView.xib in Resources */,
+				EAF4D7601A79AA5E00D35330 /* ProfileView.xib in Resources */,
+				EAF4D7631A79AA5E00D35330 /* SignupView.xib in Resources */,
 				EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */,
+				EAF4D7671A79AA5E00D35330 /* VideoPlayerView.xib in Resources */,
 				EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */,
 				EA9F354A1A74CC6900E0C65D /* Images.xcassets in Resources */,
 			);
@@ -389,15 +438,22 @@
 			files = (
 				EA5634EC1A77428F00F62B52 /* _User.swift in Sources */,
 				EAFD13CE1A778BAE00754556 /* BaseViewController.swift in Sources */,
-				EAFD13CB1A778B5800754556 /* ProfileViewController.swift in Sources */,
+				EAF4D7681A79AA5E00D35330 /* VideoPlayerViewController.swift in Sources */,
+				EAF4D7661A79AA5E00D35330 /* StorylineViewController.swift in Sources */,
+				EAF4D76A1A79AA5E00D35330 /* VideoRecorderViewController.swift in Sources */,
+				EAF4D7591A79AA5E00D35330 /* ChatViewController.swift in Sources */,
 				EA5634EB1A77428F00F62B52 /* _Message.swift in Sources */,
-				EAF4D73F1A79980600D35330 /* RootViewController.swift in Sources */,
 				EA5634E11A7741FF00F62B52 /* Serendipity.xcdatamodeld in Sources */,
+				EAF4D75D1A79AA5E00D35330 /* DiscoverViewController.swift in Sources */,
+				EAF4D7621A79AA5E00D35330 /* RootViewController.swift in Sources */,
+				EAF4D75F1A79AA5E00D35330 /* EditProfileViewController.swift in Sources */,
 				EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */,
-				EA6A42391A78D72E008C609F /* SignupViewController.swift in Sources */,
 				EA5634EF1A77428F00F62B52 /* User.swift in Sources */,
 				EA5634EE1A77428F00F62B52 /* Message.swift in Sources */,
+				EAF4D7641A79AA5E00D35330 /* SignupViewController.swift in Sources */,
+				EAF4D75B1A79AA5E00D35330 /* ConnectionsViewController.swift in Sources */,
 				EA9E17DB1A779409001FEE77 /* TestFile.m in Sources */,
+				EAF4D7611A79AA5E00D35330 /* ProfileViewController.swift in Sources */,
 				EA5634EA1A77428F00F62B52 /* _Connection.swift in Sources */,
 				EA5634ED1A77428F00F62B52 /* Connection.swift in Sources */,
 			);
