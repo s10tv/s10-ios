@@ -10,6 +10,10 @@ import UIKit
 
 class RootViewController : UINavigationController {
     
+    override func supportedInterfaceOrientations() -> Int {
+        return Int(UIInterfaceOrientationMask.Portrait.rawValue);
+    }
+    
     func showProfile(user: User?, animated: Bool) {
         let vc = storyboard?.instantiateViewControllerWithIdentifier("Profile") as UIViewController!
         setViewControllers([vc], animated: animated)
