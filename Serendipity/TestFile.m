@@ -1,13 +1,15 @@
 //
-//  BaseViewController.swift
+//  TestFile.m
 //  Serendipity
 //
 //  Created by Tony Xiao on 1/27/15.
 //  Copyright (c) 2015 Serendipity. All rights reserved.
 //
 
-import UIKit
+#import "TestFile.h"
 
-class BaseViewController : UIViewController {
-    
-}
+@implementation TestFile
+
+
+
+@end
