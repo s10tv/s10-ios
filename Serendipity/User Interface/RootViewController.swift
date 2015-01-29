@@ -14,7 +14,8 @@ class RootViewController : UINavigationController {
     override func viewDidLoad() {
         super.viewDidLoad()
         if !FBSession.openActiveSessionWithAllowLoginUI(false) {
-            showSignup(false)
+//            showSignup(false)
+            showDiscover(false)
         } else {
             showDiscover(false)
         }

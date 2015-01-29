@@ -24,18 +24,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        NSValueTransformer.setValueTransformer(PhotosValueTransformer(), forName: "PhotosValueTransformer")
+        
         MagicalRecord.setupCoreDataStackWithInMemoryStore()
         let user = User.MR_createEntity()
         user.firstName = "Tony";
-        println(user.firstName)
-        println(user.objectID)
-        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
+
+        var photos : [Photo] = Array<Photo>()
         for index in 1...6 {
-            let url = NSURL(string: "https://s10.blob.core.windows.net/default/girl-00\(index).jpg")
-            println(url)
+            let url = "https://s10.blob.core.windows.net/default/girl-00\(index).jpg"
+            photos.append(Photo(url: url))
         }
+        user.photos = photos
         
-        
+        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
         return true
     }
     

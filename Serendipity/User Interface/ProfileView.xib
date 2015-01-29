@@ -2,10 +2,12 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController">
             <connections>
+                <outlet property="swipeView" destination="8A2-xC-PLX" id="jai-xp-Lkk"/>
                 <outlet property="view" destination="iN0-l3-epB" id="2dn-72-c7q"/>
             </connections>
         </placeholder>
@@ -14,9 +16,16 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="8A2-xC-PLX" userLabel="Photos" customClass="SwipeView">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8A2-xC-PLX" userLabel="Photos" customClass="SwipeView">
                     <rect key="frame" x="0.0" y="64" width="320" height="320"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="8A2-xC-PLX" secondAttribute="height" multiplier="1:1" id="DEw-Ka-8LJ"/>
+                    </constraints>
+                    <connections>
+                        <outlet property="dataSource" destination="-1" id="nM1-tx-0yW"/>
+                        <outlet property="delegate" destination="-1" id="pGM-n1-52Z"/>
+                    </connections>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Tony" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTD-bt-yNd" userLabel="Name">
                     <rect key="frame" x="27" y="397" width="36" height="21"/>
@@ -30,6 +39,11 @@
                 </label>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="8A2-xC-PLX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="64" id="S9w-jN-rTo"/>
+                <constraint firstAttribute="trailing" secondItem="8A2-xC-PLX" secondAttribute="trailing" id="fZl-sZ-Td9"/>
+                <constraint firstItem="8A2-xC-PLX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ykK-pk-1th"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
