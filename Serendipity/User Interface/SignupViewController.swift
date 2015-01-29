@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FacebookSDK
 
 @objc(SignupViewController)
 class SignupViewController : BaseViewController, FBLoginViewDelegate {

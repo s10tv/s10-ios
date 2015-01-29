@@ -6,11 +6,14 @@
 //  Copyright (c) 2015 Serendipity. All rights reserved.
 //
 
-#import <Facebook-iOS-SDK/FacebookSDK/FacebookSDK.h>
+#import <FacebookSDK/FacebookSDK.h>
 #import "TestFile.h"
 
 @implementation TestFile
 
+- (void)testFunc {
+    [FBSession activeSession];
+}
 
 
 @end

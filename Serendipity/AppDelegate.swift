@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import FacebookSDK
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
