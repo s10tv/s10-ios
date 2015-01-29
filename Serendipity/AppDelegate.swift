@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import FacebookSDK
+import MagicalRecord
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -22,6 +23,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        MagicalRecord.setupCoreDataStackWithInMemoryStore()
+        let user = User.MR_createEntity()
+        user.firstName = "Tony";
+        println(user.firstName)
+        println(user.objectID)
+        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
+        for index in 1...6 {
+            let url = NSURL(string: "https://s10.blob.core.windows.net/default/girl-00\(index).jpg")
+            println(url)
+        }
+        
+        
         return true
     }
     

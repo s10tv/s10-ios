@@ -5,4 +5,5 @@
 #import <FacebookSDK/FacebookSDK.h>
 #import <ObjectiveDDP/MeteorClient.h>
 #import <SwipeView/SwipeView.h>
+#import <MagicalRecord/CoreData+MagicalRecord.h>
 #import "TestFile.h"
