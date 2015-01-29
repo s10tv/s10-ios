@@ -21,11 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        if !FBSession.openActiveSessionWithAllowLoginUI(false) {
-            rootVC.showSignup(false)
-        } else {
-            rootVC.showProfile(nil, animated: false)
-        }
         return true
     }
     
