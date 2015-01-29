@@ -20,10 +20,10 @@ class DiscoverViewController : BaseViewController {
     }
     
     @IBAction func showSettings(sender: AnyObject) {
-
+        performSegueWithIdentifier("DiscoverToSettings", sender: sender)
     }
     
     @IBAction func showConnections(sender: AnyObject) {
-        
+        performSegueWithIdentifier("DiscoverToConnections", sender: sender)
     }
 }

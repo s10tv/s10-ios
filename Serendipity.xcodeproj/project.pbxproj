@@ -35,6 +35,8 @@
 		EA9F354A1A74CC6900E0C65D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Images.xcassets */; };
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
 		EA9F35591A74CC6900E0C65D /* SerendipityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F35581A74CC6900E0C65D /* SerendipityTests.swift */; };
+		EAD60A4C1A79BA950051D0B7 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAD60A4A1A79BA950051D0B7 /* SettingsView.xib */; };
+		EAD60A4D1A79BA950051D0B7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD60A4B1A79BA950051D0B7 /* SettingsViewController.swift */; };
 		EAF4D7581A79AA5E00D35330 /* ChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF4D7451A79AA5E00D35330 /* ChatView.xib */; };
 		EAF4D7591A79AA5E00D35330 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF4D7461A79AA5E00D35330 /* ChatViewController.swift */; };
 		EAF4D75A1A79AA5E00D35330 /* ConnectionsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF4D7471A79AA5E00D35330 /* ConnectionsView.xib */; };
@@ -90,6 +92,8 @@
 		EA9F35571A74CC6900E0C65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA9F35581A74CC6900E0C65D /* SerendipityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerendipityTests.swift; sourceTree = "<group>"; };
 		EA9F35621A74CD8800E0C65D /* Serendipity-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Serendipity-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		EAD60A4A1A79BA950051D0B7 /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
+		EAD60A4B1A79BA950051D0B7 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EAF4D7451A79AA5E00D35330 /* ChatView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatView.xib; sourceTree = "<group>"; };
 		EAF4D7461A79AA5E00D35330 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		EAF4D7471A79AA5E00D35330 /* ConnectionsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionsView.xib; sourceTree = "<group>"; };
@@ -255,6 +259,8 @@
 				EAF4D74C1A79AA5E00D35330 /* EditProfileViewController.swift */,
 				EAF4D74D1A79AA5E00D35330 /* ProfileView.xib */,
 				EAF4D74E1A79AA5E00D35330 /* ProfileViewController.swift */,
+				EAD60A4A1A79BA950051D0B7 /* SettingsView.xib */,
+				EAD60A4B1A79BA950051D0B7 /* SettingsViewController.swift */,
 				EAF4D7501A79AA5E00D35330 /* SignupView.xib */,
 				EAF4D7511A79AA5E00D35330 /* SignupViewController.swift */,
 				EAF4D7521A79AA5E00D35330 /* StorylineView.xib */,
@@ -365,6 +371,7 @@
 				EAF4D75C1A79AA5E00D35330 /* DiscoverView.xib in Resources */,
 				EAF4D7691A79AA5E00D35330 /* VideoRecorderView.xib in Resources */,
 				EAF4D75E1A79AA5E00D35330 /* EditProfileView.xib in Resources */,
+				EAD60A4C1A79BA950051D0B7 /* SettingsView.xib in Resources */,
 				EAF4D7581A79AA5E00D35330 /* ChatView.xib in Resources */,
 				EAF4D7651A79AA5E00D35330 /* StorylineView.xib in Resources */,
 				EAF4D7601A79AA5E00D35330 /* ProfileView.xib in Resources */,
@@ -438,6 +445,7 @@
 			files = (
 				EA5634EC1A77428F00F62B52 /* _User.swift in Sources */,
 				EAFD13CE1A778BAE00754556 /* BaseViewController.swift in Sources */,
+				EAD60A4D1A79BA950051D0B7 /* SettingsViewController.swift in Sources */,
 				EAF4D7681A79AA5E00D35330 /* VideoPlayerViewController.swift in Sources */,
 				EAF4D7661A79AA5E00D35330 /* StorylineViewController.swift in Sources */,
 				EAF4D76A1A79AA5E00D35330 /* VideoRecorderViewController.swift in Sources */,

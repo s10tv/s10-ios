@@ -8,11 +8,12 @@
         <scene sceneID="eia-8N-UZ9">
             <objects>
                 <viewController storyboardIdentifier="Profile" id="bQv-dO-auU" customClass="ProfileViewController" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5S-Ky-nbE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="276" y="872"/>
+            <point key="canvasLocation" x="-104" y="872"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -59,15 +60,21 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="YUi-xK-iJg" kind="show" identifier="DiscoverToConnections" id="oMK-eI-csk"/>
+                        <segue destination="Vhy-hq-gwn" kind="show" identifier="DiscoverToSettings" id="md6-zB-tVo"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TlQ-8h-TWe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="664" y="872"/>
         </scene>
-        <!--Connections View Controller-->
+        <!--Connections-->
         <scene sceneID="mW7-zq-TQ3">
             <objects>
                 <viewController storyboardIdentifier="Connections" id="YUi-xK-iJg" customClass="ConnectionsViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="Connections" id="n18-f6-V7D"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y2Q-Pb-RU0" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -78,6 +85,7 @@
         <scene sceneID="bLH-YZ-QSJ">
             <objects>
                 <viewController storyboardIdentifier="Chat" id="rRd-ZO-60U" customClass="ChatViewController" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B9f-P8-SG1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -88,11 +96,23 @@
         <scene sceneID="98E-xT-5yo">
             <objects>
                 <viewController storyboardIdentifier="EditProfile" id="Lqa-Xo-Tcw" customClass="EditProfileViewController" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WMP-6s-UTq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-104" y="872"/>
+            <point key="canvasLocation" x="-484" y="872"/>
+        </scene>
+        <!--Settings View Controller-->
+        <scene sceneID="6E1-Ce-dgY">
+            <objects>
+                <viewController storyboardIdentifier="Settings" id="Vhy-hq-gwn" customClass="SettingsViewController" sceneMemberID="viewController">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Zfc-Bp-zvE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="276" y="872"/>
         </scene>
     </scenes>
 </document>
