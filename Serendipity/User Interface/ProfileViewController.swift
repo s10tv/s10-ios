@@ -13,6 +13,7 @@ import SDWebImage
 @objc(ProfileViewController)
 class ProfileViewController : BaseViewController, SwipeViewDelegate, SwipeViewDataSource {
 
+    @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var swipeView: SwipeView!
     var user : User?
     
@@ -20,6 +21,7 @@ class ProfileViewController : BaseViewController, SwipeViewDelegate, SwipeViewDa
         super.viewDidLoad()
         user = User.MR_findFirst()
         swipeView.reloadData()
+        pageControl.numberOfPages = numberOfItemsInSwipeView(swipeView)
     }
     
     func numberOfItemsInSwipeView(swipeView: SwipeView!) -> Int {
@@ -31,6 +33,10 @@ class ProfileViewController : BaseViewController, SwipeViewDelegate, SwipeViewDa
         let url = (user?.photos as [Photo])[index].url
         v.sd_setImageWithURL(NSURL(string: url))
         return v
+    }
+    
+    func swipeViewCurrentItemIndexDidChange(swipeView: SwipeView!) {
+        pageControl.currentPage = swipeView.currentPage
     }
     
     func swipeViewItemSize(swipeView: SwipeView!) -> CGSize {
