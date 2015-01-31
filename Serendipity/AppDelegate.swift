@@ -39,8 +39,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             // TODO: Need to connect after authenticating with fb, not just at app start
             if FBSession.openActiveSessionWithAllowLoginUI(false) {
                 let accessToken = FBSession.activeSession().accessTokenData.accessToken
+                let expiry = FBSession.activeSession().accessTokenData.expirationDate
                 println("Will login to meteor with fb \(accessToken)")
-                self.meteor.logonWithUserParameters(["fb-access": ["accessToken": accessToken]]) {
+                self.meteor.logonWithUserParameters(["fb-access": [
+                    "accessToken": accessToken,
+                    "expireAt": expiry.timeIntervalSince1970
+                ]]) {
                     res, err in
                     println("res \(res) err \(err)")
                 }
