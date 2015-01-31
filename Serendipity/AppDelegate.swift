@@ -34,16 +34,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         meteor.ddp.connectWebSocket()
 
         // Need better way to register observer that unregisters itself
-        NSNotificationCenter.defaultCenter().addObserverForName(MeteorClientConnectionReadyNotification, object: nil, queue: nil) {
-            note in
+        NSNotificationCenter.defaultCenter().addObserverForName(MeteorClientConnectionReadyNotification, object: nil, queue: nil) { _ in
             // TODO: Need to connect after authenticating with fb, not just at app start
             if FBSession.openActiveSessionWithAllowLoginUI(false) {
-                let accessToken = FBSession.activeSession().accessTokenData.accessToken
-                let expiry = FBSession.activeSession().accessTokenData.expirationDate
-                println("Will login to meteor with fb \(accessToken)")
+                let data = FBSession.activeSession().accessTokenData
+                println("Will login to meteor with fb \(data)")
                 self.meteor.logonWithUserParameters(["fb-access": [
-                    "accessToken": accessToken,
-                    "expireAt": expiry.timeIntervalSince1970
+                    "accessToken": data.accessToken,
+                    "expireAt": data.expirationDate.timeIntervalSince1970
                 ]]) {
                     res, err in
                     println("res \(res) err \(err)")
