@@ -44,6 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     "expireAt": data.expirationDate.timeIntervalSince1970
                 ]]) {
                     res, err in
+                    
                     println("res \(res) err \(err)")
                 }
             }

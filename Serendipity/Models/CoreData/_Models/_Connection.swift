@@ -4,6 +4,7 @@
 import CoreData
 
 enum ConnectionAttributes: String {
+    case dateCreated = "dateCreated"
     case dateUpdated = "dateUpdated"
 }
 
@@ -37,6 +38,11 @@ class _Connection: NSManagedObject {
     }
 
     // MARK: - Properties
+
+    @NSManaged
+    var dateCreated: NSDate?
+
+    // func validateDateCreated(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
     var dateUpdated: NSDate?

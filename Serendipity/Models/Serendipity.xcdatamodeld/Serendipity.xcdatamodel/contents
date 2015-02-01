@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14C109" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Connection" representedClassName="Connection" syncable="YES">
+        <attribute name="dateCreated" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="dateUpdated" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="connection" inverseEntity="Message" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="connection" inverseEntity="User" syncable="YES"/>
@@ -15,7 +16,7 @@
         <relationship name="connection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Connection" inverseName="user" inverseEntity="Connection" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Connection" positionX="-54" positionY="0" width="128" height="88"/>
+        <element name="Connection" positionX="-54" positionY="0" width="128" height="105"/>
         <element name="Message" positionX="-36" positionY="27" width="128" height="73"/>
         <element name="User" positionX="-63" positionY="-18" width="128" height="90"/>
     </elements>

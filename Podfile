@@ -14,6 +14,8 @@ pod 'SwiftyJSON', '~> 2.1'
 pod 'MagicalRecord', :git => 'https://github.com/magicalpanda/MagicalRecord.git',
                      :tag => 'v2.3.0-beta.5'
 
+pod 'SugarRecord/CoreData', :git => 'https://github.com/SugarRecord/SugarRecord.git'
+
 # Debug only
 
 pod 'Reveal-iOS-SDK', '~> 1.0', :configuration => ['Debug']
