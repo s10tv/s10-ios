@@ -11,8 +11,6 @@ pod 'SwiftyJSON', '~> 2.1'
 
 # Update these to latest when ready
 # pod 'ReactiveCocoa', '3.0.0-alpha.1'
-pod 'MagicalRecord', :git => 'https://github.com/magicalpanda/MagicalRecord.git',
-                     :tag => 'v2.3.0-beta.5'
 
 pod 'SugarRecord/CoreData', :git => 'https://github.com/SugarRecord/SugarRecord.git'
 

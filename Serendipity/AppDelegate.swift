@@ -9,8 +9,8 @@
 import UIKit
 import CoreData
 import FacebookSDK
-import MagicalRecord
 import ObjectiveDDP
+import SugarRecord
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -26,8 +26,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         NSValueTransformer.setValueTransformer(PhotosValueTransformer(), forName: "PhotosValueTransformer")
-        MagicalRecord.setupCoreDataStackWithInMemoryStore()
-        debugCreateTestUser()
+        
+        let stack: DefaultCDStack = DefaultCDStack(databaseName: "Database.sqlite", automigrating:true)
+        SugarRecord.addStack(stack);
+        
+        debugCreateSugarRecordUser()
         
         meteor = MeteorClient(DDPVersion: "1")
         meteor.ddp = ObjectiveDDP(URLString: "ws://s10.herokuapp.com/websocket", delegate: meteor)
@@ -56,6 +59,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func applicationWillResignActive(application: UIApplication!) {
+        SugarRecord.applicationWillResignActive()
+    }
+    
+    func applicationWillEnterForeground(application: UIApplication!) {
+        SugarRecord.applicationWillEnterForeground()
+    }
+    
+    func applicationWillTerminate(application: UIApplication!) {
+        SugarRecord.applicationWillTerminate()
+    }
+    
     func applicationDidBecomeActive(application: UIApplication) {
         FBAppCall.handleDidBecomeActive()
     }
@@ -63,12 +78,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         return FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
     }
-    
+
     // DEBUGGING ONLY
-    func debugCreateTestUser() {
-        let user = User.MR_createEntity()
-        user.firstName = "Tony";
-        
+    func debugCreateSugarRecordUser() {
+        var user: User = User.create() as User
+        user.firstName = "Qiming"
         var photos : [Photo] = Array<Photo>()
         for index in 1...6 {
             let url = "https://s10.blob.core.windows.net/default/girl-00\(index).jpg"
@@ -76,6 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         user.photos = photos
         
-        NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
+        let saved: Bool = user.save()
+        println("User saved?: %d", saved);
     }
 }

@@ -9,6 +9,7 @@
 import Foundation
 import SwipeView
 import SDWebImage
+import SugarRecord
 
 @objc(ProfileViewController)
 class ProfileViewController : BaseViewController, SwipeViewDelegate, SwipeViewDataSource {
@@ -19,7 +20,8 @@ class ProfileViewController : BaseViewController, SwipeViewDelegate, SwipeViewDa
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        user = User.MR_findFirst()
+        
+        user = User.all().find().firstObject() as? User;
         swipeView.reloadData()
         pageControl.numberOfPages = numberOfItemsInSwipeView(swipeView)
     }
