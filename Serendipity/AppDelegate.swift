@@ -36,6 +36,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         meteor.ddp = ObjectiveDDP(URLString: "ws://s10.herokuapp.com/websocket", delegate: meteor)
         meteor.ddp.connectWebSocket()
 
+        // subscribe to "the allUsers" call, which populates the users collection.
+        meteor.addSubscription("allUsers");
+        
         // Need better way to register observer that unregisters itself
         NSNotificationCenter.defaultCenter().addObserverForName(MeteorClientConnectionReadyNotification, object: nil, queue: nil) { _ in
             // TODO: Need to connect after authenticating with fb, not just at app start
@@ -47,14 +50,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                     "expireAt": data.expirationDate.timeIntervalSince1970
                 ]]) {
                     res, err in
-                    
                     println("res \(res) err \(err)")
                 }
             }
         }
         
-
-        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reportConnection", name: MeteorClientDidConnectNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reportDisconnection", name: MeteorClientDidDisconnectNotification, object: nil)
         
         return true
     }
@@ -73,6 +75,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(application: UIApplication) {
         FBAppCall.handleDidBecomeActive()
+    }
+    
+    func reportConnection() {
+        println("================> connected to server!")
+    }
+    
+    func reportDisconnection() {
+        println("================> disconnected from server!")
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {

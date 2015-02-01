@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ObjectiveDDP
 
 @objc(DiscoverViewController)
 class DiscoverViewController : BaseViewController {
@@ -20,6 +21,22 @@ class DiscoverViewController : BaseViewController {
     }
     
     @IBAction func showSettings(sender: AnyObject) {
+        
+        var delegate = UIApplication.sharedApplication().delegate as AppDelegate;
+        
+        if (delegate.meteor.collections["users"] != nil) {
+            var users = delegate.meteor.collections["users"] as M13MutableOrderedDictionary
+
+            let userObjects: [AnyObject]! = users.allObjects();
+            
+            for (userObject: AnyObject) in userObjects {
+                let json = userObject as NSDictionary;
+                println(json["_id"]);
+                println(json["profile"]?["first_name"])
+                println("");
+            }
+        }
+        
         performSegueWithIdentifier("DiscoverToSettings", sender: sender)
     }
     
