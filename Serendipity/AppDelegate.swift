@@ -80,7 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     // DEBUGGING ONLY
-    func debugCreateSugarRecordUser() {
+    func debugCreateSugarRecordUser() -> Bool {
         var user: User = User.create() as User
         user.firstName = "Qiming"
         var photos : [Photo] = Array<Photo>()
@@ -90,7 +90,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         user.photos = photos
         
-        let saved: Bool = user.save()
-        println("User saved?: %d", saved);
+        return user.save()
     }
 }
