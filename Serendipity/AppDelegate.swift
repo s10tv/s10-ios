@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         SugarRecord.addStack(stack);
         
         // sets up objective ddp networking stack
-        self.networkManager = NetworkManager(wsAddress: "ws://localhost:3000/websocket")
+        self.networkManager = NetworkManager(wsAddress: "ws://s10.herokuapp.com/websocket")
         self.networkManager.startPubsub()
 
         // Need better way to register observer that unregisters itself
