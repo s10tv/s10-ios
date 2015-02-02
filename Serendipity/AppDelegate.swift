@@ -31,11 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // sets up core data stack
         let stack: DefaultCDStack = DefaultCDStack(databaseName: "Database.sqlite", automigrating:true)
         SugarRecord.addStack(stack);
-
-        debugCreateSugarRecordUser()
         
         // sets up objective ddp networking stack
-        self.networkManager = NetworkManager(wsAddress: "ws://s10.herokuapp.com/websocket")
+        self.networkManager = NetworkManager(wsAddress: "ws://localhost:3000/websocket")
         self.networkManager.startPubsub()
 
         // Need better way to register observer that unregisters itself
@@ -78,19 +76,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         return FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
-    }
-    
-    // DEBUGGING ONLY
-    func debugCreateSugarRecordUser() -> Bool {
-        var user: User = User.create() as User
-        user.firstName = "Qiming"
-        var photos : [Photo] = Array<Photo>()
-        for index in 1...6 {
-            let url = "https://s10.blob.core.windows.net/default/girl-00\(index).jpg"
-            photos.append(Photo(url: url))
-        }
-        user.photos = photos
-        
-        return user.save()
     }
 }

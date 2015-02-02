@@ -4,7 +4,11 @@
 import CoreData
 
 enum UserAttributes: String {
+    case about = "about"
     case firstName = "firstName"
+    case id = "id"
+    case matchFirstName = "matchFirstName"
+    case matchPhotos = "matchPhotos"
     case photos = "photos"
 }
 
@@ -39,9 +43,29 @@ class _User: NSManagedObject {
     // MARK: - Properties
 
     @NSManaged
+    var about: String?
+
+    // func validateAbout(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
     var firstName: String?
 
     // func validateFirstName(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var id: String?
+
+    // func validateId(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var matchFirstName: String?
+
+    // func validateMatchFirstName(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var matchPhotos: AnyObject?
+
+    // func validateMatchPhotos(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
     var photos: AnyObject?

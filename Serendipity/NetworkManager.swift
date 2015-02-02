@@ -23,29 +23,55 @@ class NetworkManager : NSObject {
     
     func startPubsub() {
         // notifications
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reportConnection",
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onConnect",
             name: MeteorClientDidConnectNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reportDisconnection",
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "onDisconnect",
             name: MeteorClientDidDisconnectNotification, object: nil)
-        
-        // subscribe to "the allUsers" call, which populates the users collection.
-        meteor.addSubscription("allUsers");
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:
-            "didReceiveUpdate:", name: "users_added", object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:
-            "didReceiveUpdate:", name: "users_removed", object: nil)
     }
     
-    func reportConnection() {
-        println("================> connected to server!")
+    /**
+     * Handler for when the server connection is established.
+     * Sets up subscribers for topics and event handlers.
+     */
+    func onConnect() {
+        // handles updates to current user.
+        meteor.addSubscription("userData");
+      
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:
+            "onAddUser:", name: "users_added", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:
+            "onChangeUser:", name: "users_changed", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:
+            "onRemoveUser:", name: "users_removed", object: nil)
     }
     
-    func reportDisconnection() {
+    /**
+     * Handler for when the server connection is destroyed.
+     */
+    func onDisconnect() {
         println("================> disconnected from server!")
     }
     
-    func didReceiveUpdate(notification:NSNotification) {
-        println("Received Data");
+    /**
+     * Handler for user add notification.
+     */
+    func onAddUser(notification : NSNotification) {
+        var ddpUser : NSDictionary = notification.userInfo! as NSDictionary
+        var user: User = User.create() as User
+        user = parseUser(ddpUser, user: user);
+        user.save()
+    }
+    
+    func onChangeUser(notification: NSNotification) {
+        var ddpUser : NSDictionary = notification.userInfo! as NSDictionary
+        var user: User = User.all().find().firstObject() as User
+        user = parseUser(ddpUser, user: user);
+        
+        println(user.matchFirstName!)
+    }
+    
+    func onRemoveUser(notification : NSNotification) {
+        println("Received Remove User");
     }
     
     /**
@@ -57,5 +83,38 @@ class NetworkManager : NSObject {
     func logIn(userParameters: [NSObject : AnyObject]!,
         responseCallback:MeteorClientMethodCallback) {
         self.meteor.logonWithUserParameters(userParameters, responseCallback);
+    }
+    
+    // TODO(qimingfang): there has to be a better way to do this.
+    func parseUser(ddpUser: NSDictionary, user : User) -> User {
+        user.beginWriting()
+        user.id = ddpUser["_id"]! as NSString
+        
+        var profile : NSDictionary = ddpUser["profile"]! as NSDictionary
+        user.firstName = profile["first_name"]! as NSString
+        
+        var userPhotos : [NSString] = profile["photos"]! as [NSString]
+        var photos : [Photo] = Array<Photo>()
+        for userPhoto in userPhotos {
+            photos.append(Photo(url: userPhoto))
+        }
+        user.photos = photos
+        
+        // TODO(qimingfang): there has to be a better way to do this.
+        if (ddpUser["currentMatch"] != nil){
+            var currentMatch = ddpUser["currentMatch"]! as NSDictionary
+            var currentMatchProfile : NSDictionary = currentMatch["profile"]! as NSDictionary
+            user.matchFirstName = currentMatchProfile["first_name"]! as NSString
+            
+            var currentMatchPhotos : [NSString] = currentMatchProfile["photos"]! as [NSString]
+            var savedCurrentMatchPhotos : [Photo] = Array<Photo>()
+            for currentMatchPhoto in currentMatchPhotos {
+                savedCurrentMatchPhotos.append(Photo(url: currentMatchPhoto))
+            }
+            user.matchPhotos = savedCurrentMatchPhotos
+        }
+        
+        user.endWriting()
+        return user
     }
 }
