@@ -16,7 +16,8 @@ import SugarRecord
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var meteor: MeteorClient!
+    var networkManager: NetworkManager!
+
     var rootVC: RootViewController! {
         get {
             return window?.rootViewController as RootViewController
@@ -27,38 +28,36 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         NSValueTransformer.setValueTransformer(PhotosValueTransformer(), forName: "PhotosValueTransformer")
         
+        // sets up core data stack
         let stack: DefaultCDStack = DefaultCDStack(databaseName: "Database.sqlite", automigrating:true)
         SugarRecord.addStack(stack);
-        
+
         debugCreateSugarRecordUser()
         
-        meteor = MeteorClient(DDPVersion: "1")
-        meteor.ddp = ObjectiveDDP(URLString: "ws://s10.herokuapp.com/websocket", delegate: meteor)
-        meteor.ddp.connectWebSocket()
+        // sets up objective ddp networking stack
+        self.networkManager = NetworkManager(wsAddress: "ws://s10.herokuapp.com/websocket")
+        self.networkManager.startPubsub()
 
-        // subscribe to "the allUsers" call, which populates the users collection.
-        meteor.addSubscription("allUsers");
-        
         // Need better way to register observer that unregisters itself
         NSNotificationCenter.defaultCenter().addObserverForName(MeteorClientConnectionReadyNotification, object: nil, queue: nil) { _ in
             // TODO: Need to connect after authenticating with fb, not just at app start
             if FBSession.openActiveSessionWithAllowLoginUI(false) {
                 let data = FBSession.activeSession().accessTokenData
-                println("Will login to meteor with fb \(data)")
-                self.meteor.logonWithUserParameters(["fb-access": [
+                let userParam: [NSObject : AnyObject]! = ["fb-access": [
                     "accessToken": data.accessToken,
                     "expireAt": data.expirationDate.timeIntervalSince1970
-                ]]) {
-                    res, err in
-                    println("res \(res) err \(err)")
-                }
+                ]]
+                
+                self.networkManager.logIn(userParam, self.userLoggedIn);
             }
         }
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reportConnection", name: MeteorClientDidConnectNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "reportDisconnection", name: MeteorClientDidDisconnectNotification, object: nil)
-        
         return true
+    }
+    
+    func userLoggedIn(res : [NSObject : AnyObject]!, err : NSError!) -> Void {
+        println(res);
+        println(err);
     }
     
     func applicationWillResignActive(application: UIApplication!) {
@@ -77,18 +76,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FBAppCall.handleDidBecomeActive()
     }
     
-    func reportConnection() {
-        println("================> connected to server!")
-    }
-    
-    func reportDisconnection() {
-        println("================> disconnected from server!")
-    }
-    
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         return FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
     }
-
+    
     // DEBUGGING ONLY
     func debugCreateSugarRecordUser() -> Bool {
         var user: User = User.create() as User

@@ -24,6 +24,7 @@ class DiscoverViewController : BaseViewController {
         
         var delegate = UIApplication.sharedApplication().delegate as AppDelegate;
         
+        /*
         if (delegate.meteor.collections["users"] != nil) {
             var users = delegate.meteor.collections["users"] as M13MutableOrderedDictionary
 
@@ -36,6 +37,7 @@ class DiscoverViewController : BaseViewController {
                 println("");
             }
         }
+        */
         
         performSegueWithIdentifier("DiscoverToSettings", sender: sender)
     }
