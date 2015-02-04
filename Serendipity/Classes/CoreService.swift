@@ -25,8 +25,6 @@ class CoreService {
     
     private func setupCoreData() {
         NSValueTransformer.setValueTransformer(PhotosValueTransformer(), forName: "PhotosValueTransformer")
-//        let stack: DefaultCDStack = DefaultCDStack(databaseName: "Database.sqlite", automigrating:true)
-//        SugarRecord.addStack(stack);
         MagicalRecord.setupCoreDataStackWithInMemoryStore()
     }
     

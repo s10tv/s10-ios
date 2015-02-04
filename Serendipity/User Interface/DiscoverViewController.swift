@@ -25,19 +25,22 @@ class DiscoverViewController : BaseViewController {
             make.edges.equalTo(self.view)
             return
         }
-        Core.prepareMatches()
-//        matches = User.all().find()
+        
         nextMatch(nil)
     }
     
     @IBAction func nextMatch(sender: AnyObject?) {
-        if let match = matches.first {
-            profileVC.user = match
+        // TODO: Prevent this method from called multiple times in a row
+        MatchService.getNextMatch().subscribeNextAs { (match: User) -> () in
+            self.profileVC.user = match
         }
     }
     
     @IBAction func messageMatch(sender: AnyObject?) {
-        
+        if let match = MatchService.currentMatch {
+            match.likeUser() // Message User
+            // Go to connections / recorder view
+        }
     }
     
     

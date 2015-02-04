@@ -12,7 +12,7 @@ pod 'Meteor', '~> 0.1'
 pod 'MagicalRecord', '~> 2.2' # Shorthand not supported in Swift
 
 # Update these to latest when ready
-pod 'ReactiveCocoa', '3.0.0-alpha.1'
+pod 'ReactiveCocoa', '~> 2.4'
 
 # pod 'SugarRecord/CoreData', :git => 'https://github.com/SugarRecord/SugarRecord.git'
 
