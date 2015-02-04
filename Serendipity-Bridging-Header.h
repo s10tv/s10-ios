@@ -14,3 +14,13 @@
 - (void)loginWithMethodName:(NSString *)methodName parameters:(NSArray *)parameters completionHandler:(METLogInCompletionHandler)completionHandler;
 
 @end
+
+@interface RACSignal (SwiftCompileFix)
+
+- (RACSignal *)And;
+- (RACSignal *)Or;
+- (RACSignal *)Not;
+
++ (RACSignal *)Return:(id)object;
+
+@end

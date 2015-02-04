@@ -18,7 +18,9 @@ class CoreService {
     let meteor : METDDPClient
     
     init() {
-        meteor = METDDPClient(serverURL: NSURL(string: "ws://s10.herokuapp.com/websocket"))
+        let urlStr = "ws://s10.herokuapp.com/websocket"
+//        let urlStr = "ws://localhost:3000/websocket"
+        meteor = METDDPClient(serverURL: NSURL(string: urlStr))
         setupCoreData()
         setupMeteor()
     }
@@ -40,21 +42,6 @@ class CoreService {
                 println("Logged in with error? \(err)")
             })
         }
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleDbChange", name: METDatabaseDidChangeNotification, object: nil)
-    }
-    
-    @objc func handleDbChange() {
-        let collection = meteor.database.collectionWithName("users")
-        for document in collection.allDocuments as [METDocument] {
-//            let user = User.MR_createEntity()
-//            user.firstName = document["profile"]["first_name"]
-//            user.save()
-        }
-    }
-    
-    func prepareMatches() {
-        let sub = meteor.addSubscriptionWithName("matches")
-        
-        
+        MatchService.startWithMeteor(meteor)
     }
 }
