@@ -2,6 +2,7 @@ PODS:
   - Bolts (1.1.3)
   - Facebook-iOS-SDK (3.22.0):
     - Bolts (~> 1.0)
+  - GPUImage (0.1.6)
   - M13OrderedDictionary (1.0.6)
   - ObjectiveDDP (0.1.8):
     - M13OrderedDictionary
@@ -20,6 +21,7 @@ PODS:
 
 DEPENDENCIES:
   - Facebook-iOS-SDK (~> 3.22)
+  - GPUImage (~> 0.1.6)
   - ObjectiveDDP (~> 0.1.8)
   - Reveal-iOS-SDK (~> 1.0)
   - SDWebImage (~> 3.7)
@@ -40,6 +42,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
   Facebook-iOS-SDK: 0eda8ff7120aada0a9c5f98552f7625da6c3440a
+  GPUImage: cecb0830bb9428f50192042e3c7b53810f51388e
   M13OrderedDictionary: 8f721284b4960aabaf567b7894911a45cb9c71b0
   ObjectiveDDP: 1b9b2074d4d5cdbdc9e83536a2491629f9f4332c
   Reveal-iOS-SDK: 7ee5e9b37ef13dcd93ae1736c1b72c7c650da3e3

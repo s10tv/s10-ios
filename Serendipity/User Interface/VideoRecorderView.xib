@@ -6,6 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoRecorderViewController">
             <connections>
+                <outlet property="cameraView" destination="tyb-wo-2f8" id="uay-ue-GnM"/>
+                <outlet property="recordButton" destination="iN0-l3-epB" id="Jgv-7R-Kun"/>
                 <outlet property="view" destination="iN0-l3-epB" id="K7O-w9-zO2"/>
             </connections>
         </placeholder>
@@ -14,16 +16,29 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uNl-b5-0mB">
-                    <rect key="frame" x="137" y="308" width="46" height="30"/>
-                    <state key="normal" title="Button">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tyb-wo-2f8" customClass="GPUImageView">
+                    <rect key="frame" x="25" y="100" width="270" height="268"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uoT-OB-oS3">
+                    <rect key="frame" x="114" y="448" width="93" height="30"/>
+                    <state key="normal" title="Boogie Down">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
+                    <connections>
+                        <action selector="toggle:" destination="-1" eventType="touchDown" id="7xz-e0-nUv"/>
+                    </connections>
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="tyb-wo-2f8" secondAttribute="trailing" constant="25" id="0tH-d9-B9g"/>
+                <constraint firstAttribute="bottom" secondItem="tyb-wo-2f8" secondAttribute="bottom" constant="200" id="5St-Ns-j6e"/>
+                <constraint firstItem="tyb-wo-2f8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="100" id="FvB-LF-lzO"/>
+                <constraint firstItem="tyb-wo-2f8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="25" id="J2Q-er-0SM"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="119" y="225"/>
+            <point key="canvasLocation" x="-91" y="322"/>
         </view>
     </objects>
 </document>
