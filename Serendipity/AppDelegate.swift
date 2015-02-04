@@ -11,6 +11,7 @@ import CoreData
 import FacebookSDK
 import ObjectiveDDP
 import SugarRecord
+import ReactiveCocoa
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {

@@ -11,7 +11,7 @@ pod 'SDWebImage', '~> 3.7'
 pod 'SwiftyJSON', '~> 2.1'
 
 # Update these to latest when ready
-# pod 'ReactiveCocoa', '3.0.0-alpha.1'
+pod 'ReactiveCocoa', '3.0.0-alpha.1'
 
 pod 'SugarRecord/CoreData', :git => 'https://github.com/SugarRecord/SugarRecord.git'
 

@@ -6,4 +6,5 @@
 #import <ObjectiveDDP/MeteorClient.h>
 #import <SwipeView/SwipeView.h>
 #import <SDWebImage/UIImageView+WebCache.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
 #import "TestFile.h"

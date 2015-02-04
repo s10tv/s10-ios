@@ -3,10 +3,22 @@ PODS:
   - Facebook-iOS-SDK (3.22.0):
     - Bolts (~> 1.0)
   - GPUImage (0.1.6)
+  - LlamaKit (0.1.1)
   - M13OrderedDictionary (1.0.6)
   - ObjectiveDDP (0.1.8):
     - M13OrderedDictionary
     - SocketRocket (= 0.3.1-beta2)
+  - ReactiveCocoa (3.0.0-alpha.1):
+    - LlamaKit (= 0.1.1)
+    - ReactiveCocoa/UI (= 3.0.0-alpha.1)
+  - ReactiveCocoa/Core (3.0.0-alpha.1):
+    - LlamaKit (= 0.1.1)
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (3.0.0-alpha.1):
+    - LlamaKit (= 0.1.1)
+  - ReactiveCocoa/UI (3.0.0-alpha.1):
+    - LlamaKit (= 0.1.1)
+    - ReactiveCocoa/Core
   - Reveal-iOS-SDK (1.0.7)
   - SDWebImage (3.7.1):
     - SDWebImage/Core (= 3.7.1)
@@ -23,6 +35,7 @@ DEPENDENCIES:
   - Facebook-iOS-SDK (~> 3.22)
   - GPUImage (~> 0.1.6)
   - ObjectiveDDP (~> 0.1.8)
+  - ReactiveCocoa (= 3.0.0-alpha.1)
   - Reveal-iOS-SDK (~> 1.0)
   - SDWebImage (~> 3.7)
   - Snap (~> 0.0.4)
@@ -43,8 +56,10 @@ SPEC CHECKSUMS:
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
   Facebook-iOS-SDK: 0eda8ff7120aada0a9c5f98552f7625da6c3440a
   GPUImage: cecb0830bb9428f50192042e3c7b53810f51388e
+  LlamaKit: 25f47a933b6580a6fc159d95adb2e2953c7012e9
   M13OrderedDictionary: 8f721284b4960aabaf567b7894911a45cb9c71b0
   ObjectiveDDP: 1b9b2074d4d5cdbdc9e83536a2491629f9f4332c
+  ReactiveCocoa: 3b5e351bb3ab233d71f0329f36a7400af30d9783
   Reveal-iOS-SDK: 7ee5e9b37ef13dcd93ae1736c1b72c7c650da3e3
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   Snap: 66767e914c2502fac641439b8a281b92f07a0083
