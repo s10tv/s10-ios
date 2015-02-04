@@ -8,6 +8,7 @@
 
 import Foundation
 import Meteor
+import ReactiveCocoa
 
 let MatchService = MatchServiceImpl()
 
