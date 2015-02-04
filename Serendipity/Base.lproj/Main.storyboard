@@ -92,6 +92,16 @@
             </objects>
             <point key="canvasLocation" x="1399" y="872"/>
         </scene>
+        <!--Video Recorder View Controller-->
+        <scene sceneID="Eyk-Cd-rkc">
+            <objects>
+                <viewController storyboardIdentifier="VideoRecorder" id="kgW-Qh-BCL" customClass="VideoRecorderViewController" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4iI-Tj-bCf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1782" y="872"/>
+        </scene>
         <!--Edit Profile View Controller-->
         <scene sceneID="98E-xT-5yo">
             <objects>

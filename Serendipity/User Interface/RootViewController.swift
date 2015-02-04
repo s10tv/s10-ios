@@ -13,15 +13,21 @@ class RootViewController : UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if !FBSession.openActiveSessionWithAllowLoginUI(false) {
-            showSignup(false)
-        } else {
-            showDiscover(false)
-        }
+//        if !FBSession.openActiveSessionWithAllowLoginUI(false) {
+//            showSignup(false)
+//        } else {
+//            showDiscover(false)
+//        }
+        showRecorder()
     }
     
     override func supportedInterfaceOrientations() -> Int {
         return Int(UIInterfaceOrientationMask.Portrait.rawValue);
+    }
+    
+    func showRecorder() {
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("VideoRecorder") as UIViewController!
+        setViewControllers([vc], animated: false)
     }
     
     func showProfile(user: User?, animated: Bool) {
