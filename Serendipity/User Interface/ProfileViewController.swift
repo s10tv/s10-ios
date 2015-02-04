@@ -15,6 +15,10 @@ class ProfileViewController : BaseViewController, SwipeViewDelegate, SwipeViewDa
 
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var swipeView: SwipeView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var ageLabel: UILabel!
+    @IBOutlet weak var aboutLabel: UILabel!
+    
     var user : User? {
         didSet {
             reloadData()
@@ -27,7 +31,11 @@ class ProfileViewController : BaseViewController, SwipeViewDelegate, SwipeViewDa
     
     func reloadData() {
         swipeView.reloadData()
+        swipeView.scrollToItemAtIndex(0, duration: 0)
         pageControl.numberOfPages = numberOfItemsInSwipeView(swipeView)
+        nameLabel.text = user?.firstName
+        ageLabel.text = "\(user?.age ?? 0)"
+        aboutLabel.text = user?.about
     }
     
     // MARK: - SwipeView Delegate / Data Soruce
