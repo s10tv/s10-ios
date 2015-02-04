@@ -7,7 +7,6 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <Meteor/METDDPClient.h>
-#import "TestFile.h"
 
 @interface METDDPClient (Private)
 

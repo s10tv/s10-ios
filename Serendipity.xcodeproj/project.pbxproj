@@ -29,7 +29,6 @@
 		EA5634ED1A77428F00F62B52 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E71A77428F00F62B52 /* Connection.swift */; };
 		EA5634EE1A77428F00F62B52 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E81A77428F00F62B52 /* Message.swift */; };
 		EA5634EF1A77428F00F62B52 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E91A77428F00F62B52 /* User.swift */; };
-		EA9E17DB1A779409001FEE77 /* TestFile.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9E17DA1A779409001FEE77 /* TestFile.m */; };
 		EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
 		EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35461A74CC6900E0C65D /* Main.storyboard */; };
 		EA9F354A1A74CC6900E0C65D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Images.xcassets */; };
@@ -90,8 +89,6 @@
 		EA5634E71A77428F00F62B52 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		EA5634E81A77428F00F62B52 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EA5634E91A77428F00F62B52 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		EA9E17DA1A779409001FEE77 /* TestFile.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestFile.m; sourceTree = "<group>"; };
-		EA9E17DC1A779412001FEE77 /* TestFile.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TestFile.h; sourceTree = "<group>"; };
 		EA9F353A1A74CC6900E0C65D /* Serendipity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Serendipity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9F353E1A74CC6900E0C65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -240,8 +237,6 @@
 				EA5634DE1A7741FF00F62B52 /* Models */,
 				EAF4D7441A79AA5E00D35330 /* User Interface */,
 				EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */,
-				EA9E17DA1A779409001FEE77 /* TestFile.m */,
-				EA9E17DC1A779412001FEE77 /* TestFile.h */,
 				EA9F35461A74CC6900E0C65D /* Main.storyboard */,
 				EA9F35491A74CC6900E0C65D /* Images.xcassets */,
 				EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */,
@@ -524,7 +519,6 @@
 				EAF4D7641A79AA5E00D35330 /* SignupViewController.swift in Sources */,
 				EAF195CC1A8210EA00A2F103 /* RAC.swift in Sources */,
 				EAF4D75B1A79AA5E00D35330 /* ConnectionsViewController.swift in Sources */,
-				EA9E17DB1A779409001FEE77 /* TestFile.m in Sources */,
 				EAF4D7611A79AA5E00D35330 /* ProfileViewController.swift in Sources */,
 				EA5634EA1A77428F00F62B52 /* _Connection.swift in Sources */,
 				EA5634ED1A77428F00F62B52 /* Connection.swift in Sources */,
