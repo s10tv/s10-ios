@@ -5,11 +5,13 @@ import CoreData
 
 enum UserAttributes: String {
     case about = "about"
+    case age = "age"
+    case education = "education"
     case firstName = "firstName"
     case id = "id"
-    case matchFirstName = "matchFirstName"
-    case matchPhotos = "matchPhotos"
+    case location = "location"
     case photos = "photos"
+    case work = "work"
 }
 
 enum UserRelationships: String {
@@ -48,6 +50,16 @@ class _User: NSManagedObject {
     // func validateAbout(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
+    var age: NSNumber?
+
+    // func validateAge(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var education: String?
+
+    // func validateEducation(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
     var firstName: String?
 
     // func validateFirstName(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
@@ -58,19 +70,19 @@ class _User: NSManagedObject {
     // func validateId(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
-    var matchFirstName: String?
+    var location: String?
 
-    // func validateMatchFirstName(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
-
-    @NSManaged
-    var matchPhotos: AnyObject?
-
-    // func validateMatchPhotos(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateLocation(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
     var photos: AnyObject?
 
     // func validatePhotos(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var work: String?
+
+    // func validateWork(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
 

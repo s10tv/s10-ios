@@ -57,10 +57,14 @@ class MatchServiceImpl {
             queue.removeAll(keepCapacity: true)
             for document in documents as [METDocument] {
                 let user = User.MR_createEntity() as User
-                let photoURLs = document["profile"]["photos"] as? [NSString]
-                user.firstName = document["profile"]["first_name"] as? String
-                user.photos = photoURLs?.map { Photo(url: $0) }
                 user.id = document.key.documentID as? String
+                user.firstName = document["profile"]["first_name"] as? String
+                user.work = document["profile"]["work"] as? String
+                user.education = document["profile"]["education"] as? String
+                user.age = 23 // TODO: Populate me
+                user.location = nil
+                let photoURLs = document["profile"]["photos"] as? [NSString]
+                user.photos = photoURLs?.map { Photo(url: $0) }
                 queue.append(user)
             }
             println("Updated queue with new size \(queue.count) \(queue.map { $0.firstName! })")
