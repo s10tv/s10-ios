@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 import FacebookSDK
-import SugarRecord
+import MagicalRecord
 import ReactiveCocoa
 import Meteor
 
@@ -25,8 +25,9 @@ class CoreService {
     
     private func setupCoreData() {
         NSValueTransformer.setValueTransformer(PhotosValueTransformer(), forName: "PhotosValueTransformer")
-        let stack: DefaultCDStack = DefaultCDStack(databaseName: "Database.sqlite", automigrating:true)
-        SugarRecord.addStack(stack);
+//        let stack: DefaultCDStack = DefaultCDStack(databaseName: "Database.sqlite", automigrating:true)
+//        SugarRecord.addStack(stack);
+        MagicalRecord.setupCoreDataStackWithInMemoryStore()
     }
     
     private func setupMeteor() {
@@ -45,9 +46,11 @@ class CoreService {
     }
     
     @objc func handleDbChange() {
-        let users = meteor.database.collectionWithName("users")
-        for document in users.allDocuments as [METDocument] {
-
+        let collection = meteor.database.collectionWithName("users")
+        for document in collection.allDocuments as [METDocument] {
+//            let user = User.MR_createEntity()
+//            user.firstName = document["profile"]["first_name"]
+//            user.save()
         }
     }
     

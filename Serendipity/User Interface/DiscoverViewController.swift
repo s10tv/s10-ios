@@ -8,13 +8,11 @@
 
 import UIKit
 import Snap
-import SugarRecord
 
 @objc(DiscoverViewController)
 class DiscoverViewController : BaseViewController {
     
-//    var matches : [User] = []
-    var matches : SugarRecordResults!
+    var matches : [User] = []
     var profileVC : ProfileViewController!
     
     override func viewDidLoad() {
@@ -28,12 +26,12 @@ class DiscoverViewController : BaseViewController {
             return
         }
         Core.prepareMatches()
-        matches = User.all().find()
+//        matches = User.all().find()
         nextMatch(nil)
     }
     
     @IBAction func nextMatch(sender: AnyObject?) {
-        if let match = matches.firstObject() as? User {
+        if let match = matches.first {
             profileVC.user = match
         }
     }

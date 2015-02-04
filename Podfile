@@ -3,21 +3,18 @@ platform :ios, '8.0'
 inhibit_all_warnings!
 
 pod 'Facebook-iOS-SDK', '~> 3.22'
-<<<<<<< HEAD
 pod 'GPUImage', '~> 0.1.6'
-pod 'ObjectiveDDP', '~> 0.1.8'
-=======
->>>>>>> Replace ObjectiveDDP with Meteor-iOS
 pod 'SwipeView', '~> 1.3'
 pod 'Snap', '~> 0.0.4'
 pod 'SDWebImage', '~> 3.7'
 pod 'SwiftyJSON', '~> 2.1'
 pod 'Meteor', '~> 0.1'
+pod 'MagicalRecord', '~> 2.2' # Shorthand not supported in Swift
 
 # Update these to latest when ready
 pod 'ReactiveCocoa', '3.0.0-alpha.1'
 
-pod 'SugarRecord/CoreData', :git => 'https://github.com/SugarRecord/SugarRecord.git'
+# pod 'SugarRecord/CoreData', :git => 'https://github.com/SugarRecord/SugarRecord.git'
 
 # Debug only
 

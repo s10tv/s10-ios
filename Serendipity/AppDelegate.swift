@@ -7,11 +7,7 @@
 //
 
 import UIKit
-import CoreData
 import FacebookSDK
-import SugarRecord
-import ReactiveCocoa
-import Meteor
 
 var Core : CoreService!
 
@@ -29,18 +25,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Core = CoreService()
         return true
-    }
-    
-    func applicationWillResignActive(application: UIApplication!) {
-        SugarRecord.applicationWillResignActive()
-    }
-    
-    func applicationWillEnterForeground(application: UIApplication!) {
-        SugarRecord.applicationWillEnterForeground()
-    }
-    
-    func applicationWillTerminate(application: UIApplication!) {
-        SugarRecord.applicationWillTerminate()
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
