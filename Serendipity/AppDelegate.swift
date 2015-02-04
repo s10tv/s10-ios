@@ -13,7 +13,7 @@ import SugarRecord
 import ReactiveCocoa
 import Meteor
 
-let Meteor = METDDPClient(serverURL: NSURL(string: "ws://s10.herokuapp.com/websocket"))
+var Core : CoreService!
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -27,26 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "METShouldLogDDPMessages")
-        
-        NSValueTransformer.setValueTransformer(PhotosValueTransformer(), forName: "PhotosValueTransformer")
-        
-        // sets up core data stack
-        let stack: DefaultCDStack = DefaultCDStack(databaseName: "Database.sqlite", automigrating:true)
-        SugarRecord.addStack(stack);
-        
-        // TODO: Need to connect after authenticating with fb, not just at app start
-        if FBSession.openActiveSessionWithAllowLoginUI(false) {
-            let data = FBSession.activeSession().accessTokenData
-            let userParam = [["fb-access": [
-                "accessToken": data.accessToken,
-                "expireAt": data.expirationDate.timeIntervalSince1970
-            ]]]
-            Meteor.loginWithMethodName("login", parameters: userParam, completionHandler: { err in
-                println("Logged in? \(err)")
-            })
-        }
-        
+        Core = CoreService()
         return true
     }
     

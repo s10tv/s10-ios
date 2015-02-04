@@ -16,15 +16,23 @@ class ProfileViewController : BaseViewController, SwipeViewDelegate, SwipeViewDa
 
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var swipeView: SwipeView!
-    var user : User?
+    var user : User? {
+        didSet {
+            reloadData()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         user = User.all().find().firstObject() as? User;
+    }
+    
+    func reloadData() {
         swipeView.reloadData()
         pageControl.numberOfPages = numberOfItemsInSwipeView(swipeView)
     }
+    
+    // MARK: - SwipeView Delegate / Data Soruce
     
     func numberOfItemsInSwipeView(swipeView: SwipeView!) -> Int {
         return user?.photos != nil ? (user?.photos?.count)! : 0

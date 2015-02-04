@@ -37,6 +37,7 @@
 		EA9F35591A74CC6900E0C65D /* SerendipityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F35581A74CC6900E0C65D /* SerendipityTests.swift */; };
 		EAD60A4C1A79BA950051D0B7 /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAD60A4A1A79BA950051D0B7 /* SettingsView.xib */; };
 		EAD60A4D1A79BA950051D0B7 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD60A4B1A79BA950051D0B7 /* SettingsViewController.swift */; };
+		EAF195C71A81FE5B00A2F103 /* CoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF195C61A81FE5B00A2F103 /* CoreService.swift */; };
 		EAF4D7581A79AA5E00D35330 /* ChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF4D7451A79AA5E00D35330 /* ChatView.xib */; };
 		EAF4D7591A79AA5E00D35330 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF4D7461A79AA5E00D35330 /* ChatViewController.swift */; };
 		EAF4D75A1A79AA5E00D35330 /* ConnectionsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF4D7471A79AA5E00D35330 /* ConnectionsView.xib */; };
@@ -99,6 +100,7 @@
 		EA9F35621A74CD8800E0C65D /* Serendipity-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Serendipity-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		EAD60A4A1A79BA950051D0B7 /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 		EAD60A4B1A79BA950051D0B7 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		EAF195C61A81FE5B00A2F103 /* CoreService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreService.swift; sourceTree = "<group>"; };
 		EAF4D7451A79AA5E00D35330 /* ChatView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatView.xib; sourceTree = "<group>"; };
 		EAF4D7461A79AA5E00D35330 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		EAF4D7471A79AA5E00D35330 /* ConnectionsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionsView.xib; sourceTree = "<group>"; };
@@ -297,6 +299,7 @@
 			isa = PBXGroup;
 			children = (
 				EAFD13CD1A778BAE00754556 /* BaseViewController.swift */,
+				EAF195C61A81FE5B00A2F103 /* CoreService.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -493,6 +496,7 @@
 				EAF4D75F1A79AA5E00D35330 /* EditProfileViewController.swift in Sources */,
 				EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */,
 				EA5634EF1A77428F00F62B52 /* User.swift in Sources */,
+				EAF195C71A81FE5B00A2F103 /* CoreService.swift in Sources */,
 				EA5634EE1A77428F00F62B52 /* Message.swift in Sources */,
 				EAF4D7641A79AA5E00D35330 /* SignupViewController.swift in Sources */,
 				EAF4D75B1A79AA5E00D35330 /* ConnectionsViewController.swift in Sources */,
