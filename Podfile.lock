@@ -3,11 +3,13 @@ PODS:
   - Facebook-iOS-SDK (3.22.0):
     - Bolts (~> 1.0)
   - GPUImage (0.1.6)
+  - InflectorKit (0.0.1)
   - LlamaKit (0.1.1)
-  - M13OrderedDictionary (1.0.6)
-  - ObjectiveDDP (0.1.8):
-    - M13OrderedDictionary
-    - SocketRocket (= 0.3.1-beta2)
+  - Meteor (0.1.2):
+    - InflectorKit
+    - PocketSocket
+    - SimpleKeychain
+  - PocketSocket (0.6.4)
   - ReactiveCocoa (3.0.0-alpha.1):
     - LlamaKit (= 0.1.1)
     - ReactiveCocoa/UI (= 3.0.0-alpha.1)
@@ -23,8 +25,8 @@ PODS:
   - SDWebImage (3.7.1):
     - SDWebImage/Core (= 3.7.1)
   - SDWebImage/Core (3.7.1)
+  - SimpleKeychain (0.3.0)
   - Snap (0.0.4)
-  - SocketRocket (0.3.1-beta2)
   - SugarRecord/Core (1.0.7)
   - SugarRecord/CoreData (1.0.7):
     - SugarRecord/Core
@@ -34,7 +36,7 @@ PODS:
 DEPENDENCIES:
   - Facebook-iOS-SDK (~> 3.22)
   - GPUImage (~> 0.1.6)
-  - ObjectiveDDP (~> 0.1.8)
+  - Meteor (~> 0.1)
   - ReactiveCocoa (= 3.0.0-alpha.1)
   - Reveal-iOS-SDK (~> 1.0)
   - SDWebImage (~> 3.7)
@@ -56,14 +58,15 @@ SPEC CHECKSUMS:
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
   Facebook-iOS-SDK: 0eda8ff7120aada0a9c5f98552f7625da6c3440a
   GPUImage: cecb0830bb9428f50192042e3c7b53810f51388e
+  InflectorKit: bb1f5c9feb01d17450b8bcdeb7ab1ef1832b2247
   LlamaKit: 25f47a933b6580a6fc159d95adb2e2953c7012e9
-  M13OrderedDictionary: 8f721284b4960aabaf567b7894911a45cb9c71b0
-  ObjectiveDDP: 1b9b2074d4d5cdbdc9e83536a2491629f9f4332c
+  Meteor: 5f620a6d26b2fb79620aec7d9b06951f63968566
+  PocketSocket: 8c18f973e57fd3042d032626654658df0fa2f126
   ReactiveCocoa: 3b5e351bb3ab233d71f0329f36a7400af30d9783
   Reveal-iOS-SDK: 7ee5e9b37ef13dcd93ae1736c1b72c7c650da3e3
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
+  SimpleKeychain: 4758625a53ca89cfae98b4aca8c550d1193292f8
   Snap: 66767e914c2502fac641439b8a281b92f07a0083
-  SocketRocket: 79a68ae186063c65e1fe6f638b1ae2927aa5f304
   SugarRecord: 9d55ce666e8161eacdc95c996173eb53eb6d3683
   SwiftyJSON: 48be7490a3989a58a3f511cd54167f0a2b466e76
   SwipeView: 0093c212acf3d715b09334c50d568a4418404150

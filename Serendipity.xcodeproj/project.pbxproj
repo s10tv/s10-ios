@@ -57,7 +57,6 @@
 		EAF4D7691A79AA5E00D35330 /* VideoRecorderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF4D7561A79AA5E00D35330 /* VideoRecorderView.xib */; };
 		EAF4D76A1A79AA5E00D35330 /* VideoRecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF4D7571A79AA5E00D35330 /* VideoRecorderViewController.swift */; };
 		EAFD13CE1A778BAE00754556 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFD13CD1A778BAE00754556 /* BaseViewController.swift */; };
-		F93DDFF61A7F0DA900A3569C /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F93DDFF51A7F0DA900A3569C /* NetworkManager.swift */; };
 		F996C71E1A81F1D100314FF8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71D1A81F1D100314FF8 /* CoreMedia.framework */; };
 		F996C7201A81F1D800314FF8 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71F1A81F1D800314FF8 /* CoreVideo.framework */; };
 		F996C7221A81F1E000314FF8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C7211A81F1E000314FF8 /* AVFoundation.framework */; };
@@ -120,7 +119,6 @@
 		EAF4D7561A79AA5E00D35330 /* VideoRecorderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoRecorderView.xib; sourceTree = "<group>"; };
 		EAF4D7571A79AA5E00D35330 /* VideoRecorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoRecorderViewController.swift; sourceTree = "<group>"; };
 		EAFD13CD1A778BAE00754556 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
-		F93DDFF51A7F0DA900A3569C /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		F996C71D1A81F1D100314FF8 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		F996C71F1A81F1D800314FF8 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		F996C7211A81F1E000314FF8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -227,7 +225,6 @@
 		EA9F353C1A74CC6900E0C65D /* Serendipity */ = {
 			isa = PBXGroup;
 			children = (
-				F93DDFF41A7F0D8B00A3569C /* Network */,
 				EAFD13CC1A778BA400754556 /* Classes */,
 				EA5634DE1A7741FF00F62B52 /* Models */,
 				EAF4D7441A79AA5E00D35330 /* User Interface */,
@@ -302,14 +299,6 @@
 				EAFD13CD1A778BAE00754556 /* BaseViewController.swift */,
 			);
 			path = Classes;
-			sourceTree = "<group>";
-		};
-		F93DDFF41A7F0D8B00A3569C /* Network */ = {
-			isa = PBXGroup;
-			children = (
-				F93DDFF51A7F0DA900A3569C /* NetworkManager.swift */,
-			);
-			name = Network;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -494,7 +483,6 @@
 				EAFD13CE1A778BAE00754556 /* BaseViewController.swift in Sources */,
 				EAD60A4D1A79BA950051D0B7 /* SettingsViewController.swift in Sources */,
 				EAF4D7681A79AA5E00D35330 /* VideoPlayerViewController.swift in Sources */,
-				F93DDFF61A7F0DA900A3569C /* NetworkManager.swift in Sources */,
 				EAF4D7661A79AA5E00D35330 /* StorylineViewController.swift in Sources */,
 				EAF4D76A1A79AA5E00D35330 /* VideoRecorderViewController.swift in Sources */,
 				EAF4D7591A79AA5E00D35330 /* ChatViewController.swift in Sources */,

@@ -9,15 +9,16 @@
 import UIKit
 import CoreData
 import FacebookSDK
-import ObjectiveDDP
 import SugarRecord
 import ReactiveCocoa
+import Meteor
+
+let Meteor = METDDPClient(serverURL: NSURL(string: "ws://s10.herokuapp.com/websocket"))
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var networkManager: NetworkManager!
 
     var rootVC: RootViewController! {
         get {
@@ -26,6 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "METShouldLogDDPMessages")
         
         NSValueTransformer.setValueTransformer(PhotosValueTransformer(), forName: "PhotosValueTransformer")
         
@@ -33,30 +35,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let stack: DefaultCDStack = DefaultCDStack(databaseName: "Database.sqlite", automigrating:true)
         SugarRecord.addStack(stack);
         
-        // sets up objective ddp networking stack
-        self.networkManager = NetworkManager(wsAddress: "ws://s10.herokuapp.com/websocket")
-        self.networkManager.startPubsub()
-
-        // Need better way to register observer that unregisters itself
-        NSNotificationCenter.defaultCenter().addObserverForName(MeteorClientConnectionReadyNotification, object: nil, queue: nil) { _ in
-            // TODO: Need to connect after authenticating with fb, not just at app start
-            if FBSession.openActiveSessionWithAllowLoginUI(false) {
-                let data = FBSession.activeSession().accessTokenData
-                let userParam: [NSObject : AnyObject]! = ["fb-access": [
-                    "accessToken": data.accessToken,
-                    "expireAt": data.expirationDate.timeIntervalSince1970
-                ]]
-                
-                self.networkManager.logIn(userParam, self.userLoggedIn);
-            }
+        // TODO: Need to connect after authenticating with fb, not just at app start
+        if FBSession.openActiveSessionWithAllowLoginUI(false) {
+            let data = FBSession.activeSession().accessTokenData
+            let userParam = [["fb-access": [
+                "accessToken": data.accessToken,
+                "expireAt": data.expirationDate.timeIntervalSince1970
+            ]]]
+            Meteor.loginWithMethodName("login", parameters: userParam, completionHandler: { err in
+                println("Logged in? \(err)")
+            })
         }
         
         return true
-    }
-    
-    func userLoggedIn(res : [NSObject : AnyObject]!, err : NSError!) -> Void {
-        println(res);
-        println(err);
     }
     
     func applicationWillResignActive(application: UIApplication!) {

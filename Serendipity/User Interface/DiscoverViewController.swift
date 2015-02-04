@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import ObjectiveDDP
 
 @objc(DiscoverViewController)
 class DiscoverViewController : BaseViewController {
