@@ -20,6 +20,7 @@ class CoreService {
     init() {
         let urlStr = "ws://s10.herokuapp.com/websocket"
 //        let urlStr = "ws://localhost:3000/websocket"
+        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "METShouldLogDDPMessages")
         meteor = METDDPClient(serverURL: NSURL(string: urlStr))
         setupCoreData()
         setupMeteor()

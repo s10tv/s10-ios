@@ -43,8 +43,9 @@ class MatchServiceImpl {
             println("Queue empty")
             return queueUpdateSignal.take(1).ignoreValues().then { self.getNextMatch() }
         } else {
-            println("Queue with size \(queue.count)")
+            println("Queue size \(queue.count)")
             currentMatch = queue.removeAtIndex(0)
+            println("Will return match \(currentMatch?.id)")
             return RACSignal.Return(currentMatch)
         }
     }
@@ -61,6 +62,7 @@ class MatchServiceImpl {
                 user.id = document.key.documentID as? String
                 queue.append(user)
             }
+            println("Updated queue with new size \(queue.count) \(queue.map { $0.firstName! })")
             NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
             queueUpdateSignal.sendNext(nil)
         }
