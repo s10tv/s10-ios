@@ -41,6 +41,7 @@
 		EAF195C91A820F2700A2F103 /* MatchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF195C81A820F2700A2F103 /* MatchService.swift */; };
 		EAF195CC1A8210EA00A2F103 /* RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF195CB1A8210EA00A2F103 /* RAC.swift */; };
 		EAF195CF1A827FAD00A2F103 /* Serendipity-Bridging.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF195CE1A827FAC00A2F103 /* Serendipity-Bridging.m */; };
+		EAF46F2A1A82BAB2003EBE8C /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF46F291A82BAB2003EBE8C /* Logging.swift */; };
 		EAF4D7581A79AA5E00D35330 /* ChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF4D7451A79AA5E00D35330 /* ChatView.xib */; };
 		EAF4D7591A79AA5E00D35330 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF4D7461A79AA5E00D35330 /* ChatViewController.swift */; };
 		EAF4D75A1A79AA5E00D35330 /* ConnectionsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF4D7471A79AA5E00D35330 /* ConnectionsView.xib */; };
@@ -107,6 +108,7 @@
 		EAF195C81A820F2700A2F103 /* MatchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchService.swift; sourceTree = "<group>"; };
 		EAF195CB1A8210EA00A2F103 /* RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAC.swift; sourceTree = "<group>"; };
 		EAF195CE1A827FAC00A2F103 /* Serendipity-Bridging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Serendipity-Bridging.m"; sourceTree = "<group>"; };
+		EAF46F291A82BAB2003EBE8C /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		EAF4D7451A79AA5E00D35330 /* ChatView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatView.xib; sourceTree = "<group>"; };
 		EAF4D7461A79AA5E00D35330 /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		EAF4D7471A79AA5E00D35330 /* ConnectionsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionsView.xib; sourceTree = "<group>"; };
@@ -279,6 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				EAF195CB1A8210EA00A2F103 /* RAC.swift */,
+				EAF46F291A82BAB2003EBE8C /* Logging.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -500,6 +503,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA5634EC1A77428F00F62B52 /* _User.swift in Sources */,
+				EAF46F2A1A82BAB2003EBE8C /* Logging.swift in Sources */,
 				EAFD13CE1A778BAE00754556 /* BaseViewController.swift in Sources */,
 				EAF195CF1A827FAD00A2F103 /* Serendipity-Bridging.m in Sources */,
 				EAD60A4D1A79BA950051D0B7 /* SettingsViewController.swift in Sources */,

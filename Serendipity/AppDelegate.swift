@@ -24,6 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         Core = CoreService()
+        
+        Log.log("App Launch", level: 2)
         return true
     }
     

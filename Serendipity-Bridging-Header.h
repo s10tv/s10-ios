@@ -24,3 +24,14 @@
 + (RACSignal *)Return:(id)object;
 
 @end
+
+@interface NSLogger : NSObject
+
+- (void)logWithFilename:(NSString *)filename
+             lineNumber:(int)lineNumber
+           functionName:(NSString *)functionName
+                 domain:(NSString *)domain
+                  level:(int)level
+                message:(NSString *)message;
+
+@end

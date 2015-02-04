@@ -19,3 +19,4 @@ pod 'ReactiveCocoa', '~> 2.4'
 # Debug only
 
 pod 'Reveal-iOS-SDK', '~> 1.0', :configuration => ['Debug']
+pod 'NSLogger', '~> 1.5', :configuration => ['Debug']
