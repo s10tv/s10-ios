@@ -27,19 +27,21 @@ class VideoRecorderViewController : UIViewController {
         super.viewDidLoad()
 
         videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset640x480, cameraPosition: .Back)
-        videoCamera!.outputImageOrientation = .Portrait;
-        
-        filter = GPUImageBrightnessFilter()
-        filter?.addTarget(cameraView)
-        
-        // set up recording mechanisms
-        let videoUrl = NSURL(fileURLWithPath: pathToVideo)
-        movieWriter = GPUImageMovieWriter(movieURL: videoUrl, size: CGSizeMake(480, 640))
-        movieWriter?.shouldPassthroughAudio = true
-        filter?.addTarget(movieWriter)
-        
-        videoCamera?.addTarget(filter)
-        videoCamera?.startCameraCapture()
+        if videoCamera != nil {
+            videoCamera!.outputImageOrientation = .Portrait;
+            
+            filter = GPUImageBrightnessFilter()
+            filter?.addTarget(cameraView)
+            
+            // set up recording mechanisms
+            let videoUrl = NSURL(fileURLWithPath: pathToVideo)
+            movieWriter = GPUImageMovieWriter(movieURL: videoUrl, size: CGSizeMake(480, 640))
+            movieWriter?.shouldPassthroughAudio = true
+            filter?.addTarget(movieWriter)
+            
+            videoCamera?.addTarget(filter)
+            videoCamera?.startCameraCapture()
+        }
     }
     
     @IBAction func toggle(sender: UIButton!) {
