@@ -10,6 +10,7 @@ pod 'SDWebImage', '~> 3.7'
 pod 'SwiftyJSON', '~> 2.1'
 pod 'Meteor', '~> 0.1'
 pod 'MagicalRecord', '~> 2.2' # Shorthand not supported in Swift
+#pod 'ExSwift', '~> 0.1.9'
 
 # Update these to latest when ready
 pod 'ReactiveCocoa', '~> 2.4'

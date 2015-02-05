@@ -56,6 +56,18 @@ class MatchServiceImpl {
         if let documents = meteor.database.collectionWithName("matches").allDocuments {
             queue.removeAll(keepCapacity: true)
             for document in documents as [METDocument] {
+                let age = (19...28).map { $0 }.randomElement()
+                let location = [
+                    "San Francisco, CA",
+                    "Mountain View, CA",
+                    "Palo Alto, CA",
+                    "Menlo Park, CA",
+                    "Sausalito, CA",
+                    "San Mateo, CA",
+                    "Cupertino, CA",
+                    "Sunnyvale, CA",
+                    "Berkeley, CA"
+                ].randomElement()
                 let photoURLs = document["profile"]["photos"] as? [NSString]
                 let user = User.MR_createEntity() as User
                 user.id = document.key.documentID as? String
@@ -64,8 +76,8 @@ class MatchServiceImpl {
                 user.education = document["profile"]["education"] as? String
                 user.about = document["profile"]["about"] as? String
                 user.photos = photoURLs?.map { Photo(url: $0) }
-                user.age = 23 // TODO: Populate me
-                user.location = "San Francisco, CA"
+                user.age = age // Hack for now
+                user.location = location // Hack for now
                 queue.append(user)
             }
             println("Updated queue with new size \(queue.count) \(queue.map { $0.firstName! })")
