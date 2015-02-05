@@ -10,15 +10,15 @@ import Foundation
 
 let Log = Logger()
 
-enum LogLevel : Int {
-    case Error = 0
-    case Warn
-    case Info
-    case Debug
-    case Verbose
-}
-
 class Logger  {
+    enum LogLevel : Int {
+        case Error = 0
+        case Warn
+        case Info
+        case Debug
+        case Verbose
+    }
+    
     let nslogger : NSLogger = NSLogger()
     
     func verbose(message: String, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) {
