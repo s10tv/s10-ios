@@ -43,6 +43,8 @@
 		EA1970171A83549300FEBA7F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1970021A83549300FEBA7F /* SettingsViewController.swift */; };
 		EA1970181A83549300FEBA7F /* SignupView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA1970041A83549300FEBA7F /* SignupView.xib */; };
 		EA1970191A83549300FEBA7F /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1970051A83549300FEBA7F /* SignupViewController.swift */; };
+		EA19701B1A8354D000FEBA7F /* ConnectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA19701A1A8354D000FEBA7F /* ConnectionCell.swift */; };
+		EA19701D1A8354DB00FEBA7F /* ConnectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA19701C1A8354DB00FEBA7F /* ConnectionCell.xib */; };
 		EA5634E11A7741FF00F62B52 /* Serendipity.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA5634DF1A7741FF00F62B52 /* Serendipity.xcdatamodeld */; };
 		EA5634EA1A77428F00F62B52 /* _Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E41A77428F00F62B52 /* _Connection.swift */; };
 		EA5634EB1A77428F00F62B52 /* _Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E51A77428F00F62B52 /* _Message.swift */; };
@@ -104,6 +106,8 @@
 		EA1970021A83549300FEBA7F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EA1970041A83549300FEBA7F /* SignupView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SignupView.xib; sourceTree = "<group>"; };
 		EA1970051A83549300FEBA7F /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		EA19701A1A8354D000FEBA7F /* ConnectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionCell.swift; sourceTree = "<group>"; };
+		EA19701C1A8354DB00FEBA7F /* ConnectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionCell.xib; sourceTree = "<group>"; };
 		EA5634E01A7741FF00F62B52 /* Serendipity.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Serendipity.xcdatamodel; sourceTree = "<group>"; };
 		EA5634E41A77428F00F62B52 /* _Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Connection.swift; sourceTree = "<group>"; };
 		EA5634E51A77428F00F62B52 /* _Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Message.swift; sourceTree = "<group>"; };
@@ -201,6 +205,8 @@
 			children = (
 				EA196FF61A83549300FEBA7F /* ConnectionsView.xib */,
 				EA196FF71A83549300FEBA7F /* ConnectionsViewController.swift */,
+				EA19701C1A8354DB00FEBA7F /* ConnectionCell.xib */,
+				EA19701A1A8354D000FEBA7F /* ConnectionCell.swift */,
 			);
 			path = Connections;
 			sourceTree = "<group>";
@@ -471,6 +477,7 @@
 				EA1970161A83549300FEBA7F /* SettingsView.xib in Resources */,
 				EA1970081A83549300FEBA7F /* StorylineView.xib in Resources */,
 				EA19700C1A83549300FEBA7F /* VideoRecorderView.xib in Resources */,
+				EA19701D1A8354DB00FEBA7F /* ConnectionCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -561,6 +568,7 @@
 				EA5634EB1A77428F00F62B52 /* _Message.swift in Sources */,
 				EA5634E11A7741FF00F62B52 /* Serendipity.xcdatamodeld in Sources */,
 				EA196FEB1A82FED400FEBA7F /* Foundation.swift in Sources */,
+				EA19701B1A8354D000FEBA7F /* ConnectionCell.swift in Sources */,
 				EA1970131A83549300FEBA7F /* EditProfileViewController.swift in Sources */,
 				EAF4D7621A79AA5E00D35330 /* RootViewController.swift in Sources */,
 				EA19700F1A83549300FEBA7F /* ConnectionsViewController.swift in Sources */,

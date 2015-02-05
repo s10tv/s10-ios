@@ -11,4 +11,6 @@ import UIKit
 @objc(ConnectionsViewController)
 class ConnectionsViewController : BaseViewController {
     
+    @IBOutlet weak var tableView: UITableView!
+    
 }

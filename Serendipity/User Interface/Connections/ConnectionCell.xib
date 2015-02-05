@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="ConnectionCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="100"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2C2-G4-yXf" userLabel="Avatar">
+                    <rect key="frame" x="13" y="10" width="80" height="80"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="80" id="mYg-9s-vqL"/>
+                        <constraint firstAttribute="width" constant="80" id="s1b-sL-mU9"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sara" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7rM-02-dZt" userLabel="Name">
+                    <rect key="frame" x="116" y="23" width="34.5" height="23.5"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5 mins ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpZ-bc-q3K" userLabel="Time">
+                    <rect key="frame" x="116" y="53" width="64.5" height="15.5"/>
+                    <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="13"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nrv-C2-jq3">
+                    <rect key="frame" x="290" y="23" width="28" height="69"/>
+                    <fontDescription key="fontDescription" name="AlNile" family="Al Nile" pointSize="50"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Nrv-C2-jq3" secondAttribute="trailing" constant="2" id="1bj-tO-bzI"/>
+                <constraint firstAttribute="centerY" secondItem="2C2-G4-yXf" secondAttribute="centerY" id="H57-Gz-ub5"/>
+                <constraint firstAttribute="centerY" secondItem="Nrv-C2-jq3" secondAttribute="centerY" constant="-7.5" id="ky2-0H-Hgz"/>
+                <constraint firstItem="gpZ-bc-q3K" firstAttribute="top" secondItem="7rM-02-dZt" secondAttribute="bottom" constant="7" id="lW0-DK-lQb"/>
+                <constraint firstItem="2C2-G4-yXf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="13" id="ldt-0d-jLV"/>
+                <constraint firstItem="7rM-02-dZt" firstAttribute="top" secondItem="2C2-G4-yXf" secondAttribute="top" constant="13" id="sHz-8s-oEA"/>
+                <constraint firstItem="7rM-02-dZt" firstAttribute="leading" secondItem="2C2-G4-yXf" secondAttribute="trailing" constant="23" id="tTa-vr-1h0"/>
+                <constraint firstItem="gpZ-bc-q3K" firstAttribute="leading" secondItem="2C2-G4-yXf" secondAttribute="trailing" constant="23" id="z2y-Wg-cF7"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="avatarView" destination="2C2-G4-yXf" id="eds-L9-RdW"/>
+                <outlet property="nameLabel" destination="7rM-02-dZt" id="F4M-Yb-Lmr"/>
+                <outlet property="timeLabel" destination="gpZ-bc-q3K" id="Yfe-0X-YGb"/>
+            </connections>
+            <point key="canvasLocation" x="194" y="275"/>
+        </view>
+    </objects>
+</document>
