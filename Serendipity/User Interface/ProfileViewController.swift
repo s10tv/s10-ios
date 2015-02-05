@@ -17,6 +17,9 @@ class ProfileViewController : BaseViewController, SwipeViewDelegate, SwipeViewDa
     @IBOutlet weak var swipeView: SwipeView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var ageLabel: UILabel!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet weak var workLabel: UILabel!
+    @IBOutlet weak var schoolLabel: UILabel!
     @IBOutlet weak var aboutLabel: UILabel!
     
     var user : User? {
@@ -35,7 +38,11 @@ class ProfileViewController : BaseViewController, SwipeViewDelegate, SwipeViewDa
         pageControl.numberOfPages = numberOfItemsInSwipeView(swipeView)
         nameLabel.text = user?.firstName
         ageLabel.text = "\(user?.age ?? 0)"
+        locationLabel.text = user?.location
+        workLabel.text = user?.work
+        schoolLabel.text = user?.education
         aboutLabel.text = user?.about
+        println(user)
     }
     
     // MARK: - SwipeView Delegate / Data Soruce
