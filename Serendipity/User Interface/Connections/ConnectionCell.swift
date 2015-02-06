@@ -9,7 +9,6 @@
 import Foundation
 import SDWebImage
 
-@objc
 class ConnectionCell : UITableViewCell {
     
     @IBOutlet weak var avatarView: UIImageView!

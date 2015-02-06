@@ -1,8 +1,17 @@
+//
+//  User.swift
+//  Serendipity
+//
+//  Created by Tony Xiao on 1/20/15.
+//  Copyright (c) 2015 Serendipity. All rights reserved.
+//
+
 @objc(User)
 class User: _User {
 
-    func likeUser() {
-        
+    func makeConnection() {
+        if connection != nil { return }
+        connection = Connection.MR_createInContext(self.managedObjectContext) as? Connection
     }
 
 }

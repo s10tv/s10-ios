@@ -17,12 +17,15 @@ class ConnectionsViewController : BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        viewModel.content = Connection.MR_findAll() as [Connection]
         viewModel.bindToTableView(tableView, cellNibName: "ConnectionCell")
         viewModel.tableViewProvider?.configureTableCell = { (item, cell) -> Void in
             (cell as ConnectionCell).connection = (item as Connection)
         }
         viewModel.tableViewProvider?.didSelectItem = { item in
-            print("Selected connection \(item)")
+            let conn = item as Connection
+            println("Selected connection \(conn)")
+            println(conn.dateUpdated)
         }
     }
     

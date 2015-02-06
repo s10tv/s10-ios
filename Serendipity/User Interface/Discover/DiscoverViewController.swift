@@ -38,17 +38,17 @@ class DiscoverViewController : BaseViewController {
     
     @IBAction func messageMatch(sender: AnyObject?) {
         if let match = MatchService.currentMatch {
-            match.likeUser() // Message User
-            // Go to connections / recorder view
+            match.makeConnection() // Message User
+            showConnections(nil)
         }
     }
     
     
-    @IBAction func showSettings(sender: AnyObject) {
+    @IBAction func showSettings(sender: AnyObject?) {
         performSegueWithIdentifier("DiscoverToSettings", sender: sender)
     }
     
-    @IBAction func showConnections(sender: AnyObject) {
+    @IBAction func showConnections(sender: AnyObject?) {
         performSegueWithIdentifier("DiscoverToConnections", sender: sender)
 //         Temporary workaround to get to video recorder screen:
 //        let vc = storyboard?.instantiateViewControllerWithIdentifier("VideoRecorder") as UIViewController!
