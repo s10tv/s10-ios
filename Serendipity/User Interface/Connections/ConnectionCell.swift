@@ -8,6 +8,7 @@
 
 import Foundation
 import SDWebImage
+import DateTools
 
 class ConnectionCell : UITableViewCell {
     
@@ -28,15 +29,15 @@ class ConnectionCell : UITableViewCell {
         } else {
             avatarView.image = nil
         }
+        
         // TODO: Can use connectionViewModel of sorts here
         nameLabel.text = connection?.user?.firstName
-        timeLabel.text = connection?.dateUpdated?.description
+        timeLabel.text = connection?.dateUpdated?.timeAgoSinceNow()
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         avatarView.makeCircular()
-//        layer.masksToBounds = true;
     }
     
     
