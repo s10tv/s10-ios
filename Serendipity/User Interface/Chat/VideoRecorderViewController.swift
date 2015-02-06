@@ -12,7 +12,7 @@ import GPUImage
 @objc(VideoRecorderViewController)
 class VideoRecorderViewController : UIViewController {
 
-    @IBOutlet var recordButton: UIButton!
+    @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var cameraView: GPUImageView!
     var videoCamera : GPUImageVideoCamera?
     var filter : GPUImageFilter?
@@ -22,10 +22,11 @@ class VideoRecorderViewController : UIViewController {
 
     // saving video to device
     let pathToVideo = NSHomeDirectory().stringByAppendingPathComponent("Documents/video.m4v")
+    let azureClient = AzureClient()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset640x480, cameraPosition: .Back)
         if videoCamera != nil {
             videoCamera!.outputImageOrientation = .Portrait;
@@ -48,14 +49,23 @@ class VideoRecorderViewController : UIViewController {
         if (isRecording) {
             // stop recording
             movieWriter?.finishRecording()
-            println("finished recording")
+            recordButton.setTitle("Start Recording", forState: UIControlState.Normal)
             
             // send to azure
+            azureClient.uploadVideo(pathToVideo, { blobid, err -> Void in
+                if let fullError = err {
+                    println("Error in video submission: %s", fullError.localizedDescription);
+                    return
+                }
+                
+                if let azureBlobId = blobid {
+                    println("Message sent to %s", azureBlobId)
+                }
+            })
         } else {
             unlink(pathToVideo) // remove any existing videos
             movieWriter?.startRecording()
-            
-            println("recording ...")
+            recordButton.setTitle("Stop Recording", forState: UIControlState.Normal)
             isRecording = true
         }
     }

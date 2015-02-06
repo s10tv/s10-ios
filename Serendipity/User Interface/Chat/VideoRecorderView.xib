@@ -7,7 +7,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoRecorderViewController">
             <connections>
                 <outlet property="cameraView" destination="tyb-wo-2f8" id="uay-ue-GnM"/>
-                <outlet property="recordButton" destination="iN0-l3-epB" id="Jgv-7R-Kun"/>
+                <outlet property="recordButton" destination="uoT-OB-oS3" id="qBp-m7-Fon"/>
                 <outlet property="view" destination="iN0-l3-epB" id="K7O-w9-zO2"/>
             </connections>
         </placeholder>
@@ -21,9 +21,10 @@
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uoT-OB-oS3">
-                    <rect key="frame" x="114" y="448" width="93" height="30"/>
+                    <rect key="frame" x="25" y="448" width="270" height="30"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <state key="normal" title="Boogie Down">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
                         <action selector="toggle:" destination="-1" eventType="touchDown" id="7xz-e0-nUv"/>

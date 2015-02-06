@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (1.1.4)
   - Bolts (1.1.3)
   - Facebook-iOS-SDK (3.22.0):
     - Bolts (~> 1.0)
@@ -32,6 +33,7 @@ PODS:
   - SwipeView (1.3.2)
 
 DEPENDENCIES:
+  - Alamofire (~> 1.1)
   - Facebook-iOS-SDK (~> 3.22)
   - GPUImage (~> 0.1.6)
   - MagicalRecord (~> 2.2)
@@ -45,6 +47,7 @@ DEPENDENCIES:
   - SwipeView (~> 1.3)
 
 SPEC CHECKSUMS:
+  Alamofire: 524225da382071ee3e6d0badd0ee4b4dc36740de
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
   Facebook-iOS-SDK: 0eda8ff7120aada0a9c5f98552f7625da6c3440a
   GPUImage: cecb0830bb9428f50192042e3c7b53810f51388e

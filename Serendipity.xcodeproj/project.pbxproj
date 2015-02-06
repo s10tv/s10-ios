@@ -64,6 +64,7 @@
 		EAF46F2A1A82BAB2003EBE8C /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF46F291A82BAB2003EBE8C /* Logging.swift */; };
 		EAF4D7621A79AA5E00D35330 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF4D74F1A79AA5E00D35330 /* RootViewController.swift */; };
 		EAFD13CE1A778BAE00754556 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFD13CD1A778BAE00754556 /* BaseViewController.swift */; };
+		F95D95DD1A8482BB0068F090 /* AzureClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95D95DC1A8482BB0068F090 /* AzureClient.swift */; };
 		F996C71E1A81F1D100314FF8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71D1A81F1D100314FF8 /* CoreMedia.framework */; };
 		F996C7201A81F1D800314FF8 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71F1A81F1D800314FF8 /* CoreVideo.framework */; };
 		F996C7221A81F1E000314FF8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C7211A81F1E000314FF8 /* AVFoundation.framework */; };
@@ -132,6 +133,7 @@
 		EAF46F291A82BAB2003EBE8C /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		EAF4D74F1A79AA5E00D35330 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		EAFD13CD1A778BAE00754556 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		F95D95DC1A8482BB0068F090 /* AzureClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AzureClient.swift; sourceTree = "<group>"; };
 		F996C71D1A81F1D100314FF8 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		F996C71F1A81F1D800314FF8 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		F996C7211A81F1E000314FF8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -372,6 +374,7 @@
 				EAFD13CD1A778BAE00754556 /* BaseViewController.swift */,
 				EAF195C61A81FE5B00A2F103 /* CoreService.swift */,
 				EAF195C81A820F2700A2F103 /* MatchService.swift */,
+				F95D95DC1A8482BB0068F090 /* AzureClient.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -570,6 +573,7 @@
 				EA196FEB1A82FED400FEBA7F /* Foundation.swift in Sources */,
 				EA19701B1A8354D000FEBA7F /* ConnectionCell.swift in Sources */,
 				EA1970131A83549300FEBA7F /* EditProfileViewController.swift in Sources */,
+				F95D95DD1A8482BB0068F090 /* AzureClient.swift in Sources */,
 				EAF4D7621A79AA5E00D35330 /* RootViewController.swift in Sources */,
 				EA19700F1A83549300FEBA7F /* ConnectionsViewController.swift in Sources */,
 				EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */,
