@@ -49,9 +49,9 @@ class DiscoverViewController : BaseViewController {
     }
     
     @IBAction func showConnections(sender: AnyObject) {
-//        performSegueWithIdentifier("DiscoverToConnections", sender: sender)
-        // Temporary workaround to get to video recorder screen:
-        let vc = storyboard?.instantiateViewControllerWithIdentifier("VideoRecorder") as UIViewController!
-        navigationController?.pushViewController(vc, animated: true)
+        performSegueWithIdentifier("DiscoverToConnections", sender: sender)
+//         Temporary workaround to get to video recorder screen:
+//        let vc = storyboard?.instantiateViewControllerWithIdentifier("VideoRecorder") as UIViewController!
+//        navigationController?.pushViewController(vc, animated: true)
     }
 }

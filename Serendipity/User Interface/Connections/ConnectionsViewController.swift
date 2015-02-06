@@ -11,8 +11,19 @@ import UIKit
 @objc(ConnectionsViewController)
 class ConnectionsViewController : BaseViewController {
     
+    let viewModel = ArrayViewModel(content: [Connection]())
+    
     @IBOutlet weak var tableView: UITableView!
     
-    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        viewModel.bindToTableView(tableView, cellNibName: "ConnectionCell")
+        viewModel.tableViewProvider?.configureTableCell = { (item, cell) -> Void in
+            (cell as ConnectionCell).connection = (item as Connection)
+        }
+        viewModel.tableViewProvider?.didSelectItem = { item in
+            print("Selected connection \(item)")
+        }
+    }
     
 }
