@@ -11,4 +11,6 @@ import UIKit
 @objc(ChatViewController)
 class ChatViewController : BaseViewController {
     
+    var connection: Connection?
+    
 }
