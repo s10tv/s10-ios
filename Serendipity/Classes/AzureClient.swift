@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class AzureClient {
     
-    func getSasURL(callback: ((String?, String?) -> Void)) {
+    private func getSasURL(callback: ((String?, String?) -> Void)) {
         let urlRequest = NSMutableURLRequest(URL: NSURL(string: "https://s10mobile.azure-mobile.net/api/uploadvideosas")!)
         urlRequest.HTTPMethod = "GET"
         urlRequest.addValue("NeHOImEPLUWXFdRmGmTWjRzoEbElSF33", forHTTPHeaderField: "X-ZUMO-APPLICATION")
