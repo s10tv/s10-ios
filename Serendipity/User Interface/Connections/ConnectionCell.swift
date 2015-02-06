@@ -33,6 +33,13 @@ class ConnectionCell : UITableViewCell {
         timeLabel.text = connection?.dateUpdated?.description
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        avatarView.makeCircular()
+//        layer.masksToBounds = true;
+    }
+    
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         avatarView.sd_cancelCurrentImageLoad()

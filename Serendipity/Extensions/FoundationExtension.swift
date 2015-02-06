@@ -1,5 +1,5 @@
 //
-//  Foundation.swift
+//  FoundationExtension.swift
 //  Serendipity
 //
 //  Created by Tony Xiao on 2/4/15.

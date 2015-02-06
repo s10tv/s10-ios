@@ -52,6 +52,7 @@ class ProfileViewController : BaseViewController, SwipeViewDelegate, SwipeViewDa
     
     func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, reusingView view: UIView!) -> UIView! {
         let v = view != nil ? view as UIImageView : UIImageView()
+        v.contentMode = .ScaleAspectFit
         let url = (user?.photos as [Photo])[index].url
         v.sd_setImageWithURL(NSURL(string: url))
         return v
