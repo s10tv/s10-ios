@@ -6,6 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SettingsViewController">
             <connections>
+                <outlet property="movieView" destination="ju6-tB-Ndw" id="khS-Uq-dIh"/>
+                <outlet property="playButton" destination="YPs-tD-9uE" id="3OV-fn-lqX"/>
                 <outlet property="view" destination="iN0-l3-epB" id="K7O-w9-zO2"/>
             </connections>
         </placeholder>
@@ -13,8 +15,36 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ju6-tB-Ndw">
+                    <rect key="frame" x="25" y="100" width="270" height="268"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPs-tD-9uE">
+                    <rect key="frame" x="25" y="437" width="270" height="30"/>
+                    <state key="normal" title="Play">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="onPlay:" destination="-1" eventType="touchDown" id="lUV-9e-3jB"/>
+                    </connections>
+                </button>
+            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="ju6-tB-Ndw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="25" id="1A1-Ct-a3e"/>
+                <constraint firstAttribute="trailing" secondItem="ju6-tB-Ndw" secondAttribute="trailing" constant="25" id="OUi-ZW-eVr"/>
+                <constraint firstAttribute="bottom" secondItem="ju6-tB-Ndw" secondAttribute="bottom" constant="200" id="cV8-ZG-Z6H"/>
+                <constraint firstItem="ju6-tB-Ndw" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="100" id="p5e-IO-x5H"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
+        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eez-uf-5xY">
+            <rect key="frame" x="0.0" y="0.0" width="46" height="30"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <state key="normal" title="Button">
+                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+            </state>
+        </button>
     </objects>
 </document>

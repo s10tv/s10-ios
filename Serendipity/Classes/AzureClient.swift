@@ -30,6 +30,7 @@ class AzureClient {
     func uploadVideo(videoPath : String, callback: ((String?, NSError?) -> Void)) {
         getSasURL { url, blobid in
             if let sasUrl = url {
+                println(sasUrl)
                 let filePath = NSURL.fileURLWithPath(videoPath)
                 
                 let urlRequest = NSMutableURLRequest(URL: NSURL(string: sasUrl)!)
@@ -45,5 +46,9 @@ class AzureClient {
                     }
             }
         }
+    }
+    
+    func downloadVieo(videoPath : String) {
+        //Alamofire.
     }
 }
