@@ -11,6 +11,7 @@ import UIKit
 class ArrayViewModel<T> : ProviderDelegate {
 
     var content : [T]
+    var selectedItem : T?
     var tableViewProvider : TableViewProvider?
     
     init(content: [T]) {
@@ -34,12 +35,17 @@ class ArrayViewModel<T> : ProviderDelegate {
     func itemAtIndexPath(indexPath: NSIndexPath) -> Any {
         return content[indexPath.row] as Any
     }
+    
+    func didSelectIndexPath(indexPath: NSIndexPath) {
+        selectedItem = content[indexPath.row]
+    }
 }
 
 protocol ProviderDelegate {
     func numberOfSections() -> Int
     func numberOfItemsInSection(section: Int) -> Int
     func itemAtIndexPath(indexPath: NSIndexPath) -> Any
+    func didSelectIndexPath(indexPath: NSIndexPath)
 }
 
 // MARK: - TableView Support

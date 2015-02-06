@@ -24,9 +24,14 @@ class ConnectionsViewController : BaseViewController {
         }
         viewModel.tableViewProvider?.didSelectItem = { item in
             let conn = item as Connection
-            println("Selected connection \(conn)")
-            println(conn.dateUpdated)
+            println("Selected connection \(conn.user?.firstName)")
+            self.performSegueWithIdentifier("ConnectionsToChat", sender: nil)
         }
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let vc = segue.destinationViewController as? ChatViewController {
+            vc.connection = viewModel.selectedItem
+        }
+    }
 }

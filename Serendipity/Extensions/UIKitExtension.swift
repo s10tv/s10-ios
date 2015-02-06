@@ -7,10 +7,18 @@
 //
 
 import UIKit
+import Snap
 
 extension UIView {
     func makeCircular() {
         layer.cornerRadius = max(frame.size.width, frame.size.height) / 2;
         layer.masksToBounds = true;
+    }
+    
+    func makeEdgesEqualTo(view: UIView) {
+        snp_makeConstraints { (make) -> () in
+            make.edges.equalTo(view)
+            return // Hack needed to compile
+        }
     }
 }
