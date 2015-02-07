@@ -35,11 +35,8 @@ class MatchServiceImpl {
         }
         
         meteor.defineStubForMethodWithName("matchPass", usingBlock: { (args) -> AnyObject! in
-            let documentID = (args as [String]).first!
-            let key = METDocumentKey(collectionName: "matches", documentID: documentID)
-            let userObjectID = self.meteor.objectIDForDocumentKey(key)
-            let user = self.meteor.mainQueueManagedObjectContext.objectWithID(userObjectID) as User
-            user.match?.MR_deleteEntity()
+            let user = User.findByDocumentID((args as [String]).first!)
+            user?.match?.MR_deleteEntity()
             return true
         })
     }

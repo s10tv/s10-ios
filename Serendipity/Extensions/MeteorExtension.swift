@@ -43,3 +43,35 @@ extension METDDPClient {
         return subject;
     }
 }
+
+// MARK: - Meteor CoreData
+
+extension NSManagedObjectContext {
+    var meteorStore : METIncrementalStore? {
+        return persistentStoreCoordinator?.persistentStores.first as? METIncrementalStore
+    }
+    
+    func objectIDWithCollection(collection: String, documentID: String) -> NSManagedObjectID? {
+        return meteorStore?.objectIDForDocumentKey(METDocumentKey(collectionName: collection, documentID: documentID))
+    }
+    
+    func objectInCollection(collection: String, documentID: String) -> NSManagedObject? {
+        let objectID = objectIDWithCollection(collection, documentID: documentID)
+        return objectID != nil ? objectWithID(objectID!) : nil
+    }
+    
+    func existingObjectInCollection(collection: String, documentID: String, error: NSErrorPointer) -> NSManagedObject? {
+        let objectID = objectIDWithCollection(collection, documentID: documentID)
+        return objectID != nil ? existingObjectWithID(objectID!, error: error) : nil
+    }
+}
+
+extension NSManagedObject {
+    var meteorStore : METIncrementalStore? {
+        return managedObjectContext?.meteorStore
+    }
+    
+    var documentID : String? {
+        return meteorStore?.documentKeyForObjectID(objectID)?.documentID as? String
+    }
+}

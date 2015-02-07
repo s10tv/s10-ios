@@ -25,8 +25,8 @@ class SettingsViewController : UIViewController {
         versionLabel.text = "v\(version)(\(build))"
 
         let currentUser = User.currentUser()
-        avatarView.sd_setImageWithURL(currentUser.profilePhotoURL)
-        nameLabel.text = currentUser.firstName
+        avatarView.sd_setImageWithURL(currentUser?.profilePhotoURL)
+        nameLabel.text = currentUser?.firstName
     }
     
     override func viewDidLayoutSubviews() {

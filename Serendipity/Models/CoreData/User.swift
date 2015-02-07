@@ -50,12 +50,12 @@ class User: _User {
         connection = Connection.MR_createInContext(self.managedObjectContext) as? Connection
     }
     
-    // TODO: Obviously incorrect. Fix so we have real reference to currentUser
-    class func currentUser() -> User {
-        let key = METDocumentKey(collectionName: "users", documentID: Core.meteor.userID)
-        let userObjectID = Core.meteor.objectIDForDocumentKey(key)
-        println("userid \(key.documentID) objectid \(userObjectID)")
-        return Core.meteor.mainQueueManagedObjectContext.objectWithID(userObjectID) as User
+    class func findByDocumentID(documentID: String) -> User? {
+        return Core.mainContext.objectInCollection("users", documentID: documentID) as? User
+    }
+    
+    class func currentUser() -> User? {
+        return findByDocumentID(Core.meteor.userID)
     }
 }
 
