@@ -42,7 +42,6 @@ class ProfileViewController : BaseViewController, SwipeViewDelegate, SwipeViewDa
         swipeView.reloadData()
         swipeView.scrollToItemAtIndex(0, duration: 0)
         pageControl.numberOfPages = numberOfItemsInSwipeView(swipeView)
-        println("id \(user?.objectID) name \(user?.firstName)")
         nameLabel.text = user?.firstName
         ageLabel.text = "\(user?.age ?? 0)"
         locationLabel.text = user?.location

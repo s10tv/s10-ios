@@ -44,11 +44,6 @@ class MatchServiceImpl {
     func handleDatabaseChange(databaseChangeNotification: NSNotification) {
         let users = User.MR_findAll() as? [User]
         let userDocs = meteor.database.collectionWithName("users").allDocuments
-        println("users \(users?.count) docs \(userDocs?.count) \(userDocs)")
-        if let user = users?.first {
-            println(user.createdAt)
-        }
-        
         let changes = databaseChangeNotification.userInfo![METDatabaseChangesKey] as METDatabaseChanges
         var changed = false
         for key in changes.affectedDocumentKeys().allObjects as [METDocumentKey] {

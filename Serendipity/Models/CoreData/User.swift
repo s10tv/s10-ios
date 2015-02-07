@@ -25,25 +25,6 @@ class User: _User {
         let firstPhotoUrl = photos?.first?.url
         return firstPhotoUrl != nil ? NSURL(string: firstPhotoUrl!) : nil
     }
-    
-    override func awakeFromFetch() {
-        super.awakeFromFetch()
-        
-        // TODO: Remove placeholders values when server provides them
-        let age = (19...28).map { $0 }.randomElement()
-        self.age = age
-        self.location = [
-            "San Francisco, CA",
-            "Mountain View, CA",
-            "Palo Alto, CA",
-            "Menlo Park, CA",
-            "Sausalito, CA",
-            "San Mateo, CA",
-            "Cupertino, CA",
-            "Sunnyvale, CA",
-            "Berkeley, CA"
-        ].randomElement()
-    }
 
     func makeConnection() {
         if connection != nil { return }
