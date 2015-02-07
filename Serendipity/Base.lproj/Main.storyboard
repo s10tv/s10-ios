@@ -11,7 +11,7 @@
                     <navigationItem key="navigationItem" title="My Profile" id="vUc-qU-qhl">
                         <barButtonItem key="rightBarButtonItem" title="Edit" id="fxU-ar-kdx">
                             <connections>
-                                <segue destination="Lqa-Xo-Tcw" kind="show" id="Q7K-Wx-pjZ"/>
+                                <segue destination="Lqa-Xo-Tcw" kind="custom" customClass="PushFromLeftSegue" customModule="Serendipity" customModuleProvider="target" id="Q7K-Wx-pjZ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -123,17 +123,25 @@
             </objects>
             <point key="canvasLocation" x="-448" y="1592"/>
         </scene>
-        <!--Settings View Controller-->
+        <!--Settings-->
         <scene sceneID="6E1-Ce-dgY">
             <objects>
                 <viewController storyboardIdentifier="Settings" id="Vhy-hq-gwn" customClass="SettingsViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="Settings" id="Ot3-Pt-0WY">
+                        <barButtonItem key="rightBarButtonItem" title="Discover" id="2aN-i2-m7a">
+                            <connections>
+                                <action selector="backToDiscover:" destination="Vhy-hq-gwn" id="7zh-ZA-K4Q"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <segue destination="bQv-dO-auU" kind="show" identifier="SettingsToProfile" id="wnv-o0-kZH"/>
+                        <segue destination="bQv-dO-auU" kind="custom" identifier="SettingsToProfile" customClass="PushFromLeftSegue" customModule="Serendipity" customModuleProvider="target" id="wnv-o0-kZH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zfc-Bp-zvE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationItem title="Settings" id="4PF-BM-XHD"/>
             </objects>
             <point key="canvasLocation" x="312" y="1592"/>
         </scene>

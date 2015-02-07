@@ -17,17 +17,22 @@ class SettingsViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        avatarView.makeCircular()
+        navigationItem.hidesBackButton = true
 
         // TODO: Refactor me into utils
         let info = NSBundle.mainBundle().infoDictionary
-        let version = info?["CFBundleVersion"] as String
-        let build = info?["CFBundleShortVersionString"] as String
+        let build = info?["CFBundleVersion"] as String
+        let version = info?["CFBundleShortVersionString"] as String
         versionLabel.text = "v\(version)(\(build))"
 
         let currentUser = User.currentUser()
         avatarView.sd_setImageWithURL(currentUser.profilePhotoURL)
         nameLabel.text = currentUser.firstName
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        avatarView.makeCircular()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -37,6 +42,9 @@ class SettingsViewController : UIViewController {
     }
     
     // MARK: - Actions
+    @IBAction func backToDiscover(sender: AnyObject) {
+        navigationController?.popViewControllerAnimated(false)
+    }
     
     @IBAction func viewProfile(sender: AnyObject) {
         self.performSegueWithIdentifier("SettingsToProfile", sender: sender)

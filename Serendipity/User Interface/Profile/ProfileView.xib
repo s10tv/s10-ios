@@ -91,7 +91,7 @@ I'm a singer, dancer, figure skater, animal and nature lover. I work two jobs an
                     </constraints>
                 </imageView>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.97647058823529409" green="0.97647058823529409" blue="0.97647058823529409" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="fgR-Y6-HTQ" firstAttribute="leading" secondItem="xmG-4z-1gH" secondAttribute="leading" id="38r-nJ-vQY"/>
                 <constraint firstItem="zkL-na-OA5" firstAttribute="centerX" secondItem="8A2-xC-PLX" secondAttribute="centerX" constant="-0.5" id="70f-SY-tph"/>
