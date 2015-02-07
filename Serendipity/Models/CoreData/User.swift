@@ -8,12 +8,21 @@
 
 @objc(User)
 class User: _User {
+    
+    var profilePhotoURL : NSURL? {
+        let firstPhotoUrl = (photos as? [Photo])?.first?.url
+        return firstPhotoUrl != nil ? NSURL(string: firstPhotoUrl!) : nil
+    }
 
     func makeConnection() {
         if connection != nil { return }
         connection = Connection.MR_createInContext(self.managedObjectContext) as? Connection
     }
-
+    
+    // TODO: Obviously incorrect. Fix so we have real reference to currentUser
+    class func currentUser() -> User {
+        return self.MR_findFirst() as User!
+    }
 }
 
 class Photo {
