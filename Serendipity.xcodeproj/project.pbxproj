@@ -22,6 +22,7 @@
 
 /* Begin PBXBuildFile section */
 		44E19D671B859E037A1401D8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38E9CB79C25FDAE97BD9D3D /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		EA163CF91A85ED6700C2589B /* Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA163CF81A85ED6700C2589B /* Segue.swift */; };
 		EA196FEB1A82FED400FEBA7F /* FoundationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA196FEA1A82FED400FEBA7F /* FoundationExtension.swift */; };
 		EA1970061A83549300FEBA7F /* ChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA196FED1A83549300FEBA7F /* ChatView.xib */; };
 		EA1970071A83549300FEBA7F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA196FEE1A83549300FEBA7F /* ChatViewController.swift */; };
@@ -89,6 +90,7 @@
 		0686ABB348D06D87DA844419 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		2CD850D0B9EC2938BA5CEB59 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D38E9CB79C25FDAE97BD9D3D /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA163CF81A85ED6700C2589B /* Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segue.swift; sourceTree = "<group>"; };
 		EA196FEA1A82FED400FEBA7F /* FoundationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationExtension.swift; sourceTree = "<group>"; };
 		EA196FED1A83549300FEBA7F /* ChatView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatView.xib; sourceTree = "<group>"; };
 		EA196FEE1A83549300FEBA7F /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -357,6 +359,7 @@
 			children = (
 				EA196FEA1A82FED400FEBA7F /* FoundationExtension.swift */,
 				EAB81BE31A84BAAB00BAE388 /* UIKitExtension.swift */,
+				EA163CF81A85ED6700C2589B /* Segue.swift */,
 				EAF195CB1A8210EA00A2F103 /* RAC.swift */,
 				EAF46F291A82BAB2003EBE8C /* Logging.swift */,
 				EA82DE5F1A84792D002DD224 /* ArrayViewModel.swift */,
@@ -595,6 +598,7 @@
 				EA5634EE1A77428F00F62B52 /* Message.swift in Sources */,
 				EA82DE601A84792D002DD224 /* ArrayViewModel.swift in Sources */,
 				EAF195CC1A8210EA00A2F103 /* RAC.swift in Sources */,
+				EA163CF91A85ED6700C2589B /* Segue.swift in Sources */,
 				EA1970191A83549300FEBA7F /* SignupViewController.swift in Sources */,
 				EA1970111A83549300FEBA7F /* DiscoverViewController.swift in Sources */,
 				EA5634EA1A77428F00F62B52 /* _Connection.swift in Sources */,
