@@ -11,7 +11,7 @@ enum UserAttributes: String {
     case firstName = "firstName"
     case id = "id"
     case location = "location"
-    case photos = "photos"
+    case photoURLs = "photoURLs"
     case work = "work"
 }
 
@@ -82,9 +82,9 @@ class _User: NSManagedObject {
     // func validateLocation(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
-    var photos: [Photo]?
+    var photoURLs: AnyObject?
 
-    // func validatePhotos(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validatePhotoURLs(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
     var work: String?

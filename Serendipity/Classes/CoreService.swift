@@ -32,7 +32,7 @@ class CoreService {
             println("UserID \(self.meteor.userID)")
             let user = User.currentUser()
 //            println("first \(user.photos?.map { $0.url })")
-            println("first \(user.firstName)")
+            println("first \(user.firstName) \(user.photos)")
         }
         meteor.addSubscriptionWithName("matches")
         meteor.addSubscriptionWithName("connectedUsers")

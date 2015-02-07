@@ -22,7 +22,11 @@
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="photos" optional="YES" attributeType="Transformable" valueTransformerName="PhotosValueTransformer" syncable="YES"/>
+        <attribute name="photoURLs" optional="YES" attributeType="Transformable" valueTransformerName="PhotosValueTransformer" syncable="YES">
+            <userInfo>
+                <entry key="fieldName" value="photos"/>
+            </userInfo>
+        </attribute>
         <attribute name="work" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="connection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Connection" inverseName="user" inverseEntity="Connection" syncable="YES"/>
         <relationship name="match" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Match" inverseName="user" inverseEntity="Match" syncable="YES"/>

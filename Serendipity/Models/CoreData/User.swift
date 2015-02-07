@@ -12,6 +12,12 @@ import Meteor
 @objc(User)
 class User: _User {
     
+    var photos : [Photo]? {
+        get {
+            return (photoURLs as [NSString]).map { Photo(url: $0) }
+        }
+    }
+    
     var profilePhotoURL : NSURL? {
         let firstPhotoUrl = photos?.first?.url
         return firstPhotoUrl != nil ? NSURL(string: firstPhotoUrl!) : nil
