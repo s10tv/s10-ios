@@ -17,7 +17,6 @@ class SettingsViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.hidesBackButton = true
 
         // TODO: Refactor me into utils
         let info = NSBundle.mainBundle().infoDictionary
@@ -42,9 +41,6 @@ class SettingsViewController : UIViewController {
     }
     
     // MARK: - Actions
-    @IBAction func backToDiscover(sender: AnyObject) {
-        navigationController?.popViewControllerAnimated(false)
-    }
     
     @IBAction func viewProfile(sender: AnyObject) {
         self.performSegueWithIdentifier("SettingsToProfile", sender: sender)
