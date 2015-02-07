@@ -30,7 +30,7 @@ class EditProfileViewController : BaseViewController {
         viewModel.collectionViewProvider?.configureCollectionCell = { item, cell in
             (cell as EditPhotoCell).photo = (item as Photo)
         }
-        if let photos = user?.photos as? [Photo] {
+        if let photos = user?.photos {
             viewModel.content = photos
         }
     }

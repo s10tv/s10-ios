@@ -6,6 +6,7 @@ import CoreData
 enum UserAttributes: String {
     case about = "about"
     case age = "age"
+    case createdAt = "createdAt"
     case education = "education"
     case firstName = "firstName"
     case id = "id"
@@ -16,6 +17,7 @@ enum UserAttributes: String {
 
 enum UserRelationships: String {
     case connection = "connection"
+    case match = "match"
 }
 
 @objc
@@ -55,6 +57,11 @@ class _User: NSManagedObject {
     // func validateAge(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
+    var createdAt: NSDate?
+
+    // func validateCreatedAt(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
     var education: String?
 
     // func validateEducation(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
@@ -75,7 +82,7 @@ class _User: NSManagedObject {
     // func validateLocation(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
-    var photos: AnyObject?
+    var photos: [Photo]?
 
     // func validatePhotos(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
@@ -90,6 +97,11 @@ class _User: NSManagedObject {
     var connection: Connection?
 
     // func validateConnection(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var match: Match?
+
+    // func validateMatch(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
 }
 

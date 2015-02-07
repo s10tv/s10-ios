@@ -6,11 +6,27 @@
 #import <SwipeView/SwipeView.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
-#import <Meteor/METDDPClient.h>
+#import <Meteor/METCoreDataDDPClient.h>
+#import <MagicalRecord/CoreData+MagicalRecord.h>
 
 @interface METDDPClient (Private)
 
+@property (nonatomic, copy) METAccount *account;
+
 - (void)loginWithMethodName:(NSString *)methodName parameters:(NSArray *)parameters completionHandler:(METLogInCompletionHandler)completionHandler;
+
+@end
+
+@interface METDDPClient (Extension)
+
+- (BOOL)hasAccount;
+
+@end
+
+@interface NSManagedObjectContext (MagicalRecordPrivate)
+
++ (void) MR_setDefaultContext:(NSManagedObjectContext *)moc;
++ (void) MR_setRootSavingContext:(NSManagedObjectContext *)context;
 
 @end
 

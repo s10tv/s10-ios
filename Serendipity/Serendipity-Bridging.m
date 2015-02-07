@@ -9,6 +9,14 @@
 #import <NSLogger/LoggerClient.h>
 #import "Serendipity-Bridging-Header.h"
 
+@implementation METDDPClient (Extension)
+
+- (BOOL)hasAccount {
+    return self.account != nil;
+}
+
+@end
+
 @implementation RACSignal (SwiftCompileFix)
 
 - (RACSignal *)And {

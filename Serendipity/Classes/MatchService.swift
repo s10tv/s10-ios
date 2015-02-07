@@ -14,12 +14,12 @@ let MatchService = MatchServiceImpl()
 
 class MatchServiceImpl {
     
-    private var meteor : METDDPClient! = nil
-    private var queue : [User] = []
+    private var meteor : METCoreDataDDPClient! = nil
+    private var matches : [Match] = []
     private var queueUpdateSignal : RACSubject! = nil
-    private(set) var currentMatch : User? = nil
+    private(set) var currentMatch : Match? = nil
     
-    func startWithMeteor(meteor: METDDPClient) {
+    func startWithMeteor(meteor: METCoreDataDDPClient) {
         self.meteor = meteor
         queueUpdateSignal = RACSubject()
         meteor.addSubscriptionWithName("matches")
@@ -28,62 +28,60 @@ class MatchServiceImpl {
         NSNotificationCenter.defaultCenter()
             .rac_addObserverForName(METDatabaseDidChangeNotification, object: nil)
             .deliverOnMainThread()
-            .subscribeNext { _ in
-            self.updateMatchQueue()
+            .subscribeNextAs { (notification: NSNotification) -> () in
+                self.handleDatabaseChange(notification)
+        }
+        
+        meteor.defineStubForMethodWithName("matchPass", usingBlock: { (args) -> AnyObject! in
+            let documentID = (args as [String]).first!
+            let key = METDocumentKey(collectionName: "matches", documentID: documentID)
+            let userObjectID = self.meteor.objectIDForDocumentKey(key)
+            let user = self.meteor.mainQueueManagedObjectContext.objectWithID(userObjectID) as User
+            user.match?.MR_deleteEntity()
+            return true
+        })
+    }
+    
+    func handleDatabaseChange(databaseChangeNotification: NSNotification) {
+        let users = User.MR_findAll() as? [User]
+        let userDocs = meteor.database.collectionWithName("users").allDocuments
+        println("users \(users?.count) docs \(userDocs?.count) \(userDocs)")
+        if let user = users?.first {
+            println(user.createdAt)
+        }
+        
+        let changes = databaseChangeNotification.userInfo![METDatabaseChangesKey] as METDatabaseChanges
+        var changed = false
+        for key in changes.affectedDocumentKeys().allObjects as [METDocumentKey] {
+            if key.collectionName == "matches" {
+                changed = true
+                break
+            }
+        }
+        if changed {
+            self.matches = Match.MR_findAll() as [Match]
+            self.queueUpdateSignal.sendNext(nil)
         }
     }
     
     func getNextMatch() -> RACSignal {
         assert(NSThread.isMainThread(), "Must be on main")
-        if let currentMatchId = currentMatch?.id {
-            println("passing match \(currentMatchId)")
-            meteor.callMethodWithName("matchPass", parameters: [currentMatchId])
+        if let currentMatchUser = currentMatch?.user {
+            let key = meteor.documentKeyForObjectID(currentMatchUser.objectID)
+            println("passing match \(key)")
+            meteor.callMethodWithName("matchPass", parameters: [key.documentID])
             currentMatch = nil
         }
-        if queue.isEmpty {
+        if matches.isEmpty {
             println("Queue empty")
             return queueUpdateSignal.take(1).ignoreValues().then { self.getNextMatch() }
         } else {
-            println("Queue size \(queue.count)")
-            currentMatch = queue.removeAtIndex(0)
-            println("Will return match \(currentMatch?.id)")
+            println("Queue size \(matches.count)")
+            currentMatch = matches.removeAtIndex(0)
+            println("Will return match \(currentMatch?.user?.id)")
             return RACSignal.Return(currentMatch)
         }
     }
     
-    @objc func updateMatchQueue() {
-        assert(NSThread.isMainThread(), "Must be on main")
-        if let documents = meteor.database.collectionWithName("matches").allDocuments {
-            queue.removeAll(keepCapacity: true)
-            for document in documents as [METDocument] {
-                let age = (19...28).map { $0 }.randomElement()
-                let location = [
-                    "San Francisco, CA",
-                    "Mountain View, CA",
-                    "Palo Alto, CA",
-                    "Menlo Park, CA",
-                    "Sausalito, CA",
-                    "San Mateo, CA",
-                    "Cupertino, CA",
-                    "Sunnyvale, CA",
-                    "Berkeley, CA"
-                ].randomElement()
-                let photoURLs = document["profile"]["photos"] as? [NSString]
-                let user = User.MR_createEntity() as User
-                user.id = document.key.documentID as? String
-                user.firstName = document["profile"]["first_name"] as? String
-                user.work = document["profile"]["work"] as? String
-                user.education = document["profile"]["education"] as? String
-                user.about = document["profile"]["about"] as? String
-                user.photos = photoURLs?.map { Photo(url: $0) }
-                user.age = age // Hack for now
-                user.location = location // Hack for now
-                queue.append(user)
-            }
-            println("Updated queue with new size \(queue.count) \(queue.map { $0.firstName! })")
-            NSManagedObjectContext.MR_defaultContext().MR_saveToPersistentStoreAndWait()
-            queueUpdateSignal.sendNext(nil)
-        }
-    }
 }
 

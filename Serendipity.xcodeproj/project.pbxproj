@@ -62,6 +62,8 @@
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
 		EA9F35591A74CC6900E0C65D /* SerendipityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F35581A74CC6900E0C65D /* SerendipityTests.swift */; };
 		EAB81BE41A84BAAB00BAE388 /* UIKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB81BE31A84BAAB00BAE388 /* UIKitExtension.swift */; };
+		EAEA82E71A86941300A080ED /* _Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA82E61A86941300A080ED /* _Match.swift */; };
+		EAEA82E91A86941C00A080ED /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA82E81A86941C00A080ED /* Match.swift */; };
 		EAF195C71A81FE5B00A2F103 /* CoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF195C61A81FE5B00A2F103 /* CoreService.swift */; };
 		EAF195C91A820F2700A2F103 /* MatchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF195C81A820F2700A2F103 /* MatchService.swift */; };
 		EAF195CC1A8210EA00A2F103 /* RAC.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF195CB1A8210EA00A2F103 /* RAC.swift */; };
@@ -137,6 +139,8 @@
 		EA9F35581A74CC6900E0C65D /* SerendipityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerendipityTests.swift; sourceTree = "<group>"; };
 		EA9F35621A74CD8800E0C65D /* Serendipity-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Serendipity-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		EAB81BE31A84BAAB00BAE388 /* UIKitExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
+		EAEA82E61A86941300A080ED /* _Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Match.swift; sourceTree = "<group>"; };
+		EAEA82E81A86941C00A080ED /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		EAF195C61A81FE5B00A2F103 /* CoreService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreService.swift; sourceTree = "<group>"; };
 		EAF195C81A820F2700A2F103 /* MatchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchService.swift; sourceTree = "<group>"; };
 		EAF195CB1A8210EA00A2F103 /* RAC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAC.swift; sourceTree = "<group>"; };
@@ -281,6 +285,7 @@
 			children = (
 				EA5634E31A77428F00F62B52 /* _Models */,
 				EA5634E71A77428F00F62B52 /* Connection.swift */,
+				EAEA82E81A86941C00A080ED /* Match.swift */,
 				EA5634E81A77428F00F62B52 /* Message.swift */,
 				EA5634E91A77428F00F62B52 /* User.swift */,
 			);
@@ -291,6 +296,7 @@
 			isa = PBXGroup;
 			children = (
 				EA5634E41A77428F00F62B52 /* _Connection.swift */,
+				EAEA82E61A86941300A080ED /* _Match.swift */,
 				EA5634E51A77428F00F62B52 /* _Message.swift */,
 				EA5634E61A77428F00F62B52 /* _User.swift */,
 			);
@@ -590,6 +596,7 @@
 				EA1970171A83549300FEBA7F /* SettingsViewController.swift in Sources */,
 				EA5634EB1A77428F00F62B52 /* _Message.swift in Sources */,
 				EAB81BE41A84BAAB00BAE388 /* UIKitExtension.swift in Sources */,
+				EAEA82E71A86941300A080ED /* _Match.swift in Sources */,
 				EA5634E11A7741FF00F62B52 /* Serendipity.xcdatamodeld in Sources */,
 				EA196FEB1A82FED400FEBA7F /* FoundationExtension.swift in Sources */,
 				EA19701B1A8354D000FEBA7F /* ConnectionCell.swift in Sources */,
@@ -603,6 +610,7 @@
 				EA1970071A83549300FEBA7F /* ChatViewController.swift in Sources */,
 				EAF195C71A81FE5B00A2F103 /* CoreService.swift in Sources */,
 				EA5634EE1A77428F00F62B52 /* Message.swift in Sources */,
+				EAEA82E91A86941C00A080ED /* Match.swift in Sources */,
 				EA82DE601A84792D002DD224 /* ArrayViewModel.swift in Sources */,
 				EAF195CC1A8210EA00A2F103 /* RAC.swift in Sources */,
 				EA163CF91A85ED6700C2589B /* Segue.swift in Sources */,

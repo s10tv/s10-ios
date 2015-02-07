@@ -39,14 +39,14 @@ class DiscoverViewController : BaseViewController {
     
     @IBAction func nextMatch(sender: AnyObject?) {
         // TODO: Prevent this method from called multiple times in a row
-        MatchService.getNextMatch().subscribeNextAs { (match: User) -> () in
-            self.profileVC.user = match
+        MatchService.getNextMatch().subscribeNextAs { (match: Match) -> () in
+            self.profileVC.user = match.user
         }
     }
     
     @IBAction func messageMatch(sender: AnyObject?) {
         if let match = MatchService.currentMatch {
-            match.makeConnection() // Message User
+            match.user?.makeConnection() // Message User
             showConnections(nil)
         }
     }

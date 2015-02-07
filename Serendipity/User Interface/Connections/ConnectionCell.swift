@@ -23,6 +23,7 @@ class ConnectionCell : UITableViewCell {
     }
     
     func reloadData() {
+        
         let photos = connection?.user?.photos as [Photo]?
         if let avatar = photos?.first {
             avatarView.sd_setImageWithURL(NSURL(string: avatar.url))
