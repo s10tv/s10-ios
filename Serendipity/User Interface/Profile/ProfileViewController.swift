@@ -24,12 +24,13 @@ class ProfileViewController : BaseViewController, SwipeViewDelegate, SwipeViewDa
     
     var user : User? {
         didSet {
-            reloadData()
+            if isViewLoaded() { reloadData() }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        reloadData()
     }
     
     func reloadData() {

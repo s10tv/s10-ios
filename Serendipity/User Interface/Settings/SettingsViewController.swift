@@ -30,10 +30,16 @@ class SettingsViewController : UIViewController {
         nameLabel.text = currentUser.firstName
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let profileVC = segue.destinationViewController as? ProfileViewController {
+            profileVC.user = User.currentUser()
+        }
+    }
+    
     // MARK: - Actions
     
     @IBAction func viewProfile(sender: AnyObject) {
-        
+        self.performSegueWithIdentifier("SettingsToProfile", sender: sender)
     }
     
     @IBAction func inviteFriends(sender: AnyObject) {
