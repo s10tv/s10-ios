@@ -66,15 +66,3 @@ class Photo {
         self.url = url
     }
 }
-
-class PhotosValueTransformer : NSValueTransformer {
-    override func transformedValue(value: AnyObject?) -> AnyObject? {
-        let photos = value as [Photo]
-        return photos.map { $0.url }
-    }
-    
-    override func reverseTransformedValue(value: AnyObject?) -> AnyObject? {
-        let urls = value as [String]
-        return urls.map { Photo(url: $0) }
-    }
-}

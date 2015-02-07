@@ -19,37 +19,29 @@ class CoreService {
     
     init() {
         // Set up CoreData
-        NSValueTransformer.setValueTransformer(PhotosValueTransformer(), forName: "PhotosValueTransformer")
         NSPersistentStoreCoordinator.MR_setDefaultStoreCoordinator(meteor.persistentStoreCoordinator)
         NSManagedObjectContext.MR_setDefaultContext(meteor.mainQueueManagedObjectContext)
         
         // Setup Meteor
-        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "METShouldLogDDPMessages")
+        meteor.logDDPMessages = true
         meteor.connect()
-        // TODO: Make this more modular, let MatchService add its own subscription?
-        let sub = meteor.addSubscriptionWithName("currentUser")
-
+        
+        meteor.addSubscriptionWithName("currentUser")
         meteor.addSubscriptionWithName("connections")
         meteor.addSubscriptionWithName("messages")
-        sub.whenDone { (err) -> Void in
-            println("UserID \(self.meteor.userID)")
-            let user = User.currentUser()
-            //            println("first \(user.photos?.map { $0.url })")
-            println("first \(user.firstName) \(user.photos)")
-        }
 
         // Perform Login. TODO: Send fb access token if login otherwise expired
         // TODO: Need to connect after authenticating with fb, not just at app start
         if !meteor.hasAccount() && FBSession.openActiveSessionWithAllowLoginUI(false) {
             let data = FBSession.activeSession().accessTokenData
-            let userParam = [["fb-access": [
-                "accessToken": data.accessToken,
-                "expireAt": data.expirationDate.timeIntervalSince1970
-            ]]]
-            meteor.loginWithMethodName("login", parameters: userParam, completionHandler: { err in
-                println("Logged in with error? \(err)")
+            meteor.loginWithFacebook(data.accessToken, expiresAt: data.expirationDate).subscribeError({ error in
+                println("login error \(error)")
+            }, completed: {
+                println("login success")
             })
         }
+        
+        // Initialize other services
         MatchService.startWithMeteor(meteor)
         AzureClient.startWithMeteor(meteor)
     }
