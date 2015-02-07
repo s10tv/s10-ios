@@ -15,11 +15,23 @@ class EditProfileViewController : BaseViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var aboutField: UITextView!
     
+    var viewModel = ArrayViewModel(content: [Photo]())
+    var user : User?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         aboutField.layer.cornerRadius = 15
         aboutField.layer.masksToBounds = true
+        
+        // NOTE: Ideally this is more generic
+        user = User.currentUser()
+        
+        viewModel.bindToCollectionView(collectionView, cellNibName: "EditPhotoCell")
+        viewModel.collectionViewProvider?.configureCollectionCell = { item, cell in
+            (cell as EditPhotoCell).photo = (item as Photo)
+        }
+        if let photos = user?.photos as? [Photo] {
+            viewModel.content = photos
+        }
     }
-    
-    
 }

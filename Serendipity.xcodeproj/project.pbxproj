@@ -23,6 +23,8 @@
 /* Begin PBXBuildFile section */
 		44E19D671B859E037A1401D8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38E9CB79C25FDAE97BD9D3D /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		EA163CF91A85ED6700C2589B /* Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA163CF81A85ED6700C2589B /* Segue.swift */; };
+		EA163CFB1A85FAF000C2589B /* EditPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA163CFA1A85FAF000C2589B /* EditPhotoCell.swift */; };
+		EA163CFD1A85FAFE00C2589B /* EditPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA163CFC1A85FAFE00C2589B /* EditPhotoCell.xib */; };
 		EA196FEB1A82FED400FEBA7F /* FoundationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA196FEA1A82FED400FEBA7F /* FoundationExtension.swift */; };
 		EA1970061A83549300FEBA7F /* ChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA196FED1A83549300FEBA7F /* ChatView.xib */; };
 		EA1970071A83549300FEBA7F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA196FEE1A83549300FEBA7F /* ChatViewController.swift */; };
@@ -91,6 +93,8 @@
 		2CD850D0B9EC2938BA5CEB59 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D38E9CB79C25FDAE97BD9D3D /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA163CF81A85ED6700C2589B /* Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segue.swift; sourceTree = "<group>"; };
+		EA163CFA1A85FAF000C2589B /* EditPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPhotoCell.swift; sourceTree = "<group>"; };
+		EA163CFC1A85FAFE00C2589B /* EditPhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditPhotoCell.xib; sourceTree = "<group>"; };
 		EA196FEA1A82FED400FEBA7F /* FoundationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationExtension.swift; sourceTree = "<group>"; };
 		EA196FED1A83549300FEBA7F /* ChatView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatView.xib; sourceTree = "<group>"; };
 		EA196FEE1A83549300FEBA7F /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
@@ -235,6 +239,8 @@
 		EA196FFB1A83549300FEBA7F /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				EA163CFC1A85FAFE00C2589B /* EditPhotoCell.xib */,
+				EA163CFA1A85FAF000C2589B /* EditPhotoCell.swift */,
 				EA196FFC1A83549300FEBA7F /* EditProfileView.xib */,
 				EA196FFD1A83549300FEBA7F /* EditProfileViewController.swift */,
 				EA196FFE1A83549300FEBA7F /* ProfileView.xib */,
@@ -490,6 +496,7 @@
 				EA1970101A83549300FEBA7F /* DiscoverView.xib in Resources */,
 				EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */,
 				EA9F354A1A74CC6900E0C65D /* Images.xcassets in Resources */,
+				EA163CFD1A85FAFE00C2589B /* EditPhotoCell.xib in Resources */,
 				EA1970161A83549300FEBA7F /* SettingsView.xib in Resources */,
 				EA1970081A83549300FEBA7F /* StorylineView.xib in Resources */,
 				EA19700C1A83549300FEBA7F /* VideoRecorderView.xib in Resources */,
@@ -602,6 +609,7 @@
 				EA1970191A83549300FEBA7F /* SignupViewController.swift in Sources */,
 				EA1970111A83549300FEBA7F /* DiscoverViewController.swift in Sources */,
 				EA5634EA1A77428F00F62B52 /* _Connection.swift in Sources */,
+				EA163CFB1A85FAF000C2589B /* EditPhotoCell.swift in Sources */,
 				EA5634ED1A77428F00F62B52 /* Connection.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

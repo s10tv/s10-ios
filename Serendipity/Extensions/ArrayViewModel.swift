@@ -13,6 +13,7 @@ class ArrayViewModel<T> : ProviderDelegate {
     var content : [T]
     var selectedItem : T?
     var tableViewProvider : TableViewProvider?
+    var collectionViewProvider : CollectionViewProvider?
     
     init(content: [T]) {
         self.content = content
@@ -20,6 +21,10 @@ class ArrayViewModel<T> : ProviderDelegate {
     
     func bindToTableView(tableView: UITableView, cellNibName: String) {
         tableViewProvider = TableViewProvider(delegate: self, tableView: tableView, cellNibName: cellNibName)
+    }
+    
+    func bindToCollectionView(collectionView: UICollectionView, cellNibName: String) {
+        collectionViewProvider = CollectionViewProvider(delegate: self, collectionView: collectionView, cellNibName: cellNibName)
     }
     
     // Mark - Provider Delegate
@@ -46,6 +51,41 @@ protocol ProviderDelegate {
     func numberOfItemsInSection(section: Int) -> Int
     func itemAtIndexPath(indexPath: NSIndexPath) -> Any
     func didSelectIndexPath(indexPath: NSIndexPath)
+}
+
+// MARK: - CollectionView Support
+
+class CollectionViewProvider : NSObject, UICollectionViewDelegate, UICollectionViewDataSource {
+    typealias ConfigureCollectionCellBlock = (item : Any, cell : UICollectionViewCell) -> Void
+    let delegate : ProviderDelegate
+    let collectionView : UICollectionView
+    let cellNibName : String
+    var configureCollectionCell : ConfigureCollectionCellBlock?
+    var didSelectItem : ((item : Any) -> Void)?
+    
+    init(delegate: ProviderDelegate, collectionView: UICollectionView, cellNibName: String) {
+        // TODO: Can we use generic here and do better than UITableViewCell?
+        self.delegate = delegate
+        self.collectionView = collectionView
+        self.cellNibName = cellNibName
+        super.init()
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        collectionView.registerNib(UINib(nibName: cellNibName, bundle: nil), forCellWithReuseIdentifier: cellNibName)
+    }
+    
+    // MARK: CollectionView DataSource
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return delegate.numberOfItemsInSection(section)
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellNibName, forIndexPath: indexPath) as UICollectionViewCell
+        configureCollectionCell?(item: delegate.itemAtIndexPath(indexPath), cell: cell)
+        return cell
+    }
+    
 }
 
 // MARK: - TableView Support

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6750" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="EditPhotoCell" customModule="Serendipity" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="MIu-fI-C3e">
+                    <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cyo-Cu-2mv" userLabel="Remove">
+                    <rect key="frame" x="61" y="61" width="40" height="40"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="40" id="EAP-G7-MDT"/>
+                        <constraint firstAttribute="height" constant="40" id="v7m-Zy-nxw"/>
+                    </constraints>
+                    <inset key="contentEdgeInsets" minX="15" minY="15" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" image="ic_remove_photo">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="remove:" destination="iN0-l3-epB" eventType="touchUpInside" id="KHX-dG-DtK"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="MIu-fI-C3e" secondAttribute="bottom" id="1m5-O6-7Te"/>
+                <constraint firstAttribute="trailing" secondItem="Cyo-Cu-2mv" secondAttribute="trailing" constant="-1" id="P21-ad-Myh"/>
+                <constraint firstItem="MIu-fI-C3e" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="bcK-n6-TSd"/>
+                <constraint firstItem="MIu-fI-C3e" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="e3A-oF-P8L"/>
+                <constraint firstAttribute="trailing" secondItem="MIu-fI-C3e" secondAttribute="trailing" id="ns9-I1-Wab"/>
+                <constraint firstAttribute="bottom" secondItem="Cyo-Cu-2mv" secondAttribute="bottom" constant="-1" id="xsB-zu-dDy"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="imageView" destination="MIu-fI-C3e" id="YAc-59-5lt"/>
+            </connections>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_remove_photo" width="41" height="41"/>
+    </resources>
+</document>
