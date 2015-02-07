@@ -44,5 +44,6 @@ class CoreService {
             })
         }
         MatchService.startWithMeteor(meteor)
+        AzureClient.startWithMeteor(meteor)
     }
 }

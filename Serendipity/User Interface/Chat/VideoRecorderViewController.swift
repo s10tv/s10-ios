@@ -22,8 +22,7 @@ class VideoRecorderViewController : UIViewController {
 
     // saving video to device
     let pathToVideo = NSHomeDirectory().stringByAppendingPathComponent("Documents/video.m4v")
-    let azureClient = AzureClient()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -49,10 +48,11 @@ class VideoRecorderViewController : UIViewController {
         if (isRecording) {
             // stop recording
             movieWriter?.finishRecording()
+            isRecording = false
             recordButton.setTitle("Start Recording", forState: UIControlState.Normal)
             
             // send to azure
-            azureClient.uploadVideo(pathToVideo, { blobid, err -> Void in
+            AzureClient.updateConnectionsInfo(pathToVideo, recipientId: "12345", { blobid, err -> Void in
                 if let fullError = err {
                     println("Error in video submission: %s", fullError.localizedDescription);
                     return

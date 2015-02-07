@@ -9,8 +9,18 @@
 import Foundation
 import Alamofire
 import SwiftyJSON
+import Meteor
 
-class AzureClient {
+let AzureClient = AzureClientImpl()
+
+// TODO(generate server URL with meteor)
+class AzureClientImpl {
+    
+    private var meteor : METDDPClient! = nil
+    
+    func startWithMeteor(meteor: METDDPClient) {
+        self.meteor = meteor
+    }
     
     private func getSasURL(callback: ((String?, String?) -> Void)) {
         let urlRequest = NSMutableURLRequest(URL: NSURL(string: "https://s10mobile.azure-mobile.net/api/uploadvideosas")!)
@@ -21,6 +31,10 @@ class AzureClient {
             if let jsonData = data as? NSDictionary {
                 let json = JSON(jsonData)
                 return callback(json["sasUrl"].string, json["blobid"].string)
+            }
+            
+            if (error != nil) {
+                println(error);
             }
             
             return callback(nil, nil)
@@ -48,7 +62,14 @@ class AzureClient {
         }
     }
     
-    func downloadVieo(videoPath : String) {
-        //Alamofire.
+    func updateConnectionsInfo(videoPath : String, recipientId: String, callback: ((String?, NSError?) -> Void)) {
+        uploadVideo(videoPath, { blobId, error in
+            // TODO(qimingfang): fix hack
+            let videoUrl = "https://s10.blob.core.windows.net/s10-prod/" + blobId!;
+            self.meteor.callMethodWithName("sendMessage", parameters: [recipientId, videoUrl], {
+                result, error -> Void in
+                return callback(blobId, error);
+            })
+        })
     }
 }
