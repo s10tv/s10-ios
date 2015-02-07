@@ -26,7 +26,7 @@ class VideoRecorderViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset640x480, cameraPosition: .Back)
+        videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset640x480, cameraPosition: .Front)
         if videoCamera != nil {
             videoCamera!.outputImageOrientation = .Portrait;
             setupMoviePlayer()
