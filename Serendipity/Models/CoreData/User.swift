@@ -14,7 +14,10 @@ class User: _User {
     
     var photos : [Photo]? {
         get {
-            return (photoURLs as [NSString]).map { Photo(url: $0) }
+            if let urls = photoURLs as? [NSString] {
+                return urls.map { Photo(url: $0) }
+            }
+            return nil
         }
     }
     

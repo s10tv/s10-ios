@@ -28,8 +28,13 @@ class ProfileViewController : BaseViewController, SwipeViewDelegate, SwipeViewDa
         }
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//        reloadData()
+//    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         reloadData()
     }
     
@@ -37,6 +42,7 @@ class ProfileViewController : BaseViewController, SwipeViewDelegate, SwipeViewDa
         swipeView.reloadData()
         swipeView.scrollToItemAtIndex(0, duration: 0)
         pageControl.numberOfPages = numberOfItemsInSwipeView(swipeView)
+        println("id \(user?.objectID) name \(user?.firstName)")
         nameLabel.text = user?.firstName
         ageLabel.text = "\(user?.age ?? 0)"
         locationLabel.text = user?.location

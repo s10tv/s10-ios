@@ -28,16 +28,15 @@ class CoreService {
         meteor.connect()
         // TODO: Make this more modular, let MatchService add its own subscription?
         let sub = meteor.addSubscriptionWithName("currentUser")
+
+        meteor.addSubscriptionWithName("connections")
+        meteor.addSubscriptionWithName("messages")
         sub.whenDone { (err) -> Void in
             println("UserID \(self.meteor.userID)")
             let user = User.currentUser()
-//            println("first \(user.photos?.map { $0.url })")
+            //            println("first \(user.photos?.map { $0.url })")
             println("first \(user.firstName) \(user.photos)")
         }
-        meteor.addSubscriptionWithName("matches")
-        meteor.addSubscriptionWithName("connectedUsers")
-        meteor.addSubscriptionWithName("connections")
-        meteor.addSubscriptionWithName("messages")
 
         // Perform Login. TODO: Send fb access token if login otherwise expired
         // TODO: Need to connect after authenticating with fb, not just at app start

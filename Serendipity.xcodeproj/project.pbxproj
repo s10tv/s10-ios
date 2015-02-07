@@ -55,6 +55,7 @@
 		EA5634ED1A77428F00F62B52 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E71A77428F00F62B52 /* Connection.swift */; };
 		EA5634EE1A77428F00F62B52 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E81A77428F00F62B52 /* Message.swift */; };
 		EA5634EF1A77428F00F62B52 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E91A77428F00F62B52 /* User.swift */; };
+		EA704AEF1A86C3280062623F /* MeteorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA704AEE1A86C3280062623F /* MeteorExtension.swift */; };
 		EA82DE601A84792D002DD224 /* ArrayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA82DE5F1A84792D002DD224 /* ArrayViewModel.swift */; };
 		EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
 		EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35461A74CC6900E0C65D /* Main.storyboard */; };
@@ -127,6 +128,7 @@
 		EA5634E71A77428F00F62B52 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		EA5634E81A77428F00F62B52 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EA5634E91A77428F00F62B52 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		EA704AEE1A86C3280062623F /* MeteorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorExtension.swift; sourceTree = "<group>"; };
 		EA82DE5F1A84792D002DD224 /* ArrayViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayViewModel.swift; sourceTree = "<group>"; };
 		EA9F353A1A74CC6900E0C65D /* Serendipity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Serendipity.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9F353E1A74CC6900E0C65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 				EAF195CB1A8210EA00A2F103 /* RAC.swift */,
 				EAF46F291A82BAB2003EBE8C /* Logging.swift */,
 				EA82DE5F1A84792D002DD224 /* ArrayViewModel.swift */,
+				EA704AEE1A86C3280062623F /* MeteorExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -597,6 +600,7 @@
 				EA5634EB1A77428F00F62B52 /* _Message.swift in Sources */,
 				EAB81BE41A84BAAB00BAE388 /* UIKitExtension.swift in Sources */,
 				EAEA82E71A86941300A080ED /* _Match.swift in Sources */,
+				EA704AEF1A86C3280062623F /* MeteorExtension.swift in Sources */,
 				EA5634E11A7741FF00F62B52 /* Serendipity.xcdatamodeld in Sources */,
 				EA196FEB1A82FED400FEBA7F /* FoundationExtension.swift in Sources */,
 				EA19701B1A8354D000FEBA7F /* ConnectionCell.swift in Sources */,

@@ -22,14 +22,16 @@ class MatchServiceImpl {
     func startWithMeteor(meteor: METCoreDataDDPClient) {
         self.meteor = meteor
         queueUpdateSignal = RACSubject()
-        meteor.addSubscriptionWithName("matches")
 
-        // TODO: What to do about the disposable here?
-        NSNotificationCenter.defaultCenter()
-            .rac_addObserverForName(METDatabaseDidChangeNotification, object: nil)
-            .deliverOnMainThread()
-            .subscribeNextAs { (notification: NSNotification) -> () in
-                self.handleDatabaseChange(notification)
+        meteor.addSubscriptionWithName("matches").signal.deliverOnMainThread().subscribeCompleted {
+            self.reloadMatches()
+            // TODO: What to do about the disposable here?
+            NSNotificationCenter.defaultCenter()
+                .rac_addObserverForName(METDatabaseDidChangeNotification, object: nil)
+                .deliverOnMainThread()
+                .subscribeNextAs { (notification: NSNotification) -> () in
+                    self.handleDatabaseChange(notification)
+            }
         }
         
         meteor.defineStubForMethodWithName("matchPass", usingBlock: { (args) -> AnyObject! in
@@ -59,9 +61,13 @@ class MatchServiceImpl {
             }
         }
         if changed {
-            self.matches = Match.MR_findAll() as [Match]
-            self.queueUpdateSignal.sendNext(nil)
+            reloadMatches()
         }
+    }
+    
+    func reloadMatches() {
+        self.matches = Match.MR_findAll() as [Match]
+        self.queueUpdateSignal.sendNext(nil)
     }
     
     func getNextMatch() -> RACSignal {
