@@ -91,10 +91,11 @@
             </objects>
             <point key="canvasLocation" x="1053" y="1587"/>
         </scene>
-        <!--Chat View Controller-->
+        <!--Chat-->
         <scene sceneID="bLH-YZ-QSJ">
             <objects>
                 <viewController storyboardIdentifier="Chat" id="rRd-ZO-60U" customClass="ChatViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="Chat" id="7br-lE-KX6"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
@@ -112,10 +113,11 @@
             </objects>
             <point key="canvasLocation" x="1802" y="1587"/>
         </scene>
-        <!--Edit Profile View Controller-->
+        <!--Edit Profile-->
         <scene sceneID="98E-xT-5yo">
             <objects>
                 <viewController storyboardIdentifier="EditProfile" id="Lqa-Xo-Tcw" customClass="EditProfileViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" title="Edit Profile" id="bxX-U8-75j"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>

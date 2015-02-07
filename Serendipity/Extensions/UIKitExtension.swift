@@ -11,8 +11,8 @@ import Snap
 
 extension UIView {
     func makeCircular() {
-        layer.cornerRadius = max(frame.size.width, frame.size.height) / 2;
-        layer.masksToBounds = true;
+        layer.cornerRadius = max(frame.size.width, frame.size.height) / 2
+        layer.masksToBounds = true
     }
     
     func makeEdgesEqualTo(view: UIView) {
