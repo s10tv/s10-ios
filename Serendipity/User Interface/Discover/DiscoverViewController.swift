@@ -12,12 +12,20 @@ import Snap
 @objc(DiscoverViewController)
 class DiscoverViewController : BaseViewController {
     
+    @IBOutlet weak var nextButton: UIButton!
+    @IBOutlet weak var messageButton: UIButton!
+    
     var matches : [User] = []
     var profileVC : ProfileViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        for btn in [nextButton, messageButton] {
+            btn.layer.cornerRadius = 5
+            btn.layer.masksToBounds = true
+        }
+
         profileVC = storyboard?.instantiateViewControllerWithIdentifier("Profile") as ProfileViewController
         addChildViewController(profileVC)
         view.insertSubview(profileVC.view, atIndex: 0)
@@ -50,8 +58,5 @@ class DiscoverViewController : BaseViewController {
     
     @IBAction func showConnections(sender: AnyObject?) {
         performSegueWithIdentifier("DiscoverToConnections", sender: sender)
-//         Temporary workaround to get to video recorder screen:
-//        let vc = storyboard?.instantiateViewControllerWithIdentifier("VideoRecorder") as UIViewController!
-//        navigationController?.pushViewController(vc, animated: true)
     }
 }
