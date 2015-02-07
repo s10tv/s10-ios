@@ -29,17 +29,7 @@ class VideoRecorderViewController : UIViewController {
         videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset640x480, cameraPosition: .Back)
         if videoCamera != nil {
             videoCamera!.outputImageOrientation = .Portrait;
-            
-            filter = GPUImageBrightnessFilter()
-            filter?.addTarget(cameraView)
-            
-            // set up recording mechanisms
-            let videoUrl = NSURL(fileURLWithPath: pathToVideo)
-            movieWriter = GPUImageMovieWriter(movieURL: videoUrl, size: CGSizeMake(480, 640))
-            movieWriter?.shouldPassthroughAudio = true
-            filter?.addTarget(movieWriter)
-            
-            videoCamera?.addTarget(filter)
+            setupMoviePlayer()
             videoCamera?.startCameraCapture()
         }
     }
@@ -64,9 +54,22 @@ class VideoRecorderViewController : UIViewController {
             })
         } else {
             unlink(pathToVideo) // remove any existing videos
+            setupMoviePlayer()
             movieWriter?.startRecording()
             recordButton.setTitle("Stop Recording", forState: UIControlState.Normal)
             isRecording = true
         }
+    }
+    
+    func setupMoviePlayer() {
+        filter = GPUImageBrightnessFilter()
+        filter?.addTarget(cameraView)
+        
+        let videoUrl = NSURL(fileURLWithPath: pathToVideo)
+        movieWriter = GPUImageMovieWriter(movieURL: videoUrl, size: CGSizeMake(480, 640))
+        movieWriter?.shouldPassthroughAudio = true
+        filter?.addTarget(movieWriter)
+        
+        videoCamera?.addTarget(filter)
     }
 }
