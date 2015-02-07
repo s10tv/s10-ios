@@ -78,7 +78,7 @@ class MatchServiceImpl {
         } else {
             println("Queue size \(matches.count)")
             currentMatch = matches.removeAtIndex(0)
-            println("Will return match \(currentMatch?.user?.id)")
+            println("Will return match \(currentMatch?.user)")
             return RACSignal.Return(currentMatch)
         }
     }

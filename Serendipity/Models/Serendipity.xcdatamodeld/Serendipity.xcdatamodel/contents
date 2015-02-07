@@ -4,11 +4,19 @@
         <attribute name="dateCreated" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="dateUpdated" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="connection" inverseEntity="Message" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="connection" inverseEntity="User" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="connection" inverseEntity="User" syncable="YES">
+            <userInfo>
+                <entry key="fieldName" value="recipient"/>
+            </userInfo>
+        </relationship>
     </entity>
     <entity name="Match" representedClassName="Match" syncable="YES">
         <attribute name="dateMatched" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="match" inverseEntity="User" syncable="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="match" inverseEntity="User" syncable="YES">
+            <userInfo>
+                <entry key="fieldName" value="matchedUserId"/>
+            </userInfo>
+        </relationship>
     </entity>
     <entity name="Message" representedClassName="Message" syncable="YES">
         <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
@@ -20,7 +28,6 @@
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="education" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="photoURLs" optional="YES" attributeType="Transformable" valueTransformerName="PhotosValueTransformer" syncable="YES">
             <userInfo>
@@ -33,8 +40,8 @@
     </entity>
     <elements>
         <element name="Connection" positionX="-54" positionY="0" width="128" height="103"/>
-        <element name="Match" positionX="-45" positionY="54" width="128" height="75"/>
+        <element name="Match" positionX="-45" positionY="54" width="128" height="73"/>
         <element name="Message" positionX="-36" positionY="27" width="128" height="73"/>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="208"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="193"/>
     </elements>
 </model>
