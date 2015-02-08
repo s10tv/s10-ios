@@ -4,6 +4,7 @@
 import CoreData
 
 enum MessageAttributes: String {
+    case isUnread = "isUnread"
     case thumbnailURL = "thumbnailURL"
     case timestamp = "timestamp"
     case videoURL = "videoURL"
@@ -38,6 +39,11 @@ class _Message: NSManagedObject {
     }
 
     // MARK: - Properties
+
+    @NSManaged
+    var isUnread: NSNumber?
+
+    // func validateIsUnread(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
     var thumbnailURL: String?

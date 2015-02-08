@@ -19,6 +19,7 @@
         </relationship>
     </entity>
     <entity name="Message" representedClassName="Message" syncable="YES">
+        <attribute name="isUnread" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="thumbnailURL" optional="YES" attributeType="String" syncable="YES">
             <userInfo>
                 <entry key="fieldName" value="thumbnailUrl"/>
@@ -51,7 +52,7 @@
     <elements>
         <element name="Connection" positionX="-54" positionY="0" width="128" height="103"/>
         <element name="Match" positionX="-45" positionY="54" width="128" height="73"/>
-        <element name="Message" positionX="-36" positionY="27" width="128" height="105"/>
+        <element name="Message" positionX="-36" positionY="27" width="128" height="120"/>
         <element name="User" positionX="-63" positionY="-18" width="128" height="193"/>
     </elements>
 </model>
