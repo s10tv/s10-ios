@@ -19,6 +19,7 @@
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="3Ka-4L-4oY" secondAttribute="bottom" id="NPM-WQ-lCR"/>
                 <constraint firstItem="3Ka-4L-4oY" firstAttribute="leading" secondItem="Py2-yb-Bjy" secondAttribute="leading" id="PJ4-xF-NSW"/>
