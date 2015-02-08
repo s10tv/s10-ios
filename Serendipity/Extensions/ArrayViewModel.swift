@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ArrayViewModel<T> : ProviderDelegate {
+class ArrayViewModel<T : AnyObject> : ProviderDelegate {
 
     var content : [T]
     var selectedItem : T?
@@ -37,8 +37,8 @@ class ArrayViewModel<T> : ProviderDelegate {
         return content.count
     }
     
-    func itemAtIndexPath(indexPath: NSIndexPath) -> Any {
-        return content[indexPath.row] as Any
+    func itemAtIndexPath(indexPath: NSIndexPath) -> AnyObject {
+        return content[indexPath.row]
     }
     
     func didSelectIndexPath(indexPath: NSIndexPath) {

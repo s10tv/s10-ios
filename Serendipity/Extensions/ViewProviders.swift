@@ -11,19 +11,19 @@ import Foundation
 protocol ProviderDelegate {
     func numberOfSections() -> Int
     func numberOfItemsInSection(section: Int) -> Int
-    func itemAtIndexPath(indexPath: NSIndexPath) -> Any
+    func itemAtIndexPath(indexPath: NSIndexPath) -> AnyObject
     func didSelectIndexPath(indexPath: NSIndexPath)
 }
 
 // MARK: - CollectionView Support
 
 class CollectionViewProvider : NSObject, UICollectionViewDelegate, UICollectionViewDataSource {
-    typealias ConfigureCollectionCellBlock = (item : Any, cell : UICollectionViewCell) -> Void
+    typealias ConfigureCollectionCellBlock = (item : AnyObject, cell : UICollectionViewCell) -> Void
     let delegate : ProviderDelegate
     let collectionView : UICollectionView
     let cellNibName : String
     var configureCollectionCell : ConfigureCollectionCellBlock?
-    var didSelectItem : ((item : Any) -> Void)?
+    var didSelectItem : ((item : AnyObject) -> Void)?
     
     init(delegate: ProviderDelegate, collectionView: UICollectionView, cellNibName: String) {
         // TODO: Can we use generic here and do better than UITableViewCell?
@@ -53,12 +53,12 @@ class CollectionViewProvider : NSObject, UICollectionViewDelegate, UICollectionV
 // MARK: - TableView Support
 
 class TableViewProvider : NSObject, UITableViewDelegate, UITableViewDataSource {
-    typealias ConfigureTableCellBlock = (item : Any, cell : UITableViewCell) -> Void
+    typealias ConfigureTableCellBlock = (item : AnyObject, cell : UITableViewCell) -> Void
     let delegate : ProviderDelegate
     let tableView : UITableView
     let cellNibName : String
     var configureTableCell : ConfigureTableCellBlock?
-    var didSelectItem : ((item : Any) -> Void)?
+    var didSelectItem : ((item : AnyObject) -> Void)?
     
     init(delegate: ProviderDelegate, tableView: UITableView, cellNibName: String) {
         // TODO: Can we use generic here and do better than UITableViewCell?

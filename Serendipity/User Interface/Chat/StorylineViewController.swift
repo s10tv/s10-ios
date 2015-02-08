@@ -11,7 +11,7 @@ import UIKit
 @objc(StorylineViewController)
 class StorylineViewController : BaseViewController {
     
-    let fetch : FetchViewModel = FetchViewModel(frc: nil)
+    var fetch : FetchViewModel?
     var connection: Connection? {
         didSet {
             if isViewLoaded() { reloadData() }
@@ -20,22 +20,24 @@ class StorylineViewController : BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // TODO: How to stop using hard-coded cellNibNames
-        fetch.bindToCollectionView(self.view as UICollectionView, cellNibName: "MessageCell")
-        fetch.collectionViewProvider?.configureCollectionCell = { item, cell in
-            (cell as MessageCell).message = (item as Message)
-        }
-        fetch.collectionViewProvider?.didSelectItem = { item in
-            println("Will play message \(item)")
-        }
         reloadData()
     }
     
     func reloadData() {
+        // TODO: Changing connection after first reload might not work...
         if let conn = connection {
-            fetch.frc = Message.MR_fetchAllSortedBy(MessageAttributes.timestamp.rawValue, ascending: true,
+            let frc = Message.MR_fetchAllSortedBy(MessageAttributes.timestamp.rawValue, ascending: true,
                 withPredicate: NSPredicate(format: "%K == %@", MessageRelationships.connection.rawValue, conn),
                 groupBy: nil, delegate: nil)
+            // TODO: How to stop using hard-coded cellNibNames
+            fetch = FetchViewModel(frc: frc)
+            fetch!.bindToCollectionView(self.view as UICollectionView, cellNibName: "MessageCell")
+            fetch!.collectionViewProvider?.configureCollectionCell = { item, cell in
+                (cell as MessageCell).message = (item as Message)
+            }
+            fetch!.collectionViewProvider?.didSelectItem = { item in
+                println("Will play message \(item)")
+            }
         } else {
             println("Connection being nil is not yet handled. Not refreshing view for now")
         }

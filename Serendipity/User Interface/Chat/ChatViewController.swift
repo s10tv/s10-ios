@@ -13,16 +13,26 @@ class ChatViewController : BaseViewController, VideoRecorderDelegate {
     
     let player = VideoPlayerViewController()
     let recorder = VideoRecorderViewController()
-    var connection: Connection?
+    let storyline = StorylineViewController()
+    var connection: Connection? {
+        didSet {
+            storyline.connection = connection
+        }
+    }
     var videoRecordingURL: NSURL?
     
     @IBOutlet weak var topContainer: UIView!
+    @IBOutlet weak var bottomContainer: UIView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         addChildViewController(player)
         addChildViewController(recorder)
+        addChildViewController(storyline)
+        
+        bottomContainer.addSubview(storyline.view)
+        storyline.view.makeEdgesEqualTo(bottomContainer)
         
         recorder.delegate = self
         showRecorder(nil)

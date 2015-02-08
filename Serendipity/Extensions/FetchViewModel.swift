@@ -12,7 +12,7 @@ import CoreData
 class FetchViewModel : NSFetchedResultsControllerDelegate, ProviderDelegate {
     
     let signal = RACReplaySubject(capacity: 1)
-    var frc : NSFetchedResultsController! {
+    var frc : NSFetchedResultsController {
         didSet {
             oldValue.delegate = nil
             frc.delegate = self
@@ -29,9 +29,9 @@ class FetchViewModel : NSFetchedResultsControllerDelegate, ProviderDelegate {
     var collectionViewProvider : CollectionViewProvider?
     
     
-    init(frc: NSFetchedResultsController?) {
+    init(frc: NSFetchedResultsController) {
         self.frc = frc
-        frc?.delegate = self
+        frc.delegate = self
     }
     
     func addSortKey(key: String, ascending: Bool) {
@@ -85,12 +85,8 @@ class FetchViewModel : NSFetchedResultsControllerDelegate, ProviderDelegate {
         return (frc.sections![section] as NSFetchedResultsSectionInfo).numberOfObjects
     }
     
-    func itemAtIndexPath(indexPath: NSIndexPath) -> Any {
-        // Long implementation needed to avoid swift compiler segfault :(
-        // http://stackoverflow.com/questions/24222644/swift-compiler-segmentation-fault-when-building
-        let section = frc.sections![indexPath.section] as NSFetchedResultsSectionInfo
-        let sectionObjects = section.objects as [Any]
-        return sectionObjects[indexPath.row]
+    func itemAtIndexPath(indexPath: NSIndexPath) -> AnyObject {
+        return frc.objectAtIndexPath(indexPath)
     }
 
     func didSelectIndexPath(indexPath: NSIndexPath) {
