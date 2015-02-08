@@ -22,20 +22,17 @@ class VideoRecorderViewController : UIViewController {
     @IBOutlet weak var cameraView: GPUImageView!
     
     var videoCamera : GPUImageVideoCamera?
-    var stillCamera : GPUImageStillCamera?
-    
     var filter : GPUImageFilter?
-    var singleFrameFilter : GPUImageFilter?
-    var thumbnail : NSData?
-
     var movieWriter : GPUImageMovieWriter?
     weak var delegate : VideoRecorderDelegate?
     
+    // keeps track of whether recording is happening. for the UI.
     var isRecording = false
 
     // saving video to device
     var videoPath : String?
     var videoURL : NSURL?
+    var thumbnail : NSData?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,15 +44,10 @@ class VideoRecorderViewController : UIViewController {
         videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset640x480, cameraPosition: .Front)
         if videoCamera != nil {
             videoCamera!.outputImageOrientation = .Portrait;
+            filter = GPUImageBrightnessFilter()
             setupMoviePlayer()
-        }
-        
-        // still camera. used for thumbnail capture.
-        stillCamera = GPUImageStillCamera(sessionPreset: AVCaptureSessionPreset640x480, cameraPosition: .Front)
-        if stillCamera != nil {
-            singleFrameFilter = GPUImageBrightnessFilter()
-            stillCamera?.outputImageOrientation = .Portrait
-            stillCamera?.addTarget(singleFrameFilter)
+            self.filter?.addTarget(self.cameraView)
+            self.videoCamera?.startCameraCapture()
         }
     }
     
@@ -72,23 +64,21 @@ class VideoRecorderViewController : UIViewController {
             unlink(self.videoPath!) // remove any existing videos
             setupMoviePlayer()
 
-            stillCamera?.startCameraCapture()
-            stillCamera?.capturePhotoAsPNGProcessedUpToFilter(singleFrameFilter, withCompletionHandler: { data, error -> Void in
-                self.thumbnail = data
-                self.stillCamera?.stopCameraCapture()
-                
-                self.videoCamera?.startCameraCapture()
-                self.movieWriter?.startRecording()
-                self.isRecording = true
-                self.recordButton.setTitle("Stop Recording", forState: UIControlState.Normal)
-            })
+            // capture thumbnail.
+            self.filter?.useNextFrameForImageCapture()
+            let retainedImage = self.filter?.newCGImageFromCurrentlyProcessedOutput()
+            let image = retainedImage?.takeRetainedValue();
+            let uiimage = UIImage(CGImage: image)
+            self.thumbnail = UIImagePNGRepresentation(uiimage)
+            
+            // begin capturing video.
+            self.movieWriter?.startRecording()
+            self.isRecording = true
+            self.recordButton.setTitle("Stop Recording", forState: UIControlState.Normal)
         }
     }
     
     func setupMoviePlayer() {
-        filter = GPUImageBrightnessFilter()
-        filter?.addTarget(cameraView)
-        
         movieWriter = GPUImageMovieWriter(movieURL: videoURL, size: CGSizeMake(480, 640))
         movieWriter?.shouldPassthroughAudio = true
         filter?.addTarget(movieWriter)
