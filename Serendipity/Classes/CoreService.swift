@@ -10,6 +10,7 @@ import Foundation
 import ReactiveCocoa
 import FacebookSDK
 import MagicalRecord
+import SugarRecord
 import Meteor
 
 class CoreService {
@@ -23,6 +24,7 @@ class CoreService {
     
     init() {
         // Set up CoreData
+        SugarRecord.addStack(MeteorCDStack(meteor: meteor))
         NSPersistentStoreCoordinator.MR_setDefaultStoreCoordinator(meteor.persistentStoreCoordinator)
         NSManagedObjectContext.MR_setDefaultContext(meteor.mainQueueManagedObjectContext)
         

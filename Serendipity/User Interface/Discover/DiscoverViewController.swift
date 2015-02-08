@@ -8,6 +8,7 @@
 
 import UIKit
 import Snap
+import SugarRecord
 
 @objc(DiscoverViewController)
 class DiscoverViewController : BaseViewController {
@@ -20,6 +21,8 @@ class DiscoverViewController : BaseViewController {
     var currentMatch : Match? {
         didSet {
             profileVC.user = currentMatch?.user
+            let count = User.all().find().count
+            println("This many users \(count)")
         }
     }
     

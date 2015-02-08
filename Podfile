@@ -13,6 +13,7 @@ pod 'MagicalRecord', '~> 2.2' # Shorthand not supported in Swift
 pod 'Alamofire', '~> 1.1'
 pod 'DateTools', '~> 1.5'
 #pod 'ExSwift', '~> 0.1.9'
+pod 'SugarRecord/CoreData', :git => 'https://github.com/tonyxiao/SugarRecord'
 
 # Update these to latest when ready
 pod 'ReactiveCocoa', '~> 2.4'

@@ -55,6 +55,7 @@
 		EA5634ED1A77428F00F62B52 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E71A77428F00F62B52 /* Connection.swift */; };
 		EA5634EE1A77428F00F62B52 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E81A77428F00F62B52 /* Message.swift */; };
 		EA5634EF1A77428F00F62B52 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E91A77428F00F62B52 /* User.swift */; };
+		EA6EF5311A87C60800CB78A0 /* MeteorCDStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6EF5301A87C60800CB78A0 /* MeteorCDStack.swift */; };
 		EA704AEF1A86C3280062623F /* MeteorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA704AEE1A86C3280062623F /* MeteorExtension.swift */; };
 		EA82DE601A84792D002DD224 /* ArrayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA82DE5F1A84792D002DD224 /* ArrayViewModel.swift */; };
 		EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
@@ -133,6 +134,7 @@
 		EA5634E71A77428F00F62B52 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		EA5634E81A77428F00F62B52 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EA5634E91A77428F00F62B52 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		EA6EF5301A87C60800CB78A0 /* MeteorCDStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorCDStack.swift; sourceTree = "<group>"; };
 		EA704AEE1A86C3280062623F /* MeteorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorExtension.swift; sourceTree = "<group>"; };
 		EA82DE5F1A84792D002DD224 /* ArrayViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayViewModel.swift; sourceTree = "<group>"; };
 		EA9F353A1A74CC6900E0C65D /* Serendipity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Serendipity.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -386,6 +388,7 @@
 				EA196FEA1A82FED400FEBA7F /* FoundationExtension.swift */,
 				EAB81BE31A84BAAB00BAE388 /* UIKitExtension.swift */,
 				EA704AEE1A86C3280062623F /* MeteorExtension.swift */,
+				EA6EF5301A87C60800CB78A0 /* MeteorCDStack.swift */,
 				EAFB29D81A872774009B1B86 /* ViewProviders.swift */,
 				EAFB29E71A874760009B1B86 /* BaseViewModel.swift */,
 				EA82DE5F1A84792D002DD224 /* ArrayViewModel.swift */,
@@ -619,6 +622,7 @@
 				EA704AEF1A86C3280062623F /* MeteorExtension.swift in Sources */,
 				EA5634E11A7741FF00F62B52 /* Serendipity.xcdatamodeld in Sources */,
 				EA196FEB1A82FED400FEBA7F /* FoundationExtension.swift in Sources */,
+				EA6EF5311A87C60800CB78A0 /* MeteorCDStack.swift in Sources */,
 				EA19701B1A8354D000FEBA7F /* ConnectionCell.swift in Sources */,
 				EA1970131A83549300FEBA7F /* EditProfileViewController.swift in Sources */,
 				F95D95DD1A8482BB0068F090 /* AzureClient.swift in Sources */,
