@@ -39,8 +39,12 @@ class ChatViewController : BaseViewController,
         
         avatarView.sd_setImageWithURL(connection?.user?.profilePhotoURL)
         nameLabel.text = connection?.user?.firstName
+        titleView.whenTapped { [weak self] in
+            // TODO: Avoid hard-coding segue identifier somehow
+            self!.performSegueWithIdentifier("ChatToProfile", sender: nil)
+        }
         
-        navigationItem.titleView = self.titleView
+        navigationItem.titleView = titleView
         
         recorder.delegate = self
         player.delegate = self
@@ -60,6 +64,14 @@ class ChatViewController : BaseViewController,
         avatarView.makeCircular()
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let profileVC = segue.destinationViewController as? ProfileViewController {
+            profileVC.user = connection?.user
+        }
+    }
+    
+    // MARK: - Actions
+    
     @IBAction func showPlayer(sender: AnyObject?) {
         recorder.view.removeFromSuperview()
         topContainer.addSubview(player.view)
@@ -78,7 +90,6 @@ class ChatViewController : BaseViewController,
         showPlayer(storyline)
         println("videouURL \(message.videoNSURL)")
         if let videoURL = message.videoNSURL {
-//            let videoURL = NSURL(string: "https://s10.blob.core.windows.net/s10-prod/12345/27372.m4v")!
             player.playVideoAtURL(videoURL)
         }
     }

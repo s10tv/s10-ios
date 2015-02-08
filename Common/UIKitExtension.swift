@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReactiveCocoa
 import Snap
 
 extension UIView {
@@ -20,5 +21,17 @@ extension UIView {
             make.edges.equalTo(view)
             return // Hack needed to compile
         }
+    }
+    
+    func whenTapped(block: () -> ()) {
+        let tap = UITapGestureRecognizer()
+        tap.numberOfTapsRequired = 1
+        tap.numberOfTouchesRequired = 1
+        tap.rac_gestureSignal().subscribeNextAs { (recognizer : UIGestureRecognizer) -> () in
+            if recognizer.state == .Ended {
+                block()
+            }
+        }
+        addGestureRecognizer(tap)
     }
 }

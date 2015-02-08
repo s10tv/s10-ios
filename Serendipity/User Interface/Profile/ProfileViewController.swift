@@ -28,10 +28,10 @@ class ProfileViewController : BaseViewController, SwipeViewDelegate, SwipeViewDa
         }
     }
     
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//        reloadData()
-//    }
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        navigationItem.title = user?.firstName
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)

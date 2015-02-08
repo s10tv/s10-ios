@@ -100,18 +100,21 @@
                     <navigationItem key="navigationItem" title="Chat" id="7br-lE-KX6"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="G4Y-Ae-Xgh" kind="show" identifier="ChatToProfile" id="T9Y-bJ-q8s"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B9f-P8-SG1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1419" y="1587"/>
         </scene>
-        <!--Video Recorder View Controller-->
-        <scene sceneID="Eyk-Cd-rkc">
+        <!--Profile View Controller-->
+        <scene sceneID="mYf-IJ-xkN">
             <objects>
-                <viewController storyboardIdentifier="VideoRecorder" id="kgW-Qh-BCL" customClass="VideoRecorderViewController" sceneMemberID="viewController">
+                <viewController id="G4Y-Ae-Xgh" customClass="ProfileViewController" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="4iI-Tj-bCf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="H5s-tv-xnk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1802" y="1587"/>
         </scene>
