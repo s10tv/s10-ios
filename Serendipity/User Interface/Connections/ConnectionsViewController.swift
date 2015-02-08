@@ -12,6 +12,7 @@ import UIKit
 class ConnectionsViewController : BaseViewController {
     
     let viewModel = ArrayViewModel(content: [Connection]())
+    var currentConnection : Connection?
     
     @IBOutlet weak var tableView: UITableView!
     
@@ -23,15 +24,15 @@ class ConnectionsViewController : BaseViewController {
             (cell as ConnectionCell).connection = (item as Connection)
         }
         viewModel.tableViewProvider?.didSelectItem = { item in
-            let conn = item as Connection
-            println("Selected connection \(conn.user?.firstName)")
+            self.currentConnection = item as? Connection
+            println("Selected connection \(self.currentConnection?.user?.firstName)")
             self.performSegueWithIdentifier("ConnectionsToChat", sender: nil)
         }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ChatViewController {
-            vc.connection = viewModel.selectedItem
+            vc.connection = self.currentConnection
         }
     }
 }
