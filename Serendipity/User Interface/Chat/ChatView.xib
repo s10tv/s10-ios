@@ -10,7 +10,7 @@
                 <outlet property="avatarView" destination="K9D-dS-rpf" id="NEu-nM-oJ8"/>
                 <outlet property="bottomContainer" destination="EZB-Ur-pjP" id="Q7i-Lz-DFt"/>
                 <outlet property="nameLabel" destination="Evx-gs-ASt" id="cod-r3-dXq"/>
-                <outlet property="titleView" destination="d7C-Vd-1Qc" id="3Mb-wG-KTq"/>
+                <outlet property="titleView" destination="N2z-ug-Pg2" id="2og-5Z-DdE"/>
                 <outlet property="topContainer" destination="Ofy-Ld-LBU" id="Y99-gG-ovE"/>
                 <outlet property="view" destination="iN0-l3-epB" id="K7O-w9-zO2"/>
             </connections>
@@ -42,35 +42,47 @@
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
-        <view contentMode="scaleToFill" horizontalHuggingPriority="750" id="d7C-Vd-1Qc" userLabel="Title View">
-            <rect key="frame" x="0.0" y="0.0" width="113" height="44"/>
+        <view contentMode="scaleToFill" id="N2z-ug-Pg2" userLabel="Title View">
+            <rect key="frame" x="0.0" y="0.0" width="200" height="44"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K9D-dS-rpf" userLabel="Avatar">
-                    <rect key="frame" x="0.0" y="5" width="34" height="34"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d7C-Vd-1Qc">
+                    <rect key="frame" x="43.5" y="0.0" width="112.5" height="44"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K9D-dS-rpf" userLabel="Avatar">
+                            <rect key="frame" x="0.0" y="5" width="34" height="34"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="K9D-dS-rpf" secondAttribute="height" multiplier="1:1" id="Oju-uP-AVq"/>
+                            </constraints>
+                        </imageView>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anastasia" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Evx-gs-ASt" userLabel="Name">
+                            <rect key="frame" x="42" y="11" width="70.5" height="22"/>
+                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="K9D-dS-rpf" secondAttribute="height" multiplier="1:1" id="Oju-uP-AVq"/>
+                        <constraint firstItem="K9D-dS-rpf" firstAttribute="leading" secondItem="d7C-Vd-1Qc" secondAttribute="leading" id="BiF-OE-gAu"/>
+                        <constraint firstAttribute="bottom" secondItem="K9D-dS-rpf" secondAttribute="bottom" constant="5" id="Mmv-Cp-v10"/>
+                        <constraint firstItem="Evx-gs-ASt" firstAttribute="leading" secondItem="K9D-dS-rpf" secondAttribute="trailing" constant="8" id="hGD-UG-MQe"/>
+                        <constraint firstItem="K9D-dS-rpf" firstAttribute="top" secondItem="d7C-Vd-1Qc" secondAttribute="top" constant="5" id="hnL-dh-GeR"/>
+                        <constraint firstAttribute="trailing" secondItem="Evx-gs-ASt" secondAttribute="trailing" id="peJ-J8-TVZ"/>
+                        <constraint firstItem="K9D-dS-rpf" firstAttribute="centerY" secondItem="Evx-gs-ASt" secondAttribute="centerY" id="wVd-Hf-UYe"/>
                     </constraints>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="750" verticalHuggingPriority="251" text="Anastasia" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Evx-gs-ASt" userLabel="Name">
-                    <rect key="frame" x="42" y="11" width="71" height="22"/>
-                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                </view>
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="K9D-dS-rpf" firstAttribute="leading" secondItem="d7C-Vd-1Qc" secondAttribute="leading" id="BiF-OE-gAu"/>
-                <constraint firstAttribute="bottom" secondItem="K9D-dS-rpf" secondAttribute="bottom" constant="5" id="Mmv-Cp-v10"/>
-                <constraint firstItem="Evx-gs-ASt" firstAttribute="leading" secondItem="K9D-dS-rpf" secondAttribute="trailing" constant="8" id="hGD-UG-MQe"/>
-                <constraint firstItem="K9D-dS-rpf" firstAttribute="top" secondItem="d7C-Vd-1Qc" secondAttribute="top" constant="5" id="hnL-dh-GeR"/>
-                <constraint firstAttribute="trailing" secondItem="Evx-gs-ASt" secondAttribute="trailing" id="peJ-J8-TVZ"/>
-                <constraint firstItem="K9D-dS-rpf" firstAttribute="centerY" secondItem="Evx-gs-ASt" secondAttribute="centerY" id="wVd-Hf-UYe"/>
+                <constraint firstItem="d7C-Vd-1Qc" firstAttribute="top" secondItem="N2z-ug-Pg2" secondAttribute="top" id="5PD-cQ-N5D"/>
+                <constraint firstAttribute="centerX" secondItem="d7C-Vd-1Qc" secondAttribute="centerX" id="WeK-al-fj6"/>
+                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="d7C-Vd-1Qc" secondAttribute="trailing" id="Wjf-B5-xkr"/>
+                <constraint firstAttribute="bottom" secondItem="d7C-Vd-1Qc" secondAttribute="bottom" id="yRB-bu-IXW"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="256.5" y="-96"/>
+            <point key="canvasLocation" x="5" y="-203"/>
         </view>
     </objects>
 </document>
