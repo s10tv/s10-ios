@@ -8,9 +8,14 @@
 
 import UIKit
 
+protocol StorylineDelegate : class {
+    func storyline(storyline: StorylineViewController, didSelectMessage message: Message)
+}
+
 @objc(StorylineViewController)
 class StorylineViewController : BaseViewController {
     
+    weak var delegate: StorylineDelegate?
     var fetch : FetchViewModel?
     var connection: Connection? {
         didSet {
@@ -35,8 +40,9 @@ class StorylineViewController : BaseViewController {
             fetch!.collectionViewProvider?.configureCollectionCell = { item, cell in
                 (cell as MessageCell).message = (item as Message)
             }
-            fetch!.collectionViewProvider?.didSelectItem = { item in
+            fetch!.collectionViewProvider?.didSelectItem = { [weak self] item in
                 println("Will play message \(item)")
+                self?.delegate?.storyline(self!, didSelectMessage: item as Message)
             }
         } else {
             println("Connection being nil is not yet handled. Not refreshing view for now")

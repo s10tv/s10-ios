@@ -9,7 +9,10 @@
 import UIKit
 
 @objc(ChatViewController)
-class ChatViewController : BaseViewController, VideoRecorderDelegate {
+class ChatViewController : BaseViewController,
+                            VideoRecorderDelegate,
+                            VideoPlayerDelegate,
+                            StorylineDelegate {
     
     let player = VideoPlayerViewController()
     let recorder = VideoRecorderViewController()
@@ -35,6 +38,8 @@ class ChatViewController : BaseViewController, VideoRecorderDelegate {
         storyline.view.makeEdgesEqualTo(bottomContainer)
         
         recorder.delegate = self
+        player.delegate = self
+        storyline.delegate = self
         showRecorder(nil)
     }
     
@@ -50,7 +55,15 @@ class ChatViewController : BaseViewController, VideoRecorderDelegate {
         recorder.view.makeEdgesEqualTo(topContainer)
     }
     
-    // MARK: - 
+    // MARK: - Storyline Delegate
+    
+    func storyline(storyline: StorylineViewController, didSelectMessage message: Message) {
+        showPlayer(storyline)
+        let videoURL = NSURL(string: "https://s10.blob.core.windows.net/s10-prod/12345/27372.m4v")!
+        player.playVideoAtURL(videoURL)
+    }
+    
+    // MARK: - Recorder Delegate
     
     func didStartRecording(videoURL: NSURL) {
         self.videoRecordingURL = videoURL;
@@ -73,4 +86,9 @@ class ChatViewController : BaseViewController, VideoRecorderDelegate {
         }
     }
     
+    // MARK: - Player Delegate
+    
+    func videoPlayerDidFinishPlayback(player: VideoPlayerViewController) {
+        showRecorder(player)
+    }
 }

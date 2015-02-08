@@ -9,27 +9,38 @@
 import UIKit
 import MediaPlayer
 
+protocol VideoPlayerDelegate : class {
+    func videoPlayerDidFinishPlayback(player: VideoPlayerViewController)
+}
+
 @objc(VideoPlayerViewController)
 class VideoPlayerViewController : BaseViewController {
-    var moviePlayer : MPMoviePlayerController!
-    
-    @IBOutlet weak var playButton: UIButton!
-    @IBOutlet weak var movieView: UIView!
+    var player = MPMoviePlayerController()
+    weak var delegate : VideoPlayerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let movieUrl = NSURL(string: "https://s10.blob.core.windows.net/s10-prod/12345/27372.m4v")!
-        moviePlayer = MPMoviePlayerController(contentURL: movieUrl)
-        moviePlayer.view.frame = CGRect(x: 0, y: 0, width: movieView.frame.width, height: movieView.frame.height)
+        player.controlStyle = .None
+        player.scalingMode = .AspectFill
         
-        movieView.addSubview(moviePlayer.view)
-        moviePlayer.fullscreen = true
+        // Add to view hierarchy
+        view.addSubview(player.view)
+        player.view.makeEdgesEqualTo(view)
+        
+        listenForNotification(MPMoviePlayerPlaybackDidFinishNotification, object: player)
+            .subscribeNextAs { [weak self] (notification: NSNotification) -> () in
+            self?.delegate?.videoPlayerDidFinishPlayback(self!)
+            return // Workaround for one statement implicit return
+        }
+    }
+
+    func playVideoAtURL(videoURL: NSURL) {
+        player.contentURL = videoURL
+        player.play()
     }
     
-    @IBAction func onPlay(sender: AnyObject) {
-        moviePlayer.play()
-        
+    func stop() {
+        player.stop()
     }
-    
 }

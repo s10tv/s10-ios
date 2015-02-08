@@ -9,7 +9,7 @@
 import UIKit
 import GPUImage
 
-protocol VideoRecorderDelegate {
+protocol VideoRecorderDelegate : class {
     
     func didStartRecording(videoURL: NSURL)
     func didStopRecording()
@@ -24,7 +24,7 @@ class VideoRecorderViewController : UIViewController {
     var filter : GPUImageFilter?
     var movieWriter : GPUImageMovieWriter?
     
-    var delegate : VideoRecorderDelegate?
+    weak var delegate : VideoRecorderDelegate?
     
     var isRecording = false
 

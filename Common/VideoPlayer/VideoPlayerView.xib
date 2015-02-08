@@ -6,8 +6,6 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoPlayerViewController">
             <connections>
-                <outlet property="movieView" destination="5xj-8Y-cNK" id="YtL-fj-YmU"/>
-                <outlet property="playButton" destination="g6k-wJ-y3U" id="V0C-jw-Ya1"/>
                 <outlet property="view" destination="bST-8j-fh2" id="Aws-07-Uk2"/>
             </connections>
         </placeholder>
@@ -15,28 +13,7 @@
         <view contentMode="scaleToFill" id="bST-8j-fh2">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5xj-8Y-cNK">
-                    <rect key="frame" x="25" y="100" width="270" height="268"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g6k-wJ-y3U">
-                    <rect key="frame" x="25" y="437" width="270" height="30"/>
-                    <state key="normal" title="Play">
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="onPlay:" destination="-1" eventType="touchUpInside" id="vmM-e5-7C3"/>
-                    </connections>
-                </button>
-            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstAttribute="bottom" secondItem="5xj-8Y-cNK" secondAttribute="bottom" constant="200" id="Qoq-9m-laH"/>
-                <constraint firstAttribute="trailing" secondItem="5xj-8Y-cNK" secondAttribute="trailing" constant="25" id="iO5-uF-uvO"/>
-                <constraint firstItem="5xj-8Y-cNK" firstAttribute="top" secondItem="bST-8j-fh2" secondAttribute="top" constant="100" id="k7Z-H0-0bp"/>
-                <constraint firstItem="5xj-8Y-cNK" firstAttribute="leading" secondItem="bST-8j-fh2" secondAttribute="leading" constant="25" id="pCX-jN-gFZ"/>
-            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>

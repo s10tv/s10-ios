@@ -48,6 +48,11 @@ class CollectionViewProvider : NSObject, UICollectionViewDelegate, UICollectionV
         return cell
     }
     
+    // MARK: CollectionView Delegate
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        didSelectItem?(item: delegate.itemAtIndexPath(indexPath))
+    }
+    
 }
 
 // MARK: - TableView Support
@@ -82,6 +87,8 @@ class TableViewProvider : NSObject, UITableViewDelegate, UITableViewDataSource {
         configureTableCell?(item: delegate.itemAtIndexPath(indexPath), cell: cell)
         return cell
     }
+
+    // MARK: TableView Delegate
     
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         didSelectItem?(item: delegate.itemAtIndexPath(indexPath))

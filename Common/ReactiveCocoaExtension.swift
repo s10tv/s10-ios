@@ -18,6 +18,17 @@ extension RACSignal {
     }
 }
 
+extension NSObject {
+    func listenForNotification(name: String) -> RACSignal/*NSNotification*/ {
+        return listenForNotification(name, object: nil)
+    }
+    
+    func listenForNotification(name: String, object: AnyObject?) -> RACSignal/*NSNotification*/ {
+        let nc = NSNotificationCenter.defaultCenter()
+        return nc.rac_addObserverForName(name, object: object).takeUntil(rac_willDeallocSignal())
+    }
+}
+
 // Replaces the RACObserve macro
 func RACObserve(target: NSObject, keyPath: String) -> RACSignal  {
     return target.rac_valuesForKeyPath(keyPath, observer: target)
