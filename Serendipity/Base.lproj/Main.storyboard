@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6750" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="V2G-ja-Bqr">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="V2G-ja-Bqr">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
         <!--My Profile-->
@@ -80,7 +80,9 @@
         <scene sceneID="mW7-zq-TQ3">
             <objects>
                 <viewController storyboardIdentifier="Connections" id="YUi-xK-iJg" customClass="ConnectionsViewController" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Connections" id="n18-f6-V7D"/>
+                    <navigationItem key="navigationItem" title="Connections" id="n18-f6-V7D">
+                        <barButtonItem key="backBarButtonItem" title=" " id="cW2-Pa-cVe"/>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
