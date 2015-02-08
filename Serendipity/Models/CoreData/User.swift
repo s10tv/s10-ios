@@ -28,7 +28,8 @@ class User: _User {
 
     func makeConnection() {
         if connection != nil { return }
-        connection = Connection.MR_createInContext(self.managedObjectContext) as? Connection
+        // TODO: Implement me
+//        connection = Connection.MR_createInContext(self.managedObjectContext) as? Connection
     }
     
     class func findByDocumentID(documentID: String) -> User? {

@@ -18,7 +18,8 @@ class ConnectionsViewController : BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel = FetchViewModel(frc: Connection.MR_fetchAllSortedBy(ConnectionAttributes.dateUpdated.rawValue, ascending: false, withPredicate: nil, groupBy: nil, delegate: nil))
+        let sortDescriptor = NSSortDescriptor(key: ConnectionAttributes.dateUpdated.rawValue, ascending: false)
+        viewModel = FetchViewModel(frc: Connection.all().sorted(by: sortDescriptor).frc())
         viewModel.bindToTableView(tableView, cellNibName: "ConnectionCell")
         viewModel.tableViewProvider?.configureTableCell = { (item, cell) -> Void in
             (cell as ConnectionCell).connection = (item as Connection)

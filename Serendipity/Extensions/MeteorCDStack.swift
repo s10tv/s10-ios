@@ -10,6 +10,22 @@ import Foundation
 import SugarRecord
 import Meteor
 
+extension SugarRecord {
+    public class func transaction(closure: (context: SugarRecordContext) -> ()) {
+        operation(.SugarRecordEngineCoreData, closure: { (context) -> () in
+            context.beginWriting()
+            closure(context: context)
+            context.endWriting()
+        })
+    }
+}
+
+extension SugarRecordFinder {
+    public func frc() -> NSFetchedResultsController {
+        return fetchedResultsController(nil)
+    }
+}
+
 class MeteorCDStack : SugarRecordStackProtocol {
     let name = "MeteorCDStack"
     let stackType = SugarRecordEngine.SugarRecordEngineCoreData

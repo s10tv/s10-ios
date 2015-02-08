@@ -26,11 +26,11 @@ class StorylineViewController : BaseViewController {
     func reloadData() {
         // TODO: Changing connection after first reload might not work...
         if let conn = connection {
-            let frc = Message.MR_fetchAllSortedBy(MessageAttributes.timestamp.rawValue, ascending: true,
-                withPredicate: NSPredicate(format: "%K == %@", MessageRelationships.connection.rawValue, conn),
-                groupBy: nil, delegate: nil)
+            let pred = NSPredicate(format: "%K == %@", MessageRelationships.connection.rawValue, conn)
+            let sort = NSSortDescriptor(key: MessageAttributes.timestamp.rawValue, ascending: true)
+            fetch = FetchViewModel(frc: Message.all().by(pred!).sorted(by: sort).frc())
+            
             // TODO: How to stop using hard-coded cellNibNames
-            fetch = FetchViewModel(frc: frc)
             fetch!.bindToCollectionView(self.view as UICollectionView, cellNibName: "MessageCell")
             fetch!.collectionViewProvider?.configureCollectionCell = { item, cell in
                 (cell as MessageCell).message = (item as Message)

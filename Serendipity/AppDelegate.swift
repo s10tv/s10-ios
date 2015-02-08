@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SugarRecord
 import FacebookSDK
 
 var Core : CoreService!
@@ -29,8 +30,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
     
+    func applicationWillEnterForeground(application: UIApplication) {
+        SugarRecord.applicationWillEnterForeground()
+    }
+    
     func applicationDidBecomeActive(application: UIApplication) {
         FBAppCall.handleDidBecomeActive()
+    }
+    
+    func applicationWillResignActive(application: UIApplication) {
+        SugarRecord.applicationWillResignActive()
+    }
+    
+    func applicationWillTerminate(application: UIApplication) {
+        SugarRecord.applicationWillTerminate()
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {

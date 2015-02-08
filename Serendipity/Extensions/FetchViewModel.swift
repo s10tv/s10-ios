@@ -68,10 +68,12 @@ class FetchViewModel : NSFetchedResultsControllerDelegate, ProviderDelegate {
     // MARK: - Table & Collection Bindings
     
     func bindToTableView(tableView: UITableView, cellNibName: String) {
+        performFetchIfNeeded()
         tableViewProvider = TableViewProvider(delegate: self, tableView: tableView, cellNibName: cellNibName)
     }
     
     func bindToCollectionView(collectionView: UICollectionView, cellNibName: String) {
+        performFetchIfNeeded()
         collectionViewProvider = CollectionViewProvider(delegate: self, collectionView: collectionView, cellNibName: cellNibName)
     }
     

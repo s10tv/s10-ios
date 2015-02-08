@@ -6,9 +6,6 @@ PODS:
     - Bolts (~> 1.0)
   - GPUImage (0.1.6)
   - InflectorKit (0.0.1)
-  - MagicalRecord (2.2):
-    - MagicalRecord/Core (= 2.2)
-  - MagicalRecord/Core (2.2)
   - Meteor (0.1.2):
     - InflectorKit
     - PocketSocket
@@ -41,7 +38,6 @@ DEPENDENCIES:
   - DateTools (~> 1.5)
   - Facebook-iOS-SDK (~> 3.22)
   - GPUImage (~> 0.1.6)
-  - MagicalRecord (~> 2.2)
   - Meteor (~> 0.1)
   - NSLogger (~> 1.5)
   - ReactiveCocoa (~> 2.4)
@@ -68,7 +64,6 @@ SPEC CHECKSUMS:
   Facebook-iOS-SDK: 0eda8ff7120aada0a9c5f98552f7625da6c3440a
   GPUImage: cecb0830bb9428f50192042e3c7b53810f51388e
   InflectorKit: bb1f5c9feb01d17450b8bcdeb7ab1ef1832b2247
-  MagicalRecord: 2b471584fc9e3137f3d0a56967917baa4979e224
   Meteor: 5f620a6d26b2fb79620aec7d9b06951f63968566
   NSLogger: 7421a0a60df62fb8ff548cd0388c302d3329a322
   PocketSocket: 8c18f973e57fd3042d032626654658df0fa2f126

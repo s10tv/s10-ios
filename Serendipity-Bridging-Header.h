@@ -7,7 +7,6 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <Meteor/METCoreDataDDPClient.h>
-#import <MagicalRecord/CoreData+MagicalRecord.h>
 
 @interface METDDPClient (Private)
 
@@ -20,13 +19,6 @@
 @interface METDDPClient (Extension)
 
 - (BOOL)hasAccount;
-
-@end
-
-@interface NSManagedObjectContext (MagicalRecordPrivate)
-
-+ (void) MR_setDefaultContext:(NSManagedObjectContext *)moc;
-+ (void) MR_setRootSavingContext:(NSManagedObjectContext *)context;
 
 @end
 

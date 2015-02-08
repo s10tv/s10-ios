@@ -7,8 +7,9 @@
 //
 
 import Foundation
-import Meteor
 import ReactiveCocoa
+import Meteor
+import SugarRecord
 
 class MatchService {
     private let meteor : METCoreDataDDPClient
@@ -20,14 +21,17 @@ class MatchService {
     init(meteor: METCoreDataDDPClient) {
         self.meteor = meteor
         subscription = meteor.addSubscriptionWithName("matches")
-        fetch = FetchViewModel(frc:
-            Match.MR_fetchAllSortedBy(MatchAttributes.dateMatched.rawValue, ascending: true,
-                withPredicate: nil, groupBy: nil, delegate: nil))
+        let frc = Match.all().sorted(by: MatchAttributes.dateMatched.rawValue, ascending: true).frc()
+        fetch = FetchViewModel(frc: frc)
 
         // Define Stub method
         meteor.defineStubForMethodWithName("matchPass", usingBlock: { (args) -> AnyObject! in
-            let match = Match.findByDocumentID((args as [String]).first!)
-            match?.MR_deleteEntity()
+            assert(NSThread.isMainThread(), "Only main supported for now")
+            if let match = Match.findByDocumentID((args as [String]).first!) {
+                match.beginWriting()
+                match.delete()
+                match.endWriting()
+            }
             return true
         })
         
