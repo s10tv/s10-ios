@@ -11,14 +11,14 @@ import UIKit
 @objc(ConnectionsViewController)
 class ConnectionsViewController : BaseViewController {
     
-    let viewModel = ArrayViewModel(content: [Connection]())
+    var viewModel : FetchViewModel!
     var currentConnection : Connection?
     
     @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewModel.content = Connection.MR_findAll() as [Connection]
+        viewModel = FetchViewModel(frc: Connection.MR_fetchAllSortedBy(ConnectionAttributes.dateUpdated.rawValue, ascending: false, withPredicate: nil, groupBy: nil, delegate: nil))
         viewModel.bindToTableView(tableView, cellNibName: "ConnectionCell")
         viewModel.tableViewProvider?.configureTableCell = { (item, cell) -> Void in
             (cell as ConnectionCell).connection = (item as Connection)
