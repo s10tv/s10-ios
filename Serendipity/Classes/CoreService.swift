@@ -16,6 +16,7 @@ class CoreService {
     
 //        let urlStr = "ws://localhost:3000/websocket"
     let meteor = METCoreDataDDPClient(serverURL: NSURL(string: "ws://s10.herokuapp.com/websocket"))
+    let matchService : MatchService
     var mainContext : NSManagedObjectContext! {
         return meteor.mainQueueManagedObjectContext
     }
@@ -45,7 +46,7 @@ class CoreService {
         }
         
         // Initialize other services
-        MatchService.startWithMeteor(meteor)
+        matchService = MatchService(meteor: meteor)
         AzureClient.startWithMeteor(meteor)
     }
 }

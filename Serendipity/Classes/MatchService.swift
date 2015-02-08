@@ -10,76 +10,38 @@ import Foundation
 import Meteor
 import ReactiveCocoa
 
-let MatchService = MatchServiceImpl()
-
-class MatchServiceImpl {
+class MatchService {
+    private let meteor : METCoreDataDDPClient
+    private let subscription : METSubscription
+    private let fetch : FetchViewModel
     
-    private var meteor : METCoreDataDDPClient! = nil
-    private var matches : [Match] = []
-    private var queueUpdateSignal : RACSubject! = nil
-    private(set) var currentMatch : Match? = nil
+    let currentMatch = RACReplaySubject(capacity: 1)
     
-    func startWithMeteor(meteor: METCoreDataDDPClient) {
+    init(meteor: METCoreDataDDPClient) {
         self.meteor = meteor
-        queueUpdateSignal = RACSubject()
+        subscription = meteor.addSubscriptionWithName("matches")
+        fetch = FetchViewModel(frc:
+            Match.MR_fetchAllSortedBy(MatchAttributes.dateMatched.rawValue, ascending: true,
+                withPredicate: nil, groupBy: nil, delegate: nil))
 
-        meteor.addSubscriptionWithName("matches").signal.deliverOnMainThread().subscribeCompleted {
-            self.reloadMatches()
-            // TODO: What to do about the disposable here?
-            NSNotificationCenter.defaultCenter()
-                .rac_addObserverForName(METDatabaseDidChangeNotification, object: nil)
-                .deliverOnMainThread()
-                .subscribeNextAs { (notification: NSNotification) -> () in
-                    self.handleDatabaseChange(notification)
-            }
-        }
-        
+        // Define Stub method
         meteor.defineStubForMethodWithName("matchPass", usingBlock: { (args) -> AnyObject! in
-            let user = User.findByDocumentID((args as [String]).first!)
-            user?.match?.MR_deleteEntity()
+            let match = Match.findByDocumentID((args as [String]).first!)
+            match?.MR_deleteEntity()
             return true
         })
+        
+        // Setup the currentMatch signal (TODO: memory mgmt)
+        subscription.signal.deliverOnMainThread().then {
+            self.fetch.performFetchIfNeeded()
+            return self.fetch.signal
+        }.map { (mmatches) -> AnyObject! in
+            return (mmatches as [Match]).first
+        }.subscribe(currentMatch)
     }
     
-    func handleDatabaseChange(databaseChangeNotification: NSNotification) {
-        let users = User.MR_findAll() as? [User]
-        let userDocs = meteor.database.collectionWithName("users").allDocuments
-        let changes = databaseChangeNotification.userInfo![METDatabaseChangesKey] as METDatabaseChanges
-        var changed = false
-        for key in changes.affectedDocumentKeys().allObjects as [METDocumentKey] {
-            if key.collectionName == "matches" {
-                changed = true
-                break
-            }
-        }
-        if changed {
-            reloadMatches()
-        }
+    func passMatch(match: Match) {
+        meteor.callMethodWithName("matchPass", parameters: [match.documentID!])
     }
-    
-    func reloadMatches() {
-        self.matches = Match.MR_findAll() as [Match]
-        self.queueUpdateSignal.sendNext(nil)
-    }
-    
-    func getNextMatch() -> RACSignal {
-        assert(NSThread.isMainThread(), "Must be on main")
-        if let currentMatchUser = currentMatch?.user {
-            let key = meteor.documentKeyForObjectID(currentMatchUser.objectID)
-            println("passing match \(key)")
-            meteor.callMethodWithName("matchPass", parameters: [key.documentID])
-            currentMatch = nil
-        }
-        if matches.isEmpty {
-            println("Queue empty")
-            return queueUpdateSignal.take(1).ignoreValues().then { self.getNextMatch() }
-        } else {
-            println("Queue size \(matches.count)")
-            currentMatch = matches.removeAtIndex(0)
-            println("Will return match \(currentMatch?.user)")
-            return RACSignal.Return(currentMatch)
-        }
-    }
-    
 }
 

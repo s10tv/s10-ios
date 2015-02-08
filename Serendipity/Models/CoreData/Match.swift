@@ -9,6 +9,8 @@
 @objc(Match)
 class Match: _Match {
 
-	// Custom logic goes here.
+    class func findByDocumentID(documentID: String) -> Match? {
+        return Core.mainContext.objectInCollection("matches", documentID: documentID) as? Match
+    }
 
 }

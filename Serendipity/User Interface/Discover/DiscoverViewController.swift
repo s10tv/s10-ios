@@ -17,6 +17,11 @@ class DiscoverViewController : BaseViewController {
     
     var matches : [User] = []
     var profileVC : ProfileViewController!
+    var currentMatch : Match? {
+        didSet {
+            profileVC.user = currentMatch?.user
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,23 +39,22 @@ class DiscoverViewController : BaseViewController {
             return
         }
         
-        nextMatch(nil)
+        // TODO: Figure out better way to do this that can be statically checked
+        RAC(self, "currentMatch") <~ Core.matchService.currentMatch
     }
     
     @IBAction func nextMatch(sender: AnyObject?) {
-        // TODO: Prevent this method from called multiple times in a row
-        MatchService.getNextMatch().subscribeNextAs { (match: Match) -> () in
-            self.profileVC.user = match.user
+        if let match = currentMatch {
+            Core.matchService.passMatch(match)
         }
     }
     
     @IBAction func messageMatch(sender: AnyObject?) {
-        if let match = MatchService.currentMatch {
+        if let match = currentMatch {
             match.user?.makeConnection() // Message User
             showConnections(nil)
         }
     }
-    
     
     @IBAction func showSettings(sender: AnyObject?) {
         performSegueWithIdentifier("DiscoverToSettings", sender: sender)
