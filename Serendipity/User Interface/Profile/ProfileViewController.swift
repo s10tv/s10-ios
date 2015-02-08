@@ -47,10 +47,7 @@ class ProfileViewController : BaseViewController, SwipeViewDelegate, SwipeViewDa
         locationLabel.text = user?.location
         workLabel.text = user?.work
         schoolLabel.text = user?.education
-        
-        //if let about = user?.about {
-        //    aboutLabel.text = user?.about
-        //}
+        aboutLabel.text = user?.about
     }
     
     // MARK: - SwipeView Delegate / Data Soruce

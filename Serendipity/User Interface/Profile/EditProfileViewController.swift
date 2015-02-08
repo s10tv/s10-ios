@@ -26,6 +26,8 @@ class EditProfileViewController : BaseViewController {
         // NOTE: Ideally this is more generic
         user = User.currentUser()
         
+        aboutField.text = user?.about
+        
         viewModel.bindToCollectionView(collectionView, cellNibName: "EditPhotoCell")
         viewModel.collectionViewProvider?.configureCollectionCell = { item, cell in
             (cell as EditPhotoCell).photo = (item as Photo)
@@ -33,5 +35,12 @@ class EditProfileViewController : BaseViewController {
         if let photos = user?.photos {
             viewModel.content = photos
         }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        user?.beginWriting()
+        user?.about = aboutField.text
+        user?.endWriting()
     }
 }
