@@ -62,8 +62,11 @@ class ChatViewController : BaseViewController,
     
     func storyline(storyline: StorylineViewController, didSelectMessage message: Message) {
         showPlayer(storyline)
-        let videoURL = NSURL(string: "https://s10.blob.core.windows.net/s10-prod/12345/27372.m4v")!
-        player.playVideoAtURL(videoURL)
+        println("videouURL \(message.videoNSURL)")
+        if let videoURL = message.videoNSURL {
+//            let videoURL = NSURL(string: "https://s10.blob.core.windows.net/s10-prod/12345/27372.m4v")!
+            player.playVideoAtURL(videoURL)
+        }
     }
     
     // MARK: - Recorder Delegate
