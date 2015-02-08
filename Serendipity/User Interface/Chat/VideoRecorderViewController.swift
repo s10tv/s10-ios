@@ -9,6 +9,12 @@
 import UIKit
 import GPUImage
 
+protocol VideoRecorderDelegate {
+    
+    func didStartRecording(videoURL: NSURL)
+    func didStopRecording()
+}
+
 @objc(VideoRecorderViewController)
 class VideoRecorderViewController : UIViewController {
 
@@ -18,13 +24,19 @@ class VideoRecorderViewController : UIViewController {
     var filter : GPUImageFilter?
     var movieWriter : GPUImageMovieWriter?
     
+    var delegate : VideoRecorderDelegate?
+    
     var isRecording = false
 
     // saving video to device
-    let pathToVideo = NSHomeDirectory().stringByAppendingPathComponent("Documents/video.m4v")
+    var videoPath : String?
+    var videoURL : NSURL?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        videoPath = NSHomeDirectory().stringByAppendingPathComponent("Documents/video.m4v");
+        videoURL = NSURL(fileURLWithPath: self.videoPath!)
         
         videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset640x480, cameraPosition: .Front)
         if videoCamera != nil {
@@ -38,26 +50,18 @@ class VideoRecorderViewController : UIViewController {
         if (isRecording) {
             // stop recording
             movieWriter?.finishRecording()
+            delegate?.didStopRecording()
+            
             isRecording = false
             recordButton.setTitle("Start Recording", forState: UIControlState.Normal)
-            
-            // send to azure
-            AzureClient.updateConnectionsInfo(pathToVideo, recipientId: "12345", { blobid, err -> Void in
-                if let fullError = err {
-                    println("Error in video submission: %s", fullError.localizedDescription);
-                    return
-                }
-                
-                if let azureBlobId = blobid {
-                    println("Message sent to %s", azureBlobId)
-                }
-            })
         } else {
-            unlink(pathToVideo) // remove any existing videos
+            unlink(self.videoPath!) // remove any existing videos
             setupMoviePlayer()
             movieWriter?.startRecording()
-            recordButton.setTitle("Stop Recording", forState: UIControlState.Normal)
+            delegate?.didStartRecording(videoURL!);
+            
             isRecording = true
+            recordButton.setTitle("Stop Recording", forState: UIControlState.Normal)
         }
     }
     
@@ -65,8 +69,7 @@ class VideoRecorderViewController : UIViewController {
         filter = GPUImageBrightnessFilter()
         filter?.addTarget(cameraView)
         
-        let videoUrl = NSURL(fileURLWithPath: pathToVideo)
-        movieWriter = GPUImageMovieWriter(movieURL: videoUrl, size: CGSizeMake(480, 640))
+        movieWriter = GPUImageMovieWriter(movieURL: videoURL, size: CGSizeMake(480, 640))
         movieWriter?.shouldPassthroughAudio = true
         filter?.addTarget(movieWriter)
         

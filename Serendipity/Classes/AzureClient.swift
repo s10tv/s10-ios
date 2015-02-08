@@ -22,11 +22,11 @@ class AzureClientImpl {
         self.meteor = meteor
     }
     
-    private func getSasURL(callback: ((String?, String?) -> Void)) {
+    private func getSasURL(recipientId: String, callback: ((String?, String?) -> Void)) {
         let urlRequest = NSMutableURLRequest(URL: NSURL(string: "https://s10mobile.azure-mobile.net/api/uploadvideosas")!)
         urlRequest.HTTPMethod = "GET"
         urlRequest.addValue("NeHOImEPLUWXFdRmGmTWjRzoEbElSF33", forHTTPHeaderField: "X-ZUMO-APPLICATION")
-        urlRequest.addValue("12345", forHTTPHeaderField: "userid")
+        urlRequest.addValue(recipientId, forHTTPHeaderField: "userid")
         Alamofire.request(urlRequest).responseJSON {(_, _, data, error) in
             if let jsonData = data as? NSDictionary {
                 let json = JSON(jsonData)
@@ -41,17 +41,14 @@ class AzureClientImpl {
         }
     }
     
-    func uploadVideo(videoPath : String, callback: ((String?, NSError?) -> Void)) {
-        getSasURL { url, blobid in
+    func uploadVideo(videoPath : NSURL, recipientId: String, callback: ((String?, NSError?) -> Void)) {
+        getSasURL (recipientId, { url, blobid in
             if let sasUrl = url {
-                println(sasUrl)
-                let filePath = NSURL.fileURLWithPath(videoPath)
-                
                 let urlRequest = NSMutableURLRequest(URL: NSURL(string: sasUrl)!)
                 urlRequest.HTTPMethod = "PUT"
                 urlRequest.addValue("2012-02-12", forHTTPHeaderField: "x-ms-version")
                 urlRequest.addValue("BlockBlob", forHTTPHeaderField: "x-ms-blob-type")
-                Alamofire.upload(urlRequest, filePath!)
+                Alamofire.upload(urlRequest, videoPath)
                     .progress { (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) in
                         print(".")
                     }
@@ -59,16 +56,17 @@ class AzureClientImpl {
                         return callback(blobid, error)
                     }
             }
-        }
+        })
     }
     
-    func updateConnectionsInfo(videoPath : String, recipientId: String, callback: ((String?, NSError?) -> Void)) {
-        uploadVideo(videoPath, { blobId, error in
+    func updateConnectionsInfo(videoPath : NSURL, recipientId: String,
+        callback: ((String?, AnyObject!, NSError?) -> Void)) {
+        uploadVideo(videoPath, recipientId: recipientId, { blobId, error in
             // TODO(qimingfang): fix hack
             let videoUrl = "https://s10.blob.core.windows.net/s10-prod/" + blobId!;
             self.meteor.callMethodWithName("sendMessage", parameters: [recipientId, videoUrl], {
                 result, error -> Void in
-                return callback(blobId, error);
+                return callback(blobId, result, error);
             })
         })
     }

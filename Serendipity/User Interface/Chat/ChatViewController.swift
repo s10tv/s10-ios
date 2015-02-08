@@ -9,11 +9,12 @@
 import UIKit
 
 @objc(ChatViewController)
-class ChatViewController : BaseViewController {
+class ChatViewController : BaseViewController, VideoRecorderDelegate {
     
     let player = VideoPlayerViewController()
     let recorder = VideoRecorderViewController()
     var connection: Connection?
+    var videoRecordingURL: NSURL?
     
     @IBOutlet weak var topContainer: UIView!
     
@@ -22,6 +23,8 @@ class ChatViewController : BaseViewController {
         
         addChildViewController(player)
         addChildViewController(recorder)
+        
+        recorder.delegate = self
         showRecorder(nil)
     }
     
@@ -35,6 +38,29 @@ class ChatViewController : BaseViewController {
         player.view.removeFromSuperview()
         topContainer.addSubview(recorder.view)
         recorder.view.makeEdgesEqualTo(topContainer)
+    }
+    
+    // MARK: - 
+    
+    func didStartRecording(videoURL: NSURL) {
+        self.videoRecordingURL = videoURL;
+    }
+    
+    func didStopRecording() {
+        if let recipientId = connection?.user?.documentID {
+            AzureClient.updateConnectionsInfo(videoRecordingURL!, recipientId: recipientId, {
+                blobid, serverResult, err -> Void in
+                if let fullError = err {
+                    println("Error in video submission: %s", fullError.localizedDescription);
+                    return
+                }
+                
+                println(serverResult);
+                println(blobid);
+            })
+        } else {
+            println(connection);
+        }
     }
     
 }
