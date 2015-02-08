@@ -4,7 +4,9 @@
 import CoreData
 
 enum MessageAttributes: String {
+    case thumbnailURL = "thumbnailURL"
     case timestamp = "timestamp"
+    case videoURL = "videoURL"
 }
 
 enum MessageRelationships: String {
@@ -38,9 +40,19 @@ class _Message: NSManagedObject {
     // MARK: - Properties
 
     @NSManaged
+    var thumbnailURL: String?
+
+    // func validateThumbnailURL(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
     var timestamp: NSDate?
 
     // func validateTimestamp(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var videoURL: String?
+
+    // func validateVideoURL(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
 

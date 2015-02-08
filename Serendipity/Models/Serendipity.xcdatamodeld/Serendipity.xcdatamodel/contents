@@ -19,7 +19,9 @@
         </relationship>
     </entity>
     <entity name="Message" representedClassName="Message" syncable="YES">
+        <attribute name="thumbnailURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="videoURL" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="connection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Connection" inverseName="messages" inverseEntity="Connection" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
@@ -41,7 +43,7 @@
     <elements>
         <element name="Connection" positionX="-54" positionY="0" width="128" height="103"/>
         <element name="Match" positionX="-45" positionY="54" width="128" height="73"/>
-        <element name="Message" positionX="-36" positionY="27" width="128" height="73"/>
+        <element name="Message" positionX="-36" positionY="27" width="128" height="105"/>
         <element name="User" positionX="-63" positionY="-18" width="128" height="193"/>
     </elements>
 </model>
