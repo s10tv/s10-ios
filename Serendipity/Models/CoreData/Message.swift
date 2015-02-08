@@ -14,6 +14,7 @@ class Message: _Message {
     }
 
     var thumbnailNSURL : NSURL? {
-        return thumbnailURL != nil ? NSURL(string: thumbnailURL!) : nil
+        return connection?.user?.profilePhotoURL
+//        return thumbnailURL != nil ? NSURL(string: thumbnailURL!) : nil
     }
 }

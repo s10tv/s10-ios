@@ -14,7 +14,7 @@ class MessageCell : UICollectionViewCell {
     
     var message : Message? {
         didSet {
-            imageView.sd_setImageWithURL(message?.videoNSURL)
+            imageView.sd_setImageWithURL(message?.thumbnailNSURL)
         }
     }
 }
