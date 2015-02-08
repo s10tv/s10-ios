@@ -11,8 +11,8 @@ import GPUImage
 
 protocol VideoRecorderDelegate : class {
     
-    func didStartRecording(videoURL: NSURL)
-    func didStopRecording()
+    // thumbnail is PNG format.
+    func didStopRecording(videoURL : NSURL, thumbnail : NSData)
 }
 
 @objc(VideoRecorderViewController)
@@ -20,10 +20,15 @@ class VideoRecorderViewController : UIViewController {
 
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var cameraView: GPUImageView!
-    var videoCamera : GPUImageVideoCamera?
-    var filter : GPUImageFilter?
-    var movieWriter : GPUImageMovieWriter?
     
+    var videoCamera : GPUImageVideoCamera?
+    var stillCamera : GPUImageStillCamera?
+    
+    var filter : GPUImageFilter?
+    var singleFrameFilter : GPUImageFilter?
+    var thumbnail : NSData?
+
+    var movieWriter : GPUImageMovieWriter?
     weak var delegate : VideoRecorderDelegate?
     
     var isRecording = false
@@ -37,12 +42,20 @@ class VideoRecorderViewController : UIViewController {
         
         videoPath = NSHomeDirectory().stringByAppendingPathComponent("Documents/video.m4v");
         videoURL = NSURL(fileURLWithPath: self.videoPath!)
-        
+
+        // video camera. used for video capture.
         videoCamera = GPUImageVideoCamera(sessionPreset: AVCaptureSessionPreset640x480, cameraPosition: .Front)
         if videoCamera != nil {
             videoCamera!.outputImageOrientation = .Portrait;
             setupMoviePlayer()
-            videoCamera?.startCameraCapture()
+        }
+        
+        // still camera. used for thumbnail capture.
+        stillCamera = GPUImageStillCamera(sessionPreset: AVCaptureSessionPreset640x480, cameraPosition: .Front)
+        if stillCamera != nil {
+            singleFrameFilter = GPUImageBrightnessFilter()
+            stillCamera?.outputImageOrientation = .Portrait
+            stillCamera?.addTarget(singleFrameFilter)
         }
     }
     
@@ -50,18 +63,25 @@ class VideoRecorderViewController : UIViewController {
         if (isRecording) {
             // stop recording
             movieWriter?.finishRecording()
-            delegate?.didStopRecording()
+            
+            delegate?.didStopRecording(videoURL!, thumbnail: thumbnail!)
             
             isRecording = false
             recordButton.setTitle("Start Recording", forState: UIControlState.Normal)
         } else {
             unlink(self.videoPath!) // remove any existing videos
             setupMoviePlayer()
-            movieWriter?.startRecording()
-            delegate?.didStartRecording(videoURL!);
-            
-            isRecording = true
-            recordButton.setTitle("Stop Recording", forState: UIControlState.Normal)
+
+            stillCamera?.startCameraCapture()
+            stillCamera?.capturePhotoAsPNGProcessedUpToFilter(singleFrameFilter, withCompletionHandler: { data, error -> Void in
+                self.thumbnail = data
+                self.stillCamera?.stopCameraCapture()
+                
+                self.videoCamera?.startCameraCapture()
+                self.movieWriter?.startRecording()
+                self.isRecording = true
+                self.recordButton.setTitle("Stop Recording", forState: UIControlState.Normal)
+            })
         }
     }
     

@@ -22,11 +22,12 @@ class AzureClientImpl {
         self.meteor = meteor
     }
     
-    private func getSasURL(recipientId: String, callback: ((String?, String?) -> Void)) {
+    private func getSasURL(userId: String, extensionId: String, callback: ((String?, String?) -> Void)) {
         let urlRequest = NSMutableURLRequest(URL: NSURL(string: "https://s10mobile.azure-mobile.net/api/uploadvideosas")!)
         urlRequest.HTTPMethod = "GET"
         urlRequest.addValue("NeHOImEPLUWXFdRmGmTWjRzoEbElSF33", forHTTPHeaderField: "X-ZUMO-APPLICATION")
-        urlRequest.addValue(recipientId, forHTTPHeaderField: "userid")
+        urlRequest.addValue(extensionId, forHTTPHeaderField: "extensionid")
+        urlRequest.addValue(userId, forHTTPHeaderField: "userid")
         Alamofire.request(urlRequest).responseJSON {(_, _, data, error) in
             if let jsonData = data as? NSDictionary {
                 let json = JSON(jsonData)
@@ -41,14 +42,14 @@ class AzureClientImpl {
         }
     }
     
-    func uploadVideo(videoPath : NSURL, recipientId: String, callback: ((String?, NSError?) -> Void)) {
-        getSasURL (recipientId, { url, blobid in
+    func uploadToAzure(data : NSData, userId: String, extensionId: String,
+        callback: ((String?, NSError?) -> Void)) {
+        getSasURL (userId, extensionId: extensionId, { url, blobid in
             if let sasUrl = url {
                 let urlRequest = NSMutableURLRequest(URL: NSURL(string: sasUrl)!)
-                urlRequest.HTTPMethod = "PUT"
                 urlRequest.addValue("2012-02-12", forHTTPHeaderField: "x-ms-version")
                 urlRequest.addValue("BlockBlob", forHTTPHeaderField: "x-ms-blob-type")
-                Alamofire.upload(urlRequest, videoPath)
+                Alamofire.upload(Method.PUT, urlRequest, data)
                     .progress { (bytesWritten, totalBytesWritten, totalBytesExpectedToWrite) in
                         print(".")
                     }
@@ -59,15 +60,37 @@ class AzureClientImpl {
         })
     }
     
-    func updateConnectionsInfo(videoPath : NSURL, recipientId: String,
-        callback: ((String?, AnyObject!, NSError?) -> Void)) {
-        uploadVideo(videoPath, recipientId: recipientId, { blobId, error in
-            // TODO(qimingfang): fix hack
-            let videoUrl = "https://s10.blob.core.windows.net/s10-prod/" + blobId!;
-            self.meteor.callMethodWithName("sendMessage", parameters: [recipientId, videoUrl], {
-                result, error -> Void in
-                return callback(blobId, result, error);
+    func uploadVideoToAzure(videoPath : NSURL, userId: String,
+        callback: (String?, NSError?) -> Void) {
+            // uplaod the video
+            let videoData = NSData(contentsOfURL: videoPath)!
+            uploadToAzure(videoData, userId: userId, extensionId: "m4v", callback)
+    }
+    
+    func sendMessage(videoPath : NSURL, thumbnail: NSData, recipientId: String,
+        callback: ((String?, String?, AnyObject!, NSError?) -> Void)) {
+
+            // TODO(qimingfang): fix hack of using this as base URL always.
+            let rootURL: String = "https://s10.blob.core.windows.net/s10-prod/"
+            
+            // upload the thumbnail first
+            self.uploadToAzure(thumbnail, userId: recipientId, extensionId: "png", { thumbBlob, thumbError in
+                
+                // then upload the video
+                self.uploadVideoToAzure(videoPath, userId: recipientId, { videoBlob, videoError in
+                    
+                    let azureThumbnailPath = rootURL + thumbBlob!
+                    let azureVideoPath = rootURL + videoBlob!
+                    
+                    // notify meteor that a new message has been sent.
+                    self.meteor.callMethodWithName("sendMessage",
+                        parameters: [recipientId, azureThumbnailPath, azureVideoPath], {
+                            result, error -> Void in
+                            return callback(azureThumbnailPath, azureVideoPath, result, error);
+                    })
+                    
+                })
+                
             })
-        })
     }
 }

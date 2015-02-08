@@ -9,6 +9,7 @@
 import UIKit
 
 @objc(ChatViewController)
+
 class ChatViewController : BaseViewController,
                             VideoRecorderDelegate,
                             VideoPlayerDelegate,
@@ -16,6 +17,7 @@ class ChatViewController : BaseViewController,
     
     let player = VideoPlayerViewController()
     let recorder = VideoRecorderViewController()
+
     let storyline = StorylineViewController()
     var connection: Connection? {
         didSet {
@@ -40,6 +42,7 @@ class ChatViewController : BaseViewController,
         recorder.delegate = self
         player.delegate = self
         storyline.delegate = self
+
         showRecorder(nil)
     }
     
@@ -65,21 +68,22 @@ class ChatViewController : BaseViewController,
     
     // MARK: - Recorder Delegate
     
-    func didStartRecording(videoURL: NSURL) {
-        self.videoRecordingURL = videoURL;
+    func fetchMessages() -> NSSet? {
+        return connection?.messages
     }
     
-    func didStopRecording() {
+    func didStopRecording(videoRecordingURL: NSURL, thumbnail: NSData) {
         if let recipientId = connection?.user?.documentID {
-            AzureClient.updateConnectionsInfo(videoRecordingURL!, recipientId: recipientId, {
-                blobid, serverResult, err -> Void in
+            AzureClient.sendMessage(videoRecordingURL, thumbnail:thumbnail, recipientId: recipientId, {
+                thumbnailUrl, videoUrl, serverResult, err -> Void in
                 if let fullError = err {
                     println("Error in video submission: %s", fullError.localizedDescription);
                     return
                 }
                 
                 println(serverResult);
-                println(blobid);
+                println(thumbnailUrl);
+                println(videoUrl);
             })
         } else {
             println(connection);
