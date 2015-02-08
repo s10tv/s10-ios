@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6750" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="VideoRecorderViewController">
@@ -13,17 +13,17 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="468"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tyb-wo-2f8" customClass="GPUImageView">
-                    <rect key="frame" x="25" y="100" width="270" height="268"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tyb-wo-2f8" userLabel="Camera Preview" customClass="GPUImageView">
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="468"/>
+                    <color key="backgroundColor" red="0.94509803921568625" green="0.94509803921568625" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uoT-OB-oS3">
-                    <rect key="frame" x="25" y="448" width="270" height="30"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                    <state key="normal" title="Start Recording">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uoT-OB-oS3" userLabel="Record">
+                    <rect key="frame" x="130" y="368" width="60" height="60"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <state key="normal" image="ic_record">
                         <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
                     <connections>
@@ -33,13 +33,19 @@
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="tyb-wo-2f8" secondAttribute="trailing" constant="25" id="0tH-d9-B9g"/>
-                <constraint firstAttribute="bottom" secondItem="tyb-wo-2f8" secondAttribute="bottom" constant="200" id="5St-Ns-j6e"/>
-                <constraint firstItem="tyb-wo-2f8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="100" id="FvB-LF-lzO"/>
-                <constraint firstItem="tyb-wo-2f8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="25" id="J2Q-er-0SM"/>
+                <constraint firstAttribute="trailing" secondItem="tyb-wo-2f8" secondAttribute="trailing" id="0tH-d9-B9g"/>
+                <constraint firstAttribute="bottom" secondItem="uoT-OB-oS3" secondAttribute="bottom" constant="40" id="5A2-RO-cwN"/>
+                <constraint firstAttribute="bottom" secondItem="tyb-wo-2f8" secondAttribute="bottom" id="5St-Ns-j6e"/>
+                <constraint firstItem="tyb-wo-2f8" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="FvB-LF-lzO"/>
+                <constraint firstItem="tyb-wo-2f8" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="J2Q-er-0SM"/>
+                <constraint firstAttribute="centerX" secondItem="uoT-OB-oS3" secondAttribute="centerX" id="WVk-lr-1Gb"/>
             </constraints>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <nil key="simulatedStatusBarMetrics"/>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="-91" y="322"/>
         </view>
     </objects>
+    <resources>
+        <image name="ic_record" width="60" height="60"/>
+    </resources>
 </document>

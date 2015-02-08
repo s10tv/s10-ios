@@ -37,6 +37,9 @@ class VideoRecorderViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        cameraView.fillMode = kGPUImageFillModePreserveAspectRatioAndFill
+        
+        // TODO: Add utility to generate random temp file path (mktemp)
         videoPath = NSHomeDirectory().stringByAppendingPathComponent("Documents/video.m4v");
         videoURL = NSURL(fileURLWithPath: self.videoPath!)
 
