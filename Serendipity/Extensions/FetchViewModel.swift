@@ -9,18 +9,29 @@
 import ReactiveCocoa
 import CoreData
 
-class FetchViewModel : NSFetchedResultsControllerDelegate {
+class FetchViewModel : NSFetchedResultsControllerDelegate, ProviderDelegate {
     
-    let frc : NSFetchedResultsController
     let signal = RACReplaySubject(capacity: 1)
+    var frc : NSFetchedResultsController! {
+        didSet {
+            oldValue.delegate = nil
+            frc.delegate = self
+            refreshViews()
+        }
+    }
     var objects : [AnyObject] {
         performFetchIfNeeded()
         return frc.fetchedObjects!
     }
+    var selectedObject : AnyObject?
     
-    init(frc: NSFetchedResultsController) {
+    var tableViewProvider : TableViewProvider?
+    var collectionViewProvider : CollectionViewProvider?
+    
+    
+    init(frc: NSFetchedResultsController?) {
         self.frc = frc
-        frc.delegate = self
+        frc?.delegate = self
     }
     
     func addSortKey(key: String, ascending: Bool) {
@@ -42,9 +53,47 @@ class FetchViewModel : NSFetchedResultsControllerDelegate {
         }
     }
     
+    func refreshViews() {
+        self.tableViewProvider?.tableView.reloadData()
+        self.collectionViewProvider?.collectionView.reloadData()
+    }
+    
     // MARK: - NSFetchedResultsController Delegate
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         signal.sendNext(objects)
+        refreshViews()
+    }
+    
+    // MARK: - Table & Collection Bindings
+    
+    func bindToTableView(tableView: UITableView, cellNibName: String) {
+        tableViewProvider = TableViewProvider(delegate: self, tableView: tableView, cellNibName: cellNibName)
+    }
+    
+    func bindToCollectionView(collectionView: UICollectionView, cellNibName: String) {
+        collectionViewProvider = CollectionViewProvider(delegate: self, collectionView: collectionView, cellNibName: cellNibName)
+    }
+    
+    // MARK: Provider Delegate
+    
+    func numberOfSections() -> Int {
+        return frc.sections!.count
+    }
+    
+    func numberOfItemsInSection(section: Int) -> Int {
+        return (frc.sections![section] as NSFetchedResultsSectionInfo).numberOfObjects
+    }
+    
+    func itemAtIndexPath(indexPath: NSIndexPath) -> Any {
+        // Long implementation needed to avoid swift compiler segfault :(
+        // http://stackoverflow.com/questions/24222644/swift-compiler-segmentation-fault-when-building
+        let section = frc.sections![indexPath.section] as NSFetchedResultsSectionInfo
+        let sectionObjects = section.objects as [Any]
+        return sectionObjects[indexPath.row]
+    }
+
+    func didSelectIndexPath(indexPath: NSIndexPath) {
+        selectedObject = frc.objectAtIndexPath(indexPath)
     }
 }

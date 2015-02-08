@@ -9,6 +9,11 @@
 @objc(Message)
 class Message: _Message {
 
-	// Custom logic goes here.
+    var videoNSURL : NSURL? {
+        return videoURL != nil ? NSURL(string: videoURL!) : nil
+    }
 
+    var thumbnailNSURL : NSURL? {
+        return thumbnailURL != nil ? NSURL(string: thumbnailURL!) : nil
+    }
 }

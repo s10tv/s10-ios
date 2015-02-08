@@ -73,6 +73,9 @@
 		EAF4D7621A79AA5E00D35330 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF4D74F1A79AA5E00D35330 /* RootViewController.swift */; };
 		EAFB29D91A872774009B1B86 /* ViewProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFB29D81A872774009B1B86 /* ViewProviders.swift */; };
 		EAFB29DB1A8727CE009B1B86 /* FetchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFB29DA1A8727CE009B1B86 /* FetchViewModel.swift */; };
+		EAFB29DD1A873C3A009B1B86 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFB29DC1A873C3A009B1B86 /* MessageCell.swift */; };
+		EAFB29DF1A873C57009B1B86 /* MessageCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAFB29DE1A873C57009B1B86 /* MessageCell.xib */; };
+		EAFB29E81A874760009B1B86 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFB29E71A874760009B1B86 /* BaseViewModel.swift */; };
 		EAFD13CE1A778BAE00754556 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFD13CD1A778BAE00754556 /* BaseViewController.swift */; };
 		F95D95DD1A8482BB0068F090 /* AzureClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = F95D95DC1A8482BB0068F090 /* AzureClient.swift */; };
 		F95D95DF1A84A1170068F090 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95D95DE1A84A1170068F090 /* MediaPlayer.framework */; };
@@ -153,6 +156,9 @@
 		EAF4D74F1A79AA5E00D35330 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		EAFB29D81A872774009B1B86 /* ViewProviders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProviders.swift; sourceTree = "<group>"; };
 		EAFB29DA1A8727CE009B1B86 /* FetchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchViewModel.swift; sourceTree = "<group>"; };
+		EAFB29DC1A873C3A009B1B86 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		EAFB29DE1A873C57009B1B86 /* MessageCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageCell.xib; sourceTree = "<group>"; };
+		EAFB29E71A874760009B1B86 /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		EAFD13CD1A778BAE00754556 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		F95D95DC1A8482BB0068F090 /* AzureClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AzureClient.swift; sourceTree = "<group>"; };
 		F95D95DE1A84A1170068F090 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -216,6 +222,8 @@
 			children = (
 				EA196FED1A83549300FEBA7F /* ChatView.xib */,
 				EA196FEE1A83549300FEBA7F /* ChatViewController.swift */,
+				EAFB29DE1A873C57009B1B86 /* MessageCell.xib */,
+				EAFB29DC1A873C3A009B1B86 /* MessageCell.swift */,
 				EA196FEF1A83549300FEBA7F /* StorylineView.xib */,
 				EA196FF01A83549300FEBA7F /* StorylineViewController.swift */,
 				EA196FF11A83549300FEBA7F /* VideoPlayerView.xib */,
@@ -379,6 +387,7 @@
 				EAB81BE31A84BAAB00BAE388 /* UIKitExtension.swift */,
 				EA704AEE1A86C3280062623F /* MeteorExtension.swift */,
 				EAFB29D81A872774009B1B86 /* ViewProviders.swift */,
+				EAFB29E71A874760009B1B86 /* BaseViewModel.swift */,
 				EA82DE5F1A84792D002DD224 /* ArrayViewModel.swift */,
 				EAFB29DA1A8727CE009B1B86 /* FetchViewModel.swift */,
 				EA163CF81A85ED6700C2589B /* Segue.swift */,
@@ -506,6 +515,7 @@
 				EA19700A1A83549300FEBA7F /* VideoPlayerView.xib in Resources */,
 				EA1970141A83549300FEBA7F /* ProfileView.xib in Resources */,
 				EA1970121A83549300FEBA7F /* EditProfileView.xib in Resources */,
+				EAFB29DF1A873C57009B1B86 /* MessageCell.xib in Resources */,
 				EA19700E1A83549300FEBA7F /* ConnectionsView.xib in Resources */,
 				EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */,
 				EA1970101A83549300FEBA7F /* DiscoverView.xib in Resources */,
@@ -614,6 +624,7 @@
 				F95D95DD1A8482BB0068F090 /* AzureClient.swift in Sources */,
 				EAF4D7621A79AA5E00D35330 /* RootViewController.swift in Sources */,
 				EA19700F1A83549300FEBA7F /* ConnectionsViewController.swift in Sources */,
+				EAFB29E81A874760009B1B86 /* BaseViewModel.swift in Sources */,
 				EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */,
 				EAF195C91A820F2700A2F103 /* MatchService.swift in Sources */,
 				EA5634EF1A77428F00F62B52 /* User.swift in Sources */,
@@ -623,6 +634,7 @@
 				EA5634EE1A77428F00F62B52 /* Message.swift in Sources */,
 				EAEA82E91A86941C00A080ED /* Match.swift in Sources */,
 				EAFB29DB1A8727CE009B1B86 /* FetchViewModel.swift in Sources */,
+				EAFB29DD1A873C3A009B1B86 /* MessageCell.swift in Sources */,
 				EA82DE601A84792D002DD224 /* ArrayViewModel.swift in Sources */,
 				EAF195CC1A8210EA00A2F103 /* RAC.swift in Sources */,
 				EA163CF91A85ED6700C2589B /* Segue.swift in Sources */,
