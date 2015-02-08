@@ -84,5 +84,6 @@ class VideoRecorderViewController : UIViewController {
         filter?.addTarget(movieWriter)
         
         videoCamera?.addTarget(filter)
+        videoCamera?.audioEncodingTarget = movieWriter
     }
 }
