@@ -17,8 +17,8 @@ class ChatViewController : BaseViewController,
     
     let player = VideoPlayerViewController()
     let recorder = VideoRecorderViewController()
-
     let storyline = StorylineViewController()
+    
     var connection: Connection? {
         didSet {
             storyline.connection = connection
@@ -29,8 +29,22 @@ class ChatViewController : BaseViewController,
     @IBOutlet weak var topContainer: UIView!
     @IBOutlet weak var bottomContainer: UIView!
     
+    @IBOutlet var titleView: UIView!
+    @IBOutlet weak var avatarView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        avatarView.sd_setImageWithURL(connection?.user?.profilePhotoURL)
+        nameLabel.text = connection?.user?.firstName
+        
+        navigationItem.titleView = self.titleView
+        
+        recorder.delegate = self
+        player.delegate = self
+        storyline.delegate = self
         
         addChildViewController(player)
         addChildViewController(recorder)
@@ -38,12 +52,12 @@ class ChatViewController : BaseViewController,
         
         bottomContainer.addSubview(storyline.view)
         storyline.view.makeEdgesEqualTo(bottomContainer)
-        
-        recorder.delegate = self
-        player.delegate = self
-        storyline.delegate = self
 
         showRecorder(nil)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        avatarView.makeCircular()
     }
     
     @IBAction func showPlayer(sender: AnyObject?) {
