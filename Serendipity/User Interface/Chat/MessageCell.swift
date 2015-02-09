@@ -11,9 +11,15 @@ import Foundation
 class MessageCell : UICollectionViewCell {
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var playIcon: UIImageView!
     
     var message : Message? {
         didSet {
+            if let unread = message?.isUnread {
+                playIcon.hidden = false
+            } else {
+                playIcon.hidden = true
+            }
             imageView.sd_setImageWithURL(message?.thumbnailNSURL)
         }
     }

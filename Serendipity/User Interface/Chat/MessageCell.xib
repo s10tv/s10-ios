@@ -38,6 +38,7 @@
             <size key="customSize" width="266" height="356"/>
             <connections>
                 <outlet property="imageView" destination="3Ka-4L-4oY" id="h0p-Sl-7lN"/>
+                <outlet property="playIcon" destination="mRW-Az-PNq" id="vQv-6d-SBd"/>
             </connections>
             <point key="canvasLocation" x="395" y="452"/>
         </collectionViewCell>
