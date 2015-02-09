@@ -54,7 +54,7 @@ class DiscoverViewController : BaseViewController {
     
     @IBAction func messageMatch(sender: AnyObject?) {
         if let match = currentMatch {
-            match.user?.makeConnection() // Message User
+            // TODO: Show record screen instead
             showConnections(nil)
         }
     }

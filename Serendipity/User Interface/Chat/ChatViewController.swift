@@ -96,10 +96,6 @@ class ChatViewController : BaseViewController,
     
     // MARK: - Recorder Delegate
     
-    func fetchMessages() -> NSSet? {
-        return connection?.messages
-    }
-    
     func didStopRecording(videoRecordingURL: NSURL, thumbnail: NSData) {
         if let recipientId = connection?.user?.documentID {
             AzureClient.sendMessage(videoRecordingURL, thumbnail:thumbnail, recipientId: recipientId, {

@@ -12,24 +12,35 @@ import Meteor
 @objc(User)
 class User: _User {
     
+    var connection : Connection? {
+        return fetchConnection().fetchObjects().first as? Connection
+    }
+    var match : Match? {
+        return fetchMatch().fetchObjects().first as? Match
+    }
+    
+    var isCurrentUser : Bool {
+        return documentID == Core.meteor.userID
+    }
+    
     var photos : [Photo]? {
-        get {
-            if let urls = photoURLs as? [NSString] {
-                return urls.map { Photo(url: $0) }
-            }
-            return nil
+        if let urls = photoURLs as? [NSString] {
+            return urls.map { Photo(url: $0) }
         }
+        return nil
     }
     
     var profilePhotoURL : NSURL? {
         let firstPhotoUrl = photos?.first?.url
         return firstPhotoUrl != nil ? NSURL(string: firstPhotoUrl!) : nil
     }
-
-    func makeConnection() {
-        if connection != nil { return }
-        // TODO: Implement me
-//        connection = Connection.MR_createInContext(self.managedObjectContext) as? Connection
+    
+    func fetchConnection() -> NSFetchedResultsController {
+        return Connection.by(ConnectionRelationships.user.rawValue, value: self).frc()
+    }
+    
+    func fetchMatch() -> NSFetchedResultsController {
+        return Connection.by(MatchRelationships.user.rawValue, value: self).frc()
     }
     
     class func findByDocumentID(documentID: String) -> User? {

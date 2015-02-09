@@ -9,7 +9,6 @@ enum ConnectionAttributes: String {
 }
 
 enum ConnectionRelationships: String {
-    case messages = "messages"
     case user = "user"
 }
 
@@ -52,39 +51,9 @@ class _Connection: NSManagedObject {
     // MARK: - Relationships
 
     @NSManaged
-    var messages: NSSet
-
-    @NSManaged
     var user: User?
 
     // func validateUser(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
 }
 
-extension _Connection {
-
-    func addMessages(objects: NSSet) {
-        let mutable = self.messages.mutableCopy() as NSMutableSet
-        mutable.unionSet(objects)
-        self.messages = mutable.copy() as NSSet
-    }
-
-    func removeMessages(objects: NSSet) {
-        let mutable = self.messages.mutableCopy() as NSMutableSet
-        mutable.minusSet(objects)
-        self.messages = mutable.copy() as NSSet
-    }
-
-    func addMessagesObject(value: Message!) {
-        let mutable = self.messages.mutableCopy() as NSMutableSet
-        mutable.addObject(value)
-        self.messages = mutable.copy() as NSSet
-    }
-
-    func removeMessagesObject(value: Message!) {
-        let mutable = self.messages.mutableCopy() as NSMutableSet
-        mutable.removeObject(value)
-        self.messages = mutable.copy() as NSSet
-    }
-
-}

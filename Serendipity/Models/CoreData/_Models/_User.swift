@@ -14,11 +14,6 @@ enum UserAttributes: String {
     case work = "work"
 }
 
-enum UserRelationships: String {
-    case connection = "connection"
-    case match = "match"
-}
-
 @objc
 class _User: NSManagedObject {
 
@@ -86,16 +81,6 @@ class _User: NSManagedObject {
     // func validateWork(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
-
-    @NSManaged
-    var connection: Connection?
-
-    // func validateConnection(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
-
-    @NSManaged
-    var match: Match?
-
-    // func validateMatch(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
 }
 

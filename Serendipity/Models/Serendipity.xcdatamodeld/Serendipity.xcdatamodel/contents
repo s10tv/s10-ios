@@ -3,8 +3,7 @@
     <entity name="Connection" representedClassName="Connection" syncable="YES">
         <attribute name="dateCreated" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="dateUpdated" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Message" inverseName="connection" inverseEntity="Message" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="connection" inverseEntity="User" syncable="YES">
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES">
             <userInfo>
                 <entry key="fieldName" value="recipient"/>
             </userInfo>
@@ -12,7 +11,7 @@
     </entity>
     <entity name="Match" representedClassName="Match" syncable="YES">
         <attribute name="dateMatched" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="match" inverseEntity="User" syncable="YES">
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES">
             <userInfo>
                 <entry key="fieldName" value="matchedUserId"/>
             </userInfo>
@@ -31,7 +30,7 @@
                 <entry key="fieldName" value="videoUrl"/>
             </userInfo>
         </attribute>
-        <relationship name="connection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Connection" inverseName="messages" inverseEntity="Connection" syncable="YES"/>
+        <relationship name="connection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Connection" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="about" optional="YES" attributeType="String" syncable="YES"/>
@@ -46,13 +45,11 @@
             </userInfo>
         </attribute>
         <attribute name="work" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="connection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Connection" inverseName="user" inverseEntity="Connection" syncable="YES"/>
-        <relationship name="match" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Match" inverseName="user" inverseEntity="Match" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Connection" positionX="-54" positionY="0" width="128" height="103"/>
+        <element name="Connection" positionX="-54" positionY="0" width="128" height="90"/>
         <element name="Match" positionX="-45" positionY="54" width="128" height="73"/>
         <element name="Message" positionX="-36" positionY="27" width="128" height="120"/>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="193"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="163"/>
     </elements>
 </model>

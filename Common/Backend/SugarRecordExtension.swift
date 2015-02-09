@@ -19,7 +19,32 @@ extension SugarRecord {
 }
 
 extension SugarRecordFinder {
+    
+    public func by(key: String, value: AnyObject) -> SugarRecordFinder {
+        return by(NSPredicate(format: "%K = %@", argumentArray: [key, value]))
+    }
+    
     public func frc() -> NSFetchedResultsController {
         return fetchedResultsController(nil)
+    }
+}
+
+extension NSManagedObject {
+    class func by(key: String, value: AnyObject) -> SugarRecordFinder {
+        return all().by(key, value: value)
+    }
+}
+
+// TODO: Separate file because it's unrelated to SugarRecord?
+extension NSFetchedResultsController {
+    func fetchObjects() -> [AnyObject] {
+        if fetchedObjects == nil {
+            var error: NSError?
+            let success = performFetch(&error)
+            if !success || error != nil {
+                Log.error("Failed when fetch frc \(self)", error)
+            }
+        }
+        return fetchedObjects ?? []
     }
 }
