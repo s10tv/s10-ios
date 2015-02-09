@@ -61,6 +61,15 @@ class ChatViewController : BaseViewController,
         showRecorder(nil)
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if user?.connection == nil && user != nil {
+            // TODO: Refactor to make using localizable more bearable
+            let body = NSString(format: NSLocalizedString("SendFirstMessageBody", comment: ""), user!.firstName!) as String
+            UIAlertView.show(NSLocalizedString("SendFirstMessageTitle", comment: ""), message: body)
+        }
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         avatarView.makeCircular()

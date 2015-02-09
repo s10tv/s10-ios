@@ -72,6 +72,7 @@
 		EA9F354A1A74CC6900E0C65D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Images.xcassets */; };
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
 		EA9F35591A74CC6900E0C65D /* SerendipityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F35581A74CC6900E0C65D /* SerendipityTests.swift */; };
+		EABD86651A88B50400F8B822 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABD86641A88B50400F8B822 /* Localizable.strings */; };
 		EAEA82E71A86941300A080ED /* _Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA82E61A86941300A080ED /* _Match.swift */; };
 		EAEA82E91A86941C00A080ED /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA82E81A86941C00A080ED /* Match.swift */; };
 		EAF195C71A81FE5B00A2F103 /* CoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF195C61A81FE5B00A2F103 /* CoreService.swift */; };
@@ -157,6 +158,7 @@
 		EA9F35571A74CC6900E0C65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA9F35581A74CC6900E0C65D /* SerendipityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerendipityTests.swift; sourceTree = "<group>"; };
 		EA9F35621A74CD8800E0C65D /* Serendipity-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Serendipity-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		EABD86641A88B50400F8B822 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		EAEA82E61A86941300A080ED /* _Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Match.swift; sourceTree = "<group>"; };
 		EAEA82E81A86941C00A080ED /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		EAF195C61A81FE5B00A2F103 /* CoreService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreService.swift; sourceTree = "<group>"; };
@@ -416,6 +418,7 @@
 				EA9F35621A74CD8800E0C65D /* Serendipity-Bridging-Header.h */,
 				EAF195CE1A827FAC00A2F103 /* Serendipity-Bridging.m */,
 				EA9F353E1A74CC6900E0C65D /* Info.plist */,
+				EABD86641A88B50400F8B822 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -548,6 +551,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EABD86651A88B50400F8B822 /* Localizable.strings in Resources */,
 				EA1970061A83549300FEBA7F /* ChatView.xib in Resources */,
 				EA1970181A83549300FEBA7F /* SignupView.xib in Resources */,
 				EA1970141A83549300FEBA7F /* ProfileView.xib in Resources */,

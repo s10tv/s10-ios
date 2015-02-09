@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  Serendipity
+
+  Created by Tony Xiao on 2/9/15.
+  Copyright (c) 2015 Serendipity. All rights reserved.
+*/
+"SendFirstMessageTitle" = "Send a message";
+"SendFirstMessageBody" = "Unless you send %@ a message, she will not be in your connections list and you won't be able to come back to her profile later";

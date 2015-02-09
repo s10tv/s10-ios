@@ -35,3 +35,10 @@ extension UIView {
         addGestureRecognizer(tap)
     }
 }
+
+extension UIAlertView {
+    class func show(title: String, message: String? = nil) {
+        let alert = UIAlertView(title: title, message: message, delegate: nil, cancelButtonTitle: "OK")
+        alert.show()
+    }
+}

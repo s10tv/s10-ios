@@ -47,7 +47,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d7C-Vd-1Qc">
-                    <rect key="frame" x="43.5" y="0.0" width="112.5" height="44"/>
+                    <rect key="frame" x="44" y="0.0" width="113" height="44"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K9D-dS-rpf" userLabel="Avatar">
                             <rect key="frame" x="0.0" y="5" width="34" height="34"/>
@@ -56,7 +56,7 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anastasia" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Evx-gs-ASt" userLabel="Name">
-                            <rect key="frame" x="42" y="11" width="70.5" height="22"/>
+                            <rect key="frame" x="42" y="11" width="71" height="22"/>
                             <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
