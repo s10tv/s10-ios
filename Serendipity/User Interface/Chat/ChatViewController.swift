@@ -19,11 +19,12 @@ class ChatViewController : BaseViewController,
     let recorder = VideoRecorderViewController()
     let storyline = StorylineViewController()
     
-    var connection: Connection? {
+    var user: User? {
         didSet {
-            storyline.connection = connection
+            storyline.connection = user?.connection
         }
     }
+    
     var videoRecordingURL: NSURL?
     
     @IBOutlet weak var topContainer: UIView!
@@ -37,8 +38,8 @@ class ChatViewController : BaseViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        avatarView.sd_setImageWithURL(connection?.user?.profilePhotoURL)
-        nameLabel.text = connection?.user?.firstName
+        avatarView.sd_setImageWithURL(user?.profilePhotoURL)
+        nameLabel.text = user?.firstName
         titleView.whenTapped { [weak self] in
             // TODO: Avoid hard-coding segue identifier somehow
             self!.performSegueWithIdentifier("ChatToProfile", sender: nil)
@@ -61,12 +62,13 @@ class ChatViewController : BaseViewController,
     }
     
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         avatarView.makeCircular()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let profileVC = segue.destinationViewController as? ProfileViewController {
-            profileVC.user = connection?.user
+            profileVC.user = user
         }
     }
     
@@ -97,7 +99,7 @@ class ChatViewController : BaseViewController,
     // MARK: - Recorder Delegate
     
     func didStopRecording(videoRecordingURL: NSURL, thumbnail: NSData) {
-        if let recipientId = connection?.user?.documentID {
+        if let recipientId = user?.documentID {
             AzureClient.sendMessage(videoRecordingURL, thumbnail:thumbnail, recipientId: recipientId, {
                 thumbnailUrl, videoUrl, serverResult, err -> Void in
                 if let fullError = err {
@@ -110,7 +112,7 @@ class ChatViewController : BaseViewController,
                 println(videoUrl);
             })
         } else {
-            println(connection);
+            println(user);
         }
     }
     

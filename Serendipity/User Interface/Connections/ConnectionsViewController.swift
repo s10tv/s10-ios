@@ -33,7 +33,7 @@ class ConnectionsViewController : BaseViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ChatViewController {
-            vc.connection = self.currentConnection
+            vc.user = self.currentConnection?.user
         }
     }
 }
