@@ -16,13 +16,10 @@ class DiscoverViewController : BaseViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var messageButton: UIButton!
     
-    var matches : [User] = []
     var profileVC : ProfileViewController!
     var currentMatch : Match? {
         didSet {
             profileVC.user = currentMatch?.user
-            let count = User.all().find().count
-            println("This many users \(count)")
         }
     }
     
@@ -37,10 +34,7 @@ class DiscoverViewController : BaseViewController {
         profileVC = storyboard?.instantiateViewControllerWithIdentifier("Profile") as ProfileViewController
         addChildViewController(profileVC)
         view.insertSubview(profileVC.view, atIndex: 0)
-        profileVC.view.snp_makeConstraints { make in
-            make.edges.equalTo(self.view)
-            return
-        }
+        profileVC.view.makeEdgesEqualTo(view)
         
         // TODO: Figure out better way to do this that can be statically checked
         RAC(self, "currentMatch") <~ Core.matchService.currentMatch
@@ -66,11 +60,4 @@ class DiscoverViewController : BaseViewController {
         }
     }
     
-    @IBAction func showSettings(sender: AnyObject?) {
-        performSegueWithIdentifier("DiscoverToSettings", sender: sender)
-    }
-    
-    @IBAction func showConnections(sender: AnyObject?) {
-        performSegueWithIdentifier("DiscoverToConnections", sender: sender)
-    }
 }

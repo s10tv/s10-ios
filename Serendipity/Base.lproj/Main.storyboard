@@ -56,20 +56,18 @@
                     <navigationItem key="navigationItem" title="Discover" id="AFO-Ak-h5m">
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="0gg-2j-uMk">
                             <connections>
-                                <action selector="showSettings:" destination="brw-cx-YUO" id="aG9-Jh-GkI"/>
+                                <segue destination="Vhy-hq-gwn" kind="show" id="OcB-VR-4RX"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Connections" id="uJ0-8m-Eyy">
                             <connections>
-                                <action selector="showConnections:" destination="brw-cx-YUO" id="0VJ-yY-Ao7"/>
+                                <segue destination="YUi-xK-iJg" kind="show" id="wBe-eH-fNO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <segue destination="YUi-xK-iJg" kind="show" identifier="DiscoverToConnections" id="oMK-eI-csk"/>
-                        <segue destination="Vhy-hq-gwn" kind="show" identifier="DiscoverToSettings" id="md6-zB-tVo"/>
                         <segue destination="rRd-ZO-60U" kind="show" identifier="DiscoverToChat" id="kL9-q9-18I"/>
                     </connections>
                 </viewController>
