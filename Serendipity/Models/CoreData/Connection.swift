@@ -11,7 +11,7 @@ class Connection: _Connection {
     
     // NOTE: Not meaningfully ordered for performance, despite array return type.
     var messages: [Message] {
-        return fetchMessages(false).fetchObjects() as [Message]
+        return fetchMessages(sorted: false).fetchObjects() as [Message]
     }
 
     override func awakeFromInsert() {
@@ -20,7 +20,7 @@ class Connection: _Connection {
         self.dateUpdated = NSDate()
     }
     
-    func fetchMessages(sorted: Bool) -> NSFetchedResultsController {
+    func fetchMessages(#sorted: Bool) -> NSFetchedResultsController {
         let messages = Message.by(MessageRelationships.connection.rawValue, value: self)
         let sortDesc = NSSortDescriptor(key: MessageAttributes.timestamp.rawValue, ascending: true)
         return sorted ? messages.sorted(by: sortDesc).frc() : messages.frc()
