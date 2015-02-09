@@ -39,8 +39,7 @@ class EditProfileViewController : BaseViewController {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        user?.beginWriting()
         user?.about = aboutField.text
-        user?.endWriting()
+        user?.save()
     }
 }

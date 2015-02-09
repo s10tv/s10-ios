@@ -23,14 +23,27 @@ class ProfileViewController : BaseViewController, SwipeViewDelegate, SwipeViewDa
     @IBOutlet weak var aboutLabel: UILabel!
     
     var user : User? {
+        willSet {
+            willChangeValueForKey("user")
+        }
         didSet {
+            didChangeValueForKey("user")
             if isViewLoaded() { reloadData() }
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.title = user?.firstName
+        // TODO: Find better solution than hardcoding keypath string
+        RAC(navigationItem, "title") <~ racObserve("user.firstName")
+        RAC(nameLabel, "text") <~ racObserve("user.firstName")
+        RAC(aboutLabel, "text") <~ racObserve("user.about")
+        RAC(locationLabel, "text") <~ racObserve("user.location")
+        RAC(workLabel, "text") <~ racObserve("user.work")
+        RAC(schoolLabel, "text") <~ racObserve("user.education")
+        RAC(ageLabel, "text") <~ racObserve("user.age").map { age in
+            return (age as? NSNumber)?.stringValue
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -42,12 +55,6 @@ class ProfileViewController : BaseViewController, SwipeViewDelegate, SwipeViewDa
         swipeView.reloadData()
         swipeView.scrollToItemAtIndex(0, duration: 0)
         pageControl.numberOfPages = numberOfItemsInSwipeView(swipeView)
-        nameLabel.text = user?.firstName
-        ageLabel.text = user?.age?.stringValue
-        locationLabel.text = user?.location
-        workLabel.text = user?.work
-        schoolLabel.text = user?.education
-        aboutLabel.text = user?.about
     }
     
     // MARK: - SwipeView Delegate / Data Soruce
