@@ -46,6 +46,14 @@ class DiscoverViewController : BaseViewController {
         RAC(self, "currentMatch") <~ Core.matchService.currentMatch
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let chatVC = segue.destinationViewController as? ChatViewController {
+            chatVC.user = currentMatch?.user
+        }
+    }
+    
+    // MARK: - Actions
+    
     @IBAction func nextMatch(sender: AnyObject?) {
         if let match = currentMatch {
             Core.matchService.passMatch(match)
@@ -54,8 +62,7 @@ class DiscoverViewController : BaseViewController {
     
     @IBAction func messageMatch(sender: AnyObject?) {
         if let match = currentMatch {
-            // TODO: Show record screen instead
-            showConnections(nil)
+            performSegueWithIdentifier("DiscoverToChat", sender: nil)
         }
     }
     

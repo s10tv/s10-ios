@@ -20,7 +20,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5S-Ky-nbE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-68" y="1587"/>
+            <point key="canvasLocation" x="-98" y="1042"/>
         </scene>
         <!--Signup View Controller-->
         <scene sceneID="ufC-wZ-h7g">
@@ -31,7 +31,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="300" y="872"/>
+            <point key="canvasLocation" x="676" y="218"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="d4d-05-BTY">
@@ -47,7 +47,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fR6-RZ-qMo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="487" y="228"/>
+            <point key="canvasLocation" x="282" y="218"/>
         </scene>
         <!--Discover-->
         <scene sceneID="5fm-o7-1g2">
@@ -70,6 +70,7 @@
                     <connections>
                         <segue destination="YUi-xK-iJg" kind="show" identifier="DiscoverToConnections" id="oMK-eI-csk"/>
                         <segue destination="Vhy-hq-gwn" kind="show" identifier="DiscoverToSettings" id="md6-zB-tVo"/>
+                        <segue destination="rRd-ZO-60U" kind="show" identifier="DiscoverToChat" id="kL9-q9-18I"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TlQ-8h-TWe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -91,7 +92,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y2Q-Pb-RU0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1053" y="1587"/>
+            <point key="canvasLocation" x="1115" y="1042"/>
         </scene>
         <!--Chat-->
         <scene sceneID="bLH-YZ-QSJ">
@@ -106,7 +107,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B9f-P8-SG1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1419" y="1587"/>
+            <point key="canvasLocation" x="914" y="1755"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="mYf-IJ-xkN">
@@ -116,7 +117,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H5s-tv-xnk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1802" y="1587"/>
+            <point key="canvasLocation" x="1317" y="1755"/>
         </scene>
         <!--Edit Profile-->
         <scene sceneID="98E-xT-5yo">
@@ -128,7 +129,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WMP-6s-UTq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-448" y="1587"/>
+            <point key="canvasLocation" x="-478" y="1042"/>
         </scene>
         <!--Settings-->
         <scene sceneID="6E1-Ce-dgY">
@@ -144,7 +145,10 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zfc-Bp-zvE" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationItem title="Settings" id="4PF-BM-XHD"/>
             </objects>
-            <point key="canvasLocation" x="312" y="1587"/>
+            <point key="canvasLocation" x="282" y="1042"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="kL9-q9-18I"/>
+    </inferredMetricsTieBreakers>
 </document>
