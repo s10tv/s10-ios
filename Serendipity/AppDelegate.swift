@@ -9,6 +9,8 @@
 import UIKit
 import SugarRecord
 import FacebookSDK
+import Fabric
+import Crashlytics
 
 var Core : CoreService!
 
@@ -24,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        Fabric.with([Crashlytics()])
         Core = CoreService()
         
         Log.info("App Launched")
