@@ -27,12 +27,17 @@ extension NSObject {
         let nc = NSNotificationCenter.defaultCenter()
         return nc.rac_addObserverForName(name, object: object).takeUntil(rac_willDeallocSignal())
     }
+    
+    func racObserve(keyPath: String) -> RACSignal {
+        return self.rac_valuesForKeyPath(keyPath, observer: self)
+    }
 }
 
 // Replaces the RACObserve macro
 func RACObserve(target: NSObject, keyPath: String) -> RACSignal  {
     return target.rac_valuesForKeyPath(keyPath, observer: target)
 }
+
 
 // a struct that replaces the RAC macro
 struct RAC  {
@@ -44,6 +49,8 @@ struct RAC  {
         self.target = target
         self.keyPath = keyPath
         self.nilValue = nilValue
+        let sel = Selector("set\(keyPath.stringByCapitalizingFirstCharacter):")
+        assert(target.respondsToSelector(sel), "RAC target must responds to selector \(sel)")
     }
     
     func assignSignal(signal : RACSignal) {
