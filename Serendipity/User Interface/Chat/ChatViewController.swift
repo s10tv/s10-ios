@@ -21,9 +21,10 @@ class ChatViewController : BaseViewController,
     
     var user: User? {
         didSet {
-            storyline.connection = user?.connection
+            assert(oldValue == nil, "Changing user on chatVC is not yet supported")
         }
     }
+    private var connectionFetchModel : FetchViewModel!
     
     var videoRecordingURL: NSURL?
     
@@ -34,10 +35,18 @@ class ChatViewController : BaseViewController,
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        assert(user != nil, "User being nil is not supported on chatVC")
+        
+        connectionFetchModel = FetchViewModel(frc: user!.fetchConnection())
+        connectionFetchModel.performFetchIfNeeded()
+        connectionFetchModel.signal.subscribeNextAs { [weak self] (objects: [Connection]) -> () in
+            self?.storyline.connection = objects.first
+            return
+        }
+
         avatarView.sd_setImageWithURL(user?.profilePhotoURL)
         nameLabel.text = user?.firstName
         titleView.whenTapped { [weak self] in
