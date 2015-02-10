@@ -58,6 +58,14 @@ class GameViewController : BaseViewController {
         navigationController?.navigationBarHidden = false
     }
     
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
+    @IBAction func exitGame(sender: AnyObject) {
+        navigationController?.popViewControllerAnimated(true)
+    }
+
     @IBAction func confirmChoices(sender: AnyObject) {
         for i in 0..<self.avatars.count {
             let match = Core.matchService.fetch.objects[i] as Match

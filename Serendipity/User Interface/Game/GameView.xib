@@ -40,6 +40,19 @@
                         <action selector="confirmChoices:" destination="-1" eventType="touchUpInside" id="QEp-Ou-mJt"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svh-Tk-FMJ">
+                    <rect key="frame" x="0.0" y="0.0" width="87" height="57"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="87" id="820-SS-7PK"/>
+                        <constraint firstAttribute="height" constant="57" id="eLk-S0-G9U"/>
+                    </constraints>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="exitGame:" destination="-1" eventType="touchUpInside" id="ahI-aL-guQ"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
@@ -48,6 +61,8 @@
                 <constraint firstAttribute="bottom" secondItem="PlY-Za-18q" secondAttribute="bottom" constant="8" id="5A7-GC-6tv"/>
                 <constraint firstAttribute="trailing" secondItem="PlY-Za-18q" secondAttribute="trailing" constant="8" id="6F9-1I-zbm"/>
                 <constraint firstItem="Zm3-4b-5LY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="AaU-YK-K7J"/>
+                <constraint firstItem="svh-Tk-FMJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="I7w-Nd-fwg"/>
+                <constraint firstItem="svh-Tk-FMJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="R5b-iB-hQI"/>
                 <constraint firstItem="Zm3-4b-5LY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="T9w-Mc-Bt7"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>

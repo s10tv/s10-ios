@@ -23,6 +23,14 @@ class RootViewController : UINavigationController {
     override func supportedInterfaceOrientations() -> Int {
         return Int(UIInterfaceOrientationMask.Portrait.rawValue);
     }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        if let vc = topViewController {
+            return vc.prefersStatusBarHidden()
+        } else {
+            return false
+        }
+    }
         
     func showProfile(user: User?, animated: Bool) {
         let vc = storyboard?.instantiateViewControllerWithIdentifier("Profile") as UIViewController!
