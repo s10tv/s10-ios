@@ -14,7 +14,7 @@ import SugarRecord
 class MatchService {
     private let meteor : METCoreDataDDPClient
     private let subscription : METSubscription
-    private let fetch : FetchViewModel
+    let fetch : FetchViewModel
     
     let currentMatch = RACReplaySubject(capacity: 1)
     

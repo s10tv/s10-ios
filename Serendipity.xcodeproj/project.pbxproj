@@ -58,6 +58,8 @@
 		EA1970191A83549300FEBA7F /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1970051A83549300FEBA7F /* SignupViewController.swift */; };
 		EA19701B1A8354D000FEBA7F /* ConnectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA19701A1A8354D000FEBA7F /* ConnectionCell.swift */; };
 		EA19701D1A8354DB00FEBA7F /* ConnectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA19701C1A8354DB00FEBA7F /* ConnectionCell.xib */; };
+		EA2AB70E1A8A00F200D42C6C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2AB70D1A8A00F200D42C6C /* GameViewController.swift */; };
+		EA2AB7101A8A00FC00D42C6C /* GameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA2AB70F1A8A00FC00D42C6C /* GameView.xib */; };
 		EA5634E11A7741FF00F62B52 /* Serendipity.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA5634DF1A7741FF00F62B52 /* Serendipity.xcdatamodeld */; };
 		EA5634EA1A77428F00F62B52 /* _Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E41A77428F00F62B52 /* _Connection.swift */; };
 		EA5634EB1A77428F00F62B52 /* _Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E51A77428F00F62B52 /* _Message.swift */; };
@@ -139,6 +141,8 @@
 		EA1970051A83549300FEBA7F /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		EA19701A1A8354D000FEBA7F /* ConnectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionCell.swift; sourceTree = "<group>"; };
 		EA19701C1A8354DB00FEBA7F /* ConnectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionCell.xib; sourceTree = "<group>"; };
+		EA2AB70D1A8A00F200D42C6C /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
+		EA2AB70F1A8A00FC00D42C6C /* GameView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameView.xib; sourceTree = "<group>"; };
 		EA5634E01A7741FF00F62B52 /* Serendipity.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Serendipity.xcdatamodel; sourceTree = "<group>"; };
 		EA5634E41A77428F00F62B52 /* _Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Connection.swift; sourceTree = "<group>"; };
 		EA5634E51A77428F00F62B52 /* _Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Message.swift; sourceTree = "<group>"; };
@@ -344,6 +348,15 @@
 			path = Signup;
 			sourceTree = "<group>";
 		};
+		EA2AB70C1A8A00E300D42C6C /* Game */ = {
+			isa = PBXGroup;
+			children = (
+				EA2AB70D1A8A00F200D42C6C /* GameViewController.swift */,
+				EA2AB70F1A8A00FC00D42C6C /* GameView.xib */,
+			);
+			path = Game;
+			sourceTree = "<group>";
+		};
 		EA5634DE1A7741FF00F62B52 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -443,6 +456,7 @@
 		EAF4D7441A79AA5E00D35330 /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
+				EA2AB70C1A8A00E300D42C6C /* Game */,
 				EA196FEC1A83549300FEBA7F /* Chat */,
 				EA196FF51A83549300FEBA7F /* Connections */,
 				EA196FF81A83549300FEBA7F /* Discover */,
@@ -558,6 +572,7 @@
 				EA1970141A83549300FEBA7F /* ProfileView.xib in Resources */,
 				EA1970121A83549300FEBA7F /* EditProfileView.xib in Resources */,
 				EAFB29DF1A873C57009B1B86 /* MessageCell.xib in Resources */,
+				EA2AB7101A8A00FC00D42C6C /* GameView.xib in Resources */,
 				EA19700E1A83549300FEBA7F /* ConnectionsView.xib in Resources */,
 				EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */,
 				EA1970101A83549300FEBA7F /* DiscoverView.xib in Resources */,
@@ -689,6 +704,7 @@
 				EA5634EF1A77428F00F62B52 /* User.swift in Sources */,
 				EA1970071A83549300FEBA7F /* ChatViewController.swift in Sources */,
 				EAF195C71A81FE5B00A2F103 /* CoreService.swift in Sources */,
+				EA2AB70E1A8A00F200D42C6C /* GameViewController.swift in Sources */,
 				EA5634EE1A77428F00F62B52 /* Message.swift in Sources */,
 				EAEA82E91A86941C00A080ED /* Match.swift in Sources */,
 				EA0FC9431A87DE5800D62625 /* FetchViewModel.swift in Sources */,
