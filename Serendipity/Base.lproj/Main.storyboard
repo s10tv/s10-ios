@@ -44,9 +44,6 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="lCC-Qc-dZm" kind="relationship" relationship="rootViewController" id="pdz-sb-nbx"/>
-                    </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fR6-RZ-qMo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -104,7 +101,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HlS-eX-zZi" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-98" y="218"/>
+            <point key="canvasLocation" x="-290" y="298"/>
         </scene>
         <!--Chat-->
         <scene sceneID="bLH-YZ-QSJ">
@@ -152,6 +149,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <segue destination="bQv-dO-auU" kind="show" identifier="SettingsToProfile" id="wnv-o0-kZH"/>
+                        <segue destination="lCC-Qc-dZm" kind="show" identifier="SettingsToGame" id="LW4-Jw-Q7g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zfc-Bp-zvE" userLabel="First Responder" sceneMemberID="firstResponder"/>

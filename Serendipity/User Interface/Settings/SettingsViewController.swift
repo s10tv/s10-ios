@@ -43,16 +43,22 @@ class SettingsViewController : UIViewController {
     // MARK: - Actions
     
     @IBAction func viewProfile(sender: AnyObject) {
-        self.performSegueWithIdentifier("SettingsToProfile", sender: sender)
+        performSegueWithIdentifier("SettingsToProfile", sender: sender)
     }
     
     @IBAction func inviteFriends(sender: AnyObject) {
+
     }
     
     
     @IBAction func sendFeedback(sender: AnyObject) {
         
     }
+
+    @IBAction func playGame(sender: AnyObject) {
+        performSegueWithIdentifier("SettingsToGame", sender: nil)
+    }
+
     
     @IBAction func logout(sender: AnyObject) {
         
