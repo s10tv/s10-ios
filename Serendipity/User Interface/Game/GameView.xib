@@ -17,7 +17,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="game_background" translatesAutoresizingMaskIntoConstraints="NO" id="Zm3-4b-5LY">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game_background" translatesAutoresizingMaskIntoConstraints="NO" id="Zm3-4b-5LY">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Lu-FI-gAz">
@@ -29,8 +29,9 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FWx-3L-EJd">
                     <rect key="frame" x="217" y="99" width="70" height="70"/>
                 </imageView>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PlY-Za-18q">
-                    <rect key="frame" x="257" y="530" width="55" height="30"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PlY-Za-18q">
+                    <rect key="frame" x="256" y="530" width="56" height="30"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                     <state key="normal" title="Confirm">
                         <color key="titleColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -41,6 +42,14 @@
                 </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="Zm3-4b-5LY" secondAttribute="trailing" id="23Y-Dc-gqQ"/>
+                <constraint firstAttribute="bottom" secondItem="Zm3-4b-5LY" secondAttribute="bottom" id="4S4-0G-BLE"/>
+                <constraint firstAttribute="bottom" secondItem="PlY-Za-18q" secondAttribute="bottom" constant="8" id="5A7-GC-6tv"/>
+                <constraint firstAttribute="trailing" secondItem="PlY-Za-18q" secondAttribute="trailing" constant="8" id="6F9-1I-zbm"/>
+                <constraint firstItem="Zm3-4b-5LY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="AaU-YK-K7J"/>
+                <constraint firstItem="Zm3-4b-5LY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="T9w-Mc-Bt7"/>
+            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>

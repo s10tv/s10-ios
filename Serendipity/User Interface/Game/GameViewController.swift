@@ -20,6 +20,12 @@ class GameViewController : BaseViewController {
             for (i, imageView) in enumerate(self.avatars) {
                 if i < matches.count {
                     imageView.sd_setImageWithURL(matches[i].user?.profilePhotoURL)
+                    imageView.whenTapped {
+                        let profileVC = self.storyboard?.instantiateViewControllerWithIdentifier("Profile") as ProfileViewController
+                        profileVC.user = matches[i].user
+//                        self.presentViewController(profileVC, animated: true, completion: nil)
+                        self.navigationController?.pushViewController(profileVC, animated: true)
+                    }
                 } else {
                     imageView.image = nil
                 }
@@ -40,6 +46,16 @@ class GameViewController : BaseViewController {
             imageView.contentMode = .ScaleToFill
             imageView.makeCircular()
         }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBarHidden = false
     }
     
     @IBAction func confirmChoices(sender: AnyObject) {

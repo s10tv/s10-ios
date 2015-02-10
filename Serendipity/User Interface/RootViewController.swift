@@ -16,7 +16,7 @@ class RootViewController : UINavigationController {
         if !FBSession.openActiveSessionWithAllowLoginUI(false) {
             showSignup(false)
         } else {
-            showDiscover(false)
+//            showDiscover(false)
         }
     }
     
