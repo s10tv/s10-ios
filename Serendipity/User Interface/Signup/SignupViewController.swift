@@ -7,27 +7,20 @@
 //
 
 import Foundation
-import FacebookSDK
 
 @objc(SignupViewController)
-class SignupViewController : BaseViewController, FBLoginViewDelegate {
-    
-    @IBOutlet weak var fbLoginView: FBLoginView!
+class SignupViewController : BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fbLoginView.delegate = self
     }
     
-    func loginViewFetchedUserInfo(loginView: FBLoginView!, user: FBGraphUser!) {
-//        let data = FBSession.activeSession().accessTokenData
-//        println("access token \(data.accessToken) expire \(data.expirationDate) userid \(data.userID) appid \(data.appID)")
-//        println("login fetched user info \(user)")
-        let root = self.navigationController as RootViewController
-        root.showProfile(nil, animated: true)
+    // TODO: Different behavior based on whether it's an existing or new user
+    @IBAction func login(sender: AnyObject) {
+        Core.loginWithUI().subscribeCompleted {
+            let root = self.navigationController as RootViewController
+            root.showDiscover(true)
+        }
     }
-    
-    func loginView(loginView: FBLoginView!, handleError error: NSError!) {
-        println("login errored \(error)")
-    }
+
 }

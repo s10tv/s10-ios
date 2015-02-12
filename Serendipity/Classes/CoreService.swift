@@ -38,25 +38,38 @@ class CoreService {
         meteor.addSubscriptionWithName("currentUser")
         meteor.addSubscriptionWithName("connections")
         meteor.addSubscriptionWithName("messages")
-
-        // Perform Login. TODO: Send fb access token if login otherwise expired
-        // TODO: Need to connect after authenticating with fb, not just at app start
-        if !meteor.hasAccount() && FBSession.openActiveSessionWithAllowLoginUI(false) {
-            let data = FBSession.activeSession().accessTokenData
-            meteor.loginWithFacebook(data.accessToken, expiresAt: data.expirationDate).subscribeError({ error in
-                println("login error \(error)")
-            }, completed: {
-                println("login success")
-            })
-        }
         
         // Initialize other services
         matchService = MatchService(meteor: meteor)
         AzureClient.startWithMeteor(meteor)
     }
     
-    func loginWithFacebook() {
-        FBSession.openActiveSessionWithAllowLoginUI(true)
+    private func loginToMeteor() {
+        let data = FBSession.activeSession().accessTokenData
+        meteor.loginWithFacebook(data.accessToken, expiresAt: data.expirationDate).subscribeError({ error in
+            println("login error \(error)")
+        }, completed: {
+            println("login success")
+        })
+    }
+    
+    private let fbReadPerms = ["public_profile"]
+    
+    func attemptLoginWithCachedCredentials() -> Bool {
+        if meteor.hasAccount() {
+            return true
+        }
+        if FBSession.openActiveSession(readPermissions: fbReadPerms) {
+            loginToMeteor()
+            return true
+        }
+        return false
+    }
+    
+    func loginWithUI() -> RACSignal {
+        return FBSession.openActiveSessionWithUI(readPermissions: fbReadPerms).deliverOnMainThread().doCompleted {
+            self.loginToMeteor()
+        }.replay()
     }
     
     func logout() -> RACSignal {
