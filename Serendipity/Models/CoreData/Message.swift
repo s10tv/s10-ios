@@ -20,11 +20,16 @@ class Message: _Message {
         return url ?? connection?.user?.profilePhotoURL
     }
     
+    override func awakeFromInsert() {
+        super.awakeFromInsert()
+        self.timestamp = NSDate()
+    }
+    
     func jsqMessage() -> JSQMessage {
-        let senderID = connection?.user?.documentID
-        let displayName = connection?.user?.firstName
-        let text = "Some text sent on \(timestamp)"
-        return JSQMessage(senderId: senderID, senderDisplayName: displayName, date: timestamp, text: text)
+        let senderID = sender?.documentID
+        let displayName = sender?.firstName
+        let txt = text ?? "empty"
+        return JSQMessage(senderId: senderID, senderDisplayName: displayName, date: timestamp, text: txt)
     }
     
 }

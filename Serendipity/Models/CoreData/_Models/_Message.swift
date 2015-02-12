@@ -5,6 +5,7 @@ import CoreData
 
 enum MessageAttributes: String {
     case isUnread = "isUnread"
+    case text = "text"
     case thumbnailURL = "thumbnailURL"
     case timestamp = "timestamp"
     case videoURL = "videoURL"
@@ -12,6 +13,7 @@ enum MessageAttributes: String {
 
 enum MessageRelationships: String {
     case connection = "connection"
+    case sender = "sender"
 }
 
 @objc
@@ -46,6 +48,11 @@ class _Message: NSManagedObject {
     // func validateIsUnread(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
+    var text: String?
+
+    // func validateText(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
     var thumbnailURL: String?
 
     // func validateThumbnailURL(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
@@ -66,6 +73,11 @@ class _Message: NSManagedObject {
     var connection: Connection?
 
     // func validateConnection(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var sender: User?
+
+    // func validateSender(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
 }
 

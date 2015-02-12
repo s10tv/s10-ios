@@ -23,11 +23,6 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
     var outgoingBubbleData : JSQMessagesBubbleImage!
     var incomingBubbleData : JSQMessagesBubbleImage!
     
-    
-//    let incomingBubble =
-//    self.outgoingBubbleImageData = [bubbleFactory outgoingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleLightGrayColor]];
-//    self.incomingBubbleImageData = [bubbleFactory incomingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleGreenColor]];
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,7 +35,7 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
         messages = FetchViewModel(frc: connection!.fetchMessages(sorted: true))
         messages.performFetchIfNeeded()
         messages.signal.subscribeNext { _ in
-            self.reloadInputViews()
+            self.collectionView.reloadData()
             return
         }
         
@@ -68,7 +63,12 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
     
     // MARK: - 
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
-        // Insert message here
+        // TODO: Put this inside Messaging Service
+        let message = Message.create() as Message
+        message.connection = connection
+        message.sender = User.currentUser()
+        message.text = text
+        message.save()
     }
     
     override func didPressAccessoryButton(sender: UIButton!) {
@@ -94,12 +94,13 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageBubbleImageDataSource! {
-//        let message = messages.itemAtIndexPath(indexPath) as Message
-        return outgoingBubbleData
+        let message = messages.itemAtIndexPath(indexPath) as Message
+        return message.sender!.isCurrentUser ? outgoingBubbleData : incomingBubbleData
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
-        return nil
+        let message = messages.itemAtIndexPath(indexPath) as Message
+        return nil;
     }
     
 }
