@@ -8,6 +8,7 @@
 
 import UIKit
 import JSQMessagesViewController
+import EDColor
 
 @objc(ChatViewController)
 
@@ -25,6 +26,8 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = UIColor(hex: 0xA9FFFE)
+        collectionView.backgroundColor = UIColor(hex: 0xA9FFFE)
         
         let bubbleFactory = JSQMessagesBubbleImageFactory()
         outgoingBubbleData = bubbleFactory.outgoingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
@@ -101,6 +104,7 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
         let cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPath) as JSQMessagesCollectionViewCell
         // This doesn't work if layout changes (say diff avatar size). So need to figure out better way
         cell.avatarImageView.makeCircular()
+        cell.textView.textColor = UIColor.blackColor()
         return cell
     }
     

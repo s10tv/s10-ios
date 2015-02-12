@@ -12,6 +12,7 @@ pod 'Facebook-iOS-SDK', '~> 3.22'
 pod 'GPUImage', '~> 0.1.6'
 pod 'DateTools', '~> 1.5'
 pod 'SwiftyJSON', '~> 2.1'
+pod 'EDColor', '~> 0.4'
 #pod 'ExSwift', '~> 0.1.9'
 
 pod 'SwipeView', '~> 1.3'
