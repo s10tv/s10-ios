@@ -8,8 +8,8 @@
 
 import UIKit
 
-@objc(ConnectionsViewController)
-class ConnectionsViewController : BaseViewController {
+@objc(DockViewController)
+class DockViewController : BaseViewController {
     
     var viewModel : FetchViewModel!
     var currentConnection : Connection?

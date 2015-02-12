@@ -63,7 +63,7 @@ class GameViewController : BaseViewController {
     }
 
     @IBAction func goToDock(sender: AnyObject) {
-        performSegueWithIdentifier("GameToConnections", sender: sender)
+        performSegueWithIdentifier("GameToDock", sender: sender)
     }
 
     @IBAction func confirmChoices(sender: AnyObject) {
