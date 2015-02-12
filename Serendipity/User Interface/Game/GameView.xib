@@ -40,17 +40,26 @@
                         <action selector="confirmChoices:" destination="-1" eventType="touchUpInside" id="QEp-Ou-mJt"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svh-Tk-FMJ">
-                    <rect key="frame" x="0.0" y="0.0" width="87" height="57"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svh-Tk-FMJ" userLabel="Settings">
+                    <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="87" id="820-SS-7PK"/>
-                        <constraint firstAttribute="height" constant="57" id="eLk-S0-G9U"/>
+                        <constraint firstAttribute="width" constant="80" id="820-SS-7PK"/>
+                        <constraint firstAttribute="height" constant="60" id="eLk-S0-G9U"/>
                     </constraints>
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="exitGame:" destination="-1" eventType="touchUpInside" id="ahI-aL-guQ"/>
+                        <action selector="goToSettings:" destination="-1" eventType="touchUpInside" id="J1M-1X-lfO"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfZ-2s-ycX" userLabel="Connections">
+                    <rect key="frame" x="240" y="0.0" width="80" height="60"/>
+                    <state key="normal">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="goToDock:" destination="-1" eventType="touchUpInside" id="iXz-ii-Ny8"/>
                     </connections>
                 </button>
             </subviews>

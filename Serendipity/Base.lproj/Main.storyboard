@@ -49,27 +49,24 @@
             </objects>
             <point key="canvasLocation" x="282" y="218"/>
         </scene>
-        <!--Discover-->
+        <!--Game View Controller-->
         <scene sceneID="5fm-o7-1g2">
             <objects>
-                <viewController storyboardIdentifier="Discover" id="brw-cx-YUO" customClass="DiscoverViewController" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Discover" id="AFO-Ak-h5m">
+                <viewController storyboardIdentifier="Discover" id="brw-cx-YUO" customClass="GameViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="AFO-Ak-h5m">
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="0gg-2j-uMk">
                             <connections>
-                                <segue destination="Vhy-hq-gwn" kind="show" id="OcB-VR-4RX"/>
+                                <segue destination="Vhy-hq-gwn" kind="show" identifier="GameToSettings" id="OcB-VR-4RX"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Connections" id="uJ0-8m-Eyy">
                             <connections>
-                                <segue destination="YUi-xK-iJg" kind="show" id="wBe-eH-fNO"/>
+                                <segue destination="YUi-xK-iJg" kind="show" identifier="GameToConnections" id="wBe-eH-fNO"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                    <connections>
-                        <segue destination="rRd-ZO-60U" kind="show" identifier="DiscoverToChat" id="kL9-q9-18I"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TlQ-8h-TWe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -116,7 +113,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B9f-P8-SG1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="914" y="1755"/>
+            <point key="canvasLocation" x="1115" y="1763"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="mYf-IJ-xkN">
@@ -126,7 +123,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H5s-tv-xnk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1317" y="1755"/>
+            <point key="canvasLocation" x="1518" y="1763"/>
         </scene>
         <!--Edit Profile-->
         <scene sceneID="98E-xT-5yo">
@@ -158,7 +155,4 @@
             <point key="canvasLocation" x="282" y="1042"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="kL9-q9-18I"/>
-    </inferredMetricsTieBreakers>
 </document>

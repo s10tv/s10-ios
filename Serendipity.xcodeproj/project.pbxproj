@@ -46,8 +46,6 @@
 		EA1970091A83549300FEBA7F /* StorylineViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA196FF01A83549300FEBA7F /* StorylineViewController.swift */; };
 		EA19700E1A83549300FEBA7F /* ConnectionsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA196FF61A83549300FEBA7F /* ConnectionsView.xib */; };
 		EA19700F1A83549300FEBA7F /* ConnectionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA196FF71A83549300FEBA7F /* ConnectionsViewController.swift */; };
-		EA1970101A83549300FEBA7F /* DiscoverView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA196FF91A83549300FEBA7F /* DiscoverView.xib */; };
-		EA1970111A83549300FEBA7F /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA196FFA1A83549300FEBA7F /* DiscoverViewController.swift */; };
 		EA1970121A83549300FEBA7F /* EditProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA196FFC1A83549300FEBA7F /* EditProfileView.xib */; };
 		EA1970131A83549300FEBA7F /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA196FFD1A83549300FEBA7F /* EditProfileViewController.swift */; };
 		EA1970141A83549300FEBA7F /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA196FFE1A83549300FEBA7F /* ProfileView.xib */; };
@@ -130,8 +128,6 @@
 		EA196FF01A83549300FEBA7F /* StorylineViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorylineViewController.swift; sourceTree = "<group>"; };
 		EA196FF61A83549300FEBA7F /* ConnectionsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionsView.xib; sourceTree = "<group>"; };
 		EA196FF71A83549300FEBA7F /* ConnectionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionsViewController.swift; sourceTree = "<group>"; };
-		EA196FF91A83549300FEBA7F /* DiscoverView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DiscoverView.xib; sourceTree = "<group>"; };
-		EA196FFA1A83549300FEBA7F /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		EA196FFC1A83549300FEBA7F /* EditProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileView.xib; sourceTree = "<group>"; };
 		EA196FFD1A83549300FEBA7F /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		EA196FFE1A83549300FEBA7F /* ProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
@@ -311,15 +307,6 @@
 			path = Connections;
 			sourceTree = "<group>";
 		};
-		EA196FF81A83549300FEBA7F /* Discover */ = {
-			isa = PBXGroup;
-			children = (
-				EA196FF91A83549300FEBA7F /* DiscoverView.xib */,
-				EA196FFA1A83549300FEBA7F /* DiscoverViewController.swift */,
-			);
-			path = Discover;
-			sourceTree = "<group>";
-		};
 		EA196FFB1A83549300FEBA7F /* Profile */ = {
 			isa = PBXGroup;
 			children = (
@@ -462,7 +449,6 @@
 				EA2AB70C1A8A00E300D42C6C /* Game */,
 				EA196FEC1A83549300FEBA7F /* Chat */,
 				EA196FF51A83549300FEBA7F /* Connections */,
-				EA196FF81A83549300FEBA7F /* Discover */,
 				EA196FFB1A83549300FEBA7F /* Profile */,
 				EA1970001A83549300FEBA7F /* Settings */,
 				EA1970031A83549300FEBA7F /* Signup */,
@@ -578,7 +564,6 @@
 				EA2AB7101A8A00FC00D42C6C /* GameView.xib in Resources */,
 				EA19700E1A83549300FEBA7F /* ConnectionsView.xib in Resources */,
 				EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */,
-				EA1970101A83549300FEBA7F /* DiscoverView.xib in Resources */,
 				EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */,
 				EA9F354A1A74CC6900E0C65D /* Images.xcassets in Resources */,
 				EA163CFD1A85FAFE00C2589B /* EditPhotoCell.xib in Resources */,
@@ -716,7 +701,6 @@
 				EA7ABC2C1A87E4800023C14C /* VideoRecorderViewController.swift in Sources */,
 				EA1970191A83549300FEBA7F /* SignupViewController.swift in Sources */,
 				EA0FC93A1A87DE5800D62625 /* ReactiveCocoaExtension.swift in Sources */,
-				EA1970111A83549300FEBA7F /* DiscoverViewController.swift in Sources */,
 				EA409D391A8C681A00988B8B /* FacebookExtension.swift in Sources */,
 				EA0FC9411A87DE5800D62625 /* ArrayViewModel.swift in Sources */,
 				EA5634EA1A77428F00F62B52 /* _Connection.swift in Sources */,

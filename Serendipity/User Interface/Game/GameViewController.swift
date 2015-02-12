@@ -57,13 +57,13 @@ class GameViewController : BaseViewController {
         super.viewWillDisappear(animated)
         navigationController?.navigationBarHidden = false
     }
-    
-    override func prefersStatusBarHidden() -> Bool {
-        return true
+
+    @IBAction func goToSettings(sender: AnyObject) {
+        performSegueWithIdentifier("GameToSettings", sender: sender)
     }
-    
-    @IBAction func exitGame(sender: AnyObject) {
-        navigationController?.popViewControllerAnimated(true)
+
+    @IBAction func goToDock(sender: AnyObject) {
+        performSegueWithIdentifier("GameToConnections", sender: sender)
     }
 
     @IBAction func confirmChoices(sender: AnyObject) {
