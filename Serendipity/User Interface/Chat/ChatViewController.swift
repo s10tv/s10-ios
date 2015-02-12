@@ -100,7 +100,7 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
         let message = messages.itemAtIndexPath(indexPath) as Message
-        return nil;
+        return message.sender?.jsqAvatar();
     }
     
 }

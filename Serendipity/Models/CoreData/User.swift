@@ -8,6 +8,8 @@
 
 import Foundation
 import Meteor
+import JSQMessagesViewController
+import SDWebImage
 
 @objc(User)
 class User: _User {
@@ -33,6 +35,14 @@ class User: _User {
     var profilePhotoURL : NSURL? {
         let firstPhotoUrl = photos?.first?.url
         return firstPhotoUrl != nil ? NSURL(string: firstPhotoUrl!) : nil
+    }
+    
+    func jsqAvatar() -> JSQMessagesAvatarImage {
+        // TODO: Add gender to user
+        let image = JSQMessagesAvatarImage(placeholder: UIImage(named: "girl-placeholder"))
+        let key = SDWebImageManager.sharedManager().cacheKeyForURL(self.profilePhotoURL)
+        image.avatarImage = SDImageCache.sharedImageCache().imageFromDiskCacheForKey(key)
+        return image
     }
     
     func fetchConnection() -> NSFetchedResultsController {
