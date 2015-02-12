@@ -19,6 +19,12 @@ class NewConnectionViewController : BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         avatarView.sd_setImageWithURL(user?.profilePhotoURL)
+        avatarView.userInteractionEnabled = true
+        avatarView.whenTapped { [weak self] in
+            let vc = ProfileViewController()
+            vc.user = self?.user
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }
     }
     
     override func viewDidLayoutSubviews() {
