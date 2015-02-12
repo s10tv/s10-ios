@@ -23,14 +23,14 @@ class DockViewController : BaseViewController {
         let sortDescriptor = NSSortDescriptor(key: ConnectionAttributes.dateUpdated.rawValue, ascending: false)
         
         keeps = FetchViewModel(frc: Connection.all().sorted(by: sortDescriptor).frc())
-        keeps.bindToTableView(keepTable, cellNibName: "ConnectionCell")
+        keeps.bindToTableView(keepTable, cellNibName: "KeepConnectionCell")
         keeps.tableViewProvider?.configureTableCell = { (item, cell) -> Void in
             (cell as ConnectionCell).connection = (item as Connection)
         }
         keeps.tableViewProvider?.didSelectItem = self.didSelectItem
         
         marrys = FetchViewModel(frc: Connection.all().sorted(by: sortDescriptor).frc())
-        marrys.bindToTableView(marryTable, cellNibName: "ConnectionCell")
+        marrys.bindToTableView(marryTable, cellNibName: "MarryConnectionCell")
         marrys.tableViewProvider?.configureTableCell = { (item, cell) -> Void in
             (cell as ConnectionCell).connection = (item as Connection)
         }

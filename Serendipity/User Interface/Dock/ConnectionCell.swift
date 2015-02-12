@@ -12,6 +12,7 @@ import DateTools
 
 class ConnectionCell : UITableViewCell {
     
+    @IBOutlet weak var newIndicator: UIImageView!
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
@@ -39,8 +40,8 @@ class ConnectionCell : UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         avatarView.makeCircular()
+        newIndicator.makeCircular()
     }
-    
     
     override func prepareForReuse() {
         super.prepareForReuse()

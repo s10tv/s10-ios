@@ -16,14 +16,18 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFy-Dd-FxZ">
-                    <rect key="frame" x="60" y="36" width="40" height="21"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xgv-Wh-zcG" userLabel="Keep Table">
+                    <rect key="frame" x="-100" y="90" width="240" height="479"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marry" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zfr-SO-1X0">
+                    <rect key="frame" x="230" y="65" width="45" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xgv-Wh-zcG" userLabel="Keep Table">
-                    <rect key="frame" x="0.0" y="88" width="160" height="480"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="wgR-pc-Jsx" userLabel="Marry Table">
+                    <rect key="frame" x="181" y="89" width="239" height="479"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F4d-U6-O3S" userLabel="Separator">
@@ -33,35 +37,31 @@
                         <constraint firstAttribute="width" constant="1" id="HPW-b5-eel"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marry" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zfr-SO-1X0">
-                    <rect key="frame" x="218" y="36" width="45" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFy-Dd-FxZ">
+                    <rect key="frame" x="51" y="65" width="40" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="wgR-pc-Jsx" userLabel="Marry Table">
-                    <rect key="frame" x="160" y="88" width="160" height="480"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="F4d-U6-O3S" firstAttribute="leading" secondItem="xgv-Wh-zcG" secondAttribute="trailing" id="00r-Ow-9dZ"/>
-                <constraint firstAttribute="trailing" secondItem="wgR-pc-Jsx" secondAttribute="trailing" id="1y7-2n-de3"/>
-                <constraint firstItem="wgR-pc-Jsx" firstAttribute="centerX" secondItem="Zfr-SO-1X0" secondAttribute="centerX" constant="-0.5" id="42T-x0-9qC"/>
+                <constraint firstItem="F4d-U6-O3S" firstAttribute="leading" secondItem="xgv-Wh-zcG" secondAttribute="trailing" constant="20" id="00r-Ow-9dZ"/>
+                <constraint firstAttribute="trailing" secondItem="wgR-pc-Jsx" secondAttribute="trailing" constant="-100" id="1y7-2n-de3"/>
                 <constraint firstAttribute="centerX" secondItem="F4d-U6-O3S" secondAttribute="centerX" id="7WI-G4-tSV"/>
-                <constraint firstItem="xgv-Wh-zcG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="EJq-67-jRm"/>
-                <constraint firstItem="wgR-pc-Jsx" firstAttribute="leading" secondItem="F4d-U6-O3S" secondAttribute="trailing" constant="-1" id="ELC-16-Zqp"/>
-                <constraint firstItem="xgv-Wh-zcG" firstAttribute="top" secondItem="tFy-Dd-FxZ" secondAttribute="bottom" constant="31" id="Jgr-fp-zL9"/>
+                <constraint firstItem="xgv-Wh-zcG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="-100" id="EJq-67-jRm"/>
+                <constraint firstItem="wgR-pc-Jsx" firstAttribute="leading" secondItem="F4d-U6-O3S" secondAttribute="trailing" constant="20" id="ELC-16-Zqp"/>
+                <constraint firstItem="xgv-Wh-zcG" firstAttribute="top" secondItem="tFy-Dd-FxZ" secondAttribute="bottom" constant="4" id="Jgr-fp-zL9"/>
                 <constraint firstItem="F4d-U6-O3S" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="KR3-W0-2yZ"/>
-                <constraint firstItem="tFy-Dd-FxZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="36" id="N8z-Dt-pLQ"/>
+                <constraint firstItem="Zfr-SO-1X0" firstAttribute="leading" secondItem="F4d-U6-O3S" secondAttribute="trailing" constant="69" id="N2e-JC-pm3"/>
                 <constraint firstAttribute="bottom" secondItem="wgR-pc-Jsx" secondAttribute="bottom" id="W6S-Om-K4r"/>
                 <constraint firstAttribute="bottom" secondItem="xgv-Wh-zcG" secondAttribute="bottom" id="XAa-wk-jLm"/>
+                <constraint firstItem="F4d-U6-O3S" firstAttribute="leading" secondItem="tFy-Dd-FxZ" secondAttribute="trailing" constant="69" id="XJB-ay-zmQ"/>
                 <constraint firstAttribute="bottom" secondItem="F4d-U6-O3S" secondAttribute="bottom" id="XkJ-45-8Ne"/>
-                <constraint firstItem="wgR-pc-Jsx" firstAttribute="top" secondItem="Zfr-SO-1X0" secondAttribute="bottom" constant="31" id="kqa-X1-nKw"/>
+                <constraint firstItem="tFy-Dd-FxZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="65" id="bCC-dT-kBP"/>
+                <constraint firstItem="Zfr-SO-1X0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="65" id="dck-Bb-Wbs"/>
+                <constraint firstItem="wgR-pc-Jsx" firstAttribute="top" secondItem="Zfr-SO-1X0" secondAttribute="bottom" constant="4" id="kqa-X1-nKw"/>
                 <constraint firstItem="xgv-Wh-zcG" firstAttribute="leading" secondItem="tFy-Dd-FxZ" secondAttribute="trailing" constant="-100" id="tga-AW-p4P"/>
-                <constraint firstItem="Zfr-SO-1X0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="36" id="wYC-Zg-Zhc"/>
-                <constraint firstItem="tFy-Dd-FxZ" firstAttribute="centerX" secondItem="xgv-Wh-zcG" secondAttribute="centerX" id="y1m-qk-0fz"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <variation key="default">
