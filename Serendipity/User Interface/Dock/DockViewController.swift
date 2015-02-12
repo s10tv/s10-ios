@@ -11,24 +11,36 @@ import UIKit
 @objc(DockViewController)
 class DockViewController : BaseViewController {
     
-    var viewModel : FetchViewModel!
+    @IBOutlet weak var keepTable: UITableView!
+    @IBOutlet weak var marryTable: UITableView!
+
+    var keeps : FetchViewModel!
+    var marrys : FetchViewModel!
     var currentConnection : Connection?
-    
-    @IBOutlet weak var tableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let sortDescriptor = NSSortDescriptor(key: ConnectionAttributes.dateUpdated.rawValue, ascending: false)
-        viewModel = FetchViewModel(frc: Connection.all().sorted(by: sortDescriptor).frc())
-        viewModel.bindToTableView(tableView, cellNibName: "ConnectionCell")
-        viewModel.tableViewProvider?.configureTableCell = { (item, cell) -> Void in
+        
+        keeps = FetchViewModel(frc: Connection.all().sorted(by: sortDescriptor).frc())
+        keeps.bindToTableView(keepTable, cellNibName: "ConnectionCell")
+        keeps.tableViewProvider?.configureTableCell = { (item, cell) -> Void in
             (cell as ConnectionCell).connection = (item as Connection)
         }
-        viewModel.tableViewProvider?.didSelectItem = { item in
-            self.currentConnection = item as? Connection
-            println("Selected connection \(self.currentConnection?.user?.firstName)")
-            self.performSegueWithIdentifier("ConnectionsToChat", sender: nil)
+        keeps.tableViewProvider?.didSelectItem = self.didSelectItem
+        
+        marrys = FetchViewModel(frc: Connection.all().sorted(by: sortDescriptor).frc())
+        marrys.bindToTableView(marryTable, cellNibName: "ConnectionCell")
+        marrys.tableViewProvider?.configureTableCell = { (item, cell) -> Void in
+            (cell as ConnectionCell).connection = (item as Connection)
         }
+        marrys.tableViewProvider?.didSelectItem = self.didSelectItem
+    }
+
+    func didSelectItem(item: AnyObject!) {
+        self.currentConnection = item as? Connection
+        println("Selected connection \(self.currentConnection?.user?.firstName)")
+        self.performSegueWithIdentifier("ConnectionsToChat", sender: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

@@ -6,7 +6,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DockViewController">
             <connections>
-                <outlet property="tableView" destination="xgv-Wh-zcG" id="VoP-6B-WCY"/>
+                <outlet property="keepTable" destination="xgv-Wh-zcG" id="4U9-XW-NfO"/>
+                <outlet property="marryTable" destination="wgR-pc-Jsx" id="Jnu-iw-50e"/>
                 <outlet property="view" destination="iN0-l3-epB" id="K7O-w9-zO2"/>
             </connections>
         </placeholder>
@@ -15,19 +16,60 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xgv-Wh-zcG">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFy-Dd-FxZ">
+                    <rect key="frame" x="60" y="36" width="40" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xgv-Wh-zcG" userLabel="Keep Table">
+                    <rect key="frame" x="0.0" y="88" width="160" height="480"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </tableView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F4d-U6-O3S" userLabel="Separator">
+                    <rect key="frame" x="160" y="0.0" width="1" height="568"/>
+                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="1" id="HPW-b5-eel"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marry" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zfr-SO-1X0">
+                    <rect key="frame" x="218" y="36" width="45" height="21"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="100" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="wgR-pc-Jsx" userLabel="Marry Table">
+                    <rect key="frame" x="160" y="88" width="160" height="480"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="xgv-Wh-zcG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="JLm-yQ-whC"/>
-                <constraint firstAttribute="trailing" secondItem="xgv-Wh-zcG" secondAttribute="trailing" id="pNv-OU-BPe"/>
-                <constraint firstItem="xgv-Wh-zcG" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="sDV-45-ADY"/>
-                <constraint firstAttribute="bottom" secondItem="xgv-Wh-zcG" secondAttribute="bottom" id="suu-ZX-wbe"/>
+                <constraint firstItem="F4d-U6-O3S" firstAttribute="leading" secondItem="xgv-Wh-zcG" secondAttribute="trailing" id="00r-Ow-9dZ"/>
+                <constraint firstAttribute="trailing" secondItem="wgR-pc-Jsx" secondAttribute="trailing" id="1y7-2n-de3"/>
+                <constraint firstItem="wgR-pc-Jsx" firstAttribute="centerX" secondItem="Zfr-SO-1X0" secondAttribute="centerX" constant="-0.5" id="42T-x0-9qC"/>
+                <constraint firstAttribute="centerX" secondItem="F4d-U6-O3S" secondAttribute="centerX" id="7WI-G4-tSV"/>
+                <constraint firstItem="xgv-Wh-zcG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="EJq-67-jRm"/>
+                <constraint firstItem="wgR-pc-Jsx" firstAttribute="leading" secondItem="F4d-U6-O3S" secondAttribute="trailing" constant="-1" id="ELC-16-Zqp"/>
+                <constraint firstItem="xgv-Wh-zcG" firstAttribute="top" secondItem="tFy-Dd-FxZ" secondAttribute="bottom" constant="31" id="Jgr-fp-zL9"/>
+                <constraint firstItem="F4d-U6-O3S" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="KR3-W0-2yZ"/>
+                <constraint firstItem="tFy-Dd-FxZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="36" id="N8z-Dt-pLQ"/>
+                <constraint firstAttribute="bottom" secondItem="wgR-pc-Jsx" secondAttribute="bottom" id="W6S-Om-K4r"/>
+                <constraint firstAttribute="bottom" secondItem="xgv-Wh-zcG" secondAttribute="bottom" id="XAa-wk-jLm"/>
+                <constraint firstAttribute="bottom" secondItem="F4d-U6-O3S" secondAttribute="bottom" id="XkJ-45-8Ne"/>
+                <constraint firstItem="wgR-pc-Jsx" firstAttribute="top" secondItem="Zfr-SO-1X0" secondAttribute="bottom" constant="31" id="kqa-X1-nKw"/>
+                <constraint firstItem="xgv-Wh-zcG" firstAttribute="leading" secondItem="tFy-Dd-FxZ" secondAttribute="trailing" constant="-100" id="tga-AW-p4P"/>
+                <constraint firstItem="Zfr-SO-1X0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="36" id="wYC-Zg-Zhc"/>
+                <constraint firstItem="tFy-Dd-FxZ" firstAttribute="centerX" secondItem="xgv-Wh-zcG" secondAttribute="centerX" id="y1m-qk-0fz"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="tga-AW-p4P"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="76" y="349"/>
         </view>
     </objects>
 </document>

@@ -72,11 +72,11 @@
             </objects>
             <point key="canvasLocation" x="676" y="872"/>
         </scene>
-        <!--Dock-->
+        <!--Your Matches-->
         <scene sceneID="mW7-zq-TQ3">
             <objects>
                 <viewController storyboardIdentifier="Connections" id="YUi-xK-iJg" customClass="DockViewController" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" title="Dock" id="n18-f6-V7D">
+                    <navigationItem key="navigationItem" title="Your Matches" id="n18-f6-V7D">
                         <barButtonItem key="backBarButtonItem" title=" " id="cW2-Pa-cVe"/>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
