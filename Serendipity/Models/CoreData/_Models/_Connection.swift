@@ -5,8 +5,9 @@ import CoreData
 
 enum ConnectionAttributes: String {
     case dateCreated = "dateCreated"
-    case dateLastMessage = "dateLastMessage"
     case dateUpdated = "dateUpdated"
+    case lastMessageDate = "lastMessageDate"
+    case lastMessageText = "lastMessageText"
 }
 
 enum ConnectionRelationships: String {
@@ -45,14 +46,19 @@ class _Connection: NSManagedObject {
     // func validateDateCreated(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
-    var dateLastMessage: NSDate?
-
-    // func validateDateLastMessage(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
-
-    @NSManaged
     var dateUpdated: NSDate?
 
     // func validateDateUpdated(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var lastMessageDate: NSDate?
+
+    // func validateLastMessageDate(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var lastMessageText: String?
+
+    // func validateLastMessageText(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
 
