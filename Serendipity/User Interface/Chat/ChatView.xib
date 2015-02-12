@@ -8,10 +8,8 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ChatViewController">
             <connections>
                 <outlet property="avatarView" destination="K9D-dS-rpf" id="NEu-nM-oJ8"/>
-                <outlet property="bottomContainer" destination="EZB-Ur-pjP" id="Q7i-Lz-DFt"/>
                 <outlet property="nameLabel" destination="Evx-gs-ASt" id="cod-r3-dXq"/>
                 <outlet property="titleView" destination="N2z-ug-Pg2" id="2og-5Z-DdE"/>
-                <outlet property="topContainer" destination="Ofy-Ld-LBU" id="Y99-gG-ovE"/>
                 <outlet property="view" destination="iN0-l3-epB" id="K7O-w9-zO2"/>
             </connections>
         </placeholder>
@@ -19,27 +17,7 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-            <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ofy-Ld-LBU" userLabel="Top Container">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="476"/>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EZB-Ur-pjP" userLabel="Bottom Container">
-                    <rect key="frame" x="0.0" y="476" width="320" height="92"/>
-                    <color key="backgroundColor" red="0.95215992647058822" green="0.95215992647058822" blue="0.95215992647058822" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                </view>
-            </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-            <constraints>
-                <constraint firstAttribute="trailing" secondItem="EZB-Ur-pjP" secondAttribute="trailing" id="3ve-Tc-N4S"/>
-                <constraint firstItem="Ofy-Ld-LBU" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="CWl-Q8-FbY"/>
-                <constraint firstItem="EZB-Ur-pjP" firstAttribute="top" secondItem="Ofy-Ld-LBU" secondAttribute="bottom" id="DV8-Ra-9MR"/>
-                <constraint firstAttribute="bottom" secondItem="Ofy-Ld-LBU" secondAttribute="bottom" constant="92" id="LbO-b5-o1j"/>
-                <constraint firstAttribute="bottom" secondItem="EZB-Ur-pjP" secondAttribute="bottom" id="bUP-Z7-kYh"/>
-                <constraint firstAttribute="trailing" secondItem="Ofy-Ld-LBU" secondAttribute="trailing" id="kIb-WQ-FpE"/>
-                <constraint firstItem="EZB-Ur-pjP" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ojj-Xb-p61"/>
-                <constraint firstItem="Ofy-Ld-LBU" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="xFu-jz-87F"/>
-            </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
         <view contentMode="scaleToFill" id="N2z-ug-Pg2" userLabel="Title View">

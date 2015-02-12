@@ -9,6 +9,9 @@ PODS:
     - Bolts (~> 1.0)
   - GPUImage (0.1.6)
   - InflectorKit (0.0.1)
+  - JSQMessagesViewController (6.1.3):
+    - JSQSystemSoundPlayer (~> 2.0.1)
+  - JSQSystemSoundPlayer (2.0.1)
   - Meteor (0.1.2):
     - InflectorKit
     - PocketSocket
@@ -43,6 +46,7 @@ DEPENDENCIES:
   - Fabric/Crashlytics (~> 1.1)
   - Facebook-iOS-SDK (~> 3.22)
   - GPUImage (~> 0.1.6)
+  - JSQMessagesViewController (~> 6.1)
   - Meteor (~> 0.1)
   - NSLogger (~> 1.5)
   - ReactiveCocoa (~> 2.4)
@@ -71,6 +75,8 @@ SPEC CHECKSUMS:
   Facebook-iOS-SDK: 0eda8ff7120aada0a9c5f98552f7625da6c3440a
   GPUImage: cecb0830bb9428f50192042e3c7b53810f51388e
   InflectorKit: bb1f5c9feb01d17450b8bcdeb7ab1ef1832b2247
+  JSQMessagesViewController: e93a288a9662d4519c95a28a8c0eec10beae1bfc
+  JSQSystemSoundPlayer: 55528c699a283aae2220d3ae7b8b527d2ecef4b4
   Meteor: 5f620a6d26b2fb79620aec7d9b06951f63968566
   NSLogger: 7421a0a60df62fb8ff548cd0388c302d3329a322
   PocketSocket: 8c18f973e57fd3042d032626654658df0fa2f126

@@ -7,76 +7,52 @@
 //
 
 import UIKit
+import JSQMessagesViewController
 
 @objc(ChatViewController)
 
-class ChatViewController : BaseViewController,
-                            VideoRecorderDelegate,
-                            VideoPlayerDelegate,
-                            StorylineDelegate {
+class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewDataSource {
     
-    let player = VideoPlayerViewController()
-    let recorder = VideoRecorderViewController()
-    let storyline = StorylineViewController()
-    
-    var user: User? {
-        didSet {
-            assert(oldValue == nil, "Changing user on chatVC is not yet supported")
-        }
-    }
-    private var connectionFetchModel : FetchViewModel!
-    
-    var videoRecordingURL: NSURL?
-    
-    @IBOutlet weak var topContainer: UIView!
-    @IBOutlet weak var bottomContainer: UIView!
+    var connection: Connection?
+    private var messages : FetchViewModel!
     
     @IBOutlet var titleView: UIView!
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
+    var outgoingBubbleData : JSQMessagesBubbleImage!
+    var incomingBubbleData : JSQMessagesBubbleImage!
+    
+    
+//    let incomingBubble =
+//    self.outgoingBubbleImageData = [bubbleFactory outgoingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleLightGrayColor]];
+//    self.incomingBubbleImageData = [bubbleFactory incomingMessagesBubbleImageWithColor:[UIColor jsq_messageBubbleGreenColor]];
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        assert(user != nil, "User being nil is not supported on chatVC")
+        let bubbleFactory = JSQMessagesBubbleImageFactory()
+        outgoingBubbleData = bubbleFactory.outgoingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
+        incomingBubbleData = bubbleFactory.incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleGreenColor())
         
-        connectionFetchModel = FetchViewModel(frc: user!.fetchConnection())
-        connectionFetchModel.performFetchIfNeeded()
-        connectionFetchModel.signal.subscribeNextAs { [weak self] (objects: [Connection]) -> () in
-            self?.storyline.connection = objects.first
+        assert(connection != nil, "Connection being nil is not supported on chatVC")
+        
+        messages = FetchViewModel(frc: connection!.fetchMessages(sorted: true))
+        messages.performFetchIfNeeded()
+        messages.signal.subscribeNext { _ in
+            self.reloadInputViews()
             return
         }
+        
 
-        avatarView.sd_setImageWithURL(user?.profilePhotoURL)
-        nameLabel.text = user?.firstName
+        avatarView.sd_setImageWithURL(connection?.user?.profilePhotoURL)
+        nameLabel.text = connection?.user?.firstName
         titleView.whenTapped { [weak self] in
             // TODO: Avoid hard-coding segue identifier somehow
             self!.performSegueWithIdentifier("ChatToProfile", sender: nil)
         }
         
         navigationItem.titleView = titleView
-        
-        recorder.delegate = self
-        player.delegate = self
-        storyline.delegate = self
-        
-        addChildViewController(player)
-        addChildViewController(recorder)
-        addChildViewController(storyline)
-        
-        bottomContainer.addSubview(storyline.view)
-        storyline.view.makeEdgesEqualTo(bottomContainer)
-
-        showRecorder(nil)
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        if user?.connection == nil && user != nil {
-            // TODO: Refactor to make using localizable more bearable
-            let body = NSString(format: NSLocalizedString("SendFirstMessageBody", comment: ""), user!.firstName!) as String
-            UIAlertView.show(NSLocalizedString("SendFirstMessageTitle", comment: ""), message: body)
-        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -86,57 +62,44 @@ class ChatViewController : BaseViewController,
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let profileVC = segue.destinationViewController as? ProfileViewController {
-            profileVC.user = user
+            profileVC.user = connection?.user
         }
     }
     
-    // MARK: - Actions
-    
-    @IBAction func showPlayer(sender: AnyObject?) {
-        recorder.view.removeFromSuperview()
-        topContainer.addSubview(player.view)
-        player.view.makeEdgesEqualTo(topContainer)
+    // MARK: - 
+    override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
+        // Insert message here
     }
     
-    @IBAction func showRecorder(sender: AnyObject?) {
-        player.view.removeFromSuperview()
-        topContainer.addSubview(recorder.view)
-        recorder.view.makeEdgesEqualTo(topContainer)
+    override func didPressAccessoryButton(sender: UIButton!) {
+        // TODO: Remove accessory button all together
     }
     
-    // MARK: - Storyline Delegate
+    // MARK: - JSQMessagesCollectionViewDataSource
     
-    func storyline(storyline: StorylineViewController, didSelectMessage message: Message) {
-        showPlayer(storyline)
-        println("videouURL \(message.videoNSURL)")
-        if let videoURL = message.videoNSURL {
-            player.playVideoAtURL(videoURL)
-        }
+    func senderDisplayName() -> String! {
+        return User.currentUser()?.firstName
     }
     
-    // MARK: - Recorder Delegate
-    
-    func didStopRecording(videoRecordingURL: NSURL, thumbnail: NSData) {
-        if let recipientId = user?.documentID {
-            AzureClient.sendMessage(videoRecordingURL, thumbnail:thumbnail, recipientId: recipientId, {
-                thumbnailUrl, videoUrl, serverResult, err -> Void in
-                if let fullError = err {
-                    println("Error in video submission: %s", fullError.localizedDescription);
-                    return
-                }
-                
-                println(serverResult);
-                println(thumbnailUrl);
-                println(videoUrl);
-            })
-        } else {
-            println(user);
-        }
+    func senderId() -> String! {
+        return User.currentUser()?.documentID
     }
     
-    // MARK: - Player Delegate
-    
-    func videoPlayerDidFinishPlayback(player: VideoPlayerViewController) {
-        showRecorder(player)
+    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return messages.numberOfItemsInSection(section)
     }
+    
+    override func collectionView(collectionView: JSQMessagesCollectionView!, messageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageData! {
+        return (messages.itemAtIndexPath(indexPath) as Message).jsqMessage()
+    }
+    
+    override func collectionView(collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageBubbleImageDataSource! {
+//        let message = messages.itemAtIndexPath(indexPath) as Message
+        return outgoingBubbleData
+    }
+    
+    override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
+        return nil
+    }
+    
 }

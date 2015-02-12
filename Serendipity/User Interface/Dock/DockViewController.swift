@@ -45,7 +45,7 @@ class DockViewController : BaseViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ChatViewController {
-            vc.user = self.currentConnection?.user
+            vc.connection = self.currentConnection
         }
     }
 }

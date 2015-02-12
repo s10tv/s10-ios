@@ -18,6 +18,7 @@ pod 'SwipeView', '~> 1.3'
 pod 'SDWebImage', '~> 3.7'
 pod 'Snap', '~> 0.0.4'
 pod 'UIView+draggable', '~> 0.5'
+pod 'JSQMessagesViewController', '~> 6.1'
 
 pod 'Fabric/Crashlytics', '~> 1.1'
 
