@@ -14,6 +14,11 @@ import SDWebImage
 @objc(User)
 class User: _User {
     
+    enum Gender : String {
+        case Male = "male"
+        case Female = "female"
+    }
+    
     var connection : Connection? {
         return fetchConnection().fetchObjects().first as? Connection
     }

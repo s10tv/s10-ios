@@ -4,6 +4,7 @@
 import CoreData
 
 enum MatchAttributes: String {
+    case choice = "choice"
     case dateMatched = "dateMatched"
 }
 
@@ -36,6 +37,11 @@ class _Match: NSManagedObject {
     }
 
     // MARK: - Properties
+
+    @NSManaged
+    var choice: String?
+
+    // func validateChoice(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
     var dateMatched: NSDate?

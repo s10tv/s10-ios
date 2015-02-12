@@ -8,6 +8,12 @@
 
 @objc(Match)
 class Match: _Match {
+    
+    enum Choice : String {
+        case Yes = "yes" // Marry
+        case Maybe = "maybe" // Keep
+        case No = "no" // Skip
+    }
 
     class func findByDocumentID(documentID: String) -> Match? {
         return Core.mainContext.objectInCollection("matches", documentID: documentID) as? Match
