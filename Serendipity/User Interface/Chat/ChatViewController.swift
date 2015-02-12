@@ -34,8 +34,11 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
         
         messages = FetchViewModel(frc: connection!.fetchMessages(sorted: true))
         messages.performFetchIfNeeded()
-        messages.signal.subscribeNext { _ in
-            self.collectionView.reloadData()
+        messages.signal.subscribeNext { [weak self] _ in
+            // Surely there must be a way to do this one message at a time rather than
+            // reloading the entire view?
+            self?.collectionView.reloadData()
+            self?.scrollToBottomAnimated(true)
             return
         }
         
