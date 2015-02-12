@@ -23,9 +23,6 @@ class CoreService {
     var fbSession : FBSession {
         return FBSession.activeSession()!
     }
-    var isRegistered : Bool {
-        return meteor.hasAccount() || fbSession.state == .Open || fbSession.state == .OpenTokenExtended
-    }
     
     init() {
         // Set up CoreData

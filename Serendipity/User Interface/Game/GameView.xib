@@ -53,8 +53,12 @@
                         <action selector="goToSettings:" destination="-1" eventType="touchUpInside" id="J1M-1X-lfO"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfZ-2s-ycX" userLabel="Connections">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfZ-2s-ycX" userLabel="Connections">
                     <rect key="frame" x="240" y="0.0" width="80" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="D2o-Gk-cy9"/>
+                        <constraint firstAttribute="width" constant="80" id="Un9-Cs-KrY"/>
+                    </constraints>
                     <state key="normal">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -73,6 +77,8 @@
                 <constraint firstItem="svh-Tk-FMJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="I7w-Nd-fwg"/>
                 <constraint firstItem="svh-Tk-FMJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="R5b-iB-hQI"/>
                 <constraint firstItem="Zm3-4b-5LY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="T9w-Mc-Bt7"/>
+                <constraint firstItem="dfZ-2s-ycX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ba1-PO-361"/>
+                <constraint firstAttribute="trailing" secondItem="dfZ-2s-ycX" secondAttribute="trailing" id="lUD-fG-M6K"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>

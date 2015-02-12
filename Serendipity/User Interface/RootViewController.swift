@@ -13,7 +13,7 @@ class RootViewController : UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if !Core.isRegistered {
+        if !Core.attemptLoginWithCachedCredentials() {
             showSignup(false)
         } else {
             showDiscover(false)
