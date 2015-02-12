@@ -21,10 +21,11 @@ class GameViewController : BaseViewController {
                 if i < matches.count {
                     imageView.sd_setImageWithURL(matches[i].user?.profilePhotoURL)
                     imageView.whenTapped {
-                        let profileVC = self.storyboard?.instantiateViewControllerWithIdentifier("Profile") as ProfileViewController
-                        profileVC.user = matches[i].user
-//                        self.presentViewController(profileVC, animated: true, completion: nil)
-                        self.navigationController?.pushViewController(profileVC, animated: true)
+//                        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("Profile") as ProfileViewController
+                        let vc = NewConnectionViewController() as NewConnectionViewController
+                        vc.user = matches[i].user
+                        
+                        self.navigationController?.pushViewController(vc, animated: true)
                     }
                 } else {
                     imageView.image = nil

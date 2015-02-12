@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewConnectionViewController">
+            <connections>
+                <outlet property="avatarView" destination="KwU-Ms-43D" id="0BO-HB-LW9"/>
+                <outlet property="view" destination="iN0-l3-epB" id="GbA-lV-Mc3"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It's a Ketch!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUJ-Zq-AGV">
+                    <rect key="frame" x="98" y="113" width="125" height="31"/>
+                    <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="22"/>
+                    <color key="textColor" red="0.078431372549019607" green="0.32156862745098042" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KwU-Ms-43D">
+                    <rect key="frame" x="85" y="184" width="150" height="150"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="KwU-Ms-43D" secondAttribute="height" multiplier="1:1" id="XYt-7C-aSn"/>
+                        <constraint firstAttribute="width" constant="150" id="xcM-me-BoK"/>
+                    </constraints>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VTD-xT-aQG">
+                    <rect key="frame" x="0.0" y="318" width="320" height="250"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It seems that Mila also thought you were pretty darn cute. Why not chat and see how things go?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2c-Q5-UHl">
+                            <rect key="frame" x="24" y="24" width="272" height="136"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="I2c-Q5-UHl" secondAttribute="height" multiplier="2:1" id="f5C-Ql-jaD"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N9q-8D-Tto">
+                            <rect key="frame" x="99" y="168" width="124" height="39"/>
+                            <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                            <state key="normal" title="Get in touch">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="getInTouch:" destination="-1" eventType="touchUpInside" id="iDH-g2-77C"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" red="0.18823529411764706" green="0.85882352941176465" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="N9q-8D-Tto" firstAttribute="top" secondItem="I2c-Q5-UHl" secondAttribute="bottom" constant="8" id="34c-HJ-epg"/>
+                        <constraint firstAttribute="trailing" secondItem="I2c-Q5-UHl" secondAttribute="trailing" constant="24" id="D6M-4S-THR"/>
+                        <constraint firstItem="I2c-Q5-UHl" firstAttribute="top" secondItem="VTD-xT-aQG" secondAttribute="top" constant="24" id="JoH-9y-u5z"/>
+                        <constraint firstAttribute="height" constant="250" id="ahU-br-pAk"/>
+                        <constraint firstItem="I2c-Q5-UHl" firstAttribute="leading" secondItem="VTD-xT-aQG" secondAttribute="leading" constant="24" id="fdR-Kv-Ezo"/>
+                        <constraint firstItem="I2c-Q5-UHl" firstAttribute="centerX" secondItem="N9q-8D-Tto" secondAttribute="centerX" constant="-0.5" id="lEn-Mf-T46"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstItem="KwU-Ms-43D" firstAttribute="centerX" secondItem="EUJ-Zq-AGV" secondAttribute="centerX" id="2OL-M7-nhK"/>
+                <constraint firstAttribute="trailing" secondItem="VTD-xT-aQG" secondAttribute="trailing" id="Avh-rd-PIn"/>
+                <constraint firstAttribute="bottom" secondItem="VTD-xT-aQG" secondAttribute="bottom" id="Dkz-GV-00E"/>
+                <constraint firstItem="VTD-xT-aQG" firstAttribute="top" secondItem="KwU-Ms-43D" secondAttribute="bottom" constant="-16" id="IQ8-Fg-liu"/>
+                <constraint firstItem="VTD-xT-aQG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="NBO-LV-5wF"/>
+                <constraint firstItem="KwU-Ms-43D" firstAttribute="top" secondItem="EUJ-Zq-AGV" secondAttribute="bottom" constant="40" id="QeE-4m-Dgs"/>
+                <constraint firstItem="KwU-Ms-43D" firstAttribute="centerX" secondItem="VTD-xT-aQG" secondAttribute="centerX" id="VrV-bh-NzL"/>
+            </constraints>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+        </view>
+    </objects>
+</document>
