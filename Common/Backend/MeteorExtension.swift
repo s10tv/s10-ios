@@ -42,6 +42,18 @@ extension METDDPClient {
         }
         return subject;
     }
+    
+    func logout() -> RACSignal {
+        let subject = RACReplaySubject()
+        logoutWithCompletionHandler { (error) -> Void in
+            if error != nil {
+                subject.sendError(error)
+            } else {
+                subject.sendCompleted()
+            }
+        }
+        return subject
+    }
 }
 
 // MARK: - Meteor CoreData

@@ -20,6 +20,12 @@ class CoreService {
     var mainContext : NSManagedObjectContext! {
         return meteor.mainQueueManagedObjectContext
     }
+    var fbSession : FBSession {
+        return FBSession.activeSession()!
+    }
+    var isRegistered : Bool {
+        return meteor.hasAccount() || fbSession.state == .Open || fbSession.state == .OpenTokenExtended
+    }
     
     init() {
         // Set up CoreData
@@ -47,5 +53,16 @@ class CoreService {
         // Initialize other services
         matchService = MatchService(meteor: meteor)
         AzureClient.startWithMeteor(meteor)
+    }
+    
+    func loginWithFacebook() {
+        FBSession.openActiveSessionWithAllowLoginUI(true)
+    }
+    
+    func logout() -> RACSignal {
+        return meteor.logout().deliverOnMainThread().doCompleted({
+            FBSession.activeSession().closeAndClearTokenInformation()
+            self.mainContext.reset()
+        }).replay()
     }
 }

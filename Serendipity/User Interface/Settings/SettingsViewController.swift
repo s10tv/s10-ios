@@ -59,8 +59,4 @@ class SettingsViewController : UIViewController {
         performSegueWithIdentifier("SettingsToGame", sender: nil)
     }
 
-    
-    @IBAction func logout(sender: AnyObject) {
-        
-    }
 }

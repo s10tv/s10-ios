@@ -13,7 +13,7 @@ class RootViewController : UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if !FBSession.openActiveSessionWithAllowLoginUI(false) {
+        if !Core.isRegistered {
             showSignup(false)
         } else {
             showDiscover(false)
@@ -47,4 +47,10 @@ class RootViewController : UINavigationController {
         setViewControllers([vc], animated: animated)
     }
     
+    @IBAction func logout(sender: AnyObject) {
+        self.showSignup(true)
+        Core.logout().subscribeCompleted {
+            Log.info("Signed out")
+        }
+    }
 }
