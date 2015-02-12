@@ -39,7 +39,6 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
             return
         }
         
-
         avatarView.sd_setImageWithURL(connection?.user?.profilePhotoURL)
         nameLabel.text = connection?.user?.firstName
         titleView.whenTapped { [weak self] in
@@ -48,6 +47,11 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
         }
         
         navigationItem.titleView = titleView
+        
+        let avatarLength = 30
+        let layout = self.collectionView.collectionViewLayout
+        layout.incomingAvatarViewSize = CGSize(width: avatarLength, height: avatarLength)
+        layout.outgoingAvatarViewSize = CGSize(width: avatarLength, height: avatarLength)
     }
     
     override func viewDidLayoutSubviews() {
@@ -69,6 +73,7 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
         message.sender = User.currentUser()
         message.text = text
         message.save()
+        finishSendingMessageAnimated(true)
     }
     
     override func didPressAccessoryButton(sender: UIButton!) {
@@ -87,6 +92,13 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return messages.numberOfItemsInSection(section)
+    }
+    
+    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPath) as JSQMessagesCollectionViewCell
+        // This doesn't work if layout changes (say diff avatar size). So need to figure out better way
+        cell.avatarImageView.makeCircular()
+        return cell
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, messageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageData! {
