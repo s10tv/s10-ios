@@ -8,6 +8,7 @@ enum ConnectionAttributes: String {
     case dateUpdated = "dateUpdated"
     case lastMessageDate = "lastMessageDate"
     case lastMessageText = "lastMessageText"
+    case type = "type"
 }
 
 enum ConnectionRelationships: String {
@@ -59,6 +60,11 @@ class _Connection: NSManagedObject {
     var lastMessageText: String?
 
     // func validateLastMessageText(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var type: String?
+
+    // func validateType(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
 

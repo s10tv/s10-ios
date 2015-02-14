@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14C109" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6751" systemVersion="14C109" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Connection" representedClassName="Connection" syncable="YES">
         <attribute name="dateCreated" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="dateUpdated" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="lastMessageDate" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="lastMessageText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES">
             <userInfo>
                 <entry key="fieldName" value="recipient"/>
@@ -53,7 +54,7 @@
         <attribute name="work" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Connection" positionX="-54" positionY="0" width="128" height="118"/>
+        <element name="Connection" positionX="-54" positionY="0" width="128" height="135"/>
         <element name="Match" positionX="-45" positionY="54" width="128" height="90"/>
         <element name="Message" positionX="-36" positionY="27" width="128" height="148"/>
         <element name="User" positionX="-63" positionY="-18" width="128" height="178"/>

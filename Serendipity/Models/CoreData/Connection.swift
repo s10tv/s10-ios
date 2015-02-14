@@ -8,6 +8,10 @@
 
 @objc(Connection)
 class Connection: _Connection {
+    enum Type : String {
+        case Yes = "yes"
+        case Maybe = "maybe"
+    }
     
     // NOTE: Not meaningfully ordered for performance, despite array return type.
     var messages: [Message] {
