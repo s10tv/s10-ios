@@ -26,6 +26,7 @@ class GameViewController : BaseViewController {
                     imageView.match = matches[i]
                     imageView.whenTapped {
                         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("Profile") as ProfileViewController
+                        vc.user = imageView.match?.user
                         self.navigationController?.pushViewController(vc, animated: true)
                     }
                 } else {
@@ -90,10 +91,8 @@ class GameViewController : BaseViewController {
         } else {
             Core.matchService.chooseYesNoMaybe(marry!, no: skip!, maybe: keep!).deliverOnMainThread().subscribeNextAs { (res : [String:String]) -> () in
                 if res.count > 0 {
-//                    UIAlertView.show("Congrats", message: "You got \(res.count) matches")
                     let yesConnId = res["yes"]
                     let maybeConnId = res["maybe"]
-//                    let conn = Connection.find
                     let conn = Connection.findByDocumentID((yesConnId ?? maybeConnId)!)
                     let vc = NewConnectionViewController() as NewConnectionViewController
                     vc.user = conn?.user
