@@ -13,6 +13,7 @@ enum MessageAttributes: String {
 
 enum MessageRelationships: String {
     case connection = "connection"
+    case recipient = "recipient"
     case sender = "sender"
 }
 
@@ -73,6 +74,11 @@ class _Message: NSManagedObject {
     var connection: Connection?
 
     // func validateConnection(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var recipient: User?
+
+    // func validateRecipient(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
     var sender: User?

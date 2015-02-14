@@ -77,6 +77,7 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
         let message = Message.create() as Message
         message.connection = connection
         message.sender = User.currentUser()
+        message.recipient = connection?.user
         message.text = text
         message.save()
         finishSendingMessageAnimated(true)
