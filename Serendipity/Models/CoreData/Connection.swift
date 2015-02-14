@@ -29,5 +29,8 @@ class Connection: _Connection {
         let sortDesc = NSSortDescriptor(key: MessageAttributes.timestamp.rawValue, ascending: true)
         return sorted ? messages.sorted(by: sortDesc).frc() : messages.frc()
     }
-
+    
+    class func findByDocumentID(documentID: String) -> Connection? {
+        return Core.mainContext.objectInCollection("connections", documentID: documentID) as? Connection
+    }
 }

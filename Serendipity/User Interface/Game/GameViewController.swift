@@ -25,9 +25,7 @@ class GameViewController : BaseViewController {
                 if i < matches.count {
                     imageView.match = matches[i]
                     imageView.whenTapped {
-//                        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("Profile") as ProfileViewController
-                        let vc = NewConnectionViewController() as NewConnectionViewController
-                        vc.user = matches[i].user
+                        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("Profile") as ProfileViewController
                         self.navigationController?.pushViewController(vc, animated: true)
                     }
                 } else {
@@ -90,10 +88,16 @@ class GameViewController : BaseViewController {
         if marry == nil || keep == nil || skip == nil {
             UIAlertView.show("Error", message: "Need to uniquely assign keep match marry")
         } else {
-            Core.matchService.chooseYesNoMaybe(marry!, no: skip!, maybe: keep!)
-                .deliverOnMainThread().subscribeNextAs { (res : [String:String]) -> () in
+            Core.matchService.chooseYesNoMaybe(marry!, no: skip!, maybe: keep!).deliverOnMainThread().subscribeNextAs { (res : [String:String]) -> () in
                 if res.count > 0 {
-                    UIAlertView.show("Congrats", message: "You got \(res.count) matches")
+//                    UIAlertView.show("Congrats", message: "You got \(res.count) matches")
+                    let yesConnId = res["yes"]
+                    let maybeConnId = res["maybe"]
+//                    let conn = Connection.find
+                    let conn = Connection.findByDocumentID((yesConnId ?? maybeConnId)!)
+                    let vc = NewConnectionViewController() as NewConnectionViewController
+                    vc.user = conn?.user
+                    self.navigationController?.pushViewController(vc, animated: true)
                 }
             }
         }
