@@ -14,6 +14,10 @@ class GameViewController : BaseViewController {
 
     @IBOutlet var avatars: [UIImageView]!
     
+    @IBOutlet weak var marrySlot: UIImageView!
+    @IBOutlet weak var keepSlot: UIImageView!
+    @IBOutlet weak var skipSlot: UIImageView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         Core.matchService.fetch.signal.subscribeNextAs { (matches : [Match]) -> () in
@@ -68,10 +72,12 @@ class GameViewController : BaseViewController {
     }
 
     @IBAction func confirmChoices(sender: AnyObject) {
-        for i in 0..<self.avatars.count {
-            let match = Core.matchService.fetch.objects[i] as Match
-            Core.matchService.passMatch(match)
-        }
+//        let matches = Core.matchService.fetch.objects as [Match]
+//        Core.matchService.chooseYesNoMaybe(matches[0], no: matches[1], maybe: matches[2])
+//        for i in 0..<self.avatars.count {
+//            let match = Core.matchService.fetch.objects[i] as Match
+//            Core.matchService.passMatch(match)
+//        }
     }
     
 }

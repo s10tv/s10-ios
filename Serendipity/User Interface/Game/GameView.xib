@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6750" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameViewController">
             <connections>
+                <outlet property="keepSlot" destination="u8F-ne-eBp" id="NzU-jq-vfP"/>
+                <outlet property="marrySlot" destination="Iti-rA-q5V" id="Wug-mD-v8P"/>
+                <outlet property="skipSlot" destination="o6p-MY-cjB" id="WQp-cN-mwP"/>
                 <outlet property="view" destination="iN0-l3-epB" id="hYf-pv-Afu"/>
                 <outletCollection property="avatars" destination="1Lu-FI-gAz" collectionClass="NSMutableArray" id="geo-dR-phv"/>
                 <outletCollection property="avatars" destination="k7t-mm-QgH" collectionClass="NSMutableArray" id="WeF-B4-epn"/>
@@ -17,9 +20,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game_background" translatesAutoresizingMaskIntoConstraints="NO" id="Zm3-4b-5LY">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Lu-FI-gAz">
                     <rect key="frame" x="34" y="99" width="70" height="70"/>
                 </imageView>
@@ -66,24 +66,73 @@
                         <action selector="goToDock:" destination="-1" eventType="touchUpInside" id="iXz-ii-Ny8"/>
                     </connections>
                 </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skipText" translatesAutoresizingMaskIntoConstraints="NO" id="o6p-MY-cjB">
+                    <rect key="frame" x="19" y="293" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="OG2-9l-aGb"/>
+                        <constraint firstAttribute="width" constant="100" id="ob8-d2-AyI"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keepText" translatesAutoresizingMaskIntoConstraints="NO" id="u8F-ne-eBp">
+                    <rect key="frame" x="202" y="293" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="0pA-db-Guf"/>
+                        <constraint firstAttribute="width" constant="100" id="w5B-zd-H3O"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="marryText" translatesAutoresizingMaskIntoConstraints="NO" id="Iti-rA-q5V">
+                    <rect key="frame" x="110" y="185" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="c1B-G5-Sdm"/>
+                        <constraint firstAttribute="width" constant="100" id="iqv-Rn-x0G"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marry" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9qx-dJ-kUe">
+                    <rect key="frame" x="138" y="293" width="44.5" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skip" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDo-UQ-ueF">
+                    <rect key="frame" x="52" y="401" width="34" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xs5-fm-J17">
+                    <rect key="frame" x="232" y="400" width="40" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.0" green="0.90980392156862744" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="Zm3-4b-5LY" secondAttribute="trailing" id="23Y-Dc-gqQ"/>
-                <constraint firstAttribute="bottom" secondItem="Zm3-4b-5LY" secondAttribute="bottom" id="4S4-0G-BLE"/>
+                <constraint firstAttribute="centerX" secondItem="Iti-rA-q5V" secondAttribute="centerX" id="3Xo-lg-wda"/>
                 <constraint firstAttribute="bottom" secondItem="PlY-Za-18q" secondAttribute="bottom" constant="8" id="5A7-GC-6tv"/>
                 <constraint firstAttribute="trailing" secondItem="PlY-Za-18q" secondAttribute="trailing" constant="8" id="6F9-1I-zbm"/>
-                <constraint firstItem="Zm3-4b-5LY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="AaU-YK-K7J"/>
+                <constraint firstItem="o6p-MY-cjB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="19" id="6je-H4-tys"/>
+                <constraint firstAttribute="trailing" secondItem="u8F-ne-eBp" secondAttribute="trailing" constant="18" id="8kQ-H1-MPO"/>
+                <constraint firstItem="xs5-fm-J17" firstAttribute="top" secondItem="u8F-ne-eBp" secondAttribute="bottom" constant="7" id="Agp-o3-ODX"/>
+                <constraint firstItem="u8F-ne-eBp" firstAttribute="centerX" secondItem="xs5-fm-J17" secondAttribute="centerX" id="CbF-PC-mad"/>
+                <constraint firstItem="Iti-rA-q5V" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="185" id="GVp-HG-que"/>
                 <constraint firstItem="svh-Tk-FMJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="I7w-Nd-fwg"/>
+                <constraint firstItem="Iti-rA-q5V" firstAttribute="centerX" secondItem="9qx-dJ-kUe" secondAttribute="centerX" id="QcF-BM-zoG"/>
                 <constraint firstItem="svh-Tk-FMJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="R5b-iB-hQI"/>
-                <constraint firstItem="Zm3-4b-5LY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="T9w-Mc-Bt7"/>
+                <constraint firstItem="KDo-UQ-ueF" firstAttribute="top" secondItem="o6p-MY-cjB" secondAttribute="bottom" constant="8" id="XVP-Wr-yQJ"/>
                 <constraint firstItem="dfZ-2s-ycX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ba1-PO-361"/>
+                <constraint firstItem="o6p-MY-cjB" firstAttribute="top" secondItem="Iti-rA-q5V" secondAttribute="bottom" constant="8" id="eoo-iG-9Dr"/>
                 <constraint firstAttribute="trailing" secondItem="dfZ-2s-ycX" secondAttribute="trailing" id="lUD-fG-M6K"/>
+                <constraint firstItem="9qx-dJ-kUe" firstAttribute="top" secondItem="Iti-rA-q5V" secondAttribute="bottom" constant="8" id="rh3-vm-Kdl"/>
+                <constraint firstItem="u8F-ne-eBp" firstAttribute="centerY" secondItem="o6p-MY-cjB" secondAttribute="centerY" id="uuA-iF-8je"/>
+                <constraint firstItem="KDo-UQ-ueF" firstAttribute="centerX" secondItem="o6p-MY-cjB" secondAttribute="centerX" id="zKq-2m-eDg"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
         </view>
     </objects>
     <resources>
-        <image name="game_background" width="640" height="1136"/>
+        <image name="keepText" width="800" height="800"/>
+        <image name="marryText" width="800" height="800"/>
+        <image name="skipText" width="800" height="800"/>
     </resources>
 </document>
