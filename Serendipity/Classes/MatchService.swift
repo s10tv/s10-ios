@@ -21,7 +21,7 @@ class MatchService {
     init(meteor: METCoreDataDDPClient) {
         self.meteor = meteor
         subscription = meteor.addSubscriptionWithName("matches")
-        let frc = Match.all().sorted(by: MatchAttributes.dateMatched.rawValue, ascending: true).frc()
+        let frc = Match.by(MatchAttributes.choice.rawValue, value: nil).sorted(by: MatchAttributes.dateMatched.rawValue, ascending: true).frc()
         fetch = FetchViewModel(frc: frc)
 
         // Define Stub method

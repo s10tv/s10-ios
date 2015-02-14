@@ -20,8 +20,8 @@ extension SugarRecord {
 
 extension SugarRecordFinder {
     
-    public func by(key: String, value: AnyObject) -> SugarRecordFinder {
-        return by(NSPredicate(format: "%K = %@", argumentArray: [key, value]))
+    public func by(key: String, value: AnyObject?) -> SugarRecordFinder {
+        return by(NSPredicate(format: "%K = %@", argumentArray: [key, value ?? NSNull()]))
     }
     
     public func frc() -> NSFetchedResultsController {
@@ -30,7 +30,7 @@ extension SugarRecordFinder {
 }
 
 extension NSManagedObject {
-    class func by(key: String, value: AnyObject) -> SugarRecordFinder {
+    class func by(key: String, value: AnyObject?) -> SugarRecordFinder {
         return all().by(key, value: value)
     }
 }
