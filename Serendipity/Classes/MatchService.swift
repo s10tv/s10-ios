@@ -58,9 +58,9 @@ class MatchService {
         meteor.callMethodWithName("matchPass", parameters: [match.documentID!])
     }
     
-    func chooseYesNoMaybe(yes: Match, no: Match, maybe: Match) {
+    func chooseYesNoMaybe(yes: Match, no: Match, maybe: Match) -> RACSignal {
         let params = [yes.documentID!, no.documentID!, maybe.documentID!]
-        meteor.callMethodWithName("chooseYesNoMaybe", parameters: params);
+        return meteor.callMethod("chooseYesNoMaybe", params: params)
     }
 }
 

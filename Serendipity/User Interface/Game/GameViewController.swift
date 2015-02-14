@@ -90,7 +90,11 @@ class GameViewController : BaseViewController {
         if marry == nil || keep == nil || skip == nil {
             UIAlertView.show("Error", message: "Need to uniquely assign keep match marry")
         } else {
-            Core.matchService.chooseYesNoMaybe(marry!, no: skip!, maybe: keep!)
+            Core.matchService.chooseYesNoMaybe(marry!, no: skip!, maybe: keep!).subscribeNextAs { (res : [String:String]) -> () in
+                if res.count > 0 {
+                    UIAlertView.show("Congrats", message: "You got \(res.count) matches")
+                }
+            }
         }
     }
     
