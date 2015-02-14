@@ -35,6 +35,16 @@ class MatchService {
             return true
         })
         
+        meteor.defineStubForMethodWithName("chooseYesNoMaybe", usingBlock: { (args) -> AnyObject! in
+            assert(NSThread.isMainThread(), "Only main supported for now")
+            for matchId in (args as [String]) {
+                if let match = Match.findByDocumentID(matchId) {
+                    match.delete()
+                }
+            }
+            return true
+        })
+        
         // Setup the currentMatch signal (TODO: memory mgmt)
         subscription.signal.deliverOnMainThread().then {
             self.fetch.performFetchIfNeeded()
@@ -46,6 +56,11 @@ class MatchService {
     
     func passMatch(match: Match) {
         meteor.callMethodWithName("matchPass", parameters: [match.documentID!])
+    }
+    
+    func chooseYesNoMaybe(yes: Match, no: Match, maybe: Match) {
+        let params = [yes.documentID!, no.documentID!, maybe.documentID!]
+        meteor.callMethodWithName("chooseYesNoMaybe", parameters: params);
     }
 }
 
