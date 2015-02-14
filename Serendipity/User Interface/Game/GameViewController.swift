@@ -12,7 +12,7 @@ import UIView_draggable
 @objc(GameViewController)
 class GameViewController : BaseViewController {
 
-    @IBOutlet var avatars: [UIImageView]!
+    @IBOutlet var avatars: [MatchBubbleView]!
     
     @IBOutlet weak var marrySlot: UIImageView!
     @IBOutlet weak var keepSlot: UIImageView!
@@ -23,16 +23,15 @@ class GameViewController : BaseViewController {
         Core.matchService.fetch.signal.subscribeNextAs { (matches : [Match]) -> () in
             for (i, imageView) in enumerate(self.avatars) {
                 if i < matches.count {
-                    imageView.sd_setImageWithURL(matches[i].user?.profilePhotoURL)
+                    imageView.match = matches[i]
                     imageView.whenTapped {
 //                        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("Profile") as ProfileViewController
                         let vc = NewConnectionViewController() as NewConnectionViewController
                         vc.user = matches[i].user
-                        
                         self.navigationController?.pushViewController(vc, animated: true)
                     }
                 } else {
-                    imageView.image = nil
+                    imageView.match = nil
                 }
             }
         }

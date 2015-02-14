@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6750" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameViewController">
@@ -20,15 +20,6 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Lu-FI-gAz">
-                    <rect key="frame" x="34" y="99" width="70" height="70"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k7t-mm-QgH">
-                    <rect key="frame" x="126" y="99" width="70" height="70"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FWx-3L-EJd">
-                    <rect key="frame" x="217" y="99" width="70" height="70"/>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PlY-Za-18q">
                     <rect key="frame" x="256" y="530" width="56" height="30"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -67,44 +58,53 @@
                     </connections>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skipText" translatesAutoresizingMaskIntoConstraints="NO" id="o6p-MY-cjB">
-                    <rect key="frame" x="19" y="293" width="100" height="100"/>
+                    <rect key="frame" x="19" y="258" width="100" height="100"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="OG2-9l-aGb"/>
                         <constraint firstAttribute="width" constant="100" id="ob8-d2-AyI"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keepText" translatesAutoresizingMaskIntoConstraints="NO" id="u8F-ne-eBp">
-                    <rect key="frame" x="202" y="293" width="100" height="100"/>
+                    <rect key="frame" x="202" y="258" width="100" height="100"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="0pA-db-Guf"/>
                         <constraint firstAttribute="width" constant="100" id="w5B-zd-H3O"/>
                     </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="marryText" translatesAutoresizingMaskIntoConstraints="NO" id="Iti-rA-q5V">
-                    <rect key="frame" x="110" y="185" width="100" height="100"/>
+                    <rect key="frame" x="110" y="150" width="100" height="100"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="100" id="c1B-G5-Sdm"/>
                         <constraint firstAttribute="width" constant="100" id="iqv-Rn-x0G"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marry" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9qx-dJ-kUe">
-                    <rect key="frame" x="138" y="293" width="44.5" height="20.5"/>
+                    <rect key="frame" x="138" y="258" width="44.5" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skip" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDo-UQ-ueF">
-                    <rect key="frame" x="52" y="401" width="34" height="20.5"/>
+                    <rect key="frame" x="52" y="366" width="34" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xs5-fm-J17">
-                    <rect key="frame" x="232" y="400" width="40" height="20.5"/>
+                    <rect key="frame" x="232" y="365" width="40" height="20.5"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Lu-FI-gAz" customClass="MatchBubbleView" customModule="Serendipity" customModuleProvider="target">
+                    <rect key="frame" x="34" y="429" width="70" height="70"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k7t-mm-QgH" customClass="MatchBubbleView" customModule="Serendipity" customModuleProvider="target">
+                    <rect key="frame" x="126" y="429" width="70" height="70"/>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FWx-3L-EJd" customClass="MatchBubbleView" customModule="Serendipity" customModuleProvider="target">
+                    <rect key="frame" x="217" y="429" width="70" height="70"/>
+                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.0" green="0.90980392156862744" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -115,7 +115,7 @@
                 <constraint firstAttribute="trailing" secondItem="u8F-ne-eBp" secondAttribute="trailing" constant="18" id="8kQ-H1-MPO"/>
                 <constraint firstItem="xs5-fm-J17" firstAttribute="top" secondItem="u8F-ne-eBp" secondAttribute="bottom" constant="7" id="Agp-o3-ODX"/>
                 <constraint firstItem="u8F-ne-eBp" firstAttribute="centerX" secondItem="xs5-fm-J17" secondAttribute="centerX" id="CbF-PC-mad"/>
-                <constraint firstItem="Iti-rA-q5V" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="185" id="GVp-HG-que"/>
+                <constraint firstItem="Iti-rA-q5V" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="150" id="GVp-HG-que"/>
                 <constraint firstItem="svh-Tk-FMJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="I7w-Nd-fwg"/>
                 <constraint firstItem="Iti-rA-q5V" firstAttribute="centerX" secondItem="9qx-dJ-kUe" secondAttribute="centerX" id="QcF-BM-zoG"/>
                 <constraint firstItem="svh-Tk-FMJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="R5b-iB-hQI"/>
