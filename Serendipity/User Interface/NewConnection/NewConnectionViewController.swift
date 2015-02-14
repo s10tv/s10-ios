@@ -33,7 +33,13 @@ class NewConnectionViewController : BaseViewController {
     }
     
     @IBAction func getInTouch(sender: AnyObject) {
-        
+        let dock = DockViewController()
+        // TODO: Fix these hacks
+        dock.navigationItem.title = "Your Matches"
+        dock.automaticallyAdjustsScrollViewInsets = false
+        let nav = navigationController
+        nav?.popViewControllerAnimated(false)
+        nav?.pushViewController(dock, animated: true)
     }
     
 }
