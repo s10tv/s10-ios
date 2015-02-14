@@ -71,12 +71,27 @@ class GameViewController : BaseViewController {
     }
 
     @IBAction func confirmChoices(sender: AnyObject) {
-//        let matches = Core.matchService.fetch.objects as [Match]
-//        Core.matchService.chooseYesNoMaybe(matches[0], no: matches[1], maybe: matches[2])
-//        for i in 0..<self.avatars.count {
-//            let match = Core.matchService.fetch.objects[i] as Match
-//            Core.matchService.passMatch(match)
-//        }
+        var marry : Match?
+        var keep : Match?
+        var skip : Match?
+
+        for avatar in self.avatars {
+            let isMarry = CGRectIntersectsRect(avatar.frame, marrySlot.frame)
+            let isKeep = CGRectIntersectsRect(avatar.frame, keepSlot.frame)
+            let isSkip = CGRectIntersectsRect(avatar.frame, skipSlot.frame)
+            if isMarry {
+                marry = avatar.match
+            } else if isKeep {
+                keep = avatar.match
+            } else if isSkip {
+                skip = avatar.match
+            }
+        }
+        if marry == nil || keep == nil || skip == nil {
+            UIAlertView.show("Error", message: "Need to uniquely assign keep match marry")
+        } else {
+            Core.matchService.chooseYesNoMaybe(marry!, no: skip!, maybe: keep!)
+        }
     }
     
 }
