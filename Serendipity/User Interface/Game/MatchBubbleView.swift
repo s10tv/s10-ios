@@ -13,6 +13,9 @@ class MatchBubbleView : UIImageView {
     var match : Match? {
         didSet {
             sd_setImageWithURL(match?.user?.profilePhotoURL)
+            if match?.user?.profilePhotoURL == nil {
+                image = UIImage(named: "girl-placeholder")
+            }
         }
     }
 }
