@@ -12,7 +12,7 @@ import UIView_draggable
 @objc(GameViewController)
 class GameViewController : BaseViewController {
 
-    @IBOutlet var avatars: [MatchBubbleView]!
+    @IBOutlet var avatars: [CandidateView]!
     
     @IBOutlet weak var marrySlot: UIImageView!
     @IBOutlet weak var keepSlot: UIImageView!

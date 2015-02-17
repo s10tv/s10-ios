@@ -1,5 +1,5 @@
 //
-//  ProfileBubbleView.swift
+//  CandidateView.swift
 //  Serendipity
 //
 //  Created by Tony Xiao on 2/14/15.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class MatchBubbleView : UIImageView {
+class CandidateView : UIImageView {
     
     var candidate : Candidate? {
         didSet {
