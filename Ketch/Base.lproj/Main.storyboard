@@ -36,7 +36,7 @@
         <!--Root View Controller-->
         <scene sceneID="d4d-05-BTY">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="V2G-ja-Bqr" customClass="RootViewController" customModule="Serendipity" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="V2G-ja-Bqr" customClass="RootViewController" customModule="Ketch" customModuleProvider="target" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="IY9-KH-R0E">

@@ -34,6 +34,20 @@
                         <constraint firstAttribute="width" secondItem="3cc-kC-cwZ" secondAttribute="height" multiplier="160:31" id="daU-3z-L1f"/>
                     </constraints>
                 </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZn-Di-z3m">
+                    <rect key="frame" x="0.0" y="0.0" width="80" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="ByR-U8-62L"/>
+                        <constraint firstAttribute="width" constant="80" id="qXS-2D-xlJ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                    <state key="normal" title="BACK">
+                        <color key="titleColor" red="0.34509803919999998" green="0.67843137249999996" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="goBack:" destination="-1" eventType="touchUpInside" id="RWm-fg-K7B"/>
+                    </connections>
+                </button>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BoD-Az-3DM" customClass="JSQMessagesInputToolbar">
                     <rect key="frame" x="0.0" y="524" width="320" height="44"/>
                     <constraints>
@@ -47,10 +61,12 @@
                 <constraint firstItem="3cc-kC-cwZ" firstAttribute="width" secondItem="3cc-kC-cwZ" secondAttribute="height" multiplier="160:31" id="28A-3E-vue"/>
                 <constraint firstAttribute="trailing" secondItem="BoD-Az-3DM" secondAttribute="trailing" id="7xc-Ha-asg"/>
                 <constraint firstItem="3cc-kC-cwZ" firstAttribute="leading" secondItem="mUa-cS-ru4" secondAttribute="leading" id="BBo-PH-5Az"/>
+                <constraint firstItem="DZn-Di-z3m" firstAttribute="top" secondItem="mUa-cS-ru4" secondAttribute="top" id="CSS-OU-ItA"/>
                 <constraint firstItem="3cc-kC-cwZ" firstAttribute="top" secondItem="mUa-cS-ru4" secondAttribute="top" id="LFc-1A-wTq"/>
                 <constraint firstItem="l9u-2b-4LK" firstAttribute="leading" secondItem="mUa-cS-ru4" secondAttribute="leading" id="MmF-oh-Y75"/>
                 <constraint firstAttribute="trailing" secondItem="l9u-2b-4LK" secondAttribute="trailing" id="O9u-TA-A0e"/>
                 <constraint firstAttribute="bottom" secondItem="l9u-2b-4LK" secondAttribute="bottom" id="Re7-WW-UmS"/>
+                <constraint firstItem="DZn-Di-z3m" firstAttribute="leading" secondItem="mUa-cS-ru4" secondAttribute="leading" id="buh-Y3-5p2"/>
                 <constraint firstItem="l9u-2b-4LK" firstAttribute="top" secondItem="mUa-cS-ru4" secondAttribute="top" id="dCQ-DM-Wdj"/>
                 <constraint firstAttribute="bottom" secondItem="BoD-Az-3DM" secondAttribute="bottom" id="rHs-6q-NX4"/>
                 <constraint firstItem="BoD-Az-3DM" firstAttribute="leading" secondItem="mUa-cS-ru4" secondAttribute="leading" id="ts7-8f-0lH"/>

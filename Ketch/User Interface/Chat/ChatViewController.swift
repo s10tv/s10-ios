@@ -11,7 +11,6 @@ import JSQMessagesViewController
 import EDColor
 
 @objc(ChatViewController)
-
 class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewDataSource {
     
     var connection: Connection?
@@ -67,10 +66,20 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
         avatarView.makeCircular()
     }
     
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let profileVC = segue.destinationViewController as? ProfileViewController {
             profileVC.user = connection?.user
         }
+    }
+    
+    // MARK: -
+    
+    @IBAction func goBack(sender: AnyObject) {
+        navigationController?.popViewControllerAnimated(true)
     }
     
     // MARK: - 

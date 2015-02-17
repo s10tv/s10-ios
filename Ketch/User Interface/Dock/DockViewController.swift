@@ -48,4 +48,12 @@ class DockViewController : BaseViewController {
             vc.connection = self.currentConnection
         }
     }
+    
+    @IBAction func goBack(sender: AnyObject) {
+        navigationController?.popViewControllerAnimated(true)
+    }
+
+
+
+
 }
