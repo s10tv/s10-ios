@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6750" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameViewController">
@@ -31,26 +31,26 @@
                         <action selector="confirmChoices:" destination="-1" eventType="touchUpInside" id="QEp-Ou-mJt"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svh-Tk-FMJ" userLabel="Settings">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svh-Tk-FMJ" userLabel="Settings">
                     <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="80" id="820-SS-7PK"/>
                         <constraint firstAttribute="height" constant="60" id="eLk-S0-G9U"/>
                     </constraints>
-                    <state key="normal">
+                    <state key="normal" image="Settings">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
                         <action selector="goToSettings:" destination="-1" eventType="touchUpInside" id="J1M-1X-lfO"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfZ-2s-ycX" userLabel="Connections">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfZ-2s-ycX" userLabel="Dock">
                     <rect key="frame" x="240" y="0.0" width="80" height="60"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="D2o-Gk-cy9"/>
                         <constraint firstAttribute="width" constant="80" id="Un9-Cs-KrY"/>
                     </constraints>
-                    <state key="normal">
+                    <state key="normal" image="Dock">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
@@ -96,13 +96,13 @@
                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Lu-FI-gAz" customClass="MatchBubbleView" customModule="Serendipity" customModuleProvider="target">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Lu-FI-gAz" customClass="CandidateView" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="34" y="429" width="70" height="70"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k7t-mm-QgH" customClass="MatchBubbleView" customModule="Serendipity" customModuleProvider="target">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k7t-mm-QgH" customClass="CandidateView" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="126" y="429" width="70" height="70"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FWx-3L-EJd" customClass="MatchBubbleView" customModule="Serendipity" customModuleProvider="target">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FWx-3L-EJd" customClass="CandidateView" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="217" y="429" width="70" height="70"/>
                 </imageView>
             </subviews>
@@ -131,6 +131,8 @@
         </view>
     </objects>
     <resources>
+        <image name="Dock" width="30" height="23"/>
+        <image name="Settings" width="26" height="27"/>
         <image name="keepText" width="800" height="800"/>
         <image name="marryText" width="800" height="800"/>
         <image name="skipText" width="800" height="800"/>
