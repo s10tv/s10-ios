@@ -32,8 +32,6 @@
 		EA0FC93A1A87DE5800D62625 /* ReactiveCocoaExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9251A87DE5800D62625 /* ReactiveCocoaExtension.swift */; };
 		EA0FC93B1A87DE5800D62625 /* Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9261A87DE5800D62625 /* Segue.swift */; };
 		EA0FC93C1A87DE5800D62625 /* UIKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9271A87DE5800D62625 /* UIKitExtension.swift */; };
-		EA0FC93D1A87DE5800D62625 /* VideoPlayerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA0FC9291A87DE5800D62625 /* VideoPlayerView.xib */; };
-		EA0FC93E1A87DE5800D62625 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC92A1A87DE5800D62625 /* VideoPlayerViewController.swift */; };
 		EA0FC9411A87DE5800D62625 /* ArrayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC92F1A87DE5800D62625 /* ArrayViewModel.swift */; };
 		EA0FC9421A87DE5800D62625 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9301A87DE5800D62625 /* BaseViewModel.swift */; };
 		EA0FC9431A87DE5800D62625 /* FetchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9311A87DE5800D62625 /* FetchViewModel.swift */; };
@@ -76,8 +74,6 @@
 		EA5634ED1A77428F00F62B52 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E71A77428F00F62B52 /* Connection.swift */; };
 		EA5634EE1A77428F00F62B52 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E81A77428F00F62B52 /* Message.swift */; };
 		EA5634EF1A77428F00F62B52 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E91A77428F00F62B52 /* User.swift */; };
-		EA7ABC2B1A87E4800023C14C /* VideoRecorderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA7ABC291A87E4800023C14C /* VideoRecorderView.xib */; };
-		EA7ABC2C1A87E4800023C14C /* VideoRecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7ABC2A1A87E4800023C14C /* VideoRecorderViewController.swift */; };
 		EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
 		EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35461A74CC6900E0C65D /* Main.storyboard */; };
 		EA9F354A1A74CC6900E0C65D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Images.xcassets */; };
@@ -122,8 +118,6 @@
 		EA0FC9251A87DE5800D62625 /* ReactiveCocoaExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveCocoaExtension.swift; sourceTree = "<group>"; };
 		EA0FC9261A87DE5800D62625 /* Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segue.swift; sourceTree = "<group>"; };
 		EA0FC9271A87DE5800D62625 /* UIKitExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
-		EA0FC9291A87DE5800D62625 /* VideoPlayerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoPlayerView.xib; sourceTree = "<group>"; };
-		EA0FC92A1A87DE5800D62625 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		EA0FC92F1A87DE5800D62625 /* ArrayViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayViewModel.swift; sourceTree = "<group>"; };
 		EA0FC9301A87DE5800D62625 /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		EA0FC9311A87DE5800D62625 /* FetchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchViewModel.swift; sourceTree = "<group>"; };
@@ -180,8 +174,6 @@
 		EA5634E71A77428F00F62B52 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		EA5634E81A77428F00F62B52 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EA5634E91A77428F00F62B52 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		EA7ABC291A87E4800023C14C /* VideoRecorderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoRecorderView.xib; sourceTree = "<group>"; };
-		EA7ABC2A1A87E4800023C14C /* VideoRecorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoRecorderViewController.swift; sourceTree = "<group>"; };
 		EA9F353A1A74CC6900E0C65D /* Ketch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ketch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9F353E1A74CC6900E0C65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -260,8 +252,6 @@
 			children = (
 				EA0FC91E1A87DE5800D62625 /* Backend */,
 				EA0FC92E1A87DE5800D62625 /* ViewModels */,
-				EA0FC9281A87DE5800D62625 /* VideoPlayer */,
-				EA0FC92D1A87DE5800D62625 /* VideoRecorder */,
 				EA0FC91D1A87DE5800D62625 /* AzureClient.swift */,
 				EA0FC9221A87DE5800D62625 /* BaseViewController.swift */,
 				EA0FC9261A87DE5800D62625 /* Segue.swift */,
@@ -282,24 +272,6 @@
 				EA0FC9211A87DE5800D62625 /* SugarRecordExtension.swift */,
 			);
 			path = Backend;
-			sourceTree = "<group>";
-		};
-		EA0FC9281A87DE5800D62625 /* VideoPlayer */ = {
-			isa = PBXGroup;
-			children = (
-				EA0FC9291A87DE5800D62625 /* VideoPlayerView.xib */,
-				EA0FC92A1A87DE5800D62625 /* VideoPlayerViewController.swift */,
-			);
-			path = VideoPlayer;
-			sourceTree = "<group>";
-		};
-		EA0FC92D1A87DE5800D62625 /* VideoRecorder */ = {
-			isa = PBXGroup;
-			children = (
-				EA7ABC291A87E4800023C14C /* VideoRecorderView.xib */,
-				EA7ABC2A1A87E4800023C14C /* VideoRecorderViewController.swift */,
-			);
-			path = VideoRecorder;
 			sourceTree = "<group>";
 		};
 		EA0FC92E1A87DE5800D62625 /* ViewModels */ = {
@@ -651,8 +623,6 @@
 				EA1970161A83549300FEBA7F /* SettingsView.xib in Resources */,
 				EA341D9E1A8C88CC00A6077B /* JSQMessagesAssets.bundle in Resources */,
 				EA341DA31A8C88CC00A6077B /* JSQMessagesTypingIndicatorFooterView.xib in Resources */,
-				EA0FC93D1A87DE5800D62625 /* VideoPlayerView.xib in Resources */,
-				EA7ABC2B1A87E4800023C14C /* VideoRecorderView.xib in Resources */,
 				EA341D9F1A8C88CC00A6077B /* JSQMessagesCollectionViewCellIncoming.xib in Resources */,
 				EA341DA21A8C88CC00A6077B /* JSQMessagesToolbarContentView.xib in Resources */,
 			);
@@ -770,7 +740,6 @@
 				EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */,
 				EA0FC9421A87DE5800D62625 /* BaseViewModel.swift in Sources */,
 				EA0FC9381A87DE5800D62625 /* FoundationExtension.swift in Sources */,
-				EA0FC93E1A87DE5800D62625 /* VideoPlayerViewController.swift in Sources */,
 				EAE0E2801A8FB90E00132FA5 /* MatchBubbleView.swift in Sources */,
 				EAF195C91A820F2700A2F103 /* CandidateService.swift in Sources */,
 				EA5634EF1A77428F00F62B52 /* User.swift in Sources */,
@@ -781,7 +750,6 @@
 				EAEA82E91A86941C00A080ED /* Candidate.swift in Sources */,
 				EA0FC9431A87DE5800D62625 /* FetchViewModel.swift in Sources */,
 				EA0FC9341A87DE5800D62625 /* MeteorCDStack.swift in Sources */,
-				EA7ABC2C1A87E4800023C14C /* VideoRecorderViewController.swift in Sources */,
 				EA1970191A83549300FEBA7F /* SignupViewController.swift in Sources */,
 				EA0FC93A1A87DE5800D62625 /* ReactiveCocoaExtension.swift in Sources */,
 				EA409D391A8C681A00988B8B /* FacebookExtension.swift in Sources */,
