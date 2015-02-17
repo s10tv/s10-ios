@@ -190,7 +190,7 @@
 		EA9F35521A74CC6900E0C65D /* KetchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KetchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9F35571A74CC6900E0C65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA9F35581A74CC6900E0C65D /* KetchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KetchTests.swift; sourceTree = "<group>"; };
-		EA9F35621A74CD8800E0C65D /* Ketch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ketch-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		EA9F35621A74CD8800E0C65D /* Ketch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Ketch-Bridging-Header.h"; path = "Ketch/Ketch-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		EABD86641A88B50400F8B822 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		EAE0E27F1A8FB90E00132FA5 /* MatchBubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchBubbleView.swift; sourceTree = "<group>"; };
 		EAEA82E61A86941300A080ED /* _Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Match.swift; sourceTree = "<group>"; };
@@ -944,7 +944,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Ketch/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Ketch-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Ketch/Ketch-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -962,7 +962,7 @@
 				INFOPLIST_FILE = "$(SRCROOT)/Ketch/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Ketch-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Ketch/Ketch-Bridging-Header.h";
 			};
 			name = Release;
 		};
