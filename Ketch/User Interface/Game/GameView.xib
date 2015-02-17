@@ -20,6 +20,10 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7SN-rz-Skm" userLabel="Background">
+                    <rect key="frame" x="0.0" y="58" width="320" height="510"/>
+                    <color key="backgroundColor" red="0.043137254899999998" green="0.8980392157" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PlY-Za-18q">
                     <rect key="frame" x="256" y="530" width="56" height="30"/>
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
@@ -105,9 +109,17 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FWx-3L-EJd" customClass="CandidateView" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="217" y="429" width="70" height="70"/>
                 </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ketch" translatesAutoresizingMaskIntoConstraints="NO" id="9Js-kF-hh5">
+                    <rect key="frame" x="143" y="24" width="34" height="37"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="37" id="due-N9-CCZ"/>
+                        <constraint firstAttribute="width" constant="34" id="qu0-94-PCL"/>
+                    </constraints>
+                </imageView>
             </subviews>
-            <color key="backgroundColor" red="0.0" green="0.90980392156862744" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstAttribute="trailing" secondItem="7SN-rz-Skm" secondAttribute="trailing" id="2Yz-1a-uTU"/>
                 <constraint firstAttribute="centerX" secondItem="Iti-rA-q5V" secondAttribute="centerX" id="3Xo-lg-wda"/>
                 <constraint firstAttribute="bottom" secondItem="PlY-Za-18q" secondAttribute="bottom" constant="8" id="5A7-GC-6tv"/>
                 <constraint firstAttribute="trailing" secondItem="PlY-Za-18q" secondAttribute="trailing" constant="8" id="6F9-1I-zbm"/>
@@ -117,11 +129,16 @@
                 <constraint firstItem="u8F-ne-eBp" firstAttribute="centerX" secondItem="xs5-fm-J17" secondAttribute="centerX" id="CbF-PC-mad"/>
                 <constraint firstItem="Iti-rA-q5V" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="150" id="GVp-HG-que"/>
                 <constraint firstItem="svh-Tk-FMJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="I7w-Nd-fwg"/>
+                <constraint firstItem="9Js-kF-hh5" firstAttribute="centerX" secondItem="7SN-rz-Skm" secondAttribute="centerX" id="IxJ-Xt-ERq"/>
+                <constraint firstItem="7SN-rz-Skm" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="KVI-OJ-v8t"/>
                 <constraint firstItem="Iti-rA-q5V" firstAttribute="centerX" secondItem="9qx-dJ-kUe" secondAttribute="centerX" id="QcF-BM-zoG"/>
                 <constraint firstItem="svh-Tk-FMJ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="R5b-iB-hQI"/>
+                <constraint firstAttribute="bottom" secondItem="7SN-rz-Skm" secondAttribute="bottom" id="Vxx-Cr-gXR"/>
                 <constraint firstItem="KDo-UQ-ueF" firstAttribute="top" secondItem="o6p-MY-cjB" secondAttribute="bottom" constant="8" id="XVP-Wr-yQJ"/>
+                <constraint firstItem="7SN-rz-Skm" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="58" id="ZV7-se-mho"/>
                 <constraint firstItem="dfZ-2s-ycX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ba1-PO-361"/>
                 <constraint firstItem="o6p-MY-cjB" firstAttribute="top" secondItem="Iti-rA-q5V" secondAttribute="bottom" constant="8" id="eoo-iG-9Dr"/>
+                <constraint firstItem="7SN-rz-Skm" firstAttribute="top" secondItem="9Js-kF-hh5" secondAttribute="bottom" constant="-3" id="k6j-wr-Mjp"/>
                 <constraint firstAttribute="trailing" secondItem="dfZ-2s-ycX" secondAttribute="trailing" id="lUD-fG-M6K"/>
                 <constraint firstItem="9qx-dJ-kUe" firstAttribute="top" secondItem="Iti-rA-q5V" secondAttribute="bottom" constant="8" id="rh3-vm-Kdl"/>
                 <constraint firstItem="u8F-ne-eBp" firstAttribute="centerY" secondItem="o6p-MY-cjB" secondAttribute="centerY" id="uuA-iF-8je"/>
@@ -132,6 +149,7 @@
     </objects>
     <resources>
         <image name="Dock" width="30" height="23"/>
+        <image name="Ketch" width="19" height="21"/>
         <image name="Settings" width="26" height="27"/>
         <image name="keepText" width="800" height="800"/>
         <image name="marryText" width="800" height="800"/>
