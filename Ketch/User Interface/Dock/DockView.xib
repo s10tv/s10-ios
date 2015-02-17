@@ -38,7 +38,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Matches" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="31S-EO-xOp">
-                    <rect key="frame" x="110" y="14" width="100" height="22"/>
+                    <rect key="frame" x="110" y="22" width="100" height="22"/>
                     <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
                     <color key="textColor" red="0.34509803919999998" green="0.67843137249999996" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -79,7 +79,7 @@
                 <constraint firstAttribute="trailing" secondItem="wgR-pc-Jsx" secondAttribute="trailing" id="1y7-2n-de3"/>
                 <constraint firstAttribute="centerX" secondItem="F4d-U6-O3S" secondAttribute="centerX" id="7WI-G4-tSV"/>
                 <constraint firstItem="qrU-Rh-vA5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7Wa-nQ-ckP"/>
-                <constraint firstItem="qrU-Rh-vA5" firstAttribute="top" secondItem="31S-EO-xOp" secondAttribute="top" constant="-14" id="AIO-jZ-PnN"/>
+                <constraint firstItem="31S-EO-xOp" firstAttribute="top" secondItem="qrU-Rh-vA5" secondAttribute="top" constant="22" id="AIO-jZ-PnN"/>
                 <constraint firstItem="xgv-Wh-zcG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="EJq-67-jRm"/>
                 <constraint firstItem="wgR-pc-Jsx" firstAttribute="leading" secondItem="F4d-U6-O3S" secondAttribute="trailing" constant="20" id="ELC-16-Zqp"/>
                 <constraint firstItem="xgv-Wh-zcG" firstAttribute="top" secondItem="tFy-Dd-FxZ" secondAttribute="bottom" constant="4" id="Jgr-fp-zL9"/>

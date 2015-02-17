@@ -22,8 +22,8 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="l9u-2b-4LK" customClass="JSQMessagesCollectionView">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                    <color key="backgroundColor" red="0.043137254899999998" green="0.8980392157" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <rect key="frame" x="0.0" y="52" width="320" height="516"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <collectionViewLayout key="collectionViewLayout" id="dZl-7C-LHR" customClass="JSQMessagesCollectionViewFlowLayout"/>
                     <cells/>
                 </collectionView>
@@ -34,7 +34,7 @@
                     </constraints>
                 </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="acP-Nw-WUu" userLabel="Title View">
-                    <rect key="frame" x="104.5" y="3" width="112.5" height="44"/>
+                    <rect key="frame" x="104.5" y="16" width="112.5" height="44"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YNr-EM-pRL" userLabel="Avatar">
                             <rect key="frame" x="0.0" y="5" width="34" height="34"/>
@@ -82,19 +82,19 @@
                     <items/>
                 </toolbar>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.043137254899999998" green="0.8980392157" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="3cc-kC-cwZ" firstAttribute="width" secondItem="3cc-kC-cwZ" secondAttribute="height" multiplier="160:31" id="28A-3E-vue"/>
+                <constraint firstItem="l9u-2b-4LK" firstAttribute="top" secondItem="3cc-kC-cwZ" secondAttribute="bottom" constant="-10" id="49q-Ec-9dr"/>
                 <constraint firstAttribute="trailing" secondItem="BoD-Az-3DM" secondAttribute="trailing" id="7xc-Ha-asg"/>
                 <constraint firstItem="3cc-kC-cwZ" firstAttribute="leading" secondItem="mUa-cS-ru4" secondAttribute="leading" id="BBo-PH-5Az"/>
                 <constraint firstItem="DZn-Di-z3m" firstAttribute="top" secondItem="mUa-cS-ru4" secondAttribute="top" id="CSS-OU-ItA"/>
-                <constraint firstItem="acP-Nw-WUu" firstAttribute="top" secondItem="3cc-kC-cwZ" secondAttribute="top" constant="3" id="HsH-7v-8hP"/>
+                <constraint firstItem="acP-Nw-WUu" firstAttribute="top" secondItem="3cc-kC-cwZ" secondAttribute="top" constant="16" id="HsH-7v-8hP"/>
                 <constraint firstItem="3cc-kC-cwZ" firstAttribute="top" secondItem="mUa-cS-ru4" secondAttribute="top" id="LFc-1A-wTq"/>
                 <constraint firstItem="l9u-2b-4LK" firstAttribute="leading" secondItem="mUa-cS-ru4" secondAttribute="leading" id="MmF-oh-Y75"/>
                 <constraint firstAttribute="trailing" secondItem="l9u-2b-4LK" secondAttribute="trailing" id="O9u-TA-A0e"/>
                 <constraint firstAttribute="bottom" secondItem="l9u-2b-4LK" secondAttribute="bottom" id="Re7-WW-UmS"/>
                 <constraint firstItem="DZn-Di-z3m" firstAttribute="leading" secondItem="mUa-cS-ru4" secondAttribute="leading" id="buh-Y3-5p2"/>
-                <constraint firstItem="l9u-2b-4LK" firstAttribute="top" secondItem="mUa-cS-ru4" secondAttribute="top" id="dCQ-DM-Wdj"/>
                 <constraint firstItem="acP-Nw-WUu" firstAttribute="centerX" secondItem="3cc-kC-cwZ" secondAttribute="centerX" id="oNT-8e-hMp"/>
                 <constraint firstAttribute="bottom" secondItem="BoD-Az-3DM" secondAttribute="bottom" id="rHs-6q-NX4"/>
                 <constraint firstItem="BoD-Az-3DM" firstAttribute="leading" secondItem="mUa-cS-ru4" secondAttribute="leading" id="ts7-8f-0lH"/>

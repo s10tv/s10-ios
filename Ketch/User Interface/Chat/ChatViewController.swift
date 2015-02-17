@@ -25,9 +25,10 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // TODO: Make this configurable from storyboard. JSQMessagesCollectionView annoyingly
+        // TODO: Make this configurable from storyboard. JSQMessages library annoyingly
         // resets its own color to white when configuring itself
-        collectionView.backgroundColor = UIColor(hex: 0x0BE5F1)
+        view.backgroundColor = UIColor(hex: 0x0BE5F1)
+        collectionView.backgroundColor = UIColor.clearColor()
         
         let bubbleFactory = JSQMessagesBubbleImageFactory()
         outgoingBubbleData = bubbleFactory.outgoingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
