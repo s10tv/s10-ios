@@ -26,8 +26,10 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(hex: 0xA9FFFE)
-        collectionView.backgroundColor = UIColor(hex: 0xA9FFFE)
+        
+        // TODO: Make this configurable from storyboard. JSQMessagesCollectionView annoyingly
+        // resets its own color to white when configuring itself
+        collectionView.backgroundColor = UIColor(hex: 0x0BE5F1)
         
         let bubbleFactory = JSQMessagesBubbleImageFactory()
         outgoingBubbleData = bubbleFactory.outgoingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
@@ -123,4 +125,7 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
         return message.sender?.jsqAvatar();
     }
     
+    override class func nib() -> UINib {
+        return UINib(nibName: "ChatView", bundle: nil)
+    }
 }

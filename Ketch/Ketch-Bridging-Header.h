@@ -7,13 +7,21 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <Meteor/METCoreDataDDPClient.h>
-//#import <UIView_draggable/>
+#import <JSQMessagesViewController/JSQMessagesViewController.h>
 
 @interface METDDPClient (Private)
 
 @property (nonatomic, copy) METAccount *account;
 
 - (void)loginWithMethodName:(NSString *)methodName parameters:(NSArray *)parameters completionHandler:(METLogInCompletionHandler)completionHandler;
+
+@end
+
+@interface JSQMessagesViewController (Private)
+
+- (void)jsq_configureMessagesViewController;
+- (void)jsq_registerForNotifications:(BOOL)registerForNotifications;
++ (UINib *)nib;
 
 @end
 
