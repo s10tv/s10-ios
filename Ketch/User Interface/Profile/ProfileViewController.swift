@@ -51,6 +51,11 @@ class ProfileViewController : BaseViewController, SwipeViewDelegate, SwipeViewDa
         reloadData()
     }
     
+    // MARK: -
+    @IBAction func goBack(sender: AnyObject) {
+        navigationController?.popViewControllerAnimated(true)
+    }
+    
     func reloadData() {
         swipeView.reloadData()
         swipeView.scrollToItemAtIndex(0, duration: 0)

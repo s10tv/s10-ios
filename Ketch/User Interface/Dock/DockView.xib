@@ -24,10 +24,10 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLY-Pm-SQ2">
-                    <rect key="frame" x="0.0" y="0.0" width="80" height="50"/>
+                    <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="80" id="3Pp-R3-fLA"/>
-                        <constraint firstAttribute="height" constant="50" id="uid-Gp-RLz"/>
+                        <constraint firstAttribute="height" constant="60" id="uid-Gp-RLz"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
                     <state key="normal" title="BACK">

@@ -61,9 +61,9 @@
                     </constraints>
                 </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZn-Di-z3m">
-                    <rect key="frame" x="0.0" y="0.0" width="80" height="50"/>
+                    <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="ByR-U8-62L"/>
+                        <constraint firstAttribute="height" constant="60" id="ByR-U8-62L"/>
                         <constraint firstAttribute="width" constant="80" id="qXS-2D-xlJ"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
