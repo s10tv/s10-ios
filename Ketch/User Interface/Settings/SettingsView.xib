@@ -46,6 +46,20 @@
                         <action selector="viewProfile:" destination="-1" eventType="touchUpInside" id="SHU-2Q-XU6"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xt9-MA-Rd9">
+                    <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="7pr-OA-s6K"/>
+                        <constraint firstAttribute="width" constant="80" id="DJZ-T8-eYz"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                    <state key="normal" title="BACK">
+                        <color key="titleColor" red="0.34509803919999998" green="0.67843137249999996" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="goBack:" destination="-1" eventType="touchUpInside" id="AgY-dz-6H8"/>
+                    </connections>
+                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lXU-gX-flt">
                     <rect key="frame" x="0.0" y="273" width="320" height="295"/>
                     <subviews>
@@ -122,6 +136,7 @@
             </subviews>
             <color key="backgroundColor" red="0.95294117647058818" green="0.95294117647058818" blue="0.95294117647058818" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="xt9-MA-Rd9" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="3MR-LT-Kwq"/>
                 <constraint firstItem="Nrc-Dc-N50" firstAttribute="centerX" secondItem="3ic-hO-IZ3" secondAttribute="centerX" id="785-Xa-e2t"/>
                 <constraint firstAttribute="centerX" secondItem="Nrc-Dc-N50" secondAttribute="centerX" id="8s8-ac-Mww"/>
                 <constraint firstItem="lXU-gX-flt" firstAttribute="top" secondItem="iUs-yy-2U3" secondAttribute="bottom" id="9OM-h9-gUy"/>
@@ -136,10 +151,11 @@
                 <constraint firstAttribute="trailing" secondItem="lXU-gX-flt" secondAttribute="trailing" id="cOv-7Q-4EI"/>
                 <constraint firstItem="Nrc-Dc-N50" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" priority="751" constant="110" id="eHJ-7C-4T9"/>
                 <constraint firstItem="Nrc-Dc-N50" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="100" id="hXw-A0-reB"/>
+                <constraint firstItem="xt9-MA-Rd9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ln9-ZB-BJk"/>
                 <constraint firstItem="YrU-g9-qUp" firstAttribute="top" secondItem="3ic-hO-IZ3" secondAttribute="bottom" constant="3.5" id="vbo-Vf-kKo"/>
                 <constraint firstItem="iUs-yy-2U3" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="xdO-GK-vhN"/>
             </constraints>
-            <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+            <nil key="simulatedTopBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <variation key="default">
                 <mask key="constraints">

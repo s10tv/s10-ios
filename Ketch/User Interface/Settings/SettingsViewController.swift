@@ -9,7 +9,7 @@
 import UIKit
 
 @objc(SettingsViewController)
-class SettingsViewController : UIViewController {
+class SettingsViewController : BaseViewController {
 
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -41,6 +41,10 @@ class SettingsViewController : UIViewController {
     }
     
     // MARK: - Actions
+    
+    @IBAction func goBack(sender: AnyObject) {
+        navigationController?.popViewControllerAnimated(true)
+    }
     
     @IBAction func viewProfile(sender: AnyObject) {
         performSegueWithIdentifier("SettingsToProfile", sender: sender)
