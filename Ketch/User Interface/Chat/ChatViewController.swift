@@ -16,7 +16,6 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
     var connection: Connection?
     private var messages : FetchViewModel!
     
-    @IBOutlet var titleView: UIView!
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -48,12 +47,10 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
         
         avatarView.sd_setImageWithURL(connection?.user?.profilePhotoURL)
         nameLabel.text = connection?.user?.firstName
-        titleView.whenTapped { [weak self] in
+        avatarView.whenTapped { [weak self] in
             // TODO: Avoid hard-coding segue identifier somehow
             self!.performSegueWithIdentifier("ChatToProfile", sender: nil)
         }
-        
-        navigationItem.titleView = titleView
         
         let avatarLength = 30
         let layout = self.collectionView.collectionViewLayout
