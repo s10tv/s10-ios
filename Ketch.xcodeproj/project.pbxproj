@@ -68,9 +68,10 @@
 		EA409D411A8C75F600988B8B /* DockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA409D3D1A8C75F600988B8B /* DockView.xib */; };
 		EA409D421A8C75F600988B8B /* DockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA409D3E1A8C75F600988B8B /* DockViewController.swift */; };
 		EA409D441A8C7CAA00988B8B /* KeepConnectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA409D431A8C7CAA00988B8B /* KeepConnectionCell.xib */; };
+		EA4DC09B1A93318E005C335D /* _Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4DC09A1A93318E005C335D /* _Message.swift */; };
 		EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA5634DF1A7741FF00F62B52 /* Ketch.xcdatamodeld */; };
 		EA5634EA1A77428F00F62B52 /* _Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E41A77428F00F62B52 /* _Connection.swift */; };
-		EA5634EB1A77428F00F62B52 /* _Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E51A77428F00F62B52 /* _Message.swift */; };
+		EA5634EB1A77428F00F62B52 /* _Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E51A77428F00F62B52 /* _Candidate.swift */; };
 		EA5634EC1A77428F00F62B52 /* _User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E61A77428F00F62B52 /* _User.swift */; };
 		EA5634ED1A77428F00F62B52 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E71A77428F00F62B52 /* Connection.swift */; };
 		EA5634EE1A77428F00F62B52 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E81A77428F00F62B52 /* Message.swift */; };
@@ -84,10 +85,9 @@
 		EA9F35591A74CC6900E0C65D /* KetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F35581A74CC6900E0C65D /* KetchTests.swift */; };
 		EABD86651A88B50400F8B822 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABD86641A88B50400F8B822 /* Localizable.strings */; };
 		EAE0E2801A8FB90E00132FA5 /* MatchBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0E27F1A8FB90E00132FA5 /* MatchBubbleView.swift */; };
-		EAEA82E71A86941300A080ED /* _Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA82E61A86941300A080ED /* _Match.swift */; };
-		EAEA82E91A86941C00A080ED /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA82E81A86941C00A080ED /* Match.swift */; };
+		EAEA82E91A86941C00A080ED /* Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA82E81A86941C00A080ED /* Candidate.swift */; };
 		EAF195C71A81FE5B00A2F103 /* CoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF195C61A81FE5B00A2F103 /* CoreService.swift */; };
-		EAF195C91A820F2700A2F103 /* MatchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF195C81A820F2700A2F103 /* MatchService.swift */; };
+		EAF195C91A820F2700A2F103 /* CandidateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF195C81A820F2700A2F103 /* CandidateService.swift */; };
 		EAF195CF1A827FAD00A2F103 /* Ketch-Bridging.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */; };
 		EAF4D7621A79AA5E00D35330 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF4D74F1A79AA5E00D35330 /* RootViewController.swift */; };
 		F95D95DF1A84A1170068F090 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95D95DE1A84A1170068F090 /* MediaPlayer.framework */; };
@@ -172,9 +172,10 @@
 		EA409D3D1A8C75F600988B8B /* DockView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DockView.xib; sourceTree = "<group>"; };
 		EA409D3E1A8C75F600988B8B /* DockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DockViewController.swift; sourceTree = "<group>"; };
 		EA409D431A8C7CAA00988B8B /* KeepConnectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeepConnectionCell.xib; sourceTree = "<group>"; };
+		EA4DC09A1A93318E005C335D /* _Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Message.swift; sourceTree = "<group>"; };
 		EA5634E01A7741FF00F62B52 /* Ketch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ketch.xcdatamodel; sourceTree = "<group>"; };
 		EA5634E41A77428F00F62B52 /* _Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Connection.swift; sourceTree = "<group>"; };
-		EA5634E51A77428F00F62B52 /* _Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Message.swift; sourceTree = "<group>"; };
+		EA5634E51A77428F00F62B52 /* _Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Candidate.swift; sourceTree = "<group>"; };
 		EA5634E61A77428F00F62B52 /* _User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _User.swift; sourceTree = "<group>"; };
 		EA5634E71A77428F00F62B52 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		EA5634E81A77428F00F62B52 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -193,10 +194,9 @@
 		EA9F35621A74CD8800E0C65D /* Ketch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Ketch-Bridging-Header.h"; path = "Ketch/Ketch-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		EABD86641A88B50400F8B822 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		EAE0E27F1A8FB90E00132FA5 /* MatchBubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchBubbleView.swift; sourceTree = "<group>"; };
-		EAEA82E61A86941300A080ED /* _Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Match.swift; sourceTree = "<group>"; };
-		EAEA82E81A86941C00A080ED /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
+		EAEA82E81A86941C00A080ED /* Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Candidate.swift; sourceTree = "<group>"; };
 		EAF195C61A81FE5B00A2F103 /* CoreService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreService.swift; sourceTree = "<group>"; };
-		EAF195C81A820F2700A2F103 /* MatchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchService.swift; sourceTree = "<group>"; };
+		EAF195C81A820F2700A2F103 /* CandidateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateService.swift; sourceTree = "<group>"; };
 		EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Ketch-Bridging.m"; sourceTree = "<group>"; };
 		EAF4D74F1A79AA5E00D35330 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		F95D95DE1A84A1170068F090 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -421,8 +421,8 @@
 			children = (
 				EA5634E31A77428F00F62B52 /* _Models */,
 				EA5634E71A77428F00F62B52 /* Connection.swift */,
-				EAEA82E81A86941C00A080ED /* Match.swift */,
 				EA5634E81A77428F00F62B52 /* Message.swift */,
+				EAEA82E81A86941C00A080ED /* Candidate.swift */,
 				EA5634E91A77428F00F62B52 /* User.swift */,
 			);
 			path = CoreData;
@@ -432,8 +432,8 @@
 			isa = PBXGroup;
 			children = (
 				EA5634E41A77428F00F62B52 /* _Connection.swift */,
-				EAEA82E61A86941300A080ED /* _Match.swift */,
-				EA5634E51A77428F00F62B52 /* _Message.swift */,
+				EA4DC09A1A93318E005C335D /* _Message.swift */,
+				EA5634E51A77428F00F62B52 /* _Candidate.swift */,
 				EA5634E61A77428F00F62B52 /* _User.swift */,
 			);
 			path = _Models;
@@ -523,7 +523,7 @@
 			isa = PBXGroup;
 			children = (
 				EAF195C61A81FE5B00A2F103 /* CoreService.swift */,
-				EAF195C81A820F2700A2F103 /* MatchService.swift */,
+				EAF195C81A820F2700A2F103 /* CandidateService.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -738,7 +738,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "PATH=${PATH}:/usr/local/bin:/opt/local/bin\ncd Serendipity\nmogenerator -m Models/Serendipity.xcdatamodeld/Serendipity.xcdatamodel/ --human-dir Models/CoreData --machine-dir Models/CoreData/_Models --swift\n";
+			shellScript = "PATH=${PATH}:/usr/local/bin:/opt/local/bin\ncd Ketch\nmogenerator -m Models/Ketch.xcdatamodeld/Ketch.xcdatamodel/ --human-dir Models/CoreData --machine-dir Models/CoreData/_Models --swift\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -752,13 +752,13 @@
 				EAF195CF1A827FAD00A2F103 /* Ketch-Bridging.m in Sources */,
 				EA1970171A83549300FEBA7F /* SettingsViewController.swift in Sources */,
 				EA409D421A8C75F600988B8B /* DockViewController.swift in Sources */,
+				EA4DC09B1A93318E005C335D /* _Message.swift in Sources */,
 				EA0FC9371A87DE5800D62625 /* BaseViewController.swift in Sources */,
 				EA0FC9351A87DE5800D62625 /* MeteorExtension.swift in Sources */,
-				EA5634EB1A77428F00F62B52 /* _Message.swift in Sources */,
+				EA5634EB1A77428F00F62B52 /* _Candidate.swift in Sources */,
 				EA409D3F1A8C75F600988B8B /* ConnectionCell.swift in Sources */,
 				EA0FC9331A87DE5800D62625 /* AzureClient.swift in Sources */,
 				EA1DA37F1A8D188B00433093 /* NewConnectionViewController.swift in Sources */,
-				EAEA82E71A86941300A080ED /* _Match.swift in Sources */,
 				EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */,
 				EA0FC9441A87DE5800D62625 /* ViewProviders.swift in Sources */,
 				EA1970131A83549300FEBA7F /* EditProfileViewController.swift in Sources */,
@@ -772,13 +772,13 @@
 				EA0FC9381A87DE5800D62625 /* FoundationExtension.swift in Sources */,
 				EA0FC93E1A87DE5800D62625 /* VideoPlayerViewController.swift in Sources */,
 				EAE0E2801A8FB90E00132FA5 /* MatchBubbleView.swift in Sources */,
-				EAF195C91A820F2700A2F103 /* MatchService.swift in Sources */,
+				EAF195C91A820F2700A2F103 /* CandidateService.swift in Sources */,
 				EA5634EF1A77428F00F62B52 /* User.swift in Sources */,
 				EA1970071A83549300FEBA7F /* ChatViewController.swift in Sources */,
 				EAF195C71A81FE5B00A2F103 /* CoreService.swift in Sources */,
 				EA2AB70E1A8A00F200D42C6C /* GameViewController.swift in Sources */,
 				EA5634EE1A77428F00F62B52 /* Message.swift in Sources */,
-				EAEA82E91A86941C00A080ED /* Match.swift in Sources */,
+				EAEA82E91A86941C00A080ED /* Candidate.swift in Sources */,
 				EA0FC9431A87DE5800D62625 /* FetchViewModel.swift in Sources */,
 				EA0FC9341A87DE5800D62625 /* MeteorCDStack.swift in Sources */,
 				EA7ABC2C1A87E4800023C14C /* VideoRecorderViewController.swift in Sources */,

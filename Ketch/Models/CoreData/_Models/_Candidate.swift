@@ -1,24 +1,24 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
-// Make changes to Match.swift instead.
+// Make changes to Candidate.swift instead.
 
 import CoreData
 
-enum MatchAttributes: String {
+enum CandidateAttributes: String {
     case choice = "choice"
     case dateMatched = "dateMatched"
 }
 
-enum MatchRelationships: String {
+enum CandidateRelationships: String {
     case user = "user"
 }
 
 @objc
-class _Match: NSManagedObject {
+class _Candidate: NSManagedObject {
 
     // MARK: - Class methods
 
     class func entityName () -> String {
-        return "Match"
+        return "Candidate"
     }
 
     class func entity(managedObjectContext: NSManagedObjectContext!) -> NSEntityDescription! {
@@ -32,7 +32,7 @@ class _Match: NSManagedObject {
     }
 
     convenience init(managedObjectContext: NSManagedObjectContext!) {
-        let entity = _Match.entity(managedObjectContext)
+        let entity = _Candidate.entity(managedObjectContext)
         self.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
     }
 

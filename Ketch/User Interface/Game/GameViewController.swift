@@ -20,17 +20,17 @@ class GameViewController : BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Core.matchService.fetch.signal.subscribeNextAs { (matches : [Match]) -> () in
+        Core.candidateService.fetch.signal.subscribeNextAs { (candidates : [Candidate]) -> () in
             for (i, imageView) in enumerate(self.avatars) {
-                if i < matches.count {
-                    imageView.match = matches[i]
+                if i < candidates.count {
+                    imageView.candidate = candidates[i]
                     imageView.whenTapped {
                         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("Profile") as ProfileViewController
-                        vc.user = imageView.match?.user
+                        vc.user = imageView.candidate?.user
                         self.navigationController?.pushViewController(vc, animated: true)
                     }
                 } else {
-                    imageView.match = nil
+                    imageView.candidate = nil
                 }
             }
         }
@@ -70,26 +70,26 @@ class GameViewController : BaseViewController {
     }
 
     @IBAction func confirmChoices(sender: AnyObject) {
-        var marry : Match?
-        var keep : Match?
-        var skip : Match?
+        var marry : Candidate?
+        var keep : Candidate?
+        var skip : Candidate?
 
         for avatar in self.avatars {
             let isMarry = CGRectIntersectsRect(avatar.frame, marrySlot.frame)
             let isKeep = CGRectIntersectsRect(avatar.frame, keepSlot.frame)
             let isSkip = CGRectIntersectsRect(avatar.frame, skipSlot.frame)
             if isMarry {
-                marry = avatar.match
+                marry = avatar.candidate
             } else if isKeep {
-                keep = avatar.match
+                keep = avatar.candidate
             } else if isSkip {
-                skip = avatar.match
+                skip = avatar.candidate
             }
         }
         if marry == nil || keep == nil || skip == nil {
             UIAlertView.show("Error", message: "Need to uniquely assign keep match marry")
         } else {
-            Core.matchService.chooseYesNoMaybe(marry!, no: skip!, maybe: keep!).deliverOnMainThread().subscribeNextAs { (res : [String:String]) -> () in
+            Core.candidateService.chooseYesNoMaybe(marry!, no: skip!, maybe: keep!).deliverOnMainThread().subscribeNextAs { (res : [String:String]) -> () in
                 if res.count > 0 {
                     let yesConnId = res["yes"]
                     let maybeConnId = res["maybe"]

@@ -11,7 +11,7 @@ import ReactiveCocoa
 import Meteor
 import SugarRecord
 
-class MatchService {
+class CandidateService {
     private let meteor : METCoreDataDDPClient
     private let subscription : METSubscription
     let fetch : FetchViewModel
@@ -21,13 +21,13 @@ class MatchService {
     init(meteor: METCoreDataDDPClient) {
         self.meteor = meteor
         subscription = meteor.addSubscriptionWithName("matches")
-        let frc = Match.by(MatchAttributes.choice.rawValue, value: nil).sorted(by: MatchAttributes.dateMatched.rawValue, ascending: true).frc()
+        let frc = Candidate.by(CandidateAttributes.choice.rawValue, value: nil).sorted(by: CandidateAttributes.dateMatched.rawValue, ascending: true).frc()
         fetch = FetchViewModel(frc: frc)
 
         // Define Stub method
         meteor.defineStubForMethodWithName("matchPass", usingBlock: { (args) -> AnyObject! in
             assert(NSThread.isMainThread(), "Only main supported for now")
-            if let match = Match.findByDocumentID((args as [String]).first!) {
+            if let match = Candidate.findByDocumentID((args as [String]).first!) {
                 match.beginWriting()
                 match.delete()
                 match.endWriting()
@@ -38,7 +38,7 @@ class MatchService {
         meteor.defineStubForMethodWithName("chooseYesNoMaybe", usingBlock: { (args) -> AnyObject! in
             assert(NSThread.isMainThread(), "Only main supported for now")
             for matchId in (args as [String]) {
-                if let match = Match.findByDocumentID(matchId) {
+                if let match = Candidate.findByDocumentID(matchId) {
                     match.delete()
                 }
             }
@@ -50,15 +50,15 @@ class MatchService {
             self.fetch.performFetchIfNeeded()
             return self.fetch.signal
         }.map { (mmatches) -> AnyObject! in
-            return (mmatches as [Match]).first
+            return (mmatches as [Candidate]).first
         }.subscribe(currentMatch)
     }
     
-    func passMatch(match: Match) {
+    func passMatch(match: Candidate) {
         meteor.callMethodWithName("matchPass", parameters: [match.documentID!])
     }
     
-    func chooseYesNoMaybe(yes: Match, no: Match, maybe: Match) -> RACSignal {
+    func chooseYesNoMaybe(yes: Candidate, no: Candidate, maybe: Candidate) -> RACSignal {
         let params = [yes.documentID!, no.documentID!, maybe.documentID!]
         return meteor.callMethod("chooseYesNoMaybe", params: params)
     }

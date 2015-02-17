@@ -6,8 +6,8 @@
 //  Copyright (c) 2015 Serendipity. All rights reserved.
 //
 
-@objc(Match)
-class Match: _Match {
+@objc(Candidate)
+class Candidate: _Candidate {
     
     enum Choice : String {
         case Yes = "yes" // Marry
@@ -15,8 +15,8 @@ class Match: _Match {
         case No = "no" // Skip
     }
 
-    class func findByDocumentID(documentID: String) -> Match? {
-        return Core.mainContext.objectInCollection("matches", documentID: documentID) as? Match
+    class func findByDocumentID(documentID: String) -> Candidate? {
+        return Core.mainContext.objectInCollection("matches", documentID: documentID) as? Candidate
     }
 
 }

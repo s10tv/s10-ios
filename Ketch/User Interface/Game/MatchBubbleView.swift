@@ -10,10 +10,10 @@ import Foundation
 
 class MatchBubbleView : UIImageView {
     
-    var match : Match? {
+    var candidate : Candidate? {
         didSet {
-            sd_setImageWithURL(match?.user?.profilePhotoURL)
-            if match?.user?.profilePhotoURL == nil {
+            sd_setImageWithURL(candidate?.user?.profilePhotoURL)
+            if candidate?.user?.profilePhotoURL == nil {
                 image = UIImage(named: "girl-placeholder")
             }
         }
