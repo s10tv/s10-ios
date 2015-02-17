@@ -68,7 +68,7 @@
 		EA409D411A8C75F600988B8B /* DockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA409D3D1A8C75F600988B8B /* DockView.xib */; };
 		EA409D421A8C75F600988B8B /* DockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA409D3E1A8C75F600988B8B /* DockViewController.swift */; };
 		EA409D441A8C7CAA00988B8B /* KeepConnectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA409D431A8C7CAA00988B8B /* KeepConnectionCell.xib */; };
-		EA5634E11A7741FF00F62B52 /* Serendipity.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA5634DF1A7741FF00F62B52 /* Serendipity.xcdatamodeld */; };
+		EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA5634DF1A7741FF00F62B52 /* Ketch.xcdatamodeld */; };
 		EA5634EA1A77428F00F62B52 /* _Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E41A77428F00F62B52 /* _Connection.swift */; };
 		EA5634EB1A77428F00F62B52 /* _Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E51A77428F00F62B52 /* _Message.swift */; };
 		EA5634EC1A77428F00F62B52 /* _User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E61A77428F00F62B52 /* _User.swift */; };
@@ -81,14 +81,14 @@
 		EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35461A74CC6900E0C65D /* Main.storyboard */; };
 		EA9F354A1A74CC6900E0C65D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Images.xcassets */; };
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
-		EA9F35591A74CC6900E0C65D /* SerendipityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F35581A74CC6900E0C65D /* SerendipityTests.swift */; };
+		EA9F35591A74CC6900E0C65D /* KetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F35581A74CC6900E0C65D /* KetchTests.swift */; };
 		EABD86651A88B50400F8B822 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABD86641A88B50400F8B822 /* Localizable.strings */; };
 		EAE0E2801A8FB90E00132FA5 /* MatchBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE0E27F1A8FB90E00132FA5 /* MatchBubbleView.swift */; };
 		EAEA82E71A86941300A080ED /* _Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA82E61A86941300A080ED /* _Match.swift */; };
 		EAEA82E91A86941C00A080ED /* Match.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA82E81A86941C00A080ED /* Match.swift */; };
 		EAF195C71A81FE5B00A2F103 /* CoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF195C61A81FE5B00A2F103 /* CoreService.swift */; };
 		EAF195C91A820F2700A2F103 /* MatchService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF195C81A820F2700A2F103 /* MatchService.swift */; };
-		EAF195CF1A827FAD00A2F103 /* Serendipity-Bridging.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF195CE1A827FAC00A2F103 /* Serendipity-Bridging.m */; };
+		EAF195CF1A827FAD00A2F103 /* Ketch-Bridging.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */; };
 		EAF4D7621A79AA5E00D35330 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF4D74F1A79AA5E00D35330 /* RootViewController.swift */; };
 		F95D95DF1A84A1170068F090 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95D95DE1A84A1170068F090 /* MediaPlayer.framework */; };
 		F996C71E1A81F1D100314FF8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71D1A81F1D100314FF8 /* CoreMedia.framework */; };
@@ -172,7 +172,7 @@
 		EA409D3D1A8C75F600988B8B /* DockView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DockView.xib; sourceTree = "<group>"; };
 		EA409D3E1A8C75F600988B8B /* DockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DockViewController.swift; sourceTree = "<group>"; };
 		EA409D431A8C7CAA00988B8B /* KeepConnectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeepConnectionCell.xib; sourceTree = "<group>"; };
-		EA5634E01A7741FF00F62B52 /* Serendipity.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Serendipity.xcdatamodel; sourceTree = "<group>"; };
+		EA5634E01A7741FF00F62B52 /* Ketch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ketch.xcdatamodel; sourceTree = "<group>"; };
 		EA5634E41A77428F00F62B52 /* _Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Connection.swift; sourceTree = "<group>"; };
 		EA5634E51A77428F00F62B52 /* _Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Message.swift; sourceTree = "<group>"; };
 		EA5634E61A77428F00F62B52 /* _User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _User.swift; sourceTree = "<group>"; };
@@ -181,23 +181,23 @@
 		EA5634E91A77428F00F62B52 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EA7ABC291A87E4800023C14C /* VideoRecorderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = VideoRecorderView.xib; sourceTree = "<group>"; };
 		EA7ABC2A1A87E4800023C14C /* VideoRecorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoRecorderViewController.swift; sourceTree = "<group>"; };
-		EA9F353A1A74CC6900E0C65D /* Serendipity.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Serendipity.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA9F353A1A74CC6900E0C65D /* Ketch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ketch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9F353E1A74CC6900E0C65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA9F35471A74CC6900E0C65D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EA9F35491A74CC6900E0C65D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EA9F354C1A74CC6900E0C65D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		EA9F35521A74CC6900E0C65D /* SerendipityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SerendipityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA9F35521A74CC6900E0C65D /* KetchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KetchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9F35571A74CC6900E0C65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EA9F35581A74CC6900E0C65D /* SerendipityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerendipityTests.swift; sourceTree = "<group>"; };
-		EA9F35621A74CD8800E0C65D /* Serendipity-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Serendipity-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
+		EA9F35581A74CC6900E0C65D /* KetchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KetchTests.swift; sourceTree = "<group>"; };
+		EA9F35621A74CD8800E0C65D /* Ketch-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Ketch-Bridging-Header.h"; sourceTree = SOURCE_ROOT; };
 		EABD86641A88B50400F8B822 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		EAE0E27F1A8FB90E00132FA5 /* MatchBubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchBubbleView.swift; sourceTree = "<group>"; };
 		EAEA82E61A86941300A080ED /* _Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Match.swift; sourceTree = "<group>"; };
 		EAEA82E81A86941C00A080ED /* Match.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Match.swift; sourceTree = "<group>"; };
 		EAF195C61A81FE5B00A2F103 /* CoreService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreService.swift; sourceTree = "<group>"; };
 		EAF195C81A820F2700A2F103 /* MatchService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchService.swift; sourceTree = "<group>"; };
-		EAF195CE1A827FAC00A2F103 /* Serendipity-Bridging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Serendipity-Bridging.m"; sourceTree = "<group>"; };
+		EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Ketch-Bridging.m"; sourceTree = "<group>"; };
 		EAF4D74F1A79AA5E00D35330 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		F95D95DE1A84A1170068F090 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		F996C71D1A81F1D100314FF8 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -411,7 +411,7 @@
 			isa = PBXGroup;
 			children = (
 				EA5634E21A77428F00F62B52 /* CoreData */,
-				EA5634DF1A7741FF00F62B52 /* Serendipity.xcdatamodeld */,
+				EA5634DF1A7741FF00F62B52 /* Ketch.xcdatamodeld */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -442,10 +442,10 @@
 		EA9F35311A74CC6900E0C65D = {
 			isa = PBXGroup;
 			children = (
-				EA9F353C1A74CC6900E0C65D /* Serendipity */,
+				EA9F353C1A74CC6900E0C65D /* Ketch */,
 				EA0FC91C1A87DE5800D62625 /* Common */,
 				EA341D851A8C88CC00A6077B /* ThirdPartyBundleResources */,
-				EA9F35551A74CC6900E0C65D /* SerendipityTests */,
+				EA9F35551A74CC6900E0C65D /* KetchTests */,
 				EA9F353B1A74CC6900E0C65D /* Products */,
 				DDD7116BC0015396F5321D26 /* Pods */,
 				2C9F4D1EF3D7E4C4FBB0AEDB /* Frameworks */,
@@ -455,13 +455,13 @@
 		EA9F353B1A74CC6900E0C65D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EA9F353A1A74CC6900E0C65D /* Serendipity.app */,
-				EA9F35521A74CC6900E0C65D /* SerendipityTests.xctest */,
+				EA9F353A1A74CC6900E0C65D /* Ketch.app */,
+				EA9F35521A74CC6900E0C65D /* KetchTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		EA9F353C1A74CC6900E0C65D /* Serendipity */ = {
+		EA9F353C1A74CC6900E0C65D /* Ketch */ = {
 			isa = PBXGroup;
 			children = (
 				EAFD13CC1A778BA400754556 /* Classes */,
@@ -473,27 +473,27 @@
 				EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */,
 				EA9F353D1A74CC6900E0C65D /* Supporting Files */,
 			);
-			path = Serendipity;
+			path = Ketch;
 			sourceTree = "<group>";
 		};
 		EA9F353D1A74CC6900E0C65D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				EA9F35621A74CD8800E0C65D /* Serendipity-Bridging-Header.h */,
-				EAF195CE1A827FAC00A2F103 /* Serendipity-Bridging.m */,
+				EA9F35621A74CD8800E0C65D /* Ketch-Bridging-Header.h */,
+				EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */,
 				EA9F353E1A74CC6900E0C65D /* Info.plist */,
 				EABD86641A88B50400F8B822 /* Localizable.strings */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		EA9F35551A74CC6900E0C65D /* SerendipityTests */ = {
+		EA9F35551A74CC6900E0C65D /* KetchTests */ = {
 			isa = PBXGroup;
 			children = (
-				EA9F35581A74CC6900E0C65D /* SerendipityTests.swift */,
+				EA9F35581A74CC6900E0C65D /* KetchTests.swift */,
 				EA9F35561A74CC6900E0C65D /* Supporting Files */,
 			);
-			path = SerendipityTests;
+			path = KetchTests;
 			sourceTree = "<group>";
 		};
 		EA9F35561A74CC6900E0C65D /* Supporting Files */ = {
@@ -531,9 +531,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EA9F35391A74CC6900E0C65D /* Serendipity */ = {
+		EA9F35391A74CC6900E0C65D /* Ketch */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EA9F355C1A74CC6900E0C65D /* Build configuration list for PBXNativeTarget "Serendipity" */;
+			buildConfigurationList = EA9F355C1A74CC6900E0C65D /* Build configuration list for PBXNativeTarget "Ketch" */;
 			buildPhases = (
 				8DB42EE7C2D8B4A7B282AD75 /* Check Pods Manifest.lock */,
 				EA9F35361A74CC6900E0C65D /* Sources */,
@@ -547,14 +547,14 @@
 			);
 			dependencies = (
 			);
-			name = Serendipity;
+			name = Ketch;
 			productName = Serendipity;
-			productReference = EA9F353A1A74CC6900E0C65D /* Serendipity.app */;
+			productReference = EA9F353A1A74CC6900E0C65D /* Ketch.app */;
 			productType = "com.apple.product-type.application";
 		};
-		EA9F35511A74CC6900E0C65D /* SerendipityTests */ = {
+		EA9F35511A74CC6900E0C65D /* KetchTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EA9F355F1A74CC6900E0C65D /* Build configuration list for PBXNativeTarget "SerendipityTests" */;
+			buildConfigurationList = EA9F355F1A74CC6900E0C65D /* Build configuration list for PBXNativeTarget "KetchTests" */;
 			buildPhases = (
 				EA9F354E1A74CC6900E0C65D /* Sources */,
 				EA9F354F1A74CC6900E0C65D /* Frameworks */,
@@ -565,9 +565,9 @@
 			dependencies = (
 				EA9F35541A74CC6900E0C65D /* PBXTargetDependency */,
 			);
-			name = SerendipityTests;
+			name = KetchTests;
 			productName = SerendipityTests;
-			productReference = EA9F35521A74CC6900E0C65D /* SerendipityTests.xctest */;
+			productReference = EA9F35521A74CC6900E0C65D /* KetchTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -592,7 +592,7 @@
 					};
 				};
 			};
-			buildConfigurationList = EA9F35351A74CC6900E0C65D /* Build configuration list for PBXProject "Serendipity" */;
+			buildConfigurationList = EA9F35351A74CC6900E0C65D /* Build configuration list for PBXProject "Ketch" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -618,8 +618,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EA9F35391A74CC6900E0C65D /* Serendipity */,
-				EA9F35511A74CC6900E0C65D /* SerendipityTests */,
+				EA9F35391A74CC6900E0C65D /* Ketch */,
+				EA9F35511A74CC6900E0C65D /* KetchTests */,
 				EAFD13C41A7744F700754556 /* Mogenerator */,
 			);
 		};
@@ -749,7 +749,7 @@
 			files = (
 				EA5634EC1A77428F00F62B52 /* _User.swift in Sources */,
 				EA1970151A83549300FEBA7F /* ProfileViewController.swift in Sources */,
-				EAF195CF1A827FAD00A2F103 /* Serendipity-Bridging.m in Sources */,
+				EAF195CF1A827FAD00A2F103 /* Ketch-Bridging.m in Sources */,
 				EA1970171A83549300FEBA7F /* SettingsViewController.swift in Sources */,
 				EA409D421A8C75F600988B8B /* DockViewController.swift in Sources */,
 				EA0FC9371A87DE5800D62625 /* BaseViewController.swift in Sources */,
@@ -759,7 +759,7 @@
 				EA0FC9331A87DE5800D62625 /* AzureClient.swift in Sources */,
 				EA1DA37F1A8D188B00433093 /* NewConnectionViewController.swift in Sources */,
 				EAEA82E71A86941300A080ED /* _Match.swift in Sources */,
-				EA5634E11A7741FF00F62B52 /* Serendipity.xcdatamodeld in Sources */,
+				EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */,
 				EA0FC9441A87DE5800D62625 /* ViewProviders.swift in Sources */,
 				EA1970131A83549300FEBA7F /* EditProfileViewController.swift in Sources */,
 				EA0FC93B1A87DE5800D62625 /* Segue.swift in Sources */,
@@ -796,7 +796,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA9F35591A74CC6900E0C65D /* SerendipityTests.swift in Sources */,
+				EA9F35591A74CC6900E0C65D /* KetchTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -805,7 +805,7 @@
 /* Begin PBXTargetDependency section */
 		EA9F35541A74CC6900E0C65D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = EA9F35391A74CC6900E0C65D /* Serendipity */;
+			target = EA9F35391A74CC6900E0C65D /* Ketch */;
 			targetProxy = EA9F35531A74CC6900E0C65D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -941,10 +941,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = Serendipity/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Ketch/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Serendipity-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Ketch-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -959,10 +959,10 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = Serendipity/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Ketch/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Serendipity-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Ketch-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -978,10 +978,10 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = SerendipityTests/Info.plist;
+				INFOPLIST_FILE = KetchTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Serendipity.app/Serendipity";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ketch.app/Ketch";
 			};
 			name = Debug;
 		};
@@ -993,10 +993,10 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = SerendipityTests/Info.plist;
+				INFOPLIST_FILE = KetchTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Serendipity.app/Serendipity";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Ketch.app/Ketch";
 			};
 			name = Release;
 		};
@@ -1017,7 +1017,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EA9F35351A74CC6900E0C65D /* Build configuration list for PBXProject "Serendipity" */ = {
+		EA9F35351A74CC6900E0C65D /* Build configuration list for PBXProject "Ketch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EA9F355A1A74CC6900E0C65D /* Debug */,
@@ -1026,7 +1026,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EA9F355C1A74CC6900E0C65D /* Build configuration list for PBXNativeTarget "Serendipity" */ = {
+		EA9F355C1A74CC6900E0C65D /* Build configuration list for PBXNativeTarget "Ketch" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EA9F355D1A74CC6900E0C65D /* Debug */,
@@ -1035,7 +1035,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EA9F355F1A74CC6900E0C65D /* Build configuration list for PBXNativeTarget "SerendipityTests" */ = {
+		EA9F355F1A74CC6900E0C65D /* Build configuration list for PBXNativeTarget "KetchTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EA9F35601A74CC6900E0C65D /* Debug */,
@@ -1056,13 +1056,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		EA5634DF1A7741FF00F62B52 /* Serendipity.xcdatamodeld */ = {
+		EA5634DF1A7741FF00F62B52 /* Ketch.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				EA5634E01A7741FF00F62B52 /* Serendipity.xcdatamodel */,
+				EA5634E01A7741FF00F62B52 /* Ketch.xcdatamodel */,
 			);
-			currentVersion = EA5634E01A7741FF00F62B52 /* Serendipity.xcdatamodel */;
-			path = Serendipity.xcdatamodeld;
+			currentVersion = EA5634E01A7741FF00F62B52 /* Ketch.xcdatamodel */;
+			path = Ketch.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
