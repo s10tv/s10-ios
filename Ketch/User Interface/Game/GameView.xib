@@ -8,6 +8,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="GameViewController">
             <connections>
                 <outlet property="keepSlot" destination="u8F-ne-eBp" id="NzU-jq-vfP"/>
+                <outlet property="ketchIcon" destination="9Js-kF-hh5" id="30X-9U-Hah"/>
                 <outlet property="marrySlot" destination="Iti-rA-q5V" id="Wug-mD-v8P"/>
                 <outlet property="skipSlot" destination="o6p-MY-cjB" id="WQp-cN-mwP"/>
                 <outlet property="view" destination="iN0-l3-epB" id="hYf-pv-Afu"/>
@@ -25,17 +26,6 @@
                     <rect key="frame" x="0.0" y="58" width="320" height="510"/>
                     <color key="backgroundColor" red="0.043137254899999998" green="0.8980392157" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PlY-Za-18q">
-                    <rect key="frame" x="256" y="530" width="56" height="30"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                    <state key="normal" title="Confirm">
-                        <color key="titleColor" red="0.92941176469999998" green="0.92941176469999998" blue="0.92941176469999998" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="confirmChoices:" destination="-1" eventType="touchUpInside" id="QEp-Ou-mJt"/>
-                    </connections>
-                </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svh-Tk-FMJ" userLabel="Settings">
                     <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
                     <constraints>
@@ -126,8 +116,6 @@
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="7SN-rz-Skm" secondAttribute="trailing" id="2Yz-1a-uTU"/>
                 <constraint firstAttribute="centerX" secondItem="Iti-rA-q5V" secondAttribute="centerX" id="3Xo-lg-wda"/>
-                <constraint firstAttribute="bottom" secondItem="PlY-Za-18q" secondAttribute="bottom" constant="8" id="5A7-GC-6tv"/>
-                <constraint firstAttribute="trailing" secondItem="PlY-Za-18q" secondAttribute="trailing" constant="8" id="6F9-1I-zbm"/>
                 <constraint firstItem="o6p-MY-cjB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="19" id="6je-H4-tys"/>
                 <constraint firstAttribute="trailing" secondItem="u8F-ne-eBp" secondAttribute="trailing" constant="18" id="8kQ-H1-MPO"/>
                 <constraint firstItem="1Lu-FI-gAz" firstAttribute="centerX" secondItem="o6p-MY-cjB" secondAttribute="centerX" constant="-11" id="9M7-ZI-WnA"/>

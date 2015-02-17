@@ -17,6 +17,7 @@ class GameViewController : BaseViewController {
     @IBOutlet weak var marrySlot: UIImageView!
     @IBOutlet weak var keepSlot: UIImageView!
     @IBOutlet weak var skipSlot: UIImageView!
+    @IBOutlet weak var ketchIcon: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +41,12 @@ class GameViewController : BaseViewController {
             imageView.userInteractionEnabled = true
             imageView.enableDragging()
             imageView.setDraggable(true)
+        }
+        
+        ketchIcon.userInteractionEnabled = true
+        ketchIcon.whenTapped { [weak self] in
+            self?.confirmChoices(self!)
+            return
         }
     }
     
