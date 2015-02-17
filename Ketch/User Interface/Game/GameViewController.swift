@@ -67,6 +67,8 @@ class GameViewController : BaseViewController {
         super.viewWillDisappear(animated)
         navigationController?.navigationBarHidden = false
     }
+    
+    // MARK: -
 
     @IBAction func goToSettings(sender: AnyObject) {
         performSegueWithIdentifier("GameToSettings", sender: sender)
