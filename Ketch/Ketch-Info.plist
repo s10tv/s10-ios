@@ -57,6 +57,14 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>TransatTextBlack.otf</string>
+		<string>TransatTextBold.otf</string>
+		<string>TransatTextLight.otf</string>
+		<string>TransatTextMedium.otf</string>
+		<string>TransatTextStandard.otf</string>
+	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
