@@ -12,6 +12,10 @@ enum CandidateRelationships: String {
     case user = "user"
 }
 
+enum CandidateUserInfo: String {
+    case collectionName = "collectionName"
+}
+
 @objc
 class _Candidate: NSManagedObject {
 

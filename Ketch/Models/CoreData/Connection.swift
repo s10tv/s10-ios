@@ -17,6 +17,13 @@ class Connection: _Connection {
     var messages: [Message] {
         return fetchMessages(sorted: false).fetchObjects() as [Message]
     }
+    
+    var fractionExpired : Float {
+         // TODO: Make this configurable (3 days)
+        let maxExpiration : NSTimeInterval = 3 * 24 * 60 * 60
+        let timeTillExpiry = expiryDate?.timeIntervalSinceNow ?? 0
+        return Float(maxExpiration / timeTillExpiry)
+    }
 
     override func awakeFromInsert() {
         super.awakeFromInsert()
