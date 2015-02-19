@@ -93,7 +93,7 @@ class GameViewController : BaseViewController {
                     let yesConnId = res["yes"]
                     let maybeConnId = res["maybe"]
                     let conn = Connection.findByDocumentID((yesConnId ?? maybeConnId)!)
-                    let vc = NewConnectionViewController() as NewConnectionViewController
+                    let vc = self.storyboard?.instantiateViewControllerWithIdentifier("NewConnection") as NewConnectionViewController
                     vc.user = conn?.user
                     self.navigationController?.pushViewController(vc, animated: true)
                 }

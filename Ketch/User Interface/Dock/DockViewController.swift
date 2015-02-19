@@ -40,7 +40,7 @@ class DockViewController : BaseViewController {
     func didSelectItem(item: AnyObject!) {
         self.currentConnection = item as? Connection
         println("Selected connection \(self.currentConnection?.user?.firstName)")
-        self.performSegueWithIdentifier("ConnectionsToChat", sender: nil)
+        self.performSegueWithIdentifier("DockToChat", sender: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
