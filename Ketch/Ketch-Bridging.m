@@ -7,7 +7,7 @@
 //
 
 #import <NSLogger/LoggerClient.h>
-#import "Ketch-Bridging-Header.h"
+#import "Ketch-Bridging.h"
 
 @implementation METDDPClient (Extension)
 
