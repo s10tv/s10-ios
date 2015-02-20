@@ -8,9 +8,6 @@
                 <entry key="fieldName" value="matchedUserId"/>
             </userInfo>
         </relationship>
-        <userInfo>
-            <entry key="collectionName" value="matches"/>
-        </userInfo>
     </entity>
     <entity name="Connection" representedClassName="Connection" syncable="YES">
         <attribute name="dateCreated" optional="YES" attributeType="Date" syncable="YES"/>

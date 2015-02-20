@@ -14,7 +14,7 @@ import Meteor
 
 class CoreService {
     
-//        let urlStr = "ws://localhost:3000/websocket"
+//    let meteor = METCoreDataDDPClient(serverURL: NSURL(string: "ws://localhost:3000/websocket"))
     let meteor = METCoreDataDDPClient(serverURL: NSURL(string: "ws://s10.herokuapp.com/websocket"))
     let candidateService : CandidateService
     var mainContext : NSManagedObjectContext! {
