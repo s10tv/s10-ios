@@ -59,6 +59,7 @@
 	<string>Main</string>
 	<key>UIAppFonts</key>
 	<array>
+		<string>KetchTheOneIcon.otf</string>
 		<string>TransatTextBlack.otf</string>
 		<string>TransatTextBold.otf</string>
 		<string>TransatTextLight.otf</string>

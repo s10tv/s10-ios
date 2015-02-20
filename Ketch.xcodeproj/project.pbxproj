@@ -22,6 +22,7 @@
 
 /* Begin PBXBuildFile section */
 		44E19D671B859E037A1401D8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38E9CB79C25FDAE97BD9D3D /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		EA02CCF21A96ED03004C3009 /* KetchTheOneIcon.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA02CCF11A96ED03004C3009 /* KetchTheOneIcon.otf */; };
 		EA0FC9331A87DE5800D62625 /* AzureClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC91D1A87DE5800D62625 /* AzureClient.swift */; };
 		EA0FC9341A87DE5800D62625 /* MeteorCDStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC91F1A87DE5800D62625 /* MeteorCDStack.swift */; };
 		EA0FC9351A87DE5800D62625 /* MeteorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9201A87DE5800D62625 /* MeteorExtension.swift */; };
@@ -113,6 +114,7 @@
 		0686ABB348D06D87DA844419 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		2CD850D0B9EC2938BA5CEB59 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D38E9CB79C25FDAE97BD9D3D /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA02CCF11A96ED03004C3009 /* KetchTheOneIcon.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KetchTheOneIcon.otf; sourceTree = "<group>"; };
 		EA0FC91D1A87DE5800D62625 /* AzureClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AzureClient.swift; sourceTree = "<group>"; };
 		EA0FC91F1A87DE5800D62625 /* MeteorCDStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorCDStack.swift; sourceTree = "<group>"; };
 		EA0FC9201A87DE5800D62625 /* MeteorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorExtension.swift; sourceTree = "<group>"; };
@@ -380,6 +382,7 @@
 		EA37776C1A966E380055DE99 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				EA02CCF11A96ED03004C3009 /* KetchTheOneIcon.otf */,
 				EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */,
 				EA37776E1A966EC10055DE99 /* TransatTextBold.otf */,
 				EA37776F1A966EC10055DE99 /* TransatTextLight.otf */,
@@ -630,6 +633,7 @@
 				EA341DA51A8C88CC00A6077B /* JSQMessages.strings in Resources */,
 				EA341DA41A8C88CC00A6077B /* JSQMessagesViewController.xib in Resources */,
 				EA1970181A83549300FEBA7F /* SignupView.xib in Resources */,
+				EA02CCF21A96ED03004C3009 /* KetchTheOneIcon.otf in Resources */,
 				EA1DA3811A8D189400433093 /* NewConnectionView.xib in Resources */,
 				EA409D411A8C75F600988B8B /* DockView.xib in Resources */,
 				EA341DA11A8C88CC00A6077B /* JSQMessagesLoadEarlierHeaderView.xib in Resources */,
