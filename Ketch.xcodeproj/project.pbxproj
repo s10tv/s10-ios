@@ -22,7 +22,7 @@
 
 /* Begin PBXBuildFile section */
 		44E19D671B859E037A1401D8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38E9CB79C25FDAE97BD9D3D /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		EA02CCF21A96ED03004C3009 /* KetchTheOneIcon.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA02CCF11A96ED03004C3009 /* KetchTheOneIcon.otf */; };
+		EA02CCF21A96ED03004C3009 /* KetchIcon.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA02CCF11A96ED03004C3009 /* KetchIcon.otf */; };
 		EA0FC9331A87DE5800D62625 /* AzureClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC91D1A87DE5800D62625 /* AzureClient.swift */; };
 		EA0FC9341A87DE5800D62625 /* MeteorCDStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC91F1A87DE5800D62625 /* MeteorCDStack.swift */; };
 		EA0FC9351A87DE5800D62625 /* MeteorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9201A87DE5800D62625 /* MeteorExtension.swift */; };
@@ -52,6 +52,7 @@
 		EA1DA3811A8D189400433093 /* NewConnectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA1DA3801A8D189400433093 /* NewConnectionView.xib */; };
 		EA2AB70E1A8A00F200D42C6C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2AB70D1A8A00F200D42C6C /* GameViewController.swift */; };
 		EA2AB7101A8A00FC00D42C6C /* GameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA2AB70F1A8A00FC00D42C6C /* GameView.xib */; };
+		EA31049B1A99C3850069D6AD /* KetchIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA31049A1A99C3850069D6AD /* KetchIcon.swift */; };
 		EA341D841A8C875500A6077B /* ChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA341D831A8C875500A6077B /* ChatView.xib */; };
 		EA341D9E1A8C88CC00A6077B /* JSQMessagesAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EA341D861A8C88CC00A6077B /* JSQMessagesAssets.bundle */; };
 		EA341D9F1A8C88CC00A6077B /* JSQMessagesCollectionViewCellIncoming.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA341D871A8C88CC00A6077B /* JSQMessagesCollectionViewCellIncoming.xib */; };
@@ -114,7 +115,7 @@
 		0686ABB348D06D87DA844419 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		2CD850D0B9EC2938BA5CEB59 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D38E9CB79C25FDAE97BD9D3D /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA02CCF11A96ED03004C3009 /* KetchTheOneIcon.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KetchTheOneIcon.otf; sourceTree = "<group>"; };
+		EA02CCF11A96ED03004C3009 /* KetchIcon.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KetchIcon.otf; sourceTree = "<group>"; };
 		EA0FC91D1A87DE5800D62625 /* AzureClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AzureClient.swift; sourceTree = "<group>"; };
 		EA0FC91F1A87DE5800D62625 /* MeteorCDStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorCDStack.swift; sourceTree = "<group>"; };
 		EA0FC9201A87DE5800D62625 /* MeteorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorExtension.swift; sourceTree = "<group>"; };
@@ -144,6 +145,7 @@
 		EA1DA3801A8D189400433093 /* NewConnectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewConnectionView.xib; sourceTree = "<group>"; };
 		EA2AB70D1A8A00F200D42C6C /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		EA2AB70F1A8A00FC00D42C6C /* GameView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameView.xib; sourceTree = "<group>"; };
+		EA31049A1A99C3850069D6AD /* KetchIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KetchIcon.swift; sourceTree = "<group>"; };
 		EA341D831A8C875500A6077B /* ChatView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatView.xib; sourceTree = "<group>"; };
 		EA341D861A8C88CC00A6077B /* JSQMessagesAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = JSQMessagesAssets.bundle; sourceTree = "<group>"; };
 		EA341D871A8C88CC00A6077B /* JSQMessagesCollectionViewCellIncoming.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSQMessagesCollectionViewCellIncoming.xib; sourceTree = "<group>"; };
@@ -382,7 +384,8 @@
 		EA37776C1A966E380055DE99 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				EA02CCF11A96ED03004C3009 /* KetchTheOneIcon.otf */,
+				EA31049A1A99C3850069D6AD /* KetchIcon.swift */,
+				EA02CCF11A96ED03004C3009 /* KetchIcon.otf */,
 				EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */,
 				EA37776E1A966EC10055DE99 /* TransatTextBold.otf */,
 				EA37776F1A966EC10055DE99 /* TransatTextLight.otf */,
@@ -633,7 +636,7 @@
 				EA341DA51A8C88CC00A6077B /* JSQMessages.strings in Resources */,
 				EA341DA41A8C88CC00A6077B /* JSQMessagesViewController.xib in Resources */,
 				EA1970181A83549300FEBA7F /* SignupView.xib in Resources */,
-				EA02CCF21A96ED03004C3009 /* KetchTheOneIcon.otf in Resources */,
+				EA02CCF21A96ED03004C3009 /* KetchIcon.otf in Resources */,
 				EA1DA3811A8D189400433093 /* NewConnectionView.xib in Resources */,
 				EA409D411A8C75F600988B8B /* DockView.xib in Resources */,
 				EA341DA11A8C88CC00A6077B /* JSQMessagesLoadEarlierHeaderView.xib in Resources */,
@@ -771,6 +774,7 @@
 				EA0FC93C1A87DE5800D62625 /* UIKitExtension.swift in Sources */,
 				EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */,
 				EA0FC9421A87DE5800D62625 /* BaseViewModel.swift in Sources */,
+				EA31049B1A99C3850069D6AD /* KetchIcon.swift in Sources */,
 				EA0FC9381A87DE5800D62625 /* FoundationExtension.swift in Sources */,
 				EAE0E2801A8FB90E00132FA5 /* CandidateView.swift in Sources */,
 				EAF195C91A820F2700A2F103 /* CandidateService.swift in Sources */,
