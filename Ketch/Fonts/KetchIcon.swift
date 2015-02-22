@@ -12,6 +12,7 @@ enum KetchIcon : String {
     // Brand Elements
     case LogoBoat = "k"
     case LogoText = "l"
+    case Logo = "L"
     
     // Decision icons
     case MarryRound = "e"
