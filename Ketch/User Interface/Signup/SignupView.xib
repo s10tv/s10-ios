@@ -6,7 +6,6 @@
     <customFonts key="customFonts">
         <mutableArray key="KetchIcon.otf">
             <string>KetchIcon-Regular</string>
-            <string>KetchIcon-Regular</string>
         </mutableArray>
         <mutableArray key="TransatTextBlack.otf">
             <string>TransatTextBlack</string>
@@ -28,6 +27,12 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L" textAlignment="center" lineBreakMode="clip" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="nu5-Dd-8Z5">
+                    <rect key="frame" x="129" y="147" width="117" height="152"/>
+                    <fontDescription key="fontDescription" name="KetchIcon-Regular" family="KetchIcon" pointSize="76"/>
+                    <color key="textColor" red="0.050980392159999999" green="0.3921568627" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awQ-vi-2op">
                     <rect key="frame" x="90" y="339" width="195" height="38"/>
                     <string key="text">Thats how easy it is to
@@ -72,54 +77,22 @@ you got nothing to worry about.</string>
                     <color key="textColor" red="0.050980392159999999" green="0.3921568627" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tG7-cR-eq3" userLabel="Full Logo">
-                    <rect key="frame" x="127" y="147" width="121" height="152"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="l" textAlignment="center" lineBreakMode="clip" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="C3Q-bl-tmi">
-                            <rect key="frame" x="0.0" y="92" width="121" height="60"/>
-                            <fontDescription key="fontDescription" name="KetchIcon-Regular" family="KetchIcon" pointSize="30"/>
-                            <color key="textColor" red="0.050980392159999999" green="0.3921568627" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="k" textAlignment="center" lineBreakMode="clip" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="DFg-Kf-72a">
-                            <rect key="frame" x="23" y="0.0" width="76" height="84"/>
-                            <fontDescription key="fontDescription" name="KetchIcon-Regular" family="KetchIcon" pointSize="42"/>
-                            <color key="textColor" red="0.050980392159999999" green="0.3921568627" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="bottom" secondItem="C3Q-bl-tmi" secondAttribute="bottom" id="FKd-ik-iJg"/>
-                        <constraint firstItem="C3Q-bl-tmi" firstAttribute="leading" secondItem="tG7-cR-eq3" secondAttribute="leading" id="Nsn-M3-vne"/>
-                        <constraint firstItem="C3Q-bl-tmi" firstAttribute="top" secondItem="DFg-Kf-72a" secondAttribute="bottom" constant="8" id="Pr3-Jo-18h"/>
-                        <constraint firstItem="DFg-Kf-72a" firstAttribute="top" secondItem="tG7-cR-eq3" secondAttribute="top" id="kgh-Yb-1eA"/>
-                        <constraint firstAttribute="trailing" secondItem="C3Q-bl-tmi" secondAttribute="trailing" id="qCh-1Q-pki"/>
-                        <constraint firstItem="C3Q-bl-tmi" firstAttribute="centerX" secondItem="DFg-Kf-72a" secondAttribute="centerX" id="woA-eq-egl"/>
-                    </constraints>
-                </view>
             </subviews>
             <color key="backgroundColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="4AJ-Q8-LAW" firstAttribute="top" secondItem="SdM-8k-H6p" secondAttribute="bottom" constant="12" id="6mL-8t-RvF"/>
                 <constraint firstItem="4AJ-Q8-LAW" firstAttribute="centerX" secondItem="SdM-8k-H6p" secondAttribute="centerX" id="8HU-oF-OJ8"/>
-                <constraint firstItem="awQ-vi-2op" firstAttribute="centerX" secondItem="tG7-cR-eq3" secondAttribute="centerX" id="8vK-7Y-1Yd"/>
                 <constraint firstItem="SdM-8k-H6p" firstAttribute="top" secondItem="3jU-As-B9B" secondAttribute="bottom" constant="24" id="CV2-8Z-TT7"/>
-                <constraint firstItem="tG7-cR-eq3" firstAttribute="leading" secondItem="awQ-vi-2op" secondAttribute="trailing" constant="-157" id="Vjc-fd-RZh"/>
-                <constraint firstItem="awQ-vi-2op" firstAttribute="top" secondItem="tG7-cR-eq3" secondAttribute="bottom" constant="40" id="ZU7-FS-tyr"/>
-                <constraint firstAttribute="centerY" secondItem="tG7-cR-eq3" secondAttribute="centerY" constant="110" id="akw-n7-IcH"/>
+                <constraint firstItem="awQ-vi-2op" firstAttribute="centerX" secondItem="nu5-Dd-8Z5" secondAttribute="centerX" id="CaG-Fu-Jgq"/>
+                <constraint firstAttribute="centerX" secondItem="nu5-Dd-8Z5" secondAttribute="centerX" id="JfZ-fT-7Pd"/>
+                <constraint firstItem="awQ-vi-2op" firstAttribute="top" secondItem="nu5-Dd-8Z5" secondAttribute="bottom" constant="40" id="Xed-vH-XKf"/>
+                <constraint firstAttribute="centerY" secondItem="nu5-Dd-8Z5" secondAttribute="centerY" constant="110" id="YZf-HW-xfU"/>
                 <constraint firstItem="3jU-As-B9B" firstAttribute="centerX" secondItem="SdM-8k-H6p" secondAttribute="centerX" id="ceQ-xu-LZB"/>
                 <constraint firstItem="3jU-As-B9B" firstAttribute="top" secondItem="awQ-vi-2op" secondAttribute="bottom" constant="8" id="dxi-hj-YKF"/>
-                <constraint firstAttribute="centerX" secondItem="tG7-cR-eq3" secondAttribute="centerX" id="iKR-iv-6Q8"/>
                 <constraint firstItem="3jU-As-B9B" firstAttribute="centerX" secondItem="awQ-vi-2op" secondAttribute="centerX" id="wPw-LT-bWa"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="Vjc-fd-RZh"/>
-                </mask>
-            </variation>
-            <point key="canvasLocation" x="260.5" y="409.5"/>
+            <point key="canvasLocation" x="392.5" y="487.5"/>
         </view>
     </objects>
 </document>
