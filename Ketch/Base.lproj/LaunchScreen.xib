@@ -3,6 +3,12 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="KetchIcon.otf">
+            <string>KetchIcon-Regular</string>
+            <string>KetchIcon-Regular</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -10,21 +16,41 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="KetchIcon" translatesAutoresizingMaskIntoConstraints="NO" id="K0E-bY-YWu">
-                    <rect key="frame" x="99" y="206" width="122" height="156"/>
-                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BqA-nt-Swz" userLabel="Full Logo">
+                    <rect key="frame" x="99" y="208" width="121" height="152"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="l" textAlignment="center" lineBreakMode="clip" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="YlE-WC-PBl">
+                            <rect key="frame" x="0.0" y="92" width="121" height="60"/>
+                            <fontDescription key="fontDescription" name="KetchIcon-Regular" family="KetchIcon" pointSize="30"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="k" textAlignment="center" lineBreakMode="clip" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="JqK-VL-7iU">
+                            <rect key="frame" x="23" y="0.0" width="76" height="84"/>
+                            <fontDescription key="fontDescription" name="KetchIcon-Regular" family="KetchIcon" pointSize="42"/>
+                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="YlE-WC-PBl" secondAttribute="trailing" id="2B3-ut-hCY"/>
+                        <constraint firstItem="YlE-WC-PBl" firstAttribute="top" secondItem="JqK-VL-7iU" secondAttribute="bottom" constant="8" id="Eds-GP-NcQ"/>
+                        <constraint firstAttribute="bottom" secondItem="YlE-WC-PBl" secondAttribute="bottom" id="QtJ-c3-5ei"/>
+                        <constraint firstItem="YlE-WC-PBl" firstAttribute="centerX" secondItem="JqK-VL-7iU" secondAttribute="centerX" id="SVz-cw-wlb"/>
+                        <constraint firstItem="YlE-WC-PBl" firstAttribute="leading" secondItem="BqA-nt-Swz" secondAttribute="leading" id="f2j-Mi-9XO"/>
+                        <constraint firstItem="JqK-VL-7iU" firstAttribute="top" secondItem="BqA-nt-Swz" secondAttribute="top" id="zVG-ep-WMf"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.043137254901960784" green="0.89803921568627454" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="centerX" secondItem="K0E-bY-YWu" secondAttribute="centerX" id="eNT-lE-VFy"/>
-                <constraint firstAttribute="centerY" secondItem="K0E-bY-YWu" secondAttribute="centerY" id="ymo-wA-UHj"/>
+                <constraint firstAttribute="centerX" secondItem="BqA-nt-Swz" secondAttribute="centerX" id="JUM-eo-6EX"/>
+                <constraint firstAttribute="centerY" secondItem="BqA-nt-Swz" secondAttribute="centerY" id="lWq-4n-Yjn"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <point key="canvasLocation" x="548" y="455"/>
+            <point key="canvasLocation" x="-35" y="-37"/>
         </view>
     </objects>
-    <resources>
-        <image name="KetchIcon" width="122" height="156"/>
-    </resources>
 </document>

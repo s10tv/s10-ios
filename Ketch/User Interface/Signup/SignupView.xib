@@ -4,6 +4,10 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6735"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="KetchIcon.otf">
+            <string>KetchIcon-Regular</string>
+            <string>KetchIcon-Regular</string>
+        </mutableArray>
         <mutableArray key="TransatTextBlack.otf">
             <string>TransatTextBlack</string>
         </mutableArray>
@@ -24,11 +28,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signup-ketch-logo" translatesAutoresizingMaskIntoConstraints="NO" id="EWx-rs-MkE">
-                    <rect key="frame" x="126" y="145" width="122" height="156"/>
-                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awQ-vi-2op">
-                    <rect key="frame" x="89" y="336" width="195" height="38"/>
+                    <rect key="frame" x="90" y="339" width="195" height="38"/>
                     <string key="text">Thats how easy it is to
 find the one with Ketch.</string>
                     <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="19"/>
@@ -36,13 +37,13 @@ find the one with Ketch.</string>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signup now to play." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3jU-As-B9B">
-                    <rect key="frame" x="106" y="382" width="160" height="19"/>
+                    <rect key="frame" x="107" y="385" width="160" height="19"/>
                     <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="19"/>
                     <color key="textColor" red="0.050980392159999999" green="0.3921568627" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SdM-8k-H6p">
-                    <rect key="frame" x="61" y="425" width="250" height="55"/>
+                    <rect key="frame" x="62" y="428" width="250" height="55"/>
                     <color key="backgroundColor" red="0.23137254901960785" green="0.34901960784313724" blue="0.59607843137254901" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="250" id="SSN-ig-Qsc"/>
@@ -64,32 +65,61 @@ find the one with Ketch.</string>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4AJ-Q8-LAW">
-                    <rect key="frame" x="91" y="492" width="191.5" height="28"/>
+                    <rect key="frame" x="91" y="495" width="192" height="28"/>
                     <string key="text">We never post anything, 
 you got nothing to worry about.</string>
                     <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="14"/>
                     <color key="textColor" red="0.050980392159999999" green="0.3921568627" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tG7-cR-eq3" userLabel="Full Logo">
+                    <rect key="frame" x="127" y="147" width="121" height="152"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="l" textAlignment="center" lineBreakMode="clip" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="C3Q-bl-tmi">
+                            <rect key="frame" x="0.0" y="92" width="121" height="60"/>
+                            <fontDescription key="fontDescription" name="KetchIcon-Regular" family="KetchIcon" pointSize="30"/>
+                            <color key="textColor" red="0.050980392159999999" green="0.3921568627" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="k" textAlignment="center" lineBreakMode="clip" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="DFg-Kf-72a">
+                            <rect key="frame" x="23" y="0.0" width="76" height="84"/>
+                            <fontDescription key="fontDescription" name="KetchIcon-Regular" family="KetchIcon" pointSize="42"/>
+                            <color key="textColor" red="0.050980392159999999" green="0.3921568627" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="C3Q-bl-tmi" secondAttribute="bottom" id="FKd-ik-iJg"/>
+                        <constraint firstItem="C3Q-bl-tmi" firstAttribute="leading" secondItem="tG7-cR-eq3" secondAttribute="leading" id="Nsn-M3-vne"/>
+                        <constraint firstItem="C3Q-bl-tmi" firstAttribute="top" secondItem="DFg-Kf-72a" secondAttribute="bottom" constant="8" id="Pr3-Jo-18h"/>
+                        <constraint firstItem="DFg-Kf-72a" firstAttribute="top" secondItem="tG7-cR-eq3" secondAttribute="top" id="kgh-Yb-1eA"/>
+                        <constraint firstAttribute="trailing" secondItem="C3Q-bl-tmi" secondAttribute="trailing" id="qCh-1Q-pki"/>
+                        <constraint firstItem="C3Q-bl-tmi" firstAttribute="centerX" secondItem="DFg-Kf-72a" secondAttribute="centerX" id="woA-eq-egl"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="4AJ-Q8-LAW" firstAttribute="top" secondItem="SdM-8k-H6p" secondAttribute="bottom" constant="12" id="6mL-8t-RvF"/>
                 <constraint firstItem="4AJ-Q8-LAW" firstAttribute="centerX" secondItem="SdM-8k-H6p" secondAttribute="centerX" id="8HU-oF-OJ8"/>
+                <constraint firstItem="awQ-vi-2op" firstAttribute="centerX" secondItem="tG7-cR-eq3" secondAttribute="centerX" id="8vK-7Y-1Yd"/>
                 <constraint firstItem="SdM-8k-H6p" firstAttribute="top" secondItem="3jU-As-B9B" secondAttribute="bottom" constant="24" id="CV2-8Z-TT7"/>
-                <constraint firstItem="awQ-vi-2op" firstAttribute="top" secondItem="EWx-rs-MkE" secondAttribute="bottom" constant="35" id="MnG-yS-zzv"/>
-                <constraint firstAttribute="centerX" secondItem="EWx-rs-MkE" secondAttribute="centerX" id="Ncq-cB-Y8U"/>
+                <constraint firstItem="tG7-cR-eq3" firstAttribute="leading" secondItem="awQ-vi-2op" secondAttribute="trailing" constant="-157" id="Vjc-fd-RZh"/>
+                <constraint firstItem="awQ-vi-2op" firstAttribute="top" secondItem="tG7-cR-eq3" secondAttribute="bottom" constant="40" id="ZU7-FS-tyr"/>
+                <constraint firstAttribute="centerY" secondItem="tG7-cR-eq3" secondAttribute="centerY" constant="110" id="akw-n7-IcH"/>
                 <constraint firstItem="3jU-As-B9B" firstAttribute="centerX" secondItem="SdM-8k-H6p" secondAttribute="centerX" id="ceQ-xu-LZB"/>
                 <constraint firstItem="3jU-As-B9B" firstAttribute="top" secondItem="awQ-vi-2op" secondAttribute="bottom" constant="8" id="dxi-hj-YKF"/>
-                <constraint firstItem="awQ-vi-2op" firstAttribute="centerX" secondItem="EWx-rs-MkE" secondAttribute="centerX" id="fjX-XL-79n"/>
-                <constraint firstAttribute="centerY" secondItem="EWx-rs-MkE" secondAttribute="centerY" constant="110" id="g6z-sF-imX"/>
+                <constraint firstAttribute="centerX" secondItem="tG7-cR-eq3" secondAttribute="centerX" id="iKR-iv-6Q8"/>
                 <constraint firstItem="3jU-As-B9B" firstAttribute="centerX" secondItem="awQ-vi-2op" secondAttribute="centerX" id="wPw-LT-bWa"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Vjc-fd-RZh"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="260.5" y="409.5"/>
         </view>
     </objects>
-    <resources>
-        <image name="signup-ketch-logo" width="122" height="156"/>
-    </resources>
 </document>
