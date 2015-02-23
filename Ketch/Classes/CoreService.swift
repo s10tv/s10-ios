@@ -64,7 +64,8 @@ class CoreService {
         })
     }
     
-    private let fbReadPerms = ["public_profile"]
+    // TODO: What permissions do we actually need?
+    private let fbReadPerms = ["user_about_me", "user_photos", "user_videos"]
     
     func attemptLoginWithCachedCredentials() -> Bool {
         if meteor.hasAccount() {
