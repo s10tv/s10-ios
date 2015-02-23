@@ -88,7 +88,7 @@ class GameViewController : BaseViewController {
         if marry == nil || keep == nil || skip == nil {
             UIAlertView.show("Error", message: "Need to uniquely assign keep match marry")
         } else {
-            Core.candidateService.chooseYesNoMaybe(marry!, no: skip!, maybe: keep!).deliverOnMainThread().subscribeNextAs { (res : [String:String]) -> () in
+            Core.candidateService.submitChoices(marry!, no: skip!, maybe: keep!).deliverOnMainThread().subscribeNextAs { (res : [String:String]) -> () in
                 if res.count > 0 {
                     let yesConnId = res["yes"]
                     let maybeConnId = res["maybe"]
