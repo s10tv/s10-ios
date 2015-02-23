@@ -82,13 +82,9 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
     
     // MARK: - 
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
-        // TODO: Put this inside Messaging Service
-        let message = Message.create() as Message
-        message.connection = connection
-        message.sender = User.currentUser()
-        message.recipient = connection?.user
-        message.text = text
-        message.save()
+        if let connectionID = connection?.documentID {
+            Core.meteor.callMethod("connection/sendMessage", params: [connectionID, text])
+        }
         finishSendingMessageAnimated(true)
     }
     

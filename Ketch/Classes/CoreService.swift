@@ -36,6 +36,20 @@ class CoreService {
         meteor.addSubscriptionWithName("connections")
         meteor.addSubscriptionWithName("messages")
         
+        meteor.defineStubForMethodWithName("connection/sendMessage", usingBlock: { (args) -> AnyObject! in
+            assert(NSThread.isMainThread(), "Only main supported for now")
+            let arguments = args as [String]
+            if let connection = Connection.findByDocumentID(arguments.first!) {
+                let message = Message.create() as Message
+                message.connection = connection
+                message.sender = User.currentUser()
+                message.text = arguments[1]
+                message.save()
+            }
+            return true
+        })
+
+        
         // Initialize other services
         candidateService = CandidateService(meteor: meteor)
         AzureClient.startWithMeteor(meteor)
