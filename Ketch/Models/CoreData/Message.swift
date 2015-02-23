@@ -10,26 +10,17 @@ import JSQMessagesViewController
 
 @objc(Message)
 class Message: _Message {
-
-    var videoNSURL : NSURL? {
-        return videoURL != nil ? NSURL(string: videoURL!) : nil
-    }
-
-    var thumbnailNSURL : NSURL? {
-        let url = thumbnailURL != nil ? NSURL(string: thumbnailURL!) : nil
-        return url ?? connection?.user?.profilePhotoURL
-    }
     
     override func awakeFromInsert() {
         super.awakeFromInsert()
-        self.timestamp = NSDate()
+        createdAt = NSDate()
     }
     
     func jsqMessage() -> JSQMessage {
         let senderID = sender?.documentID
         let displayName = sender?.firstName
         let txt = text ?? "empty"
-        return JSQMessage(senderId: senderID, senderDisplayName: displayName, date: timestamp, text: txt)
+        return JSQMessage(senderId: senderID, senderDisplayName: displayName, date: createdAt, text: txt)
     }
     
 }

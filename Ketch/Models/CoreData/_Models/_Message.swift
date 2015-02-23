@@ -4,11 +4,9 @@
 import CoreData
 
 enum MessageAttributes: String {
+    case createdAt = "createdAt"
     case isUnread = "isUnread"
     case text = "text"
-    case thumbnailURL = "thumbnailURL"
-    case timestamp = "timestamp"
-    case videoURL = "videoURL"
 }
 
 enum MessageRelationships: String {
@@ -44,6 +42,11 @@ class _Message: NSManagedObject {
     // MARK: - Properties
 
     @NSManaged
+    var createdAt: NSDate?
+
+    // func validateCreatedAt(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
     var isUnread: NSNumber?
 
     // func validateIsUnread(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
@@ -52,21 +55,6 @@ class _Message: NSManagedObject {
     var text: String?
 
     // func validateText(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
-
-    @NSManaged
-    var thumbnailURL: String?
-
-    // func validateThumbnailURL(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
-
-    @NSManaged
-    var timestamp: NSDate?
-
-    // func validateTimestamp(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
-
-    @NSManaged
-    var videoURL: String?
-
-    // func validateVideoURL(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
 

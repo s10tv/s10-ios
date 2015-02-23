@@ -34,7 +34,7 @@ class ConnectionCell : UITableViewCell {
         
         // TODO: Can use connectionViewModel of sorts here
         nameLabel.text = connection?.user?.firstName
-        timeLabel.text = connection?.dateUpdated?.timeAgoSinceNow()
+        timeLabel.text = connection?.updatedAt?.timeAgoSinceNow()
         newIndicator.hidden = true
     }
     

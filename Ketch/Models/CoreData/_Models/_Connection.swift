@@ -4,11 +4,11 @@
 import CoreData
 
 enum ConnectionAttributes: String {
-    case dateCreated = "dateCreated"
-    case dateUpdated = "dateUpdated"
-    case expiryDate = "expiryDate"
+    case createdAt = "createdAt"
+    case expiresAt = "expiresAt"
     case lastMessageText = "lastMessageText"
     case type = "type"
+    case updatedAt = "updatedAt"
 }
 
 enum ConnectionRelationships: String {
@@ -42,19 +42,14 @@ class _Connection: NSManagedObject {
     // MARK: - Properties
 
     @NSManaged
-    var dateCreated: NSDate?
+    var createdAt: NSDate?
 
-    // func validateDateCreated(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
-
-    @NSManaged
-    var dateUpdated: NSDate?
-
-    // func validateDateUpdated(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateCreatedAt(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
-    var expiryDate: NSDate?
+    var expiresAt: NSDate?
 
-    // func validateExpiryDate(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateExpiresAt(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
     var lastMessageText: String?
@@ -65,6 +60,11 @@ class _Connection: NSManagedObject {
     var type: String?
 
     // func validateType(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var updatedAt: NSDate?
+
+    // func validateUpdatedAt(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
 

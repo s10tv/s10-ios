@@ -21,7 +21,7 @@ class CandidateService {
     init(meteor: METCoreDataDDPClient) {
         self.meteor = meteor
         subscription = meteor.addSubscriptionWithName("candidates")
-        let frc = Candidate.by(CandidateAttributes.choice.rawValue, value: nil).sorted(by: CandidateAttributes.dateMatched.rawValue, ascending: true).frc()
+        let frc = Candidate.by(CandidateAttributes.choice.rawValue, value: nil).sorted(by: CandidateAttributes.createdAt.rawValue, ascending: true).frc()
         fetch = FetchViewModel(frc: frc)
 
         // Define Stub method

@@ -20,7 +20,7 @@ class DockViewController : BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let sortDescriptor = NSSortDescriptor(key: ConnectionAttributes.dateUpdated.rawValue, ascending: false)
+        let sortDescriptor = NSSortDescriptor(key: ConnectionAttributes.updatedAt.rawValue, ascending: false)
         
         keeps = FetchViewModel(frc: Connection.by(ConnectionAttributes.type.rawValue, value: "maybe").sorted(by: sortDescriptor).frc())
         keeps.bindToTableView(keepTable, cellNibName: "KeepConnectionCell")

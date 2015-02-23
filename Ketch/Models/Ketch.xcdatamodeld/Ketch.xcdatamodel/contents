@@ -2,15 +2,15 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6751" systemVersion="14C109" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Candidate" representedClassName="Candidate" syncable="YES">
         <attribute name="choice" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="dateMatched" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
     </entity>
     <entity name="Connection" representedClassName="Connection" syncable="YES">
-        <attribute name="dateCreated" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="dateUpdated" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="expiryDate" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="expiresAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="lastMessageText" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES">
             <userInfo>
                 <entry key="fieldName" value="otherUserId"/>
@@ -18,19 +18,9 @@
         </relationship>
     </entity>
     <entity name="Message" representedClassName="Message" syncable="YES">
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="isUnread" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="thumbnailURL" optional="YES" attributeType="String" syncable="YES">
-            <userInfo>
-                <entry key="fieldName" value="thumbnailUrl"/>
-            </userInfo>
-        </attribute>
-        <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="videoURL" optional="YES" attributeType="String" syncable="YES">
-            <userInfo>
-                <entry key="fieldName" value="videoUrl"/>
-            </userInfo>
-        </attribute>
         <relationship name="connection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Connection" syncable="YES"/>
         <relationship name="recipient" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
         <relationship name="sender" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
@@ -51,9 +41,9 @@
         <attribute name="work" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Candidate" positionX="-45" positionY="54" width="128" height="90"/>
-        <element name="Connection" positionX="-54" positionY="0" width="128" height="135"/>
-        <element name="Message" positionX="-36" positionY="27" width="128" height="165"/>
+        <element name="Candidate" positionX="-45" positionY="54" width="128" height="88"/>
+        <element name="Connection" positionX="-54" positionY="0" width="128" height="133"/>
+        <element name="Message" positionX="-36" positionY="27" width="128" height="133"/>
         <element name="User" positionX="-63" positionY="-18" width="128" height="180"/>
     </elements>
 </model>

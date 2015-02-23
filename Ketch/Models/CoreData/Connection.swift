@@ -21,19 +21,19 @@ class Connection: _Connection {
     var fractionExpired : Float {
          // TODO: Make this configurable (3 days)
         let maxExpiration : NSTimeInterval = 3 * 24 * 60 * 60
-        let timeTillExpiry = expiryDate?.timeIntervalSinceNow ?? 0
+        let timeTillExpiry = expiresAt?.timeIntervalSinceNow ?? 0
         return Float(maxExpiration / timeTillExpiry)
     }
 
     override func awakeFromInsert() {
         super.awakeFromInsert()
-        self.dateCreated = NSDate()
-        self.dateUpdated = NSDate()
+        createdAt = NSDate()
+        updatedAt = NSDate()
     }
     
     func fetchMessages(#sorted: Bool) -> NSFetchedResultsController {
         let messages = Message.by(MessageRelationships.connection.rawValue, value: self)
-        let sortDesc = NSSortDescriptor(key: MessageAttributes.timestamp.rawValue, ascending: true)
+        let sortDesc = NSSortDescriptor(key: MessageAttributes.createdAt.rawValue, ascending: true)
         return sorted ? messages.sorted(by: sortDesc).frc() : messages.frc()
     }
     

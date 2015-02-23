@@ -5,15 +5,11 @@ import CoreData
 
 enum CandidateAttributes: String {
     case choice = "choice"
-    case dateMatched = "dateMatched"
+    case createdAt = "createdAt"
 }
 
 enum CandidateRelationships: String {
     case user = "user"
-}
-
-enum CandidateUserInfo: String {
-    case collectionName = "collectionName"
 }
 
 @objc
@@ -48,9 +44,9 @@ class _Candidate: NSManagedObject {
     // func validateChoice(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
-    var dateMatched: NSDate?
+    var createdAt: NSDate?
 
-    // func validateDateMatched(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateCreatedAt(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
 
