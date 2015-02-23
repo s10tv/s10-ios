@@ -3,11 +3,7 @@
     <entity name="Candidate" representedClassName="Candidate" syncable="YES">
         <attribute name="choice" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="dateMatched" optional="YES" attributeType="Date" syncable="YES"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES">
-            <userInfo>
-                <entry key="fieldName" value="matchedUserId"/>
-            </userInfo>
-        </relationship>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
     </entity>
     <entity name="Connection" representedClassName="Connection" syncable="YES">
         <attribute name="dateCreated" optional="YES" attributeType="Date" syncable="YES"/>
@@ -17,7 +13,7 @@
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES">
             <userInfo>
-                <entry key="fieldName" value="recipient"/>
+                <entry key="fieldName" value="otherUserId"/>
             </userInfo>
         </relationship>
     </entity>
@@ -49,7 +45,7 @@
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="photoURLs" optional="YES" attributeType="Transformable" valueTransformerName="PhotosValueTransformer" syncable="YES">
             <userInfo>
-                <entry key="fieldName" value="photos"/>
+                <entry key="fieldName" value="photoUrls"/>
             </userInfo>
         </attribute>
         <attribute name="work" optional="YES" attributeType="String" syncable="YES"/>
@@ -58,6 +54,6 @@
         <element name="Candidate" positionX="-45" positionY="54" width="128" height="90"/>
         <element name="Connection" positionX="-54" positionY="0" width="128" height="135"/>
         <element name="Message" positionX="-36" positionY="27" width="128" height="165"/>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="178"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="180"/>
     </elements>
 </model>
