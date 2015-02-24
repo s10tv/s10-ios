@@ -52,7 +52,6 @@ class CoreService {
         
         // Initialize other services
         candidateService = CandidateService(meteor: meteor)
-        AzureClient.startWithMeteor(meteor)
     }
     
     private func loginToMeteor() {

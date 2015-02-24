@@ -1,5 +1,4 @@
 PODS:
-  - Alamofire (1.1.4)
   - Bolts (1.1.3)
   - DateTools (1.5.0)
   - EDColor (0.4.0)
@@ -41,7 +40,6 @@ PODS:
   - UIView+draggable (0.5)
 
 DEPENDENCIES:
-  - Alamofire (~> 1.1)
   - DateTools (~> 1.5)
   - EDColor (~> 0.4)
   - Fabric/Crashlytics (~> 1.1)
@@ -68,7 +66,6 @@ CHECKOUT OPTIONS:
     :git: https://github.com/tonyxiao/SugarRecord
 
 SPEC CHECKSUMS:
-  Alamofire: 524225da382071ee3e6d0badd0ee4b4dc36740de
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
   DateTools: 7df78f0c4719eb28cfd2d58a90fafd036e73156c
   EDColor: bcdb8600b7a456f4408ce1d7e7fc001588919254

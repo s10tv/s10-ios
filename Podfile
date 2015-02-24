@@ -6,7 +6,6 @@ pod 'ReactiveCocoa', '~> 2.4' # Update to 3.0 when ready
 
 pod 'SugarRecord/CoreData', :git => 'https://github.com/tonyxiao/SugarRecord'
 pod 'Meteor', '~> 0.1'
-pod 'Alamofire', '~> 1.1'
 
 pod 'Facebook-iOS-SDK', '~> 3.22'
 pod 'DateTools', '~> 1.5'

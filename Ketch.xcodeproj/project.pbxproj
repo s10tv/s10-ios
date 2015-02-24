@@ -23,7 +23,6 @@
 /* Begin PBXBuildFile section */
 		44E19D671B859E037A1401D8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38E9CB79C25FDAE97BD9D3D /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		EA02CCF21A96ED03004C3009 /* KetchIcon.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA02CCF11A96ED03004C3009 /* KetchIcon.otf */; };
-		EA0FC9331A87DE5800D62625 /* AzureClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC91D1A87DE5800D62625 /* AzureClient.swift */; };
 		EA0FC9341A87DE5800D62625 /* MeteorCDStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC91F1A87DE5800D62625 /* MeteorCDStack.swift */; };
 		EA0FC9351A87DE5800D62625 /* MeteorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9201A87DE5800D62625 /* MeteorExtension.swift */; };
 		EA0FC9361A87DE5800D62625 /* SugarRecordExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9211A87DE5800D62625 /* SugarRecordExtension.swift */; };
@@ -116,7 +115,6 @@
 		2CD850D0B9EC2938BA5CEB59 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D38E9CB79C25FDAE97BD9D3D /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA02CCF11A96ED03004C3009 /* KetchIcon.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KetchIcon.otf; sourceTree = "<group>"; };
-		EA0FC91D1A87DE5800D62625 /* AzureClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AzureClient.swift; sourceTree = "<group>"; };
 		EA0FC91F1A87DE5800D62625 /* MeteorCDStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorCDStack.swift; sourceTree = "<group>"; };
 		EA0FC9201A87DE5800D62625 /* MeteorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorExtension.swift; sourceTree = "<group>"; };
 		EA0FC9211A87DE5800D62625 /* SugarRecordExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SugarRecordExtension.swift; sourceTree = "<group>"; };
@@ -266,7 +264,6 @@
 			children = (
 				EA0FC91E1A87DE5800D62625 /* Backend */,
 				EA0FC92E1A87DE5800D62625 /* ViewModels */,
-				EA0FC91D1A87DE5800D62625 /* AzureClient.swift */,
 				EA0FC9221A87DE5800D62625 /* BaseViewController.swift */,
 				EA0FC9261A87DE5800D62625 /* Segue.swift */,
 				EA0FC9231A87DE5800D62625 /* FoundationExtension.swift */,
@@ -762,7 +759,6 @@
 				EA0FC9351A87DE5800D62625 /* MeteorExtension.swift in Sources */,
 				EA5634EB1A77428F00F62B52 /* _Candidate.swift in Sources */,
 				EA409D3F1A8C75F600988B8B /* ConnectionCell.swift in Sources */,
-				EA0FC9331A87DE5800D62625 /* AzureClient.swift in Sources */,
 				EA1DA37F1A8D188B00433093 /* NewConnectionViewController.swift in Sources */,
 				EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */,
 				EA0FC9441A87DE5800D62625 /* ViewProviders.swift in Sources */,
