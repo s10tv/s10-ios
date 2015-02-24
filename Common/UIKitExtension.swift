@@ -37,8 +37,9 @@ extension UIView {
 }
 
 extension UIAlertView {
-    class func show(title: String, message: String? = nil) {
+    class func show(title: String, message: String? = nil) -> RACSignal {
         let alert = UIAlertView(title: title, message: message, delegate: nil, cancelButtonTitle: "OK")
         alert.show()
+        return alert.rac_buttonClickedSignal()
     }
 }

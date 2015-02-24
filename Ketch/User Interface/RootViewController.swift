@@ -8,11 +8,22 @@
 
 import UIKit
 import FacebookSDK
+import Meteor
 
 class RootViewController : UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // If server logs us out, then let's also log out of the UI
+        listenForNotification(METDDPClientDidChangeAccountNotification).filter { _ in
+            return !Core.meteor.hasAccount()
+        }.deliverOnMainThread().flattenMap { _ in
+            return UIAlertView.show("Error", message: "You have been logged out")
+        }.subscribeNext { [weak self] _ in
+            self?.showSignup(false)
+            return
+        }
+        // Try login now
         if !Core.attemptLoginWithCachedCredentials() {
             showSignup(false)
         } else {
