@@ -24,6 +24,7 @@ class CoreService {
     var fbSession : FBSession {
         return FBSession.activeSession()!
     }
+    var loginSignal = RACReplaySubject(capacity: 1)
     
     init() {
         // Set up CoreData
@@ -60,6 +61,7 @@ class CoreService {
         meteor.loginWithFacebook(data.accessToken, expiresAt: data.expirationDate).subscribeError({ error in
             println("login error \(error)")
         }, completed: {
+            self.loginSignal.sendCompleted()
             println("login success")
         })
     }
@@ -79,11 +81,12 @@ class CoreService {
     }
     
     func addPushToken(pushTokenData: NSData) {
-        meteor.callMethod("user/addPushToken", params: [pushTokenData.hexString()])
-            .subscribeError({ error in
-                println("Failed to add push token \(error)")
-            }, completed: {
-                println("Succeeded sending push token to server")
+        self.loginSignal.then({ () -> RACSignal! in
+            return self.meteor.callMethod("user/addPushToken", params: [pushTokenData.hexString()])
+        }).subscribeError({ error in
+            println("Failed to add push token \(error)")
+        }, completed: {
+            println("Succeeded sending push token to server")
         })
     }
     
