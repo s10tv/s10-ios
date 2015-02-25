@@ -72,7 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         println("Faild to register for push \(error)")
     }
     
-    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         println("Did receive notification \(userInfo)")
     }
 }
