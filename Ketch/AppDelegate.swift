@@ -30,6 +30,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         Core = CoreService()
         
         Log.info("App Launched")
+
+        let settings = UIUserNotificationSettings(forTypes:
+                UIUserNotificationType.Badge |
+                UIUserNotificationType.Alert |
+                UIUserNotificationType.Sound,
+            categories: nil )
+        
+        application.registerUserNotificationSettings(settings)
+        application.registerForRemoteNotifications()
         return true
     }
     
@@ -51,5 +60,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
         return FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
+    }
+    
+    // MARK: - Push Handling
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        println("Registered for push \(deviceToken)")
+    }
+    
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
+        println("Faild to register for push \(error)")
+    }
+    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        println("Did receive notification \(userInfo)")
     }
 }
