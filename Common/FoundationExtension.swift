@@ -71,3 +71,14 @@ extension Array {
         return self[index]
     }
 }
+
+extension NSData {
+    func hexString() -> NSString {
+        var str = NSMutableString()
+        let bytes = UnsafeBufferPointer<UInt8>(start: UnsafePointer(self.bytes), count:self.length)
+        for byte in bytes {
+            str.appendFormat("%02hhx", byte)
+        }
+        return str
+    }
+}

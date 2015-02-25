@@ -13,8 +13,9 @@ import SugarRecord
 import Meteor
 
 class CoreService {
-    
+
 //    let meteor = METCoreDataDDPClient(serverURL: NSURL(string: "ws://localhost:3000/websocket"))
+//    let meteor = METCoreDataDDPClient(serverURL: NSURL(string: "ws://192.168.0.13:3000/websocket"))
     let meteor = METCoreDataDDPClient(serverURL: NSURL(string: "ws://s10.herokuapp.com/websocket"))
     let candidateService : CandidateService
     var mainContext : NSManagedObjectContext! {
@@ -75,6 +76,15 @@ class CoreService {
             return true
         }
         return false
+    }
+    
+    func addPushToken(pushTokenData: NSData) {
+        meteor.callMethod("user/addPushToken", params: [pushTokenData.hexString()])
+            .subscribeError({ error in
+                println("Failed to add push token \(error)")
+            }, completed: {
+                println("Succeeded sending push token to server")
+        })
     }
     
     func loginWithUI() -> RACSignal {

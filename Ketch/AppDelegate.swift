@@ -65,6 +65,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Push Handling
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         println("Registered for push \(deviceToken)")
+        Core.addPushToken(deviceToken)
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
