@@ -13,7 +13,7 @@ import DateTools
 class ConnectionCell : UITableViewCell {
     
     @IBOutlet weak var newIndicator: UIImageView!
-    @IBOutlet weak var avatarView: UIImageView!
+    @IBOutlet weak var avatarView: UserAvatarView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     
@@ -26,11 +26,8 @@ class ConnectionCell : UITableViewCell {
     func reloadData() {
         
         let photos = connection?.user?.photos as [Photo]?
-        if let avatar = photos?.first {
-            avatarView.sd_setImageWithURL(NSURL(string: avatar.url))
-        } else {
-            avatarView.image = nil
-        }
+        avatarView.user = connection?.user
+        avatarView.fadeRatio = connection?.fractionExpired.f ?? 0
         
         // TODO: Can use connectionViewModel of sorts here
         nameLabel.text = connection?.user?.firstName

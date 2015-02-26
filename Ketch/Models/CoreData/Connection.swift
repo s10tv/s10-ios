@@ -19,10 +19,10 @@ class Connection: _Connection {
     }
     
     var fractionExpired : Float {
-         // TODO: Make this configurable (3 days)
+         // TODO: Make this configurable (3 days currently)
         let maxExpiration : NSTimeInterval = 3 * 24 * 60 * 60
         let timeTillExpiry = expiresAt?.timeIntervalSinceNow ?? 0
-        return Float(maxExpiration / timeTillExpiry)
+        return Float(timeTillExpiry / maxExpiration)
     }
 
     override func awakeFromInsert() {

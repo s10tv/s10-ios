@@ -22,7 +22,7 @@
                             <constraint firstAttribute="width" constant="12" id="e3F-Dn-zhr"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2C2-G4-yXf" userLabel="Avatar">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2C2-G4-yXf" userLabel="Avatar" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
                         <rect key="frame" x="8" y="8" width="53" height="53"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="2C2-G4-yXf" secondAttribute="height" multiplier="1:1" id="ldG-ki-jnS"/>

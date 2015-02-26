@@ -8,6 +8,19 @@
 
 import Foundation
 
+// Floats
+extension Int {
+    var f: CGFloat { return CGFloat(self) }
+}
+
+extension Float {
+    var f: CGFloat { return CGFloat(self) }
+}
+
+extension Double {
+    var f: CGFloat { return CGFloat(self) }
+}
+
 extension String {
     
     var stringByCapitalizingFirstCharacter : String {
