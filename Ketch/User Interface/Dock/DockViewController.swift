@@ -45,7 +45,8 @@ class DockViewController : BaseViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ChatViewController {
-            vc.connection = self.currentConnection
+            vc.connection = currentConnection
+            Core.meteor.callMethod("connection/markAsRead", params: [(currentConnection?.documentID)!])
         }
     }
     

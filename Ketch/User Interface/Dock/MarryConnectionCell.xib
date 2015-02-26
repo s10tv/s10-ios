@@ -8,7 +8,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="cAY-2f-1lU" customClass="ConnectionCell" customModule="Serendipity" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="cAY-2f-1lU" customClass="ConnectionCell" customModule="Ketch" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="240" height="70"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cAY-2f-1lU" id="Ctw-G5-cnb">
@@ -29,13 +29,13 @@
                         </constraints>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sara" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7rM-02-dZt" userLabel="Name">
-                        <rect key="frame" x="69" y="13" width="35" height="24"/>
+                        <rect key="frame" x="69" y="13.5" width="34.5" height="23.5"/>
                         <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="17"/>
                         <color key="textColor" red="0.078431372550000003" green="0.32156862749999998" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="last message they sent" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpZ-bc-q3K" userLabel="Last Message">
-                        <rect key="frame" x="69" y="37" width="124" height="14"/>
+                        <rect key="frame" x="69" y="37" width="123.5" height="14"/>
                         <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="12"/>
                         <color key="textColor" red="0.13725490200000001" green="0.58823529409999997" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
@@ -49,6 +49,7 @@
                     <constraint firstItem="2C2-G4-yXf" firstAttribute="leading" secondItem="Ctw-G5-cnb" secondAttribute="leadingMargin" id="7dQ-4I-RHi"/>
                     <constraint firstItem="2C2-G4-yXf" firstAttribute="top" secondItem="rLr-rA-szy" secondAttribute="top" id="Vnr-Wm-88B"/>
                     <constraint firstAttribute="bottomMargin" secondItem="2C2-G4-yXf" secondAttribute="bottom" id="YRV-UV-Mb3"/>
+                    <constraint firstAttribute="trailingMargin" relation="greaterThanOrEqual" secondItem="gpZ-bc-q3K" secondAttribute="trailing" id="cvN-LA-UsB"/>
                     <constraint firstItem="2C2-G4-yXf" firstAttribute="centerY" secondItem="7rM-02-dZt" secondAttribute="centerY" constant="10" id="gIy-eG-5d0"/>
                     <constraint firstItem="7rM-02-dZt" firstAttribute="leading" secondItem="2C2-G4-yXf" secondAttribute="trailing" constant="8" id="nIe-LR-p7R"/>
                 </constraints>
@@ -58,7 +59,7 @@
                 <outlet property="avatarView" destination="2C2-G4-yXf" id="mOB-uu-j3t"/>
                 <outlet property="nameLabel" destination="7rM-02-dZt" id="bwS-OI-mMN"/>
                 <outlet property="newIndicator" destination="rLr-rA-szy" id="Z5U-Ic-EaC"/>
-                <outlet property="timeLabel" destination="gpZ-bc-q3K" id="XRn-9u-qGC"/>
+                <outlet property="subtitleLabel" destination="gpZ-bc-q3K" id="aHp-gh-eyY"/>
             </connections>
             <point key="canvasLocation" x="25" y="443"/>
         </tableViewCell>

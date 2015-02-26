@@ -50,8 +50,15 @@ class CoreService {
             }
             return true
         })
-
         
+        meteor.defineStubForMethodWithName("connection/markAsRead", usingBlock: { (args) -> AnyObject! in
+            if let connection = Connection.findByDocumentID(args.first as String) {
+                connection.hasUnreadMessage = false
+                connection.save()
+            }
+            return true
+        })
+
         // Initialize other services
         candidateService = CandidateService(meteor: meteor)
     }

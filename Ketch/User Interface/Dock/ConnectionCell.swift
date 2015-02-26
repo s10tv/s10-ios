@@ -15,7 +15,7 @@ class ConnectionCell : UITableViewCell {
     @IBOutlet weak var newIndicator: UIImageView!
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
     
     var connection : Connection? {
         didSet {
@@ -34,7 +34,7 @@ class ConnectionCell : UITableViewCell {
         
         // TODO: Can use connectionViewModel of sorts here
         nameLabel.text = connection?.user?.firstName
-        timeLabel.text = connection?.updatedAt?.timeAgoSinceNow()
+        subtitleLabel.text = connection?.lastMessageText
         newIndicator.hidden = !(connection?.hasUnreadMessage?.boolValue ?? false)
     }
     
