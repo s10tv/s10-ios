@@ -14,6 +14,9 @@ class GameViewController : BaseViewController {
 
     @IBOutlet var avatars: [CandidateView]!
     
+    @IBOutlet var gameView: UIView!
+    @IBOutlet var emptyView: UIView!
+    
     @IBOutlet weak var marrySlot: UIImageView!
     @IBOutlet weak var keepSlot: UIImageView!
     @IBOutlet weak var skipSlot: UIImageView!
@@ -23,18 +26,21 @@ class GameViewController : BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Core.candidateService.fetch.signal.subscribeNextAs { (candidates : [Candidate]) -> () in
-            for (i, imageView) in enumerate(self.avatars) {
-                if i < candidates.count {
-                    imageView.candidate = candidates[i]
-                    imageView.whenTapped {
-                        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("Profile") as ProfileViewController
-                        vc.user = imageView.candidate?.user
-                        self.navigationController?.pushViewController(vc, animated: true)
+        Core.candidateService.fetch.signal.subscribeNextAs { [weak self] (candidates : [Candidate]) -> () in
+            if let this = self {
+                for (i, imageView) in enumerate(this.avatars) {
+                    if i < candidates.count {
+                        imageView.candidate = candidates[i]
+                        imageView.whenTapped {
+                            let vc = this.storyboard?.instantiateViewControllerWithIdentifier("Profile") as ProfileViewController
+                            vc.user = imageView.candidate?.user
+                            this.navigationController?.pushViewController(vc, animated: true)
+                        }
+                    } else {
+                        imageView.candidate = nil
                     }
-                } else {
-                    imageView.candidate = nil
                 }
+                this.showSubview(candidates.count > 3 ? this.gameView : this.emptyView)
             }
         }
         unreadConnections = FetchViewModel(frc: Connection.by(ConnectionAttributes.hasUnreadMessage.rawValue, value: true).frc())
@@ -67,6 +73,15 @@ class GameViewController : BaseViewController {
         for imageView in avatars {
             imageView.contentMode = .ScaleToFill
             imageView.makeCircular()
+        }
+    }
+    
+    func showSubview(subview: UIView) {
+        if subview.superview == nil {
+            gameView.removeFromSuperview()
+            emptyView.removeFromSuperview()
+            view.insertSubview(subview, atIndex: 0)
+            subview.makeEdgesEqualTo(view)
         }
     }
     
