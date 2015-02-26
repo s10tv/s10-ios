@@ -27,6 +27,12 @@ extension SugarRecordFinder {
     public func frc() -> NSFetchedResultsController {
         return fetchedResultsController(nil)
     }
+    
+    public func fetch() -> [AnyObject] {
+        return map(self.find(), { (record) -> AnyObject in
+            return record
+        })
+    }
 }
 
 extension NSManagedObject {

@@ -66,9 +66,6 @@ class GameViewController : BaseViewController {
         }
         
         dockBadge.makeCircular()
-        
-//        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("NewConnection") as NewConnectionViewController
-//        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     override func viewDidLayoutSubviews() {
@@ -120,11 +117,10 @@ class GameViewController : BaseViewController {
         } else {
             Core.candidateService.submitChoices(marry!, no: skip!, maybe: keep!).deliverOnMainThread().subscribeNextAs { (res : [String:String]) -> () in
                 if res.count > 0 {
-                    let yesConnId = res["yes"]
-                    let maybeConnId = res["maybe"]
-                    let conn = Connection.findByDocumentID((yesConnId ?? maybeConnId)!)
                     let vc = self.storyboard?.instantiateViewControllerWithIdentifier("NewConnection") as NewConnectionViewController
-                    vc.user = conn?.user
+                    vc.connections = map(res, { (key, value) -> Connection in
+                        return Connection.findByDocumentID(value)!
+                    })
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
             }

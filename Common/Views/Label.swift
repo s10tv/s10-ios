@@ -23,4 +23,10 @@ import UIKit
             value:fontKern, range: range)
         attributedText = attrString
     }
+
+    func setRawText(rawText: String) {
+        let attrString = attributedText.mutableCopy() as NSMutableAttributedString
+        attrString.mutableString.setString(rawText)
+        attributedText = attrString
+    }
 }

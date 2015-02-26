@@ -8,11 +8,18 @@
         <mutableArray key="TransatTextBlack.otf">
             <string>TransatTextBlack</string>
         </mutableArray>
+        <mutableArray key="TransatTextStandard.otf">
+            <string>TransatTextStandard</string>
+        </mutableArray>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewConnectionViewController">
             <connections>
-                <outlet property="avatarView" destination="KwU-Ms-43D" id="0BO-HB-LW9"/>
+                <outlet property="centerAvatar" destination="KwU-Ms-43D" id="yWN-I1-f8h"/>
+                <outlet property="leftAvatar" destination="cgP-ZZ-1cf" id="bXD-4O-yel"/>
+                <outlet property="promptLabel" destination="I2c-Q5-UHl" id="86U-Pq-R4h"/>
+                <outlet property="rightAvatar" destination="PnP-gQ-3vx" id="Lbh-21-UW4"/>
+                <outlet property="titleLabel" destination="EUJ-Zq-AGV" id="R8k-e3-mXy"/>
                 <outlet property="view" destination="iN0-l3-epB" id="GbA-lV-Mc3"/>
             </connections>
         </placeholder>
@@ -21,8 +28,23 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9yM-PF-CD5">
+                    <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="BtE-ZH-dzV"/>
+                        <constraint firstAttribute="height" constant="60" id="Owh-CT-eee"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="17"/>
+                    <state key="normal" title="Back">
+                        <color key="titleColor" red="0.14509803921568629" green="0.6470588235294118" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="goBack:" destination="-1" eventType="touchUpInside" id="VnH-oT-sai"/>
+                    </connections>
+                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It's a Ketch!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUJ-Zq-AGV">
-                    <rect key="frame" x="98" y="184" width="124.5" height="30.5"/>
+                    <rect key="frame" x="98" y="140" width="124.5" height="30.5"/>
                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="22"/>
                     <color key="textColor" red="0.078431372549019607" green="0.32156862745098042" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -55,13 +77,13 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2c-Q5-UHl" customClass="AttributedLabel" customModule="Ketch" customModuleProvider="target">
-                    <rect key="frame" x="20" y="384" width="280" height="72"/>
+                    <rect key="frame" x="19.5" y="374" width="280" height="96"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="I2c-Q5-UHl" secondAttribute="height" multiplier="2:1" id="f5C-Ql-jaD"/>
                         <constraint firstAttribute="width" constant="280" id="p9c-VU-8u1"/>
                     </constraints>
                     <attributedString key="attributedText">
-                        <fragment content="It seems that Mila also thought you were pretty darn cute. Why not chat and see how things go?">
+                        <fragment content="It seems that Mila Mila also thought you were pretty darn cute. Why not chat and see how things go?">
                             <attributes>
                                 <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <font key="NSFont" size="19" name="TransatTextStandard"/>
@@ -83,7 +105,7 @@
                     </variation>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N9q-8D-Tto">
-                    <rect key="frame" x="40" y="477.5" width="240" height="50"/>
+                    <rect key="frame" x="40" y="487.5" width="240" height="50"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="240" id="efl-e2-s7y"/>
                         <constraint firstAttribute="height" constant="50" id="wcz-q6-Vkz"/>
@@ -109,14 +131,16 @@
                     </connections>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.92941176470588238" green="0.97647058823529409" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="KwU-Ms-43D" firstAttribute="centerX" secondItem="EUJ-Zq-AGV" secondAttribute="centerX" id="2OL-M7-nhK"/>
                 <constraint firstItem="yQA-Zd-Dv2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="2e7-P1-I3E"/>
                 <constraint firstItem="cgP-ZZ-1cf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="29" id="2iO-WA-0EP"/>
-                <constraint firstItem="I2c-Q5-UHl" firstAttribute="top" secondItem="yQA-Zd-Dv2" secondAttribute="top" constant="45" id="5xb-Ag-aiq"/>
+                <constraint firstItem="9yM-PF-CD5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="35c-ze-uG5"/>
+                <constraint firstItem="I2c-Q5-UHl" firstAttribute="top" secondItem="yQA-Zd-Dv2" secondAttribute="top" constant="35" id="5xb-Ag-aiq"/>
                 <constraint firstItem="cgP-ZZ-1cf" firstAttribute="width" secondItem="cgP-ZZ-1cf" secondAttribute="height" multiplier="1:1" id="6yA-wr-BEg"/>
                 <constraint firstItem="N9q-8D-Tto" firstAttribute="top" secondItem="yQA-Zd-Dv2" secondAttribute="bottom" constant="-87.5" id="9Wz-aK-Jbf"/>
+                <constraint firstItem="9yM-PF-CD5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Hqj-hG-Nsd"/>
                 <constraint firstAttribute="bottom" secondItem="yQA-Zd-Dv2" secondAttribute="bottom" id="P31-LU-MgV"/>
                 <constraint firstItem="KwU-Ms-43D" firstAttribute="top" secondItem="EUJ-Zq-AGV" secondAttribute="bottom" constant="40" id="QeE-4m-Dgs"/>
                 <constraint firstItem="I2c-Q5-UHl" firstAttribute="centerX" secondItem="yQA-Zd-Dv2" secondAttribute="centerX" id="RLw-lP-uMl"/>
@@ -126,15 +150,17 @@
                 <constraint firstItem="cgP-ZZ-1cf" firstAttribute="centerY" secondItem="KwU-Ms-43D" secondAttribute="centerY" id="Y4C-NM-wCz"/>
                 <constraint firstItem="yQA-Zd-Dv2" firstAttribute="top" secondItem="I2c-Q5-UHl" secondAttribute="bottom" constant="45" id="Z6N-2t-7dv"/>
                 <constraint firstAttribute="trailing" secondItem="yQA-Zd-Dv2" secondAttribute="trailing" id="ZKu-Nx-bmP"/>
-                <constraint firstItem="yQA-Zd-Dv2" firstAttribute="bottom" secondItem="N9q-8D-Tto" secondAttribute="bottom" constant="40" id="awx-MS-5S4"/>
+                <constraint firstItem="yQA-Zd-Dv2" firstAttribute="bottom" secondItem="N9q-8D-Tto" secondAttribute="bottom" constant="30" id="awx-MS-5S4"/>
                 <constraint firstAttribute="trailing" secondItem="PnP-gQ-3vx" secondAttribute="trailing" constant="29" id="bW4-Kk-yJJ"/>
                 <constraint firstItem="KwU-Ms-43D" firstAttribute="centerY" secondItem="PnP-gQ-3vx" secondAttribute="centerY" id="ggN-FY-Cyn"/>
                 <constraint firstItem="yQA-Zd-Dv2" firstAttribute="centerX" secondItem="N9q-8D-Tto" secondAttribute="centerX" id="myi-cf-7ui"/>
                 <constraint firstItem="PnP-gQ-3vx" firstAttribute="width" secondItem="PnP-gQ-3vx" secondAttribute="height" multiplier="1:1" id="pAP-th-3M9"/>
+                <constraint firstItem="EUJ-Zq-AGV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="140" id="uUi-bm-G4P"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <variation key="default">
                 <mask key="constraints">
+                    <exclude reference="QeE-4m-Dgs"/>
                     <exclude reference="Z6N-2t-7dv"/>
                     <exclude reference="RLw-lP-uMl"/>
                     <exclude reference="9Wz-aK-Jbf"/>
