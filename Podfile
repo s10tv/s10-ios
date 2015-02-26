@@ -1,6 +1,7 @@
 platform :ios, '8.0'
 
 inhibit_all_warnings!
+use_frameworks!
 
 pod 'ReactiveCocoa', '~> 2.4' # Update to 3.0 when ready
 

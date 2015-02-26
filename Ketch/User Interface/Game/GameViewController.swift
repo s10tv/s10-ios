@@ -66,6 +66,9 @@ class GameViewController : BaseViewController {
         }
         
         dockBadge.makeCircular()
+        
+//        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("NewConnection") as NewConnectionViewController
+//        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     override func viewDidLayoutSubviews() {

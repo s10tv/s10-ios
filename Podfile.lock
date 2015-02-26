@@ -26,7 +26,7 @@ PODS:
   - ReactiveCocoa/no-arc (2.4.4)
   - ReactiveCocoa/UI (2.4.4):
     - ReactiveCocoa/Core
-  - Reveal-iOS-SDK (1.5.0)
+  - Reveal-iOS-SDK (1.5.1)
   - SDWebImage (3.7.1):
     - SDWebImage/Core (= 3.7.1)
   - SDWebImage/Core (3.7.1)
@@ -78,7 +78,7 @@ SPEC CHECKSUMS:
   NSLogger: 7421a0a60df62fb8ff548cd0388c302d3329a322
   PocketSocket: 8c18f973e57fd3042d032626654658df0fa2f126
   ReactiveCocoa: 31119068e3dde866bd257cf74e1f06b4023bf387
-  Reveal-iOS-SDK: b6d94eb78d84ebd2e3182063577975561cd6dbd9
+  Reveal-iOS-SDK: dcfeb671c7da222c85f18f866da2ce88de075524
   SDWebImage: 116e88633b5b416ea0ca4b334a4ac59cf72dd38d
   SimpleKeychain: 4758625a53ca89cfae98b4aca8c550d1193292f8
   Snap: 66767e914c2502fac641439b8a281b92f07a0083

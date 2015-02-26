@@ -44,6 +44,16 @@ extension UIAlertView {
     }
 }
 
+extension CALayer {
+    func setBorderIBColor(color: UIColor) {
+        borderColor = color.CGColor
+    }
+    
+    func setShadowIBColor(color: UIColor) {
+        shadowColor = color.CGColor
+    }
+}
+
 func DebugPrintAllFonts() {
     for familyName in UIFont.familyNames() as [String] {
         println("Family: \(familyName)")

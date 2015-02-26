@@ -4,6 +4,11 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="TransatTextBlack.otf">
+            <string>TransatTextBlack</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewConnectionViewController">
             <connections>
@@ -17,64 +22,128 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It's a Ketch!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUJ-Zq-AGV">
-                    <rect key="frame" x="98" y="113" width="125" height="31"/>
+                    <rect key="frame" x="98" y="184" width="124.5" height="30.5"/>
                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="22"/>
                     <color key="textColor" red="0.078431372549019607" green="0.32156862745098042" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KwU-Ms-43D">
-                    <rect key="frame" x="85" y="184" width="150" height="150"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cgP-ZZ-1cf" userLabel="Left Avatar">
+                    <rect key="frame" x="29" y="255" width="100" height="100"/>
                     <constraints>
-                        <constraint firstAttribute="width" secondItem="KwU-Ms-43D" secondAttribute="height" multiplier="1:1" id="XYt-7C-aSn"/>
-                        <constraint firstAttribute="width" constant="150" id="xcM-me-BoK"/>
+                        <constraint firstAttribute="width" secondItem="cgP-ZZ-1cf" secondAttribute="height" multiplier="1:1" id="MhK-Y2-WRW"/>
+                        <constraint firstAttribute="width" constant="100" id="uru-U0-loU"/>
                     </constraints>
                 </imageView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VTD-xT-aQG">
-                    <rect key="frame" x="0.0" y="318" width="320" height="250"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It seems that Mila also thought you were pretty darn cute. Why not chat and see how things go?" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2c-Q5-UHl">
-                            <rect key="frame" x="24" y="24" width="272" height="136"/>
-                            <constraints>
-                                <constraint firstAttribute="width" secondItem="I2c-Q5-UHl" secondAttribute="height" multiplier="2:1" id="f5C-Ql-jaD"/>
-                            </constraints>
-                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            <nil key="highlightedColor"/>
-                        </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N9q-8D-Tto">
-                            <rect key="frame" x="99" y="168" width="124" height="39"/>
-                            <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
-                            <state key="normal" title="Get in touch">
-                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                            </state>
-                            <connections>
-                                <action selector="getInTouch:" destination="-1" eventType="touchUpInside" id="iDH-g2-77C"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" red="0.18823529411764706" green="0.85882352941176465" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KwU-Ms-43D" userLabel="Center Avatar">
+                    <rect key="frame" x="110" y="255" width="100" height="100"/>
                     <constraints>
-                        <constraint firstItem="N9q-8D-Tto" firstAttribute="top" secondItem="I2c-Q5-UHl" secondAttribute="bottom" constant="8" id="34c-HJ-epg"/>
-                        <constraint firstAttribute="trailing" secondItem="I2c-Q5-UHl" secondAttribute="trailing" constant="24" id="D6M-4S-THR"/>
-                        <constraint firstItem="I2c-Q5-UHl" firstAttribute="top" secondItem="VTD-xT-aQG" secondAttribute="top" constant="24" id="JoH-9y-u5z"/>
-                        <constraint firstAttribute="height" constant="250" id="ahU-br-pAk"/>
-                        <constraint firstItem="I2c-Q5-UHl" firstAttribute="leading" secondItem="VTD-xT-aQG" secondAttribute="leading" constant="24" id="fdR-Kv-Ezo"/>
-                        <constraint firstItem="I2c-Q5-UHl" firstAttribute="centerX" secondItem="N9q-8D-Tto" secondAttribute="centerX" constant="-0.5" id="lEn-Mf-T46"/>
+                        <constraint firstAttribute="width" secondItem="KwU-Ms-43D" secondAttribute="height" multiplier="1:1" id="XYt-7C-aSn"/>
+                        <constraint firstAttribute="width" constant="100" id="xcM-me-BoK"/>
                     </constraints>
-                </view>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PnP-gQ-3vx" userLabel="Right Avatar">
+                    <rect key="frame" x="191" y="255" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="PnP-gQ-3vx" secondAttribute="height" multiplier="1:1" id="bsr-0M-9SN"/>
+                        <constraint firstAttribute="width" constant="100" id="lD1-nn-2an"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-sea-short" translatesAutoresizingMaskIntoConstraints="NO" id="yQA-Zd-Dv2">
+                    <rect key="frame" x="0.0" y="339" width="320" height="228.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="yQA-Zd-Dv2" secondAttribute="height" multiplier="80:57" id="G6Q-cb-JFH"/>
+                    </constraints>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2c-Q5-UHl" customClass="AttributedLabel" customModule="Ketch" customModuleProvider="target">
+                    <rect key="frame" x="20" y="384" width="280" height="72"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="I2c-Q5-UHl" secondAttribute="height" multiplier="2:1" id="f5C-Ql-jaD"/>
+                        <constraint firstAttribute="width" constant="280" id="p9c-VU-8u1"/>
+                    </constraints>
+                    <attributedString key="attributedText">
+                        <fragment content="It seems that Mila also thought you were pretty darn cute. Why not chat and see how things go?">
+                            <attributes>
+                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <font key="NSFont" size="19" name="TransatTextStandard"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" minimumLineHeight="24"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <real key="value" value="19"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="TransatTextStandard"/>
+                    </userDefinedRuntimeAttributes>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="f5C-Ql-jaD"/>
+                        </mask>
+                    </variation>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="N9q-8D-Tto">
+                    <rect key="frame" x="40" y="477.5" width="240" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="240" id="efl-e2-s7y"/>
+                        <constraint firstAttribute="height" constant="50" id="wcz-q6-Vkz"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="TransatTextBlack" family="Transat Text" pointSize="19"/>
+                    <state key="normal" title="Get in touch">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                            <integer key="value" value="24"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="layer.borderWidth">
+                            <integer key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="layer.borderIBColor">
+                            <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="getInTouch:" destination="-1" eventType="touchUpInside" id="iDH-g2-77C"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="KwU-Ms-43D" firstAttribute="centerX" secondItem="EUJ-Zq-AGV" secondAttribute="centerX" id="2OL-M7-nhK"/>
-                <constraint firstAttribute="trailing" secondItem="VTD-xT-aQG" secondAttribute="trailing" id="Avh-rd-PIn"/>
-                <constraint firstAttribute="bottom" secondItem="VTD-xT-aQG" secondAttribute="bottom" id="Dkz-GV-00E"/>
-                <constraint firstItem="VTD-xT-aQG" firstAttribute="top" secondItem="KwU-Ms-43D" secondAttribute="bottom" constant="-16" id="IQ8-Fg-liu"/>
-                <constraint firstItem="VTD-xT-aQG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="NBO-LV-5wF"/>
+                <constraint firstItem="yQA-Zd-Dv2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="2e7-P1-I3E"/>
+                <constraint firstItem="cgP-ZZ-1cf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="29" id="2iO-WA-0EP"/>
+                <constraint firstItem="I2c-Q5-UHl" firstAttribute="top" secondItem="yQA-Zd-Dv2" secondAttribute="top" constant="45" id="5xb-Ag-aiq"/>
+                <constraint firstItem="cgP-ZZ-1cf" firstAttribute="width" secondItem="cgP-ZZ-1cf" secondAttribute="height" multiplier="1:1" id="6yA-wr-BEg"/>
+                <constraint firstItem="N9q-8D-Tto" firstAttribute="top" secondItem="yQA-Zd-Dv2" secondAttribute="bottom" constant="-87.5" id="9Wz-aK-Jbf"/>
+                <constraint firstAttribute="bottom" secondItem="yQA-Zd-Dv2" secondAttribute="bottom" id="P31-LU-MgV"/>
                 <constraint firstItem="KwU-Ms-43D" firstAttribute="top" secondItem="EUJ-Zq-AGV" secondAttribute="bottom" constant="40" id="QeE-4m-Dgs"/>
-                <constraint firstItem="KwU-Ms-43D" firstAttribute="centerX" secondItem="VTD-xT-aQG" secondAttribute="centerX" id="VrV-bh-NzL"/>
+                <constraint firstItem="I2c-Q5-UHl" firstAttribute="centerX" secondItem="yQA-Zd-Dv2" secondAttribute="centerX" id="RLw-lP-uMl"/>
+                <constraint firstItem="yQA-Zd-Dv2" firstAttribute="top" secondItem="KwU-Ms-43D" secondAttribute="bottom" constant="-16" id="TxB-zp-fe2"/>
+                <constraint firstItem="yQA-Zd-Dv2" firstAttribute="centerX" secondItem="I2c-Q5-UHl" secondAttribute="centerX" id="WYc-6J-C8A"/>
+                <constraint firstItem="KwU-Ms-43D" firstAttribute="centerX" secondItem="yQA-Zd-Dv2" secondAttribute="centerX" id="Wj6-8e-GU1"/>
+                <constraint firstItem="cgP-ZZ-1cf" firstAttribute="centerY" secondItem="KwU-Ms-43D" secondAttribute="centerY" id="Y4C-NM-wCz"/>
+                <constraint firstItem="yQA-Zd-Dv2" firstAttribute="top" secondItem="I2c-Q5-UHl" secondAttribute="bottom" constant="45" id="Z6N-2t-7dv"/>
+                <constraint firstAttribute="trailing" secondItem="yQA-Zd-Dv2" secondAttribute="trailing" id="ZKu-Nx-bmP"/>
+                <constraint firstItem="yQA-Zd-Dv2" firstAttribute="bottom" secondItem="N9q-8D-Tto" secondAttribute="bottom" constant="40" id="awx-MS-5S4"/>
+                <constraint firstAttribute="trailing" secondItem="PnP-gQ-3vx" secondAttribute="trailing" constant="29" id="bW4-Kk-yJJ"/>
+                <constraint firstItem="KwU-Ms-43D" firstAttribute="centerY" secondItem="PnP-gQ-3vx" secondAttribute="centerY" id="ggN-FY-Cyn"/>
+                <constraint firstItem="yQA-Zd-Dv2" firstAttribute="centerX" secondItem="N9q-8D-Tto" secondAttribute="centerX" id="myi-cf-7ui"/>
+                <constraint firstItem="PnP-gQ-3vx" firstAttribute="width" secondItem="PnP-gQ-3vx" secondAttribute="height" multiplier="1:1" id="pAP-th-3M9"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Z6N-2t-7dv"/>
+                    <exclude reference="RLw-lP-uMl"/>
+                    <exclude reference="9Wz-aK-Jbf"/>
+                </mask>
+            </variation>
+            <point key="canvasLocation" x="302" y="319"/>
         </view>
     </objects>
+    <resources>
+        <image name="background-sea-short" width="320" height="228"/>
+    </resources>
 </document>
