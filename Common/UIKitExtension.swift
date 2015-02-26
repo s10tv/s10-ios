@@ -11,9 +11,31 @@ import ReactiveCocoa
 import Snap
 
 extension UIView {
+    @IBInspectable var cornerRadius: CGFloat {
+        get { return layer.cornerRadius }
+        set {
+            layer.cornerRadius = newValue
+            layer.masksToBounds = newValue > 0
+        }
+    }
+    
+    @IBInspectable var borderWidth: CGFloat {
+        get { return layer.borderWidth }
+        set { layer.borderWidth = newValue }
+    }
+    
+    @IBInspectable var borderColor: UIColor {
+        get { return UIColor(CGColor: layer.borderColor) }
+        set { layer.borderColor = newValue.CGColor }
+    }
+    
+    @IBInspectable var shadowColor: UIColor {
+        get { return UIColor(CGColor: layer.shadowColor) }
+        set { layer.shadowColor = newValue.CGColor }
+    }
+    
     func makeCircular() {
-        layer.cornerRadius = max(frame.size.width, frame.size.height) / 2
-        layer.masksToBounds = true
+        cornerRadius = max(frame.size.width, frame.size.height) / 2
     }
     
     func makeEdgesEqualTo(view: UIView) {
@@ -41,16 +63,6 @@ extension UIAlertView {
         let alert = UIAlertView(title: title, message: message, delegate: nil, cancelButtonTitle: "OK")
         alert.show()
         return alert.rac_buttonClickedSignal()
-    }
-}
-
-extension CALayer {
-    func setBorderIBColor(color: UIColor) {
-        borderColor = color.CGColor
-    }
-    
-    func setShadowIBColor(color: UIColor) {
-        shadowColor = color.CGColor
     }
 }
 
