@@ -18,6 +18,8 @@ class GameViewController : BaseViewController {
     @IBOutlet weak var keepSlot: UIImageView!
     @IBOutlet weak var skipSlot: UIImageView!
     @IBOutlet weak var ketchIcon: UIImageView!
+    @IBOutlet weak var dockBadge: UIImageView!
+    var unreadConnections : FetchViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,6 +37,14 @@ class GameViewController : BaseViewController {
                 }
             }
         }
+        unreadConnections = FetchViewModel(frc: Connection.by(ConnectionAttributes.hasUnreadMessage.rawValue, value: true).frc())
+        unreadConnections.signal.subscribeNext { [weak self] _ in
+            if let this = self {
+                let count = this.unreadConnections.objects.count
+                this.dockBadge.hidden = count == 0
+            }
+        }
+        unreadConnections.performFetchIfNeeded()
         
         // Setup Drag & Drop
         for imageView in self.avatars {
@@ -48,6 +58,8 @@ class GameViewController : BaseViewController {
             self?.confirmChoices(self!)
             return
         }
+        
+        dockBadge.makeCircular()
     }
     
     override func viewDidLayoutSubviews() {
