@@ -12,12 +12,15 @@ import UIKit
 
     @IBInspectable var fontSize: CGFloat = 13.0
     @IBInspectable var fontName: String = "TransatTextStandard"
+    @IBInspectable var fontKern: CGFloat = 0
 
     override func awakeFromNib() {
-        let attrString = NSMutableAttributedString(attributedString: self.attributedText)
+        let attrString = NSMutableAttributedString(attributedString: attributedText)
+        let range = NSMakeRange(0, attrString.length)
         attrString.addAttribute(NSFontAttributeName,
-            value: UIFont(name: self.fontName, size: self.fontSize)!,
-            range: NSMakeRange(0, attrString.length))
-        self.attributedText = attrString
+            value:UIFont(name: fontName, size: fontSize)!, range: range)
+        attrString.addAttribute(NSKernAttributeName,
+            value:fontKern, range: range)
+        attributedText = attrString
     }
 }

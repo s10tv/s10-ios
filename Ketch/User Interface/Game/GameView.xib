@@ -226,6 +226,9 @@ SAILED FOR TODAY.</string>
                             <real key="value" value="25"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="TransatTextBlack"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontKern">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Why not ask a match to a date instead?" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uod-OD-wle">
