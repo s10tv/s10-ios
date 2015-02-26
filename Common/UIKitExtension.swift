@@ -43,3 +43,12 @@ extension UIAlertView {
         return alert.rac_buttonClickedSignal()
     }
 }
+
+func DebugPrintAllFonts() {
+    for familyName in UIFont.familyNames() as [String] {
+        println("Family: \(familyName)")
+        for fontName in UIFont.fontNamesForFamilyName(familyName) {
+            println("\tFont: \(fontName)")
+        }
+    }
+}
