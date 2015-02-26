@@ -8,7 +8,32 @@
 
 import UIKit
 
-@IBDesignable class AttributedLabel: UILabel {
+extension UIView {
+    @IBInspectable var cornerRadius: CGFloat {
+        get { return layer.cornerRadius }
+        set {
+            layer.cornerRadius = newValue
+            layer.masksToBounds = newValue > 0
+        }
+    }
+    
+    @IBInspectable var borderWidth: CGFloat {
+        get { return layer.borderWidth }
+        set { layer.borderWidth = newValue }
+    }
+    
+    @IBInspectable var borderColor: UIColor {
+        get { return UIColor(CGColor: layer.borderColor) }
+        set { layer.borderColor = newValue.CGColor }
+    }
+    
+    @IBInspectable var shadowColor: UIColor {
+        get { return UIColor(CGColor: layer.shadowColor) }
+        set { layer.shadowColor = newValue.CGColor }
+    }
+}
+
+@IBDesignable class DesignableLabel : UILabel {
 
     @IBInspectable var fontSize: CGFloat = 13.0
     @IBInspectable var fontName: String = "TransatTextStandard"
@@ -29,4 +54,8 @@ import UIKit
         attrString.mutableString.setString(rawText)
         attributedText = attrString
     }
+}
+
+@IBDesignable class DesignableButton : UIButton {
+    
 }
