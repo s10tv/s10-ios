@@ -1,5 +1,5 @@
 //
-//  KLabel.swift
+//  Label.swift
 //  Ketch
 //
 //  Created by Tony Xiao on 2/26/15.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-@IBDesignable class KAttributedLabel: UILabel {
+@IBDesignable class AttributedLabel: UILabel {
 
     @IBInspectable var fontSize: CGFloat = 13.0
     @IBInspectable var fontName: String = "TransatTextStandard"
