@@ -23,7 +23,7 @@ class User: _User {
         return fetchConnection().fetchObjects().first as? Connection
     }
     var candidate : Candidate? {
-        return fetchMatch().fetchObjects().first as? Candidate
+        return fetchCandidate().fetchObjects().first as? Candidate
     }
     
     var isCurrentUser : Bool {
@@ -54,8 +54,8 @@ class User: _User {
         return Connection.by(ConnectionRelationships.user.rawValue, value: self).frc()
     }
     
-    func fetchMatch() -> NSFetchedResultsController {
-        return Connection.by(CandidateRelationships.user.rawValue, value: self).frc()
+    func fetchCandidate() -> NSFetchedResultsController {
+        return Candidate.by(CandidateRelationships.user.rawValue, value: self).frc()
     }
     
     class func findByDocumentID(documentID: String) -> User? {

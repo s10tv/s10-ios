@@ -82,3 +82,7 @@ extension NSData {
         return str
     }
 }
+
+func between<T : Comparable>(minLimit: T, value: T, maxLimit: T) -> T {
+    return max(minLimit, min(value, maxLimit))
+}

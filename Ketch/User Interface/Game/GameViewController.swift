@@ -12,7 +12,7 @@ import UIView_draggable
 @objc(GameViewController)
 class GameViewController : BaseViewController {
 
-    @IBOutlet var avatars: [CandidateView]!
+    @IBOutlet var avatars: [UserAvatarView]!
     
     @IBOutlet var gameView: UIView!
     @IBOutlet var emptyView: UIView!
@@ -30,14 +30,14 @@ class GameViewController : BaseViewController {
             if let this = self {
                 for (i, imageView) in enumerate(this.avatars) {
                     if i < candidates.count {
-                        imageView.candidate = candidates[i]
+                        imageView.user = candidates[i].user
                         imageView.whenTapped {
                             let vc = this.storyboard?.instantiateViewControllerWithIdentifier("Profile") as ProfileViewController
-                            vc.user = imageView.candidate?.user
+                            vc.user = imageView.user
                             this.navigationController?.pushViewController(vc, animated: true)
                         }
                     } else {
-                        imageView.candidate = nil
+                        imageView.user = nil
                     }
                 }
                 this.showSubview(candidates.count > 3 ? this.gameView : this.emptyView)
@@ -105,11 +105,11 @@ class GameViewController : BaseViewController {
             let isKeep = CGRectIntersectsRect(avatar.frame, keepSlot.frame)
             let isSkip = CGRectIntersectsRect(avatar.frame, skipSlot.frame)
             if isMarry {
-                marry = avatar.candidate
+                marry = avatar.user?.candidate
             } else if isKeep {
-                keep = avatar.candidate
+                keep = avatar.user?.candidate
             } else if isSkip {
-                skip = avatar.candidate
+                skip = avatar.user?.candidate
             }
         }
         if marry == nil || keep == nil || skip == nil {
