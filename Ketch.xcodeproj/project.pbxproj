@@ -107,7 +107,7 @@
 			containerPortal = EA9F35321A74CC6900E0C65D /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = EA9F35391A74CC6900E0C65D;
-			remoteInfo = Serendipity;
+			remoteInfo = Ketch;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -557,7 +557,7 @@
 			dependencies = (
 			);
 			name = Ketch;
-			productName = Serendipity;
+			productName = Ketch;
 			productReference = EA9F353A1A74CC6900E0C65D /* Ketch.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -575,7 +575,7 @@
 				EA9F35541A74CC6900E0C65D /* PBXTargetDependency */,
 			);
 			name = KetchTests;
-			productName = SerendipityTests;
+			productName = KetchTests;
 			productReference = EA9F35521A74CC6900E0C65D /* KetchTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -586,7 +586,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0610;
-				ORGANIZATIONNAME = Serendipity;
+				ORGANIZATIONNAME = Ketch;
 				TargetAttributes = {
 					EA9F35391A74CC6900E0C65D = {
 						CreatedOnToolsVersion = 6.1.1;
