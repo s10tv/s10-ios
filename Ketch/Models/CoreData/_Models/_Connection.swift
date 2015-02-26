@@ -6,6 +6,7 @@ import CoreData
 enum ConnectionAttributes: String {
     case createdAt = "createdAt"
     case expiresAt = "expiresAt"
+    case hasUnreadMessage = "hasUnreadMessage"
     case lastMessageText = "lastMessageText"
     case type = "type"
     case updatedAt = "updatedAt"
@@ -50,6 +51,11 @@ class _Connection: NSManagedObject {
     var expiresAt: NSDate?
 
     // func validateExpiresAt(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var hasUnreadMessage: NSNumber?
+
+    // func validateHasUnreadMessage(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
     var lastMessageText: String?

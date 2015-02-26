@@ -35,7 +35,7 @@ class ConnectionCell : UITableViewCell {
         // TODO: Can use connectionViewModel of sorts here
         nameLabel.text = connection?.user?.firstName
         timeLabel.text = connection?.updatedAt?.timeAgoSinceNow()
-        newIndicator.hidden = true
+        newIndicator.hidden = !(connection?.hasUnreadMessage?.boolValue ?? false)
     }
     
     override func awakeFromNib() {

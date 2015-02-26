@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6751" systemVersion="14C109" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14C109" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Candidate" representedClassName="Candidate" syncable="YES">
         <attribute name="choice" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
@@ -8,6 +8,7 @@
     <entity name="Connection" representedClassName="Connection" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="expiresAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="hasUnreadMessage" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="lastMessageText" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
@@ -41,7 +42,7 @@
     </entity>
     <elements>
         <element name="Candidate" positionX="-45" positionY="54" width="128" height="88"/>
-        <element name="Connection" positionX="-54" positionY="0" width="128" height="133"/>
+        <element name="Connection" positionX="-54" positionY="0" width="128" height="150"/>
         <element name="Message" positionX="-36" positionY="27" width="128" height="118"/>
         <element name="User" positionX="-63" positionY="-18" width="128" height="180"/>
     </elements>

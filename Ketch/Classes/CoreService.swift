@@ -14,9 +14,9 @@ import Meteor
 
 class CoreService {
 
-//    let meteor = METCoreDataDDPClient(serverURL: NSURL(string: "ws://localhost:3000/websocket"))
-//    let meteor = METCoreDataDDPClient(serverURL: NSURL(string: "ws://192.168.0.13:3000/websocket"))
-    let meteor = METCoreDataDDPClient(serverURL: NSURL(string: "ws://s10.herokuapp.com/websocket"))
+    let meteor = METCoreDataDDPClient(serverURL: NSURL(string: "ws://localhost:3000/websocket"))
+//    let meteor = METCoreDataDDPClient(serverURL: NSURL(string: "ws://172.20.10.14:3000/websocket"))
+//    let meteor = METCoreDataDDPClient(serverURL: NSURL(string: "ws://s10.herokuapp.com/websocket"))
     let candidateService : CandidateService
     var mainContext : NSManagedObjectContext! {
         return meteor.mainQueueManagedObjectContext
