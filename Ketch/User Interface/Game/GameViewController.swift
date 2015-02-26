@@ -31,11 +31,6 @@ class GameViewController : BaseViewController {
                 for (i, imageView) in enumerate(this.avatars) {
                     if i < candidates.count {
                         imageView.user = candidates[i].user
-                        imageView.whenTapped {
-                            let vc = this.storyboard?.instantiateViewControllerWithIdentifier("Profile") as ProfileViewController
-                            vc.user = imageView.user
-                            this.navigationController?.pushViewController(vc, animated: true)
-                        }
                     } else {
                         imageView.user = nil
                     }
@@ -54,28 +49,24 @@ class GameViewController : BaseViewController {
         
         // Setup Drag & Drop
         for imageView in self.avatars {
-            imageView.userInteractionEnabled = true
             imageView.enableDragging()
             imageView.setDraggable(true)
+            imageView.didTap = { [weak self] user in
+                if let vc = self?.storyboard?.instantiateViewControllerWithIdentifier("Profile") as? ProfileViewController {
+                    vc.user = user
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
         }
         
         ketchIcon.userInteractionEnabled = true
         ketchIcon.whenTapped { [weak self] in
-            self?.confirmChoices(self!)
-            return
+            if let this = self { this.confirmChoices(this) }
         }
         
         dockBadge.makeCircular()
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        for imageView in avatars {
-            imageView.contentMode = .ScaleToFill
-            imageView.makeCircular()
-        }
-    }
-    
+        
     func showSubview(subview: UIView) {
         if subview.superview == nil {
             gameView.removeFromSuperview()

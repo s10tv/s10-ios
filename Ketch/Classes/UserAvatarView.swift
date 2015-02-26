@@ -39,10 +39,24 @@ class UserAvatarView : UIImageView {
         }
     }
     
+    var didTap : ((user: User?) -> Void)?;
+    
     // MARK: -
+    // TODO: Non-nib-specific init?
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        contentMode = .ScaleToFill
+        userInteractionEnabled = true
+        whenTapped { [weak self] in
+            if let block = self?.didTap {
+                block(user: self?.user)
+            }
+        }
+    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        makeCircular()
         fadeLayer.frame = layer.bounds
     }
 }
