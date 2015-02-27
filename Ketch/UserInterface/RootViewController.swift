@@ -29,7 +29,7 @@ class RootViewController : UINavigationController {
         if !Core.attemptLoginWithCachedCredentials() {
             showSignup(false)
         } else {
-            showDiscover(false)
+            showGame(false)
         }
     }
     
@@ -44,25 +44,25 @@ class RootViewController : UINavigationController {
             return false
         }
     }
+    
+    private func makeViewController(identifier: String) -> UIViewController {
+        return storyboard?.instantiateViewControllerWithIdentifier(identifier) as UIViewController!
+    }
         
     func showProfile(user: User?, animated: Bool) {
-        let vc = storyboard?.instantiateViewControllerWithIdentifier("Profile") as UIViewController!
-        setViewControllers([vc], animated: animated)
+        setViewControllers([makeViewController("Profile")], animated: animated)
     }
     
-    func showDiscover(animated: Bool) {
-        let vc = storyboard?.instantiateViewControllerWithIdentifier("Discover") as UIViewController!
-        setViewControllers([vc], animated: animated)
+    func showGame(animated: Bool) {
+        setViewControllers([makeViewController("Game")], animated: animated)
     }
     
     func showSignup(animated: Bool) {
-        let vc = storyboard?.instantiateViewControllerWithIdentifier("Signup") as UIViewController!
-        setViewControllers([vc], animated: animated)
+        setViewControllers([makeViewController("Signup")], animated: animated)
     }
     
     func showWelcome(animated: Bool) {
-        let vc = storyboard?.instantiateViewControllerWithIdentifier("Welcome") as UIViewController!
-        setViewControllers([vc], animated: animated)
+        setViewControllers([makeViewController("Welcome")], animated: animated)
     }
     
     @IBAction func logout(sender: AnyObject) {

@@ -19,7 +19,7 @@ class SignupViewController : BaseViewController {
     @IBAction func login(sender: AnyObject) {
         Core.loginWithUI().subscribeCompleted {
             let root = self.navigationController as RootViewController
-            root.showDiscover(true)
+            root.showGame(true)
         }
     }
 

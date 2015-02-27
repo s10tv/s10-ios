@@ -73,7 +73,7 @@
         <!--Game View Controller-->
         <scene sceneID="5fm-o7-1g2">
             <objects>
-                <viewController storyboardIdentifier="Discover" id="brw-cx-YUO" customClass="GameViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Game" id="brw-cx-YUO" customClass="GameViewController" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="AFO-Ak-h5m">
                         <barButtonItem key="leftBarButtonItem" title="Settings" id="0gg-2j-uMk">
                             <connections>
