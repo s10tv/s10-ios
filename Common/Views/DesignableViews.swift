@@ -33,19 +33,23 @@ extension UIView {
     }
 }
 
-@IBDesignable class NibDesignableView: UIView {
-    
+class BaseView : UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.setupNib()
+        commonInit()
     }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.setupNib()
+        commonInit()
     }
     
-    private func setupNib() {
+    func commonInit() { }
+}
+
+@IBDesignable class NibDesignableView : BaseView {
+    
+    override func commonInit() {
         let bundle = NSBundle(forClass: self.dynamicType)
         let nib = UINib(nibName: self.nibName(), bundle: bundle)
         let view = nib.instantiateWithOwner(self, options: nil)[0] as UIView

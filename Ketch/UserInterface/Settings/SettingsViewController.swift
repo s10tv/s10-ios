@@ -11,7 +11,7 @@ import UIKit
 @objc(SettingsViewController)
 class SettingsViewController : BaseViewController {
 
-    @IBOutlet weak var avatarView: UIImageView!
+    @IBOutlet weak var avatarView: UserAvatarView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var versionLabel: UILabel!
     
@@ -25,13 +25,12 @@ class SettingsViewController : BaseViewController {
         versionLabel.text = "v\(version)(\(build))"
 
         let currentUser = User.currentUser()
-        avatarView.sd_setImageWithURL(currentUser?.profilePhotoURL)
         nameLabel.text = currentUser?.firstName
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        avatarView.makeCircular()
+        avatarView.user = currentUser
+        avatarView.whenTapped { [weak self] in
+            self?.performSegueWithIdentifier("SettingsToProfile", sender: nil)
+            return
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -45,22 +44,4 @@ class SettingsViewController : BaseViewController {
     @IBAction func goBack(sender: AnyObject) {
         navigationController?.popViewControllerAnimated(true)
     }
-    
-    @IBAction func viewProfile(sender: AnyObject) {
-        performSegueWithIdentifier("SettingsToProfile", sender: sender)
-    }
-    
-    @IBAction func inviteFriends(sender: AnyObject) {
-
-    }
-    
-    
-    @IBAction func sendFeedback(sender: AnyObject) {
-        
-    }
-
-    @IBAction func playGame(sender: AnyObject) {
-        performSegueWithIdentifier("SettingsToGame", sender: nil)
-    }
-
 }

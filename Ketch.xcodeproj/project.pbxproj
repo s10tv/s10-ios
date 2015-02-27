@@ -94,6 +94,7 @@
 		EA9F354A1A74CC6900E0C65D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Images.xcassets */; };
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
 		EA9F35591A74CC6900E0C65D /* KetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F35581A74CC6900E0C65D /* KetchTests.swift */; };
+		EAB54E3D1AA0E2EB00A44883 /* SettingsBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB54E3C1AA0E2EB00A44883 /* SettingsBackgroundView.swift */; };
 		EABD86651A88B50400F8B822 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABD86641A88B50400F8B822 /* Localizable.strings */; };
 		EAD7B2AB1A9F0BE700FA6740 /* DesignableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */; };
 		EAF195CF1A827FAD00A2F103 /* Ketch-Bridging.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */; };
@@ -211,6 +212,7 @@
 		EA9F35571A74CC6900E0C65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA9F35581A74CC6900E0C65D /* KetchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KetchTests.swift; sourceTree = "<group>"; };
 		EA9F35621A74CD8800E0C65D /* Ketch-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Ketch-Bridging.h"; path = "Ketch/Ketch-Bridging.h"; sourceTree = SOURCE_ROOT; };
+		EAB54E3C1AA0E2EB00A44883 /* SettingsBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsBackgroundView.swift; sourceTree = "<group>"; };
 		EABD86641A88B50400F8B822 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableViews.swift; sourceTree = "<group>"; };
 		EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Ketch-Bridging.m"; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 			children = (
 				EA1970011A83549300FEBA7F /* SettingsView.xib */,
 				EA1970021A83549300FEBA7F /* SettingsViewController.swift */,
+				EAB54E3C1AA0E2EB00A44883 /* SettingsBackgroundView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -802,6 +805,7 @@
 				EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */,
 				EA6651101AA0C7D1001BA40C /* WelcomeViewController.swift in Sources */,
 				EA0FC9441A87DE5800D62625 /* ViewProviders.swift in Sources */,
+				EAB54E3D1AA0E2EB00A44883 /* SettingsBackgroundView.swift in Sources */,
 				EA1970131A83549300FEBA7F /* EditProfileViewController.swift in Sources */,
 				EA6650ED1AA00A9C001BA40C /* CoreService.swift in Sources */,
 				EA6650F81AA00B95001BA40C /* _Connection.swift in Sources */,
