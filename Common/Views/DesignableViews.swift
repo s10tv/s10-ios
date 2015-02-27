@@ -33,6 +33,32 @@ extension UIView {
     }
 }
 
+@IBDesignable class NibDesignableView: UIView {
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        self.setupNib()
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.setupNib()
+    }
+    
+    private func setupNib() {
+        let bundle = NSBundle(forClass: self.dynamicType)
+        let nib = UINib(nibName: self.nibName(), bundle: bundle)
+        let view = nib.instantiateWithOwner(self, options: nil)[0] as UIView
+        insertSubview(view, atIndex: 0)
+        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view.makeEdgesEqualTo(self)
+    }
+    
+    func nibName() -> String {
+        return self.dynamicType.description().componentsSeparatedByString(".").last!
+    }
+}
+
 
 @IBDesignable class DesignableLabel : UILabel {
 

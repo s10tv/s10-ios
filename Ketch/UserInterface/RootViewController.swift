@@ -23,6 +23,8 @@ class RootViewController : UINavigationController {
             self?.showSignup(false)
             return
         }
+//        showWelcome(false)
+
         // Try login now
         if !Core.attemptLoginWithCachedCredentials() {
             showSignup(false)
@@ -55,6 +57,11 @@ class RootViewController : UINavigationController {
     
     func showSignup(animated: Bool) {
         let vc = storyboard?.instantiateViewControllerWithIdentifier("Signup") as UIViewController!
+        setViewControllers([vc], animated: animated)
+    }
+    
+    func showWelcome(animated: Bool) {
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("Welcome") as UIViewController!
         setViewControllers([vc], animated: animated)
     }
     

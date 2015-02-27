@@ -4,6 +4,17 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
     <scenes>
+        <!--Welcome View Controller-->
+        <scene sceneID="NSI-sf-bOr">
+            <objects>
+                <viewController storyboardIdentifier="Welcome" id="zWf-IU-zRb" customClass="WelcomeViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="M2O-w8-JjV"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OHr-ia-8Zh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="328" y="218"/>
+        </scene>
         <!--My Profile-->
         <scene sceneID="eia-8N-UZ9">
             <objects>
@@ -57,7 +68,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fR6-RZ-qMo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="282" y="218"/>
+            <point key="canvasLocation" x="-22" y="218"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="5fm-o7-1g2">
@@ -101,17 +112,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y2Q-Pb-RU0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1115" y="1042"/>
-        </scene>
-        <!--Game View Controller-->
-        <scene sceneID="IdE-za-3Xn">
-            <objects>
-                <viewController id="lCC-Qc-dZm" customClass="GameViewController" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="8w5-if-iBY"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="HlS-eX-zZi" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-290" y="298"/>
         </scene>
         <!--Chat-->
         <scene sceneID="bLH-YZ-QSJ">
@@ -159,7 +159,6 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <segue destination="bQv-dO-auU" kind="show" identifier="SettingsToProfile" id="wnv-o0-kZH"/>
-                        <segue destination="lCC-Qc-dZm" kind="show" identifier="SettingsToGame" id="LW4-Jw-Q7g"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zfc-Bp-zvE" userLabel="First Responder" sceneMemberID="firstResponder"/>

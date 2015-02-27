@@ -15,7 +15,6 @@ PODS:
     - InflectorKit
     - PocketSocket
     - SimpleKeychain
-  - NibDesignable (1.0.3)
   - NSLogger (1.5.1):
     - NSLogger/Standard (= 1.5.1)
   - NSLogger/Standard (1.5.1)
@@ -47,7 +46,6 @@ DEPENDENCIES:
   - Facebook-iOS-SDK (~> 3.22)
   - JSQMessagesViewController (~> 6.1)
   - Meteor (~> 0.1)
-  - NibDesignable (~> 1.0)
   - NSLogger (~> 1.5)
   - ReactiveCocoa (~> 2.4)
   - Reveal-iOS-SDK (~> 1.5)
@@ -77,7 +75,6 @@ SPEC CHECKSUMS:
   JSQMessagesViewController: e93a288a9662d4519c95a28a8c0eec10beae1bfc
   JSQSystemSoundPlayer: 55528c699a283aae2220d3ae7b8b527d2ecef4b4
   Meteor: 5f620a6d26b2fb79620aec7d9b06951f63968566
-  NibDesignable: 5ada4859c921b05791cb91bd6887d647229199d9
   NSLogger: 7421a0a60df62fb8ff548cd0388c302d3329a322
   PocketSocket: 8c18f973e57fd3042d032626654658df0fa2f126
   ReactiveCocoa: 31119068e3dde866bd257cf74e1f06b4023bf387

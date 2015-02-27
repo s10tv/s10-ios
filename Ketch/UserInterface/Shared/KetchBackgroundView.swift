@@ -9,7 +9,7 @@
 import Foundation
 import NibDesignable
 
-@IBDesignable class KetchBackgroundView : NibDesignable {
+@IBDesignable class KetchBackgroundView : NibDesignableView {
     
     @IBOutlet weak var ketchIcon: UIImageView!
     @IBOutlet weak var settingsButton: UIButton!

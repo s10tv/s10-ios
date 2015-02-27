@@ -14,7 +14,6 @@ pod 'SwiftyJSON', '~> 2.1'
 pod 'EDColor', '~> 0.4'
 #pod 'ExSwift', '~> 0.1.9'
 
-pod 'NibDesignable', '~> 1.0'
 pod 'SwipeView', '~> 1.3'
 pod 'SDWebImage', '~> 3.7'
 pod 'Snap', '~> 0.0.4'
