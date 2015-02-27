@@ -12,15 +12,15 @@ import UIView_draggable
 @objc(GameViewController)
 class GameViewController : BaseViewController {
 
-    @IBOutlet var avatars: [UserAvatarView]!
+    var backgroundView: KetchBackgroundView { return view as KetchBackgroundView }
     
+    @IBOutlet var avatars: [UserAvatarView]!
     @IBOutlet var gameView: UIView!
     @IBOutlet var emptyView: UIView!
     
     @IBOutlet weak var marrySlot: UIImageView!
     @IBOutlet weak var keepSlot: UIImageView!
     @IBOutlet weak var skipSlot: UIImageView!
-    @IBOutlet weak var ketchIcon: UIImageView!
     @IBOutlet weak var dockBadge: UIImageView!
     var unreadConnections : FetchViewModel!
     
@@ -59,10 +59,12 @@ class GameViewController : BaseViewController {
             }
         }
         
-        ketchIcon.userInteractionEnabled = true
-        ketchIcon.whenTapped { [weak self] in
+        backgroundView.ketchIcon.userInteractionEnabled = true
+        backgroundView.ketchIcon.whenTapped { [weak self] in
             if let this = self { this.confirmChoices(this) }
         }
+        backgroundView.settingsButton.addTarget(self, action: "goToSettings:", forControlEvents: .TouchUpInside)
+        backgroundView.dockButton.addTarget(self, action: "goToDock:", forControlEvents: .TouchUpInside)
         
         dockBadge.makeCircular()
     }
@@ -71,7 +73,7 @@ class GameViewController : BaseViewController {
         if subview.superview == nil {
             gameView.removeFromSuperview()
             emptyView.removeFromSuperview()
-            view.insertSubview(subview, atIndex: 0)
+            view.addSubview(subview)
             subview.makeEdgesEqualTo(view)
         }
     }

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="KetchIcon.otf">
+            <string>KetchIcon-Regular</string>
+            <string>KetchIcon-Regular</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KetchBackgroundView" customModule="Ketch" customModuleProvider="target">
+            <connections>
+                <outlet property="dockButton" destination="jVx-li-RXQ" id="zvf-HY-T1N"/>
+                <outlet property="ketchIcon" destination="4BP-aI-ryy" id="81X-lM-J3V"/>
+                <outlet property="settingsButton" destination="WBN-hY-kOU" id="OT1-eO-fPH"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="rwt-zi-iy4">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Header" translatesAutoresizingMaskIntoConstraints="NO" id="ykW-YZ-J02">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="72.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="ykW-YZ-J02" secondAttribute="height" multiplier="160:31" id="NQR-ov-Yew"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WBN-hY-kOU" userLabel="Settings">
+                    <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="YmM-CN-OBb"/>
+                        <constraint firstAttribute="width" constant="80" id="uBp-Ir-iJ6"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="KetchIcon-Regular" family="KetchIcon" pointSize="12"/>
+                    <state key="normal" title="y">
+                        <color key="titleColor" red="0.092987515029999995" green="0.64821720120000004" blue="0.65024715659999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ketch" translatesAutoresizingMaskIntoConstraints="NO" id="4BP-aI-ryy">
+                    <rect key="frame" x="170" y="35" width="34" height="37"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="34" id="KdK-Ss-nfo"/>
+                        <constraint firstAttribute="height" constant="37" id="lyg-hu-3j3"/>
+                    </constraints>
+                </imageView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jVx-li-RXQ" userLabel="Dock">
+                    <rect key="frame" x="295" y="0.0" width="80" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="dzr-Q2-8bj"/>
+                        <constraint firstAttribute="width" constant="80" id="sAE-Dk-w4Z"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="KetchIcon-Regular" family="KetchIcon" pointSize="10"/>
+                    <state key="normal" title="z">
+                        <color key="titleColor" red="0.092987515029999995" green="0.64821720120000004" blue="0.65024715659999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.043137254899999998" green="0.8980392157" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="ykW-YZ-J02" firstAttribute="leading" secondItem="rwt-zi-iy4" secondAttribute="leading" id="5Ug-YQ-xaC"/>
+                <constraint firstItem="WBN-hY-kOU" firstAttribute="leading" secondItem="rwt-zi-iy4" secondAttribute="leading" id="Aj1-Aw-2sa"/>
+                <constraint firstAttribute="trailing" secondItem="jVx-li-RXQ" secondAttribute="trailing" id="HJF-3N-ssl"/>
+                <constraint firstItem="4BP-aI-ryy" firstAttribute="bottom" secondItem="ykW-YZ-J02" secondAttribute="bottom" id="IbA-o4-dNG"/>
+                <constraint firstAttribute="trailing" secondItem="ykW-YZ-J02" secondAttribute="trailing" id="aQG-uS-uyK"/>
+                <constraint firstItem="ykW-YZ-J02" firstAttribute="top" secondItem="rwt-zi-iy4" secondAttribute="top" id="kNj-U8-rpj"/>
+                <constraint firstItem="4BP-aI-ryy" firstAttribute="centerX" secondItem="ykW-YZ-J02" secondAttribute="centerX" id="nSN-By-PaR"/>
+                <constraint firstItem="jVx-li-RXQ" firstAttribute="top" secondItem="rwt-zi-iy4" secondAttribute="top" id="uV4-FU-B3L"/>
+                <constraint firstItem="WBN-hY-kOU" firstAttribute="top" secondItem="rwt-zi-iy4" secondAttribute="top" id="uyF-jn-4dR"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="11.5" y="158.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Header" width="320" height="62"/>
+        <image name="Ketch" width="19" height="21"/>
+    </resources>
+</document>

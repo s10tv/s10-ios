@@ -5,10 +5,6 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="KetchIcon.otf">
-            <string>KetchIcon-Regular</string>
-            <string>KetchIcon-Regular</string>
-        </mutableArray>
         <mutableArray key="TransatTextStandard.otf">
             <string>TransatTextStandard</string>
             <string>TransatTextStandard</string>
@@ -21,7 +17,6 @@
                 <outlet property="emptyView" destination="3wb-3s-b5F" id="qVb-27-wAu"/>
                 <outlet property="gameView" destination="iN0-l3-epB" id="79c-2I-iEU"/>
                 <outlet property="keepSlot" destination="u8F-ne-eBp" id="NzU-jq-vfP"/>
-                <outlet property="ketchIcon" destination="9Js-kF-hh5" id="30X-9U-Hah"/>
                 <outlet property="marrySlot" destination="Iti-rA-q5V" id="Wug-mD-v8P"/>
                 <outlet property="skipSlot" destination="o6p-MY-cjB" id="WQp-cN-mwP"/>
                 <outlet property="view" destination="dPb-pR-9as" id="O6f-c0-qwc"/>
@@ -30,53 +25,10 @@
                 <outletCollection property="avatars" destination="FWx-3L-EJd" collectionClass="NSMutableArray" id="PPY-fA-OS0"/>
             </connections>
         </placeholder>
-        <view contentMode="scaleToFill" id="dPb-pR-9as">
+        <view contentMode="scaleToFill" id="dPb-pR-9as" customClass="KetchBackgroundView" customModule="Ketch" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Header" translatesAutoresizingMaskIntoConstraints="NO" id="BUv-K6-f7I">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="72.5"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="BUv-K6-f7I" secondAttribute="height" multiplier="160:31" id="e40-Fk-50C"/>
-                    </constraints>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="svh-Tk-FMJ" userLabel="Settings">
-                    <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="80" id="820-SS-7PK"/>
-                        <constraint firstAttribute="height" constant="60" id="eLk-S0-G9U"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="KetchIcon-Regular" family="KetchIcon" pointSize="12"/>
-                    <state key="normal" title="y">
-                        <color key="titleColor" red="0.092987515032291412" green="0.64821720123291016" blue="0.65024715662002563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="goToSettings:" destination="-1" eventType="touchUpInside" id="J1M-1X-lfO"/>
-                    </connections>
-                </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ketch" translatesAutoresizingMaskIntoConstraints="NO" id="9Js-kF-hh5">
-                    <rect key="frame" x="170" y="35" width="34" height="37"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="37" id="due-N9-CCZ"/>
-                        <constraint firstAttribute="width" constant="34" id="qu0-94-PCL"/>
-                    </constraints>
-                </imageView>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dfZ-2s-ycX" userLabel="Dock">
-                    <rect key="frame" x="295" y="0.0" width="80" height="60"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="60" id="D2o-Gk-cy9"/>
-                        <constraint firstAttribute="width" constant="80" id="Un9-Cs-KrY"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="KetchIcon-Regular" family="KetchIcon" pointSize="10"/>
-                    <state key="normal" title="z">
-                        <color key="titleColor" red="0.092987515032291412" green="0.64821720123291016" blue="0.65024715662002563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                    <connections>
-                        <action selector="goToDock:" destination="-1" eventType="touchUpInside" id="iXz-ii-Ny8"/>
-                    </connections>
-                </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WOT-kB-qH2" userLabel="New Indicator">
                     <rect key="frame" x="343" y="15" width="12" height="12"/>
                     <color key="backgroundColor" red="0.950525701" green="0.36602467300000002" blue="0.44692194460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -88,24 +40,15 @@
             </subviews>
             <color key="backgroundColor" red="0.043137254899999998" green="0.8980392157" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="9Js-kF-hh5" firstAttribute="centerX" secondItem="BUv-K6-f7I" secondAttribute="centerX" id="0n2-8G-w2f"/>
-                <constraint firstItem="BUv-K6-f7I" firstAttribute="leading" secondItem="dPb-pR-9as" secondAttribute="leading" id="19E-bo-lHX"/>
-                <constraint firstItem="svh-Tk-FMJ" firstAttribute="leading" secondItem="dPb-pR-9as" secondAttribute="leading" id="5fw-E4-Zh5"/>
-                <constraint firstAttribute="trailing" secondItem="dfZ-2s-ycX" secondAttribute="trailing" id="7jw-bZ-nnK"/>
-                <constraint firstItem="9Js-kF-hh5" firstAttribute="bottom" secondItem="BUv-K6-f7I" secondAttribute="bottom" id="FdZ-nR-HqU"/>
-                <constraint firstItem="svh-Tk-FMJ" firstAttribute="top" secondItem="dPb-pR-9as" secondAttribute="top" id="GQC-j9-EsP"/>
-                <constraint firstItem="WOT-kB-qH2" firstAttribute="top" secondItem="dfZ-2s-ycX" secondAttribute="top" constant="15" id="OHe-Hh-2ah"/>
-                <constraint firstAttribute="trailing" secondItem="BUv-K6-f7I" secondAttribute="trailing" id="Vd2-eX-OTe"/>
-                <constraint firstItem="dfZ-2s-ycX" firstAttribute="trailing" secondItem="WOT-kB-qH2" secondAttribute="trailing" constant="20" id="YK6-Ar-LpZ"/>
-                <constraint firstItem="BUv-K6-f7I" firstAttribute="top" secondItem="dPb-pR-9as" secondAttribute="top" id="c5O-yo-64E"/>
-                <constraint firstItem="dfZ-2s-ycX" firstAttribute="top" secondItem="dPb-pR-9as" secondAttribute="top" id="uYh-g9-egE"/>
+                <constraint firstItem="WOT-kB-qH2" firstAttribute="top" secondItem="dPb-pR-9as" secondAttribute="top" constant="15" id="5Gp-vA-vaP"/>
+                <constraint firstAttribute="trailing" secondItem="WOT-kB-qH2" secondAttribute="trailing" constant="20" id="tzx-eF-Zov"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="11.5" y="158.5"/>
         </view>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="Game View">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="Game View" customClass="TransparentView" customModule="Ketch" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
@@ -203,7 +146,7 @@
             </variation>
             <point key="canvasLocation" x="420.5" y="158.5"/>
         </view>
-        <view contentMode="scaleToFill" id="3wb-3s-b5F" userLabel="Empty View">
+        <view contentMode="scaleToFill" id="3wb-3s-b5F" userLabel="Empty View" customClass="TransparentView" customModule="Ketch" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -292,8 +235,6 @@ SAILED FOR TODAY.</string>
         </view>
     </objects>
     <resources>
-        <image name="Header" width="320" height="62"/>
-        <image name="Ketch" width="19" height="21"/>
         <image name="game-empty-share-facebook" width="61" height="61"/>
         <image name="game-empty-share-sms" width="60" height="61"/>
         <image name="game-empty-share-twitter" width="60" height="61"/>
