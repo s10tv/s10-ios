@@ -35,6 +35,14 @@
                         <constraint firstAttribute="width" secondItem="Nrc-Dc-N50" secondAttribute="height" multiplier="1:1" id="Umh-NB-xqv"/>
                         <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="dFx-JM-zbi"/>
                     </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="0.59607843140000005" green="0.58823529409999997" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                            <real key="value" value="6"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lola Forner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ic-hO-IZ3" userLabel="Name">
                     <rect key="frame" x="116" y="213" width="88.5" height="23.5"/>
