@@ -72,20 +72,21 @@
 		EA409D411A8C75F600988B8B /* DockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA409D3D1A8C75F600988B8B /* DockView.xib */; };
 		EA409D421A8C75F600988B8B /* DockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA409D3E1A8C75F600988B8B /* DockViewController.swift */; };
 		EA409D441A8C7CAA00988B8B /* KeepConnectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA409D431A8C7CAA00988B8B /* KeepConnectionCell.xib */; };
-		EA4DC09B1A93318E005C335D /* _Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4DC09A1A93318E005C335D /* _Message.swift */; };
 		EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA5634DF1A7741FF00F62B52 /* Ketch.xcdatamodeld */; };
-		EA5634EA1A77428F00F62B52 /* _Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E41A77428F00F62B52 /* _Connection.swift */; };
-		EA5634EB1A77428F00F62B52 /* _Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E51A77428F00F62B52 /* _Candidate.swift */; };
-		EA5634EC1A77428F00F62B52 /* _User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E61A77428F00F62B52 /* _User.swift */; };
-		EA5634ED1A77428F00F62B52 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E71A77428F00F62B52 /* Connection.swift */; };
-		EA5634EE1A77428F00F62B52 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E81A77428F00F62B52 /* Message.swift */; };
-		EA5634EF1A77428F00F62B52 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5634E91A77428F00F62B52 /* User.swift */; };
 		EA6650E11AA00999001BA40C /* TransparentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E01AA00999001BA40C /* TransparentView.swift */; };
 		EA6650E61AA00A82001BA40C /* KetchBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E31AA00A82001BA40C /* KetchBackgroundView.swift */; };
 		EA6650E71AA00A82001BA40C /* KetchBackgroundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA6650E41AA00A82001BA40C /* KetchBackgroundView.xib */; };
 		EA6650E81AA00A82001BA40C /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E51AA00A82001BA40C /* UserAvatarView.swift */; };
 		EA6650EC1AA00A9C001BA40C /* CandidateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650EA1AA00A9C001BA40C /* CandidateService.swift */; };
 		EA6650ED1AA00A9C001BA40C /* CoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650EB1AA00A9C001BA40C /* CoreService.swift */; };
+		EA6650F71AA00B95001BA40C /* _Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650EF1AA00B95001BA40C /* _Candidate.swift */; };
+		EA6650F81AA00B95001BA40C /* _Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650F01AA00B95001BA40C /* _Connection.swift */; };
+		EA6650F91AA00B95001BA40C /* _Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650F11AA00B95001BA40C /* _Message.swift */; };
+		EA6650FA1AA00B95001BA40C /* _User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650F21AA00B95001BA40C /* _User.swift */; };
+		EA6650FB1AA00B95001BA40C /* Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650F31AA00B95001BA40C /* Candidate.swift */; };
+		EA6650FC1AA00B95001BA40C /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650F41AA00B95001BA40C /* Connection.swift */; };
+		EA6650FD1AA00B95001BA40C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650F51AA00B95001BA40C /* Message.swift */; };
+		EA6650FE1AA00B95001BA40C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650F61AA00B95001BA40C /* User.swift */; };
 		EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
 		EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35461A74CC6900E0C65D /* Main.storyboard */; };
 		EA9F354A1A74CC6900E0C65D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Images.xcassets */; };
@@ -93,7 +94,6 @@
 		EA9F35591A74CC6900E0C65D /* KetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F35581A74CC6900E0C65D /* KetchTests.swift */; };
 		EABD86651A88B50400F8B822 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABD86641A88B50400F8B822 /* Localizable.strings */; };
 		EAD7B2AB1A9F0BE700FA6740 /* DesignableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */; };
-		EAEA82E91A86941C00A080ED /* Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEA82E81A86941C00A080ED /* Candidate.swift */; };
 		EAF195CF1A827FAD00A2F103 /* Ketch-Bridging.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */; };
 		EAF4D7621A79AA5E00D35330 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF4D74F1A79AA5E00D35330 /* RootViewController.swift */; };
 		F95D95DF1A84A1170068F090 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95D95DE1A84A1170068F090 /* MediaPlayer.framework */; };
@@ -182,20 +182,21 @@
 		EA409D3D1A8C75F600988B8B /* DockView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DockView.xib; sourceTree = "<group>"; };
 		EA409D3E1A8C75F600988B8B /* DockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DockViewController.swift; sourceTree = "<group>"; };
 		EA409D431A8C7CAA00988B8B /* KeepConnectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeepConnectionCell.xib; sourceTree = "<group>"; };
-		EA4DC09A1A93318E005C335D /* _Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Message.swift; sourceTree = "<group>"; };
 		EA5634E01A7741FF00F62B52 /* Ketch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ketch.xcdatamodel; sourceTree = "<group>"; };
-		EA5634E41A77428F00F62B52 /* _Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Connection.swift; sourceTree = "<group>"; };
-		EA5634E51A77428F00F62B52 /* _Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Candidate.swift; sourceTree = "<group>"; };
-		EA5634E61A77428F00F62B52 /* _User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _User.swift; sourceTree = "<group>"; };
-		EA5634E71A77428F00F62B52 /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
-		EA5634E81A77428F00F62B52 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		EA5634E91A77428F00F62B52 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EA6650E01AA00999001BA40C /* TransparentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransparentView.swift; sourceTree = "<group>"; };
 		EA6650E31AA00A82001BA40C /* KetchBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KetchBackgroundView.swift; sourceTree = "<group>"; };
 		EA6650E41AA00A82001BA40C /* KetchBackgroundView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KetchBackgroundView.xib; sourceTree = "<group>"; };
 		EA6650E51AA00A82001BA40C /* UserAvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAvatarView.swift; sourceTree = "<group>"; };
 		EA6650EA1AA00A9C001BA40C /* CandidateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateService.swift; sourceTree = "<group>"; };
 		EA6650EB1AA00A9C001BA40C /* CoreService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreService.swift; sourceTree = "<group>"; };
+		EA6650EF1AA00B95001BA40C /* _Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Candidate.swift; sourceTree = "<group>"; };
+		EA6650F01AA00B95001BA40C /* _Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Connection.swift; sourceTree = "<group>"; };
+		EA6650F11AA00B95001BA40C /* _Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Message.swift; sourceTree = "<group>"; };
+		EA6650F21AA00B95001BA40C /* _User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _User.swift; sourceTree = "<group>"; };
+		EA6650F31AA00B95001BA40C /* Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Candidate.swift; sourceTree = "<group>"; };
+		EA6650F41AA00B95001BA40C /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		EA6650F51AA00B95001BA40C /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		EA6650F61AA00B95001BA40C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EA9F353A1A74CC6900E0C65D /* Ketch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ketch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9F353E1A74CC6900E0C65D /* Ketch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ketch-Info.plist"; sourceTree = "<group>"; };
 		EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -208,7 +209,6 @@
 		EA9F35621A74CD8800E0C65D /* Ketch-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Ketch-Bridging.h"; path = "Ketch/Ketch-Bridging.h"; sourceTree = SOURCE_ROOT; };
 		EABD86641A88B50400F8B822 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableViews.swift; sourceTree = "<group>"; };
-		EAEA82E81A86941C00A080ED /* Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Candidate.swift; sourceTree = "<group>"; };
 		EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Ketch-Bridging.m"; sourceTree = "<group>"; };
 		EAF4D74F1A79AA5E00D35330 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		F95D95DE1A84A1170068F090 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -416,33 +416,14 @@
 		EA5634DE1A7741FF00F62B52 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EA5634E21A77428F00F62B52 /* CoreData */,
+				EA6650EE1AA00B95001BA40C /* _Models */,
+				EA6650F31AA00B95001BA40C /* Candidate.swift */,
+				EA6650F41AA00B95001BA40C /* Connection.swift */,
+				EA6650F51AA00B95001BA40C /* Message.swift */,
+				EA6650F61AA00B95001BA40C /* User.swift */,
 				EA5634DF1A7741FF00F62B52 /* Ketch.xcdatamodeld */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		EA5634E21A77428F00F62B52 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				EA5634E31A77428F00F62B52 /* _Models */,
-				EA5634E71A77428F00F62B52 /* Connection.swift */,
-				EA5634E81A77428F00F62B52 /* Message.swift */,
-				EAEA82E81A86941C00A080ED /* Candidate.swift */,
-				EA5634E91A77428F00F62B52 /* User.swift */,
-			);
-			path = CoreData;
-			sourceTree = "<group>";
-		};
-		EA5634E31A77428F00F62B52 /* _Models */ = {
-			isa = PBXGroup;
-			children = (
-				EA5634E41A77428F00F62B52 /* _Connection.swift */,
-				EA4DC09A1A93318E005C335D /* _Message.swift */,
-				EA5634E51A77428F00F62B52 /* _Candidate.swift */,
-				EA5634E61A77428F00F62B52 /* _User.swift */,
-			);
-			path = _Models;
 			sourceTree = "<group>";
 		};
 		EA6650E21AA00A82001BA40C /* Shared */ = {
@@ -462,6 +443,17 @@
 				EA6650EB1AA00A9C001BA40C /* CoreService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		EA6650EE1AA00B95001BA40C /* _Models */ = {
+			isa = PBXGroup;
+			children = (
+				EA6650EF1AA00B95001BA40C /* _Candidate.swift */,
+				EA6650F01AA00B95001BA40C /* _Connection.swift */,
+				EA6650F11AA00B95001BA40C /* _Message.swift */,
+				EA6650F21AA00B95001BA40C /* _User.swift */,
+			);
+			path = _Models;
 			sourceTree = "<group>";
 		};
 		EA9F35311A74CC6900E0C65D = {
@@ -771,7 +763,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "PATH=${PATH}:/usr/local/bin:/opt/local/bin\ncd Ketch\nmogenerator -m Models/Ketch.xcdatamodeld/Ketch.xcdatamodel/ --human-dir Models/CoreData --machine-dir Models/CoreData/_Models --swift\n";
+			shellScript = "PATH=${PATH}:/usr/local/bin:/opt/local/bin\ncd Ketch\nmogenerator -m Models/Ketch.xcdatamodeld/Ketch.xcdatamodel/ --human-dir Models --machine-dir Models/_Models --swift\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -780,16 +772,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA5634EC1A77428F00F62B52 /* _User.swift in Sources */,
 				EA1970151A83549300FEBA7F /* ProfileViewController.swift in Sources */,
 				EAF195CF1A827FAD00A2F103 /* Ketch-Bridging.m in Sources */,
 				EA1970171A83549300FEBA7F /* SettingsViewController.swift in Sources */,
 				EA409D421A8C75F600988B8B /* DockViewController.swift in Sources */,
-				EA4DC09B1A93318E005C335D /* _Message.swift in Sources */,
 				EA6650E81AA00A82001BA40C /* UserAvatarView.swift in Sources */,
 				EA0FC9371A87DE5800D62625 /* BaseViewController.swift in Sources */,
+				EA6650FA1AA00B95001BA40C /* _User.swift in Sources */,
 				EA0FC9351A87DE5800D62625 /* MeteorExtension.swift in Sources */,
-				EA5634EB1A77428F00F62B52 /* _Candidate.swift in Sources */,
+				EA6650F71AA00B95001BA40C /* _Candidate.swift in Sources */,
 				EA6650E11AA00999001BA40C /* TransparentView.swift in Sources */,
 				EA409D3F1A8C75F600988B8B /* ConnectionCell.swift in Sources */,
 				EA1DA37F1A8D188B00433093 /* NewConnectionViewController.swift in Sources */,
@@ -797,32 +788,33 @@
 				EA0FC9441A87DE5800D62625 /* ViewProviders.swift in Sources */,
 				EA1970131A83549300FEBA7F /* EditProfileViewController.swift in Sources */,
 				EA6650ED1AA00A9C001BA40C /* CoreService.swift in Sources */,
+				EA6650F81AA00B95001BA40C /* _Connection.swift in Sources */,
 				EA0FC93B1A87DE5800D62625 /* Segue.swift in Sources */,
 				EAF4D7621A79AA5E00D35330 /* RootViewController.swift in Sources */,
 				EA0FC9361A87DE5800D62625 /* SugarRecordExtension.swift in Sources */,
 				EA0FC9391A87DE5800D62625 /* Logging.swift in Sources */,
 				EA0FC93C1A87DE5800D62625 /* UIKitExtension.swift in Sources */,
 				EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */,
+				EA6650FB1AA00B95001BA40C /* Candidate.swift in Sources */,
 				EA0FC9421A87DE5800D62625 /* BaseViewModel.swift in Sources */,
 				EA31049B1A99C3850069D6AD /* KetchIcon.swift in Sources */,
 				EA0FC9381A87DE5800D62625 /* FoundationExtension.swift in Sources */,
-				EA5634EF1A77428F00F62B52 /* User.swift in Sources */,
+				EA6650FD1AA00B95001BA40C /* Message.swift in Sources */,
+				EA6650F91AA00B95001BA40C /* _Message.swift in Sources */,
 				EAD7B2AB1A9F0BE700FA6740 /* DesignableViews.swift in Sources */,
+				EA6650FC1AA00B95001BA40C /* Connection.swift in Sources */,
 				EA1970071A83549300FEBA7F /* ChatViewController.swift in Sources */,
 				EA6650E61AA00A82001BA40C /* KetchBackgroundView.swift in Sources */,
 				EA6650EC1AA00A9C001BA40C /* CandidateService.swift in Sources */,
 				EA2AB70E1A8A00F200D42C6C /* GameViewController.swift in Sources */,
-				EA5634EE1A77428F00F62B52 /* Message.swift in Sources */,
-				EAEA82E91A86941C00A080ED /* Candidate.swift in Sources */,
 				EA0FC9431A87DE5800D62625 /* FetchViewModel.swift in Sources */,
 				EA0FC9341A87DE5800D62625 /* MeteorCDStack.swift in Sources */,
 				EA1970191A83549300FEBA7F /* SignupViewController.swift in Sources */,
 				EA0FC93A1A87DE5800D62625 /* ReactiveCocoaExtension.swift in Sources */,
 				EA409D391A8C681A00988B8B /* FacebookExtension.swift in Sources */,
 				EA0FC9411A87DE5800D62625 /* ArrayViewModel.swift in Sources */,
-				EA5634EA1A77428F00F62B52 /* _Connection.swift in Sources */,
 				EA163CFB1A85FAF000C2589B /* EditPhotoCell.swift in Sources */,
-				EA5634ED1A77428F00F62B52 /* Connection.swift in Sources */,
+				EA6650FE1AA00B95001BA40C /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
