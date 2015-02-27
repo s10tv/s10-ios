@@ -18,16 +18,16 @@ class RootViewController : UINavigationController {
         listenForNotification(METDDPClientDidChangeAccountNotification).filter { _ in
             return !Core.meteor.hasAccount()
         }.deliverOnMainThread().flattenMap { _ in
+            // TODO: Don't show this when user intentionally logs out
             return UIAlertView.show("Error", message: "You have been logged out")
         }.subscribeNext { [weak self] _ in
-            self?.showSignup(false)
+            self?.showWelcome(false)
             return
         }
-//        showWelcome(false)
 
         // Try login now
         if !Core.attemptLoginWithCachedCredentials() {
-            showSignup(false)
+            showWelcome(false)
         } else {
             showGame(false)
         }

@@ -7,16 +7,35 @@
 //
 
 import UIKit
+import SwipeView
 
 @objc(WelcomeViewController)
-class WelcomeViewController : BaseViewController {
+class WelcomeViewController : BaseViewController, SwipeViewDelegate, SwipeViewDataSource {
     
-    var screens : [UIViewController] = []
+    @IBOutlet var pages: [TransparentView]!
+
+    @IBOutlet weak var swipeView: SwipeView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        screens = map([1,2,3,4], { (number) -> UIViewController in
-//            return self.storyboard?.instantiateViewControllerWithIdentifier("Page\(number)") as UIViewController
-//        })
+        pages.last?.whenSwiped(.Down, block: { [weak self] in
+            let root = self?.navigationController as RootViewController
+            root.showSignup(true)
+        })
     }
+    
+    // MARK: - SwipeView
+    
+    func numberOfItemsInSwipeView(swipeView: SwipeView!) -> Int {
+        return pages.count
+    }
+    
+    func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, reusingView view: UIView!) -> UIView! {
+        return pages[index]
+    }
+    
+    func swipeViewItemSize(swipeView: SwipeView!) -> CGSize {
+        return swipeView.frame.size
+    }
+    
 }

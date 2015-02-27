@@ -35,6 +35,17 @@ extension UIView {
         }
         addGestureRecognizer(tap)
     }
+
+    func whenSwiped(direction: UISwipeGestureRecognizerDirection, block: () -> ()) {
+        let swipe = UISwipeGestureRecognizer()
+        swipe.direction = direction
+        swipe.rac_gestureSignal().subscribeNextAs { (recognizer : UIGestureRecognizer) -> () in
+            if recognizer.state == .Ended {
+                block()
+            }
+        }
+        addGestureRecognizer(swipe)
+    }
 }
 
 extension UIAlertView {
