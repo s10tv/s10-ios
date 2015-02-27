@@ -66,7 +66,7 @@ class RootViewController : UINavigationController {
     }
     
     @IBAction func logout(sender: AnyObject) {
-        self.showSignup(true)
+        showWelcome(true)
         Core.logout().subscribeCompleted {
             Log.info("Signed out")
         }
