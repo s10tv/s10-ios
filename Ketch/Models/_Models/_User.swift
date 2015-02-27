@@ -10,6 +10,7 @@ enum UserAttributes: String {
     case education = "education"
     case firstName = "firstName"
     case gender = "gender"
+    case height = "height"
     case location = "location"
     case photoURLs = "photoURLs"
     case work = "work"
@@ -70,6 +71,11 @@ class _User: NSManagedObject {
     var gender: String?
 
     // func validateGender(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var height: NSNumber?
+
+    // func validateHeight(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
     var location: String?

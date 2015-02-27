@@ -32,6 +32,7 @@
         <attribute name="education" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="height" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="photoURLs" optional="YES" attributeType="Transformable" valueTransformerName="PhotosValueTransformer" syncable="YES">
             <userInfo>
@@ -44,6 +45,6 @@
         <element name="Candidate" positionX="-45" positionY="54" width="128" height="88"/>
         <element name="Connection" positionX="-54" positionY="0" width="128" height="150"/>
         <element name="Message" positionX="-36" positionY="27" width="128" height="118"/>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="180"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="195"/>
     </elements>
 </model>
