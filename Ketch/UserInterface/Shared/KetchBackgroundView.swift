@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import NibDesignable
 
 @IBDesignable class KetchBackgroundView : NibDesignableView {
     
