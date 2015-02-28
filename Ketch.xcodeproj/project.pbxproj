@@ -95,8 +95,6 @@
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
 		EA9F35591A74CC6900E0C65D /* KetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F35581A74CC6900E0C65D /* KetchTests.swift */; };
 		EAB54E3D1AA0E2EB00A44883 /* SettingsBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB54E3C1AA0E2EB00A44883 /* SettingsBackgroundView.swift */; };
-		EABD43DB1AA1D29C00B07813 /* Beta.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = EABD43D91AA1D29C00B07813 /* Beta.xcconfig */; };
-		EABD43DC1AA1D29C00B07813 /* Prod.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = EABD43DA1AA1D29C00B07813 /* Prod.xcconfig */; };
 		EABD86651A88B50400F8B822 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABD86641A88B50400F8B822 /* Localizable.strings */; };
 		EAD7B2AB1A9F0BE700FA6740 /* DesignableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */; };
 		EAF195CF1A827FAD00A2F103 /* Ketch-Bridging.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */; };
@@ -691,9 +689,7 @@
 				EA6650E71AA00A82001BA40C /* KetchBackgroundView.xib in Resources */,
 				EA02CCF21A96ED03004C3009 /* KetchIcon.otf in Resources */,
 				EA1DA3811A8D189400433093 /* NewConnectionView.xib in Resources */,
-				EABD43DB1AA1D29C00B07813 /* Beta.xcconfig in Resources */,
 				EA409D411A8C75F600988B8B /* DockView.xib in Resources */,
-				EABD43DC1AA1D29C00B07813 /* Prod.xcconfig in Resources */,
 				EA341DA11A8C88CC00A6077B /* JSQMessagesLoadEarlierHeaderView.xib in Resources */,
 				EA409D401A8C75F600988B8B /* MarryConnectionCell.xib in Resources */,
 				EA1970141A83549300FEBA7F /* ProfileView.xib in Resources */,
@@ -918,6 +914,7 @@
 /* Begin XCBuildConfiguration section */
 		EA9F355A1A74CC6900E0C65D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EABD43D81AA1D28700B07813 /* Dev.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -933,7 +930,6 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -961,6 +957,7 @@
 		};
 		EA9F355B1A74CC6900E0C65D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EABD43D81AA1D28700B07813 /* Dev.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
@@ -976,7 +973,6 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1001,8 +997,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_BUILD = 0;
-				BUNDLE_DISPLAY_NAME = "Ketch Dev";
-				BUNDLE_IDENTIFIER = com.milasya.ketch.dev;
 				BUNDLE_VERSION_STRING = 0.0.1;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1023,8 +1017,6 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_BUILD = 0;
-				BUNDLE_DISPLAY_NAME = "Ketch Dev";
-				BUNDLE_IDENTIFIER = com.milasya.ketch.dev;
 				BUNDLE_VERSION_STRING = 0.0.1;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (

@@ -5,3 +5,8 @@
 //  Created by Tony Xiao on 2/28/15.
 //  Copyright (c) 2015 Ketch. All rights reserved.
 //
+
+BUNDLE_IDENTIFIER = com.milasya.ketch.beta
+BUNDLE_DISPLAY_NAME = Ketch Beta
+CODE_SIGN_IDENTITY = iPhone Distribution
+PROVISIONING_PROFILE = 1398f865-130c-442d-b0a7-177c095afd2d
