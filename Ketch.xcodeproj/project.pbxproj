@@ -768,7 +768,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Pods/Fabric/Fabric.framework/run 4cdb005d0ddfebc8865c0a768de9b43c993e9113 83001519164842a323e4d70c5970b041c248835fec59db59b409f5b364e47f72";
+			shellScript = "releaseConfig=\"Release\"\nif [ \"$releaseConfig\" = \"${CONFIGURATION}\" ]; then\n    echo \"Running Fabric Crashlytics\"\n    ./Pods/Fabric/Fabric.framework/run 4cdb005d0ddfebc8865c0a768de9b43c993e9113 83001519164842a323e4d70c5970b041c248835fec59db59b409f5b364e47f72\nfi";
 		};
 		EAFD13C81A77450000754556 /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -985,7 +985,7 @@
 				BUNDLE_BUILD = 0;
 				BUNDLE_DISPLAY_NAME = "Ketch Dev";
 				BUNDLE_IDENTIFIER = com.milasya.ketch.dev;
-				BUNDLE_VERSION_STRING = v0.0.1;
+				BUNDLE_VERSION_STRING = 0.0.1;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1007,7 +1007,7 @@
 				BUNDLE_BUILD = 0;
 				BUNDLE_DISPLAY_NAME = "Ketch Dev";
 				BUNDLE_IDENTIFIER = com.milasya.ketch.dev;
-				BUNDLE_VERSION_STRING = v0.0.1;
+				BUNDLE_VERSION_STRING = 0.0.1;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
