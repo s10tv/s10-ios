@@ -9,18 +9,10 @@
 import Foundation
 
 @IBDesignable class SettingsBackgroundView : BaseView {
-    let gradient = CAGradientLayer()
-    
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        gradient.frame = layer.bounds
-    }
-    
-    override func commonInit() {
-        gradient.colors = [
-            UIColor(hex: 0xE1DEC9).CGColor,
-            UIColor(hex: 0xF0FAF7).CGColor,
-        ]
-        layer.insertSublayer(gradient, atIndex: 0)
+    override func drawRect(rect: CGRect) {
+        let context = UIGraphicsGetCurrentContext()
+        let topCenter = CGPointMake(CGRectGetMidX(bounds), 0)
+        let bottomCenter = CGPointMake(CGRectGetMidX(bounds), CGRectGetMaxY(bounds))
+        CGContextDrawLinearGradient(context, StyleKit.gradientSand, topCenter, bottomCenter, 0)
     }
 }
