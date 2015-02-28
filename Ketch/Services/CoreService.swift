@@ -12,11 +12,11 @@ import FacebookSDK
 import SugarRecord
 import Meteor
 
-class CoreService {
 
-    let meteor = METCoreDataDDPClient(serverURL: NSURL(string: "ws://localhost:3000/websocket"))
-//    let meteor = METCoreDataDDPClient(serverURL: NSURL(string: "ws://172.20.10.14:3000/websocket"))
-//    let meteor = METCoreDataDDPClient(serverURL: NSURL(string: "ws://s10.herokuapp.com/websocket"))
+class CoreService {
+    let serverHostname = "ketch-dev.herokuapp.com"
+
+    let meteor : METCoreDataDDPClient
     let candidateService : CandidateService
     var mainContext : NSManagedObjectContext! {
         return meteor.mainQueueManagedObjectContext
@@ -27,6 +27,8 @@ class CoreService {
     var loginSignal = RACReplaySubject(capacity: 1)
     
     init() {
+        meteor = METCoreDataDDPClient(serverURL: NSURL(string: "ws://\(serverHostname)/websocket"))
+        
         // Set up CoreData
         SugarRecord.addStack(MeteorCDStack(meteor: meteor))
         
