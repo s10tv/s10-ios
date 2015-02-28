@@ -7,15 +7,16 @@
 	objects = {
 
 /* Begin PBXAggregateTarget section */
-		EAFD13C41A7744F700754556 /* Mogenerator */ = {
+		EAFD13C41A7744F700754556 /* Regenerate */ = {
 			isa = PBXAggregateTarget;
-			buildConfigurationList = EAFD13C71A7744F700754556 /* Build configuration list for PBXAggregateTarget "Mogenerator" */;
+			buildConfigurationList = EAFD13C71A7744F700754556 /* Build configuration list for PBXAggregateTarget "Regenerate" */;
 			buildPhases = (
-				EAFD13C81A77450000754556 /* ShellScript */,
+				EAFD13C81A77450000754556 /* Run mogenerator */,
+				EA7AA3611AA24BAC003383BE /* Run sbconstants */,
 			);
 			dependencies = (
 			);
-			name = Mogenerator;
+			name = Regenerate;
 			productName = Mogenerator;
 		};
 /* End PBXAggregateTarget section */
@@ -90,6 +91,7 @@
 		EA66510E1AA0C7C8001BA40C /* WelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA66510D1AA0C7C8001BA40C /* WelcomeView.xib */; };
 		EA6651101AA0C7D1001BA40C /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA66510F1AA0C7D1001BA40C /* WelcomeViewController.swift */; };
 		EA7AA3601AA246FD003383BE /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA35F1AA246FD003383BE /* StyleKit.swift */; };
+		EA7AA3631AA251D4003383BE /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3621AA251D4003383BE /* SBConstants.swift */; };
 		EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
 		EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35461A74CC6900E0C65D /* Main.storyboard */; };
 		EA9F354A1A74CC6900E0C65D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Images.xcassets */; };
@@ -204,6 +206,7 @@
 		EA66510D1AA0C7C8001BA40C /* WelcomeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeView.xib; sourceTree = "<group>"; };
 		EA66510F1AA0C7D1001BA40C /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		EA7AA35F1AA246FD003383BE /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
+		EA7AA3621AA251D4003383BE /* SBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstants.swift; sourceTree = "<group>"; };
 		EA9F353A1A74CC6900E0C65D /* Ketch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ketch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9F353E1A74CC6900E0C65D /* Ketch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ketch-Info.plist"; sourceTree = "<group>"; };
 		EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -508,7 +511,6 @@
 				EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */,
 				EA9F35461A74CC6900E0C65D /* Main.storyboard */,
 				EA9F35491A74CC6900E0C65D /* Images.xcassets */,
-				EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */,
 				EA9F353D1A74CC6900E0C65D /* Supporting Files */,
 			);
 			path = Ketch;
@@ -520,6 +522,8 @@
 				EABD43D71AA1D27400B07813 /* Configs */,
 				EA37776C1A966E380055DE99 /* Fonts */,
 				EA7AA35F1AA246FD003383BE /* StyleKit.swift */,
+				EA7AA3621AA251D4003383BE /* SBConstants.swift */,
+				EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */,
 				EA9F35621A74CD8800E0C65D /* Ketch-Bridging.h */,
 				EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */,
 				EA9F353E1A74CC6900E0C65D /* Ketch-Info.plist */,
@@ -674,7 +678,7 @@
 			targets = (
 				EA9F35391A74CC6900E0C65D /* Ketch */,
 				EA9F35511A74CC6900E0C65D /* KetchTests */,
-				EAFD13C41A7744F700754556 /* Mogenerator */,
+				EAFD13C41A7744F700754556 /* Regenerate */,
 			);
 		};
 /* End PBXProject section */
@@ -773,6 +777,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		EA7AA3611AA24BAC003383BE /* Run sbconstants */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Run sbconstants";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = "/bin/bash --login";
+			shellScript = "source \"$HOME/.rvm/scripts/rvm\"\ncd Ketch\nsbconstants -s Base.lproj/ -w -d > SBConstants.swift";
+			showEnvVarsInLog = 0;
+		};
 		EA7F26D91A891B6500629078 /* Upload DSYM to Fabric (Crashlytics) */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -787,18 +806,20 @@
 			shellPath = /bin/sh;
 			shellScript = "releaseConfig=\"Release\"\nif [ \"$releaseConfig\" = \"${CONFIGURATION}\" ]; then\n    echo \"Running Fabric Crashlytics\"\n    ./Pods/Fabric/Fabric.framework/run 4cdb005d0ddfebc8865c0a768de9b43c993e9113 83001519164842a323e4d70c5970b041c248835fec59db59b409f5b364e47f72\nfi";
 		};
-		EAFD13C81A77450000754556 /* ShellScript */ = {
+		EAFD13C81A77450000754556 /* Run mogenerator */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
+			name = "Run mogenerator";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "PATH=${PATH}:/usr/local/bin:/opt/local/bin\ncd Ketch\nmogenerator -m Models/Ketch.xcdatamodeld/Ketch.xcdatamodel/ --human-dir Models --machine-dir Models/_Models --swift\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -833,6 +854,7 @@
 				EA0FC9391A87DE5800D62625 /* Logging.swift in Sources */,
 				EA0FC93C1A87DE5800D62625 /* UIKitExtension.swift in Sources */,
 				EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */,
+				EA7AA3631AA251D4003383BE /* SBConstants.swift in Sources */,
 				EA6650FB1AA00B95001BA40C /* Candidate.swift in Sources */,
 				EA0FC9421A87DE5800D62625 /* BaseViewModel.swift in Sources */,
 				EA31049B1A99C3850069D6AD /* KetchIcon.swift in Sources */,
@@ -1118,7 +1140,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EAFD13C71A7744F700754556 /* Build configuration list for PBXAggregateTarget "Mogenerator" */ = {
+		EAFD13C71A7744F700754556 /* Build configuration list for PBXAggregateTarget "Regenerate" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EAFD13C51A7744F700754556 /* Debug */,

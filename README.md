@@ -3,8 +3,9 @@
 
 ## Getting started
 ```
+brew install mogenerator
 gem install cocoapods -v 0.36.0.beta.2
-gem install cupertino shenzhen
+gem install cupertino shenzhen sbconstants
 pod install
 ```
 
