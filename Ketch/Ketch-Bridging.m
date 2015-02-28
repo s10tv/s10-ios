@@ -6,7 +6,9 @@
 //  Copyright (c) 2015 Serendipity. All rights reserved.
 //
 
+#ifdef DEBUG
 #import <NSLogger/LoggerClient.h>
+#endif
 #import "Ketch-Bridging.h"
 
 @implementation METDDPClient (Extension)
@@ -35,7 +37,10 @@
 
 @end
 
-@implementation NSLogger {
+@implementation NSLogger
+
+#ifdef DEBUG
+{
     Logger *_logger;
 }
 
@@ -49,6 +54,7 @@
     }
     return self;
 }
+#endif
 
 - (void)logWithFilename:(NSString *)filename
              lineNumber:(int)lineNumber
@@ -56,7 +62,9 @@
                  domain:(NSString *)domain
                   level:(int)level
                 message:(NSString *)message {
+#ifdef DEBUG
     LogMessageToF(_logger, filename.UTF8String, lineNumber, functionName.UTF8String, domain, level, @"%@", message);
+#endif
 }
 
 @end
