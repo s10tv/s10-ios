@@ -34,7 +34,7 @@ class UserAvatarView : UIImageView {
             if let photoURL = user?.profilePhotoURL {
                 sd_setImageWithURL(photoURL)
             } else {
-                image = UIImage(named: "girl-placeholder")
+                image = UIImage(named: R.ImagesAssets.girlPlaceholder)
             }
         }
     }

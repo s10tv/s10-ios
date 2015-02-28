@@ -8,6 +8,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <Meteor/METCoreDataDDPClient.h>
 #import <JSQMessagesViewController/JSQMessagesViewController.h>
+#import "R.h"
 
 @interface METDDPClient (Private)
 

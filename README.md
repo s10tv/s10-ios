@@ -5,7 +5,7 @@
 ```
 brew install mogenerator
 gem install cocoapods -v 0.36.0.beta.2
-gem install cupertino shenzhen sbconstants
+gem install cupertino shenzhen sbconstants xcres
 pod install
 ```
 

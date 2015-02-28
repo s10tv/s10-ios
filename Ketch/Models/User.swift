@@ -44,7 +44,7 @@ class User: _User {
     
     func jsqAvatar() -> JSQMessagesAvatarImage {
         // TODO: Add gender to user
-        let image = JSQMessagesAvatarImage(placeholder: UIImage(named: "girl-placeholder"))
+        let image = JSQMessagesAvatarImage(placeholder: UIImage(named: R.ImagesAssets.girlPlaceholder))
         let key = SDWebImageManager.sharedManager().cacheKeyForURL(self.profilePhotoURL)
         image.avatarImage = SDImageCache.sharedImageCache().imageFromDiskCacheForKey(key)
         return image
