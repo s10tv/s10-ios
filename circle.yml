@@ -1,0 +1,23 @@
+machine:
+  environment:
+    CRASHLYTICS_API_KEY: 4cdb005d0ddfebc8865c0a768de9b43c993e9113
+    CRASHLYTICS_BUILD_SECRET: 83001519164842a323e4d70c5970b041c248835fec59db59b409f5b364e47f72
+    CRASHLYTICS_FRAMEWORK_PATH: Pods/CrashlyticsFramework/Crashlytics.framework
+dependencies:
+  pre:
+    - sudo gem install cocoapods -v 0.36.0.beta.2
+    - sudo gem install cupertino shenzhen
+
+  cache_directories:
+    - "Pods"
+
+test:
+  override:
+    - export BUNDLE_BUILD=${CIRCLE_BUILD_NUM}d
+    - ipa build -s Ketch --xcconfig Ketch/Configs/Dev.xcconfig --xcargs BUNDLE_BUILD="$BUNDLE_BUILD" --no-archive
+
+deployment:
+  master:
+    branch: master
+    commands:
+      - ipa distribute:crashlytics -f Ketch.ipa -g team
