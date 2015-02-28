@@ -8,4 +8,4 @@
 
 BUNDLE_IDENTIFIER = com.milasya.ketch.dev
 BUNDLE_DISPLAY_NAME = Ketch Dev
-CODE_SIGN_IDENTITY = iPhone Developer
+CUSTOM_CODE_SIGN_IDENTITY = iPhone Developer

@@ -8,4 +8,4 @@
 
 BUNDLE_IDENTIFIER = com.milasya.ketch
 BUNDLE_DISPLAY_NAME = Ketch
-CODE_SIGN_IDENTITY = iPhone Distribution
+CUSTOM_CODE_SIGN_IDENTITY = iPhone Distribution
