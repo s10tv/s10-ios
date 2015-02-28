@@ -982,6 +982,9 @@
 			baseConfigurationReference = 2CD850D0B9EC2938BA5CEB59 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUNDLE_BUILD = 0;
+				BUNDLE_IDENTIFIER = com.milasya.ketch.dev;
+				BUNDLE_VERSION_STRING = v0.0.1;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1000,6 +1003,9 @@
 			baseConfigurationReference = 0686ABB348D06D87DA844419 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUNDLE_BUILD = 0;
+				BUNDLE_IDENTIFIER = com.milasya.ketch.dev;
+				BUNDLE_VERSION_STRING = v0.0.1;
 				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
