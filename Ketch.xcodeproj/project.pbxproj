@@ -92,16 +92,16 @@
 		EA6650FE1AA00B95001BA40C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650F61AA00B95001BA40C /* User.swift */; };
 		EA66510E1AA0C7C8001BA40C /* WelcomeView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA66510D1AA0C7C8001BA40C /* WelcomeView.xib */; };
 		EA6651101AA0C7D1001BA40C /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA66510F1AA0C7D1001BA40C /* WelcomeViewController.swift */; };
-		EA7AA3601AA246FD003383BE /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA35F1AA246FD003383BE /* StyleKit.swift */; };
-		EA7AA3631AA251D4003383BE /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3621AA251D4003383BE /* SBConstants.swift */; };
 		EA7AA3651AA25D21003383BE /* SBConstantsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3641AA25D21003383BE /* SBConstantsExtension.swift */; };
+		EA7AA36A1AA26597003383BE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA7AA3671AA26597003383BE /* Localizable.strings */; };
+		EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3681AA26597003383BE /* SBConstants.swift */; };
+		EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3691AA26597003383BE /* StyleKit.swift */; };
 		EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
 		EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35461A74CC6900E0C65D /* Main.storyboard */; };
 		EA9F354A1A74CC6900E0C65D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Images.xcassets */; };
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
 		EA9F35591A74CC6900E0C65D /* KetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F35581A74CC6900E0C65D /* KetchTests.swift */; };
 		EAB54E3D1AA0E2EB00A44883 /* SettingsBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB54E3C1AA0E2EB00A44883 /* SettingsBackgroundView.swift */; };
-		EABD86651A88B50400F8B822 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABD86641A88B50400F8B822 /* Localizable.strings */; };
 		EAD7B2AB1A9F0BE700FA6740 /* DesignableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */; };
 		EAF195CF1A827FAD00A2F103 /* Ketch-Bridging.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */; };
 		EAF4D7621A79AA5E00D35330 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF4D74F1A79AA5E00D35330 /* RootViewController.swift */; };
@@ -210,9 +210,10 @@
 		EA6650F61AA00B95001BA40C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EA66510D1AA0C7C8001BA40C /* WelcomeView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeView.xib; sourceTree = "<group>"; };
 		EA66510F1AA0C7D1001BA40C /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
-		EA7AA35F1AA246FD003383BE /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
-		EA7AA3621AA251D4003383BE /* SBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstants.swift; sourceTree = "<group>"; };
 		EA7AA3641AA25D21003383BE /* SBConstantsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstantsExtension.swift; sourceTree = "<group>"; };
+		EA7AA3671AA26597003383BE /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		EA7AA3681AA26597003383BE /* SBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstants.swift; sourceTree = "<group>"; };
+		EA7AA3691AA26597003383BE /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
 		EA9F353A1A74CC6900E0C65D /* Ketch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ketch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9F353E1A74CC6900E0C65D /* Ketch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ketch-Info.plist"; sourceTree = "<group>"; };
 		EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -227,7 +228,6 @@
 		EABD43D81AA1D28700B07813 /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
 		EABD43D91AA1D29C00B07813 /* Beta.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
 		EABD43DA1AA1D29C00B07813 /* Prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
-		EABD86641A88B50400F8B822 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableViews.swift; sourceTree = "<group>"; };
 		EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Ketch-Bridging.m"; sourceTree = "<group>"; };
 		EAF4D74F1A79AA5E00D35330 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -281,6 +281,9 @@
 		49A80BC478B1E012CE6D7406 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				EA7AA3671AA26597003383BE /* Localizable.strings */,
+				EA7AA3681AA26597003383BE /* SBConstants.swift */,
+				EA7AA3691AA26597003383BE /* StyleKit.swift */,
 				D3E8EF9EDFE5BCEAA0D02DD3 /* R.h */,
 				42B1ADC65A81E44C8D5906C0 /* R.m */,
 			);
@@ -537,13 +540,10 @@
 			children = (
 				EABD43D71AA1D27400B07813 /* Configs */,
 				EA37776C1A966E380055DE99 /* Fonts */,
-				EA7AA35F1AA246FD003383BE /* StyleKit.swift */,
-				EA7AA3621AA251D4003383BE /* SBConstants.swift */,
 				EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */,
 				EA9F35621A74CD8800E0C65D /* Ketch-Bridging.h */,
 				EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */,
 				EA9F353E1A74CC6900E0C65D /* Ketch-Info.plist */,
-				EABD86641A88B50400F8B822 /* Localizable.strings */,
 				49A80BC478B1E012CE6D7406 /* Resources */,
 			);
 			name = "Supporting Files";
@@ -705,7 +705,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EABD86651A88B50400F8B822 /* Localizable.strings in Resources */,
 				EA3777761A966EC10055DE99 /* TransatTextStandard.otf in Resources */,
 				EA341DA51A8C88CC00A6077B /* JSQMessages.strings in Resources */,
 				EA341DA41A8C88CC00A6077B /* JSQMessagesViewController.xib in Resources */,
@@ -722,6 +721,7 @@
 				EA2AB7101A8A00FC00D42C6C /* GameView.xib in Resources */,
 				EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */,
 				EA341D841A8C875500A6077B /* ChatView.xib in Resources */,
+				EA7AA36A1AA26597003383BE /* Localizable.strings in Resources */,
 				EA341DA01A8C88CC00A6077B /* JSQMessagesCollectionViewCellOutgoing.xib in Resources */,
 				EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */,
 				EA3777751A966EC10055DE99 /* TransatTextMedium.otf in Resources */,
@@ -806,7 +806,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = "/bin/bash --login";
-			shellScript = "source \"$HOME/.rvm/scripts/rvm\"\ncd Ketch\nsbconstants -s Base.lproj/ -w -d > SBConstants.swift";
+			shellScript = "source \"$HOME/.rvm/scripts/rvm\"\ncd Ketch\nsbconstants -s Base.lproj/ -w -d > Resources/SBConstants.swift";
 			showEnvVarsInLog = 0;
 		};
 		EA7AA3661AA261AD003383BE /* Run xcres */ = {
@@ -864,7 +864,6 @@
 				EA1970171A83549300FEBA7F /* SettingsViewController.swift in Sources */,
 				EA409D421A8C75F600988B8B /* DockViewController.swift in Sources */,
 				EA7AA3651AA25D21003383BE /* SBConstantsExtension.swift in Sources */,
-				EA7AA3601AA246FD003383BE /* StyleKit.swift in Sources */,
 				EA6650E81AA00A82001BA40C /* UserAvatarView.swift in Sources */,
 				EA0FC9371A87DE5800D62625 /* BaseViewController.swift in Sources */,
 				EA6650FA1AA00B95001BA40C /* _User.swift in Sources */,
@@ -881,16 +880,17 @@
 				EA6650ED1AA00A9C001BA40C /* CoreService.swift in Sources */,
 				EA6650F81AA00B95001BA40C /* _Connection.swift in Sources */,
 				EA0FC93B1A87DE5800D62625 /* Segue.swift in Sources */,
+				EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */,
 				EAF4D7621A79AA5E00D35330 /* RootViewController.swift in Sources */,
 				EA0FC9361A87DE5800D62625 /* SugarRecordExtension.swift in Sources */,
 				EA0FC9391A87DE5800D62625 /* Logging.swift in Sources */,
 				EA0FC93C1A87DE5800D62625 /* UIKitExtension.swift in Sources */,
 				EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */,
-				EA7AA3631AA251D4003383BE /* SBConstants.swift in Sources */,
 				EA6650FB1AA00B95001BA40C /* Candidate.swift in Sources */,
 				EA0FC9421A87DE5800D62625 /* BaseViewModel.swift in Sources */,
 				EA31049B1A99C3850069D6AD /* KetchIcon.swift in Sources */,
 				EA0FC9381A87DE5800D62625 /* FoundationExtension.swift in Sources */,
+				EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */,
 				EA6650FD1AA00B95001BA40C /* Message.swift in Sources */,
 				EA6650F91AA00B95001BA40C /* _Message.swift in Sources */,
 				EAD7B2AB1A9F0BE700FA6740 /* DesignableViews.swift in Sources */,
