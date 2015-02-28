@@ -24,3 +24,22 @@ export CRASHLYTICS_BUILD_SECRET=83001519164842a323e4d70c5970b041c248835fec59db59
 export CRASHLYTICS_FRAMEWORK_PATH=Pods/CrashlyticsFramework/Crashlytics.framework
 ipa distribute:crashlytics -f Ketch.ipa -g team
 ```
+
+## Convert p12 to pem
+
+```
+openssl pkcs12 -in path.p12 -out newfile.crt.pem -clcerts -nokeys
+openssl pkcs12 -in path.p12 -out newfile.key.pem -nocerts -nodes
+```
+
+After that you have:
+
+certificate in newfile.crt.pem
+private key in newfile.key.pem
+
+
+## Convert cert to pem
+
+```
+openssl x509 -inform der -in scripts/certs/apns_prod-com.milasya.ketch.beta.cer -out betaapns.pem
+```
