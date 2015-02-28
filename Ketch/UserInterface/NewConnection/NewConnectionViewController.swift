@@ -32,7 +32,7 @@ class NewConnectionViewController : BaseViewController {
         super.viewDidLayoutSubviews()
         for view in [leftAvatar, centerAvatar, rightAvatar] {
             view.didTap = { [weak self] user in
-                if let vc = self?.storyboard?.instantiateViewControllerWithIdentifier("Profile") as? ProfileViewController {
+                if let vc = self?.makeViewController(.Profile) as? ProfileViewController {
                     vc.user = user
                     self?.navigationController?.pushViewController(vc, animated: true)
                 }
@@ -69,7 +69,7 @@ class NewConnectionViewController : BaseViewController {
     }
     
     @IBAction func getInTouch(sender: AnyObject) {
-        let dock = self.storyboard?.instantiateViewControllerWithIdentifier("Dock") as DockViewController
+        let dock = makeViewController(.Dock) as DockViewController
         let nav = navigationController
         nav?.popViewControllerAnimated(false)
         nav?.pushViewController(dock, animated: true)

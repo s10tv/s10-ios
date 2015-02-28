@@ -45,24 +45,20 @@ class RootViewController : UINavigationController {
         }
     }
     
-    private func makeViewController(identifier: String) -> UIViewController {
-        return storyboard?.instantiateViewControllerWithIdentifier(identifier) as UIViewController!
-    }
-        
     func showProfile(user: User?, animated: Bool) {
-        setViewControllers([makeViewController("Profile")], animated: animated)
+        setViewControllers([makeViewController(.Profile)!], animated: animated)
     }
     
     func showGame(animated: Bool) {
-        setViewControllers([makeViewController("Game")], animated: animated)
+        setViewControllers([makeViewController(.Game)!], animated: animated)
     }
     
     func showSignup(animated: Bool) {
-        setViewControllers([makeViewController("Signup")], animated: animated)
+        setViewControllers([makeViewController(.Signup)!], animated: animated)
     }
     
     func showWelcome(animated: Bool) {
-        setViewControllers([makeViewController("Welcome")], animated: animated)
+        setViewControllers([makeViewController(.Welcome)!], animated: animated)
     }
     
     @IBAction func logout(sender: AnyObject) {

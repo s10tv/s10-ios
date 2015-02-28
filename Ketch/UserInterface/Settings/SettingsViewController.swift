@@ -26,7 +26,7 @@ class SettingsViewController : BaseViewController {
         if let user = User.currentUser() {
             avatarView.user = user
             avatarView.whenTapped { [weak self] in
-                self?.performSegueWithIdentifier("SettingsToProfile", sender: nil)
+                self?.performSegue(.SettingsToProfile)
                 return
             }
             nameLabel.text = user.firstName

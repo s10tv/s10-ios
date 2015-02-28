@@ -52,7 +52,7 @@ class GameViewController : BaseViewController {
             imageView.enableDragging()
             imageView.setDraggable(true)
             imageView.didTap = { [weak self] user in
-                if let vc = self?.storyboard?.instantiateViewControllerWithIdentifier("Profile") as? ProfileViewController {
+                if let vc = self?.makeViewController(.Profile) as? ProfileViewController {
                     vc.user = user
                     self?.navigationController?.pushViewController(vc, animated: true)
                 }
@@ -81,11 +81,11 @@ class GameViewController : BaseViewController {
     // MARK: -
 
     @IBAction func goToSettings(sender: AnyObject) {
-        performSegueWithIdentifier("GameToSettings", sender: sender)
+        performSegue(.GameToSettings, sender: sender)
     }
 
     @IBAction func goToDock(sender: AnyObject) {
-        performSegueWithIdentifier("GameToDock", sender: sender)
+        performSegue(.GameToDock, sender: sender)
     }
 
     @IBAction func confirmChoices(sender: AnyObject) {
@@ -110,7 +110,7 @@ class GameViewController : BaseViewController {
         } else {
             Core.candidateService.submitChoices(marry!, no: skip!, maybe: keep!).deliverOnMainThread().subscribeNextAs { (res : [String:String]) -> () in
                 if res.count > 0 {
-                    let vc = self.storyboard?.instantiateViewControllerWithIdentifier("NewConnection") as NewConnectionViewController
+                    let vc = self.makeViewController(.NewConnection) as NewConnectionViewController
                     vc.connections = map(res, { (key, value) -> Connection in
                         return Connection.findByDocumentID(value)!
                     })

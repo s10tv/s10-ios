@@ -49,8 +49,8 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
         avatarView.sd_setImageWithURL(connection?.user?.profilePhotoURL)
         nameLabel.text = connection?.user?.firstName
         avatarView.whenTapped { [weak self] in
-            // TODO: Avoid hard-coding segue identifier somehow
-            self!.performSegueWithIdentifier("ChatToProfile", sender: nil)
+            self?.performSegue(.ChatToProfile)
+            return
         }
         
         let avatarLength = 30

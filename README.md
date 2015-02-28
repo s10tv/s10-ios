@@ -9,7 +9,7 @@ gem install cupertino shenzhen sbconstants
 pod install
 ```
 
-Open xcode workspace and start developing
+Open `Ketch.xcworkspace` and start developing
 
 ## Make IPAs
 By default project should be building with dev configuration. To change, use explicity xcconfig
