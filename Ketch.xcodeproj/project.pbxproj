@@ -95,6 +95,8 @@
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
 		EA9F35591A74CC6900E0C65D /* KetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F35581A74CC6900E0C65D /* KetchTests.swift */; };
 		EAB54E3D1AA0E2EB00A44883 /* SettingsBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB54E3C1AA0E2EB00A44883 /* SettingsBackgroundView.swift */; };
+		EABD43DB1AA1D29C00B07813 /* Beta.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = EABD43D91AA1D29C00B07813 /* Beta.xcconfig */; };
+		EABD43DC1AA1D29C00B07813 /* Prod.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = EABD43DA1AA1D29C00B07813 /* Prod.xcconfig */; };
 		EABD86651A88B50400F8B822 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABD86641A88B50400F8B822 /* Localizable.strings */; };
 		EAD7B2AB1A9F0BE700FA6740 /* DesignableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */; };
 		EAF195CF1A827FAD00A2F103 /* Ketch-Bridging.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */; };
@@ -213,6 +215,9 @@
 		EA9F35581A74CC6900E0C65D /* KetchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KetchTests.swift; sourceTree = "<group>"; };
 		EA9F35621A74CD8800E0C65D /* Ketch-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Ketch-Bridging.h"; path = "Ketch/Ketch-Bridging.h"; sourceTree = SOURCE_ROOT; };
 		EAB54E3C1AA0E2EB00A44883 /* SettingsBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsBackgroundView.swift; sourceTree = "<group>"; };
+		EABD43D81AA1D28700B07813 /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
+		EABD43D91AA1D29C00B07813 /* Beta.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
+		EABD43DA1AA1D29C00B07813 /* Prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
 		EABD86641A88B50400F8B822 /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableViews.swift; sourceTree = "<group>"; };
 		EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Ketch-Bridging.m"; sourceTree = "<group>"; };
@@ -512,6 +517,7 @@
 		EA9F353D1A74CC6900E0C65D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EABD43D71AA1D27400B07813 /* Configs */,
 				EA37776C1A966E380055DE99 /* Fonts */,
 				EA9F35621A74CD8800E0C65D /* Ketch-Bridging.h */,
 				EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */,
@@ -536,6 +542,16 @@
 				EA9F35571A74CC6900E0C65D /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EABD43D71AA1D27400B07813 /* Configs */ = {
+			isa = PBXGroup;
+			children = (
+				EABD43D81AA1D28700B07813 /* Dev.xcconfig */,
+				EABD43D91AA1D29C00B07813 /* Beta.xcconfig */,
+				EABD43DA1AA1D29C00B07813 /* Prod.xcconfig */,
+			);
+			path = Configs;
 			sourceTree = "<group>";
 		};
 		EAD7B2A91A9F0BC100FA6740 /* Views */ = {
@@ -675,7 +691,9 @@
 				EA6650E71AA00A82001BA40C /* KetchBackgroundView.xib in Resources */,
 				EA02CCF21A96ED03004C3009 /* KetchIcon.otf in Resources */,
 				EA1DA3811A8D189400433093 /* NewConnectionView.xib in Resources */,
+				EABD43DB1AA1D29C00B07813 /* Beta.xcconfig in Resources */,
 				EA409D411A8C75F600988B8B /* DockView.xib in Resources */,
+				EABD43DC1AA1D29C00B07813 /* Prod.xcconfig in Resources */,
 				EA341DA11A8C88CC00A6077B /* JSQMessagesLoadEarlierHeaderView.xib in Resources */,
 				EA409D401A8C75F600988B8B /* MarryConnectionCell.xib in Resources */,
 				EA1970141A83549300FEBA7F /* ProfileView.xib in Resources */,
