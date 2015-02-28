@@ -35,7 +35,7 @@ class GameViewController : BaseViewController {
                         imageView.user = nil
                     }
                 }
-                this.showSubview(candidates.count > 3 ? this.gameView : this.emptyView)
+                this.showSubview(candidates.count >= 3 ? this.gameView : this.emptyView)
             }
         }
         unreadConnections = FetchViewModel(frc: Connection.by(ConnectionAttributes.hasUnreadMessage.rawValue, value: true).frc())
