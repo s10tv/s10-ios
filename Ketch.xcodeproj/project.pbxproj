@@ -75,6 +75,7 @@
 		EA409D411A8C75F600988B8B /* DockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA409D3D1A8C75F600988B8B /* DockView.xib */; };
 		EA409D421A8C75F600988B8B /* DockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA409D3E1A8C75F600988B8B /* DockViewController.swift */; };
 		EA409D441A8C7CAA00988B8B /* KeepConnectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA409D431A8C7CAA00988B8B /* KeepConnectionCell.xib */; };
+		EA4A66571AA2D9BB0019D601 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A66561AA2D9BB0019D601 /* GameView.swift */; };
 		EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA5634DF1A7741FF00F62B52 /* Ketch.xcdatamodeld */; };
 		EA6650E11AA00999001BA40C /* TransparentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E01AA00999001BA40C /* TransparentView.swift */; };
 		EA6650E61AA00A82001BA40C /* KetchBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E31AA00A82001BA40C /* KetchBackgroundView.swift */; };
@@ -193,6 +194,7 @@
 		EA409D3D1A8C75F600988B8B /* DockView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DockView.xib; sourceTree = "<group>"; };
 		EA409D3E1A8C75F600988B8B /* DockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DockViewController.swift; sourceTree = "<group>"; };
 		EA409D431A8C7CAA00988B8B /* KeepConnectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeepConnectionCell.xib; sourceTree = "<group>"; };
+		EA4A66561AA2D9BB0019D601 /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		EA5634E01A7741FF00F62B52 /* Ketch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ketch.xcdatamodel; sourceTree = "<group>"; };
 		EA6650E01AA00999001BA40C /* TransparentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransparentView.swift; sourceTree = "<group>"; };
 		EA6650E31AA00A82001BA40C /* KetchBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KetchBackgroundView.swift; sourceTree = "<group>"; };
@@ -394,6 +396,7 @@
 			children = (
 				EA2AB70D1A8A00F200D42C6C /* GameViewController.swift */,
 				EA2AB70F1A8A00FC00D42C6C /* GameView.xib */,
+				EA4A66561AA2D9BB0019D601 /* GameView.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -873,6 +876,7 @@
 				EA409D3F1A8C75F600988B8B /* ConnectionCell.swift in Sources */,
 				EA1DA37F1A8D188B00433093 /* NewConnectionViewController.swift in Sources */,
 				EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */,
+				EA4A66571AA2D9BB0019D601 /* GameView.swift in Sources */,
 				EA6651101AA0C7D1001BA40C /* WelcomeViewController.swift in Sources */,
 				EA0FC9441A87DE5800D62625 /* ViewProviders.swift in Sources */,
 				EAB54E3D1AA0E2EB00A44883 /* SettingsBackgroundView.swift in Sources */,

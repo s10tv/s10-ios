@@ -8,6 +8,10 @@
 
 import Foundation
 
+func between<T : Comparable>(minLimit: T, value: T, maxLimit: T) -> T {
+    return max(minLimit, min(value, maxLimit))
+}
+
 // Floats
 extension Int {
     var f: CGFloat { return CGFloat(self) }
@@ -20,6 +24,38 @@ extension Float {
 extension Double {
     var f: CGFloat { return CGFloat(self) }
 }
+
+// Core Graphics
+
+extension CGPoint {
+    func distanceTo(point: CGPoint) -> CGFloat {
+        let xDist = x - point.x
+        let yDist = y - point.y
+        return sqrt((xDist * xDist) + (yDist * yDist))
+    }
+    
+    func asVector() -> CGVector {
+        return CGVector(dx: x, dy: y)
+    }
+}
+
+func + (left: CGPoint, right: CGPoint) -> CGPoint {
+    return CGPoint(x: left.x + right.x, y: left.y + right.y)
+}
+
+func * (point: CGPoint, multiplier: CGFloat) -> CGPoint {
+    return CGPoint(x: point.x * multiplier, y: point.y * multiplier)
+}
+
+func + (point: CGPoint, vector: CGVector) -> CGPoint {
+    return CGPoint(x: point.x + vector.dx, y: point.y + vector.dy)
+}
+
+func * (vector: CGVector, multiplier: CGFloat) -> CGVector {
+    return CGVector(dx: vector.dx * multiplier, dy: vector.dy * multiplier)
+}
+
+// Foundation Types
 
 extension String {
     
@@ -79,9 +115,23 @@ extension Array {
         }
     }
     
-    func randomElement() -> T {
+    func randomElement() -> T? {
+        if count == 0 { return nil }
         let index = Int(arc4random_uniform(UInt32(count)))
         return self[index]
+    }
+    
+    func minElement(scorer: ((T) -> Float)) -> T? {
+        var minScore: Float?
+        var minElement: T?
+        for element in self {
+            let score = scorer(element)
+            if minScore == nil || score < minScore! {
+                minScore = score
+                minElement = element
+            }
+        }
+        return minElement
     }
 }
 
@@ -94,8 +144,4 @@ extension NSData {
         }
         return str
     }
-}
-
-func between<T : Comparable>(minLimit: T, value: T, maxLimit: T) -> T {
-    return max(minLimit, min(value, maxLimit))
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TransparentView : UIView {
+class TransparentView : BaseView {
     
     override func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool {
         if super.pointInside(point, withEvent: event) {

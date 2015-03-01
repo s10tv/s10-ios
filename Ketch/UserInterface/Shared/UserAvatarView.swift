@@ -57,6 +57,7 @@ class UserAvatarView : UIImageView {
     override func awakeFromNib() {
         super.awakeFromNib()
         contentMode = .ScaleToFill
+        image = UIImage(named: R.ImagesAssets.girlPlaceholder)
     }
     
     override func layoutSubviews() {

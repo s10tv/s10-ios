@@ -16,13 +16,7 @@
                 <outlet property="dockBadge" destination="WOT-kB-qH2" id="vny-NG-Upp"/>
                 <outlet property="emptyView" destination="3wb-3s-b5F" id="qVb-27-wAu"/>
                 <outlet property="gameView" destination="iN0-l3-epB" id="79c-2I-iEU"/>
-                <outlet property="keepSlot" destination="u8F-ne-eBp" id="NzU-jq-vfP"/>
-                <outlet property="marrySlot" destination="Iti-rA-q5V" id="Wug-mD-v8P"/>
-                <outlet property="skipSlot" destination="o6p-MY-cjB" id="WQp-cN-mwP"/>
                 <outlet property="view" destination="dPb-pR-9as" id="O6f-c0-qwc"/>
-                <outletCollection property="avatars" destination="1Lu-FI-gAz" collectionClass="NSMutableArray" id="geo-dR-phv"/>
-                <outletCollection property="avatars" destination="k7t-mm-QgH" collectionClass="NSMutableArray" id="WeF-B4-epn"/>
-                <outletCollection property="avatars" destination="FWx-3L-EJd" collectionClass="NSMutableArray" id="PPY-fA-OS0"/>
             </connections>
         </placeholder>
         <view contentMode="scaleToFill" id="dPb-pR-9as" customClass="KetchBackgroundView" customModule="Ketch" customModuleProvider="target">
@@ -48,109 +42,47 @@
             <point key="canvasLocation" x="11.5" y="158.5"/>
         </view>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="Game View" customClass="TransparentView" customModule="Ketch" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="iN0-l3-epB" userLabel="Game View" customClass="GameView" customModule="Ketch" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="skipText" translatesAutoresizingMaskIntoConstraints="NO" id="o6p-MY-cjB" userLabel="Skip Slot">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="game-bucket-anchor-white" translatesAutoresizingMaskIntoConstraints="NO" id="o6p-MY-cjB" userLabel="Skip Slot">
                     <rect key="frame" x="19" y="258" width="100" height="100"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="100" id="OG2-9l-aGb"/>
-                        <constraint firstAttribute="width" constant="100" id="ob8-d2-AyI"/>
-                    </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="keepText" translatesAutoresizingMaskIntoConstraints="NO" id="u8F-ne-eBp" userLabel="Keep Slot">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="game-bucket-keep-white" translatesAutoresizingMaskIntoConstraints="NO" id="u8F-ne-eBp" userLabel="Keep Slot">
                     <rect key="frame" x="257" y="258" width="100" height="100"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="100" id="0pA-db-Guf"/>
-                        <constraint firstAttribute="width" constant="100" id="w5B-zd-H3O"/>
-                    </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="marryText" translatesAutoresizingMaskIntoConstraints="NO" id="Iti-rA-q5V" userLabel="Marry Slot">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="game-bucket-knot-white" translatesAutoresizingMaskIntoConstraints="NO" id="Iti-rA-q5V" userLabel="Marry Slot">
                     <rect key="frame" x="137" y="150" width="100" height="100"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="100" id="c1B-G5-Sdm"/>
-                        <constraint firstAttribute="width" constant="100" id="iqv-Rn-x0G"/>
-                    </constraints>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marry" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9qx-dJ-kUe">
-                    <rect key="frame" x="165" y="258" width="44.5" height="20.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Skip" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KDo-UQ-ueF">
-                    <rect key="frame" x="52" y="366" width="34" height="20.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xs5-fm-J17">
-                    <rect key="frame" x="287" y="365" width="40" height="20.5"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Lu-FI-gAz" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Lu-FI-gAz" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="9" y="528" width="100" height="100"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k7t-mm-QgH" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k7t-mm-QgH" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="137" y="528" width="100" height="100"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="100" id="91K-1L-pq8"/>
-                        <constraint firstAttribute="width" secondItem="k7t-mm-QgH" secondAttribute="height" multiplier="1:1" id="Ito-em-jvJ"/>
-                    </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FWx-3L-EJd" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FWx-3L-EJd" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="267" y="528" width="100" height="100"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="0.043137254901960784" green="0.89803921568627454" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-            <constraints>
-                <constraint firstAttribute="centerX" secondItem="Iti-rA-q5V" secondAttribute="centerX" id="3Xo-lg-wda"/>
-                <constraint firstItem="o6p-MY-cjB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="19" id="6je-H4-tys"/>
-                <constraint firstAttribute="trailing" secondItem="u8F-ne-eBp" secondAttribute="trailing" constant="18" id="8kQ-H1-MPO"/>
-                <constraint firstItem="1Lu-FI-gAz" firstAttribute="centerX" secondItem="o6p-MY-cjB" secondAttribute="centerX" constant="-11" id="9M7-ZI-WnA"/>
-                <constraint firstItem="1Lu-FI-gAz" firstAttribute="centerX" secondItem="o6p-MY-cjB" secondAttribute="centerX" constant="-10" id="AIO-9K-4nr"/>
-                <constraint firstItem="FWx-3L-EJd" firstAttribute="centerY" secondItem="k7t-mm-QgH" secondAttribute="centerY" id="AS3-7Q-gn7"/>
-                <constraint firstItem="xs5-fm-J17" firstAttribute="top" secondItem="u8F-ne-eBp" secondAttribute="bottom" constant="7" id="Agp-o3-ODX"/>
-                <constraint firstItem="u8F-ne-eBp" firstAttribute="centerX" secondItem="xs5-fm-J17" secondAttribute="centerX" id="CbF-PC-mad"/>
-                <constraint firstItem="1Lu-FI-gAz" firstAttribute="height" secondItem="k7t-mm-QgH" secondAttribute="height" id="DhQ-vQ-DNg"/>
-                <constraint firstItem="Iti-rA-q5V" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="150" id="GVp-HG-que"/>
-                <constraint firstItem="FWx-3L-EJd" firstAttribute="height" secondItem="k7t-mm-QgH" secondAttribute="height" id="HGu-yJ-gKr"/>
-                <constraint firstItem="FWx-3L-EJd" firstAttribute="centerX" secondItem="u8F-ne-eBp" secondAttribute="centerX" constant="10" id="KaA-mm-fWu"/>
-                <constraint firstItem="1Lu-FI-gAz" firstAttribute="width" secondItem="k7t-mm-QgH" secondAttribute="width" id="OgN-pa-Gcn"/>
-                <constraint firstItem="Iti-rA-q5V" firstAttribute="centerX" secondItem="9qx-dJ-kUe" secondAttribute="centerX" id="QcF-BM-zoG"/>
-                <constraint firstAttribute="bottom" secondItem="k7t-mm-QgH" secondAttribute="bottom" constant="39" id="TOd-Sk-p09"/>
-                <constraint firstItem="KDo-UQ-ueF" firstAttribute="top" secondItem="o6p-MY-cjB" secondAttribute="bottom" constant="8" id="XVP-Wr-yQJ"/>
-                <constraint firstItem="FWx-3L-EJd" firstAttribute="leading" secondItem="k7t-mm-QgH" secondAttribute="trailing" constant="2" id="Yxu-f2-R4j"/>
-                <constraint firstAttribute="centerX" secondItem="k7t-mm-QgH" secondAttribute="centerX" id="btW-Gh-G17"/>
-                <constraint firstItem="o6p-MY-cjB" firstAttribute="top" secondItem="Iti-rA-q5V" secondAttribute="bottom" constant="8" id="eoo-iG-9Dr"/>
-                <constraint firstItem="FWx-3L-EJd" firstAttribute="width" secondItem="k7t-mm-QgH" secondAttribute="width" id="fLX-QT-3i8"/>
-                <constraint firstItem="FWx-3L-EJd" firstAttribute="leading" secondItem="k7t-mm-QgH" secondAttribute="trailing" constant="2" id="i7T-Ha-SU4"/>
-                <constraint firstItem="1Lu-FI-gAz" firstAttribute="centerY" secondItem="k7t-mm-QgH" secondAttribute="centerY" id="rap-gO-rKk"/>
-                <constraint firstItem="9qx-dJ-kUe" firstAttribute="top" secondItem="Iti-rA-q5V" secondAttribute="bottom" constant="8" id="rh3-vm-Kdl"/>
-                <constraint firstItem="u8F-ne-eBp" firstAttribute="centerY" secondItem="o6p-MY-cjB" secondAttribute="centerY" id="uuA-iF-8je"/>
-                <constraint firstItem="k7t-mm-QgH" firstAttribute="leading" secondItem="1Lu-FI-gAz" secondAttribute="trailing" constant="2" id="vcd-4U-0ER"/>
-                <constraint firstItem="KDo-UQ-ueF" firstAttribute="centerX" secondItem="o6p-MY-cjB" secondAttribute="centerX" id="zKq-2m-eDg"/>
-            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="9M7-ZI-WnA"/>
-                    <exclude reference="vcd-4U-0ER"/>
-                    <exclude reference="Yxu-f2-R4j"/>
-                    <exclude reference="i7T-Ha-SU4"/>
-                </mask>
-            </variation>
+            <connections>
+                <outlet property="maybeBucket" destination="u8F-ne-eBp" id="rAa-8l-slb"/>
+                <outlet property="noBucket" destination="o6p-MY-cjB" id="Rhx-YT-mL6"/>
+                <outlet property="yesBucket" destination="Iti-rA-q5V" id="QOD-c1-S8D"/>
+                <outletCollection property="avatars" destination="1Lu-FI-gAz" collectionClass="NSMutableArray" id="fiy-oi-e1a"/>
+                <outletCollection property="avatars" destination="k7t-mm-QgH" collectionClass="NSMutableArray" id="kye-gz-XAN"/>
+                <outletCollection property="avatars" destination="FWx-3L-EJd" collectionClass="NSMutableArray" id="f9F-gU-s33"/>
+            </connections>
             <point key="canvasLocation" x="420.5" y="158.5"/>
         </view>
         <view contentMode="scaleToFill" id="3wb-3s-b5F" userLabel="Empty View" customClass="TransparentView" customModule="Ketch" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CKG-EO-iuj" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CKG-EO-iuj" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="67" y="160" width="240" height="65"/>
                     <attributedString key="attributedText">
                         <fragment>
@@ -174,13 +106,13 @@ SAILED FOR TODAY.</string>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Why not ask a match to a date instead?" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uod-OD-wle">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Why not ask a match to a date instead?" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uod-OD-wle">
                     <rect key="frame" x="59.5" y="241" width="255.5" height="15"/>
                     <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="15"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MU1-Gw-hdC" userLabel="Divider">
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MU1-Gw-hdC" userLabel="Divider">
                     <rect key="frame" x="97.5" y="272" width="180" height="1"/>
                     <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -188,25 +120,25 @@ SAILED FOR TODAY.</string>
                         <constraint firstAttribute="width" constant="180" id="h7a-fq-jwd"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Know someone who’d be a great Ketch?" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaI-Cz-QCy">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Know someone who’d be a great Ketch?" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaI-Cz-QCy">
                     <rect key="frame" x="60.5" y="289" width="253.5" height="15"/>
                     <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="15"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGh-sk-GVj" userLabel="Share SMS">
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGh-sk-GVj" userLabel="Share SMS">
                     <rect key="frame" x="72" y="320" width="60" height="61"/>
                     <state key="normal" image="game-empty-share-sms">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9U-HK-NwG" userLabel="Share Facebook">
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9U-HK-NwG" userLabel="Share Facebook">
                     <rect key="frame" x="157" y="320" width="61" height="61"/>
                     <state key="normal" image="game-empty-share-facebook">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNu-Ju-3F4" userLabel="Share Twitter">
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNu-Ju-3F4" userLabel="Share Twitter">
                     <rect key="frame" x="243" y="320" width="60" height="61"/>
                     <state key="normal" image="game-empty-share-twitter">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -235,11 +167,11 @@ SAILED FOR TODAY.</string>
         </view>
     </objects>
     <resources>
+        <image name="game-bucket-anchor-white" width="105" height="101"/>
+        <image name="game-bucket-keep-white" width="105" height="101"/>
+        <image name="game-bucket-knot-white" width="105" height="101"/>
         <image name="game-empty-share-facebook" width="61" height="61"/>
         <image name="game-empty-share-sms" width="60" height="61"/>
         <image name="game-empty-share-twitter" width="60" height="61"/>
-        <image name="keepText" width="800" height="800"/>
-        <image name="marryText" width="800" height="800"/>
-        <image name="skipText" width="800" height="800"/>
     </resources>
 </document>
