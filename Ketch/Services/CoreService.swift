@@ -14,7 +14,7 @@ import Meteor
 import TCMobileProvision
 
 class CoreService {
-    let serverHostname = "192.168.0.25:3000"
+    let serverHostname = "ketch-dev.herokuapp.com"
 
     let meteor : METCoreDataDDPClient
     let candidateService : CandidateService
