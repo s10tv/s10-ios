@@ -11,10 +11,10 @@ import ReactiveCocoa
 import FacebookSDK
 import SugarRecord
 import Meteor
-
+import TCMobileProvision
 
 class CoreService {
-    let serverHostname = "ketch-dev.herokuapp.com"
+    let serverHostname = "192.168.0.25:3000"
 
     let meteor : METCoreDataDDPClient
     let candidateService : CandidateService
@@ -99,8 +99,16 @@ class CoreService {
     }
     
     func addPushToken(pushTokenData: NSData) {
+        let mobileProvisionPath = NSBundle.mainBundle().bundlePath.stringByAppendingPathComponent("embedded.mobileprovision")
+        let mobileProvisionData = NSData.dataWithContentsOfMappedFile(mobileProvisionPath) as NSData
+        let mobileProvision = TCMobileProvision(data: mobileProvisionData)
+        let entitlements = mobileProvision.dict["Entitlements"] as NSDictionary
+        let apsEnv = entitlements["aps-environment"] as NSString
+        
+        let appid = NSBundle.mainBundle().infoDictionary?["CFBundleIdentifier"] as NSString
+        
         self.loginSignal.then({ () -> RACSignal! in
-            return self.meteor.callMethod("user/addPushToken", params: [pushTokenData.hexString()])
+            return self.meteor.callMethod("user/addPushToken", params: [appid, apsEnv, pushTokenData.hexString()])
         }).subscribeError({ error in
             println("Failed to add push token \(error)")
         }, completed: {

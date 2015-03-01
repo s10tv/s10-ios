@@ -17,6 +17,7 @@ pod 'EDColor', '~> 0.4'
 pod 'SwipeView', '~> 1.3'
 pod 'SDWebImage', '~> 3.7'
 pod 'Snap', '~> 0.0.4'
+pod 'TCMobileProvision', :git => 'https://github.com/tcurdt/TCMobileProvision'
 pod 'UIView+draggable', '~> 0.5'
 pod 'JSQMessagesViewController', '~> 6.1'
 
