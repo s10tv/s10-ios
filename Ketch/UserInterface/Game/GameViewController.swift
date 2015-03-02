@@ -25,8 +25,9 @@ class GameViewController : BaseViewController {
         Core.candidateService.fetch.signal.subscribeNextAs { [weak self] (candidates : [Candidate]) in
             if let this = self {
                 if candidates.count >= 3 {
-                    this.gameView.startNewGame(Array(candidates[0...2]))
                     this.showSubview(this.gameView)
+                    this.gameView.startNewGame(Array(candidates[0...2]))
+                    this.backgroundView.animateWaterlineDownAndUp()
                 } else {
                     this.showSubview(this.emptyView)
                 }
