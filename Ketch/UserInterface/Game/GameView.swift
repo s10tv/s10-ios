@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GameView : TransparentView {
+class GameView : TransparentView, UIDynamicAnimatorDelegate {
     
     @IBOutlet var avatars: [UserAvatarView]!
     @IBOutlet weak var noBucket: UIImageView!
@@ -18,6 +18,7 @@ class GameView : TransparentView {
     var sources : [AvatarSource]!
     var targets : [SnapTarget]!
     var animator : UIDynamicAnimator!
+    var collision : UICollisionBehavior!
     var velocityFactor : CGFloat = 0.1 // Multiplied with pan velocity to compute new pos
     var isReady : Bool {
         // TODO: Make this functional
@@ -29,11 +30,13 @@ class GameView : TransparentView {
         }
         return true
     }
-    
+
+    // TODO: Make game work for multiple screen sizes
     override func awakeFromNib() {
         super.awakeFromNib()
         
         animator = UIDynamicAnimator(referenceView: self)
+        animator.delegate = self
         
         sources = map(avatars) { AvatarSource($0) }
         targets = map(sources as [AvatarSource], {
@@ -43,7 +46,7 @@ class GameView : TransparentView {
             SnapTarget(self.animator, position: $0.center, choice: self.choiceForBucket($0))
         }))
         
-        let collision = UICollisionBehavior(items: avatars)
+        collision = UICollisionBehavior(items: avatars)
         collision.translatesReferenceBoundsIntoBoundary = true
         animator.addBehavior(collision)
         
@@ -55,7 +58,28 @@ class GameView : TransparentView {
         userInteractionEnabled = true
     }
     
-    func choiceForBucket(bucketView: UIImageView) -> Candidate.Choice? {
+    func chosenCandidate(choice: Candidate.Choice?) -> Candidate? {
+        for source in sources {
+            if source.target?.choice == choice {
+                return source.view.user?.candidate
+            }
+        }
+        return nil
+    }
+    
+    func startNewGame(candidates: [Candidate]) {
+        assert(candidates.count == 3, "Must have exactly 3 candidates to start game")
+        animator.removeBehavior(collision)
+        let predecisionTargets = targets.filter { $0.choice == nil }
+        for (i, source) in enumerate(sources) {
+            source.view.user = candidates[i].user
+            source.target = predecisionTargets[i]
+        }
+    }
+    
+    // MARK: -
+    
+    private func choiceForBucket(bucketView: UIImageView) -> Candidate.Choice? {
         switch bucketView {
         case yesBucket:
             return .Yes
@@ -68,18 +92,7 @@ class GameView : TransparentView {
         }
     }
     
-    func chosenCandidate(choice: Candidate.Choice?) -> Candidate? {
-        for source in sources {
-            if source.target?.choice == choice {
-                return source.view.user?.candidate
-            }
-        }
-        return nil
-    }
-    
-    // TODO: Make game work for multiple screen sizes
-    
-    func handleAvatarPan(pan: UIPanGestureRecognizer) {
+    /*private*/ func handleAvatarPan(pan: UIPanGestureRecognizer) {
         var location = pan.locationInView(self)
         if let source = sources.filter({ $0.view == pan.view }).first {
             switch pan.state {
@@ -107,6 +120,11 @@ class GameView : TransparentView {
                 break
             }
         }
+    }
+    
+    func dynamicAnimatorDidPause(animator: UIDynamicAnimator) {
+        // TODO: Hack for startGame. Make this pattern better
+        animator.addBehavior(collision)
     }
     
     // TODO: Make this subclass of UserAvatarView, implemnt drag behavior

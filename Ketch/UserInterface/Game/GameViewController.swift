@@ -21,16 +21,14 @@ class GameViewController : BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        Core.candidateService.fetch.signal.subscribeNextAs { [weak self] (candidates : [Candidate]) -> () in
+        Core.candidateService.fetch.signal.subscribeNextAs { [weak self] (candidates : [Candidate]) in
             if let this = self {
-                for (i, sources) in enumerate(this.gameView.sources) {
-                    if i < candidates.count {
-                        sources.view.user = candidates[i].user
-                    } else {
-                        sources.view.user = nil
-                    }
+                if candidates.count >= 3 {
+                    this.gameView.startNewGame(Array(candidates[0...2]))
+                    this.showSubview(this.gameView)
+                } else {
+                    this.showSubview(this.emptyView)
                 }
-                this.showSubview(candidates.count >= 3 ? this.gameView : this.emptyView)
             }
         }
         // TODO: Make this 10x less verbose. Add some concept of reactive variable
