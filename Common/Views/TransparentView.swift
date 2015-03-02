@@ -10,8 +10,13 @@ import UIKit
 
 class TransparentView : BaseView {
     
+    @IBInspectable var passThroughTouchOnSelf : Bool = true
+    
     override func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool {
         if super.pointInside(point, withEvent: event) {
+            if !passThroughTouchOnSelf {
+                return true
+            }
             for subview in subviews as [UIView] {
                 if !subview.hidden &&
                     subview.pointInside(convertPoint(point, toView: subview), withEvent: event) {

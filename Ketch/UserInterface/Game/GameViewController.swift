@@ -51,15 +51,15 @@ class GameViewController : BaseViewController {
             }
         }
         
-        backgroundView.ketchIcon.userInteractionEnabled = true
-        backgroundView.ketchIcon.whenTapped { [weak self] in
-            if let this = self { this.confirmChoices(this) }
-        }
         backgroundView.settingsButton.addTarget(self, action: "goToSettings:", forControlEvents: .TouchUpInside)
         backgroundView.dockButton.addTarget(self, action: "goToDock:", forControlEvents: .TouchUpInside)
         
         dockBadge.makeCircular()
         showSubview(gameView)
+
+        gameView.didConfirmChoices = { [weak self] in
+            if let this = self { this.submitChoices(this) }
+        }
     }
         
     func showSubview(subview: UIView) {
@@ -81,7 +81,7 @@ class GameViewController : BaseViewController {
         performSegue(.GameToDock, sender: sender)
     }
 
-    @IBAction func confirmChoices(sender: AnyObject) {
+    @IBAction func submitChoices(sender: AnyObject) {
         if !gameView.isReady {
             UIAlertView.show("Error", message: "Need to uniquely assign keep match marry")
         } else {

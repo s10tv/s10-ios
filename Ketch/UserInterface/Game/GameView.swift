@@ -14,6 +14,7 @@ class GameView : TransparentView, UIDynamicAnimatorDelegate {
     @IBOutlet weak var noBucket: UIImageView!
     @IBOutlet weak var maybeBucket: UIImageView!
     @IBOutlet weak var yesBucket: UIImageView!
+    @IBOutlet weak var readyPrompt: TransparentView!
     
     var sources : [AvatarSource]!
     var targets : [SnapTarget]!
@@ -30,10 +31,13 @@ class GameView : TransparentView, UIDynamicAnimatorDelegate {
         }
         return true
     }
-
+    var didConfirmChoices : (() -> ())?
+    
     // TODO: Make game work for multiple screen sizes
     override func awakeFromNib() {
         super.awakeFromNib()
+        
+        passThroughTouchOnSelf = false
         
         animator = UIDynamicAnimator(referenceView: self)
         animator.delegate = self
@@ -56,6 +60,12 @@ class GameView : TransparentView, UIDynamicAnimatorDelegate {
             avatar.userInteractionEnabled = true
         }
         userInteractionEnabled = true
+        
+        whenSwiped(.Down, block: { [weak self] in
+            if let handler = self?.didConfirmChoices {
+                if self!.isReady { handler() }
+            }
+        })
     }
     
     func chosenCandidate(choice: Candidate.Choice?) -> Candidate? {
@@ -75,6 +85,7 @@ class GameView : TransparentView, UIDynamicAnimatorDelegate {
             source.view.user = candidates[i].user
             source.target = predecisionTargets[i]
         }
+        readyPrompt.hidden = true
     }
     
     // MARK: -
@@ -100,22 +111,20 @@ class GameView : TransparentView, UIDynamicAnimatorDelegate {
                 source.target = nil
                 source.drag = UIAttachmentBehavior(item: source.view, attachedToAnchor: location)
                 animator.addBehavior(source.drag)
+                readyPrompt.hidden = true
             case .Changed:
                 source.drag?.anchorPoint = location
             case .Ended:
+                Log.debug("Options: \(targets)")
                 for s in sources {
                     animator.removeBehavior(s.drag)
                 }
                 let translation = pan.velocityInView(self) * velocityFactor
                 let translatedCenter = source.view.center + translation
-                for t in targets {
-                    println("Option: \(t)")
-                }
                 let target = SnapTarget.closest(targets, point: translatedCenter)!
-                willChangeValueForKey("isReady")
                 source.target = target
-                didChangeValueForKey("isReady")
-                println("\tChosen: \(target)\n\tready: \(isReady)")
+                readyPrompt.hidden = !isReady
+                Log.debug("\tChosen: \(target)\n\tready: \(isReady)")
             default:
                 break
             }

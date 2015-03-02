@@ -64,13 +64,57 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FWx-3L-EJd" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="267" y="528" width="100" height="100"/>
                 </imageView>
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MMH-Ka-VtK" userLabel="Ready Prompt" customClass="TransparentView" customModule="Ketch" customModuleProvider="target">
+                    <rect key="frame" x="75" y="410" width="224.5" height="107"/>
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsh-wd-hgi" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="224.5" height="62"/>
+                            <attributedString key="attributedText">
+                                <fragment content="SWIPE DOWN TO FIND THE ONE!">
+                                    <attributes>
+                                        <color key="NSColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <font key="NSFont" size="25" name="TransatTextBlack"/>
+                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" minimumLineHeight="31"/>
+                                    </attributes>
+                                </fragment>
+                            </attributedString>
+                            <nil key="highlightedColor"/>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                    <real key="value" value="25"/>
+                                </userDefinedRuntimeAttribute>
+                                <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="TransatTextBlack"/>
+                                <userDefinedRuntimeAttribute type="number" keyPath="fontKern">
+                                    <real key="value" value="2"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </label>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-arrow-down" translatesAutoresizingMaskIntoConstraints="NO" id="GYH-6R-IvX">
+                            <rect key="frame" x="99" y="72" width="27" height="35"/>
+                        </imageView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstItem="GYH-6R-IvX" firstAttribute="top" secondItem="hsh-wd-hgi" secondAttribute="bottom" constant="10" id="2dd-4t-v28"/>
+                        <constraint firstAttribute="trailing" secondItem="hsh-wd-hgi" secondAttribute="trailing" id="JXF-6R-OML"/>
+                        <constraint firstItem="hsh-wd-hgi" firstAttribute="leading" secondItem="MMH-Ka-VtK" secondAttribute="leading" id="LCG-Mz-E2Q"/>
+                        <constraint firstAttribute="bottom" secondItem="GYH-6R-IvX" secondAttribute="bottom" id="d1k-8m-LWv"/>
+                        <constraint firstItem="GYH-6R-IvX" firstAttribute="centerX" secondItem="hsh-wd-hgi" secondAttribute="centerX" id="kel-fK-qK0"/>
+                        <constraint firstItem="hsh-wd-hgi" firstAttribute="top" secondItem="MMH-Ka-VtK" secondAttribute="top" id="tzZ-hc-P69"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.043137254901960784" green="0.89803921568627454" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="centerY" secondItem="MMH-Ka-VtK" secondAttribute="centerY" constant="-130" id="BDE-DX-5xb"/>
+                <constraint firstAttribute="centerX" secondItem="MMH-Ka-VtK" secondAttribute="centerX" id="Ebu-2F-eZF"/>
+            </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <connections>
                 <outlet property="maybeBucket" destination="u8F-ne-eBp" id="rAa-8l-slb"/>
                 <outlet property="noBucket" destination="o6p-MY-cjB" id="Rhx-YT-mL6"/>
+                <outlet property="readyPrompt" destination="MMH-Ka-VtK" id="DD0-Kq-kUf"/>
                 <outlet property="yesBucket" destination="Iti-rA-q5V" id="QOD-c1-S8D"/>
                 <outletCollection property="avatars" destination="1Lu-FI-gAz" collectionClass="NSMutableArray" id="fiy-oi-e1a"/>
                 <outletCollection property="avatars" destination="k7t-mm-QgH" collectionClass="NSMutableArray" id="kye-gz-XAN"/>
@@ -82,7 +126,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CKG-EO-iuj" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CKG-EO-iuj" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="67" y="160" width="240" height="65"/>
                     <attributedString key="attributedText">
                         <fragment>
@@ -106,13 +150,13 @@ SAILED FOR TODAY.</string>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Why not ask a match to a date instead?" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uod-OD-wle">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Why not ask a match to a date instead?" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uod-OD-wle">
                     <rect key="frame" x="59.5" y="241" width="255.5" height="15"/>
                     <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="15"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MU1-Gw-hdC" userLabel="Divider">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MU1-Gw-hdC" userLabel="Divider">
                     <rect key="frame" x="97.5" y="272" width="180" height="1"/>
                     <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -120,25 +164,25 @@ SAILED FOR TODAY.</string>
                         <constraint firstAttribute="width" constant="180" id="h7a-fq-jwd"/>
                     </constraints>
                 </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Know someone who’d be a great Ketch?" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaI-Cz-QCy">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Know someone who’d be a great Ketch?" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaI-Cz-QCy">
                     <rect key="frame" x="60.5" y="289" width="253.5" height="15"/>
                     <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="15"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGh-sk-GVj" userLabel="Share SMS">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGh-sk-GVj" userLabel="Share SMS">
                     <rect key="frame" x="72" y="320" width="60" height="61"/>
                     <state key="normal" image="game-empty-share-sms">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9U-HK-NwG" userLabel="Share Facebook">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9U-HK-NwG" userLabel="Share Facebook">
                     <rect key="frame" x="157" y="320" width="61" height="61"/>
                     <state key="normal" image="game-empty-share-facebook">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNu-Ju-3F4" userLabel="Share Twitter">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNu-Ju-3F4" userLabel="Share Twitter">
                     <rect key="frame" x="243" y="320" width="60" height="61"/>
                     <state key="normal" image="game-empty-share-twitter">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -167,6 +211,7 @@ SAILED FOR TODAY.</string>
         </view>
     </objects>
     <resources>
+        <image name="game-arrow-down" width="27" height="35"/>
         <image name="game-bucket-anchor-white" width="105" height="101"/>
         <image name="game-bucket-keep-white" width="105" height="101"/>
         <image name="game-bucket-knot-white" width="105" height="101"/>
