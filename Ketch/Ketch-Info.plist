@@ -27,7 +27,7 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb730107913748748</string>
+				<string>fb$(FACEBOOK_APP_ID)</string>
 			</array>
 		</dict>
 	</array>
@@ -48,9 +48,9 @@
 		</array>
 	</dict>
 	<key>FacebookAppID</key>
-	<string>730107913748748</string>
+	<string>$(FACEBOOK_APP_ID)</string>
 	<key>FacebookDisplayName</key>
-	<string>Ketch</string>
+	<string>$(FACEBOOK_DISPLAY_NAME)</string>
 	<key>LSApplicationCategoryType</key>
 	<string></string>
 	<key>LSRequiresIPhoneOS</key>
