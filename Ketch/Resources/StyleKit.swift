@@ -53,106 +53,114 @@ public class StyleKit : NSObject {
 
     //// Drawing Methods
 
-    public class func drawKeepChoice() {
+    public class func drawKeepChoice(#filled: Bool) {
+        //// General Declarations
+        let context = UIGraphicsGetCurrentContext()
 
-        //// Page-1
+
+        //// Variable Declarations
+        let colorActive = filled ? StyleKit.pureWhite : StyleKit.teal
+        let expression: CGFloat = filled ? 1 : 0.5
+
         //// keep
-        //// Group 4
-        //// Fill-1 Drawing
-        var fill1Path = UIBezierPath()
-        fill1Path.moveToPoint(CGPointMake(89.69, 279.57))
-        fill1Path.addLineToPoint(CGPointMake(96.55, 281.54))
-        fill1Path.addLineToPoint(CGPointMake(93.01, 293.86))
-        fill1Path.addLineToPoint(CGPointMake(106.1, 284.28))
-        fill1Path.addLineToPoint(CGPointMake(114.16, 286.6))
-        fill1Path.addLineToPoint(CGPointMake(99.63, 297.28))
-        fill1Path.addLineToPoint(CGPointMake(106.4, 315.78))
-        fill1Path.addLineToPoint(CGPointMake(97.6, 313.25))
-        fill1Path.addLineToPoint(CGPointMake(91.96, 297.5))
-        fill1Path.addLineToPoint(CGPointMake(88.21, 310.56))
-        fill1Path.addLineToPoint(CGPointMake(81.35, 308.59))
-        fill1Path.addLineToPoint(CGPointMake(89.69, 279.57))
-        fill1Path.closePath()
-        fill1Path.miterLimit = 4;
-
-        fill1Path.usesEvenOddFillRule = true;
-
-        StyleKit.teal.setFill()
-        fill1Path.fill()
+        CGContextSaveGState(context)
+        CGContextSetAlpha(context, expression)
+        CGContextBeginTransparencyLayer(context, nil)
 
 
-        //// Fill-2 Drawing
-        var fill2Path = UIBezierPath()
-        fill2Path.moveToPoint(CGPointMake(139.92, 312.97))
-        fill2Path.addLineToPoint(CGPointMake(139.5, 318.97))
-        fill2Path.addLineToPoint(CGPointMake(119.72, 317.58))
-        fill2Path.addLineToPoint(CGPointMake(121.83, 287.47))
-        fill2Path.addLineToPoint(CGPointMake(141.26, 288.84))
-        fill2Path.addLineToPoint(CGPointMake(140.84, 294.84))
-        fill2Path.addLineToPoint(CGPointMake(128.49, 293.97))
-        fill2Path.addLineToPoint(CGPointMake(128.07, 299.89))
-        fill2Path.addLineToPoint(CGPointMake(138.28, 300.61))
-        fill2Path.addLineToPoint(CGPointMake(137.86, 306.61))
-        fill2Path.addLineToPoint(CGPointMake(127.65, 305.9))
-        fill2Path.addLineToPoint(CGPointMake(127.22, 312.08))
-        fill2Path.addLineToPoint(CGPointMake(139.92, 312.97))
-        fill2Path.closePath()
-        fill2Path.miterLimit = 4;
+        //// K-1 Drawing
+        var k1Path = UIBezierPath()
+        k1Path.moveToPoint(CGPointMake(89.69, 279.57))
+        k1Path.addLineToPoint(CGPointMake(96.55, 281.54))
+        k1Path.addLineToPoint(CGPointMake(93.01, 293.86))
+        k1Path.addLineToPoint(CGPointMake(106.1, 284.28))
+        k1Path.addLineToPoint(CGPointMake(114.16, 286.6))
+        k1Path.addLineToPoint(CGPointMake(99.63, 297.28))
+        k1Path.addLineToPoint(CGPointMake(106.4, 315.78))
+        k1Path.addLineToPoint(CGPointMake(97.6, 313.25))
+        k1Path.addLineToPoint(CGPointMake(91.96, 297.5))
+        k1Path.addLineToPoint(CGPointMake(88.21, 310.56))
+        k1Path.addLineToPoint(CGPointMake(81.35, 308.59))
+        k1Path.addLineToPoint(CGPointMake(89.69, 279.57))
+        k1Path.closePath()
+        k1Path.miterLimit = 4;
 
-        fill2Path.usesEvenOddFillRule = true;
+        k1Path.usesEvenOddFillRule = true;
 
-        StyleKit.teal.setFill()
-        fill2Path.fill()
-
-
-        //// Fill-3 Drawing
-        var fill3Path = UIBezierPath()
-        fill3Path.moveToPoint(CGPointMake(173.42, 310.02))
-        fill3Path.addLineToPoint(CGPointMake(174.17, 315.99))
-        fill3Path.addLineToPoint(CGPointMake(154.49, 318.46))
-        fill3Path.addLineToPoint(CGPointMake(150.74, 288.5))
-        fill3Path.addLineToPoint(CGPointMake(170.07, 286.08))
-        fill3Path.addLineToPoint(CGPointMake(170.82, 292.05))
-        fill3Path.addLineToPoint(CGPointMake(158.53, 293.59))
-        fill3Path.addLineToPoint(CGPointMake(159.27, 299.48))
-        fill3Path.addLineToPoint(CGPointMake(169.42, 298.21))
-        fill3Path.addLineToPoint(CGPointMake(170.17, 304.18))
-        fill3Path.addLineToPoint(CGPointMake(160.02, 305.46))
-        fill3Path.addLineToPoint(CGPointMake(160.79, 311.6))
-        fill3Path.addLineToPoint(CGPointMake(173.42, 310.02))
-        fill3Path.closePath()
-        fill3Path.miterLimit = 4;
-
-        fill3Path.usesEvenOddFillRule = true;
-
-        StyleKit.teal.setFill()
-        fill3Path.fill()
+        colorActive.setFill()
+        k1Path.fill()
 
 
-        //// Fill-4 Drawing
-        var fill4Path = UIBezierPath()
-        fill4Path.moveToPoint(CGPointMake(192.79, 302.01))
-        fill4Path.addLineToPoint(CGPointMake(195.58, 310.33))
-        fill4Path.addLineToPoint(CGPointMake(188.86, 312.59))
-        fill4Path.addLineToPoint(CGPointMake(179.34, 284.26))
-        fill4Path.addCurveToPoint(CGPointMake(203.4, 286.88), controlPoint1: CGPointMake(192.77, 276.98), controlPoint2: CGPointMake(200.88, 279.38))
-        fill4Path.addCurveToPoint(CGPointMake(192.79, 302.01), controlPoint1: CGPointMake(205.66, 293.61), controlPoint2: CGPointMake(202.23, 299.07))
-        fill4Path.addLineToPoint(CGPointMake(192.79, 302.01))
-        fill4Path.closePath()
-        fill4Path.moveToPoint(CGPointMake(190.8, 296.1))
-        fill4Path.addCurveToPoint(CGPointMake(196.44, 289.13), controlPoint1: CGPointMake(196.33, 294.47), controlPoint2: CGPointMake(197.45, 292.14))
-        fill4Path.addCurveToPoint(CGPointMake(187.94, 287.59), controlPoint1: CGPointMake(195.55, 286.48), controlPoint2: CGPointMake(192.72, 285.34))
-        fill4Path.addLineToPoint(CGPointMake(190.8, 296.1))
-        fill4Path.addLineToPoint(CGPointMake(190.8, 296.1))
-        fill4Path.closePath()
-        fill4Path.miterLimit = 4;
+        //// E-2 Drawing
+        var e2Path = UIBezierPath()
+        e2Path.moveToPoint(CGPointMake(139.92, 312.97))
+        e2Path.addLineToPoint(CGPointMake(139.5, 318.97))
+        e2Path.addLineToPoint(CGPointMake(119.72, 317.58))
+        e2Path.addLineToPoint(CGPointMake(121.83, 287.47))
+        e2Path.addLineToPoint(CGPointMake(141.26, 288.84))
+        e2Path.addLineToPoint(CGPointMake(140.84, 294.84))
+        e2Path.addLineToPoint(CGPointMake(128.49, 293.97))
+        e2Path.addLineToPoint(CGPointMake(128.07, 299.89))
+        e2Path.addLineToPoint(CGPointMake(138.28, 300.61))
+        e2Path.addLineToPoint(CGPointMake(137.86, 306.61))
+        e2Path.addLineToPoint(CGPointMake(127.65, 305.9))
+        e2Path.addLineToPoint(CGPointMake(127.22, 312.08))
+        e2Path.addLineToPoint(CGPointMake(139.92, 312.97))
+        e2Path.closePath()
+        e2Path.miterLimit = 4;
 
-        fill4Path.usesEvenOddFillRule = true;
+        e2Path.usesEvenOddFillRule = true;
 
-        StyleKit.teal.setFill()
-        fill4Path.fill()
+        colorActive.setFill()
+        e2Path.fill()
 
 
+        //// E-3 Drawing
+        var e3Path = UIBezierPath()
+        e3Path.moveToPoint(CGPointMake(173.42, 310.02))
+        e3Path.addLineToPoint(CGPointMake(174.17, 315.99))
+        e3Path.addLineToPoint(CGPointMake(154.49, 318.46))
+        e3Path.addLineToPoint(CGPointMake(150.74, 288.5))
+        e3Path.addLineToPoint(CGPointMake(170.07, 286.08))
+        e3Path.addLineToPoint(CGPointMake(170.82, 292.05))
+        e3Path.addLineToPoint(CGPointMake(158.53, 293.59))
+        e3Path.addLineToPoint(CGPointMake(159.27, 299.48))
+        e3Path.addLineToPoint(CGPointMake(169.42, 298.21))
+        e3Path.addLineToPoint(CGPointMake(170.17, 304.18))
+        e3Path.addLineToPoint(CGPointMake(160.02, 305.46))
+        e3Path.addLineToPoint(CGPointMake(160.79, 311.6))
+        e3Path.addLineToPoint(CGPointMake(173.42, 310.02))
+        e3Path.closePath()
+        e3Path.miterLimit = 4;
+
+        e3Path.usesEvenOddFillRule = true;
+
+        colorActive.setFill()
+        e3Path.fill()
+
+
+        //// E-4 Drawing
+        var e4Path = UIBezierPath()
+        e4Path.moveToPoint(CGPointMake(192.79, 302.01))
+        e4Path.addLineToPoint(CGPointMake(195.58, 310.33))
+        e4Path.addLineToPoint(CGPointMake(188.86, 312.59))
+        e4Path.addLineToPoint(CGPointMake(179.34, 284.26))
+        e4Path.addCurveToPoint(CGPointMake(203.4, 286.88), controlPoint1: CGPointMake(192.77, 276.98), controlPoint2: CGPointMake(200.88, 279.38))
+        e4Path.addCurveToPoint(CGPointMake(192.79, 302.01), controlPoint1: CGPointMake(205.66, 293.61), controlPoint2: CGPointMake(202.23, 299.07))
+        e4Path.addLineToPoint(CGPointMake(192.79, 302.01))
+        e4Path.closePath()
+        e4Path.moveToPoint(CGPointMake(190.8, 296.1))
+        e4Path.addCurveToPoint(CGPointMake(196.44, 289.13), controlPoint1: CGPointMake(196.33, 294.47), controlPoint2: CGPointMake(197.45, 292.14))
+        e4Path.addCurveToPoint(CGPointMake(187.94, 287.59), controlPoint1: CGPointMake(195.55, 286.48), controlPoint2: CGPointMake(192.72, 285.34))
+        e4Path.addLineToPoint(CGPointMake(190.8, 296.1))
+        e4Path.addLineToPoint(CGPointMake(190.8, 296.1))
+        e4Path.closePath()
+        e4Path.miterLimit = 4;
+
+        e4Path.usesEvenOddFillRule = true;
+
+        colorActive.setFill()
+        e4Path.fill()
 
 
         //// Bezier Drawing
@@ -285,30 +293,29 @@ public class StyleKit : NSObject {
         bezierPath.addLineToPoint(CGPointMake(42.02, 39.12))
         bezierPath.addCurveToPoint(CGPointMake(241.2, 39.33), controlPoint1: CGPointMake(97.1, -13.11), controlPoint2: CGPointMake(186.21, -13.04))
         bezierPath.closePath()
-        StyleKit.teal.setFill()
+        colorActive.setFill()
         bezierPath.fill()
+
+
+        CGContextEndTransparencyLayer(context)
+        CGContextRestoreGState(context)
     }
 
-    public class func drawSkipChoice() {
+    public class func drawSkipChoice(#filled: Bool) {
         //// General Declarations
         let context = UIGraphicsGetCurrentContext()
 
-        //// Page-1
-        CGContextSaveGState(context)
-        CGContextTranslateCTM(context, 1.75, 1)
 
-
+        //// Variable Declarations
+        let colorActive = filled ? StyleKit.pureWhite : StyleKit.teal
+        let expression: CGFloat = filled ? 1 : 0.5
 
         //// skip
+        CGContextSaveGState(context)
+        CGContextSetAlpha(context, expression)
+        CGContextBeginTransparencyLayer(context, nil)
 
 
-
-        CGContextRestoreGState(context)
-
-
-        //// Page-
-        //// skip 2
-        //// Skip 3
         //// Oval-5 Drawing
         var oval5Path = UIBezierPath()
         oval5Path.moveToPoint(CGPointMake(141.75, 268.57))
@@ -397,11 +404,10 @@ public class StyleKit : NSObject {
 
         oval5Path.usesEvenOddFillRule = true;
 
-        StyleKit.teal.setFill()
+        colorActive.setFill()
         oval5Path.fill()
 
 
-        //// Group 5
         //// Fill-5 Drawing
         var fill5Path = UIBezierPath()
         fill5Path.moveToPoint(CGPointMake(108.32, 291.88))
@@ -424,7 +430,7 @@ public class StyleKit : NSObject {
 
         fill5Path.usesEvenOddFillRule = true;
 
-        StyleKit.teal.setFill()
+        colorActive.setFill()
         fill5Path.fill()
 
 
@@ -447,7 +453,7 @@ public class StyleKit : NSObject {
 
         fill6Path.usesEvenOddFillRule = true;
 
-        StyleKit.teal.setFill()
+        colorActive.setFill()
         fill6Path.fill()
 
 
@@ -463,7 +469,7 @@ public class StyleKit : NSObject {
 
         fill7Path.usesEvenOddFillRule = true;
 
-        StyleKit.teal.setFill()
+        colorActive.setFill()
         fill7Path.fill()
 
 
@@ -487,14 +493,29 @@ public class StyleKit : NSObject {
 
         fill8Path.usesEvenOddFillRule = true;
 
-        StyleKit.teal.setFill()
+        colorActive.setFill()
         fill8Path.fill()
+
+
+        CGContextEndTransparencyLayer(context)
+        CGContextRestoreGState(context)
     }
 
-    public class func drawMarryChoice() {
+    public class func drawMarryChoice(#filled: Bool) {
+        //// General Declarations
+        let context = UIGraphicsGetCurrentContext()
 
-        //// Page-1
-        //// marry 2
+
+        //// Variable Declarations
+        let colorActive = filled ? StyleKit.pureWhite : StyleKit.teal
+        let expression: CGFloat = filled ? 1 : 0.5
+
+        //// Group
+        CGContextSaveGState(context)
+        CGContextSetAlpha(context, expression)
+        CGContextBeginTransparencyLayer(context, nil)
+
+
         //// e Drawing
         var ePath = UIBezierPath()
         ePath.moveToPoint(CGPointMake(211.65, 18.02))
@@ -601,11 +622,10 @@ public class StyleKit : NSObject {
 
         ePath.usesEvenOddFillRule = true;
 
-        StyleKit.teal.setFill()
+        colorActive.setFill()
         ePath.fill()
 
 
-        //// Imported-Layers
         //// Fill-1 Drawing
         var fill1Path = UIBezierPath()
         fill1Path.moveToPoint(CGPointMake(55.33, 294.78))
@@ -627,7 +647,7 @@ public class StyleKit : NSObject {
 
         fill1Path.usesEvenOddFillRule = true;
 
-        StyleKit.teal.setFill()
+        colorActive.setFill()
         fill1Path.fill()
 
 
@@ -654,14 +674,14 @@ public class StyleKit : NSObject {
 
         fill2Path.usesEvenOddFillRule = true;
 
-        StyleKit.teal.setFill()
+        colorActive.setFill()
         fill2Path.fill()
 
 
         //// Fill-3 Drawing
         var fill3Path = UIBezierPath()
         fill3Path.moveToPoint(CGPointMake(156.5, 305.88))
-        fill3Path.addLineToPoint(CGPointMake(164.07, 317.46))
+        fill3Path.addLineToPoint(CGPointMake(164.08, 317.46))
         fill3Path.addLineToPoint(CGPointMake(155.48, 317.75))
         fill3Path.addLineToPoint(CGPointMake(149.69, 308.14))
         fill3Path.addCurveToPoint(CGPointMake(146.47, 308.33), controlPoint1: CGPointMake(148.66, 308.26), controlPoint2: CGPointMake(147.63, 308.29))
@@ -669,12 +689,12 @@ public class StyleKit : NSObject {
         fill3Path.addLineToPoint(CGPointMake(139.71, 318.29))
         fill3Path.addLineToPoint(CGPointMake(138.7, 288.42))
         fill3Path.addCurveToPoint(CGPointMake(160.99, 297.39), controlPoint1: CGPointMake(153.65, 285.33), controlPoint2: CGPointMake(160.73, 289.69))
-        fill3Path.addCurveToPoint(CGPointMake(156.5, 305.88), controlPoint1: CGPointMake(161.11, 301.21), controlPoint2: CGPointMake(158.81, 304.43))
+        fill3Path.addCurveToPoint(CGPointMake(156.5, 305.88), controlPoint1: CGPointMake(161.11, 301.21), controlPoint2: CGPointMake(158.82, 304.43))
         fill3Path.addLineToPoint(CGPointMake(156.5, 305.88))
         fill3Path.closePath()
         fill3Path.moveToPoint(CGPointMake(146.26, 302.19))
         fill3Path.addCurveToPoint(CGPointMake(153.68, 297.51), controlPoint1: CGPointMake(151.91, 302.43), controlPoint2: CGPointMake(153.78, 300.47))
-        fill3Path.addCurveToPoint(CGPointMake(145.99, 294.07), controlPoint1: CGPointMake(153.59, 294.93), controlPoint2: CGPointMake(151.07, 293.16))
+        fill3Path.addCurveToPoint(CGPointMake(145.99, 294.07), controlPoint1: CGPointMake(153.59, 294.93), controlPoint2: CGPointMake(151.08, 293.16))
         fill3Path.addLineToPoint(CGPointMake(146.26, 302.19))
         fill3Path.addLineToPoint(CGPointMake(146.26, 302.19))
         fill3Path.closePath()
@@ -682,7 +702,7 @@ public class StyleKit : NSObject {
 
         fill3Path.usesEvenOddFillRule = true;
 
-        StyleKit.teal.setFill()
+        colorActive.setFill()
         fill3Path.fill()
 
 
@@ -710,7 +730,7 @@ public class StyleKit : NSObject {
 
         fill4Path.usesEvenOddFillRule = true;
 
-        StyleKit.teal.setFill()
+        colorActive.setFill()
         fill4Path.fill()
 
 
@@ -731,8 +751,44 @@ public class StyleKit : NSObject {
 
         fillPath.usesEvenOddFillRule = true;
 
-        StyleKit.teal.setFill()
+        colorActive.setFill()
         fillPath.fill()
+
+
+        CGContextEndTransparencyLayer(context)
+        CGContextRestoreGState(context)
+    }
+
+    //// Generated Images
+
+    public class func imageOfKeepChoice(#filled: Bool) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(283, 319), false, 0)
+            StyleKit.drawKeepChoice(filled: filled)
+
+        let imageOfKeepChoice = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        return imageOfKeepChoice
+    }
+
+    public class func imageOfSkipChoice(#filled: Bool) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(283, 318), false, 0)
+            StyleKit.drawSkipChoice(filled: filled)
+
+        let imageOfSkipChoice = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        return imageOfSkipChoice
+    }
+
+    public class func imageOfMarryChoice(#filled: Bool) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(CGSizeMake(283, 318), false, 0)
+            StyleKit.drawMarryChoice(filled: filled)
+
+        let imageOfMarryChoice = UIGraphicsGetImageFromCurrentImageContext()!
+        UIGraphicsEndImageContext()
+
+        return imageOfMarryChoice
     }
 
 }
