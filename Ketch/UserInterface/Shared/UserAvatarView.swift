@@ -41,12 +41,9 @@ class UserAvatarView : UIImageView {
     
     var didTap : ((user: User?) -> Void)? {
         didSet {
-            if !userInteractionEnabled {
-                userInteractionEnabled = true
-                whenTapped { [weak self] in
-                    if let block = self?.didTap {
-                        block(user: self?.user)
-                    }
+            whenTapped { [weak self] in
+                if let block = self?.didTap {
+                    block(user: self?.user)
                 }
             }
         }
@@ -56,6 +53,7 @@ class UserAvatarView : UIImageView {
     // TODO: Non-nib-specific init?
     override func awakeFromNib() {
         super.awakeFromNib()
+        userInteractionEnabled = true
         contentMode = .ScaleToFill
         image = UIImage(named: R.ImagesAssets.girlPlaceholder)
     }
