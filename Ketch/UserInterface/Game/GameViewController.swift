@@ -33,6 +33,7 @@ class GameViewController : BaseViewController {
                 this.showSubview(candidates.count >= 3 ? this.gameView : this.emptyView)
             }
         }
+        // TODO: Make this 10x less verbose. Add some concept of reactive variable
         unreadConnections = FetchViewModel(frc: Connection.by(ConnectionAttributes.hasUnreadMessage.rawValue, value: true).frc())
         unreadConnections.signal.subscribeNext { [weak self] _ in
             if let this = self {
@@ -54,7 +55,7 @@ class GameViewController : BaseViewController {
         
         backgroundView.ketchIcon.userInteractionEnabled = true
         backgroundView.ketchIcon.whenTapped { [weak self] in
-//            if let this = self { this.confirmChoices(this) }
+            if let this = self { this.confirmChoices(this) }
         }
         backgroundView.settingsButton.addTarget(self, action: "goToSettings:", forControlEvents: .TouchUpInside)
         backgroundView.dockButton.addTarget(self, action: "goToDock:", forControlEvents: .TouchUpInside)
@@ -82,36 +83,23 @@ class GameViewController : BaseViewController {
         performSegue(.GameToDock, sender: sender)
     }
 
-//    @IBAction func confirmChoices(sender: AnyObject) {
-//        var marry : Candidate?
-//        var keep : Candidate?
-//        var skip : Candidate?
-//
-//        for avatar in self.avatars {
-//            let isMarry = CGRectIntersectsRect(avatar.frame, marrySlot.frame)
-//            let isKeep = CGRectIntersectsRect(avatar.frame, keepSlot.frame)
-//            let isSkip = CGRectIntersectsRect(avatar.frame, skipSlot.frame)
-//            if isMarry {
-//                marry = avatar.user?.candidate
-//            } else if isKeep {
-//                keep = avatar.user?.candidate
-//            } else if isSkip {
-//                skip = avatar.user?.candidate
-//            }
-//        }
-//        if marry == nil || keep == nil || skip == nil {
-//            UIAlertView.show("Error", message: "Need to uniquely assign keep match marry")
-//        } else {
-//            Core.candidateService.submitChoices(marry!, no: skip!, maybe: keep!).deliverOnMainThread().subscribeNextAs { (res : [String:String]) -> () in
-//                if res.count > 0 {
-//                    let vc = self.makeViewController(.NewConnection) as NewConnectionViewController
-//                    vc.connections = map(res, { (key, value) -> Connection in
-//                        return Connection.findByDocumentID(value)!
-//                    })
-//                    self.navigationController?.pushViewController(vc, animated: true)
-//                }
-//            }
-//        }
-//    }
+    @IBAction func confirmChoices(sender: AnyObject) {
+        if !gameView.isReady {
+            UIAlertView.show("Error", message: "Need to uniquely assign keep match marry")
+        } else {
+            let marry = gameView.chosenCandidate(.Yes)!
+            let keep = gameView.chosenCandidate(.Maybe)!
+            let skip = gameView.chosenCandidate(.No)!
+            Core.candidateService.submitChoices(marry, no: skip, maybe: keep).deliverOnMainThread().subscribeNextAs { (res : [String:String]) -> () in
+                if res.count > 0 {
+                    let vc = self.makeViewController(.NewConnection) as NewConnectionViewController
+                    vc.connections = map(res, { (key, value) -> Connection in
+                        return Connection.findByDocumentID(value)!
+                    })
+                    self.navigationController?.pushViewController(vc, animated: true)
+                }
+            }
+        }
+    }
     
 }

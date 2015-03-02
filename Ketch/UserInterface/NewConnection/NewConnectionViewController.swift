@@ -45,6 +45,9 @@ class NewConnectionViewController : BaseViewController {
         if let user = connections?.first?.user {
             titleLabel.text = "It's a Ketch!"
             centerAvatar.user = user
+            centerAvatar.hidden = false
+            leftAvatar.hidden = true
+            rightAvatar.hidden = true
             // TODO: Move this into string file
             promptLabel.setRawText("It seems that \(user.firstName!) also thought you were pretty darn cute. Why not chat and see how things go?")
         }
@@ -57,6 +60,9 @@ class NewConnectionViewController : BaseViewController {
                 titleLabel.text = "Lucky you!"
                 leftAvatar.user = user1
                 rightAvatar.user = user2
+                centerAvatar.hidden = true
+                leftAvatar.hidden = false
+                rightAvatar.hidden = false
                 promptLabel.setRawText("Both \(user1.firstName!) and \(user2.firstName!) were charmed by you. Why not get in touch and see how things go?")
             }
         }

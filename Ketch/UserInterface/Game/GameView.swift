@@ -19,19 +19,30 @@ class GameView : TransparentView {
     var targets : [SnapTarget]!
     var animator : UIDynamicAnimator!
     var velocityFactor : CGFloat = 0.1 // Multiplied with pan velocity to compute new pos
+    var isReady : Bool {
+        // TODO: Make this functional
+        // Every target that has a choice also has an avatar source
+        for target in targets {
+            if (target.source != nil) != (target.choice != nil) {
+                return false
+            }
+        }
+        return true
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        animator = UIDynamicAnimator(referenceView: self)
+        
         sources = map(avatars) { AvatarSource($0) }
         targets = map(sources as [AvatarSource], {
-            SnapTarget(position: $0.view.center, choice: nil, source: nil)
+            SnapTarget(self.animator, position: $0.view.center, source: $0)
         })
         targets.extend(map([yesBucket, maybeBucket, noBucket], {
-            SnapTarget(position: $0.center, choice: nil, source: nil)
+            SnapTarget(self.animator, position: $0.center, choice: self.choiceForBucket($0))
         }))
         
-        animator = UIDynamicAnimator(referenceView: self)
         let collision = UICollisionBehavior(items: avatars)
         collision.translatesReferenceBoundsIntoBoundary = true
         animator.addBehavior(collision)
@@ -44,6 +55,28 @@ class GameView : TransparentView {
         userInteractionEnabled = true
     }
     
+    func choiceForBucket(bucketView: UIImageView) -> Candidate.Choice? {
+        switch bucketView {
+        case yesBucket:
+            return .Yes
+        case maybeBucket:
+            return .Maybe
+        case noBucket:
+            return .No
+        default:
+            return nil
+        }
+    }
+    
+    func chosenCandidate(choice: Candidate.Choice?) -> Candidate? {
+        for source in sources {
+            if source.target?.choice == choice {
+                return source.view.user?.candidate
+            }
+        }
+        return nil
+    }
+    
     // TODO: Make game work for multiple screen sizes
     
     func handleAvatarPan(pan: UIPanGestureRecognizer) {
@@ -51,10 +84,9 @@ class GameView : TransparentView {
         if let source = sources.filter({ $0.view == pan.view }).first {
             switch pan.state {
             case .Began:
-                animator.removeBehavior(source.target?.snap)
+                source.target = nil
                 source.drag = UIAttachmentBehavior(item: source.view, attachedToAnchor: location)
                 animator.addBehavior(source.drag)
-                source.target = nil
             case .Changed:
                 source.drag?.anchorPoint = location
             case .Ended:
@@ -63,30 +95,69 @@ class GameView : TransparentView {
                 }
                 let translation = pan.velocityInView(self) * velocityFactor
                 let translatedCenter = source.view.center + translation
+                for t in targets {
+                    println("Option: \(t)")
+                }
                 let target = SnapTarget.closest(targets, point: translatedCenter)!
-                target.snap = UISnapBehavior(item: source.view, snapToPoint: target.position)
-                animator.addBehavior(target.snap)
+                willChangeValueForKey("isReady")
                 source.target = target
+                didChangeValueForKey("isReady")
+                println("\tChosen: \(target)\n\tready: \(isReady)")
             default:
                 break
             }
         }
     }
     
-    class SnapTarget : Printable {
-        var position : CGPoint
-        var choice: Candidate.Choice?
-        var source: AvatarSource?
-        var snap : UISnapBehavior?
+    // TODO: Make this subclass of UserAvatarView, implemnt drag behavior
+    // Rename to something better like CandidateView
+    // One way reference from target -> source to make it easier to maintain consistency
+    class AvatarSource {
+        let view : UserAvatarView
+        var drag : UIAttachmentBehavior?
+        var target : SnapTarget? { didSet { updateIfNeeded(oldValue) } }
         
-        var description: String {
-            return "SnapTarget<\(position)>"
+        init(_ view: UserAvatarView) {
+            self.view = view
+            updateIfNeeded(nil)
         }
         
-        init(position: CGPoint, choice: Candidate.Choice?, source: AvatarSource?) {
+        func updateIfNeeded(oldTarget: SnapTarget?) {
+            if (oldTarget !== target) {
+                oldTarget?.source = nil
+                target?.source = self
+            }
+        }
+    }
+    
+    class SnapTarget : Printable {
+        let animator : UIDynamicAnimator
+        var position : CGPoint
+        var snap : UISnapBehavior?
+        var choice: Candidate.Choice?
+        var source: AvatarSource? { didSet { updateIfNeeded(oldValue) } }
+        
+        var description: String {
+            return "SnapTarget<\(position), c:\(choice?.rawValue) s:\(source != nil)>"
+        }
+        
+        init(_ animator: UIDynamicAnimator, position: CGPoint, choice: Candidate.Choice? = nil, source: AvatarSource? = nil) {
+            self.animator = animator
             self.position = position
             self.choice = choice
             self.source = source
+            updateIfNeeded(nil)
+        }
+        
+        func updateIfNeeded(oldSource: AvatarSource?) {
+            if oldSource !== source {
+                source?.target = self
+                animator.removeBehavior(snap)
+                if let view = source?.view {
+                    snap = UISnapBehavior(item: view, snapToPoint: position)
+                    animator.addBehavior(snap)
+                }
+            }
         }
         
         class func closest(targets: [SnapTarget], point: CGPoint) -> SnapTarget? {
@@ -95,20 +166,4 @@ class GameView : TransparentView {
         }
     }
     
-    class AvatarSource : NSObject {
-        let view : UserAvatarView
-        var drag : UIAttachmentBehavior?
-        var target : SnapTarget? {
-            didSet {
-                if (oldValue !== target) {
-                    oldValue?.source = nil
-                    target?.source = self
-                }
-            }
-        }
-        
-        init(_ view: UserAvatarView) {
-            self.view = view
-        }
-    }
 }
