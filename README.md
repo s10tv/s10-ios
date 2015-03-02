@@ -15,7 +15,7 @@ Open `Ketch.xcworkspace` and start developing
 By default project should be building with dev configuration. To change, use explicity xcconfig
 
 ```
-ipa build -s Ketch --xcconfig Ketch/Configs/[Dev|Beta|Prod].xcconfig --xcargs BUNDLE_BUILD="0" --no-archive
+ipa build --xcconfig Configs/[Dev|Beta|Prod].xcconfig
 ```
 
 ## Distribute to Crashlytics

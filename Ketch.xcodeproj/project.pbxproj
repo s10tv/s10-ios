@@ -560,7 +560,8 @@
 				EABD43D91AA1D29C00B07813 /* Beta.xcconfig */,
 				EABD43DA1AA1D29C00B07813 /* Prod.xcconfig */,
 			);
-			path = Configs;
+			name = Configs;
+			path = ../Configs;
 			sourceTree = "<group>";
 		};
 		EAD7B2A91A9F0BC100FA6740 /* Views */ = {
