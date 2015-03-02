@@ -13,6 +13,7 @@ class GameViewController : BaseViewController {
 
     var backgroundView: KetchBackgroundView { return view as KetchBackgroundView }
     
+    @IBOutlet weak var container: UIView!
     @IBOutlet var gameView: GameView!
     @IBOutlet var emptyView: UIView!
     
@@ -66,8 +67,8 @@ class GameViewController : BaseViewController {
         if subview.superview == nil {
             gameView.removeFromSuperview()
             emptyView.removeFromSuperview()
-            view.addSubview(subview)
-            subview.makeEdgesEqualTo(view)
+            container.addSubview(subview)
+            subview.makeEdgesEqualTo(container)
         }
     }
     
