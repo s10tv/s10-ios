@@ -6,22 +6,6 @@
 	objectVersion = 46;
 	objects = {
 
-/* Begin PBXAggregateTarget section */
-		EAFD13C41A7744F700754556 /* Regenerate */ = {
-			isa = PBXAggregateTarget;
-			buildConfigurationList = EAFD13C71A7744F700754556 /* Build configuration list for PBXAggregateTarget "Regenerate" */;
-			buildPhases = (
-				EAFD13C81A77450000754556 /* Run mogenerator */,
-				EA7AA3611AA24BAC003383BE /* Run sbconstants */,
-				EA7AA3661AA261AD003383BE /* Run xcres */,
-			);
-			dependencies = (
-			);
-			name = Regenerate;
-			productName = Mogenerator;
-		};
-/* End PBXAggregateTarget section */
-
 /* Begin PBXBuildFile section */
 		44E19D671B859E037A1401D8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38E9CB79C25FDAE97BD9D3D /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		6B5EC25A8146C639505797AA /* R.m in Sources */ = {isa = PBXBuildFile; fileRef = 42B1ADC65A81E44C8D5906C0 /* R.m */; };
@@ -665,9 +649,6 @@
 						CreatedOnToolsVersion = 6.1.1;
 						TestTargetID = EA9F35391A74CC6900E0C65D;
 					};
-					EAFD13C41A7744F700754556 = {
-						CreatedOnToolsVersion = 6.1.1;
-					};
 				};
 			};
 			buildConfigurationList = EA9F35351A74CC6900E0C65D /* Build configuration list for PBXProject "Ketch" */;
@@ -698,7 +679,6 @@
 			targets = (
 				EA9F35391A74CC6900E0C65D /* Ketch */,
 				EA9F35511A74CC6900E0C65D /* KetchTests */,
-				EAFD13C41A7744F700754556 /* Regenerate */,
 			);
 		};
 /* End PBXProject section */
@@ -797,35 +777,6 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		EA7AA3611AA24BAC003383BE /* Run sbconstants */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run sbconstants";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "/bin/bash --login";
-			shellScript = "source \"$HOME/.rvm/scripts/rvm\"\ncd Ketch\nsbconstants -s Base.lproj/ -w -d > Resources/SBConstants.swift";
-			showEnvVarsInLog = 0;
-		};
-		EA7AA3661AA261AD003383BE /* Run xcres */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run xcres";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = "/bin/bash --login";
-			shellScript = "source \"$HOME/.rvm/scripts/rvm\"\nxcres --no-ansi build $PROJECT_FILE_PATH $SRCROOT/Ketch/Resources/R";
-		};
 		EA7F26D91A891B6500629078 /* Upload DSYM to Fabric (Crashlytics) */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -839,21 +790,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "releaseConfig=\"Release\"\nif [ \"$releaseConfig\" = \"${CONFIGURATION}\" ]; then\n    echo \"Running Fabric Crashlytics\"\n    ./Pods/Fabric/Fabric.framework/run 4cdb005d0ddfebc8865c0a768de9b43c993e9113 83001519164842a323e4d70c5970b041c248835fec59db59b409f5b364e47f72\nfi";
-		};
-		EAFD13C81A77450000754556 /* Run mogenerator */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Run mogenerator";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "PATH=${PATH}:/usr/local/bin:/opt/local/bin\ncd Ketch\nmogenerator -m Models/Ketch.xcdatamodeld/Ketch.xcdatamodel/ --human-dir Models --machine-dir Models/_Models --swift\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1133,20 +1069,6 @@
 			};
 			name = Release;
 		};
-		EAFD13C51A7744F700754556 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Debug;
-		};
-		EAFD13C61A7744F700754556 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				PRODUCT_NAME = "$(TARGET_NAME)";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1173,15 +1095,6 @@
 			buildConfigurations = (
 				EA9F35601A74CC6900E0C65D /* Debug */,
 				EA9F35611A74CC6900E0C65D /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		EAFD13C71A7744F700754556 /* Build configuration list for PBXAggregateTarget "Regenerate" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				EAFD13C51A7744F700754556 /* Debug */,
-				EAFD13C61A7744F700754556 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
