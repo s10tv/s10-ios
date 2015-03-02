@@ -31,8 +31,8 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
         collectionView.backgroundColor = UIColor.clearColor()
         
         let bubbleFactory = JSQMessagesBubbleImageFactory()
-        outgoingBubbleData = bubbleFactory.outgoingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleLightGrayColor())
-        incomingBubbleData = bubbleFactory.incomingMessagesBubbleImageWithColor(UIColor.jsq_messageBubbleGreenColor())
+        outgoingBubbleData = bubbleFactory.outgoingMessagesBubbleImageWithColor(StyleKit.white)
+        incomingBubbleData = bubbleFactory.incomingMessagesBubbleImageWithColor(StyleKit.pureWhite)
         
         assert(connection != nil, "Connection being nil is not supported on chatVC")
         
@@ -110,7 +110,7 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
         let cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPath) as JSQMessagesCollectionViewCell
         // This doesn't work if layout changes (say diff avatar size). So need to figure out better way
         cell.avatarImageView.makeCircular()
-        cell.textView.textColor = UIColor.blackColor()
+        cell.textView.textColor = StyleKit.navy
         return cell
     }
     
