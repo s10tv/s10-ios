@@ -33,7 +33,6 @@ class GameView : TransparentView {
         
         animator = UIDynamicAnimator(referenceView: self)
         let collision = UICollisionBehavior(items: avatars)
-        collision.collisionMode = UICollisionBehaviorMode.Boundaries
         collision.translatesReferenceBoundsIntoBoundary = true
         animator.addBehavior(collision)
         
