@@ -48,10 +48,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func applicationDidBecomeActive(application: UIApplication) {
         FBAppCall.handleDidBecomeActive()
+        application.applicationIconBadgeNumber = 0 // Clear notification first
+        application.applicationIconBadgeNumber = Connection.unreadCount()
     }
     
     func applicationWillResignActive(application: UIApplication) {
         SugarRecord.applicationWillResignActive()
+        application.applicationIconBadgeNumber = Connection.unreadCount()
     }
     
     func applicationWillTerminate(application: UIApplication) {

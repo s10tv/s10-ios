@@ -108,6 +108,7 @@ class CoreService {
         
         let appid = NSBundle.mainBundle().infoDictionary?["CFBundleIdentifier"] as NSString
         
+        // TODO: This doesn't seem to update on app force kill and restart, but it should
         self.loginSignal.then({ () -> RACSignal! in
             return self.meteor.callMethod("user/addPushToken", params: [appid, apsEnv, pushTokenData.hexString()])
         }).subscribeError({ error in

@@ -40,4 +40,8 @@ class Connection: _Connection {
     class func findByDocumentID(documentID: String) -> Connection? {
         return Core.mainContext.objectInCollection("connections", documentID: documentID) as? Connection
     }
+    
+    class func unreadCount() -> Int {
+        return Connection.by(ConnectionAttributes.hasUnreadMessage.rawValue, value: true).count()
+    }
 }
