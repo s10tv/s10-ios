@@ -22,3 +22,8 @@ deployment:
     branch: master
     commands:
       - ipa distribute:crashlytics -f Ketch.ipa -g team
+
+general:
+  artifacts:
+    - "Ketch.app.dSYM.zip"
+    - "Ketch.ipa"
