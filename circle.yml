@@ -24,9 +24,8 @@ test:
       ipa build -t --xcconfig Configs/${XCCONFIG_NAME}.xcconfig \
                    --xcargs BUNDLE_BUILD=$BN
   post:
-    - mkdir products
-    - source ./scripts/env.sh && mv Ketch.ipa products/${BN}.ipa
-    - source ./scripts/env.sh && mv Ketch.app.dSYM.zip products/${BN}.app.dSYM.zip
+    - source ./scripts/env.sh && mv Ketch.ipa $CIRCLE_ARTIFACTS/${BN}.ipa
+    - source ./scripts/env.sh && mv Ketch.app.dSYM.zip $CIRCLE_ARTIFACTS/${BN}.app.dSYM.zip
 
 deployment:
   Ketch Dev:
@@ -36,11 +35,7 @@ deployment:
       - >
         source ./scripts/env.sh &&
         "$CRASHLYTICS_FRAMEWORK_PATH/submit" $CRASHLYTICS_API_KEY $CRASHLYTICS_BUILD_SECRET \
-                                            -ipaPath products/${BN}.ipa \
+                                            -ipaPath $CIRCLE_ARTIFACTS/${BN}.ipa \
                                             -groupAliases team \
                                             -notifications NO \
                                             -notesPath release_notes.txt
-
-general:
-  artifacts:
-    - products
