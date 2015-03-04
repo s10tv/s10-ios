@@ -14,7 +14,7 @@ dependencies:
 test:
   override:
     - export BUNDLE_BUILD=${CIRCLE_BUILD_NUM}d
-    - ipa build -s Ketch --xcconfig Ketch/Configs/Dev.xcconfig --xcargs BUNDLE_BUILD="$BUNDLE_BUILD" --no-archive
+    - ipa build --xcconfig Configs/Dev.xcconfig --xcargs BUNDLE_BUILD="$BUNDLE_BUILD"
 
 deployment:
   master:
