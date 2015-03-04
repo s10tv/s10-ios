@@ -790,7 +790,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "releaseConfig=\"Release\"\nif [ \"$releaseConfig\" = \"${CONFIGURATION}\" ]; then\n    echo \"Running Fabric Crashlytics\"\n    ./Pods/CrashlyticsFramework/Crashlytics.framework/run 4cdb005d0ddfebc8865c0a768de9b43c993e9113 83001519164842a323e4d70c5970b041c248835fec59db59b409f5b364e47f72\nfi";
+			shellScript = "echo \"Uploading DSYM to Crashlytics\"\n./Pods/CrashlyticsFramework/Crashlytics.framework/run 4cdb005d0ddfebc8865c0a768de9b43c993e9113 83001519164842a323e4d70c5970b041c248835fec59db59b409f5b364e47f72\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
