@@ -20,7 +20,7 @@ pod 'Snap', '~> 0.0.4'
 pod 'TCMobileProvision', :git => 'https://github.com/tcurdt/TCMobileProvision'
 pod 'JSQMessagesViewController', '~> 6.1'
 
-pod 'Fabric/Crashlytics', '~> 1.1'
+pod 'CrashlyticsFramework', '~> 2.2'
 
 # Debug only
 

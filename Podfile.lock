@@ -1,13 +1,11 @@
 PODS:
   - Bolts (1.1.3)
+  - CrashlyticsFramework (2.2.9)
   - DateTools (1.5.0)
   - DTFoundation/Core (1.7.5)
   - DTFoundation/DTASN1 (1.7.5):
     - DTFoundation/Core
   - EDColor (0.4.0)
-  - Fabric/Core (1.1.1)
-  - Fabric/Crashlytics (1.1.1):
-    - Fabric/Core
   - Facebook-iOS-SDK (3.22.0):
     - Bolts (~> 1.0)
   - InflectorKit (0.0.1)
@@ -44,9 +42,9 @@ PODS:
     - DTFoundation/DTASN1 (~> 1.6)
 
 DEPENDENCIES:
+  - CrashlyticsFramework (~> 2.2)
   - DateTools (~> 1.5)
   - EDColor (~> 0.4)
-  - Fabric/Crashlytics (~> 1.1)
   - Facebook-iOS-SDK (~> 3.22)
   - JSQMessagesViewController (~> 6.1)
   - Meteor (~> 0.1)
@@ -76,10 +74,10 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Bolts: 3db0a875235e0c9042b013af13af0f00f79b102c
+  CrashlyticsFramework: 013bae3c30d5b9bfad1aa10008e155e18473984c
   DateTools: 7df78f0c4719eb28cfd2d58a90fafd036e73156c
   DTFoundation: bea4e07459f0f88a5aa3b8258fab1576bbe2e58c
   EDColor: bcdb8600b7a456f4408ce1d7e7fc001588919254
-  Fabric: 567f47540bd93de0e15ad60a7492bcefb54da6db
   Facebook-iOS-SDK: 0eda8ff7120aada0a9c5f98552f7625da6c3440a
   InflectorKit: bb1f5c9feb01d17450b8bcdeb7ab1ef1832b2247
   JSQMessagesViewController: e93a288a9662d4519c95a28a8c0eec10beae1bfc
