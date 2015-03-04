@@ -17,14 +17,15 @@ dependencies:
     - "Pods"
 
 test:
-  pre:
-    - mkdir products
   override:
     - >
       source ./scripts/env.sh && 
       ipa build -t --xcconfig Configs/Dev.xcconfig \
-                   --xcargs BUNDLE_BUILD=$BN \
-                   --ipa products/${BN}.ipa
+                   --xcargs BUNDLE_BUILD=$BN
+  post:
+    - mkdir products
+    - source ./scripts/env.sh && mv Ketch.ipa products/${BN}.ipa
+    - source ./scripts/env.sh && mv Ketch.app.dSYM.zip products/${BN}.app.dSYM.zip
 
 deployment:
   master:
