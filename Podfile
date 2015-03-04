@@ -3,6 +3,8 @@ platform :ios, '8.0'
 inhibit_all_warnings!
 use_frameworks!
 
+link_with 'Ketch', 'KetchTests'
+
 pod 'ReactiveCocoa', '~> 2.4' # Update to 3.0 when ready
 
 pod 'SugarRecord/CoreData', :git => 'https://github.com/tonyxiao/SugarRecord'

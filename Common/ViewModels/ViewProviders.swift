@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 Serendipity. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol ProviderDelegate {
     func numberOfSections() -> Int

@@ -26,6 +26,11 @@ class KetchTests: XCTestCase {
         XCTAssert(true, "Pass")
     }
     
+    func testArrayViewModel() {
+        let vm = ArrayViewModel(content: ["1", "2", "3", "4"])
+        XCTAssertEqual(vm.numberOfItemsInSection(0), 4, "Should have 4 items")
+    }
+    
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measureBlock() {
