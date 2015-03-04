@@ -21,7 +21,7 @@ deployment:
   master:
     branch: master
     commands:
-      - ipa distribute:crashlytics -f Ketch.ipa -g team
+      - ipa distribute:crashlytics -f Ketch.ipa -g team -a $CRASHLYTICS_API_KEY -s $CRASHLYTICS_BUILD_SECRET
 
 general:
   artifacts:

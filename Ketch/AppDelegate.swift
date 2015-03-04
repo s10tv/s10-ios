@@ -14,7 +14,7 @@ import CrashlyticsFramework
 var Core : CoreService!
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
 
     var window: UIWindow?
 
@@ -26,6 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // TODO: Put api key into unified settings file
+        Crashlytics.sharedInstance().delegate = self
         Crashlytics.startWithAPIKey("4cdb005d0ddfebc8865c0a768de9b43c993e9113")
         Core = CoreService()
         
@@ -77,5 +78,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         println("Did receive notification \(userInfo)")
+    }
+    
+    // MARK: Crashlytics
+    func crashlytics(crashlytics: Crashlytics!, didDetectCrashDuringPreviousExecution crash: CLSCrashReport!) {
+        println("Crash detected during previous run \(crash)")
     }
 }
