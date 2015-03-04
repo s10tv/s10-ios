@@ -8,19 +8,12 @@ machine:
 dependencies:
   pre:
     - sudo gem install cocoapods -v 0.36.0.beta.2
-    - sudo gem install shenzhen cupertino xcpretty
+    - sudo gem install shenzhen cupertino
     - ./scripts/import_credentials.sh
   cache_directories:
     - "Pods"
 
 test:
-  override:
-    - |
-      set -o pipefail
-      xcodebuild -workspace $XCODE_WORKSPACE -scheme $XCODE_SCHEME -sdk iphonesimulator \
-                  test | xcpretty -c -r junit
-      mv build/reports/junit.xml $CIRCLE_TEST_REPORTS
-
   post:
     - ? |
         source ./scripts/env.sh
