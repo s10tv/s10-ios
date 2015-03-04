@@ -21,7 +21,7 @@ test:
   override:
     - >
       source ./scripts/env.sh && 
-      ipa build -t --xcconfig Configs/Dev.xcconfig \
+      ipa build -t --xcconfig Configs/${XCCONFIG_NAME}.xcconfig \
                    --xcargs BUNDLE_BUILD=$BN
   post:
     - mkdir products
