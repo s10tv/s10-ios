@@ -18,12 +18,14 @@ dependencies:
 
 test:
   post:
-    - |
-      source ./scripts/env.sh
-      ipa build -t --xcconfig Configs/${XCCONFIG_NAME}.xcconfig \
-                   --xcargs BUNDLE_BUILD=$BN
-      mv Ketch.ipa $CIRCLE_ARTIFACTS/${BN}.ipa
-      mv Ketch.app.dSYM.zip $CIRCLE_ARTIFACTS/${BN}.app.dSYM.zip
+    - ? |
+        source ./scripts/env.sh
+        ipa build -t --xcconfig Configs/${XCCONFIG_NAME}.xcconfig \
+                     --xcargs BUNDLE_BUILD=$BN \
+                     --no-clean
+        mv Ketch.ipa $CIRCLE_ARTIFACTS/${BN}.ipa
+        mv Ketch.app.dSYM.zip $CIRCLE_ARTIFACTS/${BN}.app.dSYM.zip
+      : timeout: 900
 
 deployment:
   Ketch Dev:
