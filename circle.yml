@@ -15,15 +15,23 @@ dependencies:
 
 test:
   override:
-    - ipa build -t --verbose --xcconfig Configs/Dev.xcconfig --xcargs BUNDLE_BUILD="$CIRCLE_BUILD_NUM"d
+    - >
+      ./scripts/env.sh && 
+      ipa build -t --xcconfig Configs/Dev.xcconfig
+                   --xcargs BUNDLE_BUILD=$BN
+                   --ipa products/${BN}.ipa
 
 deployment:
   master:
     branch: master
     commands:
-      - ipa distribute:crashlytics -f Ketch.ipa -g team -a $CRASHLYTICS_API_KEY -s $CRASHLYTICS_BUILD_SECRET
+      - >
+        ./scripts/env.sh &&
+        ipa distribute:crashlytics -f products/${BN}.ipa 
+                                   -g team
+                                   -a $CRASHLYTICS_API_KEY 
+                                   -s $CRASHLYTICS_BUILD_SECRET
 
 general:
   artifacts:
-    - "Ketch.app.dSYM.zip"
-    - "Ketch.ipa"
+    - products
