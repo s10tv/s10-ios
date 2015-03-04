@@ -14,11 +14,11 @@ cd "scripts"
 
 # Keychain
 
-KEYCHAIN_NAME="ios-build.keychain"
+KEYCHAIN_NAME="milasya.keychain"
 KEYCHAIN_PATH="$HOME/Library/Keychains/$KEYCHAIN_NAME"
 CODE_SIGN=/usr/bin/codesign
 
-security create-keychain $KEYCHAIN_NAME
+security create-keychain -p ketchy $KEYCHAIN_NAME
 security set-keychain-settings $KEYCHAIN_PATH # Don't autolock / timeout
 security list-keychains -d user -s ~/Library/Keychains/login.keychain $KEYCHAIN_PATH # Add to search list
 

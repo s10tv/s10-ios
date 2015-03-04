@@ -5,10 +5,9 @@ machine:
     CRASHLYTICS_FRAMEWORK_PATH: Pods/CrashlyticsFramework/Crashlytics.framework
 dependencies:
   pre:
+    - ./scripts/import_credentials.sh
     - sudo gem install cocoapods -v 0.36.0.beta.2
     - sudo gem install cupertino shenzhen
-    - ./scripts/import_credentials.sh
-
 
   cache_directories:
     - "Pods"
