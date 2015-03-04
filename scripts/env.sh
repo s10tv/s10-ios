@@ -20,3 +20,6 @@ case $CIRCLE_BRANCH in
 		XCCONFIG_NAME=Dev
 		;;
 esac
+
+export BN=$BN
+export XCCONFIG_NAME=$XCCONFIG_NAME

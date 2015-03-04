@@ -7,16 +7,15 @@ machine:
 
 dependencies:
   pre:
-    - sudo gem install cupertino
-    - ./scripts/import_credentials.sh
-    - sudo gem install shenzhen
     - sudo gem install cocoapods -v 0.36.0.beta.2
-
-
+    - sudo gem install shenzhen cupertino xcpretty
+    - ./scripts/import_credentials.sh
   cache_directories:
     - "Pods"
 
 test:
+  override:
+    - xcodebuild -workspace Ketch.xcworkspace -scheme Ketch -sdk iphonesimulator test | xcpretty -c
   post:
     - ? |
         source ./scripts/env.sh
