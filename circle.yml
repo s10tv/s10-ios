@@ -1,4 +1,5 @@
 machine:
+  timezone: America/Los_Angeles
   environment:
     CRASHLYTICS_API_KEY: 4cdb005d0ddfebc8865c0a768de9b43c993e9113
     CRASHLYTICS_BUILD_SECRET: 83001519164842a323e4d70c5970b041c248835fec59db59b409f5b364e47f72
@@ -28,15 +29,17 @@ test:
     - source ./scripts/env.sh && mv Ketch.app.dSYM.zip products/${BN}.app.dSYM.zip
 
 deployment:
-  master:
+  Ketch Dev:
     branch: master
     commands:
+      - source ./scripts/env.sh && ./scripts/release_notes.sh >> release_notes.txt
       - >
         source ./scripts/env.sh &&
-        ipa distribute:crashlytics -f products/${BN}.ipa \
-                                   -g team \
-                                   -a $CRASHLYTICS_API_KEY \
-                                   -s $CRASHLYTICS_BUILD_SECRET
+        "$CRASHLYTICS_FRAMEWORK_PATH/submit" $CRASHLYTICS_API_KEY $CRASHLYTICS_BUILD_SECRET \
+                                            -ipaPath products/${BN}.ipa \
+                                            -groupAliases team \
+                                            -notifications NO \
+                                            -notesPath release_notes.txt
 
 general:
   artifacts:
