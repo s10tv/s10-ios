@@ -17,8 +17,8 @@ test:
   override:
     - >
       ./scripts/env.sh && 
-      ipa build -t --xcconfig Configs/Dev.xcconfig
-                   --xcargs BUNDLE_BUILD=$BN
+      ipa build -t --xcconfig Configs/Dev.xcconfig \
+                   --xcargs BUNDLE_BUILD=$BN \
                    --ipa products/${BN}.ipa
 
 deployment:
@@ -27,9 +27,9 @@ deployment:
     commands:
       - >
         ./scripts/env.sh &&
-        ipa distribute:crashlytics -f products/${BN}.ipa 
-                                   -g team
-                                   -a $CRASHLYTICS_API_KEY 
+        ipa distribute:crashlytics -f products/${BN}.ipa \
+                                   -g team \
+                                   -a $CRASHLYTICS_API_KEY \
                                    -s $CRASHLYTICS_BUILD_SECRET
 
 general:
