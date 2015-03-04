@@ -17,22 +17,21 @@ dependencies:
     - "Pods"
 
 test:
-  override:
-    - >
-      source ./scripts/env.sh && 
+  post:
+    - |
+      source ./scripts/env.sh
       ipa build -t --xcconfig Configs/${XCCONFIG_NAME}.xcconfig \
                    --xcargs BUNDLE_BUILD=$BN
-  post:
-    - source ./scripts/env.sh && mv Ketch.ipa $CIRCLE_ARTIFACTS/${BN}.ipa
-    - source ./scripts/env.sh && mv Ketch.app.dSYM.zip $CIRCLE_ARTIFACTS/${BN}.app.dSYM.zip
+      mv Ketch.ipa $CIRCLE_ARTIFACTS/${BN}.ipa
+      mv Ketch.app.dSYM.zip $CIRCLE_ARTIFACTS/${BN}.app.dSYM.zip
 
 deployment:
   Ketch Dev:
     branch: master
     commands:
-      - source ./scripts/env.sh && ./scripts/release_notes.sh >> release_notes.txt
-      - >
-        source ./scripts/env.sh &&
+      - |
+        source ./scripts/env.sh
+        ./scripts/release_notes.sh >> release_notes.txt
         "$CRASHLYTICS_FRAMEWORK_PATH/submit" $CRASHLYTICS_API_KEY $CRASHLYTICS_BUILD_SECRET \
                                             -ipaPath $CIRCLE_ARTIFACTS/${BN}.ipa \
                                             -groupAliases team \
