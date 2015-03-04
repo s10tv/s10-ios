@@ -1,5 +1,6 @@
 # Ketch-iOS
 
+[![Circle CI](https://circleci.com/gh/Ketchteam/ketch-ios/tree/master.svg?style=svg&circle-token=fd4466969ab998ed3ab739c0a526fade067abe24)](https://circleci.com/gh/Ketchteam/ketch-ios/tree/master)
 
 ## Getting started
 ```
