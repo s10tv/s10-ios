@@ -11,7 +11,7 @@ dependencies:
 
   cache_directories:
     - "Pods"
-    - "$HOME/.rvm"
+    - "~/.rvm"
 
 test:
   override:
