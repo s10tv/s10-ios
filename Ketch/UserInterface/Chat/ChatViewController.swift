@@ -31,7 +31,7 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
         collectionView.backgroundColor = UIColor.clearColor()
         
         let bubbleFactory = JSQMessagesBubbleImageFactory()
-        outgoingBubbleData = bubbleFactory.outgoingMessagesBubbleImageWithColor(StyleKit.white)
+        outgoingBubbleData = bubbleFactory.outgoingMessagesBubbleImageWithColor(StyleKit.darkWhite)
         incomingBubbleData = bubbleFactory.incomingMessagesBubbleImageWithColor(StyleKit.pureWhite)
         
         assert(connection != nil, "Connection being nil is not supported on chatVC")
@@ -55,8 +55,8 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
         
         let avatarLength = 30
         let layout = self.collectionView.collectionViewLayout
-        layout.incomingAvatarViewSize = CGSize(width: avatarLength, height: avatarLength)
-        layout.outgoingAvatarViewSize = CGSize(width: avatarLength, height: avatarLength)
+        layout.incomingAvatarViewSize = CGSizeZero
+        layout.outgoingAvatarViewSize = CGSizeZero
     }
     
     override func viewDidLayoutSubviews() {
