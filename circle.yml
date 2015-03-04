@@ -15,9 +15,11 @@ dependencies:
     - "Pods"
 
 test:
+  pre:
+    - mkdir products
   override:
     - >
-      ./scripts/env.sh && 
+      source ./scripts/env.sh && 
       ipa build -t --xcconfig Configs/Dev.xcconfig \
                    --xcargs BUNDLE_BUILD=$BN \
                    --ipa products/${BN}.ipa
@@ -27,7 +29,7 @@ deployment:
     branch: master
     commands:
       - >
-        ./scripts/env.sh &&
+        source ./scripts/env.sh &&
         ipa distribute:crashlytics -f products/${BN}.ipa \
                                    -g team \
                                    -a $CRASHLYTICS_API_KEY \
