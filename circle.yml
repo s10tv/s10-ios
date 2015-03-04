@@ -13,8 +13,7 @@ dependencies:
 
 test:
   override:
-    - export BUNDLE_BUILD=${CIRCLE_BUILD_NUM}d
-    - ipa build --xcconfig Configs/Dev.xcconfig --xcargs BUNDLE_BUILD="$BUNDLE_BUILD"
+    - ipa build --xcconfig Configs/Dev.xcconfig --xcargs BUNDLE_BUILD="$CIRCLE_BUILD_NUM"d
 
 deployment:
   master:
