@@ -9,13 +9,7 @@ machine:
 
 dependencies:
   pre:
-    - |
-      POD_VERSION=$(var=$(tail -1 Podfile.lock); echo ${var##COCOAPODS:})
-      if [ -z "$POD_VERSION" ]; then
-          echo "POD_VERSION could not be determined"
-          exit 1
-      fi
-      sudo gem install cocoapods -v $POD_VERSION
+    - sudo gem install cocoapods -v $(var=$(tail -1 Podfile.lock); echo ${var##COCOAPODS:})
     - sudo gem install shenzhen cupertino
     - ./scripts/import_credentials.sh
   cache_directories:
