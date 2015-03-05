@@ -39,9 +39,9 @@ deployment:
     commands:
       - |
         source ./scripts/env.sh
-        ./scripts/release_notes.sh >> release_notes.txt
+        ./scripts/release_notes.sh >> $CIRCLE_ARTIFACTS/release_notes.txt
         "$CRASHLYTICS_FRAMEWORK_PATH/submit" $CRASHLYTICS_API_KEY $CRASHLYTICS_BUILD_SECRET \
                                             -ipaPath $CIRCLE_ARTIFACTS/${BN}.ipa \
                                             -groupAliases team \
                                             -notifications NO \
-                                            -notesPath release_notes.txt
+                                            -notesPath $CIRCLE_ARTIFACTS/release_notes.txt
