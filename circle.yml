@@ -1,5 +1,7 @@
 machine:
   environment:
+    XCODE_WORKSPACE: Ketch.xcworkspace
+    XCODE_SCHEME: Ketch
     CRASHLYTICS_API_KEY: 4cdb005d0ddfebc8865c0a768de9b43c993e9113
     CRASHLYTICS_BUILD_SECRET: 83001519164842a323e4d70c5970b041c248835fec59db59b409f5b364e47f72
     CRASHLYTICS_FRAMEWORK_PATH: Pods/CrashlyticsFramework/Crashlytics.framework
@@ -7,7 +9,7 @@ machine:
 
 dependencies:
   pre:
-    - | 
+    - |
       POD_VERSION=$(var=$(tail -1 Podfile.lock); echo ${var##COCOAPODS:})
       if [ -z "$POD_VERSION" ]; then
           echo "POD_VERSION could not be determined"
