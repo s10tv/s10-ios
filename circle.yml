@@ -31,6 +31,7 @@ test:
         mv Ketch.ipa $CIRCLE_ARTIFACTS/${BN}.ipa
         mv Ketch.app.dSYM.zip $CIRCLE_ARTIFACTS/${BN}.app.dSYM.zip
       : timeout: 900
+    - zip -FSr $CIRCLE_ARTIFACTS/Pods.zip Pods/
 
 deployment:
   Ketch Dev:
@@ -44,7 +45,3 @@ deployment:
                                             -groupAliases team \
                                             -notifications NO \
                                             -notesPath release_notes.txt
-
-general:
-  artifacts:
-    - "Pods"
