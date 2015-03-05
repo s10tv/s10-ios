@@ -1,3 +1,5 @@
+set -e
+set -o pipefail
 
 case $CIRCLE_BRANCH in
 	master)

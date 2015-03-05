@@ -24,7 +24,7 @@ dependencies:
 test:
   post:
     - ? |
-        source ./scripts/env.sh
+        source ./scripts/circle_env.sh
         ipa build -t --xcconfig Configs/${XCCONFIG_NAME}.xcconfig \
                      --xcargs BUNDLE_BUILD=$BN \
                      --no-clean
@@ -38,8 +38,8 @@ deployment:
     branch: [master, beta, prod]
     commands:
       - |
-        source ./scripts/env.sh
-        ./scripts/release_notes.sh >> $CIRCLE_ARTIFACTS/release_notes.txt
+        source ./scripts/circle_env.sh
+        ./scripts/circle_release_notes.sh >> $CIRCLE_ARTIFACTS/release_notes.txt
         "$CRASHLYTICS_FRAMEWORK_PATH/submit" $CRASHLYTICS_API_KEY $CRASHLYTICS_BUILD_SECRET \
                                             -ipaPath $CIRCLE_ARTIFACTS/${BN}.ipa \
                                             -groupAliases team \
