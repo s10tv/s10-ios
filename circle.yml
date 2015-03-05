@@ -44,3 +44,7 @@ deployment:
                                             -groupAliases team \
                                             -notifications NO \
                                             -notesPath release_notes.txt
+
+general:
+  artifacts:
+    - "Pods"
