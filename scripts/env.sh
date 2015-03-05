@@ -1,22 +1,19 @@
 
-# CIRCLE_BRANCH=random
-# CIRCLE_BUILD_NUM=1123
-
 case $CIRCLE_BRANCH in
-	master) 
-		BN=${CIRCLE_BUILD_NUM}d 
+	master)
+		BN=${CIRCLE_BUILD_NUM}d
 		XCCONFIG_NAME=Dev
 		;;
 	beta)
-		BN=${CIRCLE_BUILD_NUM}d 
+		BN=${CIRCLE_BUILD_NUM}d
 		XCCONFIG_NAME=Beta
 		;;
 	prod)
-		BN=${CIRCLE_BUILD_NUM} 
+		BN=${CIRCLE_BUILD_NUM}
 		XCCONFIG_NAME=Prod
 		;;
 	*)
-		BN=${CIRCLE_BUILD_NUM}\* 
+		BN=${CIRCLE_BUILD_NUM}\*
 		XCCONFIG_NAME=Dev
 		;;
 esac
