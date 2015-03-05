@@ -3,8 +3,9 @@
 
 if  [[ -z "$APPLE_ID" ]] || \
     [[ -z "$APPLE_ID_PASSWORD" ]] || \
-    [[ -z "$DEV_KEY_PASSPHRASE" ]] || \
-    [[ -z "$DISTRIBUTION_KEY_PASSPHRASE" ]]; then
+    [[ -z "$DEV_P12_PASS" ]] || \
+    [[ -z "$DIST_P12_PASS" ]] || \
+    [[ -z "$ENT_DIST_P12_PASS" ]]; then
     echo "One or more required variables are not set"
     exit 1
 fi
@@ -25,14 +26,10 @@ security set-keychain-settings $KEYCHAIN_PATH # Don't autolock / timeout
 security list-keychains -d user -s ~/Library/Keychains/login.keychain $KEYCHAIN_PATH # Add to search list
 
 security import "certs/apple_developer_relations.cer"   -k $KEYCHAIN_PATH -T $CODE_SIGN
-security import "certs/development.cer"                 -k $KEYCHAIN_PATH -T $CODE_SIGN
-security import "certs/distribution.cer"                -k $KEYCHAIN_PATH -T $CODE_SIGN
-security import "certs/distribution_enterprise.cer"     -k $KEYCHAIN_PATH -T $CODE_SIGN
 
-# TODO: Combine private key and certificate into a single p12 file
-# Each certificate should have its own private key anyways
-security import "keys/development.p12"  -k $KEYCHAIN_PATH -T $CODE_SIGN -P $DEV_KEY_PASSPHRASE
-security import "keys/distribution.p12" -k $KEYCHAIN_PATH -T $CODE_SIGN -P $DISTRIBUTION_KEY_PASSPHRASE
+security import "keys/development.p12"             -k $KEYCHAIN_PATH -T $CODE_SIGN -P $DEV_P12_PASS
+security import "keys/distribution.p12"            -k $KEYCHAIN_PATH -T $CODE_SIGN -P $DIST_P12_PASS
+security import "keys/enterprise_distribution.p12" -k $KEYCHAIN_PATH -T $CODE_SIGN -P $ENT_DIST_P12_PASS
 
 ## Provisioning Profiles
 
