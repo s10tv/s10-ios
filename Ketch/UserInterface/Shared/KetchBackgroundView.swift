@@ -56,6 +56,6 @@ import Foundation
         let context = UIGraphicsGetCurrentContext()
         let topCenter = CGPointMake(CGRectGetMidX(bounds), 0)
         let bottomCenter = CGPointMake(CGRectGetMidX(bounds), CGRectGetMaxY(bounds))
-        CGContextDrawLinearGradient(context, StyleKit.gradientWater, topCenter, bottomCenter, 0)
+        CGContextDrawLinearGradient(context, StyleKit.gradientWater2, topCenter, bottomCenter, 0)
     }
 }

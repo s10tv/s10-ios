@@ -33,7 +33,7 @@ public class StyleKit : NSObject {
         static var gradientBlue: CGGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [StyleKit.brandBlue.CGColor, StyleKit.brandAlt.CGColor], [0, 1])
         static var gradientWater: CGGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [StyleKit.gradientWaterColor.CGColor, StyleKit.brandBlue.CGColor, StyleKit.brandAlt.CGColor], [0, 0.19, 1])
         static var gradientSand: CGGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [StyleKit.gradientSandColor.CGColor, StyleKit.gradientSandColor2.CGColor], [0, 1])
-        static var gradientWater2: CGGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [StyleKit.waterTop.CGColor, StyleKit.waterBottom.CGColor], [0, 1])
+        static var gradientWater2: CGGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [StyleKit.waterTop.CGColor, StyleKit.waterTop.blendedColorWithFraction(0.5, ofColor: StyleKit.waterBottom).CGColor, StyleKit.waterBottom.CGColor], [0, 0.25, 1])
     }
 
     //// Colors
@@ -1217,6 +1217,18 @@ extension UIColor {
         var red: CGFloat = 1.0, green: CGFloat = 1.0, blue: CGFloat = 1.0, alpha: CGFloat = 1.0
         self.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
         return UIColor(red: red * (1-shadow), green: green * (1-shadow), blue: blue * (1-shadow), alpha: alpha * (1-shadow) + shadow)
+    }
+    func blendedColorWithFraction(fraction: CGFloat, ofColor color: UIColor) -> UIColor {
+        var r1: CGFloat = 1.0, g1: CGFloat = 1.0, b1: CGFloat = 1.0, a1: CGFloat = 1.0
+        var r2: CGFloat = 1.0, g2: CGFloat = 1.0, b2: CGFloat = 1.0, a2: CGFloat = 1.0
+
+        self.getRed(&r1, green: &g1, blue: &b1, alpha: &a1)
+        color.getRed(&r2, green: &g2, blue: &b2, alpha: &a2)
+
+        return UIColor(red: r1 * (1 - fraction) + r2 * fraction,
+            green: g1 * (1 - fraction) + g2 * fraction,
+            blue: b1 * (1 - fraction) + b2 * fraction,
+            alpha: a1 * (1 - fraction) + a2 * fraction);
     }
 }
 
