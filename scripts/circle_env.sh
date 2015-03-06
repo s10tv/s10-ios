@@ -7,7 +7,7 @@ case $CIRCLE_BRANCH in
 		XCCONFIG_NAME=Dev
 		;;
 	beta)
-		BN=${CIRCLE_BUILD_NUM}d
+		BN=${CIRCLE_BUILD_NUM}b
 		XCCONFIG_NAME=Beta
 		;;
 	prod)
