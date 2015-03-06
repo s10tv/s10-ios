@@ -56,7 +56,6 @@
 		EA3777761A966EC10055DE99 /* TransatTextStandard.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA3777711A966EC10055DE99 /* TransatTextStandard.otf */; };
 		EA409D391A8C681A00988B8B /* FacebookExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA409D381A8C681A00988B8B /* FacebookExtension.swift */; };
 		EA409D3F1A8C75F600988B8B /* ConnectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA409D3B1A8C75F600988B8B /* ConnectionCell.swift */; };
-		EA409D401A8C75F600988B8B /* ConnectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA409D3C1A8C75F600988B8B /* ConnectionCell.xib */; };
 		EA409D411A8C75F600988B8B /* DockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA409D3D1A8C75F600988B8B /* DockView.xib */; };
 		EA409D421A8C75F600988B8B /* DockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA409D3E1A8C75F600988B8B /* DockViewController.swift */; };
 		EA4A66571AA2D9BB0019D601 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A66561AA2D9BB0019D601 /* GameView.swift */; };
@@ -81,6 +80,7 @@
 		EA7AA36A1AA26597003383BE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA7AA3671AA26597003383BE /* Localizable.strings */; };
 		EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3681AA26597003383BE /* SBConstants.swift */; };
 		EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3691AA26597003383BE /* StyleKit.swift */; };
+		EA8EE6CF1AAA0FD100E646EE /* ConnectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA8EE6CE1AAA0FD100E646EE /* ConnectionCell.xib */; };
 		EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
 		EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35461A74CC6900E0C65D /* Main.storyboard */; };
 		EA9F354A1A74CC6900E0C65D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Images.xcassets */; };
@@ -177,7 +177,6 @@
 		EA3777711A966EC10055DE99 /* TransatTextStandard.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextStandard.otf; sourceTree = "<group>"; };
 		EA409D381A8C681A00988B8B /* FacebookExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookExtension.swift; sourceTree = "<group>"; };
 		EA409D3B1A8C75F600988B8B /* ConnectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionCell.swift; sourceTree = "<group>"; };
-		EA409D3C1A8C75F600988B8B /* ConnectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionCell.xib; sourceTree = "<group>"; };
 		EA409D3D1A8C75F600988B8B /* DockView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DockView.xib; sourceTree = "<group>"; };
 		EA409D3E1A8C75F600988B8B /* DockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DockViewController.swift; sourceTree = "<group>"; };
 		EA4A66561AA2D9BB0019D601 /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
@@ -202,6 +201,7 @@
 		EA7AA3671AA26597003383BE /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		EA7AA3681AA26597003383BE /* SBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstants.swift; sourceTree = "<group>"; };
 		EA7AA3691AA26597003383BE /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
+		EA8EE6CE1AAA0FD100E646EE /* ConnectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionCell.xib; sourceTree = "<group>"; };
 		EA9F353A1A74CC6900E0C65D /* Ketch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ketch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9F353E1A74CC6900E0C65D /* Ketch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ketch-Info.plist"; sourceTree = "<group>"; };
 		EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -429,7 +429,7 @@
 			isa = PBXGroup;
 			children = (
 				EA409D3B1A8C75F600988B8B /* ConnectionCell.swift */,
-				EA409D3C1A8C75F600988B8B /* ConnectionCell.xib */,
+				EA8EE6CE1AAA0FD100E646EE /* ConnectionCell.xib */,
 				EA409D3D1A8C75F600988B8B /* DockView.xib */,
 				EA409D3E1A8C75F600988B8B /* DockViewController.swift */,
 			);
@@ -703,7 +703,6 @@
 				EA1DA3811A8D189400433093 /* NewConnectionView.xib in Resources */,
 				EA409D411A8C75F600988B8B /* DockView.xib in Resources */,
 				EA341DA11A8C88CC00A6077B /* JSQMessagesLoadEarlierHeaderView.xib in Resources */,
-				EA409D401A8C75F600988B8B /* ConnectionCell.xib in Resources */,
 				EA1970141A83549300FEBA7F /* ProfileView.xib in Resources */,
 				EA3777741A966EC10055DE99 /* TransatTextLight.otf in Resources */,
 				EA1970121A83549300FEBA7F /* EditProfileView.xib in Resources */,
@@ -713,6 +712,7 @@
 				EA7AA36A1AA26597003383BE /* Localizable.strings in Resources */,
 				EA341DA01A8C88CC00A6077B /* JSQMessagesCollectionViewCellOutgoing.xib in Resources */,
 				EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */,
+				EA8EE6CF1AAA0FD100E646EE /* ConnectionCell.xib in Resources */,
 				EA3777751A966EC10055DE99 /* TransatTextMedium.otf in Resources */,
 				EA66510E1AA0C7C8001BA40C /* WelcomeView.xib in Resources */,
 				EA9F354A1A74CC6900E0C65D /* Images.xcassets in Resources */,
