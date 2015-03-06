@@ -47,7 +47,7 @@ class GameView : TransparentView, UIDynamicAnimatorDelegate {
             SnapTarget(self.animator, position: $0.view.center, source: $0)
         })
         targets.extend(map([yesBucket, maybeBucket, noBucket], {
-            SnapTarget(self.animator, position: $0.center + CGPointMake(0, -12),
+            SnapTarget(self.animator, position: $0.center + CGPointMake(0, -11),
                                         choice: self.choiceForBucket($0))
         }))
         

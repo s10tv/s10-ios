@@ -44,7 +44,7 @@
                     </constraints>
                     <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="15"/>
                     <state key="normal" title="CLOSE">
-                        <color key="titleColor" red="0.59607843137254901" green="0.58823529411764708" blue="0.50980392156862742" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleColor" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
                         <action selector="goBack:" destination="-1" eventType="touchUpInside" id="AgY-dz-6H8"/>
@@ -53,7 +53,7 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lola Forner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ic-hO-IZ3" userLabel="Name">
                     <rect key="frame" x="116" y="22" width="88.5" height="18"/>
                     <fontDescription key="fontDescription" name="TransatTextMedium" family="Transat Text" pointSize="18"/>
-                    <color key="textColor" red="0.59607843140000005" green="0.58823529409999997" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="textColor" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Nrc-Dc-N50" userLabel="Avatar" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
@@ -65,7 +65,7 @@
                     </constraints>
                     <userDefinedRuntimeAttributes>
                         <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                            <color key="value" red="0.59607843140000005" green="0.58823529409999997" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="value" red="0.14509803921568629" green="0.6470588235294118" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </userDefinedRuntimeAttribute>
                         <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                             <real key="value" value="6"/>
@@ -142,25 +142,25 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31 years old" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ee-BL-JGE">
                     <rect key="frame" x="65" y="236" width="77.5" height="15"/>
                     <fontDescription key="fontDescription" name="TransatTextMedium" family="Transat Text" pointSize="15"/>
-                    <color key="textColor" red="0.59607843140000005" green="0.58823529409999997" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="textColor" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You’re a VP of Commerce" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oh4-96-yng">
                     <rect key="frame" x="65" y="291" width="166" height="15"/>
                     <fontDescription key="fontDescription" name="TransatTextMedium" family="Transat Text" pointSize="15"/>
-                    <color key="textColor" red="0.59607843140000005" green="0.58823529409999997" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="textColor" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Studied at Yale University" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="20m-eu-yIP">
                     <rect key="frame" x="65" y="346" width="171" height="15"/>
                     <fontDescription key="fontDescription" name="TransatTextMedium" family="Transat Text" pointSize="15"/>
-                    <color key="textColor" red="0.59607843140000005" green="0.58823529409999997" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="textColor" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You’re about 5' 10&quot; tall" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pg4-G6-NiR">
                     <rect key="frame" x="65" y="401" width="147.5" height="15"/>
                     <fontDescription key="fontDescription" name="TransatTextMedium" family="Transat Text" pointSize="15"/>
-                    <color key="textColor" red="0.59607843140000005" green="0.58823529409999997" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="textColor" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Api-ed-xez" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
@@ -168,7 +168,7 @@
                     <attributedString key="attributedText">
                         <fragment content="Outgoing guy tired of games and looking for someone to share many laughs to come and explore the world with.">
                             <attributes>
-                                <color key="NSColor" red="0.59607843140000005" green="0.58823529409999997" blue="0.50980392159999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="NSColor" red="0.14509803921568629" green="0.6470588235294118" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <font key="NSFont" size="15" name="TransatTextMedium"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" minimumLineHeight="19"/>
                             </attributes>

@@ -28,12 +28,12 @@ public class StyleKit : NSObject {
         static var gradientSandColor2: UIColor = UIColor(red: 0.941, green: 0.980, blue: 0.969, alpha: 1.000)
         static var pureWhite: UIColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
         static var darkWhite: UIColor = StyleKit.white.colorWithBrightness(0.9)
-        static var waterTop: UIColor = UIColor(red: 0.729, green: 1.000, blue: 0.996, alpha: 1.000)
+        static var waterTop: UIColor = UIColor(red: 0.773, green: 1.000, blue: 0.997, alpha: 1.000)
         static var waterBottom: UIColor = UIColor(red: 0.055, green: 0.894, blue: 0.941, alpha: 1.000)
         static var gradientBlue: CGGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [StyleKit.brandBlue.CGColor, StyleKit.brandAlt.CGColor], [0, 1])
         static var gradientWater: CGGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [StyleKit.gradientWaterColor.CGColor, StyleKit.brandBlue.CGColor, StyleKit.brandAlt.CGColor], [0, 0.19, 1])
-        static var gradientSand: CGGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [StyleKit.gradientSandColor.CGColor, StyleKit.gradientSandColor2.CGColor], [0, 1])
-        static var gradientWater2: CGGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [StyleKit.waterTop.CGColor, StyleKit.waterTop.blendedColorWithFraction(0.5, ofColor: StyleKit.waterBottom).CGColor, StyleKit.waterBottom.CGColor], [0, 0.25, 1])
+        static var gradientSand: CGGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [StyleKit.gradientSandColor2.CGColor, StyleKit.waterTop.CGColor], [0, 1])
+        static var gradientWater2: CGGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [StyleKit.waterTop.CGColor, StyleKit.waterTop.blendedColorWithFraction(0.5, ofColor: StyleKit.waterBottom).CGColor, StyleKit.waterBottom.CGColor], [0, 0.1, 1])
     }
 
     //// Colors
