@@ -51,4 +51,11 @@ import Foundation
             self.animateWaterlineUp(completion: completion)
         }
     }
+    
+    override func drawRect(rect: CGRect) {
+        let context = UIGraphicsGetCurrentContext()
+        let topCenter = CGPointMake(CGRectGetMidX(bounds), 0)
+        let bottomCenter = CGPointMake(CGRectGetMidX(bounds), CGRectGetMaxY(bounds))
+        CGContextDrawLinearGradient(context, StyleKit.gradientWater, topCenter, bottomCenter, 0)
+    }
 }
