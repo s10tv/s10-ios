@@ -17,7 +17,7 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="mUa-cS-ru4">
+        <view contentMode="scaleToFill" id="mUa-cS-ru4" customClass="GradientBackgroundView" customModule="Ketch" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -82,7 +82,7 @@
                     <items/>
                 </toolbar>
             </subviews>
-            <color key="backgroundColor" red="0.043137254899999998" green="0.8980392157" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="3cc-kC-cwZ" firstAttribute="width" secondItem="3cc-kC-cwZ" secondAttribute="height" multiplier="160:31" id="28A-3E-vue"/>
                 <constraint firstItem="l9u-2b-4LK" firstAttribute="top" secondItem="3cc-kC-cwZ" secondAttribute="bottom" id="49q-Ec-9dr"/>
