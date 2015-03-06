@@ -56,10 +56,9 @@
 		EA3777761A966EC10055DE99 /* TransatTextStandard.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA3777711A966EC10055DE99 /* TransatTextStandard.otf */; };
 		EA409D391A8C681A00988B8B /* FacebookExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA409D381A8C681A00988B8B /* FacebookExtension.swift */; };
 		EA409D3F1A8C75F600988B8B /* ConnectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA409D3B1A8C75F600988B8B /* ConnectionCell.swift */; };
-		EA409D401A8C75F600988B8B /* MarryConnectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA409D3C1A8C75F600988B8B /* MarryConnectionCell.xib */; };
+		EA409D401A8C75F600988B8B /* ConnectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA409D3C1A8C75F600988B8B /* ConnectionCell.xib */; };
 		EA409D411A8C75F600988B8B /* DockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA409D3D1A8C75F600988B8B /* DockView.xib */; };
 		EA409D421A8C75F600988B8B /* DockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA409D3E1A8C75F600988B8B /* DockViewController.swift */; };
-		EA409D441A8C7CAA00988B8B /* KeepConnectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA409D431A8C7CAA00988B8B /* KeepConnectionCell.xib */; };
 		EA4A66571AA2D9BB0019D601 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A66561AA2D9BB0019D601 /* GameView.swift */; };
 		EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA5634DF1A7741FF00F62B52 /* Ketch.xcdatamodeld */; };
 		EA6650E11AA00999001BA40C /* TransparentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E01AA00999001BA40C /* TransparentView.swift */; };
@@ -178,10 +177,9 @@
 		EA3777711A966EC10055DE99 /* TransatTextStandard.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextStandard.otf; sourceTree = "<group>"; };
 		EA409D381A8C681A00988B8B /* FacebookExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookExtension.swift; sourceTree = "<group>"; };
 		EA409D3B1A8C75F600988B8B /* ConnectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionCell.swift; sourceTree = "<group>"; };
-		EA409D3C1A8C75F600988B8B /* MarryConnectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MarryConnectionCell.xib; sourceTree = "<group>"; };
+		EA409D3C1A8C75F600988B8B /* ConnectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionCell.xib; sourceTree = "<group>"; };
 		EA409D3D1A8C75F600988B8B /* DockView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DockView.xib; sourceTree = "<group>"; };
 		EA409D3E1A8C75F600988B8B /* DockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DockViewController.swift; sourceTree = "<group>"; };
-		EA409D431A8C7CAA00988B8B /* KeepConnectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KeepConnectionCell.xib; sourceTree = "<group>"; };
 		EA4A66561AA2D9BB0019D601 /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		EA5634E01A7741FF00F62B52 /* Ketch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ketch.xcdatamodel; sourceTree = "<group>"; };
 		EA6650E01AA00999001BA40C /* TransparentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransparentView.swift; sourceTree = "<group>"; };
@@ -431,8 +429,7 @@
 			isa = PBXGroup;
 			children = (
 				EA409D3B1A8C75F600988B8B /* ConnectionCell.swift */,
-				EA409D431A8C7CAA00988B8B /* KeepConnectionCell.xib */,
-				EA409D3C1A8C75F600988B8B /* MarryConnectionCell.xib */,
+				EA409D3C1A8C75F600988B8B /* ConnectionCell.xib */,
 				EA409D3D1A8C75F600988B8B /* DockView.xib */,
 				EA409D3E1A8C75F600988B8B /* DockViewController.swift */,
 			);
@@ -706,7 +703,7 @@
 				EA1DA3811A8D189400433093 /* NewConnectionView.xib in Resources */,
 				EA409D411A8C75F600988B8B /* DockView.xib in Resources */,
 				EA341DA11A8C88CC00A6077B /* JSQMessagesLoadEarlierHeaderView.xib in Resources */,
-				EA409D401A8C75F600988B8B /* MarryConnectionCell.xib in Resources */,
+				EA409D401A8C75F600988B8B /* ConnectionCell.xib in Resources */,
 				EA1970141A83549300FEBA7F /* ProfileView.xib in Resources */,
 				EA3777741A966EC10055DE99 /* TransatTextLight.otf in Resources */,
 				EA1970121A83549300FEBA7F /* EditProfileView.xib in Resources */,
@@ -719,7 +716,6 @@
 				EA3777751A966EC10055DE99 /* TransatTextMedium.otf in Resources */,
 				EA66510E1AA0C7C8001BA40C /* WelcomeView.xib in Resources */,
 				EA9F354A1A74CC6900E0C65D /* Images.xcassets in Resources */,
-				EA409D441A8C7CAA00988B8B /* KeepConnectionCell.xib in Resources */,
 				EA3777731A966EC10055DE99 /* TransatTextBold.otf in Resources */,
 				EA163CFD1A85FAFE00C2589B /* EditPhotoCell.xib in Resources */,
 				EA3777721A966EC10055DE99 /* TransatTextBlack.otf in Resources */,

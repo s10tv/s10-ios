@@ -11,30 +11,21 @@ import UIKit
 @objc(DockViewController)
 class DockViewController : BaseViewController {
     
-    @IBOutlet weak var keepTable: UITableView!
-    @IBOutlet weak var marryTable: UITableView!
+    @IBOutlet weak var tableView: UITableView!
 
-    var keeps : FetchViewModel!
-    var marrys : FetchViewModel!
+    var connections : FetchViewModel!
     var currentConnection : Connection?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         let sortDescriptor = NSSortDescriptor(key: ConnectionAttributes.updatedAt.rawValue, ascending: false)
         
-        keeps = FetchViewModel(frc: Connection.by(ConnectionAttributes.type.rawValue, value: "maybe").sorted(by: sortDescriptor).frc())
-        keeps.bindToTableView(keepTable, cellNibName: "KeepConnectionCell")
-        keeps.tableViewProvider?.configureTableCell = { (item, cell) -> Void in
+        connections = FetchViewModel(frc: Connection.by(ConnectionAttributes.type.rawValue, value: "yes").sorted(by: sortDescriptor).frc())
+        connections.bindToTableView(tableView, cellNibName: "ConnectionCell")
+        connections.tableViewProvider?.configureTableCell = { (item, cell) -> Void in
             (cell as ConnectionCell).connection = (item as Connection)
         }
-        keeps.tableViewProvider?.didSelectItem = self.didSelectItem
-        
-        marrys = FetchViewModel(frc: Connection.by(ConnectionAttributes.type.rawValue, value: "yes").sorted(by: sortDescriptor).frc())
-        marrys.bindToTableView(marryTable, cellNibName: "MarryConnectionCell")
-        marrys.tableViewProvider?.configureTableCell = { (item, cell) -> Void in
-            (cell as ConnectionCell).connection = (item as Connection)
-        }
-        marrys.tableViewProvider?.didSelectItem = self.didSelectItem
+        connections.tableViewProvider?.didSelectItem = self.didSelectItem
     }
 
     func didSelectItem(item: AnyObject!) {
@@ -53,8 +44,5 @@ class DockViewController : BaseViewController {
     @IBAction func goBack(sender: AnyObject) {
         navigationController?.popViewControllerAnimated(true)
     }
-
-
-
 
 }

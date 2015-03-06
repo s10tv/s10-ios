@@ -7,8 +7,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="DockViewController">
             <connections>
-                <outlet property="keepTable" destination="xgv-Wh-zcG" id="4U9-XW-NfO"/>
-                <outlet property="marryTable" destination="wgR-pc-Jsx" id="Jnu-iw-50e"/>
+                <outlet property="tableView" destination="wgR-pc-Jsx" id="hlH-cK-eHz"/>
                 <outlet property="view" destination="iN0-l3-epB" id="K7O-w9-zO2"/>
             </connections>
         </placeholder>
@@ -43,70 +42,27 @@
                     <color key="textColor" red="0.34509803919999998" green="0.67843137249999996" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xgv-Wh-zcG" userLabel="Keep Table">
-                    <rect key="frame" x="0.0" y="89" width="140" height="478.5"/>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="wgR-pc-Jsx">
+                    <rect key="frame" x="0.0" y="68" width="320" height="499.5"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </tableView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marry" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zfr-SO-1X0">
-                    <rect key="frame" x="230" y="65" width="45.5" height="20.5"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                    <color key="textColor" red="0.078431372550000003" green="0.32156862749999998" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" style="plain" separatorStyle="default" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="wgR-pc-Jsx" userLabel="Marry Table">
-                    <rect key="frame" x="181" y="89" width="139" height="478.5"/>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                </tableView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F4d-U6-O3S" userLabel="Separator">
-                    <rect key="frame" x="160" y="62" width="1" height="506"/>
-                    <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="1" id="HPW-b5-eel"/>
-                    </constraints>
-                </view>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Keep" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tFy-Dd-FxZ">
-                    <rect key="frame" x="49" y="65" width="41.5" height="20.5"/>
-                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                    <color key="textColor" red="0.078431372550000003" green="0.32156862749999998" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
             </subviews>
             <color key="backgroundColor" red="0.043137254899999998" green="0.8980392157" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="F4d-U6-O3S" firstAttribute="leading" secondItem="xgv-Wh-zcG" secondAttribute="trailing" constant="20" id="00r-Ow-9dZ"/>
                 <constraint firstAttribute="trailing" secondItem="wgR-pc-Jsx" secondAttribute="trailing" id="1y7-2n-de3"/>
-                <constraint firstAttribute="centerX" secondItem="F4d-U6-O3S" secondAttribute="centerX" id="7WI-G4-tSV"/>
                 <constraint firstItem="qrU-Rh-vA5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="7Wa-nQ-ckP"/>
                 <constraint firstItem="31S-EO-xOp" firstAttribute="top" secondItem="qrU-Rh-vA5" secondAttribute="top" constant="22" id="AIO-jZ-PnN"/>
-                <constraint firstItem="xgv-Wh-zcG" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="EJq-67-jRm"/>
-                <constraint firstItem="wgR-pc-Jsx" firstAttribute="leading" secondItem="F4d-U6-O3S" secondAttribute="trailing" constant="20" id="ELC-16-Zqp"/>
-                <constraint firstItem="xgv-Wh-zcG" firstAttribute="top" secondItem="tFy-Dd-FxZ" secondAttribute="bottom" constant="4" id="Jgr-fp-zL9"/>
-                <constraint firstItem="F4d-U6-O3S" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="55" id="KR3-W0-2yZ"/>
-                <constraint firstItem="F4d-U6-O3S" firstAttribute="top" secondItem="qrU-Rh-vA5" secondAttribute="bottom" id="LQh-xh-cGm"/>
                 <constraint firstItem="RLY-Pm-SQ2" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="MbF-B8-1yj"/>
-                <constraint firstItem="Zfr-SO-1X0" firstAttribute="leading" secondItem="F4d-U6-O3S" secondAttribute="trailing" constant="69" id="N2e-JC-pm3"/>
+                <constraint firstItem="wgR-pc-Jsx" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="68" id="Rlo-xm-2uh"/>
                 <constraint firstAttribute="bottom" secondItem="wgR-pc-Jsx" secondAttribute="bottom" id="W6S-Om-K4r"/>
-                <constraint firstAttribute="bottom" secondItem="xgv-Wh-zcG" secondAttribute="bottom" id="XAa-wk-jLm"/>
-                <constraint firstItem="F4d-U6-O3S" firstAttribute="leading" secondItem="tFy-Dd-FxZ" secondAttribute="trailing" constant="69" id="XJB-ay-zmQ"/>
-                <constraint firstAttribute="bottom" secondItem="F4d-U6-O3S" secondAttribute="bottom" id="XkJ-45-8Ne"/>
                 <constraint firstItem="qrU-Rh-vA5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Z7x-ql-ed4"/>
-                <constraint firstItem="tFy-Dd-FxZ" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="65" id="bCC-dT-kBP"/>
-                <constraint firstItem="Zfr-SO-1X0" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="65" id="dck-Bb-Wbs"/>
                 <constraint firstAttribute="trailing" secondItem="qrU-Rh-vA5" secondAttribute="trailing" id="jLz-i6-sMl"/>
-                <constraint firstItem="wgR-pc-Jsx" firstAttribute="top" secondItem="Zfr-SO-1X0" secondAttribute="bottom" constant="4" id="kqa-X1-nKw"/>
                 <constraint firstItem="RLY-Pm-SQ2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ndZ-7T-wZ3"/>
-                <constraint firstItem="xgv-Wh-zcG" firstAttribute="leading" secondItem="tFy-Dd-FxZ" secondAttribute="trailing" constant="-100" id="tga-AW-p4P"/>
+                <constraint firstItem="wgR-pc-Jsx" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="rUA-6f-BDQ"/>
                 <constraint firstItem="qrU-Rh-vA5" firstAttribute="centerX" secondItem="31S-EO-xOp" secondAttribute="centerX" id="uyN-4o-REV"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-            <variation key="default">
-                <mask key="constraints">
-                    <exclude reference="tga-AW-p4P"/>
-                    <exclude reference="KR3-W0-2yZ"/>
-                </mask>
-            </variation>
             <point key="canvasLocation" x="76" y="349"/>
         </view>
     </objects>
