@@ -7,6 +7,11 @@
 //
 
 import Foundation
+import ReactiveCocoa
+
+func DegreesToRadians (value:Int) -> CGFloat {
+    return CGFloat(Double(value) * M_PI / 180.0)
+}
 
 class GameView : TransparentView, UIDynamicAnimatorDelegate {
     
@@ -67,6 +72,20 @@ class GameView : TransparentView, UIDynamicAnimatorDelegate {
                 if self!.isReady { handler() }
             }
         })
+        
+        RACSignal.interval(0.05, onScheduler: RACScheduler.mainThreadScheduler()).subscribeNext { [weak self] _ in
+            if let this = self {
+                for source in this.sources {
+                    this.animator.removeBehavior(source.brownianPush)
+                    if source.target?.choice == nil {
+                        source.brownianPush = UIPushBehavior(items: [source.view], mode: .Instantaneous)
+                        source.brownianPush!.magnitude = 0.5
+                        source.brownianPush!.angle = DegreesToRadians(Int(arc4random()) % 360)
+                        this.animator.addBehavior(source.brownianPush)
+                    }
+                }
+            }
+        }
     }
     
     func chosenCandidate(choice: Candidate.Choice?) -> Candidate? {
@@ -143,6 +162,7 @@ class GameView : TransparentView, UIDynamicAnimatorDelegate {
     class AvatarSource {
         let view : UserAvatarView
         var drag : UIAttachmentBehavior?
+        var brownianPush : UIPushBehavior?
         var target : SnapTarget? { didSet { updateIfNeeded(oldValue) } }
         
         init(_ view: UserAvatarView) {
