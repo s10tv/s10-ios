@@ -60,6 +60,10 @@ class GameView : TransparentView, UIDynamicAnimatorDelegate {
         collision.translatesReferenceBoundsIntoBoundary = true
         animator.addBehavior(collision)
         
+//        let globalBehavior = UIDynamicItemBehavior(items: avatars)
+//        globalBehavior.allowsRotation = false
+//        animator.addBehavior(globalBehavior)
+        
         for avatar in avatars {
             avatar.addGestureRecognizer(UIPanGestureRecognizer(
                 target: self, action: "handleAvatarPan:"))
@@ -73,13 +77,13 @@ class GameView : TransparentView, UIDynamicAnimatorDelegate {
             }
         })
         
-        RACSignal.interval(0.05, onScheduler: RACScheduler.mainThreadScheduler()).subscribeNext { [weak self] _ in
+        RACSignal.interval(0.5, onScheduler: RACScheduler.mainThreadScheduler()).subscribeNext { [weak self] _ in
             if let this = self {
                 for source in this.sources {
                     this.animator.removeBehavior(source.brownianPush)
                     if source.target?.choice == nil {
                         source.brownianPush = UIPushBehavior(items: [source.view], mode: .Instantaneous)
-                        source.brownianPush!.magnitude = 0.5
+                        source.brownianPush!.magnitude = 0.1
                         source.brownianPush!.angle = DegreesToRadians(Int(arc4random()) % 360)
                         this.animator.addBehavior(source.brownianPush)
                     }
@@ -106,6 +110,11 @@ class GameView : TransparentView, UIDynamicAnimatorDelegate {
             source.target = predecisionTargets[i]
         }
         readyPrompt.hidden = true
+        
+        RACSignal.interval(1, onScheduler: RACScheduler.mainThreadScheduler()).take(1).subscribeCompleted { [weak self] in
+            self?.animator.addBehavior(self?.collision)
+            return
+        }
     }
     
     // MARK: -
@@ -151,11 +160,6 @@ class GameView : TransparentView, UIDynamicAnimatorDelegate {
         }
     }
     
-    func dynamicAnimatorDidPause(animator: UIDynamicAnimator) {
-        // TODO: Hack for startGame. Make this pattern better
-        animator.addBehavior(collision)
-    }
-    
     // TODO: Make this subclass of UserAvatarView, implemnt drag behavior
     // Rename to something better like CandidateView
     // One way reference from target -> source to make it easier to maintain consistency
@@ -182,6 +186,7 @@ class GameView : TransparentView, UIDynamicAnimatorDelegate {
         let animator : UIDynamicAnimator
         var position : CGPoint
         var snap : UISnapBehavior?
+        var boundingBox : UICollisionBehavior?
         var choice: Candidate.Choice?
         var source: AvatarSource? { didSet { updateIfNeeded(oldValue) } }
         
@@ -201,9 +206,28 @@ class GameView : TransparentView, UIDynamicAnimatorDelegate {
             if oldSource !== source {
                 source?.target = self
                 animator.removeBehavior(snap)
+                animator.removeBehavior(boundingBox)
                 if let view = source?.view {
                     snap = UISnapBehavior(item: view, snapToPoint: position)
                     animator.addBehavior(snap)
+                    if self.choice == nil {
+                        RACSignal.interval(1, onScheduler: RACScheduler.mainThreadScheduler()).take(1).subscribeCompleted { [weak self] in
+                            if let this = self {
+                                this.animator.removeBehavior(this.snap)
+                                let margin = CGFloat(80)
+                                let top = this.position.y - margin
+                                let bottom = this.position.y + margin
+                                let left = this.position.x - margin
+                                let right = this.position.x + margin
+                                this.boundingBox = UICollisionBehavior(items: [view])
+                                this.boundingBox!.addBoundaryWithIdentifier("top", fromPoint: CGPoint(x: left, y: top), toPoint: CGPoint(x: right, y: top))
+                                this.boundingBox!.addBoundaryWithIdentifier("bottom", fromPoint: CGPoint(x: left, y: bottom), toPoint: CGPoint(x: right, y: bottom))
+                                this.boundingBox!.addBoundaryWithIdentifier("left", fromPoint: CGPoint(x: left, y: top), toPoint: CGPoint(x: left, y: bottom))
+                                this.boundingBox!.addBoundaryWithIdentifier("right", fromPoint: CGPoint(x: right, y: top), toPoint: CGPoint(x: right, y: bottom))
+                                this.animator.addBehavior(this.boundingBox)
+                            }
+                        }
+                    }
                 }
             }
         }
