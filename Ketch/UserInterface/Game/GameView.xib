@@ -55,26 +55,42 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="607"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="game-bucket-marry" translatesAutoresizingMaskIntoConstraints="NO" id="Iti-rA-q5V" userLabel="Marry Slot">
-                    <rect key="frame" x="137" y="70" width="100" height="116"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-bucket-marry" translatesAutoresizingMaskIntoConstraints="NO" id="Iti-rA-q5V" userLabel="Marry Slot">
+                    <rect key="frame" x="137.5" y="70.5" width="100" height="116"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="116" id="BgZ-pN-z9P"/>
+                        <constraint firstAttribute="width" constant="100" id="C1t-ms-gcW"/>
+                    </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="game-bucket-keep" translatesAutoresizingMaskIntoConstraints="NO" id="u8F-ne-eBp" userLabel="Keep Slot">
-                    <rect key="frame" x="247" y="196" width="100" height="113"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-bucket-keep" translatesAutoresizingMaskIntoConstraints="NO" id="u8F-ne-eBp" userLabel="Keep Slot">
+                    <rect key="frame" x="247" y="196.5" width="100" height="113"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="113" id="Roo-cD-i4m"/>
+                        <constraint firstAttribute="width" constant="100" id="dRJ-gd-KGL"/>
+                    </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="game-bucket-skip" translatesAutoresizingMaskIntoConstraints="NO" id="o6p-MY-cjB" userLabel="Skip Slot">
-                    <rect key="frame" x="29" y="196" width="100" height="113"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-bucket-skip" translatesAutoresizingMaskIntoConstraints="NO" id="o6p-MY-cjB" userLabel="Skip Slot">
+                    <rect key="frame" x="29" y="196.5" width="100" height="113"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="9J5-kj-Gqo"/>
+                        <constraint firstAttribute="height" constant="113" id="PBK-A8-jE4"/>
+                    </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Lu-FI-gAz" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
-                    <rect key="frame" x="9" y="468" width="100" height="100"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Lu-FI-gAz" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
+                    <rect key="frame" x="9" y="467" width="100" height="100"/>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="k7t-mm-QgH" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
-                    <rect key="frame" x="137" y="468" width="100" height="100"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k7t-mm-QgH" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
+                    <rect key="frame" x="137.5" y="467" width="100" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="100" id="S7c-FT-dPY"/>
+                        <constraint firstAttribute="height" constant="100" id="bxZ-po-cC2"/>
+                    </constraints>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FWx-3L-EJd" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
-                    <rect key="frame" x="267" y="468" width="100" height="100"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FWx-3L-EJd" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
+                    <rect key="frame" x="267" y="467" width="100" height="100"/>
                 </imageView>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MMH-Ka-VtK" userLabel="Ready Prompt" customClass="TransparentView" customModule="Ketch" customModuleProvider="target">
-                    <rect key="frame" x="75" y="330" width="224.5" height="107"/>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MMH-Ka-VtK" userLabel="Ready Prompt" customClass="TransparentView" customModule="Ketch" customModuleProvider="target">
+                    <rect key="frame" x="75.5" y="360" width="224.5" height="107"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsh-wd-hgi" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="224.5" height="62"/>
@@ -115,8 +131,27 @@
             </subviews>
             <color key="backgroundColor" red="0.043137254901960784" green="0.89803921568627454" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="centerY" secondItem="MMH-Ka-VtK" secondAttribute="centerY" constant="-80" id="BDE-DX-5xb"/>
+                <constraint firstAttribute="trailing" secondItem="u8F-ne-eBp" secondAttribute="trailing" constant="28" id="0cC-3E-36a"/>
+                <constraint firstAttribute="bottom" secondItem="k7t-mm-QgH" secondAttribute="bottom" priority="251" constant="40" id="3hH-dY-jIX"/>
+                <constraint firstItem="k7t-mm-QgH" firstAttribute="height" secondItem="1Lu-FI-gAz" secondAttribute="height" id="3xa-Hu-NcU"/>
+                <constraint firstAttribute="trailing" secondItem="FWx-3L-EJd" secondAttribute="trailing" constant="8" id="4ma-Ee-Ybc"/>
+                <constraint firstAttribute="centerY" secondItem="Iti-rA-q5V" secondAttribute="centerY" priority="252" constant="175" id="8RV-PX-PNw"/>
+                <constraint firstItem="k7t-mm-QgH" firstAttribute="height" secondItem="FWx-3L-EJd" secondAttribute="height" id="B2d-Pl-UCu"/>
+                <constraint firstAttribute="centerY" secondItem="MMH-Ka-VtK" secondAttribute="centerY" priority="251" constant="-80" id="BDE-DX-5xb"/>
                 <constraint firstAttribute="centerX" secondItem="MMH-Ka-VtK" secondAttribute="centerX" id="Ebu-2F-eZF"/>
+                <constraint firstItem="o6p-MY-cjB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="29" id="FfD-o1-K8D"/>
+                <constraint firstItem="k7t-mm-QgH" firstAttribute="width" secondItem="FWx-3L-EJd" secondAttribute="width" id="Hdo-wx-Z6y"/>
+                <constraint firstItem="k7t-mm-QgH" firstAttribute="centerY" secondItem="1Lu-FI-gAz" secondAttribute="centerY" id="KSa-Na-Z5b"/>
+                <constraint firstAttribute="centerX" secondItem="Iti-rA-q5V" secondAttribute="centerX" id="OY3-dj-utz"/>
+                <constraint firstItem="k7t-mm-QgH" firstAttribute="width" secondItem="1Lu-FI-gAz" secondAttribute="width" id="OeY-wf-qFW"/>
+                <constraint firstAttribute="centerX" secondItem="k7t-mm-QgH" secondAttribute="centerX" id="Per-M4-CzZ"/>
+                <constraint firstItem="MMH-Ka-VtK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="u8F-ne-eBp" secondAttribute="bottom" constant="50" id="VFD-l8-MSl"/>
+                <constraint firstItem="o6p-MY-cjB" firstAttribute="top" secondItem="u8F-ne-eBp" secondAttribute="top" id="hU4-XS-Bt1"/>
+                <constraint firstItem="o6p-MY-cjB" firstAttribute="top" secondItem="Iti-rA-q5V" secondAttribute="bottom" constant="10" id="j7w-yX-IMo"/>
+                <constraint firstItem="Iti-rA-q5V" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" id="pbb-Yk-y1d"/>
+                <constraint firstItem="k7t-mm-QgH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="u8F-ne-eBp" secondAttribute="bottom" constant="70" id="t7s-PP-qFf"/>
+                <constraint firstItem="1Lu-FI-gAz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="9" id="uI2-NL-uwh"/>
+                <constraint firstItem="k7t-mm-QgH" firstAttribute="centerY" secondItem="FWx-3L-EJd" secondAttribute="centerY" id="z5o-oI-9Tv"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
