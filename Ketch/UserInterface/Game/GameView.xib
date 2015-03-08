@@ -116,7 +116,7 @@
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FWx-3L-EJd" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="267" y="467" width="100" height="100"/>
                 </imageView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MMH-Ka-VtK" userLabel="Ready Prompt" customClass="TransparentView" customModule="Ketch" customModuleProvider="target">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MMH-Ka-VtK" userLabel="Ready Prompt" customClass="TransparentView" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="75" y="359" width="224.5" height="107"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsh-wd-hgi" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">

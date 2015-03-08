@@ -162,7 +162,11 @@ class GameView : TransparentView, UIDynamicAnimatorDelegate {
                 let translatedCenter = source.view.center + translation
                 let target = SnapTarget.closest(targets, point: translatedCenter)!
                 source.target = target
-                readyPrompt.hidden = !isReady
+                readyPrompt.hidden = !self.isReady
+                readyPrompt.alpha = 0
+                UIView.animateWithDuration(0.25) {
+                    self.readyPrompt.alpha = 1
+                }
                 Log.debug("\tChosen: \(target)\n\tready: \(isReady)")
             default:
                 break
@@ -224,7 +228,7 @@ class GameView : TransparentView, UIDynamicAnimatorDelegate {
                         RACSignal.interval(1, onScheduler: RACScheduler.mainThreadScheduler()).take(1).subscribeCompleted { [weak self] in
                             if let this = self {
                                 this.animator.removeBehavior(this.snap)
-                                let margin = CGFloat(80)
+                                let margin = CGRectGetWidth(view.frame) / 2 * 1.25 // 25% larger than size of avatar
                                 let top = this.position.y - margin
                                 let bottom = this.position.y + margin
                                 let left = this.position.x - margin
