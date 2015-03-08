@@ -22,6 +22,31 @@ class GameViewController : BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // TODO: Make this 10x less verbose. Add some concept of reactive variable
+        unreadConnections = FetchViewModel(frc: Connection.by(ConnectionAttributes.hasUnreadMessage.rawValue, value: true).frc())
+        unreadConnections.signal.subscribeNext { [weak self] _ in
+            if let this = self {
+                let count = this.unreadConnections.objects.count
+                this.dockBadge.hidden = count == 0
+            }
+        }
+        unreadConnections.performFetchIfNeeded()
+        
+        backgroundView.settingsButton.addTarget(self, action: "goToSettings:", forControlEvents: .TouchUpInside)
+        backgroundView.dockButton.addTarget(self, action: "goToDock:", forControlEvents: .TouchUpInside)
+        
+        dockBadge.makeCircular()
+        showSubview(gameView)
+
+        gameView.didConfirmChoices = { [weak self] in
+            if let this = self { this.submitChoices(this) }
+        }
+        gameView.didSetupGame = { [weak self] in
+            if let this = self { this.bindGameView() }
+        }
+    }
+    
+    func bindGameView() {
         Core.candidateService.fetch.signal.subscribeNextAs { [weak self] (candidates : [Candidate]) in
             if let this = self {
                 if candidates.count >= 3 {
@@ -33,16 +58,6 @@ class GameViewController : BaseViewController {
                 }
             }
         }
-        // TODO: Make this 10x less verbose. Add some concept of reactive variable
-        unreadConnections = FetchViewModel(frc: Connection.by(ConnectionAttributes.hasUnreadMessage.rawValue, value: true).frc())
-        unreadConnections.signal.subscribeNext { [weak self] _ in
-            if let this = self {
-                let count = this.unreadConnections.objects.count
-                this.dockBadge.hidden = count == 0
-            }
-        }
-        unreadConnections.performFetchIfNeeded()
-        
         // Setup Drag & Drop
         for source in self.gameView.sources {
             source.view.didTap = { [weak self] user in
@@ -52,18 +67,8 @@ class GameViewController : BaseViewController {
                 }
             }
         }
-        
-        backgroundView.settingsButton.addTarget(self, action: "goToSettings:", forControlEvents: .TouchUpInside)
-        backgroundView.dockButton.addTarget(self, action: "goToDock:", forControlEvents: .TouchUpInside)
-        
-        dockBadge.makeCircular()
-        showSubview(gameView)
-
-        gameView.didConfirmChoices = { [weak self] in
-            if let this = self { this.submitChoices(this) }
-        }
     }
-        
+    
     func showSubview(subview: UIView) {
         if subview.superview == nil {
             gameView.removeFromSuperview()

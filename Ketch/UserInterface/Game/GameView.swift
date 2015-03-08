@@ -36,12 +36,22 @@ class GameView : TransparentView, UIDynamicAnimatorDelegate {
         }
         return true
     }
+    var didSetupGame : (() -> ())?
     var didConfirmChoices : (() -> ())?
+    private var initialLayoutComplete : Bool = false
     
-    // TODO: Make game work for multiple screen sizes
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
+    override func layoutSubviews() {
+        if !initialLayoutComplete {
+            super.layoutSubviews()
+            initialLayoutComplete = true
+            setupGame()
+            if let block = didSetupGame {
+                block()
+            }
+        }
+    }
+    
+    private func setupGame() {
         passThroughTouchOnSelf = false
         
         animator = UIDynamicAnimator(referenceView: self)
@@ -53,16 +63,16 @@ class GameView : TransparentView, UIDynamicAnimatorDelegate {
         })
         targets.extend(map([yesBucket, maybeBucket, noBucket], {
             SnapTarget(self.animator, position: $0.center + CGPointMake(0, -11),
-                                        choice: self.choiceForBucket($0))
+                choice: self.choiceForBucket($0))
         }))
         
         collision = UICollisionBehavior(items: avatars)
         collision.translatesReferenceBoundsIntoBoundary = true
         animator.addBehavior(collision)
         
-//        let globalBehavior = UIDynamicItemBehavior(items: avatars)
-//        globalBehavior.allowsRotation = false
-//        animator.addBehavior(globalBehavior)
+        //        let globalBehavior = UIDynamicItemBehavior(items: avatars)
+        //        globalBehavior.allowsRotation = false
+        //        animator.addBehavior(globalBehavior)
         
         for avatar in avatars {
             avatar.addGestureRecognizer(UIPanGestureRecognizer(
