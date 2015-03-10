@@ -83,7 +83,7 @@ import Foundation
     
     let waveOutline = CAShapeLayer()
     let waveMask = CAShapeLayer()
-    let amplitude : CGFloat = 4
+    let amplitude : CGFloat = 6
     let periods : CGFloat = 2
     
     override func drawRect(rect: CGRect) {
