@@ -95,7 +95,7 @@ import Foundation
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        let frame = CGRect(x: 0, y: 5, width: layer.bounds.width, height: layer.bounds.height)
+        let frame = CGRect(x: 0, y: amplitude, width: layer.bounds.width, height: layer.bounds.height)
         waveOutline.frame = frame
         waveMask.frame = frame
         if wavePath == nil {
