@@ -81,7 +81,6 @@
 		EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3681AA26597003383BE /* SBConstants.swift */; };
 		EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3691AA26597003383BE /* StyleKit.swift */; };
 		EA8EE6CF1AAA0FD100E646EE /* ConnectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA8EE6CE1AAA0FD100E646EE /* ConnectionCell.xib */; };
-		EA8EE6D11AAA112800E646EE /* GradientBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8EE6D01AAA112800E646EE /* GradientBackgroundView.swift */; };
 		EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
 		EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35461A74CC6900E0C65D /* Main.storyboard */; };
 		EA9F354A1A74CC6900E0C65D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Images.xcassets */; };
@@ -203,7 +202,6 @@
 		EA7AA3681AA26597003383BE /* SBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstants.swift; sourceTree = "<group>"; };
 		EA7AA3691AA26597003383BE /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
 		EA8EE6CE1AAA0FD100E646EE /* ConnectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionCell.xib; sourceTree = "<group>"; };
-		EA8EE6D01AAA112800E646EE /* GradientBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GradientBackgroundView.swift; sourceTree = "<group>"; };
 		EA9F353A1A74CC6900E0C65D /* Ketch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ketch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9F353E1A74CC6900E0C65D /* Ketch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ketch-Info.plist"; sourceTree = "<group>"; };
 		EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -457,7 +455,6 @@
 				EA6650E31AA00A82001BA40C /* KetchBackgroundView.swift */,
 				EA6650E41AA00A82001BA40C /* KetchBackgroundView.xib */,
 				EA6650E51AA00A82001BA40C /* UserAvatarView.swift */,
-				EA8EE6D01AAA112800E646EE /* GradientBackgroundView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -866,7 +863,6 @@
 				EA1DA37F1A8D188B00433093 /* NewConnectionViewController.swift in Sources */,
 				EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */,
 				EA4A66571AA2D9BB0019D601 /* GameView.swift in Sources */,
-				EA8EE6D11AAA112800E646EE /* GradientBackgroundView.swift in Sources */,
 				EA6651101AA0C7D1001BA40C /* WelcomeViewController.swift in Sources */,
 				EA0FC9441A87DE5800D62625 /* ViewProviders.swift in Sources */,
 				EAB54E3D1AA0E2EB00A44883 /* SettingsBackgroundView.swift in Sources */,
