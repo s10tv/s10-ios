@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="KetchIcon.otf">
@@ -16,10 +15,7 @@
                 <outlet property="dockButton" destination="jVx-li-RXQ" id="zvf-HY-T1N"/>
                 <outlet property="ketchIcon" destination="4BP-aI-ryy" id="81X-lM-J3V"/>
                 <outlet property="settingsButton" destination="WBN-hY-kOU" id="OT1-eO-fPH"/>
-                <outlet property="skyBackground" destination="w5V-VN-uAR" id="czi-nV-UD2"/>
-                <outlet property="skyBackgroundHeight" destination="6bh-Fu-QKg" id="WXX-LA-9Ky"/>
-                <outlet property="skyHeader" destination="ykW-YZ-J02" id="1PJ-35-JMg"/>
-                <outlet property="skyHeaderTopMargin" destination="kNj-U8-rpj" id="hgp-Bh-fs6"/>
+                <outlet property="waveTopMargin" destination="sPo-3N-DOh" id="pgm-NP-eij"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
@@ -27,19 +23,6 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w5V-VN-uAR" userLabel="Sky Background">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
-                    <color key="backgroundColor" red="0.92941176470588238" green="0.97647058823529409" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="60" id="6bh-Fu-QKg"/>
-                    </constraints>
-                </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Header" translatesAutoresizingMaskIntoConstraints="NO" id="ykW-YZ-J02" userLabel="Sky Header">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="72.5"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="ykW-YZ-J02" secondAttribute="height" multiplier="160:31" id="NQR-ov-Yew"/>
-                    </constraints>
-                </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WBN-hY-kOU" userLabel="Settings">
                     <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
                     <constraints>
@@ -53,7 +36,7 @@
                     </state>
                 </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ketch" translatesAutoresizingMaskIntoConstraints="NO" id="4BP-aI-ryy">
-                    <rect key="frame" x="170" y="35" width="34" height="37"/>
+                    <rect key="frame" x="170" y="31" width="34" height="37"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="34" id="KdK-Ss-nfo"/>
                         <constraint firstAttribute="height" constant="37" id="lyg-hu-3j3"/>
@@ -71,21 +54,23 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2GV-Mt-CIn" customClass="KetchWaveView" customModule="Ketch" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="ykW-YZ-J02" firstAttribute="leading" secondItem="rwt-zi-iy4" secondAttribute="leading" id="5Ug-YQ-xaC"/>
-                <constraint firstAttribute="trailing" secondItem="w5V-VN-uAR" secondAttribute="trailing" id="7C1-Qv-egK"/>
+                <constraint firstAttribute="bottom" secondItem="2GV-Mt-CIn" secondAttribute="bottom" id="0dS-Vd-kSR"/>
+                <constraint firstItem="4BP-aI-ryy" firstAttribute="centerX" secondItem="2GV-Mt-CIn" secondAttribute="centerX" id="92M-bK-Fqj"/>
                 <constraint firstItem="WBN-hY-kOU" firstAttribute="leading" secondItem="rwt-zi-iy4" secondAttribute="leading" id="Aj1-Aw-2sa"/>
                 <constraint firstAttribute="trailing" secondItem="jVx-li-RXQ" secondAttribute="trailing" id="HJF-3N-ssl"/>
-                <constraint firstItem="4BP-aI-ryy" firstAttribute="bottom" secondItem="ykW-YZ-J02" secondAttribute="bottom" id="IbA-o4-dNG"/>
-                <constraint firstItem="w5V-VN-uAR" firstAttribute="top" secondItem="rwt-zi-iy4" secondAttribute="top" id="WVN-38-OMz"/>
-                <constraint firstItem="w5V-VN-uAR" firstAttribute="leading" secondItem="rwt-zi-iy4" secondAttribute="leading" id="XVS-of-DHB"/>
-                <constraint firstAttribute="trailing" secondItem="ykW-YZ-J02" secondAttribute="trailing" id="aQG-uS-uyK"/>
-                <constraint firstItem="ykW-YZ-J02" firstAttribute="top" secondItem="rwt-zi-iy4" secondAttribute="top" id="kNj-U8-rpj"/>
-                <constraint firstItem="4BP-aI-ryy" firstAttribute="centerX" secondItem="ykW-YZ-J02" secondAttribute="centerX" id="nSN-By-PaR"/>
+                <constraint firstItem="2GV-Mt-CIn" firstAttribute="top" secondItem="4BP-aI-ryy" secondAttribute="bottom" constant="-8" id="T86-mk-fC9"/>
+                <constraint firstAttribute="trailing" secondItem="2GV-Mt-CIn" secondAttribute="trailing" id="dsY-pr-2ap"/>
+                <constraint firstItem="2GV-Mt-CIn" firstAttribute="top" secondItem="rwt-zi-iy4" secondAttribute="top" constant="60" id="sPo-3N-DOh"/>
                 <constraint firstItem="jVx-li-RXQ" firstAttribute="top" secondItem="rwt-zi-iy4" secondAttribute="top" id="uV4-FU-B3L"/>
                 <constraint firstItem="WBN-hY-kOU" firstAttribute="top" secondItem="rwt-zi-iy4" secondAttribute="top" id="uyF-jn-4dR"/>
+                <constraint firstItem="2GV-Mt-CIn" firstAttribute="leading" secondItem="rwt-zi-iy4" secondAttribute="leading" id="xfd-UF-VVV"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -93,7 +78,6 @@
         </view>
     </objects>
     <resources>
-        <image name="Header" width="320" height="62"/>
         <image name="Ketch" width="19" height="21"/>
     </resources>
 </document>

@@ -56,6 +56,22 @@ extension UIAlertView {
     }
 }
 
+let π = CGFloat(M_PI)
+
+extension UIBezierPath {
+    
+    class func sineWave(amplitude a: CGFloat, wavelength λ: CGFloat, periods: CGFloat, phase: CGFloat = 0)  -> UIBezierPath {
+        let stepLength = 2*π / λ // 1 point per step for now, also the sine coefficient
+        let totalLength = λ * periods
+        let wave = UIBezierPath()
+        wave.moveToPoint(CGPointZero)
+        for var x: CGFloat = stepLength; x < totalLength; x += stepLength {
+            wave.addLineToPoint(CGPoint(x: x, y: a * sin(stepLength * x + phase)))
+        }
+        return wave
+    }
+}
+
 func DebugPrintAllFonts() {
     for familyName in UIFont.familyNames() as [String] {
         println("Family: \(familyName)")

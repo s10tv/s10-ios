@@ -13,13 +13,10 @@ import Foundation
     @IBOutlet weak var ketchIcon: UIImageView!
     @IBOutlet weak var settingsButton: UIButton!
     @IBOutlet weak var dockButton: UIButton!
-    @IBOutlet weak var skyBackground: UIView!
-    @IBOutlet weak var skyHeader: UIImageView!
-    
-    @IBOutlet weak var skyBackgroundHeight: NSLayoutConstraint!
-    @IBOutlet weak var skyHeaderTopMargin: NSLayoutConstraint!
-    
-    var waterlineLowerBound: CGFloat {
+    @IBOutlet weak var waveTopMargin: NSLayoutConstraint!
+
+    var waterlineUpperBound : CGFloat = 60 // TODO: Get this value for nib rather than hard code
+    var waterlineLowerBound : CGFloat {
         return CGRectGetHeight(self.frame) - 100
     }
     var animateDuration: NSTimeInterval = 0.4
@@ -35,14 +32,12 @@ import Foundation
     }
     
     func animateWaterlineDown(completion: ((Bool) -> ())? = nil) {
-        skyBackgroundHeight.constant = waterlineLowerBound
-        skyHeaderTopMargin.constant = waterlineLowerBound
+        waveTopMargin.constant = waterlineLowerBound
         animateLayoutChange(completion: completion)
     }
     
     func animateWaterlineUp(completion: ((Bool) -> ())? = nil) {
-        skyBackgroundHeight.constant = 0
-        skyHeaderTopMargin.constant = 0
+        waveTopMargin.constant = waterlineUpperBound
         animateLayoutChange(completion: completion)
     }
     
@@ -56,6 +51,7 @@ import Foundation
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        
         // Setup boat pitching animation
         let pitch = CABasicAnimation(keyPath: "transform.rotation")
         pitch.fromValue = 0.2
@@ -66,10 +62,68 @@ import Foundation
         ketchIcon.layer.addAnimation(pitch, forKey: "pitching")
     }
     
+}
+
+class KetchWaveView : BaseView {
+    private var wavePath : UIBezierPath!
+    private var wavePathInverse : UIBezierPath!
+    private var phaseShift : CABasicAnimation!
+    
+    let waveOutline = CAShapeLayer()
+    let waveMask = CAShapeLayer()
+    let amplitude : CGFloat = 4
+    let periods : CGFloat = 2
+    
     override func drawRect(rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
         let topCenter = CGPointMake(CGRectGetMidX(bounds), 0)
         let bottomCenter = CGPointMake(CGRectGetMidX(bounds), CGRectGetMaxY(bounds))
         CGContextDrawLinearGradient(context, StyleKit.gradientWater2, topCenter, bottomCenter, 0)
+    }
+
+    // TODO: Non-nib based instantiation
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Generate the paths & Animation
+        wavePath = UIBezierPath.sineWave(amplitude: amplitude,
+                                         wavelength: CGRectGetWidth(layer.frame)/2,
+                                         periods: periods, phase: 0)
+        wavePath.addLineToPoint(CGPoint(x: frame.width, y: frame.height))
+        wavePath.addLineToPoint(CGPoint(x: 0, y: frame.height))
+        wavePath.closePath()
+        
+        wavePathInverse = UIBezierPath.sineWave(amplitude: amplitude,
+                                                wavelength: CGRectGetWidth(layer.frame)/2,
+                                                periods: periods, phase: π)
+        wavePathInverse.addLineToPoint(CGPoint(x: frame.width, y: frame.height))
+        wavePathInverse.addLineToPoint(CGPoint(x: 0, y: frame.height))
+        wavePathInverse.closePath()
+        
+        phaseShift = CABasicAnimation(keyPath: "path")
+        phaseShift.fromValue = wavePath.CGPath
+        phaseShift.toValue = wavePathInverse.CGPath
+        phaseShift.duration = 3
+        phaseShift.autoreverses = true
+        phaseShift.repeatCount = Float.infinity
+        
+        // Animate the wave outline
+        waveOutline.path = wavePath.CGPath
+        waveOutline.strokeColor = UIColor(hex: 0xC5E7E6).CGColor // TODO: Use StyleKit
+        waveOutline.lineWidth = 2.0
+        waveOutline.fillColor = nil
+        waveOutline.addAnimation(phaseShift, forKey: "phaseShift")
+        layer.addSublayer(waveOutline)
+        
+        // Animate the wave gradient (with mask
+        waveMask.path = wavePath.CGPath
+        waveMask.addAnimation(phaseShift, forKey: "phaseShift")
+        layer.mask = waveMask
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let frame = CGRect(x: 0, y: 5, width: layer.bounds.width, height: layer.bounds.height)
+        waveOutline.frame = frame
+        waveMask.frame = frame
     }
 }
