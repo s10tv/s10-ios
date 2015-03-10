@@ -20,6 +20,17 @@ import Foundation
         return CGRectGetHeight(self.frame) - 100
     }
     var animateDuration: NSTimeInterval = 0.4
+    @IBInspectable var showNavButtons : Bool = true {
+        didSet {
+            updateNavButtonsVisibility()
+        }
+    }
+    
+    private func updateNavButtonsVisibility() {
+        settingsButton.hidden = !showNavButtons
+        ketchIcon.hidden = !showNavButtons
+        dockButton.hidden = !showNavButtons
+    }
     
     private func animateLayoutChange(completion: ((Bool) -> ())? = nil) {
         UIView.animateKeyframesWithDuration(animateDuration, delay: 0,
@@ -52,6 +63,7 @@ import Foundation
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        updateNavButtonsVisibility()
         // Setup boat pitching animation
         let pitch = CABasicAnimation(keyPath: "transform.rotation")
         pitch.fromValue = 0.2
@@ -108,8 +120,8 @@ class KetchWaveView : BaseView {
         
         // Animate the wave outline
         waveOutline.path = wavePath.CGPath
-        waveOutline.strokeColor = UIColor(hex: 0xC5E7E6).CGColor // TODO: Use StyleKit
         waveOutline.lineWidth = 2.0
+        waveOutline.strokeColor = UIColor(hex: 0xC5E7E6).CGColor // TODO: Use StyleKit
         waveOutline.fillColor = nil
         waveOutline.addAnimation(phaseShift, forKey: "phaseShift")
         layer.addSublayer(waveOutline)
