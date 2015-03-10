@@ -36,6 +36,13 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l2F-DP-UVJ" customClass="KetchWaveView" customModule="Ketch" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="535" width="320" height="33"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="33" id="78z-m4-Au6"/>
+                    </constraints>
+                </view>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xt9-MA-Rd9">
                     <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
                     <constraints>
@@ -51,7 +58,7 @@
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lola Forner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ic-hO-IZ3" userLabel="Name">
-                    <rect key="frame" x="116" y="22" width="88.5" height="18"/>
+                    <rect key="frame" x="116" y="22" width="89" height="18"/>
                     <fontDescription key="fontDescription" name="TransatTextMedium" family="Transat Text" pointSize="18"/>
                     <color key="textColor" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -77,15 +84,18 @@
                         </mask>
                     </variation>
                 </imageView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l2F-DP-UVJ" customClass="KetchWaveView" customModule="Ketch" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="535" width="320" height="33"/>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="33" id="78z-m4-Au6"/>
-                    </constraints>
-                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s93-yD-flR">
+                    <rect key="frame" x="122" y="537" width="76" height="30"/>
+                    <state key="normal" title="I'm a Crab!">
+                        <color key="titleColor" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="giveFeedback:" destination="-1" eventType="touchUpInside" id="1TY-sk-BMh"/>
+                    </connections>
+                </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version v0.1 (112)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLW-ee-in0">
-                    <rect key="frame" x="228" y="546" width="83.5" height="12"/>
+                    <rect key="frame" x="228" y="546" width="84" height="12"/>
                     <fontDescription key="fontDescription" type="system" pointSize="10"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -141,7 +151,7 @@
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31 years old" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ee-BL-JGE">
-                    <rect key="frame" x="65" y="236" width="77.5" height="15"/>
+                    <rect key="frame" x="65" y="236" width="78" height="15"/>
                     <fontDescription key="fontDescription" name="TransatTextMedium" family="Transat Text" pointSize="15"/>
                     <color key="textColor" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -159,7 +169,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You’re about 5' 10&quot; tall" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pg4-G6-NiR">
-                    <rect key="frame" x="65" y="401" width="147.5" height="15"/>
+                    <rect key="frame" x="65" y="401" width="148" height="15"/>
                     <fontDescription key="fontDescription" name="TransatTextMedium" family="Transat Text" pointSize="15"/>
                     <color key="textColor" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
@@ -214,10 +224,12 @@
                 <constraint firstItem="l2F-DP-UVJ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="juZ-r7-qd0"/>
                 <constraint firstItem="xt9-MA-Rd9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ln9-ZB-BJk"/>
                 <constraint firstAttribute="bottom" secondItem="YW7-wb-mH4" secondAttribute="bottom" id="lsf-om-bcN"/>
+                <constraint firstItem="l2F-DP-UVJ" firstAttribute="centerY" secondItem="s93-yD-flR" secondAttribute="centerY" id="moX-25-CPV"/>
                 <constraint firstItem="Api-ed-xez" firstAttribute="bottom" secondItem="MPP-9T-yb0" secondAttribute="bottom" constant="-2" id="r6Z-tU-MSR"/>
                 <constraint firstItem="pg4-G6-NiR" firstAttribute="leading" secondItem="20m-eu-yIP" secondAttribute="leading" id="rEM-ad-i4r"/>
                 <constraint firstAttribute="centerX" secondItem="3ic-hO-IZ3" secondAttribute="centerX" id="rlA-Ud-a94"/>
                 <constraint firstAttribute="trailing" secondItem="OLW-ee-in0" secondAttribute="trailing" constant="8" id="t50-ka-7WP"/>
+                <constraint firstAttribute="centerX" secondItem="s93-yD-flR" secondAttribute="centerX" id="tNs-5O-lOe"/>
                 <constraint firstItem="oh4-96-yng" firstAttribute="bottom" secondItem="wEw-mJ-zT3" secondAttribute="bottom" constant="-2" id="vWA-G0-oA0"/>
                 <constraint firstItem="oh4-96-yng" firstAttribute="leading" secondItem="5ee-BL-JGE" secondAttribute="leading" id="xyd-cX-5gL"/>
             </constraints>

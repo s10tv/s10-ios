@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Helpshift
 
 @objc(SettingsViewController)
 class SettingsViewController : BaseViewController {
@@ -36,14 +37,16 @@ class SettingsViewController : BaseViewController {
             heightLabel.text = "You are about \(user.height!)cm tall"
             aboutLabel.setRawText(user.about!)
         }
-
-        
         
         // TODO: Refactor me into utils
         let info = NSBundle.mainBundle().infoDictionary
         let build = info?["CFBundleVersion"] as String
         let version = info?["CFBundleShortVersionString"] as String
         versionLabel.text = "v\(version)(\(build))"
+    }
+    
+    @IBAction func giveFeedback(sender: AnyObject) {
+        Helpshift.sharedInstance().showConversation(self, withOptions: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

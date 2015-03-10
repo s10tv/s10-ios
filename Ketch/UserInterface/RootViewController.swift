@@ -7,8 +7,8 @@
 //
 
 import UIKit
-import FacebookSDK
 import Meteor
+import FacebookSDK
 
 class RootViewController : UINavigationController {
     
