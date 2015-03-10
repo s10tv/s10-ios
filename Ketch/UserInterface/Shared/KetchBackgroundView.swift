@@ -52,6 +52,20 @@ import Foundation
         }
     }
     
+    // MARK: -
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Setup boat pitching animation
+        let pitch = CABasicAnimation(keyPath: "transform.rotation")
+        pitch.fromValue = 0.2
+        pitch.toValue = -0.2
+        pitch.autoreverses = true
+        pitch.duration = 3
+        pitch.repeatCount = Float.infinity
+        ketchIcon.layer.addAnimation(pitch, forKey: "pitching")
+    }
+    
     override func drawRect(rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
         let topCenter = CGPointMake(CGRectGetMidX(bounds), 0)
