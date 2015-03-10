@@ -93,7 +93,7 @@ class GameView : TransparentView, UIDynamicAnimatorDelegate {
                     this.animator.removeBehavior(source.brownianPush)
                     if source.target?.choice == nil {
                         source.brownianPush = UIPushBehavior(items: [source.view], mode: .Instantaneous)
-                        source.brownianPush!.magnitude = 0.1
+                        source.brownianPush!.magnitude = 0.075
                         source.brownianPush!.angle = DegreesToRadians(Int(arc4random()) % 360)
                         this.animator.addBehavior(source.brownianPush)
                     }
@@ -228,7 +228,7 @@ class GameView : TransparentView, UIDynamicAnimatorDelegate {
                         RACSignal.interval(1, onScheduler: RACScheduler.mainThreadScheduler()).take(1).subscribeCompleted { [weak self] in
                             if let this = self {
                                 this.animator.removeBehavior(this.snap)
-                                let margin = CGRectGetWidth(view.frame) / 2 * 1.25 // 25% larger than size of avatar
+                                let margin = CGRectGetWidth(view.frame) / 2 * 1.15 // 15% larger than size of avatar
                                 let top = this.position.y - margin
                                 let bottom = this.position.y + margin
                                 let left = this.position.x - margin
