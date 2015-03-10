@@ -17,7 +17,7 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="mUa-cS-ru4" customClass="GradientBackgroundView" customModule="Ketch" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="mUa-cS-ru4" customClass="KetchBackgroundView" customModule="Ketch" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -27,12 +27,6 @@
                     <collectionViewLayout key="collectionViewLayout" id="dZl-7C-LHR" customClass="JSQMessagesCollectionViewFlowLayout"/>
                     <cells/>
                 </collectionView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Header" translatesAutoresizingMaskIntoConstraints="NO" id="3cc-kC-cwZ">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="62"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="3cc-kC-cwZ" secondAttribute="height" multiplier="160:31" id="daU-3z-L1f"/>
-                    </constraints>
-                </imageView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="acP-Nw-WUu" userLabel="Title View">
                     <rect key="frame" x="104.5" y="16" width="112.5" height="44"/>
                     <subviews>
@@ -84,28 +78,24 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstItem="3cc-kC-cwZ" firstAttribute="width" secondItem="3cc-kC-cwZ" secondAttribute="height" multiplier="160:31" id="28A-3E-vue"/>
-                <constraint firstItem="l9u-2b-4LK" firstAttribute="top" secondItem="3cc-kC-cwZ" secondAttribute="bottom" id="49q-Ec-9dr"/>
                 <constraint firstAttribute="trailing" secondItem="BoD-Az-3DM" secondAttribute="trailing" id="7xc-Ha-asg"/>
-                <constraint firstItem="3cc-kC-cwZ" firstAttribute="leading" secondItem="mUa-cS-ru4" secondAttribute="leading" id="BBo-PH-5Az"/>
                 <constraint firstItem="DZn-Di-z3m" firstAttribute="top" secondItem="mUa-cS-ru4" secondAttribute="top" id="CSS-OU-ItA"/>
-                <constraint firstItem="acP-Nw-WUu" firstAttribute="top" secondItem="3cc-kC-cwZ" secondAttribute="top" constant="16" id="HsH-7v-8hP"/>
-                <constraint firstItem="3cc-kC-cwZ" firstAttribute="top" secondItem="mUa-cS-ru4" secondAttribute="top" id="LFc-1A-wTq"/>
                 <constraint firstItem="l9u-2b-4LK" firstAttribute="leading" secondItem="mUa-cS-ru4" secondAttribute="leading" id="MmF-oh-Y75"/>
+                <constraint firstItem="l9u-2b-4LK" firstAttribute="top" secondItem="mUa-cS-ru4" secondAttribute="top" constant="62" id="O8h-th-vTP"/>
                 <constraint firstAttribute="trailing" secondItem="l9u-2b-4LK" secondAttribute="trailing" id="O9u-TA-A0e"/>
+                <constraint firstAttribute="centerX" secondItem="acP-Nw-WUu" secondAttribute="centerX" constant="-0.75" id="Po2-tD-T73"/>
                 <constraint firstAttribute="bottom" secondItem="l9u-2b-4LK" secondAttribute="bottom" id="Re7-WW-UmS"/>
                 <constraint firstItem="DZn-Di-z3m" firstAttribute="leading" secondItem="mUa-cS-ru4" secondAttribute="leading" id="buh-Y3-5p2"/>
-                <constraint firstItem="acP-Nw-WUu" firstAttribute="centerX" secondItem="3cc-kC-cwZ" secondAttribute="centerX" id="oNT-8e-hMp"/>
+                <constraint firstItem="acP-Nw-WUu" firstAttribute="top" secondItem="mUa-cS-ru4" secondAttribute="top" constant="16" id="k14-9y-kOR"/>
                 <constraint firstAttribute="bottom" secondItem="BoD-Az-3DM" secondAttribute="bottom" id="rHs-6q-NX4"/>
                 <constraint firstItem="BoD-Az-3DM" firstAttribute="leading" secondItem="mUa-cS-ru4" secondAttribute="leading" id="ts7-8f-0lH"/>
-                <constraint firstAttribute="trailing" secondItem="3cc-kC-cwZ" secondAttribute="trailing" id="wCI-DQ-7rm"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
+            <userDefinedRuntimeAttributes>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="showNavButtons" value="NO"/>
+            </userDefinedRuntimeAttributes>
         </view>
     </objects>
-    <resources>
-        <image name="Header" width="320" height="62"/>
-    </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
