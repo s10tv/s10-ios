@@ -16,7 +16,8 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
     var connection: Connection?
     private var messages : FetchViewModel!
     
-    @IBOutlet weak var avatarView: UIImageView!
+    @IBOutlet weak var titleView: UIView!
+    @IBOutlet weak var avatarView: UserAvatarView!
     @IBOutlet weak var nameLabel: UILabel!
     
     var outgoingBubbleData : JSQMessagesBubbleImage!
@@ -48,9 +49,10 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
             return
         }
         
-        avatarView.sd_setImageWithURL(connection?.user?.profilePhotoURL)
         nameLabel.text = connection?.user?.firstName
-        avatarView.whenTapped { [weak self] in
+        avatarView.user = connection?.user
+        titleView.userInteractionEnabled = true
+        titleView.whenTapped { [weak self] in
             self?.performSegue(.ChatToProfile)
             return
         }
@@ -70,6 +72,10 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
         if let profileVC = segue.destinationViewController as? ProfileViewController {
             profileVC.user = connection?.user
         }
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
     
     func shouldShowTimestampForMessageAtIndexPath(indexPath: NSIndexPath) -> Bool {
