@@ -36,7 +36,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="none" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="wgR-pc-Jsx">
-                    <rect key="frame" x="0.0" y="62" width="320" height="505.5"/>
+                    <rect key="frame" x="0.0" y="62" width="320" height="506"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </tableView>
@@ -55,7 +55,7 @@
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="boolean" keyPath="showNavButtons" value="NO"/>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="ketchIconHidden" value="YES"/>
             </userDefinedRuntimeAttributes>
             <variation key="default">
                 <mask key="constraints">

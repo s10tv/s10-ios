@@ -18,14 +18,9 @@ import Foundation
         return CGRectGetHeight(self.frame) - 100
     }
     var animateDuration: NSTimeInterval = 0.4
-    @IBInspectable var showNavButtons : Bool = true {
-        didSet {
-            updateNavButtonsVisibility()
-        }
-    }
-    
-    private func updateNavButtonsVisibility() {
-        ketchIcon.hidden = !showNavButtons
+    @IBInspectable var ketchIconHidden : Bool {
+        get { return ketchIcon.hidden }
+        set(newValue) { ketchIcon.hidden = newValue }
     }
     
     private func animateLayoutChange(completion: ((Bool) -> ())? = nil) {
@@ -59,7 +54,6 @@ import Foundation
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        updateNavButtonsVisibility()
         // Setup boat pitching animation
         let pitch = CABasicAnimation(keyPath: "transform.rotation")
         pitch.fromValue = 0.2

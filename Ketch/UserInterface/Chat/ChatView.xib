@@ -28,7 +28,7 @@
                     <cells/>
                 </collectionView>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="acP-Nw-WUu" userLabel="Title View">
-                    <rect key="frame" x="104.5" y="16" width="112.5" height="44"/>
+                    <rect key="frame" x="105" y="16" width="113" height="44"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YNr-EM-pRL" userLabel="Avatar">
                             <rect key="frame" x="0.0" y="5" width="34" height="34"/>
@@ -37,7 +37,7 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anastasia" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Vr-jl-E7A" userLabel="Name">
-                            <rect key="frame" x="42" y="11" width="70.5" height="22"/>
+                            <rect key="frame" x="42" y="11" width="71" height="22"/>
                             <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                             <nil key="highlightedColor"/>
@@ -92,7 +92,7 @@
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <userDefinedRuntimeAttributes>
-                <userDefinedRuntimeAttribute type="boolean" keyPath="showNavButtons" value="NO"/>
+                <userDefinedRuntimeAttribute type="boolean" keyPath="ketchIconHidden" value="YES"/>
             </userDefinedRuntimeAttributes>
         </view>
     </objects>
