@@ -30,7 +30,7 @@ class DockViewController : BaseViewController {
 
     func didSelectItem(item: AnyObject!) {
         self.currentConnection = item as? Connection
-        println("Selected connection \(self.currentConnection?.user?.firstName)")
+        println("Selected connection \(self.currentConnection?.user?.displayName)")
         self.performSegue(.DockToChat)
     }
     

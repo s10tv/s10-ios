@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14C109" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14C1510" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Candidate" representedClassName="Candidate" syncable="YES">
         <attribute name="choice" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
@@ -33,6 +33,7 @@
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="height" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="location" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="photoURLs" optional="YES" attributeType="Transformable" valueTransformerName="PhotosValueTransformer" syncable="YES">
             <userInfo>
@@ -45,6 +46,6 @@
         <element name="Candidate" positionX="-45" positionY="54" width="128" height="88"/>
         <element name="Connection" positionX="-54" positionY="0" width="128" height="150"/>
         <element name="Message" positionX="-36" positionY="27" width="128" height="118"/>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="195"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="210"/>
     </elements>
 </model>

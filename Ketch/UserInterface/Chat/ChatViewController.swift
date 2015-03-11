@@ -49,7 +49,7 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
             return
         }
         
-        nameLabel.text = connection?.user?.firstName
+        nameLabel.text = connection?.user?.displayName
         avatarView.user = connection?.user
         titleView.userInteractionEnabled = true
         titleView.whenTapped { [weak self] in
@@ -97,7 +97,7 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
     }
     
     func senderDisplayName() -> String! {
-        return User.currentUser()?.firstName
+        return User.currentUser()?.displayName
     }
     
     func senderId() -> String! {

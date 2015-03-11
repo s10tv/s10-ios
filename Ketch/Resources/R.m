@@ -10,6 +10,8 @@
 const struct R R = {
     .ImagesAssets = {
         .app = @"AppIcon",
+        .appBeta = @"AppIconBeta",
+        .appDev = @"AppIconDev",
         .backgroundSeaShort = @"background-sea-short",
         .bgWave = @"BGWave",
         .bottomSea = @"bottom-sea",

@@ -29,7 +29,7 @@ class SettingsViewController : BaseViewController {
                 self?.performSegue(.SettingsToProfile)
                 return
             }
-            nameLabel.text = user.firstName
+            nameLabel.text = user.displayName
             ageLabel.text = "\(user.age!) years old"
             workLabel.text = "You work at \(user.work!)"
             educationLabel.text = "Studied at \(user.education!)"

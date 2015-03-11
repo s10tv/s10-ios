@@ -11,6 +11,10 @@ extern const struct R {
     struct ImagesAssets {
         /// AppIcon
         __unsafe_unretained NSString *app;
+        /// AppIconBeta
+        __unsafe_unretained NSString *appBeta;
+        /// AppIconDev
+        __unsafe_unretained NSString *appDev;
         /// background-sea-short
         __unsafe_unretained NSString *backgroundSeaShort;
         /// BGWave

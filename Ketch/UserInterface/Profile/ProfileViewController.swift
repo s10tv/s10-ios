@@ -35,8 +35,8 @@ class ProfileViewController : BaseViewController, SwipeViewDelegate, SwipeViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         // TODO: Find better solution than hardcoding keypath string
-        RAC(navigationItem, "title") <~ racObserve("user.firstName")
-        RAC(nameLabel, "text") <~ racObserve("user.firstName")
+        RAC(navigationItem, "title") <~ racObserve("user.displayName")
+        RAC(nameLabel, "text") <~ racObserve("user.displayName")
         RAC(aboutLabel, "text") <~ racObserve("user.about")
         RAC(locationLabel, "text") <~ racObserve("user.location")
         RAC(workLabel, "text") <~ racObserve("user.work")

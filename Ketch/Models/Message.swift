@@ -18,7 +18,7 @@ class Message: _Message {
     
     func jsqMessage() -> JSQMessage {
         let senderID = sender?.documentID
-        let displayName = sender?.firstName
+        let displayName = sender?.displayName
         let txt = text ?? "empty"
         return JSQMessage(senderId: senderID, senderDisplayName: displayName, date: createdAt, text: txt)
     }

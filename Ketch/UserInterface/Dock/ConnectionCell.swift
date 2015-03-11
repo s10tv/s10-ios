@@ -30,7 +30,7 @@ class ConnectionCell : UITableViewCell {
         avatarView.fadeRatio = connection?.fractionExpired.f ?? 0
         
         // TODO: Can use connectionViewModel of sorts here
-        nameLabel.text = connection?.user?.firstName
+        nameLabel.text = connection?.user?.displayName
         subtitleLabel.text = connection?.lastMessageText
         newIndicator.hidden = !(connection?.hasUnreadMessage?.boolValue ?? false)
     }

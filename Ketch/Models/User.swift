@@ -42,6 +42,10 @@ class User: _User {
         return firstPhotoUrl != nil ? NSURL(string: firstPhotoUrl!) : nil
     }
     
+    var displayName : String {
+        return firstName != nil ? (lastName != nil ? "\(firstName!) \(lastName!)" : firstName!) : ""
+    }
+    
     func jsqAvatar() -> JSQMessagesAvatarImage {
         // TODO: Add gender to user
         let image = JSQMessagesAvatarImage(placeholder: UIImage(named: R.ImagesAssets.girlPlaceholder))
@@ -56,6 +60,13 @@ class User: _User {
     
     func fetchCandidate() -> NSFetchedResultsController {
         return Candidate.by(CandidateRelationships.user.rawValue, value: self).frc()
+    }
+    
+    override class func keyPathsForValuesAffectingValueForKey(key: String) -> NSSet {
+        if key == "displayName" {  // TODO: Use native set syntax. TODO: Can we avoid hardcoding displayName?
+            return NSSet(array: [UserAttributes.firstName.rawValue, UserAttributes.lastName.rawValue])
+        }
+        return super.keyPathsForValuesAffectingValueForKey(key)
     }
     
     class func findByDocumentID(documentID: String) -> User? {
