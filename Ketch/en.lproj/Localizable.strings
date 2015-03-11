@@ -1,6 +1,6 @@
 /* 
   Localizable.strings
-  Serendipity
+  Ketch
 
   Created by Tony Xiao on 2/9/15.
   Copyright (c) 2015 Ketch. All rights reserved.
@@ -8,3 +8,5 @@
 
 "It's a Ketch!" = "It's a Ketch!";
 "Lucky you!" = "Lucky you!";
+"SingleMatchPrompt" = "It seems that %@ also thought you were pretty darn cute. Why not chat and see how things go?";
+"DoubleMatchPrompt" = "Both %@ and %@ were charmed by you. Why not get in touch and see how things go?";

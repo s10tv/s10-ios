@@ -48,8 +48,7 @@ class NewConnectionViewController : BaseViewController {
             centerAvatar.hidden = false
             leftAvatar.hidden = true
             rightAvatar.hidden = true
-            // TODO: Move this into string file
-            promptLabel.setRawText("It seems that \(user.firstName!) also thought you were pretty darn cute. Why not chat and see how things go?")
+            promptLabel.setRawText(LS(R.Strings.singleMatchPrompt, user.firstName!))
         }
     }
     
@@ -63,7 +62,7 @@ class NewConnectionViewController : BaseViewController {
                 centerAvatar.hidden = true
                 leftAvatar.hidden = false
                 rightAvatar.hidden = false
-                promptLabel.setRawText("Both \(user1.firstName!) and \(user2.firstName!) were charmed by you. Why not get in touch and see how things go?")
+                promptLabel.setRawText(LS(R.Strings.doubleMatchPrompt, user1.firstName!, user2.firstName!))
             }
         }
     }

@@ -69,7 +69,9 @@ const struct R R = {
         .sTyping3x = @"Images/typing@3x.png",
     },
     .Strings = {
+        .doubleMatchPrompt = @"DoubleMatchPrompt",
         .itsAKetch = @"It's a Ketch!",
         .luckyYou = @"Lucky you!",
+        .singleMatchPrompt = @"SingleMatchPrompt",
     },
 };

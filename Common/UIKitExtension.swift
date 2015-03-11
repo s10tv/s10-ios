@@ -12,8 +12,9 @@ import Snap
 
 let π = CGFloat(M_PI)
 
-func LS(localizableKey: String) -> String {
-    return NSLocalizedString(localizableKey, comment: "")
+func LS(localizableKey: String, args: CVarArgType...) -> String {
+    return NSString(format: NSLocalizedString(localizableKey, comment: ""),
+                 arguments: getVaList(args)) as String
 }
 
 extension UIView {

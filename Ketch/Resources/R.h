@@ -125,9 +125,13 @@ extern const struct R {
         __unsafe_unretained NSString *sTyping3x;
     } JSQMessagesAssets;
     struct Strings {
+        /// Both %@ and %@ were charmed by you. Why not get in touch and see how things go?
+        __unsafe_unretained NSString *doubleMatchPrompt;
         /// It's a Ketch!
         __unsafe_unretained NSString *itsAKetch;
         /// Lucky you!
         __unsafe_unretained NSString *luckyYou;
+        /// It seems that %@ also thought you were pretty darn cute. Why not chat and see how things go?
+        __unsafe_unretained NSString *singleMatchPrompt;
     } Strings;
 } R;
