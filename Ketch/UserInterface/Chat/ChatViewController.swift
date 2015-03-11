@@ -49,7 +49,7 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
             return
         }
         
-        nameLabel.text = connection?.user?.displayName
+        nameLabel.text = connection?.user?.firstName
         avatarView.user = connection?.user
         titleView.userInteractionEnabled = true
         titleView.whenTapped { [weak self] in
