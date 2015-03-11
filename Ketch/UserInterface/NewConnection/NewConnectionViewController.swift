@@ -43,7 +43,7 @@ class NewConnectionViewController : BaseViewController {
     // Mark: -
     func setupForSingleKetch() {
         if let user = connections?.first?.user {
-            titleLabel.text = "It's a Ketch!"
+            titleLabel.text = LS(R.Strings.itsAKetch)
             centerAvatar.user = user
             centerAvatar.hidden = false
             leftAvatar.hidden = true
@@ -57,7 +57,7 @@ class NewConnectionViewController : BaseViewController {
         // TODO: Combine into single line using Swift 1.2
         if let user1 = connections?.first?.user {
             if let user2 = connections?.last?.user {
-                titleLabel.text = "Lucky you!"
+                titleLabel.text = LS(R.Strings.luckyYou)
                 leftAvatar.user = user1
                 rightAvatar.user = user2
                 centerAvatar.hidden = true

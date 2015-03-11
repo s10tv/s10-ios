@@ -17,14 +17,22 @@ extern const struct R {
         __unsafe_unretained NSString *bgWave;
         /// bottom-sea
         __unsafe_unretained NSString *bottomSea;
+        /// dock-separator
+        __unsafe_unretained NSString *dockSeparator;
         /// game-arrow-down
         __unsafe_unretained NSString *gameArrowDown;
         /// game-bucket-anchor-white
         __unsafe_unretained NSString *gameBucketAnchorWhite;
+        /// game-bucket-keep
+        __unsafe_unretained NSString *gameBucketKeep;
         /// game-bucket-keep-white
         __unsafe_unretained NSString *gameBucketKeepWhite;
         /// game-bucket-knot-white
         __unsafe_unretained NSString *gameBucketKnotWhite;
+        /// game-bucket-marry
+        __unsafe_unretained NSString *gameBucketMarry;
+        /// game-bucket-skip
+        __unsafe_unretained NSString *gameBucketSkip;
         /// game-empty-share-facebook
         __unsafe_unretained NSString *gameEmptyShareFacebook;
         /// game-empty-share-sms
@@ -117,11 +125,9 @@ extern const struct R {
         __unsafe_unretained NSString *sTyping3x;
     } JSQMessagesAssets;
     struct Strings {
-        /// Load Earlier Messages
-        __unsafe_unretained NSString *loadEarlierMessages;
-        /// New Message
-        __unsafe_unretained NSString *newMessage;
-        /// Send
-        __unsafe_unretained NSString *send;
+        /// It's a Ketch!
+        __unsafe_unretained NSString *itsAKetch;
+        /// Lucky you!
+        __unsafe_unretained NSString *luckyYou;
     } Strings;
 } R;

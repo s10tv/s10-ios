@@ -10,6 +10,12 @@ import UIKit
 import ReactiveCocoa
 import Snap
 
+let π = CGFloat(M_PI)
+
+func LS(localizableKey: String) -> String {
+    return NSLocalizedString(localizableKey, comment: "")
+}
+
 extension UIView {
     
     func makeCircular() {
@@ -55,8 +61,6 @@ extension UIAlertView {
         return alert.rac_buttonClickedSignal()
     }
 }
-
-let π = CGFloat(M_PI)
 
 extension UIBezierPath {
     

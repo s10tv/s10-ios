@@ -109,10 +109,10 @@
 		EA735ADA1AAFB30C00723577 /* HSTutorialiPad@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA735ABB1AAFB30C00723577 /* HSTutorialiPad@2x.png */; };
 		EA735ADB1AAFB30C00723577 /* HSTutorialiPad@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA735ABC1AAFB30C00723577 /* HSTutorialiPad@3x.png */; };
 		EA7AA3651AA25D21003383BE /* SBConstantsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3641AA25D21003383BE /* SBConstantsExtension.swift */; };
-		EA7AA36A1AA26597003383BE /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA7AA3671AA26597003383BE /* Localizable.strings */; };
 		EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3681AA26597003383BE /* SBConstants.swift */; };
 		EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3691AA26597003383BE /* StyleKit.swift */; };
 		EA8EE6CF1AAA0FD100E646EE /* ConnectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA8EE6CE1AAA0FD100E646EE /* ConnectionCell.xib */; };
+		EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA9A6ACE1AAFDE19009EDD6D /* Localizable.strings */; };
 		EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
 		EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35461A74CC6900E0C65D /* Main.storyboard */; };
 		EA9F354A1A74CC6900E0C65D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Images.xcassets */; };
@@ -278,10 +278,10 @@
 		EA735ABB1AAFB30C00723577 /* HSTutorialiPad@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HSTutorialiPad@2x.png"; sourceTree = "<group>"; };
 		EA735ABC1AAFB30C00723577 /* HSTutorialiPad@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "HSTutorialiPad@3x.png"; sourceTree = "<group>"; };
 		EA7AA3641AA25D21003383BE /* SBConstantsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstantsExtension.swift; sourceTree = "<group>"; };
-		EA7AA3671AA26597003383BE /* Localizable.strings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		EA7AA3681AA26597003383BE /* SBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstants.swift; sourceTree = "<group>"; };
 		EA7AA3691AA26597003383BE /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
 		EA8EE6CE1AAA0FD100E646EE /* ConnectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionCell.xib; sourceTree = "<group>"; };
+		EA9A6ACF1AAFDFA2009EDD6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA9F353A1A74CC6900E0C65D /* Ketch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ketch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9F353E1A74CC6900E0C65D /* Ketch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ketch-Info.plist"; sourceTree = "<group>"; };
 		EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -352,7 +352,7 @@
 		49A80BC478B1E012CE6D7406 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				EA7AA3671AA26597003383BE /* Localizable.strings */,
+				EA9A6ACE1AAFDE19009EDD6D /* Localizable.strings */,
 				EA7AA3681AA26597003383BE /* SBConstants.swift */,
 				EA7AA3691AA26597003383BE /* StyleKit.swift */,
 				D3E8EF9EDFE5BCEAA0D02DD3 /* R.h */,
@@ -870,7 +870,7 @@
 				EA735AD01AAFB30C00723577 /* HSChatBubbleBlue@3x.png in Resources */,
 				EA735AD51AAFB30C00723577 /* HSConfirmBox@2x.png in Resources */,
 				EA341D841A8C875500A6077B /* ChatView.xib in Resources */,
-				EA7AA36A1AA26597003383BE /* Localizable.strings in Resources */,
+				EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */,
 				EA735AD81AAFB30C00723577 /* HSTutorial@3x.png in Resources */,
 				EA735ADA1AAFB30C00723577 /* HSTutorialiPad@2x.png in Resources */,
 				EA735AC11AAFB30C00723577 /* HS-camera-button.png in Resources */,
@@ -1144,6 +1144,15 @@
 				EA735A9D1AAFB30C00723577 /* zh-Hans */,
 			);
 			name = HelpshiftLocalizable.strings;
+			sourceTree = "<group>";
+		};
+		EA9A6ACE1AAFDE19009EDD6D /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA9A6ACF1AAFDFA2009EDD6D /* en */,
+			);
+			name = Localizable.strings;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		EA9F35461A74CC6900E0C65D /* Main.storyboard */ = {
