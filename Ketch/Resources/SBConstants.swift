@@ -14,6 +14,7 @@ public enum ViewControllerStoryboardIdentifier : String {
     case Dock = "Dock"
     case EditProfile = "EditProfile"
     case Game = "Game"
+    case Loading = "Loading"
     case NewConnection = "NewConnection"
     case Profile = "Profile"
     case Settings = "Settings"

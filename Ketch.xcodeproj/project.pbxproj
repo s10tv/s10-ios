@@ -118,6 +118,8 @@
 		EA9F354A1A74CC6900E0C65D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Images.xcassets */; };
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
 		EA9F35591A74CC6900E0C65D /* KetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F35581A74CC6900E0C65D /* KetchTests.swift */; };
+		EAA105881AAFBF0300B988F7 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA105871AAFBF0300B988F7 /* LoadingViewController.swift */; };
+		EAA1058A1AAFBF1000B988F7 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAA105891AAFBF1000B988F7 /* LoadingView.xib */; };
 		EAB54E3D1AA0E2EB00A44883 /* SettingsBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB54E3C1AA0E2EB00A44883 /* SettingsBackgroundView.swift */; };
 		EAC8D3F61AA7269F00BCB7B9 /* FetchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9311A87DE5800D62625 /* FetchViewModel.swift */; };
 		EAC8D3F71AA7278900BCB7B9 /* ViewProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9321A87DE5800D62625 /* ViewProviders.swift */; };
@@ -290,6 +292,8 @@
 		EA9F35571A74CC6900E0C65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA9F35581A74CC6900E0C65D /* KetchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KetchTests.swift; sourceTree = "<group>"; };
 		EA9F35621A74CD8800E0C65D /* Ketch-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Ketch-Bridging.h"; path = "Ketch/Ketch-Bridging.h"; sourceTree = SOURCE_ROOT; };
+		EAA105871AAFBF0300B988F7 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		EAA105891AAFBF1000B988F7 /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
 		EAB54E3C1AA0E2EB00A44883 /* SettingsBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsBackgroundView.swift; sourceTree = "<group>"; };
 		EABD43D81AA1D28700B07813 /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
 		EABD43D91AA1D29C00B07813 /* Beta.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
@@ -681,6 +685,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		EAA105861AAFBE8C00B988F7 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				EAA105871AAFBF0300B988F7 /* LoadingViewController.swift */,
+				EAA105891AAFBF1000B988F7 /* LoadingView.xib */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
 		EABD43D71AA1D27400B07813 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
@@ -705,6 +718,7 @@
 			isa = PBXGroup;
 			children = (
 				EA6650E21AA00A82001BA40C /* Shared */,
+				EAA105861AAFBE8C00B988F7 /* Loading */,
 				EA2AB70C1A8A00E300D42C6C /* Game */,
 				EA409D3A1A8C75F600988B8B /* Dock */,
 				EA196FEC1A83549300FEBA7F /* Chat */,
@@ -885,6 +899,7 @@
 				EA735AC71AAFB30C00723577 /* HS-no-connection.png in Resources */,
 				EA735AC01AAFB30C00723577 /* HS-Attachment@3x.png in Resources */,
 				EA341D9F1A8C88CC00A6077B /* JSQMessagesCollectionViewCellIncoming.xib in Resources */,
+				EAA1058A1AAFBF1000B988F7 /* LoadingView.xib in Resources */,
 				EA341DA21A8C88CC00A6077B /* JSQMessagesToolbarContentView.xib in Resources */,
 				EA735AC21AAFB30C00723577 /* HS-camera-button@2x.png in Resources */,
 			);
@@ -1013,6 +1028,7 @@
 			files = (
 				EA1970151A83549300FEBA7F /* ProfileViewController.swift in Sources */,
 				EAF195CF1A827FAD00A2F103 /* Ketch-Bridging.m in Sources */,
+				EAA105881AAFBF0300B988F7 /* LoadingViewController.swift in Sources */,
 				EA1970171A83549300FEBA7F /* SettingsViewController.swift in Sources */,
 				EA409D421A8C75F600988B8B /* DockViewController.swift in Sources */,
 				EA7AA3651AA25D21003383BE /* SBConstantsExtension.swift in Sources */,

@@ -29,7 +29,9 @@ class RootViewController : UINavigationController {
         if !Core.attemptLoginWithCachedCredentials() {
             showWelcome(false)
         } else {
-            showGame(false)
+            showLoading {
+                self.showGame(false)
+            }
         }
     }
     
@@ -43,6 +45,11 @@ class RootViewController : UINavigationController {
         } else {
             return false
         }
+    }
+    
+    func showLoading(completion: (() -> ())) {
+        setViewControllers([makeViewController(.Loading)!], animated: false)
+        Core.currentUserSubscription.signal.deliverOnMainThread().subscribeCompleted(completion)
     }
     
     func showProfile(user: User?, animated: Bool) {

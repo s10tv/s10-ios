@@ -68,7 +68,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fR6-RZ-qMo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-22" y="218"/>
+            <point key="canvasLocation" x="-478" y="218"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="5fm-o7-1g2">
@@ -165,6 +165,17 @@
                 <navigationItem title="Settings" id="4PF-BM-XHD"/>
             </objects>
             <point key="canvasLocation" x="282" y="1042"/>
+        </scene>
+        <!--Loading View Controller-->
+        <scene sceneID="idl-7y-QrO">
+            <objects>
+                <viewController storyboardIdentifier="Loading" id="cNP-fM-38y" customClass="LoadingViewController" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Der-wX-EJ5"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CMv-o2-2OX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-98" y="218"/>
         </scene>
     </scenes>
 </document>
