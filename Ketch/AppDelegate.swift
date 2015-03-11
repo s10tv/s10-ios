@@ -10,7 +10,6 @@ import UIKit
 import SugarRecord
 import FacebookSDK
 import CrashlyticsFramework
-import Helpshift
 
 var Core : CoreService!
 
@@ -30,10 +29,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
         Crashlytics.sharedInstance().delegate = self
         Crashlytics.startWithAPIKey("4cdb005d0ddfebc8865c0a768de9b43c993e9113")
         Core = CoreService()
-        
-        Helpshift.installForApiKey("cd1785998e7ccde0efbdb51260fdcf0c",
-                        domainName:"ketch.helpshift.com",
-                             appID:"ketch_platform_20150310214111182-3906dad97836404")
         
         Log.info("App Launched")
 

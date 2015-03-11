@@ -23,7 +23,6 @@ pod 'TCMobileProvision', :git => 'https://github.com/tcurdt/TCMobileProvision'
 pod 'JSQMessagesViewController', '~> 6.1'
 
 pod 'CrashlyticsFramework', '~> 2.2'
-pod 'HelpShift', '~> 4.10'
 
 # Debug only
 

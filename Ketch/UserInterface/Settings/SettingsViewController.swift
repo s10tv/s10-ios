@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Helpshift
 
 @objc(SettingsViewController)
 class SettingsViewController : BaseViewController {
@@ -46,7 +45,7 @@ class SettingsViewController : BaseViewController {
     }
     
     @IBAction func giveFeedback(sender: AnyObject) {
-        Helpshift.sharedInstance().showConversation(self, withOptions: ["hideNameAndEmail": "YES"])
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
