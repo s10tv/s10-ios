@@ -72,6 +72,10 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
         }
     }
     
+    func shouldShowTimestampForMessageAtIndexPath(indexPath: NSIndexPath) -> Bool {
+        return indexPath.row % 3 == 0
+    }
+    
     // MARK: -
     
     @IBAction func goBack(sender: AnyObject) {
@@ -86,8 +90,6 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
         finishSendingMessageAnimated(true)
     }
     
-    // MARK: - JSQMessagesCollectionViewDataSource
-    
     func senderDisplayName() -> String! {
         return User.currentUser()?.firstName
     }
@@ -95,6 +97,8 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
     func senderId() -> String! {
         return User.currentUser()?.documentID
     }
+    
+    // MARK: - JSQMessagesCollectionViewDataSource
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return messages.numberOfItemsInSection(section)
@@ -120,6 +124,20 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
     override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
         let message = messages.itemAtIndexPath(indexPath) as Message
         return message.sender?.jsqAvatar();
+    }
+    
+    // Message Timestamp
+    
+    override func collectionView(collectionView: JSQMessagesCollectionView!, attributedTextForCellTopLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
+        if shouldShowTimestampForMessageAtIndexPath(indexPath) {
+            let message = messages.itemAtIndexPath(indexPath) as Message
+            return JSQMessagesTimestampFormatter.sharedFormatter().attributedTimestampForDate(message.createdAt)
+        }
+        return nil
+    }
+    
+    override func collectionView(collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellTopLabelAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+        return shouldShowTimestampForMessageAtIndexPath(indexPath) ? 20 : 0
     }
     
     // MARK: - Class Method
