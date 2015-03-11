@@ -7,4 +7,4 @@ mogenerator -m Models/Ketch.xcdatamodeld/Ketch.xcdatamodel/ --human-dir Models -
 sbconstants -s Base.lproj/ -w -d > Resources/SBConstants.swift
 
 # Regenerate image and string name constants
-xcres build ../ Resources/R
+xcres build -v -x "Helpshift*" -x "HS*" -x "JSQ*" ../ Resources/R
