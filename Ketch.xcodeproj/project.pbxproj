@@ -1079,7 +1079,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 2CD850D0B9EC2938BA5CEB59 /* Pods.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_BUILD = 0;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "$(CUSTOM_CODE_SIGN_IDENTITY)";
@@ -1100,7 +1099,6 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 0686ABB348D06D87DA844419 /* Pods.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_BUILD = 0;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "$(CUSTOM_CODE_SIGN_IDENTITY)";
