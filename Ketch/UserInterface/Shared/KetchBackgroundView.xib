@@ -3,18 +3,10 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <mutableArray key="KetchIcon.otf">
-            <string>KetchIcon-Regular</string>
-            <string>KetchIcon-Regular</string>
-        </mutableArray>
-    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KetchBackgroundView" customModule="Ketch" customModuleProvider="target">
             <connections>
-                <outlet property="dockButton" destination="jVx-li-RXQ" id="zvf-HY-T1N"/>
                 <outlet property="ketchIcon" destination="4BP-aI-ryy" id="81X-lM-J3V"/>
-                <outlet property="settingsButton" destination="WBN-hY-kOU" id="OT1-eO-fPH"/>
                 <outlet property="waveTopMargin" destination="sPo-3N-DOh" id="pgm-NP-eij"/>
             </connections>
         </placeholder>
@@ -23,30 +15,6 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WBN-hY-kOU" userLabel="Settings">
-                    <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="60" id="YmM-CN-OBb"/>
-                        <constraint firstAttribute="width" constant="80" id="uBp-Ir-iJ6"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="KetchIcon-Regular" family="KetchIcon" pointSize="12"/>
-                    <state key="normal" title="y">
-                        <color key="titleColor" red="0.092987515029999995" green="0.64821720120000004" blue="0.65024715659999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jVx-li-RXQ" userLabel="Dock">
-                    <rect key="frame" x="295" y="0.0" width="80" height="60"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="60" id="dzr-Q2-8bj"/>
-                        <constraint firstAttribute="width" constant="80" id="sAE-Dk-w4Z"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="KetchIcon-Regular" family="KetchIcon" pointSize="10"/>
-                    <state key="normal" title="z">
-                        <color key="titleColor" red="0.092987515029999995" green="0.64821720120000004" blue="0.65024715659999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                    </state>
-                </button>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2GV-Mt-CIn" customClass="KetchWaveView" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="60" width="375" height="607"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -63,13 +31,9 @@
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="2GV-Mt-CIn" secondAttribute="bottom" id="0dS-Vd-kSR"/>
                 <constraint firstItem="4BP-aI-ryy" firstAttribute="centerX" secondItem="2GV-Mt-CIn" secondAttribute="centerX" id="92M-bK-Fqj"/>
-                <constraint firstItem="WBN-hY-kOU" firstAttribute="leading" secondItem="rwt-zi-iy4" secondAttribute="leading" id="Aj1-Aw-2sa"/>
-                <constraint firstAttribute="trailing" secondItem="jVx-li-RXQ" secondAttribute="trailing" id="HJF-3N-ssl"/>
                 <constraint firstItem="2GV-Mt-CIn" firstAttribute="top" secondItem="4BP-aI-ryy" secondAttribute="bottom" constant="-10" id="T86-mk-fC9"/>
                 <constraint firstAttribute="trailing" secondItem="2GV-Mt-CIn" secondAttribute="trailing" id="dsY-pr-2ap"/>
                 <constraint firstItem="2GV-Mt-CIn" firstAttribute="top" secondItem="rwt-zi-iy4" secondAttribute="top" constant="60" id="sPo-3N-DOh"/>
-                <constraint firstItem="jVx-li-RXQ" firstAttribute="top" secondItem="rwt-zi-iy4" secondAttribute="top" id="uV4-FU-B3L"/>
-                <constraint firstItem="WBN-hY-kOU" firstAttribute="top" secondItem="rwt-zi-iy4" secondAttribute="top" id="uyF-jn-4dR"/>
                 <constraint firstItem="2GV-Mt-CIn" firstAttribute="leading" secondItem="rwt-zi-iy4" secondAttribute="leading" id="xfd-UF-VVV"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>

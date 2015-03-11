@@ -5,6 +5,10 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="KetchIcon.otf">
+            <string>KetchIcon-Regular</string>
+            <string>KetchIcon-Regular</string>
+        </mutableArray>
         <mutableArray key="TransatTextStandard.otf">
             <string>TransatTextStandard</string>
             <string>TransatTextStandard</string>
@@ -24,6 +28,36 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qQh-jY-p6T" userLabel="Settings">
+                    <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="B8h-Ei-Hcd"/>
+                        <constraint firstAttribute="height" constant="60" id="qkR-di-azb"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="KetchIcon-Regular" family="KetchIcon" pointSize="12"/>
+                    <state key="normal" title="y">
+                        <color key="titleColor" red="0.092987515029999995" green="0.64821720120000004" blue="0.65024715659999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="goToSettings:" destination="-1" eventType="touchUpInside" id="Ocg-00-LkQ"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jod-zD-ot2" userLabel="Dock">
+                    <rect key="frame" x="295" y="0.0" width="80" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="80" id="KNU-WI-meo"/>
+                        <constraint firstAttribute="height" constant="60" id="dUC-LQ-vIA"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="KetchIcon-Regular" family="KetchIcon" pointSize="10"/>
+                    <state key="normal" title="z">
+                        <color key="titleColor" red="0.092987515029999995" green="0.64821720120000004" blue="0.65024715659999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="goToDock:" destination="-1" eventType="touchUpInside" id="oOt-Bh-vXN"/>
+                    </connections>
+                </button>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WOT-kB-qH2" userLabel="New Indicator">
                     <rect key="frame" x="343" y="15" width="12" height="12"/>
                     <color key="backgroundColor" red="0.950525701" green="0.36602467300000002" blue="0.44692194460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -39,12 +73,16 @@
             </subviews>
             <color key="backgroundColor" red="0.043137254899999998" green="0.8980392157" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
+                <constraint firstItem="qQh-jY-p6T" firstAttribute="leading" secondItem="dPb-pR-9as" secondAttribute="leading" id="1Fm-F0-NfB"/>
                 <constraint firstItem="WOT-kB-qH2" firstAttribute="top" secondItem="dPb-pR-9as" secondAttribute="top" constant="15" id="5Gp-vA-vaP"/>
                 <constraint firstItem="a04-sX-EpL" firstAttribute="top" secondItem="dPb-pR-9as" secondAttribute="top" constant="60" id="JmF-6N-WbB"/>
                 <constraint firstItem="a04-sX-EpL" firstAttribute="leading" secondItem="dPb-pR-9as" secondAttribute="leading" id="Q1M-4C-Zvg"/>
+                <constraint firstItem="jod-zD-ot2" firstAttribute="top" secondItem="dPb-pR-9as" secondAttribute="top" id="dd7-VD-OHj"/>
+                <constraint firstItem="qQh-jY-p6T" firstAttribute="top" secondItem="dPb-pR-9as" secondAttribute="top" id="dmv-qg-KrT"/>
                 <constraint firstAttribute="trailing" secondItem="a04-sX-EpL" secondAttribute="trailing" id="gDQ-5D-BkV"/>
                 <constraint firstAttribute="bottom" secondItem="a04-sX-EpL" secondAttribute="bottom" id="kfY-5d-q7u"/>
                 <constraint firstAttribute="trailing" secondItem="WOT-kB-qH2" secondAttribute="trailing" constant="20" id="tzx-eF-Zov"/>
+                <constraint firstAttribute="trailing" secondItem="jod-zD-ot2" secondAttribute="trailing" id="xkR-4V-tL3"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
@@ -117,10 +155,10 @@
                     <rect key="frame" x="267" y="467" width="100" height="100"/>
                 </imageView>
                 <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MMH-Ka-VtK" userLabel="Ready Prompt" customClass="TransparentView" customModule="Ketch" customModuleProvider="target">
-                    <rect key="frame" x="75" y="359" width="224.5" height="107"/>
+                    <rect key="frame" x="75" y="359" width="225" height="107"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsh-wd-hgi" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="224.5" height="62"/>
+                            <rect key="frame" x="0.0" y="0.0" width="225" height="62"/>
                             <attributedString key="attributedText">
                                 <fragment content="SWIPE DOWN TO FIND THE ONE!">
                                     <attributes>

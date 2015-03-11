@@ -31,6 +31,7 @@
                 <constraint firstAttribute="centerY" secondItem="MM7-2s-Laf" secondAttribute="centerY" id="5p5-tu-Bvg"/>
                 <constraint firstAttribute="centerX" secondItem="MM7-2s-Laf" secondAttribute="centerX" id="bLw-on-f0R"/>
             </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <point key="canvasLocation" x="441" y="533"/>
         </view>

@@ -31,10 +31,7 @@ class GameViewController : BaseViewController {
             }
         }
         unreadConnections.performFetchIfNeeded()
-        
-        backgroundView.settingsButton.addTarget(self, action: "goToSettings:", forControlEvents: .TouchUpInside)
-        backgroundView.dockButton.addTarget(self, action: "goToDock:", forControlEvents: .TouchUpInside)
-        
+                
         dockBadge.makeCircular()
         showSubview(gameView)
 

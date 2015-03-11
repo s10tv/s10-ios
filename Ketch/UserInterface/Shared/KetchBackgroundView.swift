@@ -11,8 +11,6 @@ import Foundation
 @IBDesignable class KetchBackgroundView : NibDesignableView {
     
     @IBOutlet weak var ketchIcon: UIImageView!
-    @IBOutlet weak var settingsButton: UIButton!
-    @IBOutlet weak var dockButton: UIButton!
     @IBOutlet weak var waveTopMargin: NSLayoutConstraint!
 
     var waterlineUpperBound : CGFloat = 60 // TODO: Get this value for nib rather than hard code
@@ -27,9 +25,7 @@ import Foundation
     }
     
     private func updateNavButtonsVisibility() {
-        settingsButton.hidden = !showNavButtons
         ketchIcon.hidden = !showNavButtons
-        dockButton.hidden = !showNavButtons
     }
     
     private func animateLayoutChange(completion: ((Bool) -> ())? = nil) {
