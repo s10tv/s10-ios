@@ -12,7 +12,6 @@ import FacebookSDK
 import SugarRecord
 import Meteor
 import TCMobileProvision
-import Helpshift
 
 class CoreService {
     let serverHostname = "ketch-dev.herokuapp.com"
@@ -66,13 +65,6 @@ class CoreService {
 
         // Initialize other services
         candidateService = CandidateService(meteor: meteor)
-        
-        currentUserSubscription.signal.deliverOnMainThread().subscribeCompleted {
-            let user = User.currentUser()!
-            Helpshift.setUserIdentifier(user.documentID)
-            // TODO: Return use full name and make sure we get the email address from server here
-            Helpshift.setName(user.firstName, andEmail: nil)
-        }
     }
     
     private func loginToMeteor() {
