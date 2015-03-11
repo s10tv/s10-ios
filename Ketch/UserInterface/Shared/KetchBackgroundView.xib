@@ -8,6 +8,7 @@
             <connections>
                 <outlet property="ketchIcon" destination="4BP-aI-ryy" id="81X-lM-J3V"/>
                 <outlet property="waveTopMargin" destination="sPo-3N-DOh" id="pgm-NP-eij"/>
+                <outlet property="waveView" destination="2GV-Mt-CIn" id="8Sv-4W-5n1"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

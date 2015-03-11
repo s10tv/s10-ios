@@ -11,4 +11,11 @@ import Foundation
 @objc(LoadingViewController)
 class LoadingViewController : BaseViewController {
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Slightly hacky because it modifies internal state of another view. Need to think of better way
+        let view = self.view as KetchBackgroundView
+        view.waveTopMargin.constant = view.waterlineLowerBound
+    }
+    
 }

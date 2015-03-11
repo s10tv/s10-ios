@@ -11,9 +11,10 @@ import Foundation
 @IBDesignable class KetchBackgroundView : NibDesignableView {
     
     @IBOutlet weak var ketchIcon: UIImageView!
+    @IBOutlet weak var waveView: KetchWaveView!
     @IBOutlet weak var waveTopMargin: NSLayoutConstraint!
 
-    var waterlineUpperBound : CGFloat = 60 // TODO: Get this value for nib rather than hard code
+    var waterlineUpperBound : CGFloat!
     var waterlineLowerBound : CGFloat {
         return CGRectGetHeight(self.frame) - 100
     }
@@ -54,6 +55,7 @@ import Foundation
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        waterlineUpperBound = waveTopMargin.constant
         // Setup boat pitching animation
         let pitch = CABasicAnimation(keyPath: "transform.rotation")
         pitch.fromValue = 0.2
