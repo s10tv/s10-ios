@@ -30,6 +30,8 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
         view.backgroundColor = UIColor(hex: 0x0BE5F1)
         collectionView.backgroundColor = UIColor.clearColor()
         
+        inputToolbar.contentView.leftBarButtonItem = nil
+
         let bubbleFactory = JSQMessagesBubbleImageFactory()
         outgoingBubbleData = bubbleFactory.outgoingMessagesBubbleImageWithColor(StyleKit.darkWhite)
         incomingBubbleData = bubbleFactory.incomingMessagesBubbleImageWithColor(StyleKit.pureWhite)
@@ -64,10 +66,6 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
         avatarView.makeCircular()
     }
     
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let profileVC = segue.destinationViewController as? ProfileViewController {
             profileVC.user = connection?.user
@@ -86,10 +84,6 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
             Core.meteor.callMethod("connection/sendMessage", params: [connectionID, text])
         }
         finishSendingMessageAnimated(true)
-    }
-    
-    override func didPressAccessoryButton(sender: UIButton!) {
-        // TODO: Remove accessory button all together
     }
     
     // MARK: - JSQMessagesCollectionViewDataSource
@@ -127,6 +121,8 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
         let message = messages.itemAtIndexPath(indexPath) as Message
         return message.sender?.jsqAvatar();
     }
+    
+    // MARK: - Class Method
     
     override class func nib() -> UINib {
         return UINib(nibName: "ChatView", bundle: nil)
