@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -160,8 +161,11 @@
                     <rect key="frame" x="267" y="467" width="100" height="100"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsh-wd-hgi" userLabel="Help Text" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
-                    <rect key="frame" x="20" y="353" width="335" height="62"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-progressIndicator-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ee3-Rd-2aM" userLabel="Progress Indicator" customClass="ProgressIndicator" customModule="Ketch" customModuleProvider="target">
+                    <rect key="frame" x="149" y="333" width="77" height="15"/>
+                </imageView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsh-wd-hgi" userLabel="Help Text" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                    <rect key="frame" x="20" y="364" width="335" height="62"/>
                     <attributedString key="attributedText">
                         <fragment content="SWIPE DOWN TO FIND THE ONE!">
                             <attributes>
@@ -182,8 +186,8 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gP7-jI-QkA" userLabel="Confirm Button">
-                    <rect key="frame" x="63" y="377" width="250" height="54"/>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gP7-jI-QkA" userLabel="Confirm Button" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
+                    <rect key="frame" x="63" y="388" width="250" height="54"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="250" id="93L-fb-9XJ"/>
@@ -223,13 +227,15 @@
                 <constraint firstAttribute="centerX" secondItem="Iti-rA-q5V" secondAttribute="centerX" id="OY3-dj-utz"/>
                 <constraint firstItem="k7t-mm-QgH" firstAttribute="width" secondItem="1Lu-FI-gAz" secondAttribute="width" id="OeY-wf-qFW"/>
                 <constraint firstAttribute="centerX" secondItem="k7t-mm-QgH" secondAttribute="centerX" id="Per-M4-CzZ"/>
-                <constraint firstAttribute="centerY" secondItem="hsh-wd-hgi" secondAttribute="centerY" priority="251" constant="-80" id="Y6M-5A-RpU"/>
+                <constraint firstAttribute="centerX" secondItem="Ee3-Rd-2aM" secondAttribute="centerX" id="RMa-tY-5v6"/>
+                <constraint firstAttribute="centerY" secondItem="hsh-wd-hgi" secondAttribute="top" priority="251" constant="-60" id="Y6M-5A-RpU"/>
                 <constraint firstItem="hsh-wd-hgi" firstAttribute="top" relation="greaterThanOrEqual" secondItem="u8F-ne-eBp" secondAttribute="bottom" constant="40" id="YyE-NN-HaU"/>
                 <constraint firstAttribute="centerX" secondItem="hsh-wd-hgi" secondAttribute="centerX" id="cBr-c3-XD1"/>
                 <constraint firstItem="k7t-mm-QgH" firstAttribute="width" secondItem="Iti-rA-q5V" secondAttribute="width" id="eok-08-XJ3"/>
                 <constraint firstItem="o6p-MY-cjB" firstAttribute="top" secondItem="u8F-ne-eBp" secondAttribute="top" id="hU4-XS-Bt1"/>
                 <constraint firstItem="hsh-wd-hgi" firstAttribute="centerY" secondItem="gP7-jI-QkA" secondAttribute="centerY" constant="-20" id="i9C-gE-YHQ"/>
                 <constraint firstItem="o6p-MY-cjB" firstAttribute="top" secondItem="Iti-rA-q5V" secondAttribute="bottom" constant="10" id="j7w-yX-IMo"/>
+                <constraint firstItem="hsh-wd-hgi" firstAttribute="top" secondItem="Ee3-Rd-2aM" secondAttribute="bottom" constant="16" id="onI-uv-RX1"/>
                 <constraint firstItem="Iti-rA-q5V" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" constant="36" id="pbb-Yk-y1d"/>
                 <constraint firstItem="o6p-MY-cjB" firstAttribute="width" secondItem="Iti-rA-q5V" secondAttribute="width" id="rs1-FL-xrw"/>
                 <constraint firstItem="k7t-mm-QgH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="u8F-ne-eBp" secondAttribute="bottom" constant="70" id="t7s-PP-qFf"/>
@@ -250,6 +256,7 @@
             <connections>
                 <outlet property="confirmButton" destination="gP7-jI-QkA" id="EaT-NT-keu"/>
                 <outlet property="helpText" destination="hsh-wd-hgi" id="WjV-Yy-YAi"/>
+                <outlet property="progressIndicator" destination="Ee3-Rd-2aM" id="gee-rk-QQs"/>
                 <outletCollection property="buckets" destination="Iti-rA-q5V" collectionClass="NSMutableArray" id="Lli-yL-Sl4"/>
                 <outletCollection property="buckets" destination="u8F-ne-eBp" collectionClass="NSMutableArray" id="4NN-aV-bLc"/>
                 <outletCollection property="buckets" destination="o6p-MY-cjB" collectionClass="NSMutableArray" id="gm8-2G-btj"/>
@@ -354,5 +361,6 @@ SAILED FOR TODAY.</string>
         <image name="game-empty-share-facebook" width="61" height="61"/>
         <image name="game-empty-share-sms" width="60" height="61"/>
         <image name="game-empty-share-twitter" width="60" height="61"/>
+        <image name="game-progressIndicator-1" width="77" height="15"/>
     </resources>
 </document>
