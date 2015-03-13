@@ -35,11 +35,10 @@ class GameViewController : BaseViewController {
         dockBadge.makeCircular()
         showSubview(gameView)
 
+
+        bindGameView()
         gameView.didConfirmChoices = { [weak self] in
             if let this = self { this.submitChoices(this) }
-        }
-        gameView.didSetupGame = { [weak self] in
-            if let this = self { this.bindGameView() }
         }
     }
     
@@ -55,9 +54,9 @@ class GameViewController : BaseViewController {
                 }
             }
         }
-        // Setup Drag & Drop
-        for source in self.gameView.sources {
-            source.view.didTap = { [weak self] user in
+        // Setup tap to view profile
+        for bubble in gameView.bubbles {
+            bubble.didTap = { [weak self] user in
                 if let vc = self?.makeViewController(.Profile) as? ProfileViewController {
                     vc.user = user
                     self?.navigationController?.pushViewController(vc, animated: true)

@@ -88,6 +88,9 @@
 		EA9F35591A74CC6900E0C65D /* KetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F35581A74CC6900E0C65D /* KetchTests.swift */; };
 		EAA105881AAFBF0300B988F7 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA105871AAFBF0300B988F7 /* LoadingViewController.swift */; };
 		EAA1058A1AAFBF1000B988F7 /* LoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAA105891AAFBF1000B988F7 /* LoadingView.xib */; };
+		EAAA42871AB24D5F00056EFF /* CandidateBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAA42861AB24D5F00056EFF /* CandidateBubble.swift */; };
+		EAAA42891AB24D6900056EFF /* ChoiceBucket.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAA42881AB24D6900056EFF /* ChoiceBucket.swift */; };
+		EAAA428B1AB2522E00056EFF /* FloatBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAA428A1AB2522E00056EFF /* FloatBox.swift */; };
 		EAB54E3D1AA0E2EB00A44883 /* SettingsBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB54E3C1AA0E2EB00A44883 /* SettingsBackgroundView.swift */; };
 		EAC8D3F61AA7269F00BCB7B9 /* FetchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9311A87DE5800D62625 /* FetchViewModel.swift */; };
 		EAC8D3F71AA7278900BCB7B9 /* ViewProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9321A87DE5800D62625 /* ViewProviders.swift */; };
@@ -216,6 +219,9 @@
 		EA9F35621A74CD8800E0C65D /* Ketch-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Ketch-Bridging.h"; path = "Ketch/Ketch-Bridging.h"; sourceTree = SOURCE_ROOT; };
 		EAA105871AAFBF0300B988F7 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		EAA105891AAFBF1000B988F7 /* LoadingView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LoadingView.xib; sourceTree = "<group>"; };
+		EAAA42861AB24D5F00056EFF /* CandidateBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateBubble.swift; sourceTree = "<group>"; };
+		EAAA42881AB24D6900056EFF /* ChoiceBucket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoiceBucket.swift; sourceTree = "<group>"; };
+		EAAA428A1AB2522E00056EFF /* FloatBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatBox.swift; sourceTree = "<group>"; };
 		EAB54E3C1AA0E2EB00A44883 /* SettingsBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsBackgroundView.swift; sourceTree = "<group>"; };
 		EABD43D81AA1D28700B07813 /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
 		EABD43D91AA1D29C00B07813 /* Beta.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
@@ -388,6 +394,9 @@
 				EA2AB70D1A8A00F200D42C6C /* GameViewController.swift */,
 				EA2AB70F1A8A00FC00D42C6C /* GameView.xib */,
 				EA4A66561AA2D9BB0019D601 /* GameView.swift */,
+				EAAA42861AB24D5F00056EFF /* CandidateBubble.swift */,
+				EAAA42881AB24D6900056EFF /* ChoiceBucket.swift */,
+				EAAA428A1AB2522E00056EFF /* FloatBox.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -881,6 +890,7 @@
 				EA6650F71AA00B95001BA40C /* _Candidate.swift in Sources */,
 				EA6650E11AA00999001BA40C /* TransparentView.swift in Sources */,
 				EA409D3F1A8C75F600988B8B /* ConnectionCell.swift in Sources */,
+				EAAA42891AB24D6900056EFF /* ChoiceBucket.swift in Sources */,
 				EA1DA37F1A8D188B00433093 /* NewConnectionViewController.swift in Sources */,
 				EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */,
 				EA4A66571AA2D9BB0019D601 /* GameView.swift in Sources */,
@@ -890,6 +900,7 @@
 				EA1970131A83549300FEBA7F /* EditProfileViewController.swift in Sources */,
 				EA6650ED1AA00A9C001BA40C /* CoreService.swift in Sources */,
 				EA6650F81AA00B95001BA40C /* _Connection.swift in Sources */,
+				EAAA428B1AB2522E00056EFF /* FloatBox.swift in Sources */,
 				EA0FC93B1A87DE5800D62625 /* Segue.swift in Sources */,
 				EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */,
 				EAF4D7621A79AA5E00D35330 /* RootViewController.swift in Sources */,
@@ -909,6 +920,7 @@
 				EA1970071A83549300FEBA7F /* ChatViewController.swift in Sources */,
 				EA6650E61AA00A82001BA40C /* KetchBackgroundView.swift in Sources */,
 				EA6650EC1AA00A9C001BA40C /* CandidateService.swift in Sources */,
+				EAAA42871AB24D5F00056EFF /* CandidateBubble.swift in Sources */,
 				EA2AB70E1A8A00F200D42C6C /* GameViewController.swift in Sources */,
 				EA0FC9431A87DE5800D62625 /* FetchViewModel.swift in Sources */,
 				EA0FC9341A87DE5800D62625 /* MeteorCDStack.swift in Sources */,

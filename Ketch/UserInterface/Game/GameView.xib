@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="KetchIcon.otf">
             <string>KetchIcon-Regular</string>
             <string>KetchIcon-Regular</string>
+        </mutableArray>
+        <mutableArray key="TransatTextBlack.otf">
+            <string>TransatTextBlack</string>
         </mutableArray>
         <mutableArray key="TransatTextStandard.otf">
             <string>TransatTextStandard</string>
@@ -93,7 +96,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="607"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-bucket-marry" translatesAutoresizingMaskIntoConstraints="NO" id="Iti-rA-q5V" userLabel="Marry Slot">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-bucket-marry" translatesAutoresizingMaskIntoConstraints="NO" id="Iti-rA-q5V" userLabel="Yes Bucket" customClass="ChoiceBucket" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="137" y="70" width="100" height="116"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="116" id="BgZ-pN-z9P"/>
@@ -107,7 +110,7 @@
                         </mask>
                     </variation>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-bucket-keep" translatesAutoresizingMaskIntoConstraints="NO" id="u8F-ne-eBp" userLabel="Keep Slot">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-bucket-keep" translatesAutoresizingMaskIntoConstraints="NO" id="u8F-ne-eBp" userLabel="Maybe Bucket" customClass="ChoiceBucket" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="247" y="196" width="100" height="113"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="113" id="Roo-cD-i4m"/>
@@ -121,7 +124,7 @@
                         </mask>
                     </variation>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-bucket-skip" translatesAutoresizingMaskIntoConstraints="NO" id="o6p-MY-cjB" userLabel="Skip Slot">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-bucket-skip" translatesAutoresizingMaskIntoConstraints="NO" id="o6p-MY-cjB" userLabel="No Bucket" customClass="ChoiceBucket" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="29" y="196" width="100" height="113"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="100" id="9J5-kj-Gqo"/>
@@ -135,11 +138,13 @@
                         </mask>
                     </variation>
                 </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Lu-FI-gAz" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="1Lu-FI-gAz" userLabel="Left Placeholder" customClass="FloatBox" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="8" y="467" width="100" height="100"/>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k7t-mm-QgH" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="k7t-mm-QgH" userLabel="Center Placeholder" customClass="FloatBox" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="137" y="467" width="100" height="100"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="k7t-mm-QgH" secondAttribute="height" multiplier="1:1" id="4Df-x2-5O1"/>
                         <constraint firstAttribute="width" priority="751" constant="100" id="S7c-FT-dPY"/>
@@ -150,49 +155,55 @@
                             <exclude reference="bxZ-po-cC2"/>
                         </mask>
                     </variation>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FWx-3L-EJd" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
-                    <rect key="frame" x="267" y="467" width="100" height="100"/>
-                </imageView>
-                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MMH-Ka-VtK" userLabel="Ready Prompt" customClass="TransparentView" customModule="Ketch" customModuleProvider="target">
-                    <rect key="frame" x="75" y="359" width="225" height="107"/>
-                    <subviews>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsh-wd-hgi" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="225" height="62"/>
-                            <attributedString key="attributedText">
-                                <fragment content="SWIPE DOWN TO FIND THE ONE!">
-                                    <attributes>
-                                        <color key="NSColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <font key="NSFont" size="25" name="TransatTextBlack"/>
-                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" minimumLineHeight="31"/>
-                                    </attributes>
-                                </fragment>
-                            </attributedString>
-                            <nil key="highlightedColor"/>
-                            <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                                    <real key="value" value="25"/>
-                                </userDefinedRuntimeAttribute>
-                                <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="TransatTextBlack"/>
-                                <userDefinedRuntimeAttribute type="number" keyPath="fontKern">
-                                    <real key="value" value="2"/>
-                                </userDefinedRuntimeAttribute>
-                            </userDefinedRuntimeAttributes>
-                        </label>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-arrow-down" translatesAutoresizingMaskIntoConstraints="NO" id="GYH-6R-IvX">
-                            <rect key="frame" x="99" y="72" width="27" height="35"/>
-                        </imageView>
-                    </subviews>
-                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.29999999999999999" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstItem="GYH-6R-IvX" firstAttribute="top" secondItem="hsh-wd-hgi" secondAttribute="bottom" constant="10" id="2dd-4t-v28"/>
-                        <constraint firstAttribute="trailing" secondItem="hsh-wd-hgi" secondAttribute="trailing" id="JXF-6R-OML"/>
-                        <constraint firstItem="hsh-wd-hgi" firstAttribute="leading" secondItem="MMH-Ka-VtK" secondAttribute="leading" id="LCG-Mz-E2Q"/>
-                        <constraint firstAttribute="bottom" secondItem="GYH-6R-IvX" secondAttribute="bottom" id="d1k-8m-LWv"/>
-                        <constraint firstItem="GYH-6R-IvX" firstAttribute="centerX" secondItem="hsh-wd-hgi" secondAttribute="centerX" id="kel-fK-qK0"/>
-                        <constraint firstItem="hsh-wd-hgi" firstAttribute="top" secondItem="MMH-Ka-VtK" secondAttribute="top" id="tzZ-hc-P69"/>
-                    </constraints>
                 </view>
+                <view userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="FWx-3L-EJd" userLabel="Right Placeholder" customClass="FloatBox" customModule="Ketch" customModuleProvider="target">
+                    <rect key="frame" x="267" y="467" width="100" height="100"/>
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsh-wd-hgi" userLabel="Help Text" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                    <rect key="frame" x="75" y="353" width="225" height="62"/>
+                    <attributedString key="attributedText">
+                        <fragment content="SWIPE DOWN TO FIND THE ONE!">
+                            <attributes>
+                                <color key="NSColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <font key="NSFont" size="25" name="TransatTextBlack"/>
+                                <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" minimumLineHeight="31"/>
+                            </attributes>
+                        </fragment>
+                    </attributedString>
+                    <nil key="highlightedColor"/>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                            <real key="value" value="25"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="TransatTextBlack"/>
+                        <userDefinedRuntimeAttribute type="number" keyPath="fontKern">
+                            <real key="value" value="2"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </label>
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gP7-jI-QkA" userLabel="Confirm Button">
+                    <rect key="frame" x="62" y="377" width="250" height="54"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="250" id="93L-fb-9XJ"/>
+                        <constraint firstAttribute="height" constant="54" id="BjH-go-DWJ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="TransatTextBlack" family="Transat Text" pointSize="21"/>
+                    <inset key="titleEdgeInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="Set Sail">
+                        <color key="titleColor" red="0.0" green="0.89484882354736328" blue="0.94724231958389282" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="25"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                    <connections>
+                        <action selector="confirmChoices:" destination="iN0-l3-epB" eventType="touchUpInside" id="s9r-Ju-iSt"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="0.043137254901960784" green="0.89803921568627454" blue="0.94509803921568625" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -203,17 +214,19 @@
                 <constraint firstItem="Iti-rA-q5V" firstAttribute="width" secondItem="u8F-ne-eBp" secondAttribute="width" id="7Vl-4S-Yjc"/>
                 <constraint firstAttribute="centerY" secondItem="Iti-rA-q5V" secondAttribute="centerY" priority="252" constant="175" id="8RV-PX-PNw"/>
                 <constraint firstItem="k7t-mm-QgH" firstAttribute="height" secondItem="FWx-3L-EJd" secondAttribute="height" id="B2d-Pl-UCu"/>
-                <constraint firstAttribute="centerY" secondItem="MMH-Ka-VtK" secondAttribute="centerY" priority="251" constant="-80" id="BDE-DX-5xb"/>
-                <constraint firstAttribute="centerX" secondItem="MMH-Ka-VtK" secondAttribute="centerX" id="Ebu-2F-eZF"/>
                 <constraint firstItem="o6p-MY-cjB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="29" id="FfD-o1-K8D"/>
+                <constraint firstItem="hsh-wd-hgi" firstAttribute="centerX" secondItem="gP7-jI-QkA" secondAttribute="centerX" id="GgW-Ox-3O9"/>
                 <constraint firstItem="k7t-mm-QgH" firstAttribute="width" secondItem="FWx-3L-EJd" secondAttribute="width" id="Hdo-wx-Z6y"/>
                 <constraint firstItem="k7t-mm-QgH" firstAttribute="centerY" secondItem="1Lu-FI-gAz" secondAttribute="centerY" id="KSa-Na-Z5b"/>
                 <constraint firstAttribute="centerX" secondItem="Iti-rA-q5V" secondAttribute="centerX" id="OY3-dj-utz"/>
                 <constraint firstItem="k7t-mm-QgH" firstAttribute="width" secondItem="1Lu-FI-gAz" secondAttribute="width" id="OeY-wf-qFW"/>
                 <constraint firstAttribute="centerX" secondItem="k7t-mm-QgH" secondAttribute="centerX" id="Per-M4-CzZ"/>
-                <constraint firstItem="MMH-Ka-VtK" firstAttribute="top" relation="greaterThanOrEqual" secondItem="u8F-ne-eBp" secondAttribute="bottom" constant="50" id="VFD-l8-MSl"/>
+                <constraint firstAttribute="centerY" secondItem="hsh-wd-hgi" secondAttribute="centerY" priority="251" constant="-80" id="Y6M-5A-RpU"/>
+                <constraint firstItem="hsh-wd-hgi" firstAttribute="top" relation="greaterThanOrEqual" secondItem="u8F-ne-eBp" secondAttribute="bottom" constant="40" id="YyE-NN-HaU"/>
+                <constraint firstAttribute="centerX" secondItem="hsh-wd-hgi" secondAttribute="centerX" id="cBr-c3-XD1"/>
                 <constraint firstItem="k7t-mm-QgH" firstAttribute="width" secondItem="Iti-rA-q5V" secondAttribute="width" id="eok-08-XJ3"/>
                 <constraint firstItem="o6p-MY-cjB" firstAttribute="top" secondItem="u8F-ne-eBp" secondAttribute="top" id="hU4-XS-Bt1"/>
+                <constraint firstItem="hsh-wd-hgi" firstAttribute="centerY" secondItem="gP7-jI-QkA" secondAttribute="centerY" constant="-20" id="i9C-gE-YHQ"/>
                 <constraint firstItem="o6p-MY-cjB" firstAttribute="top" secondItem="Iti-rA-q5V" secondAttribute="bottom" constant="10" id="j7w-yX-IMo"/>
                 <constraint firstItem="Iti-rA-q5V" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" constant="36" id="pbb-Yk-y1d"/>
                 <constraint firstItem="o6p-MY-cjB" firstAttribute="width" secondItem="Iti-rA-q5V" secondAttribute="width" id="rs1-FL-xrw"/>
@@ -221,18 +234,25 @@
                 <constraint firstItem="1Lu-FI-gAz" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="uI2-NL-uwh"/>
                 <constraint firstItem="k7t-mm-QgH" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1Lu-FI-gAz" secondAttribute="trailing" constant="20" id="vbn-r1-V3D"/>
                 <constraint firstItem="FWx-3L-EJd" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="k7t-mm-QgH" secondAttribute="trailing" constant="20" id="wX1-ak-P1u"/>
+                <constraint firstItem="u8F-ne-eBp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hsh-wd-hgi" secondAttribute="trailing" constant="-53" id="xoV-JY-f6r"/>
                 <constraint firstItem="k7t-mm-QgH" firstAttribute="centerY" secondItem="FWx-3L-EJd" secondAttribute="centerY" id="z5o-oI-9Tv"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="xoV-JY-f6r"/>
+                </mask>
+            </variation>
             <connections>
-                <outlet property="maybeBucket" destination="u8F-ne-eBp" id="rAa-8l-slb"/>
-                <outlet property="noBucket" destination="o6p-MY-cjB" id="Rhx-YT-mL6"/>
-                <outlet property="readyPrompt" destination="MMH-Ka-VtK" id="DD0-Kq-kUf"/>
-                <outlet property="yesBucket" destination="Iti-rA-q5V" id="QOD-c1-S8D"/>
-                <outletCollection property="avatars" destination="1Lu-FI-gAz" collectionClass="NSMutableArray" id="fiy-oi-e1a"/>
-                <outletCollection property="avatars" destination="k7t-mm-QgH" collectionClass="NSMutableArray" id="kye-gz-XAN"/>
-                <outletCollection property="avatars" destination="FWx-3L-EJd" collectionClass="NSMutableArray" id="f9F-gU-s33"/>
+                <outlet property="confirmButton" destination="gP7-jI-QkA" id="EaT-NT-keu"/>
+                <outlet property="helpText" destination="hsh-wd-hgi" id="WjV-Yy-YAi"/>
+                <outletCollection property="buckets" destination="Iti-rA-q5V" collectionClass="NSMutableArray" id="Lli-yL-Sl4"/>
+                <outletCollection property="buckets" destination="u8F-ne-eBp" collectionClass="NSMutableArray" id="4NN-aV-bLc"/>
+                <outletCollection property="buckets" destination="o6p-MY-cjB" collectionClass="NSMutableArray" id="gm8-2G-btj"/>
+                <outletCollection property="boxes" destination="1Lu-FI-gAz" collectionClass="NSMutableArray" id="JTP-yr-4tX"/>
+                <outletCollection property="boxes" destination="k7t-mm-QgH" collectionClass="NSMutableArray" id="3R6-1o-uGR"/>
+                <outletCollection property="boxes" destination="FWx-3L-EJd" collectionClass="NSMutableArray" id="uOn-1f-gYb"/>
             </connections>
             <point key="canvasLocation" x="420.5" y="158.5"/>
         </view>
@@ -265,13 +285,13 @@ SAILED FOR TODAY.</string>
                     </userDefinedRuntimeAttributes>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Why not ask a match to a date instead?" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uod-OD-wle">
-                    <rect key="frame" x="59.5" y="241" width="255.5" height="15"/>
+                    <rect key="frame" x="59" y="241" width="256" height="15"/>
                     <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="15"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MU1-Gw-hdC" userLabel="Divider">
-                    <rect key="frame" x="97.5" y="272" width="180" height="1"/>
+                    <rect key="frame" x="97" y="272" width="180" height="1"/>
                     <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="SMv-KB-irH"/>
@@ -279,25 +299,25 @@ SAILED FOR TODAY.</string>
                     </constraints>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Know someone who’d be a great Ketch?" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yaI-Cz-QCy">
-                    <rect key="frame" x="60.5" y="289" width="253.5" height="15"/>
+                    <rect key="frame" x="60" y="289" width="254" height="15"/>
                     <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="15"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VGh-sk-GVj" userLabel="Share SMS">
-                    <rect key="frame" x="72" y="320" width="60" height="61"/>
+                    <rect key="frame" x="71" y="320" width="60" height="61"/>
                     <state key="normal" image="game-empty-share-sms">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="O9U-HK-NwG" userLabel="Share Facebook">
-                    <rect key="frame" x="157" y="320" width="61" height="61"/>
+                    <rect key="frame" x="156" y="320" width="61" height="61"/>
                     <state key="normal" image="game-empty-share-facebook">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LNu-Ju-3F4" userLabel="Share Twitter">
-                    <rect key="frame" x="243" y="320" width="60" height="61"/>
+                    <rect key="frame" x="242" y="320" width="60" height="61"/>
                     <state key="normal" image="game-empty-share-twitter">
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
@@ -325,7 +345,6 @@ SAILED FOR TODAY.</string>
         </view>
     </objects>
     <resources>
-        <image name="game-arrow-down" width="27" height="35"/>
         <image name="game-bucket-keep" width="128" height="144"/>
         <image name="game-bucket-marry" width="128" height="148"/>
         <image name="game-bucket-skip" width="128" height="144"/>

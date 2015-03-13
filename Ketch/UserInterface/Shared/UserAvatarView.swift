@@ -60,7 +60,8 @@ class UserAvatarView : UIImageView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        makeCircular()
+        // TODO: This doesn't actually work as intended.. Need to figure out why
+//        makeCircular()
         fadeLayer.frame = layer.bounds
     }
 }
