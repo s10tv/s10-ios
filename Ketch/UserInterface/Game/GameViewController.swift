@@ -18,23 +18,13 @@ class GameViewController : BaseViewController {
     @IBOutlet var emptyView: UIView!
     
     @IBOutlet weak var dockBadge: UIImageView!
-    var unreadConnections : FetchViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // TODO: Make this 10x less verbose. Add some concept of reactive variable
-        unreadConnections = FetchViewModel(frc: Connection.by(ConnectionAttributes.hasUnreadMessage.rawValue, value: true).frc())
-        unreadConnections.signal.subscribeNext { [weak self] _ in
-            if let this = self {
-                let count = this.unreadConnections.objects.count
-                this.dockBadge.hidden = count == 0
-            }
-        }
-        unreadConnections.performFetchIfNeeded()
-                
+        RAC(dockBadge, "hidden") <~ Connection.unreadCountSignal().map { ($0 as Int) == 0 }
+
         dockBadge.makeCircular()
         showSubview(gameView)
-
 
         bindGameView()
         gameView.didConfirmChoices = { [weak self] in

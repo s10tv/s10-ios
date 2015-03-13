@@ -6,6 +6,11 @@
 //  Copyright (c) 2015 Serendipity. All rights reserved.
 //
 
+import ObjectiveC
+import ReactiveCocoa
+
+private var SignalViewModelHandle: UInt8 = 0
+
 @objc(Connection)
 class Connection: _Connection {
     enum Type : String {
@@ -43,5 +48,13 @@ class Connection: _Connection {
     
     class func unreadCount() -> Int {
         return Connection.by(ConnectionAttributes.hasUnreadMessage.rawValue, value: true).count()
+    }
+    
+    class func unreadCountSignal() -> RACSignal {
+        let vm = FetchViewModel(frc: Connection.by(ConnectionAttributes.hasUnreadMessage.rawValue, value: true).frc())
+        let signal = vm.signal.map { ($0 as [Connection]).count }
+        objc_setAssociatedObject(signal, &SignalViewModelHandle, vm, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
+        vm.performFetchIfNeeded()
+        return signal
     }
 }
