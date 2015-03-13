@@ -22,6 +22,7 @@ class FloatBox : TransparentView, CandidateDropZone {
     var snap : UISnapBehavior!
     var boundingBox : UICollisionBehavior!
     var brownianPush : UIPushBehavior!
+    var floatEnabled = true
 
     weak var bubble : CandidateBubble?
     
@@ -33,7 +34,7 @@ class FloatBox : TransparentView, CandidateDropZone {
         RACSignal.interval(brownianInterval,
             onScheduler: RACScheduler.mainThreadScheduler()).subscribeNext { [weak self] _ in
             if let this = self {
-                this.kickIfNeeded()
+                if this.floatEnabled { this.kickIfNeeded() }
             }
         }
     }

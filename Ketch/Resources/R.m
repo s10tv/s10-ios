@@ -72,8 +72,14 @@ const struct R R = {
     },
     .Strings = {
         .doubleMatchPrompt = @"DoubleMatchPrompt",
+        .dragMatchsToChoices = @"DragMatchsToChoices",
         .itsAKetch = @"It's a Ketch!",
         .luckyYou = @"Lucky you!",
+        .marryPrompt = @"MarryPrompt",
         .singleMatchPrompt = @"SingleMatchPrompt",
+        .skipPrompt = @"SkipPrompt",
+        .snoozePrompt = @"SnoozePrompt",
+        .threeChoicesPrompt = @"ThreeChoicesPrompt",
+        .threeMatchesPrompt = @"ThreeMatchesPrompt",
     },
 };

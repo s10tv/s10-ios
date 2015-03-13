@@ -131,11 +131,23 @@ extern const struct R {
     struct Strings {
         /// Both %@ and %@ were charmed by you. Why not get in touch and see how things go?
         __unsafe_unretained NSString *doubleMatchPrompt;
+        /// DRAG THE MATCHES TO YOUR CHOICES
+        __unsafe_unretained NSString *dragMatchsToChoices;
         /// It's a Ketch!
         __unsafe_unretained NSString *itsAKetch;
         /// Lucky you!
         __unsafe_unretained NSString *luckyYou;
+        /// IF THEY SAY MARRY, MEANS IT'S A MATCH!
+        __unsafe_unretained NSString *marryPrompt;
         /// It seems that %@ also thought you were pretty darn cute. Why not chat and see how things go?
         __unsafe_unretained NSString *singleMatchPrompt;
+        /// NOT YOUR TYPE. WE'LL SHOW YOU LESS OF THESE.
+        __unsafe_unretained NSString *skipPrompt;
+        /// SOMEONE ELSE CAUGHT YOUR EYE. MAYBE PATHS WILL CROSS AGAIN.
+        __unsafe_unretained NSString *snoozePrompt;
+        /// AND YOU’LL HAVE THREE CHOICES
+        __unsafe_unretained NSString *threeChoicesPrompt;
+        /// YOU’LL SEE THREE POTENTIAL MATCHES
+        __unsafe_unretained NSString *threeMatchesPrompt;
     } Strings;
 } R;

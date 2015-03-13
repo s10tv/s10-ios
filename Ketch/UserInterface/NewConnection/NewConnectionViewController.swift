@@ -49,7 +49,7 @@ class NewConnectionViewController : BaseViewController {
             centerAvatar.hidden = false
             leftAvatar.hidden = true
             rightAvatar.hidden = true
-            promptLabel.setRawText(LS(R.Strings.singleMatchPrompt, user.firstName!))
+            promptLabel.rawText = LS(R.Strings.singleMatchPrompt, user.firstName!)
         }
     }
     
@@ -63,7 +63,7 @@ class NewConnectionViewController : BaseViewController {
                 centerAvatar.hidden = true
                 leftAvatar.hidden = false
                 rightAvatar.hidden = false
-                promptLabel.setRawText(LS(R.Strings.doubleMatchPrompt, user1.firstName!, user2.firstName!))
+                promptLabel.rawText = LS(R.Strings.doubleMatchPrompt, user1.firstName!, user2.firstName!)
             }
         }
     }

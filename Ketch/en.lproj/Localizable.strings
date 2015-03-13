@@ -10,3 +10,9 @@
 "Lucky you!" = "Lucky you!";
 "SingleMatchPrompt" = "It seems that %@ also thought you were pretty darn cute. Why not chat and see how things go?";
 "DoubleMatchPrompt" = "Both %@ and %@ were charmed by you. Why not get in touch and see how things go?";
+"ThreeMatchesPrompt" = "YOU’LL SEE THREE POTENTIAL MATCHES";
+"ThreeChoicesPrompt" = "AND YOU’LL HAVE THREE CHOICES";
+"DragMatchsToChoices" = "DRAG THE MATCHES TO YOUR CHOICES";
+"SkipPrompt" = "NOT YOUR TYPE. WE'LL SHOW YOU LESS OF THESE.";
+"MarryPrompt" = "IF THEY SAY MARRY, MEANS IT'S A MATCH!";
+"SnoozePrompt" = "SOMEONE ELSE CAUGHT YOUR EYE. MAYBE PATHS WILL CROSS AGAIN.";

@@ -69,6 +69,15 @@ class BaseView : UIView {
     @IBInspectable var fontSize: CGFloat = 13.0
     @IBInspectable var fontName: String = "TransatTextStandard"
     @IBInspectable var fontKern: CGFloat = 0
+    
+    var rawText : String {
+        get { return attributedText.string }
+        set(newValue) {
+            let attrString = attributedText.mutableCopy() as NSMutableAttributedString
+            attrString.mutableString.setString(newValue)
+            attributedText = attrString
+        }
+    }
 
     override func awakeFromNib() {
         let attrString = NSMutableAttributedString(attributedString: attributedText)
@@ -77,12 +86,6 @@ class BaseView : UIView {
             value:UIFont(name: fontName, size: fontSize)!, range: range)
         attrString.addAttribute(NSKernAttributeName,
             value:fontKern, range: range)
-        attributedText = attrString
-    }
-
-    func setRawText(rawText: String) {
-        let attrString = attributedText.mutableCopy() as NSMutableAttributedString
-        attrString.mutableString.setString(rawText)
         attributedText = attrString
     }
 }

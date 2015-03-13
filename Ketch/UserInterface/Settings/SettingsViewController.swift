@@ -35,7 +35,7 @@ class SettingsViewController : BaseViewController {
             workLabel.text = "You work at \(user.work!)"
             educationLabel.text = "Studied at \(user.education!)"
             heightLabel.text = "You are about \(user.height!)cm tall"
-            aboutLabel.setRawText(user.about!)
+            aboutLabel.rawText = user.about!
         }
         
         // TODO: Refactor me into utils

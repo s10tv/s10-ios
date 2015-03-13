@@ -161,7 +161,7 @@
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsh-wd-hgi" userLabel="Help Text" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
-                    <rect key="frame" x="75" y="353" width="225" height="62"/>
+                    <rect key="frame" x="20" y="353" width="335" height="62"/>
                     <attributedString key="attributedText">
                         <fragment content="SWIPE DOWN TO FIND THE ONE!">
                             <attributes>
@@ -183,7 +183,7 @@
                     </userDefinedRuntimeAttributes>
                 </label>
                 <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gP7-jI-QkA" userLabel="Confirm Button">
-                    <rect key="frame" x="62" y="377" width="250" height="54"/>
+                    <rect key="frame" x="63" y="377" width="250" height="54"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="250" id="93L-fb-9XJ"/>
@@ -212,7 +212,9 @@
                 <constraint firstItem="k7t-mm-QgH" firstAttribute="height" secondItem="1Lu-FI-gAz" secondAttribute="height" id="3xa-Hu-NcU"/>
                 <constraint firstAttribute="trailing" secondItem="FWx-3L-EJd" secondAttribute="trailing" constant="8" id="4ma-Ee-Ybc"/>
                 <constraint firstItem="Iti-rA-q5V" firstAttribute="width" secondItem="u8F-ne-eBp" secondAttribute="width" id="7Vl-4S-Yjc"/>
+                <constraint firstItem="hsh-wd-hgi" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="20" id="7cm-E3-C7h"/>
                 <constraint firstAttribute="centerY" secondItem="Iti-rA-q5V" secondAttribute="centerY" priority="252" constant="175" id="8RV-PX-PNw"/>
+                <constraint firstAttribute="trailing" secondItem="hsh-wd-hgi" secondAttribute="trailing" constant="20" id="96f-Fz-YWw"/>
                 <constraint firstItem="k7t-mm-QgH" firstAttribute="height" secondItem="FWx-3L-EJd" secondAttribute="height" id="B2d-Pl-UCu"/>
                 <constraint firstItem="o6p-MY-cjB" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="29" id="FfD-o1-K8D"/>
                 <constraint firstItem="hsh-wd-hgi" firstAttribute="centerX" secondItem="gP7-jI-QkA" secondAttribute="centerX" id="GgW-Ox-3O9"/>
@@ -242,6 +244,7 @@
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="xoV-JY-f6r"/>
+                    <exclude reference="cBr-c3-XD1"/>
                 </mask>
             </variation>
             <connections>

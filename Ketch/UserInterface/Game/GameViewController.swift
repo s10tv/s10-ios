@@ -40,6 +40,10 @@ class GameViewController : BaseViewController {
         gameView.didConfirmChoices = { [weak self] in
             if let this = self { this.submitChoices(this) }
         }
+        backgroundView.ketchIcon.userInteractionEnabled = true
+        backgroundView.ketchIcon.whenTapped {
+            self.gameView.tutorialStep1()
+        }
     }
     
     func bindGameView() {

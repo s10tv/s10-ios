@@ -11,7 +11,7 @@ import Foundation
 class ChoiceBucket : UIImageView, CandidateDropZone {
     var animator : UIDynamicAnimator!
     var snap : UISnapBehavior?
-    var choice : Candidate.Choice?
+    var choice : Candidate.Choice!
     weak var bubble : CandidateBubble?
     var dropCenter : CGPoint {
         return center + CGPoint(x: 0, y: -11)
