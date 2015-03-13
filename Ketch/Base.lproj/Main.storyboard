@@ -4,17 +4,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <scenes>
-        <!--Welcome View Controller-->
-        <scene sceneID="NSI-sf-bOr">
-            <objects>
-                <viewController storyboardIdentifier="Welcome" id="zWf-IU-zRb" customClass="WelcomeViewController" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="M2O-w8-JjV"/>
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="OHr-ia-8Zh" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="328" y="218"/>
-        </scene>
         <!--My Profile-->
         <scene sceneID="eia-8N-UZ9">
             <objects>
@@ -175,7 +164,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CMv-o2-2OX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-98" y="218"/>
+            <point key="canvasLocation" x="282" y="218"/>
         </scene>
     </scenes>
 </document>

@@ -19,20 +19,12 @@ extern const struct R {
         __unsafe_unretained NSString *backgroundSeaShort;
         /// BGWave
         __unsafe_unretained NSString *bgWave;
-        /// bottom-sea
-        __unsafe_unretained NSString *bottomSea;
         /// dock-separator
         __unsafe_unretained NSString *dockSeparator;
         /// game-arrow-down
         __unsafe_unretained NSString *gameArrowDown;
-        /// game-bucket-anchor-white
-        __unsafe_unretained NSString *gameBucketAnchorWhite;
         /// game-bucket-keep
         __unsafe_unretained NSString *gameBucketKeep;
-        /// game-bucket-keep-white
-        __unsafe_unretained NSString *gameBucketKeepWhite;
-        /// game-bucket-knot-white
-        __unsafe_unretained NSString *gameBucketKnotWhite;
         /// game-bucket-marry
         __unsafe_unretained NSString *gameBucketMarry;
         /// game-bucket-skip
@@ -53,8 +45,6 @@ extern const struct R {
         __unsafe_unretained NSString *girlPlaceholder;
         /// guy-placeholder
         __unsafe_unretained NSString *guyPlaceholder;
-        /// Header
-        __unsafe_unretained NSString *header;
         /// ic_home
         __unsafe_unretained NSString *icHome;
         /// ic_remove_photo
@@ -63,14 +53,10 @@ extern const struct R {
         __unsafe_unretained NSString *icSchool;
         /// ic_work
         __unsafe_unretained NSString *icWork;
-        /// keepText
-        __unsafe_unretained NSString *keepText;
         /// Ketch
         __unsafe_unretained NSString *ketch;
         /// launch-logo
         __unsafe_unretained NSString *launchLogo;
-        /// marryText
-        __unsafe_unretained NSString *marryText;
         /// settings-icon-age
         __unsafe_unretained NSString *settingsAge;
         /// settings-icon-briefcase
@@ -81,14 +67,6 @@ extern const struct R {
         __unsafe_unretained NSString *settingsMortarBoard;
         /// settings-icon-notepad
         __unsafe_unretained NSString *settingsNotepad;
-        /// skipText
-        __unsafe_unretained NSString *skipText;
-        /// welcome-user-1
-        __unsafe_unretained NSString *welcomeUser1;
-        /// welcome-user-2
-        __unsafe_unretained NSString *welcomeUser2;
-        /// welcome-user-3
-        __unsafe_unretained NSString *welcomeUser3;
     } ImagesAssets;
     struct JSQMessagesAssets {
         /// Images/bubble_min.png

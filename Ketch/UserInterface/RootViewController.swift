@@ -21,13 +21,13 @@ class RootViewController : UINavigationController {
             // TODO: Don't show this when user intentionally logs out
             return UIAlertView.show("Error", message: "You have been logged out")
         }.subscribeNext { [weak self] _ in
-            self?.showWelcome(false)
+            self?.showSignup(false)
             return
         }
 
         // Try login now
         if !Core.attemptLoginWithCachedCredentials() {
-            showWelcome(false)
+            showSignup(false)
         } else {
             showLoading {
                 self.showGame(false)
@@ -64,12 +64,8 @@ class RootViewController : UINavigationController {
         setViewControllers([makeViewController(.Signup)!], animated: animated)
     }
     
-    func showWelcome(animated: Bool) {
-        setViewControllers([makeViewController(.Welcome)!], animated: animated)
-    }
-    
     @IBAction func logout(sender: AnyObject) {
-        showWelcome(true)
+        showSignup(true)
         Core.logout().subscribeCompleted {
             Log.info("Signed out")
         }

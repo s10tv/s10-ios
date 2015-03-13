@@ -19,5 +19,4 @@ public enum ViewControllerStoryboardIdentifier : String {
     case Profile = "Profile"
     case Settings = "Settings"
     case Signup = "Signup"
-    case Welcome = "Welcome"
 }
