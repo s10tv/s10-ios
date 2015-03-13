@@ -9,6 +9,7 @@
 import UIKit
 import Meteor
 import FacebookSDK
+import ReactiveCocoa
 
 class RootViewController : UINavigationController {
     
@@ -17,8 +18,10 @@ class RootViewController : UINavigationController {
         // If server logs us out, then let's also log out of the UI
         listenForNotification(METDDPClientDidChangeAccountNotification).filter { _ in
             return !Core.meteor.hasAccount()
-        }.deliverOnMainThread().flattenMap { _ in
-            // TODO: Don't show this when user intentionally logs out
+        }.deliverOnMainThread().flattenMap { [weak self] _ in
+            if self?.topViewController is SignupViewController {
+                return RACSignal.empty()
+            }
             return UIAlertView.show("Error", message: "You have been logged out")
         }.subscribeNext { [weak self] _ in
             self?.showSignup(false)
