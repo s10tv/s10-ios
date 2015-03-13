@@ -18,6 +18,23 @@ class ChoiceBucket : UIImageView, CandidateDropZone {
     }
     
     var isOccupied : Bool { return bubble != nil }
+    var emphasized: Bool = false {
+        didSet {
+            if emphasized {
+                alpha = 1
+                tintColor = UIColor.whiteColor()
+            } else {
+                alpha = 0.5
+                tintColor = StyleKit.teal
+            }
+        }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        image = image?.imageWithRenderingMode(.AlwaysTemplate)
+        tintColor = StyleKit.teal
+    }
     
     func dropBubble(bubble: CandidateBubble) {
         self.bubble = bubble

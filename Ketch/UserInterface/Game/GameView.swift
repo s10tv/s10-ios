@@ -238,7 +238,7 @@ extension GameView {
         for bucket in buckets {
             bucket.hidden = false
             bucket.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1)
-            bucket.alpha = 0
+            bucket.emphasized = true
         }
         helpText.alpha = 0
         helpText.rawText = LS(R.Strings.threeChoicesPrompt)
@@ -247,7 +247,6 @@ extension GameView {
             return
             }, completion: nil)
         UIView.animateWithDuration(1) {
-            self.buckets.map { $0.alpha = 1 }
             self.bubbles.map { $0.alpha = 0.25 }
             self.helpText.alpha = 1
         }
@@ -261,6 +260,7 @@ extension GameView {
         helpText.alpha = 0
         helpText.rawText = LS(R.Strings.dragMatchsToChoices)
         UIView.animateWithDuration(1) {
+            self.buckets.map { $0.emphasized = false }
             self.bubbles.map { $0.alpha = 1 }
             self.helpText.alpha = 1
         }
