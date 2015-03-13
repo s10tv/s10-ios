@@ -11,61 +11,28 @@ import Foundation
 @objc(NewConnectionViewController)
 class NewConnectionViewController : BaseViewController {
     
-    var connections: [Connection]?
+    var connection: Connection!
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var leftAvatar: UserAvatarView!
-    @IBOutlet weak var centerAvatar: UserAvatarView!
-    @IBOutlet weak var rightAvatar: UserAvatarView!
+    @IBOutlet weak var avatar: UserAvatarView!
     @IBOutlet weak var promptLabel: DesignableLabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if connections?.count == 1 {
-            setupForSingleKetch()
-        } else if connections?.count == 2 {
-            setupForDoubleKetch()
+        avatar.didTap = { [weak self] user in
+            if let vc = self?.makeViewController(.Profile) as? ProfileViewController {
+                vc.user = user
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }
         }
+        titleLabel.text = LS(R.Strings.itsAKetch)
+        avatar.user = connection.user
+        promptLabel.rawText = LS(R.Strings.singleMatchPrompt, connection.user!.firstName!)
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        for view in [leftAvatar, centerAvatar, rightAvatar] {
-            view.makeCircular()
-            view.didTap = { [weak self] user in
-                if let vc = self?.makeViewController(.Profile) as? ProfileViewController {
-                    vc.user = user
-                    self?.navigationController?.pushViewController(vc, animated: true)
-                }
-            }
-        }
-    }
-    
-    // Mark: -
-    func setupForSingleKetch() {
-        if let user = connections?.first?.user {
-            titleLabel.text = LS(R.Strings.itsAKetch)
-            centerAvatar.user = user
-            centerAvatar.hidden = false
-            leftAvatar.hidden = true
-            rightAvatar.hidden = true
-            promptLabel.rawText = LS(R.Strings.singleMatchPrompt, user.firstName!)
-        }
-    }
-    
-    func setupForDoubleKetch() {
-        // TODO: Combine into single line using Swift 1.2
-        if let user1 = connections?.first?.user {
-            if let user2 = connections?.last?.user {
-                titleLabel.text = LS(R.Strings.luckyYou)
-                leftAvatar.user = user1
-                rightAvatar.user = user2
-                centerAvatar.hidden = true
-                leftAvatar.hidden = false
-                rightAvatar.hidden = false
-                promptLabel.rawText = LS(R.Strings.doubleMatchPrompt, user1.firstName!, user2.firstName!)
-            }
-        }
+        avatar.makeCircular()
     }
     
     // MARK: - Actions

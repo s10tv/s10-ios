@@ -16,10 +16,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="NewConnectionViewController">
             <connections>
-                <outlet property="centerAvatar" destination="KwU-Ms-43D" id="yWN-I1-f8h"/>
-                <outlet property="leftAvatar" destination="cgP-ZZ-1cf" id="bXD-4O-yel"/>
+                <outlet property="avatar" destination="KwU-Ms-43D" id="IrF-Iv-8LB"/>
                 <outlet property="promptLabel" destination="I2c-Q5-UHl" id="86U-Pq-R4h"/>
-                <outlet property="rightAvatar" destination="PnP-gQ-3vx" id="Lbh-21-UW4"/>
                 <outlet property="titleLabel" destination="EUJ-Zq-AGV" id="R8k-e3-mXy"/>
                 <outlet property="view" destination="iN0-l3-epB" id="GbA-lV-Mc3"/>
             </connections>
@@ -50,19 +48,7 @@
                     <color key="textColor" red="0.078431372549019607" green="0.32156862745098042" blue="0.45490196078431372" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cgP-ZZ-1cf" userLabel="Left Avatar" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
-                    <rect key="frame" x="29" y="255" width="100.5" height="100"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="cgP-ZZ-1cf" secondAttribute="height" multiplier="1:1" id="MhK-Y2-WRW"/>
-                        <constraint firstAttribute="width" constant="100" id="uru-U0-loU"/>
-                    </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="uru-U0-loU"/>
-                        </mask>
-                    </variation>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KwU-Ms-43D" userLabel="Center Avatar" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="KwU-Ms-43D" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="109.5" y="255" width="100" height="100"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="KwU-Ms-43D" secondAttribute="height" multiplier="1:1" id="XYt-7C-aSn"/>
@@ -71,18 +57,6 @@
                     <variation key="default">
                         <mask key="constraints">
                             <exclude reference="xcM-me-BoK"/>
-                        </mask>
-                    </variation>
-                </imageView>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="PnP-gQ-3vx" userLabel="Right Avatar" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
-                    <rect key="frame" x="190.5" y="255" width="100.5" height="100"/>
-                    <constraints>
-                        <constraint firstAttribute="width" secondItem="PnP-gQ-3vx" secondAttribute="height" multiplier="1:1" id="bsr-0M-9SN"/>
-                        <constraint firstAttribute="width" constant="100" id="lD1-nn-2an"/>
-                    </constraints>
-                    <variation key="default">
-                        <mask key="constraints">
-                            <exclude reference="lD1-nn-2an"/>
                         </mask>
                     </variation>
                 </imageView>
@@ -149,15 +123,11 @@
             </subviews>
             <color key="backgroundColor" red="0.92941176470588238" green="0.97647058823529409" blue="0.96470588235294119" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="cgP-ZZ-1cf" firstAttribute="width" secondItem="KwU-Ms-43D" secondAttribute="width" id="0Nj-du-KEV"/>
                 <constraint firstItem="KwU-Ms-43D" firstAttribute="centerX" secondItem="EUJ-Zq-AGV" secondAttribute="centerX" id="2OL-M7-nhK"/>
                 <constraint firstItem="yQA-Zd-Dv2" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="2e7-P1-I3E"/>
-                <constraint firstItem="cgP-ZZ-1cf" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" priority="751" constant="29" id="2iO-WA-0EP"/>
                 <constraint firstItem="9yM-PF-CD5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="35c-ze-uG5"/>
                 <constraint firstItem="I2c-Q5-UHl" firstAttribute="top" secondItem="yQA-Zd-Dv2" secondAttribute="top" constant="35" id="5xb-Ag-aiq"/>
-                <constraint firstItem="cgP-ZZ-1cf" firstAttribute="width" secondItem="cgP-ZZ-1cf" secondAttribute="height" multiplier="1:1" id="6yA-wr-BEg"/>
                 <constraint firstItem="N9q-8D-Tto" firstAttribute="top" secondItem="yQA-Zd-Dv2" secondAttribute="bottom" constant="-87.5" id="9Wz-aK-Jbf"/>
-                <constraint firstItem="KwU-Ms-43D" firstAttribute="leading" relation="lessThanOrEqual" secondItem="cgP-ZZ-1cf" secondAttribute="trailing" constant="-10" id="Bwj-cB-fdM"/>
                 <constraint firstItem="9yM-PF-CD5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="Hqj-hG-Nsd"/>
                 <constraint firstItem="KwU-Ms-43D" firstAttribute="width" secondItem="yQA-Zd-Dv2" secondAttribute="width" multiplier="1:3.2" id="NU2-G2-uZ0"/>
                 <constraint firstAttribute="bottom" secondItem="yQA-Zd-Dv2" secondAttribute="bottom" id="P31-LU-MgV"/>
@@ -166,24 +136,16 @@
                 <constraint firstItem="yQA-Zd-Dv2" firstAttribute="top" secondItem="KwU-Ms-43D" secondAttribute="bottom" constant="-16" id="TxB-zp-fe2"/>
                 <constraint firstItem="yQA-Zd-Dv2" firstAttribute="centerX" secondItem="I2c-Q5-UHl" secondAttribute="centerX" id="WYc-6J-C8A"/>
                 <constraint firstItem="KwU-Ms-43D" firstAttribute="centerX" secondItem="yQA-Zd-Dv2" secondAttribute="centerX" id="Wj6-8e-GU1"/>
-                <constraint firstItem="cgP-ZZ-1cf" firstAttribute="centerY" secondItem="KwU-Ms-43D" secondAttribute="centerY" id="Y4C-NM-wCz"/>
                 <constraint firstItem="yQA-Zd-Dv2" firstAttribute="top" secondItem="I2c-Q5-UHl" secondAttribute="bottom" constant="45" id="Z6N-2t-7dv"/>
                 <constraint firstAttribute="trailing" secondItem="yQA-Zd-Dv2" secondAttribute="trailing" id="ZKu-Nx-bmP"/>
                 <constraint firstItem="yQA-Zd-Dv2" firstAttribute="bottom" secondItem="N9q-8D-Tto" secondAttribute="bottom" constant="30" id="awx-MS-5S4"/>
-                <constraint firstAttribute="trailing" secondItem="PnP-gQ-3vx" secondAttribute="trailing" priority="751" constant="29" id="bW4-Kk-yJJ"/>
-                <constraint firstItem="KwU-Ms-43D" firstAttribute="width" secondItem="PnP-gQ-3vx" secondAttribute="width" id="dBW-hE-K2B"/>
-                <constraint firstItem="KwU-Ms-43D" firstAttribute="centerY" secondItem="PnP-gQ-3vx" secondAttribute="centerY" id="ggN-FY-Cyn"/>
-                <constraint firstItem="PnP-gQ-3vx" firstAttribute="leading" relation="lessThanOrEqual" secondItem="KwU-Ms-43D" secondAttribute="trailing" constant="-10" id="kN3-fH-yQb"/>
                 <constraint firstItem="yQA-Zd-Dv2" firstAttribute="centerX" secondItem="N9q-8D-Tto" secondAttribute="centerX" id="myi-cf-7ui"/>
-                <constraint firstItem="PnP-gQ-3vx" firstAttribute="width" secondItem="PnP-gQ-3vx" secondAttribute="height" multiplier="1:1" id="pAP-th-3M9"/>
                 <constraint firstItem="EUJ-Zq-AGV" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="140" id="uUi-bm-G4P"/>
-                <constraint firstItem="PnP-gQ-3vx" firstAttribute="leading" relation="lessThanOrEqual" secondItem="cgP-ZZ-1cf" secondAttribute="trailing" constant="80" id="y7e-TE-ux5"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="QeE-4m-Dgs"/>
-                    <exclude reference="y7e-TE-ux5"/>
                     <exclude reference="Z6N-2t-7dv"/>
                     <exclude reference="RLw-lP-uMl"/>
                     <exclude reference="9Wz-aK-Jbf"/>

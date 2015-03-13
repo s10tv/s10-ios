@@ -98,9 +98,7 @@ class GameViewController : BaseViewController {
             Core.candidateService.submitChoices(marry, no: skip, maybe: keep).deliverOnMainThread().subscribeNextAs { (res : [String:String]) -> () in
                 if res.count > 0 {
                     let vc = self.makeViewController(.NewConnection) as NewConnectionViewController
-                    vc.connections = map(res, { (key, value) -> Connection in
-                        return Connection.findByDocumentID(value)!
-                    })
+                    vc.connection = Connection.findByDocumentID(res["yes"]!)
                     self.navigationController?.pushViewController(vc, animated: true)
                 }
             }
