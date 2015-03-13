@@ -31,6 +31,7 @@ class NewConnectionViewController : BaseViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         for view in [leftAvatar, centerAvatar, rightAvatar] {
+            view.makeCircular()
             view.didTap = { [weak self] user in
                 if let vc = self?.makeViewController(.Profile) as? ProfileViewController {
                     vc.user = user
