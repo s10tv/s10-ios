@@ -7,46 +7,74 @@
 //
 
 import Foundation
-
+import ReactiveCocoa
+/*
+// loading -> signup
+    water bottom -> top, no boat
+// loading -> game
+    water bottom -> top, with boat
+// game -> boat has sailed
+    water top -> bottom -> boat sails -> back up with new boat has sailed view
+// game -> new match
+    water top -> bottom -> back up to center with bouncing avatar ball
+// game <-> dock <-> chat
+    water remains top, but moves laterally with boat moving out of the way
+// game <-> settings
+    water top -> bottom and remains bottom, presentation rather than scrolling
+// game <-> profile
+    avatar bubble -> expands to profile photo -> shirnks back down to avatar bubble
+    water moves top -> midway point
+// chat <-> profile
+    top avatar -> expands to profile photo -> shrinks back down to top avatar
+    water moves top -> midway point
+// settings <-> profile
+    avatar -> expands to profile photo -> shrinks back down to avatar
+    water moves bottom -> midway point
+*/
 @IBDesignable class KetchBackgroundView : NibDesignableView {
     
     @IBOutlet weak var ketchIcon: UIImageView!
     @IBOutlet weak var waveView: KetchWaveView!
     @IBOutlet weak var waveTopMargin: NSLayoutConstraint!
 
-    var waterlineUpperBound : CGFloat!
-    var waterlineLowerBound : CGFloat {
-        return CGRectGetHeight(self.frame) - 100
-    }
-    var animateDuration: NSTimeInterval = 0.4
+    var animateDuration : NSTimeInterval = 0.6
+    var springDamping : CGFloat = 0.6
+    var initialSpringVelocity : CGFloat = 10
+    
     @IBInspectable var ketchIconHidden : Bool {
         get { return ketchIcon.hidden }
         set(newValue) { ketchIcon.hidden = newValue }
     }
     
-    private func animateLayoutChange(completion: ((Bool) -> ())? = nil) {
-        UIView.animateKeyframesWithDuration(animateDuration, delay: 0,
-            options: UIViewKeyframeAnimationOptions.CalculationModeCubicPaced,
-            animations: {
+    private func animateLayoutChange() -> RACSignal {
+        let subject = RACReplaySubject()
+        UIView.animateWithDuration(animateDuration, delay: 0,
+            usingSpringWithDamping: springDamping,
+            initialSpringVelocity: initialSpringVelocity,
+            options: nil, animations: {
             self.layoutIfNeeded()
-        }, { (completed) -> Void in
-            if let block = completion { block(completed) }
+        }, completion: { finished in
+            subject.sendNextAndCompleted(finished)
         })
+        return subject
+    }
+
+    func animateHorizon(#ratio: CGFloat) -> RACSignal {
+        assert(between(0, ratio, 1) == true, "Ratio must be between 0 and 1")
+        // Question: Do we need separate constraint for ratio or convert to offset like below?
+        waveTopMargin.constant = frame.height * (1 - ratio)
+        return animateLayoutChange()
     }
     
-    func animateWaterlineDown(completion: ((Bool) -> ())? = nil) {
-        waveTopMargin.constant = waterlineLowerBound
-        animateLayoutChange(completion: completion)
-    }
-    
-    func animateWaterlineUp(completion: ((Bool) -> ())? = nil) {
-        waveTopMargin.constant = waterlineUpperBound
-        animateLayoutChange(completion: completion)
+    func animateHorizon(#offset: CGFloat, fromTop: Bool = true) -> RACSignal {
+        waveTopMargin.constant = fromTop ? offset : frame.height - offset
+        return animateLayoutChange()
     }
     
     func animateWaterlineDownAndUp(completion: ((Bool) -> ())? = nil) {
-        animateWaterlineDown { completed in
-            self.animateWaterlineUp(completion: completion)
+        animateHorizon(offset: 100, fromTop: false).subscribeCompleted {
+            self.animateHorizon(offset: 60)
+            return
         }
     }
     
@@ -55,7 +83,6 @@ import Foundation
     override func awakeFromNib() {
         super.awakeFromNib()
         
-        waterlineUpperBound = waveTopMargin.constant
         // Setup boat pitching animation
         let pitch = CABasicAnimation(keyPath: "transform.rotation")
         pitch.fromValue = 0.2
@@ -77,12 +104,18 @@ import Foundation
     let waveMask = CAShapeLayer()
     let amplitude : CGFloat = 6
     let periods : CGFloat = 2
+    let gradientHeight : CGFloat = 580
+    
+    override func intrinsicContentSize() -> CGSize {
+        return CGSize(width: UIViewNoIntrinsicMetric, height: gradientHeight)
+    }
     
     override func drawRect(rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
         let topCenter = CGPointMake(CGRectGetMidX(bounds), 0)
-        let bottomCenter = CGPointMake(CGRectGetMidX(bounds), CGRectGetMaxY(bounds))
-        CGContextDrawLinearGradient(context, StyleKit.gradientWater2, topCenter, bottomCenter, 0)
+        let bottomCenter = CGPointMake(CGRectGetMidX(bounds), gradientHeight)
+        CGContextDrawLinearGradient(context, StyleKit.gradientWater2, topCenter, bottomCenter,
+            CGGradientDrawingOptions(kCGGradientDrawsAfterEndLocation))
     }
     
     override func layoutSubviews() {

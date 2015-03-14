@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6254" systemVersion="14C109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="KetchBackgroundView" customModule="Ketch" customModuleProvider="target">
@@ -17,7 +17,7 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2GV-Mt-CIn" customClass="KetchWaveView" customModule="Ketch" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="60" width="375" height="607"/>
+                    <rect key="frame" x="0.0" y="60" width="375" height="807"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ketch" translatesAutoresizingMaskIntoConstraints="NO" id="4BP-aI-ryy">
@@ -30,7 +30,7 @@
             </subviews>
             <color key="backgroundColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstAttribute="bottom" secondItem="2GV-Mt-CIn" secondAttribute="bottom" id="0dS-Vd-kSR"/>
+                <constraint firstAttribute="bottom" secondItem="2GV-Mt-CIn" secondAttribute="bottom" priority="252" constant="-200" id="0dS-Vd-kSR"/>
                 <constraint firstItem="4BP-aI-ryy" firstAttribute="centerX" secondItem="2GV-Mt-CIn" secondAttribute="centerX" id="92M-bK-Fqj"/>
                 <constraint firstItem="2GV-Mt-CIn" firstAttribute="top" secondItem="4BP-aI-ryy" secondAttribute="bottom" constant="-10" id="T86-mk-fC9"/>
                 <constraint firstAttribute="trailing" secondItem="2GV-Mt-CIn" secondAttribute="trailing" id="dsY-pr-2ap"/>

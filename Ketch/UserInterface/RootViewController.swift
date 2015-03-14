@@ -11,17 +11,34 @@ import Meteor
 import FacebookSDK
 import ReactiveCocoa
 
-class RootViewController : UINavigationController {
+@objc(RootViewController)
+class RootViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let view = self.view as KetchBackgroundView
+        
+        view.whenSwiped(.Down) {
+            view.animateHorizon(offset: 100, fromTop: false); return
+        }
+        view.whenSwiped(.Up) {
+            view.animateHorizon(offset: 60); return
+        }
+        
+        
+        
+        
+        
+        
+        
         // If server logs us out, then let's also log out of the UI
         listenForNotification(METDDPClientDidChangeAccountNotification).filter { _ in
             return !Core.meteor.hasAccount()
         }.deliverOnMainThread().flattenMap { [weak self] _ in
-            if self?.topViewController is SignupViewController {
-                return RACSignal.empty()
-            }
+//            if self?.topViewController is SignupViewController {
+//                return RACSignal.empty()
+//            }
             return UIAlertView.show("Error", message: "You have been logged out")
         }.subscribeNext { [weak self] _ in
             self?.showSignup(false)
@@ -43,28 +60,24 @@ class RootViewController : UINavigationController {
     }
     
     override func prefersStatusBarHidden() -> Bool {
-        if let vc = topViewController {
-            return vc.prefersStatusBarHidden()
-        } else {
-            return false
-        }
+        return true
     }
     
     func showLoading(completion: (() -> ())) {
-        setViewControllers([makeViewController(.Loading)!], animated: false)
+//        setViewControllers([makeViewController(.Loading)!], animated: false)
         Core.currentUserSubscription.signal.deliverOnMainThread().subscribeCompleted(completion)
     }
     
     func showProfile(user: User?, animated: Bool) {
-        setViewControllers([makeViewController(.Profile)!], animated: animated)
+//        setViewControllers([makeViewController(.Profile)!], animated: animated)
     }
     
     func showGame(animated: Bool) {
-        setViewControllers([makeViewController(.Game)!], animated: animated)
+//        setViewControllers([makeViewController(.Game)!], animated: animated)
     }
     
     func showSignup(animated: Bool) {
-        setViewControllers([makeViewController(.Signup)!], animated: animated)
+//        setViewControllers([makeViewController(.Signup)!], animated: animated)
     }
     
     @IBAction func logout(sender: AnyObject) {

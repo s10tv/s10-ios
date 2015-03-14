@@ -18,6 +18,13 @@ extension RACSignal {
     }
 }
 
+extension RACSubject {
+    func sendNextAndCompleted(value: AnyObject!) {
+        sendNext(value)
+        sendCompleted()
+    }
+}
+
 extension NSObject {
     func listenForNotification(name: String) -> RACSignal/*NSNotification*/ {
         return listenForNotification(name, object: nil)

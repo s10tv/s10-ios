@@ -18,8 +18,8 @@ class SignupViewController : BaseViewController {
     // TODO: Different behavior based on whether it's an existing or new user
     @IBAction func login(sender: AnyObject) {
         Core.loginWithUI().subscribeCompleted {
-            let root = self.navigationController as RootViewController
-            root.showGame(true)
+//            let root = self.navigationController as RootViewController
+//            root.showGame(true)
         }
     }
 
