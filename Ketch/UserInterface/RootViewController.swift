@@ -14,6 +14,8 @@ import ReactiveCocoa
 @objc(RootViewController)
 class RootViewController : UIViewController {
     
+    @IBOutlet weak var loadingLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -25,10 +27,6 @@ class RootViewController : UIViewController {
         view.whenSwiped(.Up) {
             view.animateHorizon(offset: 60); return
         }
-        
-        
-        
-        
         
         
         
@@ -47,9 +45,11 @@ class RootViewController : UIViewController {
 
         // Try login now
         if !Core.attemptLoginWithCachedCredentials() {
+            loadingLabel.hidden = true
             showSignup(false)
         } else {
-            showLoading {
+            Core.currentUserSubscription.signal.deliverOnMainThread().subscribeCompleted {
+                self.loadingLabel.hidden = true
                 self.showGame(false)
             }
         }
@@ -61,11 +61,6 @@ class RootViewController : UIViewController {
     
     override func prefersStatusBarHidden() -> Bool {
         return true
-    }
-    
-    func showLoading(completion: (() -> ())) {
-//        setViewControllers([makeViewController(.Loading)!], animated: false)
-        Core.currentUserSubscription.signal.deliverOnMainThread().subscribeCompleted(completion)
     }
     
     func showProfile(user: User?, animated: Bool) {
