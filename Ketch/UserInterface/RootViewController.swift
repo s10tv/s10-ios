@@ -28,8 +28,6 @@ class RootViewController : UIViewController {
             view.animateHorizon(offset: 60); return
         }
         
-        
-        
         // If server logs us out, then let's also log out of the UI
         listenForNotification(METDDPClientDidChangeAccountNotification).filter { _ in
             return !Core.meteor.hasAccount()
@@ -53,6 +51,14 @@ class RootViewController : UIViewController {
                 self.showGame(false)
             }
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        let view = self.view as KetchBackgroundView
+        view.springDamping = 0.8
+        view.animateHorizon(offset: 60)
+        view.springDamping = 0.6
     }
     
     override func supportedInterfaceOrientations() -> Int {
