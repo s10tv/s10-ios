@@ -36,7 +36,10 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
         let bubbleFactory = JSQMessagesBubbleImageFactory()
         outgoingBubbleData = bubbleFactory.outgoingMessagesBubbleImageWithColor(StyleKit.darkWhite)
         incomingBubbleData = bubbleFactory.incomingMessagesBubbleImageWithColor(StyleKit.pureWhite)
-        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         assert(connection != nil, "Connection being nil is not supported on chatVC")
         
         messages = FetchViewModel(frc: connection!.fetchMessages(sorted: true))

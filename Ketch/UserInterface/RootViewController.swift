@@ -12,7 +12,9 @@ import FacebookSDK
 import ReactiveCocoa
 
 @objc(RootViewController)
-class RootViewController : UIViewController {
+class RootViewController : UIViewController,
+                           UIPageViewControllerDelegate,
+                           UIPageViewControllerDataSource {
     
     let settingsVC = SettingsViewController()
     let gameVC = GameViewController()
@@ -22,11 +24,30 @@ class RootViewController : UIViewController {
     var animateDuration : NSTimeInterval = 0.6
     var springDamping : CGFloat = 0.6
     var initialSpringVelocity : CGFloat = 10
+    
+    let scrollView = UIScrollView()
+    let pageVC = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
+    var viewControllers : [UIViewController]!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewControllers = [gameVC, dockVC]
         let view = self.view as RootView
+        view.loadingView.hidden = true
+//        view.addSubview(scrollView)
+//        scrollView.makeEdgesEqualTo(view)
+        pageVC.delegate = self
+        pageVC.dataSource = self
+        
+        addChildViewController(pageVC)
+        view.addSubview(pageVC.view)
+        pageVC.view.makeEdgesEqualTo(view)
+        pageVC.didMoveToParentViewController(self)
+        pageVC.setViewControllers([gameVC], direction: .Forward, animated: false) { finished in
+            
+        }
+        
         
         view.whenSwiped(.Down) {
             view.animateHorizon(offset: 100, fromTop: false); return
@@ -53,10 +74,10 @@ class RootViewController : UIViewController {
             view.loadingView.hidden = true
             showSignup(false)
         } else {
-            Core.currentUserSubscription.signal.deliverOnMainThread().subscribeCompleted {
-                view.loadingView.hidden = true
-                self.showGame(false)
-            }
+//            Core.currentUserSubscription.signal.deliverOnMainThread().subscribeCompleted {
+
+//                self.showGame(false)
+//            }
         }
 
     }
@@ -96,5 +117,21 @@ class RootViewController : UIViewController {
         Core.logout().subscribeCompleted {
             Log.info("Signed out")
         }
+    }
+    
+    // MARK: Page View Controller Delegate / DataSource
+    
+    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
+        if let index = find(viewControllers, viewController) {
+            return viewControllers.elementAtIndex(index - 1)
+        }
+        return nil
+    }
+    
+    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
+        if let index = find(viewControllers, viewController) {
+            return viewControllers.elementAtIndex(index + 1)
+        }
+        return nil
     }
 }
