@@ -54,6 +54,7 @@
 		EA3777741A966EC10055DE99 /* TransatTextLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776F1A966EC10055DE99 /* TransatTextLight.otf */; };
 		EA3777751A966EC10055DE99 /* TransatTextMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA3777701A966EC10055DE99 /* TransatTextMedium.otf */; };
 		EA3777761A966EC10055DE99 /* TransatTextStandard.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA3777711A966EC10055DE99 /* TransatTextStandard.otf */; };
+		EA396FEA1AB51BED009EB60B /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA396FE91AB51BED009EB60B /* RootView.swift */; };
 		EA409D391A8C681A00988B8B /* FacebookExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA409D381A8C681A00988B8B /* FacebookExtension.swift */; };
 		EA409D3F1A8C75F600988B8B /* ConnectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA409D3B1A8C75F600988B8B /* ConnectionCell.swift */; };
 		EA409D411A8C75F600988B8B /* DockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA409D3D1A8C75F600988B8B /* DockView.xib */; };
@@ -61,8 +62,7 @@
 		EA4A66571AA2D9BB0019D601 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A66561AA2D9BB0019D601 /* GameView.swift */; };
 		EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA5634DF1A7741FF00F62B52 /* Ketch.xcdatamodeld */; };
 		EA6650E11AA00999001BA40C /* TransparentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E01AA00999001BA40C /* TransparentView.swift */; };
-		EA6650E61AA00A82001BA40C /* KetchBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E31AA00A82001BA40C /* KetchBackgroundView.swift */; };
-		EA6650E71AA00A82001BA40C /* KetchBackgroundView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA6650E41AA00A82001BA40C /* KetchBackgroundView.xib */; };
+		EA6650E61AA00A82001BA40C /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E31AA00A82001BA40C /* WaveView.swift */; };
 		EA6650E81AA00A82001BA40C /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E51AA00A82001BA40C /* UserAvatarView.swift */; };
 		EA6650EC1AA00A9C001BA40C /* CandidateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650EA1AA00A9C001BA40C /* CandidateService.swift */; };
 		EA6650ED1AA00A9C001BA40C /* CoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650EB1AA00A9C001BA40C /* CoreService.swift */; };
@@ -178,6 +178,7 @@
 		EA37776F1A966EC10055DE99 /* TransatTextLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextLight.otf; sourceTree = "<group>"; };
 		EA3777701A966EC10055DE99 /* TransatTextMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextMedium.otf; sourceTree = "<group>"; };
 		EA3777711A966EC10055DE99 /* TransatTextStandard.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextStandard.otf; sourceTree = "<group>"; };
+		EA396FE91AB51BED009EB60B /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		EA409D381A8C681A00988B8B /* FacebookExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookExtension.swift; sourceTree = "<group>"; };
 		EA409D3B1A8C75F600988B8B /* ConnectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionCell.swift; sourceTree = "<group>"; };
 		EA409D3D1A8C75F600988B8B /* DockView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DockView.xib; sourceTree = "<group>"; };
@@ -185,8 +186,7 @@
 		EA4A66561AA2D9BB0019D601 /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		EA5634E01A7741FF00F62B52 /* Ketch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ketch.xcdatamodel; sourceTree = "<group>"; };
 		EA6650E01AA00999001BA40C /* TransparentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransparentView.swift; sourceTree = "<group>"; };
-		EA6650E31AA00A82001BA40C /* KetchBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KetchBackgroundView.swift; sourceTree = "<group>"; };
-		EA6650E41AA00A82001BA40C /* KetchBackgroundView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = KetchBackgroundView.xib; sourceTree = "<group>"; };
+		EA6650E31AA00A82001BA40C /* WaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
 		EA6650E51AA00A82001BA40C /* UserAvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAvatarView.swift; sourceTree = "<group>"; };
 		EA6650EA1AA00A9C001BA40C /* CandidateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateService.swift; sourceTree = "<group>"; };
 		EA6650EB1AA00A9C001BA40C /* CoreService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreService.swift; sourceTree = "<group>"; };
@@ -462,8 +462,7 @@
 		EA6650E21AA00A82001BA40C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
-				EA6650E31AA00A82001BA40C /* KetchBackgroundView.swift */,
-				EA6650E41AA00A82001BA40C /* KetchBackgroundView.xib */,
+				EA6650E31AA00A82001BA40C /* WaveView.swift */,
 				EA6650E51AA00A82001BA40C /* UserAvatarView.swift */,
 			);
 			path = Shared;
@@ -588,6 +587,7 @@
 				EA1970031A83549300FEBA7F /* Signup */,
 				EA1DA37D1A8D187D00433093 /* New Connection */,
 				EAF4D74F1A79AA5E00D35330 /* RootViewController.swift */,
+				EA396FE91AB51BED009EB60B /* RootView.swift */,
 				EAE63D791AB3407D004A74E6 /* RootView.xib */,
 			);
 			name = "User Interface";
@@ -704,7 +704,6 @@
 				EA341DA51A8C88CC00A6077B /* JSQMessages.strings in Resources */,
 				EA341DA41A8C88CC00A6077B /* JSQMessagesViewController.xib in Resources */,
 				EA1970181A83549300FEBA7F /* SignupView.xib in Resources */,
-				EA6650E71AA00A82001BA40C /* KetchBackgroundView.xib in Resources */,
 				EA02CCF21A96ED03004C3009 /* KetchIcon.otf in Resources */,
 				EA1DA3811A8D189400433093 /* NewConnectionView.xib in Resources */,
 				EA409D411A8C75F600988B8B /* DockView.xib in Resources */,
@@ -868,6 +867,7 @@
 				EA409D3F1A8C75F600988B8B /* ConnectionCell.swift in Sources */,
 				EAAA42891AB24D6900056EFF /* ChoiceBucket.swift in Sources */,
 				EA1DA37F1A8D188B00433093 /* NewConnectionViewController.swift in Sources */,
+				EA396FEA1AB51BED009EB60B /* RootView.swift in Sources */,
 				EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */,
 				EA4A66571AA2D9BB0019D601 /* GameView.swift in Sources */,
 				EA0FC9441A87DE5800D62625 /* ViewProviders.swift in Sources */,
@@ -894,7 +894,7 @@
 				EAD7B2AB1A9F0BE700FA6740 /* DesignableViews.swift in Sources */,
 				EA6650FC1AA00B95001BA40C /* Connection.swift in Sources */,
 				EA1970071A83549300FEBA7F /* ChatViewController.swift in Sources */,
-				EA6650E61AA00A82001BA40C /* KetchBackgroundView.swift in Sources */,
+				EA6650E61AA00A82001BA40C /* WaveView.swift in Sources */,
 				EA6650EC1AA00A9C001BA40C /* CandidateService.swift in Sources */,
 				EAAA42871AB24D5F00056EFF /* CandidateBubble.swift in Sources */,
 				EA2AB70E1A8A00F200D42C6C /* GameViewController.swift in Sources */,

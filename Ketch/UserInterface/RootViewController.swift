@@ -14,16 +14,19 @@ import ReactiveCocoa
 @objc(RootViewController)
 class RootViewController : UIViewController {
     
-    @IBOutlet weak var loadingView: UIView!
     let settingsVC = SettingsViewController()
     let gameVC = GameViewController()
     let dockVC = DockViewController()
     let chatVC = ChatViewController()
+    
+    var animateDuration : NSTimeInterval = 0.6
+    var springDamping : CGFloat = 0.6
+    var initialSpringVelocity : CGFloat = 10
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let view = self.view as KetchBackgroundView
+        let view = self.view as RootView
         
         view.whenSwiped(.Down) {
             view.animateHorizon(offset: 100, fromTop: false); return
@@ -47,11 +50,11 @@ class RootViewController : UIViewController {
 
         // Try login now
         if !Core.attemptLoginWithCachedCredentials() {
-            loadingView.hidden = true
+            view.loadingView.hidden = true
             showSignup(false)
         } else {
             Core.currentUserSubscription.signal.deliverOnMainThread().subscribeCompleted {
-                self.loadingView.hidden = true
+                view.loadingView.hidden = true
                 self.showGame(false)
             }
         }
@@ -60,7 +63,7 @@ class RootViewController : UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        let view = self.view as KetchBackgroundView
+        let view = self.view as RootView
         view.springDamping = 0.8
         view.animateHorizon(offset: 60)
         view.springDamping = 0.6

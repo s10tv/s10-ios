@@ -11,7 +11,6 @@ import Foundation
 @objc(GameViewController)
 class GameViewController : BaseViewController {
 
-//    var backgroundView: KetchBackgroundView { return view as KetchBackgroundView }
     
     @IBOutlet weak var container: UIView!
     @IBOutlet var gameView: GameView!
