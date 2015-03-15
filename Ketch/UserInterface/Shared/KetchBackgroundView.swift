@@ -35,7 +35,7 @@ import ReactiveCocoa
     
     @IBOutlet weak var ketchIcon: UIImageView!
     @IBOutlet weak var waveView: KetchWaveView!
-    @IBOutlet weak var waveTopMargin: NSLayoutConstraint!
+    @IBOutlet private weak var horizonHeight: NSLayoutConstraint!
 
     var animateDuration : NSTimeInterval = 0.6
     var springDamping : CGFloat = 0.6
@@ -62,12 +62,12 @@ import ReactiveCocoa
     func animateHorizon(#ratio: CGFloat) -> RACSignal {
         assert(between(0, ratio, 1) == true, "Ratio must be between 0 and 1")
         // Question: Do we need separate constraint for ratio or convert to offset like below?
-        waveTopMargin.constant = frame.height * (1 - ratio)
+        horizonHeight.constant = frame.height * ratio
         return animateLayoutChange()
     }
     
     func animateHorizon(#offset: CGFloat, fromTop: Bool = true) -> RACSignal {
-        waveTopMargin.constant = fromTop ? offset : frame.height - offset
+        horizonHeight.constant = fromTop ? frame.height - offset : offset
         return animateLayoutChange()
     }
     
