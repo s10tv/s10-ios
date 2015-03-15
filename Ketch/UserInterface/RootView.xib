@@ -19,7 +19,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y2G-cr-B1X" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y2G-cr-B1X" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="567" width="375" height="580"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
@@ -66,7 +66,7 @@
                 <constraint firstItem="Y2G-cr-B1X" firstAttribute="leading" secondItem="E8R-mf-WeZ" secondAttribute="leading" id="20Q-BT-BEy"/>
                 <constraint firstAttribute="bottom" secondItem="Y2G-cr-B1X" secondAttribute="top" constant="100" id="O0g-3I-tHG"/>
                 <constraint firstAttribute="centerX" secondItem="iew-qZ-urT" secondAttribute="centerX" id="cde-fd-pT4"/>
-                <constraint firstAttribute="bottom" secondItem="Y2G-cr-B1X" secondAttribute="bottom" priority="252" constant="-200" id="g4E-X1-jph"/>
+                <constraint firstItem="Y2G-cr-B1X" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="E8R-mf-WeZ" secondAttribute="bottom" constant="200" id="g4E-X1-jph"/>
                 <constraint firstAttribute="trailing" secondItem="Y2G-cr-B1X" secondAttribute="trailing" id="kA1-Kh-oKt"/>
                 <constraint firstItem="Y2G-cr-B1X" firstAttribute="top" secondItem="mUK-mt-n35" secondAttribute="bottom" constant="-10" id="leR-vZ-huo"/>
                 <constraint firstItem="mUK-mt-n35" firstAttribute="centerX" secondItem="Y2G-cr-B1X" secondAttribute="centerX" id="oFw-ir-nfA"/>
