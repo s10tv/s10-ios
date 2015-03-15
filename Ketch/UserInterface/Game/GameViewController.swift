@@ -11,7 +11,7 @@ import Foundation
 @objc(GameViewController)
 class GameViewController : BaseViewController {
 
-    var backgroundView: KetchBackgroundView { return view as KetchBackgroundView }
+//    var backgroundView: KetchBackgroundView { return view as KetchBackgroundView }
     
     @IBOutlet weak var container: UIView!
     @IBOutlet var gameView: GameView!
@@ -30,10 +30,10 @@ class GameViewController : BaseViewController {
         gameView.didConfirmChoices = { [weak self] in
             if let this = self { this.submitChoices(this) }
         }
-        backgroundView.ketchIcon.userInteractionEnabled = true
-        backgroundView.ketchIcon.whenTapped {
-            self.gameView.tutorialStep1()
-        }
+//        backgroundView.ketchIcon.userInteractionEnabled = true
+//        backgroundView.ketchIcon.whenTapped {
+//            self.gameView.tutorialStep1()
+//        }
     }
     
     func bindGameView() {
@@ -42,7 +42,7 @@ class GameViewController : BaseViewController {
                 if candidates.count >= 3 {
                     this.showSubview(this.gameView)
                     this.gameView.startNewGame(Array(candidates[0...2]))
-                    this.backgroundView.animateWaterlineDownAndUp()
+//                    this.backgroundView.animateWaterlineDownAndUp()
                 } else {
                     this.showSubview(this.emptyView)
                 }

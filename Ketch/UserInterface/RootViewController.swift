@@ -14,7 +14,11 @@ import ReactiveCocoa
 @objc(RootViewController)
 class RootViewController : UIViewController {
     
-    @IBOutlet weak var loadingLabel: UILabel!
+    @IBOutlet weak var loadingView: UIView!
+    let settingsVC = SettingsViewController()
+    let gameVC = GameViewController()
+    let dockVC = DockViewController()
+    let chatVC = ChatViewController()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,14 +47,15 @@ class RootViewController : UIViewController {
 
         // Try login now
         if !Core.attemptLoginWithCachedCredentials() {
-            loadingLabel.hidden = true
+            loadingView.hidden = true
             showSignup(false)
         } else {
             Core.currentUserSubscription.signal.deliverOnMainThread().subscribeCompleted {
-                self.loadingLabel.hidden = true
+                self.loadingView.hidden = true
                 self.showGame(false)
             }
         }
+
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -74,7 +79,9 @@ class RootViewController : UIViewController {
     }
     
     func showGame(animated: Bool) {
-//        setViewControllers([makeViewController(.Game)!], animated: animated)
+        addChildViewController(gameVC)
+        view.addSubview(gameVC.view)
+        gameVC.view.makeEdgesEqualTo(view)
     }
     
     func showSignup(animated: Bool) {

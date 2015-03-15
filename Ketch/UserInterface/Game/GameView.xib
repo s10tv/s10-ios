@@ -28,7 +28,7 @@
                 <outlet property="view" destination="dPb-pR-9as" id="O6f-c0-qwc"/>
             </connections>
         </placeholder>
-        <view contentMode="scaleToFill" id="dPb-pR-9as" customClass="KetchBackgroundView" customModule="Ketch" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="dPb-pR-9as">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -75,7 +75,6 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.043137254899999998" green="0.8980392157" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="qQh-jY-p6T" firstAttribute="leading" secondItem="dPb-pR-9as" secondAttribute="leading" id="1Fm-F0-NfB"/>
                 <constraint firstItem="WOT-kB-qH2" firstAttribute="top" secondItem="dPb-pR-9as" secondAttribute="top" constant="15" id="5Gp-vA-vaP"/>
@@ -161,10 +160,10 @@
                     <rect key="frame" x="267" y="467" width="100" height="100"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-progressIndicator-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ee3-Rd-2aM" userLabel="Progress Indicator" customClass="ProgressIndicator" customModule="Ketch" customModuleProvider="target">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-progressIndicator-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ee3-Rd-2aM" userLabel="Progress Indicator" customClass="ProgressIndicator" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="149" y="333" width="77" height="15"/>
                 </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsh-wd-hgi" userLabel="Help Text" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsh-wd-hgi" userLabel="Help Text" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="20" y="364" width="335" height="62"/>
                     <attributedString key="attributedText">
                         <fragment content="SWIPE DOWN TO FIND THE ONE!">
@@ -186,7 +185,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gP7-jI-QkA" userLabel="Confirm Button" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gP7-jI-QkA" userLabel="Confirm Button" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="63" y="388" width="250" height="54"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>

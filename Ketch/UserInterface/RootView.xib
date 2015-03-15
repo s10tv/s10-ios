@@ -11,7 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RootViewController">
             <connections>
-                <outlet property="loadingLabel" destination="MM7-2s-Laf" id="lYV-MS-I5y"/>
+                <outlet property="loadingView" destination="iew-qZ-urT" id="k1T-bi-6et"/>
                 <outlet property="view" destination="iN0-l3-epB" id="vqM-2e-9jj"/>
             </connections>
         </placeholder>
@@ -20,17 +20,35 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" alpha="0.25" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Looking for the One..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MM7-2s-Laf">
-                    <rect key="frame" x="26" y="271" width="268" height="27"/>
-                    <fontDescription key="fontDescription" name="TransatTextBold" family="Transat Text" pointSize="27"/>
-                    <color key="textColor" red="0.092987515032291412" green="0.64821720123291016" blue="0.65024715662002563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iew-qZ-urT" userLabel="Loading View">
+                    <rect key="frame" x="50.5" y="241" width="219.5" height="86"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="yyG-n9-DPz">
+                            <rect key="frame" x="91" y="0.0" width="37" height="37"/>
+                            <color key="color" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </activityIndicatorView>
+                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.25" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finding the One..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXh-OO-ufb">
+                            <rect key="frame" x="0.0" y="59" width="219.5" height="27"/>
+                            <fontDescription key="fontDescription" name="TransatTextBold" family="Transat Text" pointSize="27"/>
+                            <color key="textColor" red="0.092987515029999995" green="0.64821720120000004" blue="0.65024715659999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="yyG-n9-DPz" firstAttribute="centerX" secondItem="tXh-OO-ufb" secondAttribute="centerX" id="B12-aI-jgc"/>
+                        <constraint firstAttribute="bottom" secondItem="tXh-OO-ufb" secondAttribute="bottom" id="g2Y-6H-eFq"/>
+                        <constraint firstAttribute="trailing" secondItem="tXh-OO-ufb" secondAttribute="trailing" id="hQ9-fl-wjV"/>
+                        <constraint firstItem="tXh-OO-ufb" firstAttribute="top" secondItem="yyG-n9-DPz" secondAttribute="bottom" constant="22" id="jwV-XY-7AH"/>
+                        <constraint firstItem="tXh-OO-ufb" firstAttribute="leading" secondItem="iew-qZ-urT" secondAttribute="leading" id="mSv-xs-G5w"/>
+                        <constraint firstItem="yyG-n9-DPz" firstAttribute="top" secondItem="iew-qZ-urT" secondAttribute="top" id="rD4-Vq-KSZ"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
             <constraints>
-                <constraint firstAttribute="centerY" secondItem="MM7-2s-Laf" secondAttribute="centerY" id="5p5-tu-Bvg"/>
-                <constraint firstAttribute="centerX" secondItem="MM7-2s-Laf" secondAttribute="centerX" id="bLw-on-f0R"/>
+                <constraint firstAttribute="centerY" secondItem="iew-qZ-urT" secondAttribute="centerY" id="8J3-Tm-Eut"/>
+                <constraint firstAttribute="centerX" secondItem="iew-qZ-urT" secondAttribute="centerX" id="Zzs-DO-4TW"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
