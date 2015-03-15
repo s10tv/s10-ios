@@ -374,13 +374,12 @@
 			path = Signup;
 			sourceTree = "<group>";
 		};
-		EA1DA37D1A8D187D00433093 /* New Connection */ = {
+		EA1DA37D1A8D187D00433093 /* NewConnection */ = {
 			isa = PBXGroup;
 			children = (
 				EA1DA37E1A8D188B00433093 /* NewConnectionViewController.swift */,
 				EA1DA3801A8D189400433093 /* NewConnectionView.xib */,
 			);
-			name = "New Connection";
 			path = NewConnection;
 			sourceTree = "<group>";
 		};
@@ -515,7 +514,7 @@
 			children = (
 				EA6650E91AA00A9C001BA40C /* Services */,
 				EA5634DE1A7741FF00F62B52 /* Models */,
-				EAF4D7441A79AA5E00D35330 /* User Interface */,
+				EAF4D7441A79AA5E00D35330 /* UserInterface */,
 				EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */,
 				EA9F35461A74CC6900E0C65D /* Main.storyboard */,
 				EA9F35491A74CC6900E0C65D /* Images.xcassets */,
@@ -575,7 +574,7 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		EAF4D7441A79AA5E00D35330 /* User Interface */ = {
+		EAF4D7441A79AA5E00D35330 /* UserInterface */ = {
 			isa = PBXGroup;
 			children = (
 				EA6650E21AA00A82001BA40C /* Shared */,
@@ -585,12 +584,11 @@
 				EA196FFB1A83549300FEBA7F /* Profile */,
 				EA1970001A83549300FEBA7F /* Settings */,
 				EA1970031A83549300FEBA7F /* Signup */,
-				EA1DA37D1A8D187D00433093 /* New Connection */,
+				EA1DA37D1A8D187D00433093 /* NewConnection */,
 				EAF4D74F1A79AA5E00D35330 /* RootViewController.swift */,
 				EA396FE91AB51BED009EB60B /* RootView.swift */,
 				EAE63D791AB3407D004A74E6 /* RootView.xib */,
 			);
-			name = "User Interface";
 			path = UserInterface;
 			sourceTree = "<group>";
 		};

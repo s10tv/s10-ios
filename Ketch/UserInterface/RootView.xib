@@ -20,11 +20,11 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Y2G-cr-B1X" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
-                    <rect key="frame" x="0.0" y="567" width="375" height="580"/>
+                    <rect key="frame" x="0.0" y="617" width="375" height="580"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ketch" translatesAutoresizingMaskIntoConstraints="NO" id="mUK-mt-n35">
-                    <rect key="frame" x="168" y="535" width="39" height="42"/>
+                    <rect key="frame" x="168" y="585" width="39" height="42"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="34" id="Fva-u8-quc"/>
                         <constraint firstAttribute="height" constant="37" id="qML-Xw-Oy4"/>
@@ -64,7 +64,7 @@
             <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="Y2G-cr-B1X" firstAttribute="leading" secondItem="E8R-mf-WeZ" secondAttribute="leading" id="20Q-BT-BEy"/>
-                <constraint firstAttribute="bottom" secondItem="Y2G-cr-B1X" secondAttribute="top" constant="100" id="O0g-3I-tHG"/>
+                <constraint firstAttribute="bottom" secondItem="Y2G-cr-B1X" secondAttribute="top" constant="50" id="O0g-3I-tHG"/>
                 <constraint firstAttribute="centerX" secondItem="iew-qZ-urT" secondAttribute="centerX" id="cde-fd-pT4"/>
                 <constraint firstItem="Y2G-cr-B1X" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="E8R-mf-WeZ" secondAttribute="bottom" constant="200" id="g4E-X1-jph"/>
                 <constraint firstAttribute="trailing" secondItem="Y2G-cr-B1X" secondAttribute="trailing" id="kA1-Kh-oKt"/>
