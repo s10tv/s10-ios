@@ -50,10 +50,8 @@ class GameViewController : BaseViewController {
         // Setup tap to view profile
         for bubble in gameView.bubbles {
             bubble.didTap = { [weak self] user in
-                if let vc = self?.makeViewController(.Profile) as? ProfileViewController {
-                    vc.user = user
-                    self?.navigationController?.pushViewController(vc, animated: true)
-                }
+                let profileVC = ProfileViewController(user: user!)
+                self?.presentViewController(profileVC, animated: true)
             }
         }
     }

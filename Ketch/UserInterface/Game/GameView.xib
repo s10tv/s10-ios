@@ -62,7 +62,7 @@
                         <action selector="goToDock:" destination="-1" eventType="touchUpInside" id="oOt-Bh-vXN"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WOT-kB-qH2" userLabel="New Indicator">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WOT-kB-qH2" userLabel="New Indicator">
                     <rect key="frame" x="343" y="15" width="12" height="12"/>
                     <color key="backgroundColor" red="0.950525701" green="0.36602467300000002" blue="0.44692194460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
