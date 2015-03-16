@@ -74,22 +74,11 @@ class RootViewController : PageViewController {
         view.springDamping = 0.6
     }
     
-    override func supportedInterfaceOrientations() -> Int {
-        return Int(UIInterfaceOrientationMask.Portrait.rawValue);
-    }
-    
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
-    
     func showProfile(user: User?, animated: Bool) {
 //        setViewControllers([makeViewController(.Profile)!], animated: animated)
     }
     
     func showGame(animated: Bool) {
-        addChildViewController(gameVC)
-        view.addSubview(gameVC.view)
-        gameVC.view.makeEdgesEqualTo(view)
     }
     
     func showSignup(animated: Bool) {
