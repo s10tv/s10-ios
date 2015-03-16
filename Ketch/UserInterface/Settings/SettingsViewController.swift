@@ -58,6 +58,6 @@ class SettingsViewController : BaseViewController {
     // MARK: - Actions
     
     @IBAction func goBack(sender: AnyObject) {
-        navigationController?.popViewControllerAnimated(true)
+        dismissViewControllerAnimated(true, completion: nil)
     }
 }

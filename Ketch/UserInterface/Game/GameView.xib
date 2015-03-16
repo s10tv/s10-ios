@@ -44,7 +44,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="goToSettings:" destination="-1" eventType="touchUpInside" id="Ocg-00-LkQ"/>
+                        <action selector="showSettings:" destination="-2" eventType="touchUpInside" id="z97-Nd-Dr0"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jod-zD-ot2" userLabel="Dock">

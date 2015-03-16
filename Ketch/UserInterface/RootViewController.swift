@@ -74,6 +74,10 @@ class RootViewController : PageViewController {
         view.springDamping = 0.6
     }
     
+    @IBAction func showSettings(sender: AnyObject) {
+        presentViewController(settingsVC, animated: true, completion: nil)
+    }
+    
     func showProfile(user: User?, animated: Bool) {
 //        setViewControllers([makeViewController(.Profile)!], animated: animated)
     }
