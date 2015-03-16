@@ -21,7 +21,7 @@ class GameViewController : BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        RAC(dockBadge, "hidden") <~ Connection.unreadCountSignal().map { ($0 as Int) == 0 }
+//        RAC(dockBadge, "hidden") <~ Connection.unreadCountSignal().map { ($0 as Int) == 0 }
 
         dockBadge.makeCircular()
         showSubview(gameView)
