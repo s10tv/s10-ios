@@ -7,9 +7,7 @@
 */
 
 "It's a Ketch!" = "It's a Ketch!";
-"Lucky you!" = "Lucky you!";
 "SingleMatchPrompt" = "Congrats! %@ also likes you! You'll have 3 days to reach out to %@ before they disappear for good. Why not chat and see how things go?";
-"DoubleMatchPrompt" = "Both %@ and %@ were charmed by you. Why not get in touch and see how things go?";
 "ThreeMatchesPrompt" = "YOU’LL SEE 3 POTENTIAL MATCHES";
 "ThreeChoicesPrompt" = "AND YOU’LL HAVE 3 CHOICES";
 "DragMatchsToChoices" = "DECIDE WHAT YOU PREFER";

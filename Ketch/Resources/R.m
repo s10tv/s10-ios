@@ -60,10 +60,8 @@ const struct R R = {
         .sTyping3x = @"Images/typing@3x.png",
     },
     .Strings = {
-        .doubleMatchPrompt = @"DoubleMatchPrompt",
         .dragMatchsToChoices = @"DragMatchsToChoices",
         .itsAKetch = @"It's a Ketch!",
-        .luckyYou = @"Lucky you!",
         .marryPrompt = @"MarryPrompt",
         .singleMatchPrompt = @"SingleMatchPrompt",
         .skipPrompt = @"SkipPrompt",

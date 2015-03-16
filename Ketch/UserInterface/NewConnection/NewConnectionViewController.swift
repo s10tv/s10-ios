@@ -27,7 +27,7 @@ class NewConnectionViewController : BaseViewController {
         }
         titleLabel.text = LS(R.Strings.itsAKetch)
         avatar.user = connection.user
-        promptLabel.rawText = LS(R.Strings.singleMatchPrompt, connection.user!.firstName!)
+        promptLabel.rawText = LS(R.Strings.singleMatchPrompt, connection.user!.firstName!, connection.user!.firstName!)
     }
     
     override func viewDidLayoutSubviews() {

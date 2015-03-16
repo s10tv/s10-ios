@@ -107,25 +107,21 @@ extern const struct R {
         __unsafe_unretained NSString *sTyping3x;
     } JSQMessagesAssets;
     struct Strings {
-        /// Both %@ and %@ were charmed by you. Why not get in touch and see how things go?
-        __unsafe_unretained NSString *doubleMatchPrompt;
-        /// DRAG THE MATCHES TO YOUR CHOICES
+        /// DECIDE WHAT YOU PREFER
         __unsafe_unretained NSString *dragMatchsToChoices;
         /// It's a Ketch!
         __unsafe_unretained NSString *itsAKetch;
-        /// Lucky you!
-        __unsafe_unretained NSString *luckyYou;
-        /// IF THEY SAY MARRY, MEANS IT'S A MATCH!
+        /// SAY YES AND CHOOSE NOW
         __unsafe_unretained NSString *marryPrompt;
-        /// It seems that %@ also thought you were pretty darn cute. Why not chat and see how things go?
+        /// Congrats! %@ also likes you! You'll have 3 days to reach out to %@ before they disappear for good. Why not chat and see how things go?
         __unsafe_unretained NSString *singleMatchPrompt;
-        /// NOT YOUR TYPE. WE'LL SHOW YOU LESS OF THESE.
+        /// POLITELY SAY NO
         __unsafe_unretained NSString *skipPrompt;
-        /// SOMEONE ELSE CAUGHT YOUR EYE. MAYBE PATHS WILL CROSS AGAIN.
+        /// THINK ABOUT IT AND CHOOSE LATER
         __unsafe_unretained NSString *snoozePrompt;
-        /// AND YOU’LL HAVE THREE CHOICES
+        /// AND YOU’LL HAVE 3 CHOICES
         __unsafe_unretained NSString *threeChoicesPrompt;
-        /// YOU’LL SEE THREE POTENTIAL MATCHES
+        /// YOU’LL SEE 3 POTENTIAL MATCHES
         __unsafe_unretained NSString *threeMatchesPrompt;
     } Strings;
 } R;
