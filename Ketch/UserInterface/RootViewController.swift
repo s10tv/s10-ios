@@ -75,7 +75,7 @@ class RootViewController : PageViewController {
     }
     
     @IBAction func showSettings(sender: AnyObject) {
-        presentViewController(settingsVC, animated: true, completion: nil)
+        presentViewController(settingsVC, animated: true)
     }
     
     func showProfile(user: User?, animated: Bool) {

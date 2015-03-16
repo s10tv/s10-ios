@@ -17,6 +17,25 @@ func LS(localizableKey: String, args: CVarArgType...) -> String {
                  arguments: getVaList(args)) as String
 }
 
+extension UIViewController {
+    func presentViewController(viewControllerToPresent: UIViewController, animated flag: Bool) -> RACSignal {
+        let subject = RACReplaySubject()
+        presentViewController(viewControllerToPresent, animated: flag) {
+            subject.sendCompleted()
+        }
+        return subject
+    }
+    
+    func dismissViewControllerAnimated(flag: Bool) -> RACSignal {
+        let subject = RACReplaySubject()
+        dismissViewControllerAnimated(flag) {
+            subject.sendCompleted()
+        }
+        return subject
+        
+    }
+}
+
 extension UIView {
     
     func makeCircular() {
