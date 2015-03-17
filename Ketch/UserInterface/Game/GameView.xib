@@ -302,7 +302,7 @@ SAILED FOR TODAY.</string>
                 </label>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MU1-Gw-hdC" userLabel="Divider">
                     <rect key="frame" x="97" y="272" width="180" height="1"/>
-                    <color key="backgroundColor" red="0.84705882352941175" green="0.84705882352941175" blue="0.84705882352941175" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" red="0.92549019610000005" green="0.97647058819999999" blue="0.96078431369999995" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="1" id="SMv-KB-irH"/>
                         <constraint firstAttribute="width" constant="180" id="h7a-fq-jwd"/>
