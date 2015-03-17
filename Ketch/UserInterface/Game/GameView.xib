@@ -38,8 +38,8 @@
                         <constraint firstAttribute="width" constant="80" id="B8h-Ei-Hcd"/>
                         <constraint firstAttribute="height" constant="60" id="qkR-di-azb"/>
                     </constraints>
-                    <fontDescription key="fontDescription" name="KetchIcon-Regular" family="KetchIcon" pointSize="12"/>
-                    <state key="normal" title="y">
+                    <fontDescription key="fontDescription" name="KetchIcon-Regular" family="KetchIcon" pointSize="15"/>
+                    <state key="normal" title="u">
                         <color key="titleColor" red="0.092987515029999995" green="0.64821720120000004" blue="0.65024715659999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
