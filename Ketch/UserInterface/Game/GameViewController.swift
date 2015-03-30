@@ -67,14 +67,6 @@ class GameViewController : BaseViewController {
     
     // MARK: -
 
-    @IBAction func goToSettings(sender: AnyObject) {
-        performSegue(.GameToSettings, sender: sender)
-    }
-
-    @IBAction func goToDock(sender: AnyObject) {
-        performSegue(.GameToDock, sender: sender)
-    }
-
     @IBAction func submitChoices(sender: AnyObject) {
         if !gameView.isReady {
             UIAlertView.show("Error", message: "Need to uniquely assign keep match marry")

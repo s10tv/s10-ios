@@ -78,11 +78,16 @@ class RootViewController : PageViewController {
         presentViewController(settingsVC, animated: true)
     }
     
-    func showProfile(user: User?, animated: Bool) {
-//        setViewControllers([makeViewController(.Profile)!], animated: animated)
+    @IBAction func showDock(sender: AnyObject) {
+        scrollTo(viewController: dockVC, animated: true)
     }
     
-    func showGame(animated: Bool) {
+    @IBAction func showGame(sender: AnyObject) {
+        scrollTo(viewController: gameVC, animated: true)
+    }
+    
+    func showProfile(user: User?, animated: Bool) {
+//        setViewControllers([makeViewController(.Profile)!], animated: animated)
     }
     
     func showSignup(animated: Bool) {

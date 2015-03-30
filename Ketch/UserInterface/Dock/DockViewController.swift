@@ -41,8 +41,4 @@ class DockViewController : BaseViewController {
         }
     }
     
-    @IBAction func goBack(sender: AnyObject) {
-        navigationController?.popViewControllerAnimated(true)
-    }
-
 }
