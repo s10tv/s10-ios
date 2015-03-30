@@ -30,7 +30,6 @@ class SettingsViewController : BaseViewController {
                 let profileVC = ProfileViewController()
                 profileVC.user = user
                 self?.presentViewController(profileVC, animated: true)
-                return
             }
             nameLabel.text = user.displayName
             ageLabel.text = "\(user.age!) years old"

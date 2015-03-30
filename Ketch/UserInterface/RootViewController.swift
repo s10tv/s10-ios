@@ -84,6 +84,7 @@ class RootViewController : PageViewController {
     }
     
     @IBAction func showDock(sender: AnyObject) {
+        dismissViewControllerAnimated(false) // HACK ALERT: for transitioning from NewConnection. Gotta use segue
         scrollTo(viewController: dockVC)
         viewControllers = [gameVC, dockVC]
     }
@@ -107,12 +108,14 @@ class RootViewController : PageViewController {
     }
     
     func showNewMatch(connection: Connection) {
-        // NOT IMPLEMENTED
+        let newConnVC = NewConnectionViewController()
+        newConnVC.connection = connection
+        presentViewController(newConnVC, animated: true)
     }
     
     func showSignup(animated: Bool) {
-        
-//        setViewControllers([makeViewController(.Signup)!], animated: animated)
+        let signupVC = SignupViewController()
+        presentViewController(signupVC, animated: animated)
     }
     
     @IBAction func logout(sender: AnyObject) {
