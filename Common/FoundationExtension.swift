@@ -133,6 +133,13 @@ extension Array {
         }
         return minElement
     }
+    
+    func elementAtIndex(index: Int?) -> T? {
+        if let i = index {
+            return (i >= 0 && i < count) ? self[i] : nil
+        }
+        return nil
+    }
 }
 
 extension NSData {

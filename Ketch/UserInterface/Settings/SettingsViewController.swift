@@ -26,9 +26,10 @@ class SettingsViewController : BaseViewController {
         avatarView.makeCircular()
         if let user = User.currentUser() {
             avatarView.user = user
-            avatarView.whenTapped { [weak self] in
-                self?.performSegue(.SettingsToProfile)
-                return
+            avatarView.whenTapped { [weak self, weak user] in
+                let profileVC = ProfileViewController()
+                profileVC.user = user
+                self?.presentViewController(profileVC, animated: true)
             }
             nameLabel.text = user.displayName
             ageLabel.text = "\(user.age!) years old"
@@ -58,6 +59,6 @@ class SettingsViewController : BaseViewController {
     // MARK: - Actions
     
     @IBAction func goBack(sender: AnyObject) {
-        navigationController?.popViewControllerAnimated(true)
+        dismissViewControllerAnimated(true)
     }
 }

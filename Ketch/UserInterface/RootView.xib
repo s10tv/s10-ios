@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="TransatTextBold.otf">
+            <string>TransatTextBold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RootViewController">
+            <connections>
+                <outlet property="view" destination="E8R-mf-WeZ" id="5fn-So-f15"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="E8R-mf-WeZ" customClass="RootView" customModule="Ketch" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Y2G-cr-B1X" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
+                    <rect key="frame" x="0.0" y="617" width="375" height="580"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Ketch" translatesAutoresizingMaskIntoConstraints="NO" id="mUK-mt-n35">
+                    <rect key="frame" x="168" y="585" width="39" height="42"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="34" id="Fva-u8-quc"/>
+                        <constraint firstAttribute="height" constant="37" id="qML-Xw-Oy4"/>
+                    </constraints>
+                    <variation key="default">
+                        <mask key="constraints">
+                            <exclude reference="Fva-u8-quc"/>
+                            <exclude reference="qML-Xw-Oy4"/>
+                        </mask>
+                    </variation>
+                </imageView>
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iew-qZ-urT" userLabel="Loading View">
+                    <rect key="frame" x="78" y="291" width="219.5" height="86"/>
+                    <subviews>
+                        <activityIndicatorView opaque="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="yyG-n9-DPz">
+                            <rect key="frame" x="91" y="0.0" width="37" height="37"/>
+                            <color key="color" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        </activityIndicatorView>
+                        <label opaque="NO" userInteractionEnabled="NO" alpha="0.25" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Finding the One..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tXh-OO-ufb">
+                            <rect key="frame" x="0.0" y="59" width="219.5" height="27"/>
+                            <fontDescription key="fontDescription" name="TransatTextBold" family="Transat Text" pointSize="27"/>
+                            <color key="textColor" red="0.092987515029999995" green="0.64821720120000004" blue="0.65024715659999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="yyG-n9-DPz" firstAttribute="centerX" secondItem="tXh-OO-ufb" secondAttribute="centerX" id="B12-aI-jgc"/>
+                        <constraint firstAttribute="bottom" secondItem="tXh-OO-ufb" secondAttribute="bottom" id="g2Y-6H-eFq"/>
+                        <constraint firstAttribute="trailing" secondItem="tXh-OO-ufb" secondAttribute="trailing" id="hQ9-fl-wjV"/>
+                        <constraint firstItem="tXh-OO-ufb" firstAttribute="top" secondItem="yyG-n9-DPz" secondAttribute="bottom" constant="22" id="jwV-XY-7AH"/>
+                        <constraint firstItem="tXh-OO-ufb" firstAttribute="leading" secondItem="iew-qZ-urT" secondAttribute="leading" id="mSv-xs-G5w"/>
+                        <constraint firstItem="yyG-n9-DPz" firstAttribute="top" secondItem="iew-qZ-urT" secondAttribute="top" id="rD4-Vq-KSZ"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="Y2G-cr-B1X" firstAttribute="leading" secondItem="E8R-mf-WeZ" secondAttribute="leading" id="20Q-BT-BEy"/>
+                <constraint firstAttribute="bottom" secondItem="Y2G-cr-B1X" secondAttribute="top" constant="50" id="O0g-3I-tHG"/>
+                <constraint firstAttribute="centerX" secondItem="iew-qZ-urT" secondAttribute="centerX" id="cde-fd-pT4"/>
+                <constraint firstItem="Y2G-cr-B1X" firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="E8R-mf-WeZ" secondAttribute="bottom" constant="200" id="g4E-X1-jph"/>
+                <constraint firstAttribute="trailing" secondItem="Y2G-cr-B1X" secondAttribute="trailing" id="kA1-Kh-oKt"/>
+                <constraint firstItem="Y2G-cr-B1X" firstAttribute="top" secondItem="mUK-mt-n35" secondAttribute="bottom" constant="-10" id="leR-vZ-huo"/>
+                <constraint firstItem="mUK-mt-n35" firstAttribute="centerX" secondItem="Y2G-cr-B1X" secondAttribute="centerX" id="oFw-ir-nfA"/>
+                <constraint firstAttribute="centerY" secondItem="iew-qZ-urT" secondAttribute="centerY" id="vN2-kl-fPw"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <connections>
+                <outlet property="horizonHeight" destination="O0g-3I-tHG" id="775-oL-9PQ"/>
+                <outlet property="ketchIcon" destination="mUK-mt-n35" id="UPn-XM-30b"/>
+                <outlet property="loadingView" destination="iew-qZ-urT" id="nP5-Zn-Cl3"/>
+                <outlet property="waveView" destination="Y2G-cr-B1X" id="riN-pJ-nF2"/>
+            </connections>
+            <point key="canvasLocation" x="11.5" y="158.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="Ketch" width="39" height="42"/>
+    </resources>
+</document>

@@ -11,7 +11,6 @@ import Foundation
 @objc(GameViewController)
 class GameViewController : BaseViewController {
 
-    var backgroundView: KetchBackgroundView { return view as KetchBackgroundView }
     
     @IBOutlet weak var container: UIView!
     @IBOutlet var gameView: GameView!
@@ -30,10 +29,10 @@ class GameViewController : BaseViewController {
         gameView.didConfirmChoices = { [weak self] in
             if let this = self { this.submitChoices(this) }
         }
-        backgroundView.ketchIcon.userInteractionEnabled = true
-        backgroundView.ketchIcon.whenTapped {
-            self.gameView.tutorialStep1()
-        }
+//        backgroundView.ketchIcon.userInteractionEnabled = true
+//        backgroundView.ketchIcon.whenTapped {
+//            self.gameView.tutorialStep1()
+//        }
     }
     
     func bindGameView() {
@@ -42,7 +41,7 @@ class GameViewController : BaseViewController {
                 if candidates.count >= 3 {
                     this.showSubview(this.gameView)
                     this.gameView.startNewGame(Array(candidates[0...2]))
-                    this.backgroundView.animateWaterlineDownAndUp()
+//                    this.backgroundView.animateWaterlineDownAndUp()
                 } else {
                     this.showSubview(this.emptyView)
                 }
@@ -51,10 +50,8 @@ class GameViewController : BaseViewController {
         // Setup tap to view profile
         for bubble in gameView.bubbles {
             bubble.didTap = { [weak self] user in
-                if let vc = self?.makeViewController(.Profile) as? ProfileViewController {
-                    vc.user = user
-                    self?.navigationController?.pushViewController(vc, animated: true)
-                }
+                self?.rootVC.showProfile(user!, animated: true)
+                return
             }
         }
     }
@@ -70,14 +67,6 @@ class GameViewController : BaseViewController {
     
     // MARK: -
 
-    @IBAction func goToSettings(sender: AnyObject) {
-        performSegue(.GameToSettings, sender: sender)
-    }
-
-    @IBAction func goToDock(sender: AnyObject) {
-        performSegue(.GameToDock, sender: sender)
-    }
-
     @IBAction func submitChoices(sender: AnyObject) {
         if !gameView.isReady {
             UIAlertView.show("Error", message: "Need to uniquely assign keep match marry")
@@ -87,9 +76,8 @@ class GameViewController : BaseViewController {
             let skip = gameView.chosenCandidate(.No)!
             Core.candidateService.submitChoices(marry, no: skip, maybe: keep).deliverOnMainThread().subscribeNextAs { (res : [String:String]) -> () in
                 if res.count > 0 {
-                    let vc = self.makeViewController(.NewConnection) as NewConnectionViewController
-                    vc.connection = Connection.findByDocumentID(res["yes"]!)
-                    self.navigationController?.pushViewController(vc, animated: true)
+                    let connection = Connection.findByDocumentID(res["yes"]!)!
+                    self.rootVC.showNewMatch(connection)
                 }
             }
         }

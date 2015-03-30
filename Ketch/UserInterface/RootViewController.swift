@@ -11,15 +11,40 @@ import Meteor
 import FacebookSDK
 import ReactiveCocoa
 
-class RootViewController : UINavigationController {
+extension UIViewController {
+    var rootVC : RootViewController {
+        return UIApplication.sharedApplication().delegate?.window??.rootViewController as RootViewController
+    }
+}
+
+@objc(RootViewController)
+class RootViewController : PageViewController {
+    let signupVC = SignupViewController()
+    let gameVC = GameViewController()
+    let dockVC = DockViewController()
+    
+    var animateDuration : NSTimeInterval = 0.6
+    var springDamping : CGFloat = 0.6
+    var initialSpringVelocity : CGFloat = 10
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        viewControllers = [gameVC, dockVC]
+        let view = self.view as RootView
+        
+        view.whenSwiped(.Down) {
+            view.animateHorizon(offset: 100, fromTop: false); return
+        }
+        view.whenSwiped(.Up) {
+            view.animateHorizon(offset: 60); return
+        }
+        
         // If server logs us out, then let's also log out of the UI
         listenForNotification(METDDPClientDidChangeAccountNotification).filter { _ in
             return !Core.meteor.hasAccount()
         }.deliverOnMainThread().flattenMap { [weak self] _ in
-            if self?.topViewController is SignupViewController {
+            if self?.signupVC.parentViewController != nil {
                 return RACSignal.empty()
             }
             return UIAlertView.show("Error", message: "You have been logged out")
@@ -30,41 +55,76 @@ class RootViewController : UINavigationController {
 
         // Try login now
         if !Core.attemptLoginWithCachedCredentials() {
+            view.loadingView.hidden = true
             showSignup(false)
         } else {
-            showLoading {
-                self.showGame(false)
+            Core.currentUserSubscription.signal.deliverOnMainThread().subscribeCompleted {
+                view.loadingView.hidden = true
+                self.scrollTo(viewController: self.gameVC, animated: false)
+                return
             }
         }
+
     }
     
-    override func supportedInterfaceOrientations() -> Int {
-        return Int(UIInterfaceOrientationMask.Portrait.rawValue);
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        let view = self.view as RootView
+        view.springDamping = 0.8
+        view.animateHorizon(offset: 60)
+        view.springDamping = 0.6
     }
     
-    override func prefersStatusBarHidden() -> Bool {
-        if let vc = topViewController {
-            return vc.prefersStatusBarHidden()
-        } else {
-            return false
+    @IBAction func showSettings(sender: AnyObject) {
+        presentViewController(SettingsViewController(), animated: true)
+    }
+    
+    @IBAction func showDock(sender: AnyObject) {
+        dismissViewControllerAnimated(false) // HACK ALERT: for transitioning from NewConnection. Gotta use segue
+        scrollTo(viewController: dockVC)
+        viewControllers = [gameVC, dockVC]
+    }
+    
+    @IBAction func showGame(sender: AnyObject) {
+        scrollTo(viewController: gameVC)
+        viewControllers = [gameVC, dockVC]
+    }
+    
+    @IBAction func login(sender: AnyObject) {
+        Core.loginWithUI().subscribeCompleted {
+            self.signupVC.willMoveToParentViewController(nil)
+            self.signupVC.view.removeFromSuperview()
+            self.signupVC.removeFromParentViewController()
+            self.showGame(self)
         }
     }
     
-    func showLoading(completion: (() -> ())) {
-        setViewControllers([makeViewController(.Loading)!], animated: false)
-        Core.currentUserSubscription.signal.deliverOnMainThread().subscribeCompleted(completion)
+    func showProfile(user: User, animated: Bool) {
+        let profileVC = ProfileViewController()
+        profileVC.user = user
+        presentViewController(profileVC, animated: animated)
     }
     
-    func showProfile(user: User?, animated: Bool) {
-        setViewControllers([makeViewController(.Profile)!], animated: animated)
+    func showChat(connection: Connection, animated: Bool) {
+        let chatVC = ChatViewController()
+        chatVC.connection = connection
+        scrollTo(viewController: chatVC, animated: animated)
+        viewControllers = [gameVC, dockVC, chatVC]
+        Core.meteor.callMethod("connection/markAsRead", params: [connection.documentID!])
     }
     
-    func showGame(animated: Bool) {
-        setViewControllers([makeViewController(.Game)!], animated: animated)
+    func showNewMatch(connection: Connection) {
+        let newConnVC = NewConnectionViewController()
+        newConnVC.connection = connection
+        presentViewController(newConnVC, animated: true)
     }
     
     func showSignup(animated: Bool) {
-        setViewControllers([makeViewController(.Signup)!], animated: animated)
+        dismissViewControllerAnimated(false)
+        addChildViewController(signupVC)
+        view.addSubview(signupVC.view)
+        signupVC.view.makeEdgesEqualTo(view)
+        signupVC.didMoveToParentViewController(self)
     }
     
     @IBAction func logout(sender: AnyObject) {

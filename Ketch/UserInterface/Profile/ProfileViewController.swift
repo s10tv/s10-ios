@@ -32,6 +32,11 @@ class ProfileViewController : BaseViewController, SwipeViewDelegate, SwipeViewDa
         }
     }
     
+    convenience init(user: User) {
+        self.init()
+        self.user = user
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // TODO: Find better solution than hardcoding keypath string
@@ -53,7 +58,7 @@ class ProfileViewController : BaseViewController, SwipeViewDelegate, SwipeViewDa
     
     // MARK: -
     @IBAction func goBack(sender: AnyObject) {
-        navigationController?.popViewControllerAnimated(true)
+        dismissViewControllerAnimated(true)
     }
     
     func reloadData() {

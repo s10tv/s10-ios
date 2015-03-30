@@ -14,7 +14,6 @@ class DockViewController : BaseViewController {
     @IBOutlet weak var tableView: UITableView!
 
     var connections : FetchViewModel!
-    var currentConnection : Connection?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,24 +24,9 @@ class DockViewController : BaseViewController {
         connections.tableViewProvider?.configureTableCell = { (item, cell) -> Void in
             (cell as ConnectionCell).connection = (item as Connection)
         }
-        connections.tableViewProvider?.didSelectItem = self.didSelectItem
-    }
-
-    func didSelectItem(item: AnyObject!) {
-        self.currentConnection = item as? Connection
-        println("Selected connection \(self.currentConnection?.user?.displayName)")
-        self.performSegue(.DockToChat)
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let vc = segue.destinationViewController as? ChatViewController {
-            vc.connection = currentConnection
-            Core.meteor.callMethod("connection/markAsRead", params: [(currentConnection?.documentID)!])
+        connections.tableViewProvider?.didSelectItem = { [weak self] item in
+            self?.rootVC.showChat(item as Connection, animated: true)
+            return
         }
     }
-    
-    @IBAction func goBack(sender: AnyObject) {
-        navigationController?.popViewControllerAnimated(true)
-    }
-
 }

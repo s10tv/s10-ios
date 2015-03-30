@@ -1,74 +1,14 @@
 //
-//  KetchBackgroundView.swift
+//  WaveView.swift
 //  Ketch
 //
 //  Created by Tony Xiao on 2/26/15.
 //  Copyright (c) 2015 Ketch. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
-@IBDesignable class KetchBackgroundView : NibDesignableView {
-    
-    @IBOutlet weak var ketchIcon: UIImageView!
-    @IBOutlet weak var waveView: KetchWaveView!
-    @IBOutlet weak var waveTopMargin: NSLayoutConstraint!
-
-    var waterlineUpperBound : CGFloat!
-    var waterlineLowerBound : CGFloat {
-        return CGRectGetHeight(self.frame) - 100
-    }
-    var animateDuration: NSTimeInterval = 0.4
-    @IBInspectable var ketchIconHidden : Bool {
-        get { return ketchIcon.hidden }
-        set(newValue) { ketchIcon.hidden = newValue }
-    }
-    
-    private func animateLayoutChange(completion: ((Bool) -> ())? = nil) {
-        UIView.animateKeyframesWithDuration(animateDuration, delay: 0,
-            options: UIViewKeyframeAnimationOptions.CalculationModeCubicPaced,
-            animations: {
-            self.layoutIfNeeded()
-        }, { (completed) -> Void in
-            if let block = completion { block(completed) }
-        })
-    }
-    
-    func animateWaterlineDown(completion: ((Bool) -> ())? = nil) {
-        waveTopMargin.constant = waterlineLowerBound
-        animateLayoutChange(completion: completion)
-    }
-    
-    func animateWaterlineUp(completion: ((Bool) -> ())? = nil) {
-        waveTopMargin.constant = waterlineUpperBound
-        animateLayoutChange(completion: completion)
-    }
-    
-    func animateWaterlineDownAndUp(completion: ((Bool) -> ())? = nil) {
-        animateWaterlineDown { completed in
-            self.animateWaterlineUp(completion: completion)
-        }
-    }
-    
-    // MARK: -
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        
-        waterlineUpperBound = waveTopMargin.constant
-        // Setup boat pitching animation
-        let pitch = CABasicAnimation(keyPath: "transform.rotation")
-        pitch.fromValue = 0.2
-        pitch.toValue = -0.2
-        pitch.autoreverses = true
-        pitch.duration = 3
-        pitch.repeatCount = Float.infinity
-        ketchIcon.layer.addAnimation(pitch, forKey: "pitching")
-    }
-    
-}
-
-@IBDesignable class KetchWaveView : BaseView {
+@IBDesignable class WaveView : BaseView {
     private var wavePath : UIBezierPath!
     private var wavePathInverse : UIBezierPath!
     private var phaseShift : CABasicAnimation!
@@ -77,12 +17,18 @@ import Foundation
     let waveMask = CAShapeLayer()
     let amplitude : CGFloat = 6
     let periods : CGFloat = 2
+    let gradientHeight : CGFloat = 580
+    
+    override func intrinsicContentSize() -> CGSize {
+        return CGSize(width: UIViewNoIntrinsicMetric, height: gradientHeight)
+    }
     
     override func drawRect(rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
         let topCenter = CGPointMake(CGRectGetMidX(bounds), 0)
-        let bottomCenter = CGPointMake(CGRectGetMidX(bounds), CGRectGetMaxY(bounds))
-        CGContextDrawLinearGradient(context, StyleKit.gradientWater2, topCenter, bottomCenter, 0)
+        let bottomCenter = CGPointMake(CGRectGetMidX(bounds), gradientHeight)
+        CGContextDrawLinearGradient(context, StyleKit.gradientWater2, topCenter, bottomCenter,
+            CGGradientDrawingOptions(kCGGradientDrawsAfterEndLocation))
     }
     
     override func layoutSubviews() {

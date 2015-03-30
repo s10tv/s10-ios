@@ -20,10 +20,9 @@ class NewConnectionViewController : BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         avatar.didTap = { [weak self] user in
-            if let vc = self?.makeViewController(.Profile) as? ProfileViewController {
-                vc.user = user
-                self?.navigationController?.pushViewController(vc, animated: true)
-            }
+            let profileVC = ProfileViewController()
+            profileVC.user = user
+            self?.presentViewController(profileVC, animated: true)
         }
         titleLabel.text = LS(R.Strings.itsAKetch)
         avatar.user = connection.user
@@ -38,14 +37,6 @@ class NewConnectionViewController : BaseViewController {
     // MARK: - Actions
     
     @IBAction func goBack(sender: AnyObject) {
-        self.navigationController?.popViewControllerAnimated(true)
+        dismissViewControllerAnimated(true)
     }
-    
-    @IBAction func getInTouch(sender: AnyObject) {
-        let dock = makeViewController(.Dock) as DockViewController
-        let nav = navigationController
-        nav?.popViewControllerAnimated(false)
-        nav?.pushViewController(dock, animated: true)
-    }
-    
 }

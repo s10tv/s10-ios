@@ -28,7 +28,7 @@
                 <outlet property="view" destination="dPb-pR-9as" id="O6f-c0-qwc"/>
             </connections>
         </placeholder>
-        <view contentMode="scaleToFill" id="dPb-pR-9as" customClass="KetchBackgroundView" customModule="Ketch" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="dPb-pR-9as">
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
@@ -44,7 +44,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="goToSettings:" destination="-1" eventType="touchUpInside" id="Ocg-00-LkQ"/>
+                        <action selector="showSettings:" destination="-2" eventType="touchUpInside" id="z97-Nd-Dr0"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jod-zD-ot2" userLabel="Dock">
@@ -59,10 +59,10 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="goToDock:" destination="-1" eventType="touchUpInside" id="oOt-Bh-vXN"/>
+                        <action selector="showDock:" destination="-2" eventType="touchUpInside" id="Wdp-05-MRJ"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WOT-kB-qH2" userLabel="New Indicator">
+                <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="WOT-kB-qH2" userLabel="New Indicator">
                     <rect key="frame" x="343" y="15" width="12" height="12"/>
                     <color key="backgroundColor" red="0.950525701" green="0.36602467300000002" blue="0.44692194460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
@@ -75,7 +75,6 @@
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="0.043137254899999998" green="0.8980392157" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="qQh-jY-p6T" firstAttribute="leading" secondItem="dPb-pR-9as" secondAttribute="leading" id="1Fm-F0-NfB"/>
                 <constraint firstItem="WOT-kB-qH2" firstAttribute="top" secondItem="dPb-pR-9as" secondAttribute="top" constant="15" id="5Gp-vA-vaP"/>
@@ -161,10 +160,7 @@
                     <rect key="frame" x="267" y="467" width="100" height="100"/>
                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                 </view>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-progressIndicator-1" translatesAutoresizingMaskIntoConstraints="NO" id="Ee3-Rd-2aM" userLabel="Progress Indicator" customClass="ProgressIndicator" customModule="Ketch" customModuleProvider="target">
-                    <rect key="frame" x="149" y="333" width="77" height="15"/>
-                </imageView>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsh-wd-hgi" userLabel="Help Text" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hsh-wd-hgi" userLabel="Help Text" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="20" y="364" width="335" height="62"/>
                     <attributedString key="attributedText">
                         <fragment content="SWIPE DOWN TO FIND THE ONE!">
@@ -186,7 +182,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gP7-jI-QkA" userLabel="Confirm Button" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gP7-jI-QkA" userLabel="Confirm Button" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="63" y="388" width="250" height="54"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -227,7 +223,6 @@
                 <constraint firstAttribute="centerX" secondItem="Iti-rA-q5V" secondAttribute="centerX" id="OY3-dj-utz"/>
                 <constraint firstItem="k7t-mm-QgH" firstAttribute="width" secondItem="1Lu-FI-gAz" secondAttribute="width" id="OeY-wf-qFW"/>
                 <constraint firstAttribute="centerX" secondItem="k7t-mm-QgH" secondAttribute="centerX" id="Per-M4-CzZ"/>
-                <constraint firstAttribute="centerX" secondItem="Ee3-Rd-2aM" secondAttribute="centerX" id="RMa-tY-5v6"/>
                 <constraint firstAttribute="centerY" secondItem="hsh-wd-hgi" secondAttribute="top" priority="251" constant="-60" id="Y6M-5A-RpU"/>
                 <constraint firstItem="hsh-wd-hgi" firstAttribute="top" relation="greaterThanOrEqual" secondItem="u8F-ne-eBp" secondAttribute="bottom" constant="40" id="YyE-NN-HaU"/>
                 <constraint firstAttribute="centerX" secondItem="hsh-wd-hgi" secondAttribute="centerX" id="cBr-c3-XD1"/>
@@ -235,7 +230,6 @@
                 <constraint firstItem="o6p-MY-cjB" firstAttribute="top" secondItem="u8F-ne-eBp" secondAttribute="top" id="hU4-XS-Bt1"/>
                 <constraint firstItem="hsh-wd-hgi" firstAttribute="centerY" secondItem="gP7-jI-QkA" secondAttribute="centerY" constant="-20" id="i9C-gE-YHQ"/>
                 <constraint firstItem="o6p-MY-cjB" firstAttribute="top" secondItem="Iti-rA-q5V" secondAttribute="bottom" constant="10" id="j7w-yX-IMo"/>
-                <constraint firstItem="hsh-wd-hgi" firstAttribute="top" secondItem="Ee3-Rd-2aM" secondAttribute="bottom" constant="16" id="onI-uv-RX1"/>
                 <constraint firstItem="Iti-rA-q5V" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" constant="36" id="pbb-Yk-y1d"/>
                 <constraint firstItem="o6p-MY-cjB" firstAttribute="width" secondItem="Iti-rA-q5V" secondAttribute="width" id="rs1-FL-xrw"/>
                 <constraint firstItem="k7t-mm-QgH" firstAttribute="top" relation="greaterThanOrEqual" secondItem="u8F-ne-eBp" secondAttribute="bottom" constant="70" id="t7s-PP-qFf"/>
@@ -256,7 +250,6 @@
             <connections>
                 <outlet property="confirmButton" destination="gP7-jI-QkA" id="EaT-NT-keu"/>
                 <outlet property="helpText" destination="hsh-wd-hgi" id="WjV-Yy-YAi"/>
-                <outlet property="progressIndicator" destination="Ee3-Rd-2aM" id="gee-rk-QQs"/>
                 <outletCollection property="buckets" destination="Iti-rA-q5V" collectionClass="NSMutableArray" id="Lli-yL-Sl4"/>
                 <outletCollection property="buckets" destination="u8F-ne-eBp" collectionClass="NSMutableArray" id="4NN-aV-bLc"/>
                 <outletCollection property="buckets" destination="o6p-MY-cjB" collectionClass="NSMutableArray" id="gm8-2G-btj"/>
@@ -361,6 +354,5 @@ SAILED FOR TODAY.</string>
         <image name="game-empty-share-facebook" width="61" height="61"/>
         <image name="game-empty-share-sms" width="60" height="61"/>
         <image name="game-empty-share-twitter" width="60" height="61"/>
-        <image name="game-progressIndicator-1" width="77" height="15"/>
     </resources>
 </document>
