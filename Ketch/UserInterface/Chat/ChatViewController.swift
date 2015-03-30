@@ -52,11 +52,6 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
             self?.scrollToBottomAnimated(true)
             return
         }
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
         nameLabel.text = connection?.user?.firstName
         avatarView.user = connection?.user
         titleView.userInteractionEnabled = true
@@ -70,7 +65,7 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
         layout.incomingAvatarViewSize = CGSizeZero
         layout.outgoingAvatarViewSize = CGSizeZero
     }
-    
+        
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         avatarView.makeCircular()

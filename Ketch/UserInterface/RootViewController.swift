@@ -19,11 +19,8 @@ extension UIViewController {
 
 @objc(RootViewController)
 class RootViewController : PageViewController {
-    
-    let settingsVC = SettingsViewController()
     let gameVC = GameViewController()
     let dockVC = DockViewController()
-    let chatVC = ChatViewController()
     
     var animateDuration : NSTimeInterval = 0.6
     var springDamping : CGFloat = 0.6
@@ -80,7 +77,7 @@ class RootViewController : PageViewController {
     }
     
     @IBAction func showSettings(sender: AnyObject) {
-        presentViewController(settingsVC, animated: true)
+        presentViewController(SettingsViewController(), animated: true)
     }
     
     @IBAction func showDock(sender: AnyObject) {
@@ -101,6 +98,7 @@ class RootViewController : PageViewController {
     }
     
     func showChat(connection: Connection, animated: Bool) {
+        let chatVC = ChatViewController()
         chatVC.connection = connection
         scrollTo(viewController: chatVC, animated: animated)
         viewControllers = [gameVC, dockVC, chatVC]
