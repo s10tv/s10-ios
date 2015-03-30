@@ -34,7 +34,7 @@ class GameView : TransparentView, UIDynamicAnimatorDelegate {
     }
     var didConfirmChoices : (() -> ())?
     var velocityFactor : CGFloat = 0.1 // Multiplied with pan velocity to compute new pos
-    var tutorialMode = true
+    var tutorialMode = false
     
     override func commonInit() {
         super.commonInit()
