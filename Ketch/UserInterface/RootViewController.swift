@@ -11,6 +11,12 @@ import Meteor
 import FacebookSDK
 import ReactiveCocoa
 
+extension UIViewController {
+    var rootVC : RootViewController {
+        return UIApplication.sharedApplication().delegate?.window??.rootViewController as RootViewController
+    }
+}
+
 @objc(RootViewController)
 class RootViewController : PageViewController {
     
@@ -79,17 +85,33 @@ class RootViewController : PageViewController {
     
     @IBAction func showDock(sender: AnyObject) {
         scrollTo(viewController: dockVC)
+        viewControllers = [gameVC, dockVC]
     }
     
     @IBAction func showGame(sender: AnyObject) {
         scrollTo(viewController: gameVC)
+        viewControllers = [gameVC, dockVC]
     }
     
-    func showProfile(user: User?, animated: Bool) {
-//        setViewControllers([makeViewController(.Profile)!], animated: animated)
+    func showProfile(user: User, animated: Bool) {
+        let profileVC = ProfileViewController()
+        profileVC.user = user
+        presentViewController(profileVC, animated: animated)
+    }
+    
+    func showChat(connection: Connection, animated: Bool) {
+        chatVC.connection = connection
+        scrollTo(viewController: chatVC, animated: animated)
+        viewControllers = [gameVC, dockVC, chatVC]
+        Core.meteor.callMethod("connection/markAsRead", params: [connection.documentID!])
+    }
+    
+    func showNewMatch(connection: Connection) {
+        // NOT IMPLEMENTED
     }
     
     func showSignup(animated: Bool) {
+        
 //        setViewControllers([makeViewController(.Signup)!], animated: animated)
     }
     

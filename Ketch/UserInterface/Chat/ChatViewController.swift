@@ -28,8 +28,8 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
         
         // TODO: Make this configurable from storyboard. JSQMessages library annoyingly
         // resets its own color to white when configuring itself
-        view.backgroundColor = UIColor(hex: 0x0BE5F1)
-        collectionView.backgroundColor = UIColor.clearColor()
+        view.backgroundColor = nil
+        collectionView.backgroundColor = nil
         
         inputToolbar.contentView.leftBarButtonItem = nil
 
@@ -38,12 +38,13 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
         incomingBubbleData = bubbleFactory.incomingMessagesBubbleImageWithColor(StyleKit.pureWhite)
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewWillAppear(animated: Bool) {
+        // NOTE: Super's implementation causes collectionView to reload, thus the following initialization hack
         assert(connection != nil, "Connection being nil is not supported on chatVC")
-        
         messages = FetchViewModel(frc: connection!.fetchMessages(sorted: true))
         messages.performFetchIfNeeded()
+        super.viewWillAppear(animated)
+        
         messages.signal.subscribeNext { [weak self] _ in
             // Surely there must be a way to do this one message at a time rather than
             // reloading the entire view?
@@ -51,6 +52,10 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
             self?.scrollToBottomAnimated(true)
             return
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         
         nameLabel.text = connection?.user?.firstName
         avatarView.user = connection?.user
@@ -83,12 +88,6 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
     
     func shouldShowTimestampForMessageAtIndexPath(indexPath: NSIndexPath) -> Bool {
         return indexPath.row % 3 == 0
-    }
-    
-    // MARK: -
-    
-    @IBAction func goBack(sender: AnyObject) {
-        navigationController?.popViewControllerAnimated(true)
     }
     
     // MARK: - 
