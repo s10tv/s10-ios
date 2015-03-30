@@ -23,7 +23,6 @@ class GameView : TransparentView, UIDynamicAnimatorDelegate {
     var tutorialStep: TutorialStep?
     @IBOutlet var buckets: [ChoiceBucket]!
     @IBOutlet var boxes: [FloatBox]!
-    @IBOutlet weak var progressIndicator: ProgressIndicator!
     @IBOutlet weak var helpText: DesignableLabel!
     @IBOutlet weak var confirmButton: UIButton!
     
@@ -121,7 +120,6 @@ class GameView : TransparentView, UIDynamicAnimatorDelegate {
         if (tutorialMode) {
             tutorialStep1()
         } else {
-            progressIndicator.hidden = true
             helpText.hidden = true
             confirmButton.hidden = true
             dropBubbles()
@@ -225,17 +223,13 @@ extension GameView {
         
         confirmButton.hidden = true
         helpText.hidden = false
-        progressIndicator.hidden = false
         helpText.alpha = 0
-        progressIndicator.alpha = 0
         helpText.rawText = LS(R.Strings.threeMatchesPrompt)
         UIView.animateWithDuration(2) {
             self.helpText.alpha = 1
-            self.progressIndicator.alpha = 1
         }
         dropBubbles()
         tutorialStep = .Step1
-        progressIndicator.currentPage = 1
     }
     
     // And you'll have three choices
@@ -256,7 +250,6 @@ extension GameView {
             self.helpText.alpha = 1
         }
         tutorialStep = .Step2
-        progressIndicator.currentPage = 2
     }
     
     // Drag the match to your choices
@@ -271,6 +264,5 @@ extension GameView {
             self.helpText.alpha = 1
         }
         tutorialStep = .Step3
-        progressIndicator.currentPage = 3
     }
 }
