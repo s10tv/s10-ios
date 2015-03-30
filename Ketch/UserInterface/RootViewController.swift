@@ -19,6 +19,7 @@ extension UIViewController {
 
 @objc(RootViewController)
 class RootViewController : PageViewController {
+    let signupVC = SignupViewController()
     let gameVC = GameViewController()
     let dockVC = DockViewController()
     
@@ -31,9 +32,6 @@ class RootViewController : PageViewController {
         
         viewControllers = [gameVC, dockVC]
         let view = self.view as RootView
-        view.loadingView.hidden = true
-        
-        scrollTo(viewController: gameVC, animated: false)
         
         view.whenSwiped(.Down) {
             view.animateHorizon(offset: 100, fromTop: false); return
@@ -46,9 +44,9 @@ class RootViewController : PageViewController {
         listenForNotification(METDDPClientDidChangeAccountNotification).filter { _ in
             return !Core.meteor.hasAccount()
         }.deliverOnMainThread().flattenMap { [weak self] _ in
-//            if self?.topViewController is SignupViewController {
-//                return RACSignal.empty()
-//            }
+            if self?.signupVC.parentViewController != nil {
+                return RACSignal.empty()
+            }
             return UIAlertView.show("Error", message: "You have been logged out")
         }.subscribeNext { [weak self] _ in
             self?.showSignup(false)
@@ -60,10 +58,11 @@ class RootViewController : PageViewController {
             view.loadingView.hidden = true
             showSignup(false)
         } else {
-//            Core.currentUserSubscription.signal.deliverOnMainThread().subscribeCompleted {
-
-//                self.showGame(false)
-//            }
+            Core.currentUserSubscription.signal.deliverOnMainThread().subscribeCompleted {
+                view.loadingView.hidden = true
+                self.scrollTo(viewController: self.gameVC, animated: false)
+                return
+            }
         }
 
     }
@@ -91,6 +90,15 @@ class RootViewController : PageViewController {
         viewControllers = [gameVC, dockVC]
     }
     
+    @IBAction func login(sender: AnyObject) {
+        Core.loginWithUI().subscribeCompleted {
+            self.signupVC.willMoveToParentViewController(nil)
+            self.signupVC.view.removeFromSuperview()
+            self.signupVC.removeFromParentViewController()
+            self.showGame(self)
+        }
+    }
+    
     func showProfile(user: User, animated: Bool) {
         let profileVC = ProfileViewController()
         profileVC.user = user
@@ -112,8 +120,11 @@ class RootViewController : PageViewController {
     }
     
     func showSignup(animated: Bool) {
-        let signupVC = SignupViewController()
-        presentViewController(signupVC, animated: animated)
+        dismissViewControllerAnimated(false)
+        addChildViewController(signupVC)
+        view.addSubview(signupVC.view)
+        signupVC.view.makeEdgesEqualTo(view)
+        signupVC.didMoveToParentViewController(self)
     }
     
     @IBAction func logout(sender: AnyObject) {
