@@ -61,7 +61,7 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
         avatarView.user = connection?.user
         titleView.userInteractionEnabled = true
         titleView.whenTapped { [weak self] in
-            self?.performSegue(.ChatToProfile)
+            self?.rootVC.showProfile((self?.connection?.user)!, animated: true)
             return
         }
         
