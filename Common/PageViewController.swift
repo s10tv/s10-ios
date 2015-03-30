@@ -35,15 +35,7 @@ class PageViewController : BaseViewController,
         pageVC.didMoveToParentViewController(self)
     }
     
-    func loadFirstPage(animated: Bool = false) -> RACSignal {
-        let subject = RACReplaySubject()
-        pageVC.setViewControllers([viewControllers[0]], direction: .Forward, animated: animated) { finished in
-            subject.sendNextAndCompleted(finished)
-        }
-        return subject
-    }
-    
-    func scrollTo(#viewController: UIViewController, animated: Bool = false) -> RACSignal {
+    func scrollTo(#viewController: UIViewController, animated: Bool = true) -> RACSignal {
         let subject = RACReplaySubject()
         var direction = UIPageViewControllerNavigationDirection.Forward
         if let current = currentPage {
@@ -60,7 +52,7 @@ class PageViewController : BaseViewController,
         return subject
     }
     
-    func scrollTo(#page: Int, animated: Bool = false) -> RACSignal {
+    func scrollTo(#page: Int, animated: Bool = true) -> RACSignal {
         return scrollTo(viewController: viewControllers[page], animated: animated)
     }
     

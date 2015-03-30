@@ -30,8 +30,7 @@ class RootViewController : PageViewController {
         let view = self.view as RootView
         view.loadingView.hidden = true
         
-        loadFirstPage(animated: false)
-        
+        scrollTo(viewController: gameVC, animated: false)
         
         view.whenSwiped(.Down) {
             view.animateHorizon(offset: 100, fromTop: false); return
@@ -79,11 +78,11 @@ class RootViewController : PageViewController {
     }
     
     @IBAction func showDock(sender: AnyObject) {
-        scrollTo(viewController: dockVC, animated: true)
+        scrollTo(viewController: dockVC)
     }
     
     @IBAction func showGame(sender: AnyObject) {
-        scrollTo(viewController: gameVC, animated: true)
+        scrollTo(viewController: gameVC)
     }
     
     func showProfile(user: User?, animated: Bool) {
