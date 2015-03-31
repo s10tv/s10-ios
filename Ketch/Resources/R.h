@@ -55,14 +55,16 @@ extern const struct R {
         __unsafe_unretained NSString *icWork;
         /// Ketch
         __unsafe_unretained NSString *ketch;
-        /// launch-logo
-        __unsafe_unretained NSString *launchLogo;
+        /// profile-about-me-divider
+        __unsafe_unretained NSString *profileAboutMeDivider;
         /// settings-icon-age
         __unsafe_unretained NSString *settingsAge;
         /// settings-icon-briefcase
         __unsafe_unretained NSString *settingsBriefcase;
         /// settings-icon-heightArrow
         __unsafe_unretained NSString *settingsHeightArrow;
+        /// settings-icon-location
+        __unsafe_unretained NSString *settingsLocation;
         /// settings-icon-mortarBoard
         __unsafe_unretained NSString *settingsMortarBoard;
         /// settings-icon-notepad
@@ -111,17 +113,17 @@ extern const struct R {
         __unsafe_unretained NSString *dragMatchsToChoices;
         /// It's a Ketch!
         __unsafe_unretained NSString *itsAKetch;
-        /// SAY YES AND CHOOSE NOW
+        /// SAY YES NOW
         __unsafe_unretained NSString *marryPrompt;
-        /// Congrats! %@ also likes you! You'll have 3 days to reach out to %@ before they disappear for good. Why not chat and see how things go?
+        /// %@ likes you! Your dreamboat will sail off in three days. Get on it before %@ disappears for good!
         __unsafe_unretained NSString *singleMatchPrompt;
-        /// POLITELY SAY NO
+        /// SAY NO POLITELY
         __unsafe_unretained NSString *skipPrompt;
-        /// THINK ABOUT IT AND CHOOSE LATER
+        /// SEE AGAIN LATER
         __unsafe_unretained NSString *snoozePrompt;
-        /// AND YOU’LL HAVE 3 CHOICES
+        /// AND YOU’LL HAVE THREE CHOICES
         __unsafe_unretained NSString *threeChoicesPrompt;
-        /// YOU’LL SEE 3 POTENTIAL MATCHES
+        /// YOU’LL SEE THREE POTENTIAL MATCHES
         __unsafe_unretained NSString *threeMatchesPrompt;
     } Strings;
 } R;

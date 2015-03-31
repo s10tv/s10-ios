@@ -13,6 +13,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController">
             <connections>
                 <outlet property="aboutLabel" destination="Gur-zm-gdr" id="GZP-9V-Shf"/>
+                <outlet property="infoCollection" destination="kHN-3G-ecZ" id="qvc-FM-Gap"/>
                 <outlet property="nameLabel" destination="yTD-bt-yNd" id="qBt-ZQ-Kbb"/>
                 <outlet property="pageControl" destination="zkL-na-OA5" id="ULz-Zp-2hL"/>
                 <outlet property="swipeView" destination="8A2-xC-PLX" id="jai-xp-Lkk"/>
@@ -35,6 +36,20 @@
                         <outlet property="delegate" destination="-1" id="pGM-n1-52Z"/>
                     </connections>
                 </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjP-E3-fDY">
+                    <rect key="frame" x="0.0" y="0.0" width="70" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="70" id="O4c-W4-gNf"/>
+                        <constraint firstAttribute="height" constant="50" id="YDy-hh-cX5"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                    <state key="normal" title="BACK">
+                        <color key="titleColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="goBack:" destination="-1" eventType="touchUpInside" id="jor-oo-6zj"/>
+                    </connections>
+                </button>
                 <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="zkL-na-OA5">
                     <rect key="frame" x="265" y="283" width="39" height="37"/>
                     <color key="pageIndicatorTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -46,12 +61,27 @@
                     <color key="textColor" red="0.94509803921568625" green="0.40000000000000002" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="kHN-3G-ecZ">
+                    <rect key="frame" x="0.0" y="371" width="320" height="100"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="2PB-Zo-ShO"/>
+                    </constraints>
+                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="w1K-Pc-ahd">
+                        <size key="itemSize" width="100" height="25"/>
+                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                        <inset key="sectionInset" minX="22" minY="0.0" maxX="22" maxY="0.0"/>
+                    </collectionViewFlowLayout>
+                </collectionView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-about-me-divider" translatesAutoresizingMaskIntoConstraints="NO" id="05h-5P-i0C">
+                    <rect key="frame" x="8" y="484" width="572" height="11"/>
+                </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gur-zm-gdr" userLabel="About" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
-                    <rect key="frame" x="13" y="446" width="299" height="180"/>
+                    <rect key="frame" x="13" y="507" width="299" height="100"/>
                     <attributedString key="attributedText">
                         <fragment>
-                            <string key="content">I usually don't message people first, so if you're interested please message me! I'm not interested in hooking up, message me if you're curious about what I am looking for! 
-I'm a singer, dancer, figure skater, animal and nature lover. I work two jobs and attend dvc working towards a psychology major.</string>
+                            <string key="content">I usually don't message people first, so if you're interested please message me! I'm not interested in hooking up, message me if you're curious about what I am looking for! </string>
                             <attributes>
                                 <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <font key="NSFont" size="16" name="TransatTextStandard"/>
@@ -67,23 +97,6 @@ I'm a singer, dancer, figure skater, animal and nature lover. I work two jobs an
                         <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="TransatTextStandard"/>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gjP-E3-fDY">
-                    <rect key="frame" x="0.0" y="0.0" width="70" height="50"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="70" id="O4c-W4-gNf"/>
-                        <constraint firstAttribute="height" constant="50" id="YDy-hh-cX5"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
-                    <state key="normal" title="BACK">
-                        <color key="titleColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    </state>
-                    <connections>
-                        <action selector="goBack:" destination="-1" eventType="touchUpInside" id="jor-oo-6zj"/>
-                    </connections>
-                </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-about-me-divider" translatesAutoresizingMaskIntoConstraints="NO" id="05h-5P-i0C">
-                    <rect key="frame" x="8" y="423" width="572" height="11"/>
-                </imageView>
             </subviews>
             <color key="backgroundColor" red="0.2627450980392157" green="0.87058823529411766" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -93,14 +106,17 @@ I'm a singer, dancer, figure skater, animal and nature lover. I work two jobs an
                 <constraint firstItem="zkL-na-OA5" firstAttribute="top" secondItem="8A2-xC-PLX" secondAttribute="top" id="AAO-mf-bzR"/>
                 <constraint firstAttribute="trailing" secondItem="Gur-zm-gdr" secondAttribute="trailing" constant="8" id="DKm-Se-bii"/>
                 <constraint firstItem="8A2-xC-PLX" firstAttribute="trailing" secondItem="zkL-na-OA5" secondAttribute="trailing" constant="16" id="EM1-Z5-VMq"/>
-                <constraint firstItem="05h-5P-i0C" firstAttribute="top" secondItem="yTD-bt-yNd" secondAttribute="bottom" constant="60" id="QHv-Ch-490"/>
+                <constraint firstItem="kHN-3G-ecZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="R2L-p1-M5h"/>
                 <constraint firstItem="8A2-xC-PLX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="S9w-jN-rTo"/>
                 <constraint firstItem="8A2-xC-PLX" firstAttribute="bottom" secondItem="zkL-na-OA5" secondAttribute="bottom" id="Y5O-HR-SSS"/>
                 <constraint firstItem="05h-5P-i0C" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="8" id="Yse-zK-vQX"/>
                 <constraint firstItem="gjP-E3-fDY" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Yzx-aN-Im6"/>
+                <constraint firstItem="kHN-3G-ecZ" firstAttribute="top" secondItem="yTD-bt-yNd" secondAttribute="bottom" constant="8" id="cqv-Uv-33B"/>
                 <constraint firstAttribute="trailing" secondItem="8A2-xC-PLX" secondAttribute="trailing" id="fZl-sZ-Td9"/>
                 <constraint firstItem="zkL-na-OA5" firstAttribute="top" secondItem="8A2-xC-PLX" secondAttribute="bottom" constant="-37" id="fdi-hA-QQ7"/>
+                <constraint firstAttribute="trailing" secondItem="kHN-3G-ecZ" secondAttribute="trailing" id="g1E-2T-Yqz"/>
                 <constraint firstItem="yTD-bt-yNd" firstAttribute="top" secondItem="8A2-xC-PLX" secondAttribute="bottom" constant="16" id="g1O-z4-CbG"/>
+                <constraint firstItem="05h-5P-i0C" firstAttribute="top" secondItem="kHN-3G-ecZ" secondAttribute="bottom" constant="13" id="ghP-b4-XPA"/>
                 <constraint firstItem="Gur-zm-gdr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="13" id="jgS-XF-Jyl"/>
                 <constraint firstItem="yTD-bt-yNd" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="13" id="r40-D1-7dM"/>
                 <constraint firstItem="gjP-E3-fDY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="sDc-68-dW8"/>

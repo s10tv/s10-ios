@@ -11,16 +11,17 @@ import SwipeView
 import SDWebImage
 
 @objc(ProfileViewController)
-class ProfileViewController : BaseViewController, SwipeViewDelegate, SwipeViewDataSource {
+class ProfileViewController : BaseViewController,
+                              SwipeViewDelegate,
+                              SwipeViewDataSource {
 
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var swipeView: SwipeView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var ageLabel: UILabel!
-    @IBOutlet weak var locationLabel: UILabel!
-    @IBOutlet weak var workLabel: UILabel!
-    @IBOutlet weak var schoolLabel: UILabel!
+    @IBOutlet weak var infoCollection: UICollectionView!
     @IBOutlet weak var aboutLabel: DesignableLabel!
+    
+    var infoItems = ArrayViewModel(content: [ProfileInfoItem]())
     
     var user : User? {
         willSet {
@@ -41,14 +42,10 @@ class ProfileViewController : BaseViewController, SwipeViewDelegate, SwipeViewDa
         super.viewDidLoad()
         // TODO: Find better solution than hardcoding keypath string
         RAC(aboutLabel, "rawText") <~ racObserve("user.about")
-//        RAC(navigationItem, "title") <~ racObserve("user.displayName")
-//        RAC(nameLabel, "text") <~ racObserve("user.displayName")
-//        RAC(locationLabel, "text") <~ racObserve("user.location")
-//        RAC(workLabel, "text") <~ racObserve("user.work")
-//        RAC(schoolLabel, "text") <~ racObserve("user.education")
-//        RAC(ageLabel, "text") <~ racObserve("user.age").map { age in
-//            return (age as? NSNumber)?.stringValue
-//        }
+        infoItems.bindToCollectionView(infoCollection, cellNibName: "ProfileInfoCell")
+        infoItems.collectionViewProvider?.configureCollectionCell = { item, cell in
+            (cell as ProfileInfoCell).item = (item as ProfileInfoItem)
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -62,12 +59,14 @@ class ProfileViewController : BaseViewController, SwipeViewDelegate, SwipeViewDa
     }
     
     func reloadData() {
+        infoItems.content = user?.infoItems ?? []
         swipeView.reloadData()
         swipeView.scrollToItemAtIndex(0, duration: 0)
         pageControl.numberOfPages = numberOfItemsInSwipeView(swipeView)
+        infoCollection.reloadData()
     }
     
-    // MARK: - SwipeView Delegate / Data Soruce
+    // MARK: - Photos SwipeView Delegate / Data Source
     
     func numberOfItemsInSwipeView(swipeView: SwipeView!) -> Int {
         return user?.photos != nil ? (user?.photos?.count)! : 0
@@ -88,5 +87,5 @@ class ProfileViewController : BaseViewController, SwipeViewDelegate, SwipeViewDa
     func swipeViewItemSize(swipeView: SwipeView!) -> CGSize {
         return swipeView.frame.size
     }
-    
+
 }

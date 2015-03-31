@@ -37,6 +37,28 @@ class User: _User {
         return nil
     }
     
+    var infoItems : [ProfileInfoItem] {
+        var items = [ProfileInfoItem]()
+
+        if location != nil {
+            items.append(ProfileInfoItem(type: .Location, text: location!))
+        }
+        if age != nil { // TODO: Make this birthday, not age
+            items.append(ProfileInfoItem(type: .Age, text: toString(age!)))
+        }
+        if height != nil { // TODO: Format feet and inches
+            items.append(ProfileInfoItem(type: .Height, text: "\(height!)cm"))
+        }
+        if work != nil {
+            items.append(ProfileInfoItem(type: .Work, text: work!))
+        }
+        if education != nil {
+            items.append(ProfileInfoItem(type: .Education, text: education!))
+        }
+        
+        return items
+    }
+    
     var profilePhotoURL : NSURL? {
         let firstPhotoUrl = photos?.first?.url
         return firstPhotoUrl != nil ? NSURL(string: firstPhotoUrl!) : nil
