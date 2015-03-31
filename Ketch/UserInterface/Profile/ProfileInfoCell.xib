@@ -13,19 +13,20 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ByA-YF-yCG" customClass="ProfileInfoCell" customModule="Ketch" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="237" height="25"/>
+            <rect key="frame" x="0.0" y="0.0" width="232" height="25"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="237" height="25"/>
+                <rect key="frame" x="0.0" y="0.0" width="232" height="25"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings-icon-mortarBoard" translatesAutoresizingMaskIntoConstraints="NO" id="LKR-IP-O5H" userLabel="Icon">
                         <rect key="frame" x="0.0" y="0.0" width="25" height="25"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="LKR-IP-O5H" secondAttribute="height" multiplier="1:1" id="64c-am-1zW"/>
+                            <constraint firstAttribute="height" constant="25" id="ir1-gx-et7"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="California Institue of the Arts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qPe-Ra-5JK" userLabel="Text">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="California Institue of the Arts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qPe-Ra-5JK" userLabel="Text">
                         <rect key="frame" x="31" y="5" width="195" height="15"/>
                         <fontDescription key="fontDescription" name="TransatTextMedium" family="Transat Text" pointSize="15"/>
                         <color key="textColor" red="0.082352941176470587" green="0.396078431372549" blue="0.52941176470588236" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -36,17 +37,19 @@
             </view>
             <constraints>
                 <constraint firstAttribute="centerY" secondItem="qPe-Ra-5JK" secondAttribute="centerY" id="1ba-Rm-kay"/>
-                <constraint firstAttribute="bottom" secondItem="LKR-IP-O5H" secondAttribute="bottom" id="3YI-UG-TR4"/>
-                <constraint firstItem="LKR-IP-O5H" firstAttribute="top" secondItem="ByA-YF-yCG" secondAttribute="top" id="Cw1-lq-3EG"/>
+                <constraint firstItem="LKR-IP-O5H" firstAttribute="top" secondItem="ByA-YF-yCG" secondAttribute="top" priority="751" id="8Kn-T9-Qhb"/>
+                <constraint firstAttribute="bottom" secondItem="LKR-IP-O5H" secondAttribute="bottom" priority="751" id="CZK-bf-dHf"/>
+                <constraint firstAttribute="centerY" secondItem="LKR-IP-O5H" secondAttribute="centerY" id="CnG-qw-c0A"/>
                 <constraint firstItem="qPe-Ra-5JK" firstAttribute="leading" secondItem="LKR-IP-O5H" secondAttribute="trailing" constant="6" id="FIZ-r2-vLl"/>
+                <constraint firstAttribute="trailing" secondItem="qPe-Ra-5JK" secondAttribute="trailing" priority="751" constant="6" id="J8C-or-k8G"/>
                 <constraint firstItem="LKR-IP-O5H" firstAttribute="leading" secondItem="ByA-YF-yCG" secondAttribute="leading" id="yHA-0c-3vZ"/>
             </constraints>
-            <size key="customSize" width="237" height="25"/>
+            <size key="customSize" width="232" height="25"/>
             <connections>
                 <outlet property="iconView" destination="LKR-IP-O5H" id="EAQ-Tw-swh"/>
                 <outlet property="textLabel" destination="qPe-Ra-5JK" id="eHz-ej-gn3"/>
             </connections>
-            <point key="canvasLocation" x="324.5" y="285.5"/>
+            <point key="canvasLocation" x="322" y="285.5"/>
         </collectionViewCell>
     </objects>
     <resources>

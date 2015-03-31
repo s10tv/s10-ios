@@ -62,7 +62,7 @@
 		EA409D421A8C75F600988B8B /* DockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA409D3E1A8C75F600988B8B /* DockViewController.swift */; };
 		EA4A66571AA2D9BB0019D601 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A66561AA2D9BB0019D601 /* GameView.swift */; };
 		EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA5634DF1A7741FF00F62B52 /* Ketch.xcdatamodeld */; };
-		EA6650E11AA00999001BA40C /* TransparentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E01AA00999001BA40C /* TransparentView.swift */; };
+		EA6650E11AA00999001BA40C /* BaseViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E01AA00999001BA40C /* BaseViews.swift */; };
 		EA6650E61AA00A82001BA40C /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E31AA00A82001BA40C /* WaveView.swift */; };
 		EA6650E81AA00A82001BA40C /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E51AA00A82001BA40C /* UserAvatarView.swift */; };
 		EA6650EC1AA00A9C001BA40C /* CandidateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650EA1AA00A9C001BA40C /* CandidateService.swift */; };
@@ -189,7 +189,7 @@
 		EA409D3E1A8C75F600988B8B /* DockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DockViewController.swift; sourceTree = "<group>"; };
 		EA4A66561AA2D9BB0019D601 /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
 		EA5634E01A7741FF00F62B52 /* Ketch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ketch.xcdatamodel; sourceTree = "<group>"; };
-		EA6650E01AA00999001BA40C /* TransparentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransparentView.swift; sourceTree = "<group>"; };
+		EA6650E01AA00999001BA40C /* BaseViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViews.swift; sourceTree = "<group>"; };
 		EA6650E31AA00A82001BA40C /* WaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
 		EA6650E51AA00A82001BA40C /* UserAvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAvatarView.swift; sourceTree = "<group>"; };
 		EA6650EA1AA00A9C001BA40C /* CandidateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateService.swift; sourceTree = "<group>"; };
@@ -577,8 +577,8 @@
 		EAD7B2A91A9F0BC100FA6740 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EA6650E01AA00999001BA40C /* BaseViews.swift */,
 				EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */,
-				EA6650E01AA00999001BA40C /* TransparentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -872,7 +872,7 @@
 				EA6650FA1AA00B95001BA40C /* _User.swift in Sources */,
 				EA0FC9351A87DE5800D62625 /* MeteorExtension.swift in Sources */,
 				EA6650F71AA00B95001BA40C /* _Candidate.swift in Sources */,
-				EA6650E11AA00999001BA40C /* TransparentView.swift in Sources */,
+				EA6650E11AA00999001BA40C /* BaseViews.swift in Sources */,
 				EA409D3F1A8C75F600988B8B /* ConnectionCell.swift in Sources */,
 				EAAA42891AB24D6900056EFF /* ChoiceBucket.swift in Sources */,
 				EA1DA37F1A8D188B00433093 /* NewConnectionViewController.swift in Sources */,

@@ -15,7 +15,7 @@ class ProfileInfoItem {
     let type : ItemType
     let text : String
     let imageName : String
-    let minWidthRatio : CGFloat = 0.33
+    let minWidthRatio : CGFloat = 0
     
     var image : UIImage! {
         return UIImage(named: imageName)
@@ -52,5 +52,14 @@ class ProfileInfoCell : UICollectionViewCell {
             textLabel.text = item?.text
         }
     }
-
+    
+    class func sizeForItem(item: ProfileInfoItem) -> CGSize {
+        struct Static {
+            static let SizingCell = UINib(nibName: "ProfileInfoCell", bundle: nil).instantiateWithOwner(nil, options: nil).first as ProfileInfoCell
+        }
+        Static.SizingCell.item = item
+        Static.SizingCell.setNeedsLayout()
+        Static.SizingCell.layoutIfNeeded()
+        return Static.SizingCell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+    }
 }

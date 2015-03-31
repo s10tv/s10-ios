@@ -13,7 +13,8 @@ import SDWebImage
 @objc(ProfileViewController)
 class ProfileViewController : BaseViewController,
                               SwipeViewDelegate,
-                              SwipeViewDataSource {
+                              SwipeViewDataSource,
+                              UICollectionViewDelegateFlowLayout {
 
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var swipeView: SwipeView!
@@ -41,11 +42,15 @@ class ProfileViewController : BaseViewController,
     override func viewDidLoad() {
         super.viewDidLoad()
         // TODO: Find better solution than hardcoding keypath string
+        RAC(nameLabel, "text") <~ racObserve("user.displayName")
         RAC(aboutLabel, "rawText") <~ racObserve("user.about")
+
         infoItems.bindToCollectionView(infoCollection, cellNibName: "ProfileInfoCell")
         infoItems.collectionViewProvider?.configureCollectionCell = { item, cell in
             (cell as ProfileInfoCell).item = (item as ProfileInfoItem)
         }
+        infoCollection.delegate = self
+//        let layout = infoCollection.collectionViewLayout as UICollectionViewFlowLayout
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -54,6 +59,7 @@ class ProfileViewController : BaseViewController,
     }
     
     // MARK: -
+    
     @IBAction func goBack(sender: AnyObject) {
         dismissViewControllerAnimated(true)
     }
@@ -86,6 +92,17 @@ class ProfileViewController : BaseViewController,
     
     func swipeViewItemSize(swipeView: SwipeView!) -> CGSize {
         return swipeView.frame.size
+    }
+    
+    // MARK: Collection View Delegate
+    
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let item = infoItems.itemAtIndexPath(indexPath) as ProfileInfoItem
+        var size = ProfileInfoCell.sizeForItem(item)
+        size.width = between(collectionView.bounds.width * item.minWidthRatio,
+                             size.width,
+                             collectionView.bounds.width)
+        return size
     }
 
 }
