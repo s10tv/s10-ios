@@ -20,7 +20,7 @@ class ProfileViewController : BaseViewController, SwipeViewDelegate, SwipeViewDa
     @IBOutlet weak var locationLabel: UILabel!
     @IBOutlet weak var workLabel: UILabel!
     @IBOutlet weak var schoolLabel: UILabel!
-    @IBOutlet weak var aboutLabel: UILabel!
+    @IBOutlet weak var aboutLabel: DesignableLabel!
     
     var user : User? {
         willSet {
@@ -40,15 +40,15 @@ class ProfileViewController : BaseViewController, SwipeViewDelegate, SwipeViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         // TODO: Find better solution than hardcoding keypath string
-        RAC(navigationItem, "title") <~ racObserve("user.displayName")
-        RAC(nameLabel, "text") <~ racObserve("user.displayName")
-        RAC(aboutLabel, "text") <~ racObserve("user.about")
-        RAC(locationLabel, "text") <~ racObserve("user.location")
-        RAC(workLabel, "text") <~ racObserve("user.work")
-        RAC(schoolLabel, "text") <~ racObserve("user.education")
-        RAC(ageLabel, "text") <~ racObserve("user.age").map { age in
-            return (age as? NSNumber)?.stringValue
-        }
+        RAC(aboutLabel, "rawText") <~ racObserve("user.about")
+//        RAC(navigationItem, "title") <~ racObserve("user.displayName")
+//        RAC(nameLabel, "text") <~ racObserve("user.displayName")
+//        RAC(locationLabel, "text") <~ racObserve("user.location")
+//        RAC(workLabel, "text") <~ racObserve("user.work")
+//        RAC(schoolLabel, "text") <~ racObserve("user.education")
+//        RAC(ageLabel, "text") <~ racObserve("user.age").map { age in
+//            return (age as? NSNumber)?.stringValue
+//        }
     }
     
     override func viewWillAppear(animated: Bool) {
