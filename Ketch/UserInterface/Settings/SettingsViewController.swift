@@ -38,12 +38,6 @@ class SettingsViewController : BaseViewController {
             heightLabel.text = "You are about \(user.height!)cm tall"
             aboutLabel.rawText = user.about!
         }
-        
-        // TODO: Refactor me into utils
-        //let info = NSBundle.mainBundle().infoDictionary
-        //let build = info?["CFBundleVersion"] as String
-        //let version = info?["CFBundleShortVersionString"] as String
-        //versionLabel.text = "v\(version)(\(build))"
     }
     
     @IBAction func giveFeedback(sender: AnyObject) {
