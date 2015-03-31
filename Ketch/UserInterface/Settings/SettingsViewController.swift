@@ -18,7 +18,7 @@ class SettingsViewController : BaseViewController {
     @IBOutlet weak var educationLabel: UILabel!
     @IBOutlet weak var heightLabel: UILabel!
     @IBOutlet weak var aboutLabel: DesignableLabel!
-    @IBOutlet weak var versionLabel: UILabel!
+    @IBOutlet weak var deactivateButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,14 +40,20 @@ class SettingsViewController : BaseViewController {
         }
         
         // TODO: Refactor me into utils
-        let info = NSBundle.mainBundle().infoDictionary
-        let build = info?["CFBundleVersion"] as String
-        let version = info?["CFBundleShortVersionString"] as String
-        versionLabel.text = "v\(version)(\(build))"
+        //let info = NSBundle.mainBundle().infoDictionary
+        //let build = info?["CFBundleVersion"] as String
+        //let version = info?["CFBundleShortVersionString"] as String
+        //versionLabel.text = "v\(version)(\(build))"
     }
     
     @IBAction func giveFeedback(sender: AnyObject) {
         
+    }
+    
+    @IBAction func deactivateUser(sender: AnyObject) {
+        if let currentUser = User.currentUser() {
+            Core.meteor.callMethod("user/delete", params: [currentUser.documentID!])
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

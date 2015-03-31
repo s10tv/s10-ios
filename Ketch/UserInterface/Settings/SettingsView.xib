@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
@@ -15,6 +15,7 @@
         </mutableArray>
         <mutableArray key="TransatTextStandard.otf">
             <string>TransatTextStandard</string>
+            <string>TransatTextStandard</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -23,10 +24,10 @@
                 <outlet property="aboutLabel" destination="Api-ed-xez" id="D89-Zr-H2C"/>
                 <outlet property="ageLabel" destination="5ee-BL-JGE" id="feo-rl-ixx"/>
                 <outlet property="avatarView" destination="Nrc-Dc-N50" id="Iv4-yQ-FrW"/>
+                <outlet property="deactivateButton" destination="xdl-4W-oNP" id="Ark-Uq-MZ5"/>
                 <outlet property="educationLabel" destination="20m-eu-yIP" id="PiW-sJ-8kJ"/>
                 <outlet property="heightLabel" destination="pg4-G6-NiR" id="mya-m6-tDG"/>
                 <outlet property="nameLabel" destination="3ic-hO-IZ3" id="wFn-uw-Ivz"/>
-                <outlet property="versionLabel" destination="OLW-ee-in0" id="joL-fA-cd9"/>
                 <outlet property="view" destination="iN0-l3-epB" id="K7O-w9-zO2"/>
                 <outlet property="workLabel" destination="oh4-96-yng" id="4tl-62-lkl"/>
             </connections>
@@ -55,6 +56,20 @@
                     </state>
                     <connections>
                         <action selector="goBack:" destination="-1" eventType="touchUpInside" id="AgY-dz-6H8"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xdl-4W-oNP" userLabel="DEACTIVATE">
+                    <rect key="frame" x="252" y="543" width="60" height="20"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="Fsd-jj-2Sc"/>
+                        <constraint firstAttribute="width" constant="60" id="KsB-vN-2dM"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="12"/>
+                    <state key="normal" title="Deactivate">
+                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="deactivateUser:" destination="-1" eventType="touchUpInside" id="T9z-qI-jUK"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lola Forner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3ic-hO-IZ3" userLabel="Name">
@@ -94,12 +109,6 @@
                         <action selector="giveFeedback:" destination="-1" eventType="touchUpInside" id="1TY-sk-BMh"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Version v0.1 (112)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OLW-ee-in0">
-                    <rect key="frame" x="228" y="546" width="84" height="12"/>
-                    <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YW7-wb-mH4">
                     <rect key="frame" x="0.0" y="538" width="60" height="30"/>
                     <constraints>
@@ -180,7 +189,7 @@
                         <fragment content="Outgoing guy tired of games and looking for someone to share many laughs to come and explore the world with.">
                             <attributes>
                                 <color key="NSColor" red="0.14509803921568629" green="0.6470588235294118" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <font key="NSFont" size="15" name="TransatTextMedium"/>
+                                <font key="NSFont" metaFont="system" size="15"/>
                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" minimumLineHeight="19"/>
                             </attributes>
                         </fragment>
@@ -217,7 +226,6 @@
                 <constraint firstItem="Api-ed-xez" firstAttribute="leading" secondItem="pg4-G6-NiR" secondAttribute="leading" id="YHU-FS-3Ti"/>
                 <constraint firstItem="CsQ-Yu-Ry6" firstAttribute="centerX" secondItem="SOZ-ON-PUJ" secondAttribute="centerX" id="dvL-1n-pqV"/>
                 <constraint firstItem="SOZ-ON-PUJ" firstAttribute="bottom" secondItem="20m-eu-yIP" secondAttribute="bottom" constant="2" id="dzs-pN-B5v"/>
-                <constraint firstAttribute="bottom" secondItem="OLW-ee-in0" secondAttribute="bottom" constant="10" id="edt-W6-qOx"/>
                 <constraint firstItem="Tiq-Jx-Jmw" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" constant="16" id="eld-5l-2Cw"/>
                 <constraint firstItem="Api-ed-xez" firstAttribute="top" secondItem="MPP-9T-yb0" secondAttribute="top" id="i4I-6Z-1fo"/>
                 <constraint firstItem="MPP-9T-yb0" firstAttribute="centerX" secondItem="CsQ-Yu-Ry6" secondAttribute="centerX" id="iyy-yM-g66"/>
@@ -228,10 +236,11 @@
                 <constraint firstItem="Api-ed-xez" firstAttribute="bottom" secondItem="MPP-9T-yb0" secondAttribute="bottom" constant="-2" id="r6Z-tU-MSR"/>
                 <constraint firstItem="pg4-G6-NiR" firstAttribute="leading" secondItem="20m-eu-yIP" secondAttribute="leading" id="rEM-ad-i4r"/>
                 <constraint firstAttribute="centerX" secondItem="3ic-hO-IZ3" secondAttribute="centerX" id="rlA-Ud-a94"/>
-                <constraint firstAttribute="trailing" secondItem="OLW-ee-in0" secondAttribute="trailing" constant="8" id="t50-ka-7WP"/>
                 <constraint firstAttribute="centerX" secondItem="s93-yD-flR" secondAttribute="centerX" id="tNs-5O-lOe"/>
                 <constraint firstItem="oh4-96-yng" firstAttribute="bottom" secondItem="wEw-mJ-zT3" secondAttribute="bottom" constant="-2" id="vWA-G0-oA0"/>
+                <constraint firstAttribute="bottom" secondItem="xdl-4W-oNP" secondAttribute="bottom" constant="5" id="vX0-F5-K7C"/>
                 <constraint firstItem="oh4-96-yng" firstAttribute="leading" secondItem="5ee-BL-JGE" secondAttribute="leading" id="xyd-cX-5gL"/>
+                <constraint firstAttribute="trailing" secondItem="xdl-4W-oNP" secondAttribute="trailing" constant="8" id="zHA-EM-cpT"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <nil key="simulatedTopBarMetrics"/>
