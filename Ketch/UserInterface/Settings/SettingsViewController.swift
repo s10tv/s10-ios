@@ -20,8 +20,6 @@ class SettingsViewController : BaseViewController {
     @IBOutlet weak var aboutLabel: DesignableLabel!
     @IBOutlet weak var deactivateButton: UIButton!
     
-    var deactivateAccountConfirmationTextField: UITextField?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -56,7 +54,9 @@ class SettingsViewController : BaseViewController {
     }
     
     @IBAction func deactivateUser(sender: AnyObject) {
-        var alert = UIAlertController(title: "Delete Account", message: "This action cannot be undone. \nType 'delete' to confirm", preferredStyle: UIAlertControllerStyle.Alert)
+        var alert = UIAlertController(title: "Delete Account", message:
+            "All your photos, messages, and matches will be permanently deleted.\nPlease type 'delete' to confirm.",
+            preferredStyle: UIAlertControllerStyle.Alert)
         alert.addTextFieldWithConfigurationHandler {
             (tf:UITextField!) in
             tf.placeholder = "Sure?"
