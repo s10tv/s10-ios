@@ -20,6 +20,8 @@ class SettingsViewController : BaseViewController {
     @IBOutlet weak var aboutLabel: DesignableLabel!
     @IBOutlet weak var deactivateButton: UIButton!
     
+    var deactivateAccountConfirmationTextField: UITextField?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -43,11 +45,33 @@ class SettingsViewController : BaseViewController {
     @IBAction func giveFeedback(sender: AnyObject) {
         
     }
+
+    // every time text is changed, check to see if it is 'delete'
+    func textChanged(sender:AnyObject) {
+        let tf = sender as UITextField
+        var resp : UIResponder = tf
+        while !(resp is UIAlertController) { resp = resp.nextResponder()! }
+        let alert = resp as UIAlertController
+        (alert.actions[1] as UIAlertAction).enabled = (tf.text == "delete")
+    }
     
     @IBAction func deactivateUser(sender: AnyObject) {
-        if let currentUser = User.currentUser() {
-            Core.meteor.callMethod("user/delete", params: [currentUser.documentID!])
+        var alert = UIAlertController(title: "Delete Account", message: "This action cannot be undone. \nType 'delete' to confirm", preferredStyle: UIAlertControllerStyle.Alert)
+        alert.addTextFieldWithConfigurationHandler {
+            (tf:UITextField!) in
+            tf.placeholder = "Sure?"
+            tf.addTarget(self, action: "textChanged:", forControlEvents: .EditingChanged)
         }
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Confirm", style: UIAlertActionStyle.Default, handler: { action in
+            if let currentUser = User.currentUser() {
+                Core.meteor.callMethod("user/delete", params: [currentUser.documentID!])
+            }
+        }))
+        
+        // initially disable the "confirm" action
+        (alert.actions[1] as UIAlertAction).enabled = false
+        self.presentViewController(alert, animated: true, completion: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
