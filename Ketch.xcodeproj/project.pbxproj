@@ -95,6 +95,7 @@
 		EAD7B2AB1A9F0BE700FA6740 /* DesignableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */; };
 		EAE63D781AB32BC4004A74E6 /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE63D771AB32BC4004A74E6 /* ProgressIndicator.swift */; };
 		EAE63D7A1AB3407D004A74E6 /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAE63D791AB3407D004A74E6 /* RootView.xib */; };
+		EAE915321ACAFC890027C936 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE915311ACAFC890027C936 /* UserDefaults.swift */; };
 		EAF195CF1A827FAD00A2F103 /* Ketch-Bridging.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */; };
 		EAF3A4BF1ACA2191001C2943 /* ProfileInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF3A4BE1ACA2191001C2943 /* ProfileInfoCell.xib */; };
 		EAF3A4C11ACA22C2001C2943 /* ProfileInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF3A4C01ACA22C2001C2943 /* ProfileInfoCell.swift */; };
@@ -227,6 +228,7 @@
 		EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableViews.swift; sourceTree = "<group>"; };
 		EAE63D771AB32BC4004A74E6 /* ProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
 		EAE63D791AB3407D004A74E6 /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootView.xib; sourceTree = "<group>"; };
+		EAE915311ACAFC890027C936 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Ketch-Bridging.m"; sourceTree = "<group>"; };
 		EAF3A4BE1ACA2191001C2943 /* ProfileInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileInfoCell.xib; sourceTree = "<group>"; };
 		EAF3A4C01ACA22C2001C2943 /* ProfileInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInfoCell.swift; sourceTree = "<group>"; };
@@ -462,6 +464,7 @@
 				EA6650F41AA00B95001BA40C /* Connection.swift */,
 				EA6650F51AA00B95001BA40C /* Message.swift */,
 				EA6650F61AA00B95001BA40C /* User.swift */,
+				EAE915311ACAFC890027C936 /* UserDefaults.swift */,
 				EA5634DF1A7741FF00F62B52 /* Ketch.xcdatamodeld */,
 			);
 			path = Models;
@@ -893,6 +896,7 @@
 				EA0FC9391A87DE5800D62625 /* Logging.swift in Sources */,
 				EA0FC93C1A87DE5800D62625 /* UIKitExtension.swift in Sources */,
 				EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */,
+				EAE915321ACAFC890027C936 /* UserDefaults.swift in Sources */,
 				EA6650FB1AA00B95001BA40C /* Candidate.swift in Sources */,
 				EA0FC9421A87DE5800D62625 /* BaseViewModel.swift in Sources */,
 				EA31049B1A99C3850069D6AD /* KetchIcon.swift in Sources */,
