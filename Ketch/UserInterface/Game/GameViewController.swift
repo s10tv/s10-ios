@@ -55,10 +55,15 @@ class GameViewController : BaseViewController {
         }
     }
     
-    func showCandidateProfiles(initialCandidate: Candidate) {
-        let profileVC = ProfileViewController()
-        profileVC.user = initialCandidate.user
-        presentViewController(profileVC, animated: true)
+    func showCandidateProfiles(candidate: Candidate) {
+        if let candidates = currentCandidates {
+            let pageVC = PageViewController()
+            pageVC.viewControllers = map(candidates) {
+                return ProfileViewController(user: $0.user!)
+            }
+            pageVC.scrollTo(page: find(candidates, candidate)!, animated: false)
+            presentViewController(pageVC, animated: true)
+        }
     }
     
     func candidatesDidChange() {
