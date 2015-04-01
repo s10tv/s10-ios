@@ -73,16 +73,16 @@ class TransparentView : BaseView {
 }
 
 class IntrinsicSizeCollectionView : UICollectionView {
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        if (bounds.size != intrinsicContentSize()) {
-//            println("Invalidating intrinsic size bounds: \(bounds.size) intrinsic \(intrinsicContentSize())")
-            invalidateIntrinsicContentSize()
+    override var bounds: CGRect {
+        didSet {
+            if oldValue != bounds {
+                collectionViewLayout.invalidateLayout()
+                invalidateIntrinsicContentSize()
+            }
         }
     }
+    
     override func intrinsicContentSize() -> CGSize {
-        let size =  collectionViewLayout.collectionViewContentSize()
-//        println("Intrinsic size is \(size)")
-        return size
+        return collectionViewLayout.collectionViewContentSize()
     }
 }

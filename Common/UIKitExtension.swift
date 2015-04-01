@@ -96,6 +96,12 @@ extension UIBezierPath {
     }
 }
 
+extension UICollectionViewFlowLayout {
+    var maxItemWidth : CGFloat {
+        return collectionView!.bounds.width - sectionInset.left - sectionInset.right
+    }
+}
+
 func DebugPrintAllFonts() {
     for familyName in UIFont.familyNames() as [String] {
         println("Family: \(familyName)")

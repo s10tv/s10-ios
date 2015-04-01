@@ -15,7 +15,7 @@ class ProfileInfoItem {
     let type : ItemType
     let text : String
     let imageName : String
-    let minWidthRatio : CGFloat = 0
+    let minWidthRatio : CGFloat = 1
     
     var image : UIImage! {
         return UIImage(named: imageName)
@@ -29,14 +29,14 @@ class ProfileInfoItem {
             imageName = R.ImagesAssets.settingsLocation
         case .Age:
             imageName = R.ImagesAssets.settingsAge
+            minWidthRatio = 0.5
         case .Height:
             imageName = R.ImagesAssets.settingsHeightArrow
+            minWidthRatio = 0.5
         case .Work:
             imageName = R.ImagesAssets.settingsBriefcase
-            minWidthRatio = 1
         case .Education:
             imageName = R.ImagesAssets.settingsMortarBoard
-            minWidthRatio = 1
         }
     }
 }

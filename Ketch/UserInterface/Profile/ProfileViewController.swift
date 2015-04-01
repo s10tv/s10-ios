@@ -11,10 +11,7 @@ import SwipeView
 import SDWebImage
 
 @objc(ProfileViewController)
-class ProfileViewController : BaseViewController,
-                              SwipeViewDelegate,
-                              SwipeViewDataSource,
-                              UICollectionViewDelegateFlowLayout {
+class ProfileViewController : BaseViewController {
 
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var swipeView: SwipeView!
@@ -102,12 +99,10 @@ extension ProfileViewController : SwipeViewDelegate {
 // MARK: Collection View Delegate
 
 extension ProfileViewController : UICollectionViewDelegateFlowLayout {
-    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+    func collectionView(collectionView: UICollectionView, layout: UICollectionViewFlowLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let item = infoItems.itemAtIndexPath(indexPath) as ProfileInfoItem
         var size = ProfileInfoCell.sizeForItem(item)
-        size.width = between(collectionView.bounds.width * item.minWidthRatio,
-            size.width,
-            collectionView.bounds.width)
+        size.width = between(layout.maxItemWidth * item.minWidthRatio, size.width, layout.maxItemWidth)
         return size
     }
 }
