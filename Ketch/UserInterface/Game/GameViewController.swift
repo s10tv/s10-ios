@@ -15,8 +15,9 @@ class GameViewController : BaseViewController {
     @IBOutlet weak var container: UIView!
     @IBOutlet var gameView: GameView!
     @IBOutlet var emptyView: UIView!
-    
     @IBOutlet weak var dockBadge: UIImageView!
+    
+    var currentCandidates : [Candidate]? { didSet { candidatesDidChange() } }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,23 +40,38 @@ class GameViewController : BaseViewController {
         Core.candidateService.fetch.signal.subscribeNextAs { [weak self] (candidates : [Candidate]) in
             if let this = self {
                 if candidates.count >= 3 {
-                    this.showSubview(this.gameView)
-                    this.gameView.startNewGame(Array(candidates[0...2]))
-//                    this.backgroundView.animateWaterlineDownAndUp()
+                    this.currentCandidates = Array(candidates[0...2])
                 } else {
-                    this.showSubview(this.emptyView)
+                    this.currentCandidates = nil
                 }
             }
         }
         // Setup tap to view profile
         for bubble in gameView.bubbles {
-            bubble.didTap = { [weak self] user in
-                self?.rootVC.showProfile(user!, animated: true)
+            bubble.didTap = { [weak self, weak bubble] _ in
+                self?.showCandidateProfiles(bubble!.candidate!)
                 return
             }
         }
     }
     
+    func showCandidateProfiles(initialCandidate: Candidate) {
+        let profileVC = ProfileViewController()
+        profileVC.user = initialCandidate.user
+        presentViewController(profileVC, animated: true)
+    }
+    
+    func candidatesDidChange() {
+        if let candidates = currentCandidates {
+            assert(candidates.count == 3, "There must be exactly 3 candidates before starting game")
+            showSubview(gameView)
+            gameView.startNewGame(candidates)
+        } else {
+            showSubview(emptyView)
+        }
+    }
+    
+    // TODO: Should we refactor empty view into its own separate view controller?
     func showSubview(subview: UIView) {
         if subview.superview == nil {
             gameView.removeFromSuperview()
