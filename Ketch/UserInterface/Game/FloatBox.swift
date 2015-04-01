@@ -14,10 +14,9 @@ func DegreesToRadians (value:Int) -> CGFloat {
     return CGFloat(value) * π / 180.0
 }
 
-class FloatBox : TransparentView, CandidateDropZone {
+class FloatBox : TransparentView {
     let brownianMagnitude : CGFloat = 0.075
     let brownianInterval : NSTimeInterval = 1.5
-    var dropCenter : CGPoint { return center }
     var animator : UIDynamicAnimator!
     var snap : UISnapBehavior!
     var boundingBox : UICollisionBehavior!
@@ -25,8 +24,6 @@ class FloatBox : TransparentView, CandidateDropZone {
     var floatEnabled = true
 
     weak var bubble : CandidateBubble?
-    
-    var isOccupied : Bool { return bubble != nil }
     
     override func commonInit() {
         super.commonInit()
@@ -66,6 +63,11 @@ class FloatBox : TransparentView, CandidateDropZone {
             animator.addBehavior(brownianPush)
         }
     }
+}
+
+extension FloatBox : CandidateDropZone {
+    var dropCenter : CGPoint { return center }
+    var isOccupied : Bool { return bubble != nil }
     
     func dropBubble(bubble: CandidateBubble) {
         self.bubble = bubble

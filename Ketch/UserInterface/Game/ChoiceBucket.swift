@@ -13,11 +13,6 @@ class ChoiceBucket : UIImageView, CandidateDropZone {
     var snap : UISnapBehavior?
     var choice : Candidate.Choice!
     weak var bubble : CandidateBubble?
-    var dropCenter : CGPoint {
-        return center + CGPoint(x: 0, y: -11)
-    }
-    
-    var isOccupied : Bool { return bubble != nil }
     var emphasized: Bool = false {
         didSet {
             if emphasized {
@@ -35,6 +30,15 @@ class ChoiceBucket : UIImageView, CandidateDropZone {
         image = image?.imageWithRenderingMode(.AlwaysTemplate)
         tintColor = StyleKit.teal
     }
+    
+
+}
+
+extension ChoiceBucket : CandidateDropZone {
+    var dropCenter : CGPoint {
+        return center + CGPoint(x: 0, y: -11)
+    }
+    var isOccupied : Bool { return bubble != nil }
     
     func dropBubble(bubble: CandidateBubble) {
         self.bubble = bubble

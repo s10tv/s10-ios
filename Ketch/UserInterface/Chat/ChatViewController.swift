@@ -8,10 +8,9 @@
 
 import UIKit
 import JSQMessagesViewController
-import EDColor
 
 @objc(ChatViewController)
-class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewDataSource {
+class ChatViewController : JSQMessagesViewController {
     
     var connection: Connection?
     private var messages : FetchViewModel!
@@ -101,8 +100,16 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
         return User.currentUser()?.documentID
     }
     
-    // MARK: - JSQMessagesCollectionViewDataSource
+    // MARK: - Class Method
     
+    override class func nib() -> UINib {
+        return UINib(nibName: "ChatView", bundle: nil)
+    }
+}
+
+// MARK: - JSQMessagesCollectionViewDataSource
+
+extension ChatViewController : JSQMessagesCollectionViewDataSource {
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return messages.numberOfItemsInSection(section)
     }
@@ -142,10 +149,5 @@ class ChatViewController : JSQMessagesViewController, JSQMessagesCollectionViewD
     override func collectionView(collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellTopLabelAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
         return shouldShowTimestampForMessageAtIndexPath(indexPath) ? 20 : 0
     }
-    
-    // MARK: - Class Method
-    
-    override class func nib() -> UINib {
-        return UINib(nibName: "ChatView", bundle: nil)
-    }
+
 }

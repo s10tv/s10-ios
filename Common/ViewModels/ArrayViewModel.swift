@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ArrayViewModel<T : AnyObject> : ProviderDelegate {
+class ArrayViewModel<T : AnyObject> {
 
     var content : [T]
     var selectedItem : T?
@@ -26,9 +26,11 @@ class ArrayViewModel<T : AnyObject> : ProviderDelegate {
     func bindToCollectionView(collectionView: UICollectionView, cellNibName: String) {
         collectionViewProvider = CollectionViewProvider(delegate: self, collectionView: collectionView, cellNibName: cellNibName)
     }
-    
-    // Mark - Provider Delegate
-    
+}
+
+// Mark - Provider Delegate
+
+extension ArrayViewModel : ProviderDelegate {
     func numberOfSections() -> Int {
         return 1
     }

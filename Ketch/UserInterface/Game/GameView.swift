@@ -16,7 +16,7 @@ protocol CandidateDropZone {
     func freeBubble()
 }
 
-class GameView : TransparentView, UIDynamicAnimatorDelegate {
+class GameView : TransparentView {
     enum TutorialStep {
         case Step1, Step2, Step3
     }
@@ -41,7 +41,6 @@ class GameView : TransparentView, UIDynamicAnimatorDelegate {
         userInteractionEnabled = true
         passThroughTouchOnSelf = false
         animator = UIDynamicAnimator(referenceView: self)
-        animator.delegate = self
         for i in 0...2 {
             let bubble = CandidateBubble()
             bubble.userInteractionEnabled = true

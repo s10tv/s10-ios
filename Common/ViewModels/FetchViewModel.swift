@@ -9,7 +9,7 @@
 import ReactiveCocoa
 import CoreData
 
-class FetchViewModel : NSFetchedResultsControllerDelegate, ProviderDelegate {
+class FetchViewModel {
     
     let signal = RACReplaySubject(capacity: 1)
     var frc : NSFetchedResultsController {
@@ -58,13 +58,6 @@ class FetchViewModel : NSFetchedResultsControllerDelegate, ProviderDelegate {
         self.collectionViewProvider?.collectionView.reloadData()
     }
     
-    // MARK: - NSFetchedResultsController Delegate
-    
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        signal.sendNext(objects)
-        refreshViews()
-    }
-    
     // MARK: - Table & Collection Bindings
     
     func bindToTableView(tableView: UITableView, cellNibName: String) {
@@ -76,8 +69,20 @@ class FetchViewModel : NSFetchedResultsControllerDelegate, ProviderDelegate {
         performFetchIfNeeded()
         collectionViewProvider = CollectionViewProvider(delegate: self, collectionView: collectionView, cellNibName: cellNibName)
     }
-    
-    // MARK: Provider Delegate
+}
+
+// MARK: - NSFetchedResultsController Delegate
+
+extension FetchViewModel : NSFetchedResultsControllerDelegate {
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        signal.sendNext(objects)
+        refreshViews()
+    }
+}
+
+// MARK: - Provider Delegate
+
+extension FetchViewModel : ProviderDelegate {
     
     func numberOfSections() -> Int {
         return frc.sections!.count
@@ -90,7 +95,7 @@ class FetchViewModel : NSFetchedResultsControllerDelegate, ProviderDelegate {
     func itemAtIndexPath(indexPath: NSIndexPath) -> AnyObject {
         return frc.objectAtIndexPath(indexPath)
     }
-
+    
     func didSelectIndexPath(indexPath: NSIndexPath) {
         selectedObject = frc.objectAtIndexPath(indexPath)
     }

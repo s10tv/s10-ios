@@ -9,9 +9,7 @@
 import Foundation
 import ReactiveCocoa
 
-class PageViewController : BaseViewController,
-                           UIPageViewControllerDelegate,
-                           UIPageViewControllerDataSource {
+class PageViewController : BaseViewController {
     
     private let pageVC = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
     var viewControllers : [UIViewController] = []
@@ -28,7 +26,6 @@ class PageViewController : BaseViewController,
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        pageVC.delegate = self
         pageVC.dataSource = self
         addChildViewController(pageVC)
         view.addSubview(pageVC.view)
@@ -56,8 +53,11 @@ class PageViewController : BaseViewController,
         return scrollTo(viewController: viewControllers[page], animated: animated)
     }
     
-    // MARK: Page View Controller Delegate / DataSource
-    
+}
+
+// MARK: Page View Controller DataSource / Delegate
+
+extension PageViewController : UIPageViewControllerDataSource {
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         if let index = find(viewControllers, viewController) {
             return viewControllers.elementAtIndex(index - 1)

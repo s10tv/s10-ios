@@ -71,9 +71,11 @@ class ProfileViewController : BaseViewController,
         pageControl.numberOfPages = numberOfItemsInSwipeView(swipeView)
         infoCollection.reloadData()
     }
-    
-    // MARK: - Photos SwipeView Delegate / Data Source
-    
+}
+
+// MARK: - Photos SwipeView Delegate / Data Source
+
+extension ProfileViewController : SwipeViewDataSource {
     func numberOfItemsInSwipeView(swipeView: SwipeView!) -> Int {
         return user?.photos != nil ? (user?.photos?.count)! : 0
     }
@@ -85,7 +87,9 @@ class ProfileViewController : BaseViewController,
         v.sd_setImageWithURL(NSURL(string: url!))
         return v
     }
-    
+}
+
+extension ProfileViewController : SwipeViewDelegate {
     func swipeViewCurrentItemIndexDidChange(swipeView: SwipeView!) {
         pageControl.currentPage = swipeView.currentPage
     }
@@ -93,16 +97,17 @@ class ProfileViewController : BaseViewController,
     func swipeViewItemSize(swipeView: SwipeView!) -> CGSize {
         return swipeView.frame.size
     }
-    
-    // MARK: Collection View Delegate
-    
+}
+
+// MARK: Collection View Delegate
+
+extension ProfileViewController : UICollectionViewDelegateFlowLayout {
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
         let item = infoItems.itemAtIndexPath(indexPath) as ProfileInfoItem
         var size = ProfileInfoCell.sizeForItem(item)
         size.width = between(collectionView.bounds.width * item.minWidthRatio,
-                             size.width,
-                             collectionView.bounds.width)
+            size.width,
+            collectionView.bounds.width)
         return size
     }
-
 }
