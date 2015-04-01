@@ -48,9 +48,14 @@ class ProfileInfoCell : UICollectionViewCell {
     
     var item : ProfileInfoItem? {
         didSet {
-            iconView.image = item?.image
+            iconView.image = item?.image?.imageWithRenderingMode(.AlwaysTemplate)
             textLabel.text = item?.text
         }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        iconView.tintColor = StyleKit.darkTeal
     }
     
     class func sizeForItem(item: ProfileInfoItem) -> CGSize {
