@@ -38,25 +38,15 @@ class User: _User {
     }
     
     var infoItems : [ProfileInfoItem] {
-        var items = [ProfileInfoItem]()
-
-        if location != nil {
-            items.append(ProfileInfoItem(type: .Location, text: location!))
-        }
-        if age != nil { // TODO: Make this birthday, not age
-            items.append(ProfileInfoItem(type: .Age, text: toString(age!)))
-        }
-        if height != nil { // TODO: Format feet and inches
-            items.append(ProfileInfoItem(type: .Height, text: "\(height!)cm"))
-        }
-        if work != nil {
-            items.append(ProfileInfoItem(type: .Work, text: work!))
-        }
-        if education != nil {
-            items.append(ProfileInfoItem(type: .Education, text: education!))
-        }
-        
-        return items
+        // TODO: How to express that after filter values are no longer optional?
+        let validItems : [(ProfileInfoItem.ItemType, Any?)] = [
+            (.Location, location),
+            (.Age, age),
+            (.Height, height),
+            (.Work, work),
+            (.Education, education)
+        ].filter { (type, value) in value != nil }
+        return map(validItems) { (type, value) in ProfileInfoItem(type: type, value: value!) }
     }
     
     var profilePhotoURL : NSURL? {
@@ -113,7 +103,7 @@ class ProfileInfoItem {
         case Location, Age, Height, Work, Education
     }
     let type : ItemType
-    let text : String
+    let value : Any
     let imageName : String
     let minWidthRatio : CGFloat = 1
     
@@ -121,9 +111,29 @@ class ProfileInfoItem {
         return UIImage(named: imageName)
     }
     
-    init(type: ItemType, text: String) {
+    var text : String {
+        struct formatters {
+            static let height : NSLengthFormatter = {
+                let formatter = NSLengthFormatter()
+                formatter.forPersonHeightUse = true
+                formatter.unitStyle = .Short
+                formatter.numberFormatter.maximumFractionDigits = 0
+                return formatter
+            }()
+        }
+        
+        switch type {
+            case .Location: return value as String
+            case .Age: return toString(value as Int)
+            case .Height: return formatters.height.stringFromMeters(Double(value as Int) / 100)
+            case .Work: return value as String
+            case .Education: return value as String
+        }
+    }
+    
+    init(type: ItemType, value: Any) {
         self.type = type
-        self.text = text
+        self.value = value
         switch type {
         case .Location:
             imageName = R.ImagesAssets.settingsLocation
@@ -139,4 +149,5 @@ class ProfileInfoItem {
             imageName = R.ImagesAssets.settingsMortarBoard
         }
     }
+    
 }
