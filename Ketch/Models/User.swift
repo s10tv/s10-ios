@@ -107,3 +107,36 @@ class Photo {
         self.url = url
     }
 }
+
+class ProfileInfoItem {
+    enum ItemType {
+        case Location, Age, Height, Work, Education
+    }
+    let type : ItemType
+    let text : String
+    let imageName : String
+    let minWidthRatio : CGFloat = 1
+    
+    var image : UIImage! {
+        return UIImage(named: imageName)
+    }
+    
+    init(type: ItemType, text: String) {
+        self.type = type
+        self.text = text
+        switch type {
+        case .Location:
+            imageName = R.ImagesAssets.settingsLocation
+        case .Age:
+            imageName = R.ImagesAssets.settingsAge
+            minWidthRatio = 0.5
+        case .Height:
+            imageName = R.ImagesAssets.settingsHeightArrow
+            minWidthRatio = 0.5
+        case .Work:
+            imageName = R.ImagesAssets.settingsBriefcase
+        case .Education:
+            imageName = R.ImagesAssets.settingsMortarBoard
+        }
+    }
+}
