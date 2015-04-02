@@ -17,12 +17,8 @@ extern const struct R {
         __unsafe_unretained NSString *appDev;
         /// background-sea-short
         __unsafe_unretained NSString *backgroundSeaShort;
-        /// BGWave
-        __unsafe_unretained NSString *bgWave;
         /// dock-separator
         __unsafe_unretained NSString *dockSeparator;
-        /// game-arrow-down
-        __unsafe_unretained NSString *gameArrowDown;
         /// game-bucket-keep
         __unsafe_unretained NSString *gameBucketKeep;
         /// game-bucket-marry
@@ -45,14 +41,8 @@ extern const struct R {
         __unsafe_unretained NSString *girlPlaceholder;
         /// guy-placeholder
         __unsafe_unretained NSString *guyPlaceholder;
-        /// ic_home
-        __unsafe_unretained NSString *icHome;
         /// ic_remove_photo
         __unsafe_unretained NSString *icRemovePhoto;
-        /// ic_school
-        __unsafe_unretained NSString *icSchool;
-        /// ic_work
-        __unsafe_unretained NSString *icWork;
         /// Ketch
         __unsafe_unretained NSString *ketch;
         /// profile-about-me-divider
