@@ -80,7 +80,7 @@ class RootViewController : PageViewController {
     }
     
     @IBAction func showDock(sender: AnyObject) {
-        dismissViewControllerAnimated(false) // HACK ALERT: for transitioning from NewConnection. Gotta use segue
+        dismissViewController(animated: false) // HACK ALERT: for transitioning from NewConnection. Gotta use segue
         scrollTo(viewController: dockVC)
         viewControllers = [gameVC, dockVC]
     }
@@ -120,7 +120,7 @@ class RootViewController : PageViewController {
     }
     
     func showSignup(animated: Bool) {
-        dismissViewControllerAnimated(false)
+        dismissViewController(animated: false)
         addChildViewController(signupVC)
         view.addSubview(signupVC.view)
         signupVC.view.makeEdgesEqualTo(view)

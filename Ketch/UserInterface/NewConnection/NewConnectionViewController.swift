@@ -37,6 +37,6 @@ class NewConnectionViewController : BaseViewController {
     // MARK: - Actions
     
     @IBAction func goBack(sender: AnyObject) {
-        dismissViewControllerAnimated(true)
+        dismissViewController()
     }
 }

@@ -18,17 +18,17 @@ func LS(localizableKey: String, args: CVarArgType...) -> String {
 }
 
 extension UIViewController {
-    func presentViewController(viewControllerToPresent: UIViewController, animated flag: Bool) -> RACSignal {
+    func presentViewController(viewControllerToPresent: UIViewController, animated: Bool = true) -> RACSignal {
         let subject = RACReplaySubject()
-        presentViewController(viewControllerToPresent, animated: flag) {
+        presentViewController(viewControllerToPresent, animated: animated) {
             subject.sendCompleted()
         }
         return subject
     }
     
-    func dismissViewControllerAnimated(flag: Bool) -> RACSignal {
+    func dismissViewController(animated: Bool = true) -> RACSignal {
         let subject = RACReplaySubject()
-        dismissViewControllerAnimated(flag) {
+        dismissViewControllerAnimated(animated) {
             subject.sendCompleted()
         }
         return subject

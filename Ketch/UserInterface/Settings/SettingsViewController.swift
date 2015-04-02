@@ -83,6 +83,6 @@ class SettingsViewController : BaseViewController {
     // MARK: - Actions
     
     @IBAction func goBack(sender: AnyObject) {
-        dismissViewControllerAnimated(true)
+        dismissViewController()
     }
 }

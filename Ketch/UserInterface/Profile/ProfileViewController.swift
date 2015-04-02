@@ -75,7 +75,7 @@ class ProfileViewController : BaseViewController {
     // MARK: -
     
     @IBAction func goBack(sender: AnyObject) {
-        dismissViewControllerAnimated(true)
+        dismissViewController()
     }
     
     func reloadData() {
