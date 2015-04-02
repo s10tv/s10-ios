@@ -20,7 +20,6 @@ class ProfileViewController : BaseViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var infoCollection: UICollectionView!
     @IBOutlet weak var aboutLabel: DesignableLabel!
-    private var constraintsInstalled = false
     
     var infoItems = ArrayViewModel(content: [ProfileInfoItem]())
     
@@ -60,11 +59,8 @@ class ProfileViewController : BaseViewController {
     }
     
     override func updateViewConstraints() {
-        if !constraintsInstalled {
-            backButton.snp_makeConstraints { make in
-                make.top.equalTo(self.view.superview!); return
-            }
-            constraintsInstalled = true
+        backButton.snp_makeConstraints { make in
+            make.top.equalTo(self.view.superview!); return
         }
         super.updateViewConstraints()
     }
