@@ -22,7 +22,7 @@
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="LXu-5e-xa8" customClass="OneDScrollView" customModule="Ketch" customModuleProvider="target">
+        <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="LXu-5e-xa8" customClass="OneDScrollView" customModule="Ketch" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="639"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
