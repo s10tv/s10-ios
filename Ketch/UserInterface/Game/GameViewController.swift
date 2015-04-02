@@ -64,11 +64,8 @@ class GameViewController : BaseViewController {
             pageVC.viewControllers = map(candidates) {
                 return ProfileViewController(user: $0.user!)
             }
+            pageVC.view.backgroundColor = StyleKit.skyColor
             pageVC.scrollTo(page: find(candidates, candidate)!, animated: false)
-//            addChildViewController(pageVC)
-//            view.addSubview(pageVC.view)
-//            pageVC.view.makeEdgesEqualTo(view)
-//            pageVC.didMoveToParentViewController(self)
             presentViewController(pageVC, animated: true)
         }
     }

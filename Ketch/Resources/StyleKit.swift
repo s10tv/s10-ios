@@ -25,7 +25,7 @@ public class StyleKit : NSObject {
         static var brandAlt: UIColor = UIColor(red: 0.263, green: 0.871, blue: 0.863, alpha: 1.000)
         static var gradientWaterColor: UIColor = UIColor(red: 0.549, green: 0.976, blue: 1.000, alpha: 1.000)
         static var gradientSandColor: UIColor = UIColor(red: 0.882, green: 0.871, blue: 0.788, alpha: 1.000)
-        static var gradientSandColor2: UIColor = UIColor(red: 0.941, green: 0.980, blue: 0.969, alpha: 1.000)
+        static var skyColor: UIColor = UIColor(red: 0.941, green: 0.980, blue: 0.969, alpha: 1.000)
         static var pureWhite: UIColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
         static var darkWhite: UIColor = StyleKit.white.colorWithBrightness(0.95)
         static var waterTop: UIColor = UIColor(red: 0.773, green: 1.000, blue: 0.997, alpha: 1.000)
@@ -34,7 +34,7 @@ public class StyleKit : NSObject {
         static var waterlineStrokeColor: UIColor = UIColor(red: 0.773, green: 0.906, blue: 0.902, alpha: 1.000)
         static var gradientBlue: CGGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [StyleKit.brandBlue.CGColor, StyleKit.brandAlt.CGColor], [0, 1])
         static var gradientWater: CGGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [StyleKit.gradientWaterColor.CGColor, StyleKit.brandBlue.CGColor, StyleKit.brandAlt.CGColor], [0, 0.19, 1])
-        static var gradientSand: CGGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [StyleKit.gradientSandColor2.CGColor, StyleKit.waterTop.CGColor], [0, 1])
+        static var gradientSand: CGGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [StyleKit.skyColor.CGColor, StyleKit.waterTop.CGColor], [0, 1])
         static var gradientWater2: CGGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [StyleKit.waterTop.CGColor, StyleKit.waterTop.blendedColorWithFraction(0.5, ofColor: StyleKit.waterBottom).CGColor, StyleKit.waterBottom.CGColor], [0, 0.1, 1])
     }
 
@@ -48,7 +48,7 @@ public class StyleKit : NSObject {
     public class var brandAlt: UIColor { return Cache.brandAlt }
     public class var gradientWaterColor: UIColor { return Cache.gradientWaterColor }
     public class var gradientSandColor: UIColor { return Cache.gradientSandColor }
-    public class var gradientSandColor2: UIColor { return Cache.gradientSandColor2 }
+    public class var skyColor: UIColor { return Cache.skyColor }
     public class var pureWhite: UIColor { return Cache.pureWhite }
     public class var darkWhite: UIColor { return Cache.darkWhite }
     public class var waterTop: UIColor { return Cache.waterTop }
