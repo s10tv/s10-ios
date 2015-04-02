@@ -84,6 +84,10 @@ extension UIAlertView {
 
 extension UIBezierPath {
     
+    func addLineTo(#x: CGFloat, y: CGFloat) {
+        addLineToPoint(CGPoint(x: x, y: y))
+    }
+    
     class func sineWave(amplitude a: CGFloat, wavelength λ: CGFloat, periods: CGFloat, phase: CGFloat = 0, pointsPerStep: CGFloat = 5)  -> UIBezierPath {
         let stepLength = 2*π / λ * pointsPerStep
         let totalLength = λ * periods

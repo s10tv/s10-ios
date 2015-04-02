@@ -40,16 +40,10 @@ import UIKit
         wavePath = UIBezierPath.sineWave(amplitude: amplitude,
             wavelength: CGRectGetWidth(layer.frame)/2,
             periods: periods, phase: 0)
-        wavePath.addLineToPoint(CGPoint(x: frame.width, y: frame.height))
-        wavePath.addLineToPoint(CGPoint(x: 0, y: frame.height))
-        wavePath.closePath()
         
         wavePathInverse = UIBezierPath.sineWave(amplitude: amplitude,
             wavelength: CGRectGetWidth(layer.frame)/2,
             periods: periods, phase: π)
-        wavePathInverse.addLineToPoint(CGPoint(x: frame.width, y: frame.height))
-        wavePathInverse.addLineToPoint(CGPoint(x: 0, y: frame.height))
-        wavePathInverse.closePath()
         
         phaseShift = CABasicAnimation(keyPath: "path")
         phaseShift.fromValue = wavePath.CGPath
@@ -66,11 +60,26 @@ import UIKit
         waveOutline.fillColor = nil
         waveOutline.addAnimation(phaseShift, forKey: "phaseShift")
         layer.addSublayer(waveOutline)
-    
-        // Animate the wave gradient (with mask
+        
+        // Animate the wave gradient (with mask)
+        let waveMaskPath = wavePath.copy() as UIBezierPath
+        let waveMaskInversePath = wavePathInverse.copy() as UIBezierPath
+        
+        for path in [waveMaskPath, waveMaskInversePath] {
+            path.addLineTo(x: frame.width+1, y: 0)
+            path.addLineTo(x: frame.width+1, y: frame.height+1)
+            path.addLineTo(x: -1, y: frame.height+1)
+            path.addLineTo(x: -1, y: -1)
+            path.closePath()
+        }
+        
+        let waveMaskPhaseShift = phaseShift.copy() as CABasicAnimation
+        waveMaskPhaseShift.fromValue = waveMaskPath.CGPath
+        waveMaskPhaseShift.toValue = waveMaskInversePath.CGPath
+        
         waveMask.removeAllAnimations()
-        waveMask.path = wavePath.CGPath
-        waveMask.addAnimation(phaseShift, forKey: "phaseShift")
+        waveMask.path = waveMaskPath.CGPath
+        waveMask.addAnimation(waveMaskPhaseShift, forKey: "waveMaskPhaseShift")
         layer.mask = waveMask
     }
 }

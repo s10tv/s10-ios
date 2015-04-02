@@ -57,11 +57,18 @@ class GameViewController : BaseViewController {
     
     func showCandidateProfiles(candidate: Candidate) {
         if let candidates = currentCandidates {
+            let rootView = rootVC.view as RootView
+            rootView.animateHorizon(offset: view.bounds.width - 16)
+            
             let pageVC = PageViewController()
             pageVC.viewControllers = map(candidates) {
                 return ProfileViewController(user: $0.user!)
             }
             pageVC.scrollTo(page: find(candidates, candidate)!, animated: false)
+//            addChildViewController(pageVC)
+//            view.addSubview(pageVC.view)
+//            pageVC.view.makeEdgesEqualTo(view)
+//            pageVC.didMoveToParentViewController(self)
             presentViewController(pageVC, animated: true)
         }
     }
