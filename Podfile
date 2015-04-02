@@ -13,9 +13,6 @@ pod 'SwiftyUserDefaults', '~> 1.0'
 
 pod 'Facebook-iOS-SDK', '~> 3.22'
 pod 'DateTools', '~> 1.5'
-pod 'SwiftyJSON', '~> 2.1' # Not used atm, remove
-pod 'EDColor', '~> 0.4' # Nearly not used atm because we should never used hardcoded hex color. Prefer StyleKit
-#pod 'ExSwift', '~> 0.1.9'
 
 pod 'SwipeView', '~> 1.3'
 pod 'SDWebImage', '~> 3.7'
@@ -42,3 +39,8 @@ post_install do |installer|
         end
     end
 end
+
+# Might be useful one day
+#pod 'SwiftyJSON', '~> 2.1'
+#pod 'EDColor', '~> 0.4'
+#pod 'ExSwift', '~> 0.1.9'
