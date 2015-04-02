@@ -33,6 +33,10 @@ extension SugarRecordFinder {
             return record
         })
     }
+    
+    public func fetchFirst() -> AnyObject? {
+        return first().find().firstObject()
+    }
 }
 
 extension NSManagedObject {
