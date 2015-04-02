@@ -23,11 +23,11 @@
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="LXu-5e-xa8" customClass="OneDScrollView" customModule="Ketch" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="639"/>
+            <rect key="frame" x="0.0" y="0.0" width="320" height="649"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB">
-                    <rect key="frame" x="0.0" y="0.0" width="320" height="639"/>
+                    <rect key="frame" x="0.0" y="0.0" width="320" height="649"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8A2-xC-PLX" userLabel="Photos" customClass="SwipeView">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
@@ -91,7 +91,7 @@
                             <rect key="frame" x="8" y="504" width="572" height="11"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gur-zm-gdr" userLabel="About" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
-                            <rect key="frame" x="12" y="527" width="296" height="100"/>
+                            <rect key="frame" x="22" y="527" width="276" height="100"/>
                             <attributedString key="attributedText">
                                 <fragment>
                                     <string key="content">I usually don't message people first, so if you're interested please message me! I'm not interested in hooking up, message me if you're curious about what I am looking for! </string>
@@ -114,7 +114,7 @@
                     <constraints>
                         <constraint firstItem="Gur-zm-gdr" firstAttribute="top" secondItem="05h-5P-i0C" secondAttribute="bottom" constant="12" id="1dt-Kl-kRP"/>
                         <constraint firstAttribute="centerX" secondItem="yTD-bt-yNd" secondAttribute="centerX" id="5bt-ON-gBe"/>
-                        <constraint firstAttribute="trailing" secondItem="Gur-zm-gdr" secondAttribute="trailing" constant="12" id="DKm-Se-bii"/>
+                        <constraint firstAttribute="trailing" secondItem="Gur-zm-gdr" secondAttribute="trailing" constant="22" id="DKm-Se-bii"/>
                         <constraint firstItem="8A2-xC-PLX" firstAttribute="trailing" secondItem="zkL-na-OA5" secondAttribute="trailing" constant="16" id="EM1-Z5-VMq"/>
                         <constraint firstItem="ov3-cQ-tgW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Jye-h9-9xG"/>
                         <constraint firstItem="kHN-3G-ecZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="R2L-p1-M5h"/>
@@ -129,11 +129,11 @@
                         <constraint firstItem="yTD-bt-yNd" firstAttribute="top" secondItem="8A2-xC-PLX" secondAttribute="bottom" constant="16" id="g1O-z4-CbG"/>
                         <constraint firstItem="05h-5P-i0C" firstAttribute="top" secondItem="kHN-3G-ecZ" secondAttribute="bottom" constant="13" id="ghP-b4-XPA"/>
                         <constraint firstAttribute="width" constant="320" placeholder="YES" id="jRt-PW-SNM"/>
-                        <constraint firstItem="Gur-zm-gdr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="jgS-XF-Jyl"/>
+                        <constraint firstItem="Gur-zm-gdr" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="22" id="jgS-XF-Jyl"/>
                         <constraint firstItem="gjP-E3-fDY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" placeholder="YES" id="sDc-68-dW8"/>
                         <constraint firstAttribute="trailing" secondItem="ov3-cQ-tgW" secondAttribute="trailing" id="u2K-gR-IXE"/>
                         <constraint firstItem="8A2-xC-PLX" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="ykK-pk-1th"/>
-                        <constraint firstAttribute="bottom" secondItem="Gur-zm-gdr" secondAttribute="bottom" constant="12" id="zTA-e4-W6s"/>
+                        <constraint firstAttribute="bottom" secondItem="Gur-zm-gdr" secondAttribute="bottom" constant="22" id="zTA-e4-W6s"/>
                     </constraints>
                 </view>
             </subviews>
@@ -144,7 +144,7 @@
                 <constraint firstItem="iN0-l3-epB" firstAttribute="leading" secondItem="LXu-5e-xa8" secondAttribute="leading" id="dIM-vZ-wDc"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="95" y="543.5"/>
+            <point key="canvasLocation" x="95" y="548.5"/>
         </scrollView>
     </objects>
     <resources>
