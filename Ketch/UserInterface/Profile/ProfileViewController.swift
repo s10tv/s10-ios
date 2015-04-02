@@ -9,10 +9,12 @@
 import Foundation
 import SwipeView
 import SDWebImage
+import Snap
 
 @objc(ProfileViewController)
 class ProfileViewController : BaseViewController {
 
+    @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var swipeView: SwipeView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -40,19 +42,27 @@ class ProfileViewController : BaseViewController {
         super.viewDidLoad()
         // TODO: Find better solution than hardcoding keypath string
         RAC(nameLabel, "text") <~ racObserve("user.displayName")
-        RAC(aboutLabel, "rawText") <~ racObserve("user.about")
+//        RAC(aboutLabel, "rawText") <~ racObserve("user.about")
 
         infoItems.bindToCollectionView(infoCollection, cellNibName: "ProfileInfoCell")
         infoItems.collectionViewProvider?.configureCollectionCell = { item, cell in
             (cell as ProfileInfoCell).item = (item as ProfileInfoItem)
         }
         infoCollection.delegate = self
-//        let layout = infoCollection.collectionViewLayout as UICollectionViewFlowLayout
+        (view as UIScrollView).delegate = self
+        swipeView.clipsToBounds = false
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         reloadData()
+    }
+    
+    override func updateViewConstraints() {
+        backButton.snp_makeConstraints { make in
+            make.top.equalTo(self.view.superview!); return
+        }
+        super.updateViewConstraints()
     }
     
     // MARK: -
@@ -79,7 +89,7 @@ extension ProfileViewController : SwipeViewDataSource {
     
     func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, reusingView view: UIView!) -> UIView! {
         let v = view != nil ? view as UIImageView : UIImageView()
-        v.contentMode = .ScaleAspectFit
+        v.contentMode = .ScaleAspectFill
         let url = user?.photos![index].url
         v.sd_setImageWithURL(NSURL(string: url!))
         return v
@@ -104,5 +114,20 @@ extension ProfileViewController : UICollectionViewDelegateFlowLayout {
         var size = ProfileInfoCell.sizeForItem(item)
         size.width = between(layout.maxItemWidth * item.minWidthRatio, size.width, layout.maxItemWidth)
         return size
+    }
+}
+
+// MARK: ScrollView Delegate
+
+extension ProfileViewController : UIScrollViewDelegate {
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let yOffset = scrollView.contentOffset.y
+        if (yOffset < 0) {
+            let imageView = swipeView.currentItemView
+            var frame = imageView.frame
+            frame.origin.y = yOffset
+            frame.size.height = scrollView.frame.width + -yOffset
+            imageView.frame = frame
+        }
     }
 }
