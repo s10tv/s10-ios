@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import EDColor
 
 class UserAvatarView : UIImageView {
     
@@ -16,9 +15,8 @@ class UserAvatarView : UIImageView {
         gradient.colors = [
             UIColor.clearColor().CGColor,
             UIColor.clearColor().CGColor,
-            // TODO: Get these color codes from StyleKit
-            UIColor(hex: 0x43dedc, andAlpha: 0.75).CGColor,
-            UIColor(hex: 0x43dedc, andAlpha: 0.9).CGColor,
+            StyleKit.brandAlt.colorWithAlpha(0.75).CGColor,
+            StyleKit.brandAlt.colorWithAlpha(0.9).CGColor,
         ]
         return gradient
     }()

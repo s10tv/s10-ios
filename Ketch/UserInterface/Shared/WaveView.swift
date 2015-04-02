@@ -56,7 +56,7 @@ import UIKit
         waveOutline.removeAllAnimations()
         waveOutline.path = wavePath.CGPath
         waveOutline.lineWidth = 2.0
-        waveOutline.strokeColor = UIColor(hex: 0xC5E7E6).CGColor // TODO: Use StyleKit
+        waveOutline.strokeColor = StyleKit.waterlineStrokeColor.CGColor
         waveOutline.fillColor = nil
         waveOutline.addAnimation(phaseShift, forKey: "phaseShift")
         layer.addSublayer(waveOutline)
