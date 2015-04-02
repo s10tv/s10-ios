@@ -88,6 +88,7 @@
 		EAAA42871AB24D5F00056EFF /* CandidateBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAA42861AB24D5F00056EFF /* CandidateBubble.swift */; };
 		EAAA42891AB24D6900056EFF /* ChoiceBucket.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAA42881AB24D6900056EFF /* ChoiceBucket.swift */; };
 		EAAA428B1AB2522E00056EFF /* FloatBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAA428A1AB2522E00056EFF /* FloatBox.swift */; };
+		EAAD921B1ACDEACD0014BA25 /* NewMatchTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921A1ACDEACD0014BA25 /* NewMatchTransition.swift */; };
 		EAB54E3D1AA0E2EB00A44883 /* SettingsBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB54E3C1AA0E2EB00A44883 /* SettingsBackgroundView.swift */; };
 		EAC8D3F61AA7269F00BCB7B9 /* FetchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9311A87DE5800D62625 /* FetchViewModel.swift */; };
 		EAC8D3F71AA7278900BCB7B9 /* ViewProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9321A87DE5800D62625 /* ViewProviders.swift */; };
@@ -221,6 +222,7 @@
 		EAAA42861AB24D5F00056EFF /* CandidateBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateBubble.swift; sourceTree = "<group>"; };
 		EAAA42881AB24D6900056EFF /* ChoiceBucket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoiceBucket.swift; sourceTree = "<group>"; };
 		EAAA428A1AB2522E00056EFF /* FloatBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatBox.swift; sourceTree = "<group>"; };
+		EAAD921A1ACDEACD0014BA25 /* NewMatchTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMatchTransition.swift; sourceTree = "<group>"; };
 		EAB54E3C1AA0E2EB00A44883 /* SettingsBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsBackgroundView.swift; sourceTree = "<group>"; };
 		EABD43D81AA1D28700B07813 /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
 		EABD43D91AA1D29C00B07813 /* Beta.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
@@ -566,6 +568,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		EAAD92191ACDEAB70014BA25 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				EAAD921A1ACDEACD0014BA25 /* NewMatchTransition.swift */,
+			);
+			path = Transitions;
+			sourceTree = "<group>";
+		};
 		EABD43D71AA1D27400B07813 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
@@ -590,6 +600,7 @@
 			isa = PBXGroup;
 			children = (
 				EA6650E21AA00A82001BA40C /* Shared */,
+				EAAD92191ACDEAB70014BA25 /* Transitions */,
 				EA2AB70C1A8A00E300D42C6C /* Game */,
 				EA409D3A1A8C75F600988B8B /* Dock */,
 				EA196FEC1A83549300FEBA7F /* Chat */,
@@ -883,6 +894,7 @@
 				EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */,
 				EA4A66571AA2D9BB0019D601 /* GameView.swift in Sources */,
 				EA0FC9441A87DE5800D62625 /* ViewProviders.swift in Sources */,
+				EAAD921B1ACDEACD0014BA25 /* NewMatchTransition.swift in Sources */,
 				EAB54E3D1AA0E2EB00A44883 /* SettingsBackgroundView.swift in Sources */,
 				EA1970131A83549300FEBA7F /* EditProfileViewController.swift in Sources */,
 				EA6650ED1AA00A9C001BA40C /* CoreService.swift in Sources */,
