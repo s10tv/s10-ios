@@ -86,3 +86,30 @@ class IntrinsicSizeCollectionView : UICollectionView {
         return collectionViewLayout.collectionViewContentSize()
     }
 }
+
+// NOTE: ContentScrollView sets the dimension of the content to be the same as the dimension of the
+// scroll view in either vertical or horizontal dimension. The first subview is assumed to be the 
+// content view which will have the same dimension in specified direction as the scroll view
+class OneDScrollView : UIScrollView {
+    @IBInspectable var verticalMode : Bool = true {
+        didSet { setNeedsUpdateConstraints() }
+    }
+    
+    private var dimensionConstraint : NSLayoutConstraint?
+    
+    override func updateConstraints() {
+        if let constraint = dimensionConstraint {
+            removeConstraint(constraint)
+        }
+        if let contentView = subviews.first as? UIView {
+            let attribute : NSLayoutAttribute = verticalMode ? .Width : .Height
+            dimensionConstraint = NSLayoutConstraint(
+                item: self, attribute: attribute,
+                relatedBy: .Equal,
+                toItem: contentView, attribute: attribute,
+                multiplier: 1, constant: 0)
+            addConstraint(dimensionConstraint!)
+        }
+        super.updateConstraints()
+    }
+}

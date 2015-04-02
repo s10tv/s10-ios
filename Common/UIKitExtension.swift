@@ -43,10 +43,21 @@ extension UIView {
         layer.masksToBounds = true
     }
     
+    func makeWidthEqualTo(view: UIView) {
+        snp_makeConstraints { make in
+            make.width.equalTo(view); return
+        }
+    }
+    
+    func makeHeightEqualTo(view: UIView) {
+        snp_makeConstraints { make in
+            make.height.equalTo(view); return
+        }
+    }
+    
     func makeEdgesEqualTo(view: UIView) {
-        snp_makeConstraints { (make) -> () in
-            make.edges.equalTo(view)
-            return // Hack needed to compile
+        snp_makeConstraints { make in
+            make.edges.equalTo(view); return
         }
     }
     

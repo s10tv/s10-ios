@@ -51,6 +51,7 @@ import UIKit
     }
 }
 
+// Placeholder class to get UIView extension properties to show up in IB
 @IBDesignable class DesignableButton : UIButton {
     
 }
