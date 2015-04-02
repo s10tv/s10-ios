@@ -20,6 +20,7 @@ class ProfileViewController : BaseViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var infoCollection: UICollectionView!
     @IBOutlet weak var aboutLabel: DesignableLabel!
+    private var constraintsInstalled = false
     
     var infoItems = ArrayViewModel(content: [ProfileInfoItem]())
     
@@ -42,7 +43,7 @@ class ProfileViewController : BaseViewController {
         super.viewDidLoad()
         // TODO: Find better solution than hardcoding keypath string
         RAC(nameLabel, "text") <~ racObserve("user.displayName")
-//        RAC(aboutLabel, "rawText") <~ racObserve("user.about")
+        RAC(aboutLabel, "rawText") <~ racObserve("user.about")
 
         infoItems.bindToCollectionView(infoCollection, cellNibName: "ProfileInfoCell")
         infoItems.collectionViewProvider?.configureCollectionCell = { item, cell in
@@ -59,10 +60,20 @@ class ProfileViewController : BaseViewController {
     }
     
     override func updateViewConstraints() {
-        backButton.snp_makeConstraints { make in
-            make.top.equalTo(self.view.superview!); return
+        if !constraintsInstalled {
+            backButton.snp_makeConstraints { make in
+                make.top.equalTo(self.view.superview!); return
+            }
+            constraintsInstalled = true
         }
         super.updateViewConstraints()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        // Automatic preferredMaxLayoutWidth does not seem to work
+        // when label is laid out relative to scroll view contentSize
+        aboutLabel.preferredMaxLayoutWidth = aboutLabel.frame.width
+        super.viewDidLayoutSubviews()
     }
     
     // MARK: -
