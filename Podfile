@@ -13,13 +13,13 @@ pod 'SwiftyUserDefaults', '~> 1.0'
 
 pod 'Facebook-iOS-SDK', '~> 3.22'
 pod 'DateTools', '~> 1.5'
-pod 'SwiftyJSON', '~> 2.1'
-pod 'EDColor', '~> 0.4' # Not used atm because we should never used hardcoded hex color. Prefer StyleKit
+pod 'SwiftyJSON', '~> 2.1' # Not used atm, remove
+pod 'EDColor', '~> 0.4' # Nearly not used atm because we should never used hardcoded hex color. Prefer StyleKit
 #pod 'ExSwift', '~> 0.1.9'
 
 pod 'SwipeView', '~> 1.3'
 pod 'SDWebImage', '~> 3.7'
-pod 'Snap', '~> 0.0.4'
+pod 'Cartography', '~> 0.3'
 pod 'TCMobileProvision', :git => 'https://github.com/tcurdt/TCMobileProvision'
 pod 'JSQMessagesViewController', '~> 6.1'
 

@@ -8,7 +8,7 @@
 
 import UIKit
 import ReactiveCocoa
-import Snap
+import Cartography
 
 let π = CGFloat(M_PI)
 
@@ -44,20 +44,20 @@ extension UIView {
     }
     
     func makeWidthEqualTo(view: UIView) {
-        snp_makeConstraints { make in
-            make.width.equalTo(view); return
+        constrain(self, view) { this, that in
+            this.width == that.width; return
         }
     }
     
     func makeHeightEqualTo(view: UIView) {
-        snp_makeConstraints { make in
-            make.height.equalTo(view); return
+        constrain(self, view) { this, that in
+            this.height == that.height; return
         }
     }
     
     func makeEdgesEqualTo(view: UIView) {
-        snp_makeConstraints { make in
-            make.edges.equalTo(view); return
+        constrain(self, view) { this, that in
+            this.edges == that.edges; return
         }
     }
     

@@ -9,7 +9,7 @@
 import Foundation
 import SwipeView
 import SDWebImage
-import Snap
+import Cartography
 
 @objc(ProfileViewController)
 class ProfileViewController : BaseViewController {
@@ -59,8 +59,8 @@ class ProfileViewController : BaseViewController {
     }
     
     override func updateViewConstraints() {
-        backButton.snp_makeConstraints { make in
-            make.top.equalTo(self.view.superview!); return
+        constrain(backButton, view.superview!) { button, superview in
+            button.top == superview.top; return
         }
         super.updateViewConstraints()
     }
