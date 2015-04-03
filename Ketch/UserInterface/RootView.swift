@@ -82,7 +82,7 @@ class RootView : BaseView {
     }
     
     func setKetchBoatHidden(hidden: Bool) {
-        ketchIcon.hidden = hidden
+        ketchIcon.alpha = hidden ? 0 : 1
         if !hidden {
             // Setup boat pitching animation
             let pitch = CABasicAnimation(keyPath: "transform.rotation")

@@ -140,11 +140,15 @@ class RootViewController : PageViewController {
     }
     
     // MARK: - Temporary
-    override func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
-        if let vc = pendingViewControllers[0] as? GameViewController {
-            rootView.setKetchBoatHidden(false)
-        } else {
+    func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
+        if !(pendingViewControllers[0] is GameViewController) {
             rootView.setKetchBoatHidden(true)
+        }
+    }
+    
+    func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
+        if currentViewController is GameViewController {
+            rootView.setKetchBoatHidden(false)
         }
     }
 }

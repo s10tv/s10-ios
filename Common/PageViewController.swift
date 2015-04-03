@@ -75,7 +75,4 @@ extension PageViewController : UIPageViewControllerDataSource {
 }
 
 extension PageViewController : UIPageViewControllerDelegate {
-    func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
-
-    }
 }
