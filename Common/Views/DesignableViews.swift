@@ -33,25 +33,34 @@ import UIKit
     
     var rawText : String {
         get { return attributedText.string }
-        set(newValue) {
-            let attrString = attributedText.mutableCopy() as NSMutableAttributedString
-            attrString.mutableString.setString(newValue)
-            attributedText = attrString
-        }
+        set { attributedText = attributedText.replace(text: newValue) }
     }
 
     override func awakeFromNib() {
-        let attrString = NSMutableAttributedString(attributedString: attributedText)
-        let range = NSMakeRange(0, attrString.length)
-        attrString.addAttribute(NSFontAttributeName,
-            value:UIFont(name: fontName, size: fontSize)!, range: range)
-        attrString.addAttribute(NSKernAttributeName,
-            value:fontKern, range: range)
-        attributedText = attrString
+        super.awakeFromNib()
+        let font = UIFont(name: fontName, size: fontSize)!
+        attributedText = attributedText.replace(font: font, kern: fontKern)
     }
 }
 
-// Placeholder class to get UIView extension properties to show up in IB
 @IBDesignable class DesignableButton : UIButton {
+    @IBInspectable var fontSize: CGFloat = 13.0
+    @IBInspectable var fontName: String = "TransatTextStandard"
+    @IBInspectable var fontKern: CGFloat = 0
     
+    var attributedText : NSAttributedString? {
+        get { return attributedTitleForState(.Normal) }
+        set { setAttributedTitle(newValue, forState: .Normal) }
+    }
+    
+    var rawText : String? {
+        get { return attributedText?.string }
+        set { attributedText = attributedText?.replace(text: newValue ?? "") }
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        let font = UIFont(name: fontName, size: fontSize)!
+        attributedText = attributedText?.replace(font: font, kern: fontKern)
+    }
 }

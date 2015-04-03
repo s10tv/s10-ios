@@ -153,3 +153,21 @@ extension NSData {
         return str
     }
 }
+
+extension NSAttributedString {
+    func replace(#text: String) -> NSAttributedString {
+        let attrString = mutableCopy() as NSMutableAttributedString
+        attrString.mutableString.setString(text)
+        return attrString
+    }
+    
+    func replace(#font: UIFont, kern: CGFloat) -> NSAttributedString {
+        let attrString = mutableCopy() as NSMutableAttributedString
+        let range = NSMakeRange(0, attrString.length)
+        attrString.addAttribute(NSFontAttributeName,
+            value:font, range: range)
+        attrString.addAttribute(NSKernAttributeName,
+            value:kern, range: range)
+        return attrString
+    }
+}
