@@ -11,7 +11,7 @@ import ReactiveCocoa
 
 class PageViewController : BaseViewController {
     
-    private let pageVC = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
+    let pageVC = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
     var viewControllers : [UIViewController] = []
     var currentViewController : UIViewController? {
         assert(pageVC.viewControllers.count <= 1, "Expecting at most 1 in viewControllers")
@@ -27,6 +27,7 @@ class PageViewController : BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         pageVC.dataSource = self
+        pageVC.delegate = self
         addChildViewController(pageVC)
         view.addSubview(pageVC.view)
         pageVC.didMoveToParentViewController(self)
@@ -70,5 +71,11 @@ extension PageViewController : UIPageViewControllerDataSource {
             return viewControllers.elementAtIndex(index + 1)
         }
         return nil
+    }
+}
+
+extension PageViewController : UIPageViewControllerDelegate {
+    func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
+
     }
 }

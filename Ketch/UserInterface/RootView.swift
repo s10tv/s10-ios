@@ -81,18 +81,24 @@ class RootView : BaseView {
         }
     }
     
+    func setKetchBoatHidden(hidden: Bool) {
+        ketchIcon.hidden = hidden
+        if !hidden {
+            // Setup boat pitching animation
+            let pitch = CABasicAnimation(keyPath: "transform.rotation")
+            pitch.fromValue = 0.2
+            pitch.toValue = -0.2
+            pitch.autoreverses = true
+            pitch.duration = 3
+            pitch.repeatCount = Float.infinity
+            ketchIcon.layer.addAnimation(pitch, forKey: "pitching")
+        }
+    }
+    
     // MARK: -
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
-        // Setup boat pitching animation
-        let pitch = CABasicAnimation(keyPath: "transform.rotation")
-        pitch.fromValue = 0.2
-        pitch.toValue = -0.2
-        pitch.autoreverses = true
-        pitch.duration = 3
-        pitch.repeatCount = Float.infinity
-        ketchIcon.layer.addAnimation(pitch, forKey: "pitching")
+        setKetchBoatHidden(false)
     }
 }

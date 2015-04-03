@@ -26,6 +26,7 @@ class RootViewController : PageViewController {
     var animateDuration : NSTimeInterval = 0.6
     var springDamping : CGFloat = 0.6
     var initialSpringVelocity : CGFloat = 10
+    var rootView : RootView { return self.view as RootView }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -86,17 +87,9 @@ class RootViewController : PageViewController {
     }
     
     @IBAction func showGame(sender: AnyObject) {
+        rootView.setKetchBoatHidden(false)
         scrollTo(viewController: gameVC)
         viewControllers = [gameVC, dockVC]
-    }
-    
-    @IBAction func login(sender: AnyObject) {
-        Core.loginWithUI().subscribeCompleted {
-            self.signupVC.willMoveToParentViewController(nil)
-            self.signupVC.view.removeFromSuperview()
-            self.signupVC.removeFromParentViewController()
-            self.showGame(self)
-        }
     }
     
     func showProfile(user: User, animated: Bool) {
@@ -120,6 +113,7 @@ class RootViewController : PageViewController {
     }
     
     func showSignup(animated: Bool) {
+        rootView.setKetchBoatHidden(true)
         dismissViewController(animated: false)
         addChildViewController(signupVC)
         view.addSubview(signupVC.view)
@@ -127,10 +121,30 @@ class RootViewController : PageViewController {
         signupVC.didMoveToParentViewController(self)
     }
     
+    @IBAction func login(sender: AnyObject) {
+        Core.loginWithUI().subscribeCompleted {
+            self.signupVC.willMoveToParentViewController(nil)
+            self.signupVC.view.removeFromSuperview()
+            self.signupVC.removeFromParentViewController()
+            self.pageVC.view.hidden = false
+            self.showGame(self)
+        }
+    }
+    
     @IBAction func logout(sender: AnyObject) {
+        pageVC.view.hidden = true // TODO: Refactor me
         showSignup(true)
         Core.logout().subscribeCompleted {
             Log.info("Signed out")
+        }
+    }
+    
+    // MARK: - Temporary
+    override func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
+        if let vc = pendingViewControllers[0] as? GameViewController {
+            rootView.setKetchBoatHidden(false)
+        } else {
+            rootView.setKetchBoatHidden(true)
         }
     }
 }
