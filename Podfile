@@ -17,7 +17,7 @@ pod 'DateTools', '~> 1.5'
 pod 'SwipeView', '~> 1.3'
 pod 'SDWebImage', '~> 3.7'
 pod 'Cartography', '~> 0.3'
-pod 'TCMobileProvision', :git => 'https://github.com/tcurdt/TCMobileProvision'
+pod 'TCMobileProvision', :git => 'https://github.com/tonyxiao/TCMobileProvision.git'
 pod 'JSQMessagesViewController', '~> 6.1'
 
 pod 'CrashlyticsFramework', '~> 2.2'

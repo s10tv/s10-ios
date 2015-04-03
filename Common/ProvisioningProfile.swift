@@ -29,11 +29,11 @@ class ProvisioningProfile {
         let hasProvisionedDevices = info["ProvisionedDevices"] != nil
         let provisionAllDevices = info["ProvisionsAllDevices"] as? Bool ?? false
         switch (getTaskAllow, hasProvisionedDevices, provisionAllDevices) {
-        case (true, true, false): return .Development
-        case (false, false, true): return .Enterprise
-        case (false, true, false): return .Adhoc
-        case (false, false, false): return .AppStore
-        default: return .AppStore
+            case (true, true, false): return .Development
+            case (false, false, true): return .Enterprise
+            case (false, true, false): return .Adhoc
+            case (false, false, false): return .AppStore
+            default: return .AppStore
         }
     }
     var apsEnvironment : ApsEnvironment? {
