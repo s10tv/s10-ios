@@ -39,10 +39,6 @@ class SettingsViewController : BaseViewController {
             aboutLabel.rawText = user.about!
         }
     }
-    
-    @IBAction func giveFeedback(sender: AnyObject) {
-        
-    }
 
     // every time text is changed, check to see if it is 'delete'
     func textChanged(sender:AnyObject) {
