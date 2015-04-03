@@ -42,6 +42,9 @@ class Environment {
     
     class func configureFromEmbeddedProvisioningProfile() -> Environment {
         func audienceFromProfile(profile: ProvisioningProfile?) -> Audience {
+            if TARGET_IPHONE_SIMULATOR == 1 {
+                return .Dev
+            }
             let profileType = profile?.type ?? .AppStore
             switch profileType {
                 case .Development:      return .Dev
