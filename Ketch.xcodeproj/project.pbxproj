@@ -89,6 +89,8 @@
 		EAAA42891AB24D6900056EFF /* ChoiceBucket.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAA42881AB24D6900056EFF /* ChoiceBucket.swift */; };
 		EAAA428B1AB2522E00056EFF /* FloatBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAA428A1AB2522E00056EFF /* FloatBox.swift */; };
 		EAAD921B1ACDEACD0014BA25 /* NewMatchTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921A1ACDEACD0014BA25 /* NewMatchTransition.swift */; };
+		EAAD921D1ACF342C0014BA25 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921C1ACF342C0014BA25 /* Environment.swift */; };
+		EAAD921F1ACF4EFA0014BA25 /* ProvisioningProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921E1ACF4EFA0014BA25 /* ProvisioningProfile.swift */; };
 		EAB54E3D1AA0E2EB00A44883 /* SettingsBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB54E3C1AA0E2EB00A44883 /* SettingsBackgroundView.swift */; };
 		EAC8D3F61AA7269F00BCB7B9 /* FetchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9311A87DE5800D62625 /* FetchViewModel.swift */; };
 		EAC8D3F71AA7278900BCB7B9 /* ViewProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9321A87DE5800D62625 /* ViewProviders.swift */; };
@@ -223,6 +225,8 @@
 		EAAA42881AB24D6900056EFF /* ChoiceBucket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoiceBucket.swift; sourceTree = "<group>"; };
 		EAAA428A1AB2522E00056EFF /* FloatBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatBox.swift; sourceTree = "<group>"; };
 		EAAD921A1ACDEACD0014BA25 /* NewMatchTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMatchTransition.swift; sourceTree = "<group>"; };
+		EAAD921C1ACF342C0014BA25 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		EAAD921E1ACF4EFA0014BA25 /* ProvisioningProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvisioningProfile.swift; sourceTree = "<group>"; };
 		EAB54E3C1AA0E2EB00A44883 /* SettingsBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsBackgroundView.swift; sourceTree = "<group>"; };
 		EABD43D81AA1D28700B07813 /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
 		EABD43D91AA1D29C00B07813 /* Beta.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
@@ -319,6 +323,7 @@
 				EA0FC9241A87DE5800D62625 /* Logging.swift */,
 				EA409D381A8C681A00988B8B /* FacebookExtension.swift */,
 				EA7AA3641AA25D21003383BE /* SBConstantsExtension.swift */,
+				EAAD921E1ACF4EFA0014BA25 /* ProvisioningProfile.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -467,6 +472,7 @@
 				EA6650F51AA00B95001BA40C /* Message.swift */,
 				EA6650F61AA00B95001BA40C /* User.swift */,
 				EAE915311ACAFC890027C936 /* UserDefaults.swift */,
+				EAAD921C1ACF342C0014BA25 /* Environment.swift */,
 				EA5634DF1A7741FF00F62B52 /* Ketch.xcdatamodeld */,
 			);
 			path = Models;
@@ -883,6 +889,7 @@
 				EAF3A4C11ACA22C2001C2943 /* ProfileInfoCell.swift in Sources */,
 				EA6650E81AA00A82001BA40C /* UserAvatarView.swift in Sources */,
 				EA0FC9371A87DE5800D62625 /* BaseViewController.swift in Sources */,
+				EAAD921D1ACF342C0014BA25 /* Environment.swift in Sources */,
 				EA6650FA1AA00B95001BA40C /* _User.swift in Sources */,
 				EA0FC9351A87DE5800D62625 /* MeteorExtension.swift in Sources */,
 				EA6650F71AA00B95001BA40C /* _Candidate.swift in Sources */,
@@ -922,6 +929,7 @@
 				EA6650E61AA00A82001BA40C /* WaveView.swift in Sources */,
 				EA6650EC1AA00A9C001BA40C /* CandidateService.swift in Sources */,
 				EAAA42871AB24D5F00056EFF /* CandidateBubble.swift in Sources */,
+				EAAD921F1ACF4EFA0014BA25 /* ProvisioningProfile.swift in Sources */,
 				EA2AB70E1A8A00F200D42C6C /* GameViewController.swift in Sources */,
 				EA0FC9431A87DE5800D62625 /* FetchViewModel.swift in Sources */,
 				EA396FF01AB52BF8009EB60B /* PageViewController.swift in Sources */,

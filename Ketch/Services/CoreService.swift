@@ -11,12 +11,8 @@ import ReactiveCocoa
 import FacebookSDK
 import SugarRecord
 import Meteor
-import TCMobileProvision
 
 class CoreService {
-    let serverHostname = "ketch-dev.herokuapp.com"
-//    let serverHostname = "localhost:3000"
-
     let meteor : METCoreDataDDPClient
     let candidateService : CandidateService
     var mainContext : NSManagedObjectContext! {
@@ -29,7 +25,7 @@ class CoreService {
     var currentUserSubscription : METSubscription!
     
     init() {
-        meteor = METCoreDataDDPClient(serverURL: NSURL(string: "ws://\(serverHostname)/websocket"))
+        meteor = METCoreDataDDPClient(serverURL: Env.serverURL)
         
         // Set up CoreData
         SugarRecord.addStack(MeteorCDStack(meteor: meteor))
@@ -101,22 +97,16 @@ class CoreService {
     }
     
     func addPushToken(pushTokenData: NSData) {
-        let mobileProvisionPath = NSBundle.mainBundle().bundlePath.stringByAppendingPathComponent("embedded.mobileprovision")
-        let mobileProvisionData = NSData.dataWithContentsOfMappedFile(mobileProvisionPath) as NSData
-        let mobileProvision = TCMobileProvision(data: mobileProvisionData)
-        let entitlements = mobileProvision.dict["Entitlements"] as NSDictionary
-        let apsEnv = entitlements["aps-environment"] as NSString
-        
-        let appid = NSBundle.mainBundle().infoDictionary?["CFBundleIdentifier"] as NSString
-        
-        // TODO: This doesn't seem to update on app force kill and restart, but it should
-        self.loginSignal.then({ () -> RACSignal! in
-            return self.meteor.callMethod("user/addPushToken", params: [appid, apsEnv, pushTokenData.hexString()])
-        }).subscribeError({ error in
-            println("Failed to add push token \(error)")
-        }, completed: {
-            println("Succeeded sending push token to server")
-        })
+        if let apsEnv = Env.provisioningProfile?.apsEnvironment?.rawValue {
+            // TODO: This doesn't seem to update on app force kill and restart, but it should
+            self.loginSignal.then({ () -> RACSignal! in
+                return self.meteor.callMethod("user/addPushToken", params: [Env.appID, apsEnv, pushTokenData.hexString()])
+            }).subscribeError({ error in
+                println("Failed to add push token \(error)")
+                }, completed: {
+                    println("Succeeded sending push token to server")
+            })
+        }
     }
     
     func loginWithUI() -> RACSignal {
