@@ -129,6 +129,7 @@ class CoreService {
         return meteor.logout().deliverOnMainThread().doCompleted({
             FBSession.activeSession().closeAndClearTokenInformation()
             self.mainContext.reset()
+            UD.resetAll()
         }).replay()
     }
 }

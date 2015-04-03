@@ -23,21 +23,28 @@ enum UserDefaultKey : String {
         }
     }
     static let allKeys = [bGameTutorialMode]
-    static func registerDefaultValues() {
-        for key in allKeys {
-            if let value = key.defaultValue() {
-                Defaults[key] ?= value
-            }
-        }
-    }
 }
 
 extension NSUserDefaults {
     subscript(key: UserDefaultKey) -> Proxy {
         return self[key.rawValue]
     }
+    
     subscript(key: UserDefaultKey) -> Any? {
         get { return self[key.rawValue] }
         set { self[key.rawValue] = newValue }
+    }
+    
+    func registerDefaultValues() {
+        for key in UserDefaultKey.allKeys {
+            if let value = key.defaultValue() {
+                Defaults[key] ?= value
+            }
+        }
+    }
+    
+    func resetAll() {
+        removePersistentDomainForName(NSBundle.mainBundle().bundleIdentifier!)
+        registerDefaultValues()
     }
 }

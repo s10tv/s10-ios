@@ -28,7 +28,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
         // TODO: Put api key into unified settings file
         Crashlytics.sharedInstance().delegate = self
         Crashlytics.startWithAPIKey("4cdb005d0ddfebc8865c0a768de9b43c993e9113")
-        UserDefaultKey.registerDefaultValues()
+        UD.registerDefaultValues()
         Core = CoreService()
         
         Log.info("App Launched")
