@@ -32,14 +32,6 @@ class RootViewController : PageViewController {
         super.viewDidLoad()
         
         viewControllers = [gameVC, dockVC]
-        let view = self.view as RootView
-        
-        view.whenSwiped(.Down) {
-            view.animateHorizon(offset: 100, fromTop: false); return
-        }
-        view.whenSwiped(.Up) {
-            view.animateHorizon(offset: 60); return
-        }
         
         // If server logs us out, then let's also log out of the UI
         listenForNotification(METDDPClientDidChangeAccountNotification).filter { _ in
@@ -56,11 +48,11 @@ class RootViewController : PageViewController {
 
         // Try login now
         if !Core.attemptLoginWithCachedCredentials() {
-            view.loadingView.hidden = true
+            self.rootView.loadingView.hidden = true
             showSignup(false)
         } else {
             Core.currentUserSubscription.signal.deliverOnMainThread().subscribeCompleted {
-                view.loadingView.hidden = true
+                self.rootView.loadingView.hidden = true
                 self.scrollTo(viewController: self.gameVC, animated: false)
                 return
             }
