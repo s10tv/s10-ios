@@ -11,4 +11,12 @@ import Foundation
 @objc(SignupViewController)
 class SignupViewController : BaseViewController {
     
+    @IBAction func viewTerms(sender: AnyObject) {
+        UIApplication.sharedApplication().openURL(NSURL(string: "http://ketchtheone.com/terms.html")!)
+    }
+    
+    @IBAction func viewPrivacy(sender: AnyObject) {
+        UIApplication.sharedApplication().openURL(NSURL(string: "http://ketchtheone.com/privacy.html")!)
+    }
+    
 }

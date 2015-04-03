@@ -53,7 +53,7 @@ get ready for it and have fun!</string>
                     </userDefinedRuntimeAttributes>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SdM-8k-H6p" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
-                    <rect key="frame" x="62" y="428" width="250" height="55"/>
+                    <rect key="frame" x="62" y="465" width="250" height="55"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="250" id="SSN-ig-Qsc"/>
@@ -81,24 +81,84 @@ get ready for it and have fun!</string>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4AJ-Q8-LAW">
-                    <rect key="frame" x="91" y="495" width="192" height="28"/>
+                    <rect key="frame" x="91" y="532" width="192" height="28"/>
                     <string key="text">We never post anything, 
 you got nothing to worry about.</string>
                     <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="14"/>
                     <color key="textColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="daz-8j-ujW">
+                    <rect key="frame" x="143" y="601" width="88" height="26"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="feR-4L-bJF" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="0.0" width="36" height="26"/>
+                            <state key="normal">
+                                <attributedString key="attributedTitle">
+                                    <fragment content="Terms">
+                                        <attributes>
+                                            <color key="NSColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="TransatTextStandard"/>
+                                            <integer key="NSUnderline" value="1"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                    <real key="value" value="14"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="viewTerms:" destination="-1" eventType="touchUpInside" id="rzd-wn-cCZ"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lf5-XG-tnV" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
+                            <rect key="frame" x="44" y="0.0" width="44" height="26"/>
+                            <state key="normal">
+                                <attributedString key="attributedTitle">
+                                    <fragment content="Privacy">
+                                        <attributes>
+                                            <color key="NSColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="14" name="TransatTextStandard"/>
+                                            <integer key="NSUnderline" value="1"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                            </state>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                    <real key="value" value="14"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                            <connections>
+                                <action selector="viewPrivacy:" destination="-1" eventType="touchUpInside" id="nSF-IX-IdE"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="feR-4L-bJF" firstAttribute="top" secondItem="daz-8j-ujW" secondAttribute="top" id="DI9-dX-ly6"/>
+                        <constraint firstAttribute="bottom" secondItem="feR-4L-bJF" secondAttribute="bottom" id="ITh-8o-vn3"/>
+                        <constraint firstItem="lf5-XG-tnV" firstAttribute="leading" secondItem="feR-4L-bJF" secondAttribute="trailing" constant="8" id="QDj-MB-VbT"/>
+                        <constraint firstItem="feR-4L-bJF" firstAttribute="leading" secondItem="daz-8j-ujW" secondAttribute="leading" id="Yze-3B-HMK"/>
+                        <constraint firstItem="lf5-XG-tnV" firstAttribute="centerY" secondItem="feR-4L-bJF" secondAttribute="centerY" id="eRW-Xo-lbA"/>
+                        <constraint firstAttribute="trailing" secondItem="lf5-XG-tnV" secondAttribute="trailing" id="lZO-e2-0NT"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.2627450980392157" green="0.87058823529411766" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="4AJ-Q8-LAW" firstAttribute="top" secondItem="SdM-8k-H6p" secondAttribute="bottom" constant="12" id="6mL-8t-RvF"/>
                 <constraint firstItem="4AJ-Q8-LAW" firstAttribute="centerX" secondItem="SdM-8k-H6p" secondAttribute="centerX" id="8HU-oF-OJ8"/>
+                <constraint firstAttribute="bottom" secondItem="daz-8j-ujW" secondAttribute="bottom" constant="40" id="BAU-P5-7LA"/>
                 <constraint firstItem="awQ-vi-2op" firstAttribute="centerX" secondItem="nu5-Dd-8Z5" secondAttribute="centerX" id="CaG-Fu-Jgq"/>
                 <constraint firstAttribute="centerX" secondItem="nu5-Dd-8Z5" secondAttribute="centerX" id="JfZ-fT-7Pd"/>
-                <constraint firstItem="SdM-8k-H6p" firstAttribute="top" secondItem="awQ-vi-2op" secondAttribute="bottom" constant="43" id="TDD-hp-Flf"/>
+                <constraint firstItem="SdM-8k-H6p" firstAttribute="top" secondItem="awQ-vi-2op" secondAttribute="bottom" constant="80" id="TDD-hp-Flf"/>
                 <constraint firstItem="awQ-vi-2op" firstAttribute="top" secondItem="nu5-Dd-8Z5" secondAttribute="bottom" constant="40" id="Xed-vH-XKf"/>
                 <constraint firstAttribute="centerY" secondItem="nu5-Dd-8Z5" secondAttribute="centerY" constant="110" id="YZf-HW-xfU"/>
-                <constraint firstItem="SdM-8k-H6p" firstAttribute="centerX" secondItem="awQ-vi-2op" secondAttribute="centerX" constant="-0.5" id="vzV-9I-YVq"/>
+                <constraint firstAttribute="centerX" secondItem="daz-8j-ujW" secondAttribute="centerX" id="afC-o7-0Uq"/>
+                <constraint firstItem="SdM-8k-H6p" firstAttribute="centerX" secondItem="awQ-vi-2op" secondAttribute="centerX" id="vzV-9I-YVq"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
             <point key="canvasLocation" x="392.5" y="487.5"/>
