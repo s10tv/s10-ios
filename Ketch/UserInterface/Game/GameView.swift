@@ -173,7 +173,8 @@ class GameView : TransparentView {
             bubbles.map { self.animator.removeBehavior($0.drag) }
             let expectedLocation = bubble.center + pan.velocityInView(self) * velocityFactor
             bubble.dropzone = closestTarget(expectedLocation) { !$0.isOccupied }
-            confirmButton.hidden = !isReady
+            let showConfirm = isReady
+            confirmButton.hidden = !showConfirm
             if bubble.dropzone is FloatBox {
                 UIView.animateWithDuration(0.25) {
                     self.helpText.alpha = 0
@@ -187,11 +188,13 @@ class GameView : TransparentView {
                     UIView.animateWithDuration(0.25, animations: {
                         self.helpText.alpha = 1
                     }, completion: { _ in
-                        UIView.animateWithDuration(0.25, delay: 2, options: nil, animations: {
+                        UIView.animateWithDuration(0.25, delay: 1, options: nil, animations: {
                             self.helpText.alpha = 0
                         }, completion: { _ in
-                            UIView.animateWithDuration(0.5) {
-                                self.confirmButton.alpha = 1
+                            if showConfirm {
+                                UIView.animateWithDuration(0.5) {
+                                    self.confirmButton.alpha = 1
+                                }
                             }
                         })
                     })
