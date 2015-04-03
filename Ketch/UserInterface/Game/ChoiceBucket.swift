@@ -13,25 +13,23 @@ class ChoiceBucket : UIImageView, CandidateDropZone {
     var snap : UISnapBehavior?
     var choice : Candidate.Choice!
     weak var bubble : CandidateBubble?
-    var emphasized: Bool = false {
-        didSet {
-            if emphasized {
-                alpha = 1
-                tintColor = UIColor.whiteColor()
-            } else {
-                alpha = 0.5
-                tintColor = StyleKit.teal
-            }
-        }
-    }
+    var emphasized: Bool = false { didSet { updateAlphaAndTint() } }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         image = image?.imageWithRenderingMode(.AlwaysTemplate)
-        tintColor = StyleKit.teal
+        updateAlphaAndTint()
     }
     
-
+    func updateAlphaAndTint() {
+        if emphasized {
+            alpha = 1
+            tintColor = UIColor.whiteColor()
+        } else {
+            alpha = 0.4
+            tintColor = StyleKit.teal
+        }
+    }
 }
 
 extension ChoiceBucket : CandidateDropZone {
