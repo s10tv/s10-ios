@@ -17,6 +17,7 @@
                 <outlet property="infoCollection" destination="kHN-3G-ecZ" id="qvc-FM-Gap"/>
                 <outlet property="nameLabel" destination="yTD-bt-yNd" id="qBt-ZQ-Kbb"/>
                 <outlet property="pageControl" destination="zkL-na-OA5" id="ULz-Zp-2hL"/>
+                <outlet property="reportUserButton" destination="Ced-fy-WtN" id="hFy-Iq-eX0"/>
                 <outlet property="swipeView" destination="8A2-xC-PLX" id="jai-xp-Lkk"/>
                 <outlet property="view" destination="LXu-5e-xa8" id="XRg-na-8dV"/>
             </connections>
@@ -31,9 +32,27 @@
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8A2-xC-PLX" userLabel="Photos" customClass="SwipeView">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ced-fy-WtN">
+                                    <rect key="frame" x="250" y="0.0" width="70" height="50"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="50" id="D8b-Ya-P7T"/>
+                                        <constraint firstAttribute="width" constant="70" id="xqQ-S5-mFL"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                                    <state key="normal" title="Report">
+                                        <color key="titleColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="reportUserButtonClicked:" destination="-1" eventType="touchUpInside" id="WIi-lQ-0CT"/>
+                                    </connections>
+                                </button>
+                            </subviews>
                             <color key="backgroundColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
+                                <constraint firstAttribute="trailing" secondItem="Ced-fy-WtN" secondAttribute="trailing" id="1bl-mG-wlr"/>
                                 <constraint firstAttribute="width" secondItem="8A2-xC-PLX" secondAttribute="height" multiplier="1:1" id="DEw-Ka-8LJ"/>
+                                <constraint firstItem="Ced-fy-WtN" firstAttribute="top" secondItem="8A2-xC-PLX" secondAttribute="top" id="d8Z-4v-kP5"/>
                             </constraints>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="nM1-tx-0yW"/>
@@ -97,7 +116,7 @@
                                     <string key="content">I usually don't message people first, so if you're interested please message me! I'm not interested in hooking up, message me if you're curious about what I am looking for! </string>
                                     <attributes>
                                         <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                        <font key="NSFont" size="16" name="TransatTextStandard"/>
+                                        <font key="NSFont" metaFont="system" size="16"/>
                                         <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" minimumLineHeight="20"/>
                                     </attributes>
                                 </fragment>
@@ -145,7 +164,7 @@
                 <constraint firstItem="iN0-l3-epB" firstAttribute="leading" secondItem="LXu-5e-xa8" secondAttribute="leading" id="dIM-vZ-wDc"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-            <point key="canvasLocation" x="95" y="548.5"/>
+            <point key="canvasLocation" x="63" y="546.5"/>
         </scrollView>
     </objects>
     <resources>

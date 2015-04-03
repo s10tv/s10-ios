@@ -14,12 +14,15 @@ import Cartography
 @objc(ProfileViewController)
 class ProfileViewController : BaseViewController {
 
+    @IBOutlet weak var reportUserButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var swipeView: SwipeView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var infoCollection: UICollectionView!
     @IBOutlet weak var aboutLabel: DesignableLabel!
+    
+    var reportUserTextField: UITextField?
     
     var infoItems = ArrayViewModel(content: [ProfileInfoItem]())
     
@@ -36,6 +39,22 @@ class ProfileViewController : BaseViewController {
     convenience init(user: User) {
         self.init()
         self.user = user
+    }
+    @IBAction func reportUserButtonClicked(sender: AnyObject) {
+        if let currentUser = User.currentUser() {
+            // TODO: refactor this into strings.
+            let alert = UIAlertController(title: "Thank you for your feedback", message: "Why did you report this user?", preferredStyle: UIAlertControllerStyle.Alert)
+            alert.addTextFieldWithConfigurationHandler { textField in
+                self.reportUserTextField = textField
+            }
+            alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Default, handler: nil))
+            alert.addAction(UIAlertAction(title: "Confirm", style: UIAlertActionStyle.Default, handler: { action in
+                let userIdInView : String? = self.user?.documentID
+                let reportReason : String? = self.reportUserTextField?.text
+                Core.meteor.callMethod("user/report", params: [userIdInView!, currentUser.documentID!, reportReason!])
+            }))
+            self.presentViewController(alert, animated: true, completion: nil)
+        }
     }
     
     override func viewDidLoad() {
