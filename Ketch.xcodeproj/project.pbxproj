@@ -64,6 +64,7 @@
 		EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA5634DF1A7741FF00F62B52 /* Ketch.xcdatamodeld */; };
 		EA6077781ACF6E1E00B3A19A /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6077771ACF6E1E00B3A19A /* PermissionViewController.swift */; };
 		EA60777A1ACF6E2F00B3A19A /* PermissionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA6077791ACF6E2F00B3A19A /* PermissionView.xib */; };
+		EA60777C1ACF796600B3A19A /* PermissionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA60777B1ACF796600B3A19A /* PermissionType.swift */; };
 		EA6650E11AA00999001BA40C /* BaseViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E01AA00999001BA40C /* BaseViews.swift */; };
 		EA6650E61AA00A82001BA40C /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E31AA00A82001BA40C /* WaveView.swift */; };
 		EA6650E81AA00A82001BA40C /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E51AA00A82001BA40C /* UserAvatarView.swift */; };
@@ -197,6 +198,7 @@
 		EA5634E01A7741FF00F62B52 /* Ketch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ketch.xcdatamodel; sourceTree = "<group>"; };
 		EA6077771ACF6E1E00B3A19A /* PermissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
 		EA6077791ACF6E2F00B3A19A /* PermissionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PermissionView.xib; sourceTree = "<group>"; };
+		EA60777B1ACF796600B3A19A /* PermissionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionType.swift; sourceTree = "<group>"; };
 		EA6650E01AA00999001BA40C /* BaseViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViews.swift; sourceTree = "<group>"; };
 		EA6650E31AA00A82001BA40C /* WaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
 		EA6650E51AA00A82001BA40C /* UserAvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAvatarView.swift; sourceTree = "<group>"; };
@@ -477,6 +479,7 @@
 				EA6650F61AA00B95001BA40C /* User.swift */,
 				EAE915311ACAFC890027C936 /* UserDefaults.swift */,
 				EAAD921C1ACF342C0014BA25 /* Environment.swift */,
+				EA60777B1ACF796600B3A19A /* PermissionType.swift */,
 				EA5634DF1A7741FF00F62B52 /* Ketch.xcdatamodeld */,
 			);
 			path = Models;
@@ -924,6 +927,7 @@
 				EAE63D781AB32BC4004A74E6 /* ProgressIndicator.swift in Sources */,
 				EAAA428B1AB2522E00056EFF /* FloatBox.swift in Sources */,
 				EA0FC93B1A87DE5800D62625 /* Segue.swift in Sources */,
+				EA60777C1ACF796600B3A19A /* PermissionType.swift in Sources */,
 				EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */,
 				EAF4D7621A79AA5E00D35330 /* RootViewController.swift in Sources */,
 				EA0FC9361A87DE5800D62625 /* SugarRecordExtension.swift in Sources */,

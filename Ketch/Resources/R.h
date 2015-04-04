@@ -111,6 +111,18 @@ extern const struct R {
         __unsafe_unretained NSString *itsAKetch;
         /// SAY YES NOW
         __unsafe_unretained NSString *marryPrompt;
+        /// Facebook access
+        __unsafe_unretained NSString *permFacebookButtonTitle;
+        /// We use your Facebook profile to get photos and bio. We never post without your permission.
+        __unsafe_unretained NSString *permFacebookExplanation;
+        /// Grant location access
+        __unsafe_unretained NSString *permLocationButtonTitle;
+        /// We use your rough location to find you matches nearby. We never share your address with anyone.
+        __unsafe_unretained NSString *permLocationExplanation;
+        /// Enable notifications
+        __unsafe_unretained NSString *permNotificationsButtonTitle;
+        /// We send you notifications to let you know when you’ve got a message or somone said they liked you too.
+        __unsafe_unretained NSString *permNotificationsExplanation;
         /// %@ likes you! Your dreamboat will sail off in three days. Get on it before %@ disappears for good!
         __unsafe_unretained NSString *singleMatchPrompt;
         /// SAY NO POLITELY

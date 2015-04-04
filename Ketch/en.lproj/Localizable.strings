@@ -6,11 +6,22 @@
   Copyright (c) 2015 Ketch. All rights reserved.
 */
 
-"It's a Ketch!" = "It's a Ketch!";
-"SingleMatchPrompt" = "%@ likes you! Your dreamboat will sail off in three days. Get on it before %@ disappears for good!";
+/* Game Screen */
 "ThreeMatchesPrompt" = "YOU’LL SEE THREE POTENTIAL MATCHES";
 "ThreeChoicesPrompt" = "AND YOU’LL HAVE THREE CHOICES";
 "DragMatchsToChoices" = "DECIDE WHAT YOU PREFER";
 "SkipPrompt" = "SAY NO POLITELY";
 "MarryPrompt" = "SAY YES NOW";
 "SnoozePrompt" = "SEE AGAIN LATER";
+
+/* New Match Screen */
+"It's a Ketch!" = "It's a Ketch!";
+"SingleMatchPrompt" = "%@ likes you! Your dreamboat will sail off in three days. Get on it before %@ disappears for good!";
+
+/* Permission Screen */
+"PermFacebookButtonTitle" = "Facebook access";
+"PermNotificationsButtonTitle" = "Enable notifications";
+"PermLocationButtonTitle" = "Grant location access";
+"PermFacebookExplanation" = "We use your Facebook profile to get photos and bio. We never post without your permission.";
+"PermNotificationsExplanation" = "We send you notifications to let you know when you’ve got a message or somone said they liked you too.";
+"PermLocationExplanation" = "We use your rough location to find you matches nearby. We never share your address with anyone.";

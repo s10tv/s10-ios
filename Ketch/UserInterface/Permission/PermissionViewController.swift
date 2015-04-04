@@ -10,21 +10,9 @@ import Foundation
 
 @objc(PermissionViewController)
 class PermissionViewController : BaseViewController {
-    enum Type {
-        case Facebook, Notifications, Location
-        var imageName : String {
-            switch self {
-                case .Facebook:      return R.ImagesAssets.permFacebook
-                case .Notifications: return R.ImagesAssets.permNotifications
-                case .Location:      return R.ImagesAssets.permLocation
-            }
-        }
-        var image : UIImage {
-            return UIImage(named: imageName)!
-        }
-    }
     
-    var permissionType : Type!
+    
+    var permissionType : PermissionType!
     
     override func viewDidLoad() {
         super.viewDidLoad()
