@@ -119,6 +119,7 @@ extension ChatViewController : JSQMessagesCollectionViewDataSource {
         // This doesn't work if layout changes (say diff avatar size). So need to figure out better way
         cell.avatarImageView.makeCircular()
         cell.textView.textColor = StyleKit.navy
+        cell.textView.font = UIFont(.TransatTextLight, size: 17)
         return cell
     }
     

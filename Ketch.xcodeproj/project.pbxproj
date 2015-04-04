@@ -100,6 +100,7 @@
 		EAAD921F1ACF4EFA0014BA25 /* ProvisioningProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921E1ACF4EFA0014BA25 /* ProvisioningProfile.swift */; };
 		EAB54E3D1AA0E2EB00A44883 /* SettingsBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB54E3C1AA0E2EB00A44883 /* SettingsBackgroundView.swift */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
+		EABF2AB91AD04E90005880E7 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABF2AB81AD04E90005880E7 /* Fonts.swift */; };
 		EAC8D3F61AA7269F00BCB7B9 /* FetchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9311A87DE5800D62625 /* FetchViewModel.swift */; };
 		EAC8D3F71AA7278900BCB7B9 /* ViewProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9321A87DE5800D62625 /* ViewProviders.swift */; };
 		EAC8D3F81AA7289400BCB7B9 /* ArrayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC92F1A87DE5800D62625 /* ArrayViewModel.swift */; };
@@ -247,6 +248,7 @@
 		EABD43D91AA1D29C00B07813 /* Beta.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
 		EABD43DA1AA1D29C00B07813 /* Prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
 		EABF2AB41AD04659005880E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EABF2AB81AD04E90005880E7 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
 		EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableViews.swift; sourceTree = "<group>"; };
 		EAE63D771AB32BC4004A74E6 /* ProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
 		EAE63D791AB3407D004A74E6 /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootView.xib; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 		EA37776C1A966E380055DE99 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				EABF2AB81AD04E90005880E7 /* Fonts.swift */,
 				EA31049A1A99C3850069D6AD /* KetchIcon.swift */,
 				EA02CCF11A96ED03004C3009 /* KetchIcon.otf */,
 				EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */,
@@ -966,6 +969,7 @@
 				EA6650FB1AA00B95001BA40C /* Candidate.swift in Sources */,
 				EA0FC9421A87DE5800D62625 /* BaseViewModel.swift in Sources */,
 				EA31049B1A99C3850069D6AD /* KetchIcon.swift in Sources */,
+				EABF2AB91AD04E90005880E7 /* Fonts.swift in Sources */,
 				EA0FC9381A87DE5800D62625 /* FoundationExtension.swift in Sources */,
 				EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */,
 				EA6650FD1AA00B95001BA40C /* Message.swift in Sources */,
