@@ -100,11 +100,12 @@ extension String {
 
 extension Array {
 
-    /**
-    Deletes all the items in self that are equal to element.
+    // TODO: Make mapOptional even more generic and non-specific to arrays
+    func mapOptional<U>(transform: T -> U?) -> [U] {
+        return self.map { transform($0) }.filter { $0 != nil }.map { $0! }
+    }
     
-    :param: element Element to remove
-    */
+    // Deletes all the items in self that are equal to element.
     mutating func remove <U: Equatable> (element: U) {
         let anotherSelf = self
         removeAll(keepCapacity: true)

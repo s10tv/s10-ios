@@ -38,19 +38,15 @@ class User: _User {
     }
     
     var infoItems : [ProfileInfoItem] {
-        return ([
+        let items : [(ProfileInfoItem.ItemType, Any?)] = [
             (.Location, location),
             (.Age, age),
             (.Height, height),
             (.Work, work),
             (.Education, education)
-        ] as [(ProfileInfoItem.ItemType, Any?)])
-            .reduce([ProfileInfoItem]()) { (result, item) in
-            let (type, value) = item
-            if let value = value {
-                return result + [ProfileInfoItem(type: type, value: value)]
-            }
-            return result
+        ]
+        return items.mapOptional { (type, value) -> ProfileInfoItem? in
+            value != nil ? ProfileInfoItem(type: type, value: value!) : nil
         }
     }
     
