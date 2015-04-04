@@ -1,5 +1,10 @@
 # Ketch-iOS [![Circle CI](https://circleci.com/gh/Ketchteam/ketch-ios/tree/master.svg?style=svg&circle-token=fd4466969ab998ed3ab739c0a526fade067abe24)](https://circleci.com/gh/Ketchteam/ketch-ios/tree/master)
 
+## Updating Language
+Edit the following two files
+[InfoPlist.strings](https://github.com/Ketchteam/ketch-ios/blob/master/Ketch/en.lproj/InfoPlist.strings)
+[Localizable.strings](https://github.com/Ketchteam/ketch-ios/blob/master/Ketch/en.lproj/Localizable.strings)
+
 ## Getting started
 ```
 brew install mogenerator
@@ -9,6 +14,12 @@ pod install
 ```
 
 Open `Ketch.xcworkspace` and start developing
+
+## Developing
+
+Follow [raywenderlich's swift style guide](https://github.com/raywenderlich/swift-style-guide)
+
+Except we'll leave 4 spaces instead of two space for indentation. 
 
 ## Make IPAs
 By default project should be building with dev configuration. To change, use explicity xcconfig
