@@ -37,6 +37,7 @@ const struct R R = {
         .settingsLocation = @"settings-icon-location",
         .settingsMortarBoard = @"settings-icon-mortarBoard",
         .settingsNotepad = @"settings-icon-notepad",
+        .waitlistClouds = @"waitlist-clouds",
     },
     .JSQMessagesAssets = {
         .sBubbleMin = @"Images/bubble_min.png",
@@ -64,6 +65,7 @@ const struct R R = {
         .marryPrompt = @"MarryPrompt",
         .moreSheetCancel = @"MoreSheetCancel",
         .moreSheetReport = @"MoreSheetReport",
+        .nsLocationWhenInUseUsageDescription = @"NSLocationWhenInUseUsageDescription",
         .permFacebookButtonTitle = @"PermFacebookButtonTitle",
         .permFacebookExplanation = @"PermFacebookExplanation",
         .permLocationButtonTitle = @"PermLocationButtonTitle",

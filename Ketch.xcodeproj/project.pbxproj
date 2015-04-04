@@ -81,6 +81,8 @@
 		EA7004621ACF912A00D0E467 /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA7004641ACF912A00D0E467 /* Signup.storyboard */; };
 		EA7004661ACF9B7900D0E467 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7004651ACF9B7900D0E467 /* NotificationService.swift */; };
 		EA7004741ACFAC4800D0E467 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA7004761ACFAC4800D0E467 /* InfoPlist.strings */; };
+		EA7004791ACFB01500D0E467 /* WaitlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7004781ACFB01500D0E467 /* WaitlistViewController.swift */; };
+		EA70047B1ACFB02400D0E467 /* WaitlistView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA70047A1ACFB02400D0E467 /* WaitlistView.xib */; };
 		EA7AA3651AA25D21003383BE /* SBConstantsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3641AA25D21003383BE /* SBConstantsExtension.swift */; };
 		EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3681AA26597003383BE /* SBConstants.swift */; };
 		EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3691AA26597003383BE /* StyleKit.swift */; };
@@ -218,6 +220,8 @@
 		EA7004631ACF912A00D0E467 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Signup.storyboard; sourceTree = "<group>"; };
 		EA7004651ACF9B7900D0E467 /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		EA7004751ACFAC4800D0E467 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EA7004781ACFB01500D0E467 /* WaitlistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitlistViewController.swift; sourceTree = "<group>"; };
+		EA70047A1ACFB02400D0E467 /* WaitlistView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaitlistView.xib; sourceTree = "<group>"; };
 		EA7AA3641AA25D21003383BE /* SBConstantsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstantsExtension.swift; sourceTree = "<group>"; };
 		EA7AA3681AA26597003383BE /* SBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstants.swift; sourceTree = "<group>"; };
 		EA7AA3691AA26597003383BE /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
@@ -531,6 +535,15 @@
 			path = _Models;
 			sourceTree = "<group>";
 		};
+		EA7004771ACFB00B00D0E467 /* Waitlist */ = {
+			isa = PBXGroup;
+			children = (
+				EA7004781ACFB01500D0E467 /* WaitlistViewController.swift */,
+				EA70047A1ACFB02400D0E467 /* WaitlistView.xib */,
+			);
+			path = Waitlist;
+			sourceTree = "<group>";
+		};
 		EA9F35311A74CC6900E0C65D = {
 			isa = PBXGroup;
 			children = (
@@ -640,6 +653,7 @@
 				EA1970031A83549300FEBA7F /* Signup */,
 				EA1DA37D1A8D187D00433093 /* NewConnection */,
 				EA6077761ACF6E0E00B3A19A /* Permission */,
+				EA7004771ACFB00B00D0E467 /* Waitlist */,
 				EAF4D74F1A79AA5E00D35330 /* RootViewController.swift */,
 				EA396FE91AB51BED009EB60B /* RootView.swift */,
 				EAE63D791AB3407D004A74E6 /* RootView.xib */,
@@ -778,6 +792,7 @@
 				EA9F354A1A74CC6900E0C65D /* Images.xcassets in Resources */,
 				EA3777731A966EC10055DE99 /* TransatTextBold.otf in Resources */,
 				EA163CFD1A85FAFE00C2589B /* EditPhotoCell.xib in Resources */,
+				EA70047B1ACFB02400D0E467 /* WaitlistView.xib in Resources */,
 				EA3777721A966EC10055DE99 /* TransatTextBlack.otf in Resources */,
 				EA1970161A83549300FEBA7F /* SettingsView.xib in Resources */,
 				EA341D9E1A8C88CC00A6077B /* JSQMessagesAssets.bundle in Resources */,
@@ -917,6 +932,7 @@
 				EA7AA3651AA25D21003383BE /* SBConstantsExtension.swift in Sources */,
 				EAF3A4C11ACA22C2001C2943 /* ProfileInfoCell.swift in Sources */,
 				EA6650E81AA00A82001BA40C /* UserAvatarView.swift in Sources */,
+				EA7004791ACFB01500D0E467 /* WaitlistViewController.swift in Sources */,
 				EA0FC9371A87DE5800D62625 /* BaseViewController.swift in Sources */,
 				EAAD921D1ACF342C0014BA25 /* Environment.swift in Sources */,
 				EA6650FA1AA00B95001BA40C /* _User.swift in Sources */,

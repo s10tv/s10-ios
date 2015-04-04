@@ -25,13 +25,13 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L" textAlignment="center" lineBreakMode="clip" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="nu5-Dd-8Z5">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="L" textAlignment="center" lineBreakMode="clip" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="nu5-Dd-8Z5">
                     <rect key="frame" x="129" y="147" width="117" height="152"/>
                     <fontDescription key="fontDescription" name="KetchIcon-Regular" family="KetchIcon" pointSize="76"/>
                     <color key="textColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awQ-vi-2op" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awQ-vi-2op" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="55" y="339" width="265" height="46"/>
                     <attributedString key="attributedText">
                         <fragment>
@@ -52,7 +52,7 @@ get ready for it and have fun!</string>
                         <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="TransatTextStandard"/>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SdM-8k-H6p" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SdM-8k-H6p" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="62" y="465" width="250" height="55"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -80,7 +80,7 @@ get ready for it and have fun!</string>
                         <action selector="loginWithFacebook:" destination="-1" eventType="touchUpInside" id="HvX-Bg-dXv"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4AJ-Q8-LAW">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4AJ-Q8-LAW">
                     <rect key="frame" x="91" y="532" width="192" height="28"/>
                     <string key="text">We never post anything, 
 you got nothing to worry about.</string>
@@ -88,10 +88,10 @@ you got nothing to worry about.</string>
                     <color key="textColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="daz-8j-ujW">
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="daz-8j-ujW">
                     <rect key="frame" x="143" y="601" width="88" height="26"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="feR-4L-bJF" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="feR-4L-bJF" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="36" height="26"/>
                             <state key="normal">
                                 <attributedString key="attributedTitle">
@@ -113,7 +113,7 @@ you got nothing to worry about.</string>
                                 <action selector="viewTerms:" destination="-1" eventType="touchUpInside" id="rzd-wn-cCZ"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lf5-XG-tnV" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lf5-XG-tnV" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
                             <rect key="frame" x="44" y="0.0" width="44" height="26"/>
                             <state key="normal">
                                 <attributedString key="attributedTitle">

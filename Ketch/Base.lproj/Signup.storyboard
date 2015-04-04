@@ -35,10 +35,23 @@
             <objects>
                 <viewController id="e3b-KT-lKM" userLabel="Location Permission" customClass="PermissionViewController" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="VNX-a6-diU" kind="show" identifier="LocationPermToWaitlist" id="CSp-kD-Yqe"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="idG-xr-QfV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="652" y="518"/>
+        </scene>
+        <!--Waitlist View Controller-->
+        <scene sceneID="Pjf-an-Nkv">
+            <objects>
+                <viewController id="VNX-a6-diU" customClass="WaitlistViewController" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="JjN-Rz-GCW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1041" y="518"/>
         </scene>
     </scenes>
 </document>

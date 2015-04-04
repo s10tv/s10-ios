@@ -6,6 +6,7 @@ public enum SegueIdentifier : String {
     case GameToDock = "GameToDock"
     case GameToNewConnection = "GameToNewConnection"
     case GameToSettings = "GameToSettings"
+    case LocationPermToWaitlist = "LocationPermToWaitlist"
     case NotificationsPermToLocationPerm = "NotificationsPermToLocationPerm"
     case SettingsToProfile = "SettingsToProfile"
     case SignupToNotificationsPerm = "SignupToNotificationsPerm"
@@ -16,9 +17,7 @@ public enum ViewControllerStoryboardIdentifier : String {
     case Dock = "Dock"
     case EditProfile = "EditProfile"
     case Game = "Game"
-    case Loading = "Loading"
     case NewConnection = "NewConnection"
     case Profile = "Profile"
     case Settings = "Settings"
-    case Signup = "Signup"
 }

@@ -65,6 +65,8 @@ extern const struct R {
         __unsafe_unretained NSString *settingsMortarBoard;
         /// settings-icon-notepad
         __unsafe_unretained NSString *settingsNotepad;
+        /// waitlist-clouds
+        __unsafe_unretained NSString *waitlistClouds;
     } ImagesAssets;
     struct JSQMessagesAssets {
         /// Images/bubble_min.png
@@ -115,6 +117,8 @@ extern const struct R {
         __unsafe_unretained NSString *moreSheetCancel;
         /// Report %@
         __unsafe_unretained NSString *moreSheetReport;
+        /// We use your location to help you find matches!
+        __unsafe_unretained NSString *nsLocationWhenInUseUsageDescription;
         /// Facebook access
         __unsafe_unretained NSString *permFacebookButtonTitle;
         /// We use your Facebook profile to get photos and bio. We never post without your permission.

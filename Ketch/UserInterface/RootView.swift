@@ -63,7 +63,7 @@ class RootView : BaseView {
     }
 
     func animateHorizon(#ratio: CGFloat) -> RACSignal {
-        assert(between(0, ratio, 1) == true, "Ratio must be between 0 and 1")
+//        assert(between(0, ratio, 1) == true, "Ratio must be between 0 and 1")
         // Question: Do we need separate constraint for ratio or convert to offset like below?
         horizonHeight.constant = frame.height * ratio
         return animateLayoutChange()
