@@ -9,14 +9,14 @@
 /* Game Screen */
 "ThreeMatchesPrompt" = "YOU’LL SEE THREE POTENTIAL MATCHES";
 "ThreeChoicesPrompt" = "AND YOU’LL HAVE THREE CHOICES";
-"DragMatchsToChoices" = "DECIDE WHAT YOU PREFER";
-"SkipPrompt" = "SAY NO POLITELY";
+"DragMatchsToChoices" = "DRAG THE MATCHES UP TO YOUR CHOICES";
+"SkipPrompt" = "SAY NO NICELY";
 "MarryPrompt" = "SAY YES NOW";
 "SnoozePrompt" = "SEE AGAIN LATER";
 
 /* New Match Screen */
 "It's a Ketch!" = "It's a Ketch!";
-"SingleMatchPrompt" = "%@ likes you! Your dreamboat will sail off in three days. Get on it before %@ disappears for good!";
+"SingleMatchPrompt" = "%@ likes you! Your dreamboat will sail away in three days. Get on it before %@ disappears for good!";
 
 /* Permission Screen */
 "PermFacebookButtonTitle" = "Facebook access";
