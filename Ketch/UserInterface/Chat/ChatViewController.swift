@@ -60,9 +60,11 @@ class ChatViewController : JSQMessagesViewController {
         }
         
         let avatarLength = 30
-        let layout = self.collectionView.collectionViewLayout
+        let layout = collectionView.collectionViewLayout
         layout.incomingAvatarViewSize = CGSizeZero
         layout.outgoingAvatarViewSize = CGSizeZero
+        layout.messageBubbleFont = UIFont(.TransatTextLight, size: 17)
+        layout.springinessEnabled = true
     }
         
     override func viewDidLayoutSubviews() {
@@ -119,7 +121,6 @@ extension ChatViewController : JSQMessagesCollectionViewDataSource {
         // This doesn't work if layout changes (say diff avatar size). So need to figure out better way
         cell.avatarImageView.makeCircular()
         cell.textView.textColor = StyleKit.navy
-        cell.textView.font = UIFont(.TransatTextLight, size: 17)
         return cell
     }
     
