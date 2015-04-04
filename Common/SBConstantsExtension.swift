@@ -30,3 +30,9 @@ extension UIViewController {
         performSegue(identifier, sender: nil)
     }
 }
+
+extension UIStoryboardSegue {
+    func matches(identifier: SegueIdentifier) -> Bool {
+        return self.identifier == identifier.rawValue
+    }
+}

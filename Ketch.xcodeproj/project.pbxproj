@@ -78,6 +78,9 @@
 		EA6650FC1AA00B95001BA40C /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650F41AA00B95001BA40C /* Connection.swift */; };
 		EA6650FD1AA00B95001BA40C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650F51AA00B95001BA40C /* Message.swift */; };
 		EA6650FE1AA00B95001BA40C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650F61AA00B95001BA40C /* User.swift */; };
+		EA7004621ACF912A00D0E467 /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA7004641ACF912A00D0E467 /* Signup.storyboard */; };
+		EA7004661ACF9B7900D0E467 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7004651ACF9B7900D0E467 /* NotificationService.swift */; };
+		EA7004741ACFAC4800D0E467 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA7004761ACFAC4800D0E467 /* InfoPlist.strings */; };
 		EA7AA3651AA25D21003383BE /* SBConstantsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3641AA25D21003383BE /* SBConstantsExtension.swift */; };
 		EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3681AA26597003383BE /* SBConstants.swift */; };
 		EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3691AA26597003383BE /* StyleKit.swift */; };
@@ -212,6 +215,9 @@
 		EA6650F41AA00B95001BA40C /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		EA6650F51AA00B95001BA40C /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EA6650F61AA00B95001BA40C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		EA7004631ACF912A00D0E467 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Signup.storyboard; sourceTree = "<group>"; };
+		EA7004651ACF9B7900D0E467 /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		EA7004751ACFAC4800D0E467 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EA7AA3641AA25D21003383BE /* SBConstantsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstantsExtension.swift; sourceTree = "<group>"; };
 		EA7AA3681AA26597003383BE /* SBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstants.swift; sourceTree = "<group>"; };
 		EA7AA3691AA26597003383BE /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
@@ -297,6 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				EA9A6ACE1AAFDE19009EDD6D /* Localizable.strings */,
+				EA7004761ACFAC4800D0E467 /* InfoPlist.strings */,
 				EA7AA3681AA26597003383BE /* SBConstants.swift */,
 				EA7AA3691AA26597003383BE /* StyleKit.swift */,
 				D3E8EF9EDFE5BCEAA0D02DD3 /* R.h */,
@@ -508,6 +515,7 @@
 			children = (
 				EA6650EA1AA00A9C001BA40C /* CandidateService.swift */,
 				EA6650EB1AA00A9C001BA40C /* CoreService.swift */,
+				EA7004651ACF9B7900D0E467 /* NotificationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -553,6 +561,7 @@
 				EAF4D7441A79AA5E00D35330 /* UserInterface */,
 				EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */,
 				EA9F35461A74CC6900E0C65D /* Main.storyboard */,
+				EA7004641ACF912A00D0E467 /* Signup.storyboard */,
 				EA9F35491A74CC6900E0C65D /* Images.xcassets */,
 				EA9F353D1A74CC6900E0C65D /* Supporting Files */,
 			);
@@ -774,6 +783,8 @@
 				EA341D9E1A8C88CC00A6077B /* JSQMessagesAssets.bundle in Resources */,
 				EA341DA31A8C88CC00A6077B /* JSQMessagesTypingIndicatorFooterView.xib in Resources */,
 				EA341D9F1A8C88CC00A6077B /* JSQMessagesCollectionViewCellIncoming.xib in Resources */,
+				EA7004621ACF912A00D0E467 /* Signup.storyboard in Resources */,
+				EA7004741ACFAC4800D0E467 /* InfoPlist.strings in Resources */,
 				EA341DA21A8C88CC00A6077B /* JSQMessagesToolbarContentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -957,6 +968,7 @@
 				EA1970191A83549300FEBA7F /* SignupViewController.swift in Sources */,
 				EA0FC93A1A87DE5800D62625 /* ReactiveCocoaExtension.swift in Sources */,
 				EA409D391A8C681A00988B8B /* FacebookExtension.swift in Sources */,
+				EA7004661ACF9B7900D0E467 /* NotificationService.swift in Sources */,
 				EA0FC9411A87DE5800D62625 /* ArrayViewModel.swift in Sources */,
 				EA163CFB1A85FAF000C2589B /* EditPhotoCell.swift in Sources */,
 				EA6650FE1AA00B95001BA40C /* User.swift in Sources */,
@@ -1006,6 +1018,22 @@
 				EA341D9D1A8C88CC00A6077B /* zh-Hant */,
 			);
 			name = JSQMessages.strings;
+			sourceTree = "<group>";
+		};
+		EA7004641ACF912A00D0E467 /* Signup.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA7004631ACF912A00D0E467 /* Base */,
+			);
+			name = Signup.storyboard;
+			sourceTree = "<group>";
+		};
+		EA7004761ACFAC4800D0E467 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA7004751ACFAC4800D0E467 /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 		EA9A6ACE1AAFDE19009EDD6D /* Localizable.strings */ = {

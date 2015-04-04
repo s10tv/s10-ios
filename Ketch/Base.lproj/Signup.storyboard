@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dFw-q9-bre">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+    </dependencies>
+    <scenes>
+        <!--Signup View Controller-->
+        <scene sceneID="mSO-WA-QEY">
+            <objects>
+                <viewController id="dFw-q9-bre" customClass="SignupViewController" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="6g2-ww-E2T" kind="show" identifier="SignupToNotificationsPerm" id="j1A-QJ-3Rg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lbl-0u-moe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-158" y="518"/>
+        </scene>
+        <!--Notifications Permission-->
+        <scene sceneID="nfm-31-v0t">
+            <objects>
+                <viewController id="6g2-ww-E2T" userLabel="Notifications Permission" customClass="PermissionViewController" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <segue destination="e3b-KT-lKM" kind="show" identifier="NotificationsPermToLocationPerm" id="rzT-EA-iBU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="MQh-h4-WxM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="253" y="518"/>
+        </scene>
+        <!--Location Permission-->
+        <scene sceneID="TvB-7P-KPw">
+            <objects>
+                <viewController id="e3b-KT-lKM" userLabel="Location Permission" customClass="PermissionViewController" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="idG-xr-QfV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="652" y="518"/>
+        </scene>
+    </scenes>
+</document>

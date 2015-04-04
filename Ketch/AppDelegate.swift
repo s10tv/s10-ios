@@ -33,13 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
         
         Log.info("App Launched")
 
-        let settings = UIUserNotificationSettings(forTypes:
-                UIUserNotificationType.Badge |
-                UIUserNotificationType.Alert |
-                UIUserNotificationType.Sound,
-            categories: nil )
-        
-        application.registerUserNotificationSettings(settings)
         application.registerForRemoteNotifications()
         return true
     }
@@ -68,6 +61,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
     }
     
     // MARK: - Push Handling
+    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
+        NC.postNotification(.DidRegisterUserNotificationSettings, object: notificationSettings)
+    }
+    
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         println("Registered for push \(deviceToken)")
         Core.addPushToken(deviceToken)

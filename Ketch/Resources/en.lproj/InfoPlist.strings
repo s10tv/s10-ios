@@ -1,0 +1,9 @@
+/* 
+  InfoPlist.strings
+  Ketch
+
+  Created by Tony Xiao on 4/3/15.
+  Copyright (c) 2015 Ketch. All rights reserved.
+*/
+
+"NSLocationWhenInUseUsageDescription" = "We use your location to help you find matches!";

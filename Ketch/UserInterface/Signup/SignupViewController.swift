@@ -11,6 +11,14 @@ import Foundation
 @objc(SignupViewController)
 class SignupViewController : BaseViewController {
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let permVC = segue.destinationViewController as? PermissionViewController {
+            permVC.permissionType = .Notifications
+        }
+    }
+    
+    // MARK: Actions
+    
     @IBAction func viewTerms(sender: AnyObject) {
         UIApplication.sharedApplication().openURL(NSURL(string: "http://ketchtheone.com/terms.html")!)
     }
@@ -19,4 +27,9 @@ class SignupViewController : BaseViewController {
         UIApplication.sharedApplication().openURL(NSURL(string: "http://ketchtheone.com/privacy.html")!)
     }
     
+    @IBAction func loginWithFacebook(sender: AnyObject) {
+        Core.loginWithUI().subscribeCompleted {
+            self.performSegue(.SignupToNotificationsPerm)
+        }
+    }
 }

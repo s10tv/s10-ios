@@ -19,7 +19,7 @@ extension UIViewController {
 
 @objc(RootViewController)
 class RootViewController : PageViewController {
-    let signupVC = SignupViewController()
+    let signupVC = UINavigationController()
     let gameVC = GameViewController()
     let dockVC = DockViewController()
     
@@ -30,6 +30,9 @@ class RootViewController : PageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        signupVC.navigationBarHidden = true
+        let vc = UIStoryboard(name: "Signup", bundle: nil).makeInitialViewController()
+        signupVC.pushViewController(vc, animated: false)
         
         viewControllers = [gameVC, dockVC]
         
@@ -113,14 +116,12 @@ class RootViewController : PageViewController {
         signupVC.didMoveToParentViewController(self)
     }
     
-    @IBAction func login(sender: AnyObject) {
-        Core.loginWithUI().subscribeCompleted {
-            self.signupVC.willMoveToParentViewController(nil)
-            self.signupVC.view.removeFromSuperview()
-            self.signupVC.removeFromParentViewController()
-            self.pageVC.view.hidden = false
-            self.showGame(self)
-        }
+    @IBAction func finishSignup(sender: AnyObject) {
+        signupVC.willMoveToParentViewController(nil)
+        signupVC.view.removeFromSuperview()
+        signupVC.removeFromParentViewController()
+        pageVC.view.hidden = false
+        showGame(self)
     }
     
     @IBAction func logout(sender: AnyObject) {
