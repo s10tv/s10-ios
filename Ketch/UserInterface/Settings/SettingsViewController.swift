@@ -31,12 +31,29 @@ class SettingsViewController : BaseViewController {
                 profileVC.user = user
                 self?.presentViewController(profileVC, animated: true)
             }
+
             nameLabel.text = user.displayName
-            ageLabel.text = "\(user.age!) years old"
-            workLabel.text = "You work at \(user.work!)"
-            educationLabel.text = "Studied at \(user.education!)"
-            heightLabel.text = "You are about \(user.height!)cm tall"
-            aboutLabel.rawText = user.about!
+            
+            if let ageInfo = user.age {
+                ageLabel.text = "\(ageInfo) years old"
+            }
+            
+            if let workInfo = user.work {
+                workLabel.text = "You work at \(workInfo)"
+            }
+            
+            if let educationInfo = user.education {
+                educationLabel.text = "Studied at \(educationInfo)"
+
+            }
+            
+            if let heightInfo = user.height {
+                heightLabel.text = "You are about \(heightInfo)cm tall"
+            }
+            
+            if let aboutInfo = user.about {
+                aboutLabel.rawText = aboutInfo
+            }
         }
     }
 
