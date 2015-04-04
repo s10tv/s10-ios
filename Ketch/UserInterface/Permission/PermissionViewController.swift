@@ -70,8 +70,11 @@ class PermissionViewController : BaseViewController {
 
 extension PermissionViewController : CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        rootVC.rootView.animateHorizon(ratio: 0.6)
-        performSegue(.LocationPermToWaitlist)
-//        rootVC.finishSignup(self)
+        if User.currentUser()?.vetted == "yes" {
+            rootVC.finishSignup(self)
+        } else {
+            rootVC.rootView.animateHorizon(ratio: 0.6)
+            performSegue(.LocationPermToWaitlist)
+        }
     }
 }

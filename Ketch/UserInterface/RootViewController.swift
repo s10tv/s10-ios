@@ -19,7 +19,7 @@ extension UIViewController {
 
 @objc(RootViewController)
 class RootViewController : PageViewController {
-    let signupVC = UINavigationController()
+    var signupVC : UINavigationController!
     let gameVC = GameViewController()
     let dockVC = DockViewController()
     
@@ -30,9 +30,6 @@ class RootViewController : PageViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        signupVC.navigationBarHidden = true
-        let vc = UIStoryboard(name: "Signup", bundle: nil).makeInitialViewController()
-        signupVC.pushViewController(vc, animated: false)
         
         viewControllers = [gameVC, dockVC]
         
@@ -40,7 +37,7 @@ class RootViewController : PageViewController {
         listenForNotification(METDDPClientDidChangeAccountNotification).filter { _ in
             return !Core.meteor.hasAccount()
         }.deliverOnMainThread().flattenMap { [weak self] _ in
-            if self?.signupVC.parentViewController != nil {
+            if self?.signupVC?.parentViewController != nil {
                 return RACSignal.empty()
             }
             return UIAlertView.show("Error", message: "You have been logged out")
@@ -56,8 +53,16 @@ class RootViewController : PageViewController {
         } else {
             Core.currentUserSubscription.signal.deliverOnMainThread().subscribeCompleted {
                 self.rootView.loadingView.hidden = true
-                self.scrollTo(viewController: self.gameVC, animated: false)
-                return
+                if User.currentUser()?.vetted == "yes" {
+                    self.scrollTo(viewController: self.gameVC, animated: false)
+                } else {
+                    self.rootView.animateHorizon(ratio: 0.6)
+                    let vc = WaitlistViewController()
+                    self.addChildViewController(vc)
+                    self.view.addSubview(vc.view)
+                    vc.view.makeEdgesEqualTo(self.view)
+                    vc.didMoveToParentViewController(self)
+                }
             }
         }
 
@@ -108,6 +113,10 @@ class RootViewController : PageViewController {
     }
     
     func showSignup(animated: Bool) {
+        signupVC = UINavigationController()
+        signupVC.navigationBarHidden = true
+        let vc = UIStoryboard(name: "Signup", bundle: nil).makeInitialViewController()
+        signupVC.pushViewController(vc, animated: false)
         rootView.setKetchBoatHidden(true)
         dismissViewController(animated: false)
         addChildViewController(signupVC)
