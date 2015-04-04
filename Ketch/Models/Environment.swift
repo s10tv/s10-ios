@@ -18,6 +18,9 @@ class Environment {
     let audience : Audience
     let provisioningProfile : ProvisioningProfile?
     let crashlyticsAPIKey = "4cdb005d0ddfebc8865c0a768de9b43c993e9113"
+    let termsAndConditionURL = NSURL("http://ketchtheone.com/terms")
+    let privacyURL = NSURL("http://ketchtheone.com/privacy")
+
     let serverProtocol = "ws" // TODO: Change to websocket secure
     let serverHostName : String
     var serverURL : NSURL {

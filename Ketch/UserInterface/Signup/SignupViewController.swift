@@ -20,11 +20,11 @@ class SignupViewController : BaseViewController {
     // MARK: Actions
     
     @IBAction func viewTerms(sender: AnyObject) {
-        UIApplication.sharedApplication().openURL(NSURL(string: "http://ketchtheone.com/terms.html")!)
+        UIApplication.sharedApplication().openURL(Env.termsAndConditionURL)
     }
     
     @IBAction func viewPrivacy(sender: AnyObject) {
-        UIApplication.sharedApplication().openURL(NSURL(string: "http://ketchtheone.com/privacy.html")!)
+        UIApplication.sharedApplication().openURL(Env.privacyURL)
     }
     
     @IBAction func loginWithFacebook(sender: AnyObject) {

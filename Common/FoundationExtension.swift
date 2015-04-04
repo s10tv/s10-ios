@@ -147,6 +147,12 @@ extension Array {
     }
 }
 
+extension NSURL {
+    convenience init!(_ urlString: String) {
+        self.init(string: urlString)
+    }
+}
+
 extension NSData {
     func hexString() -> NSString {
         var str = NSMutableString()
