@@ -38,15 +38,20 @@ class User: _User {
     }
     
     var infoItems : [ProfileInfoItem] {
-        // TODO: How to express that after filter values are no longer optional?
-        let validItems : [(ProfileInfoItem.ItemType, Any?)] = [
+        return ([
             (.Location, location),
             (.Age, age),
             (.Height, height),
             (.Work, work),
             (.Education, education)
-        ].filter { (type, value) in value != nil }
-        return map(validItems) { (type, value) in ProfileInfoItem(type: type, value: value!) }
+        ] as [(ProfileInfoItem.ItemType, Any?)])
+            .reduce([ProfileInfoItem]()) { (result, item) in
+            let (type, value) = item
+            if let value = value {
+                return result + [ProfileInfoItem(type: type, value: value)]
+            }
+            return result
+        }
     }
     
     var profilePhotoURL : NSURL? {
