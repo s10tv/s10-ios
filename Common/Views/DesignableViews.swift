@@ -31,9 +31,9 @@ import UIKit
     @IBInspectable var fontName: String = "TransatTextStandard"
     @IBInspectable var fontKern: CGFloat = 0
     
-    var rawText : String {
+    var rawText : String! {
         get { return attributedText.string }
-        set { attributedText = attributedText.replace(text: newValue) }
+        set { attributedText = attributedText.replace(text: newValue ?? "") }
     }
 
     override func awakeFromNib() {
