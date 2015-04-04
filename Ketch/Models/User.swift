@@ -86,7 +86,10 @@ class User: _User {
     }
     
     class func currentUser() -> User? {
-        return findByDocumentID(Core.meteor.userID)
+        if let currentUserID = Core.meteor.userID {
+            return findByDocumentID(currentUserID)
+        }
+        return nil
     }
 }
 
