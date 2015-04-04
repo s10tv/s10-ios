@@ -31,6 +31,7 @@ class ChatViewController : JSQMessagesViewController {
         collectionView.backgroundColor = nil
         
         inputToolbar.contentView.leftBarButtonItem = nil
+        inputToolbar.contentView.rightBarButtonItem.setTitleColor(StyleKit.brandBlue, forState: .Normal)
 
         let bubbleFactory = JSQMessagesBubbleImageFactory()
         outgoingBubbleData = bubbleFactory.outgoingMessagesBubbleImageWithColor(StyleKit.darkWhite)
