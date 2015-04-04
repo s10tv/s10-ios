@@ -77,7 +77,6 @@ class CoreService {
     private let fbReadPerms = [
         "user_about_me",
         "user_photos",
-        "user_videos",
         "user_location",
         "user_work_history",
         "user_education_history",
