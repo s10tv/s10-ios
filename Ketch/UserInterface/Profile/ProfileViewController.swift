@@ -14,15 +14,13 @@ import Cartography
 @objc(ProfileViewController)
 class ProfileViewController : BaseViewController {
 
-    @IBOutlet weak var reportUserButton: UIButton!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var pageControl: UIPageControl!
     @IBOutlet weak var swipeView: SwipeView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var infoCollection: UICollectionView!
     @IBOutlet weak var aboutLabel: DesignableLabel!
-    
-    var reportUserTextField: UITextField?
     
     var infoItems = ArrayViewModel(content: [ProfileInfoItem]())
     
@@ -39,22 +37,6 @@ class ProfileViewController : BaseViewController {
     convenience init(user: User) {
         self.init()
         self.user = user
-    }
-    @IBAction func reportUserButtonClicked(sender: AnyObject) {
-        if let currentUser = User.currentUser() {
-            // TODO: refactor this into strings.
-            let alert = UIAlertController(title: "Thank you for your feedback", message: "Why did you report this user?", preferredStyle: UIAlertControllerStyle.Alert)
-            alert.addTextFieldWithConfigurationHandler { textField in
-                self.reportUserTextField = textField
-            }
-            alert.addAction(UIAlertAction(title: "Close", style: UIAlertActionStyle.Default, handler: nil))
-            alert.addAction(UIAlertAction(title: "Confirm", style: UIAlertActionStyle.Default, handler: { action in
-                let userIdInView : String? = self.user?.documentID
-                let reportReason : String? = self.reportUserTextField?.text
-                Core.meteor.callMethod("user/report", params: [userIdInView!, currentUser.documentID!, reportReason!])
-            }))
-            self.presentViewController(alert, animated: true, completion: nil)
-        }
     }
     
     override func viewDidLoad() {
@@ -78,8 +60,9 @@ class ProfileViewController : BaseViewController {
     }
     
     override func updateViewConstraints() {
-        constrain(backButton, view.superview!) { button, superview in
-            button.top == superview.top; return
+        constrain(backButton, moreButton, view.superview!) { backButton, moreButton, superview in
+            backButton.top == superview.top
+            moreButton.top == superview.top
         }
         super.updateViewConstraints()
     }
@@ -91,10 +74,31 @@ class ProfileViewController : BaseViewController {
         super.viewDidLayoutSubviews()
     }
     
-    // MARK: -
+    // MARK: - Action
     
     @IBAction func goBack(sender: AnyObject) {
         dismissViewController()
+    }
+    
+    @IBAction func showMoreOptions(sender: AnyObject) {
+        let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        sheet.addAction(LS(R.Strings.moreSheetReport, user!.firstName!), style: .Destructive) { _ in
+            self.reportUser(sender)
+        }
+        sheet.addAction(LS(R.Strings.moreSheetCancel), style: .Cancel)
+        presentViewController(sheet)
+    }
+    
+    @IBAction func reportUser(sender: AnyObject) {
+        let alert = UIAlertController(title: LS(R.Strings.reportAlertTitle), message: LS(R.Strings.reportAlertMessage), preferredStyle: .Alert)
+        alert.addTextFieldWithConfigurationHandler(nil)
+        alert.addAction(LS(R.Strings.reportAlertCancel), style: .Cancel)
+        alert.addAction(LS(R.Strings.reportAlertConfirm), style: .Destructive) { _ in
+            if let reportReason = (alert.textFields?[0] as? UITextField)?.text {
+                Core.meteor.callMethod("user/report", params: [self.user!.documentID!, reportReason])
+            }
+        }
+        presentViewController(alert)
     }
     
     func reloadData() {

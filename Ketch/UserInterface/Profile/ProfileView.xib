@@ -8,6 +8,10 @@
         <mutableArray key="TransatTextBold.otf">
             <string>TransatTextBold</string>
         </mutableArray>
+        <mutableArray key="TransatTextStandard.otf">
+            <string>TransatTextStandard</string>
+            <string>TransatTextStandard</string>
+        </mutableArray>
     </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProfileViewController">
@@ -15,9 +19,9 @@
                 <outlet property="aboutLabel" destination="Gur-zm-gdr" id="GZP-9V-Shf"/>
                 <outlet property="backButton" destination="gjP-E3-fDY" id="M00-oq-Vmv"/>
                 <outlet property="infoCollection" destination="kHN-3G-ecZ" id="qvc-FM-Gap"/>
+                <outlet property="moreButton" destination="Ced-fy-WtN" id="u3e-7L-B37"/>
                 <outlet property="nameLabel" destination="yTD-bt-yNd" id="qBt-ZQ-Kbb"/>
                 <outlet property="pageControl" destination="zkL-na-OA5" id="ULz-Zp-2hL"/>
-                <outlet property="reportUserButton" destination="Ced-fy-WtN" id="hFy-Iq-eX0"/>
                 <outlet property="swipeView" destination="8A2-xC-PLX" id="jai-xp-Lkk"/>
                 <outlet property="view" destination="LXu-5e-xa8" id="XRg-na-8dV"/>
             </connections>
@@ -27,32 +31,14 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="649"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB">
+                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iN0-l3-epB">
                     <rect key="frame" x="0.0" y="0.0" width="320" height="649"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8A2-xC-PLX" userLabel="Photos" customClass="SwipeView">
                             <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
-                            <subviews>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ced-fy-WtN">
-                                    <rect key="frame" x="250" y="0.0" width="70" height="50"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="50" id="D8b-Ya-P7T"/>
-                                        <constraint firstAttribute="width" constant="70" id="xqQ-S5-mFL"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
-                                    <state key="normal" title="Report">
-                                        <color key="titleColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="reportUserButtonClicked:" destination="-1" eventType="touchUpInside" id="WIi-lQ-0CT"/>
-                                    </connections>
-                                </button>
-                            </subviews>
-                            <color key="backgroundColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
-                                <constraint firstAttribute="trailing" secondItem="Ced-fy-WtN" secondAttribute="trailing" id="1bl-mG-wlr"/>
                                 <constraint firstAttribute="width" secondItem="8A2-xC-PLX" secondAttribute="height" multiplier="1:1" id="DEw-Ka-8LJ"/>
-                                <constraint firstItem="Ced-fy-WtN" firstAttribute="top" secondItem="8A2-xC-PLX" secondAttribute="top" id="d8Z-4v-kP5"/>
                             </constraints>
                             <connections>
                                 <outlet property="dataSource" destination="-1" id="nM1-tx-0yW"/>
@@ -64,7 +50,7 @@
                             <color key="pageIndicatorTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <color key="currentPageIndicatorTintColor" red="0.25490196078431371" green="0.87058823529411766" blue="0.8666666666666667" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </pageControl>
-                        <view contentMode="scaleToFill" verticalCompressionResistancePriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="ov3-cQ-tgW" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
+                        <view contentMode="scaleToFill" verticalCompressionResistancePriority="249" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ov3-cQ-tgW" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="308" width="320" height="1341"/>
                             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         </view>
@@ -74,7 +60,7 @@
                                 <constraint firstAttribute="width" constant="70" id="O4c-W4-gNf"/>
                                 <constraint firstAttribute="height" constant="50" id="YDy-hh-cX5"/>
                             </constraints>
-                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="16"/>
+                            <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="15"/>
                             <state key="normal" title="BACK">
                                 <color key="titleColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
@@ -82,13 +68,27 @@
                                 <action selector="goBack:" destination="-1" eventType="touchUpInside" id="jor-oo-6zj"/>
                             </connections>
                         </button>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anastasia" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTD-bt-yNd" userLabel="Name">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ced-fy-WtN">
+                            <rect key="frame" x="250" y="0.0" width="70" height="50"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="50" id="D8b-Ya-P7T"/>
+                                <constraint firstAttribute="width" constant="70" id="xqQ-S5-mFL"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="15"/>
+                            <state key="normal" title="MORE">
+                                <color key="titleColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="showMoreOptions:" destination="-1" eventType="touchUpInside" id="o0D-2U-ZS4"/>
+                            </connections>
+                        </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Anastasia" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTD-bt-yNd" userLabel="Name">
                             <rect key="frame" x="100" y="336" width="119" height="27"/>
                             <fontDescription key="fontDescription" name="TransatTextBold" family="Transat Text" pointSize="27"/>
                             <color key="textColor" red="0.94509803921568625" green="0.40000000000000002" blue="0.22745098039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="120" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="kHN-3G-ecZ" customClass="IntrinsicSizeCollectionView" customModule="Ketch" customModuleProvider="target">
+                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="120" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="kHN-3G-ecZ" customClass="IntrinsicSizeCollectionView" customModule="Ketch" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="371" width="320" height="120"/>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             <constraints>
@@ -106,10 +106,10 @@
                                 </mask>
                             </variation>
                         </collectionView>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-about-me-divider" translatesAutoresizingMaskIntoConstraints="NO" id="05h-5P-i0C">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="profile-about-me-divider" translatesAutoresizingMaskIntoConstraints="NO" id="05h-5P-i0C">
                             <rect key="frame" x="8" y="504" width="572" height="11"/>
                         </imageView>
-                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gur-zm-gdr" userLabel="About" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gur-zm-gdr" userLabel="About" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
                             <rect key="frame" x="22" y="527" width="276" height="100"/>
                             <attributedString key="attributedText">
                                 <fragment>
@@ -130,11 +130,14 @@
                             </userDefinedRuntimeAttributes>
                         </label>
                     </subviews>
+                    <color key="backgroundColor" red="0.94003820419311523" green="0.98082369565963745" blue="0.96848088502883911" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="Gur-zm-gdr" firstAttribute="top" secondItem="05h-5P-i0C" secondAttribute="bottom" constant="12" id="1dt-Kl-kRP"/>
+                        <constraint firstItem="Ced-fy-WtN" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" placeholder="YES" id="4mK-LU-a0i"/>
                         <constraint firstAttribute="centerX" secondItem="yTD-bt-yNd" secondAttribute="centerX" id="5bt-ON-gBe"/>
                         <constraint firstAttribute="trailing" secondItem="Gur-zm-gdr" secondAttribute="trailing" constant="22" id="DKm-Se-bii"/>
                         <constraint firstItem="8A2-xC-PLX" firstAttribute="trailing" secondItem="zkL-na-OA5" secondAttribute="trailing" constant="16" id="EM1-Z5-VMq"/>
+                        <constraint firstAttribute="trailing" secondItem="Ced-fy-WtN" secondAttribute="trailing" id="JjS-ss-yCj"/>
                         <constraint firstItem="ov3-cQ-tgW" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Jye-h9-9xG"/>
                         <constraint firstItem="kHN-3G-ecZ" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="R2L-p1-M5h"/>
                         <constraint firstItem="8A2-xC-PLX" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="S9w-jN-rTo"/>
@@ -163,6 +166,7 @@
                 <constraint firstItem="iN0-l3-epB" firstAttribute="top" secondItem="LXu-5e-xa8" secondAttribute="top" id="bqt-Uo-n3G"/>
                 <constraint firstItem="iN0-l3-epB" firstAttribute="leading" secondItem="LXu-5e-xa8" secondAttribute="leading" id="dIM-vZ-wDc"/>
             </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <point key="canvasLocation" x="63" y="546.5"/>
         </scrollView>

@@ -85,6 +85,13 @@ extension UIView {
     }
 }
 
+extension UIAlertController {
+    func addAction(title: String, style: UIAlertActionStyle = .Default, handler: ((UIAlertAction!) -> Void)? = nil) {
+        addAction(UIAlertAction(title: title, style: style, handler: handler))
+    }
+}
+
+// TODO: Remove UIAlertView all together. It's deprecated
 extension UIAlertView {
     class func show(title: String, message: String? = nil) -> RACSignal {
         let alert = UIAlertView(title: title, message: message, delegate: nil, cancelButtonTitle: "OK")
