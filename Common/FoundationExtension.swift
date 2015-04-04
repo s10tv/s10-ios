@@ -13,6 +13,10 @@ func between<T : Comparable>(minLimit: T, value: T, maxLimit: T) -> T {
     return max(minLimit, min(value, maxLimit))
 }
 
+func mapOptional<S : SequenceType, T>(source: S, transform: S.Generator.Element -> T?) -> [T] {
+    return map(source) { transform($0) }.filter { $0 != nil }.map { $0! }
+}
+
 // Floats
 extension Int {
     var f: CGFloat { return CGFloat(self) }
@@ -100,9 +104,8 @@ extension String {
 
 extension Array {
 
-    // TODO: Make mapOptional even more generic and non-specific to arrays
     func mapOptional<U>(transform: T -> U?) -> [U] {
-        return self.map { transform($0) }.filter { $0 != nil }.map { $0! }
+        return Ketch.mapOptional(self, transform)
     }
     
     // Deletes all the items in self that are equal to element.
