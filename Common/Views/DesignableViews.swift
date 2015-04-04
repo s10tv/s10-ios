@@ -58,6 +58,11 @@ import UIKit
         set { attributedText = attributedText?.replace(text: newValue ?? "") }
     }
     
+    var text : String? {
+        get { return titleForState(.Normal) }
+        set { setTitle(newValue, forState: .Normal) }
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         let font = UIFont(name: fontName, size: fontSize)!
