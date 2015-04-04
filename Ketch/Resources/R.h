@@ -45,6 +45,12 @@ extern const struct R {
         __unsafe_unretained NSString *icRemovePhoto;
         /// Ketch
         __unsafe_unretained NSString *ketch;
+        /// perm-facebook-icon
+        __unsafe_unretained NSString *permFacebook;
+        /// perm-location-icon
+        __unsafe_unretained NSString *permLocation;
+        /// perm-notifications-icon
+        __unsafe_unretained NSString *permNotifications;
         /// profile-about-me-divider
         __unsafe_unretained NSString *profileAboutMeDivider;
         /// settings-icon-age
