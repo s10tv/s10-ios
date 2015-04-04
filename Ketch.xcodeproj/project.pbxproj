@@ -80,7 +80,6 @@
 		EA6650FE1AA00B95001BA40C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650F61AA00B95001BA40C /* User.swift */; };
 		EA7004621ACF912A00D0E467 /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA7004641ACF912A00D0E467 /* Signup.storyboard */; };
 		EA7004661ACF9B7900D0E467 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7004651ACF9B7900D0E467 /* NotificationService.swift */; };
-		EA7004741ACFAC4800D0E467 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA7004761ACFAC4800D0E467 /* InfoPlist.strings */; };
 		EA7004791ACFB01500D0E467 /* WaitlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7004781ACFB01500D0E467 /* WaitlistViewController.swift */; };
 		EA70047B1ACFB02400D0E467 /* WaitlistView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA70047A1ACFB02400D0E467 /* WaitlistView.xib */; };
 		EA7AA3651AA25D21003383BE /* SBConstantsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3641AA25D21003383BE /* SBConstantsExtension.swift */; };
@@ -100,6 +99,7 @@
 		EAAD921D1ACF342C0014BA25 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921C1ACF342C0014BA25 /* Environment.swift */; };
 		EAAD921F1ACF4EFA0014BA25 /* ProvisioningProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921E1ACF4EFA0014BA25 /* ProvisioningProfile.swift */; };
 		EAB54E3D1AA0E2EB00A44883 /* SettingsBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB54E3C1AA0E2EB00A44883 /* SettingsBackgroundView.swift */; };
+		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
 		EAC8D3F61AA7269F00BCB7B9 /* FetchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9311A87DE5800D62625 /* FetchViewModel.swift */; };
 		EAC8D3F71AA7278900BCB7B9 /* ViewProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9321A87DE5800D62625 /* ViewProviders.swift */; };
 		EAC8D3F81AA7289400BCB7B9 /* ArrayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC92F1A87DE5800D62625 /* ArrayViewModel.swift */; };
@@ -219,7 +219,6 @@
 		EA6650F61AA00B95001BA40C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EA7004631ACF912A00D0E467 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Signup.storyboard; sourceTree = "<group>"; };
 		EA7004651ACF9B7900D0E467 /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
-		EA7004751ACFAC4800D0E467 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EA7004781ACFB01500D0E467 /* WaitlistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitlistViewController.swift; sourceTree = "<group>"; };
 		EA70047A1ACFB02400D0E467 /* WaitlistView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaitlistView.xib; sourceTree = "<group>"; };
 		EA7AA3641AA25D21003383BE /* SBConstantsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstantsExtension.swift; sourceTree = "<group>"; };
@@ -247,6 +246,7 @@
 		EABD43D81AA1D28700B07813 /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
 		EABD43D91AA1D29C00B07813 /* Beta.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
 		EABD43DA1AA1D29C00B07813 /* Prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
+		EABF2AB41AD04659005880E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableViews.swift; sourceTree = "<group>"; };
 		EAE63D771AB32BC4004A74E6 /* ProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
 		EAE63D791AB3407D004A74E6 /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootView.xib; sourceTree = "<group>"; };
@@ -306,8 +306,6 @@
 		49A80BC478B1E012CE6D7406 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				EA9A6ACE1AAFDE19009EDD6D /* Localizable.strings */,
-				EA7004761ACFAC4800D0E467 /* InfoPlist.strings */,
 				EA7AA3681AA26597003383BE /* SBConstants.swift */,
 				EA7AA3691AA26597003383BE /* StyleKit.swift */,
 				D3E8EF9EDFE5BCEAA0D02DD3 /* R.h */,
@@ -587,6 +585,8 @@
 				EABD43D71AA1D27400B07813 /* Configs */,
 				EA37776C1A966E380055DE99 /* Fonts */,
 				EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */,
+				EA9A6ACE1AAFDE19009EDD6D /* Localizable.strings */,
+				EABF2AB51AD04659005880E7 /* InfoPlist.strings */,
 				EA9F35621A74CD8800E0C65D /* Ketch-Bridging.h */,
 				EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */,
 				EA9F353E1A74CC6900E0C65D /* Ketch-Info.plist */,
@@ -772,6 +772,7 @@
 				EA341DA41A8C88CC00A6077B /* JSQMessagesViewController.xib in Resources */,
 				EA1970181A83549300FEBA7F /* SignupView.xib in Resources */,
 				EA02CCF21A96ED03004C3009 /* KetchIcon.otf in Resources */,
+				EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */,
 				EA1DA3811A8D189400433093 /* NewConnectionView.xib in Resources */,
 				EA409D411A8C75F600988B8B /* DockView.xib in Resources */,
 				EA341DA11A8C88CC00A6077B /* JSQMessagesLoadEarlierHeaderView.xib in Resources */,
@@ -799,7 +800,6 @@
 				EA341DA31A8C88CC00A6077B /* JSQMessagesTypingIndicatorFooterView.xib in Resources */,
 				EA341D9F1A8C88CC00A6077B /* JSQMessagesCollectionViewCellIncoming.xib in Resources */,
 				EA7004621ACF912A00D0E467 /* Signup.storyboard in Resources */,
-				EA7004741ACFAC4800D0E467 /* InfoPlist.strings in Resources */,
 				EA341DA21A8C88CC00A6077B /* JSQMessagesToolbarContentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1044,21 +1044,12 @@
 			name = Signup.storyboard;
 			sourceTree = "<group>";
 		};
-		EA7004761ACFAC4800D0E467 /* InfoPlist.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EA7004751ACFAC4800D0E467 /* en */,
-			);
-			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
 		EA9A6ACE1AAFDE19009EDD6D /* Localizable.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				EA9A6ACF1AAFDFA2009EDD6D /* en */,
 			);
 			name = Localizable.strings;
-			path = ..;
 			sourceTree = "<group>";
 		};
 		EA9F35461A74CC6900E0C65D /* Main.storyboard */ = {
@@ -1075,6 +1066,14 @@
 				EA9F354C1A74CC6900E0C65D /* Base */,
 			);
 			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+		EABF2AB51AD04659005880E7 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EABF2AB41AD04659005880E7 /* en */,
+			);
+			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
