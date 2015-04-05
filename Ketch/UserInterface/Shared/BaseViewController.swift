@@ -18,4 +18,8 @@ class BaseViewController : UIViewController {
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
+    
+    func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
+        return false
+    }
 }

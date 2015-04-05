@@ -36,6 +36,16 @@ class GameViewController : BaseViewController {
 //        }
     }
     
+    override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
+        if edge == .Right {
+            performSegue(.GameToDock)
+            return true
+        }
+        return super.handleScreenEdgePan(edge)
+    }
+    
+    // MARK: -
+    
     func bindGameView() {
         Core.candidateService.fetch.signal.subscribeNextAs { [weak self] (candidates : [Candidate]) in
             if let this = self {

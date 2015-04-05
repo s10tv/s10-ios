@@ -31,6 +31,14 @@ class DockViewController : BaseViewController {
         }
     }
     
+    override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
+        if edge == .Left {
+            navigationController?.popViewControllerAnimated(true)
+            return true
+        }
+        return super.handleScreenEdgePan(edge)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destVC as? ChatViewController {
             vc.connection = selectedConnection

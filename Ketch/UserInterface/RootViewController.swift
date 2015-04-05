@@ -79,13 +79,8 @@ class RootViewController : UINavigationController {
         switch gesture.state {
         case .Began:
             transitionManager.currentEdgePan = gesture
-            switch edge {
-            case UIRectEdge.Right:
-                pushViewController(DockViewController(), animated: true)
-            case UIRectEdge.Left:
-                popViewControllerAnimated(true)
-            default:
-                break
+            if let vc = self.topViewController as? BaseViewController {
+                vc.handleScreenEdgePan(edge)
             }
         case .Ended, .Cancelled:
             transitionManager.currentEdgePan = nil
