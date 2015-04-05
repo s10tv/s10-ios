@@ -179,7 +179,7 @@ extension RootViewController : UINavigationControllerDelegate {
         
         switch (fromVC, toVC) {
         case let (fromVC as LoadingViewController, toVC as GameViewController):
-            return NewGameTransition(rootVC: self, loadingVC: fromVC, gameVC: toVC)
+            return NewGameTransition(self.rootView, loadingVC: fromVC, gameVC: toVC)
         case (_ as GameViewController, _ as DockViewController):
             return ScrollTransition(fromVC: fromVC, toVC: toVC, direction: .RightToLeft, panGesture: currentEdgePan)
         case (_ as DockViewController, _ as GameViewController):

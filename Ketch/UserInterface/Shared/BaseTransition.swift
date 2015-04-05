@@ -9,10 +9,10 @@
 import Foundation
 
 class RootTransition : ViewControllerTransition {
-    let rootVC : RootViewController
+    let rootView : RootView
     
-    init(rootVC: RootViewController, fromVC: UIViewController, toVC: UIViewController, duration: NSTimeInterval = 0.6) {
-        self.rootVC = rootVC
+    init(_ rootView: RootView, fromVC: UIViewController, toVC: UIViewController, duration: NSTimeInterval = 0.6) {
+        self.rootView = rootView
         super.init(fromVC: fromVC, toVC: toVC, duration: duration)
     }
 }
