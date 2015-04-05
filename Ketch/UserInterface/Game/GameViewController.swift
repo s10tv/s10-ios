@@ -90,6 +90,11 @@ class GameViewController : BaseViewController {
         }
     }
     
+    @IBAction func goToDock(sender: AnyObject) {
+        performSegue(.GameToDock)
+    }
+    
+    
     // MARK: -
 
     @IBAction func submitChoices(sender: AnyObject) {

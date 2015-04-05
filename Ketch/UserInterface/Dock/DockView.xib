@@ -26,7 +26,7 @@
                         <color key="titleColor" red="0.34509803919999998" green="0.67843137249999996" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
-                        <action selector="showGame:" destination="-2" eventType="touchUpInside" id="KdS-vC-ZHx"/>
+                        <action selector="goBack:" destination="-2" eventType="touchUpInside" id="zt2-s2-Pan"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Matches" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="31S-EO-xOp">

@@ -16,15 +16,14 @@ class NewGameTransition : BaseTransition {
     init(rootVC: RootViewController, loadingVC: LoadingViewController, gameVC: GameViewController) {
         self.loadingVC = loadingVC
         self.gameVC = gameVC
-        super.init(rootVC: rootVC)
+        super.init(rootVC: rootVC, fromVC: loadingVC, toVC: gameVC)
     }
 
     override func animate() {
         rootVC.rootView.updateHorizon(offset: 60)
-        spring(0.6) {
+        self.containerView.addSubview(self.toView!)
+        spring(duration) {
             self.rootVC.rootView.layoutIfNeeded()
-            self.fromView?.removeFromSuperview()
-            self.containerView.addSubview(self.toView!)
             self.toView?.frame = self.context.finalFrameForViewController(self.gameVC)
             self.context.completeTransition(true)
         }

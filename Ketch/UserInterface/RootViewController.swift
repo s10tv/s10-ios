@@ -88,6 +88,10 @@ class RootViewController : UINavigationController {
 //        view.springDamping = 0.6
     }
     
+    @IBAction func goBack(sender: AnyObject) {
+        popViewControllerAnimated(true)
+    }
+    
     @IBAction func showSettings(sender: AnyObject) {
         presentViewController(SettingsViewController(), animated: true)
     }
@@ -172,6 +176,16 @@ extension RootViewController : UINavigationControllerDelegate {
         if let loadingVC = fromVC as? LoadingViewController {
             if let gameVC = toVC as? GameViewController {
                 return NewGameTransition(rootVC: self, loadingVC: loadingVC, gameVC: gameVC)
+            }
+        }
+        if let gameVC = fromVC as? GameViewController {
+            if let dockVC = toVC as? DockViewController {
+                return ScrollTransition(rootVC: self, fromVC: gameVC, toVC: dockVC, direction: .RightToLeft)
+            }
+        }
+        if let dockVC = fromVC as? DockViewController {
+            if let gameVC = toVC as? GameViewController {
+                return ScrollTransition(rootVC: self, fromVC: gameVC, toVC: dockVC, direction: .LeftToRight)
             }
         }
         return nil

@@ -10,7 +10,9 @@ import Foundation
 
 class BaseTransition : NSObject {
     let rootVC : RootViewController
-    let duration : NSTimeInterval = 0.6
+    let fromVC : UIViewController
+    let toVC : UIViewController
+    let duration : NSTimeInterval
     var context : UIViewControllerContextTransitioning!
     
     var containerView : UIView {
@@ -23,8 +25,11 @@ class BaseTransition : NSObject {
         return context.viewForKey(UITransitionContextToViewKey)
     }
     
-    init(rootVC: RootViewController) {
+    init(rootVC: RootViewController, fromVC: UIViewController, toVC: UIViewController, duration: NSTimeInterval = 0.6) {
         self.rootVC = rootVC
+        self.fromVC = fromVC
+        self.toVC = toVC
+        self.duration = duration
     }
     
     // To be overwritten by subclass
