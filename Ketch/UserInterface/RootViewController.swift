@@ -97,10 +97,6 @@ class RootViewController : UINavigationController {
         }
     }
     
-    @IBAction func showSettings(sender: AnyObject) {
-        presentViewController(SettingsViewController(), animated: true)
-    }
-    
     @IBAction func showDock(sender: AnyObject) {
         dismissViewController(animated: false) // HACK ALERT: for transitioning from NewConnection. Gotta use segue
 //        scrollTo(viewController: dockVC)

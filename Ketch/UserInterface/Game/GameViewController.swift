@@ -101,6 +101,9 @@ class GameViewController : BaseViewController {
         performSegue(.GameToDock)
     }
     
+    @IBAction func goToSettings(sender: AnyObject) {
+        performSegue(.GameToSettings)
+    }
     
     // MARK: -
 
