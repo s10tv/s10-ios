@@ -39,6 +39,7 @@ PODS:
   - SwipeView (1.3.2)
   - TCMobileProvision (1.0.0):
     - DTFoundation/DTASN1 (~> 1.6)
+  - UICollectionViewLeftAlignedLayout (0.0.3)
 
 DEPENDENCIES:
   - Cartography (~> 0.3)
@@ -55,6 +56,7 @@ DEPENDENCIES:
   - SwiftyUserDefaults (~> 1.0)
   - SwipeView (~> 1.3)
   - TCMobileProvision (from `https://github.com/tonyxiao/TCMobileProvision.git`)
+  - UICollectionViewLeftAlignedLayout (~> 0.0.3)
 
 EXTERNAL SOURCES:
   SugarRecord:
@@ -91,5 +93,6 @@ SPEC CHECKSUMS:
   SwiftyUserDefaults: 76cb548fdbcb0d28c27bfa01e261fd78df65e38f
   SwipeView: bd67cfaf7760c036438446b3ccb28a3b84fce009
   TCMobileProvision: 2a8962b38821a20fad53b9d7851bbc9ae8c52995
+  UICollectionViewLeftAlignedLayout: 46396e7c45573544981b9a04a2e25ecacba18774
 
 COCOAPODS: 0.36.3

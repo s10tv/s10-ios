@@ -19,6 +19,7 @@ pod 'SDWebImage', '~> 3.7'
 pod 'Cartography', '~> 0.3'
 pod 'TCMobileProvision', :git => 'https://github.com/tonyxiao/TCMobileProvision.git'
 pod 'JSQMessagesViewController', '~> 6.1'
+pod 'UICollectionViewLeftAlignedLayout', '~> 0.0.3'
 
 pod 'CrashlyticsFramework', '~> 2.2'
 

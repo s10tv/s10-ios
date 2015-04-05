@@ -139,10 +139,10 @@ class ProfileInfoItem {
             imageName = R.ImagesAssets.settingsLocation
         case .Age:
             imageName = R.ImagesAssets.settingsAge
-            minWidthRatio = 0.5
+            minWidthRatio = 0
         case .Height:
             imageName = R.ImagesAssets.settingsHeightArrow
-            minWidthRatio = 0.5
+            minWidthRatio = 0
         case .Work:
             imageName = R.ImagesAssets.settingsBriefcase
         case .Education:
