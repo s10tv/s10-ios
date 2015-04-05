@@ -98,6 +98,8 @@
 		EA9F354A1A74CC6900E0C65D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Images.xcassets */; };
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
 		EA9F35591A74CC6900E0C65D /* KetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F35581A74CC6900E0C65D /* KetchTests.swift */; };
+		EAA36DDE1AD1CC7D00B30F24 /* SignupTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA36DDD1AD1CC7D00B30F24 /* SignupTransition.swift */; };
+		EAA36DE01AD1CD4800B30F24 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA36DDF1AD1CD4800B30F24 /* TransitionManager.swift */; };
 		EAAA42871AB24D5F00056EFF /* CandidateBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAA42861AB24D5F00056EFF /* CandidateBubble.swift */; };
 		EAAA42891AB24D6900056EFF /* ChoiceBucket.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAA42881AB24D6900056EFF /* ChoiceBucket.swift */; };
 		EAAA428B1AB2522E00056EFF /* FloatBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAA428A1AB2522E00056EFF /* FloatBox.swift */; };
@@ -249,6 +251,8 @@
 		EA9F35571A74CC6900E0C65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA9F35581A74CC6900E0C65D /* KetchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KetchTests.swift; sourceTree = "<group>"; };
 		EA9F35621A74CD8800E0C65D /* Ketch-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Ketch-Bridging.h"; path = "Ketch/Ketch-Bridging.h"; sourceTree = SOURCE_ROOT; };
+		EAA36DDD1AD1CC7D00B30F24 /* SignupTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupTransition.swift; sourceTree = "<group>"; };
+		EAA36DDF1AD1CD4800B30F24 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		EAAA42861AB24D5F00056EFF /* CandidateBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateBubble.swift; sourceTree = "<group>"; };
 		EAAA42881AB24D6900056EFF /* ChoiceBucket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoiceBucket.swift; sourceTree = "<group>"; };
 		EAAA428A1AB2522E00056EFF /* FloatBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatBox.swift; sourceTree = "<group>"; };
@@ -644,6 +648,8 @@
 			children = (
 				EAAD921A1ACDEACD0014BA25 /* NewMatchTransition.swift */,
 				EA72FB1E1AD180F1009F853F /* NewGameTransition.swift */,
+				EAA36DDD1AD1CC7D00B30F24 /* SignupTransition.swift */,
+				EAA36DDF1AD1CD4800B30F24 /* TransitionManager.swift */,
 			);
 			path = Transitions;
 			sourceTree = "<group>";
@@ -964,6 +970,7 @@
 				EA6650E81AA00A82001BA40C /* UserAvatarView.swift in Sources */,
 				EA72FB211AD18673009F853F /* BaseTransition.swift in Sources */,
 				EA7004791ACFB01500D0E467 /* WaitlistViewController.swift in Sources */,
+				EAA36DDE1AD1CC7D00B30F24 /* SignupTransition.swift in Sources */,
 				EA0FC9371A87DE5800D62625 /* BaseViewController.swift in Sources */,
 				EAAD921D1ACF342C0014BA25 /* Environment.swift in Sources */,
 				EA6650FA1AA00B95001BA40C /* _User.swift in Sources */,
@@ -973,6 +980,7 @@
 				EA6650E11AA00999001BA40C /* BaseViews.swift in Sources */,
 				EA409D3F1A8C75F600988B8B /* ConnectionCell.swift in Sources */,
 				EAAA42891AB24D6900056EFF /* ChoiceBucket.swift in Sources */,
+				EAA36DE01AD1CD4800B30F24 /* TransitionManager.swift in Sources */,
 				EA1DA37F1A8D188B00433093 /* NewConnectionViewController.swift in Sources */,
 				EA396FEA1AB51BED009EB60B /* RootView.swift in Sources */,
 				EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */,
