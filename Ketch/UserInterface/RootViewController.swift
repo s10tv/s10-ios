@@ -37,11 +37,39 @@ class RootViewController : UINavigationController {
         view.backgroundColor = UIColor(hex: "F0FAF7")
     }
     
+    
+    
+    // TODO: Refactor me into the right place
+    let leftEdgePan = UIScreenEdgePanGestureRecognizer()
+    let rightEdgePan = UIScreenEdgePanGestureRecognizer()
+    
+    var currentEdgePan : UIScreenEdgePanGestureRecognizer?
+    func handleEdgePan(edgePan: UIScreenEdgePanGestureRecognizer) {
+        switch edgePan.state {
+        case .Began:
+            currentEdgePan = edgePan
+            if edgePan == rightEdgePan {
+                pushViewController(DockViewController(), animated: true)
+            } else if edgePan == leftEdgePan {
+                popViewControllerAnimated(true)
+            }
+        case .Ended, .Cancelled:
+            currentEdgePan = nil
+        default:
+            break
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         delegate = self
-
         
+        leftEdgePan.edges = .Left
+        leftEdgePan.addTarget(self, action: "handleEdgePan:")
+        rightEdgePan.edges = .Right
+        rightEdgePan.addTarget(self, action: "handleEdgePan:")
+        view.addGestureRecognizer(leftEdgePan)
+        view.addGestureRecognizer(rightEdgePan)
         
 //        viewControllers = [gameVC, dockVC]
 //        
@@ -180,13 +208,20 @@ extension RootViewController : UINavigationControllerDelegate {
         }
         if let gameVC = fromVC as? GameViewController {
             if let dockVC = toVC as? DockViewController {
-                return ScrollTransition(rootVC: self, fromVC: gameVC, toVC: dockVC, direction: .RightToLeft)
+                return ScrollTransition(rootVC: self, fromVC: gameVC, toVC: dockVC, direction: .RightToLeft, panGesture: currentEdgePan)
             }
         }
         if let dockVC = fromVC as? DockViewController {
             if let gameVC = toVC as? GameViewController {
-                return ScrollTransition(rootVC: self, fromVC: gameVC, toVC: dockVC, direction: .LeftToRight)
+                return ScrollTransition(rootVC: self, fromVC: gameVC, toVC: dockVC, direction: .LeftToRight, panGesture: currentEdgePan)
             }
+        }
+        return nil
+    }
+    
+    func navigationController(navigationController: UINavigationController, interactionControllerForAnimationController animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
+        if let transition = animationController as? BaseTransition {
+            return transition.interactor
         }
         return nil
     }

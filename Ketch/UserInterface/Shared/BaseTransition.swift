@@ -14,6 +14,7 @@ class BaseTransition : NSObject {
     let toVC : UIViewController
     let duration : NSTimeInterval
     var context : UIViewControllerContextTransitioning!
+    var interactor : UIPercentDrivenInteractiveTransition?
     
     var containerView : UIView {
         return context.containerView()
