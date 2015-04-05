@@ -12,6 +12,7 @@ public enum SegueIdentifier : String {
     case SettingsToProfile = "SettingsToProfile"
     case SignupToNotificationsPerm = "SignupToNotificationsPerm"
     case Signup_ = "Signup_"
+    case Signup_Waitlist = "Signup_Waitlist"
 }
 
 public enum ViewControllerStoryboardIdentifier : String {
@@ -23,4 +24,5 @@ public enum ViewControllerStoryboardIdentifier : String {
     case NewConnection = "NewConnection"
     case Profile = "Profile"
     case Settings = "Settings"
+    case Waitlist = "Waitlist"
 }

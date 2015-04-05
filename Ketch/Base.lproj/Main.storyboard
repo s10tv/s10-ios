@@ -35,7 +35,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvP-mk-Fcq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1352" y="460"/>
+            <point key="canvasLocation" x="1710" y="698"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="5fm-o7-1g2">
@@ -149,10 +149,10 @@
             </objects>
             <point key="canvasLocation" x="142" y="340"/>
         </scene>
-        <!--Signup Storyboard-->
+        <!--Signup Storyboard @ Signup-->
         <scene sceneID="Dpy-Ax-4fa">
             <objects>
-                <viewController id="xL7-fS-abd" userLabel="Signup Storyboard" sceneMemberID="viewController">
+                <viewController id="xL7-fS-abd" userLabel="Signup Storyboard @ Signup" sceneMemberID="viewController">
                     <label key="view" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signup Storyboard @ Signup" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rml-nU-cqA">
                         <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -219,11 +219,30 @@
                     <connections>
                         <segue destination="brw-cx-YUO" kind="show" identifier="LoadingToGame" id="FLq-Pa-kyO"/>
                         <segue destination="xL7-fS-abd" kind="custom" identifier="Signup_" customClass="LinkedStoryboardPushSegue" customModule="Ketch" customModuleProvider="target" id="A9d-Ac-mF2"/>
+                        <segue destination="jhY-qC-hf5" kind="custom" identifier="Signup_Waitlist" customClass="LinkedStoryboardPushSegue" customModule="Ketch" customModuleProvider="target" id="cVa-Is-AY3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jpe-tJ-ggF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="818" y="340"/>
+        </scene>
+        <!--Signup Storyboard @ Waitlist-->
+        <scene sceneID="Oka-qW-rzb">
+            <objects>
+                <viewController id="jhY-qC-hf5" userLabel="Signup Storyboard @ Waitlist" sceneMemberID="viewController">
+                    <label key="view" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signup Storyboard @ Waitlist" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="LHa-6H-Csf">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="300" height="300"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gNG-pd-4C0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1384" y="202"/>
         </scene>
     </scenes>
 </document>

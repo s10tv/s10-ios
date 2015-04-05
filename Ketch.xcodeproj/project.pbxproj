@@ -99,6 +99,7 @@
 		EAA36DDE1AD1CC7D00B30F24 /* SignupTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA36DDD1AD1CC7D00B30F24 /* SignupTransition.swift */; };
 		EAA36DE01AD1CD4800B30F24 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA36DDF1AD1CD4800B30F24 /* TransitionManager.swift */; };
 		EAA36DE21AD1CE2800B30F24 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA36DE11AD1CE2800B30F24 /* BaseViewController.swift */; };
+		EAA36DE41AD1DD8D00B30F24 /* WaitlistTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA36DE31AD1DD8D00B30F24 /* WaitlistTransition.swift */; };
 		EAAA42871AB24D5F00056EFF /* CandidateBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAA42861AB24D5F00056EFF /* CandidateBubble.swift */; };
 		EAAA42891AB24D6900056EFF /* ChoiceBucket.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAA42881AB24D6900056EFF /* ChoiceBucket.swift */; };
 		EAAA428B1AB2522E00056EFF /* FloatBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAA428A1AB2522E00056EFF /* FloatBox.swift */; };
@@ -251,6 +252,7 @@
 		EAA36DDD1AD1CC7D00B30F24 /* SignupTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupTransition.swift; sourceTree = "<group>"; };
 		EAA36DDF1AD1CD4800B30F24 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		EAA36DE11AD1CE2800B30F24 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		EAA36DE31AD1DD8D00B30F24 /* WaitlistTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitlistTransition.swift; sourceTree = "<group>"; };
 		EAAA42861AB24D5F00056EFF /* CandidateBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateBubble.swift; sourceTree = "<group>"; };
 		EAAA42881AB24D6900056EFF /* ChoiceBucket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoiceBucket.swift; sourceTree = "<group>"; };
 		EAAA428A1AB2522E00056EFF /* FloatBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatBox.swift; sourceTree = "<group>"; };
@@ -647,6 +649,7 @@
 				EA72FB1E1AD180F1009F853F /* NewGameTransition.swift */,
 				EAA36DDD1AD1CC7D00B30F24 /* SignupTransition.swift */,
 				EAA36DDF1AD1CD4800B30F24 /* TransitionManager.swift */,
+				EAA36DE31AD1DD8D00B30F24 /* WaitlistTransition.swift */,
 			);
 			path = Transitions;
 			sourceTree = "<group>";
@@ -1004,6 +1007,7 @@
 				EA31049B1A99C3850069D6AD /* KetchIcon.swift in Sources */,
 				EA72FB1B1AD1049A009F853F /* TransparentBackgroundView.swift in Sources */,
 				EABF2AB91AD04E90005880E7 /* Fonts.swift in Sources */,
+				EAA36DE41AD1DD8D00B30F24 /* WaitlistTransition.swift in Sources */,
 				EA0FC9381A87DE5800D62625 /* FoundationExtension.swift in Sources */,
 				EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */,
 				EA6650FD1AA00B95001BA40C /* Message.swift in Sources */,
