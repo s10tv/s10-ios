@@ -92,10 +92,4 @@ class SettingsViewController : BaseViewController {
             profileVC.user = User.currentUser()
         }
     }
-    
-    // MARK: - Actions
-    
-    @IBAction func goBack(sender: AnyObject) {
-        dismissViewController()
-    }
 }

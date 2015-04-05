@@ -76,10 +76,6 @@ class ProfileViewController : BaseViewController {
     
     // MARK: - Action
     
-    @IBAction func goBack(sender: AnyObject) {
-        dismissViewController()
-    }
-    
     @IBAction func showMoreOptions(sender: AnyObject) {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         sheet.addAction(LS(R.Strings.moreSheetReport, user!.firstName!), style: .Destructive) { _ in

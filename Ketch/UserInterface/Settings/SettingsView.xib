@@ -54,7 +54,7 @@
                         <color key="titleColor" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
-                        <action selector="goBack:" destination="-1" eventType="touchUpInside" id="AgY-dz-6H8"/>
+                        <action selector="goBack:" destination="-2" eventType="touchUpInside" id="XOV-NU-LnC"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="r72-wg-Xj7">
@@ -68,7 +68,6 @@
                         <color key="titleColor" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
-                        <action selector="goBack:" destination="-1" eventType="touchUpInside" id="L7H-RP-Oax"/>
                         <action selector="logout:" destination="-2" eventType="touchUpInside" id="v6h-1p-b8S"/>
                     </connections>
                 </button>

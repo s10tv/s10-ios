@@ -103,7 +103,11 @@ class RootViewController : UINavigationController {
     }
     
     @IBAction func goBack(sender: AnyObject) {
-        popViewControllerAnimated(true)
+        if let vc = presentedViewController {
+            dismissViewController(animated: true)
+        } else {
+            popViewControllerAnimated(true)
+        }
     }
     
     @IBAction func showSettings(sender: AnyObject) {

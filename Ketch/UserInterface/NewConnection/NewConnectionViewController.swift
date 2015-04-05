@@ -33,10 +33,4 @@ class NewConnectionViewController : BaseViewController {
         super.viewDidLayoutSubviews()
         avatar.makeCircular()
     }
-    
-    // MARK: - Actions
-    
-    @IBAction func goBack(sender: AnyObject) {
-        dismissViewController()
-    }
 }

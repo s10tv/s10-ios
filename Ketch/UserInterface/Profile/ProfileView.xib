@@ -65,7 +65,7 @@
                                 <color key="titleColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </state>
                             <connections>
-                                <action selector="goBack:" destination="-1" eventType="touchUpInside" id="jor-oo-6zj"/>
+                                <action selector="goBack:" destination="-2" eventType="touchUpInside" id="6m7-uo-7ut"/>
                             </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ced-fy-WtN">
