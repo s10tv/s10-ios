@@ -201,22 +201,17 @@ class RootViewController : UINavigationController {
 
 extension RootViewController : UINavigationControllerDelegate {
     func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        if let loadingVC = fromVC as? LoadingViewController {
-            if let gameVC = toVC as? GameViewController {
-                return NewGameTransition(rootVC: self, loadingVC: loadingVC, gameVC: gameVC)
-            }
+        
+        switch (fromVC, toVC) {
+        case let (fromVC as LoadingViewController, toVC as GameViewController):
+            return NewGameTransition(rootVC: self, loadingVC: fromVC, gameVC: toVC)
+        case (_ as GameViewController, _ as DockViewController):
+            return ScrollTransition(fromVC: fromVC, toVC: toVC, direction: .RightToLeft, panGesture: currentEdgePan)
+        case (_ as DockViewController, _ as GameViewController):
+            return ScrollTransition(fromVC: fromVC, toVC: toVC, direction: .LeftToRight, panGesture: currentEdgePan)
+        default:
+            return nil
         }
-        if let gameVC = fromVC as? GameViewController {
-            if let dockVC = toVC as? DockViewController {
-                return ScrollTransition(fromVC: gameVC, toVC: dockVC, direction: .RightToLeft, panGesture: currentEdgePan)
-            }
-        }
-        if let dockVC = fromVC as? DockViewController {
-            if let gameVC = toVC as? GameViewController {
-                return ScrollTransition(fromVC: gameVC, toVC: dockVC, direction: .LeftToRight, panGesture: currentEdgePan)
-            }
-        }
-        return nil
     }
     
     func navigationController(navigationController: UINavigationController, interactionControllerForAnimationController animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
