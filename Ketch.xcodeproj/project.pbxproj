@@ -14,7 +14,6 @@
 		EA0FC9341A87DE5800D62625 /* MeteorCDStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC91F1A87DE5800D62625 /* MeteorCDStack.swift */; };
 		EA0FC9351A87DE5800D62625 /* MeteorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9201A87DE5800D62625 /* MeteorExtension.swift */; };
 		EA0FC9361A87DE5800D62625 /* SugarRecordExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9211A87DE5800D62625 /* SugarRecordExtension.swift */; };
-		EA0FC9371A87DE5800D62625 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9221A87DE5800D62625 /* BaseViewController.swift */; };
 		EA0FC9381A87DE5800D62625 /* FoundationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9231A87DE5800D62625 /* FoundationExtension.swift */; };
 		EA0FC9391A87DE5800D62625 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9241A87DE5800D62625 /* Logging.swift */; };
 		EA0FC93A1A87DE5800D62625 /* ReactiveCocoaExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9251A87DE5800D62625 /* ReactiveCocoaExtension.swift */; };
@@ -84,7 +83,6 @@
 		EA72FB1B1AD1049A009F853F /* TransparentBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FB1A1AD1049A009F853F /* TransparentBackgroundView.swift */; };
 		EA72FB1D1AD1805B009F853F /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FB1C1AD1805B009F853F /* LoadingViewController.swift */; };
 		EA72FB1F1AD180F1009F853F /* NewGameTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FB1E1AD180F1009F853F /* NewGameTransition.swift */; };
-		EA72FB211AD18673009F853F /* BaseTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FB201AD18673009F853F /* BaseTransition.swift */; };
 		EA72FB291AD1B7D5009F853F /* Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FB271AD1B7D5009F853F /* Segue.swift */; };
 		EA72FB2A1AD1B7D5009F853F /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FB281AD1B7D5009F853F /* Transition.swift */; };
 		EA72FB2C1AD1B7E1009F853F /* ScrollTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FB2B1AD1B7E1009F853F /* ScrollTransition.swift */; };
@@ -100,6 +98,7 @@
 		EA9F35591A74CC6900E0C65D /* KetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F35581A74CC6900E0C65D /* KetchTests.swift */; };
 		EAA36DDE1AD1CC7D00B30F24 /* SignupTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA36DDD1AD1CC7D00B30F24 /* SignupTransition.swift */; };
 		EAA36DE01AD1CD4800B30F24 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA36DDF1AD1CD4800B30F24 /* TransitionManager.swift */; };
+		EAA36DE21AD1CE2800B30F24 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA36DE11AD1CE2800B30F24 /* BaseViewController.swift */; };
 		EAAA42871AB24D5F00056EFF /* CandidateBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAA42861AB24D5F00056EFF /* CandidateBubble.swift */; };
 		EAAA42891AB24D6900056EFF /* ChoiceBucket.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAA42881AB24D6900056EFF /* ChoiceBucket.swift */; };
 		EAAA428B1AB2522E00056EFF /* FloatBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAA428A1AB2522E00056EFF /* FloatBox.swift */; };
@@ -148,7 +147,6 @@
 		EA0FC91F1A87DE5800D62625 /* MeteorCDStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorCDStack.swift; sourceTree = "<group>"; };
 		EA0FC9201A87DE5800D62625 /* MeteorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorExtension.swift; sourceTree = "<group>"; };
 		EA0FC9211A87DE5800D62625 /* SugarRecordExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SugarRecordExtension.swift; sourceTree = "<group>"; };
-		EA0FC9221A87DE5800D62625 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		EA0FC9231A87DE5800D62625 /* FoundationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationExtension.swift; sourceTree = "<group>"; };
 		EA0FC9241A87DE5800D62625 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		EA0FC9251A87DE5800D62625 /* ReactiveCocoaExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveCocoaExtension.swift; sourceTree = "<group>"; };
@@ -232,7 +230,6 @@
 		EA72FB1A1AD1049A009F853F /* TransparentBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransparentBackgroundView.swift; sourceTree = "<group>"; };
 		EA72FB1C1AD1805B009F853F /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		EA72FB1E1AD180F1009F853F /* NewGameTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGameTransition.swift; sourceTree = "<group>"; };
-		EA72FB201AD18673009F853F /* BaseTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTransition.swift; sourceTree = "<group>"; };
 		EA72FB271AD1B7D5009F853F /* Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segue.swift; sourceTree = "<group>"; };
 		EA72FB281AD1B7D5009F853F /* Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
 		EA72FB2B1AD1B7E1009F853F /* ScrollTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollTransition.swift; sourceTree = "<group>"; };
@@ -253,6 +250,7 @@
 		EA9F35621A74CD8800E0C65D /* Ketch-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Ketch-Bridging.h"; path = "Ketch/Ketch-Bridging.h"; sourceTree = SOURCE_ROOT; };
 		EAA36DDD1AD1CC7D00B30F24 /* SignupTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupTransition.swift; sourceTree = "<group>"; };
 		EAA36DDF1AD1CD4800B30F24 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
+		EAA36DE11AD1CE2800B30F24 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		EAAA42861AB24D5F00056EFF /* CandidateBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateBubble.swift; sourceTree = "<group>"; };
 		EAAA42881AB24D6900056EFF /* ChoiceBucket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoiceBucket.swift; sourceTree = "<group>"; };
 		EAAA428A1AB2522E00056EFF /* FloatBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatBox.swift; sourceTree = "<group>"; };
@@ -348,7 +346,6 @@
 				EA0FC92E1A87DE5800D62625 /* ViewModels */,
 				EAD7B2A91A9F0BC100FA6740 /* Views */,
 				EA72FB261AD1B7BF009F853F /* Transitions */,
-				EA0FC9221A87DE5800D62625 /* BaseViewController.swift */,
 				EA396FEF1AB52BF8009EB60B /* PageViewController.swift */,
 				EA0FC9231A87DE5800D62625 /* FoundationExtension.swift */,
 				EA0FC9271A87DE5800D62625 /* UIKitExtension.swift */,
@@ -525,10 +522,10 @@
 		EA6650E21AA00A82001BA40C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				EAA36DE11AD1CE2800B30F24 /* BaseViewController.swift */,
 				EA6650E31AA00A82001BA40C /* WaveView.swift */,
 				EA6650E51AA00A82001BA40C /* UserAvatarView.swift */,
 				EA72FB1A1AD1049A009F853F /* TransparentBackgroundView.swift */,
-				EA72FB201AD18673009F853F /* BaseTransition.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -968,14 +965,13 @@
 				EA7AA3651AA25D21003383BE /* SBConstantsExtension.swift in Sources */,
 				EAF3A4C11ACA22C2001C2943 /* ProfileInfoCell.swift in Sources */,
 				EA6650E81AA00A82001BA40C /* UserAvatarView.swift in Sources */,
-				EA72FB211AD18673009F853F /* BaseTransition.swift in Sources */,
 				EA7004791ACFB01500D0E467 /* WaitlistViewController.swift in Sources */,
 				EAA36DDE1AD1CC7D00B30F24 /* SignupTransition.swift in Sources */,
-				EA0FC9371A87DE5800D62625 /* BaseViewController.swift in Sources */,
 				EAAD921D1ACF342C0014BA25 /* Environment.swift in Sources */,
 				EA6650FA1AA00B95001BA40C /* _User.swift in Sources */,
 				EA0FC9351A87DE5800D62625 /* MeteorExtension.swift in Sources */,
 				EA72FB291AD1B7D5009F853F /* Segue.swift in Sources */,
+				EAA36DE21AD1CE2800B30F24 /* BaseViewController.swift in Sources */,
 				EA6650F71AA00B95001BA40C /* _Candidate.swift in Sources */,
 				EA6650E11AA00999001BA40C /* BaseViews.swift in Sources */,
 				EA409D3F1A8C75F600988B8B /* ConnectionCell.swift in Sources */,

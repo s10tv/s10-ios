@@ -10,7 +10,6 @@ import Foundation
 
 @objc(GameViewController)
 class GameViewController : BaseViewController {
-
     
     @IBOutlet weak var container: UIView!
     @IBOutlet var gameView: GameView!
@@ -21,6 +20,7 @@ class GameViewController : BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        hideKetchBoat = false
 //        RAC(dockBadge, "hidden") <~ Connection.unreadCountSignal().map { ($0 as Int) == 0 }
 
         dockBadge.makeCircular()

@@ -8,7 +8,22 @@
 
 import Foundation
 
+class RootTransition : ViewControllerTransition {
+    let rootView : RootView
+    
+    init(_ rootView: RootView, fromVC: UIViewController, toVC: UIViewController, duration: NSTimeInterval = 0.6) {
+        self.rootView = rootView
+        super.init(fromVC: fromVC, toVC: toVC, duration: duration)
+    }
+}
+
 extension RootViewController : UINavigationControllerDelegate {
+    func navigationController(navigationController: UINavigationController, didShowViewController viewController: UIViewController, animated: Bool) {
+        if let vc = viewController as? BaseViewController {
+            rootView.ketchIcon.hidden = vc.hideKetchBoat
+        }
+    }
+    
     func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
         switch (fromVC, toVC) {

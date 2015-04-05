@@ -8,7 +8,11 @@
 
 import UIKit
 
+// TODO: This is used in conjunction with the RootViewController. Should it be 
+// a protocol rather than a subclass?
 class BaseViewController : UIViewController {
+    
+    var hideKetchBoat = true
     
     override func prefersStatusBarHidden() -> Bool {
         return true
