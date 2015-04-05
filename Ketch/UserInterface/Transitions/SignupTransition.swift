@@ -20,7 +20,7 @@ class SignupTransition : RootTransition {
     }
     
     override func animate() {
-        rootView.updateHorizon(offset: 60)
+        super.animate()
         self.containerView.addSubview(self.toView!)
         spring(duration) {
             self.rootView.layoutIfNeeded()

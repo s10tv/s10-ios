@@ -12,8 +12,10 @@ class LoadingViewController : BaseViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        waterlineLocation = .Bottom(60)
+        hideKetchBoat = false
         if !Core.attemptLoginWithCachedCredentials() {
-            performSegue(.Signup_Waitlist)
+            performSegue(.Signup_)
         } else {
             performSegue(.LoadingToGame)
         }

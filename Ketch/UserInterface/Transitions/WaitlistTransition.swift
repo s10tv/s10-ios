@@ -20,7 +20,7 @@ class WaitlistTransition : RootTransition {
     }
     
     override func animate() {
-        rootView.updateHorizon(ratio: 0.55)
+        super.animate()
         self.containerView.addSubview(self.toView!)
         spring(duration) {
             self.rootView.layoutIfNeeded()

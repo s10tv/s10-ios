@@ -34,11 +34,29 @@ import ReactiveCocoa
 */
 
 class RootView : BaseView {
+    enum WaterlineLocation {
+        case Top(CGFloat), Bottom(CGFloat), Ratio(CGFloat)
+        func getHeight(bounds: CGRect) -> CGFloat {
+            switch self {
+            case let .Top(top):
+                return bounds.height - top
+            case let .Bottom(bottom):
+                return bottom
+            case let .Ratio(ratio):
+                return bounds.height * ratio
+            }
+        }
+    }
     
     @IBOutlet weak var ketchIcon: UIImageView!
     @IBOutlet weak var waveView: WaveView!
     @IBOutlet weak var loadingView: UIView!
     @IBOutlet private weak var horizonHeight: NSLayoutConstraint!
+    var waterlineLocation : WaterlineLocation = .Top(60) {
+        didSet(oldValue) {
+            horizonHeight.constant = waterlineLocation.getHeight(bounds)
+        }
+    }
 
     var animateDuration : NSTimeInterval = 0.6
     var springDamping : CGFloat = 0.6
@@ -62,14 +80,6 @@ class RootView : BaseView {
         return subject
     }
     
-    func updateHorizon(#ratio: CGFloat) {
-        horizonHeight.constant = frame.height * ratio
-    }
-    
-    func updateHorizon(#offset: CGFloat, fromTop: Bool = true) {
-        horizonHeight.constant = fromTop ? frame.height - offset : offset
-    }
-
     func animateHorizon(#ratio: CGFloat) -> RACSignal {
 //        assert(between(0, ratio, 1) == true, "Ratio must be between 0 and 1")
         // Question: Do we need separate constraint for ratio or convert to offset like below?

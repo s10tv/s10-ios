@@ -15,12 +15,22 @@ class RootTransition : ViewControllerTransition {
         self.rootView = rootView
         super.init(fromVC: fromVC, toVC: toVC, duration: duration)
     }
+    
+    override func animate() {
+        if let vc = toVC as? BaseViewController {
+            rootView.waterlineLocation = vc.waterlineLocation
+        }
+    }
 }
 
 extension RootViewController : UINavigationControllerDelegate {
     func navigationController(navigationController: UINavigationController, didShowViewController viewController: UIViewController, animated: Bool) {
         if let vc = viewController as? BaseViewController {
             rootView.ketchIcon.hidden = vc.hideKetchBoat
+            // TODO: This doesn't seem to work, maybe we need transitioningCoordinator?
+//            if !animated {
+//                rootView.waterlineLocation = vc.waterlineLocation
+//            }
         }
     }
     

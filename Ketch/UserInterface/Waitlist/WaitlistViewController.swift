@@ -10,8 +10,10 @@ import Foundation
 
 @objc(WaitlistViewController)
 class WaitlistViewController : BaseViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKetchBoat = false
+        waterlineLocation = .Ratio(0.55)
     }
 }

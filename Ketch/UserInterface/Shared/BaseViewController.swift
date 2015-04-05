@@ -13,9 +13,9 @@ import UIKit
 class BaseViewController : UIViewController {
     
     var hideKetchBoat = true
+    var waterlineLocation : RootView.WaterlineLocation = .Top(60)
     
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
-    
 }
