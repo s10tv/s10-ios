@@ -9,7 +9,7 @@
 import Foundation
 import Spring
 
-class NewGameTransition : BaseTransition {
+class NewGameTransition : RootTransition {
     let loadingVC : LoadingViewController
     let gameVC : GameViewController
     

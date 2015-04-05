@@ -8,18 +8,19 @@
 
 import Foundation
 
-class ScrollTransition : BaseTransition {
+class ScrollTransition : ViewControllerTransition {
     enum Direction {
         case RightToLeft, LeftToRight
     }
     let direction : Direction
     let panGesture : UIPanGestureRecognizer?
     let panSelector : Selector = "handlePanGesture:"
+    let threshold : CGFloat = 0.25
     
-    init(rootVC: RootViewController, fromVC: UIViewController, toVC: UIViewController, direction: Direction, panGesture: UIPanGestureRecognizer?) {
+    init(fromVC: UIViewController, toVC: UIViewController, direction: Direction, panGesture: UIPanGestureRecognizer?) {
         self.direction = direction
+        super.init(fromVC: fromVC, toVC: toVC, duration: 0.3)
         self.panGesture = panGesture
-        super.init(rootVC: rootVC, fromVC: fromVC, toVC: toVC, duration: 0.3)
         if let panGesture = panGesture {
             interactor = UIPercentDrivenInteractiveTransition()
             panGesture.addTarget(self, action: panSelector)
@@ -48,7 +49,7 @@ class ScrollTransition : BaseTransition {
                 self.toView?.frame = self.containerView.bounds
             }) { completed in
                 self.context.completeTransition(true)
-        }
+            }
     }
     
     func handlePanGesture(pan: UIScreenEdgePanGestureRecognizer) {
@@ -57,9 +58,8 @@ class ScrollTransition : BaseTransition {
         switch pan.state {
         case .Changed:
             interactor?.updateInteractiveTransition(percent)
-            println("Updating to \(percent)")
         case .Ended, .Cancelled:
-            if percent > 0.25 && pan.state != .Cancelled {
+            if percent > threshold && pan.state != .Cancelled {
                 interactor?.finishInteractiveTransition()
             } else {
                 interactor?.cancelInteractiveTransition()

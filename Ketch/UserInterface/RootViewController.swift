@@ -208,21 +208,18 @@ extension RootViewController : UINavigationControllerDelegate {
         }
         if let gameVC = fromVC as? GameViewController {
             if let dockVC = toVC as? DockViewController {
-                return ScrollTransition(rootVC: self, fromVC: gameVC, toVC: dockVC, direction: .RightToLeft, panGesture: currentEdgePan)
+                return ScrollTransition(fromVC: gameVC, toVC: dockVC, direction: .RightToLeft, panGesture: currentEdgePan)
             }
         }
         if let dockVC = fromVC as? DockViewController {
             if let gameVC = toVC as? GameViewController {
-                return ScrollTransition(rootVC: self, fromVC: gameVC, toVC: dockVC, direction: .LeftToRight, panGesture: currentEdgePan)
+                return ScrollTransition(fromVC: gameVC, toVC: dockVC, direction: .LeftToRight, panGesture: currentEdgePan)
             }
         }
         return nil
     }
     
     func navigationController(navigationController: UINavigationController, interactionControllerForAnimationController animationController: UIViewControllerAnimatedTransitioning) -> UIViewControllerInteractiveTransitioning? {
-        if let transition = animationController as? BaseTransition {
-            return transition.interactor
-        }
-        return nil
+        return (animationController as? ViewControllerTransition)?.interactor
     }
 }

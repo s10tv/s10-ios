@@ -8,44 +8,11 @@
 
 import Foundation
 
-class BaseTransition : NSObject {
+class RootTransition : ViewControllerTransition {
     let rootVC : RootViewController
-    let fromVC : UIViewController
-    let toVC : UIViewController
-    let duration : NSTimeInterval
-    var context : UIViewControllerContextTransitioning!
-    var interactor : UIPercentDrivenInteractiveTransition?
-    
-    var containerView : UIView {
-        return context.containerView()
-    }
-    var fromView : UIView? {
-        return context.viewForKey(UITransitionContextFromViewKey)
-    }
-    var toView : UIView? {
-        return context.viewForKey(UITransitionContextToViewKey)
-    }
     
     init(rootVC: RootViewController, fromVC: UIViewController, toVC: UIViewController, duration: NSTimeInterval = 0.6) {
         self.rootVC = rootVC
-        self.fromVC = fromVC
-        self.toVC = toVC
-        self.duration = duration
-    }
-    
-    // To be overwritten by subclass
-    func animate() {
-    }
-}
-
-extension BaseTransition : UIViewControllerAnimatedTransitioning {
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
-        context = transitionContext
-        return duration
-    }
-    
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        context = transitionContext
-        animate()
+        super.init(fromVC: fromVC, toVC: toVC, duration: duration)
     }
 }
