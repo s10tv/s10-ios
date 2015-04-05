@@ -61,6 +61,7 @@ extension UIView {
         }
     }
     
+    // TODO: Figure out when to tear down the subscriptions for gesture recognizers
     func whenTapped(block: () -> ()) {
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
@@ -82,6 +83,15 @@ extension UIView {
             }
         }
         addGestureRecognizer(swipe)
+    }
+    
+    func whenEdgePanned(edge: UIRectEdge, handler: (UIScreenEdgePanGestureRecognizer, UIRectEdge) -> ()) {
+        let edgePan = UIScreenEdgePanGestureRecognizer()
+        edgePan.edges = edge
+        edgePan.rac_gestureSignal().subscribeNextAs { (recognizer : UIScreenEdgePanGestureRecognizer) -> () in
+            handler(recognizer, edge)
+        }
+        addGestureRecognizer(edgePan)
     }
     
     class func fromNib(nibName: String, owner: AnyObject? = nil) -> UIView? {

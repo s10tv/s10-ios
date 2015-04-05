@@ -29,6 +29,8 @@ class RootViewController : UINavigationController {
     var initialSpringVelocity : CGFloat = 10
     var rootView : RootView!
     
+    var currentEdgePan : UIScreenEdgePanGestureRecognizer?
+    
     override func loadView() {
         super.loadView()
         rootView = UIView.fromNib("RootView") as RootView
@@ -37,21 +39,17 @@ class RootViewController : UINavigationController {
         view.backgroundColor = UIColor(hex: "F0FAF7")
     }
     
-    
-    
-    // TODO: Refactor me into the right place
-    let leftEdgePan = UIScreenEdgePanGestureRecognizer()
-    let rightEdgePan = UIScreenEdgePanGestureRecognizer()
-    
-    var currentEdgePan : UIScreenEdgePanGestureRecognizer?
-    func handleEdgePan(edgePan: UIScreenEdgePanGestureRecognizer) {
-        switch edgePan.state {
+    func handleEdgePan(gesture: UIScreenEdgePanGestureRecognizer, edge: UIRectEdge) {
+        switch gesture.state {
         case .Began:
-            currentEdgePan = edgePan
-            if edgePan == rightEdgePan {
+            currentEdgePan = gesture
+            switch edge {
+            case UIRectEdge.Right:
                 pushViewController(DockViewController(), animated: true)
-            } else if edgePan == leftEdgePan {
+            case UIRectEdge.Left:
                 popViewControllerAnimated(true)
+            default:
+                break
             }
         case .Ended, .Cancelled:
             currentEdgePan = nil
@@ -64,12 +62,8 @@ class RootViewController : UINavigationController {
         super.viewDidLoad()
         delegate = self
         
-        leftEdgePan.edges = .Left
-        leftEdgePan.addTarget(self, action: "handleEdgePan:")
-        rightEdgePan.edges = .Right
-        rightEdgePan.addTarget(self, action: "handleEdgePan:")
-        view.addGestureRecognizer(leftEdgePan)
-        view.addGestureRecognizer(rightEdgePan)
+        view.whenEdgePanned(.Left, handler: handleEdgePan)
+        view.whenEdgePanned(.Right, handler: handleEdgePan)
         
 //        viewControllers = [gameVC, dockVC]
 //        
