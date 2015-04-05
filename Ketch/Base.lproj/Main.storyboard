@@ -149,13 +149,23 @@
             </objects>
             <point key="canvasLocation" x="142" y="340"/>
         </scene>
-        <!--Signup View Controller-->
+        <!--Signup Storyboard-->
         <scene sceneID="Dpy-Ax-4fa">
             <objects>
-                <viewController id="xL7-fS-abd" customClass="SignupViewController" sceneMemberID="viewController"/>
+                <viewController id="xL7-fS-abd" userLabel="Signup Storyboard" sceneMemberID="viewController">
+                    <label key="view" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signup Storyboard @ Signup" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="rml-nU-cqA">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="300" height="300"/>
+                </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oIs-YV-S1K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="818" y="-328"/>
+            <point key="canvasLocation" x="1384" y="-144"/>
         </scene>
         <!--Loading View Controller-->
         <scene sceneID="EYP-uL-lzC">
@@ -208,7 +218,7 @@
                     <navigationItem key="navigationItem" id="Q7Z-rR-KIW"/>
                     <connections>
                         <segue destination="brw-cx-YUO" kind="show" identifier="LoadingToGame" id="FLq-Pa-kyO"/>
-                        <segue destination="xL7-fS-abd" kind="show" identifier="LoadingToSignup" id="A9d-Ac-mF2"/>
+                        <segue destination="xL7-fS-abd" kind="custom" identifier="Signup_" customClass="LinkedStoryboardPushSegue" customModule="Ketch" customModuleProvider="target" id="A9d-Ac-mF2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jpe-tJ-ggF" userLabel="First Responder" sceneMemberID="firstResponder"/>

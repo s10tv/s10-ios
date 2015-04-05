@@ -13,7 +13,7 @@ class LoadingViewController : BaseViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if !Core.attemptLoginWithCachedCredentials() {
-            performSegue(.LoadingToSignup)
+            performSegue(.Signup_)
         } else {
             performSegue(.LoadingToGame)
         }
