@@ -76,6 +76,7 @@
 		EA6650FC1AA00B95001BA40C /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650F41AA00B95001BA40C /* Connection.swift */; };
 		EA6650FD1AA00B95001BA40C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650F51AA00B95001BA40C /* Message.swift */; };
 		EA6650FE1AA00B95001BA40C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650F61AA00B95001BA40C /* User.swift */; };
+		EA6E56521AD1FDCE00B12F2B /* RootTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E56511AD1FDCE00B12F2B /* RootTransition.swift */; };
 		EA7004621ACF912A00D0E467 /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA7004641ACF912A00D0E467 /* Signup.storyboard */; };
 		EA7004661ACF9B7900D0E467 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7004651ACF9B7900D0E467 /* NotificationService.swift */; };
 		EA7004791ACFB01500D0E467 /* WaitlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7004781ACFB01500D0E467 /* WaitlistViewController.swift */; };
@@ -224,6 +225,7 @@
 		EA6650F41AA00B95001BA40C /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		EA6650F51AA00B95001BA40C /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EA6650F61AA00B95001BA40C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		EA6E56511AD1FDCE00B12F2B /* RootTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTransition.swift; sourceTree = "<group>"; };
 		EA7004631ACF912A00D0E467 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Signup.storyboard; sourceTree = "<group>"; };
 		EA7004651ACF9B7900D0E467 /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		EA7004781ACFB01500D0E467 /* WaitlistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitlistViewController.swift; sourceTree = "<group>"; };
@@ -525,6 +527,7 @@
 			isa = PBXGroup;
 			children = (
 				EAA36DE11AD1CE2800B30F24 /* BaseViewController.swift */,
+				EA6E56511AD1FDCE00B12F2B /* RootTransition.swift */,
 				EA6650E31AA00A82001BA40C /* WaveView.swift */,
 				EA6650E51AA00A82001BA40C /* UserAvatarView.swift */,
 				EA72FB1A1AD1049A009F853F /* TransparentBackgroundView.swift */,
@@ -1004,6 +1007,7 @@
 				EAE915321ACAFC890027C936 /* UserDefaults.swift in Sources */,
 				EA6650FB1AA00B95001BA40C /* Candidate.swift in Sources */,
 				EA0FC9421A87DE5800D62625 /* BaseViewModel.swift in Sources */,
+				EA6E56521AD1FDCE00B12F2B /* RootTransition.swift in Sources */,
 				EA31049B1A99C3850069D6AD /* KetchIcon.swift in Sources */,
 				EA72FB1B1AD1049A009F853F /* TransparentBackgroundView.swift in Sources */,
 				EABF2AB91AD04E90005880E7 /* Fonts.swift in Sources */,

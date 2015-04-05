@@ -67,6 +67,11 @@ class ChatViewController : JSQMessagesViewController {
         layout.messageBubbleFont = UIFont(.TransatTextLight, size: 17)
         layout.springinessEnabled = true
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        Core.meteor.callMethod("connection/markAsRead", params: [connection!.documentID!])
+    }
         
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()

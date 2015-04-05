@@ -7,35 +7,17 @@
 //
 
 import Foundation
-import Spring
 
-class RootTransition : ViewControllerTransition {
-    let rootView : RootView
+class TransitionManager : NSObject, UINavigationControllerDelegate {
+    private let rootView : RootView
+    var currentEdgePan : UIScreenEdgePanGestureRecognizer?
     
-    init(_ rootView: RootView, fromVC: UIViewController, toVC: UIViewController, duration: NSTimeInterval = 0.6) {
+    init(rootView: RootView, navigationController: UINavigationController?) {
         self.rootView = rootView
-        super.init(fromVC: fromVC, toVC: toVC, duration: duration)
+        super.init()
+        navigationController?.delegate = self
     }
     
-    override func animate() {
-        if let vc = toVC as? BaseViewController {
-            rootView.waterlineLocation = vc.waterlineLocation
-        }
-        containerView.addSubview(toView!)
-        toView?.frame = context.finalFrameForViewController(toVC)
-        toView?.alpha = 0
-        fromView?.alpha = 1
-        springWithCompletion(duration, {
-            self.toView?.alpha = 1
-            self.fromView?.alpha = 0
-            self.rootView.layoutIfNeeded()
-        }) { completed in
-            self.context.completeTransition(true)
-        }
-    }
-}
-
-extension RootViewController : UINavigationControllerDelegate {
     func navigationController(navigationController: UINavigationController, didShowViewController viewController: UIViewController, animated: Bool) {
         if let vc = viewController as? BaseViewController {
             rootView.ketchIcon.hidden = vc.hideKetchBoat
@@ -51,13 +33,13 @@ extension RootViewController : UINavigationControllerDelegate {
         switch (fromVC, toVC) {
             
         case let (fromVC as LoadingViewController, toVC as SignupViewController):
-            return SignupTransition(self.rootView, loadingVC: fromVC, signupVC: toVC)
+            return SignupTransition(rootView, loadingVC: fromVC, signupVC: toVC)
             
         case let (fromVC as LoadingViewController, toVC as WaitlistViewController):
-            return WaitlistTransition(self.rootView, loadingVC: fromVC, waitlistVC: toVC)
+            return WaitlistTransition(rootView, loadingVC: fromVC, waitlistVC: toVC)
             
         case let (fromVC as LoadingViewController, toVC as GameViewController):
-            return NewGameTransition(self.rootView, loadingVC: fromVC, gameVC: toVC)
+            return NewGameTransition(rootView, loadingVC: fromVC, gameVC: toVC)
             
         case (_ as GameViewController, _ as DockViewController):
             return ScrollTransition(fromVC: fromVC, toVC: toVC, direction: .RightToLeft, panGesture: currentEdgePan)

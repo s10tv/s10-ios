@@ -20,47 +20,18 @@ extension UIViewController {
 
 @objc(RootViewController)
 class RootViewController : UINavigationController {
-    @IBOutlet var rootView : RootView!
-    
-    var signupVC : UINavigationController!
-    let gameVC = GameViewController()
-    let dockVC = DockViewController()
-    
-    var animateDuration : NSTimeInterval = 0.6
-    var springDamping : CGFloat = 0.6
-    var initialSpringVelocity : CGFloat = 10
-    
-    var currentEdgePan : UIScreenEdgePanGestureRecognizer?
+    private let rootView = UIView.fromNib("RootView") as RootView
+    var transitionManager : TransitionManager!
     
     override func loadView() {
         super.loadView()
-        UIView.fromNib("RootView", owner: self)
         view.insertSubview(rootView, atIndex: 0)
         rootView.makeEdgesEqualTo(view)
     }
     
-    func handleEdgePan(gesture: UIScreenEdgePanGestureRecognizer, edge: UIRectEdge) {
-        switch gesture.state {
-        case .Began:
-            currentEdgePan = gesture
-            switch edge {
-            case UIRectEdge.Right:
-                pushViewController(DockViewController(), animated: true)
-            case UIRectEdge.Left:
-                popViewControllerAnimated(true)
-            default:
-                break
-            }
-        case .Ended, .Cancelled:
-            currentEdgePan = nil
-        default:
-            break
-        }
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate = self
+        transitionManager = TransitionManager(rootView: rootView, navigationController: self)
         
         view.whenEdgePanned(.Left, handler: handleEdgePan)
         view.whenEdgePanned(.Right, handler: handleEdgePan)
@@ -102,6 +73,27 @@ class RootViewController : UINavigationController {
 
     }
     
+    // MARK: Target Action
+    
+    func handleEdgePan(gesture: UIScreenEdgePanGestureRecognizer, edge: UIRectEdge) {
+        switch gesture.state {
+        case .Began:
+            transitionManager.currentEdgePan = gesture
+            switch edge {
+            case UIRectEdge.Right:
+                pushViewController(DockViewController(), animated: true)
+            case UIRectEdge.Left:
+                popViewControllerAnimated(true)
+            default:
+                break
+            }
+        case .Ended, .Cancelled:
+            transitionManager.currentEdgePan = nil
+        default:
+            break
+        }
+    }
+    
     @IBAction func goBack(sender: AnyObject) {
         if let vc = presentedViewController {
             dismissViewController(animated: true)
@@ -117,13 +109,11 @@ class RootViewController : UINavigationController {
     @IBAction func showDock(sender: AnyObject) {
         dismissViewController(animated: false) // HACK ALERT: for transitioning from NewConnection. Gotta use segue
 //        scrollTo(viewController: dockVC)
-        viewControllers = [gameVC, dockVC]
     }
     
     @IBAction func showGame(sender: AnyObject) {
         rootView.setKetchBoatHidden(false)
 //        scrollTo(viewController: gameVC)
-        viewControllers = [gameVC, dockVC]
     }
     
     func showProfile(user: User, animated: Bool) {
@@ -136,22 +126,12 @@ class RootViewController : UINavigationController {
         let chatVC = ChatViewController()
         chatVC.connection = connection
 //        scrollTo(viewController: chatVC, animated: animated)
-        viewControllers = [gameVC, dockVC, chatVC]
-        Core.meteor.callMethod("connection/markAsRead", params: [connection.documentID!])
     }
     
     func showNewMatch(connection: Connection) {
         let newConnVC = NewConnectionViewController()
         newConnVC.connection = connection
         presentViewController(newConnVC, animated: true)
-    }
-    
-    @IBAction func finishSignup(sender: AnyObject) {
-        signupVC.willMoveToParentViewController(nil)
-        signupVC.view.removeFromSuperview()
-        signupVC.removeFromParentViewController()
-//        pageVC.view.hidden = false
-        showGame(self)
     }
     
     @IBAction func logout(sender: AnyObject) {
