@@ -31,6 +31,7 @@ class ScrollTransition : ViewControllerTransition {
         panGesture?.removeTarget(self, action: panSelector)
     }
     
+    // TODO: What if we add animation to CALayer, will interactive animation break?
     override func animate() {
         var leftFrame = containerView.bounds
         leftFrame.origin.x -= leftFrame.width

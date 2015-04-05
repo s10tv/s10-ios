@@ -20,6 +20,8 @@ extension UIViewController {
 
 @objc(RootViewController)
 class RootViewController : UINavigationController {
+    @IBOutlet var rootView : RootView!
+    
     var signupVC : UINavigationController!
     let gameVC = GameViewController()
     let dockVC = DockViewController()
@@ -27,16 +29,14 @@ class RootViewController : UINavigationController {
     var animateDuration : NSTimeInterval = 0.6
     var springDamping : CGFloat = 0.6
     var initialSpringVelocity : CGFloat = 10
-    var rootView : RootView!
     
     var currentEdgePan : UIScreenEdgePanGestureRecognizer?
     
     override func loadView() {
         super.loadView()
-        rootView = UIView.fromNib("RootView") as RootView
+        UIView.fromNib("RootView", owner: self)
         view.insertSubview(rootView, atIndex: 0)
         rootView.makeEdgesEqualTo(view)
-        view.backgroundColor = UIColor(hex: "F0FAF7")
     }
     
     func handleEdgePan(gesture: UIScreenEdgePanGestureRecognizer, edge: UIRectEdge) {
@@ -100,14 +100,6 @@ class RootViewController : UINavigationController {
 //            }
 //        }
 
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-//        let view = self.view as RootView
-//        view.springDamping = 0.8
-//        view.animateHorizon(offset: 60)
-//        view.springDamping = 0.6
     }
     
     @IBAction func goBack(sender: AnyObject) {
@@ -178,20 +170,9 @@ class RootViewController : UINavigationController {
             Log.info("Signed out")
         }
     }
-    
-    // MARK: - Temporary
-    func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
-        if !(pendingViewControllers[0] is GameViewController) {
-            rootView.setKetchBoatHidden(true)
-        }
-    }
-    
-    func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
-//        if currentViewController is GameViewController {
-//            rootView.setKetchBoatHidden(false)
-//        }
-    }
 }
+
+// MARK: - Navigation Transitions
 
 extension RootViewController : UINavigationControllerDelegate {
     func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
