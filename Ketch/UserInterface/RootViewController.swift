@@ -165,9 +165,9 @@ class RootViewController : UINavigationController {
     
     @IBAction func logout(sender: AnyObject) {
 //        pageVC.view.hidden = true // TODO: Refactor me
-        showSignup(true)
         Core.logout().subscribeCompleted {
             Log.info("Signed out")
         }
+        popToRootViewControllerAnimated(true)
     }
 }

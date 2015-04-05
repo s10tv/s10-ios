@@ -20,7 +20,7 @@ class NewGameTransition : RootTransition {
     }
 
     override func animate() {
-        super.animate()
+        rootView.waterlineLocation = gameVC.waterlineLocation
         self.containerView.addSubview(self.toView!)
         spring(duration) {
             self.rootView.layoutIfNeeded()

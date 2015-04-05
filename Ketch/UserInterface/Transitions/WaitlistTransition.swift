@@ -20,7 +20,7 @@ class WaitlistTransition : RootTransition {
     }
     
     override func animate() {
-        super.animate()
+        rootView.waterlineLocation = waitlistVC.waterlineLocation
         self.containerView.addSubview(self.toView!)
         spring(duration) {
             self.rootView.layoutIfNeeded()

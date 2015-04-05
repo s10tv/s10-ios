@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Spring
 
 class RootTransition : ViewControllerTransition {
     let rootView : RootView
@@ -19,6 +20,17 @@ class RootTransition : ViewControllerTransition {
     override func animate() {
         if let vc = toVC as? BaseViewController {
             rootView.waterlineLocation = vc.waterlineLocation
+        }
+        containerView.addSubview(toView!)
+        toView?.frame = context.finalFrameForViewController(toVC)
+        toView?.alpha = 0
+        fromView?.alpha = 1
+        springWithCompletion(duration, {
+            self.toView?.alpha = 1
+            self.fromView?.alpha = 0
+            self.rootView.layoutIfNeeded()
+        }) { completed in
+            self.context.completeTransition(true)
         }
     }
 }
@@ -54,7 +66,7 @@ extension RootViewController : UINavigationControllerDelegate {
             return ScrollTransition(fromVC: fromVC, toVC: toVC, direction: .LeftToRight, panGesture: currentEdgePan)
             
         default:
-            return nil
+            return RootTransition(rootView, fromVC: fromVC, toVC: toVC)
         }
     }
     

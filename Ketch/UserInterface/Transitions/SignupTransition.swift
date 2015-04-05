@@ -20,7 +20,7 @@ class SignupTransition : RootTransition {
     }
     
     override func animate() {
-        super.animate()
+        rootView.waterlineLocation = signupVC.waterlineLocation
         self.containerView.addSubview(self.toView!)
         spring(duration) {
             self.rootView.layoutIfNeeded()

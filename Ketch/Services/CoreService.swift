@@ -115,10 +115,9 @@ class CoreService {
     }
     
     func logout() -> RACSignal {
-        return meteor.logout().deliverOnMainThread().doCompleted({
-            FBSession.activeSession().closeAndClearTokenInformation()
-            self.mainContext.reset()
-            UD.resetAll()
-        }).replay()
+        FBSession.activeSession().closeAndClearTokenInformation()
+        mainContext.reset()
+        UD.resetAll()
+        return meteor.logout().deliverOnMainThread()
     }
 }
