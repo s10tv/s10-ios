@@ -3,6 +3,11 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="TransatTextBold.otf">
+            <string>TransatTextBold</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--My Profile-->
         <scene sceneID="eia-8N-UZ9">
@@ -30,7 +35,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvP-mk-Fcq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1110" y="304"/>
+            <point key="canvasLocation" x="1352" y="460"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="5fm-o7-1g2">
@@ -56,7 +61,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TlQ-8h-TWe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="676" y="872"/>
+            <point key="canvasLocation" x="918" y="1028"/>
         </scene>
         <!--Your Matches-->
         <scene sceneID="mW7-zq-TQ3">
@@ -73,7 +78,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y2Q-Pb-RU0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1115" y="1042"/>
+            <point key="canvasLocation" x="1357" y="1198"/>
         </scene>
         <!--Chat-->
         <scene sceneID="bLH-YZ-QSJ">
@@ -88,7 +93,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B9f-P8-SG1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1115" y="1763"/>
+            <point key="canvasLocation" x="1357" y="1919"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="mYf-IJ-xkN">
@@ -98,7 +103,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H5s-tv-xnk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1518" y="1763"/>
+            <point key="canvasLocation" x="1760" y="1919"/>
         </scene>
         <!--Edit Profile-->
         <scene sceneID="98E-xT-5yo">
@@ -137,6 +142,59 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="plH-5c-5EG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="282" y="332"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="EYP-uL-lzC">
+            <objects>
+                <viewController storyboardIdentifier="Loading" id="xoo-Jw-KpK" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="HJB-RX-hRz"/>
+                        <viewControllerLayoutGuide type="bottom" id="a4S-8b-LcZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="G6V-p8-ber" customClass="TransparentBackgroundView" customModule="Ketch" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6B-JD-gK0" userLabel="Loading View">
+                                <rect key="frame" x="190.5" y="257" width="219.5" height="86"/>
+                                <subviews>
+                                    <activityIndicatorView opaque="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="A7B-na-V6j">
+                                        <rect key="frame" x="91" y="0.0" width="37" height="37"/>
+                                        <color key="color" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </activityIndicatorView>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.25" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finding the One..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryK-sr-K6f">
+                                        <rect key="frame" x="0.0" y="59" width="219.5" height="27"/>
+                                        <fontDescription key="fontDescription" name="TransatTextBold" family="Transat Text" pointSize="27"/>
+                                        <color key="textColor" red="0.092987515029999995" green="0.64821720120000004" blue="0.65024715659999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="ryK-sr-K6f" firstAttribute="top" secondItem="A7B-na-V6j" secondAttribute="bottom" constant="22" id="49Q-OG-rug"/>
+                                    <constraint firstItem="ryK-sr-K6f" firstAttribute="leading" secondItem="W6B-JD-gK0" secondAttribute="leading" id="4kk-Mq-FUU"/>
+                                    <constraint firstItem="A7B-na-V6j" firstAttribute="centerX" secondItem="ryK-sr-K6f" secondAttribute="centerX" id="Rcj-mQ-Pcz"/>
+                                    <constraint firstAttribute="trailing" secondItem="ryK-sr-K6f" secondAttribute="trailing" id="cl5-bW-RC5"/>
+                                    <constraint firstItem="A7B-na-V6j" firstAttribute="top" secondItem="W6B-JD-gK0" secondAttribute="top" id="mJd-4F-FPj"/>
+                                    <constraint firstAttribute="bottom" secondItem="ryK-sr-K6f" secondAttribute="bottom" id="tdi-Z1-Ngy"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="W6B-JD-gK0" secondAttribute="centerX" id="cZp-Ff-wIH"/>
+                            <constraint firstAttribute="centerY" secondItem="W6B-JD-gK0" secondAttribute="centerY" id="g7k-49-I3V"/>
+                        </constraints>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="number" keyPath="waveBottom">
+                                <real key="value" value="60"/>
+                            </userDefinedRuntimeAttribute>
+                            <userDefinedRuntimeAttribute type="boolean" keyPath="showBoat" value="YES"/>
+                        </userDefinedRuntimeAttributes>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jpe-tJ-ggF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="818" y="340"/>
         </scene>
     </scenes>
 </document>
