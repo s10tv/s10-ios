@@ -38,16 +38,14 @@ class User: _User {
     }
     
     var infoItems : [ProfileInfoItem] {
-        let items : [(ProfileInfoItem.ItemType, Any?)] = [
-            (.Location, location),
-            (.Age, age),
-            (.Height, height),
-            (.Work, work),
-            (.Education, education)
+        let items : [ProfileInfoItem.ItemType?] = [
+            location ?> { .Location($0) },
+            age as? Int ?> { .Age($0) },
+            height as? Int ?> { .Height($0) },
+            work ?> { .Work($0) },
+            education ?> { .Education($0) }
         ]
-        return items.mapOptional { (type, value) -> ProfileInfoItem? in
-            value != nil ? ProfileInfoItem(type: type, value: value!) : nil
-        }
+        return items.mapOptional { $0 ?> { ProfileInfoItem($0) } }
     }
     
     var profilePhotoURL : NSURL? {
@@ -104,10 +102,9 @@ class Photo {
 
 class ProfileInfoItem {
     enum ItemType {
-        case Location, Age, Height, Work, Education
+        case Location(String), Age(Int), Height(Int), Work(String), Education(String)
     }
     let type : ItemType
-    let value : Any
     let imageName : String
     let minWidthRatio : CGFloat = 1
     
@@ -127,17 +124,16 @@ class ProfileInfoItem {
         }
         
         switch type {
-            case .Location: return value as String
-            case .Age: return toString(value as Int)
-            case .Height: return formatters.height.stringFromMeters(Double(value as Int) / 100)
-            case .Work: return value as String
-            case .Education: return value as String
+            case let .Location(location): return location
+            case let .Age(age): return toString(age)
+            case let .Height(height): return formatters.height.stringFromMeters(Double(height) / 100)
+            case let .Work(work): return work
+            case let .Education(education): return education
         }
     }
     
-    init(type: ItemType, value: Any) {
+    init(_ type: ItemType) {
         self.type = type
-        self.value = value
         switch type {
         case .Location:
             imageName = R.ImagesAssets.settingsLocation
@@ -153,5 +149,4 @@ class ProfileInfoItem {
             imageName = R.ImagesAssets.settingsMortarBoard
         }
     }
-    
 }

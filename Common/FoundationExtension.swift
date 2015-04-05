@@ -8,6 +8,14 @@
 
 import Foundation
 
+infix operator ?> {}
+func ?> <T, U>(optional: T?, transform: T -> U) -> U? {
+    if let x = optional {
+        return transform(x)
+    }
+    return nil
+}
+
 func between<T : Comparable>(minLimit: T, value: T, maxLimit: T) -> T {
     assert(minLimit <= maxLimit, "Minimum must be smaller than or equal to max")
     return max(minLimit, min(value, maxLimit))
