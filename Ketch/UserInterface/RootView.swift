@@ -61,6 +61,14 @@ class RootView : BaseView {
         })
         return subject
     }
+    
+    func updateHorizon(#ratio: CGFloat) {
+        horizonHeight.constant = frame.height * ratio
+    }
+    
+    func updateHorizon(#offset: CGFloat, fromTop: Bool = true) {
+        horizonHeight.constant = fromTop ? frame.height - offset : offset
+    }
 
     func animateHorizon(#ratio: CGFloat) -> RACSignal {
 //        assert(between(0, ratio, 1) == true, "Ratio must be between 0 and 1")

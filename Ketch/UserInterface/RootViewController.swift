@@ -10,6 +10,7 @@ import UIKit
 import Meteor
 import FacebookSDK
 import ReactiveCocoa
+import Spring
 
 extension UIViewController {
     var rootVC : RootViewController {
@@ -18,7 +19,7 @@ extension UIViewController {
 }
 
 @objc(RootViewController)
-class RootViewController : PageViewController {
+class RootViewController : UINavigationController {
     var signupVC : UINavigationController!
     let gameVC = GameViewController()
     let dockVC = DockViewController()
@@ -26,54 +27,65 @@ class RootViewController : PageViewController {
     var animateDuration : NSTimeInterval = 0.6
     var springDamping : CGFloat = 0.6
     var initialSpringVelocity : CGFloat = 10
-    var rootView : RootView { return self.view as RootView }
+    var rootView : RootView!
+    
+    override func loadView() {
+        super.loadView()
+        rootView = UIView.fromNib("RootView") as RootView
+        view.insertSubview(rootView, atIndex: 0)
+        rootView.makeEdgesEqualTo(view)
+        view.backgroundColor = UIColor(hex: "F0FAF7")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        viewControllers = [gameVC, dockVC]
-        
-        // If server logs us out, then let's also log out of the UI
-        listenForNotification(METDDPClientDidChangeAccountNotification).filter { _ in
-            return !Core.meteor.hasAccount()
-        }.deliverOnMainThread().flattenMap { [weak self] _ in
-            if self?.signupVC?.parentViewController != nil {
-                return RACSignal.empty()
-            }
-            return UIAlertView.show("Error", message: "You have been logged out")
-        }.subscribeNext { [weak self] _ in
-            self?.showSignup(false)
-            return
-        }
+        delegate = self
 
-        // Try login now
-        if !Core.attemptLoginWithCachedCredentials() {
-            self.rootView.loadingView.hidden = true
-            showSignup(false)
-        } else {
-            Core.currentUserSubscription.signal.deliverOnMainThread().subscribeCompleted {
-                self.rootView.loadingView.hidden = true
-                if User.currentUser()?.vetted == "yes" {
-                    self.scrollTo(viewController: self.gameVC, animated: false)
-                } else {
-                    self.rootView.animateHorizon(ratio: 0.6)
-                    let vc = WaitlistViewController()
-                    self.addChildViewController(vc)
-                    self.view.addSubview(vc.view)
-                    vc.view.makeEdgesEqualTo(self.view)
-                    vc.didMoveToParentViewController(self)
-                }
-            }
-        }
+        
+        
+//        viewControllers = [gameVC, dockVC]
+//        
+//        // If server logs us out, then let's also log out of the UI
+//        listenForNotification(METDDPClientDidChangeAccountNotification).filter { _ in
+//            return !Core.meteor.hasAccount()
+//        }.deliverOnMainThread().flattenMap { [weak self] _ in
+//            if self?.signupVC?.parentViewController != nil {
+//                return RACSignal.empty()
+//            }
+//            return UIAlertView.show("Error", message: "You have been logged out")
+//        }.subscribeNext { [weak self] _ in
+//            self?.showSignup(false)
+//            return
+//        }
+//
+//        // Try login now
+//        if !Core.attemptLoginWithCachedCredentials() {
+//            self.rootView.loadingView.hidden = true
+//            showSignup(false)
+//        } else {
+//            Core.currentUserSubscription.signal.deliverOnMainThread().subscribeCompleted {
+//                self.rootView.loadingView.hidden = true
+//                if User.currentUser()?.vetted == "yes" {
+////                    self.scrollTo(viewController: self.gameVC, animated: false)
+//                } else {
+//                    self.rootView.animateHorizon(ratio: 0.6)
+//                    let vc = WaitlistViewController()
+//                    self.addChildViewController(vc)
+//                    self.view.addSubview(vc.view)
+//                    vc.view.makeEdgesEqualTo(self.view)
+//                    vc.didMoveToParentViewController(self)
+//                }
+//            }
+//        }
 
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        let view = self.view as RootView
-        view.springDamping = 0.8
-        view.animateHorizon(offset: 60)
-        view.springDamping = 0.6
+//        let view = self.view as RootView
+//        view.springDamping = 0.8
+//        view.animateHorizon(offset: 60)
+//        view.springDamping = 0.6
     }
     
     @IBAction func showSettings(sender: AnyObject) {
@@ -82,13 +94,13 @@ class RootViewController : PageViewController {
     
     @IBAction func showDock(sender: AnyObject) {
         dismissViewController(animated: false) // HACK ALERT: for transitioning from NewConnection. Gotta use segue
-        scrollTo(viewController: dockVC)
+//        scrollTo(viewController: dockVC)
         viewControllers = [gameVC, dockVC]
     }
     
     @IBAction func showGame(sender: AnyObject) {
         rootView.setKetchBoatHidden(false)
-        scrollTo(viewController: gameVC)
+//        scrollTo(viewController: gameVC)
         viewControllers = [gameVC, dockVC]
     }
     
@@ -101,7 +113,7 @@ class RootViewController : PageViewController {
     func showChat(connection: Connection, animated: Bool) {
         let chatVC = ChatViewController()
         chatVC.connection = connection
-        scrollTo(viewController: chatVC, animated: animated)
+//        scrollTo(viewController: chatVC, animated: animated)
         viewControllers = [gameVC, dockVC, chatVC]
         Core.meteor.callMethod("connection/markAsRead", params: [connection.documentID!])
     }
@@ -129,12 +141,12 @@ class RootViewController : PageViewController {
         signupVC.willMoveToParentViewController(nil)
         signupVC.view.removeFromSuperview()
         signupVC.removeFromParentViewController()
-        pageVC.view.hidden = false
+//        pageVC.view.hidden = false
         showGame(self)
     }
     
     @IBAction func logout(sender: AnyObject) {
-        pageVC.view.hidden = true // TODO: Refactor me
+//        pageVC.view.hidden = true // TODO: Refactor me
         showSignup(true)
         Core.logout().subscribeCompleted {
             Log.info("Signed out")
@@ -149,8 +161,19 @@ class RootViewController : PageViewController {
     }
     
     func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
-        if currentViewController is GameViewController {
-            rootView.setKetchBoatHidden(false)
+//        if currentViewController is GameViewController {
+//            rootView.setKetchBoatHidden(false)
+//        }
+    }
+}
+
+extension RootViewController : UINavigationControllerDelegate {
+    func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        if let loadingVC = fromVC as? LoadingViewController {
+            if let gameVC = toVC as? GameViewController {
+                return NewGameTransition(rootVC: self, loadingVC: loadingVC, gameVC: gameVC)
+            }
         }
+        return nil
     }
 }

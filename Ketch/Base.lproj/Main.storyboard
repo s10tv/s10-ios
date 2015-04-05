@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="uGx-qt-2h5">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="THI-zj-J05">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
@@ -134,19 +134,25 @@
             <point key="canvasLocation" x="282" y="1042"/>
         </scene>
         <!--Root View Controller-->
-        <scene sceneID="iAW-KX-dFr">
+        <scene sceneID="Eov-g8-b8w">
             <objects>
-                <viewController id="uGx-qt-2h5" customClass="RootViewController" sceneMemberID="viewController">
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="plH-5c-5EG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController navigationBarHidden="YES" id="THI-zj-J05" customClass="RootViewController" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="qHy-4h-Lpp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="xoo-Jw-KpK" kind="relationship" relationship="rootViewController" id="LLM-zy-cAc"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Wtb-Vn-cEV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="282" y="332"/>
+            <point key="canvasLocation" x="142" y="340"/>
         </scene>
-        <!--View Controller-->
+        <!--Loading View Controller-->
         <scene sceneID="EYP-uL-lzC">
             <objects>
-                <viewController storyboardIdentifier="Loading" id="xoo-Jw-KpK" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Loading" id="xoo-Jw-KpK" customClass="LoadingViewController" customModule="Ketch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="HJB-RX-hRz"/>
                         <viewControllerLayoutGuide type="bottom" id="a4S-8b-LcZ"/>
@@ -191,6 +197,10 @@
                             <userDefinedRuntimeAttribute type="boolean" keyPath="showBoat" value="YES"/>
                         </userDefinedRuntimeAttributes>
                     </view>
+                    <navigationItem key="navigationItem" id="Q7Z-rR-KIW"/>
+                    <connections>
+                        <segue destination="brw-cx-YUO" kind="show" identifier="LoadingToGame" id="FLq-Pa-kyO"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jpe-tJ-ggF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

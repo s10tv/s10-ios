@@ -83,6 +83,9 @@
 		EA7004791ACFB01500D0E467 /* WaitlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7004781ACFB01500D0E467 /* WaitlistViewController.swift */; };
 		EA70047B1ACFB02400D0E467 /* WaitlistView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA70047A1ACFB02400D0E467 /* WaitlistView.xib */; };
 		EA72FB1B1AD1049A009F853F /* TransparentBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FB1A1AD1049A009F853F /* TransparentBackgroundView.swift */; };
+		EA72FB1D1AD1805B009F853F /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FB1C1AD1805B009F853F /* LoadingViewController.swift */; };
+		EA72FB1F1AD180F1009F853F /* NewGameTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FB1E1AD180F1009F853F /* NewGameTransition.swift */; };
+		EA72FB211AD18673009F853F /* BaseTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FB201AD18673009F853F /* BaseTransition.swift */; };
 		EA7AA3651AA25D21003383BE /* SBConstantsExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3641AA25D21003383BE /* SBConstantsExtension.swift */; };
 		EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3681AA26597003383BE /* SBConstants.swift */; };
 		EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3691AA26597003383BE /* StyleKit.swift */; };
@@ -224,6 +227,9 @@
 		EA7004781ACFB01500D0E467 /* WaitlistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitlistViewController.swift; sourceTree = "<group>"; };
 		EA70047A1ACFB02400D0E467 /* WaitlistView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WaitlistView.xib; sourceTree = "<group>"; };
 		EA72FB1A1AD1049A009F853F /* TransparentBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransparentBackgroundView.swift; sourceTree = "<group>"; };
+		EA72FB1C1AD1805B009F853F /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
+		EA72FB1E1AD180F1009F853F /* NewGameTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGameTransition.swift; sourceTree = "<group>"; };
+		EA72FB201AD18673009F853F /* BaseTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTransition.swift; sourceTree = "<group>"; };
 		EA7AA3641AA25D21003383BE /* SBConstantsExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstantsExtension.swift; sourceTree = "<group>"; };
 		EA7AA3681AA26597003383BE /* SBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstants.swift; sourceTree = "<group>"; };
 		EA7AA3691AA26597003383BE /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
@@ -514,6 +520,7 @@
 				EA6650E31AA00A82001BA40C /* WaveView.swift */,
 				EA6650E51AA00A82001BA40C /* UserAvatarView.swift */,
 				EA72FB1A1AD1049A009F853F /* TransparentBackgroundView.swift */,
+				EA72FB201AD18673009F853F /* BaseTransition.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -622,6 +629,7 @@
 			isa = PBXGroup;
 			children = (
 				EAAD921A1ACDEACD0014BA25 /* NewMatchTransition.swift */,
+				EA72FB1E1AD180F1009F853F /* NewGameTransition.swift */,
 			);
 			path = Transitions;
 			sourceTree = "<group>";
@@ -661,6 +669,7 @@
 				EA6077761ACF6E0E00B3A19A /* Permission */,
 				EA7004771ACFB00B00D0E467 /* Waitlist */,
 				EAF4D74F1A79AA5E00D35330 /* RootViewController.swift */,
+				EA72FB1C1AD1805B009F853F /* LoadingViewController.swift */,
 				EA396FE91AB51BED009EB60B /* RootView.swift */,
 				EAE63D791AB3407D004A74E6 /* RootView.xib */,
 			);
@@ -938,6 +947,7 @@
 				EA7AA3651AA25D21003383BE /* SBConstantsExtension.swift in Sources */,
 				EAF3A4C11ACA22C2001C2943 /* ProfileInfoCell.swift in Sources */,
 				EA6650E81AA00A82001BA40C /* UserAvatarView.swift in Sources */,
+				EA72FB211AD18673009F853F /* BaseTransition.swift in Sources */,
 				EA7004791ACFB01500D0E467 /* WaitlistViewController.swift in Sources */,
 				EA0FC9371A87DE5800D62625 /* BaseViewController.swift in Sources */,
 				EAAD921D1ACF342C0014BA25 /* Environment.swift in Sources */,
@@ -984,11 +994,13 @@
 				EA6650E61AA00A82001BA40C /* WaveView.swift in Sources */,
 				EA6650EC1AA00A9C001BA40C /* CandidateService.swift in Sources */,
 				EAAA42871AB24D5F00056EFF /* CandidateBubble.swift in Sources */,
+				EA72FB1F1AD180F1009F853F /* NewGameTransition.swift in Sources */,
 				EAAD921F1ACF4EFA0014BA25 /* ProvisioningProfile.swift in Sources */,
 				EA2AB70E1A8A00F200D42C6C /* GameViewController.swift in Sources */,
 				EA0FC9431A87DE5800D62625 /* FetchViewModel.swift in Sources */,
 				EA396FF01AB52BF8009EB60B /* PageViewController.swift in Sources */,
 				EA0FC9341A87DE5800D62625 /* MeteorCDStack.swift in Sources */,
+				EA72FB1D1AD1805B009F853F /* LoadingViewController.swift in Sources */,
 				EA1970191A83549300FEBA7F /* SignupViewController.swift in Sources */,
 				EA0FC93A1A87DE5800D62625 /* ReactiveCocoaExtension.swift in Sources */,
 				EA409D391A8C681A00988B8B /* FacebookExtension.swift in Sources */,

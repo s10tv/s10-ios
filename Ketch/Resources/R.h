@@ -107,7 +107,7 @@ extern const struct R {
         __unsafe_unretained NSString *sTyping3x;
     } JSQMessagesAssets;
     struct Strings {
-        /// DECIDE WHAT YOU PREFER
+        /// DRAG THE MATCHES UP TO YOUR CHOICES
         __unsafe_unretained NSString *dragMatchsToChoices;
         /// It's a Ketch!
         __unsafe_unretained NSString *itsAKetch;
@@ -139,9 +139,9 @@ extern const struct R {
         __unsafe_unretained NSString *reportAlertMessage;
         /// Thank you for your feedback
         __unsafe_unretained NSString *reportAlertTitle;
-        /// %@ likes you! Your dreamboat will sail off in three days. Get on it before %@ disappears for good!
+        /// %@ likes you! Your dreamboat will sail away in three days. Get on it before %@ disappears for good!
         __unsafe_unretained NSString *singleMatchPrompt;
-        /// SAY NO POLITELY
+        /// SAY NO NICELY
         __unsafe_unretained NSString *skipPrompt;
         /// SEE AGAIN LATER
         __unsafe_unretained NSString *snoozePrompt;
