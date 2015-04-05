@@ -24,10 +24,10 @@ class Environment {
     let serverProtocol = "ws" // TODO: Change to websocket secure
     let serverHostName : String
     var serverURL : NSURL {
-        return NSURL(string: "\(serverProtocol)://\(serverHostName)/websocket")!
+        return NSURL("\(serverProtocol)://\(serverHostName)/websocket")
     }
     var appID : String {
-        return NSBundle.mainBundle().infoDictionary?["CFBundleIdentifier"] as String
+        return NSBundle.mainBundle().bundleIdentifier!
     }
     
     init(audience: Audience, provisioningProfile: ProvisioningProfile?) {
