@@ -142,19 +142,6 @@ class RootViewController : UINavigationController {
         presentViewController(newConnVC, animated: true)
     }
     
-    func showSignup(animated: Bool) {
-        signupVC = UINavigationController()
-        signupVC.navigationBarHidden = true
-        let vc = UIStoryboard(name: "Signup", bundle: nil).makeInitialViewController()
-        signupVC.pushViewController(vc, animated: false)
-        rootView.setKetchBoatHidden(true)
-        dismissViewController(animated: false)
-        addChildViewController(signupVC)
-        view.addSubview(signupVC.view)
-        signupVC.view.makeEdgesEqualTo(view)
-        signupVC.didMoveToParentViewController(self)
-    }
-    
     @IBAction func finishSignup(sender: AnyObject) {
         signupVC.willMoveToParentViewController(nil)
         signupVC.view.removeFromSuperview()

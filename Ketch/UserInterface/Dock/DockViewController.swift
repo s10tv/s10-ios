@@ -14,6 +14,7 @@ class DockViewController : BaseViewController {
     @IBOutlet weak var tableView: UITableView!
 
     var connections : FetchViewModel!
+    var selectedConnection : Connection?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,8 +26,14 @@ class DockViewController : BaseViewController {
             (cell as ConnectionCell).connection = (item as Connection)
         }
         connections.tableViewProvider?.didSelectItem = { [weak self] item in
-            self?.rootVC.showChat(item as Connection, animated: true)
-            return
+            self?.selectedConnection = item as? Connection
+            self?.performSegue(.DockToChat)
+        }
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let vc = segue.destVC as? ChatViewController {
+            vc.connection = selectedConnection
         }
     }
 }

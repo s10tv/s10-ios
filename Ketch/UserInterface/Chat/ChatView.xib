@@ -44,7 +44,7 @@
                         <color key="titleColor" red="0.34509803919999998" green="0.67843137249999996" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </state>
                     <connections>
-                        <action selector="showDock:" destination="-2" eventType="touchUpInside" id="5ce-RW-ZPg"/>
+                        <action selector="goBack:" destination="-2" eventType="touchUpInside" id="ldc-X5-5Fw"/>
                     </connections>
                 </button>
                 <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BoD-Az-3DM" customClass="JSQMessagesInputToolbar">

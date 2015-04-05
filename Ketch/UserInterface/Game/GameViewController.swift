@@ -57,9 +57,6 @@ class GameViewController : BaseViewController {
     
     func showCandidateProfiles(candidate: Candidate) {
         if let candidates = currentCandidates {
-            let rootView = rootVC.view as RootView
-            rootView.animateHorizon(offset: view.bounds.width - 16)
-            
             let pageVC = PageViewController()
             pageVC.viewControllers = map(candidates) {
                 return ProfileViewController(user: $0.user!)
