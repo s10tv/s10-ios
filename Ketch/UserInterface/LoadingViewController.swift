@@ -10,8 +10,7 @@ import Foundation
 
 class LoadingViewController : BaseViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func commonInit() {
         waterlineLocation = .Bottom(60)
         hideKetchBoat = false
     }

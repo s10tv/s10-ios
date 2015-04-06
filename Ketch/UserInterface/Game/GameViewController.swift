@@ -16,12 +16,14 @@ class GameViewController : BaseViewController {
     
     var candidates : [Candidate]! { willSet { assert(candidates == nil, "candidates are immutable") } }
     
+    override func commonInit() {
+        hideKetchBoat = false
+    }
+    
     override func viewDidLoad() {
         assert(candidates.count == 3, "Must provide 3 candidates before loading GameVC")
         super.viewDidLoad()
         
-        hideKetchBoat = false
-
         // Setup tap to view profile
         for bubble in gameView.bubbles {
             bubble.didTap = { [weak self, weak bubble] _ in

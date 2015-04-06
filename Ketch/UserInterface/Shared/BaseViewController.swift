@@ -22,4 +22,22 @@ class BaseViewController : UIViewController {
     func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
         return false
     }
+    
+    // MARK: - Initialization
+
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        commonInit()
+    }
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        commonInit()
+    }
+    
+    override convenience init() {
+        self.init(nibName: nil, bundle: nil)
+    }
+    
+    func commonInit() { }
 }
