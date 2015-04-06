@@ -15,32 +15,21 @@ extension UIStoryboardSegue {
     var navVC : UINavigationController? { return sourceVC.navigationController }
 }
 
-// TODO: Create Common framework and hide this class inside it
-class _LinkedStoryboardSegue : UIStoryboardSegue {
+class LinkedStoryboardPushSegue : UIStoryboardSegue {
     override init!(identifier: String!, source: UIViewController, destination: UIViewController) {
-        super.init(identifier: identifier, source: source, destination: _LinkedStoryboardSegue.sceneNamed(identifier))
+        super.init(identifier: identifier, source: source, destination: loadSceneNamed(identifier))
     }
     
-    class func sceneNamed(fullIdentifier: String) -> UIViewController {
-        // TODO: Find better pattern for this ugly code
-        let comps = fullIdentifier.componentsSeparatedByString("_")
-        let storyboard = UIStoryboard(name: comps[0], bundle: nil)
-        if let vcIdentifier = comps.count > 1 ? comps[1] : nil {
-            if vcIdentifier.length > 0 {
-                return storyboard.instantiateViewControllerWithIdentifier(vcIdentifier) as UIViewController
-            }
-        }
-        return storyboard.instantiateInitialViewController() as UIViewController
-    }
-}
-
-class LinkedStoryboardPushSegue : _LinkedStoryboardSegue {
     override func perform() {
         navVC?.pushViewController(destVC, animated: true)
     }
 }
 
-class LinkedStoryboardPresentSegue : _LinkedStoryboardSegue {
+class LinkedStoryboardPresentSegue : UIStoryboardSegue {
+    override init!(identifier: String!, source: UIViewController, destination: UIViewController) {
+        super.init(identifier: identifier, source: source, destination: loadSceneNamed(identifier))
+    }
+
     override func perform() {
         sourceVC.presentViewController(destVC, animated: true, completion: nil)
     }
@@ -56,6 +45,19 @@ class ReplaceAndPushSegue : UIStoryboardSegue {
             navVC.setViewControllers(vcs, animated: true)
         }
     }
+}
+
+// Loading ViewController instance from storyboard with format ${StoryboardName}_${ViewControllerIdentifier}
+private func loadSceneNamed(fullIdentifier: String) -> UIViewController {
+    // TODO: Find better pattern for this ugly code
+    let comps = fullIdentifier.componentsSeparatedByString("_")
+    let storyboard = UIStoryboard(name: comps[0], bundle: nil)
+    if let vcIdentifier = comps.count > 1 ? comps[1] : nil {
+        if vcIdentifier.length > 0 {
+            return storyboard.instantiateViewControllerWithIdentifier(vcIdentifier) as UIViewController
+        }
+    }
+    return storyboard.instantiateInitialViewController() as UIViewController
 }
 
 // TODO: Remove this class after we investigate CoreAnimation calls inside perform

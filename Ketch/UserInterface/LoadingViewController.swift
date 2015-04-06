@@ -18,7 +18,7 @@ class LoadingViewController : BaseViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        println("Loading view did appear")
+
         if !Core.attemptLoginWithCachedCredentials() {
             performSegue(.Signup_)
         } else {
