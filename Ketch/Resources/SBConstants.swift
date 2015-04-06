@@ -7,6 +7,7 @@ public enum SegueIdentifier : String {
     case GameToSettings = "GameToSettings"
     case LoadingToGame = "LoadingToGame"
     case LoadingToNewConnection = "LoadingToNewConnection"
+    case LoadingToNoGame = "LoadingToNoGame"
     case LocationPermToWaitlist = "LocationPermToWaitlist"
     case NewConnectionToDock = "NewConnectionToDock"
     case NotificationsPermToLocationPerm = "NotificationsPermToLocationPerm"

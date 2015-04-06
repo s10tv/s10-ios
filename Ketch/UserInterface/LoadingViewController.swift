@@ -19,18 +19,18 @@ class LoadingViewController : BaseViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
 
-        if !Core.attemptLoginWithCachedCredentials() {
-            performSegue(.Signup_)
-        } else {
-            Core.connectionsSubscription.signal.deliverOnMainThread().subscribeCompleted {
-                //                if User.currentUser()?.vetted == "yes" {
-                //
-                //                }
-                //                self.performSegue(.LoadingToGame)
-                self.performSegue(.LoadingToNewConnection)
-            }
-        }
-
+//        if !Core.attemptLoginWithCachedCredentials() {
+//            performSegue(.Signup_)
+//        } else {
+//            Core.connectionsSubscription.signal.deliverOnMainThread().subscribeCompleted {
+//                //                if User.currentUser()?.vetted == "yes" {
+//                //
+//                //                }
+//                //                self.performSegue(.LoadingToGame)
+//                self.performSegue(.LoadingToNewConnection)
+//            }
+//        }
+        performSegue(.LoadingToNoGame)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
