@@ -2,11 +2,18 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="THI-zj-J05">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="KetchIcon.otf">
             <string>KetchIcon-Regular</string>
             <string>KetchIcon-Regular</string>
+            <string>KetchIcon-Regular</string>
+            <string>KetchIcon-Regular</string>
+        </mutableArray>
+        <mutableArray key="TransatTextBlack.otf">
+            <string>TransatTextBlack</string>
         </mutableArray>
         <mutableArray key="TransatTextBold.otf">
             <string>TransatTextBold</string>
@@ -165,9 +172,218 @@ SAILED FOR TODAY.</string>
         <scene sceneID="5fm-o7-1g2">
             <objects>
                 <viewController storyboardIdentifier="Game" id="brw-cx-YUO" customClass="GameViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SYM-1r-qph"/>
+                        <viewControllerLayoutGuide type="bottom" id="f9R-rk-GCL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="m2B-aU-Mh7" userLabel="Game View" customClass="GameView" customModule="Ketch" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-bucket-marry" translatesAutoresizingMaskIntoConstraints="NO" id="2Mo-6y-hwh" userLabel="Yes Bucket" customClass="ChoiceBucket" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="250" y="67" width="100" height="116"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="116" id="I4i-RO-KZR"/>
+                                    <constraint firstAttribute="width" secondItem="2Mo-6y-hwh" secondAttribute="height" multiplier="25:29" id="WZ5-5U-oNX"/>
+                                    <constraint firstAttribute="width" constant="100" id="fMf-cR-Dgm"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="I4i-RO-KZR"/>
+                                        <exclude reference="fMf-cR-Dgm"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-bucket-keep" translatesAutoresizingMaskIntoConstraints="NO" id="ZdL-6o-ahC" userLabel="Maybe Bucket" customClass="ChoiceBucket" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="472" y="193" width="100" height="113"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="ZdL-6o-ahC" secondAttribute="height" multiplier="100:113" id="3sI-Xg-EnF"/>
+                                    <constraint firstAttribute="width" constant="100" id="NUy-QR-pTk"/>
+                                    <constraint firstAttribute="height" constant="113" id="U4d-tQ-I0v"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="U4d-tQ-I0v"/>
+                                        <exclude reference="NUy-QR-pTk"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-bucket-skip" translatesAutoresizingMaskIntoConstraints="NO" id="C5L-zq-XTw" userLabel="No Bucket" customClass="ChoiceBucket" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="29" y="193" width="100" height="113"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="113" id="hOv-IZ-HTU"/>
+                                    <constraint firstAttribute="width" constant="100" id="uXZ-Qd-8ZS"/>
+                                    <constraint firstAttribute="width" secondItem="C5L-zq-XTw" secondAttribute="height" multiplier="100:113" id="vir-gv-ISP"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="uXZ-Qd-8ZS"/>
+                                        <exclude reference="hOv-IZ-HTU"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sNf-t3-S46" userLabel="Left Placeholder" customClass="FloatBox" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="8" y="460" width="100" height="100"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jqh-bc-UMn" userLabel="Center Placeholder" customClass="FloatBox" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="250" y="460" width="100" height="100"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Jqh-bc-UMn" secondAttribute="height" multiplier="1:1" id="XoX-Gk-3e9"/>
+                                    <constraint firstAttribute="width" priority="751" constant="100" id="bTg-03-zWq"/>
+                                    <constraint firstAttribute="height" constant="100" id="fNU-dh-bF0"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="fNU-dh-bF0"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="arw-4e-pup" userLabel="Right Placeholder" customClass="FloatBox" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="492" y="460" width="100" height="100"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YSC-OD-kWb" userLabel="Help Text" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="20" y="360" width="560" height="62"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="SWIPE DOWN TO FIND THE ONE!">
+                                        <attributes>
+                                            <color key="NSColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="25" name="TransatTextBlack"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" minimumLineHeight="31"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="TransatTextBlack"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontKern">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s2S-Vm-p8n" userLabel="Confirm Button" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="175" y="384" width="250" height="54"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="I1o-Jn-3rM"/>
+                                    <constraint firstAttribute="width" constant="250" id="xEH-HB-6bG"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TransatTextBlack" family="Transat Text" pointSize="21"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Set Sail">
+                                    <color key="titleColor" red="0.0" green="0.89484882349999995" blue="0.94724231960000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="confirmChoices:" destination="m2B-aU-Mh7" eventType="touchUpInside" id="qx0-NV-3vq"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cK6-TY-fKz" userLabel="Settings">
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="PbY-8f-jEO"/>
+                                    <constraint firstAttribute="height" constant="60" id="aCf-Na-jFd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="KetchIcon-Regular" family="KetchIcon" pointSize="12"/>
+                                <state key="normal" title="W">
+                                    <color key="titleColor" red="0.092987515029999995" green="0.64821720120000004" blue="0.65024715659999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="Vhy-hq-gwn" kind="presentation" id="nCf-mq-8Rt"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SMl-V4-Z7A" userLabel="Dock">
+                                <rect key="frame" x="520" y="0.0" width="80" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="20N-OJ-5eh"/>
+                                    <constraint firstAttribute="width" constant="80" id="zGb-fN-x45"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="KetchIcon-Regular" family="KetchIcon" pointSize="10"/>
+                                <state key="normal" title="z">
+                                    <color key="titleColor" red="0.092987515029999995" green="0.64821720120000004" blue="0.65024715659999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="YUi-xK-iJg" kind="show" id="q7i-Iz-xMU"/>
+                                </connections>
+                            </button>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rx1-xy-YKJ" userLabel="New Indicator">
+                                <rect key="frame" x="568" y="16" width="12" height="12"/>
+                                <color key="backgroundColor" red="0.950525701" green="0.36602467300000002" blue="0.44692194460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="12" id="j92-NY-hEn"/>
+                                    <constraint firstAttribute="width" secondItem="Rx1-xy-YKJ" secondAttribute="height" multiplier="1:1" id="usv-e0-fBa"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.043137254899999998" green="0.8980392157" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="Jqh-bc-UMn" secondAttribute="centerX" id="07W-1D-FZV"/>
+                            <constraint firstItem="Rx1-xy-YKJ" firstAttribute="top" secondItem="SMl-V4-Z7A" secondAttribute="top" constant="16" id="0OY-Q0-Veh"/>
+                            <constraint firstItem="YSC-OD-kWb" firstAttribute="leading" secondItem="m2B-aU-Mh7" secondAttribute="leading" constant="20" id="1lr-R6-LH5"/>
+                            <constraint firstItem="YSC-OD-kWb" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ZdL-6o-ahC" secondAttribute="bottom" constant="40" id="29w-r2-q8f"/>
+                            <constraint firstItem="Jqh-bc-UMn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sNf-t3-S46" secondAttribute="trailing" constant="20" id="2FR-sK-ys4"/>
+                            <constraint firstItem="Jqh-bc-UMn" firstAttribute="centerY" secondItem="arw-4e-pup" secondAttribute="centerY" id="3zT-Uy-ikl"/>
+                            <constraint firstItem="Jqh-bc-UMn" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ZdL-6o-ahC" secondAttribute="bottom" constant="70" id="4pb-Lm-B0W"/>
+                            <constraint firstAttribute="trailing" secondItem="arw-4e-pup" secondAttribute="trailing" constant="8" id="AfI-no-a1C"/>
+                            <constraint firstItem="Rx1-xy-YKJ" firstAttribute="width" secondItem="Rx1-xy-YKJ" secondAttribute="height" multiplier="1:1" id="BUQ-Zw-qdG"/>
+                            <constraint firstItem="C5L-zq-XTw" firstAttribute="top" secondItem="2Mo-6y-hwh" secondAttribute="bottom" constant="10" id="Bjc-u4-tDP"/>
+                            <constraint firstAttribute="centerX" secondItem="2Mo-6y-hwh" secondAttribute="centerX" id="CRv-mk-nq3"/>
+                            <constraint firstItem="Jqh-bc-UMn" firstAttribute="height" secondItem="arw-4e-pup" secondAttribute="height" id="Cj8-72-pYR"/>
+                            <constraint firstItem="C5L-zq-XTw" firstAttribute="leading" secondItem="m2B-aU-Mh7" secondAttribute="leading" constant="29" id="ERk-0s-1ql"/>
+                            <constraint firstAttribute="centerY" secondItem="YSC-OD-kWb" secondAttribute="top" priority="251" constant="-60" id="G9u-m6-Mzn"/>
+                            <constraint firstAttribute="bottom" secondItem="Jqh-bc-UMn" secondAttribute="bottom" priority="251" constant="40" id="HqD-RL-LDf"/>
+                            <constraint firstItem="YSC-OD-kWb" firstAttribute="centerX" secondItem="s2S-Vm-p8n" secondAttribute="centerX" id="JR2-ZF-F5w"/>
+                            <constraint firstAttribute="trailing" secondItem="ZdL-6o-ahC" secondAttribute="trailing" constant="28" id="KTI-1w-bt9"/>
+                            <constraint firstItem="SMl-V4-Z7A" firstAttribute="top" secondItem="SYM-1r-qph" secondAttribute="bottom" id="NVw-VN-B8m"/>
+                            <constraint firstItem="cK6-TY-fKz" firstAttribute="leading" secondItem="m2B-aU-Mh7" secondAttribute="leading" id="OeD-1l-0I5"/>
+                            <constraint firstAttribute="trailing" secondItem="SMl-V4-Z7A" secondAttribute="trailing" id="Rdt-Hj-bBY"/>
+                            <constraint firstItem="2Mo-6y-hwh" firstAttribute="top" relation="greaterThanOrEqual" secondItem="m2B-aU-Mh7" secondAttribute="top" constant="36" id="Sof-5B-gRV"/>
+                            <constraint firstItem="sNf-t3-S46" firstAttribute="leading" secondItem="m2B-aU-Mh7" secondAttribute="leading" constant="8" id="Ued-7N-fNy"/>
+                            <constraint firstItem="Jqh-bc-UMn" firstAttribute="height" secondItem="sNf-t3-S46" secondAttribute="height" id="VMr-Ch-omC"/>
+                            <constraint firstAttribute="trailing" secondItem="YSC-OD-kWb" secondAttribute="trailing" constant="20" id="YTP-dx-yWz"/>
+                            <constraint firstItem="C5L-zq-XTw" firstAttribute="top" secondItem="ZdL-6o-ahC" secondAttribute="top" id="baL-WL-VNx"/>
+                            <constraint firstItem="Jqh-bc-UMn" firstAttribute="width" secondItem="2Mo-6y-hwh" secondAttribute="width" id="c0U-J7-kqI"/>
+                            <constraint firstItem="Jqh-bc-UMn" firstAttribute="width" secondItem="sNf-t3-S46" secondAttribute="width" id="de5-PX-OG9"/>
+                            <constraint firstItem="YSC-OD-kWb" firstAttribute="centerY" secondItem="s2S-Vm-p8n" secondAttribute="centerY" constant="-20" id="edV-X7-Ra2"/>
+                            <constraint firstItem="C5L-zq-XTw" firstAttribute="width" secondItem="2Mo-6y-hwh" secondAttribute="width" id="hoG-JN-feM"/>
+                            <constraint firstItem="2Mo-6y-hwh" firstAttribute="width" secondItem="ZdL-6o-ahC" secondAttribute="width" id="oHl-VI-KED"/>
+                            <constraint firstItem="Jqh-bc-UMn" firstAttribute="width" secondItem="arw-4e-pup" secondAttribute="width" id="oL9-BF-2cB"/>
+                            <constraint firstItem="SMl-V4-Z7A" firstAttribute="trailing" secondItem="Rx1-xy-YKJ" secondAttribute="trailing" constant="20" id="ovx-gg-9KV"/>
+                            <constraint firstItem="cK6-TY-fKz" firstAttribute="top" secondItem="SYM-1r-qph" secondAttribute="bottom" id="p3O-Rl-amj"/>
+                            <constraint firstItem="Jqh-bc-UMn" firstAttribute="centerY" secondItem="sNf-t3-S46" secondAttribute="centerY" id="ptI-Oq-AIc"/>
+                            <constraint firstItem="arw-4e-pup" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Jqh-bc-UMn" secondAttribute="trailing" constant="20" id="w97-7r-qsX"/>
+                            <constraint firstAttribute="centerY" secondItem="2Mo-6y-hwh" secondAttribute="centerY" priority="252" constant="175" id="ya7-py-po4"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="BUQ-Zw-qdG"/>
+                            </mask>
+                        </variation>
+                        <connections>
+                            <outlet property="confirmButton" destination="s2S-Vm-p8n" id="cyd-BF-U2a"/>
+                            <outlet property="helpText" destination="YSC-OD-kWb" id="5fB-Rb-VTq"/>
+                            <outletCollection property="buckets" destination="2Mo-6y-hwh" collectionClass="NSMutableArray" id="odn-TY-uuy"/>
+                            <outletCollection property="buckets" destination="ZdL-6o-ahC" collectionClass="NSMutableArray" id="5Ad-7Z-BUE"/>
+                            <outletCollection property="buckets" destination="C5L-zq-XTw" collectionClass="NSMutableArray" id="89e-h9-NTd"/>
+                            <outletCollection property="boxes" destination="sNf-t3-S46" collectionClass="NSMutableArray" id="VQY-U5-Yfh"/>
+                            <outletCollection property="boxes" destination="Jqh-bc-UMn" collectionClass="NSMutableArray" id="nIS-dl-GrK"/>
+                            <outletCollection property="boxes" destination="arw-4e-pup" collectionClass="NSMutableArray" id="nY0-Pp-ud0"/>
+                        </connections>
+                    </view>
                     <connections>
-                        <segue destination="Vhy-hq-gwn" kind="presentation" identifier="GameToSettings" id="vNO-1M-A8G"/>
-                        <segue destination="YUi-xK-iJg" kind="show" identifier="GameToDock" id="PWk-0v-Pdh"/>
+                        <outlet property="dockBadge" destination="Rx1-xy-YKJ" id="0zW-TP-DUo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TlQ-8h-TWe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -347,13 +563,16 @@ SAILED FOR TODAY.</string>
         </scene>
     </scenes>
     <resources>
+        <image name="game-bucket-keep" width="128" height="144"/>
+        <image name="game-bucket-marry" width="128" height="148"/>
+        <image name="game-bucket-skip" width="128" height="144"/>
         <image name="game-empty-share-facebook" width="61" height="61"/>
         <image name="game-empty-share-sms" width="60" height="61"/>
         <image name="game-empty-share-twitter" width="60" height="61"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tnG-4w-VC3"/>
-        <segue reference="6ym-FC-Y97"/>
+        <segue reference="nCf-mq-8Rt"/>
+        <segue reference="q7i-Iz-xMU"/>
         <segue reference="T9Y-bJ-q8s"/>
     </inferredMetricsTieBreakers>
 </document>

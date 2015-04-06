@@ -72,13 +72,21 @@ class GameView : TransparentView {
             bucket.animator = animator
             bucket.choice = [Candidate.Choice.Yes, Candidate.Choice.Maybe, Candidate.Choice.No][i] // TODO: Less hack...
         }
+        for bubble in bubbles {
+            bubble.makeCircular()
+        }
+
+        
+        collision = UICollisionBehavior(items: bubbles)
+        collision.collisionMode = UICollisionBehaviorMode.Items
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
         for (i, bubble) in enumerate(bubbles) {
             bubble.frame = self.boxes[i].frame
             bubble.makeCircular()
         }
-        
-        collision = UICollisionBehavior(items: bubbles)
-        collision.collisionMode = UICollisionBehaviorMode.Items
     }
     
     @IBAction func confirmChoices(sender: AnyObject) {
@@ -92,23 +100,23 @@ class GameView : TransparentView {
     }
     
     func dropBubbles() {
-        animator.removeBehavior(collision)
-        for (i, bubble) in enumerate(bubbles) {
-            bubble.dropzone = nil
-            bubble.center = CGPoint(x: boxes[i].center.x, y: -200)
-        }
-        let gravity = UIGravityBehavior(items: bubbles)
-        gravity.magnitude = 5
-        gravity.action = {
-            if abs(self.bubbles[0].center.y - self.frame.height) < 20 {
-                for (i, bubble) in enumerate(self.bubbles) {
-                    bubble.dropzone = self.boxes[i]
-                }
-                self.animator.addBehavior(self.collision)
-                self.animator.removeBehavior(gravity)
-            }
-        }
-        animator.addBehavior(gravity)
+//        animator.removeBehavior(collision)
+//        for (i, bubble) in enumerate(bubbles) {
+//            bubble.dropzone = nil
+//            bubble.center = CGPoint(x: boxes[i].center.x, y: -200)
+//        }
+//        let gravity = UIGravityBehavior(items: bubbles)
+//        gravity.magnitude = 5
+//        gravity.action = {
+//            if abs(self.bubbles[0].center.y - self.frame.height) < 20 {
+//                for (i, bubble) in enumerate(self.bubbles) {
+//                    bubble.dropzone = self.boxes[i]
+//                }
+//                self.animator.addBehavior(self.collision)
+//                self.animator.removeBehavior(gravity)
+//            }
+//        }
+//        animator.addBehavior(gravity)
     }
     
     func startNewGame(candidates: [Candidate]) {

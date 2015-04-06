@@ -11,29 +11,29 @@ import Foundation
 @objc(GameViewController)
 class GameViewController : BaseViewController {
     
-    @IBOutlet weak var container: UIView!
-    @IBOutlet var gameView: GameView!
-    @IBOutlet var emptyView: UIView!
     @IBOutlet weak var dockBadge: UIImageView!
+    var gameView: GameView! { return view as GameView }
     
-    var currentCandidates : [Candidate]? { didSet { candidatesDidChange() } }
+    var currentCandidates : [Candidate]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKetchBoat = false
+        dockBadge.makeCircular()
 //        RAC(dockBadge, "hidden") <~ Connection.unreadCountSignal().map { ($0 as Int) == 0 }
 
-        dockBadge.makeCircular()
-        showSubview(gameView)
-
-        bindGameView()
+        // Setup tap to view profile
+        for bubble in gameView.bubbles {
+            bubble.didTap = { [weak self, weak bubble] _ in
+                self?.showCandidateProfiles(bubble!.candidate!)
+                return
+            }
+        }
         gameView.didConfirmChoices = { [weak self] in
             if let this = self { this.submitChoices(this) }
         }
-//        backgroundView.ketchIcon.userInteractionEnabled = true
-//        backgroundView.ketchIcon.whenTapped {
-//            self.gameView.tutorialStep1()
-//        }
+        assert(currentCandidates.count == 3, "There must be exactly 3 candidates before starting game")
+        gameView.startNewGame(currentCandidates)
     }
     
     override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
@@ -45,25 +45,6 @@ class GameViewController : BaseViewController {
     }
     
     // MARK: -
-    
-    func bindGameView() {
-        Core.candidateService.fetch.signal.subscribeNextAs { [weak self] (candidates : [Candidate]) in
-            if let this = self {
-                if candidates.count >= 3 {
-                    this.currentCandidates = Array(candidates[0...2])
-                } else {
-                    this.currentCandidates = nil
-                }
-            }
-        }
-        // Setup tap to view profile
-        for bubble in gameView.bubbles {
-            bubble.didTap = { [weak self, weak bubble] _ in
-                self?.showCandidateProfiles(bubble!.candidate!)
-                return
-            }
-        }
-    }
     
     func showCandidateProfiles(candidate: Candidate) {
         if let candidates = currentCandidates {
@@ -77,36 +58,6 @@ class GameViewController : BaseViewController {
         }
     }
     
-    func candidatesDidChange() {
-        if let candidates = currentCandidates {
-            assert(candidates.count == 3, "There must be exactly 3 candidates before starting game")
-            showSubview(gameView)
-            gameView.startNewGame(candidates)
-        } else {
-            showSubview(emptyView)
-        }
-    }
-    
-    // TODO: Should we refactor empty view into its own separate view controller?
-    func showSubview(subview: UIView) {
-        if subview.superview == nil {
-            gameView.removeFromSuperview()
-            emptyView.removeFromSuperview()
-            container.addSubview(subview)
-            subview.makeEdgesEqualTo(container)
-        }
-    }
-    
-    @IBAction func goToDock(sender: AnyObject) {
-        performSegue(.GameToDock)
-    }
-    
-    @IBAction func goToSettings(sender: AnyObject) {
-        performSegue(.GameToSettings)
-    }
-    
-    // MARK: -
-
     @IBAction func submitChoices(sender: AnyObject) {
         if !gameView.isReady {
             UIAlertView.show("Error", message: "Need to uniquely assign keep match marry")

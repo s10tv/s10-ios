@@ -36,7 +36,6 @@
 		EA1DA37F1A8D188B00433093 /* NewConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1DA37E1A8D188B00433093 /* NewConnectionViewController.swift */; };
 		EA1DA3811A8D189400433093 /* NewConnectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA1DA3801A8D189400433093 /* NewConnectionView.xib */; };
 		EA2AB70E1A8A00F200D42C6C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2AB70D1A8A00F200D42C6C /* GameViewController.swift */; };
-		EA2AB7101A8A00FC00D42C6C /* GameView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA2AB70F1A8A00FC00D42C6C /* GameView.xib */; };
 		EA31049B1A99C3850069D6AD /* KetchIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA31049A1A99C3850069D6AD /* KetchIcon.swift */; };
 		EA341D841A8C875500A6077B /* ChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA341D831A8C875500A6077B /* ChatView.xib */; };
 		EA341D9E1A8C88CC00A6077B /* JSQMessagesAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EA341D861A8C88CC00A6077B /* JSQMessagesAssets.bundle */; };
@@ -172,7 +171,6 @@
 		EA1DA37E1A8D188B00433093 /* NewConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewConnectionViewController.swift; sourceTree = "<group>"; };
 		EA1DA3801A8D189400433093 /* NewConnectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewConnectionView.xib; sourceTree = "<group>"; };
 		EA2AB70D1A8A00F200D42C6C /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
-		EA2AB70F1A8A00FC00D42C6C /* GameView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GameView.xib; sourceTree = "<group>"; };
 		EA31049A1A99C3850069D6AD /* KetchIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KetchIcon.swift; sourceTree = "<group>"; };
 		EA341D831A8C875500A6077B /* ChatView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatView.xib; sourceTree = "<group>"; };
 		EA341D861A8C88CC00A6077B /* JSQMessagesAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = JSQMessagesAssets.bundle; sourceTree = "<group>"; };
@@ -441,7 +439,6 @@
 			isa = PBXGroup;
 			children = (
 				EA2AB70D1A8A00F200D42C6C /* GameViewController.swift */,
-				EA2AB70F1A8A00FC00D42C6C /* GameView.xib */,
 				EA4A66561AA2D9BB0019D601 /* GameView.swift */,
 				EAAA42861AB24D5F00056EFF /* CandidateBubble.swift */,
 				EAAA42881AB24D6900056EFF /* ChoiceBucket.swift */,
@@ -822,7 +819,6 @@
 				EAE63D7A1AB3407D004A74E6 /* RootView.xib in Resources */,
 				EAF3A4BF1ACA2191001C2943 /* ProfileInfoCell.xib in Resources */,
 				EA1970121A83549300FEBA7F /* EditProfileView.xib in Resources */,
-				EA2AB7101A8A00FC00D42C6C /* GameView.xib in Resources */,
 				EA60777A1ACF6E2F00B3A19A /* PermissionView.xib in Resources */,
 				EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */,
 				EA341D841A8C875500A6077B /* ChatView.xib in Resources */,
