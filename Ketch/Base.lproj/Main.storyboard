@@ -327,7 +327,7 @@ SAILED FOR TODAY.</string>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.043137254899999998" green="0.8980392157" blue="0.94509803920000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.26274509800000001" green="0.87058823529999996" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="Jqh-bc-UMn" secondAttribute="centerX" id="07W-1D-FZV"/>
                             <constraint firstItem="Rx1-xy-YKJ" firstAttribute="top" secondItem="SMl-V4-Z7A" secondAttribute="top" constant="16" id="0OY-Q0-Veh"/>
@@ -571,8 +571,8 @@ SAILED FOR TODAY.</string>
         <image name="game-empty-share-twitter" width="60" height="61"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Nx5-oB-y5G"/>
-        <segue reference="T9Y-bJ-q8s"/>
         <segue reference="nCf-mq-8Rt"/>
+        <segue reference="q7i-Iz-xMU"/>
+        <segue reference="T9Y-bJ-q8s"/>
     </inferredMetricsTieBreakers>
 </document>

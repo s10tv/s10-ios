@@ -24,14 +24,8 @@ class ProfileViewController : BaseViewController {
     
     var infoItems = ArrayViewModel(content: [ProfileInfoItem]())
     
-    var user : User? {
-        willSet {
-            willChangeValueForKey("user")
-        }
-        didSet {
-            didChangeValueForKey("user")
-            if isViewLoaded() { reloadData() }
-        }
+    var user : User! {
+        willSet { assert(user == nil, "user is immutable") }
     }
     
     convenience init(user: User) {
@@ -41,9 +35,10 @@ class ProfileViewController : BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        assert(user != nil, "Must set user before attempt to loading ProfileVC")
         // TODO: Find better solution than hardcoding keypath string
-        RAC(nameLabel, "text") <~ racObserve("user.displayName")
-        RAC(aboutLabel, "rawText") <~ racObserve("user.about")
+        RAC(nameLabel, "text") <~ user.racObserve("displayName")
+        RAC(aboutLabel, "rawText") <~ user.racObserve("about")
 
         infoItems.bindToCollectionView(infoCollection, cellNibName: "ProfileInfoCell")
         infoItems.collectionViewProvider?.configureCollectionCell = { item, cell in
@@ -56,7 +51,12 @@ class ProfileViewController : BaseViewController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        reloadData()
+        
+        infoItems.content = user.infoItems ?? []
+        swipeView.reloadData()
+        swipeView.scrollToItemAtIndex(0, duration: 0)
+        pageControl.numberOfPages = numberOfItemsInSwipeView(swipeView)
+        infoCollection.reloadData()
     }
     
     override func updateViewConstraints() {
@@ -96,28 +96,19 @@ class ProfileViewController : BaseViewController {
         }
         presentViewController(alert)
     }
-    
-    func reloadData() {
-        infoItems.content = user?.infoItems ?? []
-        swipeView.reloadData()
-        swipeView.scrollToItemAtIndex(0, duration: 0)
-        pageControl.numberOfPages = numberOfItemsInSwipeView(swipeView)
-        infoCollection.reloadData()
-    }
 }
 
 // MARK: - Photos SwipeView Delegate / Data Source
 
 extension ProfileViewController : SwipeViewDataSource {
     func numberOfItemsInSwipeView(swipeView: SwipeView!) -> Int {
-        return user?.photos != nil ? (user?.photos?.count)! : 0
+        return user.photos != nil ? (user.photos?.count)! : 0
     }
     
     func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, reusingView view: UIView!) -> UIView! {
         let v = view != nil ? view as UIImageView : UIImageView()
         v.contentMode = .ScaleAspectFill
-        let url = user?.photos![index].url
-        v.sd_setImageWithURL(NSURL(string: url!))
+        v.sd_setImageWithURL(NSURL(user.photos![index].url))
         return v
     }
 }
@@ -155,5 +146,17 @@ extension ProfileViewController : UIScrollViewDelegate {
             frame.size.height = scrollView.frame.width + -yOffset
             imageView.frame = frame
         }
+    }
+}
+
+// MARK: - Showing multiple users horizontally paged
+
+extension ProfileViewController {
+    class func pagedController(users: [User], initialPage: Int = 0) -> PageViewController {
+        assert(initialPage >= 0 && initialPage < users.count, "Initial page range invalid")
+        let pageVC = PageViewController()
+        pageVC.viewControllers = map(users) { ProfileViewController(user: $0) }
+        pageVC.scrollTo(page: initialPage, animated: false)
+        return pageVC
     }
 }

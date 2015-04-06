@@ -47,15 +47,10 @@ class GameViewController : BaseViewController {
     // MARK: -
     
     func showCandidateProfiles(candidate: Candidate) {
-        if let candidates = currentCandidates {
-            let pageVC = PageViewController()
-            pageVC.viewControllers = map(candidates) {
-                return ProfileViewController(user: $0.user!)
-            }
-            pageVC.view.backgroundColor = StyleKit.skyColor
-            pageVC.scrollTo(page: find(candidates, candidate)!, animated: false)
-            presentViewController(pageVC, animated: true)
-        }
+        let users = currentCandidates.map { $0.user! }
+        let index = find(currentCandidates, candidate)!
+        let pageVC = ProfileViewController.pagedController(users, initialPage: index)
+        presentViewController(pageVC, animated: true)
     }
     
     @IBAction func submitChoices(sender: AnyObject) {
