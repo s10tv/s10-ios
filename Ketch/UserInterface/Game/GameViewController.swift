@@ -15,6 +15,7 @@ class GameViewController : BaseViewController {
     var gameView: GameView! { return view as GameView }
     
     var candidates : [Candidate]! { willSet { assert(candidates == nil, "candidates are immutable") } }
+    var bubbles : [CandidateBubble]!
     
     override func commonInit() {
         hideKetchBoat = false
@@ -24,26 +25,28 @@ class GameViewController : BaseViewController {
         assert(candidates.count == 3, "Must provide 3 candidates before loading GameVC")
         super.viewDidLoad()
         
+        bubbles = gameView.bubbles // TODO: Refactor me
+        
         // Setup tap to view profile
-        for bubble in gameView.bubbles {
-            bubble.didTap = { [weak self, weak bubble] _ in
-                self?.showCandidateProfiles(bubble!.candidate!)
-                return
-            }
+        for (i, bubble) in enumerate(bubbles) {
+            bubble.candidate = candidates[i]
+            bubble.didTap = didTapOnUserBubble
         }
         gameView.didConfirmChoices = { [weak self] in
             if let this = self { this.submitChoices(this) }
         }
 
-        gameView.startNewGame(candidates)
+        gameView.helpText.hidden = true
+        gameView.confirmButton.hidden = true
     }
 
     
     // MARK: -
     
-    func showCandidateProfiles(candidate: Candidate) {
+    // TODO: This can be made much better. We should directly handle a candidate rather than user.candidate
+    func didTapOnUserBubble(user: User?) {
         let users = candidates.map { $0.user! }
-        let index = find(candidates, candidate)!
+        let index = find(candidates, user!.candidate!)!
         let pageVC = ProfileViewController.pagedController(users, initialPage: index)
         presentViewController(pageVC, animated: true)
     }

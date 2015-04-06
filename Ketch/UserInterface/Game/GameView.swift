@@ -84,15 +84,6 @@ class GameView : TransparentView {
         return buckets.filter({ $0.choice == choice }).first?.bubble?.candidate
     }
     
-    func startNewGame(candidates: [Candidate]) {
-        assert(candidates.count == 3 && bubbles.count == 3, "Must have exactly 3 candidates & bubbles to start game")
-        for (i, bubble) in enumerate(bubbles) {
-            bubble.candidate = candidates[i]
-        }
-        helpText.hidden = true
-        confirmButton.hidden = true
-    }
-    
     // MARK: - Drag and flick handling
     private func closestTarget(point: CGPoint, filter: ((CandidateDropZone) -> Bool)? = nil) -> CandidateDropZone {
         var dropzones: [CandidateDropZone] = []
