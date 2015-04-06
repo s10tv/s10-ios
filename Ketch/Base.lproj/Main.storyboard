@@ -110,7 +110,7 @@ SAILED FOR TODAY.</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Vhy-hq-gwn" kind="presentation" id="6ym-FC-Y97"/>
+                                    <segue destination="Vhy-hq-gwn" kind="presentation" identifier="NoGameToSettings" id="6ym-FC-Y97"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eR7-L5-Jvf" userLabel="Dock">
@@ -125,7 +125,7 @@ SAILED FOR TODAY.</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="YUi-xK-iJg" kind="show" id="tnG-4w-VC3"/>
+                                    <segue destination="YUi-xK-iJg" kind="show" identifier="NoGameToDock" id="tnG-4w-VC3"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -300,7 +300,7 @@ SAILED FOR TODAY.</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Vhy-hq-gwn" kind="presentation" id="nCf-mq-8Rt"/>
+                                    <segue destination="Vhy-hq-gwn" kind="presentation" identifier="GameToSettings" id="nCf-mq-8Rt"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SMl-V4-Z7A" userLabel="Dock">
@@ -315,7 +315,7 @@ SAILED FOR TODAY.</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="YUi-xK-iJg" kind="show" id="q7i-Iz-xMU"/>
+                                    <segue destination="YUi-xK-iJg" kind="show" identifier="GameToDock" id="q7i-Iz-xMU"/>
                                 </connections>
                             </button>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rx1-xy-YKJ" userLabel="New Indicator">
@@ -571,8 +571,8 @@ SAILED FOR TODAY.</string>
         <image name="game-empty-share-twitter" width="60" height="61"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nCf-mq-8Rt"/>
         <segue reference="q7i-Iz-xMU"/>
         <segue reference="T9Y-bJ-q8s"/>
+        <segue reference="6ym-FC-Y97"/>
     </inferredMetricsTieBreakers>
 </document>

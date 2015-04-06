@@ -9,6 +9,11 @@
 import Foundation
 
 class NoGameViewController : BaseViewController {
-    
-    
+    override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
+        if edge == .Right {
+            performSegue(.NoGameToDock)
+            return true
+        }
+        return super.handleScreenEdgePan(edge)
+    }
 }
