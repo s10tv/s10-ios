@@ -46,6 +46,18 @@ class LinkedStoryboardPresentSegue : _LinkedStoryboardSegue {
     }
 }
 
+class ReplaceAndPushSegue : UIStoryboardSegue {
+    override func perform() {
+        if let navVC = navVC {
+            // TODO: Find better pattern for replace last element of an array
+            var vcs = navVC.viewControllers
+            vcs.removeLast()
+            vcs.append(destVC)
+            navVC.setViewControllers(vcs, animated: true)
+        }
+    }
+}
+
 // TODO: Remove this class after we investigate CoreAnimation calls inside perform
 class PushFromLeftSegue : UIStoryboardSegue {
     

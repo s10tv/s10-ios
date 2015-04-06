@@ -23,6 +23,7 @@ class CoreService {
     }
     var loginSignal = RACReplaySubject(capacity: 1)
     var currentUserSubscription : METSubscription!
+    var connectionsSubscription : METSubscription!
     
     init() {
         meteor = METCoreDataDDPClient(serverURL: Env.serverURL)
@@ -35,7 +36,7 @@ class CoreService {
         meteor.connect()
         
         currentUserSubscription = meteor.addSubscriptionWithName("currentUser")
-        meteor.addSubscriptionWithName("connections")
+        connectionsSubscription = meteor.addSubscriptionWithName("connections")
         meteor.addSubscriptionWithName("messages")
         
         meteor.defineStubForMethodWithName("connection/sendMessage", usingBlock: { (args) -> AnyObject! in

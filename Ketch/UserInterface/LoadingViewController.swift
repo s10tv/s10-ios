@@ -10,14 +10,32 @@ import Foundation
 
 class LoadingViewController : BaseViewController {
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         waterlineLocation = .Bottom(60)
         hideKetchBoat = false
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        println("Loading view did appear")
         if !Core.attemptLoginWithCachedCredentials() {
             performSegue(.Signup_)
         } else {
-            performSegue(.LoadingToGame)
+            Core.connectionsSubscription.signal.deliverOnMainThread().subscribeCompleted {
+                //                if User.currentUser()?.vetted == "yes" {
+                //
+                //                }
+                //                self.performSegue(.LoadingToGame)
+                self.performSegue(.LoadingToNewConnection)
+            }
+        }
+
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let vc = segue.destVC as? NewConnectionViewController {
+            vc.connection = Connection.all().fetchFirst() as? Connection
         }
     }
 }

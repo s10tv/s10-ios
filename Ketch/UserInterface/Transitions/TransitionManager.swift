@@ -29,7 +29,7 @@ class TransitionManager : NSObject, UINavigationControllerDelegate {
     }
     
     func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        
+
         switch (fromVC, toVC) {
             
         case let (fromVC as LoadingViewController, toVC as SignupViewController):

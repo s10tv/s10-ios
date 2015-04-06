@@ -123,7 +123,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <action selector="showDock:" destination="-2" eventType="touchUpInside" id="QHQ-hq-UBo"/>
+                        <action selector="goToDock:" destination="-1" eventType="touchUpInside" id="uGm-ff-7EK"/>
                     </connections>
                 </button>
             </subviews>

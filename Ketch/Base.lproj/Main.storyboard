@@ -30,10 +30,14 @@
         <!--New Connection View Controller-->
         <scene sceneID="Lfd-Nm-nb7">
             <objects>
-                <viewController storyboardIdentifier="NewConnection" id="yMw-7P-Sbk" customClass="NewConnectionViewController" sceneMemberID="viewController"/>
+                <viewController storyboardIdentifier="NewConnection" id="yMw-7P-Sbk" customClass="NewConnectionViewController" sceneMemberID="viewController">
+                    <connections>
+                        <segue destination="YUi-xK-iJg" kind="custom" identifier="NewConnectionToDock" customClass="ReplaceAndPushSegue" customModule="Ketch" customModuleProvider="target" id="Nx5-oB-y5G"/>
+                    </connections>
+                </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvP-mk-Fcq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="802" y="1902"/>
+            <point key="canvasLocation" x="1610" y="340"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="5fm-o7-1g2">
@@ -147,7 +151,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oIs-YV-S1K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1384" y="-144"/>
+            <point key="canvasLocation" x="812" y="-382"/>
         </scene>
         <!--Loading View Controller-->
         <scene sceneID="EYP-uL-lzC">
@@ -202,6 +206,7 @@
                         <segue destination="brw-cx-YUO" kind="show" identifier="LoadingToGame" id="FLq-Pa-kyO"/>
                         <segue destination="xL7-fS-abd" kind="custom" identifier="Signup_" customClass="LinkedStoryboardPushSegue" customModule="Ketch" customModuleProvider="target" id="A9d-Ac-mF2"/>
                         <segue destination="jhY-qC-hf5" kind="custom" identifier="Signup_Waitlist" customClass="LinkedStoryboardPushSegue" customModule="Ketch" customModuleProvider="target" id="cVa-Is-AY3"/>
+                        <segue destination="yMw-7P-Sbk" kind="show" identifier="LoadingToNewConnection" id="lmb-Zd-YjN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jpe-tJ-ggF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -224,7 +229,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gNG-pd-4C0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1384" y="202"/>
+            <point key="canvasLocation" x="1208" y="-382"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="lmb-Zd-YjN"/>
+        <segue reference="Nx5-oB-y5G"/>
+    </inferredMetricsTieBreakers>
 </document>

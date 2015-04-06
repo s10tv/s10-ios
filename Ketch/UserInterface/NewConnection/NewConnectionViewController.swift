@@ -29,6 +29,10 @@ class NewConnectionViewController : BaseViewController {
         promptLabel.rawText = LS(R.Strings.singleMatchPrompt, connection.user!.firstName!, connection.user!.firstName!)
     }
     
+    @IBAction func goToDock(sender: AnyObject) {
+        performSegue(.NewConnectionToDock)
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         avatar.makeCircular()
