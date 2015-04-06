@@ -19,8 +19,6 @@ class GameViewController : BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         hideKetchBoat = false
-        dockBadge.makeCircular()
-//        RAC(dockBadge, "hidden") <~ Connection.unreadCountSignal().map { ($0 as Int) == 0 }
 
         // Setup tap to view profile
         for bubble in gameView.bubbles {

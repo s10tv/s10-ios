@@ -48,21 +48,6 @@ class GameView : TransparentView {
             addSubview(bubble)
             bubbles.append(bubble)
         }
-        whenTapped { [weak self] in
-            if let step = self?.tutorialStep {
-                switch (step) {
-                case .Step1:
-                    self?.tutorialStep2()
-                    break
-                case .Step2:
-                    self?.tutorialStep3()
-                    break
-                default:
-//                    self?.tutorialStep1()
-                    break
-                }
-            }
-        }
     }
     
     override func awakeFromNib() {
@@ -99,38 +84,13 @@ class GameView : TransparentView {
         return buckets.filter({ $0.choice == choice }).first?.bubble?.candidate
     }
     
-    func dropBubbles() {
-//        animator.removeBehavior(collision)
-//        for (i, bubble) in enumerate(bubbles) {
-//            bubble.dropzone = nil
-//            bubble.center = CGPoint(x: boxes[i].center.x, y: -200)
-//        }
-//        let gravity = UIGravityBehavior(items: bubbles)
-//        gravity.magnitude = 5
-//        gravity.action = {
-//            if abs(self.bubbles[0].center.y - self.frame.height) < 20 {
-//                for (i, bubble) in enumerate(self.bubbles) {
-//                    bubble.dropzone = self.boxes[i]
-//                }
-//                self.animator.addBehavior(self.collision)
-//                self.animator.removeBehavior(gravity)
-//            }
-//        }
-//        animator.addBehavior(gravity)
-    }
-    
     func startNewGame(candidates: [Candidate]) {
         assert(candidates.count == 3 && bubbles.count == 3, "Must have exactly 3 candidates & bubbles to start game")
         for (i, bubble) in enumerate(bubbles) {
             bubble.candidate = candidates[i]
         }
-        if (tutorialMode) {
-            tutorialStep1()
-        } else {
-            helpText.hidden = true
-            confirmButton.hidden = true
-            dropBubbles()
-        }
+        helpText.hidden = true
+        confirmButton.hidden = true
     }
     
     // MARK: - Drag and flick handling
@@ -144,136 +104,25 @@ class GameView : TransparentView {
         return dropzones.minElement { Float($0.dropCenter.distanceTo(point)) }!
     }
     
-    private func helpTextForChoice(choice: Candidate.Choice) -> String {
-        switch choice {
-        case .Yes: return LS(R.Strings.marryPrompt)
-        case .No: return LS(R.Strings.skipPrompt)
-        case .Maybe: return LS(R.Strings.snoozePrompt)
-        }
-    }
-    
     func _handleBubblePan(pan: UIPanGestureRecognizer) {
         var location = pan.locationInView(self)
         let bubble = pan.view as CandidateBubble
         switch pan.state {
         case .Began:
-            UIView.animateWithDuration(0.25) {
-                self.helpText.alpha = 0
-                self.confirmButton.alpha = 0
-            }
             bubble.dropzone = nil
             animator.removeBehavior(bubble.drag)
             bubble.drag = UIAttachmentBehavior(item: bubble, attachedToAnchor: location)
             animator.addBehavior(bubble.drag)
         case .Changed:
             bubble.drag?.anchorPoint = location
-            if let bucket = closestTarget(bubble.center) as? ChoiceBucket {
-                let text = helpTextForChoice(bucket.choice)
-                if helpText.rawText != text {
-                    helpText.rawText = text
-                    helpText.alpha = 0
-                    UIView.animateWithDuration(0.25, delay: 0.5, options: nil, animations: {
-                        self.helpText.alpha = 1
-                    }, completion: nil)
-                }
-            }
         case .Ended:
             bubbles.map { self.animator.removeBehavior($0.drag) }
             let expectedLocation = bubble.center + pan.velocityInView(self) * velocityFactor
             bubble.dropzone = closestTarget(expectedLocation) { !$0.isOccupied }
             let showConfirm = isReady
             confirmButton.hidden = !showConfirm
-            if bubble.dropzone is FloatBox {
-                UIView.animateWithDuration(0.25) {
-                    self.helpText.alpha = 0
-                }
-            } else if let bucket = bubble.dropzone as? ChoiceBucket {
-                confirmButton.alpha = 0
-                let text = helpTextForChoice(bucket.choice)
-                if helpText.rawText != text {
-                    helpText.rawText = text
-                    helpText.alpha = 0
-                    UIView.animateWithDuration(0.25, animations: {
-                        self.helpText.alpha = 1
-                    }, completion: { _ in
-                        UIView.animateWithDuration(0.25, delay: 1, options: nil, animations: {
-                            self.helpText.alpha = 0
-                        }, completion: { _ in
-                            if showConfirm {
-                                UIView.animateWithDuration(0.5) {
-                                    self.confirmButton.alpha = 1
-                                }
-                            }
-                        })
-                    })
-                } else {
-                    UIView.animateWithDuration(0.5) {
-                        self.helpText.alpha = 0
-                        self.confirmButton.alpha = 1
-                    }
-                }
-            }
         default:
             break
         }
-    }
-}
-
-// Tutorial Extension
-extension GameView {
-    
-    // You'll see three potential matches
-    func tutorialStep1() {
-        boxes.map { $0.floatEnabled = false }
-        buckets.map { $0.hidden = true }
-        for bubble in bubbles {
-            bubble.alpha = 1
-            bubble.userInteractionEnabled = false
-        }
-        
-        confirmButton.hidden = true
-        helpText.hidden = false
-        helpText.alpha = 0
-        helpText.rawText = LS(R.Strings.threeMatchesPrompt)
-        UIView.animateWithDuration(2) {
-            self.helpText.alpha = 1
-        }
-        dropBubbles()
-        tutorialStep = .Step1
-    }
-    
-    // And you'll have three choices
-    func tutorialStep2() {
-        for bucket in buckets {
-            bucket.hidden = false
-            bucket.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1)
-            bucket.emphasized = true
-        }
-        helpText.alpha = 0
-        helpText.rawText = LS(R.Strings.threeChoicesPrompt)
-        UIView.animateWithDuration(1.5, delay: 0, usingSpringWithDamping: 0.3, initialSpringVelocity: 15, options: nil, animations: {
-            self.buckets.map { $0.layer.transform = CATransform3DIdentity }
-            return
-            }, completion: nil)
-        UIView.animateWithDuration(1) {
-            self.bubbles.map { $0.alpha = 0.25 }
-            self.helpText.alpha = 1
-        }
-        tutorialStep = .Step2
-    }
-    
-    // Drag the match to your choices
-    func tutorialStep3() {
-        boxes.map { $0.floatEnabled = true }
-        bubbles.map { $0.userInteractionEnabled = true }
-        helpText.alpha = 0
-        helpText.rawText = LS(R.Strings.dragMatchsToChoices)
-        UIView.animateWithDuration(1) {
-            self.buckets.map { $0.emphasized = false }
-            self.bubbles.map { $0.alpha = 1 }
-            self.helpText.alpha = 1
-        }
-        tutorialStep = .Step3
-        UD[.bGameTutorialMode] = false
     }
 }
