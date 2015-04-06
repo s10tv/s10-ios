@@ -48,7 +48,7 @@ class LoadingViewController : BaseViewController {
         }
         if let vc = segue.destVC as? GameViewController {
             let candidates = Core.candidateService.fetch.objects.map { $0 as Candidate }
-            vc.currentCandidates = Array(candidates[0...2])
+            vc.candidates = Array(candidates[0...2])
         }
     }
 }

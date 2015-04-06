@@ -14,10 +14,12 @@ class GameViewController : BaseViewController {
     @IBOutlet weak var dockBadge: UIImageView!
     var gameView: GameView! { return view as GameView }
     
-    var currentCandidates : [Candidate]!
+    var candidates : [Candidate]! { willSet { assert(candidates == nil, "candidates are immutable") } }
     
     override func viewDidLoad() {
+        assert(candidates.count == 3, "Must provide 3 candidates before loading GameVC")
         super.viewDidLoad()
+        
         hideKetchBoat = false
 
         // Setup tap to view profile
@@ -30,23 +32,16 @@ class GameViewController : BaseViewController {
         gameView.didConfirmChoices = { [weak self] in
             if let this = self { this.submitChoices(this) }
         }
-        assert(currentCandidates.count == 3, "There must be exactly 3 candidates before starting game")
-        gameView.startNewGame(currentCandidates)
+
+        gameView.startNewGame(candidates)
     }
-    
-    override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
-        if edge == .Right {
-            performSegue(.GameToDock)
-            return true
-        }
-        return super.handleScreenEdgePan(edge)
-    }
+
     
     // MARK: -
     
     func showCandidateProfiles(candidate: Candidate) {
-        let users = currentCandidates.map { $0.user! }
-        let index = find(currentCandidates, candidate)!
+        let users = candidates.map { $0.user! }
+        let index = find(candidates, candidate)!
         let pageVC = ProfileViewController.pagedController(users, initialPage: index)
         presentViewController(pageVC, animated: true)
     }
@@ -66,5 +61,14 @@ class GameViewController : BaseViewController {
             }
         }
     }
+
+    // MARK: - Navigation Logic
     
+    override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
+        if edge == .Right {
+            performSegue(.GameToDock)
+            return true
+        }
+        return super.handleScreenEdgePan(edge)
+    }
 }

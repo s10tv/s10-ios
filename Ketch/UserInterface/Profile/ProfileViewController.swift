@@ -34,8 +34,9 @@ class ProfileViewController : BaseViewController {
     }
     
     override func viewDidLoad() {
-        super.viewDidLoad()
         assert(user != nil, "Must set user before attempt to loading ProfileVC")
+        super.viewDidLoad()
+        
         // TODO: Find better solution than hardcoding keypath string
         RAC(nameLabel, "text") <~ user.racObserve("displayName")
         RAC(aboutLabel, "rawText") <~ user.racObserve("about")
