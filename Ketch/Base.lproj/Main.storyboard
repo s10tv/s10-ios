@@ -71,7 +71,7 @@
                     <navigationItem key="navigationItem" title="Chat" id="7br-lE-KX6"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
-                        <segue destination="G4Y-Ae-Xgh" kind="show" identifier="ChatToProfile" id="T9Y-bJ-q8s"/>
+                        <segue destination="G4Y-Ae-Xgh" kind="presentation" identifier="ChatToProfile" id="T9Y-bJ-q8s"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B9f-P8-SG1" userLabel="First Responder" sceneMemberID="firstResponder"/>

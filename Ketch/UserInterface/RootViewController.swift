@@ -102,17 +102,6 @@ class RootViewController : UINavigationController {
 //        scrollTo(viewController: dockVC)
     }
     
-    @IBAction func showGame(sender: AnyObject) {
-        rootView.setKetchBoatHidden(false)
-//        scrollTo(viewController: gameVC)
-    }
-    
-    func showProfile(user: User, animated: Bool) {
-        let profileVC = ProfileViewController()
-        profileVC.user = user
-        presentViewController(profileVC, animated: animated)
-    }
-    
     func showChat(connection: Connection, animated: Bool) {
         let chatVC = ChatViewController()
         chatVC.connection = connection
@@ -130,6 +119,7 @@ class RootViewController : UINavigationController {
         Core.logout().subscribeCompleted {
             Log.info("Signed out")
         }
+        dismissViewController(animated: false)
         popToRootViewControllerAnimated(true)
     }
 }
