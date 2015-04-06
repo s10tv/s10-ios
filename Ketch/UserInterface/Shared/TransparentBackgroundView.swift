@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Spring
 
 @IBDesignable class TransparentBackgroundView : TransparentView {
     
@@ -18,7 +17,7 @@ import Spring
     
     override func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
-        backgroundColor = UIColor(hex: "F0FAF7")
+        backgroundColor = UIColor(hex: 0xF0FAF7)
         
         var offset : CGFloat = 0
         if waveTop > 0 {

@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Spring
 
 class WaitlistTransition : RootTransition {
     let loadingVC : LoadingViewController

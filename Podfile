@@ -20,8 +20,8 @@ pod 'Cartography', '~> 0.3'
 pod 'TCMobileProvision', :git => 'https://github.com/tonyxiao/TCMobileProvision.git'
 pod 'JSQMessagesViewController', '~> 6.1'
 pod 'UICollectionViewLeftAlignedLayout', '~> 0.0.3'
-pod 'Spring', '~> 1.0'
-
+#pod 'Spring', '~> 1.0'
+pod 'EDColor', '~> 0.4'
 pod 'CrashlyticsFramework', '~> 2.2'
 
 # Debug only
@@ -44,5 +44,4 @@ end
 
 # Might be useful one day
 #pod 'SwiftyJSON', '~> 2.1'
-#pod 'EDColor', '~> 0.4'
 #pod 'ExSwift', '~> 0.1.9'

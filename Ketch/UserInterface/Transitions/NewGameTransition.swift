@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Spring
 
 class NewGameTransition : RootTransition {
     let loadingVC : LoadingViewController

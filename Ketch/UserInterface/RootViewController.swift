@@ -10,7 +10,6 @@ import UIKit
 import Meteor
 import FacebookSDK
 import ReactiveCocoa
-import Spring
 
 extension UIViewController {
     var rootVC : RootViewController {

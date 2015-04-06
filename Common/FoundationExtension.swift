@@ -71,6 +71,7 @@ func * (vector: CGVector, multiplier: CGFloat) -> CGVector {
 // Foundation Types
 
 extension String {
+    var length: Int { return countElements(self) }
     
     var stringByCapitalizingFirstCharacter : String {
         let firstChar = substringToIndex(1)

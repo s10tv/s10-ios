@@ -203,8 +203,8 @@ SAILED FOR TODAY.</string>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="U4d-tQ-I0v"/>
                                         <exclude reference="NUy-QR-pTk"/>
+                                        <exclude reference="U4d-tQ-I0v"/>
                                     </mask>
                                 </variation>
                             </imageView>
@@ -217,8 +217,8 @@ SAILED FOR TODAY.</string>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="uXZ-Qd-8ZS"/>
                                         <exclude reference="hOv-IZ-HTU"/>
+                                        <exclude reference="uXZ-Qd-8ZS"/>
                                     </mask>
                                 </variation>
                             </imageView>
@@ -494,7 +494,7 @@ SAILED FOR TODAY.</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W6B-JD-gK0" userLabel="Loading View">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6B-JD-gK0" userLabel="Loading View">
                                 <rect key="frame" x="191" y="257" width="220" height="86"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="A7B-na-V6j">

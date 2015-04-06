@@ -9,6 +9,7 @@
 import UIKit
 import ReactiveCocoa
 import Cartography
+import EDColor
 
 let π = CGFloat(M_PI)
 
@@ -129,6 +130,12 @@ extension UIBezierPath {
             wave.addLineToPoint(CGPoint(x: x, y: a * sin(2*π/λ * x + phase)))
         }
         return wave
+    }
+}
+
+extension UIColor {
+    convenience init(_ hexCode: UInt32) {
+        self.init(hex: hexCode)
     }
 }
 

@@ -6,6 +6,7 @@ PODS:
   - DTFoundation/Core (1.7.5)
   - DTFoundation/DTASN1 (1.7.5):
     - DTFoundation/Core
+  - EDColor (0.4.0)
   - Facebook-iOS-SDK (3.22.0):
     - Bolts (~> 1.0)
   - InflectorKit (0.0.1)
@@ -32,7 +33,6 @@ PODS:
     - SDWebImage/Core (= 3.7.1)
   - SDWebImage/Core (3.7.1)
   - SimpleKeychain (0.3.0)
-  - Spring (1.0.2)
   - SugarRecord/Core (1.0.7)
   - SugarRecord/CoreData (1.0.7):
     - SugarRecord/Core
@@ -46,6 +46,7 @@ DEPENDENCIES:
   - Cartography (~> 0.3)
   - CrashlyticsFramework (~> 2.2)
   - DateTools (~> 1.5)
+  - EDColor (~> 0.4)
   - Facebook-iOS-SDK (~> 3.22)
   - JSQMessagesViewController (~> 6.1)
   - Meteor (~> 0.1)
@@ -53,7 +54,6 @@ DEPENDENCIES:
   - ReactiveCocoa (~> 2.4)
   - Reveal-iOS-SDK (~> 1.5)
   - SDWebImage (~> 3.7)
-  - Spring (~> 1.0)
   - SugarRecord/CoreData (from `https://github.com/tonyxiao/SugarRecord`)
   - SwiftyUserDefaults (~> 1.0)
   - SwipeView (~> 1.3)
@@ -80,6 +80,7 @@ SPEC CHECKSUMS:
   CrashlyticsFramework: 5a6a8d7a0731bc75c63c3bd3d704962d5d8717cc
   DateTools: b93a2c2017747329c6077c7d7e8a75106e23d0d7
   DTFoundation: 1d28080c20c3da041706545363f8238ab53a6204
+  EDColor: 89d19a013279a5604d61650721c15f20fefaaf00
   Facebook-iOS-SDK: 141cba3ba6c484380eb38c573110af9e4fbf8962
   InflectorKit: 64497199e6764f4d8337cab7f700a77b13d76a73
   JSQMessagesViewController: 31b79ac9547e060ba96413eb2e1b2ee5260f5189
@@ -91,7 +92,6 @@ SPEC CHECKSUMS:
   Reveal-iOS-SDK: c9c55cad2729c85f6ced415f1b21857c9a2d8ef9
   SDWebImage: ed3095af2ff88b436426037444979b917f6c5575
   SimpleKeychain: 8de48eb1de10c6403911a6be52e127e5b5d31404
-  Spring: b9c8a315befd509c531701f2edc4405ab9d00bad
   SugarRecord: 9d55ce666e8161eacdc95c996173eb53eb6d3683
   SwiftyUserDefaults: 76cb548fdbcb0d28c27bfa01e261fd78df65e38f
   SwipeView: bd67cfaf7760c036438446b3ccb28a3b84fce009

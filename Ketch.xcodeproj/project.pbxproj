@@ -117,6 +117,7 @@
 		EAE63D781AB32BC4004A74E6 /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE63D771AB32BC4004A74E6 /* ProgressIndicator.swift */; };
 		EAE63D7A1AB3407D004A74E6 /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAE63D791AB3407D004A74E6 /* RootView.xib */; };
 		EAE915321ACAFC890027C936 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE915311ACAFC890027C936 /* UserDefaults.swift */; };
+		EAEB63DB1AD31A4E0002D55C /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB63DA1AD31A4E0002D55C /* Animation.swift */; };
 		EAF195CF1A827FAD00A2F103 /* Ketch-Bridging.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */; };
 		EAF3A4BF1ACA2191001C2943 /* ProfileInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF3A4BE1ACA2191001C2943 /* ProfileInfoCell.xib */; };
 		EAF3A4C11ACA22C2001C2943 /* ProfileInfoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF3A4C01ACA22C2001C2943 /* ProfileInfoCell.swift */; };
@@ -271,6 +272,7 @@
 		EAE63D771AB32BC4004A74E6 /* ProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
 		EAE63D791AB3407D004A74E6 /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootView.xib; sourceTree = "<group>"; };
 		EAE915311ACAFC890027C936 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		EAEB63DA1AD31A4E0002D55C /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Ketch-Bridging.m"; sourceTree = "<group>"; };
 		EAF3A4BE1ACA2191001C2943 /* ProfileInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileInfoCell.xib; sourceTree = "<group>"; };
 		EAF3A4C01ACA22C2001C2943 /* ProfileInfoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInfoCell.swift; sourceTree = "<group>"; };
@@ -358,6 +360,7 @@
 				EA409D381A8C681A00988B8B /* FacebookExtension.swift */,
 				EA7AA3641AA25D21003383BE /* SBConstantsExtension.swift */,
 				EAAD921E1ACF4EFA0014BA25 /* ProvisioningProfile.swift */,
+				EAEB63DA1AD31A4E0002D55C /* Animation.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -976,6 +979,7 @@
 				EA6650FA1AA00B95001BA40C /* _User.swift in Sources */,
 				EA0FC9351A87DE5800D62625 /* MeteorExtension.swift in Sources */,
 				EA72FB291AD1B7D5009F853F /* Segue.swift in Sources */,
+				EAEB63DB1AD31A4E0002D55C /* Animation.swift in Sources */,
 				EAA36DE21AD1CE2800B30F24 /* BaseViewController.swift in Sources */,
 				EA6650F71AA00B95001BA40C /* _Candidate.swift in Sources */,
 				EA6650E11AA00999001BA40C /* BaseViews.swift in Sources */,

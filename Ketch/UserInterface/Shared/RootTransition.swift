@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Spring
 
 class RootTransition : ViewControllerTransition {
     let rootView : RootView
@@ -25,12 +24,12 @@ class RootTransition : ViewControllerTransition {
         toView?.frame = context.finalFrameForViewController(toVC)
         toView?.alpha = 0
         fromView?.alpha = 1
-        springWithCompletion(duration, {
+        spring(duration) {
             self.toView?.alpha = 1
             self.fromView?.alpha = 0
             self.rootView.layoutIfNeeded()
-            }) { completed in
-                self.context.completeTransition(true)
+        }.subscribeNextAs { (finished: Bool) -> () in
+            self.context.completeTransition(true)
         }
     }
 }

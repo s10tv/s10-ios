@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Spring
 
 class SignupTransition : RootTransition {
     let loadingVC : LoadingViewController
