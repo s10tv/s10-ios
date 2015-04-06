@@ -4,7 +4,6 @@ public enum SegueIdentifier : String {
     case ChatToProfile = "ChatToProfile"
     case DockToChat = "DockToChat"
     case GameToDock = "GameToDock"
-    case GameToNewConnection = "GameToNewConnection"
     case GameToSettings = "GameToSettings"
     case LoadingToGame = "LoadingToGame"
     case LoadingToNewConnection = "LoadingToNewConnection"
