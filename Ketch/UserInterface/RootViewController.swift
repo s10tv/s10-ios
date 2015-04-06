@@ -97,17 +97,6 @@ class RootViewController : UINavigationController {
         }
     }
     
-    @IBAction func showDock(sender: AnyObject) {
-        dismissViewController(animated: false) // HACK ALERT: for transitioning from NewConnection. Gotta use segue
-//        scrollTo(viewController: dockVC)
-    }
-    
-    func showChat(connection: Connection, animated: Bool) {
-        let chatVC = ChatViewController()
-        chatVC.connection = connection
-//        scrollTo(viewController: chatVC, animated: animated)
-    }
-    
     func showNewMatch(connection: Connection) {
         let newConnVC = NewConnectionViewController()
         newConnVC.connection = connection
