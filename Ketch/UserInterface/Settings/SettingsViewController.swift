@@ -23,7 +23,6 @@ class SettingsViewController : BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        avatarView.makeCircular()
         if let user = User.currentUser() {
             avatarView.user = user
             avatarView.whenTapped { [weak self, weak user] in

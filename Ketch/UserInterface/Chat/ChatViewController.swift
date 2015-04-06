@@ -72,11 +72,6 @@ class ChatViewController : JSQMessagesViewController {
         super.viewDidAppear(animated)
         Core.meteor.callMethod("connection/markAsRead", params: [connection!.documentID!])
     }
-        
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        avatarView.makeCircular()
-    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let profileVC = segue.destinationViewController as? ProfileViewController {

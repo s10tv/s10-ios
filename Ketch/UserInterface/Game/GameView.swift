@@ -57,9 +57,6 @@ class GameView : TransparentView {
             bucket.animator = animator
             bucket.choice = [Candidate.Choice.Yes, Candidate.Choice.Maybe, Candidate.Choice.No][i] // TODO: Less hack...
         }
-        for bubble in bubbles {
-            bubble.makeCircular()
-        }
 
         
         collision = UICollisionBehavior(items: bubbles)
@@ -70,7 +67,6 @@ class GameView : TransparentView {
         super.layoutSubviews()
         for (i, bubble) in enumerate(bubbles) {
             bubble.frame = self.boxes[i].frame
-            bubble.makeCircular()
         }
     }
     

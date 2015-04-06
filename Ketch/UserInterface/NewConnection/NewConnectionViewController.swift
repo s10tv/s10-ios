@@ -32,9 +32,4 @@ class NewConnectionViewController : BaseViewController {
     @IBAction func goToDock(sender: AnyObject) {
         performSegue(.NewConnectionToDock)
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        avatar.makeCircular()
-    }
 }
