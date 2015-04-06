@@ -420,7 +420,7 @@ SAILED FOR TODAY.</string>
             <objects>
                 <viewController storyboardIdentifier="Profile" id="G4Y-Ae-Xgh" customClass="ProfileViewController" sceneMemberID="viewController">
                     <connections>
-                        <segue destination="Lqa-Xo-Tcw" kind="presentation" id="9hD-eE-Lne"/>
+                        <segue destination="Lqa-Xo-Tcw" kind="presentation" identifier="ProfileToEditProfile" id="9hD-eE-Lne"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H5s-tv-xnk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -495,7 +495,7 @@ SAILED FOR TODAY.</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6B-JD-gK0" userLabel="Loading View">
-                                <rect key="frame" x="191" y="257" width="220" height="86"/>
+                                <rect key="frame" x="190" y="257" width="220" height="86"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="A7B-na-V6j">
                                         <rect key="frame" x="91" y="0.0" width="37" height="37"/>
@@ -571,8 +571,8 @@ SAILED FOR TODAY.</string>
         <image name="game-empty-share-twitter" width="60" height="61"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="q7i-Iz-xMU"/>
+        <segue reference="Nx5-oB-y5G"/>
         <segue reference="T9Y-bJ-q8s"/>
-        <segue reference="6ym-FC-Y97"/>
+        <segue reference="nCf-mq-8Rt"/>
     </inferredMetricsTieBreakers>
 </document>
