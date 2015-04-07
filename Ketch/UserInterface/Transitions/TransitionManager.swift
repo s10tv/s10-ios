@@ -39,8 +39,11 @@ class TransitionManager : NSObject, UINavigationControllerDelegate {
             return WaitlistTransition(rootView, loadingVC: fromVC, waitlistVC: toVC)
             
         case let (fromVC as LoadingViewController, toVC as GameViewController):
-            return NewGameTransition(rootView, loadingVC: fromVC, gameVC: toVC)
-            
+            return NewGameTransition(rootView, loadingVC: fromVC, gameVC: toVC, operation: operation)
+
+        case let (fromVC as GameViewController, toVC as LoadingViewController):
+            return NewGameTransition(rootView, loadingVC: toVC, gameVC: fromVC, operation: operation)
+
         case (_ as GameViewController, _ as DockViewController):
             return ScrollTransition(fromVC: fromVC, toVC: toVC, direction: .RightToLeft, panGesture: currentEdgePan)
             

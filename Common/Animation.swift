@@ -133,13 +133,17 @@ enum CAMediaTimingFillMode {
 
 // Adding to CAPropertyAnimation does not result in subclass inheritance...
 extension CABasicAnimation {
-    convenience init!(_ keyPath: String, fillMode: CAMediaTimingFillMode = .Removed) {
+    convenience init!(_ keyPath: String, duration: CFTimeInterval? = nil, fillMode: CAMediaTimingFillMode = .Removed) {
         self.init(keyPath: keyPath)
         self.fillMode = fillMode.stringValue
+        if let duration = duration {
+            self.duration = duration
+        }
         // Forwards fill mode is meaningless if animation is removed
         if fillMode == .Forwards {
             removedOnCompletion = false
         }
     }
+
 }
 

@@ -16,15 +16,35 @@ class NewGameTransition : RootTransition {
     let waterlineDuration : NSTimeInterval = 1
     let bubbleDropDuration : NSTimeInterval = 1
     let bubbleDropInterval : NSTimeInterval = 0.1
+    let operation: UINavigationControllerOperation
     
-    init(_ rootView: RootView, loadingVC: LoadingViewController, gameVC: GameViewController) {
+    init(_ rootView: RootView, loadingVC: LoadingViewController, gameVC: GameViewController, operation: UINavigationControllerOperation) {
         self.loadingVC = loadingVC
         self.gameVC = gameVC
-        let duration = waterlineDuration + bubbleDropDuration + bubbleDropDuration * 2
-        super.init(rootView, fromVC: loadingVC, toVC: gameVC, duration: duration)
+        self.operation = operation
+        var duration = waterlineDuration + bubbleDropDuration + bubbleDropDuration * 2
+        var from : UIViewController = loadingVC
+        var to : UIViewController = gameVC
+        if operation == .Pop {
+            duration = waterlineDuration
+            from = gameVC
+            to = loadingVC
+        }
+        super.init(rootView, fromVC: from, toVC: to, duration: duration)
+    }
+    
+    override func animate() {
+        switch operation {
+        case .Push:
+            animateStartGame()
+        case .Pop:
+            animateFinishGame()
+        default:
+            break
+        }
     }
 
-    override func animate() {
+    func animateStartGame() {
         self.containerView.addSubview(toView!)
         toView?.frame = self.context.finalFrameForViewController(self.gameVC)
         toView?.layoutIfNeeded()
@@ -65,6 +85,41 @@ class NewGameTransition : RootTransition {
             drop.fillMode = kCAFillModeBackwards
             signals += drop.addToLayerAndReturnSignal(bubble.layer, forKey: "position.y")
         }
+        
+        // BUG ALERT: We assume transition is complete, but are there situations where
+        // this is actually not true? What about interactive view controller transition?
+        RACSignal.merge(signals).subscribeCompleted {
+            self.context.completeTransition(true)
+        }
+    }
+    
+    func animateFinishGame() {
+        self.containerView.addSubview(toView!)
+        toView?.frame = containerView.bounds
+        toView?.layoutSubviews()
+        
+        var signals = [animateWaterline()]
+
+        // Fade the loading view in
+        let fadeIn = CABasicAnimation("opacity", duration: waterlineDuration, fillMode: .Backwards)
+        fadeIn.fromValue = 0
+        signals += fadeIn.addToLayerAndReturnSignal(toView!.layer, forKey: "opacity")
+
+        // Fade nav buttons out
+        let fadeOut = CABasicAnimation("opacity", duration: waterlineDuration, fillMode: .Forwards)
+        fadeOut.toValue = 1
+        for view in gameVC.navViews {
+            signals += fadeOut.addToLayerAndReturnSignal(view.layer, forKey: "opacity")
+        }
+        
+        // Drop the main view down long with the waterline
+        let drop = RBBSpringAnimation(keyPath: "position.y")
+        drop.fromValue = fromView!.layer.position.y
+        drop.toValue = fromView!.layer.position.y + containerView.frame.height
+        drop.duration = waterlineDuration
+        drop.fillMode = kCAFillModeForwards
+        drop.removedOnCompletion = false
+        signals += drop.addToLayerAndReturnSignal(fromView!.layer, forKey: "position.y")
         
         // BUG ALERT: We assume transition is complete, but are there situations where
         // this is actually not true? What about interactive view controller transition?
