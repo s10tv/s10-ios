@@ -7,63 +7,26 @@
 //
 
 import Foundation
-import ReactiveCocoa
-
-
-protocol CandidateDropZone {
-    var isOccupied: Bool { get }
-    var dropCenter: CGPoint { get }
-    func dropBubble(bubble: CandidateBubble)
-    func freeBubble()
-}
 
 class GameView : TransparentView {
-    enum TutorialStep {
-        case Step1, Step2, Step3
-    }
-    var tutorialStep: TutorialStep?
     @IBOutlet var buckets: [ChoiceBucket]!
     @IBOutlet var boxes: [FloatBox]!
     @IBOutlet weak var helpText: DesignableLabel!
     @IBOutlet weak var confirmButton: UIButton!
     
     var bubbles: [CandidateBubble] = []
-    var animator : UIDynamicAnimator!
-    var collision : UICollisionBehavior!
-    var isReady : Bool {
-        return buckets.reduce(true) { $0 && $1.bubble != nil }
-    }
-    var didConfirmChoices : (() -> ())?
-    var velocityFactor : CGFloat = 0.1 // Multiplied with pan velocity to compute new pos
-    var tutorialMode = UD[.bGameTutorialMode].bool!
-    
+
     override func commonInit() {
         super.commonInit()
         userInteractionEnabled = true
         passThroughTouchOnSelf = false
-//        animator = UIDynamicAnimator(referenceView: self)
         for i in 0...2 {
             let bubble = CandidateBubble()
-//            bubble.userInteractionEnabled = true
-//            bubble.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "_handleBubblePan:"))
             addSubview(bubble)
             bubbles.append(bubble)
         }
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-//        for box in boxes { box.animator = animator }
-//        for (i, bucket) in enumerate(buckets) {
-//            bucket.animator = animator
-//            bucket.choice = [Candidate.Choice.Yes, Candidate.Choice.Maybe, Candidate.Choice.No][i] // TODO: Less hack...
-//        }
-//
-//        
-//        collision = UICollisionBehavior(items: bubbles)
-//        collision.translatesReferenceBoundsIntoBoundary = true
-//        collision.collisionMode = UICollisionBehaviorMode.Everything
-    }
     var initialLayoutSet = false
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -74,52 +37,42 @@ class GameView : TransparentView {
                 bubble.frame = self.boxes[i].frame
             }
         }
-//        animator.addBehavior(collision)
     }
     
     @IBAction func confirmChoices(sender: AnyObject) {
-        if let block = didConfirmChoices { block() }
+    }
+}
+
+class ChoiceBucket : UIImageView {
+    var choice : Candidate.Choice!
+    var bubble: CandidateBubble?
+    var emphasized: Bool = false { didSet { updateAlphaAndTint() } }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        image = image?.imageWithRenderingMode(.AlwaysTemplate)
+        updateAlphaAndTint()
     }
     
-    // MARK: - Public API
-    
-    func chosenCandidate(choice: Candidate.Choice?) -> Candidate? {
-        return buckets.filter({ $0.choice == choice }).first?.bubble?.candidate
-    }
-    
-    // MARK: - Drag and flick handling
-    private func closestTarget(point: CGPoint, filter: ((CandidateDropZone) -> Bool)? = nil) -> CandidateDropZone {
-        var dropzones: [CandidateDropZone] = []
-        for box in boxes { dropzones.append(box as CandidateDropZone) }
-        for bucket in buckets { dropzones.append(bucket as CandidateDropZone) }
-        if let f = filter {
-            dropzones = dropzones.filter(f)
+    func updateAlphaAndTint() {
+        if emphasized {
+            alpha = 1
+            tintColor = UIColor.whiteColor()
+        } else {
+            alpha = 0.4
+            tintColor = StyleKit.teal
         }
-        return dropzones.minElement { Float($0.dropCenter.distanceTo(point)) }!
     }
+}
+
+class FloatBox : TransparentView { }
+
+class SnapTarget {
+    let center : CGPoint
+    var bubble : CandidateBubble?
+    var snap : UISnapBehavior?
     
-    func _handleBubblePan(pan: UIPanGestureRecognizer) {
-        var location = pan.locationInView(self)
-        let bubble = pan.view as CandidateBubble
-        switch pan.state {
-        case .Began:
-            bubble.dropzone = nil
-            animator.removeBehavior(bubble.drag)
-            bubble.drag = UIAttachmentBehavior(item: bubble, attachedToAnchor: location)
-            bubble.drag?.action = {
-                bubble.transform = CGAffineTransformMakeScale(1.5, 1.5)
-            }
-            animator.addBehavior(bubble.drag)
-        case .Changed:
-            bubble.drag?.anchorPoint = location
-        case .Ended:
-            bubbles.map { self.animator.removeBehavior($0.drag) }
-            let expectedLocation = bubble.center + pan.velocityInView(self) * velocityFactor
-            bubble.dropzone = closestTarget(expectedLocation) { !$0.isOccupied }
-            let showConfirm = isReady
-            confirmButton.hidden = !showConfirm
-        default:
-            break
-        }
+    init(view: UIView) {
+        center = view.center
     }
 }

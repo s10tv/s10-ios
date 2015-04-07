@@ -102,8 +102,6 @@
 		EAA36DE21AD1CE2800B30F24 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA36DE11AD1CE2800B30F24 /* BaseViewController.swift */; };
 		EAA36DE41AD1DD8D00B30F24 /* WaitlistTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA36DE31AD1DD8D00B30F24 /* WaitlistTransition.swift */; };
 		EAAA42871AB24D5F00056EFF /* CandidateBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAA42861AB24D5F00056EFF /* CandidateBubble.swift */; };
-		EAAA42891AB24D6900056EFF /* ChoiceBucket.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAA42881AB24D6900056EFF /* ChoiceBucket.swift */; };
-		EAAA428B1AB2522E00056EFF /* FloatBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAA428A1AB2522E00056EFF /* FloatBox.swift */; };
 		EAAD921B1ACDEACD0014BA25 /* NewMatchTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921A1ACDEACD0014BA25 /* NewMatchTransition.swift */; };
 		EAAD921D1ACF342C0014BA25 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921C1ACF342C0014BA25 /* Environment.swift */; };
 		EAAD921F1ACF4EFA0014BA25 /* ProvisioningProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921E1ACF4EFA0014BA25 /* ProvisioningProfile.swift */; };
@@ -258,8 +256,6 @@
 		EAA36DE11AD1CE2800B30F24 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		EAA36DE31AD1DD8D00B30F24 /* WaitlistTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitlistTransition.swift; sourceTree = "<group>"; };
 		EAAA42861AB24D5F00056EFF /* CandidateBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateBubble.swift; sourceTree = "<group>"; };
-		EAAA42881AB24D6900056EFF /* ChoiceBucket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoiceBucket.swift; sourceTree = "<group>"; };
-		EAAA428A1AB2522E00056EFF /* FloatBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatBox.swift; sourceTree = "<group>"; };
 		EAAD921A1ACDEACD0014BA25 /* NewMatchTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMatchTransition.swift; sourceTree = "<group>"; };
 		EAAD921C1ACF342C0014BA25 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		EAAD921E1ACF4EFA0014BA25 /* ProvisioningProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvisioningProfile.swift; sourceTree = "<group>"; };
@@ -447,8 +443,6 @@
 				EA2AB70D1A8A00F200D42C6C /* GameViewController.swift */,
 				EA4A66561AA2D9BB0019D601 /* GameView.swift */,
 				EAAA42861AB24D5F00056EFF /* CandidateBubble.swift */,
-				EAAA42881AB24D6900056EFF /* ChoiceBucket.swift */,
-				EAAA428A1AB2522E00056EFF /* FloatBox.swift */,
 				EAE63D771AB32BC4004A74E6 /* ProgressIndicator.swift */,
 			);
 			path = Game;
@@ -987,7 +981,6 @@
 				EA6650F71AA00B95001BA40C /* _Candidate.swift in Sources */,
 				EA6650E11AA00999001BA40C /* BaseViews.swift in Sources */,
 				EA409D3F1A8C75F600988B8B /* ConnectionCell.swift in Sources */,
-				EAAA42891AB24D6900056EFF /* ChoiceBucket.swift in Sources */,
 				EAA36DE01AD1CD4800B30F24 /* TransitionManager.swift in Sources */,
 				EA1DA37F1A8D188B00433093 /* NewConnectionViewController.swift in Sources */,
 				EA396FEA1AB51BED009EB60B /* RootView.swift in Sources */,
@@ -1000,7 +993,6 @@
 				EA6650ED1AA00A9C001BA40C /* CoreService.swift in Sources */,
 				EA6650F81AA00B95001BA40C /* _Connection.swift in Sources */,
 				EAE63D781AB32BC4004A74E6 /* ProgressIndicator.swift in Sources */,
-				EAAA428B1AB2522E00056EFF /* FloatBox.swift in Sources */,
 				EA60777C1ACF796600B3A19A /* PermissionType.swift in Sources */,
 				EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */,
 				EAF4D7621A79AA5E00D35330 /* RootViewController.swift in Sources */,

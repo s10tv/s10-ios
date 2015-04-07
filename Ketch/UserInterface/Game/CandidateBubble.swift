@@ -11,14 +11,15 @@ import UIKit
 class CandidateBubble : BaseView {
     
     let avatar = UserAvatarView()
-
+    let scaleDuration : NSTimeInterval = 0.2
+    
+    var drag : UIAttachmentBehavior?
     var candidate: Candidate? {
         didSet { avatar.user = candidate?.user }
     }
     
     override func commonInit() {
         addSubview(avatar)
-//        avatar.makeEdgesEqualTo(self)
     }
     
     // NOTE: It's better to manually layout the avatar view inside candidate bubble
@@ -29,18 +30,8 @@ class CandidateBubble : BaseView {
         avatar.bounds.size = bounds.size
         super.layoutSubviews()
     }
-
-    var drag : UIAttachmentBehavior?
-    var dropzone: CandidateDropZone? {
-        didSet {
-            oldValue?.freeBubble()
-            dropzone?.dropBubble(self)
-        }
-    }
     
     // MARK: - Scaling avatar size as bubble size increases
-    
-    let scaleDuration : NSTimeInterval = 0.2
     
     override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
         super.touchesBegan(touches, withEvent: event)
@@ -59,6 +50,7 @@ class CandidateBubble : BaseView {
     }
     
     override func addGestureRecognizer(gestureRecognizer: UIGestureRecognizer) {
+        // Ensure that touchesEnded will be called to properly scale avatar size back
         gestureRecognizer.cancelsTouchesInView = false
         super.addGestureRecognizer(gestureRecognizer)
     }
