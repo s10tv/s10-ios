@@ -65,18 +65,14 @@ extension UIView {
 
 extension CALayer {
     
-    func animateKeyPath(keyPath: String, toValue: AnyObject!, duration: CGFloat, fillForwards: Bool = false) -> RACSignal {
-        let animation = CABasicAnimation(keyPath: keyPath)
+    func animateKeyPath(keyPath: String, toValue: AnyObject!, duration: CGFloat, fillMode: CAMediaTimingFillMode = .Removed) -> RACSignal {
+        let animation = CABasicAnimation(keyPath, fillMode: fillMode)
         animation.toValue = toValue
-        if fillForwards {
-            animation.fillMode = kCAFillModeForwards
-            animation.removedOnCompletion = false
-        }
         return animation.addToLayerAndReturnSignal(self, forKey: keyPath)
     }
     
-    func animateOpacity(opacity: CGFloat, duration: CGFloat, fillForwards: Bool = false) -> RACSignal {
-        return animateKeyPath("opacity", toValue: opacity, duration: duration, fillForwards: fillForwards)
+    func animateOpacity(opacity: CGFloat, duration: CGFloat, fillMode: CAMediaTimingFillMode = .Removed) -> RACSignal {
+        return animateKeyPath("opacity", toValue: opacity, duration: duration, fillMode: fillMode)
     }
 }
 
@@ -120,3 +116,30 @@ extension CATransaction {
         return subject
     }
 }
+
+// MARK: Animation Extension
+
+enum CAMediaTimingFillMode {
+    case Forwards, Backwards, Both, Removed
+    var stringValue: String {
+        switch self {
+        case .Forwards:  return kCAFillModeForwards
+        case .Backwards: return kCAFillModeBackwards
+        case .Both:      return kCAFillModeBoth
+        case .Removed:   return kCAFillModeRemoved
+        }
+    }
+}
+
+// Adding to CAPropertyAnimation does not result in subclass inheritance...
+extension CABasicAnimation {
+    convenience init!(_ keyPath: String, fillMode: CAMediaTimingFillMode = .Removed) {
+        self.init(keyPath: keyPath)
+        self.fillMode = fillMode.stringValue
+        // Forwards fill mode is meaningless if animation is removed
+        if fillMode == .Forwards {
+            removedOnCompletion = false
+        }
+    }
+}
+

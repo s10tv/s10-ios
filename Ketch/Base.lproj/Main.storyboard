@@ -385,6 +385,9 @@ SAILED FOR TODAY.</string>
                         <outletCollection property="bubbles" destination="sNf-t3-S46" collectionClass="NSMutableArray" id="Vn4-aE-ktC"/>
                         <outletCollection property="bubbles" destination="Jqh-bc-UMn" collectionClass="NSMutableArray" id="AU4-3U-G0I"/>
                         <outletCollection property="bubbles" destination="arw-4e-pup" collectionClass="NSMutableArray" id="E44-fH-6Vl"/>
+                        <outletCollection property="navViews" destination="cK6-TY-fKz" collectionClass="NSMutableArray" id="atZ-s5-PNQ"/>
+                        <outletCollection property="navViews" destination="SMl-V4-Z7A" id="zLB-Uz-EKh"/>
+                        <outletCollection property="navViews" destination="Rx1-xy-YKJ" id="vtK-uO-muB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TlQ-8h-TWe" userLabel="First Responder" sceneMemberID="firstResponder"/>

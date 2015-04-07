@@ -10,7 +10,7 @@ import Foundation
 
 @objc(GameViewController)
 class GameViewController : BaseViewController {
-    
+    @IBOutlet var navViews: [UIView]!
     @IBOutlet weak var dockBadge: UIImageView!
     @IBOutlet var placeholders: [ChoiceBucket]!
     @IBOutlet var bubbles : [CandidateBubble]!

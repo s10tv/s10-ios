@@ -30,8 +30,25 @@ class NewGameTransition : RootTransition {
         // presentation and model in an inconsistent state
         var signals = [
             animateWaterline(),
-            fromView!.layer.animateOpacity(0, duration: 0.25, fillForwards: true)
+            fromView!.layer.animateOpacity(0, duration: 0.25, fillMode: .Forwards)
         ]
+        
+        // Fade the navigation buttons in
+        for view in gameVC.navViews {
+            let animation = CABasicAnimation("opacity", fillMode: .Backwards)
+            animation.fromValue = 0
+            signals += animation.addToLayerAndReturnSignal(view.layer, forKey: "opacity")
+        }
+        
+        // Make the placerholder fall
+        for placeholder in gameVC.placeholders {
+            let animation = RBBSpringAnimation(keyPath: "position.y")
+            animation.fromValue = placeholder.layer.position.y + containerView.frame.height
+            animation.toValue = placeholder.layer.position.y
+            animation.duration = duration
+            animation.damping = 15
+            signals += animation.addToLayerAndReturnSignal(placeholder.layer, forKey: "position.y")
+        }
         
         // Animate the bubbles into water
         let delay : NSTimeInterval = 0.1
@@ -52,5 +69,4 @@ class NewGameTransition : RootTransition {
             self.context.completeTransition(true)
         }
     }
-    
 }
