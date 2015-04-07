@@ -13,11 +13,15 @@ import ReactiveCocoa
 class NewGameTransition : RootTransition {
     let loadingVC : LoadingViewController
     let gameVC : GameViewController
+    let waterlineDuration : NSTimeInterval = 1
+    let bubbleDropDuration : NSTimeInterval = 1
+    let bubbleDropInterval : NSTimeInterval = 0.1
     
     init(_ rootView: RootView, loadingVC: LoadingViewController, gameVC: GameViewController) {
         self.loadingVC = loadingVC
         self.gameVC = gameVC
-        super.init(rootView, fromVC: loadingVC, toVC: gameVC, duration: 1)
+        let duration = waterlineDuration + bubbleDropDuration + bubbleDropDuration * 2
+        super.init(rootView, fromVC: loadingVC, toVC: gameVC, duration: duration)
     }
 
     override func animate() {
@@ -29,7 +33,7 @@ class NewGameTransition : RootTransition {
         // view hierarchy and thus all animations will be removed, avoiding leading
         // presentation and model in an inconsistent state
         var signals = [
-            animateWaterline(),
+            animateWaterline(duration: waterlineDuration),
             fromView!.layer.animateOpacity(0, duration: 0.25, fillMode: .Forwards)
         ]
         
@@ -37,6 +41,7 @@ class NewGameTransition : RootTransition {
         for view in gameVC.navViews {
             let animation = CABasicAnimation("opacity", fillMode: .Backwards)
             animation.fromValue = 0
+            animation.duration = waterlineDuration
             signals += animation.addToLayerAndReturnSignal(view.layer, forKey: "opacity")
         }
         
@@ -45,21 +50,19 @@ class NewGameTransition : RootTransition {
             let animation = RBBSpringAnimation(keyPath: "position.y")
             animation.fromValue = placeholder.layer.position.y + containerView.frame.height
             animation.toValue = placeholder.layer.position.y
-            animation.duration = duration
+            animation.duration = waterlineDuration
             animation.damping = 15
             signals += animation.addToLayerAndReturnSignal(placeholder.layer, forKey: "position.y")
         }
         
         // Animate the bubbles into water
-        let delay : NSTimeInterval = 0.1
         for (i, bubble) in enumerate(gameVC.bubbles) {
             let drop = RBBSpringAnimation(keyPath: "position.y")
             drop.fromValue = bubble.layer.position.y - gameVC.view.frame.height
             drop.toValue = bubble.layer.position.y
-            drop.duration = duration - delay * Double(gameVC.bubbles.count - 1)
-            drop.beginTime = CACurrentMediaTime() + Double(i) * delay
+            drop.duration = bubbleDropDuration
+            drop.beginTime = CACurrentMediaTime() + waterlineDuration + bubbleDropInterval * Double(i)
             drop.fillMode = kCAFillModeBackwards
-            
             signals += drop.addToLayerAndReturnSignal(bubble.layer, forKey: "position.y")
         }
         

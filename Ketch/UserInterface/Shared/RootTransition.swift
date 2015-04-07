@@ -34,10 +34,10 @@ class RootTransition : ViewControllerTransition {
         }
     }
     
-    func animateWaterline() -> RACSignal {
+    func animateWaterline(duration: NSTimeInterval? = nil) -> RACSignal {
         if let vc = toVC as? BaseViewController {
             rootView.waterlineLocation = vc.waterlineLocation
-            return UIView.animateSpring(duration) {
+            return UIView.animateSpring(duration ?? self.duration) {
                 self.rootView.layoutIfNeeded()
             }
         }
