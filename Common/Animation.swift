@@ -56,3 +56,38 @@ extension UIView {
         return subject
     }
 }
+
+// Animation block callback
+
+extension CAAnimation {
+    private class ProxyDelegate : NSObject {
+        let subject = RACSubject()
+        
+        override func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
+            subject.sendNextAndCompleted(flag)
+        }
+    }
+    
+    // BUG NOTE: Trying to merge stopSignals is problematic. Next values are not being delivered
+
+    // CAAnimation is an exception and actually retains its delegate, thus no need to use objc_associated_object
+    var stopSignal : RACSignal {
+        if !(delegate is ProxyDelegate) {
+            delegate = ProxyDelegate()
+        }
+        return (delegate as ProxyDelegate).subject
+    }
+}
+
+extension CATransaction {
+    class func perform(animations: () -> ()) -> RACSignal {
+        let subject = RACSubject()
+        CATransaction.begin()
+        animations()
+        CATransaction.setCompletionBlock {
+            subject.sendCompleted()
+        }
+        CATransaction.commit()
+        return subject
+    }
+}
