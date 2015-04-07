@@ -24,8 +24,14 @@ class NewGameTransition : RootTransition {
         self.containerView.addSubview(toView!)
         toView?.frame = self.context.finalFrameForViewController(self.gameVC)
         toView?.layoutIfNeeded()
-        
-        var signals = [animateWaterline()]
+
+        // It is ok to use forward fill mode here because fromView will be removed from 
+        // view hierarchy and thus all animations will be removed, avoiding leading
+        // presentation and model in an inconsistent state
+        var signals = [
+            animateWaterline(),
+            fromView!.layer.animateOpacity(0, duration: 0.25, fillForwards: true)
+        ]
         
         // Animate the bubbles into water
         let delay : NSTimeInterval = 0.1
@@ -36,9 +42,8 @@ class NewGameTransition : RootTransition {
             drop.duration = duration - delay * Double(gameVC.bubbles.count - 1)
             drop.beginTime = CACurrentMediaTime() + Double(i) * delay
             drop.fillMode = kCAFillModeBackwards
-            // CAAnimation has value semantic, must save signal prior to adding to layer
-            signals += drop.stopSignal
-            bubble.layer.addAnimation(drop, forKey: "position.y")
+            
+            signals += drop.addToLayerAndReturnSignal(bubble.layer, forKey: "position.y")
         }
         
         // BUG ALERT: We assume transition is complete, but are there situations where

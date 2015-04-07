@@ -10,7 +10,9 @@ import UIKit
 import ReactiveCocoa
 
 extension UIView {
-    func setHiddenAnimated(#hidden: Bool, duration: NSTimeInterval = 0.3, delay: NSTimeInterval = 0) {
+    func setHiddenAnimated(#hidden: Bool, duration: NSTimeInterval = 0.3, delay: NSTimeInterval = 0) -> RACSignal {
+        // TODO: This is obviously repetitive, but let's wait to RAC 3.0 is out to clean this up
+        let subject = RACSubject()
         UIView.animateWithDuration(duration, delay: delay, options: nil, animations: {
             if hidden {
                 self.alpha = 0
@@ -22,7 +24,9 @@ extension UIView {
             if hidden && finished {
                 self.hidden = true
             }
+            subject.sendNextAndCompleted(finished)
         }
+        return subject
     }
 }
 
@@ -57,7 +61,26 @@ extension UIView {
     }
 }
 
-// Animation block callback
+// MARK: - CALayer Extensions
+
+extension CALayer {
+    
+    func animateKeyPath(keyPath: String, toValue: AnyObject!, duration: CGFloat, fillForwards: Bool = false) -> RACSignal {
+        let animation = CABasicAnimation(keyPath: keyPath)
+        animation.toValue = toValue
+        if fillForwards {
+            animation.fillMode = kCAFillModeForwards
+            animation.removedOnCompletion = false
+        }
+        return animation.addToLayerAndReturnSignal(self, forKey: keyPath)
+    }
+    
+    func animateOpacity(opacity: CGFloat, duration: CGFloat, fillForwards: Bool = false) -> RACSignal {
+        return animateKeyPath("opacity", toValue: opacity, duration: duration, fillForwards: fillForwards)
+    }
+}
+
+// MARK: - Animation block callback
 
 extension CAAnimation {
     private class ProxyDelegate : NSObject {
@@ -67,15 +90,21 @@ extension CAAnimation {
             subject.sendNextAndCompleted(flag)
         }
     }
-    
-    // BUG NOTE: Trying to merge stopSignals is problematic. Next values are not being delivered
 
     // CAAnimation is an exception and actually retains its delegate, thus no need to use objc_associated_object
+    // BUG NOTE: Trying to merge stopSignals is problematic. Next values are not being delivered
     var stopSignal : RACSignal {
         if !(delegate is ProxyDelegate) {
             delegate = ProxyDelegate()
         }
         return (delegate as ProxyDelegate).subject
+    }
+    
+    // CAAnimation has value semantic, must save signal prior to adding to layer
+    func addToLayerAndReturnSignal(layer: CALayer, forKey: String) -> RACSignal {
+        let signal = stopSignal
+        layer.addAnimation(self, forKey: forKey)
+        return signal
     }
 }
 
