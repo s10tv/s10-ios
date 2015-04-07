@@ -50,7 +50,6 @@ class GameViewController : BaseViewController {
     
     var dynamics : UIDynamicAnimator!
     var targets : [SnapTarget]!
-    var collision : UICollisionBehavior!
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -73,9 +72,10 @@ class GameViewController : BaseViewController {
         }
         dynamics = UIDynamicAnimator(referenceView: view)
         dynamics.delegate = self
-        collision = UICollisionBehavior(items: bubbles)
+        let collision = UICollisionBehavior(items: bubbles)
         collision.setTranslatesReferenceBoundsIntoBoundaryWithInsets(UIEdgeInsets(inset: -50))
         collision.collisionMode = .Everything
+        dynamics.addBehavior(collision)
     }
     
     // MARK: -
@@ -112,18 +112,15 @@ class GameViewController : BaseViewController {
         
         switch pan.state {
         case .Began:
-            // Add Collision
-            dynamics.addBehavior(collision)
             // Remove Snap
             snapBubbleToTarget(bubble, target: nil)
             // Add Drag
             bubble.drag = UIAttachmentBehavior(item: bubble, attachedToAnchor: location)
             dynamics.addBehavior(bubble.drag)
         case .Changed:
+            // Update Drag
             bubble.drag?.anchorPoint = location
         case .Ended:
-            // Remove Collsion
-            dynamics.removeBehavior(collision)
             // Add Snap
             let target = closestTarget(bubble.center + pan.velocityInView(view) * 0.1)
             snapBubbleToTarget(bubble, target: target)
@@ -173,8 +170,6 @@ class GameViewController : BaseViewController {
 
 extension GameViewController : UIDynamicAnimatorDelegate {
     func dynamicAnimatorDidPause(animator: UIDynamicAnimator) {
-
-//        animator.removeAllBehaviors()
         println("Dynamics did pause")
     }
     
