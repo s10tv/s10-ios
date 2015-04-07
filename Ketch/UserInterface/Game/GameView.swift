@@ -10,33 +10,14 @@ import Foundation
 
 class GameView : TransparentView {
     @IBOutlet var buckets: [ChoiceBucket]!
-    @IBOutlet var boxes: [FloatBox]!
+    @IBOutlet var boxes: [CandidateBubble]!
     @IBOutlet weak var helpText: DesignableLabel!
     @IBOutlet weak var confirmButton: UIButton!
-    
-    var bubbles: [CandidateBubble] = []
 
     override func commonInit() {
         super.commonInit()
         userInteractionEnabled = true
         passThroughTouchOnSelf = false
-        for i in 0...2 {
-            let bubble = CandidateBubble()
-            addSubview(bubble)
-            bubbles.append(bubble)
-        }
-    }
-    
-    var initialLayoutSet = false
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        println("layout pass triggering")
-        if !initialLayoutSet {
-            initialLayoutSet = true
-            for (i, bubble) in enumerate(bubbles) {
-                bubble.frame = self.boxes[i].frame
-            }
-        }
     }
     
     @IBAction func confirmChoices(sender: AnyObject) {
@@ -64,8 +45,6 @@ class ChoiceBucket : UIImageView {
         }
     }
 }
-
-class FloatBox : TransparentView { }
 
 class SnapTarget {
     let center : CGPoint

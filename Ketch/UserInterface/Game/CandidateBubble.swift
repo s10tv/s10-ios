@@ -22,6 +22,11 @@ class CandidateBubble : BaseView {
         addSubview(avatar)
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        backgroundColor = nil
+    }
+    
     // NOTE: It's better to manually layout the avatar view inside candidate bubble
     // Relying on autolayout to layout avatar view and having candidate bubble be manipulated
     // by UIDyanmicsAnimator causes layout to be repeatedly invalidated, potentially bad performance

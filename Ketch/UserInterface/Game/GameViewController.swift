@@ -17,7 +17,6 @@ class GameViewController : BaseViewController {
     var candidates : [Candidate]! { willSet { assert(candidates == nil, "candidates are immutable") } }
     var bubbles : [CandidateBubble]!
     var buckets : [ChoiceBucket]!
-    var boxes : [FloatBox]!
     
     var tutorialMode = UD[.bGameTutorialMode].bool!
     var readyToConfirm : Bool {
@@ -33,9 +32,8 @@ class GameViewController : BaseViewController {
         super.viewDidLoad()
         
          // TODO: Refactor me
-        bubbles = gameView.bubbles
+        bubbles = gameView.boxes
         buckets = gameView.buckets
-        boxes = gameView.boxes
         
         // Setup tap to view profile
         for (i, bubble) in enumerate(bubbles) {
@@ -62,9 +60,10 @@ class GameViewController : BaseViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        println("View is laying out subviews")
         // Setup the game board with target positions acquired from autolayout
         if targets == nil {
-            targets = boxes.map {  SnapTarget(view: $0) } + buckets.map { SnapTarget(view: $0) }
+            targets = bubbles.map {  SnapTarget(view: $0) } + buckets.map { SnapTarget(view: $0) }
             for i in 0..<2 { // TODO: Remove this huge hack
                 targets[i].bubble = bubbles[i]
             }
@@ -73,6 +72,11 @@ class GameViewController : BaseViewController {
             collision = UICollisionBehavior(items: bubbles)
             collision.setTranslatesReferenceBoundsIntoBoundaryWithInsets(UIEdgeInsets(inset: -50))
             collision.collisionMode = .Everything
+        } else {
+            // Override autolayout and manually positions the bubbles where they belong
+            for target in targets {
+                target.bubble?.center = target.center
+            }
         }
     }
     
