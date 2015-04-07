@@ -22,4 +22,17 @@ func spring(duration: NSTimeInterval, animations: () -> ()) -> RACSignal {
     return subject
 }
 
-
+extension UIView {
+    
+    class func animate(duration: NSTimeInterval, delay: NSTimeInterval = 0, animations: () -> ()) -> RACSignal {
+        return UIView.animate(duration, delay: delay, options: nil, animations: animations)
+    }
+    
+    class func animate(duration: NSTimeInterval, delay: NSTimeInterval = 0, options: UIViewAnimationOptions = nil, animations: () -> ()) -> RACSignal {
+        let subject = RACSubject()
+        UIView.animateWithDuration(duration, delay: delay, options: options, animations: animations) { finished in
+            subject.sendNextAndCompleted(finished)
+        }
+        return subject
+    }
+}

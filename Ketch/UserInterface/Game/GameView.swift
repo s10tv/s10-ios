@@ -9,6 +9,7 @@
 import Foundation
 import ReactiveCocoa
 
+
 protocol CandidateDropZone {
     var isOccupied: Bool { get }
     var dropCenter: CGPoint { get }
@@ -40,11 +41,11 @@ class GameView : TransparentView {
         super.commonInit()
         userInteractionEnabled = true
         passThroughTouchOnSelf = false
-        animator = UIDynamicAnimator(referenceView: self)
+//        animator = UIDynamicAnimator(referenceView: self)
         for i in 0...2 {
             let bubble = CandidateBubble()
-            bubble.userInteractionEnabled = true
-            bubble.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "_handleBubblePan:"))
+//            bubble.userInteractionEnabled = true
+//            bubble.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "_handleBubblePan:"))
             addSubview(bubble)
             bubbles.append(bubble)
         }
@@ -52,22 +53,28 @@ class GameView : TransparentView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        for box in boxes { box.animator = animator }
-        for (i, bucket) in enumerate(buckets) {
-            bucket.animator = animator
-            bucket.choice = [Candidate.Choice.Yes, Candidate.Choice.Maybe, Candidate.Choice.No][i] // TODO: Less hack...
-        }
-
-        
-        collision = UICollisionBehavior(items: bubbles)
-        collision.collisionMode = UICollisionBehaviorMode.Items
+//        for box in boxes { box.animator = animator }
+//        for (i, bucket) in enumerate(buckets) {
+//            bucket.animator = animator
+//            bucket.choice = [Candidate.Choice.Yes, Candidate.Choice.Maybe, Candidate.Choice.No][i] // TODO: Less hack...
+//        }
+//
+//        
+//        collision = UICollisionBehavior(items: bubbles)
+//        collision.translatesReferenceBoundsIntoBoundary = true
+//        collision.collisionMode = UICollisionBehaviorMode.Everything
     }
-    
+    var initialLayoutSet = false
     override func layoutSubviews() {
         super.layoutSubviews()
-        for (i, bubble) in enumerate(bubbles) {
-            bubble.frame = self.boxes[i].frame
+        println("layout pass triggering")
+        if !initialLayoutSet {
+            initialLayoutSet = true
+            for (i, bubble) in enumerate(bubbles) {
+                bubble.frame = self.boxes[i].frame
+            }
         }
+//        animator.addBehavior(collision)
     }
     
     @IBAction func confirmChoices(sender: AnyObject) {
@@ -99,6 +106,9 @@ class GameView : TransparentView {
             bubble.dropzone = nil
             animator.removeBehavior(bubble.drag)
             bubble.drag = UIAttachmentBehavior(item: bubble, attachedToAnchor: location)
+            bubble.drag?.action = {
+                bubble.transform = CGAffineTransformMakeScale(1.5, 1.5)
+            }
             animator.addBehavior(bubble.drag)
         case .Changed:
             bubble.drag?.anchorPoint = location
