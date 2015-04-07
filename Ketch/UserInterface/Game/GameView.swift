@@ -9,8 +9,10 @@
 import Foundation
 
 class ChoiceBucket : UIImageView {
-    var choice : Candidate.Choice!
-    var bubble: CandidateBubble?
+    @IBInspectable var rawChoice: String!
+    var choice : Candidate.Choice {
+        return Candidate.Choice(rawValue: rawChoice)!
+    }
     var emphasized: Bool = false { didSet { updateAlphaAndTint() } }
     
     override func awakeFromNib() {
@@ -32,10 +34,12 @@ class ChoiceBucket : UIImageView {
 
 class SnapTarget {
     let center : CGPoint
+    let choice : Candidate.Choice?
     var bubble : CandidateBubble?
     var snap : UISnapBehavior?
     
-    init(view: UIView) {
-        center = view.center
+    init(center: CGPoint, choice: Candidate.Choice?) {
+        self.center = center
+        self.choice = choice
     }
 }

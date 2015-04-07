@@ -23,6 +23,24 @@ func spring(duration: NSTimeInterval, animations: () -> ()) -> RACSignal {
 }
 
 extension UIView {
+    func animateHidden(hidden: Bool, duration: NSTimeInterval = 0.3, delay: NSTimeInterval = 0) {
+        UIView.animateWithDuration(duration, delay: delay, options: nil, animations: {
+            if hidden {
+                self.alpha = 0
+            } else {
+                self.hidden = false
+                self.alpha = 1
+            }
+        }) { finished in
+            if hidden && finished {
+                self.hidden = true
+            }
+        }
+    }
+}
+
+// Class Extensions
+extension UIView {
     
     class func animate(duration: NSTimeInterval, delay: NSTimeInterval = 0, animations: () -> ()) -> RACSignal {
         return UIView.animate(duration, delay: delay, options: nil, animations: animations)

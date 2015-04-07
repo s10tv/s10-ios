@@ -22,7 +22,7 @@ class GameViewController : BaseViewController {
         willSet { assert(candidates == nil, "candidates are immutable") }
     }
     var readyToConfirm : Bool {
-        return placeholders.reduce(true) { $0 && $1.bubble != nil }
+        return targets.filter { $0.choice != nil && $0.bubble != nil }.count == 3
     }
     
     override func commonInit() {
@@ -54,24 +54,28 @@ class GameViewController : BaseViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        println("View is laying out subviews")
-        // Setup the game board with target positions acquired from autolayout
         if targets == nil {
-            targets = bubbles.map {  SnapTarget(view: $0) } + placeholders.map { SnapTarget(view: $0) }
-            for i in 0..<2 { // TODO: Remove this huge hack
-                targets[i].bubble = bubbles[i]
-            }
-            dynamics = UIDynamicAnimator(referenceView: view)
-            dynamics.delegate = self
-            collision = UICollisionBehavior(items: bubbles)
-            collision.setTranslatesReferenceBoundsIntoBoundaryWithInsets(UIEdgeInsets(inset: -50))
-            collision.collisionMode = .Everything
+            // Setup the game board once target positions can be acquired from autolayout
+            setupGame()
         } else {
             // Override autolayout and manually positions the bubbles where they belong
             for target in targets {
                 target.bubble?.center = target.center
             }
         }
+    }
+    
+    private func setupGame() {
+        targets = placeholders.map {
+            SnapTarget(center: $0.center + CGPoint(x: 0, y: -11), choice: $0.choice)
+        } + bubbles.map {
+            SnapTarget(center: $0.center, choice: nil)
+        }
+        dynamics = UIDynamicAnimator(referenceView: view)
+        dynamics.delegate = self
+        collision = UICollisionBehavior(items: bubbles)
+        collision.setTranslatesReferenceBoundsIntoBoundaryWithInsets(UIEdgeInsets(inset: -50))
+        collision.collisionMode = .Everything
     }
     
     // MARK: -
@@ -92,6 +96,8 @@ class GameViewController : BaseViewController {
             target.snap = UISnapBehavior(item: bubble, snapToPoint: target.center)
             dynamics.addBehavior(target.snap)
         }
+        
+        confirmButton.animateHidden(!readyToConfirm, delay: 0.1)
     }
     
     func handleBubblePan(pan: UIPanGestureRecognizer) {
@@ -135,7 +141,7 @@ class GameViewController : BaseViewController {
     @IBAction func submitChoices(sender: AnyObject) {
         assert(readyToConfirm, "Should not call submit choice until readyToConfirm")
         func chosenCandidate(choice: Candidate.Choice?) -> Candidate? {
-            return placeholders.filter({ $0.choice == choice }).first?.bubble?.candidate
+            return targets.match { $0.choice == choice }?.bubble?.candidate
         }
         let marry = chosenCandidate(.Yes)!
         let keep = chosenCandidate(.Maybe)!
@@ -161,11 +167,12 @@ class GameViewController : BaseViewController {
 
 extension GameViewController : UIDynamicAnimatorDelegate {
     func dynamicAnimatorDidPause(animator: UIDynamicAnimator) {
+
+//        animator.removeAllBehaviors()
         println("Dynamics did pause")
-        animator.removeAllBehaviors()
     }
     
     func dynamicAnimatorWillResume(animator: UIDynamicAnimator) {
-        println("dynamics will resume")
+        println("Dynamics will resume")
     }
 }
