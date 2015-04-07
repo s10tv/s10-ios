@@ -81,6 +81,10 @@ extension String {
     }
 }
 
+func += <T>(inout array: [T], element: T) {
+    array.append(element)
+}
+
 extension Array {
 
     func mapOptional<U>(transform: T -> U?) -> [U] {

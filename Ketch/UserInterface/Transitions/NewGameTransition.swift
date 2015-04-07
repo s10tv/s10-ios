@@ -8,6 +8,7 @@
 
 import Foundation
 import RBBAnimation
+import ReactiveCocoa
 
 class NewGameTransition : RootTransition {
     let loadingVC : LoadingViewController
@@ -20,22 +21,31 @@ class NewGameTransition : RootTransition {
     }
 
     override func animate() {
-        rootView.waterlineLocation = gameVC.waterlineLocation
         self.containerView.addSubview(toView!)
+        toView?.frame = self.context.finalFrameForViewController(self.gameVC)
         toView?.layoutIfNeeded()
+        
+        var signals = [animateWaterline()]
+        
+        // Animate the bubbles into water
+        let delay : NSTimeInterval = 0.1
         for (i, bubble) in enumerate(gameVC.bubbles) {
             let drop = RBBSpringAnimation(keyPath: "position.y")
             drop.fromValue = bubble.layer.position.y - gameVC.view.frame.height
             drop.toValue = bubble.layer.position.y
-            drop.duration = duration
-            drop.beginTime = CACurrentMediaTime() + Double(i) * 0.1
+            drop.duration = duration - delay * Double(gameVC.bubbles.count - 1)
+            drop.beginTime = CACurrentMediaTime() + Double(i) * delay
             drop.fillMode = kCAFillModeBackwards
+            // CAAnimation has value semantic, must save signal prior to adding to layer
+            signals += drop.stopSignal
             bubble.layer.addAnimation(drop, forKey: "position.y")
         }
-        UIView.animateSpring(duration+0.2) {
-            self.rootView.layoutIfNeeded()
-            self.toView?.frame = self.context.finalFrameForViewController(self.gameVC)
+        
+        // BUG ALERT: We assume transition is complete, but are there situations where
+        // this is actually not true? What about interactive view controller transition?
+        RACSignal.merge(signals).subscribeCompleted {
             self.context.completeTransition(true)
         }
     }
+    
 }

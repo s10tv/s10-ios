@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReactiveCocoa
 
 class RootTransition : ViewControllerTransition {
     let rootView : RootView
@@ -31,5 +32,15 @@ class RootTransition : ViewControllerTransition {
         }.subscribeNextAs { (finished: Bool) in
             self.context.completeTransition(finished)
         }
+    }
+    
+    func animateWaterline() -> RACSignal {
+        if let vc = toVC as? BaseViewController {
+            rootView.waterlineLocation = vc.waterlineLocation
+            return UIView.animateSpring(duration) {
+                self.rootView.layoutIfNeeded()
+            }
+        }
+        return RACSignal.empty()
     }
 }
