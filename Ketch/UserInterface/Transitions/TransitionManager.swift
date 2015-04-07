@@ -11,6 +11,7 @@ import Foundation
 class TransitionManager : NSObject, UINavigationControllerDelegate {
     private let rootView : RootView
     var currentEdgePan : UIScreenEdgePanGestureRecognizer?
+    var disableAllTransitions = true
     
     init(rootView: RootView, navigationController: UINavigationController?) {
         self.rootView = rootView
@@ -29,6 +30,10 @@ class TransitionManager : NSObject, UINavigationControllerDelegate {
     }
     
     func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+        
+        if disableAllTransitions {
+            return InstantaneousTransition(rootView, fromVC: fromVC, toVC: toVC)
+        }
 
         switch (fromVC, toVC) {
             
@@ -59,3 +64,4 @@ class TransitionManager : NSObject, UINavigationControllerDelegate {
         return (animationController as? ViewControllerTransition)?.interactor
     }
 }
+
