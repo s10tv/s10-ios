@@ -85,16 +85,22 @@ class GameViewController : BaseViewController {
         return freeTargets.minElement { Float($0.center.distanceTo(point)) }!
     }
     
+    private func placeholderForTarget(target: SnapTarget?) -> ChoiceBucket? {
+        return placeholders.match { $0.choice == target?.choice }
+    }
+    
     private func snapBubbleToTarget(bubble: CandidateBubble, target: SnapTarget?) {
         let oldTarget = targets.match { $0.bubble == bubble }
         dynamics.removeBehavior(oldTarget?.snap)
         oldTarget?.snap = nil
         oldTarget?.bubble = nil
+        placeholderForTarget(oldTarget)?.animateEmphasis(false)
         
         if let target = target {
             target.bubble = bubble
             target.snap = UISnapBehavior(item: bubble, snapToPoint: target.center)
             dynamics.addBehavior(target.snap)
+            placeholderForTarget(target)?.animateEmphasis(true, delay: 0.2)
         }
         
         confirmButton.animateHidden(!readyToConfirm, delay: 0.1)

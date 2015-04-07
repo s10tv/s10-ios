@@ -30,6 +30,12 @@ class ChoiceBucket : UIImageView {
             tintColor = StyleKit.teal
         }
     }
+    
+    func animateEmphasis(emphasized: Bool, delay: NSTimeInterval = 0) {
+        UIView.animate(0.4, delay: delay) {
+            self.emphasized = emphasized
+        }
+    }
 }
 
 class SnapTarget {
