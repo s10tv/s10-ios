@@ -27,7 +27,7 @@ import UIKit
         let context = UIGraphicsGetCurrentContext()
         let topCenter = CGPointMake(CGRectGetMidX(bounds), 0)
         let bottomCenter = CGPointMake(CGRectGetMidX(bounds), gradientHeight)
-        CGContextDrawLinearGradient(context, StyleKit.gradientWater2, topCenter, bottomCenter,
+        CGContextDrawLinearGradient(context, StyleKit.gradientWater, topCenter, bottomCenter,
             CGGradientDrawingOptions(kCGGradientDrawsAfterEndLocation))
     }
     
@@ -56,7 +56,7 @@ import UIKit
         waveOutline.removeAllAnimations()
         waveOutline.path = wavePath.CGPath
         waveOutline.lineWidth = 2.0
-        waveOutline.strokeColor = StyleKit.waterlineStrokeColor.CGColor
+        waveOutline.strokeColor = StyleKit.navyLight.CGColor
         waveOutline.fillColor = nil
         waveOutline.addAnimation(phaseShift, forKey: "phaseShift")
         layer.addSublayer(waveOutline)

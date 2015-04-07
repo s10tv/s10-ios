@@ -22,7 +22,7 @@ class ProfileInfoCell : UICollectionViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        iconView.tintColor = StyleKit.darkTeal
+        iconView.tintColor = StyleKit.navy
     }
     
     class func sizeForItem(item: ProfileInfoItem) -> CGSize {
