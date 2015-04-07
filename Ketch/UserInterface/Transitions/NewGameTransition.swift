@@ -32,7 +32,7 @@ class NewGameTransition : RootTransition {
             drop.fillMode = kCAFillModeBackwards
             bubble.layer.addAnimation(drop, forKey: "position.y")
         }
-        spring(duration+0.2) {
+        UIView.animateSpring(duration+0.2) {
             self.rootView.layoutIfNeeded()
             self.toView?.frame = self.context.finalFrameForViewController(self.gameVC)
             self.context.completeTransition(true)

@@ -21,7 +21,7 @@ class WaitlistTransition : RootTransition {
     override func animate() {
         rootView.waterlineLocation = waitlistVC.waterlineLocation
         self.containerView.addSubview(self.toView!)
-        spring(duration) {
+        UIView.animateSpring(duration) {
             self.rootView.layoutIfNeeded()
             self.toView?.frame = self.context.finalFrameForViewController(self.waitlistVC)
             self.context.completeTransition(true)

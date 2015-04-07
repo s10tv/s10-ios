@@ -111,7 +111,7 @@ class GameViewController : BaseViewController {
             placeholderForTarget(target)?.animateEmphasis(true, delay: 0.2)
         }
         
-        confirmButton.animateHidden(!readyToConfirm, delay: 0.1)
+        confirmButton.setHiddenAnimated(hidden: !readyToConfirm, delay: 0.1)
     }
     
     func handleBubblePan(pan: UIPanGestureRecognizer) {

@@ -21,7 +21,7 @@ class SignupTransition : RootTransition {
     override func animate() {
         rootView.waterlineLocation = signupVC.waterlineLocation
         self.containerView.addSubview(self.toView!)
-        spring(duration) {
+        UIView.animateSpring(duration) {
             self.rootView.layoutIfNeeded()
             self.toView?.frame = self.context.finalFrameForViewController(self.signupVC)
             self.context.completeTransition(true)

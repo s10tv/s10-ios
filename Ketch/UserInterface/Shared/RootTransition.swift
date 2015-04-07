@@ -24,12 +24,12 @@ class RootTransition : ViewControllerTransition {
         toView?.frame = context.finalFrameForViewController(toVC)
         toView?.alpha = 0
         fromView?.alpha = 1
-        spring(duration) {
+        UIView.animateSpring(duration) {
             self.toView?.alpha = 1
             self.fromView?.alpha = 0
             self.rootView.layoutIfNeeded()
-        }.subscribeNextAs { (finished: Bool) -> () in
-            self.context.completeTransition(true)
+        }.subscribeNextAs { (finished: Bool) in
+            self.context.completeTransition(finished)
         }
     }
 }

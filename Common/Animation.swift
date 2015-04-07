@@ -9,21 +9,8 @@
 import UIKit
 import ReactiveCocoa
 
-func spring(duration: NSTimeInterval, animations: () -> ()) -> RACSignal {
-    let subject = RACSubject()
-    UIView.animateWithDuration(duration,
-        delay: 0,
-        usingSpringWithDamping: 0.7,
-        initialSpringVelocity: 0.7,
-        options: nil,
-        animations:animations) { finished in
-            subject.sendNextAndCompleted(finished)
-    }
-    return subject
-}
-
 extension UIView {
-    func animateHidden(hidden: Bool, duration: NSTimeInterval = 0.3, delay: NSTimeInterval = 0) {
+    func setHiddenAnimated(#hidden: Bool, duration: NSTimeInterval = 0.3, delay: NSTimeInterval = 0) {
         UIView.animateWithDuration(duration, delay: delay, options: nil, animations: {
             if hidden {
                 self.alpha = 0
@@ -42,6 +29,10 @@ extension UIView {
 // Class Extensions
 extension UIView {
     
+    class func animateSpring(duration: NSTimeInterval, animations: () -> ()) -> RACSignal {
+        return UIView.animateSpring(duration, delay: 0, animations: animations)
+    }
+    
     class func animateSpring(duration: NSTimeInterval, damping: CGFloat = 0.7, velocity: CGFloat = 0.7,
                         options: UIViewAnimationOptions = nil, delay: NSTimeInterval = 0, animations: () -> ()) -> RACSignal {
         let subject = RACSubject()
@@ -53,11 +44,11 @@ extension UIView {
         return subject
     }
     
-    class func animate(duration: NSTimeInterval, delay: NSTimeInterval = 0, animations: () -> ()) -> RACSignal {
-        return UIView.animate(duration, delay: delay, options: nil, animations: animations)
+    class func animate(duration: NSTimeInterval, animations: () -> ()) -> RACSignal {
+        return UIView.animate(duration, delay: 0, animations: animations)
     }
     
-    class func animate(duration: NSTimeInterval, delay: NSTimeInterval = 0, options: UIViewAnimationOptions = nil, animations: () -> ()) -> RACSignal {
+    class func animate(duration: NSTimeInterval, options: UIViewAnimationOptions = nil, delay: NSTimeInterval = 0, animations: () -> ()) -> RACSignal {
         let subject = RACSubject()
         UIView.animateWithDuration(duration, delay: delay, options: options, animations: animations) { finished in
             subject.sendNextAndCompleted(finished)
