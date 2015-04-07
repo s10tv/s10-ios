@@ -38,36 +38,6 @@ extension Double {
     var f: CGFloat { return CGFloat(self) }
 }
 
-// Core Graphics
-
-extension CGPoint {
-    func distanceTo(point: CGPoint) -> CGFloat {
-        let xDist = x - point.x
-        let yDist = y - point.y
-        return sqrt((xDist * xDist) + (yDist * yDist))
-    }
-    
-    func asVector() -> CGVector {
-        return CGVector(dx: x, dy: y)
-    }
-}
-
-func + (left: CGPoint, right: CGPoint) -> CGPoint {
-    return CGPoint(x: left.x + right.x, y: left.y + right.y)
-}
-
-func * (point: CGPoint, multiplier: CGFloat) -> CGPoint {
-    return CGPoint(x: point.x * multiplier, y: point.y * multiplier)
-}
-
-func + (point: CGPoint, vector: CGVector) -> CGPoint {
-    return CGPoint(x: point.x + vector.dx, y: point.y + vector.dy)
-}
-
-func * (vector: CGVector, multiplier: CGFloat) -> CGVector {
-    return CGVector(dx: vector.dx * multiplier, dy: vector.dy * multiplier)
-}
-
 // Foundation Types
 
 extension String {
@@ -127,6 +97,11 @@ extension Array {
                 self.append(current)
             }
         }
+    }
+    
+    // Return first element matching block
+    func match(criteria: T -> Bool) -> T? {
+        return filter(criteria).first
     }
     
     func randomElement() -> T? {

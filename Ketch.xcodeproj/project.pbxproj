@@ -113,6 +113,7 @@
 		EAC8D3F61AA7269F00BCB7B9 /* FetchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9311A87DE5800D62625 /* FetchViewModel.swift */; };
 		EAC8D3F71AA7278900BCB7B9 /* ViewProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9321A87DE5800D62625 /* ViewProviders.swift */; };
 		EAC8D3F81AA7289400BCB7B9 /* ArrayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC92F1A87DE5800D62625 /* ArrayViewModel.swift */; };
+		EAD007FC1AD37236003A260D /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD007FB1AD37236003A260D /* Geometry.swift */; };
 		EAD7B2AB1A9F0BE700FA6740 /* DesignableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */; };
 		EAE63D781AB32BC4004A74E6 /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE63D771AB32BC4004A74E6 /* ProgressIndicator.swift */; };
 		EAE63D7A1AB3407D004A74E6 /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAE63D791AB3407D004A74E6 /* RootView.xib */; };
@@ -268,6 +269,7 @@
 		EABD43DA1AA1D29C00B07813 /* Prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
 		EABF2AB41AD04659005880E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EABF2AB81AD04E90005880E7 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		EAD007FB1AD37236003A260D /* Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
 		EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableViews.swift; sourceTree = "<group>"; };
 		EAE63D771AB32BC4004A74E6 /* ProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
 		EAE63D791AB3407D004A74E6 /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootView.xib; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 				EA7AA3641AA25D21003383BE /* SBConstantsExtension.swift */,
 				EAAD921E1ACF4EFA0014BA25 /* ProvisioningProfile.swift */,
 				EAEB63DA1AD31A4E0002D55C /* Animation.swift */,
+				EAD007FB1AD37236003A260D /* Geometry.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1001,6 +1004,7 @@
 				EA60777C1ACF796600B3A19A /* PermissionType.swift in Sources */,
 				EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */,
 				EAF4D7621A79AA5E00D35330 /* RootViewController.swift in Sources */,
+				EAD007FC1AD37236003A260D /* Geometry.swift in Sources */,
 				EA6E56541AD2152500B12F2B /* NoGameViewController.swift in Sources */,
 				EA0FC9361A87DE5800D62625 /* SugarRecordExtension.swift in Sources */,
 				EA6077781ACF6E1E00B3A19A /* PermissionViewController.swift in Sources */,
