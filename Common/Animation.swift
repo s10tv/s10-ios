@@ -42,6 +42,17 @@ extension UIView {
 // Class Extensions
 extension UIView {
     
+    class func animateSpring(duration: NSTimeInterval, damping: CGFloat = 0.7, velocity: CGFloat = 0.7,
+                        options: UIViewAnimationOptions = nil, delay: NSTimeInterval = 0, animations: () -> ()) -> RACSignal {
+        let subject = RACSubject()
+        UIView.animateWithDuration(duration, delay: delay,
+            usingSpringWithDamping: damping, initialSpringVelocity: velocity,
+            options: options, animations:animations) { finished in
+            subject.sendNextAndCompleted(finished)
+        }
+        return subject
+    }
+    
     class func animate(duration: NSTimeInterval, delay: NSTimeInterval = 0, animations: () -> ()) -> RACSignal {
         return UIView.animate(duration, delay: delay, options: nil, animations: animations)
     }

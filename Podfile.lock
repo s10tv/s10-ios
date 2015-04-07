@@ -21,6 +21,7 @@ PODS:
     - NSLogger/Standard (= 1.5.1)
   - NSLogger/Standard (1.5.1)
   - PocketSocket (0.6.4)
+  - RBBAnimation (0.3.0)
   - ReactiveCocoa (2.4.4):
     - ReactiveCocoa/UI (= 2.4.4)
   - ReactiveCocoa/Core (2.4.4):
@@ -51,6 +52,7 @@ DEPENDENCIES:
   - JSQMessagesViewController (~> 6.1)
   - Meteor (~> 0.1)
   - NSLogger (~> 1.5)
+  - RBBAnimation (~> 0.3.0)
   - ReactiveCocoa (~> 2.4)
   - Reveal-iOS-SDK (~> 1.5)
   - SDWebImage (~> 3.7)
@@ -88,6 +90,7 @@ SPEC CHECKSUMS:
   Meteor: bf6d174608167b138ee44959309e3a8a7561fd83
   NSLogger: 5ed223a2436df96244e033be750656dacdeec034
   PocketSocket: eee7ef375f55b98e7ca79e097d9c61fd688e9494
+  RBBAnimation: cb6cb419f511434ce932f7d0fabf369612fafb4e
   ReactiveCocoa: cbe3b5eae464aa72a348a7323996b171728a9e71
   Reveal-iOS-SDK: c9c55cad2729c85f6ced415f1b21857c9a2d8ef9
   SDWebImage: ed3095af2ff88b436426037444979b917f6c5575

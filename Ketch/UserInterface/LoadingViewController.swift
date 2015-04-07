@@ -17,17 +17,7 @@ class LoadingViewController : BaseViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-
-//        if !Core.attemptLoginWithCachedCredentials() {
-//            performSegue(.Signup_)
-//        } else {
-//            Core.connectionsSubscription.signal.deliverOnMainThread().subscribeCompleted {
-//                //                if User.currentUser()?.vetted == "yes" {
-//                //
-//                //                }
-//                //                self.performSegue(.LoadingToGame)
-////                self.performSegue(.LoadingToNewConnection)
-//            }
+        
         Core.candidateService.fetch.signal.subscribeNextAs { [weak self] (candidates : [Candidate]) in
             if let this = self {
                 if candidates.count >= 3 {
@@ -37,8 +27,6 @@ class LoadingViewController : BaseViewController {
                 }
             }
         }
-
-//        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
