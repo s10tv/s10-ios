@@ -12,15 +12,17 @@ import Foundation
 class GameViewController : BaseViewController {
     
     @IBOutlet weak var dockBadge: UIImageView!
-    var gameView: GameView! { return view as GameView }
-    
-    var candidates : [Candidate]! { willSet { assert(candidates == nil, "candidates are immutable") } }
-    var bubbles : [CandidateBubble]!
-    var buckets : [ChoiceBucket]!
+    @IBOutlet var placeholders: [ChoiceBucket]!
+    @IBOutlet var bubbles : [CandidateBubble]!
+    @IBOutlet weak var helpLabel: DesignableLabel!
+    @IBOutlet weak var confirmButton: DesignableButton!
     
     var tutorialMode = UD[.bGameTutorialMode].bool!
+    var candidates : [Candidate]! {
+        willSet { assert(candidates == nil, "candidates are immutable") }
+    }
     var readyToConfirm : Bool {
-        return buckets.reduce(true) { $0 && $1.bubble != nil }
+        return placeholders.reduce(true) { $0 && $1.bubble != nil }
     }
     
     override func commonInit() {
@@ -30,28 +32,20 @@ class GameViewController : BaseViewController {
     override func viewDidLoad() {
         assert(candidates.count == 3, "Must provide 3 candidates before loading GameVC")
         super.viewDidLoad()
-        
-         // TODO: Refactor me
-        bubbles = gameView.boxes
-        buckets = gameView.buckets
-        
-        // Setup tap to view profile
+
+        // Setup bubbles
         for (i, bubble) in enumerate(bubbles) {
             bubble.candidate = candidates[i]
             // TODO: There is obvious memory leak here... Everything is retaining everything
             bubble.whenTapped {
                 self.didTapOnCandidateBubble(bubble)
             }
-//            bubble.backgroundColor = UIColor.greenColor()
             bubble.userInteractionEnabled = true
             bubble.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "handleBubblePan:"))
         }
-//        gameView.didConfirmChoices = { [weak self] in
-//            if let this = self { this.submitChoices(this) }
-//        }
-
-        gameView.helpText.hidden = true
-        gameView.confirmButton.hidden = true
+        
+        helpLabel.hidden = true
+        confirmButton.hidden = true
     }
     
     var dynamics : UIDynamicAnimator!
@@ -63,7 +57,7 @@ class GameViewController : BaseViewController {
         println("View is laying out subviews")
         // Setup the game board with target positions acquired from autolayout
         if targets == nil {
-            targets = bubbles.map {  SnapTarget(view: $0) } + buckets.map { SnapTarget(view: $0) }
+            targets = bubbles.map {  SnapTarget(view: $0) } + placeholders.map { SnapTarget(view: $0) }
             for i in 0..<2 { // TODO: Remove this huge hack
                 targets[i].bubble = bubbles[i]
             }
@@ -141,7 +135,7 @@ class GameViewController : BaseViewController {
     @IBAction func submitChoices(sender: AnyObject) {
         assert(readyToConfirm, "Should not call submit choice until readyToConfirm")
         func chosenCandidate(choice: Candidate.Choice?) -> Candidate? {
-            return buckets.filter({ $0.choice == choice }).first?.bubble?.candidate
+            return placeholders.filter({ $0.choice == choice }).first?.bubble?.candidate
         }
         let marry = chosenCandidate(.Yes)!
         let keep = chosenCandidate(.Maybe)!

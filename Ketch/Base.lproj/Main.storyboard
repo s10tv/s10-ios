@@ -176,7 +176,7 @@ SAILED FOR TODAY.</string>
                         <viewControllerLayoutGuide type="top" id="SYM-1r-qph"/>
                         <viewControllerLayoutGuide type="bottom" id="f9R-rk-GCL"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="m2B-aU-Mh7" userLabel="Game View" customClass="GameView" customModule="Ketch" customModuleProvider="target">
+                    <view key="view" contentMode="scaleToFill" id="m2B-aU-Mh7" userLabel="Game View" customClass="TransparentView" customModule="Ketch" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -232,19 +232,13 @@ SAILED FOR TODAY.</string>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Jqh-bc-UMn" secondAttribute="height" multiplier="1:1" id="XoX-Gk-3e9"/>
                                     <constraint firstAttribute="width" priority="751" constant="100" id="bTg-03-zWq"/>
-                                    <constraint firstAttribute="height" constant="100" id="fNU-dh-bF0"/>
                                 </constraints>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="fNU-dh-bF0"/>
-                                    </mask>
-                                </variation>
                             </view>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="arw-4e-pup" userLabel="Right Bubble" customClass="CandidateBubble" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="492" y="460" width="100" height="100"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YSC-OD-kWb" userLabel="Help Text" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YSC-OD-kWb" userLabel="Help Text" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="20" y="360" width="560" height="62"/>
                                 <attributedString key="attributedText">
                                     <fragment content="SWIPE DOWN TO FIND THE ONE!">
@@ -266,7 +260,7 @@ SAILED FOR TODAY.</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s2S-Vm-p8n" userLabel="Confirm Button" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s2S-Vm-p8n" userLabel="Confirm Button" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="175" y="384" width="250" height="54"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -285,7 +279,7 @@ SAILED FOR TODAY.</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="confirmChoices:" destination="m2B-aU-Mh7" eventType="touchUpInside" id="qx0-NV-3vq"/>
+                                    <action selector="submitChoices:" destination="brw-cx-YUO" eventType="touchUpInside" id="EU5-BM-eGu"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cK6-TY-fKz" userLabel="Settings">
@@ -371,19 +365,17 @@ SAILED FOR TODAY.</string>
                                 <exclude reference="BUQ-Zw-qdG"/>
                             </mask>
                         </variation>
-                        <connections>
-                            <outlet property="confirmButton" destination="s2S-Vm-p8n" id="cyd-BF-U2a"/>
-                            <outlet property="helpText" destination="YSC-OD-kWb" id="5fB-Rb-VTq"/>
-                            <outletCollection property="buckets" destination="2Mo-6y-hwh" collectionClass="NSMutableArray" id="odn-TY-uuy"/>
-                            <outletCollection property="buckets" destination="ZdL-6o-ahC" collectionClass="NSMutableArray" id="5Ad-7Z-BUE"/>
-                            <outletCollection property="buckets" destination="C5L-zq-XTw" collectionClass="NSMutableArray" id="89e-h9-NTd"/>
-                            <outletCollection property="boxes" destination="sNf-t3-S46" collectionClass="NSMutableArray" id="VQY-U5-Yfh"/>
-                            <outletCollection property="boxes" destination="Jqh-bc-UMn" collectionClass="NSMutableArray" id="nIS-dl-GrK"/>
-                            <outletCollection property="boxes" destination="arw-4e-pup" collectionClass="NSMutableArray" id="nY0-Pp-ud0"/>
-                        </connections>
                     </view>
                     <connections>
+                        <outlet property="confirmButton" destination="s2S-Vm-p8n" id="Arh-wB-DNU"/>
                         <outlet property="dockBadge" destination="Rx1-xy-YKJ" id="0zW-TP-DUo"/>
+                        <outlet property="helpLabel" destination="YSC-OD-kWb" id="hCK-qf-iDu"/>
+                        <outletCollection property="placeholders" destination="2Mo-6y-hwh" collectionClass="NSMutableArray" id="Anc-BO-eOp"/>
+                        <outletCollection property="placeholders" destination="ZdL-6o-ahC" collectionClass="NSMutableArray" id="2Tf-EA-gl2"/>
+                        <outletCollection property="placeholders" destination="C5L-zq-XTw" collectionClass="NSMutableArray" id="JOI-PU-2xf"/>
+                        <outletCollection property="bubbles" destination="sNf-t3-S46" collectionClass="NSMutableArray" id="Vn4-aE-ktC"/>
+                        <outletCollection property="bubbles" destination="Jqh-bc-UMn" collectionClass="NSMutableArray" id="AU4-3U-G0I"/>
+                        <outletCollection property="bubbles" destination="arw-4e-pup" collectionClass="NSMutableArray" id="E44-fH-6Vl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TlQ-8h-TWe" userLabel="First Responder" sceneMemberID="firstResponder"/>

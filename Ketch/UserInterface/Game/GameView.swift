@@ -8,22 +8,6 @@
 
 import Foundation
 
-class GameView : TransparentView {
-    @IBOutlet var buckets: [ChoiceBucket]!
-    @IBOutlet var boxes: [CandidateBubble]!
-    @IBOutlet weak var helpText: DesignableLabel!
-    @IBOutlet weak var confirmButton: UIButton!
-
-    override func commonInit() {
-        super.commonInit()
-        userInteractionEnabled = true
-        passThroughTouchOnSelf = false
-    }
-    
-    @IBAction func confirmChoices(sender: AnyObject) {
-    }
-}
-
 class ChoiceBucket : UIImageView {
     var choice : Candidate.Choice!
     var bubble: CandidateBubble?
