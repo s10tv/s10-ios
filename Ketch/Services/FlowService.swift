@@ -19,8 +19,8 @@ class FlowService : NSObject {
         case Waitlist
         case Approval
         case BoatSailed
-        case NewMatch(Connection)
-        case NewGame(Candidate, Candidate, Candidate)
+        case NewMatch
+        case NewGame
     }
     
     private var loggingIn = false
@@ -78,9 +78,9 @@ class FlowService : NSObject {
         } else if waitingOnGameResult {
             return .Loading
         } else if newConnectionToShow != nil {
-            return .NewMatch(newConnectionToShow!)
+            return .NewMatch
         } else if candidateQueue?.count >= 3 {
-            return .NewGame(candidateQueue![0], candidateQueue![1], candidateQueue![2])
+            return .NewGame
         } else {
             return .BoatSailed
         }
@@ -152,12 +152,9 @@ func ==(a: FlowService.State, b: FlowService.State) -> Bool {
     case (.Waitlist, .Waitlist): return true
     case (.Approval, .Approval): return true
     case (.BoatSailed, .BoatSailed): return true
-    case let (.NewMatch(a), .NewMatch(b)):
-        return a.documentID == b.documentID
-    case let (.NewGame(a1, a2, a3), .NewGame(b1, b2, b3)):
-        return [a1, a2, a3].map { $0.documentID } == [b1, b2, b3].map { $0.documentID }
-    default:
-        return false
+    case (.NewMatch, .NewMatch): return true
+    case (.NewGame, .NewGame): return true
+    default: return false
     }
 }
 
@@ -173,8 +170,8 @@ extension FlowService.State : Printable {
         case .Waitlist: return "Waitlist"
         case .Approval: return "Approval"
         case .BoatSailed: return "BoatSailed"
-        case .NewMatch(_): return "NewMatch"
-        case .NewGame(_, _, _): return "NewGame"
+        case .NewMatch: return "NewMatch"
+        case .NewGame: return "NewGame"
         }
     }
 }

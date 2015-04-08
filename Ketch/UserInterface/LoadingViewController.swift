@@ -27,9 +27,9 @@ class LoadingViewController : BaseViewController {
                 self.performSegue(.Signup_Waitlist)
             case .Approval:
                 break
-            case .NewMatch(_):
+            case .NewMatch:
                 self.performSegue(.LoadingToNewConnection)
-            case .NewGame(_, _, _):
+            case .NewGame:
                 self.performSegue(.LoadingToGame)
             case .BoatSailed:
                 self.performSegue(.LoadingToNoGame)
