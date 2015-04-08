@@ -159,13 +159,16 @@ extension NSAttributedString {
         return attrString
     }
     
-    func replace(#font: UIFont, kern: CGFloat) -> NSAttributedString {
+    func replace(#font: UIFont, kern: CGFloat? = nil, color: UIColor? = nil) -> NSAttributedString {
         let attrString = mutableCopy() as NSMutableAttributedString
         let range = NSMakeRange(0, attrString.length)
-        attrString.addAttribute(NSFontAttributeName,
-            value:font, range: range)
-        attrString.addAttribute(NSKernAttributeName,
-            value:kern, range: range)
+        attrString.addAttribute(NSFontAttributeName, value:font, range: range)
+        if let kern = kern {
+            attrString.addAttribute(NSKernAttributeName, value:kern, range: range)
+        }
+        if let color = color {
+            attrString.addAttribute(NSForegroundColorAttributeName, value: color, range: range)
+        }
         return attrString
     }
 }

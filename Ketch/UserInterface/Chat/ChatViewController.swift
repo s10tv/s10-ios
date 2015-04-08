@@ -19,8 +19,8 @@ class ChatViewController : JSQMessagesViewController {
     @IBOutlet weak var avatarView: UserAvatarView!
     @IBOutlet weak var nameLabel: UILabel!
     
-    var outgoingBubbleData : JSQMessagesBubbleImage!
-    var incomingBubbleData : JSQMessagesBubbleImage!
+    var outgoingBubble : JSQMessagesBubbleImage!
+    var incomingBubble : JSQMessagesBubbleImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,8 +36,8 @@ class ChatViewController : JSQMessagesViewController {
         // Magic insets number copied from inside StyleKit for imageOfChatBubble
         let magicInsets = UIEdgeInsetsMake(10, 19, 24, 28)
         let bubbleFactory = JSQMessagesBubbleImageFactory(bubbleImage: StyleKit.imageOfChatBubble, capInsets: magicInsets)
-        outgoingBubbleData = bubbleFactory.outgoingMessagesBubbleImageWithColor(StyleKit.darkWhite)
-        incomingBubbleData = bubbleFactory.incomingMessagesBubbleImageWithColor(StyleKit.pureWhite)
+        outgoingBubble = bubbleFactory.outgoingMessagesBubbleImageWithColor(StyleKit.darkWhite)
+        incomingBubble = bubbleFactory.incomingMessagesBubbleImageWithColor(StyleKit.pureWhite)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -133,7 +133,7 @@ extension ChatViewController : JSQMessagesCollectionViewDataSource {
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageBubbleImageDataSource! {
         let message = messages.itemAtIndexPath(indexPath) as Message
-        return message.sender!.isCurrentUser ? outgoingBubbleData : incomingBubbleData
+        return message.sender!.isCurrentUser ? outgoingBubble : incomingBubble
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
@@ -146,7 +146,8 @@ extension ChatViewController : JSQMessagesCollectionViewDataSource {
     override func collectionView(collectionView: JSQMessagesCollectionView!, attributedTextForCellTopLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
         if shouldShowTimestampForMessageAtIndexPath(indexPath) {
             let message = messages.itemAtIndexPath(indexPath) as Message
-            return JSQMessagesTimestampFormatter.sharedFormatter().attributedTimestampForDate(message.createdAt)
+            let text = JSQMessagesTimestampFormatter.sharedFormatter().attributedTimestampForDate(message.createdAt)
+            return text.replace(font: UIFont(.TransatTextBold, size: 10), color: StyleKit.teal)
         }
         return nil
     }
