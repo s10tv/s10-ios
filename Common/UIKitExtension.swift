@@ -9,6 +9,7 @@
 import UIKit
 import ReactiveCocoa
 import Cartography
+import EDColor
 
 let π = CGFloat(M_PI)
 
@@ -61,6 +62,7 @@ extension UIView {
         }
     }
     
+    // TODO: Figure out when to tear down the subscriptions for gesture recognizers
     func whenTapped(block: () -> ()) {
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
@@ -83,6 +85,19 @@ extension UIView {
         }
         addGestureRecognizer(swipe)
     }
+    
+    func whenEdgePanned(edge: UIRectEdge, handler: (UIScreenEdgePanGestureRecognizer, UIRectEdge) -> ()) {
+        let edgePan = UIScreenEdgePanGestureRecognizer()
+        edgePan.edges = edge
+        edgePan.rac_gestureSignal().subscribeNextAs { (recognizer : UIScreenEdgePanGestureRecognizer) -> () in
+            handler(recognizer, edge)
+        }
+        addGestureRecognizer(edgePan)
+    }
+    
+    class func fromNib(nibName: String, owner: AnyObject? = nil) -> UIView? {
+        return UINib(nibName: nibName, bundle: nil).instantiateWithOwner(owner, options: nil).first as? UIView
+    }
 }
 
 extension UIAlertController {
@@ -100,21 +115,9 @@ extension UIAlertView {
     }
 }
 
-extension UIBezierPath {
-    
-    func addLineTo(#x: CGFloat, y: CGFloat) {
-        addLineToPoint(CGPoint(x: x, y: y))
-    }
-    
-    class func sineWave(amplitude a: CGFloat, wavelength λ: CGFloat, periods: CGFloat, phase: CGFloat = 0, pointsPerStep: CGFloat = 5)  -> UIBezierPath {
-        let stepLength = 2*π / λ * pointsPerStep
-        let totalLength = λ * periods
-        let wave = UIBezierPath()
-        wave.moveToPoint(CGPointZero)
-        for var x: CGFloat = stepLength; x < totalLength; x += stepLength {
-            wave.addLineToPoint(CGPoint(x: x, y: a * sin(2*π/λ * x + phase)))
-        }
-        return wave
+extension UIColor {
+    convenience init(_ hexCode: UInt32) {
+        self.init(hex: hexCode)
     }
 }
 

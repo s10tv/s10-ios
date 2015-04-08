@@ -46,7 +46,7 @@
         <!--Waitlist View Controller-->
         <scene sceneID="Pjf-an-Nkv">
             <objects>
-                <viewController id="VNX-a6-diU" customClass="WaitlistViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Waitlist" id="VNX-a6-diU" customClass="WaitlistViewController" sceneMemberID="viewController">
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JjN-Rz-GCW" userLabel="First Responder" sceneMemberID="firstResponder"/>

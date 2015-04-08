@@ -56,7 +56,7 @@ class ChatViewController : JSQMessagesViewController {
         avatarView.user = connection?.user
         titleView.userInteractionEnabled = true
         titleView.whenTapped { [weak self] in
-            self?.rootVC.showProfile((self?.connection?.user)!, animated: true)
+            self?.performSegue(.ChatToProfile)
             return
         }
         
@@ -67,10 +67,10 @@ class ChatViewController : JSQMessagesViewController {
         layout.messageBubbleFont = UIFont(.TransatTextLight, size: 17)
         layout.springinessEnabled = true
     }
-        
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        avatarView.makeCircular()
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        Core.meteor.callMethod("connection/markAsRead", params: [connection!.documentID!])
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

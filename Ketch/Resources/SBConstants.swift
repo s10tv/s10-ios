@@ -4,12 +4,19 @@ public enum SegueIdentifier : String {
     case ChatToProfile = "ChatToProfile"
     case DockToChat = "DockToChat"
     case GameToDock = "GameToDock"
-    case GameToNewConnection = "GameToNewConnection"
     case GameToSettings = "GameToSettings"
+    case LoadingToGame = "LoadingToGame"
+    case LoadingToNewConnection = "LoadingToNewConnection"
+    case LoadingToNoGame = "LoadingToNoGame"
     case LocationPermToWaitlist = "LocationPermToWaitlist"
+    case NewConnectionToDock = "NewConnectionToDock"
+    case NoGameToDock = "NoGameToDock"
+    case NoGameToSettings = "NoGameToSettings"
     case NotificationsPermToLocationPerm = "NotificationsPermToLocationPerm"
     case SettingsToProfile = "SettingsToProfile"
     case SignupToNotificationsPerm = "SignupToNotificationsPerm"
+    case Signup_ = "Signup_"
+    case Signup_Waitlist = "Signup_Waitlist"
 }
 
 public enum ViewControllerStoryboardIdentifier : String {
@@ -17,7 +24,9 @@ public enum ViewControllerStoryboardIdentifier : String {
     case Dock = "Dock"
     case EditProfile = "EditProfile"
     case Game = "Game"
+    case Loading = "Loading"
     case NewConnection = "NewConnection"
     case Profile = "Profile"
     case Settings = "Settings"
+    case Waitlist = "Waitlist"
 }

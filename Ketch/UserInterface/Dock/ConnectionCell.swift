@@ -37,7 +37,6 @@ class ConnectionCell : UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        avatarView.makeCircular()
         newIndicator.makeCircular()
     }
     

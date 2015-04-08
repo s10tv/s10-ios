@@ -18,92 +18,46 @@ extension UIViewController {
 }
 
 @objc(RootViewController)
-class RootViewController : PageViewController {
-    var signupVC : UINavigationController!
-    let gameVC = GameViewController()
-    let dockVC = DockViewController()
+class RootViewController : UINavigationController {
+    private let rootView = UIView.fromNib("RootView") as RootView
+    var transitionManager : TransitionManager!
     
-    var animateDuration : NSTimeInterval = 0.6
-    var springDamping : CGFloat = 0.6
-    var initialSpringVelocity : CGFloat = 10
-    var rootView : RootView { return self.view as RootView }
+    override func loadView() {
+        super.loadView()
+        view.insertSubview(rootView, atIndex: 0)
+        rootView.makeEdgesEqualTo(view)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        transitionManager = TransitionManager(rootView: rootView, navigationController: self)
         
-        viewControllers = [gameVC, dockVC]
-        
-        // If server logs us out, then let's also log out of the UI
-        listenForNotification(METDDPClientDidChangeAccountNotification).filter { _ in
-            return !Core.meteor.hasAccount()
-        }.deliverOnMainThread().flattenMap { [weak self] _ in
-            if self?.signupVC?.parentViewController != nil {
-                return RACSignal.empty()
+        view.whenEdgePanned(.Left, handler: handleEdgePan)
+        view.whenEdgePanned(.Right, handler: handleEdgePan)
+    }
+    
+    // MARK: Target Action
+    
+    func handleEdgePan(gesture: UIScreenEdgePanGestureRecognizer, edge: UIRectEdge) {
+        switch gesture.state {
+        case .Began:
+            transitionManager.currentEdgePan = gesture
+            if let vc = self.topViewController as? BaseViewController {
+                vc.handleScreenEdgePan(edge)
             }
-            return UIAlertView.show("Error", message: "You have been logged out")
-        }.subscribeNext { [weak self] _ in
-            self?.showSignup(false)
-            return
+        case .Ended, .Cancelled:
+            transitionManager.currentEdgePan = nil
+        default:
+            break
         }
-
-        // Try login now
-        if !Core.attemptLoginWithCachedCredentials() {
-            self.rootView.loadingView.hidden = true
-            showSignup(false)
+    }
+    
+    @IBAction func goBack(sender: AnyObject) {
+        if let vc = presentedViewController {
+            dismissViewController(animated: true)
         } else {
-            Core.currentUserSubscription.signal.deliverOnMainThread().subscribeCompleted {
-                self.rootView.loadingView.hidden = true
-                if User.currentUser()?.vetted == "yes" {
-                    self.scrollTo(viewController: self.gameVC, animated: false)
-                } else {
-                    self.rootView.animateHorizon(ratio: 0.6)
-                    let vc = WaitlistViewController()
-                    self.addChildViewController(vc)
-                    self.view.addSubview(vc.view)
-                    vc.view.makeEdgesEqualTo(self.view)
-                    vc.didMoveToParentViewController(self)
-                }
-            }
+            popViewControllerAnimated(true)
         }
-
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        let view = self.view as RootView
-        view.springDamping = 0.8
-        view.animateHorizon(offset: 60)
-        view.springDamping = 0.6
-    }
-    
-    @IBAction func showSettings(sender: AnyObject) {
-        presentViewController(SettingsViewController(), animated: true)
-    }
-    
-    @IBAction func showDock(sender: AnyObject) {
-        dismissViewController(animated: false) // HACK ALERT: for transitioning from NewConnection. Gotta use segue
-        scrollTo(viewController: dockVC)
-        viewControllers = [gameVC, dockVC]
-    }
-    
-    @IBAction func showGame(sender: AnyObject) {
-        rootView.setKetchBoatHidden(false)
-        scrollTo(viewController: gameVC)
-        viewControllers = [gameVC, dockVC]
-    }
-    
-    func showProfile(user: User, animated: Bool) {
-        let profileVC = ProfileViewController()
-        profileVC.user = user
-        presentViewController(profileVC, animated: animated)
-    }
-    
-    func showChat(connection: Connection, animated: Bool) {
-        let chatVC = ChatViewController()
-        chatVC.connection = connection
-        scrollTo(viewController: chatVC, animated: animated)
-        viewControllers = [gameVC, dockVC, chatVC]
-        Core.meteor.callMethod("connection/markAsRead", params: [connection.documentID!])
     }
     
     func showNewMatch(connection: Connection) {
@@ -112,45 +66,12 @@ class RootViewController : PageViewController {
         presentViewController(newConnVC, animated: true)
     }
     
-    func showSignup(animated: Bool) {
-        signupVC = UINavigationController()
-        signupVC.navigationBarHidden = true
-        let vc = UIStoryboard(name: "Signup", bundle: nil).makeInitialViewController()
-        signupVC.pushViewController(vc, animated: false)
-        rootView.setKetchBoatHidden(true)
-        dismissViewController(animated: false)
-        addChildViewController(signupVC)
-        view.addSubview(signupVC.view)
-        signupVC.view.makeEdgesEqualTo(view)
-        signupVC.didMoveToParentViewController(self)
-    }
-    
-    @IBAction func finishSignup(sender: AnyObject) {
-        signupVC.willMoveToParentViewController(nil)
-        signupVC.view.removeFromSuperview()
-        signupVC.removeFromParentViewController()
-        pageVC.view.hidden = false
-        showGame(self)
-    }
-    
     @IBAction func logout(sender: AnyObject) {
-        pageVC.view.hidden = true // TODO: Refactor me
-        showSignup(true)
+//        pageVC.view.hidden = true // TODO: Refactor me
         Core.logout().subscribeCompleted {
             Log.info("Signed out")
         }
-    }
-    
-    // MARK: - Temporary
-    func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [AnyObject]) {
-        if !(pendingViewControllers[0] is GameViewController) {
-            rootView.setKetchBoatHidden(true)
-        }
-    }
-    
-    func pageViewController(pageViewController: UIPageViewController, didFinishAnimating finished: Bool, previousViewControllers: [AnyObject], transitionCompleted completed: Bool) {
-        if currentViewController is GameViewController {
-            rootView.setKetchBoatHidden(false)
-        }
+        dismissViewController(animated: false)
+        popToRootViewControllerAnimated(true)
     }
 }

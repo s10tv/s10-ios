@@ -39,7 +39,7 @@
                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                     </state>
                     <connections>
-                        <action selector="goBack:" destination="-1" eventType="touchUpInside" id="VnH-oT-sai"/>
+                        <action selector="goBack:" destination="-2" eventType="touchUpInside" id="vXT-k7-iOj"/>
                     </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It's a Ketch!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUJ-Zq-AGV">
@@ -60,7 +60,7 @@
                         </mask>
                     </variation>
                 </imageView>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yQA-Zd-Dv2" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
+                <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yQA-Zd-Dv2" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="0.0" y="340" width="320" height="580"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -123,7 +123,7 @@
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                     <connections>
-                        <action selector="showDock:" destination="-2" eventType="touchUpInside" id="QHQ-hq-UBo"/>
+                        <action selector="goToDock:" destination="-1" eventType="touchUpInside" id="uGm-ff-7EK"/>
                     </connections>
                 </button>
             </subviews>

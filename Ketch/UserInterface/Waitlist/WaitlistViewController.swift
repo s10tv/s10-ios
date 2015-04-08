@@ -11,5 +11,8 @@ import Foundation
 @objc(WaitlistViewController)
 class WaitlistViewController : BaseViewController {
     
-
+    override func commonInit() {
+        hideKetchBoat = false
+        waterlineLocation = .Ratio(0.55)
+    }
 }

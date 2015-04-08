@@ -11,16 +11,23 @@ pod 'SugarRecord/CoreData', :git => 'https://github.com/tonyxiao/SugarRecord'
 pod 'Meteor', '~> 0.1'
 pod 'SwiftyUserDefaults', '~> 1.0'
 
-pod 'Facebook-iOS-SDK', '~> 3.22'
-pod 'DateTools', '~> 1.5'
-
 pod 'SwipeView', '~> 1.3'
-pod 'SDWebImage', '~> 3.7'
-pod 'Cartography', '~> 0.3'
-pod 'TCMobileProvision', :git => 'https://github.com/tonyxiao/TCMobileProvision.git'
 pod 'JSQMessagesViewController', '~> 6.1'
+pod 'SDWebImage', '~> 3.7'
+
+pod 'Cartography', '~> 0.3'
 pod 'UICollectionViewLeftAlignedLayout', '~> 0.0.3'
 
+#pod 'Spring', '~> 1.0'
+#pod 'pop', '~> 1.0'
+pod 'RBBAnimation', '~> 0.3.0'
+
+pod 'EDColor', '~> 0.4'
+pod 'DateTools', '~> 1.5'
+pod 'TCMobileProvision', :git => 'https://github.com/tonyxiao/TCMobileProvision.git'
+
+# 3rd Party Service SDKs
+pod 'Facebook-iOS-SDK', '~> 3.22'
 pod 'CrashlyticsFramework', '~> 2.2'
 
 # Debug only
@@ -43,5 +50,4 @@ end
 
 # Might be useful one day
 #pod 'SwiftyJSON', '~> 2.1'
-#pod 'EDColor', '~> 0.4'
 #pod 'ExSwift', '~> 0.1.9'

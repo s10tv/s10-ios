@@ -10,6 +10,19 @@ import Foundation
 
 class UserAvatarView : UIImageView {
     
+    // Workaround for swift compiler
+    override init(image: UIImage? = nil) {
+        super.init(image: image)
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    override var frame: CGRect {
+        didSet { makeCircular() }
+    }
+    
     private let fadeLayer : CAGradientLayer = {
         let gradient = CAGradientLayer()
         gradient.colors = [
@@ -60,8 +73,7 @@ class UserAvatarView : UIImageView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        // TODO: This doesn't actually work as intended.. Need to figure out why
-//        makeCircular()
+        makeCircular()
         fadeLayer.frame = layer.bounds
     }
 }

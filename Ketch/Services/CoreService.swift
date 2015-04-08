@@ -14,6 +14,7 @@ import Meteor
 
 class CoreService {
     let meteor : METCoreDataDDPClient
+    let flow = FlowService()
     let candidateService : CandidateService
     var mainContext : NSManagedObjectContext! {
         return meteor.mainQueueManagedObjectContext
@@ -23,6 +24,7 @@ class CoreService {
     }
     var loginSignal = RACReplaySubject(capacity: 1)
     var currentUserSubscription : METSubscription!
+    var connectionsSubscription : METSubscription!
     
     init() {
         meteor = METCoreDataDDPClient(serverURL: Env.serverURL)
@@ -35,7 +37,7 @@ class CoreService {
         meteor.connect()
         
         currentUserSubscription = meteor.addSubscriptionWithName("currentUser")
-        meteor.addSubscriptionWithName("connections")
+        connectionsSubscription = meteor.addSubscriptionWithName("connections")
         meteor.addSubscriptionWithName("messages")
         
         meteor.defineStubForMethodWithName("connection/sendMessage", usingBlock: { (args) -> AnyObject! in
@@ -61,15 +63,24 @@ class CoreService {
 
         // Initialize other services
         candidateService = CandidateService(meteor: meteor)
+        
+        // TODO: This is really quite right, need to rethink flow diagram here
+        NC.postNotification(.WillLoginToMeteor)
+        attemptLoginWithCachedCredentials()
+        
+        currentUserSubscription.signal.subscribeError({ _ in
+            NC.postNotification(.DidFailLoginToMeteor)
+        }, completed: {
+            NC.postNotification(.DidSucceedLoginToMeteor)
+        })
     }
     
     private func loginToMeteor() {
         let data = FBSession.activeSession().accessTokenData
         meteor.loginWithFacebook(data.accessToken, expiresAt: data.expirationDate).subscribeError({ error in
-            println("login error \(error)")
+            
         }, completed: {
             self.loginSignal.sendCompleted()
-            println("login success")
         })
     }
     
@@ -92,6 +103,7 @@ class CoreService {
             loginToMeteor()
             return true
         }
+        NC.postNotification(.DidFailLoginToMeteor)
         return false
     }
     
@@ -115,10 +127,9 @@ class CoreService {
     }
     
     func logout() -> RACSignal {
-        return meteor.logout().deliverOnMainThread().doCompleted({
-            FBSession.activeSession().closeAndClearTokenInformation()
-            self.mainContext.reset()
-            UD.resetAll()
-        }).replay()
+        FBSession.activeSession().closeAndClearTokenInformation()
+        mainContext.reset()
+        UD.resetAll()
+        return meteor.logout().deliverOnMainThread()
     }
 }
