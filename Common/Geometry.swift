@@ -26,6 +26,10 @@ extension CGRect {
         return CGPoint(x: (minX + maxX) / 2, y: (minY + maxY) / 2)
     }
     
+    init(width: CGFloat, height: CGFloat) {
+        self.init(origin: CGPointZero, size: CGSize(width: width, height: height))
+    }
+    
     init(center: CGPoint, width: CGFloat, height: CGFloat) {
         let origin = CGPoint(x: center.x - width / 2, y: center.y - height / 2)
         self.init(origin: origin, size: CGSize(width: width, height: height))

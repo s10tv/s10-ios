@@ -33,7 +33,9 @@ class ChatViewController : JSQMessagesViewController {
         inputToolbar.contentView.leftBarButtonItem = nil
         inputToolbar.contentView.rightBarButtonItem.setTitleColor(StyleKit.brandBlue, forState: .Normal)
 
-        let bubbleFactory = JSQMessagesBubbleImageFactory()
+        // Magic insets number copied from inside StyleKit for imageOfChatBubble
+        let magicInsets = UIEdgeInsetsMake(10, 19, 24, 28)
+        let bubbleFactory = JSQMessagesBubbleImageFactory(bubbleImage: StyleKit.imageOfChatBubble, capInsets: magicInsets)
         outgoingBubbleData = bubbleFactory.outgoingMessagesBubbleImageWithColor(StyleKit.darkWhite)
         incomingBubbleData = bubbleFactory.incomingMessagesBubbleImageWithColor(StyleKit.pureWhite)
     }
