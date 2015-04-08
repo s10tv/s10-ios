@@ -55,6 +55,21 @@ class SettingsViewController : BaseViewController {
             }
         }
     }
+    
+
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let chatVC = segue.destinationViewController as? ChatViewController {
+            chatVC.connection = Connection.crabConnection()
+        } else if let profileVC = segue.destinationViewController as? ProfileViewController {
+            profileVC.user = User.currentUser()
+        }
+    }
+
+    // MARK: -
+    
+    @IBAction func chatWithCrab(sender: AnyObject) {
+        performSegue(.SettingsToCrab)
+    }
 
     // every time text is changed, check to see if it is 'delete'
     func textChanged(sender:AnyObject) {
@@ -84,11 +99,5 @@ class SettingsViewController : BaseViewController {
         // initially disable the "confirm" action
         (alert.actions[1] as UIAlertAction).enabled = false
         self.presentViewController(alert, animated: true, completion: nil)
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let profileVC = segue.destinationViewController as? ProfileViewController {
-            profileVC.user = User.currentUser()
-        }
     }
 }

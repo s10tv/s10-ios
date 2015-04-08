@@ -17,6 +17,8 @@ extern const struct R {
         __unsafe_unretained NSString *appDev;
         /// background-sea-short
         __unsafe_unretained NSString *backgroundSeaShort;
+        /// crab
+        __unsafe_unretained NSString *crab;
         /// dock-separator
         __unsafe_unretained NSString *dockSeparator;
         /// game-bucket-keep

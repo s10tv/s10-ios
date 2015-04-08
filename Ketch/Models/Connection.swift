@@ -42,6 +42,11 @@ class Connection: _Connection {
         return sorted ? messages.sorted(by: sortDesc).frc() : messages.frc()
     }
     
+    // CRITICAL: Return the actual crab connection based on crab user / connection ID sent down via meta
+    class func crabConnection() -> Connection? {
+        return Connection.all().fetchFirst() as? Connection
+    }
+    
     class func findByDocumentID(documentID: String) -> Connection? {
         return Core.mainContext.objectInCollection("connections", documentID: documentID) as? Connection
     }

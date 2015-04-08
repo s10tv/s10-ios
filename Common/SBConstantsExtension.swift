@@ -22,12 +22,8 @@ extension UIViewController {
         return storyboard?.makeViewController(identifier)
     }
     
-    func performSegue(identifier: SegueIdentifier, sender: AnyObject?) {
+    func performSegue(identifier: SegueIdentifier, sender: AnyObject? = nil) {
         performSegueWithIdentifier(identifier.rawValue, sender: sender)
-    }
-    
-    func performSegue(identifier: SegueIdentifier) {
-        performSegue(identifier, sender: nil)
     }
 }
 

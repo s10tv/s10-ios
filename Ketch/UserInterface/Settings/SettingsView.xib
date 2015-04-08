@@ -176,6 +176,15 @@
                         <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="TransatTextMedium"/>
                     </userDefinedRuntimeAttributes>
                 </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZMu-J2-Nhp" userLabel="Crab Button">
+                    <rect key="frame" x="112" y="508" width="96" height="60"/>
+                    <state key="normal" image="crab">
+                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="chatWithCrab:" destination="-1" eventType="touchUpInside" id="mNA-lP-lA2"/>
+                    </connections>
+                </button>
             </subviews>
             <constraints>
                 <constraint firstItem="r72-wg-Xj7" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="0Vw-oe-hIw"/>
@@ -194,6 +203,7 @@
                 <constraint firstItem="CsQ-Yu-Ry6" firstAttribute="top" secondItem="SOZ-ON-PUJ" secondAttribute="bottom" constant="30" id="MSp-6g-gek"/>
                 <constraint firstItem="Nrc-Dc-N50" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="60" id="Mqx-72-nqb"/>
                 <constraint firstItem="pg4-G6-NiR" firstAttribute="bottom" secondItem="CsQ-Yu-Ry6" secondAttribute="bottom" constant="-2" id="NhN-Zd-yky"/>
+                <constraint firstAttribute="bottom" secondItem="ZMu-J2-Nhp" secondAttribute="bottom" id="Pwa-06-FGx"/>
                 <constraint firstAttribute="trailing" secondItem="r72-wg-Xj7" secondAttribute="trailing" id="RHo-gD-UqB"/>
                 <constraint firstItem="wEw-mJ-zT3" firstAttribute="top" secondItem="Tiq-Jx-Jmw" secondAttribute="bottom" constant="30" id="RmA-hw-1oO"/>
                 <constraint firstAttribute="trailingMargin" secondItem="Api-ed-xez" secondAttribute="trailing" constant="24" id="U1C-y9-Fab"/>
@@ -208,6 +218,7 @@
                 <constraint firstItem="xt9-MA-Rd9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="ln9-ZB-BJk"/>
                 <constraint firstItem="Api-ed-xez" firstAttribute="bottom" secondItem="MPP-9T-yb0" secondAttribute="bottom" constant="-2" id="r6Z-tU-MSR"/>
                 <constraint firstItem="pg4-G6-NiR" firstAttribute="leading" secondItem="20m-eu-yIP" secondAttribute="leading" id="rEM-ad-i4r"/>
+                <constraint firstAttribute="centerX" secondItem="ZMu-J2-Nhp" secondAttribute="centerX" id="rkX-MR-Ts1"/>
                 <constraint firstAttribute="centerX" secondItem="3ic-hO-IZ3" secondAttribute="centerX" id="rlA-Ud-a94"/>
                 <constraint firstItem="oh4-96-yng" firstAttribute="bottom" secondItem="wEw-mJ-zT3" secondAttribute="bottom" constant="-2" id="vWA-G0-oA0"/>
                 <constraint firstItem="oh4-96-yng" firstAttribute="leading" secondItem="5ee-BL-JGE" secondAttribute="leading" id="xyd-cX-5gL"/>
@@ -224,6 +235,7 @@
         </view>
     </objects>
     <resources>
+        <image name="crab" width="96" height="60"/>
         <image name="settings-icon-age" width="25" height="22"/>
         <image name="settings-icon-briefcase" width="26" height="19"/>
         <image name="settings-icon-heightArrow" width="8" height="21"/>

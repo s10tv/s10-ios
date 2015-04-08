@@ -13,6 +13,7 @@ const struct R R = {
         .appBeta = @"AppIconBeta",
         .appDev = @"AppIconDev",
         .backgroundSeaShort = @"background-sea-short",
+        .crab = @"crab",
         .dockSeparator = @"dock-separator",
         .gameBucketKeep = @"game-bucket-keep",
         .gameBucketMarry = @"game-bucket-marry",

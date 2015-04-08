@@ -20,7 +20,7 @@
             <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Hd-ra-j3k" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Hd-ra-j3k" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="22" y="341" width="276" height="197"/>
                     <attributedString key="attributedText">
                         <fragment>
@@ -40,7 +40,7 @@ Hold tight and you'll be finding the one before you know it.</string>
                         </userDefinedRuntimeAttribute>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ALL ABOARD!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39i-ea-FkP" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALL ABOARD!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39i-ea-FkP" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="76" y="294" width="168" height="25"/>
                     <fontDescription key="fontDescription" name="TransatTextBlack" family="Transat Text" pointSize="25"/>
                     <color key="textColor" red="0.94003820419311523" green="0.98082369565963745" blue="0.96848088502883911" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -451,6 +451,7 @@ SAILED FOR TODAY.</string>
                 <viewController storyboardIdentifier="Settings" id="Vhy-hq-gwn" customClass="SettingsViewController" sceneMemberID="viewController">
                     <connections>
                         <segue destination="G4Y-Ae-Xgh" kind="presentation" identifier="SettingsToProfile" id="9mb-SI-KHc"/>
+                        <segue destination="rRd-ZO-60U" kind="presentation" identifier="SettingsToCrab" id="LKi-wK-Agw"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zfc-Bp-zvE" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -583,6 +584,7 @@ SAILED FOR TODAY.</string>
     <inferredMetricsTieBreakers>
         <segue reference="nCf-mq-8Rt"/>
         <segue reference="q7i-Iz-xMU"/>
+        <segue reference="LKi-wK-Agw"/>
         <segue reference="T9Y-bJ-q8s"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -13,6 +13,8 @@ public enum SegueIdentifier : String {
     case NoGameToDock = "NoGameToDock"
     case NoGameToSettings = "NoGameToSettings"
     case NotificationsPermToLocationPerm = "NotificationsPermToLocationPerm"
+    case ProfileToEditProfile = "ProfileToEditProfile"
+    case SettingsToCrab = "SettingsToCrab"
     case SettingsToProfile = "SettingsToProfile"
     case SignupToNotificationsPerm = "SignupToNotificationsPerm"
     case Signup_ = "Signup_"
