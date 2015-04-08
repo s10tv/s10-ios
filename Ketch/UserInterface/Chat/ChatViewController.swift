@@ -128,9 +128,11 @@ extension ChatViewController : JSQMessagesCollectionViewDataSource {
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPath) as JSQMessagesCollectionViewCell
-        // This doesn't work if layout changes (say diff avatar size). So need to figure out better way
-        cell.avatarImageView.makeCircular()
         cell.textView.textColor = StyleKit.navy
+        cell.textView.linkTextAttributes = [
+            NSForegroundColorAttributeName: StyleKit.teal,
+            NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue
+        ]
         return cell
     }
     
