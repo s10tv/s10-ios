@@ -16,6 +16,7 @@ class NewConnectionViewController : BaseViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var avatar: UserAvatarView!
     @IBOutlet weak var promptLabel: DesignableLabel!
+    @IBOutlet weak var waveView: WaveView!
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -54,6 +54,9 @@ class TransitionManager : NSObject, UINavigationControllerDelegate {
             
         case (_ as DockViewController, _ as GameViewController):
             return ScrollTransition(fromVC: fromVC, toVC: toVC, direction: .LeftToRight, panGesture: currentEdgePan)
+
+        case (_ as LoadingViewController, _ as NewConnectionViewController):
+            return NewMatchTransition(rootView, fromVC: fromVC, toVC: toVC)
             
         default:
             return RootTransition(rootView, fromVC: fromVC, toVC: toVC)

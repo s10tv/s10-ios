@@ -20,6 +20,7 @@
                 <outlet property="promptLabel" destination="I2c-Q5-UHl" id="86U-Pq-R4h"/>
                 <outlet property="titleLabel" destination="EUJ-Zq-AGV" id="R8k-e3-mXy"/>
                 <outlet property="view" destination="iN0-l3-epB" id="GbA-lV-Mc3"/>
+                <outlet property="waveView" destination="yQA-Zd-Dv2" id="Yb5-CD-222"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>

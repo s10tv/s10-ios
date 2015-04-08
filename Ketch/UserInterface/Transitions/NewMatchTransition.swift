@@ -7,45 +7,42 @@
 //
 
 import UIKit
+import RBBAnimation
 
-class NewMatchTransition : NSObject {
-    var rootVC : RootViewController!
-    var gameVC : GameViewController!
-    var newMatchVC : NewConnectionViewController!
-    var context : UIViewControllerContextTransitioning!
+class NewMatchTransition : RootTransition {
     
-    var containerView : UIView {
-        return context.containerView()
-    }
-    var fromView : UIView? {
-        return context.viewForKey(UITransitionContextFromViewKey)
-    }
-    var toView : UIView? {
-        return context.viewForKey(UITransitionContextToViewKey)
-    }
-}
-
-extension NewMatchTransition : UIViewControllerTransitioningDelegate {
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        rootVC = presenting as RootViewController
-        gameVC = source as GameViewController
-        newMatchVC = presented as NewConnectionViewController
-        return self
-    }
-}
-
-extension NewMatchTransition : UIViewControllerAnimatedTransitioning {
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
-        context = transitionContext
-        return 0
+    init(_ rootView: RootView, fromVC: UIViewController, toVC: UIViewController) {
+        super.init(rootView, fromVC: fromVC, toVC: toVC, duration: 2)
     }
     
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
-        context = transitionContext
-
-        fromView?.removeFromSuperview()
-        containerView.addSubview(toView!)
-        toView?.frame = context.finalFrameForViewController(newMatchVC)
-        context.completeTransition(true)
+    override func animate() {
+        let matchVC = toVC as NewConnectionViewController
+        containerView.addSubview(matchVC.view)
+        matchVC.view.frame = context.finalFrameForViewController(matchVC)
+        matchVC.view.layoutSubviews()
+        
+        // Animate waterline
+        let finalY = matchVC.waveView.frame.origin.y
+        matchVC.waveView.frame.origin.y = rootView.waveView.frame.origin.y
+        
+        UIView.animateSpring(1) {
+            matchVC.waveView.frame.origin.y = finalY
+        }
+        
+        // Animate avatar
+        let avatar = matchVC.avatar.layer
+        let pop = RBBSpringAnimation(keyPath: "position.y")
+        pop.fromValue = avatar.position.y + containerView.frame.height
+        pop.toValue = avatar.position.y
+        pop.duration = duration
+//        pop.stiffness = 10
+        pop.velocity = 1
+        pop.mass = 0.5
+        pop.damping = 5
+        pop.fillMode = kCAFillModeBackwards
+        pop.addToLayerAndReturnSignal(avatar, forKey: "position.y").subscribeCompleted {
+            self.context.completeTransition(true)
+        }
+        avatar.addAnimation(pop, forKey: "position.y")
     }
 }
