@@ -29,21 +29,23 @@ class FlowService : NSObject {
     private var vetted = true   // Vetted by us on server
     private var accepted = true // Accepting approval and begun 1st game
     private var waitingOnGameResult = false // Waiting to hear back from server about recent game
-    private let stateChanged = RACReplaySubject(capacity: 0)
-    
-    private(set) var currentState = State.Loading
     private(set) var newConnectionToShow : Connection?
     private(set) var candidateQueue : [Candidate]?
     
+    private(set) var currentState = State.Loading
+    
+    private let stateChanged = RACReplaySubject(capacity: 0)
+    private let nc = NSNotificationCenter.defaultCenter().proxy()
+    
     override init() {
         super.init()
-        NC.addObserver(self, selector: "_meteorAccountDidChange", name: METDDPClientDidChangeAccountNotification, object: nil)
-        NC.addObserver(self, selector: "_willLoginToMeteor", name: .WillLoginToMeteor)
-        NC.addObserver(self, selector: "_didSucceedLoginToMeteor", name: .DidSucceedLoginToMeteor)
-        NC.addObserver(self, selector: "_didFailLoginToMeteor", name: .DidFailLoginToMeteor)
-        NC.addObserver(self, selector: "_didUpdateCandidateQueue:", name: .CandidatesUpdated)
-        NC.addObserver(self, selector: "_didSubmitGame", name: .DidSubmitGame)
-        NC.addObserver(self, selector: "_didReceiveGameResult:", name: .DidReceiveGameResult)
+        nc.listen(METDDPClientDidChangeAccountNotification, block: _meteorAccountDidChange)
+        nc.listen(.WillLoginToMeteor, block: _willLoginToMeteor)
+        nc.listen(.DidSucceedLoginToMeteor, block: _didSucceedLoginToMeteor)
+        nc.listen(.DidFailLoginToMeteor, block: _didFailLoginToMeteor)
+        nc.listen(.DidSubmitGame, block: _didSubmitGame)
+        nc.listen(.DidReceiveGameResult, block: _didReceiveGameResult)
+        nc.listen(.CandidatesUpdated, block: _didUpdateCandidateQueue)
 
         updateState()
     }
@@ -99,23 +101,23 @@ class FlowService : NSObject {
     
     // MARK: - Notification handling
     
-    func _meteorAccountDidChange() {
+    func _meteorAccountDidChange(notification: NSNotification) {
         hasAccount = Core.meteor.hasAccount()
         updateState()
     }
     
-    func _willLoginToMeteor() {
+    func _willLoginToMeteor(notification: NSNotification) {
         loggingIn = true
         updateState()
     }
     
-    func _didSucceedLoginToMeteor() {
+    func _didSucceedLoginToMeteor(notification: NSNotification) {
         loggingIn = false
         hasAccount = true
         updateState()
     }
 
-    func _didFailLoginToMeteor() {
+    func _didFailLoginToMeteor(notification: NSNotification) {
         loggingIn = false
         hasAccount = false
         updateState()
@@ -126,7 +128,7 @@ class FlowService : NSObject {
         updateState()
     }
     
-    func _didSubmitGame() {
+    func _didSubmitGame(notification: NSNotification) {
         waitingOnGameResult = true
         updateState()
     }

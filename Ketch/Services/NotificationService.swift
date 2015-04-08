@@ -21,9 +21,16 @@ enum NotificationName : String {
     case DidReceiveGameResult = "DidReceiveGameResult"
 }
 
+extension NSNotificationCenter.Proxy {
+    func listen(name: NotificationName, object: AnyObject? = nil, block: (NSNotification) -> ()) {
+        listen(name.rawValue, object: object, block: block)
+    }
+}
+
 extension NSNotificationCenter {
+    
     func postNotification(name: NotificationName, object: AnyObject? = nil, userInfo: [NSObject: AnyObject]? = nil) {
-        println("Posting notificatoin \(name.rawValue)")
+        println("Posting notification \(name.rawValue)")
         postNotificationName(name.rawValue, object: object, userInfo: userInfo)
     }
     

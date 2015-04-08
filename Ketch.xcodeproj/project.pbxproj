@@ -58,6 +58,7 @@
 		EA409D411A8C75F600988B8B /* DockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA409D3D1A8C75F600988B8B /* DockView.xib */; };
 		EA409D421A8C75F600988B8B /* DockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA409D3E1A8C75F600988B8B /* DockViewController.swift */; };
 		EA4A66571AA2D9BB0019D601 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A66561AA2D9BB0019D601 /* GameView.swift */; };
+		EA55F1381AD522C60042CBB2 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA55F1371AD522C60042CBB2 /* NotificationCenter.swift */; };
 		EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA5634DF1A7741FF00F62B52 /* Ketch.xcdatamodeld */; };
 		EA6077781ACF6E1E00B3A19A /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6077771ACF6E1E00B3A19A /* PermissionViewController.swift */; };
 		EA60777A1ACF6E2F00B3A19A /* PermissionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA6077791ACF6E2F00B3A19A /* PermissionView.xib */; };
@@ -209,6 +210,7 @@
 		EA409D3D1A8C75F600988B8B /* DockView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DockView.xib; sourceTree = "<group>"; };
 		EA409D3E1A8C75F600988B8B /* DockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DockViewController.swift; sourceTree = "<group>"; };
 		EA4A66561AA2D9BB0019D601 /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		EA55F1371AD522C60042CBB2 /* NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		EA5634E01A7741FF00F62B52 /* Ketch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ketch.xcdatamodel; sourceTree = "<group>"; };
 		EA6077771ACF6E1E00B3A19A /* PermissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
 		EA6077791ACF6E2F00B3A19A /* PermissionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PermissionView.xib; sourceTree = "<group>"; };
@@ -364,6 +366,7 @@
 				EAAD921E1ACF4EFA0014BA25 /* ProvisioningProfile.swift */,
 				EAEB63DA1AD31A4E0002D55C /* Animation.swift */,
 				EAD007FB1AD37236003A260D /* Geometry.swift */,
+				EA55F1371AD522C60042CBB2 /* NotificationCenter.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1029,6 +1032,7 @@
 				EA6650E61AA00A82001BA40C /* WaveView.swift in Sources */,
 				EA6650EC1AA00A9C001BA40C /* CandidateService.swift in Sources */,
 				EAAA42871AB24D5F00056EFF /* CandidateBubble.swift in Sources */,
+				EA55F1381AD522C60042CBB2 /* NotificationCenter.swift in Sources */,
 				EA72FB1F1AD180F1009F853F /* NewGameTransition.swift in Sources */,
 				EAAD921F1ACF4EFA0014BA25 /* ProvisioningProfile.swift in Sources */,
 				EA2AB70E1A8A00F200D42C6C /* GameViewController.swift in Sources */,
