@@ -29,11 +29,11 @@ class FlowService : NSObject {
     private var vetted = true   // Vetted by us on server
     private var accepted = true // Accepting approval and begun 1st game
     private var waitingOnGameResult = false // Waiting to hear back from server about recent game
-    private var newConnectionToShow : Connection?
-    private var candidateQueue : [Candidate]?
-    
     private let stateChanged = RACReplaySubject(capacity: 0)
-    private var currentState = State.Loading
+    
+    private(set) var currentState = State.Loading
+    private(set) var newConnectionToShow : Connection?
+    private(set) var candidateQueue : [Candidate]?
     
     override init() {
         super.init()
@@ -48,10 +48,6 @@ class FlowService : NSObject {
     }
     
     // MARK: Public API
-    
-    func getCurrentState() -> State {
-        return currentState
-    }
     
     func getStateMatching(criteria: (State) -> Bool, completion: (State) -> ()) {
         stateChanged.startWith(nil).deliverOnMainThread().takeUntilBlock { _ in
