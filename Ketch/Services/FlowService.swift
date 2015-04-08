@@ -23,9 +23,8 @@ class FlowService : NSObject {
     }
     
     private var loggingIn = false
-    
-    // TODO: These are not true by default, update to sensible value
-    private var signedUp = true
+    private var hasAccount = false
+    // TODO: Implement tracking of vetting and accepted state
     private var vetted = true   // Vetted by us on server
     private var accepted = true // Accepting approval and begun 1st game
     private var waitingOnGameResult = false // Waiting to hear back from server about recent game
@@ -37,9 +36,14 @@ class FlowService : NSObject {
     
     override init() {
         super.init()
+        NC.addObserver(self, selector: "_willLoginToMeteor", name: .WillLoginToMeteor)
+        NC.addObserver(self, selector: "_didSucceedLoginToMeteor", name: .DidSucceedLoginToMeteor)
+        NC.addObserver(self, selector: "_didFailLoginToMeteor", name: .DidFailLoginToMeteor)
+        NC.addObserver(self, selector: "_didUpdateCandidateQueue:", name: .CandidatesUpdated)
         NC.addObserver(self, selector: "_didSubmitGame", name: .DidSubmitGame)
         NC.addObserver(self, selector: "_didReceiveGameResult:", name: .DidReceiveGameResult)
-        NC.addObserver(self, selector: "_didUpdateCandidateQueue:", name: .CandidatesUpdated)
+
+
         updateState()
     }
 
@@ -62,7 +66,7 @@ class FlowService : NSObject {
     private func computeCurrentState() -> State {
         if loggingIn || candidateQueue == nil {
             return .Loading
-        } else if !signedUp {
+        } else if !hasAccount {
             return .Signup
         } else if !vetted {
             return .Waitlist
@@ -92,6 +96,28 @@ class FlowService : NSObject {
         updateState()
     }
     
+    func _willLoginToMeteor() {
+        loggingIn = true
+        updateState()
+    }
+    
+    func _didSucceedLoginToMeteor() {
+        loggingIn = false
+        hasAccount = true
+        updateState()
+    }
+
+    func _didFailLoginToMeteor() {
+        loggingIn = false
+        hasAccount = false
+        updateState()
+    }
+    
+    func _didUpdateCandidateQueue(notification: NSNotification) {
+        candidateQueue = notification.object as? [Candidate]
+        updateState()
+    }
+    
     func _didSubmitGame() {
         waitingOnGameResult = true
         updateState()
@@ -105,11 +131,6 @@ class FlowService : NSObject {
             assert(newConnectionToShow != nil, "Expect new connection to exist by now")
         }
         waitingOnGameResult = false
-        updateState()
-    }
-    
-    func _didUpdateCandidateQueue(notification: NSNotification) {
-        candidateQueue = notification.object as? [Candidate]
         updateState()
     }
 }

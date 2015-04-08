@@ -63,15 +63,22 @@ class CoreService {
 
         // Initialize other services
         candidateService = CandidateService(meteor: meteor)
+        
+        NC.postNotification(.WillLoginToMeteor)
+        currentUserSubscription.signal.subscribeError({ _ in
+            NC.postNotification(.DidFailLoginToMeteor)
+        }, completed: {
+            NC.postNotification(.DidSucceedLoginToMeteor)
+        })
     }
     
     private func loginToMeteor() {
         let data = FBSession.activeSession().accessTokenData
         meteor.loginWithFacebook(data.accessToken, expiresAt: data.expirationDate).subscribeError({ error in
-            println("login error \(error)")
+            
         }, completed: {
+
             self.loginSignal.sendCompleted()
-            println("login success")
         })
     }
     

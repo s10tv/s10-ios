@@ -12,14 +12,18 @@ import ReactiveCocoa
 public let NC = NSNotificationCenter.defaultCenter() // Intentionally global variable
 
 enum NotificationName : String {
+    case WillLoginToMeteor = "WillLoginToMeteor"
+    case DidSucceedLoginToMeteor = "DidSucceedLoginToMeteor"
+    case DidFailLoginToMeteor = "DidFailLoginToMeteor"
+    case CandidatesUpdated = "CandidatesUpdated"
     case DidRegisterUserNotificationSettings = "DidRegisterUserNotificationSettings"
     case DidSubmitGame = "DidSubmitGame"
     case DidReceiveGameResult = "DidReceiveGameResult"
-    case CandidatesUpdated = "CandidatesUpdated"
 }
 
 extension NSNotificationCenter {
     func postNotification(name: NotificationName, object: AnyObject? = nil, userInfo: [NSObject: AnyObject]? = nil) {
+        println("Posting notificatoin \(name.rawValue)")
         postNotificationName(name.rawValue, object: object, userInfo: userInfo)
     }
     
