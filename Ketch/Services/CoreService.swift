@@ -64,7 +64,10 @@ class CoreService {
         // Initialize other services
         candidateService = CandidateService(meteor: meteor)
         
+        // TODO: This is really quite right, need to rethink flow diagram here
         NC.postNotification(.WillLoginToMeteor)
+        attemptLoginWithCachedCredentials()
+        
         currentUserSubscription.signal.subscribeError({ _ in
             NC.postNotification(.DidFailLoginToMeteor)
         }, completed: {
@@ -77,7 +80,6 @@ class CoreService {
         meteor.loginWithFacebook(data.accessToken, expiresAt: data.expirationDate).subscribeError({ error in
             
         }, completed: {
-
             self.loginSignal.sendCompleted()
         })
     }
@@ -101,6 +103,7 @@ class CoreService {
             loginToMeteor()
             return true
         }
+        NC.postNotification(.DidFailLoginToMeteor)
         return false
     }
     

@@ -34,42 +34,6 @@ class RootViewController : UINavigationController {
         
         view.whenEdgePanned(.Left, handler: handleEdgePan)
         view.whenEdgePanned(.Right, handler: handleEdgePan)
-        
-//        viewControllers = [gameVC, dockVC]
-//        
-//        // If server logs us out, then let's also log out of the UI
-//        listenForNotification(METDDPClientDidChangeAccountNotification).filter { _ in
-//            return !Core.meteor.hasAccount()
-//        }.deliverOnMainThread().flattenMap { [weak self] _ in
-//            if self?.signupVC?.parentViewController != nil {
-//                return RACSignal.empty()
-//            }
-//            return UIAlertView.show("Error", message: "You have been logged out")
-//        }.subscribeNext { [weak self] _ in
-//            self?.showSignup(false)
-//            return
-//        }
-//
-//        // Try login now
-//        if !Core.attemptLoginWithCachedCredentials() {
-//            self.rootView.loadingView.hidden = true
-//            showSignup(false)
-//        } else {
-//            Core.currentUserSubscription.signal.deliverOnMainThread().subscribeCompleted {
-//                self.rootView.loadingView.hidden = true
-//                if User.currentUser()?.vetted == "yes" {
-////                    self.scrollTo(viewController: self.gameVC, animated: false)
-//                } else {
-//                    self.rootView.animateHorizon(ratio: 0.6)
-//                    let vc = WaitlistViewController()
-//                    self.addChildViewController(vc)
-//                    self.view.addSubview(vc.view)
-//                    vc.view.makeEdgesEqualTo(self.view)
-//                    vc.didMoveToParentViewController(self)
-//                }
-//            }
-//        }
-
     }
     
     // MARK: Target Action

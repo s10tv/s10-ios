@@ -6,8 +6,9 @@
 //  Copyright (c) 2015 Ketch. All rights reserved.
 //
 
-import ReactiveCocoa
 import Foundation
+import ReactiveCocoa
+import Meteor
 
 // FlowService manages the different states user can be in taking into account everything
 
@@ -36,13 +37,13 @@ class FlowService : NSObject {
     
     override init() {
         super.init()
+        NC.addObserver(self, selector: "_meteorAccountDidChange", name: METDDPClientDidChangeAccountNotification, object: nil)
         NC.addObserver(self, selector: "_willLoginToMeteor", name: .WillLoginToMeteor)
         NC.addObserver(self, selector: "_didSucceedLoginToMeteor", name: .DidSucceedLoginToMeteor)
         NC.addObserver(self, selector: "_didFailLoginToMeteor", name: .DidFailLoginToMeteor)
         NC.addObserver(self, selector: "_didUpdateCandidateQueue:", name: .CandidatesUpdated)
         NC.addObserver(self, selector: "_didSubmitGame", name: .DidSubmitGame)
         NC.addObserver(self, selector: "_didReceiveGameResult:", name: .DidReceiveGameResult)
-
 
         updateState()
     }
@@ -64,7 +65,7 @@ class FlowService : NSObject {
     // MARK: State Management
     
     private func computeCurrentState() -> State {
-        if loggingIn || candidateQueue == nil {
+        if loggingIn {
             return .Loading
         } else if !hasAccount {
             return .Signup
@@ -72,6 +73,8 @@ class FlowService : NSObject {
             return .Waitlist
         } else if !accepted {
             return .Approval
+        } else if candidateQueue == nil {
+            return .Loading
         } else if waitingOnGameResult {
             return .Loading
         } else if newConnectionToShow != nil {
@@ -89,10 +92,15 @@ class FlowService : NSObject {
         println("Current state updated to \(currentState)")
     }
     
-    // MARK: - Notification handling
-    
     func clearNewConnectionToShow() {
         newConnectionToShow = nil
+        updateState()
+    }
+    
+    // MARK: - Notification handling
+    
+    func _meteorAccountDidChange() {
+        hasAccount = Core.meteor.hasAccount()
         updateState()
     }
     
