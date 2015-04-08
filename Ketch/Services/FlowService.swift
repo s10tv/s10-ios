@@ -54,12 +54,10 @@ class FlowService : NSObject {
     }
     
     func getStateMatching(criteria: (State) -> Bool, completion: (State) -> ()) {
-        var disposable : RACDisposable?
-        disposable = stateChanged.startWith(nil).deliverOnMainThread().subscribeNext { _ in
-            if criteria(self.currentState) {
-                completion(self.currentState)
-                disposable?.dispose()
-            }
+        stateChanged.startWith(nil).deliverOnMainThread().takeUntilBlock { _ in
+            return criteria(self.currentState)
+        }.subscribeCompleted {
+            completion(self.currentState)
         }
     }
     
