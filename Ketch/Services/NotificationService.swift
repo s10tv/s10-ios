@@ -15,6 +15,7 @@ enum NotificationName : String {
     case DidRegisterUserNotificationSettings = "DidRegisterUserNotificationSettings"
     case DidSubmitGame = "DidSubmitGame"
     case DidReceiveGameResult = "DidReceiveGameResult"
+    case CandidatesUpdated = "CandidatesUpdated"
 }
 
 extension NSNotificationCenter {

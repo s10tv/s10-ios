@@ -18,16 +18,8 @@ class LoadingViewController : BaseViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
-        /*
-        1) Not logged in -> go to signup
-        2) Not vetted -> go to waitlist
-        3) Not accepted -> go to acceptance screen
-        4) Has new match -> go to new match screen
-        5) Has new message -> go to chat screen
-        6) Has new game -> go to game screen
-        7) Else -> Go to boat has sailed screen
-        */
         Core.flow.getStateMatching({ $0 != .Loading }) { state in
+            println("Got new state in loading \(state)")
             switch state {
             case .Signup:
                 self.performSegue(.Signup_)

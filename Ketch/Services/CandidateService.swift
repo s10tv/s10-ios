@@ -33,8 +33,12 @@ class CandidateService {
             return true
         })
         
+        // TODO: Tear down these subscriptions on deinit
         subscription.signal.deliverOnMainThread().subscribeCompleted {
             self.fetch.performFetchIfNeeded()
+        }
+        fetch.signal.subscribeNextAs { (candidates : [Candidate]) in
+            NC.postNotification(.CandidatesUpdated, object: candidates)
         }
     }
     

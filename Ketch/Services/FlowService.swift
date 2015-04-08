@@ -11,8 +11,7 @@ import Foundation
 
 // FlowService manages the different states user can be in taking into account everything
 
-
-class FlowService {
+class FlowService : NSObject {
     enum State {
         case Loading
         case Signup
@@ -23,8 +22,9 @@ class FlowService {
         case NewGame(Candidate, Candidate, Candidate)
     }
     
-    // TODO: These are not true by default, update to sensible value
     private var loggingIn = false
+    
+    // TODO: These are not true by default, update to sensible value
     private var signedUp = true
     private var vetted = true   // Vetted by us on server
     private var accepted = true // Accepting approval and begun 1st game
@@ -35,12 +35,14 @@ class FlowService {
     private let stateChanged = RACReplaySubject(capacity: 0)
     private var currentState = State.Loading
     
-    init() {
+    override init() {
+        super.init()
         NC.addObserver(self, selector: "_didSubmitGame", name: .DidSubmitGame)
         NC.addObserver(self, selector: "_didReceiveGameResult:", name: .DidReceiveGameResult)
-        currentState = .Signup
+        NC.addObserver(self, selector: "_didUpdateCandidateQueue:", name: .CandidatesUpdated)
+        updateState()
     }
-    
+
     deinit {
         NC.removeObserver(self)
     }
@@ -76,7 +78,7 @@ class FlowService {
             return .Loading
         } else if newConnectionToShow != nil {
             return .NewMatch(newConnectionToShow!)
-        } else if candidateQueue.count > 3 {
+        } else if candidateQueue.count >= 3 {
             return .NewGame(candidateQueue[0], candidateQueue[1], candidateQueue[2])
         } else {
             return .BoatSailed
@@ -106,9 +108,14 @@ class FlowService {
         waitingOnGameResult = false
         updateState()
     }
+    
+    func _didUpdateCandidateQueue(notification: NSNotification) {
+        candidateQueue = notification.object as [Candidate]
+        updateState()
+    }
 }
 
-// MARK: - State comparison extension
+// MARK: - State extensions for comparison and printing
 
 func ==(a: FlowService.State, b: FlowService.State) -> Bool {
     switch (a, b) {
@@ -129,3 +136,18 @@ func ==(a: FlowService.State, b: FlowService.State) -> Bool {
 func !=(a: FlowService.State, b: FlowService.State) -> Bool {
     return !(a == b)
 }
+
+extension FlowService.State : Printable {
+    var description: String {
+        switch self {
+        case .Loading: return "Loading"
+        case .Signup: return "Signup"
+        case .Waitlist: return "Waitlist"
+        case .Approval: return "Approval"
+        case .BoatSailed: return "BoatSailed"
+        case .NewMatch(_): return "NewMatch"
+        case .NewGame(_, _, _): return "NewGame"
+        }
+    }
+}
+
