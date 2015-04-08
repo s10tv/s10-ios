@@ -16,4 +16,12 @@ class NoGameViewController : BaseViewController {
         }
         return super.handleScreenEdgePan(edge)
     }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        Core.flow.getStateMatching({ $0 != .BoatSailed }) { _ in
+            self.navigationController?.popToRootViewControllerAnimated(true)
+            return
+        }
+    }
 }

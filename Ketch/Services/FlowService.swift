@@ -59,7 +59,7 @@ class FlowService : NSObject {
     
     // MARK: State Management
     
-    private  func computeCurrentState() -> State {
+    private func computeCurrentState() -> State {
         if loggingIn || candidateQueue == nil {
             return .Loading
         } else if !signedUp {
@@ -86,6 +86,11 @@ class FlowService : NSObject {
     }
     
     // MARK: - Notification handling
+    
+    func clearNewConnectionToShow() {
+        newConnectionToShow = nil
+        updateState()
+    }
     
     func _didSubmitGame() {
         waitingOnGameResult = true
