@@ -30,9 +30,16 @@ class ChatViewController : JSQMessagesViewController {
         view.backgroundColor = nil
         collectionView.backgroundColor = nil
         
+        // Customize input views
         inputToolbar.contentView.leftBarButtonItem = nil
-        inputToolbar.contentView.rightBarButtonItem.setTitleColor(StyleKit.brandBlue, forState: .Normal)
-
+        inputToolbar.contentView.textView.font = UIFont(.TransatTextStandard, size: 16)
+        let sendButton = inputToolbar.contentView.rightBarButtonItem
+        sendButton.setTitleColor(StyleKit.brandBlue, forState: .Normal)
+        sendButton.setTitleColor(StyleKit.brandBlue.jsq_colorByDarkeningColorWithValue(0.1), forState: .Highlighted)
+        sendButton.tintColor = StyleKit.brandBlue
+        sendButton.titleLabel?.font = UIFont(.TransatTextBold, size: 17)
+        
+        // Customize chat bubble
         // Magic insets number copied from inside StyleKit for imageOfChatBubble
         let magicInsets = UIEdgeInsetsMake(10, 19, 24, 28)
         let bubbleFactory = JSQMessagesBubbleImageFactory(bubbleImage: StyleKit.imageOfChatBubble, capInsets: magicInsets)
