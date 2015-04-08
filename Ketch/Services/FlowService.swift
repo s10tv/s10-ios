@@ -30,7 +30,7 @@ class FlowService : NSObject {
     private var accepted = true // Accepting approval and begun 1st game
     private var waitingOnGameResult = false // Waiting to hear back from server about recent game
     private var newConnectionToShow : Connection?
-    private var candidateQueue : [Candidate] = []
+    private var candidateQueue : [Candidate]?
     
     private let stateChanged = RACReplaySubject(capacity: 0)
     private var currentState = State.Loading
@@ -64,7 +64,7 @@ class FlowService : NSObject {
     // MARK: State Management
     
     private  func computeCurrentState() -> State {
-        if loggingIn {
+        if loggingIn || candidateQueue == nil {
             return .Loading
         } else if !signedUp {
             return .Signup
@@ -76,8 +76,8 @@ class FlowService : NSObject {
             return .Loading
         } else if newConnectionToShow != nil {
             return .NewMatch(newConnectionToShow!)
-        } else if candidateQueue.count >= 3 {
-            return .NewGame(candidateQueue[0], candidateQueue[1], candidateQueue[2])
+        } else if candidateQueue?.count >= 3 {
+            return .NewGame(candidateQueue![0], candidateQueue![1], candidateQueue![2])
         } else {
             return .BoatSailed
         }
@@ -108,7 +108,7 @@ class FlowService : NSObject {
     }
     
     func _didUpdateCandidateQueue(notification: NSNotification) {
-        candidateQueue = notification.object as [Candidate]
+        candidateQueue = notification.object as? [Candidate]
         updateState()
     }
 }
