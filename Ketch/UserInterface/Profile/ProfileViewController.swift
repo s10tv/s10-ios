@@ -58,6 +58,9 @@ class ProfileViewController : BaseViewController {
         swipeView.scrollToItemAtIndex(0, duration: 0)
         pageControl.numberOfPages = numberOfItemsInSwipeView(swipeView)
         infoCollection.reloadData()
+        // Right now the only thing more button does is report user
+        // therefore the best way to hide this ability is to hide more button
+        moreButton.hidden = user.isCurrentUser
     }
     
     override func updateViewConstraints() {
