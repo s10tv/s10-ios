@@ -11,7 +11,7 @@ import Foundation
 class TransitionManager : NSObject, UINavigationControllerDelegate {
     private let rootView : RootView
     var currentEdgePan : UIScreenEdgePanGestureRecognizer?
-    var disableAllTransitions = true
+    var disableAllTransitions = false
     
     init(rootView: RootView, navigationController: UINavigationController?) {
         self.rootView = rootView

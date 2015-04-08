@@ -48,20 +48,11 @@ class GameViewController : BaseViewController {
         
         helpLabel.hidden = true
         confirmButton.hidden = true
-        
-        // For debugging game animation
-        (view as TransparentView).passThroughTouchOnSelf = false
-        view.userInteractionEnabled = true
-        view.whenTapped { () -> () in
-            self.navigationController?.popViewControllerAnimated(true)
-            return
-        }
     }
     
     // Setup the game board once target positions can be acquired from autolayout
     // If game is already setup then use the acquired target positions to override autolayout
     override func viewDidLayoutSubviews() {
-        println("game viewDidLayoutSubviews")
         super.viewDidLayoutSubviews()
         if targets == nil {
             setupGame()
