@@ -71,7 +71,7 @@ class PermissionViewController : BaseViewController {
 extension PermissionViewController : CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if User.currentUser()?.vetted == "yes" {
-//            rootVC.finishSignup(self)
+            navigationController?.popToRootViewControllerAnimated(true)
         } else {
             performSegue(.LocationPermToWaitlist)
         }
