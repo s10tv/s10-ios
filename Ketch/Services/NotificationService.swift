@@ -13,11 +13,17 @@ public let NC = NSNotificationCenter.defaultCenter() // Intentionally global var
 
 enum NotificationName : String {
     case DidRegisterUserNotificationSettings = "DidRegisterUserNotificationSettings"
+    case DidSubmitGame = "DidSubmitGame"
+    case DidReceiveGameResult = "DidReceiveGameResult"
 }
 
 extension NSNotificationCenter {
-    func postNotification(name: NotificationName, object: AnyObject?) {
-        postNotificationName(name.rawValue, object: object)
+    func postNotification(name: NotificationName, object: AnyObject? = nil, userInfo: [NSObject: AnyObject]? = nil) {
+        postNotificationName(name.rawValue, object: object, userInfo: userInfo)
+    }
+    
+    func addObserver(observer: AnyObject, selector: Selector, name: NotificationName, object: AnyObject? = nil) {
+        addObserver(observer, selector: selector, name: name.rawValue, object: object)
     }
 }
 

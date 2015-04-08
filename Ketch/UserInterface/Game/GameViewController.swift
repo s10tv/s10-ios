@@ -154,12 +154,9 @@ class GameViewController : BaseViewController {
         let marry = chosenCandidate(.Yes)!
         let keep = chosenCandidate(.Maybe)!
         let skip = chosenCandidate(.No)!
-        Core.candidateService.submitChoices(marry, no: skip, maybe: keep).deliverOnMainThread().subscribeNextAs { (res : [String:String]) -> () in
-            if res.count > 0 {
-                let connection = Connection.findByDocumentID(res["yes"]!)!
-                self.rootVC.showNewMatch(connection)
-            }
-        }
+        Core.candidateService.submitChoices(yes: marry, no: skip, maybe: keep)
+        // Go back to loading screen and let it handle the transition from there
+        navigationController?.popToRootViewControllerAnimated(true)
     }
     
     override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {

@@ -14,6 +14,7 @@ import Meteor
 
 class CoreService {
     let meteor : METCoreDataDDPClient
+    let flow = FlowService()
     let candidateService : CandidateService
     var mainContext : NSManagedObjectContext! {
         return meteor.mainQueueManagedObjectContext
