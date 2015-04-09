@@ -38,6 +38,7 @@ const struct R R = {
         .settingsLocation = @"settings-icon-location",
         .settingsMortarBoard = @"settings-icon-mortarBoard",
         .settingsNotepad = @"settings-icon-notepad",
+        .tutorialArrow = @"tutorial-arrow",
         .waitlistClouds = @"waitlist-clouds",
     },
     .JSQMessagesAssets = {

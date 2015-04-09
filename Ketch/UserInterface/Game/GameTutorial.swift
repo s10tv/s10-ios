@@ -8,6 +8,7 @@
 
 import Foundation
 import RBBAnimation
+import Cartography
 
 class GameTutorial {
     let gameVC: GameViewController
@@ -64,8 +65,6 @@ class GameTutorial {
             popPlaceholders()
         case 5:
             showDragMatchesToChoices()
-        case 6:
-            showArrows()
         default:
             setupTutorial()
             startTutorial()
@@ -113,10 +112,32 @@ class GameTutorial {
             self.placeholders.each { $0.emphasized = false }
         }
         showHelpText(LS(R.Strings.dragMatchsToChoices))
-//        overlay.passThroughTouchOnSelf = true
-    }
-    
-    private func showArrows() {
-        showHelpText("Show Arrows...")
+        
+        let arrowImage = UIImage(named: R.ImagesAssets.tutorialArrow)
+        let centerBubble = bubbles[1]
+        for i in -1...1 {
+            let arrow = UIImageView(image: arrowImage)
+            let angle = π/6 * i.f
+            let distance = 10.f
+            
+            overlay.addSubview(arrow)
+            constrain(arrow, centerBubble) { arrow, bubble in
+                arrow.bottom == bubble.top - 20
+                arrow.centerX == bubble.centerX + i.f * 40
+            }
+            arrow.transform = CGAffineTransformMakeRotation(angle)
+            
+            arrow.hidden = true
+            arrow.setHiddenAnimated(hidden: false, duration: 0.25)
+            
+            let moveArrow = CABasicAnimation("position")
+            moveArrow.byValue = CGPoint(x: sin(angle) * distance, y: -cos(angle) * distance).value
+            moveArrow.duration = 2
+            moveArrow.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+            moveArrow.repeatCount = Float.infinity
+            arrow.layer.addAnimation(moveArrow, forKey: "position")
+        }
+        
+        overlay.passThroughTouchOnSelf = true
     }
 }

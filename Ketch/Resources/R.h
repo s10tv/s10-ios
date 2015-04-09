@@ -67,6 +67,8 @@ extern const struct R {
         __unsafe_unretained NSString *settingsMortarBoard;
         /// settings-icon-notepad
         __unsafe_unretained NSString *settingsNotepad;
+        /// tutorial-arrow
+        __unsafe_unretained NSString *tutorialArrow;
         /// waitlist-clouds
         __unsafe_unretained NSString *waitlistClouds;
     } ImagesAssets;
