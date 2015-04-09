@@ -33,7 +33,7 @@ public class StyleKit : NSObject {
         static var waterBottom: UIColor = UIColor(red: 0.055, green: 0.894, blue: 0.941, alpha: 1.000)
         static var navyLight: UIColor = StyleKit.navy.colorWithAlpha(0.22)
         static var gradientWater: CGGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [StyleKit.gradientWaterColor.CGColor, StyleKit.brandBlue.CGColor, StyleKit.brandAlt.CGColor], [0, 0.19, 1])
-        static var gradientSand: CGGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [StyleKit.gradientSandColor2.CGColor, StyleKit.waterTop.CGColor], [0, 1])
+        static var gradientSand: CGGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [StyleKit.gradientSandColor.CGColor, StyleKit.gradientSandColor2.CGColor], [0, 1])
         static var imageOfChatBubble: UIImage?
         static var chatBubbleTargets: [AnyObject]?
     }
