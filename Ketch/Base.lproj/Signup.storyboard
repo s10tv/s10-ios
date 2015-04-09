@@ -213,7 +213,7 @@ Set sail to get a date, have fun, and find the One.</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="wTv-sJ-Gap" kind="custom" identifier="Main_Settings" customClass="LinkedStoryboardPushSegue" customModule="Ketch" customModuleProvider="target" id="oes-pk-f4m"/>
+                                    <segue destination="wTv-sJ-Gap" kind="custom" identifier="Main_Settings" customClass="LinkedStoryboardPushSegue" id="oes-pk-f4m"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sprite-sun" translatesAutoresizingMaskIntoConstraints="NO" id="mGW-vN-lRk">
@@ -298,7 +298,7 @@ Hold tight and you'll be finding the one before you know it.</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="6oW-GJ-LWc" kind="custom" identifier="Main_Chat" customClass="LinkedStoryboardPushSegue" customModule="Ketch" customModuleProvider="target" id="Zhj-Kn-B4b"/>
+                                    <segue destination="6oW-GJ-LWc" kind="custom" identifier="Main_Chat" customClass="LinkedStoryboardPushSegue" id="Zhj-Kn-B4b"/>
                                 </connections>
                             </button>
                         </subviews>

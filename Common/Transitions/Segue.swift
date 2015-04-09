@@ -15,6 +15,9 @@ extension UIStoryboardSegue {
     var navVC : UINavigationController? { return sourceVC.navigationController }
 }
 
+// Specify objc class to work around Xcode's bug where dragging and dropping custom segue
+// in swift modules does not store module name in IB by default and causes crash at runtime
+@objc(LinkedStoryboardPushSegue)
 class LinkedStoryboardPushSegue : UIStoryboardSegue {
     override init!(identifier: String!, source: UIViewController, destination: UIViewController) {
         super.init(identifier: identifier, source: source, destination: loadSceneNamed(identifier))
@@ -25,6 +28,7 @@ class LinkedStoryboardPushSegue : UIStoryboardSegue {
     }
 }
 
+@objc(LinkedStoryboardPresentSegue)
 class LinkedStoryboardPresentSegue : UIStoryboardSegue {
     override init!(identifier: String!, source: UIViewController, destination: UIViewController) {
         super.init(identifier: identifier, source: source, destination: loadSceneNamed(identifier))
@@ -35,6 +39,7 @@ class LinkedStoryboardPresentSegue : UIStoryboardSegue {
     }
 }
 
+@objc(ReplaceAndPushSegue)
 class ReplaceAndPushSegue : UIStoryboardSegue {
     override func perform() {
         if let navVC = navVC {

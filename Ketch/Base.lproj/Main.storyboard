@@ -161,7 +161,7 @@ SAILED FOR TODAY.</string>
             <objects>
                 <viewController storyboardIdentifier="NewConnection" id="yMw-7P-Sbk" customClass="NewConnectionViewController" sceneMemberID="viewController">
                     <connections>
-                        <segue destination="YUi-xK-iJg" kind="custom" identifier="NewConnectionToDock" customClass="ReplaceAndPushSegue" customModule="Ketch" customModuleProvider="target" id="Nx5-oB-y5G"/>
+                        <segue destination="YUi-xK-iJg" kind="custom" identifier="NewConnectionToDock" customClass="ReplaceAndPushSegue" id="Nx5-oB-y5G"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvP-mk-Fcq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -544,11 +544,11 @@ SAILED FOR TODAY.</string>
                     <navigationItem key="navigationItem" id="Q7Z-rR-KIW"/>
                     <connections>
                         <segue destination="brw-cx-YUO" kind="show" identifier="LoadingToGame" id="FLq-Pa-kyO"/>
-                        <segue destination="xL7-fS-abd" kind="custom" identifier="Signup_Signup" customClass="LinkedStoryboardPushSegue" customModule="Ketch" customModuleProvider="target" id="A9d-Ac-mF2"/>
-                        <segue destination="jhY-qC-hf5" kind="custom" identifier="Signup_Waitlist" customClass="LinkedStoryboardPushSegue" customModule="Ketch" customModuleProvider="target" id="cVa-Is-AY3"/>
+                        <segue destination="xL7-fS-abd" kind="custom" identifier="Signup_Signup" customClass="LinkedStoryboardPushSegue" id="A9d-Ac-mF2"/>
+                        <segue destination="jhY-qC-hf5" kind="custom" identifier="Signup_Waitlist" customClass="LinkedStoryboardPushSegue" id="cVa-Is-AY3"/>
                         <segue destination="yMw-7P-Sbk" kind="show" identifier="LoadingToNewConnection" id="lmb-Zd-YjN"/>
                         <segue destination="0F9-rn-XRN" kind="show" identifier="LoadingToNoGame" id="TQN-XX-hdx"/>
-                        <segue destination="y6Z-JZ-dSL" kind="custom" identifier="Signup_Welcome" customClass="LinkedStoryboardPushSegue" customModule="Ketch" customModuleProvider="target" id="sZU-Tb-xm8"/>
+                        <segue destination="y6Z-JZ-dSL" kind="custom" identifier="Signup_Welcome" customClass="LinkedStoryboardPushSegue" id="sZU-Tb-xm8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jpe-tJ-ggF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -601,9 +601,9 @@ SAILED FOR TODAY.</string>
         <image name="game-empty-share-twitter" width="60" height="61"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LKi-wK-Agw"/>
         <segue reference="6ym-FC-Y97"/>
-        <segue reference="tnG-4w-VC3"/>
+        <segue reference="LKi-wK-Agw"/>
         <segue reference="T9Y-bJ-q8s"/>
+        <segue reference="Nx5-oB-y5G"/>
     </inferredMetricsTieBreakers>
 </document>
