@@ -90,6 +90,7 @@ class FlowService : NSObject {
     
     private func updateState() {
         currentState = computeCurrentState()
+//        currentState = .Waitlist
         stateChanged.sendNext(nil)
         println("Current state updated to \(currentState)")
     }

@@ -8,8 +8,7 @@
 
 import Foundation
 
-@objc(WaitlistViewController)
-class WaitlistViewController : BaseViewController {
+class WaitlistViewController : CloudsViewController {
     
     override func commonInit() {
         hideKetchBoat = false

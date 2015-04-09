@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dFw-q9-bre">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="TransatTextBlack.otf">
+            <string>TransatTextBlack</string>
+            <string>TransatTextBlack</string>
             <string>TransatTextBlack</string>
             <string>TransatTextBlack</string>
         </mutableArray>
@@ -14,50 +16,37 @@
         <scene sceneID="mSO-WA-QEY">
             <objects>
                 <viewController id="dFw-q9-bre" customClass="SignupViewController" sceneMemberID="viewController">
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <segue destination="6g2-ww-E2T" kind="show" identifier="SignupToNotificationsPerm" id="j1A-QJ-3Rg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lbl-0u-moe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-158" y="518"/>
+            <point key="canvasLocation" x="-542" y="274"/>
         </scene>
         <!--Notifications Permission-->
         <scene sceneID="nfm-31-v0t">
             <objects>
                 <viewController id="6g2-ww-E2T" userLabel="Notifications Permission" customClass="PermissionViewController" sceneMemberID="viewController">
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <segue destination="e3b-KT-lKM" kind="show" identifier="NotificationsPermToLocationPerm" id="rzT-EA-iBU"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MQh-h4-WxM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="253" y="518"/>
+            <point key="canvasLocation" x="116" y="274"/>
         </scene>
         <!--Location Permission-->
         <scene sceneID="TvB-7P-KPw">
             <objects>
                 <viewController id="e3b-KT-lKM" userLabel="Location Permission" customClass="PermissionViewController" sceneMemberID="viewController">
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
-                        <segue destination="VNX-a6-diU" kind="show" identifier="LocationPermToWaitlist" id="CSp-kD-Yqe"/>
+                        <segue destination="oGT-wN-ozl" kind="show" identifier="LocationPermToWaitlist" id="wUj-eb-VNn"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="idG-xr-QfV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="652" y="518"/>
-        </scene>
-        <!--Waitlist View Controller-->
-        <scene sceneID="Pjf-an-Nkv">
-            <objects>
-                <viewController storyboardIdentifier="Waitlist" id="VNX-a6-diU" customClass="WaitlistViewController" sceneMemberID="viewController">
-                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="JjN-Rz-GCW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1041" y="518"/>
+            <point key="canvasLocation" x="790" y="274"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="dbO-JC-y9d">
@@ -190,12 +179,150 @@ Set sail to get a date, have fun, and find the One.</string>
                         <outletCollection property="cloudViews" destination="eGq-tG-l7G" collectionClass="NSMutableArray" id="bm9-eO-Chh"/>
                         <outletCollection property="cloudViews" destination="HqM-6X-6fn" collectionClass="NSMutableArray" id="MG7-1G-Ctn"/>
                         <outletCollection property="cloudViews" destination="5Qk-40-QRo" collectionClass="NSMutableArray" id="jRk-0a-1EA"/>
-                        <outletCollection property="cloudViews" destination="u4P-vD-Hk1" id="bfk-nf-vt9"/>
+                        <outletCollection property="cloudViews" destination="u4P-vD-Hk1" collectionClass="NSMutableArray" id="bfk-nf-vt9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ud1-ZM-sKr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="69" y="1226"/>
+            <point key="canvasLocation" x="116" y="1024"/>
+        </scene>
+        <!--Waitlist View Controller-->
+        <scene sceneID="hlQ-Up-Dw0">
+            <objects>
+                <viewController storyboardIdentifier="Waitlist" id="oGT-wN-ozl" customClass="WaitlistViewController" customModule="Ketch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="vVa-mY-XXj"/>
+                        <viewControllerLayoutGuide type="bottom" id="RUv-dp-RGL"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="TYa-nE-Vqe">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sprite-sun" translatesAutoresizingMaskIntoConstraints="NO" id="mGW-vN-lRk">
+                                <rect key="frame" x="262" y="0.0" width="218" height="186"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sprite-cloud-1" translatesAutoresizingMaskIntoConstraints="NO" id="bMT-dx-z8S">
+                                <rect key="frame" x="372" y="38" width="80" height="34"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sprite-cloud-2" translatesAutoresizingMaskIntoConstraints="NO" id="9sh-MZ-ePT">
+                                <rect key="frame" x="40" y="87" width="95" height="43"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sprite-cloud-3" translatesAutoresizingMaskIntoConstraints="NO" id="QmH-Rr-jg6">
+                                <rect key="frame" x="293" y="64" width="66" height="34"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sprite-cloud-4" translatesAutoresizingMaskIntoConstraints="NO" id="h6K-Ei-eDJ">
+                                <rect key="frame" x="254" y="121" width="95" height="44"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4i8-hs-vhM" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="303" width="600" height="580"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ketch-large" translatesAutoresizingMaskIntoConstraints="NO" id="tu0-Pb-yyF">
+                                <rect key="frame" x="262" y="231" width="77" height="80"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALL ABOARD!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXe-bZ-bUx" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="216" y="341" width="168" height="25"/>
+                                <fontDescription key="fontDescription" name="TransatTextBlack" family="Transat Text" pointSize="25"/>
+                                <color key="textColor" red="0.94003820419999995" green="0.98082369570000005" blue="0.96848088499999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="TransatTextBlack"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontKern">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="TNj-LU-osl" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="150" y="386" width="300" height="99"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Thanks for signing up. We’ll be in touch shortly.
+Hold tight and you'll be finding the one before you know it.</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="21" name="TransatTextStandard"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" paragraphSpacing="15"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="21"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NtQ-p1-hGT" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="175" y="505" width="250" height="55"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="9hK-e5-s7i"/>
+                                    <constraint firstAttribute="width" constant="250" id="NqQ-AV-aCH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TransatTextBlack" family="Transat Text" pointSize="20"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Chat with us">
+                                    <color key="titleColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="28"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="finishWelcome:" destination="oGT-wN-ozl" eventType="touchUpInside" id="Thd-kA-zZY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94003820419311523" green="0.98082369565963745" blue="0.96848088502883911" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="bMT-dx-z8S" firstAttribute="top" secondItem="mGW-vN-lRk" secondAttribute="top" constant="38" id="3Mf-ih-2AB"/>
+                            <constraint firstItem="QmH-Rr-jg6" firstAttribute="top" secondItem="mGW-vN-lRk" secondAttribute="top" constant="64" id="9BZ-ty-3fC"/>
+                            <constraint firstItem="QmH-Rr-jg6" firstAttribute="leading" secondItem="mGW-vN-lRk" secondAttribute="leading" constant="31" id="9Tq-o2-cgZ"/>
+                            <constraint firstItem="4i8-hs-vhM" firstAttribute="leading" secondItem="TYa-nE-Vqe" secondAttribute="leading" id="APQ-t2-B5Z"/>
+                            <constraint firstItem="9sh-MZ-ePT" firstAttribute="leading" secondItem="TYa-nE-Vqe" secondAttribute="leading" constant="40" id="DB8-ce-AaU"/>
+                            <constraint firstAttribute="centerX" secondItem="tu0-Pb-yyF" secondAttribute="centerX" id="DYg-71-FQB"/>
+                            <constraint firstAttribute="centerY" secondItem="tu0-Pb-yyF" secondAttribute="centerY" priority="249" constant="40" id="KEp-ha-H29"/>
+                            <constraint firstItem="TNj-LU-osl" firstAttribute="top" secondItem="uXe-bZ-bUx" secondAttribute="bottom" constant="20" id="NbS-4k-88y"/>
+                            <constraint firstItem="tu0-Pb-yyF" firstAttribute="leading" secondItem="h6K-Ei-eDJ" secondAttribute="leading" constant="8" id="QMg-Oh-qwQ"/>
+                            <constraint firstItem="tu0-Pb-yyF" firstAttribute="leading" secondItem="mGW-vN-lRk" secondAttribute="leading" id="UfJ-rb-enq"/>
+                            <constraint firstAttribute="centerX" secondItem="NtQ-p1-hGT" secondAttribute="centerX" id="Y49-Lz-2Vq"/>
+                            <constraint firstAttribute="centerX" secondItem="uXe-bZ-bUx" secondAttribute="centerX" id="ZCk-WP-LS5"/>
+                            <constraint firstItem="NtQ-p1-hGT" firstAttribute="top" secondItem="TNj-LU-osl" secondAttribute="bottom" constant="20" id="c5k-Af-n7D"/>
+                            <constraint firstItem="RUv-dp-RGL" firstAttribute="top" secondItem="NtQ-p1-hGT" secondAttribute="bottom" constant="40" id="czD-Bf-Z35"/>
+                            <constraint firstItem="tu0-Pb-yyF" firstAttribute="top" relation="greaterThanOrEqual" secondItem="mGW-vN-lRk" secondAttribute="bottom" id="d0c-VZ-bso"/>
+                            <constraint firstItem="4i8-hs-vhM" firstAttribute="top" secondItem="tu0-Pb-yyF" secondAttribute="bottom" constant="-8" id="fop-vY-Wg3"/>
+                            <constraint firstAttribute="centerX" secondItem="TNj-LU-osl" secondAttribute="centerX" id="iuy-R8-ChR"/>
+                            <constraint firstItem="mGW-vN-lRk" firstAttribute="bottom" secondItem="9sh-MZ-ePT" secondAttribute="bottom" constant="56" id="l2W-yG-6dc"/>
+                            <constraint firstItem="mGW-vN-lRk" firstAttribute="top" secondItem="vVa-mY-XXj" secondAttribute="bottom" priority="749" id="o5G-4w-Kzb"/>
+                            <constraint firstAttribute="trailing" secondItem="4i8-hs-vhM" secondAttribute="trailing" id="qDY-9b-f3j"/>
+                            <constraint firstItem="bMT-dx-z8S" firstAttribute="leading" secondItem="mGW-vN-lRk" secondAttribute="leading" constant="110" id="roH-H3-dGc"/>
+                            <constraint firstItem="uXe-bZ-bUx" firstAttribute="top" secondItem="tu0-Pb-yyF" secondAttribute="bottom" constant="30" id="sgL-VL-0q8"/>
+                            <constraint firstItem="mGW-vN-lRk" firstAttribute="bottom" secondItem="h6K-Ei-eDJ" secondAttribute="bottom" constant="21" id="tlz-g9-f1O"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="boatView" destination="tu0-Pb-yyF" id="6EZ-qv-xfg"/>
+                        <outletCollection property="cloudViews" destination="bMT-dx-z8S" collectionClass="NSMutableArray" id="nw1-Tz-QFZ"/>
+                        <outletCollection property="cloudViews" destination="9sh-MZ-ePT" collectionClass="NSMutableArray" id="K4U-Vu-95O"/>
+                        <outletCollection property="cloudViews" destination="QmH-Rr-jg6" collectionClass="NSMutableArray" id="6D2-1V-SKt"/>
+                        <outletCollection property="cloudViews" destination="h6K-Ei-eDJ" collectionClass="NSMutableArray" id="DI6-gg-fd3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8yk-Bk-8hy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-542" y="1024"/>
         </scene>
     </scenes>
     <resources>
