@@ -25,13 +25,7 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="L" textAlignment="center" lineBreakMode="clip" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="nu5-Dd-8Z5">
-                    <rect key="frame" x="129" y="147" width="117" height="152"/>
-                    <fontDescription key="fontDescription" name="KetchIcon-Regular" family="KetchIcon" pointSize="76"/>
-                    <color key="textColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <nil key="highlightedColor"/>
-                </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awQ-vi-2op" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="awQ-vi-2op" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="55" y="339" width="265" height="46"/>
                     <attributedString key="attributedText">
                         <fragment>
@@ -52,7 +46,7 @@ get ready for it and have fun!</string>
                         <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="TransatTextStandard"/>
                     </userDefinedRuntimeAttributes>
                 </label>
-                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SdM-8k-H6p" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SdM-8k-H6p" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
                     <rect key="frame" x="62" y="465" width="250" height="55"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     <constraints>
@@ -80,18 +74,18 @@ get ready for it and have fun!</string>
                         <action selector="loginWithFacebook:" destination="-1" eventType="touchUpInside" id="HvX-Bg-dXv"/>
                     </connections>
                 </button>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4AJ-Q8-LAW">
-                    <rect key="frame" x="91" y="532" width="192" height="28"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4AJ-Q8-LAW">
+                    <rect key="frame" x="92" y="532" width="192" height="28"/>
                     <string key="text">We never post anything, 
 you got nothing to worry about.</string>
                     <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="14"/>
                     <color key="textColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="daz-8j-ujW">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="daz-8j-ujW" userLabel="Terms &amp; Privacy">
                     <rect key="frame" x="143" y="601" width="88" height="26"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="feR-4L-bJF" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="feR-4L-bJF" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
                             <rect key="frame" x="0.0" y="0.0" width="36" height="26"/>
                             <state key="normal">
                                 <attributedString key="attributedTitle">
@@ -113,7 +107,7 @@ you got nothing to worry about.</string>
                                 <action selector="viewTerms:" destination="-1" eventType="touchUpInside" id="rzd-wn-cCZ"/>
                             </connections>
                         </button>
-                        <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lf5-XG-tnV" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lf5-XG-tnV" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
                             <rect key="frame" x="44" y="0.0" width="44" height="26"/>
                             <state key="normal">
                                 <attributedString key="attributedTitle">
@@ -146,22 +140,33 @@ you got nothing to worry about.</string>
                         <constraint firstAttribute="trailing" secondItem="lf5-XG-tnV" secondAttribute="trailing" id="lZO-e2-0NT"/>
                     </constraints>
                 </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="L" textAlignment="center" lineBreakMode="clip" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="nu5-Dd-8Z5">
+                    <rect key="frame" x="129" y="147" width="117" height="152"/>
+                    <fontDescription key="fontDescription" name="KetchIcon-Regular" family="KetchIcon" pointSize="76"/>
+                    <color key="textColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
             </subviews>
             <color key="backgroundColor" red="0.2627450980392157" green="0.87058823529411766" blue="0.86274509803921573" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="4AJ-Q8-LAW" firstAttribute="top" secondItem="SdM-8k-H6p" secondAttribute="bottom" constant="12" id="6mL-8t-RvF"/>
+                <constraint firstItem="daz-8j-ujW" firstAttribute="top" relation="greaterThanOrEqual" secondItem="4AJ-Q8-LAW" secondAttribute="bottom" constant="8" id="71w-ue-pfx"/>
                 <constraint firstItem="4AJ-Q8-LAW" firstAttribute="centerX" secondItem="SdM-8k-H6p" secondAttribute="centerX" id="8HU-oF-OJ8"/>
-                <constraint firstAttribute="bottom" secondItem="daz-8j-ujW" secondAttribute="bottom" constant="40" id="BAU-P5-7LA"/>
+                <constraint firstAttribute="bottom" secondItem="daz-8j-ujW" secondAttribute="bottom" priority="749" constant="40" id="BAU-P5-7LA"/>
                 <constraint firstItem="awQ-vi-2op" firstAttribute="centerX" secondItem="nu5-Dd-8Z5" secondAttribute="centerX" id="CaG-Fu-Jgq"/>
                 <constraint firstAttribute="centerX" secondItem="nu5-Dd-8Z5" secondAttribute="centerX" id="JfZ-fT-7Pd"/>
-                <constraint firstItem="SdM-8k-H6p" firstAttribute="top" secondItem="awQ-vi-2op" secondAttribute="bottom" constant="80" id="TDD-hp-Flf"/>
-                <constraint firstItem="awQ-vi-2op" firstAttribute="top" secondItem="nu5-Dd-8Z5" secondAttribute="bottom" constant="40" id="Xed-vH-XKf"/>
-                <constraint firstAttribute="centerY" secondItem="nu5-Dd-8Z5" secondAttribute="centerY" constant="110" id="YZf-HW-xfU"/>
+                <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="daz-8j-ujW" secondAttribute="bottom" constant="8" id="MJT-Uf-dkG"/>
+                <constraint firstItem="SdM-8k-H6p" firstAttribute="top" secondItem="awQ-vi-2op" secondAttribute="bottom" priority="748" constant="80" id="TDD-hp-Flf"/>
+                <constraint firstItem="SdM-8k-H6p" firstAttribute="top" relation="greaterThanOrEqual" secondItem="awQ-vi-2op" secondAttribute="bottom" constant="8" id="VgY-VR-LeW"/>
+                <constraint firstItem="awQ-vi-2op" firstAttribute="top" secondItem="nu5-Dd-8Z5" secondAttribute="bottom" priority="747" constant="40" id="Xed-vH-XKf"/>
+                <constraint firstAttribute="centerY" secondItem="nu5-Dd-8Z5" secondAttribute="centerY" priority="749" constant="110" id="YZf-HW-xfU"/>
                 <constraint firstAttribute="centerX" secondItem="daz-8j-ujW" secondAttribute="centerX" id="afC-o7-0Uq"/>
+                <constraint firstItem="nu5-Dd-8Z5" firstAttribute="top" relation="greaterThanOrEqual" secondItem="iN0-l3-epB" secondAttribute="top" constant="80" id="qPl-fr-Zmn"/>
+                <constraint firstItem="awQ-vi-2op" firstAttribute="top" relation="greaterThanOrEqual" secondItem="nu5-Dd-8Z5" secondAttribute="bottom" constant="8" id="t0a-Je-X9R"/>
                 <constraint firstItem="SdM-8k-H6p" firstAttribute="centerX" secondItem="awQ-vi-2op" secondAttribute="centerX" id="vzV-9I-YVq"/>
             </constraints>
             <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
-            <point key="canvasLocation" x="392.5" y="487.5"/>
+            <point key="canvasLocation" x="199.5" y="519.5"/>
         </view>
     </objects>
 </document>

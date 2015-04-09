@@ -219,7 +219,7 @@ SAILED FOR TODAY.</string>
                                 </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-bucket-keep" translatesAutoresizingMaskIntoConstraints="NO" id="ZdL-6o-ahC" userLabel="Maybe Placeholder" customClass="ChoicePlaceholder" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="472" y="193" width="100" height="113"/>
+                                <rect key="frame" x="472" y="206" width="100" height="113"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ZdL-6o-ahC" secondAttribute="height" multiplier="100:113" id="3sI-Xg-EnF"/>
                                     <constraint firstAttribute="width" constant="100" id="NUy-QR-pTk"/>
@@ -236,7 +236,7 @@ SAILED FOR TODAY.</string>
                                 </variation>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-bucket-marry" translatesAutoresizingMaskIntoConstraints="NO" id="2Mo-6y-hwh" userLabel="Maybe Placeholder" customClass="ChoicePlaceholder" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="250" y="67" width="100" height="116"/>
+                                <rect key="frame" x="250" y="80" width="100" height="116"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="116" id="I4i-RO-KZR"/>
                                     <constraint firstAttribute="width" secondItem="2Mo-6y-hwh" secondAttribute="height" multiplier="25:29" id="WZ5-5U-oNX"/>
@@ -253,7 +253,7 @@ SAILED FOR TODAY.</string>
                                 </variation>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-bucket-skip" translatesAutoresizingMaskIntoConstraints="NO" id="C5L-zq-XTw" userLabel="Maybe Placeholder" customClass="ChoicePlaceholder" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="29" y="193" width="100" height="113"/>
+                                <rect key="frame" x="29" y="206" width="100" height="113"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="113" id="hOv-IZ-HTU"/>
                                     <constraint firstAttribute="width" constant="100" id="uXZ-Qd-8ZS"/>
@@ -358,7 +358,7 @@ SAILED FOR TODAY.</string>
                             <constraint firstItem="SMl-V4-Z7A" firstAttribute="top" secondItem="SYM-1r-qph" secondAttribute="bottom" id="NVw-VN-B8m"/>
                             <constraint firstItem="cK6-TY-fKz" firstAttribute="leading" secondItem="m2B-aU-Mh7" secondAttribute="leading" id="OeD-1l-0I5"/>
                             <constraint firstAttribute="trailing" secondItem="SMl-V4-Z7A" secondAttribute="trailing" id="Rdt-Hj-bBY"/>
-                            <constraint firstItem="2Mo-6y-hwh" firstAttribute="top" relation="greaterThanOrEqual" secondItem="m2B-aU-Mh7" secondAttribute="top" constant="36" id="Sof-5B-gRV"/>
+                            <constraint firstItem="2Mo-6y-hwh" firstAttribute="top" relation="greaterThanOrEqual" secondItem="m2B-aU-Mh7" secondAttribute="top" constant="80" id="Sof-5B-gRV"/>
                             <constraint firstItem="sNf-t3-S46" firstAttribute="leading" secondItem="m2B-aU-Mh7" secondAttribute="leading" constant="8" id="Ued-7N-fNy"/>
                             <constraint firstItem="Jqh-bc-UMn" firstAttribute="height" secondItem="sNf-t3-S46" secondAttribute="height" id="VMr-Ch-omC"/>
                             <constraint firstAttribute="trailing" secondItem="YSC-OD-kWb" secondAttribute="trailing" constant="20" id="YTP-dx-yWz"/>
