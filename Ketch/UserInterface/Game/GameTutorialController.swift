@@ -176,7 +176,6 @@ extension GameTutorialController : GameViewControllerDelegate {
             }
         } else {
             gameVC.tutorial = nil
-            gameVC.delegate = nil
         }
     }
     
@@ -189,7 +188,8 @@ extension GameTutorialController : GameViewControllerDelegate {
     func gameDidAssignBubbleToTarget(bubble: CandidateBubble, target: SnapTarget?) {
         if target?.choice != nil && started {
             teardownTutorial()
-//            UD[.bGameTutorialMode] = false
+            gameVC.tutorial = nil
+            UD[.bGameTutorialMode] = false
         }
     }
 }
