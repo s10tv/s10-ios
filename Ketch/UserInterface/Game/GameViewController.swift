@@ -204,8 +204,7 @@ class GameViewController : BaseViewController {
         let keep = chosenCandidate(.Maybe)!
         let skip = chosenCandidate(.No)!
         Core.candidateService.submitChoices(yes: marry, no: skip, maybe: keep)
-        // Go back to loading screen and let it handle the transition from there
-        navigationController?.popToRootViewControllerAnimated(true)
+        performSegue(.FinishGame)
     }
 }
 

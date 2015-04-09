@@ -151,8 +151,12 @@ SAILED FOR TODAY.</string>
                             <constraint firstItem="4gQ-Xc-tOt" firstAttribute="top" secondItem="mJb-C3-BeN" secondAttribute="bottom" constant="16" id="tZg-Ix-882"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="6h3-um-0ie" kind="unwind" identifier="NoGameToLoading" unwindAction="unwindToLoading:" id="krI-yF-vcJ"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nQ6-Uk-dUD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="6h3-um-0ie" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="98" y="1530"/>
         </scene>
@@ -394,9 +398,11 @@ SAILED FOR TODAY.</string>
                         <outletCollection property="navViews" destination="cK6-TY-fKz" collectionClass="NSMutableArray" id="atZ-s5-PNQ"/>
                         <outletCollection property="navViews" destination="SMl-V4-Z7A" collectionClass="NSMutableArray" id="zLB-Uz-EKh"/>
                         <outletCollection property="navViews" destination="Rx1-xy-YKJ" collectionClass="NSMutableArray" id="vtK-uO-muB"/>
+                        <segue destination="JYv-xI-N8J" kind="unwind" identifier="FinishGame" unwindAction="unwindToLoading:" id="JeC-0c-3CI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TlQ-8h-TWe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="JYv-xI-N8J" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="818" y="1139"/>
         </scene>
@@ -601,9 +607,9 @@ SAILED FOR TODAY.</string>
         <image name="game-empty-share-twitter" width="60" height="61"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="tnG-4w-VC3"/>
         <segue reference="6ym-FC-Y97"/>
         <segue reference="LKi-wK-Agw"/>
         <segue reference="T9Y-bJ-q8s"/>
-        <segue reference="Nx5-oB-y5G"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -3,6 +3,7 @@
 public enum SegueIdentifier : String {
     case ChatToProfile = "ChatToProfile"
     case DockToChat = "DockToChat"
+    case FinishGame = "FinishGame"
     case FinishWelcome = "FinishWelcome"
     case GameToDock = "GameToDock"
     case GameToSettings = "GameToSettings"
@@ -14,6 +15,7 @@ public enum SegueIdentifier : String {
     case Main_Settings = "Main_Settings"
     case NewConnectionToDock = "NewConnectionToDock"
     case NoGameToDock = "NoGameToDock"
+    case NoGameToLoading = "NoGameToLoading"
     case NoGameToSettings = "NoGameToSettings"
     case NotificationsPermToLocationPerm = "NotificationsPermToLocationPerm"
     case ProfileToEditProfile = "ProfileToEditProfile"
