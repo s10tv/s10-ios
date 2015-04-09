@@ -8,10 +8,12 @@
 
 import Foundation
 
-@objc(SignupViewController)
 class SignupViewController : BaseViewController {
     
     // MARK: Actions
+    @IBAction func didTapOnNotPicky(sender: AnyObject) {
+        UIApplication.sharedApplication().openURL(NSURL("http://tinder.com/"))
+    }
     
     @IBAction func viewTerms(sender: AnyObject) {
         UIApplication.sharedApplication().openURL(Env.termsAndConditionURL)

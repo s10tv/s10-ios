@@ -90,7 +90,7 @@ class FlowService : NSObject {
     
     private func updateState() {
         currentState = computeCurrentState()
-//        currentState = .Approval
+//        currentState = .Signup
         stateChanged.sendNext(nil)
         println("Current state updated to \(currentState)")
     }
