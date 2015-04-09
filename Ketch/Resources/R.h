@@ -47,6 +47,8 @@ extern const struct R {
         __unsafe_unretained NSString *icRemovePhoto;
         /// Ketch
         __unsafe_unretained NSString *ketch;
+        /// ketch-large
+        __unsafe_unretained NSString *ketchLarge;
         /// perm-facebook-icon
         __unsafe_unretained NSString *permFacebook;
         /// perm-location-icon
@@ -67,6 +69,16 @@ extern const struct R {
         __unsafe_unretained NSString *settingsMortarBoard;
         /// settings-icon-notepad
         __unsafe_unretained NSString *settingsNotepad;
+        /// sprite-cloud-1
+        __unsafe_unretained NSString *spriteCloud1;
+        /// sprite-cloud-2
+        __unsafe_unretained NSString *spriteCloud2;
+        /// sprite-cloud-3
+        __unsafe_unretained NSString *spriteCloud3;
+        /// sprite-cloud-4
+        __unsafe_unretained NSString *spriteCloud4;
+        /// sprite-sun
+        __unsafe_unretained NSString *spriteSun;
         /// tutorial-arrow
         __unsafe_unretained NSString *tutorialArrow;
         /// waitlist-clouds
@@ -149,7 +161,7 @@ extern const struct R {
         __unsafe_unretained NSString *skipPrompt;
         /// SEE AGAIN LATER
         __unsafe_unretained NSString *snoozePrompt;
-        /// Tap anywhere to continue
+        /// TAP ANYWHERE TO CONTINUE
         __unsafe_unretained NSString *tapToContinue;
         /// AND YOU’LL HAVE THREE CHOICES
         __unsafe_unretained NSString *threeChoicesPrompt;

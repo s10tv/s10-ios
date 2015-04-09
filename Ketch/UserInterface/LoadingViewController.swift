@@ -22,11 +22,11 @@ class LoadingViewController : BaseViewController {
             println("Got new state in loading \(state)")
             switch state {
             case .Signup:
-                self.performSegue(.Signup_)
+                self.performSegue(.Signup_Signup)
             case .Waitlist:
                 self.performSegue(.Signup_Waitlist)
             case .Approval:
-                break
+                self.performSegue(.Signup_Welcome)
             case .NewMatch:
                 self.performSegue(.LoadingToNewConnection)
             case .NewGame:

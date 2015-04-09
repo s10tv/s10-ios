@@ -483,7 +483,7 @@ SAILED FOR TODAY.</string>
                         <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -544,10 +544,11 @@ SAILED FOR TODAY.</string>
                     <navigationItem key="navigationItem" id="Q7Z-rR-KIW"/>
                     <connections>
                         <segue destination="brw-cx-YUO" kind="show" identifier="LoadingToGame" id="FLq-Pa-kyO"/>
-                        <segue destination="xL7-fS-abd" kind="custom" identifier="Signup_" customClass="LinkedStoryboardPushSegue" customModule="Ketch" customModuleProvider="target" id="A9d-Ac-mF2"/>
+                        <segue destination="xL7-fS-abd" kind="custom" identifier="Signup_Signup" customClass="LinkedStoryboardPushSegue" customModule="Ketch" customModuleProvider="target" id="A9d-Ac-mF2"/>
                         <segue destination="jhY-qC-hf5" kind="custom" identifier="Signup_Waitlist" customClass="LinkedStoryboardPushSegue" customModule="Ketch" customModuleProvider="target" id="cVa-Is-AY3"/>
                         <segue destination="yMw-7P-Sbk" kind="show" identifier="LoadingToNewConnection" id="lmb-Zd-YjN"/>
                         <segue destination="0F9-rn-XRN" kind="show" identifier="LoadingToNoGame" id="TQN-XX-hdx"/>
+                        <segue destination="y6Z-JZ-dSL" kind="custom" identifier="Signup_Welcome" customClass="LinkedStoryboardPushSegue" customModule="Ketch" customModuleProvider="target" id="sZU-Tb-xm8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jpe-tJ-ggF" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -562,7 +563,7 @@ SAILED FOR TODAY.</string>
                         <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -571,6 +572,24 @@ SAILED FOR TODAY.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gNG-pd-4C0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-69" y="630"/>
+        </scene>
+        <!--Signup Storyboard @ Welcome-->
+        <scene sceneID="9Uf-Vb-r72">
+            <objects>
+                <viewController id="y6Z-JZ-dSL" userLabel="Signup Storyboard @ Welcome" sceneMemberID="viewController">
+                    <label key="view" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signup Storyboard @ Welcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ugw-xH-kzT">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="250" height="250"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hei-fA-1w4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-69" y="955"/>
         </scene>
     </scenes>
     <resources>

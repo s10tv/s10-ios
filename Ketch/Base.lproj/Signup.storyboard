@@ -3,6 +3,12 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="TransatTextBlack.otf">
+            <string>TransatTextBlack</string>
+            <string>TransatTextBlack</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Signup View Controller-->
         <scene sceneID="mSO-WA-QEY">
@@ -53,5 +59,151 @@
             </objects>
             <point key="canvasLocation" x="1041" y="518"/>
         </scene>
+        <!--Welcome View Controller-->
+        <scene sceneID="dbO-JC-y9d">
+            <objects>
+                <viewController storyboardIdentifier="Welcome" id="t2f-MF-EUr" customClass="WelcomeViewController" customModule="Ketch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WIO-rZ-AJq"/>
+                        <viewControllerLayoutGuide type="bottom" id="uUt-Fs-0Yw"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hDt-oQ-y7E">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sprite-sun" translatesAutoresizingMaskIntoConstraints="NO" id="FB1-Jp-aDw">
+                                <rect key="frame" x="262" y="0.0" width="218" height="186"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sprite-cloud-1" translatesAutoresizingMaskIntoConstraints="NO" id="eGq-tG-l7G">
+                                <rect key="frame" x="372" y="38" width="80" height="34"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sprite-cloud-2" translatesAutoresizingMaskIntoConstraints="NO" id="HqM-6X-6fn">
+                                <rect key="frame" x="40" y="87" width="95" height="43"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sprite-cloud-3" translatesAutoresizingMaskIntoConstraints="NO" id="5Qk-40-QRo">
+                                <rect key="frame" x="293" y="64" width="66" height="34"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sprite-cloud-4" translatesAutoresizingMaskIntoConstraints="NO" id="u4P-vD-Hk1">
+                                <rect key="frame" x="254" y="121" width="95" height="44"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g77-dS-QgN" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="283" width="600" height="580"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ketch-large" translatesAutoresizingMaskIntoConstraints="NO" id="AII-hw-URZ">
+                                <rect key="frame" x="262" y="211" width="77" height="80"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WELCOME ABOARD!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALd-iX-x5H" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="176" y="321" width="249" height="25"/>
+                                <fontDescription key="fontDescription" name="TransatTextBlack" family="Transat Text" pointSize="25"/>
+                                <color key="textColor" red="0.94003820419999995" green="0.98082369570000005" blue="0.96848088499999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="TransatTextBlack"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontKern">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="orQ-ch-jON" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="157" y="366" width="286" height="119"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Thanks for waiting, we’re really excited to have you on board.
+Set sail to get a date, have fun, and find the One.</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="21" name="TransatTextStandard"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" paragraphSpacing="15" minimumLineHeight="26"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="21"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uUT-hz-Sfl" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="175" y="505" width="250" height="55"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="H5J-ha-3AY"/>
+                                    <constraint firstAttribute="width" constant="250" id="diq-AF-bhe"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TransatTextBlack" family="Transat Text" pointSize="20"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Set Sail">
+                                    <color key="titleColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="28"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="finishWelcome:" destination="t2f-MF-EUr" eventType="touchUpInside" id="SYE-uo-eUi"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94003820419311523" green="0.98082369565963745" blue="0.96848088502883911" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="g77-dS-QgN" secondAttribute="trailing" id="09D-eg-JRr"/>
+                            <constraint firstItem="AII-hw-URZ" firstAttribute="top" relation="greaterThanOrEqual" secondItem="FB1-Jp-aDw" secondAttribute="bottom" id="1WQ-Z2-AhE"/>
+                            <constraint firstItem="uUt-Fs-0Yw" firstAttribute="top" secondItem="uUT-hz-Sfl" secondAttribute="bottom" constant="40" id="3B4-kt-BbI"/>
+                            <constraint firstItem="5Qk-40-QRo" firstAttribute="top" secondItem="FB1-Jp-aDw" secondAttribute="top" constant="64" id="6Xj-K6-FNT"/>
+                            <constraint firstItem="FB1-Jp-aDw" firstAttribute="bottom" secondItem="HqM-6X-6fn" secondAttribute="bottom" constant="56" id="8tq-H1-u0A"/>
+                            <constraint firstItem="g77-dS-QgN" firstAttribute="top" secondItem="AII-hw-URZ" secondAttribute="bottom" constant="-8" id="BK7-Q7-eoz"/>
+                            <constraint firstItem="orQ-ch-jON" firstAttribute="top" secondItem="ALd-iX-x5H" secondAttribute="bottom" constant="20" id="CWN-2L-hos"/>
+                            <constraint firstAttribute="centerX" secondItem="ALd-iX-x5H" secondAttribute="centerX" id="ECa-QC-NIi"/>
+                            <constraint firstItem="ALd-iX-x5H" firstAttribute="top" secondItem="AII-hw-URZ" secondAttribute="bottom" constant="30" id="Py0-zI-eOT"/>
+                            <constraint firstAttribute="centerX" secondItem="orQ-ch-jON" secondAttribute="centerX" id="YPI-yv-Msd"/>
+                            <constraint firstItem="HqM-6X-6fn" firstAttribute="leading" secondItem="hDt-oQ-y7E" secondAttribute="leading" constant="40" id="Z6C-Dk-RcE"/>
+                            <constraint firstItem="FB1-Jp-aDw" firstAttribute="bottom" secondItem="u4P-vD-Hk1" secondAttribute="bottom" constant="21" id="bqF-I7-FzI"/>
+                            <constraint firstItem="AII-hw-URZ" firstAttribute="leading" secondItem="FB1-Jp-aDw" secondAttribute="leading" id="foI-FC-Jlt"/>
+                            <constraint firstAttribute="centerY" secondItem="AII-hw-URZ" secondAttribute="centerY" priority="249" constant="40" id="h8v-qL-HtQ"/>
+                            <constraint firstAttribute="centerX" secondItem="uUT-hz-Sfl" secondAttribute="centerX" id="jE1-pI-yFx"/>
+                            <constraint firstItem="FB1-Jp-aDw" firstAttribute="top" secondItem="WIO-rZ-AJq" secondAttribute="bottom" priority="749" id="mGX-zU-MLq"/>
+                            <constraint firstAttribute="centerX" secondItem="AII-hw-URZ" secondAttribute="centerX" id="mXQ-pm-YPu"/>
+                            <constraint firstItem="uUT-hz-Sfl" firstAttribute="top" secondItem="orQ-ch-jON" secondAttribute="bottom" constant="20" id="qE0-tT-W8f"/>
+                            <constraint firstItem="eGq-tG-l7G" firstAttribute="leading" secondItem="FB1-Jp-aDw" secondAttribute="leading" constant="110" id="xPn-eE-YnX"/>
+                            <constraint firstItem="AII-hw-URZ" firstAttribute="leading" secondItem="u4P-vD-Hk1" secondAttribute="leading" constant="8" id="xbn-Cw-3aO"/>
+                            <constraint firstItem="g77-dS-QgN" firstAttribute="leading" secondItem="hDt-oQ-y7E" secondAttribute="leading" id="yhA-yW-2wf"/>
+                            <constraint firstItem="eGq-tG-l7G" firstAttribute="top" secondItem="FB1-Jp-aDw" secondAttribute="top" constant="38" id="ywJ-zc-Dn9"/>
+                            <constraint firstItem="5Qk-40-QRo" firstAttribute="leading" secondItem="FB1-Jp-aDw" secondAttribute="leading" constant="31" id="zpb-VD-8B0"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="boatView" destination="AII-hw-URZ" id="oN1-G9-4cL"/>
+                        <outletCollection property="cloudViews" destination="eGq-tG-l7G" collectionClass="NSMutableArray" id="bm9-eO-Chh"/>
+                        <outletCollection property="cloudViews" destination="HqM-6X-6fn" collectionClass="NSMutableArray" id="MG7-1G-Ctn"/>
+                        <outletCollection property="cloudViews" destination="5Qk-40-QRo" collectionClass="NSMutableArray" id="jRk-0a-1EA"/>
+                        <outletCollection property="cloudViews" destination="u4P-vD-Hk1" id="bfk-nf-vt9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ud1-ZM-sKr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="69" y="1226"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="ketch-large" width="77" height="80"/>
+        <image name="sprite-cloud-1" width="80" height="34"/>
+        <image name="sprite-cloud-2" width="95" height="43"/>
+        <image name="sprite-cloud-3" width="66" height="34"/>
+        <image name="sprite-cloud-4" width="95" height="44"/>
+        <image name="sprite-sun" width="218" height="186"/>
+    </resources>
 </document>
