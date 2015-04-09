@@ -16,6 +16,8 @@ class GameViewController : BaseViewController {
     @IBOutlet var bubbles : [CandidateBubble]!
     @IBOutlet weak var helpLabel: DesignableLabel!
     @IBOutlet weak var confirmButton: DesignableButton!
+
+    private var prelayoutBubbleCenters : [(CandidateBubble, CGPoint)]?
     
     var dynamics : UIDynamicAnimator!
     var targets : [SnapTarget]!
@@ -51,13 +53,19 @@ class GameViewController : BaseViewController {
     }
     
     // Setup the game board once target positions can be acquired from autolayout
-    // If game is already setup then use the acquired target positions to override autolayout
+    // If game is already setup then opt-out of autolayout
+
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        prelayoutBubbleCenters = bubbles.map { ($0, $0.center) }
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if targets == nil {
             setupGame()
         } else {
-            targets.map { $0.bubble?.center = $0.center }
+            prelayoutBubbleCenters?.map { (bubble, center) in bubble.center = center }
         }
     }
     
@@ -102,7 +110,19 @@ class GameViewController : BaseViewController {
             placeholderForTarget(target)?.animateEmphasis(true, delay: 0.2)
         }
         
-        confirmButton.setHiddenAnimated(hidden: !readyToConfirm, delay: 0.1)
+        confirmButton.setHiddenAnimated(hidden: !readyToConfirm, delay: 0.3)
+    }
+    
+    private func showHelpForTarget(target: SnapTarget?) {
+        let helpText = target?.choice.map { (choice) -> String in
+            switch choice {
+            case .Yes:   return LS(R.Strings.marryPrompt)
+            case .No:    return LS(R.Strings.skipPrompt)
+            case .Maybe: return LS(R.Strings.snoozePrompt)
+            }
+        }
+        helpLabel.rawText = helpText ?? helpLabel.rawText
+        helpLabel.setHiddenAnimated(hidden: helpText == nil, duration: 0.3)
     }
     
     func handleBubblePan(pan: UIPanGestureRecognizer) {
@@ -124,12 +144,16 @@ class GameViewController : BaseViewController {
         case .Changed:
             // Update Drag
             bubble.drag?.anchorPoint = location
+            // Show help text
+            showHelpForTarget(closestTarget(bubble.center))
         case .Ended:
             // Add Snap
             let target = closestTarget(bubble.center + pan.velocityInView(view) * 0.1)
             assignBubbleToTarget(bubble, target: target)
             // Remove Drag
             dynamics.removeBehavior(bubble.drag)
+            // Hide help text
+            showHelpForTarget(nil)
         default:
             break
         }
