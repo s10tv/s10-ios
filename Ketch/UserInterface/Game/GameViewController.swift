@@ -25,6 +25,7 @@ class GameViewController : BaseViewController {
     var candidates : [Candidate]! {
         willSet { assert(candidates == nil, "candidates are immutable") }
     }
+    var tutorial: GameTutorial?
     
     override func commonInit() {
         hideKetchBoat = false
@@ -40,6 +41,21 @@ class GameViewController : BaseViewController {
             bubble.whenTapped(handleBubbleTap)
             bubble.whenPanned(handleBubblePan)
         }
+    }
+    
+    // Hooks for game tutorial
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if UD[.bGameTutorialMode].bool! {
+            tutorial = GameTutorial(gameVC: self)
+            tutorial?.setupTutorial()
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        tutorial?.startTutorial()
     }
     
     // MARK: - Game Layout Setup
@@ -151,6 +167,9 @@ class GameViewController : BaseViewController {
             dynamics.removeBehavior(bubble.drag)
             // Hide help text
             showHelpForTarget(nil)
+            // Stop any tutorial in progress
+            tutorial?.teardownTutorial()
+            tutorial = nil
         default:
             break
         }

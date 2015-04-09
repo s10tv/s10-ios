@@ -78,6 +78,12 @@ func += <T>(inout array: [T], element: T) {
 }
 
 extension Array {
+    
+    func each(block: T -> ()) {
+        for element in self {
+            block(element)
+        }
+    }
 
     func mapOptional<U>(transform: T -> U?) -> [U] {
         return Ketch.mapOptional(self, transform)

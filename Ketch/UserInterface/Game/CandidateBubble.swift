@@ -8,6 +8,8 @@
 
 import UIKit
 
+// TODO: Seems like candidateBubble is better implemented as a 
+// subclass of UIControl rather than UIView. 
 class CandidateBubble : BaseView {
     
     let avatar = UserAvatarView()
