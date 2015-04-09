@@ -171,7 +171,7 @@ SAILED FOR TODAY.</string>
         <!--Game View Controller-->
         <scene sceneID="5fm-o7-1g2">
             <objects>
-                <viewController storyboardIdentifier="Game" id="brw-cx-YUO" customClass="GameViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Game" id="brw-cx-YUO" customClass="GameViewController" customModule="Ketch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="SYM-1r-qph"/>
                         <viewControllerLayoutGuide type="bottom" id="f9R-rk-GCL"/>

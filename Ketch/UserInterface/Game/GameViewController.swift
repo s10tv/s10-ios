@@ -8,7 +8,6 @@
 
 import Foundation
 
-@objc(GameViewController)
 class GameViewController : BaseViewController {
     @IBOutlet var navViews: [UIView]!
     @IBOutlet weak var dockBadge: UIImageView!
@@ -16,8 +15,6 @@ class GameViewController : BaseViewController {
     @IBOutlet var bubbles : [CandidateBubble]!
     @IBOutlet weak var helpLabel: DesignableLabel!
     @IBOutlet weak var confirmButton: DesignableButton!
-
-    private var prelayoutBubbleCenters : [(CandidateBubble, CGPoint)]?
     
     var dynamics : UIDynamicAnimator!
     var targets : [SnapTarget]!
@@ -51,7 +48,7 @@ class GameViewController : BaseViewController {
     // If game is already setup then opt-out of autolayout
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        prelayoutBubbleCenters = bubbles.map { ($0, $0.center) }
+        bubbles.map { $0.dynamicCenter = $0.center }
     }
     
     override func viewDidLayoutSubviews() {
@@ -59,7 +56,7 @@ class GameViewController : BaseViewController {
         if targets == nil {
             initialLayoutGame()
         } else {
-            prelayoutBubbleCenters?.map { (bubble, center) in bubble.center = center }
+            bubbles.map { $0.center = $0.dynamicCenter! }
         }
     }
     

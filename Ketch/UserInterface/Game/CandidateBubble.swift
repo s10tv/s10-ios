@@ -12,7 +12,9 @@ class CandidateBubble : BaseView {
     
     let avatar = UserAvatarView()
     let scaleDuration : NSTimeInterval = 0.2
-    
+
+    // For use by GameVC
+    var dynamicCenter : CGPoint?
     var drag : UIAttachmentBehavior?
     var candidate: Candidate? {
         didSet { avatar.user = candidate?.user }
