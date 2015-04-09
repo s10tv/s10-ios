@@ -11,12 +11,6 @@ import Foundation
 @objc(SignupViewController)
 class SignupViewController : BaseViewController {
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let permVC = segue.destinationViewController as? PermissionViewController {
-            permVC.permissionType = .Notifications
-        }
-    }
-    
     // MARK: Actions
     
     @IBAction func viewTerms(sender: AnyObject) {

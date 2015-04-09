@@ -19,14 +19,6 @@
 "It's a Ketch!" = "It's a Ketch!";
 "SingleMatchPrompt" = "%@ likes you! Your dreamboat will sail away in three days. Get on it before %@ disappears for good!";
 
-/* Permission Screen */
-"PermFacebookButtonTitle" = "Facebook access";
-"PermNotificationsButtonTitle" = "Enable notifications";
-"PermLocationButtonTitle" = "Grant location access";
-"PermFacebookExplanation" = "We use your Facebook profile to get photos and bio. We never post without your permission.";
-"PermNotificationsExplanation" = "We send you notifications to let you know when you’ve got a message or somone said they liked you too.";
-"PermLocationExplanation" = "We use your rough location to find you matches nearby. We never share your address with anyone.";
-
 /* Profile Screen */
 "MoreSheetReport" = "Report %@";
 "MoreSheetCancel" = "Cancel";

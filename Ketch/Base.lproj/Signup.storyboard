@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dFw-q9-bre">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
@@ -12,44 +12,120 @@
             <string>TransatTextBlack</string>
             <string>TransatTextBlack</string>
             <string>TransatTextBlack</string>
+            <string>TransatTextBlack</string>
+            <string>TransatTextBlack</string>
+            <string>TransatTextBlack</string>
+        </mutableArray>
+        <mutableArray key="TransatTextBold.otf">
+            <string>TransatTextBold</string>
+            <string>TransatTextBold</string>
+            <string>TransatTextBold</string>
         </mutableArray>
     </customFonts>
     <scenes>
         <!--Signup View Controller-->
         <scene sceneID="mSO-WA-QEY">
             <objects>
-                <viewController id="dFw-q9-bre" customClass="SignupViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Signup" id="dFw-q9-bre" customClass="SignupViewController" sceneMemberID="viewController">
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
-                        <segue destination="6g2-ww-E2T" kind="show" identifier="SignupToNotificationsPerm" id="j1A-QJ-3Rg"/>
+                        <segue destination="6g2-ww-E2T" kind="show" identifier="SignupToFacebookPerm" id="j1A-QJ-3Rg"/>
+                        <segue destination="AWi-zb-5Lc" kind="show" identifier="SignupToNotificationsPerm" id="ssJ-ur-kCT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lbl-0u-moe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-542" y="274"/>
         </scene>
-        <!--Notifications Permission-->
+        <!--Facebook Permission View Controller-->
         <scene sceneID="nfm-31-v0t">
             <objects>
-                <viewController id="6g2-ww-E2T" userLabel="Notifications Permission" customClass="PermissionViewController" sceneMemberID="viewController">
-                    <connections>
-                        <segue destination="e3b-KT-lKM" kind="show" identifier="NotificationsPermToLocationPerm" id="rzT-EA-iBU"/>
-                    </connections>
+                <viewController storyboardIdentifier="FacebookPerm" id="6g2-ww-E2T" customClass="FacebookPermissionViewController" customModule="Ketch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zKl-LE-ky8"/>
+                        <viewControllerLayoutGuide type="bottom" id="0cD-hk-ezG"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BXT-mU-R8X">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kor-ti-FrJ" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="60" width="600" height="540"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Almost there!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PZp-cU-jIx">
+                                <rect key="frame" x="236" y="20" width="129" height="21"/>
+                                <fontDescription key="fontDescription" name="TransatTextBold" family="Transat Text" pointSize="21"/>
+                                <color key="textColor" red="0.092987515029999995" green="0.64821720120000004" blue="0.65024715659999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="perm-facebook-icon" translatesAutoresizingMaskIntoConstraints="NO" id="R0i-TY-bNB">
+                                <rect key="frame" x="225" y="192" width="175" height="157"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g0z-bD-uKM" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="160" y="514" width="280" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="diC-kc-v0Q"/>
+                                    <constraint firstAttribute="width" constant="280" id="x9D-CQ-hHK"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TransatTextBlack" family="Transat Text" pointSize="21"/>
+                                <state key="normal" title="Facebook access">
+                                    <color key="titleColor" red="0.94003820419999995" green="0.98082369570000005" blue="0.96848088499999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.94003820419999995" green="0.98082369570000005" blue="0.96848088499999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="28"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="xEl-KE-QAO" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="153" y="379" width="295" height="78"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="We use your Facebook profile to get photos and bio. We never post without your permission.">
+                                        <attributes>
+                                            <color key="NSColor" red="0.94003820419311523" green="0.98082369565963745" blue="0.96848088502883911" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="21" name="TransatTextStandard"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" minimumLineHeight="26"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="21"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94003820419311523" green="0.98082369565963745" blue="0.96848088502883911" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="R0i-TY-bNB" firstAttribute="centerX" secondItem="BXT-mU-R8X" secondAttribute="centerX" constant="12" id="5YS-zg-5Yd"/>
+                            <constraint firstItem="xEl-KE-QAO" firstAttribute="top" secondItem="R0i-TY-bNB" secondAttribute="bottom" priority="749" constant="30" id="9nV-Qv-ClS"/>
+                            <constraint firstItem="R0i-TY-bNB" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Kor-ti-FrJ" secondAttribute="top" constant="40" id="Cv5-ST-QEZ"/>
+                            <constraint firstAttribute="centerY" secondItem="R0i-TY-bNB" secondAttribute="centerY" priority="748" constant="30" id="FGl-yi-uiH"/>
+                            <constraint firstItem="0cD-hk-ezG" firstAttribute="top" secondItem="Kor-ti-FrJ" secondAttribute="bottom" id="Hsd-lb-rmP"/>
+                            <constraint firstItem="PZp-cU-jIx" firstAttribute="top" secondItem="BXT-mU-R8X" secondAttribute="top" constant="20" id="NKS-NY-NbJ"/>
+                            <constraint firstItem="Kor-ti-FrJ" firstAttribute="leading" secondItem="BXT-mU-R8X" secondAttribute="leading" id="S6l-fS-aG6"/>
+                            <constraint firstAttribute="bottom" secondItem="g0z-bD-uKM" secondAttribute="bottom" constant="30" id="WJX-dz-gci"/>
+                            <constraint firstAttribute="centerX" secondItem="PZp-cU-jIx" secondAttribute="centerX" id="Y0V-Br-Dby"/>
+                            <constraint firstItem="g0z-bD-uKM" firstAttribute="top" relation="greaterThanOrEqual" secondItem="xEl-KE-QAO" secondAttribute="bottom" constant="40" id="ZxZ-HA-XqY"/>
+                            <constraint firstAttribute="trailing" secondItem="Kor-ti-FrJ" secondAttribute="trailing" id="bcJ-Sm-6fx"/>
+                            <constraint firstAttribute="centerX" secondItem="xEl-KE-QAO" secondAttribute="centerX" id="ftY-uS-qhQ"/>
+                            <constraint firstItem="Kor-ti-FrJ" firstAttribute="top" secondItem="zKl-LE-ky8" secondAttribute="bottom" constant="60" id="ggf-k6-SFy"/>
+                            <constraint firstAttribute="centerX" secondItem="g0z-bD-uKM" secondAttribute="centerX" id="v1Z-IE-yK8"/>
+                        </constraints>
+                    </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MQh-h4-WxM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="116" y="274"/>
-        </scene>
-        <!--Location Permission-->
-        <scene sceneID="TvB-7P-KPw">
-            <objects>
-                <viewController id="e3b-KT-lKM" userLabel="Location Permission" customClass="PermissionViewController" sceneMemberID="viewController">
-                    <connections>
-                        <segue destination="oGT-wN-ozl" kind="show" identifier="LocationPermToWaitlist" id="wUj-eb-VNn"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="idG-xr-QfV" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="790" y="274"/>
+            <point key="canvasLocation" x="147" y="-423"/>
         </scene>
         <!--Welcome View Controller-->
         <scene sceneID="dbO-JC-y9d">
@@ -78,14 +154,14 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sprite-cloud-4" translatesAutoresizingMaskIntoConstraints="NO" id="u4P-vD-Hk1">
                                 <rect key="frame" x="254" y="121" width="95" height="44"/>
                             </imageView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g77-dS-QgN" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g77-dS-QgN" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="283" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ketch-large" translatesAutoresizingMaskIntoConstraints="NO" id="AII-hw-URZ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ketch-large" translatesAutoresizingMaskIntoConstraints="NO" id="AII-hw-URZ">
                                 <rect key="frame" x="262" y="211" width="77" height="80"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="WELCOME ABOARD!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALd-iX-x5H" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WELCOME ABOARD!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALd-iX-x5H" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="176" y="321" width="249" height="25"/>
                                 <fontDescription key="fontDescription" name="TransatTextBlack" family="Transat Text" pointSize="25"/>
                                 <color key="textColor" red="0.94003820419999995" green="0.98082369570000005" blue="0.96848088499999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -160,6 +236,7 @@ Set sail to get a date, have fun, and find the One.</string>
                             <constraint firstItem="orQ-ch-jON" firstAttribute="top" secondItem="ALd-iX-x5H" secondAttribute="bottom" constant="20" id="CWN-2L-hos"/>
                             <constraint firstAttribute="centerX" secondItem="ALd-iX-x5H" secondAttribute="centerX" id="ECa-QC-NIi"/>
                             <constraint firstItem="ALd-iX-x5H" firstAttribute="top" secondItem="AII-hw-URZ" secondAttribute="bottom" constant="30" id="Py0-zI-eOT"/>
+                            <constraint firstItem="uUt-Fs-0Yw" firstAttribute="top" secondItem="g77-dS-QgN" secondAttribute="bottom" id="W1a-wG-9KQ"/>
                             <constraint firstAttribute="centerX" secondItem="orQ-ch-jON" secondAttribute="centerX" id="YPI-yv-Msd"/>
                             <constraint firstItem="HqM-6X-6fn" firstAttribute="leading" secondItem="hDt-oQ-y7E" secondAttribute="leading" constant="40" id="Z6C-Dk-RcE"/>
                             <constraint firstItem="FB1-Jp-aDw" firstAttribute="bottom" secondItem="u4P-vD-Hk1" secondAttribute="bottom" constant="21" id="bqF-I7-FzI"/>
@@ -175,6 +252,11 @@ Set sail to get a date, have fun, and find the One.</string>
                             <constraint firstItem="eGq-tG-l7G" firstAttribute="top" secondItem="FB1-Jp-aDw" secondAttribute="top" constant="38" id="ywJ-zc-Dn9"/>
                             <constraint firstItem="5Qk-40-QRo" firstAttribute="leading" secondItem="FB1-Jp-aDw" secondAttribute="leading" constant="31" id="zpb-VD-8B0"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="W1a-wG-9KQ"/>
+                            </mask>
+                        </variation>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
@@ -188,7 +270,7 @@ Set sail to get a date, have fun, and find the One.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ud1-ZM-sKr" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="V9X-bo-kT5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="116" y="1024"/>
+            <point key="canvasLocation" x="147" y="1024"/>
         </scene>
         <!--Waitlist View Controller-->
         <scene sceneID="hlQ-Up-Dw0">
@@ -232,14 +314,14 @@ Set sail to get a date, have fun, and find the One.</string>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sprite-cloud-4" translatesAutoresizingMaskIntoConstraints="NO" id="h6K-Ei-eDJ">
                                 <rect key="frame" x="254" y="121" width="95" height="44"/>
                             </imageView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4i8-hs-vhM" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4i8-hs-vhM" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="303" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ketch-large" translatesAutoresizingMaskIntoConstraints="NO" id="tu0-Pb-yyF">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ketch-large" translatesAutoresizingMaskIntoConstraints="NO" id="tu0-Pb-yyF">
                                 <rect key="frame" x="262" y="231" width="77" height="80"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ALL ABOARD!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXe-bZ-bUx" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALL ABOARD!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXe-bZ-bUx" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="216" y="341" width="168" height="25"/>
                                 <fontDescription key="fontDescription" name="TransatTextBlack" family="Transat Text" pointSize="25"/>
                                 <color key="textColor" red="0.94003820419999995" green="0.98082369570000005" blue="0.96848088499999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -254,7 +336,7 @@ Set sail to get a date, have fun, and find the One.</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="TNj-LU-osl" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="TNj-LU-osl" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="150" y="386" width="300" height="99"/>
                                 <attributedString key="attributedText">
                                     <fragment>
@@ -314,6 +396,7 @@ Hold tight and you'll be finding the one before you know it.</string>
                             <constraint firstAttribute="centerY" secondItem="tu0-Pb-yyF" secondAttribute="centerY" priority="249" constant="40" id="KEp-ha-H29"/>
                             <constraint firstItem="TNj-LU-osl" firstAttribute="top" secondItem="uXe-bZ-bUx" secondAttribute="bottom" constant="20" id="NbS-4k-88y"/>
                             <constraint firstItem="tu0-Pb-yyF" firstAttribute="leading" secondItem="h6K-Ei-eDJ" secondAttribute="leading" constant="8" id="QMg-Oh-qwQ"/>
+                            <constraint firstItem="RUv-dp-RGL" firstAttribute="top" secondItem="4i8-hs-vhM" secondAttribute="bottom" id="QXe-eG-D6O"/>
                             <constraint firstItem="tu0-Pb-yyF" firstAttribute="leading" secondItem="mGW-vN-lRk" secondAttribute="leading" id="UfJ-rb-enq"/>
                             <constraint firstAttribute="centerX" secondItem="NtQ-p1-hGT" secondAttribute="centerX" id="Y49-Lz-2Vq"/>
                             <constraint firstAttribute="centerX" secondItem="uXe-bZ-bUx" secondAttribute="centerX" id="ZCk-WP-LS5"/>
@@ -331,6 +414,11 @@ Hold tight and you'll be finding the one before you know it.</string>
                             <constraint firstItem="Je1-ID-27x" firstAttribute="leading" secondItem="TYa-nE-Vqe" secondAttribute="leading" id="smm-RD-vEe"/>
                             <constraint firstItem="mGW-vN-lRk" firstAttribute="bottom" secondItem="h6K-Ei-eDJ" secondAttribute="bottom" constant="21" id="tlz-g9-f1O"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="QXe-eG-D6O"/>
+                            </mask>
+                        </variation>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
@@ -381,9 +469,198 @@ Hold tight and you'll be finding the one before you know it.</string>
             </objects>
             <point key="canvasLocation" x="-1190" y="1199"/>
         </scene>
+        <!--Notifications Permission View Controller-->
+        <scene sceneID="Tlz-Zo-xia">
+            <objects>
+                <viewController storyboardIdentifier="NotificationsPerm" id="AWi-zb-5Lc" customClass="NotificationsPermissionViewController" customModule="Ketch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nvs-vr-mAU"/>
+                        <viewControllerLayoutGuide type="bottom" id="kdg-1W-Qgg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ZqN-EL-jtA">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="b73-nW-bN6" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="60" width="600" height="540"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Almost there!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hCa-ln-2th">
+                                <rect key="frame" x="236" y="20" width="129" height="21"/>
+                                <fontDescription key="fontDescription" name="TransatTextBold" family="Transat Text" pointSize="21"/>
+                                <color key="textColor" red="0.092987515029999995" green="0.64821720120000004" blue="0.65024715659999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="perm-notifications-icon" translatesAutoresizingMaskIntoConstraints="NO" id="bFg-uW-FwT">
+                                <rect key="frame" x="223" y="188" width="173" height="164"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xw9-eU-4ee" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="160" y="514" width="280" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="LSL-gv-ad6"/>
+                                    <constraint firstAttribute="width" constant="280" id="Rta-o2-CGa"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TransatTextBlack" family="Transat Text" pointSize="21"/>
+                                <state key="normal" title="Enable notifications">
+                                    <color key="titleColor" red="0.94003820419999995" green="0.98082369570000005" blue="0.96848088499999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.94003820419999995" green="0.98082369570000005" blue="0.96848088499999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="28"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="zTe-pu-T6J" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="154" y="382" width="292" height="104"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="We send you notifications to let you know when you’ve got a message or somone said they liked you too.">
+                                        <attributes>
+                                            <color key="NSColor" red="0.94003820419311523" green="0.98082369565963745" blue="0.96848088502883911" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="21" name="TransatTextStandard"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" minimumLineHeight="26"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="21"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94003820419311523" green="0.98082369565963745" blue="0.96848088502883911" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="zTe-pu-T6J" secondAttribute="centerX" id="2Jz-eY-YTA"/>
+                            <constraint firstAttribute="centerX" secondItem="hCa-ln-2th" secondAttribute="centerX" id="9mp-S2-MEV"/>
+                            <constraint firstAttribute="centerY" secondItem="bFg-uW-FwT" secondAttribute="centerY" priority="748" constant="30" id="CQD-nN-jy1"/>
+                            <constraint firstItem="bFg-uW-FwT" firstAttribute="top" relation="greaterThanOrEqual" secondItem="b73-nW-bN6" secondAttribute="top" constant="40" id="DjE-NG-cCe"/>
+                            <constraint firstItem="zTe-pu-T6J" firstAttribute="top" secondItem="bFg-uW-FwT" secondAttribute="bottom" priority="749" constant="30" id="EkG-yu-9k8"/>
+                            <constraint firstItem="hCa-ln-2th" firstAttribute="top" secondItem="ZqN-EL-jtA" secondAttribute="top" constant="20" id="WAT-hW-atT"/>
+                            <constraint firstItem="b73-nW-bN6" firstAttribute="leading" secondItem="ZqN-EL-jtA" secondAttribute="leading" id="aLu-Ej-bhF"/>
+                            <constraint firstItem="kdg-1W-Qgg" firstAttribute="top" secondItem="b73-nW-bN6" secondAttribute="bottom" id="fcM-Pu-WTc"/>
+                            <constraint firstAttribute="centerX" secondItem="xw9-eU-4ee" secondAttribute="centerX" id="kuI-ng-cuz"/>
+                            <constraint firstAttribute="trailing" secondItem="b73-nW-bN6" secondAttribute="trailing" id="nrn-w2-aHz"/>
+                            <constraint firstItem="b73-nW-bN6" firstAttribute="top" secondItem="nvs-vr-mAU" secondAttribute="bottom" constant="60" id="oyJ-s3-0KE"/>
+                            <constraint firstItem="bFg-uW-FwT" firstAttribute="centerX" secondItem="ZqN-EL-jtA" secondAttribute="centerX" constant="9" id="rXS-PH-9Sd"/>
+                            <constraint firstItem="xw9-eU-4ee" firstAttribute="top" relation="greaterThanOrEqual" secondItem="zTe-pu-T6J" secondAttribute="bottom" constant="20" id="wei-y8-MUE"/>
+                            <constraint firstAttribute="bottom" secondItem="xw9-eU-4ee" secondAttribute="bottom" constant="30" id="xcW-mE-uxH"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="8eb-bN-AxK" kind="show" identifier="NotificationsPermToLocationPerm" id="s5f-Bv-mhj"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ndd-P1-bdN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="147" y="274"/>
+        </scene>
+        <!--Location Permission View Controller-->
+        <scene sceneID="WAE-ml-WpW">
+            <objects>
+                <viewController storyboardIdentifier="LocationPerm" id="8eb-bN-AxK" customClass="LocationPermissionViewController" customModule="Ketch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ZDZ-C4-aTR"/>
+                        <viewControllerLayoutGuide type="bottom" id="aeY-Ja-x5o"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kcW-h1-Gqy">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UAM-C5-yGz" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="60" width="600" height="540"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Almost there!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ljc-Iu-cTN">
+                                <rect key="frame" x="236" y="20" width="129" height="21"/>
+                                <fontDescription key="fontDescription" name="TransatTextBold" family="Transat Text" pointSize="21"/>
+                                <color key="textColor" red="0.092987515029999995" green="0.64821720120000004" blue="0.65024715659999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="perm-location-icon" translatesAutoresizingMaskIntoConstraints="NO" id="4oQ-DY-wON">
+                                <rect key="frame" x="224" y="195" width="153" height="150"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wsP-BZ-4qN" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="160" y="514" width="280" height="56"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="56" id="60g-3J-rTs"/>
+                                    <constraint firstAttribute="width" constant="280" id="b97-gZ-Vdr"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TransatTextBlack" family="Transat Text" pointSize="21"/>
+                                <state key="normal" title="Grant location access">
+                                    <color key="titleColor" red="0.94003820419999995" green="0.98082369570000005" blue="0.96848088499999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.94003820419999995" green="0.98082369570000005" blue="0.96848088499999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="28"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="47F-Un-adg" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="161" y="375" width="278" height="104"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="We use your rough location to find you matches nearby. We never share your address with anyone.">
+                                        <attributes>
+                                            <color key="NSColor" red="0.94003820419311523" green="0.98082369565963745" blue="0.96848088502883911" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="21" name="TransatTextStandard"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" minimumLineHeight="26"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="21"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.94003820419311523" green="0.98082369565963745" blue="0.96848088502883911" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Ljc-Iu-cTN" firstAttribute="top" secondItem="kcW-h1-Gqy" secondAttribute="top" constant="20" id="7Cc-XK-8wC"/>
+                            <constraint firstAttribute="centerX" secondItem="wsP-BZ-4qN" secondAttribute="centerX" id="Ein-Qs-Ch0"/>
+                            <constraint firstItem="UAM-C5-yGz" firstAttribute="leading" secondItem="kcW-h1-Gqy" secondAttribute="leading" id="GJX-6y-iQ7"/>
+                            <constraint firstItem="wsP-BZ-4qN" firstAttribute="top" relation="greaterThanOrEqual" secondItem="47F-Un-adg" secondAttribute="bottom" constant="20" id="LhJ-XT-Ccg"/>
+                            <constraint firstAttribute="centerY" secondItem="4oQ-DY-wON" secondAttribute="centerY" priority="748" constant="30" id="RTZ-ba-HkX"/>
+                            <constraint firstItem="UAM-C5-yGz" firstAttribute="top" secondItem="ZDZ-C4-aTR" secondAttribute="bottom" constant="60" id="Sf4-rF-qBa"/>
+                            <constraint firstItem="aeY-Ja-x5o" firstAttribute="top" secondItem="UAM-C5-yGz" secondAttribute="bottom" id="UjA-bT-OTE"/>
+                            <constraint firstAttribute="bottom" secondItem="wsP-BZ-4qN" secondAttribute="bottom" constant="30" id="VJw-ju-hAH"/>
+                            <constraint firstAttribute="centerX" secondItem="Ljc-Iu-cTN" secondAttribute="centerX" id="fdP-RD-zDh"/>
+                            <constraint firstItem="47F-Un-adg" firstAttribute="top" secondItem="4oQ-DY-wON" secondAttribute="bottom" priority="749" constant="30" id="gDo-3M-e34"/>
+                            <constraint firstItem="4oQ-DY-wON" firstAttribute="top" relation="greaterThanOrEqual" secondItem="UAM-C5-yGz" secondAttribute="top" constant="40" id="gOS-aL-S03"/>
+                            <constraint firstAttribute="trailing" secondItem="UAM-C5-yGz" secondAttribute="trailing" id="sKf-Yt-VVB"/>
+                            <constraint firstAttribute="centerX" secondItem="47F-Un-adg" secondAttribute="centerX" id="vjX-cd-aOZ"/>
+                            <constraint firstItem="4oQ-DY-wON" firstAttribute="centerX" secondItem="kcW-h1-Gqy" secondAttribute="centerX" id="x44-8X-Ax4"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <segue destination="oGT-wN-ozl" kind="show" identifier="LocationPermToWaitlist" id="R4o-7C-f8K"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rGl-m5-QNQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="833" y="274"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ketch-large" width="77" height="80"/>
+        <image name="perm-facebook-icon" width="175" height="157"/>
+        <image name="perm-location-icon" width="153" height="150"/>
+        <image name="perm-notifications-icon" width="173" height="164"/>
         <image name="sprite-cloud-1" width="80" height="34"/>
         <image name="sprite-cloud-2" width="95" height="43"/>
         <image name="sprite-cloud-3" width="66" height="34"/>

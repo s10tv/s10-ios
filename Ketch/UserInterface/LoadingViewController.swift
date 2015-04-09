@@ -18,6 +18,11 @@ class LoadingViewController : BaseViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         
+//        let vc = UIStoryboard(name: "Signup", bundle: nil).instantiateViewControllerWithIdentifier("FacebookPerm") as PermissionViewController
+//        vc.permissionType = .Facebook
+//        navigationController?.pushViewController(vc, animated: true)
+//        return
+        
         Core.flow.getStateMatching({ $0 != .Loading }) { state in
             println("Got new state in loading \(state)")
             switch state {

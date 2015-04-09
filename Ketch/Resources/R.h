@@ -135,18 +135,6 @@ extern const struct R {
         __unsafe_unretained NSString *moreSheetReport;
         /// We use your location to help you find matches!
         __unsafe_unretained NSString *nsLocationWhenInUseUsageDescription;
-        /// Facebook access
-        __unsafe_unretained NSString *permFacebookButtonTitle;
-        /// We use your Facebook profile to get photos and bio. We never post without your permission.
-        __unsafe_unretained NSString *permFacebookExplanation;
-        /// Grant location access
-        __unsafe_unretained NSString *permLocationButtonTitle;
-        /// We use your rough location to find you matches nearby. We never share your address with anyone.
-        __unsafe_unretained NSString *permLocationExplanation;
-        /// Enable notifications
-        __unsafe_unretained NSString *permNotificationsButtonTitle;
-        /// We send you notifications to let you know when you’ve got a message or somone said they liked you too.
-        __unsafe_unretained NSString *permNotificationsExplanation;
         /// Cancel
         __unsafe_unretained NSString *reportAlertCancel;
         /// Confirm

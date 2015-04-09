@@ -62,9 +62,6 @@
 		EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA5634DF1A7741FF00F62B52 /* Ketch.xcdatamodeld */; };
 		EA5FCE461AD6077A000D9B93 /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5FCE451AD6077A000D9B93 /* ProgressIndicator.swift */; };
 		EA5FCE481AD62C1F000D9B93 /* GameTutorialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5FCE471AD62C1F000D9B93 /* GameTutorialController.swift */; };
-		EA6077781ACF6E1E00B3A19A /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6077771ACF6E1E00B3A19A /* PermissionViewController.swift */; };
-		EA60777A1ACF6E2F00B3A19A /* PermissionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA6077791ACF6E2F00B3A19A /* PermissionView.xib */; };
-		EA60777C1ACF796600B3A19A /* PermissionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA60777B1ACF796600B3A19A /* PermissionType.swift */; };
 		EA6650E11AA00999001BA40C /* BaseViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E01AA00999001BA40C /* BaseViews.swift */; };
 		EA6650E61AA00A82001BA40C /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E31AA00A82001BA40C /* WaveView.swift */; };
 		EA6650E81AA00A82001BA40C /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E51AA00A82001BA40C /* UserAvatarView.swift */; };
@@ -116,6 +113,7 @@
 		EACF21661AD70CB300938CD0 /* SwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF21651AD70CB300938CD0 /* SwiftExtensions.swift */; };
 		EACF21681AD7245C00938CD0 /* CloudsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF21671AD7245C00938CD0 /* CloudsViewController.swift */; };
 		EACF216A1AD7255100938CD0 /* WaitlistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF21691AD7255100938CD0 /* WaitlistViewController.swift */; };
+		EACF216C1AD73BBA00938CD0 /* PermissionViewControllers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF216B1AD73BBA00938CD0 /* PermissionViewControllers.swift */; };
 		EAD007FC1AD37236003A260D /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD007FB1AD37236003A260D /* Geometry.swift */; };
 		EAD007FE1AD472B4003A260D /* InstantaneousTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD007FD1AD472B4003A260D /* InstantaneousTransition.swift */; };
 		EAD7B2AB1A9F0BE700FA6740 /* DesignableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */; };
@@ -217,9 +215,6 @@
 		EA5634E01A7741FF00F62B52 /* Ketch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ketch.xcdatamodel; sourceTree = "<group>"; };
 		EA5FCE451AD6077A000D9B93 /* ProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
 		EA5FCE471AD62C1F000D9B93 /* GameTutorialController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTutorialController.swift; sourceTree = "<group>"; };
-		EA6077771ACF6E1E00B3A19A /* PermissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
-		EA6077791ACF6E2F00B3A19A /* PermissionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PermissionView.xib; sourceTree = "<group>"; };
-		EA60777B1ACF796600B3A19A /* PermissionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionType.swift; sourceTree = "<group>"; };
 		EA6650E01AA00999001BA40C /* BaseViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViews.swift; sourceTree = "<group>"; };
 		EA6650E31AA00A82001BA40C /* WaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
 		EA6650E51AA00A82001BA40C /* UserAvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAvatarView.swift; sourceTree = "<group>"; };
@@ -276,6 +271,7 @@
 		EACF21651AD70CB300938CD0 /* SwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftExtensions.swift; sourceTree = "<group>"; };
 		EACF21671AD7245C00938CD0 /* CloudsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudsViewController.swift; sourceTree = "<group>"; };
 		EACF21691AD7255100938CD0 /* WaitlistViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaitlistViewController.swift; sourceTree = "<group>"; };
+		EACF216B1AD73BBA00938CD0 /* PermissionViewControllers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionViewControllers.swift; sourceTree = "<group>"; };
 		EAD007FB1AD37236003A260D /* Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
 		EAD007FD1AD472B4003A260D /* InstantaneousTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstantaneousTransition.swift; sourceTree = "<group>"; };
 		EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableViews.swift; sourceTree = "<group>"; };
@@ -521,19 +517,9 @@
 				EA6650F61AA00B95001BA40C /* User.swift */,
 				EAE915311ACAFC890027C936 /* UserDefaults.swift */,
 				EAAD921C1ACF342C0014BA25 /* Environment.swift */,
-				EA60777B1ACF796600B3A19A /* PermissionType.swift */,
 				EA5634DF1A7741FF00F62B52 /* Ketch.xcdatamodeld */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		EA6077761ACF6E0E00B3A19A /* Permission */ = {
-			isa = PBXGroup;
-			children = (
-				EA6077771ACF6E1E00B3A19A /* PermissionViewController.swift */,
-				EA6077791ACF6E2F00B3A19A /* PermissionView.xib */,
-			);
-			path = Permission;
 			sourceTree = "<group>";
 		};
 		EA6650E21AA00A82001BA40C /* Shared */ = {
@@ -697,12 +683,12 @@
 				EA1970001A83549300FEBA7F /* Settings */,
 				EA1970031A83549300FEBA7F /* Signup */,
 				EA1DA37D1A8D187D00433093 /* NewConnection */,
-				EA6077761ACF6E0E00B3A19A /* Permission */,
 				EAF4D74F1A79AA5E00D35330 /* RootViewController.swift */,
 				EA72FB1C1AD1805B009F853F /* LoadingViewController.swift */,
 				EACF21691AD7255100938CD0 /* WaitlistViewController.swift */,
 				EA6E56531AD2152500B12F2B /* NoGameViewController.swift */,
 				EACF21631AD707C800938CD0 /* WelcomeViewController.swift */,
+				EACF216B1AD73BBA00938CD0 /* PermissionViewControllers.swift */,
 				EA396FE91AB51BED009EB60B /* RootView.swift */,
 				EAE63D791AB3407D004A74E6 /* RootView.xib */,
 			);
@@ -829,7 +815,6 @@
 				EAE63D7A1AB3407D004A74E6 /* RootView.xib in Resources */,
 				EAF3A4BF1ACA2191001C2943 /* ProfileInfoCell.xib in Resources */,
 				EA1970121A83549300FEBA7F /* EditProfileView.xib in Resources */,
-				EA60777A1ACF6E2F00B3A19A /* PermissionView.xib in Resources */,
 				EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */,
 				EA341D841A8C875500A6077B /* ChatView.xib in Resources */,
 				EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */,
@@ -1002,13 +987,11 @@
 				EA1970131A83549300FEBA7F /* EditProfileViewController.swift in Sources */,
 				EA6650ED1AA00A9C001BA40C /* CoreService.swift in Sources */,
 				EA6650F81AA00B95001BA40C /* _Connection.swift in Sources */,
-				EA60777C1ACF796600B3A19A /* PermissionType.swift in Sources */,
 				EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */,
 				EAF4D7621A79AA5E00D35330 /* RootViewController.swift in Sources */,
 				EAD007FC1AD37236003A260D /* Geometry.swift in Sources */,
 				EA6E56541AD2152500B12F2B /* NoGameViewController.swift in Sources */,
 				EA0FC9361A87DE5800D62625 /* SugarRecordExtension.swift in Sources */,
-				EA6077781ACF6E1E00B3A19A /* PermissionViewController.swift in Sources */,
 				EA72FB2C1AD1B7E1009F853F /* ScrollTransition.swift in Sources */,
 				EA0FC9391A87DE5800D62625 /* Logging.swift in Sources */,
 				EA0FC93C1A87DE5800D62625 /* UIKitExtension.swift in Sources */,
@@ -1035,6 +1018,7 @@
 				EA6650EC1AA00A9C001BA40C /* CandidateService.swift in Sources */,
 				EAAA42871AB24D5F00056EFF /* CandidateBubble.swift in Sources */,
 				EA55F1381AD522C60042CBB2 /* NotificationCenter.swift in Sources */,
+				EACF216C1AD73BBA00938CD0 /* PermissionViewControllers.swift in Sources */,
 				EACF21681AD7245C00938CD0 /* CloudsViewController.swift in Sources */,
 				EA72FB1F1AD180F1009F853F /* NewGameTransition.swift in Sources */,
 				EAAD921F1ACF4EFA0014BA25 /* ProvisioningProfile.swift in Sources */,
