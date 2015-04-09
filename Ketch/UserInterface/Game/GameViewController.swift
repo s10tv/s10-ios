@@ -38,14 +38,14 @@ class GameViewController : BaseViewController {
         super.viewDidLoad()
 
         // Setup bubbles
-        for (i, bubble) in enumerate(bubbles) {
-            bubble.candidate = candidates[i]
-            // TODO: There is obvious memory leak here... Everything is retaining everything
-            bubble.whenTapped {
-                self.didTapOnCandidateBubble(bubble)
+        for (bubble, candidate) in Zip2(bubbles, candidates) {
+            bubble.candidate = candidate
+            bubble.whenTapped { [weak self, weak bubble] in
+                if let bubble = bubble {
+                    self?.didTapOnCandidateBubble(bubble)
+                }
             }
-            bubble.userInteractionEnabled = true
-            bubble.addGestureRecognizer(UIPanGestureRecognizer(target: self, action: "handleBubblePan:"))
+            bubble.whenPanned(handleBubblePan)
         }
         
         helpLabel.hidden = true

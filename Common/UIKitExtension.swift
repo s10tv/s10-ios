@@ -86,6 +86,14 @@ extension UIView {
         addGestureRecognizer(swipe)
     }
     
+    func whenPanned(handler: (UIPanGestureRecognizer) -> ()) {
+        let pan = UIPanGestureRecognizer()
+        pan.rac_gestureSignal().subscribeNextAs { (recognizer : UIPanGestureRecognizer) -> () in
+            handler(recognizer)
+        }
+        addGestureRecognizer(pan)
+    }
+    
     func whenEdgePanned(edge: UIRectEdge, handler: (UIScreenEdgePanGestureRecognizer, UIRectEdge) -> ()) {
         let edgePan = UIScreenEdgePanGestureRecognizer()
         edgePan.edges = edge

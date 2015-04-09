@@ -19,6 +19,7 @@ class CandidateBubble : BaseView {
     }
     
     override func commonInit() {
+        userInteractionEnabled = true
         addSubview(avatar)
     }
     
