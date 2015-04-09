@@ -24,9 +24,7 @@ class ProfileViewController : BaseViewController {
     
     var infoItems = ArrayViewModel(content: [ProfileInfoItem]())
     
-    var user : User! {
-        willSet { assert(user == nil, "user is immutable") }
-    }
+    var user : User!
     
     convenience init(user: User) {
         self.init()

@@ -27,9 +27,7 @@ class GameViewController : BaseViewController {
     var readyToConfirm : Bool {
         return targets.filter { $0.choice != nil && $0.bubble != nil }.count == 3
     }
-    var candidates : [Candidate]! {
-        willSet { assert(candidates == nil, "candidates are immutable") }
-    }
+    var candidates : [Candidate]!
     
     var tutorial: GameTutorialController?
     weak var delegate: GameViewControllerDelegate?
