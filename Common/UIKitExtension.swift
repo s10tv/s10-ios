@@ -11,8 +11,6 @@ import ReactiveCocoa
 import Cartography
 import EDColor
 
-let π = CGFloat(M_PI)
-
 func LS(localizableKey: String, args: CVarArgType...) -> String {
     return NSString(format: NSLocalizedString(localizableKey, comment: ""),
                  arguments: getVaList(args)) as String
@@ -62,26 +60,34 @@ extension UIView {
         }
     }
     
+    func whenTapEnded(block: () -> ()) {
+        whenTapped { recognizer in
+            if recognizer.state == .Ended { block() }
+        }
+    }
+    
+    func whenSwipeEnded(direction: UISwipeGestureRecognizerDirection, block: () -> ()) {
+        whenSwiped(direction) { recognizer in
+            if recognizer.state == .Ended { block() }
+        }
+    }
+    
     // TODO: Figure out when to tear down the subscriptions for gesture recognizers
-    func whenTapped(block: () -> ()) {
+    func whenTapped(block: (UITapGestureRecognizer) -> ()) {
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
         tap.numberOfTouchesRequired = 1
-        tap.rac_gestureSignal().subscribeNextAs { (recognizer : UIGestureRecognizer) -> () in
-            if recognizer.state == .Ended {
-                block()
-            }
+        tap.rac_gestureSignal().subscribeNextAs { (recognizer : UITapGestureRecognizer) -> () in
+            block(recognizer)
         }
         addGestureRecognizer(tap)
     }
 
-    func whenSwiped(direction: UISwipeGestureRecognizerDirection, block: () -> ()) {
+    func whenSwiped(direction: UISwipeGestureRecognizerDirection, block: (UISwipeGestureRecognizer) -> ()) {
         let swipe = UISwipeGestureRecognizer()
         swipe.direction = direction
-        swipe.rac_gestureSignal().subscribeNextAs { (recognizer : UIGestureRecognizer) -> () in
-            if recognizer.state == .Ended {
-                block()
-            }
+        swipe.rac_gestureSignal().subscribeNextAs { (recognizer : UISwipeGestureRecognizer) -> () in
+            block(recognizer)
         }
         addGestureRecognizer(swipe)
     }
@@ -111,15 +117,6 @@ extension UIView {
 extension UIAlertController {
     func addAction(title: String, style: UIAlertActionStyle = .Default, handler: ((UIAlertAction!) -> Void)? = nil) {
         addAction(UIAlertAction(title: title, style: style, handler: handler))
-    }
-}
-
-// TODO: Remove UIAlertView all together. It's deprecated
-extension UIAlertView {
-    class func show(title: String, message: String? = nil) -> RACSignal {
-        let alert = UIAlertView(title: title, message: message, delegate: nil, cancelButtonTitle: "OK")
-        alert.show()
-        return alert.rac_buttonClickedSignal()
     }
 }
 

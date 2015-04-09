@@ -25,7 +25,7 @@ class SettingsViewController : BaseViewController {
 
         if let user = User.currentUser() {
             avatarView.user = user
-            avatarView.whenTapped { [weak self, weak user] in
+            avatarView.whenTapEnded { [weak self, weak user] in
                 let profileVC = ProfileViewController()
                 profileVC.user = user
                 self?.presentViewController(profileVC, animated: true)

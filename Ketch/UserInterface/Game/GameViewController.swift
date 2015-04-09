@@ -40,7 +40,7 @@ class GameViewController : BaseViewController {
         // Setup bubbles
         for (bubble, candidate) in Zip2(bubbles, candidates) {
             bubble.candidate = candidate
-            bubble.whenTapped { [weak self, weak bubble] in
+            bubble.whenTapEnded { [weak self, weak bubble] in
                 if let bubble = bubble {
                     self?.didTapOnCandidateBubble(bubble)
                 }

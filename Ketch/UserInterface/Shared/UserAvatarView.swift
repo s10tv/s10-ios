@@ -54,7 +54,7 @@ class UserAvatarView : UIImageView {
     
     var didTap : ((user: User?) -> Void)? {
         didSet {
-            whenTapped { [weak self] in
+            whenTapEnded { [weak self] in
                 if let block = self?.didTap {
                     block(user: self?.user)
                 }

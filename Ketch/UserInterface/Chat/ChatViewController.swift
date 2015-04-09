@@ -64,7 +64,7 @@ class ChatViewController : JSQMessagesViewController {
         nameLabel.text = connection?.user?.firstName
         avatarView.user = connection?.user
         titleView.userInteractionEnabled = true
-        titleView.whenTapped { [weak self] in
+        titleView.whenTapEnded { [weak self] in
             self?.performSegue(.ChatToProfile)
             return
         }
