@@ -39,13 +39,13 @@ class User: _User {
     
     var infoItems : [ProfileInfoItem] {
         let items : [ProfileInfoItem.ItemType?] = [
-            location ?> { .Location($0) },
-            age as? Int ?> { .Age($0) },
-            height as? Int ?> { .Height($0) },
-            work ?> { .Work($0) },
-            education ?> { .Education($0) }
+            location.map { .Location($0) },
+            (age as? Int).map { .Age($0) },
+            (height as? Int).map { .Height($0) },
+            work.map { .Work($0) },
+            education.map { .Education($0) }
         ]
-        return items.mapOptional { $0 ?> { ProfileInfoItem($0) } }
+        return items.mapOptional { $0.map { ProfileInfoItem($0) } }
     }
     
     var profilePhotoURL : NSURL? {
