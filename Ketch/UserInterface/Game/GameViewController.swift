@@ -37,24 +37,18 @@ class GameViewController : BaseViewController {
         assert(candidates.count == 3, "Must provide 3 candidates before loading GameVC")
         super.viewDidLoad()
 
-        // Setup bubbles
+        // Setup bubble with candidates and event handling
         for (bubble, candidate) in Zip2(bubbles, candidates) {
             bubble.candidate = candidate
-            bubble.whenTapEnded { [weak self, weak bubble] in
-                if let bubble = bubble {
-                    self?.didTapOnCandidateBubble(bubble)
-                }
-            }
+            bubble.whenTapped(handleBubbleTap)
             bubble.whenPanned(handleBubblePan)
         }
-        
-        helpLabel.hidden = true
-        confirmButton.hidden = true
     }
+    
+    // MARK: - Game Layout Setup
     
     // Setup the game board once target positions can be acquired from autolayout
     // If game is already setup then opt-out of autolayout
-
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         prelayoutBubbleCenters = bubbles.map { ($0, $0.center) }
@@ -63,29 +57,33 @@ class GameViewController : BaseViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         if targets == nil {
-            setupGame()
+            initialLayoutGame()
         } else {
             prelayoutBubbleCenters?.map { (bubble, center) in bubble.center = center }
         }
     }
     
-    // MARK: - Game Setup & Start
-    
-    private func setupGame() {
+    private func initialLayoutGame() {
+        dynamics = UIDynamicAnimator(referenceView: view)
+
         targets = placeholders.map {
             SnapTarget(center: $0.center + CGPoint(x: 0, y: -11), choice: $0.choice)
-        } + bubbles.map {
-            SnapTarget(center: $0.center, choice: nil)
         }
-        dynamics = UIDynamicAnimator(referenceView: view)
+        targets.extend(bubbles.map {
+            let target = SnapTarget(center: $0.center, choice: nil)
+            self.assignBubbleToTarget($0, target: target)
+            return target
+        })
+        
         let collision = UICollisionBehavior(items: bubbles)
         collision.setTranslatesReferenceBoundsIntoBoundaryWithInsets(UIEdgeInsets(inset: -50))
         collision.collisionMode = .Everything
         dynamics.addBehavior(collision)
-        println("Setup game")
+        
+        showHelpForTarget(nil)
     }
     
-    // MARK: - Core game mechanic
+    // MARK: - Core Game Mechanic
     
     // Snapping bubble to target will do three things
     // 1) Adding / removing snapping behavior
@@ -160,6 +158,23 @@ class GameViewController : BaseViewController {
     
     // MARK: - Navigation Logic
     
+    func handleBubbleTap(tap: UITapGestureRecognizer) {
+        if tap.state == .Ended {
+            let users = candidates.map { $0.user! }
+            let index = find(candidates, (tap.view as CandidateBubble).candidate!)!
+            let pageVC = ProfileViewController.pagedController(users, initialPage: index)
+            presentViewController(pageVC, animated: true)
+        }
+    }
+    
+    override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
+        if edge == .Right {
+            performSegue(.GameToDock)
+            return true
+        }
+        return super.handleScreenEdgePan(edge)
+    }
+    
     @IBAction func submitChoices(sender: AnyObject) {
         assert(readyToConfirm, "Should not call submit choice until readyToConfirm")
         func chosenCandidate(choice: Candidate.Choice?) -> Candidate? {
@@ -171,21 +186,6 @@ class GameViewController : BaseViewController {
         Core.candidateService.submitChoices(yes: marry, no: skip, maybe: keep)
         // Go back to loading screen and let it handle the transition from there
         navigationController?.popToRootViewControllerAnimated(true)
-    }
-    
-    override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
-        if edge == .Right {
-            performSegue(.GameToDock)
-            return true
-        }
-        return super.handleScreenEdgePan(edge)
-    }
-    
-    func didTapOnCandidateBubble(bubble: CandidateBubble) {
-        let users = candidates.map { $0.user! }
-        let index = find(candidates, bubble.candidate!)!
-        let pageVC = ProfileViewController.pagedController(users, initialPage: index)
-        presentViewController(pageVC, animated: true)
     }
 }
 
