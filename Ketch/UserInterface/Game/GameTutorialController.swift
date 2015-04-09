@@ -37,10 +37,8 @@ class GameTutorialController {
     }
     
     func startTutorial() {
-        if currentStep == 0 {
-            currentStep = 1
-            advanceStep()
-        }
+        currentStep = 1
+        advanceStep()
     }
     
     func teardownTutorial() {
@@ -143,7 +141,9 @@ class GameTutorialController {
 extension GameTutorialController : GameViewControllerDelegate {
     func gameViewWillAppear(animated: Bool) {
         if UD[.bGameTutorialMode].bool! {
-            setupTutorial()
+            if !started {
+                setupTutorial()
+            }
         } else {
             gameVC.tutorial = nil
             gameVC.delegate = nil
@@ -151,7 +151,9 @@ extension GameTutorialController : GameViewControllerDelegate {
     }
     
     func gameViewDidAppear(animated: Bool) {
-        startTutorial()
+        if !started {
+            startTutorial()
+        }
     }
     
     func gameDidAssignBubbleToTarget(bubble: CandidateBubble, target: SnapTarget?) {
