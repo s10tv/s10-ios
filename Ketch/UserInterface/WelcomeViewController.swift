@@ -10,8 +10,9 @@ import Foundation
 
 class WelcomeViewController : CloudsViewController {
     
-    @IBAction func finishWelcome(sender: AnyObject) {
-        // TODO: Set approval state = true
-        navigationController?.popToRootViewControllerAnimated(true)
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.matches(.FinishWelcome) {
+            // TODO: Set welcomed = true
+        }
     }
 }

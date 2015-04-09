@@ -49,4 +49,10 @@ class LoadingViewController : BaseViewController {
             vc.candidates = Array(Core.flow.candidateQueue![0...2])
         }
     }
+    
+    // MARK: -
+    
+    @IBAction func unwindToLoading(sender: UIStoryboardSegue) {
+        
+    }
 }

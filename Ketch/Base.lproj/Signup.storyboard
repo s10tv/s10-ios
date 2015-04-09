@@ -78,14 +78,14 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sprite-cloud-4" translatesAutoresizingMaskIntoConstraints="NO" id="u4P-vD-Hk1">
                                 <rect key="frame" x="254" y="121" width="95" height="44"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g77-dS-QgN" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="g77-dS-QgN" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="283" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ketch-large" translatesAutoresizingMaskIntoConstraints="NO" id="AII-hw-URZ">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ketch-large" translatesAutoresizingMaskIntoConstraints="NO" id="AII-hw-URZ">
                                 <rect key="frame" x="262" y="211" width="77" height="80"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WELCOME ABOARD!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALd-iX-x5H" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="WELCOME ABOARD!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ALd-iX-x5H" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="176" y="321" width="249" height="25"/>
                                 <fontDescription key="fontDescription" name="TransatTextBlack" family="Transat Text" pointSize="25"/>
                                 <color key="textColor" red="0.94003820419999995" green="0.98082369570000005" blue="0.96848088499999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -145,7 +145,7 @@ Set sail to get a date, have fun, and find the One.</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="finishWelcome:" destination="t2f-MF-EUr" eventType="touchUpInside" id="SYE-uo-eUi"/>
+                                    <segue destination="V9X-bo-kT5" kind="unwind" identifier="FinishWelcome" unwindAction="unwindToLoading:" id="EGg-f2-03q"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -186,6 +186,7 @@ Set sail to get a date, have fun, and find the One.</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ud1-ZM-sKr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="V9X-bo-kT5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="116" y="1024"/>
         </scene>
@@ -231,14 +232,14 @@ Set sail to get a date, have fun, and find the One.</string>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sprite-cloud-4" translatesAutoresizingMaskIntoConstraints="NO" id="h6K-Ei-eDJ">
                                 <rect key="frame" x="254" y="121" width="95" height="44"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4i8-hs-vhM" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4i8-hs-vhM" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="303" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ketch-large" translatesAutoresizingMaskIntoConstraints="NO" id="tu0-Pb-yyF">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ketch-large" translatesAutoresizingMaskIntoConstraints="NO" id="tu0-Pb-yyF">
                                 <rect key="frame" x="262" y="231" width="77" height="80"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ALL ABOARD!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXe-bZ-bUx" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="ALL ABOARD!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uXe-bZ-bUx" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="216" y="341" width="168" height="25"/>
                                 <fontDescription key="fontDescription" name="TransatTextBlack" family="Transat Text" pointSize="25"/>
                                 <color key="textColor" red="0.94003820419999995" green="0.98082369570000005" blue="0.96848088499999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -253,7 +254,7 @@ Set sail to get a date, have fun, and find the One.</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="TNj-LU-osl" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="TNj-LU-osl" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="150" y="386" width="300" height="99"/>
                                 <attributedString key="attributedText">
                                     <fragment>
