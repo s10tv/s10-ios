@@ -108,12 +108,12 @@
 		EAAD921B1ACDEACD0014BA25 /* NewMatchTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921A1ACDEACD0014BA25 /* NewMatchTransition.swift */; };
 		EAAD921D1ACF342C0014BA25 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921C1ACF342C0014BA25 /* Environment.swift */; };
 		EAAD921F1ACF4EFA0014BA25 /* ProvisioningProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921E1ACF4EFA0014BA25 /* ProvisioningProfile.swift */; };
-		EAB54E3D1AA0E2EB00A44883 /* SettingsBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB54E3C1AA0E2EB00A44883 /* SettingsBackgroundView.swift */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
 		EABF2AB91AD04E90005880E7 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABF2AB81AD04E90005880E7 /* Fonts.swift */; };
 		EAC8D3F61AA7269F00BCB7B9 /* FetchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9311A87DE5800D62625 /* FetchViewModel.swift */; };
 		EAC8D3F71AA7278900BCB7B9 /* ViewProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9321A87DE5800D62625 /* ViewProviders.swift */; };
 		EAC8D3F81AA7289400BCB7B9 /* ArrayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC92F1A87DE5800D62625 /* ArrayViewModel.swift */; };
+		EACF21621AD6F6A500938CD0 /* SandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF21611AD6F6A500938CD0 /* SandView.swift */; };
 		EAD007FC1AD37236003A260D /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD007FB1AD37236003A260D /* Geometry.swift */; };
 		EAD007FE1AD472B4003A260D /* InstantaneousTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD007FD1AD472B4003A260D /* InstantaneousTransition.swift */; };
 		EAD7B2AB1A9F0BE700FA6740 /* DesignableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */; };
@@ -266,12 +266,12 @@
 		EAAD921A1ACDEACD0014BA25 /* NewMatchTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMatchTransition.swift; sourceTree = "<group>"; };
 		EAAD921C1ACF342C0014BA25 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		EAAD921E1ACF4EFA0014BA25 /* ProvisioningProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvisioningProfile.swift; sourceTree = "<group>"; };
-		EAB54E3C1AA0E2EB00A44883 /* SettingsBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsBackgroundView.swift; sourceTree = "<group>"; };
 		EABD43D81AA1D28700B07813 /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
 		EABD43D91AA1D29C00B07813 /* Beta.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
 		EABD43DA1AA1D29C00B07813 /* Prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
 		EABF2AB41AD04659005880E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EABF2AB81AD04E90005880E7 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Fonts.swift; sourceTree = "<group>"; };
+		EACF21611AD6F6A500938CD0 /* SandView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandView.swift; sourceTree = "<group>"; };
 		EAD007FB1AD37236003A260D /* Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
 		EAD007FD1AD472B4003A260D /* InstantaneousTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstantaneousTransition.swift; sourceTree = "<group>"; };
 		EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableViews.swift; sourceTree = "<group>"; };
@@ -424,7 +424,6 @@
 			children = (
 				EA1970011A83549300FEBA7F /* SettingsView.xib */,
 				EA1970021A83549300FEBA7F /* SettingsViewController.swift */,
-				EAB54E3C1AA0E2EB00A44883 /* SettingsBackgroundView.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -537,6 +536,7 @@
 			children = (
 				EAA36DE11AD1CE2800B30F24 /* BaseViewController.swift */,
 				EA6E56511AD1FDCE00B12F2B /* RootTransition.swift */,
+				EACF21611AD6F6A500938CD0 /* SandView.swift */,
 				EA6650E31AA00A82001BA40C /* WaveView.swift */,
 				EA6650E51AA00A82001BA40C /* UserAvatarView.swift */,
 				EA72FB1A1AD1049A009F853F /* TransparentBackgroundView.swift */,
@@ -984,6 +984,7 @@
 				EA6650E81AA00A82001BA40C /* UserAvatarView.swift in Sources */,
 				EA7004791ACFB01500D0E467 /* WaitlistViewController.swift in Sources */,
 				EAA36DDE1AD1CC7D00B30F24 /* SignupTransition.swift in Sources */,
+				EACF21621AD6F6A500938CD0 /* SandView.swift in Sources */,
 				EAAD921D1ACF342C0014BA25 /* Environment.swift in Sources */,
 				EA6650FA1AA00B95001BA40C /* _User.swift in Sources */,
 				EA0FC9351A87DE5800D62625 /* MeteorExtension.swift in Sources */,
@@ -1001,7 +1002,6 @@
 				EA4A66571AA2D9BB0019D601 /* ChoicePlaceholder.swift in Sources */,
 				EA0FC9441A87DE5800D62625 /* ViewProviders.swift in Sources */,
 				EAAD921B1ACDEACD0014BA25 /* NewMatchTransition.swift in Sources */,
-				EAB54E3D1AA0E2EB00A44883 /* SettingsBackgroundView.swift in Sources */,
 				EA1970131A83549300FEBA7F /* EditProfileViewController.swift in Sources */,
 				EA6650ED1AA00A9C001BA40C /* CoreService.swift in Sources */,
 				EA6650F81AA00B95001BA40C /* _Connection.swift in Sources */,

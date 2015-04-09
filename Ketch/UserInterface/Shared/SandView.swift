@@ -1,5 +1,5 @@
 //
-//  SettingsBackgroundView.swift
+//  SandView.swift
 //  Ketch
 //
 //  Created by Tony Xiao on 2/27/15.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-@IBDesignable class SettingsBackgroundView : BaseView {
+@IBDesignable class SandView : BaseView {
     override func drawRect(rect: CGRect) {
         let context = UIGraphicsGetCurrentContext()
         let topCenter = CGPointMake(CGRectGetMidX(bounds), 0)
