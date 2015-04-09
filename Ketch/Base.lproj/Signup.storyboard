@@ -4,6 +4,9 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="KetchIcon.otf">
+            <string>KetchIcon-Regular</string>
+        </mutableArray>
         <mutableArray key="TransatTextBlack.otf">
             <string>TransatTextBlack</string>
             <string>TransatTextBlack</string>
@@ -198,6 +201,21 @@ Set sail to get a date, have fun, and find the One.</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Je1-ID-27x" userLabel="Settings">
+                                <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="8Na-q6-Rb4"/>
+                                    <constraint firstAttribute="width" constant="80" id="BFU-ki-b1k"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="KetchIcon-Regular" family="KetchIcon" pointSize="12"/>
+                                <state key="normal" title="W">
+                                    <color key="titleColor" red="0.092987515029999995" green="0.64821720120000004" blue="0.65024715659999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="wTv-sJ-Gap" kind="custom" identifier="Main_Settings" customClass="LinkedStoryboardPushSegue" customModule="Ketch" customModuleProvider="target" id="oes-pk-f4m"/>
+                                </connections>
+                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sprite-sun" translatesAutoresizingMaskIntoConstraints="NO" id="mGW-vN-lRk">
                                 <rect key="frame" x="262" y="0.0" width="218" height="186"/>
                             </imageView>
@@ -280,7 +298,7 @@ Hold tight and you'll be finding the one before you know it.</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="finishWelcome:" destination="oGT-wN-ozl" eventType="touchUpInside" id="Thd-kA-zZY"/>
+                                    <segue destination="6oW-GJ-LWc" kind="custom" identifier="Main_Chat" customClass="LinkedStoryboardPushSegue" customModule="Ketch" customModuleProvider="target" id="Zhj-Kn-B4b"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -305,9 +323,11 @@ Hold tight and you'll be finding the one before you know it.</string>
                             <constraint firstAttribute="centerX" secondItem="TNj-LU-osl" secondAttribute="centerX" id="iuy-R8-ChR"/>
                             <constraint firstItem="mGW-vN-lRk" firstAttribute="bottom" secondItem="9sh-MZ-ePT" secondAttribute="bottom" constant="56" id="l2W-yG-6dc"/>
                             <constraint firstItem="mGW-vN-lRk" firstAttribute="top" secondItem="vVa-mY-XXj" secondAttribute="bottom" priority="749" id="o5G-4w-Kzb"/>
+                            <constraint firstItem="Je1-ID-27x" firstAttribute="top" secondItem="vVa-mY-XXj" secondAttribute="bottom" id="pnj-ha-KHp"/>
                             <constraint firstAttribute="trailing" secondItem="4i8-hs-vhM" secondAttribute="trailing" id="qDY-9b-f3j"/>
                             <constraint firstItem="bMT-dx-z8S" firstAttribute="leading" secondItem="mGW-vN-lRk" secondAttribute="leading" constant="110" id="roH-H3-dGc"/>
                             <constraint firstItem="uXe-bZ-bUx" firstAttribute="top" secondItem="tu0-Pb-yyF" secondAttribute="bottom" constant="30" id="sgL-VL-0q8"/>
+                            <constraint firstItem="Je1-ID-27x" firstAttribute="leading" secondItem="TYa-nE-Vqe" secondAttribute="leading" id="smm-RD-vEe"/>
                             <constraint firstItem="mGW-vN-lRk" firstAttribute="bottom" secondItem="h6K-Ei-eDJ" secondAttribute="bottom" constant="21" id="tlz-g9-f1O"/>
                         </constraints>
                     </view>
@@ -323,6 +343,42 @@ Hold tight and you'll be finding the one before you know it.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8yk-Bk-8hy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-542" y="1024"/>
+        </scene>
+        <!--Signup Storyboard @ Signup-->
+        <scene sceneID="1Fm-Jw-GwO">
+            <objects>
+                <viewController id="wTv-sJ-Gap" userLabel="Signup Storyboard @ Signup" sceneMemberID="viewController">
+                    <label key="view" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Main Storyboard @ Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="4if-6L-lD6">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="250" height="250"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AnB-fP-1A5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1190" y="849"/>
+        </scene>
+        <!--Signup Storyboard @ Signup-->
+        <scene sceneID="VdS-74-kxD">
+            <objects>
+                <viewController id="6oW-GJ-LWc" userLabel="Signup Storyboard @ Signup" sceneMemberID="viewController">
+                    <label key="view" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Main Storyboard @ Chat" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Poc-W4-oWu">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="250" height="250"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="q5s-Jk-RoB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1190" y="1199"/>
         </scene>
     </scenes>
     <resources>

@@ -18,6 +18,12 @@ class RootTransition : ViewControllerTransition {
     }
     
     override func animate() {
+        // NOTE: HACK for now... Need to get rid of rootView
+        // Necessary for showing waterline in the right spot when going from waitlist to chat
+        if fromVC is WaitlistViewController && toVC is ChatViewController {
+            rootView.waterlineLocation = .Top(60)
+        }
+        
         if let vc = toVC as? BaseViewController {
             rootView.waterlineLocation = vc.waterlineLocation
         }

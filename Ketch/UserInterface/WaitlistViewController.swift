@@ -14,4 +14,11 @@ class WaitlistViewController : CloudsViewController {
         hideKetchBoat = false
         waterlineLocation = .Ratio(0.55)
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let chatVC = segue.destVC as? ChatViewController {
+            chatVC.connection = Connection.crabConnection()
+        }
+    }
+    
 }
