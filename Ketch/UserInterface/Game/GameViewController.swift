@@ -18,7 +18,6 @@ class GameViewController : BaseViewController {
     
     var dynamics : UIDynamicAnimator!
     var targets : [SnapTarget]!
-    var tutorialMode = UD[.bGameTutorialMode].bool!
     var readyToConfirm : Bool {
         return targets.filter { $0.choice != nil && $0.bubble != nil }.count == 3
     }
@@ -41,6 +40,9 @@ class GameViewController : BaseViewController {
             bubble.whenTapped(handleBubbleTap)
             bubble.whenPanned(handleBubblePan)
         }
+        
+        helpLabel.hidden = true
+        confirmButton.hidden = true
     }
     
     // Hooks for game tutorial
