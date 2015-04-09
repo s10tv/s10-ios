@@ -62,4 +62,40 @@ class CandidateBubble : BaseView {
         gestureRecognizer.cancelsTouchesInView = false
         super.addGestureRecognizer(gestureRecognizer)
     }
+    
+    // Wiggling
+    
+    private func randomPathForWigging() -> CGPathRef {
+        let boundingBox = bounds.scaleFromCenter(0.3)
+        let path = UIBezierPath()
+        path.moveToPoint(boundingBox.center)
+        let step = UInt32(boundingBox.width + boundingBox.height) / 10
+        var count = 0
+        while count < 100 {
+            let newPoint = path.currentPoint + CGPoint(
+                x: CGFloat(arc4random_uniform(step)) - CGFloat(step) / 2,
+                y: CGFloat(arc4random_uniform(step)) - CGFloat(step) / 2
+            )
+            if boundingBox.contains(newPoint) {
+                path.addLineToPoint(newPoint)
+                count++
+            }
+        }
+        return path.CGPath
+    }
+    
+    func setWigglingEnabled(enabled: Bool) {
+        let kWiggle = "position"
+        if enabled {
+            let wiggle = CAKeyframeAnimation(keyPath: kWiggle)
+            wiggle.path = randomPathForWigging()
+            wiggle.duration = 100
+            wiggle.autoreverses = true
+            wiggle.repeatCount = Float.infinity
+            avatar.layer.addAnimation(wiggle, forKey: kWiggle)
+        } else {
+            avatar.layer.removeAnimationForKey(kWiggle)
+        }
+    }
+    
 }

@@ -28,6 +28,10 @@ extension CGRect {
         return CGPoint(x: (minX + maxX) / 2, y: (minY + maxY) / 2)
     }
     
+    init(side: CGFloat) {
+        self.init(width: side, height: side)
+    }
+    
     init(width: CGFloat, height: CGFloat) {
         self.init(origin: CGPointZero, size: CGSize(width: width, height: height))
     }
@@ -62,6 +66,8 @@ extension UIBezierPath {
 }
 
 extension CGPoint {
+    var value : NSValue { return NSValue(CGPoint: self) }
+    
     func distanceTo(point: CGPoint) -> CGFloat {
         let xDist = x - point.x
         let yDist = y - point.y

@@ -86,6 +86,7 @@ class GameViewController : BaseViewController {
     // 1) Adding / removing snapping behavior
     // 2) Animating placeholder emphasis
     // 3) Animating confirm button visibilie
+    // 4) Wiggle the bubble if it is being assigned to an empty target
     private func assignBubbleToTarget(bubble: CandidateBubble, target: SnapTarget?) {
         func placeholderForTarget(target: SnapTarget?) -> ChoicePlaceholder? {
             return placeholders.match { $0.choice == target?.choice }
@@ -103,6 +104,8 @@ class GameViewController : BaseViewController {
             dynamics.addBehavior(target.snap)
             placeholderForTarget(target)?.animateEmphasis(true, delay: 0.2)
         }
+        
+        bubble.setWigglingEnabled(target != nil && target?.choice == nil)
         
         confirmButton.setHiddenAnimated(hidden: !readyToConfirm, delay: 0.3)
     }
