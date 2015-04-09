@@ -94,8 +94,6 @@ class GameViewController : BaseViewController {
         collision.setTranslatesReferenceBoundsIntoBoundaryWithInsets(UIEdgeInsets(inset: -50))
         collision.collisionMode = .Everything
         dynamics.addBehavior(collision)
-        
-        showHelpForTarget(nil)
     }
     
     // MARK: - Core Game Mechanic
@@ -105,6 +103,7 @@ class GameViewController : BaseViewController {
     // 2) Animating placeholder emphasis
     // 3) Animating confirm button visibilie
     // 4) Wiggle the bubble if it is being assigned to an empty target
+    // 5) Stop any tutorial if user managed to assign to choice target
     private func assignBubbleToTarget(bubble: CandidateBubble, target: SnapTarget?) {
         func placeholderForTarget(target: SnapTarget?) -> ChoicePlaceholder? {
             return placeholders.match { $0.choice == target?.choice }
@@ -121,6 +120,11 @@ class GameViewController : BaseViewController {
             target.snap = UISnapBehavior(item: bubble, snapToPoint: target.center)
             dynamics.addBehavior(target.snap)
             placeholderForTarget(target)?.animateEmphasis(true, delay: 0.2)
+            
+            if target.choice != nil {
+                tutorial?.teardownTutorial()
+                tutorial = nil
+            }
         }
         
         bubble.setWigglingEnabled(target != nil && target?.choice == nil)
@@ -169,9 +173,6 @@ class GameViewController : BaseViewController {
             dynamics.removeBehavior(bubble.drag)
             // Hide help text
             showHelpForTarget(nil)
-            // Stop any tutorial in progress
-            tutorial?.teardownTutorial()
-            tutorial = nil
         default:
             break
         }
