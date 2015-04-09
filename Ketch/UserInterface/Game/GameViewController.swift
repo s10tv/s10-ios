@@ -8,6 +8,12 @@
 
 import Foundation
 
+protocol GameViewControllerDelegate : class {
+    func gameViewWillAppear(animated: Bool)
+    func gameViewDidAppear(animated: Bool)
+    func gameDidAssignBubbleToTarget(bubble: CandidateBubble, target: SnapTarget?)
+}
+
 class GameViewController : BaseViewController {
     @IBOutlet var navViews: [UIView]!
     @IBOutlet weak var dockBadge: UIImageView!
@@ -16,18 +22,21 @@ class GameViewController : BaseViewController {
     @IBOutlet weak var helpLabel: DesignableLabel!
     @IBOutlet weak var confirmButton: DesignableButton!
     
-    var dynamics : UIDynamicAnimator!
-    var targets : [SnapTarget]!
+    private var dynamics : UIDynamicAnimator!
+    private var targets : [SnapTarget]!
     var readyToConfirm : Bool {
         return targets.filter { $0.choice != nil && $0.bubble != nil }.count == 3
     }
     var candidates : [Candidate]! {
         willSet { assert(candidates == nil, "candidates are immutable") }
     }
-    var tutorial: GameTutorial?
+    
+    var tutorial: GameTutorialController?
+    weak var delegate: GameViewControllerDelegate?
     
     override func commonInit() {
         hideKetchBoat = false
+        tutorial = GameTutorialController(gameVC: self)
     }
     
     override func viewDidLoad() {
@@ -44,20 +53,15 @@ class GameViewController : BaseViewController {
         helpLabel.hidden = true
         confirmButton.hidden = true
     }
-    
-    // Hooks for game tutorial
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        if UD[.bGameTutorialMode].bool! {
-            tutorial = GameTutorial(gameVC: self)
-            tutorial?.setupTutorial()
-        }
+        delegate?.gameViewWillAppear(animated)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        tutorial?.startTutorial()
+        delegate?.gameViewDidAppear(animated)
     }
     
     // MARK: - Game Layout Setup
@@ -120,16 +124,12 @@ class GameViewController : BaseViewController {
             target.snap = UISnapBehavior(item: bubble, snapToPoint: target.center)
             dynamics.addBehavior(target.snap)
             placeholderForTarget(target)?.animateEmphasis(true, delay: 0.2)
-            
-            if target.choice != nil {
-                tutorial?.teardownTutorial()
-                tutorial = nil
-            }
         }
         
         bubble.setWigglingEnabled(target != nil && target?.choice == nil)
-        
         confirmButton.setHiddenAnimated(hidden: !readyToConfirm, delay: 0.3)
+        
+        delegate?.gameDidAssignBubbleToTarget(bubble, target: target)
     }
     
     private func showHelpForTarget(target: SnapTarget?) {

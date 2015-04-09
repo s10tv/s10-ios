@@ -61,7 +61,7 @@
 		EA55F1381AD522C60042CBB2 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA55F1371AD522C60042CBB2 /* NotificationCenter.swift */; };
 		EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA5634DF1A7741FF00F62B52 /* Ketch.xcdatamodeld */; };
 		EA5FCE461AD6077A000D9B93 /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5FCE451AD6077A000D9B93 /* ProgressIndicator.swift */; };
-		EA5FCE481AD62C1F000D9B93 /* GameTutorial.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5FCE471AD62C1F000D9B93 /* GameTutorial.swift */; };
+		EA5FCE481AD62C1F000D9B93 /* GameTutorialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5FCE471AD62C1F000D9B93 /* GameTutorialController.swift */; };
 		EA6077781ACF6E1E00B3A19A /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6077771ACF6E1E00B3A19A /* PermissionViewController.swift */; };
 		EA60777A1ACF6E2F00B3A19A /* PermissionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA6077791ACF6E2F00B3A19A /* PermissionView.xib */; };
 		EA60777C1ACF796600B3A19A /* PermissionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA60777B1ACF796600B3A19A /* PermissionType.swift */; };
@@ -214,7 +214,7 @@
 		EA55F1371AD522C60042CBB2 /* NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		EA5634E01A7741FF00F62B52 /* Ketch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ketch.xcdatamodel; sourceTree = "<group>"; };
 		EA5FCE451AD6077A000D9B93 /* ProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
-		EA5FCE471AD62C1F000D9B93 /* GameTutorial.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTutorial.swift; sourceTree = "<group>"; };
+		EA5FCE471AD62C1F000D9B93 /* GameTutorialController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTutorialController.swift; sourceTree = "<group>"; };
 		EA6077771ACF6E1E00B3A19A /* PermissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
 		EA6077791ACF6E2F00B3A19A /* PermissionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PermissionView.xib; sourceTree = "<group>"; };
 		EA60777B1ACF796600B3A19A /* PermissionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionType.swift; sourceTree = "<group>"; };
@@ -451,9 +451,9 @@
 			isa = PBXGroup;
 			children = (
 				EA2AB70D1A8A00F200D42C6C /* GameViewController.swift */,
+				EA5FCE471AD62C1F000D9B93 /* GameTutorialController.swift */,
 				EA4A66561AA2D9BB0019D601 /* ChoicePlaceholder.swift */,
 				EAAA42861AB24D5F00056EFF /* CandidateBubble.swift */,
-				EA5FCE471AD62C1F000D9B93 /* GameTutorial.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -1023,7 +1023,7 @@
 				EA31049B1A99C3850069D6AD /* KetchIcon.swift in Sources */,
 				EA72FB1B1AD1049A009F853F /* TransparentBackgroundView.swift in Sources */,
 				EABF2AB91AD04E90005880E7 /* Fonts.swift in Sources */,
-				EA5FCE481AD62C1F000D9B93 /* GameTutorial.swift in Sources */,
+				EA5FCE481AD62C1F000D9B93 /* GameTutorialController.swift in Sources */,
 				EADDC6B11AD493710023DA0A /* FlowService.swift in Sources */,
 				EAA36DE41AD1DD8D00B30F24 /* WaitlistTransition.swift in Sources */,
 				EA0FC9381A87DE5800D62625 /* FoundationExtension.swift in Sources */,

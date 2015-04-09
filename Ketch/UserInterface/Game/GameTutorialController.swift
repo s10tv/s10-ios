@@ -10,21 +10,19 @@ import Foundation
 import RBBAnimation
 import Cartography
 
-class GameTutorial {
+class GameTutorialController {
     let gameVC: GameViewController
-    private(set) var currentStep = 0
-    let helpLabel: DesignableLabel
-    let bubbles: [CandidateBubble]
-    let placeholders: [ChoicePlaceholder]
+    var helpLabel: DesignableLabel { return gameVC.helpLabel }
+    var bubbles: [CandidateBubble] { return gameVC.bubbles }
+    var placeholders: [ChoicePlaceholder] { return gameVC.placeholders }
     let overlay = TransparentView()
     
+    private(set) var currentStep = 0
     var started : Bool { return currentStep > 0 }
     
     init(gameVC: GameViewController) {
         self.gameVC = gameVC
-        self.helpLabel = gameVC.helpLabel
-        self.bubbles = gameVC.bubbles
-        self.placeholders = gameVC.placeholders
+        gameVC.delegate = self
     }
     
     func setupTutorial() {
@@ -139,5 +137,27 @@ class GameTutorial {
         }
         
         overlay.passThroughTouchOnSelf = true
+    }
+}
+
+extension GameTutorialController : GameViewControllerDelegate {
+    func gameViewWillAppear(animated: Bool) {
+        if UD[.bGameTutorialMode].bool! {
+            setupTutorial()
+        } else {
+            gameVC.tutorial = nil
+            gameVC.delegate = nil
+        }
+    }
+    
+    func gameViewDidAppear(animated: Bool) {
+        startTutorial()
+    }
+    
+    func gameDidAssignBubbleToTarget(bubble: CandidateBubble, target: SnapTarget?) {
+        if target?.choice != nil {
+            teardownTutorial()
+//            UD[.bGameTutorialMode] = false
+        }
     }
 }
