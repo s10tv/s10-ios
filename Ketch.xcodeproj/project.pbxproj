@@ -57,9 +57,10 @@
 		EA409D3F1A8C75F600988B8B /* ConnectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA409D3B1A8C75F600988B8B /* ConnectionCell.swift */; };
 		EA409D411A8C75F600988B8B /* DockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA409D3D1A8C75F600988B8B /* DockView.xib */; };
 		EA409D421A8C75F600988B8B /* DockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA409D3E1A8C75F600988B8B /* DockViewController.swift */; };
-		EA4A66571AA2D9BB0019D601 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A66561AA2D9BB0019D601 /* GameView.swift */; };
+		EA4A66571AA2D9BB0019D601 /* ChoicePlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A66561AA2D9BB0019D601 /* ChoicePlaceholder.swift */; };
 		EA55F1381AD522C60042CBB2 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA55F1371AD522C60042CBB2 /* NotificationCenter.swift */; };
 		EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA5634DF1A7741FF00F62B52 /* Ketch.xcdatamodeld */; };
+		EA5FCE461AD6077A000D9B93 /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5FCE451AD6077A000D9B93 /* ProgressIndicator.swift */; };
 		EA6077781ACF6E1E00B3A19A /* PermissionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6077771ACF6E1E00B3A19A /* PermissionViewController.swift */; };
 		EA60777A1ACF6E2F00B3A19A /* PermissionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA6077791ACF6E2F00B3A19A /* PermissionView.xib */; };
 		EA60777C1ACF796600B3A19A /* PermissionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA60777B1ACF796600B3A19A /* PermissionType.swift */; };
@@ -116,7 +117,6 @@
 		EAD007FE1AD472B4003A260D /* InstantaneousTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD007FD1AD472B4003A260D /* InstantaneousTransition.swift */; };
 		EAD7B2AB1A9F0BE700FA6740 /* DesignableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */; };
 		EADDC6B11AD493710023DA0A /* FlowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADDC6B01AD493710023DA0A /* FlowService.swift */; };
-		EAE63D781AB32BC4004A74E6 /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE63D771AB32BC4004A74E6 /* ProgressIndicator.swift */; };
 		EAE63D7A1AB3407D004A74E6 /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAE63D791AB3407D004A74E6 /* RootView.xib */; };
 		EAE915321ACAFC890027C936 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE915311ACAFC890027C936 /* UserDefaults.swift */; };
 		EAEB63DB1AD31A4E0002D55C /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB63DA1AD31A4E0002D55C /* Animation.swift */; };
@@ -209,9 +209,10 @@
 		EA409D3B1A8C75F600988B8B /* ConnectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionCell.swift; sourceTree = "<group>"; };
 		EA409D3D1A8C75F600988B8B /* DockView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DockView.xib; sourceTree = "<group>"; };
 		EA409D3E1A8C75F600988B8B /* DockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DockViewController.swift; sourceTree = "<group>"; };
-		EA4A66561AA2D9BB0019D601 /* GameView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		EA4A66561AA2D9BB0019D601 /* ChoicePlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoicePlaceholder.swift; sourceTree = "<group>"; };
 		EA55F1371AD522C60042CBB2 /* NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		EA5634E01A7741FF00F62B52 /* Ketch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ketch.xcdatamodel; sourceTree = "<group>"; };
+		EA5FCE451AD6077A000D9B93 /* ProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
 		EA6077771ACF6E1E00B3A19A /* PermissionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionViewController.swift; sourceTree = "<group>"; };
 		EA6077791ACF6E2F00B3A19A /* PermissionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PermissionView.xib; sourceTree = "<group>"; };
 		EA60777B1ACF796600B3A19A /* PermissionType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PermissionType.swift; sourceTree = "<group>"; };
@@ -273,7 +274,6 @@
 		EAD007FD1AD472B4003A260D /* InstantaneousTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstantaneousTransition.swift; sourceTree = "<group>"; };
 		EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableViews.swift; sourceTree = "<group>"; };
 		EADDC6B01AD493710023DA0A /* FlowService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowService.swift; sourceTree = "<group>"; };
-		EAE63D771AB32BC4004A74E6 /* ProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
 		EAE63D791AB3407D004A74E6 /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootView.xib; sourceTree = "<group>"; };
 		EAE915311ACAFC890027C936 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		EAEB63DA1AD31A4E0002D55C /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
@@ -412,6 +412,7 @@
 				EA196FFF1A83549300FEBA7F /* ProfileViewController.swift */,
 				EAF3A4BE1ACA2191001C2943 /* ProfileInfoCell.xib */,
 				EAF3A4C01ACA22C2001C2943 /* ProfileInfoCell.swift */,
+				EA5FCE451AD6077A000D9B93 /* ProgressIndicator.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -448,9 +449,8 @@
 			isa = PBXGroup;
 			children = (
 				EA2AB70D1A8A00F200D42C6C /* GameViewController.swift */,
-				EA4A66561AA2D9BB0019D601 /* GameView.swift */,
+				EA4A66561AA2D9BB0019D601 /* ChoicePlaceholder.swift */,
 				EAAA42861AB24D5F00056EFF /* CandidateBubble.swift */,
-				EAE63D771AB32BC4004A74E6 /* ProgressIndicator.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -987,6 +987,7 @@
 				EA72FB291AD1B7D5009F853F /* Segue.swift in Sources */,
 				EAEB63DB1AD31A4E0002D55C /* Animation.swift in Sources */,
 				EAA36DE21AD1CE2800B30F24 /* BaseViewController.swift in Sources */,
+				EA5FCE461AD6077A000D9B93 /* ProgressIndicator.swift in Sources */,
 				EA6650F71AA00B95001BA40C /* _Candidate.swift in Sources */,
 				EA6650E11AA00999001BA40C /* BaseViews.swift in Sources */,
 				EA409D3F1A8C75F600988B8B /* ConnectionCell.swift in Sources */,
@@ -994,14 +995,13 @@
 				EA1DA37F1A8D188B00433093 /* NewConnectionViewController.swift in Sources */,
 				EA396FEA1AB51BED009EB60B /* RootView.swift in Sources */,
 				EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */,
-				EA4A66571AA2D9BB0019D601 /* GameView.swift in Sources */,
+				EA4A66571AA2D9BB0019D601 /* ChoicePlaceholder.swift in Sources */,
 				EA0FC9441A87DE5800D62625 /* ViewProviders.swift in Sources */,
 				EAAD921B1ACDEACD0014BA25 /* NewMatchTransition.swift in Sources */,
 				EAB54E3D1AA0E2EB00A44883 /* SettingsBackgroundView.swift in Sources */,
 				EA1970131A83549300FEBA7F /* EditProfileViewController.swift in Sources */,
 				EA6650ED1AA00A9C001BA40C /* CoreService.swift in Sources */,
 				EA6650F81AA00B95001BA40C /* _Connection.swift in Sources */,
-				EAE63D781AB32BC4004A74E6 /* ProgressIndicator.swift in Sources */,
 				EA60777C1ACF796600B3A19A /* PermissionType.swift in Sources */,
 				EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */,
 				EAF4D7621A79AA5E00D35330 /* RootViewController.swift in Sources */,

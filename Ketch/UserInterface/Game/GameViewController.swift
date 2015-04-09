@@ -12,7 +12,7 @@ import Foundation
 class GameViewController : BaseViewController {
     @IBOutlet var navViews: [UIView]!
     @IBOutlet weak var dockBadge: UIImageView!
-    @IBOutlet var placeholders: [ChoiceBucket]!
+    @IBOutlet var placeholders: [ChoicePlaceholder]!
     @IBOutlet var bubbles : [CandidateBubble]!
     @IBOutlet weak var helpLabel: DesignableLabel!
     @IBOutlet weak var confirmButton: DesignableButton!
@@ -78,7 +78,6 @@ class GameViewController : BaseViewController {
             SnapTarget(center: $0.center, choice: nil)
         }
         dynamics = UIDynamicAnimator(referenceView: view)
-        dynamics.delegate = self
         let collision = UICollisionBehavior(items: bubbles)
         collision.setTranslatesReferenceBoundsIntoBoundaryWithInsets(UIEdgeInsets(inset: -50))
         collision.collisionMode = .Everything
@@ -93,7 +92,7 @@ class GameViewController : BaseViewController {
     // 2) Animating placeholder emphasis
     // 3) Animating confirm button visibilie
     private func assignBubbleToTarget(bubble: CandidateBubble, target: SnapTarget?) {
-        func placeholderForTarget(target: SnapTarget?) -> ChoiceBucket? {
+        func placeholderForTarget(target: SnapTarget?) -> ChoicePlaceholder? {
             return placeholders.match { $0.choice == target?.choice }
         }
         
@@ -190,12 +189,14 @@ class GameViewController : BaseViewController {
     }
 }
 
-extension GameViewController : UIDynamicAnimatorDelegate {
-    func dynamicAnimatorDidPause(animator: UIDynamicAnimator) {
-        println("Dynamics did pause")
-    }
+class SnapTarget {
+    let center : CGPoint
+    let choice : Candidate.Choice?
+    var bubble : CandidateBubble?
+    var snap : UISnapBehavior?
     
-    func dynamicAnimatorWillResume(animator: UIDynamicAnimator) {
-        println("Dynamics will resume")
+    init(center: CGPoint, choice: Candidate.Choice?) {
+        self.center = center
+        self.choice = choice
     }
 }

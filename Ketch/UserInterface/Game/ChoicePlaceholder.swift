@@ -1,5 +1,5 @@
 //
-//  GameView.swift
+//  ChoicePlaceholder.swift
 //  Ketch
 //
 //  Created by Tony Xiao on 2/28/15.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-class ChoiceBucket : UIImageView {
+class ChoicePlaceholder : UIImageView {
     @IBInspectable var rawChoice: String!
     var choice : Candidate.Choice {
         return Candidate.Choice(rawValue: rawChoice)!
@@ -35,17 +35,5 @@ class ChoiceBucket : UIImageView {
         UIView.animate(0.4, delay: delay) {
             self.emphasized = emphasized
         }
-    }
-}
-
-class SnapTarget {
-    let center : CGPoint
-    let choice : Candidate.Choice?
-    var bubble : CandidateBubble?
-    var snap : UISnapBehavior?
-    
-    init(center: CGPoint, choice: Candidate.Choice?) {
-        self.center = center
-        self.choice = choice
     }
 }

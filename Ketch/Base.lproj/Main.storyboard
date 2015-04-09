@@ -218,7 +218,7 @@ SAILED FOR TODAY.</string>
                                     <constraint firstAttribute="width" secondItem="Rx1-xy-YKJ" secondAttribute="height" multiplier="1:1" id="usv-e0-fBa"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-bucket-keep" translatesAutoresizingMaskIntoConstraints="NO" id="ZdL-6o-ahC" userLabel="Maybe Bucket" customClass="ChoiceBucket" customModule="Ketch" customModuleProvider="target">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-bucket-keep" translatesAutoresizingMaskIntoConstraints="NO" id="ZdL-6o-ahC" userLabel="Maybe Placeholder" customClass="ChoicePlaceholder" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="472" y="193" width="100" height="113"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ZdL-6o-ahC" secondAttribute="height" multiplier="100:113" id="3sI-Xg-EnF"/>
@@ -235,7 +235,7 @@ SAILED FOR TODAY.</string>
                                     </mask>
                                 </variation>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-bucket-marry" translatesAutoresizingMaskIntoConstraints="NO" id="2Mo-6y-hwh" userLabel="Yes Bucket" customClass="ChoiceBucket" customModule="Ketch" customModuleProvider="target">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-bucket-marry" translatesAutoresizingMaskIntoConstraints="NO" id="2Mo-6y-hwh" userLabel="Maybe Placeholder" customClass="ChoicePlaceholder" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="250" y="67" width="100" height="116"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="116" id="I4i-RO-KZR"/>
@@ -252,7 +252,7 @@ SAILED FOR TODAY.</string>
                                     </mask>
                                 </variation>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-bucket-skip" translatesAutoresizingMaskIntoConstraints="NO" id="C5L-zq-XTw" userLabel="No Bucket" customClass="ChoiceBucket" customModule="Ketch" customModuleProvider="target">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-bucket-skip" translatesAutoresizingMaskIntoConstraints="NO" id="C5L-zq-XTw" userLabel="Maybe Placeholder" customClass="ChoicePlaceholder" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="29" y="193" width="100" height="113"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="113" id="hOv-IZ-HTU"/>
