@@ -81,6 +81,7 @@ const struct R R = {
         .singleMatchPrompt = @"SingleMatchPrompt",
         .skipPrompt = @"SkipPrompt",
         .snoozePrompt = @"SnoozePrompt",
+        .tapToContinue = @"TapToContinue",
         .threeChoicesPrompt = @"ThreeChoicesPrompt",
         .threeMatchesPrompt = @"ThreeMatchesPrompt",
     },

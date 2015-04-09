@@ -33,6 +33,7 @@ PODS:
   - SDWebImage (3.7.1):
     - SDWebImage/Core (= 3.7.1)
   - SDWebImage/Core (3.7.1)
+  - Shimmer (1.0.2)
   - SimpleKeychain (0.3.0)
   - SugarRecord/Core (1.0.7)
   - SugarRecord/CoreData (1.0.7):
@@ -56,6 +57,7 @@ DEPENDENCIES:
   - ReactiveCocoa (~> 2.4)
   - Reveal-iOS-SDK (~> 1.5)
   - SDWebImage (~> 3.7)
+  - Shimmer (~> 1.0)
   - SugarRecord/CoreData (from `https://github.com/tonyxiao/SugarRecord`)
   - SwiftyUserDefaults (~> 1.0)
   - SwipeView (~> 1.3)
@@ -94,6 +96,7 @@ SPEC CHECKSUMS:
   ReactiveCocoa: cbe3b5eae464aa72a348a7323996b171728a9e71
   Reveal-iOS-SDK: c9c55cad2729c85f6ced415f1b21857c9a2d8ef9
   SDWebImage: ed3095af2ff88b436426037444979b917f6c5575
+  Shimmer: c5374be1c2b0c9e292fb05b339a513cf291cac86
   SimpleKeychain: 8de48eb1de10c6403911a6be52e127e5b5d31404
   SugarRecord: 9d55ce666e8161eacdc95c996173eb53eb6d3683
   SwiftyUserDefaults: 76cb548fdbcb0d28c27bfa01e261fd78df65e38f

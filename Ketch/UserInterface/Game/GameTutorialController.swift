@@ -9,13 +9,15 @@
 import Foundation
 import RBBAnimation
 import Cartography
+import Shimmer
 
 class GameTutorialController {
     let gameVC: GameViewController
     var helpLabel: DesignableLabel { return gameVC.helpLabel }
     var bubbles: [CandidateBubble] { return gameVC.bubbles }
     var placeholders: [ChoicePlaceholder] { return gameVC.placeholders }
-    let overlay = TransparentView()
+    var overlay : TransparentView!
+    var prompt : FBShimmeringView!
     
     private(set) var currentStep = 0
     var started : Bool { return currentStep > 0 }
@@ -28,12 +30,33 @@ class GameTutorialController {
     func setupTutorial() {
         placeholders.each { $0.hidden = true }
         bubbles.each { $0.hidden = true }
-        gameVC.view.addSubview(overlay)
-        
-        overlay.makeEdgesEqualTo(gameVC.view)
+
+        overlay = TransparentView()
         overlay.userInteractionEnabled = true
         overlay.passThroughTouchOnSelf = false
         overlay.whenTapEnded(advanceStep)
+        gameVC.view.addSubview(overlay)
+
+        let promptLabel = UILabel()
+        promptLabel.text = LS(R.Strings.tapToContinue)
+        promptLabel.font = UIFont(.TransatTextBlack, size: 20)
+        promptLabel.textColor = StyleKit.darkWhite
+        promptLabel.preferredMaxLayoutWidth = 200
+        promptLabel.numberOfLines = 0
+        promptLabel.textAlignment = .Center
+        
+        prompt = FBShimmeringView()
+        prompt.contentView = promptLabel
+        prompt.shimmering = true
+        prompt.alpha = 0
+        overlay.addSubview(prompt)
+        
+        overlay.makeEdgesEqualTo(gameVC.view)
+        promptLabel.makeEdgesEqualTo(prompt)
+        constrain(prompt, helpLabel) { prompt, helpLabel in
+            prompt.bottom == helpLabel.top - 20
+            prompt.centerX == helpLabel.centerX
+        }
     }
     
     func startTutorial() {
@@ -44,8 +67,11 @@ class GameTutorialController {
     func teardownTutorial() {
         placeholders.each { $0.hidden = false }
         bubbles.each { $0.hidden = false }
-        overlay.removeFromSuperview()
         helpLabel.rawText = " "
+        overlay.removeFromSuperview()
+        overlay = nil
+        prompt = nil
+        currentStep = 0
     }
     
     func advanceStep() {
@@ -66,6 +92,10 @@ class GameTutorialController {
             startTutorial()
             return // Should log warning
         }
+        prompt.alpha = 0
+        if currentStep < 5 {
+            prompt.setHiddenAnimated(hidden: false, duration: 1, delay: 3)
+        }
         currentStep++
     }
     
@@ -74,7 +104,7 @@ class GameTutorialController {
     private func showHelpText(text: String) {
         helpLabel.alpha = 0
         helpLabel.rawText = text
-        helpLabel.setHiddenAnimated(hidden: false, duration: 0.3)
+        helpLabel.setHiddenAnimated(hidden: false, duration: 1)
     }
     
     private func dropBubbles() {
@@ -157,7 +187,7 @@ extension GameTutorialController : GameViewControllerDelegate {
     }
     
     func gameDidAssignBubbleToTarget(bubble: CandidateBubble, target: SnapTarget?) {
-        if target?.choice != nil {
+        if target?.choice != nil && started {
             teardownTutorial()
 //            UD[.bGameTutorialMode] = false
         }

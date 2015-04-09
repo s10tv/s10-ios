@@ -21,6 +21,7 @@ pod 'UICollectionViewLeftAlignedLayout', '~> 0.0.3'
 #pod 'Spring', '~> 1.0'
 #pod 'pop', '~> 1.0'
 pod 'RBBAnimation', '~> 0.3.0'
+pod 'Shimmer', '~> 1.0'
 
 pod 'EDColor', '~> 0.4'
 pod 'DateTools', '~> 1.5'

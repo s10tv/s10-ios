@@ -149,6 +149,8 @@ extern const struct R {
         __unsafe_unretained NSString *skipPrompt;
         /// SEE AGAIN LATER
         __unsafe_unretained NSString *snoozePrompt;
+        /// Tap anywhere to continue
+        __unsafe_unretained NSString *tapToContinue;
         /// AND YOU’LL HAVE THREE CHOICES
         __unsafe_unretained NSString *threeChoicesPrompt;
         /// YOU’LL SEE THREE POTENTIAL MATCHES
