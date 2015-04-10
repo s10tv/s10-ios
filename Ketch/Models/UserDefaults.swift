@@ -15,10 +15,12 @@ public let UD = Defaults // Intentional global variable
 // to name UserDefaultKey's because they are not statically typed
 enum UserDefaultKey : String {
     case bGameTutorialMode = "bGameTutorialMode"
+    case bHasBeenWelcomed = "bHasBeenWelcomed"
     
     func defaultValue() -> Any? {
         switch self {
             case .bGameTutorialMode: return true
+            case .bHasBeenWelcomed: return false
             default: return nil
         }
     }

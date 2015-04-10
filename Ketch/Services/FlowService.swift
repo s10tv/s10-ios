@@ -27,8 +27,7 @@ class FlowService : NSObject {
     private var hasAccount = false
     private var receivedMetadata = false
     private var vetted = false   // Vetted by us on server
-    // TODO: Implement tracking of vetting and accepted state
-    private var welcomed = true // Accepting approval and begun 1st game
+    private var welcomed = false // Saw the welcome screen
     private var waitingOnGameResult = false // Waiting to hear back from server about recent game
     private(set) var newConnectionToShow : Connection?
     private(set) var candidateQueue : [Candidate]?
@@ -43,6 +42,7 @@ class FlowService : NSObject {
         // BUG ALERT: All these listeners create indefinite retain cycles because instance method are merely
         // curried functions and thus strongly references self
         // For the time being we'll ignore this problem for now because FlowService will never be deallocated
+        nc.listen(NSUserDefaultsDidChangeNotification, block: _userDefaultsDidChange)
         nc.listen(METDDPClientDidChangeAccountNotification, block: _meteorAccountDidChange)
         nc.listen(.DidReceiveMetadata, block: _didReceiveMetadata)
         nc.listen(.WillLoginToMeteor, block: _willLoginToMeteor)
@@ -164,6 +164,11 @@ class FlowService : NSObject {
             assert(newConnectionToShow != nil, "Expect new connection to exist by now")
         }
         waitingOnGameResult = false
+        updateState()
+    }
+    
+    func _userDefaultsDidChange(notification: NSNotification) {
+        welcomed = UD[.bHasBeenWelcomed].bool ?? false
         updateState()
     }
 }

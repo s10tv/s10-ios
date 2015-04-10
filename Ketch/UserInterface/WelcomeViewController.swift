@@ -12,7 +12,7 @@ class WelcomeViewController : CloudsViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.matches(.FinishWelcome) {
-            // TODO: Set welcomed = true
+            UD[.bHasBeenWelcomed] = true
         }
     }
 }
