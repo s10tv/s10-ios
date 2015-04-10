@@ -13,11 +13,25 @@ class UserAvatarView : UIImageView {
     // Workaround for swift compiler
     override init(image: UIImage? = nil) {
         super.init(image: image)
+        commonInit()
+        
     }
     
     required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        commonInit()
     }
+    
+    func commonInit() {
+        userInteractionEnabled = true
+        contentMode = .ScaleAspectFill
+        makeCircular()
+        if image == nil {
+            image = UIImage(named: R.ImagesAssets.girlPlaceholder)
+        }
+    }
+    
+    // MARK: -
     
     override var frame: CGRect {
         didSet { makeCircular() }
@@ -63,13 +77,6 @@ class UserAvatarView : UIImageView {
     }
     
     // MARK: -
-    // TODO: Non-nib-specific init?
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        userInteractionEnabled = true
-        contentMode = .ScaleToFill
-        image = UIImage(named: R.ImagesAssets.girlPlaceholder)
-    }
     
     override func layoutSubviews() {
         super.layoutSubviews()
