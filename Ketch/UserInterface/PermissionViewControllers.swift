@@ -11,14 +11,19 @@ import CoreLocation
 
 class FacebookPermissionViewController : BaseViewController {
     
-    @IBAction func requestFacebookPermission() {
-        Core.loginWithUI()
+    @IBAction func requestFacebookPermission(sender: AnyObject) {
+        Core.loginWithUI().subscribeError({ _ in
+            self.showAlert(LS(R.Strings.fbPermDeniedAlertTitle),
+                  message: LS(R.Strings.fbPermDeniedAlertMessage))
+        }, completed: { () -> Void in
+            self.performSegue(.FacebookPermToNotificationsPerm)
+        })
     }
 }
 
 class NotificationsPermissionViewController : BaseViewController {
     
-    @IBAction func requestNotificationsPermission() {
+    @IBAction func requestNotificationsPermission(sender: AnyObject) {
         let settings = UIUserNotificationSettings(forTypes:
             UIUserNotificationType.Badge |
                 UIUserNotificationType.Alert |
@@ -32,10 +37,12 @@ class NotificationsPermissionViewController : BaseViewController {
     }
 }
 
+
+
 class LocationPermissionViewController : BaseViewController, CLLocationManagerDelegate {
     let manager = CLLocationManager()
     
-    @IBAction func requestLocationPermission() {
+    @IBAction func requestLocationPermission(sender: AnyObject) {
         manager.delegate = self
         manager.requestWhenInUseAuthorization()
     }
@@ -43,10 +50,9 @@ class LocationPermissionViewController : BaseViewController, CLLocationManagerDe
     // MARK: CLLocationManagerDelegate
     
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-//        if User.currentUser()?.vetted == "yes" {
-//            navigationController?.popToRootViewControllerAnimated(true)
-//        } else {
-//            performSegue(.LocationPermToWaitlist)
-//        }
+        // TODO: Handle unvetted state
+//        performSegue(.LocationPermToWaitlist)
+        println("Location status is \(status)")
+        performSegue(.LocationPermToLoading)
     }
 }

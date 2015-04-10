@@ -127,6 +127,10 @@ extern const struct R {
     struct Strings {
         /// DRAG THE MATCHES UP TO YOUR CHOICES
         __unsafe_unretained NSString *dragMatchsToChoices;
+        /// We are not able to log you in. Please try again.
+        __unsafe_unretained NSString *fbPermDeniedAlertMessage;
+        /// Permission Denied
+        __unsafe_unretained NSString *fbPermDeniedAlertTitle;
         /// It's a Ketch!
         __unsafe_unretained NSString *itsAKetch;
         /// SAY YES NOW

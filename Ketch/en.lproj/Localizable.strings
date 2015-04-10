@@ -6,6 +6,10 @@
   Copyright (c) 2015 Ketch. All rights reserved.
 */
 
+/* Facebook Permission Screen */
+"FBPermDeniedAlertTitle" = "Permission Denied";
+"FBPermDeniedAlertMessage" = "We are not able to log you in. Please try again.";
+
 /* Game Screen */
 "TapToContinue" = "TAP ANYWHERE TO CONTINUE";
 "ThreeMatchesPrompt" = "YOU’LL SEE THREE POTENTIAL MATCHES";

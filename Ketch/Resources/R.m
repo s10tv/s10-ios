@@ -70,6 +70,8 @@ const struct R R = {
     },
     .Strings = {
         .dragMatchsToChoices = @"DragMatchsToChoices",
+        .fbPermDeniedAlertMessage = @"FBPermDeniedAlertMessage",
+        .fbPermDeniedAlertTitle = @"FBPermDeniedAlertTitle",
         .itsAKetch = @"It's a Ketch!",
         .marryPrompt = @"MarryPrompt",
         .moreSheetCancel = @"MoreSheetCancel",

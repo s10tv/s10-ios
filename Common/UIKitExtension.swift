@@ -31,7 +31,13 @@ extension UIViewController {
             subject.sendCompleted()
         }
         return subject
-        
+    }
+    
+    func showAlert(title: String?, message: String?) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        alert.addTextFieldWithConfigurationHandler(nil)
+        alert.addAction("Ok", style: .Cancel)
+        presentViewController(alert)
     }
 }
 

@@ -260,6 +260,9 @@ Are you looking for the One?</string>
                                         <real key="value" value="28"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="requestFacebookPermission:" destination="6g2-ww-E2T" eventType="touchUpInside" id="sPd-hb-th3"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="xEl-KE-QAO" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="153" y="379" width="295" height="78"/>
@@ -298,6 +301,9 @@ Are you looking for the One?</string>
                             <constraint firstAttribute="centerX" secondItem="g0z-bD-uKM" secondAttribute="centerX" id="v1Z-IE-yK8"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <segue destination="AWi-zb-5Lc" kind="show" identifier="FacebookPermToNotificationsPerm" id="1e8-lw-cNm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MQh-h4-WxM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -692,6 +698,9 @@ Hold tight and you'll be finding the one before you know it.</string>
                                         <real key="value" value="28"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="requestNotificationsPermission:" destination="AWi-zb-5Lc" eventType="touchUpInside" id="fRg-A6-zQX"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="zTe-pu-T6J" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="154" y="382" width="292" height="104"/>
@@ -785,6 +794,10 @@ Hold tight and you'll be finding the one before you know it.</string>
                                         <real key="value" value="28"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="requestLocationPermission:" destination="8eb-bN-AxK" eventType="touchUpInside" id="cz4-Fk-WeQ"/>
+                                    <segue destination="Yt1-Kb-Ryy" kind="unwind" identifier="LocationPermToLoading" unwindAction="unwindToLoading:" id="zQH-7j-rKj"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="47F-Un-adg" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="161" y="375" width="278" height="104"/>
@@ -828,6 +841,7 @@ Hold tight and you'll be finding the one before you know it.</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rGl-m5-QNQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Yt1-Kb-Ryy" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="833" y="274"/>
         </scene>
@@ -844,4 +858,7 @@ Hold tight and you'll be finding the one before you know it.</string>
         <image name="sprite-cloud-4" width="95" height="44"/>
         <image name="sprite-sun" width="218" height="186"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="1e8-lw-cNm"/>
+    </inferredMetricsTieBreakers>
 </document>
