@@ -83,7 +83,22 @@ class FlowService : NSObject {
     // MARK: State Management
     
     private func computeCurrentState() -> State {
-        if loggingIn || !receivedMetadata {
+        Log.debug([
+            "Internal State:\n",
+            "loggingIn \(loggingIn)\n",
+            "receivedMetadata \(receivedMetadata)\n",
+            "hasAccount \(hasAccount)\n",
+            "vetted \(vetted)\n",
+            "welcomed \(welcomed)\n",
+            "candidateQueue.count \(candidateQueue?.count)\n",
+            "waitingOnGameResult \(waitingOnGameResult)\n",
+            "newConnectionToShow \(newConnectionToShow)\n"
+        ].reduce("", +))
+        
+        
+        if loggingIn {
+            return .Loading
+        } else if !receivedMetadata {
             return .Loading
         } else if !hasAccount {
             return .Signup
