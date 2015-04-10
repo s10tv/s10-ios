@@ -20,16 +20,18 @@ class NewConnectionViewController : BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        avatar.didTap = { [weak self] user in
-            let profileVC = ProfileViewController()
-            profileVC.user = user
-            self?.presentViewController(profileVC, animated: true)
-        }
+        avatar.whenTapEnded(didTapOnAvatar)
         titleLabel.text = LS(R.Strings.itsAKetch)
         avatar.user = connection.user
         promptLabel.rawText = LS(R.Strings.singleMatchPrompt, connection.user!.firstName!, connection.user!.firstName!)
     }
-    
+
+    func didTapOnAvatar() {
+        let profileVC = ProfileViewController()
+        profileVC.user = self.connection.user
+        self.presentViewController(profileVC, animated: true)
+    }
+
     @IBAction func goToDock(sender: AnyObject) {
         performSegue(.NewConnectionToDock)
     }

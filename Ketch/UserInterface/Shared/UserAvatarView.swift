@@ -10,8 +10,36 @@ import Foundation
 import FaceAwareFill
 
 class UserAvatarView : UIImageView {
+    private var fadeLayer : CAGradientLayer!
     
-    // Workaround for swift compiler
+    // Workaround for infinite loop issue where faceAwareFill tries to set image
+    private var _filling = false
+    override var image: UIImage? {
+        didSet {
+            if _filling { return }
+            _filling = true; faceAwareFill(); _filling = false
+        }
+    }
+    
+    var fadeRatio : CGFloat = 0 {
+        didSet {
+            layer.addSublayer(fadeLayer)
+            let ratio = between(0, fadeRatio, 1)
+            fadeLayer.locations = [0, max(0, ratio-0.15), min(1, ratio+0.05), 1]
+        }
+    }
+    
+    var user : User? { didSet {
+        if let photoURL = user?.profilePhotoURL {
+            sd_setImageWithURL(photoURL)
+        } else {
+            image = UIImage(named: R.ImagesAssets.girlPlaceholder)
+        }
+    } }
+
+    // MARK: -
+    
+    // Workaround for swift compiler bug
     override init(image: UIImage? = nil) {
         super.init(image: image)
         commonInit()
@@ -26,70 +54,21 @@ class UserAvatarView : UIImageView {
     func commonInit() {
         userInteractionEnabled = true
         contentMode = .ScaleAspectFill
-        makeCircular()
-        if image == nil {
-            image = UIImage(named: R.ImagesAssets.girlPlaceholder)
-        }
-    }
-    
-    // MARK: -
-    
-    override var frame: CGRect {
-        didSet { makeCircular() }
-    }
-    
-    private var _filling = false
-    override var image: UIImage? {
-        didSet {
-            if _filling { return }
-            _filling = true; faceAwareFill(); _filling = false
-        }
-    }
-    
-    private let fadeLayer : CAGradientLayer = {
-        let gradient = CAGradientLayer()
-        gradient.colors = [
+        fadeLayer = CAGradientLayer()
+        fadeLayer.colors = [
             UIColor.clearColor().CGColor,
             UIColor.clearColor().CGColor,
             StyleKit.brandAlt.colorWithAlpha(0.75).CGColor,
             StyleKit.brandAlt.colorWithAlpha(0.9).CGColor,
         ]
-        return gradient
-    }()
-    
-    var fadeRatio : CGFloat = 0 {
-        didSet {
-            layer.addSublayer(fadeLayer)
-            let ratio = between(0, fadeRatio, 1)
-            fadeLayer.locations = [0, max(0, ratio-0.15), min(1, ratio+0.05), 1]
-        }
-    }
-    
-    var user : User? {
-        didSet {
-            if let photoURL = user?.profilePhotoURL {
-                sd_setImageWithURL(photoURL)
-            } else {
-                image = UIImage(named: R.ImagesAssets.girlPlaceholder)
-            }
-        }
-    }
-    
-    var didTap : ((user: User?) -> Void)? {
-        didSet {
-            whenTapEnded { [weak self] in
-                if let block = self?.didTap {
-                    block(user: self?.user)
-                }
-            }
-        }
+        makeCircular()
     }
     
     // MARK: -
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        makeCircular()
+        layer.cornerRadius = min(frame.size.width, frame.size.height) / 2
         fadeLayer.frame = layer.bounds
     }
 }
