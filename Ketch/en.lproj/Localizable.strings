@@ -30,3 +30,6 @@
 "ReportAlertMessage" = "Why did you report this user?";
 "ReportAlertCancel" = "Cancel";
 "ReportAlertConfirm" = "Confirm";
+
+/* Boat Sailed */
+"InviteDefaultText" = "Check out Ketch! I think it'll be a lot of fun for you! http://ketchtheone.com";

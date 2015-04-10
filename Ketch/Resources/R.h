@@ -27,12 +27,6 @@ extern const struct R {
         __unsafe_unretained NSString *gameBucketMarry;
         /// game-bucket-skip
         __unsafe_unretained NSString *gameBucketSkip;
-        /// game-empty-share-facebook
-        __unsafe_unretained NSString *gameEmptyShareFacebook;
-        /// game-empty-share-sms
-        __unsafe_unretained NSString *gameEmptyShareSms;
-        /// game-empty-share-twitter
-        __unsafe_unretained NSString *gameEmptyShareTwitter;
         /// game-progressIndicator-1
         __unsafe_unretained NSString *gameProgressIndicator1;
         /// game-progressIndicator-2
@@ -83,8 +77,6 @@ extern const struct R {
         __unsafe_unretained NSString *spriteSun;
         /// tutorial-arrow
         __unsafe_unretained NSString *tutorialArrow;
-        /// waitlist-clouds
-        __unsafe_unretained NSString *waitlistClouds;
     } ImagesAssets;
     struct JSQMessagesAssets {
         /// Images/bubble_min.png
@@ -131,6 +123,8 @@ extern const struct R {
         __unsafe_unretained NSString *fbPermDeniedAlertMessage;
         /// Permission Denied
         __unsafe_unretained NSString *fbPermDeniedAlertTitle;
+        /// Check out Ketch! I think it'll be a lot of fun for you! http://ketchtheone.com
+        __unsafe_unretained NSString *inviteDefaultText;
         /// It's a Ketch!
         __unsafe_unretained NSString *itsAKetch;
         /// SAY YES NOW
