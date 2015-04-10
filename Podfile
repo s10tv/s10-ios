@@ -8,7 +8,7 @@ link_with 'Ketch', 'KetchTests'
 pod 'ReactiveCocoa', '~> 2.4' # Update to 3.0 when ready
 
 pod 'SugarRecord/CoreData', :git => 'https://github.com/tonyxiao/SugarRecord'
-pod 'Meteor', '~> 0.1'
+pod 'Meteor', :git => 'https://github.com/tonyxiao/meteor-ios'
 pod 'SwiftyUserDefaults', '~> 1.0'
 
 pod 'SwipeView', '~> 1.3'

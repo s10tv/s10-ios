@@ -11,14 +11,6 @@
 #import <BugfenderSDK/BugfenderSDK.h>
 #import "R.h"
 
-@interface METDDPClient (Private)
-
-@property (nonatomic, copy) METAccount *account;
-
-- (void)loginWithMethodName:(NSString *)methodName parameters:(NSArray *)parameters completionHandler:(METLogInCompletionHandler)completionHandler;
-
-@end
-
 @interface JSQMessagesViewController (Private)
 
 - (void)jsq_configureMessagesViewController;

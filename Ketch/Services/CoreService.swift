@@ -36,7 +36,7 @@ class CoreService {
         // Setup Meteor
         meteor.logDDPMessages = true
         meteor.connect()
-        
+      
         currentUserSubscription = meteor.addSubscriptionWithName("currentUser")
         connectionsSubscription = meteor.addSubscriptionWithName("connections")
         meteor.addSubscriptionWithName("messages")

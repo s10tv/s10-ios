@@ -53,7 +53,7 @@ DEPENDENCIES:
   - EDColor (~> 0.4)
   - Facebook-iOS-SDK (~> 3.22)
   - JSQMessagesViewController (~> 6.1)
-  - Meteor (~> 0.1)
+  - Meteor (from `https://github.com/tonyxiao/meteor-ios`)
   - NSLogger (~> 1.5)
   - RBBAnimation (~> 0.3.0)
   - ReactiveCocoa (~> 2.4)
@@ -70,6 +70,8 @@ EXTERNAL SOURCES:
   BugfenderSDK:
     :git: https://github.com/bugfender/BugfenderSDK-iOS.git
     :tag: 0.3.2
+  Meteor:
+    :git: https://github.com/tonyxiao/meteor-ios
   SugarRecord:
     :git: https://github.com/tonyxiao/SugarRecord
   TCMobileProvision:
@@ -79,6 +81,9 @@ CHECKOUT OPTIONS:
   BugfenderSDK:
     :git: https://github.com/bugfender/BugfenderSDK-iOS.git
     :tag: 0.3.2
+  Meteor:
+    :commit: 5500783ab35080ce06d7200c0b1872ccc8df40c3
+    :git: https://github.com/tonyxiao/meteor-ios
   SugarRecord:
     :commit: ecf73acf39e6d2a595f912470e1a54050e0e3eb4
     :git: https://github.com/tonyxiao/SugarRecord
