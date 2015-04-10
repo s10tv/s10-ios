@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FaceAwareFill
 
 class UserAvatarView : UIImageView {
     
@@ -35,6 +36,14 @@ class UserAvatarView : UIImageView {
     
     override var frame: CGRect {
         didSet { makeCircular() }
+    }
+    
+    private var _filling = false
+    override var image: UIImage? {
+        didSet {
+            if _filling { return }
+            _filling = true; faceAwareFill(); _filling = false
+        }
     }
     
     private let fadeLayer : CAGradientLayer = {
