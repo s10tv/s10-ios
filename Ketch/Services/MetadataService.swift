@@ -29,6 +29,6 @@ class MetadataService {
     }
     
     private func valueForMetadataKey(key: String) -> AnyObject? {
-        return collection.documentWithID(key).fields["value"]
+        return collection.documentWithID(key)?.fields["value"]
     }
 }
