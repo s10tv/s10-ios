@@ -1,5 +1,6 @@
 PODS:
   - Bolts (1.1.3)
+  - BugfenderSDK (0.3.2)
   - Cartography (0.3.0)
   - CrashlyticsFramework (2.2.9)
   - DateTools (1.5.0)
@@ -45,6 +46,7 @@ PODS:
   - UICollectionViewLeftAlignedLayout (0.0.3)
 
 DEPENDENCIES:
+  - BugfenderSDK (from `https://github.com/bugfender/BugfenderSDK-iOS.git`, tag `0.3.2`)
   - Cartography (~> 0.3)
   - CrashlyticsFramework (~> 2.2)
   - DateTools (~> 1.5)
@@ -65,12 +67,18 @@ DEPENDENCIES:
   - UICollectionViewLeftAlignedLayout (~> 0.0.3)
 
 EXTERNAL SOURCES:
+  BugfenderSDK:
+    :git: https://github.com/bugfender/BugfenderSDK-iOS.git
+    :tag: 0.3.2
   SugarRecord:
     :git: https://github.com/tonyxiao/SugarRecord
   TCMobileProvision:
     :git: https://github.com/tonyxiao/TCMobileProvision.git
 
 CHECKOUT OPTIONS:
+  BugfenderSDK:
+    :git: https://github.com/bugfender/BugfenderSDK-iOS.git
+    :tag: 0.3.2
   SugarRecord:
     :commit: ecf73acf39e6d2a595f912470e1a54050e0e3eb4
     :git: https://github.com/tonyxiao/SugarRecord
@@ -80,6 +88,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Bolts: e431c88fd02115d4a34016c2100bbfa4d2d5b146
+  BugfenderSDK: fed79568bc0d970d71843c009241ce51bb6b00e1
   Cartography: cfaaaa04e68ecd5566368f99f01898a8eb0819d5
   CrashlyticsFramework: 5a6a8d7a0731bc75c63c3bd3d704962d5d8717cc
   DateTools: b93a2c2017747329c6077c7d7e8a75106e23d0d7

@@ -10,6 +10,7 @@ import UIKit
 import SugarRecord
 import FacebookSDK
 import CrashlyticsFramework
+import BugfenderSDK
 
 var Core : CoreService!
 
@@ -28,6 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
         // TODO: Put api key into unified settings file
         Crashlytics.sharedInstance().delegate = self
         Crashlytics.startWithAPIKey(Env.crashlyticsAPIKey)
+        Bugfender.activateLogger(Env.bugfenderAppToken)
+        
         UD.registerDefaultValues()
         Core = CoreService()
         

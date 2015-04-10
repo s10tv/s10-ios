@@ -8,6 +8,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <Meteor/METCoreDataDDPClient.h>
 #import <JSQMessagesViewController/JSQMessagesViewController.h>
+#import <BugfenderSDK/BugfenderSDK.h>
 #import "R.h"
 
 @interface METDDPClient (Private)
@@ -49,6 +50,17 @@
            functionName:(NSString *)functionName
                  domain:(NSString *)domain
                   level:(int)level
+                message:(NSString *)message;
+
+@end
+
+@interface Bugfender (Swift)
+
++ (void)logWithFilename:(NSString *)filename
+             lineNumber:(int)lineNumber
+           functionName:(NSString *)functionName
+                    tag:(NSString *)tag
+                  level:(BFLogLevel)level
                 message:(NSString *)message;
 
 @end

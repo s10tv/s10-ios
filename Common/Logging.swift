@@ -7,7 +7,9 @@
 //
 
 import Foundation
+import BugfenderSDK
 
+// TODO: Stuff shouldn't create global variables like this
 let Log = Logger()
 
 class Logger  {
@@ -61,7 +63,27 @@ class Logger  {
              function: String = __FUNCTION__,
              file: String = __FILE__,
              line: Int = __LINE__) {
+        // NSLogger
         nslogger.logWithFilename(file, lineNumber: Int32(line), functionName: function, domain: nil, level: Int32(level.rawValue), message: message)
+
+        // Bugfender
+        let bfInfo = formatForBugFender(level, message: message)
+        Bugfender.logWithFilename(file, lineNumber: Int32(line), functionName: function, tag: nil, level: bfInfo.0, message: bfInfo.1)
+
+        // Swift default
         println("\(level) \(message)")
+    }
+    
+    func formatForBugFender(level: LogLevel, message: String) -> (BFLogLevel, String) {
+        switch level {
+        case .Verbose, .Debug:
+            return (.Default, "[\(level)] \(message)")
+        case .Info:
+            return (.Default, message)
+        case .Warn:
+            return (.Warning, message)
+        case .Error:
+            return (.Error, message)
+        }
     }
 }
