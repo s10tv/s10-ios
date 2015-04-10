@@ -7,19 +7,9 @@
 //
 
 import Foundation
-import FaceAwareFill
 
 class UserAvatarView : UIImageView {
     private var fadeLayer : CAGradientLayer!
-    
-    // Workaround for infinite loop issue where faceAwareFill tries to set image
-    private var _filling = false
-    override var image: UIImage? {
-        didSet {
-            if _filling { return }
-            _filling = true; faceAwareFill(); _filling = false
-        }
-    }
     
     var fadeRatio : CGFloat = 0 {
         didSet {
