@@ -15,36 +15,6 @@ class LoadingViewController : BaseViewController {
         hideKetchBoat = false
     }
     
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        
-//        let vc = UIStoryboard(name: "Signup", bundle: nil).instantiateViewControllerWithIdentifier("FacebookPerm") as PermissionViewController
-//        vc.permissionType = .Facebook
-//        navigationController?.pushViewController(vc, animated: true)
-//        return
-        
-        Core.flow.getStateMatching({ $0 != .Loading }) { state in
-            println("Got new state in loading \(state)")
-            switch state {
-            case .Signup:
-                self.performSegue(.Signup_Signup)
-            case .Waitlist:
-                self.performSegue(.Signup_Waitlist)
-            case .Welcome:
-                self.performSegue(.Signup_Welcome)
-            case .NewMatch:
-                self.performSegue(.LoadingToNewConnection)
-            case .NewGame:
-                self.performSegue(.LoadingToGame)
-            case .BoatSailed:
-                self.performSegue(.LoadingToNoGame)
-            case .Loading:
-                assert(false, "Cannot transition from loading to loading state")
-                break
-            }
-        }
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destVC as? NewConnectionViewController {
             vc.connection = Core.flow.newConnectionToShow
@@ -55,9 +25,28 @@ class LoadingViewController : BaseViewController {
         }
     }
     
-    // MARK: -
+    override func stateDidUpdateWhileViewActive(state: FlowService.State) {
+        switch state {
+        case .Signup:
+            self.performSegue(.Signup_Signup)
+        case .Waitlist:
+            self.performSegue(.Signup_Waitlist)
+        case .Welcome:
+            self.performSegue(.Signup_Welcome)
+        case .NewMatch:
+            self.performSegue(.LoadingToNewConnection)
+        case .NewGame:
+            self.performSegue(.LoadingToGame)
+        case .BoatSailed:
+            self.performSegue(.LoadingToNoGame)
+        case .Loading:
+            break
+        }
+    }
+    
+    // MARK: - Actions
     
     @IBAction func unwindToLoading(sender: UIStoryboardSegue) {
-        
     }
+    
 }

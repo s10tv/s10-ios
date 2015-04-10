@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReactiveCocoa
 
 // TODO: This is used in conjunction with the RootViewController. Should it be 
 // a protocol rather than a subclass?
@@ -14,6 +15,7 @@ class BaseViewController : UIViewController {
     
     var hideKetchBoat = true
     var waterlineLocation : RootView.WaterlineLocation = .Top(60)
+    private var stateDisposable: RACDisposable?
     
     override func prefersStatusBarHidden() -> Bool {
         return true
@@ -40,4 +42,21 @@ class BaseViewController : UIViewController {
     }
     
     func commonInit() { }
+    
+    // MARK: State Management
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        stateDisposable = Core.flow.stateUpdateSignal().subscribeNext { [weak self] _ in
+            self?.stateDidUpdateWhileViewActive(Core.flow.currentState)
+            return
+        }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        stateDisposable?.dispose()
+    }
+    
+    func stateDidUpdateWhileViewActive(state: FlowService.State) { }
 }

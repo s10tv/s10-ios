@@ -9,19 +9,18 @@
 import Foundation
 
 class BoatSailedViewController : BaseViewController {
+    
+    override func stateDidUpdateWhileViewActive(state: FlowService.State) {
+        if state != .BoatSailed {
+            self.performSegue(.BoatSailedToLoading)
+        }
+    }
+    
     override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
         if edge == .Right {
             performSegue(.BoatSailedToDock)
             return true
         }
         return super.handleScreenEdgePan(edge)
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        Core.flow.getStateMatching({ $0 != .BoatSailed }) { _ in
-            self.performSegue(.BoatSailedToLoading)
-            return
-        }
     }
 }

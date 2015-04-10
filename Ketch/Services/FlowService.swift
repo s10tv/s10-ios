@@ -34,7 +34,7 @@ class FlowService : NSObject {
     
     private(set) var currentState = State.Loading
     
-    private let stateChanged = RACReplaySubject(capacity: 0)
+    private let stateChanged = RACSubject()
     private let nc = NSNotificationCenter.defaultCenter().proxy()
     
     override init() {
@@ -55,6 +55,17 @@ class FlowService : NSObject {
     }
     
     // MARK: Public API
+    
+    func stateUpdateSignal() -> RACSignal {
+        var lastState : State?
+        return stateChanged.startWith(nil).flattenMap { _ -> RACStream! in
+            if lastState == self.currentState {
+                return RACSignal.empty()
+            }
+            lastState = self.currentState
+            return RACSignal.Return(nil)
+        }.deliverOnMainThread()
+    }
     
     func getStateMatching(criteria: (State) -> Bool, completion: (State) -> ()) {
         stateChanged.startWith(nil).deliverOnMainThread().takeUntilBlock { _ in
