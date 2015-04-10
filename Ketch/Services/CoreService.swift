@@ -70,7 +70,7 @@ class CoreService {
         NC.postNotification(.WillLoginToMeteor)
         attemptLoginWithCachedCredentials()
         
-        currentUserSubscription.signal.subscribeError({ _ in
+        currentUserSubscription.signal.deliverOnMain().subscribeError({ _ in
             NC.postNotification(.DidFailLoginToMeteor)
         }, completed: {
             NC.postNotification(.DidSucceedLoginToMeteor)
