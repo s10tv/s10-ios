@@ -25,8 +25,8 @@ class FlowService : NSObject {
     
     private var loggingIn = false
     private var hasAccount = false
-    private var receivedMetadata = false
-    private var vetted = false   // Vetted by us on server
+    private var receivedMetadata = true
+    private var vetted = true   // Vetted by us on server
     private var welcomed = false // Saw the welcome screen
     private var waitingOnGameResult = false // Waiting to hear back from server about recent game
     private(set) var newConnectionToShow : Connection?
