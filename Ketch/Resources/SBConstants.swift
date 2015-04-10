@@ -1,6 +1,9 @@
 // Auto generated file from SBConstants - any changes may be lost
 
 public enum SegueIdentifier : String {
+    case BoatSailedToDock = "BoatSailedToDock"
+    case BoatSailedToLoading = "BoatSailedToLoading"
+    case BoatSailedToSettings = "BoatSailedToSettings"
     case ChatToProfile = "ChatToProfile"
     case DockToChat = "DockToChat"
     case FinishGame = "FinishGame"
@@ -14,9 +17,6 @@ public enum SegueIdentifier : String {
     case Main_Chat = "Main_Chat"
     case Main_Settings = "Main_Settings"
     case NewConnectionToDock = "NewConnectionToDock"
-    case NoGameToDock = "NoGameToDock"
-    case NoGameToLoading = "NoGameToLoading"
-    case NoGameToSettings = "NoGameToSettings"
     case NotificationsPermToLocationPerm = "NotificationsPermToLocationPerm"
     case ProfileToEditProfile = "ProfileToEditProfile"
     case SettingsToCrab = "SettingsToCrab"
@@ -29,6 +29,7 @@ public enum SegueIdentifier : String {
 }
 
 public enum ViewControllerStoryboardIdentifier : String {
+    case BoatSailed = "BoatSailed"
     case Chat = "Chat"
     case Dock = "Dock"
     case EditProfile = "EditProfile"

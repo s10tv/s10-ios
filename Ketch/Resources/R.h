@@ -49,6 +49,8 @@ extern const struct R {
         __unsafe_unretained NSString *ketch;
         /// ketch-large
         __unsafe_unretained NSString *ketchLarge;
+        /// ketch-the-one
+        __unsafe_unretained NSString *ketchTheOne;
         /// perm-facebook-icon
         __unsafe_unretained NSString *permFacebook;
         /// perm-location-icon

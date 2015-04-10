@@ -29,6 +29,7 @@ const struct R R = {
         .icRemovePhoto = @"ic_remove_photo",
         .ketch = @"Ketch",
         .ketchLarge = @"ketch-large",
+        .ketchTheOne = @"ketch-the-one",
         .permFacebook = @"perm-facebook-icon",
         .permLocation = @"perm-location-icon",
         .permNotifications = @"perm-notifications-icon",
