@@ -30,7 +30,7 @@ class LoadingViewController : BaseViewController {
                 self.performSegue(.Signup_Signup)
             case .Waitlist:
                 self.performSegue(.Signup_Waitlist)
-            case .Approval:
+            case .Welcome:
                 self.performSegue(.Signup_Welcome)
             case .NewMatch:
                 self.performSegue(.LoadingToNewConnection)

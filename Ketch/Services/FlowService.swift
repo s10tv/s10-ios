@@ -17,7 +17,7 @@ class FlowService : NSObject {
         case Loading
         case Signup
         case Waitlist
-        case Approval
+        case Welcome
         case BoatSailed
         case NewMatch
         case NewGame
@@ -27,7 +27,7 @@ class FlowService : NSObject {
     private var hasAccount = false
     // TODO: Implement tracking of vetting and accepted state
     private var vetted = true   // Vetted by us on server
-    private var accepted = true // Accepting approval and begun 1st game
+    private var welcomed = true // Accepting approval and begun 1st game
     private var waitingOnGameResult = false // Waiting to hear back from server about recent game
     private(set) var newConnectionToShow : Connection?
     private(set) var candidateQueue : [Candidate]?
@@ -73,8 +73,8 @@ class FlowService : NSObject {
             return .Signup
         } else if !vetted {
             return .Waitlist
-        } else if !accepted {
-            return .Approval
+        } else if !welcomed {
+            return .Welcome
         } else if candidateQueue == nil {
             return .Loading
         } else if waitingOnGameResult {
@@ -153,7 +153,7 @@ func ==(a: FlowService.State, b: FlowService.State) -> Bool {
     case (.Loading, .Loading): return true
     case (.Signup, .Signup): return true
     case (.Waitlist, .Waitlist): return true
-    case (.Approval, .Approval): return true
+    case (.Welcome, .Welcome): return true
     case (.BoatSailed, .BoatSailed): return true
     case (.NewMatch, .NewMatch): return true
     case (.NewGame, .NewGame): return true
@@ -171,7 +171,7 @@ extension FlowService.State : Printable {
         case .Loading: return "Loading"
         case .Signup: return "Signup"
         case .Waitlist: return "Waitlist"
-        case .Approval: return "Approval"
+        case .Welcome: return "Welcome"
         case .BoatSailed: return "BoatSailed"
         case .NewMatch: return "NewMatch"
         case .NewGame: return "NewGame"
