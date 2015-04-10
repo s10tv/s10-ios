@@ -25,8 +25,9 @@ class FlowService : NSObject {
     
     private var loggingIn = false
     private var hasAccount = false
+    private var receivedMetadata = false
+    private var vetted = false   // Vetted by us on server
     // TODO: Implement tracking of vetting and accepted state
-    private var vetted = true   // Vetted by us on server
     private var welcomed = true // Accepting approval and begun 1st game
     private var waitingOnGameResult = false // Waiting to hear back from server about recent game
     private(set) var newConnectionToShow : Connection?
@@ -43,6 +44,7 @@ class FlowService : NSObject {
         // curried functions and thus strongly references self
         // For the time being we'll ignore this problem for now because FlowService will never be deallocated
         nc.listen(METDDPClientDidChangeAccountNotification, block: _meteorAccountDidChange)
+        nc.listen(.DidReceiveMetadata, block: _didReceiveMetadata)
         nc.listen(.WillLoginToMeteor, block: _willLoginToMeteor)
         nc.listen(.DidSucceedLoginToMeteor, block: _didSucceedLoginToMeteor)
         nc.listen(.DidFailLoginToMeteor, block: _didFailLoginToMeteor)
@@ -81,7 +83,7 @@ class FlowService : NSObject {
     // MARK: State Management
     
     private func computeCurrentState() -> State {
-        if loggingIn {
+        if loggingIn || !receivedMetadata {
             return .Loading
         } else if !hasAccount {
             return .Signup
@@ -135,6 +137,12 @@ class FlowService : NSObject {
     func _didFailLoginToMeteor(notification: NSNotification) {
         loggingIn = false
         hasAccount = false
+        updateState()
+    }
+    
+    func _didReceiveMetadata(notification: NSNotification) {
+        receivedMetadata = true
+        vetted = Core.meta.vetted ?? false
         updateState()
     }
     
