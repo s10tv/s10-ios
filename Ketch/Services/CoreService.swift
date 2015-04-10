@@ -13,8 +13,9 @@ import SugarRecord
 import Meteor
 
 class CoreService {
-    let meteor : METCoreDataDDPClient
     let flow = FlowService()
+    let meteor : METCoreDataDDPClient
+    let meta: MetadataService
     let candidateService : CandidateService
     var mainContext : NSManagedObjectContext! {
         return meteor.mainQueueManagedObjectContext
@@ -63,6 +64,7 @@ class CoreService {
 
         // Initialize other services
         candidateService = CandidateService(meteor: meteor)
+        meta = MetadataService(meteor: meteor)
         
         // TODO: This is really quite right, need to rethink flow diagram here
         NC.postNotification(.WillLoginToMeteor)

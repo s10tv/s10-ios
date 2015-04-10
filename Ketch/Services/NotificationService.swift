@@ -19,6 +19,7 @@ enum NotificationName : String {
     case DidRegisterUserNotificationSettings = "DidRegisterUserNotificationSettings"
     case DidSubmitGame = "DidSubmitGame"
     case DidReceiveGameResult = "DidReceiveGameResult"
+    case DidReceiveMetadata = "DidReceiveMetadata"
 }
 
 extension NSNotificationCenter.Proxy {
