@@ -83,7 +83,7 @@ class FlowService : NSObject {
     // MARK: State Management
     
     private func computeCurrentState() -> State {
-        if loggingIn /*|| !receivedMetadata */{
+        if loggingIn || !receivedMetadata {
             return .Loading
         } else if !hasAccount {
             return .Signup
@@ -108,7 +108,7 @@ class FlowService : NSObject {
         currentState = computeCurrentState()
 //        currentState = .Signup
         stateChanged.sendNext(nil)
-        println("Current state updated to \(currentState)")
+        Log.info("Current state updated to \(currentState)")
     }
     
     func clearNewConnectionToShow() {
@@ -142,6 +142,7 @@ class FlowService : NSObject {
     
     func _didReceiveMetadata(notification: NSNotification) {
         receivedMetadata = true
+        Log.debug("Core.meta.vetted \(Core.meta.vetted)")
         vetted = Core.meta.vetted ?? false
         updateState()
     }

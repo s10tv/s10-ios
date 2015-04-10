@@ -23,7 +23,10 @@ class MetadataService {
     init(meteor: METCoreDataDDPClient) {
         self.meteor = meteor
         self.collection = meteor.database.collectionWithName("metadata")
-        meteor.addSubscriptionWithName("metadata").signal.subscribeCompleted {
+        // HACK ALERT: Prior to user login, metadata collection would get sent down without vetted
+        // and then subscription would be considered ready. Add in 1 sec delay here to make that less likely
+        // Need to figure out real architectural solution here
+        meteor.addSubscriptionWithName("metadata").signal.delay(1).deliverOnMainThread().subscribeCompleted {
             NC.postNotification(.DidReceiveMetadata)
         }
     }
