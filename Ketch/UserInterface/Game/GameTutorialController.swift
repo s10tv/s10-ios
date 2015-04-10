@@ -176,6 +176,7 @@ extension GameTutorialController : GameViewControllerDelegate {
             }
         } else {
             gameVC.tutorial = nil
+            gameVC.delegate = nil
         }
     }
     
@@ -189,6 +190,7 @@ extension GameTutorialController : GameViewControllerDelegate {
         if target?.choice != nil && started {
             teardownTutorial()
             gameVC.tutorial = nil
+            gameVC.delegate = nil
             UD[.bGameTutorialMode] = false
         }
     }
