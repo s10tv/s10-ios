@@ -20,7 +20,7 @@ class NewConnectionViewController : BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        avatar.whenTapEnded(didTapOnAvatar)
+        avatar.whenTapEnded { [weak self] in self?.didTapOnAvatar(); return }
         titleLabel.text = LS(R.Strings.itsAKetch)
         avatar.user = connection.user
         promptLabel.rawText = LS(R.Strings.singleMatchPrompt, connection.user!.firstName!, connection.user!.firstName!)

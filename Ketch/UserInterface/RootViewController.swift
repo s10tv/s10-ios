@@ -32,8 +32,8 @@ class RootViewController : UINavigationController {
         super.viewDidLoad()
         transitionManager = TransitionManager(rootView: rootView, navigationController: self)
         
-        view.whenEdgePanned(.Left, handler: handleEdgePan)
-        view.whenEdgePanned(.Right, handler: handleEdgePan)
+        view.whenEdgePanned(.Left) { [weak self] a, b in self?.handleEdgePan(a, edge: b); return }
+        view.whenEdgePanned(.Right) { [weak self] a, b in self?.handleEdgePan(a, edge: b); return }
     }
     
     // MARK: Target Action

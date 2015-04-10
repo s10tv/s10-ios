@@ -34,7 +34,7 @@ class GameTutorialController {
         overlay = TransparentView()
         overlay.userInteractionEnabled = true
         overlay.passThroughTouchOnSelf = false
-        overlay.whenTapEnded(advanceStep)
+        overlay.whenTapEnded { [weak self] in self?.advanceStep(); return }
         gameVC.view.addSubview(overlay)
 
         let promptLabel = UILabel()

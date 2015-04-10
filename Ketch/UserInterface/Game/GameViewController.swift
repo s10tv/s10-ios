@@ -44,8 +44,8 @@ class GameViewController : BaseViewController {
         // Setup bubble with candidates and event handling
         for (bubble, candidate) in Zip2(bubbles, candidates) {
             bubble.candidate = candidate
-            bubble.whenTapped(handleBubbleTap)
-            bubble.whenPanned(handleBubblePan)
+            bubble.whenTapped { [weak self] a in self?.handleBubbleTap(a); return }
+            bubble.whenPanned { [weak self] a in self?.handleBubblePan(a); return }
         }
         
         helpLabel.hidden = true

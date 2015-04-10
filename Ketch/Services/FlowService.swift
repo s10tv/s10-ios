@@ -39,6 +39,8 @@ class FlowService : NSObject {
     
     override init() {
         super.init()
+        // All these listeners create indefinite retain cycles because instance method are merely
+        // curried functions and thus strongly references self
         nc.listen(METDDPClientDidChangeAccountNotification, block: _meteorAccountDidChange)
         nc.listen(.WillLoginToMeteor, block: _willLoginToMeteor)
         nc.listen(.DidSucceedLoginToMeteor, block: _didSucceedLoginToMeteor)
