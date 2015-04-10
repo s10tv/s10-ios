@@ -23,4 +23,8 @@ class BoatSailedViewController : BaseViewController {
         }
         return super.handleScreenEdgePan(edge)
     }
+    
+    @IBAction func nominateFriend(sender: AnyObject) {
+        
+    }
 }

@@ -14,12 +14,12 @@
         </mutableArray>
         <mutableArray key="TransatTextBlack.otf">
             <string>TransatTextBlack</string>
+            <string>TransatTextBlack</string>
         </mutableArray>
         <mutableArray key="TransatTextBold.otf">
             <string>TransatTextBold</string>
         </mutableArray>
         <mutableArray key="TransatTextStandard.otf">
-            <string>TransatTextStandard</string>
             <string>TransatTextStandard</string>
         </mutableArray>
     </customFonts>
@@ -37,7 +37,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C8W-mx-D3U" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="180" y="160" width="240" height="65"/>
+                                <rect key="frame" x="180" y="228" width="240" height="65"/>
                                 <attributedString key="attributedText">
                                     <fragment>
                                         <string key="content">THE BOAT HAS
@@ -60,44 +60,31 @@ SAILED FOR TODAY.</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Why not ask a match to a date instead?" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T52-Uh-0pS">
-                                <rect key="frame" x="172" y="241" width="256" height="15"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="T52-Uh-0pS" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="195" y="309" width="211" height="46"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="Check in for another game tomorrow at 3:33pm">
+                                        <attributes>
+                                            <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <font key="NSFont" size="18" name="TransatTextStandard"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" minimumLineHeight="23"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="18"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="TransatTextStandard"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Know someone who’s a great Ketch?" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gQ-Xc-tOt">
+                                <rect key="frame" x="184" y="415" width="232" height="15"/>
                                 <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mJb-C3-BeN" userLabel="Divider">
-                                <rect key="frame" x="210" y="272" width="180" height="1"/>
-                                <color key="backgroundColor" red="0.92549019610000005" green="0.97647058819999999" blue="0.96078431369999995" alpha="0.65000000000000002" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="180" id="4lc-zI-5Xb"/>
-                                    <constraint firstAttribute="height" constant="1" id="Mc4-kY-pEh"/>
-                                </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Know someone who’d be a great Ketch?" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gQ-Xc-tOt">
-                                <rect key="frame" x="173" y="289" width="254" height="15"/>
-                                <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="15"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gz4-K8-TW5" userLabel="Share SMS">
-                                <rect key="frame" x="184" y="320" width="60" height="61"/>
-                                <state key="normal" image="game-empty-share-sms">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pQ7-yR-yoD" userLabel="Share Facebook">
-                                <rect key="frame" x="269" y="320" width="61" height="61"/>
-                                <state key="normal" image="game-empty-share-facebook">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mML-Qi-Zgb" userLabel="Share Twitter">
-                                <rect key="frame" x="355" y="320" width="60" height="61"/>
-                                <state key="normal" image="game-empty-share-twitter">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p6f-fF-OPq" userLabel="Settings">
                                 <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
                                 <constraints>
@@ -128,27 +115,51 @@ SAILED FOR TODAY.</string>
                                     <segue destination="YUi-xK-iJg" kind="show" identifier="BoatSailedToDock" id="tnG-4w-VC3"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PAq-tM-x1m" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="175" y="446" width="250" height="54"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="54" id="CW6-7j-aAQ"/>
+                                    <constraint firstAttribute="width" constant="250" id="Wbp-XK-3qw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TransatTextBlack" family="Transat Text" pointSize="21"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Nominate a friend">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="25"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="2"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="nominateFriend:" destination="0F9-rn-XRN" eventType="touchUpInside" id="qww-bj-7j7"/>
+                                    <action selector="submitChoices:" destination="brw-cx-YUO" eventType="touchUpInside" id="yfA-lE-Gwd"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.26274509800000001" green="0.87058823529999996" blue="0.86274509799999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="ax1-GJ-1VW" firstAttribute="top" secondItem="PAq-tM-x1m" secondAttribute="bottom" constant="100" id="1vc-2f-BCy"/>
                             <constraint firstItem="C8W-mx-D3U" firstAttribute="centerX" secondItem="T52-Uh-0pS" secondAttribute="centerX" id="4ZZ-dS-0rD"/>
-                            <constraint firstItem="T52-Uh-0pS" firstAttribute="centerX" secondItem="mJb-C3-BeN" secondAttribute="centerX" id="54H-dw-jmN"/>
                             <constraint firstItem="eR7-L5-Jvf" firstAttribute="top" secondItem="t9l-7o-Rtd" secondAttribute="bottom" id="BHO-CQ-Ms8"/>
-                            <constraint firstItem="4gQ-Xc-tOt" firstAttribute="centerX" secondItem="pQ7-yR-yoD" secondAttribute="centerX" id="F4T-Fq-pn4"/>
+                            <constraint firstItem="PAq-tM-x1m" firstAttribute="top" secondItem="4gQ-Xc-tOt" secondAttribute="bottom" constant="16" id="FSd-lz-MEQ"/>
                             <constraint firstItem="p6f-fF-OPq" firstAttribute="leading" secondItem="DTs-qg-EJB" secondAttribute="leading" id="JQZ-6N-D6M"/>
-                            <constraint firstItem="pQ7-yR-yoD" firstAttribute="centerY" secondItem="gz4-K8-TW5" secondAttribute="centerY" id="Pgt-NS-EOE"/>
                             <constraint firstAttribute="trailing" secondItem="eR7-L5-Jvf" secondAttribute="trailing" id="Qyc-Ag-RWg"/>
-                            <constraint firstItem="pQ7-yR-yoD" firstAttribute="leading" secondItem="gz4-K8-TW5" secondAttribute="trailing" constant="25" id="TnT-A7-lAq"/>
                             <constraint firstAttribute="centerX" secondItem="C8W-mx-D3U" secondAttribute="centerX" id="VEw-wx-gf0"/>
-                            <constraint firstItem="mJb-C3-BeN" firstAttribute="top" secondItem="T52-Uh-0pS" secondAttribute="bottom" constant="16" id="VkX-AD-RIR"/>
+                            <constraint firstItem="4gQ-Xc-tOt" firstAttribute="top" relation="greaterThanOrEqual" secondItem="T52-Uh-0pS" secondAttribute="bottom" constant="40" id="WFh-dY-tRQ"/>
                             <constraint firstItem="p6f-fF-OPq" firstAttribute="top" secondItem="t9l-7o-Rtd" secondAttribute="bottom" id="YQj-48-4VY"/>
                             <constraint firstItem="T52-Uh-0pS" firstAttribute="top" secondItem="C8W-mx-D3U" secondAttribute="bottom" constant="16" id="akr-kQ-XSK"/>
-                            <constraint firstItem="pQ7-yR-yoD" firstAttribute="top" secondItem="4gQ-Xc-tOt" secondAttribute="bottom" constant="16" id="b02-Uo-gOo"/>
-                            <constraint firstItem="mML-Qi-Zgb" firstAttribute="centerY" secondItem="pQ7-yR-yoD" secondAttribute="centerY" id="eQa-h4-ylb"/>
-                            <constraint firstItem="4gQ-Xc-tOt" firstAttribute="centerX" secondItem="mJb-C3-BeN" secondAttribute="centerX" id="lHL-f2-Qxt"/>
-                            <constraint firstItem="mML-Qi-Zgb" firstAttribute="leading" secondItem="pQ7-yR-yoD" secondAttribute="trailing" constant="25" id="nBG-Kp-g8c"/>
-                            <constraint firstItem="C8W-mx-D3U" firstAttribute="top" secondItem="DTs-qg-EJB" secondAttribute="top" constant="160" id="sUA-7K-vtW"/>
-                            <constraint firstItem="4gQ-Xc-tOt" firstAttribute="top" secondItem="mJb-C3-BeN" secondAttribute="bottom" constant="16" id="tZg-Ix-882"/>
+                            <constraint firstItem="PAq-tM-x1m" firstAttribute="centerX" secondItem="4gQ-Xc-tOt" secondAttribute="centerX" id="dcp-ON-IHn"/>
+                            <constraint firstItem="C8W-mx-D3U" firstAttribute="top" secondItem="DTs-qg-EJB" secondAttribute="top" priority="749" constant="228" id="sUA-7K-vtW"/>
+                            <constraint firstAttribute="centerX" secondItem="PAq-tM-x1m" secondAttribute="centerX" id="uNj-u2-cKE"/>
                         </constraints>
                     </view>
                     <connections>
@@ -602,13 +613,10 @@ SAILED FOR TODAY.</string>
         <image name="game-bucket-keep" width="128" height="144"/>
         <image name="game-bucket-marry" width="128" height="148"/>
         <image name="game-bucket-skip" width="128" height="144"/>
-        <image name="game-empty-share-facebook" width="61" height="61"/>
-        <image name="game-empty-share-sms" width="60" height="61"/>
-        <image name="game-empty-share-twitter" width="60" height="61"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tnG-4w-VC3"/>
         <segue reference="6ym-FC-Y97"/>
+        <segue reference="tnG-4w-VC3"/>
         <segue reference="LKi-wK-Agw"/>
         <segue reference="T9Y-bJ-q8s"/>
     </inferredMetricsTieBreakers>
