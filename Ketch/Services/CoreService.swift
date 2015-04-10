@@ -12,11 +12,11 @@ import FacebookSDK
 import SugarRecord
 import Meteor
 
-class CoreService {
+class CoreService : NSObject {
     let flow = FlowService()
-    let meteor : METCoreDataDDPClient
-    let meta: MetadataService
-    let candidateService : CandidateService
+    var meteor : METCoreDataDDPClient!
+    var meta: MetadataService!
+    var candidateService : CandidateService!
     var mainContext : NSManagedObjectContext! {
         return meteor.mainQueueManagedObjectContext
     }
@@ -27,14 +27,16 @@ class CoreService {
     var currentUserSubscription : METSubscription!
     var connectionsSubscription : METSubscription!
     
-    init() {
+    override init() {
+        super.init()
         meteor = METCoreDataDDPClient(serverURL: Env.serverURL)
         
         // Set up CoreData
         SugarRecord.addStack(MeteorCDStack(meteor: meteor))
         
         // Setup Meteor
-        meteor.logDDPMessages = true
+        meteor.delegate = self
+        meteor.logDDPMessages = false
         meteor.connect()
       
         currentUserSubscription = meteor.addSubscriptionWithName("currentUser")
@@ -134,4 +136,16 @@ class CoreService {
         UD.resetAll()
         return meteor.logout().deliverOnMainThread()
     }
+}
+
+extension CoreService : METDDPClientDelegate {
+    
+    func client(client: METDDPClient!, willSendDDPMessage message: [NSObject : AnyObject]!) {
+        Log.verbose("DDP > \(message)")
+    }
+    
+    func client(client: METDDPClient!, didReceiveDDPMessage message: [NSObject : AnyObject]!) {
+        Log.verbose("DDP < \(message)")
+    }
+    
 }
