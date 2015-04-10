@@ -40,13 +40,12 @@
                 <entry key="fieldName" value="photoUrls"/>
             </userInfo>
         </attribute>
-        <attribute name="vetted" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="work" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="Candidate" positionX="-45" positionY="54" width="128" height="88"/>
         <element name="Connection" positionX="-54" positionY="0" width="128" height="150"/>
         <element name="Message" positionX="-36" positionY="27" width="128" height="118"/>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="225"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="210"/>
     </elements>
 </model>
