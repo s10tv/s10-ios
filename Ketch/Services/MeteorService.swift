@@ -61,4 +61,16 @@ class MeteorService : NSObject {
         super.init()
     }
     
+    func submitChoices(#yes: Candidate, no: Candidate, maybe: Candidate) {
+        meteor.callMethod("candidate/submitChoices", params: [[
+            "yes": yes.documentID!,
+            "no": no.documentID!,
+            "maybe": maybe.documentID!
+        ]]) { _ in
+            [yes, no, maybe].map { $0.delete() }
+            return nil
+        }
+    }
+    
+    
 }

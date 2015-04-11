@@ -203,7 +203,7 @@ class GameViewController : BaseViewController {
         let marry = chosenCandidate(.Yes)!
         let keep = chosenCandidate(.Maybe)!
         let skip = chosenCandidate(.No)!
-        Core.candidateService.submitChoices(yes: marry, no: skip, maybe: keep)
+        Core.meteorService.submitChoices(yes: marry, no: skip, maybe: keep)
         performSegue(.FinishGame)
     }
 }

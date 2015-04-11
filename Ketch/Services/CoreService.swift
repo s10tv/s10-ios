@@ -17,7 +17,6 @@ class CoreService : NSObject {
     var meteorService: MeteorService!
     var meteor : METCoreDataDDPClient!
     var meta: MetadataService!
-    var candidateService : CandidateService!
     var mainContext : NSManagedObjectContext! {
         return meteor.mainQueueManagedObjectContext
     }
@@ -31,7 +30,6 @@ class CoreService : NSObject {
         meteor = meteorService.meteor
         SugarRecord.addStack(MeteorCDStack(meteor: meteor))
         meta = MetadataService(meteor: meteor)
-        candidateService = CandidateService(meteor: meteor)
         flow = FlowService(meteorService: meteorService, metadataService: meta)
         
         // Set up CoreData
@@ -94,6 +92,7 @@ class CoreService : NSObject {
     }
     
     func addPushToken(pushTokenData: NSData) {
+        // TODO: Only call this after user logged in
         if let apsEnv = Env.provisioningProfile?.apsEnvironment?.rawValue {
             meteor.callMethod("user/addPushToken", params: [Env.appID, apsEnv, pushTokenData.hexString()])
         }

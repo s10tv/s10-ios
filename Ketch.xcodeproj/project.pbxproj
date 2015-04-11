@@ -64,7 +64,6 @@
 		EA6650E11AA00999001BA40C /* BaseViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E01AA00999001BA40C /* BaseViews.swift */; };
 		EA6650E61AA00A82001BA40C /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E31AA00A82001BA40C /* WaveView.swift */; };
 		EA6650E81AA00A82001BA40C /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E51AA00A82001BA40C /* UserAvatarView.swift */; };
-		EA6650EC1AA00A9C001BA40C /* CandidateService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650EA1AA00A9C001BA40C /* CandidateService.swift */; };
 		EA6650ED1AA00A9C001BA40C /* CoreService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650EB1AA00A9C001BA40C /* CoreService.swift */; };
 		EA6650F71AA00B95001BA40C /* _Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650EF1AA00B95001BA40C /* _Candidate.swift */; };
 		EA6650F81AA00B95001BA40C /* _Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650F01AA00B95001BA40C /* _Connection.swift */; };
@@ -218,7 +217,6 @@
 		EA6650E01AA00999001BA40C /* BaseViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViews.swift; sourceTree = "<group>"; };
 		EA6650E31AA00A82001BA40C /* WaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
 		EA6650E51AA00A82001BA40C /* UserAvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAvatarView.swift; sourceTree = "<group>"; };
-		EA6650EA1AA00A9C001BA40C /* CandidateService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateService.swift; sourceTree = "<group>"; };
 		EA6650EB1AA00A9C001BA40C /* CoreService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreService.swift; sourceTree = "<group>"; };
 		EA6650EF1AA00B95001BA40C /* _Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Candidate.swift; sourceTree = "<group>"; };
 		EA6650F01AA00B95001BA40C /* _Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Connection.swift; sourceTree = "<group>"; };
@@ -532,7 +530,6 @@
 		EA6650E91AA00A9C001BA40C /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				EA6650EA1AA00A9C001BA40C /* CandidateService.swift */,
 				EA6650EB1AA00A9C001BA40C /* CoreService.swift */,
 				EA7004651ACF9B7900D0E467 /* NotificationService.swift */,
 				EADDC6B01AD493710023DA0A /* FlowService.swift */,
@@ -1011,7 +1008,6 @@
 				EA6650FC1AA00B95001BA40C /* Connection.swift in Sources */,
 				EA1970071A83549300FEBA7F /* ChatViewController.swift in Sources */,
 				EA6650E61AA00A82001BA40C /* WaveView.swift in Sources */,
-				EA6650EC1AA00A9C001BA40C /* CandidateService.swift in Sources */,
 				EAAA42871AB24D5F00056EFF /* CandidateBubble.swift in Sources */,
 				EA55F1381AD522C60042CBB2 /* NotificationCenter.swift in Sources */,
 				EACF216C1AD73BBA00938CD0 /* PermissionViewControllers.swift in Sources */,

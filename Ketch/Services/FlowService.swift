@@ -76,7 +76,7 @@ class FlowService : NSObject {
             return .Loading
         } else if (newMatchToShow != nil) {
             return .NewMatch
-        } else if (ms.collections.candidates.allDocuments.count >= 3) {
+        } else if (ms.collections.candidates.allDocuments?.count >= 3) {
             return .NewGame
         } else {
             return .BoatSailed
