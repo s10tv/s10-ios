@@ -11,12 +11,6 @@ import Meteor
 import FacebookSDK
 import ReactiveCocoa
 
-extension UIViewController {
-    var rootVC : RootViewController {
-        return UIApplication.sharedApplication().delegate?.window??.rootViewController as RootViewController
-    }
-}
-
 @objc(RootViewController)
 class RootViewController : UINavigationController {
     private let rootView = UIView.fromNib("RootView") as RootView

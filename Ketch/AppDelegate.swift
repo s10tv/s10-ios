@@ -18,12 +18,6 @@ var Core : CoreService!
 class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
 
     var window: UIWindow?
-
-    var rootVC: RootViewController! {
-        get {
-            return window?.rootViewController as RootViewController
-        }
-    }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // TODO: Put api key into unified settings file
