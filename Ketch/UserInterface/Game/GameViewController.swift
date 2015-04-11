@@ -14,6 +14,18 @@ protocol GameViewControllerDelegate : class {
     func gameDidAssignBubbleToTarget(bubble: CandidateBubble, target: SnapTarget?)
 }
 
+class SnapTarget {
+    let center : CGPoint
+    let choice : Candidate.Choice?
+    var bubble : CandidateBubble?
+    var snap : UISnapBehavior?
+    
+    init(center: CGPoint, choice: Candidate.Choice?) {
+        self.center = center
+        self.choice = choice
+    }
+}
+
 class GameViewController : BaseViewController {
     @IBOutlet var navViews: [UIView]!
     @IBOutlet weak var dockBadge: UIImageView!
@@ -205,17 +217,5 @@ class GameViewController : BaseViewController {
         let skip = chosenCandidate(.No)!
         Meteor.submitChoices(yes: marry, no: skip, maybe: keep)
         performSegue(.FinishGame)
-    }
-}
-
-class SnapTarget {
-    let center : CGPoint
-    let choice : Candidate.Choice?
-    var bubble : CandidateBubble?
-    var snap : UISnapBehavior?
-    
-    init(center: CGPoint, choice: Candidate.Choice?) {
-        self.center = center
-        self.choice = choice
     }
 }

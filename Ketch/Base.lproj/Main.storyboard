@@ -432,7 +432,7 @@ SAILED FOR TODAY.</string>
         <!--Chat View Controller-->
         <scene sceneID="bLH-YZ-QSJ">
             <objects>
-                <viewController storyboardIdentifier="Chat" id="rRd-ZO-60U" customClass="ChatViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Chat" id="rRd-ZO-60U" customClass="ChatViewController" customModule="Ketch" customModuleProvider="target" sceneMemberID="viewController">
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <segue destination="G4Y-Ae-Xgh" kind="presentation" identifier="ChatToProfile" id="T9Y-bJ-q8s"/>
@@ -478,7 +478,7 @@ SAILED FOR TODAY.</string>
         <!--Root View Controller-->
         <scene sceneID="Eov-g8-b8w">
             <objects>
-                <navigationController navigationBarHidden="YES" id="THI-zj-J05" customClass="RootViewController" sceneMemberID="viewController">
+                <navigationController navigationBarHidden="YES" id="THI-zj-J05" customClass="RootViewController" customModule="Ketch" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedStatusBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="qHy-4h-Lpp">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

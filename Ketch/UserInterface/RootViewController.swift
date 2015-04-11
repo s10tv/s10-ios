@@ -11,7 +11,6 @@ import Meteor
 import FacebookSDK
 import ReactiveCocoa
 
-@objc(RootViewController)
 class RootViewController : UINavigationController {
     private let rootView = UIView.fromNib("RootView") as RootView
     var transitionManager : TransitionManager!

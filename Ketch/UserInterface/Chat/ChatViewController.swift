@@ -9,7 +9,7 @@
 import UIKit
 import JSQMessagesViewController
 
-@objc(ChatViewController)
+
 class ChatViewController : JSQMessagesViewController {
     
     var connection: Connection?
