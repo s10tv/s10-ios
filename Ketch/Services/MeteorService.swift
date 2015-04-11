@@ -39,8 +39,7 @@ class MeteorService : NSObject {
     }
     
     init(serverURL: NSURL) {
-        let account = METAccount.defaultAccount()
-        meteor = METCoreDataDDPClient(serverURL: serverURL, account: account)
+        meteor = METCoreDataDDPClient(serverURL: serverURL, account: nil)
         subscriptions = (
             meteor.addSubscriptionWithName("metadata"),
             meteor.addSubscriptionWithName("currentUser"),
@@ -55,22 +54,53 @@ class MeteorService : NSObject {
             meteor.database.collectionWithName("connections"),
             meteor.database.collectionWithName("messages")
         )
-        
-        METSubscription(identifier: "currentUser", name: nil, parameters: nil)
+        meteor.account = METAccount.defaultAccount()
+        meteor.connect()
         
         super.init()
     }
     
-    func submitChoices(#yes: Candidate, no: Candidate, maybe: Candidate) {
-        meteor.callMethod("candidate/submitChoices", params: [[
+    func submitChoices(#yes: Candidate, no: Candidate, maybe: Candidate) -> RACSignal {
+        return meteor.call("candidate/submitChoices", [[
             "yes": yes.documentID!,
             "no": no.documentID!,
             "maybe": maybe.documentID!
-        ]]) { _ in
+        ]]) {
             [yes, no, maybe].map { $0.delete() }
             return nil
         }
     }
     
+    func markAsRead(connection: Connection) -> RACSignal {
+        return meteor.call("connection/markAsRead", [connection.documentID!]) {
+            if connection.hasUnreadMessage == true {
+                connection.hasUnreadMessage = false
+                connection.save()
+            }
+            return nil
+        }
+    }
     
+    func sendMessage(connection: Connection, text: String) -> RACSignal {
+        return meteor.call("connection/sendMessage", [connection.documentID!, text]) {
+            let message = Message.create() as Message
+            message.connection = connection
+            message.sender = User.currentUser()
+            message.text = text
+            message.save()
+            return nil
+        }
+    }
+    
+    func reportUser(user: User, reason: String) -> RACSignal {
+        return meteor.call("user/report", [user.documentID!, reason])
+    }
+    
+    func deleteAccount() -> RACSignal {
+        return meteor.call("user/delete")
+    }
+    
+    func addPushToken(appID: String, apsEnv: String, pushToken: NSData) -> RACSignal {
+        return meteor.call("user/addPushToken", [appID, apsEnv, pushToken.hexString()])
+    }
 }

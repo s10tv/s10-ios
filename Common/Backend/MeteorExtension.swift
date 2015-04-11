@@ -31,6 +31,16 @@ extension METDDPClient {
         }
     }
     
+    func call(method: String, _ params: [AnyObject]? = nil, stub:(() -> AnyObject?)? = nil) -> RACSignal {
+        if let stub = stub {
+            return callMethod(method, params: params) { _ in
+                return stub()
+            }
+        } else {
+            return callMethod(method, params: params)
+        }
+    }
+    
     func callMethod(method: String, params: [AnyObject]? = nil, stub:(([AnyObject]!) -> AnyObject!)? = nil) -> RACSignal {
         let subject = RACReplaySubject()
         callMethodWithName(method, parameters: params, completionHandler: { res, error in
@@ -42,7 +52,6 @@ extension METDDPClient {
             }
         }, methodStub: stub)
         return subject
-
     }
     
     func loginWithFacebook(accessToken: String, expiresAt: NSDate) -> RACSignal {
