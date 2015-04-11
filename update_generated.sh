@@ -7,4 +7,5 @@ mogenerator -m Models/Ketch.xcdatamodeld/Ketch.xcdatamodel/ --human-dir Models -
 sbconstants -s Base.lproj/ -w -d > Generated/SBConstants.swift
 
 # Regenerate image and string name constants
-xcres build -v -x "JSQ*" ../ Generated/R
+# Exclude generic Images.xcassets that come from including Pods resources manually
+xcres build -v -x "Images.xcassets" ../ Generated/R

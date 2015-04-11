@@ -9,6 +9,14 @@
 
 extern const struct R {
     struct ImagesAssets {
+        /// checkmark
+        __unsafe_unretained NSString *checkmark;
+        /// cross
+        __unsafe_unretained NSString *cross;
+        /// progress
+        __unsafe_unretained NSString *progress;
+    } ImagesAssets;
+    struct KetchAssets {
         /// AppIcon
         __unsafe_unretained NSString *app;
         /// AppIconBeta
@@ -77,45 +85,7 @@ extern const struct R {
         __unsafe_unretained NSString *spriteSun;
         /// tutorial-arrow
         __unsafe_unretained NSString *tutorialArrow;
-    } ImagesAssets;
-    struct JSQMessagesAssets {
-        /// Images/bubble_min.png
-        __unsafe_unretained NSString *sBubbleMin;
-        /// Images/bubble_min@3x.png
-        __unsafe_unretained NSString *sBubbleMin3x;
-        /// Images/bubble_min_tailless.png
-        __unsafe_unretained NSString *sBubbleMinTailless;
-        /// Images/bubble_min_tailless@3x.png
-        __unsafe_unretained NSString *sBubbleMinTailless3x;
-        /// Images/bubble_regular.png
-        __unsafe_unretained NSString *sBubbleRegular;
-        /// Images/bubble_regular@3x.png
-        __unsafe_unretained NSString *sBubbleRegular3x;
-        /// Images/bubble_stroked.png
-        __unsafe_unretained NSString *sBubbleStroked;
-        /// Images/bubble_stroked@3x.png
-        __unsafe_unretained NSString *sBubbleStroked3x;
-        /// Images/bubble_stroked_tailless.png
-        __unsafe_unretained NSString *sBubbleStrokedTailless;
-        /// Images/bubble_stroked_tailless@3x.png
-        __unsafe_unretained NSString *sBubbleStrokedTailless3x;
-        /// Images/bubble_tailless.png
-        __unsafe_unretained NSString *sBubbleTailless;
-        /// Images/bubble_tailless@3x.png
-        __unsafe_unretained NSString *sBubbleTailless3x;
-        /// Images/clip.png
-        __unsafe_unretained NSString *sClip;
-        /// Images/clip@3x.png
-        __unsafe_unretained NSString *sClip3x;
-        /// Images/play.png
-        __unsafe_unretained NSString *sPlay;
-        /// Images/play@3x.png
-        __unsafe_unretained NSString *sPlay3x;
-        /// Images/typing.png
-        __unsafe_unretained NSString *sTyping;
-        /// Images/typing@3x.png
-        __unsafe_unretained NSString *sTyping3x;
-    } JSQMessagesAssets;
+    } KetchAssets;
     struct Strings {
         /// DRAG THE MATCHES UP TO YOUR CHOICES
         __unsafe_unretained NSString *dragMatchsToChoices;

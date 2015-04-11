@@ -9,6 +9,11 @@
 
 const struct R R = {
     .ImagesAssets = {
+        .checkmark = @"checkmark",
+        .cross = @"cross",
+        .progress = @"progress",
+    },
+    .KetchAssets = {
         .app = @"AppIcon",
         .appBeta = @"AppIconBeta",
         .appDev = @"AppIconDev",
@@ -43,26 +48,6 @@ const struct R R = {
         .spriteCloud4 = @"sprite-cloud-4",
         .spriteSun = @"sprite-sun",
         .tutorialArrow = @"tutorial-arrow",
-    },
-    .JSQMessagesAssets = {
-        .sBubbleMin = @"Images/bubble_min.png",
-        .sBubbleMin3x = @"Images/bubble_min@3x.png",
-        .sBubbleMinTailless = @"Images/bubble_min_tailless.png",
-        .sBubbleMinTailless3x = @"Images/bubble_min_tailless@3x.png",
-        .sBubbleRegular = @"Images/bubble_regular.png",
-        .sBubbleRegular3x = @"Images/bubble_regular@3x.png",
-        .sBubbleStroked = @"Images/bubble_stroked.png",
-        .sBubbleStroked3x = @"Images/bubble_stroked@3x.png",
-        .sBubbleStrokedTailless = @"Images/bubble_stroked_tailless.png",
-        .sBubbleStrokedTailless3x = @"Images/bubble_stroked_tailless@3x.png",
-        .sBubbleTailless = @"Images/bubble_tailless.png",
-        .sBubbleTailless3x = @"Images/bubble_tailless@3x.png",
-        .sClip = @"Images/clip.png",
-        .sClip3x = @"Images/clip@3x.png",
-        .sPlay = @"Images/play.png",
-        .sPlay3x = @"Images/play@3x.png",
-        .sTyping = @"Images/typing.png",
-        .sTyping3x = @"Images/typing@3x.png",
     },
     .Strings = {
         .dragMatchsToChoices = @"DragMatchsToChoices",

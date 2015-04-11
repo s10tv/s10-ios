@@ -140,7 +140,7 @@ class GameTutorialController {
         }
         showHelpText(LS(R.Strings.dragMatchsToChoices))
         
-        let arrowImage = UIImage(named: R.ImagesAssets.tutorialArrow)
+        let arrowImage = UIImage(named: R.KetchAssets.tutorialArrow)
         let centerBubble = bubbles[1]
         for i in -1...1 {
             let arrow = UIImageView(image: arrowImage)

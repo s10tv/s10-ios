@@ -33,7 +33,7 @@ import Foundation
         frame.size.height -= offset
         addSubview(WaveView(frame: frame))
         if showBoat {
-            let boatImage = UIImage(named: R.ImagesAssets.ketch,
+            let boatImage = UIImage(named: R.KetchAssets.ketch,
                                     inBundle: NSBundle(forClass: self.dynamicType),
                                     compatibleWithTraitCollection: self.traitCollection)
             let boat = UIImageView(image: boatImage)
