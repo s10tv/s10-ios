@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import PKHUD
 
 class SignupViewController : BaseViewController {
     
@@ -24,9 +25,12 @@ class SignupViewController : BaseViewController {
     }
     
     @IBAction func loginWithFacebook(sender: AnyObject) {
+        PKHUD.showActivity()
         Account.login().subscribeError({ _ in
+            PKHUD.hide()
             self.performSegue(.SignupToFacebookPerm)
         }, completed: {
+            PKHUD.hide()
             self.performSegue(.SignupToNotificationsPerm)
         })
     }

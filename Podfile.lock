@@ -21,6 +21,7 @@ PODS:
   - NSLogger (1.5.1):
     - NSLogger/Standard (= 1.5.1)
   - NSLogger/Standard (1.5.1)
+  - PKHUD (2.0.1)
   - PocketSocket (0.6.4)
   - RBBAnimation (0.3.0)
   - ReactiveCocoa (2.4.4):
@@ -55,6 +56,7 @@ DEPENDENCIES:
   - JSQMessagesViewController (~> 6.1)
   - Meteor (from `https://github.com/tonyxiao/meteor-ios`, branch `dev`)
   - NSLogger (~> 1.5)
+  - PKHUD (~> 2.0)
   - RBBAnimation (~> 0.3.0)
   - ReactiveCocoa (~> 2.4)
   - Reveal-iOS-SDK (~> 1.5)
@@ -106,6 +108,7 @@ SPEC CHECKSUMS:
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   Meteor: 1b061243f87a9021492eddbb5d5503aa78b2ef35
   NSLogger: 5ed223a2436df96244e033be750656dacdeec034
+  PKHUD: a35d89fd82d0aeb67f53de086b3029aea3423b74
   PocketSocket: eee7ef375f55b98e7ca79e097d9c61fd688e9494
   RBBAnimation: cb6cb419f511434ce932f7d0fabf369612fafb4e
   ReactiveCocoa: cbe3b5eae464aa72a348a7323996b171728a9e71

@@ -101,6 +101,7 @@
 		EAAD921B1ACDEACD0014BA25 /* NewMatchTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921A1ACDEACD0014BA25 /* NewMatchTransition.swift */; };
 		EAAD921D1ACF342C0014BA25 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921C1ACF342C0014BA25 /* Environment.swift */; };
 		EAAD921F1ACF4EFA0014BA25 /* ProvisioningProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921E1ACF4EFA0014BA25 /* ProvisioningProfile.swift */; };
+		EAB79B701AD912EB00D9875A /* PKHUDExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB79B6F1AD912EB00D9875A /* PKHUDExtension.swift */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
 		EABF2AB91AD04E90005880E7 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABF2AB81AD04E90005880E7 /* Fonts.swift */; };
 		EAC8D3F61AA7269F00BCB7B9 /* FetchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9311A87DE5800D62625 /* FetchViewModel.swift */; };
@@ -258,6 +259,7 @@
 		EAAD921A1ACDEACD0014BA25 /* NewMatchTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMatchTransition.swift; sourceTree = "<group>"; };
 		EAAD921C1ACF342C0014BA25 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		EAAD921E1ACF4EFA0014BA25 /* ProvisioningProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvisioningProfile.swift; sourceTree = "<group>"; };
+		EAB79B6F1AD912EB00D9875A /* PKHUDExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKHUDExtension.swift; sourceTree = "<group>"; };
 		EABD43D81AA1D28700B07813 /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
 		EABD43D91AA1D29C00B07813 /* Beta.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
 		EABD43DA1AA1D29C00B07813 /* Prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 				EAD007FB1AD37236003A260D /* Geometry.swift */,
 				EA55F1371AD522C60042CBB2 /* NotificationCenter.swift */,
 				EACF21651AD70CB300938CD0 /* SwiftExtensions.swift */,
+				EAB79B6F1AD912EB00D9875A /* PKHUDExtension.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1006,6 +1009,7 @@
 				EAAA42871AB24D5F00056EFF /* CandidateBubble.swift in Sources */,
 				EA55F1381AD522C60042CBB2 /* NotificationCenter.swift in Sources */,
 				EA24C2751AD8F60900C40AAD /* _Message.swift in Sources */,
+				EAB79B701AD912EB00D9875A /* PKHUDExtension.swift in Sources */,
 				EACF216C1AD73BBA00938CD0 /* PermissionViewControllers.swift in Sources */,
 				EACF21681AD7245C00938CD0 /* CloudsViewController.swift in Sources */,
 				EA72FB1F1AD180F1009F853F /* NewGameTransition.swift in Sources */,

@@ -8,14 +8,18 @@
 
 import Foundation
 import CoreLocation
+import PKHUD
 
 class FacebookPermissionViewController : BaseViewController {
     
     @IBAction func requestFacebookPermission(sender: AnyObject) {
+        PKHUD.showActivity()
         Account.login().subscribeError({ _ in
+            PKHUD.hide()
             self.showAlert(LS(R.Strings.fbPermDeniedAlertTitle),
                   message: LS(R.Strings.fbPermDeniedAlertMessage))
         }, completed: { () -> Void in
+            PKHUD.hide()
             self.performSegue(.FacebookPermToNotificationsPerm)
         })
     }
