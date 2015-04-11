@@ -12,8 +12,15 @@ import FacebookSDK
 import CrashlyticsFramework
 import BugfenderSDK
 
-var Core : CoreService!
-let NC = NSNotificationCenter.defaultCenter() // Intentionally global variable
+private struct Globals {
+    static var environment : Environment!
+    static var coreService : CoreService!
+}
+
+let Env = Globals.environment
+let Core = Globals.coreService
+let NC = NSNotificationCenter.defaultCenter()
+let UD = NSUserDefaults.standardUserDefaults()
 let AppDidRegisterUserNotificationSettings = "AppDidRegisterUserNotificationSettings"
 
 @UIApplicationMain
@@ -22,17 +29,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
     var window: UIWindow?
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // TODO: Put api key into unified settings file
-        Crashlytics.sharedInstance().delegate = self
+        // Configure the environment
+        Globals.environment = Environment.configureFromEmbeddedProvisioningProfile()
+        
+        // Start crash reporting and logging as soon as we can
         Crashlytics.startWithAPIKey(Env.crashlyticsAPIKey)
+        Crashlytics.sharedInstance().delegate = self
         Bugfender.activateLogger(Env.bugfenderAppToken)
         
+        // Make sure user default values are set
         UD.registerDefaultValues()
-        Core = CoreService()
         
-        Log.info("App Launched")
-
+        // Setup global services
+        Globals.coreService = CoreService()
+        
+        // Should be probably extracted into push service
         application.registerForRemoteNotifications()
+        
+        // Done, hurray!
+        Log.info("App Launched")
         return true
     }
     

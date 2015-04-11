@@ -8,8 +8,6 @@
 
 import Foundation
 
-let Env = Environment.configureFromEmbeddedProvisioningProfile()
-
 class Environment {
     enum Audience {
         case Dev, Beta, AppStore

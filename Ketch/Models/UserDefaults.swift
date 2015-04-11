@@ -9,8 +9,6 @@
 import Foundation
 import SwiftyUserDefaults
 
-public let UD = Defaults // Intentional global variable
-
 // NOTE: Use Hungarian notation (http://en.wikipedia.org/wiki/Hungarian_notation)
 // to name UserDefaultKey's because they are not statically typed
 enum UserDefaultKey : String {
