@@ -16,13 +16,13 @@ private struct Globals {
     static var environment : Environment!
     static var meteorService : MeteorService!
     static var flowService : FlowService!
-    static var facebookService : FacebookService!
+    static var accountService : AccountService!
 }
 
 let Env = Globals.environment
 let Meteor = Globals.meteorService
 let Flow = Globals.flowService
-let Facebook = Globals.facebookService
+let Account = Globals.accountService
 let NC = NSNotificationCenter.defaultCenter()
 let UD = NSUserDefaults.standardUserDefaults()
 
@@ -47,8 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
         
         // Setup global services
         Globals.meteorService = MeteorService(serverURL: Env.serverURL)
+        Globals.accountService = AccountService(meteorService: Meteor)
         Globals.flowService = FlowService(meteorService: Meteor)
-        Globals.facebookService = FacebookService(meteorService: Meteor)
         
         // Should be probably extracted into push service
         application.registerForRemoteNotifications()

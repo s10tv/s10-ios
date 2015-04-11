@@ -60,7 +60,7 @@ class RootViewController : UINavigationController {
     }
     
     @IBAction func logout(sender: AnyObject) {
-        Facebook.logout().subscribeCompleted {
+        Account.logout().subscribeCompleted {
             Log.info("Signed out")
         }
         dismissViewController(animated: false)

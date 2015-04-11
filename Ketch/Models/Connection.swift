@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Serendipity. All rights reserved.
 //
 
+import CoreData
 import ObjectiveC
 import ReactiveCocoa
 

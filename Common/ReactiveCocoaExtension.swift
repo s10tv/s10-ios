@@ -16,6 +16,15 @@ extension RACSignal {
             nextClosure(nextAsT)
         }
     }
+    
+    // replayWithSubject has the advantage that signal would be subscribed to but
+    // disposed as soon as subject is deallocated, rather than replay() in which signal is never
+    // disposed of even if no one is listening to the subject anymore
+    func replayWithSubject() -> RACSignal {
+        let subject = RACReplaySubject()
+        subscribe(subject)
+        return subject
+    }
 }
 
 extension RACSubject {

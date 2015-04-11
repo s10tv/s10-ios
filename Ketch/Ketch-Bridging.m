@@ -11,13 +11,6 @@
 #endif
 #import "Ketch-Bridging.h"
 
-@implementation METDDPClient (Extension)
-
-- (BOOL)hasAccount {
-    return self.account != nil;
-}
-
-@end
 
 @implementation RACSignal (SwiftCompileFix)
 

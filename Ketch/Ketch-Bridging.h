@@ -6,7 +6,7 @@
 #import <SwipeView/SwipeView.h>
 #import <SDWebImage/UIImageView+WebCache.h>
 #import <ReactiveCocoa/ReactiveCocoa.h>
-#import <Meteor/METCoreDataDDPClient.h>
+#import <Meteor/METDatabase.h>
 #import <JSQMessagesViewController/JSQMessagesViewController.h>
 #import <BugfenderSDK/BugfenderSDK.h>
 #import "R.h"
@@ -19,9 +19,9 @@
 
 @end
 
-@interface METDDPClient (Extension)
+@interface METDatabase (Private)
 
-- (BOOL)hasAccount;
+- (void)reset;
 
 @end
 

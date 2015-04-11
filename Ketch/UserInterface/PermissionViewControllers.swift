@@ -12,7 +12,7 @@ import CoreLocation
 class FacebookPermissionViewController : BaseViewController {
     
     @IBAction func requestFacebookPermission(sender: AnyObject) {
-        Facebook.loginWithUI().subscribeError({ _ in
+        Account.login().subscribeError({ _ in
             self.showAlert(LS(R.Strings.fbPermDeniedAlertTitle),
                   message: LS(R.Strings.fbPermDeniedAlertMessage))
         }, completed: { () -> Void in

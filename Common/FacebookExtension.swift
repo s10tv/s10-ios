@@ -11,26 +11,25 @@ import ReactiveCocoa
 
 extension FBSession {
     
-    // Open without UI
-    class func openActiveSession(#readPermissions: [String]) -> Bool {
-        return openActiveSessionWithReadPermissions(readPermissions, allowLoginUI: false, completionHandler: nil)
-    }
-
-    class func openActiveSessionWithUI(#readPermissions: [String]) -> RACSignal {
-        let subject = RACReplaySubject()
-        let opened = openActiveSessionWithReadPermissions(readPermissions, allowLoginUI: true) { (session, state, error) -> Void in
-            switch state {
-            case .Open, .OpenTokenExtended:
-                subject.sendCompleted()
-            case .ClosedLoginFailed:
-                subject.sendError(error)
-            default:
-                break
+    class func openActiveSession(#readPermissions: [String], allowLoginUI: Bool = false) -> RACSignal {
+        return RACSignal.createSignal { (subscriber) -> RACDisposable in
+            let opened = FBSession.openActiveSessionWithReadPermissions(readPermissions, allowLoginUI: allowLoginUI) { (session, state, error) -> Void in
+                switch state {
+                case .Open, .OpenTokenExtended:
+                    subscriber.sendCompleted()
+                case .ClosedLoginFailed:
+                    subscriber.sendError(error)
+                default:
+                    assert(false, "Unexpected FBSession state received while loggin in \(state)")
+                    break
+                }
             }
-        }
-        if opened {
-            subject.sendCompleted()
-        }
-        return subject
+            if opened {
+                subscriber.sendCompleted()
+            }
+            return RACDisposable(block: {
+                FBSession.activeSession().setStateChangeHandler({ _, _, _ in })
+            })
+        }.replayWithSubject()
     }
 }

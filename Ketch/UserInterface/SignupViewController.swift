@@ -24,7 +24,7 @@ class SignupViewController : BaseViewController {
     }
     
     @IBAction func loginWithFacebook(sender: AnyObject) {
-        Facebook.loginWithUI().subscribeError({ _ in
+        Account.login().subscribeError({ _ in
             self.performSegue(.SignupToFacebookPerm)
         }, completed: {
             self.performSegue(.SignupToNotificationsPerm)
