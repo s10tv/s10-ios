@@ -15,6 +15,10 @@ class Candidate: _Candidate {
         case No = "no" // Skip
     }
 
+    class func candidateQueue() -> [Candidate] {
+        return Candidate.all().fetch().map { $0 as Candidate }
+    }
+
     class func findByDocumentID(documentID: String) -> Candidate? {
         return Core.mainContext.objectInCollection("matches", documentID: documentID) as? Candidate
     }

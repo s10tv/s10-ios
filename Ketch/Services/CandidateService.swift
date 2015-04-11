@@ -13,12 +13,11 @@ import SugarRecord
 
 class CandidateService {
     private let meteor : METCoreDataDDPClient
-    private let subscription : METSubscription
+//    private let subscription : METSubscription
     let fetch : FetchViewModel
     
     init(meteor: METCoreDataDDPClient) {
         self.meteor = meteor
-        subscription = meteor.addSubscriptionWithName("candidates")
         let frc = Candidate.by(CandidateAttributes.choice.rawValue, value: nil).sorted(by: CandidateAttributes.createdAt.rawValue, ascending: true).frc()
         fetch = FetchViewModel(frc: frc)
 
@@ -32,14 +31,14 @@ class CandidateService {
             }
             return true
         })
-        
-        // TODO: Tear down these subscriptions on deinit
-        subscription.signal.deliverOnMainThread().subscribeCompleted {
-            self.fetch.performFetchIfNeeded()
-        }
-        fetch.signal.subscribeNextAs { (candidates : [Candidate]) in
-            NC.postNotification(.CandidatesUpdated, object: candidates)
-        }
+//        
+//        // TODO: Tear down these subscriptions on deinit
+//        subscription.signal.deliverOnMainThread().subscribeCompleted {
+//            self.fetch.performFetchIfNeeded()
+//        }
+//        fetch.signal.subscribeNextAs { (candidates : [Candidate]) in
+//            NC.postNotification(.CandidatesUpdated, object: candidates)
+//        }
     }
     
     func submitChoices(#yes: Candidate, no: Candidate, maybe: Candidate) {

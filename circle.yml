@@ -11,6 +11,8 @@ dependencies:
     - sudo gem install cocoapods -v $(var=$(tail -1 Podfile.lock); echo ${var##COCOAPODS:})
     - sudo gem install shenzhen cupertino
     - ./scripts/import_credentials.sh
+  override:
+    - pod update Meteor
   cache_directories:
     - "Pods"
 

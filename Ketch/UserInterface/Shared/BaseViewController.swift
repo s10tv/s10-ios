@@ -47,7 +47,7 @@ class BaseViewController : UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        stateDisposable = Core.flow.stateUpdateSignal().subscribeNext { [weak self] _ in
+        stateDisposable = Core.flow.stateSignal().subscribeNext { [weak self] _ in
             self?.stateDidUpdateWhileViewActive(Core.flow.currentState)
             return
         }

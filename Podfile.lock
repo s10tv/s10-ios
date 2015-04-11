@@ -82,7 +82,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/bugfender/BugfenderSDK-iOS.git
     :tag: 0.3.2
   Meteor:
-    :commit: 5500783ab35080ce06d7200c0b1872ccc8df40c3
+    :commit: 8ebf4d452cc2c27742088833617f9595000fe473
     :git: https://github.com/tonyxiao/meteor-ios
   SugarRecord:
     :commit: ecf73acf39e6d2a595f912470e1a54050e0e3eb4
@@ -103,7 +103,7 @@ SPEC CHECKSUMS:
   InflectorKit: 64497199e6764f4d8337cab7f700a77b13d76a73
   JSQMessagesViewController: 31b79ac9547e060ba96413eb2e1b2ee5260f5189
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
-  Meteor: bf6d174608167b138ee44959309e3a8a7561fd83
+  Meteor: 1b061243f87a9021492eddbb5d5503aa78b2ef35
   NSLogger: 5ed223a2436df96244e033be750656dacdeec034
   PocketSocket: eee7ef375f55b98e7ca79e097d9c61fd688e9494
   RBBAnimation: cb6cb419f511434ce932f7d0fabf369612fafb4e

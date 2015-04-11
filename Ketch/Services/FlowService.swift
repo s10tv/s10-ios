@@ -10,7 +10,7 @@ import Foundation
 import ReactiveCocoa
 import Meteor
 
-// FlowService manages the different states user can be in taking into account everything
+// FlowService manages the different states user can be in taking into account everything going on in the app
 
 class FlowService : NSObject {
     enum State {
@@ -23,96 +23,60 @@ class FlowService : NSObject {
         case NewGame
     }
     
-    private var loggingIn = false
-    private var hasAccount = false
-    private var receivedMetadata = false
-    private var vetted = false   // Vetted by us on server
-    private var welcomed = false // Saw the welcome screen
+    private let ms: MeteorService
+    private let meta: MetadataService
+    private let stateChanged = RACSubject()
     private var waitingOnGameResult = false // Waiting to hear back from server about recent game
-    private(set) var newConnectionToShow : Connection?
+    private(set) var newMatchToShow : Connection?
     private(set) var candidateQueue : [Candidate]?
-    
     private(set) var currentState = State.Loading
     
-    private let stateChanged = RACSubject()
-    private let nc = NSNotificationCenter.defaultCenter().proxy()
-    
-    override init() {
+    init(meteorService: MeteorService, metadataService: MetadataService) {
+        self.ms = meteorService
+        self.meta = metadataService
         super.init()
-        // BUG ALERT: All these listeners create indefinite retain cycles because instance method are merely
-        // curried functions and thus strongly references self
-        // For the time being we'll ignore this problem for now because FlowService will never be deallocated
-        nc.listen(NSUserDefaultsDidChangeNotification, block: _userDefaultsDidChange)
-        nc.listen(METDDPClientDidChangeAccountNotification, block: _meteorAccountDidChange)
-        nc.listen(.DidReceiveMetadata, block: _didReceiveMetadata)
-        nc.listen(.WillLoginToMeteor, block: _willLoginToMeteor)
-        nc.listen(.DidSucceedLoginToMeteor, block: _didSucceedLoginToMeteor)
-        nc.listen(.DidFailLoginToMeteor, block: _didFailLoginToMeteor)
-        nc.listen(.DidSubmitGame, block: _didSubmitGame)
-        nc.listen(.DidReceiveGameResult, block: _didReceiveGameResult)
-        nc.listen(.CandidatesUpdated, block: _didUpdateCandidateQueue)
-
+        meteorService.delegate = self
+        listenForNotification(NSUserDefaultsDidChangeNotification, selector: "userDefaultsDidChange:")
+        listenForNotification(METDatabaseDidChangeNotification, selector: "meteorDatabaseDidChange:")
+    }
+    
+    // Due to RAC's current constraint we are not able to send enum as value, so sending nil for now
+    // to indicate state changed but to get the state changed to simply access flow service
+    func stateSignal() -> RACSignal {
+        return stateChanged.startWith(nil).deliverOnMainThread()
+    }
+    
+    // TODO: Doesn't really belong. Should figure out a better way to handle this
+    func didShowNewMatch() {
+        newMatchToShow = nil
         updateState()
     }
-
-    deinit {
-        NC.removeObserver(self)
-    }
     
-    // MARK: Public API
-    
-    func stateUpdateSignal() -> RACSignal {
-        var lastState : State?
-        return stateChanged.startWith(nil).flattenMap { _ -> RACStream! in
-            if lastState == self.currentState {
-                return RACSignal.empty()
-            }
-            lastState = self.currentState
-            return RACSignal.Return(nil)
-        }.deliverOnMainThread()
-    }
-    
-    func getStateMatching(criteria: (State) -> Bool, completion: (State) -> ()) {
-        stateChanged.startWith(nil).deliverOnMainThread().takeUntilBlock { _ in
-            return criteria(self.currentState)
-        }.subscribeCompleted {
-            completion(self.currentState)
-        }
-    }
-    
-    // MARK: State Management
+    // State Spec & Update
     
     private func computeCurrentState() -> State {
-        Log.debug([
-            "Internal State:\n",
-            "loggingIn \(loggingIn)\n",
-            "receivedMetadata \(receivedMetadata)\n",
-            "hasAccount \(hasAccount)\n",
-            "vetted \(vetted)\n",
-            "welcomed \(welcomed)\n",
-            "candidateQueue.count \(candidateQueue?.count)\n",
-            "waitingOnGameResult \(waitingOnGameResult)\n",
-            "newConnectionToShow \(newConnectionToShow)\n"
-        ].reduce("", +))
-        
-        
-        if loggingIn {
-            return .Loading
-        } else if !receivedMetadata {
-            return .Loading
-        } else if !hasAccount {
+        // Startup Flow
+        if ms.account == nil {
             return .Signup
-        } else if !vetted {
+        } else if (ms.loggingIn ||
+            !ms.subscriptions.metadata.ready ||
+            !ms.subscriptions.currentUser.ready ||
+            !ms.subscriptions.candidates.ready ||
+            !ms.subscriptions.connections.ready) {
+                return .Loading
+        }
+        // Onboarding Flow
+        if meta.vetted != true {
             return .Waitlist
-        } else if !welcomed {
+        } else if UD[.bHasBeenWelcomed].bool != true {
             return .Welcome
-        } else if candidateQueue == nil {
+        }
+        // Core Flow
+        if waitingOnGameResult {
             return .Loading
-        } else if waitingOnGameResult {
-            return .Loading
-        } else if newConnectionToShow != nil {
+        } else if (newMatchToShow != nil) {
             return .NewMatch
-        } else if candidateQueue?.count >= 3 {
+        } else if (ms.collections.candidates.allDocuments.count >= 3) {
             return .NewGame
         } else {
             return .BoatSailed
@@ -120,72 +84,92 @@ class FlowService : NSObject {
     }
     
     private func updateState() {
-        currentState = computeCurrentState()
-//        currentState = .Signup
-        stateChanged.sendNext(nil)
-        Log.info("Current state updated to \(currentState)")
-    }
-    
-    func clearNewConnectionToShow() {
-        newConnectionToShow = nil
-        updateState()
-    }
-    
-    // MARK: - Notification handling
-    
-    func _meteorAccountDidChange(notification: NSNotification) {
-        hasAccount = Core.meteor.hasAccount()
-        updateState()
-    }
-    
-    func _willLoginToMeteor(notification: NSNotification) {
-        loggingIn = true
-        updateState()
-    }
-    
-    func _didSucceedLoginToMeteor(notification: NSNotification) {
-        loggingIn = false
-        hasAccount = true
-        updateState()
-    }
-
-    func _didFailLoginToMeteor(notification: NSNotification) {
-        loggingIn = false
-        hasAccount = false
-        updateState()
-    }
-    
-    func _didReceiveMetadata(notification: NSNotification) {
-        receivedMetadata = true
-        Log.debug("Core.meta.vetted \(Core.meta.vetted)")
-        vetted = Core.meta.vetted ?? false
-        updateState()
-    }
-    
-    func _didUpdateCandidateQueue(notification: NSNotification) {
-        candidateQueue = notification.object as? [Candidate]
-        updateState()
-    }
-    
-    func _didSubmitGame(notification: NSNotification) {
-        waitingOnGameResult = true
-        updateState()
-    }
-    
-    func _didReceiveGameResult(notification: NSNotification) {
-        // TODO: Should flow service be aware of the json data format server sends?
-        // Or should this be handled by something that's closer to the network level
-        if let yesId = notification.userInfo?["yes"] as? String {
-            newConnectionToShow = Connection.findByDocumentID(yesId)
-            assert(newConnectionToShow != nil, "Expect new connection to exist by now")
+        dispatch_async(dispatch_get_main_queue()) {
+            let lastState = self.currentState
+            self.currentState = self.computeCurrentState()
+            if lastState != self.currentState {
+                self.stateChanged.sendNext(nil)
+            }
         }
-        waitingOnGameResult = false
+    }
+    
+    // MARK: Notification Handling
+    
+    func userDefaultsDidChange(notification: NSNotification) {
         updateState()
     }
     
-    func _userDefaultsDidChange(notification: NSNotification) {
-        welcomed = UD[.bHasBeenWelcomed].bool ?? false
+    func meteorDatabaseDidChange(notification: NSNotification) {
+        if let changes = notification.userInfo?[METDatabaseChangesKey] as? METDatabaseChanges {
+            for key in changes.affectedDocumentKeys() {
+                if (key as? METDocumentKey)?.collectionName == "candidates" {
+                    updateState()
+                    return
+                }
+            }
+        }
+    }
+}
+
+// MARK: - METDDPClientDelegate
+
+extension FlowService : METDDPClientDelegate {
+    
+    // Keep updated on game result
+    
+    func client(client: METDDPClient!, willCallMethod methodInvocation: METMethodInvocation!) {
+        if methodInvocation.methodName == "candidates/submitChoices" {
+            waitingOnGameResult = true
+        }
+    }
+    
+    func client(client: METDDPClient!, didReceiveResult result: AnyObject!, error: NSError!, forMethod methodInvocation: METMethodInvocation!) {
+        if methodInvocation.methodName == "candidates/submitChoices" {
+            if let yesId = (result as? NSDictionary)?["yes"] as? String {
+                newMatchToShow = Connection.findByDocumentID(yesId)
+                assert(newMatchToShow != nil, "Expect new connection to exist by now")
+            }
+            waitingOnGameResult = methodInvocation.updatesDone
+        }
+    }
+    
+    func client(client: METDDPClient!, didReceiveUpdatesForMethod methodInvocation: METMethodInvocation!) {
+        if methodInvocation.methodName == "candidates/submitChoices" {
+            waitingOnGameResult = methodInvocation.resultReceived
+        }
+    }
+    
+    // General state updates
+    
+    func client(client: METDDPClient!, willLoginWithMethodName methodName: String!, parameters: [AnyObject]!) {
         updateState()
+    }
+    func client(client: METDDPClient!, didSucceedLoginToAccount account: METAccount!) {
+        updateState()
+    }
+    func client(client: METDDPClient!, didFailLoginWithWithError error: NSError!) {
+        updateState()
+    }
+    func clientWillLogout(client: METDDPClient!) {
+        updateState()
+    }
+    func clientDidLogout(client: METDDPClient!) {
+        updateState()
+    }
+    func client(client: METDDPClient!, didReceiveReadyForSubscription subscription: METSubscription!) {
+        updateState()
+    }
+    func client(client: METDDPClient!, didReceiveError error: NSError!, forSubscription subscription: METSubscription!) {
+        updateState()
+    }
+    
+    // Logging
+    
+    func client(client: METDDPClient!, willSendDDPMessage message: [NSObject : AnyObject]!) {
+        Log.verbose("DDP > \(message)")
+    }
+    func client(client: METDDPClient!, didReceiveDDPMessage message: [NSObject : AnyObject]!) {
+        Log.verbose("DDP < \(message)")
     }
 }
 
@@ -221,4 +205,3 @@ extension FlowService.State : Printable {
         }
     }
 }
-

@@ -35,6 +35,14 @@ extension NSObject {
         return nc.rac_addObserverForName(name, object: object).takeUntil(rac_willDeallocSignal())
     }
     
+    func listenForNotification(name: String, selector: Selector, object: AnyObject? = nil) {
+        let nc = NSNotificationCenter.defaultCenter()
+        nc.addObserver(self, selector: selector, name: name, object: object)
+        rac_willDeallocSignal().subscribeCompleted { [weak self] in
+            nc.removeObserver(self!)
+        }
+    }
+    
     func racObserve(keyPath: String) -> RACSignal {
         return self.rac_valuesForKeyPath(keyPath, observer: self)
     }

@@ -13,7 +13,8 @@ import SugarRecord
 import Meteor
 
 class CoreService : NSObject {
-    let flow = FlowService()
+    var flow: FlowService!
+    var meteorService: MeteorService!
     var meteor : METCoreDataDDPClient!
     var meta: MetadataService!
     var candidateService : CandidateService!
@@ -23,25 +24,20 @@ class CoreService : NSObject {
     var fbSession : FBSession {
         return FBSession.activeSession()!
     }
-    var loginSignal = RACReplaySubject(capacity: 1)
-    var currentUserSubscription : METSubscription!
-    var connectionsSubscription : METSubscription!
     
     override init() {
         super.init()
-        meteor = METCoreDataDDPClient(serverURL: Env.serverURL)
+        meteorService = MeteorService(serverURL: Env.serverURL)
+        meteor = meteorService.meteor
+        SugarRecord.addStack(MeteorCDStack(meteor: meteor))
+        meta = MetadataService(meteor: meteor)
+        candidateService = CandidateService(meteor: meteor)
+        flow = FlowService(meteorService: meteorService, metadataService: meta)
         
         // Set up CoreData
-        SugarRecord.addStack(MeteorCDStack(meteor: meteor))
         
         // Setup Meteor
-        meteor.delegate = self
-        meteor.logDDPMessages = false
         meteor.connect()
-      
-        currentUserSubscription = meteor.addSubscriptionWithName("currentUser")
-        connectionsSubscription = meteor.addSubscriptionWithName("connections")
-        meteor.addSubscriptionWithName("messages")
         
         meteor.defineStubForMethodWithName("connection/sendMessage", usingBlock: { (args) -> AnyObject! in
             assert(NSThread.isMainThread(), "Only main supported for now")
@@ -64,28 +60,14 @@ class CoreService : NSObject {
             return true
         })
 
-        // Initialize other services
-        candidateService = CandidateService(meteor: meteor)
-        meta = MetadataService(meteor: meteor)
         
         // TODO: This is really quite right, need to rethink flow diagram here
-        NC.postNotification(.WillLoginToMeteor)
         attemptLoginWithCachedCredentials()
-        
-        currentUserSubscription.signal.deliverOnMainThread().subscribeError({ _ in
-            NC.postNotification(.DidFailLoginToMeteor)
-        }, completed: {
-            NC.postNotification(.DidSucceedLoginToMeteor)
-        })
     }
     
     private func loginToMeteor() {
         let data = FBSession.activeSession().accessTokenData
-        meteor.loginWithFacebook(data.accessToken, expiresAt: data.expirationDate).subscribeError({ error in
-            
-        }, completed: {
-            self.loginSignal.sendCompleted()
-        })
+        meteor.loginWithFacebook(data.accessToken, expiresAt: data.expirationDate)
     }
     
     // TODO: What permissions do we actually need?
@@ -113,14 +95,7 @@ class CoreService : NSObject {
     
     func addPushToken(pushTokenData: NSData) {
         if let apsEnv = Env.provisioningProfile?.apsEnvironment?.rawValue {
-            // TODO: This doesn't seem to update on app force kill and restart, but it should
-            self.loginSignal.then({ () -> RACSignal! in
-                return self.meteor.callMethod("user/addPushToken", params: [Env.appID, apsEnv, pushTokenData.hexString()])
-            }).subscribeError({ error in
-                println("Failed to add push token \(error)")
-                }, completed: {
-                    println("Succeeded sending push token to server")
-            })
+            meteor.callMethod("user/addPushToken", params: [Env.appID, apsEnv, pushTokenData.hexString()])
         }
     }
     
@@ -134,18 +109,6 @@ class CoreService : NSObject {
         FBSession.activeSession().closeAndClearTokenInformation()
         mainContext.reset()
         UD.resetAll()
-        return meteor.logout().deliverOnMainThread()
+        return meteor.logout().deliverOnMainThread() // TODO: Log out needs to reset the METDatabase
     }
-}
-
-extension CoreService : METDDPClientDelegate {
-    
-    func client(client: METDDPClient!, willSendDDPMessage message: [NSObject : AnyObject]!) {
-        Log.verbose("DDP > \(message)")
-    }
-    
-    func client(client: METDDPClient!, didReceiveDDPMessage message: [NSObject : AnyObject]!) {
-        Log.verbose("DDP < \(message)")
-    }
-    
 }
