@@ -70,7 +70,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         println("Registered for push \(deviceToken)")
-        Core.addPushToken(deviceToken)
+        if let apsEnv = Env.provisioningProfile?.apsEnvironment?.rawValue {
+            Core.meteorService.addPushToken(appID: Env.appID, apsEnv: apsEnv, pushToken: deviceToken)
+        }
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {

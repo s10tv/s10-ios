@@ -27,7 +27,7 @@ class User: _User {
     }
     
     var isCurrentUser : Bool {
-        return documentID == Core.meteor.userID
+        return documentID == Core.meteorService.userID
     }
     
     var photos : [Photo]? {
@@ -85,7 +85,7 @@ class User: _User {
     }
     
     class func currentUser() -> User? {
-        if let currentUserID = Core.meteor.userID {
+        if let currentUserID = Core.meteorService.userID {
             return findByDocumentID(currentUserID)
         }
         return nil

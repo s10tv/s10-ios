@@ -32,7 +32,9 @@ class MeteorService : NSObject {
     var connectionStatus: METDDPConnectionStatus { return meteor.connectionStatus }
     var connected: Bool { return meteor.connected }
     var loggingIn: Bool { return meteor.loggingIn }
+    var mainContext : NSManagedObjectContext { return meteor.mainQueueManagedObjectContext }
     var account: METAccount? { return meteor.account }
+    var userID : String? { return meteor.userID }
     weak var delegate: METDDPClientDelegate? {
         get { return meteor.delegate }
         set { meteor.delegate = newValue }
@@ -57,6 +59,8 @@ class MeteorService : NSObject {
         meteor.account = METAccount.defaultAccount()
         meteor.connect()
         
+        SugarRecord.addStack(MeteorCDStack(meteor: meteor))
+        
         super.init()
     }
     
@@ -73,10 +77,8 @@ class MeteorService : NSObject {
     
     func markAsRead(connection: Connection) -> RACSignal {
         return meteor.call("connection/markAsRead", [connection.documentID!]) {
-            if connection.hasUnreadMessage == true {
-                connection.hasUnreadMessage = false
-                connection.save()
-            }
+            connection.hasUnreadMessage = false
+            connection.save()
             return nil
         }
     }
@@ -100,7 +102,7 @@ class MeteorService : NSObject {
         return meteor.call("user/delete")
     }
     
-    func addPushToken(appID: String, apsEnv: String, pushToken: NSData) -> RACSignal {
+    func addPushToken(#appID: String, apsEnv: String, pushToken: NSData) -> RACSignal {
         return meteor.call("user/addPushToken", [appID, apsEnv, pushToken.hexString()])
     }
 }

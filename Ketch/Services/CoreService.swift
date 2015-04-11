@@ -15,7 +15,7 @@ import Meteor
 class CoreService : NSObject {
     var flow: FlowService!
     var meteorService: MeteorService!
-    var meteor : METCoreDataDDPClient!
+    private var meteor : METCoreDataDDPClient!
     var meta: MetadataService!
     var mainContext : NSManagedObjectContext! {
         return meteor.mainQueueManagedObjectContext
@@ -27,39 +27,11 @@ class CoreService : NSObject {
     override init() {
         super.init()
         meteorService = MeteorService(serverURL: Env.serverURL)
+        meta = MetadataService(collection: meteorService.collections.metadata)
         meteor = meteorService.meteor
-        SugarRecord.addStack(MeteorCDStack(meteor: meteor))
-        meta = MetadataService(meteor: meteor)
+        
         flow = FlowService(meteorService: meteorService, metadataService: meta)
         
-        // Set up CoreData
-        
-        // Setup Meteor
-        meteor.connect()
-        
-        meteor.defineStubForMethodWithName("connection/sendMessage", usingBlock: { (args) -> AnyObject! in
-            assert(NSThread.isMainThread(), "Only main supported for now")
-            let arguments = args as [String]
-            if let connection = Connection.findByDocumentID(arguments.first!) {
-                let message = Message.create() as Message
-                message.connection = connection
-                message.sender = User.currentUser()
-                message.text = arguments[1]
-                message.save()
-            }
-            return true
-        })
-        
-        meteor.defineStubForMethodWithName("connection/markAsRead", usingBlock: { (args) -> AnyObject! in
-            if let connection = Connection.findByDocumentID(args.first as String) {
-                connection.hasUnreadMessage = false
-                connection.save()
-            }
-            return true
-        })
-
-        
-        // TODO: This is really quite right, need to rethink flow diagram here
         attemptLoginWithCachedCredentials()
     }
     
@@ -80,7 +52,7 @@ class CoreService : NSObject {
         "email"]
     
     func attemptLoginWithCachedCredentials() -> Bool {
-        if meteor.hasAccount() {
+        if meteorService.account != nil {
             return true
         }
         if FBSession.openActiveSession(readPermissions: fbReadPerms) {

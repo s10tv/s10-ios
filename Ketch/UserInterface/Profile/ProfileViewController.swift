@@ -93,7 +93,7 @@ class ProfileViewController : BaseViewController {
         alert.addAction(LS(R.Strings.reportAlertCancel), style: .Cancel)
         alert.addAction(LS(R.Strings.reportAlertConfirm), style: .Destructive) { _ in
             if let reportReason = (alert.textFields?[0] as? UITextField)?.text {
-                Core.meteor.callMethod("user/report", params: [self.user!.documentID!, reportReason])
+                Core.meteorService.reportUser(self.user, reason: reportReason)
             }
         }
         presentViewController(alert)

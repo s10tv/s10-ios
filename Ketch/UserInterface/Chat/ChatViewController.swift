@@ -79,7 +79,9 @@ class ChatViewController : JSQMessagesViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        Core.meteor.callMethod("connection/markAsRead", params: [connection!.documentID!])
+        if connection?.hasUnreadMessage == true {
+            Core.meteorService.markAsRead(connection!)
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -98,9 +100,7 @@ class ChatViewController : JSQMessagesViewController {
     
     // MARK: - 
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
-        if let connectionID = connection?.documentID {
-            Core.meteor.callMethod("connection/sendMessage", params: [connectionID, text])
-        }
+        Core.meteorService.sendMessage(connection!, text: text)
         finishSendingMessageAnimated(true)
     }
     
