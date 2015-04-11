@@ -43,14 +43,14 @@ class Connection: _Connection {
     }
     
     class func crabConnection() -> Connection? {
-        if let crabUserId = Core.meta.crabUserId {
+        if let crabUserId = Meteor.meta.crabUserId {
             return User.findByDocumentID(crabUserId)?.connection
         }
         return nil
     }
     
     class func findByDocumentID(documentID: String) -> Connection? {
-        return Core.mainContext.objectInCollection("connections", documentID: documentID) as? Connection
+        return Meteor.mainContext.objectInCollection("connections", documentID: documentID) as? Connection
     }
     
     class func unreadCount() -> Int {

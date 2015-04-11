@@ -27,7 +27,7 @@ class User: _User {
     }
     
     var isCurrentUser : Bool {
-        return documentID == Core.meteorService.userID
+        return documentID == Meteor.userID
     }
     
     var photos : [Photo]? {
@@ -81,11 +81,11 @@ class User: _User {
     }
     
     class func findByDocumentID(documentID: String) -> User? {
-        return Core.mainContext.objectInCollection("users", documentID: documentID) as? User
+        return Meteor.mainContext.objectInCollection("users", documentID: documentID) as? User
     }
     
     class func currentUser() -> User? {
-        if let currentUserID = Core.meteorService.userID {
+        if let currentUserID = Meteor.userID {
             return findByDocumentID(currentUserID)
         }
         return nil

@@ -92,7 +92,7 @@ class SettingsViewController : BaseViewController {
         alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "Confirm", style: UIAlertActionStyle.Default, handler: { action in
             if let currentUser = User.currentUser() {
-                Core.meteorService.deleteAccount()
+                Meteor.deleteAccount()
             }
         }))
         

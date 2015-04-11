@@ -14,13 +14,18 @@ import BugfenderSDK
 
 private struct Globals {
     static var environment : Environment!
-    static var coreService : CoreService!
+    static var meteorService : MeteorService!
+    static var flowService : FlowService!
+    static var facebookService : FacebookService!
 }
 
 let Env = Globals.environment
-let Core = Globals.coreService
+let Meteor = Globals.meteorService
+let Flow = Globals.flowService
+let Facebook = Globals.facebookService
 let NC = NSNotificationCenter.defaultCenter()
 let UD = NSUserDefaults.standardUserDefaults()
+
 let AppDidRegisterUserNotificationSettings = "AppDidRegisterUserNotificationSettings"
 
 @UIApplicationMain
@@ -41,7 +46,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
         UD.registerDefaultValues()
         
         // Setup global services
-        Globals.coreService = CoreService()
+        Globals.meteorService = MeteorService(serverURL: Env.serverURL)
+        Globals.flowService = FlowService(meteorService: Meteor)
+        Globals.facebookService = FacebookService(meteorService: Meteor)
         
         // Should be probably extracted into push service
         application.registerForRemoteNotifications()
@@ -82,7 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         Log.info("Registered for push \(deviceToken)")
         if let apsEnv = Env.provisioningProfile?.apsEnvironment?.rawValue {
-            Core.meteorService.addPushToken(appID: Env.appID, apsEnv: apsEnv, pushToken: deviceToken)
+            Meteor.addPushToken(appID: Env.appID, apsEnv: apsEnv, pushToken: deviceToken)
         }
     }
     

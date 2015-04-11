@@ -12,7 +12,7 @@ import SugarRecord
 import Meteor
 
 class MeteorService : NSObject {
-    /*private*/ let meteor: METCoreDataDDPClient
+    private let meteor: METCoreDataDDPClient
     let subscriptions: (
         metadata: METSubscription,
         currentUser: METSubscription,
@@ -27,6 +27,7 @@ class MeteorService : NSObject {
         connections: METCollection,
         messages: METCollection
     )
+    let meta: Metadata
     
     // Proxied accessors
     var connectionStatus: METDDPConnectionStatus { return meteor.connectionStatus }
@@ -56,12 +57,22 @@ class MeteorService : NSObject {
             meteor.database.collectionWithName("connections"),
             meteor.database.collectionWithName("messages")
         )
+        meta = Metadata(collection: collections.metadata)
+        
         meteor.account = METAccount.defaultAccount()
         meteor.connect()
         
         SugarRecord.addStack(MeteorCDStack(meteor: meteor))
         
         super.init()
+    }
+    
+    func loginWithFacebook(#accessToken: String, expiresAt: NSDate) -> RACSignal {
+        return meteor.loginWithFacebook(accessToken, expiresAt: expiresAt)
+    }
+    
+    func addPushToken(#appID: String, apsEnv: String, pushToken: NSData) -> RACSignal {
+        return meteor.call("user/addPushToken", [appID, apsEnv, pushToken.hexString()])
     }
     
     func submitChoices(#yes: Candidate, no: Candidate, maybe: Candidate) -> RACSignal {
@@ -102,7 +113,7 @@ class MeteorService : NSObject {
         return meteor.call("user/delete")
     }
     
-    func addPushToken(#appID: String, apsEnv: String, pushToken: NSData) -> RACSignal {
-        return meteor.call("user/addPushToken", [appID, apsEnv, pushToken.hexString()])
+    func logout() -> RACSignal {
+        return meteor.logout()
     }
 }

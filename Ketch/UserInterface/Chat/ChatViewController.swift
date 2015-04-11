@@ -80,7 +80,7 @@ class ChatViewController : JSQMessagesViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if connection?.hasUnreadMessage == true {
-            Core.meteorService.markAsRead(connection!)
+            Meteor.markAsRead(connection!)
         }
     }
     
@@ -100,7 +100,7 @@ class ChatViewController : JSQMessagesViewController {
     
     // MARK: - 
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
-        Core.meteorService.sendMessage(connection!, text: text)
+        Meteor.sendMessage(connection!, text: text)
         finishSendingMessageAnimated(true)
     }
     

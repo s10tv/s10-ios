@@ -61,8 +61,7 @@ class RootViewController : UINavigationController {
     }
     
     @IBAction func logout(sender: AnyObject) {
-//        pageVC.view.hidden = true // TODO: Refactor me
-        Core.logout().subscribeCompleted {
+        Facebook.logout().subscribeCompleted {
             Log.info("Signed out")
         }
         dismissViewController(animated: false)

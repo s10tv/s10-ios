@@ -20,7 +20,7 @@ class Candidate: _Candidate {
     }
 
     class func findByDocumentID(documentID: String) -> Candidate? {
-        return Core.mainContext.objectInCollection("matches", documentID: documentID) as? Candidate
+        return Meteor.mainContext.objectInCollection("matches", documentID: documentID) as? Candidate
     }
 
 }

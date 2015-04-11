@@ -9,7 +9,7 @@
 import Foundation
 import Meteor
 
-class MetadataService {
+class Metadata {
     private let collection : METCollection
     
     var softMinBuild : Int? { return valueForMetadataKey("softMinBuild") as? Int }

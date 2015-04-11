@@ -12,7 +12,7 @@ import CoreLocation
 class FacebookPermissionViewController : BaseViewController {
     
     @IBAction func requestFacebookPermission(sender: AnyObject) {
-        Core.loginWithUI().subscribeError({ _ in
+        Facebook.loginWithUI().subscribeError({ _ in
             self.showAlert(LS(R.Strings.fbPermDeniedAlertTitle),
                   message: LS(R.Strings.fbPermDeniedAlertMessage))
         }, completed: { () -> Void in
@@ -51,7 +51,7 @@ class LocationPermissionViewController : BaseViewController, CLLocationManagerDe
     
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         Log.debug("Location status is \(status)")
-        if Core.flow.currentState == .Waitlist {
+        if Flow.currentState == .Waitlist {
             performSegue(.LocationPermToWaitlist)
         } else {
             performSegue(.LocationPermToLoading)

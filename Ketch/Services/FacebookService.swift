@@ -1,5 +1,5 @@
 //
-//  CoreService.swift
+//  FacebookService.swift
 //  Serendipity
 //
 //  Created by Tony Xiao on 2/3/15.
@@ -9,35 +9,22 @@
 import Foundation
 import ReactiveCocoa
 import FacebookSDK
-import SugarRecord
-import Meteor
 
-class CoreService : NSObject {
-    var flow: FlowService!
-    var meteorService: MeteorService!
-    private var meteor : METCoreDataDDPClient!
-    var meta: MetadataService!
-    var mainContext : NSManagedObjectContext! {
-        return meteor.mainQueueManagedObjectContext
-    }
+class FacebookService {
+
+    let meteorService: MeteorService
     var fbSession : FBSession {
         return FBSession.activeSession()!
     }
     
-    override init() {
-        super.init()
-        meteorService = MeteorService(serverURL: Env.serverURL)
-        meta = MetadataService(collection: meteorService.collections.metadata)
-        meteor = meteorService.meteor
-        
-        flow = FlowService(meteorService: meteorService, metadataService: meta)
-        
+    init(meteorService: MeteorService) {
+        self.meteorService = meteorService
         attemptLoginWithCachedCredentials()
     }
     
     private func loginToMeteor() {
         let data = FBSession.activeSession().accessTokenData
-        meteor.loginWithFacebook(data.accessToken, expiresAt: data.expirationDate)
+        meteorService.loginWithFacebook(accessToken: data.accessToken, expiresAt: data.expirationDate)
     }
     
     // TODO: What permissions do we actually need?
@@ -62,13 +49,6 @@ class CoreService : NSObject {
         return false
     }
     
-    func addPushToken(pushTokenData: NSData) {
-        // TODO: Only call this after user logged in
-        if let apsEnv = Env.provisioningProfile?.apsEnvironment?.rawValue {
-            meteor.callMethod("user/addPushToken", params: [Env.appID, apsEnv, pushTokenData.hexString()])
-        }
-    }
-    
     func loginWithUI() -> RACSignal {
         return FBSession.openActiveSessionWithUI(readPermissions: fbReadPerms).deliverOnMainThread().doCompleted {
             self.loginToMeteor()
@@ -77,8 +57,9 @@ class CoreService : NSObject {
     
     func logout() -> RACSignal {
         FBSession.activeSession().closeAndClearTokenInformation()
-        mainContext.reset()
+        // TODO: These Doesn't really belong here
+        meteorService.mainContext.reset()
         UD.resetAll()
-        return meteor.logout().deliverOnMainThread() // TODO: Log out needs to reset the METDatabase
+        return meteorService.logout().deliverOnMainThread() // TODO: Log out needs to reset the METDatabase
     }
 }

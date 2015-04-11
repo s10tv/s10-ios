@@ -24,16 +24,14 @@ class FlowService : NSObject {
     }
     
     private let ms: MeteorService
-    private let meta: MetadataService
     private let stateChanged = RACSubject()
     private var waitingOnGameResult = false // Waiting to hear back from server about recent game
     private(set) var newMatchToShow : Connection?
     private(set) var candidateQueue : [Candidate]?
     private(set) var currentState = State.Loading
     
-    init(meteorService: MeteorService, metadataService: MetadataService) {
+    init(meteorService: MeteorService) {
         self.ms = meteorService
-        self.meta = metadataService
         super.init()
         meteorService.delegate = self
         listenForNotification(NSUserDefaultsDidChangeNotification, selector: "userDefaultsDidChange:")
@@ -68,7 +66,7 @@ class FlowService : NSObject {
             return .Loading
         }
         // Onboarding Flow
-        if meta.vetted != true {
+        if ms.meta.vetted != true {
             return .Waitlist
         } else if UD[.bHasBeenWelcomed].bool != true {
             return .Welcome
