@@ -13,6 +13,8 @@ import CrashlyticsFramework
 import BugfenderSDK
 
 var Core : CoreService!
+let NC = NSNotificationCenter.defaultCenter() // Intentionally global variable
+let AppDidRegisterUserNotificationSettings = "AppDidRegisterUserNotificationSettings"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
@@ -59,7 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
     
     // MARK: - Push Handling
     func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
-        NC.postNotification(.DidRegisterUserNotificationSettings, object: notificationSettings)
+        NC.postNotificationName(AppDidRegisterUserNotificationSettings, object: notificationSettings)
     }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {

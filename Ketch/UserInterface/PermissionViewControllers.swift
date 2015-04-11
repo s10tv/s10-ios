@@ -30,7 +30,7 @@ class NotificationsPermissionViewController : BaseViewController {
                 UIUserNotificationType.Sound,
             categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
-        listenForNotification(.DidRegisterUserNotificationSettings).take(1).subscribeNextAs { (note: NSNotification) in
+        listenForNotification(AppDidRegisterUserNotificationSettings).take(1).subscribeNextAs { (note: NSNotification) in
             let settings = note.object as UIUserNotificationSettings
             self.performSegue(.NotificationsPermToLocationPerm)
         }

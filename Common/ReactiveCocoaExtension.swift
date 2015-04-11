@@ -26,11 +26,11 @@ extension RACSubject {
 }
 
 extension NSObject {
-    func listenForNotification(name: String) -> RACSignal/*NSNotification*/ {
+    func listenForNotification(name: String) -> RACSignal/*<NSNotification>*/ {
         return listenForNotification(name, object: nil)
     }
     
-    func listenForNotification(name: String, object: AnyObject?) -> RACSignal/*NSNotification*/ {
+    func listenForNotification(name: String, object: AnyObject?) -> RACSignal/*<NSNotification>*/ {
         let nc = NSNotificationCenter.defaultCenter()
         return nc.rac_addObserverForName(name, object: object).takeUntil(rac_willDeallocSignal())
     }

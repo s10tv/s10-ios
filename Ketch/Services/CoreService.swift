@@ -59,7 +59,6 @@ class CoreService : NSObject {
             loginToMeteor()
             return true
         }
-        NC.postNotification(.DidFailLoginToMeteor)
         return false
     }
     
