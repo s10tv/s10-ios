@@ -59,13 +59,17 @@ class MeteorService : NSObject {
         )
         meta = Metadata(collection: collections.metadata)
         
-        meteor.account = METAccount.defaultAccount()
-        meteor.connect()
-        
         SugarRecord.addStack(MeteorCDStack(meteor: meteor))
         
         super.init()
     }
+    
+    func startup() {
+        meteor.account = METAccount.defaultAccount()
+        meteor.connect()
+    }
+    
+    // MARK: - Server API
     
     func loginWithFacebook(#accessToken: String, expiresAt: NSDate) -> RACSignal {
         return meteor.loginWithMethod("login", params: [[

@@ -53,7 +53,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
         // Should be probably extracted into push service
         application.registerForRemoteNotifications()
         
-        // Done, hurray!
+        // Let's launch!
+        Meteor.startup()
+        
         Log.info("App Launched")
         return true
     }
