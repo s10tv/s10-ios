@@ -8,14 +8,20 @@
 #import <Foundation/Foundation.h>
 
 extern const struct R {
-    struct ImagesAssets {
-        /// checkmark
-        __unsafe_unretained NSString *checkmark;
-        /// cross
-        __unsafe_unretained NSString *cross;
-        /// progress
-        __unsafe_unretained NSString *progress;
-    } ImagesAssets;
+    struct Fonts {
+        /// KetchIcon
+        __unsafe_unretained NSString *ketch;
+        /// TransatTextBlack
+        __unsafe_unretained NSString *transatTextBlack;
+        /// TransatTextBold
+        __unsafe_unretained NSString *transatTextBold;
+        /// TransatTextLight
+        __unsafe_unretained NSString *transatTextLight;
+        /// TransatTextMedium
+        __unsafe_unretained NSString *transatTextMedium;
+        /// TransatTextStandard
+        __unsafe_unretained NSString *transatTextStandard;
+    } Fonts;
     struct KetchAssets {
         /// AppIcon
         __unsafe_unretained NSString *app;

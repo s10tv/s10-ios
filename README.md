@@ -9,7 +9,9 @@ Edit the following two files
 ```
 brew install mogenerator
 gem install cocoapods -v 0.36.0.beta.2
-gem install cupertino shenzhen sbconstants xcres
+gem install cupertino shenzhen sbconstants
+gem install specific_install
+gem specific_install -l https://github.com/tonyxiao/xcres.git
 pod install
 ```
 
@@ -19,7 +21,7 @@ Open `Ketch.xcworkspace` and start developing
 
 Follow [raywenderlich's swift style guide](https://github.com/raywenderlich/swift-style-guide)
 
-Except we'll leave 4 spaces instead of two space for indentation. 
+Except we'll leave 4 spaces instead of two space for indentation.
 
 ## Make IPAs
 By default project should be building with dev configuration. To change, use explicity xcconfig

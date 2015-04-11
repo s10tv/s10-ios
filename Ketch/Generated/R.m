@@ -8,10 +8,13 @@
 #import "R.h"
 
 const struct R R = {
-    .ImagesAssets = {
-        .checkmark = @"checkmark",
-        .cross = @"cross",
-        .progress = @"progress",
+    .Fonts = {
+        .ketch = @"KetchIcon",
+        .transatTextBlack = @"TransatTextBlack",
+        .transatTextBold = @"TransatTextBold",
+        .transatTextLight = @"TransatTextLight",
+        .transatTextMedium = @"TransatTextMedium",
+        .transatTextStandard = @"TransatTextStandard",
     },
     .KetchAssets = {
         .app = @"AppIcon",
