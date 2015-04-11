@@ -59,7 +59,7 @@ class User: _User {
     
     func jsqAvatar() -> JSQMessagesAvatarImage {
         // TODO: Add gender to user
-        let image = JSQMessagesAvatarImage(placeholder: UIImage(named: R.KetchAssets.girlPlaceholder))
+        let image = JSQMessagesAvatarImage(placeholder: UIImage(R.KetchAssets.girlPlaceholder))
         let key = SDWebImageManager.sharedManager().cacheKeyForURL(self.profilePhotoURL)
         image.avatarImage = SDImageCache.sharedImageCache().imageFromDiskCacheForKey(key)
         return image
@@ -105,11 +105,11 @@ class ProfileInfoItem {
         case Location(String), Age(Int), Height(Int), Work(String), Education(String)
     }
     let type : ItemType
-    let imageName : String
+    let imageName : R.KetchAssets
     let minWidthRatio : CGFloat = 1
     
     var image : UIImage! {
-        return UIImage(named: imageName)
+        return UIImage(named: imageName.rawValue)
     }
     
     var text : String {

@@ -39,7 +39,7 @@ class GameTutorialController {
 
         let promptLabel = UILabel()
         promptLabel.text = LS(R.Strings.tapToContinue)
-        promptLabel.font = UIFont(.TransatTextBlack, size: 20)
+        promptLabel.font = UIFont(.transatTextBlack, size: 20)
         promptLabel.textColor = StyleKit.darkWhite
         promptLabel.preferredMaxLayoutWidth = 200
         promptLabel.numberOfLines = 0
@@ -140,7 +140,7 @@ class GameTutorialController {
         }
         showHelpText(LS(R.Strings.dragMatchsToChoices))
         
-        let arrowImage = UIImage(named: R.KetchAssets.tutorialArrow)
+        let arrowImage = UIImage(R.KetchAssets.tutorialArrow)
         let centerBubble = bubbles[1]
         for i in -1...1 {
             let arrow = UIImageView(image: arrowImage)

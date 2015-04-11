@@ -32,12 +32,12 @@ class ChatViewController : JSQMessagesViewController {
         
         // Customize input views
         inputToolbar.contentView.leftBarButtonItem = nil
-        inputToolbar.contentView.textView.font = UIFont(.TransatTextStandard, size: 16)
+        inputToolbar.contentView.textView.font = UIFont(.transatTextStandard, size: 16)
         let sendButton = inputToolbar.contentView.rightBarButtonItem
         sendButton.setTitleColor(StyleKit.brandBlue, forState: .Normal)
         sendButton.setTitleColor(StyleKit.brandBlue.jsq_colorByDarkeningColorWithValue(0.1), forState: .Highlighted)
         sendButton.tintColor = StyleKit.brandBlue
-        sendButton.titleLabel?.font = UIFont(.TransatTextBold, size: 17)
+        sendButton.titleLabel?.font = UIFont(.transatTextBold, size: 17)
         
         // Customize chat bubble
         // Magic insets number copied from inside StyleKit for imageOfChatBubble
@@ -73,7 +73,7 @@ class ChatViewController : JSQMessagesViewController {
         let layout = collectionView.collectionViewLayout
         layout.incomingAvatarViewSize = CGSizeZero
         layout.outgoingAvatarViewSize = CGSizeZero
-        layout.messageBubbleFont = UIFont(.TransatTextLight, size: 17)
+        layout.messageBubbleFont = UIFont(.transatTextLight, size: 17)
         layout.springinessEnabled = true
     }
     
@@ -156,7 +156,7 @@ extension ChatViewController : JSQMessagesCollectionViewDataSource {
         if shouldShowTimestampForMessageAtIndexPath(indexPath) {
             let message = messages.itemAtIndexPath(indexPath) as Message
             let text = JSQMessagesTimestampFormatter.sharedFormatter().attributedTimestampForDate(message.createdAt)
-            return text.replace(font: UIFont(.TransatTextBold, size: 10), color: StyleKit.teal)
+            return text.replace(font: UIFont(.transatTextBold, size: 10), color: StyleKit.teal)
         }
         return nil
     }

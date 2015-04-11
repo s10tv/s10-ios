@@ -1,12 +1,15 @@
 //
-//  SBConstantsExtension.swift
+//  ResourceExtension.swift
 //  Ketch
 //
 //  Created by Tony Xiao on 2/28/15.
 //  Copyright (c) 2015 Ketch. All rights reserved.
 //
+//  Extensions to make accessing generated resources easier
 
 import UIKit
+
+// SBConstants
 
 extension UIStoryboard {
     func makeViewController(identifier: ViewControllerStoryboardIdentifier) -> UIViewController {
@@ -30,5 +33,24 @@ extension UIViewController {
 extension UIStoryboardSegue {
     func matches(identifier: SegueIdentifier) -> Bool {
         return self.identifier == identifier.rawValue
+    }
+}
+
+// xcres
+
+func LS(key: R.Strings, args: CVarArgType...) -> String {
+    return NSString(format: NSLocalizedString(key.rawValue, comment: ""),
+        arguments: getVaList(args)) as String
+}
+
+extension UIImage {
+    convenience init?(_ key: R.KetchAssets) {
+        self.init(named: key.rawValue)
+    }
+}
+
+extension UIFont {
+    convenience init!(_ fontName: R.Fonts, size: CGFloat) {
+        self.init(name: fontName.rawValue, size: size)
     }
 }

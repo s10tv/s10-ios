@@ -11,11 +11,6 @@ import ReactiveCocoa
 import Cartography
 import EDColor
 
-func LS(localizableKey: String, args: CVarArgType...) -> String {
-    return NSString(format: NSLocalizedString(localizableKey, comment: ""),
-                 arguments: getVaList(args)) as String
-}
-
 extension UIViewController {
     func presentViewController(viewControllerToPresent: UIViewController, animated: Bool = true) -> RACSignal {
         let subject = RACReplaySubject()

@@ -9,7 +9,6 @@
 #import <Meteor/METDatabase.h>
 #import <JSQMessagesViewController/JSQMessagesViewController.h>
 #import <BugfenderSDK/BugfenderSDK.h>
-#import "R.h"
 
 @interface JSQMessagesViewController (Private)
 
