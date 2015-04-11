@@ -50,7 +50,7 @@ class LocationPermissionViewController : BaseViewController, CLLocationManagerDe
     // MARK: CLLocationManagerDelegate
     
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        println("Location status is \(status)")
+        Log.debug("Location status is \(status)")
         if Core.flow.currentState == .Waitlist {
             performSegue(.LocationPermToWaitlist)
         } else {

@@ -60,6 +60,7 @@ class GameTutorialController {
     }
     
     func startTutorial() {
+        Log.info("Starting game tutorial")
         currentStep = 1
         advanceStep()
     }
@@ -75,7 +76,7 @@ class GameTutorialController {
     }
     
     func advanceStep() {
-        println("Advancing to tutorial step \(currentStep)")
+        Log.debug("Advancing to tutorial step \(currentStep)")
         switch currentStep {
         case 1:
             showHelpText(LS(R.Strings.threeMatchesPrompt))

@@ -9,10 +9,9 @@
 import Foundation
 import BugfenderSDK
 
-// TODO: Stuff shouldn't create global variables like this
-let Log = Logger()
+public let Log = Logger()
 
-class Logger  {
+public class Logger {
     enum LogLevel : Int, Printable {
         case Error = 0
         case Warn
@@ -49,10 +48,6 @@ class Logger  {
         log(message, level: LogLevel.Warn, function: function, file: file, line: line)
     }
     
-    func error(message: String, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) {
-        error(message, nil, function: function, file: file, line: line)
-    }
-    
     func error(message: String, _ error: NSError? = nil, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) {
         let msg = error != nil ? "\(message) error: \(error)" : message
         log(msg, level: LogLevel.Error, function: function, file: file, line: line)
@@ -71,7 +66,7 @@ class Logger  {
         Bugfender.logWithFilename(file, lineNumber: Int32(line), functionName: function, tag: nil, level: bfInfo.0, message: bfInfo.1)
 
         // Swift default
-        println("\(level) \(message)")
+        println("[\(level)] \(message)")
     }
     
     func formatForBugFender(level: LogLevel, message: String) -> (BFLogLevel, String) {

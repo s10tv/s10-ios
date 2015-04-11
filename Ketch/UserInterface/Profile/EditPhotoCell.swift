@@ -21,6 +21,6 @@ class EditPhotoCell : UICollectionViewCell {
     }
     
     @IBAction func remove(sender: AnyObject) {
-        println("Want to remove photo \(photo?.url)")
+        Log.warn("Want to remove photo \(photo?.url). Not implemented")
     }
 }

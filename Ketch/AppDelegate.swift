@@ -80,22 +80,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
     }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-        println("Registered for push \(deviceToken)")
+        Log.info("Registered for push \(deviceToken)")
         if let apsEnv = Env.provisioningProfile?.apsEnvironment?.rawValue {
             Core.meteorService.addPushToken(appID: Env.appID, apsEnv: apsEnv, pushToken: deviceToken)
         }
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-        println("Faild to register for push \(error)")
+        Log.warn("Faild to register for push \(error)")
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
-        println("Did receive notification \(userInfo)")
+        Log.debug("Did receive notification \(userInfo)")
     }
     
     // MARK: Crashlytics
     func crashlytics(crashlytics: Crashlytics!, didDetectCrashDuringPreviousExecution crash: CLSCrashReport!) {
-        println("Crash detected during previous run \(crash)")
+        Log.error("Crash detected during previous run \(crash)")
     }
 }

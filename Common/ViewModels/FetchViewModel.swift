@@ -47,6 +47,7 @@ class FetchViewModel {
             var error : NSError?
             let fetched = frc.performFetch(&error)
             if !fetched || error != nil {
+                // TODO: Make it possible to use Logging service instead of println
                 println("Problem encountered white fetching \(error)")
             }
             signal.sendNext(frc.fetchedObjects!)
