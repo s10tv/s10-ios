@@ -329,7 +329,7 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		49A80BC478B1E012CE6D7406 /* Resources */ = {
+		49A80BC478B1E012CE6D7406 /* Generated */ = {
 			isa = PBXGroup;
 			children = (
 				EA24C26E1AD8F60900C40AAD /* _Models */,
@@ -338,7 +338,7 @@
 				D3E8EF9EDFE5BCEAA0D02DD3 /* R.h */,
 				42B1ADC65A81E44C8D5906C0 /* R.m */,
 			);
-			path = Resources;
+			path = Generated;
 			sourceTree = "<group>";
 		};
 		DDD7116BC0015396F5321D26 /* Pods */ = {
@@ -605,7 +605,7 @@
 				EA9F35621A74CD8800E0C65D /* Ketch-Bridging.h */,
 				EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */,
 				EA9F353E1A74CC6900E0C65D /* Ketch-Info.plist */,
-				49A80BC478B1E012CE6D7406 /* Resources */,
+				49A80BC478B1E012CE6D7406 /* Generated */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
