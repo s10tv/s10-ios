@@ -12,7 +12,7 @@ class SignupViewController : BaseViewController {
     
     // MARK: Actions
     @IBAction func didTapOnNotPicky(sender: AnyObject) {
-        UIApplication.sharedApplication().openURL(NSURL("http://tinder.com/"))
+        UIApplication.sharedApplication().openURL(Env.notPickyExitURL)
     }
     
     @IBAction func viewTerms(sender: AnyObject) {
