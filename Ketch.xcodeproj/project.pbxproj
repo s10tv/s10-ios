@@ -42,14 +42,6 @@
 		EA2AB70E1A8A00F200D42C6C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2AB70D1A8A00F200D42C6C /* GameViewController.swift */; };
 		EA31049B1A99C3850069D6AD /* KetchIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA31049A1A99C3850069D6AD /* KetchIcon.swift */; };
 		EA341D841A8C875500A6077B /* ChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA341D831A8C875500A6077B /* ChatView.xib */; };
-		EA341D9E1A8C88CC00A6077B /* JSQMessagesAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EA341D861A8C88CC00A6077B /* JSQMessagesAssets.bundle */; };
-		EA341D9F1A8C88CC00A6077B /* JSQMessagesCollectionViewCellIncoming.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA341D871A8C88CC00A6077B /* JSQMessagesCollectionViewCellIncoming.xib */; };
-		EA341DA01A8C88CC00A6077B /* JSQMessagesCollectionViewCellOutgoing.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA341D881A8C88CC00A6077B /* JSQMessagesCollectionViewCellOutgoing.xib */; };
-		EA341DA11A8C88CC00A6077B /* JSQMessagesLoadEarlierHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA341D891A8C88CC00A6077B /* JSQMessagesLoadEarlierHeaderView.xib */; };
-		EA341DA21A8C88CC00A6077B /* JSQMessagesToolbarContentView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA341D8A1A8C88CC00A6077B /* JSQMessagesToolbarContentView.xib */; };
-		EA341DA31A8C88CC00A6077B /* JSQMessagesTypingIndicatorFooterView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA341D8B1A8C88CC00A6077B /* JSQMessagesTypingIndicatorFooterView.xib */; };
-		EA341DA41A8C88CC00A6077B /* JSQMessagesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA341D8C1A8C88CC00A6077B /* JSQMessagesViewController.xib */; };
-		EA341DA51A8C88CC00A6077B /* JSQMessages.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA341D8E1A8C88CC00A6077B /* JSQMessages.strings */; };
 		EA3777721A966EC10055DE99 /* TransatTextBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */; };
 		EA3777731A966EC10055DE99 /* TransatTextBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776E1A966EC10055DE99 /* TransatTextBold.otf */; };
 		EA3777741A966EC10055DE99 /* TransatTextLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776F1A966EC10055DE99 /* TransatTextLight.otf */; };
@@ -66,6 +58,7 @@
 		EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA5634DF1A7741FF00F62B52 /* Ketch.xcdatamodeld */; };
 		EA5FCE461AD6077A000D9B93 /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5FCE451AD6077A000D9B93 /* ProgressIndicator.swift */; };
 		EA5FCE481AD62C1F000D9B93 /* GameTutorialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5FCE471AD62C1F000D9B93 /* GameTutorialController.swift */; };
+		EA62A87E1AD98B3C00B5D3D9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA62A87D1AD98B3C00B5D3D9 /* Images.xcassets */; };
 		EA6650E11AA00999001BA40C /* BaseViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E01AA00999001BA40C /* BaseViews.swift */; };
 		EA6650E61AA00A82001BA40C /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E31AA00A82001BA40C /* WaveView.swift */; };
 		EA6650E81AA00A82001BA40C /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E51AA00A82001BA40C /* UserAvatarView.swift */; };
@@ -181,28 +174,6 @@
 		EA2AB70D1A8A00F200D42C6C /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		EA31049A1A99C3850069D6AD /* KetchIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KetchIcon.swift; sourceTree = "<group>"; };
 		EA341D831A8C875500A6077B /* ChatView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatView.xib; sourceTree = "<group>"; };
-		EA341D861A8C88CC00A6077B /* JSQMessagesAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = JSQMessagesAssets.bundle; sourceTree = "<group>"; };
-		EA341D871A8C88CC00A6077B /* JSQMessagesCollectionViewCellIncoming.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSQMessagesCollectionViewCellIncoming.xib; sourceTree = "<group>"; };
-		EA341D881A8C88CC00A6077B /* JSQMessagesCollectionViewCellOutgoing.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSQMessagesCollectionViewCellOutgoing.xib; sourceTree = "<group>"; };
-		EA341D891A8C88CC00A6077B /* JSQMessagesLoadEarlierHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSQMessagesLoadEarlierHeaderView.xib; sourceTree = "<group>"; };
-		EA341D8A1A8C88CC00A6077B /* JSQMessagesToolbarContentView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSQMessagesToolbarContentView.xib; sourceTree = "<group>"; };
-		EA341D8B1A8C88CC00A6077B /* JSQMessagesTypingIndicatorFooterView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSQMessagesTypingIndicatorFooterView.xib; sourceTree = "<group>"; };
-		EA341D8C1A8C88CC00A6077B /* JSQMessagesViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = JSQMessagesViewController.xib; sourceTree = "<group>"; };
-		EA341D8F1A8C88CC00A6077B /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/JSQMessages.strings; sourceTree = "<group>"; };
-		EA341D901A8C88CC00A6077B /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/JSQMessages.strings; sourceTree = "<group>"; };
-		EA341D911A8C88CC00A6077B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/JSQMessages.strings; sourceTree = "<group>"; };
-		EA341D921A8C88CC00A6077B /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/JSQMessages.strings; sourceTree = "<group>"; };
-		EA341D931A8C88CC00A6077B /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/JSQMessages.strings; sourceTree = "<group>"; };
-		EA341D941A8C88CC00A6077B /* he */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = he; path = he.lproj/JSQMessages.strings; sourceTree = "<group>"; };
-		EA341D951A8C88CC00A6077B /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/JSQMessages.strings; sourceTree = "<group>"; };
-		EA341D961A8C88CC00A6077B /* nl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = nl; path = nl.lproj/JSQMessages.strings; sourceTree = "<group>"; };
-		EA341D971A8C88CC00A6077B /* pl */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pl; path = pl.lproj/JSQMessages.strings; sourceTree = "<group>"; };
-		EA341D981A8C88CC00A6077B /* pt */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = pt; path = pt.lproj/JSQMessages.strings; sourceTree = "<group>"; };
-		EA341D991A8C88CC00A6077B /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/JSQMessages.strings; sourceTree = "<group>"; };
-		EA341D9A1A8C88CC00A6077B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/JSQMessages.strings; sourceTree = "<group>"; };
-		EA341D9B1A8C88CC00A6077B /* tr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = tr; path = tr.lproj/JSQMessages.strings; sourceTree = "<group>"; };
-		EA341D9C1A8C88CC00A6077B /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/JSQMessages.strings"; sourceTree = "<group>"; };
-		EA341D9D1A8C88CC00A6077B /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/JSQMessages.strings"; sourceTree = "<group>"; };
 		EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextBlack.otf; sourceTree = "<group>"; };
 		EA37776E1A966EC10055DE99 /* TransatTextBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextBold.otf; sourceTree = "<group>"; };
 		EA37776F1A966EC10055DE99 /* TransatTextLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextLight.otf; sourceTree = "<group>"; };
@@ -219,6 +190,7 @@
 		EA5634E01A7741FF00F62B52 /* Ketch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ketch.xcdatamodel; sourceTree = "<group>"; };
 		EA5FCE451AD6077A000D9B93 /* ProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
 		EA5FCE471AD62C1F000D9B93 /* GameTutorialController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTutorialController.swift; sourceTree = "<group>"; };
+		EA62A87D1AD98B3C00B5D3D9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Pods/PKHUD/PKHUD/Images.xcassets; sourceTree = "<group>"; };
 		EA6650E01AA00999001BA40C /* BaseViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViews.swift; sourceTree = "<group>"; };
 		EA6650E31AA00A82001BA40C /* WaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
 		EA6650E51AA00A82001BA40C /* UserAvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAvatarView.swift; sourceTree = "<group>"; };
@@ -346,6 +318,7 @@
 		DDD7116BC0015396F5321D26 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				EA62A87C1AD98B3600B5D3D9 /* PKHUD */,
 				2CD850D0B9EC2938BA5CEB59 /* Pods.debug.xcconfig */,
 				0686ABB348D06D87DA844419 /* Pods.release.xcconfig */,
 			);
@@ -462,29 +435,6 @@
 			path = Game;
 			sourceTree = "<group>";
 		};
-		EA341D851A8C88CC00A6077B /* ThirdPartyBundleResources */ = {
-			isa = PBXGroup;
-			children = (
-				EA341D861A8C88CC00A6077B /* JSQMessagesAssets.bundle */,
-				EA341D871A8C88CC00A6077B /* JSQMessagesCollectionViewCellIncoming.xib */,
-				EA341D881A8C88CC00A6077B /* JSQMessagesCollectionViewCellOutgoing.xib */,
-				EA341D891A8C88CC00A6077B /* JSQMessagesLoadEarlierHeaderView.xib */,
-				EA341D8A1A8C88CC00A6077B /* JSQMessagesToolbarContentView.xib */,
-				EA341D8B1A8C88CC00A6077B /* JSQMessagesTypingIndicatorFooterView.xib */,
-				EA341D8C1A8C88CC00A6077B /* JSQMessagesViewController.xib */,
-				EA341D8D1A8C88CC00A6077B /* JSQStrings */,
-			);
-			path = ThirdPartyBundleResources;
-			sourceTree = "<group>";
-		};
-		EA341D8D1A8C88CC00A6077B /* JSQStrings */ = {
-			isa = PBXGroup;
-			children = (
-				EA341D8E1A8C88CC00A6077B /* JSQMessages.strings */,
-			);
-			path = JSQStrings;
-			sourceTree = "<group>";
-		};
 		EA37776C1A966E380055DE99 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -526,6 +476,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		EA62A87C1AD98B3600B5D3D9 /* PKHUD */ = {
+			isa = PBXGroup;
+			children = (
+				EA62A87D1AD98B3C00B5D3D9 /* Images.xcassets */,
+			);
+			name = PKHUD;
+			sourceTree = "<group>";
+		};
 		EA6650E21AA00A82001BA40C /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -565,7 +523,6 @@
 			children = (
 				EA9F353C1A74CC6900E0C65D /* Ketch */,
 				EA0FC91C1A87DE5800D62625 /* Common */,
-				EA341D851A8C88CC00A6077B /* ThirdPartyBundleResources */,
 				EA9F35551A74CC6900E0C65D /* KetchTests */,
 				EA9F353B1A74CC6900E0C65D /* Products */,
 				DDD7116BC0015396F5321D26 /* Pods */,
@@ -794,13 +751,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA3777761A966EC10055DE99 /* TransatTextStandard.otf in Resources */,
-				EA341DA51A8C88CC00A6077B /* JSQMessages.strings in Resources */,
-				EA341DA41A8C88CC00A6077B /* JSQMessagesViewController.xib in Resources */,
+				EA62A87E1AD98B3C00B5D3D9 /* Images.xcassets in Resources */,
 				EA02CCF21A96ED03004C3009 /* KetchIcon.otf in Resources */,
 				EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */,
 				EA1DA3811A8D189400433093 /* NewConnectionView.xib in Resources */,
 				EA409D411A8C75F600988B8B /* DockView.xib in Resources */,
-				EA341DA11A8C88CC00A6077B /* JSQMessagesLoadEarlierHeaderView.xib in Resources */,
 				EA1970141A83549300FEBA7F /* ProfileView.xib in Resources */,
 				EA3777741A966EC10055DE99 /* TransatTextLight.otf in Resources */,
 				EAE63D7A1AB3407D004A74E6 /* RootView.xib in Resources */,
@@ -809,7 +764,6 @@
 				EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */,
 				EA341D841A8C875500A6077B /* ChatView.xib in Resources */,
 				EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */,
-				EA341DA01A8C88CC00A6077B /* JSQMessagesCollectionViewCellOutgoing.xib in Resources */,
 				EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */,
 				EA8EE6CF1AAA0FD100E646EE /* ConnectionCell.xib in Resources */,
 				EA3777751A966EC10055DE99 /* TransatTextMedium.otf in Resources */,
@@ -818,11 +772,7 @@
 				EA163CFD1A85FAFE00C2589B /* EditPhotoCell.xib in Resources */,
 				EA3777721A966EC10055DE99 /* TransatTextBlack.otf in Resources */,
 				EA1970161A83549300FEBA7F /* SettingsView.xib in Resources */,
-				EA341D9E1A8C88CC00A6077B /* JSQMessagesAssets.bundle in Resources */,
-				EA341DA31A8C88CC00A6077B /* JSQMessagesTypingIndicatorFooterView.xib in Resources */,
-				EA341D9F1A8C88CC00A6077B /* JSQMessagesCollectionViewCellIncoming.xib in Resources */,
 				EA7004621ACF912A00D0E467 /* Signup.storyboard in Resources */,
-				EA341DA21A8C88CC00A6077B /* JSQMessagesToolbarContentView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1054,28 +1004,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		EA341D8E1A8C88CC00A6077B /* JSQMessages.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EA341D8F1A8C88CC00A6077B /* Base */,
-				EA341D901A8C88CC00A6077B /* de */,
-				EA341D911A8C88CC00A6077B /* en */,
-				EA341D921A8C88CC00A6077B /* es */,
-				EA341D931A8C88CC00A6077B /* fr */,
-				EA341D941A8C88CC00A6077B /* he */,
-				EA341D951A8C88CC00A6077B /* it */,
-				EA341D961A8C88CC00A6077B /* nl */,
-				EA341D971A8C88CC00A6077B /* pl */,
-				EA341D981A8C88CC00A6077B /* pt */,
-				EA341D991A8C88CC00A6077B /* ro */,
-				EA341D9A1A8C88CC00A6077B /* ru */,
-				EA341D9B1A8C88CC00A6077B /* tr */,
-				EA341D9C1A8C88CC00A6077B /* zh-Hans */,
-				EA341D9D1A8C88CC00A6077B /* zh-Hant */,
-			);
-			name = JSQMessages.strings;
-			sourceTree = "<group>";
-		};
 		EA7004641ACF912A00D0E467 /* Signup.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
