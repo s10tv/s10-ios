@@ -11,7 +11,7 @@ import ReactiveCocoa
 import SugarRecord
 import Meteor
 
-class MeteorService : NSObject {
+class MeteorService {
     private let meteor: METCoreDataDDPClient
     let subscriptions: (
         metadata: METSubscription,
@@ -60,8 +60,6 @@ class MeteorService : NSObject {
         meta = Metadata(collection: collections.metadata)
         
         SugarRecord.addStack(MeteorCDStack(meteor: meteor))
-        
-        super.init()
     }
     
     func startup() {
