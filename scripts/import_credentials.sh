@@ -38,6 +38,7 @@ cd "$PROFILE_DIR"
 
 for profileType in development distribution; do
     for teamId in $APPSTORE_TEAM_ID $ENTERPRISE_TEAM_ID; do
+        echo "Will download $profileType profiles from team with id $teamId"
         ios profiles:download:all --type $profileType --team $teamId -u $APPLE_ID -p $APPLE_ID_PASSWORD --trace
     done
 done
