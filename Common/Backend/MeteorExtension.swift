@@ -54,13 +54,9 @@ extension METDDPClient {
         return subject
     }
     
-    func loginWithFacebook(accessToken: String, expiresAt: NSDate) -> RACSignal {
+    func loginWithMethod(method: String, params: [AnyObject]?) -> RACSignal {
         let subject = RACReplaySubject()
-        let params = [["fb-access": [
-            "accessToken": accessToken,
-            "expireAt": expiresAt.timeIntervalSince1970
-        ]]]
-        loginWithMethodName("login", parameters: params) { (err) -> Void in
+        loginWithMethodName(method, parameters: params) { (err) -> Void in
             err != nil ? subject.sendError(err) : subject.sendCompleted()
         }
         return subject;

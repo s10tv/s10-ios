@@ -68,7 +68,12 @@ class MeteorService : NSObject {
     }
     
     func loginWithFacebook(#accessToken: String, expiresAt: NSDate) -> RACSignal {
-        return meteor.loginWithFacebook(accessToken, expiresAt: expiresAt)
+        return meteor.loginWithMethod("login", params: [[
+            "fb-access": [
+                "accessToken": accessToken,
+                "expireAt": expiresAt.timeIntervalSince1970
+            ]
+        ]])
     }
     
     func addPushToken(#appID: String, apsEnv: String, pushToken: NSData) -> RACSignal {
