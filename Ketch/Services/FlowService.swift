@@ -53,6 +53,21 @@ class FlowService : NSObject {
     // State Spec & Update
     
     private func computeCurrentState() -> State {
+        Log.verbose([
+            "Internal Flow State:\n",
+            "ms.account \(ms.account)\n",
+            "ms.loggingIn \(ms.loggingIn)\n",
+            "metadata.ready \(ms.subscriptions.metadata.ready)\n",
+            "currentUser.ready \(ms.subscriptions.currentUser.ready)\n",
+            "candidates.ready \(ms.subscriptions.candidates.ready)\n",
+            "connections.ready \(ms.subscriptions.connections.ready)\n",
+            "ms.meta.vetted \(ms.meta.vetted)\n",
+            "hasBeenWelcomed \(UD[.bHasBeenWelcomed].bool)\n",
+            "candidateCount \(ms.collections.candidates.allDocuments?.count)\n",
+            "waitingOnGameResult \(waitingOnGameResult)\n",
+            "newMatchToShow \(newMatchToShow)\n"
+        ].reduce("", +))
+
         // Startup Flow
         if ms.account == nil {
             return .Signup
@@ -83,7 +98,8 @@ class FlowService : NSObject {
         }
     }
     
-    private func updateState() {
+    private func updateState(function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) {
+        Log.debug("Update state called from \(file) - \(function):\(line)")
         dispatch_async(dispatch_get_main_queue()) {
             let lastState = self.currentState
             self.currentState = self.computeCurrentState()
