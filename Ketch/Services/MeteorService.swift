@@ -87,10 +87,17 @@ class MeteorService {
             "yes": yes.documentID!,
             "no": no.documentID!,
             "maybe": maybe.documentID!
-        ]]) {
+        ]], stub: {
             [yes, no, maybe].map { $0.delete() }
             return nil
-        }
+        }).map { result in
+            if let yesId = (result as? NSDictionary)?["yes"] as? String {
+                let connection = Connection.findByDocumentID(yesId)
+                assert(connection != nil, "Expect new connection to exist by now")
+                return connection
+            }
+            return nil
+        }.deliverOnMainThread()
     }
     
     func markAsRead(connection: Connection) -> RACSignal {

@@ -44,13 +44,28 @@ class FlowService : NSObject {
         return stateChanged.startWith(nil).deliverOnMainThread()
     }
     
-    // TODO: Doesn't really belong. Should figure out a better way to handle this
+    // Explicit API to update components of flow state
+    
+    func willSubmitGame() {
+        assert(NSThread.isMainThread(), "Must be called on main")
+        waitingOnGameResult = true
+        updateState()
+    }
+    
+    func didReceiveGameResult(newMatch: Connection?) {
+        assert(NSThread.isMainThread(), "Must be called on main")
+        waitingOnGameResult = false
+        newMatchToShow = newMatch
+        updateState()
+    }
+    
     func didShowNewMatch() {
+        assert(NSThread.isMainThread(), "Must be called on main")
         newMatchToShow = nil
         updateState()
     }
     
-    // State Spec & Update
+    // MARK: State Spec & Update
     
     private func computeCurrentState() -> State {
         Log.verbose([
@@ -99,11 +114,12 @@ class FlowService : NSObject {
     }
     
     private func updateState(function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) {
-        Log.debug("Update state called from \(file) - \(function):\(line)")
+        Log.debug("Update state called from \(file.lastPathComponent):\(function):\(line) mt=\(NSThread.isMainThread())")
         dispatch_async(dispatch_get_main_queue()) {
             let lastState = self.currentState
             self.currentState = self.computeCurrentState()
             if lastState != self.currentState {
+                Log.info("New state changed to \(self.currentState)")
                 self.stateChanged.sendNext(nil)
             }
         }
@@ -130,30 +146,6 @@ class FlowService : NSObject {
 // MARK: - METDDPClientDelegate
 
 extension FlowService : METDDPClientDelegate {
-    
-    // Keep updated on game result
-    
-    func client(client: METDDPClient!, willCallMethod methodInvocation: METMethodInvocation!) {
-        if methodInvocation.methodName == "candidates/submitChoices" {
-            waitingOnGameResult = true
-        }
-    }
-    
-    func client(client: METDDPClient!, didReceiveResult result: AnyObject!, error: NSError!, forMethod methodInvocation: METMethodInvocation!) {
-        if methodInvocation.methodName == "candidates/submitChoices" {
-            if let yesId = (result as? NSDictionary)?["yes"] as? String {
-                newMatchToShow = Connection.findByDocumentID(yesId)
-                assert(newMatchToShow != nil, "Expect new connection to exist by now")
-            }
-            waitingOnGameResult = methodInvocation.updatesDone
-        }
-    }
-    
-    func client(client: METDDPClient!, didReceiveUpdatesForMethod methodInvocation: METMethodInvocation!) {
-        if methodInvocation.methodName == "candidates/submitChoices" {
-            waitingOnGameResult = methodInvocation.resultReceived
-        }
-    }
     
     // General state updates
     

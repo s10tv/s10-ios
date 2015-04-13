@@ -215,7 +215,10 @@ class GameViewController : BaseViewController {
         let marry = chosenCandidate(.Yes)!
         let keep = chosenCandidate(.Maybe)!
         let skip = chosenCandidate(.No)!
-        Meteor.submitChoices(yes: marry, no: skip, maybe: keep)
+        Flow.willSubmitGame()
+        Meteor.submitChoices(yes: marry, no: skip, maybe: keep).subscribeNext { newMatch in
+            Flow.didReceiveGameResult(newMatch as? Connection)
+        }
         performSegue(.FinishGame)
     }
 }
