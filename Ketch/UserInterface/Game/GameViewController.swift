@@ -27,9 +27,8 @@ class SnapTarget {
     }
 }
 
-class GameViewController : BaseViewController {
-    @IBOutlet var navViews: [UIView]!
-    @IBOutlet weak var dockBadge: UIImageView!
+class GameViewController : HomeViewController {
+
     @IBOutlet var placeholders: [ChoicePlaceholder]!
     @IBOutlet var bubbles : [CandidateBubble]!
     @IBOutlet weak var helpLabel: DesignableLabel!
@@ -53,7 +52,7 @@ class GameViewController : BaseViewController {
     override func viewDidLoad() {
         assert(candidates.count == 3, "Must provide 3 candidates before loading GameVC")
         super.viewDidLoad()
-
+        
         // Setup bubble with candidates and event handling
         for (bubble, candidate) in Zip2(bubbles, candidates) {
             bubble.candidate = candidate
@@ -198,14 +197,6 @@ class GameViewController : BaseViewController {
             let pageVC = ProfileViewController.pagedController(users, initialPage: index)
             presentViewController(pageVC, animated: true)
         }
-    }
-    
-    override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
-        if edge == .Right {
-            performSegue(.GameToDock)
-            return true
-        }
-        return super.handleScreenEdgePan(edge)
     }
     
     @IBAction func submitChoices(sender: AnyObject) {

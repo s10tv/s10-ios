@@ -60,7 +60,7 @@ class Connection: _Connection {
     
     class func unreadCountSignal() -> RACSignal {
         let vm = FetchViewModel(frc: Connection.by(ConnectionAttributes.hasUnreadMessage.rawValue, value: true).frc())
-        let signal = vm.signal.map { ($0 as [Connection]).count }.startWith(0) // TODO: Figure out why this hack is needed. 
+        let signal = vm.signal.map { ($0 as [Connection]).count }
         objc_setAssociatedObject(signal, &SignalViewModelHandle, vm, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
         vm.performFetchIfNeeded()
         return signal

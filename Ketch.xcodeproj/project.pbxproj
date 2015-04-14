@@ -53,6 +53,7 @@
 		EA409D411A8C75F600988B8B /* DockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA409D3D1A8C75F600988B8B /* DockView.xib */; };
 		EA409D421A8C75F600988B8B /* DockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA409D3E1A8C75F600988B8B /* DockViewController.swift */; };
 		EA4A66571AA2D9BB0019D601 /* ChoicePlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A66561AA2D9BB0019D601 /* ChoicePlaceholder.swift */; };
+		EA520B881ADCBFE70047B789 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA520B871ADCBFE70047B789 /* HomeViewController.swift */; };
 		EA55F1381AD522C60042CBB2 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA55F1371AD522C60042CBB2 /* NotificationCenter.swift */; };
 		EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA5634DF1A7741FF00F62B52 /* Ketch.xcdatamodeld */; };
 		EA5FCE461AD6077A000D9B93 /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5FCE451AD6077A000D9B93 /* ProgressIndicator.swift */; };
@@ -183,6 +184,7 @@
 		EA409D3D1A8C75F600988B8B /* DockView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DockView.xib; sourceTree = "<group>"; };
 		EA409D3E1A8C75F600988B8B /* DockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DockViewController.swift; sourceTree = "<group>"; };
 		EA4A66561AA2D9BB0019D601 /* ChoicePlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoicePlaceholder.swift; sourceTree = "<group>"; };
+		EA520B871ADCBFE70047B789 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EA55F1371AD522C60042CBB2 /* NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		EA5634E01A7741FF00F62B52 /* Ketch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ketch.xcdatamodel; sourceTree = "<group>"; };
 		EA5FCE451AD6077A000D9B93 /* ProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
@@ -489,6 +491,7 @@
 				EA6650E31AA00A82001BA40C /* WaveView.swift */,
 				EA6650E51AA00A82001BA40C /* UserAvatarView.swift */,
 				EA72FB1A1AD1049A009F853F /* TransparentBackgroundView.swift */,
+				EA520B871ADCBFE70047B789 /* HomeViewController.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -969,6 +972,7 @@
 				EAD007FE1AD472B4003A260D /* InstantaneousTransition.swift in Sources */,
 				EA0FC93A1A87DE5800D62625 /* ReactiveCocoaExtension.swift in Sources */,
 				EA409D391A8C681A00988B8B /* FacebookExtension.swift in Sources */,
+				EA520B881ADCBFE70047B789 /* HomeViewController.swift in Sources */,
 				EA0FC9411A87DE5800D62625 /* ArrayViewModel.swift in Sources */,
 				EA163CFB1A85FAF000C2589B /* EditPhotoCell.swift in Sources */,
 				EA24C2761AD8F60900C40AAD /* _User.swift in Sources */,

@@ -32,8 +32,9 @@ class DockViewController : BaseViewController {
     }
     
     override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
+        Log.debug("Handding to edge \(edge) from dockVC")
         if edge == .Left {
-            navigationController?.popViewControllerAnimated(true)
+            performSegue(.DockToHome)
             return true
         }
         return super.handleScreenEdgePan(edge)

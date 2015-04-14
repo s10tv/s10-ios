@@ -1,16 +1,16 @@
 // Auto generated file from SBConstants - any changes may be lost
 
 public enum SegueIdentifier : String {
-    case BoatSailedToDock = "BoatSailedToDock"
     case BoatSailedToLoading = "BoatSailedToLoading"
     case BoatSailedToSettings = "BoatSailedToSettings"
     case ChatToProfile = "ChatToProfile"
     case DockToChat = "DockToChat"
+    case DockToHome = "DockToHome"
     case FacebookPermToNotificationsPerm = "FacebookPermToNotificationsPerm"
     case FinishGame = "FinishGame"
     case FinishWelcome = "FinishWelcome"
-    case GameToDock = "GameToDock"
     case GameToSettings = "GameToSettings"
+    case HomeToDock = "HomeToDock"
     case LoadingToGame = "LoadingToGame"
     case LoadingToNewConnection = "LoadingToNewConnection"
     case LoadingToNoGame = "LoadingToNoGame"

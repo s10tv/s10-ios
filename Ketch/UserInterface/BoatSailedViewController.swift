@@ -8,20 +8,12 @@
 
 import Foundation
 
-class BoatSailedViewController : BaseViewController {
+class BoatSailedViewController : HomeViewController {
     
     override func stateDidUpdateWhileViewActive(state: FlowService.State) {
         if state != .BoatSailed {
             self.performSegue(.BoatSailedToLoading)
         }
-    }
-    
-    override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
-        if edge == .Right {
-            performSegue(.BoatSailedToDock)
-            return true
-        }
-        return super.handleScreenEdgePan(edge)
     }
     
     @IBAction func nominateFriend(sender: AnyObject) {

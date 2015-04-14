@@ -61,7 +61,7 @@ SAILED FOR TODAY.</string>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="T52-Uh-0pS" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="195" y="309" width="211" height="46"/>
+                                <rect key="frame" x="195.5" y="309" width="210.5" height="46"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Check in for another game tomorrow at 3:33pm">
                                         <attributes>
@@ -112,9 +112,22 @@ SAILED FOR TODAY.</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="YUi-xK-iJg" kind="show" identifier="BoatSailedToDock" id="tnG-4w-VC3"/>
+                                    <segue destination="YUi-xK-iJg" kind="show" identifier="HomeToDock" id="tnG-4w-VC3"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="o7D-3u-wIb" userLabel="New Indicator">
+                                <rect key="frame" x="568" y="16" width="12" height="12"/>
+                                <color key="backgroundColor" red="0.950525701" green="0.36602467300000002" blue="0.44692194460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="o7D-3u-wIb" secondAttribute="height" multiplier="1:1" id="7Ix-0d-kZT"/>
+                                    <constraint firstAttribute="width" constant="12" id="ysF-e8-JM7"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PAq-tM-x1m" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="175" y="446" width="250" height="54"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -152,17 +165,23 @@ SAILED FOR TODAY.</string>
                             <constraint firstItem="eR7-L5-Jvf" firstAttribute="top" secondItem="t9l-7o-Rtd" secondAttribute="bottom" id="BHO-CQ-Ms8"/>
                             <constraint firstItem="PAq-tM-x1m" firstAttribute="top" secondItem="4gQ-Xc-tOt" secondAttribute="bottom" constant="16" id="FSd-lz-MEQ"/>
                             <constraint firstItem="p6f-fF-OPq" firstAttribute="leading" secondItem="DTs-qg-EJB" secondAttribute="leading" id="JQZ-6N-D6M"/>
+                            <constraint firstItem="o7D-3u-wIb" firstAttribute="top" secondItem="eR7-L5-Jvf" secondAttribute="top" constant="16" id="OsX-eO-ePy"/>
                             <constraint firstAttribute="trailing" secondItem="eR7-L5-Jvf" secondAttribute="trailing" id="Qyc-Ag-RWg"/>
                             <constraint firstAttribute="centerX" secondItem="C8W-mx-D3U" secondAttribute="centerX" id="VEw-wx-gf0"/>
                             <constraint firstItem="4gQ-Xc-tOt" firstAttribute="top" relation="greaterThanOrEqual" secondItem="T52-Uh-0pS" secondAttribute="bottom" constant="40" id="WFh-dY-tRQ"/>
                             <constraint firstItem="p6f-fF-OPq" firstAttribute="top" secondItem="t9l-7o-Rtd" secondAttribute="bottom" id="YQj-48-4VY"/>
                             <constraint firstItem="T52-Uh-0pS" firstAttribute="top" secondItem="C8W-mx-D3U" secondAttribute="bottom" constant="16" id="akr-kQ-XSK"/>
                             <constraint firstItem="PAq-tM-x1m" firstAttribute="centerX" secondItem="4gQ-Xc-tOt" secondAttribute="centerX" id="dcp-ON-IHn"/>
+                            <constraint firstItem="eR7-L5-Jvf" firstAttribute="trailing" secondItem="o7D-3u-wIb" secondAttribute="trailing" constant="20" id="kh9-A1-DNY"/>
                             <constraint firstItem="C8W-mx-D3U" firstAttribute="top" secondItem="DTs-qg-EJB" secondAttribute="top" priority="749" constant="228" id="sUA-7K-vtW"/>
                             <constraint firstAttribute="centerX" secondItem="PAq-tM-x1m" secondAttribute="centerX" id="uNj-u2-cKE"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="dockBadge" destination="o7D-3u-wIb" id="6m9-XA-XqM"/>
+                        <outletCollection property="navViews" destination="p6f-fF-OPq" collectionClass="NSMutableArray" id="jDL-Pb-yuo"/>
+                        <outletCollection property="navViews" destination="eR7-L5-Jvf" collectionClass="NSMutableArray" id="jn3-KX-u1u"/>
+                        <outletCollection property="navViews" destination="o7D-3u-wIb" collectionClass="NSMutableArray" id="2oH-b1-4EF"/>
                         <segue destination="6h3-um-0ie" kind="unwind" identifier="BoatSailedToLoading" unwindAction="unwindToLoading:" id="krI-yF-vcJ"/>
                     </connections>
                 </viewController>
@@ -222,16 +241,21 @@ SAILED FOR TODAY.</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="YUi-xK-iJg" kind="show" identifier="GameToDock" id="q7i-Iz-xMU"/>
+                                    <segue destination="YUi-xK-iJg" kind="show" identifier="HomeToDock" id="q7i-Iz-xMU"/>
                                 </connections>
                             </button>
-                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rx1-xy-YKJ" userLabel="New Indicator">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rx1-xy-YKJ" userLabel="New Indicator">
                                 <rect key="frame" x="568" y="16" width="12" height="12"/>
                                 <color key="backgroundColor" red="0.950525701" green="0.36602467300000002" blue="0.44692194460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="12" id="j92-NY-hEn"/>
                                     <constraint firstAttribute="width" secondItem="Rx1-xy-YKJ" secondAttribute="height" multiplier="1:1" id="usv-e0-fBa"/>
                                 </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-bucket-keep" translatesAutoresizingMaskIntoConstraints="NO" id="ZdL-6o-ahC" userLabel="Maybe Placeholder" customClass="ChoicePlaceholder" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="472" y="206" width="100" height="113"/>
@@ -423,9 +447,11 @@ SAILED FOR TODAY.</string>
                 <viewController storyboardIdentifier="Dock" automaticallyAdjustsScrollViewInsets="NO" id="YUi-xK-iJg" customClass="DockViewController" sceneMemberID="viewController">
                     <connections>
                         <segue destination="rRd-ZO-60U" kind="show" identifier="DockToChat" id="2kk-V8-7uA"/>
+                        <segue destination="hcx-2H-U1a" kind="unwind" identifier="DockToHome" unwindAction="unwindToHome:" id="s9H-dn-g64"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y2Q-Pb-RU0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="hcx-2H-U1a" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1592" y="1139"/>
         </scene>
@@ -615,9 +641,9 @@ SAILED FOR TODAY.</string>
         <image name="game-bucket-skip" width="128" height="144"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="6ym-FC-Y97"/>
+        <segue reference="2kk-V8-7uA"/>
         <segue reference="tnG-4w-VC3"/>
-        <segue reference="LKi-wK-Agw"/>
+        <segue reference="6ym-FC-Y97"/>
         <segue reference="T9Y-bJ-q8s"/>
     </inferredMetricsTieBreakers>
 </document>
