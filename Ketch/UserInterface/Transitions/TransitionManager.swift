@@ -10,36 +10,15 @@ import Foundation
 
 class TransitionManager : NSObject, UINavigationControllerDelegate {
     var currentEdgePan : UIScreenEdgePanGestureRecognizer?
-    var disableAllTransitions = false
     
     init(navigationController: UINavigationController?) {
         super.init()
         navigationController?.delegate = self
     }
     
-    func navigationController(navigationController: UINavigationController, didShowViewController viewController: UIViewController, animated: Bool) {
-        if let vc = viewController as? BaseViewController {
-//            rootView.ketchIcon.hidden = vc.hideKetchBoat
-            // TODO: This doesn't seem to work, maybe we need transitioningCoordinator?
-//            if !animated {
-//                rootView.waterlineLocation = vc.waterlineLocation
-//            }
-        }
-    }
-    
     func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
-        
-        if disableAllTransitions {
-            return InstantaneousTransition(fromVC: fromVC, toVC: toVC)
-        }
 
         switch (fromVC, toVC) {
-            
-        case let (fromVC as LoadingViewController, toVC as SignupViewController):
-            return SignupTransition(loadingVC: fromVC, signupVC: toVC)
-            
-        case let (fromVC as LoadingViewController, toVC as WaitlistViewController):
-            return WaitlistTransition(loadingVC: fromVC, waitlistVC: toVC)
             
         case let (fromVC as LoadingViewController, toVC as GameViewController):
             return NewGameTransition(loadingVC: fromVC, gameVC: toVC, operation: operation)
