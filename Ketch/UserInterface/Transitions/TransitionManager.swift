@@ -49,10 +49,10 @@ class TransitionManager : NSObject, UINavigationControllerDelegate {
         case let (fromVC as GameViewController, toVC as LoadingViewController):
             return NewGameTransition(rootView, loadingVC: toVC, gameVC: fromVC, operation: operation)
 
-        case (_ as GameViewController, _ as DockViewController):
+        case (_ as HomeViewController, _ as DockViewController):
             return ScrollTransition(fromVC: fromVC, toVC: toVC, direction: .RightToLeft, panGesture: currentEdgePan)
             
-        case (_ as DockViewController, _ as GameViewController):
+        case (_ as DockViewController, _ as HomeViewController):
             return ScrollTransition(fromVC: fromVC, toVC: toVC, direction: .LeftToRight, panGesture: currentEdgePan)
 
         case (_ as LoadingViewController, _ as NewConnectionViewController):
