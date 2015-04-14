@@ -68,6 +68,7 @@
 		EA755A361ADDA591004B4A1D /* PulsingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA755A351ADDA591004B4A1D /* PulsingView.swift */; };
 		EA755A3A1ADDA5CB004B4A1D /* SandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA755A381ADDA5CB004B4A1D /* SandView.swift */; };
 		EA755A3B1ADDA5CB004B4A1D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA755A391ADDA5CB004B4A1D /* SettingsViewController.swift */; };
+		EA755A3D1ADDA7DE004B4A1D /* KetchBoatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA755A3C1ADDA7DE004B4A1D /* KetchBoatView.swift */; };
 		EA7AA3651AA25D21003383BE /* ResourceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3641AA25D21003383BE /* ResourceExtension.swift */; };
 		EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3681AA26597003383BE /* SBConstants.swift */; };
 		EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3691AA26597003383BE /* StyleKit.swift */; };
@@ -190,6 +191,7 @@
 		EA755A351ADDA591004B4A1D /* PulsingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulsingView.swift; sourceTree = "<group>"; };
 		EA755A381ADDA5CB004B4A1D /* SandView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandView.swift; sourceTree = "<group>"; };
 		EA755A391ADDA5CB004B4A1D /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		EA755A3C1ADDA7DE004B4A1D /* KetchBoatView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KetchBoatView.swift; sourceTree = "<group>"; };
 		EA7AA3641AA25D21003383BE /* ResourceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceExtension.swift; sourceTree = "<group>"; };
 		EA7AA3681AA26597003383BE /* SBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstants.swift; sourceTree = "<group>"; };
 		EA7AA3691AA26597003383BE /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
@@ -440,6 +442,7 @@
 				EA6E56511AD1FDCE00B12F2B /* RootTransition.swift */,
 				EA6650E31AA00A82001BA40C /* WaveView.swift */,
 				EA6650E51AA00A82001BA40C /* UserAvatarView.swift */,
+				EA755A3C1ADDA7DE004B4A1D /* KetchBoatView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -849,6 +852,7 @@
 				EA72FB2A1AD1B7D5009F853F /* Transition.swift in Sources */,
 				EACF21641AD707C800938CD0 /* WelcomeViewController.swift in Sources */,
 				EA1970151A83549300FEBA7F /* ProfileViewController.swift in Sources */,
+				EA755A3D1ADDA7DE004B4A1D /* KetchBoatView.swift in Sources */,
 				EAF195CF1A827FAD00A2F103 /* Ketch-Bridging.m in Sources */,
 				EA409D421A8C75F600988B8B /* DockViewController.swift in Sources */,
 				EA7AA3651AA25D21003383BE /* ResourceExtension.swift in Sources */,
