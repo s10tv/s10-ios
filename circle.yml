@@ -8,8 +8,8 @@ machine:
 
 dependencies:
   pre:
+    - sudo gem uninstall highline commander --ignore-dependencies -x
     - sudo gem install cocoapods -v $(var=$(tail -1 Podfile.lock); echo ${var##COCOAPODS:})
-    - sudo gem uninstall highline commander --ignore-dependencies
     - sudo gem install cupertino shenzhen
     - ./scripts/import_credentials.sh
   override:
