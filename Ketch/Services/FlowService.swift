@@ -90,9 +90,8 @@ class FlowService : NSObject {
             !ms.subscriptions.metadata.ready ||
             !ms.subscriptions.currentUser.ready ||
             !ms.subscriptions.candidates.ready ||
-            !ms.subscriptions.connections.ready) {
-            // BUG ALERT: Prior to user login, metadata collection would get sent down without vetted
-            // and then subscription would be considered ready. How can we solve it?
+            !ms.subscriptions.connections.ready ||
+            ms.meta.vetted == nil) {
             return .Loading
         }
         // Onboarding Flow
