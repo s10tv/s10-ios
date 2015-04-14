@@ -25,9 +25,9 @@ class SettingsViewController : BaseViewController {
         if let user = User.currentUser() {
             avatarView.user = user
             avatarView.whenTapEnded { [weak self, weak user] in
-                let profileVC = ProfileViewController()
+                let profileVC = self!.makeViewController(.Profile) as ProfileViewController
                 profileVC.user = user
-                self?.presentViewController(profileVC, animated: true)
+                self!.presentViewController(profileVC, animated: true)
             }
 
             nameLabel.text = user.displayName
