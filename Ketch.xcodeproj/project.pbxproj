@@ -58,7 +58,6 @@
 		EA6E56521AD1FDCE00B12F2B /* RootTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E56511AD1FDCE00B12F2B /* RootTransition.swift */; };
 		EA6E56541AD2152500B12F2B /* BoatSailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E56531AD2152500B12F2B /* BoatSailedViewController.swift */; };
 		EA7004621ACF912A00D0E467 /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA7004641ACF912A00D0E467 /* Signup.storyboard */; };
-		EA72FB1B1AD1049A009F853F /* TransparentBackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FB1A1AD1049A009F853F /* TransparentBackgroundView.swift */; };
 		EA72FB1D1AD1805B009F853F /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FB1C1AD1805B009F853F /* LoadingViewController.swift */; };
 		EA72FB1F1AD180F1009F853F /* NewGameTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FB1E1AD180F1009F853F /* NewGameTransition.swift */; };
 		EA72FB291AD1B7D5009F853F /* Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FB271AD1B7D5009F853F /* Segue.swift */; };
@@ -181,7 +180,6 @@
 		EA6E56511AD1FDCE00B12F2B /* RootTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTransition.swift; sourceTree = "<group>"; };
 		EA6E56531AD2152500B12F2B /* BoatSailedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoatSailedViewController.swift; sourceTree = "<group>"; };
 		EA7004631ACF912A00D0E467 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Signup.storyboard; sourceTree = "<group>"; };
-		EA72FB1A1AD1049A009F853F /* TransparentBackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransparentBackgroundView.swift; sourceTree = "<group>"; };
 		EA72FB1C1AD1805B009F853F /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		EA72FB1E1AD180F1009F853F /* NewGameTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewGameTransition.swift; sourceTree = "<group>"; };
 		EA72FB271AD1B7D5009F853F /* Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segue.swift; sourceTree = "<group>"; };
@@ -442,7 +440,6 @@
 				EA6E56511AD1FDCE00B12F2B /* RootTransition.swift */,
 				EA6650E31AA00A82001BA40C /* WaveView.swift */,
 				EA6650E51AA00A82001BA40C /* UserAvatarView.swift */,
-				EA72FB1A1AD1049A009F853F /* TransparentBackgroundView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -894,7 +891,6 @@
 				EACF216A1AD7255100938CD0 /* WaitlistViewController.swift in Sources */,
 				EA6E56521AD1FDCE00B12F2B /* RootTransition.swift in Sources */,
 				EA31049B1A99C3850069D6AD /* KetchIcon.swift in Sources */,
-				EA72FB1B1AD1049A009F853F /* TransparentBackgroundView.swift in Sources */,
 				EA24C2741AD8F60900C40AAD /* _Connection.swift in Sources */,
 				EA5FCE481AD62C1F000D9B93 /* GameTutorialController.swift in Sources */,
 				EADDC6B11AD493710023DA0A /* FlowService.swift in Sources */,
