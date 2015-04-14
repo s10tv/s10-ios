@@ -75,6 +75,7 @@ class ChatViewController : JSQMessagesViewController {
         layout.outgoingAvatarViewSize = CGSizeZero
         layout.messageBubbleFont = UIFont(.transatTextLight, size: 17)
         layout.springinessEnabled = true
+        layout.messageBubbleTextViewTextContainerInsets = UIEdgeInsets(top: 11, left: 14, bottom: 3, right: 14)
     }
     
     override func viewDidAppear(animated: Bool) {
