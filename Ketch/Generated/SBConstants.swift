@@ -2,15 +2,14 @@
 
 public enum SegueIdentifier : String {
     case BoatSailedToLoading = "BoatSailedToLoading"
-    case BoatSailedToSettings = "BoatSailedToSettings"
     case ChatToProfile = "ChatToProfile"
     case DockToChat = "DockToChat"
     case DockToHome = "DockToHome"
     case FacebookPermToNotificationsPerm = "FacebookPermToNotificationsPerm"
     case FinishGame = "FinishGame"
     case FinishWelcome = "FinishWelcome"
-    case GameToSettings = "GameToSettings"
     case HomeToDock = "HomeToDock"
+    case HomeToSettings = "HomeToSettings"
     case LoadingToGame = "LoadingToGame"
     case LoadingToNewConnection = "LoadingToNewConnection"
     case LoadingToNoGame = "LoadingToNoGame"

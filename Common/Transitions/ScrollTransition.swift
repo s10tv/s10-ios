@@ -16,10 +16,7 @@ class ScrollTransition : ViewControllerTransition {
     
     init(fromVC: UIViewController, toVC: UIViewController, direction: Direction, panGesture: UIPanGestureRecognizer?) {
         self.direction = direction
-        super.init(fromVC: fromVC, toVC: toVC, duration: 0.3)
-        if let panGesture = panGesture {
-            interactor = PanInteractor(panGesture)
-        }
+        super.init(fromVC: fromVC, toVC: toVC, duration: 0.3, interactor: panGesture.map { PanInteractor($0) })
     }
     
     // TODO: What if we add animation to CALayer, will interactive animation break?

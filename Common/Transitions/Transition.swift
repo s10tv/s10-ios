@@ -27,10 +27,11 @@ class ViewControllerTransition : NSObject {
         return context.viewForKey(UITransitionContextToViewKey)
     }
     
-    init(fromVC: UIViewController, toVC: UIViewController, duration: NSTimeInterval = 0.6) {
+    init(fromVC: UIViewController, toVC: UIViewController, duration: NSTimeInterval = 0.6, interactor: UIViewControllerInteractiveTransitioning? = nil) {
         self.fromVC = fromVC
         self.toVC = toVC
         self.duration = duration
+        self.interactor = interactor
     }
     
     // To be overwritten by subclass

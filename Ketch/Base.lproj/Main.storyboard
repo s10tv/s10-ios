@@ -126,7 +126,7 @@ SAILED FOR TODAY.</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Vhy-hq-gwn" kind="show" identifier="BoatSailedToSettings" id="6ym-FC-Y97"/>
+                                    <segue destination="Vhy-hq-gwn" kind="show" identifier="HomeToSettings" id="6ym-FC-Y97"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eR7-L5-Jvf" userLabel="Dock">
@@ -413,7 +413,7 @@ SAILED FOR TODAY.</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Vhy-hq-gwn" kind="show" identifier="GameToSettings" id="nCf-mq-8Rt"/>
+                                    <segue destination="Vhy-hq-gwn" kind="show" identifier="HomeToSettings" id="nCf-mq-8Rt"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SMl-V4-Z7A" userLabel="Dock">
@@ -1385,9 +1385,9 @@ SAILED FOR TODAY.</string>
         <image name="settings-icon-notepad" width="21" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="9mb-SI-KHc"/>
-        <segue reference="nCf-mq-8Rt"/>
         <segue reference="q7i-Iz-xMU"/>
+        <segue reference="6ym-FC-Y97"/>
+        <segue reference="9mb-SI-KHc"/>
         <segue reference="LKi-wK-Agw"/>
     </inferredMetricsTieBreakers>
 </document>
