@@ -7,15 +7,19 @@
 //
 
 import Foundation
+import CoreData
 
 class HomeViewController : BaseViewController {
 
     @IBOutlet var navViews: [UIView]!
     @IBOutlet weak var dockBadge: UIImageView!
+    let unreadConnections = Connection.unread().frc()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        RAC(dockBadge, "hidden") <~ Connection.unreadCountSignal().map { ($0 as Int) == 0 }
+        unreadConnections.delegate = self
+        unreadConnections.fetchObjects()
+        controllerDidChangeContent(unreadConnections) // Force view update
     }
     
     override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
@@ -32,4 +36,10 @@ class HomeViewController : BaseViewController {
     @IBAction func unwindToHome(sender: UIStoryboardSegue) {
     }
     
+}
+
+extension HomeViewController : NSFetchedResultsControllerDelegate {
+    func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        dockBadge.hidden = controller.fetchedObjects?.count == 0
+    }
 }

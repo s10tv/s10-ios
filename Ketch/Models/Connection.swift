@@ -7,7 +7,7 @@
 //
 
 import CoreData
-import ObjectiveC
+import SugarRecord
 import ReactiveCocoa
 
 private var SignalViewModelHandle: UInt8 = 0
@@ -54,15 +54,8 @@ class Connection: _Connection {
         return Meteor.mainContext.objectInCollection("connections", documentID: documentID) as? Connection
     }
     
-    class func unreadCount() -> Int {
-        return Connection.by(ConnectionAttributes.hasUnreadMessage.rawValue, value: true).count()
+    class func unread() -> SugarRecordFinder {
+        return Connection.by(ConnectionAttributes.hasUnreadMessage.rawValue, value: true)
     }
     
-    class func unreadCountSignal() -> RACSignal {
-        let vm = FetchViewModel(frc: Connection.by(ConnectionAttributes.hasUnreadMessage.rawValue, value: true).frc())
-        let signal = vm.signal.map { ($0 as? NSArray)?.count ?? 0 } // Somewhat hacky... Cast to NSArray
-        objc_setAssociatedObject(signal, &SignalViewModelHandle, vm, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
-        vm.performFetchIfNeeded()
-        return signal
-    }
 }
