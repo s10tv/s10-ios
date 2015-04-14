@@ -26,11 +26,6 @@ class ProfileViewController : BaseViewController {
     
     var user : User!
     
-    convenience init(user: User) {
-        self.init()
-        self.user = user
-    }
-    
     override func viewDidLoad() {
         assert(user != nil, "Must set user before attempt to loading ProfileVC")
         super.viewDidLoad()
@@ -154,10 +149,14 @@ extension ProfileViewController : UIScrollViewDelegate {
 // MARK: - Showing multiple users horizontally paged
 
 extension ProfileViewController {
-    class func pagedController(users: [User], initialPage: Int = 0) -> PageViewController {
+    class func pagedController(users: [User], initialPage: Int = 0, factory: () -> ProfileViewController) -> PageViewController {
         assert(initialPage >= 0 && initialPage < users.count, "Initial page range invalid")
         let pageVC = PageViewController()
-        pageVC.viewControllers = map(users) { ProfileViewController(user: $0) }
+        pageVC.viewControllers = map(users) {
+            let profileVC = factory()
+            profileVC.user = $0
+            return profileVC
+        }
         pageVC.scrollTo(page: initialPage, animated: false)
         return pageVC
     }

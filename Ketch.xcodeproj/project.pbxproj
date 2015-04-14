@@ -26,12 +26,9 @@
 		EA1970071A83549300FEBA7F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA196FEE1A83549300FEBA7F /* ChatViewController.swift */; };
 		EA1970121A83549300FEBA7F /* EditProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA196FFC1A83549300FEBA7F /* EditProfileView.xib */; };
 		EA1970131A83549300FEBA7F /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA196FFD1A83549300FEBA7F /* EditProfileViewController.swift */; };
-		EA1970141A83549300FEBA7F /* ProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA196FFE1A83549300FEBA7F /* ProfileView.xib */; };
 		EA1970151A83549300FEBA7F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA196FFF1A83549300FEBA7F /* ProfileViewController.swift */; };
-		EA1970161A83549300FEBA7F /* SettingsView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA1970011A83549300FEBA7F /* SettingsView.xib */; };
 		EA1970171A83549300FEBA7F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1970021A83549300FEBA7F /* SettingsViewController.swift */; };
 		EA1DA37F1A8D188B00433093 /* NewConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1DA37E1A8D188B00433093 /* NewConnectionViewController.swift */; };
-		EA1DA3811A8D189400433093 /* NewConnectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA1DA3801A8D189400433093 /* NewConnectionView.xib */; };
 		EA24C26D1AD8F52000C40AAD /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA24C26C1AD8F52000C40AAD /* Metadata.swift */; };
 		EA24C2731AD8F60900C40AAD /* _Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA24C26F1AD8F60900C40AAD /* _Candidate.swift */; };
 		EA24C2741AD8F60900C40AAD /* _Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA24C2701AD8F60900C40AAD /* _Connection.swift */; };
@@ -156,12 +153,9 @@
 		EA196FEE1A83549300FEBA7F /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		EA196FFC1A83549300FEBA7F /* EditProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileView.xib; sourceTree = "<group>"; };
 		EA196FFD1A83549300FEBA7F /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
-		EA196FFE1A83549300FEBA7F /* ProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileView.xib; sourceTree = "<group>"; };
 		EA196FFF1A83549300FEBA7F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		EA1970011A83549300FEBA7F /* SettingsView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SettingsView.xib; sourceTree = "<group>"; };
 		EA1970021A83549300FEBA7F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EA1DA37E1A8D188B00433093 /* NewConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewConnectionViewController.swift; sourceTree = "<group>"; };
-		EA1DA3801A8D189400433093 /* NewConnectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NewConnectionView.xib; sourceTree = "<group>"; };
 		EA24C26C1AD8F52000C40AAD /* Metadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
 		EA24C26F1AD8F60900C40AAD /* _Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Candidate.swift; sourceTree = "<group>"; };
 		EA24C2701AD8F60900C40AAD /* _Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Connection.swift; sourceTree = "<group>"; };
@@ -381,7 +375,6 @@
 				EA163CFA1A85FAF000C2589B /* EditPhotoCell.swift */,
 				EA196FFC1A83549300FEBA7F /* EditProfileView.xib */,
 				EA196FFD1A83549300FEBA7F /* EditProfileViewController.swift */,
-				EA196FFE1A83549300FEBA7F /* ProfileView.xib */,
 				EA196FFF1A83549300FEBA7F /* ProfileViewController.swift */,
 				EAF3A4BE1ACA2191001C2943 /* ProfileInfoCell.xib */,
 				EAF3A4C01ACA22C2001C2943 /* ProfileInfoCell.swift */,
@@ -393,7 +386,6 @@
 		EA1970001A83549300FEBA7F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				EA1970011A83549300FEBA7F /* SettingsView.xib */,
 				EA1970021A83549300FEBA7F /* SettingsViewController.swift */,
 			);
 			path = Settings;
@@ -403,7 +395,6 @@
 			isa = PBXGroup;
 			children = (
 				EA1DA37E1A8D188B00433093 /* NewConnectionViewController.swift */,
-				EA1DA3801A8D189400433093 /* NewConnectionView.xib */,
 			);
 			path = NewConnection;
 			sourceTree = "<group>";
@@ -749,8 +740,6 @@
 				EA62A87E1AD98B3C00B5D3D9 /* Images.xcassets in Resources */,
 				EA02CCF21A96ED03004C3009 /* KetchIcon.otf in Resources */,
 				EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */,
-				EA1DA3811A8D189400433093 /* NewConnectionView.xib in Resources */,
-				EA1970141A83549300FEBA7F /* ProfileView.xib in Resources */,
 				EA3777741A966EC10055DE99 /* TransatTextLight.otf in Resources */,
 				EAE63D7A1AB3407D004A74E6 /* RootView.xib in Resources */,
 				EAF3A4BF1ACA2191001C2943 /* ProfileInfoCell.xib in Resources */,
@@ -764,7 +753,6 @@
 				EA3777731A966EC10055DE99 /* TransatTextBold.otf in Resources */,
 				EA163CFD1A85FAFE00C2589B /* EditPhotoCell.xib in Resources */,
 				EA3777721A966EC10055DE99 /* TransatTextBlack.otf in Resources */,
-				EA1970161A83549300FEBA7F /* SettingsView.xib in Resources */,
 				EA7004621ACF912A00D0E467 /* Signup.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

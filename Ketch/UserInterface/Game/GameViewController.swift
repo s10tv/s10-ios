@@ -194,7 +194,9 @@ class GameViewController : HomeViewController {
         if tap.state == .Ended {
             let users = candidates.map { $0.user! }
             let index = find(candidates, (tap.view as CandidateBubble).candidate!)!
-            let pageVC = ProfileViewController.pagedController(users, initialPage: index)
+            let pageVC = ProfileViewController.pagedController(users, initialPage: index) {
+                self.makeViewController(.Profile) as ProfileViewController
+            }
             presentViewController(pageVC, animated: true)
         }
     }
