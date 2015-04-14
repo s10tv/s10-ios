@@ -85,7 +85,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/bugfender/BugfenderSDK-iOS.git
     :tag: 0.3.2
   Meteor:
-    :commit: 7e6f2db7175ce2aaa9659dad112cd420ec7af178
+    :commit: 8b394dbbca635a345780ae779fbea2cdd1c4e171
     :git: https://github.com/tonyxiao/meteor-ios
   SugarRecord:
     :commit: ecf73acf39e6d2a595f912470e1a54050e0e3eb4

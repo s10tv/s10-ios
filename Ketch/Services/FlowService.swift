@@ -165,6 +165,8 @@ extension FlowService : METDDPClientDelegate {
         updateState()
     }
     func client(client: METDDPClient!, didReceiveReadyForSubscription subscription: METSubscription!) {
+        assert(subscription.ready, "Subscription must be ready at this point")
+        Log.debug("Subscription \(subscription.name)[\(subscription.identifier)] received ready=\(subscription.ready)")
         updateState()
     }
     func client(client: METDDPClient!, didReceiveError error: NSError!, forSubscription subscription: METSubscription!) {
