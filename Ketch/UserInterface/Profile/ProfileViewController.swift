@@ -11,7 +11,6 @@ import SwipeView
 import SDWebImage
 import Cartography
 
-@objc(ProfileViewController)
 class ProfileViewController : BaseViewController {
 
     @IBOutlet weak var backButton: UIButton!

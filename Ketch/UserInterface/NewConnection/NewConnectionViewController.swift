@@ -8,7 +8,6 @@
 
 import Foundation
 
-@objc(NewConnectionViewController)
 class NewConnectionViewController : BaseViewController {
     
     var connection: Connection!

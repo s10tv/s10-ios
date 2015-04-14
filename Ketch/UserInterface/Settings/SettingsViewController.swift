@@ -8,7 +8,6 @@
 
 import UIKit
 
-@objc(SettingsViewController)
 class SettingsViewController : BaseViewController {
 
     @IBOutlet weak var avatarView: UserAvatarView!

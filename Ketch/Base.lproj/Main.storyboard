@@ -226,7 +226,7 @@ SAILED FOR TODAY.</string>
         <!--New Connection View Controller-->
         <scene sceneID="Lfd-Nm-nb7">
             <objects>
-                <viewController storyboardIdentifier="NewConnection" id="yMw-7P-Sbk" customClass="NewConnectionViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="NewConnection" id="yMw-7P-Sbk" customClass="NewConnectionViewController" customModule="Ketch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Vib-Y0-2Xd"/>
                         <viewControllerLayoutGuide type="bottom" id="pCK-FJ-n1S"/>
@@ -839,7 +839,7 @@ SAILED FOR TODAY.</string>
         <!--Profile View Controller-->
         <scene sceneID="mYf-IJ-xkN">
             <objects>
-                <viewController storyboardIdentifier="Profile" id="G4Y-Ae-Xgh" customClass="ProfileViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Profile" id="G4Y-Ae-Xgh" customClass="ProfileViewController" customModule="Ketch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Hre-h7-eop"/>
                         <viewControllerLayoutGuide type="bottom" id="hcs-CT-TKC"/>
@@ -1002,7 +1002,7 @@ SAILED FOR TODAY.</string>
         <!--Settings View Controller-->
         <scene sceneID="6E1-Ce-dgY">
             <objects>
-                <viewController storyboardIdentifier="Settings" id="Vhy-hq-gwn" customClass="SettingsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Settings" id="Vhy-hq-gwn" customClass="SettingsViewController" customModule="Ketch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Wpc-0d-ZfE"/>
                         <viewControllerLayoutGuide type="bottom" id="8Am-Ou-agh"/>
