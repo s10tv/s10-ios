@@ -9,7 +9,9 @@ machine:
 dependencies:
   pre:
     - sudo gem install cocoapods -v $(var=$(tail -1 Podfile.lock); echo ${var##COCOAPODS:})
-    - sudo gem install shenzhen cupertino
+     # Pin Shenzhen version until issue with highligh version incompatibility is resolved
+    - sudo gem install shenzhen -v 0.13.1
+    - sudo gem install cupertino
     - ./scripts/import_credentials.sh
   override:
     - pod update Meteor
