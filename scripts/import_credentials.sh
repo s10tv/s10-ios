@@ -35,12 +35,10 @@ security import "keys/enterprise_distribution.p12" -k $KEYCHAIN_PATH -T $CODE_SI
 
 mkdir -p "$PROFILE_DIR"
 
-# Temporary fix for cupertino gem being broken by apple updates
-cp profiles/*.* "$PROFILE_DIR"
-# cd "$PROFILE_DIR"
-# for profileType in development distribution; do
-#     for teamId in $APPSTORE_TEAM_ID $ENTERPRISE_TEAM_ID; do
-#         echo "Will download $profileType profiles from team with id $teamId"
-#         ios profiles:download:all --type $profileType --team $teamId -u $APPLE_ID -p $APPLE_ID_PASSWORD --trace
-#     done
-# done
+cd "$PROFILE_DIR"
+for profileType in development distribution; do
+    for teamId in $APPSTORE_TEAM_ID $ENTERPRISE_TEAM_ID; do
+        echo "Will download $profileType profiles from team with id $teamId"
+        ios profiles:download:all --type $profileType --team $teamId -u $APPLE_ID -p $APPLE_ID_PASSWORD --trace
+    done
+done
