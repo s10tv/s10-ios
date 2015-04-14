@@ -71,13 +71,14 @@ class GameTutorialController {
         switch currentStep {
         case 1:
             showHelpText(LS(R.Strings.threeMatchesPrompt))
+            dropBubbles(delay: 1.5)
+            prompt.startPulsing(delay: 3.5)
         case 2:
-            dropBubbles()
-        case 3:
             showHelpText(LS(R.Strings.threeChoicesPrompt))
-        case 4:
-            popPlaceholders()
-        case 5:
+            popPlaceholders(delay: 1)
+            prompt.startPulsing(delay: 3)
+        case 3:
+            prompt.stopPulsing()
             showDragMatchesToChoices()
         default:
             Log.warn("Restarting tutorial in-place. Should not happen to real user")
@@ -85,10 +86,6 @@ class GameTutorialController {
             setupTutorial()
             startTutorial()
             return // Should log warning
-        }
-        prompt.stopPulsing()
-        if currentStep < 5 {
-            prompt.startPulsing(delay: 2.5)
         }
         currentStep++
     }
@@ -101,25 +98,25 @@ class GameTutorialController {
         helpLabel.setHiddenAnimated(hidden: false, duration: 1)
     }
     
-    private func dropBubbles() {
+    private func dropBubbles(delay: CFTimeInterval = 0) {
         for (i, bubble) in enumerate(bubbles) {
             let drop = RBBSpringAnimation(keyPath: "position.y")
             drop.fromValue = bubble.layer.position.y - gameVC.view.frame.height
             drop.toValue = bubble.layer.position.y
             drop.duration = 1
-            drop.beginTime = CACurrentMediaTime() + 0.25 * Double(i)
+            drop.beginTime = CACurrentMediaTime() + 0.25 * Double(i) + delay
             drop.fillMode = kCAFillModeBackwards
             drop.addToLayerAndReturnSignal(bubble.layer, forKey: "position.y")
             bubble.hidden = false
         }
     }
     
-    private func popPlaceholders() {
+    private func popPlaceholders(delay: CFTimeInterval = 0) {
         for (i, placeholder) in enumerate(placeholders) {
             placeholder.hidden = false
             placeholder.layer.transform = CATransform3DMakeScale(0.1, 0.1, 1)
             placeholder.alpha = 0
-            UIView.animateSpring(1.5, damping: 0.3, velocity: 15, delay: 0.25 * Double(i)) {
+            UIView.animateSpring(1.5, damping: 0.3, velocity: 15, delay: 0.25 * Double(i) + delay) {
                 placeholder.alpha = 1
                 placeholder.layer.transform = CATransform3DIdentity
                 placeholder.emphasized = true
