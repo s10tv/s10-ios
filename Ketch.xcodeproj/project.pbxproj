@@ -40,7 +40,6 @@
 		EA2A38E61AD8A141005708D2 /* MeteorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2A38E51AD8A141005708D2 /* MeteorService.swift */; };
 		EA2AB70E1A8A00F200D42C6C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2AB70D1A8A00F200D42C6C /* GameViewController.swift */; };
 		EA31049B1A99C3850069D6AD /* KetchIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA31049A1A99C3850069D6AD /* KetchIcon.swift */; };
-		EA341D841A8C875500A6077B /* ChatView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA341D831A8C875500A6077B /* ChatView.xib */; };
 		EA3777721A966EC10055DE99 /* TransatTextBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */; };
 		EA3777731A966EC10055DE99 /* TransatTextBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776E1A966EC10055DE99 /* TransatTextBold.otf */; };
 		EA3777741A966EC10055DE99 /* TransatTextLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776F1A966EC10055DE99 /* TransatTextLight.otf */; };
@@ -50,7 +49,6 @@
 		EA396FF01AB52BF8009EB60B /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA396FEF1AB52BF8009EB60B /* PageViewController.swift */; };
 		EA409D391A8C681A00988B8B /* FacebookExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA409D381A8C681A00988B8B /* FacebookExtension.swift */; };
 		EA409D3F1A8C75F600988B8B /* ConnectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA409D3B1A8C75F600988B8B /* ConnectionCell.swift */; };
-		EA409D411A8C75F600988B8B /* DockView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA409D3D1A8C75F600988B8B /* DockView.xib */; };
 		EA409D421A8C75F600988B8B /* DockViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA409D3E1A8C75F600988B8B /* DockViewController.swift */; };
 		EA4A66571AA2D9BB0019D601 /* ChoicePlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A66561AA2D9BB0019D601 /* ChoicePlaceholder.swift */; };
 		EA520B881ADCBFE70047B789 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA520B871ADCBFE70047B789 /* HomeViewController.swift */; };
@@ -172,7 +170,6 @@
 		EA2A38E51AD8A141005708D2 /* MeteorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorService.swift; sourceTree = "<group>"; };
 		EA2AB70D1A8A00F200D42C6C /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		EA31049A1A99C3850069D6AD /* KetchIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KetchIcon.swift; sourceTree = "<group>"; };
-		EA341D831A8C875500A6077B /* ChatView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ChatView.xib; sourceTree = "<group>"; };
 		EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextBlack.otf; sourceTree = "<group>"; };
 		EA37776E1A966EC10055DE99 /* TransatTextBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextBold.otf; sourceTree = "<group>"; };
 		EA37776F1A966EC10055DE99 /* TransatTextLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextLight.otf; sourceTree = "<group>"; };
@@ -182,7 +179,6 @@
 		EA396FEF1AB52BF8009EB60B /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		EA409D381A8C681A00988B8B /* FacebookExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookExtension.swift; sourceTree = "<group>"; };
 		EA409D3B1A8C75F600988B8B /* ConnectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionCell.swift; sourceTree = "<group>"; };
-		EA409D3D1A8C75F600988B8B /* DockView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DockView.xib; sourceTree = "<group>"; };
 		EA409D3E1A8C75F600988B8B /* DockViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DockViewController.swift; sourceTree = "<group>"; };
 		EA4A66561AA2D9BB0019D601 /* ChoicePlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoicePlaceholder.swift; sourceTree = "<group>"; };
 		EA520B871ADCBFE70047B789 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -373,7 +369,6 @@
 		EA196FEC1A83549300FEBA7F /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				EA341D831A8C875500A6077B /* ChatView.xib */,
 				EA196FEE1A83549300FEBA7F /* ChatViewController.swift */,
 			);
 			path = Chat;
@@ -454,7 +449,6 @@
 			children = (
 				EA409D3B1A8C75F600988B8B /* ConnectionCell.swift */,
 				EA8EE6CE1AAA0FD100E646EE /* ConnectionCell.xib */,
-				EA409D3D1A8C75F600988B8B /* DockView.xib */,
 				EA409D3E1A8C75F600988B8B /* DockViewController.swift */,
 			);
 			path = Dock;
@@ -756,14 +750,12 @@
 				EA02CCF21A96ED03004C3009 /* KetchIcon.otf in Resources */,
 				EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */,
 				EA1DA3811A8D189400433093 /* NewConnectionView.xib in Resources */,
-				EA409D411A8C75F600988B8B /* DockView.xib in Resources */,
 				EA1970141A83549300FEBA7F /* ProfileView.xib in Resources */,
 				EA3777741A966EC10055DE99 /* TransatTextLight.otf in Resources */,
 				EAE63D7A1AB3407D004A74E6 /* RootView.xib in Resources */,
 				EAF3A4BF1ACA2191001C2943 /* ProfileInfoCell.xib in Resources */,
 				EA1970121A83549300FEBA7F /* EditProfileView.xib in Resources */,
 				EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */,
-				EA341D841A8C875500A6077B /* ChatView.xib in Resources */,
 				EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */,
 				EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */,
 				EA8EE6CF1AAA0FD100E646EE /* ConnectionCell.xib in Resources */,

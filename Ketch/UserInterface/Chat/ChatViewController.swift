@@ -27,8 +27,8 @@ class ChatViewController : JSQMessagesViewController {
         
         // TODO: Make this configurable from storyboard. JSQMessages library annoyingly
         // resets its own color to white when configuring itself
-        view.backgroundColor = nil
-        collectionView.backgroundColor = nil
+        view.backgroundColor = StyleKit.darkWhite
+        collectionView.backgroundColor = UIColor.clearColor()
         
         // Customize input views
         inputToolbar.contentView.leftBarButtonItem = nil
@@ -115,8 +115,8 @@ class ChatViewController : JSQMessagesViewController {
     
     // MARK: - Class Method
     
-    override class func nib() -> UINib {
-        return UINib(nibName: "ChatView", bundle: nil)
+    override class func nib() -> UINib? {
+        return nil
     }
 }
 
