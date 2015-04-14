@@ -22,6 +22,13 @@ extension CGAffineTransform {
     }
 }
 
+extension CGSize {
+    var value : NSValue { return NSValue(CGSize: self) }
+    init(side: CGFloat) {
+        self.init(width: side, height: side)
+    }
+}
+
 extension CGRect {
     
     var center: CGPoint {

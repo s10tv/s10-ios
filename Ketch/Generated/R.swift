@@ -124,8 +124,6 @@ public enum R {
         case skipPrompt = "SkipPrompt"
         /// SEE AGAIN LATER
         case snoozePrompt = "SnoozePrompt"
-        /// TAP ANYWHERE TO CONTINUE
-        case tapToContinue = "TapToContinue"
         /// AND YOU’LL HAVE THREE CHOICES
         case threeChoicesPrompt = "ThreeChoicesPrompt"
         /// YOU’LL SEE THREE POTENTIAL MATCHES

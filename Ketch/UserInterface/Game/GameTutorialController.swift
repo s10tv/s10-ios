@@ -9,7 +9,6 @@
 import Foundation
 import RBBAnimation
 import Cartography
-import Shimmer
 
 class GameTutorialController {
     let gameVC: GameViewController
@@ -18,7 +17,7 @@ class GameTutorialController {
     var placeholders: [ChoicePlaceholder] { return gameVC.placeholders }
     var overlay : TransparentView!
     var arrows : [UIImageView]?
-    var prompt : FBShimmeringView!
+    var prompt : PulsingView!
     
     private(set) var currentStep = 0
     var started : Bool { return currentStep > 0 }
@@ -37,24 +36,14 @@ class GameTutorialController {
         overlay.passThroughTouchOnSelf = false
         overlay.whenTapEnded { [weak self] in self?.advanceStep(); return }
         gameVC.view.addSubview(overlay)
-
-        let promptLabel = UILabel()
-        promptLabel.text = LS(R.Strings.tapToContinue)
-        promptLabel.font = UIFont(.transatTextBlack, size: 20)
-        promptLabel.textColor = StyleKit.darkWhite
-        promptLabel.preferredMaxLayoutWidth = 200
-        promptLabel.numberOfLines = 0
-        promptLabel.textAlignment = .Center
         
-        prompt = FBShimmeringView()
-        prompt.contentView = promptLabel
-        prompt.shimmering = true
-        prompt.alpha = 0
+        prompt = PulsingView()
         overlay.addSubview(prompt)
         
         overlay.makeEdgesEqualTo(gameVC.view)
-        promptLabel.makeEdgesEqualTo(prompt)
         constrain(prompt, helpLabel) { prompt, helpLabel in
+            prompt.width == 20
+            prompt.height == 20
             prompt.bottom == helpLabel.top - 20
             prompt.centerX == helpLabel.centerX
         }
@@ -97,9 +86,9 @@ class GameTutorialController {
             startTutorial()
             return // Should log warning
         }
-        prompt.alpha = 0
+        prompt.stopPulsing()
         if currentStep < 5 {
-            prompt.setHiddenAnimated(hidden: false, duration: 1, delay: 3)
+            prompt.startPulsing(delay: 2.5)
         }
         currentStep++
     }
