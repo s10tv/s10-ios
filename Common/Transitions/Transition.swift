@@ -14,7 +14,7 @@ class ViewControllerTransition : NSObject {
     let toVC : UIViewController
     let duration : NSTimeInterval
     var context : UIViewControllerContextTransitioning!
-    var interactor : UIPercentDrivenInteractiveTransition?
+    var interactor : UIViewControllerInteractiveTransitioning?
     var cancelled : Bool { return context.transitionWasCancelled() }
     
     var containerView : UIView {

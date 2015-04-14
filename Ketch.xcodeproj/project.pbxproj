@@ -21,6 +21,7 @@
 		EA0FC9421A87DE5800D62625 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9301A87DE5800D62625 /* BaseViewModel.swift */; };
 		EA0FC9431A87DE5800D62625 /* FetchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9311A87DE5800D62625 /* FetchViewModel.swift */; };
 		EA0FC9441A87DE5800D62625 /* ViewProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9321A87DE5800D62625 /* ViewProviders.swift */; };
+		EA0FED411ADDD0C700FC6FCB /* PanInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FED401ADDD0C700FC6FCB /* PanInteractor.swift */; };
 		EA1970151A83549300FEBA7F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA196FFF1A83549300FEBA7F /* ProfileViewController.swift */; };
 		EA24C26D1AD8F52000C40AAD /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA24C26C1AD8F52000C40AAD /* Metadata.swift */; };
 		EA24C2731AD8F60900C40AAD /* _Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA24C26F1AD8F60900C40AAD /* _Candidate.swift */; };
@@ -139,6 +140,7 @@
 		EA0FC9301A87DE5800D62625 /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		EA0FC9311A87DE5800D62625 /* FetchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchViewModel.swift; sourceTree = "<group>"; };
 		EA0FC9321A87DE5800D62625 /* ViewProviders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProviders.swift; sourceTree = "<group>"; };
+		EA0FED401ADDD0C700FC6FCB /* PanInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanInteractor.swift; sourceTree = "<group>"; };
 		EA196FFF1A83549300FEBA7F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		EA24C26C1AD8F52000C40AAD /* Metadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
 		EA24C26F1AD8F60900C40AAD /* _Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Candidate.swift; sourceTree = "<group>"; };
@@ -453,6 +455,7 @@
 				EA72FB271AD1B7D5009F853F /* Segue.swift */,
 				EA72FB281AD1B7D5009F853F /* Transition.swift */,
 				EA72FB2B1AD1B7E1009F853F /* ScrollTransition.swift */,
+				EA0FED401ADDD0C700FC6FCB /* PanInteractor.swift */,
 			);
 			path = Transitions;
 			sourceTree = "<group>";
@@ -862,6 +865,7 @@
 				EAAD921B1ACDEACD0014BA25 /* NewMatchTransition.swift in Sources */,
 				EA6650ED1AA00A9C001BA40C /* AccountService.swift in Sources */,
 				EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */,
+				EA0FED411ADDD0C700FC6FCB /* PanInteractor.swift in Sources */,
 				EAF4D7621A79AA5E00D35330 /* RootViewController.swift in Sources */,
 				EAD007FC1AD37236003A260D /* Geometry.swift in Sources */,
 				EA6E56541AD2152500B12F2B /* BoatSailedViewController.swift in Sources */,
