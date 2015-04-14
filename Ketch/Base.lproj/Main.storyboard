@@ -984,20 +984,11 @@ SAILED FOR TODAY.</string>
                         <outlet property="nameLabel" destination="d1i-a7-EeL" id="hjJ-EU-GVe"/>
                         <outlet property="pageControl" destination="db4-Se-woi" id="UuX-q0-Kgz"/>
                         <outlet property="swipeView" destination="zjR-1C-0YC" id="vNd-km-wmY"/>
-                        <segue destination="Lqa-Xo-Tcw" kind="presentation" identifier="ProfileToEditProfile" id="9hD-eE-Lne"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H5s-tv-xnk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1592" y="1920"/>
-        </scene>
-        <!--Edit Profile View Controller-->
-        <scene sceneID="98E-xT-5yo">
-            <objects>
-                <viewController storyboardIdentifier="EditProfile" id="Lqa-Xo-Tcw" customClass="EditProfileViewController" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="WMP-6s-UTq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2343" y="1920"/>
         </scene>
         <!--Settings View Controller-->
         <scene sceneID="6E1-Ce-dgY">

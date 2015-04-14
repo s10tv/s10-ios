@@ -21,14 +21,7 @@
 		EA0FC9421A87DE5800D62625 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9301A87DE5800D62625 /* BaseViewModel.swift */; };
 		EA0FC9431A87DE5800D62625 /* FetchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9311A87DE5800D62625 /* FetchViewModel.swift */; };
 		EA0FC9441A87DE5800D62625 /* ViewProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9321A87DE5800D62625 /* ViewProviders.swift */; };
-		EA163CFB1A85FAF000C2589B /* EditPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA163CFA1A85FAF000C2589B /* EditPhotoCell.swift */; };
-		EA163CFD1A85FAFE00C2589B /* EditPhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA163CFC1A85FAFE00C2589B /* EditPhotoCell.xib */; };
-		EA1970071A83549300FEBA7F /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA196FEE1A83549300FEBA7F /* ChatViewController.swift */; };
-		EA1970121A83549300FEBA7F /* EditProfileView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA196FFC1A83549300FEBA7F /* EditProfileView.xib */; };
-		EA1970131A83549300FEBA7F /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA196FFD1A83549300FEBA7F /* EditProfileViewController.swift */; };
 		EA1970151A83549300FEBA7F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA196FFF1A83549300FEBA7F /* ProfileViewController.swift */; };
-		EA1970171A83549300FEBA7F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1970021A83549300FEBA7F /* SettingsViewController.swift */; };
-		EA1DA37F1A8D188B00433093 /* NewConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1DA37E1A8D188B00433093 /* NewConnectionViewController.swift */; };
 		EA24C26D1AD8F52000C40AAD /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA24C26C1AD8F52000C40AAD /* Metadata.swift */; };
 		EA24C2731AD8F60900C40AAD /* _Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA24C26F1AD8F60900C40AAD /* _Candidate.swift */; };
 		EA24C2741AD8F60900C40AAD /* _Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA24C2701AD8F60900C40AAD /* _Connection.swift */; };
@@ -71,7 +64,11 @@
 		EA72FB291AD1B7D5009F853F /* Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FB271AD1B7D5009F853F /* Segue.swift */; };
 		EA72FB2A1AD1B7D5009F853F /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FB281AD1B7D5009F853F /* Transition.swift */; };
 		EA72FB2C1AD1B7E1009F853F /* ScrollTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FB2B1AD1B7E1009F853F /* ScrollTransition.swift */; };
-		EA755A2E1ADD7C64004B4A1D /* PulsingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA755A2D1ADD7C64004B4A1D /* PulsingView.swift */; };
+		EA755A321ADDA4D8004B4A1D /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA755A2F1ADDA4D8004B4A1D /* ChatViewController.swift */; };
+		EA755A331ADDA4D8004B4A1D /* NewConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA755A301ADDA4D8004B4A1D /* NewConnectionViewController.swift */; };
+		EA755A361ADDA591004B4A1D /* PulsingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA755A351ADDA591004B4A1D /* PulsingView.swift */; };
+		EA755A3A1ADDA5CB004B4A1D /* SandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA755A381ADDA5CB004B4A1D /* SandView.swift */; };
+		EA755A3B1ADDA5CB004B4A1D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA755A391ADDA5CB004B4A1D /* SettingsViewController.swift */; };
 		EA7AA3651AA25D21003383BE /* ResourceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3641AA25D21003383BE /* ResourceExtension.swift */; };
 		EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3681AA26597003383BE /* SBConstants.swift */; };
 		EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3691AA26597003383BE /* StyleKit.swift */; };
@@ -96,7 +93,6 @@
 		EAC8D3F61AA7269F00BCB7B9 /* FetchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9311A87DE5800D62625 /* FetchViewModel.swift */; };
 		EAC8D3F71AA7278900BCB7B9 /* ViewProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9321A87DE5800D62625 /* ViewProviders.swift */; };
 		EAC8D3F81AA7289400BCB7B9 /* ArrayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC92F1A87DE5800D62625 /* ArrayViewModel.swift */; };
-		EACF21621AD6F6A500938CD0 /* SandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF21611AD6F6A500938CD0 /* SandView.swift */; };
 		EACF21641AD707C800938CD0 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF21631AD707C800938CD0 /* WelcomeViewController.swift */; };
 		EACF21661AD70CB300938CD0 /* SwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF21651AD70CB300938CD0 /* SwiftExtensions.swift */; };
 		EACF21681AD7245C00938CD0 /* CloudsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACF21671AD7245C00938CD0 /* CloudsViewController.swift */; };
@@ -148,14 +144,7 @@
 		EA0FC9301A87DE5800D62625 /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
 		EA0FC9311A87DE5800D62625 /* FetchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchViewModel.swift; sourceTree = "<group>"; };
 		EA0FC9321A87DE5800D62625 /* ViewProviders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProviders.swift; sourceTree = "<group>"; };
-		EA163CFA1A85FAF000C2589B /* EditPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditPhotoCell.swift; sourceTree = "<group>"; };
-		EA163CFC1A85FAFE00C2589B /* EditPhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditPhotoCell.xib; sourceTree = "<group>"; };
-		EA196FEE1A83549300FEBA7F /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		EA196FFC1A83549300FEBA7F /* EditProfileView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditProfileView.xib; sourceTree = "<group>"; };
-		EA196FFD1A83549300FEBA7F /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		EA196FFF1A83549300FEBA7F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
-		EA1970021A83549300FEBA7F /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
-		EA1DA37E1A8D188B00433093 /* NewConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewConnectionViewController.swift; sourceTree = "<group>"; };
 		EA24C26C1AD8F52000C40AAD /* Metadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
 		EA24C26F1AD8F60900C40AAD /* _Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Candidate.swift; sourceTree = "<group>"; };
 		EA24C2701AD8F60900C40AAD /* _Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Connection.swift; sourceTree = "<group>"; };
@@ -198,7 +187,11 @@
 		EA72FB271AD1B7D5009F853F /* Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segue.swift; sourceTree = "<group>"; };
 		EA72FB281AD1B7D5009F853F /* Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
 		EA72FB2B1AD1B7E1009F853F /* ScrollTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollTransition.swift; sourceTree = "<group>"; };
-		EA755A2D1ADD7C64004B4A1D /* PulsingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulsingView.swift; sourceTree = "<group>"; };
+		EA755A2F1ADDA4D8004B4A1D /* ChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		EA755A301ADDA4D8004B4A1D /* NewConnectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewConnectionViewController.swift; sourceTree = "<group>"; };
+		EA755A351ADDA591004B4A1D /* PulsingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PulsingView.swift; sourceTree = "<group>"; };
+		EA755A381ADDA5CB004B4A1D /* SandView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandView.swift; sourceTree = "<group>"; };
+		EA755A391ADDA5CB004B4A1D /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		EA7AA3641AA25D21003383BE /* ResourceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceExtension.swift; sourceTree = "<group>"; };
 		EA7AA3681AA26597003383BE /* SBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstants.swift; sourceTree = "<group>"; };
 		EA7AA3691AA26597003383BE /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
@@ -228,7 +221,6 @@
 		EABD43D91AA1D29C00B07813 /* Beta.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
 		EABD43DA1AA1D29C00B07813 /* Prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
 		EABF2AB41AD04659005880E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		EACF21611AD6F6A500938CD0 /* SandView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandView.swift; sourceTree = "<group>"; };
 		EACF21631AD707C800938CD0 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		EACF21651AD70CB300938CD0 /* SwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftExtensions.swift; sourceTree = "<group>"; };
 		EACF21671AD7245C00938CD0 /* CloudsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudsViewController.swift; sourceTree = "<group>"; };
@@ -360,43 +352,15 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
-		EA196FEC1A83549300FEBA7F /* Chat */ = {
-			isa = PBXGroup;
-			children = (
-				EA196FEE1A83549300FEBA7F /* ChatViewController.swift */,
-			);
-			path = Chat;
-			sourceTree = "<group>";
-		};
 		EA196FFB1A83549300FEBA7F /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				EA163CFC1A85FAFE00C2589B /* EditPhotoCell.xib */,
-				EA163CFA1A85FAF000C2589B /* EditPhotoCell.swift */,
-				EA196FFC1A83549300FEBA7F /* EditProfileView.xib */,
-				EA196FFD1A83549300FEBA7F /* EditProfileViewController.swift */,
 				EA196FFF1A83549300FEBA7F /* ProfileViewController.swift */,
 				EAF3A4BE1ACA2191001C2943 /* ProfileInfoCell.xib */,
 				EAF3A4C01ACA22C2001C2943 /* ProfileInfoCell.swift */,
 				EA5FCE451AD6077A000D9B93 /* ProgressIndicator.swift */,
 			);
 			path = Profile;
-			sourceTree = "<group>";
-		};
-		EA1970001A83549300FEBA7F /* Settings */ = {
-			isa = PBXGroup;
-			children = (
-				EA1970021A83549300FEBA7F /* SettingsViewController.swift */,
-			);
-			path = Settings;
-			sourceTree = "<group>";
-		};
-		EA1DA37D1A8D187D00433093 /* NewConnection */ = {
-			isa = PBXGroup;
-			children = (
-				EA1DA37E1A8D188B00433093 /* NewConnectionViewController.swift */,
-			);
-			path = NewConnection;
 			sourceTree = "<group>";
 		};
 		EA24C26E1AD8F60900C40AAD /* _Models */ = {
@@ -417,6 +381,7 @@
 				EA5FCE471AD62C1F000D9B93 /* GameTutorialController.swift */,
 				EA4A66561AA2D9BB0019D601 /* ChoicePlaceholder.swift */,
 				EAAA42861AB24D5F00056EFF /* CandidateBubble.swift */,
+				EA755A351ADDA591004B4A1D /* PulsingView.swift */,
 			);
 			path = Game;
 			sourceTree = "<group>";
@@ -475,11 +440,9 @@
 				EACF21671AD7245C00938CD0 /* CloudsViewController.swift */,
 				EA520B871ADCBFE70047B789 /* HomeViewController.swift */,
 				EA6E56511AD1FDCE00B12F2B /* RootTransition.swift */,
-				EACF21611AD6F6A500938CD0 /* SandView.swift */,
 				EA6650E31AA00A82001BA40C /* WaveView.swift */,
 				EA6650E51AA00A82001BA40C /* UserAvatarView.swift */,
 				EA72FB1A1AD1049A009F853F /* TransparentBackgroundView.swift */,
-				EA755A2D1ADD7C64004B4A1D /* PulsingView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -502,6 +465,15 @@
 				EA72FB2B1AD1B7E1009F853F /* ScrollTransition.swift */,
 			);
 			path = Transitions;
+			sourceTree = "<group>";
+		};
+		EA755A371ADDA5CB004B4A1D /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				EA755A381ADDA5CB004B4A1D /* SandView.swift */,
+				EA755A391ADDA5CB004B4A1D /* SettingsViewController.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		EA9F35311A74CC6900E0C65D = {
@@ -613,17 +585,17 @@
 				EAAD92191ACDEAB70014BA25 /* Transitions */,
 				EA2AB70C1A8A00E300D42C6C /* Game */,
 				EA409D3A1A8C75F600988B8B /* Dock */,
-				EA196FEC1A83549300FEBA7F /* Chat */,
 				EA196FFB1A83549300FEBA7F /* Profile */,
-				EA1970001A83549300FEBA7F /* Settings */,
-				EA1DA37D1A8D187D00433093 /* NewConnection */,
-				EA72FB1C1AD1805B009F853F /* LoadingViewController.swift */,
+				EA755A371ADDA5CB004B4A1D /* Settings */,
+				EA755A2F1ADDA4D8004B4A1D /* ChatViewController.swift */,
+				EA755A301ADDA4D8004B4A1D /* NewConnectionViewController.swift */,
 				EACF216D1AD747A900938CD0 /* SignupViewController.swift */,
+				EACF216B1AD73BBA00938CD0 /* PermissionViewControllers.swift */,
 				EACF21691AD7255100938CD0 /* WaitlistViewController.swift */,
 				EA6E56531AD2152500B12F2B /* BoatSailedViewController.swift */,
 				EACF21631AD707C800938CD0 /* WelcomeViewController.swift */,
-				EACF216B1AD73BBA00938CD0 /* PermissionViewControllers.swift */,
 				EAF4D74F1A79AA5E00D35330 /* RootViewController.swift */,
+				EA72FB1C1AD1805B009F853F /* LoadingViewController.swift */,
 				EA396FE91AB51BED009EB60B /* RootView.swift */,
 				EAE63D791AB3407D004A74E6 /* RootView.xib */,
 			);
@@ -743,7 +715,6 @@
 				EA3777741A966EC10055DE99 /* TransatTextLight.otf in Resources */,
 				EAE63D7A1AB3407D004A74E6 /* RootView.xib in Resources */,
 				EAF3A4BF1ACA2191001C2943 /* ProfileInfoCell.xib in Resources */,
-				EA1970121A83549300FEBA7F /* EditProfileView.xib in Resources */,
 				EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */,
 				EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */,
 				EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */,
@@ -751,7 +722,6 @@
 				EA3777751A966EC10055DE99 /* TransatTextMedium.otf in Resources */,
 				EA9F354A1A74CC6900E0C65D /* Ketch.xcassets in Resources */,
 				EA3777731A966EC10055DE99 /* TransatTextBold.otf in Resources */,
-				EA163CFD1A85FAFE00C2589B /* EditPhotoCell.xib in Resources */,
 				EA3777721A966EC10055DE99 /* TransatTextBlack.otf in Resources */,
 				EA7004621ACF912A00D0E467 /* Signup.storyboard in Resources */,
 			);
@@ -880,17 +850,15 @@
 			files = (
 				EACF216E1AD747A900938CD0 /* SignupViewController.swift in Sources */,
 				EA72FB2A1AD1B7D5009F853F /* Transition.swift in Sources */,
-				EA755A2E1ADD7C64004B4A1D /* PulsingView.swift in Sources */,
 				EACF21641AD707C800938CD0 /* WelcomeViewController.swift in Sources */,
 				EA1970151A83549300FEBA7F /* ProfileViewController.swift in Sources */,
 				EAF195CF1A827FAD00A2F103 /* Ketch-Bridging.m in Sources */,
-				EA1970171A83549300FEBA7F /* SettingsViewController.swift in Sources */,
 				EA409D421A8C75F600988B8B /* DockViewController.swift in Sources */,
 				EA7AA3651AA25D21003383BE /* ResourceExtension.swift in Sources */,
 				EAF3A4C11ACA22C2001C2943 /* ProfileInfoCell.swift in Sources */,
 				EA6650E81AA00A82001BA40C /* UserAvatarView.swift in Sources */,
 				EAA36DDE1AD1CC7D00B30F24 /* SignupTransition.swift in Sources */,
-				EACF21621AD6F6A500938CD0 /* SandView.swift in Sources */,
+				EA755A3A1ADDA5CB004B4A1D /* SandView.swift in Sources */,
 				EAAD921D1ACF342C0014BA25 /* Environment.swift in Sources */,
 				EA0FC9351A87DE5800D62625 /* MeteorExtension.swift in Sources */,
 				EA72FB291AD1B7D5009F853F /* Segue.swift in Sources */,
@@ -901,14 +869,14 @@
 				EA6650E11AA00999001BA40C /* BaseViews.swift in Sources */,
 				EA409D3F1A8C75F600988B8B /* ConnectionCell.swift in Sources */,
 				EAA36DE01AD1CD4800B30F24 /* TransitionManager.swift in Sources */,
-				EA1DA37F1A8D188B00433093 /* NewConnectionViewController.swift in Sources */,
 				EA396FEA1AB51BED009EB60B /* RootView.swift in Sources */,
 				EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */,
+				EA755A321ADDA4D8004B4A1D /* ChatViewController.swift in Sources */,
 				EA24C2731AD8F60900C40AAD /* _Candidate.swift in Sources */,
 				EA4A66571AA2D9BB0019D601 /* ChoicePlaceholder.swift in Sources */,
+				EA755A3B1ADDA5CB004B4A1D /* SettingsViewController.swift in Sources */,
 				EA0FC9441A87DE5800D62625 /* ViewProviders.swift in Sources */,
 				EAAD921B1ACDEACD0014BA25 /* NewMatchTransition.swift in Sources */,
-				EA1970131A83549300FEBA7F /* EditProfileViewController.swift in Sources */,
 				EA6650ED1AA00A9C001BA40C /* AccountService.swift in Sources */,
 				EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */,
 				EAF4D7621A79AA5E00D35330 /* RootViewController.swift in Sources */,
@@ -936,7 +904,6 @@
 				EA6650FD1AA00B95001BA40C /* Message.swift in Sources */,
 				EAD7B2AB1A9F0BE700FA6740 /* DesignableViews.swift in Sources */,
 				EA6650FC1AA00B95001BA40C /* Connection.swift in Sources */,
-				EA1970071A83549300FEBA7F /* ChatViewController.swift in Sources */,
 				EA6650E61AA00A82001BA40C /* WaveView.swift in Sources */,
 				EAAA42871AB24D5F00056EFF /* CandidateBubble.swift in Sources */,
 				EA55F1381AD522C60042CBB2 /* NotificationCenter.swift in Sources */,
@@ -944,6 +911,7 @@
 				EAB79B701AD912EB00D9875A /* PKHUDExtension.swift in Sources */,
 				EACF216C1AD73BBA00938CD0 /* PermissionViewControllers.swift in Sources */,
 				EACF21681AD7245C00938CD0 /* CloudsViewController.swift in Sources */,
+				EA755A331ADDA4D8004B4A1D /* NewConnectionViewController.swift in Sources */,
 				EA72FB1F1AD180F1009F853F /* NewGameTransition.swift in Sources */,
 				EAAD921F1ACF4EFA0014BA25 /* ProvisioningProfile.swift in Sources */,
 				EA2AB70E1A8A00F200D42C6C /* GameViewController.swift in Sources */,
@@ -954,11 +922,11 @@
 				EA72FB1D1AD1805B009F853F /* LoadingViewController.swift in Sources */,
 				EACF21661AD70CB300938CD0 /* SwiftExtensions.swift in Sources */,
 				EAD007FE1AD472B4003A260D /* InstantaneousTransition.swift in Sources */,
+				EA755A361ADDA591004B4A1D /* PulsingView.swift in Sources */,
 				EA0FC93A1A87DE5800D62625 /* ReactiveCocoaExtension.swift in Sources */,
 				EA409D391A8C681A00988B8B /* FacebookExtension.swift in Sources */,
 				EA520B881ADCBFE70047B789 /* HomeViewController.swift in Sources */,
 				EA0FC9411A87DE5800D62625 /* ArrayViewModel.swift in Sources */,
-				EA163CFB1A85FAF000C2589B /* EditPhotoCell.swift in Sources */,
 				EA24C2761AD8F60900C40AAD /* _User.swift in Sources */,
 				EA6650FE1AA00B95001BA40C /* User.swift in Sources */,
 			);
