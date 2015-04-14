@@ -54,7 +54,7 @@
 		EA6650FC1AA00B95001BA40C /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650F41AA00B95001BA40C /* Connection.swift */; };
 		EA6650FD1AA00B95001BA40C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650F51AA00B95001BA40C /* Message.swift */; };
 		EA6650FE1AA00B95001BA40C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650F61AA00B95001BA40C /* User.swift */; };
-		EA6E56521AD1FDCE00B12F2B /* RootTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E56511AD1FDCE00B12F2B /* RootTransition.swift */; };
+		EA6E56521AD1FDCE00B12F2B /* WaveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E56511AD1FDCE00B12F2B /* WaveTransition.swift */; };
 		EA6E56541AD2152500B12F2B /* BoatSailedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E56531AD2152500B12F2B /* BoatSailedViewController.swift */; };
 		EA7004621ACF912A00D0E467 /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA7004641ACF912A00D0E467 /* Signup.storyboard */; };
 		EA72FB1D1AD1805B009F853F /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FB1C1AD1805B009F853F /* LoadingViewController.swift */; };
@@ -175,7 +175,7 @@
 		EA6650F41AA00B95001BA40C /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		EA6650F51AA00B95001BA40C /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EA6650F61AA00B95001BA40C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		EA6E56511AD1FDCE00B12F2B /* RootTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTransition.swift; sourceTree = "<group>"; };
+		EA6E56511AD1FDCE00B12F2B /* WaveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveTransition.swift; sourceTree = "<group>"; };
 		EA6E56531AD2152500B12F2B /* BoatSailedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoatSailedViewController.swift; sourceTree = "<group>"; };
 		EA7004631ACF912A00D0E467 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Signup.storyboard; sourceTree = "<group>"; };
 		EA72FB1C1AD1805B009F853F /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
@@ -435,10 +435,10 @@
 				EAA36DE11AD1CE2800B30F24 /* BaseViewController.swift */,
 				EACF21671AD7245C00938CD0 /* CloudsViewController.swift */,
 				EA520B871ADCBFE70047B789 /* HomeViewController.swift */,
-				EA6E56511AD1FDCE00B12F2B /* RootTransition.swift */,
+				EA6E56511AD1FDCE00B12F2B /* WaveTransition.swift */,
 				EA6650E31AA00A82001BA40C /* WaveView.swift */,
-				EA6650E51AA00A82001BA40C /* UserAvatarView.swift */,
 				EA755A3C1ADDA7DE004B4A1D /* KetchBoatView.swift */,
+				EA6650E51AA00A82001BA40C /* UserAvatarView.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -885,7 +885,7 @@
 				EA6650FB1AA00B95001BA40C /* Candidate.swift in Sources */,
 				EA0FC9421A87DE5800D62625 /* BaseViewModel.swift in Sources */,
 				EACF216A1AD7255100938CD0 /* WaitlistViewController.swift in Sources */,
-				EA6E56521AD1FDCE00B12F2B /* RootTransition.swift in Sources */,
+				EA6E56521AD1FDCE00B12F2B /* WaveTransition.swift in Sources */,
 				EA31049B1A99C3850069D6AD /* KetchIcon.swift in Sources */,
 				EA24C2741AD8F60900C40AAD /* _Connection.swift in Sources */,
 				EA5FCE481AD62C1F000D9B93 /* GameTutorialController.swift in Sources */,

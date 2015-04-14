@@ -8,7 +8,7 @@
 
 import Foundation
 
-class InstantaneousTransition : RootTransition {
+class InstantaneousTransition : WaveTransition {
     
     init(fromVC: UIViewController, toVC: UIViewController) {
         super.init(fromVC: fromVC, toVC: toVC, duration: 0)

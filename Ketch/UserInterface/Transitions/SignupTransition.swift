@@ -8,7 +8,7 @@
 
 import Foundation
 
-class SignupTransition : RootTransition {
+class SignupTransition : WaveTransition {
     let loadingVC : LoadingViewController
     let signupVC : SignupViewController
     

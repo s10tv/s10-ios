@@ -1,5 +1,5 @@
 //
-//  RootTransition.swift
+//  WaveTransition.swift
 //  Ketch
 //
 //  Created by Tony Xiao on 4/5/15.
@@ -9,7 +9,7 @@
 import UIKit
 import ReactiveCocoa
 
-class RootTransition : ViewControllerTransition {
+class WaveTransition : ViewControllerTransition {
     
     override func animate() {
         // NOTE: HACK for now... Need to get rid of rootView

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class WaitlistTransition : RootTransition {
+class WaitlistTransition : WaveTransition {
     let loadingVC : LoadingViewController
     let waitlistVC : WaitlistViewController
     

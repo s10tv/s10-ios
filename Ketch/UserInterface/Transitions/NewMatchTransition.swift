@@ -9,7 +9,7 @@
 import UIKit
 import RBBAnimation
 
-class NewMatchTransition : RootTransition {
+class NewMatchTransition : WaveTransition {
     
     init(fromVC: UIViewController, toVC: UIViewController) {
         super.init(fromVC: fromVC, toVC: toVC, duration: 2)

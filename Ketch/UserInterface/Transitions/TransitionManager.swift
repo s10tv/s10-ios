@@ -57,7 +57,7 @@ class TransitionManager : NSObject, UINavigationControllerDelegate {
             return NewMatchTransition(fromVC: fromVC, toVC: toVC)
             
         default:
-            return RootTransition(fromVC: fromVC, toVC: toVC)
+            return WaveTransition(fromVC: fromVC, toVC: toVC)
         }
     }
     

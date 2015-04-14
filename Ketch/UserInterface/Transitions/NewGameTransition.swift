@@ -10,7 +10,7 @@ import Foundation
 import RBBAnimation
 import ReactiveCocoa
 
-class NewGameTransition : RootTransition {
+class NewGameTransition : WaveTransition {
     let loadingVC : LoadingViewController
     let gameVC : GameViewController
     let waterlineDuration : NSTimeInterval = 1
