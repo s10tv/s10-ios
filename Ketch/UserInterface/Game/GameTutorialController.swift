@@ -17,6 +17,7 @@ class GameTutorialController {
     var bubbles: [CandidateBubble] { return gameVC.bubbles }
     var placeholders: [ChoicePlaceholder] { return gameVC.placeholders }
     var overlay : TransparentView!
+    var arrows : [UIImageView]?
     var prompt : FBShimmeringView!
     
     private(set) var currentStep = 0
@@ -69,6 +70,7 @@ class GameTutorialController {
         placeholders.each { $0.hidden = false }
         bubbles.each { $0.hidden = false }
         helpLabel.rawText = " "
+        arrows = nil
         overlay.removeFromSuperview()
         overlay = nil
         prompt = nil
@@ -89,6 +91,8 @@ class GameTutorialController {
         case 5:
             showDragMatchesToChoices()
         default:
+            Log.warn("Restarting tutorial in-place. Should not happen to real user")
+            teardownTutorial()
             setupTutorial()
             startTutorial()
             return // Should log warning
@@ -142,12 +146,13 @@ class GameTutorialController {
         
         let arrowImage = UIImage(R.KetchAssets.tutorialArrow)
         let centerBubble = bubbles[1]
-        for i in -1...1 {
+
+        arrows = [-1, 0, 1].map { i -> UIImageView in
             let arrow = UIImageView(image: arrowImage)
             let angle = π/6 * i.f
             let distance = 10.f
             
-            overlay.addSubview(arrow)
+            self.overlay.addSubview(arrow)
             constrain(arrow, centerBubble) { arrow, bubble in
                 arrow.bottom == bubble.top - 20
                 arrow.centerX == bubble.centerX + i.f * 40
@@ -163,9 +168,11 @@ class GameTutorialController {
             moveArrow.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
             moveArrow.repeatCount = Float.infinity
             arrow.layer.addAnimation(moveArrow, forKey: "position")
+            return arrow
         }
         
         overlay.passThroughTouchOnSelf = true
+        overlay.userInteractionEnabled = false
     }
 }
 
@@ -188,11 +195,15 @@ extension GameTutorialController : GameViewControllerDelegate {
     }
     
     func gameDidAssignBubbleToTarget(bubble: CandidateBubble, target: SnapTarget?) {
-        if target?.choice != nil && started {
-            teardownTutorial()
-            gameVC.tutorial = nil
-            gameVC.delegate = nil
-            UD[.bGameTutorialMode] = false
+        arrows?.map {
+            $0.setHiddenAnimated(hidden: self.gameVC.readyToConfirm, duration: 0.25)
         }
+    }
+    
+    func gameDidSubmitChoice() {
+        teardownTutorial()
+        gameVC.tutorial = nil
+        gameVC.delegate = nil
+        UD[.bGameTutorialMode] = false
     }
 }

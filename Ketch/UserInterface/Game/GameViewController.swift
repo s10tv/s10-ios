@@ -12,6 +12,7 @@ protocol GameViewControllerDelegate : class {
     func gameViewWillAppear(animated: Bool)
     func gameViewDidAppear(animated: Bool)
     func gameDidAssignBubbleToTarget(bubble: CandidateBubble, target: SnapTarget?)
+    func gameDidSubmitChoice()
 }
 
 class SnapTarget {
@@ -222,6 +223,7 @@ class GameViewController : BaseViewController {
             Flow.didReceiveGameResult(nil)
             Log.error("Error receiving game result", error)
         })
+        delegate?.gameDidSubmitChoice()
         performSegue(.FinishGame)
     }
 }
