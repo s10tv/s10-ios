@@ -35,6 +35,7 @@ class ScrollTransition : ViewControllerTransition {
     override func animate() {
         var leftFrame = containerView.bounds
         leftFrame.origin.x -= leftFrame.width
+        var centerFrame = containerView.bounds
         var rightFrame = containerView.bounds
         rightFrame.origin.x += rightFrame.width
         
@@ -47,9 +48,13 @@ class ScrollTransition : ViewControllerTransition {
             delay: 0, options: .CurveEaseInOut,
             animations: {
                 self.fromView?.frame = fromFinalFrame
-                self.toView?.frame = self.containerView.bounds
+                self.toView?.frame = centerFrame
             }) { completed in
-                self.context.completeTransition(true)
+                if (self.cancelled) {
+                    self.toView?.removeFromSuperview()
+                    self.fromView?.frame = centerFrame
+                }
+                self.completeTransition()
             }
     }
     

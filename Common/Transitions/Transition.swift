@@ -15,6 +15,7 @@ class ViewControllerTransition : NSObject {
     let duration : NSTimeInterval
     var context : UIViewControllerContextTransitioning!
     var interactor : UIPercentDrivenInteractiveTransition?
+    var cancelled : Bool { return context.transitionWasCancelled() }
     
     var containerView : UIView {
         return context.containerView()
@@ -34,6 +35,10 @@ class ViewControllerTransition : NSObject {
     
     // To be overwritten by subclass
     func animate() {
+    }
+    
+    func completeTransition() {
+        context.completeTransition(!cancelled)
     }
 }
 
