@@ -51,7 +51,9 @@ class WaveTransition : ViewControllerTransition {
         
         // Compute Delta between waves
         toView?.frame = context.finalFrameForViewController(toVC)
+        toVC.viewWillLayoutSubviews()
         toView?.layoutSubviews()
+        toVC.viewDidLayoutSubviews()
         let delta = toWaveView!.frame.origin.y - fromWaveView!.frame.origin.y
 
         // Initial State
