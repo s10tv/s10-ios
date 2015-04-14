@@ -8,39 +8,77 @@
 
 import UIKit
 import ReactiveCocoa
+import RBBAnimation
 
 class WaveTransition : ViewControllerTransition {
     
+    var fromWaveView: WaveView? {
+        return fromView?.subviews.match { $0 is WaveView } as? WaveView
+    }
+    var toWaveView: WaveView? {
+        return toView?.subviews.match { $0 is WaveView } as? WaveView
+    }
+    
     override func animate() {
-        // NOTE: HACK for now... Need to get rid of rootView
-        // Necessary for showing waterline in the right spot when going from waitlist to chat
-//        if fromVC is WaitlistViewController && toVC is ChatViewController {
-//            rootView.waterlineLocation = .Top(60)
-//        }
+        if fromWaveView != nil && toWaveView != nil {
+            animateWithWave(duration)
+        } else {
+            containerView.addSubview(toView!)
+            toView?.frame = context.finalFrameForViewController(toVC)
+            toView?.alpha = 0
+            
+            UIView.animateSpring(duration) {
+                self.toView?.alpha = 1
+                self.fromView?.alpha = 0
+            }.subscribeCompleted {
+                if self.cancelled {
+                    self.toView?.removeFromSuperview()
+                }
+                self.completeTransition()
+            }
+        }
+    }
+    
+    func animateWithWave(duration: NSTimeInterval) {
+        // Protect overshooting bottom edge
+        let tallWave = WaveView(frame: fromWaveView!.frame)
+        tallWave.frame.size.height += containerView.bounds.height
+        containerView.insertSubview(tallWave, atIndex: 0)
         
-//        if let vc = toVC as? BaseViewController {
-//            rootView.waterlineLocation = vc.waterlineLocation
-//        }
-        containerView.addSubview(toView!)
+        // Protect overshooting top edge
+        let containerBackgroundColor = containerView.backgroundColor
+        containerView.backgroundColor = toView?.backgroundColor
+        
+        // Compute Delta between waves
         toView?.frame = context.finalFrameForViewController(toVC)
+        toView?.layoutSubviews()
+        let delta = toWaveView!.frame.origin.y - fromWaveView!.frame.origin.y
+
+        // Initial State
+        toView?.frame.origin.y -= delta
         toView?.alpha = 0
-        fromView?.alpha = 1
+        containerView.addSubview(toView!)
+        
         UIView.animateSpring(duration) {
-            self.toView?.alpha = 1
             self.fromView?.alpha = 0
-//            self.rootView.layoutIfNeeded()
-        }.subscribeNextAs { (finished: Bool) in
-            self.context.completeTransition(finished)
+            self.fromView?.frame.origin.y += delta
+            self.toView?.alpha = 1
+            self.toView?.frame.origin.y += delta
+            tallWave.frame.origin.y += delta
+        }.subscribeCompleted {
+            // Remove overshoot protection
+            tallWave.removeFromSuperview()
+            self.containerView.backgroundColor = containerBackgroundColor
+            // Handle cancellation
+            if self.cancelled {
+                self.toView?.removeFromSuperview()
+            }
+            // Finally complete
+            self.completeTransition()
         }
     }
     
     func animateWaterline(duration: NSTimeInterval? = nil) -> RACSignal {
-//        if let vc = toVC as? BaseViewController {
-//            rootView.waterlineLocation = vc.waterlineLocation
-//            return UIView.animateSpring(duration ?? self.duration) {
-//                self.rootView.layoutIfNeeded()
-//            }
-//        }
         return RACSignal.empty()
     }
 }

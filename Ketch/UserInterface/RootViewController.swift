@@ -16,10 +16,11 @@ class RootViewController : UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        transitionManager = TransitionManager(navigationController: self)
-        
+        view.backgroundColor = StyleKit.darkWhite
         view.whenEdgePanned(.Left) { [weak self] a, b in self!.handleEdgePan(a, edge: b) }
         view.whenEdgePanned(.Right) { [weak self] a, b in self!.handleEdgePan(a, edge: b) }
+        
+        transitionManager = TransitionManager(navigationController: self)
     }
     
     // MARK: Target Action
