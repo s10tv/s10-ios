@@ -11,8 +11,8 @@ import RBBAnimation
 
 class NewMatchTransition : RootTransition {
     
-    init(_ rootView: RootView, fromVC: UIViewController, toVC: UIViewController) {
-        super.init(rootView, fromVC: fromVC, toVC: toVC, duration: 2)
+    init(fromVC: UIViewController, toVC: UIViewController) {
+        super.init(fromVC: fromVC, toVC: toVC, duration: 2)
     }
     
     override func animate() {
@@ -23,7 +23,7 @@ class NewMatchTransition : RootTransition {
         
         // Animate waterline
         let finalY = matchVC.waveView.frame.origin.y
-        matchVC.waveView.frame.origin.y = rootView.waveView.frame.origin.y
+//        matchVC.waveView.frame.origin.y = rootView.waveView.frame.origin.y
         
         UIView.animateSpring(1) {
             matchVC.waveView.frame.origin.y = finalY

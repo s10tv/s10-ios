@@ -45,7 +45,6 @@ class GameViewController : HomeViewController {
     weak var delegate: GameViewControllerDelegate?
     
     override func commonInit() {
-        hideKetchBoat = false
         tutorial = GameTutorialController(gameVC: self)
     }
     

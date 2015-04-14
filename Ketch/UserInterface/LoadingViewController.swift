@@ -10,11 +10,6 @@ import Foundation
 
 class LoadingViewController : BaseViewController {
     
-    override func commonInit() {
-        waterlineLocation = .Bottom(60)
-        hideKetchBoat = false
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destVC as? NewConnectionViewController {
             vc.connection = Flow.newMatchToShow

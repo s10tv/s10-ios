@@ -18,7 +18,7 @@ class NewGameTransition : RootTransition {
     let bubbleDropInterval : NSTimeInterval = 0.1
     let operation: UINavigationControllerOperation
     
-    init(_ rootView: RootView, loadingVC: LoadingViewController, gameVC: GameViewController, operation: UINavigationControllerOperation) {
+    init(loadingVC: LoadingViewController, gameVC: GameViewController, operation: UINavigationControllerOperation) {
         self.loadingVC = loadingVC
         self.gameVC = gameVC
         self.operation = operation
@@ -30,7 +30,7 @@ class NewGameTransition : RootTransition {
             from = gameVC
             to = loadingVC
         }
-        super.init(rootView, fromVC: from, toVC: to, duration: duration)
+        super.init(fromVC: from, toVC: to, duration: duration)
     }
     
     override func animate() {

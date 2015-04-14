@@ -10,16 +10,14 @@ import Foundation
 
 class InstantaneousTransition : RootTransition {
     
-    init(_ rootView: RootView, fromVC: UIViewController, toVC: UIViewController) {
-        super.init(rootView, fromVC: fromVC, toVC: toVC, duration: 0)
+    init(fromVC: UIViewController, toVC: UIViewController) {
+        super.init(fromVC: fromVC, toVC: toVC, duration: 0)
     }
     
-
-    
     override func animate() {
-        if let vc = toVC as? BaseViewController {
-            rootView.waterlineLocation = vc.waterlineLocation
-        }
+//        if let vc = toVC as? BaseViewController {
+//            rootView.waterlineLocation = vc.waterlineLocation
+//        }
         containerView.addSubview(toView!)
         toView?.frame = context.finalFrameForViewController(toVC)
         fromView?.removeFromSuperview()

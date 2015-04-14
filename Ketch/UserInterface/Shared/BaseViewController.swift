@@ -9,12 +9,8 @@
 import UIKit
 import ReactiveCocoa
 
-// TODO: This is used in conjunction with the RootViewController. Should it be 
-// a protocol rather than a subclass?
 class BaseViewController : UIViewController {
     
-    var hideKetchBoat = true
-    var waterlineLocation : RootView.WaterlineLocation = .Top(60)
     private var stateDisposable: RACDisposable?
     
     override func prefersStatusBarHidden() -> Bool {

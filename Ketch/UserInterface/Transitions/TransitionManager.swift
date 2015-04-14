@@ -9,19 +9,17 @@
 import Foundation
 
 class TransitionManager : NSObject, UINavigationControllerDelegate {
-    private let rootView : RootView
     var currentEdgePan : UIScreenEdgePanGestureRecognizer?
     var disableAllTransitions = false
     
-    init(rootView: RootView, navigationController: UINavigationController?) {
-        self.rootView = rootView
+    init(navigationController: UINavigationController?) {
         super.init()
         navigationController?.delegate = self
     }
     
     func navigationController(navigationController: UINavigationController, didShowViewController viewController: UIViewController, animated: Bool) {
         if let vc = viewController as? BaseViewController {
-            rootView.ketchIcon.hidden = vc.hideKetchBoat
+//            rootView.ketchIcon.hidden = vc.hideKetchBoat
             // TODO: This doesn't seem to work, maybe we need transitioningCoordinator?
 //            if !animated {
 //                rootView.waterlineLocation = vc.waterlineLocation
@@ -32,22 +30,22 @@ class TransitionManager : NSObject, UINavigationControllerDelegate {
     func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
         if disableAllTransitions {
-            return InstantaneousTransition(rootView, fromVC: fromVC, toVC: toVC)
+            return InstantaneousTransition(fromVC: fromVC, toVC: toVC)
         }
 
         switch (fromVC, toVC) {
             
         case let (fromVC as LoadingViewController, toVC as SignupViewController):
-            return SignupTransition(rootView, loadingVC: fromVC, signupVC: toVC)
+            return SignupTransition(loadingVC: fromVC, signupVC: toVC)
             
         case let (fromVC as LoadingViewController, toVC as WaitlistViewController):
-            return WaitlistTransition(rootView, loadingVC: fromVC, waitlistVC: toVC)
+            return WaitlistTransition(loadingVC: fromVC, waitlistVC: toVC)
             
         case let (fromVC as LoadingViewController, toVC as GameViewController):
-            return NewGameTransition(rootView, loadingVC: fromVC, gameVC: toVC, operation: operation)
+            return NewGameTransition(loadingVC: fromVC, gameVC: toVC, operation: operation)
 
         case let (fromVC as GameViewController, toVC as LoadingViewController):
-            return NewGameTransition(rootView, loadingVC: toVC, gameVC: fromVC, operation: operation)
+            return NewGameTransition(loadingVC: toVC, gameVC: fromVC, operation: operation)
 
         case (_ as HomeViewController, _ as DockViewController):
             return ScrollTransition(fromVC: fromVC, toVC: toVC, direction: .RightToLeft, panGesture: currentEdgePan)
@@ -56,10 +54,10 @@ class TransitionManager : NSObject, UINavigationControllerDelegate {
             return ScrollTransition(fromVC: fromVC, toVC: toVC, direction: .LeftToRight, panGesture: currentEdgePan)
 
         case (_ as LoadingViewController, _ as NewConnectionViewController):
-            return NewMatchTransition(rootView, fromVC: fromVC, toVC: toVC)
+            return NewMatchTransition(fromVC: fromVC, toVC: toVC)
             
         default:
-            return RootTransition(rootView, fromVC: fromVC, toVC: toVC)
+            return RootTransition(fromVC: fromVC, toVC: toVC)
         }
     }
     

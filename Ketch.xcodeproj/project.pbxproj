@@ -35,7 +35,6 @@
 		EA3777741A966EC10055DE99 /* TransatTextLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776F1A966EC10055DE99 /* TransatTextLight.otf */; };
 		EA3777751A966EC10055DE99 /* TransatTextMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA3777701A966EC10055DE99 /* TransatTextMedium.otf */; };
 		EA3777761A966EC10055DE99 /* TransatTextStandard.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA3777711A966EC10055DE99 /* TransatTextStandard.otf */; };
-		EA396FEA1AB51BED009EB60B /* RootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA396FE91AB51BED009EB60B /* RootView.swift */; };
 		EA396FF01AB52BF8009EB60B /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA396FEF1AB52BF8009EB60B /* PageViewController.swift */; };
 		EA409D391A8C681A00988B8B /* FacebookExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA409D381A8C681A00988B8B /* FacebookExtension.swift */; };
 		EA409D3F1A8C75F600988B8B /* ConnectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA409D3B1A8C75F600988B8B /* ConnectionCell.swift */; };
@@ -103,7 +102,6 @@
 		EAD007FE1AD472B4003A260D /* InstantaneousTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD007FD1AD472B4003A260D /* InstantaneousTransition.swift */; };
 		EAD7B2AB1A9F0BE700FA6740 /* DesignableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */; };
 		EADDC6B11AD493710023DA0A /* FlowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADDC6B01AD493710023DA0A /* FlowService.swift */; };
-		EAE63D7A1AB3407D004A74E6 /* RootView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAE63D791AB3407D004A74E6 /* RootView.xib */; };
 		EAE915321ACAFC890027C936 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE915311ACAFC890027C936 /* UserDefaults.swift */; };
 		EAEB63DB1AD31A4E0002D55C /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB63DA1AD31A4E0002D55C /* Animation.swift */; };
 		EAF195CF1A827FAD00A2F103 /* Ketch-Bridging.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */; };
@@ -158,7 +156,6 @@
 		EA37776F1A966EC10055DE99 /* TransatTextLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextLight.otf; sourceTree = "<group>"; };
 		EA3777701A966EC10055DE99 /* TransatTextMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextMedium.otf; sourceTree = "<group>"; };
 		EA3777711A966EC10055DE99 /* TransatTextStandard.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextStandard.otf; sourceTree = "<group>"; };
-		EA396FE91AB51BED009EB60B /* RootView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootView.swift; sourceTree = "<group>"; };
 		EA396FEF1AB52BF8009EB60B /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		EA409D381A8C681A00988B8B /* FacebookExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookExtension.swift; sourceTree = "<group>"; };
 		EA409D3B1A8C75F600988B8B /* ConnectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionCell.swift; sourceTree = "<group>"; };
@@ -231,7 +228,6 @@
 		EAD007FD1AD472B4003A260D /* InstantaneousTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InstantaneousTransition.swift; sourceTree = "<group>"; };
 		EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableViews.swift; sourceTree = "<group>"; };
 		EADDC6B01AD493710023DA0A /* FlowService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowService.swift; sourceTree = "<group>"; };
-		EAE63D791AB3407D004A74E6 /* RootView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RootView.xib; sourceTree = "<group>"; };
 		EAE915311ACAFC890027C936 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		EAEB63DA1AD31A4E0002D55C /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Ketch-Bridging.m"; sourceTree = "<group>"; };
@@ -596,8 +592,6 @@
 				EACF21631AD707C800938CD0 /* WelcomeViewController.swift */,
 				EAF4D74F1A79AA5E00D35330 /* RootViewController.swift */,
 				EA72FB1C1AD1805B009F853F /* LoadingViewController.swift */,
-				EA396FE91AB51BED009EB60B /* RootView.swift */,
-				EAE63D791AB3407D004A74E6 /* RootView.xib */,
 			);
 			path = UserInterface;
 			sourceTree = "<group>";
@@ -713,7 +707,6 @@
 				EA02CCF21A96ED03004C3009 /* KetchIcon.otf in Resources */,
 				EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */,
 				EA3777741A966EC10055DE99 /* TransatTextLight.otf in Resources */,
-				EAE63D7A1AB3407D004A74E6 /* RootView.xib in Resources */,
 				EAF3A4BF1ACA2191001C2943 /* ProfileInfoCell.xib in Resources */,
 				EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */,
 				EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */,
@@ -870,7 +863,6 @@
 				EA6650E11AA00999001BA40C /* BaseViews.swift in Sources */,
 				EA409D3F1A8C75F600988B8B /* ConnectionCell.swift in Sources */,
 				EAA36DE01AD1CD4800B30F24 /* TransitionManager.swift in Sources */,
-				EA396FEA1AB51BED009EB60B /* RootView.swift in Sources */,
 				EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */,
 				EA755A321ADDA4D8004B4A1D /* ChatViewController.swift in Sources */,
 				EA24C2731AD8F60900C40AAD /* _Candidate.swift in Sources */,

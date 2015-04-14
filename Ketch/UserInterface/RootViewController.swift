@@ -12,18 +12,11 @@ import FacebookSDK
 import ReactiveCocoa
 
 class RootViewController : UINavigationController {
-    private let rootView = UIView.fromNib("RootView") as RootView
     var transitionManager : TransitionManager!
-    
-    override func loadView() {
-        super.loadView()
-        view.insertSubview(rootView, atIndex: 0)
-        rootView.makeEdgesEqualTo(view)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        transitionManager = TransitionManager(rootView: rootView, navigationController: self)
+        transitionManager = TransitionManager(navigationController: self)
         
         view.whenEdgePanned(.Left) { [weak self] a, b in self!.handleEdgePan(a, edge: b) }
         view.whenEdgePanned(.Right) { [weak self] a, b in self!.handleEdgePan(a, edge: b) }
