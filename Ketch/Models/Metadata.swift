@@ -12,12 +12,14 @@ import Meteor
 class Metadata {
     private let collection : METCollection
     
-    var softMinBuild : Int? { return valueForMetadataKey("softMinBuild") as? Int }
-    var hardMinBuild : Int? { return valueForMetadataKey("hardMinBuild") as? Int }
-    var crabUserId : String? { return valueForMetadataKey("crabUserId") as? String }
-    var vetted : Bool? { return valueForMetadataKey("vetted") as? Bool }
-    var debugMatchMode : Bool? { return false }
-    var debugBoatSailMode : Bool? { return false }
+    var softMinBuild : Int? { return getValue("softMinBuild") as? Int }
+    var hardMinBuild : Int? { return getValue("hardMinBuild") as? Int }
+    var crabUserId : String? { return getValue("crabUserId") as? String }
+    var vetted : Bool? { return getValue("vetted") as? Bool }
+    var debugState: FlowService.State? {
+        get { return (getValue("debugState") as? String).map { FlowService.State(rawValue: $0) }? }
+        set { setValue(newValue?.rawValue, metadataKey: "debugState") }
+    }
     
     // MARK: -
     
@@ -25,7 +27,15 @@ class Metadata {
         self.collection = collection
     }
     
-    private func valueForMetadataKey(key: String) -> AnyObject? {
-        return collection.documentWithID(key)?.fields["value"]
+    func getValue(metadataKey: String) -> AnyObject? {
+        return collection.documentWithID(metadataKey)?.fields["value"]
+    }
+    
+    func setValue(value: AnyObject?, metadataKey: String) {
+        if let value: AnyObject = value {
+            collection.updateDocumentWithID(metadataKey, changedFields: ["value": value])
+        } else {
+            collection.removeDocumentWithID(metadataKey)
+        }
     }
 }

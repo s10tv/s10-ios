@@ -13,14 +13,14 @@ import Meteor
 // FlowService manages the different states user can be in taking into account everything going on in the app
 
 class FlowService : NSObject {
-    enum State {
-        case Loading
-        case Signup
-        case Waitlist
-        case Welcome
-        case BoatSailed
-        case NewMatch
-        case NewGame
+    enum State : String {
+        case Loading = "Loading"
+        case Signup = "Signup"
+        case Waitlist = "Waitlist"
+        case Welcome = "Welcome"
+        case BoatSailed = "BoatSailed"
+        case NewMatch = "NewMatch"
+        case NewGame = "NewGame"
     }
     
     private let ms: MeteorService
@@ -68,12 +68,14 @@ class FlowService : NSObject {
     // MARK: State Spec & Update
     
     private func debugState() -> State? {
-        if ms.meta.debugMatchMode == true && Connection.all().count() > 0 {
-            newMatchToShow = newMatchToShow ?? Connection.all().fetchFirst() as? Connection
-            return .NewMatch
-        }
-        if ms.meta.debugBoatSailMode == true {
-            return .BoatSailed
+        if let state = ms.meta.debugState {
+            switch state {
+            case .NewMatch:
+                newMatchToShow = newMatchToShow ?? Connection.all().fetchFirst() as? Connection
+                return newMatchToShow != nil ? state : nil
+            default:
+                return state
+            }
         }
         return nil
     }
@@ -199,33 +201,14 @@ extension FlowService : METDDPClientDelegate {
 
 // MARK: - State extensions for comparison and printing
 
+extension FlowService.State : Printable {
+    var description: String { return rawValue }
+}
+
 func ==(a: FlowService.State, b: FlowService.State) -> Bool {
-    switch (a, b) {
-    case (.Loading, .Loading): return true
-    case (.Signup, .Signup): return true
-    case (.Waitlist, .Waitlist): return true
-    case (.Welcome, .Welcome): return true
-    case (.BoatSailed, .BoatSailed): return true
-    case (.NewMatch, .NewMatch): return true
-    case (.NewGame, .NewGame): return true
-    default: return false
-    }
+    return a.rawValue == b.rawValue
 }
 
 func !=(a: FlowService.State, b: FlowService.State) -> Bool {
     return !(a == b)
-}
-
-extension FlowService.State : Printable {
-    var description: String {
-        switch self {
-        case .Loading: return "Loading"
-        case .Signup: return "Signup"
-        case .Waitlist: return "Waitlist"
-        case .Welcome: return "Welcome"
-        case .BoatSailed: return "BoatSailed"
-        case .NewMatch: return "NewMatch"
-        case .NewGame: return "NewGame"
-        }
-    }
 }
