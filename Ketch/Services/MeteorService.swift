@@ -65,11 +65,6 @@ class MeteorService {
     func startup() {
         meteor.account = METAccount.defaultAccount()
         meteor.connect()
-        subscriptions.currentUser.signal.deliverOnMainThread().subscribeCompleted {
-            Log.setUserId(self.userID)
-            Log.setUserName(User.currentUser()?.displayName)
-            Log.setUserEmail(self.meta.email)
-        }
     }
     
     // MARK: - Server API

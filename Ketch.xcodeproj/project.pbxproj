@@ -23,6 +23,7 @@
 		EA0FC9441A87DE5800D62625 /* ViewProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9321A87DE5800D62625 /* ViewProviders.swift */; };
 		EA0FED411ADDD0C700FC6FCB /* PanInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FED401ADDD0C700FC6FCB /* PanInteractor.swift */; };
 		EA0FED431ADDF95600FC6FCB /* SailAwayTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FED421ADDF95600FC6FCB /* SailAwayTransition.swift */; };
+		EA0FED451ADE5BC500FC6FCB /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */; };
 		EA1970151A83549300FEBA7F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA196FFF1A83549300FEBA7F /* ProfileViewController.swift */; };
 		EA24C26D1AD8F52000C40AAD /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA24C26C1AD8F52000C40AAD /* Metadata.swift */; };
 		EA24C2731AD8F60900C40AAD /* _Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA24C26F1AD8F60900C40AAD /* _Candidate.swift */; };
@@ -142,6 +143,7 @@
 		EA0FC9321A87DE5800D62625 /* ViewProviders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProviders.swift; sourceTree = "<group>"; };
 		EA0FED401ADDD0C700FC6FCB /* PanInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanInteractor.swift; sourceTree = "<group>"; };
 		EA0FED421ADDF95600FC6FCB /* SailAwayTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SailAwayTransition.swift; sourceTree = "<group>"; };
+		EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
 		EA196FFF1A83549300FEBA7F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		EA24C26C1AD8F52000C40AAD /* Metadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
 		EA24C26F1AD8F60900C40AAD /* _Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Candidate.swift; sourceTree = "<group>"; };
@@ -444,6 +446,7 @@
 				EA2A38E51AD8A141005708D2 /* MeteorService.swift */,
 				EA6650EB1AA00A9C001BA40C /* AccountService.swift */,
 				EADDC6B01AD493710023DA0A /* FlowService.swift */,
+				EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -885,6 +888,7 @@
 				EA5FCE481AD62C1F000D9B93 /* GameTutorialController.swift in Sources */,
 				EADDC6B11AD493710023DA0A /* FlowService.swift in Sources */,
 				EA0FC9381A87DE5800D62625 /* FoundationExtension.swift in Sources */,
+				EA0FED451ADE5BC500FC6FCB /* AnalyticsService.swift in Sources */,
 				EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */,
 				EA6650FD1AA00B95001BA40C /* Message.swift in Sources */,
 				EAD7B2AB1A9F0BE700FA6740 /* DesignableViews.swift in Sources */,

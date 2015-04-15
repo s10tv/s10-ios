@@ -44,10 +44,13 @@ class AccountService {
             // Allow this to be set by server rather than client
             self.meteorService.meta.hasBeenWelcomed = false
             self.meteorService.meta.gameTutorialMode = true
+            // TODO: Figure out whether user signed up or logged in
+            Analytics.loggedIn()
         }
     }
     
     func logout() -> RACSignal {
+        Analytics.loggedOut()
         self.session.closeAndClearTokenInformation()
         UD.resetAll()
         return meteorService.logout().deliverOnMainThread()

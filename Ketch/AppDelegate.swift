@@ -17,12 +17,14 @@ private struct Globals {
     static var meteorService : MeteorService!
     static var flowService : FlowService!
     static var accountService : AccountService!
+    static var analyticsService : AnalyticsService!
 }
 
 let Env = Globals.environment
 let Meteor = Globals.meteorService
 let Flow = Globals.flowService
 let Account = Globals.accountService
+let Analytics = Globals.analyticsService
 let NC = NSNotificationCenter.defaultCenter()
 let UD = NSUserDefaults.standardUserDefaults()
 
@@ -46,8 +48,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
         Globals.meteorService = MeteorService(serverURL: Env.serverURL)
         Globals.accountService = AccountService(meteorService: Meteor)
         Globals.flowService = FlowService(meteorService: Meteor)
+        Globals.analyticsService = AnalyticsService(segmentWriteKey: Env.segmentWriteKey)
         
         Meteor.meta.bugfenderId = Bugfender.deviceIdentifier()
+        Meteor.subscriptions.currentUser.signal.deliverOnMainThread().subscribeCompleted {
+            Log.setUserId(Meteor.userID)
+            Log.setUserName(User.currentUser()?.displayName)
+            Log.setUserEmail(Meteor.meta.email)
+            Analytics.identifyUser(Meteor.userID!)
+        }
         
         // Should be probably extracted into push service
         application.registerForRemoteNotifications()
@@ -56,11 +65,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
         Meteor.startup()
         
         Log.info("App Launched")
+        Analytics.appOpen()
         return true
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
         SugarRecord.applicationWillEnterForeground()
+        Analytics.appOpen()
+    }
+    
+    func applicationDidEnterBackground(application: UIApplication) {
+        Analytics.appClose()
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
