@@ -38,6 +38,11 @@ class Metadata {
         get { return (getValue("debugState") as? String).map { FlowService.State(rawValue: $0) }? }
         set { setValue(newValue?.rawValue, metadataKey: "debugState") }
     }
+    var logVerboseState: Bool {
+        get { return getValue("logVerboseState") as? Bool ?? false }
+        set { setValue(newValue, metadataKey: "logVerboseState") }
+    }
+    
     
     // MARK: -
     

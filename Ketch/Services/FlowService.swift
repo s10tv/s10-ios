@@ -34,7 +34,6 @@ class FlowService : NSObject {
         self.ms = meteorService
         super.init()
         meteorService.delegate = self
-        listenForNotification(NSUserDefaultsDidChangeNotification, selector: "userDefaultsDidChange:")
         listenForNotification(METDatabaseDidChangeNotification, selector: "meteorDatabaseDidChange:")
     }
     
@@ -85,20 +84,22 @@ class FlowService : NSObject {
             Log.warn("Skipping regular state handling, returning debug state \(state)")
             return state
         }
-        Log.verbose([
-            "Internal Flow State:\n",
-            "ms.account \(ms.account)\n",
-            "ms.loggingIn \(ms.loggingIn)\n",
-            "metadata.ready \(ms.subscriptions.metadata.ready)\n",
-            "currentUser.ready \(ms.subscriptions.currentUser.ready)\n",
-            "candidates.ready \(ms.subscriptions.candidates.ready)\n",
-            "connections.ready \(ms.subscriptions.connections.ready)\n",
-            "ms.meta.vetted \(ms.meta.vetted)\n",
-            "hasBeenWelcomed \(ms.meta.hasBeenWelcomed)\n",
-            "candidateCount \(ms.collections.candidates.allDocuments?.count)\n",
-            "waitingOnGameResult \(waitingOnGameResult)\n",
-            "newMatchToShow \(newMatchToShow)\n"
-        ].reduce("", +))
+        if ms.meta.logVerboseState {
+            Log.verbose([
+                "Internal Flow State:\n",
+                "ms.account \(ms.account)\n",
+                "ms.loggingIn \(ms.loggingIn)\n",
+                "metadata.ready \(ms.subscriptions.metadata.ready)\n",
+                "currentUser.ready \(ms.subscriptions.currentUser.ready)\n",
+                "candidates.ready \(ms.subscriptions.candidates.ready)\n",
+                "connections.ready \(ms.subscriptions.connections.ready)\n",
+                "ms.meta.vetted \(ms.meta.vetted)\n",
+                "hasBeenWelcomed \(ms.meta.hasBeenWelcomed)\n",
+                "candidateCount \(ms.collections.candidates.allDocuments?.count)\n",
+                "waitingOnGameResult \(waitingOnGameResult)\n",
+                "newMatchToShow \(newMatchToShow)\n"
+            ].reduce("", +))
+        }
 
         // Startup Flow
         if ms.account == nil {
@@ -142,11 +143,7 @@ class FlowService : NSObject {
     }
     
     // MARK: Notification Handling
-    
-    func userDefaultsDidChange(notification: NSNotification) {
-        updateState()
-    }
-    
+        
     func meteorDatabaseDidChange(notification: NSNotification) {
         if let changes = notification.userInfo?[METDatabaseChangesKey] as? METDatabaseChanges {
             for key in changes.affectedDocumentKeys() {
