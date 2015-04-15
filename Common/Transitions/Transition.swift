@@ -12,10 +12,10 @@ import ReactiveCocoa
 class ViewControllerTransition : NSObject {
     let fromVC : UIViewController
     let toVC : UIViewController
-    let duration : NSTimeInterval
     var context : UIViewControllerContextTransitioning!
-    var interactor : UIViewControllerInteractiveTransitioning?
     var cancelled : Bool { return context.transitionWasCancelled() }
+    var duration : NSTimeInterval = 0.6
+    var interactor : UIViewControllerInteractiveTransitioning?
     
     var containerView : UIView {
         return context.containerView()
@@ -27,18 +27,23 @@ class ViewControllerTransition : NSObject {
         return context.viewForKey(UITransitionContextToViewKey)
     }
     
-    init(fromVC: UIViewController, toVC: UIViewController, duration: NSTimeInterval = 0.6, interactor: UIViewControllerInteractiveTransitioning? = nil) {
+    init(fromVC: UIViewController, toVC: UIViewController, interactor: UIViewControllerInteractiveTransitioning? = nil) {
         self.fromVC = fromVC
         self.toVC = toVC
-        self.duration = duration
         self.interactor = interactor
+        super.init()
+        setup()
     }
     
     // To be overwritten by subclass
+    func setup() {
+    }
+
     func animate() -> RACSignal {
         return RACSignal.empty()
     }
     
+    // Helper, doesn't need to be called by subclass
     func completeTransition() {
         if cancelled {
             toView?.removeFromSuperview()

@@ -12,36 +12,36 @@ import ReactiveCocoa
 
 class NewMatchTransition : WaveTransition {
     
-    init(fromVC: UIViewController, toVC: UIViewController) {
-        super.init(fromVC: fromVC, toVC: toVC, duration: 2)
+    override func setup() {
+        duration = 2
     }
     
     override func animate() -> RACSignal {
         let matchVC = toVC as NewConnectionViewController
-        containerView.addSubview(matchVC.view)
-        matchVC.view.frame = context.finalFrameForViewController(matchVC)
-        matchVC.view.layoutSubviews()
         
-        // Animate waterline
-        let finalY = matchVC.waveView.frame.origin.y
-//        matchVC.waveView.frame.origin.y = rootView.waveView.frame.origin.y
+        containerView.addSubview(toView!)
         
-        UIView.animateSpring(1) {
-            matchVC.waveView.frame.origin.y = finalY
-        }
+        // Animate the wave and layout views
+        let signals = [animateWithWave(duration/2)]
         
-        // Animate avatar
+        // Animate avatar to pop out of water
         let avatar = matchVC.avatar.layer
-        let pop = RBBSpringAnimation(keyPath: "position.y")
-        pop.fromValue = avatar.position.y + containerView.frame.height
-        pop.toValue = avatar.position.y
-        pop.duration = duration
-//        pop.stiffness = 10
-        pop.velocity = 1
-        pop.mass = 0.5
-        pop.damping = 5
-        pop.fillMode = kCAFillModeBackwards
+        let springUp = RBBSpringAnimation(keyPath: "position.y")
+        springUp.fromValue = avatar.position.y + containerView.frame.height
+        springUp.toValue = avatar.position.y
+        springUp.velocity = 1
+        springUp.mass = 0.5
+        springUp.damping = 5
+        springUp.fillMode = kCAFillModeBackwards
         
-        return pop.addToLayerAndReturnSignal(avatar, forKey: "position.y")
+        let sendToBack = CABasicAnimation("zPosition")
+        sendToBack.fromValue = 0.2 // Precisely selected so avatar goes back after first bounce
+        sendToBack.toValue = -1
+        
+        let popOutOfWater = CAAnimationGroup()
+        popOutOfWater.duration = duration
+        popOutOfWater.animations = [springUp, sendToBack]
+        
+        return popOutOfWater.addToLayerAndReturnSignal(avatar, forKey: "popOutOfWater")
     }
 }

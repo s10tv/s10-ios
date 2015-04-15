@@ -16,6 +16,10 @@ class NewGameTransition : WaveTransition {
     let bubbleDropInterval : NSTimeInterval = 0.1
     var gameVC : GameViewController { return toVC as GameViewController }
     
+    override func setup() {
+        duration = waveDuration + bubbleDropDuration + bubbleDropDuration * 2
+    }
+    
     override func animate() -> RACSignal {
         self.containerView.addSubview(toView!)
         
