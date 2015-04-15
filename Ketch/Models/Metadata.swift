@@ -51,7 +51,11 @@ class Metadata {
     
     func setValue(value: AnyObject?, metadataKey: String) {
         if let value: AnyObject = value {
-            collection.updateDocumentWithID(metadataKey, changedFields: ["value": value])
+            if getValue(metadataKey) == nil {
+                collection.insertDocumentWithID(metadataKey, fields: ["value": value])
+            } else {
+                collection.updateDocumentWithID(metadataKey, changedFields: ["value": value])
+            }
         } else {
             collection.removeDocumentWithID(metadataKey)
         }
