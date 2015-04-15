@@ -16,6 +16,7 @@ class Metadata {
     var hardMinBuild : Int? { return valueForMetadataKey("hardMinBuild") as? Int }
     var crabUserId : String? { return valueForMetadataKey("crabUserId") as? String }
     var vetted : Bool? { return valueForMetadataKey("vetted") as? Bool }
+    var debugMatchMode : Bool? { return false }
     
     // MARK: -
     

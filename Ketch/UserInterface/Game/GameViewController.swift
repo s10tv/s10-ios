@@ -45,7 +45,7 @@ class GameViewController : HomeViewController {
     weak var delegate: GameViewControllerDelegate?
     
     override func commonInit() {
-//        tutorial = GameTutorialController(gameVC: self)
+        tutorial = GameTutorialController(gameVC: self)
     }
     
     override func viewDidLoad() {
@@ -57,10 +57,6 @@ class GameViewController : HomeViewController {
             bubble.candidate = candidate
             bubble.whenTapped { [weak self] a in self?.handleBubbleTap(a); return }
             bubble.whenPanned { [weak self] a in self?.handleBubblePan(a); return }
-        }
-        view.whenTapEnded { () -> () in
-            self.navigationController?.popToRootViewControllerAnimated(true)
-            return
         }
         
         helpLabel.hidden = true
@@ -194,9 +190,10 @@ class GameViewController : HomeViewController {
     // MARK: - Navigation Logic
     
     func handleBubbleTap(tap: UITapGestureRecognizer) {
+        let candidate = (tap.view as CandidateBubble).candidate!
         if tap.state == .Ended {
             let users = candidates.map { $0.user! }
-            let index = find(candidates, (tap.view as CandidateBubble).candidate!)!
+            let index = find(candidates, candidate)!
             let pageVC = ProfileViewController.pagedController(users, initialPage: index) {
                 self.makeViewController(.Profile) as ProfileViewController
             }

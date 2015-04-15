@@ -55,4 +55,16 @@ class BaseViewController : UIViewController {
     }
     
     func stateDidUpdateWhileViewActive(state: FlowService.State) { }
+    
+    // MARK: Debugging
+    
+    override func motionEnded(subtype: UIEventSubtype, withEvent event: UIEvent) {
+        if Env.audience == .Dev {
+            if subtype == .MotionShake {
+                navigationController?.popToRootViewControllerAnimated(true)
+            }
+            return
+        }
+        super.motionEnded(subtype, withEvent: event)
+    }
 }

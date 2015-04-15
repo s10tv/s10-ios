@@ -68,6 +68,10 @@ class FlowService : NSObject {
     // MARK: State Spec & Update
     
     private func computeCurrentState() -> State {
+        if ms.meta.debugMatchMode == true {
+            newMatchToShow = newMatchToShow ?? Connection.all().fetchFirst() as? Connection
+            Log.debug("Debug mode setting newMatch to \(newMatchToShow)")
+        }
         Log.verbose([
             "Internal Flow State:\n",
             "ms.account \(ms.account)\n",
