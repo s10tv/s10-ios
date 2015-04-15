@@ -47,6 +47,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
         Globals.accountService = AccountService(meteorService: Meteor)
         Globals.flowService = FlowService(meteorService: Meteor)
         
+        Meteor.meta.bugfenderId = Bugfender.deviceIdentifier()
+        
         // Should be probably extracted into push service
         application.registerForRemoteNotifications()
         
