@@ -169,4 +169,11 @@ extension NSAttributedString {
         }
         return attrString
     }
+    
+    func replace(configure: (NSMutableAttributedString, NSRange) -> ()) -> NSAttributedString {
+        let attrString = mutableCopy() as NSMutableAttributedString
+        let range = NSMakeRange(0, attrString.length)
+        configure(attrString, range)
+        return attrString
+    }
 }

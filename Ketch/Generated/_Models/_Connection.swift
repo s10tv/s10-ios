@@ -8,11 +8,13 @@ enum ConnectionAttributes: String {
     case expiresAt = "expiresAt"
     case hasUnreadMessage = "hasUnreadMessage"
     case lastMessageText = "lastMessageText"
+    case otherUserLastSeenAt = "otherUserLastSeenAt"
     case type = "type"
     case updatedAt = "updatedAt"
 }
 
 enum ConnectionRelationships: String {
+    case otherUserLastSeenMessage = "otherUserLastSeenMessage"
     case user = "user"
 }
 
@@ -63,6 +65,11 @@ class _Connection: NSManagedObject {
     // func validateLastMessageText(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
+    var otherUserLastSeenAt: NSDate?
+
+    // func validateOtherUserLastSeenAt(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
     var type: String?
 
     // func validateType(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
@@ -73,6 +80,11 @@ class _Connection: NSManagedObject {
     // func validateUpdatedAt(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
+
+    @NSManaged
+    var otherUserLastSeenMessage: Message?
+
+    // func validateOtherUserLastSeenMessage(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
     var user: User?

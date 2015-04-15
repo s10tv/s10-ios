@@ -99,6 +99,16 @@ class ChatViewController : JSQMessagesViewController {
         return indexPath.row % 3 == 0
     }
     
+    func readDateForMessage(#indexPath: NSIndexPath) -> NSDate? {
+//        if shouldShowTimestampForMessageAtIndexPath(indexPath) {
+//            return NSDate()
+//        }
+        if messages.itemAtIndexPath(indexPath) as? Message == connection?.otherUserLastSeenMessage {
+            return connection?.otherUserLastSeenAt
+        }
+        return nil
+    }
+    
     // MARK: - 
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
         Meteor.sendMessage(connection!, text: text)
@@ -165,5 +175,28 @@ extension ChatViewController : JSQMessagesCollectionViewDataSource {
     override func collectionView(collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellTopLabelAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
         return shouldShowTimestampForMessageAtIndexPath(indexPath) ? 20 : 0
     }
-
+    
+    // Read Receipt
+    
+    override func collectionView(collectionView: JSQMessagesCollectionView!, attributedTextForCellBottomLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
+        if let date = readDateForMessage(indexPath: indexPath) {
+            let formatter = JSQMessagesTimestampFormatter.sharedFormatter()
+            let text = "Seen \(formatter.relativeDateForDate(date).lowercaseString) at \(formatter.timeForDate(date).lowercaseString)"
+            let range = NSMakeRange(0, text.length)
+            var paragraphStlye = NSMutableParagraphStyle()
+            paragraphStlye.alignment = .Right
+            
+            let str = NSMutableAttributedString(string: text)
+            str.addAttribute(NSParagraphStyleAttributeName, value: paragraphStlye, range: range)
+            str.addAttribute(NSFontAttributeName, value: UIFont(.transatTextStandard, size: 10), range: range)
+            str.addAttribute(NSForegroundColorAttributeName, value: StyleKit.teal, range: range)
+            
+            return str
+        }
+        return nil
+    }
+    
+    override func collectionView(collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellBottomLabelAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
+        return readDateForMessage(indexPath: indexPath) != nil ? 20 : 0
+    }
 }
