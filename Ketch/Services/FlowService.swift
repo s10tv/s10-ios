@@ -150,7 +150,9 @@ class FlowService : NSObject {
     func meteorDatabaseDidChange(notification: NSNotification) {
         if let changes = notification.userInfo?[METDatabaseChangesKey] as? METDatabaseChanges {
             for key in changes.affectedDocumentKeys() {
-                if (key as? METDocumentKey)?.collectionName == "candidates" {
+                let name = (key as? METDocumentKey)?.collectionName
+                if name == "candidates" || name == "metadata" {
+                    Log.debug("Collection \(name) did change")
                     updateState()
                     return
                 }
