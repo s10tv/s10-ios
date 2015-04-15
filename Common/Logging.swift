@@ -8,6 +8,7 @@
 
 import Foundation
 import BugfenderSDK
+import CrashlyticsFramework
 
 public let Log = Logger()
 
@@ -30,7 +31,23 @@ public class Logger {
         }
     }
     
-    let nslogger : NSLogger = NSLogger()
+    private let nslogger : NSLogger = NSLogger()
+    
+    // MARK: Metadata API
+    
+    func setUserId(userId: String?) {
+        Crashlytics.setUserIdentifier(userId)
+    }
+    
+    func setUserEmail(email: String?) {
+        Crashlytics.setUserEmail(email)
+    }
+    
+    func setUserName(name: String?) {
+        Crashlytics.setUserName(name)
+    }
+    
+    // MARK: Logging API
     
     func verbose(message: String, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) {
         log(message, level: LogLevel.Verbose, function: function, file: file, line: line)
@@ -65,6 +82,9 @@ public class Logger {
         let bfInfo = formatForBugFender(level, message: message)
         Bugfender.logWithFilename(file, lineNumber: Int32(line), functionName: function, tag: nil, level: bfInfo.0, message: bfInfo.1)
 
+        // Crashlytics
+        Crashlytics.logMessage(formatForCrashlytics(message, level, function, file, line))
+
         // Swift default
         println("[\(level)] \(message)")
     }
@@ -80,5 +100,10 @@ public class Logger {
         case .Error:
             return (.Error, message)
         }
+    }
+    
+    func formatForCrashlytics(message: String, _ level: LogLevel, _ function: String, _ file: String, _ line: Int) -> String {
+        let filename = file.lastPathComponent.stringByDeletingPathExtension
+        return "[\(level)] \(filename):\(line) \(message)"
     }
 }

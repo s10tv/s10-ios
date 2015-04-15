@@ -9,6 +9,7 @@
 #import <Meteor/METDatabase.h>
 #import <JSQMessagesViewController/JSQMessagesViewController.h>
 #import <BugfenderSDK/BugfenderSDK.h>
+#import <CrashlyticsFramework/Crashlytics.h>
 
 @interface JSQMessagesViewController (Private)
 
@@ -53,5 +54,11 @@
                     tag:(NSString *)tag
                   level:(BFLogLevel)level
                 message:(NSString *)message;
+
+@end
+
+@interface Crashlytics (Swift)
+
++ (void)logMessage:(NSString *)message;
 
 @end

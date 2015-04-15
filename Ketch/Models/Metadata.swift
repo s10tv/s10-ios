@@ -12,10 +12,16 @@ import Meteor
 class Metadata {
     private let collection : METCollection
     
+    // MARK: Read-only properties
+    
     var softMinBuild : Int? { return getValue("softMinBuild") as? Int }
     var hardMinBuild : Int? { return getValue("hardMinBuild") as? Int }
     var crabUserId : String? { return getValue("crabUserId") as? String }
     var vetted : Bool? { return getValue("vetted") as? Bool }
+    var email : String? { return getValue("email") as? String }
+    
+    // MARK: Read-write properties
+    
     var debugState: FlowService.State? {
         get { return (getValue("debugState") as? String).map { FlowService.State(rawValue: $0) }? }
         set { setValue(newValue?.rawValue, metadataKey: "debugState") }
