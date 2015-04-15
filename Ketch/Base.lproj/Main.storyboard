@@ -829,6 +829,8 @@ SAILED FOR TODAY.</string>
                         <outlet property="inputToolbar" destination="Xu6-1f-SQN" id="yvs-FZ-3FH"/>
                         <outlet property="nameLabel" destination="KXi-gz-q2s" id="tgz-EY-sF9"/>
                         <outlet property="titleView" destination="vk6-ib-pDk" id="Daa-OH-iRd"/>
+                        <outlet property="toolbarBottomLayoutGuide" destination="hx1-aT-jIS" id="q2K-px-lFe"/>
+                        <outlet property="toolbarHeightConstraint" destination="Kc8-bW-9bs" id="OVq-8N-IK2"/>
                         <segue destination="G4Y-Ae-Xgh" kind="presentation" identifier="ChatToProfile" id="T9Y-bJ-q8s"/>
                     </connections>
                 </viewController>
@@ -1386,9 +1388,9 @@ SAILED FOR TODAY.</string>
         <image name="settings-icon-notepad" width="21" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="q7i-Iz-xMU"/>
         <segue reference="nCf-mq-8Rt"/>
-        <segue reference="9mb-SI-KHc"/>
+        <segue reference="q7i-Iz-xMU"/>
         <segue reference="LKi-wK-Agw"/>
+        <segue reference="T9Y-bJ-q8s"/>
     </inferredMetricsTieBreakers>
 </document>
