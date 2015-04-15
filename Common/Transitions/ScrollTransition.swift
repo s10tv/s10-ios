@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ReactiveCocoa
 
 class ScrollTransition : ViewControllerTransition {
     enum Direction {
@@ -20,7 +21,7 @@ class ScrollTransition : ViewControllerTransition {
     }
     
     // TODO: What if we add animation to CALayer, will interactive animation break?
-    override func animate() {
+    override func animate() -> RACSignal {
         var leftFrame = containerView.bounds
         leftFrame.origin.x -= leftFrame.width
         var centerFrame = containerView.bounds
@@ -32,17 +33,13 @@ class ScrollTransition : ViewControllerTransition {
         var fromFinalFrame = direction == .RightToLeft ? leftFrame : rightFrame
         toView?.frame = toInitialFrame
         
-        UIView.animateWithDuration(duration,
-            delay: 0, options: .CurveEaseInOut,
-            animations: {
-                self.fromView?.frame = fromFinalFrame
-                self.toView?.frame = centerFrame
-            }) { completed in
-                if (self.cancelled) {
-                    self.toView?.removeFromSuperview()
-                    self.fromView?.frame = centerFrame
-                }
-                self.completeTransition()
+        return UIView.animate(duration, options: .CurveEaseInOut) {
+            self.fromView?.frame = fromFinalFrame
+            self.toView?.frame = centerFrame
+        }.doCompleted {
+            if (self.cancelled) {
+                self.fromView?.frame = centerFrame
             }
+        }
     }
 }

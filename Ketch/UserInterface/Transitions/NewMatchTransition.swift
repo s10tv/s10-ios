@@ -8,6 +8,7 @@
 
 import UIKit
 import RBBAnimation
+import ReactiveCocoa
 
 class NewMatchTransition : WaveTransition {
     
@@ -15,7 +16,7 @@ class NewMatchTransition : WaveTransition {
         super.init(fromVC: fromVC, toVC: toVC, duration: 2)
     }
     
-    override func animate() {
+    override func animate() -> RACSignal {
         let matchVC = toVC as NewConnectionViewController
         containerView.addSubview(matchVC.view)
         matchVC.view.frame = context.finalFrameForViewController(matchVC)
@@ -40,9 +41,7 @@ class NewMatchTransition : WaveTransition {
         pop.mass = 0.5
         pop.damping = 5
         pop.fillMode = kCAFillModeBackwards
-        pop.addToLayerAndReturnSignal(avatar, forKey: "position.y").subscribeCompleted {
-            self.context.completeTransition(true)
-        }
-        avatar.addAnimation(pop, forKey: "position.y")
+        
+        return pop.addToLayerAndReturnSignal(avatar, forKey: "position.y")
     }
 }

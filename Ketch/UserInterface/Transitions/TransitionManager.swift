@@ -21,19 +21,16 @@ class TransitionManager : NSObject, UINavigationControllerDelegate {
         switch (fromVC, toVC) {
             
         case let (fromVC as LoadingViewController, toVC as GameViewController):
-            return NewGameTransition(loadingVC: fromVC, gameVC: toVC, operation: operation)
+            return NewGameTransition(fromVC: fromVC, toVC: toVC)
 
-        case let (fromVC as GameViewController, toVC as LoadingViewController):
-            return NewGameTransition(loadingVC: toVC, gameVC: fromVC, operation: operation)
-
+        case (_ as LoadingViewController, _ as NewConnectionViewController):
+            return NewMatchTransition(fromVC: fromVC, toVC: toVC)
+        
         case (_ as HomeViewController, _ as DockViewController):
             return ScrollTransition(fromVC: fromVC, toVC: toVC, direction: .RightToLeft, panGesture: currentEdgePan)
             
         case (_ as DockViewController, _ as HomeViewController):
             return ScrollTransition(fromVC: fromVC, toVC: toVC, direction: .LeftToRight, panGesture: currentEdgePan)
-
-        case (_ as LoadingViewController, _ as NewConnectionViewController):
-            return NewMatchTransition(fromVC: fromVC, toVC: toVC)
             
         default:
             return WaveTransition(fromVC: fromVC, toVC: toVC, interactor: currentEdgePan.map { PanInteractor($0) })

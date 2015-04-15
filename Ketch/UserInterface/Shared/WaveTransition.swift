@@ -19,27 +19,25 @@ class WaveTransition : ViewControllerTransition {
         return toView?.subviews.match { $0 is WaveView } as? WaveView
     }
     
-    override func animate() {
-        if fromWaveView != nil && toWaveView != nil {
-            animateWithWave(duration)
+    override func animate() -> RACSignal {
+        containerView.addSubview(toView!)
+        if self.fromWaveView != nil && self.toWaveView != nil {
+            return self.animateWithWave(self.duration)
         } else {
-            containerView.addSubview(toView!)
-            toView?.frame = context.finalFrameForViewController(toVC)
-            toView?.alpha = 0
-            
-            UIView.animateSpring(duration) {
-                self.toView?.alpha = 1
-                self.fromView?.alpha = 0
-            }.subscribeCompleted {
-                if self.cancelled {
-                    self.toView?.removeFromSuperview()
-                }
-                self.completeTransition()
-            }
+            return self.animateOpacity(self.duration)
         }
     }
     
-    func animateWithWave(duration: NSTimeInterval) {
+    func animateOpacity(duration: NSTimeInterval) -> RACSignal {
+        toView?.frame = context.finalFrameForViewController(toVC)
+        toView?.alpha = 0
+        return UIView.animateSpring(duration) {
+            self.toView?.alpha = 1
+            self.fromView?.alpha = 0
+        }
+    }
+    
+    func animateWithWave(duration: NSTimeInterval) -> RACSignal {
         // Protect overshooting bottom edge
         let tallWave = WaveView(frame: fromWaveView!.frame)
         tallWave.frame.size.height += containerView.bounds.height
@@ -59,28 +57,17 @@ class WaveTransition : ViewControllerTransition {
         // Initial State
         toView?.frame.origin.y -= delta
         toView?.alpha = 0
-        containerView.addSubview(toView!)
         
-        UIView.animateSpring(duration) {
+        return UIView.animateSpring(duration) {
             self.fromView?.alpha = 0
             self.fromView?.frame.origin.y += delta
             self.toView?.alpha = 1
             self.toView?.frame.origin.y += delta
             tallWave.frame.origin.y += delta
-        }.subscribeCompleted {
+        }.doCompleted {
             // Remove overshoot protection
             tallWave.removeFromSuperview()
             self.containerView.backgroundColor = containerBackgroundColor
-            // Handle cancellation
-            if self.cancelled {
-                self.toView?.removeFromSuperview()
-            }
-            // Finally complete
-            self.completeTransition()
         }
-    }
-    
-    func animateWaterline(duration: NSTimeInterval? = nil) -> RACSignal {
-        return RACSignal.empty()
     }
 }

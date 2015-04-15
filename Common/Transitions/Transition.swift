@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import ReactiveCocoa
 
 class ViewControllerTransition : NSObject {
     let fromVC : UIViewController
@@ -35,10 +35,14 @@ class ViewControllerTransition : NSObject {
     }
     
     // To be overwritten by subclass
-    func animate() {
+    func animate() -> RACSignal {
+        return RACSignal.empty()
     }
     
     func completeTransition() {
+        if cancelled {
+            toView?.removeFromSuperview()
+        }
         context.completeTransition(!cancelled)
     }
 }
@@ -51,6 +55,8 @@ extension ViewControllerTransition : UIViewControllerAnimatedTransitioning {
     
     func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         context = transitionContext
-        animate()
+        animate().subscribeCompleted {
+            self.completeTransition()
+        }
     }
 }
