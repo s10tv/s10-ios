@@ -10,22 +10,16 @@ import UIKit
 import RBBAnimation
 import ReactiveCocoa
 
-class NewMatchTransition : WaveTransition {
+class NewMatchTransition : SailAwayTransition {
+    let popDuration: NSTimeInterval = 2
     
     override func setup() {
-        duration = 2
+        duration = boatDuration + popDuration
     }
     
-    override func animate() -> RACSignal {
-        let matchVC = toVC as NewConnectionViewController
+    func animateAvatarPop() -> RACSignal {
+        let avatar = (toVC as NewConnectionViewController).avatar.layer
         
-        containerView.addSubview(toView!)
-        
-        // Animate the wave and layout views
-        let signals = [animateWithWave(duration/2)]
-        
-        // Animate avatar to pop out of water
-        let avatar = matchVC.avatar.layer
         let springUp = RBBSpringAnimation(keyPath: "position.y")
         springUp.fromValue = avatar.position.y + containerView.frame.height
         springUp.toValue = avatar.position.y
@@ -39,9 +33,19 @@ class NewMatchTransition : WaveTransition {
         sendToBack.toValue = -1
         
         let popOutOfWater = CAAnimationGroup()
-        popOutOfWater.duration = duration
+        popOutOfWater.duration = popDuration
         popOutOfWater.animations = [springUp, sendToBack]
         
         return popOutOfWater.addToLayerAndReturnSignal(avatar, forKey: "popOutOfWater")
+    }
+    
+    override func animate() -> RACSignal {
+        return animateBoatAway().then {
+            self.containerView.addSubview(self.toView!)
+            return RACSignal.merge([
+                self.animateWithWave(self.popDuration/2),
+                self.animateAvatarPop()
+            ])
+        }
     }
 }

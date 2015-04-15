@@ -68,7 +68,7 @@ class FlowService : NSObject {
     // MARK: State Spec & Update
     
     private func debugState() -> State? {
-        if ms.meta.debugMatchMode == true {
+        if ms.meta.debugMatchMode == true && Connection.all().count() > 0 {
             newMatchToShow = newMatchToShow ?? Connection.all().fetchFirst() as? Connection
             return .NewMatch
         }
