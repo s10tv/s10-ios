@@ -9,8 +9,9 @@
 import Foundation
 
 class KetchBoatView : UIImageView {
-    
-    override var image : UIImage? {
+
+    let scaleDuration: NSTimeInterval = 0.2
+    override var image: UIImage? {
         get { return super.image }
         set { super.image = newValue ?? UIImage(R.KetchAssets.ketch) }
     }
@@ -28,5 +29,21 @@ class KetchBoatView : UIImageView {
     override func layoutSubviews() {
         super.layoutSubviews()
         animatePitch()
+    }
+    
+    // MARK: -
+    
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        super.touchesBegan(touches, withEvent: event)
+        UIView.animate(scaleDuration) {
+            self.transform = CGAffineTransform(scale: 1.5)
+        }
+    }
+    
+    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        super.touchesEnded(touches, withEvent: event)
+        UIView.animate(scaleDuration, delay: 0.1) {
+            self.transform = CGAffineTransformIdentity
+        }
     }
 }
