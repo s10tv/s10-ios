@@ -268,7 +268,7 @@ SAILED FOR TODAY.</string>
                                     </mask>
                                 </variation>
                             </imageView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WaA-5Q-0JZ" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WaA-5Q-0JZ" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="427" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -897,6 +897,9 @@ SAILED FOR TODAY.</string>
                                         <state key="normal" title="MORE">
                                             <color key="titleColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="showMoreOptions:" destination="G4Y-Ae-Xgh" eventType="touchUpInside" id="3fJ-7D-VAC"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anastasia" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1i-a7-EeL" userLabel="Name">
                                         <rect key="frame" x="100" y="336" width="119" height="27"/>
@@ -1260,7 +1263,7 @@ SAILED FOR TODAY.</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XQk-zO-0XK" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XQk-zO-0XK" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="540" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
