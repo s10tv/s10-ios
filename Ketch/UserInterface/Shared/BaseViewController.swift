@@ -8,10 +8,12 @@
 
 import UIKit
 import ReactiveCocoa
+import Meteor
 
 class BaseViewController : UIViewController {
     
     private var stateDisposable: RACDisposable?
+    private var metadataDisposable: RACDisposable?
     
     override func prefersStatusBarHidden() -> Bool {
         return true
@@ -44,17 +46,28 @@ class BaseViewController : UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         stateDisposable = Flow.stateSignal().subscribeNext { [weak self] _ in
-            self?.stateDidUpdateWhileViewActive(Flow.currentState)
-            return
+            self!.stateDidUpdateWhileViewActive(Flow.currentState)
+        }
+        metadataDisposable = listenForNotification(METDatabaseDidChangeNotification)
+            .deliverOnMainThread().subscribeNextAs { (notification: NSNotification) in
+            if let changes = notification.userInfo?[METDatabaseChangesKey] as? METDatabaseChanges {
+                changes.affectedDocumentKeys().allObjects.filter {
+                    ($0 as? METDocumentKey)?.collectionName == "metadata"
+                }.map { $0.documentID as String }.each {
+                    self.metadataDidUpdateWhileViewActive($0, value: Meteor.meta.getValue($0))
+                }
+            }
         }
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         stateDisposable?.dispose()
+        metadataDisposable?.dispose()
     }
     
     func stateDidUpdateWhileViewActive(state: FlowService.State) { }
+    func metadataDidUpdateWhileViewActive(metadataKey: String, value: AnyObject?) { }
     
     // MARK: Debugging
     

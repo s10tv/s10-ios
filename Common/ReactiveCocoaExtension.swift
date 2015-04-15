@@ -10,8 +10,8 @@ import ReactiveCocoa
 
 // Avoid having to type cast all the time
 extension RACSignal {
-    func subscribeNextAs<T>(nextClosure:(T) -> ()) -> () {
-        self.subscribeNext { (next: AnyObject!) -> () in
+    func subscribeNextAs<T>(nextClosure:(T) -> ()) -> RACDisposable {
+        return self.subscribeNext { (next: AnyObject!) -> () in
             let nextAsT = next as T
             nextClosure(nextAsT)
         }

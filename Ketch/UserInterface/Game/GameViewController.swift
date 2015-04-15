@@ -219,4 +219,16 @@ class GameViewController : HomeViewController {
         delegate?.gameDidSubmitChoice()
         performSegue(.FinishGame)
     }
+    
+    override func stateDidUpdateWhileViewActive(state: FlowService.State) {
+        if state != .NewGame {
+            self.performSegue(.FinishGame)
+        }
+    }
+    
+    override func metadataDidUpdateWhileViewActive(metadataKey: String, value: AnyObject?) {
+        if metadataKey == "gameTutorialMode" {
+            self.performSegue(.FinishGame)
+        }
+    }
 }
