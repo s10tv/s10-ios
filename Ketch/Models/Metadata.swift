@@ -17,6 +17,7 @@ class Metadata {
     var crabUserId : String? { return valueForMetadataKey("crabUserId") as? String }
     var vetted : Bool? { return valueForMetadataKey("vetted") as? Bool }
     var debugMatchMode : Bool? { return false }
+    var debugBoatSailMode : Bool? { return false }
     
     // MARK: -
     

@@ -67,10 +67,21 @@ class FlowService : NSObject {
     
     // MARK: State Spec & Update
     
-    private func computeCurrentState() -> State {
+    private func debugState() -> State? {
         if ms.meta.debugMatchMode == true {
             newMatchToShow = newMatchToShow ?? Connection.all().fetchFirst() as? Connection
-            Log.debug("Debug mode setting newMatch to \(newMatchToShow)")
+            return .NewMatch
+        }
+        if ms.meta.debugBoatSailMode == true {
+            return .BoatSailed
+        }
+        return nil
+    }
+    
+    private func computeCurrentState() -> State {
+        if let state = debugState() {
+            Log.warn("Skipping regular state handling, returning debug state \(state)")
+            return state
         }
         Log.verbose([
             "Internal Flow State:\n",

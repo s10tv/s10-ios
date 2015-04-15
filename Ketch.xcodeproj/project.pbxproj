@@ -22,6 +22,7 @@
 		EA0FC9431A87DE5800D62625 /* FetchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9311A87DE5800D62625 /* FetchViewModel.swift */; };
 		EA0FC9441A87DE5800D62625 /* ViewProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9321A87DE5800D62625 /* ViewProviders.swift */; };
 		EA0FED411ADDD0C700FC6FCB /* PanInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FED401ADDD0C700FC6FCB /* PanInteractor.swift */; };
+		EA0FED431ADDF95600FC6FCB /* SailAwayTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FED421ADDF95600FC6FCB /* SailAwayTransition.swift */; };
 		EA1970151A83549300FEBA7F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA196FFF1A83549300FEBA7F /* ProfileViewController.swift */; };
 		EA24C26D1AD8F52000C40AAD /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA24C26C1AD8F52000C40AAD /* Metadata.swift */; };
 		EA24C2731AD8F60900C40AAD /* _Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA24C26F1AD8F60900C40AAD /* _Candidate.swift */; };
@@ -141,6 +142,7 @@
 		EA0FC9311A87DE5800D62625 /* FetchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchViewModel.swift; sourceTree = "<group>"; };
 		EA0FC9321A87DE5800D62625 /* ViewProviders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProviders.swift; sourceTree = "<group>"; };
 		EA0FED401ADDD0C700FC6FCB /* PanInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanInteractor.swift; sourceTree = "<group>"; };
+		EA0FED421ADDF95600FC6FCB /* SailAwayTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SailAwayTransition.swift; sourceTree = "<group>"; };
 		EA196FFF1A83549300FEBA7F /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		EA24C26C1AD8F52000C40AAD /* Metadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
 		EA24C26F1AD8F60900C40AAD /* _Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Candidate.swift; sourceTree = "<group>"; };
@@ -541,9 +543,10 @@
 		EAAD92191ACDEAB70014BA25 /* Transitions */ = {
 			isa = PBXGroup;
 			children = (
+				EAA36DDF1AD1CD4800B30F24 /* TransitionManager.swift */,
 				EAAD921A1ACDEACD0014BA25 /* NewMatchTransition.swift */,
 				EA72FB1E1AD180F1009F853F /* NewGameTransition.swift */,
-				EAA36DDF1AD1CD4800B30F24 /* TransitionManager.swift */,
+				EA0FED421ADDF95600FC6FCB /* SailAwayTransition.swift */,
 			);
 			path = Transitions;
 			sourceTree = "<group>";
@@ -860,6 +863,7 @@
 				EA755A321ADDA4D8004B4A1D /* ChatViewController.swift in Sources */,
 				EA24C2731AD8F60900C40AAD /* _Candidate.swift in Sources */,
 				EA4A66571AA2D9BB0019D601 /* ChoicePlaceholder.swift in Sources */,
+				EA0FED431ADDF95600FC6FCB /* SailAwayTransition.swift in Sources */,
 				EA755A3B1ADDA5CB004B4A1D /* SettingsViewController.swift in Sources */,
 				EA0FC9441A87DE5800D62625 /* ViewProviders.swift in Sources */,
 				EAAD921B1ACDEACD0014BA25 /* NewMatchTransition.swift in Sources */,

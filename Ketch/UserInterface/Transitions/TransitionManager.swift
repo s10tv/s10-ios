@@ -20,8 +20,11 @@ class TransitionManager : NSObject, UINavigationControllerDelegate {
 
         switch (fromVC, toVC) {
             
-        case let (fromVC as LoadingViewController, toVC as GameViewController):
+        case (_ as LoadingViewController, _ as GameViewController):
             return NewGameTransition(fromVC: fromVC, toVC: toVC)
+        
+        case (_ as LoadingViewController, _ as BoatSailedViewController):
+            return SailAwayTransition(fromVC: fromVC, toVC: toVC)
 
         case (_ as LoadingViewController, _ as NewConnectionViewController):
             return NewMatchTransition(fromVC: fromVC, toVC: toVC)

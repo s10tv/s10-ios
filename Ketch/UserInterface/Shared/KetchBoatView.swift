@@ -15,8 +15,7 @@ class KetchBoatView : UIImageView {
         set { super.image = newValue ?? UIImage(R.KetchAssets.ketch) }
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
+    func animatePitch() {
         layer.animate(keyPath: "transform.rotation") { pitch, _ in
             pitch.fromValue = 0.2
             pitch.toValue = -0.2
@@ -24,5 +23,10 @@ class KetchBoatView : UIImageView {
             pitch.duration = 3
             pitch.repeatCount = Float.infinity
         }
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        animatePitch()
     }
 }
