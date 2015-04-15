@@ -16,7 +16,8 @@ class Environment {
     let audience : Audience
     let provisioningProfile : ProvisioningProfile?
     let crashlyticsAPIKey = "4cdb005d0ddfebc8865c0a768de9b43c993e9113"
-    let bugfenderAppToken : String
+    let bugfenderAppToken: String
+    let segmentWriteKey: String
     let termsAndConditionURL = NSURL("http://ketchtheone.com/terms")
     let privacyURL = NSURL("http://ketchtheone.com/privacy")
     let notPickyExitURL = NSURL("http://tinder.com/")
@@ -35,14 +36,19 @@ class Environment {
         self.provisioningProfile = provisioningProfile
         switch audience {
             case .Dev:
-                serverHostName = "ketch-dev.herokuapp.com" // "localhost:3000"
+                serverHostName = "ketch-dev.herokuapp.com"
+//                serverHostName = "10.1.10.44:3000"
+//                serverHostName = "ketch-beta.herokuapp.com"
                 bugfenderAppToken = "RBsiKkpkyiXUW2Sk50JTKTKUYlNpXsFn"
+                segmentWriteKey = "vfnxR5SsgYkNQqRznBWHXDp2LMFkUNTv"
             case .Beta:
                 serverHostName = "ketch-beta.herokuapp.com"
                 bugfenderAppToken = "lO35cfZMdPxzIraCq4YFKISSKZ2EAIwe"
+                segmentWriteKey = "SGEB9gVQGFYgeptFbtnETHCka8FCOuoc"
             case .AppStore:
                 serverHostName = "ketch.herokuapp.com"
                 bugfenderAppToken = "ow9JOdNYSo5iVqPUUAEbS8HfmwZqb1tQ"
+                segmentWriteKey = "JPCrmGwQqlgohXoowBFSLwesir9Zn5Bv"
         }
     }
     
