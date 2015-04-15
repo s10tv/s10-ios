@@ -174,7 +174,10 @@ extension ChatViewController : JSQMessagesCollectionViewDataSource {
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellTopLabelAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
-        return shouldShowTimestampForMessageAtIndexPath(indexPath) ? 20 : 0
+        if let str = self.collectionView(collectionView, attributedTextForCellTopLabelAtIndexPath: indexPath) {
+            return str.boundingRectWithSize(CGSize(side: 1000), options: .UsesFontLeading, context: nil).height
+        }
+        return 0
     }
     
     // Read Receipt
@@ -198,6 +201,9 @@ extension ChatViewController : JSQMessagesCollectionViewDataSource {
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellBottomLabelAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
-        return readDateForMessage(indexPath: indexPath) != nil ? 20 : 0
+        if let str = self.collectionView(collectionView, attributedTextForCellBottomLabelAtIndexPath: indexPath) {
+            return str.boundingRectWithSize(CGSize(side: 1000), options: .UsesFontLeading, context: nil).height
+        }
+        return 0
     }
 }
