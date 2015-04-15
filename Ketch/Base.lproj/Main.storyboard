@@ -1322,6 +1322,7 @@ SAILED FOR TODAY.</string>
                     </view>
                     <navigationItem key="navigationItem" id="Q7Z-rR-KIW"/>
                     <connections>
+                        <outlet property="loadingView" destination="W6B-JD-gK0" id="QkL-er-DA9"/>
                         <segue destination="brw-cx-YUO" kind="show" identifier="LoadingToGame" id="FLq-Pa-kyO"/>
                         <segue destination="xL7-fS-abd" kind="custom" identifier="Signup_Signup" customClass="LinkedStoryboardPushSegue" id="A9d-Ac-mF2"/>
                         <segue destination="jhY-qC-hf5" kind="custom" identifier="Signup_Waitlist" customClass="LinkedStoryboardPushSegue" id="cVa-Is-AY3"/>

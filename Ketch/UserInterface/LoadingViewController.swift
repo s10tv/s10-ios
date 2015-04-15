@@ -10,6 +10,18 @@ import Foundation
 
 class LoadingViewController : BaseViewController {
     
+    @IBOutlet weak var loadingView: UIView!
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        loadingView.setHiddenAnimated(hidden: false, duration: 0.75)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        loadingView.setHiddenAnimated(hidden: true, duration: 0.25)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destVC as? NewConnectionViewController {
             vc.connection = Flow.newMatchToShow
