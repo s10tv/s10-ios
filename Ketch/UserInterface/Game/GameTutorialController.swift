@@ -164,7 +164,7 @@ class GameTutorialController {
 
 extension GameTutorialController : GameViewControllerDelegate {
     func gameViewWillAppear(animated: Bool) {
-        if UD[.bGameTutorialMode].bool! {
+        if Meteor.meta.gameTutorialMode == true {
             if !started {
                 setupTutorial()
             }
@@ -190,6 +190,6 @@ extension GameTutorialController : GameViewControllerDelegate {
         teardownTutorial()
         gameVC.tutorial = nil
         gameVC.delegate = nil
-        UD[.bGameTutorialMode] = false
+        Meteor.meta.gameTutorialMode = false
     }
 }

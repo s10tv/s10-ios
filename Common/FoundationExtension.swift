@@ -177,3 +177,9 @@ extension NSAttributedString {
         return attrString
     }
 }
+
+extension NSUserDefaults {
+    func resetAll() {
+        removePersistentDomainForName(NSBundle.mainBundle().bundleIdentifier!)
+    }
+}

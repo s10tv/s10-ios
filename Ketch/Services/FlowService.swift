@@ -94,7 +94,7 @@ class FlowService : NSObject {
             "candidates.ready \(ms.subscriptions.candidates.ready)\n",
             "connections.ready \(ms.subscriptions.connections.ready)\n",
             "ms.meta.vetted \(ms.meta.vetted)\n",
-            "hasBeenWelcomed \(UD[.bHasBeenWelcomed].bool)\n",
+            "hasBeenWelcomed \(ms.meta.hasBeenWelcomed)\n",
             "candidateCount \(ms.collections.candidates.allDocuments?.count)\n",
             "waitingOnGameResult \(waitingOnGameResult)\n",
             "newMatchToShow \(newMatchToShow)\n"
@@ -114,7 +114,7 @@ class FlowService : NSObject {
         // Onboarding Flow
         if ms.meta.vetted != true {
             return .Waitlist
-        } else if UD[.bHasBeenWelcomed].bool != true {
+        } else if ms.meta.hasBeenWelcomed != true {
             return .Welcome
         }
         // Core Flow

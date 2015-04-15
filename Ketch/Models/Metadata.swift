@@ -22,6 +22,18 @@ class Metadata {
     
     // MARK: Read-write properties
     
+    var bugfenderId: String? {
+        get { return getValue("bugfenderId") as? String }
+        set { setValue(newValue, metadataKey: "bugfenderId") }
+    }
+    var gameTutorialMode: Bool? {
+        get { return getValue("gameTutorialMode") as? Bool }
+        set { setValue(newValue, metadataKey: "gameTutorialMode") }
+    }
+    var hasBeenWelcomed: Bool? {
+        get { return getValue("hasBeenWelcomed") as? Bool }
+        set { setValue(newValue, metadataKey: "hasBeenWelcomed") }
+    }
     var debugState: FlowService.State? {
         get { return (getValue("debugState") as? String).map { FlowService.State(rawValue: $0) }? }
         set { setValue(newValue?.rawValue, metadataKey: "debugState") }

@@ -40,7 +40,11 @@ class AccountService {
         return self.openSession(allowUI: true).then {
             let data = self.session.accessTokenData
             return self.meteorService.loginWithFacebook(accessToken: data.accessToken, expiresAt: data.expirationDate)
-        }.replayWithSubject().deliverOnMainThread()
+        }.replayWithSubject().deliverOnMainThread().doCompleted {
+            // Allow this to be set by server rather than client
+            self.meteorService.meta.hasBeenWelcomed = false
+            self.meteorService.meta.gameTutorialMode = true
+        }
     }
     
     func logout() -> RACSignal {

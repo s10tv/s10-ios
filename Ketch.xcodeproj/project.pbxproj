@@ -101,7 +101,6 @@
 		EAD007FC1AD37236003A260D /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD007FB1AD37236003A260D /* Geometry.swift */; };
 		EAD7B2AB1A9F0BE700FA6740 /* DesignableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */; };
 		EADDC6B11AD493710023DA0A /* FlowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADDC6B01AD493710023DA0A /* FlowService.swift */; };
-		EAE915321ACAFC890027C936 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE915311ACAFC890027C936 /* UserDefaults.swift */; };
 		EAEB63DB1AD31A4E0002D55C /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB63DA1AD31A4E0002D55C /* Animation.swift */; };
 		EAF195CF1A827FAD00A2F103 /* Ketch-Bridging.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */; };
 		EAF3A4BF1ACA2191001C2943 /* ProfileInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF3A4BE1ACA2191001C2943 /* ProfileInfoCell.xib */; };
@@ -226,7 +225,6 @@
 		EAD007FB1AD37236003A260D /* Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
 		EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableViews.swift; sourceTree = "<group>"; };
 		EADDC6B01AD493710023DA0A /* FlowService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowService.swift; sourceTree = "<group>"; };
-		EAE915311ACAFC890027C936 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		EAEB63DA1AD31A4E0002D55C /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Ketch-Bridging.m"; sourceTree = "<group>"; };
 		EAF3A4BE1ACA2191001C2943 /* ProfileInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileInfoCell.xib; sourceTree = "<group>"; };
@@ -413,7 +411,6 @@
 				EA6650F41AA00B95001BA40C /* Connection.swift */,
 				EA6650F51AA00B95001BA40C /* Message.swift */,
 				EA24C26C1AD8F52000C40AAD /* Metadata.swift */,
-				EAE915311ACAFC890027C936 /* UserDefaults.swift */,
 				EAAD921C1ACF342C0014BA25 /* Environment.swift */,
 			);
 			path = Models;
@@ -879,7 +876,6 @@
 				EA0FC9391A87DE5800D62625 /* Logging.swift in Sources */,
 				EA0FC93C1A87DE5800D62625 /* UIKitExtension.swift in Sources */,
 				EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */,
-				EAE915321ACAFC890027C936 /* UserDefaults.swift in Sources */,
 				EA6650FB1AA00B95001BA40C /* Candidate.swift in Sources */,
 				EA0FC9421A87DE5800D62625 /* BaseViewModel.swift in Sources */,
 				EACF216A1AD7255100938CD0 /* WaitlistViewController.swift in Sources */,

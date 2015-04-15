@@ -42,9 +42,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
         Crashlytics.sharedInstance().delegate = self
         Bugfender.activateLogger(Env.bugfenderAppToken)
         
-        // Make sure user default values are set
-        UD.registerDefaultValues()
-        
         // Setup global services
         Globals.meteorService = MeteorService(serverURL: Env.serverURL)
         Globals.accountService = AccountService(meteorService: Meteor)
