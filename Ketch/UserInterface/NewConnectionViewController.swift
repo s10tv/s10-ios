@@ -26,7 +26,7 @@ class NewConnectionViewController : BaseViewController {
     }
 
     func didTapOnAvatar() {
-        let profileVC = ProfileViewController()
+        let profileVC = makeViewController(.Profile) as ProfileViewController
         profileVC.user = self.connection.user
         self.presentViewController(profileVC, animated: true)
     }
