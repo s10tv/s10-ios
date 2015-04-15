@@ -13,10 +13,20 @@ import RBBAnimation
 class WaveTransition : ViewControllerTransition {
     
     var fromWaveView: WaveView? {
-        return fromView?.subviews.match { $0 is WaveView } as? WaveView
+        return findWaveView(fromView)
     }
     var toWaveView: WaveView? {
-        return toView?.subviews.match { $0 is WaveView } as? WaveView
+        return findWaveView(toView)
+    }
+    
+    // Super verbose helper to work around undebgguable crash in iOS 8.3
+    func findWaveView(superview: UIView?) -> WaveView? {
+        for view in superview?.subviews ?? [] {
+            if let waveView = view as? WaveView {
+                return waveView
+            }
+        }
+        return nil
     }
     
     override func animate() -> RACSignal {
@@ -38,6 +48,8 @@ class WaveTransition : ViewControllerTransition {
     }
     
     func animateWithWave(duration: NSTimeInterval) -> RACSignal {
+        assert(fromWaveView != nil && toWaveView != nil, "Expecting waveViews to exist")
+        
         // Protect overshooting bottom edge
         let tallWave = WaveView(frame: fromWaveView!.frame)
         tallWave.frame.size.height += containerView.bounds.height
