@@ -68,6 +68,17 @@ class MeteorService {
     }
     
     // MARK: - Server API
+
+    func registerDevice(env: Environment, pushToken: NSData? = nil) -> RACSignal {
+        return meteor.call("user/registerDevice", [[
+            "deviceId": env.deviceId,
+            "appId": env.appId,
+            "version": env.version,
+            "build": env.build,
+            "apsEnv": env.provisioningProfile?.apsEnvironment?.rawValue,
+            "pushToken": pushToken?.hexString()
+        ].filter { (k, v) in v != nil }.map { (k, v) in (k, v!) }])
+    }
     
     func loginWithFacebook(#accessToken: String, expiresAt: NSDate) -> RACSignal {
         return meteor.loginWithMethod("login", params: [[
@@ -76,10 +87,6 @@ class MeteorService {
                 "expireAt": expiresAt.timeIntervalSince1970
             ]
         ]])
-    }
-    
-    func addPushToken(#appID: String, apsEnv: String, pushToken: NSData) -> RACSignal {
-        return meteor.call("user/addPushToken", [appID, apsEnv, pushToken.hexString()])
     }
     
     func submitChoices(#yes: Candidate, no: Candidate, maybe: Candidate) -> RACSignal {

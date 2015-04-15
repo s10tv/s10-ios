@@ -23,8 +23,17 @@ class Environment {
     var serverURL : NSURL {
         return NSURL("\(serverProtocol)://\(serverHostName)/websocket")
     }
-    var appID : String {
+    var appId: String {
         return NSBundle.mainBundle().bundleIdentifier!
+    }
+    var version: String {
+        return NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as String
+    }
+    var build: String {
+        return NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleVersionKey) as String
+    }
+    var deviceId: String {
+        return UIDevice.currentDevice().getPersistentIdentifier()
     }
     
     let crashlyticsAPIKey = "4cdb005d0ddfebc8865c0a768de9b43c993e9113"
