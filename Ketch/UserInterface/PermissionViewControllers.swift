@@ -47,18 +47,27 @@ class LocationPermissionViewController : BaseViewController, CLLocationManagerDe
     let manager = CLLocationManager()
     
     @IBAction func requestLocationPermission(sender: AnyObject) {
-        manager.delegate = self
-        manager.requestWhenInUseAuthorization()
+        switch CLLocationManager.authorizationStatus() {
+        case .NotDetermined:
+            manager.delegate = self
+            manager.requestWhenInUseAuthorization()
+        default:
+            finishLocationRequest()
+        }
+    }
+    
+    func finishLocationRequest() {
+        if Flow.currentState == .Waitlist {
+            performSegue(.LocationPermToWaitlist)
+        } else {
+            performSegue(.LocationPermToLoading)
+        }
     }
     
     // MARK: CLLocationManagerDelegate
     
     func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         Log.debug("Location status is \(status)")
-        if Flow.currentState == .Waitlist {
-            performSegue(.LocationPermToWaitlist)
-        } else {
-            performSegue(.LocationPermToLoading)
-        }
+        finishLocationRequest()
     }
 }
