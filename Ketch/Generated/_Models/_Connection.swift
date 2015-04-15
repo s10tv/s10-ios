@@ -9,6 +9,7 @@ enum ConnectionAttributes: String {
     case hasUnreadMessage = "hasUnreadMessage"
     case lastMessageText = "lastMessageText"
     case otherUserLastSeenAt = "otherUserLastSeenAt"
+    case promptText = "promptText"
     case type = "type"
     case updatedAt = "updatedAt"
 }
@@ -68,6 +69,11 @@ class _Connection: NSManagedObject {
     var otherUserLastSeenAt: NSDate?
 
     // func validateOtherUserLastSeenAt(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var promptText: String?
+
+    // func validatePromptText(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
     var type: String?

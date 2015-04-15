@@ -26,12 +26,16 @@ class ChatViewController : JSQMessagesViewController {
     var incomingBubble : JSQMessagesBubbleImage!
     
     override func viewDidLoad() {
+        assert(connection != nil, "Connection must be set before attempting to load chat")
         super.viewDidLoad()
         
         // TODO: Make this configurable from storyboard. JSQMessages library annoyingly
         // resets its own color to white when configuring itself
         view.backgroundColor = StyleKit.darkWhite
         collectionView.backgroundColor = UIColor.clearColor()
+        
+        // Set the chat prompt once upon loading and that's it
+        inputToolbar.contentView.textView.text = connection?.promptText
         
         // Customize input views
         inputToolbar.contentView.leftBarButtonItem = nil
@@ -53,9 +57,10 @@ class ChatViewController : JSQMessagesViewController {
             .subscribeNext { [weak self] _ in self!.markAsRead() }
     }
     
+    // TODO: This is not at all kosher with view controller lifecycle management, especially around interactive
+    // transitioning. Figure out a better way to do this.
     override func viewWillAppear(animated: Bool) {
         // NOTE: Super's implementation causes collectionView to reload, thus the following initialization hack
-        assert(connection != nil, "Connection being nil is not supported on chatVC")
         messages = FetchViewModel(frc: connection!.fetchMessages(sorted: true))
         messages.performFetchIfNeeded()
         super.viewWillAppear(animated)
