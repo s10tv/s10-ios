@@ -12,6 +12,8 @@ import Meteor
 
 class BaseViewController : UIViewController {
     
+    var allowedStates: [FlowService.State]?
+    
     private var stateDisposable: RACDisposable?
     private var metadataDisposable: RACDisposable?
     
@@ -66,7 +68,13 @@ class BaseViewController : UIViewController {
         metadataDisposable?.dispose()
     }
     
-    func stateDidUpdateWhileViewActive(state: FlowService.State) { }
+    func stateDidUpdateWhileViewActive(state: FlowService.State) {
+        if let states = allowedStates {
+            if !contains(states, state) {
+                navigationController?.popToRootViewControllerAnimated(true)
+            }
+        }
+    }
     func metadataDidUpdateWhileViewActive(metadataKey: String, value: AnyObject?) { }
     
     // MARK: Debugging

@@ -9,6 +9,9 @@
 import Foundation
 
 class WaitlistViewController : CloudsViewController {
+    override func commonInit() {
+        allowedStates = [.Waitlist]
+    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let chatVC = segue.destVC as? ChatViewController {

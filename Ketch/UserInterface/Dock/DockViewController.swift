@@ -16,6 +16,10 @@ class DockViewController : BaseViewController {
     var connections : FetchViewModel!
     var selectedConnection : Connection?
     
+    override func commonInit() {
+        allowedStates = [.BoatSailed, .NewGame]
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         let sortDescriptor = NSSortDescriptor(key: ConnectionAttributes.updatedAt.rawValue, ascending: false)

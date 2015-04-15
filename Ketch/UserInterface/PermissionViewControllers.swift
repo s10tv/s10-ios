@@ -12,6 +12,10 @@ import PKHUD
 
 class FacebookPermissionViewController : BaseViewController {
     
+    override func commonInit() {
+        allowedStates = [.Signup]
+    }
+    
     @IBAction func requestFacebookPermission(sender: AnyObject) {
         PKHUD.showActivity()
         Account.login().subscribeError({ _ in
@@ -26,6 +30,10 @@ class FacebookPermissionViewController : BaseViewController {
 }
 
 class NotificationsPermissionViewController : BaseViewController {
+    
+    override func commonInit() {
+        allowedStates = [.Signup]
+    }
     
     @IBAction func requestNotificationsPermission(sender: AnyObject) {
         let settings = UIUserNotificationSettings(forTypes:
@@ -45,6 +53,10 @@ class NotificationsPermissionViewController : BaseViewController {
 
 class LocationPermissionViewController : BaseViewController, CLLocationManagerDelegate {
     let manager = CLLocationManager()
+    
+    override func commonInit() {
+        allowedStates = [.Signup]
+    }
     
     @IBAction func requestLocationPermission(sender: AnyObject) {
         switch CLLocationManager.authorizationStatus() {

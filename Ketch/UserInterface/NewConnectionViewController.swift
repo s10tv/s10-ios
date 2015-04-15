@@ -10,6 +10,10 @@ import Foundation
 
 class NewConnectionViewController : BaseViewController {
     
+    override func commonInit() {
+        allowedStates = [.NewMatch]
+    }
+    
     var connection: Connection!
     
     @IBOutlet weak var titleLabel: UILabel!

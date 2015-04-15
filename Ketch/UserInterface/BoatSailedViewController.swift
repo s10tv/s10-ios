@@ -10,12 +10,10 @@ import Foundation
 
 class BoatSailedViewController : HomeViewController {
     
-    override func stateDidUpdateWhileViewActive(state: FlowService.State) {
-        if state != .BoatSailed {
-            self.performSegue(.BoatSailedToLoading)
-        }
+    override func commonInit() {
+        allowedStates = [.BoatSailed]
     }
-    
+        
     @IBAction func nominateFriend(sender: AnyObject) {
         let inviteText = LS(R.Strings.inviteDefaultText)
         let activity = UIActivityViewController(activityItems: [inviteText], applicationActivities: nil)

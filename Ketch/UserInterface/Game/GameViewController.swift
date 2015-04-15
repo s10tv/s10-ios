@@ -46,6 +46,7 @@ class GameViewController : HomeViewController {
     
     override func commonInit() {
         tutorial = GameTutorialController(gameVC: self)
+        allowedStates = [.NewGame]
     }
     
     override func viewDidLoad() {
@@ -218,12 +219,6 @@ class GameViewController : HomeViewController {
         })
         delegate?.gameDidSubmitChoice()
         performSegue(.FinishGame)
-    }
-    
-    override func stateDidUpdateWhileViewActive(state: FlowService.State) {
-        if state != .NewGame {
-            self.performSegue(.FinishGame)
-        }
     }
     
     override func metadataDidUpdateWhileViewActive(metadataKey: String, value: AnyObject?) {

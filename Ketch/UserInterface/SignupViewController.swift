@@ -10,6 +10,10 @@ import Foundation
 import PKHUD
 
 class SignupViewController : BaseViewController {
+
+    override func commonInit() {
+        allowedStates = [.Signup]
+    }
     
     // MARK: Actions
     @IBAction func didTapOnNotPicky(sender: AnyObject) {

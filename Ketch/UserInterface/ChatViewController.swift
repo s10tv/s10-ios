@@ -12,6 +12,9 @@ import JSQMessagesViewController
 
 class ChatViewController : JSQMessagesViewController {
     
+    // TODO: Make chatVC inherit from our BaseVC
+//        allowedStates = [.BoatSailed, .NewGame]
+    
     var connection: Connection?
     private var messages : FetchViewModel!
     

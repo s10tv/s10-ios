@@ -10,6 +10,10 @@ import Foundation
 
 class WelcomeViewController : CloudsViewController {
     
+    override func commonInit() {
+        allowedStates = [.Welcome]
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.matches(.FinishWelcome) {
             Meteor.meta.hasBeenWelcomed = true
