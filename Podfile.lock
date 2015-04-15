@@ -23,6 +23,7 @@ PODS:
   - EDColor (0.4.0)
   - Facebook-iOS-SDK (3.22.0):
     - Bolts (~> 1.0)
+  - Heap (2.1.3)
   - InflectorKit (0.0.1)
   - JSQMessagesViewController (6.1.3):
     - JSQSystemSoundPlayer (~> 2.0.1)
@@ -73,6 +74,7 @@ DEPENDENCIES:
   - DateTools (~> 1.5)
   - EDColor (~> 0.4)
   - Facebook-iOS-SDK (~> 3.22)
+  - Heap (~> 2.1)
   - JSQMessagesViewController (~> 6.1)
   - Meteor (from `https://github.com/tonyxiao/meteor-ios`, branch `dev`)
   - NSLogger (~> 1.5)
@@ -130,6 +132,7 @@ SPEC CHECKSUMS:
   DTFoundation: 1d28080c20c3da041706545363f8238ab53a6204
   EDColor: 89d19a013279a5604d61650721c15f20fefaaf00
   Facebook-iOS-SDK: 141cba3ba6c484380eb38c573110af9e4fbf8962
+  Heap: f3b32fcad4c4cb60558f21c596b01679960235d6
   InflectorKit: 64497199e6764f4d8337cab7f700a77b13d76a73
   JSQMessagesViewController: 31b79ac9547e060ba96413eb2e1b2ee5260f5189
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d

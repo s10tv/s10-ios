@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
         Globals.meteorService = MeteorService(serverURL: Env.serverURL)
         Globals.accountService = AccountService(meteorService: Meteor)
         Globals.flowService = FlowService(meteorService: Meteor)
-        Globals.analyticsService = AnalyticsService(segmentWriteKey: Env.segmentWriteKey)
+        Globals.analyticsService = AnalyticsService(env: Env)
         
         Meteor.meta.bugfenderId = Bugfender.deviceIdentifier()
         Meteor.subscriptions.currentUser.signal.deliverOnMainThread().subscribeCompleted {

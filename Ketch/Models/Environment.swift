@@ -15,13 +15,9 @@ class Environment {
     
     let audience : Audience
     let provisioningProfile : ProvisioningProfile?
-    let crashlyticsAPIKey = "4cdb005d0ddfebc8865c0a768de9b43c993e9113"
-    let bugfenderAppToken: String
-    let segmentWriteKey: String
     let termsAndConditionURL = NSURL("http://ketchtheone.com/terms")
     let privacyURL = NSURL("http://ketchtheone.com/privacy")
     let notPickyExitURL = NSURL("http://tinder.com/")
-
     let serverProtocol = "ws" // TODO: Change to websocket secure
     let serverHostName : String
     var serverURL : NSURL {
@@ -30,6 +26,11 @@ class Environment {
     var appID : String {
         return NSBundle.mainBundle().bundleIdentifier!
     }
+    
+    let crashlyticsAPIKey = "4cdb005d0ddfebc8865c0a768de9b43c993e9113"
+    let bugfenderAppToken: String
+    let segmentWriteKey: String
+    let heapAppId: String
     
     init(audience: Audience, provisioningProfile: ProvisioningProfile?) {
         self.audience = audience
@@ -41,14 +42,17 @@ class Environment {
 //                serverHostName = "ketch-beta.herokuapp.com"
                 bugfenderAppToken = "RBsiKkpkyiXUW2Sk50JTKTKUYlNpXsFn"
                 segmentWriteKey = "vfnxR5SsgYkNQqRznBWHXDp2LMFkUNTv"
+                heapAppId = "2150081452"
             case .Beta:
                 serverHostName = "ketch-beta.herokuapp.com"
                 bugfenderAppToken = "lO35cfZMdPxzIraCq4YFKISSKZ2EAIwe"
                 segmentWriteKey = "SGEB9gVQGFYgeptFbtnETHCka8FCOuoc"
+                heapAppId = "1572509943"
             case .AppStore:
                 serverHostName = "ketch.herokuapp.com"
                 bugfenderAppToken = "ow9JOdNYSo5iVqPUUAEbS8HfmwZqb1tQ"
                 segmentWriteKey = "JPCrmGwQqlgohXoowBFSLwesir9Zn5Bv"
+                heapAppId = "538095372"
         }
     }
     

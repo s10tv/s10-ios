@@ -8,16 +8,24 @@
 
 import Foundation
 import Analytics
+import Heap
 
 class AnalyticsService {
     private(set) var userId: String?
     let segment: SEGAnalytics
 
-    init(segmentWriteKey: String) {
-        let config = SEGAnalyticsConfiguration(writeKey: segmentWriteKey)
+    init(env: Environment) {
+        // Segmentio
+        let config = SEGAnalyticsConfiguration(writeKey: env.segmentWriteKey)
         config.enableAdvertisingTracking = false // Don't get into trouble with app store for now
         SEGAnalytics.setupWithConfiguration(config)
         segment = SEGAnalytics.sharedAnalytics()
+        
+        // Heap
+        Heap.setAppId(Env.heapAppId)
+        if env.audience == .Dev {
+            Heap.enableVisualizer()
+        }
     }
     
     private func identify(userId: String?, traits: [String: AnyObject]? = nil) {

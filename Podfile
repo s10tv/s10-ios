@@ -38,6 +38,7 @@ pod 'BugfenderSDK', :git => 'https://github.com/bugfender/BugfenderSDK-iOS.git',
 pod 'Analytics/Segmentio', :git => 'https://github.com/tonyxiao/analytics-ios.git'
 pod 'Analytics/Mixpanel', :git => 'https://github.com/tonyxiao/analytics-ios.git'
 pod 'Analytics/Amplitude', :git => 'https://github.com/tonyxiao/analytics-ios.git'
+pod 'Heap', '~> 2.1'
 #pod 'Analytics/Kahuna', :git => 'https://github.com/tonyxiao/analytics-ios.git'
 
 # Debug only
