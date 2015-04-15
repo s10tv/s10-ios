@@ -45,6 +45,9 @@ class ChatViewController : JSQMessagesViewController {
         let bubbleFactory = JSQMessagesBubbleImageFactory(bubbleImage: StyleKit.imageOfChatBubble, capInsets: magicInsets)
         outgoingBubble = bubbleFactory.outgoingMessagesBubbleImageWithColor(StyleKit.darkWhite)
         incomingBubble = bubbleFactory.incomingMessagesBubbleImageWithColor(StyleKit.pureWhite)
+        
+        RACObserve(connection!, ConnectionAttributes.hasUnreadMessage.rawValue)
+            .subscribeNext { [weak self] _ in self!.markAsRead() }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -54,20 +57,13 @@ class ChatViewController : JSQMessagesViewController {
         messages.performFetchIfNeeded()
         super.viewWillAppear(animated)
         
-        messages.signal.subscribeNext { [weak self] _ in
-            // Surely there must be a way to do this one message at a time rather than
-            // reloading the entire view?
-            self?.collectionView.reloadData()
-            self?.scrollToBottomAnimated(true)
-            return
-        }
+        // Surely there must be a way to do this one message at a time rather than
+        // reloading the entire view?
+        messages.signal.subscribeNext { [weak self] _ in self!.reloadData() }
         nameLabel.text = connection?.user?.firstName
         avatarView.user = connection?.user
-        titleView.userInteractionEnabled = true
-        titleView.whenTapEnded { [weak self] in
-            self?.performSegue(.ChatToProfile)
-            return
-        }
+        titleView.userInteractionEnabled = true // TODO: Make subclass of UIControl and use target-action
+        titleView.whenTapEnded { [weak self] in self!.performSegue(.ChatToProfile) }
         
         let avatarLength = 30
         let layout = collectionView.collectionViewLayout
@@ -76,13 +72,6 @@ class ChatViewController : JSQMessagesViewController {
         layout.messageBubbleFont = UIFont(.transatTextLight, size: 17)
         layout.springinessEnabled = true
         layout.messageBubbleTextViewTextContainerInsets = UIEdgeInsets(top: 11, left: 14, bottom: 3, right: 14)
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        if connection?.hasUnreadMessage == true {
-            Meteor.markAsRead(connection!)
-        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -95,14 +84,25 @@ class ChatViewController : JSQMessagesViewController {
         return true
     }
     
+    // MARK: - 
+    
+    func reloadData() {
+        collectionView.reloadData()
+        scrollToBottomAnimated(true)
+    }
+    
+    func markAsRead() {
+        if connection?.hasUnreadMessage == true {
+            Meteor.markAsRead(connection!)
+        }
+    }
+    
+    
     func shouldShowTimestampForMessageAtIndexPath(indexPath: NSIndexPath) -> Bool {
         return indexPath.row % 3 == 0
     }
     
     func readDateForMessage(#indexPath: NSIndexPath) -> NSDate? {
-//        if shouldShowTimestampForMessageAtIndexPath(indexPath) {
-//            return NSDate()
-//        }
         if messages.itemAtIndexPath(indexPath) as? Message == connection?.otherUserLastSeenMessage {
             return connection?.otherUserLastSeenAt
         }
@@ -110,6 +110,7 @@ class ChatViewController : JSQMessagesViewController {
     }
     
     // MARK: - 
+    
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
         Meteor.sendMessage(connection!, text: text)
         finishSendingMessageAnimated(true)
