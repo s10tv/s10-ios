@@ -13,10 +13,16 @@ class WaitlistViewController : CloudsViewController {
         allowedStates = [.Waitlist]
     }
     
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        if identifier == SegueIdentifier.Main_Chat.rawValue {
+            return Connection.crabConnection() != nil
+        }
+        return super.shouldPerformSegueWithIdentifier(identifier, sender: sender)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let chatVC = segue.destVC as? ChatViewController {
             chatVC.connection = Connection.crabConnection()
         }
     }
-    
 }

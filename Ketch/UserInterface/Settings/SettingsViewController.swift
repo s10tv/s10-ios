@@ -42,7 +42,6 @@ class SettingsViewController : BaseViewController {
             
             if let educationInfo = user.education {
                 educationLabel.text = "Studied at \(educationInfo)"
-
             }
             
             if let heightInfo = user.height {
@@ -55,6 +54,13 @@ class SettingsViewController : BaseViewController {
         }
     }
     
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        if identifier == SegueIdentifier.SettingsToCrab.rawValue {
+            return Connection.crabConnection() != nil
+        }
+        return super.shouldPerformSegueWithIdentifier(identifier, sender: sender)
+    }
+
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let chatVC = segue.destinationViewController as? ChatViewController {
@@ -66,10 +72,6 @@ class SettingsViewController : BaseViewController {
 
     // MARK: -
     
-    @IBAction func chatWithCrab(sender: AnyObject) {
-        performSegue(.SettingsToCrab)
-    }
-
     // every time text is changed, check to see if it is 'delete'
     func textChanged(sender:AnyObject) {
         let tf = sender as UITextField
