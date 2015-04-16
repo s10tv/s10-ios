@@ -896,8 +896,10 @@ SAILED FOR TODAY.</string>
                                             <constraint firstAttribute="height" constant="50" id="dlQ-mf-hiI"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="15"/>
+                                        <size key="titleShadowOffset" width="1" height="1"/>
                                         <state key="normal" title="MORE">
                                             <color key="titleColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" red="0.08235294118" green="0.39607843139999999" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="showMoreOptions:" destination="G4Y-Ae-Xgh" eventType="touchUpInside" id="3fJ-7D-VAC"/>
@@ -976,6 +978,7 @@ SAILED FOR TODAY.</string>
                                 </constraints>
                             </view>
                         </subviews>
+                        <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="jNI-kV-mcu" firstAttribute="top" secondItem="cM7-Ye-3kK" secondAttribute="top" id="1l1-mm-Qyc"/>
                             <constraint firstAttribute="trailing" secondItem="jNI-kV-mcu" secondAttribute="trailing" id="DpI-DQ-TfH"/>
