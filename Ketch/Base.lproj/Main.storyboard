@@ -4,7 +4,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -25,15 +24,8 @@
         </mutableArray>
         <mutableArray key="TransatTextMedium.otf">
             <string>TransatTextMedium</string>
-            <string>TransatTextMedium</string>
-            <string>TransatTextMedium</string>
-            <string>TransatTextMedium</string>
-            <string>TransatTextMedium</string>
-            <string>TransatTextMedium</string>
         </mutableArray>
         <mutableArray key="TransatTextStandard.otf">
-            <string>TransatTextStandard</string>
-            <string>TransatTextStandard</string>
             <string>TransatTextStandard</string>
             <string>TransatTextStandard</string>
             <string>TransatTextStandard</string>
@@ -90,7 +82,7 @@ SAILED FOR TODAY.</string>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="T52-Uh-0pS" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="195" y="309" width="210.5" height="46"/>
+                                <rect key="frame" x="195" y="309" width="211" height="46"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Check in for another game tomorrow at 3:33pm">
                                         <attributes>
@@ -126,7 +118,7 @@ SAILED FOR TODAY.</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Vhy-hq-gwn" kind="show" identifier="HomeToSettings" id="6ym-FC-Y97"/>
+                                    <segue destination="Vhy-hq-gwn" kind="custom" identifier="Settings_Settings" customClass="LinkedStoryboardPushSegue" id="6ym-FC-Y97"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eR7-L5-Jvf" userLabel="Dock">
@@ -221,7 +213,7 @@ SAILED FOR TODAY.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nQ6-Uk-dUD" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="6h3-um-0ie" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="98" y="1530"/>
+            <point key="canvasLocation" x="1048" y="1778"/>
         </scene>
         <!--New Connection View Controller-->
         <scene sceneID="Lfd-Nm-nb7">
@@ -251,13 +243,13 @@ SAILED FOR TODAY.</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It's a Ketch!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Az-nh-Ex1">
-                                <rect key="frame" x="238.5" y="140" width="124.5" height="30.5"/>
+                                <rect key="frame" x="238" y="140" width="125" height="31"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="22"/>
                                 <color key="textColor" red="0.078431372550000003" green="0.32156862749999998" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JUR-Vp-1Ad" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="206" y="255.5" width="188" height="188"/>
+                                <rect key="frame" x="206" y="256" width="188" height="188"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="QVL-5W-n1i"/>
                                     <constraint firstAttribute="width" secondItem="JUR-Vp-1Ad" secondAttribute="height" multiplier="1:1" id="tmj-sw-vAh"/>
@@ -269,7 +261,7 @@ SAILED FOR TODAY.</string>
                                 </variation>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WaA-5Q-0JZ" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="427.5" width="600" height="580"/>
+                                <rect key="frame" x="0.0" y="428" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="WaA-5Q-0JZ" secondAttribute="height" multiplier="80:57" id="vkM-0a-wwx"/>
@@ -281,7 +273,7 @@ SAILED FOR TODAY.</string>
                                 </variation>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zL1-jw-Mpw" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="160" y="462.5" width="280" height="96"/>
+                                <rect key="frame" x="160" y="463" width="280" height="96"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="zL1-jw-Mpw" secondAttribute="height" multiplier="2:1" id="G5x-fA-WAI"/>
                                     <constraint firstAttribute="width" constant="280" id="YMt-2x-WTv"/>
@@ -309,7 +301,7 @@ SAILED FOR TODAY.</string>
                                 </variation>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EsQ-ZM-pts" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="180" y="575.5" width="240" height="50"/>
+                                <rect key="frame" x="180" y="576" width="240" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="9fT-8g-yvE"/>
                                     <constraint firstAttribute="width" constant="240" id="ZJP-zo-5EJ"/>
@@ -362,7 +354,7 @@ SAILED FOR TODAY.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hvP-mk-Fcq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1592" y="340"/>
+            <point key="canvasLocation" x="1048" y="1084"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="5fm-o7-1g2">
@@ -413,7 +405,7 @@ SAILED FOR TODAY.</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="Vhy-hq-gwn" kind="show" identifier="HomeToSettings" id="nCf-mq-8Rt"/>
+                                    <segue destination="Vhy-hq-gwn" kind="custom" identifier="Settings_Settings" customClass="LinkedStoryboardPushSegue" id="nCf-mq-8Rt"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SMl-V4-Z7A" userLabel="Dock">
@@ -632,7 +624,7 @@ SAILED FOR TODAY.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TlQ-8h-TWe" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="JYv-xI-N8J" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="818" y="1139"/>
+            <point key="canvasLocation" x="1048" y="2490"/>
         </scene>
         <!--Dock View Controller-->
         <scene sceneID="mW7-zq-TQ3">
@@ -673,7 +665,7 @@ SAILED FOR TODAY.</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Crew" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeI-EM-vEo">
-                                <rect key="frame" x="262" y="19" width="76.5" height="22"/>
+                                <rect key="frame" x="262" y="19" width="77" height="22"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
                                 <color key="textColor" red="0.34509803919999998" green="0.67843137249999996" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -715,7 +707,7 @@ SAILED FOR TODAY.</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Y2Q-Pb-RU0" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="hcx-2H-U1a" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1592" y="1139"/>
+            <point key="canvasLocation" x="1766" y="1444"/>
         </scene>
         <!--Chat View Controller-->
         <scene sceneID="bLH-YZ-QSJ">
@@ -836,7 +828,7 @@ SAILED FOR TODAY.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B9f-P8-SG1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2343" y="1139"/>
+            <point key="canvasLocation" x="2455" y="1444"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="mYf-IJ-xkN">
@@ -998,228 +990,25 @@ SAILED FOR TODAY.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H5s-tv-xnk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1592" y="1920"/>
+            <point key="canvasLocation" x="2455" y="2490"/>
         </scene>
-        <!--Settings View Controller-->
+        <!--Settings Storyboard @ Settings-->
         <scene sceneID="6E1-Ce-dgY">
             <objects>
-                <viewController storyboardIdentifier="Settings" id="Vhy-hq-gwn" customClass="SettingsViewController" customModule="Ketch" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Wpc-0d-ZfE"/>
-                        <viewControllerLayoutGuide type="bottom" id="8Am-Ou-agh"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="AAP-hB-rlu">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3co-CJ-r7w" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="567" width="600" height="33"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="33" id="2MP-VH-t2x"/>
-                                </constraints>
-                            </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kvb-0Q-v0d">
-                                <rect key="frame" x="0.0" y="0.0" width="80" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="2VX-Ze-Msu"/>
-                                    <constraint firstAttribute="height" constant="60" id="stU-9P-e6k"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="15"/>
-                                <state key="normal" title="CLOSE">
-                                    <color key="titleColor" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="goBack:" destination="Zfc-Bp-zvE" eventType="touchUpInside" id="1Hv-gP-5ed"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xoZ-uQ-A0B">
-                                <rect key="frame" x="510" y="0.0" width="90" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="EYM-7u-Yc4"/>
-                                    <constraint firstAttribute="height" constant="60" id="aIQ-k4-GK0"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="15"/>
-                                <state key="normal" title="LOG OUT">
-                                    <color key="titleColor" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="logout:" destination="Zfc-Bp-zvE" eventType="touchUpInside" id="xXw-Rl-02m"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lola Forner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DXe-q5-Dku" userLabel="Name">
-                                <rect key="frame" x="256" y="22" width="89" height="18"/>
-                                <fontDescription key="fontDescription" name="TransatTextMedium" family="Transat Text" pointSize="18"/>
-                                <color key="textColor" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9Ws-Yj-6qt" userLabel="Avatar" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="232" y="60" width="136" height="136"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="9Ws-Yj-6qt" secondAttribute="height" multiplier="1:1" id="1qx-F5-waF"/>
-                                    <constraint firstAttribute="width" constant="136" id="2az-3N-eiy"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="100" id="Dou-xn-geT"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                        <color key="value" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="6"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="Dou-xn-geT"/>
-                                    </mask>
-                                </variation>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings-icon-age" translatesAutoresizingMaskIntoConstraints="NO" id="XqU-oO-Cg4">
-                                <rect key="frame" x="32" y="228" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="Tx0-g7-0Fp"/>
-                                    <constraint firstAttribute="width" constant="25" id="jIB-8S-ZSW"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings-icon-briefcase" translatesAutoresizingMaskIntoConstraints="NO" id="ZQO-z8-bhU">
-                                <rect key="frame" x="32" y="283" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="Vgr-e5-n4I"/>
-                                    <constraint firstAttribute="width" constant="25" id="sGe-fZ-E5e"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings-icon-heightArrow" translatesAutoresizingMaskIntoConstraints="NO" id="sf7-XQ-X4P">
-                                <rect key="frame" x="32" y="393" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="2HJ-Qj-L1a"/>
-                                    <constraint firstAttribute="height" constant="25" id="Fwa-bN-oeK"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings-icon-mortarBoard" translatesAutoresizingMaskIntoConstraints="NO" id="mhR-wX-emu">
-                                <rect key="frame" x="32" y="338" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="25" id="LtO-kF-gum"/>
-                                    <constraint firstAttribute="height" constant="25" id="apc-j6-cDC"/>
-                                </constraints>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings-icon-notepad" translatesAutoresizingMaskIntoConstraints="NO" id="PPC-5J-78R">
-                                <rect key="frame" x="32" y="448" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="25" id="64n-qn-xIJ"/>
-                                    <constraint firstAttribute="width" constant="25" id="qml-Ix-JxO"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="31 years old" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PHt-2B-Ct3">
-                                <rect key="frame" x="73" y="236" width="78" height="15"/>
-                                <fontDescription key="fontDescription" name="TransatTextMedium" family="Transat Text" pointSize="15"/>
-                                <color key="textColor" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You’re a VP of Commerce" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Oqu-ra-azZ">
-                                <rect key="frame" x="73" y="291" width="166" height="15"/>
-                                <fontDescription key="fontDescription" name="TransatTextMedium" family="Transat Text" pointSize="15"/>
-                                <color key="textColor" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Studied at Yale University" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Df1-0P-ocf">
-                                <rect key="frame" x="73" y="346" width="171" height="15"/>
-                                <fontDescription key="fontDescription" name="TransatTextMedium" family="Transat Text" pointSize="15"/>
-                                <color key="textColor" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You’re about 5' 10&quot; tall" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XZh-Zf-KdN">
-                                <rect key="frame" x="73" y="401" width="148" height="15"/>
-                                <fontDescription key="fontDescription" name="TransatTextMedium" family="Transat Text" pointSize="15"/>
-                                <color key="textColor" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pek-14-g2p" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="73" y="448" width="487" height="38"/>
-                                <attributedString key="attributedText">
-                                    <fragment content="Outgoing guy tired of games and looking for someone to share many laughs to come and explore the world with.">
-                                        <attributes>
-                                            <color key="NSColor" red="0.14509803921568629" green="0.6470588235294118" blue="0.6470588235294118" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                            <font key="NSFont" size="15" name="TransatTextMedium"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" minimumLineHeight="19"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                                        <real key="value" value="15"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="TransatTextMedium"/>
-                                </userDefinedRuntimeAttributes>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="whA-4o-FkT" userLabel="Crab Button">
-                                <rect key="frame" x="252" y="540" width="96" height="60"/>
-                                <state key="normal" image="crab">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="rRd-ZO-60U" kind="show" identifier="SettingsToCrab" id="GbR-Mj-xkj"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.94003820419999995" green="0.98082369570000005" blue="0.96848088499999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="XqU-oO-Cg4" firstAttribute="centerX" secondItem="ZQO-z8-bhU" secondAttribute="centerX" id="0ot-ac-noW"/>
-                            <constraint firstItem="9Ws-Yj-6qt" firstAttribute="top" secondItem="AAP-hB-rlu" secondAttribute="top" constant="60" id="1Az-jc-wIT"/>
-                            <constraint firstAttribute="centerX" secondItem="9Ws-Yj-6qt" secondAttribute="centerX" id="1Dx-45-TpG"/>
-                            <constraint firstItem="Oqu-ra-azZ" firstAttribute="bottom" secondItem="ZQO-z8-bhU" secondAttribute="bottom" constant="-2" id="7aV-JH-bIM"/>
-                            <constraint firstItem="Pek-14-g2p" firstAttribute="top" secondItem="PPC-5J-78R" secondAttribute="top" id="A4e-65-9hW"/>
-                            <constraint firstItem="ZQO-z8-bhU" firstAttribute="top" secondItem="XqU-oO-Cg4" secondAttribute="bottom" constant="30" id="DRx-Tq-GMa"/>
-                            <constraint firstItem="mhR-wX-emu" firstAttribute="top" secondItem="ZQO-z8-bhU" secondAttribute="bottom" constant="30" id="FJc-dn-pPL"/>
-                            <constraint firstItem="XqU-oO-Cg4" firstAttribute="top" secondItem="9Ws-Yj-6qt" secondAttribute="bottom" constant="32" id="Fn7-EZ-lSt"/>
-                            <constraint firstItem="XZh-Zf-KdN" firstAttribute="leading" secondItem="Df1-0P-ocf" secondAttribute="leading" id="KIK-uP-Fb5"/>
-                            <constraint firstItem="sf7-XQ-X4P" firstAttribute="top" secondItem="mhR-wX-emu" secondAttribute="bottom" constant="30" id="KMr-Wu-tp2"/>
-                            <constraint firstAttribute="centerX" secondItem="whA-4o-FkT" secondAttribute="centerX" id="LVN-UZ-6jT"/>
-                            <constraint firstItem="Oqu-ra-azZ" firstAttribute="leading" secondItem="Df1-0P-ocf" secondAttribute="leading" id="Q0E-2u-fLV"/>
-                            <constraint firstItem="mhR-wX-emu" firstAttribute="centerX" secondItem="ZQO-z8-bhU" secondAttribute="centerX" id="Que-gU-fxH"/>
-                            <constraint firstItem="XZh-Zf-KdN" firstAttribute="bottom" secondItem="sf7-XQ-X4P" secondAttribute="bottom" constant="-2" id="RjC-KC-bur"/>
-                            <constraint firstItem="Kvb-0Q-v0d" firstAttribute="leading" secondItem="AAP-hB-rlu" secondAttribute="leading" id="YVw-cT-aRe"/>
-                            <constraint firstAttribute="bottom" secondItem="3co-CJ-r7w" secondAttribute="bottom" id="cas-Da-RIn"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Pek-14-g2p" secondAttribute="trailing" constant="24" id="eas-To-JtT"/>
-                            <constraint firstItem="3co-CJ-r7w" firstAttribute="leading" secondItem="AAP-hB-rlu" secondAttribute="leading" id="fK3-i6-tE6"/>
-                            <constraint firstItem="PPC-5J-78R" firstAttribute="centerX" secondItem="sf7-XQ-X4P" secondAttribute="centerX" id="fWF-qb-tqe"/>
-                            <constraint firstItem="XqU-oO-Cg4" firstAttribute="leading" secondItem="AAP-hB-rlu" secondAttribute="leadingMargin" constant="16" id="fxz-yX-C4D"/>
-                            <constraint firstItem="sf7-XQ-X4P" firstAttribute="centerX" secondItem="mhR-wX-emu" secondAttribute="centerX" id="gdN-3F-xQQ"/>
-                            <constraint firstItem="Oqu-ra-azZ" firstAttribute="leading" secondItem="PHt-2B-Ct3" secondAttribute="leading" id="gtk-vN-zx8"/>
-                            <constraint firstAttribute="trailing" secondItem="xoZ-uQ-A0B" secondAttribute="trailing" id="hNc-0v-2dh"/>
-                            <constraint firstItem="Pek-14-g2p" firstAttribute="leading" secondItem="XZh-Zf-KdN" secondAttribute="leading" id="i1N-Fm-zxu"/>
-                            <constraint firstAttribute="trailing" secondItem="3co-CJ-r7w" secondAttribute="trailing" id="iej-tw-zFv"/>
-                            <constraint firstItem="Pek-14-g2p" firstAttribute="bottom" secondItem="PPC-5J-78R" secondAttribute="bottom" constant="-2" id="j2H-ks-Wo6"/>
-                            <constraint firstItem="DXe-q5-Dku" firstAttribute="top" secondItem="AAP-hB-rlu" secondAttribute="top" constant="22" id="jfu-Zv-kA9"/>
-                            <constraint firstAttribute="bottom" secondItem="whA-4o-FkT" secondAttribute="bottom" id="mIk-kp-dXu"/>
-                            <constraint firstItem="PHt-2B-Ct3" firstAttribute="leading" secondItem="XqU-oO-Cg4" secondAttribute="trailing" constant="16" id="nc4-gn-7Af"/>
-                            <constraint firstAttribute="centerX" secondItem="DXe-q5-Dku" secondAttribute="centerX" id="q1s-a8-yZr"/>
-                            <constraint firstItem="PHt-2B-Ct3" firstAttribute="bottom" secondItem="XqU-oO-Cg4" secondAttribute="bottom" constant="-2" id="rGr-Ru-sMd"/>
-                            <constraint firstItem="Kvb-0Q-v0d" firstAttribute="top" secondItem="AAP-hB-rlu" secondAttribute="top" id="rcb-aT-OF2"/>
-                            <constraint firstItem="PPC-5J-78R" firstAttribute="top" secondItem="sf7-XQ-X4P" secondAttribute="bottom" constant="30" id="u8C-Mw-Jft"/>
-                            <constraint firstItem="xoZ-uQ-A0B" firstAttribute="top" secondItem="AAP-hB-rlu" secondAttribute="top" id="unX-Zz-uwa"/>
-                            <constraint firstItem="mhR-wX-emu" firstAttribute="bottom" secondItem="Df1-0P-ocf" secondAttribute="bottom" constant="2" id="zQz-HF-1qH"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="j2H-ks-Wo6"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <connections>
-                        <outlet property="aboutLabel" destination="Pek-14-g2p" id="eUM-G1-Xca"/>
-                        <outlet property="ageLabel" destination="PHt-2B-Ct3" id="ZPr-Mb-Ux6"/>
-                        <outlet property="avatarView" destination="9Ws-Yj-6qt" id="gbG-V1-rw0"/>
-                        <outlet property="educationLabel" destination="Df1-0P-ocf" id="ltb-GL-Fpw"/>
-                        <outlet property="heightLabel" destination="XZh-Zf-KdN" id="svM-H7-Af9"/>
-                        <outlet property="nameLabel" destination="DXe-q5-Dku" id="0J0-CP-ALC"/>
-                        <outlet property="workLabel" destination="Oqu-ra-azZ" id="Rrk-1q-4wn"/>
-                        <segue destination="G4Y-Ae-Xgh" kind="presentation" identifier="SettingsToProfile" id="9mb-SI-KHc"/>
-                    </connections>
+                <viewController id="Vhy-hq-gwn" userLabel="Settings Storyboard @ Settings" sceneMemberID="viewController">
+                    <label key="view" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings Storyboard @ Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="DNE-K8-FlI">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="250" height="250"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zfc-Bp-zvE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="818" y="1920"/>
+            <point key="canvasLocation" x="1766" y="2121"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="Eov-g8-b8w">
@@ -1236,7 +1025,7 @@ SAILED FOR TODAY.</string>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wtb-Vn-cEV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="818" y="-435"/>
+            <point key="canvasLocation" x="332" y="1778"/>
         </scene>
         <!--Signup Storyboard @ Signup-->
         <scene sceneID="Dpy-Ax-4fa">
@@ -1254,7 +1043,7 @@ SAILED FOR TODAY.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oIs-YV-S1K" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-69" y="290"/>
+            <point key="canvasLocation" x="-187" y="2198"/>
         </scene>
         <!--Loading View Controller-->
         <scene sceneID="EYP-uL-lzC">
@@ -1294,14 +1083,14 @@ SAILED FOR TODAY.</string>
                                 </variation>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6B-JD-gK0" userLabel="Loading View">
-                                <rect key="frame" x="205" y="257" width="190.5" height="86"/>
+                                <rect key="frame" x="205" y="257" width="191" height="86"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="A7B-na-V6j">
-                                        <rect key="frame" x="76.5" y="0.0" width="37" height="37"/>
+                                        <rect key="frame" x="77" y="0.0" width="37" height="37"/>
                                         <color key="color" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </activityIndicatorView>
                                     <label opaque="NO" userInteractionEnabled="NO" alpha="0.25" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Getting ready..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryK-sr-K6f">
-                                        <rect key="frame" x="0.0" y="59" width="190.5" height="27"/>
+                                        <rect key="frame" x="0.0" y="59" width="191" height="27"/>
                                         <fontDescription key="fontDescription" name="TransatTextBold" family="Transat Text" pointSize="27"/>
                                         <color key="textColor" red="0.092987515029999995" green="0.64821720120000004" blue="0.65024715659999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1342,7 +1131,7 @@ SAILED FOR TODAY.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jpe-tJ-ggF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="818" y="340"/>
+            <point key="canvasLocation" x="332" y="2490"/>
         </scene>
         <!--Signup Storyboard @ Waitlist-->
         <scene sceneID="Oka-qW-rzb">
@@ -1360,17 +1149,17 @@ SAILED FOR TODAY.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="gNG-pd-4C0" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-69" y="630"/>
+            <point key="canvasLocation" x="-187" y="2538"/>
         </scene>
         <!--Signup Storyboard @ Welcome-->
         <scene sceneID="9Uf-Vb-r72">
             <objects>
                 <viewController id="y6Z-JZ-dSL" userLabel="Signup Storyboard @ Welcome" sceneMemberID="viewController">
-                    <label key="view" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signup Storyboard @ Welcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ugw-xH-kzT">
+                    <label key="view" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Signup Storyboard @ Welcome" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="jLt-Jq-0RM">
                         <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -1378,26 +1167,18 @@ SAILED FOR TODAY.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hei-fA-1w4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-69" y="955"/>
+            <point key="canvasLocation" x="-187" y="2863"/>
         </scene>
     </scenes>
     <resources>
         <image name="Ketch" width="39" height="42"/>
-        <image name="crab" width="96" height="60"/>
         <image name="game-bucket-keep" width="128" height="144"/>
         <image name="game-bucket-marry" width="128" height="148"/>
         <image name="game-bucket-skip" width="128" height="144"/>
         <image name="profile-about-me-divider" width="572" height="11"/>
-        <image name="settings-icon-age" width="25" height="22"/>
-        <image name="settings-icon-briefcase" width="26" height="19"/>
-        <image name="settings-icon-heightArrow" width="8" height="21"/>
-        <image name="settings-icon-mortarBoard" width="25" height="19"/>
-        <image name="settings-icon-notepad" width="21" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="6ym-FC-Y97"/>
-        <segue reference="9mb-SI-KHc"/>
         <segue reference="Lmi-Sf-5Gu"/>
-        <segue reference="2kk-V8-7uA"/>
     </inferredMetricsTieBreakers>
 </document>

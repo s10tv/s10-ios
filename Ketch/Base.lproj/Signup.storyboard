@@ -366,7 +366,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="orQ-ch-jON" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="158.5" y="386" width="283" height="99"/>
+                                <rect key="frame" x="159" y="386" width="283" height="99"/>
                                 <attributedString key="attributedText">
                                     <fragment>
                                         <string key="content">Thanks for waiting, we’re really excited to have you on board.
@@ -485,7 +485,7 @@ Get a date, have fun, and find the One!</string>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="wTv-sJ-Gap" kind="custom" identifier="Main_Settings" customClass="LinkedStoryboardPushSegue" id="oes-pk-f4m"/>
+                                    <segue destination="wTv-sJ-Gap" kind="custom" identifier="Settings_Settings" customClass="LinkedStoryboardPushSegue" id="oes-pk-f4m"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sprite-sun" translatesAutoresizingMaskIntoConstraints="NO" id="mGW-vN-lRk">
@@ -710,7 +710,7 @@ Hold tight and you'll be finding the one before you know it.</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="zTe-pu-T6J" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="150.5" y="382" width="299.5" height="63"/>
+                                <rect key="frame" x="151" y="382" width="300" height="63"/>
                                 <attributedString key="attributedText">
                                     <fragment content="We send you notifications to let you know when you've got a new message or a match.">
                                         <attributes>

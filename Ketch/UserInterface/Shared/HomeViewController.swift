@@ -28,7 +28,7 @@ class HomeViewController : BaseViewController {
             performSegue(.HomeToDock)
             return true
         } else if edge == .Left {
-            performSegue(.HomeToSettings)
+            performSegue(.Settings_Settings)
             return true
         }
         return super.handleScreenEdgePan(edge)

@@ -24,10 +24,8 @@ class SettingsViewController : BaseViewController {
 
         if let user = User.currentUser() {
             avatarView.user = user
-            avatarView.whenTapEnded { [weak self, weak user] in
-                let profileVC = self!.makeViewController(.Profile) as ProfileViewController
-                profileVC.user = user
-                self!.presentViewController(profileVC, animated: true)
+            avatarView.whenTapEnded { [weak self] in
+                self!.performSegue(.Main_Profile)
             }
 
             nameLabel.text = user.displayName
@@ -55,7 +53,7 @@ class SettingsViewController : BaseViewController {
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
-        if identifier == SegueIdentifier.SettingsToCrab.rawValue {
+        if identifier == SegueIdentifier.Main_Chat.rawValue {
             return Connection.crabConnection() != nil
         }
         return super.shouldPerformSegueWithIdentifier(identifier, sender: sender)
