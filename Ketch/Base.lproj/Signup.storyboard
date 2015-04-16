@@ -42,17 +42,17 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ketch-the-one" translatesAutoresizingMaskIntoConstraints="NO" id="dls-Yg-D6k">
-                                <rect key="frame" x="236" y="87.5" width="128" height="165"/>
+                                <rect key="frame" x="236" y="87" width="128" height="165"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RgB-LM-On4" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="140" y="317.5" width="320" height="69"/>
+                                <rect key="frame" x="140" y="317" width="320" height="69"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="lessThanOrEqual" constant="120" id="Rab-MP-aQT"/>
                                     <constraint firstAttribute="width" priority="751" constant="320" id="jcS-WS-qS1"/>
                                 </constraints>
                                 <attributedString key="attributedText">
                                     <fragment>
-                                        <string key="content">We invite you to join a fun, tight-knit community and take a journey with us.
+                                        <string key="content">We invite you to join a fun tight-knit community and take a journey with us.
 </string>
                                         <attributes>
                                             <color key="NSColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
@@ -77,7 +77,7 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isY-Ks-GfE" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="175" y="406.5" width="250" height="55"/>
+                                <rect key="frame" x="175" y="406" width="250" height="55"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="3Tw-Lk-b0L"/>
@@ -105,7 +105,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jfl-kg-Ilh" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="244" y="486.5" width="112" height="26"/>
+                                <rect key="frame" x="244" y="486" width="112" height="26"/>
                                 <state key="normal">
                                     <attributedString key="attributedTitle">
                                         <fragment content="I'm really not picky">
@@ -127,7 +127,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0f-ne-erJ" userLabel="Terms &amp; Privacy">
-                                <rect key="frame" x="245" y="542.5" width="110" height="26"/>
+                                <rect key="frame" x="245" y="542" width="110" height="26"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Pp-CT-PMh" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="36" height="26"/>
