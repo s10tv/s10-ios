@@ -60,7 +60,7 @@ class GameTutorialController {
         bubbles.each { $0.hidden = false }
         helpLabel.rawText = " "
         arrows = nil
-        overlay.removeFromSuperview()
+        overlay?.removeFromSuperview() // BUGBUG: This can be nil, why?
         overlay = nil
         prompt = nil
         currentStep = 0
