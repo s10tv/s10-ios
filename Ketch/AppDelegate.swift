@@ -58,7 +58,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
             Log.setUserId(Meteor.userID)
             Log.setUserName(User.currentUser()?.displayName)
             Log.setUserEmail(Meteor.meta.email)
-            Analytics.identifyUser(Meteor.userID!)
+            // TODO: Figure out why this hack is needed
+            if let userId = Meteor.userID {
+                Analytics.identifyUser(userId)
+            }
         }
         Meteor.subscriptions.metadata.signal.deliverOnMainThread().subscribeCompleted {
             Globals.upgradeService.promptForUpgradeIfNeeded()

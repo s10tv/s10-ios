@@ -29,6 +29,8 @@ class SignupViewController : BaseViewController {
     }
     
     @IBAction func loginWithFacebook(sender: AnyObject) {
+        // Temp hack, timing issue
+        allowedStates = [.Signup, .Waitlist, .Welcome]
         PKHUD.showActivity()
         Account.login().subscribeError({ _ in
             PKHUD.hide()
