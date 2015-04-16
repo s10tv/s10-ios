@@ -18,6 +18,7 @@ class Environment {
     let termsAndConditionURL = NSURL("http://ketchtheone.com/terms")
     let privacyURL = NSURL("http://ketchtheone.com/privacy")
     let notPickyExitURL = NSURL("http://tinder.com/")
+    let upgradeURL = NSURL("http://ketchtheone.com/download")
     let serverProtocol = "ws" // TODO: Change to websocket secure
     let serverHostName : String
     var serverURL : NSURL {

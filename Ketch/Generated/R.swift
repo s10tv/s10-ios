@@ -98,6 +98,12 @@ public enum R {
         case fbPermDeniedAlertMessage = "FBPermDeniedAlertMessage"
         /// Permission Denied
         case fbPermDeniedAlertTitle = "FBPermDeniedAlertTitle"
+        /// You won't be able to continue using the app until you upgrade. Please upgrade to the latest version
+        case hardUpgradeAlertMessage = "HardUpgradeAlertMessage"
+        /// Upgrade
+        case hardUpgradeAlertOk = "HardUpgradeAlertOk"
+        /// Your version is no longer supported
+        case hardUpgradeAlertTitle = "HardUpgradeAlertTitle"
         /// Check out Ketch! I think it'll be a lot of fun for you! http://ketchtheone.com
         case inviteDefaultText = "InviteDefaultText"
         /// It's a Ketch!
@@ -124,6 +130,14 @@ public enum R {
         case skipPrompt = "SkipPrompt"
         /// SEE AGAIN LATER
         case snoozePrompt = "SnoozePrompt"
+        /// Later
+        case softUpgradeAlertCancel = "SoftUpgradeAlertCancel"
+        /// Please upgrade to latest version.
+        case softUpgradeAlertMessage = "SoftUpgradeAlertMessage"
+        /// Upgrade
+        case softUpgradeAlertOk = "SoftUpgradeAlertOk"
+        /// New version is available
+        case softUpgradeAlertTitle = "SoftUpgradeAlertTitle"
         /// AND YOU’LL HAVE THREE CHOICES
         case threeChoicesPrompt = "ThreeChoicesPrompt"
         /// YOU’LL SEE THREE POTENTIAL MATCHES

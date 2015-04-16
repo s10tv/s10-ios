@@ -18,6 +18,7 @@ private struct Globals {
     static var flowService : FlowService!
     static var accountService : AccountService!
     static var analyticsService : AnalyticsService!
+    static var upgradeService : UpgradeService!
 }
 
 let Env = Globals.environment
@@ -49,6 +50,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
         Globals.accountService = AccountService(meteorService: Meteor)
         Globals.flowService = FlowService(meteorService: Meteor)
         Globals.analyticsService = AnalyticsService(env: Env)
+        Globals.upgradeService = UpgradeService(env: Env, meta: Meteor.meta)
         
         Meteor.registerDevice(Env)
         Meteor.meta.bugfenderId = Bugfender.deviceIdentifier()
@@ -57,6 +59,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
             Log.setUserName(User.currentUser()?.displayName)
             Log.setUserEmail(Meteor.meta.email)
             Analytics.identifyUser(Meteor.userID!)
+        }
+        Meteor.subscriptions.metadata.signal.deliverOnMainThread().subscribeCompleted {
+            Globals.upgradeService.promptForUpgradeIfNeeded()
         }
         
         // Should be probably extracted into push service
@@ -73,6 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
     func applicationWillEnterForeground(application: UIApplication) {
         SugarRecord.applicationWillEnterForeground()
         Analytics.appOpen()
+        Globals.upgradeService.promptForUpgradeIfNeeded()
     }
     
     func applicationDidEnterBackground(application: UIApplication) {

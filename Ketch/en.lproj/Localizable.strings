@@ -32,3 +32,12 @@
 
 /* Boat Sailed */
 "InviteDefaultText" = "Check out Ketch! I think it'll be a lot of fun for you! http://ketchtheone.com";
+
+/* Force Upgrade */
+"SoftUpgradeAlertTitle" = "New version is available";
+"SoftUpgradeAlertMessage" = "Please upgrade to latest version.";
+"SoftUpgradeAlertOk" = "Upgrade";
+"SoftUpgradeAlertCancel" = "Later";
+"HardUpgradeAlertTitle" = "Your version is no longer supported";
+"HardUpgradeAlertMessage" = "You won't be able to continue using the app until you upgrade. Please upgrade to the latest version";
+"HardUpgradeAlertOk" = "Upgrade";

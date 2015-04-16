@@ -34,6 +34,14 @@ extension UIViewController {
         alert.addAction("Ok", style: .Cancel)
         presentViewController(alert)
     }
+    
+    class func topMostViewController() -> UIViewController? {
+        var topVC = UIApplication.sharedApplication().keyWindow?.rootViewController
+        while topVC?.presentedViewController != nil {
+            topVC = topVC?.presentedViewController
+        }
+        return topVC
+    }
 }
 
 extension UIView {
