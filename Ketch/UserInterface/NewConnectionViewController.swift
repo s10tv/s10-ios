@@ -28,6 +28,11 @@ class NewConnectionViewController : BaseViewController {
         avatar.user = connection.user
         promptLabel.rawText = LS(R.Strings.singleMatchPrompt, connection.user!.firstName!, connection.user!.firstName!)
     }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        Flow.didShowNewMatch()
+    }
 
     func didTapOnAvatar() {
         let profileVC = makeViewController(.Profile) as ProfileViewController
