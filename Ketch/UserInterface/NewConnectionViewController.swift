@@ -11,7 +11,7 @@ import Foundation
 class NewConnectionViewController : BaseViewController {
     
     override func commonInit() {
-        allowedStates = [.NewMatch]
+        allowedStates = [.NewMatch, .NewGame, .BoatSailed]
     }
     
     var connection: Connection!
@@ -29,8 +29,8 @@ class NewConnectionViewController : BaseViewController {
         promptLabel.rawText = LS(R.Strings.singleMatchPrompt, connection.user!.firstName!, connection.user!.firstName!)
     }
     
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         Flow.didShowNewMatch()
     }
 
