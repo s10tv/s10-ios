@@ -204,6 +204,11 @@ class GameViewController : HomeViewController {
     
     @IBAction func submitChoices(sender: AnyObject) {
         assert(readyToConfirm, "Should not call submit choice until readyToConfirm")
+        if Meteor.meta.fakeSetSail == true {
+            delegate?.gameDidSubmitChoice()
+            performSegue(.FinishGame)
+            return
+        }
         func chosenCandidate(choice: Candidate.Choice?) -> Candidate? {
             return targets.match { $0.choice == choice }?.bubble?.candidate
         }

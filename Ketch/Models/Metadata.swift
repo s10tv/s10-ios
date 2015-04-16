@@ -30,6 +30,10 @@ class Metadata {
         get { return getValue("gameTutorialMode") as? Bool }
         set { setValue(newValue, metadataKey: "gameTutorialMode") }
     }
+    var fakeSetSail: Bool? {
+        get { return getValue("fakeSetSail") as? Bool }
+        set { setValue(newValue, metadataKey: "fakeSetSail") }
+    }
     var hasBeenWelcomed: Bool? {
         get { return getValue("hasBeenWelcomed") as? Bool }
         set { setValue(newValue, metadataKey: "hasBeenWelcomed") }
