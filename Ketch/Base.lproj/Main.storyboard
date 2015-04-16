@@ -242,7 +242,7 @@ SAILED FOR TODAY.</string>
                                     <constraint firstAttribute="height" constant="60" id="Ew0-27-5e7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="17"/>
-                                <state key="normal" title="Back">
+                                <state key="normal" title="BACK">
                                     <color key="titleColor" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -906,7 +906,7 @@ SAILED FOR TODAY.</string>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anastasia" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1i-a7-EeL" userLabel="Name">
                                         <rect key="frame" x="100" y="336" width="119" height="27"/>
                                         <fontDescription key="fontDescription" name="TransatTextBold" family="Transat Text" pointSize="27"/>
-                                        <color key="textColor" red="0.0046324636787176132" green="0.38956242799758911" blue="0.54355978965759277" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.94509803920000002" green="0.40000000000000002" blue="0.2274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="120" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xK5-CJ-BqD" customClass="IntrinsicSizeCollectionView" customModule="Ketch" customModuleProvider="target">
@@ -1393,8 +1393,8 @@ SAILED FOR TODAY.</string>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="6ym-FC-Y97"/>
-        <segue reference="tnG-4w-VC3"/>
         <segue reference="9mb-SI-KHc"/>
+        <segue reference="Lmi-Sf-5Gu"/>
         <segue reference="2kk-V8-7uA"/>
     </inferredMetricsTieBreakers>
 </document>
