@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="THI-zj-J05">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6751" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="THI-zj-J05">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -250,7 +250,7 @@ SAILED FOR TODAY.</string>
                                     <action selector="goBack:" destination="hvP-mk-Fcq" eventType="touchUpInside" id="hz4-er-yVU"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="It's a Ketch!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Az-nh-Ex1">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It's a Ketch!" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Az-nh-Ex1">
                                 <rect key="frame" x="239" y="140" width="125" height="31"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="22"/>
                                 <color key="textColor" red="0.078431372550000003" green="0.32156862749999998" blue="0.4549019608" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -268,7 +268,7 @@ SAILED FOR TODAY.</string>
                                     </mask>
                                 </variation>
                             </imageView>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WaA-5Q-0JZ" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WaA-5Q-0JZ" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="427" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -280,7 +280,7 @@ SAILED FOR TODAY.</string>
                                     </mask>
                                 </variation>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zL1-jw-Mpw" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zL1-jw-Mpw" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="160" y="462" width="280" height="96"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="zL1-jw-Mpw" secondAttribute="height" multiplier="2:1" id="G5x-fA-WAI"/>
@@ -308,7 +308,7 @@ SAILED FOR TODAY.</string>
                                     </mask>
                                 </variation>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EsQ-ZM-pts" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EsQ-ZM-pts" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="180" y="575" width="240" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="9fT-8g-yvE"/>
@@ -532,7 +532,7 @@ SAILED FOR TODAY.</string>
                                 </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="25"/>
+                                        <integer key="value" value="27"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -672,7 +672,7 @@ SAILED FOR TODAY.</string>
                                     <action selector="goBack:" destination="Y2Q-Pb-RU0" eventType="touchUpInside" id="wxR-a4-Eiq"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Matches" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeI-EM-vEo">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Your Crew" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeI-EM-vEo">
                                 <rect key="frame" x="250" y="19" width="100" height="22"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
                                 <color key="textColor" red="0.34509803919999998" green="0.67843137249999996" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -850,8 +850,8 @@ SAILED FOR TODAY.</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jNI-kV-mcu">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="649"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jNI-kV-mcu">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="653.5"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zjR-1C-0YC" userLabel="Photos" customClass="SwipeView">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="320"/>
@@ -869,8 +869,8 @@ SAILED FOR TODAY.</string>
                                         <color key="pageIndicatorTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <color key="currentPageIndicatorTintColor" red="0.25490196079999999" green="0.87058823529999996" blue="0.86666666670000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </pageControl>
-                                    <view contentMode="scaleToFill" verticalCompressionResistancePriority="249" translatesAutoresizingMaskIntoConstraints="NO" id="qIv-rj-pjz" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="308" width="320" height="1341"/>
+                                    <view contentMode="scaleToFill" verticalCompressionResistancePriority="249" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qIv-rj-pjz" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="308" width="320" height="1345.5"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NTN-Tb-ffP">
@@ -880,8 +880,10 @@ SAILED FOR TODAY.</string>
                                             <constraint firstAttribute="height" constant="50" id="WGv-z4-XSN"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="15"/>
+                                        <size key="titleShadowOffset" width="1" height="1"/>
                                         <state key="normal" title="BACK">
                                             <color key="titleColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="titleShadowColor" red="0.0046324636787176132" green="0.38956242799758911" blue="0.54355978965759277" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
                                         <connections>
                                             <action selector="goBack:" destination="H5s-tv-xnk" eventType="touchUpInside" id="nIg-te-eQv"/>
@@ -901,14 +903,14 @@ SAILED FOR TODAY.</string>
                                             <action selector="showMoreOptions:" destination="G4Y-Ae-Xgh" eventType="touchUpInside" id="3fJ-7D-VAC"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anastasia" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1i-a7-EeL" userLabel="Name">
-                                        <rect key="frame" x="100" y="336" width="119" height="27"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Anastasia" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d1i-a7-EeL" userLabel="Name">
+                                        <rect key="frame" x="100.5" y="336" width="118" height="31.5"/>
                                         <fontDescription key="fontDescription" name="TransatTextBold" family="Transat Text" pointSize="27"/>
-                                        <color key="textColor" red="0.94509803920000002" green="0.40000000000000002" blue="0.2274509804" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="textColor" red="0.0046324636787176132" green="0.38956242799758911" blue="0.54355978965759277" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="120" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xK5-CJ-BqD" customClass="IntrinsicSizeCollectionView" customModule="Ketch" customModuleProvider="target">
-                                        <rect key="frame" x="22" y="371" width="276" height="120"/>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" placeholderIntrinsicWidth="infinite" placeholderIntrinsicHeight="120" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="xK5-CJ-BqD" customClass="IntrinsicSizeCollectionView" customModule="Ketch" customModuleProvider="target">
+                                        <rect key="frame" x="22" y="375.5" width="276" height="120"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="100" id="JCP-cQ-iXY"/>
@@ -920,11 +922,11 @@ SAILED FOR TODAY.</string>
                                             </mask>
                                         </variation>
                                     </collectionView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile-about-me-divider" translatesAutoresizingMaskIntoConstraints="NO" id="1ET-rm-N9J">
-                                        <rect key="frame" x="8" y="504" width="572" height="11"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="profile-about-me-divider" translatesAutoresizingMaskIntoConstraints="NO" id="1ET-rm-N9J">
+                                        <rect key="frame" x="8" y="508.5" width="572" height="11"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UG6-GO-ERg" userLabel="About" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
-                                        <rect key="frame" x="22" y="527" width="276" height="100"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UG6-GO-ERg" userLabel="About" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                                        <rect key="frame" x="22" y="531.5" width="276" height="100"/>
                                         <attributedString key="attributedText">
                                             <fragment>
                                                 <string key="content">I usually don't message people first, so if you're interested please message me! I'm not interested in hooking up, message me if you're curious about what I am looking for! </string>
@@ -1263,7 +1265,7 @@ SAILED FOR TODAY.</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XQk-zO-0XK" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XQk-zO-0XK" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="540" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1289,14 +1291,14 @@ SAILED FOR TODAY.</string>
                                 </variation>
                             </imageView>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="W6B-JD-gK0" userLabel="Loading View">
-                                <rect key="frame" x="191" y="257" width="220" height="86"/>
+                                <rect key="frame" x="191" y="257" width="191" height="86"/>
                                 <subviews>
                                     <activityIndicatorView opaque="NO" alpha="0.25" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="A7B-na-V6j">
-                                        <rect key="frame" x="91" y="0.0" width="37" height="37"/>
+                                        <rect key="frame" x="76" y="0.0" width="37" height="37"/>
                                         <color key="color" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     </activityIndicatorView>
-                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.25" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Finding the One..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryK-sr-K6f">
-                                        <rect key="frame" x="0.0" y="59" width="220" height="27"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.25" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Getting ready..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ryK-sr-K6f">
+                                        <rect key="frame" x="0.0" y="59" width="191" height="27"/>
                                         <fontDescription key="fontDescription" name="TransatTextBold" family="Transat Text" pointSize="27"/>
                                         <color key="textColor" red="0.092987515029999995" green="0.64821720120000004" blue="0.65024715659999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -1390,9 +1392,9 @@ SAILED FOR TODAY.</string>
         <image name="settings-icon-notepad" width="21" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nCf-mq-8Rt"/>
         <segue reference="q7i-Iz-xMU"/>
-        <segue reference="GbR-Mj-xkj"/>
+        <segue reference="nCf-mq-8Rt"/>
+        <segue reference="2kk-V8-7uA"/>
         <segue reference="9mb-SI-KHc"/>
     </inferredMetricsTieBreakers>
 </document>
