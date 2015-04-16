@@ -8,7 +8,7 @@
 
 import UIKit
 import JSQMessagesViewController
-
+import ReactiveCocoa
 
 class ChatViewController : JSQMessagesViewController {
     
@@ -24,6 +24,7 @@ class ChatViewController : JSQMessagesViewController {
     
     var outgoingBubble : JSQMessagesBubbleImage!
     var incomingBubble : JSQMessagesBubbleImage!
+    var disposable: RACDisposable?
     
     override func viewDidLoad() {
         assert(connection != nil, "Connection must be set before attempting to load chat")
@@ -53,8 +54,6 @@ class ChatViewController : JSQMessagesViewController {
         outgoingBubble = bubbleFactory.outgoingMessagesBubbleImageWithColor(StyleKit.darkWhite)
         incomingBubble = bubbleFactory.incomingMessagesBubbleImageWithColor(StyleKit.pureWhite)
         
-        RACObserve(connection!, ConnectionAttributes.hasUnreadMessage.rawValue)
-            .subscribeNext { [weak self] _ in self!.markAsRead() }
     }
     
     // TODO: This is not at all kosher with view controller lifecycle management, especially around interactive
@@ -80,6 +79,17 @@ class ChatViewController : JSQMessagesViewController {
         layout.messageBubbleFont = UIFont(.transatTextLight, size: 17)
         layout.springinessEnabled = true
         layout.messageBubbleTextViewTextContainerInsets = UIEdgeInsets(top: 11, left: 14, bottom: 3, right: 14)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        disposable = RACObserve(connection!, ConnectionAttributes.hasUnreadMessage.rawValue)
+            .subscribeNext { [weak self] _ in self!.markAsRead() }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        disposable?.dispose()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
