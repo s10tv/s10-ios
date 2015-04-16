@@ -135,10 +135,6 @@ class MeteorService {
     }
     
     func logout() -> RACSignal {
-        // TODO: Move these into meteor-ios library itself
-        assert(NSThread.isMainThread(), "Can only perform logout on main thread for now")
-        meteor.mainQueueManagedObjectContext.reset()
-        meteor.database.reset()
         return meteor.logout()
     }
 }
