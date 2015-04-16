@@ -13,7 +13,7 @@ import PKHUD
 class FacebookPermissionViewController : BaseViewController {
     
     override func commonInit() {
-        allowedStates = [.Signup]
+        allowedStates = [.Signup, .Waitlist, .Welcome]
     }
     
     @IBAction func requestFacebookPermission(sender: AnyObject) {
@@ -32,7 +32,7 @@ class FacebookPermissionViewController : BaseViewController {
 class NotificationsPermissionViewController : BaseViewController {
     
     override func commonInit() {
-        allowedStates = [.Signup]
+        allowedStates = [.Signup, .Waitlist, .Welcome]
     }
     
     @IBAction func requestNotificationsPermission(sender: AnyObject) {
@@ -55,7 +55,7 @@ class LocationPermissionViewController : BaseViewController, CLLocationManagerDe
     let manager = CLLocationManager()
     
     override func commonInit() {
-        allowedStates = [.Signup]
+        allowedStates = [.Signup, .Waitlist, .Welcome]
     }
     
     @IBAction func requestLocationPermission(sender: AnyObject) {
