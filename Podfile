@@ -19,6 +19,7 @@ pod 'SwipeView', '~> 1.3'
 pod 'JSQMessagesViewController', '~> 6.1'
 pod 'SDWebImage', '~> 3.7'
 pod 'PKHUD', '2.0.1-fork' # Fork is needed to work around xcasset compilation issue inside pod
+pod 'XLForm', '~> 2.2'
 
 pod 'Cartography', '~> 0.3'
 pod 'UICollectionViewLeftAlignedLayout', '~> 0.0.3'

@@ -63,6 +63,7 @@ PODS:
     - DTFoundation/DTASN1 (~> 1.6)
   - TRVSDictionaryWithCaseInsensitivity (0.0.2)
   - UICollectionViewLeftAlignedLayout (0.0.3)
+  - XLForm (2.2.0)
 
 DEPENDENCIES:
   - Analytics/Amplitude (from `https://github.com/tonyxiao/analytics-ios.git`)
@@ -89,6 +90,7 @@ DEPENDENCIES:
   - SwipeView (~> 1.3)
   - TCMobileProvision (from `https://github.com/tonyxiao/TCMobileProvision.git`)
   - UICollectionViewLeftAlignedLayout (~> 0.0.3)
+  - XLForm (~> 2.2)
 
 EXTERNAL SOURCES:
   Analytics:
@@ -153,5 +155,6 @@ SPEC CHECKSUMS:
   TCMobileProvision: 2a8962b38821a20fad53b9d7851bbc9ae8c52995
   TRVSDictionaryWithCaseInsensitivity: 51d2ccf52c6d645d27b63467a98fa02c556e01b0
   UICollectionViewLeftAlignedLayout: 46396e7c45573544981b9a04a2e25ecacba18774
+  XLForm: 799e61ef230f519914e722bf032b19a597223c19
 
-COCOAPODS: 0.36.3
+COCOAPODS: 0.36.4

@@ -26,7 +26,7 @@
                             <constraint firstAttribute="height" constant="25" id="ir1-gx-et7"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="California Institue of the Arts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qPe-Ra-5JK" userLabel="Text">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="California Institue of the Arts" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qPe-Ra-5JK" userLabel="Text">
                         <rect key="frame" x="31" y="7" width="195" height="15"/>
                         <fontDescription key="fontDescription" name="TransatTextMedium" family="Transat Text" pointSize="15"/>
                         <color key="textColor" red="0.082352941176470587" green="0.396078431372549" blue="0.52941176470588236" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

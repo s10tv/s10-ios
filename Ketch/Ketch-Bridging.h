@@ -10,6 +10,7 @@
 #import <JSQMessagesViewController/JSQMessagesViewController.h>
 #import <BugfenderSDK/BugfenderSDK.h>
 #import <CrashlyticsFramework/Crashlytics.h>
+#import "XLFormExtensions.h"
 
 @interface JSQMessagesViewController (Private)
 

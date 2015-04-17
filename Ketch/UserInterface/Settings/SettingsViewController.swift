@@ -9,47 +9,16 @@
 import UIKit
 
 class SettingsViewController : BaseViewController {
-
-    @IBOutlet weak var avatarView: UserAvatarView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var ageLabel: UILabel!
-    @IBOutlet weak var workLabel: UILabel!
-    @IBOutlet weak var educationLabel: UILabel!
-    @IBOutlet weak var heightLabel: UILabel!
-    @IBOutlet weak var aboutLabel: DesignableLabel!
-    @IBOutlet weak var deactivateButton: UIButton!
     
+    var formController: SettingsFormViewController!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        if let user = User.currentUser() {
-            avatarView.user = user
-            avatarView.whenTapEnded { [weak self] in
-                self!.performSegue(.Main_Profile)
-            }
-
-            nameLabel.text = user.displayName
-            
-            if let ageInfo = user.age {
-                ageLabel.text = "\(ageInfo) years old"
-            }
-            
-            if let workInfo = user.work {
-                workLabel.text = "You work at \(workInfo)"
-            }
-            
-            if let educationInfo = user.education {
-                educationLabel.text = "Studied at \(educationInfo)"
-            }
-            
-            if let heightInfo = user.height {
-                heightLabel.text = "You are about \(heightInfo)cm tall"
-            }
-            
-            if let aboutInfo = user.about {
-                aboutLabel.rawText = aboutInfo
-            }
-        }
+        formController = makeViewController(.SettingsForm) as SettingsFormViewController
+        addChildViewController(formController)
+        view.insertSubview(formController.view, atIndex: 0)
+        formController.view.makeEdgesEqualTo(view)
+        formController.didMoveToParentViewController(self)
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
@@ -58,7 +27,6 @@ class SettingsViewController : BaseViewController {
         }
         return super.shouldPerformSegueWithIdentifier(identifier, sender: sender)
     }
-
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let chatVC = segue.destinationViewController as? ChatViewController {

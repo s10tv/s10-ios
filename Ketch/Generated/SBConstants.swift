@@ -26,6 +26,11 @@ public enum SegueIdentifier : String {
     case Signup_Welcome = "Signup_Welcome"
 }
 
+public enum TableViewCellreuseIdentifier : String {
+    case SettingsPhotoCell = "SettingsPhotoCell"
+    case SettingsTextCell = "SettingsTextCell"
+}
+
 public enum ViewControllerStoryboardIdentifier : String {
     case BoatSailed = "BoatSailed"
     case Chat = "Chat"
@@ -38,6 +43,7 @@ public enum ViewControllerStoryboardIdentifier : String {
     case NotificationsPerm = "NotificationsPerm"
     case Profile = "Profile"
     case Settings = "Settings"
+    case SettingsForm = "SettingsForm"
     case Signup = "Signup"
     case Waitlist = "Waitlist"
     case Welcome = "Welcome"

@@ -92,6 +92,10 @@
 		EAAD921F1ACF4EFA0014BA25 /* ProvisioningProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921E1ACF4EFA0014BA25 /* ProvisioningProfile.swift */; };
 		EAB79B701AD912EB00D9875A /* PKHUDExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB79B6F1AD912EB00D9875A /* PKHUDExtension.swift */; };
 		EAB8E7A61AE04D8D00B3046F /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAB8E7A81AE04D8D00B3046F /* Settings.storyboard */; };
+		EAB8E7AA1AE074A200B3046F /* SettingsFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB8E7A91AE074A200B3046F /* SettingsFormViewController.swift */; };
+		EAB8E7AC1AE07DAB00B3046F /* SettingsPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB8E7AB1AE07DAB00B3046F /* SettingsPhotoCell.swift */; };
+		EAB8E7AE1AE07DB900B3046F /* SettingsTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB8E7AD1AE07DB900B3046F /* SettingsTextCell.swift */; };
+		EAB8E7B11AE0826D00B3046F /* XLFormExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB8E7B01AE0826D00B3046F /* XLFormExtensions.m */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
 		EAC8D3F61AA7269F00BCB7B9 /* FetchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9311A87DE5800D62625 /* FetchViewModel.swift */; };
 		EAC8D3F71AA7278900BCB7B9 /* ViewProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9321A87DE5800D62625 /* ViewProviders.swift */; };
@@ -220,6 +224,11 @@
 		EAAD921E1ACF4EFA0014BA25 /* ProvisioningProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvisioningProfile.swift; sourceTree = "<group>"; };
 		EAB79B6F1AD912EB00D9875A /* PKHUDExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKHUDExtension.swift; sourceTree = "<group>"; };
 		EAB8E7A71AE04D8D00B3046F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
+		EAB8E7A91AE074A200B3046F /* SettingsFormViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsFormViewController.swift; sourceTree = "<group>"; };
+		EAB8E7AB1AE07DAB00B3046F /* SettingsPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsPhotoCell.swift; sourceTree = "<group>"; };
+		EAB8E7AD1AE07DB900B3046F /* SettingsTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTextCell.swift; sourceTree = "<group>"; };
+		EAB8E7AF1AE0826D00B3046F /* XLFormExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XLFormExtensions.h; sourceTree = "<group>"; };
+		EAB8E7B01AE0826D00B3046F /* XLFormExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XLFormExtensions.m; sourceTree = "<group>"; };
 		EABD43D81AA1D28700B07813 /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
 		EABD43D91AA1D29C00B07813 /* Beta.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
 		EABD43DA1AA1D29C00B07813 /* Prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
@@ -327,6 +336,8 @@
 				EA55F1371AD522C60042CBB2 /* NotificationCenter.swift */,
 				EACF21651AD70CB300938CD0 /* SwiftExtensions.swift */,
 				EAB79B6F1AD912EB00D9875A /* PKHUDExtension.swift */,
+				EAB8E7AF1AE0826D00B3046F /* XLFormExtensions.h */,
+				EAB8E7B01AE0826D00B3046F /* XLFormExtensions.m */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -475,6 +486,9 @@
 			children = (
 				EA755A381ADDA5CB004B4A1D /* SandView.swift */,
 				EA755A391ADDA5CB004B4A1D /* SettingsViewController.swift */,
+				EAB8E7A91AE074A200B3046F /* SettingsFormViewController.swift */,
+				EAB8E7AB1AE07DAB00B3046F /* SettingsPhotoCell.swift */,
+				EAB8E7AD1AE07DB900B3046F /* SettingsTextCell.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -883,9 +897,11 @@
 				EAF4D7621A79AA5E00D35330 /* RootViewController.swift in Sources */,
 				EAD007FC1AD37236003A260D /* Geometry.swift in Sources */,
 				EA6E56541AD2152500B12F2B /* BoatSailedViewController.swift in Sources */,
+				EAB8E7AE1AE07DB900B3046F /* SettingsTextCell.swift in Sources */,
 				EA0FC9361A87DE5800D62625 /* SugarRecordExtension.swift in Sources */,
 				EA72FB2C1AD1B7E1009F853F /* ScrollTransition.swift in Sources */,
 				EA925C741AD99ED8008E9F41 /* R.swift in Sources */,
+				EAB8E7AA1AE074A200B3046F /* SettingsFormViewController.swift in Sources */,
 				EA0FC9391A87DE5800D62625 /* Logging.swift in Sources */,
 				EA49286C1ADF1BF700118639 /* DeviceInfo.swift in Sources */,
 				EA0FC93C1A87DE5800D62625 /* UIKitExtension.swift in Sources */,
@@ -896,6 +912,7 @@
 				EA6E56521AD1FDCE00B12F2B /* WaveTransition.swift in Sources */,
 				EA31049B1A99C3850069D6AD /* KetchIcon.swift in Sources */,
 				EA24C2741AD8F60900C40AAD /* _Connection.swift in Sources */,
+				EAB8E7AC1AE07DAB00B3046F /* SettingsPhotoCell.swift in Sources */,
 				EA5FCE481AD62C1F000D9B93 /* GameTutorialController.swift in Sources */,
 				EADDC6B11AD493710023DA0A /* FlowService.swift in Sources */,
 				EA0FC9381A87DE5800D62625 /* FoundationExtension.swift in Sources */,
@@ -903,6 +920,7 @@
 				EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */,
 				EA6650FD1AA00B95001BA40C /* Message.swift in Sources */,
 				EAD7B2AB1A9F0BE700FA6740 /* DesignableViews.swift in Sources */,
+				EAB8E7B11AE0826D00B3046F /* XLFormExtensions.m in Sources */,
 				EA6650FC1AA00B95001BA40C /* Connection.swift in Sources */,
 				EA6650E61AA00A82001BA40C /* WaveView.swift in Sources */,
 				EAAA42871AB24D5F00056EFF /* CandidateBubble.swift in Sources */,

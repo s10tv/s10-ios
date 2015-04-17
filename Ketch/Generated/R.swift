@@ -50,6 +50,8 @@ public enum R {
         case girlPlaceholder = "girl-placeholder"
         /// guy-placeholder
         case guyPlaceholder = "guy-placeholder"
+        /// ib-avatar-preview
+        case ibAvatarPreview = "ib-avatar-preview"
         /// ic_remove_photo
         case icRemovePhoto = "ic_remove_photo"
         /// Ketch
