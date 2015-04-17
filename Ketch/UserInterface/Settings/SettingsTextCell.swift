@@ -12,7 +12,12 @@ import XLForm
 class SettingsTextCell : XLFormBaseCell {
     
     @IBOutlet weak var iconView: UIImageView!
-    @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var textView: XLFormTextView!
+    
+    override func update() {
+        super.update()
+        iconView.image = UIImage(named: rowDescriptor.title)
+    }
     
     override class func formDescriptorCellHeightForRowDescriptor(rowDescriptor: XLFormRowDescriptor!) -> CGFloat {
         return 60

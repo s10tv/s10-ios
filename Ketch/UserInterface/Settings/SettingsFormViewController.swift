@@ -9,8 +9,6 @@
 import Foundation
 import XLForm
 
-
-
 class SettingsFormViewController : XLFormTableViewController {
     
     override func viewDidLoad() {
@@ -30,10 +28,23 @@ class SettingsFormViewController : XLFormTableViewController {
     
     func createRows() -> [XLFormPrototypeRowDescriptor] {
         let photoRow = XLFormPrototypeRowDescriptor(cellReuseIdentifier: "SettingsPhotoCell")
+
         let ageRow = XLFormPrototypeRowDescriptor(cellReuseIdentifier: "SettingsTextCell")
+        ageRow.title = R.KetchAssets.settingsAge.rawValue
+        
         let heightRow = XLFormPrototypeRowDescriptor(cellReuseIdentifier: "SettingsTextCell")
+        heightRow.title = R.KetchAssets.settingsHeightArrow.rawValue
         let aboutRow = XLFormPrototypeRowDescriptor(cellReuseIdentifier: "SettingsTextCell")
+        aboutRow.title = R.KetchAssets.settingsNotepad.rawValue
         
         return [photoRow, ageRow, heightRow, aboutRow]
+    }
+    
+    func textItems() {
+//        let user = User.currentUser()
+        let items = [
+            (icon: R.KetchAssets.settingsAge, value: "30")
+            
+        ]
     }
 }

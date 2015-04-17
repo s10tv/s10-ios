@@ -71,15 +71,19 @@
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d4z-pT-GPh" userLabel="Top Border">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="1"/>
-                                            <color key="backgroundColor" red="0.0046324636787176132" green="0.38956242799758911" blue="0.54355978965759277" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="backgroundColor" red="0.092987515032291412" green="0.64821720123291016" blue="0.65024715662002563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="1" id="Pcr-ud-cyJ"/>
                                             </constraints>
                                         </view>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="settings-icon-age" translatesAutoresizingMaskIntoConstraints="NO" id="yQD-4C-UgE">
-                                            <rect key="frame" x="30" y="19" width="25" height="22"/>
+                                            <rect key="frame" x="30" y="18" width="25" height="25"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="25" id="eQZ-VM-7a8"/>
+                                                <constraint firstAttribute="height" constant="25" id="rvL-t2-Fud"/>
+                                            </constraints>
                                         </imageView>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="You are 30 years old" translatesAutoresizingMaskIntoConstraints="NO" id="RRq-jv-tVE">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="You are 30 years old" translatesAutoresizingMaskIntoConstraints="NO" id="RRq-jv-tVE" customClass="XLFormTextView">
                                             <rect key="frame" x="63" y="16" width="529" height="36"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <color key="textColor" red="0.092987515032291412" green="0.64821720123291016" blue="0.65024715662002563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
