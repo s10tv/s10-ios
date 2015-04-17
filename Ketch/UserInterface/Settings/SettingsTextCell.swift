@@ -26,7 +26,7 @@ class SettingsTextCell : XLFormBaseCell {
         super.update()
         iconView.image = UIImage(named: rowDescriptor.title)
         textView.placeholder = rowDescriptor.noValueDisplayText
-        textView.text = rowDescriptor.value as? String
+        textView.text = (rowDescriptor as RowDescriptor).formattedValue
     }
     
     override func formDescriptorCellCanBecomeFirstResponder() -> Bool {
@@ -40,12 +40,6 @@ class SettingsTextCell : XLFormBaseCell {
     override class func formDescriptorCellHeightForRowDescriptor(rowDescriptor: XLFormRowDescriptor!) -> CGFloat {
         return 60
     }
-}
-
-// MARK: -
-
-extension SettingsTextCell : XLFormDescriptorCell {
-
 }
 
 // MARK: -

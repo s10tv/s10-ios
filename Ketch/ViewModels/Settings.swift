@@ -104,12 +104,12 @@ class SettingsViewModel {
                 ($0 as? String).map { Meteor.updateGenderPreference($0) }; return
             }),
             userItem(.Work, icon: .settingsBriefcase, attr: .work, format: {
-                return ($0 as? String) ?? "Enter your job title"
+                return $0.map { "You are a \($0)" } ?? "Enter your job title"
             }, update: {
                 ($0 as? String).map { Meteor.updateWork($0) }; return
             }),
             userItem(.Education, icon: .settingsMortarBoard, attr: .education, format: {
-                return ($0 as? String) ?? "Enter where you went to school"
+                return $0.map { "Studied at \($0)" } ?? "Enter where you went to school"
             }, update: {
                 ($0 as? String).map { Meteor.updateEducation($0) }; return
             }),

@@ -42,10 +42,11 @@ class SettingsFormViewController : XLFormTableViewController {
             }
         }
         return viewModel.items.map { item in
-            let row = XLFormPrototypeRowDescriptor(cellReuseIdentifier: getReuseId(item.type).rawValue)
+            let row = RowDescriptor(cellReuseIdentifier: getReuseId(item.type).rawValue)
             row.tag = item.type.rawValue
             row.title = item.iconName
             row.noValueDisplayText = item.formatBlock?(nil)
+            row.formatBlock = item.formatBlock
             row.disabled = (item.updateBlock == nil)
             item.value.signal.subscribeNext { row.value = $0 }
             println("Creating row \(row.tag) value: \(row.value)")
@@ -58,6 +59,15 @@ class SettingsFormViewController : XLFormTableViewController {
     }
 }
 
+class RowDescriptor : XLFormPrototypeRowDescriptor {
+    var formatBlock: (AnyObject -> String)?
+    var transformBlock: (String? -> AnyObject?)?
+    
+    var formattedValue: String? {
+        return value != nil ? formatBlock?(value!) : nil
+    }
 
-
-
+    func transformAndSetValue(preValue: String?) {
+        value = transformBlock != nil ? transformBlock!(preValue) : preValue
+    }
+}
