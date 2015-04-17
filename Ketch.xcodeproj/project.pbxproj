@@ -45,6 +45,8 @@
 		EA49286C1ADF1BF700118639 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA49286B1ADF1BF700118639 /* DeviceInfo.swift */; };
 		EA49286E1ADF291100118639 /* UpgradeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA49286D1ADF291100118639 /* UpgradeService.swift */; };
 		EA4A66571AA2D9BB0019D601 /* ChoicePlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A66561AA2D9BB0019D601 /* ChoicePlaceholder.swift */; };
+		EA4F51851AE153880060405E /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F51841AE153880060405E /* Settings.swift */; };
+		EA4F51871AE153A40060405E /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F51861AE153A40060405E /* Profile.swift */; };
 		EA520B881ADCBFE70047B789 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA520B871ADCBFE70047B789 /* HomeViewController.swift */; };
 		EA55F1381AD522C60042CBB2 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA55F1371AD522C60042CBB2 /* NotificationCenter.swift */; };
 		EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA5634DF1A7741FF00F62B52 /* Ketch.xcdatamodeld */; };
@@ -172,6 +174,8 @@
 		EA49286B1ADF1BF700118639 /* DeviceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		EA49286D1ADF291100118639 /* UpgradeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeService.swift; sourceTree = "<group>"; };
 		EA4A66561AA2D9BB0019D601 /* ChoicePlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoicePlaceholder.swift; sourceTree = "<group>"; };
+		EA4F51841AE153880060405E /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		EA4F51861AE153A40060405E /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		EA520B871ADCBFE70047B789 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EA55F1371AD522C60042CBB2 /* NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		EA5634E01A7741FF00F62B52 /* Ketch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ketch.xcdatamodel; sourceTree = "<group>"; };
@@ -422,6 +426,15 @@
 			path = Dock;
 			sourceTree = "<group>";
 		};
+		EA4F51831AE153790060405E /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				EA4F51841AE153880060405E /* Settings.swift */,
+				EA4F51861AE153A40060405E /* Profile.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		EA5634DE1A7741FF00F62B52 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -518,6 +531,7 @@
 			isa = PBXGroup;
 			children = (
 				EA5634DE1A7741FF00F62B52 /* Models */,
+				EA4F51831AE153790060405E /* ViewModels */,
 				EA6650E91AA00A9C001BA40C /* Services */,
 				EAF4D7441A79AA5E00D35330 /* UserInterface */,
 				EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */,
@@ -866,6 +880,7 @@
 				EA72FB2A1AD1B7D5009F853F /* Transition.swift in Sources */,
 				EACF21641AD707C800938CD0 /* WelcomeViewController.swift in Sources */,
 				EA1970151A83549300FEBA7F /* ProfileViewController.swift in Sources */,
+				EA4F51851AE153880060405E /* Settings.swift in Sources */,
 				EA755A3D1ADDA7DE004B4A1D /* KetchBoatView.swift in Sources */,
 				EAF195CF1A827FAD00A2F103 /* Ketch-Bridging.m in Sources */,
 				EA409D421A8C75F600988B8B /* DockViewController.swift in Sources */,
@@ -892,6 +907,7 @@
 				EA0FC9441A87DE5800D62625 /* ViewProviders.swift in Sources */,
 				EAAD921B1ACDEACD0014BA25 /* NewMatchTransition.swift in Sources */,
 				EA6650ED1AA00A9C001BA40C /* AccountService.swift in Sources */,
+				EA4F51871AE153A40060405E /* Profile.swift in Sources */,
 				EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */,
 				EA0FED411ADDD0C700FC6FCB /* PanInteractor.swift in Sources */,
 				EAF4D7621A79AA5E00D35330 /* RootViewController.swift in Sources */,

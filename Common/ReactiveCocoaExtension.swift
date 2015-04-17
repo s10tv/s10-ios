@@ -8,6 +8,22 @@
 
 import ReactiveCocoa
 
+// Stopgap solution, to be replaced in RAC 3.0
+struct Property {
+    private let subject = RACReplaySubject(capacity: 1)
+    var signal: RACSignal { return subject }
+    var current: AnyObject? { return signal.first() }
+    
+    init(_ initialValue: AnyObject? = nil) {
+        _update(initialValue)
+    }
+    
+    // Should only be called by producer of this property
+    func _update(value: AnyObject?) {
+        subject.sendNext(value)
+    }
+}
+
 // Avoid having to type cast all the time
 extension RACSignal {
     func subscribeNextAs<T>(nextClosure:(T) -> ()) -> RACDisposable {

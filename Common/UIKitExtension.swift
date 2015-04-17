@@ -117,6 +117,10 @@ extension UIView {
         addGestureRecognizer(edgePan)
     }
     
+    func deepCopy() -> UIView {
+        return NSKeyedUnarchiver.unarchiveObjectWithData(NSKeyedArchiver.archivedDataWithRootObject(self)) as UIView
+    }
+    
     class func fromNib(nibName: String, owner: AnyObject? = nil) -> UIView? {
         return UINib(nibName: nibName, bundle: nil).instantiateWithOwner(owner, options: nil).first as? UIView
     }
