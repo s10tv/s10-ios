@@ -26,19 +26,39 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingsPhotoCell" rowHeight="240" id="nqV-Ay-D6d" customClass="SettingsPhotoCell" customModule="Ketch" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingsLabelCell" id="0nO-s2-fXe" customClass="SettingsLabelCell" customModule="Ketch" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nqV-Ay-D6d" id="l1K-FK-FTd">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0nO-s2-fXe" id="gD4-Ze-IHD">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lola Forner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jwc-OS-u8y" userLabel="Name">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lola Forner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJy-Ux-yqE" userLabel="Name">
                                             <rect key="frame" x="256" y="22" width="89" height="18"/>
                                             <fontDescription key="fontDescription" name="TransatTextMedium" family="Transat Text" pointSize="18"/>
                                             <color key="textColor" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstAttribute="centerY" secondItem="IJy-Ux-yqE" secondAttribute="centerY" priority="749" id="II1-94-qzo"/>
+                                        <constraint firstAttribute="centerX" secondItem="IJy-Ux-yqE" secondAttribute="centerX" id="JEA-Il-SAr"/>
+                                        <constraint firstItem="IJy-Ux-yqE" firstAttribute="top" secondItem="gD4-Ze-IHD" secondAttribute="topMargin" constant="14" id="wfH-JE-nPu"/>
+                                    </constraints>
+                                </tableViewCellContentView>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="label" destination="IJy-Ux-yqE" id="pSf-bI-XT3"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingsPhotoCell" rowHeight="190" id="nqV-Ay-D6d" customClass="SettingsPhotoCell" customModule="Ketch" customModuleProvider="target">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nqV-Ay-D6d" id="l1K-FK-FTd">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
                                         <imageView contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" image="ib-avatar-preview" translatesAutoresizingMaskIntoConstraints="NO" id="2O8-JM-gWS" userLabel="Avatar" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
-                                            <rect key="frame" x="221" y="60" width="158" height="158"/>
+                                            <rect key="frame" x="220" y="8" width="160" height="160"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="160" id="Yok-Fe-2CE"/>
+                                            </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                                     <color key="value" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -51,17 +71,14 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="bottomMargin" secondItem="2O8-JM-gWS" secondAttribute="bottom" constant="14" id="47c-PA-zmV"/>
-                                        <constraint firstAttribute="centerX" secondItem="jwc-OS-u8y" secondAttribute="centerX" id="F8H-Kd-jFc"/>
+                                        <constraint firstItem="2O8-JM-gWS" firstAttribute="top" secondItem="l1K-FK-FTd" secondAttribute="topMargin" id="JtT-z4-dyk"/>
                                         <constraint firstAttribute="centerX" secondItem="2O8-JM-gWS" secondAttribute="centerX" id="Mw7-ac-U4u"/>
-                                        <constraint firstItem="2O8-JM-gWS" firstAttribute="top" secondItem="jwc-OS-u8y" secondAttribute="bottom" constant="20" id="hku-iG-nrj"/>
                                         <constraint firstItem="2O8-JM-gWS" firstAttribute="width" secondItem="2O8-JM-gWS" secondAttribute="height" multiplier="1:1" id="lGq-qf-dQv"/>
-                                        <constraint firstItem="jwc-OS-u8y" firstAttribute="top" secondItem="l1K-FK-FTd" secondAttribute="topMargin" constant="14" id="pwa-ba-9T2"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="avatarView" destination="2O8-JM-gWS" id="94B-hm-X4M"/>
-                                    <outlet property="nameLabel" destination="jwc-OS-u8y" id="BdK-wu-Dqy"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingsTextCell" id="qF5-2F-xHm" customClass="SettingsTextCell" customModule="Ketch" customModuleProvider="target">
@@ -83,7 +100,7 @@
                                                 <constraint firstAttribute="height" constant="25" id="rvL-t2-Fud"/>
                                             </constraints>
                                         </imageView>
-                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" text="You are 30 years old" translatesAutoresizingMaskIntoConstraints="NO" id="RRq-jv-tVE" customClass="XLFormTextView">
+                                        <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="249" scrollEnabled="NO" text="You are 30 years old" translatesAutoresizingMaskIntoConstraints="NO" id="RRq-jv-tVE" customClass="XLFormTextView">
                                             <rect key="frame" x="63" y="16" width="529" height="36"/>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <color key="textColor" red="0.092987515032291412" green="0.64821720123291016" blue="0.65024715662002563" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -98,6 +115,7 @@
                                         <constraint firstAttribute="centerY" secondItem="yQD-4C-UgE" secondAttribute="centerY" priority="749" id="Ocf-CS-IdA"/>
                                         <constraint firstItem="yQD-4C-UgE" firstAttribute="leading" secondItem="gBE-km-oq3" secondAttribute="leadingMargin" constant="22" id="Tdk-iI-OZL"/>
                                         <constraint firstItem="d4z-pT-GPh" firstAttribute="top" secondItem="gBE-km-oq3" secondAttribute="top" id="Vhf-5D-1Oe"/>
+                                        <constraint firstItem="RRq-jv-tVE" firstAttribute="top" relation="greaterThanOrEqual" secondItem="gBE-km-oq3" secondAttribute="topMargin" constant="8" id="nQ3-gk-cdX"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="RRq-jv-tVE" secondAttribute="bottom" id="nVy-36-cfL"/>
                                         <constraint firstAttribute="trailing" secondItem="d4z-pT-GPh" secondAttribute="trailing" id="pJY-Ga-yyG"/>
                                         <constraint firstItem="RRq-jv-tVE" firstAttribute="leading" secondItem="gBE-km-oq3" secondAttribute="leadingMargin" constant="55" id="tSc-zj-5Ul"/>

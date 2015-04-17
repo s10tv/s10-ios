@@ -98,12 +98,12 @@ class SettingsViewModel {
             userItem(.Age, icon: .settingsAge, attr: .age, format: {
                 return $0.map { "\($0) years old" } ?? "How old are you?"
             }),
-            metaItem(.GenderPreference, icon: .settingsAge, metadataKey: "genderPreference", format: {
+            metaItem(.GenderPreference, icon: .icBinocular, metadataKey: "genderPreference", format: {
                 return $0.map { "Interested in \($0)" } ?? "Set your gender preference"
             }, update: {
                 ($0 as? String).map { Meteor.updateGenderPreference($0) }; return
             }),
-            userItem(.Work, icon: .settingsBriefcase, attr: .age, format: {
+            userItem(.Work, icon: .settingsBriefcase, attr: .work, format: {
                 return ($0 as? String) ?? "Enter your job title"
             }, update: {
                 ($0 as? String).map { Meteor.updateWork($0) }; return

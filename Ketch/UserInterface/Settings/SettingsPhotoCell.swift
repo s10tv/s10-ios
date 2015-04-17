@@ -11,11 +11,11 @@ import XLForm
 
 class SettingsPhotoCell : XLFormBaseCell {
     
-    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var avatarView: UserAvatarView!
     
-    
-    override class func formDescriptorCellHeightForRowDescriptor(rowDescriptor: XLFormRowDescriptor!) -> CGFloat {
-        return 240
+    override func update() {
+        super.update()
+        avatarView.sd_setImageWithURL(rowDescriptor.value as? NSURL)
     }
+
 }

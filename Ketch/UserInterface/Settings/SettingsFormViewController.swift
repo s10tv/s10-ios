@@ -11,7 +11,11 @@ import XLForm
 
 class SettingsFormViewController : XLFormTableViewController {
     
+    var viewModel: SettingsViewModel!
+    
     override func viewDidLoad() {
+        assert(User.currentUser() != nil, "Current user must exist before showing settings")
+        viewModel = SettingsViewModel(currentUser: User.currentUser()!, meta: Meteor.meta)
         // Configure form before viewDidLoad so that everyting's already laid out prior to
         // view appear and thus avoiding row insertion unwanted animation
         form = createForm()
@@ -27,24 +31,33 @@ class SettingsFormViewController : XLFormTableViewController {
     }
     
     func createRows() -> [XLFormPrototypeRowDescriptor] {
-        let photoRow = XLFormPrototypeRowDescriptor(cellReuseIdentifier: "SettingsPhotoCell")
-
-        let ageRow = XLFormPrototypeRowDescriptor(cellReuseIdentifier: "SettingsTextCell")
-        ageRow.title = R.KetchAssets.settingsAge.rawValue
-        
-        let heightRow = XLFormPrototypeRowDescriptor(cellReuseIdentifier: "SettingsTextCell")
-        heightRow.title = R.KetchAssets.settingsHeightArrow.rawValue
-        let aboutRow = XLFormPrototypeRowDescriptor(cellReuseIdentifier: "SettingsTextCell")
-        aboutRow.title = R.KetchAssets.settingsNotepad.rawValue
-        
-        return [photoRow, ageRow, heightRow, aboutRow]
+        func getReuseId(type: SettingsItem.ItemType) -> TableViewCellreuseIdentifier {
+            switch type {
+            case .Name:
+                return .SettingsLabelCell
+            case .ProfilePhoto:
+                return .SettingsPhotoCell
+            default:
+                return .SettingsTextCell
+            }
+        }
+        return viewModel.items.map { item in
+            let row = XLFormPrototypeRowDescriptor(cellReuseIdentifier: getReuseId(item.type).rawValue)
+            row.tag = item.type.rawValue
+            row.title = item.iconName
+            row.noValueDisplayText = item.formatBlock?(nil)
+            row.disabled = (item.updateBlock == nil)
+            item.value.signal.subscribeNext { row.value = $0 }
+            println("Creating row \(row.tag) value: \(row.value)")
+            return row
+        }
     }
     
-    func textItems() {
-//        let user = User.currentUser()
-        let items = [
-            (icon: R.KetchAssets.settingsAge, value: "30")
-            
-        ]
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return UITableViewAutomaticDimension
     }
 }
+
+
+
+

@@ -52,6 +52,8 @@ public enum R {
         case guyPlaceholder = "guy-placeholder"
         /// ib-avatar-preview
         case ibAvatarPreview = "ib-avatar-preview"
+        /// ic-binocular
+        case icBinocular = "ic-binocular"
         /// ic_remove_photo
         case icRemovePhoto = "ic_remove_photo"
         /// Ketch

@@ -47,6 +47,7 @@
 		EA4A66571AA2D9BB0019D601 /* ChoicePlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A66561AA2D9BB0019D601 /* ChoicePlaceholder.swift */; };
 		EA4F51851AE153880060405E /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F51841AE153880060405E /* Settings.swift */; };
 		EA4F51871AE153A40060405E /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F51861AE153A40060405E /* Profile.swift */; };
+		EA4F51891AE1BFDB0060405E /* SettingsLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F51881AE1BFDB0060405E /* SettingsLabelCell.swift */; };
 		EA520B881ADCBFE70047B789 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA520B871ADCBFE70047B789 /* HomeViewController.swift */; };
 		EA55F1381AD522C60042CBB2 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA55F1371AD522C60042CBB2 /* NotificationCenter.swift */; };
 		EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA5634DF1A7741FF00F62B52 /* Ketch.xcdatamodeld */; };
@@ -176,6 +177,7 @@
 		EA4A66561AA2D9BB0019D601 /* ChoicePlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoicePlaceholder.swift; sourceTree = "<group>"; };
 		EA4F51841AE153880060405E /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		EA4F51861AE153A40060405E /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		EA4F51881AE1BFDB0060405E /* SettingsLabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsLabelCell.swift; sourceTree = "<group>"; };
 		EA520B871ADCBFE70047B789 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EA55F1371AD522C60042CBB2 /* NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		EA5634E01A7741FF00F62B52 /* Ketch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ketch.xcdatamodel; sourceTree = "<group>"; };
@@ -500,6 +502,7 @@
 				EA755A381ADDA5CB004B4A1D /* SandView.swift */,
 				EA755A391ADDA5CB004B4A1D /* SettingsViewController.swift */,
 				EAB8E7A91AE074A200B3046F /* SettingsFormViewController.swift */,
+				EA4F51881AE1BFDB0060405E /* SettingsLabelCell.swift */,
 				EAB8E7AB1AE07DAB00B3046F /* SettingsPhotoCell.swift */,
 				EAB8E7AD1AE07DB900B3046F /* SettingsTextCell.swift */,
 			);
@@ -935,6 +938,7 @@
 				EA0FED451ADE5BC500FC6FCB /* AnalyticsService.swift in Sources */,
 				EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */,
 				EA6650FD1AA00B95001BA40C /* Message.swift in Sources */,
+				EA4F51891AE1BFDB0060405E /* SettingsLabelCell.swift in Sources */,
 				EAD7B2AB1A9F0BE700FA6740 /* DesignableViews.swift in Sources */,
 				EAB8E7B11AE0826D00B3046F /* XLFormExtensions.m in Sources */,
 				EA6650FC1AA00B95001BA40C /* Connection.swift in Sources */,

@@ -27,6 +27,7 @@ public enum SegueIdentifier : String {
 }
 
 public enum TableViewCellreuseIdentifier : String {
+    case SettingsLabelCell = "SettingsLabelCell"
     case SettingsPhotoCell = "SettingsPhotoCell"
     case SettingsTextCell = "SettingsTextCell"
 }
