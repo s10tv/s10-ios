@@ -20,4 +20,9 @@ struct Formatters {
     static func formatHeight(heightInCm: Int) -> String {
         return heightFormatter.stringFromMeters(Double(heightInCm) / 100)
     }
+    
+    static func formatGenderPref(pref: String) -> String {
+        if pref == "both" { return "men and women" }
+        return pref
+    }
 }

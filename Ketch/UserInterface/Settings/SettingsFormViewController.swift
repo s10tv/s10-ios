@@ -9,31 +9,6 @@
 import Foundation
 import XLForm
 
-class RowDescriptor : XLFormPrototypeRowDescriptor {
-    
-    var formatBlock: (AnyObject -> String)?
-    var transformBlock: (String? -> AnyObject?)?
-    
-    var formattedValue: String? {
-        return value != nil ? formatBlock?(value!) : nil
-    }
-    
-    func transformAndSetValue(preValue: String?) {
-        value = transformBlock != nil ? transformBlock!(preValue) : preValue
-    }
-    
-    // Bit of a hack to work around issue with swift compiler crashing...
-    func updateCellWithValue(value: AnyObject?) {
-        self.value = value
-        if let cell = valueForKey("cell") as? XLFormBaseCell {
-            cell.rowDescriptor = self
-            if let cell = cell as? SettingsTextCell {
-                cell.forceUpdateHeight()
-            }
-        }
-    }
-}
-
 class SettingsFormViewController : XLFormTableViewController {
     
     var viewModel: SettingsViewModel!
@@ -66,8 +41,18 @@ class SettingsFormViewController : XLFormTableViewController {
                 return .SettingsTextCell
             }
         }
+        func getRow(type: SettingsItem.ItemType) -> RowDescriptor {
+            switch type {
+            case .Height:
+                return HeightRowDescriptor(cellReuseIdentifier: getReuseId(type).rawValue)
+            case .GenderPreference:
+                return GenderPrefRowDescriptor(cellReuseIdentifier: getReuseId(type).rawValue)
+            default:
+                return RowDescriptor(cellReuseIdentifier: getReuseId(type).rawValue)
+            }
+        }
         return viewModel.items.map { item in
-            let row = RowDescriptor(cellReuseIdentifier: getReuseId(item.type).rawValue)
+            let row = getRow(item.type)
             row.tag = item.type.rawValue
             row.title = item.iconName
             row.noValueDisplayText = item.formatBlock?(nil)

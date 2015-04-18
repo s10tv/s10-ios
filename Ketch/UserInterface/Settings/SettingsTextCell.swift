@@ -13,6 +13,8 @@ class SettingsTextCell : XLFormBaseCell {
     
     @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var textView: XLFormTextView!
+    
+    var row: RowDescriptor? { return rowDescriptor as? RowDescriptor }
 
     override func configure() {
         super.configure()
@@ -26,9 +28,13 @@ class SettingsTextCell : XLFormBaseCell {
         super.update()
         iconView.image = UIImage(named: rowDescriptor.title)
         textView.placeholder = rowDescriptor.noValueDisplayText
-        textView.text = (rowDescriptor as RowDescriptor).formattedValue
+        textView.text = row?.formattedValue
         textView.editable = !rowDescriptor.disabled
         textView.selectable = !rowDescriptor.disabled
+        if let inputView = row?.inputView {
+            textView.inputView = inputView
+            textView.tintColor = UIColor.clearColor()
+        }
     }
     
     override func formDescriptorCellCanBecomeFirstResponder() -> Bool {
@@ -54,9 +60,13 @@ extension SettingsTextCell : UITextViewDelegate {
     }
     
     func textViewDidBeginEditing(textView: UITextView) {
-        textView.text = rowDescriptor.value as? String
+        // NOTE: To make this work better for the
+        if row?.inputView == nil {
+            textView.text = rowDescriptor.value as? String
+        }
         formViewController().beginEditing(rowDescriptor)
         formViewController().textViewDidBeginEditing(textView)
+        row?.beginEditing()
     }
     
     func textViewDidChange(textView: UITextView) {
@@ -65,9 +75,10 @@ extension SettingsTextCell : UITextViewDelegate {
     
     func textViewDidEndEditing(textView: UITextView) {
         rowDescriptor.value = textView.text.length > 0 ? textView.text : nil
-        textView.text = (rowDescriptor as RowDescriptor).formattedValue
+        textView.text = row?.formattedValue
         formViewController().endEditing(rowDescriptor)
         formViewController().textViewDidEndEditing(textView)
+        row?.endEditing()
         forceUpdateHeight()
     }
 }

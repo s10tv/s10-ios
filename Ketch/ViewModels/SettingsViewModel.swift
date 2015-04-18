@@ -70,7 +70,7 @@ class SettingsViewModel {
                 return ($0 as? Int).map { LS(.settingsAgeFormat, $0) } ?? LS(.settingsAgePrompt)
             },
             metaItem(.GenderPreference, metadataKey: "genderPreference", icon: .icBinocular, editable: true) {
-                return ($0 as? String).map { LS(.settingsGenderPreferenceFormat, $0) } ?? LS(.settingsGenderPreferencePrompt)
+                return ($0 as? String).map { LS(.settingsGenderPreferenceFormat, Formatters.formatGenderPref($0)) } ?? LS(.settingsGenderPreferencePrompt)
             },
             userItem(.Work, icon: .settingsBriefcase, attr: .work) {
                 return ($0 as? String).map { LS(.settingsGenderPreferenceFormat, $0) } ?? LS(.settingsWorkPrompt)

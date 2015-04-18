@@ -51,6 +51,7 @@
 		EA520B881ADCBFE70047B789 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA520B871ADCBFE70047B789 /* HomeViewController.swift */; };
 		EA53D5221AE1E9B800EDAAFE /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA53D5211AE1E9B800EDAAFE /* Formatters.swift */; };
 		EA53D5241AE1EA7C00EDAAFE /* SettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA53D5231AE1EA7C00EDAAFE /* SettingsItem.swift */; };
+		EA53D5261AE1F91800EDAAFE /* RowDescriptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA53D5251AE1F91800EDAAFE /* RowDescriptors.swift */; };
 		EA55F1381AD522C60042CBB2 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA55F1371AD522C60042CBB2 /* NotificationCenter.swift */; };
 		EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA5634DF1A7741FF00F62B52 /* Ketch.xcdatamodeld */; };
 		EA5FCE461AD6077A000D9B93 /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5FCE451AD6077A000D9B93 /* ProgressIndicator.swift */; };
@@ -183,6 +184,7 @@
 		EA520B871ADCBFE70047B789 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EA53D5211AE1E9B800EDAAFE /* Formatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		EA53D5231AE1EA7C00EDAAFE /* SettingsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsItem.swift; sourceTree = "<group>"; };
+		EA53D5251AE1F91800EDAAFE /* RowDescriptors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowDescriptors.swift; sourceTree = "<group>"; };
 		EA55F1371AD522C60042CBB2 /* NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		EA5634E01A7741FF00F62B52 /* Ketch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ketch.xcdatamodel; sourceTree = "<group>"; };
 		EA5FCE451AD6077A000D9B93 /* ProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
@@ -508,6 +510,7 @@
 				EA755A381ADDA5CB004B4A1D /* SandView.swift */,
 				EA755A391ADDA5CB004B4A1D /* SettingsViewController.swift */,
 				EAB8E7A91AE074A200B3046F /* SettingsFormViewController.swift */,
+				EA53D5251AE1F91800EDAAFE /* RowDescriptors.swift */,
 				EA4F51881AE1BFDB0060405E /* SettingsLabelCell.swift */,
 				EAB8E7AB1AE07DAB00B3046F /* SettingsPhotoCell.swift */,
 				EAB8E7AD1AE07DB900B3046F /* SettingsTextCell.swift */,
@@ -966,6 +969,7 @@
 				EA0FC9341A87DE5800D62625 /* MeteorCDStack.swift in Sources */,
 				EA49286E1ADF291100118639 /* UpgradeService.swift in Sources */,
 				EA72FB1D1AD1805B009F853F /* LoadingViewController.swift in Sources */,
+				EA53D5261AE1F91800EDAAFE /* RowDescriptors.swift in Sources */,
 				EACF21661AD70CB300938CD0 /* SwiftExtensions.swift in Sources */,
 				EA755A361ADDA591004B4A1D /* PulsingView.swift in Sources */,
 				EA0FC93A1A87DE5800D62625 /* ReactiveCocoaExtension.swift in Sources */,
