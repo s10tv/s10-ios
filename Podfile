@@ -30,6 +30,7 @@ pod 'RBBAnimation', '~> 0.3.0'
 
 pod 'EDColor', '~> 0.4'
 pod 'DateTools', '~> 1.5'
+pod 'FormatterKit/TimeIntervalFormatter', '~> 1.8'
 pod 'TCMobileProvision', :git => 'https://github.com/tonyxiao/TCMobileProvision.git'
 
 # 3rd Party Service SDKs
