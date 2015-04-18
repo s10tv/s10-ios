@@ -75,9 +75,19 @@ class SettingsFormViewController : XLFormTableViewController {
         return UITableViewAutomaticDimension
     }
     
+    override func didSelectFormRow(formRow: XLFormRowDescriptor!) {
+        // TODO: Can this be done in storyboard instead as segue
+        if let type = SettingsItem.ItemType(rawValue: formRow.tag) {
+            if type == .ProfilePhoto || type == .Name {
+                parentViewController?.performSegue(.Main_Profile)
+            }
+        }
+    }
+    
     override func formRowDescriptorValueHasChanged(formRow: XLFormRowDescriptor!, oldValue: AnyObject!, newValue: AnyObject!) {
         if let type = SettingsItem.ItemType(rawValue: formRow.tag) {
             viewModel.updateItem(type, newValue: newValue)
         }
     }
+    
 }

@@ -95,9 +95,9 @@ class SettingsViewModel {
     private func createItems() -> [SettingsItem] {
         return [
             // TODO: Use CoreData computed property to avoid hardcode string?
-            userItem(.Name, attr: "displayName", editable: false),
-            userItem(.ProfilePhoto, attr: "profilePhotoURL", editable: false),
-            userItem(.Age, icon: .settingsAge, attr: .age) {
+            userItem(.Name, attr: "displayName"),
+            userItem(.ProfilePhoto, attr: "profilePhotoURL"),
+            userItem(.Age, icon: .settingsAge, attr: .age, editable: false) {
                 return $0.map { "\($0) years old" } ?? "Set your age in Facebook"
             },
             metaItem(.GenderPreference, metadataKey: "genderPreference", icon: .icBinocular, editable: true) {

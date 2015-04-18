@@ -28,6 +28,7 @@ class SettingsTextCell : XLFormBaseCell {
         textView.placeholder = rowDescriptor.noValueDisplayText
         textView.text = (rowDescriptor as RowDescriptor).formattedValue
         textView.editable = !rowDescriptor.disabled
+        textView.selectable = !rowDescriptor.disabled
     }
     
     override func formDescriptorCellCanBecomeFirstResponder() -> Bool {
