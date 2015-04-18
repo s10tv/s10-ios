@@ -95,18 +95,22 @@ class MeteorService {
     }
     
     func updateHeight(heightInCm: Int) -> RACSignal {
+        User.currentUser()?.height = heightInCm
         return RACSignal()
     }
     
     func updateWork(work: String) -> RACSignal {
+        User.currentUser()?.work = work
         return RACSignal()
     }
     
     func updateEducation(education: String) -> RACSignal {
+        User.currentUser()?.education = education
         return RACSignal()
     }
     
     func updateAbout(about: String) -> RACSignal {
+        User.currentUser()?.about = about
         return RACSignal()
     }
     

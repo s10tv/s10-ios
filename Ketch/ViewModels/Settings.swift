@@ -25,35 +25,17 @@ struct SettingsItem {
     let value: Property
     let iconName: String?
     let formatBlock: (AnyObject? -> String)?
+    let editable: Bool
     
     var icon: UIImage? { return iconName.map { UIImage(named: $0) }? }
     var formattedText: String { return formatBlock?(value.current) ?? value.current?.description ?? "" }
     
-    init(type: ItemType, iconName: String? = nil, formatBlock: (AnyObject? -> String)? = nil, updateBlock: (AnyObject? ->())? = nil) {
+    init(type: ItemType, iconName: String? = nil, editable: Bool = true, formatBlock: (AnyObject? -> String)? = nil, updateBlock: (AnyObject? ->())? = nil) {
         self.type = type
         self.iconName = iconName
         self.formatBlock = formatBlock
-        self.updateBlock = updateBlock
+        self.editable = editable
         self.value = Property()
-    }
-    
-    internal let updateBlock: (AnyObject? ->())?
-    internal func valueEquals(other: AnyObject?) -> Bool {
-        switch (value.current, other) {
-        case let (.Some(this), .Some(that)):
-            switch (this, that) {
-            case let (a as String, b as String):
-                return a == b
-            case let (a as Int, b as Int):
-                return a == b
-            default:
-                return false
-            }
-        case (.None, .None):
-            return true
-        default:
-            return false
-        }
     }
 }
 
@@ -82,10 +64,29 @@ class SettingsViewModel {
     }
     
     func updateItem(type: SettingsItem.ItemType, newValue: AnyObject?) {
-        let item = getItem(type)
-        if item.valueEquals(newValue) != true {
-            item.updateBlock?(newValue)
-            println("Value \(type.rawValue) has changed to \(newValue)")
+        switch (type, newValue) {
+        case let (.GenderPreference, genderPreference as String):
+            if meta.getValue("genderPreference") as? String != genderPreference {
+                Meteor.updateGenderPreference(genderPreference)
+            }
+        case let (.Work, work as String):
+            if currentUser.work != work {
+                Meteor.updateWork(work)
+            }
+        case let (.Education, education as String):
+            if currentUser.education != education {
+                Meteor.updateEducation(education)
+            }
+        case let (.Height, height as Int):
+            if currentUser.height != height {
+                Meteor.updateHeight(height)
+            }
+        case let (.About, about as String):
+            if currentUser.about != about {
+                Meteor.updateAbout(about)
+            }
+        default:
+            break
         }
     }
     
@@ -94,53 +95,43 @@ class SettingsViewModel {
     private func createItems() -> [SettingsItem] {
         return [
             // TODO: Use CoreData computed property to avoid hardcode string?
-            userItem(.Name, attr: "displayName"),
-            userItem(.ProfilePhoto, attr: "profilePhotoURL"),
-            userItem(.Age, icon: .settingsAge, attr: .age, format: {
+            userItem(.Name, attr: "displayName", editable: false),
+            userItem(.ProfilePhoto, attr: "profilePhotoURL", editable: false),
+            userItem(.Age, icon: .settingsAge, attr: .age) {
                 return $0.map { "\($0) years old" } ?? "Set your age in Facebook"
-            }),
-            metaItem(.GenderPreference, icon: .icBinocular, metadataKey: "genderPreference", format: {
+            },
+            metaItem(.GenderPreference, metadataKey: "genderPreference", icon: .icBinocular, editable: true) {
                 return $0.map { "Interested in \($0)" } ?? "Set your gender preference"
-            }, update: {
-                ($0 as? String).map { Meteor.updateGenderPreference($0) }; return
-            }),
-            userItem(.Work, icon: .settingsBriefcase, attr: .work, format: {
+            },
+            userItem(.Work, icon: .settingsBriefcase, attr: .work) {
                 return $0.map { "You are a \($0)" } ?? "Enter your job title"
-            }, update: {
-                ($0 as? String).map { Meteor.updateWork($0) }; return
-            }),
-            userItem(.Education, icon: .settingsMortarBoard, attr: .education, format: {
+            },
+            userItem(.Education, icon: .settingsMortarBoard, attr: .education) {
                 return $0.map { "Studied at \($0)" } ?? "Enter where you went to school"
-            }, update: {
-                ($0 as? String).map { Meteor.updateEducation($0) }; return
-            }),
-            userItem(.Height, icon: .settingsHeightArrow, attr: .height, format: {
+            },
+            userItem(.Height, icon: .settingsHeightArrow, attr: .height) {
                 return $0.map { "You're about \($0)cm tall" } ?? "What's your height?"
-            }, update: {
-                ($0 as? Int).map { Meteor.updateHeight($0) }; return
-            }),
-            userItem(.About, icon: .settingsNotepad, attr: .about, format: {
+            },
+            userItem(.About, icon: .settingsNotepad, attr: .about) {
                 return ($0 as? String) ?? "Enter your bio"
-            }, update: {
-                ($0 as? String).map { Meteor.updateAbout($0) }; return
-            })
+            }
         ]
     }
     
-    private func userItem(type: SettingsItem.ItemType, icon: R.KetchAssets? = nil, attr: UserAttributes, format: (AnyObject? -> String)? = nil, update: (AnyObject? ->())? = nil) -> SettingsItem {
-        return userItem(type, icon: icon, attr: attr.rawValue, format: format, update: update)
+    private func userItem(type: SettingsItem.ItemType, icon: R.KetchAssets? = nil, attr: UserAttributes, editable: Bool = true, format: (AnyObject? -> String)? = nil) -> SettingsItem {
+        return userItem(type, icon: icon, attr: attr.rawValue, editable: editable, format: format)
     }
     
-    private func userItem(type: SettingsItem.ItemType, icon: R.KetchAssets? = nil, attr: String, format: (AnyObject? -> String)? = nil, update: (AnyObject? ->())? = nil) -> SettingsItem {
-        let item = SettingsItem(type: type, iconName: icon?.rawValue, formatBlock: format, updateBlock: update)
+    private func userItem(type: SettingsItem.ItemType, icon: R.KetchAssets? = nil, attr: String, editable: Bool = true, format: (AnyObject? -> String)? = nil) -> SettingsItem {
+        let item = SettingsItem(type: type, iconName: icon?.rawValue, editable: editable, formatBlock: format)
         disposables += currentUser.racObserve(attr).subscribeNext {
             item.value._update($0)
         }
         return item
     }
     
-    private func metaItem(type: SettingsItem.ItemType, icon: R.KetchAssets? = nil, metadataKey: String, format: (AnyObject? -> String)? = nil, update: (AnyObject? ->())? = nil) -> SettingsItem {
-        let item = SettingsItem(type: type, iconName: icon?.rawValue, formatBlock: format, updateBlock: update)
+    private func metaItem(type: SettingsItem.ItemType, metadataKey: String, icon: R.KetchAssets? = nil, editable: Bool = true, format: (AnyObject? -> String)? = nil) -> SettingsItem {
+        let item = SettingsItem(type: type, iconName: icon?.rawValue, editable: editable, formatBlock: format)
         disposables += NC.rac_addObserverForName(METDatabaseDidChangeNotification, object: nil).subscribeNextAs {
             (notification: NSNotification) in
             if let changes = notification.userInfo?[METDatabaseChangesKey] as? METDatabaseChanges {

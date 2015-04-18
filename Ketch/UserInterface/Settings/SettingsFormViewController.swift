@@ -61,7 +61,7 @@ class SettingsFormViewController : XLFormTableViewController {
             row.title = item.iconName
             row.noValueDisplayText = item.formatBlock?(nil)
             row.formatBlock = item.formatBlock
-            row.disabled = (item.updateBlock == nil)
+            row.disabled = !item.editable
             item.value.signal.subscribeNext { val in
                 row.value = val
                 self.updateFormRow(row)
