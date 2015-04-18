@@ -27,6 +27,7 @@ class SettingsTextCell : XLFormBaseCell {
         iconView.image = UIImage(named: rowDescriptor.title)
         textView.placeholder = rowDescriptor.noValueDisplayText
         textView.text = (rowDescriptor as RowDescriptor).formattedValue
+        textView.editable = !rowDescriptor.disabled
     }
     
     override func formDescriptorCellCanBecomeFirstResponder() -> Bool {
@@ -35,10 +36,6 @@ class SettingsTextCell : XLFormBaseCell {
     
     override func formDescriptorCellBecomeFirstResponder() -> Bool {
         return textView.becomeFirstResponder()
-    }
-    
-    override class func formDescriptorCellHeightForRowDescriptor(rowDescriptor: XLFormRowDescriptor!) -> CGFloat {
-        return 60
     }
 }
 
@@ -50,20 +47,23 @@ extension SettingsTextCell : UITextViewDelegate {
     }
     
     func textViewDidBeginEditing(textView: UITextView) {
+        textView.text = rowDescriptor.value as? String
         formViewController().beginEditing(rowDescriptor)
         formViewController().textViewDidBeginEditing(textView)
     }
     
     func textViewDidChange(textView: UITextView) {
-        rowDescriptor.value = textView.text?.length > 0 ? textView.text : nil
         formViewController().tableView.beginUpdates()
         formViewController().tableView.endUpdates()
     }
     
     func textViewDidEndEditing(textView: UITextView) {
-        rowDescriptor.value = textView.text?.length > 0 ? textView.text : nil
+        rowDescriptor.value = textView.text
+        textView.text = (rowDescriptor as RowDescriptor).formattedValue
         formViewController().endEditing(rowDescriptor)
         formViewController().textViewDidEndEditing(textView)
+        
+        // Force tableview to recalculate height
         formViewController().tableView.beginUpdates()
         formViewController().tableView.endUpdates()
     }

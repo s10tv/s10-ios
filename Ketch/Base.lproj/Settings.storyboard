@@ -21,12 +21,12 @@
         <scene sceneID="FFe-cU-HuB">
             <objects>
                 <viewController storyboardIdentifier="SettingsForm" id="oXE-PG-K0h" customClass="SettingsFormViewController" customModule="Ketch" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="Awr-Y8-far">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="Awr-Y8-far">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingsLabelCell" id="0nO-s2-fXe" customClass="SettingsLabelCell" customModule="Ketch" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingsLabelCell" id="0nO-s2-fXe" customClass="SettingsLabelCell" customModule="Ketch" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0nO-s2-fXe" id="gD4-Ze-IHD">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -49,7 +49,7 @@
                                     <outlet property="label" destination="IJy-Ux-yqE" id="pSf-bI-XT3"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingsPhotoCell" rowHeight="190" id="nqV-Ay-D6d" customClass="SettingsPhotoCell" customModule="Ketch" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingsPhotoCell" rowHeight="190" id="nqV-Ay-D6d" customClass="SettingsPhotoCell" customModule="Ketch" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nqV-Ay-D6d" id="l1K-FK-FTd">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -81,7 +81,7 @@
                                     <outlet property="avatarView" destination="2O8-JM-gWS" id="94B-hm-X4M"/>
                                 </connections>
                             </tableViewCell>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingsTextCell" id="qF5-2F-xHm" customClass="SettingsTextCell" customModule="Ketch" customModuleProvider="target">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingsTextCell" id="qF5-2F-xHm" customClass="SettingsTextCell" customModule="Ketch" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qF5-2F-xHm" id="gBE-km-oq3">
                                     <autoresizingMask key="autoresizingMask"/>

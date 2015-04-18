@@ -9,6 +9,20 @@
 import Foundation
 import XLForm
 
+class RowDescriptor : XLFormPrototypeRowDescriptor {
+    
+    var formatBlock: (AnyObject -> String)?
+    var transformBlock: (String? -> AnyObject?)?
+    
+    var formattedValue: String? {
+        return value != nil ? formatBlock?(value!) : nil
+    }
+    
+    func transformAndSetValue(preValue: String?) {
+        value = transformBlock != nil ? transformBlock!(preValue) : preValue
+    }
+}
+
 class SettingsFormViewController : XLFormTableViewController {
     
     var viewModel: SettingsViewModel!
@@ -48,7 +62,10 @@ class SettingsFormViewController : XLFormTableViewController {
             row.noValueDisplayText = item.formatBlock?(nil)
             row.formatBlock = item.formatBlock
             row.disabled = (item.updateBlock == nil)
-            item.value.signal.subscribeNext { row.value = $0 }
+            item.value.signal.subscribeNext { val in
+                row.value = val
+                self.updateFormRow(row)
+            }
             println("Creating row \(row.tag) value: \(row.value)")
             return row
         }
@@ -57,17 +74,10 @@ class SettingsFormViewController : XLFormTableViewController {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }
-}
-
-class RowDescriptor : XLFormPrototypeRowDescriptor {
-    var formatBlock: (AnyObject -> String)?
-    var transformBlock: (String? -> AnyObject?)?
     
-    var formattedValue: String? {
-        return value != nil ? formatBlock?(value!) : nil
-    }
-
-    func transformAndSetValue(preValue: String?) {
-        value = transformBlock != nil ? transformBlock!(preValue) : preValue
+    override func formRowDescriptorValueHasChanged(formRow: XLFormRowDescriptor!, oldValue: AnyObject!, newValue: AnyObject!) {
+        if let type = SettingsItem.ItemType(rawValue: formRow.tag) {
+            viewModel.updateItem(type, newValue: newValue)
+        }
     }
 }

@@ -85,6 +85,7 @@ class SettingsViewModel {
         let item = getItem(type)
         if item.valueEquals(newValue) != true {
             item.updateBlock?(newValue)
+            println("Value \(type.rawValue) has changed to \(newValue)")
         }
     }
     
@@ -96,7 +97,7 @@ class SettingsViewModel {
             userItem(.Name, attr: "displayName"),
             userItem(.ProfilePhoto, attr: "profilePhotoURL"),
             userItem(.Age, icon: .settingsAge, attr: .age, format: {
-                return $0.map { "\($0) years old" } ?? "How old are you?"
+                return $0.map { "\($0) years old" } ?? "Set your age in Facebook"
             }),
             metaItem(.GenderPreference, icon: .icBinocular, metadataKey: "genderPreference", format: {
                 return $0.map { "Interested in \($0)" } ?? "Set your gender preference"
