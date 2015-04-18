@@ -47,8 +47,8 @@ class SettingsTextCell : XLFormBaseCell {
     
     func forceUpdateHeight() {
         // Force tableview to recalculate height
-        formViewController().tableView.beginUpdates()
-        formViewController().tableView.endUpdates()
+        formViewController().tableView?.beginUpdates()
+        formViewController().tableView?.endUpdates()
     }
 }
 

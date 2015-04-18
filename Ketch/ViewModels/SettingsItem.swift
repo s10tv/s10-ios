@@ -9,6 +9,12 @@
 import Foundation
 import ReactiveCocoa
 
+enum GenderPref : String {
+    case Men = "men"
+    case Women = "women"
+    case Both = "both"
+}
+
 struct SettingsItem {
     enum ItemType : String {
         case Name = "name"                          // String

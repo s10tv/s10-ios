@@ -34,9 +34,11 @@ class SettingsViewModel {
     
     func updateItem(type: SettingsItem.ItemType, newValue: AnyObject?) {
         switch (type, newValue) {
-        case let (.GenderPreference, genderPreference as String):
-            if meta.getValue("genderPreference") as? String != genderPreference {
-                Meteor.updateGenderPreference(genderPreference)
+        case let (.GenderPreference, pref as String):
+            if let pref = GenderPref(rawValue: pref) {
+                if meta.genderPref != pref {
+                    Meteor.updateGenderPref(pref)
+                }
             }
         case let (.Work, work as String):
             if currentUser.work != work {
@@ -69,7 +71,7 @@ class SettingsViewModel {
             userItem(.Age, icon: .settingsAge, attr: .age, editable: false) {
                 return ($0 as? Int).map { LS(.settingsAgeFormat, $0) } ?? LS(.settingsAgePrompt)
             },
-            metaItem(.GenderPreference, metadataKey: "genderPreference", icon: .icBinocular, editable: true) {
+            metaItem(.GenderPreference, metadataKey: "genderPref", icon: .icBinocular, editable: true) {
                 return ($0 as? String).map { LS(.settingsGenderPreferenceFormat, Formatters.formatGenderPref($0)) } ?? LS(.settingsGenderPreferencePrompt)
             },
             userItem(.Work, icon: .settingsBriefcase, attr: .work) {

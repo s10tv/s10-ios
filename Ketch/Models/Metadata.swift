@@ -19,6 +19,9 @@ class Metadata {
     var crabUserId : String? { return getValue("crabUserId") as? String }
     var vetted : Bool? { return getValue("vetted") as? Bool }
     var email : String? { return getValue("email") as? String }
+    var genderPref : GenderPref? {
+        return (getValue("genderPref") as? String).map { GenderPref(rawValue: $0) }?
+    }
     
     // MARK: Read-write properties
     

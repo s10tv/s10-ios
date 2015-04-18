@@ -90,28 +90,39 @@ class MeteorService {
     }
 
     // TODO: Implement profile updates, also make this enum
-    func updateGenderPreference(genderPreference: String) -> RACSignal {
-        return RACSignal()
+    func updateGenderPref(genderPref: GenderPref) -> RACSignal {
+        return meteor.call("user/updateGenderPref", [genderPref.rawValue]) {
+            self.meta.setValue(genderPref.rawValue, metadataKey: "genderPref")
+            return nil
+        }
     }
     
     func updateHeight(heightInCm: Int) -> RACSignal {
-        User.currentUser()?.height = heightInCm
-        return RACSignal()
+        return meteor.call("user/updateHeight", [heightInCm]) {
+            User.currentUser()?.height = heightInCm
+            return nil
+        }
     }
     
     func updateWork(work: String) -> RACSignal {
-        User.currentUser()?.work = work
-        return RACSignal()
+        return meteor.call("user/updateWork", [work]) {
+            User.currentUser()?.work = work
+            return nil
+        }
     }
     
     func updateEducation(education: String) -> RACSignal {
-        User.currentUser()?.education = education
-        return RACSignal()
+        return meteor.call("user/updateEducation", [education]) {
+            User.currentUser()?.education = education
+            return nil
+        }
     }
     
     func updateAbout(about: String) -> RACSignal {
-        User.currentUser()?.about = about
-        return RACSignal()
+        return meteor.call("user/updateAbout", [about]) {
+            User.currentUser()?.about = about
+            return nil
+        }
     }
     
     func submitChoices(#yes: Candidate, no: Candidate, maybe: Candidate) -> RACSignal {
