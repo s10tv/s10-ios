@@ -38,6 +38,12 @@ class SettingsTextCell : XLFormBaseCell {
     override func formDescriptorCellBecomeFirstResponder() -> Bool {
         return textView.becomeFirstResponder()
     }
+    
+    func forceUpdateHeight() {
+        // Force tableview to recalculate height
+        formViewController().tableView.beginUpdates()
+        formViewController().tableView.endUpdates()
+    }
 }
 
 // MARK: -
@@ -54,8 +60,7 @@ extension SettingsTextCell : UITextViewDelegate {
     }
     
     func textViewDidChange(textView: UITextView) {
-        formViewController().tableView.beginUpdates()
-        formViewController().tableView.endUpdates()
+        forceUpdateHeight()
     }
     
     func textViewDidEndEditing(textView: UITextView) {
@@ -63,9 +68,6 @@ extension SettingsTextCell : UITextViewDelegate {
         textView.text = (rowDescriptor as RowDescriptor).formattedValue
         formViewController().endEditing(rowDescriptor)
         formViewController().textViewDidEndEditing(textView)
-        
-        // Force tableview to recalculate height
-        formViewController().tableView.beginUpdates()
-        formViewController().tableView.endUpdates()
+        forceUpdateHeight()
     }
 }

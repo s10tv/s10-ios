@@ -21,6 +21,17 @@ class RowDescriptor : XLFormPrototypeRowDescriptor {
     func transformAndSetValue(preValue: String?) {
         value = transformBlock != nil ? transformBlock!(preValue) : preValue
     }
+    
+    // Bit of a hack to work around issue with swift compiler crashing...
+    func updateCellWithValue(value: AnyObject?) {
+        self.value = value
+        if let cell = valueForKey("cell") as? XLFormBaseCell {
+            cell.rowDescriptor = self
+            if let cell = cell as? SettingsTextCell {
+                cell.forceUpdateHeight()
+            }
+        }
+    }
 }
 
 class SettingsFormViewController : XLFormTableViewController {
@@ -62,9 +73,9 @@ class SettingsFormViewController : XLFormTableViewController {
             row.noValueDisplayText = item.formatBlock?(nil)
             row.formatBlock = item.formatBlock
             row.disabled = !item.editable
-            item.value.signal.subscribeNext { val in
-                row.value = val
-                self.updateFormRow(row)
+            row.value = item.value.current
+            item.value.signal.skip(1).subscribeNext {
+                row.updateCellWithValue($0)
             }
             println("Creating row \(row.tag) value: \(row.value)")
             return row
