@@ -75,7 +75,7 @@ class SettingsViewModel {
                 return ($0 as? String).map { LS(.settingsGenderPreferenceFormat, Formatters.formatGenderPref($0)) } ?? LS(.settingsGenderPreferencePrompt)
             },
             userItem(.Work, icon: .settingsBriefcase, attr: .work) {
-                return ($0 as? String).map { LS(.settingsGenderPreferenceFormat, $0) } ?? LS(.settingsWorkPrompt)
+                return ($0 as? String).map { LS(.settingsWorkFormat, $0) } ?? LS(.settingsWorkPrompt)
             },
             userItem(.Education, icon: .settingsMortarBoard, attr: .education) {
                 return ($0 as? String).map { LS(.settingsEducationFormat, $0) } ?? LS(.settingsEducationPrompt)
@@ -105,7 +105,8 @@ class SettingsViewModel {
     
     private func metaItem(type: SettingsItem.ItemType, metadataKey: String, icon: R.KetchAssets? = nil, editable: Bool = true, format: (AnyObject? -> String)? = nil) -> SettingsItem {
         let item = SettingsItem(type: type, iconName: icon?.rawValue, editable: editable, formatBlock: format)
-        disposables += NC.rac_addObserverForName(METDatabaseDidChangeNotification, object: nil).subscribeNextAs {
+        item.value._update(meta.getValue(metadataKey))
+        disposables += NC.rac_addObserverForName(METDatabaseDidChangeNotification, object: nil).deliverOnMainThread().subscribeNextAs {
             (notification: NSNotification) in
             if let changes = notification.userInfo?[METDatabaseChangesKey] as? METDatabaseChanges {
                 // TODO: This has been duplicated way too many times, refactor
