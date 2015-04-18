@@ -64,7 +64,7 @@ extension SettingsTextCell : UITextViewDelegate {
     }
     
     func textViewDidEndEditing(textView: UITextView) {
-        rowDescriptor.value = textView.text
+        rowDescriptor.value = textView.text.length > 0 ? textView.text : nil
         textView.text = (rowDescriptor as RowDescriptor).formattedValue
         formViewController().endEditing(rowDescriptor)
         formViewController().textViewDidEndEditing(textView)
