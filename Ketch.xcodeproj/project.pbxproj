@@ -45,10 +45,12 @@
 		EA49286C1ADF1BF700118639 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA49286B1ADF1BF700118639 /* DeviceInfo.swift */; };
 		EA49286E1ADF291100118639 /* UpgradeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA49286D1ADF291100118639 /* UpgradeService.swift */; };
 		EA4A66571AA2D9BB0019D601 /* ChoicePlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4A66561AA2D9BB0019D601 /* ChoicePlaceholder.swift */; };
-		EA4F51851AE153880060405E /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F51841AE153880060405E /* Settings.swift */; };
+		EA4F51851AE153880060405E /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F51841AE153880060405E /* SettingsViewModel.swift */; };
 		EA4F51871AE153A40060405E /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F51861AE153A40060405E /* Profile.swift */; };
 		EA4F51891AE1BFDB0060405E /* SettingsLabelCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F51881AE1BFDB0060405E /* SettingsLabelCell.swift */; };
 		EA520B881ADCBFE70047B789 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA520B871ADCBFE70047B789 /* HomeViewController.swift */; };
+		EA53D5221AE1E9B800EDAAFE /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA53D5211AE1E9B800EDAAFE /* Formatters.swift */; };
+		EA53D5241AE1EA7C00EDAAFE /* SettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA53D5231AE1EA7C00EDAAFE /* SettingsItem.swift */; };
 		EA55F1381AD522C60042CBB2 /* NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA55F1371AD522C60042CBB2 /* NotificationCenter.swift */; };
 		EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA5634DF1A7741FF00F62B52 /* Ketch.xcdatamodeld */; };
 		EA5FCE461AD6077A000D9B93 /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5FCE451AD6077A000D9B93 /* ProgressIndicator.swift */; };
@@ -175,10 +177,12 @@
 		EA49286B1ADF1BF700118639 /* DeviceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		EA49286D1ADF291100118639 /* UpgradeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeService.swift; sourceTree = "<group>"; };
 		EA4A66561AA2D9BB0019D601 /* ChoicePlaceholder.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChoicePlaceholder.swift; sourceTree = "<group>"; };
-		EA4F51841AE153880060405E /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		EA4F51841AE153880060405E /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		EA4F51861AE153A40060405E /* Profile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		EA4F51881AE1BFDB0060405E /* SettingsLabelCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsLabelCell.swift; sourceTree = "<group>"; };
 		EA520B871ADCBFE70047B789 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		EA53D5211AE1E9B800EDAAFE /* Formatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
+		EA53D5231AE1EA7C00EDAAFE /* SettingsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsItem.swift; sourceTree = "<group>"; };
 		EA55F1371AD522C60042CBB2 /* NotificationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenter.swift; sourceTree = "<group>"; };
 		EA5634E01A7741FF00F62B52 /* Ketch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ketch.xcdatamodel; sourceTree = "<group>"; };
 		EA5FCE451AD6077A000D9B93 /* ProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
@@ -431,8 +435,10 @@
 		EA4F51831AE153790060405E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				EA4F51841AE153880060405E /* Settings.swift */,
+				EA53D5231AE1EA7C00EDAAFE /* SettingsItem.swift */,
+				EA4F51841AE153880060405E /* SettingsViewModel.swift */,
 				EA4F51861AE153A40060405E /* Profile.swift */,
+				EA53D5211AE1E9B800EDAAFE /* Formatters.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -883,7 +889,7 @@
 				EA72FB2A1AD1B7D5009F853F /* Transition.swift in Sources */,
 				EACF21641AD707C800938CD0 /* WelcomeViewController.swift in Sources */,
 				EA1970151A83549300FEBA7F /* ProfileViewController.swift in Sources */,
-				EA4F51851AE153880060405E /* Settings.swift in Sources */,
+				EA4F51851AE153880060405E /* SettingsViewModel.swift in Sources */,
 				EA755A3D1ADDA7DE004B4A1D /* KetchBoatView.swift in Sources */,
 				EAF195CF1A827FAD00A2F103 /* Ketch-Bridging.m in Sources */,
 				EA409D421A8C75F600988B8B /* DockViewController.swift in Sources */,
@@ -922,6 +928,7 @@
 				EA925C741AD99ED8008E9F41 /* R.swift in Sources */,
 				EAB8E7AA1AE074A200B3046F /* SettingsFormViewController.swift in Sources */,
 				EA0FC9391A87DE5800D62625 /* Logging.swift in Sources */,
+				EA53D5221AE1E9B800EDAAFE /* Formatters.swift in Sources */,
 				EA49286C1ADF1BF700118639 /* DeviceInfo.swift in Sources */,
 				EA0FC93C1A87DE5800D62625 /* UIKitExtension.swift in Sources */,
 				EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */,
@@ -967,6 +974,7 @@
 				EA0FC9411A87DE5800D62625 /* ArrayViewModel.swift in Sources */,
 				EA24C2761AD8F60900C40AAD /* _User.swift in Sources */,
 				EA6650FE1AA00B95001BA40C /* User.swift in Sources */,
+				EA53D5241AE1EA7C00EDAAFE /* SettingsItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,20 +21,12 @@ class ProfileInfoItem {
     }
     
     var text : String {
-        struct formatters {
-            static let height : NSLengthFormatter = {
-                let formatter = NSLengthFormatter()
-                formatter.forPersonHeightUse = true
-                formatter.unitStyle = .Short
-                formatter.numberFormatter.maximumFractionDigits = 0
-                return formatter
-                }()
-        }
+        
         
         switch type {
         case let .Location(location): return location
         case let .Age(age): return toString(age)
-        case let .Height(height): return formatters.height.stringFromMeters(Double(height) / 100)
+        case let .Height(height): return Formatters.formatHeight(height)
         case let .Work(work): return work
         case let .Education(education): return education
         }

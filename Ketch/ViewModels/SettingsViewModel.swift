@@ -10,39 +10,6 @@ import Foundation
 import ReactiveCocoa
 import Meteor
 
-struct SettingsItem {
-    enum ItemType : String {
-        case Name = "name"                          // String
-        case ProfilePhoto = "profilePhoto"          // NSURL
-        case GenderPreference = "genderPreference"  // String
-        case Age = "age"                            // Int
-        case Work = "work"                          // String
-        case Education = "education"                // String
-        case Height = "height"                      // Int (cm)
-        case About = "about"                        // String
-    }
-    let type: ItemType
-    let value: Property
-    let iconName: String?
-    let formatBlock: (AnyObject? -> String)?
-    let editable: Bool
-    
-    var icon: UIImage? { return iconName.map { UIImage(named: $0) }? }
-    var formattedText: String { return formatBlock?(value.current) ?? value.current?.description ?? "" }
-    
-    init(type: ItemType, iconName: String? = nil, editable: Bool = true, formatBlock: (AnyObject? -> String)? = nil, updateBlock: (AnyObject? ->())? = nil) {
-        self.type = type
-        self.iconName = iconName
-        self.formatBlock = formatBlock
-        self.editable = editable
-        self.value = Property()
-    }
-}
-
-func ==(a: SettingsItem.ItemType, b: SettingsItem.ItemType) -> Bool {
-    return a.rawValue == b.rawValue
-}
-
 class SettingsViewModel {
     let currentUser: User
     let meta: Metadata
@@ -62,6 +29,8 @@ class SettingsViewModel {
     func getItem(type: SettingsItem.ItemType) -> SettingsItem {
         return items.match { $0.type == type }!
     }
+    
+    // MARK: - Controlled Write Access
     
     func updateItem(type: SettingsItem.ItemType, newValue: AnyObject?) {
         switch (type, newValue) {
@@ -110,13 +79,15 @@ class SettingsViewModel {
                 return $0.map { "Studied at \($0)" } ?? "Enter where you went to school"
             },
             userItem(.Height, icon: .settingsHeightArrow, attr: .height) {
-                return $0.map { "You're about \($0)cm tall" } ?? "What's your height?"
+                return ($0 as? Int).map { "You're about \(Formatters.formatHeight($0)) tall" } ?? "What's your height?"
             },
             userItem(.About, icon: .settingsNotepad, attr: .about) {
                 return ($0 as? String) ?? "Enter your bio"
             }
         ]
     }
+    
+    // MARK: More Helpers
     
     private func userItem(type: SettingsItem.ItemType, icon: R.KetchAssets? = nil, attr: UserAttributes, editable: Bool = true, format: (AnyObject? -> String)? = nil) -> SettingsItem {
         return userItem(type, icon: icon, attr: attr.rawValue, editable: editable, format: format)
