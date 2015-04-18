@@ -128,6 +128,28 @@ public enum R {
         case reportAlertMessage = "ReportAlertMessage"
         /// Thank you for your feedback
         case reportAlertTitle = "ReportAlertTitle"
+        /// Enter your bio
+        case settingsAboutPrompt = "SettingsAboutPrompt"
+        /// %@ years old
+        case settingsAgeFormat = "SettingsAgeFormat"
+        /// Set you age in Facebook
+        case settingsAgePrompt = "SettingsAgePrompt"
+        /// Studied at %@
+        case settingsEducationFormat = "SettingsEducationFormat"
+        /// Enter where you went to school
+        case settingsEducationPrompt = "SettingsEducationPrompt"
+        /// Interested in %@
+        case settingsGenderPreferenceFormat = "SettingsGenderPreferenceFormat"
+        /// Set your gender preference
+        case settingsGenderPreferencePrompt = "SettingsGenderPreferencePrompt"
+        /// You are about %@ tall
+        case settingsHeightFormat = "SettingsHeightFormat"
+        /// What's your height?
+        case settingsHeightPrompt = "SettingsHeightPrompt"
+        /// You are a %@
+        case settingsWorkFormat = "SettingsWorkFormat"
+        /// Enter your job title
+        case settingsWorkPrompt = "SettingsWorkPrompt"
         /// %@ likes you! Your dreamboat will sail away in three days. Get on it before %@ disappears for good!
         case singleMatchPrompt = "SingleMatchPrompt"
         /// SAY NO NICELY

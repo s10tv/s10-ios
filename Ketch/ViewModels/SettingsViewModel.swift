@@ -67,22 +67,22 @@ class SettingsViewModel {
             userItem(.Name, attr: "displayName"),
             userItem(.ProfilePhoto, attr: "profilePhotoURL"),
             userItem(.Age, icon: .settingsAge, attr: .age, editable: false) {
-                return $0.map { "\($0) years old" } ?? "Set your age in Facebook"
+                return ($0 as? Int).map { LS(.settingsAgeFormat, $0) } ?? LS(.settingsAgePrompt)
             },
             metaItem(.GenderPreference, metadataKey: "genderPreference", icon: .icBinocular, editable: true) {
-                return $0.map { "Interested in \($0)" } ?? "Set your gender preference"
+                return ($0 as? String).map { LS(.settingsGenderPreferenceFormat, $0) } ?? LS(.settingsGenderPreferencePrompt)
             },
             userItem(.Work, icon: .settingsBriefcase, attr: .work) {
-                return $0.map { "You are a \($0)" } ?? "Enter your job title"
+                return ($0 as? String).map { LS(.settingsGenderPreferenceFormat, $0) } ?? LS(.settingsWorkPrompt)
             },
             userItem(.Education, icon: .settingsMortarBoard, attr: .education) {
-                return $0.map { "Studied at \($0)" } ?? "Enter where you went to school"
+                return ($0 as? String).map { LS(.settingsEducationFormat, $0) } ?? LS(.settingsEducationPrompt)
             },
             userItem(.Height, icon: .settingsHeightArrow, attr: .height) {
-                return ($0 as? Int).map { "You're about \(Formatters.formatHeight($0)) tall" } ?? "What's your height?"
+                return ($0 as? Int).map { LS(.settingsHeightFormat, Formatters.formatHeight($0)) } ?? LS(.settingsHeightPrompt)
             },
             userItem(.About, icon: .settingsNotepad, attr: .about) {
-                return ($0 as? String) ?? "Enter your bio"
+                return ($0 as? String) ?? LS(.settingsAboutPrompt)
             }
         ]
     }

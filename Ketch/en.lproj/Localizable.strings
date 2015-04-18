@@ -41,3 +41,17 @@
 "HardUpgradeAlertTitle" = "Your version is no longer supported";
 "HardUpgradeAlertMessage" = "You won't be able to continue using the app until you upgrade. Please upgrade to the latest version";
 "HardUpgradeAlertOk" = "Upgrade";
+
+/* Settings */
+"SettingsAgeFormat" = "%d years old";
+"SettingsGenderPreferenceFormat" = "Interested in %@";
+"SettingsWorkFormat" = "You are a %@";
+"SettingsEducationFormat" = "Studied at %@";
+"SettingsHeightFormat" = "You are about %@ tall";
+
+"SettingsAgePrompt" = "Set you age in Facebook";
+"SettingsGenderPreferencePrompt" = "Set your gender preference";
+"SettingsWorkPrompt" = "Enter your job title";
+"SettingsEducationPrompt" = "Enter where you went to school";
+"SettingsHeightPrompt" = "What's your height?";
+"SettingsAboutPrompt" = "Enter your bio";
