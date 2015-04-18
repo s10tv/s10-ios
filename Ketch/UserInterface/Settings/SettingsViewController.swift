@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import Cartography
 
 class SettingsViewController : BaseViewController {
     
+    @IBOutlet weak var waveView: WaveView!
     var formController: SettingsFormViewController!
 
     override func viewDidLoad() {
@@ -17,7 +19,12 @@ class SettingsViewController : BaseViewController {
         formController = makeViewController(.SettingsForm) as SettingsFormViewController
         addChildViewController(formController)
         view.insertSubview(formController.view, atIndex: 0)
-        formController.view.makeEdgesEqualTo(view)
+        constrain(formController.view, view, waveView) { tableView, view, waveView in
+            tableView.top == view.top
+            tableView.leading == view.leading
+            tableView.trailing == view.trailing
+            tableView.bottom == waveView.top
+        }
         formController.didMoveToParentViewController(self)
     }
     

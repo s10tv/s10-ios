@@ -211,6 +211,7 @@
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="waveView" destination="cv6-2X-pDR" id="DHQ-p0-hDp"/>
                         <segue destination="FbI-lK-1wP" kind="custom" identifier="Main_Profile" customClass="LinkedStoryboardPresentSegue" id="oWb-P1-Ra0"/>
                     </connections>
                 </viewController>
