@@ -67,18 +67,7 @@ class MeteorService {
         meteor.connect()
     }
     
-    // MARK: - Server API
-
-    func registerDevice(env: Environment, pushToken: NSData? = nil) -> RACSignal {
-        return meteor.call("user/registerDevice", [[
-            "deviceId": env.deviceId,
-            "appId": env.appId,
-            "version": env.version,
-            "build": env.build,
-            "apsEnv": env.provisioningProfile?.apsEnvironment?.rawValue,
-            "pushToken": pushToken?.hexString()
-        ].filter { (k, v) in v != nil }.map { (k, v) in (k, v!) }])
-    }
+    // MARK: - Authentication
     
     func loginWithFacebook(#accessToken: String, expiresAt: NSDate) -> RACSignal {
         return meteor.loginWithMethod("login", params: [[
@@ -88,42 +77,65 @@ class MeteorService {
             ]
         ]])
     }
+    
+    
+    func logout() -> RACSignal {
+        return meteor.logout()
+    }
 
-    // TODO: Implement profile updates, also make this enum
+    // MARK: - Account Updates
+    
+    func registerDevice(env: Environment, pushToken: NSData? = nil) -> RACSignal {
+        return meteor.call("me/update/device", [[
+            "deviceId": env.deviceId,
+            "appId": env.appId,
+            "version": env.version,
+            "build": env.build,
+            "apsEnv": env.provisioningProfile?.apsEnvironment?.rawValue,
+            "pushToken": pushToken?.hexString()
+        ].filter { (k, v) in v != nil }.map { (k, v) in (k, v!) }])
+    }
+
     func updateGenderPref(genderPref: GenderPref) -> RACSignal {
-        return meteor.call("user/updateGenderPref", [genderPref.rawValue]) {
+        return meteor.call("me/update/genderPref", [genderPref.rawValue]) {
             self.meta.setValue(genderPref.rawValue, metadataKey: "genderPref")
             return nil
         }
     }
     
     func updateHeight(heightInCm: Int) -> RACSignal {
-        return meteor.call("user/updateHeight", [heightInCm]) {
+        return meteor.call("me/update/height", [heightInCm]) {
             User.currentUser()?.height = heightInCm
             return nil
         }
     }
     
     func updateWork(work: String) -> RACSignal {
-        return meteor.call("user/updateWork", [work]) {
+        return meteor.call("me/update/work", [work]) {
             User.currentUser()?.work = work
             return nil
         }
     }
     
     func updateEducation(education: String) -> RACSignal {
-        return meteor.call("user/updateEducation", [education]) {
+        return meteor.call("me/update/education", [education]) {
             User.currentUser()?.education = education
             return nil
         }
     }
     
     func updateAbout(about: String) -> RACSignal {
-        return meteor.call("user/updateAbout", [about]) {
+        return meteor.call("me/update/about", [about]) {
             User.currentUser()?.about = about
             return nil
         }
     }
+    
+    func deleteAccount() -> RACSignal {
+        return meteor.call("me/delete")
+    }
+    
+    // MARK: - Core Mechanic
     
     func submitChoices(#yes: Candidate, no: Candidate, maybe: Candidate) -> RACSignal {
         return meteor.call("candidate/submitChoices", [[
@@ -164,13 +176,5 @@ class MeteorService {
     
     func reportUser(user: User, reason: String) -> RACSignal {
         return meteor.call("user/report", [user.documentID!, reason])
-    }
-    
-    func deleteAccount() -> RACSignal {
-        return meteor.call("user/delete")
-    }
-    
-    func logout() -> RACSignal {
-        return meteor.logout()
     }
 }
