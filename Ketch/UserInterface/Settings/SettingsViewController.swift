@@ -49,7 +49,7 @@ class SettingsViewController : BaseViewController {
     @IBAction func showLogoutOptions(sender: AnyObject) {
         let sheet = UIAlertController(title: LS(.settingsLogoutTitle), message: nil, preferredStyle: .ActionSheet)
         sheet.addAction(LS(.settingsLogoutLogout)) { _ in
-            Account.logout()
+            Globals.accountService.logout()
             self.performSegue(.SettingsToLoading)
         }
         sheet.addAction(LS(.settingsLogoutDeleteAccount), style: .Destructive) { _ in
@@ -63,7 +63,7 @@ class SettingsViewController : BaseViewController {
         var alert = UIAlertController(title: LS(.settingsDeleteAccountTitle), message:LS(.settingsDeleteAccountMessage), preferredStyle: .Alert)
         // NOTE: Not using .Destructive style here becauase it does not change color when disabled
         let confirmAction = alert.addAction(LS(.settingsDeleteAccountConfirm)) { _ in
-            Account.deleteAccount()
+            Globals.accountService.deleteAccount()
             self.performSegue(.SettingsToLoading)
         }
         alert.addAction(LS(.settingsDeleteAccountCancel), style: .Cancel)

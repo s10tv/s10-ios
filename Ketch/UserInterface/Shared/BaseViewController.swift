@@ -47,8 +47,8 @@ class BaseViewController : UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        stateDisposable = Flow.stateSignal().subscribeNext { [weak self] _ in
-            self!.stateDidUpdateWhileViewActive(Flow.currentState)
+        stateDisposable = Globals.flowService.stateSignal().subscribeNext { [weak self] _ in
+            self!.stateDidUpdateWhileViewActive(Globals.flowService.currentState)
         }
         metadataDisposable = listenForNotification(METDatabaseDidChangeNotification)
             .deliverOnMainThread().subscribeNextAs { (notification: NSNotification) in
@@ -80,7 +80,7 @@ class BaseViewController : UIViewController {
     // MARK: Debugging
     
     override func motionEnded(subtype: UIEventSubtype, withEvent event: UIEvent) {
-        if Env.audience == .Dev {
+        if Globals.env.audience == .Dev {
             if subtype == .MotionShake {
                 navigationController?.popToRootViewControllerAnimated(true)
             }

@@ -215,11 +215,11 @@ class GameViewController : HomeViewController {
         let marry = chosenCandidate(.Yes)!
         let keep = chosenCandidate(.Maybe)!
         let skip = chosenCandidate(.No)!
-        Flow.willSubmitGame()
+        Globals.flowService.willSubmitGame()
         Meteor.submitChoices(yes: marry, no: skip, maybe: keep).subscribeNext({ newMatch in
-            Flow.didReceiveGameResult(newMatch as? Connection)
+            Globals.flowService.didReceiveGameResult(newMatch as? Connection)
         }, error: { error in
-            Flow.didReceiveGameResult(nil)
+            Globals.flowService.didReceiveGameResult(nil)
             Log.error("Error receiving game result", error)
         })
         delegate?.gameDidSubmitChoice()

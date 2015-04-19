@@ -22,7 +22,7 @@ class AnalyticsService {
         segment = SEGAnalytics.sharedAnalytics()
         
         // Heap
-        Heap.setAppId(Env.heapAppId)
+        Heap.setAppId(env.heapAppId)
         if env.audience == .Dev {
             Heap.enableVisualizer()
         }

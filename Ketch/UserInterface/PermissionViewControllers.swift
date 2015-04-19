@@ -18,7 +18,7 @@ class FacebookPermissionViewController : BaseViewController {
     
     @IBAction func requestFacebookPermission(sender: AnyObject) {
         PKHUD.showActivity()
-        Account.login().subscribeError({ _ in
+        Globals.accountService.login().subscribeError({ _ in
             PKHUD.hide()
             self.showAlert(LS(.fbPermDeniedAlertTitle),
                   message: LS(.fbPermDeniedAlertMessage))
@@ -58,8 +58,8 @@ class LocationPermissionViewController : BaseViewController {
     }
     
     @IBAction func requestLocationPermission(sender: AnyObject) {
-        Location.requestPermission().deliverOnMainThread().subscribeCompleted {
-            if Flow.currentState == .Waitlist {
+        Globals.locationService.requestPermission().deliverOnMainThread().subscribeCompleted {
+            if Globals.flowService.currentState == .Waitlist {
                 self.performSegue(.LocationPermToWaitlist)
             } else {
                 self.performSegue(.LocationPermToLoading)

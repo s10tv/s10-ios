@@ -38,6 +38,7 @@ class LocationService {
             return
         }
         manager.requestLocationWithDesiredAccuracy(.Neighborhood, timeout: 10) { location, accuracy, status in
+            Log.debug("Received location: \(location) accuracy: \(accuracy) status: \(status)")
             if location != nil {
                 self.meteorService.updateDeviceLocation(location)
             }

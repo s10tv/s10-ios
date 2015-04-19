@@ -17,22 +17,22 @@ class SignupViewController : BaseViewController {
     
     // MARK: Actions
     @IBAction func didTapOnNotPicky(sender: AnyObject) {
-        UIApplication.sharedApplication().openURL(Env.notPickyExitURL)
+        UIApplication.sharedApplication().openURL(Globals.env.notPickyExitURL)
     }
     
     @IBAction func viewTerms(sender: AnyObject) {
-        UIApplication.sharedApplication().openURL(Env.termsAndConditionURL)
+        UIApplication.sharedApplication().openURL(Globals.env.termsAndConditionURL)
     }
     
     @IBAction func viewPrivacy(sender: AnyObject) {
-        UIApplication.sharedApplication().openURL(Env.privacyURL)
+        UIApplication.sharedApplication().openURL(Globals.env.privacyURL)
     }
     
     @IBAction func loginWithFacebook(sender: AnyObject) {
         // Temp hack, timing issue
         allowedStates = [.Signup, .Waitlist, .Welcome]
         PKHUD.showActivity()
-        Account.login().subscribeError({ _ in
+        Globals.accountService.login().subscribeError({ _ in
             PKHUD.hide()
             self.performSegue(.SignupToFacebookPerm)
         }, completed: {

@@ -116,6 +116,7 @@
 		EAD7B2AB1A9F0BE700FA6740 /* DesignableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */; };
 		EADDC6B11AD493710023DA0A /* FlowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADDC6B01AD493710023DA0A /* FlowService.swift */; };
 		EAE1E07B1AE34C6200F03F13 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1E07A1AE34C6200F03F13 /* LocationService.swift */; };
+		EAE1E07D1AE3788300F03F13 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1E07C1AE3788300F03F13 /* Globals.swift */; };
 		EAEB63DB1AD31A4E0002D55C /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB63DA1AD31A4E0002D55C /* Animation.swift */; };
 		EAF195CF1A827FAD00A2F103 /* Ketch-Bridging.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */; };
 		EAF3A4BF1ACA2191001C2943 /* ProfileInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF3A4BE1ACA2191001C2943 /* ProfileInfoCell.xib */; };
@@ -256,6 +257,7 @@
 		EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableViews.swift; sourceTree = "<group>"; };
 		EADDC6B01AD493710023DA0A /* FlowService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowService.swift; sourceTree = "<group>"; };
 		EAE1E07A1AE34C6200F03F13 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
+		EAE1E07C1AE3788300F03F13 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		EAEB63DA1AD31A4E0002D55C /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Ketch-Bridging.m"; sourceTree = "<group>"; };
 		EAF3A4BE1ACA2191001C2943 /* ProfileInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileInfoCell.xib; sourceTree = "<group>"; };
@@ -550,6 +552,7 @@
 				EA6650E91AA00A9C001BA40C /* Services */,
 				EAF4D7441A79AA5E00D35330 /* UserInterface */,
 				EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */,
+				EAE1E07C1AE3788300F03F13 /* Globals.swift */,
 				EA9F35461A74CC6900E0C65D /* Main.storyboard */,
 				EA7004641ACF912A00D0E467 /* Signup.storyboard */,
 				EAB8E7A81AE04D8D00B3046F /* Settings.storyboard */,
@@ -947,6 +950,7 @@
 				EA24C2741AD8F60900C40AAD /* _Connection.swift in Sources */,
 				EAB8E7AC1AE07DAB00B3046F /* SettingsPhotoCell.swift in Sources */,
 				EA5FCE481AD62C1F000D9B93 /* GameTutorialController.swift in Sources */,
+				EAE1E07D1AE3788300F03F13 /* Globals.swift in Sources */,
 				EADDC6B11AD493710023DA0A /* FlowService.swift in Sources */,
 				EA0FC9381A87DE5800D62625 /* FoundationExtension.swift in Sources */,
 				EA0FED451ADE5BC500FC6FCB /* AnalyticsService.swift in Sources */,

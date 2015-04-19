@@ -24,7 +24,7 @@ class LoadingViewController : BaseViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destVC as? NewConnectionViewController {
-            vc.connection = Flow.newMatchToShow
+            vc.connection = Globals.flowService.newMatchToShow
         }
         if let vc = segue.destVC as? GameViewController {
             vc.candidates = Array(Candidate.candidateQueue()[0...2])

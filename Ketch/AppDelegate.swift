@@ -12,24 +12,15 @@ import FacebookSDK
 import CrashlyticsFramework
 import BugfenderSDK
 
-private struct Globals {
-    static var environment : Environment!
-    static var meteorService : MeteorService!
-    static var flowService : FlowService!
-    static var accountService : AccountService!
-    static var analyticsService : AnalyticsService!
-    static var upgradeService : UpgradeService!
-    static var locationService: LocationService!
+// Globally accessible variables and shorthands
+private struct _GlobalsContainer {
+    static var instance: GlobalsContainer!
 }
+let Globals = _GlobalsContainer.instance
 
-let Env = Globals.environment
+// Shorthand services because they are used all over the place
 let Meteor = Globals.meteorService
-let Flow = Globals.flowService
-let Account = Globals.accountService
 let Analytics = Globals.analyticsService
-let Location = Globals.locationService
-let NC = NSNotificationCenter.defaultCenter()
-let UD = NSUserDefaults.standardUserDefaults()
 
 let AppDidRegisterUserNotificationSettings = "AppDidRegisterUserNotificationSettings"
 
@@ -40,20 +31,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Configure the environment
-        Globals.environment = Environment.configureFromEmbeddedProvisioningProfile()
+        let env = Environment.configureFromEmbeddedProvisioningProfile()
         
         // Start crash reporting and logging as soon as we can
-        Crashlytics.startWithAPIKey(Env.crashlyticsAPIKey)
+        Crashlytics.startWithAPIKey(env.crashlyticsAPIKey)
         Crashlytics.sharedInstance().delegate = self
-        Bugfender.activateLogger(Env.bugfenderAppToken)
+        Bugfender.activateLogger(env.bugfenderAppToken)
         
         // Setup global services
-        Globals.meteorService = MeteorService(env: Env)
-        Globals.accountService = AccountService(meteorService: Meteor)
-        Globals.flowService = FlowService(meteorService: Meteor)
-        Globals.analyticsService = AnalyticsService(env: Env)
-        Globals.upgradeService = UpgradeService(env: Env, meta: Meteor.meta)
-        
+        let meteor = MeteorService(env: env)
+        _GlobalsContainer.instance = GlobalsContainer(env: env,
+            meteorService: meteor,
+            flowService: FlowService(meteorService: meteor),
+            accountService: AccountService(meteorService: meteor),
+            analyticsService: AnalyticsService(env: env),
+            upgradeService: UpgradeService(env: env, meta: meteor.meta),
+            locationService: LocationService(meteorService: meteor))
+
+        // Startup the services
         Meteor.meta.bugfenderId = Bugfender.deviceIdentifier()
         Meteor.subscriptions.currentUser.signal.deliverOnMainThread().subscribeCompleted {
             Log.setUserId(Meteor.userID)
@@ -67,13 +62,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
         Meteor.subscriptions.metadata.signal.deliverOnMainThread().subscribeCompleted {
             Globals.upgradeService.promptForUpgradeIfNeeded()
         }
-        
         // Should be probably extracted into push service
         application.registerForRemoteNotifications()
         
         // Let's launch!
         Meteor.startup()
-        
         
         Log.info("App Launched")
         Analytics.appOpen()
@@ -94,7 +87,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
         FBAppCall.handleDidBecomeActive()
         application.applicationIconBadgeNumber = 0 // Clear notification first
         application.applicationIconBadgeNumber = Connection.unread().count()
-        Location.updateLatestLocationIfAvailable()
+        Globals.locationService.updateLatestLocationIfAvailable()
     }
     
     func applicationWillResignActive(application: UIApplication) {
@@ -117,7 +110,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         Log.info("Registered for push \(deviceToken)")
-        if let apsEnv = Env.provisioningProfile?.apsEnvironment?.rawValue {
+        if let apsEnv = Globals.env.provisioningProfile?.apsEnvironment?.rawValue {
             Meteor.updateDevicePush(apsEnv, pushToken: deviceToken.hexString())
         }
     }

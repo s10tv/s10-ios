@@ -31,7 +31,7 @@ class NewConnectionViewController : BaseViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        Flow.didShowNewMatch()
+        Globals.flowService.didShowNewMatch()
     }
 
     func didTapOnAvatar() {
