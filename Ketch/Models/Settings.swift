@@ -10,20 +10,28 @@ import Foundation
 import Meteor
 
 class Settings {
+    enum Key : String {
+        case SoftMinBuild = "softMin"
+        case HardMinBuild = "hardMinBuild"
+        case CrabUserId = "crabUserId"
+        case Vetted = "vetted"
+        case Email = "email"
+        case GenderPref = "genderPref"
+    }
     enum GenderPref : String {
         case Men = "men"
         case Women = "women"
         case Both = "both"
     }
-    private let collection : METCollection
+    let collection : METCollection
     
-    var softMinBuild : Int? { return getValue("softMinBuild") as? Int }
-    var hardMinBuild : Int? { return getValue("hardMinBuild") as? Int }
-    var crabUserId : String? { return getValue("crabUserId") as? String }
-    var vetted : Bool? { return getValue("vetted") as? Bool }
-    var email : String? { return getValue("email") as? String }
+    var softMinBuild : Int? { return getValue(.SoftMinBuild) as? Int }
+    var hardMinBuild : Int? { return getValue(.HardMinBuild) as? Int }
+    var crabUserId : String? { return getValue(.CrabUserId) as? String }
+    var vetted : Bool? { return getValue(.Vetted) as? Bool }
+    var email : String? { return getValue(.Email) as? String }
     var genderPref : GenderPref? {
-        return (getValue("genderPref") as? String).map { GenderPref(rawValue: $0) }?
+        return (getValue(.GenderPref) as? String).map { GenderPref(rawValue: $0) }?
     }
     
     init(collection: METCollection) {
@@ -32,5 +40,9 @@ class Settings {
     
     func getValue(key: String) -> AnyObject? {
         return collection.documentWithID(key)?.fields["value"]
+    }
+    
+    func getValue(key: Key) -> AnyObject? {
+        return getValue(key.rawValue)
     }
 }

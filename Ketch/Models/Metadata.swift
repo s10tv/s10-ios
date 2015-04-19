@@ -10,31 +10,39 @@ import Foundation
 import Meteor
 
 class Metadata {
-    private let collection : METCollection
+    enum Key : String {
+        case BugfenderId = "bugfenderId"
+        case GameTutorialMode = "gameTutorialMode"
+        case FakeSetSail = "fakeSetSail"
+        case HasBeenWelcomed = "hasBeenWelcomed"
+        case DebugState = "debugState"
+        case LogVerboseState = "logVerboseState"
+    }
+    let collection : METCollection
     
     var bugfenderId: String? {
-        get { return getValue("bugfenderId") as? String }
-        set { setValue(newValue, metadataKey: "bugfenderId") }
+        get { return getValue(.BugfenderId) as? String }
+        set { setValue(newValue, key: .BugfenderId) }
     }
     var gameTutorialMode: Bool? {
-        get { return getValue("gameTutorialMode") as? Bool }
-        set { setValue(newValue, metadataKey: "gameTutorialMode") }
+        get { return getValue(.GameTutorialMode) as? Bool }
+        set { setValue(newValue, key: .GameTutorialMode) }
     }
     var fakeSetSail: Bool? {
-        get { return getValue("fakeSetSail") as? Bool }
-        set { setValue(newValue, metadataKey: "fakeSetSail") }
+        get { return getValue(.FakeSetSail) as? Bool }
+        set { setValue(newValue, key: .FakeSetSail) }
     }
     var hasBeenWelcomed: Bool? {
-        get { return getValue("hasBeenWelcomed") as? Bool }
-        set { setValue(newValue, metadataKey: "hasBeenWelcomed") }
+        get { return getValue(.HasBeenWelcomed) as? Bool }
+        set { setValue(newValue, key: .HasBeenWelcomed) }
     }
     var debugState: FlowService.State? {
-        get { return (getValue("debugState") as? String).map { FlowService.State(rawValue: $0) }? }
-        set { setValue(newValue?.rawValue, metadataKey: "debugState") }
+        get { return (getValue(.DebugState) as? String).map { FlowService.State(rawValue: $0) }? }
+        set { setValue(newValue?.rawValue, key: .DebugState) }
     }
     var logVerboseState: Bool {
-        get { return getValue("logVerboseState") as? Bool ?? false }
-        set { setValue(newValue, metadataKey: "logVerboseState") }
+        get { return getValue(.LogVerboseState) as? Bool ?? false }
+        set { setValue(newValue, key: .LogVerboseState) }
     }
     
     // MARK: -
@@ -43,6 +51,16 @@ class Metadata {
         self.collection = collection
     }
     
+    // Safe
+    func getValue(key: Key) -> AnyObject? {
+        return getValue(key.rawValue)
+    }
+    
+    func setValue(value: AnyObject?, key: Key) {
+        setValue(value, metadataKey: key.rawValue)
+    }
+    
+    // Unsafe
     func getValue(metadataKey: String) -> AnyObject? {
         return collection.documentWithID(metadataKey)?.fields["value"]
     }
@@ -58,4 +76,5 @@ class Metadata {
             collection.removeDocumentWithID(metadataKey)
         }
     }
+    
 }
