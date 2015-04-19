@@ -90,8 +90,10 @@ class MeteorService {
     
     func updateDeviceLocation(location: CLLocation) -> RACSignal {
         return meteor.call("device/update/location", [[
-            "lat": 0,
-            "long": 0
+            "lat": location.coordinate.latitude,
+            "long": location.coordinate.longitude,
+            "accuracy": location.horizontalAccuracy,
+            "timestamp": location.timestamp
         ]])
     }
     
