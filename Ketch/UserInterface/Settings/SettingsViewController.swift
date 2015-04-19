@@ -47,28 +47,28 @@ class SettingsViewController : BaseViewController {
     // MARK: - Action
 
     @IBAction func showLogoutOptions(sender: AnyObject) {
-        let sheet = UIAlertController(title: LS(R.Strings.settingsLogoutTitle), message: nil, preferredStyle: .ActionSheet)
-        sheet.addAction(LS(R.Strings.settingsLogoutLogout)) { _ in
+        let sheet = UIAlertController(title: LS(.settingsLogoutTitle), message: nil, preferredStyle: .ActionSheet)
+        sheet.addAction(LS(.settingsLogoutLogout)) { _ in
             Account.logout()
             self.performSegue(.SettingsToLoading)
         }
-        sheet.addAction(LS(R.Strings.settingsLogoutDeleteAccount), style: .Destructive) { _ in
+        sheet.addAction(LS(.settingsLogoutDeleteAccount), style: .Destructive) { _ in
             self.showDeleteAccountAlert(sender)
         }
-        sheet.addAction(LS(R.Strings.settingsLogoutCancel), style: .Cancel)
+        sheet.addAction(LS(.settingsLogoutCancel), style: .Cancel)
         presentViewController(sheet)
     }
     
     @IBAction func showDeleteAccountAlert(sender: AnyObject) {
-        var alert = UIAlertController(title: LS(R.Strings.settingsDeleteAccountTitle), message:LS(R.Strings.settingsDeleteAccountMessage), preferredStyle: .Alert)
+        var alert = UIAlertController(title: LS(.settingsDeleteAccountTitle), message:LS(.settingsDeleteAccountMessage), preferredStyle: .Alert)
         // NOTE: Not using .Destructive style here becauase it does not change color when disabled
-        let confirmAction = alert.addAction(LS(R.Strings.settingsDeleteAccountConfirm)) { _ in
+        let confirmAction = alert.addAction(LS(.settingsDeleteAccountConfirm)) { _ in
             Account.deleteAccount()
             self.performSegue(.SettingsToLoading)
         }
-        alert.addAction(LS(R.Strings.settingsDeleteAccountCancel), style: .Cancel)
+        alert.addAction(LS(.settingsDeleteAccountCancel), style: .Cancel)
         alert.addTextFieldWithConfigurationHandler { textField in
-            textField.placeholder = LS(R.Strings.settingsDeleteAccountPlaceholder)
+            textField.placeholder = LS(.settingsDeleteAccountPlaceholder)
             textField.rac_textSignal().subscribeNextAs { (text: String) in
                 confirmAction.enabled = (text == "delete")
             }

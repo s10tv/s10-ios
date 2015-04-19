@@ -15,7 +15,7 @@ class BoatSailedViewController : HomeViewController {
     }
         
     @IBAction func nominateFriend(sender: AnyObject) {
-        let inviteText = LS(R.Strings.inviteDefaultText)
+        let inviteText = LS(.inviteDefaultText)
         let activity = UIActivityViewController(activityItems: [inviteText], applicationActivities: nil)
         presentViewController(activity)
     }

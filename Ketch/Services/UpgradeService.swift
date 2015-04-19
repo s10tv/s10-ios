@@ -68,14 +68,14 @@ class UpgradeService : NSObject {
             subject.sendCompleted()
         }
         if needsHardUpgrade {
-            alert.title = LS(R.Strings.hardUpgradeAlertTitle)
-            alert.message = LS(R.Strings.hardUpgradeAlertMessage)
-            alert.addAction(LS(R.Strings.hardUpgradeAlertOk), handler: performUpgrade)
+            alert.title = LS(.hardUpgradeAlertTitle)
+            alert.message = LS(.hardUpgradeAlertMessage)
+            alert.addAction(LS(.hardUpgradeAlertOk), handler: performUpgrade)
         } else if needsSoftUpgrade {
-            alert.title = LS(R.Strings.softUpgradeAlertTitle)
-            alert.message = LS(R.Strings.softUpgradeAlertMessage)
-            alert.addAction(LS(R.Strings.softUpgradeAlertOk), handler: performUpgrade)
-            alert.addAction(LS(R.Strings.softUpgradeAlertCancel), style: .Cancel) { _ in
+            alert.title = LS(.softUpgradeAlertTitle)
+            alert.message = LS(.softUpgradeAlertMessage)
+            alert.addAction(LS(.softUpgradeAlertOk), handler: performUpgrade)
+            alert.addAction(LS(.softUpgradeAlertCancel), style: .Cancel) { _ in
                 subject.sendCompleted()
             }
         }

@@ -74,18 +74,18 @@ class ProfileViewController : BaseViewController {
     
     @IBAction func showMoreOptions(sender: AnyObject) {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        sheet.addAction(LS(R.Strings.moreSheetReport, user!.firstName!), style: .Destructive) { _ in
+        sheet.addAction(LS(.moreSheetReport, user!.firstName!), style: .Destructive) { _ in
             self.reportUser(sender)
         }
-        sheet.addAction(LS(R.Strings.moreSheetCancel), style: .Cancel)
+        sheet.addAction(LS(.moreSheetCancel), style: .Cancel)
         presentViewController(sheet)
     }
     
     @IBAction func reportUser(sender: AnyObject) {
-        let alert = UIAlertController(title: LS(R.Strings.reportAlertTitle), message: LS(R.Strings.reportAlertMessage), preferredStyle: .Alert)
+        let alert = UIAlertController(title: LS(.reportAlertTitle), message: LS(.reportAlertMessage), preferredStyle: .Alert)
         alert.addTextFieldWithConfigurationHandler(nil)
-        alert.addAction(LS(R.Strings.reportAlertCancel), style: .Cancel)
-        alert.addAction(LS(R.Strings.reportAlertConfirm), style: .Destructive) { _ in
+        alert.addAction(LS(.reportAlertCancel), style: .Cancel)
+        alert.addAction(LS(.reportAlertConfirm), style: .Destructive) { _ in
             if let reportReason = (alert.textFields?[0] as? UITextField)?.text {
                 Meteor.reportUser(self.user, reason: reportReason)
             }

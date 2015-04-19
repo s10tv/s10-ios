@@ -145,9 +145,9 @@ class GameViewController : HomeViewController {
     private func showHelpForTarget(target: SnapTarget?) {
         let helpText = target?.choice.map { (choice) -> String in
             switch choice {
-            case .Yes:   return LS(R.Strings.marryPrompt)
-            case .No:    return LS(R.Strings.skipPrompt)
-            case .Maybe: return LS(R.Strings.snoozePrompt)
+            case .Yes:   return LS(.marryPrompt)
+            case .No:    return LS(.skipPrompt)
+            case .Maybe: return LS(.snoozePrompt)
             }
         }
         helpLabel.rawText = helpText ?? helpLabel.rawText

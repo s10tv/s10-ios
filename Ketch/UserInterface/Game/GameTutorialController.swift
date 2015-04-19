@@ -70,11 +70,11 @@ class GameTutorialController {
         Log.debug("Advancing to tutorial step \(currentStep)")
         switch currentStep {
         case 1:
-            showHelpText(LS(R.Strings.threeMatchesPrompt))
+            showHelpText(LS(.threeMatchesPrompt))
             dropBubbles(delay: 1.5)
             prompt.startPulsing(delay: 3.5)
         case 2:
-            showHelpText(LS(R.Strings.threeChoicesPrompt))
+            showHelpText(LS(.threeChoicesPrompt))
             popPlaceholders(delay: 1)
             prompt.startPulsing(delay: 3)
         case 3:
@@ -128,7 +128,7 @@ class GameTutorialController {
         UIView.animate(1) {
             self.placeholders.each { $0.emphasized = false }
         }
-        showHelpText(LS(R.Strings.dragMatchsToChoices))
+        showHelpText(LS(.dragMatchsToChoices))
         
         let arrowImage = UIImage(R.KetchAssets.tutorialArrow)
         let centerBubble = bubbles[1]

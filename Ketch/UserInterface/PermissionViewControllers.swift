@@ -20,8 +20,8 @@ class FacebookPermissionViewController : BaseViewController {
         PKHUD.showActivity()
         Account.login().subscribeError({ _ in
             PKHUD.hide()
-            self.showAlert(LS(R.Strings.fbPermDeniedAlertTitle),
-                  message: LS(R.Strings.fbPermDeniedAlertMessage))
+            self.showAlert(LS(.fbPermDeniedAlertTitle),
+                  message: LS(.fbPermDeniedAlertMessage))
         }, completed: { () -> Void in
             PKHUD.hide()
             self.performSegue(.FacebookPermToNotificationsPerm)
