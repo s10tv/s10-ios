@@ -12,24 +12,24 @@ import ReactiveCocoa
 
 class UpgradeService : NSObject {
     let env: Environment
-    let meta: Metadata
+    let settings: Settings
     var buildNumber: Int {
         return Int((env.build as NSString).intValue)
     }
     var needsHardUpgrade: Bool {
-        return buildNumber < (meta.hardMinBuild ?? 0)
+        return buildNumber < (settings.hardMinBuild ?? 0)
     }
     var needsSoftUpgrade: Bool {
-        return buildNumber < (meta.softMinBuild ?? 0)
+        return buildNumber < (settings.softMinBuild ?? 0)
     }
     // TODO: Need to figure out a better way to decide when is a bad time to prompt for upgrade
     var promptInProgress = false
     
     // MARK: -
     
-    init(env: Environment, meta: Metadata) {
+    init(env: Environment, settings: Settings) {
         self.env = env
-        self.meta = meta
+        self.settings = settings
         super.init()
         NC.addObserver(self, selector: "databaseDidChange:", name: METDatabaseDidChangeNotification, object: nil)
     }
@@ -42,7 +42,7 @@ class UpgradeService : NSObject {
             return
         }
         
-        Log.debug("Might prompt upgrade build=\(buildNumber) hardMin=\(meta.hardMinBuild) softMin=\(meta.softMinBuild)")
+        Log.debug("Might prompt upgrade build=\(buildNumber) hardMin=\(settings.hardMinBuild) softMin=\(settings.softMinBuild)")
         if (!needsSoftUpgrade && !needsHardUpgrade) || promptInProgress {
             return
         }

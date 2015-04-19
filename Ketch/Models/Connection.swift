@@ -44,7 +44,7 @@ class Connection: _Connection {
     }
     
     class func crabConnection() -> Connection? {
-        if let crabUserId = Meteor.meta.crabUserId {
+        if let crabUserId = Meteor.settings.crabUserId {
             return User.findByDocumentID(crabUserId)?.connection
         }
         return nil

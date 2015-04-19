@@ -15,7 +15,7 @@ class SettingsFormViewController : XLFormTableViewController {
     
     override func viewDidLoad() {
         assert(User.currentUser() != nil, "Current user must exist before showing settings")
-        viewModel = SettingsViewModel(currentUser: User.currentUser()!, meta: Meteor.meta)
+        viewModel = SettingsViewModel(currentUser: User.currentUser()!, settings: Meteor.settings)
         // Configure form before viewDidLoad so that everyting's already laid out prior to
         // view appear and thus avoiding row insertion unwanted animation
         form = createForm()

@@ -90,10 +90,11 @@ class FlowService : NSObject {
                 "ms.account \(ms.account)\n",
                 "ms.loggingIn \(ms.loggingIn)\n",
                 "metadata.ready \(ms.subscriptions.metadata.ready)\n",
+                "settings.ready \(ms.subscriptions.settings.ready)\n",
                 "currentUser.ready \(ms.subscriptions.currentUser.ready)\n",
                 "candidates.ready \(ms.subscriptions.candidates.ready)\n",
                 "connections.ready \(ms.subscriptions.connections.ready)\n",
-                "ms.meta.vetted \(ms.meta.vetted)\n",
+                "ms.settings.vetted \(ms.settings.vetted)\n",
                 "hasBeenWelcomed \(ms.meta.hasBeenWelcomed)\n",
                 "candidateCount \(ms.collections.candidates.allDocuments?.count)\n",
                 "waitingOnGameResult \(waitingOnGameResult)\n",
@@ -106,14 +107,15 @@ class FlowService : NSObject {
             return .Signup
         } else if (ms.loggingIn ||
             !ms.subscriptions.metadata.ready ||
+            !ms.subscriptions.settings.ready ||
             !ms.subscriptions.currentUser.ready ||
             !ms.subscriptions.candidates.ready ||
             !ms.subscriptions.connections.ready ||
-            ms.meta.vetted == nil) {
+            ms.settings.vetted == nil) {
             return .Loading
         }
         // Onboarding Flow
-        if ms.meta.vetted != true {
+        if ms.settings.vetted != true {
             return .Waitlist
         } else if ms.meta.hasBeenWelcomed != true {
             return .Welcome

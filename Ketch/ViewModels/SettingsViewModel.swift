@@ -12,13 +12,13 @@ import Meteor
 
 class SettingsViewModel {
     let currentUser: User
-    let meta: Metadata
+    let settings: Settings
     let items: [SettingsItem] = []
     private var disposables: [RACDisposable] = []
     
-    init(currentUser: User, meta: Metadata) {
+    init(currentUser: User, settings: Settings) {
         self.currentUser = currentUser
-        self.meta = meta
+        self.settings = settings
         items = createItems()
     }
     
@@ -36,7 +36,7 @@ class SettingsViewModel {
         switch (type, newValue) {
         case let (.GenderPreference, pref as String):
             if let pref = GenderPref(rawValue: pref) {
-                if meta.genderPref != pref {
+                if settings.genderPref != pref {
                     Meteor.updateGenderPref(pref)
                 }
             }
@@ -71,7 +71,7 @@ class SettingsViewModel {
             userItem(.Age, icon: .settingsAge, attr: .age, editable: false) {
                 return ($0 as? Int).map { LS(.settingsAgeFormat, $0) } ?? LS(.settingsAgePrompt)
             },
-            metaItem(.GenderPreference, metadataKey: "genderPref", icon: .icBinocular, editable: true) {
+            item(.GenderPreference, metadataKey: "genderPref", icon: .icBinocular, editable: true) {
                 return ($0 as? String).map { LS(.settingsGenderPreferenceFormat, Formatters.formatGenderPref($0)) } ?? LS(.settingsGenderPreferencePrompt)
             },
             userItem(.Work, icon: .settingsBriefcase, attr: .work) {
@@ -103,9 +103,9 @@ class SettingsViewModel {
         return item
     }
     
-    private func metaItem(type: SettingsItem.ItemType, metadataKey: String, icon: R.KetchAssets? = nil, editable: Bool = true, format: (AnyObject? -> String)? = nil) -> SettingsItem {
+    private func item(type: SettingsItem.ItemType, metadataKey: String, icon: R.KetchAssets? = nil, editable: Bool = true, format: (AnyObject? -> String)? = nil) -> SettingsItem {
         let item = SettingsItem(type: type, iconName: icon?.rawValue, editable: editable, formatBlock: format)
-        item.value._update(meta.getValue(metadataKey))
+        item.value._update(settings.getValue(metadataKey))
         disposables += NC.rac_addObserverForName(METDatabaseDidChangeNotification, object: nil).deliverOnMainThread().subscribeNextAs {
             (notification: NSNotification) in
             if let changes = notification.userInfo?[METDatabaseChangesKey] as? METDatabaseChanges {
@@ -114,8 +114,8 @@ class SettingsViewModel {
                     .map { $0 as METDocumentKey }
                     .map { ($0.collectionName, $0.documentID as String) }
                 for (name, key) in pairs {
-                    if name == "metadata" && key == metadataKey {
-                        item.value._update(self.meta.getValue(key))
+                    if name == "settings" && key == metadataKey {
+                        item.value._update(self.settings.getValue(key))
                     }
                 }
             }

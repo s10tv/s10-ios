@@ -12,19 +12,6 @@ import Meteor
 class Metadata {
     private let collection : METCollection
     
-    // MARK: Read-only properties
-    
-    var softMinBuild : Int? { return getValue("softMinBuild") as? Int }
-    var hardMinBuild : Int? { return getValue("hardMinBuild") as? Int }
-    var crabUserId : String? { return getValue("crabUserId") as? String }
-    var vetted : Bool? { return getValue("vetted") as? Bool }
-    var email : String? { return getValue("email") as? String }
-    var genderPref : GenderPref? {
-        return (getValue("genderPref") as? String).map { GenderPref(rawValue: $0) }?
-    }
-    
-    // MARK: Read-write properties
-    
     var bugfenderId: String? {
         get { return getValue("bugfenderId") as? String }
         set { setValue(newValue, metadataKey: "bugfenderId") }
@@ -49,7 +36,6 @@ class Metadata {
         get { return getValue("logVerboseState") as? Bool ?? false }
         set { setValue(newValue, metadataKey: "logVerboseState") }
     }
-    
     
     // MARK: -
     

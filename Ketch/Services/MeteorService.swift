@@ -17,6 +17,7 @@ class MeteorService {
     let env: Environment
     let subscriptions: (
         metadata: METSubscription,
+        settings: METSubscription,
         currentUser: METSubscription,
         candidates: METSubscription,
         connections: METSubscription,
@@ -24,12 +25,14 @@ class MeteorService {
     )
     let collections: (
         metadata: METCollection,
+        settings: METCollection,
         users: METCollection,
         candidates: METCollection,
         connections: METCollection,
         messages: METCollection
     )
     let meta: Metadata
+    let settings: Settings
     
     // Proxied accessors
     var connectionStatus: METDDPConnectionStatus { return meteor.connectionStatus }
@@ -48,6 +51,7 @@ class MeteorService {
         meteor = METCoreDataDDPClient(serverURL: env.serverURL, account: nil)
         subscriptions = (
             meteor.addSubscriptionWithName("metadata"),
+            meteor.addSubscriptionWithName("settings"),
             meteor.addSubscriptionWithName("currentUser"),
             meteor.addSubscriptionWithName("candidates"),
             meteor.addSubscriptionWithName("connections"),
@@ -55,12 +59,14 @@ class MeteorService {
         )
         collections = (
             meteor.database.collectionWithName("metadata"),
+            meteor.database.collectionWithName("settings"),
             meteor.database.collectionWithName("users"),
             meteor.database.collectionWithName("candidates"),
             meteor.database.collectionWithName("connections"),
             meteor.database.collectionWithName("messages")
         )
         meta = Metadata(collection: collections.metadata)
+        settings = Settings(collection: collections.settings)
         
         SugarRecord.addStack(MeteorCDStack(meteor: meteor))
     }

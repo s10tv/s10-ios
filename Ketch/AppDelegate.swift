@@ -45,7 +45,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
             flowService: FlowService(meteorService: meteor),
             accountService: AccountService(meteorService: meteor),
             analyticsService: AnalyticsService(env: env),
-            upgradeService: UpgradeService(env: env, meta: meteor.meta),
+            upgradeService: UpgradeService(env: env, settings: meteor.settings),
             locationService: LocationService(meteorService: meteor))
 
         // Startup the services
@@ -53,7 +53,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
         Meteor.subscriptions.currentUser.signal.deliverOnMainThread().subscribeCompleted {
             Log.setUserId(Meteor.userID)
             Log.setUserName(User.currentUser()?.displayName)
-            Log.setUserEmail(Meteor.meta.email)
+            Log.setUserEmail(Meteor.settings.email)
             // TODO: Figure out why this hack is needed
             if let userId = Meteor.userID {
                 Analytics.identifyUser(userId)

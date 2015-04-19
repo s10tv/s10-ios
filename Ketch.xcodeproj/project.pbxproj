@@ -103,6 +103,7 @@
 		EAB8E7AE1AE07DB900B3046F /* SettingsTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB8E7AD1AE07DB900B3046F /* SettingsTextCell.swift */; };
 		EAB8E7B11AE0826D00B3046F /* XLFormExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB8E7B01AE0826D00B3046F /* XLFormExtensions.m */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
+		EAC31C1D1AE3A86200277FE8 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC31C1C1AE3A86200277FE8 /* Settings.swift */; };
 		EAC8D3F61AA7269F00BCB7B9 /* FetchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9311A87DE5800D62625 /* FetchViewModel.swift */; };
 		EAC8D3F71AA7278900BCB7B9 /* ViewProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9321A87DE5800D62625 /* ViewProviders.swift */; };
 		EAC8D3F81AA7289400BCB7B9 /* ArrayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC92F1A87DE5800D62625 /* ArrayViewModel.swift */; };
@@ -247,6 +248,7 @@
 		EABD43D91AA1D29C00B07813 /* Beta.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
 		EABD43DA1AA1D29C00B07813 /* Prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
 		EABF2AB41AD04659005880E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EAC31C1C1AE3A86200277FE8 /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 		EACF21631AD707C800938CD0 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		EACF21651AD70CB300938CD0 /* SwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftExtensions.swift; sourceTree = "<group>"; };
 		EACF21671AD7245C00938CD0 /* CloudsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudsViewController.swift; sourceTree = "<group>"; };
@@ -458,6 +460,7 @@
 				EA6650F41AA00B95001BA40C /* Connection.swift */,
 				EA6650F51AA00B95001BA40C /* Message.swift */,
 				EA24C26C1AD8F52000C40AAD /* Metadata.swift */,
+				EAC31C1C1AE3A86200277FE8 /* Settings.swift */,
 				EAAD921C1ACF342C0014BA25 /* Environment.swift */,
 			);
 			path = Models;
@@ -950,6 +953,7 @@
 				EA24C2741AD8F60900C40AAD /* _Connection.swift in Sources */,
 				EAB8E7AC1AE07DAB00B3046F /* SettingsPhotoCell.swift in Sources */,
 				EA5FCE481AD62C1F000D9B93 /* GameTutorialController.swift in Sources */,
+				EAC31C1D1AE3A86200277FE8 /* Settings.swift in Sources */,
 				EAE1E07D1AE3788300F03F13 /* Globals.swift in Sources */,
 				EADDC6B11AD493710023DA0A /* FlowService.swift in Sources */,
 				EA0FC9381A87DE5800D62625 /* FoundationExtension.swift in Sources */,
