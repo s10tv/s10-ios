@@ -46,13 +46,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
         Bugfender.activateLogger(Env.bugfenderAppToken)
         
         // Setup global services
-        Globals.meteorService = MeteorService(serverURL: Env.serverURL)
+        Globals.meteorService = MeteorService(env: Env)
         Globals.accountService = AccountService(meteorService: Meteor)
         Globals.flowService = FlowService(meteorService: Meteor)
         Globals.analyticsService = AnalyticsService(env: Env)
         Globals.upgradeService = UpgradeService(env: Env, meta: Meteor.meta)
         
-        Meteor.registerDevice(Env)
         Meteor.meta.bugfenderId = Bugfender.deviceIdentifier()
         Meteor.subscriptions.currentUser.signal.deliverOnMainThread().subscribeCompleted {
             Log.setUserId(Meteor.userID)
@@ -72,6 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
         
         // Let's launch!
         Meteor.startup()
+        
         
         Log.info("App Launched")
         Analytics.appOpen()
@@ -114,7 +114,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         Log.info("Registered for push \(deviceToken)")
-        Meteor.registerDevice(Env, pushToken: deviceToken)
+        if let apsEnv = Env.provisioningProfile?.apsEnvironment?.rawValue {
+            Meteor.updateDevicePush(apsEnv, pushToken: deviceToken.hexString())
+        }
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {

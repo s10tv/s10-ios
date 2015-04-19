@@ -7,12 +7,14 @@
 //
 
 import Foundation
+import CoreLocation
 import ReactiveCocoa
 import SugarRecord
 import Meteor
 
 class MeteorService {
     private let meteor: METCoreDataDDPClient
+    let env: Environment
     let subscriptions: (
         metadata: METSubscription,
         currentUser: METSubscription,
@@ -41,8 +43,9 @@ class MeteorService {
         set { meteor.delegate = newValue }
     }
     
-    init(serverURL: NSURL) {
-        meteor = METCoreDataDDPClient(serverURL: serverURL, account: nil)
+    init(env: Environment) {
+        self.env = env
+        meteor = METCoreDataDDPClient(serverURL: env.serverURL, account: nil)
         subscriptions = (
             meteor.addSubscriptionWithName("metadata"),
             meteor.addSubscriptionWithName("currentUser"),
@@ -65,7 +68,34 @@ class MeteorService {
     func startup() {
         meteor.account = METAccount.defaultAccount()
         meteor.connect()
+        connectDevice(env)
     }
+    
+    // MARK: - Device
+    
+    private func connectDevice(env: Environment) -> RACSignal {
+        return meteor.call("connectDevice", [env.deviceId, [
+            "appId": env.appId,
+            "version": env.version,
+            "build": env.build
+        ]])
+    }
+    
+    func updateDevicePush(apsEnv: String, pushToken: String? = nil) -> RACSignal {
+        return meteor.call("device/update/push", [[
+            "apsEnv": apsEnv,
+            "pushToken": pushToken ?? NSNull()
+        ]])
+    }
+    
+    func updateDeviceLocation(location: CLLocation) -> RACSignal {
+        return meteor.call("device/update/location", [[
+            "lat": 0,
+            "long": 0
+        ]])
+    }
+    
+    // TODO: Add permission statuses for push, location, etc
     
     // MARK: - Authentication
     
@@ -85,20 +115,9 @@ class MeteorService {
     func deleteAccount() -> RACSignal {
         return meteor.call("deleteAccount")
     }
-
-    // MARK: - Account Updates
     
-    func registerDevice(env: Environment, pushToken: NSData? = nil) -> RACSignal {
-        return meteor.call("me/update/device", [[
-            "deviceId": env.deviceId,
-            "appId": env.appId,
-            "version": env.version,
-            "build": env.build,
-            "apsEnv": env.provisioningProfile?.apsEnvironment?.rawValue,
-            "pushToken": pushToken?.hexString()
-        ].filter { (k, v) in v != nil }.map { (k, v) in (k, v!) }])
-    }
-
+    // MARK: - User
+    
     func updateGenderPref(genderPref: GenderPref) -> RACSignal {
         return meteor.call("me/update/genderPref", [genderPref.rawValue]) {
             self.meta.setValue(genderPref.rawValue, metadataKey: "genderPref")
