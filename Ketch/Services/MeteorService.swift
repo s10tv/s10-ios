@@ -78,9 +78,12 @@ class MeteorService {
         ]])
     }
     
-    
     func logout() -> RACSignal {
         return meteor.logout()
+    }
+    
+    func deleteAccount() -> RACSignal {
+        return meteor.call("deleteAccount")
     }
 
     // MARK: - Account Updates
@@ -129,10 +132,6 @@ class MeteorService {
             User.currentUser()?.about = about
             return nil
         }
-    }
-    
-    func deleteAccount() -> RACSignal {
-        return meteor.call("me/delete")
     }
     
     // MARK: - Core Mechanic

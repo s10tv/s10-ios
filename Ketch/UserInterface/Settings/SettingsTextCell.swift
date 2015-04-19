@@ -47,8 +47,9 @@ class SettingsTextCell : XLFormBaseCell {
     
     func forceUpdateHeight() {
         // Force tableview to recalculate height
-        formViewController().tableView?.beginUpdates()
-        formViewController().tableView?.endUpdates()
+// BUGBUG: SettingsViewModel is not being deallocated. mem leak causing crash, use optional temporarily to avoid crash
+        formViewController()?.tableView.beginUpdates()
+        formViewController()?.tableView.endUpdates()
     }
 }
 

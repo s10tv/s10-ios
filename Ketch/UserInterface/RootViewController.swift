@@ -47,17 +47,4 @@ class RootViewController : UINavigationController {
         }
     }
     
-    func showNewMatch(connection: Connection) {
-        let newConnVC = NewConnectionViewController()
-        newConnVC.connection = connection
-        presentViewController(newConnVC, animated: true)
-    }
-    
-    @IBAction func logout(sender: AnyObject) {
-        Account.logout().subscribeCompleted {
-            Log.info("Signed out")
-        }
-        dismissViewController(animated: false)
-        popToRootViewControllerAnimated(true)
-    }
 }

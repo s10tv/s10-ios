@@ -67,6 +67,8 @@ class SettingsFormViewController : XLFormTableViewController {
         }
     }
     
+    // MARK: -
+    
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         return UITableViewAutomaticDimension
     }

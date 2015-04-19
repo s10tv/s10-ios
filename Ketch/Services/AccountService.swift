@@ -55,4 +55,10 @@ class AccountService {
         UD.resetAll()
         return meteorService.logout().deliverOnMainThread()
     }
+    
+    func deleteAccount() -> RACSignal {
+        self.session.closeAndClearTokenInformation()
+        UD.resetAll()
+        return meteorService.deleteAccount().deliverOnMainThread()
+    }
 }

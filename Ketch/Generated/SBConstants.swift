@@ -18,6 +18,7 @@ public enum SegueIdentifier : String {
     case Main_Profile = "Main_Profile"
     case NewConnectionToDock = "NewConnectionToDock"
     case NotificationsPermToLocationPerm = "NotificationsPermToLocationPerm"
+    case SettingsToLoading = "SettingsToLoading"
     case Settings_Settings = "Settings_Settings"
     case SignupToFacebookPerm = "SignupToFacebookPerm"
     case SignupToNotificationsPerm = "SignupToNotificationsPerm"

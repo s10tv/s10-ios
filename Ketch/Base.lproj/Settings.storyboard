@@ -183,7 +183,7 @@
                                     <color key="titleColor" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
-                                    <action selector="logout:" destination="mKj-EJ-CsB" eventType="touchUpInside" id="AUq-Sc-YYi"/>
+                                    <action selector="showLogoutOptions:" destination="dR1-bd-snB" eventType="touchUpInside" id="wks-i5-7DH"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6it-j9-jwj" userLabel="Crab Button">
@@ -213,9 +213,11 @@
                     <connections>
                         <outlet property="waveView" destination="cv6-2X-pDR" id="DHQ-p0-hDp"/>
                         <segue destination="FbI-lK-1wP" kind="custom" identifier="Main_Profile" customClass="LinkedStoryboardPresentSegue" id="oWb-P1-Ra0"/>
+                        <segue destination="gQY-5f-Xzl" kind="unwind" identifier="SettingsToLoading" unwindAction="unwindToLoading:" id="Ja7-VP-tLI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mKj-EJ-CsB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="gQY-5f-Xzl" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="488" y="1665"/>
         </scene>

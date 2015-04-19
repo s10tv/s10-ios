@@ -127,8 +127,10 @@ extension UIView {
 }
 
 extension UIAlertController {
-    func addAction(title: String, style: UIAlertActionStyle = .Default, handler: ((UIAlertAction!) -> Void)? = nil) {
-        addAction(UIAlertAction(title: title, style: style, handler: handler))
+    func addAction(title: String, style: UIAlertActionStyle = .Default, handler: ((UIAlertAction!) -> Void)? = nil) -> UIAlertAction {
+        let action = UIAlertAction(title: title, style: style, handler: handler)
+        addAction(action)
+        return action
     }
 }
 

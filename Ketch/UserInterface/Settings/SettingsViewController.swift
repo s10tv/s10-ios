@@ -8,6 +8,7 @@
 
 import UIKit
 import Cartography
+import ReactiveCocoa
 
 class SettingsViewController : BaseViewController {
     
@@ -42,36 +43,36 @@ class SettingsViewController : BaseViewController {
             profileVC.user = User.currentUser()
         }
     }
-
-    // MARK: -
     
-    // every time text is changed, check to see if it is 'delete'
-    func textChanged(sender:AnyObject) {
-        let tf = sender as UITextField
-        var resp : UIResponder = tf
-        while !(resp is UIAlertController) { resp = resp.nextResponder()! }
-        let alert = resp as UIAlertController
-        (alert.actions[1] as UIAlertAction).enabled = (tf.text == "delete")
+    // MARK: - Action
+
+    @IBAction func showLogoutOptions(sender: AnyObject) {
+        let sheet = UIAlertController(title: LS(R.Strings.settingsLogoutTitle), message: nil, preferredStyle: .ActionSheet)
+        sheet.addAction(LS(R.Strings.settingsLogoutLogout)) { _ in
+            Account.logout()
+            self.performSegue(.SettingsToLoading)
+        }
+        sheet.addAction(LS(R.Strings.settingsLogoutDeleteAccount), style: .Destructive) { _ in
+            self.showDeleteAccountAlert(sender)
+        }
+        sheet.addAction(LS(R.Strings.settingsLogoutCancel), style: .Cancel)
+        presentViewController(sheet)
     }
     
-    @IBAction func deactivateUser(sender: AnyObject) {
-        var alert = UIAlertController(title: "Delete Account", message:
-            "All your photos, messages, and matches will be permanently deleted.\nPlease type 'delete' to confirm.",
-            preferredStyle: UIAlertControllerStyle.Alert)
-        alert.addTextFieldWithConfigurationHandler {
-            (tf:UITextField!) in
-            tf.placeholder = "Sure?"
-            tf.addTarget(self, action: "textChanged:", forControlEvents: .EditingChanged)
+    @IBAction func showDeleteAccountAlert(sender: AnyObject) {
+        var alert = UIAlertController(title: LS(R.Strings.settingsDeleteAccountTitle), message:LS(R.Strings.settingsDeleteAccountMessage), preferredStyle: .Alert)
+        // NOTE: Not using .Destructive style here becauase it does not change color when disabled
+        let confirmAction = alert.addAction(LS(R.Strings.settingsDeleteAccountConfirm)) { _ in
+            Account.deleteAccount()
+            self.performSegue(.SettingsToLoading)
         }
-        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "Confirm", style: UIAlertActionStyle.Default, handler: { action in
-            if let currentUser = User.currentUser() {
-                Meteor.deleteAccount()
+        alert.addAction(LS(R.Strings.settingsDeleteAccountCancel), style: .Cancel)
+        alert.addTextFieldWithConfigurationHandler { textField in
+            textField.placeholder = LS(R.Strings.settingsDeleteAccountPlaceholder)
+            textField.rac_textSignal().subscribeNextAs { (text: String) in
+                confirmAction.enabled = (text == "delete")
             }
-        }))
-        
-        // initially disable the "confirm" action
-        (alert.actions[1] as UIAlertAction).enabled = false
-        self.presentViewController(alert, animated: true, completion: nil)
+        }
+        presentViewController(alert)
     }
 }

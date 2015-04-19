@@ -130,10 +130,20 @@ public enum R {
         case reportAlertTitle = "ReportAlertTitle"
         /// Enter your bio
         case settingsAboutPrompt = "SettingsAboutPrompt"
-        /// %@ years old
+        /// %d years old
         case settingsAgeFormat = "SettingsAgeFormat"
         /// Set you age in Facebook
         case settingsAgePrompt = "SettingsAgePrompt"
+        /// Cancel
+        case settingsDeleteAccountCancel = "SettingsDeleteAccountCancel"
+        /// Confirm
+        case settingsDeleteAccountConfirm = "SettingsDeleteAccountConfirm"
+        /// All your photos, messages, and matches will be permanently deleted. Are you sure you want to do this?
+        case settingsDeleteAccountMessage = "SettingsDeleteAccountMessage"
+        /// If sure, type 'delete' to confirm.
+        case settingsDeleteAccountPlaceholder = "SettingsDeleteAccountPlaceholder"
+        /// Delete Account
+        case settingsDeleteAccountTitle = "SettingsDeleteAccountTitle"
         /// Studied at %@
         case settingsEducationFormat = "SettingsEducationFormat"
         /// Enter where you went to school
@@ -146,6 +156,14 @@ public enum R {
         case settingsHeightFormat = "SettingsHeightFormat"
         /// What's your height?
         case settingsHeightPrompt = "SettingsHeightPrompt"
+        /// Cancel
+        case settingsLogoutCancel = "SettingsLogoutCancel"
+        /// Delete my account
+        case settingsLogoutDeleteAccount = "SettingsLogoutDeleteAccount"
+        /// Just logout
+        case settingsLogoutLogout = "SettingsLogoutLogout"
+        /// What would you like to do?
+        case settingsLogoutTitle = "SettingsLogoutTitle"
         /// You are a %@
         case settingsWorkFormat = "SettingsWorkFormat"
         /// Enter your job title
