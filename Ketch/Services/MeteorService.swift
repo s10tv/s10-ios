@@ -83,7 +83,7 @@ class MeteorService {
     
     func updateDevicePush(apsEnv: String, pushToken: String? = nil) -> RACSignal {
         return meteor.call("device/update/push", [[
-            "apnEnvironment": apsEnv,
+            "apsEnv": apsEnv,
             "pushToken": pushToken ?? NSNull()
         ]])
     }
