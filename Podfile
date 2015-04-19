@@ -32,6 +32,7 @@ pod 'EDColor', '~> 0.4'
 pod 'DateTools', '~> 1.5'
 pod 'FormatterKit/TimeIntervalFormatter', '~> 1.8'
 pod 'TCMobileProvision', :git => 'https://github.com/tonyxiao/TCMobileProvision.git'
+pod 'INTULocationManager', '~> 3.0'
 
 # 3rd Party Service SDKs
 pod 'Facebook-iOS-SDK', '~> 3.22'

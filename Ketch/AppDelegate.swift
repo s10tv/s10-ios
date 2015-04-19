@@ -19,6 +19,7 @@ private struct Globals {
     static var accountService : AccountService!
     static var analyticsService : AnalyticsService!
     static var upgradeService : UpgradeService!
+    static var locationService: LocationService!
 }
 
 let Env = Globals.environment
@@ -26,6 +27,7 @@ let Meteor = Globals.meteorService
 let Flow = Globals.flowService
 let Account = Globals.accountService
 let Analytics = Globals.analyticsService
+let Location = Globals.locationService
 let NC = NSNotificationCenter.defaultCenter()
 let UD = NSUserDefaults.standardUserDefaults()
 
@@ -92,6 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
         FBAppCall.handleDidBecomeActive()
         application.applicationIconBadgeNumber = 0 // Clear notification first
         application.applicationIconBadgeNumber = Connection.unread().count()
+        Location.updateLatestLocationIfAvailable()
     }
     
     func applicationWillResignActive(application: UIApplication) {

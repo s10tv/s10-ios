@@ -51,35 +51,19 @@ class NotificationsPermissionViewController : BaseViewController {
 
 
 
-class LocationPermissionViewController : BaseViewController, CLLocationManagerDelegate {
-    let manager = CLLocationManager()
+class LocationPermissionViewController : BaseViewController {
     
     override func commonInit() {
         allowedStates = [.Signup, .Waitlist, .Welcome]
     }
     
     @IBAction func requestLocationPermission(sender: AnyObject) {
-        switch CLLocationManager.authorizationStatus() {
-        case .NotDetermined:
-            manager.delegate = self
-            manager.requestWhenInUseAuthorization()
-        default:
-            finishLocationRequest()
+        Location.requestPermission().deliverOnMainThread().subscribeCompleted {
+            if Flow.currentState == .Waitlist {
+                self.performSegue(.LocationPermToWaitlist)
+            } else {
+                self.performSegue(.LocationPermToLoading)
+            }
         }
-    }
-    
-    func finishLocationRequest() {
-        if Flow.currentState == .Waitlist {
-            performSegue(.LocationPermToWaitlist)
-        } else {
-            performSegue(.LocationPermToLoading)
-        }
-    }
-    
-    // MARK: CLLocationManagerDelegate
-    
-    func locationManager(manager: CLLocationManager!, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
-        Log.debug("Location status is \(status)")
-        finishLocationRequest()
     }
 }

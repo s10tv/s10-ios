@@ -115,6 +115,7 @@
 		EAD007FC1AD37236003A260D /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD007FB1AD37236003A260D /* Geometry.swift */; };
 		EAD7B2AB1A9F0BE700FA6740 /* DesignableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */; };
 		EADDC6B11AD493710023DA0A /* FlowService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADDC6B01AD493710023DA0A /* FlowService.swift */; };
+		EAE1E07B1AE34C6200F03F13 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1E07A1AE34C6200F03F13 /* LocationService.swift */; };
 		EAEB63DB1AD31A4E0002D55C /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB63DA1AD31A4E0002D55C /* Animation.swift */; };
 		EAF195CF1A827FAD00A2F103 /* Ketch-Bridging.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */; };
 		EAF3A4BF1ACA2191001C2943 /* ProfileInfoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAF3A4BE1ACA2191001C2943 /* ProfileInfoCell.xib */; };
@@ -254,6 +255,7 @@
 		EAD007FB1AD37236003A260D /* Geometry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
 		EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableViews.swift; sourceTree = "<group>"; };
 		EADDC6B01AD493710023DA0A /* FlowService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FlowService.swift; sourceTree = "<group>"; };
+		EAE1E07A1AE34C6200F03F13 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		EAEB63DA1AD31A4E0002D55C /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Ketch-Bridging.m"; sourceTree = "<group>"; };
 		EAF3A4BE1ACA2191001C2943 /* ProfileInfoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileInfoCell.xib; sourceTree = "<group>"; };
@@ -489,6 +491,7 @@
 				EADDC6B01AD493710023DA0A /* FlowService.swift */,
 				EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */,
 				EA49286D1ADF291100118639 /* UpgradeService.swift */,
+				EAE1E07A1AE34C6200F03F13 /* LocationService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -914,6 +917,7 @@
 				EA755A321ADDA4D8004B4A1D /* ChatViewController.swift in Sources */,
 				EA24C2731AD8F60900C40AAD /* _Candidate.swift in Sources */,
 				EA4A66571AA2D9BB0019D601 /* ChoicePlaceholder.swift in Sources */,
+				EAE1E07B1AE34C6200F03F13 /* LocationService.swift in Sources */,
 				EA0FED431ADDF95600FC6FCB /* SailAwayTransition.swift in Sources */,
 				EA755A3B1ADDA5CB004B4A1D /* SettingsViewController.swift in Sources */,
 				EA0FC9441A87DE5800D62625 /* ViewProviders.swift in Sources */,
