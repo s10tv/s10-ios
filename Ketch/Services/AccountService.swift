@@ -34,18 +34,28 @@ class AccountService {
         return FBSession.openActiveSession(readPermissions: readPerms, allowLoginUI: allowUI)
     }
     
+    private func didLogin() {
+        // Allow this to be set by server rather than client
+        self.meteorService.meta.hasBeenWelcomed = false
+        self.meteorService.meta.gameTutorialMode = true
+        // TODO: Figure out whether user signed up or logged in
+        Analytics.loggedIn()
+    }
+    
     // MARK: -
+    
+    func debugLogin(userId: String) -> RACSignal {
+        return meteorService.debugLoginWithUserId(userId).replayWithSubject().deliverOnMainThread().doCompleted {
+            self.didLogin()
+        }
+    }
     
     func login() -> RACSignal {
         return self.openSession(allowUI: true).then {
             let data = self.session.accessTokenData
             return self.meteorService.loginWithFacebook(accessToken: data.accessToken, expiresAt: data.expirationDate)
         }.replayWithSubject().deliverOnMainThread().doCompleted {
-            // Allow this to be set by server rather than client
-            self.meteorService.meta.hasBeenWelcomed = false
-            self.meteorService.meta.gameTutorialMode = true
-            // TODO: Figure out whether user signed up or logged in
-            Analytics.loggedIn()
+            self.didLogin()
         }
     }
     

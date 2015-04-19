@@ -25,3 +25,10 @@ extension Zip2 {
     }
 
 }
+
+extension String {
+    func nonBlank() -> String? {
+        let trimmed = stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        return trimmed.length > 0 ? trimmed : nil
+    }
+}

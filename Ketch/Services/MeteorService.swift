@@ -100,6 +100,12 @@ class MeteorService {
     // TODO: Add permission statuses for push, location, etc
     
     // MARK: - Authentication
+
+    func debugLoginWithUserId(userId: String) -> RACSignal {
+        return meteor.loginWithMethod("login", params: [[
+            "debug": ["userId": userId]
+        ]])
+    }
     
     func loginWithFacebook(#accessToken: String, expiresAt: NSDate) -> RACSignal {
         return meteor.loginWithMethod("login", params: [[

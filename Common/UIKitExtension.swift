@@ -74,6 +74,12 @@ extension UIView {
         }
     }
     
+    func whenLongPressEnded(block: () -> ()) {
+        whenLongPressed { recognizer in
+            if recognizer.state == .Ended { block() }
+        }
+    }
+    
     func whenSwipeEnded(direction: UISwipeGestureRecognizerDirection, block: () -> ()) {
         whenSwiped(direction) { recognizer in
             if recognizer.state == .Ended { block() }
@@ -86,6 +92,14 @@ extension UIView {
         tap.numberOfTapsRequired = 1
         tap.numberOfTouchesRequired = 1
         tap.rac_gestureSignal().subscribeNextAs { (recognizer : UITapGestureRecognizer) -> () in
+            block(recognizer)
+        }
+        addGestureRecognizer(tap)
+    }
+    
+    func whenLongPressed(block: (UILongPressGestureRecognizer) -> ()) {
+        let tap = UILongPressGestureRecognizer()
+        tap.rac_gestureSignal().subscribeNextAs { (recognizer : UILongPressGestureRecognizer) -> () in
             block(recognizer)
         }
         addGestureRecognizer(tap)
