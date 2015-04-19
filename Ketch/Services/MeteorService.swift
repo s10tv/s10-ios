@@ -62,13 +62,16 @@ class MeteorService {
         )
         meta = Metadata(collection: collections.metadata)
         
+        // connectDevice should be the first method that gets called on startup so that
+        // any subsequent device update calls makes sense
+        connectDevice(env)
+        
         SugarRecord.addStack(MeteorCDStack(meteor: meteor))
     }
     
     func startup() {
         meteor.account = METAccount.defaultAccount()
         meteor.connect()
-        connectDevice(env)
     }
     
     // MARK: - Device
