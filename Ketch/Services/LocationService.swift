@@ -27,7 +27,7 @@ class LocationService {
         }
         let subject = RACSubject()
         // Small timeout to hack the fact that manager does have perm request API
-        manager.requestLocationWithDesiredAccuracy(.None, timeout: 0.01, delayUntilAuthorized: true) { _, _, _ in
+        manager.requestLocationWithDesiredAccuracy(.City, timeout: 0.01, delayUntilAuthorized: true) { _, _, _ in
             subject.sendCompleted()
         }
         return subject
@@ -38,7 +38,7 @@ class LocationService {
             return
         }
         manager.requestLocationWithDesiredAccuracy(.Neighborhood, timeout: 10) { location, accuracy, status in
-            Log.debug("Received location: \(location) accuracy: \(accuracy) status: \(status)")
+            Log.debug("Received location: \(location) accuracy: \(accuracy.rawValue) status: \(status.rawValue)")
             if location != nil {
                 self.meteorService.updateDeviceLocation(location)
             }
