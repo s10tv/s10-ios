@@ -2,18 +2,11 @@
 //  SettingsItem.swift
 //  Ketch
 //
-//  Created by Tony Xiao on 4/17/15.
+//  Created by Tony Xiao on 4/19/15.
 //  Copyright (c) 2015 Ketch. All rights reserved.
 //
 
 import Foundation
-import ReactiveCocoa
-
-enum GenderPref : String {
-    case Men = "men"
-    case Women = "women"
-    case Both = "both"
-}
 
 struct SettingsItem {
     enum ItemType : String {

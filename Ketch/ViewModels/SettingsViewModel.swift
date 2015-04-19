@@ -35,7 +35,7 @@ class SettingsViewModel {
     func updateItem(type: SettingsItem.ItemType, newValue: AnyObject?) {
         switch (type, newValue) {
         case let (.GenderPreference, pref as String):
-            if let pref = GenderPref(rawValue: pref) {
+            if let pref = Settings.GenderPref(rawValue: pref) {
                 if settings.genderPref != pref {
                     Meteor.updateGenderPref(pref)
                 }

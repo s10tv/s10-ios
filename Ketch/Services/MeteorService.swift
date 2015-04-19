@@ -133,7 +133,7 @@ class MeteorService {
     
     // MARK: - User
     
-    func updateGenderPref(genderPref: GenderPref) -> RACSignal {
+    func updateGenderPref(genderPref: Settings.GenderPref) -> RACSignal {
         return meteor.call("me/update/genderPref", [genderPref.rawValue]) {
             self.meta.setValue(genderPref.rawValue, metadataKey: "genderPref")
             return nil

@@ -10,6 +10,11 @@ import Foundation
 import Meteor
 
 class Settings {
+    enum GenderPref : String {
+        case Men = "men"
+        case Women = "women"
+        case Both = "both"
+    }
     private let collection : METCollection
     
     var softMinBuild : Int? { return getValue("softMinBuild") as? Int }
