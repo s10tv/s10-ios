@@ -62,21 +62,19 @@ class MeteorService {
         )
         meta = Metadata(collection: collections.metadata)
         
-        // connectDevice should be the first method that gets called on startup so that
-        // any subsequent device update calls makes sense
-        connectDevice(env)
-        
         SugarRecord.addStack(MeteorCDStack(meteor: meteor))
     }
     
     func startup() {
         meteor.account = METAccount.defaultAccount()
         meteor.connect()
+        connectDevice(env)
     }
     
     // MARK: - Device
     
     private func connectDevice(env: Environment) -> RACSignal {
+        // Technically this should be a barrier method, but barrier is not exposed by meteor-ios at the moment
         return meteor.call("connectDevice", [env.deviceId, [
             "appId": env.appId,
             "version": env.version,
