@@ -40,7 +40,7 @@ class SailAwayTransition : WaveTransition {
         // Not clear to me why this is needed because after getting removed from superview
         // boat is suppose to not have any associated animation anymore
         self.boat.layer.removeAnimationForKey("position.x")
-        self.boat.animatePitch() // For some reason pitch gets removed
+        self.boat.animateAlongWave() // For some reason pitch gets removed
         super.completeTransition()
     }
 }

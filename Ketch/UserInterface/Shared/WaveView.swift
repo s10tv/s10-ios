@@ -9,15 +9,14 @@
 import UIKit
 
 @IBDesignable class WaveView : BaseView {
-    private var wavePath : UIBezierPath!
-    private var wavePathInverse : UIBezierPath!
-    private var phaseShift : CABasicAnimation!
-    
-    let waveOutline = CAShapeLayer()
-    let waveMask = CAShapeLayer()
-    let amplitude : CGFloat = 6
-    let periods : CGFloat = 2
-    let gradientHeight : CGFloat = 580
+    private let outlineLayer = CAShapeLayer()
+    private let maskLayer = CAShapeLayer()
+    let gradientHeight: CGFloat = 580
+    let waveDuration: CFTimeInterval = 6
+    let waveAmplitude: CGFloat = 6
+    let waveLength: CGFloat = UIScreen.mainScreen().bounds.width / 2
+    private(set) var periods: CGFloat!
+    private(set) var wave: UIBezierPath!
     
     override func intrinsicContentSize() -> CGSize {
         return CGSize(width: UIViewNoIntrinsicMetric, height: gradientHeight)
@@ -31,55 +30,47 @@ import UIKit
             CGGradientDrawingOptions(kCGGradientDrawsAfterEndLocation))
     }
     
+    override func commonInit() {
+        layer.addSublayer(outlineLayer)
+        layer.mask = maskLayer
+    }
+    
     override func layoutSubviews() {
         super.layoutSubviews()
-        let frame = CGRect(x: 0, y: amplitude, width: layer.bounds.width, height: layer.bounds.height)
-        waveOutline.frame = frame
-        waveMask.frame = frame
-        // Generate the paths & Animation
-        wavePath = UIBezierPath.sineWave(amplitude: amplitude,
-            wavelength: CGRectGetWidth(layer.frame)/2,
-            periods: periods, phase: 0)
-        
-        wavePathInverse = UIBezierPath.sineWave(amplitude: amplitude,
-            wavelength: CGRectGetWidth(layer.frame)/2,
-            periods: periods, phase: π)
-        
-        phaseShift = CABasicAnimation(keyPath: "path")
-        phaseShift.fromValue = wavePath.CGPath
-        phaseShift.toValue = wavePathInverse.CGPath
-        phaseShift.duration = 3
-        phaseShift.autoreverses = true
+        periods = (UIScreen.mainScreen().bounds.width + waveLength) / waveLength
+        wave = UIBezierPath.sineWave(amplitude: waveAmplitude, wavelength: waveLength, periods: periods)
+        outlineLayer.frame = CGRect(x: 0, y: waveAmplitude, width: layer.bounds.width, height: layer.bounds.height)
+        maskLayer.frame = outlineLayer.frame
+        animate()
+    }
+    
+    // MARK: -
+    
+    func animate() {
+        let phaseShift = CABasicAnimation(keyPath: "position.x")
+        phaseShift.byValue = -1 * waveLength
+        phaseShift.duration = waveDuration
         phaseShift.repeatCount = Float.infinity
         
         // Animate the wave outline
-        waveOutline.removeAllAnimations()
-        waveOutline.path = wavePath.CGPath
-        waveOutline.lineWidth = 2.0
-        waveOutline.strokeColor = StyleKit.navyLight.CGColor
-        waveOutline.fillColor = nil
-        waveOutline.addAnimation(phaseShift, forKey: "phaseShift")
-        layer.addSublayer(waveOutline)
+        outlineLayer.removeAllAnimations()
+        outlineLayer.path = wave.CGPath
+        outlineLayer.lineWidth = 2.0
+        outlineLayer.strokeColor = StyleKit.navyLight.CGColor
+        outlineLayer.fillColor = nil
+        outlineLayer.addAnimation(phaseShift, forKey: "position.x")
+        layer.addSublayer(outlineLayer)
+        
+        // Animate the wave mask
+        let maskPath = wave.copy() as UIBezierPath
+        maskPath.addLineTo(distance: 1, bearing: 90)
+        maskPath.addLineTo(distance: frame.height+1, bearing: 180)
+        maskPath.addLineTo(distance: waveLength * periods , bearing: 270)
+        maskPath.addLineTo(distance: frame.height+1, bearing: 0)
+        maskPath.closePath()
         
         // Animate the wave gradient (with mask)
-        let waveMaskPath = wavePath.copy() as UIBezierPath
-        let waveMaskInversePath = wavePathInverse.copy() as UIBezierPath
-        
-        for path in [waveMaskPath, waveMaskInversePath] {
-            path.addLineTo(x: frame.width+1, y: 0)
-            path.addLineTo(x: frame.width+1, y: frame.height+1)
-            path.addLineTo(x: -1, y: frame.height+1)
-            path.addLineTo(x: -1, y: -1)
-            path.closePath()
-        }
-        
-        let waveMaskPhaseShift = phaseShift.copy() as CABasicAnimation
-        waveMaskPhaseShift.fromValue = waveMaskPath.CGPath
-        waveMaskPhaseShift.toValue = waveMaskInversePath.CGPath
-        
-        waveMask.removeAllAnimations()
-        waveMask.path = waveMaskPath.CGPath
-        waveMask.addAnimation(waveMaskPhaseShift, forKey: "waveMaskPhaseShift")
-        layer.mask = waveMask
+        maskLayer.path = maskPath.CGPath
+        maskLayer.addAnimation(phaseShift, forKey: "position.x")
     }
 }

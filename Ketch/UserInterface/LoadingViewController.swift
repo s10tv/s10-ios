@@ -12,9 +12,13 @@ class LoadingViewController : BaseViewController {
     
     @IBOutlet weak var loadingView: UIView!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        loadingView.setHiddenAnimated(hidden: false, duration: 0.75)
+        loadingView.setHiddenAnimated(hidden: true, duration: 0.75)
     }
     
     override func viewWillDisappear(animated: Bool) {

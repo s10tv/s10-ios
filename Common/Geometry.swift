@@ -17,7 +17,7 @@ extension UIEdgeInsets {
 }
 
 extension CGAffineTransform {
-    init(scale: CGFloat) {
+    init(scale: CGFloat, anchor: CGPoint = CGPoint(x: 0.5, y: 0.5)) {
         self.init(a: scale, b: 0, c: 0, d: scale, tx: 0, ty: 0)
     }
 }
@@ -55,6 +55,13 @@ extension CGRect {
 }
 
 extension UIBezierPath {
+    
+    // North = 0 degrees, east = 90, south = 180, west = 270
+    func addLineTo(#distance: CGFloat, bearing: CGFloat) {
+        let dx = distance * sin(bearing * π / 180)
+        let dy = -1 * distance * cos(bearing * π / 180) // -1 because y axis increases toward south
+        addLineToPoint(currentPoint + CGPoint(x: dx, y: dy))
+    }
     
     func addLineTo(#x: CGFloat, y: CGFloat) {
         addLineToPoint(CGPoint(x: x, y: y))

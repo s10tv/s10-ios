@@ -11,18 +11,9 @@ import Foundation
 class CloudsViewController : BaseViewController {
     
     @IBOutlet var cloudViews: [UIImageView]!
-    @IBOutlet weak var boatView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Animate boat
-        boatView.layer.animate(keyPath: "transform.rotation") { pitch, _ in
-            pitch.fromValue = 0.2
-            pitch.toValue = -0.2
-            pitch.autoreverses = true
-            pitch.duration = 3
-            pitch.repeatCount = Float.infinity
-        }
         
         // Animate clouds
         let screenWidth = UIScreen.mainScreen().bounds.width
