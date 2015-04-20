@@ -14,7 +14,7 @@ import UIKit
     let gradientHeight: CGFloat = 580
     let waveDuration: CFTimeInterval = 6
     let waveAmplitude: CGFloat = 6
-    let waveLength: CGFloat = UIScreen.mainScreen().bounds.width / 2
+    private(set) var waveLength: CGFloat!
     private(set) var periods: CGFloat!
     private(set) var wave: UIBezierPath!
     
@@ -37,10 +37,12 @@ import UIKit
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        let sublayerFrame = CGRect(origin: CGPoint(x: 0, y: waveAmplitude), size: bounds.size)
+        outlineLayer.frame = sublayerFrame
+        maskLayer.frame = sublayerFrame
+        waveLength = bounds.width / 2
         periods = (UIScreen.mainScreen().bounds.width + waveLength) / waveLength
         wave = UIBezierPath.sineWave(amplitude: waveAmplitude, wavelength: waveLength, periods: periods)
-        outlineLayer.frame = CGRect(x: 0, y: waveAmplitude, width: layer.bounds.width, height: layer.bounds.height)
-        maskLayer.frame = outlineLayer.frame
         animate()
     }
     
@@ -63,9 +65,9 @@ import UIKit
         
         // Animate the wave mask
         let maskPath = wave.copy() as UIBezierPath
-        maskPath.addLineTo(distance: 1, bearing: 90)
+        maskPath.addLineTo(distance: waveLength, bearing: 90)
         maskPath.addLineTo(distance: frame.height+1, bearing: 180)
-        maskPath.addLineTo(distance: waveLength * periods , bearing: 270)
+        maskPath.addLineTo(distance: waveLength * (periods+1), bearing: 270)
         maskPath.addLineTo(distance: frame.height+1, bearing: 0)
         maskPath.closePath()
         
