@@ -55,6 +55,7 @@
 		EA5634E11A7741FF00F62B52 /* Ketch.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA5634DF1A7741FF00F62B52 /* Ketch.xcdatamodeld */; };
 		EA5FCE461AD6077A000D9B93 /* ProgressIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5FCE451AD6077A000D9B93 /* ProgressIndicator.swift */; };
 		EA5FCE481AD62C1F000D9B93 /* GameTutorialController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5FCE471AD62C1F000D9B93 /* GameTutorialController.swift */; };
+		EA6082F11AE5C2ED003E1C75 /* ErrorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6082F01AE5C2ED003E1C75 /* ErrorViewController.swift */; };
 		EA62A87E1AD98B3C00B5D3D9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA62A87D1AD98B3C00B5D3D9 /* Images.xcassets */; };
 		EA6650E11AA00999001BA40C /* BaseViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E01AA00999001BA40C /* BaseViews.swift */; };
 		EA6650E61AA00A82001BA40C /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E31AA00A82001BA40C /* WaveView.swift */; };
@@ -191,6 +192,7 @@
 		EA5634E01A7741FF00F62B52 /* Ketch.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ketch.xcdatamodel; sourceTree = "<group>"; };
 		EA5FCE451AD6077A000D9B93 /* ProgressIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProgressIndicator.swift; sourceTree = "<group>"; };
 		EA5FCE471AD62C1F000D9B93 /* GameTutorialController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameTutorialController.swift; sourceTree = "<group>"; };
+		EA6082F01AE5C2ED003E1C75 /* ErrorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorViewController.swift; sourceTree = "<group>"; };
 		EA62A87D1AD98B3C00B5D3D9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Pods/PKHUD/PKHUD/Images.xcassets; sourceTree = "<group>"; };
 		EA6650E01AA00999001BA40C /* BaseViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViews.swift; sourceTree = "<group>"; };
 		EA6650E31AA00A82001BA40C /* WaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
@@ -647,6 +649,7 @@
 				EACF21631AD707C800938CD0 /* WelcomeViewController.swift */,
 				EAF4D74F1A79AA5E00D35330 /* RootViewController.swift */,
 				EA72FB1C1AD1805B009F853F /* LoadingViewController.swift */,
+				EA6082F01AE5C2ED003E1C75 /* ErrorViewController.swift */,
 			);
 			path = UserInterface;
 			sourceTree = "<group>";
@@ -974,6 +977,7 @@
 				EACF21681AD7245C00938CD0 /* CloudsViewController.swift in Sources */,
 				EA755A331ADDA4D8004B4A1D /* NewConnectionViewController.swift in Sources */,
 				EA72FB1F1AD180F1009F853F /* NewGameTransition.swift in Sources */,
+				EA6082F11AE5C2ED003E1C75 /* ErrorViewController.swift in Sources */,
 				EAAD921F1ACF4EFA0014BA25 /* ProvisioningProfile.swift in Sources */,
 				EA2AB70E1A8A00F200D42C6C /* GameViewController.swift in Sources */,
 				EA0FC9431A87DE5800D62625 /* FetchViewModel.swift in Sources */,
