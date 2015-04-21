@@ -19,9 +19,6 @@ class KetchBoatView : UIImageView {
     }
     
     func rideWaveAnimation(wavePath: UIBezierPath, duration: CFTimeInterval) -> CAAnimation {
-        // Account for anchor point being (0.5, 1) at bottom center
-        wavePath.applyTransform(CGAffineTransformMakeTranslation(0, bounds.height/2))
-        
         // Move boat along with the wave path
         let followPath = CAKeyframeAnimation(keyPath: "position")
         followPath.path = wavePath.CGPath
@@ -48,13 +45,6 @@ class KetchBoatView : UIImageView {
         }
     }
     
-    // TODO: Non-nib dependent init?
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        userInteractionEnabled = true
-        layer.anchorPoint = CGPoint(x: 0.5, y: 1)
-    }
-    
     override func layoutSubviews() {
         super.layoutSubviews()
         animateAlongWave()
@@ -62,17 +52,19 @@ class KetchBoatView : UIImageView {
     
     // MARK: -
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-        super.touchesBegan(touches, withEvent: event)
-        UIView.animate(scaleDuration) {
-            self.transform = CGAffineTransform(scale: 1.5)
-        }
-    }
-    
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-        super.touchesEnded(touches, withEvent: event)
-        UIView.animate(scaleDuration, delay: 0.1) {
-            self.transform = CGAffineTransformIdentity
-        }
-    }
+    // TODO: Disabling boat interactivity for now because it interferes
+    // with the animation. Need to figure out better way to interact
+//    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+//        super.touchesBegan(touches, withEvent: event)
+//        UIView.animate(scaleDuration) {
+//            self.transform = CGAffineTransform(scale: 1.5)
+//        }
+//    }
+//    
+//    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+//        super.touchesEnded(touches, withEvent: event)
+//        UIView.animate(scaleDuration, delay: 0.1) {
+//            self.transform = CGAffineTransformIdentity
+//        }
+//    }
 }

@@ -383,7 +383,7 @@ SAILED FOR TODAY.</string>
                                     </mask>
                                 </variation>
                             </view>
-                            <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ketch" translatesAutoresizingMaskIntoConstraints="NO" id="R7N-wp-2MM" customClass="KetchBoatView" customModule="Ketch" customModuleProvider="target">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ketch" translatesAutoresizingMaskIntoConstraints="NO" id="R7N-wp-2MM" customClass="KetchBoatView" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="280" y="28" width="39" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="0hN-wj-xMn"/>
