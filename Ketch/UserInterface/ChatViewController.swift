@@ -63,7 +63,7 @@ class ChatViewController : JSQMessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         assert(connection != nil, "Connection must be set before attempting to load chat")
-        viewModel = MessagesViewModel(connection: connection!)
+        viewModel = MessagesViewModel(connection: connection!, delegate: self)
         
         nameLabel.text = viewModel.recipient.firstName
         avatarView.user = viewModel.recipient
@@ -181,5 +181,11 @@ extension ChatViewController : JSQMessagesCollectionViewDataSource {
             return str.boundingRectWithSize(CGSize(side: 1000), options: .UsesFontLeading, context: nil).height
         }
         return 0
+    }
+}
+
+extension ChatViewController : MessagesViewModelDelegate {
+    func viewModel(viewModel: MessagesViewModel, didReceiveMessages messages: [Message]) {
+        finishReceivingMessage()
     }
 }

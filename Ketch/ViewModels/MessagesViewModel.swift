@@ -13,15 +13,21 @@ import SDWebImage
 
 // MARK: - MessagesViewModel
 
+protocol MessagesViewModelDelegate : class {
+    func viewModel(viewModel: MessagesViewModel, didReceiveMessages messages: [Message])
+}
+
 class MessagesViewModel : NSObject {
     let connection: Connection
+    weak var delegate: MessagesViewModelDelegate?
     private let frc: NSFetchedResultsController
     
     var sender: User { return User.currentUser()! }
     var recipient: User { return connection.user! }
     
-    init(connection: Connection) {
+    init(connection: Connection, delegate: MessagesViewModelDelegate? = nil) {
         self.connection = connection
+        self.delegate = delegate
         frc = connection.fetchMessages(sorted: true)
         super.init()
         frc.delegate = self
@@ -96,7 +102,7 @@ extension MessagesViewModel : NSFetchedResultsControllerDelegate {
         
     }
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        println("Content changed")
+        delegate?.viewModel(self, didReceiveMessages: [])
     }
 }
 
