@@ -237,6 +237,7 @@
 		EA608BA81AE609A5003E1C75 /* ketchyFlagWave_8@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA608B4E1AE609A5003E1C75 /* ketchyFlagWave_8@2x.png */; };
 		EA608BA91AE609A5003E1C75 /* ketchyFlagWave_90@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA608B4F1AE609A5003E1C75 /* ketchyFlagWave_90@2x.png */; };
 		EA608BAA1AE609A5003E1C75 /* ketchyFlagWave_9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = EA608B501AE609A5003E1C75 /* ketchyFlagWave_9@2x.png */; };
+		EA608BAC1AE6A249003E1C75 /* MessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA608BAB1AE6A249003E1C75 /* MessagesViewModel.swift */; };
 		EA62A87E1AD98B3C00B5D3D9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA62A87D1AD98B3C00B5D3D9 /* Images.xcassets */; };
 		EA6650E11AA00999001BA40C /* BaseViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E01AA00999001BA40C /* BaseViews.swift */; };
 		EA6650E61AA00A82001BA40C /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E31AA00A82001BA40C /* WaveView.swift */; };
@@ -555,6 +556,7 @@
 		EA608B4E1AE609A5003E1C75 /* ketchyFlagWave_8@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ketchyFlagWave_8@2x.png"; sourceTree = "<group>"; };
 		EA608B4F1AE609A5003E1C75 /* ketchyFlagWave_90@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ketchyFlagWave_90@2x.png"; sourceTree = "<group>"; };
 		EA608B501AE609A5003E1C75 /* ketchyFlagWave_9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ketchyFlagWave_9@2x.png"; sourceTree = "<group>"; };
+		EA608BAB1AE6A249003E1C75 /* MessagesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewModel.swift; sourceTree = "<group>"; };
 		EA62A87D1AD98B3C00B5D3D9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Pods/PKHUD/PKHUD/Images.xcassets; sourceTree = "<group>"; };
 		EA6650E01AA00999001BA40C /* BaseViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViews.swift; sourceTree = "<group>"; };
 		EA6650E31AA00A82001BA40C /* WaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
@@ -808,8 +810,9 @@
 			isa = PBXGroup;
 			children = (
 				EAC31C1E1AE3AD7000277FE8 /* SettingsItem.swift */,
-				EA4F51841AE153880060405E /* SettingsViewModel.swift */,
 				EA4F51861AE153A40060405E /* ProfileItem.swift */,
+				EA4F51841AE153880060405E /* SettingsViewModel.swift */,
+				EA608BAB1AE6A249003E1C75 /* MessagesViewModel.swift */,
 				EA53D5211AE1E9B800EDAAFE /* Formatters.swift */,
 			);
 			path = ViewModels;
@@ -1677,6 +1680,7 @@
 				EA0FED431ADDF95600FC6FCB /* SailAwayTransition.swift in Sources */,
 				EA6082F31AE5F42A003E1C75 /* CrabView.swift in Sources */,
 				EA755A3B1ADDA5CB004B4A1D /* SettingsViewController.swift in Sources */,
+				EA608BAC1AE6A249003E1C75 /* MessagesViewModel.swift in Sources */,
 				EA0FC9441A87DE5800D62625 /* ViewProviders.swift in Sources */,
 				EAAD921B1ACDEACD0014BA25 /* NewMatchTransition.swift in Sources */,
 				EA6650ED1AA00A9C001BA40C /* AccountService.swift in Sources */,

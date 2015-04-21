@@ -7,16 +7,16 @@
 //
 
 import UIKit
-import JSQMessagesViewController
 import ReactiveCocoa
+import JSQMessagesViewController
 
 class ChatViewController : JSQMessagesViewController {
     
     // TODO: Make chatVC inherit from our BaseVC
 //        allowedStates = [.BoatSailed, .NewGame]
     
+    private var viewModel: MessagesViewModel!
     var connection: Connection?
-    private var messages : FetchViewModel!
     
     @IBOutlet weak var titleView: UIView!
     @IBOutlet weak var avatarView: UserAvatarView!
@@ -25,18 +25,12 @@ class ChatViewController : JSQMessagesViewController {
     var outgoingBubble : JSQMessagesBubbleImage!
     var incomingBubble : JSQMessagesBubbleImage!
     var disposable: RACDisposable?
-    
-    override func viewDidLoad() {
-        assert(connection != nil, "Connection must be set before attempting to load chat")
-        super.viewDidLoad()
-        
+
+    func customizeAppearance() {
         // TODO: Make this configurable from storyboard. JSQMessages library annoyingly
         // resets its own color to white when configuring itself
         view.backgroundColor = StyleKit.darkWhite
         collectionView.backgroundColor = UIColor.clearColor()
-        
-        // Set the chat prompt once upon loading and that's it
-        inputToolbar.contentView.textView.text = connection?.promptText
         
         // Customize input views
         inputToolbar.contentView.leftBarButtonItem = nil
@@ -54,37 +48,43 @@ class ChatViewController : JSQMessagesViewController {
         outgoingBubble = bubbleFactory.outgoingMessagesBubbleImageWithColor(StyleKit.darkWhite)
         incomingBubble = bubbleFactory.incomingMessagesBubbleImageWithColor(StyleKit.pureWhite)
         
+        // Customize layout
+        let layout = collectionView.collectionViewLayout
+        layout.incomingAvatarViewSize = CGSizeZero
+        layout.outgoingAvatarViewSize = CGSizeZero
+        layout.messageBubbleFont = UIFont(.transatTextLight, size: 17)
+        //        layout.springinessEnabled = true
+        layout.messageBubbleTextViewTextContainerInsets = UIEdgeInsets(top: 11, left: 14, bottom: 3, right: 14)
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        assert(connection != nil, "Connection must be set before attempting to load chat")
+        viewModel = MessagesViewModel(connection: connection!)
+        
+        nameLabel.text = viewModel.recipient.firstName
+        avatarView.user = viewModel.recipient
+        inputToolbar.contentView.textView.text = viewModel.promptText()
+        
+         // TODO: Make subclass of UIControl and use target-action
+        titleView.userInteractionEnabled = true
+        titleView.whenTapEnded { [weak self] in self!.performSegue(.ChatToProfile) }
+        
+        customizeAppearance()
     }
     
     // TODO: This is not at all kosher with view controller lifecycle management, especially around interactive
     // transitioning. Figure out a better way to do this.
     override func viewWillAppear(animated: Bool) {
         // NOTE: Super's implementation causes collectionView to reload, thus the following initialization hack
-        messages = FetchViewModel(frc: connection!.fetchMessages(sorted: true))
-        messages.performFetchIfNeeded()
+        viewModel.loadMessages()
         super.viewWillAppear(animated)
-        
-        // Surely there must be a way to do this one message at a time rather than
-        // reloading the entire view?
-        messages.signal.subscribeNext { [weak self] _ in self!.reloadData() }
-        nameLabel.text = connection?.user?.firstName
-        avatarView.user = connection?.user
-        titleView.userInteractionEnabled = true // TODO: Make subclass of UIControl and use target-action
-        titleView.whenTapEnded { [weak self] in self!.performSegue(.ChatToProfile) }
-        
-        let avatarLength = 30
-        let layout = collectionView.collectionViewLayout
-        layout.incomingAvatarViewSize = CGSizeZero
-        layout.outgoingAvatarViewSize = CGSizeZero
-        layout.messageBubbleFont = UIFont(.transatTextLight, size: 17)
-        layout.springinessEnabled = true
-        layout.messageBubbleTextViewTextContainerInsets = UIEdgeInsets(top: 11, left: 14, bottom: 3, right: 14)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         disposable = RACObserve(connection!, ConnectionAttributes.hasUnreadMessage.rawValue)
-            .subscribeNext { [weak self] _ in self!.markAsRead() }
+            .subscribeNext { [weak self] _ in self!.viewModel.markAsRead() }
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -94,7 +94,7 @@ class ChatViewController : JSQMessagesViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let profileVC = segue.destinationViewController as? ProfileViewController {
-            profileVC.user = connection?.user
+            profileVC.user = viewModel.recipient
         }
     }
     
@@ -102,44 +102,11 @@ class ChatViewController : JSQMessagesViewController {
         return true
     }
     
-    // MARK: - 
-    
-    func reloadData() {
-        collectionView.reloadData()
-        scrollToBottomAnimated(true)
-    }
-    
-    func markAsRead() {
-        if connection?.hasUnreadMessage == true {
-            Meteor.markAsRead(connection!)
-        }
-    }
-    
-    
-    func shouldShowTimestampForMessageAtIndexPath(indexPath: NSIndexPath) -> Bool {
-        return indexPath.row % 3 == 0
-    }
-    
-    func readDateForMessage(#indexPath: NSIndexPath) -> NSDate? {
-        if messages.itemAtIndexPath(indexPath) as? Message == connection?.otherUserLastSeenMessage {
-            return connection?.otherUserLastSeenAt
-        }
-        return nil
-    }
-    
-    // MARK: - 
+    // MARK: -
     
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
-        Meteor.sendMessage(connection!, text: text)
+        viewModel.sendMessage(text)
         finishSendingMessageAnimated(true)
-    }
-    
-    func senderDisplayName() -> String! {
-        return User.currentUser()?.displayName
-    }
-    
-    func senderId() -> String! {
-        return User.currentUser()?.documentID
     }
     
     // MARK: - Class Method
@@ -152,8 +119,17 @@ class ChatViewController : JSQMessagesViewController {
 // MARK: - JSQMessagesCollectionViewDataSource
 
 extension ChatViewController : JSQMessagesCollectionViewDataSource {
+    func senderDisplayName() -> String! {
+        return viewModel.sender.displayName
+    }
+    
+    func senderId() -> String! {
+        return viewModel.sender.documentID
+    }
+    
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return messages.numberOfItemsInSection(section)
+        assert(section == 0, "Only 1 section is supported in chat")
+        return viewModel.numberOfMessages()
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -167,28 +143,21 @@ extension ChatViewController : JSQMessagesCollectionViewDataSource {
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, messageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageData! {
-        return (messages.itemAtIndexPath(indexPath) as Message).jsqMessage()
+        return viewModel.messageAtIndex(indexPath.row).jsqMessage()
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageBubbleImageDataSource! {
-        let message = messages.itemAtIndexPath(indexPath) as Message
-        return message.sender!.isCurrentUser ? outgoingBubble : incomingBubble
+        return viewModel.messageAtIndex(indexPath.row).outgoing ? outgoingBubble : incomingBubble
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
-        let message = messages.itemAtIndexPath(indexPath) as Message
-        return message.sender?.jsqAvatar();
+        return viewModel.messageAtIndex(indexPath.row).sender?.jsqAvatar()
     }
     
     // Message Timestamp
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, attributedTextForCellTopLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
-        if shouldShowTimestampForMessageAtIndexPath(indexPath) {
-            let message = messages.itemAtIndexPath(indexPath) as Message
-            let text = JSQMessagesTimestampFormatter.sharedFormatter().attributedTimestampForDate(message.createdAt)
-            return text.replace(font: UIFont(.transatTextBold, size: 10), color: StyleKit.teal)
-        }
-        return nil
+        return viewModel.displayTimestampForMessageAtIndex(indexPath.row)
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellTopLabelAtIndexPath indexPath: NSIndexPath!) -> CGFloat {
@@ -201,21 +170,7 @@ extension ChatViewController : JSQMessagesCollectionViewDataSource {
     // Read Receipt
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, attributedTextForCellBottomLabelAtIndexPath indexPath: NSIndexPath!) -> NSAttributedString! {
-        if let date = readDateForMessage(indexPath: indexPath) {
-            let formatter = JSQMessagesTimestampFormatter.sharedFormatter()
-            let text = "Seen \(formatter.relativeDateForDate(date).lowercaseString) at \(formatter.timeForDate(date).lowercaseString)"
-            let range = NSMakeRange(0, text.length)
-            var paragraphStlye = NSMutableParagraphStyle()
-            paragraphStlye.alignment = .Right
-            
-            let str = NSMutableAttributedString(string: text)
-            str.addAttribute(NSParagraphStyleAttributeName, value: paragraphStlye, range: range)
-            str.addAttribute(NSFontAttributeName, value: UIFont(.transatTextStandard, size: 10), range: range)
-            str.addAttribute(NSForegroundColorAttributeName, value: StyleKit.teal, range: range)
-            
-            return str
-        }
-        return nil
+        return viewModel.displayReadDateForMessageAtIndex(indexPath.row)
     }
     
     override func collectionView(collectionView: JSQMessagesCollectionView!, layout collectionViewLayout: JSQMessagesCollectionViewFlowLayout!, heightForCellBottomLabelAtIndexPath indexPath: NSIndexPath!) -> CGFloat {

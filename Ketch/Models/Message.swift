@@ -6,21 +6,13 @@
 //  Copyright (c) 2015 Serendipity. All rights reserved.
 //
 
-import JSQMessagesViewController
-
 @objc(Message)
 class Message: _Message {
+    var outgoing: Bool { return sender!.isCurrentUser }
     
     override func awakeFromInsert() {
         super.awakeFromInsert()
         createdAt = NSDate()
     }
-    
-    func jsqMessage() -> JSQMessage {
-        let senderID = sender?.documentID
-        let displayName = sender?.displayName
-        let txt = text ?? "empty"
-        return JSQMessage(senderId: senderID, senderDisplayName: displayName, date: createdAt, text: txt)
-    }
-    
 }
+
