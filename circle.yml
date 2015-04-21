@@ -29,7 +29,7 @@ test:
                      --no-clean
         mv Ketch.ipa $CIRCLE_ARTIFACTS/${BN}.ipa
         mv Ketch.app.dSYM.zip $CIRCLE_ARTIFACTS/${BN}.app.dSYM.zip
-      : timeout: 900
+      : timeout: 1200
     - zip -FSr $CIRCLE_ARTIFACTS/Pods.zip Pods/
 
 deployment:
