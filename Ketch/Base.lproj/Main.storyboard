@@ -931,8 +931,8 @@ SAILED FOR TODAY.</string>
                                             <fragment>
                                                 <string key="content">I usually don't message people first, so if you're interested please message me! I'm not interested in hooking up, message me if you're curious about what I am looking for! </string>
                                                 <attributes>
-                                                    <color key="NSColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <font key="NSFont" metaFont="system" size="16"/>
+                                                    <color key="NSColor" red="0.050980392156862744" green="0.39215686274509803" blue="0.53725490196078429" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <font key="NSFont" size="16" name="TransatTextStandard"/>
                                                     <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" minimumLineHeight="20"/>
                                                 </attributes>
                                             </fragment>
