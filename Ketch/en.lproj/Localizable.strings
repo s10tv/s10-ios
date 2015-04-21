@@ -66,3 +66,7 @@
 "SettingsDeleteAccountConfirm" = "Confirm";
 "SettingsDeleteAccountCancel" = "Cancel";
 
+/* Errors */
+"NetworkUnreachable" = "Seems like we don't have any network connection right now, try again later.";
+"KetchyUnavailableTitle" = "Ooops";
+"KetchyUnavailableMessage" = "Ketchy isn't home at the moment.";

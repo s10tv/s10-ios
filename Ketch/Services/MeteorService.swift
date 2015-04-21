@@ -35,6 +35,7 @@ class MeteorService {
     let settings: Settings
     
     // Proxied accessors
+    var networkReachable: Bool { return meteor.networkReachable }
     var connectionStatus: METDDPConnectionStatus { return meteor.connectionStatus }
     var connected: Bool { return meteor.connected }
     var loggingIn: Bool { return meteor.loggingIn }

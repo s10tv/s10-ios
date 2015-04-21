@@ -114,12 +114,18 @@ public enum R {
         case inviteDefaultText = "InviteDefaultText"
         /// It's a Ketch!
         case itsAKetch = "It's a Ketch!"
+        /// Ketchy isn't home at the moment.
+        case ketchyUnavailableMessage = "KetchyUnavailableMessage"
+        /// Ooops
+        case ketchyUnavailableTitle = "KetchyUnavailableTitle"
         /// SAY YES NOW
         case marryPrompt = "MarryPrompt"
         /// Cancel
         case moreSheetCancel = "MoreSheetCancel"
         /// Report %@
         case moreSheetReport = "MoreSheetReport"
+        /// Seems like we don't have any network connection right now, try again later.
+        case networkUnreachable = "NetworkUnreachable"
         /// We use your location to help you find matches!
         case nsLocationWhenInUseUsageDescription = "NSLocationWhenInUseUsageDescription"
         /// Cancel

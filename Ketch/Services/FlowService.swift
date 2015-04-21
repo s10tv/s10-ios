@@ -16,6 +16,7 @@ class FlowService : NSObject {
     enum State : String {
         case Loading = "Loading"
         case Signup = "Signup"
+        case Error = "Error"
         case Waitlist = "Waitlist"
         case Welcome = "Welcome"
         case BoatSailed = "BoatSailed"
@@ -30,6 +31,8 @@ class FlowService : NSObject {
     private(set) var newMatchToShow : Connection?
     private(set) var candidateQueue : [Candidate]?
     private(set) var currentState = State.Loading
+    private(set) var error: NSError?
+    
     var loginComplete: Bool {
         return !ms.loggingIn &&
             ms.subscriptions.metadata.ready &&
@@ -134,6 +137,8 @@ class FlowService : NSObject {
         // Startup Flow
         if ms.account == nil {
             return .Signup
+        } else if (error != nil) {
+            return .Error
         } else if (!loginComplete) {
             return .Loading
         }
@@ -188,6 +193,11 @@ class FlowService : NSObject {
 extension FlowService : METDDPClientDelegate {
     
     // General state updates
+    func client(client: METDDPClient!, reachabilityStatusDidChange reachable: Bool) {
+        // TODO: We ought to handle much more than just network unreachable error
+        error = reachable ? nil : NSError(.NetworkUnreachable)
+        updateState()
+    }
     
     func client(client: METDDPClient!, willLoginWithMethodName methodName: String!, parameters: [AnyObject]!) {
         updateState()

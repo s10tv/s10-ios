@@ -36,6 +36,9 @@ class LoadingViewController : BaseViewController {
         if let vc = segue.destVC as? GameViewController {
             vc.candidates = Array(Candidate.candidateQueue()[0...2])
         }
+        if let vc = segue.destVC as? ErrorViewController {
+            vc.error = Globals.flowService.error
+        }
     }
     
     override func stateDidUpdateWhileViewActive(state: FlowService.State) {
@@ -52,6 +55,8 @@ class LoadingViewController : BaseViewController {
             self.performSegue(.LoadingToGame)
         case .BoatSailed:
             self.performSegue(.LoadingToNoGame)
+        case .Error:
+            self.performSegue(.LoadingToError)
         case .Loading:
             break
         }

@@ -123,7 +123,7 @@ CHECKOUT OPTIONS:
     :commit: bb35d0d9f6643c5e078cfab07b269a0b30a9e295
     :git: https://github.com/tonyxiao/JSQMessagesViewController
   Meteor:
-    :commit: b889b55631c84de132f596a6a284fb5edc424dcb
+    :commit: 54d43d89709b754134c58ee57a58779ab9406f75
     :git: https://github.com/tonyxiao/meteor-ios
   SugarRecord:
     :commit: ecf73acf39e6d2a595f912470e1a54050e0e3eb4
