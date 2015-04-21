@@ -120,7 +120,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/bugfender/BugfenderSDK-iOS.git
     :tag: 0.3.2
   JSQMessagesViewController:
-    :commit: ed3490ca830818cd58b1d70b756310bcbcef384e
+    :commit: bb35d0d9f6643c5e078cfab07b269a0b30a9e295
     :git: https://github.com/tonyxiao/JSQMessagesViewController
   Meteor:
     :commit: b889b55631c84de132f596a6a284fb5edc424dcb
