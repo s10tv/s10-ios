@@ -108,6 +108,7 @@ class ChatViewController : JSQMessagesViewController {
     // MARK: -
     
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
+        Log.debug("Will send message and then reload collection view")
         viewModel.sendMessage(text)
         finishSendingMessageAnimated(true)
     }
@@ -185,7 +186,8 @@ extension ChatViewController : JSQMessagesCollectionViewDataSource {
 }
 
 extension ChatViewController : MessagesViewModelDelegate {
-    func viewModel(viewModel: MessagesViewModel, didReceiveMessages messages: [Message]) {
-        finishReceivingMessage()
+    func viewModel(viewModel: MessagesViewModel, didChangeMessages messages: [Message]) {
+        Log.debug("Finish receiving message, will reload collection view")
+        finishReceivingMessageAnimated(true)
     }
 }

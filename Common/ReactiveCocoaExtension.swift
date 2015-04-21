@@ -33,6 +33,14 @@ extension RACSignal {
         }
     }
     
+    func subscribeErrorOrCompleted(block: (NSError?) -> ()) {
+        subscribeError({ error in
+            block(error)
+        }, completed:{
+            block(nil)
+        })
+    }
+    
     // replayWithSubject has the advantage that signal would be subscribed to but
     // disposed as soon as subject is deallocated, rather than replay() in which signal is never
     // disposed of even if no one is listening to the subject anymore

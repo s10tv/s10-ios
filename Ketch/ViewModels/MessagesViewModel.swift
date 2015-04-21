@@ -14,13 +14,15 @@ import SDWebImage
 // MARK: - MessagesViewModel
 
 protocol MessagesViewModelDelegate : class {
-    func viewModel(viewModel: MessagesViewModel, didReceiveMessages messages: [Message])
+    func viewModel(viewModel: MessagesViewModel, didChangeMessages messages: [Message])
 }
 
 class MessagesViewModel : NSObject {
     let connection: Connection
     weak var delegate: MessagesViewModelDelegate?
     private let frc: NSFetchedResultsController
+    private var sendingMessage = false // TODO: Temp hack, see sendMessage for explanation
+    private var changedMessages: [Message] = []
     
     var sender: User { return User.currentUser()! }
     var recipient: User { return connection.user! }
@@ -47,7 +49,15 @@ class MessagesViewModel : NSObject {
     }
     
     func sendMessage(text: String) {
-        Meteor.sendMessage(connection, text: text)
+        // meteor.sendMessage should return stub and allow us to more precisely keep track
+        // of exactly which messages were sent by current client, instead of relying on
+        // entire method call being finished
+        sendingMessage = true
+        Log.verbose("sendingMessage = true")
+        Meteor.sendMessage(connection, text: text).deliverOnMainThread().subscribeErrorOrCompleted { _ in
+            self.sendingMessage = false
+            Log.verbose("sendingMessage = false")
+        }
     }
     
     // MARK: -
@@ -95,14 +105,23 @@ class MessagesViewModel : NSObject {
 
 extension MessagesViewModel : NSFetchedResultsControllerDelegate {
     
-    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        
-    }
+    
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        
+        changedMessages = []
     }
+    
+    func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        Log.verbose("controller:didChangeObject \(anObject) changeType: \(type.rawValue)")
+        if !sendingMessage {
+            changedMessages.append(anObject as Message)
+        }
+    }
+    
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        delegate?.viewModel(self, didReceiveMessages: [])
+        // Can we be more specific about the changes
+        if changedMessages.count > 0 {
+            delegate?.viewModel(self, didChangeMessages: changedMessages)
+        }
     }
 }
 
