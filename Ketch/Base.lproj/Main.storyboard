@@ -1266,34 +1266,37 @@ SAILED FOR TODAY.</string>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crab-sorry-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="czY-j4-WIE">
                                 <rect key="frame" x="286" y="524" width="10" height="24"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="crab" translatesAutoresizingMaskIntoConstraints="NO" id="ay3-lN-TSe">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fFZ-O6-nBz" userLabel="Crab Button" customClass="CrabView" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="252" y="540" width="96" height="60"/>
-                            </imageView>
+                                <state key="normal" image="crab">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.94003820419999995" green="0.98082369570000005" blue="0.96848088499999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ay3-lN-TSe" firstAttribute="top" secondItem="7fq-1r-Vct" secondAttribute="bottom" priority="699" constant="80" id="05Z-a9-Y2R"/>
                             <constraint firstItem="wHR-Yg-gdU" firstAttribute="bottom" secondItem="cAd-NY-cwO" secondAttribute="bottom" constant="21" id="2JX-if-lZH"/>
                             <constraint firstItem="WoJ-OM-zoN" firstAttribute="leading" secondItem="wHR-Yg-gdU" secondAttribute="leading" constant="110" id="5n9-ki-mEf"/>
                             <constraint firstItem="7fq-1r-Vct" firstAttribute="top" secondItem="Ydu-ga-8Jd" secondAttribute="bottom" constant="28" id="8El-zG-oeU"/>
-                            <constraint firstAttribute="centerX" secondItem="ay3-lN-TSe" secondAttribute="centerX" id="9hV-Bc-PDb"/>
                             <constraint firstItem="wHR-Yg-gdU" firstAttribute="top" secondItem="A5N-Nb-vIE" secondAttribute="bottom" priority="749" id="Bhm-Tl-emz"/>
+                            <constraint firstItem="fFZ-O6-nBz" firstAttribute="top" secondItem="czY-j4-WIE" secondAttribute="bottom" constant="-8" id="Eb4-uR-q5M"/>
                             <constraint firstAttribute="trailing" secondItem="bhP-AS-XzQ" secondAttribute="trailing" id="Fwr-lT-NIk"/>
                             <constraint firstItem="czY-j4-WIE" firstAttribute="top" secondItem="4y1-wu-k3f" secondAttribute="bottom" constant="4" id="GaG-76-dL0"/>
                             <constraint firstItem="4y1-wu-k3f" firstAttribute="centerX" secondItem="czY-j4-WIE" secondAttribute="centerX" id="HQ7-Iy-tdc"/>
                             <constraint firstItem="WoJ-OM-zoN" firstAttribute="top" secondItem="wHR-Yg-gdU" secondAttribute="top" constant="38" id="ITN-QT-BWw"/>
                             <constraint firstAttribute="centerX" secondItem="Ydu-ga-8Jd" secondAttribute="centerX" id="Q3X-Jb-bZ8"/>
-                            <constraint firstItem="ay3-lN-TSe" firstAttribute="top" secondItem="czY-j4-WIE" secondAttribute="bottom" constant="-8" id="X2p-5k-c6c"/>
+                            <constraint firstItem="OTF-gM-chU" firstAttribute="top" secondItem="fFZ-O6-nBz" secondAttribute="bottom" id="QT8-nX-8IA"/>
                             <constraint firstItem="wHR-Yg-gdU" firstAttribute="bottom" secondItem="SIS-1G-bg1" secondAttribute="bottom" constant="56" id="YAZ-7a-dV1"/>
                             <constraint firstAttribute="centerXWithinMargins" secondItem="wHR-Yg-gdU" secondAttribute="centerXWithinMargins" constant="-71" id="YIB-rf-DXx"/>
+                            <constraint firstItem="fFZ-O6-nBz" firstAttribute="top" secondItem="7fq-1r-Vct" secondAttribute="bottom" priority="700" constant="80" id="awG-ig-9Hd"/>
                             <constraint firstItem="OTF-gM-chU" firstAttribute="top" secondItem="bhP-AS-XzQ" secondAttribute="top" constant="24" id="b6F-aD-LIQ"/>
                             <constraint firstItem="FMz-1j-LBK" firstAttribute="top" secondItem="wHR-Yg-gdU" secondAttribute="top" constant="64" id="bG8-eC-W0L"/>
-                            <constraint firstItem="czY-j4-WIE" firstAttribute="centerX" secondItem="ay3-lN-TSe" secondAttribute="centerX" constant="-9" id="dgi-5Q-6pA"/>
                             <constraint firstItem="bhP-AS-XzQ" firstAttribute="leading" secondItem="JmK-Bu-8r1" secondAttribute="leading" id="doJ-yF-udW"/>
-                            <constraint firstItem="OTF-gM-chU" firstAttribute="top" secondItem="ay3-lN-TSe" secondAttribute="bottom" id="h8k-Ya-uay"/>
+                            <constraint firstItem="czY-j4-WIE" firstAttribute="centerX" secondItem="fFZ-O6-nBz" secondAttribute="centerX" constant="-9" id="hh6-tj-6VB"/>
                             <constraint firstAttribute="centerX" secondItem="7fq-1r-Vct" secondAttribute="centerX" id="jHA-Qw-Fbf"/>
                             <constraint firstItem="SIS-1G-bg1" firstAttribute="leading" secondItem="JmK-Bu-8r1" secondAttribute="leading" constant="40" id="jWX-A5-OSR"/>
                             <constraint firstItem="wHR-Yg-gdU" firstAttribute="leading" secondItem="cAd-NY-cwO" secondAttribute="leading" constant="8" id="lg6-o4-6GK"/>
+                            <constraint firstAttribute="centerX" secondItem="fFZ-O6-nBz" secondAttribute="centerX" id="pXj-fR-jsV"/>
                             <constraint firstItem="FMz-1j-LBK" firstAttribute="leading" secondItem="wHR-Yg-gdU" secondAttribute="leading" constant="31" id="sQU-xY-TWJ"/>
                             <constraint firstItem="Ydu-ga-8Jd" firstAttribute="top" relation="greaterThanOrEqual" secondItem="cAd-NY-cwO" secondAttribute="bottom" constant="60" id="tRg-lX-DFe"/>
                         </constraints>

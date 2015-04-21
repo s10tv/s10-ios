@@ -32,6 +32,8 @@ public enum R {
         case backgroundSeaShort = "background-sea-short"
         /// crab
         case crab = "crab"
+        /// crab-sorry-arrow
+        case crabSorryArrow = "crab-sorry-arrow"
         /// dock-separator
         case dockSeparator = "dock-separator"
         /// game-bucket-keep
@@ -128,7 +130,7 @@ public enum R {
         case reportAlertMessage = "ReportAlertMessage"
         /// Thank you for your feedback
         case reportAlertTitle = "ReportAlertTitle"
-        /// Enter your bio
+        /// What's ketchy about you?
         case settingsAboutPrompt = "SettingsAboutPrompt"
         /// %d years old
         case settingsAgeFormat = "SettingsAgeFormat"
@@ -144,15 +146,15 @@ public enum R {
         case settingsDeleteAccountPlaceholder = "SettingsDeleteAccountPlaceholder"
         /// Delete Account
         case settingsDeleteAccountTitle = "SettingsDeleteAccountTitle"
-        /// Studied at %@
+        /// %@
         case settingsEducationFormat = "SettingsEducationFormat"
-        /// Enter where you went to school
+        /// Where did you go to school?
         case settingsEducationPrompt = "SettingsEducationPrompt"
         /// Interested in %@
         case settingsGenderPreferenceFormat = "SettingsGenderPreferenceFormat"
-        /// Set your gender preference
+        /// What's your gender preference?
         case settingsGenderPreferencePrompt = "SettingsGenderPreferencePrompt"
-        /// You are about %@ tall
+        /// %@
         case settingsHeightFormat = "SettingsHeightFormat"
         /// What's your height?
         case settingsHeightPrompt = "SettingsHeightPrompt"
@@ -164,9 +166,9 @@ public enum R {
         case settingsLogoutLogout = "SettingsLogoutLogout"
         /// What would you like to do?
         case settingsLogoutTitle = "SettingsLogoutTitle"
-        /// You are a %@
+        /// %@
         case settingsWorkFormat = "SettingsWorkFormat"
-        /// Enter your job title
+        /// Where do you work?
         case settingsWorkPrompt = "SettingsWorkPrompt"
         /// %@ likes you! Your dreamboat will sail away in three days. Get on it before %@ disappears for good!
         case singleMatchPrompt = "SingleMatchPrompt"
