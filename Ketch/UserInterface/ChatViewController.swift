@@ -50,11 +50,14 @@ class ChatViewController : JSQMessagesViewController {
         
         // Customize layout
         let layout = collectionView.collectionViewLayout
+//        layout.springinessEnabled = true
         layout.incomingAvatarViewSize = CGSizeZero
         layout.outgoingAvatarViewSize = CGSizeZero
         layout.messageBubbleFont = UIFont(.transatTextLight, size: 17)
-        //        layout.springinessEnabled = true
-        layout.messageBubbleTextViewTextContainerInsets = UIEdgeInsets(top: 11, left: 14, bottom: 3, right: 14)
+        // WARNING: Careful with adjusting the following two values. The combination of them allows text to be centered
+        // within the avatar bubble and simultaneously empirically prevent the last line from being cutoff (for multiline)
+        layout.messageBubbleExtraVerticalSpace = 5
+        layout.messageBubbleTextViewTextContainerInsets = UIEdgeInsets(top: 11, left: 14, bottom: 0, right: 14)
     }
     
     override func viewDidLoad() {

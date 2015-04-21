@@ -27,7 +27,7 @@ PODS:
   - Heap (2.1.3)
   - InflectorKit (0.0.1)
   - INTULocationManager (3.0.1)
-  - JSQMessagesViewController (6.1.3):
+  - JSQMessagesViewController (7.0.1):
     - JSQSystemSoundPlayer (~> 2.0.1)
   - JSQSystemSoundPlayer (2.0.1)
   - Meteor (0.1.2):
@@ -80,7 +80,7 @@ DEPENDENCIES:
   - FormatterKit/TimeIntervalFormatter (~> 1.8)
   - Heap (~> 2.1)
   - INTULocationManager (~> 3.0)
-  - JSQMessagesViewController (~> 6.1)
+  - JSQMessagesViewController (from `https://github.com/tonyxiao/JSQMessagesViewController`)
   - Meteor (from `https://github.com/tonyxiao/meteor-ios`, branch `dev`)
   - NSLogger (~> 1.5)
   - PKHUD (= 2.0.1-fork)
@@ -102,6 +102,8 @@ EXTERNAL SOURCES:
   BugfenderSDK:
     :git: https://github.com/bugfender/BugfenderSDK-iOS.git
     :tag: 0.3.2
+  JSQMessagesViewController:
+    :git: https://github.com/tonyxiao/JSQMessagesViewController
   Meteor:
     :branch: dev
     :git: https://github.com/tonyxiao/meteor-ios
@@ -117,6 +119,9 @@ CHECKOUT OPTIONS:
   BugfenderSDK:
     :git: https://github.com/bugfender/BugfenderSDK-iOS.git
     :tag: 0.3.2
+  JSQMessagesViewController:
+    :commit: ed3490ca830818cd58b1d70b756310bcbcef384e
+    :git: https://github.com/tonyxiao/JSQMessagesViewController
   Meteor:
     :commit: b889b55631c84de132f596a6a284fb5edc424dcb
     :git: https://github.com/tonyxiao/meteor-ios
@@ -142,7 +147,7 @@ SPEC CHECKSUMS:
   Heap: f3b32fcad4c4cb60558f21c596b01679960235d6
   InflectorKit: 64497199e6764f4d8337cab7f700a77b13d76a73
   INTULocationManager: c27483113e1bbc5952ead6417f9b39824a240ebb
-  JSQMessagesViewController: 31b79ac9547e060ba96413eb2e1b2ee5260f5189
+  JSQMessagesViewController: 03fba8a3021a3ddc1c91847f180ffe549f2e8cf2
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   Meteor: 1b061243f87a9021492eddbb5d5503aa78b2ef35
   Mixpanel: 488567f7138408f360377dd46e1d189655f8b435
