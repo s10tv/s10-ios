@@ -12,8 +12,11 @@ class LoadingViewController : BaseViewController {
     
     @IBOutlet weak var loadingView: UIView!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(animated: Bool) {
+        if Meteor.meta.demoMode == true {
+            Globals.flowService.refreshRandomDemoState()
+        }
+        super.viewWillAppear(animated)
     }
     
     override func viewDidAppear(animated: Bool) {

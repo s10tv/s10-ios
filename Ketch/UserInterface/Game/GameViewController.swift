@@ -204,7 +204,7 @@ class GameViewController : HomeViewController {
     
     @IBAction func submitChoices(sender: AnyObject) {
         assert(readyToConfirm, "Should not call submit choice until readyToConfirm")
-        if Meteor.meta.fakeSetSail == true {
+        if Meteor.meta.demoMode == true {
             delegate?.gameDidSubmitChoice()
             performSegue(.FinishGame)
             return

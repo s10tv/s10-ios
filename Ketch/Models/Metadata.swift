@@ -13,7 +13,7 @@ class Metadata {
     enum Key : String {
         case BugfenderId = "bugfenderId"
         case GameTutorialMode = "gameTutorialMode"
-        case FakeSetSail = "fakeSetSail"
+        case DemoMode = "demoMode"
         case HasBeenWelcomed = "hasBeenWelcomed"
         case DebugState = "debugState"
         case LogVerboseState = "logVerboseState"
@@ -28,9 +28,9 @@ class Metadata {
         get { return getValue(.GameTutorialMode) as? Bool }
         set { setValue(newValue, key: .GameTutorialMode) }
     }
-    var fakeSetSail: Bool? {
-        get { return getValue(.FakeSetSail) as? Bool }
-        set { setValue(newValue, key: .FakeSetSail) }
+    var demoMode: Bool? {
+        get { return getValue(.DemoMode) as? Bool }
+        set { setValue(newValue, key: .DemoMode) }
     }
     var hasBeenWelcomed: Bool? {
         get { return getValue(.HasBeenWelcomed) as? Bool }

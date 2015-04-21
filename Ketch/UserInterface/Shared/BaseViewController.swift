@@ -80,7 +80,7 @@ class BaseViewController : UIViewController {
     // MARK: Debugging
     
     override func motionEnded(subtype: UIEventSubtype, withEvent event: UIEvent) {
-        if Globals.env.audience == .Dev {
+        if Meteor.meta.demoMode == true {
             if subtype == .MotionShake {
                 navigationController?.popToRootViewControllerAnimated(true)
             }

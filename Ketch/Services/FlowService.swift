@@ -25,10 +25,23 @@ class FlowService : NSObject {
     
     private let ms: MeteorService
     private let stateChanged = RACSubject()
+    private var demoState: State?
     private var waitingOnGameResult = false // Waiting to hear back from server about recent game
     private(set) var newMatchToShow : Connection?
     private(set) var candidateQueue : [Candidate]?
     private(set) var currentState = State.Loading
+    var loginComplete: Bool {
+        return !ms.loggingIn &&
+            ms.subscriptions.metadata.ready &&
+            ms.subscriptions.settings.ready &&
+            ms.subscriptions.currentUser.ready &&
+            ms.subscriptions.candidates.ready &&
+            ms.subscriptions.connections.ready &&
+            ms.settings.vetted != nil
+    }
+    var hasConnections: Bool { return Connection.count() > 0 }
+    var canPlayNewGame: Bool { return Candidate.count() >= 3 }
+
     
     init(meteorService: MeteorService) {
         self.ms = meteorService
@@ -64,9 +77,19 @@ class FlowService : NSObject {
         updateState()
     }
     
+    func refreshRandomDemoState() {
+        // Check precondition for demo mode is satisfied
+        if (loginComplete && canPlayNewGame && hasConnections) {
+            demoState = [.NewMatch, .BoatSailed, .NewGame].randomElement()!
+            newMatchToShow = (demoState == State.NewMatch) ? Connection.crabConnection() : nil
+            updateState()
+            Log.info("New random demo state = \(demoState)")
+        }
+    }
+    
     // MARK: State Spec & Update
     
-    private func debugState() -> State? {
+    private func stateOverride() -> State? {
         if let state = ms.meta.debugState {
             switch state {
             case .NewMatch:
@@ -76,12 +99,18 @@ class FlowService : NSObject {
                 return state
             }
         }
-        return nil
+        // demo state handling
+        if ms.meta.demoMode != true && demoState != nil {
+            demoState = nil
+        } else if ms.meta.demoMode == true && demoState == nil {
+            refreshRandomDemoState()
+        }
+        return demoState
     }
     
     private func computeCurrentState() -> State {
-        if let state = debugState() {
-            Log.warn("Skipping regular state handling, returning debug state \(state)")
+        if let state = stateOverride() {
+            Log.warn("Skipping regular state handling, returning override state \(state)")
             return state
         }
         if ms.meta.logVerboseState {
@@ -105,13 +134,7 @@ class FlowService : NSObject {
         // Startup Flow
         if ms.account == nil {
             return .Signup
-        } else if (ms.loggingIn ||
-            !ms.subscriptions.metadata.ready ||
-            !ms.subscriptions.settings.ready ||
-            !ms.subscriptions.currentUser.ready ||
-            !ms.subscriptions.candidates.ready ||
-            !ms.subscriptions.connections.ready ||
-            ms.settings.vetted == nil) {
+        } else if (!loginComplete) {
             return .Loading
         }
         // Onboarding Flow
@@ -125,7 +148,7 @@ class FlowService : NSObject {
             return .Loading
         } else if (newMatchToShow != nil) {
             return .NewMatch
-        } else if (ms.collections.candidates.allDocuments?.count >= 3) {
+        } else if (canPlayNewGame) {
             return .NewGame
         } else {
             return .BoatSailed
