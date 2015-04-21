@@ -45,16 +45,16 @@
 /* Settings */
 "SettingsAgeFormat" = "%d years old";
 "SettingsGenderPreferenceFormat" = "Interested in %@";
-"SettingsWorkFormat" = "You are a %@";
-"SettingsEducationFormat" = "Studied at %@";
-"SettingsHeightFormat" = "You are about %@ tall";
+"SettingsWorkFormat" = "%@";
+"SettingsEducationFormat" = "%@";
+"SettingsHeightFormat" = "%@";
 
 "SettingsAgePrompt" = "Set you age in Facebook";
-"SettingsGenderPreferencePrompt" = "Set your gender preference";
-"SettingsWorkPrompt" = "Enter your job title";
-"SettingsEducationPrompt" = "Enter where you went to school";
+"SettingsGenderPreferencePrompt" = "What's your gender preference?";
+"SettingsWorkPrompt" = "Where do you work?";
+"SettingsEducationPrompt" = "Where did you go to school?";
 "SettingsHeightPrompt" = "What's your height?";
-"SettingsAboutPrompt" = "Enter your bio";
+"SettingsAboutPrompt" = "What's ketchy about you?";
 
 "SettingsLogoutTitle" = "What would you like to do?";
 "SettingsLogoutLogout" = "Just logout";
