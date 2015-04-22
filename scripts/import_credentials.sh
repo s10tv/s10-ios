@@ -27,17 +27,14 @@ security list-keychains -d user -s ~/Library/Keychains/login.keychain $KEYCHAIN_
 
 security import "certs/apple_developer_relations.cer"   -k $KEYCHAIN_PATH -T $CODE_SIGN
 
-# case $XCCONFIG_NAME in
-# 	Dev)
-    security import "keys/development.p12" -k $KEYCHAIN_PATH -T $CODE_SIGN -P $DEV_P12_PASS
-	# 	;;
-	# Beta)
-  #   security import "keys/enterprise_distribution.p12" -k $KEYCHAIN_PATH -T $CODE_SIGN -P $ENT_DIST_P12_PASS
-	# 	;;
-	# Prod)
-    security import "keys/distribution.p12" -k $KEYCHAIN_PATH -T $CODE_SIGN -P $DIST_P12_PASS
-# 		;;
-# esac
+security import "keys/development.p12" -k $KEYCHAIN_PATH -T $CODE_SIGN -P $DEV_P12_PASS
+security import "keys/distribution.p12" -k $KEYCHAIN_PATH -T $CODE_SIGN -P $DIST_P12_PASS
+# Temporary hack to work around the issue where resigning doesn't work because both enterprise
+# and app store signing identities are called "iPhone Distribution: Milasya Inc." and it fails on
+# ambiguous identity when signing
+if [[ $CIRCLE_BRANCH != "prod" ]]; then
+  security import "keys/enterprise_distribution.p12" -k $KEYCHAIN_PATH -T $CODE_SIGN -P $ENT_DIST_P12_PASS
+fi
 
 ## Provisioning Profiles
 
