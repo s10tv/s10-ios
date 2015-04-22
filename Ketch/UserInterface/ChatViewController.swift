@@ -144,7 +144,7 @@ extension ChatViewController : JSQMessagesCollectionViewDataSource {
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPath) as JSQMessagesCollectionViewCell
-        cell.textView.textColor = StyleKit.navy
+        cell.textView.textColor = viewModel.messageAtIndex(indexPath.row).outgoing ? StyleKit.white : StyleKit.navy
         cell.textView.linkTextAttributes = [
             NSForegroundColorAttributeName: StyleKit.teal,
             NSUnderlineStyleAttributeName: NSUnderlineStyle.StyleSingle.rawValue
