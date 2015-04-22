@@ -13,7 +13,7 @@ import UIKit
     private let maskLayer = CAShapeLayer()
     let gradientHeight: CGFloat = 580
     let waveDuration: CFTimeInterval = 6
-    let waveAmplitude: CGFloat = 6
+    let waveAmplitude: CGFloat = 4.5
     private(set) var waveLength: CGFloat!
     private(set) var periods: CGFloat!
     private(set) var wave: UIBezierPath!

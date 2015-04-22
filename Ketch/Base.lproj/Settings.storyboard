@@ -24,7 +24,7 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="60" sectionHeaderHeight="22" sectionFooterHeight="22" id="Awr-Y8-far">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.96776443719863892" green="0.99617582559585571" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SettingsLabelCell" id="0nO-s2-fXe" customClass="SettingsLabelCell" customModule="Ketch" customModuleProvider="target">
                                 <autoresizingMask key="autoresizingMask"/>
@@ -196,7 +196,7 @@
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.94003820419999995" green="0.98082369570000005" blue="0.96848088499999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.96776443719863892" green="0.99617582559585571" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="uKp-aT-O8G" firstAttribute="top" secondItem="k5T-3q-6Ei" secondAttribute="top" id="Hsy-Vy-LV6"/>
                             <constraint firstAttribute="trailing" secondItem="cv6-2X-pDR" secondAttribute="trailing" id="Npz-Lr-GQ0"/>
@@ -261,6 +261,6 @@
     <resources>
         <image name="crab" width="96" height="60"/>
         <image name="ib-avatar-preview" width="132" height="128"/>
-        <image name="settings-icon-age" width="25" height="22"/>
+        <image name="settings-icon-age" width="21" height="19"/>
     </resources>
 </document>

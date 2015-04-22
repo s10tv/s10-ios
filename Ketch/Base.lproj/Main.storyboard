@@ -132,7 +132,7 @@ SAILED FOR TODAY.</string>
                                     <constraint firstAttribute="width" constant="80" id="QuG-Ia-9pD"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="KetchIcon-Regular" family="KetchIcon" pointSize="10"/>
-                                <state key="normal" title="z">
+                                <state key="normal" title="Z">
                                     <color key="titleColor" red="0.092987515029999995" green="0.64821720120000004" blue="0.65024715659999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -183,7 +183,7 @@ SAILED FOR TODAY.</string>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.96776443719863892" green="0.99617582559585571" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ax1-GJ-1VW" firstAttribute="top" secondItem="PAq-tM-x1m" secondAttribute="bottom" constant="100" id="1vc-2f-BCy"/>
                             <constraint firstItem="C8W-mx-D3U" firstAttribute="centerX" secondItem="T52-Uh-0pS" secondAttribute="centerX" id="4ZZ-dS-0rD"/>
@@ -264,7 +264,7 @@ SAILED FOR TODAY.</string>
                                     </mask>
                                 </variation>
                             </imageView>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WaA-5Q-0JZ" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WaA-5Q-0JZ" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="428" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -331,7 +331,7 @@ SAILED FOR TODAY.</string>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.92941176469999998" green="0.97647058819999999" blue="0.96470588239999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.96776443719863892" green="0.99617582559585571" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="4Az-nh-Ex1" firstAttribute="top" secondItem="A79-Gd-tNn" secondAttribute="top" constant="140" id="533-4Y-SK7"/>
                             <constraint firstItem="JUR-Vp-1Ad" firstAttribute="centerX" secondItem="WaA-5Q-0JZ" secondAttribute="centerX" id="BaB-YW-MUX"/>
@@ -422,7 +422,7 @@ SAILED FOR TODAY.</string>
                                     <constraint firstAttribute="width" constant="80" id="zGb-fN-x45"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="KetchIcon-Regular" family="KetchIcon" pointSize="10"/>
-                                <state key="normal" title="z">
+                                <state key="normal" title="Z">
                                     <color key="titleColor" red="0.092987515029999995" green="0.64821720120000004" blue="0.65024715659999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -561,7 +561,7 @@ SAILED FOR TODAY.</string>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.96776443719863892" green="0.99617582559585571" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="Jqh-bc-UMn" secondAttribute="centerX" id="07W-1D-FZV"/>
                             <constraint firstItem="Rx1-xy-YKJ" firstAttribute="top" secondItem="SMl-V4-Z7A" secondAttribute="top" constant="16" id="0OY-Q0-Veh"/>
@@ -683,7 +683,7 @@ SAILED FOR TODAY.</string>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.96776443719863892" green="0.99617582559585571" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="BkJ-oa-AV9" firstAttribute="top" secondItem="dbM-rB-d08" secondAttribute="top" id="8Az-sV-eFM"/>
                             <constraint firstItem="DUG-tq-7Au" firstAttribute="top" secondItem="dbM-rB-d08" secondAttribute="top" constant="68" id="8z7-PL-FxO"/>
@@ -753,7 +753,7 @@ SAILED FOR TODAY.</string>
                                                 <real key="value" value="1"/>
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                                <color key="value" red="0.08235294118" green="0.39607843139999999" blue="0.52941176469999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <color key="value" red="0.094270758330821991" green="0.58943456411361694" blue="0.58302313089370728" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
@@ -803,7 +803,7 @@ SAILED FOR TODAY.</string>
                                 <items/>
                             </toolbar>
                         </subviews>
-                        <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.96776443719863892" green="0.99617582559585571" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="vk6-ib-pDk" firstAttribute="top" secondItem="KZR-Ol-8mw" secondAttribute="top" constant="6" id="4xq-OU-xmb"/>
                             <constraint firstItem="eoo-xe-CXB" firstAttribute="top" secondItem="y3W-aw-hYQ" secondAttribute="bottom" id="5SI-6F-Muv"/>
@@ -947,7 +947,7 @@ SAILED FOR TODAY.</string>
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                 </subviews>
-                                <color key="backgroundColor" red="0.94003820419999995" green="0.98082369570000005" blue="0.96848088499999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.96776443719863892" green="0.99617582559585571" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="zjR-1C-0YC" firstAttribute="bottom" secondItem="db4-Se-woi" secondAttribute="bottom" id="0PH-t1-7gF"/>
                                     <constraint firstItem="zjR-1C-0YC" firstAttribute="trailing" secondItem="db4-Se-woi" secondAttribute="trailing" constant="16" id="0cN-cc-JTW"/>
@@ -1064,7 +1064,7 @@ SAILED FOR TODAY.</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XQk-zO-0XK" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XQk-zO-0XK" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="540" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1117,7 +1117,7 @@ SAILED FOR TODAY.</string>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.96776443719863892" green="0.99617582559585571" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="XQk-zO-0XK" firstAttribute="leading" secondItem="G6V-p8-ber" secondAttribute="leading" id="KE1-R4-d44"/>
                             <constraint firstItem="XQk-zO-0XK" firstAttribute="top" secondItem="a4S-8b-LcZ" secondAttribute="bottom" constant="-60" id="RZ1-vQ-Jb3"/>
@@ -1192,7 +1192,7 @@ SAILED FOR TODAY.</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bhP-AS-XzQ" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bhP-AS-XzQ" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="576" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -1211,7 +1211,7 @@ SAILED FOR TODAY.</string>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sprite-cloud-4" translatesAutoresizingMaskIntoConstraints="NO" id="cAd-NY-cwO">
                                 <rect key="frame" x="254" y="121" width="95" height="44"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="Ydu-ga-8Jd" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="Ydu-ga-8Jd" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="159" y="299" width="284" height="78"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Seems like we’re having some trouble, please give us another chance.">
@@ -1295,7 +1295,7 @@ SAILED FOR TODAY.</string>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.94003820419999995" green="0.98082369570000005" blue="0.96848088499999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.96776443719863892" green="0.99617582559585571" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="wHR-Yg-gdU" firstAttribute="bottom" secondItem="cAd-NY-cwO" secondAttribute="bottom" constant="21" id="2JX-if-lZH"/>
                             <constraint firstItem="WoJ-OM-zoN" firstAttribute="leading" secondItem="wHR-Yg-gdU" secondAttribute="leading" constant="110" id="5n9-ki-mEf"/>
@@ -1355,8 +1355,8 @@ SAILED FOR TODAY.</string>
         <image name="sprite-sun" width="218" height="186"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Lmi-Sf-5Gu"/>
         <segue reference="nCf-mq-8Rt"/>
-        <segue reference="q7i-Iz-xMU"/>
         <segue reference="9ci-Qu-3Dx"/>
     </inferredMetricsTieBreakers>
 </document>

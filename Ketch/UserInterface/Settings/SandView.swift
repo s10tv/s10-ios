@@ -8,11 +8,11 @@
 
 import Foundation
 
-@IBDesignable class SandView : BaseView {
-    override func drawRect(rect: CGRect) {
-        let context = UIGraphicsGetCurrentContext()
-        let topCenter = CGPointMake(CGRectGetMidX(bounds), 0)
-        let bottomCenter = CGPointMake(CGRectGetMidX(bounds), CGRectGetMaxY(bounds))
-        CGContextDrawLinearGradient(context, StyleKit.gradientSand, topCenter, bottomCenter, 0)
-    }
-}
+//@IBDesignable class SandView : BaseView {
+//    override func drawRect(rect: CGRect) {
+//        let context = UIGraphicsGetCurrentContext()
+//        let topCenter = CGPointMake(CGRectGetMidX(bounds), 0)
+//        let bottomCenter = CGPointMake(CGRectGetMidX(bounds), CGRectGetMaxY(bounds))
+//        CGContextDrawLinearGradient(context, StyleKit.gradientSand, topCenter, bottomCenter, 0)
+//    }
+//}
