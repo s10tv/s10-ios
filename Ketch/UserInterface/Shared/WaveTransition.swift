@@ -30,6 +30,13 @@ class WaveTransition : ViewControllerTransition {
     }
     
     override func animate() -> RACSignal {
+        // HACK ALERT: For reason
+        if toView == nil {
+            Log.error("Cannot animate WaveTransition without a toView")
+            containerView.addSubview(toVC.view)
+            toVC.view.frame == containerView.bounds
+            return RACSignal.empty()
+        }
         containerView.addSubview(toView!)
         if self.fromWaveView != nil && self.toWaveView != nil {
             return self.animateWithWave(self.duration)
