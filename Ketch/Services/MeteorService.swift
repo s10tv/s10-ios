@@ -174,9 +174,9 @@ class MeteorService {
     
     func submitChoices(#yes: Candidate, no: Candidate, maybe: Candidate) -> RACSignal {
         return meteor.call("candidate/submitChoices", [[
-            "yes": yes,
-            "no": no,
-            "maybe": maybe
+            "yes": yes.documentID!,
+            "no": no.documentID!,
+            "maybe": maybe.documentID!
         ]], stub: {
             [yes, no, maybe].map { $0.delete() }
             return nil
@@ -191,7 +191,7 @@ class MeteorService {
     }
     
     func markAsRead(connection: Connection) -> RACSignal {
-        return meteor.call("connection/markAsRead", [connection]) {
+        return meteor.call("connection/markAsRead", [connection.documentID!]) {
             connection.hasUnreadMessage = false
             connection.save()
             return nil
@@ -199,7 +199,7 @@ class MeteorService {
     }
     
     func sendMessage(connection: Connection, text: String) -> RACSignal {
-        return meteor.call("connection/sendMessage", [connection, text]) {
+        return meteor.call("connection/sendMessage", [connection.documentID!, text]) {
             let message = Message.create() as Message
             message.connection = connection
             message.sender = User.currentUser()
@@ -210,6 +210,6 @@ class MeteorService {
     }
     
     func reportUser(user: User, reason: String) -> RACSignal {
-        return meteor.call("user/report", [user, reason])
+        return meteor.call("user/report", [user.documentID!, reason])
     }
 }
