@@ -47,6 +47,7 @@ class KetchBoatView : UIImageView {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        userInteractionEnabled = true
         animateAlongWave()
     }
     
@@ -54,17 +55,17 @@ class KetchBoatView : UIImageView {
     
     // TODO: Disabling boat interactivity for now because it interferes
     // with the animation. Need to figure out better way to interact
-//    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
-//        super.touchesBegan(touches, withEvent: event)
-//        UIView.animate(scaleDuration) {
-//            self.transform = CGAffineTransform(scale: 1.5)
-//        }
-//    }
-//    
-//    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
-//        super.touchesEnded(touches, withEvent: event)
-//        UIView.animate(scaleDuration, delay: 0.1) {
-//            self.transform = CGAffineTransformIdentity
-//        }
-//    }
+    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+        super.touchesBegan(touches, withEvent: event)
+        UIView.animate(scaleDuration) {
+            self.transform = CGAffineTransform(scale: 1.5)
+        }
+    }
+    
+    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+        super.touchesEnded(touches, withEvent: event)
+        UIView.animate(scaleDuration, delay: 0.1) {
+            self.transform = CGAffineTransformIdentity
+        }
+    }
 }

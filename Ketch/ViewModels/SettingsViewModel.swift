@@ -33,7 +33,7 @@ class SettingsViewModel {
     // MARK: - Controlled Write Access
     
     func updateItem(type: SettingsItem.ItemType, newValue: AnyObject?) {
-        switch (type) {
+        switch type {
         case .GenderPreference:
             if let pref = Settings.GenderPref(rawValue: newValue as String) {
                 if settings.genderPref != pref {
