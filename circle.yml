@@ -29,18 +29,35 @@ test:
                      --no-clean
         mv Ketch.ipa $CIRCLE_ARTIFACTS/${BN}.ipa
         mv Ketch.app.dSYM.zip $CIRCLE_ARTIFACTS/${BN}.app.dSYM.zip
+        ./scripts/circle_release_notes.sh >> $CIRCLE_ARTIFACTS/release_notes.txt
       : timeout: 1200
     - zip -FSr $CIRCLE_ARTIFACTS/Pods.zip Pods/
 
 deployment:
-  Ketch Dev:
-    branch: [master, beta, prod]
+  KetchDev+KetchBeta:
+    branch: [master, beta]
     commands:
       - |
         source ./scripts/circle_env.sh
-        ./scripts/circle_release_notes.sh >> $CIRCLE_ARTIFACTS/release_notes.txt
+        cd $CIRCLE_ARTIFACTS
         "$CRASHLYTICS_FRAMEWORK_PATH/submit" $CRASHLYTICS_API_KEY $CRASHLYTICS_BUILD_SECRET \
-                                            -ipaPath $CIRCLE_ARTIFACTS/${BN}.ipa \
+                                            -ipaPath ${BN}.ipa \
                                             -groupAliases $CRASHLYTICS_BETA_TEAM \
                                             -notifications $CRASHLYTICS_BETA_NOTIFICATIONS \
-                                            -notesPath $CIRCLE_ARTIFACTS/release_notes.txt
+                                            -notesPath release_notes.txt
+
+  Ketch:
+    branch: prod
+    commands:
+      - |
+        source ./scripts/circle_env.sh
+        cd $CIRCLE_ARTIFACTS
+        "$CRASHLYTICS_FRAMEWORK_PATH/submit" $CRASHLYTICS_API_KEY $CRASHLYTICS_BUILD_SECRET \
+                                            -ipaPath ${BN}.ipa \
+                                            -groupAliases $CRASHLYTICS_BETA_TEAM \
+                                            -notifications $CRASHLYTICS_BETA_NOTIFICATIONS \
+                                            -notesPath release_notes.txt
+        cp "${BN}.ipa" "${BN}_appstore.ipa"
+        sigh resign "${BN}_appstore.ipa" \
+          --provisioning_profile "$HOME/Library/MobileDevice/Provisioning Profiles/commilasyaketchappstore.mobileprovision" \
+          --signing_identity "iPhone Distribution: Milasya Inc. (N25WYDCNJJ)"
