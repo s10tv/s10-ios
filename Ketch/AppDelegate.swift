@@ -11,6 +11,7 @@ import SugarRecord
 import FacebookSDK
 import CrashlyticsFramework
 import BugfenderSDK
+import SwiftyUserDefaults
 
 // Globally accessible variables and shorthands
 private struct _GlobalsContainer {
@@ -37,6 +38,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
         Crashlytics.startWithAPIKey(env.crashlyticsAPIKey)
         Crashlytics.sharedInstance().delegate = self
         Bugfender.activateLogger(env.bugfenderAppToken)
+        Log.setUserId(UD[.sMeteorUserId].string)
+        Log.setUserName(UD[.sUserDisplayName].string)
+        Log.setUserEmail(UD[.sUserEmail].string)
+        Crashlytics.sharedInstance().setObjectValue(env.deviceId, forKey: "DeviceId")
         
         // Setup global services
         let meteor = MeteorService(env: env)
@@ -51,9 +56,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
         // Startup the services
         Meteor.meta.bugfenderId = Bugfender.deviceIdentifier()
         Meteor.subscriptions.currentUser.signal.deliverOnMainThread().subscribeCompleted {
-            Log.setUserId(Meteor.userID)
-            Log.setUserName(User.currentUser()?.displayName)
-            Log.setUserEmail(Meteor.settings.email)
+            UD[.sMeteorUserId] ?= Meteor.userID
+            UD[.sUserDisplayName] = User.currentUser()?.displayName
+            Log.setUserId(UD[.sMeteorUserId].string)
+            Log.setUserName(UD[.sUserDisplayName].string)
+        }
+        Meteor.subscriptions.settings.signal.deliverOnMainThread().subscribeCompleted {
+            UD[.sUserEmail] = Meteor.settings.email
+            Log.setUserEmail(UD[.sUserEmail].string)
         }
         Meteor.subscriptions.metadata.signal.deliverOnMainThread().subscribeCompleted {
             Globals.upgradeService.promptForUpgradeIfNeeded()

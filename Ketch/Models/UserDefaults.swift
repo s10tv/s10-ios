@@ -13,6 +13,8 @@ import SwiftyUserDefaults
 // to name UserDefaultKey's because they are not statically typed
 enum UserDefaultKey : String {
     case sMeteorUserId = "meteorUserId"
+    case sUserDisplayName = "userDisplayName"
+    case sUserEmail = "userEmail"
     
     func defaultValue() -> Any? {
         switch self {
