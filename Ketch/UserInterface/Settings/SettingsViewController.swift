@@ -37,8 +37,11 @@ class SettingsViewController : BaseViewController {
 
         RACObserve(formController.tableView, "contentOffset").subscribeNext { [weak self] _ in
             if let this = self {
-                let dy = this.formController.tableView.contentOffset.y / 4 // 4x slower parallax scrolling
-                if (dy > 0) {
+                let scrollView = this.formController.tableView
+                let bottomEdge = scrollView.contentOffset.y + scrollView.frame.size.height;
+                if (bottomEdge >= scrollView.contentSize.height) {
+                    // 4x slower parallax scrolling
+                    let dy = (bottomEdge - scrollView.contentSize.height) / 4
                     this.waveView.frame.origin.y = this.view.bounds.height - this.waveViewBottomOffset.constant - dy
                 }
             }
