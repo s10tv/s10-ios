@@ -75,5 +75,4 @@ extension AnalyticsService {
     func signedUp() { track("Signed Up") }
     func loggedIn() { track("Logged In") }
     func loggedOut() { track("Logged Out") }
-    
 }

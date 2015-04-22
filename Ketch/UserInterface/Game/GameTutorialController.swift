@@ -53,6 +53,7 @@ class GameTutorialController {
         Log.info("Starting game tutorial")
         currentStep = 1
         advanceStep()
+        Analytics.track("Game Tutorial Start")
     }
     
     func teardownTutorial() {
@@ -64,6 +65,7 @@ class GameTutorialController {
         overlay = nil
         prompt = nil
         currentStep = 0
+        Analytics.track("Game Tutorial Done")
     }
     
     func advanceStep() {
