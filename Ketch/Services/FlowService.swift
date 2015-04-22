@@ -209,6 +209,8 @@ extension FlowService : METDDPClientDelegate {
     }
     func client(client: METDDPClient!, didSucceedLoginToAccount account: METAccount!) {
         updateState()
+        UD[.sMeteorUserId] = ms.userID
+        Analytics.identifyUser(ms.userID!)
     }
     func client(client: METDDPClient!, didFailLoginWithWithError error: NSError!) {
         updateState()

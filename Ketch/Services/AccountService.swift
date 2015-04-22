@@ -39,8 +39,6 @@ class AccountService {
         self.meteorService.meta.hasBeenWelcomed = false
         self.meteorService.meta.gameTutorialMode = true
         // TODO: Figure out whether user signed up or logged in
-        UD[.sMeteorUserId] = meteorService.userID
-        Analytics.identifyUser(meteorService.userID!)
         Analytics.loggedIn()
     }
     

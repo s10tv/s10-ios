@@ -43,11 +43,13 @@ class AnalyticsService {
         }
         segment.identify(userId, traits: traits)
         segment.flush()
+        Log.verbose("[analytics] identify \(userId) traits: \(traits)")
     }
     
     private func track(event: String, properties: [String: AnyObject]? = nil) {
         segment.track(event, properties: properties)
         segment.flush()
+        Log.verbose("[analytics] track '\(event)' properties: \(properties)")
     }
 }
 
