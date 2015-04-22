@@ -35,9 +35,11 @@ class SettingsViewModel {
     func updateItem(type: SettingsItem.ItemType, newValue: AnyObject?) {
         switch type {
         case .GenderPreference:
-            if let pref = Settings.GenderPref(rawValue: newValue as String) {
-                if settings.genderPref != pref {
-                    Meteor.updateGenderPref(pref)
+            if let genderPrefInfo = newValue as? String {
+                if let pref = Settings.GenderPref(rawValue: genderPrefInfo) {
+                    if settings.genderPref != pref {
+                        Meteor.updateGenderPref(pref)
+                    }
                 }
             }
         case .Work:
@@ -51,9 +53,10 @@ class SettingsViewModel {
                 Meteor.updateEducation(educationInfo)
             }
         case .Height:
-            let heightInfo = parseNullableInt(newValue)
-            if currentUser.height != heightInfo {
-                Meteor.updateHeight(heightInfo)
+            if let heightInfo = newValue as? Int {
+                if currentUser.height != heightInfo {
+                    Meteor.updateHeight(heightInfo)
+                }
             }
         case .About:
             let aboutInfo = parseNullableString(newValue)
@@ -72,13 +75,6 @@ class SettingsViewModel {
             return input
         }
         return ""
-    }
-    
-    private func parseNullableInt(input: AnyObject?) -> Int {
-        if let input = input as? Int {
-            return input
-        }
-        return 0
     }
 
     private func createItems() -> [SettingsItem] {
