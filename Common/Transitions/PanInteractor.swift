@@ -26,8 +26,8 @@ class PanInteractor : UIPercentDrivenInteractiveTransition {
     }
     
     override func startInteractiveTransition(transitionContext: UIViewControllerContextTransitioning) {
-        super.startInteractiveTransition(transitionContext)
         containerView = transitionContext.containerView()
+        super.startInteractiveTransition(transitionContext)
     }
     
     func handlePanGesture(pan: UIPanGestureRecognizer) {
