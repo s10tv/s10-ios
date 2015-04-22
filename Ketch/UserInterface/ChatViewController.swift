@@ -67,7 +67,6 @@ class ChatViewController : JSQMessagesViewController {
         
         nameLabel.text = viewModel.recipient.firstName
         avatarView.user = viewModel.recipient
-        inputToolbar.contentView.textView.text = viewModel.promptText()
         
          // TODO: Make subclass of UIControl and use target-action
         titleView.userInteractionEnabled = true
@@ -86,6 +85,9 @@ class ChatViewController : JSQMessagesViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        // Defer since viewDidLoad till now so toolbar height is udpated at the right time
+        inputToolbar.contentView.textView.text = viewModel.promptText()
+        
         disposable = RACObserve(connection!, ConnectionAttributes.hasUnreadMessage.rawValue)
             .subscribeNext { [weak self] _ in self!.viewModel.markAsRead() }
         // TODO: make this generic
