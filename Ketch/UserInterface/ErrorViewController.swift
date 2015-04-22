@@ -17,6 +17,7 @@ class ErrorViewController : CloudsViewController {
     
     override func commonInit() {
         allowedStates = [.Error]
+        screenName = "Error"
     }
     
     override func viewDidLoad() {

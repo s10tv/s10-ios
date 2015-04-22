@@ -12,6 +12,7 @@ class BoatSailedViewController : HomeViewController {
     
     override func commonInit() {
         allowedStates = [.BoatSailed]
+        screenName = "BoatSailed"
     }
         
     @IBAction func nominateFriend(sender: AnyObject) {

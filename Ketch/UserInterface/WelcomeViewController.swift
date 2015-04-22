@@ -12,6 +12,7 @@ class WelcomeViewController : CloudsViewController {
     
     override func commonInit() {
         allowedStates = [.Welcome]
+        screenName = "Welcome"
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

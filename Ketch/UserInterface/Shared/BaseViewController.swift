@@ -12,6 +12,7 @@ import Meteor
 
 class BaseViewController : UIViewController {
     
+    var screenName: String?
     var allowedStates: [FlowService.State]?
     
     private var stateDisposable: RACDisposable?
@@ -59,6 +60,9 @@ class BaseViewController : UIViewController {
                     self.metadataDidUpdateWhileViewActive($0, value: Meteor.meta.getValue($0))
                 }
             }
+        }
+        if let screenName = screenName {
+            Analytics.track("Screen: \(screenName)")
         }
     }
     

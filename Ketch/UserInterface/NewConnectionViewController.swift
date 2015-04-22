@@ -12,6 +12,7 @@ class NewConnectionViewController : BaseViewController {
     
     override func commonInit() {
         allowedStates = [.NewMatch, .NewGame, .BoatSailed]
+        screenName = "Signup"
     }
     
     var connection: Connection!

@@ -16,6 +16,7 @@ class SignupViewController : BaseViewController {
     
     override func commonInit() {
         allowedStates = [.Signup]
+        screenName = "Signup"
     }
     
     override func viewDidLoad() {

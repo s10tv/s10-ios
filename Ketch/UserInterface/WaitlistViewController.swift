@@ -11,6 +11,7 @@ import Foundation
 class WaitlistViewController : CloudsViewController {
     override func commonInit() {
         allowedStates = [.Waitlist]
+        screenName = "Waitlist"
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {

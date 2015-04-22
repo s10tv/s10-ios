@@ -14,6 +14,10 @@ class SettingsViewController : BaseViewController {
     
     @IBOutlet weak var waveView: WaveView!
     var formController: SettingsFormViewController!
+    
+    override func commonInit() {
+        screenName = "Settings"
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

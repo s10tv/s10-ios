@@ -14,6 +14,7 @@ class FacebookPermissionViewController : BaseViewController {
     
     override func commonInit() {
         allowedStates = [.Signup, .Waitlist, .Welcome]
+        screenName = "FacebookPerm"
     }
     
     @IBAction func requestFacebookPermission(sender: AnyObject) {
@@ -33,6 +34,7 @@ class NotificationsPermissionViewController : BaseViewController {
     
     override func commonInit() {
         allowedStates = [.Signup, .Waitlist, .Welcome]
+        screenName = "NotificationsPerm"
     }
     
     @IBAction func requestNotificationsPermission(sender: AnyObject) {
@@ -55,6 +57,7 @@ class LocationPermissionViewController : BaseViewController {
     
     override func commonInit() {
         allowedStates = [.Signup, .Waitlist, .Welcome]
+        screenName = "LocationPerm"
     }
     
     @IBAction func requestLocationPermission(sender: AnyObject) {

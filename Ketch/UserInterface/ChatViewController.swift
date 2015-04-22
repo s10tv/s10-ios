@@ -88,6 +88,12 @@ class ChatViewController : JSQMessagesViewController {
         super.viewDidAppear(animated)
         disposable = RACObserve(connection!, ConnectionAttributes.hasUnreadMessage.rawValue)
             .subscribeNext { [weak self] _ in self!.viewModel.markAsRead() }
+        // TODO: make this generic
+        if connection?.isCrabConnection == true {
+            Analytics.track("Screen: ChatCrab")
+        } else {
+            Analytics.track("Screen: Chat")
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {

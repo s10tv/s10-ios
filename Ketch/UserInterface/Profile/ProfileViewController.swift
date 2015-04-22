@@ -25,6 +25,10 @@ class ProfileViewController : BaseViewController {
     
     var user : User!
     
+    override func commonInit() {
+        screenName = "Profile"
+    }
+    
     override func viewDidLoad() {
         assert(user != nil, "Must set user before attempt to loading ProfileVC")
         super.viewDidLoad()

@@ -47,6 +47,7 @@ class GameViewController : HomeViewController {
     override func commonInit() {
         tutorial = GameTutorialController(gameVC: self)
         allowedStates = [.NewGame]
+        screenName = "Game"
     }
     
     override func viewDidLoad() {

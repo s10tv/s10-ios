@@ -24,6 +24,10 @@ class Connection: _Connection {
         return fetchMessages(sorted: false).fetchObjects() as [Message]
     }
     
+    var isCrabConnection : Bool {
+        return user?.documentID == Meteor.settings.crabUserId && Meteor.settings.crabUserId != nil
+    }
+    
     var fractionExpired : Float {
          // TODO: Make this configurable (3 days currently)
         let maxExpiration : NSTimeInterval = 3 * 24 * 60 * 60

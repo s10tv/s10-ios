@@ -18,6 +18,7 @@ class DockViewController : BaseViewController {
     
     override func commonInit() {
         allowedStates = [.BoatSailed, .NewGame]
+        screenName = "Dock"
     }
     
     override func viewDidLoad() {
