@@ -14,6 +14,7 @@
 
 @interface JSQMessagesViewController (Private)
 
+- (void)jsq_addObservers;
 - (void)jsq_configureMessagesViewController;
 - (void)jsq_registerForNotifications:(BOOL)registerForNotifications;
 + (UINib *)nib;

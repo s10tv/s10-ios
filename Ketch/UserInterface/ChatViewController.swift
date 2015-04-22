@@ -71,7 +71,7 @@ class ChatViewController : JSQMessagesViewController {
          // TODO: Make subclass of UIControl and use target-action
         titleView.userInteractionEnabled = true
         titleView.whenTapEnded { [weak self] in self!.performSegue(.ChatToProfile) }
-        
+
         customizeAppearance()
     }
     
@@ -81,13 +81,17 @@ class ChatViewController : JSQMessagesViewController {
         // NOTE: Super's implementation causes collectionView to reload, thus the following initialization hack
         viewModel.loadMessages()
         super.viewWillAppear(animated)
+        
+        // Defer from viewDidLoad. Hack to get multi-line prompt to show up properly and enable send button
+        if let promptText = viewModel.promptText() {
+            jsq_addObservers()
+            inputToolbar.contentView.textView.text = promptText
+            inputToolbar.toggleSendButtonEnabled()
+        }
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        // Defer since viewDidLoad till now so toolbar height is udpated at the right time
-        inputToolbar.contentView.textView.text = viewModel.promptText()
-        
         disposable = RACObserve(connection!, ConnectionAttributes.hasUnreadMessage.rawValue)
             .subscribeNext { [weak self] _ in self!.viewModel.markAsRead() }
         // TODO: make this generic
