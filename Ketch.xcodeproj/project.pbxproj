@@ -34,6 +34,7 @@
 		EA2AB70E1A8A00F200D42C6C /* GameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2AB70D1A8A00F200D42C6C /* GameViewController.swift */; };
 		EA31049B1A99C3850069D6AD /* KetchIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA31049A1A99C3850069D6AD /* KetchIcon.swift */; };
 		EA36D2AB1AE71366006FD5D8 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36D2AA1AE71366006FD5D8 /* Errors.swift */; };
+		EA36D2AD1AE72B78006FD5D8 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36D2AC1AE72B78006FD5D8 /* UserDefaults.swift */; };
 		EA3777721A966EC10055DE99 /* TransatTextBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */; };
 		EA3777731A966EC10055DE99 /* TransatTextBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776E1A966EC10055DE99 /* TransatTextBold.otf */; };
 		EA3777741A966EC10055DE99 /* TransatTextLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776F1A966EC10055DE99 /* TransatTextLight.otf */; };
@@ -354,6 +355,7 @@
 		EA2AB70D1A8A00F200D42C6C /* GameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameViewController.swift; sourceTree = "<group>"; };
 		EA31049A1A99C3850069D6AD /* KetchIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KetchIcon.swift; sourceTree = "<group>"; };
 		EA36D2AA1AE71366006FD5D8 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		EA36D2AC1AE72B78006FD5D8 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextBlack.otf; sourceTree = "<group>"; };
 		EA37776E1A966EC10055DE99 /* TransatTextBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextBold.otf; sourceTree = "<group>"; };
 		EA37776F1A966EC10055DE99 /* TransatTextLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextLight.otf; sourceTree = "<group>"; };
@@ -832,6 +834,7 @@
 				EAC31C1C1AE3A86200277FE8 /* Settings.swift */,
 				EAAD921C1ACF342C0014BA25 /* Environment.swift */,
 				EA36D2AA1AE71366006FD5D8 /* Errors.swift */,
+				EA36D2AC1AE72B78006FD5D8 /* UserDefaults.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1667,6 +1670,7 @@
 				EA755A3A1ADDA5CB004B4A1D /* SandView.swift in Sources */,
 				EAAD921D1ACF342C0014BA25 /* Environment.swift in Sources */,
 				EA0FC9351A87DE5800D62625 /* MeteorExtension.swift in Sources */,
+				EA36D2AD1AE72B78006FD5D8 /* UserDefaults.swift in Sources */,
 				EA72FB291AD1B7D5009F853F /* Segue.swift in Sources */,
 				EAEB63DB1AD31A4E0002D55C /* Animation.swift in Sources */,
 				EAA36DE21AD1CE2800B30F24 /* BaseViewController.swift in Sources */,

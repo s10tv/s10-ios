@@ -39,6 +39,8 @@ class AccountService {
         self.meteorService.meta.hasBeenWelcomed = false
         self.meteorService.meta.gameTutorialMode = true
         // TODO: Figure out whether user signed up or logged in
+        UD[.sMeteorUserId] = meteorService.userID
+        Analytics.identifyUser(meteorService.userID!)
         Analytics.loggedIn()
     }
     
@@ -61,6 +63,7 @@ class AccountService {
     
     func logout() -> RACSignal {
         Analytics.loggedOut()
+        Analytics.identifyUser(Globals.env.deviceId) // Reset to deviceId based tracking
         self.session.closeAndClearTokenInformation()
         UD.resetAll()
         return meteorService.logout().deliverOnMainThread()

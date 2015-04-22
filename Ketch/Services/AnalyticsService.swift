@@ -26,6 +26,13 @@ class AnalyticsService {
         if env.audience == .Dev {
             Heap.enableVisualizer()
         }
+        
+        // Set initial userId
+        if let meteorUserId = UD[.sMeteorUserId].string {
+            identifyUser(meteorUserId)
+        } else {
+            identifyUser(env.deviceId)
+        }
     }
     
     private func identify(userId: String?, traits: [String: AnyObject]? = nil) {
@@ -66,4 +73,5 @@ extension AnalyticsService {
     func signedUp() { track("Signed Up") }
     func loggedIn() { track("Logged In") }
     func loggedOut() { track("Logged Out") }
+    
 }
