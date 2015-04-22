@@ -11,7 +11,7 @@ import Meteor
 
 class Settings {
     enum Key : String {
-        case SoftMinBuild = "softMin"
+        case SoftMinBuild = "softMinBuild"
         case HardMinBuild = "hardMinBuild"
         case CrabUserId = "crabUserId"
         case Vetted = "vetted"
