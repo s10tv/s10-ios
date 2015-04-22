@@ -62,7 +62,7 @@
 "SettingsLogoutCancel" = "Cancel";
 "SettingsDeleteAccountTitle" = "Delete Account";
 "SettingsDeleteAccountMessage" = "You'll lose all your matches, messages, and photos. Are you sure you want to do this?";
-"SettingsDeleteAccountPlaceholder" = "If so, type 'delete' to confirm.";
+"SettingsDeleteAccountPlaceholder" = "If sure, type 'delete' to confirm.";
 "SettingsDeleteAccountConfirm" = "Confirm";
 "SettingsDeleteAccountCancel" = "Cancel";
 
