@@ -13,6 +13,7 @@ import ReactiveCocoa
 class SettingsViewController : BaseViewController {
     
     @IBOutlet weak var waveView: WaveView!
+    @IBOutlet weak var versionLabel: UILabel!
     var formController: SettingsFormViewController!
     
     override func commonInit() {
@@ -31,6 +32,7 @@ class SettingsViewController : BaseViewController {
             tableView.bottom == waveView.top
         }
         formController.didMoveToParentViewController(self)
+        versionLabel.text = "v\(Globals.env.version) (\(Globals.env.build))"
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
