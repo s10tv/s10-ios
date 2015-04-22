@@ -33,28 +33,32 @@ class SettingsViewModel {
     // MARK: - Controlled Write Access
     
     func updateItem(type: SettingsItem.ItemType, newValue: AnyObject?) {
-        switch (type, newValue) {
-        case let (.GenderPreference, pref as String):
-            if let pref = Settings.GenderPref(rawValue: pref) {
+        switch (type) {
+        case .GenderPreference:
+            if let pref = Settings.GenderPref(rawValue: newValue as String) {
                 if settings.genderPref != pref {
                     Meteor.updateGenderPref(pref)
                 }
             }
-        case let (.Work, work as String):
-            if currentUser.work != work {
-                Meteor.updateWork(work)
+        case .Work:
+            let workInfo = parseNullableString(newValue)
+            if currentUser.work != workInfo {
+                Meteor.updateWork(workInfo)
             }
-        case let (.Education, education as String):
-            if currentUser.education != education {
-                Meteor.updateEducation(education)
+        case .Education:
+            let educationInfo = parseNullableString(newValue)
+            if currentUser.education != educationInfo {
+                Meteor.updateEducation(educationInfo)
             }
-        case let (.Height, height as Int):
-            if currentUser.height != height {
-                Meteor.updateHeight(height)
+        case .Height:
+            let heightInfo = parseNullableInt(newValue)
+            if currentUser.height != heightInfo {
+                Meteor.updateHeight(heightInfo)
             }
-        case let (.About, about as String):
-            if currentUser.about != about {
-                Meteor.updateAbout(about)
+        case .About:
+            let aboutInfo = parseNullableString(newValue)
+            if currentUser.about != aboutInfo {
+                Meteor.updateAbout(aboutInfo)
             }
         default:
             break
@@ -62,7 +66,21 @@ class SettingsViewModel {
     }
     
     // MARK: - Helpers
+
+    private func parseNullableString(input: AnyObject?) -> String {
+        if let input = input as? String {
+            return input
+        }
+        return ""
+    }
     
+    private func parseNullableInt(input: AnyObject?) -> Int {
+        if let input = input as? Int {
+            return input
+        }
+        return 0
+    }
+
     private func createItems() -> [SettingsItem] {
         return [
             // TODO: Use CoreData computed property to avoid hardcode string?
