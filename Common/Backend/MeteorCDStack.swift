@@ -34,7 +34,9 @@ class MeteorCDStack : SugarRecordStackProtocol {
             } else {
                 Log.info("Existing changes persisted to the database")
             }
-            context.reset()
+// TODO: Not clear why, but this crashes sometimes. Commenting out in attempt to fix
+// https://fabric.io/ketch-app/ios/apps/com.milasya.ketch.dev/issues/55380d655141dcfd8f8bc896/sessions/553805da00e5000103de373436616236
+//            context.reset()
         }
         
         // Saving MAIN Context
