@@ -55,17 +55,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
 
         // Startup the services
         Meteor.meta.bugfenderId = Bugfender.deviceIdentifier()
-        Meteor.subscriptions.currentUser.signal.deliverOnMainThread().subscribeCompleted {
+        // HACK ALERT: Adding 0.1 second delay because for some reason when subscriptions are ready
+        // the value in the collections are not ready yet. Really need to figure out what the right timing
+        // is and get rid of these nasty 0.1 second delay hacks, but for 0.1.0 release it fixes the issue
+        Meteor.subscriptions.currentUser.signal.delay(0.1).deliverOnMainThread().subscribeCompleted {
             UD[.sMeteorUserId] ?= Meteor.userID
             UD[.sUserDisplayName] = User.currentUser()?.displayName
             Log.setUserId(UD[.sMeteorUserId].string)
             Log.setUserName(UD[.sUserDisplayName].string)
         }
-        Meteor.subscriptions.settings.signal.deliverOnMainThread().subscribeCompleted {
+        Meteor.subscriptions.settings.signal.delay(0.1).deliverOnMainThread().subscribeCompleted {
             UD[.sUserEmail] = Meteor.settings.email
             Log.setUserEmail(UD[.sUserEmail].string)
         }
-        Meteor.subscriptions.metadata.signal.deliverOnMainThread().subscribeCompleted {
+        Meteor.subscriptions.metadata.signal.delay(0.1).deliverOnMainThread().subscribeCompleted {
             Globals.upgradeService.promptForUpgradeIfNeeded()
         }
         // Should be probably extracted into push service
