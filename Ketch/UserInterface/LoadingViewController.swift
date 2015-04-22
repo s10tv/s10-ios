@@ -11,6 +11,7 @@ import Foundation
 class LoadingViewController : BaseViewController {
     
     @IBOutlet weak var loadingView: UIView!
+    private var lastUnwindSegue: UIStoryboardSegue?
     
     override func commonInit() {
         screenName = "Loading"
@@ -25,12 +26,16 @@ class LoadingViewController : BaseViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        loadingView.setHiddenAnimated(hidden: true, duration: 0.75)
+        // Don't show loading view
+        if lastUnwindSegue?.matches(.FinishGame) != true {
+            loadingView.setHiddenAnimated(hidden: true, duration: 0.75)
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         loadingView.setHiddenAnimated(hidden: true, duration: 0.25)
+        lastUnwindSegue = nil
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -69,6 +74,7 @@ class LoadingViewController : BaseViewController {
     // MARK: - Actions
     
     @IBAction func unwindToLoading(sender: UIStoryboardSegue) {
+        lastUnwindSegue = sender
     }
     
 }
