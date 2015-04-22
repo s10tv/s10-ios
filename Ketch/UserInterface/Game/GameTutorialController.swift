@@ -74,11 +74,11 @@ class GameTutorialController {
         case 1:
             showHelpText(LS(.threeMatchesPrompt))
             dropBubbles(delay: 1.5)
-            prompt.startPulsing(delay: 3.5)
+            prompt.startPulsing(delay: 2.75)
         case 2:
             showHelpText(LS(.threeChoicesPrompt))
             popPlaceholders(delay: 1)
-            prompt.startPulsing(delay: 3)
+            prompt.startPulsing(delay: 2.25)
         case 3:
             prompt.stopPulsing()
             showDragMatchesToChoices()
