@@ -9,6 +9,7 @@
 import Foundation
 import PKHUD
 import ReactiveCocoa
+import Meteor
 
 class SignupViewController : BaseViewController {
 
@@ -61,7 +62,13 @@ class SignupViewController : BaseViewController {
     
     @IBAction func loginWithFacebook(sender: AnyObject) {
         startLogin({ Globals.accountService.login() }, errorBlock: { error in
-            // TODO: This requires much much better handling
+            // TODO: This us duplicated and can be refactored
+            if let error = error {
+                if error.domain == METDDPErrorDomain {
+                    self.showAlert(LS(.errUnableToLoginTitle), message: LS(.errUnableToLoginMessage))
+                    return
+                }
+            }
             self.performSegue(.SignupToFacebookPerm)
         })
     }

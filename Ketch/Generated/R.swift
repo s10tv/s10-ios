@@ -104,6 +104,10 @@ public enum R {
         case errNetworkUnreachable = "errNetworkUnreachable"
         /// Seems like we don't have any network connection right now, try again later.
         case errNetworkUnreachableRecovery = "errNetworkUnreachableRecovery"
+        /// Sorry we're not able to log you in at the moment. Please try again later :(
+        case errUnableToLoginMessage = "errUnableToLoginMessage"
+        /// Unable to login
+        case errUnableToLoginTitle = "errUnableToLoginTitle"
         /// We are not able to log you in. Please try again.
         case fbPermDeniedAlertMessage = "FBPermDeniedAlertMessage"
         /// Permission Denied
@@ -142,21 +146,21 @@ public enum R {
         case settingsAboutPrompt = "SettingsAboutPrompt"
         /// %d years old
         case settingsAgeFormat = "SettingsAgeFormat"
-        /// Set you age in Facebook
+        /// Set your age in Facebook
         case settingsAgePrompt = "SettingsAgePrompt"
         /// Cancel
         case settingsDeleteAccountCancel = "SettingsDeleteAccountCancel"
         /// Confirm
         case settingsDeleteAccountConfirm = "SettingsDeleteAccountConfirm"
-        /// All your photos, messages, and matches will be permanently deleted. Are you sure you want to do this?
+        /// You'll lose all your matches, messages, and photos. Are you sure you want to do this?
         case settingsDeleteAccountMessage = "SettingsDeleteAccountMessage"
-        /// If sure, type 'delete' to confirm.
+        /// If so, type 'delete' to confirm.
         case settingsDeleteAccountPlaceholder = "SettingsDeleteAccountPlaceholder"
         /// Delete Account
         case settingsDeleteAccountTitle = "SettingsDeleteAccountTitle"
         /// %@
         case settingsEducationFormat = "SettingsEducationFormat"
-        /// Where did you go to school?
+        /// What's your school?
         case settingsEducationPrompt = "SettingsEducationPrompt"
         /// Interested in %@
         case settingsGenderPreferenceFormat = "SettingsGenderPreferenceFormat"
@@ -176,9 +180,9 @@ public enum R {
         case settingsLogoutTitle = "SettingsLogoutTitle"
         /// %@
         case settingsWorkFormat = "SettingsWorkFormat"
-        /// Where do you work?
+        /// What's your occupation?
         case settingsWorkPrompt = "SettingsWorkPrompt"
-        /// %@ likes you! Your dreamboat will sail away in three days. Get on it before %@ disappears for good!
+        /// %@ likes you! You have three days to reach out before your dreamboat sails away for good. Get on it!
         case singleMatchPrompt = "SingleMatchPrompt"
         /// SAY NO NICELY
         case skipPrompt = "SkipPrompt"
@@ -186,7 +190,7 @@ public enum R {
         case snoozePrompt = "SnoozePrompt"
         /// Later
         case softUpgradeAlertCancel = "SoftUpgradeAlertCancel"
-        /// Please upgrade to latest version.
+        /// Please upgrade to the latest version.
         case softUpgradeAlertMessage = "SoftUpgradeAlertMessage"
         /// Upgrade
         case softUpgradeAlertOk = "SoftUpgradeAlertOk"

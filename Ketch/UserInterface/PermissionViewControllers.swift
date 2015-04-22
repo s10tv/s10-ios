@@ -9,6 +9,7 @@
 import Foundation
 import CoreLocation
 import PKHUD
+import Meteor
 
 class FacebookPermissionViewController : BaseViewController {
     
@@ -19,8 +20,15 @@ class FacebookPermissionViewController : BaseViewController {
     
     @IBAction func requestFacebookPermission(sender: AnyObject) {
         PKHUD.showActivity()
-        Globals.accountService.login().subscribeError({ _ in
+        Globals.accountService.login().subscribeError({ error in
             PKHUD.hide()
+            // TODO: This us duplicated and can be refactored
+            if let error = error {
+                if error.domain == METDDPErrorDomain {
+                    self.showAlert(LS(.errUnableToLoginTitle), message: LS(.errUnableToLoginMessage))
+                    return
+                }
+            }
             self.showAlert(LS(.fbPermDeniedAlertTitle),
                   message: LS(.fbPermDeniedAlertMessage))
         }, completed: { () -> Void in
