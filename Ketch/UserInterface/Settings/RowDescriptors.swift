@@ -68,6 +68,12 @@ class HeightRowDescriptor : RowDescriptor {
         get {
             let feet = Int(floor(height.f / ftToCm))
             let inches = Int(ceil(height.f -  feet.f * ftToCm) / inToCm)
+            // HACK ALERT: Need to figure out how to properly convert between centimeter / feet + inches without
+            // rounding errors and consistently round up / down so we don't get something like 3'12'
+            // Temp hack to fix crash https://fabric.io/ketch-app/ios/apps/com.milasya.ketch.dev/issues/553818515141dcfd8f8be02b
+            if inches == 12 {
+                return (feet + 1, 0)
+            }
             return (feet, inches)
         }
         set {
@@ -78,6 +84,10 @@ class HeightRowDescriptor : RowDescriptor {
     override func beginEditing() {
         if value != nil {
             let (f, i) = imperialHeight
+            if f < 4 || f > 7 || i < 0 || i > 11 {
+                Log.error("Feet and inches outside range f = \(f) i = \(i)")
+                return
+            }
             picker.selectRow(find(feets, f)!, inComponent: 0, animated: false)
             picker.selectRow(find(inches, i)!, inComponent: 1, animated: false)
         }
