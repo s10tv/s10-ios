@@ -27,7 +27,7 @@ class PulsingView : BaseView {
         
         let pulsing = CAAnimationGroup()
         pulsing.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
-        pulsing.duration = 1.6
+        pulsing.duration = 1
         pulsing.repeatCount = Float.infinity
         pulsing.beginTime = CACurrentMediaTime() + delay
         pulsing.animations = [size, corner, opacity]
