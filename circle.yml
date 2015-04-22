@@ -39,24 +39,23 @@ deployment:
     commands:
       - |
         source ./scripts/circle_env.sh
-        cd $CIRCLE_ARTIFACTS
         "$CRASHLYTICS_FRAMEWORK_PATH/submit" $CRASHLYTICS_API_KEY $CRASHLYTICS_BUILD_SECRET \
-                                            -ipaPath ${BN}.ipa \
+                                            -ipaPath $CIRCLE_ARTIFACTS/${BN}.ipa \
                                             -groupAliases $CRASHLYTICS_BETA_TEAM \
                                             -notifications $CRASHLYTICS_BETA_NOTIFICATIONS \
-                                            -notesPath release_notes.txt
+                                            -notesPath $CIRCLE_ARTIFACTS/release_notes.txt
 
   Ketch:
     branch: prod
     commands:
       - |
         source ./scripts/circle_env.sh
-        cd $CIRCLE_ARTIFACTS
         "$CRASHLYTICS_FRAMEWORK_PATH/submit" $CRASHLYTICS_API_KEY $CRASHLYTICS_BUILD_SECRET \
-                                            -ipaPath ${BN}.ipa \
+                                            -ipaPath $CIRCLE_ARTIFACTS/${BN}.ipa \
                                             -groupAliases $CRASHLYTICS_BETA_TEAM \
                                             -notifications $CRASHLYTICS_BETA_NOTIFICATIONS \
-                                            -notesPath release_notes.txt
+                                            -notesPath $CIRCLE_ARTIFACTS/release_notes.txt
+        cd $CIRCLE_ARTIFACTS
         cp "${BN}.ipa" "${BN}_appstore.ipa"
         sigh resign "${BN}_appstore.ipa" \
           --provisioning_profile "$HOME/Library/MobileDevice/Provisioning Profiles/commilasyaketchappstore.mobileprovision" \
