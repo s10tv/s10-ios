@@ -28,8 +28,6 @@ public enum R {
         case appBeta = "AppIconBeta"
         /// AppIconDev
         case appDev = "AppIconDev"
-        /// background-sea-short
-        case backgroundSeaShort = "background-sea-short"
         /// crab
         case crab = "crab"
         /// crab-sorry-arrow
@@ -64,6 +62,8 @@ public enum R {
         case ketchLarge = "ketch-large"
         /// ketch-the-one
         case ketchTheOne = "ketch-the-one"
+        /// launch-wave
+        case launchWave = "launch-wave"
         /// perm-facebook-icon
         case permFacebook = "perm-facebook-icon"
         /// perm-location-icon

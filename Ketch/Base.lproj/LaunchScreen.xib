@@ -7,31 +7,44 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background-sea-short" translatesAutoresizingMaskIntoConstraints="NO" id="uyQ-hd-8Wo" userLabel="Wave Background">
-                    <rect key="frame" x="0.0" y="518" width="320" height="228"/>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="launch-wave" translatesAutoresizingMaskIntoConstraints="NO" id="uyQ-hd-8Wo" userLabel="Wave Background">
+                    <rect key="frame" x="0.0" y="607" width="375" height="60"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="60" id="KAW-DL-JYj"/>
+                    </constraints>
                 </imageView>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ketch" translatesAutoresizingMaskIntoConstraints="NO" id="Aqf-tL-orW">
-                    <rect key="frame" x="141" y="486" width="39" height="42"/>
+                    <rect key="frame" x="168" y="573" width="39" height="42"/>
                 </imageView>
             </subviews>
             <color key="backgroundColor" red="0.96776443719863892" green="0.99617582559585571" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="uyQ-hd-8Wo" firstAttribute="top" secondItem="Aqf-tL-orW" secondAttribute="bottom" constant="-10" id="Hi5-jp-7Hp"/>
+                <constraint firstAttribute="bottom" secondItem="uyQ-hd-8Wo" secondAttribute="bottom" id="6im-iP-MBg"/>
+                <constraint firstItem="uyQ-hd-8Wo" firstAttribute="top" secondItem="Aqf-tL-orW" secondAttribute="bottom" constant="-8" id="Hi5-jp-7Hp"/>
+                <constraint firstItem="uyQ-hd-8Wo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="c3b-Cn-nmO"/>
                 <constraint firstItem="Aqf-tL-orW" firstAttribute="centerX" secondItem="uyQ-hd-8Wo" secondAttribute="centerX" id="e0X-L6-rHD"/>
                 <constraint firstItem="uyQ-hd-8Wo" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="kaa-Dx-aIJ"/>
                 <constraint firstAttribute="trailing" secondItem="uyQ-hd-8Wo" secondAttribute="trailing" id="mCV-wV-bNg"/>
                 <constraint firstAttribute="bottom" secondItem="uyQ-hd-8Wo" secondAttribute="top" constant="50" id="mZL-zn-Dvq"/>
+                <constraint firstAttribute="trailing" secondItem="uyQ-hd-8Wo" secondAttribute="trailing" id="qzw-uE-SwG"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
-            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="kaa-Dx-aIJ"/>
+                    <exclude reference="mCV-wV-bNg"/>
+                    <exclude reference="mZL-zn-Dvq"/>
+                </mask>
+            </variation>
             <point key="canvasLocation" x="-35" y="-26"/>
         </view>
     </objects>
     <resources>
         <image name="Ketch" width="39" height="42"/>
-        <image name="background-sea-short" width="320" height="228"/>
+        <image name="launch-wave" width="375" height="60"/>
     </resources>
 </document>
