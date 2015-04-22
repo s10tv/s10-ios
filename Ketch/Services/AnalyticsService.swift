@@ -38,8 +38,10 @@ class AnalyticsService {
     private func identify(userId: String?, traits: [String: AnyObject]? = nil) {
         self.userId = userId
         // Send traits up to our own backend server
-        for (key, value) in traits ?? [:] {
-            Meteor.meta.setValue(value, metadataKey: key)
+        if let traits = traits {
+            for (key, value) in traits {
+                Meteor.meta.setValue(value, metadataKey: key)
+            }
         }
         segment.identify(userId, traits: traits)
         segment.flush()
