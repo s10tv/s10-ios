@@ -20,7 +20,7 @@
 
 /* New Match Screen */
 "It's a Ketch!" = "It's a Ketch!";
-"SingleMatchPrompt" = "%@ likes you! Your dreamboat will sail away in three days. Get on it before %@ disappears for good!";
+"SingleMatchPrompt" = "%@ likes you! You have three days to reach out before your dreamboat sails away for good. Get on it!";
 
 /* Profile Screen */
 "MoreSheetReport" = "Report %@";
@@ -35,7 +35,7 @@
 
 /* Force Upgrade */
 "SoftUpgradeAlertTitle" = "New version is available";
-"SoftUpgradeAlertMessage" = "Please upgrade to latest version.";
+"SoftUpgradeAlertMessage" = "Please upgrade to the latest version.";
 "SoftUpgradeAlertOk" = "Upgrade";
 "SoftUpgradeAlertCancel" = "Later";
 "HardUpgradeAlertTitle" = "Your version is no longer supported";
@@ -49,10 +49,10 @@
 "SettingsEducationFormat" = "%@";
 "SettingsHeightFormat" = "%@";
 
-"SettingsAgePrompt" = "Set you age in Facebook";
+"SettingsAgePrompt" = "Set your age in Facebook";
 "SettingsGenderPreferencePrompt" = "What's your gender preference?";
-"SettingsWorkPrompt" = "Where do you work?";
-"SettingsEducationPrompt" = "Where did you go to school?";
+"SettingsWorkPrompt" = "What's your occupation?";
+"SettingsEducationPrompt" = "What's your school?";
 "SettingsHeightPrompt" = "What's your height?";
 "SettingsAboutPrompt" = "What's ketchy about you?";
 
@@ -61,8 +61,8 @@
 "SettingsLogoutDeleteAccount" = "Delete my account";
 "SettingsLogoutCancel" = "Cancel";
 "SettingsDeleteAccountTitle" = "Delete Account";
-"SettingsDeleteAccountMessage" = "All your photos, messages, and matches will be permanently deleted. Are you sure you want to do this?";
-"SettingsDeleteAccountPlaceholder" = "If sure, type 'delete' to confirm.";
+"SettingsDeleteAccountMessage" = "You'll lose all your matches, messages, and photos. Are you sure you want to do this?";
+"SettingsDeleteAccountPlaceholder" = "If so, type 'delete' to confirm.";
 "SettingsDeleteAccountConfirm" = "Confirm";
 "SettingsDeleteAccountCancel" = "Cancel";
 
