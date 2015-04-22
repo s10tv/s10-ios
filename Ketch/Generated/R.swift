@@ -100,6 +100,10 @@ public enum R {
     public enum Strings : String {
         /// DRAG THE MATCHES UP TO YOUR CHOICES
         case dragMatchsToChoices = "DragMatchsToChoices"
+        /// Network Unavailable
+        case errNetworkUnreachable = "errNetworkUnreachable"
+        /// Seems like we don't have any network connection right now, try again later.
+        case errNetworkUnreachableRecovery = "errNetworkUnreachableRecovery"
         /// We are not able to log you in. Please try again.
         case fbPermDeniedAlertMessage = "FBPermDeniedAlertMessage"
         /// Permission Denied
@@ -124,8 +128,6 @@ public enum R {
         case moreSheetCancel = "MoreSheetCancel"
         /// Report %@
         case moreSheetReport = "MoreSheetReport"
-        /// Seems like we don't have any network connection right now, try again later.
-        case networkUnreachable = "NetworkUnreachable"
         /// We use your location to help you find matches!
         case nsLocationWhenInUseUsageDescription = "NSLocationWhenInUseUsageDescription"
         /// Cancel

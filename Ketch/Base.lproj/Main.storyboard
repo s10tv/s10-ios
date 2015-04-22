@@ -33,6 +33,7 @@
             <string>TransatTextStandard</string>
             <string>TransatTextStandard</string>
             <string>TransatTextStandard</string>
+            <string>TransatTextStandard</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1279,6 +1280,20 @@ SAILED FOR TODAY.</string>
                                     <segue destination="rRd-ZO-60U" kind="show" identifier="ErrorToCrab" id="9ci-Qu-3Dx"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="686-HH-FKS">
+                                <rect key="frame" x="510" y="0.0" width="90" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="GFI-7R-d9Z"/>
+                                    <constraint firstAttribute="height" constant="60" id="vIS-ep-h92"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="15"/>
+                                <state key="normal" title="LOG OUT">
+                                    <color key="titleColor" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="logout:" destination="dtd-Ah-BIE" eventType="touchUpInside" id="d68-xG-AhH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.94003820419999995" green="0.98082369570000005" blue="0.96848088499999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
@@ -1286,6 +1301,7 @@ SAILED FOR TODAY.</string>
                             <constraint firstItem="WoJ-OM-zoN" firstAttribute="leading" secondItem="wHR-Yg-gdU" secondAttribute="leading" constant="110" id="5n9-ki-mEf"/>
                             <constraint firstItem="7fq-1r-Vct" firstAttribute="top" secondItem="Ydu-ga-8Jd" secondAttribute="bottom" constant="28" id="8El-zG-oeU"/>
                             <constraint firstItem="wHR-Yg-gdU" firstAttribute="top" secondItem="A5N-Nb-vIE" secondAttribute="bottom" priority="749" id="Bhm-Tl-emz"/>
+                            <constraint firstAttribute="trailing" secondItem="686-HH-FKS" secondAttribute="trailing" id="C3K-lw-gSE"/>
                             <constraint firstItem="fFZ-O6-nBz" firstAttribute="top" secondItem="czY-j4-WIE" secondAttribute="bottom" constant="-8" id="Eb4-uR-q5M"/>
                             <constraint firstAttribute="trailing" secondItem="bhP-AS-XzQ" secondAttribute="trailing" id="Fwr-lT-NIk"/>
                             <constraint firstItem="czY-j4-WIE" firstAttribute="top" secondItem="4y1-wu-k3f" secondAttribute="bottom" constant="4" id="GaG-76-dL0"/>
@@ -1293,6 +1309,7 @@ SAILED FOR TODAY.</string>
                             <constraint firstItem="WoJ-OM-zoN" firstAttribute="top" secondItem="wHR-Yg-gdU" secondAttribute="top" constant="38" id="ITN-QT-BWw"/>
                             <constraint firstAttribute="centerX" secondItem="Ydu-ga-8Jd" secondAttribute="centerX" id="Q3X-Jb-bZ8"/>
                             <constraint firstItem="OTF-gM-chU" firstAttribute="top" secondItem="fFZ-O6-nBz" secondAttribute="bottom" id="QT8-nX-8IA"/>
+                            <constraint firstItem="686-HH-FKS" firstAttribute="top" secondItem="A5N-Nb-vIE" secondAttribute="bottom" id="X7W-Vy-gLi"/>
                             <constraint firstItem="wHR-Yg-gdU" firstAttribute="bottom" secondItem="SIS-1G-bg1" secondAttribute="bottom" constant="56" id="YAZ-7a-dV1"/>
                             <constraint firstAttribute="centerXWithinMargins" secondItem="wHR-Yg-gdU" secondAttribute="centerXWithinMargins" constant="-71" id="YIB-rf-DXx"/>
                             <constraint firstItem="fFZ-O6-nBz" firstAttribute="top" secondItem="7fq-1r-Vct" secondAttribute="bottom" priority="700" constant="80" id="awG-ig-9Hd"/>

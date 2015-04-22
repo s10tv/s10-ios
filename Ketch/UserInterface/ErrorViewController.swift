@@ -15,6 +15,10 @@ class ErrorViewController : CloudsViewController {
     
     var error: NSError?
     
+    override func commonInit() {
+        allowedStates = [.Error]
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // TODO: Reactify me?
@@ -38,5 +42,11 @@ class ErrorViewController : CloudsViewController {
         if let chatVC = segue.destinationViewController as? ChatViewController {
             chatVC.connection = Connection.crabConnection()
         }
+    }
+
+    // MARK: - Actions
+    
+    @IBAction func logout(sender: AnyObject) {
+        Globals.accountService.logout()
     }
 }

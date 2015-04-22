@@ -51,6 +51,7 @@ class FlowService : NSObject {
         super.init()
         meteorService.delegate = self
         listenForNotification(METDatabaseDidChangeNotification, selector: "meteorDatabaseDidChange:")
+        listenForNotification(METDDPClientDidChangeAccountNotification, selector: "meteorAccountDidChange:")
     }
     
     // Due to RAC's current constraint we are not able to send enum as value, so sending nil for now
@@ -185,6 +186,10 @@ class FlowService : NSObject {
                 }
             }
         }
+    }
+    
+    func meteorAccountDidChange(notification: NSNotification) {
+        updateState()
     }
 }
 

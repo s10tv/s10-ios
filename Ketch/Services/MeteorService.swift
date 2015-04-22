@@ -125,6 +125,7 @@ class MeteorService {
     }
     
     func logout() -> RACSignal {
+        meteor.account = nil // No reason to wait for network to clear account
         return meteor.logout()
     }
     

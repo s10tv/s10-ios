@@ -9,21 +9,20 @@
 import Foundation
 
 enum ErrorCode : Int {
-    case NetworkUnreachable = 1
+    case NetworkUnreachable = -1
+//    case KetchyUnavailable = -2
     
-    var nsError: NSError {
-        return NSError(self)
-    }
-    
-    var recoverable: Bool {
-        switch self {
-        case .NetworkUnreachable: return true
-        }
-    }
+    var nsError: NSError { return NSError(self) }
+    var recoverable: Bool { return localizedRecoverySuggestion != nil }
     
     var localizedDescription: String {
         switch self {
-        case .NetworkUnreachable: return LS(.networkUnreachable)
+        case .NetworkUnreachable: return LS(.errNetworkUnreachable)
+        }
+    }
+    var localizedRecoverySuggestion: String? {
+        switch self {
+        case .NetworkUnreachable: return LS(.errNetworkUnreachableRecovery)
         }
     }
 }
@@ -31,11 +30,18 @@ enum ErrorCode : Int {
 extension NSError {
     convenience init(_ errorCode: ErrorCode) {
         self.init(domain: "Ketch", code: errorCode.rawValue, userInfo: [
-            NSLocalizedDescriptionKey: errorCode.localizedDescription
-        ])
+            NSLocalizedDescriptionKey: errorCode.localizedDescription,
+            NSLocalizedRecoverySuggestionErrorKey: errorCode.localizedRecoverySuggestion ?? NSNull()
+        ].filter { k, v in v != NSNull() })
     }
     
     var recoverable: Bool {
         return ErrorCode(rawValue: code)!.recoverable
+    }
+}
+
+extension UIViewController {
+    func showErrorAlert(error: NSError) {
+        showAlert(error.localizedDescription, message: error.localizedRecoverySuggestion)
     }
 }

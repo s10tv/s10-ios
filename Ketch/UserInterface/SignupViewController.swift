@@ -26,7 +26,12 @@ class SignupViewController : BaseViewController {
         }
     }
     
-    private func startLogin(loginBlock: () -> RACSignal, errorBlock: (NSError) -> ()) {
+    private func startLogin(loginBlock: () -> RACSignal, errorBlock: (NSError?) -> ()) {
+        // TODO: We need to think about holistic, not just adhoc error handling
+        if !Meteor.networkReachable {
+            showErrorAlert(NSError(.NetworkUnreachable))
+            return
+        }
         // Temp hack, timing issue
         allowedStates = [.Signup, .Waitlist, .Welcome]
         PKHUD.showActivity()
@@ -54,7 +59,8 @@ class SignupViewController : BaseViewController {
     }
     
     @IBAction func loginWithFacebook(sender: AnyObject) {
-        startLogin({ Globals.accountService.login() }, errorBlock: { _ in
+        startLogin({ Globals.accountService.login() }, errorBlock: { error in
+            // TODO: This requires much much better handling
             self.performSegue(.SignupToFacebookPerm)
         })
     }
@@ -71,7 +77,7 @@ class SignupViewController : BaseViewController {
         alert.addAction("Login") { [weak alert] _ in
             if let userId = (alert?.textFields?.first as? UITextField)?.text?.nonBlank() {
                 self.startLogin({ Globals.accountService.debugLogin(userId) }, errorBlock: { error in
-                    self.showAlert("Failed to login", message: error.localizedDescription)
+                    self.showAlert("Failed to login", message: error?.localizedDescription ?? "Unknown Error")
                 })
             }
         }

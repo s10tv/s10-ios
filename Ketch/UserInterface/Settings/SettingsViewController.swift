@@ -31,7 +31,10 @@ class SettingsViewController : BaseViewController {
     
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
         if identifier == SegueIdentifier.Main_Chat.rawValue {
-            return Connection.crabConnection() != nil
+            if Connection.crabConnection() == nil {
+                showAlert(LS(.ketchyUnavailableTitle), message: LS(.ketchyUnavailableMessage))
+                return false
+            }
         }
         return super.shouldPerformSegueWithIdentifier(identifier, sender: sender)
     }
