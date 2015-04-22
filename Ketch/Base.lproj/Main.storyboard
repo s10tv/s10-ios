@@ -369,11 +369,11 @@ SAILED FOR TODAY.</string>
                         <viewControllerLayoutGuide type="bottom" id="f9R-rk-GCL"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="m2B-aU-Mh7">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tsg-XC-3jO" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="60" width="600" height="540"/>
+                                <rect key="frame" x="0.0" y="60" width="320" height="420"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Tsg-XC-3jO" secondAttribute="height" multiplier="80:57" id="7b7-d0-5E2"/>
@@ -385,7 +385,7 @@ SAILED FOR TODAY.</string>
                                 </variation>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Ketch" translatesAutoresizingMaskIntoConstraints="NO" id="R7N-wp-2MM" customClass="KetchBoatView" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="280" y="26" width="39" height="42"/>
+                                <rect key="frame" x="140" y="26" width="39" height="42"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="37" id="0hN-wj-xMn"/>
                                     <constraint firstAttribute="width" constant="34" id="iaK-29-sqn"/>
@@ -416,7 +416,7 @@ SAILED FOR TODAY.</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SMl-V4-Z7A" userLabel="Dock">
-                                <rect key="frame" x="520" y="0.0" width="80" height="60"/>
+                                <rect key="frame" x="240" y="0.0" width="80" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="20N-OJ-5eh"/>
                                     <constraint firstAttribute="width" constant="80" id="zGb-fN-x45"/>
@@ -431,7 +431,7 @@ SAILED FOR TODAY.</string>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Rx1-xy-YKJ" userLabel="New Indicator">
-                                <rect key="frame" x="568" y="16" width="12" height="12"/>
+                                <rect key="frame" x="288" y="16" width="12" height="12"/>
                                 <color key="backgroundColor" red="0.950525701" green="0.36602467300000002" blue="0.44692194460000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="12" id="j92-NY-hEn"/>
@@ -444,7 +444,7 @@ SAILED FOR TODAY.</string>
                                 </userDefinedRuntimeAttributes>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-bucket-keep" translatesAutoresizingMaskIntoConstraints="NO" id="ZdL-6o-ahC" userLabel="Maybe Placeholder" customClass="ChoicePlaceholder" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="472" y="206" width="100" height="113"/>
+                                <rect key="frame" x="204" y="192" width="88" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ZdL-6o-ahC" secondAttribute="height" multiplier="100:113" id="3sI-Xg-EnF"/>
                                     <constraint firstAttribute="width" constant="100" id="NUy-QR-pTk"/>
@@ -461,7 +461,7 @@ SAILED FOR TODAY.</string>
                                 </variation>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-bucket-marry" translatesAutoresizingMaskIntoConstraints="NO" id="2Mo-6y-hwh" userLabel="Maybe Placeholder" customClass="ChoicePlaceholder" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="250" y="80" width="100" height="116"/>
+                                <rect key="frame" x="116" y="80" width="88" height="102"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="116" id="I4i-RO-KZR"/>
                                     <constraint firstAttribute="width" secondItem="2Mo-6y-hwh" secondAttribute="height" multiplier="25:29" id="WZ5-5U-oNX"/>
@@ -478,7 +478,7 @@ SAILED FOR TODAY.</string>
                                 </variation>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="game-bucket-skip" translatesAutoresizingMaskIntoConstraints="NO" id="C5L-zq-XTw" userLabel="Maybe Placeholder" customClass="ChoicePlaceholder" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="29" y="206" width="100" height="113"/>
+                                <rect key="frame" x="29" y="192" width="88" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="113" id="hOv-IZ-HTU"/>
                                     <constraint firstAttribute="width" constant="100" id="uXZ-Qd-8ZS"/>
@@ -494,14 +494,14 @@ SAILED FOR TODAY.</string>
                                     </mask>
                                 </variation>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YSC-OD-kWb" userLabel="Help Text" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="20" y="360" width="560" height="62"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="690" verticalCompressionResistancePriority="690" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="YSC-OD-kWb" userLabel="Help Text" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="20" y="300" width="280" height="62"/>
                                 <attributedString key="attributedText">
                                     <fragment content="SWIPE DOWN TO FIND THE ONE!">
                                         <attributes>
                                             <color key="NSColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <font key="NSFont" size="25" name="TransatTextBlack"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" minimumLineHeight="31"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="truncatingTail" baseWritingDirection="natural" minimumLineHeight="31"/>
                                         </attributes>
                                     </fragment>
                                 </attributedString>
@@ -517,7 +517,7 @@ SAILED FOR TODAY.</string>
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="s2S-Vm-p8n" userLabel="Confirm Button" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="175" y="446" width="250" height="54"/>
+                                <rect key="frame" x="35" y="326" width="250" height="54"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="54" id="I1o-Jn-3rM"/>
@@ -545,11 +545,11 @@ SAILED FOR TODAY.</string>
                                 </connections>
                             </button>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="sNf-t3-S46" userLabel="Left Bubble" customClass="CandidateBubble" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="8" y="460" width="100" height="100"/>
+                                <rect key="frame" x="8" y="382" width="88" height="88"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Jqh-bc-UMn" userLabel="Center Bubble" customClass="CandidateBubble" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="250" y="460" width="100" height="100"/>
+                                <rect key="frame" x="116" y="382" width="88" height="88"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Jqh-bc-UMn" secondAttribute="height" multiplier="1:1" id="XoX-Gk-3e9"/>
@@ -557,7 +557,7 @@ SAILED FOR TODAY.</string>
                                 </constraints>
                             </view>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="arw-4e-pup" userLabel="Right Bubble" customClass="CandidateBubble" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="492" y="460" width="100" height="100"/>
+                                <rect key="frame" x="224" y="382" width="88" height="88"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -566,7 +566,7 @@ SAILED FOR TODAY.</string>
                             <constraint firstAttribute="centerX" secondItem="Jqh-bc-UMn" secondAttribute="centerX" id="07W-1D-FZV"/>
                             <constraint firstItem="Rx1-xy-YKJ" firstAttribute="top" secondItem="SMl-V4-Z7A" secondAttribute="top" constant="16" id="0OY-Q0-Veh"/>
                             <constraint firstItem="YSC-OD-kWb" firstAttribute="leading" secondItem="m2B-aU-Mh7" secondAttribute="leading" constant="20" id="1lr-R6-LH5"/>
-                            <constraint firstItem="YSC-OD-kWb" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ZdL-6o-ahC" secondAttribute="bottom" constant="40" id="29w-r2-q8f"/>
+                            <constraint firstItem="YSC-OD-kWb" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ZdL-6o-ahC" secondAttribute="bottom" constant="8" id="29w-r2-q8f"/>
                             <constraint firstItem="Jqh-bc-UMn" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="sNf-t3-S46" secondAttribute="trailing" constant="20" id="2FR-sK-ys4"/>
                             <constraint firstItem="Jqh-bc-UMn" firstAttribute="centerY" secondItem="arw-4e-pup" secondAttribute="centerY" id="3zT-Uy-ikl"/>
                             <constraint firstItem="Jqh-bc-UMn" firstAttribute="top" relation="greaterThanOrEqual" secondItem="ZdL-6o-ahC" secondAttribute="bottom" constant="70" id="4pb-Lm-B0W"/>
@@ -577,7 +577,7 @@ SAILED FOR TODAY.</string>
                             <constraint firstAttribute="centerX" secondItem="2Mo-6y-hwh" secondAttribute="centerX" id="CRv-mk-nq3"/>
                             <constraint firstItem="Jqh-bc-UMn" firstAttribute="height" secondItem="arw-4e-pup" secondAttribute="height" id="Cj8-72-pYR"/>
                             <constraint firstItem="C5L-zq-XTw" firstAttribute="leading" secondItem="m2B-aU-Mh7" secondAttribute="leading" constant="29" id="ERk-0s-1ql"/>
-                            <constraint firstAttribute="centerY" secondItem="YSC-OD-kWb" secondAttribute="top" priority="251" constant="-60" id="G9u-m6-Mzn"/>
+                            <constraint firstAttribute="centerY" secondItem="YSC-OD-kWb" secondAttribute="top" priority="251" constant="-40" id="G9u-m6-Mzn"/>
                             <constraint firstAttribute="bottom" secondItem="Jqh-bc-UMn" secondAttribute="bottom" priority="251" constant="40" id="HqD-RL-LDf"/>
                             <constraint firstItem="Tsg-XC-3jO" firstAttribute="leading" secondItem="m2B-aU-Mh7" secondAttribute="leading" id="HsT-Nk-QUp"/>
                             <constraint firstItem="YSC-OD-kWb" firstAttribute="centerX" secondItem="s2S-Vm-p8n" secondAttribute="centerX" id="JR2-ZF-F5w"/>
@@ -593,6 +593,7 @@ SAILED FOR TODAY.</string>
                             <constraint firstItem="C5L-zq-XTw" firstAttribute="top" secondItem="ZdL-6o-ahC" secondAttribute="top" id="baL-WL-VNx"/>
                             <constraint firstItem="Jqh-bc-UMn" firstAttribute="width" secondItem="2Mo-6y-hwh" secondAttribute="width" id="c0U-J7-kqI"/>
                             <constraint firstItem="Jqh-bc-UMn" firstAttribute="width" secondItem="sNf-t3-S46" secondAttribute="width" id="de5-PX-OG9"/>
+                            <constraint firstItem="f9R-rk-GCL" firstAttribute="top" relation="greaterThanOrEqual" secondItem="Jqh-bc-UMn" secondAttribute="bottom" constant="4" id="h8k-C7-4la"/>
                             <constraint firstItem="C5L-zq-XTw" firstAttribute="width" secondItem="2Mo-6y-hwh" secondAttribute="width" id="hoG-JN-feM"/>
                             <constraint firstItem="Tsg-XC-3jO" firstAttribute="top" secondItem="R7N-wp-2MM" secondAttribute="bottom" constant="-8" id="lHL-8N-ZCS"/>
                             <constraint firstAttribute="trailing" secondItem="Tsg-XC-3jO" secondAttribute="trailing" id="n10-Rj-twj"/>
@@ -601,6 +602,7 @@ SAILED FOR TODAY.</string>
                             <constraint firstItem="SMl-V4-Z7A" firstAttribute="trailing" secondItem="Rx1-xy-YKJ" secondAttribute="trailing" constant="20" id="ovx-gg-9KV"/>
                             <constraint firstItem="cK6-TY-fKz" firstAttribute="top" secondItem="SYM-1r-qph" secondAttribute="bottom" id="p3O-Rl-amj"/>
                             <constraint firstItem="Jqh-bc-UMn" firstAttribute="centerY" secondItem="sNf-t3-S46" secondAttribute="centerY" id="ptI-Oq-AIc"/>
+                            <constraint firstItem="Jqh-bc-UMn" firstAttribute="top" relation="greaterThanOrEqual" secondItem="YSC-OD-kWb" secondAttribute="bottom" constant="20" id="rhJ-Fs-ebe"/>
                             <constraint firstItem="Tsg-XC-3jO" firstAttribute="centerX" secondItem="R7N-wp-2MM" secondAttribute="centerX" id="tuT-LC-tJi"/>
                             <constraint firstItem="f9R-rk-GCL" firstAttribute="top" secondItem="s2S-Vm-p8n" secondAttribute="bottom" constant="100" id="utA-MT-zKS"/>
                             <constraint firstItem="arw-4e-pup" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Jqh-bc-UMn" secondAttribute="trailing" constant="20" id="w97-7r-qsX"/>
@@ -612,6 +614,7 @@ SAILED FOR TODAY.</string>
                             </mask>
                         </variation>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="confirmButton" destination="s2S-Vm-p8n" id="Arh-wB-DNU"/>
                         <outlet property="dockBadge" destination="Rx1-xy-YKJ" id="0zW-TP-DUo"/>
@@ -642,11 +645,11 @@ SAILED FOR TODAY.</string>
                         <viewControllerLayoutGuide type="bottom" id="m2w-9C-p2z"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="dbM-rB-d08">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RZl-Bm-mW7" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="60" width="600" height="540"/>
+                                <rect key="frame" x="0.0" y="60" width="320" height="420"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="RZl-Bm-mW7" secondAttribute="height" multiplier="80:57" id="DBt-h4-2Cn"/>
@@ -672,13 +675,13 @@ SAILED FOR TODAY.</string>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Crew" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeI-EM-vEo">
-                                <rect key="frame" x="262" y="19" width="77" height="22"/>
+                                <rect key="frame" x="122" y="19" width="77" height="22"/>
                                 <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
                                 <color key="textColor" red="0.34509803919999998" green="0.67843137249999996" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="DUG-tq-7Au">
-                                <rect key="frame" x="0.0" y="72" width="600" height="528"/>
+                                <rect key="frame" x="0.0" y="72" width="320" height="408"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="sectionIndexBackgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </tableView>

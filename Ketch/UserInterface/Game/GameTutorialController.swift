@@ -134,6 +134,15 @@ class GameTutorialController {
         
         let arrowImage = UIImage(R.KetchAssets.tutorialArrow)
         let centerBubble = bubbles[1]
+        
+        overlay.passThroughTouchOnSelf = true
+        overlay.userInteractionEnabled = false
+        
+        // HACK ALERT: do not show arrows on devices smaller than iPhone 6
+        // There's simply not enough space on the screen
+        if UIScreen.mainScreen().bounds.height < 667 {
+            return
+        }
 
         arrows = [-1, 0, 1].map { i -> UIImageView in
             let arrow = UIImageView(image: arrowImage)
@@ -158,9 +167,6 @@ class GameTutorialController {
             arrow.layer.addAnimation(moveArrow, forKey: "position")
             return arrow
         }
-        
-        overlay.passThroughTouchOnSelf = true
-        overlay.userInteractionEnabled = false
     }
 }
 
