@@ -37,6 +37,7 @@ public class StyleKit : NSObject {
         static var navyHalf: UIColor = StyleKit.navy.colorWithAlpha(0.5)
         static var gradientWater: CGGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [StyleKit.gradientWaterColor.CGColor, StyleKit.brandBlue.CGColor, StyleKit.brandAlt.CGColor], [0, 0.19, 1])
         static var gradientSand: CGGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [StyleKit.gradientSandColor.CGColor, StyleKit.gradientSandColor2.CGColor], [0, 1])
+        static var shadow: NSShadow = NSShadow(color: UIColor.blackColor().colorWithAlphaComponent(0.08), offset: CGSizeMake(0.1, 2.1), blurRadius: 5)
         static var imageOfChatBubble: UIImage?
         static var chatBubbleTargets: [AnyObject]?
     }
@@ -66,6 +67,10 @@ public class StyleKit : NSObject {
 
     public class var gradientWater: CGGradient { return Cache.gradientWater }
     public class var gradientSand: CGGradient { return Cache.gradientSand }
+
+    //// Shadows
+
+    public class var shadow: NSShadow { return Cache.shadow }
 
     //// Drawing Methods
 
@@ -931,6 +936,17 @@ extension UIColor {
         var red: CGFloat = 1.0, green: CGFloat = 1.0, blue: CGFloat = 1.0, alpha: CGFloat = 1.0
         self.getRed(&red, green: &green, blue: &blue, alpha: &alpha)
         return UIColor(red: red * (1-shadow), green: green * (1-shadow), blue: blue * (1-shadow), alpha: alpha * (1-shadow) + shadow)
+    }
+}
+
+
+
+extension NSShadow {
+    convenience init(color: AnyObject!, offset: CGSize, blurRadius: CGFloat) {
+        self.init()
+        self.shadowColor = color
+        self.shadowOffset = offset
+        self.shadowBlurRadius = blurRadius
     }
 }
 
