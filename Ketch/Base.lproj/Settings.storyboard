@@ -152,11 +152,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cv6-2X-pDR" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="567" width="600" height="33"/>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cv6-2X-pDR" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="567" width="600" height="580"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v0.1.0 (23b)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8df-8X-biN">
-                                        <rect key="frame" x="529" y="12" width="63" height="13"/>
+                                        <rect key="frame" x="529" y="48" width="63" height="13"/>
                                         <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="12"/>
                                         <color key="textColor" red="0.050980392159999999" green="0.3921568627" blue="0.53725490200000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -164,8 +164,7 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="33" id="QhF-In-kt2"/>
-                                    <constraint firstItem="8df-8X-biN" firstAttribute="top" secondItem="cv6-2X-pDR" secondAttribute="topMargin" constant="4" id="ZWp-PP-Zgi"/>
+                                    <constraint firstItem="8df-8X-biN" firstAttribute="top" secondItem="cv6-2X-pDR" secondAttribute="topMargin" constant="40" id="ZWp-PP-Zgi"/>
                                     <constraint firstItem="8df-8X-biN" firstAttribute="trailing" secondItem="cv6-2X-pDR" secondAttribute="trailingMargin" id="xgg-jR-PsG"/>
                                 </constraints>
                             </view>
@@ -211,7 +210,7 @@
                         <constraints>
                             <constraint firstItem="uKp-aT-O8G" firstAttribute="top" secondItem="k5T-3q-6Ei" secondAttribute="top" id="Hsy-Vy-LV6"/>
                             <constraint firstAttribute="trailing" secondItem="cv6-2X-pDR" secondAttribute="trailing" id="Npz-Lr-GQ0"/>
-                            <constraint firstAttribute="bottom" secondItem="cv6-2X-pDR" secondAttribute="bottom" id="Uhu-Tr-xAJ"/>
+                            <constraint firstAttribute="bottom" secondItem="cv6-2X-pDR" secondAttribute="top" constant="33" id="Uhu-Tr-xAJ"/>
                             <constraint firstItem="cv6-2X-pDR" firstAttribute="leading" secondItem="k5T-3q-6Ei" secondAttribute="leading" id="WPc-i2-Vz4"/>
                             <constraint firstAttribute="trailing" secondItem="bV0-1w-4bi" secondAttribute="trailing" id="YQB-Cy-y7q"/>
                             <constraint firstItem="bV0-1w-4bi" firstAttribute="top" secondItem="k5T-3q-6Ei" secondAttribute="top" id="Zxj-fp-XDh"/>
@@ -224,6 +223,7 @@
                     <connections>
                         <outlet property="versionLabel" destination="8df-8X-biN" id="LAZ-8k-Lrl"/>
                         <outlet property="waveView" destination="cv6-2X-pDR" id="DHQ-p0-hDp"/>
+                        <outlet property="waveViewBottomOffset" destination="Uhu-Tr-xAJ" id="RmG-ib-vtT"/>
                         <segue destination="FbI-lK-1wP" kind="custom" identifier="Main_Profile" customClass="LinkedStoryboardPresentSegue" id="oWb-P1-Ra0"/>
                         <segue destination="gQY-5f-Xzl" kind="unwind" identifier="SettingsToLoading" unwindAction="unwindToLoading:" id="Ja7-VP-tLI"/>
                     </connections>

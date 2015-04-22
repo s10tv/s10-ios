@@ -12,6 +12,7 @@ import ReactiveCocoa
 
 class SettingsViewController : BaseViewController {
     
+    @IBOutlet weak var waveViewBottomOffset: NSLayoutConstraint!
     @IBOutlet weak var waveView: WaveView!
     @IBOutlet weak var versionLabel: UILabel!
     var formController: SettingsFormViewController!
@@ -33,6 +34,15 @@ class SettingsViewController : BaseViewController {
         }
         formController.didMoveToParentViewController(self)
         versionLabel.text = "v\(Globals.env.version) (\(Globals.env.build))"
+
+        RACObserve(formController.tableView, "contentOffset").subscribeNext { [weak self] _ in
+            if let this = self {
+                let dy = this.formController.tableView.contentOffset.y / 4 // 4x slower parallax scrolling
+                if (dy > 0) {
+                    this.waveView.frame.origin.y = this.view.bounds.height - this.waveViewBottomOffset.constant - dy
+                }
+            }
+        }
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
