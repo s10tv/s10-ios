@@ -39,7 +39,7 @@ class AccountService {
         self.meteorService.meta.hasBeenWelcomed = false
         self.meteorService.meta.gameTutorialMode = true
         // TODO: Figure out whether user signed up or logged in
-        Analytics.loggedIn()
+        Analytics.track("Logged In")
     }
     
     // MARK: -
@@ -60,7 +60,7 @@ class AccountService {
     }
     
     func logout() -> RACSignal {
-        Analytics.loggedOut()
+        Analytics.track("Logged Out")
         Analytics.identifyUser(Globals.env.deviceId) // Reset to deviceId based tracking
         self.session.closeAndClearTokenInformation()
         UD.resetAll()

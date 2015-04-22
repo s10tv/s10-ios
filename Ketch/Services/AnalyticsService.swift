@@ -66,13 +66,3 @@ extension AnalyticsService {
         identify(userId, traits: traits)
     }
 }
-
-// MARK: - Explicit Event Tracking
-
-extension AnalyticsService {
-    func appOpen() { track("App Open") }
-    func appClose() { track("App Close") }
-    func signedUp() { track("Signed Up") }
-    func loggedIn() { track("Logged In") }
-    func loggedOut() { track("Logged Out") }
-}

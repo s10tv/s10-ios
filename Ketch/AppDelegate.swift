@@ -65,18 +65,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
         Meteor.startup()
         
         Log.info("App Launched")
-        Analytics.appOpen()
+        Analytics.track("App Open")
         return true
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
         SugarRecord.applicationWillEnterForeground()
-        Analytics.appOpen()
+        Analytics.track("App Open")
         Globals.upgradeService.promptForUpgradeIfNeeded()
     }
     
     func applicationDidEnterBackground(application: UIApplication) {
-        Analytics.appClose()
+        Analytics.track("App Close")
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
