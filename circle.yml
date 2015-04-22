@@ -26,7 +26,7 @@ test:
         source ./scripts/circle_env.sh
         ipa build -t --xcconfig Configs/${XCCONFIG_NAME}.xcconfig \
                      --xcargs BUNDLE_BUILD=$BN \
-                     --no-clean
+                     --no-clean | tee $CIRCLE_ARTIFACTS/build.log
         mv Ketch.ipa $CIRCLE_ARTIFACTS/${BN}.ipa
         mv Ketch.app.dSYM.zip $CIRCLE_ARTIFACTS/${BN}.app.dSYM.zip
         ./scripts/circle_release_notes.sh >> $CIRCLE_ARTIFACTS/release_notes.txt
