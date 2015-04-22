@@ -327,7 +327,7 @@ SAILED FOR TODAY.</string>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="YUi-xK-iJg" kind="custom" identifier="NewConnectionToDock" customClass="ReplaceAndPushSegue" id="Lmi-Sf-5Gu"/>
+                                    <segue destination="rRd-ZO-60U" kind="custom" identifier="NewConnectionToChat" customClass="ReplaceAndPushSegue" id="Oq8-XH-Rof"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -835,7 +835,7 @@ SAILED FOR TODAY.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B9f-P8-SG1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2455" y="1444"/>
+            <point key="canvasLocation" x="2487" y="1090"/>
         </scene>
         <!--Profile View Controller-->
         <scene sceneID="mYf-IJ-xkN">
@@ -997,7 +997,7 @@ SAILED FOR TODAY.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H5s-tv-xnk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2455" y="2490"/>
+            <point key="canvasLocation" x="2487" y="2490"/>
         </scene>
         <!--Settings Storyboard @ Settings-->
         <scene sceneID="6E1-Ce-dgY">
@@ -1337,7 +1337,7 @@ SAILED FOR TODAY.</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wmu-7w-vJD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1048" y="3233"/>
+            <point key="canvasLocation" x="1766" y="2987"/>
         </scene>
     </scenes>
     <resources>
@@ -1355,8 +1355,8 @@ SAILED FOR TODAY.</string>
         <image name="sprite-sun" width="218" height="186"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="nCf-mq-8Rt"/>
+        <segue reference="Oq8-XH-Rof"/>
         <segue reference="q7i-Iz-xMU"/>
-        <segue reference="9ci-Qu-3Dx"/>
+        <segue reference="nCf-mq-8Rt"/>
     </inferredMetricsTieBreakers>
 </document>

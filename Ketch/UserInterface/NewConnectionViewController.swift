@@ -12,7 +12,7 @@ class NewConnectionViewController : BaseViewController {
     
     override func commonInit() {
         allowedStates = [.NewMatch, .NewGame, .BoatSailed]
-        screenName = "Signup"
+        screenName = "NewMatch"
     }
     
     var connection: Connection!
@@ -40,8 +40,10 @@ class NewConnectionViewController : BaseViewController {
         profileVC.user = self.connection.user
         self.presentViewController(profileVC, animated: true)
     }
-
-    @IBAction func goToDock(sender: AnyObject) {
-        performSegue(.NewConnectionToDock)
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let chatVC = segue.destinationViewController as? ChatViewController {
+            chatVC.connection = connection
+        }
     }
 }

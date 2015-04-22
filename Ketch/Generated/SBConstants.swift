@@ -18,7 +18,7 @@ public enum SegueIdentifier : String {
     case LocationPermToWaitlist = "LocationPermToWaitlist"
     case Main_Chat = "Main_Chat"
     case Main_Profile = "Main_Profile"
-    case NewConnectionToDock = "NewConnectionToDock"
+    case NewConnectionToChat = "NewConnectionToChat"
     case NotificationsPermToLocationPerm = "NotificationsPermToLocationPerm"
     case SettingsToLoading = "SettingsToLoading"
     case Settings_Settings = "Settings_Settings"
