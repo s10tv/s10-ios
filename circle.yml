@@ -11,7 +11,7 @@ dependencies:
     - sudo gem uninstall highline commander --ignore-dependencies -x
     - sudo gem install cocoapods -v $(var=$(tail -1 Podfile.lock); echo ${var##COCOAPODS:})
     - sudo gem install cupertino shenzhen sigh
-    - ./scripts/import_credentials.sh
+    - source ./scripts/circle_env.sh && ./scripts/import_credentials.sh
   override:
     - pod update Meteor
   cache_directories:
@@ -59,4 +59,4 @@ deployment:
         cp "${BN}.ipa" "${BN}_appstore.ipa"
         sigh resign "${BN}_appstore.ipa" \
           --provisioning_profile "$HOME/Library/MobileDevice/Provisioning Profiles/commilasyaketchappstore.mobileprovision" \
-          --signing_identity "iPhone Distribution: Milasya Inc. (N25WYDCNJJ)"
+          --signing_identity "iPhone Distribution: Milasya Inc."
