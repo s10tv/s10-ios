@@ -19,6 +19,8 @@
             <string>TransatTextBlack</string>
             <string>TransatTextBlack</string>
             <string>TransatTextBlack</string>
+            <string>TransatTextBlack</string>
+            <string>TransatTextBlack</string>
         </mutableArray>
         <mutableArray key="TransatTextBold.otf">
             <string>TransatTextBold</string>
@@ -28,7 +30,6 @@
             <string>TransatTextMedium</string>
         </mutableArray>
         <mutableArray key="TransatTextStandard.otf">
-            <string>TransatTextStandard</string>
             <string>TransatTextStandard</string>
             <string>TransatTextStandard</string>
             <string>TransatTextStandard</string>
@@ -101,12 +102,12 @@ SAILED FOR TODAY.</string>
                                     <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
                                         <real key="value" value="18"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="TransatTextStandard"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="TransatTextMedium"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Know someone who’s a great Ketch?" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gQ-Xc-tOt">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Know someone who’s a great Ketch?" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4gQ-Xc-tOt">
                                 <rect key="frame" x="184" y="415" width="232" height="15"/>
-                                <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="15"/>
+                                <fontDescription key="fontDescription" name="TransatTextMedium" family="Transat Text" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -264,7 +265,7 @@ SAILED FOR TODAY.</string>
                                     </mask>
                                 </variation>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WaA-5Q-0JZ" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WaA-5Q-0JZ" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="428" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -296,7 +297,7 @@ SAILED FOR TODAY.</string>
                                     <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
                                         <real key="value" value="19"/>
                                     </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="TransatTextStandard"/>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="TransatTextMedium"/>
                                 </userDefinedRuntimeAttributes>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -320,7 +321,7 @@ SAILED FOR TODAY.</string>
                                         <real key="value" value="24"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="2"/>
+                                        <real key="value" value="3"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
                                         <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -406,7 +407,7 @@ SAILED FOR TODAY.</string>
                                     <constraint firstAttribute="width" constant="80" id="PbY-8f-jEO"/>
                                     <constraint firstAttribute="height" constant="60" id="aCf-Na-jFd"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="KetchIcon-Regular" family="KetchIcon" pointSize="12"/>
+                                <fontDescription key="fontDescription" name="KetchIcon-Regular" family="KetchIcon" pointSize="11"/>
                                 <state key="normal" title="W">
                                     <color key="titleColor" red="0.092987515029999995" green="0.64821720120000004" blue="0.65024715659999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -537,7 +538,7 @@ SAILED FOR TODAY.</string>
                                         <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                        <real key="value" value="2"/>
+                                        <real key="value" value="3"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
@@ -674,9 +675,9 @@ SAILED FOR TODAY.</string>
                                     <action selector="goBack:" destination="Y2Q-Pb-RU0" eventType="touchUpInside" id="wxR-a4-Eiq"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Your Crew" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeI-EM-vEo">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Your Crew" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xeI-EM-vEo">
                                 <rect key="frame" x="122" y="19" width="77" height="22"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="16"/>
+                                <fontDescription key="fontDescription" name="TransatTextBlack" family="Transat Text" pointSize="16"/>
                                 <color key="textColor" red="0.34509803919999998" green="0.67843137249999996" blue="0.67450980390000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -728,11 +729,11 @@ SAILED FOR TODAY.</string>
                         <viewControllerLayoutGuide type="bottom" id="eoo-xe-CXB"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="KZR-Ol-8mw">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y3W-aw-hYQ" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="60" width="600" height="540"/>
+                                <rect key="frame" x="0.0" y="60" width="320" height="420"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="y3W-aw-hYQ" secondAttribute="height" multiplier="80:57" id="Bvd-hz-vzB"/>
@@ -743,8 +744,8 @@ SAILED FOR TODAY.</string>
                                     </mask>
                                 </variation>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vk6-ib-pDk" userLabel="Title View">
-                                <rect key="frame" x="238" y="6" width="124" height="50"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vk6-ib-pDk" userLabel="Title View">
+                                <rect key="frame" x="98" y="6" width="123.5" height="50"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s9f-ke-jYd" userLabel="Avatar" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
@@ -760,9 +761,9 @@ SAILED FOR TODAY.</string>
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Anastasia" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXi-gz-q2s" userLabel="Name">
-                                        <rect key="frame" x="58" y="17" width="66" height="15"/>
-                                        <fontDescription key="fontDescription" name="TransatTextMedium" family="Transat Text" pointSize="15"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Anastasia" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXi-gz-q2s" userLabel="Name">
+                                        <rect key="frame" x="58" y="17" width="65.5" height="15"/>
+                                        <fontDescription key="fontDescription" name="TransatTextBlack" family="Transat Text" pointSize="15"/>
                                         <color key="textColor" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
@@ -779,7 +780,7 @@ SAILED FOR TODAY.</string>
                                 </constraints>
                             </view>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="mBg-ZX-aFB" customClass="JSQMessagesCollectionView">
-                                <rect key="frame" x="0.0" y="72" width="600" height="528"/>
+                                <rect key="frame" x="0.0" y="72" width="320" height="408"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewLayout key="collectionViewLayout" id="13x-4U-Eko" customClass="JSQMessagesCollectionViewFlowLayout"/>
                                 <cells/>
@@ -799,7 +800,7 @@ SAILED FOR TODAY.</string>
                                 </connections>
                             </button>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xu6-1f-SQN" customClass="JSQMessagesInputToolbar">
-                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <rect key="frame" x="0.0" y="436" width="320" height="44"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" id="Kc8-bW-9bs"/>
                                 </constraints>
@@ -849,7 +850,7 @@ SAILED FOR TODAY.</string>
                         <viewControllerLayoutGuide type="bottom" id="hcs-CT-TKC"/>
                     </layoutGuides>
                     <scrollView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" id="cM7-Ye-3kK" customClass="OneDScrollView" customModule="Ketch" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jNI-kV-mcu">
@@ -946,7 +947,7 @@ SAILED FOR TODAY.</string>
                                             <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
                                                 <real key="value" value="16"/>
                                             </userDefinedRuntimeAttribute>
-                                            <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="TransatTextStandard"/>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="TransatTextMedium"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                 </subviews>
@@ -1067,7 +1068,7 @@ SAILED FOR TODAY.</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XQk-zO-0XK" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XQk-zO-0XK" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="540" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1195,7 +1196,7 @@ SAILED FOR TODAY.</string>
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bhP-AS-XzQ" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bhP-AS-XzQ" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="576" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
@@ -1214,7 +1215,7 @@ SAILED FOR TODAY.</string>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sprite-cloud-4" translatesAutoresizingMaskIntoConstraints="NO" id="cAd-NY-cwO">
                                 <rect key="frame" x="254" y="121" width="95" height="44"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="Ydu-ga-8Jd" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="Ydu-ga-8Jd" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="159" y="299" width="284" height="78"/>
                                 <attributedString key="attributedText">
                                     <fragment content="Seems like we’re having some trouble, please give us another chance.">
@@ -1358,8 +1359,8 @@ SAILED FOR TODAY.</string>
         <image name="sprite-sun" width="218" height="186"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Oq8-XH-Rof"/>
         <segue reference="q7i-Iz-xMU"/>
         <segue reference="nCf-mq-8Rt"/>
+        <segue reference="2kk-V8-7uA"/>
     </inferredMetricsTieBreakers>
 </document>

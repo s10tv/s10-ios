@@ -28,7 +28,7 @@ import UIKit
 @IBDesignable class DesignableLabel : UILabel {
 
     @IBInspectable var fontSize: CGFloat = 13.0
-    @IBInspectable var fontName: String = "TransatTextStandard"
+    @IBInspectable var fontName: String = "TransatTextMedium"
     @IBInspectable var fontKern: CGFloat = 0
     
     var rawText : String! {

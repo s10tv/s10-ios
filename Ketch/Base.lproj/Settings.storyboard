@@ -7,8 +7,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="TransatTextBlack.otf">
+            <string>TransatTextBlack</string>
+        </mutableArray>
         <mutableArray key="TransatTextMedium.otf">
-            <string>TransatTextMedium</string>
             <string>TransatTextMedium</string>
         </mutableArray>
         <mutableArray key="TransatTextStandard.otf">
@@ -32,9 +34,9 @@
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0nO-s2-fXe" id="gD4-Ze-IHD">
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lola Forner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJy-Ux-yqE" userLabel="Name">
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Lola Forner" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IJy-Ux-yqE" userLabel="Name">
                                             <rect key="frame" x="256" y="22" width="89" height="18"/>
-                                            <fontDescription key="fontDescription" name="TransatTextMedium" family="Transat Text" pointSize="18"/>
+                                            <fontDescription key="fontDescription" name="TransatTextBlack" family="Transat Text" pointSize="18"/>
                                             <color key="textColor" red="0.1450980392" green="0.64705882349999999" blue="0.64705882349999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
@@ -152,7 +154,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="cv6-2X-pDR" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cv6-2X-pDR" customClass="WaveView" customModule="Ketch" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="567" width="600" height="580"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v0.1.0 (23b)" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8df-8X-biN">

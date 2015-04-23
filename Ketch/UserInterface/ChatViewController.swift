@@ -53,7 +53,7 @@ class ChatViewController : JSQMessagesViewController {
 //        layout.springinessEnabled = true
         layout.incomingAvatarViewSize = CGSizeZero
         layout.outgoingAvatarViewSize = CGSizeZero
-        layout.messageBubbleFont = UIFont(.transatTextLight, size: 17)
+        layout.messageBubbleFont = UIFont(.transatTextStandard, size: 17)
         // WARNING: Careful with adjusting the following two values. The combination of them allows text to be centered
         // within the avatar bubble and simultaneously empirically prevent the last line from being cutoff (for multiline)
         layout.messageBubbleExtraVerticalSpace = 5
