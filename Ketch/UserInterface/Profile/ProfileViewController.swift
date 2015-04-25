@@ -39,10 +39,10 @@ class ProfileViewController : BaseViewController {
 
         infoItems.bindToCollectionView(infoCollection, cellNibName: "ProfileInfoCell")
         infoItems.collectionViewProvider?.configureCollectionCell = { item, cell in
-            (cell as ProfileInfoCell).item = (item as ProfileInfoItem)
+            (cell as! ProfileInfoCell).item = (item as! ProfileInfoItem)
         }
         infoCollection.delegate = self
-        (view as UIScrollView).delegate = self
+        (view as! UIScrollView).delegate = self
         swipeView.clipsToBounds = false
     }
     
@@ -106,7 +106,7 @@ extension ProfileViewController : SwipeViewDataSource {
     }
     
     func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, reusingView view: UIView!) -> UIView! {
-        let v = view != nil ? view as UIImageView : UIImageView()
+        let v = view != nil ? view as! UIImageView : UIImageView()
         v.contentMode = .ScaleAspectFill
         v.sd_setImageWithURL(NSURL(user.photos![index].url))
         return v
@@ -126,12 +126,14 @@ extension ProfileViewController : SwipeViewDelegate {
 // MARK: Collection View Delegate
 
 extension ProfileViewController : UICollectionViewDelegateFlowLayout {
-    func collectionView(collectionView: UICollectionView, layout: UICollectionViewFlowLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
-        let item = infoItems.itemAtIndexPath(indexPath) as ProfileInfoItem
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let item = infoItems.itemAtIndexPath(indexPath) as! ProfileInfoItem
         var size = ProfileInfoCell.sizeForItem(item)
+        let layout = collectionViewLayout as! UICollectionViewFlowLayout
         size.width = between(layout.maxItemWidth * item.minWidthRatio, size.width, layout.maxItemWidth)
         return size
     }
+
 }
 
 // MARK: ScrollView Delegate

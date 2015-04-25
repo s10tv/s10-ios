@@ -27,7 +27,7 @@ class ProfileInfoCell : UICollectionViewCell {
     
     class func sizeForItem(item: ProfileInfoItem) -> CGSize {
         struct Static {
-            static let SizingCell = UINib(nibName: "ProfileInfoCell", bundle: nil).instantiateWithOwner(nil, options: nil).first as ProfileInfoCell
+            static let SizingCell = UINib(nibName: "ProfileInfoCell", bundle: nil).instantiateWithOwner(nil, options: nil).first as! ProfileInfoCell
         }
         Static.SizingCell.item = item
         Static.SizingCell.setNeedsLayout()

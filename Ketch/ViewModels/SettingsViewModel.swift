@@ -13,13 +13,13 @@ import Meteor
 class SettingsViewModel {
     let currentUser: User
     let settings: Settings
-    let items: [SettingsItem] = []
+    var items: [SettingsItem] = [] // TODO: Really should be let, not var, but yea.
     private var disposables: [RACDisposable] = []
     
     init(currentUser: User, settings: Settings) {
         self.currentUser = currentUser
         self.settings = settings
-        items = createItems()
+        self.items = createItems()
     }
     
     deinit {
@@ -124,9 +124,9 @@ class SettingsViewModel {
             (notification: NSNotification) in
             if let changes = notification.userInfo?[METDatabaseChangesKey] as? METDatabaseChanges {
                 // TODO: This has been duplicated way too many times, refactor
-                let pairs = changes.affectedDocumentKeys().allObjects
-                    .map { $0 as METDocumentKey }
-                    .map { ($0.collectionName, $0.documentID as String) }
+                let pairs = Array(changes.affectedDocumentKeys())
+                    .map { $0 as! METDocumentKey }
+                    .map { ($0.collectionName, $0.documentID as! String) }
                 for (name, key) in pairs {
                     if name == "settings" && key == metadataKey {
                         item.value._update(self.settings.getValue(key))

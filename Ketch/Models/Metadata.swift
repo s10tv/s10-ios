@@ -36,13 +36,13 @@ class Metadata {
         get { return getValue(.HasBeenWelcomed) as? Bool }
         set { setValue(newValue, key: .HasBeenWelcomed) }
     }
-    var debugState: FlowService.State? {
-        get { return (getValue(.DebugState) as? String).map { FlowService.State(rawValue: $0) }? }
-        set { setValue(newValue?.rawValue, key: .DebugState) }
-    }
     var logVerboseState: Bool {
         get { return getValue(.LogVerboseState) as? Bool ?? false }
         set { setValue(newValue, key: .LogVerboseState) }
+    }
+    var debugState: FlowService.State? {
+        get { return FlowService.State(rawValue: (getValue(.DebugState) as? String) ?? "") }
+        set { setValue(newValue?.rawValue, key: .DebugState) }
     }
     
     // MARK: -

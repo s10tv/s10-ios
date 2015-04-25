@@ -25,7 +25,7 @@ struct SettingsItem {
     let formatBlock: (AnyObject? -> String)?
     let editable: Bool
     
-    var icon: UIImage? { return iconName.map { UIImage(named: $0) }? }
+    var icon: UIImage? { return iconName.map { UIImage(named: $0) }! }
     var formattedText: String { return formatBlock?(value.current) ?? value.current?.description ?? "" }
     
     init(type: ItemType, iconName: String? = nil, editable: Bool = true, formatBlock: (AnyObject? -> String)? = nil, updateBlock: (AnyObject? ->())? = nil) {

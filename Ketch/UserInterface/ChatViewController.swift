@@ -65,6 +65,8 @@ class ChatViewController : JSQMessagesViewController {
         assert(connection != nil, "Connection must be set before attempting to load chat")
         viewModel = MessagesViewModel(connection: connection!, delegate: self)
         
+        senderDisplayName = viewModel.sender.displayName
+        senderId = viewModel.sender.documentID
         nameLabel.text = viewModel.recipient.firstName
         avatarView.user = viewModel.recipient
         
@@ -135,13 +137,6 @@ class ChatViewController : JSQMessagesViewController {
 // MARK: - JSQMessagesCollectionViewDataSource
 
 extension ChatViewController : JSQMessagesCollectionViewDataSource {
-    func senderDisplayName() -> String! {
-        return viewModel.sender.displayName
-    }
-    
-    func senderId() -> String! {
-        return viewModel.sender.documentID
-    }
     
     override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         assert(section == 0, "Only 1 section is supported in chat")
@@ -149,7 +144,7 @@ extension ChatViewController : JSQMessagesCollectionViewDataSource {
     }
     
     override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPath) as JSQMessagesCollectionViewCell
+        let cell = super.collectionView(collectionView, cellForItemAtIndexPath: indexPath) as! JSQMessagesCollectionViewCell
         cell.textView.textColor = viewModel.messageAtIndex(indexPath.row).outgoing ? StyleKit.white : StyleKit.navy
         cell.textView.linkTextAttributes = [
             NSForegroundColorAttributeName: StyleKit.teal,

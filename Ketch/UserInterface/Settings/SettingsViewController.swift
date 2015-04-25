@@ -23,7 +23,7 @@ class SettingsViewController : BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        formController = makeViewController(.SettingsForm) as SettingsFormViewController
+        formController = makeViewController(.SettingsForm) as! SettingsFormViewController
         addChildViewController(formController)
         view.insertSubview(formController.view, atIndex: 0)
         constrain(formController.view, view, waveView) { tableView, view, waveView in

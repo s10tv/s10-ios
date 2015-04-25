@@ -21,7 +21,7 @@ class Connection: _Connection {
     
     // NOTE: Not meaningfully ordered for performance, despite array return type.
     var messages: [Message] {
-        return fetchMessages(sorted: false).fetchObjects() as [Message]
+        return fetchMessages(sorted: false).fetchObjects() as! [Message]
     }
     
     var isCrabConnection : Bool {

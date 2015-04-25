@@ -132,7 +132,7 @@ class FlowService : NSObject {
                 "candidateCount \(ms.collections.candidates.allDocuments?.count)\n",
                 "waitingOnGameResult \(waitingOnGameResult)\n",
                 "newMatchToShow \(newMatchToShow)\n"
-            ].reduce("", +))
+            ].reduce("", combine: +))
         }
 
         // Startup Flow

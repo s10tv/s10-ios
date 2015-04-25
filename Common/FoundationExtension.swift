@@ -33,7 +33,7 @@ extension Double {
 // Foundation Types
 
 extension String {
-    var length: Int { return countElements(self) }
+    var length: Int { return count(self) }
     
     var stringByCapitalizingFirstCharacter : String {
         let firstChar = substringToIndex(1)
@@ -69,7 +69,7 @@ extension String {
     func replaceCharactersInRange(range:Range<Int>, withString: String!) -> String {
         var result:NSMutableString = NSMutableString(string: self)
         result.replaceCharactersInRange(NSRange(range), withString: withString)
-        return result
+        return result as String
     }
 }
 
@@ -95,7 +95,7 @@ extension Array {
         removeAll(keepCapacity: true)
         
         for (index, current) in enumerate(anotherSelf) {
-            if current as U != element {
+            if current as! U != element {
                 self.append(current)
             }
         }
@@ -169,13 +169,13 @@ extension NSData {
 
 extension NSAttributedString {
     func replace(#text: String) -> NSAttributedString {
-        let attrString = mutableCopy() as NSMutableAttributedString
+        let attrString = mutableCopy() as! NSMutableAttributedString
         attrString.mutableString.setString(text)
         return attrString
     }
     
     func replace(#font: UIFont, kern: CGFloat? = nil, color: UIColor? = nil) -> NSAttributedString {
-        let attrString = mutableCopy() as NSMutableAttributedString
+        let attrString = mutableCopy() as! NSMutableAttributedString
         let range = NSMakeRange(0, attrString.length)
         attrString.addAttribute(NSFontAttributeName, value:font, range: range)
         if let kern = kern {
@@ -188,7 +188,7 @@ extension NSAttributedString {
     }
     
     func replace(configure: (NSMutableAttributedString, NSRange) -> ()) -> NSAttributedString {
-        let attrString = mutableCopy() as NSMutableAttributedString
+        let attrString = mutableCopy() as! NSMutableAttributedString
         let range = NSMakeRange(0, attrString.length)
         configure(attrString, range)
         return attrString

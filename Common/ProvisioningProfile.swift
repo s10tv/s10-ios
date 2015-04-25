@@ -20,7 +20,7 @@ class ProvisioningProfile {
     
     let info : [NSObject : AnyObject]
     
-    var name : String { return info["Name"]! as String }
+    var name : String { return info["Name"]! as! String }
     var entitlements : NSDictionary? {
         return info["Entitlements"] as? NSDictionary
     }

@@ -53,7 +53,7 @@ class NotificationsPermissionViewController : BaseViewController {
             categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
         listenForNotification(AppDidRegisterUserNotificationSettings).take(1).subscribeNextAs { (note: NSNotification) in
-            let settings = note.object as UIUserNotificationSettings
+            let settings = note.object as! UIUserNotificationSettings
             self.performSegue(.NotificationsPermToLocationPerm)
         }
     }

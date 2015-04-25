@@ -64,7 +64,7 @@ import UIKit
         layer.addSublayer(outlineLayer)
         
         // Animate the wave mask
-        let maskPath = wave.copy() as UIBezierPath
+        let maskPath = wave.copy() as! UIBezierPath
         maskPath.addLineTo(distance: waveLength, bearing: 90)
         maskPath.addLineTo(distance: frame.height+1, bearing: 180)
         maskPath.addLineTo(distance: waveLength * (periods+1), bearing: 270)

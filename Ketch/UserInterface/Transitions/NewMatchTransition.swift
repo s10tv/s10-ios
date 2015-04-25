@@ -18,7 +18,7 @@ class NewMatchTransition : SailAwayTransition {
     }
     
     func animateAvatarPop() -> RACSignal {
-        let avatar = (toVC as NewConnectionViewController).avatar.layer
+        let avatar = (toVC as! NewConnectionViewController).avatar.layer
         
         let springUp = RBBSpringAnimation(keyPath: "position.y")
         springUp.fromValue = avatar.position.y + containerView.frame.height

@@ -14,7 +14,7 @@ class ProfileInfoItem {
     }
     let type : ItemType
     let imageName : R.KetchAssets
-    let minWidthRatio : CGFloat = 1
+    let minWidthRatio : CGFloat
     
     var image : UIImage! {
         return UIImage(named: imageName.rawValue)
@@ -37,6 +37,7 @@ class ProfileInfoItem {
         switch type {
         case .Location:
             imageName = R.KetchAssets.settingsLocation
+            minWidthRatio = 1
         case .Age:
             imageName = R.KetchAssets.settingsAge
             minWidthRatio = 0
@@ -45,8 +46,10 @@ class ProfileInfoItem {
             minWidthRatio = 0
         case .Work:
             imageName = R.KetchAssets.settingsBriefcase
+            minWidthRatio = 1
         case .Education:
             imageName = R.KetchAssets.settingsMortarBoard
+            minWidthRatio = 1
         }
     }
 }

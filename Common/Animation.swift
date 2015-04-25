@@ -33,9 +33,9 @@ extension UIView {
 // Class Extensions
 extension UIView {
     
-    class func animateSpring(duration: NSTimeInterval, animations: () -> ()) -> RACSignal {
-        return UIView.animateSpring(duration, delay: 0, animations: animations)
-    }
+//    class func animateSpring(duration: NSTimeInterval, animations: () -> ()) -> RACSignal {
+//        return UIView.animateSpring(duration, delay: 0, animations: animations)
+//    }
     
     class func animateSpring(duration: NSTimeInterval, damping: CGFloat = 0.7, velocity: CGFloat = 0.7,
                         options: UIViewAnimationOptions = nil, delay: NSTimeInterval = 0, animations: () -> ()) -> RACSignal {
@@ -48,9 +48,9 @@ extension UIView {
         return subject
     }
     
-    class func animate(duration: NSTimeInterval, animations: () -> ()) -> RACSignal {
-        return UIView.animate(duration, delay: 0, animations: animations)
-    }
+//    class func animate(duration: NSTimeInterval, animations: () -> ()) -> RACSignal {
+//        return UIView.animate(duration, delay: 0, animations: animations)
+//    }
     
     class func animate(duration: NSTimeInterval, options: UIViewAnimationOptions = nil, delay: NSTimeInterval = 0, animations: () -> ()) -> RACSignal {
         let subject = RACSubject()
@@ -99,7 +99,7 @@ extension CAAnimation {
         if !(delegate is ProxyDelegate) {
             delegate = ProxyDelegate()
         }
-        return (delegate as ProxyDelegate).subject
+        return (delegate as! ProxyDelegate).subject
     }
     
     // CAAnimation has value semantic, must save signal prior to adding to layer

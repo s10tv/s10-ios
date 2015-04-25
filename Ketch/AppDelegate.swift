@@ -120,7 +120,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         Log.info("Registered for push \(deviceToken)")
         if let apsEnv = Globals.env.provisioningProfile?.apsEnvironment?.rawValue {
-            Meteor.updateDevicePush(apsEnv, pushToken: deviceToken.hexString())
+            Meteor.updateDevicePush(apsEnv, pushToken: deviceToken.hexString() as String)
         }
     }
     

@@ -61,7 +61,7 @@ class HeightRowDescriptor : RowDescriptor {
     
     // Ghetoo height calculation code...
     var height: Int {
-        get { return value as Int }
+        get { return value as! Int }
         set { value = newValue }
     }
     var imperialHeight: (feet: Int, inches: Int) {

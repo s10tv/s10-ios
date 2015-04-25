@@ -162,7 +162,7 @@ class GameViewController : HomeViewController {
         }
         
         var location = pan.locationInView(view)
-        let bubble = pan.view as CandidateBubble
+        let bubble = pan.view as! CandidateBubble
         
         switch pan.state {
         case .Began:
@@ -192,12 +192,12 @@ class GameViewController : HomeViewController {
     // MARK: - Navigation Logic
     
     func handleBubbleTap(tap: UITapGestureRecognizer) {
-        let candidate = (tap.view as CandidateBubble).candidate!
+        let candidate = (tap.view as! CandidateBubble).candidate!
         if tap.state == .Ended {
             let users = candidates.map { $0.user! }
             let index = find(candidates, candidate)!
             let pageVC = ProfileViewController.pagedController(users, initialPage: index) {
-                self.makeViewController(.Profile) as ProfileViewController
+                self.makeViewController(.Profile) as! ProfileViewController
             }
             presentViewController(pageVC, animated: true)
         }

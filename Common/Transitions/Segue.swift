@@ -10,8 +10,8 @@ import Foundation
 import QuartzCore
 
 extension UIStoryboardSegue {
-    var sourceVC : UIViewController { return sourceViewController as UIViewController }
-    var destVC : UIViewController { return destinationViewController as UIViewController }
+    var sourceVC : UIViewController { return sourceViewController as! UIViewController }
+    var destVC : UIViewController { return destinationViewController as! UIViewController }
     var navVC : UINavigationController? { return sourceVC.navigationController }
 }
 
@@ -59,24 +59,24 @@ private func loadSceneNamed(fullIdentifier: String) -> UIViewController {
     let storyboard = UIStoryboard(name: comps[0], bundle: nil)
     if let vcIdentifier = comps.count > 1 ? comps[1] : nil {
         if vcIdentifier.length > 0 {
-            return storyboard.instantiateViewControllerWithIdentifier(vcIdentifier) as UIViewController
+            return storyboard.instantiateViewControllerWithIdentifier(vcIdentifier) as! UIViewController
         }
     }
-    return storyboard.instantiateInitialViewController() as UIViewController
+    return storyboard.instantiateInitialViewController() as! UIViewController
 }
 
 // TODO: Remove this class after we investigate CoreAnimation calls inside perform
 class PushFromLeftSegue : UIStoryboardSegue {
     
     override func perform() {
-        if let navVC = (self.sourceViewController as UIViewController).navigationController {
+        if let navVC = (self.sourceViewController as! UIViewController).navigationController {
             let transition = CATransition()
             transition.duration = 0.25
             transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
             transition.type = kCATransitionPush
             transition.subtype = kCATransitionFromLeft
             navVC.view.layer.addAnimation(transition, forKey: kCATransition)
-            navVC.pushViewController(destinationViewController as UIViewController, animated: false)
+            navVC.pushViewController(destinationViewController as! UIViewController, animated: false)
         }
     }
 }

@@ -43,7 +43,7 @@ class CandidateBubble : BaseView {
     
     // MARK: - Scaling avatar size as bubble size increases
     
-    override func touchesBegan(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
         super.touchesBegan(touches, withEvent: event)
         UIView.animateWithDuration(scaleDuration) {
             self.layer.zPosition = 1
@@ -51,7 +51,7 @@ class CandidateBubble : BaseView {
         }
     }
     
-    override func touchesEnded(touches: NSSet, withEvent event: UIEvent) {
+    override func touchesEnded(touches: Set<NSObject>, withEvent event: UIEvent) {
         super.touchesEnded(touches, withEvent: event)
         UIView.animate(scaleDuration, delay: 0.1) {
             self.layer.zPosition = 0

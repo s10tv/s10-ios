@@ -200,7 +200,7 @@ class MeteorService {
     
     func sendMessage(connection: Connection, text: String) -> RACSignal {
         return meteor.call("connection/sendMessage", [connection.documentID!, text]) {
-            let message = Message.create() as Message
+            let message = Message.create() as! Message
             message.connection = connection
             message.sender = User.currentUser()
             message.text = text

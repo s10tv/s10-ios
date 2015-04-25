@@ -14,7 +14,7 @@ class NewGameTransition : WaveTransition {
     let waveDuration : NSTimeInterval = 1
     let bubbleDropDuration : NSTimeInterval = 1
     let bubbleDropInterval : NSTimeInterval = 0.1
-    var gameVC : GameViewController { return toVC as GameViewController }
+    var gameVC : GameViewController { return toVC as! GameViewController }
     
     override func setup() {
         duration = waveDuration + bubbleDropDuration + bubbleDropDuration * 2

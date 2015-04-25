@@ -132,7 +132,7 @@ extension UIView {
     }
     
     func deepCopy() -> UIView {
-        return NSKeyedUnarchiver.unarchiveObjectWithData(NSKeyedArchiver.archivedDataWithRootObject(self)) as UIView
+        return NSKeyedUnarchiver.unarchiveObjectWithData(NSKeyedArchiver.archivedDataWithRootObject(self)) as! UIView
     }
     
     class func fromNib(nibName: String, owner: AnyObject? = nil) -> UIView? {
@@ -161,7 +161,7 @@ extension UICollectionViewFlowLayout {
 }
 
 func DebugPrintAllFonts() {
-    for familyName in UIFont.familyNames() as [String] {
+    for familyName in UIFont.familyNames() as! [String] {
         println("Family: \(familyName)")
         for fontName in UIFont.fontNamesForFamilyName(familyName) {
             println("\tFont: \(fontName)")

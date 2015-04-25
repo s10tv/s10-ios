@@ -34,7 +34,7 @@ class Settings {
     var vetted : Bool? { return getValue(.Vetted) as? Bool }
     var email : String? { return getValue(.Email) as? String }
     var genderPref : GenderPref? {
-        return (getValue(.GenderPref) as? String).map { GenderPref(rawValue: $0) }?
+        return GenderPref(rawValue: (getValue(.GenderPref) as? String) ?? "")
     }
     var debugLoginMode: Bool { return getValue(.DebugLoginMode) as? Bool ?? devAudience }
     var devAudience: Bool { return Globals.env.audience == .Dev }

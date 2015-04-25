@@ -15,7 +15,7 @@ class PageViewController : BaseViewController {
     var viewControllers : [UIViewController] = []
     var currentViewController : UIViewController? {
         assert(pageVC.viewControllers.count <= 1, "Expecting at most 1 in viewControllers")
-        return pageVC.viewControllers.last as UIViewController?
+        return pageVC.viewControllers.last as! UIViewController?
     }
     var currentPage : Int? {
         if let currentVC = currentViewController {

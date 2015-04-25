@@ -43,7 +43,7 @@ class CollectionViewProvider : NSObject, UICollectionViewDelegate, UICollectionV
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellNibName, forIndexPath: indexPath) as UICollectionViewCell
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(cellNibName, forIndexPath: indexPath) as! UICollectionViewCell
         configureCollectionCell?(item: delegate.itemAtIndexPath(indexPath), cell: cell)
         return cell
     }
@@ -83,7 +83,7 @@ class TableViewProvider : NSObject, UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(cellNibName, forIndexPath: indexPath) as UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(cellNibName, forIndexPath: indexPath) as! UITableViewCell
         configureTableCell?(item: delegate.itemAtIndexPath(indexPath), cell: cell)
         return cell
     }

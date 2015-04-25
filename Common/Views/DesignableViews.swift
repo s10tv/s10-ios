@@ -13,7 +13,7 @@ import UIKit
     override func commonInit() {
         let bundle = NSBundle(forClass: self.dynamicType)
         let nib = UINib(nibName: self.nibName(), bundle: bundle)
-        let view = nib.instantiateWithOwner(self, options: nil)[0] as UIView
+        let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
         insertSubview(view, atIndex: 0)
         view.setTranslatesAutoresizingMaskIntoConstraints(false)
         view.makeEdgesEqualTo(self)

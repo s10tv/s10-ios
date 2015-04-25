@@ -1,7 +1,6 @@
 platform :ios, '8.0'
 
 source 'https://github.com/CocoaPods/Specs.git'
-source 'https://github.com/tonyxiao/Podspecs.git'
 
 inhibit_all_warnings!
 use_frameworks!
@@ -10,18 +9,18 @@ link_with 'Ketch'
 
 pod 'ReactiveCocoa', '~> 2.4' # Update to 3.0 when ready
 
-pod 'SugarRecord/CoreData', :git => 'https://github.com/tonyxiao/SugarRecord'
+pod 'SugarRecord/CoreData', :git => 'https://github.com/tonyxiao/SugarRecord', :branch => 'swift-1.2'
 pod 'Meteor', :git => 'https://github.com/tonyxiao/meteor-ios', :branch => 'dev'
-pod 'SwiftyUserDefaults', '~> 1.0'
+pod 'SwiftyUserDefaults', '~> 1.1'
 pod 'SwiftTryCatch', '~> 0.0.1'
 
 pod 'SwipeView', '~> 1.3'
 pod 'JSQMessagesViewController', :git => 'https://github.com/tonyxiao/JSQMessagesViewController'
 pod 'SDWebImage', '~> 3.7'
-pod 'PKHUD', '2.0.1-fork' # Fork is needed to work around xcasset compilation issue inside pod
+pod 'PKHUD', :git => 'https://github.com/tonyxiao/PKHUD' # Fork is needed to work around xcasset compilation issue inside pod
 pod 'XLForm', '~> 2.2'
 
-pod 'Cartography', '~> 0.3'
+pod 'Cartography', '~> 0.5'
 pod 'UICollectionViewLeftAlignedLayout', '~> 0.0.3'
 
 #pod 'Spring', '~> 1.0'

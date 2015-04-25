@@ -30,7 +30,7 @@ class User: _User {
     
     var photos : [Photo]? {
         if let urls = photoURLs as? [NSString] {
-            return urls.map { Photo(url: $0) }
+            return urls.map { Photo(url: $0 as String) }
         }
         return nil
     }
@@ -63,9 +63,9 @@ class User: _User {
         return Candidate.by(CandidateRelationships.user.rawValue, value: self).frc()
     }
     
-    override class func keyPathsForValuesAffectingValueForKey(key: String) -> NSSet {
+    override class func keyPathsForValuesAffectingValueForKey(key: String) -> Set<NSObject> {
         if key == "displayName" {  // TODO: Use native set syntax. TODO: Can we avoid hardcoding displayName?
-            return NSSet(array: [UserAttributes.firstName.rawValue, UserAttributes.lastName.rawValue])
+            return [UserAttributes.firstName.rawValue, UserAttributes.lastName.rawValue]
         }
         return super.keyPathsForValuesAffectingValueForKey(key)
     }

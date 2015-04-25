@@ -67,7 +67,7 @@ class MessagesViewModel : NSObject {
     }
     
     func messageAtIndex(index: Int) -> Message {
-        return frc.fetchedObjects?[index] as Message
+        return frc.fetchedObjects?[index] as! Message
     }
     
     // TODO: Should this return raw string? And let viewLayer make it attributed?
@@ -113,7 +113,7 @@ extension MessagesViewModel : NSFetchedResultsControllerDelegate {
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
         Log.verbose("controller:didChangeObject \(anObject) changeType: \(type.rawValue)")
         if !sendingMessage {
-            changedMessages.append(anObject as Message)
+            changedMessages.append(anObject as! Message)
         }
     }
     

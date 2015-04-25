@@ -38,7 +38,7 @@ class BaseViewController : UIViewController {
         commonInit()
     }
     
-    override convenience init() {
+    convenience init() {
         self.init(nibName: nil, bundle: nil)
     }
     
@@ -54,9 +54,9 @@ class BaseViewController : UIViewController {
         metadataDisposable = listenForNotification(METDatabaseDidChangeNotification)
             .deliverOnMainThread().subscribeNextAs { (notification: NSNotification) in
             if let changes = notification.userInfo?[METDatabaseChangesKey] as? METDatabaseChanges {
-                changes.affectedDocumentKeys().allObjects.filter {
-                    ($0 as? METDocumentKey)?.collectionName == "metadata"
-                }.map { $0.documentID as String }.each {
+                Array(changes.affectedDocumentKeys()).filter {
+                    ($0 as! METDocumentKey).collectionName == "metadata"
+                }.map { ($0 as! METDocumentKey).documentID as! String }.each {
                     self.metadataDidUpdateWhileViewActive($0, value: Meteor.meta.getValue($0))
                 }
             }

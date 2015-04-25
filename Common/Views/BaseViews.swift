@@ -22,20 +22,20 @@ extension UIView {
         set { layer.borderWidth = newValue }
     }
     
-    @IBInspectable var borderColor: UIColor {
+    @IBInspectable var borderColor: UIColor? {
         get { return UIColor(CGColor: layer.borderColor) }
-        set { layer.borderColor = newValue.CGColor }
+        set { layer.borderColor = newValue?.CGColor }
     }
     
-    @IBInspectable var shadowColor: UIColor {
+    @IBInspectable var shadowColor: UIColor? {
         get { return UIColor(CGColor: layer.shadowColor) }
-        set { layer.shadowColor = newValue.CGColor }
+        set { layer.shadowColor = newValue?.CGColor }
     }
 }
 
 class BaseView : UIView {
 
-    override convenience init() {
+    convenience init() {
         self.init(frame: CGRectZero)
     }
     
@@ -61,7 +61,7 @@ class TransparentView : BaseView {
             if !passThroughTouchOnSelf {
                 return true
             }
-            for subview in subviews as [UIView] {
+            for subview in subviews as! [UIView] {
                 if !subview.hidden &&
                     subview.pointInside(convertPoint(point, toView: subview), withEvent: event) {
                         return true

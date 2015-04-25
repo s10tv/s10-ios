@@ -87,9 +87,9 @@ class UpgradeService : NSObject {
     
     func databaseDidChange(notification: NSNotification) {
         if let changes = notification.userInfo?[METDatabaseChangesKey] as? METDatabaseChanges {
-            let pairs = changes.affectedDocumentKeys().allObjects
-                .map { $0 as METDocumentKey }
-                .map { ($0.collectionName, $0.documentID as String) }
+            let pairs = Array(changes.affectedDocumentKeys())
+                .map { $0 as! METDocumentKey }
+                .map { ($0.collectionName, $0.documentID as! String) }
             for (name, key) in pairs {
                 if name == "metadata" && (key == "softMinBuild" || key == "hardMinBuild") {
                     self.promptForUpgradeIfNeeded()

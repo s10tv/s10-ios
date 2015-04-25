@@ -16,7 +16,7 @@ class Candidate: _Candidate {
     }
 
     class func candidateQueue() -> [Candidate] {
-        return Candidate.all().fetch().map { $0 as Candidate }
+        return Candidate.all().fetch().map { $0 as! Candidate }
     }
 
     class func findByDocumentID(documentID: String) -> Candidate? {

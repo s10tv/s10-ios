@@ -12,7 +12,7 @@ import ReactiveCocoa
 class SailAwayTransition : WaveTransition {
     let boatDuration: NSTimeInterval = 1
     var boat: KetchBoatView {
-        return fromView!.subviews.match { $0 is KetchBoatView } as KetchBoatView
+        return fromView!.subviews.match { $0 is KetchBoatView } as! KetchBoatView
     }
     
     override func setup() {

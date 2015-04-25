@@ -90,7 +90,7 @@ extension FetchViewModel : ProviderDelegate {
     }
     
     func numberOfItemsInSection(section: Int) -> Int {
-        return (frc.sections![section] as NSFetchedResultsSectionInfo).numberOfObjects
+        return (frc.sections![section] as! NSFetchedResultsSectionInfo).numberOfObjects
     }
     
     func itemAtIndexPath(indexPath: NSIndexPath) -> AnyObject {

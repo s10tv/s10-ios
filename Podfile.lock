@@ -14,7 +14,7 @@ PODS:
     - Analytics/Core-iOS
   - Bolts (1.1.3)
   - BugfenderSDK (0.3.2)
-  - Cartography (0.3.0)
+  - Cartography (0.5.0)
   - CrashlyticsFramework (2.2.10)
   - DateTools (1.5.0)
   - DTFoundation/Core (1.7.5)
@@ -41,7 +41,7 @@ PODS:
   - NSLogger (1.5.1):
     - NSLogger/Standard (= 1.5.1)
   - NSLogger/Standard (1.5.1)
-  - PKHUD (2.0.1-fork)
+  - PKHUD (2.0.1)
   - PocketSocket (0.6.4)
   - Quick (0.3.1)
   - RBBAnimation (0.3.0)
@@ -61,7 +61,7 @@ PODS:
   - SugarRecord/CoreData (1.0.7):
     - SugarRecord/Core
   - SwiftTryCatch (0.0.1)
-  - SwiftyUserDefaults (1.0.0)
+  - SwiftyUserDefaults (1.1.0)
   - SwipeView (1.3.2)
   - TCMobileProvision (1.0.0):
     - DTFoundation/DTASN1 (~> 1.6)
@@ -74,7 +74,7 @@ DEPENDENCIES:
   - Analytics/Mixpanel (from `https://github.com/tonyxiao/analytics-ios.git`)
   - Analytics/Segmentio (from `https://github.com/tonyxiao/analytics-ios.git`)
   - BugfenderSDK (from `https://github.com/bugfender/BugfenderSDK-iOS.git`, tag `0.3.2`)
-  - Cartography (~> 0.3)
+  - Cartography (~> 0.5)
   - CrashlyticsFramework (~> 2.2)
   - DateTools (~> 1.5)
   - EDColor (~> 0.4)
@@ -86,15 +86,15 @@ DEPENDENCIES:
   - Meteor (from `https://github.com/tonyxiao/meteor-ios`, branch `dev`)
   - Nimble (~> 0.3.0)
   - NSLogger (~> 1.5)
-  - PKHUD (= 2.0.1-fork)
   - Quick (~> 0.3)
+  - PKHUD (from `https://github.com/tonyxiao/PKHUD`)
   - RBBAnimation (~> 0.3.0)
   - ReactiveCocoa (~> 2.4)
   - Reveal-iOS-SDK (~> 1.5)
   - SDWebImage (~> 3.7)
-  - SugarRecord/CoreData (from `https://github.com/tonyxiao/SugarRecord`)
+  - SugarRecord/CoreData (from `https://github.com/tonyxiao/SugarRecord`, branch `swift-1.2`)
   - SwiftTryCatch (~> 0.0.1)
-  - SwiftyUserDefaults (~> 1.0)
+  - SwiftyUserDefaults (~> 1.1)
   - SwipeView (~> 1.3)
   - TCMobileProvision (from `https://github.com/tonyxiao/TCMobileProvision.git`)
   - UICollectionViewLeftAlignedLayout (~> 0.0.3)
@@ -111,7 +111,10 @@ EXTERNAL SOURCES:
   Meteor:
     :branch: dev
     :git: https://github.com/tonyxiao/meteor-ios
+  PKHUD:
+    :git: https://github.com/tonyxiao/PKHUD
   SugarRecord:
+    :branch: swift-1.2
     :git: https://github.com/tonyxiao/SugarRecord
   TCMobileProvision:
     :git: https://github.com/tonyxiao/TCMobileProvision.git
@@ -124,13 +127,16 @@ CHECKOUT OPTIONS:
     :git: https://github.com/bugfender/BugfenderSDK-iOS.git
     :tag: 0.3.2
   JSQMessagesViewController:
-    :commit: bb35d0d9f6643c5e078cfab07b269a0b30a9e295
+    :commit: 4176299848035dc6418d330f52255efc238ca6e1
     :git: https://github.com/tonyxiao/JSQMessagesViewController
   Meteor:
     :commit: 49234e9616f970c12a152ea9ba80e6965760b9ce
     :git: https://github.com/tonyxiao/meteor-ios
+  PKHUD:
+    :commit: 84626dc4675ef2ce9f729b0ee10b89c722ad21ee
+    :git: https://github.com/tonyxiao/PKHUD
   SugarRecord:
-    :commit: ecf73acf39e6d2a595f912470e1a54050e0e3eb4
+    :commit: cb84c39ff5af72c629d4764fc13716bbcea6bdcf
     :git: https://github.com/tonyxiao/SugarRecord
   TCMobileProvision:
     :commit: e6dd3e98ddbd20fc9a87bc648130d0bcab141915
@@ -141,7 +147,7 @@ SPEC CHECKSUMS:
   Analytics: a9e1f3841613ae0edb341fe2819a224d8889e80c
   Bolts: e431c88fd02115d4a34016c2100bbfa4d2d5b146
   BugfenderSDK: fed79568bc0d970d71843c009241ce51bb6b00e1
-  Cartography: cfaaaa04e68ecd5566368f99f01898a8eb0819d5
+  Cartography: 774e5cc446f5a6bca5d4345c5aa6af9a1fe74dc6
   CrashlyticsFramework: 2f7c515a2d74c8636bf47e761621f2f68193747e
   DateTools: b93a2c2017747329c6077c7d7e8a75106e23d0d7
   DTFoundation: 1d28080c20c3da041706545363f8238ab53a6204
@@ -157,7 +163,7 @@ SPEC CHECKSUMS:
   Mixpanel: 488567f7138408f360377dd46e1d189655f8b435
   Nimble: 1b3c765852d63b9540a91e528e1e4f8afab79b6f
   NSLogger: 5ed223a2436df96244e033be750656dacdeec034
-  PKHUD: e3dc044f154033ba34063c4b057eda9cc93a4b68
+  PKHUD: 27346b72187c3cbff20c174f2b1f88c999a4ef13
   PocketSocket: eee7ef375f55b98e7ca79e097d9c61fd688e9494
   Quick: 824572d3d198d51e52cf4aa722cebf7e59952a35
   RBBAnimation: cb6cb419f511434ce932f7d0fabf369612fafb4e
@@ -167,7 +173,7 @@ SPEC CHECKSUMS:
   SimpleKeychain: 8de48eb1de10c6403911a6be52e127e5b5d31404
   SugarRecord: 9d55ce666e8161eacdc95c996173eb53eb6d3683
   SwiftTryCatch: fb6d2b34abe48efd69578dac919293a44f95b481
-  SwiftyUserDefaults: 76cb548fdbcb0d28c27bfa01e261fd78df65e38f
+  SwiftyUserDefaults: ae600cd466daa1420a058d09aefbf45ccb6caf1e
   SwipeView: bd67cfaf7760c036438446b3ccb28a3b84fce009
   TCMobileProvision: 2a8962b38821a20fad53b9d7851bbc9ae8c52995
   TRVSDictionaryWithCaseInsensitivity: 51d2ccf52c6d645d27b63467a98fa02c556e01b0

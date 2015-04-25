@@ -28,7 +28,7 @@ class DockViewController : BaseViewController {
         connections = FetchViewModel(frc: Connection.by(ConnectionAttributes.type.rawValue, value: "yes").sorted(by: sortDescriptor).frc())
         connections.bindToTableView(tableView, cellNibName: "ConnectionCell")
         connections.tableViewProvider?.configureTableCell = { (item, cell) -> Void in
-            (cell as ConnectionCell).connection = (item as Connection)
+            (cell as! ConnectionCell).connection = (item as! Connection)
         }
         connections.tableViewProvider?.didSelectItem = { [weak self] item in
             self?.selectedConnection = item as? Connection

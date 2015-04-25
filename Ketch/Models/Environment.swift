@@ -38,10 +38,10 @@ class Environment {
         return NSBundle.mainBundle().bundleIdentifier!
     }
     var version: String {
-        return NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as String
+        return NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String
     }
     var build: String {
-        return NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleVersionKey) as String
+        return NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleVersionKey as String) as! String
     }
     var deviceId: String {
         return UIDevice.currentDevice().getPersistentIdentifier()
@@ -85,6 +85,7 @@ class Environment {
                 return .Dev
             }
             let profileType = profile?.type ?? .AppStore
+
             switch profileType {
                 case .Development:      return .Dev
                 case .Enterprise:       return .Beta

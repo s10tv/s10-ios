@@ -13,10 +13,10 @@ import UIKit
 
 extension UIStoryboard {
     func makeViewController(identifier: ViewControllerStoryboardIdentifier) -> UIViewController {
-        return instantiateViewControllerWithIdentifier(identifier.rawValue) as UIViewController
+        return instantiateViewControllerWithIdentifier(identifier.rawValue) as! UIViewController
     }
     func makeInitialViewController() -> UIViewController {
-        return instantiateInitialViewController() as UIViewController
+        return instantiateInitialViewController() as! UIViewController
     }
 }
 
