@@ -17,6 +17,7 @@ class Settings {
         case Vetted = "vetted"
         case Email = "email"
         case GenderPref = "genderPref"
+        case DebugLoginMode = "debugLoginMode"
     }
     enum GenderPref : String {
         case Men = "men"
@@ -33,6 +34,8 @@ class Settings {
     var genderPref : GenderPref? {
         return (getValue(.GenderPref) as? String).map { GenderPref(rawValue: $0) }?
     }
+    var debugLoginMode: Bool { return getValue(.DebugLoginMode) as? Bool ?? devAudience }
+    var devAudience: Bool { return Globals.env.audience == .Dev }
     
     init(collection: METCollection) {
         self.collection = collection

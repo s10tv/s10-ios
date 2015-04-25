@@ -22,10 +22,8 @@ class SignupViewController : BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if Globals.env.audience == .Dev {
-            fullLogo.userInteractionEnabled = true
-            fullLogo.whenLongPressEnded { [weak self] in self!.debugLogin(self!) }
-        }
+        fullLogo.userInteractionEnabled = true
+        fullLogo.whenLongPressEnded { [weak self] in self!.debugLogin(self!) }
     }
     
     private func startLogin(loginBlock: () -> RACSignal, errorBlock: (NSError?) -> ()) {
@@ -82,7 +80,8 @@ class SignupViewController : BaseViewController {
     }
     
     @IBAction func debugLogin(sender: AnyObject) {
-        if Globals.env.audience != .Dev {
+        Analytics.track("Debug Login Attempt")
+        if !Meteor.settings.debugLoginMode {
             return
         }
         let alert = UIAlertController(title: "DEBUG LOGIN MODE", message: nil, preferredStyle: .Alert)
