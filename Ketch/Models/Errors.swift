@@ -10,6 +10,7 @@ import Foundation
 
 enum ErrorCode : Int {
     case NetworkUnreachable = -1
+    case BetaProdBothInstalled = -2
 //    case KetchyUnavailable = -2
     
     var nsError: NSError { return NSError(self) }
@@ -18,11 +19,13 @@ enum ErrorCode : Int {
     var localizedDescription: String {
         switch self {
         case .NetworkUnreachable: return LS(.errNetworkUnreachable)
+        case .BetaProdBothInstalled: return LS(.errBetaProdBothInstalledTitle)
         }
     }
     var localizedRecoverySuggestion: String? {
         switch self {
         case .NetworkUnreachable: return LS(.errNetworkUnreachableRecovery)
+        case .BetaProdBothInstalled: return LS(.errBetaProdBothInstalledMessage)
         }
     }
 }

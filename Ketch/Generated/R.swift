@@ -100,6 +100,10 @@ public enum R {
     public enum Strings : String {
         /// DRAG THE MATCHES UP TO YOUR CHOICES
         case dragMatchsToChoices = "DragMatchsToChoices"
+        /// Both Ketch Beta and Ketch app store build are installed on this device. Please remove one of them and try login via Facebook again.
+        case errBetaProdBothInstalledMessage = "errBetaProdBothInstalledMessage"
+        /// Unsupported Configuration
+        case errBetaProdBothInstalledTitle = "errBetaProdBothInstalledTitle"
         /// Network Unavailable
         case errNetworkUnreachable = "errNetworkUnreachable"
         /// Seems like we don't have any network connection right now, try again later.
@@ -154,7 +158,7 @@ public enum R {
         case settingsDeleteAccountConfirm = "SettingsDeleteAccountConfirm"
         /// You'll lose all your matches, messages, and photos. Are you sure you want to do this?
         case settingsDeleteAccountMessage = "SettingsDeleteAccountMessage"
-        /// If so, type 'delete' to confirm.
+        /// If sure, type 'delete' to confirm.
         case settingsDeleteAccountPlaceholder = "SettingsDeleteAccountPlaceholder"
         /// Delete Account
         case settingsDeleteAccountTitle = "SettingsDeleteAccountTitle"

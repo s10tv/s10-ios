@@ -61,6 +61,14 @@ class SignupViewController : BaseViewController {
     }
     
     @IBAction func loginWithFacebook(sender: AnyObject) {
+        let current = Globals.env.audience
+        let beta = Environment.Audience.Beta
+        let prod = Environment.Audience.AppStore
+        if (current == beta || current == prod) && beta.installed && prod.installed {
+            showErrorAlert(NSError(.BetaProdBothInstalled))
+            return
+        }
+
         startLogin({ Globals.accountService.login() }, errorBlock: { error in
             // TODO: This us duplicated and can be refactored
             if let error = error {

@@ -66,10 +66,13 @@
 "SettingsDeleteAccountConfirm" = "Confirm";
 "SettingsDeleteAccountCancel" = "Cancel";
 
-/* Errors */
+/* Errors & Warnings */
 "errNetworkUnreachable" = "Network Unavailable";
 "errNetworkUnreachableRecovery" = "Seems like we don't have any network connection right now, try again later.";
 "KetchyUnavailableTitle" = "Ooops";
 "KetchyUnavailableMessage" = "Ketchy isn't home at the moment.";
 "errUnableToLoginTitle" = "Unable to login";
 "errUnableToLoginMessage" = "Sorry we're not able to log you in at the moment. Please try again later :(";
+
+"errBetaProdBothInstalledTitle" = "Unsupported Configuration";
+"errBetaProdBothInstalledMessage" = "Both Ketch Beta and Ketch app store build are installed on this device. Please remove one of them and try login via Facebook again.";

@@ -11,6 +11,16 @@ import Foundation
 class Environment {
     enum Audience {
         case Dev, Beta, AppStore
+        var urlScheme: String {
+            switch self {
+            case .Dev: return "ketch-dev://"
+            case .Beta: return "ketch-beta://"
+            case .AppStore: return "ketch://"
+            }
+        }
+        var installed: Bool {
+            return UIApplication.sharedApplication().canOpenURL(NSURL(urlScheme))
+        }
     }
     
     let audience : Audience
