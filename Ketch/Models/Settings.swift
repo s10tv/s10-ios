@@ -13,6 +13,7 @@ class Settings {
     enum Key : String {
         case SoftMinBuild = "softMinBuild"
         case HardMinBuild = "hardMinBuild"
+        case EdgePanEnabled = "edgePanEnabled"
         case CrabUserId = "crabUserId"
         case Vetted = "vetted"
         case Email = "email"
@@ -28,6 +29,7 @@ class Settings {
     
     var softMinBuild : Int? { return getValue(.SoftMinBuild) as? Int }
     var hardMinBuild : Int? { return getValue(.HardMinBuild) as? Int }
+    var edgePanEnabled: Bool? { return getValue(.EdgePanEnabled) as? Bool }
     var crabUserId : String? { return getValue(.CrabUserId) as? String }
     var vetted : Bool? { return getValue(.Vetted) as? Bool }
     var email : String? { return getValue(.Email) as? String }

@@ -26,6 +26,9 @@ class RootViewController : UINavigationController {
     // MARK: Target Action
     
     func handleEdgePan(gesture: UIScreenEdgePanGestureRecognizer, edge: UIRectEdge) {
+        if Meteor.settings.edgePanEnabled != true {
+            return
+        }
         switch gesture.state {
         case .Began:
             transitionManager.currentEdgePan = gesture
