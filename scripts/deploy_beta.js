@@ -1,5 +1,5 @@
 var assert = require('assert');
-['AZURE_ACCOUNTID', 'AZURE_ACCESSKEY', 'HEROKU_AUTH_TOKEN','CIRCLE_BUILD_NUMBER', 'CIRCLE_ARTIFACTS', 'BN'].map(function(key) {
+['AZURE_ACCOUNTID', 'AZURE_ACCESSKEY', 'HEROKU_AUTH_TOKEN','CIRCLE_BUILD_NUM', 'CIRCLE_ARTIFACTS', 'BN'].map(function(key) {
     assert(process.env[key], 'Required env variable ' + key + ' is missing');
 });
 
@@ -36,7 +36,7 @@ writeStream.on('success', function(file) {
             'User-Agent': 'Circle Script'
         },
         json: {
-            SOFT_MIN_BUILD: process.env.CIRCLE_BUILD_NUMBER
+            SOFT_MIN_BUILD: process.env.CIRCLE_BUILD_NUM
         }
     }, function(err, res, body) {
         if (!res || res.statusCode != 200) {

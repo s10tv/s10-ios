@@ -1,5 +1,5 @@
 var assert = require('assert');
-['HEROKU_AUTH_TOKEN','CIRCLE_BUILD_NUMBER'].map(function(key) {
+['HEROKU_AUTH_TOKEN','CIRCLE_BUILD_NUM'].map(function(key) {
     assert(process.env[key], 'Required env variable ' + key + ' is missing');
 });
 
@@ -12,7 +12,7 @@ request.patch('https://api.heroku.com/apps/ketch-dev/config-vars', {
         'User-Agent': 'Circle Script'
     },
     json: {
-        SOFT_MIN_BUILD: process.env.CIRCLE_BUILD_NUMBER
+        SOFT_MIN_BUILD: process.env.CIRCLE_BUILD_NUM
     }
 }, function(err, res, body) {
     if (!res || res.statusCode != 200) {
