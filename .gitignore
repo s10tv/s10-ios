@@ -1,3 +1,6 @@
+.idea
+**/.idea
+
 scripts/env.sh
 # Exclude the build directory
 build/*

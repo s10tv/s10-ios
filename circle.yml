@@ -34,27 +34,32 @@ test:
     - zip -FSr $CIRCLE_ARTIFACTS/Pods.zip Pods/
 
 deployment:
-  KetchDev+KetchBeta:
-    branch: [master, beta]
+  Ketch Dev:
+    branch: master
     commands:
       - |
         source ./scripts/circle_env.sh
-        "$CRASHLYTICS_FRAMEWORK_PATH/submit" $CRASHLYTICS_API_KEY $CRASHLYTICS_BUILD_SECRET \
-                                            -ipaPath $CIRCLE_ARTIFACTS/${BN}.ipa \
-                                            -groupAliases $CRASHLYTICS_BETA_TEAM \
-                                            -notifications $CRASHLYTICS_BETA_NOTIFICATIONS \
-                                            -notesPath $CIRCLE_ARTIFACTS/release_notes.txt
+        ./scripts/deploy_crashlytics.sh
+        cd scripts
+        npm install
+        node deploy_dev.js
+
+  Ketch Beta:
+    branch: beta
+    commands:
+      - |
+        source ./scripts/circle_env.sh
+        ./scripts/deploy_crashlytics.sh
+        cd scripts
+        npm install
+        node deploy_beta.js
 
   Ketch:
     branch: prod
     commands:
       - |
         source ./scripts/circle_env.sh
-        "$CRASHLYTICS_FRAMEWORK_PATH/submit" $CRASHLYTICS_API_KEY $CRASHLYTICS_BUILD_SECRET \
-                                            -ipaPath $CIRCLE_ARTIFACTS/${BN}.ipa \
-                                            -groupAliases $CRASHLYTICS_BETA_TEAM \
-                                            -notifications $CRASHLYTICS_BETA_NOTIFICATIONS \
-                                            -notesPath $CIRCLE_ARTIFACTS/release_notes.txt
+        ./scripts/deploy_crashlytics.sh
         cd $CIRCLE_ARTIFACTS
         cp "${BN}.ipa" "${BN}_appstore.ipa"
         sigh resign "${BN}_appstore.ipa" \
