@@ -41,6 +41,7 @@ deployment:
         source ./scripts/circle_env.sh
         ./scripts/deploy_crashlytics.sh
         cd scripts
+        brew install node
         npm install
         node deploy_dev.js
 
@@ -51,6 +52,7 @@ deployment:
         source ./scripts/circle_env.sh
         ./scripts/deploy_crashlytics.sh
         cd scripts
+        brew install node
         npm install
         node deploy_beta.js
 
