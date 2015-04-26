@@ -5,6 +5,8 @@ machine:
     CRASHLYTICS_API_KEY: 4cdb005d0ddfebc8865c0a768de9b43c993e9113
     CRASHLYTICS_BUILD_SECRET: 83001519164842a323e4d70c5970b041c248835fec59db59b409f5b364e47f72
     CRASHLYTICS_FRAMEWORK_PATH: Pods/CrashlyticsFramework/Crashlytics.framework
+  node:
+    version: 0.12.0
 
 dependencies:
   pre:
@@ -41,7 +43,6 @@ deployment:
         source ./scripts/circle_env.sh
         ./scripts/deploy_crashlytics.sh
         cd scripts
-        brew install node
         npm install
         node deploy_dev.js
 
@@ -52,7 +53,6 @@ deployment:
         source ./scripts/circle_env.sh
         ./scripts/deploy_crashlytics.sh
         cd scripts
-        brew install node
         npm install
         node deploy_beta.js
 
