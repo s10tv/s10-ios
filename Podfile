@@ -6,7 +6,7 @@ source 'https://github.com/tonyxiao/Podspecs.git'
 inhibit_all_warnings!
 use_frameworks!
 
-link_with 'Ketch', 'KetchTests'
+link_with 'Ketch'
 
 pod 'ReactiveCocoa', '~> 2.4' # Update to 3.0 when ready
 
@@ -48,6 +48,12 @@ pod 'Heap', '~> 2.1'
 
 pod 'Reveal-iOS-SDK', '~> 1.5', :configuration => ['Debug']
 pod 'NSLogger', '~> 1.5', :configuration => ['Debug']
+
+target :KetchTests do
+  link_with 'KetchTests'
+  pod 'Quick', '~> 0.3'
+  pod 'Nimble', '~> 0.3.0'
+end
 
 # Hacks
 post_install do |installer|

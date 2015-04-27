@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		44E19D671B859E037A1401D8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38E9CB79C25FDAE97BD9D3D /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		73CF93567D616177169FDAB1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38E9CB79C25FDAE97BD9D3D /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		7B991890A419D713002F4B64 /* Pods_KetchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0836625DBA487D8E5D302F0B /* Pods_KetchTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		EA02CCF21A96ED03004C3009 /* KetchIcon.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA02CCF11A96ED03004C3009 /* KetchIcon.otf */; };
 		EA0FC9341A87DE5800D62625 /* MeteorCDStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC91F1A87DE5800D62625 /* MeteorCDStack.swift */; };
 		EA0FC9351A87DE5800D62625 /* MeteorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9201A87DE5800D62625 /* MeteorExtension.swift */; };
@@ -328,6 +329,7 @@
 
 /* Begin PBXFileReference section */
 		0686ABB348D06D87DA844419 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		0836625DBA487D8E5D302F0B /* Pods_KetchTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KetchTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CD850D0B9EC2938BA5CEB59 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		D38E9CB79C25FDAE97BD9D3D /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA02CCF11A96ED03004C3009 /* KetchIcon.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KetchIcon.otf; sourceTree = "<group>"; };
@@ -602,6 +604,8 @@
 		EA9F35621A74CD8800E0C65D /* Ketch-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Ketch-Bridging.h"; path = "Ketch/Ketch-Bridging.h"; sourceTree = SOURCE_ROOT; };
 		EAA36DDF1AD1CD4800B30F24 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		EAA36DE11AD1CE2800B30F24 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
+		EAAA24951AEE462700679F0A /* Pods-KetchTests.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-KetchTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KetchTests/Pods-KetchTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EAAA24961AEE462700679F0A /* Pods-KetchTests.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-KetchTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KetchTests/Pods-KetchTests.release.xcconfig"; sourceTree = "<group>"; };
 		EAAA42861AB24D5F00056EFF /* CandidateBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateBubble.swift; sourceTree = "<group>"; };
 		EAAD921A1ACDEACD0014BA25 /* NewMatchTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewMatchTransition.swift; sourceTree = "<group>"; };
 		EAAD921C1ACF342C0014BA25 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
@@ -663,6 +667,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				73CF93567D616177169FDAB1 /* Pods.framework in Frameworks */,
+				7B991890A419D713002F4B64 /* Pods_KetchTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -679,6 +684,7 @@
 				F996C71F1A81F1D800314FF8 /* CoreVideo.framework */,
 				F996C71D1A81F1D100314FF8 /* CoreMedia.framework */,
 				D38E9CB79C25FDAE97BD9D3D /* Pods.framework */,
+				0836625DBA487D8E5D302F0B /* Pods_KetchTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -700,6 +706,8 @@
 				EA62A87C1AD98B3600B5D3D9 /* PKHUD */,
 				2CD850D0B9EC2938BA5CEB59 /* Pods.debug.xcconfig */,
 				0686ABB348D06D87DA844419 /* Pods.release.xcconfig */,
+				EAAA24951AEE462700679F0A /* Pods-KetchTests.debug.xcconfig */,
+				EAAA24961AEE462700679F0A /* Pods-KetchTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -1617,7 +1625,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KetchTests/Pods-KetchTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CC42FF79320CC7EE6804A689 /* Copy Pods Resources */ = {
@@ -1632,7 +1640,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KetchTests/Pods-KetchTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EA7F26D91A891B6500629078 /* Upload DSYM to Fabric (Crashlytics) */ = {
@@ -1955,7 +1963,7 @@
 		};
 		EA9F35601A74CC6900E0C65D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2CD850D0B9EC2938BA5CEB59 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = EAAA24951AEE462700679F0A /* Pods-KetchTests.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -1973,7 +1981,7 @@
 		};
 		EA9F35611A74CC6900E0C65D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0686ABB348D06D87DA844419 /* Pods.release.xcconfig */;
+			baseConfigurationReference = EAAA24961AEE462700679F0A /* Pods-KetchTests.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
