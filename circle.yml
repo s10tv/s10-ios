@@ -1,4 +1,6 @@
 machine:
+  xcode:
+    version: "6.3"
   environment:
     XCODE_WORKSPACE: Ketch.xcworkspace
     XCODE_SCHEME: Ketch
