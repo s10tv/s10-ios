@@ -200,7 +200,11 @@ extension FlowService : METDDPClientDelegate {
     // General state updates
     func client(client: METDDPClient!, reachabilityStatusDidChange reachable: Bool) {
         // TODO: We ought to handle much more than just network unreachable error
-        error = reachable ? nil : NSError(.NetworkUnreachable)
+        if error?.match(.NetworkUnreachable) == true && reachable {
+            error = nil
+        } else if error == nil && !reachable {
+            error = NSError(.NetworkUnreachable)
+        }
         updateState()
     }
     
@@ -213,6 +217,7 @@ extension FlowService : METDDPClientDelegate {
         Analytics.identifyUser(ms.userID!)
     }
     func client(client: METDDPClient!, didFailLoginWithWithError error: NSError!) {
+        ms.logout()
         updateState()
     }
     func clientWillLogout(client: METDDPClient!) {
@@ -227,6 +232,7 @@ extension FlowService : METDDPClientDelegate {
         updateState()
     }
     func client(client: METDDPClient!, didReceiveError error: NSError!, forSubscription subscription: METSubscription!) {
+        self.error = NSError(.SubscriptionError)
         updateState()
     }
     

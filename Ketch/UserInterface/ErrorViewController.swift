@@ -24,7 +24,7 @@ class ErrorViewController : CloudsViewController {
         super.viewDidLoad()
         // TODO: Reactify me?
         if let error = error {
-            errorLabel.rawText = error.localizedDescription
+            errorLabel.rawText = error.localizedRecoverySuggestion ?? error.localizedDescription
             recoveryButton.hidden = !error.recoverable
         }
     }

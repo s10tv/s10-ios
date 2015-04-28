@@ -104,6 +104,10 @@ public enum R {
         case errBetaProdBothInstalledMessage = "errBetaProdBothInstalledMessage"
         /// Unsupported Configuration
         case errBetaProdBothInstalledTitle = "errBetaProdBothInstalledTitle"
+        /// Unexpected Error
+        case errDefault = "errDefault"
+        /// Something really unexpected has happened and our team has been notified of this problem. Please close the app and try again later.
+        case errDefaultRecovery = "errDefaultRecovery"
         /// Network Unavailable
         case errNetworkUnreachable = "errNetworkUnreachable"
         /// Seems like we don't have any network connection right now, try again later.
