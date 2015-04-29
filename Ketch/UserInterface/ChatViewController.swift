@@ -39,7 +39,7 @@ class ChatViewController : JSQMessagesViewController {
         sendButton.setTitleColor(StyleKit.brandBlue, forState: .Normal)
         sendButton.setTitleColor(StyleKit.brandBlue.jsq_colorByDarkeningColorWithValue(0.1), forState: .Highlighted)
         sendButton.tintColor = StyleKit.brandBlue
-        sendButton.titleLabel?.font = UIFont(.transatTextBold, size: 17)
+        sendButton.titleLabel?.font = UIFont(.transatTextBlack, size: 17)
         
         // Customize chat bubble
         // Magic insets number copied from inside StyleKit for imageOfChatBubble

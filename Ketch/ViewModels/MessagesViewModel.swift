@@ -74,7 +74,7 @@ class MessagesViewModel : NSObject {
     func displayTimestampForMessageAtIndex(index: Int) -> NSAttributedString? {
         if index % 3 == 0 {
             let text = Formatters.time.attributedTimestampForDate(messageAtIndex(index).createdAt)
-            return text.replace(font: UIFont(.transatTextBold, size: 10), color: StyleKit.teal)
+            return text.replace(font: UIFont(.transatTextBlack, size: 10), color: StyleKit.teal)
         }
         return nil
     }
