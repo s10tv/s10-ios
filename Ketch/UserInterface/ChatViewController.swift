@@ -45,7 +45,7 @@ class ChatViewController : JSQMessagesViewController {
         // Magic insets number copied from inside StyleKit for imageOfChatBubble
         let magicInsets = UIEdgeInsetsMake(24, 19, 10, 28)
         let bubbleFactory = JSQMessagesBubbleImageFactory(bubbleImage: StyleKit.imageOfChatBubble, capInsets: magicInsets)
-        outgoingBubble = bubbleFactory.outgoingMessagesBubbleImageWithColor(StyleKit.navyHalf)
+        outgoingBubble = bubbleFactory.outgoingMessagesBubbleImageWithColor(StyleKit.navy35)
         incomingBubble = bubbleFactory.incomingMessagesBubbleImageWithColor(StyleKit.pureWhite)
         
         // Customize layout
