@@ -74,7 +74,7 @@
 
 /* Errors */
 "errDefault" = "Unexpected Error";
-"errDefaultRecovery" = "Something really unexpected has happened and our team has been notified of this problem. Please close the app and try again later.";
+"errDefaultRecovery" = "Ooops, something unexpected has happened. Please close the app and try again later.";
 "errNetworkUnreachable" = "Network Unavailable";
 "errNetworkUnreachableRecovery" = "Seems like we don't have any network connection right now, try again later.";
 "errBetaProdBothInstalledTitle" = "Unsupported Configuration";
