@@ -52,8 +52,6 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>KetchIcon.otf</string>
-		<string>TransatTextBold.otf</string>
-		<string>TransatTextLight.otf</string>
 		<string>TransatTextMedium.otf</string>
 		<string>TransatTextStandard.otf</string>
 		<string>TransatTextBlack.otf</string>

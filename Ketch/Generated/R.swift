@@ -12,10 +12,6 @@ public enum R {
         case ketch = "KetchIcon"
         /// TransatTextBlack
         case transatTextBlack = "TransatTextBlack"
-        /// TransatTextBold
-        case transatTextBold = "TransatTextBold"
-        /// TransatTextLight
-        case transatTextLight = "TransatTextLight"
         /// TransatTextMedium
         case transatTextMedium = "TransatTextMedium"
         /// TransatTextStandard
@@ -106,7 +102,7 @@ public enum R {
         case errBetaProdBothInstalledTitle = "errBetaProdBothInstalledTitle"
         /// Unexpected Error
         case errDefault = "errDefault"
-        /// Something really unexpected has happened and our team has been notified of this problem. Please close the app and try again later.
+        /// Ooops, something unexpected has happened. Please close the app and try again later.
         case errDefaultRecovery = "errDefaultRecovery"
         /// Network Unavailable
         case errNetworkUnreachable = "errNetworkUnreachable"

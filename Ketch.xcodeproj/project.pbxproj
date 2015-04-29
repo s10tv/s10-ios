@@ -37,8 +37,6 @@
 		EA36D2AB1AE71366006FD5D8 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36D2AA1AE71366006FD5D8 /* Errors.swift */; };
 		EA36D2AD1AE72B78006FD5D8 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36D2AC1AE72B78006FD5D8 /* UserDefaults.swift */; };
 		EA3777721A966EC10055DE99 /* TransatTextBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */; };
-		EA3777731A966EC10055DE99 /* TransatTextBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776E1A966EC10055DE99 /* TransatTextBold.otf */; };
-		EA3777741A966EC10055DE99 /* TransatTextLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776F1A966EC10055DE99 /* TransatTextLight.otf */; };
 		EA3777751A966EC10055DE99 /* TransatTextMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA3777701A966EC10055DE99 /* TransatTextMedium.otf */; };
 		EA3777761A966EC10055DE99 /* TransatTextStandard.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA3777711A966EC10055DE99 /* TransatTextStandard.otf */; };
 		EA396FF01AB52BF8009EB60B /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA396FEF1AB52BF8009EB60B /* PageViewController.swift */; };
@@ -799,11 +797,11 @@
 			children = (
 				EA31049A1A99C3850069D6AD /* KetchIcon.swift */,
 				EA02CCF11A96ED03004C3009 /* KetchIcon.otf */,
-				EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */,
-				EA37776E1A966EC10055DE99 /* TransatTextBold.otf */,
 				EA37776F1A966EC10055DE99 /* TransatTextLight.otf */,
-				EA3777701A966EC10055DE99 /* TransatTextMedium.otf */,
 				EA3777711A966EC10055DE99 /* TransatTextStandard.otf */,
+				EA3777701A966EC10055DE99 /* TransatTextMedium.otf */,
+				EA37776E1A966EC10055DE99 /* TransatTextBold.otf */,
+				EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */,
 			);
 			path = Fonts;
 			sourceTree = "<group>";
@@ -1418,7 +1416,6 @@
 				EA608B761AE609A5003E1C75 /* ketchyFlagWave_44@2x.png in Resources */,
 				EA608AA91AE6079C003E1C75 /* ketchyNeutral_22@2x.png in Resources */,
 				EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */,
-				EA3777741A966EC10055DE99 /* TransatTextLight.otf in Resources */,
 				EA608BA01AE609A5003E1C75 /* ketchyFlagWave_82@2x.png in Resources */,
 				EAF3A4BF1ACA2191001C2943 /* ProfileInfoCell.xib in Resources */,
 				EA608B631AE609A5003E1C75 /* ketchyFlagWave_27@2x.png in Resources */,
@@ -1525,7 +1522,6 @@
 				EA608B511AE609A5003E1C75 /* ketchyFlagWave_10@2x.png in Resources */,
 				EA608AD71AE6079C003E1C75 /* ketchyNeutral_64@2x.png in Resources */,
 				EA608B5B1AE609A5003E1C75 /* ketchyFlagWave_1@2x.png in Resources */,
-				EA3777731A966EC10055DE99 /* TransatTextBold.otf in Resources */,
 				EA608AC81AE6079C003E1C75 /* ketchyNeutral_50@2x.png in Resources */,
 				EA608AD81AE6079C003E1C75 /* ketchyNeutral_65@2x.png in Resources */,
 				EA3777721A966EC10055DE99 /* TransatTextBlack.otf in Resources */,
