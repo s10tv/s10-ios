@@ -12,7 +12,7 @@ import UIKit
     private let outlineLayer = CAShapeLayer()
     private let maskLayer = CAShapeLayer()
     let gradientHeight: CGFloat = 580
-    let waveDuration: CFTimeInterval = 6
+    let waveDuration: CFTimeInterval = 4
     let waveAmplitude: CGFloat = 4.5
     private(set) var waveLength: CGFloat!
     private(set) var periods: CGFloat!

@@ -35,6 +35,6 @@ class CrabView : UIButton {
     
     private func updateImage() {
         let imageName = waveFlag ? "ketchyFlagWave_" : "ketchyNeutral_"
-        setImage(UIImage.animatedImageNamed(imageName, duration: 3), forState: .Normal)
+        setImage(UIImage.animatedImageNamed(imageName, duration: 1.5), forState: .Normal)
     }
 }
