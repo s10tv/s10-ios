@@ -44,7 +44,7 @@ class GameTutorialController {
         constrain(prompt, helpLabel) { prompt, helpLabel in
             prompt.width == 20
             prompt.height == 20
-            prompt.bottom == helpLabel.top - 20
+            prompt.bottom == helpLabel.top - 40
             prompt.centerX == helpLabel.centerX
         }
     }

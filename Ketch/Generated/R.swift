@@ -52,6 +52,8 @@ public enum R {
         case icBinocular = "ic-binocular"
         /// ic_remove_photo
         case icRemovePhoto = "ic_remove_photo"
+        /// ic-tap-gesture
+        case icTapGesture = "ic-tap-gesture"
         /// Ketch
         case ketch = "Ketch"
         /// ketch-large

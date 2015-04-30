@@ -75,8 +75,8 @@ extension CALayer {
         return animateKeyPath("opacity", toValue: opacity, duration: duration, fillMode: fillMode)
     }
     
-    func animate(#keyPath: String, configure: (CABasicAnimation, CALayer) -> ()) -> RACSignal {
-        let animation = CABasicAnimation(keyPath: keyPath)
+    func animate(#keyPath: String, fillMode: CAMediaTimingFillMode = .Removed, configure: (CABasicAnimation, CALayer) -> ()) -> RACSignal {
+        let animation = CABasicAnimation(keyPath, fillMode: fillMode)
         configure(animation, self)
         return animation.addToLayerAndReturnSignal(self, forKey: keyPath)
     }
