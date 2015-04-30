@@ -1651,7 +1651,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "echo \"Uploading DSYM to Crashlytics\"\n./Pods/CrashlyticsFramework/Crashlytics.framework/run 4cdb005d0ddfebc8865c0a768de9b43c993e9113 83001519164842a323e4d70c5970b041c248835fec59db59b409f5b364e47f72\n";
+			shellScript = "if [ -n \"$CI\" ]; then\n    echo \"Uploading DSYM to Crashlytics\"\n    ./Pods/CrashlyticsFramework/Crashlytics.framework/run 4cdb005d0ddfebc8865c0a768de9b43c993e9113 83001519164842a323e4d70c5970b041c248835fec59db59b409f5b364e47f72\nelse\n    echo \"Not running on CI, skip uploading to Crashlytics\";\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
