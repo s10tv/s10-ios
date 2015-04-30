@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14C1514" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6751" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6736"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <mutableArray key="TransatTextLight.otf">
-            <string>TransatTextLight</string>
-        </mutableArray>
         <mutableArray key="TransatTextMedium.otf">
             <string>TransatTextMedium</string>
+        </mutableArray>
+        <mutableArray key="TransatTextStandard.otf">
+            <string>TransatTextStandard</string>
         </mutableArray>
     </customFonts>
     <objects>
@@ -51,11 +51,11 @@
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="last message they sent" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gpZ-bc-q3K" userLabel="Last Message">
-                        <rect key="frame" x="83" y="40" width="116" height="20"/>
+                        <rect key="frame" x="83" y="40" width="118" height="20"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="20" id="DuK-2k-huV"/>
                         </constraints>
-                        <fontDescription key="fontDescription" name="TransatTextLight" family="Transat Text" pointSize="12"/>
+                        <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="12"/>
                         <color key="textColor" red="0.13725490200000001" green="0.58823529409999997" blue="0.59607843140000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
