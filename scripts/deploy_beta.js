@@ -15,7 +15,7 @@ var ipaPath = process.env.CIRCLE_ARTIFACTS + '/' + process.env.BN + '.ipa';
 var progressStream = require('progress-stream');
 var readStream = fs.createReadStream(ipaPath);
 var writeStream = azure.upload({
-    container: 'ketch-dev', // TODO: Change this to 'builds' after modifying permission on builds container
+    container: 'assets',
     remote: 'latest-beta.ipa'
 });
 var progress = progressStream();
