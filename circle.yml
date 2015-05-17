@@ -9,7 +9,8 @@ machine:
     CRASHLYTICS_FRAMEWORK_PATH: Pods/CrashlyticsFramework/Crashlytics.framework
 
 dependencies:
-  pre:
+  override:
+  # pre:
     - sudo gem uninstall highline commander --ignore-dependencies -x
     # Currently cocoapods installation fails for following reason
     # i18n requires Ruby version >= 1.9.3.  (https://circleci.com/gh/s10tv/s10-ios/4)
@@ -18,7 +19,7 @@ dependencies:
     # - sudo gem install cocoapods -v $(var=$(tail -1 Podfile.lock); echo ${var##COCOAPODS:})
     - sudo gem install cupertino shenzhen sigh
     - ./scripts/import_credentials.sh
-  override:
+  # override:
     - pod update Meteor
   cache_directories:
     - "Pods"
