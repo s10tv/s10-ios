@@ -5,7 +5,7 @@ var assert = require('assert');
 
 var request = require('request');
 
-request.patch('https://api.heroku.com/apps/ketch-dev/config-vars', {
+request.patch('https://api.heroku.com/apps/s10-dev/config-vars', {
     headers: {
         'Authorization': 'Bearer ' + process.env.HEROKU_AUTH_TOKEN,
         'Accept': 'application/vnd.heroku+json; version=3',
@@ -16,8 +16,8 @@ request.patch('https://api.heroku.com/apps/ketch-dev/config-vars', {
     }
 }, function(err, res, body) {
     if (!res || res.statusCode != 200) {
-        console.log('Failed to update SOFT_MIN_BUILD on ketch-dev\n', body);
+        console.log('Failed to update SOFT_MIN_BUILD on s10-dev\n', body);
         process.exit(1);
     }
-    console.log('Successfully updated SOFT_MIN_BUILD on ketch-dev');
+    console.log('Successfully updated SOFT_MIN_BUILD on s10-dev');
 });

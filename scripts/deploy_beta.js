@@ -29,7 +29,7 @@ writeStream.on('error', function(err) {
 });
 writeStream.on('success', function(file) {
     console.log('Will update softMinBuild on heroku server');
-    request.patch('https://api.heroku.com/apps/ketch-beta/config-vars', {
+    request.patch('https://api.heroku.com/apps/s10-beta/config-vars', {
         headers: {
             'Authorization': 'Bearer ' + process.env.HEROKU_AUTH_TOKEN,
             'Accept': 'application/vnd.heroku+json; version=3',
@@ -40,10 +40,10 @@ writeStream.on('success', function(file) {
         }
     }, function(err, res, body) {
         if (!res || res.statusCode != 200) {
-            console.log('Failed to update SOFT_MIN_BUILD on ketch-beta\n', body);
+            console.log('Failed to update SOFT_MIN_BUILD on s10-beta\n', body);
             process.exit(1);
         }
-        console.log('Successfully updated SOFT_MIN_BUILD on ketch-beta');
+        console.log('Successfully updated SOFT_MIN_BUILD on s10-beta');
     });
 });
 
