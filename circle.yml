@@ -40,37 +40,37 @@ test:
       : timeout: 1200
     - zip -FSr $CIRCLE_ARTIFACTS/Pods.zip Pods/
 
-deployment:
-  Ketch Dev:
-    branch: master
-    commands:
-      - |
-        source ./scripts/circle_env.sh
-        ./scripts/deploy_crashlytics.sh
-        cd scripts
-        brew install node
-        npm install
-        node deploy_dev.js
-
-  Ketch Beta:
-    branch: beta
-    commands:
-      - |
-        source ./scripts/circle_env.sh
-        ./scripts/deploy_crashlytics.sh
-        cd scripts
-        brew install node
-        npm install
-        node deploy_beta.js
-
-  Ketch:
-    branch: prod
-    commands:
-      - |
-        source ./scripts/circle_env.sh
-        ./scripts/deploy_crashlytics.sh
-        cd $CIRCLE_ARTIFACTS
-        cp "${BN}.ipa" "${BN}_appstore.ipa"
-        sigh resign "${BN}_appstore.ipa" \
-          --provisioning_profile "$HOME/Library/MobileDevice/Provisioning Profiles/commilasyaketchappstore.mobileprovision" \
-          --signing_identity "iPhone Distribution: Milasya Inc."
+#deployment:
+#  Ketch Dev:
+#    branch: master
+#    commands:
+#      - |
+#        source ./scripts/circle_env.sh
+#        ./scripts/deploy_crashlytics.sh
+#        cd scripts
+#        brew install node
+#        npm install
+#        node deploy_dev.js
+#
+#  Ketch Beta:
+#    branch: beta
+#    commands:
+#      - |
+#        source ./scripts/circle_env.sh
+#        ./scripts/deploy_crashlytics.sh
+#        cd scripts
+#        brew install node
+#        npm install
+#        node deploy_beta.js
+#
+#  Ketch:
+#    branch: prod
+#    commands:
+#      - |
+#        source ./scripts/circle_env.sh
+#        ./scripts/deploy_crashlytics.sh
+#        cd $CIRCLE_ARTIFACTS
+#        cp "${BN}.ipa" "${BN}_appstore.ipa"
+#        sigh resign "${BN}_appstore.ipa" \
+#          --provisioning_profile "$HOME/Library/MobileDevice/Provisioning Profiles/commilasyaketchappstore.mobileprovision" \
+#          --signing_identity "iPhone Distribution: Milasya Inc."
