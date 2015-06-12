@@ -278,6 +278,7 @@
 		EAA56FA51B2B32E500DE3936 /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F8A1B2B32E500DE3936 /* UserAvatarView.swift */; };
 		EAA56FA61B2B32E500DE3936 /* WaveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F8B1B2B32E500DE3936 /* WaveTransition.swift */; };
 		EAA56FA71B2B32E500DE3936 /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F8C1B2B32E500DE3936 /* WaveView.swift */; };
+		EAA56FA91B2B638000DE3936 /* PostHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAA56FA81B2B638000DE3936 /* PostHeaderView.xib */; };
 		EAAD921D1ACF342C0014BA25 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921C1ACF342C0014BA25 /* Environment.swift */; };
 		EAAD921F1ACF4EFA0014BA25 /* ProvisioningProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921E1ACF4EFA0014BA25 /* ProvisioningProfile.swift */; };
 		EAB79B701AD912EB00D9875A /* PKHUDExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB79B6F1AD912EB00D9875A /* PKHUDExtension.swift */; };
@@ -594,6 +595,7 @@
 		EAA56F8A1B2B32E500DE3936 /* UserAvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAvatarView.swift; sourceTree = "<group>"; };
 		EAA56F8B1B2B32E500DE3936 /* WaveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveTransition.swift; sourceTree = "<group>"; };
 		EAA56F8C1B2B32E500DE3936 /* WaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
+		EAA56FA81B2B638000DE3936 /* PostHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostHeaderView.xib; sourceTree = "<group>"; };
 		EAAA24951AEE462700679F0A /* Pods-KetchTests.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-KetchTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KetchTests/Pods-KetchTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EAAA24961AEE462700679F0A /* Pods-KetchTests.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-KetchTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KetchTests/Pods-KetchTests.release.xcconfig"; sourceTree = "<group>"; };
 		EAAD921C1ACF342C0014BA25 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
@@ -1123,6 +1125,7 @@
 			isa = PBXGroup;
 			children = (
 				EAA56F721B2B32E500DE3936 /* HomeViewController.swift */,
+				EAA56FA81B2B638000DE3936 /* PostHeaderView.xib */,
 				EAA56F731B2B32E500DE3936 /* NewPostViewController.swift */,
 			);
 			path = Home;
@@ -1454,6 +1457,7 @@
 				EA608AEC1AE6079C003E1C75 /* ketchyNeutral_83@2x.png in Resources */,
 				EA608AA71AE6079C003E1C75 /* ketchyNeutral_20@2x.png in Resources */,
 				EA608B731AE609A5003E1C75 /* ketchyFlagWave_41@2x.png in Resources */,
+				EAA56FA91B2B638000DE3936 /* PostHeaderView.xib in Resources */,
 				EA608B6F1AE609A5003E1C75 /* ketchyFlagWave_38@2x.png in Resources */,
 				EA608B6D1AE609A5003E1C75 /* ketchyFlagWave_36@2x.png in Resources */,
 				EA608AF31AE6079C003E1C75 /* ketchyNeutral_8@2x.png in Resources */,
