@@ -279,6 +279,7 @@
 		EAA56F421B2B0BEC00DE3936 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F411B2B0BEC00DE3936 /* DiscoverViewController.swift */; };
 		EAA56F441B2B0BFB00DE3936 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F431B2B0BFB00DE3936 /* ChatsViewController.swift */; };
 		EAA56F461B2B0C0300DE3936 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F451B2B0C0300DE3936 /* MeViewController.swift */; };
+		EAA56F481B2B14F700DE3936 /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F471B2B14F700DE3936 /* NewPostViewController.swift */; };
 		EAAA42871AB24D5F00056EFF /* CandidateBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAA42861AB24D5F00056EFF /* CandidateBubble.swift */; };
 		EAAD921B1ACDEACD0014BA25 /* NewMatchTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921A1ACDEACD0014BA25 /* NewMatchTransition.swift */; };
 		EAAD921D1ACF342C0014BA25 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921C1ACF342C0014BA25 /* Environment.swift */; };
@@ -610,6 +611,7 @@
 		EAA56F411B2B0BEC00DE3936 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		EAA56F431B2B0BFB00DE3936 /* ChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		EAA56F451B2B0C0300DE3936 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
+		EAA56F471B2B14F700DE3936 /* NewPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
 		EAAA24951AEE462700679F0A /* Pods-KetchTests.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-KetchTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KetchTests/Pods-KetchTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EAAA24961AEE462700679F0A /* Pods-KetchTests.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-KetchTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KetchTests/Pods-KetchTests.release.xcconfig"; sourceTree = "<group>"; };
 		EAAA42861AB24D5F00056EFF /* CandidateBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateBubble.swift; sourceTree = "<group>"; };
@@ -1244,6 +1246,7 @@
 				EAA56F411B2B0BEC00DE3936 /* DiscoverViewController.swift */,
 				EAA56F431B2B0BFB00DE3936 /* ChatsViewController.swift */,
 				EAA56F451B2B0C0300DE3936 /* MeViewController.swift */,
+				EAA56F471B2B14F700DE3936 /* NewPostViewController.swift */,
 			);
 			path = UserInterface;
 			sourceTree = "<group>";
@@ -1725,6 +1728,7 @@
 				EA0FC93C1A87DE5800D62625 /* UIKitExtension.swift in Sources */,
 				EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */,
 				EA6650FB1AA00B95001BA40C /* Candidate.swift in Sources */,
+				EAA56F481B2B14F700DE3936 /* NewPostViewController.swift in Sources */,
 				EA0FC9421A87DE5800D62625 /* BaseViewModel.swift in Sources */,
 				EACF216A1AD7255100938CD0 /* WaitlistViewController.swift in Sources */,
 				EA6E56521AD1FDCE00B12F2B /* WaveTransition.swift in Sources */,

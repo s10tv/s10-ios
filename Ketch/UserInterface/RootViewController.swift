@@ -11,5 +11,5 @@ import Meteor
 import FacebookSDK
 import ReactiveCocoa
 
-class RootViewController : UITabBarController {
+class RootViewController : UINavigationController {
 }

@@ -8,6 +8,6 @@
 
 import Foundation
 
-class ChatsViewController : UIViewController {
+class ChatsViewController : BaseViewController {
     
 }

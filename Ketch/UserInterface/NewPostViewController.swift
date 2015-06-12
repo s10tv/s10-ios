@@ -1,5 +1,5 @@
 //
-//  MeViewController.swift
+//  NewPostViewController.swift
 //  Ketch
 //
 //  Created by Tony Xiao on 6/12/15.
@@ -8,6 +8,6 @@
 
 import Foundation
 
-class MeViewController : BaseViewController {
+class NewPostViewController : BaseViewController {
     
 }

@@ -8,6 +8,6 @@
 
 import Foundation
 
-class HomeViewController : UIViewController {
+class HomeViewController : BaseViewController {
     
 }
