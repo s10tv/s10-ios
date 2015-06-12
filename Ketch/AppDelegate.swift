@@ -75,7 +75,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
         application.registerForRemoteNotifications()
         
         // Let's launch!
-        Meteor.startup()
+//        Meteor.startup()
         
         Log.info("App Launched")
         Analytics.track("App Open")

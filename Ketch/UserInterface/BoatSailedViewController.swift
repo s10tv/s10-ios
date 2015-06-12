@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BoatSailedViewController : HomeViewController {
+class BoatSailedViewController : KetchHomeViewController {
     
     override func commonInit() {
         allowedStates = [.BoatSailed]

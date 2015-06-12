@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-class HomeViewController : BaseViewController {
+class KetchHomeViewController : BaseViewController {
 
     @IBOutlet var navViews: [UIView]!
     @IBOutlet weak var dockBadge: UIImageView!
@@ -41,7 +41,7 @@ class HomeViewController : BaseViewController {
     
 }
 
-extension HomeViewController : NSFetchedResultsControllerDelegate {
+extension KetchHomeViewController : NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
         dockBadge.hidden = controller.fetchedObjects?.count == 0
     }

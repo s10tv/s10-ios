@@ -27,7 +27,7 @@ class SnapTarget {
     }
 }
 
-class GameViewController : HomeViewController {
+class GameViewController : KetchHomeViewController {
 
     @IBOutlet var placeholders: [ChoicePlaceholder]!
     @IBOutlet var bubbles : [CandidateBubble]!
