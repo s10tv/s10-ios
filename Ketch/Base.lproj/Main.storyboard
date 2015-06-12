@@ -161,7 +161,7 @@
         <!--Discover-->
         <scene sceneID="NpM-jt-gve">
             <objects>
-                <viewController id="5Q6-Kt-6sh" userLabel="Discover" customClass="DiscoverViewController" customModule="Ketch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="5Q6-Kt-6sh" userLabel="Discover" customClass="DiscoverViewController" customModule="Ketch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zvc-KD-L5T"/>
                         <viewControllerLayoutGuide type="bottom" id="F41-Jg-0mT"/>
@@ -170,16 +170,62 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Discover" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qUX-TG-j8A">
-                                <rect key="frame" x="16" y="289" width="67" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5D7-hF-WjP">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="u3H-VG-WK1">
+                                    <size key="itemSize" width="180" height="250"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CandidateCell" id="5p8-O9-cl0">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="180" height="250"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="sample-taylor-avatar-square" translatesAutoresizingMaskIntoConstraints="NO" id="OLv-LL-2Yz">
+                                                    <rect key="frame" x="7" y="8" width="167" height="168"/>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dw0-bM-a99">
+                                                    <rect key="frame" x="38" y="212" width="32" height="30"/>
+                                                    <state key="normal" title="Hide">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PCR-cT-9NB">
+                                                    <rect key="frame" x="105" y="212" width="45" height="30"/>
+                                                    <state key="normal" title="Follow">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" red="0.8469662070274353" green="0.84711211919784546" blue="0.84695702791213989" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="5Q6-Kt-6sh" id="lSL-Ig-bED"/>
+                                    <outlet property="delegate" destination="5Q6-Kt-6sh" id="QRe-LF-BMp"/>
+                                </connections>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="5D7-hF-WjP" firstAttribute="top" secondItem="zvc-KD-L5T" secondAttribute="bottom" id="HlO-D7-vJD"/>
+                            <constraint firstItem="5D7-hF-WjP" firstAttribute="leading" secondItem="13x-l4-1hd" secondAttribute="leading" id="M36-SB-Bic"/>
+                            <constraint firstAttribute="trailing" secondItem="5D7-hF-WjP" secondAttribute="trailing" id="SvD-dR-6Sd"/>
+                            <constraint firstItem="F41-Jg-0mT" firstAttribute="top" secondItem="5D7-hF-WjP" secondAttribute="bottom" id="fN9-2m-V9c"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Discover" image="ic-people" id="3rI-zC-hCx"/>
+                    <connections>
+                        <outlet property="collectionView" destination="5D7-hF-WjP" id="geM-dN-w4M"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IHi-T7-nrb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -321,6 +367,7 @@
         <image name="ic-mute" width="19" height="18"/>
         <image name="ic-people" width="32" height="26"/>
         <image name="sample-taylor-avatar" width="44" height="44"/>
+        <image name="sample-taylor-avatar-square" width="167" height="168"/>
         <image name="sample-taylor-video-frame" width="375" height="375"/>
     </resources>
 </document>
