@@ -57,7 +57,7 @@ class MeteorService {
             meteor.addSubscriptionWithName("metadata"),
             meteor.addSubscriptionWithName("settings"),
             meteor.addSubscriptionWithName("currentUser"),
-            meteor.addSubscriptionWithName("posts"),
+            meteor.addSubscriptionWithName("allPosts"),
             meteor.addSubscriptionWithName("candidates"),
             meteor.addSubscriptionWithName("conversations"),
             meteor.addSubscriptionWithName("messages")
@@ -74,7 +74,6 @@ class MeteorService {
         )
         meta = Metadata(collection: collections.metadata)
         settings = Settings(collection: collections.settings)
-        
         SugarRecord.addStack(MeteorCDStack(meteor: meteor))
     }
     
@@ -179,4 +178,6 @@ class MeteorService {
     func reportUser(user: User, reason: String) -> RACSignal {
         return meteor.call("user/report", [user.documentID!, reason])
     }
+    
+
 }

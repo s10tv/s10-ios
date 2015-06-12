@@ -58,7 +58,7 @@ class Environment {
         switch audience {
             case .Dev:
                 upgradeURL = NSURL("https://apps-ios.crashlytics.com/projects/54f16f389f24291fde000043")
-                serverHostName = "ketch-dev.herokuapp.com"
+                serverHostName = "s10-dev.herokuapp.com"
 //                serverHostName = "10.1.10.44:3000"
 //                serverHostName = "ketch-beta.herokuapp.com"
                 bugfenderAppToken = "RBsiKkpkyiXUW2Sk50JTKTKUYlNpXsFn"
@@ -66,13 +66,13 @@ class Environment {
                 heapAppId = "2150081452"
             case .Beta:
                 upgradeURL = NSURL("https://ketchtheone.com/beta")
-                serverHostName = "ketch-beta.herokuapp.com"
+                serverHostName = "s10-beta.herokuapp.com"
                 bugfenderAppToken = "lO35cfZMdPxzIraCq4YFKISSKZ2EAIwe"
                 segmentWriteKey = "SGEB9gVQGFYgeptFbtnETHCka8FCOuoc"
                 heapAppId = "1572509943"
             case .AppStore:
                 upgradeURL = NSURL("https://ketchtheone.com/download")
-                serverHostName = "ketch.herokuapp.com"
+                serverHostName = "s10.herokuapp.com"
                 bugfenderAppToken = "ow9JOdNYSo5iVqPUUAEbS8HfmwZqb1tQ"
                 segmentWriteKey = "JPCrmGwQqlgohXoowBFSLwesir9Zn5Bv"
                 heapAppId = "538095372"
