@@ -16,10 +16,6 @@ class BaseViewController : UIViewController {
     
     private var metadataDisposable: RACDisposable?
     
-    override func prefersStatusBarHidden() -> Bool {
-        return true
-    }
-    
     func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
         return false
     }
@@ -43,6 +39,11 @@ class BaseViewController : UIViewController {
     func commonInit() { }
     
     // MARK: State Management
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.navigationItem.title = title
+    }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)

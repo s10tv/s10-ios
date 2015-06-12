@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Qpb-xc-SoL">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
@@ -49,7 +50,7 @@
         <!--Home-->
         <scene sceneID="vR8-xi-jxM">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="shX-ul-wcc" userLabel="Home" customClass="HomeViewController" customModule="Ketch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Serendipity" automaticallyAdjustsScrollViewInsets="NO" id="shX-ul-wcc" userLabel="Home" customClass="HomeViewController" customModule="Ketch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jRK-xA-i7r"/>
                         <viewControllerLayoutGuide type="bottom" id="2Nv-ot-SIm"/>
@@ -123,7 +124,6 @@
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" image="ic-home" id="m5R-RP-zW7"/>
-                    <navigationItem key="navigationItem" title="Serendipity" id="bQg-pY-Zwm"/>
                     <connections>
                         <outlet property="tableView" destination="hgw-6V-viR" id="6Jr-VU-nnh"/>
                     </connections>
@@ -188,7 +188,7 @@
         <!--Chats-->
         <scene sceneID="Tpb-9U-G19">
             <objects>
-                <viewController id="GSL-sK-91w" userLabel="Chats" customClass="ChatsViewController" customModule="Ketch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Chats" automaticallyAdjustsScrollViewInsets="NO" id="GSL-sK-91w" userLabel="Chats" customClass="ChatsViewController" customModule="Ketch" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IBe-OM-rhq"/>
                         <viewControllerLayoutGuide type="bottom" id="0km-Ni-5Ff"/>
@@ -197,29 +197,76 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4cg-hq-bZ8">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4cg-hq-bZ8">
+                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="cU7-TS-03p">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ConversationCell" id="pVQ-Tu-jcV">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cU7-TS-03p" id="Ydz-0n-aBu">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pVQ-Tu-jcV" id="4hE-7L-rNx">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="4Uc-p6-gzK">
+                                                    <rect key="frame" x="20" y="10" width="61" height="61"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="4Uc-p6-gzK" secondAttribute="height" multiplier="1:1" id="IGW-VC-XHN"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylor Swift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="liE-Iz-QQI">
+                                                    <rect key="frame" x="97" y="19" width="92" height="21"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="updated 5m ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zRz-eM-Pe7">
+                                                    <rect key="frame" x="97" y="40" width="120" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <color key="textColor" red="0.56947487592697144" green="0.56597548723220825" blue="0.54249739646911621" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-disclosure" translatesAutoresizingMaskIntoConstraints="NO" id="XG2-0u-Xfb">
+                                                    <rect key="frame" x="581" y="25" width="11" height="29"/>
+                                                </imageView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="4Uc-p6-gzK" firstAttribute="top" secondItem="4hE-7L-rNx" secondAttribute="topMargin" constant="2" id="3zx-9n-aha"/>
+                                                <constraint firstItem="liE-Iz-QQI" firstAttribute="leading" secondItem="4Uc-p6-gzK" secondAttribute="trailing" constant="16" id="Blx-yv-Naj"/>
+                                                <constraint firstAttribute="centerY" secondItem="4Uc-p6-gzK" secondAttribute="centerY" id="J6A-qY-lhK"/>
+                                                <constraint firstItem="zRz-eM-Pe7" firstAttribute="leading" secondItem="liE-Iz-QQI" secondAttribute="leading" id="Jhk-mP-idp"/>
+                                                <constraint firstItem="liE-Iz-QQI" firstAttribute="top" secondItem="4hE-7L-rNx" secondAttribute="topMargin" constant="11" id="OBJ-Li-sdz"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="4Uc-p6-gzK" secondAttribute="bottom" id="TVW-oX-YfT"/>
+                                                <constraint firstItem="4Uc-p6-gzK" firstAttribute="leading" secondItem="4hE-7L-rNx" secondAttribute="leadingMargin" constant="12" id="XQj-Cg-EDs"/>
+                                                <constraint firstAttribute="centerY" secondItem="XG2-0u-Xfb" secondAttribute="centerY" id="gPw-PO-Mwp"/>
+                                                <constraint firstItem="XG2-0u-Xfb" firstAttribute="trailing" secondItem="4hE-7L-rNx" secondAttribute="trailingMargin" id="pfy-gE-iKv"/>
+                                                <constraint firstItem="zRz-eM-Pe7" firstAttribute="top" secondItem="liE-Iz-QQI" secondAttribute="bottom" id="qOU-Gu-89E"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="J6A-qY-lhK"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="GSL-sK-91w" id="rES-42-Bnx"/>
+                                    <outlet property="delegate" destination="GSL-sK-91w" id="D9a-fT-3YA"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="4cg-hq-bZ8" firstAttribute="leading" secondItem="O4L-SZ-p0w" secondAttribute="leading" id="Azh-p5-sJH"/>
-                            <constraint firstItem="0km-Ni-5Ff" firstAttribute="top" secondItem="4cg-hq-bZ8" secondAttribute="bottom" constant="-49" id="Xs4-a6-hjC"/>
+                            <constraint firstItem="0km-Ni-5Ff" firstAttribute="top" secondItem="4cg-hq-bZ8" secondAttribute="bottom" id="Xs4-a6-hjC"/>
                             <constraint firstAttribute="trailing" secondItem="4cg-hq-bZ8" secondAttribute="trailing" id="fbK-BG-2wH"/>
-                            <constraint firstItem="4cg-hq-bZ8" firstAttribute="top" secondItem="IBe-OM-rhq" secondAttribute="bottom" constant="-64" id="pvn-IT-KPD"/>
+                            <constraint firstItem="4cg-hq-bZ8" firstAttribute="top" secondItem="IBe-OM-rhq" secondAttribute="bottom" id="pvn-IT-KPD"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Chats" image="ic-chats" id="qO0-CC-Tzd"/>
+                    <connections>
+                        <outlet property="tableView" destination="4cg-hq-bZ8" id="YhK-na-cJu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NWp-vJ-jcK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -267,11 +314,13 @@
     <resources>
         <image name="ic-camera" width="83" height="84"/>
         <image name="ic-chats" width="32" height="32"/>
+        <image name="ic-disclosure" width="11" height="29"/>
         <image name="ic-flag" width="16" height="23"/>
         <image name="ic-home" width="27" height="26"/>
         <image name="ic-me" width="34" height="35"/>
         <image name="ic-mute" width="19" height="18"/>
         <image name="ic-people" width="32" height="26"/>
+        <image name="sample-taylor-avatar" width="44" height="44"/>
         <image name="sample-taylor-video-frame" width="375" height="375"/>
     </resources>
 </document>
