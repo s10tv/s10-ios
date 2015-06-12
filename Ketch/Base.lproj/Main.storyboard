@@ -79,7 +79,8 @@
                             <constraint firstAttribute="centerX" secondItem="Bpx-8k-jax" secondAttribute="centerX" constant="-0.5" id="ija-my-P8f"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Home" id="m5R-RP-zW7"/>
+                    <tabBarItem key="tabBarItem" title="Home" image="ic-home" id="m5R-RP-zW7"/>
+                    <navigationItem key="navigationItem" title="Serendipity" id="bQg-pY-Zwm"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F7c-ck-fGw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -132,7 +133,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Discover" id="3rI-zC-hCx"/>
+                    <tabBarItem key="tabBarItem" title="Discover" image="ic-people" id="3rI-zC-hCx"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IHi-T7-nrb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -159,7 +160,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Chats" id="qO0-CC-Tzd"/>
+                    <tabBarItem key="tabBarItem" title="Chats" image="ic-chats" id="qO0-CC-Tzd"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NWp-vJ-jcK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -183,10 +184,21 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMv-sx-KVx">
+                                <rect key="frame" x="0.0" y="64" width="600" height="175"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="175" id="mF8-mr-JWT"/>
+                                </constraints>
+                            </mapView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="OMv-sx-KVx" secondAttribute="trailing" id="DXg-Ob-4oc"/>
+                            <constraint firstItem="OMv-sx-KVx" firstAttribute="top" secondItem="rbh-DD-zC5" secondAttribute="bottom" id="nhi-Ny-Ec3"/>
+                            <constraint firstItem="OMv-sx-KVx" firstAttribute="leading" secondItem="uj7-s2-Wdm" secondAttribute="leading" id="oaz-dT-TRR"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Me" id="9fw-K9-vzr"/>
+                    <tabBarItem key="tabBarItem" title="Me" image="ic-me" id="9fw-K9-vzr"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yWV-ja-hlq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -195,5 +207,9 @@
     </scenes>
     <resources>
         <image name="ic-camera" width="83" height="84"/>
+        <image name="ic-chats" width="32" height="32"/>
+        <image name="ic-home" width="27" height="26"/>
+        <image name="ic-me" width="34" height="35"/>
+        <image name="ic-people" width="32" height="26"/>
     </resources>
 </document>
