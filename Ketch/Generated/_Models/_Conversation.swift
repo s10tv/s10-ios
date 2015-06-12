@@ -1,25 +1,25 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
-// Make changes to Candidate.swift instead.
+// Make changes to Conversation.swift instead.
 
 import CoreData
 
-enum CandidateAttributes: String {
+enum ConversationAttributes: String {
     case createdAt = "createdAt"
-    case location = "location"
-    case score = "score"
+    case unreadCount = "unreadCount"
+    case updatedAt = "updatedAt"
 }
 
-enum CandidateRelationships: String {
-    case user = "user"
+enum ConversationRelationships: String {
+    case otherUser = "otherUser"
 }
 
 @objc
-class _Candidate: NSManagedObject {
+class _Conversation: NSManagedObject {
 
     // MARK: - Class methods
 
     class func entityName () -> String {
-        return "Candidate"
+        return "Conversation"
     }
 
     class func entity(managedObjectContext: NSManagedObjectContext!) -> NSEntityDescription! {
@@ -33,7 +33,7 @@ class _Candidate: NSManagedObject {
     }
 
     convenience init(managedObjectContext: NSManagedObjectContext!) {
-        let entity = _Candidate.entity(managedObjectContext)
+        let entity = _Conversation.entity(managedObjectContext)
         self.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
     }
 
@@ -45,21 +45,21 @@ class _Candidate: NSManagedObject {
     // func validateCreatedAt(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
-    var location: AnyObject?
+    var unreadCount: NSNumber?
 
-    // func validateLocation(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateUnreadCount(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
-    var score: NSNumber?
+    var updatedAt: NSDate?
 
-    // func validateScore(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateUpdatedAt(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
 
     @NSManaged
-    var user: User?
+    var otherUser: User?
 
-    // func validateUser(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateOtherUser(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
 }
 

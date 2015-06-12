@@ -1,25 +1,21 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
-// Make changes to Candidate.swift instead.
+// Make changes to Video.swift instead.
 
 import CoreData
 
-enum CandidateAttributes: String {
+enum VideoAttributes: String {
+    case coverFrameUrl = "coverFrameUrl"
     case createdAt = "createdAt"
-    case location = "location"
-    case score = "score"
-}
-
-enum CandidateRelationships: String {
-    case user = "user"
+    case url = "url"
 }
 
 @objc
-class _Candidate: NSManagedObject {
+class _Video: NSManagedObject {
 
     // MARK: - Class methods
 
     class func entityName () -> String {
-        return "Candidate"
+        return "Video"
     }
 
     class func entity(managedObjectContext: NSManagedObjectContext!) -> NSEntityDescription! {
@@ -33,11 +29,16 @@ class _Candidate: NSManagedObject {
     }
 
     convenience init(managedObjectContext: NSManagedObjectContext!) {
-        let entity = _Candidate.entity(managedObjectContext)
+        let entity = _Video.entity(managedObjectContext)
         self.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
     }
 
     // MARK: - Properties
+
+    @NSManaged
+    var coverFrameUrl: String?
+
+    // func validateCoverFrameUrl(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
     var createdAt: NSDate?
@@ -45,21 +46,11 @@ class _Candidate: NSManagedObject {
     // func validateCreatedAt(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
-    var location: AnyObject?
+    var url: String?
 
-    // func validateLocation(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
-
-    @NSManaged
-    var score: NSNumber?
-
-    // func validateScore(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateUrl(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
-
-    @NSManaged
-    var user: User?
-
-    // func validateUser(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
 }
 

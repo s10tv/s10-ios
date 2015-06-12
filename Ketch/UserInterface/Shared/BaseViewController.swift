@@ -13,9 +13,7 @@ import Meteor
 class BaseViewController : UIViewController {
     
     var screenName: String?
-    var allowedStates: [FlowService.State]?
     
-    private var stateDisposable: RACDisposable?
     private var metadataDisposable: RACDisposable?
     
     override func prefersStatusBarHidden() -> Bool {
@@ -48,9 +46,6 @@ class BaseViewController : UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        stateDisposable = Globals.flowService.stateSignal().subscribeNext { [weak self] _ in
-            self!.stateDidUpdateWhileViewActive(Globals.flowService.currentState)
-        }
         metadataDisposable = listenForNotification(METDatabaseDidChangeNotification)
             .deliverOnMainThread().subscribeNextAs { (notification: NSNotification) in
             if let changes = notification.userInfo?[METDatabaseChangesKey] as? METDatabaseChanges {
@@ -68,17 +63,9 @@ class BaseViewController : UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        stateDisposable?.dispose()
         metadataDisposable?.dispose()
     }
     
-    func stateDidUpdateWhileViewActive(state: FlowService.State) {
-        if let states = allowedStates {
-            if !contains(states, state) {
-                navigationController?.popToRootViewControllerAnimated(true)
-            }
-        }
-    }
     func metadataDidUpdateWhileViewActive(metadataKey: String, value: AnyObject?) { }
     
     // MARK: Debugging

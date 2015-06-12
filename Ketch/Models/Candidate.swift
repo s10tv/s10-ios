@@ -8,19 +8,9 @@
 
 @objc(Candidate)
 class Candidate: _Candidate {
-    
-    enum Choice : String {
-        case Yes = "yes" // Marry
-        case Maybe = "maybe" // Keep
-        case No = "no" // Skip
-    }
-
-    class func candidateQueue() -> [Candidate] {
-        return Candidate.all().fetch().map { $0 as! Candidate }
-    }
 
     class func findByDocumentID(documentID: String) -> Candidate? {
-        return Meteor.mainContext.objectInCollection("matches", documentID: documentID) as? Candidate
+        return Meteor.mainContext.objectInCollection("candidates", documentID: documentID) as? Candidate
     }
 
 }

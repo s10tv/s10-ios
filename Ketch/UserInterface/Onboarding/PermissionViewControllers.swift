@@ -14,7 +14,6 @@ import Meteor
 class FacebookPermissionViewController : BaseViewController {
     
     override func commonInit() {
-        allowedStates = [.Signup, .Waitlist, .Welcome]
         screenName = "FacebookPerm"
     }
     
@@ -41,7 +40,6 @@ class FacebookPermissionViewController : BaseViewController {
 class NotificationsPermissionViewController : BaseViewController {
     
     override func commonInit() {
-        allowedStates = [.Signup, .Waitlist, .Welcome]
         screenName = "NotificationsPerm"
     }
     
@@ -64,17 +62,16 @@ class NotificationsPermissionViewController : BaseViewController {
 class LocationPermissionViewController : BaseViewController {
     
     override func commonInit() {
-        allowedStates = [.Signup, .Waitlist, .Welcome]
         screenName = "LocationPerm"
     }
     
     @IBAction func requestLocationPermission(sender: AnyObject) {
         Globals.locationService.requestPermission().deliverOnMainThread().subscribeCompleted {
-            if Globals.flowService.currentState == .Waitlist {
-                self.performSegue(.LocationPermToWaitlist)
-            } else {
-                self.performSegue(.LocationPermToLoading)
-            }
+//            if Globals.flowService.currentState == .Waitlist {
+//                self.performSegue(.LocationPermToWaitlist)
+//            } else {
+//                self.performSegue(.LocationPermToLoading)
+//            }
         }
     }
 }

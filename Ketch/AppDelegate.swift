@@ -47,7 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
         let meteor = MeteorService(env: env)
         _GlobalsContainer.instance = GlobalsContainer(env: env,
             meteorService: meteor,
-            flowService: FlowService(meteorService: meteor),
             accountService: AccountService(meteorService: meteor),
             analyticsService: AnalyticsService(env: env),
             upgradeService: UpgradeService(env: env, settings: meteor.settings),
@@ -95,13 +94,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate {
     func applicationDidBecomeActive(application: UIApplication) {
         FBAppCall.handleDidBecomeActive()
         application.applicationIconBadgeNumber = 0 // Clear notification first
-        application.applicationIconBadgeNumber = Connection.unread().count()
         Globals.locationService.updateLatestLocationIfAvailable()
     }
     
     func applicationWillResignActive(application: UIApplication) {
         SugarRecord.applicationWillResignActive()
-        application.applicationIconBadgeNumber = Connection.unread().count()
     }
     
     func applicationWillTerminate(application: UIApplication) {

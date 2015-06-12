@@ -5,13 +5,14 @@ import CoreData
 
 enum MessageAttributes: String {
     case createdAt = "createdAt"
-    case isUnread = "isUnread"
-    case text = "text"
+    case expiresAt = "expiresAt"
+    case status = "status"
 }
 
 enum MessageRelationships: String {
-    case connection = "connection"
+    case conversation = "conversation"
     case sender = "sender"
+    case video = "video"
 }
 
 @objc
@@ -46,26 +47,31 @@ class _Message: NSManagedObject {
     // func validateCreatedAt(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
-    var isUnread: NSNumber?
+    var expiresAt: NSDate?
 
-    // func validateIsUnread(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateExpiresAt(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
-    var text: String?
+    var status: String?
 
-    // func validateText(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateStatus(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
 
     @NSManaged
-    var connection: Connection?
+    var conversation: Conversation?
 
-    // func validateConnection(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateConversation(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
     var sender: User?
 
     // func validateSender(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var video: Video?
+
+    // func validateVideo(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
 }
 

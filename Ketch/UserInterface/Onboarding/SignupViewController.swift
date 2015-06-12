@@ -16,7 +16,6 @@ class SignupViewController : BaseViewController {
     @IBOutlet weak var fullLogo: UIImageView!
     
     override func commonInit() {
-        allowedStates = [.Signup]
         screenName = "Signup"
     }
     
@@ -32,8 +31,6 @@ class SignupViewController : BaseViewController {
             showErrorAlert(NSError(.NetworkUnreachable))
             return
         }
-        // Temp hack, timing issue
-        allowedStates = [.Signup, .Waitlist, .Welcome]
         PKHUD.showActivity()
         loginBlock().subscribeError({ error in
             PKHUD.hide()

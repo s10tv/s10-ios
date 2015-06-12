@@ -50,6 +50,16 @@ public enum R {
         case ibAvatarPreview = "ib-avatar-preview"
         /// ic-binocular
         case icBinocular = "ic-binocular"
+        /// ic-camera
+        case icCamera = "ic-camera"
+        /// ic-chats
+        case icChats = "ic-chats"
+        /// ic-home
+        case icHome = "ic-home"
+        /// ic-me
+        case icMe = "ic-me"
+        /// ic-people
+        case icPeople = "ic-people"
         /// ic_remove_photo
         case icRemovePhoto = "ic_remove_photo"
         /// ic-tap-gesture

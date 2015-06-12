@@ -10,29 +10,24 @@ import Foundation
 import SDWebImage
 import DateTools
 
-class ConnectionCell : UITableViewCell {
+class ConversationCell : UITableViewCell {
     
     @IBOutlet weak var newIndicator: UIImageView!
     @IBOutlet weak var avatarView: UserAvatarView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     
-    var connection : Connection? {
+    var conversation : Conversation? {
         didSet {
             reloadData()
         }
     }
     
     func reloadData() {
-        
-        let photos = connection?.user?.photos as [Photo]?
-        avatarView.user = connection?.user
-        avatarView.fadeRatio = connection?.fractionExpired.f ?? 0
+        avatarView.user = conversation?.otherUser
         
         // TODO: Can use connectionViewModel of sorts here
-        nameLabel.text = connection?.user?.displayName
-        subtitleLabel.text = connection?.lastMessageText
-        newIndicator.hidden = !(connection?.hasUnreadMessage?.boolValue ?? false)
+        nameLabel.text = conversation?.otherUser?.displayName
     }
     
     override func awakeFromNib() {

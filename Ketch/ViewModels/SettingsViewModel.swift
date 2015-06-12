@@ -33,39 +33,6 @@ class SettingsViewModel {
     // MARK: - Controlled Write Access
     
     func updateItem(type: SettingsItem.ItemType, newValue: AnyObject?) {
-        switch type {
-        case .GenderPreference:
-            if let genderPrefInfo = newValue as? String {
-                if let pref = Settings.GenderPref(rawValue: genderPrefInfo) {
-                    if settings.genderPref != pref {
-                        Meteor.updateGenderPref(pref)
-                    }
-                }
-            }
-        case .Work:
-            let workInfo = parseNullableString(newValue)
-            if currentUser.work != workInfo {
-                Meteor.updateWork(workInfo)
-            }
-        case .Education:
-            let educationInfo = parseNullableString(newValue)
-            if currentUser.education != educationInfo {
-                Meteor.updateEducation(educationInfo)
-            }
-        case .Height:
-            if let heightInfo = newValue as? Int {
-                if currentUser.height != heightInfo {
-                    Meteor.updateHeight(heightInfo)
-                }
-            }
-        case .About:
-            let aboutInfo = parseNullableString(newValue)
-            if currentUser.about != aboutInfo {
-                Meteor.updateAbout(aboutInfo)
-            }
-        default:
-            break
-        }
     }
     
     // MARK: - Helpers
@@ -78,29 +45,30 @@ class SettingsViewModel {
     }
 
     private func createItems() -> [SettingsItem] {
-        return [
-            // TODO: Use CoreData computed property to avoid hardcode string?
-            userItem(.Name, attr: "displayName"),
-            userItem(.ProfilePhoto, attr: "profilePhotoURL"),
-            userItem(.Age, icon: .settingsAge, attr: .age, editable: false) {
-                return ($0 as? Int).map { LS(.settingsAgeFormat, $0) } ?? LS(.settingsAgePrompt)
-            },
-            item(.GenderPreference, metadataKey: "genderPref", icon: .icBinocular, editable: true) {
-                return ($0 as? String).map { LS(.settingsGenderPreferenceFormat, Formatters.formatGenderPref($0)) } ?? LS(.settingsGenderPreferencePrompt)
-            },
-            userItem(.Work, icon: .settingsBriefcase, attr: .work) {
-                return ($0 as? String).map { LS(.settingsWorkFormat, $0) } ?? LS(.settingsWorkPrompt)
-            },
-            userItem(.Education, icon: .settingsMortarBoard, attr: .education) {
-                return ($0 as? String).map { LS(.settingsEducationFormat, $0) } ?? LS(.settingsEducationPrompt)
-            },
-            userItem(.Height, icon: .settingsHeightArrow, attr: .height) {
-                return ($0 as? Int).map { LS(.settingsHeightFormat, Formatters.formatHeight($0)) } ?? LS(.settingsHeightPrompt)
-            },
-            userItem(.About, icon: .settingsNotepad, attr: .about) {
-                return ($0 as? String) ?? LS(.settingsAboutPrompt)
-            }
-        ]
+        return []
+//        return [
+//            // TODO: Use CoreData computed property to avoid hardcode string?
+//            userItem(.Name, attr: "displayName"),
+//            userItem(.ProfilePhoto, attr: "profilePhotoURL"),
+//            userItem(.Age, icon: .settingsAge, attr: .age, editable: false) {
+//                return ($0 as? Int).map { LS(.settingsAgeFormat, $0) } ?? LS(.settingsAgePrompt)
+//            },
+//            item(.GenderPreference, metadataKey: "genderPref", icon: .icBinocular, editable: true) {
+//                return ($0 as? String).map { LS(.settingsGenderPreferenceFormat, Formatters.formatGenderPref($0)) } ?? LS(.settingsGenderPreferencePrompt)
+//            },
+//            userItem(.Work, icon: .settingsBriefcase, attr: .work) {
+//                return ($0 as? String).map { LS(.settingsWorkFormat, $0) } ?? LS(.settingsWorkPrompt)
+//            },
+//            userItem(.Education, icon: .settingsMortarBoard, attr: .education) {
+//                return ($0 as? String).map { LS(.settingsEducationFormat, $0) } ?? LS(.settingsEducationPrompt)
+//            },
+//            userItem(.Height, icon: .settingsHeightArrow, attr: .height) {
+//                return ($0 as? Int).map { LS(.settingsHeightFormat, Formatters.formatHeight($0)) } ?? LS(.settingsHeightPrompt)
+//            },
+//            userItem(.About, icon: .settingsNotepad, attr: .about) {
+//                return ($0 as? String) ?? LS(.settingsAboutPrompt)
+//            }
+//        ]
     }
     
     // MARK: More Helpers

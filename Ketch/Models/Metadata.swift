@@ -15,7 +15,6 @@ class Metadata {
         case GameTutorialMode = "gameTutorialMode"
         case DemoMode = "demoMode"
         case HasBeenWelcomed = "hasBeenWelcomed"
-        case DebugState = "debugState"
         case LogVerboseState = "logVerboseState"
     }
     let collection : METCollection
@@ -39,10 +38,6 @@ class Metadata {
     var logVerboseState: Bool {
         get { return getValue(.LogVerboseState) as? Bool ?? false }
         set { setValue(newValue, key: .LogVerboseState) }
-    }
-    var debugState: FlowService.State? {
-        get { return FlowService.State(rawValue: (getValue(.DebugState) as? String) ?? "") }
-        set { setValue(newValue?.rawValue, key: .DebugState) }
     }
     
     // MARK: -

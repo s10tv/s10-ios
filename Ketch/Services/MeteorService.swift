@@ -19,8 +19,9 @@ class MeteorService {
         metadata: METSubscription,
         settings: METSubscription,
         currentUser: METSubscription,
+        posts: METSubscription,
         candidates: METSubscription,
-        connections: METSubscription,
+        conversations: METSubscription,
         messages: METSubscription
     )
     let collections: (
@@ -29,7 +30,9 @@ class MeteorService {
         users: METCollection,
         candidates: METCollection,
         connections: METCollection,
-        messages: METCollection
+        messages: METCollection,
+        posts: METCollection,
+        videos: METCollection
     )
     let meta: Metadata
     let settings: Settings
@@ -54,8 +57,9 @@ class MeteorService {
             meteor.addSubscriptionWithName("metadata"),
             meteor.addSubscriptionWithName("settings"),
             meteor.addSubscriptionWithName("currentUser"),
+            meteor.addSubscriptionWithName("posts"),
             meteor.addSubscriptionWithName("candidates"),
-            meteor.addSubscriptionWithName("connections"),
+            meteor.addSubscriptionWithName("conversations"),
             meteor.addSubscriptionWithName("messages")
         )
         collections = (
@@ -64,7 +68,9 @@ class MeteorService {
             meteor.database.collectionWithName("users"),
             meteor.database.collectionWithName("candidates"),
             meteor.database.collectionWithName("connections"),
-            meteor.database.collectionWithName("messages")
+            meteor.database.collectionWithName("messages"),
+            meteor.database.collectionWithName("posts"),
+            meteor.database.collectionWithName("videos")
         )
         meta = Metadata(collection: collections.metadata)
         settings = Settings(collection: collections.settings)
@@ -135,75 +141,36 @@ class MeteorService {
     
     // MARK: - User
     
-    func updateGenderPref(genderPref: Settings.GenderPref) -> RACSignal {
-        return meteor.call("me/update/genderPref", [genderPref.rawValue]) {
-            self.meta.setValue(genderPref.rawValue, metadataKey: "genderPref")
-            return nil
-        }
-    }
-    
-    func updateHeight(heightInCm: Int) -> RACSignal {
-        return meteor.call("me/update/height", [heightInCm]) {
-            User.currentUser()?.height = heightInCm
-            return nil
-        }
-    }
-    
-    func updateWork(work: String) -> RACSignal {
-        return meteor.call("me/update/work", [work]) {
-            User.currentUser()?.work = work
-            return nil
-        }
-    }
-    
-    func updateEducation(education: String) -> RACSignal {
-        return meteor.call("me/update/education", [education]) {
-            User.currentUser()?.education = education
-            return nil
-        }
-    }
-    
-    func updateAbout(about: String) -> RACSignal {
-        return meteor.call("me/update/about", [about]) {
-            User.currentUser()?.about = about
+    func updateProfile(key: String, value: String) -> RACSignal {
+        return meteor.call("me/update", [key, value]) {
+//            User.currentUser()?.about = about
             return nil
         }
     }
     
     // MARK: - Core Mechanic
     
-    func submitChoices(#yes: Candidate, no: Candidate, maybe: Candidate) -> RACSignal {
-        return meteor.call("candidate/submitChoices", [[
-            "yes": yes.documentID!,
-            "no": no.documentID!,
-            "maybe": maybe.documentID!
-        ]], stub: {
-            [yes, no, maybe].map { $0.delete() }
+    func hideCandidate(candidate: Candidate) -> RACSignal {
+        return meteor.call("candidate/hide", [candidate.documentID!], stub: {
+            candidate.delete()
             return nil
-        }).map { result in
-            if let yesId = (result as? NSDictionary)?["yes"] as? String {
-                let connection = Connection.findByDocumentID(yesId)
-                assert(connection != nil, "Expect new connection to exist by now")
-                return connection
-            }
-            return nil
-        }.deliverOnMainThread()
+        })
     }
     
-    func markAsRead(connection: Connection) -> RACSignal {
-        return meteor.call("connection/markAsRead", [connection.documentID!]) {
-            connection.hasUnreadMessage = false
-            connection.save()
+    func markAsRead(message: Message) -> RACSignal {
+        return meteor.call("message/markAsRead", [message.documentID!]) {
+            message.status = "read" // TODO: Fixme
+            message.save()
             return nil
         }
     }
     
-    func sendMessage(connection: Connection, text: String) -> RACSignal {
-        return meteor.call("connection/sendMessage", [connection.documentID!, text]) {
+    func sendMessage(conversation: Conversation, video: Video) -> RACSignal {
+        return meteor.call("conversation/sendMessage", [conversation.documentID!, video.documentID!]) {
             let message = Message.create() as! Message
-            message.connection = connection
+            message.conversation = conversation
             message.sender = User.currentUser()
-            message.text = text
+            message.video = video
             message.save()
             return nil
         }

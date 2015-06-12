@@ -48,24 +48,6 @@ class SettingsViewController : BaseViewController {
         }
     }
     
-    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
-        if identifier == SegueIdentifier.Main_Chat.rawValue {
-            if Connection.crabConnection() == nil {
-                showAlert(LS(.ketchyUnavailableTitle), message: LS(.ketchyUnavailableMessage))
-                return false
-            }
-        }
-        return super.shouldPerformSegueWithIdentifier(identifier, sender: sender)
-    }
-
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let chatVC = segue.destinationViewController as? ChatViewController {
-            chatVC.connection = Connection.crabConnection()
-        } else if let profileVC = segue.destinationViewController as? ProfileViewController {
-            profileVC.user = User.currentUser()
-        }
-    }
-    
     // MARK: - Action
 
     @IBAction func showLogoutOptions(sender: AnyObject) {

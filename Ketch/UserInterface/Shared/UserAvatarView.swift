@@ -27,7 +27,7 @@ class UserAvatarView : UIImageView {
     }
     
     var user : User? { didSet {
-        if let photoURL = user?.profilePhotoURL {
+        if let photoURL = user?.avatarURL {
             sd_setImageWithURL(photoURL)
         } else {
             image = UIImage(R.KetchAssets.girlPlaceholder)

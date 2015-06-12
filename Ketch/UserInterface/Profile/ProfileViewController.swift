@@ -52,7 +52,6 @@ class ProfileViewController : BaseViewController {
         infoItems.content = user.infoItems ?? []
         swipeView.reloadData()
         swipeView.scrollToItemAtIndex(0, duration: 0)
-        pageControl.numberOfPages = numberOfItemsInSwipeView(swipeView)
         infoCollection.reloadData()
         // Right now the only thing more button does is report user
         // therefore the best way to hide this ability is to hide more button
@@ -95,31 +94,6 @@ class ProfileViewController : BaseViewController {
             }
         }
         presentViewController(alert)
-    }
-}
-
-// MARK: - Photos SwipeView Delegate / Data Source
-
-extension ProfileViewController : SwipeViewDataSource {
-    func numberOfItemsInSwipeView(swipeView: SwipeView!) -> Int {
-        return user.photos != nil ? (user.photos?.count)! : 0
-    }
-    
-    func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, reusingView view: UIView!) -> UIView! {
-        let v = view != nil ? view as! UIImageView : UIImageView()
-        v.contentMode = .ScaleAspectFill
-        v.sd_setImageWithURL(NSURL(user.photos![index].url))
-        return v
-    }
-}
-
-extension ProfileViewController : SwipeViewDelegate {
-    func swipeViewCurrentItemIndexDidChange(swipeView: SwipeView!) {
-        pageControl.currentPage = swipeView.currentPage
-    }
-    
-    func swipeViewItemSize(swipeView: SwipeView!) -> CGSize {
-        return swipeView.frame.size
     }
 }
 

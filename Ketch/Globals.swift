@@ -11,7 +11,6 @@ import Foundation
 struct GlobalsContainer {
     let env: Environment
     let meteorService: MeteorService
-    let flowService: FlowService
     let accountService: AccountService
     let analyticsService : AnalyticsService
     let upgradeService: UpgradeService

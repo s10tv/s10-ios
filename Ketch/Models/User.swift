@@ -17,50 +17,20 @@ class User: _User {
         case Female = "female"
     }
     
-    var connection : Connection? {
-        return fetchConnection().fetchObjects().first as? Connection
-    }
-    var candidate : Candidate? {
-        return fetchCandidate().fetchObjects().first as? Candidate
-    }
-    
     var isCurrentUser : Bool {
         return documentID == Meteor.userID
     }
     
-    var photos : [Photo]? {
-        if let urls = photoURLs as? [NSString] {
-            return urls.map { Photo(url: $0 as String) }
-        }
-        return nil
-    }
-    
     var infoItems : [ProfileInfoItem] {
-        let items : [ProfileInfoItem.ItemType?] = [
-            location.map { .Location($0) },
-            (age as? Int).map { .Age($0) },
-            (height as? Int).map { .Height($0) },
-            work.map { .Work($0) },
-            education.map { .Education($0) }
-        ]
-        return items.mapOptional { $0.map { ProfileInfoItem($0) } }
+        return []
     }
     
-    var profilePhotoURL : NSURL? {
-        let firstPhotoUrl = photos?.first?.url
-        return firstPhotoUrl != nil ? NSURL(string: firstPhotoUrl!) : nil
+    var avatarURL : NSURL? {
+        return NSURL(avatarUrl!)
     }
     
     var displayName : String {
         return firstName != nil ? (lastName != nil ? "\(firstName!) \(lastName!)" : firstName!) : ""
-    }
-        
-    func fetchConnection() -> NSFetchedResultsController {
-        return Connection.by(ConnectionRelationships.user.rawValue, value: self).frc()
-    }
-    
-    func fetchCandidate() -> NSFetchedResultsController {
-        return Candidate.by(CandidateRelationships.user.rawValue, value: self).frc()
     }
     
     override class func keyPathsForValuesAffectingValueForKey(key: String) -> Set<NSObject> {
@@ -79,13 +49,5 @@ class User: _User {
             return findByDocumentID(currentUserID)
         }
         return nil
-    }
-}
-
-struct Photo {
-    let url: String
-    
-    init(url: String) {
-        self.url = url
     }
 }

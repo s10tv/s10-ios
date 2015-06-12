@@ -1,25 +1,27 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
-// Make changes to Candidate.swift instead.
+// Make changes to Post.swift instead.
 
 import CoreData
 
-enum CandidateAttributes: String {
+enum PostAttributes: String {
     case createdAt = "createdAt"
     case location = "location"
     case score = "score"
+    case upvotes = "upvotes"
 }
 
-enum CandidateRelationships: String {
-    case user = "user"
+enum PostRelationships: String {
+    case author = "author"
+    case video = "video"
 }
 
 @objc
-class _Candidate: NSManagedObject {
+class _Post: NSManagedObject {
 
     // MARK: - Class methods
 
     class func entityName () -> String {
-        return "Candidate"
+        return "Post"
     }
 
     class func entity(managedObjectContext: NSManagedObjectContext!) -> NSEntityDescription! {
@@ -33,7 +35,7 @@ class _Candidate: NSManagedObject {
     }
 
     convenience init(managedObjectContext: NSManagedObjectContext!) {
-        let entity = _Candidate.entity(managedObjectContext)
+        let entity = _Post.entity(managedObjectContext)
         self.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
     }
 
@@ -54,12 +56,22 @@ class _Candidate: NSManagedObject {
 
     // func validateScore(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
+    @NSManaged
+    var upvotes: NSNumber?
+
+    // func validateUpvotes(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
     // MARK: - Relationships
 
     @NSManaged
-    var user: User?
+    var author: User?
 
-    // func validateUser(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateAuthor(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged
+    var video: Video?
+
+    // func validateVideo(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
 }
 
