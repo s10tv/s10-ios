@@ -56,11 +56,11 @@ class MeteorService {
         subscriptions = (
             meteor.addSubscriptionWithName("metadata"),
             meteor.addSubscriptionWithName("settings"),
-            meteor.addSubscriptionWithName("currentUser"),
+            meteor.addSubscriptionWithName("allVideos"),
             meteor.addSubscriptionWithName("allPosts"),
-            meteor.addSubscriptionWithName("candidates"),
-            meteor.addSubscriptionWithName("conversations"),
-            meteor.addSubscriptionWithName("messages")
+            meteor.addSubscriptionWithName("allCandidates"),
+            meteor.addSubscriptionWithName("allConversations"),
+            meteor.addSubscriptionWithName("allUsers")
         )
         collections = (
             meteor.database.collectionWithName("metadata"),

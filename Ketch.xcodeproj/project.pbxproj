@@ -279,6 +279,8 @@
 		EAA56FA61B2B32E500DE3936 /* WaveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F8B1B2B32E500DE3936 /* WaveTransition.swift */; };
 		EAA56FA71B2B32E500DE3936 /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F8C1B2B32E500DE3936 /* WaveView.swift */; };
 		EAA56FA91B2B638000DE3936 /* PostHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAA56FA81B2B638000DE3936 /* PostHeaderView.xib */; };
+		EAA56FAB1B2BBCDE00DE3936 /* PostViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56FAA1B2BBCDE00DE3936 /* PostViews.swift */; };
+		EAA56FAD1B2BBE3600DE3936 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56FAC1B2BBE3600DE3936 /* FeedViewModel.swift */; };
 		EAAD921D1ACF342C0014BA25 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921C1ACF342C0014BA25 /* Environment.swift */; };
 		EAAD921F1ACF4EFA0014BA25 /* ProvisioningProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921E1ACF4EFA0014BA25 /* ProvisioningProfile.swift */; };
 		EAB79B701AD912EB00D9875A /* PKHUDExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB79B6F1AD912EB00D9875A /* PKHUDExtension.swift */; };
@@ -596,6 +598,8 @@
 		EAA56F8B1B2B32E500DE3936 /* WaveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveTransition.swift; sourceTree = "<group>"; };
 		EAA56F8C1B2B32E500DE3936 /* WaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
 		EAA56FA81B2B638000DE3936 /* PostHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostHeaderView.xib; sourceTree = "<group>"; };
+		EAA56FAA1B2BBCDE00DE3936 /* PostViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViews.swift; sourceTree = "<group>"; };
+		EAA56FAC1B2BBE3600DE3936 /* FeedViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		EAAA24951AEE462700679F0A /* Pods-KetchTests.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-KetchTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KetchTests/Pods-KetchTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EAAA24961AEE462700679F0A /* Pods-KetchTests.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-KetchTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KetchTests/Pods-KetchTests.release.xcconfig"; sourceTree = "<group>"; };
 		EAAD921C1ACF342C0014BA25 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
@@ -768,6 +772,7 @@
 		EA4F51831AE153790060405E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				EAA56FAC1B2BBE3600DE3936 /* FeedViewModel.swift */,
 				EAC31C1E1AE3AD7000277FE8 /* SettingsItem.swift */,
 				EA4F51861AE153A40060405E /* ProfileItem.swift */,
 				EA4F51841AE153880060405E /* SettingsViewModel.swift */,
@@ -1125,6 +1130,7 @@
 			isa = PBXGroup;
 			children = (
 				EAA56F721B2B32E500DE3936 /* HomeViewController.swift */,
+				EAA56FAA1B2BBCDE00DE3936 /* PostViews.swift */,
 				EAA56FA81B2B638000DE3936 /* PostHeaderView.xib */,
 				EAA56F731B2B32E500DE3936 /* NewPostViewController.swift */,
 			);
@@ -1671,6 +1677,7 @@
 				EAA56FA41B2B32E500DE3936 /* PulsingView.swift in Sources */,
 				EA0FC9361A87DE5800D62625 /* SugarRecordExtension.swift in Sources */,
 				EA72FB2C1AD1B7E1009F853F /* ScrollTransition.swift in Sources */,
+				EAA56FAB1B2BBCDE00DE3936 /* PostViews.swift in Sources */,
 				EA925C741AD99ED8008E9F41 /* R.swift in Sources */,
 				EA0FC9391A87DE5800D62625 /* Logging.swift in Sources */,
 				EAA56F991B2B32E500DE3936 /* SettingsTextCell.swift in Sources */,
@@ -1718,6 +1725,7 @@
 				EA0FC9341A87DE5800D62625 /* MeteorCDStack.swift in Sources */,
 				EAA56F961B2B32E500DE3936 /* SettingsFormViewController.swift in Sources */,
 				EA49286E1ADF291100118639 /* UpgradeService.swift in Sources */,
+				EAA56FAD1B2BBE3600DE3936 /* FeedViewModel.swift in Sources */,
 				EAA56F941B2B32E500DE3936 /* RowDescriptors.swift in Sources */,
 				EAA56FA51B2B32E500DE3936 /* UserAvatarView.swift in Sources */,
 				EACF21661AD70CB300938CD0 /* SwiftExtensions.swift in Sources */,

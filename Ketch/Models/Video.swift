@@ -9,6 +9,8 @@
 @objc(Video)
 class Video: _Video {
 
-	// Custom logic goes here.
+    var coverFrameURL : NSURL? {
+        return NSURL(coverFrameUrl!)
+    }
 
 }

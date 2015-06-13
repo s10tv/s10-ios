@@ -11,4 +11,7 @@ class Post: _Post {
 
 	// Custom logic goes here.
 
+    class func feed() {
+        Post.all().fetch()
+    }
 }

@@ -26,7 +26,7 @@ class User: _User {
     }
     
     var avatarURL : NSURL? {
-        return NSURL(avatarUrl!)
+        return avatarUrl.map { NSURL($0) } ?? nil
     }
     
     var displayName : String {
