@@ -283,6 +283,7 @@
 		EAA56FAD1B2BBE3600DE3936 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56FAC1B2BBE3600DE3936 /* FeedViewModel.swift */; };
 		EAA56FAF1B2BCA0A00DE3936 /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56FAE1B2BCA0A00DE3936 /* DiscoverViewModel.swift */; };
 		EAA56FB11B2BCAC700DE3936 /* CandidateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56FB01B2BCAC700DE3936 /* CandidateCell.swift */; };
+		EAA56FB31B2BE36900DE3936 /* ChatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56FB21B2BE36900DE3936 /* ChatsViewModel.swift */; };
 		EAAD921D1ACF342C0014BA25 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921C1ACF342C0014BA25 /* Environment.swift */; };
 		EAAD921F1ACF4EFA0014BA25 /* ProvisioningProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921E1ACF4EFA0014BA25 /* ProvisioningProfile.swift */; };
 		EAB79B701AD912EB00D9875A /* PKHUDExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB79B6F1AD912EB00D9875A /* PKHUDExtension.swift */; };
@@ -604,6 +605,7 @@
 		EAA56FAC1B2BBE3600DE3936 /* FeedViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		EAA56FAE1B2BCA0A00DE3936 /* DiscoverViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
 		EAA56FB01B2BCAC700DE3936 /* CandidateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateCell.swift; sourceTree = "<group>"; };
+		EAA56FB21B2BE36900DE3936 /* ChatsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewModel.swift; sourceTree = "<group>"; };
 		EAAA24951AEE462700679F0A /* Pods-KetchTests.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-KetchTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KetchTests/Pods-KetchTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EAAA24961AEE462700679F0A /* Pods-KetchTests.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-KetchTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KetchTests/Pods-KetchTests.release.xcconfig"; sourceTree = "<group>"; };
 		EAAD921C1ACF342C0014BA25 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
@@ -778,6 +780,7 @@
 			children = (
 				EAA56FAC1B2BBE3600DE3936 /* FeedViewModel.swift */,
 				EAA56FAE1B2BCA0A00DE3936 /* DiscoverViewModel.swift */,
+				EAA56FB21B2BE36900DE3936 /* ChatsViewModel.swift */,
 				EAC31C1E1AE3AD7000277FE8 /* SettingsItem.swift */,
 				EA4F51861AE153A40060405E /* ProfileItem.swift */,
 				EA4F51841AE153880060405E /* SettingsViewModel.swift */,
@@ -1735,6 +1738,7 @@
 				EAA56FAD1B2BBE3600DE3936 /* FeedViewModel.swift in Sources */,
 				EAA56F941B2B32E500DE3936 /* RowDescriptors.swift in Sources */,
 				EAA56FB11B2BCAC700DE3936 /* CandidateCell.swift in Sources */,
+				EAA56FB31B2BE36900DE3936 /* ChatsViewModel.swift in Sources */,
 				EAA56FA51B2B32E500DE3936 /* UserAvatarView.swift in Sources */,
 				EACF21661AD70CB300938CD0 /* SwiftExtensions.swift in Sources */,
 				EA0FC93A1A87DE5800D62625 /* ReactiveCocoaExtension.swift in Sources */,

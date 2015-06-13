@@ -12,7 +12,6 @@ import DateTools
 
 class ConversationCell : UITableViewCell {
     
-    @IBOutlet weak var newIndicator: UIImageView!
     @IBOutlet weak var avatarView: UserAvatarView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
@@ -30,10 +29,6 @@ class ConversationCell : UITableViewCell {
         nameLabel.text = conversation?.otherUser?.displayName
     }
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        newIndicator.makeCircular()
-    }
     
     override func prepareForReuse() {
         super.prepareForReuse()

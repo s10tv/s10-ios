@@ -29,7 +29,7 @@ class MeteorService {
         settings: METCollection,
         users: METCollection,
         candidates: METCollection,
-        connections: METCollection,
+        conversations: METCollection,
         messages: METCollection,
         posts: METCollection,
         videos: METCollection
@@ -59,7 +59,7 @@ class MeteorService {
             meteor.addSubscriptionWithName("allVideos"),
             meteor.addSubscriptionWithName("allPosts"),
             meteor.addSubscriptionWithName("allCandidates"),
-            meteor.addSubscriptionWithName("allConversations"),
+            meteor.addSubscriptionWithName("conversations"),
             meteor.addSubscriptionWithName("allUsers")
         )
         collections = (
@@ -67,7 +67,7 @@ class MeteorService {
             meteor.database.collectionWithName("settings"),
             meteor.database.collectionWithName("users"),
             meteor.database.collectionWithName("candidates"),
-            meteor.database.collectionWithName("connections"),
+            meteor.database.collectionWithName("conversations"),
             meteor.database.collectionWithName("messages"),
             meteor.database.collectionWithName("posts"),
             meteor.database.collectionWithName("videos")

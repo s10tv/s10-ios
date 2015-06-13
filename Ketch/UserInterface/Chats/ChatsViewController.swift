@@ -8,17 +8,14 @@
 
 import Foundation
 
-class ChatsViewController : BaseViewController,
-                            UITableViewDataSource,
-                            UITableViewDelegate {
+class ChatsViewController : BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    var chatsVM : ChatsViewModel!
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+    override func viewDidLoad() {
+        chatsVM = ChatsViewModel()
+        chatsVM.bindTableView(tableView)
     }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return tableView.dequeueReusableCellWithIdentifier("ConversationCell", forIndexPath: indexPath) as! UITableViewCell
-    }
+
 }
