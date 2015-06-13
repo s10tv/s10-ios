@@ -10,8 +10,8 @@ import CoreData
 import SugarRecord
 import ReactiveCocoa
 
-@objc(Conversation)
-class Conversation: _Conversation {
+@objc(Connection)
+class Connection: _Connection {
     
     // NOTE: Not meaningfully ordered for performance, despite array return type.
     var messages: [Message] {
@@ -25,13 +25,13 @@ class Conversation: _Conversation {
     }
     
     func fetchMessages(#sorted: Bool) -> NSFetchedResultsController {
-        let messages = Message.by(MessageRelationships.conversation.rawValue, value: self)
+        let messages = Message.by(MessageRelationships.connection.rawValue, value: self)
         let sortDesc = NSSortDescriptor(key: MessageAttributes.createdAt.rawValue, ascending: true)
         return sorted ? messages.sorted(by: sortDesc).frc() : messages.frc()
     }
     
-    class func findByDocumentID(documentID: String) -> Conversation? {
-        return Meteor.mainContext.objectInCollection("conversations", documentID: documentID) as? Conversation
+    class func findByDocumentID(documentID: String) -> Connection? {
+        return Meteor.mainContext.objectInCollection("Connections", documentID: documentID) as? Connection
     }
     
 }

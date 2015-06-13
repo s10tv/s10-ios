@@ -76,7 +76,7 @@ class SignupViewController : BaseViewController {
                     return
                 }
             }
-            self.performSegue(.SignupToFacebookPerm)
+            self.navigationController?.popToRootViewControllerAnimated(true)
         })
     }
     

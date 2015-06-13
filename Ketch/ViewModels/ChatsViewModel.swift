@@ -14,7 +14,7 @@ class ChatsViewModel : NSObject {
     weak var tableView : UITableView?
     
     override init() {
-        frc = Conversation.sorted(by: ConversationAttributes.updatedAt.rawValue, ascending: false).frc()
+        frc = Connection.sorted(by: ConnectionAttributes.updatedAt.rawValue, ascending: false).frc()
         super.init()
         frc.delegate = self
         frc.performFetch(nil)
@@ -40,8 +40,8 @@ extension ChatsViewModel : UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ConversationCell", forIndexPath: indexPath) as! ConversationCell
-        cell.conversation = frc.fetchedObjects?[indexPath.section] as? Conversation
+        let cell = tableView.dequeueReusableCellWithIdentifier("ConnectionCell", forIndexPath: indexPath) as! ConnectionCell
+        cell.connection = frc.fetchedObjects?[indexPath.section] as? Connection
         return cell
     }
 }

@@ -1,25 +1,25 @@
 // DO NOT EDIT. This file is machine-generated and constantly overwritten.
-// Make changes to Conversation.swift instead.
+// Make changes to Connection.swift instead.
 
 import CoreData
 
-enum ConversationAttributes: String {
+enum ConnectionAttributes: String {
     case createdAt = "createdAt"
     case unreadCount = "unreadCount"
     case updatedAt = "updatedAt"
 }
 
-enum ConversationRelationships: String {
+enum ConnectionRelationships: String {
     case otherUser = "otherUser"
 }
 
 @objc
-class _Conversation: NSManagedObject {
+class _Connection: NSManagedObject {
 
     // MARK: - Class methods
 
     class func entityName () -> String {
-        return "Conversation"
+        return "Connection"
     }
 
     class func entity(managedObjectContext: NSManagedObjectContext!) -> NSEntityDescription! {
@@ -33,7 +33,7 @@ class _Conversation: NSManagedObject {
     }
 
     convenience init(managedObjectContext: NSManagedObjectContext!) {
-        let entity = _Conversation.entity(managedObjectContext)
+        let entity = _Connection.entity(managedObjectContext)
         self.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
     }
 

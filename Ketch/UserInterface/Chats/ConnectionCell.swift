@@ -10,23 +10,23 @@ import Foundation
 import SDWebImage
 import DateTools
 
-class ConversationCell : UITableViewCell {
+class ConnectionCell : UITableViewCell {
     
     @IBOutlet weak var avatarView: UserAvatarView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     
-    var conversation : Conversation? {
+    var connection : Connection? {
         didSet {
             reloadData()
         }
     }
     
     func reloadData() {
-        avatarView.user = conversation?.otherUser
+        avatarView.user = connection?.otherUser
         
         // TODO: Can use connectionViewModel of sorts here
-        nameLabel.text = conversation?.otherUser?.displayName
+        nameLabel.text = connection?.otherUser?.displayName
     }
     
     

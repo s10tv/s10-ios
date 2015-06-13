@@ -16,21 +16,18 @@ class MeteorService {
     private let meteor: METCoreDataDDPClient
     let env: Environment
     let subscriptions: (
-        metadata: METSubscription,
         settings: METSubscription,
-        currentUser: METSubscription,
-        posts: METSubscription,
-        candidates: METSubscription,
-        conversations: METSubscription,
-        messages: METSubscription,
-        allUsers: METSubscription
+        metadata: METSubscription,
+        discover: METSubscription,
+        chats: METSubscription,
+        me: METSubscription
     )
     let collections: (
         metadata: METCollection,
         settings: METCollection,
         users: METCollection,
         candidates: METCollection,
-        conversations: METCollection,
+        connections: METCollection,
         messages: METCollection,
         posts: METCollection,
         videos: METCollection
@@ -55,24 +52,21 @@ class MeteorService {
         self.env = env
         meteor = METCoreDataDDPClient(serverURL: env.serverURL, account: nil)
         subscriptions = (
-            meteor.addSubscriptionWithName("metadata"),
-            meteor.addSubscriptionWithName("settings"),
-            meteor.addSubscriptionWithName("currentUser"),
-            meteor.addSubscriptionWithName("posts"),
-            meteor.addSubscriptionWithName("candidates"),
-            meteor.addSubscriptionWithName("conversations"),
-            meteor.addSubscriptionWithName("messages"),
-            meteor.addSubscriptionWithName("allUsers")
+            settings: meteor.addSubscriptionWithName("settings"),
+            metadata: meteor.addSubscriptionWithName("metadata"),
+            discover: meteor.addSubscriptionWithName("discover"),
+            chats: meteor.addSubscriptionWithName("chats"),
+            me: meteor.addSubscriptionWithName("me")
         )
         collections = (
-            meteor.database.collectionWithName("metadata"),
-            meteor.database.collectionWithName("settings"),
-            meteor.database.collectionWithName("users"),
-            meteor.database.collectionWithName("candidates"),
-            meteor.database.collectionWithName("conversations"),
-            meteor.database.collectionWithName("messages"),
-            meteor.database.collectionWithName("posts"),
-            meteor.database.collectionWithName("videos")
+            metadata: meteor.database.collectionWithName("metadata"),
+            settings: meteor.database.collectionWithName("settings"),
+            users: meteor.database.collectionWithName("users"),
+            candidates: meteor.database.collectionWithName("candidates"),
+            connections: meteor.database.collectionWithName("connections"),
+            messages: meteor.database.collectionWithName("messages"),
+            posts: meteor.database.collectionWithName("posts"),
+            videos: meteor.database.collectionWithName("videos")
         )
         meta = Metadata(collection: collections.metadata)
         settings = Settings(collection: collections.settings)
@@ -166,10 +160,10 @@ class MeteorService {
         }
     }
     
-    func sendMessage(conversation: Conversation, video: Video) -> RACSignal {
-        return meteor.call("conversation/sendMessage", [conversation.documentID!, video.documentID!]) {
+    func sendMessage(connection: Connection, video: Video) -> RACSignal {
+        return meteor.call("Connection/sendMessage", [connection.documentID!, video.documentID!]) {
             let message = Message.create() as! Message
-            message.conversation = conversation
+            message.connection = connection
             message.sender = User.currentUser()
             message.video = video
             message.save()

@@ -6,7 +6,7 @@
         <attribute name="score" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
     </entity>
-    <entity name="Conversation" representedClassName="Conversation" syncable="YES">
+    <entity name="Connection" representedClassName="Connection" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="unreadCount" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
@@ -16,7 +16,7 @@
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="expiresAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="conversation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Conversation" syncable="YES"/>
+        <relationship name="connection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Connection" syncable="YES"/>
         <relationship name="sender" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
         <relationship name="video" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Video" syncable="YES"/>
     </entity>
@@ -48,10 +48,10 @@
     </entity>
     <elements>
         <element name="Candidate" positionX="-45" positionY="54" width="128" height="105"/>
-        <element name="Conversation" positionX="-54" positionY="0" width="128" height="105"/>
+        <element name="Connection" positionX="-54" positionY="0" width="128" height="105"/>
         <element name="Message" positionX="-36" positionY="27" width="128" height="135"/>
-        <element name="User" positionX="-63" positionY="-18" width="128" height="150"/>
         <element name="Post" positionX="-54" positionY="72" width="128" height="135"/>
+        <element name="User" positionX="-63" positionY="-18" width="128" height="150"/>
         <element name="Video" positionX="-36" positionY="90" width="128" height="90"/>
     </elements>
 </model>

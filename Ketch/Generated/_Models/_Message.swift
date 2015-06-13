@@ -10,7 +10,7 @@ enum MessageAttributes: String {
 }
 
 enum MessageRelationships: String {
-    case conversation = "conversation"
+    case connection = "connection"
     case sender = "sender"
     case video = "video"
 }
@@ -59,9 +59,9 @@ class _Message: NSManagedObject {
     // MARK: - Relationships
 
     @NSManaged
-    var conversation: Conversation?
+    var connection: Connection?
 
-    // func validateConversation(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateConnection(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged
     var sender: User?

@@ -17,19 +17,19 @@ protocol MessagesViewModelDelegate : class {
 }
 
 class MessagesViewModel : NSObject {
-    let conversation: Conversation
+    let connection: Connection
     weak var delegate: MessagesViewModelDelegate?
     private let frc: NSFetchedResultsController
     private var sendingMessage = false // TODO: Temp hack, see sendMessage for explanation
     private var changedMessages: [Message] = []
     
     var sender: User { return User.currentUser()! }
-    var recipient: User { return conversation.otherUser! }
+    var recipient: User { return connection.otherUser! }
     
-    init(conversation: Conversation, delegate: MessagesViewModelDelegate? = nil) {
-        self.conversation = conversation
+    init(connection: Connection, delegate: MessagesViewModelDelegate? = nil) {
+        self.connection = connection
         self.delegate = delegate
-        frc = conversation.fetchMessages(sorted: true)
+        frc = connection.fetchMessages(sorted: true)
         super.init()
         frc.delegate = self
     }
