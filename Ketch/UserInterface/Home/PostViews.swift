@@ -23,14 +23,14 @@ class PostCell : UITableViewCell {
 
 class PostHeaderView : UITableViewHeaderFooterView {
     
-    @IBOutlet weak var avatarView: UIImageView!
+    @IBOutlet weak var avatarView: UserAvatarView!
     @IBOutlet weak var authorLabel: UILabel!
     @IBOutlet weak var timeDistanceLabel: UILabel!
     @IBOutlet weak var upvoteCountLabel: UILabel!
 
     var post : Post? {
         didSet {
-            avatarView.sd_setImageWithURL(post?.author?.avatarURL)
+            avatarView.user = post?.author
             authorLabel.text = post?.author?.displayName
             timeDistanceLabel.text = "5m | 0.2miles"
             upvoteCountLabel.text = "\(post?.upvotes ?? 0)"
