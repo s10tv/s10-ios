@@ -75,10 +75,10 @@
 //
 //@end
 
-@implementation Crashlytics (Swift)
-
-+ (void)logMessage:(NSString *)message {
-    CLSLog(@"%@", message);
-}
-
-@end
+//@implementation Crashlytics (Swift)
+//
+//+ (void)logMessage:(NSString *)message {
+//    CLSLog(@"%@", message);
+//}
+//
+//@end

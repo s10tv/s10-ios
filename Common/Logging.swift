@@ -8,7 +8,7 @@
 
 import Foundation
 //import BugfenderSDK
-import CrashlyticsFramework
+//import CrashlyticsFramework
 
 public let Log = Logger()
 
@@ -36,15 +36,15 @@ public class Logger {
     // MARK: Metadata API
     
     func setUserId(userId: String?) {
-        Crashlytics.setUserIdentifier(userId)
+//        Crashlytics.setUserIdentifier(userId)
     }
     
     func setUserEmail(email: String?) {
-        Crashlytics.setUserEmail(email)
+//        Crashlytics.setUserEmail(email)
     }
     
     func setUserName(name: String?) {
-        Crashlytics.setUserName(name)
+//        Crashlytics.setUserName(name)
     }
     
     // MARK: Logging API
@@ -83,7 +83,7 @@ public class Logger {
 //        Bugfender.logWithFilename(file, lineNumber: Int32(line), functionName: function, tag: nil, level: bfInfo.0, message: bfInfo.1)
 
         // Crashlytics
-        Crashlytics.logMessage(formatForCrashlytics(message, level, function, file, line))
+//        Crashlytics.logMessage(formatForCrashlytics(message, level, function, file, line))
 
         // Swift default
         println("[\(level)] \(message)")

@@ -35,7 +35,7 @@ pod 'INTULocationManager', '~> 3.0'
 
 # 3rd Party Service SDKs
 pod 'Facebook-iOS-SDK', '~> 3.22'
-pod 'CrashlyticsFramework', '~> 2.2'
+#pod 'CrashlyticsFramework', '~> 2.2'
 #pod 'BugfenderSDK', :git => 'https://github.com/bugfender/BugfenderSDK-iOS.git', :tag => '0.3.2'
 pod 'Analytics/Segmentio', :git => 'https://github.com/tonyxiao/analytics-ios.git'
 pod 'Analytics/Mixpanel', :git => 'https://github.com/tonyxiao/analytics-ios.git'

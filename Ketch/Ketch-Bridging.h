@@ -9,7 +9,7 @@
 #import <Meteor/METDatabase.h>
 #import <JSQMessagesViewController/JSQMessagesViewController.h>
 //#import <BugfenderSDK/BugfenderSDK.h>
-#import <CrashlyticsFramework/Crashlytics.h>
+//#import <CrashlyticsFramework/Crashlytics.h>
 #import "XLFormExtensions.h"
 
 @interface JSQMessagesViewController (Private)
@@ -59,8 +59,8 @@
 //
 //@end
 
-@interface Crashlytics (Swift)
-
-+ (void)logMessage:(NSString *)message;
-
-@end
+//@interface Crashlytics (Swift)
+//
+//+ (void)logMessage:(NSString *)message;
+//
+//@end

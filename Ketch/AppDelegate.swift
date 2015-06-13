@@ -10,7 +10,7 @@ import UIKit
 import SugarRecord
 import Meteor
 import FacebookSDK
-import CrashlyticsFramework
+//import CrashlyticsFramework
 //import BugfenderSDK
 import SwiftyUserDefaults
 
@@ -27,7 +27,7 @@ let Analytics = Globals.analyticsService
 let AppDidRegisterUserNotificationSettings = "AppDidRegisterUserNotificationSettings"
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate, METDDPClientDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */METDDPClientDelegate {
 
     var window: UIWindow?
     
@@ -36,13 +36,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate, METD
         let env = Environment.configureFromEmbeddedProvisioningProfile()
         
         // Start crash reporting and logging as soon as we can
-        Crashlytics.startWithAPIKey(env.crashlyticsAPIKey)
-        Crashlytics.sharedInstance().delegate = self
+//        Crashlytics.startWithAPIKey(env.crashlyticsAPIKey)
+//        Crashlytics.sharedInstance().delegate = self
 //        Bugfender.activateLogger(env.bugfenderAppToken)
         Log.setUserId(UD[.sMeteorUserId].string)
         Log.setUserName(UD[.sUserDisplayName].string)
         Log.setUserEmail(UD[.sUserEmail].string)
-        Crashlytics.sharedInstance().setObjectValue(env.deviceId, forKey: "DeviceId")
+//        Crashlytics.sharedInstance().setObjectValue(env.deviceId, forKey: "DeviceId")
         
         // Setup global services
         let meteor = MeteorService(env: env)
@@ -132,9 +132,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate, METD
     }
     
     // MARK: Crashlytics
-    func crashlytics(crashlytics: Crashlytics!, didDetectCrashDuringPreviousExecution crash: CLSCrashReport!) {
-        Log.error("Crash detected during previous run \(crash)")
-    }
+//    func crashlytics(crashlytics: Crashlytics!, didDetectCrashDuringPreviousExecution crash: CLSCrashReport!) {
+//        Log.error("Crash detected during previous run \(crash)")
+//    }
     
     // MARK: Meteor Logging
     
