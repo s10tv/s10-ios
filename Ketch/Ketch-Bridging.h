@@ -8,7 +8,7 @@
 #import <ReactiveCocoa/ReactiveCocoa.h>
 #import <Meteor/METDatabase.h>
 #import <JSQMessagesViewController/JSQMessagesViewController.h>
-#import <BugfenderSDK/BugfenderSDK.h>
+//#import <BugfenderSDK/BugfenderSDK.h>
 #import <CrashlyticsFramework/Crashlytics.h>
 #import "XLFormExtensions.h"
 
@@ -48,16 +48,16 @@
 
 @end
 
-@interface Bugfender (Swift)
-
-+ (void)logWithFilename:(NSString *)filename
-             lineNumber:(int)lineNumber
-           functionName:(NSString *)functionName
-                    tag:(NSString *)tag
-                  level:(BFLogLevel)level
-                message:(NSString *)message;
-
-@end
+//@interface Bugfender (Swift)
+//
+//+ (void)logWithFilename:(NSString *)filename
+//             lineNumber:(int)lineNumber
+//           functionName:(NSString *)functionName
+//                    tag:(NSString *)tag
+//                  level:(BFLogLevel)level
+//                message:(NSString *)message;
+//
+//@end
 
 @interface Crashlytics (Swift)
 

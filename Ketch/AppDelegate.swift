@@ -11,7 +11,7 @@ import SugarRecord
 import Meteor
 import FacebookSDK
 import CrashlyticsFramework
-import BugfenderSDK
+//import BugfenderSDK
 import SwiftyUserDefaults
 
 // Globally accessible variables and shorthands
@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate, METD
         // Start crash reporting and logging as soon as we can
         Crashlytics.startWithAPIKey(env.crashlyticsAPIKey)
         Crashlytics.sharedInstance().delegate = self
-        Bugfender.activateLogger(env.bugfenderAppToken)
+//        Bugfender.activateLogger(env.bugfenderAppToken)
         Log.setUserId(UD[.sMeteorUserId].string)
         Log.setUserName(UD[.sUserDisplayName].string)
         Log.setUserEmail(UD[.sUserEmail].string)
@@ -54,7 +54,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, CrashlyticsDelegate, METD
             locationService: LocationService(meteorService: meteor))
 
         // Startup the services
-        Meteor.meta.bugfenderId = Bugfender.deviceIdentifier()
+//        Meteor.meta.bugfenderId = Bugfender.deviceIdentifier()
         // HACK ALERT: Adding 0.1 second delay because for some reason when subscriptions are ready
         // the value in the collections are not ready yet. Really need to figure out what the right timing
         // is and get rid of these nasty 0.1 second delay hacks, but for 0.1.0 release it fixes the issue

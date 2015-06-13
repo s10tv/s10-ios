@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import BugfenderSDK
+//import BugfenderSDK
 import CrashlyticsFramework
 
 public let Log = Logger()
@@ -79,8 +79,8 @@ public class Logger {
         nslogger.logWithFilename(file, lineNumber: Int32(line), functionName: function, domain: nil, level: Int32(level.rawValue), message: message)
 
         // Bugfender
-        let bfInfo = formatForBugFender(level, message: message)
-        Bugfender.logWithFilename(file, lineNumber: Int32(line), functionName: function, tag: nil, level: bfInfo.0, message: bfInfo.1)
+//        let bfInfo = formatForBugFender(level, message: message)
+//        Bugfender.logWithFilename(file, lineNumber: Int32(line), functionName: function, tag: nil, level: bfInfo.0, message: bfInfo.1)
 
         // Crashlytics
         Crashlytics.logMessage(formatForCrashlytics(message, level, function, file, line))
@@ -89,18 +89,18 @@ public class Logger {
         println("[\(level)] \(message)")
     }
     
-    func formatForBugFender(level: LogLevel, message: String) -> (BFLogLevel, String) {
-        switch level {
-        case .Verbose, .Debug:
-            return (.Default, "[\(level)] \(message)")
-        case .Info:
-            return (.Default, message)
-        case .Warn:
-            return (.Warning, message)
-        case .Error:
-            return (.Error, message)
-        }
-    }
+//    func formatForBugFender(level: LogLevel, message: String) -> (BFLogLevel, String) {
+//        switch level {
+//        case .Verbose, .Debug:
+//            return (.Default, "[\(level)] \(message)")
+//        case .Info:
+//            return (.Default, message)
+//        case .Warn:
+//            return (.Warning, message)
+//        case .Error:
+//            return (.Error, message)
+//        }
+//    }
     
     func formatForCrashlytics(message: String, _ level: LogLevel, _ function: String, _ file: String, _ line: Int) -> String {
         let filename = file.lastPathComponent.stringByDeletingPathExtension

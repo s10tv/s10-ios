@@ -13,7 +13,6 @@ PODS:
   - Analytics/Segmentio (1.11.3):
     - Analytics/Core-iOS
   - Bolts (1.1.3)
-  - BugfenderSDK (0.3.2)
   - Cartography (0.5.0)
   - CrashlyticsFramework (2.2.10)
   - DateTools (1.5.0)
@@ -73,7 +72,6 @@ DEPENDENCIES:
   - Analytics/Amplitude (from `https://github.com/tonyxiao/analytics-ios.git`)
   - Analytics/Mixpanel (from `https://github.com/tonyxiao/analytics-ios.git`)
   - Analytics/Segmentio (from `https://github.com/tonyxiao/analytics-ios.git`)
-  - BugfenderSDK (from `https://github.com/bugfender/BugfenderSDK-iOS.git`, tag `0.3.2`)
   - Cartography (~> 0.5)
   - CrashlyticsFramework (~> 2.2)
   - DateTools (~> 1.5)
@@ -103,9 +101,6 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   Analytics:
     :git: https://github.com/tonyxiao/analytics-ios.git
-  BugfenderSDK:
-    :git: https://github.com/bugfender/BugfenderSDK-iOS.git
-    :tag: 0.3.2
   JSQMessagesViewController:
     :git: https://github.com/tonyxiao/JSQMessagesViewController
   Meteor:
@@ -123,9 +118,6 @@ CHECKOUT OPTIONS:
   Analytics:
     :commit: 612b2a34d4da8601a64944a172628420b6227c06
     :git: https://github.com/tonyxiao/analytics-ios.git
-  BugfenderSDK:
-    :git: https://github.com/bugfender/BugfenderSDK-iOS.git
-    :tag: 0.3.2
   JSQMessagesViewController:
     :commit: 4176299848035dc6418d330f52255efc238ca6e1
     :git: https://github.com/tonyxiao/JSQMessagesViewController
@@ -146,7 +138,6 @@ SPEC CHECKSUMS:
   Amplitude-iOS: f786c0acfd3e8977412a7abce2c49bab1e715a8f
   Analytics: a9e1f3841613ae0edb341fe2819a224d8889e80c
   Bolts: e431c88fd02115d4a34016c2100bbfa4d2d5b146
-  BugfenderSDK: fed79568bc0d970d71843c009241ce51bb6b00e1
   Cartography: 774e5cc446f5a6bca5d4345c5aa6af9a1fe74dc6
   CrashlyticsFramework: 2f7c515a2d74c8636bf47e761621f2f68193747e
   DateTools: b93a2c2017747329c6077c7d7e8a75106e23d0d7
