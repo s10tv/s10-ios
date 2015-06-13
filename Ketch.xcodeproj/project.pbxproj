@@ -229,7 +229,7 @@
 		EA6650FC1AA00B95001BA40C /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650F41AA00B95001BA40C /* Conversation.swift */; };
 		EA6650FD1AA00B95001BA40C /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650F51AA00B95001BA40C /* Message.swift */; };
 		EA6650FE1AA00B95001BA40C /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650F61AA00B95001BA40C /* User.swift */; };
-		EA7004621ACF912A00D0E467 /* Signup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA7004641ACF912A00D0E467 /* Signup.storyboard */; };
+		EA7004621ACF912A00D0E467 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA7004641ACF912A00D0E467 /* Onboarding.storyboard */; };
 		EA72FB291AD1B7D5009F853F /* Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FB271AD1B7D5009F853F /* Segue.swift */; };
 		EA72FB2A1AD1B7D5009F853F /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FB281AD1B7D5009F853F /* Transition.swift */; };
 		EA72FB2C1AD1B7E1009F853F /* ScrollTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FB2B1AD1B7E1009F853F /* ScrollTransition.swift */; };
@@ -545,7 +545,7 @@
 		EA6650F41AA00B95001BA40C /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		EA6650F51AA00B95001BA40C /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EA6650F61AA00B95001BA40C /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		EA7004631ACF912A00D0E467 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Signup.storyboard; sourceTree = "<group>"; };
+		EA7004631ACF912A00D0E467 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Onboarding.storyboard; sourceTree = "<group>"; };
 		EA72FB271AD1B7D5009F853F /* Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segue.swift; sourceTree = "<group>"; };
 		EA72FB281AD1B7D5009F853F /* Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
 		EA72FB2B1AD1B7E1009F853F /* ScrollTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollTransition.swift; sourceTree = "<group>"; };
@@ -1071,7 +1071,7 @@
 				EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */,
 				EAE1E07C1AE3788300F03F13 /* Globals.swift */,
 				EA9F35461A74CC6900E0C65D /* Main.storyboard */,
-				EA7004641ACF912A00D0E467 /* Signup.storyboard */,
+				EA7004641ACF912A00D0E467 /* Onboarding.storyboard */,
 				EAB8E7A81AE04D8D00B3046F /* Settings.storyboard */,
 				EA9F35491A74CC6900E0C65D /* Ketch.xcassets */,
 				EA9F353D1A74CC6900E0C65D /* Supporting Files */,
@@ -1525,7 +1525,7 @@
 				EA608B531AE609A5003E1C75 /* ketchyFlagWave_12@2x.png in Resources */,
 				EA608AB71AE6079C003E1C75 /* ketchyNeutral_35@2x.png in Resources */,
 				EA608AC01AE6079C003E1C75 /* ketchyNeutral_43@2x.png in Resources */,
-				EA7004621ACF912A00D0E467 /* Signup.storyboard in Resources */,
+				EA7004621ACF912A00D0E467 /* Onboarding.storyboard in Resources */,
 				EA608B641AE609A5003E1C75 /* ketchyFlagWave_28@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1768,12 +1768,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		EA7004641ACF912A00D0E467 /* Signup.storyboard */ = {
+		EA7004641ACF912A00D0E467 /* Onboarding.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				EA7004631ACF912A00D0E467 /* Base */,
 			);
-			name = Signup.storyboard;
+			name = Onboarding.storyboard;
 			sourceTree = "<group>";
 		};
 		EA9A6ACE1AAFDE19009EDD6D /* Localizable.strings */ = {

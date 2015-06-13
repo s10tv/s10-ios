@@ -13,7 +13,7 @@ import Meteor
 
 class SignupViewController : BaseViewController {
 
-    @IBOutlet weak var fullLogo: UIImageView!
+    @IBOutlet weak var loginButton: DesignableButton!
     
     override func commonInit() {
         screenName = "Signup"
@@ -21,8 +21,16 @@ class SignupViewController : BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fullLogo.userInteractionEnabled = true
-        fullLogo.whenLongPressEnded { [weak self] in self!.debugLogin(self!) }
+        loginButton.whenLongPressEnded { [weak self] in self!.debugLogin(self!) }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBarHidden = true
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
     
     private func startLogin(loginBlock: () -> RACSignal, errorBlock: (NSError?) -> ()) {
@@ -37,16 +45,12 @@ class SignupViewController : BaseViewController {
             errorBlock(error)
         }, completed: {
             PKHUD.hide()
-            self.performSegue(.SignupToNotificationsPerm)
+            self.navigationController?.popToRootViewControllerAnimated(true)
         })
     }
     
     // MARK: Actions
-    
-    @IBAction func didTapOnNotPicky(sender: AnyObject) {
-        UIApplication.sharedApplication().openURL(Globals.env.notPickyExitURL)
-    }
-    
+        
     @IBAction func viewTerms(sender: AnyObject) {
         UIApplication.sharedApplication().openURL(Globals.env.termsAndConditionURL)
     }

@@ -18,5 +18,11 @@ class RootViewController : UINavigationController {
         super.viewDidLoad()
         view.window?.tintColor = UIColor(hex: 0x9E7EA9)
         UITabBar.appearance().tintColor = UIColor(hex: 0x9E7EA9)
+        
+        if Meteor.account == nil {
+            let onboarding = UIStoryboard(name: "Onboarding", bundle: nil)
+            let signup = onboarding.instantiateInitialViewController() as! SignupViewController
+            pushViewController(signup, animated: false)
+        }
     }
 }

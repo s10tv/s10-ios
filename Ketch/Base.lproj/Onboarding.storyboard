@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dFw-q9-bre">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="TransatTextBlack.otf">
+            <string>TransatTextBlack</string>
+            <string>TransatTextBlack</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--Signup View Controller-->
+        <scene sceneID="mSO-WA-QEY">
+            <objects>
+                <viewController storyboardIdentifier="Signup" id="dFw-q9-bre" customClass="SignupViewController" customModule="Ketch" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hwB-lg-PKL"/>
+                        <viewControllerLayoutGuide type="bottom" id="hxv-04-ouP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="CmC-zd-xMf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RgB-LM-On4" customClass="DesignableLabel" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="182" y="335" width="236" height="51"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">What's happening around me?
+</string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="18" name="TransatTextStandard"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" paragraphSpacing="15"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Who is around me?">
+                                        <attributes>
+                                            <color key="NSColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <font key="NSFont" size="18" name="TransatTextStandard"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" paragraphSpacing="15"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                        <real key="value" value="18"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="TransatTextMedium"/>
+                                </userDefinedRuntimeAttributes>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isY-Ks-GfE" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
+                                <rect key="frame" x="175" y="406" width="250" height="55"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="55" id="3Tw-Lk-b0L"/>
+                                    <constraint firstAttribute="width" constant="250" id="5h1-vp-zFT"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TransatTextBlack" family="Transat Text" pointSize="20"/>
+                                <inset key="titleEdgeInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Log in with Facebook">
+                                    <color key="titleColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="28"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                        <color key="value" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="loginWithFacebook:" destination="dFw-q9-bre" eventType="touchUpInside" id="fV7-8X-1KO"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c0f-ne-erJ" userLabel="Terms &amp; Privacy">
+                                <rect key="frame" x="245" y="566" width="110" height="26"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Pp-CT-PMh" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="36" height="26"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Terms">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" size="14" name="TransatTextStandard"/>
+                                                        <integer key="NSUnderline" value="1"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                                <real key="value" value="14"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="viewTerms:" destination="dFw-q9-bre" eventType="touchUpInside" id="7qQ-pM-k90"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ODl-1I-fve" customClass="DesignableButton" customModule="Ketch" customModuleProvider="target">
+                                        <rect key="frame" x="66" y="0.0" width="44" height="26"/>
+                                        <state key="normal">
+                                            <attributedString key="attributedTitle">
+                                                <fragment content="Privacy">
+                                                    <attributes>
+                                                        <color key="NSColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        <font key="NSFont" size="14" name="TransatTextStandard"/>
+                                                        <integer key="NSUnderline" value="1"/>
+                                                    </attributes>
+                                                </fragment>
+                                            </attributedString>
+                                        </state>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
+                                                <real key="value" value="14"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <action selector="viewPrivacy:" destination="dFw-q9-bre" eventType="touchUpInside" id="YmB-1T-Hon"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="ODl-1I-fve" firstAttribute="centerY" secondItem="1Pp-CT-PMh" secondAttribute="centerY" id="0O4-Pf-kk8"/>
+                                    <constraint firstItem="ODl-1I-fve" firstAttribute="leading" secondItem="1Pp-CT-PMh" secondAttribute="trailing" constant="30" id="OX4-QK-VLY"/>
+                                    <constraint firstAttribute="bottom" secondItem="1Pp-CT-PMh" secondAttribute="bottom" id="QiM-4T-vwh"/>
+                                    <constraint firstItem="1Pp-CT-PMh" firstAttribute="top" secondItem="c0f-ne-erJ" secondAttribute="top" id="bAt-jZ-B9t"/>
+                                    <constraint firstAttribute="trailing" secondItem="ODl-1I-fve" secondAttribute="trailing" id="dip-1m-LYU"/>
+                                    <constraint firstItem="1Pp-CT-PMh" firstAttribute="leading" secondItem="c0f-ne-erJ" secondAttribute="leading" id="xUj-Hg-ayT"/>
+                                </constraints>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Taylr" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="j28-cd-evj">
+                                <rect key="frame" x="253" y="155" width="94" height="42"/>
+                                <fontDescription key="fontDescription" name="TransatTextBlack" family="Transat Text" pointSize="42"/>
+                                <color key="textColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.61960784313725492" green="0.49411764705882355" blue="0.66274509803921566" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="RgB-LM-On4" firstAttribute="top" secondItem="j28-cd-evj" secondAttribute="bottom" constant="138" id="59v-RE-bob"/>
+                            <constraint firstAttribute="bottom" secondItem="c0f-ne-erJ" secondAttribute="bottom" constant="8" id="IPA-LP-kRP"/>
+                            <constraint firstAttribute="centerX" secondItem="j28-cd-evj" secondAttribute="centerX" id="Irx-oi-2MC"/>
+                            <constraint firstItem="isY-Ks-GfE" firstAttribute="top" secondItem="RgB-LM-On4" secondAttribute="bottom" constant="20" id="Lka-zB-b13"/>
+                            <constraint firstAttribute="centerX" secondItem="RgB-LM-On4" secondAttribute="centerX" id="Zzg-ng-olR"/>
+                            <constraint firstAttribute="centerX" secondItem="c0f-ne-erJ" secondAttribute="centerX" id="cle-r0-H9A"/>
+                            <constraint firstAttribute="centerY" secondItem="isY-Ks-GfE" secondAttribute="centerY" constant="-133.5" id="ij4-YU-1dP"/>
+                            <constraint firstAttribute="centerX" secondItem="isY-Ks-GfE" secondAttribute="centerX" id="rqt-IB-Zsr"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="loginButton" destination="isY-Ks-GfE" id="zst-37-Oho"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lbl-0u-moe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-542" y="274"/>
+        </scene>
+    </scenes>
+</document>
