@@ -22,7 +22,8 @@ class MeteorService {
         posts: METSubscription,
         candidates: METSubscription,
         conversations: METSubscription,
-        messages: METSubscription
+        messages: METSubscription,
+        allUsers: METSubscription
     )
     let collections: (
         metadata: METCollection,
@@ -56,10 +57,11 @@ class MeteorService {
         subscriptions = (
             meteor.addSubscriptionWithName("metadata"),
             meteor.addSubscriptionWithName("settings"),
-            meteor.addSubscriptionWithName("allVideos"),
-            meteor.addSubscriptionWithName("allPosts"),
-            meteor.addSubscriptionWithName("allCandidates"),
+            meteor.addSubscriptionWithName("currentUser"),
+            meteor.addSubscriptionWithName("posts"),
+            meteor.addSubscriptionWithName("candidates"),
             meteor.addSubscriptionWithName("conversations"),
+            meteor.addSubscriptionWithName("messages"),
             meteor.addSubscriptionWithName("allUsers")
         )
         collections = (
