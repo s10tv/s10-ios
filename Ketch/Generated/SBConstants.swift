@@ -1,5 +1,9 @@
 // Auto generated file from SBConstants - any changes may be lost
 
+public enum CollectionViewCellreuseIdentifier : String {
+    case CandidateCell = "CandidateCell"
+}
+
 public enum SegueIdentifier : String {
     case FacebookPermToNotificationsPerm = "FacebookPermToNotificationsPerm"
     case FinishWelcome = "FinishWelcome"
@@ -15,6 +19,8 @@ public enum SegueIdentifier : String {
 }
 
 public enum TableViewCellreuseIdentifier : String {
+    case ConversationCell = "ConversationCell"
+    case PostCell = "PostCell"
     case SettingsLabelCell = "SettingsLabelCell"
     case SettingsPhotoCell = "SettingsPhotoCell"
     case SettingsTextCell = "SettingsTextCell"

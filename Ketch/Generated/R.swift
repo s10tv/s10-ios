@@ -54,16 +54,24 @@ public enum R {
         case icCamera = "ic-camera"
         /// ic-chats
         case icChats = "ic-chats"
+        /// ic-disclosure
+        case icDisclosure = "ic-disclosure"
+        /// ic-flag
+        case icFlag = "ic-flag"
         /// ic-home
         case icHome = "ic-home"
         /// ic-me
         case icMe = "ic-me"
+        /// ic-mute
+        case icMute = "ic-mute"
         /// ic-people
         case icPeople = "ic-people"
         /// ic_remove_photo
         case icRemovePhoto = "ic_remove_photo"
         /// ic-tap-gesture
         case icTapGesture = "ic-tap-gesture"
+        /// ic-upvote
+        case icUpvote = "ic-upvote"
         /// Ketch
         case ketch = "Ketch"
         /// ketch-large
@@ -80,6 +88,12 @@ public enum R {
         case permNotifications = "perm-notifications-icon"
         /// profile-about-me-divider
         case profileAboutMeDivider = "profile-about-me-divider"
+        /// sample-taylor-avatar
+        case sampleTaylorAvatar = "sample-taylor-avatar"
+        /// sample-taylor-avatar-square
+        case sampleTaylorAvatarSquare = "sample-taylor-avatar-square"
+        /// sample-taylor-video-frame
+        case sampleTaylorVideoFrame = "sample-taylor-video-frame"
         /// settings-icon-age
         case settingsAge = "settings-icon-age"
         /// settings-icon-briefcase

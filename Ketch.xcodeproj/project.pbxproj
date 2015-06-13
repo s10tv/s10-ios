@@ -281,6 +281,8 @@
 		EAA56FA91B2B638000DE3936 /* PostHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAA56FA81B2B638000DE3936 /* PostHeaderView.xib */; };
 		EAA56FAB1B2BBCDE00DE3936 /* PostViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56FAA1B2BBCDE00DE3936 /* PostViews.swift */; };
 		EAA56FAD1B2BBE3600DE3936 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56FAC1B2BBE3600DE3936 /* FeedViewModel.swift */; };
+		EAA56FAF1B2BCA0A00DE3936 /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56FAE1B2BCA0A00DE3936 /* DiscoverViewModel.swift */; };
+		EAA56FB11B2BCAC700DE3936 /* CandidateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56FB01B2BCAC700DE3936 /* CandidateCell.swift */; };
 		EAAD921D1ACF342C0014BA25 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921C1ACF342C0014BA25 /* Environment.swift */; };
 		EAAD921F1ACF4EFA0014BA25 /* ProvisioningProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921E1ACF4EFA0014BA25 /* ProvisioningProfile.swift */; };
 		EAB79B701AD912EB00D9875A /* PKHUDExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB79B6F1AD912EB00D9875A /* PKHUDExtension.swift */; };
@@ -600,6 +602,8 @@
 		EAA56FA81B2B638000DE3936 /* PostHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostHeaderView.xib; sourceTree = "<group>"; };
 		EAA56FAA1B2BBCDE00DE3936 /* PostViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViews.swift; sourceTree = "<group>"; };
 		EAA56FAC1B2BBE3600DE3936 /* FeedViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
+		EAA56FAE1B2BCA0A00DE3936 /* DiscoverViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
+		EAA56FB01B2BCAC700DE3936 /* CandidateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateCell.swift; sourceTree = "<group>"; };
 		EAAA24951AEE462700679F0A /* Pods-KetchTests.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-KetchTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-KetchTests/Pods-KetchTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EAAA24961AEE462700679F0A /* Pods-KetchTests.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-KetchTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-KetchTests/Pods-KetchTests.release.xcconfig"; sourceTree = "<group>"; };
 		EAAD921C1ACF342C0014BA25 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
@@ -773,6 +777,7 @@
 			isa = PBXGroup;
 			children = (
 				EAA56FAC1B2BBE3600DE3936 /* FeedViewModel.swift */,
+				EAA56FAE1B2BCA0A00DE3936 /* DiscoverViewModel.swift */,
 				EAC31C1E1AE3AD7000277FE8 /* SettingsItem.swift */,
 				EA4F51861AE153A40060405E /* ProfileItem.swift */,
 				EA4F51841AE153880060405E /* SettingsViewModel.swift */,
@@ -1122,6 +1127,7 @@
 			isa = PBXGroup;
 			children = (
 				EAA56F701B2B32E500DE3936 /* DiscoverViewController.swift */,
+				EAA56FB01B2BCAC700DE3936 /* CandidateCell.swift */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -1683,6 +1689,7 @@
 				EAA56F991B2B32E500DE3936 /* SettingsTextCell.swift in Sources */,
 				EA53D5221AE1E9B800EDAAFE /* Formatters.swift in Sources */,
 				EA49286C1ADF1BF700118639 /* DeviceInfo.swift in Sources */,
+				EAA56FAF1B2BCA0A00DE3936 /* DiscoverViewModel.swift in Sources */,
 				EA36D2AB1AE71366006FD5D8 /* Errors.swift in Sources */,
 				EAA56F911B2B32E500DE3936 /* HomeViewController.swift in Sources */,
 				EAA56F931B2B32E500DE3936 /* MeViewController.swift in Sources */,
@@ -1727,6 +1734,7 @@
 				EA49286E1ADF291100118639 /* UpgradeService.swift in Sources */,
 				EAA56FAD1B2BBE3600DE3936 /* FeedViewModel.swift in Sources */,
 				EAA56F941B2B32E500DE3936 /* RowDescriptors.swift in Sources */,
+				EAA56FB11B2BCAC700DE3936 /* CandidateCell.swift in Sources */,
 				EAA56FA51B2B32E500DE3936 /* UserAvatarView.swift in Sources */,
 				EACF21661AD70CB300938CD0 /* SwiftExtensions.swift in Sources */,
 				EA0FC93A1A87DE5800D62625 /* ReactiveCocoaExtension.swift in Sources */,

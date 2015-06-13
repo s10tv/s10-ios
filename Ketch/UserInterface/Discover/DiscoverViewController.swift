@@ -8,17 +8,15 @@
 
 import Foundation
 
-class DiscoverViewController : BaseViewController,
-                               UICollectionViewDelegate,
-                               UICollectionViewDataSource {
+class DiscoverViewController : BaseViewController {
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var collectionView : UICollectionView!
+    var discoverVM : DiscoverViewModel!
     
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        discoverVM = DiscoverViewModel()
+        discoverVM.bindCollectionView(collectionView)
     }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        return collectionView.dequeueReusableCellWithReuseIdentifier("CandidateCell", forIndexPath: indexPath) as! UICollectionViewCell
-    }
+
 }

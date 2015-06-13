@@ -10,7 +10,7 @@
 class Video: _Video {
 
     var coverFrameURL : NSURL? {
-        return NSURL(coverFrameUrl!)
+        return coverFrameUrl.map { NSURL($0) } ?? nil
     }
 
 }
