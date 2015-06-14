@@ -64,13 +64,13 @@ class Environment {
                 segmentWriteKey = "vfnxR5SsgYkNQqRznBWHXDp2LMFkUNTv"
                 heapAppId = "2150081452"
             case .Beta:
-                upgradeURL = NSURL("https://ketchtheone.com/beta")
+                upgradeURL = NSURL("https://taylrapp.com/beta")
                 serverHostName = "s10-beta.herokuapp.com"
                 bugfenderAppToken = "lO35cfZMdPxzIraCq4YFKISSKZ2EAIwe"
                 segmentWriteKey = "SGEB9gVQGFYgeptFbtnETHCka8FCOuoc"
                 heapAppId = "1572509943"
             case .AppStore:
-                upgradeURL = NSURL("https://ketchtheone.com/download")
+                upgradeURL = NSURL("https://taylrapp.com/download")
                 serverHostName = "s10.herokuapp.com"
                 bugfenderAppToken = "ow9JOdNYSo5iVqPUUAEbS8HfmwZqb1tQ"
                 segmentWriteKey = "JPCrmGwQqlgohXoowBFSLwesir9Zn5Bv"

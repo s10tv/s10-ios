@@ -9,7 +9,7 @@
         <!--Root View Controller-->
         <scene sceneID="B4N-U0-5zU">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Qpb-xc-SoL" customClass="RootViewController" customModule="Ketch" customModuleProvider="target" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Qpb-xc-SoL" customClass="RootViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="hxE-Zw-Im3">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -49,7 +49,7 @@
         <!--Home-->
         <scene sceneID="vR8-xi-jxM">
             <objects>
-                <viewController storyboardIdentifier="Home" title="Serendipity" automaticallyAdjustsScrollViewInsets="NO" id="shX-ul-wcc" userLabel="Home" customClass="HomeViewController" customModule="Ketch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Home" title="Serendipity" automaticallyAdjustsScrollViewInsets="NO" id="shX-ul-wcc" userLabel="Home" customClass="HomeViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jRK-xA-i7r"/>
                         <viewControllerLayoutGuide type="bottom" id="2Nv-ot-SIm"/>
@@ -62,7 +62,7 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" id="s0d-Qa-gCa" customClass="PostCell" customModule="Ketch" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell" id="s0d-Qa-gCa" customClass="PostCell" customModule="Taylr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="s0d-Qa-gCa" id="PFX-PB-3Vs">
@@ -133,7 +133,7 @@
         <!--New Post View Controller-->
         <scene sceneID="ApC-au-g1S">
             <objects>
-                <viewController id="Kbf-Fn-ANz" customClass="NewPostViewController" customModule="Ketch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="Kbf-Fn-ANz" customClass="NewPostViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rgw-VV-Lno"/>
                         <viewControllerLayoutGuide type="bottom" id="yid-Bu-6PY"/>
@@ -159,7 +159,7 @@
         <!--Discover-->
         <scene sceneID="NpM-jt-gve">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="5Q6-Kt-6sh" userLabel="Discover" customClass="DiscoverViewController" customModule="Ketch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="5Q6-Kt-6sh" userLabel="Discover" customClass="DiscoverViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zvc-KD-L5T"/>
                         <viewControllerLayoutGuide type="bottom" id="F41-Jg-0mT"/>
@@ -178,7 +178,7 @@
                                     <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CandidateCell" id="5p8-O9-cl0" customClass="CandidateCell" customModule="Ketch" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CandidateCell" id="5p8-O9-cl0" customClass="CandidateCell" customModule="Taylr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -252,7 +252,7 @@
         <!--Chats-->
         <scene sceneID="Tpb-9U-G19">
             <objects>
-                <viewController title="Chats" automaticallyAdjustsScrollViewInsets="NO" id="GSL-sK-91w" userLabel="Chats" customClass="ChatsViewController" customModule="Ketch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController title="Chats" automaticallyAdjustsScrollViewInsets="NO" id="GSL-sK-91w" userLabel="Chats" customClass="ChatsViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IBe-OM-rhq"/>
                         <viewControllerLayoutGuide type="bottom" id="0km-Ni-5Ff"/>
@@ -265,13 +265,13 @@
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ConnectionCell" id="pVQ-Tu-jcV" customClass="ConnectionCell" customModule="Ketch" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ConnectionCell" id="pVQ-Tu-jcV" customClass="ConnectionCell" customModule="Taylr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pVQ-Tu-jcV" id="4hE-7L-rNx">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="4Uc-p6-gzK" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="4Uc-p6-gzK" customClass="UserAvatarView" customModule="Taylr" customModuleProvider="target">
                                                     <rect key="frame" x="20" y="10" width="61" height="61"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="4Uc-p6-gzK" secondAttribute="height" multiplier="1:1" id="IGW-VC-XHN"/>
@@ -340,7 +340,7 @@
         <!--Me-->
         <scene sceneID="GiO-5i-rfP">
             <objects>
-                <viewController id="mIZ-vh-lBm" userLabel="Me" customClass="MeViewController" customModule="Ketch" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="mIZ-vh-lBm" userLabel="Me" customClass="MeViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rbh-DD-zC5"/>
                         <viewControllerLayoutGuide type="bottom" id="eec-eU-juV"/>

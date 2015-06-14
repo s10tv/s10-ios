@@ -8,8 +8,6 @@
 
 public enum R {
     public enum Fonts : String {
-        /// KetchIcon
-        case ketch = "KetchIcon"
         /// TransatTextBlack
         case transatTextBlack = "TransatTextBlack"
         /// TransatTextMedium
@@ -18,9 +16,7 @@ public enum R {
         case transatTextStandard = "TransatTextStandard"
     }
     public enum Strings : String {
-        /// DRAG THE MATCHES UP TO YOUR CHOICES
-        case dragMatchsToChoices = "DragMatchsToChoices"
-        /// Both Ketch Beta and Ketch app store build are installed on this device. Please remove one of them and try login via Facebook again.
+        /// Both Taylr Beta and Talyr app store build are installed on this device. Please remove one of them and try login via Facebook again.
         case errBetaProdBothInstalledMessage = "errBetaProdBothInstalledMessage"
         /// Unsupported Configuration
         case errBetaProdBothInstalledTitle = "errBetaProdBothInstalledTitle"
@@ -46,16 +42,6 @@ public enum R {
         case hardUpgradeAlertOk = "HardUpgradeAlertOk"
         /// Your version is no longer supported
         case hardUpgradeAlertTitle = "HardUpgradeAlertTitle"
-        /// Check out Ketch! I think it'll be a lot of fun for you! http://ketchtheone.com
-        case inviteDefaultText = "InviteDefaultText"
-        /// It's a Ketch!
-        case itsAKetch = "It's a Ketch!"
-        /// Ketchy isn't home at the moment.
-        case ketchyUnavailableMessage = "KetchyUnavailableMessage"
-        /// Ooops
-        case ketchyUnavailableTitle = "KetchyUnavailableTitle"
-        /// SAY YES NOW
-        case marryPrompt = "MarryPrompt"
         /// Cancel
         case moreSheetCancel = "MoreSheetCancel"
         /// Report %@
@@ -70,7 +56,7 @@ public enum R {
         case reportAlertMessage = "ReportAlertMessage"
         /// Thank you for your feedback
         case reportAlertTitle = "ReportAlertTitle"
-        /// What's ketchy about you?
+        /// What's catchy about you?
         case settingsAboutPrompt = "SettingsAboutPrompt"
         /// %d years old
         case settingsAgeFormat = "SettingsAgeFormat"
@@ -110,12 +96,6 @@ public enum R {
         case settingsWorkFormat = "SettingsWorkFormat"
         /// What's your occupation?
         case settingsWorkPrompt = "SettingsWorkPrompt"
-        /// %@ likes you! You have three days to reach out before your dreamboat sails away for good. Get on it!
-        case singleMatchPrompt = "SingleMatchPrompt"
-        /// SAY NO NICELY
-        case skipPrompt = "SkipPrompt"
-        /// SEE AGAIN LATER
-        case snoozePrompt = "SnoozePrompt"
         /// Later
         case softUpgradeAlertCancel = "SoftUpgradeAlertCancel"
         /// Please upgrade to the latest version.
@@ -124,10 +104,6 @@ public enum R {
         case softUpgradeAlertOk = "SoftUpgradeAlertOk"
         /// New version is available
         case softUpgradeAlertTitle = "SoftUpgradeAlertTitle"
-        /// AND YOU’LL HAVE THREE CHOICES
-        case threeChoicesPrompt = "ThreeChoicesPrompt"
-        /// YOU’LL SEE THREE POTENTIAL MATCHES
-        case threeMatchesPrompt = "ThreeMatchesPrompt"
     }
     public enum TaylrAssets : String {
         /// AppIcon

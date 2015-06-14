@@ -7,14 +7,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <view contentMode="scaleToFill" id="kxP-xT-bE0" customClass="PostHeaderView" customModule="Ketch" customModuleProvider="target">
+        <view contentMode="scaleToFill" id="kxP-xT-bE0" customClass="PostHeaderView" customModule="Taylr" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IC8-FW-bK3">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="RhZ-Ly-DAf" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="RhZ-Ly-DAf" customClass="UserAvatarView" customModule="Taylr" customModuleProvider="target">
                             <rect key="frame" x="5" y="5" width="50" height="50"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="RhZ-Ly-DAf" secondAttribute="height" multiplier="1:1" id="LSS-PQ-pvW"/>

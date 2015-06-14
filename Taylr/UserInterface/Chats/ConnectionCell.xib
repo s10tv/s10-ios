@@ -16,7 +16,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="cAY-2f-1lU" customClass="ConnectionCell" customModule="Ketch" customModuleProvider="target">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" id="cAY-2f-1lU" customClass="ConnectionCell" customModule="Taylr" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="320" height="70"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cAY-2f-1lU" id="Ctw-G5-cnb">
@@ -30,7 +30,7 @@
                             <constraint firstAttribute="width" constant="15" id="e3F-Dn-zhr"/>
                         </constraints>
                     </imageView>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2C2-G4-yXf" userLabel="Avatar" customClass="UserAvatarView" customModule="Ketch" customModuleProvider="target">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2C2-G4-yXf" userLabel="Avatar" customClass="UserAvatarView" customModule="Taylr" customModuleProvider="target">
                         <rect key="frame" x="20" y="8" width="53" height="53"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="2C2-G4-yXf" secondAttribute="height" multiplier="1:1" id="ldG-ki-jnS"/>

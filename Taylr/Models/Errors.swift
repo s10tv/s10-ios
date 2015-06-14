@@ -12,7 +12,6 @@ enum ErrorCode : Int {
     case NetworkUnreachable = -1
     case BetaProdBothInstalled = -2
     case SubscriptionError = -3
-//    case KetchyUnavailable = -2
     
     static let nsErrorDomain = "S10"
     var nsError: NSError { return NSError(self) }

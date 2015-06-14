@@ -10,18 +10,6 @@
 "FBPermDeniedAlertTitle" = "Permission Denied";
 "FBPermDeniedAlertMessage" = "We are not able to log you in. Please try again.";
 
-/* Game Screen */
-"ThreeMatchesPrompt" = "YOU’LL SEE THREE POTENTIAL MATCHES";
-"ThreeChoicesPrompt" = "AND YOU’LL HAVE THREE CHOICES";
-"DragMatchsToChoices" = "DRAG THE MATCHES UP TO YOUR CHOICES";
-"SkipPrompt" = "SAY NO NICELY";
-"MarryPrompt" = "SAY YES NOW";
-"SnoozePrompt" = "SEE AGAIN LATER";
-
-/* New Match Screen */
-"It's a Ketch!" = "It's a Ketch!";
-"SingleMatchPrompt" = "%@ likes you! You have three days to reach out before your dreamboat sails away for good. Get on it!";
-
 /* Profile Screen */
 "MoreSheetReport" = "Report %@";
 "MoreSheetCancel" = "Cancel";
@@ -29,9 +17,6 @@
 "ReportAlertMessage" = "Why did you report this user?";
 "ReportAlertCancel" = "Cancel";
 "ReportAlertConfirm" = "Confirm";
-
-/* Boat Sailed */
-"InviteDefaultText" = "Check out Ketch! I think it'll be a lot of fun for you! http://ketchtheone.com";
 
 /* Force Upgrade */
 "SoftUpgradeAlertTitle" = "New version is available";
@@ -54,7 +39,7 @@
 "SettingsWorkPrompt" = "What's your occupation?";
 "SettingsEducationPrompt" = "What's your school?";
 "SettingsHeightPrompt" = "What's your height?";
-"SettingsAboutPrompt" = "What's ketchy about you?";
+"SettingsAboutPrompt" = "What's catchy about you?";
 
 "SettingsLogoutTitle" = "What would you like to do?";
 "SettingsLogoutLogout" = "Just logout";
@@ -67,8 +52,6 @@
 "SettingsDeleteAccountCancel" = "Cancel";
 
 /* Alerts */
-"KetchyUnavailableTitle" = "Ooops";
-"KetchyUnavailableMessage" = "Ketchy isn't home at the moment.";
 "errUnableToLoginTitle" = "Unable to login";
 "errUnableToLoginMessage" = "Sorry we're not able to log you in at the moment. Please try again later :(";
 
@@ -78,4 +61,4 @@
 "errNetworkUnreachable" = "Network Unavailable";
 "errNetworkUnreachableRecovery" = "Seems like we don't have any network connection right now, try again later.";
 "errBetaProdBothInstalledTitle" = "Unsupported Configuration";
-"errBetaProdBothInstalledMessage" = "Both Ketch Beta and Ketch app store build are installed on this device. Please remove one of them and try login via Facebook again.";
+"errBetaProdBothInstalledMessage" = "Both Taylr Beta and Talyr app store build are installed on this device. Please remove one of them and try login via Facebook again.";

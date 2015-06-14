@@ -51,9 +51,10 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>KetchIcon.otf</string>
-		<string>TransatTextMedium.otf</string>
+		<string>TransatTextLight.otf</string>
 		<string>TransatTextStandard.otf</string>
+		<string>TransatTextMedium.otf</string>
+		<string>TransatTextBold.otf</string>
 		<string>TransatTextBlack.otf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>

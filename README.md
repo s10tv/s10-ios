@@ -1,9 +1,9 @@
-# S10 iOS [![Circle CI](https://circleci.com/gh/Ketchteam/ketch-ios/tree/master.svg?style=svg&circle-token=fd4466969ab998ed3ab739c0a526fade067abe24)](https://circleci.com/gh/Ketchteam/ketch-ios/tree/master)
+# S10 iOS [![Circle CI](https://circleci.com/gh/s10tv/s10-ios.svg?style=svg&circle-token=a3ef407be4f8b24b7c1fc15926933bb1b7bb8491)](https://circleci.com/gh/s10tv/s10-ios)
 
 ## Updating Language
 Edit the following two files
-[InfoPlist.strings](https://github.com/Ketchteam/ketch-ios/blob/master/Ketch/en.lproj/InfoPlist.strings)
-[Localizable.strings](https://github.com/Ketchteam/ketch-ios/blob/master/Ketch/en.lproj/Localizable.strings)
+[InfoPlist.strings](https://github.com/s10tv/s10-ios/blob/master/Taylr/en.lproj/InfoPlist.strings)
+[Localizable.strings](https://github.com/s10tv/s10-ios/blob/master/Taylr/en.lproj/Localizable.strings)
 
 ## Getting started
 ```
@@ -15,7 +15,7 @@ gem specific_install -l https://github.com/tonyxiao/xcres.git
 pod install
 ```
 
-Open `Ketch.xcworkspace` and start developing
+Open `Taylr.xcworkspace` and start developing
 
 ## Developing
 
@@ -35,7 +35,7 @@ ipa build --xcconfig Configs/[Dev|Beta|Prod].xcconfig
 export CRASHLYTICS_API_KEY=4cdb005d0ddfebc8865c0a768de9b43c993e9113
 export CRASHLYTICS_BUILD_SECRET=83001519164842a323e4d70c5970b041c248835fec59db59b409f5b364e47f72
 export CRASHLYTICS_FRAMEWORK_PATH=Pods/CrashlyticsFramework/Crashlytics.framework
-ipa distribute:crashlytics -f Ketch.ipa -g team
+ipa distribute:crashlytics -f Taylr.ipa -g team
 ```
 
 ## Convert p12 to pem
@@ -54,5 +54,5 @@ private key in newfile.key.pem
 ## Convert cert to pem
 
 ```
-openssl x509 -inform der -in scripts/certs/apns_prod-com.milasya.ketch.beta.cer -out betaapns.pem
+openssl x509 -inform der -in scripts/certs/apns_prod-com.milasya.Taylr.beta.cer -out betaapns.pem
 ```

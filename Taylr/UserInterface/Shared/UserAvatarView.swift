@@ -13,7 +13,7 @@ class UserAvatarView : UIImageView {
     
     var fadeRatio : CGFloat = 0 {
         didSet {
-            // Ketchy should not show any indication of drowining
+            // special case for not expiring at all
             if (fadeRatio > 1) {
                 layer.addSublayer(fadeLayer)
                 fadeLayer.locations = [0, 1, 1, 1]

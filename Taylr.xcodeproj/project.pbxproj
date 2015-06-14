@@ -10,8 +10,6 @@
 		06B1A0F6533AB2164D485161 /* Pods_TaylrTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 873B58F6C71AC76F0BB58988 /* Pods_TaylrTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		44E19D671B859E037A1401D8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38E9CB79C25FDAE97BD9D3D /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		73CF93567D616177169FDAB1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38E9CB79C25FDAE97BD9D3D /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		7B991890A419D713002F4B64 /* Pods_KetchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0836625DBA487D8E5D302F0B /* Pods_KetchTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		EA02CCF21A96ED03004C3009 /* KetchIcon.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA02CCF11A96ED03004C3009 /* KetchIcon.otf */; };
 		EA0491661B2D234800491E20 /* Pods-TaylrTests.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = EA0491641B2D234800491E20 /* Pods-TaylrTests.debug.xcconfig */; };
 		EA0491671B2D234800491E20 /* Pods-TaylrTests.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = EA0491651B2D234800491E20 /* Pods-TaylrTests.release.xcconfig */; };
 		EA0FC9341A87DE5800D62625 /* MeteorCDStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC91F1A87DE5800D62625 /* MeteorCDStack.swift */; };
@@ -29,7 +27,6 @@
 		EA0FED451ADE5BC500FC6FCB /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */; };
 		EA24C26D1AD8F52000C40AAD /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA24C26C1AD8F52000C40AAD /* Metadata.swift */; };
 		EA2A38E61AD8A141005708D2 /* MeteorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2A38E51AD8A141005708D2 /* MeteorService.swift */; };
-		EA31049B1A99C3850069D6AD /* KetchIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA31049A1A99C3850069D6AD /* KetchIcon.swift */; };
 		EA36D2AB1AE71366006FD5D8 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36D2AA1AE71366006FD5D8 /* Errors.swift */; };
 		EA36D2AD1AE72B78006FD5D8 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36D2AC1AE72B78006FD5D8 /* UserDefaults.swift */; };
 		EA3777721A966EC10055DE99 /* TransatTextBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */; };
@@ -143,11 +140,9 @@
 
 /* Begin PBXFileReference section */
 		0686ABB348D06D87DA844419 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		0836625DBA487D8E5D302F0B /* Pods_KetchTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KetchTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CD850D0B9EC2938BA5CEB59 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		873B58F6C71AC76F0BB58988 /* Pods_TaylrTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaylrTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38E9CB79C25FDAE97BD9D3D /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA02CCF11A96ED03004C3009 /* KetchIcon.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KetchIcon.otf; sourceTree = "<group>"; };
 		EA0491641B2D234800491E20 /* Pods-TaylrTests.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-TaylrTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TaylrTests/Pods-TaylrTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EA0491651B2D234800491E20 /* Pods-TaylrTests.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-TaylrTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TaylrTests/Pods-TaylrTests.release.xcconfig"; sourceTree = "<group>"; };
 		EA0FC91F1A87DE5800D62625 /* MeteorCDStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorCDStack.swift; sourceTree = "<group>"; };
@@ -165,7 +160,6 @@
 		EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
 		EA24C26C1AD8F52000C40AAD /* Metadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
 		EA2A38E51AD8A141005708D2 /* MeteorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorService.swift; sourceTree = "<group>"; };
-		EA31049A1A99C3850069D6AD /* KetchIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KetchIcon.swift; sourceTree = "<group>"; };
 		EA36D2AA1AE71366006FD5D8 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		EA36D2AC1AE72B78006FD5D8 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextBlack.otf; sourceTree = "<group>"; };
@@ -295,7 +289,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				73CF93567D616177169FDAB1 /* Pods.framework in Frameworks */,
-				7B991890A419D713002F4B64 /* Pods_KetchTests.framework in Frameworks */,
 				06B1A0F6533AB2164D485161 /* Pods_TaylrTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -313,7 +306,6 @@
 				F996C71F1A81F1D800314FF8 /* CoreVideo.framework */,
 				F996C71D1A81F1D100314FF8 /* CoreMedia.framework */,
 				D38E9CB79C25FDAE97BD9D3D /* Pods.framework */,
-				0836625DBA487D8E5D302F0B /* Pods_KetchTests.framework */,
 				873B58F6C71AC76F0BB58988 /* Pods_TaylrTests.framework */,
 			);
 			name = Frameworks;
@@ -406,8 +398,6 @@
 		EA37776C1A966E380055DE99 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
-				EA31049A1A99C3850069D6AD /* KetchIcon.swift */,
-				EA02CCF11A96ED03004C3009 /* KetchIcon.otf */,
 				EA37776F1A966EC10055DE99 /* TransatTextLight.otf */,
 				EA3777711A966EC10055DE99 /* TransatTextStandard.otf */,
 				EA3777701A966EC10055DE99 /* TransatTextMedium.otf */,
@@ -775,7 +765,6 @@
 				EA62A87E1AD98B3C00B5D3D9 /* Images.xcassets in Resources */,
 				EA0491661B2D234800491E20 /* Pods-TaylrTests.debug.xcconfig in Resources */,
 				EAA56F8F1B2B32E500DE3936 /* ConnectionCell.xib in Resources */,
-				EA02CCF21A96ED03004C3009 /* KetchIcon.otf in Resources */,
 				EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */,
 				EA0491671B2D234800491E20 /* Pods-TaylrTests.release.xcconfig in Resources */,
 				EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */,
@@ -959,7 +948,6 @@
 				EAA56F8E1B2B32E500DE3936 /* ConnectionCell.swift in Sources */,
 				EA6650FB1AA00B95001BA40C /* Candidate.swift in Sources */,
 				EA0FC9421A87DE5800D62625 /* BaseViewModel.swift in Sources */,
-				EA31049B1A99C3850069D6AD /* KetchIcon.swift in Sources */,
 				EAC31C1D1AE3A86200277FE8 /* Settings.swift in Sources */,
 				EAA56FA01B2B32E500DE3936 /* ProgressIndicator.swift in Sources */,
 				EAA56F9A1B2B32E500DE3936 /* SettingsViewController.swift in Sources */,
