@@ -86,7 +86,7 @@ extension Array {
     }
 
     func mapOptional<U>(transform: T -> U?) -> [U] {
-        return Ketch.mapOptional(self, transform)
+        return Taylr.mapOptional(self, transform)
     }
     
     // Deletes all the items in self that are equal to element.

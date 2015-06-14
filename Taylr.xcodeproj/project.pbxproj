@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		06B1A0F6533AB2164D485161 /* Pods_TaylrTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 873B58F6C71AC76F0BB58988 /* Pods_TaylrTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		44E19D671B859E037A1401D8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38E9CB79C25FDAE97BD9D3D /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		73CF93567D616177169FDAB1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38E9CB79C25FDAE97BD9D3D /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		7B991890A419D713002F4B64 /* Pods_KetchTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0836625DBA487D8E5D302F0B /* Pods_KetchTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -240,9 +241,9 @@
 		EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA9A6ACE1AAFDE19009EDD6D /* Localizable.strings */; };
 		EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
 		EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35461A74CC6900E0C65D /* Main.storyboard */; };
-		EA9F354A1A74CC6900E0C65D /* Ketch.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Ketch.xcassets */; };
+		EA9F354A1A74CC6900E0C65D /* Taylr.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Taylr.xcassets */; };
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
-		EA9F35591A74CC6900E0C65D /* KetchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F35581A74CC6900E0C65D /* KetchTests.swift */; };
+		EA9F35591A74CC6900E0C65D /* TaylrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F35581A74CC6900E0C65D /* TaylrTests.swift */; };
 		EAA56F4F1B2B266600DE3936 /* _Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F491B2B266600DE3936 /* _Candidate.swift */; };
 		EAA56F501B2B266600DE3936 /* _Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F4A1B2B266600DE3936 /* _Connection.swift */; };
 		EAA56F511B2B266600DE3936 /* _Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F4B1B2B266600DE3936 /* _Message.swift */; };
@@ -300,7 +301,7 @@
 		EAE1E07B1AE34C6200F03F13 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1E07A1AE34C6200F03F13 /* LocationService.swift */; };
 		EAE1E07D1AE3788300F03F13 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1E07C1AE3788300F03F13 /* Globals.swift */; };
 		EAEB63DB1AD31A4E0002D55C /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB63DA1AD31A4E0002D55C /* Animation.swift */; };
-		EAF195CF1A827FAD00A2F103 /* Ketch-Bridging.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */; };
+		EAF195CF1A827FAD00A2F103 /* Taylr-Bridging.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF195CE1A827FAC00A2F103 /* Taylr-Bridging.m */; };
 		F95D95DF1A84A1170068F090 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95D95DE1A84A1170068F090 /* MediaPlayer.framework */; };
 		F996C71E1A81F1D100314FF8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71D1A81F1D100314FF8 /* CoreMedia.framework */; };
 		F996C7201A81F1D800314FF8 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71F1A81F1D800314FF8 /* CoreVideo.framework */; };
@@ -323,6 +324,7 @@
 		0686ABB348D06D87DA844419 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		0836625DBA487D8E5D302F0B /* Pods_KetchTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_KetchTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CD850D0B9EC2938BA5CEB59 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		873B58F6C71AC76F0BB58988 /* Pods_TaylrTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaylrTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38E9CB79C25FDAE97BD9D3D /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA02CCF11A96ED03004C3009 /* KetchIcon.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = KetchIcon.otf; sourceTree = "<group>"; };
 		EA0FC91F1A87DE5800D62625 /* MeteorCDStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorCDStack.swift; sourceTree = "<group>"; };
@@ -554,16 +556,16 @@
 		EA7AA3691AA26597003383BE /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
 		EA925C731AD99ED8008E9F41 /* R.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.swift; sourceTree = "<group>"; };
 		EA9A6ACF1AAFDFA2009EDD6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		EA9F353A1A74CC6900E0C65D /* Ketch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Ketch.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA9F353E1A74CC6900E0C65D /* Ketch-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Ketch-Info.plist"; sourceTree = "<group>"; };
+		EA9F353A1A74CC6900E0C65D /* Taylr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taylr.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA9F353E1A74CC6900E0C65D /* Taylr-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Taylr-Info.plist"; sourceTree = "<group>"; };
 		EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA9F35471A74CC6900E0C65D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		EA9F35491A74CC6900E0C65D /* Ketch.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Ketch.xcassets; sourceTree = "<group>"; };
+		EA9F35491A74CC6900E0C65D /* Taylr.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Taylr.xcassets; sourceTree = "<group>"; };
 		EA9F354C1A74CC6900E0C65D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		EA9F35521A74CC6900E0C65D /* KetchTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KetchTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA9F35521A74CC6900E0C65D /* TaylrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaylrTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9F35571A74CC6900E0C65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EA9F35581A74CC6900E0C65D /* KetchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KetchTests.swift; sourceTree = "<group>"; };
-		EA9F35621A74CD8800E0C65D /* Ketch-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Ketch-Bridging.h"; path = "Ketch/Ketch-Bridging.h"; sourceTree = SOURCE_ROOT; };
+		EA9F35581A74CC6900E0C65D /* TaylrTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaylrTests.swift; sourceTree = "<group>"; };
+		EA9F35621A74CD8800E0C65D /* Taylr-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Taylr-Bridging.h"; path = "Taylr/Taylr-Bridging.h"; sourceTree = SOURCE_ROOT; };
 		EAA56F491B2B266600DE3936 /* _Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Candidate.swift; sourceTree = "<group>"; };
 		EAA56F4A1B2B266600DE3936 /* _Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Connection.swift; sourceTree = "<group>"; };
 		EAA56F4B1B2B266600DE3936 /* _Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Message.swift; sourceTree = "<group>"; };
@@ -624,7 +626,7 @@
 		EAE1E07A1AE34C6200F03F13 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		EAE1E07C1AE3788300F03F13 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		EAEB63DA1AD31A4E0002D55C /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
-		EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Ketch-Bridging.m"; sourceTree = "<group>"; };
+		EAF195CE1A827FAC00A2F103 /* Taylr-Bridging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Taylr-Bridging.m"; sourceTree = "<group>"; };
 		F95D95DE1A84A1170068F090 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		F996C71D1A81F1D100314FF8 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		F996C71F1A81F1D800314FF8 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -654,6 +656,7 @@
 			files = (
 				73CF93567D616177169FDAB1 /* Pods.framework in Frameworks */,
 				7B991890A419D713002F4B64 /* Pods_KetchTests.framework in Frameworks */,
+				06B1A0F6533AB2164D485161 /* Pods_TaylrTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -671,6 +674,7 @@
 				F996C71D1A81F1D100314FF8 /* CoreMedia.framework */,
 				D38E9CB79C25FDAE97BD9D3D /* Pods.framework */,
 				0836625DBA487D8E5D302F0B /* Pods_KetchTests.framework */,
+				873B58F6C71AC76F0BB58988 /* Pods_TaylrTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -1044,9 +1048,9 @@
 		EA9F35311A74CC6900E0C65D = {
 			isa = PBXGroup;
 			children = (
-				EA9F353C1A74CC6900E0C65D /* Ketch */,
+				EA9F353C1A74CC6900E0C65D /* Taylr */,
 				EA0FC91C1A87DE5800D62625 /* Common */,
-				EA9F35551A74CC6900E0C65D /* KetchTests */,
+				EA9F35551A74CC6900E0C65D /* TaylrTests */,
 				EA9F353B1A74CC6900E0C65D /* Products */,
 				DDD7116BC0015396F5321D26 /* Pods */,
 				2C9F4D1EF3D7E4C4FBB0AEDB /* Frameworks */,
@@ -1056,13 +1060,13 @@
 		EA9F353B1A74CC6900E0C65D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				EA9F353A1A74CC6900E0C65D /* Ketch.app */,
-				EA9F35521A74CC6900E0C65D /* KetchTests.xctest */,
+				EA9F353A1A74CC6900E0C65D /* Taylr.app */,
+				EA9F35521A74CC6900E0C65D /* TaylrTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		EA9F353C1A74CC6900E0C65D /* Ketch */ = {
+		EA9F353C1A74CC6900E0C65D /* Taylr */ = {
 			isa = PBXGroup;
 			children = (
 				EA5634DE1A7741FF00F62B52 /* Models */,
@@ -1074,10 +1078,10 @@
 				EA9F35461A74CC6900E0C65D /* Main.storyboard */,
 				EA7004641ACF912A00D0E467 /* Onboarding.storyboard */,
 				EAB8E7A81AE04D8D00B3046F /* Settings.storyboard */,
-				EA9F35491A74CC6900E0C65D /* Ketch.xcassets */,
+				EA9F35491A74CC6900E0C65D /* Taylr.xcassets */,
 				EA9F353D1A74CC6900E0C65D /* Supporting Files */,
 			);
-			path = Ketch;
+			path = Taylr;
 			sourceTree = "<group>";
 		};
 		EA9F353D1A74CC6900E0C65D /* Supporting Files */ = {
@@ -1089,21 +1093,21 @@
 				EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */,
 				EA9A6ACE1AAFDE19009EDD6D /* Localizable.strings */,
 				EABF2AB51AD04659005880E7 /* InfoPlist.strings */,
-				EA9F35621A74CD8800E0C65D /* Ketch-Bridging.h */,
-				EAF195CE1A827FAC00A2F103 /* Ketch-Bridging.m */,
-				EA9F353E1A74CC6900E0C65D /* Ketch-Info.plist */,
+				EA9F35621A74CD8800E0C65D /* Taylr-Bridging.h */,
+				EAF195CE1A827FAC00A2F103 /* Taylr-Bridging.m */,
+				EA9F353E1A74CC6900E0C65D /* Taylr-Info.plist */,
 				49A80BC478B1E012CE6D7406 /* Generated */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		EA9F35551A74CC6900E0C65D /* KetchTests */ = {
+		EA9F35551A74CC6900E0C65D /* TaylrTests */ = {
 			isa = PBXGroup;
 			children = (
-				EA9F35581A74CC6900E0C65D /* KetchTests.swift */,
+				EA9F35581A74CC6900E0C65D /* TaylrTests.swift */,
 				EA9F35561A74CC6900E0C65D /* Supporting Files */,
 			);
-			path = KetchTests;
+			path = TaylrTests;
 			sourceTree = "<group>";
 		};
 		EA9F35561A74CC6900E0C65D /* Supporting Files */ = {
@@ -1229,9 +1233,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		EA9F35391A74CC6900E0C65D /* Ketch */ = {
+		EA9F35391A74CC6900E0C65D /* Taylr */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EA9F355C1A74CC6900E0C65D /* Build configuration list for PBXNativeTarget "Ketch" */;
+			buildConfigurationList = EA9F355C1A74CC6900E0C65D /* Build configuration list for PBXNativeTarget "Taylr" */;
 			buildPhases = (
 				8DB42EE7C2D8B4A7B282AD75 /* Check Pods Manifest.lock */,
 				EA9F35361A74CC6900E0C65D /* Sources */,
@@ -1245,14 +1249,14 @@
 			);
 			dependencies = (
 			);
-			name = Ketch;
+			name = Taylr;
 			productName = Ketch;
-			productReference = EA9F353A1A74CC6900E0C65D /* Ketch.app */;
+			productReference = EA9F353A1A74CC6900E0C65D /* Taylr.app */;
 			productType = "com.apple.product-type.application";
 		};
-		EA9F35511A74CC6900E0C65D /* KetchTests */ = {
+		EA9F35511A74CC6900E0C65D /* TaylrTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EA9F355F1A74CC6900E0C65D /* Build configuration list for PBXNativeTarget "KetchTests" */;
+			buildConfigurationList = EA9F355F1A74CC6900E0C65D /* Build configuration list for PBXNativeTarget "TaylrTests" */;
 			buildPhases = (
 				282F49687FEBD2D912E6C158 /* Check Pods Manifest.lock */,
 				EA9F354E1A74CC6900E0C65D /* Sources */,
@@ -1266,9 +1270,9 @@
 			dependencies = (
 				EA9F35541A74CC6900E0C65D /* PBXTargetDependency */,
 			);
-			name = KetchTests;
+			name = TaylrTests;
 			productName = KetchTests;
-			productReference = EA9F35521A74CC6900E0C65D /* KetchTests.xctest */;
+			productReference = EA9F35521A74CC6900E0C65D /* TaylrTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -1290,7 +1294,7 @@
 					};
 				};
 			};
-			buildConfigurationList = EA9F35351A74CC6900E0C65D /* Build configuration list for PBXProject "Ketch" */;
+			buildConfigurationList = EA9F35351A74CC6900E0C65D /* Build configuration list for PBXProject "Taylr" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1321,8 +1325,8 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EA9F35391A74CC6900E0C65D /* Ketch */,
-				EA9F35511A74CC6900E0C65D /* KetchTests */,
+				EA9F35391A74CC6900E0C65D /* Taylr */,
+				EA9F35511A74CC6900E0C65D /* TaylrTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1508,7 +1512,7 @@
 				EA608B9D1AE609A5003E1C75 /* ketchyFlagWave_7@2x.png in Resources */,
 				EA608AD61AE6079C003E1C75 /* ketchyNeutral_63@2x.png in Resources */,
 				EA608B7E1AE609A5003E1C75 /* ketchyFlagWave_51@2x.png in Resources */,
-				EA9F354A1A74CC6900E0C65D /* Ketch.xcassets in Resources */,
+				EA9F354A1A74CC6900E0C65D /* Taylr.xcassets in Resources */,
 				EA608B601AE609A5003E1C75 /* ketchyFlagWave_24@2x.png in Resources */,
 				EA608B511AE609A5003E1C75 /* ketchyFlagWave_10@2x.png in Resources */,
 				EA608AD71AE6079C003E1C75 /* ketchyNeutral_64@2x.png in Resources */,
@@ -1612,7 +1616,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KetchTests/Pods-KetchTests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TaylrTests/Pods-TaylrTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CC42FF79320CC7EE6804A689 /* Copy Pods Resources */ = {
@@ -1627,7 +1631,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-KetchTests/Pods-KetchTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TaylrTests/Pods-TaylrTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EA7F26D91A891B6500629078 /* Upload DSYM to Fabric (Crashlytics) */ = {
@@ -1654,7 +1658,7 @@
 				EA72FB2A1AD1B7D5009F853F /* Transition.swift in Sources */,
 				EAA56F521B2B266600DE3936 /* _Post.swift in Sources */,
 				EA4F51851AE153880060405E /* SettingsViewModel.swift in Sources */,
-				EAF195CF1A827FAD00A2F103 /* Ketch-Bridging.m in Sources */,
+				EAF195CF1A827FAD00A2F103 /* Taylr-Bridging.m in Sources */,
 				EA7AA3651AA25D21003383BE /* ResourceExtension.swift in Sources */,
 				EAA56F571B2B2C1000DE3936 /* Post.swift in Sources */,
 				EAAD921D1ACF342C0014BA25 /* Environment.swift in Sources */,
@@ -1750,7 +1754,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA9F35591A74CC6900E0C65D /* KetchTests.swift in Sources */,
+				EA9F35591A74CC6900E0C65D /* TaylrTests.swift in Sources */,
 				EAC8D3F61AA7269F00BCB7B9 /* FetchViewModel.swift in Sources */,
 				EAC8D3F81AA7289400BCB7B9 /* ArrayViewModel.swift in Sources */,
 				EAC8D3F71AA7278900BCB7B9 /* ViewProviders.swift in Sources */,
@@ -1762,7 +1766,7 @@
 /* Begin PBXTargetDependency section */
 		EA9F35541A74CC6900E0C65D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = EA9F35391A74CC6900E0C65D /* Ketch */;
+			target = EA9F35391A74CC6900E0C65D /* Taylr */;
 			targetProxy = EA9F35531A74CC6900E0C65D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1911,12 +1915,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Ketch/Ketch-Info.plist";
+				INFOPLIST_FILE = "Taylr/Taylr-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "$(CUSTOM_PROVISIONING_PROFILE)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Ketch/Ketch-Bridging.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Taylr/Taylr-Bridging.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -1932,12 +1936,12 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
-				INFOPLIST_FILE = "$(SRCROOT)/Ketch/Ketch-Info.plist";
+				INFOPLIST_FILE = "Taylr/Taylr-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "$(CUSTOM_PROVISIONING_PROFILE)";
-				SWIFT_OBJC_BRIDGING_HEADER = "Ketch/Ketch-Bridging.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "Taylr/Taylr-Bridging.h";
 			};
 			name = Release;
 		};
@@ -1953,7 +1957,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = KetchTests/Info.plist;
+				INFOPLIST_FILE = TaylrTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1967,7 +1971,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = KetchTests/Info.plist;
+				INFOPLIST_FILE = TaylrTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1976,7 +1980,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EA9F35351A74CC6900E0C65D /* Build configuration list for PBXProject "Ketch" */ = {
+		EA9F35351A74CC6900E0C65D /* Build configuration list for PBXProject "Taylr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EA9F355A1A74CC6900E0C65D /* Debug */,
@@ -1985,7 +1989,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EA9F355C1A74CC6900E0C65D /* Build configuration list for PBXNativeTarget "Ketch" */ = {
+		EA9F355C1A74CC6900E0C65D /* Build configuration list for PBXNativeTarget "Taylr" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EA9F355D1A74CC6900E0C65D /* Debug */,
@@ -1994,7 +1998,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EA9F355F1A74CC6900E0C65D /* Build configuration list for PBXNativeTarget "KetchTests" */ = {
+		EA9F355F1A74CC6900E0C65D /* Build configuration list for PBXNativeTarget "TaylrTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EA9F35601A74CC6900E0C65D /* Debug */,

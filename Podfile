@@ -5,7 +5,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 inhibit_all_warnings!
 use_frameworks!
 
-link_with 'Ketch'
+link_with 'Taylr'
 
 pod 'ReactiveCocoa', '~> 2.4' # Update to 3.0 when ready
 
@@ -48,8 +48,8 @@ pod 'Heap', '~> 2.1'
 pod 'Reveal-iOS-SDK', '~> 1.5', :configuration => ['Debug']
 pod 'NSLogger', '~> 1.5', :configuration => ['Debug']
 
-target :KetchTests do
-  link_with 'KetchTests'
+target :TaylrTests do
+  link_with 'TaylrTests'
   pod 'Quick', '~> 0.3'
   pod 'Nimble', '~> 0.3.0'
 end

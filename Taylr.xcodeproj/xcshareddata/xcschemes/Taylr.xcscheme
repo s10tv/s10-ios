@@ -14,9 +14,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EA9F35391A74CC6900E0C65D"
-               BuildableName = "Ketch.app"
-               BlueprintName = "Ketch"
-               ReferencedContainer = "container:Ketch.xcodeproj">
+               BuildableName = "Taylr.app"
+               BlueprintName = "Taylr"
+               ReferencedContainer = "container:Taylr.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -32,9 +32,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "EA9F35511A74CC6900E0C65D"
-               BuildableName = "KetchTests.xctest"
-               BlueprintName = "KetchTests"
-               ReferencedContainer = "container:Ketch.xcodeproj">
+               BuildableName = "TaylrTests.xctest"
+               BlueprintName = "TaylrTests"
+               ReferencedContainer = "container:Taylr.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -42,9 +42,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EA9F35391A74CC6900E0C65D"
-            BuildableName = "Ketch.app"
-            BlueprintName = "Ketch"
-            ReferencedContainer = "container:Ketch.xcodeproj">
+            BuildableName = "Taylr.app"
+            BlueprintName = "Taylr"
+            ReferencedContainer = "container:Taylr.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </TestAction>
@@ -62,9 +62,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EA9F35391A74CC6900E0C65D"
-            BuildableName = "Ketch.app"
-            BlueprintName = "Ketch"
-            ReferencedContainer = "container:Ketch.xcodeproj">
+            BuildableName = "Taylr.app"
+            BlueprintName = "Taylr"
+            ReferencedContainer = "container:Taylr.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -80,9 +80,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "EA9F35391A74CC6900E0C65D"
-            BuildableName = "Ketch.app"
-            BlueprintName = "Ketch"
-            ReferencedContainer = "container:Ketch.xcodeproj">
+            BuildableName = "Taylr.app"
+            BlueprintName = "Taylr"
+            ReferencedContainer = "container:Taylr.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
    </ProfileAction>

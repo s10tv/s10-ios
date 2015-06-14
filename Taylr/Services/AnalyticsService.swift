@@ -8,7 +8,7 @@
 
 import Foundation
 import Analytics
-import Heap
+//import Heap
 
 class AnalyticsService {
     private(set) var userId: String?
@@ -21,11 +21,11 @@ class AnalyticsService {
         SEGAnalytics.setupWithConfiguration(config)
         segment = SEGAnalytics.sharedAnalytics()
         
-        // Heap
-        Heap.setAppId(env.heapAppId)
-        if env.audience == .Dev {
-            Heap.enableVisualizer()
-        }
+//        // Heap
+//        Heap.setAppId(env.heapAppId)
+//        if env.audience == .Dev {
+//            Heap.enableVisualizer()
+//        }
         
         // Set initial userId
         if let meteorUserId = UD[.sMeteorUserId].string {

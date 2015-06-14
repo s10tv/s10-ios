@@ -9,7 +9,7 @@
 #ifdef DEBUG
 #import <NSLogger/LoggerClient.h>
 #endif
-#import "Ketch-Bridging.h"
+#import "Taylr-Bridging.h"
 
 
 @implementation RACSignal (SwiftCompileFix)
