@@ -19,6 +19,7 @@ protocol MessagesViewModelDelegate : class {
 class MessagesViewModel : NSObject {
     let connection: Connection
     weak var delegate: MessagesViewModelDelegate?
+    weak var collectionView : UICollectionView?
     private let frc: NSFetchedResultsController
     private var sendingMessage = false // TODO: Temp hack, see sendMessage for explanation
     private var changedMessages: [Message] = []
@@ -45,6 +46,13 @@ class MessagesViewModel : NSObject {
     }
     
     func sendMessage(text: String) {
+    }
+    
+    
+    func bindCollectionView(collectionView: UICollectionView) {
+        self.collectionView = collectionView
+        collectionView.dataSource = self
+        collectionView.delegate = self
     }
     
     // MARK: -
@@ -79,5 +87,23 @@ extension MessagesViewModel : NSFetchedResultsControllerDelegate {
         if changedMessages.count > 0 {
             delegate?.viewModel(self, didChangeMessages: changedMessages)
         }
+        collectionView?.reloadData()
     }
+}
+
+extension MessagesViewModel : UICollectionViewDataSource {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 5
+//        return frc.fetchedObjects?.count ?? 0
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MessageCell", forIndexPath: indexPath) as! MessageCell
+//        cell.message = frc.objectAtIndexPath(indexPath) as? Message
+        return cell
+    }
+}
+
+extension MessagesViewModel : UICollectionViewDelegate {
+    
 }

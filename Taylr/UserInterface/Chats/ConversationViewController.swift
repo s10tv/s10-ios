@@ -13,8 +13,22 @@ class ConversationViewController : BaseViewController {
     @IBOutlet weak var avatarView: UserAvatarView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var activityLabel: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
     
+    var messagesVM: MessagesViewModel!
     var connection: Connection?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        messagesVM = MessagesViewModel(connection: connection!, delegate: nil)
+        messagesVM.bindCollectionView(collectionView)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        layout.itemSize = collectionView.bounds.size
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)

@@ -28,6 +28,7 @@
 		EA24C26D1AD8F52000C40AAD /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA24C26C1AD8F52000C40AAD /* Metadata.swift */; };
 		EA2A38E61AD8A141005708D2 /* MeteorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2A38E51AD8A141005708D2 /* MeteorService.swift */; };
 		EA3594141B2DE5C300E91337 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594131B2DE5C300E91337 /* ConversationViewController.swift */; };
+		EA3594161B2DEF0C00E91337 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594151B2DEF0C00E91337 /* MessageCell.swift */; };
 		EA36D2AB1AE71366006FD5D8 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36D2AA1AE71366006FD5D8 /* Errors.swift */; };
 		EA36D2AD1AE72B78006FD5D8 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36D2AC1AE72B78006FD5D8 /* UserDefaults.swift */; };
 		EA3777721A966EC10055DE99 /* TransatTextBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */; };
@@ -74,7 +75,6 @@
 		EAA56F581B2B2C1000DE3936 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F561B2B2C1000DE3936 /* Video.swift */; };
 		EAA56F8D1B2B32E500DE3936 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F6C1B2B32E500DE3936 /* ChatsViewController.swift */; };
 		EAA56F8E1B2B32E500DE3936 /* ConnectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F6D1B2B32E500DE3936 /* ConnectionCell.swift */; };
-		EAA56F8F1B2B32E500DE3936 /* ConnectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAA56F6E1B2B32E500DE3936 /* ConnectionCell.xib */; };
 		EAA56F901B2B32E500DE3936 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F701B2B32E500DE3936 /* DiscoverViewController.swift */; };
 		EAA56F911B2B32E500DE3936 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F721B2B32E500DE3936 /* HomeViewController.swift */; };
 		EAA56F921B2B32E500DE3936 /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F731B2B32E500DE3936 /* NewPostViewController.swift */; };
@@ -162,6 +162,7 @@
 		EA24C26C1AD8F52000C40AAD /* Metadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
 		EA2A38E51AD8A141005708D2 /* MeteorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorService.swift; sourceTree = "<group>"; };
 		EA3594131B2DE5C300E91337 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
+		EA3594151B2DEF0C00E91337 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		EA36D2AA1AE71366006FD5D8 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		EA36D2AC1AE72B78006FD5D8 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextBlack.otf; sourceTree = "<group>"; };
@@ -215,7 +216,6 @@
 		EAA56F561B2B2C1000DE3936 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		EAA56F6C1B2B32E500DE3936 /* ChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		EAA56F6D1B2B32E500DE3936 /* ConnectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionCell.swift; sourceTree = "<group>"; };
-		EAA56F6E1B2B32E500DE3936 /* ConnectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConnectionCell.xib; sourceTree = "<group>"; };
 		EAA56F701B2B32E500DE3936 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		EAA56F721B2B32E500DE3936 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		EAA56F731B2B32E500DE3936 /* NewPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
@@ -415,10 +415,10 @@
 				EAA56FAC1B2BBE3600DE3936 /* FeedViewModel.swift */,
 				EAA56FAE1B2BCA0A00DE3936 /* DiscoverViewModel.swift */,
 				EAA56FB21B2BE36900DE3936 /* ChatsViewModel.swift */,
+				EA608BAB1AE6A249003E1C75 /* MessagesViewModel.swift */,
 				EAC31C1E1AE3AD7000277FE8 /* SettingsItem.swift */,
 				EA4F51861AE153A40060405E /* ProfileItem.swift */,
 				EA4F51841AE153880060405E /* SettingsViewModel.swift */,
-				EA608BAB1AE6A249003E1C75 /* MessagesViewModel.swift */,
 				EA53D5211AE1E9B800EDAAFE /* Formatters.swift */,
 			);
 			path = ViewModels;
@@ -551,8 +551,8 @@
 			children = (
 				EAA56F6C1B2B32E500DE3936 /* ChatsViewController.swift */,
 				EAA56F6D1B2B32E500DE3936 /* ConnectionCell.swift */,
-				EAA56F6E1B2B32E500DE3936 /* ConnectionCell.xib */,
 				EA3594131B2DE5C300E91337 /* ConversationViewController.swift */,
+				EA3594151B2DEF0C00E91337 /* MessageCell.swift */,
 			);
 			path = Chats;
 			sourceTree = "<group>";
@@ -767,7 +767,6 @@
 				EA3777761A966EC10055DE99 /* TransatTextStandard.otf in Resources */,
 				EA62A87E1AD98B3C00B5D3D9 /* Images.xcassets in Resources */,
 				EA0491661B2D234800491E20 /* Pods-TaylrTests.debug.xcconfig in Resources */,
-				EAA56F8F1B2B32E500DE3936 /* ConnectionCell.xib in Resources */,
 				EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */,
 				EA0491671B2D234800491E20 /* Pods-TaylrTests.release.xcconfig in Resources */,
 				EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */,
@@ -933,6 +932,7 @@
 				EAD007FC1AD37236003A260D /* Geometry.swift in Sources */,
 				EAA56F531B2B266600DE3936 /* _User.swift in Sources */,
 				EAA56FA41B2B32E500DE3936 /* PulsingView.swift in Sources */,
+				EA3594161B2DEF0C00E91337 /* MessageCell.swift in Sources */,
 				EA0FC9361A87DE5800D62625 /* SugarRecordExtension.swift in Sources */,
 				EA72FB2C1AD1B7E1009F853F /* ScrollTransition.swift in Sources */,
 				EAA56FAB1B2BBCDE00DE3936 /* PostViews.swift in Sources */,
