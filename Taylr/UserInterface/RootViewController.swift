@@ -25,4 +25,8 @@ class RootViewController : UINavigationController {
             pushViewController(signup, animated: false)
         }
     }
+    
+    @IBAction func goBack(sender: AnyObject) {
+        popViewControllerAnimated(true)
+    }
 }

@@ -27,6 +27,7 @@
 		EA0FED451ADE5BC500FC6FCB /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */; };
 		EA24C26D1AD8F52000C40AAD /* Metadata.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA24C26C1AD8F52000C40AAD /* Metadata.swift */; };
 		EA2A38E61AD8A141005708D2 /* MeteorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2A38E51AD8A141005708D2 /* MeteorService.swift */; };
+		EA3594141B2DE5C300E91337 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594131B2DE5C300E91337 /* ConversationViewController.swift */; };
 		EA36D2AB1AE71366006FD5D8 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36D2AA1AE71366006FD5D8 /* Errors.swift */; };
 		EA36D2AD1AE72B78006FD5D8 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36D2AC1AE72B78006FD5D8 /* UserDefaults.swift */; };
 		EA3777721A966EC10055DE99 /* TransatTextBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */; };
@@ -160,6 +161,7 @@
 		EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
 		EA24C26C1AD8F52000C40AAD /* Metadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
 		EA2A38E51AD8A141005708D2 /* MeteorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorService.swift; sourceTree = "<group>"; };
+		EA3594131B2DE5C300E91337 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		EA36D2AA1AE71366006FD5D8 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		EA36D2AC1AE72B78006FD5D8 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextBlack.otf; sourceTree = "<group>"; };
@@ -550,6 +552,7 @@
 				EAA56F6C1B2B32E500DE3936 /* ChatsViewController.swift */,
 				EAA56F6D1B2B32E500DE3936 /* ConnectionCell.swift */,
 				EAA56F6E1B2B32E500DE3936 /* ConnectionCell.xib */,
+				EA3594131B2DE5C300E91337 /* ConversationViewController.swift */,
 			);
 			path = Chats;
 			sourceTree = "<group>";
@@ -943,6 +946,7 @@
 				EAA56F911B2B32E500DE3936 /* HomeViewController.swift in Sources */,
 				EAA56F931B2B32E500DE3936 /* MeViewController.swift in Sources */,
 				EAA56F921B2B32E500DE3936 /* NewPostViewController.swift in Sources */,
+				EA3594141B2DE5C300E91337 /* ConversationViewController.swift in Sources */,
 				EA0FC93C1A87DE5800D62625 /* UIKitExtension.swift in Sources */,
 				EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */,
 				EAA56F8E1B2B32E500DE3936 /* ConnectionCell.swift in Sources */,
