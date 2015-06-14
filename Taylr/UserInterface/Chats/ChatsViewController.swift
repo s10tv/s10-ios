@@ -18,4 +18,10 @@ class ChatsViewController : BaseViewController {
         chatsVM.bindTableView(tableView)
     }
 
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let vc = segue.destinationViewController as? ConversationViewController {
+            vc.connection = chatsVM.itemAtIndexPath(tableView.indexPathForSelectedRow()!)
+        }
+    }
 }

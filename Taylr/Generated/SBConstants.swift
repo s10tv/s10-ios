@@ -5,6 +5,7 @@ public enum CollectionViewCellreuseIdentifier : String {
 }
 
 public enum SegueIdentifier : String {
+    case ChatsToConversation = "ChatsToConversation"
     case Main_Chat = "Main_Chat"
     case Main_Profile = "Main_Profile"
     case SettingsToLoading = "SettingsToLoading"

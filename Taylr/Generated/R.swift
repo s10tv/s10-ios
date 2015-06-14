@@ -114,6 +114,8 @@ public enum R {
         case appDev = "AppIconDev"
         /// girl-placeholder
         case girlPlaceholder = "girl-placeholder"
+        /// ic-back
+        case icBack = "ic-back"
         /// ic-camera
         case icCamera = "ic-camera"
         /// ic-chats

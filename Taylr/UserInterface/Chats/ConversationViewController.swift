@@ -10,9 +10,18 @@ import Foundation
 
 class ConversationViewController : BaseViewController {
     
+    @IBOutlet weak var avatarView: UserAvatarView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var activityLabel: UILabel!
+    
+    var connection: Connection?
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBarHidden = true
+        
+        avatarView.user = connection?.otherUser
+        nameLabel.text = connection?.otherUser?.displayName
     }
     
     override func viewWillDisappear(animated: Bool) {

@@ -20,6 +20,10 @@ class ChatsViewModel : NSObject {
         frc.performFetch(nil)
     }
     
+    func itemAtIndexPath(indexPath: NSIndexPath) -> Connection? {
+        return frc.objectAtIndexPath(indexPath) as? Connection
+    }
+    
     func bindTableView(tableView: UITableView) {
         self.tableView = tableView
         tableView.dataSource = self
