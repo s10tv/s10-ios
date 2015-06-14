@@ -1,9 +1,9 @@
 //
 //  Environment.swift
-//  Ketch
+//  Taylr
 //
 //  Created by Tony Xiao on 4/3/15.
-//  Copyright (c) 2015 Ketch. All rights reserved.
+//  Copyright (c) 2015 S10 Inc. All rights reserved.
 //
 
 import Foundation
@@ -13,9 +13,9 @@ class Environment {
         case Dev, Beta, AppStore
         var urlScheme: String {
             switch self {
-            case .Dev: return "ketch-dev://"
-            case .Beta: return "ketch-beta://"
-            case .AppStore: return "ketch://"
+            case .Dev: return "taylr-dev://"
+            case .Beta: return "taylr-beta://"
+            case .AppStore: return "taylr://"
             }
         }
         var installed: Bool {
@@ -25,9 +25,8 @@ class Environment {
     
     let audience : Audience
     let provisioningProfile : ProvisioningProfile?
-    let termsAndConditionURL = NSURL("http://ketchtheone.com/terms")
-    let privacyURL = NSURL("http://ketchtheone.com/privacy")
-    let notPickyExitURL = NSURL("http://tinder.com/")
+    let termsAndConditionURL = NSURL("http://taylrapp.com/terms")
+    let privacyURL = NSURL("http://taylrapp.com/privacy")
     let upgradeURL: NSURL
     let serverProtocol = "wss"
     let serverHostName: String
@@ -60,7 +59,7 @@ class Environment {
                 upgradeURL = NSURL("https://apps-ios.crashlytics.com/projects/54f16f389f24291fde000043")
                 serverHostName = "s10-dev.herokuapp.com"
 //                serverHostName = "10.1.10.44:3000"
-//                serverHostName = "ketch-beta.herokuapp.com"
+//                serverHostName = "s10-beta.herokuapp.com"
                 bugfenderAppToken = "RBsiKkpkyiXUW2Sk50JTKTKUYlNpXsFn"
                 segmentWriteKey = "vfnxR5SsgYkNQqRznBWHXDp2LMFkUNTv"
                 heapAppId = "2150081452"

@@ -1,9 +1,9 @@
 //
 //  ProgressIndicator.swift
-//  Ketch
+//  Taylr
 //
 //  Created by Tony Xiao on 3/13/15.
-//  Copyright (c) 2015 Ketch. All rights reserved.
+//  Copyright (c) 2015 S10 Inc. All rights reserved.
 //
 
 import Foundation

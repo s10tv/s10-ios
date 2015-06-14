@@ -1,6 +1,6 @@
 //
-//  KetchTests.swift
-//  KetchTests
+//  TaylrTests.swift
+//  TaylrTests
 //
 //  Created on 1/24/15.
 //  Copyright (c) 2015 Serendipity. All rights reserved.
@@ -9,7 +9,7 @@
 import UIKit
 import XCTest
 
-class KetchTests: XCTestCase {
+class TaylrTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

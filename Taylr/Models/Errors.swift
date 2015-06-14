@@ -1,9 +1,9 @@
 //
 //  Errors.swift
-//  Ketch
+//  Taylr
 //
 //  Created by Tony Xiao on 4/21/15.
-//  Copyright (c) 2015 Ketch. All rights reserved.
+//  Copyright (c) 2015 S10 Inc. All rights reserved.
 //
 
 import Foundation
@@ -14,7 +14,7 @@ enum ErrorCode : Int {
     case SubscriptionError = -3
 //    case KetchyUnavailable = -2
     
-    static let nsErrorDomain = "Ketch"
+    static let nsErrorDomain = "S10"
     var nsError: NSError { return NSError(self) }
     var recoverable: Bool { return localizedRecoverySuggestion != nil }
     
