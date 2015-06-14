@@ -16,8 +16,8 @@ class RootViewController : UINavigationController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.window?.tintColor = UIColor(hex: 0x9E7EA9)
-        UITabBar.appearance().tintColor = UIColor(hex: 0x9E7EA9)
+        view.window?.tintColor = StyleKit.brandPurple
+        UITabBar.appearance().tintColor = StyleKit.brandPurple
         
         if Meteor.account == nil {
             let onboarding = UIStoryboard(name: "Onboarding", bundle: nil)

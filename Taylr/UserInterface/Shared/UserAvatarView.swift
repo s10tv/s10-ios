@@ -55,8 +55,8 @@ class UserAvatarView : UIImageView {
         fadeLayer.colors = [
             UIColor.clearColor().CGColor,
             UIColor.clearColor().CGColor,
-            StyleKit.brandAlt.colorWithAlpha(0.75).CGColor,
-            StyleKit.brandAlt.colorWithAlpha(0.9).CGColor,
+            StyleKit.brandPurple.colorWithAlpha(0.75).CGColor,
+            StyleKit.brandPurple.colorWithAlpha(0.9).CGColor,
         ]
         makeCircular()
     }
