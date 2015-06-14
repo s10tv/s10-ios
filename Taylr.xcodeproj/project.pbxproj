@@ -134,7 +134,7 @@
 			containerPortal = EA9F35321A74CC6900E0C65D /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = EA9F35391A74CC6900E0C65D;
-			remoteInfo = Ketch;
+			remoteInfo = Taylr;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -675,7 +675,7 @@
 			dependencies = (
 			);
 			name = Taylr;
-			productName = Ketch;
+			productName = Taylr;
 			productReference = EA9F353A1A74CC6900E0C65D /* Taylr.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -696,7 +696,7 @@
 				EA9F35541A74CC6900E0C65D /* PBXTargetDependency */,
 			);
 			name = TaylrTests;
-			productName = KetchTests;
+			productName = TaylrTests;
 			productReference = EA9F35521A74CC6900E0C65D /* TaylrTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -707,7 +707,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastUpgradeCheck = 0610;
-				ORGANIZATIONNAME = Ketch;
+				ORGANIZATIONNAME = Taylr;
 				TargetAttributes = {
 					EA9F35391A74CC6900E0C65D = {
 						CreatedOnToolsVersion = 6.1.1;

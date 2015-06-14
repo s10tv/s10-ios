@@ -21,7 +21,7 @@ CODE_SIGN=/usr/bin/codesign
 
 cd "scripts"
 
-security create-keychain -p ketchy $KEYCHAIN_NAME
+security create-keychain -p s10 $KEYCHAIN_NAME
 security set-keychain-settings $KEYCHAIN_PATH # Don't autolock / timeout
 security list-keychains -d user -s ~/Library/Keychains/login.keychain $KEYCHAIN_PATH # Add to search list
 
