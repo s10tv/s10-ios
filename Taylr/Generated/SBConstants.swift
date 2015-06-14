@@ -19,6 +19,7 @@ public enum TableViewCellreuseIdentifier : String {
 }
 
 public enum ViewControllerStoryboardIdentifier : String {
+    case Home = "Home"
     case Settings = "Settings"
     case SettingsForm = "SettingsForm"
     case Signup = "Signup"

@@ -11,22 +11,12 @@ import Cartography
 
 class PulsingView : BaseView {
     let sublayer = CALayer()
-    let imageView = UIImageView(image: UIImage(R.KetchAssets.icTapGesture))
 
     override func commonInit() {
         sublayer.borderWidth = 2
         sublayer.borderColor = StyleKit.white.CGColor
         sublayer.opacity = 0
         layer.addSublayer(sublayer)
-        
-        imageView.layer.opacity = 0
-        addSubview(imageView)
-        constrain(imageView, self) { imageView, this in
-            imageView.width == 33
-            imageView.height == 50
-            imageView.left == this.centerX - 10
-            imageView.top == this.centerY
-        }
     }
     
     func startPulsing(delay: CFTimeInterval = 0) {
@@ -50,17 +40,9 @@ class PulsingView : BaseView {
         pulsing.animations = [size, corner, opacity]
         
         sublayer.addAnimation(pulsing, forKey: "pulsing")
-        
-        imageView.layer.animate(keyPath: "opacity", fillMode: .Forwards) { animation, _ in
-            animation.beginTime = CACurrentMediaTime() + delay
-            animation.fromValue = 0
-            animation.toValue = 1
-            animation.duration = 1
-        }
     }
     
     func stopPulsing() {
         sublayer.removeAnimationForKey("pulsing")
-        imageView.layer.removeAnimationForKey("opacity")
     }
 }

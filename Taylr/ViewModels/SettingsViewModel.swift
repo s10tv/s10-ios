@@ -73,11 +73,11 @@ class SettingsViewModel {
     
     // MARK: More Helpers
     
-    private func userItem(type: SettingsItem.ItemType, icon: R.KetchAssets? = nil, attr: UserAttributes, editable: Bool = true, format: (AnyObject? -> String)? = nil) -> SettingsItem {
+    private func userItem(type: SettingsItem.ItemType, icon: R.TaylrAssets? = nil, attr: UserAttributes, editable: Bool = true, format: (AnyObject? -> String)? = nil) -> SettingsItem {
         return userItem(type, icon: icon, attr: attr.rawValue, editable: editable, format: format)
     }
     
-    private func userItem(type: SettingsItem.ItemType, icon: R.KetchAssets? = nil, attr: String, editable: Bool = true, format: (AnyObject? -> String)? = nil) -> SettingsItem {
+    private func userItem(type: SettingsItem.ItemType, icon: R.TaylrAssets? = nil, attr: String, editable: Bool = true, format: (AnyObject? -> String)? = nil) -> SettingsItem {
         let item = SettingsItem(type: type, iconName: icon?.rawValue, editable: editable, formatBlock: format)
         disposables += currentUser.racObserve(attr).subscribeNext {
             item.value._update($0)
@@ -85,7 +85,7 @@ class SettingsViewModel {
         return item
     }
     
-    private func item(type: SettingsItem.ItemType, metadataKey: String, icon: R.KetchAssets? = nil, editable: Bool = true, format: (AnyObject? -> String)? = nil) -> SettingsItem {
+    private func item(type: SettingsItem.ItemType, metadataKey: String, icon: R.TaylrAssets? = nil, editable: Bool = true, format: (AnyObject? -> String)? = nil) -> SettingsItem {
         let item = SettingsItem(type: type, iconName: icon?.rawValue, editable: editable, formatBlock: format)
         item.value._update(settings.getValue(metadataKey))
         disposables += NC.rac_addObserverForName(METDatabaseDidChangeNotification, object: nil).deliverOnMainThread().subscribeNextAs {

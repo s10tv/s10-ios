@@ -13,7 +13,7 @@ class ProfileInfoItem {
         case Location(String), Age(Int), Height(Int), Work(String), Education(String)
     }
     let type : ItemType
-    let imageName : R.KetchAssets
+    let imageName : R.TaylrAssets
     let minWidthRatio : CGFloat
     
     var image : UIImage! {
@@ -36,20 +36,21 @@ class ProfileInfoItem {
         self.type = type
         switch type {
         case .Location:
-            imageName = R.KetchAssets.settingsLocation
+//            imageName = R.TaylrAssets.settingsLocation
             minWidthRatio = 1
         case .Age:
-            imageName = R.KetchAssets.settingsAge
+//            imageName = R.TaylrAssets.settingsAge
             minWidthRatio = 0
         case .Height:
-            imageName = R.KetchAssets.settingsHeightArrow
+//            imageName = R.TaylrAssets.settingsHeightArrow
             minWidthRatio = 0
         case .Work:
-            imageName = R.KetchAssets.settingsBriefcase
+//            imageName = R.TaylrAssets.settingsBriefcase
             minWidthRatio = 1
         case .Education:
-            imageName = R.KetchAssets.settingsMortarBoard
+//            imageName = R.TaylrAssets.settingsMortarBoard
             minWidthRatio = 1
         }
+        imageName = R.TaylrAssets.icMe
     }
 }

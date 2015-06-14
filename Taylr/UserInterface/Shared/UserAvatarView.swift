@@ -30,7 +30,7 @@ class UserAvatarView : UIImageView {
         if let photoURL = user?.avatarURL {
             sd_setImageWithURL(photoURL)
         } else {
-            image = UIImage(R.KetchAssets.girlPlaceholder)
+            image = UIImage(R.TaylrAssets.girlPlaceholder)
         }
     } }
 

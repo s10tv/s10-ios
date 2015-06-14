@@ -44,7 +44,7 @@ func LS(key: R.Strings, args: CVarArgType...) -> String {
 }
 
 extension UIImage {
-    convenience init?(_ key: R.KetchAssets) {
+    convenience init?(_ key: R.TaylrAssets) {
         self.init(named: key.rawValue)
     }
 }
