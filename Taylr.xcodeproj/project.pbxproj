@@ -1175,6 +1175,7 @@
 		};
 		EA9F35601A74CC6900E0C65D /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA0491641B2D234800491E20 /* Pods-TaylrTests.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -1192,6 +1193,7 @@
 		};
 		EA9F35611A74CC6900E0C65D /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA0491651B2D234800491E20 /* Pods-TaylrTests.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",

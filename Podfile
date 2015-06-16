@@ -15,7 +15,6 @@ pod 'SwiftyUserDefaults', '~> 1.1'
 pod 'SwiftTryCatch', '~> 0.0.1'
 
 pod 'SwipeView', '~> 1.3'
-pod 'JSQMessagesViewController', :git => 'https://github.com/tonyxiao/JSQMessagesViewController'
 pod 'SDWebImage', '~> 3.7'
 pod 'PKHUD', :git => 'https://github.com/tonyxiao/PKHUD' # Fork is needed to work around xcasset compilation issue inside pod
 pod 'XLForm', '~> 2.2'
