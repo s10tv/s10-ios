@@ -707,7 +707,7 @@
 					};
 				};
 			};
-			buildConfigurationList = EA9F35351A74CC6900E0C65D /* Build configuration list for PBXProject "Taylr" */;
+			buildConfigurationList = EA9F35351A74CC6900E0C65D /* Build configuration list for PBXProject "S10" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -1200,7 +1200,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		EA9F35351A74CC6900E0C65D /* Build configuration list for PBXProject "Taylr" */ = {
+		EA9F35351A74CC6900E0C65D /* Build configuration list for PBXProject "S10" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EA9F355A1A74CC6900E0C65D /* Debug */,
