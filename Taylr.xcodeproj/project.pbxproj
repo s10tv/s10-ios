@@ -126,16 +126,6 @@
 		F996C7261A81F1F200314FF8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C7251A81F1F200314FF8 /* OpenGLES.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		EA9F35531A74CC6900E0C65D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EA9F35321A74CC6900E0C65D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EA9F35391A74CC6900E0C65D;
-			remoteInfo = Taylr;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		0686ABB348D06D87DA844419 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		2CD850D0B9EC2938BA5CEB59 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -695,7 +685,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				EA9F35541A74CC6900E0C65D /* PBXTargetDependency */,
 			);
 			name = BackendTests;
 			productName = TaylrTests;
@@ -717,7 +706,6 @@
 					};
 					EA9F35511A74CC6900E0C65D = {
 						CreatedOnToolsVersion = 6.1.1;
-						TestTargetID = EA9F35391A74CC6900E0C65D;
 					};
 				};
 			};
@@ -1006,14 +994,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		EA9F35541A74CC6900E0C65D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EA9F35391A74CC6900E0C65D /* Taylr */;
-			targetProxy = EA9F35531A74CC6900E0C65D /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		EA7004641ACF912A00D0E467 /* Onboarding.storyboard */ = {
