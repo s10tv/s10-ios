@@ -2,8 +2,8 @@ machine:
   xcode:
     version: "6.3.1"
   environment:
-    XCODE_WORKSPACE: Taylr.xcworkspace
-    XCODE_SCHEME: Taylr
+    XCODE_WORKSPACE: S10.xcworkspace
+    XCODE_SCHEME: BackendTests
     CRASHLYTICS_API_KEY: c1afe3ecfc536b752df1c1789daab85a27e52bb1
     CRASHLYTICS_BUILD_SECRET: f7e9d0747d41785ed3db08b8c0772dc6acd4093a6c24f43aee01f2467cd221f8
     CRASHLYTICS_FRAMEWORK_PATH: Pods/CrashlyticsFramework/Crashlytics.framework
@@ -28,7 +28,8 @@ test:
   post:
     - ? |
         source ./scripts/circle_env.sh
-        ipa build --xcconfig Configs/${XCCONFIG_NAME}.xcconfig \
+        ipa build --scheme Taylr \
+                  --xcconfig Configs/${XCCONFIG_NAME}.xcconfig \
                   --xcargs BUNDLE_BUILD=$BN \
                   --no-clean --verbose -t | tee $CIRCLE_ARTIFACTS/build.log
         mv Taylr.ipa $CIRCLE_ARTIFACTS/${BN}.ipa
