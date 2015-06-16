@@ -18,5 +18,16 @@ class MeViewController : BaseViewController {
         }
         return super.handleScreenEdgePan(edge)
     }
+    
+    @IBAction func showLogoutOptions(sender: AnyObject) {
+        let sheet = UIAlertController(title: LS(.settingsLogoutTitle), message: nil, preferredStyle: .ActionSheet)
+        sheet.addAction(LS(.settingsLogoutLogout)) { _ in
+            Globals.accountService.logout()
+            self.navigationController?.popToRootViewControllerAnimated(true)
+//            self.performSegue(.SettingsToLoading)
+        }
+        sheet.addAction(LS(.settingsLogoutCancel), style: .Cancel)
+        presentViewController(sheet)
+    }
 
 }
