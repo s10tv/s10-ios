@@ -118,14 +118,22 @@ public enum R {
         case icBack = "ic-back"
         /// ic-camera
         case icCamera = "ic-camera"
+        /// ic-camera-flip
+        case icCameraFlip = "ic-camera-flip"
+        /// ic-capture
+        case icCapture = "ic-capture"
         /// ic-chats
         case icChats = "ic-chats"
         /// ic-disclosure
         case icDisclosure = "ic-disclosure"
+        /// ic-edit-text
+        case icEditText = "ic-edit-text"
         /// ic-flag
         case icFlag = "ic-flag"
         /// ic-home
         case icHome = "ic-home"
+        /// ic-magic-wand
+        case icMagicWand = "ic-magic-wand"
         /// ic-me
         case icMe = "ic-me"
         /// ic-mute

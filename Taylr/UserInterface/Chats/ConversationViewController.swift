@@ -15,11 +15,14 @@ class ConversationViewController : BaseViewController {
     @IBOutlet weak var activityLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var recorder: RecorderViewController!
     var messagesVM: MessagesViewModel!
     var connection: Connection?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        collectionView.dataSource = self
+        recorder = makeViewController(.Recorder) as! RecorderViewController
         messagesVM = MessagesViewModel(connection: connection!, delegate: nil)
         messagesVM.bindCollectionView(collectionView)
         messagesVM.loadMessages()
@@ -42,5 +45,26 @@ class ConversationViewController : BaseViewController {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.navigationBarHidden = false
+    }
+}
+
+extension ConversationViewController : UICollectionViewDataSource {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return (messagesVM.frc.fetchedObjects?.count ?? 0) + 1
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        if indexPath.row < messagesVM.frc.fetchedObjects?.count {
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MessageCell", forIndexPath: indexPath) as! MessageCell
+            cell.message = messagesVM.frc.objectAtIndexPath(indexPath) as? Message
+            return cell
+        } else {
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("RecorderCell", forIndexPath: indexPath) as! UICollectionViewCell
+            addChildViewController(recorder)
+            cell.addSubview(recorder.view)
+            recorder.view.makeEdgesEqualTo(cell)
+            recorder.didMoveToParentViewController(self)
+            return cell
+        }
     }
 }

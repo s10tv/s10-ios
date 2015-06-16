@@ -30,6 +30,7 @@
 		EA3594141B2DE5C300E91337 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594131B2DE5C300E91337 /* ConversationViewController.swift */; };
 		EA3594161B2DEF0C00E91337 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594151B2DEF0C00E91337 /* MessageCell.swift */; };
 		EA3594191B2FEA1F00E91337 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594181B2FEA1F00E91337 /* TransitionManager.swift */; };
+		EA35941B1B3071D300E91337 /* RecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA35941A1B3071D300E91337 /* RecorderViewController.swift */; };
 		EA36D2AB1AE71366006FD5D8 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36D2AA1AE71366006FD5D8 /* Errors.swift */; };
 		EA36D2AD1AE72B78006FD5D8 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36D2AC1AE72B78006FD5D8 /* UserDefaults.swift */; };
 		EA3777721A966EC10055DE99 /* TransatTextBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */; };
@@ -165,6 +166,7 @@
 		EA3594131B2DE5C300E91337 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		EA3594151B2DEF0C00E91337 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		EA3594181B2FEA1F00E91337 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
+		EA35941A1B3071D300E91337 /* RecorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderViewController.swift; sourceTree = "<group>"; };
 		EA36D2AA1AE71366006FD5D8 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		EA36D2AC1AE72B78006FD5D8 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextBlack.otf; sourceTree = "<group>"; };
@@ -629,6 +631,7 @@
 				EAA56F8A1B2B32E500DE3936 /* UserAvatarView.swift */,
 				EAA56F8B1B2B32E500DE3936 /* WaveTransition.swift */,
 				EAA56F8C1B2B32E500DE3936 /* WaveView.swift */,
+				EA35941A1B3071D300E91337 /* RecorderViewController.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -942,6 +945,7 @@
 				EA0FED411ADDD0C700FC6FCB /* PanInteractor.swift in Sources */,
 				EAD007FC1AD37236003A260D /* Geometry.swift in Sources */,
 				EAA56F531B2B266600DE3936 /* _User.swift in Sources */,
+				EA35941B1B3071D300E91337 /* RecorderViewController.swift in Sources */,
 				EAA56FA41B2B32E500DE3936 /* PulsingView.swift in Sources */,
 				EA3594161B2DEF0C00E91337 /* MessageCell.swift in Sources */,
 				EA0FC9361A87DE5800D62625 /* SugarRecordExtension.swift in Sources */,
