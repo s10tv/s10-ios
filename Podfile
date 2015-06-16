@@ -33,7 +33,7 @@ pod 'TCMobileProvision', :git => 'https://github.com/tonyxiao/TCMobileProvision.
 pod 'INTULocationManager', '~> 3.0'
 
 # 3rd Party Service SDKs
-pod 'FBSDKCoreKit', '~> 4.2'
+pod 'Facebook-iOS-SDK', '3.22.0' # TODO: Upgrade me when ready
 #pod 'CrashlyticsFramework', '~> 2.2'
 #pod 'BugfenderSDK', :git => 'https://github.com/bugfender/BugfenderSDK-iOS.git', :tag => '0.3.2'
 pod 'Analytics/Segmentio', :git => 'https://github.com/tonyxiao/analytics-ios.git'
