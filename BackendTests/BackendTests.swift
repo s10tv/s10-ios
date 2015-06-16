@@ -1,15 +1,15 @@
 //
-//  TaylrTests.swift
-//  TaylrTests
+//  BackendTests.swift
+//  BackendTests
 //
 //  Created on 1/24/15.
-//  Copyright (c) 2015 Serendipity. All rights reserved.
+//  Copyright (c) 2015 S10. All rights reserved.
 //
 
 import UIKit
 import XCTest
 
-class TaylrTests: XCTestCase {
+class BackendTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

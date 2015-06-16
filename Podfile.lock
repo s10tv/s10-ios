@@ -37,13 +37,13 @@ PODS:
   - Mixpanel (2.6.0):
     - Mixpanel/MPCategoryHelpers (= 2.6.0)
   - Mixpanel/MPCategoryHelpers (2.6.0)
-  - Nimble (0.3.1)
+  - Nimble (0.4.2)
   - NSLogger (1.5.1):
     - NSLogger/Standard (= 1.5.1)
   - NSLogger/Standard (1.5.1)
   - PKHUD (2.0.1)
   - PocketSocket (0.6.4)
-  - Quick (0.4.0)
+  - Quick (0.3.1)
   - RBBAnimation (0.3.0)
   - ReactiveCocoa (2.5):
     - ReactiveCocoa/UI (= 2.5)
@@ -81,10 +81,10 @@ DEPENDENCIES:
   - Heap (~> 2.1)
   - INTULocationManager (~> 3.0)
   - Meteor (from `https://github.com/tonyxiao/meteor-ios`, branch `dev`)
-  - Nimble (~> 0.3.0)
+  - Nimble (~> 0.4.0)
   - NSLogger (~> 1.5)
   - PKHUD (from `https://github.com/tonyxiao/PKHUD`)
-  - Quick (~> 0.3)
+  - Quick (~> 0.3.0)
   - RBBAnimation (~> 0.3.0)
   - ReactiveCocoa (~> 2.4)
   - Reveal-iOS-SDK (~> 1.5)
@@ -143,11 +143,11 @@ SPEC CHECKSUMS:
   INTULocationManager: e79327803a163f5fec28eb042bb124ed0c6e4876
   Meteor: 1b061243f87a9021492eddbb5d5503aa78b2ef35
   Mixpanel: 488567f7138408f360377dd46e1d189655f8b435
-  Nimble: 1b3c765852d63b9540a91e528e1e4f8afab79b6f
+  Nimble: 49b7a7da8919f42823d37c6d68cc6d15a7009f32
   NSLogger: 5ed223a2436df96244e033be750656dacdeec034
   PKHUD: 27346b72187c3cbff20c174f2b1f88c999a4ef13
   PocketSocket: eee7ef375f55b98e7ca79e097d9c61fd688e9494
-  Quick: 2286bfff349102670c6d2dafd0d2cefab42f5f0b
+  Quick: 824572d3d198d51e52cf4aa722cebf7e59952a35
   RBBAnimation: cb6cb419f511434ce932f7d0fabf369612fafb4e
   ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   Reveal-iOS-SDK: c9c55cad2729c85f6ced415f1b21857c9a2d8ef9

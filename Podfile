@@ -49,8 +49,8 @@ pod 'NSLogger', '~> 1.5', :configuration => ['Debug']
 
 target :TaylrTests do
   link_with 'TaylrTests'
-  pod 'Quick', '~> 0.3'
-  pod 'Nimble', '~> 0.3.0'
+  pod 'Quick', '~> 0.3.0' # TODO: Upgrade after swift 2.0
+  pod 'Nimble', '~> 0.4.0' # TODO: Upgrade after swift 2.0
 end
 
 # Hacks

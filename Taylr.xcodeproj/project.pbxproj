@@ -31,6 +31,8 @@
 		EA3594161B2DEF0C00E91337 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594151B2DEF0C00E91337 /* MessageCell.swift */; };
 		EA3594191B2FEA1F00E91337 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594181B2FEA1F00E91337 /* TransitionManager.swift */; };
 		EA35941B1B3071D300E91337 /* RecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA35941A1B3071D300E91337 /* RecorderViewController.swift */; };
+		EA35941E1B30CFE600E91337 /* VideoMessageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA35941D1B30CFE600E91337 /* VideoMessageTask.swift */; };
+		EA3594201B30CFED00E91337 /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA35941F1B30CFED00E91337 /* TaskManager.swift */; };
 		EA36D2AB1AE71366006FD5D8 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36D2AA1AE71366006FD5D8 /* Errors.swift */; };
 		EA36D2AD1AE72B78006FD5D8 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36D2AC1AE72B78006FD5D8 /* UserDefaults.swift */; };
 		EA3777721A966EC10055DE99 /* TransatTextBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */; };
@@ -66,7 +68,7 @@
 		EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35461A74CC6900E0C65D /* Main.storyboard */; };
 		EA9F354A1A74CC6900E0C65D /* Taylr.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Taylr.xcassets */; };
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
-		EA9F35591A74CC6900E0C65D /* TaylrTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F35581A74CC6900E0C65D /* TaylrTests.swift */; };
+		EA9F35591A74CC6900E0C65D /* BackendTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F35581A74CC6900E0C65D /* BackendTests.swift */; };
 		EAA56F4F1B2B266600DE3936 /* _Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F491B2B266600DE3936 /* _Candidate.swift */; };
 		EAA56F501B2B266600DE3936 /* _Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F4A1B2B266600DE3936 /* _Connection.swift */; };
 		EAA56F511B2B266600DE3936 /* _Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F4B1B2B266600DE3936 /* _Message.swift */; };
@@ -160,6 +162,8 @@
 		EA3594151B2DEF0C00E91337 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		EA3594181B2FEA1F00E91337 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		EA35941A1B3071D300E91337 /* RecorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderViewController.swift; sourceTree = "<group>"; };
+		EA35941D1B30CFE600E91337 /* VideoMessageTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoMessageTask.swift; sourceTree = "<group>"; };
+		EA35941F1B30CFED00E91337 /* TaskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 		EA36D2AA1AE71366006FD5D8 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		EA36D2AC1AE72B78006FD5D8 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextBlack.otf; sourceTree = "<group>"; };
@@ -199,9 +203,9 @@
 		EA9F35471A74CC6900E0C65D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		EA9F35491A74CC6900E0C65D /* Taylr.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Taylr.xcassets; sourceTree = "<group>"; };
 		EA9F354C1A74CC6900E0C65D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		EA9F35521A74CC6900E0C65D /* TaylrTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaylrTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA9F35521A74CC6900E0C65D /* BackendTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BackendTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9F35571A74CC6900E0C65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EA9F35581A74CC6900E0C65D /* TaylrTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaylrTests.swift; sourceTree = "<group>"; };
+		EA9F35581A74CC6900E0C65D /* BackendTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackendTests.swift; sourceTree = "<group>"; };
 		EA9F35621A74CD8800E0C65D /* Taylr-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Taylr-Bridging.h"; path = "Taylr/Taylr-Bridging.h"; sourceTree = SOURCE_ROOT; };
 		EAA56F491B2B266600DE3936 /* _Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Candidate.swift; sourceTree = "<group>"; };
 		EAA56F4A1B2B266600DE3936 /* _Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Connection.swift; sourceTree = "<group>"; };
@@ -394,6 +398,15 @@
 			path = Transitions;
 			sourceTree = "<group>";
 		};
+		EA35941C1B30CF9900E91337 /* Backend */ = {
+			isa = PBXGroup;
+			children = (
+				EA35941F1B30CFED00E91337 /* TaskManager.swift */,
+				EA35941D1B30CFE600E91337 /* VideoMessageTask.swift */,
+			);
+			path = Backend;
+			sourceTree = "<group>";
+		};
 		EA37776C1A966E380055DE99 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -473,8 +486,9 @@
 			isa = PBXGroup;
 			children = (
 				EA9F353C1A74CC6900E0C65D /* Taylr */,
+				EA35941C1B30CF9900E91337 /* Backend */,
+				EA9F35551A74CC6900E0C65D /* BackendTests */,
 				EA0FC91C1A87DE5800D62625 /* Common */,
-				EA9F35551A74CC6900E0C65D /* TaylrTests */,
 				EA9F353B1A74CC6900E0C65D /* Products */,
 				DDD7116BC0015396F5321D26 /* Pods */,
 				2C9F4D1EF3D7E4C4FBB0AEDB /* Frameworks */,
@@ -485,7 +499,7 @@
 			isa = PBXGroup;
 			children = (
 				EA9F353A1A74CC6900E0C65D /* Taylr.app */,
-				EA9F35521A74CC6900E0C65D /* TaylrTests.xctest */,
+				EA9F35521A74CC6900E0C65D /* BackendTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -524,13 +538,13 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		EA9F35551A74CC6900E0C65D /* TaylrTests */ = {
+		EA9F35551A74CC6900E0C65D /* BackendTests */ = {
 			isa = PBXGroup;
 			children = (
-				EA9F35581A74CC6900E0C65D /* TaylrTests.swift */,
+				EA9F35581A74CC6900E0C65D /* BackendTests.swift */,
 				EA9F35561A74CC6900E0C65D /* Supporting Files */,
 			);
-			path = TaylrTests;
+			path = BackendTests;
 			sourceTree = "<group>";
 		};
 		EA9F35561A74CC6900E0C65D /* Supporting Files */ = {
@@ -667,9 +681,9 @@
 			productReference = EA9F353A1A74CC6900E0C65D /* Taylr.app */;
 			productType = "com.apple.product-type.application";
 		};
-		EA9F35511A74CC6900E0C65D /* TaylrTests */ = {
+		EA9F35511A74CC6900E0C65D /* BackendTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = EA9F355F1A74CC6900E0C65D /* Build configuration list for PBXNativeTarget "TaylrTests" */;
+			buildConfigurationList = EA9F355F1A74CC6900E0C65D /* Build configuration list for PBXNativeTarget "BackendTests" */;
 			buildPhases = (
 				282F49687FEBD2D912E6C158 /* Check Pods Manifest.lock */,
 				EA9F354E1A74CC6900E0C65D /* Sources */,
@@ -683,9 +697,9 @@
 			dependencies = (
 				EA9F35541A74CC6900E0C65D /* PBXTargetDependency */,
 			);
-			name = TaylrTests;
+			name = BackendTests;
 			productName = TaylrTests;
-			productReference = EA9F35521A74CC6900E0C65D /* TaylrTests.xctest */;
+			productReference = EA9F35521A74CC6900E0C65D /* BackendTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -739,7 +753,7 @@
 			projectRoot = "";
 			targets = (
 				EA9F35391A74CC6900E0C65D /* Taylr */,
-				EA9F35511A74CC6900E0C65D /* TaylrTests */,
+				EA9F35511A74CC6900E0C65D /* BackendTests */,
 			);
 		};
 /* End PBXProject section */
@@ -941,6 +955,7 @@
 				EAA56F9C1B2B32E500DE3936 /* SignupViewController.swift in Sources */,
 				EAA56FA71B2B32E500DE3936 /* WaveView.swift in Sources */,
 				EAA56FA11B2B32E500DE3936 /* RootViewController.swift in Sources */,
+				EA35941E1B30CFE600E91337 /* VideoMessageTask.swift in Sources */,
 				EA0FED451ADE5BC500FC6FCB /* AnalyticsService.swift in Sources */,
 				EAC31C1F1AE3AD7000277FE8 /* SettingsItem.swift in Sources */,
 				EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */,
@@ -958,6 +973,7 @@
 				EAAD921F1ACF4EFA0014BA25 /* ProvisioningProfile.swift in Sources */,
 				EAA56F511B2B266600DE3936 /* _Message.swift in Sources */,
 				EA0FC9431A87DE5800D62625 /* FetchViewModel.swift in Sources */,
+				EA3594201B30CFED00E91337 /* TaskManager.swift in Sources */,
 				EA396FF01AB52BF8009EB60B /* PageViewController.swift in Sources */,
 				EAA56F971B2B32E500DE3936 /* SettingsLabelCell.swift in Sources */,
 				EA2A38E61AD8A141005708D2 /* MeteorService.swift in Sources */,
@@ -982,7 +998,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA9F35591A74CC6900E0C65D /* TaylrTests.swift in Sources */,
+				EA9F35591A74CC6900E0C65D /* BackendTests.swift in Sources */,
 				EAC8D3F61AA7269F00BCB7B9 /* FetchViewModel.swift in Sources */,
 				EAC8D3F81AA7289400BCB7B9 /* ArrayViewModel.swift in Sources */,
 				EAC8D3F71AA7278900BCB7B9 /* ViewProviders.swift in Sources */,
@@ -1185,7 +1201,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = TaylrTests/Info.plist;
+				INFOPLIST_FILE = BackendTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1199,7 +1215,7 @@
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = TaylrTests/Info.plist;
+				INFOPLIST_FILE = BackendTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1226,7 +1242,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		EA9F355F1A74CC6900E0C65D /* Build configuration list for PBXNativeTarget "TaylrTests" */ = {
+		EA9F355F1A74CC6900E0C65D /* Build configuration list for PBXNativeTarget "BackendTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				EA9F35601A74CC6900E0C65D /* Debug */,
