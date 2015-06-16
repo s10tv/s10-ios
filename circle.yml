@@ -25,9 +25,6 @@ dependencies:
     - "Pods"
 
 test:
-  # NOTE: This should really be post but disabling testing for now because Bugfender does not compile
-  override:
-    - echo "Skipping test because bugfender does not compile"
   post:
     - ? |
         source ./scripts/circle_env.sh
