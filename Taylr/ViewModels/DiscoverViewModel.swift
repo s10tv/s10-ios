@@ -10,14 +10,14 @@ import Foundation
 import CoreData
 
 class DiscoverViewModel : NSObject {
-    private let frc : NSFetchedResultsController
+    let frc : NSFetchedResultsController
     weak var collectionView : UICollectionView?
     
     override init() {
         frc = Candidate.sorted(by: CandidateAttributes.score.rawValue, ascending: false).frc()
         super.init()
         frc.delegate = self
-        frc.performFetch(nil)
+
     }
     
     func bindCollectionView(collectionView: UICollectionView) {

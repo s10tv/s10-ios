@@ -17,6 +17,10 @@ class DiscoverViewController : BaseViewController {
         super.viewDidLoad()
         discoverVM = DiscoverViewModel()
         discoverVM.bindCollectionView(collectionView)
+        Meteor.subscriptions.discover.signal.deliverOnMainThread().subscribeCompleted {
+            self.discoverVM.frc.performFetch(nil)
+            self.collectionView.reloadData()
+        }
     }
 
 }
