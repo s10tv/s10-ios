@@ -70,7 +70,6 @@ class MessagesViewModel : NSObject {
 
 extension MessagesViewModel : NSFetchedResultsControllerDelegate {
     
-    
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
         changedMessages = []
     }
@@ -93,13 +92,12 @@ extension MessagesViewModel : NSFetchedResultsControllerDelegate {
 
 extension MessagesViewModel : UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 5
-//        return frc.fetchedObjects?.count ?? 0
+        return frc.fetchedObjects?.count ?? 0
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MessageCell", forIndexPath: indexPath) as! MessageCell
-//        cell.message = frc.objectAtIndexPath(indexPath) as? Message
+        cell.message = frc.objectAtIndexPath(indexPath) as? Message
         return cell
     }
 }

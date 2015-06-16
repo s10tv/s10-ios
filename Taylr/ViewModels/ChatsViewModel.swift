@@ -45,7 +45,7 @@ extension ChatsViewModel : UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("ConnectionCell", forIndexPath: indexPath) as! ConnectionCell
-        cell.connection = frc.fetchedObjects?[indexPath.section] as? Connection
+        cell.connection = frc.fetchedObjects?[indexPath.row] as? Connection
         return cell
     }
 }

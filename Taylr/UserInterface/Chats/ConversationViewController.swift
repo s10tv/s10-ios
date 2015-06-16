@@ -22,6 +22,7 @@ class ConversationViewController : BaseViewController {
         super.viewDidLoad()
         messagesVM = MessagesViewModel(connection: connection!, delegate: nil)
         messagesVM.bindCollectionView(collectionView)
+        messagesVM.loadMessages()
     }
     
     override func viewDidLayoutSubviews() {
