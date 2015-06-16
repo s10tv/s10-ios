@@ -19,7 +19,6 @@ public enum SegueIdentifier : String {
 
 public enum TableViewCellreuseIdentifier : String {
     case ConnectionCell = "ConnectionCell"
-    case PostCell = "PostCell"
     case SettingsLabelCell = "SettingsLabelCell"
     case SettingsPhotoCell = "SettingsPhotoCell"
     case SettingsTextCell = "SettingsTextCell"
@@ -28,7 +27,6 @@ public enum TableViewCellreuseIdentifier : String {
 public enum ViewControllerStoryboardIdentifier : String {
     case Chats = "Chats"
     case Discover = "Discover"
-    case Home = "Home"
     case Me = "Me"
     case Recorder = "Recorder"
     case Settings = "Settings"

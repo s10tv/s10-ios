@@ -70,16 +70,12 @@
 		EAA56F4F1B2B266600DE3936 /* _Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F491B2B266600DE3936 /* _Candidate.swift */; };
 		EAA56F501B2B266600DE3936 /* _Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F4A1B2B266600DE3936 /* _Connection.swift */; };
 		EAA56F511B2B266600DE3936 /* _Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F4B1B2B266600DE3936 /* _Message.swift */; };
-		EAA56F521B2B266600DE3936 /* _Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F4C1B2B266600DE3936 /* _Post.swift */; };
 		EAA56F531B2B266600DE3936 /* _User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F4D1B2B266600DE3936 /* _User.swift */; };
 		EAA56F541B2B266600DE3936 /* _Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F4E1B2B266600DE3936 /* _Video.swift */; };
-		EAA56F571B2B2C1000DE3936 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F551B2B2C1000DE3936 /* Post.swift */; };
 		EAA56F581B2B2C1000DE3936 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F561B2B2C1000DE3936 /* Video.swift */; };
 		EAA56F8D1B2B32E500DE3936 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F6C1B2B32E500DE3936 /* ChatsViewController.swift */; };
 		EAA56F8E1B2B32E500DE3936 /* ConnectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F6D1B2B32E500DE3936 /* ConnectionCell.swift */; };
 		EAA56F901B2B32E500DE3936 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F701B2B32E500DE3936 /* DiscoverViewController.swift */; };
-		EAA56F911B2B32E500DE3936 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F721B2B32E500DE3936 /* HomeViewController.swift */; };
-		EAA56F921B2B32E500DE3936 /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F731B2B32E500DE3936 /* NewPostViewController.swift */; };
 		EAA56F931B2B32E500DE3936 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F751B2B32E500DE3936 /* MeViewController.swift */; };
 		EAA56F941B2B32E500DE3936 /* RowDescriptors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F761B2B32E500DE3936 /* RowDescriptors.swift */; };
 		EAA56F951B2B32E500DE3936 /* SandView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F771B2B32E500DE3936 /* SandView.swift */; };
@@ -99,9 +95,6 @@
 		EAA56FA51B2B32E500DE3936 /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F8A1B2B32E500DE3936 /* UserAvatarView.swift */; };
 		EAA56FA61B2B32E500DE3936 /* WaveTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F8B1B2B32E500DE3936 /* WaveTransition.swift */; };
 		EAA56FA71B2B32E500DE3936 /* WaveView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F8C1B2B32E500DE3936 /* WaveView.swift */; };
-		EAA56FA91B2B638000DE3936 /* PostHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = EAA56FA81B2B638000DE3936 /* PostHeaderView.xib */; };
-		EAA56FAB1B2BBCDE00DE3936 /* PostViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56FAA1B2BBCDE00DE3936 /* PostViews.swift */; };
-		EAA56FAD1B2BBE3600DE3936 /* FeedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56FAC1B2BBE3600DE3936 /* FeedViewModel.swift */; };
 		EAA56FAF1B2BCA0A00DE3936 /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56FAE1B2BCA0A00DE3936 /* DiscoverViewModel.swift */; };
 		EAA56FB11B2BCAC700DE3936 /* CandidateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56FB01B2BCAC700DE3936 /* CandidateCell.swift */; };
 		EAA56FB31B2BE36900DE3936 /* ChatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56FB21B2BE36900DE3936 /* ChatsViewModel.swift */; };
@@ -213,16 +206,12 @@
 		EAA56F491B2B266600DE3936 /* _Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Candidate.swift; sourceTree = "<group>"; };
 		EAA56F4A1B2B266600DE3936 /* _Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Connection.swift; sourceTree = "<group>"; };
 		EAA56F4B1B2B266600DE3936 /* _Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Message.swift; sourceTree = "<group>"; };
-		EAA56F4C1B2B266600DE3936 /* _Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Post.swift; sourceTree = "<group>"; };
 		EAA56F4D1B2B266600DE3936 /* _User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _User.swift; sourceTree = "<group>"; };
 		EAA56F4E1B2B266600DE3936 /* _Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Video.swift; sourceTree = "<group>"; };
-		EAA56F551B2B2C1000DE3936 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		EAA56F561B2B2C1000DE3936 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		EAA56F6C1B2B32E500DE3936 /* ChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		EAA56F6D1B2B32E500DE3936 /* ConnectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionCell.swift; sourceTree = "<group>"; };
 		EAA56F701B2B32E500DE3936 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
-		EAA56F721B2B32E500DE3936 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
-		EAA56F731B2B32E500DE3936 /* NewPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
 		EAA56F751B2B32E500DE3936 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		EAA56F761B2B32E500DE3936 /* RowDescriptors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RowDescriptors.swift; sourceTree = "<group>"; };
 		EAA56F771B2B32E500DE3936 /* SandView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SandView.swift; sourceTree = "<group>"; };
@@ -242,9 +231,6 @@
 		EAA56F8A1B2B32E500DE3936 /* UserAvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAvatarView.swift; sourceTree = "<group>"; };
 		EAA56F8B1B2B32E500DE3936 /* WaveTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveTransition.swift; sourceTree = "<group>"; };
 		EAA56F8C1B2B32E500DE3936 /* WaveView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WaveView.swift; sourceTree = "<group>"; };
-		EAA56FA81B2B638000DE3936 /* PostHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PostHeaderView.xib; sourceTree = "<group>"; };
-		EAA56FAA1B2BBCDE00DE3936 /* PostViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostViews.swift; sourceTree = "<group>"; };
-		EAA56FAC1B2BBE3600DE3936 /* FeedViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeedViewModel.swift; sourceTree = "<group>"; };
 		EAA56FAE1B2BCA0A00DE3936 /* DiscoverViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
 		EAA56FB01B2BCAC700DE3936 /* CandidateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateCell.swift; sourceTree = "<group>"; };
 		EAA56FB21B2BE36900DE3936 /* ChatsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewModel.swift; sourceTree = "<group>"; };
@@ -394,7 +380,6 @@
 				EAA56F491B2B266600DE3936 /* _Candidate.swift */,
 				EAA56F4A1B2B266600DE3936 /* _Connection.swift */,
 				EAA56F4B1B2B266600DE3936 /* _Message.swift */,
-				EAA56F4C1B2B266600DE3936 /* _Post.swift */,
 				EAA56F4D1B2B266600DE3936 /* _User.swift */,
 				EAA56F4E1B2B266600DE3936 /* _Video.swift */,
 			);
@@ -424,7 +409,6 @@
 		EA4F51831AE153790060405E /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				EAA56FAC1B2BBE3600DE3936 /* FeedViewModel.swift */,
 				EAA56FAE1B2BCA0A00DE3936 /* DiscoverViewModel.swift */,
 				EAA56FB21B2BE36900DE3936 /* ChatsViewModel.swift */,
 				EA608BAB1AE6A249003E1C75 /* MessagesViewModel.swift */,
@@ -444,7 +428,6 @@
 				EA6650F31AA00B95001BA40C /* Candidate.swift */,
 				EA6650F41AA00B95001BA40C /* Connection.swift */,
 				EA6650F51AA00B95001BA40C /* Message.swift */,
-				EAA56F551B2B2C1000DE3936 /* Post.swift */,
 				EAA56F561B2B2C1000DE3936 /* Video.swift */,
 				EA24C26C1AD8F52000C40AAD /* Metadata.swift */,
 				EAC31C1C1AE3A86200277FE8 /* Settings.swift */,
@@ -578,17 +561,6 @@
 			path = Discover;
 			sourceTree = "<group>";
 		};
-		EAA56F711B2B32E500DE3936 /* Home */ = {
-			isa = PBXGroup;
-			children = (
-				EAA56F721B2B32E500DE3936 /* HomeViewController.swift */,
-				EAA56FAA1B2BBCDE00DE3936 /* PostViews.swift */,
-				EAA56FA81B2B638000DE3936 /* PostHeaderView.xib */,
-				EAA56F731B2B32E500DE3936 /* NewPostViewController.swift */,
-			);
-			path = Home;
-			sourceTree = "<group>";
-		};
 		EAA56F741B2B32E500DE3936 /* Me */ = {
 			isa = PBXGroup;
 			children = (
@@ -662,7 +634,6 @@
 				EA3594171B2FEA1500E91337 /* Transitions */,
 				EAA56F861B2B32E500DE3936 /* Shared */,
 				EAA56F7D1B2B32E500DE3936 /* Onboarding */,
-				EAA56F711B2B32E500DE3936 /* Home */,
 				EAA56F6F1B2B32E500DE3936 /* Discover */,
 				EAA56F6B1B2B32E500DE3936 /* Chats */,
 				EAA56F741B2B32E500DE3936 /* Me */,
@@ -787,7 +758,6 @@
 				EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */,
 				EAA56F9E1B2B32E500DE3936 /* ProfileInfoCell.xib in Resources */,
 				EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */,
-				EAA56FA91B2B638000DE3936 /* PostHeaderView.xib in Resources */,
 				EA3777751A966EC10055DE99 /* TransatTextMedium.otf in Resources */,
 				EAB8E7A61AE04D8D00B3046F /* Settings.storyboard in Resources */,
 				EA9F354A1A74CC6900E0C65D /* Taylr.xcassets in Resources */,
@@ -918,11 +888,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA72FB2A1AD1B7D5009F853F /* Transition.swift in Sources */,
-				EAA56F521B2B266600DE3936 /* _Post.swift in Sources */,
 				EA4F51851AE153880060405E /* SettingsViewModel.swift in Sources */,
 				EAF195CF1A827FAD00A2F103 /* Taylr-Bridging.m in Sources */,
 				EA7AA3651AA25D21003383BE /* ResourceExtension.swift in Sources */,
-				EAA56F571B2B2C1000DE3936 /* Post.swift in Sources */,
 				EAAD921D1ACF342C0014BA25 /* Environment.swift in Sources */,
 				EA0FC9351A87DE5800D62625 /* MeteorExtension.swift in Sources */,
 				EA36D2AD1AE72B78006FD5D8 /* UserDefaults.swift in Sources */,
@@ -950,7 +918,6 @@
 				EA3594161B2DEF0C00E91337 /* MessageCell.swift in Sources */,
 				EA0FC9361A87DE5800D62625 /* SugarRecordExtension.swift in Sources */,
 				EA72FB2C1AD1B7E1009F853F /* ScrollTransition.swift in Sources */,
-				EAA56FAB1B2BBCDE00DE3936 /* PostViews.swift in Sources */,
 				EA925C741AD99ED8008E9F41 /* R.swift in Sources */,
 				EA0FC9391A87DE5800D62625 /* Logging.swift in Sources */,
 				EAA56F991B2B32E500DE3936 /* SettingsTextCell.swift in Sources */,
@@ -958,9 +925,7 @@
 				EA49286C1ADF1BF700118639 /* DeviceInfo.swift in Sources */,
 				EAA56FAF1B2BCA0A00DE3936 /* DiscoverViewModel.swift in Sources */,
 				EA36D2AB1AE71366006FD5D8 /* Errors.swift in Sources */,
-				EAA56F911B2B32E500DE3936 /* HomeViewController.swift in Sources */,
 				EAA56F931B2B32E500DE3936 /* MeViewController.swift in Sources */,
-				EAA56F921B2B32E500DE3936 /* NewPostViewController.swift in Sources */,
 				EA3594141B2DE5C300E91337 /* ConversationViewController.swift in Sources */,
 				EA0FC93C1A87DE5800D62625 /* UIKitExtension.swift in Sources */,
 				EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */,
@@ -999,7 +964,6 @@
 				EA0FC9341A87DE5800D62625 /* MeteorCDStack.swift in Sources */,
 				EAA56F961B2B32E500DE3936 /* SettingsFormViewController.swift in Sources */,
 				EA49286E1ADF291100118639 /* UpgradeService.swift in Sources */,
-				EAA56FAD1B2BBE3600DE3936 /* FeedViewModel.swift in Sources */,
 				EAA56F941B2B32E500DE3936 /* RowDescriptors.swift in Sources */,
 				EAA56FB11B2BCAC700DE3936 /* CandidateCell.swift in Sources */,
 				EAA56FB31B2BE36900DE3936 /* ChatsViewModel.swift in Sources */,
