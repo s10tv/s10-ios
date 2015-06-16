@@ -47,8 +47,8 @@ pod 'Heap', '~> 2.1'
 pod 'Reveal-iOS-SDK', '~> 1.5', :configuration => ['Debug']
 pod 'NSLogger', '~> 1.5', :configuration => ['Debug']
 
-target :TaylrTests do
-  link_with 'TaylrTests'
+target :BackendTests do
+  link_with 'BackendTests'
   pod 'Quick', '~> 0.3.0' # TODO: Upgrade after swift 2.0
   pod 'Nimble', '~> 0.4.0' # TODO: Upgrade after swift 2.0
 end

@@ -7,11 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		06B1A0F6533AB2164D485161 /* Pods_TaylrTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 873B58F6C71AC76F0BB58988 /* Pods_TaylrTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		44E19D671B859E037A1401D8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38E9CB79C25FDAE97BD9D3D /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		615F9AEF4D59BC4C9858B625 /* Pods_BackendTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 10FA8E7FC004204C20D051C6 /* Pods_BackendTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		73CF93567D616177169FDAB1 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38E9CB79C25FDAE97BD9D3D /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		EA0491661B2D234800491E20 /* Pods-TaylrTests.debug.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = EA0491641B2D234800491E20 /* Pods-TaylrTests.debug.xcconfig */; };
-		EA0491671B2D234800491E20 /* Pods-TaylrTests.release.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = EA0491651B2D234800491E20 /* Pods-TaylrTests.release.xcconfig */; };
 		EA0FC9341A87DE5800D62625 /* MeteorCDStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC91F1A87DE5800D62625 /* MeteorCDStack.swift */; };
 		EA0FC9351A87DE5800D62625 /* MeteorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9201A87DE5800D62625 /* MeteorExtension.swift */; };
 		EA0FC9361A87DE5800D62625 /* SugarRecordExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9211A87DE5800D62625 /* SugarRecordExtension.swift */; };
@@ -128,11 +126,9 @@
 
 /* Begin PBXFileReference section */
 		0686ABB348D06D87DA844419 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		10FA8E7FC004204C20D051C6 /* Pods_BackendTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BackendTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CD850D0B9EC2938BA5CEB59 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		873B58F6C71AC76F0BB58988 /* Pods_TaylrTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TaylrTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D38E9CB79C25FDAE97BD9D3D /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA0491641B2D234800491E20 /* Pods-TaylrTests.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-TaylrTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TaylrTests/Pods-TaylrTests.debug.xcconfig"; sourceTree = "<group>"; };
-		EA0491651B2D234800491E20 /* Pods-TaylrTests.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-TaylrTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-TaylrTests/Pods-TaylrTests.release.xcconfig"; sourceTree = "<group>"; };
 		EA0FC91F1A87DE5800D62625 /* MeteorCDStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorCDStack.swift; sourceTree = "<group>"; };
 		EA0FC9201A87DE5800D62625 /* MeteorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorExtension.swift; sourceTree = "<group>"; };
 		EA0FC9211A87DE5800D62625 /* SugarRecordExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SugarRecordExtension.swift; sourceTree = "<group>"; };
@@ -163,6 +159,8 @@
 		EA3777711A966EC10055DE99 /* TransatTextStandard.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextStandard.otf; sourceTree = "<group>"; };
 		EA396FEF1AB52BF8009EB60B /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		EA409D381A8C681A00988B8B /* FacebookExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacebookExtension.swift; sourceTree = "<group>"; };
+		EA47F0C11B30E1F3000D8E18 /* Pods-BackendTests.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-BackendTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BackendTests/Pods-BackendTests.debug.xcconfig"; sourceTree = "<group>"; };
+		EA47F0C21B30E1F3000D8E18 /* Pods-BackendTests.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-BackendTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BackendTests/Pods-BackendTests.release.xcconfig"; sourceTree = "<group>"; };
 		EA49286B1ADF1BF700118639 /* DeviceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		EA49286D1ADF291100118639 /* UpgradeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeService.swift; sourceTree = "<group>"; };
 		EA4F51841AE153880060405E /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
@@ -275,7 +273,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				73CF93567D616177169FDAB1 /* Pods.framework in Frameworks */,
-				06B1A0F6533AB2164D485161 /* Pods_TaylrTests.framework in Frameworks */,
+				615F9AEF4D59BC4C9858B625 /* Pods_BackendTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +290,7 @@
 				F996C71F1A81F1D800314FF8 /* CoreVideo.framework */,
 				F996C71D1A81F1D100314FF8 /* CoreMedia.framework */,
 				D38E9CB79C25FDAE97BD9D3D /* Pods.framework */,
-				873B58F6C71AC76F0BB58988 /* Pods_TaylrTests.framework */,
+				10FA8E7FC004204C20D051C6 /* Pods_BackendTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -314,8 +312,8 @@
 				EA62A87C1AD98B3600B5D3D9 /* PKHUD */,
 				2CD850D0B9EC2938BA5CEB59 /* Pods.debug.xcconfig */,
 				0686ABB348D06D87DA844419 /* Pods.release.xcconfig */,
-				EA0491641B2D234800491E20 /* Pods-TaylrTests.debug.xcconfig */,
-				EA0491651B2D234800491E20 /* Pods-TaylrTests.release.xcconfig */,
+				EA47F0C11B30E1F3000D8E18 /* Pods-BackendTests.debug.xcconfig */,
+				EA47F0C21B30E1F3000D8E18 /* Pods-BackendTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -687,7 +685,7 @@
 			dependencies = (
 			);
 			name = BackendTests;
-			productName = TaylrTests;
+			productName = BackendTests;
 			productReference = EA9F35521A74CC6900E0C65D /* BackendTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -753,9 +751,7 @@
 			files = (
 				EA3777761A966EC10055DE99 /* TransatTextStandard.otf in Resources */,
 				EA62A87E1AD98B3C00B5D3D9 /* Images.xcassets in Resources */,
-				EA0491661B2D234800491E20 /* Pods-TaylrTests.debug.xcconfig in Resources */,
 				EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */,
-				EA0491671B2D234800491E20 /* Pods-TaylrTests.release.xcconfig in Resources */,
 				EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */,
 				EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */,
 				EAA56F9E1B2B32E500DE3936 /* ProfileInfoCell.xib in Resources */,
@@ -850,7 +846,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TaylrTests/Pods-TaylrTests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BackendTests/Pods-BackendTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CC42FF79320CC7EE6804A689 /* Copy Pods Resources */ = {
@@ -865,7 +861,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TaylrTests/Pods-TaylrTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-BackendTests/Pods-BackendTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EA7F26D91A891B6500629078 /* Upload DSYM to Fabric (Crashlytics) */ = {
@@ -1171,7 +1167,7 @@
 		};
 		EA9F35601A74CC6900E0C65D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EA0491641B2D234800491E20 /* Pods-TaylrTests.debug.xcconfig */;
+			baseConfigurationReference = EA47F0C11B30E1F3000D8E18 /* Pods-BackendTests.debug.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
@@ -1189,7 +1185,7 @@
 		};
 		EA9F35611A74CC6900E0C65D /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EA0491651B2D234800491E20 /* Pods-TaylrTests.release.xcconfig */;
+			baseConfigurationReference = EA47F0C21B30E1F3000D8E18 /* Pods-BackendTests.release.xcconfig */;
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
