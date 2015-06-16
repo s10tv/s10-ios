@@ -132,10 +132,14 @@ public enum R {
         case icMute = "ic-mute"
         /// ic-people
         case icPeople = "ic-people"
+        /// ic-play
+        case icPlay = "ic-play"
         /// ic-upvote
         case icUpvote = "ic-upvote"
         /// Logo
         case logo = "Logo"
+        /// sample-selfie-preview
+        case sampleSelfiePreview = "sample-selfie-preview"
         /// sample-taylor-avatar
         case sampleTaylorAvatar = "sample-taylor-avatar"
         /// sample-taylor-avatar-square

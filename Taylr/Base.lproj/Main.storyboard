@@ -19,33 +19,12 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <connections>
-                        <segue destination="g7j-jb-I6q" kind="relationship" relationship="rootViewController" id="00a-Cx-3zz"/>
+                        <segue destination="5Q6-Kt-6sh" kind="relationship" relationship="rootViewController" id="oCa-VK-2vu"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sLh-x5-Qkr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="12" y="1283"/>
-        </scene>
-        <!--Tab Bar Controller-->
-        <scene sceneID="eqZ-IC-crB">
-            <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="g7j-jb-I6q" sceneMemberID="viewController">
-                    <navigationItem key="navigationItem" id="kyS-vP-qdz"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="i0H-Ds-p5Y">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="5Q6-Kt-6sh" kind="relationship" relationship="viewControllers" id="VlO-GN-Y9H"/>
-                        <segue destination="GSL-sK-91w" kind="relationship" relationship="viewControllers" id="H71-Ea-KHd"/>
-                        <segue destination="mIZ-vh-lBm" kind="relationship" relationship="viewControllers" id="zfZ-iH-Wxy"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="yMw-6s-HeR" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="698" y="1283"/>
+            <point key="canvasLocation" x="366" y="1290"/>
         </scene>
         <!--Home-->
         <scene sceneID="vR8-xi-jxM">
@@ -129,7 +108,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="F7c-ck-fGw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-273" y="2034"/>
+            <point key="canvasLocation" x="-958" y="2715"/>
         </scene>
         <!--New Post View Controller-->
         <scene sceneID="ApC-au-g1S">
@@ -160,7 +139,7 @@
         <!--Discover-->
         <scene sceneID="NpM-jt-gve">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="5Q6-Kt-6sh" userLabel="Discover" customClass="DiscoverViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Discover" automaticallyAdjustsScrollViewInsets="NO" id="5Q6-Kt-6sh" userLabel="Discover" customClass="DiscoverViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="zvc-KD-L5T"/>
                         <viewControllerLayoutGuide type="bottom" id="F41-Jg-0mT"/>
@@ -169,7 +148,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5D7-hF-WjP">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5D7-hF-WjP">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="u3H-VG-WK1">
@@ -241,7 +220,20 @@
                             <constraint firstItem="F41-Jg-0mT" firstAttribute="top" secondItem="5D7-hF-WjP" secondAttribute="bottom" id="fN9-2m-V9c"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Discover" image="ic-people" id="3rI-zC-hCx"/>
+                    <navigationItem key="navigationItem" title="Taylr" id="Cxt-8Q-DJ7">
+                        <barButtonItem key="leftBarButtonItem" image="ic-me" id="u2v-V9-GHB" userLabel="Me">
+                            <color key="tintColor" red="0.61960784310000006" green="0.4941176471" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="mIZ-vh-lBm" kind="show" id="hiq-bm-DZ5"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="ic-chats" id="Jyq-qN-0Uv" userLabel="Chats">
+                            <color key="tintColor" red="0.61960784310000006" green="0.4941176471" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <connections>
+                                <segue destination="GSL-sK-91w" kind="show" id="fyk-XU-rj9"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="collectionView" destination="5D7-hF-WjP" id="geM-dN-w4M"/>
                     </connections>
@@ -253,7 +245,7 @@
         <!--Chats-->
         <scene sceneID="Tpb-9U-G19">
             <objects>
-                <viewController title="Chats" automaticallyAdjustsScrollViewInsets="NO" id="GSL-sK-91w" userLabel="Chats" customClass="ChatsViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Chats" title="Chats" automaticallyAdjustsScrollViewInsets="NO" id="GSL-sK-91w" userLabel="Chats" customClass="ChatsViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="IBe-OM-rhq"/>
                         <viewControllerLayoutGuide type="bottom" id="0km-Ni-5Ff"/>
@@ -262,7 +254,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4cg-hq-bZ8">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4cg-hq-bZ8">
                                 <rect key="frame" x="0.0" y="64" width="600" height="487"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -330,7 +322,7 @@
                             <constraint firstItem="4cg-hq-bZ8" firstAttribute="top" secondItem="IBe-OM-rhq" secondAttribute="bottom" id="pvn-IT-KPD"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Chats" image="ic-chats" id="qO0-CC-Tzd"/>
+                    <navigationItem key="navigationItem" title="Chats" id="dKO-S8-kLG"/>
                     <connections>
                         <outlet property="tableView" destination="4cg-hq-bZ8" id="YhK-na-cJu"/>
                     </connections>
@@ -509,7 +501,7 @@
         <!--Me-->
         <scene sceneID="GiO-5i-rfP">
             <objects>
-                <viewController id="mIZ-vh-lBm" userLabel="Me" customClass="MeViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Me" id="mIZ-vh-lBm" userLabel="Me" customClass="MeViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rbh-DD-zC5"/>
                         <viewControllerLayoutGuide type="bottom" id="eec-eU-juV"/>
@@ -524,7 +516,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMv-sx-KVx">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMv-sx-KVx">
                                 <rect key="frame" x="0.0" y="64" width="600" height="175"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="175" id="mF8-mr-JWT"/>
@@ -538,11 +530,11 @@
                             <constraint firstItem="OMv-sx-KVx" firstAttribute="leading" secondItem="uj7-s2-Wdm" secondAttribute="leading" id="oaz-dT-TRR"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Me" image="ic-me" id="9fw-K9-vzr"/>
+                    <navigationItem key="navigationItem" title="Me" id="aaw-e6-lIV"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yWV-ja-hlq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1643" y="2033"/>
+            <point key="canvasLocation" x="-273" y="2032"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="rki-1f-6d4">
@@ -572,7 +564,6 @@
         <image name="ic-home" width="27" height="26"/>
         <image name="ic-me" width="34" height="35"/>
         <image name="ic-mute" width="19" height="18"/>
-        <image name="ic-people" width="32" height="26"/>
         <image name="ic-play" width="60" height="60"/>
         <image name="sample-selfie-preview" width="353" height="469"/>
         <image name="sample-taylor-avatar" width="66" height="67"/>

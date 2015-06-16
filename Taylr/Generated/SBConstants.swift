@@ -2,6 +2,7 @@
 
 public enum CollectionViewCellreuseIdentifier : String {
     case CandidateCell = "CandidateCell"
+    case MessageCell = "MessageCell"
 }
 
 public enum SegueIdentifier : String {
@@ -20,7 +21,10 @@ public enum TableViewCellreuseIdentifier : String {
 }
 
 public enum ViewControllerStoryboardIdentifier : String {
+    case Chats = "Chats"
+    case Discover = "Discover"
     case Home = "Home"
+    case Me = "Me"
     case Settings = "Settings"
     case SettingsForm = "SettingsForm"
     case Signup = "Signup"
