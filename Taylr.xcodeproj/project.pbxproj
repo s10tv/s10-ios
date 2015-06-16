@@ -29,6 +29,7 @@
 		EA2A38E61AD8A141005708D2 /* MeteorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2A38E51AD8A141005708D2 /* MeteorService.swift */; };
 		EA3594141B2DE5C300E91337 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594131B2DE5C300E91337 /* ConversationViewController.swift */; };
 		EA3594161B2DEF0C00E91337 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594151B2DEF0C00E91337 /* MessageCell.swift */; };
+		EA3594191B2FEA1F00E91337 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594181B2FEA1F00E91337 /* TransitionManager.swift */; };
 		EA36D2AB1AE71366006FD5D8 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36D2AA1AE71366006FD5D8 /* Errors.swift */; };
 		EA36D2AD1AE72B78006FD5D8 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36D2AC1AE72B78006FD5D8 /* UserDefaults.swift */; };
 		EA3777721A966EC10055DE99 /* TransatTextBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */; };
@@ -163,6 +164,7 @@
 		EA2A38E51AD8A141005708D2 /* MeteorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorService.swift; sourceTree = "<group>"; };
 		EA3594131B2DE5C300E91337 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		EA3594151B2DEF0C00E91337 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
+		EA3594181B2FEA1F00E91337 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		EA36D2AA1AE71366006FD5D8 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		EA36D2AC1AE72B78006FD5D8 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextBlack.otf; sourceTree = "<group>"; };
@@ -395,6 +397,14 @@
 				EAA56F4E1B2B266600DE3936 /* _Video.swift */,
 			);
 			path = _Models;
+			sourceTree = "<group>";
+		};
+		EA3594171B2FEA1500E91337 /* Transitions */ = {
+			isa = PBXGroup;
+			children = (
+				EA3594181B2FEA1F00E91337 /* TransitionManager.swift */,
+			);
+			path = Transitions;
 			sourceTree = "<group>";
 		};
 		EA37776C1A966E380055DE99 /* Fonts */ = {
@@ -646,6 +656,7 @@
 		EAF4D7441A79AA5E00D35330 /* UserInterface */ = {
 			isa = PBXGroup;
 			children = (
+				EA3594171B2FEA1500E91337 /* Transitions */,
 				EAA56F861B2B32E500DE3936 /* Shared */,
 				EAA56F7D1B2B32E500DE3936 /* Onboarding */,
 				EAA56F711B2B32E500DE3936 /* Home */,
@@ -972,6 +983,7 @@
 				EAA56F501B2B266600DE3936 /* _Connection.swift in Sources */,
 				EA55F1381AD522C60042CBB2 /* NotificationCenter.swift in Sources */,
 				EAA56FA61B2B32E500DE3936 /* WaveTransition.swift in Sources */,
+				EA3594191B2FEA1F00E91337 /* TransitionManager.swift in Sources */,
 				EAB79B701AD912EB00D9875A /* PKHUDExtension.swift in Sources */,
 				EAA56F581B2B2C1000DE3936 /* Video.swift in Sources */,
 				EAAD921F1ACF4EFA0014BA25 /* ProvisioningProfile.swift in Sources */,

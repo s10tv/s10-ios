@@ -18,4 +18,16 @@ class HomeViewController : BaseViewController {
         feedVM = FeedViewModel()
         feedVM.bindTableView(tableView)
     }
+    
+    override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
+        Log.debug("Handding to edge \(edge) from gameVC")
+        if edge == .Right {
+            performSegue(.DiscoverToChats)
+            return true
+        } else if edge == .Left {
+            performSegue(.DiscoverToMe)
+            return true
+        }
+        return super.handleScreenEdgePan(edge)
+    }
 }

@@ -18,10 +18,18 @@ class ChatsViewController : BaseViewController {
         chatsVM.bindTableView(tableView)
     }
 
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ConversationViewController {
             vc.connection = chatsVM.itemAtIndexPath(tableView.indexPathForSelectedRow()!)
         }
+    }
+    
+    override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
+        Log.debug("Handding to edge \(edge) from dockVC")
+        if edge == .Left {
+            performSegue(.ChatsToDiscover)
+            return true
+        }
+        return super.handleScreenEdgePan(edge)
     }
 }

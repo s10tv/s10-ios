@@ -22,5 +22,21 @@ class DiscoverViewController : BaseViewController {
             self.collectionView.reloadData()
         }
     }
+    
+    override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
+        Log.debug("Handding to edge \(edge) from gameVC")
+        if edge == .Right {
+            performSegue(.DiscoverToChats)
+            return true
+        } else if edge == .Left {
+            performSegue(.DiscoverToMe)
+            return true
+        }
+        return super.handleScreenEdgePan(edge)
+    }
 
+    // MARK: - Actions
+    
+    @IBAction func unwindToHome(sender: UIStoryboardSegue) {
+    }
 }

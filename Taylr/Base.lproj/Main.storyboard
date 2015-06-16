@@ -224,13 +224,13 @@
                         <barButtonItem key="leftBarButtonItem" image="ic-me" id="u2v-V9-GHB" userLabel="Me">
                             <color key="tintColor" red="0.61960784310000006" green="0.4941176471" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="mIZ-vh-lBm" kind="show" id="hiq-bm-DZ5"/>
+                                <segue destination="mIZ-vh-lBm" kind="show" identifier="DiscoverToMe" id="hiq-bm-DZ5"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" image="ic-chats" id="Jyq-qN-0Uv" userLabel="Chats">
                             <color key="tintColor" red="0.61960784310000006" green="0.4941176471" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <connections>
-                                <segue destination="GSL-sK-91w" kind="show" id="fyk-XU-rj9"/>
+                                <segue destination="GSL-sK-91w" kind="show" identifier="DiscoverToChats" id="fyk-XU-rj9"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -325,9 +325,11 @@
                     <navigationItem key="navigationItem" title="Chats" id="dKO-S8-kLG"/>
                     <connections>
                         <outlet property="tableView" destination="4cg-hq-bZ8" id="YhK-na-cJu"/>
+                        <segue destination="1Ro-gk-VhZ" kind="unwind" identifier="ChatsToDiscover" unwindAction="unwindToHome:" id="Fog-Yc-OF8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NWp-vJ-jcK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="1Ro-gk-VhZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="1006" y="2032"/>
         </scene>
@@ -516,7 +518,7 @@
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMv-sx-KVx">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" rotateEnabled="NO" pitchEnabled="NO" showsUserLocation="YES" showsBuildings="NO" showsPointsOfInterest="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OMv-sx-KVx">
                                 <rect key="frame" x="0.0" y="64" width="600" height="175"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="175" id="mF8-mr-JWT"/>
@@ -531,8 +533,12 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Me" id="aaw-e6-lIV"/>
+                    <connections>
+                        <segue destination="W2c-OH-HAO" kind="unwind" identifier="MeToDiscover" unwindAction="unwindToHome:" id="svQ-92-eMT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yWV-ja-hlq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="W2c-OH-HAO" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-273" y="2032"/>
         </scene>

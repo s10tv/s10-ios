@@ -13,12 +13,18 @@ import ReactiveCocoa
 import EDColor
 
 class RootViewController : UINavigationController {
-
+    var transitionManager : TransitionManager!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.window?.tintColor = StyleKit.brandPurple
         UITabBar.appearance().tintColor = StyleKit.brandPurple
         navigationBar.tintColor = StyleKit.brandPurple
+        
+        view.whenEdgePanned(.Left) { [weak self] a, b in self!.handleEdgePan(a, edge: b) }
+        view.whenEdgePanned(.Right) { [weak self] a, b in self!.handleEdgePan(a, edge: b) }
+        
+        transitionManager = TransitionManager(navigationController: self)
         
         if Meteor.account == nil {
             let onboarding = UIStoryboard(name: "Onboarding", bundle: nil)
@@ -27,7 +33,30 @@ class RootViewController : UINavigationController {
         }
     }
     
+    // MARK: Target Action
+    
+    func handleEdgePan(gesture: UIScreenEdgePanGestureRecognizer, edge: UIRectEdge) {
+//        if Meteor.settings.edgePanEnabled != true {
+//            return
+//        }
+        switch gesture.state {
+        case .Began:
+            transitionManager.currentEdgePan = gesture
+            if let vc = self.topViewController as? BaseViewController {
+                vc.handleScreenEdgePan(edge)
+            }
+        case .Ended, .Cancelled:
+            transitionManager.currentEdgePan = nil
+        default:
+            break
+        }
+    }
+    
     @IBAction func goBack(sender: AnyObject) {
-        popViewControllerAnimated(true)
+        if let vc = presentedViewController {
+            dismissViewController(animated: true)
+        } else {
+            popViewControllerAnimated(true)
+        }
     }
 }
