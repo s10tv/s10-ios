@@ -12,7 +12,7 @@ import SimpleKeychain
 extension UIDevice {
     
     // TODO: This is not thread-safe. Make thread-safe
-    func getPersistentIdentifier() -> String {
+    public func getPersistentIdentifier() -> String {
         let keychain = A0SimpleKeychain(service: NSBundle.mainBundle().bundleIdentifier)
         let kDeviceId = "deviceId"
         var identifier = keychain.stringForKey(kDeviceId)

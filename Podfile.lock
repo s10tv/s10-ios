@@ -91,6 +91,7 @@ DEPENDENCIES:
   - Reveal-iOS-SDK (~> 1.5)
   - SCRecorder (~> 2.4)
   - SDWebImage (~> 3.7)
+  - SimpleKeychain (~> 0.4)
   - SugarRecord/CoreData (from `https://github.com/tonyxiao/SugarRecord`, branch `swift-1.2`)
   - SwiftTryCatch (~> 0.0.1)
   - SwiftyUserDefaults (~> 1.1)
