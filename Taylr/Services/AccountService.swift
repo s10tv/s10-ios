@@ -9,6 +9,7 @@
 import Foundation
 import ReactiveCocoa
 import FacebookSDK
+import Core
 
 class AccountService {
     private let meteorService: MeteorService

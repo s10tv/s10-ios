@@ -11,19 +11,17 @@ import CoreLocation
 import ReactiveCocoa
 import SugarRecord
 import Meteor
-import Core
 
-class MeteorService {
+public class MeteorService {
     private let meteor: METCoreDataDDPClient
-    let env: Environment
-    let subscriptions: (
+    public let subscriptions: (
         settings: METSubscription,
         metadata: METSubscription,
         discover: METSubscription,
         chats: METSubscription,
         me: METSubscription
     )
-    let collections: (
+    public let collections: (
         metadata: METCollection,
         settings: METCollection,
         users: METCollection,
@@ -33,26 +31,25 @@ class MeteorService {
         posts: METCollection,
         videos: METCollection
     )
-    let meta: Metadata
-    let settings: Settings
+    public let meta: Metadata
+    public let settings: Settings
     
     // Proxied accessors
-    var networkReachable: Bool { return meteor.networkReachable }
-    var connectionStatus: METDDPConnectionStatus { return meteor.connectionStatus }
-    var connected: Bool { return meteor.connected }
-    var loggingIn: Bool { return meteor.loggingIn }
-    var mainContext : NSManagedObjectContext { return meteor.mainQueueManagedObjectContext }
-    var account: METAccount? { return meteor.account }
-    var userID : String? { return meteor.userID }
-    var user: User? { return userID.map { User.findByDocumentID(mainContext, documentID: $0) } ?? nil }
-    weak var delegate: METDDPClientDelegate? {
+    public var networkReachable: Bool { return meteor.networkReachable }
+    public var connectionStatus: METDDPConnectionStatus { return meteor.connectionStatus }
+    public var connected: Bool { return meteor.connected }
+    public var loggingIn: Bool { return meteor.loggingIn }
+    public var mainContext : NSManagedObjectContext { return meteor.mainQueueManagedObjectContext }
+    public var account: METAccount? { return meteor.account }
+    public var userID : String? { return meteor.userID }
+    public var user: User? { return userID.map { User.findByDocumentID(mainContext, documentID: $0) } ?? nil }
+    public weak var delegate: METDDPClientDelegate? {
         get { return meteor.delegate }
         set { meteor.delegate = newValue }
     }
     
-    init(env: TaylrEnvironment) {
-        self.env = env
-        meteor = METCoreDataDDPClient(serverURL: env.serverURL, account: nil)
+    public init(serverURL: NSURL) {
+        meteor = METCoreDataDDPClient(serverURL: serverURL, account: nil)
         subscriptions = (
             settings: meteor.addSubscriptionWithName("settings"),
             metadata: meteor.addSubscriptionWithName("metadata"),
@@ -75,7 +72,7 @@ class MeteorService {
         SugarRecord.addStack(MeteorCDStack(meteor: meteor))
     }
     
-    func startup() {
+    public func startup(env: Environment) {
         meteor.account = METAccount.defaultAccount()
         meteor.connect()
         connectDevice(env)
@@ -92,14 +89,14 @@ class MeteorService {
         ]])
     }
     
-    func updateDevicePush(apsEnv: String, pushToken: String? = nil) -> RACSignal {
+    public func updateDevicePush(apsEnv: String, pushToken: String? = nil) -> RACSignal {
         return meteor.call("device/update/push", [[
             "apsEnv": apsEnv,
             "pushToken": pushToken ?? NSNull()
         ]])
     }
     
-    func updateDeviceLocation(location: CLLocation) -> RACSignal {
+    public func updateDeviceLocation(location: CLLocation) -> RACSignal {
         return meteor.call("device/update/location", [[
             "lat": location.coordinate.latitude,
             "long": location.coordinate.longitude,
@@ -112,13 +109,13 @@ class MeteorService {
     
     // MARK: - Authentication
 
-    func debugLoginWithUserId(userId: String) -> RACSignal {
+    public func debugLoginWithUserId(userId: String) -> RACSignal {
         return meteor.loginWithMethod("login", params: [[
             "debug": ["userId": userId]
         ]])
     }
     
-    func loginWithFacebook(#accessToken: String, expiresAt: NSDate) -> RACSignal {
+    public func loginWithFacebook(#accessToken: String, expiresAt: NSDate) -> RACSignal {
         return meteor.loginWithMethod("login", params: [[
             "fb-access": [
                 "accessToken": accessToken,
@@ -127,18 +124,18 @@ class MeteorService {
         ]])
     }
     
-    func logout() -> RACSignal {
+    public func logout() -> RACSignal {
         meteor.account = nil // No reason to wait for network to clear account
         return meteor.logout()
     }
     
-    func deleteAccount() -> RACSignal {
+    public func deleteAccount() -> RACSignal {
         return meteor.call("deleteAccount")
     }
     
     // MARK: - User
     
-    func updateProfile(key: String, value: String) -> RACSignal {
+    public func updateProfile(key: String, value: String) -> RACSignal {
         return meteor.call("me/update", [key, value]) {
 //            User.currentUser()?.about = about
             return nil
@@ -147,14 +144,14 @@ class MeteorService {
     
     // MARK: - Core Mechanic
     
-    func hideCandidate(candidate: Candidate) -> RACSignal {
+    public func hideCandidate(candidate: Candidate) -> RACSignal {
         return meteor.call("candidate/hide", [candidate.documentID!], stub: {
             candidate.delete()
             return nil
         })
     }
     
-    func markAsRead(message: Message) -> RACSignal {
+    public func markAsRead(message: Message) -> RACSignal {
         return meteor.call("message/markAsRead", [message.documentID!]) {
             message.status = "read" // TODO: Fixme
             message.save()
@@ -162,18 +159,18 @@ class MeteorService {
         }
     }
     
-    func sendMessage(connection: Connection, video: Video) -> RACSignal {
+    public func sendMessage(connection: Connection, video: Video) -> RACSignal {
         return meteor.call("Connection/sendMessage", [connection.documentID!, video.documentID!]) {
             let message = Message.create() as! Message
             message.connection = connection
-            message.sender = User.currentUser()
+            message.sender = self.user
             message.video = video
             message.save()
             return nil
         }
     }
     
-    func reportUser(user: User, reason: String) -> RACSignal {
+    public func reportUser(user: User, reason: String) -> RACSignal {
         return meteor.call("user/report", [user.documentID!, reason])
     }
     

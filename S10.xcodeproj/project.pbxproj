@@ -17,7 +17,6 @@
 		EA0FC9441A87DE5800D62625 /* ViewProviders.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9321A87DE5800D62625 /* ViewProviders.swift */; };
 		EA0FED411ADDD0C700FC6FCB /* PanInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FED401ADDD0C700FC6FCB /* PanInteractor.swift */; };
 		EA0FED451ADE5BC500FC6FCB /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */; };
-		EA2A38E61AD8A141005708D2 /* MeteorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2A38E51AD8A141005708D2 /* MeteorService.swift */; };
 		EA3594141B2DE5C300E91337 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594131B2DE5C300E91337 /* ConversationViewController.swift */; };
 		EA3594161B2DEF0C00E91337 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594151B2DEF0C00E91337 /* MessageCell.swift */; };
 		EA3594191B2FEA1F00E91337 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594181B2FEA1F00E91337 /* TransitionManager.swift */; };
@@ -128,6 +127,7 @@
 		EAF670941B31FCBE0025D7CF /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670921B31FCBE0025D7CF /* DeviceInfo.swift */; };
 		EAF670951B31FCBE0025D7CF /* ProvisioningProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670931B31FCBE0025D7CF /* ProvisioningProfile.swift */; };
 		EAF670971B31FE6A0025D7CF /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670961B31FE6A0025D7CF /* Environment.swift */; };
+		EAF6709A1B3200E10025D7CF /* MeteorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670991B3200E10025D7CF /* MeteorService.swift */; };
 		EAF92AD41B31CD1400FF8DD7 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5B74321B3139EA008E5CBC /* Core.framework */; };
 		F95D95DF1A84A1170068F090 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95D95DE1A84A1170068F090 /* MediaPlayer.framework */; };
 		F996C71E1A81F1D100314FF8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71D1A81F1D100314FF8 /* CoreMedia.framework */; };
@@ -156,7 +156,6 @@
 		EA0FC9321A87DE5800D62625 /* ViewProviders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProviders.swift; sourceTree = "<group>"; };
 		EA0FED401ADDD0C700FC6FCB /* PanInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanInteractor.swift; sourceTree = "<group>"; };
 		EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
-		EA2A38E51AD8A141005708D2 /* MeteorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorService.swift; sourceTree = "<group>"; };
 		EA3594131B2DE5C300E91337 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		EA3594151B2DEF0C00E91337 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		EA3594181B2FEA1F00E91337 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
@@ -278,6 +277,7 @@
 		EAF670921B31FCBE0025D7CF /* DeviceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		EAF670931B31FCBE0025D7CF /* ProvisioningProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvisioningProfile.swift; sourceTree = "<group>"; };
 		EAF670961B31FE6A0025D7CF /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		EAF670991B3200E10025D7CF /* MeteorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorService.swift; sourceTree = "<group>"; };
 		F1D48B38C28B60559AEB8949 /* Pods_Core_Taylr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Core_Taylr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C759AA125AEB809731B1D6 /* Pods-Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.release.xcconfig"; path = "Pods/Target Support Files/Pods-Core/Pods-Core.release.xcconfig"; sourceTree = "<group>"; };
 		F95D95DE1A84A1170068F090 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -507,7 +507,6 @@
 		EA6650E91AA00A9C001BA40C /* Services */ = {
 			isa = PBXGroup;
 			children = (
-				EA2A38E51AD8A141005708D2 /* MeteorService.swift */,
 				EA6650EB1AA00A9C001BA40C /* AccountService.swift */,
 				EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */,
 				EA49286D1ADF291100118639 /* UpgradeService.swift */,
@@ -739,6 +738,7 @@
 			isa = PBXGroup;
 			children = (
 				EAF6705E1B31F9450025D7CF /* Models */,
+				EAF670981B3200E10025D7CF /* Services */,
 				EAF6706C1B31F9450025D7CF /* Tasks */,
 			);
 			path = S10;
@@ -800,6 +800,14 @@
 				EAF670961B31FE6A0025D7CF /* Environment.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		EAF670981B3200E10025D7CF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				EAF670991B3200E10025D7CF /* MeteorService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1214,6 +1222,7 @@
 				EAF6701D1B31E6550025D7CF /* Core.m in Sources */,
 				EAF670741B31F9450025D7CF /* MeteorExtension.swift in Sources */,
 				EAF6707B1B31F9450025D7CF /* _Message.swift in Sources */,
+				EAF6709A1B3200E10025D7CF /* MeteorService.swift in Sources */,
 				EAF6708A1B31F9AD0025D7CF /* Logging.swift in Sources */,
 				EAF670901B31FA2E0025D7CF /* UserDefaults.swift in Sources */,
 				EAF670831B31F9450025D7CF /* Video.swift in Sources */,
@@ -1291,7 +1300,6 @@
 				EA0FC9431A87DE5800D62625 /* FetchViewModel.swift in Sources */,
 				EA396FF01AB52BF8009EB60B /* PageViewController.swift in Sources */,
 				EAA56F971B2B32E500DE3936 /* SettingsLabelCell.swift in Sources */,
-				EA2A38E61AD8A141005708D2 /* MeteorService.swift in Sources */,
 				EAF670181B31DD910025D7CF /* GenericExtensions.swift in Sources */,
 				EAA56F961B2B32E500DE3936 /* SettingsFormViewController.swift in Sources */,
 				EA49286E1ADF291100118639 /* UpgradeService.swift in Sources */,

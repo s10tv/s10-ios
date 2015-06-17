@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Core
 
 struct GlobalsContainer {
     let env: TaylrEnvironment

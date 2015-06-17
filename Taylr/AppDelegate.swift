@@ -47,7 +47,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
 //        Crashlytics.sharedInstance().setObjectValue(env.deviceId, forKey: "DeviceId")
         
         // Setup global services
-        let meteor = MeteorService(env: env)
+        let meteor = MeteorService(serverURL: env.serverURL)
         _GlobalsContainer.instance = GlobalsContainer(env: env,
             meteorService: meteor,
             accountService: AccountService(meteorService: meteor),
@@ -80,7 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
         
         // Let's launch!
         Meteor.delegate = self
-        Meteor.startup()
+        Meteor.startup(env)
         
         Log.info("App Launched")
         Analytics.track("App Open")
