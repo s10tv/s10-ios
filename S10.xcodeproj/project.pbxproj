@@ -30,7 +30,7 @@
 		EA49286E1ADF291100118639 /* UpgradeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA49286D1ADF291100118639 /* UpgradeService.swift */; };
 		EA4F51851AE153880060405E /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F51841AE153880060405E /* SettingsViewModel.swift */; };
 		EA53D5221AE1E9B800EDAAFE /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA53D5211AE1E9B800EDAAFE /* Formatters.swift */; };
-		EA5B740B1B30F7BB008E5CBC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5B740A1B30F7BB008E5CBC /* AppDelegate.swift */; };
+		EA5B740B1B30F7BB008E5CBC /* TestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5B740A1B30F7BB008E5CBC /* TestAppDelegate.swift */; };
 		EA5B740D1B30F7BB008E5CBC /* RecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5B740C1B30F7BB008E5CBC /* RecorderViewController.swift */; };
 		EA5B74141B30F7BB008E5CBC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA5B74131B30F7BB008E5CBC /* Images.xcassets */; };
 		EA5B74171B30F7BB008E5CBC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5B74151B30F7BB008E5CBC /* LaunchScreen.xib */; };
@@ -39,7 +39,6 @@
 		EA5B74531B315D8A008E5CBC /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5B74321B3139EA008E5CBC /* Core.framework */; };
 		EA5B745C1B316034008E5CBC /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5B74321B3139EA008E5CBC /* Core.framework */; };
 		EA608BAC1AE6A249003E1C75 /* MessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA608BAB1AE6A249003E1C75 /* MessagesViewModel.swift */; };
-		EA62A87E1AD98B3C00B5D3D9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA62A87D1AD98B3C00B5D3D9 /* Images.xcassets */; };
 		EA6650E11AA00999001BA40C /* BaseViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E01AA00999001BA40C /* BaseViews.swift */; };
 		EA6650ED1AA00A9C001BA40C /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650EB1AA00A9C001BA40C /* AccountService.swift */; };
 		EA7004621ACF912A00D0E467 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA7004641ACF912A00D0E467 /* Onboarding.storyboard */; };
@@ -177,7 +176,7 @@
 		EA53D5211AE1E9B800EDAAFE /* Formatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		EA5B74061B30F7BB008E5CBC /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA5B74091B30F7BB008E5CBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EA5B740A1B30F7BB008E5CBC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		EA5B740A1B30F7BB008E5CBC /* TestAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAppDelegate.swift; sourceTree = "<group>"; };
 		EA5B740C1B30F7BB008E5CBC /* RecorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderViewController.swift; sourceTree = "<group>"; };
 		EA5B74131B30F7BB008E5CBC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		EA5B74161B30F7BB008E5CBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -187,7 +186,6 @@
 		EA5B74361B3139EA008E5CBC /* Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
 		EA5B74511B31462C008E5CBC /* Pods_Backend.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Backend.framework; path = "Pods/../build/Debug-iphoneos/Pods_Backend.framework"; sourceTree = "<group>"; };
 		EA608BAB1AE6A249003E1C75 /* MessagesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewModel.swift; sourceTree = "<group>"; };
-		EA62A87D1AD98B3C00B5D3D9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Pods/PKHUD/PKHUD/Images.xcassets; sourceTree = "<group>"; };
 		EA6650E01AA00999001BA40C /* BaseViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViews.swift; sourceTree = "<group>"; };
 		EA6650EB1AA00A9C001BA40C /* AccountService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		EA7004631ACF912A00D0E467 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Onboarding.storyboard; sourceTree = "<group>"; };
@@ -376,7 +374,6 @@
 		DDD7116BC0015396F5321D26 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				EA62A87C1AD98B3600B5D3D9 /* PKHUD */,
 				6A2FB1EC7785F957D622CCE4 /* Pods-Core.debug.xcconfig */,
 				F2C759AA125AEB809731B1D6 /* Pods-Core.release.xcconfig */,
 				A80ED835405D6C980CF3F31B /* Pods-Core-CoreTests.debug.xcconfig */,
@@ -479,7 +476,7 @@
 		EA5B74071B30F7BB008E5CBC /* TestApp */ = {
 			isa = PBXGroup;
 			children = (
-				EA5B740A1B30F7BB008E5CBC /* AppDelegate.swift */,
+				EA5B740A1B30F7BB008E5CBC /* TestAppDelegate.swift */,
 				EA5B740C1B30F7BB008E5CBC /* RecorderViewController.swift */,
 				EA5B742B1B30FC9D008E5CBC /* Main.storyboard */,
 				EA5B74131B30F7BB008E5CBC /* Images.xcassets */,
@@ -503,14 +500,6 @@
 				EA5B74351B3139EA008E5CBC /* Info.plist */,
 			);
 			name = "Supporting Files";
-			sourceTree = "<group>";
-		};
-		EA62A87C1AD98B3600B5D3D9 /* PKHUD */ = {
-			isa = PBXGroup;
-			children = (
-				EA62A87D1AD98B3C00B5D3D9 /* Images.xcassets */,
-			);
-			name = PKHUD;
 			sourceTree = "<group>";
 		};
 		EA6650E91AA00A9C001BA40C /* Services */ = {
@@ -1019,7 +1008,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA3777761A966EC10055DE99 /* TransatTextStandard.otf in Resources */,
-				EA62A87E1AD98B3C00B5D3D9 /* Images.xcassets in Resources */,
 				EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */,
 				EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */,
 				EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */,
@@ -1231,7 +1219,7 @@
 			files = (
 				EA5B740D1B30F7BB008E5CBC /* RecorderViewController.swift in Sources */,
 				EAF670191B31DD920025D7CF /* GenericExtensions.swift in Sources */,
-				EA5B740B1B30F7BB008E5CBC /* AppDelegate.swift in Sources */,
+				EA5B740B1B30F7BB008E5CBC /* TestAppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

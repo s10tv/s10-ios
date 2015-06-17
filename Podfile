@@ -39,7 +39,7 @@ target :Core do
         
         pod 'SwipeView', '~> 1.3'
         pod 'SDWebImage', '~> 3.7'
-        pod 'PKHUD', :git => 'https://github.com/tonyxiao/PKHUD' # Fork is needed to work around xcasset compilation issue inside pod
+        pod 'PKHUD', :git => 'https://github.com/pkluz/PKHUD.git' # TODO: Update once master is on cocoapods
         pod 'XLForm', '~> 2.2'
         
         pod 'UICollectionViewLeftAlignedLayout', '~> 1.0'

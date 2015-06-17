@@ -10,7 +10,6 @@ import UIKit
 import Meteor
 import FacebookSDK
 import ReactiveCocoa
-import EDColor
 
 class RootViewController : UINavigationController {
     var transitionManager : TransitionManager!
