@@ -9,6 +9,7 @@
 import Foundation
 import SDWebImage
 import DateTools
+import Core
 
 class ConnectionCell : UITableViewCell {
     

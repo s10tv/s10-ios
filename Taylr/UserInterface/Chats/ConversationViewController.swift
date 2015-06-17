@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Core
 
 class ConversationViewController : BaseViewController {
     

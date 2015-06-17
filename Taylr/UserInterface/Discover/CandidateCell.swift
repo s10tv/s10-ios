@@ -8,6 +8,7 @@
 
 import Foundation
 import SDWebImage
+import Core
 
 class CandidateCell : UICollectionViewCell {
     

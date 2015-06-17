@@ -3,49 +3,49 @@
 
 import CoreData
 
-enum VideoAttributes: String {
+public enum VideoAttributes: String {
     case coverFrameUrl = "coverFrameUrl"
     case createdAt = "createdAt"
     case url = "url"
 }
 
-@objc
+@objc public
 class _Video: NSManagedObject {
 
     // MARK: - Class methods
 
-    class func entityName () -> String {
+    public class func entityName () -> String {
         return "Video"
     }
 
-    class func entity(managedObjectContext: NSManagedObjectContext!) -> NSEntityDescription! {
+    public class func entity(managedObjectContext: NSManagedObjectContext!) -> NSEntityDescription! {
         return NSEntityDescription.entityForName(self.entityName(), inManagedObjectContext: managedObjectContext);
     }
 
     // MARK: - Life cycle methods
 
-    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
+    public override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
 
-    convenience init(managedObjectContext: NSManagedObjectContext!) {
+    public convenience init(managedObjectContext: NSManagedObjectContext!) {
         let entity = _Video.entity(managedObjectContext)
         self.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
     }
 
     // MARK: - Properties
 
-    @NSManaged
+    @NSManaged public
     var coverFrameUrl: String?
 
     // func validateCoverFrameUrl(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
-    @NSManaged
+    @NSManaged public
     var createdAt: NSDate?
 
     // func validateCreatedAt(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
-    @NSManaged
+    @NSManaged public
     var url: String?
 
     // func validateUrl(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}

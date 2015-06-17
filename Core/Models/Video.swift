@@ -7,13 +7,13 @@
 //
 
 @objc(Video)
-class Video: _Video {
+public class Video: _Video {
 
-    var coverFrameURL : NSURL? {
+    public var coverFrameURL : NSURL? {
         return coverFrameUrl.map { NSURL($0) } ?? nil
     }
     
-    var URL: NSURL? {
+    public var URL: NSURL? {
         return url.map { NSURL($0) } ?? nil
     }
 

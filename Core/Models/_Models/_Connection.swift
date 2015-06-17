@@ -3,60 +3,60 @@
 
 import CoreData
 
-enum ConnectionAttributes: String {
+public enum ConnectionAttributes: String {
     case createdAt = "createdAt"
     case unreadCount = "unreadCount"
     case updatedAt = "updatedAt"
 }
 
-enum ConnectionRelationships: String {
+public enum ConnectionRelationships: String {
     case otherUser = "otherUser"
 }
 
-@objc
+@objc public
 class _Connection: NSManagedObject {
 
     // MARK: - Class methods
 
-    class func entityName () -> String {
+    public class func entityName () -> String {
         return "Connection"
     }
 
-    class func entity(managedObjectContext: NSManagedObjectContext!) -> NSEntityDescription! {
+    public class func entity(managedObjectContext: NSManagedObjectContext!) -> NSEntityDescription! {
         return NSEntityDescription.entityForName(self.entityName(), inManagedObjectContext: managedObjectContext);
     }
 
     // MARK: - Life cycle methods
 
-    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
+    public override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
 
-    convenience init(managedObjectContext: NSManagedObjectContext!) {
+    public convenience init(managedObjectContext: NSManagedObjectContext!) {
         let entity = _Connection.entity(managedObjectContext)
         self.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
     }
 
     // MARK: - Properties
 
-    @NSManaged
+    @NSManaged public
     var createdAt: NSDate?
 
     // func validateCreatedAt(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
-    @NSManaged
+    @NSManaged public
     var unreadCount: NSNumber?
 
     // func validateUnreadCount(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
-    @NSManaged
+    @NSManaged public
     var updatedAt: NSDate?
 
     // func validateUpdatedAt(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
 
-    @NSManaged
+    @NSManaged public
     var otherUser: User?
 
     // func validateOtherUser(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}

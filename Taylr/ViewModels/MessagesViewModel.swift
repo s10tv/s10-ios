@@ -25,7 +25,7 @@ class MessagesViewModel : NSObject {
     private var sendingMessage = false // TODO: Temp hack, see sendMessage for explanation
     private var changedMessages: [Message] = []
     
-    var sender: User { return User.currentUser()! }
+    var sender: User { return Meteor.user! }
     var recipient: User { return connection.otherUser! }
     
     init(connection: Connection, delegate: MessagesViewModelDelegate? = nil) {

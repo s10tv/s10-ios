@@ -8,6 +8,7 @@
 
 import Foundation
 import XLForm
+import Core
 
 class SettingsFormViewController : XLFormTableViewController {
     

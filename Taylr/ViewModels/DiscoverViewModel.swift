@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import Core
 
 class DiscoverViewModel : NSObject {
     let frc : NSFetchedResultsController

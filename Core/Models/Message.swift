@@ -7,10 +7,9 @@
 //
 
 @objc(Message)
-class Message: _Message {
-    var outgoing: Bool { return sender!.isCurrentUser }
+public class Message: _Message {
     
-    override func awakeFromInsert() {
+    public override func awakeFromInsert() {
         super.awakeFromInsert()
         createdAt = NSDate()
     }

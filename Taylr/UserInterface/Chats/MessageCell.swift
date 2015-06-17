@@ -9,6 +9,7 @@
 import Foundation
 import SDWebImage
 import MediaPlayer
+import Core
 
 class MessageCell : UICollectionViewCell {
     

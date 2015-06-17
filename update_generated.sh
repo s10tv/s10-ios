@@ -1,11 +1,14 @@
 #!/bin/bash
 
-# Make sure we are in the right working directory
-cd "$(dirname "$0")"
+ROOT=$(dirname "$0")
 
 # Regenerate CoreData model files
-mogenerator -m Models/Models.xcdatamodeld/Models.xcdatamodel/ --human-dir Models --machine-dir Generated/_Models --swift
+cd "Core"
+mogenerator --swift --template-path "../scripts/motemplates" \
+            -m Models/Models.xcdatamodeld/Models.xcdatamodel/ --human-dir Models --machine-dir Models/_Models
 
+# Regenerate Taylr assets
+cd "../Taylr"
 # Regenerate storyboard constants
 sbconstants -s Base.lproj/ -w -d > Generated/SBConstants.swift
 

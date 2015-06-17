@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreData
+import Core
 
 class ChatsViewModel : NSObject {
     private let frc : NSFetchedResultsController
