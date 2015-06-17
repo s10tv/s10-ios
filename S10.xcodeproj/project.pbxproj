@@ -32,7 +32,7 @@
 		EA53D5221AE1E9B800EDAAFE /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA53D5211AE1E9B800EDAAFE /* Formatters.swift */; };
 		EA5B740B1B30F7BB008E5CBC /* TestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5B740A1B30F7BB008E5CBC /* TestAppDelegate.swift */; };
 		EA5B740D1B30F7BB008E5CBC /* RecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5B740C1B30F7BB008E5CBC /* RecorderViewController.swift */; };
-		EA5B74141B30F7BB008E5CBC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA5B74131B30F7BB008E5CBC /* Images.xcassets */; };
+		EA5B74141B30F7BB008E5CBC /* TestApp.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA5B74131B30F7BB008E5CBC /* TestApp.xcassets */; };
 		EA5B74171B30F7BB008E5CBC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5B74151B30F7BB008E5CBC /* LaunchScreen.xib */; };
 		EA5B742C1B30FC9D008E5CBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA5B742B1B30FC9D008E5CBC /* Main.storyboard */; };
 		EA5B74371B3139EA008E5CBC /* Core.h in Headers */ = {isa = PBXBuildFile; fileRef = EA5B74361B3139EA008E5CBC /* Core.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -178,7 +178,7 @@
 		EA5B74091B30F7BB008E5CBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA5B740A1B30F7BB008E5CBC /* TestAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAppDelegate.swift; sourceTree = "<group>"; };
 		EA5B740C1B30F7BB008E5CBC /* RecorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderViewController.swift; sourceTree = "<group>"; };
-		EA5B74131B30F7BB008E5CBC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		EA5B74131B30F7BB008E5CBC /* TestApp.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TestApp.xcassets; sourceTree = "<group>"; };
 		EA5B74161B30F7BB008E5CBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		EA5B742B1B30FC9D008E5CBC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		EA5B74321B3139EA008E5CBC /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -479,7 +479,7 @@
 				EA5B740A1B30F7BB008E5CBC /* TestAppDelegate.swift */,
 				EA5B740C1B30F7BB008E5CBC /* RecorderViewController.swift */,
 				EA5B742B1B30FC9D008E5CBC /* Main.storyboard */,
-				EA5B74131B30F7BB008E5CBC /* Images.xcassets */,
+				EA5B74131B30F7BB008E5CBC /* TestApp.xcassets */,
 				EA5B74151B30F7BB008E5CBC /* LaunchScreen.xib */,
 				EA5B74081B30F7BB008E5CBC /* Supporting Files */,
 			);
@@ -992,7 +992,7 @@
 			files = (
 				EA5B742C1B30FC9D008E5CBC /* Main.storyboard in Resources */,
 				EA5B74171B30F7BB008E5CBC /* LaunchScreen.xib in Resources */,
-				EA5B74141B30F7BB008E5CBC /* Images.xcassets in Resources */,
+				EA5B74141B30F7BB008E5CBC /* TestApp.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
