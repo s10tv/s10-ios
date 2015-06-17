@@ -49,7 +49,9 @@ public class MeteorService {
     }
     
     public init(serverURL: NSURL) {
-        meteor = METCoreDataDDPClient(serverURL: serverURL, account: nil)
+        let bundle = NSBundle(forClass: MeteorService.self)
+        let model = NSManagedObjectModel.mergedModelFromBundles([bundle as AnyObject])
+        meteor = METCoreDataDDPClient(serverURL: serverURL, account: nil, managedObjectModel: model)
         subscriptions = (
             settings: meteor.addSubscriptionWithName("settings"),
             metadata: meteor.addSubscriptionWithName("metadata"),

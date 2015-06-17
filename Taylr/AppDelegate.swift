@@ -143,10 +143,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
     
     // MARK: Meteor Logging
     
-    func client(client: METDDPClient!, willSendDDPMessage message: [NSObject : AnyObject]!) {
+    func client(client: METDDPClient, willSendDDPMessage message: [NSObject : AnyObject]) {
         Log.verbose("DDP > \(message)")
     }
-    func client(client: METDDPClient!, didReceiveDDPMessage message: [NSObject : AnyObject]!) {
+    func client(client: METDDPClient, didReceiveDDPMessage message: [NSObject : AnyObject]) {
         Log.verbose("DDP < \(message)")
     }
 }

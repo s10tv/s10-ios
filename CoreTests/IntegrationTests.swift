@@ -40,10 +40,10 @@ class IntegrationTests : XCTestCase {
 
 // MARK: Meteor Logging
 extension IntegrationTests : METDDPClientDelegate {
-    func client(client: METDDPClient!, willSendDDPMessage message: [NSObject : AnyObject]!) {
+    func client(client: METDDPClient, willSendDDPMessage message: [NSObject : AnyObject]) {
         Log.verbose("DDP > \(message)")
     }
-    func client(client: METDDPClient!, didReceiveDDPMessage message: [NSObject : AnyObject]!) {
+    func client(client: METDDPClient, didReceiveDDPMessage message: [NSObject : AnyObject]) {
         Log.verbose("DDP < \(message)")
     }
 }

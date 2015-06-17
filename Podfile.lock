@@ -98,7 +98,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Meteor:
-    :commit: 424de2cfd7b3d63188d34eefe2acdd8b0ca50da2
+    :commit: c95251c8ebc9344c3d435f56f8f0bfde965eb179
     :git: https://github.com/tonyxiao/meteor-ios
   PKHUD:
     :commit: 86f3f342a6d83b124a8de4ed31f0ffda1ad3aeaa
