@@ -80,7 +80,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
         
         // Let's launch!
         Meteor.delegate = self
-        Meteor.startup(env)
+        Meteor.startup()
+        Meteor.connectDevice(env)
         
         Log.info("App Launched")
         Analytics.track("App Open")

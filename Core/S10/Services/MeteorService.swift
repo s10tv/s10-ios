@@ -72,15 +72,14 @@ public class MeteorService {
         SugarRecord.addStack(MeteorCDStack(meteor: meteor))
     }
     
-    public func startup(env: Environment) {
+    public func startup() {
         meteor.account = METAccount.defaultAccount()
         meteor.connect()
-        connectDevice(env)
     }
     
     // MARK: - Device
     
-    private func connectDevice(env: Environment) -> RACSignal {
+    public func connectDevice(env: Environment) -> RACSignal {
         // Technically this should be a barrier method, but barrier is not exposed by meteor-ios at the moment
         return meteor.call("connectDevice", [env.deviceId, [
             "appId": env.appId,
@@ -173,6 +172,4 @@ public class MeteorService {
     public func reportUser(user: User, reason: String) -> RACSignal {
         return meteor.call("user/report", [user.documentID!, reason])
     }
-    
-
 }
