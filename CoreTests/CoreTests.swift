@@ -1,6 +1,6 @@
 //
-//  BackendTests.swift
-//  BackendTests
+//  CoreTests.swift
+//  CoreTests
 //
 //  Created on 1/24/15.
 //  Copyright (c) 2015 S10. All rights reserved.
@@ -8,9 +8,9 @@
 
 import UIKit
 import XCTest
-import Backend
+import Core
 
-class BackendTests: XCTestCase {
+class CoreTests: XCTestCase {
     
     override func setUp() {
         super.setUp()

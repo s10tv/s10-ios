@@ -13,7 +13,7 @@ import FacebookSDK
 //import CrashlyticsFramework
 //import BugfenderSDK
 import SwiftyUserDefaults
-import Backend
+import Core
 
 // Globally accessible variables and shorthands
 private struct _GlobalsContainer {

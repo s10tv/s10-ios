@@ -5,16 +5,16 @@ source 'https://github.com/CocoaPods/Specs.git'
 inhibit_all_warnings!
 use_frameworks!
 
-target :Backend do
-    link_with 'Backend'
+target :Core do
+    link_with 'Core'
     pod 'ReactiveCocoa', '~> 2.4' # Update to 3.0 when ready
     pod 'SugarRecord/CoreData', :git => 'https://github.com/tonyxiao/SugarRecord', :branch => 'swift-1.2'
     pod 'Meteor', :git => 'https://github.com/tonyxiao/meteor-ios', :branch => 'dev'
     pod 'SwiftyUserDefaults', '~> 1.1'
     pod 'SwiftTryCatch', '~> 0.0.1'
     
-    target :BackendTests do
-        link_with 'BackendTests'
+    target :CoreTests do
+        link_with 'CoreTests'
         pod 'Quick', '~> 0.3.0' # TODO: Upgrade after swift 2.0
         pod 'Nimble', '~> 0.4.0' # TODO: Upgrade after swift 2.0
     end
@@ -56,8 +56,8 @@ target :Backend do
         pod 'NSLogger', '~> 1.5', :configuration => ['Debug']
     end
     
-    target :Camera do
-        link_with 'Camera'
+    target :TestApp do
+        link_with 'TestApp'
         pod 'SCRecorder', '~> 2.4'
     end
 end
