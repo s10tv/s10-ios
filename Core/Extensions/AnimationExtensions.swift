@@ -11,7 +11,7 @@ import ReactiveCocoa
 import Core
 
 extension UIView {
-    func setHiddenAnimated(#hidden: Bool, duration: NSTimeInterval = 0.3, delay: NSTimeInterval = 0) -> RACSignal {
+    public func setHiddenAnimated(#hidden: Bool, duration: NSTimeInterval = 0.3, delay: NSTimeInterval = 0) -> RACSignal {
         // TODO: This is obviously repetitive, but let's wait to RAC 3.0 is out to clean this up
         let subject = RACSubject()
         UIView.animateWithDuration(duration, delay: delay, options: nil, animations: {
@@ -34,11 +34,11 @@ extension UIView {
 // Class Extensions
 extension UIView {
     
-//    class func animateSpring(duration: NSTimeInterval, animations: () -> ()) -> RACSignal {
+//    public class func animateSpring(duration: NSTimeInterval, animations: () -> ()) -> RACSignal {
 //        return UIView.animateSpring(duration, delay: 0, animations: animations)
 //    }
     
-    class func animateSpring(duration: NSTimeInterval, damping: CGFloat = 0.7, velocity: CGFloat = 0.7,
+    public class func animateSpring(duration: NSTimeInterval, damping: CGFloat = 0.7, velocity: CGFloat = 0.7,
                         options: UIViewAnimationOptions = nil, delay: NSTimeInterval = 0, animations: () -> ()) -> RACSignal {
         let subject = RACSubject()
         UIView.animateWithDuration(duration, delay: delay,
@@ -49,11 +49,11 @@ extension UIView {
         return subject
     }
     
-//    class func animate(duration: NSTimeInterval, animations: () -> ()) -> RACSignal {
+//    public class func animate(duration: NSTimeInterval, animations: () -> ()) -> RACSignal {
 //        return UIView.animate(duration, delay: 0, animations: animations)
 //    }
     
-    class func animate(duration: NSTimeInterval, options: UIViewAnimationOptions = nil, delay: NSTimeInterval = 0, animations: () -> ()) -> RACSignal {
+    public class func animate(duration: NSTimeInterval, options: UIViewAnimationOptions = nil, delay: NSTimeInterval = 0, animations: () -> ()) -> RACSignal {
         let subject = RACSubject()
         UIView.animateWithDuration(duration, delay: delay, options: options, animations: animations) { finished in
             subject.sendNextAndCompleted(finished)
@@ -66,17 +66,17 @@ extension UIView {
 
 extension CALayer {
     
-    func animateKeyPath(keyPath: String, toValue: AnyObject!, duration: CGFloat, fillMode: CAMediaTimingFillMode = .Removed) -> RACSignal {
+    public func animateKeyPath(keyPath: String, toValue: AnyObject!, duration: CGFloat, fillMode: CAMediaTimingFillMode = .Removed) -> RACSignal {
         let animation = CABasicAnimation(keyPath, fillMode: fillMode)
         animation.toValue = toValue
         return animation.addToLayerAndReturnSignal(self, forKey: keyPath)
     }
     
-    func animateOpacity(opacity: CGFloat, duration: CGFloat, fillMode: CAMediaTimingFillMode = .Removed) -> RACSignal {
+    public func animateOpacity(opacity: CGFloat, duration: CGFloat, fillMode: CAMediaTimingFillMode = .Removed) -> RACSignal {
         return animateKeyPath("opacity", toValue: opacity, duration: duration, fillMode: fillMode)
     }
     
-    func animate(#keyPath: String, fillMode: CAMediaTimingFillMode = .Removed, configure: (CABasicAnimation, CALayer) -> ()) -> RACSignal {
+    public func animate(#keyPath: String, fillMode: CAMediaTimingFillMode = .Removed, configure: (CABasicAnimation, CALayer) -> ()) -> RACSignal {
         let animation = CABasicAnimation(keyPath, fillMode: fillMode)
         configure(animation, self)
         return animation.addToLayerAndReturnSignal(self, forKey: keyPath)
@@ -96,7 +96,7 @@ extension CAAnimation {
 
     // CAAnimation is an exception and actually retains its delegate, thus no need to use objc_associated_object
     // BUG NOTE: Trying to merge stopSignals is problematic. Next values are not being delivered
-    var stopSignal : RACSignal {
+    public var stopSignal : RACSignal {
         if !(delegate is ProxyDelegate) {
             delegate = ProxyDelegate()
         }
@@ -104,7 +104,7 @@ extension CAAnimation {
     }
     
     // CAAnimation has value semantic, must save signal prior to adding to layer
-    func addToLayerAndReturnSignal(layer: CALayer, forKey: String) -> RACSignal {
+    public func addToLayerAndReturnSignal(layer: CALayer, forKey: String) -> RACSignal {
         let signal = stopSignal
         layer.addAnimation(self, forKey: forKey)
         return signal
@@ -112,7 +112,7 @@ extension CAAnimation {
 }
 
 extension CATransaction {
-    class func perform(animations: () -> ()) -> RACSignal {
+    public class func perform(animations: () -> ()) -> RACSignal {
         let subject = RACSubject()
         CATransaction.begin()
         animations()
@@ -126,9 +126,9 @@ extension CATransaction {
 
 // MARK: Animation Extension
 
-enum CAMediaTimingFillMode {
+public enum CAMediaTimingFillMode {
     case Forwards, Backwards, Both, Removed
-    var stringValue: String {
+    public var stringValue: String {
         switch self {
         case .Forwards:  return kCAFillModeForwards
         case .Backwards: return kCAFillModeBackwards
@@ -140,7 +140,7 @@ enum CAMediaTimingFillMode {
 
 // Adding to CAPropertyAnimation does not result in subclass inheritance...
 extension CABasicAnimation {
-    convenience init!(_ keyPath: String, duration: CFTimeInterval? = nil, fillMode: CAMediaTimingFillMode = .Removed) {
+    public convenience init!(_ keyPath: String, duration: CFTimeInterval? = nil, fillMode: CAMediaTimingFillMode = .Removed) {
         self.init(keyPath: keyPath)
         self.fillMode = fillMode.stringValue
         if let duration = duration {

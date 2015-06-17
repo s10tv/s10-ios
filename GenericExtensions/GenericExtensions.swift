@@ -6,6 +6,11 @@
 //  Copyright (c) 2015 S10. All rights reserved.
 //
 
+// Generic extensions cannot be included as part of Framework as of latest swift version
+// yet, therefore this file should be included as part of every target that wants these extensions
+// Files in this catagory should not have any other external dependencies in addition to Swift runtime
+// itself
+
 import Foundation
 
 extension Array {
@@ -79,4 +84,22 @@ extension Dictionary {
     func filter(includeElement: Element -> Bool) -> [Key: Value] {
         return Dictionary(Swift.filter(self, includeElement))
     }
+}
+
+extension Zip2 {
+    
+    func map<U>(transform: (S0.Generator.Element, S1.Generator.Element) -> U) -> [U] {
+        var results = [U]()
+        for (e0, e1) in self {
+            results.append(transform(e0, e1))
+        }
+        return results
+    }
+    
+    func each(block: (S0.Generator.Element, S1.Generator.Element) -> ()) {
+        for (e0, e1) in self {
+            block(e0, e1)
+        }
+    }
+    
 }

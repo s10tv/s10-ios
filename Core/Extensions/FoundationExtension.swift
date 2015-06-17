@@ -17,6 +17,7 @@ public func mapOptional<S : SequenceType, T>(source: S, transform: S.Generator.E
     return map(source) { transform($0) }.filter { $0 != nil }.map { $0! }
 }
 
+
 // Floats
 extension Int {
     public var f: CGFloat { return CGFloat(self) }
@@ -70,6 +71,11 @@ extension String {
         var result:NSMutableString = NSMutableString(string: self)
         result.replaceCharactersInRange(NSRange(range), withString: withString)
         return result as String
+    }
+    
+    public func nonBlank() -> String? {
+        let trimmed = stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        return trimmed.length > 0 ? trimmed : nil
     }
 }
 

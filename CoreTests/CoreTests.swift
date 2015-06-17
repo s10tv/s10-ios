@@ -38,6 +38,8 @@ class CoreTests: XCTestCase {
     }
     
     func testArrayViewModel() {
+        let arr = [121,2,2,2,2,23,3,4]
+        arr.each { expect($0) > 0 }
         let task = Task(clientId: "", type: "")
         XCTAssertNotNil(task, "")
 //        let vm = ArrayViewModel(content: ["1", "2", "3", "4"])

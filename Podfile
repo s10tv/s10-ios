@@ -7,13 +7,19 @@ use_frameworks!
 
 target :Core do
     link_with 'Core'
+    # Foundation
     pod 'ReactiveCocoa', '~> 2.4' # Update to 3.0 when ready
+    pod 'SwiftTryCatch', '~> 0.0.1'
+    pod 'NSLogger', '~> 1.5', :configuration => ['Debug']
+    
+    # Models
     pod 'SugarRecord/CoreData', :git => 'https://github.com/tonyxiao/SugarRecord', :branch => 'swift-1.2'
     pod 'Meteor', :git => 'https://github.com/tonyxiao/meteor-ios', :branch => 'dev'
     pod 'SwiftyUserDefaults', '~> 1.1'
-    pod 'SwiftTryCatch', '~> 0.0.1'
     
-    pod 'NSLogger', '~> 1.5', :configuration => ['Debug']
+    # UI
+    pod 'Cartography', '~> 0.5'
+    pod 'EDColor', '~> 1.0'
     
     target :CoreTests do
         link_with 'CoreTests'
@@ -29,14 +35,13 @@ target :Core do
         pod 'PKHUD', :git => 'https://github.com/tonyxiao/PKHUD' # Fork is needed to work around xcasset compilation issue inside pod
         pod 'XLForm', '~> 2.2'
         
-        pod 'Cartography', '~> 0.5'
         pod 'UICollectionViewLeftAlignedLayout', '~> 0.0.3'
         
         #pod 'Spring', '~> 1.0'
         #pod 'pop', '~> 1.0'
         pod 'RBBAnimation', '~> 0.3.0'
         
-        pod 'EDColor', '~> 1.0'
+
         pod 'DateTools', '~> 1.5'
         pod 'FormatterKit/TimeIntervalFormatter', '~> 1.8'
         pod 'TCMobileProvision', :git => 'https://github.com/tonyxiao/TCMobileProvision.git'

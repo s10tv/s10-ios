@@ -12,7 +12,7 @@ import Cartography
 import EDColor
 
 extension UIViewController {
-    func presentViewController(viewControllerToPresent: UIViewController, animated: Bool = true) -> RACSignal {
+    public func presentViewController(viewControllerToPresent: UIViewController, animated: Bool = true) -> RACSignal {
         let subject = RACReplaySubject()
         presentViewController(viewControllerToPresent, animated: animated) {
             subject.sendCompleted()
@@ -20,7 +20,7 @@ extension UIViewController {
         return subject
     }
     
-    func dismissViewController(animated: Bool = true) -> RACSignal {
+    public func dismissViewController(animated: Bool = true) -> RACSignal {
         let subject = RACReplaySubject()
         dismissViewControllerAnimated(animated) {
             subject.sendCompleted()
@@ -28,13 +28,13 @@ extension UIViewController {
         return subject
     }
     
-    func showAlert(title: String?, message: String?) {
+    public func showAlert(title: String?, message: String?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         alert.addAction("Ok", style: .Cancel)
         presentViewController(alert)
     }
     
-    class func topMostViewController() -> UIViewController? {
+    public class func topMostViewController() -> UIViewController? {
         var topVC = UIApplication.sharedApplication().keyWindow?.rootViewController
         while topVC?.presentedViewController != nil {
             topVC = topVC?.presentedViewController
@@ -45,49 +45,49 @@ extension UIViewController {
 
 extension UIView {
     
-    func makeCircular() {
+    public func makeCircular() {
         layer.cornerRadius = max(frame.size.width, frame.size.height) / 2
         layer.masksToBounds = true
     }
     
-    func makeWidthEqualTo(view: UIView) {
+    public func makeWidthEqualTo(view: UIView) {
         constrain(self, view) { this, that in
             this.width == that.width; return
         }
     }
     
-    func makeHeightEqualTo(view: UIView) {
+    public func makeHeightEqualTo(view: UIView) {
         constrain(self, view) { this, that in
             this.height == that.height; return
         }
     }
     
-    func makeEdgesEqualTo(view: UIView) {
+    public func makeEdgesEqualTo(view: UIView) {
         constrain(self, view) { this, that in
             this.edges == that.edges; return
         }
     }
     
-    func whenTapEnded(block: () -> ()) {
+    public func whenTapEnded(block: () -> ()) {
         whenTapped { recognizer in
             if recognizer.state == .Ended { block() }
         }
     }
     
-    func whenLongPressEnded(block: () -> ()) {
+    public func whenLongPressEnded(block: () -> ()) {
         whenLongPressed { recognizer in
             if recognizer.state == .Ended { block() }
         }
     }
     
-    func whenSwipeEnded(direction: UISwipeGestureRecognizerDirection, block: () -> ()) {
+    public func whenSwipeEnded(direction: UISwipeGestureRecognizerDirection, block: () -> ()) {
         whenSwiped(direction) { recognizer in
             if recognizer.state == .Ended { block() }
         }
     }
     
     // TODO: Figure out when to tear down the subscriptions for gesture recognizers
-    func whenTapped(block: (UITapGestureRecognizer) -> ()) {
+    public func whenTapped(block: (UITapGestureRecognizer) -> ()) {
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = 1
         tap.numberOfTouchesRequired = 1
@@ -97,7 +97,7 @@ extension UIView {
         addGestureRecognizer(tap)
     }
     
-    func whenLongPressed(block: (UILongPressGestureRecognizer) -> ()) {
+    public func whenLongPressed(block: (UILongPressGestureRecognizer) -> ()) {
         let tap = UILongPressGestureRecognizer()
         tap.rac_gestureSignal().subscribeNextAs { (recognizer : UILongPressGestureRecognizer) -> () in
             block(recognizer)
@@ -105,7 +105,7 @@ extension UIView {
         addGestureRecognizer(tap)
     }
 
-    func whenSwiped(direction: UISwipeGestureRecognizerDirection, block: (UISwipeGestureRecognizer) -> ()) {
+    public func whenSwiped(direction: UISwipeGestureRecognizerDirection, block: (UISwipeGestureRecognizer) -> ()) {
         let swipe = UISwipeGestureRecognizer()
         swipe.direction = direction
         swipe.rac_gestureSignal().subscribeNextAs { (recognizer : UISwipeGestureRecognizer) -> () in
@@ -114,7 +114,7 @@ extension UIView {
         addGestureRecognizer(swipe)
     }
     
-    func whenPanned(handler: (UIPanGestureRecognizer) -> ()) {
+    public func whenPanned(handler: (UIPanGestureRecognizer) -> ()) {
         let pan = UIPanGestureRecognizer()
         pan.rac_gestureSignal().subscribeNextAs { (recognizer : UIPanGestureRecognizer) -> () in
             handler(recognizer)
@@ -122,7 +122,7 @@ extension UIView {
         addGestureRecognizer(pan)
     }
     
-    func whenEdgePanned(edge: UIRectEdge, handler: (UIScreenEdgePanGestureRecognizer, UIRectEdge) -> ()) {
+    public func whenEdgePanned(edge: UIRectEdge, handler: (UIScreenEdgePanGestureRecognizer, UIRectEdge) -> ()) {
         let edgePan = UIScreenEdgePanGestureRecognizer()
         edgePan.edges = edge
         edgePan.rac_gestureSignal().subscribeNextAs { (recognizer : UIScreenEdgePanGestureRecognizer) -> () in
@@ -131,17 +131,17 @@ extension UIView {
         addGestureRecognizer(edgePan)
     }
     
-    func deepCopy() -> UIView {
+    public func deepCopy() -> UIView {
         return NSKeyedUnarchiver.unarchiveObjectWithData(NSKeyedArchiver.archivedDataWithRootObject(self)) as! UIView
     }
     
-    class func fromNib(nibName: String, owner: AnyObject? = nil) -> UIView? {
+    public class func fromNib(nibName: String, owner: AnyObject? = nil) -> UIView? {
         return UINib(nibName: nibName, bundle: nil).instantiateWithOwner(owner, options: nil).first as? UIView
     }
 }
 
 extension UIAlertController {
-    func addAction(title: String, style: UIAlertActionStyle = .Default, handler: ((UIAlertAction!) -> Void)? = nil) -> UIAlertAction {
+    public func addAction(title: String, style: UIAlertActionStyle = .Default, handler: ((UIAlertAction!) -> Void)? = nil) -> UIAlertAction {
         let action = UIAlertAction(title: title, style: style, handler: handler)
         addAction(action)
         return action
@@ -149,18 +149,18 @@ extension UIAlertController {
 }
 
 extension UIColor {
-    convenience init(_ hexCode: UInt32) {
+    public convenience init(_ hexCode: UInt32) {
         self.init(hex: hexCode)
     }
 }
 
 extension UICollectionViewFlowLayout {
-    var maxItemWidth : CGFloat {
+    public var maxItemWidth : CGFloat {
         return collectionView!.bounds.width - sectionInset.left - sectionInset.right
     }
 }
 
-func DebugPrintAllFonts() {
+public func DebugPrintAllFonts() {
     for familyName in UIFont.familyNames() as! [String] {
         println("Family: \(familyName)")
         for fontName in UIFont.fontNamesForFamilyName(familyName) {

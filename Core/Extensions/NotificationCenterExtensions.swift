@@ -7,10 +7,9 @@
 //
 
 import Foundation
-import Core
 
 extension NSNotificationCenter {
-    class Proxy {
+    public class Proxy {
         let queue : NSOperationQueue
         let center : NSNotificationCenter
         var observers : [NSObjectProtocol] = []
@@ -31,7 +30,7 @@ extension NSNotificationCenter {
         }
     }
     
-    func proxy() -> Proxy {
+    public func proxy() -> Proxy {
         return Proxy(center: self)
     }
 }
