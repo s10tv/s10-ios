@@ -125,6 +125,7 @@
 		EAF670171B31DD740025D7CF /* GenericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670161B31DD740025D7CF /* GenericExtensions.swift */; };
 		EAF670181B31DD910025D7CF /* GenericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670161B31DD740025D7CF /* GenericExtensions.swift */; };
 		EAF670191B31DD920025D7CF /* GenericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670161B31DD740025D7CF /* GenericExtensions.swift */; };
+		EAF6701B1B31E42E0025D7CF /* UploadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6701A1B31E42E0025D7CF /* UploadTests.swift */; };
 		EAF92AD41B31CD1400FF8DD7 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5B74321B3139EA008E5CBC /* Core.framework */; };
 		F95D95DF1A84A1170068F090 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95D95DE1A84A1170068F090 /* MediaPlayer.framework */; };
 		F996C71E1A81F1D100314FF8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71D1A81F1D100314FF8 /* CoreMedia.framework */; };
@@ -273,6 +274,7 @@
 		EAF670111B31DB700025D7CF /* ReactiveCocoaExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveCocoaExtension.swift; sourceTree = "<group>"; };
 		EAF670131B31DB960025D7CF /* FoundationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationExtension.swift; sourceTree = "<group>"; };
 		EAF670161B31DD740025D7CF /* GenericExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericExtensions.swift; sourceTree = "<group>"; };
+		EAF6701A1B31E42E0025D7CF /* UploadTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadTests.swift; sourceTree = "<group>"; };
 		F1D48B38C28B60559AEB8949 /* Pods_Core_Taylr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Core_Taylr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C759AA125AEB809731B1D6 /* Pods-Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.release.xcconfig"; path = "Pods/Target Support Files/Pods-Core/Pods-Core.release.xcconfig"; sourceTree = "<group>"; };
 		F95D95DE1A84A1170068F090 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -623,6 +625,7 @@
 			isa = PBXGroup;
 			children = (
 				EA9F35581A74CC6900E0C65D /* CoreTests.swift */,
+				EAF6701A1B31E42E0025D7CF /* UploadTests.swift */,
 				EA9F35561A74CC6900E0C65D /* Supporting Files */,
 			);
 			path = CoreTests;
@@ -1262,6 +1265,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAF6701B1B31E42E0025D7CF /* UploadTests.swift in Sources */,
 				EA9F35591A74CC6900E0C65D /* CoreTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

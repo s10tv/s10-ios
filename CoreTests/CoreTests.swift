@@ -9,6 +9,7 @@
 import UIKit
 import XCTest
 import Core
+import Nimble
 
 class CoreTests: XCTestCase {
     
@@ -31,6 +32,10 @@ class CoreTests: XCTestCase {
         XCTAssertTrue(true, "fail")
     }
     
+    func testExpectSyntax() {
+        let variable = 1222
+        expect(variable) == 1222
+    }
     
     func testArrayViewModel() {
         let task = Task(clientId: "", type: "")
