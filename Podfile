@@ -17,6 +17,9 @@ target :Core do
     pod 'Meteor', :git => 'https://github.com/tonyxiao/meteor-ios', :branch => 'dev'
     pod 'SwiftyUserDefaults', '~> 1.1'
     
+    # Netowkring
+    pod 'Alamofire', '~> 1.2'
+    
     # UI
     pod 'Cartography', '~> 0.5'
     pod 'EDColor', '~> 1.0'
@@ -24,7 +27,7 @@ target :Core do
     # Utils
     pod 'SimpleKeychain', '~> 0.4'
     pod 'TCMobileProvision', :git => 'https://github.com/tonyxiao/TCMobileProvision.git'
-    
+
     target :CoreTests do
         link_with 'CoreTests'
         pod 'Quick', '~> 0.3.0' # TODO: Upgrade after swift 2.0

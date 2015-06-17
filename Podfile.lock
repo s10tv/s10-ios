@@ -1,4 +1,5 @@
 PODS:
+  - Alamofire (1.2.3)
   - Amplitude-iOS (2.3.0)
   - Analytics/Amplitude (1.11.3):
     - Amplitude-iOS (= 2.3.0)
@@ -71,6 +72,7 @@ PODS:
   - XLForm (2.2.0)
 
 DEPENDENCIES:
+  - Alamofire (~> 1.2)
   - Analytics/Amplitude (from `https://github.com/tonyxiao/analytics-ios.git`)
   - Analytics/Mixpanel (from `https://github.com/tonyxiao/analytics-ios.git`)
   - Analytics/Segmentio (from `https://github.com/tonyxiao/analytics-ios.git`)
@@ -132,6 +134,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/tonyxiao/TCMobileProvision.git
 
 SPEC CHECKSUMS:
+  Alamofire: 5550bf0b575ed1a4bf9be572f9463e1015cc169e
   Amplitude-iOS: f786c0acfd3e8977412a7abce2c49bab1e715a8f
   Analytics: a9e1f3841613ae0edb341fe2819a224d8889e80c
   Bolts: d176cb1e0012175589e389a9db49b85e27787576

@@ -46,6 +46,9 @@
 		EA72FB291AD1B7D5009F853F /* Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FB271AD1B7D5009F853F /* Segue.swift */; };
 		EA72FB2A1AD1B7D5009F853F /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FB281AD1B7D5009F853F /* Transition.swift */; };
 		EA72FB2C1AD1B7E1009F853F /* ScrollTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FB2B1AD1B7E1009F853F /* ScrollTransition.swift */; };
+		EA78C8781B320A2A0016AB73 /* AlamofireExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA78C8761B320A2A0016AB73 /* AlamofireExtension.swift */; };
+		EA78C8791B320A2A0016AB73 /* AzureUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA78C8771B320A2A0016AB73 /* AzureUploader.swift */; };
+		EA78C87C1B320A370016AB73 /* AzureUploaderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA78C87B1B320A370016AB73 /* AzureUploaderTest.swift */; };
 		EA7AA3651AA25D21003383BE /* ResourceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3641AA25D21003383BE /* ResourceExtension.swift */; };
 		EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3681AA26597003383BE /* SBConstants.swift */; };
 		EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3691AA26597003383BE /* StyleKit.swift */; };
@@ -191,6 +194,9 @@
 		EA72FB271AD1B7D5009F853F /* Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segue.swift; sourceTree = "<group>"; };
 		EA72FB281AD1B7D5009F853F /* Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
 		EA72FB2B1AD1B7E1009F853F /* ScrollTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollTransition.swift; sourceTree = "<group>"; };
+		EA78C8761B320A2A0016AB73 /* AlamofireExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireExtension.swift; sourceTree = "<group>"; };
+		EA78C8771B320A2A0016AB73 /* AzureUploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AzureUploader.swift; sourceTree = "<group>"; };
+		EA78C87B1B320A370016AB73 /* AzureUploaderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AzureUploaderTest.swift; sourceTree = "<group>"; };
 		EA7AA3641AA25D21003383BE /* ResourceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceExtension.swift; sourceTree = "<group>"; };
 		EA7AA3681AA26597003383BE /* SBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstants.swift; sourceTree = "<group>"; };
 		EA7AA3691AA26597003383BE /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
@@ -423,6 +429,7 @@
 			children = (
 				EAF670591B31F9450025D7CF /* Foundation */,
 				EAF670551B31F9450025D7CF /* Data */,
+				EA78C8751B320A2A0016AB73 /* Networking */,
 				EAF6706F1B31F9450025D7CF /* UI */,
 				EAF670911B31FCBE0025D7CF /* Utils */,
 				EAF6705D1B31F9450025D7CF /* S10 */,
@@ -528,6 +535,23 @@
 			path = Transitions;
 			sourceTree = "<group>";
 		};
+		EA78C8751B320A2A0016AB73 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				EA78C8761B320A2A0016AB73 /* AlamofireExtension.swift */,
+				EA78C8771B320A2A0016AB73 /* AzureUploader.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		EA78C87A1B320A370016AB73 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				EA78C87B1B320A370016AB73 /* AzureUploaderTest.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
 		EA9F35311A74CC6900E0C65D = {
 			isa = PBXGroup;
 			children = (
@@ -590,6 +614,7 @@
 		EA9F35551A74CC6900E0C65D /* CoreTests */ = {
 			isa = PBXGroup;
 			children = (
+				EA78C87A1B320A370016AB73 /* Networking */,
 				EA9F35581A74CC6900E0C65D /* CoreTests.swift */,
 				EAF6701A1B31E42E0025D7CF /* UploadTests.swift */,
 				EAF6709B1B32026F0025D7CF /* IntegrationTests.swift */,
@@ -1215,6 +1240,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAF670171B31DD740025D7CF /* GenericExtensions.swift in Sources */,
+				EA78C8791B320A2A0016AB73 /* AzureUploader.swift in Sources */,
 				EAF670781B31F9450025D7CF /* ReactiveCocoaExtension.swift in Sources */,
 				EAF670771B31F9450025D7CF /* NotificationCenterExtensions.swift in Sources */,
 				EAF670881B31F9450025D7CF /* UIKitExtension.swift in Sources */,
@@ -1230,6 +1256,7 @@
 				EAF670901B31FA2E0025D7CF /* UserDefaults.swift in Sources */,
 				EAF670831B31F9450025D7CF /* Video.swift in Sources */,
 				EAF6707C1B31F9450025D7CF /* _User.swift in Sources */,
+				EA78C8781B320A2A0016AB73 /* AlamofireExtension.swift in Sources */,
 				EAF670791B31F9450025D7CF /* _Candidate.swift in Sources */,
 				EAF670841B31F9450025D7CF /* TaskManager.swift in Sources */,
 				EAF670751B31F9450025D7CF /* SugarRecordExtension.swift in Sources */,
@@ -1325,6 +1352,7 @@
 				EA9F35591A74CC6900E0C65D /* CoreTests.swift in Sources */,
 				EAF670351B31EC9E0025D7CF /* GenericExtensions.swift in Sources */,
 				EAF6709C1B32026F0025D7CF /* IntegrationTests.swift in Sources */,
+				EA78C87C1B320A370016AB73 /* AzureUploaderTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
