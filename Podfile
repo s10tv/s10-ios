@@ -13,11 +13,11 @@ target :Core do
     pod 'NSLogger', '~> 1.5', :configuration => ['Debug']
     
     # Data
-    pod 'SugarRecord/CoreData', :git => 'https://github.com/tonyxiao/SugarRecord', :branch => 'swift-1.2'
+    pod 'SugarRecord/CoreData', :git => 'https://github.com/tonyxiao/SugarRecord', :branch => 'develop'
     pod 'Meteor', :git => 'https://github.com/tonyxiao/meteor-ios', :branch => 'dev'
     pod 'SwiftyUserDefaults', '~> 1.1'
     
-    # Netowkring
+    # Networking
     pod 'Alamofire', '~> 1.2'
     
     # UI
