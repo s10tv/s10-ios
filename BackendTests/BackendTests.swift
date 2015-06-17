@@ -26,6 +26,11 @@ class BackendTests: XCTestCase {
         XCTAssert(true, "Pass")
     }
     
+    func testAgain() {
+        XCTAssertTrue(true, "fail")
+    }
+    
+    
     func testArrayViewModel() {
         let vm = ArrayViewModel(content: ["1", "2", "3", "4"])
         XCTAssertEqual(vm.numberOfItemsInSection(0), 4, "Should have 4 items")

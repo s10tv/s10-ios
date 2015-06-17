@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="iXw-pM-Uzl">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Recorder View Controller-->
+        <scene sceneID="kNa-rK-164">
+            <objects>
+                <viewController id="iXw-pM-Uzl" customClass="RecorderViewController" customModule="Camera" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="v2h-V3-giF"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Wb-LY-vzV"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gqp-Y9-ZDL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nY8-Yz-lOD">
+                                <rect key="frame" x="16" y="20" width="568" height="560"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nY8-Yz-lOD" firstAttribute="top" secondItem="v2h-V3-giF" secondAttribute="bottom" id="GRy-TB-XHj"/>
+                            <constraint firstItem="8Wb-LY-vzV" firstAttribute="top" secondItem="nY8-Yz-lOD" secondAttribute="bottom" constant="20" id="elV-dN-5fS"/>
+                            <constraint firstItem="nY8-Yz-lOD" firstAttribute="trailing" secondItem="gqp-Y9-ZDL" secondAttribute="trailingMargin" id="roU-Tt-VYN"/>
+                            <constraint firstItem="nY8-Yz-lOD" firstAttribute="leading" secondItem="gqp-Y9-ZDL" secondAttribute="leadingMargin" id="zH2-3f-XbY"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="previewView" destination="nY8-Yz-lOD" id="C6k-L4-yvP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="rkz-Dx-bk0" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="295" y="615"/>
+        </scene>
+    </scenes>
+</document>

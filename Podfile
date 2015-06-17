@@ -53,6 +53,11 @@ target :BackendTests do
   pod 'Nimble', '~> 0.4.0' # TODO: Upgrade after swift 2.0
 end
 
+target :Camera do
+  link_with 'Camera'
+  pod 'SCRecorder', '~> 2.4'
+end
+
 # Hacks
 post_install do |installer|
     installer.project.targets.each do |target|
