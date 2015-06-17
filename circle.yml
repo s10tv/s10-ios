@@ -10,16 +10,14 @@ machine:
 
 dependencies:
   override:
-  # pre:
+  pre:
+    - brew update
+    - brew upgrade xctool
     - sudo gem uninstall highline commander --ignore-dependencies -x
-    # Currently cocoapods installation fails for following reason
-    # i18n requires Ruby version >= 1.9.3.  (https://circleci.com/gh/s10tv/s10-ios/4)
-    # Don't know why but the cocoapod version happens to be 0.36.4 which is what we need, comment out
-    # the cocoapods gem installation line for now to unblock until we figure out why it fails
-    # - sudo gem install cocoapods -v $(var=$(tail -1 Podfile.lock); echo ${var##COCOAPODS:})
+    - sudo gem install cocoapods -v $(var=$(tail -1 Podfile.lock); echo ${var##COCOAPODS:})
     - sudo gem install cupertino shenzhen sigh
     - ./scripts/import_credentials.sh
-  # override:
+  override:
     - pod update Meteor
   cache_directories:
     - "Pods"
