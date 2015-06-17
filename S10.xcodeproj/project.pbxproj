@@ -559,10 +559,9 @@
 		EA9F35311A74CC6900E0C65D = {
 			isa = PBXGroup;
 			children = (
-				EA9F353C1A74CC6900E0C65D /* Taylr */,
-				EA0FC91C1A87DE5800D62625 /* Common */,
 				EA35941C1B30CF9900E91337 /* Core */,
 				EA9F35551A74CC6900E0C65D /* CoreTests */,
+				EA9F353C1A74CC6900E0C65D /* Taylr */,
 				EA5B74071B30F7BB008E5CBC /* TestApp */,
 				EA9F353B1A74CC6900E0C65D /* Products */,
 				DDD7116BC0015396F5321D26 /* Pods */,
@@ -584,6 +583,7 @@
 		EA9F353C1A74CC6900E0C65D /* Taylr */ = {
 			isa = PBXGroup;
 			children = (
+				EA0FC91C1A87DE5800D62625 /* Common */,
 				EA5634DE1A7741FF00F62B52 /* Models */,
 				EA4F51831AE153790060405E /* ViewModels */,
 				EA6650E91AA00A9C001BA40C /* Services */,
@@ -884,9 +884,9 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				EA9F35391A74CC6900E0C65D /* Taylr */,
 				EA5B74311B3139EA008E5CBC /* Core */,
 				EA9F35511A74CC6900E0C65D /* CoreTests */,
+				EA9F35391A74CC6900E0C65D /* Taylr */,
 				EA5B74051B30F7BB008E5CBC /* TestApp */,
 			);
 		};
