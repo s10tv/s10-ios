@@ -8,14 +8,19 @@ use_frameworks!
 target :Backend do
     link_with 'Backend'
     pod 'ReactiveCocoa', '~> 2.4' # Update to 3.0 when ready
+    pod 'SugarRecord/CoreData', :git => 'https://github.com/tonyxiao/SugarRecord', :branch => 'swift-1.2'
+    pod 'Meteor', :git => 'https://github.com/tonyxiao/meteor-ios', :branch => 'dev'
+    pod 'SwiftyUserDefaults', '~> 1.1'
+    pod 'SwiftTryCatch', '~> 0.0.1'
+    
+    target :BackendTests do
+        link_with 'BackendTests'
+        pod 'Quick', '~> 0.3.0' # TODO: Upgrade after swift 2.0
+        pod 'Nimble', '~> 0.4.0' # TODO: Upgrade after swift 2.0
+    end
     
     target :Taylr do
         link_with 'Taylr'
-        
-        pod 'SugarRecord/CoreData', :git => 'https://github.com/tonyxiao/SugarRecord', :branch => 'swift-1.2'
-        pod 'Meteor', :git => 'https://github.com/tonyxiao/meteor-ios', :branch => 'dev'
-        pod 'SwiftyUserDefaults', '~> 1.1'
-        pod 'SwiftTryCatch', '~> 0.0.1'
         
         pod 'SwipeView', '~> 1.3'
         pod 'SDWebImage', '~> 3.7'
@@ -51,18 +56,10 @@ target :Backend do
         pod 'NSLogger', '~> 1.5', :configuration => ['Debug']
     end
     
-    target :BackendTests do
-        link_with 'BackendTests'
-        pod 'Quick', '~> 0.3.0' # TODO: Upgrade after swift 2.0
-        pod 'Nimble', '~> 0.4.0' # TODO: Upgrade after swift 2.0
+    target :Camera do
+        link_with 'Camera'
+        pod 'SCRecorder', '~> 2.4'
     end
-end
-
-
-
-target :Camera do
-  link_with 'Camera'
-  pod 'SCRecorder', '~> 2.4'
 end
 
 # Hacks

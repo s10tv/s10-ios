@@ -8,8 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		180C01DFC32BF643979AF7BA /* Pods_Backend_Taylr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E124F79EE1D0E577DCBCFE77 /* Pods_Backend_Taylr.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		44E19D671B859E037A1401D8 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D38E9CB79C25FDAE97BD9D3D /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		E3458E1FFFE9A05C73A02825 /* Pods_Camera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2EBB530A3DC355EF8890306E /* Pods_Camera.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		3271F7B1C0BDC9AD6D624777 /* Pods_Backend_Camera.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAACBA4FE8E370164B91C444 /* Pods_Backend_Camera.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		EA0FC9341A87DE5800D62625 /* MeteorCDStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC91F1A87DE5800D62625 /* MeteorCDStack.swift */; };
 		EA0FC9351A87DE5800D62625 /* MeteorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9201A87DE5800D62625 /* MeteorExtension.swift */; };
 		EA0FC9361A87DE5800D62625 /* SugarRecordExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9211A87DE5800D62625 /* SugarRecordExtension.swift */; };
@@ -122,6 +121,7 @@
 		EAE1E07D1AE3788300F03F13 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1E07C1AE3788300F03F13 /* Globals.swift */; };
 		EAEB63DB1AD31A4E0002D55C /* Animation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEB63DA1AD31A4E0002D55C /* Animation.swift */; };
 		EAF195CF1A827FAD00A2F103 /* Taylr-Bridging.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF195CE1A827FAC00A2F103 /* Taylr-Bridging.m */; };
+		EAF92AD41B31CD1400FF8DD7 /* Backend.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5B74321B3139EA008E5CBC /* Backend.framework */; };
 		ECB0FA6913A788DFFAE0BDDF /* Pods_Backend_BackendTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 21AC1310FAF1B62E59D95C0D /* Pods_Backend_BackendTests.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		F95D95DF1A84A1170068F090 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95D95DE1A84A1170068F090 /* MediaPlayer.framework */; };
 		F996C71E1A81F1D100314FF8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71D1A81F1D100314FF8 /* CoreMedia.framework */; };
@@ -131,31 +131,8 @@
 		F996C7261A81F1F200314FF8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C7251A81F1F200314FF8 /* OpenGLES.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		EA5B74541B315D8E008E5CBC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EA9F35321A74CC6900E0C65D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EA5B74311B3139EA008E5CBC;
-			remoteInfo = Backend;
-		};
-		EA5B745D1B31603B008E5CBC /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EA9F35321A74CC6900E0C65D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = EA5B74311B3139EA008E5CBC;
-			remoteInfo = Backend;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		0686ABB348D06D87DA844419 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
-		07E728CD3F6784F1DF646646 /* Pods-Camera.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Camera.release.xcconfig"; path = "Pods/Target Support Files/Pods-Camera/Pods-Camera.release.xcconfig"; sourceTree = "<group>"; };
-		10FA8E7FC004204C20D051C6 /* Pods_BackendTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_BackendTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		21AC1310FAF1B62E59D95C0D /* Pods_Backend_BackendTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Backend_BackendTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		2CD850D0B9EC2938BA5CEB59 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		2EBB530A3DC355EF8890306E /* Pods_Camera.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Camera.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D38E9CB79C25FDAE97BD9D3D /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E124F79EE1D0E577DCBCFE77 /* Pods_Backend_Taylr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Backend_Taylr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA0FC91F1A87DE5800D62625 /* MeteorCDStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorCDStack.swift; sourceTree = "<group>"; };
 		EA0FC9201A87DE5800D62625 /* MeteorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorExtension.swift; sourceTree = "<group>"; };
@@ -170,7 +147,6 @@
 		EA0FC9321A87DE5800D62625 /* ViewProviders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewProviders.swift; sourceTree = "<group>"; };
 		EA0FED401ADDD0C700FC6FCB /* PanInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanInteractor.swift; sourceTree = "<group>"; };
 		EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
-		EA220138497B97E437DF1A94 /* Pods-Camera.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Camera.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Camera/Pods-Camera.debug.xcconfig"; sourceTree = "<group>"; };
 		EA24C26C1AD8F52000C40AAD /* Metadata.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Metadata.swift; sourceTree = "<group>"; };
 		EA2A38E51AD8A141005708D2 /* MeteorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorService.swift; sourceTree = "<group>"; };
 		EA3594131B2DE5C300E91337 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
@@ -210,8 +186,6 @@
 		EA5B744F1B31459D008E5CBC /* Pods-Backend-BackendTests.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-Backend-BackendTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Backend-BackendTests/Pods-Backend-BackendTests.debug.xcconfig"; sourceTree = "<group>"; };
 		EA5B74501B31459D008E5CBC /* Pods-Backend-BackendTests.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-Backend-BackendTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-Backend-BackendTests/Pods-Backend-BackendTests.release.xcconfig"; sourceTree = "<group>"; };
 		EA5B74511B31462C008E5CBC /* Pods_Backend.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Pods_Backend.framework; path = "Pods/../build/Debug-iphoneos/Pods_Backend.framework"; sourceTree = "<group>"; };
-		EA5B74561B315EE2008E5CBC /* Pods-BackendTests.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-BackendTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-BackendTests/Pods-BackendTests.debug.xcconfig"; sourceTree = "<group>"; };
-		EA5B74571B315EE2008E5CBC /* Pods-BackendTests.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = "Pods-BackendTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-BackendTests/Pods-BackendTests.release.xcconfig"; sourceTree = "<group>"; };
 		EA5B745A1B315FE2008E5CBC /* Pods-Backend-Taylr.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-Backend-Taylr.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Backend-Taylr/Pods-Backend-Taylr.debug.xcconfig"; sourceTree = "<group>"; };
 		EA5B745B1B315FE2008E5CBC /* Pods-Backend-Taylr.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-Backend-Taylr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Backend-Taylr/Pods-Backend-Taylr.release.xcconfig"; sourceTree = "<group>"; };
 		EA608BAB1AE6A249003E1C75 /* MessagesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewModel.swift; sourceTree = "<group>"; };
@@ -291,12 +265,15 @@
 		EAE1E07C1AE3788300F03F13 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		EAEB63DA1AD31A4E0002D55C /* Animation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Animation.swift; sourceTree = "<group>"; };
 		EAF195CE1A827FAC00A2F103 /* Taylr-Bridging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Taylr-Bridging.m"; sourceTree = "<group>"; };
+		EAF92AD51B31CE0200FF8DD7 /* Pods-Backend-Camera.debug.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-Backend-Camera.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Backend-Camera/Pods-Backend-Camera.debug.xcconfig"; sourceTree = "<group>"; };
+		EAF92AD61B31CE0200FF8DD7 /* Pods-Backend-Camera.release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = "Pods-Backend-Camera.release.xcconfig"; path = "Pods/Target Support Files/Pods-Backend-Camera/Pods-Backend-Camera.release.xcconfig"; sourceTree = "<group>"; };
 		F95D95DE1A84A1170068F090 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		F996C71D1A81F1D100314FF8 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		F996C71F1A81F1D800314FF8 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		F996C7211A81F1E000314FF8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F996C7231A81F1E700314FF8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F996C7251A81F1F200314FF8 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		FAACBA4FE8E370164B91C444 /* Pods_Backend_Camera.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Backend_Camera.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -304,7 +281,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E3458E1FFFE9A05C73A02825 /* Pods_Camera.framework in Frameworks */,
+				EAF92AD41B31CD1400FF8DD7 /* Backend.framework in Frameworks */,
+				3271F7B1C0BDC9AD6D624777 /* Pods_Backend_Camera.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -327,7 +305,6 @@
 				F996C7221A81F1E000314FF8 /* AVFoundation.framework in Frameworks */,
 				F996C7201A81F1D800314FF8 /* CoreVideo.framework in Frameworks */,
 				F996C71E1A81F1D100314FF8 /* CoreMedia.framework in Frameworks */,
-				44E19D671B859E037A1401D8 /* Pods.framework in Frameworks */,
 				180C01DFC32BF643979AF7BA /* Pods_Backend_Taylr.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,18 +324,16 @@
 		2C9F4D1EF3D7E4C4FBB0AEDB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EA5B74511B31462C008E5CBC /* Pods_Backend.framework */,
 				F95D95DE1A84A1170068F090 /* MediaPlayer.framework */,
 				F996C7251A81F1F200314FF8 /* OpenGLES.framework */,
 				F996C7231A81F1E700314FF8 /* QuartzCore.framework */,
 				F996C7211A81F1E000314FF8 /* AVFoundation.framework */,
 				F996C71F1A81F1D800314FF8 /* CoreVideo.framework */,
 				F996C71D1A81F1D100314FF8 /* CoreMedia.framework */,
-				D38E9CB79C25FDAE97BD9D3D /* Pods.framework */,
-				10FA8E7FC004204C20D051C6 /* Pods_BackendTests.framework */,
-				2EBB530A3DC355EF8890306E /* Pods_Camera.framework */,
+				EA5B74511B31462C008E5CBC /* Pods_Backend.framework */,
 				21AC1310FAF1B62E59D95C0D /* Pods_Backend_BackendTests.framework */,
 				E124F79EE1D0E577DCBCFE77 /* Pods_Backend_Taylr.framework */,
+				FAACBA4FE8E370164B91C444 /* Pods_Backend_Camera.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -378,18 +353,14 @@
 			isa = PBXGroup;
 			children = (
 				EA62A87C1AD98B3600B5D3D9 /* PKHUD */,
-				2CD850D0B9EC2938BA5CEB59 /* Pods.debug.xcconfig */,
-				0686ABB348D06D87DA844419 /* Pods.release.xcconfig */,
 				EA5B744D1B314580008E5CBC /* Pods-Backend.debug.xcconfig */,
 				EA5B744E1B314580008E5CBC /* Pods-Backend.release.xcconfig */,
-				EA220138497B97E437DF1A94 /* Pods-Camera.debug.xcconfig */,
-				07E728CD3F6784F1DF646646 /* Pods-Camera.release.xcconfig */,
-				EA5B74561B315EE2008E5CBC /* Pods-BackendTests.debug.xcconfig */,
-				EA5B74571B315EE2008E5CBC /* Pods-BackendTests.release.xcconfig */,
-				EA5B745A1B315FE2008E5CBC /* Pods-Backend-Taylr.debug.xcconfig */,
-				EA5B745B1B315FE2008E5CBC /* Pods-Backend-Taylr.release.xcconfig */,
 				EA5B744F1B31459D008E5CBC /* Pods-Backend-BackendTests.debug.xcconfig */,
 				EA5B74501B31459D008E5CBC /* Pods-Backend-BackendTests.release.xcconfig */,
+				EA5B745A1B315FE2008E5CBC /* Pods-Backend-Taylr.debug.xcconfig */,
+				EA5B745B1B315FE2008E5CBC /* Pods-Backend-Taylr.release.xcconfig */,
+				EAF92AD51B31CE0200FF8DD7 /* Pods-Backend-Camera.debug.xcconfig */,
+				EAF92AD61B31CE0200FF8DD7 /* Pods-Backend-Camera.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -822,7 +793,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				EA5B745E1B31603B008E5CBC /* PBXTargetDependency */,
 			);
 			name = Taylr;
 			productName = Taylr;
@@ -843,7 +813,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				EA5B74551B315D8E008E5CBC /* PBXTargetDependency */,
 			);
 			name = BackendTests;
 			productName = BackendTests;
@@ -972,7 +941,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Camera/Pods-Camera-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Backend-Camera/Pods-Backend-Camera-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		22B85F6A287D7401CC82E5E2 /* Embed Pods Frameworks */ = {
@@ -1062,7 +1031,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Camera/Pods-Camera-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Backend-Camera/Pods-Backend-Camera-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		BD34D0835DABB628BB8E3B6A /* Embed Pods Frameworks */ = {
@@ -1235,19 +1204,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		EA5B74551B315D8E008E5CBC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EA5B74311B3139EA008E5CBC /* Backend */;
-			targetProxy = EA5B74541B315D8E008E5CBC /* PBXContainerItemProxy */;
-		};
-		EA5B745E1B31603B008E5CBC /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = EA5B74311B3139EA008E5CBC /* Backend */;
-			targetProxy = EA5B745D1B31603B008E5CBC /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
 		EA5B74151B30F7BB008E5CBC /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
@@ -1310,7 +1266,7 @@
 /* Begin XCBuildConfiguration section */
 		EA5B74241B30F7BB008E5CBC /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EA220138497B97E437DF1A94 /* Pods-Camera.debug.xcconfig */;
+			baseConfigurationReference = EAF92AD51B31CE0200FF8DD7 /* Pods-Backend-Camera.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -1329,7 +1285,7 @@
 		};
 		EA5B74251B30F7BB008E5CBC /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 07E728CD3F6784F1DF646646 /* Pods-Camera.release.xcconfig */;
+			baseConfigurationReference = EAF92AD61B31CE0200FF8DD7 /* Pods-Backend-Camera.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
