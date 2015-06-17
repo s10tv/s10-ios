@@ -41,7 +41,7 @@ extension METDDPClient {
         }
     }
     
-    public func callMethod(method: String, params: [AnyObject]? = nil, stub:(([AnyObject]!) -> AnyObject!)? = nil) -> RACSignal {
+    public func callMethod(method: String, params: [AnyObject]? = nil, stub: METMethodStub? = nil) -> RACSignal {
         let subject = RACReplaySubject()
         callMethodWithName(method, parameters: params, completionHandler: { res, error in
             if error != nil {
@@ -103,6 +103,6 @@ extension NSManagedObject {
     }
     
     public var documentID : String? {
-        return meteorStore?.documentKeyForObjectID(objectID)?.documentID as? String
+        return meteorStore?.documentKeyForObjectID(objectID).documentID as? String
     }
 }

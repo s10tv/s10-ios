@@ -57,7 +57,7 @@ public class Metadata {
     
     // Unsafe
     public func getValue(metadataKey: String) -> AnyObject? {
-        return collection.documentWithID(metadataKey)?.fields["value"]
+        return collection.documentWithID(metadataKey).fields["value"]
     }
     
     public func setValue(value: AnyObject?, metadataKey: String) {

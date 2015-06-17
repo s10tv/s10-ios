@@ -31,7 +31,7 @@ PODS:
   - Heap (2.1.5)
   - InflectorKit (0.0.1)
   - INTULocationManager (3.0.3)
-  - Meteor (0.1.2):
+  - Meteor (0.1.4):
     - InflectorKit
     - PocketSocket
     - SimpleKeychain
@@ -121,7 +121,7 @@ CHECKOUT OPTIONS:
     :commit: 612b2a34d4da8601a64944a172628420b6227c06
     :git: https://github.com/tonyxiao/analytics-ios.git
   Meteor:
-    :commit: 49234e9616f970c12a152ea9ba80e6965760b9ce
+    :commit: 424de2cfd7b3d63188d34eefe2acdd8b0ca50da2
     :git: https://github.com/tonyxiao/meteor-ios
   PKHUD:
     :commit: 84626dc4675ef2ce9f729b0ee10b89c722ad21ee
@@ -147,7 +147,7 @@ SPEC CHECKSUMS:
   Heap: 9d41b3d07bc86c9127364b638c710d854390a113
   InflectorKit: 64497199e6764f4d8337cab7f700a77b13d76a73
   INTULocationManager: e79327803a163f5fec28eb042bb124ed0c6e4876
-  Meteor: 1b061243f87a9021492eddbb5d5503aa78b2ef35
+  Meteor: af43341f10dbc088803aa6cfa4135ae3a0b8ebc9
   Mixpanel: 488567f7138408f360377dd46e1d189655f8b435
   Nimble: 49b7a7da8919f42823d37c6d68cc6d15a7009f32
   NSLogger: 5ed223a2436df96244e033be750656dacdeec034
