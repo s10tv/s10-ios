@@ -13,6 +13,7 @@ import FacebookSDK
 //import CrashlyticsFramework
 //import BugfenderSDK
 import SwiftyUserDefaults
+import Backend
 
 // Globally accessible variables and shorthands
 private struct _GlobalsContainer {
@@ -33,6 +34,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Configure the environment
+        let t = Task(clientId: "", type: "")
         let env = Environment.configureFromEmbeddedProvisioningProfile()
         
         // Start crash reporting and logging as soon as we can

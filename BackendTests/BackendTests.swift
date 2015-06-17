@@ -8,6 +8,7 @@
 
 import UIKit
 import XCTest
+import Backend
 
 class BackendTests: XCTestCase {
     
@@ -32,8 +33,10 @@ class BackendTests: XCTestCase {
     
     
     func testArrayViewModel() {
-        let vm = ArrayViewModel(content: ["1", "2", "3", "4"])
-        XCTAssertEqual(vm.numberOfItemsInSection(0), 4, "Should have 4 items")
+        let task = Task(clientId: "", type: "")
+        XCTAssertNotNil(task, "")
+//        let vm = ArrayViewModel(content: ["1", "2", "3", "4"])
+//        XCTAssertEqual(vm.numberOfItemsInSection(0), 4, "Should have 4 items")
     }
     
     func testPerformanceExample() {

@@ -9,12 +9,12 @@
 import Foundation
 import ReactiveCocoa
 
-class Task {
+public class Task {
     let clientId: String
     let type: String
     let signal: RACSignal = RACReplaySubject()
     
-    init(clientId: String, type: String) {
+    public init(clientId: String, type: String) {
         self.clientId = clientId
         self.type = type
     }
