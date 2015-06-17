@@ -13,7 +13,7 @@ import ReactiveCocoa
 
 class AzureUploaderTest: XCTestCase {
 
-    let UPLOAD_URL = "https://s10tv.blob.core.windows.net/s10tv-dev/" +
+    let UPLOAD_URL = "http://s10tv.blob.core.windows.net/s10tv-dev/" +
         "testblob?se=2015-11-16T11%3A41%3A47Z&sp=w&sv=2014-02-14&sr=b&sig=cdVLZSMRLqWOwEJj%2BAadJ0QpLJ9rK7tEQNomCMaNcXw%3D"
 
     var toTest: AzureUploader! = nil
