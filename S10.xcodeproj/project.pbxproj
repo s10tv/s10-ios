@@ -134,6 +134,9 @@
 		F996C7221A81F1E000314FF8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C7211A81F1E000314FF8 /* AVFoundation.framework */; };
 		F996C7241A81F1E700314FF8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C7231A81F1E700314FF8 /* QuartzCore.framework */; };
 		F996C7261A81F1F200314FF8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C7251A81F1F200314FF8 /* OpenGLES.framework */; };
+		F99AAF891B31FFA000881EAA /* AzureUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99AAF881B31FFA000881EAA /* AzureUploader.swift */; };
+		F99AAF8C1B31FFBE00881EAA /* AzureUploaderTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99AAF8B1B31FFBE00881EAA /* AzureUploaderTest.swift */; };
+		F99AAF8E1B31FFF200881EAA /* AlamofireExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99AAF8D1B31FFF200881EAA /* AlamofireExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -284,6 +287,9 @@
 		F996C7211A81F1E000314FF8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F996C7231A81F1E700314FF8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F996C7251A81F1F200314FF8 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		F99AAF881B31FFA000881EAA /* AzureUploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AzureUploader.swift; sourceTree = "<group>"; };
+		F99AAF8B1B31FFBE00881EAA /* AzureUploaderTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AzureUploaderTest.swift; sourceTree = "<group>"; };
+		F99AAF8D1B31FFF200881EAA /* AlamofireExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireExtension.swift; sourceTree = "<group>"; };
 		FAACBA4FE8E370164B91C444 /* Pods_Backend_Camera.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Backend_Camera.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -427,6 +433,7 @@
 		EA35941C1B30CF9900E91337 /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				F99AAF871B31FFA000881EAA /* Networking */,
 				EAF670591B31F9450025D7CF /* Foundation */,
 				EAF670551B31F9450025D7CF /* Data */,
 				EAF6706F1B31F9450025D7CF /* UI */,
@@ -596,6 +603,7 @@
 		EA9F35551A74CC6900E0C65D /* CoreTests */ = {
 			isa = PBXGroup;
 			children = (
+				F99AAF8A1B31FFBE00881EAA /* Networking */,
 				EA9F35581A74CC6900E0C65D /* CoreTests.swift */,
 				EAF6701A1B31E42E0025D7CF /* UploadTests.swift */,
 				EA9F35561A74CC6900E0C65D /* Supporting Files */,
@@ -797,6 +805,23 @@
 				EAF670721B31F9450025D7CF /* UIKitExtension.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		F99AAF871B31FFA000881EAA /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F99AAF8D1B31FFF200881EAA /* AlamofireExtension.swift */,
+				F99AAF881B31FFA000881EAA /* AzureUploader.swift */,
+			);
+			path = Networking;
+			sourceTree = "<group>";
+		};
+		F99AAF8A1B31FFBE00881EAA /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				F99AAF8B1B31FFBE00881EAA /* AzureUploaderTest.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1210,11 +1235,13 @@
 				EAF670851B31F9450025D7CF /* VideoMessageTask.swift in Sources */,
 				EAF6701D1B31E6550025D7CF /* Core.m in Sources */,
 				EAF670741B31F9450025D7CF /* MeteorExtension.swift in Sources */,
+				F99AAF891B31FFA000881EAA /* AzureUploader.swift in Sources */,
 				EAF6707B1B31F9450025D7CF /* _Message.swift in Sources */,
 				EAF6708A1B31F9AD0025D7CF /* Logging.swift in Sources */,
 				EAF670901B31FA2E0025D7CF /* UserDefaults.swift in Sources */,
 				EAF670831B31F9450025D7CF /* Video.swift in Sources */,
 				EAF6707C1B31F9450025D7CF /* _User.swift in Sources */,
+				F99AAF8E1B31FFF200881EAA /* AlamofireExtension.swift in Sources */,
 				EAF670791B31F9450025D7CF /* _Candidate.swift in Sources */,
 				EAF670841B31F9450025D7CF /* TaskManager.swift in Sources */,
 				EAF670751B31F9450025D7CF /* SugarRecordExtension.swift in Sources */,
@@ -1307,6 +1334,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAF6701B1B31E42E0025D7CF /* UploadTests.swift in Sources */,
+				F99AAF8C1B31FFBE00881EAA /* AzureUploaderTest.swift in Sources */,
 				EA9F35591A74CC6900E0C65D /* CoreTests.swift in Sources */,
 				EAF670351B31EC9E0025D7CF /* GenericExtensions.swift in Sources */,
 			);

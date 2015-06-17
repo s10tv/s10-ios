@@ -16,11 +16,14 @@ target :Core do
     pod 'SugarRecord/CoreData', :git => 'https://github.com/tonyxiao/SugarRecord', :branch => 'swift-1.2'
     pod 'Meteor', :git => 'https://github.com/tonyxiao/meteor-ios', :branch => 'dev'
     pod 'SwiftyUserDefaults', '~> 1.1'
-    
+
     # UI
     pod 'Cartography', '~> 0.5'
     pod 'EDColor', '~> 1.0'
-    
+
+    # Netowkring
+    pod 'Alamofire', '~> 1.2'
+
     target :CoreTests do
         link_with 'CoreTests'
         pod 'Quick', '~> 0.3.0' # TODO: Upgrade after swift 2.0
