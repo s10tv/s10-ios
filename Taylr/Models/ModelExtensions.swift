@@ -35,3 +35,7 @@ extension Connection {
 extension Candidate {
     
 }
+
+extension Settings {
+    var devAudience: Bool { return Globals.env.audience == .Dev }
+}

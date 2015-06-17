@@ -11,30 +11,30 @@ import SwiftyUserDefaults
 
 // NOTE: Use Hungarian notation (http://en.wikipedia.org/wiki/Hungarian_notation)
 // to name UserDefaultKey's because they are not statically typed
-enum UserDefaultKey : String {
+public enum UserDefaultKey : String {
     case sMeteorUserId = "meteorUserId"
     case sUserDisplayName = "userDisplayName"
     case sUserEmail = "userEmail"
     
-    func defaultValue() -> Any? {
+    public func defaultValue() -> Any? {
         switch self {
         default: return nil
         }
     }
-    static let allKeys = [sMeteorUserId]
+    public static let allKeys = [sMeteorUserId]
 }
 
 extension NSUserDefaults {
-    subscript(key: UserDefaultKey) -> Proxy {
+    public subscript(key: UserDefaultKey) -> Proxy {
         return self[key.rawValue]
     }
     
-    subscript(key: UserDefaultKey) -> Any? {
+    public subscript(key: UserDefaultKey) -> Any? {
         get { return self[key.rawValue] }
         set { self[key.rawValue] = newValue }
     }
     
-    func registerDefaultValues() {
+    public func registerDefaultValues() {
         for key in UserDefaultKey.allKeys {
             if let value = key.defaultValue() {
                 Defaults[key] ?= value
@@ -42,7 +42,7 @@ extension NSUserDefaults {
         }
     }
     
-    func resetAll() {
+    public func resetAll() {
         removePersistentDomainForName(NSBundle.mainBundle().bundleIdentifier!)
         registerDefaultValues()
     }
