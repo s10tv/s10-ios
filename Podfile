@@ -42,11 +42,11 @@ target :Core do
         pod 'PKHUD', :git => 'https://github.com/tonyxiao/PKHUD' # Fork is needed to work around xcasset compilation issue inside pod
         pod 'XLForm', '~> 2.2'
         
-        pod 'UICollectionViewLeftAlignedLayout', '~> 0.0.3'
+        pod 'UICollectionViewLeftAlignedLayout', '~> 1.0'
         
         #pod 'Spring', '~> 1.0'
         #pod 'pop', '~> 1.0'
-        pod 'RBBAnimation', '~> 0.3.0'
+        pod 'RBBAnimation', '~> 0.4.0'
         
 
         pod 'DateTools', '~> 1.5'
