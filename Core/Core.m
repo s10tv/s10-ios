@@ -1,15 +1,15 @@
 //
-//  Serendipity-Bridging.m
-//  Serendipity
+//  Core.m
+//  S10
 //
-//  Created by Tony Xiao on 2/4/15.
-//  Copyright (c) 2015 Serendipity. All rights reserved.
+//  Created by Tony Xiao on 6/17/15.
+//  Copyright (c) 2015 S10. All rights reserved.
 //
 
 #ifdef DEBUG
 #import <NSLogger/LoggerClient.h>
 #endif
-#import "Taylr-Bridging.h"
+#import "Core.h"
 
 
 @implementation RACSignal (SwiftCompileFix)
@@ -41,8 +41,8 @@
     if (self = [super init]) {
         _logger = LoggerInit();
         LoggerSetOptions(_logger, kLoggerOption_BufferLogsUntilConnection
-                                 |kLoggerOption_BrowseBonjour
-                                 |kLoggerOption_BrowseOnlyLocalDomain);
+                         |kLoggerOption_BrowseBonjour
+                         |kLoggerOption_BrowseOnlyLocalDomain);
         LoggerStart(_logger);
     }
     return self;

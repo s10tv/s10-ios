@@ -9,6 +9,7 @@
 import Foundation
 import SugarRecord
 import Meteor
+import Core
 
 class MeteorCDStack : SugarRecordStackProtocol {
     let name = "MeteorCDStack"

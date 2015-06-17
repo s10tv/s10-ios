@@ -9,6 +9,7 @@
 import CoreData
 import SugarRecord
 import SwiftTryCatch
+import Core
 
 extension SugarRecord {
     public class func transaction(closure: (context: SugarRecordContext) -> ()) {

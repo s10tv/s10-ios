@@ -9,6 +9,7 @@
 import UIKit
 import ReactiveCocoa
 import RBBAnimation
+import Core
 
 class WaveTransition : ViewControllerTransition {
     

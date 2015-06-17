@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <ReactiveCocoa/ReactiveCocoa.h>
+#import <Meteor/METDatabase.h>
 
 //! Project version number for Backend.
 FOUNDATION_EXPORT double CoreVersionNumber;
@@ -14,6 +16,46 @@ FOUNDATION_EXPORT double CoreVersionNumber;
 //! Project version string for Backend.
 FOUNDATION_EXPORT const unsigned char CoreVersionString[];
 
-// In this header, you should import all the public headers of your framework using statements like #import <Core/PublicHeader.h>
+@interface METDatabase (Private)
 
+- (void)reset;
 
+@end
+
+@interface RACSignal (SwiftCompileFix)
+
+- (RACSignal *)And;
+- (RACSignal *)Or;
+- (RACSignal *)Not;
+
++ (RACSignal *)Return:(id)object;
+
+@end
+
+@interface NSLogger : NSObject
+
+- (void)logWithFilename:(NSString *)filename
+             lineNumber:(int)lineNumber
+           functionName:(NSString *)functionName
+                 domain:(NSString *)domain
+                  level:(int)level
+                message:(NSString *)message;
+
+@end
+
+//@interface Bugfender (Swift)
+//
+//+ (void)logWithFilename:(NSString *)filename
+//             lineNumber:(int)lineNumber
+//           functionName:(NSString *)functionName
+//                    tag:(NSString *)tag
+//                  level:(BFLogLevel)level
+//                message:(NSString *)message;
+//
+//@end
+
+//@interface Crashlytics (Swift)
+//
+//+ (void)logMessage:(NSString *)message;
+//
+//@end

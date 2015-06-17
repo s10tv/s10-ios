@@ -8,6 +8,7 @@
 
 import UIKit
 import XLForm
+import Core
 
 class RowDescriptor : XLFormPrototypeRowDescriptor {
     

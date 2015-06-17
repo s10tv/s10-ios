@@ -13,14 +13,14 @@ import Foundation
 public let Log = Logger()
 
 public class Logger {
-    enum LogLevel : Int, Printable {
+    public enum LogLevel : Int, Printable {
         case Error = 0
         case Warn
         case Info
         case Debug
         case Verbose
         
-        var description: String {
+        public var description: String {
             switch self {
                 case .Error: return "ERROR"
                 case .Warn: return "WARN"
@@ -35,37 +35,37 @@ public class Logger {
     
     // MARK: Metadata API
     
-    func setUserId(userId: String?) {
+    public func setUserId(userId: String?) {
 //        Crashlytics.setUserIdentifier(userId)
     }
     
-    func setUserEmail(email: String?) {
+    public func setUserEmail(email: String?) {
 //        Crashlytics.setUserEmail(email)
     }
     
-    func setUserName(name: String?) {
+    public func setUserName(name: String?) {
 //        Crashlytics.setUserName(name)
     }
     
     // MARK: Logging API
     
-    func verbose(message: String, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) {
+    public func verbose(message: String, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) {
         log(message, level: LogLevel.Verbose, function: function, file: file, line: line)
     }
     
-    func debug(message: String, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) {
+    public func debug(message: String, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) {
         log(message, level: LogLevel.Debug, function: function, file: file, line: line)
     }
     
-    func info(message: String, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) {
+    public func info(message: String, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) {
         log(message, level: LogLevel.Info, function: function, file: file, line: line)
     }
     
-    func warn(message: String, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) {
+    public func warn(message: String, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) {
         log(message, level: LogLevel.Warn, function: function, file: file, line: line)
     }
     
-    func error(message: String, _ error: NSError? = nil, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) {
+    public func error(message: String, _ error: NSError? = nil, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) {
         let msg = error != nil ? "\(message) error: \(error)" : message
         log(msg, level: LogLevel.Error, function: function, file: file, line: line)
     }

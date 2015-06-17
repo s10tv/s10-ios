@@ -8,6 +8,7 @@
 
 import Foundation
 import Analytics
+import Core
 //import Heap
 
 class AnalyticsService {

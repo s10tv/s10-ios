@@ -9,6 +9,7 @@
 import Foundation
 import Meteor
 import ReactiveCocoa
+import Core
 
 class UpgradeService : NSObject {
     let env: Environment

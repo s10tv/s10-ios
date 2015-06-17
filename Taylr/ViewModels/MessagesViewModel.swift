@@ -9,6 +9,7 @@
 import Foundation
 import CoreData
 import SDWebImage
+import Core
 
 // MARK: - MessagesViewModel
 

@@ -9,6 +9,7 @@
 import Foundation
 import INTULocationManager
 import ReactiveCocoa
+import Core
 
 class LocationService {
     private let manager = INTULocationManager.sharedInstance()
