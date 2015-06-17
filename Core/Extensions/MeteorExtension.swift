@@ -12,7 +12,7 @@ import ReactiveCocoa
 //extension
 extension METSubscription {
     
-    var signal : RACSignal {
+    public var signal : RACSignal {
         let subject = RACReplaySubject()
         whenDone { (err) -> Void in
             err != nil ? subject.sendError(err) : subject.sendCompleted()
@@ -22,7 +22,7 @@ extension METSubscription {
 }
 
 extension METDDPClient {
-    var logDDPMessages : Bool {
+    public var logDDPMessages : Bool {
         get {
             return NSUserDefaults.standardUserDefaults().boolForKey("METShouldLogDDPMessages")
         }
@@ -31,7 +31,7 @@ extension METDDPClient {
         }
     }
     
-    func call(method: String, _ params: [AnyObject]? = nil, stub:(() -> AnyObject?)? = nil) -> RACSignal {
+    public func call(method: String, _ params: [AnyObject]? = nil, stub:(() -> AnyObject?)? = nil) -> RACSignal {
         if let stub = stub {
             return callMethod(method, params: params) { _ in
                 return stub()
@@ -41,7 +41,7 @@ extension METDDPClient {
         }
     }
     
-    func callMethod(method: String, params: [AnyObject]? = nil, stub:(([AnyObject]!) -> AnyObject!)? = nil) -> RACSignal {
+    public func callMethod(method: String, params: [AnyObject]? = nil, stub:(([AnyObject]!) -> AnyObject!)? = nil) -> RACSignal {
         let subject = RACReplaySubject()
         callMethodWithName(method, parameters: params, completionHandler: { res, error in
             if error != nil {
@@ -54,7 +54,7 @@ extension METDDPClient {
         return subject
     }
     
-    func loginWithMethod(method: String, params: [AnyObject]?) -> RACSignal {
+    public func loginWithMethod(method: String, params: [AnyObject]?) -> RACSignal {
         let subject = RACReplaySubject()
         loginWithMethodName(method, parameters: params) { (err) -> Void in
             err != nil ? subject.sendError(err) : subject.sendCompleted()
@@ -62,7 +62,7 @@ extension METDDPClient {
         return subject;
     }
     
-    func logout() -> RACSignal {
+    public func logout() -> RACSignal {
         let subject = RACReplaySubject()
         logoutWithCompletionHandler { (error) -> Void in
             if error != nil {
@@ -78,31 +78,31 @@ extension METDDPClient {
 // MARK: - Meteor CoreData
 
 extension NSManagedObjectContext {
-    var meteorStore : METIncrementalStore? {
+    public var meteorStore : METIncrementalStore? {
         return persistentStoreCoordinator?.persistentStores.first as? METIncrementalStore
     }
     
-    func objectIDWithCollection(collection: String, documentID: String) -> NSManagedObjectID? {
+    public func objectIDWithCollection(collection: String, documentID: String) -> NSManagedObjectID? {
         return meteorStore?.objectIDForDocumentKey(METDocumentKey(collectionName: collection, documentID: documentID))
     }
     
-    func objectInCollection(collection: String, documentID: String) -> NSManagedObject? {
+    public func objectInCollection(collection: String, documentID: String) -> NSManagedObject? {
         let objectID = objectIDWithCollection(collection, documentID: documentID)
         return objectID != nil ? objectWithID(objectID!) : nil
     }
     
-    func existingObjectInCollection(collection: String, documentID: String, error: NSErrorPointer) -> NSManagedObject? {
+    public func existingObjectInCollection(collection: String, documentID: String, error: NSErrorPointer) -> NSManagedObject? {
         let objectID = objectIDWithCollection(collection, documentID: documentID)
         return objectID != nil ? existingObjectWithID(objectID!, error: error) : nil
     }
 }
 
 extension NSManagedObject {
-    var meteorStore : METIncrementalStore? {
+    public var meteorStore : METIncrementalStore? {
         return managedObjectContext?.meteorStore
     }
     
-    var documentID : String? {
+    public var documentID : String? {
         return meteorStore?.documentKeyForObjectID(objectID)?.documentID as? String
     }
 }

@@ -9,19 +9,18 @@
 import Foundation
 import SugarRecord
 import Meteor
-import Core
 
-class MeteorCDStack : SugarRecordStackProtocol {
-    let name = "MeteorCDStack"
-    let stackType = SugarRecordEngine.SugarRecordEngineCoreData
-    let stackDescription = "CoreData stack that works with Meteor-ios"
-    private(set) var stackInitialized : Bool = false
+public class MeteorCDStack : SugarRecordStackProtocol {
+    public let name = "MeteorCDStack"
+    public let stackType = SugarRecordEngine.SugarRecordEngineCoreData
+    public let stackDescription = "CoreData stack that works with Meteor-ios"
+    private(set) public var stackInitialized : Bool = false
     
     let meteor : METCoreDataDDPClient
     var mainContext : NSManagedObjectContext?
     var privateContext : NSManagedObjectContext?
     
-    init(meteor: METCoreDataDDPClient) {
+    public init(meteor: METCoreDataDDPClient) {
         self.meteor = meteor
     }
     
@@ -50,7 +49,7 @@ class MeteorCDStack : SugarRecordStackProtocol {
     
     // MARK: - SugarRecordStackProtocol
     
-    func initialize() {
+    public func initialize() {
         Log.info("Initializing the stack: \(name)")
         mainContext = meteor.mainQueueManagedObjectContext
         privateContext = NSManagedObjectContext(concurrencyType: .ConfinementConcurrencyType)
@@ -61,31 +60,31 @@ class MeteorCDStack : SugarRecordStackProtocol {
         stackInitialized = true
     }
     
-    func removeDatabase() {
+    public func removeDatabase() {
         Log.info("Not removing DB \(name). METIncrementalStore is in memory")
     }
     
-    func cleanup() {
+    public func cleanup() {
         Log.info("Cleanup called on \(name). Nothing to do here")
     }
     
-    func applicationWillResignActive() {
+    public func applicationWillResignActive() {
         saveChanges()
     }
     
-    func applicationWillTerminate() {
+    public func applicationWillTerminate() {
         saveChanges()
     }
     
-    func applicationWillEnterForeground() {
+    public func applicationWillEnterForeground() {
         // Nothing to do here
     }
     
-    func backgroundContext() -> SugarRecordContext? {
+    public func backgroundContext() -> SugarRecordContext? {
         return privateContext != nil ? SugarRecordCDContext(context: privateContext!) : nil
     }
     
-    func mainThreadContext() -> SugarRecordContext? {
+    public func mainThreadContext() -> SugarRecordContext? {
         return mainContext != nil ? SugarRecordCDContext(context: mainContext!) : nil
     }
 

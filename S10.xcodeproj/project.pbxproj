@@ -11,9 +11,6 @@
 		640DB2B4B8DE9B8DDC392B01 /* Pods_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28970C9FC888535D277B71D5 /* Pods_Core.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		C0694BB32891795853D2C3CF /* Pods_Core_TestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F09ED94DDC00446577DFD4 /* Pods_Core_TestApp.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D6555C3D41C17908B83EB27C /* Pods_Core_Taylr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1D48B38C28B60559AEB8949 /* Pods_Core_Taylr.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		EA0FC9341A87DE5800D62625 /* MeteorCDStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC91F1A87DE5800D62625 /* MeteorCDStack.swift */; };
-		EA0FC9351A87DE5800D62625 /* MeteorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9201A87DE5800D62625 /* MeteorExtension.swift */; };
-		EA0FC9361A87DE5800D62625 /* SugarRecordExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9211A87DE5800D62625 /* SugarRecordExtension.swift */; };
 		EA0FC93C1A87DE5800D62625 /* UIKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9271A87DE5800D62625 /* UIKitExtension.swift */; };
 		EA0FC9411A87DE5800D62625 /* ArrayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC92F1A87DE5800D62625 /* ArrayViewModel.swift */; };
 		EA0FC9421A87DE5800D62625 /* BaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FC9301A87DE5800D62625 /* BaseViewModel.swift */; };
@@ -126,6 +123,9 @@
 		EAF670221B31E6F90025D7CF /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6701E1B31E6F90025D7CF /* Logging.swift */; };
 		EAF670231B31E6F90025D7CF /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670201B31E6F90025D7CF /* TaskManager.swift */; };
 		EAF670241B31E6F90025D7CF /* VideoMessageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670211B31E6F90025D7CF /* VideoMessageTask.swift */; };
+		EAF670281B31E8FE0025D7CF /* MeteorCDStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670251B31E8FE0025D7CF /* MeteorCDStack.swift */; };
+		EAF670291B31E8FE0025D7CF /* MeteorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670261B31E8FE0025D7CF /* MeteorExtension.swift */; };
+		EAF6702A1B31E8FE0025D7CF /* SugarRecordExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670271B31E8FE0025D7CF /* SugarRecordExtension.swift */; };
 		EAF92AD41B31CD1400FF8DD7 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5B74321B3139EA008E5CBC /* Core.framework */; };
 		F95D95DF1A84A1170068F090 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95D95DE1A84A1170068F090 /* MediaPlayer.framework */; };
 		F996C71E1A81F1D100314FF8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71D1A81F1D100314FF8 /* CoreMedia.framework */; };
@@ -148,9 +148,6 @@
 		A80ED835405D6C980CF3F31B /* Pods-Core-CoreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core-CoreTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Core-CoreTests/Pods-Core-CoreTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C97F216A216ACE06C7336869 /* Pods-Core-Taylr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core-Taylr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Core-Taylr/Pods-Core-Taylr.release.xcconfig"; sourceTree = "<group>"; };
 		E124F79EE1D0E577DCBCFE77 /* Pods_Backend_Taylr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Backend_Taylr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		EA0FC91F1A87DE5800D62625 /* MeteorCDStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorCDStack.swift; sourceTree = "<group>"; };
-		EA0FC9201A87DE5800D62625 /* MeteorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorExtension.swift; sourceTree = "<group>"; };
-		EA0FC9211A87DE5800D62625 /* SugarRecordExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SugarRecordExtension.swift; sourceTree = "<group>"; };
 		EA0FC9271A87DE5800D62625 /* UIKitExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
 		EA0FC92F1A87DE5800D62625 /* ArrayViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayViewModel.swift; sourceTree = "<group>"; };
 		EA0FC9301A87DE5800D62625 /* BaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewModel.swift; sourceTree = "<group>"; };
@@ -275,6 +272,9 @@
 		EAF6701E1B31E6F90025D7CF /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		EAF670201B31E6F90025D7CF /* TaskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
 		EAF670211B31E6F90025D7CF /* VideoMessageTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoMessageTask.swift; sourceTree = "<group>"; };
+		EAF670251B31E8FE0025D7CF /* MeteorCDStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorCDStack.swift; sourceTree = "<group>"; };
+		EAF670261B31E8FE0025D7CF /* MeteorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorExtension.swift; sourceTree = "<group>"; };
+		EAF670271B31E8FE0025D7CF /* SugarRecordExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SugarRecordExtension.swift; sourceTree = "<group>"; };
 		F1D48B38C28B60559AEB8949 /* Pods_Core_Taylr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Core_Taylr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C759AA125AEB809731B1D6 /* Pods-Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.release.xcconfig"; path = "Pods/Target Support Files/Pods-Core/Pods-Core.release.xcconfig"; sourceTree = "<group>"; };
 		F95D95DE1A84A1170068F090 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -405,9 +405,6 @@
 		EA0FC91E1A87DE5800D62625 /* Backend */ = {
 			isa = PBXGroup;
 			children = (
-				EA0FC91F1A87DE5800D62625 /* MeteorCDStack.swift */,
-				EA0FC9201A87DE5800D62625 /* MeteorExtension.swift */,
-				EA0FC9211A87DE5800D62625 /* SugarRecordExtension.swift */,
 				EA49286B1ADF1BF700118639 /* DeviceInfo.swift */,
 			);
 			path = Backend;
@@ -745,6 +742,9 @@
 			children = (
 				EAF670131B31DB960025D7CF /* FoundationExtension.swift */,
 				EAF670111B31DB700025D7CF /* ReactiveCocoaExtension.swift */,
+				EAF670271B31E8FE0025D7CF /* SugarRecordExtension.swift */,
+				EAF670261B31E8FE0025D7CF /* MeteorExtension.swift */,
+				EAF670251B31E8FE0025D7CF /* MeteorCDStack.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1168,12 +1168,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAF670141B31DB960025D7CF /* FoundationExtension.swift in Sources */,
+				EAF670291B31E8FE0025D7CF /* MeteorExtension.swift in Sources */,
 				EAF670171B31DD740025D7CF /* GenericExtensions.swift in Sources */,
 				EAF670241B31E6F90025D7CF /* VideoMessageTask.swift in Sources */,
 				EAF670231B31E6F90025D7CF /* TaskManager.swift in Sources */,
 				EAF6701D1B31E6550025D7CF /* Core.m in Sources */,
 				EAF670221B31E6F90025D7CF /* Logging.swift in Sources */,
+				EAF6702A1B31E8FE0025D7CF /* SugarRecordExtension.swift in Sources */,
 				EAF670121B31DB700025D7CF /* ReactiveCocoaExtension.swift in Sources */,
+				EAF670281B31E8FE0025D7CF /* MeteorCDStack.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1185,7 +1188,6 @@
 				EA4F51851AE153880060405E /* SettingsViewModel.swift in Sources */,
 				EA7AA3651AA25D21003383BE /* ResourceExtension.swift in Sources */,
 				EAAD921D1ACF342C0014BA25 /* Environment.swift in Sources */,
-				EA0FC9351A87DE5800D62625 /* MeteorExtension.swift in Sources */,
 				EA36D2AD1AE72B78006FD5D8 /* UserDefaults.swift in Sources */,
 				EA72FB291AD1B7D5009F853F /* Segue.swift in Sources */,
 				EAEB63DB1AD31A4E0002D55C /* Animation.swift in Sources */,
@@ -1209,7 +1211,6 @@
 				EA35941B1B3071D300E91337 /* RecorderViewController.swift in Sources */,
 				EAA56FA41B2B32E500DE3936 /* PulsingView.swift in Sources */,
 				EA3594161B2DEF0C00E91337 /* MessageCell.swift in Sources */,
-				EA0FC9361A87DE5800D62625 /* SugarRecordExtension.swift in Sources */,
 				EA72FB2C1AD1B7E1009F853F /* ScrollTransition.swift in Sources */,
 				EA925C741AD99ED8008E9F41 /* R.swift in Sources */,
 				EAA56F991B2B32E500DE3936 /* SettingsTextCell.swift in Sources */,
@@ -1253,7 +1254,6 @@
 				EAA56F971B2B32E500DE3936 /* SettingsLabelCell.swift in Sources */,
 				EA2A38E61AD8A141005708D2 /* MeteorService.swift in Sources */,
 				EAF670181B31DD910025D7CF /* GenericExtensions.swift in Sources */,
-				EA0FC9341A87DE5800D62625 /* MeteorCDStack.swift in Sources */,
 				EAA56F961B2B32E500DE3936 /* SettingsFormViewController.swift in Sources */,
 				EA49286E1ADF291100118639 /* UpgradeService.swift in Sources */,
 				EAA56F941B2B32E500DE3936 /* RowDescriptors.swift in Sources */,

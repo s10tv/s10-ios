@@ -11,6 +11,7 @@ import CoreLocation
 import ReactiveCocoa
 import SugarRecord
 import Meteor
+import Core
 
 class MeteorService {
     private let meteor: METCoreDataDDPClient

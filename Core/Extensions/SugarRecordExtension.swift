@@ -9,7 +9,6 @@
 import CoreData
 import SugarRecord
 import SwiftTryCatch
-import Core
 
 extension SugarRecord {
     public class func transaction(closure: (context: SugarRecordContext) -> ()) {
@@ -43,14 +42,14 @@ extension SugarRecordFinder {
 }
 
 extension NSManagedObject {
-    class func by(key: String, value: AnyObject?) -> SugarRecordFinder {
+    public class func by(key: String, value: AnyObject?) -> SugarRecordFinder {
         return all().by(key, value: value)
     }
 }
 
 // TODO: Separate file because it's unrelated to SugarRecord?
 extension NSFetchedResultsController {
-    func fetchObjects() -> [AnyObject] {
+    public func fetchObjects() -> [AnyObject] {
         if fetchedObjects == nil {
             var error: NSError?
             var success : Bool = false
