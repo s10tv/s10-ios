@@ -15,7 +15,7 @@ class AnalyticsService {
     private(set) var userId: String?
     let segment: SEGAnalytics
 
-    init(env: Environment) {
+    init(env: TaylrEnvironment) {
         // Segmentio
         let config = SEGAnalyticsConfiguration(writeKey: env.segmentWriteKey)
         config.enableAdvertisingTracking = false // Don't get into trouble with app store for now

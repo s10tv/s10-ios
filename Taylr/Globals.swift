@@ -9,7 +9,7 @@
 import Foundation
 
 struct GlobalsContainer {
-    let env: Environment
+    let env: TaylrEnvironment
     let meteorService: MeteorService
     let accountService: AccountService
     let analyticsService : AnalyticsService

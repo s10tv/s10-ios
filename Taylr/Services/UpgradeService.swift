@@ -12,7 +12,7 @@ import ReactiveCocoa
 import Core
 
 class UpgradeService : NSObject {
-    let env: Environment
+    let env: TaylrEnvironment
     let settings: Settings
     var buildNumber: Int {
         return Int((env.build as NSString).intValue)
@@ -28,7 +28,7 @@ class UpgradeService : NSObject {
     
     // MARK: -
     
-    init(env: Environment, settings: Settings) {
+    init(env: TaylrEnvironment, settings: Settings) {
         self.env = env
         self.settings = settings
         super.init()

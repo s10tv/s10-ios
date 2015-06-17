@@ -9,7 +9,7 @@
 import Foundation
 import Core
 
-class Environment {
+class TaylrEnvironment : Environment {
     enum Audience {
         case Dev, Beta, AppStore
         var urlScheme: String {
@@ -25,7 +25,6 @@ class Environment {
     }
     
     let audience : Audience
-    let provisioningProfile : ProvisioningProfile?
     let termsAndConditionURL = NSURL("http://taylrapp.com/terms")
     let privacyURL = NSURL("http://taylrapp.com/privacy")
     let upgradeURL: NSURL
@@ -33,18 +32,6 @@ class Environment {
     let serverHostName: String
     var serverURL: NSURL {
         return NSURL("\(serverProtocol)://\(serverHostName)/websocket")
-    }
-    var appId: String {
-        return NSBundle.mainBundle().bundleIdentifier!
-    }
-    var version: String {
-        return NSBundle.mainBundle().objectForInfoDictionaryKey("CFBundleShortVersionString") as! String
-    }
-    var build: String {
-        return NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleVersionKey as String) as! String
-    }
-    var deviceId: String {
-        return UIDevice.currentDevice().getPersistentIdentifier()
     }
     
     let crashlyticsAPIKey = "4cdb005d0ddfebc8865c0a768de9b43c993e9113"
@@ -54,7 +41,6 @@ class Environment {
     
     init(audience: Audience, provisioningProfile: ProvisioningProfile?) {
         self.audience = audience
-        self.provisioningProfile = provisioningProfile
         switch audience {
             case .Dev:
                 upgradeURL = NSURL("https://apps-ios.crashlytics.com/projects/54f16f389f24291fde000043")
@@ -77,9 +63,10 @@ class Environment {
                 segmentWriteKey = "JPCrmGwQqlgohXoowBFSLwesir9Zn5Bv"
                 heapAppId = "538095372"
         }
+        super.init(provisioningProfile: provisioningProfile)
     }
     
-    class func configureFromEmbeddedProvisioningProfile() -> Environment {
+    class func configureFromEmbeddedProvisioningProfile() -> TaylrEnvironment {
         func audienceFromProfile(profile: ProvisioningProfile?) -> Audience {
             if TARGET_IPHONE_SIMULATOR == 1 {
                 return .Dev
@@ -93,6 +80,6 @@ class Environment {
             }
         }
         let profile = ProvisioningProfile.embeddedProfile()
-        return Environment(audience: audienceFromProfile(profile), provisioningProfile: profile)
+        return TaylrEnvironment(audience: audienceFromProfile(profile), provisioningProfile: profile)
     }
 }

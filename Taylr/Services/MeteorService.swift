@@ -50,7 +50,7 @@ class MeteorService {
         set { meteor.delegate = newValue }
     }
     
-    init(env: Environment) {
+    init(env: TaylrEnvironment) {
         self.env = env
         meteor = METCoreDataDDPClient(serverURL: env.serverURL, account: nil)
         subscriptions = (

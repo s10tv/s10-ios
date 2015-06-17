@@ -61,8 +61,8 @@ class SignupViewController : BaseViewController {
     
     @IBAction func loginWithFacebook(sender: AnyObject) {
         let current = Globals.env.audience
-        let beta = Environment.Audience.Beta
-        let prod = Environment.Audience.AppStore
+        let beta = TaylrEnvironment.Audience.Beta
+        let prod = TaylrEnvironment.Audience.AppStore
         if (current == beta || current == prod) && beta.installed && prod.installed {
             showErrorAlert(NSError(.BetaProdBothInstalled))
             return
