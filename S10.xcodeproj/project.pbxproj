@@ -58,7 +58,7 @@
 		EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35461A74CC6900E0C65D /* Main.storyboard */; };
 		EA9F354A1A74CC6900E0C65D /* Taylr.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Taylr.xcassets */; };
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
-		EA9F35591A74CC6900E0C65D /* CoreTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F35581A74CC6900E0C65D /* CoreTests.swift */; };
+		EA9F35591A74CC6900E0C65D /* XCTestCaseExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F35581A74CC6900E0C65D /* XCTestCaseExample.swift */; };
 		EAA56F8D1B2B32E500DE3936 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F6C1B2B32E500DE3936 /* ChatsViewController.swift */; };
 		EAA56F8E1B2B32E500DE3936 /* ConnectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F6D1B2B32E500DE3936 /* ConnectionCell.swift */; };
 		EAA56F901B2B32E500DE3936 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F701B2B32E500DE3936 /* DiscoverViewController.swift */; };
@@ -96,7 +96,7 @@
 		EAF670171B31DD740025D7CF /* GenericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670161B31DD740025D7CF /* GenericExtensions.swift */; };
 		EAF670181B31DD910025D7CF /* GenericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670161B31DD740025D7CF /* GenericExtensions.swift */; };
 		EAF670191B31DD920025D7CF /* GenericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670161B31DD740025D7CF /* GenericExtensions.swift */; };
-		EAF6701B1B31E42E0025D7CF /* UploadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6701A1B31E42E0025D7CF /* UploadTests.swift */; };
+		EAF6701B1B31E42E0025D7CF /* QuickSpecExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6701A1B31E42E0025D7CF /* QuickSpecExample.swift */; };
 		EAF6701D1B31E6550025D7CF /* Core.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF6701C1B31E6550025D7CF /* Core.m */; };
 		EAF670351B31EC9E0025D7CF /* GenericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670161B31DD740025D7CF /* GenericExtensions.swift */; };
 		EAF670521B31F28B0025D7CF /* ProfileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670511B31F28B0025D7CF /* ProfileItem.swift */; };
@@ -210,7 +210,7 @@
 		EA9F354C1A74CC6900E0C65D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		EA9F35521A74CC6900E0C65D /* CoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9F35571A74CC6900E0C65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EA9F35581A74CC6900E0C65D /* CoreTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreTests.swift; sourceTree = "<group>"; };
+		EA9F35581A74CC6900E0C65D /* XCTestCaseExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCaseExample.swift; sourceTree = "<group>"; };
 		EA9F35621A74CD8800E0C65D /* Taylr-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Taylr-Bridging.h"; path = "Taylr/Taylr-Bridging.h"; sourceTree = SOURCE_ROOT; };
 		EAA56F6C1B2B32E500DE3936 /* ChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		EAA56F6D1B2B32E500DE3936 /* ConnectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionCell.swift; sourceTree = "<group>"; };
@@ -251,7 +251,7 @@
 		EAE1E07A1AE34C6200F03F13 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		EAE1E07C1AE3788300F03F13 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		EAF670161B31DD740025D7CF /* GenericExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericExtensions.swift; sourceTree = "<group>"; };
-		EAF6701A1B31E42E0025D7CF /* UploadTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadTests.swift; sourceTree = "<group>"; };
+		EAF6701A1B31E42E0025D7CF /* QuickSpecExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickSpecExample.swift; sourceTree = "<group>"; };
 		EAF6701C1B31E6550025D7CF /* Core.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Core.m; sourceTree = "<group>"; };
 		EAF670511B31F28B0025D7CF /* ProfileItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileItem.swift; sourceTree = "<group>"; };
 		EAF670531B31F78E0025D7CF /* ModelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelExtensions.swift; sourceTree = "<group>"; };
@@ -615,9 +615,9 @@
 			isa = PBXGroup;
 			children = (
 				EA78C87A1B320A370016AB73 /* Networking */,
-				EA9F35581A74CC6900E0C65D /* CoreTests.swift */,
-				EAF6701A1B31E42E0025D7CF /* UploadTests.swift */,
 				EAF6709B1B32026F0025D7CF /* IntegrationTests.swift */,
+				EA9F35581A74CC6900E0C65D /* XCTestCaseExample.swift */,
+				EAF6701A1B31E42E0025D7CF /* QuickSpecExample.swift */,
 				EA9F35561A74CC6900E0C65D /* Supporting Files */,
 			);
 			path = CoreTests;
@@ -1348,8 +1348,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAF6701B1B31E42E0025D7CF /* UploadTests.swift in Sources */,
-				EA9F35591A74CC6900E0C65D /* CoreTests.swift in Sources */,
+				EAF6701B1B31E42E0025D7CF /* QuickSpecExample.swift in Sources */,
+				EA9F35591A74CC6900E0C65D /* XCTestCaseExample.swift in Sources */,
 				EAF670351B31EC9E0025D7CF /* GenericExtensions.swift in Sources */,
 				EAF6709C1B32026F0025D7CF /* IntegrationTests.swift in Sources */,
 				EA78C87C1B320A370016AB73 /* AzureUploaderTest.swift in Sources */,

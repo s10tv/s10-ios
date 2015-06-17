@@ -1,5 +1,5 @@
 //
-//  UploadTests.swift
+//  TableOfContentsSpec.swift
 //  S10
 //
 //  Created by Tony Xiao on 6/17/15.
@@ -10,7 +10,7 @@ import Foundation
 import Quick
 import Nimble
 
-class TableOfContentsSpec: QuickSpec {
+class QuickSpecExample: QuickSpec {
     override func spec() {
         describe("the 'Documentation' directory") {
             it("has everything you need to get started") {

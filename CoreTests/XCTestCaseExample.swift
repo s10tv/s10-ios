@@ -11,7 +11,7 @@ import XCTest
 import Core
 import Nimble
 
-class CoreTests: XCTestCase {
+class XCTestCaseExample: XCTestCase {
     
     override func setUp() {
         super.setUp()
