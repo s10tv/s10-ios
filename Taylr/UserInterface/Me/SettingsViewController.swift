@@ -9,6 +9,7 @@
 import UIKit
 import Cartography
 import ReactiveCocoa
+import Core
 
 class SettingsViewController : BaseViewController {
     

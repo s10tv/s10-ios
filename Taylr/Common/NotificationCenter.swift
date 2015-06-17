@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Core
 
 extension NSNotificationCenter {
     class Proxy {

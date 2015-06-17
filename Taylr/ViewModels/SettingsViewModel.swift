@@ -9,6 +9,7 @@
 import Foundation
 import ReactiveCocoa
 import Meteor
+import Core
 
 class SettingsViewModel {
     let currentUser: User

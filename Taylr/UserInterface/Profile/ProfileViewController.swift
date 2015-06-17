@@ -10,6 +10,7 @@ import Foundation
 import SwipeView
 import SDWebImage
 import Cartography
+import Core
 
 class ProfileViewController : BaseViewController {
 

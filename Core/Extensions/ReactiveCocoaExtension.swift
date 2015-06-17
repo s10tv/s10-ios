@@ -9,31 +9,31 @@
 import ReactiveCocoa
 
 // Stopgap solution, to be replaced in RAC 3.0
-struct Property {
+public struct Property {
     private let subject = RACReplaySubject(capacity: 1)
-    var signal: RACSignal { return subject }
-    var current: AnyObject? { return signal.first() }
+    public var signal: RACSignal { return subject }
+    public var current: AnyObject? { return signal.first() }
     
-    init(_ initialValue: AnyObject? = nil) {
+    public init(_ initialValue: AnyObject? = nil) {
         _update(initialValue)
     }
     
     // Should only be called by producer of this property
-    func _update(value: AnyObject?) {
+    public func _update(value: AnyObject?) {
         subject.sendNext(value)
     }
 }
 
 // Avoid having to type cast all the time
 extension RACSignal {
-    func subscribeNextAs<T>(nextClosure:(T) -> ()) -> RACDisposable {
+    public func subscribeNextAs<T>(nextClosure:(T) -> ()) -> RACDisposable {
         return self.subscribeNext { (next: AnyObject!) -> () in
             let nextAsT = next as! T
             nextClosure(nextAsT)
         }
     }
     
-    func subscribeErrorOrCompleted(block: (NSError?) -> ()) {
+    public func subscribeErrorOrCompleted(block: (NSError?) -> ()) {
         subscribeError({ error in
             block(error)
         }, completed:{
@@ -44,7 +44,7 @@ extension RACSignal {
     // replayWithSubject has the advantage that signal would be subscribed to but
     // disposed as soon as subject is deallocated, rather than replay() in which signal is never
     // disposed of even if no one is listening to the subject anymore
-    func replayWithSubject() -> RACSignal {
+    public func replayWithSubject() -> RACSignal {
         let subject = RACReplaySubject()
         subscribe(subject)
         return subject
@@ -52,23 +52,23 @@ extension RACSignal {
 }
 
 extension RACSubject {
-    func sendNextAndCompleted(value: AnyObject!) {
+    public func sendNextAndCompleted(value: AnyObject!) {
         sendNext(value)
         sendCompleted()
     }
 }
 
 extension NSObject {
-    func listenForNotification(name: String) -> RACSignal/*<NSNotification>*/ {
+    public func listenForNotification(name: String) -> RACSignal/*<NSNotification>*/ {
         return listenForNotification(name, object: nil)
     }
     
-    func listenForNotification(name: String, object: AnyObject?) -> RACSignal/*<NSNotification>*/ {
+    public func listenForNotification(name: String, object: AnyObject?) -> RACSignal/*<NSNotification>*/ {
         let nc = NSNotificationCenter.defaultCenter()
         return nc.rac_addObserverForName(name, object: object).takeUntil(rac_willDeallocSignal())
     }
     
-    func listenForNotification(name: String, selector: Selector, object: AnyObject? = nil) {
+    public func listenForNotification(name: String, selector: Selector, object: AnyObject? = nil) {
         let nc = NSNotificationCenter.defaultCenter()
         nc.addObserver(self, selector: selector, name: name, object: object)
         rac_willDeallocSignal().subscribeCompleted { [weak self] in
@@ -76,24 +76,24 @@ extension NSObject {
         }
     }
     
-    func racObserve(keyPath: String) -> RACSignal {
+    public func racObserve(keyPath: String) -> RACSignal {
         return self.rac_valuesForKeyPath(keyPath, observer: self)
     }
 }
 
 // Replaces the RACObserve macro
-func RACObserve(target: NSObject, keyPath: String) -> RACSignal  {
+public func RACObserve(target: NSObject, keyPath: String) -> RACSignal  {
     return target.rac_valuesForKeyPath(keyPath, observer: target)
 }
 
 
 // a struct that replaces the RAC macro
-struct RAC  {
-    var target : NSObject
-    var keyPath : String
-    var nilValue : AnyObject?
+public struct RAC {
+    public var target : NSObject
+    public var keyPath : String
+    public var nilValue : AnyObject?
     
-    init(_ target: NSObject, _ keyPath: String, nilValue: AnyObject? = nil) {
+    public init(_ target: NSObject, _ keyPath: String, nilValue: AnyObject? = nil) {
         self.target = target
         self.keyPath = keyPath
         self.nilValue = nilValue
@@ -101,19 +101,19 @@ struct RAC  {
         assert(target.respondsToSelector(sel), "RAC target must responds to selector \(sel)")
     }
     
-    func assignSignal(signal : RACSignal) {
+    public func assignSignal(signal : RACSignal) {
         signal.setKeyPath(self.keyPath, onObject: self.target, nilValue: self.nilValue)
     }
 }
 
 // RACObserve(obj, key) ~> RAC(obj, key)
 infix operator ~> {}
-func ~> (signal: RACSignal, rac: RAC) {
+public func ~> (signal: RACSignal, rac: RAC) {
     rac.assignSignal(signal)
 }
 
 // RAC(obj, key) <~ RACObserve(obj, key)
 infix operator <~ {}
-func <~ (rac: RAC, signal: RACSignal) {
+public func <~ (rac: RAC, signal: RACSignal) {
     rac.assignSignal(signal)
 }

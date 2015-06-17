@@ -8,20 +8,25 @@ Edit the following two files
 ## Getting started
 ```
 brew install mogenerator
-gem install cocoapods -v 0.36.0.beta.2
+gem install cocoapods -v $(var=$(tail -1 Podfile.lock); echo ${var##COCOAPODS:})
 gem install cupertino shenzhen sbconstants
 gem install specific_install
 gem specific_install -l https://github.com/tonyxiao/xcres.git
 pod install
 ```
 
-Open `Taylr.xcworkspace` and start developing
+Open `S10.xcworkspace` and start developing
 
 ## Developing
 
 Follow [raywenderlich's swift style guide](https://github.com/raywenderlich/swift-style-guide)
 
 Except we'll leave 4 spaces instead of two space for indentation.
+
+Due to limitations with Swift, files in GenericExtensions folder will need to be individually
+added by every single target that needs it.
+https://github.com/pNre/ExSwift/issues/82
+
 
 ## Make IPAs
 By default project should be building with dev configuration. To change, use explicity xcconfig

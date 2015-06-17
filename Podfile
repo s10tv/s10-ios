@@ -13,6 +13,8 @@ target :Core do
     pod 'SwiftyUserDefaults', '~> 1.1'
     pod 'SwiftTryCatch', '~> 0.0.1'
     
+    pod 'NSLogger', '~> 1.5', :configuration => ['Debug']
+    
     target :CoreTests do
         link_with 'CoreTests'
         pod 'Quick', '~> 0.3.0' # TODO: Upgrade after swift 2.0
@@ -53,25 +55,11 @@ target :Core do
         # Debug only
         
         pod 'Reveal-iOS-SDK', '~> 1.5', :configuration => ['Debug']
-        pod 'NSLogger', '~> 1.5', :configuration => ['Debug']
     end
     
     target :TestApp do
         link_with 'TestApp'
         pod 'SCRecorder', '~> 2.4'
-    end
-end
-
-# Hacks
-post_install do |installer|
-    installer.project.targets.each do |target|
-        # DateTools Hack https://github.com/MatthewYork/DateTools/issues/56 Disable localization in exchange for no crash
-        if target.name == 'Pods-DateTools'
-            target.build_configurations.each do |config|
-                config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] ||= ['$(inherited)']
-                config.build_settings['GCC_PREPROCESSOR_DEFINITIONS'] << 'DateToolsLocalizedStrings(key)=key'
-            end
-        end
     end
 end
 

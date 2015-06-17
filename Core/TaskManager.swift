@@ -8,6 +8,7 @@
 
 import Foundation
 import ReactiveCocoa
+import Meteor
 
 public class Task {
     let clientId: String

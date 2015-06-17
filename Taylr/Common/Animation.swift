@@ -8,6 +8,7 @@
 
 import UIKit
 import ReactiveCocoa
+import Core
 
 extension UIView {
     func setHiddenAnimated(#hidden: Bool, duration: NSTimeInterval = 0.3, delay: NSTimeInterval = 0) -> RACSignal {
