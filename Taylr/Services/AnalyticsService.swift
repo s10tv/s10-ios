@@ -7,20 +7,17 @@
 //
 
 import Foundation
-import Analytics
+import AnalyticsSwift
 import Core
 //import Heap
 
 class AnalyticsService {
     private(set) var userId: String?
-    let segment: SEGAnalytics
+    let segment: AnalyticsSwift.Analytics
 
     init(env: TaylrEnvironment) {
         // Segmentio
-        let config = SEGAnalyticsConfiguration(writeKey: env.segmentWriteKey)
-        config.enableAdvertisingTracking = false // Don't get into trouble with app store for now
-        SEGAnalytics.setupWithConfiguration(config)
-        segment = SEGAnalytics.sharedAnalytics()
+        segment = AnalyticsSwift.Analytics.create(env.segmentWriteKey)
         
 //        // Heap
 //        Heap.setAppId(env.heapAppId)
@@ -44,13 +41,13 @@ class AnalyticsService {
                 Meteor.meta.setValue(value, metadataKey: key)
             }
         }
-        segment.identify(userId, traits: traits)
+        segment.enqueue(IdentifyMessageBuilder().traits(traits ?? [:]).userId(userId ?? ""))
         segment.flush()
         Log.verbose("[analytics] identify \(userId) traits: \(traits)")
     }
     
     func track(event: String, properties: [String: AnyObject]? = nil) {
-        segment.track(event, properties: properties)
+        segment.enqueue(TrackMessageBuilder(event: event).properties(properties ?? [:]).userId(userId ?? ""))
         segment.flush()
         Log.verbose("[analytics] track '\(event)' properties: \(properties)")
     }

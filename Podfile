@@ -58,10 +58,10 @@ target :Core do
         pod 'Facebook-iOS-SDK', '3.22.0' # TODO: Upgrade me when ready
         #pod 'CrashlyticsFramework', '~> 2.2'
         #pod 'BugfenderSDK', :git => 'https://github.com/bugfender/BugfenderSDK-iOS.git', :tag => '0.3.2'
-        pod 'Analytics/Segmentio', :git => 'https://github.com/tonyxiao/analytics-ios.git'
-        pod 'Analytics/Mixpanel', :git => 'https://github.com/tonyxiao/analytics-ios.git'
-        pod 'Analytics/Amplitude', :git => 'https://github.com/tonyxiao/analytics-ios.git'
+        pod 'AnalyticsSwift', '~> 0.1.0'
         pod 'Heap', '~> 2.1'
+#        pod 'Analytics/Mixpanel', :git => 'https://github.com/tonyxiao/analytics-ios.git'
+#        pod 'Analytics/Amplitude', :git => 'https://github.com/tonyxiao/analytics-ios.git'
         #pod 'Analytics/Kahuna', :git => 'https://github.com/tonyxiao/analytics-ios.git'
         
         # Debug only
