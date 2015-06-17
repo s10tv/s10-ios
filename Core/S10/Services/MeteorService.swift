@@ -124,6 +124,14 @@ public class MeteorService {
             ]
         ]])
     }
+
+    public func loginWithPhoneNumber(phoneNumber: String) -> RACSignal {
+        return meteor.loginWithMethod("login", params: [[
+            "phone-access": [
+                "id": phoneNumber,
+            ]
+        ]])
+    }
     
     public func logout() -> RACSignal {
         meteor.account = nil // No reason to wait for network to clear account

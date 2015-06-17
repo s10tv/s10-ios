@@ -19,7 +19,7 @@ class IntegrationTests : XCTestCase {
     
     override class func setUp() {
         super.setUp()
-        meteor = MeteorService(serverURL: NSURL("wss://s10-dev.herokuapp.com/websocket"))
+        meteor = MeteorService(serverURL: NSURL("ws://localhost:3000/websocket"))
         env = Environment(provisioningProfile: nil)
     }
     
@@ -35,6 +35,25 @@ class IntegrationTests : XCTestCase {
     func testConnection() {
         meteor.startup()
         expect { meteor.connected }.toEventually(beTrue(), timeout: 2)
+    }
+
+    func testLoginWithPhoneNumber() {
+        var expectation = self.expectationWithDescription("Log in to meteor with phone number")
+
+        let PHONE_NUMBER = "6172596512"
+        let signal = meteor.loginWithPhoneNumber(PHONE_NUMBER)
+
+        signal.subscribeCompleted { () -> Void in
+            expect(meteor.userID).notTo(beNil())
+            expect(meteor.user!.firstName!).notTo(beNil())
+            expectation.fulfill()
+        }
+
+        signal.subscribeError({ (error) -> Void in
+            XCTFail("Error signing in to meteor with phone number")
+        })
+
+        self.waitForExpectationsWithTimeout(5.0, handler: nil)
     }
 }
 
