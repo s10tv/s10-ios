@@ -3,12 +3,13 @@
 ROOT=$(dirname "$0")
 
 # Regenerate CoreData model files
-cd "Core"
-mogenerator --swift --template-path "../scripts/motemplates" \
+# TODO: Get paths reference in order...
+cd "Core/S10"
+mogenerator --swift --template-path "../../scripts/motemplates" \
             -m Models/Models.xcdatamodeld/Models.xcdatamodel/ --human-dir Models --machine-dir Models/_Models
 
 # Regenerate Taylr assets
-cd "../Taylr"
+cd "../../Taylr"
 # Regenerate storyboard constants
 sbconstants -s Base.lproj/ -w -d > Generated/SBConstants.swift
 

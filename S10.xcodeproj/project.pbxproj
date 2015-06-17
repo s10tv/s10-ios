@@ -96,37 +96,37 @@
 		EAD7B2AB1A9F0BE700FA6740 /* DesignableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */; };
 		EAE1E07B1AE34C6200F03F13 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1E07A1AE34C6200F03F13 /* LocationService.swift */; };
 		EAE1E07D1AE3788300F03F13 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1E07C1AE3788300F03F13 /* Globals.swift */; };
-		EAF670121B31DB700025D7CF /* ReactiveCocoaExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670111B31DB700025D7CF /* ReactiveCocoaExtension.swift */; };
-		EAF670141B31DB960025D7CF /* FoundationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670131B31DB960025D7CF /* FoundationExtension.swift */; };
 		EAF670171B31DD740025D7CF /* GenericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670161B31DD740025D7CF /* GenericExtensions.swift */; };
 		EAF670181B31DD910025D7CF /* GenericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670161B31DD740025D7CF /* GenericExtensions.swift */; };
 		EAF670191B31DD920025D7CF /* GenericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670161B31DD740025D7CF /* GenericExtensions.swift */; };
 		EAF6701B1B31E42E0025D7CF /* UploadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6701A1B31E42E0025D7CF /* UploadTests.swift */; };
 		EAF6701D1B31E6550025D7CF /* Core.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF6701C1B31E6550025D7CF /* Core.m */; };
-		EAF670221B31E6F90025D7CF /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6701E1B31E6F90025D7CF /* Logging.swift */; };
-		EAF670231B31E6F90025D7CF /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670201B31E6F90025D7CF /* TaskManager.swift */; };
-		EAF670241B31E6F90025D7CF /* VideoMessageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670211B31E6F90025D7CF /* VideoMessageTask.swift */; };
-		EAF670281B31E8FE0025D7CF /* MeteorCDStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670251B31E8FE0025D7CF /* MeteorCDStack.swift */; };
-		EAF670291B31E8FE0025D7CF /* MeteorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670261B31E8FE0025D7CF /* MeteorExtension.swift */; };
-		EAF6702A1B31E8FE0025D7CF /* SugarRecordExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670271B31E8FE0025D7CF /* SugarRecordExtension.swift */; };
-		EAF670301B31EAD30025D7CF /* AnimationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6702B1B31EAD30025D7CF /* AnimationExtensions.swift */; };
-		EAF670311B31EAD30025D7CF /* GeometryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6702C1B31EAD30025D7CF /* GeometryExtensions.swift */; };
-		EAF670321B31EAD30025D7CF /* NotificationCenterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6702D1B31EAD30025D7CF /* NotificationCenterExtensions.swift */; };
-		EAF670341B31EAD30025D7CF /* UIKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6702F1B31EAD30025D7CF /* UIKitExtension.swift */; };
 		EAF670351B31EC9E0025D7CF /* GenericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670161B31DD740025D7CF /* GenericExtensions.swift */; };
-		EAF670391B31EFD50025D7CF /* Models.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAF670371B31EFD50025D7CF /* Models.xcdatamodeld */; };
-		EAF670451B31F01E0025D7CF /* _Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6703B1B31F01E0025D7CF /* _Candidate.swift */; };
-		EAF670461B31F01E0025D7CF /* _Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6703C1B31F01E0025D7CF /* _Connection.swift */; };
-		EAF670471B31F01E0025D7CF /* _Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6703D1B31F01E0025D7CF /* _Message.swift */; };
-		EAF670481B31F01E0025D7CF /* _User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6703E1B31F01E0025D7CF /* _User.swift */; };
-		EAF670491B31F01E0025D7CF /* _Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6703F1B31F01E0025D7CF /* _Video.swift */; };
-		EAF6704A1B31F01E0025D7CF /* Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670401B31F01E0025D7CF /* Candidate.swift */; };
-		EAF6704B1B31F01E0025D7CF /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670411B31F01E0025D7CF /* Connection.swift */; };
-		EAF6704C1B31F01E0025D7CF /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670421B31F01E0025D7CF /* Message.swift */; };
-		EAF6704D1B31F01E0025D7CF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670431B31F01E0025D7CF /* User.swift */; };
-		EAF6704E1B31F01E0025D7CF /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670441B31F01E0025D7CF /* Video.swift */; };
 		EAF670521B31F28B0025D7CF /* ProfileItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670511B31F28B0025D7CF /* ProfileItem.swift */; };
 		EAF670541B31F78E0025D7CF /* ModelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670531B31F78E0025D7CF /* ModelExtensions.swift */; };
+		EAF670731B31F9450025D7CF /* MeteorCDStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670561B31F9450025D7CF /* MeteorCDStack.swift */; };
+		EAF670741B31F9450025D7CF /* MeteorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670571B31F9450025D7CF /* MeteorExtension.swift */; };
+		EAF670751B31F9450025D7CF /* SugarRecordExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670581B31F9450025D7CF /* SugarRecordExtension.swift */; };
+		EAF670761B31F9450025D7CF /* FoundationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6705A1B31F9450025D7CF /* FoundationExtension.swift */; };
+		EAF670771B31F9450025D7CF /* NotificationCenterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6705B1B31F9450025D7CF /* NotificationCenterExtensions.swift */; };
+		EAF670781B31F9450025D7CF /* ReactiveCocoaExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6705C1B31F9450025D7CF /* ReactiveCocoaExtension.swift */; };
+		EAF670791B31F9450025D7CF /* _Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670601B31F9450025D7CF /* _Candidate.swift */; };
+		EAF6707A1B31F9450025D7CF /* _Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670611B31F9450025D7CF /* _Connection.swift */; };
+		EAF6707B1B31F9450025D7CF /* _Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670621B31F9450025D7CF /* _Message.swift */; };
+		EAF6707C1B31F9450025D7CF /* _User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670631B31F9450025D7CF /* _User.swift */; };
+		EAF6707D1B31F9450025D7CF /* _Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670641B31F9450025D7CF /* _Video.swift */; };
+		EAF6707E1B31F9450025D7CF /* Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670651B31F9450025D7CF /* Candidate.swift */; };
+		EAF6707F1B31F9450025D7CF /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670661B31F9450025D7CF /* Connection.swift */; };
+		EAF670801B31F9450025D7CF /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670671B31F9450025D7CF /* Message.swift */; };
+		EAF670811B31F9450025D7CF /* Models.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAF670681B31F9450025D7CF /* Models.xcdatamodeld */; };
+		EAF670821B31F9450025D7CF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6706A1B31F9450025D7CF /* User.swift */; };
+		EAF670831B31F9450025D7CF /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6706B1B31F9450025D7CF /* Video.swift */; };
+		EAF670841B31F9450025D7CF /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6706D1B31F9450025D7CF /* TaskManager.swift */; };
+		EAF670851B31F9450025D7CF /* VideoMessageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6706E1B31F9450025D7CF /* VideoMessageTask.swift */; };
+		EAF670861B31F9450025D7CF /* AnimationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670701B31F9450025D7CF /* AnimationExtensions.swift */; };
+		EAF670871B31F9450025D7CF /* GeometryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670711B31F9450025D7CF /* GeometryExtensions.swift */; };
+		EAF670881B31F9450025D7CF /* UIKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670721B31F9450025D7CF /* UIKitExtension.swift */; };
+		EAF6708A1B31F9AD0025D7CF /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670891B31F9AD0025D7CF /* Logging.swift */; };
 		EAF92AD41B31CD1400FF8DD7 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5B74321B3139EA008E5CBC /* Core.framework */; };
 		F95D95DF1A84A1170068F090 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95D95DE1A84A1170068F090 /* MediaPlayer.framework */; };
 		F996C71E1A81F1D100314FF8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71D1A81F1D100314FF8 /* CoreMedia.framework */; };
@@ -248,34 +248,34 @@
 		EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableViews.swift; sourceTree = "<group>"; };
 		EAE1E07A1AE34C6200F03F13 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		EAE1E07C1AE3788300F03F13 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
-		EAF670111B31DB700025D7CF /* ReactiveCocoaExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveCocoaExtension.swift; sourceTree = "<group>"; };
-		EAF670131B31DB960025D7CF /* FoundationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationExtension.swift; sourceTree = "<group>"; };
 		EAF670161B31DD740025D7CF /* GenericExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericExtensions.swift; sourceTree = "<group>"; };
 		EAF6701A1B31E42E0025D7CF /* UploadTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadTests.swift; sourceTree = "<group>"; };
 		EAF6701C1B31E6550025D7CF /* Core.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Core.m; sourceTree = "<group>"; };
-		EAF6701E1B31E6F90025D7CF /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
-		EAF670201B31E6F90025D7CF /* TaskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
-		EAF670211B31E6F90025D7CF /* VideoMessageTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoMessageTask.swift; sourceTree = "<group>"; };
-		EAF670251B31E8FE0025D7CF /* MeteorCDStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorCDStack.swift; sourceTree = "<group>"; };
-		EAF670261B31E8FE0025D7CF /* MeteorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorExtension.swift; sourceTree = "<group>"; };
-		EAF670271B31E8FE0025D7CF /* SugarRecordExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SugarRecordExtension.swift; sourceTree = "<group>"; };
-		EAF6702B1B31EAD30025D7CF /* AnimationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationExtensions.swift; sourceTree = "<group>"; };
-		EAF6702C1B31EAD30025D7CF /* GeometryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometryExtensions.swift; sourceTree = "<group>"; };
-		EAF6702D1B31EAD30025D7CF /* NotificationCenterExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterExtensions.swift; sourceTree = "<group>"; };
-		EAF6702F1B31EAD30025D7CF /* UIKitExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
-		EAF670381B31EFD50025D7CF /* Models.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Models.xcdatamodel; sourceTree = "<group>"; };
-		EAF6703B1B31F01E0025D7CF /* _Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Candidate.swift; sourceTree = "<group>"; };
-		EAF6703C1B31F01E0025D7CF /* _Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Connection.swift; sourceTree = "<group>"; };
-		EAF6703D1B31F01E0025D7CF /* _Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Message.swift; sourceTree = "<group>"; };
-		EAF6703E1B31F01E0025D7CF /* _User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _User.swift; sourceTree = "<group>"; };
-		EAF6703F1B31F01E0025D7CF /* _Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Video.swift; sourceTree = "<group>"; };
-		EAF670401B31F01E0025D7CF /* Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Candidate.swift; sourceTree = "<group>"; };
-		EAF670411B31F01E0025D7CF /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
-		EAF670421B31F01E0025D7CF /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
-		EAF670431B31F01E0025D7CF /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		EAF670441B31F01E0025D7CF /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		EAF670511B31F28B0025D7CF /* ProfileItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileItem.swift; sourceTree = "<group>"; };
 		EAF670531B31F78E0025D7CF /* ModelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelExtensions.swift; sourceTree = "<group>"; };
+		EAF670561B31F9450025D7CF /* MeteorCDStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorCDStack.swift; sourceTree = "<group>"; };
+		EAF670571B31F9450025D7CF /* MeteorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorExtension.swift; sourceTree = "<group>"; };
+		EAF670581B31F9450025D7CF /* SugarRecordExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SugarRecordExtension.swift; sourceTree = "<group>"; };
+		EAF6705A1B31F9450025D7CF /* FoundationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationExtension.swift; sourceTree = "<group>"; };
+		EAF6705B1B31F9450025D7CF /* NotificationCenterExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterExtensions.swift; sourceTree = "<group>"; };
+		EAF6705C1B31F9450025D7CF /* ReactiveCocoaExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveCocoaExtension.swift; sourceTree = "<group>"; };
+		EAF670601B31F9450025D7CF /* _Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Candidate.swift; sourceTree = "<group>"; };
+		EAF670611B31F9450025D7CF /* _Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Connection.swift; sourceTree = "<group>"; };
+		EAF670621B31F9450025D7CF /* _Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Message.swift; sourceTree = "<group>"; };
+		EAF670631B31F9450025D7CF /* _User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _User.swift; sourceTree = "<group>"; };
+		EAF670641B31F9450025D7CF /* _Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Video.swift; sourceTree = "<group>"; };
+		EAF670651B31F9450025D7CF /* Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Candidate.swift; sourceTree = "<group>"; };
+		EAF670661B31F9450025D7CF /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		EAF670671B31F9450025D7CF /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		EAF670691B31F9450025D7CF /* Models.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Models.xcdatamodel; sourceTree = "<group>"; };
+		EAF6706A1B31F9450025D7CF /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		EAF6706B1B31F9450025D7CF /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		EAF6706D1B31F9450025D7CF /* TaskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
+		EAF6706E1B31F9450025D7CF /* VideoMessageTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoMessageTask.swift; sourceTree = "<group>"; };
+		EAF670701B31F9450025D7CF /* AnimationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationExtensions.swift; sourceTree = "<group>"; };
+		EAF670711B31F9450025D7CF /* GeometryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometryExtensions.swift; sourceTree = "<group>"; };
+		EAF670721B31F9450025D7CF /* UIKitExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
+		EAF670891B31F9AD0025D7CF /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		F1D48B38C28B60559AEB8949 /* Pods_Core_Taylr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Core_Taylr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C759AA125AEB809731B1D6 /* Pods-Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.release.xcconfig"; path = "Pods/Target Support Files/Pods-Core/Pods-Core.release.xcconfig"; sourceTree = "<group>"; };
 		F95D95DE1A84A1170068F090 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -427,10 +427,10 @@
 		EA35941C1B30CF9900E91337 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				EAF670101B31DB700025D7CF /* Extensions */,
-				EAF670361B31EFD50025D7CF /* Models */,
-				EAF6701F1B31E6F90025D7CF /* Tasks */,
-				EAF6701E1B31E6F90025D7CF /* Logging.swift */,
+				EAF670591B31F9450025D7CF /* Foundation */,
+				EAF670551B31F9450025D7CF /* Data */,
+				EAF6706F1B31F9450025D7CF /* UI */,
+				EAF6705D1B31F9450025D7CF /* S10 */,
 				EA5B74361B3139EA008E5CBC /* Core.h */,
 				EAF6701C1B31E6550025D7CF /* Core.m */,
 				EA5B74341B3139EA008E5CBC /* Supporting Files */,
@@ -716,22 +716,6 @@
 			path = UserInterface;
 			sourceTree = "<group>";
 		};
-		EAF670101B31DB700025D7CF /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				EAF670131B31DB960025D7CF /* FoundationExtension.swift */,
-				EAF6702F1B31EAD30025D7CF /* UIKitExtension.swift */,
-				EAF6702B1B31EAD30025D7CF /* AnimationExtensions.swift */,
-				EAF6702C1B31EAD30025D7CF /* GeometryExtensions.swift */,
-				EAF6702D1B31EAD30025D7CF /* NotificationCenterExtensions.swift */,
-				EAF670111B31DB700025D7CF /* ReactiveCocoaExtension.swift */,
-				EAF670271B31E8FE0025D7CF /* SugarRecordExtension.swift */,
-				EAF670261B31E8FE0025D7CF /* MeteorExtension.swift */,
-				EAF670251B31E8FE0025D7CF /* MeteorCDStack.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
 		EAF670151B31DD5D0025D7CF /* GenericExtensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -740,39 +724,79 @@
 			path = GenericExtensions;
 			sourceTree = "<group>";
 		};
-		EAF6701F1B31E6F90025D7CF /* Tasks */ = {
+		EAF670551B31F9450025D7CF /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				EAF670201B31E6F90025D7CF /* TaskManager.swift */,
-				EAF670211B31E6F90025D7CF /* VideoMessageTask.swift */,
+				EAF670561B31F9450025D7CF /* MeteorCDStack.swift */,
+				EAF670571B31F9450025D7CF /* MeteorExtension.swift */,
+				EAF670581B31F9450025D7CF /* SugarRecordExtension.swift */,
 			);
-			path = Tasks;
+			path = Data;
 			sourceTree = "<group>";
 		};
-		EAF670361B31EFD50025D7CF /* Models */ = {
+		EAF670591B31F9450025D7CF /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
-				EAF6703A1B31F01E0025D7CF /* _Models */,
-				EAF670371B31EFD50025D7CF /* Models.xcdatamodeld */,
-				EAF670431B31F01E0025D7CF /* User.swift */,
-				EAF670401B31F01E0025D7CF /* Candidate.swift */,
-				EAF670411B31F01E0025D7CF /* Connection.swift */,
-				EAF670421B31F01E0025D7CF /* Message.swift */,
-				EAF670441B31F01E0025D7CF /* Video.swift */,
+				EAF6705A1B31F9450025D7CF /* FoundationExtension.swift */,
+				EAF6705B1B31F9450025D7CF /* NotificationCenterExtensions.swift */,
+				EAF6705C1B31F9450025D7CF /* ReactiveCocoaExtension.swift */,
+				EAF670891B31F9AD0025D7CF /* Logging.swift */,
+			);
+			path = Foundation;
+			sourceTree = "<group>";
+		};
+		EAF6705D1B31F9450025D7CF /* S10 */ = {
+			isa = PBXGroup;
+			children = (
+				EAF6705E1B31F9450025D7CF /* Models */,
+				EAF6706C1B31F9450025D7CF /* Tasks */,
+			);
+			path = S10;
+			sourceTree = "<group>";
+		};
+		EAF6705E1B31F9450025D7CF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EAF6705F1B31F9450025D7CF /* _Models */,
+				EAF670651B31F9450025D7CF /* Candidate.swift */,
+				EAF670661B31F9450025D7CF /* Connection.swift */,
+				EAF670671B31F9450025D7CF /* Message.swift */,
+				EAF670681B31F9450025D7CF /* Models.xcdatamodeld */,
+				EAF6706A1B31F9450025D7CF /* User.swift */,
+				EAF6706B1B31F9450025D7CF /* Video.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
 		};
-		EAF6703A1B31F01E0025D7CF /* _Models */ = {
+		EAF6705F1B31F9450025D7CF /* _Models */ = {
 			isa = PBXGroup;
 			children = (
-				EAF6703B1B31F01E0025D7CF /* _Candidate.swift */,
-				EAF6703C1B31F01E0025D7CF /* _Connection.swift */,
-				EAF6703D1B31F01E0025D7CF /* _Message.swift */,
-				EAF6703E1B31F01E0025D7CF /* _User.swift */,
-				EAF6703F1B31F01E0025D7CF /* _Video.swift */,
+				EAF670601B31F9450025D7CF /* _Candidate.swift */,
+				EAF670611B31F9450025D7CF /* _Connection.swift */,
+				EAF670621B31F9450025D7CF /* _Message.swift */,
+				EAF670631B31F9450025D7CF /* _User.swift */,
+				EAF670641B31F9450025D7CF /* _Video.swift */,
 			);
 			path = _Models;
+			sourceTree = "<group>";
+		};
+		EAF6706C1B31F9450025D7CF /* Tasks */ = {
+			isa = PBXGroup;
+			children = (
+				EAF6706D1B31F9450025D7CF /* TaskManager.swift */,
+				EAF6706E1B31F9450025D7CF /* VideoMessageTask.swift */,
+			);
+			path = Tasks;
+			sourceTree = "<group>";
+		};
+		EAF6706F1B31F9450025D7CF /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				EAF670701B31F9450025D7CF /* AnimationExtensions.swift */,
+				EAF670711B31F9450025D7CF /* GeometryExtensions.swift */,
+				EAF670721B31F9450025D7CF /* UIKitExtension.swift */,
+			);
+			path = UI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1176,31 +1200,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAF670481B31F01E0025D7CF /* _User.swift in Sources */,
-				EAF6704B1B31F01E0025D7CF /* Connection.swift in Sources */,
-				EAF670301B31EAD30025D7CF /* AnimationExtensions.swift in Sources */,
-				EAF670311B31EAD30025D7CF /* GeometryExtensions.swift in Sources */,
-				EAF670141B31DB960025D7CF /* FoundationExtension.swift in Sources */,
-				EAF670391B31EFD50025D7CF /* Models.xcdatamodeld in Sources */,
-				EAF670341B31EAD30025D7CF /* UIKitExtension.swift in Sources */,
-				EAF670291B31E8FE0025D7CF /* MeteorExtension.swift in Sources */,
 				EAF670171B31DD740025D7CF /* GenericExtensions.swift in Sources */,
-				EAF670451B31F01E0025D7CF /* _Candidate.swift in Sources */,
-				EAF670241B31E6F90025D7CF /* VideoMessageTask.swift in Sources */,
-				EAF670231B31E6F90025D7CF /* TaskManager.swift in Sources */,
+				EAF670781B31F9450025D7CF /* ReactiveCocoaExtension.swift in Sources */,
+				EAF670771B31F9450025D7CF /* NotificationCenterExtensions.swift in Sources */,
+				EAF670881B31F9450025D7CF /* UIKitExtension.swift in Sources */,
+				EAF670801B31F9450025D7CF /* Message.swift in Sources */,
+				EAF6707E1B31F9450025D7CF /* Candidate.swift in Sources */,
+				EAF6707D1B31F9450025D7CF /* _Video.swift in Sources */,
+				EAF670851B31F9450025D7CF /* VideoMessageTask.swift in Sources */,
 				EAF6701D1B31E6550025D7CF /* Core.m in Sources */,
-				EAF670221B31E6F90025D7CF /* Logging.swift in Sources */,
-				EAF670321B31EAD30025D7CF /* NotificationCenterExtensions.swift in Sources */,
-				EAF6702A1B31E8FE0025D7CF /* SugarRecordExtension.swift in Sources */,
-				EAF670121B31DB700025D7CF /* ReactiveCocoaExtension.swift in Sources */,
-				EAF6704C1B31F01E0025D7CF /* Message.swift in Sources */,
-				EAF670281B31E8FE0025D7CF /* MeteorCDStack.swift in Sources */,
-				EAF670491B31F01E0025D7CF /* _Video.swift in Sources */,
-				EAF6704D1B31F01E0025D7CF /* User.swift in Sources */,
-				EAF6704A1B31F01E0025D7CF /* Candidate.swift in Sources */,
-				EAF670461B31F01E0025D7CF /* _Connection.swift in Sources */,
-				EAF670471B31F01E0025D7CF /* _Message.swift in Sources */,
-				EAF6704E1B31F01E0025D7CF /* Video.swift in Sources */,
+				EAF670741B31F9450025D7CF /* MeteorExtension.swift in Sources */,
+				EAF6707B1B31F9450025D7CF /* _Message.swift in Sources */,
+				EAF6708A1B31F9AD0025D7CF /* Logging.swift in Sources */,
+				EAF670831B31F9450025D7CF /* Video.swift in Sources */,
+				EAF6707C1B31F9450025D7CF /* _User.swift in Sources */,
+				EAF670791B31F9450025D7CF /* _Candidate.swift in Sources */,
+				EAF670841B31F9450025D7CF /* TaskManager.swift in Sources */,
+				EAF670751B31F9450025D7CF /* SugarRecordExtension.swift in Sources */,
+				EAF6707F1B31F9450025D7CF /* Connection.swift in Sources */,
+				EAF670731B31F9450025D7CF /* MeteorCDStack.swift in Sources */,
+				EAF670861B31F9450025D7CF /* AnimationExtensions.swift in Sources */,
+				EAF670811B31F9450025D7CF /* Models.xcdatamodeld in Sources */,
+				EAF6707A1B31F9450025D7CF /* _Connection.swift in Sources */,
+				EAF670761B31F9450025D7CF /* FoundationExtension.swift in Sources */,
+				EAF670821B31F9450025D7CF /* User.swift in Sources */,
+				EAF670871B31F9450025D7CF /* GeometryExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1654,12 +1678,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		EAF670371B31EFD50025D7CF /* Models.xcdatamodeld */ = {
+		EAF670681B31F9450025D7CF /* Models.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				EAF670381B31EFD50025D7CF /* Models.xcdatamodel */,
+				EAF670691B31F9450025D7CF /* Models.xcdatamodel */,
 			);
-			currentVersion = EAF670381B31EFD50025D7CF /* Models.xcdatamodel */;
+			currentVersion = EAF670691B31F9450025D7CF /* Models.xcdatamodel */;
 			path = Models.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -12,7 +12,7 @@ target :Core do
     pod 'SwiftTryCatch', '~> 0.0.1'
     pod 'NSLogger', '~> 1.5', :configuration => ['Debug']
     
-    # Models
+    # Data
     pod 'SugarRecord/CoreData', :git => 'https://github.com/tonyxiao/SugarRecord', :branch => 'swift-1.2'
     pod 'Meteor', :git => 'https://github.com/tonyxiao/meteor-ios', :branch => 'dev'
     pod 'SwiftyUserDefaults', '~> 1.1'
