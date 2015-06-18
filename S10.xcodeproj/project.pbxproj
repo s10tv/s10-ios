@@ -31,10 +31,10 @@
 		EA4F51851AE153880060405E /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F51841AE153880060405E /* SettingsViewModel.swift */; };
 		EA53D5221AE1E9B800EDAAFE /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA53D5211AE1E9B800EDAAFE /* Formatters.swift */; };
 		EA5B740B1B30F7BB008E5CBC /* TestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5B740A1B30F7BB008E5CBC /* TestAppDelegate.swift */; };
-		EA5B740D1B30F7BB008E5CBC /* RecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5B740C1B30F7BB008E5CBC /* RecorderViewController.swift */; };
+		EA5B740D1B30F7BB008E5CBC /* TestRecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5B740C1B30F7BB008E5CBC /* TestRecorderViewController.swift */; };
 		EA5B74141B30F7BB008E5CBC /* TestApp.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA5B74131B30F7BB008E5CBC /* TestApp.xcassets */; };
-		EA5B74171B30F7BB008E5CBC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5B74151B30F7BB008E5CBC /* LaunchScreen.xib */; };
-		EA5B742C1B30FC9D008E5CBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA5B742B1B30FC9D008E5CBC /* Main.storyboard */; };
+		EA5B74171B30F7BB008E5CBC /* TestLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5B74151B30F7BB008E5CBC /* TestLaunchScreen.xib */; };
+		EA5B742C1B30FC9D008E5CBC /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA5B742B1B30FC9D008E5CBC /* Test.storyboard */; };
 		EA5B74371B3139EA008E5CBC /* Core.h in Headers */ = {isa = PBXBuildFile; fileRef = EA5B74361B3139EA008E5CBC /* Core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA5B74531B315D8A008E5CBC /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5B74321B3139EA008E5CBC /* Core.framework */; };
 		EA608BAC1AE6A249003E1C75 /* MessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA608BAB1AE6A249003E1C75 /* MessagesViewModel.swift */; };
@@ -222,10 +222,10 @@
 		EA5B74061B30F7BB008E5CBC /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA5B74091B30F7BB008E5CBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA5B740A1B30F7BB008E5CBC /* TestAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAppDelegate.swift; sourceTree = "<group>"; };
-		EA5B740C1B30F7BB008E5CBC /* RecorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecorderViewController.swift; sourceTree = "<group>"; };
+		EA5B740C1B30F7BB008E5CBC /* TestRecorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRecorderViewController.swift; sourceTree = "<group>"; };
 		EA5B74131B30F7BB008E5CBC /* TestApp.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TestApp.xcassets; sourceTree = "<group>"; };
-		EA5B74161B30F7BB008E5CBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		EA5B742B1B30FC9D008E5CBC /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		EA5B74161B30F7BB008E5CBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TestLaunchScreen.xib; sourceTree = "<group>"; };
+		EA5B742B1B30FC9D008E5CBC /* Test.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Test.storyboard; sourceTree = "<group>"; };
 		EA5B74321B3139EA008E5CBC /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA5B74351B3139EA008E5CBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA5B74361B3139EA008E5CBC /* Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
@@ -524,10 +524,10 @@
 			isa = PBXGroup;
 			children = (
 				EA5B740A1B30F7BB008E5CBC /* TestAppDelegate.swift */,
-				EA5B740C1B30F7BB008E5CBC /* RecorderViewController.swift */,
-				EA5B742B1B30FC9D008E5CBC /* Main.storyboard */,
+				EA5B740C1B30F7BB008E5CBC /* TestRecorderViewController.swift */,
+				EA5B742B1B30FC9D008E5CBC /* Test.storyboard */,
 				EA5B74131B30F7BB008E5CBC /* TestApp.xcassets */,
-				EA5B74151B30F7BB008E5CBC /* LaunchScreen.xib */,
+				EA5B74151B30F7BB008E5CBC /* TestLaunchScreen.xib */,
 				EA5B74081B30F7BB008E5CBC /* Supporting Files */,
 			);
 			path = TestApp;
@@ -1042,8 +1042,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA5B742C1B30FC9D008E5CBC /* Main.storyboard in Resources */,
-				EA5B74171B30F7BB008E5CBC /* LaunchScreen.xib in Resources */,
+				EA5B742C1B30FC9D008E5CBC /* Test.storyboard in Resources */,
+				EA5B74171B30F7BB008E5CBC /* TestLaunchScreen.xib in Resources */,
 				EA5B74141B30F7BB008E5CBC /* TestApp.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1270,7 +1270,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA5B740D1B30F7BB008E5CBC /* RecorderViewController.swift in Sources */,
+				EA5B740D1B30F7BB008E5CBC /* TestRecorderViewController.swift in Sources */,
 				EAF670191B31DD920025D7CF /* GenericExtensions.swift in Sources */,
 				EA5B740B1B30F7BB008E5CBC /* TestAppDelegate.swift in Sources */,
 			);
@@ -1413,12 +1413,12 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		EA5B74151B30F7BB008E5CBC /* LaunchScreen.xib */ = {
+		EA5B74151B30F7BB008E5CBC /* TestLaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
 				EA5B74161B30F7BB008E5CBC /* Base */,
 			);
-			name = LaunchScreen.xib;
+			name = TestLaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 		EA7004641ACF912A00D0E467 /* Onboarding.storyboard */ = {

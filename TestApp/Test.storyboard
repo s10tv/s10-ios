@@ -5,10 +5,10 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--Recorder View Controller-->
+        <!--Test Recorder View Controller-->
         <scene sceneID="kNa-rK-164">
             <objects>
-                <viewController id="iXw-pM-Uzl" customClass="RecorderViewController" customModule="TestApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="iXw-pM-Uzl" customClass="TestRecorderViewController" customModule="TestApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="v2h-V3-giF"/>
                         <viewControllerLayoutGuide type="bottom" id="8Wb-LY-vzV"/>
@@ -17,14 +17,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nY8-Yz-lOD">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nY8-Yz-lOD" customClass="SCSwipeableFilterView">
                                 <rect key="frame" x="16" y="20" width="568" height="560"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Hello" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GkV-lX-2nH">
                                 <rect key="frame" x="266" y="246" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -37,7 +37,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="previewView" destination="nY8-Yz-lOD" id="C6k-L4-yvP"/>
+                        <outlet property="filterView" destination="nY8-Yz-lOD" id="1Uv-yN-s0x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rkz-Dx-bk0" userLabel="First Responder" sceneMemberID="firstResponder"/>

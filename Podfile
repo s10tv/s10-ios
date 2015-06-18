@@ -72,6 +72,7 @@ target :Core do
     target :TestApp do
         link_with 'TestApp'
         pod 'SCRecorder', '~> 2.4'
+        pod 'Reveal-iOS-SDK', '~> 1.5', :configuration => ['Debug']
     end
 end
 
