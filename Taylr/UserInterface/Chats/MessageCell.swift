@@ -11,12 +11,17 @@ import SDWebImage
 import SCRecorder
 import Core
 
+protocol MessageCellDelegate : NSObjectProtocol {
+    func messageCell(cell: MessageCell, didPlayMessage message: Message)
+}
+
 class MessageCell : UICollectionViewCell {
     
     @IBOutlet weak var playerView: SCVideoPlayerView!
     @IBOutlet weak var avatarView: UserAvatarView!
     @IBOutlet weak var timeLabel: UILabel!
     
+    weak var delegate: MessageCellDelegate?
     var player: SCPlayer { return playerView.player }
     var message: Message? {
         didSet {
@@ -30,12 +35,19 @@ class MessageCell : UICollectionViewCell {
         super.awakeFromNib()
         playerView.tapToPauseEnabled = true
         playerView.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
-        player.loopEnabled = true
+//        player.loopEnabled = true
+        player.delegate = self
         player.muted = true
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         player.setItem(nil)
+    }
+}
+
+extension MessageCell : SCPlayerDelegate {
+    func player(player: SCPlayer!, didReachEndForItem item: AVPlayerItem!) {
+        delegate?.messageCell(self, didPlayMessage: message!)
     }
 }

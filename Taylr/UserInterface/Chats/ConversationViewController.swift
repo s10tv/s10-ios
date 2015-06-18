@@ -59,6 +59,7 @@ extension ConversationViewController : UICollectionViewDataSource {
         if indexPath.row < messagesVM.frc.fetchedObjects?.count {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MessageCell", forIndexPath: indexPath) as! MessageCell
             cell.message = messagesVM.frc.objectAtIndexPath(indexPath) as? Message
+            cell.delegate = self
             return cell
         } else {
             let cell = collectionView.dequeueReusableCellWithReuseIdentifier("RecorderCell", forIndexPath: indexPath) as! UICollectionViewCell
@@ -82,6 +83,17 @@ extension ConversationViewController : UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         if let cell = cell as? MessageCell {
             cell.player.pause()
+        }
+    }
+}
+
+extension ConversationViewController : MessageCellDelegate {
+    func messageCell(cell: MessageCell, didPlayMessage message: Message) {
+        if let indexPath = messagesVM.frc.indexPathForObject(message) {
+            let newPath = NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)
+            if newPath.row < messagesVM.frc.fetchedObjects?.count {
+                collectionView.scrollToItemAtIndexPath(newPath, atScrollPosition: UICollectionViewScrollPosition.CenteredHorizontally, animated: true)
+            }
         }
     }
 }
