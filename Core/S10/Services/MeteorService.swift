@@ -13,7 +13,7 @@ import SugarRecord
 import Meteor
 
 public class MeteorService {
-    private let meteor: METCoreDataDDPClient
+    public let meteor: METCoreDataDDPClient
     public let subscriptions: (
         settings: METSubscription,
         metadata: METSubscription,
@@ -141,7 +141,14 @@ public class MeteorService {
     public func deleteAccount() -> RACSignal {
         return meteor.call("deleteAccount")
     }
-    
+
+    // MARK: - Tasks
+
+    public func startTask(type: String, metadata: NSDictionary) -> RACSignal {
+        let taskId = NSUUID().UUIDString
+        return meteor.call("startTask", [taskId, type, metadata])
+    }
+
     // MARK: - User
     
     public func updateProfile(key: String, value: String) -> RACSignal {
@@ -181,5 +188,9 @@ public class MeteorService {
     
     public func reportUser(user: User, reason: String) -> RACSignal {
         return meteor.call("user/report", [user.documentID!, reason])
+    }
+
+    private func getMeteor() -> METCoreDataDDPClient {
+        return self.meteor
     }
 }

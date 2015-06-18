@@ -32,6 +32,7 @@ target :Core do
         link_with 'CoreTests'
         pod 'Quick', '~> 0.3.0' # TODO: Upgrade after swift 2.0
         pod 'Nimble', '~> 0.4.0' # TODO: Upgrade after swift 2.0
+        pod 'SwiftyJSON', '~> 2.1'
     end
 
     target :Taylr do
@@ -78,5 +79,4 @@ target :Core do
 end
 
 # Might be useful one day
-#pod 'SwiftyJSON', '~> 2.1'
 #pod 'ExSwift', '~> 0.1.9'

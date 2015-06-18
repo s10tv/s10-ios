@@ -19,12 +19,13 @@ class IntegrationTests : XCTestCase {
     
     override class func setUp() {
         super.setUp()
-        meteor = MeteorService(serverURL: NSURL("ws://localhost:3000/websocket"))
+        meteor = MeteorService(serverURL: NSURL("wss://s10-dev.herokuapp.com/websocket"))
         env = Environment(provisioningProfile: nil)
     }
     
     override class func tearDown() {
         super.tearDown()
+        meteor.logout()
     }
     
     override func setUp() {
@@ -45,7 +46,7 @@ class IntegrationTests : XCTestCase {
 
         signal.subscribeCompleted { () -> Void in
             expect(meteor.userID).notTo(beNil())
-            expect(meteor.user!.firstName!).notTo(beNil())
+            expect(meteor.user!.documentID!).notTo(beNil())
             expectation.fulfill()
         }
 

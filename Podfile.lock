@@ -48,6 +48,7 @@ PODS:
   - SugarRecord/CoreData (1.0.7):
     - SugarRecord/Core
   - SwiftTryCatch (0.0.1)
+  - SwiftyJSON (2.2.0)
   - SwiftyUserDefaults (1.1.0)
   - SwipeView (1.3.2)
   - TCMobileProvision (1.0.0):
@@ -78,6 +79,7 @@ DEPENDENCIES:
   - SimpleKeychain (~> 0.4)
   - SugarRecord/CoreData (from `https://github.com/tonyxiao/SugarRecord`, branch `develop`)
   - SwiftTryCatch (~> 0.0.1)
+  - SwiftyJSON (~> 2.1)
   - SwiftyUserDefaults (~> 1.1)
   - SwipeView (~> 1.3)
   - TCMobileProvision (from `https://github.com/tonyxiao/TCMobileProvision.git`)
@@ -137,6 +139,7 @@ SPEC CHECKSUMS:
   SimpleKeychain: ed7fcbc2a235ad6919a3d2385ed4b44ab866d874
   SugarRecord: 9d55ce666e8161eacdc95c996173eb53eb6d3683
   SwiftTryCatch: fb6d2b34abe48efd69578dac919293a44f95b481
+  SwiftyJSON: 0b3e6c07af17ff745e77e8e9984097b55c956e5c
   SwiftyUserDefaults: ae600cd466daa1420a058d09aefbf45ccb6caf1e
   SwipeView: bd67cfaf7760c036438446b3ccb28a3b84fce009
   TCMobileProvision: 2a8962b38821a20fad53b9d7851bbc9ae8c52995

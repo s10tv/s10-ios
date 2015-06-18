@@ -146,6 +146,7 @@
 		F996C7221A81F1E000314FF8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C7211A81F1E000314FF8 /* AVFoundation.framework */; };
 		F996C7241A81F1E700314FF8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C7231A81F1E700314FF8 /* QuartzCore.framework */; };
 		F996C7261A81F1F200314FF8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C7251A81F1F200314FF8 /* OpenGLES.framework */; };
+		F99AAF921B323FB200881EAA /* MeteorServiceTestingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F99AAF911B323FB200881EAA /* MeteorServiceTestingExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -348,6 +349,7 @@
 		F996C7211A81F1E000314FF8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F996C7231A81F1E700314FF8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F996C7251A81F1F200314FF8 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		F99AAF911B323FB200881EAA /* MeteorServiceTestingExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorServiceTestingExtension.swift; sourceTree = "<group>"; };
 		FAACBA4FE8E370164B91C444 /* Pods_Backend_Camera.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Backend_Camera.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -664,6 +666,7 @@
 			children = (
 				EA78C87A1B320A370016AB73 /* Networking */,
 				EAF6709B1B32026F0025D7CF /* IntegrationTests.swift */,
+				F99AAF911B323FB200881EAA /* MeteorServiceTestingExtension.swift */,
 				EA9F35581A74CC6900E0C65D /* XCTestCaseExample.swift */,
 				EAF6701A1B31E42E0025D7CF /* QuickSpecExample.swift */,
 				EA9F35561A74CC6900E0C65D /* Supporting Files */,
@@ -1420,6 +1423,7 @@
 				EAF6701B1B31E42E0025D7CF /* QuickSpecExample.swift in Sources */,
 				EA9F35591A74CC6900E0C65D /* XCTestCaseExample.swift in Sources */,
 				EAF670351B31EC9E0025D7CF /* GenericExtensions.swift in Sources */,
+				F99AAF921B323FB200881EAA /* MeteorServiceTestingExtension.swift in Sources */,
 				EAF6709C1B32026F0025D7CF /* IntegrationTests.swift in Sources */,
 				EA78C87C1B320A370016AB73 /* AzureUploaderTest.swift in Sources */,
 			);
