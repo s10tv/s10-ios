@@ -23,7 +23,8 @@ class ConversationViewController : BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         collectionView.dataSource = self
-        recorder = makeViewController(.Recorder) as! RecorderViewController
+        collectionView.delegate = self
+//        recorder = makeViewController(.Recorder) as! RecorderViewController
         messagesVM = MessagesViewModel(connection: connection!, delegate: nil)
         messagesVM.bindCollectionView(collectionView)
         messagesVM.loadMessages()
@@ -51,7 +52,7 @@ class ConversationViewController : BaseViewController {
 
 extension ConversationViewController : UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (messagesVM.frc.fetchedObjects?.count ?? 0) + 1
+        return (messagesVM.frc.fetchedObjects?.count ?? 0) //+ 1
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -66,6 +67,21 @@ extension ConversationViewController : UICollectionViewDataSource {
             recorder.view.makeEdgesEqualTo(cell)
             recorder.didMoveToParentViewController(self)
             return cell
+        }
+    }
+}
+
+extension ConversationViewController : UICollectionViewDelegate {
+    
+    func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        if let cell = cell as? MessageCell {
+            cell.player.play()
+        }
+    }
+    
+    func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
+        if let cell = cell as? MessageCell {
+            cell.player.pause()
         }
     }
 }

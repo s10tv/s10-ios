@@ -20,7 +20,6 @@
 		EA3594141B2DE5C300E91337 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594131B2DE5C300E91337 /* ConversationViewController.swift */; };
 		EA3594161B2DEF0C00E91337 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594151B2DEF0C00E91337 /* MessageCell.swift */; };
 		EA3594191B2FEA1F00E91337 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594181B2FEA1F00E91337 /* TransitionManager.swift */; };
-		EA35941B1B3071D300E91337 /* RecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA35941A1B3071D300E91337 /* RecorderViewController.swift */; };
 		EA36D2AB1AE71366006FD5D8 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36D2AA1AE71366006FD5D8 /* Errors.swift */; };
 		EA3777721A966EC10055DE99 /* TransatTextBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */; };
 		EA3777751A966EC10055DE99 /* TransatTextMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA3777701A966EC10055DE99 /* TransatTextMedium.otf */; };
@@ -135,6 +134,10 @@
 		EAF81B141B325A6B00EED6DD /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EA5B74321B3139EA008E5CBC /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EAF81B181B325A8100EED6DD /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5B74321B3139EA008E5CBC /* Core.framework */; };
 		EAF81B191B325A8100EED6DD /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EA5B74321B3139EA008E5CBC /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EAF81B211B3337FA00EED6DD /* AVKit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAF81B201B3337FA00EED6DD /* AVKit.storyboard */; };
+		EAF81B231B33388700EED6DD /* ProducerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B221B33388700EED6DD /* ProducerViewController.swift */; };
+		EAF81B251B33389500EED6DD /* RecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B241B33389500EED6DD /* RecorderViewController.swift */; };
+		EAF81B271B33391000EED6DD /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B261B33391000EED6DD /* EditorViewController.swift */; };
 		F95D95DF1A84A1170068F090 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95D95DE1A84A1170068F090 /* MediaPlayer.framework */; };
 		F996C71E1A81F1D100314FF8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71D1A81F1D100314FF8 /* CoreMedia.framework */; };
 		F996C7201A81F1D800314FF8 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71F1A81F1D800314FF8 /* CoreVideo.framework */; };
@@ -207,7 +210,6 @@
 		EA3594131B2DE5C300E91337 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		EA3594151B2DEF0C00E91337 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		EA3594181B2FEA1F00E91337 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
-		EA35941A1B3071D300E91337 /* RecorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderViewController.swift; sourceTree = "<group>"; };
 		EA36D2AA1AE71366006FD5D8 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextBlack.otf; sourceTree = "<group>"; };
 		EA37776E1A966EC10055DE99 /* TransatTextBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextBold.otf; sourceTree = "<group>"; };
@@ -330,6 +332,10 @@
 		EAF670961B31FE6A0025D7CF /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		EAF670991B3200E10025D7CF /* MeteorService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorService.swift; sourceTree = "<group>"; };
 		EAF6709B1B32026F0025D7CF /* IntegrationTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationTests.swift; sourceTree = "<group>"; };
+		EAF81B201B3337FA00EED6DD /* AVKit.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AVKit.storyboard; sourceTree = "<group>"; };
+		EAF81B221B33388700EED6DD /* ProducerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProducerViewController.swift; sourceTree = "<group>"; };
+		EAF81B241B33389500EED6DD /* RecorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderViewController.swift; sourceTree = "<group>"; };
+		EAF81B261B33391000EED6DD /* EditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		F1D48B38C28B60559AEB8949 /* Pods_Core_Taylr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Core_Taylr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C759AA125AEB809731B1D6 /* Pods-Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.release.xcconfig"; path = "Pods/Target Support Files/Pods-Core/Pods-Core.release.xcconfig"; sourceTree = "<group>"; };
 		F95D95DE1A84A1170068F090 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -617,6 +623,7 @@
 			isa = PBXGroup;
 			children = (
 				EA0FC91C1A87DE5800D62625 /* Common */,
+				EAF81B1F1B3337EA00EED6DD /* AVKit */,
 				EA5634DE1A7741FF00F62B52 /* Models */,
 				EA4F51831AE153790060405E /* ViewModels */,
 				EA6650E91AA00A9C001BA40C /* Services */,
@@ -729,7 +736,6 @@
 				EAA56F8A1B2B32E500DE3936 /* UserAvatarView.swift */,
 				EAA56F8B1B2B32E500DE3936 /* WaveTransition.swift */,
 				EAA56F8C1B2B32E500DE3936 /* WaveView.swift */,
-				EA35941A1B3071D300E91337 /* RecorderViewController.swift */,
 			);
 			path = Shared;
 			sourceTree = "<group>";
@@ -872,6 +878,17 @@
 				EAF670991B3200E10025D7CF /* MeteorService.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		EAF81B1F1B3337EA00EED6DD /* AVKit */ = {
+			isa = PBXGroup;
+			children = (
+				EAF81B201B3337FA00EED6DD /* AVKit.storyboard */,
+				EAF81B221B33388700EED6DD /* ProducerViewController.swift */,
+				EAF81B241B33389500EED6DD /* RecorderViewController.swift */,
+				EAF81B261B33391000EED6DD /* EditorViewController.swift */,
+			);
+			path = AVKit;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -1065,6 +1082,7 @@
 				EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */,
 				EAA56F9E1B2B32E500DE3936 /* ProfileInfoCell.xib in Resources */,
 				EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */,
+				EAF81B211B3337FA00EED6DD /* AVKit.storyboard in Resources */,
 				EA3777751A966EC10055DE99 /* TransatTextMedium.otf in Resources */,
 				EAB8E7A61AE04D8D00B3046F /* Settings.storyboard in Resources */,
 				EA9F354A1A74CC6900E0C65D /* Taylr.xcassets in Resources */,
@@ -1328,6 +1346,7 @@
 				EA72FB291AD1B7D5009F853F /* Segue.swift in Sources */,
 				EA6650E11AA00999001BA40C /* BaseViews.swift in Sources */,
 				EAE1E07B1AE34C6200F03F13 /* LocationService.swift in Sources */,
+				EAF81B231B33388700EED6DD /* ProducerViewController.swift in Sources */,
 				EA608BAC1AE6A249003E1C75 /* MessagesViewModel.swift in Sources */,
 				EA0FC9441A87DE5800D62625 /* ViewProviders.swift in Sources */,
 				EA6650ED1AA00A9C001BA40C /* AccountService.swift in Sources */,
@@ -1336,13 +1355,13 @@
 				EAA56F9F1B2B32E500DE3936 /* ProfileViewController.swift in Sources */,
 				EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */,
 				EA0FED411ADDD0C700FC6FCB /* PanInteractor.swift in Sources */,
-				EA35941B1B3071D300E91337 /* RecorderViewController.swift in Sources */,
 				EAA56FA41B2B32E500DE3936 /* PulsingView.swift in Sources */,
 				EA3594161B2DEF0C00E91337 /* MessageCell.swift in Sources */,
 				EA72FB2C1AD1B7E1009F853F /* ScrollTransition.swift in Sources */,
 				EA925C741AD99ED8008E9F41 /* R.swift in Sources */,
 				EAA56F991B2B32E500DE3936 /* SettingsTextCell.swift in Sources */,
 				EA53D5221AE1E9B800EDAAFE /* Formatters.swift in Sources */,
+				EAF81B271B33391000EED6DD /* EditorViewController.swift in Sources */,
 				EAA56FAF1B2BCA0A00DE3936 /* DiscoverViewModel.swift in Sources */,
 				EA36D2AB1AE71366006FD5D8 /* Errors.swift in Sources */,
 				EAA56F931B2B32E500DE3936 /* MeViewController.swift in Sources */,
@@ -1378,6 +1397,7 @@
 				EAA56FB11B2BCAC700DE3936 /* CandidateCell.swift in Sources */,
 				EAA56FB31B2BE36900DE3936 /* ChatsViewModel.swift in Sources */,
 				EAA56FA51B2B32E500DE3936 /* UserAvatarView.swift in Sources */,
+				EAF81B251B33389500EED6DD /* RecorderViewController.swift in Sources */,
 				EA409D391A8C681A00988B8B /* FacebookExtension.swift in Sources */,
 				EAA56F901B2B32E500DE3936 /* DiscoverViewController.swift in Sources */,
 				EA0FC9411A87DE5800D62625 /* ArrayViewModel.swift in Sources */,

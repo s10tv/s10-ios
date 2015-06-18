@@ -41,6 +41,7 @@ target :Core do
         pod 'SDWebImage', '~> 3.7'
         pod 'PKHUD', :git => 'https://github.com/tonyxiao/PKHUD' # Fork is needed to work around xcasset compilation issue inside pod
         pod 'XLForm', '~> 2.2'
+        pod 'SCRecorder', '~> 2.4'
 
         pod 'UICollectionViewLeftAlignedLayout', '~> 1.0'
 

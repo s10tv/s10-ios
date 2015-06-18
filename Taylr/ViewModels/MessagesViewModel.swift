@@ -53,7 +53,7 @@ class MessagesViewModel : NSObject {
     func bindCollectionView(collectionView: UICollectionView) {
         self.collectionView = collectionView
 //        collectionView.dataSource = self
-        collectionView.delegate = self
+//        collectionView.delegate = self
     }
     
     // MARK: -

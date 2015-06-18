@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+    </dependencies>
+    <scenes>
+        <!--Producer View Controller-->
+        <scene sceneID="KVl-aQ-lmO">
+            <objects>
+                <navigationController storyboardIdentifier="Producer" navigationBarHidden="YES" id="B5O-Nb-tlk" customClass="ProducerViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="d6I-cJ-RgF">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Mkj-ew-cSR" kind="relationship" relationship="rootViewController" id="1DS-hY-7QN"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CgU-v0-x1p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-58" y="249"/>
+        </scene>
+        <!--Editor View Controller-->
+        <scene sceneID="6PV-4o-iXN">
+            <objects>
+                <viewController storyboardIdentifier="Editor" id="uPv-0o-aed" customClass="EditorViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NLf-hM-Uv9"/>
+                        <viewControllerLayoutGuide type="bottom" id="ccj-Kj-OsA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mm1-nh-CJO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DQY-Y5-Atw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="405" y="1082"/>
+        </scene>
+        <!--Recorder View Controller-->
+        <scene sceneID="RK2-8S-S6h">
+            <objects>
+                <viewController storyboardIdentifier="Recorder" id="Mkj-ew-cSR" customClass="RecorderViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kas-4p-VNL"/>
+                        <viewControllerLayoutGuide type="bottom" id="sS8-ya-4lZ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="M3U-qM-guW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Fw-rH-c9r" userLabel="Camera Preview" customClass="SCFilterSelectorView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="540"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3o-63-A2P" userLabel="Flip Camera">
+                                <rect key="frame" x="16" y="40" width="39" height="30"/>
+                                <state key="normal" image="ic-camera-flip">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7s2-e5-NVe" userLabel="Capture">
+                                <rect key="frame" x="259" y="496" width="83" height="84"/>
+                                <state key="normal" image="ic-capture">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lns-QH-k4C" userLabel="Magic Wand">
+                                <rect key="frame" x="20" y="542" width="37" height="38"/>
+                                <state key="normal" image="ic-magic-wand">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="y4J-e7-Clx" userLabel="Edit Text">
+                                <rect key="frame" x="548" y="547" width="32" height="33"/>
+                                <state key="normal" image="ic-edit-text">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="2Fw-rH-c9r" firstAttribute="top" secondItem="kas-4p-VNL" secondAttribute="bottom" id="2LE-gD-VG3"/>
+                            <constraint firstItem="2Fw-rH-c9r" firstAttribute="leading" secondItem="M3U-qM-guW" secondAttribute="leading" id="3PL-62-xQu"/>
+                            <constraint firstAttribute="trailing" secondItem="2Fw-rH-c9r" secondAttribute="trailing" id="72f-e3-Gy6"/>
+                            <constraint firstItem="b3o-63-A2P" firstAttribute="leading" secondItem="M3U-qM-guW" secondAttribute="leading" constant="20" id="9SI-el-IUd"/>
+                            <constraint firstItem="y4J-e7-Clx" firstAttribute="trailing" secondItem="M3U-qM-guW" secondAttribute="trailing" constant="-20" id="AY9-eG-qa5"/>
+                            <constraint firstAttribute="centerX" secondItem="7s2-e5-NVe" secondAttribute="centerX" constant="-0.5" id="Nn2-UL-EV3"/>
+                            <constraint firstItem="sS8-ya-4lZ" firstAttribute="top" secondItem="y4J-e7-Clx" secondAttribute="bottom" constant="20" id="Rsh-O0-ilS"/>
+                            <constraint firstItem="sS8-ya-4lZ" firstAttribute="top" secondItem="2Fw-rH-c9r" secondAttribute="bottom" constant="60" id="hn7-Hn-7PE"/>
+                            <constraint firstItem="sS8-ya-4lZ" firstAttribute="top" secondItem="Lns-QH-k4C" secondAttribute="bottom" constant="20" id="ml3-zS-lYY"/>
+                            <constraint firstItem="Lns-QH-k4C" firstAttribute="leading" secondItem="M3U-qM-guW" secondAttribute="leading" constant="20" id="ng6-6l-UsO"/>
+                            <constraint firstItem="sS8-ya-4lZ" firstAttribute="top" secondItem="7s2-e5-NVe" secondAttribute="bottom" constant="20" id="tdQ-bU-MSn"/>
+                            <constraint firstItem="b3o-63-A2P" firstAttribute="top" secondItem="kas-4p-VNL" secondAttribute="bottom" constant="20" id="xoA-xb-6Tn"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="cht-BE-lwq"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="previewView" destination="2Fw-rH-c9r" id="0cp-IO-f9u"/>
+                        <segue destination="uPv-0o-aed" kind="show" identifier="RecorderToEditor" id="SWo-hc-sLD"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bxK-es-QuW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-316" y="1082"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="ic-camera-flip" width="39" height="30"/>
+        <image name="ic-capture" width="83" height="84"/>
+        <image name="ic-edit-text" width="32" height="33"/>
+        <image name="ic-magic-wand" width="37" height="38"/>
+    </resources>
+</document>

@@ -8,30 +8,34 @@
 
 import Foundation
 import SDWebImage
-import MediaPlayer
+import SCRecorder
 import Core
 
 class MessageCell : UICollectionViewCell {
     
-    @IBOutlet weak var coverFrameView: UIImageView!
-    lazy var player = MPMoviePlayerController()
+    @IBOutlet weak var playerView: SCVideoPlayerView!
+    @IBOutlet weak var avatarView: UserAvatarView!
+    @IBOutlet weak var timeLabel: UILabel!
     
+    var player: SCPlayer { return playerView.player }
     var message: Message? {
         didSet {
-            coverFrameView.sd_setImageWithURL(message?.video?.coverFrameURL)
+            player.setItemByUrl(message?.video?.URL)
+            avatarView.user = message?.sender
+            timeLabel.text = "2m"
         }
     }
     
-    @IBAction func togglePlayback(sender: AnyObject) {
-        if player.contentURL == nil {
-            addSubview(player.view)
-            player.view.makeEdgesEqualTo(self)
-            player.contentURL = message?.video?.URL
-        }
-        if player.playbackState != .Playing {
-            player.play()
-        } else {
-            player.stop()
-        }
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        playerView.tapToPauseEnabled = true
+        playerView.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        player.loopEnabled = true
+        player.muted = true
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        player.setItem(nil)
     }
 }
