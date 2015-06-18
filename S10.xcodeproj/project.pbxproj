@@ -37,7 +37,6 @@
 		EA5B742C1B30FC9D008E5CBC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA5B742B1B30FC9D008E5CBC /* Main.storyboard */; };
 		EA5B74371B3139EA008E5CBC /* Core.h in Headers */ = {isa = PBXBuildFile; fileRef = EA5B74361B3139EA008E5CBC /* Core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA5B74531B315D8A008E5CBC /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5B74321B3139EA008E5CBC /* Core.framework */; };
-		EA5B745C1B316034008E5CBC /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5B74321B3139EA008E5CBC /* Core.framework */; };
 		EA608BAC1AE6A249003E1C75 /* MessagesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA608BAB1AE6A249003E1C75 /* MessagesViewModel.swift */; };
 		EA6650E11AA00999001BA40C /* BaseViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650E01AA00999001BA40C /* BaseViews.swift */; };
 		EA6650ED1AA00A9C001BA40C /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650EB1AA00A9C001BA40C /* AccountService.swift */; };
@@ -132,7 +131,10 @@
 		EAF670971B31FE6A0025D7CF /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670961B31FE6A0025D7CF /* Environment.swift */; };
 		EAF6709A1B3200E10025D7CF /* MeteorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670991B3200E10025D7CF /* MeteorService.swift */; };
 		EAF6709C1B32026F0025D7CF /* IntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6709B1B32026F0025D7CF /* IntegrationTests.swift */; };
-		EAF92AD41B31CD1400FF8DD7 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5B74321B3139EA008E5CBC /* Core.framework */; };
+		EAF81B131B325A6B00EED6DD /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5B74321B3139EA008E5CBC /* Core.framework */; };
+		EAF81B141B325A6B00EED6DD /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EA5B74321B3139EA008E5CBC /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EAF81B181B325A8100EED6DD /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5B74321B3139EA008E5CBC /* Core.framework */; };
+		EAF81B191B325A8100EED6DD /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EA5B74321B3139EA008E5CBC /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		F95D95DF1A84A1170068F090 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95D95DE1A84A1170068F090 /* MediaPlayer.framework */; };
 		F996C71E1A81F1D100314FF8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71D1A81F1D100314FF8 /* CoreMedia.framework */; };
 		F996C7201A81F1D800314FF8 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71F1A81F1D800314FF8 /* CoreVideo.framework */; };
@@ -140,6 +142,48 @@
 		F996C7241A81F1E700314FF8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C7231A81F1E700314FF8 /* QuartzCore.framework */; };
 		F996C7261A81F1F200314FF8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C7251A81F1F200314FF8 /* OpenGLES.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		EAF81B151B325A6B00EED6DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA9F35321A74CC6900E0C65D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EA5B74311B3139EA008E5CBC;
+			remoteInfo = Core;
+		};
+		EAF81B1A1B325A8200EED6DD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA9F35321A74CC6900E0C65D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = EA5B74311B3139EA008E5CBC;
+			remoteInfo = Core;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		EAF81B171B325A6B00EED6DD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EAF81B141B325A6B00EED6DD /* Core.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		EAF81B1C1B325A8200EED6DD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				EAF81B191B325A8100EED6DD /* Core.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		21AC1310FAF1B62E59D95C0D /* Pods_Backend_BackendTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Backend_BackendTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -302,7 +346,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAF92AD41B31CD1400FF8DD7 /* Core.framework in Frameworks */,
+				EAF81B131B325A6B00EED6DD /* Core.framework in Frameworks */,
 				C0694BB32891795853D2C3CF /* Pods_Core_TestApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -319,13 +363,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA5B745C1B316034008E5CBC /* Core.framework in Frameworks */,
 				F95D95DF1A84A1170068F090 /* MediaPlayer.framework in Frameworks */,
 				F996C7261A81F1F200314FF8 /* OpenGLES.framework in Frameworks */,
 				F996C7241A81F1E700314FF8 /* QuartzCore.framework in Frameworks */,
 				F996C7221A81F1E000314FF8 /* AVFoundation.framework in Frameworks */,
 				F996C7201A81F1D800314FF8 /* CoreVideo.framework in Frameworks */,
 				F996C71E1A81F1D100314FF8 /* CoreMedia.framework in Frameworks */,
+				EAF81B181B325A8100EED6DD /* Core.framework in Frameworks */,
 				D6555C3D41C17908B83EB27C /* Pods_Core_Taylr.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -854,10 +898,12 @@
 				EA5B74041B30F7BB008E5CBC /* Resources */,
 				B3E738155C9AB12773F11F6B /* Embed Pods Frameworks */,
 				05BF2C6785624BCBC9832C33 /* Copy Pods Resources */,
+				EAF81B171B325A6B00EED6DD /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				EAF81B161B325A6B00EED6DD /* PBXTargetDependency */,
 			);
 			name = TestApp;
 			productName = Camera;
@@ -895,10 +941,12 @@
 				75FEE40CAC4CCC98BBE5F3A2 /* Copy Pods Resources */,
 				22B85F6A287D7401CC82E5E2 /* Embed Pods Frameworks */,
 				EA7F26D91A891B6500629078 /* Upload DSYM to Fabric (Crashlytics) */,
+				EAF81B1C1B325A8200EED6DD /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				EAF81B1B1B325A8200EED6DD /* PBXTargetDependency */,
 			);
 			name = Taylr;
 			productName = Taylr;
@@ -939,6 +987,7 @@
 					};
 					EA5B74311B3139EA008E5CBC = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = N25WYDCNJJ;
 					};
 					EA9F35391A74CC6900E0C65D = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -1350,6 +1399,19 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		EAF81B161B325A6B00EED6DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EA5B74311B3139EA008E5CBC /* Core */;
+			targetProxy = EAF81B151B325A6B00EED6DD /* PBXContainerItemProxy */;
+		};
+		EAF81B1B1B325A8200EED6DD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = EA5B74311B3139EA008E5CBC /* Core */;
+			targetProxy = EAF81B1A1B325A8200EED6DD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		EA5B74151B30F7BB008E5CBC /* LaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
@@ -1448,6 +1510,7 @@
 			baseConfigurationReference = 6A2FB1EC7785F957D622CCE4 /* Pods-Core.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "$(CUSTOM_CODE_SIGN_IDENTITY)";
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEFINES_MODULE = YES;
@@ -1477,6 +1540,7 @@
 			baseConfigurationReference = F2C759AA125AEB809731B1D6 /* Pods-Core.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "$(CUSTOM_CODE_SIGN_IDENTITY)";
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 1;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
