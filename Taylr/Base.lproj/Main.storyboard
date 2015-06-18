@@ -365,22 +365,34 @@
                                             <outlet property="timeLabel" destination="De8-FM-a37" id="m9i-vW-kg2"/>
                                         </connections>
                                     </collectionViewCell>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="RecorderCell" id="kKP-Iy-gw6">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProducerCell" id="kKP-Iy-gw6" customClass="ProducerCell" customModule="Taylr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="I'm a recorder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LHH-3Z-qxJ">
-                                                    <rect key="frame" x="97" y="189" width="107" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DuV-ce-cTh" userLabel="Container">
+                                                    <rect key="frame" x="8" y="8" width="284" height="384"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="DuV-ce-cTh" secondAttribute="trailing" constant="8" id="01c-a6-8oA"/>
+                                            <constraint firstAttribute="bottom" secondItem="DuV-ce-cTh" secondAttribute="bottom" constant="8" id="D6q-Sg-fiW"/>
+                                            <constraint firstItem="DuV-ce-cTh" firstAttribute="top" secondItem="kKP-Iy-gw6" secondAttribute="top" constant="8" id="aSr-ba-Sj9"/>
+                                            <constraint firstItem="DuV-ce-cTh" firstAttribute="leading" secondItem="kKP-Iy-gw6" secondAttribute="leading" constant="8" id="j6Q-3d-cFE"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="containerView" destination="DuV-ce-cTh" id="4rS-S0-EuX"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>

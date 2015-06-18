@@ -11,7 +11,7 @@ mogenerator --swift --template-path "../../scripts/motemplates" \
 # Regenerate Taylr assets
 cd "../../Taylr"
 # Regenerate storyboard constants
-sbconstants -s Base.lproj/ -w -d > Generated/SBConstants.swift
+sbconstants -s ./ -w -d > Generated/SBConstants.swift
 
 # Regenerate image and string name constants
 # Exclude generic Images.xcassets that come from including Pods resources manually

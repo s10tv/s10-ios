@@ -16,7 +16,7 @@ class ConversationViewController : BaseViewController {
     @IBOutlet weak var activityLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var recorder: RecorderViewController!
+    var producer: ProducerViewController!
     var messagesVM: MessagesViewModel!
     var connection: Connection?
     
@@ -24,7 +24,8 @@ class ConversationViewController : BaseViewController {
         super.viewDidLoad()
         collectionView.dataSource = self
         collectionView.delegate = self
-//        recorder = makeViewController(.Recorder) as! RecorderViewController
+        producer = UIStoryboard(name: "AVKit", bundle: nil).instantiateInitialViewController() as! ProducerViewController
+        producer.producerDelegate = self
         messagesVM = MessagesViewModel(connection: connection!, delegate: nil)
         messagesVM.bindCollectionView(collectionView)
         messagesVM.loadMessages()
@@ -52,7 +53,7 @@ class ConversationViewController : BaseViewController {
 
 extension ConversationViewController : UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (messagesVM.frc.fetchedObjects?.count ?? 0) //+ 1
+        return (messagesVM.frc.fetchedObjects?.count ?? 0) + 1
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -62,11 +63,11 @@ extension ConversationViewController : UICollectionViewDataSource {
             cell.delegate = self
             return cell
         } else {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("RecorderCell", forIndexPath: indexPath) as! UICollectionViewCell
-            addChildViewController(recorder)
-            cell.addSubview(recorder.view)
-            recorder.view.makeEdgesEqualTo(cell)
-            recorder.didMoveToParentViewController(self)
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ProducerCell", forIndexPath: indexPath) as! ProducerCell
+            addChildViewController(producer)
+            cell.containerView.addSubview(producer.view)
+            producer.view.makeEdgesEqualTo(cell.containerView)
+            producer.didMoveToParentViewController(self)
             return cell
         }
     }
@@ -91,9 +92,15 @@ extension ConversationViewController : MessageCellDelegate {
     func messageCell(cell: MessageCell, didPlayMessage message: Message) {
         if let indexPath = messagesVM.frc.indexPathForObject(message) {
             let newPath = NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)
-            if newPath.row < messagesVM.frc.fetchedObjects?.count {
+//            if newPath.row < messagesVM.frc.fetchedObjects?.count {
                 collectionView.scrollToItemAtIndexPath(newPath, atScrollPosition: UICollectionViewScrollPosition.CenteredHorizontally, animated: true)
-            }
+//            }
         }
+    }
+}
+
+extension ConversationViewController : ProducerDelegate {
+    func producer(producer: ProducerViewController, didProduceVideo url: NSURL) {
+        Log.info("I got a video \(url)")
     }
 }

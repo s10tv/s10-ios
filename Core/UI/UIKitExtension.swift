@@ -87,9 +87,9 @@ extension UIView {
     }
     
     // TODO: Figure out when to tear down the subscriptions for gesture recognizers
-    public func whenTapped(block: (UITapGestureRecognizer) -> ()) {
+    public func whenTapped(numberOfTaps: Int = 1, block: (UITapGestureRecognizer) -> ()) {
         let tap = UITapGestureRecognizer()
-        tap.numberOfTapsRequired = 1
+        tap.numberOfTapsRequired = numberOfTaps
         tap.numberOfTouchesRequired = 1
         tap.rac_gestureSignal().subscribeNextAs { (recognizer : UITapGestureRecognizer) -> () in
             block(recognizer)

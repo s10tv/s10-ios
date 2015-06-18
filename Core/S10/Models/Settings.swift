@@ -43,6 +43,7 @@ public class Settings {
     }
     
     public func getValue(key: String) -> AnyObject? {
+        return nil
         return collection.documentWithID(key).fields["value"]
     }
     

@@ -138,6 +138,8 @@
 		EAF81B231B33388700EED6DD /* ProducerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B221B33388700EED6DD /* ProducerViewController.swift */; };
 		EAF81B251B33389500EED6DD /* RecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B241B33389500EED6DD /* RecorderViewController.swift */; };
 		EAF81B271B33391000EED6DD /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B261B33391000EED6DD /* EditorViewController.swift */; };
+		EAF81B291B335EE700EED6DD /* TouchDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B281B335EE700EED6DD /* TouchDetector.swift */; };
+		EAF81B2B1B3373F000EED6DD /* ProducerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B2A1B3373F000EED6DD /* ProducerCell.swift */; };
 		F95D95DF1A84A1170068F090 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95D95DE1A84A1170068F090 /* MediaPlayer.framework */; };
 		F996C71E1A81F1D100314FF8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71D1A81F1D100314FF8 /* CoreMedia.framework */; };
 		F996C7201A81F1D800314FF8 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71F1A81F1D800314FF8 /* CoreVideo.framework */; };
@@ -336,6 +338,8 @@
 		EAF81B221B33388700EED6DD /* ProducerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProducerViewController.swift; sourceTree = "<group>"; };
 		EAF81B241B33389500EED6DD /* RecorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderViewController.swift; sourceTree = "<group>"; };
 		EAF81B261B33391000EED6DD /* EditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
+		EAF81B281B335EE700EED6DD /* TouchDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchDetector.swift; sourceTree = "<group>"; };
+		EAF81B2A1B3373F000EED6DD /* ProducerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProducerCell.swift; sourceTree = "<group>"; };
 		F1D48B38C28B60559AEB8949 /* Pods_Core_Taylr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Core_Taylr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C759AA125AEB809731B1D6 /* Pods-Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.release.xcconfig"; path = "Pods/Target Support Files/Pods-Core/Pods-Core.release.xcconfig"; sourceTree = "<group>"; };
 		F95D95DE1A84A1170068F090 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -451,6 +455,7 @@
 				EAB79B6F1AD912EB00D9875A /* PKHUDExtension.swift */,
 				EAB8E7AF1AE0826D00B3046F /* XLFormExtensions.h */,
 				EAB8E7B01AE0826D00B3046F /* XLFormExtensions.m */,
+				EAF81B281B335EE700EED6DD /* TouchDetector.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -681,6 +686,7 @@
 				EAA56F6D1B2B32E500DE3936 /* ConnectionCell.swift */,
 				EA3594131B2DE5C300E91337 /* ConversationViewController.swift */,
 				EA3594151B2DEF0C00E91337 /* MessageCell.swift */,
+				EAF81B2A1B3373F000EED6DD /* ProducerCell.swift */,
 			);
 			path = Chats;
 			sourceTree = "<group>";
@@ -1382,6 +1388,7 @@
 				EAF670521B31F28B0025D7CF /* ProfileItem.swift in Sources */,
 				EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */,
 				EAA56F981B2B32E500DE3936 /* SettingsPhotoCell.swift in Sources */,
+				EAF81B291B335EE700EED6DD /* TouchDetector.swift in Sources */,
 				EAD7B2AB1A9F0BE700FA6740 /* DesignableViews.swift in Sources */,
 				EAB8E7B11AE0826D00B3046F /* XLFormExtensions.m in Sources */,
 				EAA56FA61B2B32E500DE3936 /* WaveTransition.swift in Sources */,
@@ -1396,6 +1403,7 @@
 				EAA56F941B2B32E500DE3936 /* RowDescriptors.swift in Sources */,
 				EAA56FB11B2BCAC700DE3936 /* CandidateCell.swift in Sources */,
 				EAA56FB31B2BE36900DE3936 /* ChatsViewModel.swift in Sources */,
+				EAF81B2B1B3373F000EED6DD /* ProducerCell.swift in Sources */,
 				EAA56FA51B2B32E500DE3936 /* UserAvatarView.swift in Sources */,
 				EAF81B251B33389500EED6DD /* RecorderViewController.swift in Sources */,
 				EA409D391A8C681A00988B8B /* FacebookExtension.swift in Sources */,

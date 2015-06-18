@@ -7,11 +7,38 @@
 //
 
 import Foundation
+import SCRecorder
 
-protocol ProducerDelegate {
-    func producer(producer: ProducerViewController, didProduceVideo: NSURL, withCoverFrame: NSURL)
+protocol ProducerDelegate : NSObjectProtocol {
+    func producer(producer: ProducerViewController, didProduceVideo url: NSURL)
 }
 
 class ProducerViewController : UINavigationController {
     
+    var recorderVC: RecorderViewController!
+    var editorVC: EditorViewController!
+    weak var producerDelegate: ProducerDelegate?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        recorderVC = makeViewController(.Recorder) as! RecorderViewController
+        editorVC = makeViewController(.Editor) as! EditorViewController
+        recorderVC.delegate = self
+        editorVC.delegate = self
+        
+        viewControllers = [recorderVC]
+    }
+}
+
+extension ProducerViewController : RecorderDelegate {
+    func recorder(recorder: RecorderViewController, didRecordSession session: SCRecordSession) {
+        editorVC.recordSession = session
+        pushViewController(editorVC, animated: false)
+    }
+}
+
+extension ProducerViewController : EditorDelegate {
+    func editor(editor: EditorViewController, didEditVideo outputURL: NSURL) {
+        producerDelegate?.producer(self, didProduceVideo: outputURL)
+    }
 }
