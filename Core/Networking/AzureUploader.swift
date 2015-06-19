@@ -9,6 +9,7 @@
 import Alamofire
 import Foundation
 import ReactiveCocoa
+import SwiftyJSON
 
 public final class AzureUploader {
 
@@ -18,25 +19,23 @@ public final class AzureUploader {
         self.meteorService = meteorService
     }
 
-    public func newMessage(connectionId: String) -> RACSignal {
-        return meteorService.startTask("MESSAGE", metadata: ["connectionId" : connectionId])
-        .flattenMap { res in
-            println(res);
-            let data = "hello".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!
-            return self.uploadFile("", data: data);
-        }
-    }
-
     /**
      * Uploads @param data to Azure shared access url @param url
      */
-    public func uploadFile(url: String, data: NSData) -> RACSignal {
-        let request = NSMutableURLRequest(URL: NSURL(string : url)!)
-        request.HTTPMethod = "PUT"
-        request.addValue("2014-02-14", forHTTPHeaderField: "x-ms-version")
-        request.addValue("BlockBlob", forHTTPHeaderField: "x-ms-blob-type")
-        request.addValue("text/plain", forHTTPHeaderField: "Content-Type")
+    public func uploadFile(connectionId: String, localUrl: NSURL) -> RACSignal {
+        let taskId = NSUUID().UUIDString
+        return meteorService.startTask(taskId, type: "MESSAGE",
+                metadata: ["connectionId" : connectionId]).flattenMap { res in
+            let videoUrl = JSON(res)["videoUrl"].string!
+            let request = NSMutableURLRequest(URL: NSURL(string : videoUrl)!)
+            request.HTTPMethod = "PUT"
+            request.addValue("2014-02-14", forHTTPHeaderField: "x-ms-version")
+            request.addValue("BlockBlob", forHTTPHeaderField: "x-ms-blob-type")
+            request.addValue("text/plain", forHTTPHeaderField: "Content-Type")
 
-        return Alamofire.upload(request, data).rac_statuscode()
+            return Alamofire.upload(request, localUrl).rac_statuscode()
+        }.then {
+            return self.meteorService.finishTask(taskId)
+        }
     }
 }

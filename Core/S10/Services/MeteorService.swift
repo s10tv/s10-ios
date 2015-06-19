@@ -144,9 +144,12 @@ public class MeteorService {
 
     // MARK: - Tasks
 
-    public func startTask(type: String, metadata: NSDictionary) -> RACSignal {
-        let taskId = NSUUID().UUIDString
+    public func startTask(taskId: String, type: String, metadata: NSDictionary) -> RACSignal {
         return meteor.call("startTask", [taskId, type, metadata])
+    }
+
+    public func finishTask(taskId: String) -> RACSignal {
+        return meteor.call("finishTask", [taskId])
     }
 
     // MARK: - User

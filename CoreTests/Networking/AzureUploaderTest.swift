@@ -29,7 +29,7 @@ class AzureUploaderTest: XCTestCase {
 
     override func setUp() {
         super.setUp()
-        meteorService = MeteorService(serverURL: NSURL("wss://s10-dev.herokuapp.com/websocket"))
+        meteorService = MeteorService(serverURL: NSURL("ws://s10-dev.herokuapp.com/websocket"))
         meteorService.delegate = self
         meteorService.startup()
         self.toTest = AzureUploader(meteorService: meteorService)
@@ -37,26 +37,6 @@ class AzureUploaderTest: XCTestCase {
 
     override func tearDown() {
         super.tearDown()
-    }
-
-    func testShouldUploadCorrectly() {
-        var expectation = self.expectationWithDescription("Upload to Azure")
-
-        let data = "hello".dataUsingEncoding(NSUTF8StringEncoding, allowLossyConversion: true)!
-        let signal : RACSignal = toTest.uploadFile(UPLOAD_URL, data: data)
-
-        signal.subscribeNext { (response) -> Void in
-            let statusCode = response as! Int
-            expect(statusCode).to(beGreaterThanOrEqualTo(200))
-            expect(statusCode).to(beLessThan(300))
-            expectation.fulfill()
-        }
-
-        signal.subscribeError { (error) -> Void in
-            XCTFail("Error uploading to Azure")
-        }
-
-        self.waitForExpectationsWithTimeout(1.0, handler: nil)
     }
 
     func testNewMessage() {
@@ -76,38 +56,19 @@ class AzureUploaderTest: XCTestCase {
             return self.meteorService.connectUsers(
                 self.userId!, secondUserId: self.candidateUserId!)
         }.flattenMap { res in
-            println("connetionId: ")
-            println(res)
-            return self.meteorService.startTask("MESSAGE", metadata: ["connectionId": res])
+            let filePath = NSHomeDirectory().stringByAppendingPathComponent("test.txt")
+            expect("hello world".writeToFile(
+                filePath, atomically: true, encoding: NSUTF8StringEncoding, error: nil)) == true
+
+            let url = NSURL(string: filePath)
+            let connectionId = res as! String
+            return self.toTest.uploadFile(connectionId, localUrl: url!)
         }.flattenMap { res in
-            println(res)
-
-            self.coverFrameUrl = JSON(res)["coverFrameUrl"].string!
-            self.videoUrl = JSON(res)["videoUrl"].string!
-
-            expect(self.coverFrameUrl) != nil
-            expect(self.videoUrl) != nil
-
-            let coverFrameData = self.coverFrameUrl!.dataUsingEncoding(
-                NSUTF8StringEncoding, allowLossyConversion: true)!
-
-            return self.toTest.uploadFile(self.coverFrameUrl!, data: coverFrameData)
-        }.flattenMap { res in
-            let statusCode = res as! Int
-            println(statusCode)
-
-            expect(statusCode).to(beGreaterThanOrEqualTo(200))
-            expect(statusCode).to(beLessThan(300))
-
-            let videoUrlData = self.videoUrl!.dataUsingEncoding(
-                NSUTF8StringEncoding, allowLossyConversion: true)!
-            return self.toTest.uploadFile(self.videoUrl!, data: videoUrlData)
-        }.flattenMap { res in
-            let statusCode = res as! Int
-            println(statusCode)
-
-            expect(statusCode).to(beGreaterThanOrEqualTo(200))
-            expect(statusCode).to(beLessThan(300))
+            let status = res as! Int
+            expect(status) == 1
+            expect(Message.all().count()) == 1
+            let message: Message = Message.all().fetch().first as! Message
+            expect(message.status) == "sent"
             return RACSignal.empty()
         }.then {
             return self.meteorService.clearMessages()
