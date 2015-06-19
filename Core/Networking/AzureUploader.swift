@@ -36,6 +36,6 @@ public final class AzureUploader {
             return Alamofire.upload(request, localUrl).rac_statuscode()
         }.then {
             return self.meteorService.finishTask(taskId)
-        }
+        }.replay()
     }
 }

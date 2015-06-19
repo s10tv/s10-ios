@@ -49,5 +49,6 @@ extension ProducerViewController : EditorDelegate {
     
     func editor(editor: EditorViewController, didEditVideo outputURL: NSURL) {
         producerDelegate?.producer(self, didProduceVideo: outputURL)
+        popViewControllerAnimated(false)
     }
 }

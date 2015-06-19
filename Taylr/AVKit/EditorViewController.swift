@@ -67,6 +67,7 @@ class EditorViewController : UIViewController {
 
     @IBAction func finishEditing(sender: AnyObject) {
         UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+        PKHUD.showText("Sending")
         exportVideo { url in
             self.delegate?.editor(self, didEditVideo: url)
             UIApplication.sharedApplication().endIgnoringInteractionEvents()

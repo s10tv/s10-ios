@@ -8,6 +8,7 @@
 
 import Foundation
 import Core
+import PKHUD
 
 class ConversationViewController : BaseViewController {
     
@@ -19,6 +20,7 @@ class ConversationViewController : BaseViewController {
     var producer: ProducerViewController!
     var messagesVM: MessagesViewModel!
     var connection: Connection?
+    var uploader: AzureUploader?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -102,5 +104,8 @@ extension ConversationViewController : MessageCellDelegate {
 extension ConversationViewController : ProducerDelegate {
     func producer(producer: ProducerViewController, didProduceVideo url: NSURL) {
         Log.info("I got a video \(url)")
+        uploader = AzureUploader(meteorService: Meteor)
+        uploader?.uploadFile(connection!.documentID!, localUrl: url)
+        PKHUD.hide(animated: false)
     }
 }

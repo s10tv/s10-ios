@@ -14,6 +14,10 @@ extension PKHUD {
         sharedHUD.dimsBackground = dimsBackground
         sharedHUD.show()
     }
+    class func showText(text: String) {
+        sharedHUD.contentView = PKHUDTextView(text: text)
+        show()
+    }
     class func showActivity(dimsBackground: Bool = false) {
         sharedHUD.contentView = PKHUDSystemActivityIndicatorView()
         show(dimsBackground: dimsBackground)
