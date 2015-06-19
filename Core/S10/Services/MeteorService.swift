@@ -19,7 +19,7 @@ public class MeteorService {
         metadata: METSubscription,
         discover: METSubscription,
         chats: METSubscription,
-        me: METSubscription
+        userData: METSubscription
     )
     public let collections: (
         metadata: METCollection,
@@ -57,7 +57,7 @@ public class MeteorService {
             metadata: meteor.addSubscriptionWithName("metadata"),
             discover: meteor.addSubscriptionWithName("discover"),
             chats: meteor.addSubscriptionWithName("chats"),
-            me: meteor.addSubscriptionWithName("me")
+            userData: meteor.addSubscriptionWithName("userData")
         )
         collections = (
             metadata: meteor.database.collectionWithName("metadata"),
