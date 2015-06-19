@@ -33,6 +33,7 @@ target :Core do
         link_with 'CoreTests'
         pod 'Quick', '~> 0.3.0' # TODO: Upgrade after swift 2.0
         pod 'Nimble', '~> 0.4.0' # TODO: Upgrade after swift 2.0
+        pod 'OHHTTPStubs', '~> 4.0.2'
         pod 'SwiftyJSON', '~> 2.1'
     end
 

@@ -27,6 +27,7 @@ PODS:
   - NSLogger (1.5.1):
     - NSLogger/Standard (= 1.5.1)
   - NSLogger/Standard (1.5.1)
+  - OHHTTPStubs (4.0.2)
   - PKHUD (2.0.1)
   - PocketSocket (0.6.4)
   - Quick (0.3.1)
@@ -69,6 +70,7 @@ DEPENDENCIES:
   - Meteor (from `https://github.com/tonyxiao/meteor-ios`, branch `dev`)
   - Nimble (~> 0.4.0)
   - NSLogger (~> 1.5)
+  - OHHTTPStubs (~> 4.0.2)
   - PKHUD (from `https://github.com/tonyxiao/PKHUD`)
   - Quick (~> 0.3.0)
   - RBBAnimation (~> 0.4.0)
@@ -128,6 +130,7 @@ SPEC CHECKSUMS:
   Meteor: af43341f10dbc088803aa6cfa4135ae3a0b8ebc9
   Nimble: 49b7a7da8919f42823d37c6d68cc6d15a7009f32
   NSLogger: 5ed223a2436df96244e033be750656dacdeec034
+  OHHTTPStubs: dbd1957d414659783e07b49c961940b7564c23d9
   PKHUD: 27346b72187c3cbff20c174f2b1f88c999a4ef13
   PocketSocket: eee7ef375f55b98e7ca79e097d9c61fd688e9494
   Quick: 824572d3d198d51e52cf4aa722cebf7e59952a35

@@ -11,6 +11,7 @@ import XCTest
 import Nimble
 import ReactiveCocoa
 import SwiftyJSON
+import OHHTTPStubs
 
 class AzureUploaderTest: XCTestCase {
 
@@ -33,6 +34,13 @@ class AzureUploaderTest: XCTestCase {
         meteorService.delegate = self
         meteorService.startup()
         self.toTest = AzureUploader(meteorService: meteorService)
+        OHHTTPStubs.stubRequestsPassingTest({ request in
+            let isAzure = request.URL!.host!.rangeOfString("s10tv.blob.core.windows.net") != nil
+            return isAzure
+            }, withStubResponse: { _ in
+                let stubData = "Hello World!".dataUsingEncoding(NSUTF8StringEncoding)
+                return OHHTTPStubsResponse(data: stubData!, statusCode:200, headers:nil)
+        })
     }
 
     override func tearDown() {
@@ -66,9 +74,6 @@ class AzureUploaderTest: XCTestCase {
         }.flattenMap { res in
             let status = res as! Int
             expect(status) == 1
-            expect(Message.all().count()) == 1
-            let message: Message = Message.all().fetch().first as! Message
-            expect(message.status) == "sent"
             return RACSignal.empty()
         }.then {
             return self.meteorService.clearMessages()

@@ -354,6 +354,7 @@
 		EAF81B371B3395E700EED6DD /* AVKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVKit.swift; sourceTree = "<group>"; };
 		F1D48B38C28B60559AEB8949 /* Pods_Core_Taylr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Core_Taylr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C759AA125AEB809731B1D6 /* Pods-Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.release.xcconfig"; path = "Pods/Target Support Files/Pods-Core/Pods-Core.release.xcconfig"; sourceTree = "<group>"; };
+		F92F687E1B34974B00171FE4 /* CoreTests-bridging-header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreTests-bridging-header.h"; sourceTree = "<group>"; };
 		F95D95DE1A84A1170068F090 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		F996C71D1A81F1D100314FF8 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		F996C71F1A81F1D800314FF8 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -687,6 +688,7 @@
 			isa = PBXGroup;
 			children = (
 				EA9F35571A74CC6900E0C65D /* Info.plist */,
+				F92F687E1B34974B00171FE4 /* CoreTests-bridging-header.h */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
