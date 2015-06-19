@@ -9,6 +9,8 @@
 import UIKit
 import AVFoundation
 import SCRecorder
+import AssetsLibrary
+import PKHUD
 
 protocol EditorDelegate : NSObjectProtocol {
     func editorDidCancel(editor: EditorViewController)
@@ -49,19 +51,35 @@ class EditorViewController : UIViewController {
         player.setItem(nil)
     }
     
-    @IBAction func cancelEditing(sender: AnyObject) {
-        delegate?.editorDidCancel(self)
-    }
-    
-    @IBAction func finishEditing(sender: AnyObject) {
-        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+    func exportVideo(block: ((NSURL) -> Void)) {
         let exporter = SCAssetExportSession(asset: recordSession.assetRepresentingSegments())
         exporter.videoConfiguration.filter = filterView.selectedFilter
         exporter.outputFileType = AVFileTypeMPEG4
         exporter.outputUrl = recordSession.outputUrl
         exporter.exportAsynchronouslyWithCompletionHandler {
-            self.delegate?.editor(self, didEditVideo: exporter.outputUrl)
+            block(exporter.outputUrl)
+        }
+    }
+    
+    @IBAction func cancelEditing(sender: AnyObject) {
+        delegate?.editorDidCancel(self)
+    }
+
+    @IBAction func finishEditing(sender: AnyObject) {
+        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
+        exportVideo { url in
+            self.delegate?.editor(self, didEditVideo: url)
             UIApplication.sharedApplication().endIgnoringInteractionEvents()
+        }
+    }
+    
+    @IBAction func saveToCameraRoll(sender: AnyObject) {
+        exportVideo { url in
+            PKHUD.showActivity(dimsBackground: true)
+            ALAssetsLibrary().writeVideoAtPathToSavedPhotosAlbum(url) { url, err in
+                PKHUD.hide(animated: true)
+                println("Finished writing \(url), \(err)")
+            }
         }
     }
 }

@@ -150,6 +150,7 @@
 		EAF81B361B33893E00EED6DD /* Taylr.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Taylr.xcassets */; };
 		EAF81B381B3395E700EED6DD /* AVKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B371B3395E700EED6DD /* AVKit.swift */; };
 		EAF81B391B3395E700EED6DD /* AVKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B371B3395E700EED6DD /* AVKit.swift */; };
+		EAF81B3A1B339F8C00EED6DD /* PKHUDExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB79B6F1AD912EB00D9875A /* PKHUDExtension.swift */; };
 		F95D95DF1A84A1170068F090 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95D95DE1A84A1170068F090 /* MediaPlayer.framework */; };
 		F996C71E1A81F1D100314FF8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71D1A81F1D100314FF8 /* CoreMedia.framework */; };
 		F996C7201A81F1D800314FF8 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71F1A81F1D800314FF8 /* CoreVideo.framework */; };
@@ -1314,6 +1315,7 @@
 				EAF670191B31DD920025D7CF /* GenericExtensions.swift in Sources */,
 				EAF81B2D1B33883A00EED6DD /* ProducerViewController.swift in Sources */,
 				EAF81B351B33890E00EED6DD /* R.swift in Sources */,
+				EAF81B3A1B339F8C00EED6DD /* PKHUDExtension.swift in Sources */,
 				EAF81B321B3388C600EED6DD /* TouchDetector.swift in Sources */,
 				EAF81B331B3388DE00EED6DD /* ResourceExtension.swift in Sources */,
 				EAF81B2E1B33883A00EED6DD /* RecorderViewController.swift in Sources */,
@@ -1528,7 +1530,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8E0110CE5A12BB3B852FE247 /* Pods-Core-TestApp.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = TestAppIcon;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1546,7 +1548,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 63C64A9E2EFB79A49BB786AB /* Pods-Core-TestApp.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = TestAppIcon;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;

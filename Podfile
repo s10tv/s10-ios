@@ -75,6 +75,7 @@ target :Core do
     target :TestApp do
         link_with 'TestApp'
         pod 'SCRecorder', '~> 2.4'
+        pod 'PKHUD', :git => 'https://github.com/tonyxiao/PKHUD' # Fork is needed to work around xcasset compilation issue inside pod
         pod 'Reveal-iOS-SDK', '~> 1.5', :configuration => ['Debug']
     end
 end

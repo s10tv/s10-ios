@@ -43,6 +43,15 @@
                                     <action selector="cancelEditing:" destination="uPv-0o-aed" eventType="touchUpInside" id="x2y-mV-LHa"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUP-YK-Qgv" userLabel="Save">
+                                <rect key="frame" x="20" y="541" width="38" height="39"/>
+                                <state key="normal" image="ic-save">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="saveToCameraRoll:" destination="uPv-0o-aed" eventType="touchUpInside" id="I45-9D-zuc"/>
+                                </connections>
+                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xwQ-nI-9Ji">
                                 <rect key="frame" x="271" y="544" width="58" height="36"/>
                                 <fontDescription key="fontDescription" type="system" weight="black" pointSize="20"/>
@@ -60,10 +69,12 @@
                             <constraint firstItem="Ahy-43-dzw" firstAttribute="top" secondItem="NLf-hM-Uv9" secondAttribute="bottom" constant="20" id="0G0-a8-ngY"/>
                             <constraint firstItem="ccj-Kj-OsA" firstAttribute="top" secondItem="xwQ-nI-9Ji" secondAttribute="bottom" constant="20" id="0QY-WL-Esp"/>
                             <constraint firstItem="jrS-6I-cjW" firstAttribute="leading" secondItem="Mm1-nh-CJO" secondAttribute="leading" id="1ZM-DU-aBC"/>
+                            <constraint firstItem="gUP-YK-Qgv" firstAttribute="leading" secondItem="Mm1-nh-CJO" secondAttribute="leading" constant="20" id="AUr-8n-AlU"/>
                             <constraint firstAttribute="trailing" secondItem="jrS-6I-cjW" secondAttribute="trailing" id="CoB-i3-2n0"/>
                             <constraint firstItem="Ahy-43-dzw" firstAttribute="leading" secondItem="Mm1-nh-CJO" secondAttribute="leading" constant="20" id="b8G-VH-qIq"/>
                             <constraint firstAttribute="centerX" secondItem="xwQ-nI-9Ji" secondAttribute="centerX" id="g1F-JH-8qN"/>
                             <constraint firstItem="ccj-Kj-OsA" firstAttribute="top" secondItem="jrS-6I-cjW" secondAttribute="bottom" id="k0F-GU-REJ"/>
+                            <constraint firstItem="ccj-Kj-OsA" firstAttribute="top" secondItem="gUP-YK-Qgv" secondAttribute="bottom" constant="20" id="w5r-oj-me8"/>
                             <constraint firstItem="jrS-6I-cjW" firstAttribute="top" secondItem="NLf-hM-Uv9" secondAttribute="bottom" id="wcp-HX-sdu"/>
                         </constraints>
                     </view>
@@ -150,5 +161,6 @@
         <image name="ic-camera-flip" width="39" height="30"/>
         <image name="ic-capture" width="83" height="84"/>
         <image name="ic-close" width="28" height="28"/>
+        <image name="ic-save" width="38" height="39"/>
     </resources>
 </document>
