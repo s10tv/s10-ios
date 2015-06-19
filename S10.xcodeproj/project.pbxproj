@@ -148,6 +148,8 @@
 		EAF81B341B33890300EED6DD /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3681AA26597003383BE /* SBConstants.swift */; };
 		EAF81B351B33890E00EED6DD /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA925C731AD99ED8008E9F41 /* R.swift */; };
 		EAF81B361B33893E00EED6DD /* Taylr.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Taylr.xcassets */; };
+		EAF81B381B3395E700EED6DD /* AVKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B371B3395E700EED6DD /* AVKit.swift */; };
+		EAF81B391B3395E700EED6DD /* AVKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B371B3395E700EED6DD /* AVKit.swift */; };
 		F95D95DF1A84A1170068F090 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95D95DE1A84A1170068F090 /* MediaPlayer.framework */; };
 		F996C71E1A81F1D100314FF8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71D1A81F1D100314FF8 /* CoreMedia.framework */; };
 		F996C7201A81F1D800314FF8 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71F1A81F1D800314FF8 /* CoreVideo.framework */; };
@@ -348,6 +350,7 @@
 		EAF81B261B33391000EED6DD /* EditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		EAF81B2A1B3373F000EED6DD /* ProducerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProducerCell.swift; sourceTree = "<group>"; };
 		EAF81B301B3388C600EED6DD /* TouchDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchDetector.swift; sourceTree = "<group>"; };
+		EAF81B371B3395E700EED6DD /* AVKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVKit.swift; sourceTree = "<group>"; };
 		F1D48B38C28B60559AEB8949 /* Pods_Core_Taylr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Core_Taylr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C759AA125AEB809731B1D6 /* Pods-Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.release.xcconfig"; path = "Pods/Target Support Files/Pods-Core/Pods-Core.release.xcconfig"; sourceTree = "<group>"; };
 		F95D95DE1A84A1170068F090 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -902,6 +905,7 @@
 				EAF81B241B33389500EED6DD /* RecorderViewController.swift */,
 				EAF81B261B33391000EED6DD /* EditorViewController.swift */,
 				EAF81B301B3388C600EED6DD /* TouchDetector.swift */,
+				EAF81B371B3395E700EED6DD /* AVKit.swift */,
 			);
 			path = AVKit;
 			sourceTree = "<group>";
@@ -1306,6 +1310,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAF81B2F1B33883A00EED6DD /* EditorViewController.swift in Sources */,
+				EAF81B391B3395E700EED6DD /* AVKit.swift in Sources */,
 				EAF670191B31DD920025D7CF /* GenericExtensions.swift in Sources */,
 				EAF81B2D1B33883A00EED6DD /* ProducerViewController.swift in Sources */,
 				EAF81B351B33890E00EED6DD /* R.swift in Sources */,
@@ -1389,6 +1394,7 @@
 				EA36D2AB1AE71366006FD5D8 /* Errors.swift in Sources */,
 				EAA56F931B2B32E500DE3936 /* MeViewController.swift in Sources */,
 				EA3594141B2DE5C300E91337 /* ConversationViewController.swift in Sources */,
+				EAF81B381B3395E700EED6DD /* AVKit.swift in Sources */,
 				EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */,
 				EAA56F8E1B2B32E500DE3936 /* ConnectionCell.swift in Sources */,
 				EA0FC9421A87DE5800D62625 /* BaseViewModel.swift in Sources */,

@@ -15,7 +15,7 @@ protocol RecorderDelegate : NSObjectProtocol {
 
 class RecorderViewController : UIViewController {
     
-    @IBOutlet weak var previewView: SCFilterSelectorView!
+    @IBOutlet weak var previewView: SCSwipeableFilterView!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var recordButton: UIButton!
     
@@ -34,10 +34,11 @@ class RecorderViewController : UIViewController {
         recorder.maxRecordDuration = CMTimeMake(15, 1) // 15 seconds
         recorder.delegate = self
 
-        previewView.filters = [SCFilter.emptyFilter()]
+        previewView.filters = AVKit.defaultFilters
         previewView.CIImage = CIImage(color: CIColor(red: 0, green: 0, blue: 0))
-        previewView.whenTapped(numberOfTaps: 2) { _ in
-            self.recorder.switchCaptureDevices()
+        previewView.whenTapped(numberOfTaps: 2) { [weak self] _ in
+            self?.recorder.switchCaptureDevices()
+            return
         }
 
         recordButton.addGestureRecognizer(TouchDetector(target: self, action: "handleRecordButtonTouch:"))

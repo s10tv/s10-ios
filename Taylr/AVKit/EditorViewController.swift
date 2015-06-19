@@ -11,6 +11,7 @@ import AVFoundation
 import SCRecorder
 
 protocol EditorDelegate : NSObjectProtocol {
+    func editorDidCancel(editor: EditorViewController)
     func editor(editor: EditorViewController, didEditVideo outputURL:NSURL)
 }
 
@@ -20,23 +21,13 @@ class EditorViewController : UIViewController {
     
     let player = SCPlayer()
     var recordSession: SCRecordSession!
+    var recordSessionFilter: SCFilter?
     weak var delegate: EditorDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        let emptyFilter = SCFilter.emptyFilter()
-        emptyFilter.name = "#nofilter"
-        filterView.filters = [
-            emptyFilter,
-            SCFilter(CIFilterName: "CIPhotoEffectNoir"),
-            SCFilter(CIFilterName: "CIPhotoEffectChrome"),
-            SCFilter(CIFilterName: "CIPhotoEffectInstant"),
-            SCFilter(CIFilterName: "CIPhotoEffectTonal"),
-            SCFilter(CIFilterName: "CIPhotoEffectFade"),
-            SCFilter(CIFilterName: "CIPhotoEffectTransfer")
-        ]
+        filterView.filters = AVKit.defaultFilters
         filterView.contentMode = .ScaleAspectFill
         
         player.loopEnabled = true
@@ -47,6 +38,7 @@ class EditorViewController : UIViewController {
         super.viewWillAppear(animated)
 //        let segment = recordSession.segments.first as! SCRecordSessionSegment
 //        player.setItemByUrl(segment.url)
+        filterView.selectedFilter = recordSessionFilter // filterView.filters[2] as! SCFilter
         player.setItemByAsset(recordSession.assetRepresentingSegments())
         player.play()
     }
@@ -58,7 +50,7 @@ class EditorViewController : UIViewController {
     }
     
     @IBAction func cancelEditing(sender: AnyObject) {
-        navigationController?.popViewControllerAnimated(false)
+        delegate?.editorDidCancel(self)
     }
     
     @IBAction func finishEditing(sender: AnyObject) {

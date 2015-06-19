@@ -17,6 +17,7 @@ class ProducerViewController : UINavigationController {
     
     var recorderVC: RecorderViewController!
     var editorVC: EditorViewController!
+    var currentFilter: SCFilter?
     weak var producerDelegate: ProducerDelegate?
     
     override func viewDidLoad() {
@@ -33,11 +34,19 @@ class ProducerViewController : UINavigationController {
 extension ProducerViewController : RecorderDelegate {
     func recorder(recorder: RecorderViewController, didRecordSession session: SCRecordSession) {
         editorVC.recordSession = session
+        currentFilter = recorder.previewView.selectedFilter
+        editorVC.recordSessionFilter = currentFilter
         pushViewController(editorVC, animated: false)
     }
 }
 
 extension ProducerViewController : EditorDelegate {
+    func editorDidCancel(editor: EditorViewController) {
+        currentFilter = editorVC.filterView.selectedFilter
+        recorderVC.previewView.selectedFilter = currentFilter
+        popViewControllerAnimated(false)
+    }
+    
     func editor(editor: EditorViewController, didEditVideo outputURL: NSURL) {
         producerDelegate?.producer(self, didProduceVideo: outputURL)
     }
