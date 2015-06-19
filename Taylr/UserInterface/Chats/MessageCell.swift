@@ -37,7 +37,7 @@ class MessageCell : UICollectionViewCell {
         playerView.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
 //        player.loopEnabled = true
         player.delegate = self
-        player.muted = true
+//        player.muted = true
     }
     
     override func prepareForReuse() {

@@ -95,7 +95,7 @@ extension ConversationViewController : MessageCellDelegate {
         if let indexPath = messagesVM.frc.indexPathForObject(message) {
             let newPath = NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)
 //            if newPath.row < messagesVM.frc.fetchedObjects?.count {
-                collectionView.scrollToItemAtIndexPath(newPath, atScrollPosition: UICollectionViewScrollPosition.CenteredHorizontally, animated: true)
+                collectionView.scrollToItemAtIndexPath(newPath, atScrollPosition: UICollectionViewScrollPosition.CenteredVertically, animated: true)
 //            }
         }
     }

@@ -143,6 +143,18 @@ public class MeteorService {
     }
 
     // MARK: - Tasks
+    
+//    public func startMessageTask(taskID: String, connection: Connection) -> RACSignal {
+//        return meteor.call("startTask", [taskID, "MESSAGE", ["connectionId": connection.documentID!]]) {
+//            let message = Message.create() as! Message
+////            let video = Video.create() as! Video
+//            message.video = video
+//            message.connection = connection
+//            message.sender = self.user
+//            message.save()
+//            return nil
+//        }
+//    }
 
     public func startTask(taskId: String, type: String, metadata: NSDictionary) -> RACSignal {
         return meteor.call("startTask", [taskId, type, metadata])
