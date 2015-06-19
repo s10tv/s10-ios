@@ -30,7 +30,6 @@
 		EA4F51851AE153880060405E /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F51841AE153880060405E /* SettingsViewModel.swift */; };
 		EA53D5221AE1E9B800EDAAFE /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA53D5211AE1E9B800EDAAFE /* Formatters.swift */; };
 		EA5B740B1B30F7BB008E5CBC /* TestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5B740A1B30F7BB008E5CBC /* TestAppDelegate.swift */; };
-		EA5B740D1B30F7BB008E5CBC /* TestRecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5B740C1B30F7BB008E5CBC /* TestRecorderViewController.swift */; };
 		EA5B74141B30F7BB008E5CBC /* TestApp.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA5B74131B30F7BB008E5CBC /* TestApp.xcassets */; };
 		EA5B74171B30F7BB008E5CBC /* TestLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5B74151B30F7BB008E5CBC /* TestLaunchScreen.xib */; };
 		EA5B742C1B30FC9D008E5CBC /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA5B742B1B30FC9D008E5CBC /* Test.storyboard */; };
@@ -138,8 +137,17 @@
 		EAF81B231B33388700EED6DD /* ProducerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B221B33388700EED6DD /* ProducerViewController.swift */; };
 		EAF81B251B33389500EED6DD /* RecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B241B33389500EED6DD /* RecorderViewController.swift */; };
 		EAF81B271B33391000EED6DD /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B261B33391000EED6DD /* EditorViewController.swift */; };
-		EAF81B291B335EE700EED6DD /* TouchDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B281B335EE700EED6DD /* TouchDetector.swift */; };
 		EAF81B2B1B3373F000EED6DD /* ProducerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B2A1B3373F000EED6DD /* ProducerCell.swift */; };
+		EAF81B2C1B33883A00EED6DD /* AVKit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAF81B201B3337FA00EED6DD /* AVKit.storyboard */; };
+		EAF81B2D1B33883A00EED6DD /* ProducerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B221B33388700EED6DD /* ProducerViewController.swift */; };
+		EAF81B2E1B33883A00EED6DD /* RecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B241B33389500EED6DD /* RecorderViewController.swift */; };
+		EAF81B2F1B33883A00EED6DD /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B261B33391000EED6DD /* EditorViewController.swift */; };
+		EAF81B311B3388C600EED6DD /* TouchDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B301B3388C600EED6DD /* TouchDetector.swift */; };
+		EAF81B321B3388C600EED6DD /* TouchDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B301B3388C600EED6DD /* TouchDetector.swift */; };
+		EAF81B331B3388DE00EED6DD /* ResourceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3641AA25D21003383BE /* ResourceExtension.swift */; };
+		EAF81B341B33890300EED6DD /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3681AA26597003383BE /* SBConstants.swift */; };
+		EAF81B351B33890E00EED6DD /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA925C731AD99ED8008E9F41 /* R.swift */; };
+		EAF81B361B33893E00EED6DD /* Taylr.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Taylr.xcassets */; };
 		F95D95DF1A84A1170068F090 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95D95DE1A84A1170068F090 /* MediaPlayer.framework */; };
 		F996C71E1A81F1D100314FF8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71D1A81F1D100314FF8 /* CoreMedia.framework */; };
 		F996C7201A81F1D800314FF8 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71F1A81F1D800314FF8 /* CoreVideo.framework */; };
@@ -227,7 +235,6 @@
 		EA5B74061B30F7BB008E5CBC /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA5B74091B30F7BB008E5CBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA5B740A1B30F7BB008E5CBC /* TestAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAppDelegate.swift; sourceTree = "<group>"; };
-		EA5B740C1B30F7BB008E5CBC /* TestRecorderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestRecorderViewController.swift; sourceTree = "<group>"; };
 		EA5B74131B30F7BB008E5CBC /* TestApp.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = TestApp.xcassets; sourceTree = "<group>"; };
 		EA5B74161B30F7BB008E5CBC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/TestLaunchScreen.xib; sourceTree = "<group>"; };
 		EA5B742B1B30FC9D008E5CBC /* Test.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Test.storyboard; sourceTree = "<group>"; };
@@ -339,8 +346,8 @@
 		EAF81B221B33388700EED6DD /* ProducerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProducerViewController.swift; sourceTree = "<group>"; };
 		EAF81B241B33389500EED6DD /* RecorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderViewController.swift; sourceTree = "<group>"; };
 		EAF81B261B33391000EED6DD /* EditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
-		EAF81B281B335EE700EED6DD /* TouchDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchDetector.swift; sourceTree = "<group>"; };
 		EAF81B2A1B3373F000EED6DD /* ProducerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProducerCell.swift; sourceTree = "<group>"; };
+		EAF81B301B3388C600EED6DD /* TouchDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchDetector.swift; sourceTree = "<group>"; };
 		F1D48B38C28B60559AEB8949 /* Pods_Core_Taylr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Core_Taylr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C759AA125AEB809731B1D6 /* Pods-Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.release.xcconfig"; path = "Pods/Target Support Files/Pods-Core/Pods-Core.release.xcconfig"; sourceTree = "<group>"; };
 		F95D95DE1A84A1170068F090 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
@@ -457,7 +464,6 @@
 				EAB79B6F1AD912EB00D9875A /* PKHUDExtension.swift */,
 				EAB8E7AF1AE0826D00B3046F /* XLFormExtensions.h */,
 				EAB8E7B01AE0826D00B3046F /* XLFormExtensions.m */,
-				EAF81B281B335EE700EED6DD /* TouchDetector.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -537,7 +543,6 @@
 			isa = PBXGroup;
 			children = (
 				EA5B740A1B30F7BB008E5CBC /* TestAppDelegate.swift */,
-				EA5B740C1B30F7BB008E5CBC /* TestRecorderViewController.swift */,
 				EA5B742B1B30FC9D008E5CBC /* Test.storyboard */,
 				EA5B74131B30F7BB008E5CBC /* TestApp.xcassets */,
 				EA5B74151B30F7BB008E5CBC /* TestLaunchScreen.xib */,
@@ -896,6 +901,7 @@
 				EAF81B221B33388700EED6DD /* ProducerViewController.swift */,
 				EAF81B241B33389500EED6DD /* RecorderViewController.swift */,
 				EAF81B261B33391000EED6DD /* EditorViewController.swift */,
+				EAF81B301B3388C600EED6DD /* TouchDetector.swift */,
 			);
 			path = AVKit;
 			sourceTree = "<group>";
@@ -1069,7 +1075,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA5B742C1B30FC9D008E5CBC /* Test.storyboard in Resources */,
+				EAF81B361B33893E00EED6DD /* Taylr.xcassets in Resources */,
 				EA5B74171B30F7BB008E5CBC /* TestLaunchScreen.xib in Resources */,
+				EAF81B2C1B33883A00EED6DD /* AVKit.storyboard in Resources */,
 				EA5B74141B30F7BB008E5CBC /* TestApp.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1297,8 +1305,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA5B740D1B30F7BB008E5CBC /* TestRecorderViewController.swift in Sources */,
+				EAF81B2F1B33883A00EED6DD /* EditorViewController.swift in Sources */,
 				EAF670191B31DD920025D7CF /* GenericExtensions.swift in Sources */,
+				EAF81B2D1B33883A00EED6DD /* ProducerViewController.swift in Sources */,
+				EAF81B351B33890E00EED6DD /* R.swift in Sources */,
+				EAF81B321B3388C600EED6DD /* TouchDetector.swift in Sources */,
+				EAF81B331B3388DE00EED6DD /* ResourceExtension.swift in Sources */,
+				EAF81B2E1B33883A00EED6DD /* RecorderViewController.swift in Sources */,
+				EAF81B341B33890300EED6DD /* SBConstants.swift in Sources */,
 				EA5B740B1B30F7BB008E5CBC /* TestAppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1387,11 +1401,11 @@
 				EAA56FA71B2B32E500DE3936 /* WaveView.swift in Sources */,
 				EAA56FA11B2B32E500DE3936 /* RootViewController.swift in Sources */,
 				EA0FED451ADE5BC500FC6FCB /* AnalyticsService.swift in Sources */,
+				EAF81B311B3388C600EED6DD /* TouchDetector.swift in Sources */,
 				EAC31C1F1AE3AD7000277FE8 /* SettingsItem.swift in Sources */,
 				EAF670521B31F28B0025D7CF /* ProfileItem.swift in Sources */,
 				EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */,
 				EAA56F981B2B32E500DE3936 /* SettingsPhotoCell.swift in Sources */,
-				EAF81B291B335EE700EED6DD /* TouchDetector.swift in Sources */,
 				EAD7B2AB1A9F0BE700FA6740 /* DesignableViews.swift in Sources */,
 				EAB8E7B11AE0826D00B3046F /* XLFormExtensions.m in Sources */,
 				EAA56FA61B2B32E500DE3936 /* WaveTransition.swift in Sources */,

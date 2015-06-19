@@ -85,6 +85,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
         
         Log.info("App Launched")
         Analytics.track("App Open")
+        
+
+        
         return true
     }
     

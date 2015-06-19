@@ -13,9 +13,10 @@ protocol RecorderDelegate : NSObjectProtocol {
     func recorder(recorder: RecorderViewController, didRecordSession session: SCRecordSession)
 }
 
-class RecorderViewController : BaseViewController {
+class RecorderViewController : UIViewController {
     
     @IBOutlet weak var previewView: SCFilterSelectorView!
+    @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var recordButton: UIButton!
     
     let recorder = SCRecorder.sharedRecorder()
@@ -25,12 +26,14 @@ class RecorderViewController : BaseViewController {
         super.viewDidLoad()
         recorder.session = SCRecordSession()
         recorder.session.fileType = AVFileTypeMPEG4
-        recorder.captureSessionPreset = AVCaptureSessionPresetHigh
+        recorder.captureSessionPreset = SCRecorderTools.bestCaptureSessionPresetCompatibleWithAllDevices()
+//        recorder.autoSetVideoOrientation = true
         recorder.device = .Front
         recorder.CIImageRenderer = previewView
         recorder.keepMirroringOnWrite = true
+        recorder.maxRecordDuration = CMTimeMake(15, 1) // 15 seconds
+        recorder.delegate = self
 
-        previewView.transform = CGAffineTransformMakeScale(-1, 1)
         previewView.filters = [SCFilter.emptyFilter()]
         previewView.CIImage = CIImage(color: CIColor(red: 0, green: 0, blue: 0))
         previewView.whenTapped(numberOfTaps: 2) { _ in
@@ -44,6 +47,7 @@ class RecorderViewController : BaseViewController {
         super.viewWillAppear(animated)
         // Start new recording
         recorder.session.cancelSession(nil)
+        progressView.progress = 0
         recorder.startRunning()
     }
     
@@ -57,9 +61,31 @@ class RecorderViewController : BaseViewController {
         if touchDetector.state == .Began {
             recorder.record()
         } else if touchDetector.state == .Ended {
-            recorder.pause {
-                delegate?.recorder(self, didRecordSession: recorder.session)
+            recorder.pause()
+        }
+    }
+}
+
+extension RecorderViewController : SCRecorderDelegate {
+    func recorder(recorder: SCRecorder!, didReconfigureVideoInput videoInputError: NSError!) {
+        dispatch_async(dispatch_get_main_queue()) {
+            if recorder.device == .Front {
+                self.previewView.transform = CGAffineTransformMakeScale(-1, 1)
+            } else {
+                self.previewView.transform = CGAffineTransformIdentity
             }
         }
+    }
+    
+    func recorder(recorder: SCRecorder!, didAppendVideoSampleBufferInSession session: SCRecordSession!) {
+        progressView.progress = Float(recorder.ratioRecorded)
+    }
+    
+    func recorder(recorder: SCRecorder!, didAppendAudioSampleBufferInSession session: SCRecordSession!) {
+        progressView.progress = Float(recorder.ratioRecorded)
+    }
+    
+    func recorder(recorder: SCRecorder!, didCompleteSegment segment: SCRecordSessionSegment!, inSession session: SCRecordSession!, error: NSError!) {
+        delegate?.recorder(self, didRecordSession: recorder.session)
     }
 }

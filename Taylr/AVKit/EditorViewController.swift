@@ -51,6 +51,12 @@ class EditorViewController : UIViewController {
         player.play()
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        player.pause()
+        player.setItem(nil)
+    }
+    
     @IBAction func cancelEditing(sender: AnyObject) {
         navigationController?.popViewControllerAnimated(false)
     }
