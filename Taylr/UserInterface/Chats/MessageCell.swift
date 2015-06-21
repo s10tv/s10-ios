@@ -65,7 +65,7 @@ class MessageCell : UICollectionViewCell {
     func playVideo() {
         player.play()
         player.beginSendingPlayMessages()
-        fadeInfoOut()
+//        fadeInfoOut()
     }
     
     func pauseVideo() {
@@ -80,8 +80,10 @@ extension MessageCell : SCPlayerDelegate {
     }
     
     func player(player: SCPlayer!, didPlay currentTime: CMTime, loopsCount: Int) {
-        let secondsRemaining = Int(ceil(player.itemDuration.seconds - currentTime.seconds))
-        durationLabel.text = "\(secondsRemaining)"
+        if !player.itemDuration.impliedValue && !currentTime.impliedValue {
+            let secondsRemaining = Int(ceil(player.itemDuration.seconds - currentTime.seconds))
+            durationLabel.text = "\(secondsRemaining)"
+        }
         statusLabel.text = message?.statusText
     }
 }

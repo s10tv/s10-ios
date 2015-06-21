@@ -12,4 +12,6 @@ extension CMTime {
     public var seconds: Float64 {
         return CMTimeGetSeconds(self)
     }
+    public var isValid: Bool { return (flags & .Valid) != nil }
+    public var impliedValue: Bool { return (flags & .ImpliedValueFlagsMask) != nil }
 }
