@@ -9,6 +9,7 @@
     <customFonts key="customFonts">
         <mutableArray key="TransatTextStandard.otf">
             <string>TransatTextStandard</string>
+            <string>TransatTextStandard</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -342,17 +343,21 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwm-AT-YQL" userLabel="Duration">
-                                                    <rect key="frame" x="265" y="16" width="19" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mwm-AT-YQL" userLabel="Duration">
+                                                    <rect key="frame" x="264" y="16" width="20" height="22"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <size key="shadowOffset" width="1" height="1"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="opened. expires in 59 seconds" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UIs-ME-bzP" userLabel="Status">
-                                                    <rect key="frame" x="89" y="369" width="195" height="15"/>
+                                                    <rect key="frame" x="64" y="370" width="196" height="16"/>
                                                     <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="15"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <size key="shadowOffset" width="1" height="1"/>
                                                 </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="zcO-mD-okX" customClass="UserAvatarView" customModule="Taylr" customModuleProvider="target">
                                                     <rect key="frame" x="8" y="342" width="50" height="50"/>
@@ -362,26 +367,28 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10m" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="De8-FM-a37">
-                                                    <rect key="frame" x="64" y="357" width="34" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <rect key="frame" x="64" y="350" width="31" height="18"/>
+                                                    <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="17"/>
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
+                                                    <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <size key="shadowOffset" width="1" height="1"/>
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="UIs-ME-bzP" firstAttribute="top" secondItem="De8-FM-a37" secondAttribute="bottom" constant="2" id="1zc-eu-cHh"/>
                                             <constraint firstItem="4eK-Pd-MEp" firstAttribute="leading" secondItem="sAP-hW-A20" secondAttribute="leading" id="3Qm-x3-QOT"/>
-                                            <constraint firstAttribute="trailing" secondItem="UIs-ME-bzP" secondAttribute="trailing" constant="16" id="Ghi-Ee-yNY"/>
                                             <constraint firstItem="4eK-Pd-MEp" firstAttribute="bottom" secondItem="zcO-mD-okX" secondAttribute="bottom" constant="8" id="LgO-v7-B19"/>
                                             <constraint firstItem="4eK-Pd-MEp" firstAttribute="top" secondItem="sAP-hW-A20" secondAttribute="top" id="X6k-3L-aiO"/>
                                             <constraint firstAttribute="trailing" secondItem="4eK-Pd-MEp" secondAttribute="trailing" id="YQe-Nu-wUJ"/>
                                             <constraint firstItem="De8-FM-a37" firstAttribute="leading" secondItem="zcO-mD-okX" secondAttribute="trailing" constant="6" id="afm-Mn-4TV"/>
                                             <constraint firstItem="mwm-AT-YQL" firstAttribute="top" secondItem="sAP-hW-A20" secondAttribute="top" constant="16" id="chm-UZ-tJf"/>
                                             <constraint firstAttribute="bottom" secondItem="4eK-Pd-MEp" secondAttribute="bottom" id="f9d-mj-uvG"/>
-                                            <constraint firstItem="De8-FM-a37" firstAttribute="centerY" secondItem="zcO-mD-okX" secondAttribute="centerY" id="gwe-ln-YC5"/>
-                                            <constraint firstAttribute="bottom" secondItem="UIs-ME-bzP" secondAttribute="bottom" constant="16" id="kGI-pH-XYT"/>
+                                            <constraint firstItem="De8-FM-a37" firstAttribute="centerY" secondItem="zcO-mD-okX" secondAttribute="centerY" constant="-8" id="gwe-ln-YC5"/>
+                                            <constraint firstItem="De8-FM-a37" firstAttribute="leading" secondItem="UIs-ME-bzP" secondAttribute="leading" id="iBC-B1-Bh0"/>
                                             <constraint firstItem="4eK-Pd-MEp" firstAttribute="leading" secondItem="zcO-mD-okX" secondAttribute="leading" constant="-8" id="lpc-tA-g2m"/>
                                             <constraint firstAttribute="trailing" secondItem="mwm-AT-YQL" secondAttribute="trailing" constant="16" id="sgh-Mz-Ble"/>
                                         </constraints>
