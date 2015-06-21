@@ -39,6 +39,7 @@ class MessageCell : UICollectionViewCell {
         super.awakeFromNib()
         playerView.tapToPauseEnabled = true
         playerView.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        playerView.delegate = self
         player.delegate = self
         prepareForReuse()
     }
@@ -48,9 +49,23 @@ class MessageCell : UICollectionViewCell {
         message = nil
     }
     
+    func restoreInfo() {
+        [avatarView, statusLabel, timeLabel].each {
+            $0.setHiddenAnimated(hidden: false, duration: 0, delay: 0)
+        }
+    }
+    
+    func fadeInfoOut() {
+        [avatarView, statusLabel, timeLabel].each {
+            $0.setHiddenAnimated(hidden: false, duration: 0, delay: 0)
+            $0.setHiddenAnimated(hidden: true, duration: 0.5, delay: 2)
+        }
+    }
+    
     func playVideo() {
         player.play()
         player.beginSendingPlayMessages()
+        fadeInfoOut()
     }
     
     func pauseVideo() {
@@ -68,5 +83,16 @@ extension MessageCell : SCPlayerDelegate {
         let secondsRemaining = Int(ceil(player.itemDuration.seconds - currentTime.seconds))
         durationLabel.text = "\(secondsRemaining)"
         statusLabel.text = message?.statusText
+    }
+}
+
+extension MessageCell : SCVideoPlayerViewDelegate {
+    
+    func videoPlayerViewTappedToPause(videoPlayerView: SCVideoPlayerView!) {
+        restoreInfo()
+    }
+
+    func videoPlayerViewTappedToPlay(videoPlayerView: SCVideoPlayerView!) {
+        fadeInfoOut()
     }
 }
