@@ -52,6 +52,7 @@
 		EA9C166C1B368FD600371B50 /* VideoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C166B1B368FD600371B50 /* VideoService.swift */; };
 		EA9C166F1B3726E300371B50 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C166E1B3726E300371B50 /* MessageViewModel.swift */; };
 		EA9C16711B37286700371B50 /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C16701B37286700371B50 /* ConversationViewModel.swift */; };
+		EA9C16731B3749EF00371B50 /* MediaExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C16721B3749EF00371B50 /* MediaExtension.swift */; };
 		EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
 		EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35461A74CC6900E0C65D /* Main.storyboard */; };
 		EA9F354A1A74CC6900E0C65D /* Taylr.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Taylr.xcassets */; };
@@ -265,6 +266,7 @@
 		EA9C166B1B368FD600371B50 /* VideoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoService.swift; sourceTree = "<group>"; };
 		EA9C166E1B3726E300371B50 /* MessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		EA9C16701B37286700371B50 /* ConversationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewModel.swift; sourceTree = "<group>"; };
+		EA9C16721B3749EF00371B50 /* MediaExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaExtension.swift; sourceTree = "<group>"; };
 		EA9F353A1A74CC6900E0C65D /* Taylr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taylr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9F353E1A74CC6900E0C65D /* Taylr-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Taylr-Info.plist"; sourceTree = "<group>"; };
 		EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -896,6 +898,7 @@
 				EAF670921B31FCBE0025D7CF /* DeviceInfo.swift */,
 				EAF670931B31FCBE0025D7CF /* ProvisioningProfile.swift */,
 				EAF670961B31FE6A0025D7CF /* Environment.swift */,
+				EA9C16721B3749EF00371B50 /* MediaExtension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1350,6 +1353,7 @@
 				EAF6707E1B31F9450025D7CF /* Candidate.swift in Sources */,
 				EAF6707D1B31F9450025D7CF /* _Video.swift in Sources */,
 				EAF670851B31F9450025D7CF /* VideoMessageTask.swift in Sources */,
+				EA9C16731B3749EF00371B50 /* MediaExtension.swift in Sources */,
 				EAF6701D1B31E6550025D7CF /* Core.m in Sources */,
 				EAF670741B31F9450025D7CF /* MeteorExtension.swift in Sources */,
 				EA9C166F1B3726E300371B50 /* MessageViewModel.swift in Sources */,

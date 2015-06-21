@@ -19,15 +19,19 @@ class MessageCell : UICollectionViewCell {
     
     @IBOutlet weak var playerView: SCVideoPlayerView!
     @IBOutlet weak var avatarView: UserAvatarView!
+    @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
     
+    private var player: SCPlayer { return playerView.player }
     weak var delegate: MessageCellDelegate?
-    var player: SCPlayer { return playerView.player }
     var message: MessageViewModel? {
         didSet {
             player.setItemByUrl(message?.videoURL)
             avatarView.user = message?.sender
+            statusLabel.text = message?.statusText()
             timeLabel.text = "2m"
+            durationLabel.text = nil
         }
     }
     
@@ -35,19 +39,34 @@ class MessageCell : UICollectionViewCell {
         super.awakeFromNib()
         playerView.tapToPauseEnabled = true
         playerView.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
-//        player.loopEnabled = true
         player.delegate = self
-//        player.muted = true
+        prepareForReuse()
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        player.setItem(nil)
+        message = nil
+    }
+    
+    func playVideo() {
+        player.play()
+        player.beginSendingPlayMessages()
+    }
+    
+    func pauseVideo() {
+        player.endSendingPlayMessages()
+        player.pause()
     }
 }
 
 extension MessageCell : SCPlayerDelegate {
     func player(player: SCPlayer!, didReachEndForItem item: AVPlayerItem!) {
         delegate?.messageCell(self, didPlayMessage: message!)
+    }
+    
+    func player(player: SCPlayer!, didPlay currentTime: CMTime, loopsCount: Int) {
+        let secondsRemaining = Int(ceil(player.itemDuration.seconds - currentTime.seconds))
+        durationLabel.text = "\(secondsRemaining)"
+        statusLabel.text = message?.statusText()
     }
 }

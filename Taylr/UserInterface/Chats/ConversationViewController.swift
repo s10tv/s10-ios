@@ -78,13 +78,13 @@ extension ConversationViewController : UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         if let cell = cell as? MessageCell {
-            cell.player.play()
+            cell.playVideo()
         }
     }
     
     func collectionView(collectionView: UICollectionView, didEndDisplayingCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         if let cell = cell as? MessageCell {
-            cell.player.pause()
+            cell.pauseVideo()
         }
     }
 }

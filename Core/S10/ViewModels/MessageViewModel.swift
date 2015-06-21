@@ -13,12 +13,26 @@ public class MessageViewModel {
     public var sender: User?
     public var createdAt: NSDate?
     public var expiresAt: NSDate?
+    public var status: Message.Status?
     
-    init(message: Message) {
+    public init(message: Message) {
         videoURL = message.video?.URL
         sender = message.sender
         createdAt = message.createdAt
         expiresAt = message.expiresAt
+        status = message.statusEnum
+    }
+    
+    public func statusText() -> String {
+        switch status! {
+        case .Sending: return "sending..."
+        case .Sent: return "sent"
+        case .Delivered: return "delivered"
+        case .Opened:
+            let seconds = Int(ceil(expiresAt!.timeIntervalSinceNow))
+            return "opened. expires in \(seconds) seconds"
+        case .Expired: return "expired"
+        }
     }
     
     func isOrderedBefore(other: MessageViewModel) -> Bool {
