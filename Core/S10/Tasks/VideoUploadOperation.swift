@@ -22,8 +22,7 @@ public class VideoUploadOperation : AsyncOperation {
     public init(
             connectionId: String,
             localVideoURL: NSURL,
-            meteorService: MeteorService,
-            onNotificationFn: () -> Void) {
+            meteorService: MeteorService) {
         self.connectionId = connectionId
         self.localVideoURL = localVideoURL
         self.meteorService = meteorService

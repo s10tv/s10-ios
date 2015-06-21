@@ -101,8 +101,8 @@ extension ConversationViewController : MessageCellDelegate {
 extension ConversationViewController : ProducerDelegate {
     func producer(producer: ProducerViewController, didProduceVideo url: NSURL) {
         Log.info("I got a video \(url)")
-        let uploader = AzureUploader(meteorService: Meteor)
-        uploader.uploadFile(vm.recipient.connection()!.documentID!, localUrl: url)
+        Globals.videoService.sendVideoMessage(vm.recipient.connection()!,
+            localVideoURL: url)
         PKHUD.hide(animated: false)
     }
 }

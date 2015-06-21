@@ -42,7 +42,6 @@
 		EA72FB2A1AD1B7D5009F853F /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FB281AD1B7D5009F853F /* Transition.swift */; };
 		EA72FB2C1AD1B7E1009F853F /* ScrollTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72FB2B1AD1B7E1009F853F /* ScrollTransition.swift */; };
 		EA78C8781B320A2A0016AB73 /* AlamofireExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA78C8761B320A2A0016AB73 /* AlamofireExtension.swift */; };
-		EA78C8791B320A2A0016AB73 /* AzureUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA78C8771B320A2A0016AB73 /* AzureUploader.swift */; };
 		EA78C8801B323E140016AB73 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA78C87F1B323E140016AB73 /* Images.xcassets */; };
 		EA7AA3651AA25D21003383BE /* ResourceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3641AA25D21003383BE /* ResourceExtension.swift */; };
 		EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3681AA26597003383BE /* SBConstants.swift */; };
@@ -256,7 +255,6 @@
 		EA72FB281AD1B7D5009F853F /* Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
 		EA72FB2B1AD1B7E1009F853F /* ScrollTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollTransition.swift; sourceTree = "<group>"; };
 		EA78C8761B320A2A0016AB73 /* AlamofireExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireExtension.swift; sourceTree = "<group>"; };
-		EA78C8771B320A2A0016AB73 /* AzureUploader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AzureUploader.swift; sourceTree = "<group>"; };
 		EA78C87F1B323E140016AB73 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Pods/PKHUD/PKHUD/Images.xcassets; sourceTree = "<group>"; };
 		EA7AA3641AA25D21003383BE /* ResourceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceExtension.swift; sourceTree = "<group>"; };
 		EA7AA3681AA26597003383BE /* SBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstants.swift; sourceTree = "<group>"; };
@@ -605,7 +603,6 @@
 			isa = PBXGroup;
 			children = (
 				EA78C8761B320A2A0016AB73 /* AlamofireExtension.swift */,
-				EA78C8771B320A2A0016AB73 /* AzureUploader.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -1344,7 +1341,6 @@
 			files = (
 				EAF670171B31DD740025D7CF /* GenericExtensions.swift in Sources */,
 				EA9C166C1B368FD600371B50 /* VideoService.swift in Sources */,
-				EA78C8791B320A2A0016AB73 /* AzureUploader.swift in Sources */,
 				EAF670781B31F9450025D7CF /* ReactiveCocoaExtension.swift in Sources */,
 				EAF670771B31F9450025D7CF /* NotificationCenterExtensions.swift in Sources */,
 				EAF670881B31F9450025D7CF /* UIKitExtension.swift in Sources */,

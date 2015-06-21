@@ -22,13 +22,11 @@ public class VideoService {
         self.meteorService = meteorService
     }
 
-    public func sendVideoMessage(connection: Connection, localVideoURL: NSURL,
-            onNotificationFn: () -> Void) {
+    public func sendVideoMessage(connection: Connection, localVideoURL: NSURL) {
         let operation = VideoUploadOperation(
                 connectionId: connection.documentID!,
                 localVideoURL: localVideoURL,
-                meteorService: self.meteorService,
-                onNotificationFn: onNotificationFn)
+                meteorService: self.meteorService)
         self.uploadQueue.addOperation(operation)
     }
 }
