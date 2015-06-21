@@ -208,7 +208,7 @@ public class MeteorService {
     }
     
     public func finishTask(taskId: String) -> RACSignal {
-        return meteor.call("task/finish", [taskId])
+        return meteor.call("finishTask", [taskId])
     }
     
     public func startTask(taskId: String, type: String, metadata: NSDictionary) -> RACSignal {
