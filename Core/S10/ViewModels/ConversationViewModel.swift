@@ -12,6 +12,7 @@ public class ConversationViewModel {
     let frc: NSFetchedResultsController
     public private(set) var recipient: User
     public private(set) var messageVMs: [MessageViewModel] = []
+    public var didReload: (([MessageViewModel]) -> ())?
     
     public init(connection: Connection) {
         recipient = connection.otherUser!
@@ -24,6 +25,7 @@ public class ConversationViewModel {
             MessageViewModel(message: $0 as! Message)
         }
         messageVMs.sort { $0.isOrderedBefore($1) }
+        didReload?(messageVMs)
     }
     
     public func indexOfMessage(message: MessageViewModel) -> Int? {

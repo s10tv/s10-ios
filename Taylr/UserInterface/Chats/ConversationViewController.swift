@@ -26,6 +26,10 @@ class ConversationViewController : BaseViewController {
         collectionView.delegate = self
         producer = UIStoryboard(name: "AVKit", bundle: nil).instantiateInitialViewController() as! ProducerViewController
         producer.producerDelegate = self
+        vm.didReload = { [weak self] _ in
+            self?.collectionView.reloadData()
+            return
+        }
     }
     
     override func viewDidLayoutSubviews() {
