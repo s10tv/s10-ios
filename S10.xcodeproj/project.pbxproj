@@ -51,8 +51,10 @@
 		EA9C166C1B368FD600371B50 /* VideoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C166B1B368FD600371B50 /* VideoService.swift */; };
 		EA9C166F1B3726E300371B50 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C166E1B3726E300371B50 /* MessageViewModel.swift */; };
 		EA9C16711B37286700371B50 /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C16701B37286700371B50 /* ConversationViewModel.swift */; };
-		EA9C16731B3749EF00371B50 /* MediaExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C16721B3749EF00371B50 /* MediaExtension.swift */; };
 		EA9C16751B3752F800371B50 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C16741B3752F800371B50 /* Formatters.swift */; };
+		EA9C16771B3759B700371B50 /* FormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C16761B3759B700371B50 /* FormatterTests.swift */; };
+		EA9C16791B375B9700371B50 /* MediaExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C16781B375B9700371B50 /* MediaExtension.swift */; };
+		EA9C167A1B375B9700371B50 /* MediaExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C16781B375B9700371B50 /* MediaExtension.swift */; };
 		EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
 		EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35461A74CC6900E0C65D /* Main.storyboard */; };
 		EA9F354A1A74CC6900E0C65D /* Taylr.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Taylr.xcassets */; };
@@ -265,8 +267,9 @@
 		EA9C166B1B368FD600371B50 /* VideoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoService.swift; sourceTree = "<group>"; };
 		EA9C166E1B3726E300371B50 /* MessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		EA9C16701B37286700371B50 /* ConversationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewModel.swift; sourceTree = "<group>"; };
-		EA9C16721B3749EF00371B50 /* MediaExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaExtension.swift; sourceTree = "<group>"; };
 		EA9C16741B3752F800371B50 /* Formatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
+		EA9C16761B3759B700371B50 /* FormatterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatterTests.swift; sourceTree = "<group>"; };
+		EA9C16781B375B9700371B50 /* MediaExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaExtension.swift; sourceTree = "<group>"; };
 		EA9F353A1A74CC6900E0C65D /* Taylr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taylr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9F353E1A74CC6900E0C65D /* Taylr-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Taylr-Info.plist"; sourceTree = "<group>"; };
 		EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -681,6 +684,7 @@
 		EA9F35551A74CC6900E0C65D /* CoreTests */ = {
 			isa = PBXGroup;
 			children = (
+				EA9C16761B3759B700371B50 /* FormatterTests.swift */,
 				EAF6709B1B32026F0025D7CF /* IntegrationTests.swift */,
 				F99AAF911B323FB200881EAA /* MeteorServiceTestingExtension.swift */,
 				EA9F35581A74CC6900E0C65D /* XCTestCaseExample.swift */,
@@ -805,6 +809,7 @@
 			isa = PBXGroup;
 			children = (
 				EAF670161B31DD740025D7CF /* GenericExtensions.swift */,
+				EA9C16781B375B9700371B50 /* MediaExtension.swift */,
 			);
 			path = GenericExtensions;
 			sourceTree = "<group>";
@@ -898,7 +903,6 @@
 				EAF670921B31FCBE0025D7CF /* DeviceInfo.swift */,
 				EAF670931B31FCBE0025D7CF /* ProvisioningProfile.swift */,
 				EAF670961B31FE6A0025D7CF /* Environment.swift */,
-				EA9C16721B3749EF00371B50 /* MediaExtension.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -1332,6 +1336,7 @@
 				EAF81B3A1B339F8C00EED6DD /* PKHUDExtension.swift in Sources */,
 				EAF81B321B3388C600EED6DD /* TouchDetector.swift in Sources */,
 				EAF81B331B3388DE00EED6DD /* ResourceExtension.swift in Sources */,
+				EA9C167A1B375B9700371B50 /* MediaExtension.swift in Sources */,
 				EAF81B2E1B33883A00EED6DD /* RecorderViewController.swift in Sources */,
 				EAF81B341B33890300EED6DD /* SBConstants.swift in Sources */,
 				EA5B740B1B30F7BB008E5CBC /* TestAppDelegate.swift in Sources */,
@@ -1354,7 +1359,6 @@
 				EAF6707E1B31F9450025D7CF /* Candidate.swift in Sources */,
 				EAF6707D1B31F9450025D7CF /* _Video.swift in Sources */,
 				EAF670851B31F9450025D7CF /* VideoMessageTask.swift in Sources */,
-				EA9C16731B3749EF00371B50 /* MediaExtension.swift in Sources */,
 				EAF6701D1B31E6550025D7CF /* Core.m in Sources */,
 				EAF670741B31F9450025D7CF /* MeteorExtension.swift in Sources */,
 				EA9C166F1B3726E300371B50 /* MessageViewModel.swift in Sources */,
@@ -1432,6 +1436,7 @@
 				EAC31C1F1AE3AD7000277FE8 /* SettingsItem.swift in Sources */,
 				EAF670521B31F28B0025D7CF /* ProfileItem.swift in Sources */,
 				EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */,
+				EA9C16791B375B9700371B50 /* MediaExtension.swift in Sources */,
 				EAA56F981B2B32E500DE3936 /* SettingsPhotoCell.swift in Sources */,
 				EAD7B2AB1A9F0BE700FA6740 /* DesignableViews.swift in Sources */,
 				EAB8E7B11AE0826D00B3046F /* XLFormExtensions.m in Sources */,
@@ -1461,6 +1466,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA9C16771B3759B700371B50 /* FormatterTests.swift in Sources */,
 				EAF6701B1B31E42E0025D7CF /* QuickSpecExample.swift in Sources */,
 				EA9F35591A74CC6900E0C65D /* XCTestCaseExample.swift in Sources */,
 				EAF670351B31EC9E0025D7CF /* GenericExtensions.swift in Sources */,
