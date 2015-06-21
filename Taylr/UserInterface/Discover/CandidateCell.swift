@@ -21,4 +21,9 @@ class CandidateCell : UICollectionViewCell {
             titleLabel.text = candidate?.user?.displayName
         }
     }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        avatarView.clipsToBounds = true
+    }
 }

@@ -23,8 +23,8 @@ class DiscoverViewModel : NSObject {
     
     func bindCollectionView(collectionView: UICollectionView) {
         self.collectionView = collectionView
-        collectionView.dataSource = self
-        collectionView.delegate = self
+//        collectionView.dataSource = self
+//        collectionView.delegate = self
     }
 }
 

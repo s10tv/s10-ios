@@ -8,6 +8,7 @@
 
 import Foundation
 import Core
+import CHTCollectionViewWaterfallLayout
 
 class DiscoverViewController : BaseViewController {
     
@@ -16,12 +17,23 @@ class DiscoverViewController : BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        let layout = CHTCollectionViewWaterfallLayout()
+        layout.minimumColumnSpacing = 5
+        layout.minimumInteritemSpacing = 5
+        layout.sectionInset = UIEdgeInsets(inset: 5)
+        
+        collectionView.collectionViewLayout = layout
+        
         discoverVM = DiscoverViewModel()
         discoverVM.bindCollectionView(collectionView)
         Meteor.subscriptions.discover.signal.deliverOnMainThread().subscribeCompleted {
             self.discoverVM.frc.performFetch(nil)
             self.collectionView.reloadData()
         }
+        
     }
     
     override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
@@ -39,5 +51,29 @@ class DiscoverViewController : BaseViewController {
     // MARK: - Actions
     
     @IBAction func unwindToHome(sender: UIStoryboardSegue) {
+    }
+}
+
+extension DiscoverViewController : UICollectionViewDataSource {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return discoverVM.frc.fetchedObjects?.count ?? 0
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CandidateCell", forIndexPath: indexPath) as! CandidateCell
+        cell.candidate = discoverVM.frc.objectAtIndexPath(indexPath) as? Candidate
+        return cell
+    }
+}
+
+extension DiscoverViewController : UICollectionViewDelegate {
+    
+}
+
+extension DiscoverViewController : CHTCollectionViewDelegateWaterfallLayout {
+    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
+//        CGSize size = CGSizeMake(arc4random() % 50 + 50, arc4random() % 50 + 50);
+        
+        return CGSize(width: CGFloat(arc4random() % 50 + 50), height: CGFloat(arc4random() % 50 + 50))
     }
 }

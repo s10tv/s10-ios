@@ -8,6 +8,7 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.2.0)
   - Cartography (0.5.0)
+  - CHTCollectionViewWaterfallLayout (0.9.1)
   - DateTools (1.5.0)
   - DTFoundation/Core (1.7.5)
   - DTFoundation/DTASN1 (1.7.5):
@@ -66,6 +67,7 @@ DEPENDENCIES:
   - Alamofire (~> 1.2)
   - AnalyticsSwift (~> 0.1.0)
   - Cartography (~> 0.5)
+  - CHTCollectionViewWaterfallLayout (~> 0.9)
   - DateTools (~> 1.5)
   - EDColor (~> 1.0)
   - Facebook-iOS-SDK (= 3.22.0)
@@ -125,6 +127,7 @@ SPEC CHECKSUMS:
   AnalyticsSwift: 903cb2c6d522709fa7637285553840c02accd149
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
   Cartography: 774e5cc446f5a6bca5d4345c5aa6af9a1fe74dc6
+  CHTCollectionViewWaterfallLayout: 1a8da4fc662702cbddda8926ced266036a829f84
   DateTools: b93a2c2017747329c6077c7d7e8a75106e23d0d7
   DTFoundation: 1d28080c20c3da041706545363f8238ab53a6204
   EDColor: c83f9a61f9f9b3c23d541f1feb561558e29cb088

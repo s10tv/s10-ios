@@ -52,6 +52,7 @@ target :Core do
         pod 'SCRecorder', '~> 2.4'
 
         pod 'UICollectionViewLeftAlignedLayout', '~> 1.0'
+        pod 'CHTCollectionViewWaterfallLayout', '~> 0.9'
 
         #pod 'Spring', '~> 1.0'
         #pod 'pop', '~> 1.0'
