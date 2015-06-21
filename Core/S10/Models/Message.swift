@@ -9,8 +9,22 @@
 @objc(Message)
 public class Message: _Message {
     
+    public enum Status : String {
+        case Sending = "sending"
+        case Sent = "sent"
+        case Delivered = "delivered"
+        case Opened = "opened"
+        case Expired = "expired"
+    }
+    
+    public var statusEnum: Status {
+        get { return status.map { Status(rawValue: $0) ?? .Sending } ?? .Sending }
+        set(newValue) { status = statusEnum.rawValue }
+    }
+    
     public override func awakeFromInsert() {
         super.awakeFromInsert()
+        statusEnum = .Sending
         createdAt = NSDate()
     }
 }

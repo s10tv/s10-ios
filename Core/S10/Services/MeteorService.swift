@@ -79,6 +79,16 @@ public class MeteorService {
         meteor.connect()
     }
     
+    // MARK: - Publications
+    
+    public func subscribeProfile(user: User) -> METSubscription {
+        return meteor.addSubscriptionWithName("profile", parameters: [user])
+    }
+    
+    public func unsubscribe(subscription: METSubscription) {
+        meteor.removeSubscription(subscription)
+    }
+    
     // MARK: - Device
     
     public func connectDevice(env: Environment) -> RACSignal {
@@ -142,29 +152,7 @@ public class MeteorService {
         return meteor.call("deleteAccount")
     }
 
-    // MARK: - Tasks
-    
-//    public func startMessageTask(taskID: String, connection: Connection) -> RACSignal {
-//        return meteor.call("startTask", [taskID, "MESSAGE", ["connectionId": connection.documentID!]]) {
-//            let message = Message.create() as! Message
-////            let video = Video.create() as! Video
-//            message.video = video
-//            message.connection = connection
-//            message.sender = self.user
-//            message.save()
-//            return nil
-//        }
-//    }
-
-    public func startTask(taskId: String, type: String, metadata: NSDictionary) -> RACSignal {
-        return meteor.call("startTask", [taskId, type, metadata])
-    }
-
-    public func finishTask(taskId: String) -> RACSignal {
-        return meteor.call("finishTask", [taskId])
-    }
-
-    // MARK: - User
+    // MARK: - Profile
     
     public func updateProfile(key: String, value: String) -> RACSignal {
         return meteor.call("me/update", [key, value]) {
@@ -173,7 +161,7 @@ public class MeteorService {
         }
     }
     
-    // MARK: - Core Mechanic
+    // MARK: - Candidates
     
     public func hideCandidate(candidate: Candidate) -> RACSignal {
         return meteor.call("candidate/hide", [candidate.documentID!], stub: {
@@ -182,30 +170,49 @@ public class MeteorService {
         })
     }
     
-    public func markAsRead(message: Message) -> RACSignal {
-        return meteor.call("message/markAsRead", [message.documentID!]) {
-            message.status = "read" // TODO: Fixme
-            message.save()
+    // MARK: - Users
+    
+    public func nudgeUser(user: User) -> RACSignal {
+        return meteor.call("user/action", [user, "nudge"], stub: {
             return nil
-        }
+        })
     }
     
-    public func sendMessage(connection: Connection, video: Video) -> RACSignal {
-        return meteor.call("Connection/sendMessage", [connection.documentID!, video.documentID!]) {
-            let message = Message.create() as! Message
-            message.connection = connection
-            message.sender = self.user
-            message.video = video
-            message.save()
-            return nil
-        }
+    public func blockUser(user: User) -> RACSignal {
+        return meteor.call("user/block", [user])
     }
     
     public func reportUser(user: User, reason: String) -> RACSignal {
-        return meteor.call("user/report", [user.documentID!, reason])
+        return meteor.call("user/report", [user, reason])
     }
-
-    private func getMeteor() -> METCoreDataDDPClient {
-        return self.meteor
+    
+    // MARK: - Messages
+    
+    public func openMessage(message: Message) -> RACSignal {
+        return meteor.call("message/open", [message]) {
+            message.status = "opened"
+            message.expiresAt = NSDate(timeIntervalSinceNow: 60)
+            message.save()
+            return nil
+        }
     }
+    
+    // MARK: - Tasks
+    
+    public func startVideoMessageTask(taskId: String, recipientId: String) -> RACSignal {
+        return meteor.call("task/start", [taskId, "VideoMessage", ["recipientId": recipientId]])
+    }
+    
+    public func startInviteTask(taskId: String, recipientInfo: String) -> RACSignal {
+        return meteor.call("task/start", [taskId, "Invite", ["recipientInfo": recipientInfo]])
+    }
+    
+    public func finishTask(taskId: String) -> RACSignal {
+        return meteor.call("task/finish", [taskId])
+    }
+    
+    public func startTask(taskId: String, type: String, metadata: NSDictionary) -> RACSignal {
+        return meteor.call("startTask", [taskId, type, metadata])
+    }
+    
 }

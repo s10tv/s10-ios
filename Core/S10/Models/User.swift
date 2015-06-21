@@ -25,6 +25,14 @@ public class User: _User {
         return firstName != nil ? (lastName != nil ? "\(firstName!) \(lastName!)" : firstName!) : ""
     }
     
+    public func connection() -> Connection? {
+        return fetchConnection().fetchObjects().first as? Connection
+    }
+    
+    public func fetchConnection() -> NSFetchedResultsController {
+        return Connection.by(ConnectionRelationships.otherUser.rawValue, value: self).frc()
+    }
+    
     public override class func keyPathsForValuesAffectingValueForKey(key: String) -> Set<NSObject> {
         if key == "displayName" {  // TODO: Use native set syntax. TODO: Can we avoid hardcoding displayName?
             return [UserAttributes.firstName.rawValue, UserAttributes.lastName.rawValue]
