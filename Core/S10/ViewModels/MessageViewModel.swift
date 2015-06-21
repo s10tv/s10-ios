@@ -7,23 +7,15 @@
 //
 
 import Foundation
+import FormatterKit
 
 public class MessageViewModel {
-    public var videoURL: NSURL?
-    public var sender: User?
-    public var createdAt: NSDate?
-    public var expiresAt: NSDate?
-    public var status: Message.Status?
-    
-    public init(message: Message) {
-        videoURL = message.video?.URL
-        sender = message.sender
-        createdAt = message.createdAt
-        expiresAt = message.expiresAt
-        status = message.statusEnum
+    public let videoURL: NSURL?
+    public let sender: User?
+    public var dateText: String {
+        return Formatters.formatRelativeDate(createdAt!)
     }
-    
-    public func statusText() -> String {
+    public var statusText: String {
         switch status! {
         case .Sending: return "sending..."
         case .Sent: return "sent"
@@ -35,6 +27,20 @@ public class MessageViewModel {
         }
     }
     
+    let expiresAt: NSDate?
+    let createdAt: NSDate?
+    let status: Message.Status?
+    
+    public init(message: Message) {
+        videoURL = message.video?.URL
+        sender = message.sender
+        createdAt = message.createdAt
+        expiresAt = message.expiresAt
+        status = message.statusEnum
+    }
+    
+    
+    
     func isOrderedBefore(other: MessageViewModel) -> Bool {
         if let thisDate = createdAt,
             let otherDate = other.createdAt {
@@ -42,11 +48,4 @@ public class MessageViewModel {
         }
         return true
     }
-}
-
-public func ==(lhs: MessageViewModel, rhs: MessageViewModel) -> Bool {
-    return lhs === rhs
-}
-extension MessageViewModel : Equatable {
-    
 }

@@ -25,6 +25,10 @@ target :Core do
     # UI
     pod 'Cartography', '~> 0.5'
     pod 'EDColor', '~> 1.0'
+    
+    # ViewModels
+    pod 'DateTools', '~> 1.5'
+    pod 'FormatterKit/TimeIntervalFormatter', '~> 1.8'
 
     # Utils
     pod 'SimpleKeychain', '~> 0.4'
@@ -54,8 +58,6 @@ target :Core do
         pod 'RBBAnimation', '~> 0.4.0'
 
 
-        pod 'DateTools', '~> 1.5'
-        pod 'FormatterKit/TimeIntervalFormatter', '~> 1.8'
 
         pod 'INTULocationManager', '~> 3.0'
 

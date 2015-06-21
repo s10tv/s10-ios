@@ -29,8 +29,8 @@ class MessageCell : UICollectionViewCell {
         didSet {
             player.setItemByUrl(message?.videoURL)
             avatarView.user = message?.sender
-            statusLabel.text = message?.statusText()
-            timeLabel.text = "2m"
+            statusLabel.text = message?.statusText
+            timeLabel.text = message?.dateText
             durationLabel.text = nil
         }
     }
@@ -67,6 +67,6 @@ extension MessageCell : SCPlayerDelegate {
     func player(player: SCPlayer!, didPlay currentTime: CMTime, loopsCount: Int) {
         let secondsRemaining = Int(ceil(player.itemDuration.seconds - currentTime.seconds))
         durationLabel.text = "\(secondsRemaining)"
-        statusLabel.text = message?.statusText()
+        statusLabel.text = message?.statusText
     }
 }
