@@ -11,7 +11,6 @@
             <string>TransatTextStandard</string>
             <string>TransatTextStandard</string>
             <string>TransatTextStandard</string>
-            <string>TransatTextStandard</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -64,17 +63,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" image="sample-taylor-avatar-square" translatesAutoresizingMaskIntoConstraints="NO" id="OLv-LL-2Yz">
-                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="190"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="217"/>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PCR-cT-9NB">
-                                                    <rect key="frame" x="111" y="215" width="31" height="27"/>
-                                                    <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="15"/>
-                                                    <state key="normal" title="Hide">
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ib-JK-1el">
-                                                    <rect key="frame" x="8" y="198" width="40" height="17"/>
+                                                    <rect key="frame" x="8" y="225" width="40" height="17"/>
                                                     <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -84,14 +76,12 @@
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="PCR-cT-9NB" firstAttribute="top" secondItem="7Ib-JK-1el" secondAttribute="bottom" id="7Lf-Pd-cGd"/>
                                             <constraint firstItem="OLv-LL-2Yz" firstAttribute="leading" secondItem="5p8-O9-cl0" secondAttribute="leading" id="93l-54-1ov"/>
                                             <constraint firstItem="7Ib-JK-1el" firstAttribute="leading" secondItem="5p8-O9-cl0" secondAttribute="leadingMargin" id="Qz8-hx-tm0"/>
                                             <constraint firstItem="OLv-LL-2Yz" firstAttribute="top" secondItem="5p8-O9-cl0" secondAttribute="top" id="RzV-MJ-l7s"/>
                                             <constraint firstItem="7Ib-JK-1el" firstAttribute="top" secondItem="OLv-LL-2Yz" secondAttribute="bottom" constant="8" id="TpB-bw-IKX"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="7Ib-JK-1el" secondAttribute="bottom" id="UCL-gc-UYs"/>
                                             <constraint firstAttribute="trailing" secondItem="OLv-LL-2Yz" secondAttribute="trailing" id="XBQ-QX-k3b"/>
-                                            <constraint firstItem="PCR-cT-9NB" firstAttribute="bottom" secondItem="5p8-O9-cl0" secondAttribute="bottomMargin" id="iIV-t1-tbH"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="PCR-cT-9NB" secondAttribute="trailing" constant="30" id="m42-zw-AGo"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
