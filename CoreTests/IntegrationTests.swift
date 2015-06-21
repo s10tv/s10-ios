@@ -38,6 +38,8 @@ class IntegrationTests : XCTestCase {
     
     override func setUp() {
         super.setUp()
+        Realm.defaultPath = NSHomeDirectory().stringByAppendingPathComponent("test.realm")
+
         deleteRealmFilesAtPath(Realm.defaultPath)
         meteor.delegate = self
 
@@ -93,9 +95,7 @@ class IntegrationTests : XCTestCase {
                 filePath, atomically: true, encoding: NSUTF8StringEncoding, error: nil)) == true
             let url = NSURL(string: filePath)
             let connection = Connection.all().fetch().first as! Connection
-            videoService.sendVideoMessage(connection, localVideoURL: url!, onNotificationFn: {
-                expectation.fulfill()
-            })
+            videoService.sendVideoMessage(connection, localVideoURL: url!)
             return RACSignal.empty()
         }
 
