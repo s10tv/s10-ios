@@ -11,6 +11,7 @@ import FormatterKit
 
 public class MessageViewModel {
     public let videoURL: NSURL?
+    public let message: Message?
     public let sender: User?
     public var dateText: String {
         return Formatters.formatRelativeDate(createdAt!)
@@ -32,13 +33,13 @@ public class MessageViewModel {
     let status: Message.Status?
     
     public init(message: Message) {
+        self.message = message
         videoURL = message.video?.URL
         sender = message.sender
         createdAt = message.createdAt
         expiresAt = message.expiresAt
         status = message.statusEnum
     }
-    
     
     
     func isOrderedBefore(other: MessageViewModel) -> Bool {

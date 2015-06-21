@@ -190,7 +190,7 @@ public class MeteorService {
     
     public func openMessage(message: Message) -> RACSignal {
         return meteor.call("message/open", [message]) {
-            message.status = "opened"
+            message.statusEnum = .Opened
             message.expiresAt = NSDate(timeIntervalSinceNow: 60)
             message.save()
             return nil

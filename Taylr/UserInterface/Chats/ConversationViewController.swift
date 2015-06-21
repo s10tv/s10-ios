@@ -79,6 +79,9 @@ extension ConversationViewController : UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         if let cell = cell as? MessageCell {
             cell.playVideo()
+            if let message = cell.message?.message {
+                Meteor.openMessage(message)
+            }
         }
     }
     
