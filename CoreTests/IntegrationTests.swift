@@ -56,6 +56,15 @@ class IntegrationTests : XCTestCase {
 
         self.waitForExpectationsWithTimeout(5.0, handler: nil)
     }
+    
+    func testSendVideo() {
+        let queue = NSOperationQueue()
+        let operation = SendVideoOperation()
+        queue.addOperation(operation)
+        operation.finishBlock = { result in
+            println("Success? \(result.success)")
+        }
+    }
 }
 
 // MARK: Meteor Logging

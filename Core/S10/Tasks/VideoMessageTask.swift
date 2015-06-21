@@ -15,3 +15,24 @@ class VideoMessageTask : Task {
     var coverFramePath: String!
 
 }
+
+public class SendVideoOperation : AsyncOperation {
+    
+    public override func run() {
+        // DO whatever you want
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(10 * Double(NSEC_PER_SEC)))
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
+            self.finish(.Success)
+        }
+        // instantiate by TaskID
+        // Gets task from DB by ID
+        // Request URL from server
+        // Write url to db
+        // Uplaod to azure
+        // delete row from db
+        // call finish
+    }
+}
+
+
+
