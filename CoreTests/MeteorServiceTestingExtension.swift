@@ -66,6 +66,10 @@ extension MeteorService {
         ]])
     }
 
+    func connectWithNewUser(otherUserId: String) -> RACSignal {
+        return meteor.call("dev/user/connectWithNewUser", [])
+    }
+
     func vet(userId: String) -> RACSignal {
         return self.meteor.call("admin/user/vet", [userId])
     }

@@ -15,6 +15,7 @@ target :Core do
     # Data
     pod 'SugarRecord/CoreData', :git => 'https://github.com/tonyxiao/SugarRecord', :branch => 'develop'
     pod 'Meteor', :git => 'https://github.com/tonyxiao/meteor-ios', :branch => 'dev'
+    pod 'RealmSwift', '~> 0.93.2'
     pod 'SwiftyUserDefaults', '~> 1.1'
     pod 'SwiftyJSON', '~> 2.1'
 

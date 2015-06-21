@@ -53,7 +53,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
             accountService: AccountService(meteorService: meteor),
             analyticsService: AnalyticsService(env: env),
             upgradeService: UpgradeService(env: env, settings: meteor.settings),
-            locationService: LocationService(meteorService: meteor))
+            locationService: LocationService(meteorService: meteor),
+            videoService: VideoService(meteorService: meteor))
 
         // Startup the services
 //        Meteor.meta.bugfenderId = Bugfender.deviceIdentifier()

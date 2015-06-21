@@ -16,6 +16,7 @@ struct GlobalsContainer {
     let analyticsService : AnalyticsService
     let upgradeService: UpgradeService
     let locationService: LocationService
+    let videoService: VideoService
 }
 
 // Frequently used shorthands
