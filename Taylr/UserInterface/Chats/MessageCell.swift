@@ -89,10 +89,10 @@ extension MessageCell : SCPlayerDelegate {
 extension MessageCell : SCVideoPlayerViewDelegate {
     
     func videoPlayerViewTappedToPause(videoPlayerView: SCVideoPlayerView!) {
-        restoreInfo()
+//        restoreInfo()
     }
 
     func videoPlayerViewTappedToPlay(videoPlayerView: SCVideoPlayerView!) {
-        fadeInfoOut()
+//        fadeInfoOut()
     }
 }
