@@ -53,6 +53,8 @@
 		EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA9A6ACE1AAFDE19009EDD6D /* Localizable.strings */; };
 		EA9C16661B365BD700371B50 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C16651B365BD700371B50 /* AsyncOperation.swift */; };
 		EA9C166C1B368FD600371B50 /* VideoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C166B1B368FD600371B50 /* VideoService.swift */; };
+		EA9C166F1B3726E300371B50 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C166E1B3726E300371B50 /* MessageViewModel.swift */; };
+		EA9C16711B37286700371B50 /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C16701B37286700371B50 /* ConversationViewModel.swift */; };
 		EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
 		EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35461A74CC6900E0C65D /* Main.storyboard */; };
 		EA9F354A1A74CC6900E0C65D /* Taylr.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Taylr.xcassets */; };
@@ -265,6 +267,8 @@
 		EA9A6ACF1AAFDFA2009EDD6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA9C16651B365BD700371B50 /* AsyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		EA9C166B1B368FD600371B50 /* VideoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoService.swift; sourceTree = "<group>"; };
+		EA9C166E1B3726E300371B50 /* MessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
+		EA9C16701B37286700371B50 /* ConversationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewModel.swift; sourceTree = "<group>"; };
 		EA9F353A1A74CC6900E0C65D /* Taylr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taylr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9F353E1A74CC6900E0C65D /* Taylr-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Taylr-Info.plist"; sourceTree = "<group>"; };
 		EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -615,6 +619,15 @@
 			path = Networking;
 			sourceTree = "<group>";
 		};
+		EA9C166D1B3726DA00371B50 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				EA9C166E1B3726E300371B50 /* MessageViewModel.swift */,
+				EA9C16701B37286700371B50 /* ConversationViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		EA9F35311A74CC6900E0C65D = {
 			isa = PBXGroup;
 			children = (
@@ -832,6 +845,7 @@
 		EAF6705D1B31F9450025D7CF /* S10 */ = {
 			isa = PBXGroup;
 			children = (
+				EA9C166D1B3726DA00371B50 /* ViewModels */,
 				EAF6705E1B31F9450025D7CF /* Models */,
 				EAF670981B3200E10025D7CF /* Services */,
 				EAF6706C1B31F9450025D7CF /* Tasks */,
@@ -1348,10 +1362,12 @@
 				EAF670851B31F9450025D7CF /* VideoMessageTask.swift in Sources */,
 				EAF6701D1B31E6550025D7CF /* Core.m in Sources */,
 				EAF670741B31F9450025D7CF /* MeteorExtension.swift in Sources */,
+				EA9C166F1B3726E300371B50 /* MessageViewModel.swift in Sources */,
 				EAF6707B1B31F9450025D7CF /* _Message.swift in Sources */,
 				EAF6709A1B3200E10025D7CF /* MeteorService.swift in Sources */,
 				EA9C16661B365BD700371B50 /* AsyncOperation.swift in Sources */,
 				EAF6708A1B31F9AD0025D7CF /* Logging.swift in Sources */,
+				EA9C16711B37286700371B50 /* ConversationViewModel.swift in Sources */,
 				EAF670901B31FA2E0025D7CF /* UserDefaults.swift in Sources */,
 				EAF670831B31F9450025D7CF /* Video.swift in Sources */,
 				EAF6707C1B31F9450025D7CF /* _User.swift in Sources */,

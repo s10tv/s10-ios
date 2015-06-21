@@ -17,6 +17,12 @@ public func mapOptional<S : SequenceType, T>(source: S, transform: S.Generator.E
     return map(source) { transform($0) }.filter { $0 != nil }.map { $0! }
 }
 
+func find<C: CollectionType>(source: C, match: C.Generator.Element -> Bool) -> C.Index? {
+    for idx in indices(source) {
+        if match(source[idx]) { return idx }
+    }
+    return nil
+}
 
 // Floats
 extension Int {
@@ -127,3 +133,14 @@ extension NSAttributedString {
         return attrString
     }
 }
+
+// NSDate type
+
+public func <(lhs: NSDate, rhs: NSDate) -> Bool {
+    return lhs.timeIntervalSince1970 < rhs.timeIntervalSince1970
+}
+
+public func >(lhs: NSDate, rhs: NSDate) -> Bool {
+    return lhs.timeIntervalSince1970 > rhs.timeIntervalSince1970
+}
+

@@ -12,7 +12,7 @@ import SCRecorder
 import Core
 
 protocol MessageCellDelegate : NSObjectProtocol {
-    func messageCell(cell: MessageCell, didPlayMessage message: Message)
+    func messageCell(cell: MessageCell, didPlayMessage message: MessageViewModel)
 }
 
 class MessageCell : UICollectionViewCell {
@@ -23,9 +23,9 @@ class MessageCell : UICollectionViewCell {
     
     weak var delegate: MessageCellDelegate?
     var player: SCPlayer { return playerView.player }
-    var message: Message? {
+    var message: MessageViewModel? {
         didSet {
-            player.setItemByUrl(message?.video?.URL)
+            player.setItemByUrl(message?.videoURL)
             avatarView.user = message?.sender
             timeLabel.text = "2m"
         }
