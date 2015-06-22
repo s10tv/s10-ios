@@ -14,8 +14,9 @@ import Core
 
 class ProfileViewController : BaseViewController {
 
-    var user : User!
     @IBOutlet weak var tableView: UITableView!
+    var mainCell: ProfileMainCell!
+    var user : User!
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
         return .LightContent
@@ -23,7 +24,7 @@ class ProfileViewController : BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        assert(user != nil, "Must set user before attempt to loading ProfileVC")
+        mainCell = tableView.dequeueReusableCellWithIdentifier("ProfileMainCell") as! ProfileMainCell
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 300
     }
@@ -31,6 +32,7 @@ class ProfileViewController : BaseViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
+        mainCell.user = user
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -84,9 +86,10 @@ extension ProfileViewController : UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ProfileMainCell") as! ProfileMainCell
-        cell.user = user
-        return cell
+        if indexPath.row == 0 {
+            return mainCell
+        }
+        return tableView.dequeueReusableCellWithIdentifier("") as! UITableViewCell
     }
 }
 
@@ -94,3 +97,17 @@ extension ProfileViewController : UITableViewDelegate {
     
 }
 
+// MARK: ScrollView Delegate
+
+extension ProfileViewController : UIScrollViewDelegate {
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let yOffset = scrollView.contentOffset.y
+        if (yOffset < 0) {
+            let imageView = mainCell.coverImageView
+            var frame = imageView.frame
+            frame.origin.y = yOffset
+            frame.size.height = mainCell.coverImageHeight.constant + -yOffset
+            imageView.frame = frame
+        }
+    }
+}

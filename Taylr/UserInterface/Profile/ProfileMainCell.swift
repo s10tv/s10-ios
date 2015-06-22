@@ -10,6 +10,7 @@ import Foundation
 import Core
 
 class ProfileMainCell : UITableViewCell {
+    @IBOutlet weak var coverImageHeight: NSLayoutConstraint!
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var avatarView: UserAvatarView!
     @IBOutlet weak var nameLabel: UILabel!

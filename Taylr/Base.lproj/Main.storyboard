@@ -339,6 +339,7 @@
                                             <outlet property="aboutLabel" destination="vCn-Te-NpZ" id="LdE-Do-CEi"/>
                                             <outlet property="activityLabel" destination="vbX-bI-Gli" id="T2Q-t2-bsD"/>
                                             <outlet property="avatarView" destination="qh5-iy-Fge" id="vdM-dz-ky0"/>
+                                            <outlet property="coverImageHeight" destination="tCc-d3-wwh" id="t4c-je-DCU"/>
                                             <outlet property="coverImageView" destination="6ml-E6-ZMG" id="0p4-5b-ZO8"/>
                                             <outlet property="distanceLabel" destination="uE6-2o-4dx" id="5ZZ-wQ-4XR"/>
                                             <outlet property="nameLabel" destination="2Sg-08-WeT" id="9K8-bK-ekA"/>
