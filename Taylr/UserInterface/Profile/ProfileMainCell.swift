@@ -21,7 +21,13 @@ class ProfileMainCell : UITableViewCell {
     
     var user: User? {
         didSet {
-            
+//            coverImageView.image = 
+            avatarView.user = user
+            nameLabel.text = user?.displayName
+//            usernameLabel.text 
+//            distanceLabel.text
+//            activityLabel.text
+            aboutLabel.rawText = user?.about
         }
     }
     
@@ -30,5 +36,4 @@ class ProfileMainCell : UITableViewCell {
         coverImageView.clipsToBounds = true
     }
     
-
 }
