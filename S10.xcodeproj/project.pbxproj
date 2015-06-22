@@ -91,6 +91,7 @@
 		EAB8E7B11AE0826D00B3046F /* XLFormExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = EAB8E7B01AE0826D00B3046F /* XLFormExtensions.m */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
 		EAC31C1F1AE3AD7000277FE8 /* SettingsItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC31C1E1AE3AD7000277FE8 /* SettingsItem.swift */; };
+		EACCA3A21B37B02A00015C88 /* ProfileMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACCA3A11B37B02A00015C88 /* ProfileMainCell.swift */; };
 		EAD7B2AB1A9F0BE700FA6740 /* DesignableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */; };
 		EAE1E07B1AE34C6200F03F13 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1E07A1AE34C6200F03F13 /* LocationService.swift */; };
 		EAE1E07D1AE3788300F03F13 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1E07C1AE3788300F03F13 /* Globals.swift */; };
@@ -315,6 +316,7 @@
 		EABD43DA1AA1D29C00B07813 /* Prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
 		EABF2AB41AD04659005880E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EAC31C1E1AE3AD7000277FE8 /* SettingsItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsItem.swift; sourceTree = "<group>"; };
+		EACCA3A11B37B02A00015C88 /* ProfileMainCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileMainCell.swift; sourceTree = "<group>"; };
 		EAD7B2AA1A9F0BE700FA6740 /* DesignableViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableViews.swift; sourceTree = "<group>"; };
 		EAE1E07A1AE34C6200F03F13 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		EAE1E07C1AE3788300F03F13 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
@@ -754,6 +756,7 @@
 				EAA56F821B2B32E500DE3936 /* ProfileInfoCell.xib */,
 				EAA56F831B2B32E500DE3936 /* ProfileViewController.swift */,
 				EAA56F841B2B32E500DE3936 /* ProgressIndicator.swift */,
+				EACCA3A11B37B02A00015C88 /* ProfileMainCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1436,6 +1439,7 @@
 				EAC31C1F1AE3AD7000277FE8 /* SettingsItem.swift in Sources */,
 				EAF670521B31F28B0025D7CF /* ProfileItem.swift in Sources */,
 				EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */,
+				EACCA3A21B37B02A00015C88 /* ProfileMainCell.swift in Sources */,
 				EA9C16791B375B9700371B50 /* MediaExtension.swift in Sources */,
 				EAA56F981B2B32E500DE3936 /* SettingsPhotoCell.swift in Sources */,
 				EAD7B2AB1A9F0BE700FA6740 /* DesignableViews.swift in Sources */,

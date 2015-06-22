@@ -14,19 +14,18 @@ import Core
 
 class ProfileViewController : BaseViewController {
 
-    @IBOutlet weak var coverImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var avatarView: UserAvatarView!
-    @IBOutlet weak var aboutLabel: DesignableLabel!
-    
     var user : User!
+    @IBOutlet weak var tableView: UITableView!
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
     
     override func viewDidLoad() {
-        assert(user != nil, "Must set user before attempt to loading ProfileVC")
         super.viewDidLoad()
-        coverImageView.clipsToBounds = true
-        // TODO: Find better solution than hardcoding keypath string
+        assert(user != nil, "Must set user before attempt to loading ProfileVC")
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 300
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -39,9 +38,6 @@ class ProfileViewController : BaseViewController {
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
-    }
     
 //    override func updateViewConstraints() {
 //        constrain(backButton, moreButton, view.superview!) { backButton, moreButton, superview in
@@ -81,3 +77,20 @@ class ProfileViewController : BaseViewController {
         presentViewController(alert)
     }
 }
+
+extension ProfileViewController : UITableViewDataSource {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("ProfileMainCell") as! ProfileMainCell
+        cell.user = user
+        return cell
+    }
+}
+
+extension ProfileViewController : UITableViewDelegate {
+    
+}
+
