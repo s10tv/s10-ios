@@ -8,8 +8,27 @@
 
 import Foundation
 import Core
+import SDWebImage
 
 class MeViewController : BaseViewController {
+    
+    @IBOutlet weak var avatarView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var usernameLabel: UILabel!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let user = Meteor.user
+        avatarView.sd_setImageWithURL(user?.avatarURL)
+        nameLabel.text = user?.displayName
+//        usernameLabel.text = nil
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let vc = segue.destinationViewController as? ProfileViewController {
+            vc.user = Meteor.user
+        }
+    }
     
     override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
         Log.debug("Handding to edge \(edge) from dockVC")

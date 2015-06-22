@@ -9,11 +9,13 @@
     <customFonts key="customFonts">
         <mutableArray key="TransatTextBlack.otf">
             <string>TransatTextBlack</string>
+            <string>TransatTextBlack</string>
         </mutableArray>
         <mutableArray key="TransatTextBold.otf">
             <string>TransatTextBold</string>
         </mutableArray>
         <mutableArray key="TransatTextStandard.otf">
+            <string>TransatTextStandard</string>
             <string>TransatTextStandard</string>
             <string>TransatTextStandard</string>
             <string>TransatTextStandard</string>
@@ -637,14 +639,51 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Me" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DB7-1S-8VL">
-                                <rect key="frame" x="288" y="137" width="25" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MyP-Vv-W6L">
-                                <rect key="frame" x="82" y="172" width="49" height="30"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHe-b3-ukq">
+                                <rect key="frame" x="0.0" y="64" width="600" height="152"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylor Swift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxr-IQ-qXL">
+                                        <rect key="frame" x="152" y="48" width="130" height="25"/>
+                                        <fontDescription key="fontDescription" name="TransatTextBlack" family="Transat Text" pointSize="24"/>
+                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@tswift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9T-Ho-de1">
+                                        <rect key="frame" x="152" y="81" width="67" height="20"/>
+                                        <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="20"/>
+                                        <color key="textColor" red="0.60777515172958374" green="0.60788232088088989" blue="0.60776835680007935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="XKE-Gv-ncC">
+                                        <rect key="frame" x="16" y="16" width="120" height="120"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="120" id="AXo-Au-cEP"/>
+                                            <constraint firstAttribute="width" secondItem="XKE-Gv-ncC" secondAttribute="height" multiplier="1:1" id="ZK7-FU-TiL"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="10"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="bottom" secondItem="XKE-Gv-ncC" secondAttribute="bottom" constant="16" id="Poq-yl-6bD"/>
+                                    <constraint firstItem="D9T-Ho-de1" firstAttribute="top" secondItem="Lxr-IQ-qXL" secondAttribute="bottom" constant="8" id="Tyu-Rk-Inf"/>
+                                    <constraint firstItem="Lxr-IQ-qXL" firstAttribute="leading" secondItem="XKE-Gv-ncC" secondAttribute="trailing" constant="16" id="cha-LT-LLE"/>
+                                    <constraint firstItem="Lxr-IQ-qXL" firstAttribute="centerY" secondItem="XKE-Gv-ncC" secondAttribute="centerY" constant="-16" id="jaM-ic-xJb"/>
+                                    <constraint firstItem="XKE-Gv-ncC" firstAttribute="leading" secondItem="gHe-b3-ukq" secondAttribute="leading" constant="16" id="nyc-1p-x8Z"/>
+                                    <constraint firstItem="XKE-Gv-ncC" firstAttribute="top" secondItem="gHe-b3-ukq" secondAttribute="top" constant="16" id="ohJ-fa-v6T"/>
+                                    <constraint firstItem="Lxr-IQ-qXL" firstAttribute="leading" secondItem="D9T-Ho-de1" secondAttribute="leading" id="wEP-0K-fyi"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Qbq-hv-eUJ" appends="YES" id="im1-NY-lCH"/>
+                                </connections>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MyP-Vv-W6L">
+                                <rect key="frame" x="16" y="550" width="49" height="30"/>
                                 <state key="normal" title="Logout">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -654,14 +693,29 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="gHe-b3-ukq" firstAttribute="leading" secondItem="uj7-s2-Wdm" secondAttribute="leading" id="GVL-ap-bkO"/>
+                            <constraint firstItem="MyP-Vv-W6L" firstAttribute="leading" secondItem="uj7-s2-Wdm" secondAttribute="leadingMargin" id="LqM-Oq-pbv"/>
+                            <constraint firstItem="gHe-b3-ukq" firstAttribute="top" secondItem="rbh-DD-zC5" secondAttribute="bottom" id="YlR-Du-q1y"/>
+                            <constraint firstItem="eec-eU-juV" firstAttribute="top" secondItem="MyP-Vv-W6L" secondAttribute="bottom" constant="20" id="a8o-gP-pit"/>
+                            <constraint firstAttribute="trailing" secondItem="gHe-b3-ukq" secondAttribute="trailing" id="tW8-yd-1ki"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Me" id="aaw-e6-lIV"/>
                     <connections>
+                        <outlet property="avatarView" destination="XKE-Gv-ncC" id="V3I-g6-jIy"/>
+                        <outlet property="nameLabel" destination="Lxr-IQ-qXL" id="xZv-uD-p8B"/>
+                        <outlet property="usernameLabel" destination="D9T-Ho-de1" id="8Fo-jI-Fow"/>
                         <segue destination="W2c-OH-HAO" kind="unwind" identifier="MeToDiscover" unwindAction="unwindToHome:" id="svQ-92-eMT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yWV-ja-hlq" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="W2c-OH-HAO" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="Qbq-hv-eUJ">
+                    <connections>
+                        <segue destination="O0f-xd-Ps7" kind="show" id="zOU-zf-DhR"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-273" y="2032"/>
         </scene>
@@ -677,6 +731,6 @@
         <image name="sample-taylor-avatar-square" width="167" height="168"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5pS-f2-tIU"/>
+        <segue reference="zOU-zf-DhR"/>
     </inferredMetricsTieBreakers>
 </document>
