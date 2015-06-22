@@ -29,7 +29,8 @@ class TransitionManager : NSObject, UINavigationControllerDelegate {
             return ScrollTransition(fromVC: fromVC, toVC: toVC, direction: .LeftToRight, panGesture: currentEdgePan)
             
         default:
-            return WaveTransition(fromVC: fromVC, toVC: toVC, interactor: currentEdgePan.map { PanInteractor($0) })
+            return nil
+//            return WaveTransition(fromVC: fromVC, toVC: toVC, interactor: currentEdgePan.map { PanInteractor($0) })
         }
     }
     

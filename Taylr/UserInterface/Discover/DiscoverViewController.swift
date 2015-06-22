@@ -47,6 +47,15 @@ class DiscoverViewController : BaseViewController {
         }
         return super.handleScreenEdgePan(edge)
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let profileVC = segue.destinationViewController as? ProfileViewController,
+            let indexPath = collectionView.indexPathsForSelectedItems().first as? NSIndexPath,
+            let candidate = discoverVM.frc.objectAtIndexPath(indexPath) as? Candidate,
+            let user = candidate.user {
+            profileVC.user = user
+        }
+    }
 
     // MARK: - Actions
     
@@ -74,6 +83,6 @@ extension DiscoverViewController : CHTCollectionViewDelegateWaterfallLayout {
     func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
 //        CGSize size = CGSizeMake(arc4random() % 50 + 50, arc4random() % 50 + 50);
         
-        return CGSize(width: CGFloat(arc4random() % 50 + 50), height: CGFloat(arc4random() % 50 + 50))
+        return CGSize(width: CGFloat(arc4random() % 30 + 50), height: CGFloat(arc4random() % 30 + 80))
     }
 }

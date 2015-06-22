@@ -7,6 +7,12 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="TransatTextBlack.otf">
+            <string>TransatTextBlack</string>
+        </mutableArray>
+        <mutableArray key="TransatTextBold.otf">
+            <string>TransatTextBold</string>
+        </mutableArray>
         <mutableArray key="TransatTextStandard.otf">
             <string>TransatTextStandard</string>
             <string>TransatTextStandard</string>
@@ -91,6 +97,7 @@
                                         <connections>
                                             <outlet property="avatarView" destination="OLv-LL-2Yz" id="P4K-c4-PQy"/>
                                             <outlet property="titleLabel" destination="7Ib-JK-1el" id="iTt-7q-d0l"/>
+                                            <segue destination="O0f-xd-Ps7" kind="show" identifier="DiscoverToProfile" id="Fwv-Pj-RXP"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -138,8 +145,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4cg-hq-bZ8">
-                                <rect key="frame" x="0.0" y="64" width="600" height="487"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4cg-hq-bZ8">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ConnectionCell" id="pVQ-Tu-jcV" customClass="ConnectionCell" customModule="Taylr" customModuleProvider="target">
@@ -210,12 +217,127 @@
                     <connections>
                         <outlet property="tableView" destination="4cg-hq-bZ8" id="YhK-na-cJu"/>
                         <segue destination="1Ro-gk-VhZ" kind="unwind" identifier="ChatsToDiscover" unwindAction="unwindToHome:" id="Fog-Yc-OF8"/>
+                        <segue destination="O0f-xd-Ps7" kind="show" identifier="ChatsToProfile" id="e1b-Yo-PaR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NWp-vJ-jcK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="1Ro-gk-VhZ" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1006" y="2032"/>
+            <point key="canvasLocation" x="1030" y="2032"/>
+        </scene>
+        <!--Profile View Controller-->
+        <scene sceneID="eI4-oC-eOR">
+            <objects>
+                <viewController id="O0f-xd-Ps7" customClass="ProfileViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4dM-Pg-g0q"/>
+                        <viewControllerLayoutGuide type="bottom" id="OrB-U2-bQc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="gb0-Xh-ayb">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-cover-image" translatesAutoresizingMaskIntoConstraints="NO" id="6ml-E6-ZMG">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="200" id="tCc-d3-wwh"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0BU-cl-LEr" userLabel="Back">
+                                <rect key="frame" x="0.0" y="0.0" width="50" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="Tf0-zI-THR"/>
+                                    <constraint firstAttribute="width" constant="50" id="xYp-0J-Oz6"/>
+                                </constraints>
+                                <state key="normal" image="ic-back-white">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="goBack:" destination="eMh-jf-Tma" eventType="touchUpInside" id="J0d-9J-Tmx"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="qh5-iy-Fge" customClass="UserAvatarView" customModule="Taylr" customModuleProvider="target">
+                                <rect key="frame" x="24" y="108" width="100" height="102"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="EEH-eM-i4h"/>
+                                    <constraint firstAttribute="width" secondItem="qh5-iy-Fge" secondAttribute="height" multiplier="66:67" id="Tqa-U9-35s"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylor Swift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Sg-08-WeT">
+                                <rect key="frame" x="132" y="121" width="136" height="26"/>
+                                <fontDescription key="fontDescription" name="TransatTextBlack" family="Transat Text" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <size key="shadowOffset" width="1" height="1"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@tswift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brj-Vp-1XD">
+                                <rect key="frame" x="132" y="155" width="60" height="18"/>
+                                <fontDescription key="fontDescription" name="TransatTextBold" family="Transat Text" pointSize="17"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <size key="shadowOffset" width="1" height="1"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5m ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbX-bI-Gli">
+                                <rect key="frame" x="127" y="218" width="46" height="16"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <color key="textColor" red="0.60777515172958374" green="0.60788232088088989" blue="0.60776835680007935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCn-Te-NpZ" customClass="DesignableLabel" customModule="Taylr" customModuleProvider="target">
+                                <rect key="frame" x="24" y="242" width="552" height="60"/>
+                                <attributedString key="attributedText">
+                                    <fragment>
+                                        <string key="content">Born in 1989. Taylor Alison Swift is an American singer-songwriter and actress. Raised in Wyomissing, Pennsylvania, Swift moved to Nashville, Tennessee, at the age of 14 to pursue a career in country music</string>
+                                        <attributes>
+                                            <color key="NSColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <font key="NSFont" size="16" name="TransatTextStandard"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" minimumLineHeight="20"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.5 miles away" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uE6-2o-4dx">
+                                <rect key="frame" x="29" y="218" width="90" height="16"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <color key="textColor" red="0.60777515172958374" green="0.60788232088088989" blue="0.60776835680007935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6ml-E6-ZMG" firstAttribute="leading" secondItem="gb0-Xh-ayb" secondAttribute="leading" id="5dd-je-Iaa"/>
+                            <constraint firstItem="qh5-iy-Fge" firstAttribute="centerX" secondItem="uE6-2o-4dx" secondAttribute="centerX" id="Bwh-Wh-fI2"/>
+                            <constraint firstItem="qh5-iy-Fge" firstAttribute="centerY" secondItem="2Sg-08-WeT" secondAttribute="centerY" constant="25" id="IQ1-M2-54u"/>
+                            <constraint firstItem="2Sg-08-WeT" firstAttribute="leading" secondItem="qh5-iy-Fge" secondAttribute="trailing" constant="8" id="OPN-uI-Qpk"/>
+                            <constraint firstItem="vCn-Te-NpZ" firstAttribute="top" secondItem="uE6-2o-4dx" secondAttribute="bottom" constant="8" id="R6S-TI-xOe"/>
+                            <constraint firstItem="uE6-2o-4dx" firstAttribute="top" secondItem="qh5-iy-Fge" secondAttribute="bottom" constant="8" id="RRQ-mc-Vec"/>
+                            <constraint firstItem="vCn-Te-NpZ" firstAttribute="leading" secondItem="gb0-Xh-ayb" secondAttribute="leadingMargin" constant="8" id="U4o-Yw-e6s"/>
+                            <constraint firstItem="0BU-cl-LEr" firstAttribute="top" secondItem="4dM-Pg-g0q" secondAttribute="bottom" constant="-20" id="VyY-Bo-I9x"/>
+                            <constraint firstItem="vbX-bI-Gli" firstAttribute="leading" secondItem="uE6-2o-4dx" secondAttribute="trailing" constant="8" id="Xcx-mO-lt3"/>
+                            <constraint firstItem="qh5-iy-Fge" firstAttribute="leading" secondItem="gb0-Xh-ayb" secondAttribute="leadingMargin" constant="8" id="ZGw-rl-d67"/>
+                            <constraint firstItem="vbX-bI-Gli" firstAttribute="baseline" secondItem="uE6-2o-4dx" secondAttribute="baseline" id="gJu-Ls-U4d"/>
+                            <constraint firstItem="brj-Vp-1XD" firstAttribute="leading" secondItem="2Sg-08-WeT" secondAttribute="leading" id="lgw-wc-qI0"/>
+                            <constraint firstItem="qh5-iy-Fge" firstAttribute="bottom" secondItem="6ml-E6-ZMG" secondAttribute="bottom" constant="10" id="mAO-v0-hXF"/>
+                            <constraint firstItem="vCn-Te-NpZ" firstAttribute="trailing" secondItem="gb0-Xh-ayb" secondAttribute="trailingMargin" constant="-8" id="otI-8M-21I"/>
+                            <constraint firstItem="brj-Vp-1XD" firstAttribute="top" secondItem="2Sg-08-WeT" secondAttribute="bottom" constant="8" id="u1t-yk-BAt"/>
+                            <constraint firstItem="6ml-E6-ZMG" firstAttribute="top" secondItem="4dM-Pg-g0q" secondAttribute="bottom" constant="-20" id="vue-FF-vWY"/>
+                            <constraint firstAttribute="trailing" secondItem="6ml-E6-ZMG" secondAttribute="trailing" id="y1P-dQ-UTY"/>
+                            <constraint firstItem="0BU-cl-LEr" firstAttribute="leading" secondItem="gb0-Xh-ayb" secondAttribute="leading" id="z1R-8c-tZw"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedTopBarMetrics"/>
+                    <connections>
+                        <outlet property="aboutLabel" destination="vCn-Te-NpZ" id="QOU-0U-DjX"/>
+                        <outlet property="coverImageView" destination="6ml-E6-ZMG" id="vbB-sS-lD6"/>
+                        <outlet property="nameLabel" destination="2Sg-08-WeT" id="IGI-ZO-qIS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eMh-jf-Tma" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="366" y="2874"/>
         </scene>
         <!--Conversation View Controller-->
         <scene sceneID="9Wr-pj-gUK">
@@ -442,11 +564,12 @@
                         <outlet property="avatarView" destination="uD7-V4-mF6" id="iA7-v4-S7S"/>
                         <outlet property="collectionView" destination="iVG-b4-OV1" id="NVJ-hJ-wo2"/>
                         <outlet property="nameLabel" destination="e0x-EU-7eq" id="DLz-9l-GuL"/>
+                        <segue destination="O0f-xd-Ps7" kind="show" identifier="DiscoverToProfile" id="C5X-g5-WmD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OaH-F1-uJP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1006" y="2816"/>
+            <point key="canvasLocation" x="1030" y="2874"/>
         </scene>
         <!--Me-->
         <scene sceneID="GiO-5i-rfP">
@@ -491,10 +614,15 @@
     </scenes>
     <resources>
         <image name="ic-back" width="17" height="23"/>
+        <image name="ic-back-white" width="10" height="23"/>
         <image name="ic-chats" width="32" height="32"/>
         <image name="ic-disclosure" width="11" height="29"/>
         <image name="ic-me" width="34" height="35"/>
+        <image name="sample-cover-image" width="579" height="214"/>
         <image name="sample-taylor-avatar" width="66" height="67"/>
         <image name="sample-taylor-avatar-square" width="167" height="168"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="C5X-g5-WmD"/>
+    </inferredMetricsTieBreakers>
 </document>
