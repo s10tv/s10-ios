@@ -13,13 +13,8 @@ import ReactiveCocoa
 import SwiftyJSON
 
 extension MeteorService {
-    func clearMessages() -> RACSignal {
-        var signals = [RACSignal]()
-        Message.all().fetch().each { item in
-            signals.append(self.meteor.call("/messages/remove", [["_id": item.documentID]]))
-        }
-
-        return RACSignal.merge(signals)
+    func clearUserData(userId: String) -> RACSignal {
+        return self.meteor.call("dev/user/remove", [userId])
     }
 
     func clearConnections() -> RACSignal {
@@ -66,7 +61,7 @@ extension MeteorService {
         ]])
     }
 
-    func connectWithNewUser(otherUserId: String) -> RACSignal {
+    func connectWithNewUser() -> RACSignal {
         return meteor.call("dev/user/connectWithNewUser", [])
     }
 
