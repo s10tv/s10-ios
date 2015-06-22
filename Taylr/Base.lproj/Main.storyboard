@@ -97,7 +97,7 @@
                                         <connections>
                                             <outlet property="avatarView" destination="OLv-LL-2Yz" id="P4K-c4-PQy"/>
                                             <outlet property="titleLabel" destination="7Ib-JK-1el" id="iTt-7q-d0l"/>
-                                            <segue destination="O0f-xd-Ps7" kind="show" identifier="DiscoverToProfile" id="Fwv-Pj-RXP"/>
+                                            <segue destination="O0f-xd-Ps7" kind="show" identifier="" id="Fwv-Pj-RXP"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -157,9 +157,13 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="4Uc-p6-gzK" customClass="UserAvatarView" customModule="Taylr" customModuleProvider="target">
                                                     <rect key="frame" x="20" y="10" width="61" height="61"/>
+                                                    <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="4Uc-p6-gzK" secondAttribute="height" multiplier="1:1" id="IGW-VC-XHN"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="fcv-0A-NsB" appends="YES" id="61s-iC-lVe"/>
+                                                    </connections>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylor Swift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="liE-Iz-QQI">
                                                     <rect key="frame" x="97" y="19" width="92" height="21"/>
@@ -217,11 +221,15 @@
                     <connections>
                         <outlet property="tableView" destination="4cg-hq-bZ8" id="YhK-na-cJu"/>
                         <segue destination="1Ro-gk-VhZ" kind="unwind" identifier="ChatsToDiscover" unwindAction="unwindToHome:" id="Fog-Yc-OF8"/>
-                        <segue destination="O0f-xd-Ps7" kind="show" identifier="ChatsToProfile" id="e1b-Yo-PaR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NWp-vJ-jcK" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="1Ro-gk-VhZ" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="fcv-0A-NsB">
+                    <connections>
+                        <segue destination="O0f-xd-Ps7" kind="show" id="5pS-f2-tIU"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1030" y="2032"/>
         </scene>
@@ -384,6 +392,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="Xhe-ik-k94" firstAttribute="top" secondItem="uD7-V4-mF6" secondAttribute="centerY" id="0S5-1z-60d"/>
                                             <constraint firstAttribute="bottom" secondItem="uD7-V4-mF6" secondAttribute="bottom" id="2L5-bQ-vVw"/>
@@ -395,6 +404,9 @@
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Xhe-ik-k94" secondAttribute="trailing" id="Yb4-HX-fRY"/>
                                             <constraint firstItem="e0x-EU-7eq" firstAttribute="leading" secondItem="uD7-V4-mF6" secondAttribute="trailing" constant="8" id="aG5-1e-iU4"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="314-8z-971" appends="YES" id="aI5-uL-5X0"/>
+                                        </connections>
                                     </view>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kth-9e-NAC" userLabel="Back">
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="70"/>
@@ -564,10 +576,14 @@
                         <outlet property="avatarView" destination="uD7-V4-mF6" id="iA7-v4-S7S"/>
                         <outlet property="collectionView" destination="iVG-b4-OV1" id="NVJ-hJ-wo2"/>
                         <outlet property="nameLabel" destination="e0x-EU-7eq" id="DLz-9l-GuL"/>
-                        <segue destination="O0f-xd-Ps7" kind="show" identifier="DiscoverToProfile" id="C5X-g5-WmD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OaH-F1-uJP" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="314-8z-971">
+                    <connections>
+                        <segue destination="O0f-xd-Ps7" kind="show" id="Gd9-HM-lnj"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1030" y="2874"/>
         </scene>
@@ -623,6 +639,6 @@
         <image name="sample-taylor-avatar-square" width="167" height="168"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="C5X-g5-WmD"/>
+        <segue reference="5pS-f2-tIU"/>
     </inferredMetricsTieBreakers>
 </document>

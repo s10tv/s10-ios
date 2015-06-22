@@ -50,6 +50,12 @@ class ConversationViewController : BaseViewController {
         super.viewWillDisappear(animated)
         navigationController?.navigationBarHidden = false
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let vc = segue.destinationViewController as? ProfileViewController {
+            vc.user = vm.recipient
+        }
+    }
 }
 
 extension ConversationViewController : UICollectionViewDataSource {
