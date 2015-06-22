@@ -19,7 +19,7 @@ public class Message: _Message {
     
     public var statusEnum: Status {
         get { return status.map { Status(rawValue: $0) ?? .Sending } ?? .Sending }
-        set(newValue) { status = statusEnum.rawValue }
+        set(newValue) { status = newValue.rawValue }
     }
     
     public override func awakeFromInsert() {

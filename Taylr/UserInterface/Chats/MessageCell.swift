@@ -22,7 +22,8 @@ class MessageCell : UICollectionViewCell {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
-    
+
+    private var displayLink: CADisplayLink!
     private var player: SCPlayer { return playerView.player }
     weak var delegate: MessageCellDelegate?
     var message: MessageViewModel? {
@@ -41,12 +42,16 @@ class MessageCell : UICollectionViewCell {
         playerView.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
         playerView.delegate = self
         player.delegate = self
+        displayLink = CADisplayLink(target: self, selector: "displayTick")
+        displayLink.frameInterval = 10
+        displayLink.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSRunLoopCommonModes)
         prepareForReuse()
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         message = nil
+        displayLink.paused = true
     }
     
     func restoreInfo() {
@@ -60,6 +65,20 @@ class MessageCell : UICollectionViewCell {
             $0.setHiddenAnimated(hidden: false, duration: 0, delay: 0)
             $0.setHiddenAnimated(hidden: true, duration: 0.5, delay: 2)
         }
+    }
+    
+    func cellWillAppear() {
+        playVideo()
+        displayLink.paused = false
+    }
+    
+    func cellDidDisappear() {
+        pauseVideo()
+        displayLink.paused = true
+    }
+    
+    func displayTick() {
+        statusLabel.text = message?.statusText
     }
     
     func playVideo() {

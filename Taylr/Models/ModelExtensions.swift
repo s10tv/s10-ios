@@ -26,6 +26,7 @@ extension User {
 
 extension Message {
     var outgoing: Bool { return sender!.isCurrentUser }
+    var incoming: Bool { return !outgoing }
 }
 
 extension Connection {

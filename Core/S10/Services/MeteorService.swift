@@ -188,11 +188,13 @@ public class MeteorService {
     
     // MARK: - Messages
     
-    public func openMessage(message: Message) -> RACSignal {
-        return meteor.call("message/open", [message]) {
+    public func openMessage(message: Message, expireDelay: Int = 30) -> RACSignal {
+        return meteor.call("message/open", [message, expireDelay]) {
+//            println("pre message \(message.documentID) status \(message.status) expire \(message.expiresAt)")
             message.statusEnum = .Opened
-            message.expiresAt = NSDate(timeIntervalSinceNow: 60)
+            message.expiresAt = NSDate(timeIntervalSinceNow: NSTimeInterval(expireDelay))
             message.save()
+//            println("post message \(message.documentID) status \(message.status) expire \(message.expiresAt)")
             return nil
         }
     }

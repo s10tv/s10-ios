@@ -8,16 +8,21 @@
 
 import Foundation
 
-public class ConversationViewModel {
+public class ConversationViewModel : NSObject {
     let frc: NSFetchedResultsController
     public private(set) var recipient: User
     public private(set) var messageVMs: [MessageViewModel] = []
     public var didReload: (([MessageViewModel]) -> ())?
+    public var reloadNeeded = false
     
     public init(connection: Connection) {
         recipient = connection.otherUser!
         frc = connection.fetchMessages(sorted: true)
+        super.init()
         frc.delegate = self
+//        listenForNotification(NSManagedObjectContextObjectsDidChangeNotification).subscribeNext { (obj) -> Void in
+//            println("Objects changing incontext")
+//        }
     }
     
     public func reloadData() {
@@ -34,7 +39,19 @@ public class ConversationViewModel {
 }
 
 extension ConversationViewModel : NSFetchedResultsControllerDelegate {
+    public func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        switch type {
+            case .Update:
+                break
+        default:
+            reloadNeeded = true
+        }
+    }
     public func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        reloadData()
+        assert(NSThread.isMainThread(), "Main only")
+        if reloadNeeded {
+            reloadData()
+        }
+        reloadNeeded = false
     }
 }

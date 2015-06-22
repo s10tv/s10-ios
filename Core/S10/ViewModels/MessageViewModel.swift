@@ -17,20 +17,22 @@ public class MessageViewModel {
         return Formatters.formatRelativeDate(createdAt!)
     }
     public var statusText: String {
+        status = message?.statusEnum // Massive hack, need pattern for propagating change
         switch status! {
         case .Sending: return "sending..."
         case .Sent: return "sent"
         case .Delivered: return "delivered"
         case .Opened:
+            expiresAt = message?.expiresAt // Pretty hacky
             let seconds = Int(ceil(expiresAt!.timeIntervalSinceNow))
             return "opened. expires in \(seconds) seconds"
         case .Expired: return "expired"
         }
     }
     
-    let expiresAt: NSDate?
+    var expiresAt: NSDate?
     let createdAt: NSDate?
-    let status: Message.Status?
+    var status: Message.Status?
     
     public init(message: Message) {
         self.message = message
