@@ -17,12 +17,7 @@ class DiscoverViewModel {
     
     init() {
         frc = Candidate.sorted(by: CandidateAttributes.score.rawValue, ascending: false).frc()
-        frc.performFetch(nil)
         candidates = frc.dynSections[0].map { (o, _) in o as! Candidate }
-    }
-    
-    func itemAtIndexPath(indexPath: NSIndexPath) -> Candidate {
-        return candidates[indexPath.row]
     }
     
     func loadNextPage() {

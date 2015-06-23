@@ -9,48 +9,14 @@
 import Foundation
 import CoreData
 import Core
+import Bond
 
-class ChatsViewModel : NSObject {
+class ChatsViewModel {
     private let frc : NSFetchedResultsController
-    weak var tableView : UITableView?
+    let connections: DynamicArray<Connection>
     
-    override init() {
+    init() {
         frc = Connection.sorted(by: ConnectionAttributes.updatedAt.rawValue, ascending: false).frc()
-        super.init()
-        frc.delegate = self
-        frc.performFetch(nil)
+        connections = frc.dynSections[0].map { (o, _) in o as! Connection }
     }
-    
-    func itemAtIndexPath(indexPath: NSIndexPath) -> Connection? {
-        return frc.objectAtIndexPath(indexPath) as? Connection
-    }
-    
-    func bindTableView(tableView: UITableView) {
-        self.tableView = tableView
-        tableView.dataSource = self
-        tableView.delegate = self
-    }
-}
-
-extension ChatsViewModel : NSFetchedResultsControllerDelegate {
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        tableView?.reloadData()
-    }
-}
-
-extension ChatsViewModel : UITableViewDataSource {
-
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return frc.fetchedObjects?.count ?? 0
-    }
-    
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("ConnectionCell", forIndexPath: indexPath) as! ConnectionCell
-        cell.connection = frc.fetchedObjects?[indexPath.row] as? Connection
-        return cell
-    }
-}
-
-extension ChatsViewModel : UITableViewDelegate {
-    
 }

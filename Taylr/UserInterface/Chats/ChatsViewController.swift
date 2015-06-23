@@ -8,15 +8,24 @@
 
 import Foundation
 import Core
+import Bond
 
 class ChatsViewController : BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var chatsVM : ChatsViewModel!
+    var dataSourceBond: UITableViewDataSourceBond<UITableViewCell>!
     
     override func viewDidLoad() {
+        super.viewDidLoad()
+        dataSourceBond = UITableViewDataSourceBond(tableView: tableView, disableAnimation: false)
         chatsVM = ChatsViewModel()
-        chatsVM.bindTableView(tableView)
+        chatsVM.connections.map { [unowned self] (connection, index) -> UITableViewCell in
+            let cell = self.tableView.dequeueReusableCellWithIdentifier("ConnectionCell",
+                forIndexPath: NSIndexPath(forRow: index, inSection: 0)) as! ConnectionCell
+            cell.connection = connection
+            return cell
+        } ->> dataSourceBond
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -24,8 +33,8 @@ class ChatsViewController : BaseViewController {
             vc.user = ((sender as! UIGestureRecognizer).view as! UserAvatarView).user
         }
         if let vc = segue.destinationViewController as? ConversationViewController {
-            let conn = chatsVM.itemAtIndexPath(tableView.indexPathForSelectedRow()!)
-            vc.vm = ConversationViewModel(connection: conn!)
+            let conn = chatsVM.connections[tableView.indexPathForSelectedRow()!.row]
+            vc.vm = ConversationViewModel(connection: conn)
         }
     }
     

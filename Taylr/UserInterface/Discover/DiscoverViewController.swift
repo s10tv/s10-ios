@@ -20,23 +20,15 @@ class DiscoverViewController : BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        collectionView.delegate = self
-//        collectionView.dataSource = self
         let layout = CHTCollectionViewWaterfallLayout()
         layout.minimumColumnSpacing = 5
         layout.minimumInteritemSpacing = 5
         layout.sectionInset = UIEdgeInsets(inset: 5)
-        
         collectionView.collectionViewLayout = layout
+        collectionView.delegate = self
         
-        discoverVM = DiscoverViewModel()
-//        discoverVM.bindCollectionView(collectionView)
-        Meteor.subscriptions.discover.signal.deliverOnMainThread().subscribeCompleted {
-            self.discoverVM.loadNextPage()
-//            self.collectionView.reloadData()
-        }
         dataSourceBond = UICollectionViewDataSourceBond(collectionView: collectionView)
-
+        discoverVM = DiscoverViewModel()
         discoverVM.candidates.map { [unowned self] (candidate, index) -> UICollectionViewCell in
             let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("CandidateCell",
                 forIndexPath: NSIndexPath(forItem: index, inSection: 0)) as! CandidateCell
@@ -60,7 +52,7 @@ class DiscoverViewController : BaseViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let profileVC = segue.destinationViewController as? ProfileViewController,
             let indexPath = collectionView.indexPathsForSelectedItems().first as? NSIndexPath,
-            let user = discoverVM.itemAtIndexPath(indexPath).user {
+            let user = discoverVM.candidates[indexPath.row].user {
             profileVC.user = user
         }
     }
