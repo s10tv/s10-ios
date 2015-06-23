@@ -9,6 +9,7 @@
 import Foundation
 import Core
 import SDWebImage
+import Bond
 
 class MeViewController : BaseViewController {
     
@@ -16,12 +17,16 @@ class MeViewController : BaseViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     
+    var currentUser: User!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let user = Meteor.user
-        avatarView.sd_setImageWithURL(user?.avatarURL)
-        nameLabel.text = user?.displayName
-//        usernameLabel.text = nil
+        
+        currentUser = Meteor.user
+        if let currentUser = currentUser {
+            currentUser.avatarURL.map { Optional($0) } ->> avatarView.dynImageURL
+            currentUser.displayName ->> nameLabel
+        }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

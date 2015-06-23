@@ -64,9 +64,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
         Meteor.subscriptions.userData.signal.delay(0.5).deliverOnMainThread().subscribeCompleted {
             if let currentUser = User.currentUser() {
                 UD[.sMeteorUserId] ?= currentUser.documentID!
-                UD[.sUserDisplayName] = currentUser.displayName
+                UD[.sUserDisplayName] = currentUser.displayName.value
                 Log.setUserId(currentUser.documentID!)
-                Log.setUserName(currentUser.displayName)
+                Log.setUserName(currentUser.displayName.value)
             }
         }
         Meteor.subscriptions.settings.signal.delay(0.1).deliverOnMainThread().subscribeCompleted {

@@ -8,6 +8,7 @@
 
 import Foundation
 import Core
+import Bond
 
 class ProfileMainCell : UITableViewCell {
     @IBOutlet weak var coverImageHeight: NSLayoutConstraint!
@@ -19,15 +20,17 @@ class ProfileMainCell : UITableViewCell {
     @IBOutlet weak var activityLabel: UILabel!
     @IBOutlet weak var aboutLabel: DesignableLabel!
     
-    var user: User? {
+    var user: User! {
         didSet {
-//            coverImageView.image = 
-            avatarView.user = user
-            nameLabel.text = user?.displayName
-//            usernameLabel.text 
-//            distanceLabel.text
-//            activityLabel.text
-            aboutLabel.rawText = user?.about
+            if let user = user {
+//                coverImageView.image =
+//                usernameLabel.text
+//                distanceLabel.text
+//                activityLabel.text
+                avatarView.user = user
+                user.displayName ->> nameLabel
+                aboutLabel.rawText = user.about // TODO: Add Dynamic Bond here
+            }
         }
     }
     

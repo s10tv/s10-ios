@@ -8,6 +8,7 @@
 
 import Foundation
 import Core
+import Bond
 
 class UserAvatarView : UIImageView {
     private var fadeLayer : CAGradientLayer!
@@ -28,9 +29,10 @@ class UserAvatarView : UIImageView {
     }
     
     var user : User? { didSet {
-        if let photoURL = user?.avatarURL {
-            sd_setImageWithURL(photoURL)
+        if let user = user {
+            user.avatarURL.map { Optional($0) } ->> dynImageURL
         } else {
+            unbindDynImageURL()
             image = UIImage(R.TaylrAssets.girlPlaceholder)
         }
     } }

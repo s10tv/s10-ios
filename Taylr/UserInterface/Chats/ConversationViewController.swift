@@ -9,6 +9,7 @@
 import Foundation
 import Core
 import PKHUD
+import Bond
 
 class ConversationViewController : BaseViewController {
     
@@ -43,7 +44,7 @@ class ConversationViewController : BaseViewController {
         navigationController?.navigationBarHidden = true
         vm.reloadData()
         avatarView.user = vm.recipient
-        nameLabel.text = vm.recipient.displayName
+        vm.recipient.displayName ->> nameLabel
     }
     
     override func viewWillDisappear(animated: Bool) {

@@ -29,6 +29,7 @@
 		EA4756FE1B38F901002071D7 /* Bond+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4756FD1B38F901002071D7 /* Bond+CoreData.swift */; };
 		EA4757031B391F56002071D7 /* ChatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4757011B391F56002071D7 /* ChatsViewModel.swift */; };
 		EA4757041B391F56002071D7 /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4757021B391F56002071D7 /* DiscoverViewModel.swift */; };
+		EA47570A1B3925FB002071D7 /* Bond+SDWebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4757091B3925FB002071D7 /* Bond+SDWebImage.swift */; };
 		EA49286E1ADF291100118639 /* UpgradeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA49286D1ADF291100118639 /* UpgradeService.swift */; };
 		EA4F51851AE153880060405E /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4F51841AE153880060405E /* SettingsViewModel.swift */; };
 		EA5B740B1B30F7BB008E5CBC /* TestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5B740A1B30F7BB008E5CBC /* TestAppDelegate.swift */; };
@@ -243,6 +244,7 @@
 		EA4756FD1B38F901002071D7 /* Bond+CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bond+CoreData.swift"; sourceTree = "<group>"; };
 		EA4757011B391F56002071D7 /* ChatsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewModel.swift; sourceTree = "<group>"; };
 		EA4757021B391F56002071D7 /* DiscoverViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
+		EA4757091B3925FB002071D7 /* Bond+SDWebImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bond+SDWebImage.swift"; sourceTree = "<group>"; };
 		EA49286D1ADF291100118639 /* UpgradeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeService.swift; sourceTree = "<group>"; };
 		EA4F51841AE153880060405E /* SettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		EA5B74061B30F7BB008E5CBC /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -478,6 +480,7 @@
 				EA0FC92E1A87DE5800D62625 /* ViewModels */,
 				EAD7B2A91A9F0BC100FA6740 /* Views */,
 				EA72FB261AD1B7BF009F853F /* Transitions */,
+				EA4757091B3925FB002071D7 /* Bond+SDWebImage.swift */,
 				EA396FEF1AB52BF8009EB60B /* PageViewController.swift */,
 				EA409D381A8C681A00988B8B /* FacebookExtension.swift */,
 				EA7AA3641AA25D21003383BE /* ResourceExtension.swift */,
@@ -1466,6 +1469,7 @@
 				EA409D391A8C681A00988B8B /* FacebookExtension.swift in Sources */,
 				EAA56F901B2B32E500DE3936 /* DiscoverViewController.swift in Sources */,
 				EA0FC9411A87DE5800D62625 /* ArrayViewModel.swift in Sources */,
+				EA47570A1B3925FB002071D7 /* Bond+SDWebImage.swift in Sources */,
 				EAA56F951B2B32E500DE3936 /* SandView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

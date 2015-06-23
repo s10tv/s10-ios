@@ -18,13 +18,16 @@ class CandidateCell : UICollectionViewCell {
     
     var candidate: Candidate? {
         didSet {
-            avatarView.sd_setImageWithURL(candidate?.user?.dynAvatarURL.value)
-            (candidate?.user?.dynDisplayName).map { $0 ->> self.titleLabel }
+            if let user = candidate?.user {
+                user.avatarURL.map { Optional($0) } ->> avatarView.dynImageURL
+                user.displayName ->> titleLabel
+            }
         }
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        avatarView.unbindDynImageURL()
         titleLabel.designatedBond.unbindAll()
     }
     

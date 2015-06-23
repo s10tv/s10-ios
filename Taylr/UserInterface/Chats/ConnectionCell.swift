@@ -10,6 +10,7 @@ import Foundation
 import SDWebImage
 import DateTools
 import Core
+import Bond
 
 class ConnectionCell : UITableViewCell {
     
@@ -19,20 +20,16 @@ class ConnectionCell : UITableViewCell {
     
     var connection : Connection? {
         didSet {
-            reloadData()
+            if let user = connection?.otherUser {
+                avatarView.user = user
+                user.displayName ->> nameLabel
+            }
         }
     }
-    
-    func reloadData() {
-        avatarView.user = connection?.otherUser
-        
-        // TODO: Can use connectionViewModel of sorts here
-        nameLabel.text = connection?.otherUser?.displayName
-    }
-    
     
     override func prepareForReuse() {
         super.prepareForReuse()
         avatarView.sd_cancelCurrentImageLoad()
+        nameLabel.designatedBond.unbindAll()
     }
 }
