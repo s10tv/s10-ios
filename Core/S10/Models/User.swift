@@ -8,6 +8,7 @@
 
 import Foundation
 import Meteor
+import Bond
 
 @objc(User)
 public class User: _User {
@@ -16,6 +17,24 @@ public class User: _User {
         case Male = "male"
         case Female = "female"
     }
+    
+    
+    public private(set) lazy var dynAvatarURL: Dynamic<NSURL> = {
+        return dynamicObservableFor(self, keyPath: UserAttributes.avatarUrl.rawValue, defaultValue: "").map { NSURL($0) }
+    }()
+    
+    public private(set) lazy var dynFirstName: Dynamic<String> = {
+        return dynamicObservableFor(self, keyPath: UserAttributes.firstName.rawValue, defaultValue: "")
+    }()
+    
+    public private(set) lazy var dynLastName: Dynamic<String> = {
+        return dynamicObservableFor(self, keyPath: UserAttributes.lastName.rawValue, defaultValue: "")
+    }()
+    
+    public private(set) lazy var dynDisplayName: Dynamic<String> = {
+        return reduce(self.dynFirstName, self.dynLastName) { "\($0) \($1)".nonBlank() ?? "" }
+    }()
+    
     
     public var avatarURL : NSURL? {
         return avatarUrl.map { NSURL($0) } ?? nil

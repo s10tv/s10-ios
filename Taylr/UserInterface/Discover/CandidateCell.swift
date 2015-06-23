@@ -9,6 +9,7 @@
 import Foundation
 import SDWebImage
 import Core
+import Bond
 
 class CandidateCell : UICollectionViewCell {
     
@@ -17,8 +18,8 @@ class CandidateCell : UICollectionViewCell {
     
     var candidate: Candidate? {
         didSet {
-            avatarView.sd_setImageWithURL(candidate?.user?.avatarURL)
-            titleLabel.text = candidate?.user?.displayName
+            avatarView.sd_setImageWithURL(candidate?.user?.dynAvatarURL.value)
+            (candidate?.user?.dynDisplayName).map { $0 ->> self.titleLabel }
         }
     }
     
