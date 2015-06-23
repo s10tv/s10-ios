@@ -103,6 +103,9 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="delegate" destination="5Q6-Kt-6sh" id="LoQ-Jd-Bye"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" red="0.88225674629211426" green="0.88240832090377808" blue="0.88224714994430542" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -585,6 +588,9 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="delegate" destination="kBv-HD-oBL" id="4Aq-Md-deY"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -731,6 +737,6 @@
         <image name="sample-taylor-avatar-square" width="167" height="168"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="zOU-zf-DhR"/>
+        <segue reference="Fwv-Pj-RXP"/>
     </inferredMetricsTieBreakers>
 </document>

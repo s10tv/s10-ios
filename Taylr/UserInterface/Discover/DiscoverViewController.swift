@@ -14,6 +14,7 @@ import Bond
 class DiscoverViewController : BaseViewController {
     
     @IBOutlet weak var collectionView : UICollectionView!
+    
     var discoverVM : DiscoverViewModel!
     var dataSourceBond: UICollectionViewDataSourceBond<UICollectionViewCell>!
     
@@ -25,7 +26,6 @@ class DiscoverViewController : BaseViewController {
         layout.minimumInteritemSpacing = 5
         layout.sectionInset = UIEdgeInsets(inset: 5)
         collectionView.collectionViewLayout = layout
-        collectionView.delegate = self
         
         dataSourceBond = UICollectionViewDataSourceBond(collectionView: collectionView)
         discoverVM = DiscoverViewModel()
