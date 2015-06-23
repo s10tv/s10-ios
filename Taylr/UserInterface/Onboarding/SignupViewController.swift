@@ -10,6 +10,7 @@ import Foundation
 import PKHUD
 import ReactiveCocoa
 import Meteor
+import Core
 
 class SignupViewController : BaseViewController {
 

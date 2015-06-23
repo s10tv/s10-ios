@@ -8,7 +8,7 @@
 
 import UIKit
 
-class PanInteractor : UIPercentDrivenInteractiveTransition {
+public class PanInteractor : UIPercentDrivenInteractiveTransition {
     let panGesture: UIPanGestureRecognizer
     let panSelector : Selector = "handlePanGesture:"
     let threshold: CGFloat = 0.25
@@ -25,7 +25,7 @@ class PanInteractor : UIPercentDrivenInteractiveTransition {
         panGesture.removeTarget(self, action: panSelector)
     }
     
-    override func startInteractiveTransition(transitionContext: UIViewControllerContextTransitioning) {
+    public override func startInteractiveTransition(transitionContext: UIViewControllerContextTransitioning) {
         containerView = transitionContext.containerView()
         super.startInteractiveTransition(transitionContext)
     }

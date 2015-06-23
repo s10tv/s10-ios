@@ -9,19 +9,19 @@
 import Foundation
 import ReactiveCocoa
 
-class ScrollTransition : ViewControllerTransition {
-    enum Direction {
+public class ScrollTransition : ViewControllerTransition {
+    public enum Direction {
         case RightToLeft, LeftToRight
     }
     let direction : Direction
     
-    init(fromVC: UIViewController, toVC: UIViewController, direction: Direction, panGesture: UIPanGestureRecognizer?) {
+    public init(fromVC: UIViewController, toVC: UIViewController, direction: Direction, panGesture: UIPanGestureRecognizer?) {
         self.direction = direction
         super.init(fromVC: fromVC, toVC: toVC, interactor: panGesture.map { PanInteractor($0) })
         duration = 0.3
     }
     
-    override func animate() -> RACSignal {
+    public override func animate() -> RACSignal {
         var leftFrame = containerView.bounds
         leftFrame.origin.x -= leftFrame.width
         var centerFrame = containerView.bounds

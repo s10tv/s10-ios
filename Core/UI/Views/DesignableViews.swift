@@ -8,9 +8,9 @@
 
 import UIKit
 
-@IBDesignable class NibDesignableView : BaseView {
+@IBDesignable public class NibDesignableView : BaseView {
     
-    override func commonInit() {
+    override public func commonInit() {
         let bundle = NSBundle(forClass: self.dynamicType)
         let nib = UINib(nibName: self.nibName(), bundle: bundle)
         let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
@@ -25,45 +25,45 @@ import UIKit
 }
 
 
-@IBDesignable class DesignableLabel : UILabel {
+@IBDesignable public class DesignableLabel : UILabel {
 
-    @IBInspectable var fontSize: CGFloat = 13.0
-    @IBInspectable var fontName: String = "TransatTextMedium"
-    @IBInspectable var fontKern: CGFloat = 0
+    @IBInspectable public var fontSize: CGFloat = 13.0
+    @IBInspectable public var fontName: String = "TransatTextMedium"
+    @IBInspectable public var fontKern: CGFloat = 0
     
-    var rawText : String! {
+    public var rawText : String! {
         get { return attributedText.string }
         set { attributedText = attributedText.replace(text: newValue ?? "") }
     }
 
-    override func awakeFromNib() {
+    public override func awakeFromNib() {
         super.awakeFromNib()
         let font = UIFont(name: fontName, size: fontSize)!
         attributedText = attributedText.replace(font: font, kern: fontKern)
     }
 }
 
-@IBDesignable class DesignableButton : UIButton {
-    @IBInspectable var fontSize: CGFloat = 13.0
-    @IBInspectable var fontName: String = "TransatTextStandard"
-    @IBInspectable var fontKern: CGFloat = 0
+@IBDesignable public class DesignableButton : UIButton {
+    @IBInspectable public var fontSize: CGFloat = 13.0
+    @IBInspectable public var fontName: String = "TransatTextStandard"
+    @IBInspectable public var fontKern: CGFloat = 0
     
-    var attributedText : NSAttributedString? {
+    public var attributedText : NSAttributedString? {
         get { return attributedTitleForState(.Normal) }
         set { setAttributedTitle(newValue, forState: .Normal) }
     }
     
-    var rawText : String? {
+    public var rawText : String? {
         get { return attributedText?.string }
         set { attributedText = attributedText?.replace(text: newValue ?? "") }
     }
     
-    var text : String? {
+    public var text : String? {
         get { return titleForState(.Normal) }
         set { setTitle(newValue, forState: .Normal) }
     }
     
-    override func awakeFromNib() {
+    public override func awakeFromNib() {
         super.awakeFromNib()
         let font = UIFont(name: fontName, size: fontSize)!
         attributedText = attributedText?.replace(font: font, kern: fontKern)

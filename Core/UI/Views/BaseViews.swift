@@ -9,7 +9,7 @@
 import UIKit
 
 extension UIView {
-    @IBInspectable var cornerRadius: CGFloat {
+    @IBInspectable public var cornerRadius: CGFloat {
         get { return layer.cornerRadius }
         set {
             layer.cornerRadius = newValue
@@ -17,46 +17,46 @@ extension UIView {
         }
     }
     
-    @IBInspectable var borderWidth: CGFloat {
+    @IBInspectable public var borderWidth: CGFloat {
         get { return layer.borderWidth }
         set { layer.borderWidth = newValue }
     }
     
-    @IBInspectable var borderColor: UIColor? {
+    @IBInspectable public var borderColor: UIColor? {
         get { return UIColor(CGColor: layer.borderColor) }
         set { layer.borderColor = newValue?.CGColor }
     }
     
-    @IBInspectable var shadowColor: UIColor? {
+    @IBInspectable public var shadowColor: UIColor? {
         get { return UIColor(CGColor: layer.shadowColor) }
         set { layer.shadowColor = newValue?.CGColor }
     }
 }
 
-class BaseView : UIView {
+public class BaseView : UIView {
 
-    convenience init() {
+    public convenience init() {
         self.init(frame: CGRectZero)
     }
     
-    override init(frame: CGRect) {
+    public override init(frame: CGRect) {
         super.init(frame: frame)
         commonInit()
     }
     
-    required init(coder aDecoder: NSCoder) {
+    public required init(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
     
-    func commonInit() { }
+    public func commonInit() { }
 }
 
-class TransparentView : BaseView {
+public class TransparentView : BaseView {
     
-    @IBInspectable var passThroughTouchOnSelf : Bool = true
+    @IBInspectable public var passThroughTouchOnSelf : Bool = true
     
-    override func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool {
+    public override func pointInside(point: CGPoint, withEvent event: UIEvent?) -> Bool {
         if super.pointInside(point, withEvent: event) {
             if !passThroughTouchOnSelf {
                 return true
@@ -71,14 +71,14 @@ class TransparentView : BaseView {
         return false
     }
     
-    override func awakeFromNib() {
+    public override func awakeFromNib() {
         super.awakeFromNib()
         backgroundColor = nil
     }
 }
 
-class IntrinsicSizeCollectionView : UICollectionView {
-    override var bounds: CGRect {
+public class IntrinsicSizeCollectionView : UICollectionView {
+    public override var bounds: CGRect {
         didSet {
             if oldValue != bounds {
                 collectionViewLayout.invalidateLayout()
@@ -87,7 +87,7 @@ class IntrinsicSizeCollectionView : UICollectionView {
         }
     }
     
-    override func intrinsicContentSize() -> CGSize {
+    public override func intrinsicContentSize() -> CGSize {
         return collectionViewLayout.collectionViewContentSize()
     }
 }
@@ -95,14 +95,14 @@ class IntrinsicSizeCollectionView : UICollectionView {
 // NOTE: ContentScrollView sets the dimension of the content to be the same as the dimension of the
 // scroll view in either vertical or horizontal dimension. The first subview is assumed to be the 
 // content view which will have the same dimension in specified direction as the scroll view
-class OneDScrollView : UIScrollView {
-    @IBInspectable var verticalMode : Bool = true {
+public class OneDScrollView : UIScrollView {
+    @IBInspectable public var verticalMode : Bool = true {
         didSet { setNeedsUpdateConstraints() }
     }
     
     private var dimensionConstraint : NSLayoutConstraint?
     
-    override func updateConstraints() {
+    public override func updateConstraints() {
         if let constraint = dimensionConstraint {
             removeConstraint(constraint)
         }

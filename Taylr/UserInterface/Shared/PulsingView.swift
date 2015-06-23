@@ -8,6 +8,7 @@
 
 import Foundation
 import Cartography
+import Core
 
 class PulsingView : BaseView {
     let sublayer = CALayer()

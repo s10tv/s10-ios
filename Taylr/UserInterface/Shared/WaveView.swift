@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Core
 
 @IBDesignable class WaveView : BaseView {
     private let outlineLayer = CAShapeLayer()

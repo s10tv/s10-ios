@@ -9,21 +9,21 @@
 import UIKit
 import ReactiveCocoa
 
-class ViewControllerTransition : NSObject {
-    let fromVC : UIViewController
-    let toVC : UIViewController
-    var context : UIViewControllerContextTransitioning!
-    var cancelled : Bool { return context.transitionWasCancelled() }
-    var duration : NSTimeInterval = 0.6
-    var interactor : UIViewControllerInteractiveTransitioning?
+public class ViewControllerTransition : NSObject {
+    public let fromVC : UIViewController
+    public let toVC : UIViewController
+    public var context : UIViewControllerContextTransitioning!
+    public var cancelled : Bool { return context.transitionWasCancelled() }
+    public var duration : NSTimeInterval = 0.6
+    public var interactor : UIViewControllerInteractiveTransitioning?
     
-    var containerView : UIView {
+    public var containerView : UIView {
         return context.containerView()
     }
-    var fromView : UIView? {
+    public var fromView : UIView? {
         return context.viewForKey(UITransitionContextFromViewKey)
     }
-    var toView : UIView? {
+    public var toView : UIView? {
         return context.viewForKey(UITransitionContextToViewKey)
     }
     
@@ -36,10 +36,10 @@ class ViewControllerTransition : NSObject {
     }
     
     // To be overwritten by subclass
-    func setup() {
+    public func setup() {
     }
 
-    func animate() -> RACSignal {
+    public func animate() -> RACSignal {
         return RACSignal.empty()
     }
     
@@ -53,12 +53,12 @@ class ViewControllerTransition : NSObject {
 }
 
 extension ViewControllerTransition : UIViewControllerAnimatedTransitioning {
-    func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
+    public func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
         context = transitionContext
         return duration
     }
     
-    func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
+    public func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         context = transitionContext
         animate().subscribeCompleted {
             self.completeTransition()
