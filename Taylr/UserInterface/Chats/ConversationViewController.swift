@@ -19,18 +19,34 @@ class ConversationViewController : BaseViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var producer: ProducerViewController!
-    var vm: ConversationViewModel!
+    var viewModel: ConversationViewModel!
+    var dataSourceBond: UICollectionViewDataSourceBond<UICollectionViewCell>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        collectionView.dataSource = self
         collectionView.delegate = self
+        
         producer = UIStoryboard(name: "AVKit", bundle: nil).instantiateInitialViewController() as! ProducerViewController
         producer.producerDelegate = self
-        vm.didReload = { [weak self] _ in
-            self?.collectionView.reloadData()
-            return
+        
+        let messagesSection = viewModel.messageViewModels.map { [unowned self] (message, index) -> UICollectionViewCell in
+            let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("MessageCell",
+                forIndexPath: NSIndexPath(forItem: index, inSection: 0)) as! MessageCell
+            cell.message = message
+            cell.delegate = self
+            return cell
         }
+        let cameraSection = DynamicArray([producer]).map { [unowned self] (producer, index) -> UICollectionViewCell in
+            let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("ProducerCell",
+                forIndexPath: NSIndexPath(forItem: index, inSection: 1)) as! ProducerCell
+            self.addChildViewController(producer)
+            cell.containerView.addSubview(producer.view)
+            producer.view.makeEdgesEqualTo(cell.containerView)
+            producer.didMoveToParentViewController(self)
+            return cell
+        }
+        dataSourceBond = UICollectionViewDataSourceBond(collectionView: collectionView)
+        DynamicArray([messagesSection, cameraSection]) ->> dataSourceBond
     }
     
     override func viewDidLayoutSubviews() {
@@ -42,9 +58,8 @@ class ConversationViewController : BaseViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBarHidden = true
-        vm.reloadData()
-        avatarView.user = vm.recipient
-        vm.recipient.displayName ->> nameLabel
+        avatarView.user = viewModel.recipient
+        viewModel.recipient.displayName ->> nameLabel
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -54,29 +69,7 @@ class ConversationViewController : BaseViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ProfileViewController {
-            vc.user = vm.recipient
-        }
-    }
-}
-
-extension ConversationViewController : UICollectionViewDataSource {
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return vm.messageVMs.count + 1
-    }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        if indexPath.row < vm.messageVMs.count {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MessageCell", forIndexPath: indexPath) as! MessageCell
-            cell.message = vm.messageVMs[indexPath.row]
-            cell.delegate = self
-            return cell
-        } else {
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier("ProducerCell", forIndexPath: indexPath) as! ProducerCell
-            addChildViewController(producer)
-            cell.containerView.addSubview(producer.view)
-            producer.view.makeEdgesEqualTo(cell.containerView)
-            producer.didMoveToParentViewController(self)
-            return cell
+            vc.user = viewModel.recipient
         }
     }
 }
@@ -106,7 +99,7 @@ extension ConversationViewController : UICollectionViewDelegate {
 
 extension ConversationViewController : MessageCellDelegate {
     func messageCell(cell: MessageCell, didPlayMessage message: MessageViewModel) {
-        if let index = vm.indexOfMessage(message) {
+        if let index = viewModel.indexOfMessage(message) {
             let newPath = NSIndexPath(forRow: index + 1, inSection: 0)
             collectionView.scrollToItemAtIndexPath(newPath, atScrollPosition: .CenteredVertically, animated: true)
         }
@@ -116,7 +109,7 @@ extension ConversationViewController : MessageCellDelegate {
 extension ConversationViewController : ProducerDelegate {
     func producer(producer: ProducerViewController, didProduceVideo url: NSURL) {
         Log.info("I got a video \(url)")
-        Globals.videoService.sendVideoMessage(vm.recipient.connection()!,
+        Globals.videoService.sendVideoMessage(viewModel.recipient.connection()!,
             localVideoURL: url)
         PKHUD.hide(animated: false)
     }

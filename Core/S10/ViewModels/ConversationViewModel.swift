@@ -7,51 +7,20 @@
 //
 
 import Foundation
+import Bond
 
-public class ConversationViewModel : NSObject {
-    let frc: NSFetchedResultsController
+public class ConversationViewModel {
+    private let frc: NSFetchedResultsController
+    public let messageViewModels: DynamicArray<MessageViewModel>
     public private(set) var recipient: User
-    public private(set) var messageVMs: [MessageViewModel] = []
-    public var didReload: (([MessageViewModel]) -> ())?
-    public var reloadNeeded = false
     
     public init(connection: Connection) {
         recipient = connection.otherUser!
         frc = connection.fetchMessages(sorted: true)
-        super.init()
-        frc.delegate = self
-//        listenForNotification(NSManagedObjectContextObjectsDidChangeNotification).subscribeNext { (obj) -> Void in
-//            println("Objects changing incontext")
-//        }
-    }
-    
-    public func reloadData() {
-        messageVMs = frc.fetchObjects().map {
-            MessageViewModel(message: $0 as! Message)
-        }
-        messageVMs.sort { $0.isOrderedBefore($1) }
-        didReload?(messageVMs)
+        messageViewModels = frc.dynSections[0].map { (o, _) in MessageViewModel(message: o as! Message) }
     }
     
     public func indexOfMessage(message: MessageViewModel) -> Int? {
-        return find(messageVMs) { $0 === message }
-    }
-}
-
-extension ConversationViewModel : NSFetchedResultsControllerDelegate {
-    public func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
-        switch type {
-            case .Update:
-                break
-        default:
-            reloadNeeded = true
-        }
-    }
-    public func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        assert(NSThread.isMainThread(), "Main only")
-        if reloadNeeded {
-            reloadData()
-        }
-        reloadNeeded = false
+        return find(messageViewModels.value) { $0 === message }
     }
 }

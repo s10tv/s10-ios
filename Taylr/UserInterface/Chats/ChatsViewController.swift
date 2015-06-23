@@ -34,7 +34,7 @@ class ChatsViewController : BaseViewController {
         }
         if let vc = segue.destinationViewController as? ConversationViewController {
             let conn = chatsVM.connections[tableView.indexPathForSelectedRow()!.row]
-            vc.vm = ConversationViewModel(connection: conn)
+            vc.viewModel = ConversationViewModel(connection: conn)
         }
     }
     
