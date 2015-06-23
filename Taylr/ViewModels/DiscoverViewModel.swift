@@ -9,43 +9,22 @@
 import Foundation
 import CoreData
 import Core
+import Bond
 
-class DiscoverViewModel : NSObject {
-    let frc : NSFetchedResultsController
-    weak var collectionView : UICollectionView?
+class DiscoverViewModel {
+    private let frc: NSFetchedResultsController
+    let sections: DynamicArray<DynamicArray<NSManagedObject>>
     
-    override init() {
+    init() {
         frc = Candidate.sorted(by: CandidateAttributes.score.rawValue, ascending: false).frc()
-        super.init()
-        frc.delegate = self
-
+        frc.performFetch(nil)
+        sections = frc.dynSections
     }
     
-    func bindCollectionView(collectionView: UICollectionView) {
-        self.collectionView = collectionView
-//        collectionView.dataSource = self
-//        collectionView.delegate = self
-    }
-}
-
-extension DiscoverViewModel : NSFetchedResultsControllerDelegate {
-    func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        collectionView?.reloadData()
-    }
-}
-
-extension DiscoverViewModel : UICollectionViewDataSource {
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return frc.fetchedObjects?.count ?? 0
+    func itemAtIndexPath(indexPath: NSIndexPath) -> Candidate {
+        return sections[indexPath.section][indexPath.row] as! Candidate
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CandidateCell", forIndexPath: indexPath) as! CandidateCell
-        cell.candidate = frc.objectAtIndexPath(indexPath) as? Candidate
-        return cell
+    func loadNextPage() {
     }
-}
-
-extension DiscoverViewModel : UICollectionViewDelegate {
-    
 }

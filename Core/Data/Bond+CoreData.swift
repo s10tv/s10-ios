@@ -19,7 +19,7 @@ extension NSFetchedResultsController {
         if let d: AnyObject = objc_getAssociatedObject(self, &sectionsDynamicHandleNSFetchedResultsController) {
             return (d as? DynamicArray<DynamicArray<NSManagedObject>>)!
         } else {
-            let d = DynamicArray<DynamicArray<NSManagedObject>>([])
+            let d = DynamicArray<DynamicArray<NSManagedObject>>([DynamicArray([])])
             dynDelegate.sections = d
             dynDelegate.nextDelegate = delegate
             delegate = dynDelegate

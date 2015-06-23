@@ -23,6 +23,11 @@ class CandidateCell : UICollectionViewCell {
         }
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        titleLabel.designatedBond.unbindAll()
+    }
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         avatarView.clipsToBounds = true

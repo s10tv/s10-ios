@@ -9,17 +9,19 @@
 import Foundation
 import Core
 import CHTCollectionViewWaterfallLayout
+import Bond
 
 class DiscoverViewController : BaseViewController {
     
     @IBOutlet weak var collectionView : UICollectionView!
     var discoverVM : DiscoverViewModel!
+    var dataSourceBond: UICollectionViewDataSourceBond<UICollectionViewCell>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         collectionView.delegate = self
-        collectionView.dataSource = self
+//        collectionView.dataSource = self
         let layout = CHTCollectionViewWaterfallLayout()
         layout.minimumColumnSpacing = 5
         layout.minimumInteritemSpacing = 5
@@ -28,12 +30,21 @@ class DiscoverViewController : BaseViewController {
         collectionView.collectionViewLayout = layout
         
         discoverVM = DiscoverViewModel()
-        discoverVM.bindCollectionView(collectionView)
+//        discoverVM.bindCollectionView(collectionView)
         Meteor.subscriptions.discover.signal.deliverOnMainThread().subscribeCompleted {
-            self.discoverVM.frc.performFetch(nil)
-            self.collectionView.reloadData()
+            self.discoverVM.loadNextPage()
+//            self.collectionView.reloadData()
         }
-        
+        dataSourceBond = UICollectionViewDataSourceBond(collectionView: collectionView)
+
+        discoverVM.sections.map { objects, section in
+            return objects.map { [unowned self] object, index in
+                let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("CandidateCell",
+                    forIndexPath: NSIndexPath(forItem: index, inSection: section)) as! CandidateCell
+                cell.candidate = object as? Candidate
+                return cell
+            }
+        } ->> dataSourceBond
     }
     
     override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
@@ -51,8 +62,7 @@ class DiscoverViewController : BaseViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let profileVC = segue.destinationViewController as? ProfileViewController,
             let indexPath = collectionView.indexPathsForSelectedItems().first as? NSIndexPath,
-            let candidate = discoverVM.frc.objectAtIndexPath(indexPath) as? Candidate,
-            let user = candidate.user {
+            let user = discoverVM.itemAtIndexPath(indexPath).user {
             profileVC.user = user
         }
     }
@@ -61,22 +71,6 @@ class DiscoverViewController : BaseViewController {
     
     @IBAction func unwindToHome(sender: UIStoryboardSegue) {
     }
-}
-
-extension DiscoverViewController : UICollectionViewDataSource {
-    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return discoverVM.frc.fetchedObjects?.count ?? 0
-    }
-    
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("CandidateCell", forIndexPath: indexPath) as! CandidateCell
-        cell.candidate = discoverVM.frc.objectAtIndexPath(indexPath) as? Candidate
-        return cell
-    }
-}
-
-extension DiscoverViewController : UICollectionViewDelegate {
-    
 }
 
 extension DiscoverViewController : CHTCollectionViewDelegateWaterfallLayout {
