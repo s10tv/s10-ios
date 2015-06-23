@@ -8,14 +8,13 @@
 
 import Foundation
 import CoreData
-import Core
 import Bond
 
-class ChatsViewModel {
+public class ChatsViewModel {
     private let frc : NSFetchedResultsController
-    let connections: DynamicArray<Connection>
+    public let connections: DynamicArray<Connection>
     
-    init() {
+    public init() {
         frc = Connection.sorted(by: ConnectionAttributes.updatedAt.rawValue, ascending: false).frc()
         connections = frc.dynSections[0].map { (o, _) in o as! Connection }
     }

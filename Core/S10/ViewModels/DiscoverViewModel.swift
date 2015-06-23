@@ -8,18 +8,17 @@
 
 import Foundation
 import CoreData
-import Core
 import Bond
 
-class DiscoverViewModel {
+public class DiscoverViewModel {
     private let frc: NSFetchedResultsController
-    let candidates: DynamicArray<Candidate>
+    public let candidates: DynamicArray<Candidate>
     
-    init() {
+    public init() {
         frc = Candidate.sorted(by: CandidateAttributes.score.rawValue, ascending: false).frc()
         candidates = frc.dynSections[0].map { (o, _) in o as! Candidate }
     }
     
-    func loadNextPage() {
+    public func loadNextPage() {
     }
 }
