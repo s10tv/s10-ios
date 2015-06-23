@@ -13,16 +13,16 @@ import Bond
 
 class DiscoverViewModel {
     private let frc: NSFetchedResultsController
-    let sections: DynamicArray<DynamicArray<NSManagedObject>>
+    let candidates: DynamicArray<Candidate>
     
     init() {
         frc = Candidate.sorted(by: CandidateAttributes.score.rawValue, ascending: false).frc()
         frc.performFetch(nil)
-        sections = frc.dynSections
+        candidates = frc.dynSections[0].map { (o, _) in o as! Candidate }
     }
     
     func itemAtIndexPath(indexPath: NSIndexPath) -> Candidate {
-        return sections[indexPath.section][indexPath.row] as! Candidate
+        return candidates[indexPath.row]
     }
     
     func loadNextPage() {
