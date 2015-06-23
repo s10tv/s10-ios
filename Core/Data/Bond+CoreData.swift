@@ -19,7 +19,13 @@ extension NSFetchedResultsController {
         if let d: AnyObject = objc_getAssociatedObject(self, &sectionsDynamicHandleNSFetchedResultsController) {
             return (d as? DynamicArray<DynamicArray<NSManagedObject>>)!
         } else {
-            let d = DynamicArray<DynamicArray<NSManagedObject>>([DynamicArray([])])
+            var error: NSError?
+            if !performFetch(&error) {
+                fatalError("Unable to perform fetch for request \(fetchRequest)")
+            }
+            let d = DynamicArray(sections!.map {
+                DynamicArray(($0 as! NSFetchedResultsSectionInfo).objects.map { $0 as! NSManagedObject })
+            })
             dynDelegate.sections = d
             dynDelegate.nextDelegate = delegate
             delegate = dynDelegate
