@@ -18,10 +18,6 @@ extension User {
     class func currentUser() -> User? {
         return Meteor.user
     }
-    
-    var infoItems : [ProfileInfoItem] {
-        return []
-    }
 }
 
 extension Message {
