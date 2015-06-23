@@ -9,6 +9,7 @@ target :Core do
     link_with 'Core'
     # Foundation
     pod 'ReactiveCocoa', '~> 2.4' # Update to 3.0 when ready
+    pod 'Bond', '~> 3.7'
     pod 'SwiftTryCatch', '~> 0.0.1'
     pod 'NSLogger', '~> 1.5', :configuration => ['Debug']
 
