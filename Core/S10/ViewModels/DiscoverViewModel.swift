@@ -15,7 +15,8 @@ public class DiscoverViewModel {
     public let candidates: DynamicArray<Candidate>
     
     public init() {
-        frc = Candidate.sorted(by: CandidateKeys.score.rawValue, ascending: false).frc()
+        // Filter out candidate without users for now
+        frc = Candidate.by("\(CandidateKeys.user) != nil").sorted(by: CandidateKeys.score.rawValue, ascending: false).frc()
         candidates = frc.dynSections[0].map { (o, _) in o as! Candidate }
     }
     

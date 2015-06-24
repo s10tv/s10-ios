@@ -25,9 +25,11 @@ public class Connection: _Connection {
     }
     
     public func fetchMessages(#sorted: Bool) -> NSFetchedResultsController {
-        let messages = Message.by(NSPredicate(format: "%K != %@ && %K == %@",
+        // TODO: Filter out message without video for now to prevent crash. Should we handle in UI Layer
+        let messages = Message.by(NSPredicate(format: "%K != %@ && %K == %@ && %K != nil",
             MessageKeys.status.rawValue, "sending",
-            MessageKeys.connection.rawValue, self))
+            MessageKeys.connection.rawValue, self,
+            MessageKeys.video.rawValue))
         let sortDesc = NSSortDescriptor(key: MessageKeys.createdAt.rawValue, ascending: true)
         return sorted ? messages.sorted(by: sortDesc).frc() : messages.frc()
     }
