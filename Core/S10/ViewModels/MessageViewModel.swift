@@ -31,7 +31,9 @@ public class MessageViewModel {
     public init(message: Message) {
         self.message = message
         sender = message.sender
-        videoURL = message.dynValue("video.url").map { $0.map { NSURL($0) } ?? nil }
+        videoURL = message.dynValue("\(MessageRelationships.video.rawValue).\(VideoAttributes.url.rawValue)").map {
+            $0.map { NSURL($0) } ?? nil
+        }
         formattedDate = reduce(message.dynCreatedAt, CurrentDate) { createdAt, _ in
             createdAt.map { Formatters.formatRelativeDate($0) } ?? ""
         }

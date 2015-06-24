@@ -18,20 +18,22 @@ public class User: _User {
         case Female = "female"
     }
     
-    public private(set) lazy var dynFirstName: Dynamic<String> = {
-        return dynamicObservableFor(self, keyPath: UserAttributes.firstName.rawValue, defaultValue: "")
+    public private(set) lazy var dynFirstName: Dynamic<String?> = {
+        return self.dynValue(UserAttributes.firstName.rawValue)
     }()
     
-    public private(set) lazy var dynLastName: Dynamic<String> = {
-        return dynamicObservableFor(self, keyPath: UserAttributes.lastName.rawValue, defaultValue: "")
+    public private(set) lazy var dynLastName: Dynamic<String?> = {
+        return self.dynValue(UserAttributes.lastName.rawValue)
     }()
     
     public private(set) lazy var avatarURL: Dynamic<NSURL> = {
-        return dynamicObservableFor(self, keyPath: UserAttributes.avatarUrl.rawValue, defaultValue: "").map { NSURL($0) }
+        return self.dynValue(UserAttributes.avatarUrl.rawValue).map { $0.map { NSURL($0) } ?? nil }
     }()
 
     public private(set) lazy var displayName: Dynamic<String> = {
-        return reduce(self.dynFirstName, self.dynLastName) { "\($0) \($1)".nonBlank() ?? "" }
+        return reduce(self.dynFirstName, self.dynLastName) {
+            return String(format: "%@ %@", $0 ?? "", $1 ?? "").nonBlank() ?? ""
+        }
     }()
     
     public func connection() -> Connection? {
