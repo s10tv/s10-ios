@@ -8,7 +8,7 @@ use_frameworks!
 target :Core do
     link_with 'Core'
     # Foundation
-    pod 'ReactiveCocoa', '~> 2.4' # Update to 3.0 when ready
+    pod 'ReactiveCocoa', '3.0-beta.6' # Update to 3.0 when ready
     pod 'Bond', '~> 3.8'
     pod 'SwiftTryCatch', '~> 0.0.1'
     pod 'NSLogger', '~> 1.5', :configuration => ['Debug']
