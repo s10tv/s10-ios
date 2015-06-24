@@ -8,6 +8,7 @@
 
 import Foundation
 import SCRecorder
+import AVFoundation
 
 protocol RecorderDelegate : NSObjectProtocol {
     func recorder(recorder: RecorderViewController, didRecordSession session: SCRecordSession)
@@ -26,7 +27,7 @@ class RecorderViewController : UIViewController {
         super.viewDidLoad()
         recorder.session = SCRecordSession()
         recorder.session.fileType = AVFileTypeMPEG4
-        recorder.captureSessionPreset = SCRecorderTools.bestCaptureSessionPresetCompatibleWithAllDevices()
+        recorder.captureSessionPreset = AVCaptureSessionPreset640x480 // SCRecorderTools.bestCaptureSessionPresetCompatibleWithAllDevices()
 //        recorder.autoSetVideoOrientation = true
         recorder.device = .Front
         recorder.CIImageRenderer = previewView
