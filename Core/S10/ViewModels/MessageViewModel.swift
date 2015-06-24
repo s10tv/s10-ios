@@ -31,7 +31,7 @@ public class MessageViewModel {
     public init(message: Message) {
         self.message = message
         sender = message.sender
-        videoURL = message.dynValue("\(MessageKeys.video).\(VideoKeys.url)").map { NSURL.fromString($0) }
+        videoURL = message.video!.URL
         formattedDate = reduce(message.dynCreatedAt, CurrentDate) { createdAt, _ in
             createdAt.map { Formatters.formatRelativeDate($0) } ?? ""
         }
@@ -43,8 +43,11 @@ public class MessageViewModel {
                 case .Delivered: return "delivered"
                 case .Expired: return "expired"
                 case .Opened:
-                    let seconds = Int(ceil(expiresAt!.timeIntervalSinceDate(now)))
-                    return "opened. expires in \(seconds) seconds"
+                    if let timeLeft = expiresAt?.timeIntervalSinceDate(now) {
+                        return "opened. expires in \(Int(ceil(timeLeft))) seconds"
+                    } else {
+                        return "opened"
+                    }
                 }
             }
             return ""
