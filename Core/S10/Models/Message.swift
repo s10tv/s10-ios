@@ -22,15 +22,15 @@ public class Message: _Message {
     }
     
     public private(set) lazy var dynStatus: Dynamic<Status?> = {
-        return self.dynValue(MessageAttributes.status.rawValue).map { $0.map { Status(rawValue: $0) } ?? nil }
+        return self.dynValue(MessageKeys.status).map { $0.map { Status(rawValue: $0) } ?? nil }
     }()
     
     public private(set) lazy var dynCreatedAt: Dynamic<NSDate?> = {
-        return self.dynValue(MessageAttributes.createdAt.rawValue)
+        return self.dynValue(MessageKeys.createdAt)
     }()
     
     public private(set) lazy var dynExpiresAt: Dynamic<NSDate?> = {
-        return self.dynValue(MessageAttributes.expiresAt.rawValue)
+        return self.dynValue(MessageKeys.expiresAt)
     }()
 
     public var statusEnum: Status {

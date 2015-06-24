@@ -3,10 +3,15 @@
 
 import CoreData
 
-public enum VideoAttributes: String {
+public enum VideoKeys: String, Printable {
+
     case coverFrameUrl = "coverFrameUrl"
+
     case createdAt = "createdAt"
+
     case url = "url"
+
+    public var description: String { return rawValue }
 }
 
 @objc public

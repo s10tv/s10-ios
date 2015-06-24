@@ -15,7 +15,7 @@ public class DiscoverViewModel {
     public let candidates: DynamicArray<Candidate>
     
     public init() {
-        frc = Candidate.sorted(by: CandidateAttributes.score.rawValue, ascending: false).frc()
+        frc = Candidate.sorted(by: CandidateKeys.score.rawValue, ascending: false).frc()
         candidates = frc.dynSections[0].map { (o, _) in o as! Candidate }
     }
     

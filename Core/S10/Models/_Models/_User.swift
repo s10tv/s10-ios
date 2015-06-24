@@ -3,14 +3,23 @@
 
 import CoreData
 
-public enum UserAttributes: String {
+public enum UserKeys: String, Printable {
+
     case about = "about"
+
     case avatarUrl = "avatarUrl"
+
     case coverPhotoUrl = "coverPhotoUrl"
+
     case createdAt = "createdAt"
+
     case firstName = "firstName"
+
     case gender = "gender"
+
     case lastName = "lastName"
+
+    public var description: String { return rawValue }
 }
 
 @objc public

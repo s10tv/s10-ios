@@ -26,9 +26,9 @@ public class Connection: _Connection {
     
     public func fetchMessages(#sorted: Bool) -> NSFetchedResultsController {
         let messages = Message.by(NSPredicate(format: "%K != %@ && %K == %@",
-            MessageAttributes.status.rawValue, "sending",
-            MessageRelationships.connection.rawValue, self))
-        let sortDesc = NSSortDescriptor(key: MessageAttributes.createdAt.rawValue, ascending: true)
+            MessageKeys.status.rawValue, "sending",
+            MessageKeys.connection.rawValue, self))
+        let sortDesc = NSSortDescriptor(key: MessageKeys.createdAt.rawValue, ascending: true)
         return sorted ? messages.sorted(by: sortDesc).frc() : messages.frc()
     }
     

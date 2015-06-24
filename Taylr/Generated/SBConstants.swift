@@ -3,7 +3,7 @@
 public enum CollectionViewCellreuseIdentifier : String {
     case CandidateCell = "CandidateCell"
     case MessageCell = "MessageCell"
-    case RecorderCell = "RecorderCell"
+    case ProducerCell = "ProducerCell"
 }
 
 public enum NavigationControllerStoryboardIdentifier : String {
@@ -24,6 +24,7 @@ public enum SegueIdentifier : String {
 
 public enum TableViewCellreuseIdentifier : String {
     case ConnectionCell = "ConnectionCell"
+    case ProfileMainCell = "ProfileMainCell"
     case SettingsLabelCell = "SettingsLabelCell"
     case SettingsPhotoCell = "SettingsPhotoCell"
     case SettingsTextCell = "SettingsTextCell"

@@ -3,14 +3,17 @@
 
 import CoreData
 
-public enum CandidateAttributes: String {
-    case createdAt = "createdAt"
-    case location = "location"
-    case score = "score"
-}
+public enum CandidateKeys: String, Printable {
 
-public enum CandidateRelationships: String {
+    case createdAt = "createdAt"
+
+    case location = "location"
+
+    case score = "score"
+
     case user = "user"
+
+    public var description: String { return rawValue }
 }
 
 @objc public

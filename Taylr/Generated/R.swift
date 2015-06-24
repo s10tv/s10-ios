@@ -116,6 +116,8 @@ public enum R {
         case girlPlaceholder = "girl-placeholder"
         /// ic-back
         case icBack = "ic-back"
+        /// ic-back-white
+        case icBackWhite = "ic-back-white"
         /// ic-camera
         case icCamera = "ic-camera"
         /// ic-camera-flip
@@ -124,6 +126,8 @@ public enum R {
         case icCapture = "ic-capture"
         /// ic-chats
         case icChats = "ic-chats"
+        /// ic-close
+        case icClose = "ic-close"
         /// ic-disclosure
         case icDisclosure = "ic-disclosure"
         /// ic-edit-text
@@ -142,10 +146,14 @@ public enum R {
         case icPeople = "ic-people"
         /// ic-play
         case icPlay = "ic-play"
+        /// ic-save
+        case icSave = "ic-save"
         /// ic-upvote
         case icUpvote = "ic-upvote"
         /// Logo
         case logo = "Logo"
+        /// sample-cover-image
+        case sampleCover = "sample-cover-image"
         /// sample-selfie-preview
         case sampleSelfiePreview = "sample-selfie-preview"
         /// sample-taylor-avatar

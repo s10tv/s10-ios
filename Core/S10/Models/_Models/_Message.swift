@@ -3,16 +3,21 @@
 
 import CoreData
 
-public enum MessageAttributes: String {
-    case createdAt = "createdAt"
-    case expiresAt = "expiresAt"
-    case status = "status"
-}
+public enum MessageKeys: String, Printable {
 
-public enum MessageRelationships: String {
+    case createdAt = "createdAt"
+
+    case expiresAt = "expiresAt"
+
+    case status = "status"
+
     case connection = "connection"
+
     case sender = "sender"
+
     case video = "video"
+
+    public var description: String { return rawValue }
 }
 
 @objc public

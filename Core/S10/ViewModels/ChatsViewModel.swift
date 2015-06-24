@@ -15,7 +15,7 @@ public class ChatsViewModel {
     public let connections: DynamicArray<Connection>
     
     public init() {
-        frc = Connection.sorted(by: ConnectionAttributes.updatedAt.rawValue, ascending: false).frc()
+        frc = Connection.sorted(by: ConnectionKeys.updatedAt.rawValue, ascending: false).frc()
         connections = frc.dynSections[0].map { (o, _) in o as! Connection }
     }
 }

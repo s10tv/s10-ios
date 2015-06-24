@@ -19,15 +19,15 @@ public class User: _User {
     }
     
     public private(set) lazy var dynFirstName: Dynamic<String?> = {
-        return self.dynValue(UserAttributes.firstName.rawValue)
+        return self.dynValue(UserKeys.firstName)
     }()
     
     public private(set) lazy var dynLastName: Dynamic<String?> = {
-        return self.dynValue(UserAttributes.lastName.rawValue)
+        return self.dynValue(UserKeys.lastName)
     }()
     
     public private(set) lazy var avatarURL: Dynamic<NSURL> = {
-        return self.dynValue(UserAttributes.avatarUrl.rawValue).map { $0.map { NSURL($0) } ?? nil }
+        return self.dynValue(UserKeys.avatarUrl).map { $0.map { NSURL($0) } ?? nil }
     }()
 
     public private(set) lazy var displayName: Dynamic<String> = {
@@ -41,7 +41,7 @@ public class User: _User {
     }
     
     public func fetchConnection() -> NSFetchedResultsController {
-        return Connection.by(ConnectionRelationships.otherUser.rawValue, value: self).frc()
+        return Connection.by(ConnectionKeys.otherUser.rawValue, value: self).frc()
     }
         
     public class func findByDocumentID(context: NSManagedObjectContext, documentID: String) -> User? {

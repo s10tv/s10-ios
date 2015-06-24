@@ -5,23 +5,18 @@ import CoreData
 
 <$if hasCustomBaseCaseImport$>import <$baseClassImport$><$endif$>
 
-<$if noninheritedAttributes.@count > 0$>
-public enum <$managedObjectClassName$>Attributes: String {<$foreach Attribute noninheritedAttributes do$>
-    case <$Attribute.name$> = "<$Attribute.name$>"<$endforeach do$>
+public enum <$managedObjectClassName$>Keys: String, Printable {
+<$foreach Attribute noninheritedAttributes do$>
+    case <$Attribute.name$> = "<$Attribute.name$>"
+<$endforeach do$>
+<$foreach Relationship noninheritedRelationships do$>
+    case <$Relationship.name$> = "<$Relationship.name$>"
+<$endforeach do$>
+<$foreach FetchedProperty noninheritedFetchedProperties do$>
+    case <$FetchedProperty.name$> = "<$FetchedProperty.name$>"
+<$endforeach do$>
+    public var description: String { return rawValue }
 }
-<$endif$>
-
-<$if noninheritedRelationships.@count > 0$>
-public enum <$managedObjectClassName$>Relationships: String {<$foreach Relationship noninheritedRelationships do$>
-    case <$Relationship.name$> = "<$Relationship.name$>"<$endforeach do$>
-}
-<$endif$>
-
-<$if noninheritedFetchedProperties.@count > 0$>
-public enum <$managedObjectClassName$>FetchedProperties: String {<$foreach FetchedProperty noninheritedFetchedProperties do$>
-    case <$FetchedProperty.name$> = "<$FetchedProperty.name$>"<$endforeach do$>
-}
-<$endif$>
 
 <$if hasUserInfoKeys$>
 public enum <$managedObjectClassName$>UserInfo: String {<$foreach UserInfo userInfoKeyValues do$>
@@ -33,7 +28,7 @@ public enum <$managedObjectClassName$>UserInfo: String {<$foreach UserInfo userI
 class _<$managedObjectClassName$>: <$customSuperentity$> {
 
     // MARK: - Class methods
-    
+
     <$if hasCustomSuperentity$>override <$endif$>public class func entityName () -> String {
         return "<$name$>"
     }
@@ -47,7 +42,7 @@ class _<$managedObjectClassName$>: <$customSuperentity$> {
     public override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
-    
+
     public convenience init(managedObjectContext: NSManagedObjectContext!) {
         let entity = _<$managedObjectClassName$>.entity(managedObjectContext)
         self.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext)

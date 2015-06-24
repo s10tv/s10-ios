@@ -3,14 +3,17 @@
 
 import CoreData
 
-public enum ConnectionAttributes: String {
-    case createdAt = "createdAt"
-    case unreadCount = "unreadCount"
-    case updatedAt = "updatedAt"
-}
+public enum ConnectionKeys: String, Printable {
 
-public enum ConnectionRelationships: String {
+    case createdAt = "createdAt"
+
+    case unreadCount = "unreadCount"
+
+    case updatedAt = "updatedAt"
+
     case otherUser = "otherUser"
+
+    public var description: String { return rawValue }
 }
 
 @objc public

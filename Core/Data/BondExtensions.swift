@@ -30,7 +30,9 @@ public extension NSObject {
     public func dynValue<T>(keyPath: String, _ defaultValue: T? = nil) -> Dynamic<T?> {
         return dynamicValueFor(self, keyPath, defaultValue: defaultValue)
     }
-    
+    public func dynValue<T>(keyPath: Printable, _ defaultValue: T? = nil) -> Dynamic<T?> {
+        return dynValue(keyPath.description, defaultValue)
+    }
 }
 
 // MARK: - CoreData
