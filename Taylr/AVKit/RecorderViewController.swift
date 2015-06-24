@@ -35,7 +35,6 @@ class RecorderViewController : UIViewController {
         recorder.delegate = self
 
         previewView.filters = AVKit.defaultFilters
-        previewView.CIImage = CIImage(color: CIColor(red: 0, green: 0, blue: 0))
         previewView.whenTapped(numberOfTaps: 2) { [weak self] _ in
             self?.recorder.switchCaptureDevices()
             return
@@ -47,6 +46,8 @@ class RecorderViewController : UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         // Start new recording
+        // HACK ALERT: Force previewView to generate a GL context to draw on. 
+        previewView.CIImage = CIImage(color: CIColor(red: 0, green: 0, blue: 0))
         recorder.session.cancelSession(nil)
         progressView.progress = 0
         recorder.startRunning()

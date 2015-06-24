@@ -38,9 +38,11 @@ class ConversationViewController : BaseViewController {
         let cameraSection = DynamicArray([producer]).map { [unowned self] (producer, index) -> UICollectionViewCell in
             let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("ProducerCell",
                 forIndexPath: NSIndexPath(forItem: index, inSection: 1)) as! ProducerCell
-            self.addChildViewController(producer)
             cell.containerView.addSubview(producer.view)
             producer.view.makeEdgesEqualTo(cell.containerView)
+            // NOTE: For some reason we have to call addChildViewController AFTER adding view
+            // otherwise the recorder view doesn't show up until later
+            self.addChildViewController(producer)
             producer.didMoveToParentViewController(self)
             return cell
         }
