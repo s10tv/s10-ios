@@ -39,6 +39,7 @@ class RecorderViewController : UIViewController {
             self?.recorder.switchCaptureDevices()
             return
         }
+        syncPreviewTransform()
 
         recordButton.addGestureRecognizer(TouchDetector(target: self, action: "handleRecordButtonTouch:"))
     }
@@ -47,6 +48,7 @@ class RecorderViewController : UIViewController {
         super.viewWillAppear(animated)
         // Start new recording
         // HACK ALERT: Force previewView to generate a GL context to draw on. 
+
         previewView.CIImage = CIImage(color: CIColor(red: 0, green: 0, blue: 0))
         recorder.session.cancelSession(nil)
         progressView.progress = 0
@@ -55,6 +57,14 @@ class RecorderViewController : UIViewController {
     
     @IBAction func flipCamera(sender: AnyObject) {
         recorder.switchCaptureDevices()
+    }
+    
+    func syncPreviewTransform() {
+        if recorder.device == .Front {
+            self.previewView.transform = CGAffineTransformMakeScale(-1, 1)
+        } else {
+            self.previewView.transform = CGAffineTransformIdentity
+        }
     }
     
     // MARK: -
@@ -70,13 +80,7 @@ class RecorderViewController : UIViewController {
 
 extension RecorderViewController : SCRecorderDelegate {
     func recorder(recorder: SCRecorder!, didReconfigureVideoInput videoInputError: NSError!) {
-        dispatch_async(dispatch_get_main_queue()) {
-            if recorder.device == .Front {
-                self.previewView.transform = CGAffineTransformMakeScale(-1, 1)
-            } else {
-                self.previewView.transform = CGAffineTransformIdentity
-            }
-        }
+        syncPreviewTransform()
     }
     
     func recorder(recorder: SCRecorder!, didAppendVideoSampleBufferInSession session: SCRecordSession!) {

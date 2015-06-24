@@ -41,8 +41,10 @@ class ConversationViewController : BaseViewController {
             cell.containerView.addSubview(producer.view)
             producer.view.makeEdgesEqualTo(cell.containerView)
             // NOTE: For some reason we have to call addChildViewController AFTER adding view
-            // otherwise the recorder view doesn't show up until later
+            // otherwise the recorder view doesn't show up until later, also manually calling
+            // viewWillAppear here
             self.addChildViewController(producer)
+            producer.viewWillAppear(false)
             producer.didMoveToParentViewController(self)
             return cell
         }
