@@ -19,7 +19,7 @@ class CandidateCell : UICollectionViewCell {
     var candidate: Candidate? {
         didSet {
             if let user = candidate?.user {
-                user.avatarURL.map { Optional($0) } ->> avatarView.dynImageURL
+                user.avatarURL ->> avatarView.dynImageURL
                 user.displayName ->> titleLabel
             }
         }

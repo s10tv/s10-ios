@@ -6,15 +6,13 @@
 //  Copyright (c) 2015 Serendipity. All rights reserved.
 //
 
+import Bond
+
 @objc(Video)
 public class Video: _Video {
-
-    public var coverFrameURL : NSURL? {
-        return coverFrameUrl.map { NSURL($0) } ?? nil
-    }
     
-    public var URL: NSURL? {
-        return url.map { NSURL($0) } ?? nil
+    public var URL: Dynamic<NSURL?> {
+        return self.dynValue(VideoKeys.url).map { NSURL.fromString($0) }
     }
 
 }

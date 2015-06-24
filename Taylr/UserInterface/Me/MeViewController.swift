@@ -24,7 +24,7 @@ class MeViewController : BaseViewController {
         
         currentUser = Meteor.user
         if let currentUser = currentUser {
-            currentUser.avatarURL.map { Optional($0) } ->> avatarView.dynImageURL
+            currentUser.avatarURL ->> avatarView.dynImageURL
             currentUser.displayName ->> nameLabel
         }
     }

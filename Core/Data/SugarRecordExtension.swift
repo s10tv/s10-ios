@@ -45,6 +45,9 @@ extension NSManagedObject {
     public class func by(key: String, value: AnyObject?) -> SugarRecordFinder {
         return all().by(key, value: value)
     }
+    public class func by(key: Printable, value: AnyObject?) -> SugarRecordFinder {
+        return by(key.description, value: value)
+    }
 }
 
 // TODO: Separate file because it's unrelated to SugarRecord?

@@ -93,6 +93,9 @@ extension NSURL {
     public convenience init!(_ urlString: String) {
         self.init(string: urlString)
     }
+    public class func fromString(str: String?) -> NSURL? {
+        return (str != nil) ? NSURL(str!) : nil
+    }
 }
 
 extension NSData {
