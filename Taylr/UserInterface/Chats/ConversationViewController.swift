@@ -98,8 +98,8 @@ extension ConversationViewController : UICollectionViewDelegate {
 
 extension ConversationViewController : MessageCellDelegate {
     func messageCell(cell: MessageCell, didPlayMessage message: MessageViewModel) {
-        if let index = conversationVM.indexOfMessage(message) {
-            let newPath = NSIndexPath(forRow: index + 1, inSection: 0)
+        if let indexPath = collectionView.indexPathForCell(cell) {
+            let newPath = NSIndexPath(forRow: indexPath.row + 1, inSection: indexPath.section)
             collectionView.scrollToItemAtIndexPath(newPath, atScrollPosition: .CenteredVertically, animated: true)
         }
     }

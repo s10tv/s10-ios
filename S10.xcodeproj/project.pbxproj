@@ -11,6 +11,8 @@
 		640DB2B4B8DE9B8DDC392B01 /* Pods_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28970C9FC888535D277B71D5 /* Pods_Core.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		C0694BB32891795853D2C3CF /* Pods_Core_TestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F09ED94DDC00446577DFD4 /* Pods_Core_TestApp.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D6555C3D41C17908B83EB27C /* Pods_Core_Taylr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1D48B38C28B60559AEB8949 /* Pods_Core_Taylr.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		EA06AAB81B3B2D2B000E128C /* PKHUDExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBAB1B3930B000701F08 /* PKHUDExtension.swift */; };
+		EA06AAB91B3B2D8F000E128C /* ResourceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBAC1B3930B000701F08 /* ResourceExtension.swift */; };
 		EA0FED451ADE5BC500FC6FCB /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */; };
 		EA3594141B2DE5C300E91337 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594131B2DE5C300E91337 /* ConversationViewController.swift */; };
 		EA3594161B2DEF0C00E91337 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594151B2DEF0C00E91337 /* MessageCell.swift */; };
@@ -19,7 +21,7 @@
 		EA3777721A966EC10055DE99 /* TransatTextBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */; };
 		EA3777751A966EC10055DE99 /* TransatTextMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA3777701A966EC10055DE99 /* TransatTextMedium.otf */; };
 		EA3777761A966EC10055DE99 /* TransatTextStandard.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA3777711A966EC10055DE99 /* TransatTextStandard.otf */; };
-		EA4756FE1B38F901002071D7 /* Bond+CoreData.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4756FD1B38F901002071D7 /* Bond+CoreData.swift */; };
+		EA4756FE1B38F901002071D7 /* BondExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4756FD1B38F901002071D7 /* BondExtensions.swift */; };
 		EA4757031B391F56002071D7 /* ChatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4757011B391F56002071D7 /* ChatsViewModel.swift */; };
 		EA4757041B391F56002071D7 /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4757021B391F56002071D7 /* DiscoverViewModel.swift */; };
 		EA4757131B392C19002071D7 /* PanInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47570C1B392C19002071D7 /* PanInteractor.swift */; };
@@ -213,7 +215,7 @@
 		EA37776F1A966EC10055DE99 /* TransatTextLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextLight.otf; sourceTree = "<group>"; };
 		EA3777701A966EC10055DE99 /* TransatTextMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextMedium.otf; sourceTree = "<group>"; };
 		EA3777711A966EC10055DE99 /* TransatTextStandard.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextStandard.otf; sourceTree = "<group>"; };
-		EA4756FD1B38F901002071D7 /* Bond+CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bond+CoreData.swift"; sourceTree = "<group>"; };
+		EA4756FD1B38F901002071D7 /* BondExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BondExtensions.swift; sourceTree = "<group>"; };
 		EA4757011B391F56002071D7 /* ChatsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewModel.swift; sourceTree = "<group>"; };
 		EA4757021B391F56002071D7 /* DiscoverViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
 		EA47570C1B392C19002071D7 /* PanInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanInteractor.swift; sourceTree = "<group>"; };
@@ -566,8 +568,8 @@
 			children = (
 				EA4757021B391F56002071D7 /* DiscoverViewModel.swift */,
 				EA4757011B391F56002071D7 /* ChatsViewModel.swift */,
-				EA9C166E1B3726E300371B50 /* MessageViewModel.swift */,
 				EA9C16701B37286700371B50 /* ConversationViewModel.swift */,
+				EA9C166E1B3726E300371B50 /* MessageViewModel.swift */,
 				EA9C16741B3752F800371B50 /* Formatters.swift */,
 			);
 			path = ViewModels;
@@ -742,7 +744,7 @@
 				EAF670561B31F9450025D7CF /* MeteorCDStack.swift */,
 				EAF670571B31F9450025D7CF /* MeteorExtension.swift */,
 				EAF670581B31F9450025D7CF /* SugarRecordExtension.swift */,
-				EA4756FD1B38F901002071D7 /* Bond+CoreData.swift */,
+				EA4756FD1B38F901002071D7 /* BondExtensions.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -1261,6 +1263,8 @@
 				EAF81B2E1B33883A00EED6DD /* RecorderViewController.swift in Sources */,
 				EA95BBC01B3932B500701F08 /* MediaExtension.swift in Sources */,
 				EA95BBBA1B3932B500701F08 /* BaseViews.swift in Sources */,
+				EA06AAB81B3B2D2B000E128C /* PKHUDExtension.swift in Sources */,
+				EA06AAB91B3B2D8F000E128C /* ResourceExtension.swift in Sources */,
 				EAF81B341B33890300EED6DD /* SBConstants.swift in Sources */,
 				EA5B740B1B30F7BB008E5CBC /* TestAppDelegate.swift in Sources */,
 			);
@@ -1315,7 +1319,7 @@
 				EA4757131B392C19002071D7 /* PanInteractor.swift in Sources */,
 				EAF670821B31F9450025D7CF /* User.swift in Sources */,
 				EAF670871B31F9450025D7CF /* GeometryExtensions.swift in Sources */,
-				EA4756FE1B38F901002071D7 /* Bond+CoreData.swift in Sources */,
+				EA4756FE1B38F901002071D7 /* BondExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

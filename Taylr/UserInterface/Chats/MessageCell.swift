@@ -10,6 +10,7 @@ import Foundation
 import SDWebImage
 import SCRecorder
 import Core
+import Bond
 
 protocol MessageCellDelegate : NSObjectProtocol {
     func messageCell(cell: MessageCell, didPlayMessage message: MessageViewModel)
@@ -23,16 +24,16 @@ class MessageCell : UICollectionViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
 
-    private var displayLink: CADisplayLink!
     private var player: SCPlayer { return playerView.player }
     weak var delegate: MessageCellDelegate?
     var message: MessageViewModel? {
         didSet {
-            player.setItemByUrl(message?.videoURL)
             avatarView.user = message?.sender
-            statusLabel.text = message?.statusText
-            timeLabel.text = message?.dateText
-            durationLabel.text = nil
+            if let message = message {
+                player.setItemByUrl(message.videoURL.value)
+                message.formattedDate ->> timeLabel
+                message.formattedStatus ->> statusLabel
+            }
         }
     }
     
@@ -42,16 +43,14 @@ class MessageCell : UICollectionViewCell {
         playerView.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
         playerView.delegate = self
         player.delegate = self
-        displayLink = CADisplayLink(target: self, selector: "displayTick")
-        displayLink.frameInterval = 10
-        displayLink.addToRunLoop(NSRunLoop.currentRunLoop(), forMode: NSRunLoopCommonModes)
         prepareForReuse()
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         message = nil
-        displayLink.paused = true
+        durationLabel.text = nil
+        unbindAll(timeLabel, statusLabel)
     }
     
     func restoreInfo() {
@@ -69,16 +68,10 @@ class MessageCell : UICollectionViewCell {
     
     func cellWillAppear() {
         playVideo()
-        displayLink.paused = false
     }
     
     func cellDidDisappear() {
         pauseVideo()
-        displayLink.paused = true
-    }
-    
-    func displayTick() {
-        statusLabel.text = message?.statusText
     }
     
     func playVideo() {
@@ -103,7 +96,6 @@ extension MessageCell : SCPlayerDelegate {
             let secondsRemaining = Int(ceil(player.itemDuration.seconds - currentTime.seconds))
             durationLabel.text = "\(secondsRemaining)"
         }
-        statusLabel.text = message?.statusText
     }
 }
 

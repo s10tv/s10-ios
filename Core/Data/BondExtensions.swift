@@ -1,5 +1,5 @@
 //
-//  Bond+CoreData.swift
+//  BondExtensions.swift
 //  S10
 //
 //  Created by Tony Xiao on 6/22/15.
@@ -9,6 +9,31 @@
 import Foundation
 import CoreData
 import Bond
+
+public func unbindAll<U: Bondable>(bondables: U...) {
+    for bondable in bondables {
+        bondable.designatedBond.unbindAll()
+    }
+}
+
+// MARK: - Dynamic Support
+
+public func dynamicValueFor<T>(object: NSObject, keyPath: String, defaultValue: T? = nil) -> Dynamic<T?> {
+    return dynamicObservableFor(object, keyPath: keyPath, from: { (value: AnyObject?) -> T? in
+        return value as? T
+        }, to: { (value: T?) -> AnyObject? in
+            return value as? AnyObject
+    })
+}
+
+public extension NSObject {
+    public func dynValue<T>(keyPath: String, _ defaultValue: T? = nil) -> Dynamic<T?> {
+        return dynamicValueFor(self, keyPath, defaultValue: defaultValue)
+    }
+    
+}
+
+// MARK: - CoreData
 
 private var sectionsDynamicHandleNSFetchedResultsController: UInt8 = 0;
 private var delegateDynamicHandleNSFetchedResultsController: UInt8 = 0;
