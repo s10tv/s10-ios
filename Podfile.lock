@@ -7,10 +7,10 @@ PODS:
   - Bolts/AppLinks (1.2.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.2.0)
-  - Bond (3.7.4)
+  - Bond (3.8.0)
   - Cartography (0.5.0)
   - CHTCollectionViewWaterfallLayout (0.9.1)
-  - DateTools (1.5.0)
+  - DateTools (1.6.1)
   - DTFoundation/Core (1.7.5)
   - DTFoundation/DTASN1 (1.7.5):
     - DTFoundation/Core
@@ -57,20 +57,20 @@ PODS:
     - SugarRecord/Core
   - SwiftTryCatch (0.0.1)
   - SwiftyJSON (2.2.0)
-  - SwiftyUserDefaults (1.1.0)
+  - SwiftyUserDefaults (1.2.0)
   - SwipeView (1.3.2)
   - TCMobileProvision (1.0.0):
     - DTFoundation/DTASN1 (~> 1.6)
   - UICollectionViewLeftAlignedLayout (1.0.0)
-  - XLForm (2.2.0)
+  - XLForm (3.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 1.2)
   - AnalyticsSwift (~> 0.1.0)
-  - Bond (~> 3.7)
+  - Bond (~> 3.8)
   - Cartography (~> 0.5)
   - CHTCollectionViewWaterfallLayout (~> 0.9)
-  - DateTools (~> 1.5)
+  - DateTools (~> 1.6)
   - EDColor (~> 1.0)
   - Facebook-iOS-SDK (= 3.22.0)
   - FormatterKit/TimeIntervalFormatter (~> 1.8)
@@ -92,11 +92,11 @@ DEPENDENCIES:
   - SugarRecord/CoreData (from `https://github.com/tonyxiao/SugarRecord`, branch `develop`)
   - SwiftTryCatch (~> 0.0.1)
   - SwiftyJSON (~> 2.1)
-  - SwiftyUserDefaults (~> 1.1)
+  - SwiftyUserDefaults (~> 1.2)
   - SwipeView (~> 1.3)
   - TCMobileProvision (from `https://github.com/tonyxiao/TCMobileProvision.git`)
   - UICollectionViewLeftAlignedLayout (~> 1.0)
-  - XLForm (~> 2.2)
+  - XLForm (~> 3.0)
 
 EXTERNAL SOURCES:
   Meteor:
@@ -128,10 +128,10 @@ SPEC CHECKSUMS:
   Alamofire: 5550bf0b575ed1a4bf9be572f9463e1015cc169e
   AnalyticsSwift: 903cb2c6d522709fa7637285553840c02accd149
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
-  Bond: f21b0fb5fe54fd36e2732d1b7e3c51ded0a47cb7
+  Bond: a7a7b06cb23ad80470d752e9f964afd2925cabd8
   Cartography: 774e5cc446f5a6bca5d4345c5aa6af9a1fe74dc6
   CHTCollectionViewWaterfallLayout: 1a8da4fc662702cbddda8926ced266036a829f84
-  DateTools: b93a2c2017747329c6077c7d7e8a75106e23d0d7
+  DateTools: 9bcc89e4f2f9004d8a7a2bd1b49269cf78968e65
   DTFoundation: 1d28080c20c3da041706545363f8238ab53a6204
   EDColor: c83f9a61f9f9b3c23d541f1feb561558e29cb088
   Facebook-iOS-SDK: 141cba3ba6c484380eb38c573110af9e4fbf8962
@@ -157,10 +157,10 @@ SPEC CHECKSUMS:
   SugarRecord: 9d55ce666e8161eacdc95c996173eb53eb6d3683
   SwiftTryCatch: fb6d2b34abe48efd69578dac919293a44f95b481
   SwiftyJSON: 0b3e6c07af17ff745e77e8e9984097b55c956e5c
-  SwiftyUserDefaults: ae600cd466daa1420a058d09aefbf45ccb6caf1e
+  SwiftyUserDefaults: 3b4413c26f5cc4f4ed114cf75c42dbef189f0c1e
   SwipeView: bd67cfaf7760c036438446b3ccb28a3b84fce009
   TCMobileProvision: 2a8962b38821a20fad53b9d7851bbc9ae8c52995
   UICollectionViewLeftAlignedLayout: c3dddf91b3dc72ede7eca7a532545804389ab833
-  XLForm: 799e61ef230f519914e722bf032b19a597223c19
+  XLForm: 10fc7eb9e2d5df21a515fa3a794f4e26319abd0e
 
 COCOAPODS: 0.37.2
