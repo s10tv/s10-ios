@@ -83,6 +83,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
         Meteor.startup()
         Meteor.connectDevice(env)
         
+        // Resume unfinished business
+        Globals.videoService.resumeUploads()
+        
         Log.info("App Launched")
         Analytics.track("App Open")
         

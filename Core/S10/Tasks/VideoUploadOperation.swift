@@ -15,6 +15,7 @@ import SwiftyJSON
 
 public class VideoUploadOperation : AsyncOperation {
 
+    var taskId: String?
     let connectionId: String
     let localVideoURL: NSURL
     let meteorService: MeteorService
@@ -32,8 +33,7 @@ public class VideoUploadOperation : AsyncOperation {
         let realm = Realm()
         let predicate = NSPredicate(format: "localURL = %@", localVideoURL.path!)
         let results = realm.objects(VideoUploadTaskEntry).filter(predicate)
-
-        var taskId: String?
+        
         switch (results.count) {
         case 0:
             taskId = NSUUID().UUIDString
@@ -69,7 +69,7 @@ public class VideoUploadOperation : AsyncOperation {
                 return RACSignal.error(
                     NSError(domain: "Upload to Azure", code: statusCode, userInfo: nil))
             } else {
-                return self.meteorService.finishTask(taskId!)
+                return self.meteorService.finishTask(self.taskId!)
             }
         }.subscribeError({ (error) -> Void in
             self.finish(.Error(error))
@@ -77,7 +77,7 @@ public class VideoUploadOperation : AsyncOperation {
             let realm = Realm()
             realm.write {
                 realm.delete(realm.objects(VideoUploadTaskEntry).filter(
-                    NSPredicate(format: "id = %@", taskId!)))
+                    NSPredicate(format: "id = %@", self.taskId!)))
             }
             self.finish(.Success)
         })

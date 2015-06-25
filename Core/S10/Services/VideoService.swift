@@ -21,12 +21,40 @@ public class VideoService {
         uploadQueue = NSOperationQueue()
         self.meteorService = meteorService
     }
+    
+    public func resumeUploads() {
+        let queuedTaskIds = Set(uploadQueue.operations
+            .map { $0 as! VideoUploadOperation }
+            .filter { $0.taskId != nil }
+            .map { $0.taskId! }
+        )
+        for task in Realm().objects(VideoUploadTaskEntry) {
+            if queuedTaskIds.contains(task.id) {
+                continue
+            }
+            let operation = VideoUploadOperation(
+                connectionId: task.connectionId,
+                localVideoURL: NSURL(task.localURL),
+                meteorService: meteorService)
+            operation.taskId = task.id
+            queueOperation(operation)
+        }
+    }
 
     public func sendVideoMessage(connection: Connection, localVideoURL: NSURL) {
         let operation = VideoUploadOperation(
                 connectionId: connection.documentID!,
                 localVideoURL: localVideoURL,
                 meteorService: self.meteorService)
-        self.uploadQueue.addOperation(operation)
+        queueOperation(operation)
+    }
+    
+    func queueOperation(operation: VideoUploadOperation) {
+        operation.completionBlock = {
+            dispatch_async(dispatch_get_main_queue()) { [weak self] in
+                self?.resumeUploads()
+            }
+        }
+        uploadQueue.addOperation(operation)
     }
 }
