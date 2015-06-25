@@ -28,14 +28,14 @@ class DiscoverViewController : BaseViewController {
 //        collectionView.collectionViewLayout = layout
 
         dataSourceBond = UICollectionViewDataSourceBond(collectionView: collectionView)
-        discoverVM = DiscoverViewModel()
-        discoverVM.candidates.map { [unowned self] (candidate, index) -> UICollectionViewCell in
-            let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("CandidateCell",
-                forIndexPath: NSIndexPath(forItem: index, inSection: 0)) as! CandidateCell
-            
-            cell.candidate = candidate
-            return cell
-        } ->> dataSourceBond
+//        discoverVM = DiscoverViewModel()
+//        discoverVM.candidates.map { [unowned self] (candidate, index) -> UICollectionViewCell in
+//            let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("CandidateCell",
+//                forIndexPath: NSIndexPath(forItem: index, inSection: 0)) as! CandidateCell
+//            
+//            cell.candidate = candidate
+//            return cell
+//        } ->> dataSourceBond
     }
     
     override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {

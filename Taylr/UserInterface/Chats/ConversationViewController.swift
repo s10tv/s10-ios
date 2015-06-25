@@ -17,6 +17,9 @@ class ConversationViewController : BaseViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var activityLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var badgeLabel: UILabel!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var nameCenterConstraint: NSLayoutConstraint!
     
     var producer: ProducerViewController!
     var conversationVM: ConversationViewModel!
@@ -50,6 +53,16 @@ class ConversationViewController : BaseViewController {
         }
         dataSourceBond = UICollectionViewDataSourceBond(collectionView: collectionView)
         DynamicArray([messagesSection, cameraSection]) ->> dataSourceBond
+        
+        avatarView.user = conversationVM.recipient.value!
+        conversationVM.recipient.value!.displayName ->> nameLabel
+        conversationVM.hasUnsentMessage ->> spinner
+        conversationVM.formattedStatus ->> activityLabel
+        conversationVM.unreadCount.map { "\($0)" } ->> badgeLabel
+        reduce(conversationVM.unreadCount, spinner.dynIsAnimating) {
+            $0 == 0 || $1
+        } ->> badgeLabel.dynHidden
+        conversationVM.formattedStatus.map { $0.length == 0 } ->> nameCenterConstraint.dynActive
     }
     
     override func viewDidLayoutSubviews() {
@@ -61,8 +74,6 @@ class ConversationViewController : BaseViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBarHidden = true
-        avatarView.user = conversationVM.recipient.value!
-        conversationVM.recipient.value!.displayName ->> nameLabel
     }
     
     override func viewWillDisappear(animated: Bool) {

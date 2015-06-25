@@ -185,7 +185,7 @@
                                                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="UhH-a0-qxF">
                                                     <rect key="frame" x="572" y="30" width="20" height="20"/>
                                                 </activityIndicatorView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wDP-LB-Cob">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wDP-LB-Cob" userLabel="Badge">
                                                     <rect key="frame" x="580" y="28" width="12" height="24"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -435,7 +435,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylor Swift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0x-EU-7eq">
-                                                <rect key="frame" x="58" y="8" width="73" height="17"/>
+                                                <rect key="frame" x="58" y="17" width="73" height="17"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                 <color key="textColor" red="0.011764705882352941" green="0.011764705882352941" blue="0.011764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -448,10 +448,11 @@
                                             <constraint firstAttribute="trailing" secondItem="e0x-EU-7eq" secondAttribute="trailing" priority="749" id="3z9-Hf-7in"/>
                                             <constraint firstItem="Xhe-ik-k94" firstAttribute="leading" secondItem="e0x-EU-7eq" secondAttribute="leading" id="Eio-rf-9Az"/>
                                             <constraint firstItem="uD7-V4-mF6" firstAttribute="top" secondItem="KPL-gz-OCJ" secondAttribute="top" id="Jyk-KW-oeC"/>
-                                            <constraint firstItem="e0x-EU-7eq" firstAttribute="bottom" secondItem="uD7-V4-mF6" secondAttribute="centerY" id="RbV-Y0-dsX"/>
+                                            <constraint firstItem="e0x-EU-7eq" firstAttribute="bottom" secondItem="uD7-V4-mF6" secondAttribute="centerY" priority="749" id="RbV-Y0-dsX"/>
                                             <constraint firstItem="uD7-V4-mF6" firstAttribute="leading" secondItem="KPL-gz-OCJ" secondAttribute="leading" id="T8O-Yh-Zmd"/>
                                             <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Xhe-ik-k94" secondAttribute="trailing" id="Yb4-HX-fRY"/>
                                             <constraint firstItem="e0x-EU-7eq" firstAttribute="leading" secondItem="uD7-V4-mF6" secondAttribute="trailing" constant="8" id="aG5-1e-iU4"/>
+                                            <constraint firstItem="uD7-V4-mF6" firstAttribute="centerY" secondItem="e0x-EU-7eq" secondAttribute="centerY" id="wOF-v2-0OJ"/>
                                         </constraints>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="314-8z-971" appends="YES" id="aI5-uL-5X0"/>
@@ -486,6 +487,15 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vRh-e3-SEP" userLabel="Badge">
+                                <rect key="frame" x="378" y="43" width="12" height="24"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="b5e-73-k20">
+                                <rect key="frame" x="374" y="45" width="20" height="20"/>
+                            </activityIndicatorView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iVG-b4-OV1">
                                 <rect key="frame" x="0.0" y="90" width="600" height="510"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -601,15 +611,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="b5e-73-k20" firstAttribute="leading" secondItem="KPL-gz-OCJ" secondAttribute="trailing" constant="19" id="36s-f8-WWf"/>
                             <constraint firstItem="iVG-b4-OV1" firstAttribute="top" secondItem="U3a-sc-A4a" secondAttribute="bottom" id="6Y2-Jb-l3S"/>
                             <constraint firstItem="lnf-Ow-38p" firstAttribute="leading" secondItem="a2d-JO-QQN" secondAttribute="leading" id="7DD-eO-Onq"/>
+                            <constraint firstItem="b5e-73-k20" firstAttribute="leading" secondItem="KPL-gz-OCJ" secondAttribute="trailing" constant="8" id="9i6-e2-cP2"/>
                             <constraint firstItem="U3a-sc-A4a" firstAttribute="top" secondItem="3df-Wc-RQz" secondAttribute="bottom" id="9ma-aq-8JI"/>
                             <constraint firstItem="U3a-sc-A4a" firstAttribute="leading" secondItem="a2d-JO-QQN" secondAttribute="leading" id="BhN-J3-cZZ"/>
                             <constraint firstAttribute="trailing" secondItem="U3a-sc-A4a" secondAttribute="trailing" id="CY3-yG-VOx"/>
+                            <constraint firstItem="KPL-gz-OCJ" firstAttribute="centerY" secondItem="vRh-e3-SEP" secondAttribute="centerY" id="Fxe-eZ-M5H"/>
                             <constraint firstItem="iVG-b4-OV1" firstAttribute="leading" secondItem="U3a-sc-A4a" secondAttribute="trailing" constant="-600" id="JXJ-vx-aDQ"/>
                             <constraint firstItem="3df-Wc-RQz" firstAttribute="top" secondItem="lnf-Ow-38p" secondAttribute="bottom" id="JrA-aw-Lj3"/>
+                            <constraint firstItem="b5e-73-k20" firstAttribute="centerY" secondItem="KPL-gz-OCJ" secondAttribute="centerY" id="RRP-HX-5HA"/>
                             <constraint firstItem="iVG-b4-OV1" firstAttribute="leading" secondItem="a2d-JO-QQN" secondAttribute="leading" id="Rob-Mm-H7n"/>
                             <constraint firstItem="so0-au-wZg" firstAttribute="top" secondItem="iVG-b4-OV1" secondAttribute="bottom" id="abx-To-zIE"/>
+                            <constraint firstItem="vRh-e3-SEP" firstAttribute="leading" secondItem="KPL-gz-OCJ" secondAttribute="trailing" constant="12" id="keX-sd-0bB"/>
                             <constraint firstItem="U3a-sc-A4a" firstAttribute="top" secondItem="lnf-Ow-38p" secondAttribute="bottom" id="kmb-X2-2Q9"/>
                             <constraint firstAttribute="trailing" secondItem="iVG-b4-OV1" secondAttribute="trailing" id="lOV-x9-vQh"/>
                             <constraint firstAttribute="trailing" secondItem="lnf-Ow-38p" secondAttribute="trailing" id="yfr-3M-YS8"/>
@@ -618,6 +633,7 @@
                             <mask key="constraints">
                                 <exclude reference="JrA-aw-Lj3"/>
                                 <exclude reference="JXJ-vx-aDQ"/>
+                                <exclude reference="36s-f8-WWf"/>
                             </mask>
                         </variation>
                     </view>
@@ -626,8 +642,11 @@
                     <connections>
                         <outlet property="activityLabel" destination="Xhe-ik-k94" id="hWw-q1-f3l"/>
                         <outlet property="avatarView" destination="uD7-V4-mF6" id="iA7-v4-S7S"/>
+                        <outlet property="badgeLabel" destination="vRh-e3-SEP" id="YDz-i0-Au2"/>
                         <outlet property="collectionView" destination="iVG-b4-OV1" id="NVJ-hJ-wo2"/>
+                        <outlet property="nameCenterConstraint" destination="wOF-v2-0OJ" id="R6X-SO-wbF"/>
                         <outlet property="nameLabel" destination="e0x-EU-7eq" id="DLz-9l-GuL"/>
+                        <outlet property="spinner" destination="b5e-73-k20" id="qwm-1K-pem"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OaH-F1-uJP" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -742,6 +761,6 @@
         <image name="sample-taylor-avatar-square" width="167" height="168"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5pS-f2-tIU"/>
+        <segue reference="Gd9-HM-lnj"/>
     </inferredMetricsTieBreakers>
 </document>
