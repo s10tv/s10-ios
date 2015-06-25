@@ -58,10 +58,7 @@ class ConversationViewController : BaseViewController {
         conversationVM.recipient.value!.displayName ->> nameLabel
         conversationVM.hasUnsentMessage ->> spinner
         conversationVM.formattedStatus ->> activityLabel
-        conversationVM.unreadCount.map { "\($0)" } ->> badgeLabel
-        reduce(conversationVM.unreadCount, spinner.dynIsAnimating) {
-            $0 == 0 || $1
-        } ->> badgeLabel.dynHidden
+        conversationVM.badgeText ->> badgeLabel
         conversationVM.formattedStatus.map { $0.length == 0 } ->> nameCenterConstraint.dynActive
     }
     

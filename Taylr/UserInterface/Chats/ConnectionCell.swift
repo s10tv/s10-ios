@@ -30,10 +30,7 @@ class ConnectionCell : UITableViewCell {
         viewModel.recipient.value!.displayName ->> nameLabel
         viewModel.hasUnsentMessage ->> spinner
         viewModel.formattedStatus ->> subtitleLabel
-        viewModel.unreadCount.map { "\($0)" } ->> badgeLabel
-        reduce(viewModel.unreadCount, spinner.dynIsAnimating) {
-            $0 == 0 || $1
-        } ->> badgeLabel.dynHidden
+        viewModel.badgeText ->> badgeLabel
         viewModel.formattedStatus.map { $0.length == 0 } ->> nameCenterConstraint.dynActive
     }
     

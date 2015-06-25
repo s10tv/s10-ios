@@ -16,7 +16,7 @@ public class ConversationViewModel {
     public let connection: Connection
     public let recipient: Dynamic<User?>
     public let formattedStatus: Dynamic<String>
-    public let unreadCount: Dynamic<Int>
+    public let badgeText: Dynamic<String>
     public let hasUnsentMessage: Dynamic<Bool>
     public private(set) lazy var messageViewModels: DynamicArray<MessageViewModel> = {
         return self.messagesFrc.dynSections[0].map { (o, _) in MessageViewModel(message: o as! Message) }
@@ -26,9 +26,11 @@ public class ConversationViewModel {
         self.connection = connection
         messagesFrc = connection.fetchMessages(sorted: true)
         recipient = connection.dynOtherUser
-        unreadCount = connection.dynUnreadCount.map { $0 ?? 0 }
         formattedStatus = ConversationViewModel.formatStatus(connection)
         (hasUnsentMessage, realmToken) = ConversationViewModel.observeUnsentMessage(connection)
+        badgeText = reduce(connection.dynUnreadCount, hasUnsentMessage) {
+            ($0 != nil && $0! > 0 && $1 == false) ? "\($0!)" : ""
+        }
     }
     
     deinit {
