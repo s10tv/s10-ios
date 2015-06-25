@@ -41,6 +41,7 @@ public class VideoUploadOperation : AsyncOperation {
             let entry = VideoUploadTaskEntry()
             entry.id = taskId!
             entry.localURL = localVideoURL.path!
+            entry.connectionId = connectionId
 
             realm.write {
                 realm.add(entry)

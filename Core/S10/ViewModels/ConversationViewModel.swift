@@ -8,9 +8,11 @@
 
 import Foundation
 import Bond
+import RealmSwift
 
 public class ConversationViewModel {
     private let messagesFrc: NSFetchedResultsController
+    private let realmToken: NotificationToken
     public let connection: Connection
     public let recipient: Dynamic<User?>
     public let formattedStatus: Dynamic<String>
@@ -24,9 +26,24 @@ public class ConversationViewModel {
         self.connection = connection
         messagesFrc = connection.fetchMessages(sorted: true)
         recipient = connection.dynOtherUser
-        formattedStatus = ConversationViewModel.formatStatus(connection)
         unreadCount = connection.dynUnreadCount.map { $0 ?? 0 }
-        hasUnsentMessage = Dynamic(false)
+        formattedStatus = ConversationViewModel.formatStatus(connection)
+        (hasUnsentMessage, realmToken) = ConversationViewModel.observeUnsentMessage(connection)
+    }
+    
+    deinit {
+        Realm().removeNotification(realmToken)
+    }
+    
+    class func observeUnsentMessage(connection: Connection) -> (Dynamic<Bool>, NotificationToken) {
+        let realm = Realm()
+        let connectionId = connection.documentID!
+        let countUnsent = { (realm: Realm) in
+            return realm.objects(VideoUploadTaskEntry).filter("connectionId = %@", connectionId).count
+        }
+        let hasUnsent = Dynamic(countUnsent(realm) > 0)
+        let token = realm.addNotificationBlock { hasUnsent.value = countUnsent($1) > 0 }
+        return (deliver(hasUnsent, on: dispatch_get_main_queue()), token)
     }
     
     class func formatStatus(connection: Connection) -> Dynamic<String> {

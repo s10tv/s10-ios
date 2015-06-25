@@ -107,8 +107,6 @@
 		EAF670811B31F9450025D7CF /* Models.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAF670681B31F9450025D7CF /* Models.xcdatamodeld */; };
 		EAF670821B31F9450025D7CF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6706A1B31F9450025D7CF /* User.swift */; };
 		EAF670831B31F9450025D7CF /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6706B1B31F9450025D7CF /* Video.swift */; };
-		EAF670841B31F9450025D7CF /* TaskManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6706D1B31F9450025D7CF /* TaskManager.swift */; };
-		EAF670851B31F9450025D7CF /* VideoMessageTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6706E1B31F9450025D7CF /* VideoMessageTask.swift */; };
 		EAF670861B31F9450025D7CF /* AnimationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670701B31F9450025D7CF /* AnimationExtensions.swift */; };
 		EAF670871B31F9450025D7CF /* GeometryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670711B31F9450025D7CF /* GeometryExtensions.swift */; };
 		EAF670881B31F9450025D7CF /* UIKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670721B31F9450025D7CF /* UIKitExtension.swift */; };
@@ -308,8 +306,6 @@
 		EAF670691B31F9450025D7CF /* Models.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Models.xcdatamodel; sourceTree = "<group>"; };
 		EAF6706A1B31F9450025D7CF /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EAF6706B1B31F9450025D7CF /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
-		EAF6706D1B31F9450025D7CF /* TaskManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskManager.swift; sourceTree = "<group>"; };
-		EAF6706E1B31F9450025D7CF /* VideoMessageTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoMessageTask.swift; sourceTree = "<group>"; };
 		EAF670701B31F9450025D7CF /* AnimationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationExtensions.swift; sourceTree = "<group>"; };
 		EAF670711B31F9450025D7CF /* GeometryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometryExtensions.swift; sourceTree = "<group>"; };
 		EAF670721B31F9450025D7CF /* UIKitExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
@@ -805,8 +801,6 @@
 		EAF6706C1B31F9450025D7CF /* Tasks */ = {
 			isa = PBXGroup;
 			children = (
-				EAF6706D1B31F9450025D7CF /* TaskManager.swift */,
-				EAF6706E1B31F9450025D7CF /* VideoMessageTask.swift */,
 				F912AC5C1B3745AC00DEA6B1 /* VideoUploadOperation.swift */,
 			);
 			path = Tasks;
@@ -1287,7 +1281,6 @@
 				EAF6707E1B31F9450025D7CF /* Candidate.swift in Sources */,
 				EAF6707D1B31F9450025D7CF /* _Video.swift in Sources */,
 				EA4757151B392C19002071D7 /* Segue.swift in Sources */,
-				EAF670851B31F9450025D7CF /* VideoMessageTask.swift in Sources */,
 				EAF6701D1B31E6550025D7CF /* Core.m in Sources */,
 				EAF670741B31F9450025D7CF /* MeteorExtension.swift in Sources */,
 				EA9C166F1B3726E300371B50 /* MessageViewModel.swift in Sources */,
@@ -1302,7 +1295,6 @@
 				EAF6707C1B31F9450025D7CF /* _User.swift in Sources */,
 				EA78C8781B320A2A0016AB73 /* AlamofireExtension.swift in Sources */,
 				EAF670791B31F9450025D7CF /* _Candidate.swift in Sources */,
-				EAF670841B31F9450025D7CF /* TaskManager.swift in Sources */,
 				EAF670751B31F9450025D7CF /* SugarRecordExtension.swift in Sources */,
 				EAF670951B31FCBE0025D7CF /* ProvisioningProfile.swift in Sources */,
 				EAF670971B31FE6A0025D7CF /* Environment.swift in Sources */,

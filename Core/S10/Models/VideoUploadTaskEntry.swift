@@ -11,6 +11,7 @@ import RealmSwift
 
 public class VideoUploadTaskEntry : Object {
     dynamic var id = ""
+    dynamic var connectionId = ""
     dynamic var localURL = ""
 
     override public static func primaryKey() -> String? {
