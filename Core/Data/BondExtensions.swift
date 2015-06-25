@@ -35,6 +35,25 @@ public extension NSObject {
     }
 }
 
+// MARK: - UIKit
+
+private var activeDynamicHandleNSLayoutConstraint: UInt8 = 0;
+
+extension NSLayoutConstraint {
+    public var dynActive: Dynamic<Bool> {
+        if let d: AnyObject = objc_getAssociatedObject(self, &activeDynamicHandleNSLayoutConstraint) {
+            return (d as? Dynamic<Bool>)!
+        } else {
+            let d = InternalDynamic<Bool>(self.active)
+            let bond = Bond<Bool>() { [weak self] v in if let s = self { s.active = v } }
+            d.bindTo(bond, fire: false, strongly: false)
+            d.retain(bond)
+            objc_setAssociatedObject(self, &activeDynamicHandleNSLayoutConstraint, d, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
+            return d
+        }
+    }
+}
+
 // MARK: - CoreData
 
 private var sectionsDynamicHandleNSFetchedResultsController: UInt8 = 0;

@@ -20,7 +20,6 @@ class ConnectionCell : UITableViewCell {
     @IBOutlet weak var badgeLabel: UILabel!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var nameCenterConstraint: NSLayoutConstraint!
-    var nameCenterConstraintActiveBond: Bond<Bool>!
     
     var viewModel : ConversationViewModel? {
         didSet { if let vm = viewModel { bindViewModel(vm) } }
@@ -35,16 +34,7 @@ class ConnectionCell : UITableViewCell {
         reduce(viewModel.unreadCount, viewModel.hasUnsentMessage) {
             $0 == 0 || $1
         } ->> badgeLabel.dynHidden
-        viewModel.formattedStatus.map { $0.length == 0 } ->> nameCenterConstraintActiveBond
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        nameCenterConstraintActiveBond = Bond<Bool>() { [weak self] v in
-            if let this = self {
-                this.nameCenterConstraint.active = v
-            }
-        }
+        viewModel.formattedStatus.map { $0.length == 0 } ->> nameCenterConstraint.dynActive
     }
     
     override func prepareForReuse() {
@@ -52,7 +42,7 @@ class ConnectionCell : UITableViewCell {
         avatarView.unbindDynImageURL()
         unbindAll(nameLabel, subtitleLabel, badgeLabel)
         badgeLabel.dynHidden.designatedBond.unbindAll()
+        nameCenterConstraint.dynActive.designatedBond.unbindAll()
         spinner.designatedBond.unbindAll()
-        nameCenterConstraintActiveBond.unbindAll()
     }
 }
