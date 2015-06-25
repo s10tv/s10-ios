@@ -19,7 +19,7 @@ class ConnectionCell : UITableViewCell {
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var badgeLabel: UILabel!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
-    @IBOutlet weak var nameCenterConstraint: NSLayoutConstraint!
+    @IBOutlet var nameCenterConstraint: NSLayoutConstraint! // TODO: Why is strong needed?
     
     var viewModel : ConversationViewModel? {
         didSet { if let vm = viewModel { bindViewModel(vm) } }

@@ -20,6 +20,7 @@ public struct Formatters {
     }()
     private static let timeInterval: TTTTimeIntervalFormatter = {
         let formatter = TTTTimeIntervalFormatter()
+        formatter.presentTimeIntervalMargin = 60
         formatter.usesIdiomaticDeicticExpressions = true
         formatter.usesAbbreviatedCalendarUnits = true
         return formatter
