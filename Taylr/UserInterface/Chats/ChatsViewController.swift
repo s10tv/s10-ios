@@ -20,10 +20,10 @@ class ChatsViewController : BaseViewController {
         super.viewDidLoad()
         dataSourceBond = UITableViewDataSourceBond(tableView: tableView, disableAnimation: false)
         chatsVM = ChatsViewModel()
-        chatsVM.connections.map { [unowned self] (connection, index) -> UITableViewCell in
+        chatsVM.connectionViewModels.map { [unowned self] (connectionVM, index) -> UITableViewCell in
             let cell = self.tableView.dequeueReusableCellWithIdentifier("ConnectionCell",
                 forIndexPath: NSIndexPath(forRow: index, inSection: 0)) as! ConnectionCell
-            cell.connection = connection
+            cell.viewModel = connectionVM
             return cell
         } ->> dataSourceBond
     }
@@ -33,8 +33,7 @@ class ChatsViewController : BaseViewController {
             vc.user = ((sender as! UIGestureRecognizer).view as! UserAvatarView).user
         }
         if let vc = segue.destinationViewController as? ConversationViewController {
-            let conn = chatsVM.connections[tableView.indexPathForSelectedRow()!.row]
-            vc.conversationVM = ConversationViewModel(connection: conn)
+            vc.conversationVM = chatsVM.connectionViewModels[tableView.indexPathForSelectedRow()!.row]
         }
     }
     

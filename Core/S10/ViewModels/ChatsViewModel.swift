@@ -12,10 +12,12 @@ import Bond
 
 public class ChatsViewModel {
     private let frc : NSFetchedResultsController
-    public let connections: DynamicArray<Connection>
+    public let connectionViewModels: DynamicArray<ConversationViewModel>
     
     public init() {
         frc = Connection.sorted(by: ConnectionKeys.updatedAt.rawValue, ascending: false).frc()
-        connections = frc.dynSections[0].map { (o, _) in o as! Connection }
+        connectionViewModels = frc.dynSections[0].map { (connection, _) in
+            ConversationViewModel(connection: connection as! Connection)
+        }
     }
 }

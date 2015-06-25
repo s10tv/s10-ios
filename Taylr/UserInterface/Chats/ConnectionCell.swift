@@ -18,13 +18,14 @@ class ConnectionCell : UITableViewCell {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     
-    var connection : Connection? {
-        didSet {
-            if let user = connection?.otherUser {
-                avatarView.user = user
-                user.displayName ->> nameLabel
-            }
-        }
+    var viewModel : ConversationViewModel? {
+        didSet { if let vm = viewModel { bindViewModel(vm) } }
+    }
+    
+    func bindViewModel(viewModel: ConversationViewModel) {
+        avatarView.user = viewModel.recipient.value
+        viewModel.recipient.value!.displayName ->> nameLabel
+        
     }
     
     override func prepareForReuse() {
