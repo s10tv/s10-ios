@@ -7,9 +7,13 @@ public enum ConnectionKeys: String, Printable {
 
     case createdAt = "createdAt"
 
+    case lastMessageStatus = "lastMessageStatus"
+
     case unreadCount = "unreadCount"
 
     case updatedAt = "updatedAt"
+
+    case lastSender = "lastSender"
 
     case otherUser = "otherUser"
 
@@ -48,6 +52,11 @@ class _Connection: NSManagedObject {
     // func validateCreatedAt(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged public
+    var lastMessageStatus: String?
+
+    // func validateLastMessageStatus(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged public
     var unreadCount: NSNumber?
 
     // func validateUnreadCount(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
@@ -58,6 +67,11 @@ class _Connection: NSManagedObject {
     // func validateUpdatedAt(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
+
+    @NSManaged public
+    var lastSender: User?
+
+    // func validateLastSender(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged public
     var otherUser: User?

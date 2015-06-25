@@ -8,8 +8,10 @@
     </entity>
     <entity name="Connection" representedClassName="Connection" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="lastMessageStatus" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="unreadCount" optional="YES" attributeType="Integer 16" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <relationship name="lastSender" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
         <relationship name="otherUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
     </entity>
     <entity name="Message" representedClassName="Message" syncable="YES">
@@ -36,7 +38,7 @@
     </entity>
     <elements>
         <element name="Candidate" positionX="-45" positionY="54" width="128" height="105"/>
-        <element name="Connection" positionX="-54" positionY="0" width="128" height="105"/>
+        <element name="Connection" positionX="-54" positionY="0" width="128" height="135"/>
         <element name="Message" positionX="-36" positionY="27" width="128" height="135"/>
         <element name="User" positionX="-63" positionY="-18" width="128" height="150"/>
         <element name="Video" positionX="-36" positionY="90" width="128" height="90"/>

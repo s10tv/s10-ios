@@ -32,8 +32,8 @@ public class MessageViewModel {
         self.message = message
         sender = message.sender
         videoURL = message.video!.URL
-        formattedDate = reduce(message.dynCreatedAt, CurrentDate) { createdAt, _ in
-            createdAt.map { Formatters.formatRelativeDate($0) } ?? ""
+        formattedDate = reduce(message.dynCreatedAt, CurrentDate) {
+            Formatters.formatRelativeDate($0, relativeTo: $1) ?? ""
         }
         formattedStatus = reduce(message.dynStatus, message.dynExpiresAt, CurrentDate) { status, expiresAt, now in
             if let status = status {

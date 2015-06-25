@@ -9,9 +9,30 @@
 import CoreData
 import SugarRecord
 import ReactiveCocoa
+import Bond
 
 @objc(Connection)
 public class Connection: _Connection {
+    
+    public private(set) lazy var dynLastMessageStatus: Dynamic<Message.Status?> = {
+        return self.dynValue(ConnectionKeys.lastMessageStatus).map { $0.map { Message.Status(rawValue: $0) } ?? nil }
+    }()
+    
+    public private(set) lazy var dynUpdatedAt: Dynamic<NSDate?> = {
+        return self.dynValue(ConnectionKeys.updatedAt)
+    }()
+    
+    public private(set) lazy var dynOtherUser: Dynamic<User?> = {
+        return self.dynValue(ConnectionKeys.otherUser)
+    }()
+    
+    public private(set) lazy var dynLastSender: Dynamic<User?> = {
+        return self.dynValue(ConnectionKeys.lastSender)
+    }()
+    
+    public private(set) lazy var dynUnreadCount: Dynamic<Int?> = {
+        return self.dynValue(ConnectionKeys.unreadCount)
+    }()
     
     // NOTE: Not meaningfully ordered for performance, despite array return type.
     public var messages: [Message] {

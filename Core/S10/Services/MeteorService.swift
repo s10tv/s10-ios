@@ -195,6 +195,10 @@ public class MeteorService {
 //            println("pre message \(message.documentID) status \(message.status) expire \(message.expiresAt)")
             message.statusEnum = .Opened
             message.expiresAt = NSDate(timeIntervalSinceNow: NSTimeInterval(expireDelay))
+            if let connection = message.connection {
+                connection.unreadCount = (connection.unreadCount?.intValue ?? 1) - 1
+                connection.updatedAt = NSDate()
+            }
             message.save()
 //            println("post message \(message.documentID) status \(message.status) expire \(message.expiresAt)")
             return nil

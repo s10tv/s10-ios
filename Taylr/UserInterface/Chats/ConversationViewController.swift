@@ -61,8 +61,8 @@ class ConversationViewController : BaseViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBarHidden = true
-        avatarView.user = conversationVM.recipient
-        conversationVM.recipient.displayName ->> nameLabel
+        avatarView.user = conversationVM.recipient.value!
+        conversationVM.recipient.value!.displayName ->> nameLabel
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -72,7 +72,7 @@ class ConversationViewController : BaseViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ProfileViewController {
-            vc.user = conversationVM.recipient
+            vc.user = conversationVM.recipient.value!
         }
     }
 }
@@ -117,7 +117,7 @@ extension ConversationViewController : MessageCellDelegate {
 extension ConversationViewController : ProducerDelegate {
     func producer(producer: ProducerViewController, didProduceVideo url: NSURL) {
         Log.info("I got a video \(url)")
-        Globals.videoService.sendVideoMessage(conversationVM.recipient.connection()!,
+        Globals.videoService.sendVideoMessage(conversationVM.connection,
             localVideoURL: url)
         PKHUD.hide(animated: false)
     }
