@@ -48,9 +48,5 @@ public struct Formatters {
             }
         }
         return nil
-    }
-    
-    public static func formatRelativeDate(date: NSDate, relativeTo: NSDate = NSDate()) -> String {
-        return formatRelativeDate(date, relativeTo: relativeTo)!
-    }    
+    }   
 }

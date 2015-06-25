@@ -36,16 +36,7 @@ class XCTestCaseExample: XCTestCase {
         let variable = 1222
         expect(variable) == 1222
     }
-    
-    func testArrayViewModel() {
-        let arr = [121,2,2,2,2,23,3,4]
-        arr.each { expect($0) > 0 }
-        let task = Task(clientId: "", type: "")
-        XCTAssertNotNil(task, "")
-//        let vm = ArrayViewModel(content: ["1", "2", "3", "4"])
-//        XCTAssertEqual(vm.numberOfItemsInSection(0), 4, "Should have 4 items")
-    }
-    
+        
     func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measureBlock() {
