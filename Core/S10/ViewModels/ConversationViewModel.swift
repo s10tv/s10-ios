@@ -15,6 +15,7 @@ public class ConversationViewModel {
     public let recipient: Dynamic<User?>
     public let formattedStatus: Dynamic<String>
     public let unreadCount: Dynamic<Int>
+    public let hasUnsentMessage: Dynamic<Bool>
     public private(set) lazy var messageViewModels: DynamicArray<MessageViewModel> = {
         return self.messagesFrc.dynSections[0].map { (o, _) in MessageViewModel(message: o as! Message) }
     }()
@@ -23,8 +24,9 @@ public class ConversationViewModel {
         self.connection = connection
         messagesFrc = connection.fetchMessages(sorted: true)
         recipient = connection.dynOtherUser
-        unreadCount = connection.dynUnreadCount.map { $0 ?? 0 }
         formattedStatus = ConversationViewModel.formatStatus(connection)
+        unreadCount = connection.dynUnreadCount.map { $0 ?? 0 }
+        hasUnsentMessage = Dynamic(false)
     }
     
     class func formatStatus(connection: Connection) -> Dynamic<String> {
