@@ -17,12 +17,12 @@ class CandidateCell : UICollectionViewCell {
     @IBOutlet weak var titleLabel: UILabel!
     
     var candidate: Candidate? {
-        didSet {
-            if let user = candidate?.user {
-                user.avatarURL ->> avatarView.dynImageURL
-                user.displayName ->> titleLabel
-            }
-        }
+        didSet { if let u = candidate?.user { bindViewModel(u) } }
+    }
+    
+    func bindViewModel(user: User) {
+        user.avatarURL ->> avatarView.dynImageURL
+        user.displayName ->> titleLabel
     }
     
     override func prepareForReuse() {

@@ -24,7 +24,12 @@ public class ConversationViewModel {
     
     public init(connection: Connection) {
         self.connection = connection
-        messagesFrc = connection.fetchMessages(sorted: true)
+        messagesFrc = Message
+            .by(NSPredicate(format: "%K == %@ && %K != nil",
+                MessageKeys.connection.rawValue, connection,
+                MessageKeys.video.rawValue))
+            .sorted(by: MessageKeys.createdAt.rawValue, ascending: true)
+            .frc()
         recipient = connection.dynOtherUser
         formattedStatus = ConversationViewModel.formatStatus(connection)
         (hasUnsentMessage, realmToken) = ConversationViewModel.observeUnsentMessage(connection)

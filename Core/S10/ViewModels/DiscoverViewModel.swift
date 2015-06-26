@@ -17,8 +17,9 @@ public class DiscoverViewModel {
     public init() {
         // Filter out candidate without users for now
         frc = Candidate
-//            .by("\(CandidateKeys.user) != nil")
-            .sorted(by: CandidateKeys.score.rawValue, ascending: false).frc()
+            .by("\(CandidateKeys.user) != nil")
+            .sorted(by: CandidateKeys.score.rawValue, ascending: false)
+            .frc()
         candidates = frc.dynSections[0].map { (o, _) in o as! Candidate }
     }
     

@@ -104,20 +104,26 @@ extension NSFetchedResultsController {
 extension FetchedResultsControllerDynamicDelegate : NSFetchedResultsControllerDelegate {
     
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: AnyObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
+        assert(NSThread.isMainThread(), "Should only happen on main thread")
         switch type {
         case .Insert:
+            Log.verbose("\(unsafeAddressOf(self)) Will insert object at index \(newIndexPath)")
             sections?[newIndexPath!.section].insert(anObject as! NSManagedObject, atIndex: newIndexPath!.row)
         case .Delete:
+            Log.verbose("\(unsafeAddressOf(self)) Will delete object at index \(indexPath)")
             sections?[indexPath!.section].removeAtIndex(indexPath!.row)
         case .Update:
+            Log.verbose("\(unsafeAddressOf(self)) Will update object at index \(indexPath)")
             sections?[indexPath!.section][indexPath!.row] = anObject as! NSManagedObject
         case .Move:
+            Log.verbose("\(unsafeAddressOf(self)) Will move object from \(indexPath) to \(newIndexPath)")
             sections?[indexPath!.section].removeAtIndex(indexPath!.row)
             sections?[newIndexPath!.section].insert(anObject as! NSManagedObject, atIndex: newIndexPath!.row)
         }
     }
     
     func controller(controller: NSFetchedResultsController, didChangeSection sectionInfo: NSFetchedResultsSectionInfo, atIndex sectionIndex: Int, forChangeType type: NSFetchedResultsChangeType) {
+        assert(NSThread.isMainThread(), "Should only happen on main thread")
         switch type {
         case .Insert:
             sections?.insert(DynamicArray([]), atIndex: sectionIndex)
