@@ -21,6 +21,10 @@
 		EA3777721A966EC10055DE99 /* TransatTextBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */; };
 		EA3777751A966EC10055DE99 /* TransatTextMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA3777701A966EC10055DE99 /* TransatTextMedium.otf */; };
 		EA3777761A966EC10055DE99 /* TransatTextStandard.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA3777711A966EC10055DE99 /* TransatTextStandard.otf */; };
+		EA4216451B3E092200613EFA /* _Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4216431B3E092200613EFA /* _Activity.swift */; };
+		EA4216461B3E092200613EFA /* _Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4216441B3E092200613EFA /* _Service.swift */; };
+		EA4216491B3E093400613EFA /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4216471B3E093400613EFA /* Activity.swift */; };
+		EA42164A1B3E093400613EFA /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4216481B3E093400613EFA /* Service.swift */; };
 		EA4756FE1B38F901002071D7 /* BondExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4756FD1B38F901002071D7 /* BondExtensions.swift */; };
 		EA4757031B391F56002071D7 /* ChatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4757011B391F56002071D7 /* ChatsViewModel.swift */; };
 		EA4757041B391F56002071D7 /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4757021B391F56002071D7 /* DiscoverViewModel.swift */; };
@@ -213,6 +217,10 @@
 		EA37776F1A966EC10055DE99 /* TransatTextLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextLight.otf; sourceTree = "<group>"; };
 		EA3777701A966EC10055DE99 /* TransatTextMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextMedium.otf; sourceTree = "<group>"; };
 		EA3777711A966EC10055DE99 /* TransatTextStandard.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextStandard.otf; sourceTree = "<group>"; };
+		EA4216431B3E092200613EFA /* _Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Activity.swift; sourceTree = "<group>"; };
+		EA4216441B3E092200613EFA /* _Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Service.swift; sourceTree = "<group>"; };
+		EA4216471B3E093400613EFA /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
+		EA4216481B3E093400613EFA /* Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		EA4756FD1B38F901002071D7 /* BondExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BondExtensions.swift; sourceTree = "<group>"; };
 		EA4757011B391F56002071D7 /* ChatsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewModel.swift; sourceTree = "<group>"; };
 		EA4757021B391F56002071D7 /* DiscoverViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
@@ -777,6 +785,8 @@
 				EAF670661B31F9450025D7CF /* Connection.swift */,
 				EAF670671B31F9450025D7CF /* Message.swift */,
 				EAF6706B1B31F9450025D7CF /* Video.swift */,
+				EA4216471B3E093400613EFA /* Activity.swift */,
+				EA4216481B3E093400613EFA /* Service.swift */,
 				EAF670681B31F9450025D7CF /* Models.xcdatamodeld */,
 				EAF6708B1B31FA2E0025D7CF /* Metadata.swift */,
 				EAF6708C1B31FA2E0025D7CF /* Settings.swift */,
@@ -794,6 +804,8 @@
 				EAF670621B31F9450025D7CF /* _Message.swift */,
 				EAF670631B31F9450025D7CF /* _User.swift */,
 				EAF670641B31F9450025D7CF /* _Video.swift */,
+				EA4216431B3E092200613EFA /* _Activity.swift */,
+				EA4216441B3E092200613EFA /* _Service.swift */,
 			);
 			path = _Models;
 			sourceTree = "<group>";
@@ -1277,6 +1289,7 @@
 				EA4757031B391F56002071D7 /* ChatsViewModel.swift in Sources */,
 				F912AC5F1B37463600DEA6B1 /* VideoUploadTaskEntry.swift in Sources */,
 				F912AC5D1B3745AC00DEA6B1 /* VideoUploadOperation.swift in Sources */,
+				EA4216491B3E093400613EFA /* Activity.swift in Sources */,
 				EAF670801B31F9450025D7CF /* Message.swift in Sources */,
 				EAF6707E1B31F9450025D7CF /* Candidate.swift in Sources */,
 				EAF6707D1B31F9450025D7CF /* _Video.swift in Sources */,
@@ -1297,15 +1310,18 @@
 				EAF670791B31F9450025D7CF /* _Candidate.swift in Sources */,
 				EAF670751B31F9450025D7CF /* SugarRecordExtension.swift in Sources */,
 				EAF670951B31FCBE0025D7CF /* ProvisioningProfile.swift in Sources */,
+				EA4216451B3E092200613EFA /* _Activity.swift in Sources */,
 				EAF670971B31FE6A0025D7CF /* Environment.swift in Sources */,
 				EAF6707F1B31F9450025D7CF /* Connection.swift in Sources */,
 				EAF670731B31F9450025D7CF /* MeteorCDStack.swift in Sources */,
+				EA4216461B3E092200613EFA /* _Service.swift in Sources */,
 				EAF670941B31FCBE0025D7CF /* DeviceInfo.swift in Sources */,
 				EAF670861B31F9450025D7CF /* AnimationExtensions.swift in Sources */,
 				EAF6708E1B31FA2E0025D7CF /* Metadata.swift in Sources */,
 				EAF670811B31F9450025D7CF /* Models.xcdatamodeld in Sources */,
 				EA4757141B392C19002071D7 /* ScrollTransition.swift in Sources */,
 				EAF6707A1B31F9450025D7CF /* _Connection.swift in Sources */,
+				EA42164A1B3E093400613EFA /* Service.swift in Sources */,
 				EAF670761B31F9450025D7CF /* FoundationExtension.swift in Sources */,
 				EAF6708F1B31FA2E0025D7CF /* Settings.swift in Sources */,
 				EA4757131B392C19002071D7 /* PanInteractor.swift in Sources */,
