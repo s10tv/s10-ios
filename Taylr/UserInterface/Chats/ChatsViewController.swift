@@ -29,9 +29,6 @@ class ChatsViewController : BaseViewController {
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let vc = segue.destinationViewController as? ProfileViewController {
-            vc.user = ((sender as! UIGestureRecognizer).view as! UserAvatarView).user
-        }
         if let vc = segue.destinationViewController as? ConversationViewController {
             vc.conversationVM = chatsVM.connectionViewModels[tableView.indexPathForSelectedRow()!.row]
         }
