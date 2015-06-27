@@ -11,6 +11,7 @@ import PKHUD
 import ReactiveCocoa
 import Meteor
 import Core
+import DigitsKit
 
 class SignupViewController : BaseViewController {
 
@@ -23,6 +24,13 @@ class SignupViewController : BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loginButton.whenLongPressEnded { [weak self] in self!.debugLogin(self!) }
+        let authenticateButton = DGTAuthenticateButton(authenticationCompletion: {
+            (session: DGTSession!, error: NSError!) in
+            // play with Digits session
+        })
+        authenticateButton.center = self.view.center
+        self.view.addSubview(authenticateButton)
+
     }
     
     override func viewWillAppear(animated: Bool) {

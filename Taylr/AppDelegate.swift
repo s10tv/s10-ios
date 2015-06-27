@@ -14,6 +14,10 @@ import FacebookSDK
 //import BugfenderSDK
 import SwiftyUserDefaults
 import Core
+import Fabric
+import DigitsKit
+import Crashlytics
+
 
 // Globally accessible variables and shorthands
 private struct _GlobalsContainer {
@@ -35,6 +39,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Configure the environment
         let env = TaylrEnvironment.configureFromEmbeddedProvisioningProfile()
+        Fabric.with([Digits(), Crashlytics()])
         
         // Start crash reporting and logging as soon as we can
 //        Crashlytics.startWithAPIKey(env.crashlyticsAPIKey)
