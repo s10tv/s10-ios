@@ -10,7 +10,6 @@ import UIKit
 import SugarRecord
 import Meteor
 import FacebookSDK
-//import CrashlyticsFramework
 //import BugfenderSDK
 import SwiftyUserDefaults
 import Core

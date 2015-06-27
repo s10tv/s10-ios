@@ -1,14 +1,15 @@
 //
-//  FacebookService.swift
-//  Serendipity
+//  AccountService.swift
+//  Taylr
 //
 //  Created by Tony Xiao on 2/3/15.
-//  Copyright (c) 2015 Serendipity. All rights reserved.
+//  Copyright (c) 2015 S10 Inc. All rights reserved.
 //
 
 import Foundation
 import ReactiveCocoa
 import FacebookSDK
+import DigitsKit
 import Core
 
 class AccountService {
@@ -23,6 +24,7 @@ class AccountService {
         // extended permissions
         "email"
     ]
+    let digits = Digits.sharedInstance()
     var session: FBSession { return FBSession.activeSession() }
     
     init(meteorService: MeteorService) {
@@ -52,23 +54,36 @@ class AccountService {
     }
     
     func login() -> RACSignal {
-        return self.openSession(allowUI: true).then {
-            let data = self.session.accessTokenData
-            return self.meteorService.loginWithFacebook(accessToken: data.accessToken, expiresAt: data.expirationDate)
-        }.replayWithSubject().deliverOnMainThread().doCompleted {
-            self.didLogin()
+        let subject = RACReplaySubject()
+        digits.authenticateWithCompletion { (session: DGTSession?, error: NSError?) in
+            println("Session userId= \(session?.userID) error \(error)")
+            if let session = session {
+                self.meteorService.loginWithDigits(
+                    userId: session.userID,
+                    authToken: session.authToken,
+                    authTokenSecret: session.authTokenSecret,
+                    phoneNumber: session.phoneNumber
+                ).doCompleted {
+                    self.didLogin()
+                }.subscribe(subject)
+            } else {
+                subject.sendError(error)
+            }
         }
+        return subject
     }
     
     func logout() -> RACSignal {
         Analytics.track("Logged Out")
         Analytics.identifyUser(Globals.env.deviceId) // Reset to deviceId based tracking
-        self.session.closeAndClearTokenInformation()
         UD.resetAll()
+        digits.logOut()
+        self.session.closeAndClearTokenInformation()
         return meteorService.logout().deliverOnMainThread()
     }
     
     func deleteAccount() -> RACSignal {
+        digits.logOut()
         self.session.closeAndClearTokenInformation()
         UD.resetAll()
         return meteorService.deleteAccount().deliverOnMainThread()

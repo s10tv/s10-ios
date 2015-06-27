@@ -8,10 +8,10 @@
 
 import Foundation
 import PKHUD
+import DigitsKit
 import ReactiveCocoa
 import Meteor
 import Core
-import DigitsKit
 
 class SignupViewController : BaseViewController {
 
@@ -24,13 +24,6 @@ class SignupViewController : BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loginButton.whenLongPressEnded { [weak self] in self!.debugLogin(self!) }
-        let authenticateButton = DGTAuthenticateButton(authenticationCompletion: {
-            (session: DGTSession!, error: NSError!) in
-            // play with Digits session
-        })
-        authenticateButton.center = self.view.center
-        self.view.addSubview(authenticateButton)
-
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -66,6 +59,23 @@ class SignupViewController : BaseViewController {
     
     @IBAction func viewPrivacy(sender: AnyObject) {
         UIApplication.sharedApplication().openURL(Globals.env.privacyURL)
+    }
+    
+    @IBAction func startLogin(sender: AnyObject) {
+        if !Meteor.networkReachable {
+            showErrorAlert(NSError(.NetworkUnreachable))
+            return
+        }
+        Globals.accountService.login().subscribeError({ error in
+            if error.domain == METDDPErrorDomain {
+                self.showAlert(LS(.errUnableToLoginTitle), message: LS(.errUnableToLoginMessage))
+            } else if error.domain == DGTErrorDomain {
+                // Ignoring digits error for now
+                Log.warn("Ignoring digits error, not handling for now \(error)")
+            }
+        }, completed: {
+            self.navigationController?.popToRootViewControllerAnimated(true)
+        })
     }
     
     @IBAction func loginWithFacebook(sender: AnyObject) {

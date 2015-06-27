@@ -128,6 +128,17 @@ public class MeteorService {
         ]])
     }
     
+    public func loginWithDigits(#userId: String, authToken: String, authTokenSecret: String, phoneNumber: String) -> RACSignal {
+        return meteor.loginWithMethod("login", params: [[
+            "digits": [
+                "userId": userId,
+                "authToken": authToken,
+                "authTokenSecret": authTokenSecret,
+                "phoneNumber": phoneNumber
+            ]
+        ]])
+    }
+    
     public func loginWithFacebook(#accessToken: String, expiresAt: NSDate) -> RACSignal {
         return meteor.loginWithMethod("login", params: [[
             "fb-access": [

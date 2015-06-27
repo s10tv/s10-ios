@@ -51,15 +51,15 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isY-Ks-GfE" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
-                                <rect key="frame" x="175" y="406" width="250" height="55"/>
+                                <rect key="frame" x="160" y="406" width="280" height="55"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="55" id="3Tw-Lk-b0L"/>
-                                    <constraint firstAttribute="width" constant="250" id="5h1-vp-zFT"/>
+                                    <constraint firstAttribute="width" constant="280" id="5h1-vp-zFT"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="TransatTextBlack" family="Transat Text" pointSize="20"/>
                                 <inset key="titleEdgeInsets" minX="0.0" minY="5" maxX="0.0" maxY="0.0"/>
-                                <state key="normal" title="Log in with Facebook">
+                                <state key="normal" title="Log in with phone number">
                                     <color key="titleColor" red="0.94117647059999998" green="0.98039215690000003" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -75,7 +75,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <action selector="loginWithFacebook:" destination="dFw-q9-bre" eventType="touchUpInside" id="fV7-8X-1KO"/>
+                                    <action selector="startLogin:" destination="dFw-q9-bre" eventType="touchUpInside" id="LLF-Ml-IV2"/>
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0f-ne-erJ" userLabel="Terms &amp; Privacy">
