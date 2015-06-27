@@ -422,6 +422,7 @@
 				50F09ED94DDC00446577DFD4 /* Pods_Core_TestApp.framework */,
 			);
 			name = Frameworks;
+			path = Includes;
 			sourceTree = "<group>";
 		};
 		49A80BC478B1E012CE6D7406 /* Generated */ = {
@@ -1262,7 +1263,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Fabric.framework/run 67f7b1cc77f3e88b8e5b17a5bbc2ca6cb6f7ae53 1406e03532dd866d616ac19642903e2db44a36d93de980165c1e2e01fc17b215";
+			shellScript = "./Includes/Fabric.framework/run 67f7b1cc77f3e88b8e5b17a5bbc2ca6cb6f7ae53 1406e03532dd866d616ac19642903e2db44a36d93de980165c1e2e01fc17b215";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1598,6 +1599,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Includes";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -1643,6 +1645,7 @@
 				COPY_PHASE_STRIP = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(PROJECT_DIR)/Includes";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
