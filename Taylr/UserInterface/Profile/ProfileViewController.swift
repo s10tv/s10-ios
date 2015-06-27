@@ -89,7 +89,11 @@ extension ProfileViewController : UITableViewDataSource {
         if indexPath.row == 0 {
             return mainCell
         }
-        return tableView.dequeueReusableCellWithIdentifier("ImageCell") as! UITableViewCell
+        if indexPath.row % 2 == 0 {
+            return tableView.dequeueReusableCellWithIdentifier("ImageCell") as! UITableViewCell
+        } else {
+            return tableView.dequeueReusableCellWithIdentifier("TextCell") as! UITableViewCell
+        }
     }
 }
 
