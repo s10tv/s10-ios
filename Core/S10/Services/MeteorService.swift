@@ -83,12 +83,18 @@ public class MeteorService {
     
     // MARK: - Publications
     
-    public func subscribeProfile(user: User) -> METSubscription {
-        return meteor.addSubscriptionWithName("profile", parameters: [user])
+    public func subscribeServices(user: User) -> METSubscription {
+        return meteor.addSubscriptionWithName("userServices", parameters: [user])
     }
     
-    public func unsubscribe(subscription: METSubscription) {
-        meteor.removeSubscription(subscription)
+    public func subscribeActivities(user: User) -> METSubscription {
+        return meteor.addSubscriptionWithName("userActivities", parameters: [user])
+    }
+    
+    public func unsubscribe(subscription: METSubscription?) {
+        if let subscription = subscription {
+            meteor.removeSubscription(subscription)
+        }
     }
     
     // MARK: - Device

@@ -5,9 +5,7 @@ import CoreData
 
 public enum ServiceKeys: String, Printable {
 
-    case iconUrl = "iconUrl"
-
-    case name = "name"
+    case serviceType = "serviceType"
 
     case userDisplayName = "userDisplayName"
 
@@ -45,14 +43,9 @@ class _Service: NSManagedObject {
     // MARK: - Properties
 
     @NSManaged public
-    var iconUrl: String?
+    var serviceType: String?
 
-    // func validateIconUrl(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
-
-    @NSManaged public
-    var name: String?
-
-    // func validateName(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateServiceType(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged public
     var userDisplayName: String?

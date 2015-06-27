@@ -7,6 +7,24 @@
 
 
 public enum R {
+    public enum DigitsKitResources : String {
+        /// addressbook-find-friends.png
+        case addressbookFindFriends = "addressbook-find-friends.png"
+        /// addressbook-find-friends@3x.png
+        case addressbookFindFriends3x = "addressbook-find-friends@3x.png"
+        /// digits-logo-icon.png
+        case digitsLogo = "digits-logo-icon.png"
+        /// digits-logo-icon@3x.png
+        case digitsLogo3x = "digits-logo-icon@3x.png"
+        /// digits-logo-name.png
+        case digitsLogoName = "digits-logo-name.png"
+        /// digits-logo-name@3x.png
+        case digitsLogoName3x = "digits-logo-name@3x.png"
+        /// unable-phone.png
+        case unablePhone = "unable-phone.png"
+        /// unable-phone@3x.png
+        case unablePhone3x = "unable-phone@3x.png"
+    }
     public enum Fonts : String {
         /// TransatTextBlack
         case transatTextBlack = "TransatTextBlack"
@@ -132,10 +150,16 @@ public enum R {
         case icDisclosure = "ic-disclosure"
         /// ic-edit-text
         case icEditText = "ic-edit-text"
+        /// ic-facebook
+        case icFacebook = "ic-facebook"
         /// ic-flag
         case icFlag = "ic-flag"
         /// ic-home
         case icHome = "ic-home"
+        /// ic-instagram
+        case icInstagram = "ic-instagram"
+        /// ic-linkedin
+        case icLinkedin = "ic-linkedin"
         /// ic-magic-wand
         case icMagicWand = "ic-magic-wand"
         /// ic-me
@@ -148,8 +172,12 @@ public enum R {
         case icPlay = "ic-play"
         /// ic-save
         case icSave = "ic-save"
+        /// ic-twitter
+        case icTwitter = "ic-twitter"
         /// ic-upvote
         case icUpvote = "ic-upvote"
+        /// ic-youtube
+        case icYoutube = "ic-youtube"
         /// Logo
         case logo = "Logo"
         /// sample-cover-image

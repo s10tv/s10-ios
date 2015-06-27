@@ -24,10 +24,12 @@ public enum SegueIdentifier : String {
 
 public enum TableViewCellreuseIdentifier : String {
     case ConnectionCell = "ConnectionCell"
+    case ImageCell = "ImageCell"
     case ProfileMainCell = "ProfileMainCell"
     case SettingsLabelCell = "SettingsLabelCell"
     case SettingsPhotoCell = "SettingsPhotoCell"
     case SettingsTextCell = "SettingsTextCell"
+    case TextCell = "TextCell"
 }
 
 public enum ViewControllerStoryboardIdentifier : String {

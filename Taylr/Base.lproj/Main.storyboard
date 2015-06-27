@@ -19,6 +19,7 @@
             <string>TransatTextStandard</string>
             <string>TransatTextStandard</string>
             <string>TransatTextStandard</string>
+            <string>TransatTextStandard</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -443,7 +444,7 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remembering this incredible Manchester crowd from the other night, and getting ALL EXCITED FOR HYDE PARK TOMORROW. " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.94999999999999996" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bGD-9B-jA6">
                                                             <rect key="frame" x="8" y="8" width="252" height="79"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                            <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="17"/>
                                                             <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
@@ -499,7 +500,6 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="O0f-xd-Ps7" id="KL6-aS-Xne"/>
                                     <outlet property="delegate" destination="O0f-xd-Ps7" id="taZ-iR-Ce0"/>
                                 </connections>
                             </tableView>

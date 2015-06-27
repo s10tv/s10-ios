@@ -54,7 +54,7 @@ class DiscoverViewController : BaseViewController {
         if let profileVC = segue.destinationViewController as? ProfileViewController,
             let indexPath = collectionView.indexPathsForSelectedItems().first as? NSIndexPath,
             let user = discoverVM.candidates[indexPath.row].user {
-            profileVC.user = user
+            profileVC.profileVM = ProfileViewModel(meteor: Meteor, user: user)
         }
     }
 

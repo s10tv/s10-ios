@@ -2,6 +2,7 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14D136" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Activity" representedClassName="Activity" syncable="YES">
         <attribute name="action" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="imageUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="videoUrl" optional="YES" attributeType="String" syncable="YES"/>
@@ -51,12 +52,12 @@
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
+        <element name="Activity" positionX="790" positionY="72" width="128" height="150"/>
         <element name="Candidate" positionX="-207" positionY="57" width="128" height="105"/>
         <element name="Connection" positionX="-819" positionY="9" width="128" height="135"/>
         <element name="Message" positionX="-207" positionY="27" width="128" height="135"/>
+        <element name="Service" positionX="700" positionY="-297" width="128" height="103"/>
         <element name="User" positionX="268" positionY="-261" width="128" height="150"/>
         <element name="Video" positionX="-234" positionY="90" width="128" height="90"/>
-        <element name="Service" positionX="700" positionY="-297" width="128" height="103"/>
-        <element name="Activity" positionX="790" positionY="72" width="128" height="135"/>
     </elements>
 </model>

@@ -31,7 +31,7 @@ class MeViewController : BaseViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ProfileViewController {
-            vc.user = Meteor.user
+            vc.profileVM = ProfileViewModel(meteor: Meteor, user: Meteor.user!)
         }
     }
     

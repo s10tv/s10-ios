@@ -80,7 +80,7 @@ class ConversationViewController : BaseViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ProfileViewController {
-            vc.user = conversationVM.recipient.value!
+            vc.profileVM = ProfileViewModel(meteor: Meteor, user: conversationVM.recipient.value!)
         }
     }
 }
