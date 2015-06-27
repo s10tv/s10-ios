@@ -25,11 +25,11 @@ class RootViewController : UINavigationController {
         
         transitionManager = TransitionManager(navigationController: self)
         
-//        if Meteor.account == nil {
+        if Meteor.account == nil {
             let onboarding = UIStoryboard(name: "Onboarding", bundle: nil)
             let signup = onboarding.instantiateInitialViewController() as! SignupViewController
             pushViewController(signup, animated: false)
-//        }
+        }
     }
     
     // MARK: Target Action

@@ -53,6 +53,15 @@ class AccountService {
         }
     }
     
+    func loginWithFacebook() -> RACSignal {
+        return self.openSession(allowUI: true).then {
+            let data = self.session.accessTokenData
+            return self.meteorService.loginWithFacebook(accessToken: data.accessToken, expiresAt: data.expirationDate)
+        }.replayWithSubject().deliverOnMainThread().doCompleted {
+            self.didLogin()
+        }
+    }
+    
     func login() -> RACSignal {
         let subject = RACReplaySubject()
         digits.authenticateWithCompletion { (session: DGTSession?, error: NSError?) in

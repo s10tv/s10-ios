@@ -62,6 +62,8 @@ class SignupViewController : BaseViewController {
     }
     
     @IBAction func startLogin(sender: AnyObject) {
+        loginWithFacebook(sender)
+        return
         if !Meteor.networkReachable {
             showErrorAlert(NSError(.NetworkUnreachable))
             return
@@ -87,7 +89,7 @@ class SignupViewController : BaseViewController {
             return
         }
 
-        startLogin({ Globals.accountService.login() }, errorBlock: { error in
+        startLogin({ Globals.accountService.loginWithFacebook() }, errorBlock: { error in
             // TODO: This us duplicated and can be refactored
             if let error = error {
                 if error.domain == METDDPErrorDomain {
