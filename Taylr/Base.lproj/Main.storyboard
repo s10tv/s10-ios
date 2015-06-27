@@ -366,7 +366,7 @@
                                             <outlet property="usernameLabel" destination="brj-Vp-1XD" id="Y8Y-G1-rL3"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImageCell" rowHeight="287" id="aze-MX-TRa">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ImageCell" rowHeight="287" id="aze-MX-TRa" customClass="ProfileImageCell" customModule="Taylr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aze-MX-TRa" id="MfE-Pq-Xgn">
@@ -422,8 +422,12 @@
                                                 <constraint firstItem="r8O-2G-N4Y" firstAttribute="top" secondItem="MfE-Pq-Xgn" secondAttribute="topMargin" constant="2" id="vp4-sx-WBa"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="activityImageView" destination="a7p-AH-18h" id="aqI-ik-Lx4"/>
+                                            <outlet property="serviceIconView" destination="r8O-2G-N4Y" id="xdP-gO-Jme"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextCell" rowHeight="111" id="EvT-5v-bQF">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TextCell" rowHeight="111" id="EvT-5v-bQF" customClass="ProfileTextCell" customModule="Taylr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EvT-5v-bQF" id="69N-hZ-r8o">
@@ -497,6 +501,10 @@
                                                 <constraint firstAttribute="bottom" secondItem="l0T-5v-smf" secondAttribute="bottom" id="zRK-Q4-IHd"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="activityTextLabel" destination="bGD-9B-jA6" id="4Ys-lz-Ys5"/>
+                                            <outlet property="serviceIconView" destination="4rT-pj-fC0" id="918-Tr-Dvg"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>

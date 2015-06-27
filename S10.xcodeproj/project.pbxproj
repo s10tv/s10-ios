@@ -18,6 +18,8 @@
 		EA3594161B2DEF0C00E91337 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594151B2DEF0C00E91337 /* MessageCell.swift */; };
 		EA3594191B2FEA1F00E91337 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594181B2FEA1F00E91337 /* TransitionManager.swift */; };
 		EA36B1D01B3F1A67002ADD91 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36B1CF1B3F1A67002ADD91 /* ProfileViewModel.swift */; };
+		EA36B1D21B3F23ED002ADD91 /* ProfileImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36B1D11B3F23ED002ADD91 /* ProfileImageCell.swift */; };
+		EA36B1D41B3F23F4002ADD91 /* ProfileTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36B1D31B3F23F4002ADD91 /* ProfileTextCell.swift */; };
 		EA36D2AB1AE71366006FD5D8 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36D2AA1AE71366006FD5D8 /* Errors.swift */; };
 		EA3777721A966EC10055DE99 /* TransatTextBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */; };
 		EA3777751A966EC10055DE99 /* TransatTextMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA3777701A966EC10055DE99 /* TransatTextMedium.otf */; };
@@ -216,6 +218,8 @@
 		EA3594151B2DEF0C00E91337 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		EA3594181B2FEA1F00E91337 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		EA36B1CF1B3F1A67002ADD91 /* ProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		EA36B1D11B3F23ED002ADD91 /* ProfileImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageCell.swift; sourceTree = "<group>"; };
+		EA36B1D31B3F23F4002ADD91 /* ProfileTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTextCell.swift; sourceTree = "<group>"; };
 		EA36D2AA1AE71366006FD5D8 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextBlack.otf; sourceTree = "<group>"; };
 		EA37776E1A966EC10055DE99 /* TransatTextBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextBold.otf; sourceTree = "<group>"; };
@@ -717,6 +721,8 @@
 			children = (
 				EAA56F831B2B32E500DE3936 /* ProfileViewController.swift */,
 				EACCA3A11B37B02A00015C88 /* ProfileMainCell.swift */,
+				EA36B1D11B3F23ED002ADD91 /* ProfileImageCell.swift */,
+				EA36B1D31B3F23F4002ADD91 /* ProfileTextCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1362,6 +1368,7 @@
 				EAA56F9F1B2B32E500DE3936 /* ProfileViewController.swift in Sources */,
 				EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */,
 				EA3594161B2DEF0C00E91337 /* MessageCell.swift in Sources */,
+				EA36B1D41B3F23F4002ADD91 /* ProfileTextCell.swift in Sources */,
 				EA95BBA71B39308A00701F08 /* PageViewController.swift in Sources */,
 				EA925C741AD99ED8008E9F41 /* R.swift in Sources */,
 				EAF81B271B33391000EED6DD /* EditorViewController.swift in Sources */,
@@ -1386,6 +1393,7 @@
 				EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */,
 				EACCA3A21B37B02A00015C88 /* ProfileMainCell.swift in Sources */,
 				EA3594191B2FEA1F00E91337 /* TransitionManager.swift in Sources */,
+				EA36B1D21B3F23ED002ADD91 /* ProfileImageCell.swift in Sources */,
 				EA49286E1ADF291100118639 /* UpgradeService.swift in Sources */,
 				EA95BBB01B3930B000701F08 /* FacebookExtension.swift in Sources */,
 				EAA56FB11B2BCAC700DE3936 /* CandidateCell.swift in Sources */,
