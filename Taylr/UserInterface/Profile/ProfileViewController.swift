@@ -82,14 +82,14 @@ class ProfileViewController : BaseViewController {
 
 extension ProfileViewController : UITableViewDataSource {
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return 100
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
             return mainCell
         }
-        return tableView.dequeueReusableCellWithIdentifier("") as! UITableViewCell
+        return tableView.dequeueReusableCellWithIdentifier("ImageCell") as! UITableViewCell
     }
 }
 

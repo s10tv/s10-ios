@@ -28,8 +28,9 @@ class MessageCell : UICollectionViewCell {
     weak var delegate: MessageCellDelegate?
     var message: MessageViewModel? {
         didSet {
-            avatarView.user = message?.sender
             if let message = message {
+                println("\(message.sender) \(message.message?.connection)")
+                avatarView.user = message.sender
                 player.setItemByUrl(message.videoURL.value)
                 message.formattedDate ->> timeLabel
                 message.formattedStatus ->> statusLabel
