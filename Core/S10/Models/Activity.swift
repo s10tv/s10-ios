@@ -6,9 +6,13 @@
 //  Copyright (c) 2015 S10 Inc. All rights reserved.
 //
 
+import Bond
+
 @objc(Activity)
 public class Activity: _Activity {
 
-	// Custom logic goes here.
+    public private(set) lazy var imageURL: Dynamic<NSURL?> = {
+        return self.dynValue(ActivityKeys.imageUrl).map { NSURL.fromString($0) }
+    }()
 
 }

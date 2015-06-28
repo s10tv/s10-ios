@@ -7,11 +7,11 @@ public enum ActivityKeys: String, Printable {
 
     case action = "action"
 
-    case createdAt = "createdAt"
-
     case imageUrl = "imageUrl"
 
     case text = "text"
+
+    case timestamp = "timestamp"
 
     case videoUrl = "videoUrl"
 
@@ -54,11 +54,6 @@ class _Activity: NSManagedObject {
     // func validateAction(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged public
-    var createdAt: NSDate?
-
-    // func validateCreatedAt(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
-
-    @NSManaged public
     var imageUrl: String?
 
     // func validateImageUrl(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
@@ -67,6 +62,11 @@ class _Activity: NSManagedObject {
     var text: String?
 
     // func validateText(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged public
+    var timestamp: NSDate?
+
+    // func validateTimestamp(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged public
     var videoUrl: String?

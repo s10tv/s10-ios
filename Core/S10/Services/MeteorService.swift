@@ -84,11 +84,11 @@ public class MeteorService {
     // MARK: - Publications
     
     public func subscribeServices(user: User) -> METSubscription {
-        return meteor.addSubscriptionWithName("userServices", parameters: [user])
+        return meteor.addSubscriptionWithName("services"/*, parameters: [user]*/)
     }
     
     public func subscribeActivities(user: User) -> METSubscription {
-        return meteor.addSubscriptionWithName("userActivities", parameters: [user])
+        return meteor.addSubscriptionWithName("activities"/*, parameters: [user]*/)
     }
     
     public func unsubscribe(subscription: METSubscription?) {

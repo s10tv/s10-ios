@@ -23,7 +23,7 @@ public class ProfileViewModel {
         self.user = user
         frc = Activity
             .by(ActivityKeys.user, value: user)
-            .sorted(by: ActivityKeys.createdAt.rawValue, ascending: false).frc()
+            .sorted(by: ActivityKeys.timestamp.rawValue, ascending: false).frc()
         activities = frc.dynSections[0].map { (o, _) in o as! Activity }
         loadProfile()
     }

@@ -8,11 +8,23 @@
 
 import Foundation
 import Core
+import Bond
 
 class ProfileImageCell : UITableViewCell {
     
     @IBOutlet weak var serviceIconView: UIImageView!
     @IBOutlet weak var activityImageView: UIImageView!
     
-    var activity: Activity?
+    var activity: Activity? {
+        didSet { if let a = activity { bindActivity(a) } }
+    }
+    
+    func bindActivity(activity: Activity) {
+        activity.imageURL ->> activityImageView.dynImageURL
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        activityImageView.unbindDynImageURL()
+    }
 }
