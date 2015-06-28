@@ -57,6 +57,7 @@ extension NSLayoutConstraint {
 // MARK: - CoreData
 
 private var sectionsDynamicHandleNSFetchedResultsController: UInt8 = 0;
+private var countDynamicHandleNSFetchedResultsController: UInt8 = 0;
 private var delegateDynamicHandleNSFetchedResultsController: UInt8 = 0;
 
 extension NSFetchedResultsController {
@@ -73,9 +74,30 @@ extension NSFetchedResultsController {
                 DynamicArray(($0 as! NSFetchedResultsSectionInfo).objects.map { $0 as! NSManagedObject })
             })
             dynDelegate.sections = d
-            dynDelegate.nextDelegate = delegate
+            if dynDelegate.nextDelegate == nil {
+                dynDelegate.nextDelegate = delegate
+            }
             delegate = dynDelegate
             objc_setAssociatedObject(self, &sectionsDynamicHandleNSFetchedResultsController, d, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
+            return d
+        }
+    }
+    
+    public var dynCount: Dynamic<Int> {
+        if let d: AnyObject = objc_getAssociatedObject(self, &countDynamicHandleNSFetchedResultsController) {
+            return (d as? Dynamic<Int>)!
+        } else {
+            var error: NSError?
+            if !performFetch(&error) {
+                fatalError("Unable to perform fetch for request \(fetchRequest)")
+            }
+            let d = Dynamic<Int>(0)
+            dynDelegate.count = d
+            if dynDelegate.nextDelegate == nil {
+                dynDelegate.nextDelegate = delegate
+            }
+            delegate = dynDelegate
+            objc_setAssociatedObject(self, &countDynamicHandleNSFetchedResultsController, d, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
             return d
         }
     }
@@ -98,6 +120,7 @@ extension NSFetchedResultsController {
 
 @objc class FetchedResultsControllerDynamicDelegate : NSObject {
     weak var sections: DynamicArray<DynamicArray<NSManagedObject>>?
+    weak var count: Dynamic<Int>?
     @objc weak var nextDelegate: NSFetchedResultsControllerDelegate?
 }
 
@@ -143,6 +166,31 @@ extension FetchedResultsControllerDynamicDelegate : NSFetchedResultsControllerDe
     }
     
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        assert(NSThread.isMainThread(), "Has to run on main")
+        count?.value = controller.fetchedObjects?.count ?? 0
         nextDelegate?.controllerDidChangeContent?(controller)
+    }
+}
+
+// MARK: - UINavigationItem
+
+private var titleDynamicHandleUINavigationItem: UInt8 = 0;
+
+extension UINavigationItem : Bondable {
+    public var dynTitle: Dynamic<String> {
+        if let d: AnyObject = objc_getAssociatedObject(self, &titleDynamicHandleUINavigationItem) {
+            return (d as? Dynamic<String>)!
+        } else {
+            let d = InternalDynamic<String>(self.title ?? "")
+            let bond = Bond<String>() { [weak self] v in if let s = self { s.title = v } }
+            d.bindTo(bond, fire: false, strongly: false)
+            d.retain(bond)
+            objc_setAssociatedObject(self, &titleDynamicHandleUINavigationItem, d, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
+            return d
+        }
+    }
+    
+    public var designatedBond: Bond<String> {
+        return self.dynTitle.valueBond
     }
 }

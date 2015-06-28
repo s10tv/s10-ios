@@ -36,6 +36,8 @@ class DiscoverViewController : BaseViewController {
             cell.candidate = candidate
             return cell
         } ->> dataSourceBond
+
+        discoverVM.unreadConnectionsCount.map { $0 > 0 ? "Taylr (\($0))" : "Taylr" } ->> navigationItem.dynTitle
     }
     
     override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {

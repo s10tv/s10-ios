@@ -41,8 +41,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
         Fabric.with([Digits(), Crashlytics()])
         
         // Start crash reporting and logging as soon as we can
-//        Crashlytics.startWithAPIKey(env.crashlyticsAPIKey)
-//        Crashlytics.sharedInstance().delegate = self
 //        Bugfender.activateLogger(env.bugfenderAppToken)
         Log.setUserId(UD[.sMeteorUserId].string)
         Log.setUserName(UD[.sUserDisplayName].string)
