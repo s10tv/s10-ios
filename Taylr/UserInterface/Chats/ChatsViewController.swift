@@ -21,7 +21,7 @@ class ChatsViewController : BaseViewController {
         dataSourceBond = UITableViewDataSourceBond(tableView: tableView, disableAnimation: false)
         chatsVM = ChatsViewModel()
         chatsVM.connectionViewModels.map { [unowned self] (connectionVM, index) -> UITableViewCell in
-            let cell = self.tableView.dequeueReusableCellWithIdentifier("ConnectionCell",
+            let cell = self.tableView.dequeueReusableCellWithIdentifier(.ConnectionCell,
                 forIndexPath: NSIndexPath(forRow: index, inSection: 0)) as! ConnectionCell
             cell.viewModel = connectionVM
             return cell

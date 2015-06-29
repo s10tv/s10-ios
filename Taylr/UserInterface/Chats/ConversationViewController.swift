@@ -32,14 +32,14 @@ class ConversationViewController : BaseViewController {
         producer.producerDelegate = self
         
         let messagesSection = conversationVM.messageViewModels.map { [unowned self] (message, index) -> UICollectionViewCell in
-            let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("MessageCell",
+            let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier(.MessageCell,
                 forIndexPath: NSIndexPath(forItem: index, inSection: 0)) as! MessageCell
             cell.message = message
             cell.delegate = self
             return cell
         }
         let cameraSection = DynamicArray([producer]).map { [unowned self] (producer, index) -> UICollectionViewCell in
-            let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier("ProducerCell",
+            let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier(.ProducerCell,
                 forIndexPath: NSIndexPath(forItem: index, inSection: 1)) as! ProducerCell
             cell.containerView.addSubview(producer.view)
             producer.view.makeEdgesEqualTo(cell.containerView)

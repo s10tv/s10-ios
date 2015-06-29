@@ -36,6 +36,23 @@ extension UIStoryboardSegue {
     }
 }
 
+extension UITableView {
+    func dequeueReusableCellWithIdentifier(identifier: TableViewCellreuseIdentifier) -> UITableViewCell? {
+        return dequeueReusableCellWithIdentifier(identifier.rawValue) as? UITableViewCell
+    }
+    
+    @availability(iOS, introduced=6.0)
+    func dequeueReusableCellWithIdentifier(identifier: TableViewCellreuseIdentifier, forIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        return dequeueReusableCellWithIdentifier(identifier.rawValue, forIndexPath: indexPath) as! UITableViewCell
+    }
+}
+
+extension UICollectionView {
+    func dequeueReusableCellWithReuseIdentifier(identifier: CollectionViewCellreuseIdentifier, forIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell {
+        return dequeueReusableCellWithReuseIdentifier(identifier.rawValue, forIndexPath: indexPath) as! UICollectionViewCell
+    }
+}
+
 // xcres
 
 func LS(key: R.Strings, args: CVarArgType...) -> String {

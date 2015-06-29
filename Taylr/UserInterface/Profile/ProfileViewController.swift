@@ -27,13 +27,13 @@ class ProfileViewController : BaseViewController {
         
         dataSourceBond = UITableViewDataSourceBond(tableView: tableView, disableAnimation: false)
         let mainSection = DynamicArray([profileVM.user]).map { [unowned self] (user, index) -> UITableViewCell in
-            self.mainCell = self.tableView.dequeueReusableCellWithIdentifier("ProfileMainCell",
+            self.mainCell = self.tableView.dequeueReusableCellWithIdentifier(.ProfileMainCell,
                 forIndexPath: NSIndexPath(forRow: index, inSection: 0)) as! ProfileMainCell
             self.mainCell.user = user
             return self.mainCell
         }
         let activitiesSection = profileVM.activities.map { [unowned self] (activity, index) -> UITableViewCell in
-            let cell = self.tableView.dequeueReusableCellWithIdentifier("ImageCell",
+            let cell = self.tableView.dequeueReusableCellWithIdentifier(.ImageCell,
                 forIndexPath: NSIndexPath(forRow: index, inSection: 1)) as! ProfileImageCell
             cell.activity = activity
             return cell
