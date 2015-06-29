@@ -11,15 +11,6 @@ import FormatterKit
 import ReactiveCocoa
 import Bond
 
-// TODO: Implement this using RAC, make it not a global constant?
-let CurrentDate: Dynamic<NSDate> = {
-    let dynamic = Dynamic(NSDate())
-    RACSignal.interval(0.25, onScheduler: RACScheduler.mainThreadScheduler()).subscribeNext { date in
-        dynamic.value = date as! NSDate
-    }
-    return dynamic
-}()
-
 public class MessageViewModel {
     
     public let message: Message?

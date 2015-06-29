@@ -13,6 +13,9 @@ public class ActivityViewModel {
     let activity: Activity
     public let imageURL: Dynamic<NSURL?>
     public let serviceIcon: Dynamic<UIImage?>
+    public let formattedDate: Dynamic<String>
+    public let formattedAction: Dynamic<String>
+
     
     public init(_ activity: Activity) {
         self.activity = activity
@@ -26,6 +29,18 @@ public class ActivityViewModel {
                 }
             }
             return nil
+        }
+        formattedDate = reduce(activity.dynTimestamp, CurrentDate) {
+            Formatters.formatRelativeDate($0, relativeTo: $1) ?? ""
+        }
+        formattedAction = activity.dynAction.map {
+            if let action = $0 {
+                switch action {
+                case .Post: return "Posted"
+                case .Like: return "Liked"
+                }
+            }
+            return ""
         }
     }
 }

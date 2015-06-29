@@ -433,16 +433,32 @@
                                                         </mask>
                                                     </variation>
                                                 </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2m ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4g-8g-g3c" userLabel="Timestamp">
+                                                    <rect key="frame" x="39" y="46" width="42" height="15"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="posted" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wa-HC-Dgi" userLabel="Action">
+                                                    <rect key="frame" x="39" y="69" width="42" height="16"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="bottom" secondItem="a7p-AH-18h" secondAttribute="bottom" priority="999" constant="8" id="4VK-9W-FqE"/>
+                                                <constraint firstItem="9wa-HC-Dgi" firstAttribute="centerX" secondItem="B4g-8g-g3c" secondAttribute="centerX" id="D04-le-ps6"/>
                                                 <constraint firstAttribute="bottom" secondItem="NAR-C7-eGS" secondAttribute="bottom" id="Djc-Lc-ced"/>
+                                                <constraint firstItem="B4g-8g-g3c" firstAttribute="top" secondItem="r8O-2G-N4Y" secondAttribute="bottom" constant="8" id="Fxo-1y-b6j"/>
                                                 <constraint firstItem="a7p-AH-18h" firstAttribute="top" secondItem="MfE-Pq-Xgn" secondAttribute="top" constant="8" id="G8P-lt-in3"/>
                                                 <constraint firstItem="NAR-C7-eGS" firstAttribute="leading" secondItem="MfE-Pq-Xgn" secondAttribute="leadingMargin" constant="50" id="HWu-Iz-0uV"/>
                                                 <constraint firstItem="a7p-AH-18h" firstAttribute="leading" secondItem="NAR-C7-eGS" secondAttribute="trailing" constant="37" id="JJO-km-9Ve"/>
                                                 <constraint firstAttribute="trailing" secondItem="INE-ms-J1X" secondAttribute="trailing" id="JSj-eh-prx"/>
+                                                <constraint firstItem="9wa-HC-Dgi" firstAttribute="top" secondItem="B4g-8g-g3c" secondAttribute="bottom" constant="8" id="K1w-1L-FtZ"/>
                                                 <constraint firstItem="INE-ms-J1X" firstAttribute="leading" secondItem="MfE-Pq-Xgn" secondAttribute="leading" id="K6X-5R-6g1"/>
                                                 <constraint firstItem="NAR-C7-eGS" firstAttribute="centerX" secondItem="r8O-2G-N4Y" secondAttribute="centerX" id="Vqi-1V-9rC"/>
+                                                <constraint firstItem="r8O-2G-N4Y" firstAttribute="centerX" secondItem="B4g-8g-g3c" secondAttribute="centerX" id="ZS4-D3-Nav"/>
                                                 <constraint firstItem="NAR-C7-eGS" firstAttribute="top" secondItem="MfE-Pq-Xgn" secondAttribute="top" id="cut-I7-b1W"/>
                                                 <constraint firstAttribute="trailing" secondItem="a7p-AH-18h" secondAttribute="trailing" constant="8" id="dD5-bE-kbw"/>
                                                 <constraint firstAttribute="bottom" secondItem="INE-ms-J1X" secondAttribute="bottom" id="tvl-71-hdf"/>
@@ -450,8 +466,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
+                                            <outlet property="actionLabel" destination="9wa-HC-Dgi" id="3Ud-LO-tDJ"/>
                                             <outlet property="activityImageView" destination="a7p-AH-18h" id="aqI-ik-Lx4"/>
                                             <outlet property="serviceIconView" destination="r8O-2G-N4Y" id="xdP-gO-Jme"/>
+                                            <outlet property="timestampLabel" destination="B4g-8g-g3c" id="wfA-sq-RXH"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TextCell" rowHeight="111" id="EvT-5v-bQF" customClass="ProfileTextCell" customModule="Taylr" customModuleProvider="target">
