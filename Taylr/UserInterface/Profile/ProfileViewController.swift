@@ -34,7 +34,7 @@ class ProfileViewController : BaseViewController {
         }
         let activitiesSection = profileVM.activities.map { [unowned self] (activity, index) -> UITableViewCell in
             let cell = self.tableView.dequeueReusableCellWithIdentifier(.ImageCell,
-                forIndexPath: NSIndexPath(forRow: index, inSection: 1)) as! ProfileImageCell
+                forIndexPath: NSIndexPath(forRow: index, inSection: 1)) as! ActivityImageCell
             cell.activity = activity
             return cell
         }

@@ -18,8 +18,8 @@
 		EA3594161B2DEF0C00E91337 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594151B2DEF0C00E91337 /* MessageCell.swift */; };
 		EA3594191B2FEA1F00E91337 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594181B2FEA1F00E91337 /* TransitionManager.swift */; };
 		EA36B1D01B3F1A67002ADD91 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36B1CF1B3F1A67002ADD91 /* ProfileViewModel.swift */; };
-		EA36B1D21B3F23ED002ADD91 /* ProfileImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36B1D11B3F23ED002ADD91 /* ProfileImageCell.swift */; };
-		EA36B1D41B3F23F4002ADD91 /* ProfileTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36B1D31B3F23F4002ADD91 /* ProfileTextCell.swift */; };
+		EA36B1D21B3F23ED002ADD91 /* ActivityImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36B1D11B3F23ED002ADD91 /* ActivityImageCell.swift */; };
+		EA36B1D41B3F23F4002ADD91 /* ActivityTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36B1D31B3F23F4002ADD91 /* ActivityTextCell.swift */; };
 		EA36B1D61B40DE3C002ADD91 /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36B1D51B40DE3C002ADD91 /* ActivityViewModel.swift */; };
 		EA36B1D81B40E1A5002ADD91 /* CurrentDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36B1D71B40E1A5002ADD91 /* CurrentDate.swift */; };
 		EA36D2AB1AE71366006FD5D8 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36D2AA1AE71366006FD5D8 /* Errors.swift */; };
@@ -220,8 +220,8 @@
 		EA3594151B2DEF0C00E91337 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		EA3594181B2FEA1F00E91337 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		EA36B1CF1B3F1A67002ADD91 /* ProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
-		EA36B1D11B3F23ED002ADD91 /* ProfileImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileImageCell.swift; sourceTree = "<group>"; };
-		EA36B1D31B3F23F4002ADD91 /* ProfileTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTextCell.swift; sourceTree = "<group>"; };
+		EA36B1D11B3F23ED002ADD91 /* ActivityImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ActivityImageCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		EA36B1D31B3F23F4002ADD91 /* ActivityTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTextCell.swift; sourceTree = "<group>"; };
 		EA36B1D51B40DE3C002ADD91 /* ActivityViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewModel.swift; sourceTree = "<group>"; };
 		EA36B1D71B40E1A5002ADD91 /* CurrentDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentDate.swift; sourceTree = "<group>"; };
 		EA36D2AA1AE71366006FD5D8 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
@@ -297,7 +297,7 @@
 		EAA56F701B2B32E500DE3936 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
 		EAA56F751B2B32E500DE3936 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		EAA56F7F1B2B32E500DE3936 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
-		EAA56F831B2B32E500DE3936 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		EAA56F831B2B32E500DE3936 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ProfileViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		EAA56F851B2B32E500DE3936 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		EAA56F871B2B32E500DE3936 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		EAA56F8A1B2B32E500DE3936 /* UserAvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAvatarView.swift; sourceTree = "<group>"; };
@@ -726,8 +726,8 @@
 			children = (
 				EAA56F831B2B32E500DE3936 /* ProfileViewController.swift */,
 				EACCA3A11B37B02A00015C88 /* ProfileMainCell.swift */,
-				EA36B1D11B3F23ED002ADD91 /* ProfileImageCell.swift */,
-				EA36B1D31B3F23F4002ADD91 /* ProfileTextCell.swift */,
+				EA36B1D11B3F23ED002ADD91 /* ActivityImageCell.swift */,
+				EA36B1D31B3F23F4002ADD91 /* ActivityTextCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1376,7 +1376,7 @@
 				EAA56F9F1B2B32E500DE3936 /* ProfileViewController.swift in Sources */,
 				EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */,
 				EA3594161B2DEF0C00E91337 /* MessageCell.swift in Sources */,
-				EA36B1D41B3F23F4002ADD91 /* ProfileTextCell.swift in Sources */,
+				EA36B1D41B3F23F4002ADD91 /* ActivityTextCell.swift in Sources */,
 				EA95BBA71B39308A00701F08 /* PageViewController.swift in Sources */,
 				EA925C741AD99ED8008E9F41 /* R.swift in Sources */,
 				EAF81B271B33391000EED6DD /* EditorViewController.swift in Sources */,
@@ -1401,7 +1401,7 @@
 				EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */,
 				EACCA3A21B37B02A00015C88 /* ProfileMainCell.swift in Sources */,
 				EA3594191B2FEA1F00E91337 /* TransitionManager.swift in Sources */,
-				EA36B1D21B3F23ED002ADD91 /* ProfileImageCell.swift in Sources */,
+				EA36B1D21B3F23ED002ADD91 /* ActivityImageCell.swift in Sources */,
 				EA49286E1ADF291100118639 /* UpgradeService.swift in Sources */,
 				EA95BBB01B3930B000701F08 /* FacebookExtension.swift in Sources */,
 				EAA56FB11B2BCAC700DE3936 /* CandidateCell.swift in Sources */,

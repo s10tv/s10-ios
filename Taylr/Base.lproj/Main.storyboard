@@ -393,7 +393,7 @@
                                             <outlet property="usernameLabel" destination="brj-Vp-1XD" id="Y8Y-G1-rL3"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ImageCell" rowHeight="287" id="aze-MX-TRa" customClass="ProfileImageCell" customModule="Taylr" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ImageCell" rowHeight="287" id="aze-MX-TRa" customClass="ActivityImageCell" customModule="Taylr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aze-MX-TRa" id="MfE-Pq-Xgn">
@@ -472,7 +472,7 @@
                                             <outlet property="timestampLabel" destination="B4g-8g-g3c" id="wfA-sq-RXH"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TextCell" rowHeight="111" id="EvT-5v-bQF" customClass="ProfileTextCell" customModule="Taylr" customModuleProvider="target">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TextCell" rowHeight="111" id="EvT-5v-bQF" customClass="ActivityTextCell" customModule="Taylr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EvT-5v-bQF" id="69N-hZ-r8o">

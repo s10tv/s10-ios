@@ -1,5 +1,5 @@
 //
-//  ProfileImageCell.swift
+//  ActivityImageCell.swift
 //  S10
 //
 //  Created by Tony Xiao on 6/27/15.
@@ -10,7 +10,7 @@ import Foundation
 import Core
 import Bond
 
-class ProfileImageCell : UITableViewCell {
+class ActivityImageCell : UITableViewCell {
     
     @IBOutlet weak var serviceIconView: UIImageView!
     @IBOutlet weak var activityImageView: UIImageView!
