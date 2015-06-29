@@ -13,6 +13,7 @@
         </mutableArray>
         <mutableArray key="TransatTextBold.otf">
             <string>TransatTextBold</string>
+            <string>TransatTextBold</string>
         </mutableArray>
         <mutableArray key="TransatTextStandard.otf">
             <string>TransatTextStandard</string>
@@ -318,6 +319,30 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MHj-3N-OfG">
+                                                    <rect key="frame" x="299" y="156" width="68" height="36"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="68" id="PHg-9M-YRy"/>
+                                                        <constraint firstAttribute="height" constant="36" id="SfU-7v-oOT"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="TransatTextBold" family="Transat Text" pointSize="19"/>
+                                                    <size key="titleShadowOffset" width="1" height="1"/>
+                                                    <state key="normal" title="Chat">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="6"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </button>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6R8-aE-7Ce" userLabel="Divider">
                                                     <rect key="frame" x="0.0" y="345" width="375" height="2"/>
                                                     <color key="backgroundColor" red="0.8862745098" green="0.8862745098" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -333,11 +358,13 @@
                                                 </view>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="6ml-E6-ZMG" firstAttribute="bottom" secondItem="MHj-3N-OfG" secondAttribute="bottom" constant="8" id="7vv-rc-bnH"/>
                                                 <constraint firstItem="uE6-2o-4dx" firstAttribute="top" secondItem="qh5-iy-Fge" secondAttribute="bottom" constant="8" id="9Fe-fE-t6b"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="vCn-Te-NpZ" secondAttribute="bottom" constant="8" id="ASx-Ow-KGy"/>
                                                 <constraint firstItem="qh5-iy-Fge" firstAttribute="centerY" secondItem="2Sg-08-WeT" secondAttribute="centerY" constant="14" id="Emf-58-sSV"/>
                                                 <constraint firstItem="2Sg-08-WeT" firstAttribute="leading" secondItem="qh5-iy-Fge" secondAttribute="trailing" constant="12" id="FJb-lL-hDL"/>
                                                 <constraint firstItem="vCn-Te-NpZ" firstAttribute="leading" secondItem="uY6-9P-VPb" secondAttribute="leadingMargin" id="KRa-0h-PQC"/>
+                                                <constraint firstItem="6ml-E6-ZMG" firstAttribute="trailing" secondItem="MHj-3N-OfG" secondAttribute="trailing" constant="8" id="LXu-3i-IHm"/>
                                                 <constraint firstAttribute="bottom" secondItem="6R8-aE-7Ce" secondAttribute="bottom" id="PvE-a4-7Fr"/>
                                                 <constraint firstItem="brj-Vp-1XD" firstAttribute="leading" secondItem="2Sg-08-WeT" secondAttribute="leading" id="Qq3-Hc-68c"/>
                                                 <constraint firstItem="qh5-iy-Fge" firstAttribute="leading" secondItem="uY6-9P-VPb" secondAttribute="leadingMargin" id="RBX-Ha-UR6"/>
@@ -382,7 +409,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-instagram" translatesAutoresizingMaskIntoConstraints="NO" id="r8O-2G-N4Y">
                                                     <rect key="frame" x="46" y="10" width="28" height="28"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-video-frame" translatesAutoresizingMaskIntoConstraints="NO" id="a7p-AH-18h">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-video-frame" translatesAutoresizingMaskIntoConstraints="NO" id="a7p-AH-18h">
                                                     <rect key="frame" x="99" y="8" width="268" height="268"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="a7p-AH-18h" secondAttribute="height" multiplier="1:1" id="oNY-U9-BM5"/>
@@ -914,6 +941,6 @@
         <image name="sample-taylor-video-frame" width="375" height="375"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Fwv-Pj-RXP"/>
+        <segue reference="Gd9-HM-lnj"/>
     </inferredMetricsTieBreakers>
 </document>

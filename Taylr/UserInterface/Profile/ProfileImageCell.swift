@@ -15,16 +15,18 @@ class ProfileImageCell : UITableViewCell {
     @IBOutlet weak var serviceIconView: UIImageView!
     @IBOutlet weak var activityImageView: UIImageView!
     
-    var activity: Activity? {
+    var activity: ActivityViewModel? {
         didSet { if let a = activity { bindActivity(a) } }
     }
     
-    func bindActivity(activity: Activity) {
+    func bindActivity(activity: ActivityViewModel) {
         activity.imageURL ->> activityImageView.dynImageURL
+        activity.serviceIcon ->> serviceIconView
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        serviceIconView.designatedBond.unbindAll()
         activityImageView.unbindDynImageURL()
     }
 }

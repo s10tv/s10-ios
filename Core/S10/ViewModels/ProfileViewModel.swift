@@ -16,7 +16,7 @@ public class ProfileViewModel {
     var servicesSubscription: METSubscription?
     var activitiesSubscription: METSubscription?
     public let user: User
-    public let activities: DynamicArray<Activity>
+    public let activities: DynamicArray<ActivityViewModel>
     
     public init(meteor: MeteorService, user: User) {
         self.meteor = meteor
@@ -24,7 +24,7 @@ public class ProfileViewModel {
         frc = Activity
             .by(ActivityKeys.user, value: user)
             .sorted(by: ActivityKeys.timestamp.rawValue, ascending: false).frc()
-        activities = frc.dynSections[0].map { (o, _) in o as! Activity }
+        activities = frc.dynSections[0].map { (o, _) in ActivityViewModel(o as! Activity) }
         loadProfile()
     }
     

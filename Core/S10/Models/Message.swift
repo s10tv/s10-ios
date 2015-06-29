@@ -8,7 +8,6 @@
 
 import ReactiveCocoa
 import Bond
-import Core
 
 @objc(Message)
 public class Message: _Message {
