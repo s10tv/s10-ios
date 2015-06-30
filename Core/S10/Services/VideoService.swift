@@ -20,7 +20,6 @@ public class VideoService {
     public init(meteorService: MeteorService) {
         uploadQueue = NSOperationQueue()
         self.meteorService = meteorService
-        NSFileManager.defaultManager().removeItemAtPath(Realm.defaultPath, error: nil)
     }
     
     public func resumeUploads() {
