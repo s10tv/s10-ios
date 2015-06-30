@@ -29,7 +29,9 @@ public class ConversationViewModel {
             ($0 != nil && $0! > 0 && $1 == false) ? "\($0!)" : ""
         }
         messages = Message
-            .by(MessageKeys.connection.rawValue, value: connection)
+            .by(NSPredicate(format: "%K == %@ && %K != nil",
+                MessageKeys.connection.rawValue, connection,
+                MessageKeys.video.rawValue))
             .sorted(by: MessageKeys.createdAt.rawValue, ascending: true)
             .results(Message.self, loadData: true)
         messageViewModels = messages.map { MessageViewModel(message: $0) }

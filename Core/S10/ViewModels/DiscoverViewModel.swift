@@ -18,6 +18,7 @@ public class DiscoverViewModel {
     public init() {
         // Filter out candidate without users for now
         candidates = Candidate
+            .by("\(CandidateKeys.user) != nil")
             .sorted(by: CandidateKeys.score.rawValue, ascending: false)
             .results(Candidate)
         unreadConversations = Connection
