@@ -602,11 +602,11 @@
 			children = (
 				EABAEDA01B43236D000261F0 /* MeViewModel.swift */,
 				EA4757021B391F56002071D7 /* DiscoverViewModel.swift */,
-				EABAEDA21B432745000261F0 /* CandidateViewModel.swift */,
 				EA4757011B391F56002071D7 /* ChatsViewModel.swift */,
 				EA9C16701B37286700371B50 /* ConversationViewModel.swift */,
-				EA9C166E1B3726E300371B50 /* MessageViewModel.swift */,
 				EA36B1CF1B3F1A67002ADD91 /* ProfileViewModel.swift */,
+				EABAEDA21B432745000261F0 /* CandidateViewModel.swift */,
+				EA9C166E1B3726E300371B50 /* MessageViewModel.swift */,
 				EA36B1D51B40DE3C002ADD91 /* ActivityViewModel.swift */,
 				EA773D271B43179B009A9945 /* ServiceViewModel.swift */,
 				EA9C16741B3752F800371B50 /* Formatters.swift */,

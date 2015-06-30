@@ -9,7 +9,7 @@
 import Foundation
 import Bond
 
-public class ServiceViewModel {
+public struct ServiceViewModel {
     let service: Service
     public let serviceIcon: Dynamic<UIImage?>
     public let userDisplayName: Dynamic<String>

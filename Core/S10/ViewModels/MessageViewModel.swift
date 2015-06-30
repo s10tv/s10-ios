@@ -11,7 +11,7 @@ import FormatterKit
 import ReactiveCocoa
 import Bond
 
-public class MessageViewModel {
+public struct MessageViewModel {
     
     public let message: Message?
     public let sender: User?

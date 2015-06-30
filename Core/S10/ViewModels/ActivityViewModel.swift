@@ -9,7 +9,7 @@
 import Foundation
 import Bond
 
-public class ActivityViewModel {
+public struct ActivityViewModel {
     let activity: Activity
     public let imageURL: Dynamic<NSURL?>
     public let serviceIcon: Dynamic<UIImage?>
