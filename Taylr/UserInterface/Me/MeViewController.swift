@@ -17,21 +17,18 @@ class MeViewController : BaseViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     
-    var currentUser: User!
+    var viewModel: MeViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        currentUser = Meteor.user
-        if let currentUser = currentUser {
-            currentUser.avatarURL ->> avatarView.dynImageURL
-            currentUser.displayName ->> nameLabel
-        }
+        viewModel.avatarURL ->> avatarView.dynImageURL
+        viewModel.displayName ->> nameLabel
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ProfileViewController {
-            vc.profileVM = ProfileViewModel(meteor: Meteor, user: Meteor.user!)
+            vc.profileVM = ProfileViewModel(meteor: Meteor, user: viewModel.currentUser)
         }
     }
     
