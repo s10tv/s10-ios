@@ -11,7 +11,6 @@ import CoreData
 import Bond
 
 public class ProfileViewModel {
-    let frc: NSFetchedResultsController
     let meteor: MeteorService
     var servicesSubscription: METSubscription?
     var activitiesSubscription: METSubscription?
@@ -21,10 +20,10 @@ public class ProfileViewModel {
     public init(meteor: MeteorService, user: User) {
         self.meteor = meteor
         self.user = user
-        frc = Activity
+        activities = Activity
             .by(ActivityKeys.user, value: user)
-            .sorted(by: ActivityKeys.timestamp.rawValue, ascending: false).frc()
-        activities = frc.dynSections[0].map { (o, _) in ActivityViewModel(o as! Activity) }
+            .sorted(by: ActivityKeys.timestamp.rawValue, ascending: false)
+            .results(Activity).map { ActivityViewModel($0) }
         loadProfile()
     }
     

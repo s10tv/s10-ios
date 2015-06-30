@@ -9,6 +9,7 @@
 import CoreData
 import SugarRecord
 import SwiftTryCatch
+import Bond
 
 extension SugarRecord {
     public class func transaction(closure: (context: SugarRecordContext) -> ()) {
@@ -28,6 +29,10 @@ extension SugarRecordFinder {
     
     public func frc() -> NSFetchedResultsController {
         return fetchedResultsController(nil)
+    }
+    
+    public func results<T : NSManagedObject>(type: T.Type, loadData: Bool = true) -> FetchedResultsArray<T> {
+        return fetchedResultsController(nil).results(type, loadData: loadData)
     }
     
     public func fetch() -> [AnyObject] {

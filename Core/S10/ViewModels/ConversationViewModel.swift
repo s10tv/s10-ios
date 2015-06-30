@@ -11,31 +11,32 @@ import Bond
 import RealmSwift
 
 public class ConversationViewModel {
-    private let messagesFrc: NSFetchedResultsController
     private let realmToken: NotificationToken
+    private let messages: FetchedResultsArray<Message>
     public let connection: Connection
     public let recipient: Dynamic<User?>
     public let formattedStatus: Dynamic<String>
     public let badgeText: Dynamic<String>
     public let hasUnsentMessage: Dynamic<Bool>
-    public private(set) lazy var messageViewModels: DynamicArray<MessageViewModel> = {
-        return self.messagesFrc.dynSections[0].map { (o, _) in MessageViewModel(message: o as! Message) }
-    }()
+    public let messageViewModels: DynamicArray<MessageViewModel>
     
     public init(connection: Connection) {
         self.connection = connection
-        messagesFrc = Message
-            .by(NSPredicate(format: "%K == %@ && %K != nil",
-                MessageKeys.connection.rawValue, connection,
-                MessageKeys.video.rawValue))
-            .sorted(by: MessageKeys.createdAt.rawValue, ascending: true)
-            .frc()
         recipient = connection.dynOtherUser
         formattedStatus = ConversationViewModel.formatStatus(connection)
         (hasUnsentMessage, realmToken) = ConversationViewModel.observeUnsentMessage(connection)
         badgeText = reduce(connection.dynUnreadCount, hasUnsentMessage) {
             ($0 != nil && $0! > 0 && $1 == false) ? "\($0!)" : ""
         }
+        messages = Message
+            .by(MessageKeys.connection.rawValue, value: connection)
+            .sorted(by: MessageKeys.createdAt.rawValue, ascending: true)
+            .results(Message.self, loadData: true)
+        messageViewModels = messages.map { MessageViewModel(message: $0) }
+    }
+    
+    public func loadMessages() {
+        messages.reloadData()
     }
     
     deinit {

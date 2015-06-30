@@ -11,16 +11,12 @@ import CoreData
 import Bond
 
 public class ChatsViewModel {
-    private let frc : NSFetchedResultsController
     public let connectionViewModels: DynamicArray<ConversationViewModel>
     
     public init() {
-        frc = Connection
-            .by("\(ConnectionKeys.otherUser) != nil")
+        connectionViewModels = Connection
+//            .by("\(ConnectionKeys.otherUser) != nil")
             .sorted(by: ConnectionKeys.updatedAt.rawValue, ascending: false)
-            .frc()
-        connectionViewModels = frc.dynSections[0].map { (connection, _) in
-            ConversationViewModel(connection: connection as! Connection)
-        }
+            .results(Connection).map { ConversationViewModel(connection: $0) }
     }
 }
