@@ -11,6 +11,8 @@ public enum VideoKeys: String, Printable {
 
     case url = "url"
 
+    case message = "message"
+
     public var description: String { return rawValue }
 }
 
@@ -56,6 +58,11 @@ class _Video: NSManagedObject {
     // func validateUrl(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
+
+    @NSManaged public
+    var message: Message?
+
+    // func validateMessage(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
 }
 

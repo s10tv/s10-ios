@@ -36,14 +36,6 @@ public class User: _User {
         }
     }()
     
-    public func connection() -> Connection? {
-        return fetchConnection().fetchObjects().first as? Connection
-    }
-    
-    public func fetchConnection() -> NSFetchedResultsController {
-        return Connection.by(ConnectionKeys.otherUser, value: self).frc()
-    }
-        
     public class func findByDocumentID(context: NSManagedObjectContext, documentID: String) -> User? {
         return context.objectInCollection("users", documentID: documentID) as? User
     }

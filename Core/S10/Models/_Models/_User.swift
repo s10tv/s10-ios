@@ -19,6 +19,12 @@ public enum UserKeys: String, Printable {
 
     case lastName = "lastName"
 
+    case candidate = "candidate"
+
+    case connection = "connection"
+
+    case services = "services"
+
     public var description: String { return rawValue }
 }
 
@@ -84,6 +90,47 @@ class _User: NSManagedObject {
     // func validateLastName(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
+
+    @NSManaged public
+    var candidate: Candidate?
+
+    // func validateCandidate(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged public
+    var connection: Connection?
+
+    // func validateConnection(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged public
+    var services: NSSet
+
+}
+
+extension _User {
+
+    func addServices(objects: NSSet) {
+        let mutable = self.services.mutableCopy() as! NSMutableSet
+        mutable.unionSet(objects as! Set<NSObject>)
+        self.services = mutable.copy() as! NSSet
+    }
+
+    func removeServices(objects: NSSet) {
+        let mutable = self.services.mutableCopy() as! NSMutableSet
+        mutable.minusSet(objects as! Set<NSObject>)
+        self.services = mutable.copy() as! NSSet
+    }
+
+    func addServicesObject(value: Service!) {
+        let mutable = self.services.mutableCopy() as! NSMutableSet
+        mutable.addObject(value)
+        self.services = mutable.copy() as! NSSet
+    }
+
+    func removeServicesObject(value: Service!) {
+        let mutable = self.services.mutableCopy() as! NSMutableSet
+        mutable.removeObject(value)
+        self.services = mutable.copy() as! NSSet
+    }
 
 }
 
