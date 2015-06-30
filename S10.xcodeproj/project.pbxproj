@@ -1689,6 +1689,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Includes",
 				);
 				INFOPLIST_FILE = "Taylr/Taylr-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1710,6 +1711,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					"$(PROJECT_DIR)/Includes",
 				);
 				INFOPLIST_FILE = "Taylr/Taylr-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
