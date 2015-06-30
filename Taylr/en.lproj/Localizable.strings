@@ -28,6 +28,9 @@
 "HardUpgradeAlertOk" = "Upgrade";
 
 /* Settings */
+"MeLinkNewSerivceTitle" = "Link New Service";
+"MeCancelTitle" = "Cancel";
+
 "SettingsAgeFormat" = "%d years old";
 "SettingsGenderPreferenceFormat" = "Interested in %@";
 "SettingsWorkFormat" = "%@";

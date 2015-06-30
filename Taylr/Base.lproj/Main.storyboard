@@ -974,19 +974,134 @@
                                     <action selector="showLogoutOptions:" destination="mIZ-vh-lBm" eventType="touchUpInside" id="JQ8-TW-8yB"/>
                                 </connections>
                             </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ywF-Eq-btS">
+                                <rect key="frame" x="16" y="224" width="568" height="300"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="IGy-2f-uW8"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Jyj-vu-7Is">
+                                    <size key="itemSize" width="100" height="100"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="10"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="MeServiceCell" id="jmQ-Bh-K59" customClass="MeServiceCell" customModule="Taylr" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-facebook" translatesAutoresizingMaskIntoConstraints="NO" id="XQb-i4-yXO">
+                                                    <rect key="frame" x="20" y="8" width="60" height="60"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="XQb-i4-yXO" secondAttribute="height" multiplier="1:1" id="NYe-MH-62d"/>
+                                                        <constraint firstAttribute="width" constant="60" id="Wqj-IE-gYa"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylor Swift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Z5V-YB-cHj">
+                                                    <rect key="frame" x="6" y="71" width="89" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="Z5V-YB-cHj" firstAttribute="top" secondItem="XQb-i4-yXO" secondAttribute="bottom" constant="3" id="MhL-Jp-wJe"/>
+                                            <constraint firstItem="XQb-i4-yXO" firstAttribute="top" secondItem="jmQ-Bh-K59" secondAttribute="topMargin" id="Qay-BO-WFV"/>
+                                            <constraint firstAttribute="centerX" secondItem="XQb-i4-yXO" secondAttribute="centerX" id="TyD-Gg-47f"/>
+                                            <constraint firstItem="Z5V-YB-cHj" firstAttribute="centerX" secondItem="XQb-i4-yXO" secondAttribute="centerX" constant="0.5" id="d48-WW-ZsB"/>
+                                            <constraint firstItem="Z5V-YB-cHj" firstAttribute="centerX" secondItem="XQb-i4-yXO" secondAttribute="centerX" constant="0.5" id="v8B-9q-Prp"/>
+                                            <constraint firstItem="Z5V-YB-cHj" firstAttribute="top" secondItem="XQb-i4-yXO" secondAttribute="bottom" constant="3" id="yMi-iD-lyP"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <variation key="default">
+                                            <mask key="constraints">
+                                                <exclude reference="d48-WW-ZsB"/>
+                                                <exclude reference="yMi-iD-lyP"/>
+                                            </mask>
+                                        </variation>
+                                        <connections>
+                                            <outlet property="serviceIconView" destination="XQb-i4-yXO" id="cC2-5V-cBA"/>
+                                            <outlet property="userDisplayNameLabel" destination="Z5V-YB-cHj" id="wD2-2u-6Rn"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="AddCell" id="ia3-or-838" customClass="MeServiceCell" customModule="Taylr" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hPK-5c-R7G">
+                                                    <rect key="frame" x="29" y="30" width="42" height="40"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="23"/>
+                                                    <state key="normal" title="Add">
+                                                        <color key="titleColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="linkNewService:" destination="mIZ-vh-lBm" eventType="touchUpInside" id="iP7-aV-qJU"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstAttribute="centerX" secondItem="hPK-5c-R7G" secondAttribute="centerX" id="KXt-7k-vM0"/>
+                                            <constraint firstAttribute="centerY" secondItem="hPK-5c-R7G" secondAttribute="centerY" id="zsk-j9-m8r"/>
+                                        </constraints>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="5"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                <color key="value" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                <real key="value" value="1"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="ywF-Eq-btS" secondAttribute="trailing" id="6Q5-Ge-Ue3"/>
+                            <constraint firstItem="gHe-b3-ukq" firstAttribute="leading" secondItem="ywF-Eq-btS" secondAttribute="trailing" constant="-316" id="AVM-Ge-Rzt"/>
                             <constraint firstItem="gHe-b3-ukq" firstAttribute="leading" secondItem="uj7-s2-Wdm" secondAttribute="leading" id="GVL-ap-bkO"/>
                             <constraint firstItem="MyP-Vv-W6L" firstAttribute="leading" secondItem="uj7-s2-Wdm" secondAttribute="leadingMargin" id="LqM-Oq-pbv"/>
+                            <constraint firstItem="ywF-Eq-btS" firstAttribute="leading" secondItem="uj7-s2-Wdm" secondAttribute="leadingMargin" id="Mcn-sr-FFQ"/>
                             <constraint firstItem="gHe-b3-ukq" firstAttribute="top" secondItem="rbh-DD-zC5" secondAttribute="bottom" id="YlR-Du-q1y"/>
                             <constraint firstItem="eec-eU-juV" firstAttribute="top" secondItem="MyP-Vv-W6L" secondAttribute="bottom" constant="20" id="a8o-gP-pit"/>
+                            <constraint firstItem="ywF-Eq-btS" firstAttribute="top" secondItem="gHe-b3-ukq" secondAttribute="bottom" constant="8" id="pKb-Lk-UFH"/>
                             <constraint firstAttribute="trailing" secondItem="gHe-b3-ukq" secondAttribute="trailing" id="tW8-yd-1ki"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="AVM-Ge-Rzt"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" title="Me" id="aaw-e6-lIV"/>
                     <connections>
                         <outlet property="avatarView" destination="XKE-Gv-ncC" id="V3I-g6-jIy"/>
+                        <outlet property="collectionView" destination="ywF-Eq-btS" id="VbA-Qk-Fkh"/>
                         <outlet property="nameLabel" destination="Lxr-IQ-qXL" id="xZv-uD-p8B"/>
                         <outlet property="usernameLabel" destination="D9T-Ho-de1" id="8Fo-jI-Fow"/>
                         <segue destination="W2c-OH-HAO" kind="unwind" identifier="MeToDiscover" unwindAction="unwindToHome:" id="svQ-92-eMT"/>
@@ -1007,6 +1122,7 @@
         <image name="ic-back" width="17" height="23"/>
         <image name="ic-back-white" width="10" height="23"/>
         <image name="ic-chats" width="32" height="32"/>
+        <image name="ic-facebook" width="28" height="28"/>
         <image name="ic-instagram" width="28" height="28"/>
         <image name="ic-me" width="34" height="35"/>
         <image name="ic-twitter" width="28" height="28"/>
@@ -1016,7 +1132,7 @@
         <image name="sample-taylor-video-frame" width="375" height="375"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Gd9-HM-lnj"/>
+        <segue reference="zOU-zf-DhR"/>
         <segue reference="5l2-qW-Xr9"/>
     </inferredMetricsTieBreakers>
 </document>

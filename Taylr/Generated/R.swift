@@ -61,6 +61,10 @@ public enum R {
         /// Your version is no longer supported
         case hardUpgradeAlertTitle = "HardUpgradeAlertTitle"
         /// Cancel
+        case meCancelTitle = "MeCancelTitle"
+        /// Link New Service
+        case meLinkNewSerivceTitle = "MeLinkNewSerivceTitle"
+        /// Cancel
         case moreSheetCancel = "MoreSheetCancel"
         /// Report %@
         case moreSheetReport = "MoreSheetReport"

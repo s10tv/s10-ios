@@ -1,7 +1,9 @@
 // Auto generated file from SBConstants - any changes may be lost
 
 public enum CollectionViewCellreuseIdentifier : String {
+    case AddCell = "AddCell"
     case CandidateCell = "CandidateCell"
+    case MeServiceCell = "MeServiceCell"
     case MessageCell = "MessageCell"
     case ProducerCell = "ProducerCell"
 }

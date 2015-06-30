@@ -101,6 +101,7 @@
 		EAB8E7A61AE04D8D00B3046F /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAB8E7A81AE04D8D00B3046F /* Settings.storyboard */; };
 		EABAEDA11B43236D000261F0 /* MeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABAEDA01B43236D000261F0 /* MeViewModel.swift */; };
 		EABAEDA31B432745000261F0 /* CandidateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABAEDA21B432745000261F0 /* CandidateViewModel.swift */; };
+		EABAEDA51B4334EB000261F0 /* MeServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABAEDA41B4334EB000261F0 /* MeServiceCell.swift */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
 		EACCA3A21B37B02A00015C88 /* ProfileMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACCA3A11B37B02A00015C88 /* ProfileMainCell.swift */; };
 		EAE1E07B1AE34C6200F03F13 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1E07A1AE34C6200F03F13 /* LocationService.swift */; };
@@ -312,6 +313,7 @@
 		EAB8E7A71AE04D8D00B3046F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		EABAEDA01B43236D000261F0 /* MeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewModel.swift; sourceTree = "<group>"; };
 		EABAEDA21B432745000261F0 /* CandidateViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateViewModel.swift; sourceTree = "<group>"; };
+		EABAEDA41B4334EB000261F0 /* MeServiceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeServiceCell.swift; sourceTree = "<group>"; };
 		EABD43D81AA1D28700B07813 /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
 		EABD43D91AA1D29C00B07813 /* Beta.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
 		EABD43DA1AA1D29C00B07813 /* Prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
@@ -720,6 +722,7 @@
 			isa = PBXGroup;
 			children = (
 				EAA56F751B2B32E500DE3936 /* MeViewController.swift */,
+				EABAEDA41B4334EB000261F0 /* MeServiceCell.swift */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -1422,6 +1425,7 @@
 				EA95BBB01B3930B000701F08 /* FacebookExtension.swift in Sources */,
 				EAA56FB11B2BCAC700DE3936 /* CandidateCell.swift in Sources */,
 				EAF81B2B1B3373F000EED6DD /* ProducerCell.swift in Sources */,
+				EABAEDA51B4334EB000261F0 /* MeServiceCell.swift in Sources */,
 				EAA56FA51B2B32E500DE3936 /* UserAvatarView.swift in Sources */,
 				EA95BBB91B3932B500701F08 /* BaseViews.swift in Sources */,
 				EAF81B251B33389500EED6DD /* RecorderViewController.swift in Sources */,
