@@ -12,7 +12,7 @@ import Bond
 
 public class DiscoverViewModel {
     let unreadConversations: FetchedResultsArray<Connection>
-    public let candidates: FetchedResultsArray<Candidate>
+    public let candidates: DynamicArray<CandidateViewModel>
     public let unreadConnectionsCount: Dynamic<Int>
     
     public init() {
@@ -20,7 +20,7 @@ public class DiscoverViewModel {
         candidates = Candidate
 //            .by("\(CandidateKeys.user) != nil")
             .sorted(by: CandidateKeys.score.rawValue, ascending: false)
-            .results(Candidate)
+            .results(Candidate).map { CandidateViewModel(user: $0.user) }
         unreadConversations = Connection
             .by(NSPredicate(format: "%K > 0", ConnectionKeys.unreadCount.rawValue))
             .results(Connection)

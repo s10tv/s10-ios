@@ -16,13 +16,9 @@ class CandidateCell : UICollectionViewCell {
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     
-    var candidate: Candidate? {
-        didSet { if let u = candidate?.user { bindViewModel(u) } }
-    }
-    
-    func bindViewModel(user: User) {
-        user.avatarURL ->> avatarView.dynImageURL
-        user.displayName ->> titleLabel
+    func bindViewModel(viewModel: CandidateViewModel) {
+        viewModel.avatarURL ->> avatarView.dynImageURL
+        viewModel.displayName ->> titleLabel
     }
     
     override func prepareForReuse() {
