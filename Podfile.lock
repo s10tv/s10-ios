@@ -115,7 +115,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Bond:
-    :commit: 02b5bb3447400ec00fdca0c958319ab52f6a4ce0
+    :commit: 9ea3177594dcd1d3b9b106fa57bd3adcff2a6be4
     :git: https://github.com/tonyxiao/Bond.git
   Meteor:
     :commit: 0f40ef742583cb4b8c2e987121ff1d1f4a6afdfb
