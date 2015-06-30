@@ -69,15 +69,4 @@ class BaseViewController : UIViewController {
     
     func metadataDidUpdateWhileViewActive(metadataKey: String, value: AnyObject?) { }
     
-    // MARK: Debugging
-    
-    override func motionEnded(subtype: UIEventSubtype, withEvent event: UIEvent) {
-        if Meteor.meta.demoMode == true {
-            if subtype == .MotionShake {
-                navigationController?.popToRootViewControllerAnimated(true)
-            }
-            return
-        }
-        super.motionEnded(subtype, withEvent: event)
-    }
 }
