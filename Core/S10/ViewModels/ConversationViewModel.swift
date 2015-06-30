@@ -11,7 +11,7 @@ import Bond
 import RealmSwift
 
 public class ConversationViewModel {
-    private let realmToken: NotificationToken?
+    private let realmToken: NotificationToken
     private let messages: FetchedResultsArray<Message>
     public let connection: Dynamic<Connection?>
     public let recipient: User
@@ -24,23 +24,22 @@ public class ConversationViewModel {
         self.recipient = recipient
         connection = recipient.dynConnection
         (hasUnsentMessage, realmToken) = ConversationViewModel.observeUnsentMessage(recipient)
+        messages = Message
+            .by(NSPredicate(format: "%K == %@ && %K != nil",
+                MessageKeys.sender.rawValue, recipient,
+                MessageKeys.video.rawValue))
+            .sorted(by: MessageKeys.createdAt.rawValue, ascending: true)
+            .results(Message.self, loadData: true)
+        messageViewModels = messages.map { MessageViewModel(message: $0) }
+        // TODO: Figure out how to make formattedStatus & badgeText also work when connection gets created
         if let connection = recipient.connection {
             formattedStatus = ConversationViewModel.formatStatus(connection)
             badgeText = reduce(connection.dynUnreadCount, hasUnsentMessage) {
                 ($0 != nil && $0! > 0 && $1 == false) ? "\($0!)" : ""
             }
-            messages = Message
-                .by(NSPredicate(format: "%K == %@ && %K != nil",
-                    MessageKeys.connection.rawValue, connection,
-                    MessageKeys.video.rawValue))
-                .sorted(by: MessageKeys.createdAt.rawValue, ascending: true)
-                .results(Message.self, loadData: true)
-            messageViewModels = messages.map { MessageViewModel(message: $0) }
         } else {
             formattedStatus = Dynamic("")
             badgeText = Dynamic("")
-            messages = Message.all().results(Message.self, loadData: false)
-            messageViewModels = DynamicArray([])
         }
     }
     
@@ -49,12 +48,10 @@ public class ConversationViewModel {
     }
     
     deinit {
-        if let realmToken = realmToken {
-            Realm().removeNotification(realmToken)
-        }
+        Realm().removeNotification(realmToken)
     }
     
-    class func observeUnsentMessage(recipient: User) -> (Dynamic<Bool>, NotificationToken?) {
+    class func observeUnsentMessage(recipient: User) -> (Dynamic<Bool>, NotificationToken) {
         let realm = Realm()
         let recipientId = recipient.documentID!
         let countUnsent = { (realm: Realm) in
