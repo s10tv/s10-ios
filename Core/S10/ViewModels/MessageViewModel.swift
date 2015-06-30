@@ -22,7 +22,7 @@ public class MessageViewModel {
     public init(message: Message) {
         self.message = message
         sender = message.sender
-        videoURL = message.video!.URL
+        videoURL = message.video?.URL ?? Dynamic(nil)
         formattedDate = reduce(message.dynCreatedAt, CurrentDate) {
             Formatters.formatRelativeDate($0, relativeTo: $1) ?? ""
         }
