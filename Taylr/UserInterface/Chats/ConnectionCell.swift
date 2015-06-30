@@ -26,8 +26,8 @@ class ConnectionCell : UITableViewCell {
     }
     
     func bindViewModel(viewModel: ConversationViewModel) {
-        avatarView.user = viewModel.recipient.value
-        viewModel.recipient.value?.displayName ?? Dynamic("") ->> nameLabel
+        avatarView.user = viewModel.recipient
+        viewModel.recipient.displayName ->> nameLabel
         viewModel.hasUnsentMessage ->> spinner
         viewModel.formattedStatus ->> subtitleLabel
         viewModel.badgeText ->> badgeLabel

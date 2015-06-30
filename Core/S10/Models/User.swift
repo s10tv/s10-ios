@@ -36,6 +36,10 @@ public class User: _User {
         }
     }()
     
+    public private(set) lazy var dynConnection: Dynamic<Connection?> = {
+        return self.dynValue(UserKeys.connection)
+    }()
+    
     public class func findByDocumentID(context: NSManagedObjectContext, documentID: String) -> User? {
         return context.objectInCollection("users", documentID: documentID) as? User
     }

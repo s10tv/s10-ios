@@ -54,8 +54,8 @@ class ConversationViewController : BaseViewController {
         dataSourceBond = UICollectionViewDataSourceBond(collectionView: collectionView)
         DynamicArray([messagesSection, cameraSection]) ->> dataSourceBond
         
-        avatarView.user = conversationVM.recipient.value!
-        conversationVM.recipient.value!.displayName ->> nameLabel
+        avatarView.user = conversationVM.recipient
+        conversationVM.recipient.displayName ->> nameLabel
         conversationVM.hasUnsentMessage ->> spinner
         conversationVM.formattedStatus ->> activityLabel
         conversationVM.badgeText ->> badgeLabel
@@ -80,7 +80,7 @@ class ConversationViewController : BaseViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ProfileViewController {
-            vc.profileVM = ProfileViewModel(meteor: Meteor, user: conversationVM.recipient.value!)
+            vc.profileVM = ProfileViewModel(meteor: Meteor, user: conversationVM.recipient)
         }
     }
 }
@@ -125,7 +125,7 @@ extension ConversationViewController : MessageCellDelegate {
 extension ConversationViewController : ProducerDelegate {
     func producer(producer: ProducerViewController, didProduceVideo url: NSURL) {
         Log.info("I got a video \(url)")
-        Globals.videoService.sendVideoMessage(conversationVM.connection,
+        Globals.videoService.sendVideoMessage(conversationVM.connection.value!,
             localVideoURL: url)
         PKHUD.hide(animated: false)
     }

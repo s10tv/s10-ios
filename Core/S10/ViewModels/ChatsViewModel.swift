@@ -17,6 +17,6 @@ public class ChatsViewModel {
         connectionViewModels = Connection
             .by("\(ConnectionKeys.otherUser) != nil")
             .sorted(by: ConnectionKeys.updatedAt.rawValue, ascending: false)
-            .results(Connection).map { ConversationViewModel(connection: $0) }
+            .results(Connection).map { ConversationViewModel(recipient: $0.otherUser!) }
     }
 }
