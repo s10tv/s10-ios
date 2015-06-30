@@ -61,7 +61,7 @@ public class VideoUploadOperation : AsyncOperation {
             request.HTTPMethod = "PUT"
             request.addValue("2014-02-14", forHTTPHeaderField: "x-ms-version")
             request.addValue("BlockBlob", forHTTPHeaderField: "x-ms-blob-type")
-            request.addValue("text/plain", forHTTPHeaderField: "Content-Type")
+            request.addValue("video/mp4", forHTTPHeaderField: "Content-Type")
             return Alamofire.upload(request, self.localVideoURL).rac_statuscode()
         }.flattenMap { res in
             let statusCode = res as! Int
