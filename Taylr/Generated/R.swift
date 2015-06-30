@@ -64,6 +64,10 @@ public enum R {
         case meCancelTitle = "MeCancelTitle"
         /// Link New Service
         case meLinkNewSerivceTitle = "MeLinkNewSerivceTitle"
+        /// Yes
+        case meRemoveServiceConfirm = "MeRemoveServiceConfirm"
+        /// Are you sure you want to remove %@ account %@? You can always add it back later
+        case meRemoveServiceTitle = "MeRemoveServiceTitle"
         /// Cancel
         case moreSheetCancel = "MoreSheetCancel"
         /// Report %@

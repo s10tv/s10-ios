@@ -60,6 +60,7 @@ class MeViewController : BaseViewController {
         let sheet = UIAlertController(title: LS(.meLinkNewSerivceTitle), message: nil, preferredStyle: .ActionSheet)
         for option in viewModel.linkableAccounts {
             sheet.addAction(option.name) { _ in
+                // TODO: Actually add service
             }
         }
         sheet.addAction(LS(.meCancelTitle), style: .Cancel)
@@ -77,4 +78,21 @@ class MeViewController : BaseViewController {
         presentViewController(sheet)
     }
 
+}
+
+extension MeViewController : UICollectionViewDelegate {
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        if indexPath.section == 0 {
+            let service = viewModel.linkedServices[indexPath.row]
+            let title = LS(.meRemoveServiceTitle, service.name.value, service.userDisplayName.value)
+            let sheet = UIAlertController(title: title, message: nil, preferredStyle: .ActionSheet)
+            sheet.addAction(LS(.meRemoveServiceConfirm), style: .Destructive) { _ in
+                // TODO: Actually remove service
+            }
+            sheet.addAction(LS(.meCancelTitle), style: .Cancel)
+            presentViewController(sheet)
+        } else {
+            linkNewService(self)
+        }
+    }
 }

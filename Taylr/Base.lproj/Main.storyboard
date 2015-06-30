@@ -1078,6 +1078,9 @@
                                         </userDefinedRuntimeAttributes>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="delegate" destination="mIZ-vh-lBm" id="77D-Ed-fd6"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
