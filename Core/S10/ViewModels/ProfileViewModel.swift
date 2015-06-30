@@ -15,11 +15,16 @@ public class ProfileViewModel {
     var servicesSubscription: METSubscription?
     var activitiesSubscription: METSubscription?
     public let user: User
+    public let services: DynamicArray<ServiceViewModel>
     public let activities: DynamicArray<ActivityViewModel>
     
     public init(meteor: MeteorService, user: User) {
         self.meteor = meteor
         self.user = user
+        services = Service
+            .by(ServiceKeys.user, value: user)
+            .sorted(by: ServiceKeys.serviceType.rawValue, ascending: true)
+            .results(Service).map { ServiceViewModel($0) }
         activities = Activity
             .by(ActivityKeys.user, value: user)
             .sorted(by: ActivityKeys.timestamp.rawValue, ascending: false)

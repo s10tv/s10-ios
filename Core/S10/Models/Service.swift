@@ -15,6 +15,10 @@ public class Service : _Service {
     case Instagram = "instagram"
     }
     
+    public private(set) lazy var dynUserDisplayName: Dynamic<String?> = {
+        return self.dynValue(ServiceKeys.userDisplayName)
+    }()
+    
     public private(set) lazy var type: Dynamic<Type?> = {
         return self.dynValue(ServiceKeys.serviceType).map { $0.map { Type(rawValue: $0) } ?? nil }
     }()

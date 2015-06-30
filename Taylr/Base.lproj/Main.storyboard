@@ -21,6 +21,7 @@
             <string>TransatTextStandard</string>
             <string>TransatTextStandard</string>
             <string>TransatTextStandard</string>
+            <string>TransatTextStandard</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -394,6 +395,59 @@
                                             <outlet property="distanceLabel" destination="uE6-2o-4dx" id="5ZZ-wQ-4XR"/>
                                             <outlet property="nameLabel" destination="2Sg-08-WeT" id="9K8-bK-ekA"/>
                                             <outlet property="usernameLabel" destination="brj-Vp-1XD" id="Y8Y-G1-rL3"/>
+                                        </connections>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ServiceCell" rowHeight="48" id="xK6-g6-QfT" customClass="ProfileServiceCell" customModule="Taylr" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="xK6-g6-QfT" id="wBA-QQ-3N0">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-twitter" translatesAutoresizingMaskIntoConstraints="NO" id="bOY-zz-ZsA">
+                                                    <rect key="frame" x="45" y="10" width="28" height="28"/>
+                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aoc-8q-Juk" userLabel="Divider">
+                                                    <rect key="frame" x="0.0" y="47" width="375" height="1"/>
+                                                    <color key="backgroundColor" red="0.8862745098" green="0.8862745098" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="4" id="GBT-lS-j8N"/>
+                                                        <constraint firstAttribute="height" constant="1" id="kop-O1-fPr"/>
+                                                    </constraints>
+                                                    <variation key="default">
+                                                        <mask key="constraints">
+                                                            <exclude reference="GBT-lS-j8N"/>
+                                                        </mask>
+                                                    </variation>
+                                                </view>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tony Xiao" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.94999998807907104" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fwU-ec-LoJ">
+                                                    <rect key="frame" x="93" y="15" width="72" height="17"/>
+                                                    <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="bOY-zz-ZsA" firstAttribute="leading" secondItem="wBA-QQ-3N0" secondAttribute="leading" constant="45" id="BMM-iR-gNx"/>
+                                                <constraint firstAttribute="centerY" secondItem="bOY-zz-ZsA" secondAttribute="centerY" id="CFX-od-EDD"/>
+                                                <constraint firstAttribute="bottom" secondItem="aoc-8q-Juk" secondAttribute="bottom" id="Ha0-5n-9JX"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="bOY-zz-ZsA" secondAttribute="bottom" constant="2" id="Jxy-3O-9lc"/>
+                                                <constraint firstItem="bOY-zz-ZsA" firstAttribute="top" secondItem="wBA-QQ-3N0" secondAttribute="topMargin" constant="2" id="SFY-HV-0JU"/>
+                                                <constraint firstItem="bOY-zz-ZsA" firstAttribute="top" secondItem="wBA-QQ-3N0" secondAttribute="topMargin" id="V71-Td-y9U"/>
+                                                <constraint firstItem="fwU-ec-LoJ" firstAttribute="centerY" secondItem="bOY-zz-ZsA" secondAttribute="centerY" id="d8b-Hj-gGz"/>
+                                                <constraint firstItem="aoc-8q-Juk" firstAttribute="leading" secondItem="wBA-QQ-3N0" secondAttribute="leading" id="f9B-fX-ZoU"/>
+                                                <constraint firstAttribute="trailing" secondItem="aoc-8q-Juk" secondAttribute="trailing" id="gFv-2O-lge"/>
+                                                <constraint firstItem="fwU-ec-LoJ" firstAttribute="leading" secondItem="bOY-zz-ZsA" secondAttribute="trailing" constant="20" id="oJD-Z9-o1Q"/>
+                                            </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="CFX-od-EDD"/>
+                                                    <exclude reference="V71-Td-y9U"/>
+                                                </mask>
+                                            </variation>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="serviceIconView" destination="bOY-zz-ZsA" id="y58-fR-zn3"/>
+                                            <outlet property="userDisplayNameLabel" destination="fwU-ec-LoJ" id="Uwf-je-8xG"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ImageCell" rowHeight="287" id="aze-MX-TRa" customClass="ActivityImageCell" customModule="Taylr" customModuleProvider="target">
