@@ -9,7 +9,7 @@ target :Core do
     link_with 'Core'
     # Foundation
     pod 'ReactiveCocoa', '~> 2.4' # Update to 3.0 when ready
-    pod 'Bond', '~> 3.8'
+    pod 'Bond', :git => 'https://github.com/tonyxiao/Bond.git', :branch => 'coredata'
     pod 'SwiftTryCatch', '~> 0.0.1'
     pod 'NSLogger', '~> 1.5', :configuration => ['Debug']
 
@@ -76,6 +76,7 @@ target :Core do
         # Debug only
 
         pod 'Reveal-iOS-SDK', '~> 1.5', :configuration => ['Debug']
+#        pod 'SparkInspector', '~> 1.3', :configuration => ['Debug']
     end
 
     target :TestApp do

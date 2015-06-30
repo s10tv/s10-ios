@@ -67,7 +67,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 1.2)
   - AnalyticsSwift (~> 0.1.0)
-  - Bond (~> 3.8)
+  - Bond (from `https://github.com/tonyxiao/Bond.git`, branch `coredata`)
   - Cartography (~> 0.5)
   - CHTCollectionViewWaterfallLayout (~> 0.9)
   - DateTools (~> 1.6)
@@ -99,6 +99,9 @@ DEPENDENCIES:
   - XLForm (~> 3.0)
 
 EXTERNAL SOURCES:
+  Bond:
+    :branch: coredata
+    :git: https://github.com/tonyxiao/Bond.git
   Meteor:
     :branch: dev
     :git: https://github.com/tonyxiao/meteor-ios
@@ -111,6 +114,9 @@ EXTERNAL SOURCES:
     :git: https://github.com/tonyxiao/TCMobileProvision.git
 
 CHECKOUT OPTIONS:
+  Bond:
+    :commit: 02b5bb3447400ec00fdca0c958319ab52f6a4ce0
+    :git: https://github.com/tonyxiao/Bond.git
   Meteor:
     :commit: 0f40ef742583cb4b8c2e987121ff1d1f4a6afdfb
     :git: https://github.com/tonyxiao/meteor-ios
@@ -128,7 +134,7 @@ SPEC CHECKSUMS:
   Alamofire: 5550bf0b575ed1a4bf9be572f9463e1015cc169e
   AnalyticsSwift: 903cb2c6d522709fa7637285553840c02accd149
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
-  Bond: a7a7b06cb23ad80470d752e9f964afd2925cabd8
+  Bond: 7bc7bc11c3f10e5ec69f5fdc188d9345880d83aa
   Cartography: 774e5cc446f5a6bca5d4345c5aa6af9a1fe74dc6
   CHTCollectionViewWaterfallLayout: 1a8da4fc662702cbddda8926ced266036a829f84
   DateTools: 9bcc89e4f2f9004d8a7a2bd1b49269cf78968e65

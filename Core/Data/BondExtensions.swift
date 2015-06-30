@@ -18,39 +18,12 @@ public func unbindAll<U: Bondable>(bondables: U...) {
 
 // MARK: - Dynamic Support
 
-public func dynamicValueFor<T>(object: NSObject, keyPath: String, defaultValue: T? = nil) -> Dynamic<T?> {
-    return dynamicObservableFor(object, keyPath: keyPath, from: { (value: AnyObject?) -> T? in
-        return value as? T
-        }, to: { (value: T?) -> AnyObject? in
-            return value as? AnyObject
-    })
-}
-
 public extension NSObject {
     public func dynValue<T>(keyPath: String, _ defaultValue: T? = nil) -> Dynamic<T?> {
-        return dynamicValueFor(self, keyPath, defaultValue: defaultValue)
+        return dynamicOptionalObservableFor(self, keyPath: keyPath, defaultValue: defaultValue)
     }
     public func dynValue<T>(keyPath: Printable, _ defaultValue: T? = nil) -> Dynamic<T?> {
         return dynValue(keyPath.description, defaultValue)
-    }
-}
-
-// MARK: - UIKit
-
-private var activeDynamicHandleNSLayoutConstraint: UInt8 = 0;
-
-extension NSLayoutConstraint {
-    public var dynActive: Dynamic<Bool> {
-        if let d: AnyObject = objc_getAssociatedObject(self, &activeDynamicHandleNSLayoutConstraint) {
-            return (d as? Dynamic<Bool>)!
-        } else {
-            let d = InternalDynamic<Bool>(self.active)
-            let bond = Bond<Bool>() { [weak self] v in if let s = self { s.active = v } }
-            d.bindTo(bond, fire: false, strongly: false)
-            d.retain(bond)
-            objc_setAssociatedObject(self, &activeDynamicHandleNSLayoutConstraint, d, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
-            return d
-        }
     }
 }
 
@@ -169,28 +142,5 @@ extension FetchedResultsControllerDynamicDelegate : NSFetchedResultsControllerDe
         assert(NSThread.isMainThread(), "Has to run on main")
         count?.value = controller.fetchedObjects?.count ?? 0
         nextDelegate?.controllerDidChangeContent?(controller)
-    }
-}
-
-// MARK: - UINavigationItem
-
-private var titleDynamicHandleUINavigationItem: UInt8 = 0;
-
-extension UINavigationItem : Bondable {
-    public var dynTitle: Dynamic<String> {
-        if let d: AnyObject = objc_getAssociatedObject(self, &titleDynamicHandleUINavigationItem) {
-            return (d as? Dynamic<String>)!
-        } else {
-            let d = InternalDynamic<String>(self.title ?? "")
-            let bond = Bond<String>() { [weak self] v in if let s = self { s.title = v } }
-            d.bindTo(bond, fire: false, strongly: false)
-            d.retain(bond)
-            objc_setAssociatedObject(self, &titleDynamicHandleUINavigationItem, d, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
-            return d
-        }
-    }
-    
-    public var designatedBond: Bond<String> {
-        return self.dynTitle.valueBond
     }
 }
