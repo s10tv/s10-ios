@@ -27,6 +27,7 @@ class CandidateCell : UICollectionViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        avatarView.image = nil
         avatarView.unbindDynImageURL()
         titleLabel.designatedBond.unbindAll()
     }
