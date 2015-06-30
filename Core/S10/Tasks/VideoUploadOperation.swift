@@ -16,15 +16,15 @@ import SwiftyJSON
 public class VideoUploadOperation : AsyncOperation {
 
     var taskId: String?
-    let connectionId: String
+    let recipientId: String
     let localVideoURL: NSURL
     let meteorService: MeteorService
 
     public init(
-            connectionId: String,
+            recipientId: String,
             localVideoURL: NSURL,
             meteorService: MeteorService) {
-        self.connectionId = connectionId
+        self.recipientId = recipientId
         self.localVideoURL = localVideoURL
         self.meteorService = meteorService
     }
@@ -41,7 +41,7 @@ public class VideoUploadOperation : AsyncOperation {
             let entry = VideoUploadTaskEntry()
             entry.id = taskId!
             entry.localURL = localVideoURL.path!
-            entry.connectionId = connectionId
+            entry.recipientId = recipientId
 
             realm.write {
                 realm.add(entry)
@@ -55,7 +55,7 @@ public class VideoUploadOperation : AsyncOperation {
         }
 
         meteorService.startTask(taskId!, type: "MESSAGE",
-                metadata: ["connectionId": self.connectionId]).flattenMap { res in
+                metadata: ["userId": self.recipientId]).flattenMap { res in
             let videoUrl = JSON(res)["videoUrl"].string!
             let request = NSMutableURLRequest(URL: NSURL(string : videoUrl)!)
             request.HTTPMethod = "PUT"

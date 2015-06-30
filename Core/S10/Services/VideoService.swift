@@ -20,6 +20,7 @@ public class VideoService {
     public init(meteorService: MeteorService) {
         uploadQueue = NSOperationQueue()
         self.meteorService = meteorService
+        NSFileManager.defaultManager().removeItemAtPath(Realm.defaultPath, error: nil)
     }
     
     public func resumeUploads() {
@@ -33,7 +34,7 @@ public class VideoService {
                 continue
             }
             let operation = VideoUploadOperation(
-                connectionId: task.connectionId,
+                recipientId: task.recipientId,
                 localVideoURL: NSURL(task.localURL),
                 meteorService: meteorService)
             operation.taskId = task.id
@@ -41,9 +42,9 @@ public class VideoService {
         }
     }
 
-    public func sendVideoMessage(connection: Connection, localVideoURL: NSURL) {
+    public func sendVideoMessage(recipient: User, localVideoURL: NSURL) {
         let operation = VideoUploadOperation(
-                connectionId: connection.documentID!,
+                recipientId: recipient.documentID!,
                 localVideoURL: localVideoURL,
                 meteorService: self.meteorService)
         queueOperation(operation)

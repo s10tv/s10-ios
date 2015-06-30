@@ -95,7 +95,7 @@ class IntegrationTests : XCTestCase {
                 self.meteor.mainContext, documentID: res as! String)
             otherUserId = connection?.otherUser?.documentID
 
-            self.videoService.sendVideoMessage(connection!, localVideoURL: url!)
+            self.videoService.sendVideoMessage(connection!.otherUser!, localVideoURL: url!)
             return RACSignal.empty()
         }
 

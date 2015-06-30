@@ -23,9 +23,9 @@ public class ConversationViewModel {
     public init(recipient: User) {
         self.recipient = recipient
         connection = recipient.dynConnection
+        (hasUnsentMessage, realmToken) = ConversationViewModel.observeUnsentMessage(recipient)
         if let connection = recipient.connection {
             formattedStatus = ConversationViewModel.formatStatus(connection)
-            (hasUnsentMessage, realmToken) = ConversationViewModel.observeUnsentMessage(connection)
             badgeText = reduce(connection.dynUnreadCount, hasUnsentMessage) {
                 ($0 != nil && $0! > 0 && $1 == false) ? "\($0!)" : ""
             }
@@ -38,8 +38,6 @@ public class ConversationViewModel {
             messageViewModels = messages.map { MessageViewModel(message: $0) }
         } else {
             formattedStatus = Dynamic("")
-            hasUnsentMessage = Dynamic(false)
-            realmToken = nil
             badgeText = Dynamic("")
             messages = Message.all().results(Message.self, loadData: false)
             messageViewModels = DynamicArray([])
@@ -56,11 +54,11 @@ public class ConversationViewModel {
         }
     }
     
-    class func observeUnsentMessage(connection: Connection) -> (Dynamic<Bool>, NotificationToken?) {
+    class func observeUnsentMessage(recipient: User) -> (Dynamic<Bool>, NotificationToken?) {
         let realm = Realm()
-        let connectionId = connection.documentID!
+        let recipientId = recipient.documentID!
         let countUnsent = { (realm: Realm) in
-            return realm.objects(VideoUploadTaskEntry).filter("connectionId = %@", connectionId).count
+            return realm.objects(VideoUploadTaskEntry).filter("recipientId = %@", recipientId).count
         }
         let hasUnsent = Dynamic(countUnsent(realm) > 0)
         let token = realm.addNotificationBlock { hasUnsent.value = countUnsent($1) > 0 }

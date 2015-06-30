@@ -125,8 +125,7 @@ extension ConversationViewController : MessageCellDelegate {
 extension ConversationViewController : ProducerDelegate {
     func producer(producer: ProducerViewController, didProduceVideo url: NSURL) {
         Log.info("I got a video \(url)")
-        Globals.videoService.sendVideoMessage(conversationVM.connection.value!,
-            localVideoURL: url)
+        Globals.videoService.sendVideoMessage(conversationVM.recipient, localVideoURL: url)
         PKHUD.hide(animated: false)
     }
 }
