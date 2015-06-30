@@ -55,6 +55,12 @@ class ProfileViewController : BaseViewController {
         return .LightContent
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let vc = segue.destinationViewController as? ConversationViewController {
+            vc.conversationVM = ConversationViewModel(recipient: profileVM.user)
+        }
+    }
+    
     // MARK: - Action
     
     @IBAction func showMoreOptions(sender: AnyObject) {
