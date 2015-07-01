@@ -103,7 +103,7 @@ extension MeViewController : UICollectionViewDelegate {
             let title = LS(.meRemoveServiceTitle, service.name.value, service.userDisplayName.value)
             let sheet = UIAlertController(title: title, message: nil, preferredStyle: .ActionSheet)
             sheet.addAction(LS(.meRemoveServiceConfirm), style: .Destructive) { _ in
-                // TODO: Actually remove service
+                Meteor.removeService(service.service)
             }
             sheet.addAction(LS(.meCancelTitle), style: .Cancel)
             presentViewController(sheet)

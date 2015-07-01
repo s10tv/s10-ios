@@ -45,7 +45,7 @@ class LinkedAccountService {
             success: { credential, response, parameters in
                 subject.sendNext(nil)
             Async.main {
-                Meteor.addService("instagram", accessToken: credential.oauth_token).subscribe(subject)
+                Meteor.addService(.Instagram, accessToken: credential.oauth_token).subscribe(subject)
             }
             Log.debug("Successfulled received token from instagram")
         }, failure: { error in
@@ -78,7 +78,7 @@ class LinkedAccountService {
                 subject.sendNext(nil) // TODO: Used to signal progress, make more explicit
                 Log.debug("Successfulled received token from facebook")
                 Async.main {
-                    Meteor.addService("facebook", accessToken: result.token.tokenString).subscribe(subject)
+                    Meteor.addService(.Facebook, accessToken: result.token.tokenString).subscribe(subject)
                 }
             }
         }

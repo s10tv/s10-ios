@@ -30,7 +30,7 @@
 /* Settings */
 "MeLinkNewSerivceTitle" = "Link New Service";
 "MeRemoveServiceTitle" = "Are you sure you want to remove %@ account %@? You can always add it back later";
-"MeRemoveServiceConfirm" = "Yes";
+"MeRemoveServiceConfirm" = "Remove";
 "MeCancelTitle" = "Cancel";
 
 "SettingsAgeFormat" = "%d years old";
