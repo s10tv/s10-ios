@@ -53,20 +53,22 @@ class UpgradeService : NSObject {
         }
         if let topVC = UIViewController.topMostViewController() {
             promptInProgress = true
-            promptForUpgrade(topVC).subscribeCompleted {
+            promptForUpgrade(topVC).observe(completed: {
                 self.promptInProgress = false
-            }
+            }, interrupted: {
+                self.promptInProgress = false
+            })
         } else {
             Log.error("Unable to find topMostViewController, skipping prompt for upgrade")
         }
     }
     
-    private func promptForUpgrade(viewController: UIViewController) -> RACSignal {
-        let subject = RACReplaySubject()
+    private func promptForUpgrade(viewController: UIViewController) -> Signal<Void, NoError> {
+        let (signal, observer) = Signal<Void, NoError>.pipe()
         let alert = UIAlertController(title: nil, message: nil, preferredStyle: .Alert)
         func performUpgrade(action: UIAlertAction!) {
             UIApplication.sharedApplication().openURL(env.upgradeURL)
-            subject.sendCompleted()
+            sendCompleted(observer)
         }
         if needsHardUpgrade {
             alert.title = LS(.hardUpgradeAlertTitle)
@@ -77,11 +79,11 @@ class UpgradeService : NSObject {
             alert.message = LS(.softUpgradeAlertMessage)
             alert.addAction(LS(.softUpgradeAlertOk), handler: performUpgrade)
             alert.addAction(LS(.softUpgradeAlertCancel), style: .Cancel) { _ in
-                subject.sendCompleted()
+                sendCompleted(observer)
             }
         }
         viewController.presentViewController(alert, animated: true)
-        return subject
+        return signal
     }
     
     // MARK: -
