@@ -16,33 +16,29 @@ import Core
 class LinkedAccountService {
 
     let env: TaylrEnvironment
-    let authWebVC: AuthWebViewController
-    var presentingVC: UIViewController?
     
-    init(authWebVC: AuthWebViewController) {
-        self.authWebVC = authWebVC
-        env = Globals.env
+    init(env: TaylrEnvironment) {
+        self.env = env
     }
     
-    func linkNewService(type: Service.ServiceType, presentingViewController: UIViewController) -> RACSignal {
+    func linkNewService(type: Service.ServiceType, makeAuthWebVC: (() -> AuthWebViewController?)? = nil) -> RACSignal {
         switch type {
         case .Facebook:
             return linkFacebook()
         case .Instagram:
-            return linkInstagram(presentingViewController)
+            return linkInstagram(authWebVC: makeAuthWebVC?())
         }
     }
     
-    func linkInstagram(presentingViewController: UIViewController) -> RACSignal {
+    func linkInstagram(authWebVC: AuthWebViewController? = nil) -> RACSignal {
         let subject = RACReplaySubject()
-        presentingVC = presentingViewController
         let oauth = OAuth2Swift(
             consumerKey: env.instagramClientId,
             consumerSecret: "",
             authorizeUrl: "https://api.instagram.com/oauth/authorize",
             responseType: "token"
         )
-        oauth.authorize_url_handler = self
+        oauth.authorize_url_handler = authWebVC ?? oauth.authorize_url_handler
         oauth.authorizeWithCallbackURL(NSURL("\(env.audience.urlScheme)\(env.oauthCallbackPath)/instagram"),
             scope: "likes",
             state: generateStateWithLength(20) as String,
@@ -80,6 +76,7 @@ class LinkedAccountService {
                 subject.sendError(nil) // TODO: Send explicit error
             } else {
                 subject.sendNext(nil) // TODO: Used to signal progress, make more explicit
+                Log.debug("Successfulled received token from facebook")
                 Async.main {
                     Meteor.addService("facebook", accessToken: result.token.tokenString).subscribe(subject)
                 }
@@ -144,9 +141,10 @@ class LinkedAccountService {
     }
 }
 
-extension LinkedAccountService : OAuthSwiftURLHandlerType {
+extension AuthWebViewController : OAuthSwiftURLHandlerType {
     @objc func handle(url: NSURL) {
-        authWebVC.targetURL = url
-        presentingVC?.presentViewController(authWebVC, animated: true, completion: nil)
+        targetURL = url
+        let rootVC = UIApplication.sharedApplication().keyWindow?.rootViewController
+        rootVC?.presentViewController(self, animated: true, completion: nil)
     }
 }
