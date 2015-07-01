@@ -62,8 +62,6 @@ class SignupViewController : BaseViewController {
     }
     
     @IBAction func startLogin(sender: AnyObject) {
-        loginWithFacebook(sender)
-        return
         if !Meteor.networkReachable {
             showErrorAlert(NSError(.NetworkUnreachable))
             return
@@ -76,27 +74,6 @@ class SignupViewController : BaseViewController {
                 Log.warn("Ignoring digits error, not handling for now \(error)")
             }
         }, completed: {
-            self.navigationController?.popToRootViewControllerAnimated(true)
-        })
-    }
-    
-    @IBAction func loginWithFacebook(sender: AnyObject) {
-        let current = Globals.env.audience
-        let beta = TaylrEnvironment.Audience.Beta
-        let prod = TaylrEnvironment.Audience.AppStore
-        if (current == beta || current == prod) && beta.installed && prod.installed {
-            showErrorAlert(NSError(.BetaProdBothInstalled))
-            return
-        }
-
-        startLogin({ Globals.accountService.loginWithFacebook() }, errorBlock: { error in
-            // TODO: This us duplicated and can be refactored
-            if let error = error {
-                if error.domain == METDDPErrorDomain {
-                    self.showAlert(LS(.errUnableToLoginTitle), message: LS(.errUnableToLoginMessage))
-                    return
-                }
-            }
             self.navigationController?.popToRootViewControllerAnimated(true)
         })
     }

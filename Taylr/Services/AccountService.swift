@@ -8,33 +8,16 @@
 
 import Foundation
 import ReactiveCocoa
-import FacebookSDK
 import DigitsKit
 import Core
 
 class AccountService {
     private let meteorService: MeteorService
-    private let readPerms = [
-        "user_about_me",
-        "user_photos",
-        "user_location",
-        "user_work_history",
-        "user_education_history",
-        "user_birthday",
-        // extended permissions
-        "email"
-    ]
+
     let digits = Digits.sharedInstance()
-    var session: FBSession { return FBSession.activeSession() }
     
     init(meteorService: MeteorService) {
         self.meteorService = meteorService
-        openSession(allowUI: false)
-    }
-    
-    // TODO: Attach persistent FBSessionStateHandler rather than one off completion
-    private func openSession(#allowUI: Bool) -> RACSignal {
-        return FBSession.openActiveSession(readPermissions: readPerms, allowLoginUI: allowUI)
     }
     
     private func didLogin() {
@@ -49,15 +32,6 @@ class AccountService {
     
     func debugLogin(userId: String) -> RACSignal {
         return meteorService.debugLoginWithUserId(userId).replayWithSubject().deliverOnMainThread().doCompleted {
-            self.didLogin()
-        }
-    }
-    
-    func loginWithFacebook() -> RACSignal {
-        return self.openSession(allowUI: true).then {
-            let data = self.session.accessTokenData
-            return self.meteorService.loginWithFacebook(accessToken: data.accessToken, expiresAt: data.expirationDate)
-        }.replayWithSubject().deliverOnMainThread().doCompleted {
             self.didLogin()
         }
     }
@@ -87,13 +61,11 @@ class AccountService {
         Analytics.identifyUser(Globals.env.deviceId) // Reset to deviceId based tracking
         UD.resetAll()
         digits.logOut()
-        self.session.closeAndClearTokenInformation()
         return meteorService.logout().deliverOnMainThread()
     }
     
     func deleteAccount() -> RACSignal {
         digits.logOut()
-        self.session.closeAndClearTokenInformation()
         UD.resetAll()
         return meteorService.deleteAccount().deliverOnMainThread()
     }

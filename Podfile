@@ -62,8 +62,8 @@ target :Core do
         pod 'INTULocationManager', '~> 3.0'
 
         # 3rd Party Service SDKs
-        pod 'Facebook-iOS-SDK', '3.22.0' # TODO: Upgrade me when ready
-        pod 'OAuthSwift', '~> 0.3' # TODO: Use our custom code when ready, this thing has too many custom dependencies
+        pod 'OAuthSwift', '~> 0.3' # TODO: Consider using server based oauth
+        pod 'FBSDKLoginKit', '~> 4.3'
         pod 'AnalyticsSwift', '~> 0.1.0'
         pod 'Heap', '~> 2.1'
         #pod 'BugfenderSDK', :git => 'https://github.com/bugfender/BugfenderSDK-iOS.git', :tag => '0.3.2'

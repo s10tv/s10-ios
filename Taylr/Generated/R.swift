@@ -34,10 +34,6 @@ public enum R {
         case transatTextStandard = "TransatTextStandard"
     }
     public enum Strings : String {
-        /// Both Taylr Beta and Talyr app store build are installed on this device. Please remove one of them and try login via Facebook again.
-        case errBetaProdBothInstalledMessage = "errBetaProdBothInstalledMessage"
-        /// Unsupported Configuration
-        case errBetaProdBothInstalledTitle = "errBetaProdBothInstalledTitle"
         /// Unexpected Error
         case errDefault = "errDefault"
         /// Ooops, something unexpected has happened. Please close the app and try again later.

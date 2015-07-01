@@ -7,16 +7,15 @@
 //
 
 import UIKit
-import SugarRecord
 import Meteor
-import FacebookSDK
-//import BugfenderSDK
+import SugarRecord
 import SwiftyUserDefaults
-import Core
 import Fabric
 import DigitsKit
 import Crashlytics
 import OAuthSwift
+import FBSDKCoreKit
+import Core
 
 
 // Globally accessible variables and shorthands
@@ -92,7 +91,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
         Log.info("App Launched")
         Analytics.track("App Open")
         
-
+        FBSDKApplicationDelegate.sharedInstance().application(application,
+            didFinishLaunchingWithOptions: launchOptions)
         
         return true
     }
@@ -108,7 +108,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
-        FBAppCall.handleDidBecomeActive()
         application.applicationIconBadgeNumber = 0 // Clear notification first
         Globals.locationService.updateLatestLocationIfAvailable()
     }
@@ -122,6 +121,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        if FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation) {
+            return true
+        }
         if (url.host == Globals.env.oauthCallbackPath) {
             if (url.path!.hasPrefix("/twitter") || url.path!.hasPrefix("/flickr") || url.path!.hasPrefix("/fitbit")
                 || url.path!.hasPrefix("/withings") || url.path!.hasPrefix("/linkedin") || url.path!.hasPrefix("/bitbucket")
@@ -138,7 +140,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
             // Google provider is the only one with your.bundle.id url schema.
             OAuth2Swift.handleOpenURL(url)
         }
-        return FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
+        return true
     }
     
     // MARK: - Push Handling

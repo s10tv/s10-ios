@@ -7,9 +7,10 @@
 //
 
 import Foundation
-import OAuthSwift
-import Core
 import ReactiveCocoa
+import OAuthSwift
+import FBSDKLoginKit
+import Core
 
 class LinkedAccountService {
 
@@ -25,11 +26,10 @@ class LinkedAccountService {
     func linkNewService(type: Service.ServiceType, presentingViewController: UIViewController) -> RACSignal {
         switch type {
         case .Facebook:
-            break
+            return linkFacebook()
         case .Instagram:
             return linkInstagram(presentingViewController)
         }
-        return RACSignal.empty()
     }
     
     func linkInstagram(presentingViewController: UIViewController) -> RACSignal {
@@ -55,6 +55,35 @@ class LinkedAccountService {
             Log.error("Unable to link instagram", error)
             subject.sendError(error)
         })
+        return subject.deliverOnMainThread()
+    }
+    
+    func linkFacebook() -> RACSignal {
+        let subject = RACReplaySubject()
+        let fb = FBSDKLoginManager()
+        let readPerms = [
+            "user_about_me",
+            "user_photos",
+            "user_location",
+            "user_work_history",
+            "user_education_history",
+            "user_birthday",
+            // extended permissions
+            "email"
+        ]
+        fb.logInWithReadPermissions(readPerms) { result, error in
+            // Todo: check result.grantedPermissions is complete
+            if error != nil {
+                subject.sendError(error)
+            } else if result.isCancelled {
+                subject.sendError(nil) // TODO: Send explicit error
+            } else {
+                subject.sendNext(nil) // TODO: Used to signal progress, make more explicit
+                dispatch_async(dispatch_get_main_queue()) {
+                    Meteor.addService("facebook", accessToken: result.token.tokenString).subscribe(subject)
+                }
+            }
+        }
         return subject.deliverOnMainThread()
     }
 }

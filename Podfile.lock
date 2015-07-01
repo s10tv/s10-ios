@@ -15,8 +15,17 @@ PODS:
   - DTFoundation/DTASN1 (1.7.5):
     - DTFoundation/Core
   - EDColor (1.0.0)
-  - Facebook-iOS-SDK (3.22.0):
-    - Bolts (~> 1.0)
+  - FBSDKCoreKit (4.3.0):
+    - Bolts (~> 1.1)
+    - FBSDKCoreKit/arc (= 4.3.0)
+    - FBSDKCoreKit/no-arc (= 4.3.0)
+  - FBSDKCoreKit/arc (4.3.0):
+    - Bolts (~> 1.1)
+  - FBSDKCoreKit/no-arc (4.3.0):
+    - Bolts (~> 1.1)
+    - FBSDKCoreKit/arc
+  - FBSDKLoginKit (4.3.0):
+    - FBSDKCoreKit
   - FormatterKit/TimeIntervalFormatter (1.8.0)
   - Heap (2.1.5)
   - InflectorKit (0.0.1)
@@ -73,7 +82,7 @@ DEPENDENCIES:
   - CHTCollectionViewWaterfallLayout (~> 0.9)
   - DateTools (~> 1.6)
   - EDColor (~> 1.0)
-  - Facebook-iOS-SDK (= 3.22.0)
+  - FBSDKLoginKit (~> 4.3)
   - FormatterKit/TimeIntervalFormatter (~> 1.8)
   - Heap (~> 2.1)
   - INTULocationManager (~> 3.0)
@@ -142,7 +151,8 @@ SPEC CHECKSUMS:
   DateTools: 9bcc89e4f2f9004d8a7a2bd1b49269cf78968e65
   DTFoundation: 1d28080c20c3da041706545363f8238ab53a6204
   EDColor: c83f9a61f9f9b3c23d541f1feb561558e29cb088
-  Facebook-iOS-SDK: 141cba3ba6c484380eb38c573110af9e4fbf8962
+  FBSDKCoreKit: a3a60225a84abeace291d0fe71cae29a627382c2
+  FBSDKLoginKit: 6bc2f8f2628c3b6d2e346762fff8cb55cfd3a58d
   FormatterKit: bddde83e054edf9d9ee14f9de3b3a5103db256f4
   Heap: 9d41b3d07bc86c9127364b638c710d854390a113
   InflectorKit: 64497199e6764f4d8337cab7f700a77b13d76a73

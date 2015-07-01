@@ -10,7 +10,6 @@ import Foundation
 
 enum ErrorCode : Int {
     case NetworkUnreachable = -1
-    case BetaProdBothInstalled = -2
     case SubscriptionError = -3
     
     static let nsErrorDomain = "S10"
@@ -20,14 +19,12 @@ enum ErrorCode : Int {
     var localizedDescription: String {
         switch self {
         case .NetworkUnreachable: return LS(.errNetworkUnreachable)
-        case .BetaProdBothInstalled: return LS(.errBetaProdBothInstalledTitle)
         default: return LS(.errDefault)
         }
     }
     var localizedRecoverySuggestion: String? {
         switch self {
         case .NetworkUnreachable: return LS(.errNetworkUnreachableRecovery)
-        case .BetaProdBothInstalled: return LS(.errBetaProdBothInstalledMessage)
         default: return LS(.errDefaultRecovery)
         }
     }
