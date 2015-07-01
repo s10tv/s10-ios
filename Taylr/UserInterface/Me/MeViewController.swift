@@ -10,6 +10,7 @@ import Foundation
 import Core
 import SDWebImage
 import Bond
+import PKHUD
 
 class MeViewController : BaseViewController {
     
@@ -58,11 +59,22 @@ class MeViewController : BaseViewController {
         return super.handleScreenEdgePan(edge)
     }
     
+    func linkService(type: Service.ServiceType) {
+        linkedAccountService.linkNewService(type, presentingViewController: self).subscribeNext({ _ in
+            PKHUD.showActivity()
+        }, error: { error in
+            PKHUD.hide(animated: false)
+            self.showAlert(LS(.errUnableToAddServiceTitle), message: LS(.errUnableToAddServiceMessage))
+        }, completed: {
+            PKHUD.hide(animated: false)
+        })
+    }
+    
     @IBAction func showLinkServiceOptions(sender: AnyObject) {
         let sheet = UIAlertController(title: LS(.meLinkNewSerivceTitle), message: nil, preferredStyle: .ActionSheet)
         for option in viewModel.linkableAccounts {
             sheet.addAction(option.name) { _ in
-                self.linkedAccountService.linkNewService(option.type, presentingViewController: self)
+                self.linkService(option.type)
             }
         }
         sheet.addAction(LS(.meCancelTitle), style: .Cancel)

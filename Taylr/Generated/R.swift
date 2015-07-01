@@ -46,6 +46,10 @@ public enum R {
         case errNetworkUnreachable = "errNetworkUnreachable"
         /// Seems like we don't have any network connection right now, try again later.
         case errNetworkUnreachableRecovery = "errNetworkUnreachableRecovery"
+        /// Sorry we're not able to add service the moment. Please try again later :(
+        case errUnableToAddServiceMessage = "errUnableToAddServiceMessage"
+        /// Unable to add service
+        case errUnableToAddServiceTitle = "errUnableToAddServiceTitle"
         /// Sorry we're not able to log you in at the moment. Please try again later :(
         case errUnableToLoginMessage = "errUnableToLoginMessage"
         /// Unable to login

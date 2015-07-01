@@ -60,6 +60,9 @@
 "errUnableToLoginTitle" = "Unable to login";
 "errUnableToLoginMessage" = "Sorry we're not able to log you in at the moment. Please try again later :(";
 
+"errUnableToAddServiceTitle" = "Unable to add service";
+"errUnableToAddServiceMessage" = "Sorry we're not able to add service the moment. Please try again later :(";
+
 /* Errors */
 "errDefault" = "Unexpected Error";
 "errDefaultRecovery" = "Ooops, something unexpected has happened. Please close the app and try again later.";

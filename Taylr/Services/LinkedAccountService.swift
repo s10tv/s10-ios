@@ -9,6 +9,7 @@
 import Foundation
 import OAuthSwift
 import Core
+import ReactiveCocoa
 
 class LinkedAccountService {
 
@@ -21,16 +22,18 @@ class LinkedAccountService {
         env = Globals.env
     }
     
-    func linkNewService(type: Service.ServiceType, presentingViewController: UIViewController) {
+    func linkNewService(type: Service.ServiceType, presentingViewController: UIViewController) -> RACSignal {
         switch type {
         case .Facebook:
             break
         case .Instagram:
-            linkInstagram(presentingViewController)
+            return linkInstagram(presentingViewController)
         }
+        return RACSignal.empty()
     }
     
-    func linkInstagram(presentingViewController: UIViewController) {
+    func linkInstagram(presentingViewController: UIViewController) -> RACSignal {
+        let subject = RACReplaySubject()
         presentingVC = presentingViewController
         let oauth = OAuth2Swift(
             consumerKey: env.instagramClientId,
@@ -43,11 +46,16 @@ class LinkedAccountService {
             scope: "likes",
             state: generateStateWithLength(20) as String,
             success: { credential, response, parameters in
-            Meteor.addService("instagram", accessToken: credential.oauth_token)
+                subject.sendNext(nil)
+            dispatch_async(dispatch_get_main_queue()) {
+                Meteor.addService("instagram", accessToken: credential.oauth_token).subscribe(subject)
+            }
             Log.debug("Successfulled received token from instagram")
         }, failure: { error in
             Log.error("Unable to link instagram", error)
+            subject.sendError(error)
         })
+        return subject.deliverOnMainThread()
     }
 }
 
