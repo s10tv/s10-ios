@@ -43,7 +43,8 @@ class LinkedAccountService {
             scope: "likes",
             state: generateStateWithLength(20) as String,
             success: { credential, response, parameters in
-            println("oauth_token:\(credential.oauth_token)")
+            Meteor.addService("instagram", accessToken: credential.oauth_token)
+            Log.debug("Successfulled received token from instagram")
         }, failure: { error in
             Log.error("Unable to link instagram", error)
         })

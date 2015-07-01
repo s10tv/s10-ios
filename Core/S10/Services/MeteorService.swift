@@ -170,6 +170,16 @@ public class MeteorService {
     public func deleteAccount() -> RACSignal {
         return meteor.call("deleteAccount")
     }
+    
+    // MARK: - Services
+    
+    public func addService(serviceName: String, accessToken: String) -> RACSignal {
+        return meteor.call("me/service/add", [serviceName, accessToken])
+    }
+    
+    public func removeService(serviceId: String) -> RACSignal {
+        return meteor.call("me/service/remove", [serviceId])
+    }
 
     // MARK: - Profile
     
