@@ -7,12 +7,13 @@ Edit the following two files
 
 ## Getting started
 ```
-brew install mogenerator
+brew install mogenerator carthage
 gem install cocoapods -v $(var=$(tail -1 Podfile.lock); echo ${var##COCOAPODS:})
 gem install cupertino shenzhen sbconstants
 gem install specific_install
 gem specific_install -l https://github.com/tonyxiao/xcres.git
 pod install
+carthage bootstrap
 ```
 
 Open `S10.xcworkspace` and start developing

@@ -49,6 +49,15 @@
 		EA5B742C1B30FC9D008E5CBC /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA5B742B1B30FC9D008E5CBC /* Test.storyboard */; };
 		EA5B74371B3139EA008E5CBC /* Core.h in Headers */ = {isa = PBXBuildFile; fileRef = EA5B74361B3139EA008E5CBC /* Core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA5B74531B315D8A008E5CBC /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5B74321B3139EA008E5CBC /* Core.framework */; };
+		EA5BCB151B447AB7004F310D /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5BCB121B447AB7004F310D /* Box.framework */; };
+		EA5BCB161B447AB7004F310D /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5BCB121B447AB7004F310D /* Box.framework */; };
+		EA5BCB171B447AB7004F310D /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5BCB131B447AB7004F310D /* ReactiveCocoa.framework */; };
+		EA5BCB181B447AB7004F310D /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5BCB131B447AB7004F310D /* ReactiveCocoa.framework */; };
+		EA5BCB191B447AB7004F310D /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5BCB141B447AB7004F310D /* Result.framework */; };
+		EA5BCB1A1B447AB7004F310D /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5BCB141B447AB7004F310D /* Result.framework */; };
+		EA5BCB1B1B447AD3004F310D /* Box.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5BCB121B447AB7004F310D /* Box.framework */; };
+		EA5BCB1C1B447AD3004F310D /* ReactiveCocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5BCB131B447AB7004F310D /* ReactiveCocoa.framework */; };
+		EA5BCB1D1B447AD3004F310D /* Result.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5BCB141B447AB7004F310D /* Result.framework */; };
 		EA6650ED1AA00A9C001BA40C /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650EB1AA00A9C001BA40C /* AccountService.swift */; };
 		EA7004621ACF912A00D0E467 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA7004641ACF912A00D0E467 /* Onboarding.storyboard */; };
 		EA7078781B39345800BB9D08 /* AVKit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA70787B1B39345800BB9D08 /* AVKit.storyboard */; };
@@ -262,6 +271,9 @@
 		EA5B74321B3139EA008E5CBC /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA5B74351B3139EA008E5CBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA5B74361B3139EA008E5CBC /* Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
+		EA5BCB121B447AB7004F310D /* Box.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Box.framework; sourceTree = "<group>"; };
+		EA5BCB131B447AB7004F310D /* ReactiveCocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = ReactiveCocoa.framework; sourceTree = "<group>"; };
+		EA5BCB141B447AB7004F310D /* Result.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Result.framework; sourceTree = "<group>"; };
 		EA6650EB1AA00A9C001BA40C /* AccountService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		EA7004631ACF912A00D0E467 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Onboarding.storyboard; sourceTree = "<group>"; };
 		EA70787A1B39345800BB9D08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AVKit.storyboard; sourceTree = "<group>"; };
@@ -381,7 +393,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAF81B131B325A6B00EED6DD /* Core.framework in Frameworks */,
+				EA5BCB1B1B447AD3004F310D /* Box.framework in Frameworks */,
+				EA5BCB1D1B447AD3004F310D /* Result.framework in Frameworks */,
 				C0694BB32891795853D2C3CF /* Pods_Core_TestApp.framework in Frameworks */,
+				EA5BCB1C1B447AD3004F310D /* ReactiveCocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -389,7 +404,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA5BCB151B447AB7004F310D /* Box.framework in Frameworks */,
+				EA5BCB171B447AB7004F310D /* ReactiveCocoa.framework in Frameworks */,
 				640DB2B4B8DE9B8DDC392B01 /* Pods_Core.framework in Frameworks */,
+				EA5BCB191B447AB7004F310D /* Result.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -408,7 +426,10 @@
 				EAF81B181B325A8100EED6DD /* Core.framework in Frameworks */,
 				D6555C3D41C17908B83EB27C /* Pods_Core_Taylr.framework in Frameworks */,
 				EA4216551B3E234B00613EFA /* Crashlytics.framework in Frameworks */,
+				EA5BCB181B447AB7004F310D /* ReactiveCocoa.framework in Frameworks */,
+				EA5BCB1A1B447AB7004F310D /* Result.framework in Frameworks */,
 				EA4216511B3E219000613EFA /* DigitsKit.framework in Frameworks */,
+				EA5BCB161B447AB7004F310D /* Box.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -427,6 +448,7 @@
 		2C9F4D1EF3D7E4C4FBB0AEDB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EA5BCB111B447AB7004F310D /* Carthage */,
 				EA4216541B3E234B00613EFA /* Crashlytics.framework */,
 				EA42164C1B3E219000613EFA /* Fabric.framework */,
 				EA42164D1B3E219000613EFA /* DigitsKit.framework */,
@@ -557,6 +579,17 @@
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
+		};
+		EA5BCB111B447AB7004F310D /* Carthage */ = {
+			isa = PBXGroup;
+			children = (
+				EA5BCB121B447AB7004F310D /* Box.framework */,
+				EA5BCB131B447AB7004F310D /* ReactiveCocoa.framework */,
+				EA5BCB141B447AB7004F310D /* Result.framework */,
+			);
+			name = Carthage;
+			path = Carthage/Build/iOS;
+			sourceTree = SOURCE_ROOT;
 		};
 		EA6650E91AA00A9C001BA40C /* Services */ = {
 			isa = PBXGroup;
@@ -972,6 +1005,7 @@
 				EA9F35381A74CC6900E0C65D /* Resources */,
 				75FEE40CAC4CCC98BBE5F3A2 /* Copy Pods Resources */,
 				22B85F6A287D7401CC82E5E2 /* Embed Pods Frameworks */,
+				EA5BCB1E1B447AFB004F310D /* Embed Carthage Frameworks */,
 				EAF81B1C1B325A8200EED6DD /* Embed Frameworks */,
 				EA42164B1B3E211E00613EFA /* Fabric Script */,
 			);
@@ -1298,6 +1332,23 @@
 			shellPath = /bin/sh;
 			shellScript = "./Includes/Fabric.framework/run 67f7b1cc77f3e88b8e5b17a5bbc2ca6cb6f7ae53 1406e03532dd866d616ac19642903e2db44a36d93de980165c1e2e01fc17b215";
 		};
+		EA5BCB1E1B447AFB004F310D /* Embed Carthage Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Box.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Result.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/ReactiveCocoa.framework",
+			);
+			name = "Embed Carthage Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -1539,6 +1590,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = TestAppIcon;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1558,6 +1613,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = TestAppIcon;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = TestApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
@@ -1578,6 +1637,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -1609,6 +1672,10 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = Core/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
@@ -1714,6 +1781,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Includes",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "Taylr/Taylr-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -1736,6 +1804,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/Includes",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
 				);
 				INFOPLIST_FILE = "Taylr/Taylr-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;

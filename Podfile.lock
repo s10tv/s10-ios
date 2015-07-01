@@ -9,7 +9,6 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.2.0)
   - Bond (3.9.0)
-  - Box (1.2.2)
   - Cartography (0.5.0)
   - CHTCollectionViewWaterfallLayout (0.9.1)
   - DateTools (1.6.1)
@@ -46,28 +45,11 @@ PODS:
   - PocketSocket (0.6.4)
   - Quick (0.3.1)
   - RBBAnimation (0.4.0)
-  - ReactiveCocoa (3.0-beta.8):
-    - Box (~> 1.2.0)
-    - ReactiveCocoa/UI (= 3.0-beta.8)
-    - Result (~> 0.4.1)
-  - ReactiveCocoa/Core (3.0-beta.8):
-    - Box (~> 1.2.0)
-    - ReactiveCocoa/no-arc
-    - Result (~> 0.4.1)
-  - ReactiveCocoa/no-arc (3.0-beta.8):
-    - Box (~> 1.2.0)
-    - Result (~> 0.4.1)
-  - ReactiveCocoa/UI (3.0-beta.8):
-    - Box (~> 1.2.0)
-    - ReactiveCocoa/Core
-    - Result (~> 0.4.1)
   - Realm (0.93.2):
     - Realm/Headers (= 0.93.2)
   - Realm/Headers (0.93.2)
   - RealmSwift (0.93.2):
     - Realm (= 0.93.2)
-  - Result (0.4.4):
-    - Box (~> 1.2)
   - Reveal-iOS-SDK (1.5.1)
   - SCRecorder (2.4.9)
   - SDWebImage (3.7.2):
@@ -107,7 +89,6 @@ DEPENDENCIES:
   - PKHUD (from `https://github.com/tonyxiao/PKHUD`)
   - Quick (~> 0.3.0)
   - RBBAnimation (~> 0.4.0)
-  - ReactiveCocoa (= 3.0-beta.8)
   - RealmSwift (~> 0.93.2)
   - Reveal-iOS-SDK (~> 1.5)
   - SCRecorder (~> 2.4)
@@ -165,7 +146,6 @@ SPEC CHECKSUMS:
   Async: d9ee6fc9c415d44fcb892f4c289d1e79ce8ae92d
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
   Bond: 994ccc56aebfe2707d7b5e76f6d665a5beefa45b
-  Box: a92e8aa4c099e6bc0733829665caf9e668ef53b8
   Cartography: 774e5cc446f5a6bca5d4345c5aa6af9a1fe74dc6
   CHTCollectionViewWaterfallLayout: 1a8da4fc662702cbddda8926ced266036a829f84
   DateTools: 9bcc89e4f2f9004d8a7a2bd1b49269cf78968e65
@@ -186,10 +166,8 @@ SPEC CHECKSUMS:
   PocketSocket: eee7ef375f55b98e7ca79e097d9c61fd688e9494
   Quick: 824572d3d198d51e52cf4aa722cebf7e59952a35
   RBBAnimation: 4b2d66f6d993febce63cd564da934985313b9c59
-  ReactiveCocoa: 9ecb47995ff71d8944fd306e20214e33a880ee1e
   Realm: 2fdd0ae74f730e190384e0338d8a0d3654df8220
   RealmSwift: 231b064da9f98b1c4f325fe1f1cb8756aae2b8d6
-  Result: b44f6bc8762bbffaf2c5df58f2c7d12c3496ced8
   Reveal-iOS-SDK: c9c55cad2729c85f6ced415f1b21857c9a2d8ef9
   SCRecorder: d0b0164ac4d45ba7f74375319800b2a83378226b
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29

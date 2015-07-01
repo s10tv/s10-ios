@@ -9,18 +9,21 @@ machine:
     CRASHLYTICS_FRAMEWORK_PATH: Pods/CrashlyticsFramework/Crashlytics.framework
 
 dependencies:
-  override:
   pre:
     - brew update
     - brew upgrade xctool
+    - brew install carthage
     - sudo gem uninstall highline commander --ignore-dependencies -x
     - sudo gem install cocoapods -v $(var=$(tail -1 Podfile.lock); echo ${var##COCOAPODS:})
     - sudo gem install cupertino shenzhen sigh
-    - ./scripts/import_credentials.sh
   override:
     - pod update Meteor Bond
+    - carthage bootstrap
+  post:
+    - ./scripts/import_credentials.sh
   cache_directories:
     - "Pods"
+    - "Carthage"
 
 test:
   post:
