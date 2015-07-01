@@ -8,7 +8,6 @@
 
 import UIKit
 import Meteor
-import FacebookSDK
 import ReactiveCocoa
 
 class RootViewController : UINavigationController {
