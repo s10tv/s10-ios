@@ -33,7 +33,7 @@ test:
         mv Taylr.ipa $CIRCLE_ARTIFACTS/${BN}.ipa
         mv Taylr.app.dSYM.zip $CIRCLE_ARTIFACTS/${BN}.app.dSYM.zip
         ./scripts/circle_release_notes.sh >> $CIRCLE_ARTIFACTS/release_notes.txt
-      : timeout: 1200
+      : timeout: 3600
     - zip -FSr $CIRCLE_ARTIFACTS/Pods.zip Pods/
 
 #deployment:
