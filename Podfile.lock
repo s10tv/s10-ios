@@ -45,6 +45,13 @@ PODS:
   - PocketSocket (0.6.4)
   - Quick (0.3.1)
   - RBBAnimation (0.4.0)
+  - ReactiveCocoa (2.5):
+    - ReactiveCocoa/UI (= 2.5)
+  - ReactiveCocoa/Core (2.5):
+    - ReactiveCocoa/no-arc
+  - ReactiveCocoa/no-arc (2.5)
+  - ReactiveCocoa/UI (2.5):
+    - ReactiveCocoa/Core
   - Realm (0.93.2):
     - Realm/Headers (= 0.93.2)
   - Realm/Headers (0.93.2)
@@ -89,6 +96,7 @@ DEPENDENCIES:
   - PKHUD (from `https://github.com/tonyxiao/PKHUD`)
   - Quick (~> 0.3.0)
   - RBBAnimation (~> 0.4.0)
+  - ReactiveCocoa (~> 2.4)
   - RealmSwift (~> 0.93.2)
   - Reveal-iOS-SDK (~> 1.5)
   - SCRecorder (~> 2.4)
@@ -166,6 +174,7 @@ SPEC CHECKSUMS:
   PocketSocket: eee7ef375f55b98e7ca79e097d9c61fd688e9494
   Quick: 824572d3d198d51e52cf4aa722cebf7e59952a35
   RBBAnimation: 4b2d66f6d993febce63cd564da934985313b9c59
+  ReactiveCocoa: e2db045570aa97c695e7aa97c2bcab222ae51f4a
   Realm: 2fdd0ae74f730e190384e0338d8a0d3654df8220
   RealmSwift: 231b064da9f98b1c4f325fe1f1cb8756aae2b8d6
   Reveal-iOS-SDK: c9c55cad2729c85f6ced415f1b21857c9a2d8ef9

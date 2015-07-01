@@ -12,9 +12,8 @@ build/*
 # Exclude OS X folder attributes
 .DS_Store
 
-# Exclude Cocoapods & carthage local files
+# Exclude Cocoapods local files
 Pods/*
-Carthage/*
 
 # Exclude user-specific XCode 3 and 4 files
 *.mode1
