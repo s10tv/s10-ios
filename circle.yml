@@ -18,7 +18,7 @@ dependencies:
     - sudo gem install cupertino shenzhen sigh
     - ./scripts/import_credentials.sh
   override:
-    - pod update Meteor
+    - pod update Meteor Bond
   cache_directories:
     - "Pods"
 
@@ -33,7 +33,7 @@ test:
         mv Taylr.ipa $CIRCLE_ARTIFACTS/${BN}.ipa
         mv Taylr.app.dSYM.zip $CIRCLE_ARTIFACTS/${BN}.app.dSYM.zip
         ./scripts/circle_release_notes.sh >> $CIRCLE_ARTIFACTS/release_notes.txt
-      : timeout: 3600
+      : timeout: 10800
     - zip -FSr $CIRCLE_ARTIFACTS/Pods.zip Pods/
 
 #deployment:
