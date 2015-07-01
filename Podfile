@@ -1,6 +1,7 @@
 platform :ios, '8.0'
 
 source 'https://github.com/CocoaPods/Specs.git'
+source 'https://github.com/tonyxiao/Podspecs.git'
 
 inhibit_all_warnings!
 use_frameworks!
@@ -8,7 +9,7 @@ use_frameworks!
 target :Core do
     link_with 'Core'
     # Foundation
-    pod 'ReactiveCocoa', '~> 2.4' # Update to 3.0 when ready
+    pod 'ReactiveCocoa', '3.0-beta.8' # Update to 3.0 when ready
     pod 'Bond', :git => 'https://github.com/tonyxiao/Bond.git', :branch => 'coredata'
     pod 'Async', :git => 'https://github.com/duemunk/Async.git'
     pod 'SwiftTryCatch', '~> 0.0.1'
