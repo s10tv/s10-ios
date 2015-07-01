@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import OAuthSwift
 
 class AuthWebViewController: UIViewController {
     
@@ -15,8 +14,8 @@ class AuthWebViewController: UIViewController {
     @IBOutlet weak var webView: UIWebView!
     var targetURL: NSURL!
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         self.webView.loadRequest(NSURLRequest(URL: targetURL))
     }
     
@@ -25,17 +24,9 @@ class AuthWebViewController: UIViewController {
     }
 }
 
-extension AuthWebViewController : OAuthSwiftURLHandlerType {
-    func handle(url: NSURL) {
-        targetURL = url
-        let rootVC = UIApplication.sharedApplication().keyWindow?.rootViewController
-        rootVC?.presentViewController(self, animated: true, completion: nil)
-    }
-}
-
 extension AuthWebViewController : UIWebViewDelegate {
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
-        if let url = request.URL where url.scheme == Globals.env.audience.urlScheme {
+        if let scheme = request.URL?.scheme where Globals.env.audience.urlScheme.hasPrefix(scheme) {
             self.dismissViewController(animated: true)
         }
         return true

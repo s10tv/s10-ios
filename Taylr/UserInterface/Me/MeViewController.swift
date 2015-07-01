@@ -10,7 +10,6 @@ import Foundation
 import Core
 import SDWebImage
 import Bond
-import OAuthSwift
 
 class MeViewController : BaseViewController {
     
@@ -21,6 +20,7 @@ class MeViewController : BaseViewController {
     
     var viewModel: MeViewModel!
     var dataSourceBond: UICollectionViewDataSourceBond<UICollectionViewCell>!
+    var linkedAccountService: LinkedAccountService!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,6 +40,7 @@ class MeViewController : BaseViewController {
         }
         
         DynamicArray([servicesSection, addSection]) ->> dataSourceBond
+        linkedAccountService = LinkedAccountService(authWebVC: makeViewController(.AuthWeb) as! AuthWebViewController)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -57,36 +58,11 @@ class MeViewController : BaseViewController {
         return super.handleScreenEdgePan(edge)
     }
     
-    func linkNewService(type: Service.ServiceType) {
-        let env = Globals.env
-        switch type {
-        case .Facebook:
-            break
-        case .Instagram:
-            let oauth = OAuth2Swift(
-                consumerKey: env.instagramClientId,
-                consumerSecret: "",
-                authorizeUrl: "https://api.instagram.com/oauth/authorize",
-                responseType: "token"
-            )
-            oauth.authorize_url_handler = makeViewController(.AuthWeb) as! AuthWebViewController
-            oauth.authorizeWithCallbackURL(NSURL("\(env.audience.urlScheme)\(env.oauthCallbackPath)/instagram"),
-                scope: "likes",
-                state: generateStateWithLength(20) as String,
-                success: { credential, response, parameters in
-                println("oauth_token:\(credential.oauth_token)")
-            }, failure: { error in
-                println(error.localizedDescription)
-            })
-            break
-        }
-    }
-    
     @IBAction func showLinkServiceOptions(sender: AnyObject) {
         let sheet = UIAlertController(title: LS(.meLinkNewSerivceTitle), message: nil, preferredStyle: .ActionSheet)
         for option in viewModel.linkableAccounts {
             sheet.addAction(option.name) { _ in
-                self.linkNewService(option.type)
+                self.linkedAccountService.linkNewService(option.type, presentingViewController: self)
             }
         }
         sheet.addAction(LS(.meCancelTitle), style: .Cancel)
