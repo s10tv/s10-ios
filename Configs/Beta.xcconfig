@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 S10 Inc. All rights reserved.
 //
 
-BUNDLE_IDENTIFIER = com.milasya.ketch.beta
+BUNDLE_IDENTIFIER = tv.s10.taylr.beta
 BUNDLE_DISPLAY_NAME = Taylr β
 CUSTOM_CODE_SIGN_IDENTITY = iPhone Distribution
 CUSTOM_PROVISIONING_PROFILE = 1398f865-130c-442d-b0a7-177c095afd2d

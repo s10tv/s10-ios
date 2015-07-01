@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 S10 Inc. All rights reserved.
 //
 
-BUNDLE_IDENTIFIER = com.milasya.ketch
+BUNDLE_IDENTIFIER = tv.s10.taylr
 BUNDLE_DISPLAY_NAME = Taylr
 CUSTOM_CODE_SIGN_IDENTITY = iPhone Distribution
 FACEBOOK_APP_ID = 788119904575103

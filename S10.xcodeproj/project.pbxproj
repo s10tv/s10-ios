@@ -1023,7 +1023,7 @@
 					};
 					EA9F35391A74CC6900E0C65D = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = N25WYDCNJJ;
+						DevelopmentTeam = 227D5X5CZY;
 					};
 					EA9F35511A74CC6900E0C65D = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -1709,7 +1709,7 @@
 			buildSettings = {
 				BUNDLE_BUILD = 0;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "$(CUSTOM_CODE_SIGN_IDENTITY)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1731,7 +1731,7 @@
 			buildSettings = {
 				BUNDLE_BUILD = 0;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "$(CUSTOM_CODE_SIGN_IDENTITY)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
