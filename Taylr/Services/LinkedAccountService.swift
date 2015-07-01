@@ -8,6 +8,7 @@
 
 import Foundation
 import ReactiveCocoa
+import Async
 import OAuthSwift
 import FBSDKLoginKit
 import Core
@@ -47,7 +48,7 @@ class LinkedAccountService {
             state: generateStateWithLength(20) as String,
             success: { credential, response, parameters in
                 subject.sendNext(nil)
-            dispatch_async(dispatch_get_main_queue()) {
+            Async.main {
                 Meteor.addService("instagram", accessToken: credential.oauth_token).subscribe(subject)
             }
             Log.debug("Successfulled received token from instagram")
@@ -79,12 +80,67 @@ class LinkedAccountService {
                 subject.sendError(nil) // TODO: Send explicit error
             } else {
                 subject.sendNext(nil) // TODO: Used to signal progress, make more explicit
-                dispatch_async(dispatch_get_main_queue()) {
+                Async.main {
                     Meteor.addService("facebook", accessToken: result.token.tokenString).subscribe(subject)
                 }
             }
         }
         return subject.deliverOnMainThread()
+    }
+    
+    // MARK: - App Delegate Hooks
+    
+    class func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+    }
+    
+    class func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        if FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url,
+            sourceApplication: sourceApplication, annotation: annotation) {
+            return true
+        }
+        let oauth1Keys = [
+            "twitter",
+            "flickr",
+            "fitbit",
+            "withings",
+            "linkedin",
+            "bitbucket",
+            "smugmug",
+            "intuit",
+            "zaim",
+            "tumblr",
+        ]
+        let oauth2Keys = [
+            "github",
+            "instagram",
+            "foursquare",
+            "dropbox",
+            "dribbble",
+            "salesforce",
+            "google",
+            "linkedin2",
+        ]
+        if let path = url.path where url.host == Globals.env.oauthCallbackPath {
+            for key in oauth1Keys {
+                if path.hasPrefix("/" + key) {
+                    OAuth1Swift.handleOpenURL(url)
+                    return true
+                }
+            }
+            for key in oauth2Keys {
+                if path.hasPrefix("/" + key) {
+                    OAuth2Swift.handleOpenURL(url)
+                    return true
+                }
+            }
+        } else {
+            // TODO: Should check explicitly whether it's a google request
+            // Google provider is the only one with your.bundle.id url schema.
+            OAuth2Swift.handleOpenURL(url)
+            return true // For now return false because we don't do google yet
+        }
+        return false
     }
 }
 

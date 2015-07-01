@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (1.2.3)
   - AnalyticsSwift (0.1.0)
+  - Async (1.2.1)
   - Bolts (1.2.0):
     - Bolts/AppLinks (= 1.2.0)
     - Bolts/Tasks (= 1.2.0)
@@ -77,6 +78,7 @@ PODS:
 DEPENDENCIES:
   - Alamofire (~> 1.2)
   - AnalyticsSwift (~> 0.1.0)
+  - Async (from `https://github.com/duemunk/Async.git`)
   - Bond (from `https://github.com/tonyxiao/Bond.git`, branch `coredata`)
   - Cartography (~> 0.5)
   - CHTCollectionViewWaterfallLayout (~> 0.9)
@@ -110,6 +112,8 @@ DEPENDENCIES:
   - XLForm (~> 3.0)
 
 EXTERNAL SOURCES:
+  Async:
+    :git: https://github.com/duemunk/Async.git
   Bond:
     :branch: coredata
     :git: https://github.com/tonyxiao/Bond.git
@@ -125,6 +129,9 @@ EXTERNAL SOURCES:
     :git: https://github.com/tonyxiao/TCMobileProvision.git
 
 CHECKOUT OPTIONS:
+  Async:
+    :commit: 7536a4d8059be119fd4a4550d674996f8a1cdd54
+    :git: https://github.com/duemunk/Async.git
   Bond:
     :commit: 57377cccb5997ca040f0f5846956e4bc7d9aae13
     :git: https://github.com/tonyxiao/Bond.git
@@ -144,6 +151,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: 5550bf0b575ed1a4bf9be572f9463e1015cc169e
   AnalyticsSwift: 903cb2c6d522709fa7637285553840c02accd149
+  Async: d9ee6fc9c415d44fcb892f4c289d1e79ce8ae92d
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
   Bond: 994ccc56aebfe2707d7b5e76f6d665a5beefa45b
   Cartography: 774e5cc446f5a6bca5d4345c5aa6af9a1fe74dc6

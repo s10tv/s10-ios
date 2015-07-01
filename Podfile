@@ -10,6 +10,7 @@ target :Core do
     # Foundation
     pod 'ReactiveCocoa', '~> 2.4' # Update to 3.0 when ready
     pod 'Bond', :git => 'https://github.com/tonyxiao/Bond.git', :branch => 'coredata'
+    pod 'Async', :git => 'https://github.com/duemunk/Async.git'
     pod 'SwiftTryCatch', '~> 0.0.1'
     pod 'NSLogger', '~> 1.5', :configuration => ['Debug']
 
