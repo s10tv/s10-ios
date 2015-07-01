@@ -88,7 +88,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
         Log.info("App Launched")
         Analytics.track("App Open")
         
-        LinkedAccountService.application(application, didFinishLaunchingWithOptions: launchOptions)
+        LinkAccountService.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         return true
     }
@@ -117,7 +117,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-        if LinkedAccountService.application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation) {
+        if LinkAccountService.application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation) {
             return true
         }
         return false

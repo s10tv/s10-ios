@@ -1,5 +1,5 @@
 //
-//  LinkedAccountService.swift
+//  LinkAccountService.swift
 //  S10
 //
 //  Created by Tony Xiao on 6/30/15.
@@ -13,7 +13,7 @@ import OAuthSwift
 import FBSDKLoginKit
 import Core
 
-class LinkedAccountService {
+class LinkAccountService {
 
     let env: TaylrEnvironment
     

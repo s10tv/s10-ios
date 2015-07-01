@@ -21,7 +21,7 @@ class MeViewController : BaseViewController {
     
     var viewModel: MeViewModel!
     var dataSourceBond: UICollectionViewDataSourceBond<UICollectionViewCell>!
-    var linkedAccountService: LinkedAccountService!
+    var linkAccountService: LinkAccountService!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,7 +41,7 @@ class MeViewController : BaseViewController {
         }
         
         DynamicArray([servicesSection, addSection]) ->> dataSourceBond
-        linkedAccountService = LinkedAccountService(env: Globals.env)
+        linkAccountService = LinkAccountService(env: Globals.env)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -60,7 +60,7 @@ class MeViewController : BaseViewController {
     }
     
     func linkService(type: Service.ServiceType) {
-        linkedAccountService.linkNewService(type) {
+        linkAccountService.linkNewService(type) {
             return self.makeViewController(.AuthWeb) as? AuthWebViewController
         }.subscribeNext({ _ in
             PKHUD.showActivity()
