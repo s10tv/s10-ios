@@ -33,7 +33,8 @@ class TaylrEnvironment : Environment {
     var serverURL: NSURL {
         return NSURL("\(serverProtocol)://\(serverHostName)/websocket")
     }
-    
+    let oauthCallbackPath = "_oauth"
+    let instagramClientId = "39f17d7de9e440cba144c960913bc1a4"
     let crashlyticsAPIKey = "4cdb005d0ddfebc8865c0a768de9b43c993e9113"
     let bugfenderAppToken: String
     let segmentWriteKey: String

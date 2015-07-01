@@ -11,6 +11,7 @@ import Bond
 import Meteor
 
 public struct LinkableAccount {
+    public let type: Service.ServiceType
     public let name: String
     public let icon: UIImage?
 }
@@ -35,8 +36,8 @@ public class MeViewModel {
             .sorted(by: ServiceKeys.serviceType.rawValue, ascending: true)
             .results(Service).map { ServiceViewModel($0) }
         linkableAccounts = [
-            LinkableAccount(name: "Facebook", icon: UIImage(named: "ic-facebook")),
-            LinkableAccount(name: "Instagram", icon: UIImage(named: "ic-instagram"))
+            LinkableAccount(type: .Facebook, name: "Facebook", icon: UIImage(named: "ic-facebook")),
+            LinkableAccount(type: .Instagram, name: "Instagram", icon: UIImage(named: "ic-instagram"))
         ]
         servicesSubscription = meteor.subscribeServices(currentUser)
     }

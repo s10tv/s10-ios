@@ -36,6 +36,7 @@ public enum TableViewCellreuseIdentifier : String {
 }
 
 public enum ViewControllerStoryboardIdentifier : String {
+    case AuthWeb = "AuthWeb"
     case Chats = "Chats"
     case Discover = "Discover"
     case Editor = "Editor"

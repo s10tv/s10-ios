@@ -10,6 +10,7 @@ import Foundation
 import Core
 import SDWebImage
 import Bond
+import OAuthSwift
 
 class MeViewController : BaseViewController {
     
@@ -56,11 +57,36 @@ class MeViewController : BaseViewController {
         return super.handleScreenEdgePan(edge)
     }
     
-    @IBAction func linkNewService(sender: AnyObject) {
+    func linkNewService(type: Service.ServiceType) {
+        let env = Globals.env
+        switch type {
+        case .Facebook:
+            break
+        case .Instagram:
+            let oauth = OAuth2Swift(
+                consumerKey: env.instagramClientId,
+                consumerSecret: "",
+                authorizeUrl: "https://api.instagram.com/oauth/authorize",
+                responseType: "token"
+            )
+            oauth.authorize_url_handler = makeViewController(.AuthWeb) as! AuthWebViewController
+            oauth.authorizeWithCallbackURL(NSURL("\(env.audience.urlScheme)\(env.oauthCallbackPath)/instagram"),
+                scope: "likes",
+                state: generateStateWithLength(20) as String,
+                success: { credential, response, parameters in
+                println("oauth_token:\(credential.oauth_token)")
+            }, failure: { error in
+                println(error.localizedDescription)
+            })
+            break
+        }
+    }
+    
+    @IBAction func showLinkServiceOptions(sender: AnyObject) {
         let sheet = UIAlertController(title: LS(.meLinkNewSerivceTitle), message: nil, preferredStyle: .ActionSheet)
         for option in viewModel.linkableAccounts {
             sheet.addAction(option.name) { _ in
-                // TODO: Actually add service
+                self.linkNewService(option.type)
             }
         }
         sheet.addAction(LS(.meCancelTitle), style: .Cancel)
@@ -92,7 +118,7 @@ extension MeViewController : UICollectionViewDelegate {
             sheet.addAction(LS(.meCancelTitle), style: .Cancel)
             presentViewController(sheet)
         } else {
-            linkNewService(self)
+            showLinkServiceOptions(self)
         }
     }
 }

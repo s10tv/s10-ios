@@ -102,6 +102,7 @@
 		EABAEDA11B43236D000261F0 /* MeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABAEDA01B43236D000261F0 /* MeViewModel.swift */; };
 		EABAEDA31B432745000261F0 /* CandidateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABAEDA21B432745000261F0 /* CandidateViewModel.swift */; };
 		EABAEDA51B4334EB000261F0 /* MeServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABAEDA41B4334EB000261F0 /* MeServiceCell.swift */; };
+		EABAEDA71B435EEB000261F0 /* AuthWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABAEDA61B435EEB000261F0 /* AuthWebViewController.swift */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
 		EACCA3A21B37B02A00015C88 /* ProfileMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACCA3A11B37B02A00015C88 /* ProfileMainCell.swift */; };
 		EAE1E07B1AE34C6200F03F13 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1E07A1AE34C6200F03F13 /* LocationService.swift */; };
@@ -314,6 +315,7 @@
 		EABAEDA01B43236D000261F0 /* MeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewModel.swift; sourceTree = "<group>"; };
 		EABAEDA21B432745000261F0 /* CandidateViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateViewModel.swift; sourceTree = "<group>"; };
 		EABAEDA41B4334EB000261F0 /* MeServiceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeServiceCell.swift; sourceTree = "<group>"; };
+		EABAEDA61B435EEB000261F0 /* AuthWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthWebViewController.swift; sourceTree = "<group>"; };
 		EABD43D81AA1D28700B07813 /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
 		EABD43D91AA1D29C00B07813 /* Beta.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
 		EABD43DA1AA1D29C00B07813 /* Prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
@@ -723,6 +725,7 @@
 			children = (
 				EAA56F751B2B32E500DE3936 /* MeViewController.swift */,
 				EABAEDA41B4334EB000261F0 /* MeServiceCell.swift */,
+				EABAEDA61B435EEB000261F0 /* AuthWebViewController.swift */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -1388,6 +1391,7 @@
 				EA95BBB31B3930B000701F08 /* XLFormExtensions.m in Sources */,
 				EAAD921D1ACF342C0014BA25 /* TaylrEnvironment.swift in Sources */,
 				EAE1E07B1AE34C6200F03F13 /* LocationService.swift in Sources */,
+				EABAEDA71B435EEB000261F0 /* AuthWebViewController.swift in Sources */,
 				EAF81B231B33388700EED6DD /* ProducerViewController.swift in Sources */,
 				EA6650ED1AA00A9C001BA40C /* AccountService.swift in Sources */,
 				EAA56FA21B2B32E500DE3936 /* BaseViewController.swift in Sources */,

@@ -16,6 +16,7 @@ import Core
 import Fabric
 import DigitsKit
 import Crashlytics
+import OAuthSwift
 
 
 // Globally accessible variables and shorthands
@@ -121,6 +122,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        if (url.host == Globals.env.oauthCallbackPath) {
+            if (url.path!.hasPrefix("/twitter") || url.path!.hasPrefix("/flickr") || url.path!.hasPrefix("/fitbit")
+                || url.path!.hasPrefix("/withings") || url.path!.hasPrefix("/linkedin") || url.path!.hasPrefix("/bitbucket")
+                || url.path!.hasPrefix("/smugmug") || url.path!.hasPrefix("/intuit") || url.path!.hasPrefix("/zaim")
+                || url.path!.hasPrefix("/tumblr")) {
+                    OAuth1Swift.handleOpenURL(url)
+            }
+            if ( url.path!.hasPrefix("/github" ) || url.path!.hasPrefix("/instagram" ) || url.path!.hasPrefix("/foursquare")
+                || url.path!.hasPrefix("/dropbox") || url.path!.hasPrefix("/dribbble") || url.path!.hasPrefix("/salesforce")
+                || url.path!.hasPrefix("/google") || url.path!.hasPrefix("/linkedin2")) {
+                OAuth2Swift.handleOpenURL(url)
+            }
+        } else {
+            // Google provider is the only one with your.bundle.id url schema.
+            OAuth2Swift.handleOpenURL(url)
+        }
         return FBAppCall.handleOpenURL(url, sourceApplication: sourceApplication)
     }
     
