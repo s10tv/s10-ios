@@ -17,10 +17,10 @@ public class DiscoverViewModel {
     
     public init() {
         // Filter out candidate without users for now
-        candidates = Candidate
-//            .by("\(CandidateKeys.user) != nil")
-            .sorted(by: CandidateKeys.score.rawValue, ascending: false)
-            .results(Candidate).map { CandidateViewModel(user: $0.user) }
+        candidates = User
+            .by("\(UserKeys.candidateScore) != nil")
+            .sorted(by: UserKeys.candidateScore.rawValue, ascending: false)
+            .results(User).map { CandidateViewModel(user: $0) }
         unreadConversations = Connection
             .by(NSPredicate(format: "%K > 0", ConnectionKeys.unreadCount.rawValue))
             .results(Connection)

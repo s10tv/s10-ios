@@ -116,12 +116,10 @@
 		EAF670761B31F9450025D7CF /* FoundationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6705A1B31F9450025D7CF /* FoundationExtension.swift */; };
 		EAF670771B31F9450025D7CF /* NotificationCenterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6705B1B31F9450025D7CF /* NotificationCenterExtensions.swift */; };
 		EAF670781B31F9450025D7CF /* ReactiveCocoaExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6705C1B31F9450025D7CF /* ReactiveCocoaExtension.swift */; };
-		EAF670791B31F9450025D7CF /* _Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670601B31F9450025D7CF /* _Candidate.swift */; };
 		EAF6707A1B31F9450025D7CF /* _Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670611B31F9450025D7CF /* _Connection.swift */; };
 		EAF6707B1B31F9450025D7CF /* _Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670621B31F9450025D7CF /* _Message.swift */; };
 		EAF6707C1B31F9450025D7CF /* _User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670631B31F9450025D7CF /* _User.swift */; };
 		EAF6707D1B31F9450025D7CF /* _Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670641B31F9450025D7CF /* _Video.swift */; };
-		EAF6707E1B31F9450025D7CF /* Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670651B31F9450025D7CF /* Candidate.swift */; };
 		EAF6707F1B31F9450025D7CF /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670661B31F9450025D7CF /* Connection.swift */; };
 		EAF670801B31F9450025D7CF /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670671B31F9450025D7CF /* Message.swift */; };
 		EAF670811B31F9450025D7CF /* Models.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAF670681B31F9450025D7CF /* Models.xcdatamodeld */; };
@@ -332,12 +330,10 @@
 		EAF6705A1B31F9450025D7CF /* FoundationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationExtension.swift; sourceTree = "<group>"; };
 		EAF6705B1B31F9450025D7CF /* NotificationCenterExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterExtensions.swift; sourceTree = "<group>"; };
 		EAF6705C1B31F9450025D7CF /* ReactiveCocoaExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveCocoaExtension.swift; sourceTree = "<group>"; };
-		EAF670601B31F9450025D7CF /* _Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Candidate.swift; sourceTree = "<group>"; };
 		EAF670611B31F9450025D7CF /* _Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Connection.swift; sourceTree = "<group>"; };
 		EAF670621B31F9450025D7CF /* _Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Message.swift; sourceTree = "<group>"; };
 		EAF670631B31F9450025D7CF /* _User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _User.swift; sourceTree = "<group>"; };
 		EAF670641B31F9450025D7CF /* _Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Video.swift; sourceTree = "<group>"; };
-		EAF670651B31F9450025D7CF /* Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Candidate.swift; sourceTree = "<group>"; };
 		EAF670661B31F9450025D7CF /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		EAF670671B31F9450025D7CF /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EAF670691B31F9450025D7CF /* Models.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Models.xcdatamodel; sourceTree = "<group>"; };
@@ -825,7 +821,6 @@
 			children = (
 				EAF6705F1B31F9450025D7CF /* _Models */,
 				EAF6706A1B31F9450025D7CF /* User.swift */,
-				EAF670651B31F9450025D7CF /* Candidate.swift */,
 				EAF670661B31F9450025D7CF /* Connection.swift */,
 				EAF670671B31F9450025D7CF /* Message.swift */,
 				EAF6706B1B31F9450025D7CF /* Video.swift */,
@@ -844,7 +839,6 @@
 		EAF6705F1B31F9450025D7CF /* _Models */ = {
 			isa = PBXGroup;
 			children = (
-				EAF670601B31F9450025D7CF /* _Candidate.swift */,
 				EAF670611B31F9450025D7CF /* _Connection.swift */,
 				EAF670621B31F9450025D7CF /* _Message.swift */,
 				EAF670631B31F9450025D7CF /* _User.swift */,
@@ -1339,7 +1333,6 @@
 				EA773D281B43179B009A9945 /* ServiceViewModel.swift in Sources */,
 				EA36B1D81B40E1A5002ADD91 /* CurrentDate.swift in Sources */,
 				EAF670801B31F9450025D7CF /* Message.swift in Sources */,
-				EAF6707E1B31F9450025D7CF /* Candidate.swift in Sources */,
 				EAF6707D1B31F9450025D7CF /* _Video.swift in Sources */,
 				EA4757151B392C19002071D7 /* Segue.swift in Sources */,
 				EAF6701D1B31E6550025D7CF /* Core.m in Sources */,
@@ -1356,7 +1349,6 @@
 				EAF670831B31F9450025D7CF /* Video.swift in Sources */,
 				EAF6707C1B31F9450025D7CF /* _User.swift in Sources */,
 				EA78C8781B320A2A0016AB73 /* AlamofireExtension.swift in Sources */,
-				EAF670791B31F9450025D7CF /* _Candidate.swift in Sources */,
 				EAF670751B31F9450025D7CF /* SugarRecordExtension.swift in Sources */,
 				EAF670951B31FCBE0025D7CF /* ProvisioningProfile.swift in Sources */,
 				EA4216451B3E092200613EFA /* _Activity.swift in Sources */,

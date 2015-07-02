@@ -192,9 +192,9 @@ public class MeteorService {
     
     // MARK: - Candidates
     
-    public func hideCandidate(candidate: Candidate) -> RACSignal {
-        return meteor.call("candidate/hide", [candidate.documentID!], stub: {
-            candidate.delete()
+    public func hideUser(user: User) -> RACSignal {
+        return meteor.call("user/hide", [user], stub: {
+            user.delete()
             return nil
         })
     }
