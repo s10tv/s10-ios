@@ -77,6 +77,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
         // Should be probably extracted into push service
         application.registerForRemoteNotifications()
         
+        // TODO: Temporarily request all access to all permissions
+        let settings = UIUserNotificationSettings(forTypes:
+            UIUserNotificationType.Badge |
+                UIUserNotificationType.Alert |
+                UIUserNotificationType.Sound,
+            categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+        Globals.locationService.requestPermission()
+        
+        
         // Let's launch!
         Meteor.delegate = self
         Meteor.startup()
