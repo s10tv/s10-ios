@@ -35,15 +35,6 @@ extension MeteorService {
         return RACSignal.merge(signals)
     }
 
-    func clearCandidates() -> RACSignal {
-        var signals = [RACSignal]()
-        Candidate.all().fetch().each { item in
-            signals.append(self.meteor.call("/candidates/remove", [["_id": item.documentID]]))
-        }
-
-        return RACSignal.merge(signals)
-    }
-
     func clearUsers() -> RACSignal {
         var signals = [RACSignal]()
         User.all().fetch().each { item in
