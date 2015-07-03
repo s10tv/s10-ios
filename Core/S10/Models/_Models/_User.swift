@@ -21,6 +21,8 @@ public enum UserKeys: String, Printable {
 
     case lastName = "lastName"
 
+    case username = "username"
+
     case connection = "connection"
 
     case services = "services"
@@ -93,6 +95,11 @@ class _User: NSManagedObject {
     var lastName: String?
 
     // func validateLastName(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged public
+    var username: String?
+
+    // func validateUsername(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
 

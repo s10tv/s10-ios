@@ -43,6 +43,9 @@
 		EA4757151B392C19002071D7 /* Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47570E1B392C19002071D7 /* Segue.swift */; };
 		EA4757161B392C19002071D7 /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47570F1B392C19002071D7 /* Transition.swift */; };
 		EA49286E1ADF291100118639 /* UpgradeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA49286D1ADF291100118639 /* UpgradeService.swift */; };
+		EA57CEC91B45EB4000759139 /* Signup2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA57CEC81B45EB4000759139 /* Signup2ViewController.swift */; };
+		EA57CECB1B4604A600759139 /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA57CECA1B4604A600759139 /* SignupViewModel.swift */; };
+		EA57CECD1B4608EF00759139 /* Bond+XLForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA57CECC1B4608EF00759139 /* Bond+XLForm.swift */; };
 		EA5B740B1B30F7BB008E5CBC /* TestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5B740A1B30F7BB008E5CBC /* TestAppDelegate.swift */; };
 		EA5B74141B30F7BB008E5CBC /* TestApp.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA5B74131B30F7BB008E5CBC /* TestApp.xcassets */; };
 		EA5B74171B30F7BB008E5CBC /* TestLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5B74151B30F7BB008E5CBC /* TestLaunchScreen.xib */; };
@@ -251,6 +254,9 @@
 		EA47570E1B392C19002071D7 /* Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segue.swift; sourceTree = "<group>"; };
 		EA47570F1B392C19002071D7 /* Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
 		EA49286D1ADF291100118639 /* UpgradeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeService.swift; sourceTree = "<group>"; };
+		EA57CEC81B45EB4000759139 /* Signup2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Signup2ViewController.swift; sourceTree = "<group>"; };
+		EA57CECA1B4604A600759139 /* SignupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
+		EA57CECC1B4608EF00759139 /* Bond+XLForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bond+XLForm.swift"; sourceTree = "<group>"; };
 		EA5B74061B30F7BB008E5CBC /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA5B74091B30F7BB008E5CBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA5B740A1B30F7BB008E5CBC /* TestAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAppDelegate.swift; sourceTree = "<group>"; };
@@ -580,6 +586,7 @@
 				EA95BBA91B3930B000701F08 /* Bond+SDWebImage.swift */,
 				EA95BBAB1B3930B000701F08 /* PKHUDExtension.swift */,
 				EA95BBAC1B3930B000701F08 /* ResourceExtension.swift */,
+				EA57CECC1B4608EF00759139 /* Bond+XLForm.swift */,
 				EA95BBAD1B3930B000701F08 /* XLFormExtensions.h */,
 				EA95BBAE1B3930B000701F08 /* XLFormExtensions.m */,
 			);
@@ -600,6 +607,7 @@
 		EA9C166D1B3726DA00371B50 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				EA57CECA1B4604A600759139 /* SignupViewModel.swift */,
 				EABAEDA01B43236D000261F0 /* MeViewModel.swift */,
 				EA4757021B391F56002071D7 /* DiscoverViewModel.swift */,
 				EA4757011B391F56002071D7 /* ChatsViewModel.swift */,
@@ -729,6 +737,7 @@
 			isa = PBXGroup;
 			children = (
 				EAA56F7F1B2B32E500DE3936 /* SignupViewController.swift */,
+				EA57CEC81B45EB4000759139 /* Signup2ViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -1365,6 +1374,7 @@
 				EAF6707A1B31F9450025D7CF /* _Connection.swift in Sources */,
 				EA36B1D01B3F1A67002ADD91 /* ProfileViewModel.swift in Sources */,
 				EA42164A1B3E093400613EFA /* Service.swift in Sources */,
+				EA57CECB1B4604A600759139 /* SignupViewModel.swift in Sources */,
 				EABAEDA11B43236D000261F0 /* MeViewModel.swift in Sources */,
 				EAF670761B31F9450025D7CF /* FoundationExtension.swift in Sources */,
 				EAF6708F1B31FA2E0025D7CF /* Settings.swift in Sources */,
@@ -1392,6 +1402,7 @@
 				EABAEDA91B436E8F000261F0 /* LinkAccountService.swift in Sources */,
 				EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */,
 				EA3594161B2DEF0C00E91337 /* MessageCell.swift in Sources */,
+				EA57CEC91B45EB4000759139 /* Signup2ViewController.swift in Sources */,
 				EA36B1D41B3F23F4002ADD91 /* ActivityTextCell.swift in Sources */,
 				EA95BBA71B39308A00701F08 /* PageViewController.swift in Sources */,
 				EA925C741AD99ED8008E9F41 /* R.swift in Sources */,
@@ -1401,6 +1412,7 @@
 				EA3594141B2DE5C300E91337 /* ConversationViewController.swift in Sources */,
 				EAF81B381B3395E700EED6DD /* AVKit.swift in Sources */,
 				EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */,
+				EA57CECD1B4608EF00759139 /* Bond+XLForm.swift in Sources */,
 				EAA56F8E1B2B32E500DE3936 /* ConnectionCell.swift in Sources */,
 				EAF670541B31F78E0025D7CF /* ModelExtensions.swift in Sources */,
 				EA95BBBF1B3932B500701F08 /* MediaExtension.swift in Sources */,

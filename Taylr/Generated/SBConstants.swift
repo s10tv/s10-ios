@@ -25,6 +25,7 @@ public enum SegueIdentifier : String {
 }
 
 public enum TableViewCellreuseIdentifier : String {
+    case AvatarCoverCell = "AvatarCoverCell"
     case ConnectionCell = "ConnectionCell"
     case ImageCell = "ImageCell"
     case ProfileMainCell = "ProfileMainCell"
@@ -45,4 +46,5 @@ public enum ViewControllerStoryboardIdentifier : String {
     case Settings = "Settings"
     case SettingsForm = "SettingsForm"
     case Signup = "Signup"
+    case Signup2 = "Signup2"
 }

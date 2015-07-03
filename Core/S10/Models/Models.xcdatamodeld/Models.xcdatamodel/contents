@@ -40,6 +40,7 @@
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="connection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Connection" inverseName="otherUser" inverseEntity="Connection" syncable="YES">
             <userInfo>
                 <entry key="storage" value="false"/>
@@ -66,7 +67,7 @@
         <element name="Connection" positionX="-819" positionY="9" width="128" height="135"/>
         <element name="Message" positionX="-207" positionY="27" width="128" height="135"/>
         <element name="Service" positionX="700" positionY="-297" width="128" height="105"/>
-        <element name="User" positionX="268" positionY="-261" width="128" height="195"/>
+        <element name="User" positionX="268" positionY="-261" width="128" height="210"/>
         <element name="Video" positionX="-234" positionY="90" width="128" height="105"/>
     </elements>
 </model>

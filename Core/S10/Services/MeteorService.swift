@@ -145,6 +145,10 @@ public class MeteorService {
         ]])
     }
     
+    public func confirmRegistration(username: String) -> RACSignal {
+        return meteor.call("confirmRegistration", [username])
+    }
+    
     public func loginWithFacebook(#accessToken: String, expiresAt: NSDate) -> RACSignal {
         return meteor.loginWithMethod("login", params: [[
             "fb-access": [
@@ -183,8 +187,8 @@ public class MeteorService {
 
     // MARK: - Profile
     
-    public func updateProfile(key: String, value: String) -> RACSignal {
-        return meteor.call("me/update", [key, value]) {
+    public func updateProfile(values: NSDictionary) -> RACSignal {
+        return meteor.call("me/update", [values]) {
 //            User.currentUser()?.about = about
             return nil
         }
