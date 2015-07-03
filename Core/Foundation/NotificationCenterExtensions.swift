@@ -23,10 +23,11 @@ extension NSNotificationCenter {
             observers.map { self.center.removeObserver($0) }
         }
         
-        func listen(name: String, object: AnyObject? = nil, block: (NSNotification) -> ()) {
+        public func listen(name: String, object: AnyObject? = nil, block: (NSNotification) -> ()) -> Proxy {
             observers += center.addObserverForName(name, object: object, queue: queue) { note in
                 block(note)
             }
+            return self
         }
     }
     
