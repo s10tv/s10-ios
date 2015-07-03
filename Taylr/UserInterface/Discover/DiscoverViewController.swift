@@ -44,6 +44,18 @@ class DiscoverViewController : BaseViewController {
         navigationController?.navigationBarHidden = false
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        // TODO: Temporarily request all access to all permissions
+        let settings = UIUserNotificationSettings(forTypes:
+            UIUserNotificationType.Badge |
+                UIUserNotificationType.Alert |
+                UIUserNotificationType.Sound,
+            categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+        Globals.locationService.requestPermission()
+    }
+    
     override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
         Log.debug("Handding to edge \(edge) from gameVC")
         if edge == .Right {
