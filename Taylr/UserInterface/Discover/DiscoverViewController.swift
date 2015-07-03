@@ -64,7 +64,7 @@ class DiscoverViewController : BaseViewController {
 
     // MARK: - Actions
     
-    @IBAction func unwindToHome(sender: UIStoryboardSegue) {
+    @IBAction func unwindToDiscover(sender: UIStoryboardSegue) {
     }
 }
 

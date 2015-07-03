@@ -108,6 +108,8 @@
 		EABAEDAB1B437216000261F0 /* AuthWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABAEDAA1B437216000261F0 /* AuthWebViewController.swift */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
 		EACCA3A21B37B02A00015C88 /* ProfileMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACCA3A11B37B02A00015C88 /* ProfileMainCell.swift */; };
+		EACEFB841B4672A800901E85 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACEFB831B4672A800901E85 /* AppRouter.swift */; };
+		EACEFB871B46740500901E85 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACEFB861B46740500901E85 /* LoadingViewController.swift */; };
 		EAE1E07B1AE34C6200F03F13 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1E07A1AE34C6200F03F13 /* LocationService.swift */; };
 		EAE1E07D1AE3788300F03F13 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1E07C1AE3788300F03F13 /* Globals.swift */; };
 		EAF6701B1B31E42E0025D7CF /* QuickSpecExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6701A1B31E42E0025D7CF /* QuickSpecExample.swift */; };
@@ -325,6 +327,8 @@
 		EABD43DA1AA1D29C00B07813 /* Prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
 		EABF2AB41AD04659005880E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EACCA3A11B37B02A00015C88 /* ProfileMainCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileMainCell.swift; sourceTree = "<group>"; };
+		EACEFB831B4672A800901E85 /* AppRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
+		EACEFB861B46740500901E85 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
 		EAE1E07A1AE34C6200F03F13 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		EAE1E07C1AE3788300F03F13 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		EAF6701A1B31E42E0025D7CF /* QuickSpecExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickSpecExample.swift; sourceTree = "<group>"; };
@@ -656,6 +660,7 @@
 				EA6650E91AA00A9C001BA40C /* Services */,
 				EAF4D7441A79AA5E00D35330 /* UserInterface */,
 				EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */,
+				EACEFB831B4672A800901E85 /* AppRouter.swift */,
 				EAE1E07C1AE3788300F03F13 /* Globals.swift */,
 				EA9F35461A74CC6900E0C65D /* Main.storyboard */,
 				EA7004641ACF912A00D0E467 /* Onboarding.storyboard */,
@@ -776,11 +781,20 @@
 			path = ../Configs;
 			sourceTree = "<group>";
 		};
+		EACEFB851B4673F700901E85 /* Loading */ = {
+			isa = PBXGroup;
+			children = (
+				EACEFB861B46740500901E85 /* LoadingViewController.swift */,
+			);
+			path = Loading;
+			sourceTree = "<group>";
+		};
 		EAF4D7441A79AA5E00D35330 /* UserInterface */ = {
 			isa = PBXGroup;
 			children = (
 				EAA56F861B2B32E500DE3936 /* Shared */,
 				EA3594171B2FEA1500E91337 /* Transitions */,
+				EACEFB851B4673F700901E85 /* Loading */,
 				EAA56F7D1B2B32E500DE3936 /* Onboarding */,
 				EAA56F6F1B2B32E500DE3936 /* Discover */,
 				EAA56F6B1B2B32E500DE3936 /* Chats */,
@@ -1391,6 +1405,7 @@
 			files = (
 				EA95BBBD1B3932B500701F08 /* GenericExtensions.swift in Sources */,
 				EA95BBB31B3930B000701F08 /* XLFormExtensions.m in Sources */,
+				EACEFB871B46740500901E85 /* LoadingViewController.swift in Sources */,
 				EAAD921D1ACF342C0014BA25 /* TaylrEnvironment.swift in Sources */,
 				EAE1E07B1AE34C6200F03F13 /* LocationService.swift in Sources */,
 				EAF81B231B33388700EED6DD /* ProducerViewController.swift in Sources */,
@@ -1407,6 +1422,7 @@
 				EA95BBA71B39308A00701F08 /* PageViewController.swift in Sources */,
 				EA925C741AD99ED8008E9F41 /* R.swift in Sources */,
 				EAF81B271B33391000EED6DD /* EditorViewController.swift in Sources */,
+				EACEFB841B4672A800901E85 /* AppRouter.swift in Sources */,
 				EA36D2AB1AE71366006FD5D8 /* Errors.swift in Sources */,
 				EAA56F931B2B32E500DE3936 /* MeViewController.swift in Sources */,
 				EA3594141B2DE5C300E91337 /* ConversationViewController.swift in Sources */,

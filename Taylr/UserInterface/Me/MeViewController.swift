@@ -87,8 +87,7 @@ class MeViewController : BaseViewController {
         let sheet = UIAlertController(title: LS(.settingsLogoutTitle), message: nil, preferredStyle: .ActionSheet)
         sheet.addAction(LS(.settingsLogoutLogout)) { _ in
             Globals.accountService.logout()
-            self.navigationController?.popToRootViewControllerAnimated(true)
-//            self.performSegue(.SettingsToLoading)
+            self.performSegue(.UnwindToLoading, sender: self)
         }
         sheet.addAction(LS(.settingsLogoutCancel), style: .Cancel)
         presentViewController(sheet)

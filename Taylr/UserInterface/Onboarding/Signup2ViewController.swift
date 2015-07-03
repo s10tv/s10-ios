@@ -81,7 +81,7 @@ class Signup2ViewController : XLFormViewController {
                     self.showErrorAlert(err)
                 }, completed: {
                     PKHUD.hide(animated: false)
-                    self.navigationController?.popToRootViewControllerAnimated(true)
+                    self.performSegue(.UnwindToLoading, sender: self)
                 })
             }
         }

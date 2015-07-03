@@ -18,36 +18,42 @@ extension UIStoryboardSegue {
 // Specify objc class to work around Xcode's bug where dragging and dropping custom segue
 // in swift modules does not store module name in IB by default and causes crash at runtime
 @objc(LinkedStoryboardPushSegue)
-class LinkedStoryboardPushSegue : UIStoryboardSegue {
+public class LinkedStoryboardPushSegue : UIStoryboardSegue {
+    public var animated = true
+    
     override init!(identifier: String!, source: UIViewController, destination: UIViewController) {
         super.init(identifier: identifier, source: source, destination: loadSceneNamed(identifier))
     }
     
-    override func perform() {
-        navVC?.pushViewController(destVC, animated: true)
+    public override func perform() {
+        navVC?.pushViewController(destVC, animated: animated)
     }
 }
 
 @objc(LinkedStoryboardPresentSegue)
-class LinkedStoryboardPresentSegue : UIStoryboardSegue {
+public class LinkedStoryboardPresentSegue : UIStoryboardSegue {
+    public var animated = true
+    
     override init!(identifier: String!, source: UIViewController, destination: UIViewController) {
         super.init(identifier: identifier, source: source, destination: loadSceneNamed(identifier))
     }
 
-    override func perform() {
-        sourceVC.presentViewController(destVC, animated: true, completion: nil)
+    public override func perform() {
+        sourceVC.presentViewController(destVC, animated: animated, completion: nil)
     }
 }
 
 @objc(ReplaceAndPushSegue)
-class ReplaceAndPushSegue : UIStoryboardSegue {
-    override func perform() {
+public class ReplaceAndPushSegue : UIStoryboardSegue {
+    public var animated = true
+    
+    public override func perform() {
         if let navVC = navVC {
             // TODO: Find better pattern for replace last element of an array
             var vcs = navVC.viewControllers
             vcs.removeLast()
             vcs.append(destVC)
-            navVC.setViewControllers(vcs, animated: true)
+            navVC.setViewControllers(vcs, animated: animated)
         }
     }
 }
