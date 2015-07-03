@@ -73,7 +73,7 @@
                     <navigationItem key="navigationItem" id="CYT-dg-Csh"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
-                        <segue destination="VVH-o2-j4o" kind="custom" identifier="Onboarding_Signup" customClass="LinkedStoryboardPushSegue" id="kNN-lk-QB3"/>
+                        <segue destination="VVH-o2-j4o" kind="custom" identifier="Onboarding_Login" customClass="LinkedStoryboardPushSegue" id="kNN-lk-QB3"/>
                         <segue destination="5Q6-Kt-6sh" kind="custom" identifier="LoadingToDiscover" customClass="AdvancedPushSegue" id="w81-4F-XfX"/>
                     </connections>
                 </viewController>
@@ -1146,7 +1146,7 @@
                         <outlet property="nameLabel" destination="Lxr-IQ-qXL" id="xZv-uD-p8B"/>
                         <outlet property="usernameLabel" destination="D9T-Ho-de1" id="8Fo-jI-Fow"/>
                         <segue destination="W2c-OH-HAO" kind="unwind" identifier="MeToDiscover" unwindAction="unwindToDiscover:" id="H52-9G-GKG"/>
-                        <segue destination="VVH-o2-j4o" kind="custom" identifier="Onboarding_Signup" customClass="LinkedStoryboardPushSegue" id="tQ4-cK-7eW"/>
+                        <segue destination="VVH-o2-j4o" kind="custom" identifier="Onboarding_Login" customClass="LinkedStoryboardPushSegue" id="tQ4-cK-7eW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yWV-ja-hlq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1213,11 +1213,11 @@
             </objects>
             <point key="canvasLocation" x="-273" y="2890"/>
         </scene>
-        <!--Onboarding - Signup-->
+        <!--Onboarding - Login-->
         <scene sceneID="IJI-Me-SMT">
             <objects>
-                <viewController id="VVH-o2-j4o" userLabel="Onboarding - Signup" sceneMemberID="viewController">
-                    <label key="view" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Onboarding - Signup" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="l8Y-3r-Kd0">
+                <viewController id="VVH-o2-j4o" userLabel="Onboarding - Login" sceneMemberID="viewController">
+                    <label key="view" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Onboarding - Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="l8Y-3r-Kd0">
                         <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1246,7 +1246,7 @@
         <image name="sample-taylor-video-frame" width="375" height="375"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="tQ4-cK-7eW"/>
+        <segue reference="kNN-lk-QB3"/>
         <segue reference="Hrk-zE-6Yh"/>
         <segue reference="zOU-zf-DhR"/>
     </inferredMetricsTieBreakers>

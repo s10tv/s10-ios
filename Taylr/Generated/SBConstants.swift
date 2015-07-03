@@ -18,14 +18,14 @@ public enum SegueIdentifier : String {
     case DiscoverToChats = "DiscoverToChats"
     case DiscoverToMe = "DiscoverToMe"
     case LoadingToDiscover = "LoadingToDiscover"
+    case LoginToSignup = "LoginToSignup"
     case Main_Chat = "Main_Chat"
     case Main_Discover = "Main_Discover"
     case Main_Profile = "Main_Profile"
     case MeToDiscover = "MeToDiscover"
-    case Onboarding_Signup = "Onboarding_Signup"
+    case Onboarding_Login = "Onboarding_Login"
     case RecorderToEditor = "RecorderToEditor"
     case SettingsToLoading = "SettingsToLoading"
-    case SignupToSignup2 = "SignupToSignup2"
 }
 
 public enum TableViewCellreuseIdentifier : String {

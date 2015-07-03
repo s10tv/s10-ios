@@ -1,119 +1,95 @@
 //
 //  SignupViewController.swift
-//  Serendipity
+//  S10
 //
-//  Created by Tony Xiao on 1/28/15.
-//  Copyright (c) 2015 Serendipity. All rights reserved.
+//  Created by Tony Xiao on 7/2/15.
+//  Copyright (c) 2015 S10. All rights reserved.
 //
 
 import Foundation
-import PKHUD
-import DigitsKit
-import ReactiveCocoa
-import Meteor
+import XLForm
 import Core
+import Bond
+import PKHUD
 
-class SignupViewController : BaseViewController {
-
-    @IBOutlet weak var loginButton: DesignableButton!
+class SignupViewController : XLFormViewController {
     
-    override func commonInit() {
-        screenName = "Signup"
-    }
+    var viewModel: SignupViewModel!
     
     override func viewDidLoad() {
+        setupForm()
         super.viewDidLoad()
-        loginButton.whenLongPressEnded { [weak self] in self!.debugLogin(self!) }
+        // Fix for tableview layout http://stackoverflow.com/questions/18880341/why-is-there-extra-padding-at-the-top-of-my-uitableview-with-style-uitableviewst
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 0.01))
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBarHidden = true
-    }
-    
-    override func preferredStatusBarStyle() -> UIStatusBarStyle {
-        return .LightContent
+        navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let vc = segue.destinationViewController as? Signup2ViewController {
-            vc.viewModel = SignupViewModel(user: Meteor.user!)
-        }
         if let segue = segue as? LinkedStoryboardPushSegue where segue.matches(.Main_Discover) {
             segue.replaceStrategy = .Stack
         }
     }
     
-    // MARK: Actions
+    // MARK: -
+    
+    func setupForm() {
+        form = XLFormDescriptor()
         
-    @IBAction func viewTerms(sender: AnyObject) {
-        UIApplication.sharedApplication().openURL(Globals.env.termsAndConditionURL)
+        let section1 = XLFormSectionDescriptor()
+        let avatarCoverRow = XLFormPrototypeRowDescriptor(cellReuseIdentifier: TableViewCellreuseIdentifier.AvatarCoverCell.rawValue)
+        avatarCoverRow.tag = "avatarCover"
+        avatarCoverRow.title = "AvatarCover"
+        section1.addFormRow(avatarCoverRow)
+        form.addFormSection(section1)
+        
+        let section2 = XLFormSectionDescriptor()
+        let firstNameRow = makeRow(.firstName, dynamic: viewModel.firstName, title: "First Name")
+        firstNameRow.cellConfigAtConfigure["textField.placeholder"] = "Required"
+        let lastNameRow = makeRow(.lastName, dynamic: viewModel.lastName, title: "Last Name")
+        lastNameRow.cellConfigAtConfigure["textField.placeholder"] = "Required"
+        let usernameRow = makeRow(.username, dynamic: viewModel.username, title: "Username")
+        usernameRow.cellConfigAtConfigure["textField.placeholder"] = "Required"
+        let aboutRow = makeRow(.about, dynamic: viewModel.about, title: "About Me", rowType: XLFormRowDescriptorTypeTextView)
+        aboutRow.cellConfigAtConfigure["textView.placeholder"] = "Optional"
+        [firstNameRow, lastNameRow, usernameRow, aboutRow].each {
+            section2.addFormRow($0)
+        }
+        form.addFormSection(section2)
     }
     
-    @IBAction func viewPrivacy(sender: AnyObject) {
-        UIApplication.sharedApplication().openURL(Globals.env.privacyURL)
+    private func makeRow<T>(key: UserKeys, dynamic: Dynamic<T>, title: String, rowType: String = XLFormRowDescriptorTypeText) -> XLFormRowDescriptor {
+        let row = XLFormRowDescriptor(tag: key.rawValue, rowType: rowType, title: title)
+        dynamic.map { $0 as? AnyObject } ->> row
+        return row
     }
     
-    @IBAction func startLogin(sender: AnyObject) {
-        if !Meteor.networkReachable {
-            showErrorAlert(NSError(.NetworkUnreachable))
-            return
+    override func endEditing(rowDescriptor: XLFormRowDescriptor!) {
+        super.endEditing(rowDescriptor)
+        let editableKeys : [UserKeys] = [.firstName, .lastName, .about]
+        if contains(editableKeys.map { $0.rawValue }, rowDescriptor.tag) {
+            Meteor.updateProfile([rowDescriptor.tag: rowDescriptor.value ?? ""])
         }
-        Globals.accountService.login().subscribeError({ error in
-            if error.domain == METDDPErrorDomain {
-                self.showAlert(LS(.errUnableToLoginTitle), message: LS(.errUnableToLoginMessage))
-            } else if error.domain == DGTErrorDomain {
-                // Ignoring digits error for now
-                Log.warn("Ignoring digits error, not handling for now \(error)")
-            }
-        }, completed: {
-            assert(NSThread.isMainThread(), "Only on main")
-            switch Globals.accountService.status {
-            case .Pending:
-                self.performSegue(.SignupToSignup2, sender: self)
-            case .SignedUp:
-                self.performSegue(.Main_Discover, sender: self)
-            default:
-                break
-            }
-        })
     }
     
-    // MARK; - Debugging
+    // MARK: -
     
-    private func startLogin(loginBlock: () -> RACSignal, errorBlock: (NSError?) -> ()) {
-        // TODO: We need to think about holistic, not just adhoc error handling
-        if !Meteor.networkReachable {
-            showErrorAlert(NSError(.NetworkUnreachable))
-            return
-        }
-        PKHUD.showActivity()
-        loginBlock().subscribeError({ error in
-            PKHUD.hide()
-            errorBlock(error)
-            }, completed: {
-                PKHUD.hide()
-                self.navigationController?.popToRootViewControllerAnimated(true)
-        })
-    }
-    
-    @IBAction func debugLogin(sender: AnyObject) {
-        Analytics.track("Debug Login Attempt")
-        if !Meteor.settings.debugLoginMode {
-            return
-        }
-        let alert = UIAlertController(title: "DEBUG LOGIN MODE", message: nil, preferredStyle: .Alert)
-        alert.addTextFieldWithConfigurationHandler { textField in
-            textField.placeholder = "Enter target userId"
-        }
-        alert.addAction("Cancel", style: .Cancel)
-        alert.addAction("Login") { [weak alert] _ in
-            if let userId = (alert?.textFields?.first as? UITextField)?.text?.nonBlank() {
-                self.startLogin({ Globals.accountService.debugLogin(userId) }, errorBlock: { error in
-                    self.showAlert("Failed to login", message: error?.localizedDescription ?? "Unknown Error")
+    @IBAction func submitRegistration(sender: AnyObject) {
+        if view.endEditing(false) {
+            if let username = form.formRowWithTag(UserKeys.username.rawValue).value as? String {
+                println("Value \(username)")
+                PKHUD.showActivity(dimsBackground: true)
+                Meteor.confirmRegistration(username).deliverOnMainThread().subscribeError({ err in
+                    PKHUD.hide(animated: false)
+                    self.showErrorAlert(err)
+                }, completed: {
+                    PKHUD.hide(animated: false)
+                    self.performSegue(.Main_Discover, sender: self)
                 })
             }
         }
-        presentViewController(alert)
     }
 }

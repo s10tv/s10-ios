@@ -12,10 +12,10 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Signup View Controller-->
+        <!--Login View Controller-->
         <scene sceneID="mSO-WA-QEY">
             <objects>
-                <viewController storyboardIdentifier="Signup" id="dFw-q9-bre" customClass="SignupViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Login" id="dFw-q9-bre" customClass="LoginViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="hwB-lg-PKL"/>
                         <viewControllerLayoutGuide type="bottom" id="hxv-04-ouP"/>
@@ -160,7 +160,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="loginButton" destination="isY-Ks-GfE" id="zst-37-Oho"/>
-                        <segue destination="BbE-3o-NVZ" kind="show" identifier="SignupToSignup2" id="P6J-dx-IsB"/>
+                        <segue destination="BbE-3o-NVZ" kind="show" identifier="LoginToSignup" id="P6J-dx-IsB"/>
                         <segue destination="4LR-tW-qvj" kind="custom" identifier="Main_Discover" customClass="LinkedStoryboardPushSegue" id="ztg-XZ-LWS"/>
                     </connections>
                 </viewController>
@@ -171,7 +171,7 @@
         <!--Complete Your Profile-->
         <scene sceneID="c7e-uH-hgv">
             <objects>
-                <viewController storyboardIdentifier="Signup2" id="BbE-3o-NVZ" customClass="Signup2ViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Signup" id="BbE-3o-NVZ" customClass="SignupViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="lAn-f6-Iyx"/>
                         <viewControllerLayoutGuide type="bottom" id="fmS-UZ-SkF"/>
@@ -271,6 +271,6 @@
         <image name="sample-taylor-avatar" width="66" height="67"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ztg-XZ-LWS"/>
+        <segue reference="vTJ-7J-HJ1"/>
     </inferredMetricsTieBreakers>
 </document>

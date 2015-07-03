@@ -26,9 +26,9 @@ class LoadingViewController : UIViewController {
     func performSegueWithStatus(status: AccountService.Status) {
         switch status {
         case .NotLoggedIn:
-            performSegue(.Onboarding_Signup, sender: self)
+            performSegue(.Onboarding_Login, sender: self)
         case .Pending:
-            performSegue(.Onboarding_Signup, sender: self) // Should be Onbaording_Signup2
+            performSegue(.Onboarding_Login, sender: self) // Should be Onbaording_Signup
         case .SignedUp:
             performSegue(.LoadingToDiscover, sender: self)
         }

@@ -48,7 +48,7 @@ class MeViewController : BaseViewController {
         if let vc = segue.destinationViewController as? ProfileViewController {
             vc.profileVM = ProfileViewModel(meteor: Meteor, user: viewModel.currentUser)
         }
-        if let segue = segue as? LinkedStoryboardPushSegue where segue.matches(.Onboarding_Signup) {
+        if let segue = segue as? LinkedStoryboardPushSegue where segue.matches(.Onboarding_Login) {
             segue.replaceStrategy = .Stack
         }
     }
@@ -90,7 +90,7 @@ class MeViewController : BaseViewController {
         let sheet = UIAlertController(title: LS(.settingsLogoutTitle), message: nil, preferredStyle: .ActionSheet)
         sheet.addAction(LS(.settingsLogoutLogout)) { _ in
             Globals.accountService.logout()
-            self.performSegue(.Onboarding_Signup, sender: self)
+            self.performSegue(.Onboarding_Login, sender: self)
         }
         sheet.addAction(LS(.settingsLogoutCancel), style: .Cancel)
         presentViewController(sheet)
