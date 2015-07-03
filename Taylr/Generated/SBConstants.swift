@@ -24,6 +24,7 @@ public enum SegueIdentifier : String {
     case Main_Profile = "Main_Profile"
     case MeToDiscover = "MeToDiscover"
     case Onboarding_Login = "Onboarding_Login"
+    case Onboarding_Signup = "Onboarding_Signup"
     case RecorderToEditor = "RecorderToEditor"
     case SettingsToLoading = "SettingsToLoading"
 }
@@ -45,10 +46,10 @@ public enum ViewControllerStoryboardIdentifier : String {
     case Chats = "Chats"
     case Discover = "Discover"
     case Editor = "Editor"
+    case Login = "Login"
     case Me = "Me"
     case Recorder = "Recorder"
     case Settings = "Settings"
     case SettingsForm = "SettingsForm"
     case Signup = "Signup"
-    case Signup2 = "Signup2"
 }

@@ -43,7 +43,8 @@ public class MeteorService {
     public var mainContext : NSManagedObjectContext { return meteor.mainQueueManagedObjectContext }
     public var account: METAccount? { return meteor.account }
     public var userID : String? { return meteor.userID }
-    public var user: User? { return userID.map { User.findByDocumentID(mainContext, documentID: $0) } ?? nil }
+    public var user: User? { return subscriptions.userData.ready ?
+        userID.flatMap { User.findByDocumentID(mainContext, documentID: $0) } : nil }
     public weak var delegate: METDDPClientDelegate? {
         get { return meteor.delegate }
         set { meteor.delegate = newValue }

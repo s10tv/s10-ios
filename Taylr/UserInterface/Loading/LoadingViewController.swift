@@ -11,13 +11,18 @@ import Core
 
 class LoadingViewController : UIViewController {
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBarHidden = true
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         if Globals.accountService.status == .NotLoggedIn {
             self.performSegueWithStatus(Globals.accountService.status)
         } else {
             // Wait until user data is there so we know whether user has signed up before showing discover
-            Meteor.subscriptions.userData.whenDone { _ in
+            Meteor.subscriptions.userData.signal.delay(0.1).deliverOnMainThread().subscribeCompleted {
                 self.performSegueWithStatus(Globals.accountService.status)
             }
         }
@@ -28,7 +33,7 @@ class LoadingViewController : UIViewController {
         case .NotLoggedIn:
             performSegue(.Onboarding_Login, sender: self)
         case .Pending:
-            performSegue(.Onboarding_Login, sender: self) // Should be Onbaording_Signup
+            performSegue(.Onboarding_Signup, sender: self)
         case .SignedUp:
             performSegue(.LoadingToDiscover, sender: self)
         }
@@ -38,6 +43,12 @@ class LoadingViewController : UIViewController {
         if let segue = segue as? AdvancedPushSegue {
             segue.animated = false
             segue.replaceStrategy = .Stack
+            if let vc = segue.destinationViewController as? SignupViewController {
+                vc.viewModel = SignupViewModel(user: Meteor.user!)
+                let onboarding = UIStoryboard(name: "Onboarding", bundle: nil)
+                let login = onboarding.instantiateInitialViewController() as! UIViewController
+                segue.replaceStrategy = .BackStack([login])
+            }
         }
     }
     

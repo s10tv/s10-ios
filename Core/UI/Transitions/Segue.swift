@@ -22,7 +22,7 @@ extension UIStoryboardSegue {
 @objc(AdvancedPushSegue)
 public class AdvancedPushSegue : UIStoryboardSegue {
     public enum ReplaceStrategy {
-        case None, Last, Stack
+        case None, Last, Stack, BackStack([UIViewController])
     }
     public var animated = true
     public var replaceStrategy = ReplaceStrategy.None
@@ -40,6 +40,8 @@ public class AdvancedPushSegue : UIStoryboardSegue {
                 navVC.setViewControllers(vcs, animated: animated)
             case .Stack:
                 navVC.setViewControllers([destVC], animated: animated)
+            case .BackStack(let backStack):
+                navVC.setViewControllers(backStack + [destVC], animated: animated)
             }
         }
     }
