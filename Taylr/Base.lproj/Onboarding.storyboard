@@ -190,18 +190,26 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8QN-DU-seO" id="AhA-9L-oIQ">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-cover-image" translatesAutoresizingMaskIntoConstraints="NO" id="yQk-Ls-DaV">
+                                                <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-cover-image" translatesAutoresizingMaskIntoConstraints="NO" id="yQk-Ls-DaV">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="155"/>
+                                                    <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="155" id="kEO-YI-mEg"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="Vpe-7J-KyO" appends="YES" id="bHo-xg-SZz"/>
+                                                    </connections>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="y0h-Jf-NZy">
+                                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="y0h-Jf-NZy">
                                                     <rect key="frame" x="240" y="95" width="120" height="120"/>
+                                                    <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="120" id="ciM-nm-l3k"/>
                                                         <constraint firstAttribute="width" secondItem="y0h-Jf-NZy" secondAttribute="height" id="sm0-4L-KJR"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="YCe-Bs-C7V" appends="YES" id="2kg-tt-sUl"/>
+                                                    </connections>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -244,6 +252,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zA5-0f-p8h" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="YCe-Bs-C7V">
+                    <connections>
+                        <action selector="didTapAvatar:" destination="BbE-3o-NVZ" id="tva-Jl-W9e"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Vpe-7J-KyO">
+                    <connections>
+                        <action selector="didTapCoverPhoto:" destination="BbE-3o-NVZ" id="yqy-CV-osd"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="186" y="660"/>
         </scene>

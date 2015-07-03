@@ -7,10 +7,11 @@
 //
 
 import Foundation
-import XLForm
-import Core
+import ReactiveCocoa
 import Bond
+import XLForm
 import PKHUD
+import Core
 
 class SignupViewController : XLFormViewController {
     
@@ -81,7 +82,34 @@ class SignupViewController : XLFormViewController {
         }
     }
     
+    func pickImage(block: (UIImage) -> ()) {
+        let picker = UIImagePickerController()
+        picker.rac_imageSelectedSignal().subscribeNext({
+            if let info = $0 as? NSDictionary,
+                let image = (info[UIImagePickerControllerEditedImage]
+                          ?? info[UIImagePickerControllerOriginalImage]) as? UIImage {
+                block(image)
+            }
+            picker.dismissViewController(animated: true)
+        }, completed: {
+            picker.dismissViewController(animated: true)
+        })
+        presentViewController(picker, animated: true)
+    }
+    
     // MARK: -
+    
+    @IBAction func didTapAvatar(sender: AnyObject) {
+        pickImage() { image in
+            println("Did get avatar image")
+        }
+    }
+    
+    @IBAction func didTapCoverPhoto(sender: AnyObject) {
+        pickImage() { image in
+            println("Did get cover image")
+        }
+    }
     
     @IBAction func submitRegistration(sender: AnyObject) {
         if let errors = formValidationErrors()?.map({ $0 as! NSError }) where errors.count > 0 {
