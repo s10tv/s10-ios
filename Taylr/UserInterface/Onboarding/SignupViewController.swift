@@ -39,22 +39,9 @@ class SignupViewController : BaseViewController {
         if let vc = segue.destinationViewController as? Signup2ViewController {
             vc.viewModel = SignupViewModel(user: Meteor.user!)
         }
-    }
-    
-    private func startLogin(loginBlock: () -> RACSignal, errorBlock: (NSError?) -> ()) {
-        // TODO: We need to think about holistic, not just adhoc error handling
-        if !Meteor.networkReachable {
-            showErrorAlert(NSError(.NetworkUnreachable))
-            return
+        if let segue = segue as? LinkedStoryboardPushSegue where segue.matches(.Main_Discover) {
+            segue.replaceStrategy = .Stack
         }
-        PKHUD.showActivity()
-        loginBlock().subscribeError({ error in
-            PKHUD.hide()
-            errorBlock(error)
-        }, completed: {
-            PKHUD.hide()
-            self.navigationController?.popToRootViewControllerAnimated(true)
-        })
     }
     
     // MARK: Actions
@@ -80,7 +67,30 @@ class SignupViewController : BaseViewController {
                 Log.warn("Ignoring digits error, not handling for now \(error)")
             }
         }, completed: {
-            self.performSegue(.SignupToSignup2, sender: self)
+            assert(NSThread.isMainThread(), "Only on main")
+            if let status = Meteor.user?.dynStatus.value where status == .Pending {
+                self.performSegue(.SignupToSignup2, sender: self)
+            } else {
+                self.performSegue(.Main_Discover, sender: self)
+            }
+        })
+    }
+    
+    // MARK; - Debugging
+    
+    private func startLogin(loginBlock: () -> RACSignal, errorBlock: (NSError?) -> ()) {
+        // TODO: We need to think about holistic, not just adhoc error handling
+        if !Meteor.networkReachable {
+            showErrorAlert(NSError(.NetworkUnreachable))
+            return
+        }
+        PKHUD.showActivity()
+        loginBlock().subscribeError({ error in
+            PKHUD.hide()
+            errorBlock(error)
+            }, completed: {
+                PKHUD.hide()
+                self.navigationController?.popToRootViewControllerAnimated(true)
         })
     }
     

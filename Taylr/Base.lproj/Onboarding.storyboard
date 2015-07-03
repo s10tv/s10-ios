@@ -161,11 +161,12 @@
                     <connections>
                         <outlet property="loginButton" destination="isY-Ks-GfE" id="zst-37-Oho"/>
                         <segue destination="BbE-3o-NVZ" kind="show" identifier="SignupToSignup2" id="P6J-dx-IsB"/>
+                        <segue destination="4LR-tW-qvj" kind="custom" identifier="Main_Discover" customClass="LinkedStoryboardPushSegue" id="ztg-XZ-LWS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lbl-0u-moe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-542" y="274"/>
+            <point key="canvasLocation" x="-531" y="274"/>
         </scene>
         <!--Complete Your Profile-->
         <scene sceneID="c7e-uH-hgv">
@@ -244,7 +245,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zA5-0f-p8h" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="142" y="274"/>
+            <point key="canvasLocation" x="186" y="660"/>
         </scene>
         <!--Main - Discover-->
         <scene sceneID="ucd-nb-Qyk">
@@ -262,11 +263,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dOh-La-D4o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="737" y="274"/>
+            <point key="canvasLocation" x="727" y="274"/>
         </scene>
     </scenes>
     <resources>
         <image name="sample-cover-image" width="579" height="214"/>
         <image name="sample-taylor-avatar" width="66" height="67"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="ztg-XZ-LWS"/>
+    </inferredMetricsTieBreakers>
 </document>
