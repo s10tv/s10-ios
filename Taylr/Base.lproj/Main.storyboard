@@ -43,7 +43,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sLh-x5-Qkr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-273" y="1290"/>
+            <point key="canvasLocation" x="-278" y="1290"/>
         </scene>
         <!--Loading View Controller-->
         <scene sceneID="ojO-vT-4l5">
@@ -1145,8 +1145,8 @@
                         <outlet property="collectionView" destination="ywF-Eq-btS" id="VbA-Qk-Fkh"/>
                         <outlet property="nameLabel" destination="Lxr-IQ-qXL" id="xZv-uD-p8B"/>
                         <outlet property="usernameLabel" destination="D9T-Ho-de1" id="8Fo-jI-Fow"/>
-                        <segue destination="W2c-OH-HAO" kind="unwind" identifier="UnwindToLoading" unwindAction="unwindToLoading:" id="n7k-Fe-Ofa"/>
                         <segue destination="W2c-OH-HAO" kind="unwind" identifier="MeToDiscover" unwindAction="unwindToDiscover:" id="H52-9G-GKG"/>
+                        <segue destination="VVH-o2-j4o" kind="custom" identifier="Onboarding_Signup" customClass="LinkedStoryboardPushSegue" id="tQ4-cK-7eW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yWV-ja-hlq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1229,7 +1229,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h0p-Zh-CC4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1029" y="1290"/>
+            <point key="canvasLocation" x="-1040" y="1356"/>
         </scene>
     </scenes>
     <resources>
@@ -1246,6 +1246,7 @@
         <image name="sample-taylor-video-frame" width="375" height="375"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="tQ4-cK-7eW"/>
         <segue reference="Hrk-zE-6Yh"/>
         <segue reference="zOU-zf-DhR"/>
     </inferredMetricsTieBreakers>

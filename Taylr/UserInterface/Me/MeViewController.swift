@@ -48,10 +48,9 @@ class MeViewController : BaseViewController {
         if let vc = segue.destinationViewController as? ProfileViewController {
             vc.profileVM = ProfileViewModel(meteor: Meteor, user: viewModel.currentUser)
         }
-    }
-    
-    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
-        return UnwindPopSegue(identifier: identifier, source: fromViewController, destination: toViewController)
+        if let segue = segue as? LinkedStoryboardPushSegue where segue.matches(.Onboarding_Signup) {
+            segue.replaceStrategy = .Stack
+        }
     }
     
     override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
@@ -91,7 +90,7 @@ class MeViewController : BaseViewController {
         let sheet = UIAlertController(title: LS(.settingsLogoutTitle), message: nil, preferredStyle: .ActionSheet)
         sheet.addAction(LS(.settingsLogoutLogout)) { _ in
             Globals.accountService.logout()
-            self.performSegue(.UnwindToLoading, sender: self)
+            self.performSegue(.Onboarding_Signup, sender: self)
         }
         sheet.addAction(LS(.settingsLogoutCancel), style: .Cancel)
         presentViewController(sheet)

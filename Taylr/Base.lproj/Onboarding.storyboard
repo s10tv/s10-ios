@@ -239,13 +239,30 @@
                     <connections>
                         <outlet property="tableView" destination="T4Y-Zp-oMf" id="Wyj-rp-zD1"/>
                         <outlet property="view" destination="AWr-CH-w9L" id="UaW-Y6-19D"/>
-                        <segue destination="rZe-eW-0dR" kind="unwind" identifier="UnwindToLoading" unwindAction="unwindToLoading:" id="YE0-0C-3Q7"/>
+                        <segue destination="4LR-tW-qvj" kind="custom" identifier="Main_Discover" customClass="LinkedStoryboardPushSegue" id="vTJ-7J-HJ1"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zA5-0f-p8h" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="rZe-eW-0dR" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="142" y="274"/>
+        </scene>
+        <!--Main - Discover-->
+        <scene sceneID="ucd-nb-Qyk">
+            <objects>
+                <viewController id="4LR-tW-qvj" userLabel="Main - Discover" sceneMemberID="viewController">
+                    <label key="view" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Main - Discover" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tEe-SV-0hk">
+                        <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="250" height="250"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dOh-La-D4o" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="737" y="274"/>
         </scene>
     </scenes>
     <resources>

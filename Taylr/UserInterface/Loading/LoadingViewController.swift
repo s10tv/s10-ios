@@ -11,10 +11,8 @@ import Core
 
 class LoadingViewController : UIViewController {
     
-    private var lastUnwindSegue: UIStoryboardSegue?
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         if Meteor.account == nil {
             performSegue(.Onboarding_Signup, sender: self)
         } else {
@@ -29,7 +27,4 @@ class LoadingViewController : UIViewController {
         }
     }
     
-    @IBAction func unwindToLoading(sender: UIStoryboardSegue) {
-        lastUnwindSegue = sender
-    }
 }

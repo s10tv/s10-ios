@@ -39,6 +39,11 @@ class DiscoverViewController : BaseViewController {
         discoverVM.unreadConnectionsCount.map { $0 > 0 ? "Taylr (\($0))" : "Taylr" } ->> navigationItem.dynTitle
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBarHidden = false
+    }
+    
     override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
         Log.debug("Handding to edge \(edge) from gameVC")
         if edge == .Right {

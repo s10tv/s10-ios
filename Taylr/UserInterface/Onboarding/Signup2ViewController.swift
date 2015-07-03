@@ -28,8 +28,10 @@ class Signup2ViewController : XLFormViewController {
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
-    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
-        return UnwindPopSegue(identifier: identifier, source: fromViewController, destination: toViewController)
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let segue = segue as? LinkedStoryboardPushSegue where segue.matches(.Main_Discover) {
+            segue.replaceStrategy = .Stack
+        }
     }
     
     // MARK: -
@@ -85,7 +87,7 @@ class Signup2ViewController : XLFormViewController {
                     self.showErrorAlert(err)
                 }, completed: {
                     PKHUD.hide(animated: false)
-                    self.performSegue(.UnwindToLoading, sender: self)
+                    self.performSegue(.Main_Discover, sender: self)
                 })
             }
         }
