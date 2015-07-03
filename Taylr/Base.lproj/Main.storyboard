@@ -74,7 +74,7 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <segue destination="VVH-o2-j4o" kind="custom" identifier="Onboarding_Signup" customClass="LinkedStoryboardPushSegue" id="kNN-lk-QB3"/>
-                        <segue destination="5Q6-Kt-6sh" kind="custom" identifier="Main_Discover" customClass="LinkedStoryboardPushSegue" id="w81-4F-XfX"/>
+                        <segue destination="5Q6-Kt-6sh" kind="custom" identifier="LoadingToDiscover" customClass="AdvancedPushSegue" id="w81-4F-XfX"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yoq-4Z-qxb" userLabel="First Responder" sceneMemberID="firstResponder"/>

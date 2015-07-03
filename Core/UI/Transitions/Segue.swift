@@ -17,16 +17,38 @@ extension UIStoryboardSegue {
 
 // Specify objc class to work around Xcode's bug where dragging and dropping custom segue
 // in swift modules does not store module name in IB by default and causes crash at runtime
-@objc(LinkedStoryboardPushSegue)
-public class LinkedStoryboardPushSegue : UIStoryboardSegue {
-    public var animated = true
-    
-    override init!(identifier: String!, source: UIViewController, destination: UIViewController) {
-        super.init(identifier: identifier, source: source, destination: loadSceneNamed(identifier))
+
+
+@objc(AdvancedPushSegue)
+public class AdvancedPushSegue : UIStoryboardSegue {
+    public enum ReplaceStrategy {
+        case None, Last, Stack
     }
+    public var animated = true
+    public var replaceStrategy = ReplaceStrategy.None
     
     public override func perform() {
-        navVC?.pushViewController(destVC, animated: animated)
+        if let navVC = navVC {
+            switch replaceStrategy {
+            case .None:
+                navVC.pushViewController(destVC, animated: animated)
+            case .Last:
+                // TODO: Find better pattern for replace last element of an array
+                var vcs = navVC.viewControllers
+                vcs.removeLast()
+                vcs.append(destVC)
+                navVC.setViewControllers(vcs, animated: animated)
+            case .Stack:
+                navVC.setViewControllers([destVC], animated: animated)
+            }
+        }
+    }
+}
+
+@objc(LinkedStoryboardPushSegue)
+public class LinkedStoryboardPushSegue : AdvancedPushSegue {
+    override init!(identifier: String!, source: UIViewController, destination: UIViewController) {
+        super.init(identifier: identifier, source: source, destination: loadSceneNamed(identifier))
     }
 }
 
@@ -40,21 +62,6 @@ public class LinkedStoryboardPresentSegue : UIStoryboardSegue {
 
     public override func perform() {
         sourceVC.presentViewController(destVC, animated: animated, completion: nil)
-    }
-}
-
-@objc(ReplaceAndPushSegue)
-public class ReplaceAndPushSegue : UIStoryboardSegue {
-    public var animated = true
-    
-    public override func perform() {
-        if let navVC = navVC {
-            // TODO: Find better pattern for replace last element of an array
-            var vcs = navVC.viewControllers
-            vcs.removeLast()
-            vcs.append(destVC)
-            navVC.setViewControllers(vcs, animated: animated)
-        }
     }
 }
 

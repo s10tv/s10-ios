@@ -18,13 +18,14 @@ class LoadingViewController : UIViewController {
         if Meteor.account == nil {
             performSegue(.Onboarding_Signup, sender: self)
         } else {
-            performSegue(.Main_Discover, sender: self)
+            performSegue(.LoadingToDiscover, sender: self)
         }
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let segue = segue as? LinkedStoryboardPushSegue {
+        if let segue = segue as? AdvancedPushSegue {
             segue.animated = false
+            segue.replaceStrategy = .Stack
         }
     }
     
