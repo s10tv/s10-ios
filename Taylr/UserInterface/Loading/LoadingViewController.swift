@@ -44,7 +44,7 @@ class LoadingViewController : UIViewController {
             segue.animated = false
             segue.replaceStrategy = .Stack
             if let vc = segue.destinationViewController as? SignupViewController {
-                vc.viewModel = SignupViewModel(user: Meteor.user!)
+                vc.viewModel = SignupInteractor(user: Meteor.user!)
                 // TODO: Move this type of stuff into the router
                 let onboarding = UIStoryboard(name: "Onboarding", bundle: nil)
                 let login = onboarding.instantiateInitialViewController() as! UIViewController

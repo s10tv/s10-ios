@@ -19,7 +19,7 @@ class MeViewController : BaseViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     
-    var viewModel: MeViewModel!
+    var viewModel: MeInteractor!
     var dataSourceBond: UICollectionViewDataSourceBond<UICollectionViewCell>!
     var linkAccountService: LinkAccountService!
     
@@ -46,7 +46,7 @@ class MeViewController : BaseViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ProfileViewController {
-            vc.profileVM = ProfileViewModel(meteor: Meteor, user: viewModel.currentUser)
+            vc.profileVM = ProfileInteractor(meteor: Meteor, user: viewModel.currentUser)
         }
         if let segue = segue as? LinkedStoryboardPushSegue where segue.matches(.Onboarding_Login) {
             segue.replaceStrategy = .Stack

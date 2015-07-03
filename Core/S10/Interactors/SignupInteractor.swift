@@ -1,5 +1,5 @@
 //
-//  SignupViewModel.swift
+//  SignupInteractor.swift
 //  S10
 //
 //  Created by Tony Xiao on 7/2/15.
@@ -9,7 +9,7 @@
 import Foundation
 import Bond
 
-public class SignupViewModel {
+public class SignupInteractor {
     let user: User
     public let firstName = Dynamic("")
     public let lastName = Dynamic("")

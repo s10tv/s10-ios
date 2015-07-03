@@ -22,7 +22,7 @@ class ConversationViewController : BaseViewController {
     @IBOutlet weak var nameCenterConstraint: NSLayoutConstraint!
     
     var producer: ProducerViewController!
-    var conversationVM: ConversationViewModel!
+    var conversationVM: ConversationInteractor!
     var dataSourceBond: UICollectionViewDataSourceBond<UICollectionViewCell>!
 
     override func viewDidLoad() {
@@ -80,7 +80,7 @@ class ConversationViewController : BaseViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ProfileViewController {
-            vc.profileVM = ProfileViewModel(meteor: Meteor, user: conversationVM.recipient)
+            vc.profileVM = ProfileInteractor(meteor: Meteor, user: conversationVM.recipient)
         }
     }
 }

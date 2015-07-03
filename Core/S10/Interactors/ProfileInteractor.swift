@@ -1,5 +1,5 @@
 //
-//  ProfileViewModel.swift
+//  ProfileInteractor.swift
 //  S10
 //
 //  Created by Tony Xiao on 6/27/15.
@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import Bond
 
-public class ProfileViewModel {
+public class ProfileInteractor {
     let meteor: MeteorService
     var servicesSubscription: METSubscription?
     var activitiesSubscription: METSubscription?

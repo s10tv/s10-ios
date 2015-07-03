@@ -1,5 +1,5 @@
 //
-//  ChatsViewModel.swift
+//  ChatsInteractor.swift
 //  Taylr
 //
 //  Created by Tony Xiao on 6/12/15.
@@ -10,13 +10,13 @@ import Foundation
 import CoreData
 import Bond
 
-public class ChatsViewModel {
-    public let connectionViewModels: DynamicArray<ConversationViewModel>
+public class ChatsInteractor {
+    public let connectionViewModels: DynamicArray<ConversationInteractor>
     
     public init() {
         connectionViewModels = Connection
             .by("\(ConnectionKeys.otherUser) != nil")
             .sorted(by: ConnectionKeys.updatedAt.rawValue, ascending: false)
-            .results(Connection).map { ConversationViewModel(recipient: $0.otherUser!) }
+            .results(Connection).map { ConversationInteractor(recipient: $0.otherUser!) }
     }
 }

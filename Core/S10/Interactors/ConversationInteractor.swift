@@ -1,5 +1,5 @@
 //
-//  ConversationViewModel.swift
+//  ConversationInteractor.swift
 //  S10
 //
 //  Created by Tony Xiao on 6/21/15.
@@ -10,7 +10,7 @@ import Foundation
 import Bond
 import RealmSwift
 
-public class ConversationViewModel {
+public class ConversationInteractor {
     private let realmToken: NotificationToken
     private let messages: FetchedResultsArray<Message>
     public let connection: Dynamic<Connection?>
@@ -23,7 +23,7 @@ public class ConversationViewModel {
     public init(recipient: User) {
         self.recipient = recipient
         connection = recipient.dynConnection
-        (hasUnsentMessage, realmToken) = ConversationViewModel.observeUnsentMessage(recipient)
+        (hasUnsentMessage, realmToken) = ConversationInteractor.observeUnsentMessage(recipient)
         messages = Message
             .by(NSPredicate(format: "%K == %@ && %K != nil",
                 MessageKeys.sender.rawValue, recipient,
@@ -33,7 +33,7 @@ public class ConversationViewModel {
         messageViewModels = messages.map { MessageViewModel(message: $0) }
         // TODO: Figure out how to make formattedStatus & badgeText also work when connection gets created
         if let connection = recipient.connection {
-            formattedStatus = ConversationViewModel.formatStatus(connection)
+            formattedStatus = ConversationInteractor.formatStatus(connection)
             badgeText = reduce(connection.dynUnreadCount, hasUnsentMessage) {
                 ($0 != nil && $0! > 0 && $1 == false) ? "\($0!)" : ""
             }

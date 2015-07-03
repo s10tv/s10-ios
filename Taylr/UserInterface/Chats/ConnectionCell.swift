@@ -21,11 +21,11 @@ class ConnectionCell : UITableViewCell {
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet var nameCenterConstraint: NSLayoutConstraint! // TODO: Why is strong needed?
     
-    var viewModel : ConversationViewModel? {
+    var viewModel : ConversationInteractor? {
         didSet { if let vm = viewModel { bindViewModel(vm) } }
     }
     
-    func bindViewModel(viewModel: ConversationViewModel) {
+    func bindViewModel(viewModel: ConversationInteractor) {
         avatarView.user = viewModel.recipient
         viewModel.recipient.displayName ->> nameLabel
         viewModel.hasUnsentMessage ->> spinner

@@ -1,5 +1,5 @@
 //
-//  DiscoverViewModel.swift
+//  DiscoverInteractor.swift
 //  Taylr
 //
 //  Created by Tony Xiao on 6/12/15.
@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 import Bond
 
-public class DiscoverViewModel {
+public class DiscoverInteractor {
     let unreadConversations: FetchedResultsArray<Connection>
     public let candidates: DynamicArray<CandidateViewModel>
     public let unreadConnectionsCount: Dynamic<Int>

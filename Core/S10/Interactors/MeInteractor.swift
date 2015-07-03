@@ -1,5 +1,5 @@
 //
-//  MeViewModel.swift
+//  MeInteractor.swift
 //  S10
 //
 //  Created by Tony Xiao on 6/30/15.
@@ -16,7 +16,7 @@ public struct LinkableAccount {
     public let icon: UIImage?
 }
 
-public class MeViewModel {
+public class MeInteractor {
     let meteor: MeteorService
     let servicesSubscription: METSubscription
     

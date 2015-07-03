@@ -15,7 +15,7 @@ class DiscoverViewController : BaseViewController {
     
     @IBOutlet weak var collectionView : UICollectionView!
     
-    var discoverVM : DiscoverViewModel!
+    var discoverVM : DiscoverInteractor!
     var dataSourceBond: UICollectionViewDataSourceBond<UICollectionViewCell>!
     
     override func viewDidLoad() {
@@ -28,7 +28,7 @@ class DiscoverViewController : BaseViewController {
         collectionView.collectionViewLayout = layout
 
         dataSourceBond = UICollectionViewDataSourceBond(collectionView: collectionView)
-        discoverVM = DiscoverViewModel()
+        discoverVM = DiscoverInteractor()
         discoverVM.candidates.map { [unowned self] (vm, index) -> UICollectionViewCell in
             let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier(.CandidateCell,
                 forIndexPath: NSIndexPath(forItem: index, inSection: 0)) as! CandidateCell
@@ -60,10 +60,10 @@ class DiscoverViewController : BaseViewController {
         if let profileVC = segue.destinationViewController as? ProfileViewController,
             let indexPath = collectionView.indexPathsForSelectedItems().first as? NSIndexPath,
             let user = discoverVM.candidates[indexPath.row].user {
-            profileVC.profileVM = ProfileViewModel(meteor: Meteor, user: user)
+            profileVC.profileVM = ProfileInteractor(meteor: Meteor, user: user)
         }
         if let meVC = segue.destinationViewController as? MeViewController {
-            meVC.viewModel = MeViewModel(meteor: Meteor, currentUser: Meteor.user!)
+            meVC.viewModel = MeInteractor(meteor: Meteor, currentUser: Meteor.user!)
         }
     }
 

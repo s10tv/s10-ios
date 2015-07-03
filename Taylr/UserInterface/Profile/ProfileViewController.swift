@@ -18,7 +18,7 @@ class ProfileViewController : BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     var dataSourceBond: UITableViewDataSourceBond<UITableViewCell>!
     var mainCell: ProfileMainCell!
-    var profileVM: ProfileViewModel!
+    var profileVM: ProfileInteractor!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -63,7 +63,7 @@ class ProfileViewController : BaseViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ConversationViewController {
-            vc.conversationVM = ConversationViewModel(recipient: profileVM.user)
+            vc.conversationVM = ConversationInteractor(recipient: profileVM.user)
         }
     }
     

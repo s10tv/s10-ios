@@ -14,7 +14,7 @@ import PKHUD
 
 class SignupViewController : XLFormViewController {
     
-    var viewModel: SignupViewModel!
+    var viewModel: SignupInteractor!
     
     override func viewDidLoad() {
         setupForm()
