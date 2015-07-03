@@ -101,12 +101,14 @@ class SignupViewController : XLFormViewController {
     
     @IBAction func didTapAvatar(sender: AnyObject) {
         pickImage() { image in
+            let scaledImage = image.scaleToMaxDimension(200, pixelSize: true)
             println("Did get avatar image")
         }
     }
     
     @IBAction func didTapCoverPhoto(sender: AnyObject) {
         pickImage() { image in
+            let scaledImage = image.scaleToMaxDimension(1400, pixelSize: true)
             println("Did get cover image")
         }
     }

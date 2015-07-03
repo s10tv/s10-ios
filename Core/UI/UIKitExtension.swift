@@ -154,6 +154,30 @@ extension UIColor {
     }
 }
 
+extension UIImage {
+    
+    public func scaleToMaxDimension(length: CGFloat, pixelSize: Bool = false) -> UIImage {
+        let scaleFactor = length / min(size.width, size.height)
+        // Don't scale up, only scale down
+        if scaleFactor > 1 {
+            return self
+        }
+        let scaledSize = CGSizeMake(size.width * scaleFactor, size.height * scaleFactor)
+        return scaleToSize(scaledSize, pixelSize: pixelSize)
+    }
+    
+    public func scaleToSize(newSize: CGSize, pixelSize: Bool = false) -> UIImage {
+        UIGraphicsBeginImageContext(newSize)
+        // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
+        // Pass 1.0 to force exact pixel size.
+        UIGraphicsBeginImageContextWithOptions(newSize, false, pixelSize ? 1.0 : 0.0)
+        drawInRect(CGRectMake(0, 0, newSize.width, newSize.height))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage
+    }
+}
+
 extension UICollectionViewFlowLayout {
     public var maxItemWidth : CGFloat {
         return collectionView!.bounds.width - sectionInset.left - sectionInset.right
