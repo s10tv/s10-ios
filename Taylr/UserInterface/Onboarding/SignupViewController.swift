@@ -68,10 +68,13 @@ class SignupViewController : BaseViewController {
             }
         }, completed: {
             assert(NSThread.isMainThread(), "Only on main")
-            if let status = Meteor.user?.dynStatus.value where status == .Pending {
+            switch Globals.accountService.status {
+            case .Pending:
                 self.performSegue(.SignupToSignup2, sender: self)
-            } else {
+            case .SignedUp:
                 self.performSegue(.Main_Discover, sender: self)
+            default:
+                break
             }
         })
     }

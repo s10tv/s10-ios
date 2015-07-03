@@ -13,9 +13,23 @@ class LoadingViewController : UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if Meteor.account == nil {
-            performSegue(.Onboarding_Signup, sender: self)
+        if Globals.accountService.status == .NotLoggedIn {
+            self.performSegueWithStatus(Globals.accountService.status)
         } else {
+            // Wait until user data is there so we know whether user has signed up before showing discover
+            Meteor.subscriptions.userData.whenDone { _ in
+                self.performSegueWithStatus(Globals.accountService.status)
+            }
+        }
+    }
+    
+    func performSegueWithStatus(status: AccountService.Status) {
+        switch status {
+        case .NotLoggedIn:
+            performSegue(.Onboarding_Signup, sender: self)
+        case .Pending:
+            performSegue(.Onboarding_Signup, sender: self) // Should be Onbaording_Signup2
+        case .SignedUp:
             performSegue(.LoadingToDiscover, sender: self)
         }
     }

@@ -12,9 +12,20 @@ import DigitsKit
 import Core
 
 class AccountService {
+    enum Status {
+        case NotLoggedIn, Pending, SignedUp
+    }
     private let meteorService: MeteorService
-
     let digits = Digits.sharedInstance()
+    
+    var status: Status {
+        if meteorService.account == nil {
+            return .NotLoggedIn
+        } else if meteorService.user?.dynStatus.value != .Active {
+            return .Pending
+        }
+        return .SignedUp
+    }
     
     init(meteorService: MeteorService) {
         self.meteorService = meteorService
