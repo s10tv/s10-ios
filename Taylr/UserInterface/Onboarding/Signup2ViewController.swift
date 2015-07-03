@@ -23,6 +23,13 @@ class Signup2ViewController : XLFormViewController {
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 0.01))
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
+    // MARK: -
+    
     func setupForm() {
         form = XLFormDescriptor()
         
@@ -58,7 +65,7 @@ class Signup2ViewController : XLFormViewController {
         super.endEditing(rowDescriptor)
         let editableKeys : [UserKeys] = [.firstName, .lastName, .about]
         if contains(editableKeys.map { $0.rawValue }, rowDescriptor.tag) {
-            Meteor.updateProfile([rowDescriptor.tag: rowDescriptor.value])
+            Meteor.updateProfile([rowDescriptor.tag: rowDescriptor.value ?? ""])
         }
     }
     
@@ -69,11 +76,12 @@ class Signup2ViewController : XLFormViewController {
             if let username = form.formRowWithTag(UserKeys.username.rawValue).value as? String {
                 println("Value \(username)")
                 PKHUD.showActivity(dimsBackground: true)
-                Meteor.confirmRegistration(username).subscribeError({ err in
+                Meteor.confirmRegistration(username).deliverOnMainThread().subscribeError({ err in
                     PKHUD.hide(animated: false)
                     self.showErrorAlert(err)
                 }, completed: {
                     PKHUD.hide(animated: false)
+                    self.navigationController?.popToRootViewControllerAnimated(true)
                 })
             }
         }

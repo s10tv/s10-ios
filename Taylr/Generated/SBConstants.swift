@@ -22,6 +22,7 @@ public enum SegueIdentifier : String {
     case MeToDiscover = "MeToDiscover"
     case RecorderToEditor = "RecorderToEditor"
     case SettingsToLoading = "SettingsToLoading"
+    case SignupToSignup2 = "SignupToSignup2"
 }
 
 public enum TableViewCellreuseIdentifier : String {

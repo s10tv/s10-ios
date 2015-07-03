@@ -35,6 +35,12 @@ class SignupViewController : BaseViewController {
         return .LightContent
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let vc = segue.destinationViewController as? Signup2ViewController {
+            vc.viewModel = SignupViewModel(user: Meteor.user!)
+        }
+    }
+    
     private func startLogin(loginBlock: () -> RACSignal, errorBlock: (NSError?) -> ()) {
         // TODO: We need to think about holistic, not just adhoc error handling
         if !Meteor.networkReachable {
@@ -74,7 +80,7 @@ class SignupViewController : BaseViewController {
                 Log.warn("Ignoring digits error, not handling for now \(error)")
             }
         }, completed: {
-            self.navigationController?.popToRootViewControllerAnimated(true)
+            self.performSegue(.SignupToSignup2, sender: self)
         })
     }
     

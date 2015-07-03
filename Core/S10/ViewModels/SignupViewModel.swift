@@ -10,11 +10,17 @@ import Foundation
 import Bond
 
 public class SignupViewModel {
+    let user: User
     public let firstName = Dynamic("")
     public let lastName = Dynamic("")
     public let username = Dynamic("")
     public let about = Dynamic("")
     
-    public init() {
+    public init(user: User) {
+        self.user = user
+        user.dynFirstName.map { $0 ?? "" } ->> firstName
+        user.dynLastName.map { $0 ?? "" } ->> lastName
+        user.dynUsername.map { $0 ?? "" } ->> username
+        user.dynAbout.map { $0 ?? "" } ->> about
     }
 }

@@ -160,6 +160,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="loginButton" destination="isY-Ks-GfE" id="zst-37-Oho"/>
+                        <segue destination="BbE-3o-NVZ" kind="show" identifier="SignupToSignup2" id="P6J-dx-IsB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lbl-0u-moe" userLabel="First Responder" sceneMemberID="firstResponder"/>

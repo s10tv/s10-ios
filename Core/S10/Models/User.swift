@@ -26,6 +26,14 @@ public class User: _User {
         return self.dynValue(UserKeys.lastName)
     }()
     
+    public private(set) lazy var dynUsername: Dynamic<String?> = {
+        return self.dynValue(UserKeys.username)
+    }()
+    
+    public private(set) lazy var dynAbout: Dynamic<String?> = {
+        return self.dynValue(UserKeys.about)
+    }()
+    
     public private(set) lazy var avatarURL: Dynamic<NSURL?> = {
         return self.dynValue(UserKeys.avatarUrl).map { NSURL.fromString($0) }
     }()
