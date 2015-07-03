@@ -33,6 +33,10 @@ class RootViewController : UINavigationController {
 //        }
     }
     
+    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
+        return topViewController.segueForUnwindingToViewController(toViewController, fromViewController: fromViewController, identifier: identifier)
+    }
+    
     // MARK: Target Action
     
     func handleEdgePan(gesture: UIScreenEdgePanGestureRecognizer, edge: UIRectEdge) {

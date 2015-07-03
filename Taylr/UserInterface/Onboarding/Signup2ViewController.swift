@@ -28,6 +28,10 @@ class Signup2ViewController : XLFormViewController {
         navigationController?.setNavigationBarHidden(false, animated: false)
     }
     
+    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
+        return UnwindPopSegue(identifier: identifier, source: fromViewController, destination: toViewController)
+    }
+    
     // MARK: -
     
     func setupForm() {

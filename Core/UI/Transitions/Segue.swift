@@ -58,6 +58,17 @@ public class ReplaceAndPushSegue : UIStoryboardSegue {
     }
 }
 
+@objc(UnwindPopSegue)
+public class UnwindPopSegue : UIStoryboardSegue {
+    public var animated = false
+    
+    public override func perform() {
+        if let navVC = navVC {
+            navVC.popToViewController(destVC, animated: animated)
+        }
+    }
+}
+
 // Loading ViewController instance from storyboard with format ${StoryboardName}_${ViewControllerIdentifier}
 private func loadSceneNamed(fullIdentifier: String) -> UIViewController {
     // TODO: Find better pattern for this ugly code

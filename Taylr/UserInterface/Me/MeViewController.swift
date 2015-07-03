@@ -50,6 +50,10 @@ class MeViewController : BaseViewController {
         }
     }
     
+    override func segueForUnwindingToViewController(toViewController: UIViewController, fromViewController: UIViewController, identifier: String?) -> UIStoryboardSegue {
+        return UnwindPopSegue(identifier: identifier, source: fromViewController, destination: toViewController)
+    }
+    
     override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
         Log.debug("Handding to edge \(edge) from dockVC")
         if edge == .Right {

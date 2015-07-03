@@ -60,7 +60,7 @@ class AccountService {
         Analytics.track("Logged Out")
         Analytics.identifyUser(Globals.env.deviceId) // Reset to deviceId based tracking
         UD.resetAll()
-        digits.logOut()
+//        digits.logOut()
         return meteorService.logout().deliverOnMainThread()
     }
     
