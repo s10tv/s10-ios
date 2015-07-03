@@ -49,10 +49,16 @@ class SignupViewController : XLFormViewController {
         let section2 = XLFormSectionDescriptor()
         let firstNameRow = makeRow(.firstName, dynamic: viewModel.firstName, title: "First Name")
         firstNameRow.cellConfigAtConfigure["textField.placeholder"] = "Required"
+        firstNameRow.required = true
         let lastNameRow = makeRow(.lastName, dynamic: viewModel.lastName, title: "Last Name")
         lastNameRow.cellConfigAtConfigure["textField.placeholder"] = "Required"
+        lastNameRow.required = true
+        
         let usernameRow = makeRow(.username, dynamic: viewModel.username, title: "Username")
         usernameRow.cellConfigAtConfigure["textField.placeholder"] = "Required"
+        usernameRow.required = true
+        usernameRow.addValidator(XLFormRegexValidator(msg: "At least 5, max 16 characters, alphanumeric and _", andRegexString: "^[a-zA-Z\\d_]{5,16}$"))
+        
         let aboutRow = makeRow(.about, dynamic: viewModel.about, title: "About Me", rowType: XLFormRowDescriptorTypeTextView)
         aboutRow.cellConfigAtConfigure["textView.placeholder"] = "Optional"
         [firstNameRow, lastNameRow, usernameRow, aboutRow].each {
@@ -78,6 +84,20 @@ class SignupViewController : XLFormViewController {
     // MARK: -
     
     @IBAction func submitRegistration(sender: AnyObject) {
+        if let errors = formValidationErrors()?.map({ $0 as! NSError }) where errors.count > 0 {
+            for error in errors {
+                let validationStatus = error.userInfo![XLValidationStatusErrorKey] as! XLFormValidationStatus
+                if let cell = self.tableView.cellForRowAtIndexPath(self.form.indexPathOfFormRow(validationStatus.rowDescriptor)) {
+                    animateCell(cell)
+                }
+                if validationStatus.rowDescriptor.tag == UserKeys.username.rawValue {
+                    // TODO: Better way to show error
+                    showErrorAlert(error)
+                }
+            }
+            return
+        }
+        
         if view.endEditing(false) {
             if let username = form.formRowWithTag(UserKeys.username.rawValue).value as? String {
                 println("Value \(username)")
@@ -91,5 +111,16 @@ class SignupViewController : XLFormViewController {
                 })
             }
         }
+    }
+    
+    func animateCell(cell: UITableViewCell) {
+        let animation = CAKeyframeAnimation()
+        animation.keyPath = "position.x"
+        animation.values =  [0, 20, -20, 10, 0]
+        animation.keyTimes = [0, (1 / 6.0), (3 / 6.0), (5 / 6.0), 1]
+        animation.duration = 0.3
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseOut)
+        animation.additive = true
+        cell.layer.addAnimation(animation, forKey: "shake")
     }
 }
