@@ -61,10 +61,9 @@ class SignupViewController : XLFormViewController {
         lastNameRow.cellConfigAtConfigure["textField.placeholder"] = "Required"
         lastNameRow.required = true
         
-        let usernameRow = makeRow(.username, dynamic: viewModel.username, title: "Username")
+        let usernameRow = makeRow(.username, dynamic: viewModel.username, title: "Username", rowType: XLFormRowDescriptorTypeAccount)
         usernameRow.cellConfigAtConfigure["textField.placeholder"] = "Required"
-        usernameRow.required = true
-        // TODO: Put username validation back in
+//        usernameRow.required = true
 //        usernameRow.addValidator(XLFormRegexValidator(msg: "At least 5, max 16 characters, alphanumeric and _", andRegexString: "^[a-zA-Z\\d_]{5,16}$"))
         
         let aboutRow = makeRow(.about, dynamic: viewModel.about, title: "About Me", rowType: XLFormRowDescriptorTypeTextView)
@@ -75,7 +74,7 @@ class SignupViewController : XLFormViewController {
         form.addFormSection(section2)
     }
     
-    private func makeRow<T>(key: UserKeys, dynamic: Dynamic<T>, title: String, rowType: String = XLFormRowDescriptorTypeText) -> XLFormRowDescriptor {
+    private func makeRow<T>(key: UserKeys, dynamic: Dynamic<T>, title: String, rowType: String = XLFormRowDescriptorTypeName) -> XLFormRowDescriptor {
         let row = XLFormRowDescriptor(tag: key.rawValue, rowType: rowType, title: title)
         dynamic.map { $0 as? AnyObject } ->> row
         return row
@@ -84,6 +83,7 @@ class SignupViewController : XLFormViewController {
     override func endEditing(rowDescriptor: XLFormRowDescriptor!) {
         super.endEditing(rowDescriptor)
         let editableKeys : [UserKeys] = [.firstName, .lastName, .about]
+        
         if contains(editableKeys.map { $0.rawValue }, rowDescriptor.tag) {
             Meteor.updateProfile([rowDescriptor.tag: rowDescriptor.value ?? ""])
         }
@@ -155,7 +155,10 @@ class SignupViewController : XLFormViewController {
                 showAlert("Avatar is required", message: "Please choose an avatar before proceeding")
                 return
             }
-            if let username = form.formRowWithTag(UserKeys.username.rawValue).value as? String {
+            // Massive hack for username not getting validated
+            if let row = form.formRowWithTag(UserKeys.username.rawValue),
+                let cell = row.cell as? XLFormTextFieldCell,
+                let username = cell.textField.text.nonBlank() {
                 PKHUD.showActivity(dimsBackground: true)
                 Meteor.confirmRegistration(username).deliverOnMainThread().subscribeError({ err in
                     PKHUD.hide(animated: false)
@@ -164,6 +167,8 @@ class SignupViewController : XLFormViewController {
                     PKHUD.hide(animated: false)
                     self.performSegue(.Main_Discover, sender: self)
                 })
+            } else {
+                showAlert("Username is required", message: "Please choose a username before proceeding")
             }
         }
     }
