@@ -33,10 +33,10 @@ class AccountService {
     
     private func didLogin() {
         // Allow this to be set by server rather than client
-        self.meteorService.meta.hasBeenWelcomed = false
-        self.meteorService.meta.gameTutorialMode = true
-        // TODO: Figure out whether user signed up or logged in
-        Analytics.track("Logged In")
+//        self.meteorService.meta.hasBeenWelcomed = false
+//        self.meteorService.meta.gameTutorialMode = true
+//        // TODO: Figure out whether user signed up or logged in
+//        Analytics.track("Logged In")
     }
     
     // MARK: -
@@ -57,9 +57,12 @@ class AccountService {
                     authToken: session.authToken,
                     authTokenSecret: session.authTokenSecret,
                     phoneNumber: session.phoneNumber
-                ).doCompleted {
+                ).deliverOnMainThread().subscribeError({
+                    subject.sendError($0)
+                }, completed: {
                     self.didLogin()
-                }.subscribe(subject)
+                    subject.sendCompleted()
+                })
             } else {
                 subject.sendError(error)
             }
