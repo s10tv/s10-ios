@@ -65,6 +65,7 @@ class LinkAccountService {
             "user_work_history",
             "user_education_history",
             "user_birthday",
+            "user_posts",
             // extended permissions
             "email"
         ]
