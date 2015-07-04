@@ -82,7 +82,9 @@ class IntegrationTests : XCTestCase {
         let PHONE_NUMBER = "6172596512"
         meteor.loginWithPhoneNumber(PHONE_NUMBER).then {
             expect(self.meteor.userID).notTo(beNil())
-            expect(self.meteor.user).to(beNil()) // At this point userData hasn't been sent down yet
+            // Don't test meteor.user because that depends on whether or not userData subscription is ready
+            // and can cause race condition
+//            expect(self.meteor.user).to(beNil()) // At this point userData hasn't been sent down yet
             return self.meteor.clearUserData(self.meteor.userID!)
         }.subscribeError({ (error) -> Void in
             expect(error) == nil
