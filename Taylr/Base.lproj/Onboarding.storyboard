@@ -200,7 +200,7 @@
                                                         <outletCollection property="gestureRecognizers" destination="Vpe-7J-KyO" appends="YES" id="bHo-xg-SZz"/>
                                                     </connections>
                                                 </imageView>
-                                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="y0h-Jf-NZy">
+                                                <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-addphoto-plus" translatesAutoresizingMaskIntoConstraints="NO" id="y0h-Jf-NZy">
                                                     <rect key="frame" x="240" y="95" width="120" height="120"/>
                                                     <gestureRecognizers/>
                                                     <constraints>
@@ -289,8 +289,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ic-addphoto-plus" width="73" height="73"/>
         <image name="sample-cover-image" width="579" height="214"/>
-        <image name="sample-taylor-avatar" width="66" height="67"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="vTJ-7J-HJ1"/>
