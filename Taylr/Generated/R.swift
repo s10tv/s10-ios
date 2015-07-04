@@ -72,7 +72,7 @@ public enum R {
         case moreSheetCancel = "MoreSheetCancel"
         /// Report %@
         case moreSheetReport = "MoreSheetReport"
-        /// We use your location to help you find matches!
+        /// We use your location to help you find interesting people around you!
         case nsLocationWhenInUseUsageDescription = "NSLocationWhenInUseUsageDescription"
         /// Cancel
         case reportAlertCancel = "ReportAlertCancel"

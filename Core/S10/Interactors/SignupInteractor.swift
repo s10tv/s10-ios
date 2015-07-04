@@ -15,7 +15,7 @@ public class SignupInteractor {
     let user: User
     let operationQueue = NSOperationQueue()
     public let avatarURL: Dynamic<NSURL?>
-    public let coverImageURL: Dynamic<NSURL?>
+    public let coverURL: Dynamic<NSURL?>
     public let firstName = Dynamic("")
     public let lastName = Dynamic("")
     public let username = Dynamic("")
@@ -29,7 +29,7 @@ public class SignupInteractor {
         user.dynUsername.map { $0 ?? "" } ->> username
         user.dynAbout.map { $0 ?? "" } ->> about
         avatarURL = user.avatarURL
-        coverImageURL = user.coverPhotoURL
+        coverURL = user.coverURL
     }
     
     public func uploadAvatar(image: UIImage) -> RACSignal {

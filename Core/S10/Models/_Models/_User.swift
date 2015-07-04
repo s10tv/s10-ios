@@ -11,7 +11,7 @@ public enum UserKeys: String, Printable {
 
     case candidateScore = "candidateScore"
 
-    case coverPhotoUrl = "coverPhotoUrl"
+    case coverUrl = "coverUrl"
 
     case createdAt = "createdAt"
 
@@ -74,9 +74,9 @@ class _User: NSManagedObject {
     // func validateCandidateScore(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged public
-    var coverPhotoUrl: String?
+    var coverUrl: String?
 
-    // func validateCoverPhotoUrl(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateCoverUrl(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged public
     var createdAt: NSDate?

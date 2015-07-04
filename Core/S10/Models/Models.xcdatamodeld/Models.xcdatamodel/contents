@@ -35,7 +35,7 @@
         <attribute name="about" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="avatarUrl" optional="YES" attributeType="String" valueTransformerName="PhotosValueTransformer" syncable="YES"/>
         <attribute name="candidateScore" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="coverPhotoUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="coverUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>

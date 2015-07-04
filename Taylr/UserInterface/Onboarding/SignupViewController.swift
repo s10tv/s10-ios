@@ -46,7 +46,7 @@ class SignupViewController : XLFormViewController {
             if let cell = cell as? AvatarCoverCell {
                 cell.avatarImageView.dynPlaceholderImage = cell.avatarImageView.image
                 cell.coverImageView.dynPlaceholderImage = cell.coverImageView.image
-                self.viewModel.coverImageURL ->> cell.coverImageView.dynImageURL
+                self.viewModel.coverURL ->> cell.coverImageView.dynImageURL
                 self.viewModel.avatarURL ->> cell.avatarImageView.dynImageURL
             }
         }
@@ -123,7 +123,7 @@ class SignupViewController : XLFormViewController {
         pickImage() { image in
             let scaledImage = image.scaleToMaxDimension(1400, pixelSize: true)
             PKHUD.showActivity(dimsBackground: true)
-            self.viewModel.uploadAvatar(scaledImage).subscribeErrorOrCompleted { err in
+            self.viewModel.uploadCoverPhoto(scaledImage).subscribeErrorOrCompleted { err in
                 PKHUD.showText("Success")
                 PKHUD.hide(animated: false)
                 if let err = err {

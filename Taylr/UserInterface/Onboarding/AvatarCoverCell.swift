@@ -16,6 +16,7 @@ class AvatarCoverCell : XLFormBaseCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        coverImageView.clipsToBounds = true
         avatarImageView.makeCircular()
     }
 }

@@ -48,8 +48,8 @@ public class User: _User {
         return self.dynValue(UserKeys.avatarUrl).map { NSURL.fromString($0) }
     }()
     
-    public private(set) lazy var coverPhotoURL: Dynamic<NSURL?> = {
-        return self.dynValue(UserKeys.coverPhotoUrl).map { NSURL.fromString($0) }
+    public private(set) lazy var coverURL: Dynamic<NSURL?> = {
+        return self.dynValue(UserKeys.coverUrl).map { NSURL.fromString($0) }
     }()
 
     public private(set) lazy var displayName: Dynamic<String> = {
