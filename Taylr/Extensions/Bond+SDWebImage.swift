@@ -11,14 +11,25 @@ import Bond
 import SDWebImage
 
 var imageURLDynamicHandleUIImageView: UInt8 = 0;
+var placeholderimageDynamicHandleUIImageView: UInt8 = 0;
 
 extension UIImageView {
+    public var dynPlaceholderImage: UIImage? {
+        get {
+            return objc_getAssociatedObject(self, &placeholderimageDynamicHandleUIImageView) as? UIImage
+        }
+        set {
+            objc_setAssociatedObject(self, &placeholderimageDynamicHandleUIImageView,
+                newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
+        }
+    }
+    
     public var dynImageURL: Dynamic<NSURL?> {
         if let d: AnyObject = objc_getAssociatedObject(self, &imageURLDynamicHandleUIImageView) {
             return (d as? Dynamic<NSURL?>)!
         } else {
             let d = InternalDynamic<NSURL?>(self.sd_imageURL())
-            let bond = Bond<NSURL?>() { [weak self] v in if let s = self { s.sd_setImageWithURL(v) } }
+            let bond = Bond<NSURL?>() { [weak self] v in if let s = self { s.sd_setImageWithURL(v, placeholderImage: s.dynPlaceholderImage) } }
             d.bindTo(bond, fire: false, strongly: false)
             d.retain(bond)
             objc_setAssociatedObject(self, &imageURLDynamicHandleUIImageView, d, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))

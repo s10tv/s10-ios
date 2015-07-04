@@ -14,6 +14,8 @@ public class SignupInteractor {
     let meteor: MeteorService
     let user: User
     let operationQueue = NSOperationQueue()
+    public let avatarURL: Dynamic<NSURL?>
+    public let coverImageURL: Dynamic<NSURL?>
     public let firstName = Dynamic("")
     public let lastName = Dynamic("")
     public let username = Dynamic("")
@@ -26,6 +28,8 @@ public class SignupInteractor {
         user.dynLastName.map { $0 ?? "" } ->> lastName
         user.dynUsername.map { $0 ?? "" } ->> username
         user.dynAbout.map { $0 ?? "" } ->> about
+        avatarURL = user.avatarURL
+        coverImageURL = user.coverPhotoURL
     }
     
     public func uploadAvatar(image: UIImage) -> RACSignal {
@@ -52,5 +56,4 @@ public class SignupInteractor {
         operationQueue.addOperation(upload)
         return subject.deliverOnMainThread()
     }
-
 }

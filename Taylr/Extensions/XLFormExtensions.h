@@ -8,6 +8,13 @@
 
 #import <XLForm/XLForm.h>
 
+@interface XLFormRowDescriptor (Private)
+
+@property XLFormBaseCell * cell;
+- (void)configureCellAtCreationTime;
+-(instancetype)initWithTag:(NSString *)tag rowType:(NSString *)rowType title:(NSString *)title;
+@end
+
 @interface XLFormPrototypeRowDescriptor : XLFormRowDescriptor
 
 @property (nonatomic, strong) NSString *cellReuseIdentifier;

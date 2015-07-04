@@ -184,7 +184,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AvatarCoverCell" rowHeight="236" id="8QN-DU-seO" customClass="XLFormBaseCell">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="AvatarCoverCell" rowHeight="236" id="8QN-DU-seO" customClass="AvatarCoverCell" customModule="Taylr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8QN-DU-seO" id="AhA-9L-oIQ">
@@ -223,6 +223,10 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <connections>
+                                            <outlet property="avatarImageView" destination="y0h-Jf-NZy" id="oPy-ew-IJu"/>
+                                            <outlet property="coverImageView" destination="yQk-Ls-DaV" id="5vj-AY-YEm"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>

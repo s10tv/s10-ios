@@ -41,9 +41,15 @@ class SignupViewController : XLFormViewController {
         form = XLFormDescriptor()
         
         let section1 = XLFormSectionDescriptor()
-        let avatarCoverRow = XLFormPrototypeRowDescriptor(cellReuseIdentifier: TableViewCellreuseIdentifier.AvatarCoverCell.rawValue)
-        avatarCoverRow.tag = "avatarCover"
-        avatarCoverRow.title = "AvatarCover"
+        let avatarCoverRow = PrototypeRow(cellReuseId: .AvatarCoverCell, tag: "avatarCover")
+        avatarCoverRow.configure = { cell in
+            if let cell = cell as? AvatarCoverCell {
+                cell.avatarImageView.dynPlaceholderImage = cell.avatarImageView.image
+                cell.coverImageView.dynPlaceholderImage = cell.coverImageView.image
+                self.viewModel.coverImageURL ->> cell.coverImageView.dynImageURL
+                self.viewModel.avatarURL ->> cell.avatarImageView.dynImageURL
+            }
+        }
         section1.addFormRow(avatarCoverRow)
         form.addFormSection(section1)
         

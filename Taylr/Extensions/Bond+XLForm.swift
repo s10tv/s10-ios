@@ -28,3 +28,28 @@ extension XLFormRowDescriptor : Bondable {
     
     public var designatedBond: Bond<AnyObject?> { return dynValue.valueBond }
 }
+
+class PrototypeRow : XLFormRowDescriptor {
+    let cellReuseId: String
+    var configure: ((XLFormBaseCell) -> ())?
+    
+    init(cellReuseId: String, tag: String? = nil) {
+        self.cellReuseId = cellReuseId
+        super.init(tag: tag, rowType: nil, title: nil)
+    }
+    
+    override func cellForFormController(formController: XLFormViewController!) -> XLFormBaseCell! {
+        if cell == nil {
+            cell = formController.tableView.dequeueReusableCellWithIdentifier(cellReuseId) as! XLFormBaseCell
+            configureCellAtCreationTime()
+            configure?(cell)
+        }
+        return cell
+    }
+}
+
+extension PrototypeRow {
+    convenience init(cellReuseId: TableViewCellreuseIdentifier, tag: String? = nil) {
+        self.init(cellReuseId: cellReuseId.rawValue, tag: tag)
+    }
+}

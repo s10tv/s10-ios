@@ -14,6 +14,7 @@
 		EA06AAB81B3B2D2B000E128C /* PKHUDExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBAB1B3930B000701F08 /* PKHUDExtension.swift */; };
 		EA06AAB91B3B2D8F000E128C /* ResourceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBAC1B3930B000701F08 /* ResourceExtension.swift */; };
 		EA0FED451ADE5BC500FC6FCB /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */; };
+		EA1F9C8C1B47678700D1620F /* AvatarCoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1F9C8B1B47678700D1620F /* AvatarCoverCell.swift */; };
 		EA3594141B2DE5C300E91337 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594131B2DE5C300E91337 /* ConversationViewController.swift */; };
 		EA3594161B2DEF0C00E91337 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594151B2DEF0C00E91337 /* MessageCell.swift */; };
 		EA3594191B2FEA1F00E91337 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594181B2FEA1F00E91337 /* TransitionManager.swift */; };
@@ -227,6 +228,7 @@
 		A80ED835405D6C980CF3F31B /* Pods-Core-CoreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core-CoreTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Core-CoreTests/Pods-Core-CoreTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C97F216A216ACE06C7336869 /* Pods-Core-Taylr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core-Taylr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Core-Taylr/Pods-Core-Taylr.release.xcconfig"; sourceTree = "<group>"; };
 		EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
+		EA1F9C8B1B47678700D1620F /* AvatarCoverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarCoverCell.swift; sourceTree = "<group>"; };
 		EA3594131B2DE5C300E91337 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		EA3594151B2DEF0C00E91337 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		EA3594181B2FEA1F00E91337 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
@@ -742,6 +744,7 @@
 			children = (
 				EAA56F7F1B2B32E500DE3936 /* LoginViewController.swift */,
 				EA57CEC81B45EB4000759139 /* SignupViewController.swift */,
+				EA1F9C8B1B47678700D1620F /* AvatarCoverCell.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -1461,6 +1464,7 @@
 				EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */,
 				EACCA3A21B37B02A00015C88 /* ProfileMainCell.swift in Sources */,
 				EA3594191B2FEA1F00E91337 /* TransitionManager.swift in Sources */,
+				EA1F9C8C1B47678700D1620F /* AvatarCoverCell.swift in Sources */,
 				EA36B1D21B3F23ED002ADD91 /* ActivityImageCell.swift in Sources */,
 				EA49286E1ADF291100118639 /* UpgradeService.swift in Sources */,
 				EAA56FB11B2BCAC700DE3936 /* CandidateCell.swift in Sources */,
