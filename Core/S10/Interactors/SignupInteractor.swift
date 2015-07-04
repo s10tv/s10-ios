@@ -40,6 +40,8 @@ public class SignupInteractor {
         return upload(image, taskType: .CoverPic)
     }
     
+    // MARK: -
+    
     func upload(image: UIImage, taskType: PhotoUploadOperation.TaskType) -> RACSignal {
         let subject = RACReplaySubject()
         let upload = PhotoUploadOperation(meteor: meteor, image: image, taskType: taskType)

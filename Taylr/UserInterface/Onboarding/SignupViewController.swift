@@ -133,6 +133,7 @@ class SignupViewController : XLFormViewController {
         }
     }
     
+    // TODO: Move this method into the interactor
     @IBAction func submitRegistration(sender: AnyObject) {
         if let errors = formValidationErrors()?.map({ $0 as! NSError }) where errors.count > 0 {
             for error in errors {
@@ -149,8 +150,11 @@ class SignupViewController : XLFormViewController {
         }
         
         if view.endEditing(false) {
+            if viewModel.avatarURL.value == nil {
+                showAlert("Avatar is required", message: "Please choose an avatar before proceeding")
+                return
+            }
             if let username = form.formRowWithTag(UserKeys.username.rawValue).value as? String {
-                println("Value \(username)")
                 PKHUD.showActivity(dimsBackground: true)
                 Meteor.confirmRegistration(username).deliverOnMainThread().subscribeError({ err in
                     PKHUD.hide(animated: false)
