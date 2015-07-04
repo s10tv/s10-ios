@@ -68,5 +68,5 @@ deployment:
        cd $CIRCLE_ARTIFACTS
        cp "${BN}.ipa" "${BN}_appstore.ipa"
        sigh resign "${BN}_appstore.ipa" \
-         --provisioning_profile "$HOME/Library/MobileDevice/Provisioning Profiles/commilasyaketchappstore.mobileprovision" \
-         --signing_identity "iPhone Distribution: Milasya Inc."
+         --provisioning_profile "$HOME/Library/MobileDevice/Provisioning Profiles/tvs10taylrappstore.mobileprovision" \
+         --signing_identity "iPhone Distribution: S10 Inc."
