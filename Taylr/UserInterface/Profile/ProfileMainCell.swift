@@ -24,11 +24,11 @@ class ProfileMainCell : UITableViewCell {
         didSet {
             if let user = user {
 //                coverImageView.image =
-//                usernameLabel.text
 //                distanceLabel.text
 //                activityLabel.text
                 avatarView.user = user
                 user.displayName ->> nameLabel
+                user.dynUsername.map { $0 ?? "" } ->> usernameLabel
                 aboutLabel.rawText = user.about // TODO: Add Dynamic Bond here
             }
         }

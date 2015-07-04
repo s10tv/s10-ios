@@ -23,6 +23,7 @@ public class MeInteractor {
     public let currentUser: User
     public let avatarURL: Dynamic<NSURL?>
     public let displayName: Dynamic<String>
+    public let username: Dynamic<String>
     public let linkedServices: DynamicArray<ServiceViewModel>
     public let linkableAccounts: [LinkableAccount]
     
@@ -31,6 +32,7 @@ public class MeInteractor {
         self.currentUser = currentUser
         avatarURL = currentUser.avatarURL
         displayName = currentUser.displayName
+        username = currentUser.dynUsername.map { $0 ?? "" }
         linkedServices = Service
             .by(ServiceKeys.user, value: currentUser)
             .sorted(by: ServiceKeys.serviceType.rawValue, ascending: true)

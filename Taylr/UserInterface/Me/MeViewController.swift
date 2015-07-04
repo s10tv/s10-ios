@@ -28,6 +28,7 @@ class MeViewController : BaseViewController {
         
         viewModel.avatarURL ->> avatarView.dynImageURL
         viewModel.displayName ->> nameLabel
+        viewModel.username ->> usernameLabel
         
         dataSourceBond = UICollectionViewDataSourceBond(collectionView: collectionView)
         let servicesSection = viewModel.linkedServices.map { [unowned self] (service, index) -> UICollectionViewCell in
