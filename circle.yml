@@ -69,4 +69,4 @@ deployment:
        cp "${BN}.ipa" "${BN}_appstore.ipa"
        sigh resign "${BN}_appstore.ipa" \
          --provisioning_profile "$HOME/Library/MobileDevice/Provisioning Profiles/tvs10taylrappstore.mobileprovision" \
-         --signing_identity "iPhone Distribution: S10 Inc."
+         --signing_identity "iPhone Distribution: S10 Inc. (227D5X5CZY)"
