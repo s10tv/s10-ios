@@ -102,14 +102,28 @@ class SignupViewController : XLFormViewController {
     @IBAction func didTapAvatar(sender: AnyObject) {
         pickImage() { image in
             let scaledImage = image.scaleToMaxDimension(200, pixelSize: true)
-            println("Did get avatar image")
+            PKHUD.showActivity(dimsBackground: true)
+            self.viewModel.uploadAvatar(scaledImage).subscribeErrorOrCompleted { err in
+                PKHUD.showText("Success")
+                PKHUD.hide(animated: false)
+                if let err = err {
+                    self.showErrorAlert(err)
+                }
+            }
         }
     }
     
     @IBAction func didTapCoverPhoto(sender: AnyObject) {
         pickImage() { image in
             let scaledImage = image.scaleToMaxDimension(1400, pixelSize: true)
-            println("Did get cover image")
+            PKHUD.showActivity(dimsBackground: true)
+            self.viewModel.uploadAvatar(scaledImage).subscribeErrorOrCompleted { err in
+                PKHUD.showText("Success")
+                PKHUD.hide(animated: false)
+                if let err = err {
+                    self.showErrorAlert(err)
+                }
+            }
         }
     }
     
