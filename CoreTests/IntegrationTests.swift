@@ -57,6 +57,20 @@ class IntegrationTests : XCTestCase {
     func getResource(filename: String) -> NSURL? {
         return bundle.URLForResource(filename.stringByDeletingPathExtension, withExtension: filename.pathExtension)
     }
+    
+    func whileAuthenticated(block: () -> (RACSignal)) {
+        let expectation = expectationWithDescription("Test Finished")
+        self.meteor.loginWithPhoneNumber(self.PHONE_NUMBER).then {
+            return self.meteor.vet(self.meteor.userID!)
+        }.then {
+            return block()
+        }.then {
+            return self.meteor.clearUserData(self.meteor.userID!)
+        }.subscribeErrorOrCompleted { _ in
+            expectation.fulfill()
+        }
+        waitForExpectationsWithTimeout(30, handler: nil)
+    }
 
     func testConnection() {
         expect { self.meteor.connected }.toEventually(beTrue(), timeout: 2)
@@ -80,35 +94,51 @@ class IntegrationTests : XCTestCase {
     }
     
     func testUploadAvatar() {
-        let image = getResource("test-avatar.jpg")?.path.flatMap { UIImage(contentsOfFile: $0) }
+        let image = self.getResource("test-avatar.jpg")?.path.flatMap { UIImage(contentsOfFile: $0) }
         expect(image).notTo(beNil())
-        
-        var expectation = self.expectationWithDescription("Uploads successfully")
-        let signal = self.meteor.loginWithPhoneNumber(self.PHONE_NUMBER).then {
-            return self.meteor.vet(self.meteor.userID!)
-        }.then {
+        whileAuthenticated {
             let subject = RACReplaySubject()
-            let upload = AvatarUploadOperation(meteor: self.meteor, image: image!)
+            let upload = PhotoUploadOperation(meteor: self.meteor, image: image!, taskType: .ProfilePic)
             upload.completionBlock = {
                 switch upload.result! {
                 case .Success:
                     subject.sendCompleted()
                 case .Error(let error):
                     subject.sendError(error)
+                    XCTFail("Failed to upload \(error)")
                 case .Cancelled:
                     subject.sendError(nil)
+                    XCTFail("Upload unexpectedly cancelled")
                 }
             }
             upload.start()
             return subject
-        }.subscribeError({ err in
-            expect(err).to(beNil())
-            expectation.fulfill()
-        }, completed: {
-            expectation.fulfill()
-        })
-        
-        waitForExpectationsWithTimeout(30, handler: nil)
+        }
+        // TODO: Verify that we can actually see the photo, it's identical to one we uploaded
+        // and that the corresponding avatarUrl in currentUser gets changed
+    }
+    
+    func testUploadCoverPhoto() {
+        let image = self.getResource("test-avatar.jpg")?.path.flatMap { UIImage(contentsOfFile: $0) }
+        expect(image).notTo(beNil())
+        whileAuthenticated {
+            let subject = RACReplaySubject()
+            let upload = PhotoUploadOperation(meteor: self.meteor, image: image!, taskType: .CoverPic)
+            upload.completionBlock = {
+                switch upload.result! {
+                case .Success:
+                    subject.sendCompleted()
+                case .Error(let error):
+                    subject.sendError(error)
+                    XCTFail("Failed to upload \(error)")
+                case .Cancelled:
+                    subject.sendError(nil)
+                    XCTFail("Upload unexpectedly cancelled")
+                }
+            }
+            upload.start()
+            return subject
+        }
     }
 
     func testSendVideo() {

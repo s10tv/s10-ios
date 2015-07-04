@@ -1,5 +1,5 @@
 //
-//  AvatarUploadOperation.swift
+//  PhotoUploadOperation.swift
 //  S10
 //
 //  Created by Tony Xiao on 7/3/15.
@@ -11,19 +11,25 @@ import Core
 import SwiftyJSON
 import Alamofire
 
-public class AvatarUploadOperation : AsyncOperation {
+public class PhotoUploadOperation : AsyncOperation {
+    public enum TaskType : String {
+        case ProfilePic = "PROFILE_PIC"
+        case CoverPic = "COVER_PIC"
+    }
     let meteor: MeteorService
     let image: UIImage
+    let taskType: TaskType
     
-    public init(meteor: MeteorService, image: UIImage) {
+    public init(meteor: MeteorService, image: UIImage, taskType: TaskType) {
         self.meteor = meteor
         self.image = image
+        self.taskType = taskType
     }
     
     public override func run() {
         let imageData = UIImageJPEGRepresentation(image, 0.8)
         let taskId = NSUUID().UUIDString
-        meteor.startTask(taskId, type: "PROFILE_PIC", metadata: [:]).flattenMap {
+        meteor.startTask(taskId, type: taskType.rawValue, metadata: [:]).flattenMap {
             let url = JSON($0)["url"].string!
             let request = NSMutableURLRequest(URL: NSURL(string : url)!)
             request.HTTPMethod = "PUT"
