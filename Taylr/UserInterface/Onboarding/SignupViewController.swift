@@ -64,7 +64,8 @@ class SignupViewController : XLFormViewController {
         let usernameRow = makeRow(.username, dynamic: viewModel.username, title: "Username")
         usernameRow.cellConfigAtConfigure["textField.placeholder"] = "Required"
         usernameRow.required = true
-        usernameRow.addValidator(XLFormRegexValidator(msg: "At least 5, max 16 characters, alphanumeric and _", andRegexString: "^[a-zA-Z\\d_]{5,16}$"))
+        // TODO: Put username validation back in
+//        usernameRow.addValidator(XLFormRegexValidator(msg: "At least 5, max 16 characters, alphanumeric and _", andRegexString: "^[a-zA-Z\\d_]{5,16}$"))
         
         let aboutRow = makeRow(.about, dynamic: viewModel.about, title: "About Me", rowType: XLFormRowDescriptorTypeTextView)
         aboutRow.cellConfigAtConfigure["textView.placeholder"] = "Optional"
