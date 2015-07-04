@@ -23,6 +23,12 @@ class MeViewController : BaseViewController {
     var dataSourceBond: UICollectionViewDataSourceBond<UICollectionViewCell>!
     var linkAccountService: LinkAccountService!
     
+    // Explicitly setting collectionView delegate.nil to avoid crash. For some reason
+    // after view controller dealloc collectionView still calls delegate
+    deinit {
+        collectionView.delegate = nil
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -96,7 +102,6 @@ class MeViewController : BaseViewController {
         sheet.addAction(LS(.settingsLogoutCancel), style: .Cancel)
         presentViewController(sheet)
     }
-
 }
 
 extension MeViewController : UICollectionViewDelegate {
