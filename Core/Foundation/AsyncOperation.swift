@@ -43,16 +43,16 @@ public class AsyncOperation : NSOperation {
             }
         }
     }
-    
-    public var finishBlock: ((Result) -> (Void))? {
-        didSet(newValue) {
-            completionBlock = { [weak self] in
-                if let this = self {
-                    newValue?(this.result!)
-                }
-            }
-        }
-    }
+//    // Doensn't actually work because operation gets deallocated
+//    public var finishBlock: ((Result) -> (Void))? {
+//        didSet(newValue) {
+//            completionBlock = { [weak self] in
+//                if let this = self {
+//                    newValue?(this.result!)
+//                }
+//            }
+//        }
+//    }
     
     // MARK: - Properties
     
@@ -80,6 +80,7 @@ public class AsyncOperation : NSOperation {
     // MARK: - API For subclass
     
     public func finish(result: Result) {
+        assert(state != .Finished, "Cannot finish again")
         self.result = result
         state = .Finished
     }

@@ -24,6 +24,7 @@ class IntegrationTests : XCTestCase {
 
     let PHONE_NUMBER = "6172596512"
     let CONNECTION_PHONE_NUMBER = "6501001010"
+    let bundle = NSBundle(forClass: IntegrationTests.self)
 
     override class func setUp() {
         super.setUp()
@@ -52,6 +53,10 @@ class IntegrationTests : XCTestCase {
         super.tearDown()
         meteor.logout()
     }
+    
+    func getResource(filename: String) -> NSURL? {
+        return bundle.URLForResource(filename.stringByDeletingPathExtension, withExtension: filename.pathExtension)
+    }
 
     func testConnection() {
         expect { self.meteor.connected }.toEventually(beTrue(), timeout: 2)
@@ -72,6 +77,38 @@ class IntegrationTests : XCTestCase {
         })
 
         self.waitForExpectationsWithTimeout(5.0, handler: nil)
+    }
+    
+    func testUploadAvatar() {
+        let image = getResource("test-avatar.jpg")?.path.flatMap { UIImage(contentsOfFile: $0) }
+        expect(image).notTo(beNil())
+        
+        var expectation = self.expectationWithDescription("Uploads successfully")
+        let signal = self.meteor.loginWithPhoneNumber(self.PHONE_NUMBER).then {
+            return self.meteor.vet(self.meteor.userID!)
+        }.then {
+            let subject = RACReplaySubject()
+            let upload = AvatarUploadOperation(meteor: self.meteor, image: image!)
+            upload.completionBlock = {
+                switch upload.result! {
+                case .Success:
+                    subject.sendCompleted()
+                case .Error(let error):
+                    subject.sendError(error)
+                case .Cancelled:
+                    subject.sendError(nil)
+                }
+            }
+            upload.start()
+            return subject
+        }.subscribeError({ err in
+            expect(err).to(beNil())
+            expectation.fulfill()
+        }, completed: {
+            expectation.fulfill()
+        })
+        
+        waitForExpectationsWithTimeout(30, handler: nil)
     }
 
     func testSendVideo() {

@@ -95,6 +95,8 @@
 		EAA56FB11B2BCAC700DE3936 /* CandidateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56FB01B2BCAC700DE3936 /* CandidateCell.swift */; };
 		EAAD921D1ACF342C0014BA25 /* TaylrEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921C1ACF342C0014BA25 /* TaylrEnvironment.swift */; };
 		EAB8E7A61AE04D8D00B3046F /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAB8E7A81AE04D8D00B3046F /* Settings.storyboard */; };
+		EABA05441B474EC900154C75 /* AvatarUploadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABA05431B474EC900154C75 /* AvatarUploadOperation.swift */; };
+		EABA05461B474FED00154C75 /* test-avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EABA05451B474FED00154C75 /* test-avatar.jpg */; };
 		EABAEDA31B432745000261F0 /* CandidateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABAEDA21B432745000261F0 /* CandidateViewModel.swift */; };
 		EABAEDA51B4334EB000261F0 /* MeServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABAEDA41B4334EB000261F0 /* MeServiceCell.swift */; };
 		EABAEDA91B436E8F000261F0 /* LinkAccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABAEDA81B436E8F000261F0 /* LinkAccountService.swift */; };
@@ -311,6 +313,8 @@
 		EAA56FB01B2BCAC700DE3936 /* CandidateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateCell.swift; sourceTree = "<group>"; };
 		EAAD921C1ACF342C0014BA25 /* TaylrEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaylrEnvironment.swift; sourceTree = "<group>"; };
 		EAB8E7A71AE04D8D00B3046F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
+		EABA05431B474EC900154C75 /* AvatarUploadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarUploadOperation.swift; sourceTree = "<group>"; };
+		EABA05451B474FED00154C75 /* test-avatar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "test-avatar.jpg"; sourceTree = "<group>"; };
 		EABAEDA21B432745000261F0 /* CandidateViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateViewModel.swift; sourceTree = "<group>"; };
 		EABAEDA41B4334EB000261F0 /* MeServiceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeServiceCell.swift; sourceTree = "<group>"; };
 		EABAEDA81B436E8F000261F0 /* LinkAccountService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkAccountService.swift; sourceTree = "<group>"; };
@@ -696,6 +700,7 @@
 		EA9F35561A74CC6900E0C65D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EABA05451B474FED00154C75 /* test-avatar.jpg */,
 				EA9F35571A74CC6900E0C65D /* Info.plist */,
 				F92F687E1B34974B00171FE4 /* CoreTests-bridging-header.h */,
 			);
@@ -842,7 +847,7 @@
 				EAF6705E1B31F9450025D7CF /* Models */,
 				EA9C166D1B3726DA00371B50 /* ViewModels */,
 				EAF670981B3200E10025D7CF /* Services */,
-				EAF6706C1B31F9450025D7CF /* Tasks */,
+				EAF6706C1B31F9450025D7CF /* Operations */,
 			);
 			path = S10;
 			sourceTree = "<group>";
@@ -880,12 +885,13 @@
 			path = _Models;
 			sourceTree = "<group>";
 		};
-		EAF6706C1B31F9450025D7CF /* Tasks */ = {
+		EAF6706C1B31F9450025D7CF /* Operations */ = {
 			isa = PBXGroup;
 			children = (
 				F912AC5C1B3745AC00DEA6B1 /* VideoUploadOperation.swift */,
+				EABA05431B474EC900154C75 /* AvatarUploadOperation.swift */,
 			);
-			path = Tasks;
+			path = Operations;
 			sourceTree = "<group>";
 		};
 		EAF6706F1B31F9450025D7CF /* UI */ = {
@@ -1138,6 +1144,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EABA05461B474FED00154C75 /* test-avatar.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1382,6 +1389,7 @@
 				EAF6707C1B31F9450025D7CF /* _User.swift in Sources */,
 				EA78C8781B320A2A0016AB73 /* AlamofireExtension.swift in Sources */,
 				EAF670751B31F9450025D7CF /* SugarRecordExtension.swift in Sources */,
+				EABA05441B474EC900154C75 /* AvatarUploadOperation.swift in Sources */,
 				EAF670951B31FCBE0025D7CF /* ProvisioningProfile.swift in Sources */,
 				EA4216451B3E092200613EFA /* _Activity.swift in Sources */,
 				EAF670971B31FE6A0025D7CF /* Environment.swift in Sources */,

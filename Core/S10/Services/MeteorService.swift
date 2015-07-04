@@ -247,6 +247,10 @@ public class MeteorService {
         return meteor.call("task/start", [taskId, "Invite", ["recipientInfo": recipientInfo]])
     }
     
+    public func startProfilePicTask(taskId: String) -> RACSignal {
+        return meteor.call("startTask", [taskId, "PROFILE_PIC"])
+    }
+    
     public func finishTask(taskId: String) -> RACSignal {
         return meteor.call("finishTask", [taskId])
     }
