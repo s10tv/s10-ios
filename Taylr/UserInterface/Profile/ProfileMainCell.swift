@@ -27,6 +27,7 @@ class ProfileMainCell : UITableViewCell {
 //                distanceLabel.text
 //                activityLabel.text
                 avatarView.user = user
+                user.coverURL ->> coverImageView.dynImageURL
                 user.displayName ->> nameLabel
                 user.dynUsername.map { $0 ?? "" } ->> usernameLabel
                 aboutLabel.rawText = user.about // TODO: Add Dynamic Bond here
@@ -37,6 +38,8 @@ class ProfileMainCell : UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         coverImageView.clipsToBounds = true
+        avatarView.dynPlaceholderImage = avatarView.image
+        coverImageView.dynPlaceholderImage = coverImageView.image
     }
     
 }
