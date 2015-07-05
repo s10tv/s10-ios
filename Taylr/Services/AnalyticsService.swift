@@ -9,6 +9,7 @@
 import Foundation
 import AnalyticsSwift
 import Core
+import Appsee
 //import Heap
 
 class AnalyticsService {
@@ -18,6 +19,7 @@ class AnalyticsService {
     init(env: TaylrEnvironment) {
         // Segmentio
         segment = AnalyticsSwift.Analytics.create(env.segmentWriteKey)
+        Appsee.start(env.appseeApiKey)
         
 //        // Heap
 //        Heap.setAppId(env.heapAppId)
@@ -35,6 +37,7 @@ class AnalyticsService {
     
     private func identify(userId: String?, traits: [String: AnyObject]? = nil) {
         self.userId = userId
+        Appsee.setUserID(userId)
         // Send traits up to our own backend server
         if let traits = traits {
             for (key, value) in traits {
