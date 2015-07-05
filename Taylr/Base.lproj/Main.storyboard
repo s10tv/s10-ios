@@ -23,6 +23,8 @@
             <string>TransatTextStandard</string>
             <string>TransatTextStandard</string>
             <string>TransatTextStandard</string>
+            <string>TransatTextStandard</string>
+            <string>TransatTextStandard</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -652,26 +654,45 @@
                                     <outlet property="delegate" destination="O0f-xd-Ps7" id="taZ-iR-Ce0"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0BU-cl-LEr" userLabel="Back">
-                                <rect key="frame" x="0.0" y="0.0" width="50" height="80"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0BU-cl-LEr">
+                                <rect key="frame" x="0.0" y="0.0" width="60" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="Tf0-zI-THR"/>
-                                    <constraint firstAttribute="width" constant="50" id="xYp-0J-Oz6"/>
+                                    <constraint firstAttribute="width" constant="60" id="xYp-0J-Oz6"/>
                                 </constraints>
-                                <state key="normal" image="ic-back-white">
-                                    <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="17"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="BACK">
+                                    <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="goBack:" destination="eMh-jf-Tma" eventType="touchUpInside" id="J0d-9J-Tmx"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpo-V3-MGZ">
+                                <rect key="frame" x="315" y="0.0" width="60" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="hLy-ln-oA5"/>
+                                    <constraint firstAttribute="width" constant="60" id="jPg-JG-YO0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="17"/>
+                                <size key="titleShadowOffset" width="1" height="1"/>
+                                <state key="normal" title="MORE">
+                                    <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="showMoreOptions:" destination="O0f-xd-Ps7" eventType="touchUpInside" id="dil-ff-Yhp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="hpo-V3-MGZ" secondAttribute="trailing" id="2E6-z4-3oI"/>
                             <constraint firstAttribute="trailing" secondItem="usC-gW-R9r" secondAttribute="trailing" id="Ft1-ES-Xey"/>
                             <constraint firstItem="usC-gW-R9r" firstAttribute="top" secondItem="4dM-Pg-g0q" secondAttribute="bottom" constant="-20" id="IYB-YB-IER"/>
                             <constraint firstItem="usC-gW-R9r" firstAttribute="leading" secondItem="gb0-Xh-ayb" secondAttribute="leading" id="VGY-uH-rvu"/>
                             <constraint firstItem="0BU-cl-LEr" firstAttribute="top" secondItem="4dM-Pg-g0q" secondAttribute="bottom" constant="-20" id="VyY-Bo-I9x"/>
+                            <constraint firstItem="hpo-V3-MGZ" firstAttribute="top" secondItem="4dM-Pg-g0q" secondAttribute="bottom" constant="-20" id="gso-Mm-nV5"/>
                             <constraint firstItem="OrB-U2-bQc" firstAttribute="top" secondItem="usC-gW-R9r" secondAttribute="bottom" id="lJn-bK-wfZ"/>
                             <constraint firstItem="0BU-cl-LEr" firstAttribute="leading" secondItem="gb0-Xh-ayb" secondAttribute="leading" id="z1R-8c-tZw"/>
                         </constraints>
@@ -696,18 +717,18 @@
                         <viewControllerLayoutGuide type="bottom" id="so0-au-wZg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="a2d-JO-QQN">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1000"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lnf-Ow-38p" userLabel="Status Bar">
-                                <rect key="frame" x="0.0" y="-2" width="600" height="22"/>
+                                <rect key="frame" x="0.0" y="-2" width="375" height="22"/>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" id="557-5F-eYn"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U3a-sc-A4a" userLabel="Navigation Bar">
-                                <rect key="frame" x="0.0" y="20" width="600" height="70"/>
+                                <rect key="frame" x="0.0" y="20" width="375" height="70"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KPL-gz-OCJ">
                                         <rect key="frame" x="123" y="10" width="131" height="50"/>
@@ -720,13 +741,13 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="active 5m ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhe-ik-k94">
-                                                <rect key="frame" x="58" y="25" width="73" height="14"/>
+                                                <rect key="frame" x="58" y="25" width="72.5" height="13.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                 <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylor Swift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0x-EU-7eq">
-                                                <rect key="frame" x="58" y="17" width="73" height="17"/>
+                                                <rect key="frame" x="58" y="17" width="72.5" height="16.5"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                 <color key="textColor" red="0.011764705882352941" green="0.011764705882352941" blue="0.011764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -788,7 +809,7 @@
                                 <rect key="frame" x="262" y="45" width="20" height="20"/>
                             </activityIndicatorView>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="iVG-b4-OV1">
-                                <rect key="frame" x="0.0" y="90" width="600" height="510"/>
+                                <rect key="frame" x="0.0" y="90" width="375" height="910"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="KuP-GS-TWV">
                                     <size key="itemSize" width="300" height="400"/>
@@ -1253,7 +1274,6 @@
     </scenes>
     <resources>
         <image name="ic-back" width="17" height="23"/>
-        <image name="ic-back-white" width="10" height="23"/>
         <image name="ic-chats" width="32" height="32"/>
         <image name="ic-facebook" width="28" height="28"/>
         <image name="ic-instagram" width="28" height="28"/>
@@ -1265,8 +1285,8 @@
         <image name="sample-taylor-video-frame" width="375" height="375"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Hrk-zE-6Yh"/>
         <segue reference="tQ4-cK-7eW"/>
         <segue reference="zOU-zf-DhR"/>
+        <segue reference="5l2-qW-Xr9"/>
     </inferredMetricsTieBreakers>
 </document>
