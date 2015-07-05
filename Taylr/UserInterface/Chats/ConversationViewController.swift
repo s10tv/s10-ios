@@ -88,11 +88,23 @@ class ConversationViewController : BaseViewController {
     
     @IBAction func showMoreOptions(sender: AnyObject) {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        sheet.addAction(LS(.moreSheetBlock, conversationVM.recipient.firstName!), style: .Destructive) { _ in
+            self.blockUser(sender)
+        }
         sheet.addAction(LS(.moreSheetReport, conversationVM.recipient.firstName!), style: .Destructive) { _ in
             self.reportUser(sender)
         }
         sheet.addAction(LS(.moreSheetCancel), style: .Cancel)
         presentViewController(sheet)
+    }
+    
+    @IBAction func blockUser(sender: AnyObject) {
+        let alert = UIAlertController(title: LS(.reportAlertTitle), message: LS(.reportAlertMessage), preferredStyle: .Alert)
+        alert.addAction(LS(.reportAlertCancel), style: .Cancel)
+        alert.addAction(LS(.reportAlertConfirm), style: .Destructive) { _ in
+            Meteor.blockUser(self.conversationVM.recipient)
+        }
+        presentViewController(alert)
     }
     
     @IBAction func reportUser(sender: AnyObject) {

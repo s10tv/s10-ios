@@ -68,6 +68,8 @@ public enum R {
         case meRemoveServiceConfirm = "MeRemoveServiceConfirm"
         /// Are you sure you want to remove %@ account %@? You can always add it back later
         case meRemoveServiceTitle = "MeRemoveServiceTitle"
+        /// Block %@
+        case moreSheetBlock = "MoreSheetBlock"
         /// Cancel
         case moreSheetCancel = "MoreSheetCancel"
         /// Report %@
@@ -140,6 +142,8 @@ public enum R {
         case appDev = "AppIconDev"
         /// girl-placeholder
         case girlPlaceholder = "girl-placeholder"
+        /// ic-addphoto-plus
+        case icAddphotoPlus = "ic-addphoto-plus"
         /// ic-back
         case icBack = "ic-back"
         /// ic-back-white
@@ -172,6 +176,8 @@ public enum R {
         case icMagicWand = "ic-magic-wand"
         /// ic-me
         case icMe = "ic-me"
+        /// ic-more
+        case icMore = "ic-more"
         /// ic-mute
         case icMute = "ic-mute"
         /// ic-people
