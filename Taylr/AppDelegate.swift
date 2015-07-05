@@ -13,6 +13,7 @@ import SwiftyUserDefaults
 import Fabric
 import DigitsKit
 import Crashlytics
+import Appsee
 import Core
 
 // Globally accessible variables and shorthands
@@ -36,6 +37,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
         // Configure the environment
         let env = TaylrEnvironment.configureFromEmbeddedProvisioningProfile()
         Fabric.with([Digits(), Crashlytics()])
+        Appsee.start(env.appseeApiKey)
         
         // Start crash reporting and logging as soon as we can
 //        Bugfender.activateLogger(env.bugfenderAppToken)
@@ -60,6 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
         // the value in the collections are not ready yet. Really need to figure out what the right timing
         // is and get rid of these nasty 0.1 second delay hacks, but for 0.1.0 release it fixes the issue
         Meteor.subscriptions.userData.signal.delay(0.5).deliverOnMainThread().subscribeCompleted {
+            Appsee.setUserID(meteor.userID)
             if let currentUser = User.currentUser() {
                 UD[.sMeteorUserId] ?= currentUser.documentID!
                 UD[.sUserDisplayName] = currentUser.displayName.value
