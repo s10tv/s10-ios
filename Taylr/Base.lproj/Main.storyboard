@@ -782,6 +782,18 @@
                                             <action selector="goBack:" destination="OaH-F1-uJP" eventType="touchUpInside" id="dfS-Vh-62J"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wR6-BU-7vB" userLabel="More">
+                                        <rect key="frame" x="325" y="0.0" width="50" height="70"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="50" id="hGX-uq-Jvd"/>
+                                        </constraints>
+                                        <state key="normal" image="ic-more">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="showMoreOptions:" destination="kBv-HD-oBL" eventType="touchUpInside" id="PMa-ax-fA6"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.94509803920000002" green="0.94509803920000002" blue="0.94509803920000002" alpha="0.80000000000000004" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -791,6 +803,9 @@
                                     <constraint firstAttribute="centerY" secondItem="Kth-9e-NAC" secondAttribute="centerY" id="Jzn-ti-Grb"/>
                                     <constraint firstItem="Kth-9e-NAC" firstAttribute="top" secondItem="U3a-sc-A4a" secondAttribute="top" id="XDA-rG-ZZG"/>
                                     <constraint firstAttribute="bottom" secondItem="Kth-9e-NAC" secondAttribute="bottom" id="fnw-WD-SyN"/>
+                                    <constraint firstAttribute="bottom" secondItem="wR6-BU-7vB" secondAttribute="bottom" id="oe5-tB-VL5"/>
+                                    <constraint firstAttribute="trailing" secondItem="wR6-BU-7vB" secondAttribute="trailing" id="ohN-eN-8KD"/>
+                                    <constraint firstItem="wR6-BU-7vB" firstAttribute="top" secondItem="U3a-sc-A4a" secondAttribute="top" id="syo-T8-DAf"/>
                                     <constraint firstAttribute="centerY" secondItem="KPL-gz-OCJ" secondAttribute="centerY" id="tvG-Ui-kN6"/>
                                 </constraints>
                                 <variation key="default">
@@ -1278,6 +1293,7 @@
         <image name="ic-facebook" width="28" height="28"/>
         <image name="ic-instagram" width="28" height="28"/>
         <image name="ic-me" width="34" height="35"/>
+        <image name="ic-more" width="29" height="7"/>
         <image name="ic-twitter" width="28" height="28"/>
         <image name="sample-cover-image" width="579" height="214"/>
         <image name="sample-taylor-avatar" width="66" height="67"/>
@@ -1286,7 +1302,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="tQ4-cK-7eW"/>
-        <segue reference="zOU-zf-DhR"/>
+        <segue reference="Gd9-HM-lnj"/>
         <segue reference="5l2-qW-Xr9"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -83,6 +83,30 @@ class ConversationViewController : BaseViewController {
             vc.profileVM = ProfileInteractor(meteor: Meteor, user: conversationVM.recipient)
         }
     }
+    
+    // MARK: - Actions
+    
+    @IBAction func showMoreOptions(sender: AnyObject) {
+        let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        sheet.addAction(LS(.moreSheetReport, conversationVM.recipient.firstName!), style: .Destructive) { _ in
+            self.reportUser(sender)
+        }
+        sheet.addAction(LS(.moreSheetCancel), style: .Cancel)
+        presentViewController(sheet)
+    }
+    
+    @IBAction func reportUser(sender: AnyObject) {
+        let alert = UIAlertController(title: LS(.reportAlertTitle), message: LS(.reportAlertMessage), preferredStyle: .Alert)
+        alert.addTextFieldWithConfigurationHandler(nil)
+        alert.addAction(LS(.reportAlertCancel), style: .Cancel)
+        alert.addAction(LS(.reportAlertConfirm), style: .Destructive) { _ in
+            if let reportReason = (alert.textFields?[0] as? UITextField)?.text {
+                Meteor.reportUser(self.conversationVM.recipient, reason: reportReason)
+            }
+        }
+        presentViewController(alert)
+    }
+    
 }
 
 extension ConversationViewController : UICollectionViewDelegate {
