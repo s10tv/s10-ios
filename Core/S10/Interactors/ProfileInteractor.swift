@@ -17,6 +17,12 @@ public class ProfileInteractor {
     public let user: User
     public let services: DynamicArray<ServiceViewModel>
     public let activities: DynamicArray<ActivityViewModel>
+    public let avatarURL: Dynamic<NSURL?>
+    public let coverURL: Dynamic<NSURL?>
+    public let displayName: Dynamic<String>
+    public let username: Dynamic<String>
+    public let distance: Dynamic<String>
+    public let about: Dynamic<String>
     
     public init(meteor: MeteorService, user: User) {
         self.meteor = meteor
@@ -29,6 +35,12 @@ public class ProfileInteractor {
             .by(ActivityKeys.user, value: user)
             .sorted(by: ActivityKeys.timestamp.rawValue, ascending: false)
             .results(Activity).map { ActivityViewModel($0) }
+        avatarURL = user.avatarURL
+        coverURL  = user.coverURL
+        displayName = user.displayName
+        username = user.dynUsername.map { $0 ?? "" }
+        distance = user.dynDistance.map { $0.map { Formatters.formatDistance($0) + " away" } ?? "" }
+        about = user.dynAbout.map { $0 ?? "" }
         loadProfile()
     }
     

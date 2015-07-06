@@ -20,19 +20,13 @@ class ProfileMainCell : UITableViewCell {
     @IBOutlet weak var activityLabel: UILabel!
     @IBOutlet weak var aboutLabel: DesignableLabel!
     
-    var user: User! {
-        didSet {
-            if let user = user {
-//                coverImageView.image =
-//                distanceLabel.text
-//                activityLabel.text
-                avatarView.user = user
-                user.coverURL ->> coverImageView.dynImageURL
-                user.displayName ->> nameLabel
-                user.dynUsername.map { $0 ?? "" } ->> usernameLabel
-                aboutLabel.rawText = user.about // TODO: Add Dynamic Bond here
-            }
-        }
+    func bindViewModel(viewModel: ProfileInteractor) {
+        viewModel.avatarURL ->> avatarView.dynImageURL
+        viewModel.coverURL ->> coverImageView.dynImageURL
+        viewModel.displayName ->> nameLabel
+        viewModel.username ->> usernameLabel
+        viewModel.distance ->> distanceLabel
+        aboutLabel.rawText = viewModel.about.value // TODO: Add Dynamic Bond here
     }
     
     override func awakeFromNib() {

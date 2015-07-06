@@ -29,7 +29,7 @@ class ProfileViewController : BaseViewController {
         let mainSection = DynamicArray([profileVM.user]).map { [unowned self] (user, index) -> UITableViewCell in
             self.mainCell = self.tableView.dequeueReusableCellWithIdentifier(.ProfileMainCell,
                 forIndexPath: NSIndexPath(forRow: index, inSection: 0)) as! ProfileMainCell
-            self.mainCell.user = user
+            self.mainCell.bindViewModel(self.profileVM)
             return self.mainCell
         }
         let servicesSection = profileVM.services.map { [unowned self] (service, index) -> UITableViewCell in
