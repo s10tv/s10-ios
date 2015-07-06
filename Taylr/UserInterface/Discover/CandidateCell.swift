@@ -15,10 +15,12 @@ class CandidateCell : UICollectionViewCell {
     
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
     
     func bindViewModel(viewModel: CandidateViewModel) {
         viewModel.avatarURL ->> avatarView.dynImageURL
         viewModel.displayName ->> titleLabel
+        viewModel.distance ->> distanceLabel
     }
     
     override func prepareForReuse() {
@@ -26,6 +28,7 @@ class CandidateCell : UICollectionViewCell {
         avatarView.image = nil
         avatarView.unbindDynImageURL()
         titleLabel.designatedBond.unbindAll()
+        distanceLabel.designatedBond.unbindAll()
     }
     
     override func awakeFromNib() {

@@ -37,6 +37,7 @@
         <attribute name="candidateScore" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="coverUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="distance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
@@ -68,7 +69,7 @@
         <element name="Connection" positionX="-819" positionY="9" width="128" height="135"/>
         <element name="Message" positionX="-207" positionY="27" width="128" height="135"/>
         <element name="Service" positionX="700" positionY="-297" width="128" height="105"/>
-        <element name="User" positionX="268" positionY="-261" width="128" height="225"/>
+        <element name="User" positionX="268" positionY="-261" width="128" height="240"/>
         <element name="Video" positionX="-234" positionY="90" width="128" height="105"/>
     </elements>
 </model>

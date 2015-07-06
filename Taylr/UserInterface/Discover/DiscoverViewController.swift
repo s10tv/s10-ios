@@ -70,8 +70,8 @@ class DiscoverViewController : BaseViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let profileVC = segue.destinationViewController as? ProfileViewController,
-            let indexPath = collectionView.indexPathsForSelectedItems().first as? NSIndexPath,
-            let user = discoverVM.candidates[indexPath.row].user {
+            let indexPath = collectionView.indexPathsForSelectedItems().first as? NSIndexPath {
+            let user = discoverVM.candidates[indexPath.row].user
             profileVC.profileVM = ProfileInteractor(meteor: Meteor, user: user)
         }
         if let meVC = segue.destinationViewController as? MeViewController {

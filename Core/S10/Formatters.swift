@@ -25,6 +25,12 @@ public struct Formatters {
         formatter.usesAbbreviatedCalendarUnits = true
         return formatter
     }()
+    private static let distanceFormatter: NSLengthFormatter = {
+        let formatter = NSLengthFormatter()
+        formatter.unitStyle = .Medium
+        formatter.numberFormatter.maximumFractionDigits = 0
+        return formatter
+    }()
     
     public static func formatHeight(heightInCm: Int) -> String {
         return height.stringFromMeters(Double(heightInCm) / 100)
@@ -49,5 +55,8 @@ public struct Formatters {
             }
         }
         return nil
-    }   
+    }
+    public static func formatDistance(distance: Double) -> String {
+        return distanceFormatter.stringFromMeters(distance * 1609.34)
+    }
 }

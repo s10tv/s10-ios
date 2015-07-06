@@ -10,13 +10,15 @@ import Foundation
 import Bond
 
 public struct CandidateViewModel {
-    public let user: User?
+    public let user: User
     public let avatarURL: Dynamic<NSURL?>
     public let displayName: Dynamic<String>
+    public let distance: Dynamic<String>
     
-    public init(user: User?) {
+    public init(user: User) {
         self.user = user
-        avatarURL = user?.avatarURL ?? Dynamic(nil)
-        displayName = user?.displayName ?? Dynamic("")
+        avatarURL = user.avatarURL
+        displayName = user.displayName
+        distance = user.dynDistance.map { $0.flatMap { Formatters.formatDistance($0) } ?? "" }
     }
 }

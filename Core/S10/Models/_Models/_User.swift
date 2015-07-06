@@ -15,6 +15,8 @@ public enum UserKeys: String, Printable {
 
     case createdAt = "createdAt"
 
+    case distance = "distance"
+
     case firstName = "firstName"
 
     case gender = "gender"
@@ -82,6 +84,11 @@ class _User: NSManagedObject {
     var createdAt: NSDate?
 
     // func validateCreatedAt(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged public
+    var distance: NSNumber?
+
+    // func validateDistance(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged public
     var firstName: String?

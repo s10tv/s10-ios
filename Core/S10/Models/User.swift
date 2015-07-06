@@ -40,6 +40,10 @@ public class User: _User {
         return self.dynValue(UserKeys.username)
     }()
     
+    public private(set) lazy var dynDistance: Dynamic<Double?> = {
+        return self.dynValue(UserKeys.distance)
+    }()
+    
     public private(set) lazy var dynAbout: Dynamic<String?> = {
         return self.dynValue(UserKeys.about)
     }()
