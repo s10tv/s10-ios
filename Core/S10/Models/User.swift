@@ -44,6 +44,10 @@ public class User: _User {
         return self.dynValue(UserKeys.distance)
     }()
     
+    public private(set) lazy var dynLastActive: Dynamic<NSDate?> = {
+        return self.dynValue(UserKeys.lastActive)
+    }()
+    
     public private(set) lazy var dynAbout: Dynamic<String?> = {
         return self.dynValue(UserKeys.about)
     }()

@@ -26,6 +26,7 @@ class ProfileMainCell : UITableViewCell {
         viewModel.displayName ->> nameLabel
         viewModel.username ->> usernameLabel
         viewModel.distance ->> distanceLabel
+        viewModel.lastActive ->> activityLabel
         aboutLabel.rawText = viewModel.about.value // TODO: Add Dynamic Bond here
     }
     

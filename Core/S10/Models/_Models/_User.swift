@@ -21,6 +21,8 @@ public enum UserKeys: String, Printable {
 
     case gender = "gender"
 
+    case lastActive = "lastActive"
+
     case lastName = "lastName"
 
     case status = "status"
@@ -99,6 +101,11 @@ class _User: NSManagedObject {
     var gender: String?
 
     // func validateGender(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged public
+    var lastActive: NSDate?
+
+    // func validateLastActive(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged public
     var lastName: String?

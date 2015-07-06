@@ -22,6 +22,7 @@ public class ProfileInteractor {
     public let displayName: Dynamic<String>
     public let username: Dynamic<String>
     public let distance: Dynamic<String>
+    public let lastActive: Dynamic<String>
     public let about: Dynamic<String>
     
     public init(meteor: MeteorService, user: User) {
@@ -40,6 +41,9 @@ public class ProfileInteractor {
         displayName = user.displayName
         username = user.dynUsername.map { $0 ?? "" }
         distance = user.dynDistance.map { $0.map { Formatters.formatDistance($0) + " away" } ?? "" }
+        lastActive = reduce(user.dynLastActive, CurrentDate) {
+            Formatters.formatRelativeDate($0, relativeTo: $1) ?? ""
+        }
         about = user.dynAbout.map { $0 ?? "" }
         loadProfile()
     }
