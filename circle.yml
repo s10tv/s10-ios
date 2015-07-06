@@ -24,6 +24,8 @@ dependencies:
 
 test:
   post:
+    # First build the core dependency so that later building of main target can be super fast
+    - xcodebuild -sdk iphoneos -workspace $XCODE_WORKSPACE -scheme "Core" -configuration 'Release' build | tee $CIRCLE_ARTIFACTS/core_build.log | xcpretty
     - ? |
         source ./scripts/circle_env.sh
         ipa build --scheme Taylr \
