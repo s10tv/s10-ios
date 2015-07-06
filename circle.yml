@@ -15,7 +15,7 @@ dependencies:
     - brew upgrade xctool
     - sudo gem uninstall highline commander --ignore-dependencies -x
     - sudo gem install cocoapods -v $(var=$(tail -1 Podfile.lock); echo ${var##COCOAPODS:})
-    - sudo gem install cupertino shenzhen sigh
+    - sudo gem install cupertino shenzhen sigh xcpretty
     - ./scripts/import_credentials.sh
   override:
     - pod update Meteor
@@ -29,7 +29,7 @@ test:
         ipa build --scheme Taylr \
                   --xcconfig Configs/${XCCONFIG_NAME}.xcconfig \
                   --xcargs BUNDLE_BUILD=$BN \
-                  --no-clean --verbose -t | tee $CIRCLE_ARTIFACTS/build.log
+                  --no-clean --verbose -t | tee $CIRCLE_ARTIFACTS/build.log | xcpretty
         mv Taylr.ipa $CIRCLE_ARTIFACTS/${BN}.ipa
         mv Taylr.app.dSYM.zip $CIRCLE_ARTIFACTS/${BN}.app.dSYM.zip
         ./scripts/circle_release_notes.sh >> $CIRCLE_ARTIFACTS/release_notes.txt
