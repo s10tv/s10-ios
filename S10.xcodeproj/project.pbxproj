@@ -95,6 +95,8 @@
 		EAA56FA51B2B32E500DE3936 /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F8A1B2B32E500DE3936 /* UserAvatarView.swift */; };
 		EAA56FB11B2BCAC700DE3936 /* CandidateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56FB01B2BCAC700DE3936 /* CandidateCell.swift */; };
 		EAAD921D1ACF342C0014BA25 /* TaylrEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921C1ACF342C0014BA25 /* TaylrEnvironment.swift */; };
+		EAB5B1161B4A390300BDB05E /* TransatTextBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776E1A966EC10055DE99 /* TransatTextBold.otf */; };
+		EAB5B1171B4A390600BDB05E /* TransatTextLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776F1A966EC10055DE99 /* TransatTextLight.otf */; };
 		EAB8E7A61AE04D8D00B3046F /* Settings.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EAB8E7A81AE04D8D00B3046F /* Settings.storyboard */; };
 		EABA05441B474EC900154C75 /* PhotoUploadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABA05431B474EC900154C75 /* PhotoUploadOperation.swift */; };
 		EABA05461B474FED00154C75 /* test-avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EABA05451B474FED00154C75 /* test-avatar.jpg */; };
@@ -1138,7 +1140,9 @@
 				EAB8E7A61AE04D8D00B3046F /* Settings.storyboard in Resources */,
 				EA9F354A1A74CC6900E0C65D /* Taylr.xcassets in Resources */,
 				EA78C8801B323E140016AB73 /* Images.xcassets in Resources */,
+				EAB5B1161B4A390300BDB05E /* TransatTextBold.otf in Resources */,
 				EA3777721A966EC10055DE99 /* TransatTextBlack.otf in Resources */,
+				EAB5B1171B4A390600BDB05E /* TransatTextLight.otf in Resources */,
 				EA7004621ACF912A00D0E467 /* Onboarding.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
