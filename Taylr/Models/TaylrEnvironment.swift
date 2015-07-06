@@ -9,6 +9,8 @@
 import Foundation
 import Core
 
+let IS_TARGET_IPHONE_SIMULATOR = (TARGET_IPHONE_SIMULATOR == 1)
+
 class TaylrEnvironment : Environment {
     enum Audience {
         case Dev, Beta, AppStore
@@ -73,7 +75,7 @@ class TaylrEnvironment : Environment {
     
     class func configureFromEmbeddedProvisioningProfile() -> TaylrEnvironment {
         func audienceFromProfile(profile: ProvisioningProfile?) -> Audience {
-            if TARGET_IPHONE_SIMULATOR == 1 {
+            if IS_TARGET_IPHONE_SIMULATOR {
                 return .Dev
             }
             let profileType = profile?.type ?? .AppStore
