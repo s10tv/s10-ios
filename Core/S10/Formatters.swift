@@ -57,6 +57,10 @@ public struct Formatters {
         return nil
     }
     public static func formatDistance(distance: Double) -> String {
+        // TODO: Security concern?
+        if distance < 1.0 {
+            return "< 1 mi"
+        }
         return distanceFormatter.stringFromMeters(distance * 1609.34)
     }
 }
