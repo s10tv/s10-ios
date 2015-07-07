@@ -60,8 +60,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
         // the value in the collections are not ready yet. Really need to figure out what the right timing
         // is and get rid of these nasty 0.1 second delay hacks, but for 0.1.0 release it fixes the issue
         Meteor.subscriptions.userData.signal.delay(0.5).deliverOnMainThread().subscribeCompleted {
-            Analytics.identifyUser(Meteor.userID!)
             if let currentUser = User.currentUser() {
+                Analytics.identifyUser(Meteor.userID!)
                 UD[.sMeteorUserId] ?= currentUser.documentID!
                 UD[.sUserDisplayName] = currentUser.displayName.value
                 Log.setUserId(currentUser.documentID!)
