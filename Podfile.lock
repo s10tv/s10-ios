@@ -70,7 +70,7 @@ PODS:
   - Result (0.4.4):
     - Box (~> 1.2)
   - Reveal-iOS-SDK (1.5.1)
-  - SCRecorder (2.4.9)
+  - SCRecorder (2.5.0)
   - SDWebImage (3.7.2):
     - SDWebImage/Core (= 3.7.2)
   - SDWebImage/Core (3.7.2)
@@ -112,7 +112,7 @@ DEPENDENCIES:
   - ReactiveCocoa (= 3.0-beta.8)
   - RealmSwift (~> 0.93.2)
   - Reveal-iOS-SDK (~> 1.5)
-  - SCRecorder (~> 2.4)
+  - SCRecorder (~> 2.5)
   - SDWebImage (~> 3.7)
   - SimpleKeychain (~> 0.4)
   - SugarRecord/CoreData (from `https://github.com/tonyxiao/SugarRecord`, branch `develop`)
@@ -194,7 +194,7 @@ SPEC CHECKSUMS:
   RealmSwift: 231b064da9f98b1c4f325fe1f1cb8756aae2b8d6
   Result: b44f6bc8762bbffaf2c5df58f2c7d12c3496ced8
   Reveal-iOS-SDK: c9c55cad2729c85f6ced415f1b21857c9a2d8ef9
-  SCRecorder: d0b0164ac4d45ba7f74375319800b2a83378226b
+  SCRecorder: 90075f2d9deb03cd8280faff8cd3cca11c036025
   SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
   SimpleKeychain: ed7fcbc2a235ad6919a3d2385ed4b44ab866d874
   SugarRecord: 9d55ce666e8161eacdc95c996173eb53eb6d3683

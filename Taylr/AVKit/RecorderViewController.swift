@@ -26,7 +26,7 @@ class RecorderViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         recorder.session = SCRecordSession()
-        recorder.session.fileType = AVFileTypeMPEG4
+        recorder.session!.fileType = AVFileTypeMPEG4
         recorder.captureSessionPreset = AVCaptureSessionPreset640x480 // SCRecorderTools.bestCaptureSessionPresetCompatibleWithAllDevices()
 //        recorder.autoSetVideoOrientation = true
         recorder.device = .Front
@@ -51,7 +51,7 @@ class RecorderViewController : UIViewController {
         // HACK ALERT: Force previewView to generate a GL context to draw on. 
 
         previewView.CIImage = CIImage(color: CIColor(red: 0, green: 0, blue: 0))
-        recorder.session.cancelSession(nil)
+        recorder.session!.cancelSession(nil)
         progressView.progress = 0
         recorder.startRunning()
     }
@@ -80,19 +80,19 @@ class RecorderViewController : UIViewController {
 }
 
 extension RecorderViewController : SCRecorderDelegate {
-    func recorder(recorder: SCRecorder!, didReconfigureVideoInput videoInputError: NSError!) {
+    func recorder(recorder: SCRecorder, didReconfigureVideoInput videoInputError: NSError?) {
         syncPreviewTransform()
     }
     
-    func recorder(recorder: SCRecorder!, didAppendVideoSampleBufferInSession session: SCRecordSession!) {
+    func recorder(recorder: SCRecorder, didAppendVideoSampleBufferInSession session: SCRecordSession) {
         progressView.progress = Float(recorder.ratioRecorded)
     }
     
-    func recorder(recorder: SCRecorder!, didAppendAudioSampleBufferInSession session: SCRecordSession!) {
+    func recorder(recorder: SCRecorder, didAppendAudioSampleBufferInSession session: SCRecordSession) {
         progressView.progress = Float(recorder.ratioRecorded)
     }
     
-    func recorder(recorder: SCRecorder!, didCompleteSegment segment: SCRecordSessionSegment!, inSession session: SCRecordSession!, error: NSError!) {
-        delegate?.recorder(self, didRecordSession: recorder.session)
+    func recorder(recorder: SCRecorder, didCompleteSegment segment: SCRecordSessionSegment?, inSession session: SCRecordSession, error: NSError?) {
+        delegate?.recorder(self, didRecordSession: session)
     }
 }

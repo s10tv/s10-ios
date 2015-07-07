@@ -28,7 +28,7 @@ target :Core do
     # UI
     pod 'Cartography', '~> 0.5'
     pod 'EDColor', '~> 1.0'
-    
+
     # ViewModels
     pod 'DateTools', '~> 1.6'
     pod 'FormatterKit/TimeIntervalFormatter', '~> 1.8'
@@ -52,7 +52,7 @@ target :Core do
         pod 'SDWebImage', '~> 3.7'
         pod 'PKHUD', :git => 'https://github.com/tonyxiao/PKHUD' # Fork is needed to work around xcasset compilation issue inside pod
         pod 'XLForm', '~> 3.0'
-        pod 'SCRecorder', '~> 2.4'
+        pod 'SCRecorder', '~> 2.5'
 
         pod 'UICollectionViewLeftAlignedLayout', '~> 1.0'
         pod 'CHTCollectionViewWaterfallLayout', '~> 0.9'
@@ -79,7 +79,7 @@ target :Core do
 
     target :TestApp do
         link_with 'TestApp'
-        pod 'SCRecorder', '~> 2.4'
+        pod 'SCRecorder', '~> 2.5'
         pod 'PKHUD', :git => 'https://github.com/tonyxiao/PKHUD' # Fork is needed to work around xcasset compilation issue inside pod
         pod 'Reveal-iOS-SDK', '~> 1.5', :configuration => ['Debug']
     end

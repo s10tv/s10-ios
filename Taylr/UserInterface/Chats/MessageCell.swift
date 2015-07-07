@@ -24,7 +24,7 @@ class MessageCell : UICollectionViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
 
-    private var player: SCPlayer { return playerView.player }
+    private var player: SCPlayer { return playerView.player! }
     weak var delegate: MessageCellDelegate?
     var message: MessageViewModel? {
         didSet {
@@ -41,7 +41,7 @@ class MessageCell : UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         playerView.tapToPauseEnabled = true
-        playerView.playerLayer.videoGravity = AVLayerVideoGravityResizeAspectFill
+        playerView.playerLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill
         playerView.delegate = self
         player.delegate = self
         prepareForReuse()

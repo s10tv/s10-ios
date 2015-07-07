@@ -57,7 +57,7 @@ class EditorViewController : UIViewController {
         exporter.outputFileType = AVFileTypeMPEG4
         exporter.outputUrl = recordSession.outputUrl
         exporter.exportAsynchronouslyWithCompletionHandler {
-            block(exporter.outputUrl)
+            block(exporter.outputUrl!)
         }
     }
     
