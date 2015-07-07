@@ -1670,7 +1670,7 @@
 		};
 		EA9F355A1A74CC6900E0C65D /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EABD43DA1AA1D29C00B07813 /* Prod.xcconfig */;
+			baseConfigurationReference = EABD43D81AA1D28700B07813 /* Dev.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
