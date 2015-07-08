@@ -47,21 +47,21 @@ PODS:
   - PocketSocket (0.6.4)
   - Quick (0.3.1)
   - RBBAnimation (0.4.0)
-  - ReactiveCocoa (3.0-beta.8):
-    - Box (~> 1.2.0)
-    - ReactiveCocoa/UI (= 3.0-beta.8)
-    - Result (~> 0.4.1)
-  - ReactiveCocoa/Core (3.0-beta.8):
-    - Box (~> 1.2.0)
+  - ReactiveCocoa (3.0-beta.9):
+    - Box (~> 1.2.2)
+    - ReactiveCocoa/UI (= 3.0-beta.9)
+    - Result (~> 0.4.4)
+  - ReactiveCocoa/Core (3.0-beta.9):
+    - Box (~> 1.2.2)
     - ReactiveCocoa/no-arc
-    - Result (~> 0.4.1)
-  - ReactiveCocoa/no-arc (3.0-beta.8):
-    - Box (~> 1.2.0)
-    - Result (~> 0.4.1)
-  - ReactiveCocoa/UI (3.0-beta.8):
-    - Box (~> 1.2.0)
+    - Result (~> 0.4.4)
+  - ReactiveCocoa/no-arc (3.0-beta.9):
+    - Box (~> 1.2.2)
+    - Result (~> 0.4.4)
+  - ReactiveCocoa/UI (3.0-beta.9):
+    - Box (~> 1.2.2)
     - ReactiveCocoa/Core
-    - Result (~> 0.4.1)
+    - Result (~> 0.4.4)
   - Realm (0.93.2):
     - Realm/Headers (= 0.93.2)
   - Realm/Headers (0.93.2)
@@ -108,7 +108,7 @@ DEPENDENCIES:
   - PKHUD (from `https://github.com/tonyxiao/PKHUD`)
   - Quick (~> 0.3.0)
   - RBBAnimation (~> 0.4.0)
-  - ReactiveCocoa (= 3.0-beta.8)
+  - ReactiveCocoa (= 3.0-beta.9)
   - RealmSwift (~> 0.93.2)
   - Reveal-iOS-SDK (~> 1.5)
   - SCRecorder (~> 2.5)
@@ -142,7 +142,7 @@ CHECKOUT OPTIONS:
     :commit: 7536a4d8059be119fd4a4550d674996f8a1cdd54
     :git: https://github.com/duemunk/Async.git
   Bond:
-    :commit: 57377cccb5997ca040f0f5846956e4bc7d9aae13
+    :commit: 1ddec9e06bb73f6a5ae5ab53008d7638debd5495
     :git: https://github.com/tonyxiao/Bond.git
   Meteor:
     :commit: 0f40ef742583cb4b8c2e987121ff1d1f4a6afdfb
@@ -160,7 +160,7 @@ SPEC CHECKSUMS:
   Appsee: 375075f06fdd807e0b17df52cbb7c972c4eb17da
   Async: d9ee6fc9c415d44fcb892f4c289d1e79ce8ae92d
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
-  Bond: 994ccc56aebfe2707d7b5e76f6d665a5beefa45b
+  Bond: 4cb4a52a8a236ce17ca594438594757a86ca7e8a
   Box: a92e8aa4c099e6bc0733829665caf9e668ef53b8
   Cartography: 774e5cc446f5a6bca5d4345c5aa6af9a1fe74dc6
   CHTCollectionViewWaterfallLayout: 1a8da4fc662702cbddda8926ced266036a829f84
@@ -182,7 +182,7 @@ SPEC CHECKSUMS:
   PocketSocket: eee7ef375f55b98e7ca79e097d9c61fd688e9494
   Quick: 824572d3d198d51e52cf4aa722cebf7e59952a35
   RBBAnimation: 4b2d66f6d993febce63cd564da934985313b9c59
-  ReactiveCocoa: 9ecb47995ff71d8944fd306e20214e33a880ee1e
+  ReactiveCocoa: 2e9c1499ee4b7b125798e23e0809163a1066ad9b
   Realm: 2fdd0ae74f730e190384e0338d8a0d3654df8220
   RealmSwift: 231b064da9f98b1c4f325fe1f1cb8756aae2b8d6
   Result: b44f6bc8762bbffaf2c5df58f2c7d12c3496ced8
