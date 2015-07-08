@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import TCMobileProvision
+import DTFoundation
 
 public class ProvisioningProfile {
     public enum Type {
@@ -44,7 +44,7 @@ public class ProvisioningProfile {
     }
     
     public init(data: NSData) {
-        info = TCMobileProvision(data: data).dict
+        info = InfoParser(data: data).parse()!
     }
     
     public class func embeddedProfile() -> ProvisioningProfile? {
@@ -53,5 +53,34 @@ public class ProvisioningProfile {
             return ProvisioningProfile(data: data)
         }
         return nil
+    }
+    
+    class InfoParser : NSObject, DTASN1ParserDelegate {
+        private let asn1Parser: DTASN1Parser
+        private var currentObjectIdentifier: String?
+        private var parsedDict: [NSObject: AnyObject]?
+
+        init(data: NSData) {
+            asn1Parser = DTASN1Parser(data: data)
+        }
+        
+        func parse() -> [NSObject: AnyObject]? {
+            asn1Parser.parse()
+            return parsedDict
+        }
+        
+        @objc func parser(parser: DTASN1Parser!, foundObjectIdentifier objIdentifier: String!) {
+            currentObjectIdentifier = objIdentifier
+        }
+        
+        @objc func parser(parser: DTASN1Parser!, foundData data: NSData!) {
+            if currentObjectIdentifier == "1.2.840.113549.1.7.1" {
+                let option = NSPropertyListReadOptions(NSPropertyListMutabilityOptions.Immutable.rawValue)
+                var error: NSError?
+                parsedDict = NSPropertyListSerialization.propertyListWithData(data, options: option, format: nil, error: &error) as? [NSObject: AnyObject]
+                assert(parsedDict != nil, "Failed to parse dict \(error)")
+                currentObjectIdentifier = nil
+            }
+        }
     }
 }

@@ -35,7 +35,7 @@ target :Core do
 
     # Utils
     pod 'SimpleKeychain', '~> 0.4'
-    pod 'TCMobileProvision', :git => 'https://github.com/tonyxiao/TCMobileProvision.git'
+    pod 'DTFoundation/DTASN1', '~> 1.7'
 
     target :CoreTests do
         link_with 'CoreTests'
