@@ -88,11 +88,11 @@ class MessageCell : UICollectionViewCell {
 }
 
 extension MessageCell : SCPlayerDelegate {
-    func player(player: SCPlayer!, didReachEndForItem item: AVPlayerItem!) {
+    func player(player: SCPlayer, didReachEndForItem item: AVPlayerItem) {
         delegate?.messageCell(self, didPlayMessage: message!)
     }
     
-    func player(player: SCPlayer!, didPlay currentTime: CMTime, loopsCount: Int) {
+    func player(player: SCPlayer, didPlay currentTime: CMTime, loopsCount: Int) {
         if !player.itemDuration.impliedValue && !currentTime.impliedValue {
             let secondsRemaining = Int(ceil(player.itemDuration.seconds - currentTime.seconds))
             durationLabel.text = "\(secondsRemaining)"
@@ -102,11 +102,11 @@ extension MessageCell : SCPlayerDelegate {
 
 extension MessageCell : SCVideoPlayerViewDelegate {
     
-    func videoPlayerViewTappedToPause(videoPlayerView: SCVideoPlayerView!) {
+    func videoPlayerViewTappedToPause(videoPlayerView: SCVideoPlayerView) {
 //        restoreInfo()
     }
 
-    func videoPlayerViewTappedToPlay(videoPlayerView: SCVideoPlayerView!) {
+    func videoPlayerViewTappedToPlay(videoPlayerView: SCVideoPlayerView) {
 //        fadeInfoOut()
     }
 }
