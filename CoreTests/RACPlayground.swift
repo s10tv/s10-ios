@@ -11,27 +11,28 @@ import XCTest
 import ReactiveCocoa
 import Async
 import Nimble
+import BrightFutures
 
 class RACPlayground : XCTestCase {
-    
+
     func testSignalProducer() {
-        let (producer, sink) = SignalProducer<Int, NoError>.buffer()
+        let (producer, sink) = SignalProducer<Int, ReactiveCocoa.NoError>.buffer()
         producer
             |> on(next: { value in
                 fail("unexpectedly received value")
             })
         sendNext(sink, 5)
-        
+
         let expectation = expectationWithDescription("0.5 elapses")
         Async.main(after: 0.5) {
             expectation.fulfill()
         }
         waitForExpectationsWithTimeout(1, handler: nil)
     }
-    
+
     func testHotSignal() {
         let producer = timer(0.1, onScheduler: QueueScheduler.mainQueueScheduler)
-        var signal: Signal<NSDate, NoError>!
+        var signal: Signal<NSDate, ReactiveCocoa.NoError>!
         var disposable: Disposable!
         producer.startWithSignal { s, d in
             signal = s
@@ -43,11 +44,11 @@ class RACPlayground : XCTestCase {
             disposable.dispose()
             return $0.description
         }
-        
+
         signal |> map(transform)
         waitForExpectationsWithTimeout(1, handler: nil)
     }
-    
+
     func testPromise() {
         let promise = RACPromise<Int, NSError>()
         let cancelCalled = expectationWithDescription("cancel called")
@@ -58,4 +59,17 @@ class RACPlayground : XCTestCase {
         waitForExpectationsWithTimeout(1, handler: nil)
     }
     
+    func testFutureCancel() {
+        let promise = Promise<(), NSError>()
+        // TODO: Would be great to add materialize & takeUntil to futures
+        let cancelExpectation = expectationWithDescription("cancel called")
+        promise.future.onCancel {
+            cancelExpectation.fulfill()
+        }
+
+
+        promise.cancel()
+        waitForExpectationsWithTimeout(1, handler: nil)
+
+    }
 }

@@ -9,14 +9,20 @@
 import Foundation
 import BrightFutures
 
+extension NSError {
+    public var isCancelled: Bool {
+        return self.code == NSUserCancelledError
+    }
+}
+
 extension NSOperationQueue {
-    func addAsyncOperation(@noescape opProducer: () -> AsyncOperation) -> Future<(), NSError> {
+    public func addAsyncOperation(@noescape opProducer: () -> AsyncOperation) -> Future<(), NSError> {
         let op = opProducer()
         addOperation(op)
         return op.future
     }
     
-    func addAsyncOperation(op: AsyncOperation) -> Future<(), NSError> {
+    public func addAsyncOperation(op: AsyncOperation) -> Future<(), NSError> {
         return addAsyncOperation { op }
     }
 }
@@ -105,7 +111,7 @@ public class AsyncOperation : NSOperation {
         case .Error(let error):
             promise.failure(error)
         case .Cancelled:
-            // TODO: Is it the correct behavior to never complete the future on cancellation?
+            promise.failure(NSError(domain: "AsyncOperation", code: NSUserCancelledError, userInfo: nil))
             break
         }
     }

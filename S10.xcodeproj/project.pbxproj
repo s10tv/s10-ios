@@ -23,6 +23,7 @@
 		EA1047351B4E756200B1A76A /* TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1047331B4E756200B1A76A /* TestExtensions.swift */; };
 		EA1047381B4F2A6A00B1A76A /* RACExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1047371B4F2A6A00B1A76A /* RACExtensions.swift */; };
 		EA1047391B4F2D3800B1A76A /* RACExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1047371B4F2A6A00B1A76A /* RACExtensions.swift */; };
+		EA1047361B4F1F3E00B1A76A /* FutureExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA10472B1B4E746800B1A76A /* FutureExtensions.swift */; };
 		EA1F9C8C1B47678700D1620F /* AvatarCoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1F9C8B1B47678700D1620F /* AvatarCoverCell.swift */; };
 		EA3594141B2DE5C300E91337 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594131B2DE5C300E91337 /* ConversationViewController.swift */; };
 		EA3594161B2DEF0C00E91337 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594151B2DEF0C00E91337 /* MessageCell.swift */; };
@@ -1521,6 +1522,7 @@
 				EA9F35591A74CC6900E0C65D /* DownloadTests.swift in Sources */,
 				EA1047281B4E3C1C00B1A76A /* RACPlayground.swift in Sources */,
 				EA1047341B4E756200B1A76A /* MeteorServiceTestingExtension.swift in Sources */,
+				EA1047361B4F1F3E00B1A76A /* FutureExtensions.swift in Sources */,
 				EAF6709C1B32026F0025D7CF /* IntegrationTests.swift in Sources */,
 				EA95BBC11B3932BE00701F08 /* GenericExtensions.swift in Sources */,
 				EA10472F1B4E74D000B1A76A /* ReactiveCocoa+Futures.swift in Sources */,

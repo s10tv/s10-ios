@@ -9,6 +9,49 @@
 import Foundation
 import BrightFutures
 
-public func perform<T, E>(@noescape futureProducer: () -> Future<T, E>) -> Future<T, E> {
+func perform<T, E>(@noescape futureProducer: () -> Future<T, E>) -> Future<T, E> {
     return futureProducer()
+}
+
+// Add the concept of cancellation to Future & promises
+
+private func executionContextForCurrentContext() -> ExecutionContext {
+    return toContext(NSThread.isMainThread() ? Queue.main : Queue.global)
+}
+
+private let errCancelled = NSError(domain: "BrightFutures", code: NSUserCancelledError, userInfo: nil)
+
+extension Future {
+    typealias CancelCallback = () -> ()
+    typealias ErrorCallback = E -> ()
+    
+    var isCancelled: Bool {
+        return error?.nsError == errCancelled
+    }
+    
+    var isError: Bool {
+        return isFailure && !isCancelled
+    }
+    
+    func onError(context c: ExecutionContext = executionContextForCurrentContext(), callback: ErrorCallback) {
+        onFailure(context: c) { error in
+            if error.nsError != errCancelled { callback(error) }
+        }
+    }
+    
+    func onCancel(context c: ExecutionContext = executionContextForCurrentContext(), callback: CancelCallback) {
+        onFailure(context: c) { error in
+            if error.nsError == errCancelled { callback() }
+        }
+    }
+}
+
+extension Promise {
+    func error(error: E) {
+        failure(error)
+    }
+    
+    func cancel() {
+        failure(errCancelled as! E)
+    }
 }
