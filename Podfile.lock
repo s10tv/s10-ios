@@ -11,6 +11,8 @@ PODS:
   - Bolts/Tasks (1.2.0)
   - Bond (3.9.0)
   - Box (1.2.2)
+  - BrightFutures (2.0.1):
+    - Result (~> 0.4.3)
   - Cartography (0.5.0)
   - CHTCollectionViewWaterfallLayout (0.9.1)
   - DateTools (1.6.1)
@@ -92,6 +94,7 @@ DEPENDENCIES:
   - Appsee (~> 2.1)
   - Async (from `https://github.com/duemunk/Async.git`)
   - Bond (from `https://github.com/tonyxiao/Bond.git`, branch `coredata`)
+  - BrightFutures (~> 2.0)
   - Cartography (~> 0.5)
   - CHTCollectionViewWaterfallLayout (~> 0.9)
   - DateTools (~> 1.6)
@@ -164,6 +167,7 @@ SPEC CHECKSUMS:
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
   Bond: 4cb4a52a8a236ce17ca594438594757a86ca7e8a
   Box: a92e8aa4c099e6bc0733829665caf9e668ef53b8
+  BrightFutures: 27704272a695324b42538a2d85b20ac3f24228bd
   Cartography: 774e5cc446f5a6bca5d4345c5aa6af9a1fe74dc6
   CHTCollectionViewWaterfallLayout: 1a8da4fc662702cbddda8926ced266036a829f84
   DateTools: 9bcc89e4f2f9004d8a7a2bd1b49269cf78968e65

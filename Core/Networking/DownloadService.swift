@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import ReactiveCocoa
+import BrightFutures
 import Alamofire
 import Haneke
 
@@ -46,19 +46,18 @@ public class DownloadService {
             withIntermediateDirectories: true, attributes: nil, error: nil)
     }
     
-    public func downloadFile(remoteURL: NSURL) -> SignalProducer<NSURL, NSError> {
+    public func downloadFile(remoteURL: NSURL) -> Future<NSURL, NSError> {
         let key = keyForURL(remoteURL)
         let request = getRequest(key) ?? makeRequest(remoteURL, key: key)
-        let (producer, sink) = SignalProducer<NSURL, NSError>.buffer(1)
+        let promise = Promise<NSURL, NSError>()
         request.response { urlRequest, urlResponse, data, error in
             if let error = error {
-                sendError(sink, error)
+                promise.failure(error)
             } else {
-                sendNext(sink, self.localURLForKey(key))
-                sendCompleted(sink)
+                promise.success(self.localURLForKey(key))
             }
         }
-        return producer
+        return promise.future
     }
     
     public func pauseFile(remoteURL: NSURL) {

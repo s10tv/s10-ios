@@ -11,13 +11,44 @@ import XCTest
 import Core
 import Nimble
 import ReactiveCocoa
+import BrightFutures
 
 extension SignalProducer {
     func fulfill(expectation: XCTestExpectation) -> SignalProducer<T, E> {
-        return self |> on(terminated: {
+        return self |> on(disposed: {
             expectation.fulfill()
         })
     }
+    
+    func onNext(next: T -> ()) {
+        start(next: next)
+        
+    }
+}
+
+extension XCTestExpectation {
+    func fulfill<T, E>(@noescape futureProducer: () -> Future<T, E>) {
+        let future = futureProducer()
+        future.andThen { _ in } .onComplete { _ in self.fulfill() }
+    }
+    
+    func fulfill<T, E>(future: Future<T, E>) {
+        fulfill({ future })
+    }
+}
+
+extension XCTestCase {
+    func expectComplete<T, E>(description: String = "future completed", @noescape futureProducer: () -> Future<T, E>) {
+        expectationWithDescription(description).fulfill(futureProducer)
+    }
+}
+
+public func firstly<T, E>(@noescape futureProducer: () -> Future<T, E>) -> Future<T, E> {
+    return futureProducer()
+}
+
+public func fail(error: NSError, file: String = __FILE__, line: UInt = __LINE__) {
+    fail("fail() - \(error)", file: file, line: line)
 }
 
 class DownloadTests: XCTestCase {
@@ -38,16 +69,16 @@ class DownloadTests: XCTestCase {
     }
     
     func testDownloadSuccessful() {
-        let expectation = expectationWithDescription("download complete")
-        
-        downloadService.downloadFile(remoteURL).fulfill(expectation).start(next: { localURL in
-            println("local \(localURL)")
-            expect(localURL).toNot(beNil())
-        }, error: {
-            XCTFail("Error \($0)")
-        })
-        
-        waitForExpectationsWithTimeout(10, handler: nil)
+        expectComplete {
+            firstly {
+                downloadService.downloadFile(remoteURL)
+            }.onSuccess {
+                expect($0).toNot(beNil())
+            }.onFailure {
+                fail($0)
+            }
+        }
+        waitForExpectationsWithTimeout(5, handler: nil)
     }
     
     func testNoDuplicateRequests() {
