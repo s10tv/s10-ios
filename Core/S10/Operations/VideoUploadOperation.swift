@@ -12,6 +12,7 @@ import Foundation
 import Meteor
 import RealmSwift
 import SwiftyJSON
+import ReactiveCocoa
 
 public class VideoUploadOperation : AsyncOperation {
 

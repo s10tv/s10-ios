@@ -9,6 +9,7 @@
 import Foundation
 import Core
 import SwiftyJSON
+import ReactiveCocoa
 import Alamofire
 
 public class PhotoUploadOperation : AsyncOperation {

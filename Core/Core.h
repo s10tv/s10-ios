@@ -7,7 +7,6 @@
 //
 
 #import <UIKit/UIKit.h>
-#import <ReactiveCocoa/ReactiveCocoa.h>
 #import <Meteor/METDatabase.h>
 
 //! Project version number for Backend.
@@ -19,16 +18,6 @@ FOUNDATION_EXPORT const unsigned char CoreVersionString[];
 @interface METDatabase (Private)
 
 - (void)reset;
-
-@end
-
-@interface RACSignal (SwiftCompileFix)
-
-- (RACSignal *)And;
-- (RACSignal *)Or;
-- (RACSignal *)Not;
-
-+ (RACSignal *)Return:(id)object;
 
 @end
 

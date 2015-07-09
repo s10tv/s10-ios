@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ReactiveCocoa
 import Bond
 
 // TODO: Implement this using RAC, make it not a global constant?
