@@ -11,6 +11,18 @@ import ReactiveCocoa
 import Alamofire
 import Haneke
 
+
+public enum NSURLSessionType {
+    case Default, Ephemeral, Background
+    func sessionConfig(identifier: String) -> NSURLSessionConfiguration {
+        switch self {
+        case .Default: return NSURLSessionConfiguration.defaultSessionConfiguration()
+        case .Ephemeral: return NSURLSessionConfiguration.ephemeralSessionConfiguration()
+        case .Background: return NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier(identifier)
+        }
+    }
+}
+
 public class DownloadService {
     let identifier: String
     let alamo: Manager
@@ -22,13 +34,13 @@ public class DownloadService {
         return directoryURL.URLByAppendingPathComponent(escapeString(identifier))
     }
     
-    
-    public init(identifier: String) {
+    public init(identifier: String, sessionType: NSURLSessionType = .Default) {
         self.identifier = identifier
-        let config = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier(identifier)
-//        let config = NSURLSessionConfiguration.ephemeralSessionConfiguration()
-        config.HTTPAdditionalHeaders = Manager.defaultHTTPHeaders
-        alamo = Manager(configuration: config)
+        alamo = Manager(configuration: {
+            let config = sessionType.sessionConfig(identifier)
+            config.HTTPAdditionalHeaders = Manager.defaultHTTPHeaders
+            return config
+        }())
         resumeDataCache = Cache<NSData>(name: "resumeData-\(identifier)")
         NSFileManager.defaultManager().createDirectoryAtURL(baseDir,
             withIntermediateDirectories: true, attributes: nil, error: nil)

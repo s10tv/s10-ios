@@ -28,7 +28,8 @@ class DownloadTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        downloadService = DownloadService(identifier: "tv.s10.test")
+        // NOTE: Logic testing does not appear to support background session type, returns unknown error otherwise
+        downloadService = DownloadService(identifier: "tv.s10.test", sessionType: .Ephemeral)
     }
     
     override func tearDown() {
