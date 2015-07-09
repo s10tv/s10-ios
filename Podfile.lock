@@ -30,6 +30,7 @@ PODS:
   - FBSDKLoginKit (4.3.0):
     - FBSDKCoreKit
   - FormatterKit/TimeIntervalFormatter (1.8.0)
+  - HanekeSwift (0.9.1)
   - Heap (2.1.5)
   - InflectorKit (0.0.1)
   - INTULocationManager (3.0.3)
@@ -98,6 +99,7 @@ DEPENDENCIES:
   - EDColor (~> 1.0)
   - FBSDKLoginKit (~> 4.3)
   - FormatterKit/TimeIntervalFormatter (~> 1.8)
+  - HanekeSwift (~> 0.9)
   - Heap (~> 2.1)
   - INTULocationManager (~> 3.0)
   - Meteor (from `https://github.com/tonyxiao/meteor-ios`, branch `dev`)
@@ -170,6 +172,7 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: a3a60225a84abeace291d0fe71cae29a627382c2
   FBSDKLoginKit: 6bc2f8f2628c3b6d2e346762fff8cb55cfd3a58d
   FormatterKit: bddde83e054edf9d9ee14f9de3b3a5103db256f4
+  HanekeSwift: 50d37bfbc4432edc649167e538c259feccb4a2bb
   Heap: 9d41b3d07bc86c9127364b638c710d854390a113
   InflectorKit: 64497199e6764f4d8337cab7f700a77b13d76a73
   INTULocationManager: e79327803a163f5fec28eb042bb124ed0c6e4876

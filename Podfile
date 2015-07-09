@@ -21,6 +21,7 @@ target :Core do
     pod 'RealmSwift', '~> 0.93.2'
     pod 'SwiftyUserDefaults', '~> 1.3'
     pod 'SwiftyJSON', '~> 2.1'
+    pod 'HanekeSwift', '~> 0.9'
 
     # Networking
     pod 'Alamofire', '~> 1.2'

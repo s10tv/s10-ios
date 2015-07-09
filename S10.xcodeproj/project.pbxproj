@@ -59,6 +59,7 @@
 		EA78C8801B323E140016AB73 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA78C87F1B323E140016AB73 /* Images.xcassets */; };
 		EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3681AA26597003383BE /* SBConstants.swift */; };
 		EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3691AA26597003383BE /* StyleKit.swift */; };
+		EA82A9631B4D7971000239BE /* DownloadService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA82A9621B4D7971000239BE /* DownloadService.swift */; };
 		EA925C741AD99ED8008E9F41 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA925C731AD99ED8008E9F41 /* R.swift */; };
 		EA95BBA71B39308A00701F08 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBA61B39308A00701F08 /* PageViewController.swift */; };
 		EA95BBAF1B3930B000701F08 /* Bond+SDWebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBA91B3930B000701F08 /* Bond+SDWebImage.swift */; };
@@ -83,7 +84,7 @@
 		EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35461A74CC6900E0C65D /* Main.storyboard */; };
 		EA9F354A1A74CC6900E0C65D /* Taylr.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Taylr.xcassets */; };
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
-		EA9F35591A74CC6900E0C65D /* XCTestCaseExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F35581A74CC6900E0C65D /* XCTestCaseExample.swift */; };
+		EA9F35591A74CC6900E0C65D /* DownloadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F35581A74CC6900E0C65D /* DownloadTests.swift */; };
 		EAA56F8D1B2B32E500DE3936 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F6C1B2B32E500DE3936 /* ChatsViewController.swift */; };
 		EAA56F8E1B2B32E500DE3936 /* ConnectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F6D1B2B32E500DE3936 /* ConnectionCell.swift */; };
 		EAA56F901B2B32E500DE3936 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F701B2B32E500DE3936 /* DiscoverViewController.swift */; };
@@ -117,7 +118,6 @@
 		EACEFB961B472E8800901E85 /* SignupInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACEFB901B472E8800901E85 /* SignupInteractor.swift */; };
 		EAE1E07B1AE34C6200F03F13 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1E07A1AE34C6200F03F13 /* LocationService.swift */; };
 		EAE1E07D1AE3788300F03F13 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1E07C1AE3788300F03F13 /* Globals.swift */; };
-		EAF6701B1B31E42E0025D7CF /* QuickSpecExample.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6701A1B31E42E0025D7CF /* QuickSpecExample.swift */; };
 		EAF6701D1B31E6550025D7CF /* Core.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF6701C1B31E6550025D7CF /* Core.m */; };
 		EAF670541B31F78E0025D7CF /* ModelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670531B31F78E0025D7CF /* ModelExtensions.swift */; };
 		EAF670731B31F9450025D7CF /* MeteorCDStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670561B31F9450025D7CF /* MeteorCDStack.swift */; };
@@ -279,6 +279,7 @@
 		EA78C87F1B323E140016AB73 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Pods/PKHUD/PKHUD/Images.xcassets; sourceTree = "<group>"; };
 		EA7AA3681AA26597003383BE /* SBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstants.swift; sourceTree = "<group>"; };
 		EA7AA3691AA26597003383BE /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
+		EA82A9621B4D7971000239BE /* DownloadService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DownloadService.swift; sourceTree = "<group>"; };
 		EA925C731AD99ED8008E9F41 /* R.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.swift; sourceTree = "<group>"; };
 		EA95BBA61B39308A00701F08 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
 		EA95BBA91B3930B000701F08 /* Bond+SDWebImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bond+SDWebImage.swift"; sourceTree = "<group>"; };
@@ -303,7 +304,7 @@
 		EA9F354C1A74CC6900E0C65D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		EA9F35521A74CC6900E0C65D /* CoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9F35571A74CC6900E0C65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		EA9F35581A74CC6900E0C65D /* XCTestCaseExample.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XCTestCaseExample.swift; sourceTree = "<group>"; };
+		EA9F35581A74CC6900E0C65D /* DownloadTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadTests.swift; sourceTree = "<group>"; };
 		EA9F35621A74CD8800E0C65D /* Taylr-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Taylr-Bridging.h"; path = "Taylr/Taylr-Bridging.h"; sourceTree = SOURCE_ROOT; };
 		EAA56F6C1B2B32E500DE3936 /* ChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		EAA56F6D1B2B32E500DE3936 /* ConnectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionCell.swift; sourceTree = "<group>"; };
@@ -339,7 +340,6 @@
 		EACEFB901B472E8800901E85 /* SignupInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupInteractor.swift; sourceTree = "<group>"; };
 		EAE1E07A1AE34C6200F03F13 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		EAE1E07C1AE3788300F03F13 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
-		EAF6701A1B31E42E0025D7CF /* QuickSpecExample.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QuickSpecExample.swift; sourceTree = "<group>"; };
 		EAF6701C1B31E6550025D7CF /* Core.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Core.m; sourceTree = "<group>"; };
 		EAF670531B31F78E0025D7CF /* ModelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelExtensions.swift; sourceTree = "<group>"; };
 		EAF670561B31F9450025D7CF /* MeteorCDStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorCDStack.swift; sourceTree = "<group>"; };
@@ -589,6 +589,7 @@
 			isa = PBXGroup;
 			children = (
 				EA78C8761B320A2A0016AB73 /* AlamofireExtension.swift */,
+				EA82A9621B4D7971000239BE /* DownloadService.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -693,9 +694,8 @@
 			children = (
 				EA9C16761B3759B700371B50 /* FormatterTests.swift */,
 				EAF6709B1B32026F0025D7CF /* IntegrationTests.swift */,
+				EA9F35581A74CC6900E0C65D /* DownloadTests.swift */,
 				F99AAF911B323FB200881EAA /* MeteorServiceTestingExtension.swift */,
-				EA9F35581A74CC6900E0C65D /* XCTestCaseExample.swift */,
-				EAF6701A1B31E42E0025D7CF /* QuickSpecExample.swift */,
 				EA9F35561A74CC6900E0C65D /* Supporting Files */,
 			);
 			path = CoreTests;
@@ -1375,6 +1375,7 @@
 				EA4216491B3E093400613EFA /* Activity.swift in Sources */,
 				EA773D281B43179B009A9945 /* ServiceViewModel.swift in Sources */,
 				EA36B1D81B40E1A5002ADD91 /* CurrentDate.swift in Sources */,
+				EA82A9631B4D7971000239BE /* DownloadService.swift in Sources */,
 				EACEFB951B472E8800901E85 /* ProfileInteractor.swift in Sources */,
 				EAF670801B31F9450025D7CF /* Message.swift in Sources */,
 				EAF6707D1B31F9450025D7CF /* _Video.swift in Sources */,
@@ -1486,8 +1487,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA9C16771B3759B700371B50 /* FormatterTests.swift in Sources */,
-				EAF6701B1B31E42E0025D7CF /* QuickSpecExample.swift in Sources */,
-				EA9F35591A74CC6900E0C65D /* XCTestCaseExample.swift in Sources */,
+				EA9F35591A74CC6900E0C65D /* DownloadTests.swift in Sources */,
 				F99AAF921B323FB200881EAA /* MeteorServiceTestingExtension.swift in Sources */,
 				EAF6709C1B32026F0025D7CF /* IntegrationTests.swift in Sources */,
 				EA95BBC11B3932BE00701F08 /* GenericExtensions.swift in Sources */,
