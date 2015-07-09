@@ -48,4 +48,14 @@ class RACPlayground : XCTestCase {
         waitForExpectationsWithTimeout(1, handler: nil)
     }
     
+    func testPromise() {
+        let promise = RACPromise<Int, NSError>()
+        let cancelCalled = expectationWithDescription("cancel called")
+        promise.future.onCancel {
+            cancelCalled.fulfill()
+        }
+        promise.cancel()
+        waitForExpectationsWithTimeout(1, handler: nil)
+    }
+    
 }

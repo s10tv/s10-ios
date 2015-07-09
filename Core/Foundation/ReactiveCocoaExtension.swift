@@ -8,6 +8,8 @@
 
 import ReactiveCocoa
 
+// MARK: - RAC2 Extensions
+
 // Avoid having to type cast all the time
 extension RACSignal {
     public func subscribeNextAs<T>(nextClosure:(T) -> ()) -> RACDisposable {
