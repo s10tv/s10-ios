@@ -14,6 +14,7 @@
 		EA06AAB81B3B2D2B000E128C /* PKHUDExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBAB1B3930B000701F08 /* PKHUDExtension.swift */; };
 		EA06AAB91B3B2D8F000E128C /* ResourceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBAC1B3930B000701F08 /* ResourceExtension.swift */; };
 		EA0FED451ADE5BC500FC6FCB /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */; };
+		EA1047281B4E3C1C00B1A76A /* RACPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1047271B4E3C1C00B1A76A /* RACPlayground.swift */; };
 		EA1F9C8C1B47678700D1620F /* AvatarCoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1F9C8B1B47678700D1620F /* AvatarCoverCell.swift */; };
 		EA3594141B2DE5C300E91337 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594131B2DE5C300E91337 /* ConversationViewController.swift */; };
 		EA3594161B2DEF0C00E91337 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594151B2DEF0C00E91337 /* MessageCell.swift */; };
@@ -230,6 +231,7 @@
 		A80ED835405D6C980CF3F31B /* Pods-Core-CoreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core-CoreTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Core-CoreTests/Pods-Core-CoreTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C97F216A216ACE06C7336869 /* Pods-Core-Taylr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core-Taylr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Core-Taylr/Pods-Core-Taylr.release.xcconfig"; sourceTree = "<group>"; };
 		EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
+		EA1047271B4E3C1C00B1A76A /* RACPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACPlayground.swift; sourceTree = "<group>"; };
 		EA1F9C8B1B47678700D1620F /* AvatarCoverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarCoverCell.swift; sourceTree = "<group>"; };
 		EA3594131B2DE5C300E91337 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		EA3594151B2DEF0C00E91337 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
@@ -695,6 +697,7 @@
 				EA9C16761B3759B700371B50 /* FormatterTests.swift */,
 				EAF6709B1B32026F0025D7CF /* IntegrationTests.swift */,
 				EA9F35581A74CC6900E0C65D /* DownloadTests.swift */,
+				EA1047271B4E3C1C00B1A76A /* RACPlayground.swift */,
 				F99AAF911B323FB200881EAA /* MeteorServiceTestingExtension.swift */,
 				EA9F35561A74CC6900E0C65D /* Supporting Files */,
 			);
@@ -1488,6 +1491,7 @@
 			files = (
 				EA9C16771B3759B700371B50 /* FormatterTests.swift in Sources */,
 				EA9F35591A74CC6900E0C65D /* DownloadTests.swift in Sources */,
+				EA1047281B4E3C1C00B1A76A /* RACPlayground.swift in Sources */,
 				F99AAF921B323FB200881EAA /* MeteorServiceTestingExtension.swift in Sources */,
 				EAF6709C1B32026F0025D7CF /* IntegrationTests.swift in Sources */,
 				EA95BBC11B3932BE00701F08 /* GenericExtensions.swift in Sources */,
