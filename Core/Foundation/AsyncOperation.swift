@@ -7,6 +7,19 @@
 //
 
 import Foundation
+import BrightFutures
+
+extension NSOperationQueue {
+    func addAsyncOperation(@noescape opProducer: () -> AsyncOperation) -> Future<(), NSError> {
+        let op = opProducer()
+        addOperation(op)
+        return op.future
+    }
+    
+    func addAsyncOperation(op: AsyncOperation) -> Future<(), NSError> {
+        return addAsyncOperation { op }
+    }
+}
 
 public class AsyncOperation : NSOperation {
 
@@ -43,16 +56,6 @@ public class AsyncOperation : NSOperation {
             }
         }
     }
-//    // Doensn't actually work because operation gets deallocated
-//    public var finishBlock: ((Result) -> (Void))? {
-//        didSet(newValue) {
-//            completionBlock = { [weak self] in
-//                if let this = self {
-//                    newValue?(this.result!)
-//                }
-//            }
-//        }
-//    }
     
     // MARK: - Properties
     
@@ -69,20 +72,42 @@ public class AsyncOperation : NSOperation {
     
     public private(set) var result : Result?
     
-    // MARK: - Overrides for sublcass
+    public var future: Future<(), NSError> {
+        return promise.future
+    }
     
+    let promise = Promise<(), NSError>()
+    
+    // MARK: - API for consumers
+    
+    public func manuallyStart() -> Future<(), NSError> {
+        start()
+        return future
+    }
+    
+    // MARK: - API For subclass
+
+    /// Should be overriden by subclass
     public func run() {
         // Subclass should perform actual work in here, and then call finish method with
         // result of the operation whenever done
         // Because this operation is async, finish does not need to be called before run() returns
     }
     
-    // MARK: - API For subclass
-    
+    /// Should be called by subclass
     public func finish(result: Result) {
         assert(state != .Finished, "Cannot finish again")
         self.result = result
         state = .Finished
+        switch result {
+        case .Success:
+            promise.success()
+        case .Error(let error):
+            promise.failure(error)
+        case .Cancelled:
+            // TODO: Is it the correct behavior to never complete the future on cancellation?
+            break
+        }
     }
     
     // MARK: - NSOperation & NSOperation Queue

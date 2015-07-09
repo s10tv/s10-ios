@@ -18,7 +18,7 @@ extension XCTestExpectation {
     }
     
     public func fulfill<T, E>(future: Future<T, E>) {
-        fulfill({ future })
+        fulfill { future }
     }
 }
 

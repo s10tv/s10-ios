@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import ReactiveCocoa
+import BrightFutures
 import Bond
 
 public class SignupInteractor {
@@ -32,30 +32,19 @@ public class SignupInteractor {
         coverURL = user.coverURL
     }
     
-    public func uploadAvatar(image: UIImage) -> RACSignal {
+    public func uploadAvatar(image: UIImage) -> Future<(), NSError> {
         return upload(image, taskType: .ProfilePic)
     }
     
-    public func uploadCoverPhoto(image: UIImage) -> RACSignal {
+    public func uploadCoverPhoto(image: UIImage) -> Future<(), NSError> {
         return upload(image, taskType: .CoverPic)
     }
     
     // MARK: -
     
-    func upload(image: UIImage, taskType: PhotoUploadOperation.TaskType) -> RACSignal {
-        let subject = RACReplaySubject()
-        let upload = PhotoUploadOperation(meteor: meteor, image: image, taskType: taskType)
-        upload.completionBlock = {
-            switch upload.result! {
-            case .Success:
-                subject.sendCompleted()
-            case .Error(let error):
-                subject.sendError(error)
-            case .Cancelled:
-                subject.sendError(nil)
-            }
+    func upload(image: UIImage, taskType: PhotoUploadOperation.TaskType) -> Future<(), NSError> {
+        return operationQueue.addAsyncOperation {
+            PhotoUploadOperation(meteor: meteor, image: image, taskType: taskType)
         }
-        operationQueue.addOperation(upload)
-        return subject.deliverOnMainThread()
     }
 }

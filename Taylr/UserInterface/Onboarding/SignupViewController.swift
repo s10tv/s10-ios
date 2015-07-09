@@ -110,12 +110,11 @@ class SignupViewController : XLFormViewController {
         pickImage() { image in
             let scaledImage = image.scaleToMaxDimension(200, pixelSize: true)
             PKHUD.showActivity(dimsBackground: true)
-            self.viewModel.uploadAvatar(scaledImage).subscribeErrorOrCompleted { err in
+            self.viewModel.uploadAvatar(scaledImage).onComplete { _ in
                 PKHUD.showText("Success")
                 PKHUD.hide(animated: false)
-                if let err = err {
-                    self.showErrorAlert(err)
-                }
+            }.onFailure {
+                self.showErrorAlert($0)
             }
         }
     }
@@ -124,12 +123,11 @@ class SignupViewController : XLFormViewController {
         pickImage() { image in
             let scaledImage = image.scaleToMaxDimension(1400, pixelSize: true)
             PKHUD.showActivity(dimsBackground: true)
-            self.viewModel.uploadCoverPhoto(scaledImage).subscribeErrorOrCompleted { err in
+            self.viewModel.uploadAvatar(scaledImage).onComplete { _ in
                 PKHUD.showText("Success")
                 PKHUD.hide(animated: false)
-                if let err = err {
-                    self.showErrorAlert(err)
-                }
+            }.onFailure {
+                self.showErrorAlert($0)
             }
         }
     }
