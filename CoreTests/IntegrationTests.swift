@@ -9,11 +9,12 @@
 import Foundation
 import XCTest
 import Nimble
-import Core
+import ReactiveCocoa
 import Meteor
 import OHHTTPStubs
 import SwiftyJSON
 import RealmSwift
+import Core
 
 var env: Environment!
 
