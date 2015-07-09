@@ -9,7 +9,6 @@
 import Foundation
 import XCTest
 import Nimble
-import ReactiveCocoa
 import BrightFutures
 
 extension XCTestExpectation {
