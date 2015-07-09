@@ -1,6 +1,6 @@
 //
-//  CoreTests.swift
-//  CoreTests
+//  DownloadTests.swift
+//  DownloadTests
 //
 //  Created on 1/24/15.
 //  Copyright (c) 2015 S10. All rights reserved.
@@ -10,12 +10,20 @@ import Foundation
 import XCTest
 import Core
 import Nimble
+import ReactiveCocoa
 
+extension SignalProducer {
+    func fulfill(expectation: XCTestExpectation) -> SignalProducer<T, E> {
+        return self |> on(terminated: {
+            expectation.fulfill()
+        })
+    }
+}
 
-class XCTestCaseExample: XCTestCase {
+class DownloadTests: XCTestCase {
     
     var downloadService: DownloadService!
-    let remoteURL = NSURL("https://s10tv.blob.core.windows.net/s10tv-test/public.mp4")
+    let remoteURL = NSURL("http://s10tv.blob.core.windows.net/s10tv-test/public.mp4")
     let bogusURL = NSURL("https://s10tv.blob.core.windows.net/s10tv-test/bogus.mp4")
     
     override func setUp() {
@@ -31,13 +39,14 @@ class XCTestCaseExample: XCTestCase {
     func testDownloadSuccessful() {
         let expectation = expectationWithDescription("download complete")
         
-        downloadService.downloadFile(remoteURL) { localURL in
+        downloadService.downloadFile(remoteURL).fulfill(expectation).start(next: { localURL in
             println("local \(localURL)")
             expect(localURL).toNot(beNil())
-            expectation.fulfill()
-        }
+        }, error: {
+            XCTFail("Error \($0)")
+        })
         
-        waitForExpectationsWithTimeout(30, handler: nil)
+        waitForExpectationsWithTimeout(10, handler: nil)
     }
     
     func testNoDuplicateRequests() {

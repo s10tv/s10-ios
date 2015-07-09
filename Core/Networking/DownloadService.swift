@@ -12,23 +12,41 @@ import Alamofire
 import Haneke
 
 public class DownloadService {
+    let identifier: String
     let alamo: Manager
     public let resumeDataCache: Cache<NSData> // TODO: Make Private once upgrade to swift 2
     public var requestsByKey: [String: Request] = [:] // TODO: Make private once we upgrade to swift 2
     
+    public var baseDir: NSURL {
+        let directoryURL = NSFileManager.defaultManager().URLsForDirectory(.CachesDirectory, inDomains: .UserDomainMask)[0] as! NSURL
+        return directoryURL.URLByAppendingPathComponent(escapeString(identifier))
+    }
+    
+    
     public init(identifier: String) {
+        self.identifier = identifier
         let config = NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier(identifier)
+//        let config = NSURLSessionConfiguration.ephemeralSessionConfiguration()
         config.HTTPAdditionalHeaders = Manager.defaultHTTPHeaders
         alamo = Manager(configuration: config)
         resumeDataCache = Cache<NSData>(name: "resumeData-\(identifier)")
+        NSFileManager.defaultManager().createDirectoryAtURL(baseDir,
+            withIntermediateDirectories: true, attributes: nil, error: nil)
     }
     
-    public func downloadFile(remoteURL: NSURL, callback: ((NSURL) -> Void)? = nil) {
+    public func downloadFile(remoteURL: NSURL) -> SignalProducer<NSURL, NSError> {
         let key = keyForURL(remoteURL)
         let request = getRequest(key) ?? makeRequest(remoteURL, key: key)
+        let (producer, sink) = SignalProducer<NSURL, NSError>.buffer(1)
         request.response { urlRequest, urlResponse, data, error in
-            callback?(self.localURLForKey(key))
+            if let error = error {
+                sendError(sink, error)
+            } else {
+                sendNext(sink, self.localURLForKey(key))
+                sendCompleted(sink)
+            }
         }
+        return producer
     }
     
     public func pauseFile(remoteURL: NSURL) {
@@ -41,7 +59,9 @@ public class DownloadService {
     }
     
     public func removeAllFiles() {
-
+        let fm = NSFileManager()
+        fm.removeItemAtURL(baseDir, error: nil)
+        fm.createDirectoryAtURL(baseDir, withIntermediateDirectories: true, attributes: nil, error: nil)
     }
     
     private func getRequest(key: String) -> Request? {
@@ -58,12 +78,7 @@ public class DownloadService {
     }
     
     private func keyForURL(url: NSURL) -> String {
-        let originalString = url.absoluteString! as NSString as CFString
-        let charactersToLeaveUnescaped = " \\" as NSString as CFString // TODO: Add more characters that are valid in paths but not in URLs
-        let legalURLCharactersToBeEscaped = "/:" as NSString as CFString
-        let encoding = CFStringBuiltInEncodings.UTF8.rawValue
-        let escapedPath = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, originalString, charactersToLeaveUnescaped, legalURLCharactersToBeEscaped, encoding)
-        let key = escapedPath as NSString as String
+        let key = escapeString(url.absoluteString!)
         if let pathExtension = url.pathExtension where pathExtension != key.pathExtension {
             return "\(key).\(pathExtension)"
         }
@@ -71,8 +86,15 @@ public class DownloadService {
     }
     
     private func localURLForKey(key: String) -> NSURL {
-        let directoryURL = NSFileManager.defaultManager().URLsForDirectory(.CachesDirectory, inDomains: .UserDomainMask)[0] as! NSURL
-        return directoryURL.URLByAppendingPathComponent(key)
+        return baseDir.URLByAppendingPathComponent(key)
     }
-
+    
+    private func escapeString(str: String) -> String {
+        let originalString = str as NSString as CFString
+        let charactersToLeaveUnescaped = " \\" as NSString as CFString // TODO: Add more characters that are valid in paths but not in URLs
+        let legalURLCharactersToBeEscaped = "/:" as NSString as CFString
+        let encoding = CFStringBuiltInEncodings.UTF8.rawValue
+        let escapedPath = CFURLCreateStringByAddingPercentEscapes(kCFAllocatorDefault, originalString, charactersToLeaveUnescaped, legalURLCharactersToBeEscaped, encoding)
+        return escapedPath as NSString as String
+    }
 }
