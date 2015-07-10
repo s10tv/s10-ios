@@ -42,7 +42,7 @@ class ActivityImageCell : UITableViewCell {
         activity.avatarURL ->> userImageView.dynImageURL
         activity.username ->> usernameLabel
         activity.formattedDate ->> timestampLabel
-        activity.imageURL ->> contentImageView.dynImageURL
+        activity.image.map { $0.map { $0.url } } ->> contentImageView.dynImageURL
         activity.text ->> contentTextLabel
         activity.quote ->> quoteLabel
         activity.serviceName ->> serviceNameLabel

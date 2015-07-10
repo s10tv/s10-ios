@@ -20,6 +20,10 @@ public class Activity : _Activity {
         return self.dynValue(ActivityKeys.imageUrl).map { NSURL.fromString($0) }
     }()
     
+    public private(set) lazy var dynImage: Dynamic<Image?> = { // TOOD: Write a flatMap for dynamic / propertyOf
+        return self.dynValue(ActivityKeys.image).map { $0.map { Image.fromDict($0) } ?? nil }
+    }()
+    
     public private(set) lazy var dynTimestamp: Dynamic<NSDate?> = {
         return self.dynValue(ActivityKeys.timestamp)
     }()

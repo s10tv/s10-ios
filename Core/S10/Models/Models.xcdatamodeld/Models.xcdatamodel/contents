@@ -3,6 +3,7 @@
     <entity name="Activity" representedClassName="Activity" syncable="YES">
         <attribute name="action" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="caption" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="image" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="imageUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
@@ -68,7 +69,7 @@
         </relationship>
     </entity>
     <elements>
-        <element name="Activity" positionX="790" positionY="72" width="128" height="165"/>
+        <element name="Activity" positionX="790" positionY="72" width="128" height="180"/>
         <element name="Connection" positionX="-819" positionY="9" width="128" height="135"/>
         <element name="Message" positionX="-207" positionY="27" width="128" height="135"/>
         <element name="Service" positionX="700" positionY="-297" width="128" height="120"/>

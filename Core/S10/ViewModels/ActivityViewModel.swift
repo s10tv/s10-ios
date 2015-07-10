@@ -14,7 +14,7 @@ public struct ActivityViewModel {
     public let avatarURL: Dynamic<NSURL?>
     public let username: Dynamic<String>
     public let formattedDate: Dynamic<String>
-    public let imageURL: Dynamic<NSURL?>
+    public let image: Dynamic<Image?>
     public let text: Dynamic<String>
     public let quote: Dynamic<String>
     public let serviceName: Dynamic<String>
@@ -27,7 +27,7 @@ public struct ActivityViewModel {
         formattedDate = reduce(activity.dynTimestamp, CurrentDate) {
             Formatters.formatRelativeDate($0, relativeTo: $1) ?? ""
         }
-        imageURL = activity.imageURL
+        image = activity.dynImage
         text = activity.dynText.map(Formatters.cleanString)
         quote = activity.dynQuote.map(Formatters.cleanString)
         serviceName = service.type.map { $0?.rawValue ?? "" }
