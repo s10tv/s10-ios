@@ -23,13 +23,13 @@ public struct ActivityViewModel {
         self.activity = activity
         let service = activity.service!
         avatarURL = service.userAvatarURL
-        username = service.dynUserDisplayName.map { $0 ?? "" }
+        username = service.dynUserDisplayName.map(Formatters.cleanString)
         formattedDate = reduce(activity.dynTimestamp, CurrentDate) {
             Formatters.formatRelativeDate($0, relativeTo: $1) ?? ""
         }
         imageURL = activity.imageURL
-        text = activity.dynText.map { $0 ?? "" }
-        quote = activity.dynQuote.map { $0 ?? "" }
+        text = activity.dynText.map(Formatters.cleanString)
+        quote = activity.dynQuote.map(Formatters.cleanString)
         serviceName = service.type.map { $0?.rawValue ?? "" }
     }
 }

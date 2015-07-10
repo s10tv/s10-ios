@@ -32,6 +32,12 @@ public struct Formatters {
         return formatter
     }()
     
+    public static func cleanString(str: String?) -> String {
+        return str.map {
+            $0.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+        } ?? ""
+    }
+    
     public static func formatHeight(heightInCm: Int) -> String {
         return height.stringFromMeters(Double(heightInCm) / 100)
     }
