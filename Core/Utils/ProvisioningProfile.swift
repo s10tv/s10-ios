@@ -62,6 +62,8 @@ public class ProvisioningProfile {
 
         init(data: NSData) {
             asn1Parser = DTASN1Parser(data: data)
+            super.init()
+            asn1Parser.setDelegate(self)
         }
         
         func parse() -> [NSObject: AnyObject]? {
