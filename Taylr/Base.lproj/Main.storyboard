@@ -508,7 +508,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aze-MX-TRa" id="MfE-Pq-Xgn">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="AdT-TO-ODD" customClass="UserAvatarView" customModule="Taylr" customModuleProvider="target">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="AdT-TO-ODD">
                                                     <rect key="frame" x="8" y="8" width="50" height="50"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" secondItem="AdT-TO-ODD" secondAttribute="height" id="ESA-MW-EuF"/>

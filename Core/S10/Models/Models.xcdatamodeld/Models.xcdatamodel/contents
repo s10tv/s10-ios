@@ -28,8 +28,8 @@
         <relationship name="video" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Video" inverseName="message" inverseEntity="Video" syncable="YES"/>
     </entity>
     <entity name="Service" representedClassName="Service" syncable="YES">
+        <attribute name="avatar" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="serviceType" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="userAvatarUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userDisplayName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="userIdentifier" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="services" inverseEntity="User" syncable="YES"/>
