@@ -19,7 +19,7 @@ class ChatsViewController : BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSourceBond = UITableViewDataSourceBond(tableView: tableView, disableAnimation: false)
-        chatsVM = ChatsInteractor()
+        chatsVM = ChatsInteractor(downloadService: Globals.downloadService)
         chatsVM.connectionViewModels.map { [unowned self] (connectionVM, index) -> UITableViewCell in
             let cell = self.tableView.dequeueReusableCellWithIdentifier(.ConnectionCell,
                 forIndexPath: NSIndexPath(forRow: index, inSection: 0)) as! ConnectionCell

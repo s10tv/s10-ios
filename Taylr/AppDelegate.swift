@@ -52,7 +52,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
             analyticsService: AnalyticsService(env: env),
             upgradeService: UpgradeService(env: env, settings: meteor.settings),
             locationService: LocationService(meteorService: meteor),
-            videoService: VideoService(meteorService: meteor))
+            videoService: VideoService(meteorService: meteor),
+            downloadService: DownloadService(identifier: env.appId, sessionType: .Default)
+        )
 
         // Startup the services
 //        Meteor.meta.bugfenderId = Bugfender.deviceIdentifier()
@@ -75,6 +77,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
         Meteor.subscriptions.metadata.signal.delay(0.1).deliverOnMainThread().subscribeCompleted {
             Globals.upgradeService.promptForUpgradeIfNeeded()
         }
+
+        // TODO: put this into its own service
+        listenForNotification(METIncrementalStoreObjectsDidChangeNotification).subscribeNext { _ in
+            for message in Message.by(MessageKeys.status, value: "sent").fetch().map({ $0 as! Message }) {
+                if let remoteURL = NSURL.fromString(message.video?.url) {
+                    Globals.downloadService.downloadFile(remoteURL)
+                }
+            }
+        }
+        
+        
         // Should be probably extracted into push service
         application.registerForRemoteNotifications()
         

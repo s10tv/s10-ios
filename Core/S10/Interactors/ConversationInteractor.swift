@@ -11,8 +11,10 @@ import Bond
 import RealmSwift
 
 public class ConversationInteractor {
+    private let nc = NSNotificationCenter.defaultCenter().proxy()
     private let realmToken: NotificationToken
     private let messages: FetchedResultsArray<Message>
+    private let downloadService: DownloadService
     public let connection: Dynamic<Connection?>
     public let recipient: User
     public let formattedStatus: Dynamic<String>
@@ -20,8 +22,9 @@ public class ConversationInteractor {
     public let hasUnsentMessage: Dynamic<Bool>
     public let messageViewModels: DynamicArray<MessageViewModel>
     
-    public init(recipient: User) {
+    public init(recipient: User, downloadService: DownloadService) {
         self.recipient = recipient
+        self.downloadService = downloadService
         connection = recipient.dynConnection
         (hasUnsentMessage, realmToken) = ConversationInteractor.observeUnsentMessage(recipient)
         messages = Message
@@ -30,7 +33,17 @@ public class ConversationInteractor {
                 MessageKeys.video.rawValue))
             .sorted(by: MessageKeys.createdAt.rawValue, ascending: true)
             .results(Message.self, loadData: true)
-        messageViewModels = messages.map { MessageViewModel(message: $0) }
+        messageViewModels = messages.map { (msg: Message) -> (Message, NSURL?) in
+            if let videoURL = NSURL.fromString(msg.video?.url) {
+                return (msg, downloadService.fetchFile(videoURL))
+            }
+            return (msg, nil)
+        }.filter { tuple in
+            return tuple.1 != nil
+        }.map { tuple in
+            MessageViewModel(message: tuple.0, videoURL: tuple.1!)
+        }
+        
         // TODO: Figure out how to make formattedStatus & badgeText also work when connection gets created
         if let connection = recipient.connection {
             formattedStatus = ConversationInteractor.formatStatus(connection)
@@ -40,6 +53,10 @@ public class ConversationInteractor {
         } else {
             formattedStatus = Dynamic("")
             badgeText = Dynamic("")
+        }
+        nc.listen(DownloadSuccessNotification) { [weak self] _ in
+            self?.messages.beginBatchUpdates()
+            self?.messages.endBatchUpdates()
         }
     }
     

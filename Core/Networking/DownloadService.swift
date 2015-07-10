@@ -11,6 +11,9 @@ import BrightFutures
 import Alamofire
 import Haneke
 import Result
+import Async
+
+public let DownloadSuccessNotification = "DownloadSuccessNotification"
 
 public enum NSURLSessionType {
     case Default, Ephemeral, Background
@@ -53,6 +56,10 @@ public class DownloadService {
     }
     
     public func downloadFile(remoteURL: NSURL) -> Future<NSURL, NSError> {
+        Log.verbose("downloadFile called \(remoteURL)")
+        if let localURL = fetchFile(remoteURL) {
+            return Future.succeeded(localURL)
+        }
         let key = keyForURL(remoteURL)
         if futuresByKey[key] == nil {
             futuresByKey[key] = perform {
@@ -63,9 +70,13 @@ public class DownloadService {
                 $0.responseData()
             }.map { _ -> NSURL in
                 return self.localURLForKey(key)
-            }.onComplete { _ in
+            }.onComplete { r in
                 // TODO: Thread-safety
+                Log.debug("Download finished \(remoteURL) success: \(r.value != nil)")
                 self.futuresByKey[key] = nil
+                Async.main {
+                    NSNotificationCenter.defaultCenter().postNotificationName(DownloadSuccessNotification, object: self)
+                }
             }
         }
         return futuresByKey[key]!
@@ -90,14 +101,12 @@ public class DownloadService {
         return Future.succeeded()
     }
     
-    public func fetchFile(remoteURL: NSURL) -> Future<NSURL, NSError> {
-        let localURL = localURLForKey(keyForURL(remoteURL))
-        return future(context: queue.context) {
-            if let path = localURL.path where NSFileManager().fileExistsAtPath(path) {
-                return Result(value: localURL)
-            }
-            return Result(error: Errors.NotFound)
+    public func fetchFile(remoteURL: NSURL) -> NSURL? {
+        let localURL = localURLForRemoteURL(remoteURL)
+        if let path = localURL.path where NSFileManager().fileExistsAtPath(path) {
+            return localURL
         }
+        return nil
     }
     
     public func removeFile(remoteURL: NSURL) -> Future<(), NoError> {
@@ -132,6 +141,7 @@ public class DownloadService {
         let dest: (NSURL, NSURLResponse) -> NSURL = { [weak self] tempURL, response in
             return self?.localURLForKey(key) ?? tempURL
         }
+        Log.debug("Will make request to \(remoteURL)")
         return perform {
             resumeDataCache.pop(key)
         }.map {

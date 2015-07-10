@@ -19,10 +19,10 @@ public struct MessageViewModel {
     public let formattedStatus: Dynamic<String>
     public let videoURL: Dynamic<NSURL?>
     
-    public init(message: Message) {
+    public init(message: Message, videoURL: NSURL) {
         self.message = message
+        self.videoURL = Dynamic(videoURL)
         sender = message.sender
-        videoURL = message.video?.URL ?? Dynamic(nil)
         formattedDate = reduce(message.dynCreatedAt, CurrentDate) {
             Formatters.formatRelativeDate($0, relativeTo: $1) ?? ""
         }
