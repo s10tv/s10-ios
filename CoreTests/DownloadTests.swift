@@ -12,7 +12,7 @@ import Core
 import Nimble
 import BrightFutures
 
-class DownloadTests: XCTestCase {
+class DownloadTests: AsyncTestCase {
     
     var downloadService: DownloadService!
     let remoteURL = NSURL("http://s10tv.blob.core.windows.net/s10tv-test/public.mp4")
@@ -39,7 +39,7 @@ class DownloadTests: XCTestCase {
                 fail($0)
             }
         }
-        waitForExpectationsWithTimeout(5, handler: nil)
+        waitForExpectationsWithTimeout(10, handler: nil)
     }
     
     func testNoDuplicateRequests() {

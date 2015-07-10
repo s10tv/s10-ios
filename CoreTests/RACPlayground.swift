@@ -13,7 +13,7 @@ import Async
 import Nimble
 import BrightFutures
 
-class RACPlayground : XCTestCase {
+class RACPlayground : AsyncTestCase {
 
     func testSignalProducer() {
         let (producer, sink) = SignalProducer<Int, ReactiveCocoa.NoError>.buffer()
