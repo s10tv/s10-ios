@@ -26,6 +26,13 @@ extension XCTestExpectation {
     }
 }
 
+extension XCTestCase {
+    func expectFulfill(description: String = "expectation", @noescape block: (()-> ()) ->  ()) {
+        let expectation = expectationWithDescription(description)
+        block { expectation.fulfill() }
+    }
+}
+
 public func fail(error: NSError, file: String = __FILE__, line: UInt = __LINE__) {
     fail("fail() - \(error)", file: file, line: line)
 }

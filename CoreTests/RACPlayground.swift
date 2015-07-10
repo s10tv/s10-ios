@@ -85,4 +85,14 @@ class RACPlayground : AsyncTestCase {
         }
         waitForExpectationsWithTimeout(1, handler: nil)
     }
+    
+    func testExpectFulfill() {
+        expectFulfill { fulfill in
+            let block = { fulfill() }
+            Async.main(after: 0.5) {
+                block()
+            }
+        }
+        waitForExpectationsWithTimeout(1, handler: nil)
+    }
 }
