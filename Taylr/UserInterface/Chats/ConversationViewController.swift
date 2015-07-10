@@ -126,14 +126,6 @@ extension ConversationViewController : UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         if let cell = cell as? MessageCell {
             cell.cellWillAppear()
-            if let message = cell.message?.message {
-                if message.statusEnum != .Opened && message.incoming {
-                    // Async hack is needed otherwise collectionview gets into deadlock
-                    dispatch_async(dispatch_get_main_queue()) {
-                        Meteor.openMessage(message)
-                    }
-                }
-            }
         }
     }
     

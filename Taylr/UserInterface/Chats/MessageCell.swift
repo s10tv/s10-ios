@@ -94,6 +94,14 @@ extension MessageCell : SCPlayerDelegate {
     
     func player(player: SCPlayer, didPlay currentTime: CMTime, loopsCount: Int) {
         if !player.itemDuration.impliedValue && !currentTime.impliedValue {
+            if let message = message?.message {
+                if message.statusEnum != .Opened && message.incoming {
+                    // Async hack is needed otherwise collectionview gets into deadlock
+                    dispatch_async(dispatch_get_main_queue()) {
+                        Meteor.openMessage(message)
+                    }
+                }
+            }
             let secondsRemaining = Int(ceil(player.itemDuration.seconds - currentTime.seconds))
             durationLabel.text = "\(secondsRemaining)"
         }
