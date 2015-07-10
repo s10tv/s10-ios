@@ -24,6 +24,8 @@ class ProfileViewController : BaseViewController {
             let url = NSURL(urlString + "/" + username)
             self.webView.loadRequest(NSURLRequest(URL: url))
         }
+        webView.scrollView.delegate = self
+        webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal
 
         super.viewDidLoad()
     }
@@ -69,5 +71,12 @@ class ProfileViewController : BaseViewController {
             }
         }
         presentViewController(alert)
+    }
+}
+
+extension ProfileViewController : UIScrollViewDelegate {
+    // Disable zooming in webview
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return nil
     }
 }
