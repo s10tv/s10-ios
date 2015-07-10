@@ -70,9 +70,7 @@ class MeViewController : BaseViewController {
     }
     
     func linkService(type: Service.ServiceType) {
-        linkAccountService.linkNewService(type) {
-            return self.makeViewController(.AuthWeb) as? AuthWebViewController
-        }.subscribeNext({ _ in
+        linkAccountService.linkNewService(type, useWebView: true).subscribeNext({ _ in
             PKHUD.showActivity()
         }, error: { error in
             PKHUD.hide(animated: false)

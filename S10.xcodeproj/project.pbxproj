@@ -30,6 +30,9 @@
 		EA36B1D61B40DE3C002ADD91 /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36B1D51B40DE3C002ADD91 /* ActivityViewModel.swift */; };
 		EA36B1D81B40E1A5002ADD91 /* CurrentDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36B1D71B40E1A5002ADD91 /* CurrentDate.swift */; };
 		EA36D2AB1AE71366006FD5D8 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36D2AA1AE71366006FD5D8 /* Errors.swift */; };
+		EA376CB11B505FCD00C819E9 /* AuthWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA376CAF1B505FCD00C819E9 /* AuthWebViewController.swift */; };
+		EA376CB21B505FCD00C819E9 /* LinkAccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA376CB01B505FCD00C819E9 /* LinkAccountService.swift */; };
+		EA376CB51B505FF100C819E9 /* LinkAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA376CB71B505FF100C819E9 /* LinkAccount.storyboard */; };
 		EA3777721A966EC10055DE99 /* TransatTextBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */; };
 		EA3777751A966EC10055DE99 /* TransatTextMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA3777701A966EC10055DE99 /* TransatTextMedium.otf */; };
 		EA3777761A966EC10055DE99 /* TransatTextStandard.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA3777711A966EC10055DE99 /* TransatTextStandard.otf */; };
@@ -114,8 +117,6 @@
 		EABA05461B474FED00154C75 /* test-avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EABA05451B474FED00154C75 /* test-avatar.jpg */; };
 		EABAEDA31B432745000261F0 /* CandidateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABAEDA21B432745000261F0 /* CandidateViewModel.swift */; };
 		EABAEDA51B4334EB000261F0 /* MeServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABAEDA41B4334EB000261F0 /* MeServiceCell.swift */; };
-		EABAEDA91B436E8F000261F0 /* LinkAccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABAEDA81B436E8F000261F0 /* LinkAccountService.swift */; };
-		EABAEDAB1B437216000261F0 /* AuthWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABAEDAA1B437216000261F0 /* AuthWebViewController.swift */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
 		EACCA3A21B37B02A00015C88 /* ProfileMainCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACCA3A11B37B02A00015C88 /* ProfileMainCell.swift */; };
 		EACEFB841B4672A800901E85 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACEFB831B4672A800901E85 /* AppRouter.swift */; };
@@ -254,6 +255,9 @@
 		EA36B1D51B40DE3C002ADD91 /* ActivityViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewModel.swift; sourceTree = "<group>"; };
 		EA36B1D71B40E1A5002ADD91 /* CurrentDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentDate.swift; sourceTree = "<group>"; };
 		EA36D2AA1AE71366006FD5D8 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		EA376CAF1B505FCD00C819E9 /* AuthWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthWebViewController.swift; sourceTree = "<group>"; };
+		EA376CB01B505FCD00C819E9 /* LinkAccountService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkAccountService.swift; sourceTree = "<group>"; };
+		EA376CB61B505FF100C819E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LinkAccount.storyboard; sourceTree = "<group>"; };
 		EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextBlack.otf; sourceTree = "<group>"; };
 		EA37776E1A966EC10055DE99 /* TransatTextBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextBold.otf; sourceTree = "<group>"; };
 		EA37776F1A966EC10055DE99 /* TransatTextLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextLight.otf; sourceTree = "<group>"; };
@@ -339,8 +343,6 @@
 		EABA05451B474FED00154C75 /* test-avatar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "test-avatar.jpg"; sourceTree = "<group>"; };
 		EABAEDA21B432745000261F0 /* CandidateViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateViewModel.swift; sourceTree = "<group>"; };
 		EABAEDA41B4334EB000261F0 /* MeServiceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeServiceCell.swift; sourceTree = "<group>"; };
-		EABAEDA81B436E8F000261F0 /* LinkAccountService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkAccountService.swift; sourceTree = "<group>"; };
-		EABAEDAA1B437216000261F0 /* AuthWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthWebViewController.swift; sourceTree = "<group>"; };
 		EABD43D81AA1D28700B07813 /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
 		EABD43D91AA1D29C00B07813 /* Beta.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
 		EABD43DA1AA1D29C00B07813 /* Prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
@@ -537,6 +539,16 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		EA376CAE1B505FCD00C819E9 /* LinkAccount */ = {
+			isa = PBXGroup;
+			children = (
+				EA376CAF1B505FCD00C819E9 /* AuthWebViewController.swift */,
+				EA376CB01B505FCD00C819E9 /* LinkAccountService.swift */,
+				EA376CB71B505FF100C819E9 /* LinkAccount.storyboard */,
+			);
+			path = LinkAccount;
+			sourceTree = "<group>";
+		};
 		EA37776C1A966E380055DE99 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -605,7 +617,6 @@
 				EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */,
 				EA49286D1ADF291100118639 /* UpgradeService.swift */,
 				EAE1E07A1AE34C6200F03F13 /* LocationService.swift */,
-				EABAEDA81B436E8F000261F0 /* LinkAccountService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -686,6 +697,7 @@
 			children = (
 				EA95BBA81B3930B000701F08 /* Extensions */,
 				EAF81B1F1B3337EA00EED6DD /* AVKit */,
+				EA376CAE1B505FCD00C819E9 /* LinkAccount */,
 				EA5634DE1A7741FF00F62B52 /* Models */,
 				EA6650E91AA00A9C001BA40C /* Services */,
 				EAF4D7441A79AA5E00D35330 /* UserInterface */,
@@ -796,7 +808,6 @@
 			isa = PBXGroup;
 			children = (
 				EAA56F871B2B32E500DE3936 /* BaseViewController.swift */,
-				EABAEDAA1B437216000261F0 /* AuthWebViewController.swift */,
 				EA95BBA61B39308A00701F08 /* PageViewController.swift */,
 				EAA56F8A1B2B32E500DE3936 /* UserAvatarView.swift */,
 			);
@@ -1168,6 +1179,7 @@
 				EA4216521B3E219000613EFA /* DigitsKitResources.bundle in Resources */,
 				EA7078781B39345800BB9D08 /* AVKit.storyboard in Resources */,
 				EA3777751A966EC10055DE99 /* TransatTextMedium.otf in Resources */,
+				EA376CB51B505FF100C819E9 /* LinkAccount.storyboard in Resources */,
 				EAB8E7A61AE04D8D00B3046F /* Settings.storyboard in Resources */,
 				EA9F354A1A74CC6900E0C65D /* Taylr.xcassets in Resources */,
 				EA78C8801B323E140016AB73 /* Images.xcassets in Resources */,
@@ -1467,14 +1479,13 @@
 				EACEFB871B46740500901E85 /* LoadingViewController.swift in Sources */,
 				EAAD921D1ACF342C0014BA25 /* TaylrEnvironment.swift in Sources */,
 				EA1047301B4E74D000B1A76A /* ReactiveCocoa+Futures.swift in Sources */,
+				EA376CB21B505FCD00C819E9 /* LinkAccountService.swift in Sources */,
 				EAE1E07B1AE34C6200F03F13 /* LocationService.swift in Sources */,
 				EAF81B231B33388700EED6DD /* ProducerViewController.swift in Sources */,
-				EABAEDAB1B437216000261F0 /* AuthWebViewController.swift in Sources */,
 				EA6650ED1AA00A9C001BA40C /* AccountService.swift in Sources */,
 				EAA56FA21B2B32E500DE3936 /* BaseViewController.swift in Sources */,
 				EA773D261B431514009A9945 /* ProfileServiceCell.swift in Sources */,
 				EAA56F9F1B2B32E500DE3936 /* ProfileViewController.swift in Sources */,
-				EABAEDA91B436E8F000261F0 /* LinkAccountService.swift in Sources */,
 				EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */,
 				EA3594161B2DEF0C00E91337 /* MessageCell.swift in Sources */,
 				EA57CEC91B45EB4000759139 /* SignupViewController.swift in Sources */,
@@ -1497,6 +1508,7 @@
 				EAE1E07D1AE3788300F03F13 /* Globals.swift in Sources */,
 				EA95BBB11B3930B000701F08 /* PKHUDExtension.swift in Sources */,
 				EAA56F9C1B2B32E500DE3936 /* LoginViewController.swift in Sources */,
+				EA376CB11B505FCD00C819E9 /* AuthWebViewController.swift in Sources */,
 				EA95BBAF1B3930B000701F08 /* Bond+SDWebImage.swift in Sources */,
 				EAA56FA11B2B32E500DE3936 /* RootViewController.swift in Sources */,
 				EA95BBB21B3930B000701F08 /* ResourceExtension.swift in Sources */,
@@ -1551,6 +1563,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		EA376CB71B505FF100C819E9 /* LinkAccount.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EA376CB61B505FF100C819E9 /* Base */,
+			);
+			name = LinkAccount.storyboard;
+			sourceTree = "<group>";
+		};
 		EA5B74151B30F7BB008E5CBC /* TestLaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

@@ -21,12 +21,16 @@ class LinkAccountService {
         self.env = env
     }
     
-    func linkNewService(type: Service.ServiceType, makeAuthWebVC: (() -> AuthWebViewController?)? = nil) -> RACSignal {
+    func makeAuthWebVC() -> AuthWebViewController {
+        return UIStoryboard(name: "LinkAccount", bundle: nil).instantiateViewControllerWithIdentifier("AuthWeb") as! AuthWebViewController
+    }
+    
+    func linkNewService(type: Service.ServiceType, useWebView: Bool = true) -> RACSignal {
         switch type {
         case .Facebook:
             return linkFacebook()
         case .Instagram:
-            return linkInstagram(authWebVC: makeAuthWebVC?())
+            return linkInstagram(authWebVC: useWebView ? makeAuthWebVC() : nil)
         }
     }
     
