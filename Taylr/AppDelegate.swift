@@ -80,8 +80,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
 
         // TODO: put this into its own service
         listenForNotification(METIncrementalStoreObjectsDidChangeNotification).subscribeNext { _ in
-            for message in Message.by(MessageKeys.status, value: "sent").fetch().map({ $0 as! Message }) {
-                if let remoteURL = NSURL.fromString(message.video?.url) {
+            for video in Video.all().fetch().map({ $0 as! Video }) {
+                if let remoteURL = NSURL.fromString(video.url) {
                     Globals.downloadService.downloadFile(remoteURL)
                 }
             }
