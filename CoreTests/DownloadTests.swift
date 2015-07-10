@@ -11,12 +11,13 @@ import XCTest
 import Core
 import Nimble
 import BrightFutures
+import Async
 
 class DownloadTests: AsyncTestCase {
     
     var downloadService: DownloadService!
     let remoteURL = NSURL("http://s10tv.blob.core.windows.net/s10tv-test/public.mp4")
-    let bogusURL = NSURL("https://s10tv.blob.core.windows.net/s10tv-test/bogus.mp4")
+    let bogusURL = NSURL("http://s10tv.blob.core.windows.net/s10tv-test/bogus.mp4")
     
     override func setUp() {
         super.setUp()
@@ -56,7 +57,71 @@ class DownloadTests: AsyncTestCase {
         }
         waitForExpectationsWithTimeout(1, handler: nil)
     }
+    
+    func testDownloadCancel() {
+        let shouldFail = expectationWithDescription("should fail")
+        downloadService.downloadFile(remoteURL).onSuccess { _ in
+            fail()
+        }.onComplete { _ in
+            shouldFail.fulfill()
+        }
+        expect(self.downloadService.futuresByKey.count).to(equal(1))
+        expect(self.downloadService.requestsByKey.count).toEventually(equal(1))
+        
+        downloadService.removeFile(remoteURL)
+        
+        expect(self.downloadService.requestsByKey.count).toEventually(equal(0))
+        expect(self.downloadService.futuresByKey.count).toEventually(equal(0))
+        expect(self.downloadService.localURLForRemoteURL(self.remoteURL)).toNot(existOnDisk())
 
+        waitForExpectationsWithTimeout(1, handler: nil)
+    }
+    
+    
+    func testDownloadResume() {
+        expectFulfill("should fail") { f in
+            let fulfill = { f() }
+            downloadService.downloadFile(remoteURL).onSuccess { _ in
+                fail("should have been cancelled")
+            }.onComplete { _ in
+                fulfill()
+            }
+        }
+        
+        // TODO: Fix race condition. Cancellation does not work due to cache.fetch being async
+        // unless we first use toEventually to ensure that request exists
+        expect(self.downloadService.requestsByKey.count).toEventually(equal(1))
+        
+        expectFulfill("should have resumedata") { fulfill in
+            let key = downloadService.keyForURL(remoteURL)
+            // Wait until enough data is downloaded to have resumeData
+            Async.main(after: 1) {
+                self.downloadService.pauseDownloadFile(self.remoteURL).onSuccess { _ in
+                    fulfill()
+//                    perform {
+//                        self.downloadService.resumeDataCache.fetch(key)
+//                    }.onSuccess { resumeData in
+//                        expect(resumeData.length).to(beGreaterThan(0))
+//                        fulfill()
+//                    }.onFailure {
+//                        fail($0)
+//                        fulfill()
+//                    }
+                }
+            }
+        }
+        
+        expect(self.downloadService.requestsByKey.count).toEventually(equal(0), timeout: 2)
+
+        expectComplete("2nd download") {
+            downloadService.downloadFile(remoteURL).onFailure {
+                fail($0)
+            }
+        }
+        
+        waitForExpectationsWithTimeout(10, handler: nil)
+        
+    }
     
     func testNoDuplicateRequests() {
         downloadService.downloadFile(remoteURL)
@@ -65,13 +130,4 @@ class DownloadTests: AsyncTestCase {
         expect(self.downloadService.futuresByKey.count).to(equal(1))
     }
     
-    
-//
-//    func testCancelRequest() {
-//        
-//    }
-//    
-//    func testResumeRequest() {
-//        
-//    }
 }

@@ -15,6 +15,14 @@ extension Cache {
         return NSError(domain: HanekeGlobals.Domain, code: code.rawValue, userInfo: nil)
     }
     
+    func setValue(value : T, key: String) -> Future<T, NoError> {
+        let promise = Promise<T, NoError>()
+        set(value: value, key: key) { formattedValue in
+            promise.success(formattedValue)
+        }
+        return promise.future
+    }
+    
     func fetch(key: String) -> Future<T, NSError> {
         let promise = Promise<T, NSError>()
         fetch(key: key, failure: { error in

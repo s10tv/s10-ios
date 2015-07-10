@@ -29,7 +29,7 @@ extension XCTestExpectation {
 }
 
 extension XCTestCase {
-    func expectFulfill(description: String = "expectation", @noescape block: (()-> ()) ->  ()) {
+    func expectFulfill(_ description: String = "expectation", @noescape block: (()-> ()) ->  ()) {
         let expectation = expectationWithDescription(description)
         block { expectation.fulfill() }
     }
@@ -46,7 +46,7 @@ public class AsyncTestCase : XCTestCase {
         invalidationTokens.removeAll(keepCapacity: false)
     }
     
-    public func expectComplete<T, E>(description: String = "future completed", @noescape futureProducer: () -> Future<T, E>) {
+    public func expectComplete<T, E>(_ description: String = "future completed", @noescape futureProducer: () -> Future<T, E>) {
         let token = InvalidationToken()
         expectationWithDescription(description).fulfill(token: token, futureProducer: futureProducer)
     }

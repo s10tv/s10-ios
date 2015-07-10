@@ -72,16 +72,22 @@ public class DownloadService {
     }
     
     public func pauseDownloadFile(remoteURL: NSURL) -> Future<(), NoError> {
-        return future(context: queue.context) {
-            let key = self.keyForURL(remoteURL)
-            if let request = self.getRequest(key) {
-                request.cancel()
-                request.response { _, _, data, _ in
-                    self.resumeDataCache.set(value: data as! NSData, key: key)
+        let key = self.keyForURL(remoteURL)
+        if let request = self.getRequest(key) {
+            let promise = Promise<(), NoError>()
+            request.response { _, _, data, _ in
+//                if let data = data {
+                self.resumeDataCache.setValue(data as! NSData, key: key).onSuccess { _ in
+                    promise.success()
                 }
+//                } else {
+//                    promise.success()
+//                }
             }
-            return Result(value: ())
+            request.cancel()
+            return promise.future
         }
+        return Future.succeeded()
     }
     
     public func fetchFile(remoteURL: NSURL) -> Future<NSURL, NSError> {
@@ -143,7 +149,7 @@ public class DownloadService {
         }
     }
     
-    private func keyForURL(url: NSURL) -> String {
+    public func keyForURL(url: NSURL) -> String {
         let key = escapeString(url.absoluteString!)
         if let pathExtension = url.pathExtension where pathExtension != key.pathExtension {
             return "\(key).\(pathExtension)"
