@@ -48,30 +48,6 @@ class RACPlayground : XCTestCase {
         signal |> map(transform)
         waitForExpectationsWithTimeout(1, handler: nil)
     }
-
-    func testPromise() {
-        let promise = RACPromise<Int, NSError>()
-        let cancelCalled = expectationWithDescription("cancel called")
-        promise.future.onCancel {
-            cancelCalled.fulfill()
-        }
-        promise.cancel()
-        waitForExpectationsWithTimeout(1, handler: nil)
-    }
-    
-    func testFutureCancel() {
-        let promise = Promise<(), NSError>()
-        // TODO: Would be great to add materialize & takeUntil to futures
-        let cancelExpectation = expectationWithDescription("cancel called")
-        promise.future.onCancel {
-            cancelExpectation.fulfill()
-        }
-
-
-        promise.cancel()
-        waitForExpectationsWithTimeout(1, handler: nil)
-
-    }
     
     func testFutureToSignal() {
         let promise = Promise<Int, NSError>()
@@ -92,10 +68,10 @@ class RACPlayground : XCTestCase {
             |> materialize
             |> dematerialize
         
-        promise.error(NSError(domain: "", code: 0, userInfo: nil))
+        promise.failure(NSError(domain: "", code: 0, userInfo: nil))
         
         let errorReceived = expectationWithDescription("error received")
-        sp.future().onError { _ in
+        sp.future().onFailure { _ in
             errorReceived.fulfill()
         }
         waitForExpectationsWithTimeout(1, handler: nil)

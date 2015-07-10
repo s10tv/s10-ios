@@ -21,8 +21,6 @@
 		EA1047341B4E756200B1A76A /* MeteorServiceTestingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1047321B4E756200B1A76A /* MeteorServiceTestingExtension.swift */; };
 		EA1047351B4E756200B1A76A /* TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1047331B4E756200B1A76A /* TestExtensions.swift */; };
 		EA1047361B4F1F3E00B1A76A /* FutureExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA10472B1B4E746800B1A76A /* FutureExtensions.swift */; };
-		EA1047381B4F2A6A00B1A76A /* RACExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1047371B4F2A6A00B1A76A /* RACExtensions.swift */; };
-		EA1047391B4F2D3800B1A76A /* RACExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1047371B4F2A6A00B1A76A /* RACExtensions.swift */; };
 		EA1F9C8C1B47678700D1620F /* AvatarCoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1F9C8B1B47678700D1620F /* AvatarCoverCell.swift */; };
 		EA3594141B2DE5C300E91337 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594131B2DE5C300E91337 /* ConversationViewController.swift */; };
 		EA3594161B2DEF0C00E91337 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594151B2DEF0C00E91337 /* MessageCell.swift */; };
@@ -244,7 +242,6 @@
 		EA10472D1B4E74A300B1A76A /* ReactiveCocoa+Futures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "ReactiveCocoa+Futures.swift"; sourceTree = "<group>"; };
 		EA1047321B4E756200B1A76A /* MeteorServiceTestingExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorServiceTestingExtension.swift; sourceTree = "<group>"; };
 		EA1047331B4E756200B1A76A /* TestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestExtensions.swift; sourceTree = "<group>"; };
-		EA1047371B4F2A6A00B1A76A /* RACExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACExtensions.swift; sourceTree = "<group>"; };
 		EA1F9C8B1B47678700D1620F /* AvatarCoverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarCoverCell.swift; sourceTree = "<group>"; };
 		EA3594131B2DE5C300E91337 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		EA3594151B2DEF0C00E91337 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
@@ -638,7 +635,6 @@
 				EA95BBB51B3932B500701F08 /* BaseViews.swift */,
 				EA95BBB61B3932B500701F08 /* DesignableViews.swift */,
 				EA10472D1B4E74A300B1A76A /* ReactiveCocoa+Futures.swift */,
-				EA1047371B4F2A6A00B1A76A /* RACExtensions.swift */,
 			);
 			path = Includes;
 			sourceTree = "<group>";
@@ -1411,7 +1407,6 @@
 				EA4757151B392C19002071D7 /* Segue.swift in Sources */,
 				EAF6701D1B31E6550025D7CF /* Core.m in Sources */,
 				EACEFB921B472E8800901E85 /* ConversationInteractor.swift in Sources */,
-				EA1047381B4F2A6A00B1A76A /* RACExtensions.swift in Sources */,
 				EAF670741B31F9450025D7CF /* MeteorExtension.swift in Sources */,
 				EA9C166F1B3726E300371B50 /* MessageViewModel.swift in Sources */,
 				EAF6707B1B31F9450025D7CF /* _Message.swift in Sources */,
@@ -1526,7 +1521,6 @@
 				EAF6709C1B32026F0025D7CF /* IntegrationTests.swift in Sources */,
 				EA95BBC11B3932BE00701F08 /* GenericExtensions.swift in Sources */,
 				EA10472F1B4E74D000B1A76A /* ReactiveCocoa+Futures.swift in Sources */,
-				EA1047391B4F2D3800B1A76A /* RACExtensions.swift in Sources */,
 				EA1047351B4E756200B1A76A /* TestExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
