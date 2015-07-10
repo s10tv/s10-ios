@@ -24,6 +24,7 @@ public class Service : _Service {
     }()
     
     public private(set) lazy var userAvatarURL: Dynamic<NSURL?> = {
-        return self.dynValue(ServiceKeys.userAvatarUrl).map { NSURL.fromString($0) }
+        return self.user!.avatarURL
+//        return self.dynValue(ServiceKeys.userAvatarUrl).map { NSURL.fromString($0) }
     }()
 }

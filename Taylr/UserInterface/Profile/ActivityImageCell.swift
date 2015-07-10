@@ -39,7 +39,7 @@ class ActivityImageCell : UITableViewCell {
     }
     
     func bindActivity(activity: ActivityViewModel) {
-//        activity.avatarURL ->> userImageView.dynImageURL
+        activity.avatarURL ->> userImageView.dynImageURL
         activity.username ->> usernameLabel
         activity.formattedDate ->> timestampLabel
         activity.imageURL ->> contentImageView.dynImageURL

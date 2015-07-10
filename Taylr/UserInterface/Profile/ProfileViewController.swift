@@ -23,7 +23,7 @@ class ProfileViewController : BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = UITableViewAutomaticDimension
-        tableView.estimatedRowHeight = 300
+        tableView.estimatedRowHeight = 500
         
         dataSourceBond = UITableViewDataSourceBond(tableView: tableView, disableAnimation: false)
         let mainSection = DynamicArray([profileVM.user]).map { [unowned self] (user, index) -> UITableViewCell in
