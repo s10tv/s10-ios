@@ -25,7 +25,7 @@ public struct ActivityViewModel {
         avatarURL = service.userAvatarURL
         username = service.dynUserDisplayName.map(Formatters.cleanString)
         formattedDate = reduce(activity.dynTimestamp, CurrentDate) {
-            Formatters.formatRelativeDate($0, relativeTo: $1) ?? ""
+            Formatters.formatInterval($0, relativeTo: $1) ?? ""
         }
         image = activity.dynImage
         text = activity.dynText.map(Formatters.cleanString)

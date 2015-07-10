@@ -42,6 +42,10 @@ public struct Formatters {
         return height.stringFromMeters(Double(heightInCm) / 100)
     }
     
+    public static func formatInterval(date: NSDate?, relativeTo: NSDate = NSDate()) -> String? {
+        return date.map { timeInterval.stringForTimeIntervalFromDate(NSDate(), toDate: $0) }
+    }
+    
     public static func formatRelativeDate(date: NSDate?, relativeTo: NSDate = NSDate()) -> String? {
         if let date = date {
             let interval = relativeTo.timeIntervalSinceDate(date)
@@ -56,9 +60,8 @@ public struct Formatters {
             } else if interval > secondsPerDay {
                 let timeText = date.formattedDateWithFormat("h:mma")
                 return "Yesterday \(timeText)"
-            } else {
-                return timeInterval.stringForTimeIntervalFromDate(NSDate(), toDate: date)
             }
+            return timeInterval.stringForTimeIntervalFromDate(NSDate(), toDate: date)
         }
         return nil
     }
