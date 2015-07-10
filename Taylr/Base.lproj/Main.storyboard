@@ -119,7 +119,7 @@
                                                     <rect key="frame" x="0.0" y="0.0" width="180" height="217"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ib-JK-1el" userLabel="Name">
-                                                    <rect key="frame" x="7" y="225" width="39.5" height="17"/>
+                                                    <rect key="frame" x="7" y="225" width="40" height="17"/>
                                                     <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -516,13 +516,13 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="tony_xiao" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9wa-HC-Dgi">
-                                                    <rect key="frame" x="66" y="22" width="77.5" height="21.5"/>
+                                                    <rect key="frame" x="66" y="22" width="78" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2m ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B4g-8g-g3c" userLabel="Timestamp">
-                                                    <rect key="frame" x="325" y="26" width="42" height="14.5"/>
+                                                    <rect key="frame" x="325" y="26" width="42" height="15"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -530,13 +530,8 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="240" image="sample-taylor-video-frame" translatesAutoresizingMaskIntoConstraints="NO" id="a7p-AH-18h">
                                                     <rect key="frame" x="0.0" y="66" width="375" height="375"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" secondItem="a7p-AH-18h" secondAttribute="height" multiplier="1:1" id="5EO-ps-DlN"/>
+                                                        <constraint firstAttribute="height" constant="375" id="QLN-B9-blj"/>
                                                     </constraints>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <real key="value" value="5"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remembering this incredible Manchester cro from the other night, and getting" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.94999999999999996" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bGD-9B-jA6">
                                                     <rect key="frame" x="18" y="461" width="339" height="34"/>
@@ -564,7 +559,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="facebook" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8P-bL-WJp">
-                                                    <rect key="frame" x="49" y="551" width="57.5" height="16"/>
+                                                    <rect key="frame" x="49" y="551" width="58" height="16"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -625,6 +620,7 @@
                                         <connections>
                                             <outlet property="contentImageView" destination="a7p-AH-18h" id="kyG-ND-Kpw"/>
                                             <outlet property="contentTextLabel" destination="bGD-9B-jA6" id="AVk-pF-hpD"/>
+                                            <outlet property="imageHeightConstraint" destination="QLN-B9-blj" id="S9g-bJ-bVC"/>
                                             <outlet property="quoteLabel" destination="QsF-hW-Xtz" id="ln1-9I-N8X"/>
                                             <outlet property="serviceNameLabel" destination="f8P-bL-WJp" id="Abw-d0-oBA"/>
                                             <outlet property="timestampLabel" destination="B4g-8g-g3c" id="wfA-sq-RXH"/>
@@ -713,7 +709,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="U3a-sc-A4a" userLabel="Navigation Bar">
                                 <rect key="frame" x="0.0" y="20" width="375" height="70"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KPL-gz-OCJ">
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KPL-gz-OCJ">
                                         <rect key="frame" x="123" y="10" width="131" height="50"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="uD7-V4-mF6" customClass="UserAvatarView" customModule="Taylr" customModuleProvider="target">
@@ -724,13 +720,13 @@
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="active 5m ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhe-ik-k94">
-                                                <rect key="frame" x="58" y="25" width="72.5" height="13.5"/>
+                                                <rect key="frame" x="58" y="25" width="73" height="14"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                                 <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylor Swift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0x-EU-7eq">
-                                                <rect key="frame" x="58" y="17" width="72.5" height="16.5"/>
+                                                <rect key="frame" x="58" y="17" width="73" height="17"/>
                                                 <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
                                                 <color key="textColor" red="0.011764705882352941" green="0.011764705882352941" blue="0.011764705882352941" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>

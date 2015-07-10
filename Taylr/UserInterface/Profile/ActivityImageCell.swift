@@ -10,10 +10,6 @@ import Foundation
 import Core
 import Bond
 
-protocol ActivityCellDelegate : class {
-    func contentImageDidChange(cell: ActivityImageCell)
-}
-
 class ActivityImageCell : UITableViewCell {
     
     @IBOutlet weak var userImageView: UIImageView!
@@ -23,8 +19,8 @@ class ActivityImageCell : UITableViewCell {
     @IBOutlet weak var contentTextLabel: UILabel!
     @IBOutlet weak var quoteLabel: UILabel!
     @IBOutlet weak var serviceNameLabel: UILabel!
+    @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
     
-    var delegate: ActivityCellDelegate?
     var activity: ActivityViewModel? {
         didSet { if let a = activity { bindActivity(a) } }
     }
@@ -33,19 +29,25 @@ class ActivityImageCell : UITableViewCell {
         super.awakeFromNib()
         userImageView.makeCircular()
         contentImageView.clipsToBounds = true
-        contentImageView.racObserve("image").subscribeNext { [weak self] image in
-            self?.delegate?.contentImageDidChange(self!)
-        }
     }
     
     func bindActivity(activity: ActivityViewModel) {
         activity.avatarURL ->> userImageView.dynImageURL
         activity.username ->> usernameLabel
         activity.formattedDate ->> timestampLabel
-        activity.image.map { $0.map { $0.url } } ->> contentImageView.dynImageURL
         activity.text ->> contentTextLabel
         activity.quote ->> quoteLabel
         activity.serviceName ->> serviceNameLabel
+        activity.image.map { [unowned self] image in
+            if let image = image {
+                let width = self.contentImageView.frame.width
+                self.imageHeightConstraint.constant = width / image.width.f * image.height.f
+                return image.url
+            } else {
+                self.imageHeightConstraint.constant = 0
+                return nil
+            }
+        } ->> contentImageView.dynImageURL
     }
     
     override func prepareForReuse() {

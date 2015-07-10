@@ -42,7 +42,6 @@ class ProfileViewController : BaseViewController {
             let cell = self.tableView.dequeueReusableCellWithIdentifier(.ImageCell,
                 forIndexPath: NSIndexPath(forRow: index, inSection: 2)) as! ActivityImageCell
             cell.activity = activity
-            cell.delegate = self
             return cell
         }
         DynamicArray([mainSection, servicesSection, activitiesSection]) ->> dataSourceBond
@@ -89,19 +88,6 @@ class ProfileViewController : BaseViewController {
             }
         }
         presentViewController(alert)
-    }
-}
-
-extension ProfileViewController : ActivityCellDelegate {
-    func contentImageDidChange(cell: ActivityImageCell) {
-        if let indexPath = tableView.indexPathForCell(cell) {
-            let size = cell.contentView.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
-            if cell.contentView.frame.height != size.height {
-//            tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
-                tableView.beginUpdates()
-                tableView.endUpdates()
-            }
-        }
     }
 }
 
