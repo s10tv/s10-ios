@@ -18,7 +18,7 @@ class ProfileMainCell : UITableViewCell {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var activityLabel: UILabel!
-    @IBOutlet weak var aboutLabel: DesignableLabel!
+    @IBOutlet weak var aboutLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
     var dataSourceBond: UICollectionViewDataSourceBond<UICollectionViewCell>!
@@ -30,7 +30,7 @@ class ProfileMainCell : UITableViewCell {
         viewModel.username ->> usernameLabel
         viewModel.distance ->> distanceLabel
         viewModel.lastActive ->> activityLabel
-        aboutLabel.rawText = viewModel.about.value // TODO: Add Dynamic Bond here
+        viewModel.about ->> aboutLabel
         viewModel.services.map { [unowned self] (service, index) -> UICollectionViewCell in
             let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier(.ServiceCell,
                 forIndexPath: NSIndexPath(forRow: index, inSection: 0)) as! ProfileServiceCell

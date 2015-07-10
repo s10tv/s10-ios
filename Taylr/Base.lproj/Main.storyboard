@@ -24,8 +24,6 @@
             <string>TransatTextStandard</string>
             <string>TransatTextStandard</string>
             <string>TransatTextStandard</string>
-            <string>TransatTextStandard</string>
-            <string>TransatTextStandard</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -352,24 +350,12 @@
                                                     <color key="textColor" red="0.60777515172958374" green="0.60788232088088989" blue="0.60776835680007935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="247" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.94999999999999996" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vCn-Te-NpZ" customClass="DesignableLabel" customModule="Taylr" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="272" width="359" height="112"/>
-                                                    <attributedString key="attributedText">
-                                                        <fragment>
-                                                            <string key="content">Born in 1989. Taylor Alison Swift is an American singer-songwriter and actress. Raised in Wyomissing, Pennsylvania, Swift moved to Nashville, Tennessee, at the age of 14 to pursue a career in country music</string>
-                                                            <attributes>
-                                                                <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                                <font key="NSFont" size="16" name="TransatTextStandard"/>
-                                                                <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="truncatingTail" baseWritingDirection="natural" minimumLineHeight="20"/>
-                                                            </attributes>
-                                                        </fragment>
-                                                    </attributedString>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="247" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.94999999999999996" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vCn-Te-NpZ">
+                                                    <rect key="frame" x="18" y="272" width="339" height="112"/>
+                                                    <string key="text">Born in 1989. Taylor Alison Swift is an American singer-songwriter and actress. Raised in Wyomissing, Pennsylvania, Swift moved to Nashville, Tennessee, at the age of 14 to pursue a career in country music</string>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                                                            <real key="value" value="16"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MHj-3N-OfG">
                                                     <rect key="frame" x="299" y="156" width="68" height="36"/>
@@ -457,26 +443,33 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="vCn-Te-NpZ" secondAttribute="bottom" constant="8" id="ASx-Ow-KGy"/>
                                                 <constraint firstItem="qh5-iy-Fge" firstAttribute="centerY" secondItem="2Sg-08-WeT" secondAttribute="centerY" constant="30" id="Emf-58-sSV"/>
                                                 <constraint firstItem="2Sg-08-WeT" firstAttribute="leading" secondItem="qh5-iy-Fge" secondAttribute="trailing" constant="12" id="FJb-lL-hDL"/>
-                                                <constraint firstItem="vCn-Te-NpZ" firstAttribute="leading" secondItem="uY6-9P-VPb" secondAttribute="leadingMargin" id="KRa-0h-PQC"/>
+                                                <constraint firstItem="vCn-Te-NpZ" firstAttribute="leading" secondItem="uY6-9P-VPb" secondAttribute="leadingMargin" constant="10" id="KRa-0h-PQC"/>
                                                 <constraint firstItem="NCh-eV-aXm" firstAttribute="leading" secondItem="qh5-iy-Fge" secondAttribute="trailing" constant="8" id="Kin-Sb-7bb"/>
                                                 <constraint firstItem="6ml-E6-ZMG" firstAttribute="trailing" secondItem="MHj-3N-OfG" secondAttribute="trailing" constant="8" id="LXu-3i-IHm"/>
                                                 <constraint firstAttribute="bottom" secondItem="6R8-aE-7Ce" secondAttribute="bottom" id="PvE-a4-7Fr"/>
                                                 <constraint firstItem="brj-Vp-1XD" firstAttribute="leading" secondItem="2Sg-08-WeT" secondAttribute="leading" id="Qq3-Hc-68c"/>
                                                 <constraint firstItem="qh5-iy-Fge" firstAttribute="leading" secondItem="uY6-9P-VPb" secondAttribute="leadingMargin" id="RBX-Ha-UR6"/>
                                                 <constraint firstItem="6ml-E6-ZMG" firstAttribute="leading" secondItem="uY6-9P-VPb" secondAttribute="leading" id="Sa9-Qc-IWI"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="vCn-Te-NpZ" secondAttribute="trailing" id="Ts4-gB-5d3"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="vCn-Te-NpZ" secondAttribute="trailing" constant="10" id="Ts4-gB-5d3"/>
                                                 <constraint firstItem="NCh-eV-aXm" firstAttribute="top" secondItem="6ml-E6-ZMG" secondAttribute="bottom" constant="8" id="VJF-ea-e5j"/>
                                                 <constraint firstItem="qh5-iy-Fge" firstAttribute="bottom" secondItem="6ml-E6-ZMG" secondAttribute="bottom" constant="40" id="Ygx-Oi-EoH"/>
                                                 <constraint firstAttribute="trailing" secondItem="6ml-E6-ZMG" secondAttribute="trailing" id="Z7a-nQ-BqT"/>
                                                 <constraint firstItem="6R8-aE-7Ce" firstAttribute="leading" secondItem="uY6-9P-VPb" secondAttribute="leading" id="ZBp-g2-Kor"/>
                                                 <constraint firstItem="qh5-iy-Fge" firstAttribute="centerX" secondItem="uE6-2o-4dx" secondAttribute="centerX" id="aTw-a5-x2d"/>
+                                                <constraint firstItem="qh5-iy-Fge" firstAttribute="centerY" relation="lessThanOrEqual" secondItem="vbX-bI-Gli" secondAttribute="centerY" id="are-Vj-8rR"/>
                                                 <constraint firstItem="brj-Vp-1XD" firstAttribute="top" secondItem="2Sg-08-WeT" secondAttribute="bottom" constant="8" id="c16-SJ-B8x"/>
                                                 <constraint firstAttribute="trailing" secondItem="6R8-aE-7Ce" secondAttribute="trailing" id="d76-rv-NrY"/>
+                                                <constraint firstItem="vbX-bI-Gli" firstAttribute="top" secondItem="qh5-iy-Fge" secondAttribute="bottom" constant="8" id="dA8-VW-rS1"/>
                                                 <constraint firstItem="vCn-Te-NpZ" firstAttribute="top" secondItem="uE6-2o-4dx" secondAttribute="bottom" constant="8" id="jxb-kd-Ylb"/>
                                                 <constraint firstItem="vbX-bI-Gli" firstAttribute="baseline" secondItem="uE6-2o-4dx" secondAttribute="baseline" id="u3R-8i-RlO"/>
                                                 <constraint firstItem="vbX-bI-Gli" firstAttribute="leading" secondItem="uE6-2o-4dx" secondAttribute="trailing" constant="8" id="w2W-h1-mrY"/>
                                                 <constraint firstItem="6ml-E6-ZMG" firstAttribute="top" secondItem="uY6-9P-VPb" secondAttribute="top" id="zFn-2Z-b9R"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="u3R-8i-RlO"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="aboutLabel" destination="vCn-Te-NpZ" id="LdE-Do-CEi"/>
@@ -522,32 +515,32 @@
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Remembering this incredible Manchester cro from the other night, and getting" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.94999999999999996" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bGD-9B-jA6">
-                                                    <rect key="frame" x="18" y="461" width="339" height="34"/>
-                                                    <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="17"/>
+                                                    <rect key="frame" x="18" y="461" width="339" height="41"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TdP-t0-OJR" userLabel="Block Quote Mark">
-                                                    <rect key="frame" x="27" y="511" width="1" height="32"/>
+                                                    <rect key="frame" x="27" y="512" width="1" height="36"/>
                                                     <color key="backgroundColor" red="0.8862745098" green="0.8862745098" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="1" id="che-qT-cne"/>
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="It is impossible to live in the world without attachments, or indeed to eradicate them. " lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.94999998807907104" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QsF-hW-Xtz">
-                                                    <rect key="frame" x="38" y="511" width="309" height="32"/>
-                                                    <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="16"/>
+                                                    <rect key="frame" x="38" y="512" width="309" height="36"/>
+                                                    <fontDescription key="fontDescription" type="italicSystem" pointSize="15"/>
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="via" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Db4-z6-nqk">
-                                                    <rect key="frame" x="24" y="551" width="17" height="16"/>
+                                                    <rect key="frame" x="24" y="556" width="17" height="16"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="facebook" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f8P-bL-WJp">
-                                                    <rect key="frame" x="49" y="551" width="58" height="16"/>
+                                                    <rect key="frame" x="49" y="556" width="58" height="16"/>
                                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -578,7 +571,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="INE-ms-J1X" secondAttribute="trailing" id="DWr-Wy-Zg9"/>
                                                 <constraint firstItem="a7p-AH-18h" firstAttribute="top" secondItem="AdT-TO-ODD" secondAttribute="bottom" constant="8" symbolic="YES" id="FzE-pu-OfL"/>
                                                 <constraint firstItem="f8P-bL-WJp" firstAttribute="baseline" secondItem="Db4-z6-nqk" secondAttribute="baseline" id="G7H-7w-xOc"/>
-                                                <constraint firstItem="QsF-hW-Xtz" firstAttribute="top" secondItem="bGD-9B-jA6" secondAttribute="bottom" constant="16" id="GCa-qQ-XNt"/>
+                                                <constraint firstItem="QsF-hW-Xtz" firstAttribute="top" secondItem="bGD-9B-jA6" secondAttribute="bottom" constant="10" id="GCa-qQ-XNt"/>
                                                 <constraint firstItem="AdT-TO-ODD" firstAttribute="top" secondItem="MfE-Pq-Xgn" secondAttribute="topMargin" id="NwQ-Fz-UEi"/>
                                                 <constraint firstItem="bGD-9B-jA6" firstAttribute="top" secondItem="TdP-t0-OJR" secondAttribute="top" id="P1I-QP-92G"/>
                                                 <constraint firstItem="B4g-8g-g3c" firstAttribute="centerY" secondItem="9wa-HC-Dgi" secondAttribute="centerY" id="PrU-w3-WBN"/>
