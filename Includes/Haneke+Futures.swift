@@ -24,4 +24,10 @@ extension Cache {
         })
         return promise.future
     }
+    
+    func pop(key: String) -> Future<T, NSError> {
+        let future = fetch(key)
+        remove(key: key)
+        return future
+    }
 }

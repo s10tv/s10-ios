@@ -33,6 +33,7 @@ public class DownloadService {
     let queue = Queue()
     public let resumeDataCache: Cache<NSData> // TODO: Make Private once upgrade to swift 2
     public var requestsByKey: [String: Request] = [:] // TODO: Make private once we upgrade to swift 2
+    public var futuresByKey: [String: Future<NSURL, NSError>] = [:]
     
     public var baseDir: NSURL {
         let directoryURL = NSFileManager.defaultManager().URLsForDirectory(.CachesDirectory, inDomains: .UserDomainMask)[0] as! NSURL
@@ -53,16 +54,21 @@ public class DownloadService {
     
     public func downloadFile(remoteURL: NSURL) -> Future<NSURL, NSError> {
         let key = keyForURL(remoteURL)
-        return perform {
-            getRequest(key).map { future($0) } ?? makeRequest(remoteURL, key: key)
-        }.mapError { _ in
-            NSError() // TODO: Big hack, revise flatMap to promoteError?
-        }.flatMap {
-            $0.responseData()
-        }.map { _ -> NSURL in
-            self.resumeDataCache.remove(key: key)
-            return self.localURLForKey(key)
+        if futuresByKey[key] == nil {
+            futuresByKey[key] = perform {
+                getRequest(key).map { future($0) } ?? makeRequest(remoteURL, key: key)
+            }.mapError {
+                $0 as Any as! NSError // TODO: Big hack, revise flatMap to promoteError?
+            }.flatMap {
+                $0.responseData()
+            }.map { _ -> NSURL in
+                return self.localURLForKey(key)
+            }.onComplete { _ in
+                // TODO: Thread-safety
+                self.futuresByKey[key] = nil
+            }
         }
+        return futuresByKey[key]!
     }
     
     public func pauseDownloadFile(remoteURL: NSURL) -> Future<(), NoError> {
@@ -108,6 +114,10 @@ public class DownloadService {
         }
     }
     
+    public func localURLForRemoteURL(remoteURL: NSURL) -> NSURL {
+        return localURLForKey(keyForURL(remoteURL))
+    }
+    
     private func getRequest(key: String) -> Request? {
         return requestsByKey[key]
     }
@@ -117,15 +127,19 @@ public class DownloadService {
             return self?.localURLForKey(key) ?? tempURL
         }
         return perform {
-            resumeDataCache.fetch(key)
+            resumeDataCache.pop(key)
         }.map {
             self.alamo.download($0, destination: dest)
         }.recover { _ in
             self.alamo.download(.GET, remoteURL, destination: dest)
         }.map {
             $0.validate()
-        }.onSuccess {
-            self.requestsByKey[key] = $0
+        }.onSuccess { request in
+            // TODO: Serialize data strucure access
+            self.requestsByKey[key] = request
+            request.responseData().onComplete { _ in
+                self.requestsByKey[key] = nil
+            }
         }
     }
     

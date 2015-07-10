@@ -29,30 +29,44 @@ class DownloadTests: AsyncTestCase {
         downloadService.removeAllFiles()
     }
     
-    func testDownloadSuccessful() {
+    func testDownloadSuccess() {
+        let fileRemoved = expectationWithDescription("file removed")
         expectComplete {
             perform {
                 downloadService.downloadFile(remoteURL)
-            }.onSuccess {
-                expect($0).to(existOnDisk())
-            }.onFailure {
-                fail($0)
-            }
+            }.onSuccess { localURL in
+                expect(localURL).to(existOnDisk())
+                self.downloadService.removeFile(self.remoteURL).onSuccess {
+                    expect(NSURL()).toNot(existOnDisk())
+                    fileRemoved.fulfill()
+                }
+            }.onFailure { fail($0) }
         }
         waitForExpectationsWithTimeout(10, handler: nil)
     }
     
-//    func testNoDuplicateRequests() {
-//        downloadService.downloadFile(remoteURL)
-//        downloadService.downloadFile(remoteURL)
-//        expect(self.downloadService.requestsByKey.count).to(equal(1))
-//    }
+    func testDownloadFailure() {
+        expectFulfill { fulfill in
+            let succeed = { fulfill() } // Work around swift compiler bug
+            downloadService.downloadFile(bogusURL).onFailure { error in
+                succeed()
+            }.onSuccess { _ in
+                fail()
+            }
+        }
+        waitForExpectationsWithTimeout(1, handler: nil)
+    }
+
+    
+    func testNoDuplicateRequests() {
+        downloadService.downloadFile(remoteURL)
+        downloadService.downloadFile(remoteURL)
+        
+        expect(self.downloadService.futuresByKey.count).to(equal(1))
+    }
     
     
-//    func testDownloadFailure() {
-//        
-//    }
-//    
+//
 //    func testCancelRequest() {
 //        
 //    }

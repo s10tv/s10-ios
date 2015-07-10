@@ -30,6 +30,11 @@ extension Request {
             return nil
         })
     }
+}
+
+// MARK: - BrightFutures
+
+extension Request {
     
     public func responseData() -> Future<NSData?, NSError> {
         let promise = Promise<NSData?, NSError>()
