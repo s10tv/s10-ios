@@ -6,6 +6,7 @@ public enum CollectionViewCellreuseIdentifier : String {
     case MeServiceCell = "MeServiceCell"
     case MessageCell = "MessageCell"
     case ProducerCell = "ProducerCell"
+    case ServiceCell = "ServiceCell"
 }
 
 public enum NavigationControllerStoryboardIdentifier : String {
@@ -34,7 +35,6 @@ public enum TableViewCellreuseIdentifier : String {
     case ConnectionCell = "ConnectionCell"
     case ImageCell = "ImageCell"
     case ProfileMainCell = "ProfileMainCell"
-    case ServiceCell = "ServiceCell"
     case SettingsLabelCell = "SettingsLabelCell"
     case SettingsPhotoCell = "SettingsPhotoCell"
     case SettingsTextCell = "SettingsTextCell"

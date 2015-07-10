@@ -10,10 +10,9 @@ import UIKit
 import Core
 import Bond
 
-class ProfileServiceCell : UITableViewCell {
+class ProfileServiceCell : UICollectionViewCell {
     
     @IBOutlet weak var serviceIconView: UIImageView!
-    @IBOutlet weak var userDisplayNameLabel: UILabel!
 
     var service: ServiceViewModel? {
         didSet { if let s = service { bindService(s) } }
@@ -21,13 +20,11 @@ class ProfileServiceCell : UITableViewCell {
     
     func bindService(service: ServiceViewModel) {
         service.serviceIcon ->> serviceIconView
-        service.userDisplayName ->> userDisplayNameLabel
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         serviceIconView.designatedBond.unbindAll()
-        userDisplayNameLabel.designatedBond.unbindAll()
     }
     
 }

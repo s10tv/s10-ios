@@ -19,6 +19,9 @@ class ProfileMainCell : UITableViewCell {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var activityLabel: UILabel!
     @IBOutlet weak var aboutLabel: DesignableLabel!
+    @IBOutlet weak var collectionView: UICollectionView!
+    
+    var dataSourceBond: UICollectionViewDataSourceBond<UICollectionViewCell>!
     
     func bindViewModel(viewModel: ProfileInteractor) {
         viewModel.avatarURL ->> avatarView.dynImageURL
@@ -28,6 +31,17 @@ class ProfileMainCell : UITableViewCell {
         viewModel.distance ->> distanceLabel
         viewModel.lastActive ->> activityLabel
         aboutLabel.rawText = viewModel.about.value // TODO: Add Dynamic Bond here
+        viewModel.services.map { [unowned self] (service, index) -> UICollectionViewCell in
+            let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier(.ServiceCell,
+                forIndexPath: NSIndexPath(forRow: index, inSection: 0)) as! ProfileServiceCell
+            cell.service = service
+            return cell
+        } ->> dataSourceBond
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        fatalError("ProfileMainCell is not designed to be re-used")
     }
     
     override func awakeFromNib() {
@@ -35,6 +49,6 @@ class ProfileMainCell : UITableViewCell {
         coverImageView.clipsToBounds = true
         avatarView.dynPlaceholderImage = avatarView.image
         coverImageView.dynPlaceholderImage = coverImageView.image
+        dataSourceBond = UICollectionViewDataSourceBond(collectionView: collectionView)
     }
-    
 }

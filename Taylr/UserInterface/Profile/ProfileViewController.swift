@@ -32,19 +32,13 @@ class ProfileViewController : BaseViewController {
             self.mainCell.bindViewModel(self.profileVM)
             return self.mainCell
         }
-        let servicesSection = profileVM.services.map { [unowned self] (service, index) -> UITableViewCell in
-            let cell = self.tableView.dequeueReusableCellWithIdentifier(.ServiceCell,
-                forIndexPath: NSIndexPath(forRow: index, inSection: 1)) as! ProfileServiceCell
-            cell.service = service
-            return cell
-        }
         let activitiesSection = profileVM.activities.map { [unowned self] (activity, index) -> UITableViewCell in
             let cell = self.tableView.dequeueReusableCellWithIdentifier(.ImageCell,
                 forIndexPath: NSIndexPath(forRow: index, inSection: 2)) as! ActivityImageCell
             cell.activity = activity
             return cell
         }
-        DynamicArray([mainSection, servicesSection, activitiesSection]) ->> dataSourceBond
+        DynamicArray([mainSection, activitiesSection]) ->> dataSourceBond
     }
     
     override func viewWillAppear(animated: Bool) {
