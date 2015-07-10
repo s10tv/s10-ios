@@ -32,7 +32,6 @@ class TaylrEnvironment : Environment {
     let upgradeURL: NSURL
     let serverProtocol = "wss"
     let serverHostName: String
-    let profileHostName: String
     var serverURL: NSURL {
         return NSURL("\(serverProtocol)://\(serverHostName)/websocket")
     }
@@ -49,7 +48,6 @@ class TaylrEnvironment : Environment {
         switch audience {
             case .Dev:
                 upgradeURL = NSURL("https://apps-ios.crashlytics.com/projects/54f16f389f24291fde000043")
-                profileHostName = "http://s10-fe-dev.herokuapp.com"
                 serverHostName = "s10-dev.herokuapp.com"
 //                serverHostName = "10.1.1.12:3000"
 //                serverHostName = "s10-beta.herokuapp.com"
@@ -60,7 +58,6 @@ class TaylrEnvironment : Environment {
             case .Beta:
                 upgradeURL = NSURL("https://taylrapp.com/beta")
                 serverHostName = "s10-beta.herokuapp.com"
-                profileHostName = "https://s10-beta.herokuapp.com"
                 bugfenderAppToken = "lO35cfZMdPxzIraCq4YFKISSKZ2EAIwe"
                 segmentWriteKey = "SGEB9gVQGFYgeptFbtnETHCka8FCOuoc"
                 heapAppId = "1572509943"
@@ -68,7 +65,6 @@ class TaylrEnvironment : Environment {
             case .AppStore:
                 upgradeURL = NSURL("https://taylrapp.com/download")
                 serverHostName = "s10.herokuapp.com"
-                profileHostName = "https://s10-fe.herokuapp.com"
                 bugfenderAppToken = "ow9JOdNYSo5iVqPUUAEbS8HfmwZqb1tQ"
                 segmentWriteKey = "JPCrmGwQqlgohXoowBFSLwesir9Zn5Bv"
                 heapAppId = "538095372"

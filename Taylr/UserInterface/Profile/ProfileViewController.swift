@@ -15,21 +15,38 @@ import Core
 
 class ProfileViewController : BaseViewController {
 
-    @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var tableView: UITableView!
+    var dataSourceBond: UITableViewDataSourceBond<UITableViewCell>!
+    var mainCell: ProfileMainCell!
     var profileVM: ProfileInteractor!
-
+    
     override func viewDidLoad() {
-        var urlString = Globals.env.profileHostName
-        if let username = profileVM.user.username {
-            let url = NSURL(urlString + "/" + username)
-            self.webView.loadRequest(NSURLRequest(URL: url))
-        }
-        webView.scrollView.delegate = self
-        webView.scrollView.decelerationRate = UIScrollViewDecelerationRateNormal
-
         super.viewDidLoad()
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 300
+        
+        dataSourceBond = UITableViewDataSourceBond(tableView: tableView, disableAnimation: false)
+        let mainSection = DynamicArray([profileVM.user]).map { [unowned self] (user, index) -> UITableViewCell in
+            self.mainCell = self.tableView.dequeueReusableCellWithIdentifier(.ProfileMainCell,
+                forIndexPath: NSIndexPath(forRow: index, inSection: 0)) as! ProfileMainCell
+            self.mainCell.bindViewModel(self.profileVM)
+            return self.mainCell
+        }
+        let servicesSection = profileVM.services.map { [unowned self] (service, index) -> UITableViewCell in
+            let cell = self.tableView.dequeueReusableCellWithIdentifier(.ServiceCell,
+                forIndexPath: NSIndexPath(forRow: index, inSection: 1)) as! ProfileServiceCell
+            cell.service = service
+            return cell
+        }
+        let activitiesSection = profileVM.activities.map { [unowned self] (activity, index) -> UITableViewCell in
+            let cell = self.tableView.dequeueReusableCellWithIdentifier(.ImageCell,
+                forIndexPath: NSIndexPath(forRow: index, inSection: 2)) as! ActivityImageCell
+            cell.activity = activity
+            return cell
+        }
+        DynamicArray([mainSection, servicesSection, activitiesSection]) ->> dataSourceBond
     }
-
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: false)
@@ -74,9 +91,21 @@ class ProfileViewController : BaseViewController {
     }
 }
 
+extension ProfileViewController : UITableViewDelegate {
+    
+}
+
+// MARK: ScrollView Delegate
+
 extension ProfileViewController : UIScrollViewDelegate {
-    // Disable zooming in webview
-    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
-        return nil
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        let yOffset = scrollView.contentOffset.y
+        if (yOffset < 0) {
+            let imageView = mainCell.coverImageView
+            var frame = imageView.frame
+            frame.origin.y = yOffset
+            frame.size.height = mainCell.coverImageHeight.constant + -yOffset
+            imageView.frame = frame
+        }
     }
 }
