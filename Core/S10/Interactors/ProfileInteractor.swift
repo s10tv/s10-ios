@@ -33,10 +33,7 @@ public class ProfileInteractor {
             .sorted(by: ServiceKeys.serviceType.rawValue, ascending: true)
             .results(Service).map { ServiceViewModel($0) }
         activities = Activity
-            // TODO: Unfilter activity without image when design is ready
-            .by(NSPredicate(format: "%K == %@ && %K != nil",
-                ActivityKeys.user.rawValue, user,
-                ActivityKeys.imageUrl.rawValue))
+            .by(ActivityKeys.user, value: user)
             .sorted(by: ActivityKeys.timestamp.rawValue, ascending: false)
             .results(Activity).map { ActivityViewModel($0) }
         avatarURL = user.avatarURL

@@ -24,8 +24,20 @@ public class Activity : _Activity {
         return self.dynValue(ActivityKeys.timestamp)
     }()
     
+    public private(set) lazy var dynText: Dynamic<String?> = {
+        return self.dynValue(ActivityKeys.text)
+    }()
+    
+    public private(set) lazy var dynCaption: Dynamic<String?> = {
+        return self.dynValue(ActivityKeys.caption)
+    }()
+    
     public private(set) lazy var dynAction: Dynamic<Action?> = {
         return self.dynValue(ActivityKeys.action).map { $0.map { Action(rawValue: $0) } ?? nil }
+    }()
+    
+    public private(set) lazy var dynQuote: Dynamic<String?> = {
+        return self.dynValue(ActivityKeys.caption)
     }()
 
 }

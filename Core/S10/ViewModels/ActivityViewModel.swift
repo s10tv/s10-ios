@@ -11,36 +11,25 @@ import Bond
 
 public struct ActivityViewModel {
     let activity: Activity
-    public let imageURL: Dynamic<NSURL?>
-    public let serviceIcon: Dynamic<UIImage?>
+    public let avatarURL: Dynamic<NSURL?>
+    public let username: Dynamic<String>
     public let formattedDate: Dynamic<String>
-    public let formattedAction: Dynamic<String>
-
+    public let imageURL: Dynamic<NSURL?>
+    public let text: Dynamic<String>
+    public let quote: Dynamic<String>
+    public let serviceName: Dynamic<String>
     
     public init(_ activity: Activity) {
         self.activity = activity
-        imageURL = activity.imageURL
-        serviceIcon = (activity.service?.type ?? Dynamic(nil)).map {
-            if let type = $0 {
-                switch type {
-                // TODO: Figure out ways to avoid hardcoding image name
-                case .Facebook: return UIImage(named: "ic-facebook")
-                case .Instagram: return UIImage(named: "ic-instagram")
-                }
-            }
-            return nil
-        }
+        let service = activity.service!
+        avatarURL = service.userAvatarURL
+        username = service.dynUserDisplayName.map { $0 ?? "" }
         formattedDate = reduce(activity.dynTimestamp, CurrentDate) {
             Formatters.formatRelativeDate($0, relativeTo: $1) ?? ""
         }
-        formattedAction = activity.dynAction.map {
-            if let action = $0 {
-                switch action {
-                case .Post: return "Posted"
-                case .Like: return "Liked"
-                }
-            }
-            return ""
-        }
+        imageURL = activity.imageURL
+        text = activity.dynText.map { $0 ?? "" }
+        quote = activity.dynQuote.map { $0 ?? "" }
+        serviceName = service.type.map { $0?.rawValue ?? "" }
     }
 }

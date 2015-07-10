@@ -28,6 +28,10 @@ public enum R {
     public enum Fonts : String {
         /// TransatTextBlack
         case transatTextBlack = "TransatTextBlack"
+        /// TransatTextBold
+        case transatTextBold = "TransatTextBold"
+        /// TransatTextLight
+        case transatTextLight = "TransatTextLight"
         /// TransatTextMedium
         case transatTextMedium = "TransatTextMedium"
         /// TransatTextStandard

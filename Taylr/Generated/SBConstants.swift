@@ -38,7 +38,6 @@ public enum TableViewCellreuseIdentifier : String {
     case SettingsLabelCell = "SettingsLabelCell"
     case SettingsPhotoCell = "SettingsPhotoCell"
     case SettingsTextCell = "SettingsTextCell"
-    case TextCell = "TextCell"
 }
 
 public enum ViewControllerStoryboardIdentifier : String {

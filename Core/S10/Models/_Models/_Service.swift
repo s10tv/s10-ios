@@ -7,6 +7,8 @@ public enum ServiceKeys: String, Printable {
 
     case serviceType = "serviceType"
 
+    case userAvatarUrl = "userAvatarUrl"
+
     case userDisplayName = "userDisplayName"
 
     case userIdentifier = "userIdentifier"
@@ -46,6 +48,11 @@ class _Service: NSManagedObject {
     var serviceType: String?
 
     // func validateServiceType(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged public
+    var userAvatarUrl: String?
+
+    // func validateUserAvatarUrl(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged public
     var userDisplayName: String?

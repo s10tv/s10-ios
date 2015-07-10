@@ -7,6 +7,8 @@ public enum ActivityKeys: String, Printable {
 
     case action = "action"
 
+    case caption = "caption"
+
     case imageUrl = "imageUrl"
 
     case text = "text"
@@ -52,6 +54,11 @@ class _Activity: NSManagedObject {
     var action: String?
 
     // func validateAction(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged public
+    var caption: String?
+
+    // func validateCaption(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged public
     var imageUrl: String?
