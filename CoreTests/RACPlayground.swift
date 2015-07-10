@@ -72,4 +72,41 @@ class RACPlayground : XCTestCase {
         waitForExpectationsWithTimeout(1, handler: nil)
 
     }
+    
+    func testFutureToSignal() {
+        let promise = Promise<Int, NSError>()
+        let sp = promise.future.signalProducer()
+        
+        let completeCalled = expectationWithDescription("complete called")
+        sp.start(completed: {
+            completeCalled.fulfill()
+        })
+        promise.success(3)
+        waitForExpectationsWithTimeout(1, handler: nil)
+    }
+    
+    func testFutureMaterialize() {
+        let promise = Promise<Int, NSError>()
+
+        let sp = promise.future.signalProducer()
+            |> materialize
+            |> dematerialize
+        
+        promise.error(NSError(domain: "", code: 0, userInfo: nil))
+        
+        let errorReceived = expectationWithDescription("error received")
+        sp.future().onError { _ in
+            errorReceived.fulfill()
+        }
+        waitForExpectationsWithTimeout(1, handler: nil)
+    }
+    
+    func testExpectComplete() {
+        expectComplete { () -> Future<(), NSError> in
+            let (producer, sink) = SignalProducer<(), NSError>.buffer(1)
+            sendCompleted(sink)
+            return producer.future()
+        }
+        waitForExpectationsWithTimeout(1, handler: nil)
+    }
 }
