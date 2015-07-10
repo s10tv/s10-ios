@@ -12,3 +12,4 @@ import BrightFutures
 func perform<T, E>(@noescape futureProducer: () -> Future<T, E>) -> Future<T, E> {
     return futureProducer()
 }
+

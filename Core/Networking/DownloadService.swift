@@ -10,7 +10,7 @@ import Foundation
 import BrightFutures
 import Alamofire
 import Haneke
-
+import Result
 
 public enum NSURLSessionType {
     case Default, Ephemeral, Background
@@ -24,8 +24,13 @@ public enum NSURLSessionType {
 }
 
 public class DownloadService {
+    public struct Errors {
+        static let NotFound = NSError(domain: "DownloadService", code: 1, userInfo: nil)
+    }
+    
     let identifier: String
     let alamo: Manager
+    let queue = Queue()
     public let resumeDataCache: Cache<NSData> // TODO: Make Private once upgrade to swift 2
     public var requestsByKey: [String: Request] = [:] // TODO: Make private once we upgrade to swift 2
     
@@ -48,44 +53,80 @@ public class DownloadService {
     
     public func downloadFile(remoteURL: NSURL) -> Future<NSURL, NSError> {
         let key = keyForURL(remoteURL)
-        let request = getRequest(key) ?? makeRequest(remoteURL, key: key)
-        let promise = Promise<NSURL, NSError>()
-        request.response { urlRequest, urlResponse, data, error in
-            if let error = error {
-                promise.failure(error)
-            } else {
-                promise.success(self.localURLForKey(key))
-            }
+        return perform {
+            getRequest(key).map { future($0) } ?? makeRequest(remoteURL, key: key)
+        }.mapError { _ in
+            NSError() // TODO: Big hack, revise flatMap to promoteError?
+        }.flatMap {
+            $0.responseData()
+        }.map { _ -> NSURL in
+            self.resumeDataCache.remove(key: key)
+            return self.localURLForKey(key)
         }
-        return promise.future
     }
     
-    public func pauseFile(remoteURL: NSURL) {
-        let key = keyForURL(remoteURL)
+    public func pauseDownloadFile(remoteURL: NSURL) -> Future<(), NoError> {
+        return future(context: queue.context) {
+            let key = self.keyForURL(remoteURL)
+            if let request = self.getRequest(key) {
+                request.cancel()
+                request.response { _, _, data, _ in
+                    self.resumeDataCache.set(value: data as! NSData, key: key)
+                }
+            }
+            return Result(value: ())
+        }
     }
     
-    public func removeFile(remoteURL: NSURL) {
+    public func fetchFile(remoteURL: NSURL) -> Future<NSURL, NSError> {
+        let localURL = localURLForKey(keyForURL(remoteURL))
+        return future(context: queue.context) {
+            if let path = localURL.path where NSFileManager().fileExistsAtPath(path) {
+                return Result(value: localURL)
+            }
+            return Result(error: Errors.NotFound)
+        }
+    }
+    
+    public func removeFile(remoteURL: NSURL) -> Future<(), NoError> {
         let key = keyForURL(remoteURL)
         getRequest(key)?.cancel()
+        let localURL = localURLForKey(key)
+        return future(context: queue.context) {
+            NSFileManager().removeItemAtURL(localURL, error: nil)
+            return Result(value: ())
+        }
     }
     
-    public func removeAllFiles() {
-        let fm = NSFileManager()
-        fm.removeItemAtURL(baseDir, error: nil)
-        fm.createDirectoryAtURL(baseDir, withIntermediateDirectories: true, attributes: nil, error: nil)
+    public func removeAllFiles() -> Future<(), NoError> {
+        return future(context: queue.context) {
+            self.resumeDataCache.removeAll()
+            let fm = NSFileManager()
+            fm.removeItemAtURL(self.baseDir, error: nil)
+            fm.createDirectoryAtURL(self.baseDir, withIntermediateDirectories: true, attributes: nil, error: nil)
+            return Result(value: ())
+        }
     }
     
     private func getRequest(key: String) -> Request? {
         return requestsByKey[key]
     }
     
-    private func makeRequest(remoteURL: NSURL, key: String) -> Request {
-        let dest = Request.suggestedDownloadDestination(directory: .CachesDirectory)
-        let request = alamo.download(.GET, remoteURL) { [weak self] tempURL, response in
+    private func makeRequest(remoteURL: NSURL, key: String) -> Future<Request, NoError> {
+        let dest: (NSURL, NSURLResponse) -> NSURL = { [weak self] tempURL, response in
             return self?.localURLForKey(key) ?? tempURL
-        }.validate()
-        requestsByKey[key] = request
-        return request
+        }
+        return perform {
+            resumeDataCache.fetch(key)
+        }.map {
+            self.alamo.download($0, destination: dest)
+        }.recover { _ in
+            self.alamo.download(.GET, remoteURL, destination: dest)
+        }.map {
+            $0.validate()
+        }.onSuccess {
+            self.requestsByKey[key] = $0
+        }
     }
     
     private func keyForURL(url: NSURL) -> String {

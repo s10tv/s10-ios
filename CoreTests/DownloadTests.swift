@@ -21,7 +21,7 @@ class DownloadTests: AsyncTestCase {
     override func setUp() {
         super.setUp()
         // NOTE: Logic testing does not appear to support background session type, returns unknown error otherwise
-        downloadService = DownloadService(identifier: "tv.s10.test", sessionType: .Ephemeral)
+        downloadService = DownloadService(identifier: NSUUID().UUIDString, sessionType: .Ephemeral)
     }
     
     override func tearDown() {
@@ -34,7 +34,7 @@ class DownloadTests: AsyncTestCase {
             perform {
                 downloadService.downloadFile(remoteURL)
             }.onSuccess {
-                expect($0).toNot(beNil())
+                expect($0).to(existOnDisk())
             }.onFailure {
                 fail($0)
             }
@@ -42,11 +42,12 @@ class DownloadTests: AsyncTestCase {
         waitForExpectationsWithTimeout(10, handler: nil)
     }
     
-    func testNoDuplicateRequests() {
-        downloadService.downloadFile(remoteURL)
-        downloadService.downloadFile(remoteURL)
-        expect(self.downloadService.requestsByKey.count).to(equal(1))
-    }
+//    func testNoDuplicateRequests() {
+//        downloadService.downloadFile(remoteURL)
+//        downloadService.downloadFile(remoteURL)
+//        expect(self.downloadService.requestsByKey.count).to(equal(1))
+//    }
+    
     
 //    func testDownloadFailure() {
 //        

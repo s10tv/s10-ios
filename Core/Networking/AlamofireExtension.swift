@@ -3,6 +3,7 @@
 import Foundation
 import Alamofire
 import ReactiveCocoa
+import BrightFutures
 
 // MARK: - Convenience -
 
@@ -28,5 +29,17 @@ extension Request {
             })
             return nil
         })
+    }
+    
+    public func responseData() -> Future<NSData?, NSError> {
+        let promise = Promise<NSData?, NSError>()
+        response { urlRequest, urlResponse, value, error in
+            if let error = error {
+                promise.failure(error)
+            } else {
+                promise.success(value as? NSData)
+            }
+        }
+        return promise.future
     }
 }
