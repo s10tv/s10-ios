@@ -892,6 +892,7 @@
                                     </collectionViewCell>
                                 </cells>
                                 <connections>
+                                    <outlet property="dataSource" destination="kBv-HD-oBL" id="WH1-zg-lRZ"/>
                                     <outlet property="delegate" destination="kBv-HD-oBL" id="4Aq-Md-deY"/>
                                 </connections>
                             </collectionView>

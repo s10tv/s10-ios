@@ -23,36 +23,12 @@ class ConversationViewController : BaseViewController {
     
     var producer: ProducerViewController!
     var conversationVM: ConversationInteractor!
-    var dataSourceBond: UICollectionViewDataSourceBond<UICollectionViewCell>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         producer = UIStoryboard(name: "AVKit", bundle: nil).instantiateInitialViewController() as! ProducerViewController
         producer.producerDelegate = self
-        
-        let messagesSection = conversationVM.messageViewModels.map { [unowned self] (message, index) -> UICollectionViewCell in
-            let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier(.MessageCell,
-                forIndexPath: NSIndexPath(forItem: index, inSection: 0)) as! MessageCell
-            cell.message = message
-            cell.delegate = self
-            return cell
-        }
-        let cameraSection = DynamicArray([producer]).map { [unowned self] (producer, index) -> UICollectionViewCell in
-            let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier(.ProducerCell,
-                forIndexPath: NSIndexPath(forItem: index, inSection: 1)) as! ProducerCell
-            cell.containerView.addSubview(producer.view)
-            producer.view.makeEdgesEqualTo(cell.containerView)
-            // NOTE: For some reason we have to call addChildViewController AFTER adding view
-            // otherwise the recorder view doesn't show up until later, also manually calling
-            // viewWillAppear here
-            self.addChildViewController(producer)
-            producer.viewWillAppear(false)
-            producer.didMoveToParentViewController(self)
-            return cell
-        }
-        dataSourceBond = UICollectionViewDataSourceBond(collectionView: collectionView)
-        DynamicArray([messagesSection, cameraSection]) ->> dataSourceBond
         
         avatarView.user = conversationVM.recipient
         conversationVM.recipient.displayName ->> nameLabel
@@ -119,6 +95,43 @@ class ConversationViewController : BaseViewController {
         presentViewController(alert)
     }
     
+}
+
+private enum Sections : Int {
+    case Messages = 0
+    case Camera = 1
+}
+
+extension ConversationViewController : UICollectionViewDataSource {
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return section == Sections.Camera.rawValue ? 1 : conversationVM.messageViewModels.count
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        if indexPath.section == Sections.Camera.rawValue {
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(.ProducerCell,
+                forIndexPath: indexPath) as! ProducerCell
+            cell.containerView.addSubview(producer.view)
+            producer.view.makeEdgesEqualTo(cell.containerView)
+            // NOTE: For some reason we have to call addChildViewController AFTER adding view
+            // otherwise the recorder view doesn't show up until later, also manually calling
+            // viewWillAppear here
+            self.addChildViewController(producer)
+            producer.viewWillAppear(false)
+            producer.didMoveToParentViewController(self)
+            return cell
+        } else {
+            let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier(.MessageCell,
+                forIndexPath: indexPath) as! MessageCell
+            cell.message = conversationVM.messageViewModels[indexPath.row]
+            cell.delegate = self
+            return cell
+        }
+    }
 }
 
 extension ConversationViewController : UICollectionViewDelegate {
