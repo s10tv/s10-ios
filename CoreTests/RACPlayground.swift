@@ -95,4 +95,47 @@ class RACPlayground : AsyncTestCase {
         }
         waitForExpectationsWithTimeout(1, handler: nil)
     }
+    
+    var strongMutable: MutableProperty<Int>!
+    
+    func testMutablePropertyDisposeCompletesSignal() {
+        weak var wMutable: MutableProperty<Int>?
+        let signalComplete = expectationWithDescription("signal complete")
+        autoreleasepool {
+            let mutable = MutableProperty(0)
+            wMutable = mutable
+            expect(wMutable).toNot(beNil())
+            wMutable?.producer.start(completed: {
+                signalComplete.fulfill()
+            })
+        }
+        expect(wMutable).to(beNil())
+        
+        strongMutable = MutableProperty(0)
+        let signalDoNotComplete = expectationWithDescription("No complete")
+        strongMutable.producer.start(completed: {
+            fail("expect property to not complete")
+        })
+        Async.main(after: 0.5) {
+            signalDoNotComplete.fulfill()
+        }
+        
+        waitForExpectationsWithTimeout(1, handler: nil)
+    }
+    
+    func testPropertyRetainsMutable() {
+        weak var weakMP: MutableProperty<Int>?
+        autoreleasepool {
+            var pOf: PropertyOf<Int>!
+            autoreleasepool {
+                let mP = MutableProperty(0)
+                weakMP = mP
+                expect(weakMP).toNot(beNil())
+                
+                pOf = PropertyOf(mP)
+            }
+            expect(weakMP).toNot(beNil())
+        }
+        expect(weakMP).to(beNil())
+    }
 }
