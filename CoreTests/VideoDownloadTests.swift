@@ -69,8 +69,7 @@ class VideoDownloadTests: AsyncTestCase {
             }
             future.onFailure { _ in
                 expect(op.finished).to(beTrue())
-                let realm = Realm()
-                let task = VideoDownloadTaskEntry.findById(realm, videoId: self.videoId)
+                let task = VideoDownloadTaskEntry.findByVideoId(self.videoId)
                 expect(task).toNot(beNil())
                 if let task = task {
                     let op2 = VideoDownloadOperation(task: task)

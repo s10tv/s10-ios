@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ReactiveCocoa
 import RealmSwift
 
 public class VideoUploadTaskEntry : Object {
@@ -16,6 +17,19 @@ public class VideoUploadTaskEntry : Object {
 
     override public static func primaryKey() -> String? {
         return "id"
+    }
+    
+    public class func findById(id: String, realm: Realm = Realm()) -> VideoDownloadTaskEntry? {
+        let pred = NSPredicate(format: "id = %@", id)
+        return realm.objects(VideoDownloadTaskEntry).filter(pred).first
+    }
+    
+    public class func countUploads(recipientId: String, realm: Realm = Realm()) -> Int {
+        return realm.objects(self).filter("recipientId = %@", recipientId).count
+    }
+    
+    public class func countOfUploads(recipientId: String) -> SignalProducer<Int, NoError> {
+        return Realm().notifier() |> map { _ in self.countUploads(recipientId) }
     }
 }
 
@@ -30,8 +44,16 @@ public class VideoDownloadTaskEntry : Object {
         return "videoId"
     }
     
-    public class func findById(realm: Realm, videoId: String) -> VideoDownloadTaskEntry? {
+    public class func findByVideoId(videoId: String, realm: Realm = Realm()) -> VideoDownloadTaskEntry? {
         let pred = NSPredicate(format: "videoId = %@", videoId)
         return realm.objects(VideoDownloadTaskEntry).filter(pred).first
+    }
+    
+    public class func countDownloads(senderId: String, realm: Realm = Realm()) -> Int {
+        return realm.objects(self).filter("senderId = %@", senderId).count
+    }
+    
+    public class func countOfDownloads(senderId: String) -> SignalProducer<Int, NoError> {
+        return Realm().notifier() |> map { _ in self.countDownloads(senderId) }
     }
 }

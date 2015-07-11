@@ -28,7 +28,7 @@ class ConnectionCell : UITableViewCell {
     func bindViewModel(viewModel: ConversationInteractor) {
         avatarView.user = viewModel.recipient
         viewModel.recipient.displayName ->> nameLabel
-        viewModel.hasUnsentMessage ->> spinner
+        viewModel.busy ->> spinner
         viewModel.formattedStatus ->> subtitleLabel
         viewModel.badgeText ->> badgeLabel
         viewModel.formattedStatus.map { $0.length == 0 } ->> nameCenterConstraint.dynActive

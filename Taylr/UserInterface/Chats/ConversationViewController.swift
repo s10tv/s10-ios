@@ -38,7 +38,7 @@ class ConversationViewController : BaseViewController {
         
         avatarView.user = conversationVM.recipient
         conversationVM.recipient.displayName ->> nameLabel
-        conversationVM.hasUnsentMessage ->> spinner
+        conversationVM.busy ->> spinner
         conversationVM.formattedStatus ->> activityLabel
         conversationVM.badgeText ->> badgeLabel
         conversationVM.formattedStatus.map { $0.length == 0 } ->> nameCenterConstraint.dynActive
@@ -173,7 +173,7 @@ extension ConversationViewController : MessageCellDelegate {
 extension ConversationViewController : ProducerDelegate {
     func producer(producer: ProducerViewController, didProduceVideo url: NSURL) {
         Log.info("I got a video \(url)")
-        Globals.videoService.sendVideoMessage(conversationVM.recipient, localVideoURL: url)
+        Globals.videoService.uploadVideo(conversationVM.recipient, localVideoURL: url)
         PKHUD.hide(animated: false)
     }
 }

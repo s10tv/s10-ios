@@ -64,7 +64,7 @@ public class VideoDownloadOperation : AsyncOperation {
         }.andThen { result in
             NSFileManager().removeItemAtURL(self.tempURL, error: nil)
             let realm = Realm()
-            if let task = VideoDownloadTaskEntry.findById(realm, videoId: self.videoId) {
+            if let task = VideoDownloadTaskEntry.findByVideoId(self.videoId, realm: realm) {
                 realm.write {
                     switch result {
                     case .Success:

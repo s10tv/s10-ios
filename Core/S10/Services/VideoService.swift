@@ -16,26 +16,20 @@ public class VideoService {
     let uploadQueue = NSOperationQueue()
     let downloadQueue = NSOperationQueue()
     let meteorService: MeteorService
-    var token: NotificationToken?
 
     public init(meteorService: MeteorService) {
         self.meteorService = meteorService
     }
     
-    public func resumeDownloads() {
-        let queuedVideoIds = Set(downloadQueue.operations
-            .map { $0 as! VideoDownloadOperation }
-            .map { $0.videoId }
-        )
-        for task in Realm().objects(VideoDownloadTaskEntry) {
-            if queuedVideoIds.contains(task.videoId) {
-                continue
-            }
-            perform {
-                downloadQueue.addAsyncOperation(VideoDownloadOperation(task: task))
-            }.onComplete { [weak self] _ in
-                self?.resumeDownloads()
-            }
+    // MARK: - Uploads
+    
+    public func uploadVideo(recipient: User, localVideoURL: NSURL) {
+        let operation = VideoUploadOperation(
+            recipientId: recipient.documentID!,
+            localVideoURL: localVideoURL,
+            meteorService: self.meteorService)
+        uploadQueue.addAsyncOperation(operation).onComplete { [weak self] _ in
+            self?.resumeUploads()
         }
     }
     
@@ -54,17 +48,13 @@ public class VideoService {
                 localVideoURL: NSURL(task.localURL),
                 meteorService: meteorService)
             operation.taskId = task.id
-            queueOperation(operation)
+            uploadQueue.addAsyncOperation(operation).onComplete { [weak self] _ in
+                self?.resumeUploads()
+            }
         }
     }
 
-    public func sendVideoMessage(recipient: User, localVideoURL: NSURL) {
-        let operation = VideoUploadOperation(
-                recipientId: recipient.documentID!,
-                localVideoURL: localVideoURL,
-                meteorService: self.meteorService)
-        queueOperation(operation)
-    }
+    // MARK: - Downloads
     
     public func downloadVideo(video: Video) {
         if let videoId = video.documentID,
@@ -82,12 +72,21 @@ public class VideoService {
         }
     }
     
-    func queueOperation(operation: VideoUploadOperation) {
-        operation.completionBlock = {
-            dispatch_async(dispatch_get_main_queue()) { [weak self] in
-                self?.resumeUploads()
+    public func resumeDownloads() {
+        let queuedVideoIds = Set(downloadQueue.operations
+            .map { $0 as! VideoDownloadOperation }
+            .map { $0.videoId }
+        )
+        for task in Realm().objects(VideoDownloadTaskEntry) {
+            if queuedVideoIds.contains(task.videoId) {
+                continue
+            }
+            perform {
+                downloadQueue.addAsyncOperation(VideoDownloadOperation(task: task))
+                }.onComplete { [weak self] _ in
+                    self?.resumeDownloads()
             }
         }
-        uploadQueue.addOperation(operation)
     }
+    
 }

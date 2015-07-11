@@ -7,30 +7,48 @@
 //
 
 import Foundation
+import ReactiveCocoa
 import Bond
 import RealmSwift
 
 public class ConversationInteractor {
     private let nc = NSNotificationCenter.defaultCenter().proxy()
-    private let realmToken: NotificationToken
-    private var realmToken2: NotificationToken!
     public let connection: Dynamic<Connection?>
     public let recipient: User
     public let formattedStatus: Dynamic<String>
     public let badgeText: Dynamic<String>
-    public let hasUnsentMessage: Dynamic<Bool>
     public let messageViewModels: DynamicArray<MessageViewModel>
+    public let busy: Dynamic<Bool>
+    let downloading: Dynamic<Bool>
+    let uploading: Dynamic<Bool>
+    var disposable: Disposable!
     
     public init(recipient: User) {
         self.recipient = recipient
         connection = recipient.dynConnection
-        (hasUnsentMessage, realmToken) = ConversationInteractor.observeUnsentMessage(recipient)
         messageViewModels = DynamicArray([])
+
+        downloading = MutableProperty(false) {
+            VideoDownloadTaskEntry.countOfDownloads(recipient.documentID!)
+                |> map { $0 > 0 }
+        }.dyn
+        uploading = MutableProperty(false) {
+            VideoUploadTaskEntry.countOfUploads(recipient.documentID!)
+                |> map { $0 > 0 }
+        }.dyn
+        busy = MutableProperty(false) {
+            combineLatest(
+                VideoDownloadTaskEntry.countOfDownloads(recipient.documentID!),
+                VideoUploadTaskEntry.countOfUploads(recipient.documentID!)
+            ) |> map { uploads, downloads in
+                uploads > 0 || downloads > 0
+            }
+        }.dyn
         
         // TODO: Figure out how to make formattedStatus & badgeText also work when connection gets created
         if let connection = recipient.connection {
-            formattedStatus = ConversationInteractor.formatStatus(connection)
-            badgeText = reduce(connection.dynUnreadCount, hasUnsentMessage) {
+            formattedStatus = ConversationInteractor.formatStatus(connection, uploading: uploading, downloading: downloading)
+            badgeText = reduce(connection.dynUnreadCount, busy) {
                 ($0 != nil && $0! > 0 && $1 == false) ? "\($0!)" : ""
             }
         } else {
@@ -41,9 +59,9 @@ public class ConversationInteractor {
         nc.listen(NSManagedObjectContextObjectsDidChangeNotification) { [weak self] note in
             self?.reloadMessages()
         }
-        realmToken2 = Realm().addNotificationBlock { [weak self] _ in
+        disposable = Realm().notifier().start(next: { [weak self] _ in
             self?.reloadMessages()
-        }
+        })
     }
     
     public func reloadMessages() {
@@ -67,22 +85,10 @@ public class ConversationInteractor {
     }
     
     deinit {
-        Realm().removeNotification(realmToken)
-        Realm().removeNotification(realmToken2)
+        disposable.dispose()
     }
     
-    class func observeUnsentMessage(recipient: User) -> (Dynamic<Bool>, NotificationToken) {
-        let realm = Realm()
-        let recipientId = recipient.documentID!
-        let countUnsent = { (realm: Realm) in
-            return realm.objects(VideoUploadTaskEntry).filter("recipientId = %@", recipientId).count
-        }
-        let hasUnsent = Dynamic(countUnsent(realm) > 0)
-        let token = realm.addNotificationBlock { hasUnsent.value = countUnsent($1) > 0 }
-        return (deliver(hasUnsent, on: dispatch_get_main_queue()), token)
-    }
-    
-    class func formatStatus(connection: Connection) -> Dynamic<String> {
+    class func formatStatus(connection: Connection, uploading: Dynamic<Bool>, downloading: Dynamic<Bool>) -> Dynamic<String> {
         let formattedAction: Dynamic<String?> = reduce(connection.dynLastMessageStatus, connection.dynOtherUser, connection.dynLastSender) {
             if let status = $0, let otherUser = $1, let lastSender = $2 {
                 let receivedLast = (otherUser == lastSender)
@@ -98,11 +104,16 @@ public class ConversationInteractor {
         let formattedDate: Dynamic<String?> = reduce(connection.dynUpdatedAt, CurrentDate) {
             Formatters.formatRelativeDate($0, relativeTo: $1)
         }
-        return reduce(formattedAction, formattedDate) {
-            if let action = $0, let date = $1 {
+        let serverStatus = reduce(formattedAction, formattedDate) { (action: String?, date: String?) -> String in
+            if let action = action, let date = date {
                 return "\(action) \(date)"
             }
             return ""
+        }
+        return reduce(serverStatus, uploading, downloading) {
+            if $1 { return "Sending..." }
+            if $2 { return "Receiving..." }
+            return $0
         }
     }
 }
