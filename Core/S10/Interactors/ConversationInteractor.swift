@@ -13,7 +13,6 @@ import RealmSwift
 public class ConversationInteractor {
     private let nc = NSNotificationCenter.defaultCenter().proxy()
     private let realmToken: NotificationToken
-    private let messages: FetchedResultsArray<Message>
     private let downloadService: DownloadService
     public let connection: Dynamic<Connection?>
     public let recipient: User
@@ -27,22 +26,7 @@ public class ConversationInteractor {
         self.downloadService = downloadService
         connection = recipient.dynConnection
         (hasUnsentMessage, realmToken) = ConversationInteractor.observeUnsentMessage(recipient)
-        messages = Message
-            .by(NSPredicate(format: "%K == %@ && %K != nil",
-                MessageKeys.sender.rawValue, recipient,
-                MessageKeys.video.rawValue))
-            .sorted(by: MessageKeys.createdAt.rawValue, ascending: true)
-            .results(Message.self, loadData: true)
-        messageViewModels = messages.map { (msg: Message) -> (Message, NSURL?) in
-            if let videoURL = NSURL.fromString(msg.video?.url) {
-                return (msg, downloadService.fetchFile(videoURL))
-            }
-            return (msg, nil)
-        }.filter { tuple in
-            return tuple.1 != nil
-        }.map { tuple in
-            MessageViewModel(message: tuple.0, videoURL: tuple.1!)
-        }
+        messageViewModels = DynamicArray([])
         
         // TODO: Figure out how to make formattedStatus & badgeText also work when connection gets created
         if let connection = recipient.connection {
@@ -54,14 +38,30 @@ public class ConversationInteractor {
             formattedStatus = Dynamic("")
             badgeText = Dynamic("")
         }
+        // TODO: Be much more fine-grained
         nc.listen(DownloadSuccessNotification) { [weak self] _ in
-            self?.messages.beginBatchUpdates()
-            self?.messages.endBatchUpdates()
+            self?.reloadMessages()
+        }
+        nc.listen(NSManagedObjectContextObjectsDidChangeNotification) { [weak self] note in
+            self?.reloadMessages()
         }
     }
     
-    public func loadMessages() {
-        messages.reloadData()
+    public func reloadMessages() {
+        let messages = Message
+            .by(NSPredicate(format: "%K == %@ && %K != nil",
+                MessageKeys.sender.rawValue, recipient,
+                MessageKeys.video.rawValue))
+            .sorted(by: MessageKeys.createdAt.rawValue, ascending: true)
+            .fetch().map { $0 as! Message }
+        
+        var playableMessages: [MessageViewModel] = []
+        for message in messages {
+            if let localURL = NSURL.fromString(message.video?.url) {
+                playableMessages.append(MessageViewModel(message: message, videoURL: localURL))
+            }
+        }
+        messageViewModels.setArray(playableMessages)
     }
     
     deinit {

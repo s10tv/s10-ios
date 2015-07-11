@@ -23,6 +23,7 @@ class ConversationViewController : BaseViewController {
     
     var producer: ProducerViewController!
     var conversationVM: ConversationInteractor!
+    var dataBond: Bond<[MessageViewModel]>!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,12 +31,18 @@ class ConversationViewController : BaseViewController {
         producer = UIStoryboard(name: "AVKit", bundle: nil).instantiateInitialViewController() as! ProducerViewController
         producer.producerDelegate = self
         
+        dataBond = Bond { [weak self] _ in
+            Log.info("Reloading messages")
+            self?.collectionView.reloadData()
+        }
+        
         avatarView.user = conversationVM.recipient
         conversationVM.recipient.displayName ->> nameLabel
         conversationVM.hasUnsentMessage ->> spinner
         conversationVM.formattedStatus ->> activityLabel
         conversationVM.badgeText ->> badgeLabel
         conversationVM.formattedStatus.map { $0.length == 0 } ->> nameCenterConstraint.dynActive
+        conversationVM.messageViewModels ->> dataBond
     }
     
     override func viewDidLayoutSubviews() {
