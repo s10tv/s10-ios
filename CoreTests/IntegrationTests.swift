@@ -42,7 +42,6 @@ class IntegrationTests : XCTestCase {
     }
 
     override func setUp() {
-        println("setup")
         meteor = MeteorService(serverURL: NSURL("ws://s10-dev.herokuapp.com/websocket"))
         meteor.delegate = self
         meteor.startup()
@@ -50,9 +49,13 @@ class IntegrationTests : XCTestCase {
     }
 
     override func tearDown() {
-        println("teardown")
         super.tearDown()
         meteor.logout()
+    }
+    
+    override class func tearDown() {
+        super.tearDown()
+        OHHTTPStubs.removeAllStubs()
     }
     
     func getResource(filename: String) -> NSURL? {
