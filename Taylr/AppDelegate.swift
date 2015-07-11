@@ -81,9 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
         // TODO: put this into its own service
         listenForNotification(METIncrementalStoreObjectsDidChangeNotification).subscribeNext { _ in
             for video in Video.all().fetch().map({ $0 as! Video }) {
-                if let remoteURL = NSURL.fromString(video.url) {
-                    Globals.downloadService.downloadFile(remoteURL)
-                }
+                Globals.videoService.downloadVideo(video)
             }
         }
         
@@ -98,6 +96,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
         
         // Resume unfinished business
         Globals.videoService.resumeUploads()
+        Globals.videoService.resumeDownloads()
         
         Log.info("App Launched")
         Analytics.track("App Open")

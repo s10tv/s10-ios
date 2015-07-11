@@ -20,16 +20,20 @@ public class VideoCache {
         return cacheDir.URLByAppendingPathComponent("\(videoId).mp4")
     }
     
+    public func hasVideo(videoId: String) -> Bool {
+        return fm.fileExistsAtPath(cacheURLForVideo(videoId).path!)
+    }
+    
+    public func getVideo(videoId: String) -> NSURL? {
+        return hasVideo(videoId) ? cacheURLForVideo(videoId) : nil
+    }
+    
     public func setVideo(videoId: String, fileURL: NSURL) -> NSError? {
         // Remove current if exists
         removeVideo(videoId)
         var error: NSError?
         fm.linkItemAtURL(fileURL, toURL: cacheURLForVideo(videoId), error: &error)
         return error
-    }
-    
-    public func hasVideo(videoId: String) -> Bool {
-        return fm.fileExistsAtPath(cacheURLForVideo(videoId).path!)
     }
     
     public func removeVideo(videoId: String) {

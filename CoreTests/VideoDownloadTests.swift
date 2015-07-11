@@ -56,7 +56,7 @@ class VideoDownloadTests: AsyncTestCase {
     }
     
     func testDownloadResume() {
-        expectFulfill("download fails") { fulfill in
+        expectFulfill("download cancel then resumes") { fulfill in
             let op = VideoDownloadOperation(videoId: videoId, senderId: senderId, remoteURL: goodURL)
             let future = queue.addAsyncOperation(op).onSuccess {
                 fail("Expect download to be cancelled, but got success")

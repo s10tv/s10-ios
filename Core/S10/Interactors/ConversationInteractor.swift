@@ -13,6 +13,7 @@ import RealmSwift
 public class ConversationInteractor {
     private let nc = NSNotificationCenter.defaultCenter().proxy()
     private let realmToken: NotificationToken
+    private var realmToken2: NotificationToken!
     private let downloadService: DownloadService
     public let connection: Dynamic<Connection?>
     public let recipient: User
@@ -39,10 +40,10 @@ public class ConversationInteractor {
             badgeText = Dynamic("")
         }
         // TODO: Be much more fine-grained
-        nc.listen(DownloadSuccessNotification) { [weak self] _ in
+        nc.listen(NSManagedObjectContextObjectsDidChangeNotification) { [weak self] note in
             self?.reloadMessages()
         }
-        nc.listen(NSManagedObjectContextObjectsDidChangeNotification) { [weak self] note in
+        realmToken2 = Realm().addNotificationBlock { [weak self] _ in
             self?.reloadMessages()
         }
     }
@@ -57,8 +58,8 @@ public class ConversationInteractor {
         
         var playableMessages: [MessageViewModel] = []
         for message in messages {
-            if let remoteURL = NSURL.fromString(message.video?.url),
-                let localURL = downloadService.fetchFile(remoteURL) {
+            if let videoId = message.video?.documentID,
+                let localURL = VideoCache.sharedInstance.getVideo(videoId) {
                 playableMessages.append(MessageViewModel(message: message, videoURL: localURL))
             }
         }
@@ -69,6 +70,7 @@ public class ConversationInteractor {
     
     deinit {
         Realm().removeNotification(realmToken)
+        Realm().removeNotification(realmToken2)
     }
     
     class func observeUnsentMessage(recipient: User) -> (Dynamic<Bool>, NotificationToken) {

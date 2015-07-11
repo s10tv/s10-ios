@@ -13,13 +13,30 @@ import SwiftyJSON
 
 public class VideoService {
     
+    let uploadQueue = NSOperationQueue()
+    let downloadQueue = NSOperationQueue()
     let meteorService: MeteorService
-    let uploadQueue: NSOperationQueue
     var token: NotificationToken?
 
     public init(meteorService: MeteorService) {
-        uploadQueue = NSOperationQueue()
         self.meteorService = meteorService
+    }
+    
+    public func resumeDownloads() {
+        let queuedVideoIds = Set(downloadQueue.operations
+            .map { $0 as! VideoDownloadOperation }
+            .map { $0.videoId }
+        )
+        for task in Realm().objects(VideoDownloadTaskEntry) {
+            if queuedVideoIds.contains(task.videoId) {
+                continue
+            }
+            perform {
+                downloadQueue.addAsyncOperation(VideoDownloadOperation(task: task))
+            }.onComplete { [weak self] _ in
+                self?.resumeDownloads()
+            }
+        }
     }
     
     public func resumeUploads() {
@@ -49,8 +66,20 @@ public class VideoService {
         queueOperation(operation)
     }
     
-    public func downloadVideoMessage(message: Message) {
-        
+    public func downloadVideo(video: Video) {
+        if let videoId = video.documentID,
+            let senderId = video.message?.sender?.documentID,
+            let remoteUrl = video.url {
+            let realm = Realm()
+            realm.write {
+                let task = VideoDownloadTaskEntry()
+                task.videoId = videoId
+                task.senderId = senderId
+                task.remoteUrl = remoteUrl
+                realm.add(task, update: true)
+            }
+            resumeDownloads()
+        }
     }
     
     func queueOperation(operation: VideoUploadOperation) {
