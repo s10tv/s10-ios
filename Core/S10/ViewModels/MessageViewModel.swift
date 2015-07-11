@@ -46,6 +46,12 @@ public struct MessageViewModel {
     }
 }
 
+extension MessageViewModel : Printable {
+    public var description: String {
+        return "MessageViewModel[\(message.documentID!)]"
+    }
+}
+
 extension MessageViewModel : Equatable {
 }
 

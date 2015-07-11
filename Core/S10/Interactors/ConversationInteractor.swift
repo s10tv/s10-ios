@@ -23,6 +23,10 @@ public class ConversationInteractor {
     let uploading: Dynamic<Bool>
     var disposable: Disposable!
     
+    // TODO: Turns out interactor is being repeatedly created so many times. 
+    // At the minimum there should not be side effects when creating interactor. 
+    // e.g. signal producer and such should only be started on demand. Make variables lazy
+    // and do not hook up listeners till ready
     public init(recipient: User) {
         self.recipient = recipient
         connection = recipient.dynConnection
@@ -62,22 +66,34 @@ public class ConversationInteractor {
             .by(NSPredicate(format: "%K == %@ && %K != nil",
                 MessageKeys.sender.rawValue, recipient,
                 MessageKeys.video.rawValue))
-            .sorted(by: MessageKeys.createdAt.rawValue, ascending: true)
+            // MASSIVE HACK ALERT: Ascending should be true but empirically
+            // ascending = false seems to actually give us the correct result. FML.
+            .sorted(by: MessageKeys.createdAt.rawValue, ascending: false)
             .fetch().map { $0 as! Message }
         
         var playableMessages: [MessageViewModel] = []
+//        var earlierDate: NSDate?
         for message in messages {
+//            if let earlierDate = earlierDate {
+//                assert(earlierDate < message.createdAt!)
+//            }
+//            earlierDate = message.createdAt
             if let videoId = message.video?.documentID,
                 let localURL = VideoCache.sharedInstance.getVideo(videoId) {
                 playableMessages.append(MessageViewModel(message: message, videoURL: localURL))
             }
         }
         if messageViewModels.value != playableMessages {
+//            println("interactor: \(unsafeAddressOf(self))")
+//            println("messageViewModels addr: \(unsafeAddressOf(messageViewModels))")
+//            dump(messageViewModels.value.map { "\($0) \($0.message.createdAt)" }, name: "oldValue", maxDepth: 1)
+//            dump(playableMessages.map { "\($0) \($0.message.createdAt)" }, name: "newValue", maxDepth: 1)
             messageViewModels.setArray(playableMessages)
         }
     }
     
     deinit {
+//        println("Interactor dispose")
         disposable.dispose()
     }
     

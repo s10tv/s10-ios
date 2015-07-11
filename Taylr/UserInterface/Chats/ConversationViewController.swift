@@ -35,7 +35,7 @@ class ConversationViewController : BaseViewController {
             Log.info("Reloading messages count: \(x.count)")
             self?.collectionView.reloadData()
         }
-        
+        conversationVM.reloadMessages()
         avatarView.user = conversationVM.recipient
         conversationVM.recipient.displayName ->> nameLabel
         conversationVM.busy ->> spinner
