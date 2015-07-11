@@ -11,6 +11,7 @@ import SDWebImage
 import SCRecorder
 import Core
 import Bond
+import Async
 
 protocol MessageCellDelegate : NSObjectProtocol {
     func messageCell(cell: MessageCell, didPlayMessage message: MessageViewModel)
@@ -88,7 +89,14 @@ class MessageCell : UICollectionViewCell {
     func openMessage() {
         if let message = message?.message
             where message.incoming && message.statusEnum != .Opened {
-                Meteor.openMessage(message)
+            // TODO: Move this into viewModel
+            let delay = 30
+            Meteor.openMessage(message, expireDelay: delay)
+            if let videoId = message.video?.documentID {
+                Async.main(after: NSTimeInterval(delay)) {
+                    VideoCache.sharedInstance.removeVideo(videoId)
+                }
+            }
         }
     }
 }
