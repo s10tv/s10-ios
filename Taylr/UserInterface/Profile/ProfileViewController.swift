@@ -59,8 +59,7 @@ class ProfileViewController : BaseViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ConversationViewController {
-            vc.conversationVM = ConversationInteractor(recipient: profileVM.user,
-                downloadService: Globals.downloadService)
+            vc.conversationVM = ConversationInteractor(recipient: profileVM.user)
         }
     }
     

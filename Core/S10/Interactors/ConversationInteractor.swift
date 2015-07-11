@@ -14,7 +14,6 @@ public class ConversationInteractor {
     private let nc = NSNotificationCenter.defaultCenter().proxy()
     private let realmToken: NotificationToken
     private var realmToken2: NotificationToken!
-    private let downloadService: DownloadService
     public let connection: Dynamic<Connection?>
     public let recipient: User
     public let formattedStatus: Dynamic<String>
@@ -22,9 +21,8 @@ public class ConversationInteractor {
     public let hasUnsentMessage: Dynamic<Bool>
     public let messageViewModels: DynamicArray<MessageViewModel>
     
-    public init(recipient: User, downloadService: DownloadService) {
+    public init(recipient: User) {
         self.recipient = recipient
-        self.downloadService = downloadService
         connection = recipient.dynConnection
         (hasUnsentMessage, realmToken) = ConversationInteractor.observeUnsentMessage(recipient)
         messageViewModels = DynamicArray([])

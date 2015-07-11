@@ -52,8 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
             analyticsService: AnalyticsService(env: env),
             upgradeService: UpgradeService(env: env, settings: meteor.settings),
             locationService: LocationService(meteorService: meteor),
-            videoService: VideoService(meteorService: meteor),
-            downloadService: DownloadService(identifier: env.appId, sessionType: .Default)
+            videoService: VideoService(meteorService: meteor)
         )
 
         // Startup the services

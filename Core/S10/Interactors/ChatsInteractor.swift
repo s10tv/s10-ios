@@ -12,13 +12,11 @@ import Bond
 
 public class ChatsInteractor {
     public let connectionViewModels: DynamicArray<ConversationInteractor>
-    private let downloadService: DownloadService
     
-    public init(downloadService: DownloadService) {
-        self.downloadService = downloadService
+    public init() {
         connectionViewModels = Connection
             .by("\(ConnectionKeys.otherUser) != nil")
             .sorted(by: ConnectionKeys.updatedAt.rawValue, ascending: false)
-            .results(Connection).map { ConversationInteractor(recipient: $0.otherUser!, downloadService: downloadService) }
+            .results(Connection).map { ConversationInteractor(recipient: $0.otherUser!) }
     }
 }
