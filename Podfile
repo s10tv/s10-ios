@@ -1,7 +1,6 @@
 platform :ios, '8.0'
 
 source 'https://github.com/CocoaPods/Specs.git'
-source 'https://github.com/tonyxiao/Podspecs.git'
 
 inhibit_all_warnings!
 use_frameworks!

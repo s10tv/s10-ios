@@ -51,20 +51,20 @@ PODS:
   - Quick (0.3.1)
   - RBBAnimation (0.4.0)
   - ReactiveCocoa (3.0-beta.9):
-    - Box (~> 1.2.2)
+    - Box (~> 1.2.0)
     - ReactiveCocoa/UI (= 3.0-beta.9)
-    - Result (~> 0.4.4)
+    - Result (~> 0.4.1)
   - ReactiveCocoa/Core (3.0-beta.9):
-    - Box (~> 1.2.2)
+    - Box (~> 1.2.0)
     - ReactiveCocoa/no-arc
-    - Result (~> 0.4.4)
+    - Result (~> 0.4.1)
   - ReactiveCocoa/no-arc (3.0-beta.9):
-    - Box (~> 1.2.2)
-    - Result (~> 0.4.4)
+    - Box (~> 1.2.0)
+    - Result (~> 0.4.1)
   - ReactiveCocoa/UI (3.0-beta.9):
-    - Box (~> 1.2.2)
+    - Box (~> 1.2.0)
     - ReactiveCocoa/Core
-    - Result (~> 0.4.4)
+    - Result (~> 0.4.1)
   - Realm (0.93.2):
     - Realm/Headers (= 0.93.2)
   - Realm/Headers (0.93.2)
@@ -189,7 +189,7 @@ SPEC CHECKSUMS:
   PocketSocket: eee7ef375f55b98e7ca79e097d9c61fd688e9494
   Quick: 824572d3d198d51e52cf4aa722cebf7e59952a35
   RBBAnimation: 4b2d66f6d993febce63cd564da934985313b9c59
-  ReactiveCocoa: 2e9c1499ee4b7b125798e23e0809163a1066ad9b
+  ReactiveCocoa: 14285e72691519ac4fbd06ba411a6707914d6e10
   Realm: 2fdd0ae74f730e190384e0338d8a0d3654df8220
   RealmSwift: 231b064da9f98b1c4f325fe1f1cb8756aae2b8d6
   Result: b44f6bc8762bbffaf2c5df58f2c7d12c3496ced8
