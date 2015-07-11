@@ -29,7 +29,6 @@ class MessageCell : UICollectionViewCell {
     var message: MessageViewModel? {
         didSet {
             if let message = message {
-                println("\(message.sender) \(message.message?.connection)")
                 avatarView.user = message.sender
                 player.setItemByUrl(message.videoURL.value)
                 message.formattedDate ->> timeLabel
@@ -85,6 +84,13 @@ class MessageCell : UICollectionViewCell {
         player.endSendingPlayMessages()
         player.pause()
     }
+    
+    func openMessage() {
+        if let message = message?.message
+            where message.incoming && message.statusEnum != .Opened {
+                Meteor.openMessage(message)
+        }
+    }
 }
 
 extension MessageCell : SCPlayerDelegate {
@@ -94,16 +100,9 @@ extension MessageCell : SCPlayerDelegate {
     
     func player(player: SCPlayer, didPlay currentTime: CMTime, loopsCount: Int) {
         if !player.itemDuration.impliedValue && !currentTime.impliedValue {
-            if let message = message?.message {
-                if message.statusEnum != .Opened && message.incoming {
-                    // Async hack is needed otherwise collectionview gets into deadlock
-                    dispatch_async(dispatch_get_main_queue()) {
-                        Meteor.openMessage(message)
-                    }
-                }
-            }
             let secondsRemaining = Int(ceil(player.itemDuration.seconds - currentTime.seconds))
             durationLabel.text = "\(secondsRemaining)"
+            openMessage()
         }
     }
 }

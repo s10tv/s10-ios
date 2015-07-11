@@ -156,6 +156,9 @@ public class DownloadService {
             request.responseData().onComplete { _ in
                 self.requestsByKey[key] = nil
             }
+        }.onFailure { _ in
+            // TODO: Race conditions abound here
+            NSFileManager.defaultManager().removeItemAtURL(self.localURLForKey(key), error: nil)
         }
     }
     

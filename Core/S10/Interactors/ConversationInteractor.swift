@@ -57,11 +57,14 @@ public class ConversationInteractor {
         
         var playableMessages: [MessageViewModel] = []
         for message in messages {
-            if let localURL = NSURL.fromString(message.video?.url) {
+            if let remoteURL = NSURL.fromString(message.video?.url),
+                let localURL = downloadService.fetchFile(remoteURL) {
                 playableMessages.append(MessageViewModel(message: message, videoURL: localURL))
             }
         }
-        messageViewModels.setArray(playableMessages)
+        if messageViewModels.value != playableMessages {
+            messageViewModels.setArray(playableMessages)
+        }
     }
     
     deinit {

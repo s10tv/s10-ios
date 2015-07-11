@@ -31,8 +31,8 @@ class ConversationViewController : BaseViewController {
         producer = UIStoryboard(name: "AVKit", bundle: nil).instantiateInitialViewController() as! ProducerViewController
         producer.producerDelegate = self
         
-        dataBond = Bond { [weak self] _ in
-            Log.info("Reloading messages")
+        dataBond = Bond { [weak self] x in
+            Log.info("Reloading messages count: \(x.count)")
             self?.collectionView.reloadData()
         }
         

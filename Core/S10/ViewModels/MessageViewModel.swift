@@ -13,7 +13,7 @@ import Bond
 
 public struct MessageViewModel {
     
-    public let message: Message?
+    public let message: Message
     public let sender: User?
     public let formattedDate: Dynamic<String>
     public let formattedStatus: Dynamic<String>
@@ -44,4 +44,11 @@ public struct MessageViewModel {
             return ""
         }
     }
+}
+
+extension MessageViewModel : Equatable {
+}
+
+public func ==(lhs: MessageViewModel, rhs: MessageViewModel) -> Bool {
+    return lhs.message == rhs.message
 }
