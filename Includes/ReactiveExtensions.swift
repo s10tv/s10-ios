@@ -10,6 +10,7 @@ import Foundation
 import ReactiveCocoa
 import BrightFutures
 import Bond
+import Box
 
 // MARK: -
 
@@ -30,7 +31,8 @@ extension PropertyOf {
 
 extension PropertyOf {
     var dyn: Dynamic<T> {
-        let dyn = Dynamic<T>(value)
+        let dyn = InternalDynamic<T>(value)
+        dyn.retain(Box(self))
         producer.start(next: { value in
             dyn.value = value
         })

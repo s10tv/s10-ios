@@ -28,22 +28,15 @@ public class ConversationInteractor {
         connection = recipient.dynConnection
         messageViewModels = DynamicArray([])
 
-        downloading = MutableProperty(false) {
+        downloading = PropertyOf(false) {
             VideoDownloadTaskEntry.countOfDownloads(recipient.documentID!)
                 |> map { $0 > 0 }
         }.dyn
-        uploading = MutableProperty(false) {
+        uploading = PropertyOf(false) {
             VideoUploadTaskEntry.countOfUploads(recipient.documentID!)
                 |> map { $0 > 0 }
         }.dyn
-        busy = MutableProperty(false) {
-            combineLatest(
-                VideoDownloadTaskEntry.countOfDownloads(recipient.documentID!),
-                VideoUploadTaskEntry.countOfUploads(recipient.documentID!)
-            ) |> map { uploads, downloads in
-                uploads > 0 || downloads > 0
-            }
-        }.dyn
+        busy = reduce(uploading, downloading) { $0 || $1 }
         
         // TODO: Figure out how to make formattedStatus & badgeText also work when connection gets created
         if let connection = recipient.connection {
