@@ -13,12 +13,20 @@ import SwiftyJSON
 
 public class VideoService {
     
+    let nc = NSNotificationCenter.defaultCenter().proxy()
     let uploadQueue = NSOperationQueue()
     let downloadQueue = NSOperationQueue()
     let meteorService: MeteorService
 
     public init(meteorService: MeteorService) {
         self.meteorService = meteorService
+        nc.listen(METIncrementalStoreObjectsDidChangeNotification) { [weak self] _ in
+            for video in Video.all().fetch().map({ $0 as! Video }) {
+                if video.message?.statusEnum == .Sent {
+                    self?.downloadVideo(video)
+                }
+            }
+        }
     }
     
     // MARK: - Uploads
@@ -60,6 +68,9 @@ public class VideoService {
         if let videoId = video.documentID,
             let senderId = video.message?.sender?.documentID,
             let remoteUrl = video.url {
+            if VideoCache.sharedInstance.hasVideo(videoId) {
+                return
+            }
             let realm = Realm()
             realm.write {
                 let task = VideoDownloadTaskEntry()

@@ -76,14 +76,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
         Meteor.subscriptions.metadata.signal.delay(0.1).deliverOnMainThread().subscribeCompleted {
             Globals.upgradeService.promptForUpgradeIfNeeded()
         }
-
-        // TODO: put this into its own service
-        listenForNotification(METIncrementalStoreObjectsDidChangeNotification).subscribeNext { _ in
-            for video in Video.all().fetch().map({ $0 as! Video }) {
-                Globals.videoService.downloadVideo(video)
-            }
-        }
         
+        SugarRecordLogger.currentLevel = SugarRecordLogger.logLevelError
         
         // Should be probably extracted into push service
         application.registerForRemoteNotifications()
