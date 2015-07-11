@@ -15,17 +15,6 @@ import Async
 
 public let DownloadSuccessNotification = "DownloadSuccessNotification"
 
-public enum NSURLSessionType {
-    case Default, Ephemeral, Background
-    func sessionConfig(identifier: String) -> NSURLSessionConfiguration {
-        switch self {
-        case .Default: return NSURLSessionConfiguration.defaultSessionConfiguration()
-        case .Ephemeral: return NSURLSessionConfiguration.ephemeralSessionConfiguration()
-        case .Background: return NSURLSessionConfiguration.backgroundSessionConfigurationWithIdentifier(identifier)
-        }
-    }
-}
-
 public class DownloadService {
     public struct Errors {
         static let NotFound = NSError(domain: "DownloadService", code: 1, userInfo: nil)
@@ -46,7 +35,7 @@ public class DownloadService {
     public init(identifier: String, sessionType: NSURLSessionType = .Default) {
         self.identifier = identifier
         alamo = Manager(configuration: {
-            let config = sessionType.sessionConfig(identifier)
+            let config = sessionType.sessionConfig()
             config.HTTPAdditionalHeaders = Manager.defaultHTTPHeaders
             return config
         }())

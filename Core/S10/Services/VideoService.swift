@@ -49,6 +49,10 @@ public class VideoService {
         queueOperation(operation)
     }
     
+    public func downloadVideoMessage(message: Message) {
+        
+    }
+    
     func queueOperation(operation: VideoUploadOperation) {
         operation.completionBlock = {
             dispatch_async(dispatch_get_main_queue()) { [weak self] in

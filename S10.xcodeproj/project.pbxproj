@@ -22,6 +22,9 @@
 		EA1047351B4E756200B1A76A /* TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1047331B4E756200B1A76A /* TestExtensions.swift */; };
 		EA1047361B4F1F3E00B1A76A /* FutureExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA10472B1B4E746800B1A76A /* FutureExtensions.swift */; };
 		EA1F9C8C1B47678700D1620F /* AvatarCoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1F9C8B1B47678700D1620F /* AvatarCoverCell.swift */; };
+		EA2406201B50F0F1003A73C3 /* VideoDownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA24061F1B50F0F1003A73C3 /* VideoDownloadOperation.swift */; };
+		EA2406221B50F79E003A73C3 /* VideoCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2406211B50F79E003A73C3 /* VideoCache.swift */; };
+		EA2406241B5109D8003A73C3 /* VideoDownloadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2406231B5109D8003A73C3 /* VideoDownloadTests.swift */; };
 		EA3594141B2DE5C300E91337 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594131B2DE5C300E91337 /* ConversationViewController.swift */; };
 		EA3594161B2DEF0C00E91337 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594151B2DEF0C00E91337 /* MessageCell.swift */; };
 		EA3594191B2FEA1F00E91337 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594181B2FEA1F00E91337 /* TransitionManager.swift */; };
@@ -178,7 +181,7 @@
 		EAF81B381B3395E700EED6DD /* AVKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B371B3395E700EED6DD /* AVKit.swift */; };
 		EAF81B391B3395E700EED6DD /* AVKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B371B3395E700EED6DD /* AVKit.swift */; };
 		F912AC5D1B3745AC00DEA6B1 /* VideoUploadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F912AC5C1B3745AC00DEA6B1 /* VideoUploadOperation.swift */; };
-		F912AC5F1B37463600DEA6B1 /* VideoUploadTaskEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = F912AC5E1B37463600DEA6B1 /* VideoUploadTaskEntry.swift */; };
+		F912AC5F1B37463600DEA6B1 /* Tasks.swift in Sources */ = {isa = PBXBuildFile; fileRef = F912AC5E1B37463600DEA6B1 /* Tasks.swift */; };
 		F95D95DF1A84A1170068F090 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95D95DE1A84A1170068F090 /* MediaPlayer.framework */; };
 		F996C71E1A81F1D100314FF8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71D1A81F1D100314FF8 /* CoreMedia.framework */; };
 		F996C7201A81F1D800314FF8 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71F1A81F1D800314FF8 /* CoreVideo.framework */; };
@@ -247,6 +250,9 @@
 		EA1047321B4E756200B1A76A /* MeteorServiceTestingExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorServiceTestingExtension.swift; sourceTree = "<group>"; };
 		EA1047331B4E756200B1A76A /* TestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestExtensions.swift; sourceTree = "<group>"; };
 		EA1F9C8B1B47678700D1620F /* AvatarCoverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarCoverCell.swift; sourceTree = "<group>"; };
+		EA24061F1B50F0F1003A73C3 /* VideoDownloadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDownloadOperation.swift; sourceTree = "<group>"; };
+		EA2406211B50F79E003A73C3 /* VideoCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCache.swift; sourceTree = "<group>"; };
+		EA2406231B5109D8003A73C3 /* VideoDownloadTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDownloadTests.swift; sourceTree = "<group>"; };
 		EA3594131B2DE5C300E91337 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		EA3594151B2DEF0C00E91337 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		EA3594181B2FEA1F00E91337 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
@@ -397,7 +403,7 @@
 		F1D48B38C28B60559AEB8949 /* Pods_Core_Taylr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Core_Taylr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C759AA125AEB809731B1D6 /* Pods-Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.release.xcconfig"; path = "Pods/Target Support Files/Pods-Core/Pods-Core.release.xcconfig"; sourceTree = "<group>"; };
 		F912AC5C1B3745AC00DEA6B1 /* VideoUploadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoUploadOperation.swift; sourceTree = "<group>"; };
-		F912AC5E1B37463600DEA6B1 /* VideoUploadTaskEntry.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoUploadTaskEntry.swift; sourceTree = "<group>"; };
+		F912AC5E1B37463600DEA6B1 /* Tasks.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tasks.swift; sourceTree = "<group>"; };
 		F92F687E1B34974B00171FE4 /* CoreTests-bridging-header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreTests-bridging-header.h"; sourceTree = "<group>"; };
 		F95D95DE1A84A1170068F090 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		F996C71D1A81F1D100314FF8 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -734,6 +740,7 @@
 				EA1047311B4E756200B1A76A /* Extensions */,
 				EA9C16761B3759B700371B50 /* FormatterTests.swift */,
 				EAF6709B1B32026F0025D7CF /* IntegrationTests.swift */,
+				EA2406231B5109D8003A73C3 /* VideoDownloadTests.swift */,
 				EA9F35581A74CC6900E0C65D /* DownloadTests.swift */,
 				EA1047271B4E3C1C00B1A76A /* RACPlayground.swift */,
 				EA9F35561A74CC6900E0C65D /* Supporting Files */,
@@ -913,7 +920,7 @@
 				EAF6708B1B31FA2E0025D7CF /* Metadata.swift */,
 				EAF6708C1B31FA2E0025D7CF /* Settings.swift */,
 				EAF6708D1B31FA2E0025D7CF /* UserDefaults.swift */,
-				F912AC5E1B37463600DEA6B1 /* VideoUploadTaskEntry.swift */,
+				F912AC5E1B37463600DEA6B1 /* Tasks.swift */,
 				EA36B1D71B40E1A5002ADD91 /* CurrentDate.swift */,
 			);
 			path = Models;
@@ -935,6 +942,7 @@
 		EAF6706C1B31F9450025D7CF /* Operations */ = {
 			isa = PBXGroup;
 			children = (
+				EA24061F1B50F0F1003A73C3 /* VideoDownloadOperation.swift */,
 				F912AC5C1B3745AC00DEA6B1 /* VideoUploadOperation.swift */,
 				EABA05431B474EC900154C75 /* PhotoUploadOperation.swift */,
 			);
@@ -967,6 +975,7 @@
 			children = (
 				EAF670991B3200E10025D7CF /* MeteorService.swift */,
 				EA9C166B1B368FD600371B50 /* VideoService.swift */,
+				EA2406211B50F79E003A73C3 /* VideoCache.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1413,7 +1422,7 @@
 				EAF670771B31F9450025D7CF /* NotificationCenterExtensions.swift in Sources */,
 				EAF670881B31F9450025D7CF /* UIKitExtension.swift in Sources */,
 				EA10472C1B4E746800B1A76A /* FutureExtensions.swift in Sources */,
-				F912AC5F1B37463600DEA6B1 /* VideoUploadTaskEntry.swift in Sources */,
+				F912AC5F1B37463600DEA6B1 /* Tasks.swift in Sources */,
 				EACEFB8A1B472E5E00901E85 /* Formatters.swift in Sources */,
 				F912AC5D1B3745AC00DEA6B1 /* VideoUploadOperation.swift in Sources */,
 				EA4216491B3E093400613EFA /* Activity.swift in Sources */,
@@ -1439,6 +1448,7 @@
 				EABAEDA31B432745000261F0 /* CandidateViewModel.swift in Sources */,
 				EAF670901B31FA2E0025D7CF /* UserDefaults.swift in Sources */,
 				EAF670831B31F9450025D7CF /* Video.swift in Sources */,
+				EA2406201B50F0F1003A73C3 /* VideoDownloadOperation.swift in Sources */,
 				EACEFB961B472E8800901E85 /* SignupInteractor.swift in Sources */,
 				EAF6707C1B31F9450025D7CF /* _User.swift in Sources */,
 				EA78C8781B320A2A0016AB73 /* AlamofireExtension.swift in Sources */,
@@ -1460,6 +1470,7 @@
 				EAF6707A1B31F9450025D7CF /* _Connection.swift in Sources */,
 				EA42164A1B3E093400613EFA /* Service.swift in Sources */,
 				EAF670761B31F9450025D7CF /* FoundationExtension.swift in Sources */,
+				EA2406221B50F79E003A73C3 /* VideoCache.swift in Sources */,
 				EA8896221B4F3C1300E180A6 /* ReactiveCocoa+Futures.swift in Sources */,
 				EAF6708F1B31FA2E0025D7CF /* Settings.swift in Sources */,
 				EA4757131B392C19002071D7 /* PanInteractor.swift in Sources */,
@@ -1537,6 +1548,7 @@
 				EA9C16771B3759B700371B50 /* FormatterTests.swift in Sources */,
 				EA9F35591A74CC6900E0C65D /* DownloadTests.swift in Sources */,
 				EA1047281B4E3C1C00B1A76A /* RACPlayground.swift in Sources */,
+				EA2406241B5109D8003A73C3 /* VideoDownloadTests.swift in Sources */,
 				EA1047341B4E756200B1A76A /* MeteorServiceTestingExtension.swift in Sources */,
 				EA426F4F1B4F8B8300C19BEB /* Haneke+Futures.swift in Sources */,
 				EA1047361B4F1F3E00B1A76A /* FutureExtensions.swift in Sources */,
