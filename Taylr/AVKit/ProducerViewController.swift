@@ -10,6 +10,8 @@ import Foundation
 import SCRecorder
 
 protocol ProducerDelegate : NSObjectProtocol {
+    func producerWillStartRecording(producer: ProducerViewController)
+    func producerDidCancelRecording(producer: ProducerViewController)
     func producer(producer: ProducerViewController, didProduceVideo url: NSURL)
 }
 
@@ -32,6 +34,10 @@ class ProducerViewController : UINavigationController {
 }
 
 extension ProducerViewController : RecorderDelegate {
+    func recorderWillStartRecording(recorder: RecorderViewController) {
+        producerDelegate?.producerWillStartRecording(self)
+    }
+    
     func recorder(recorder: RecorderViewController, didRecordSession session: SCRecordSession) {
         editorVC.recordSession = session
         currentFilter = recorder.previewView.selectedFilter
@@ -45,6 +51,7 @@ extension ProducerViewController : EditorDelegate {
         currentFilter = editorVC.filterView.selectedFilter
         recorderVC.previewView.selectedFilter = currentFilter
         popViewControllerAnimated(false)
+        producerDelegate?.producerDidCancelRecording(self)
     }
     
     func editor(editor: EditorViewController, didEditVideo outputURL: NSURL) {

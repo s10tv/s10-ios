@@ -56,6 +56,7 @@
 		EA4757151B392C19002071D7 /* Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47570E1B392C19002071D7 /* Segue.swift */; };
 		EA4757161B392C19002071D7 /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47570F1B392C19002071D7 /* Transition.swift */; };
 		EA49286E1ADF291100118639 /* UpgradeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA49286D1ADF291100118639 /* UpgradeService.swift */; };
+		EA56B88E1B53388F001488F2 /* ConnectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56B88D1B53388F001488F2 /* ConnectionViewModel.swift */; };
 		EA57CEC91B45EB4000759139 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA57CEC81B45EB4000759139 /* SignupViewController.swift */; };
 		EA57CECD1B4608EF00759139 /* Bond+XLForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA57CECC1B4608EF00759139 /* Bond+XLForm.swift */; };
 		EA5B740B1B30F7BB008E5CBC /* TestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5B740A1B30F7BB008E5CBC /* TestAppDelegate.swift */; };
@@ -284,6 +285,7 @@
 		EA47570E1B392C19002071D7 /* Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segue.swift; sourceTree = "<group>"; };
 		EA47570F1B392C19002071D7 /* Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
 		EA49286D1ADF291100118639 /* UpgradeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeService.swift; sourceTree = "<group>"; };
+		EA56B88D1B53388F001488F2 /* ConnectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionViewModel.swift; sourceTree = "<group>"; };
 		EA57CEC81B45EB4000759139 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		EA57CECC1B4608EF00759139 /* Bond+XLForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bond+XLForm.swift"; sourceTree = "<group>"; };
 		EA5B74061B30F7BB008E5CBC /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -666,6 +668,7 @@
 				EA9C166E1B3726E300371B50 /* MessageViewModel.swift */,
 				EA36B1D51B40DE3C002ADD91 /* ActivityViewModel.swift */,
 				EA773D271B43179B009A9945 /* ServiceViewModel.swift */,
+				EA56B88D1B53388F001488F2 /* ConnectionViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1468,6 +1471,7 @@
 				EAF670761B31F9450025D7CF /* FoundationExtension.swift in Sources */,
 				EA2406221B50F79E003A73C3 /* VideoCache.swift in Sources */,
 				EA8896221B4F3C1300E180A6 /* ReactiveExtensions.swift in Sources */,
+				EA56B88E1B53388F001488F2 /* ConnectionViewModel.swift in Sources */,
 				EAF6708F1B31FA2E0025D7CF /* Settings.swift in Sources */,
 				EA4757131B392C19002071D7 /* PanInteractor.swift in Sources */,
 				EAF670821B31F9450025D7CF /* User.swift in Sources */,

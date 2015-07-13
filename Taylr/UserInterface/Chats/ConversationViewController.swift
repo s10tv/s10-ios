@@ -7,9 +7,10 @@
 //
 
 import Foundation
-import Core
+import ReactiveCocoa
 import PKHUD
 import Bond
+import Core
 
 class ConversationViewController : BaseViewController {
     
@@ -32,8 +33,15 @@ class ConversationViewController : BaseViewController {
         producer.producerDelegate = self
         
         dataBond = Bond { [weak self] x in
-            Log.info("Reloading messages count: \(x.count)")
-            self?.collectionView.reloadData()
+            if let stateProducer = self?.conversationVM.state.producer {
+                stateProducer
+                    |> filter { $0 == .Idle }
+                    |> take(1)
+                    |> start(completed: { [weak self] in
+                        Log.info("Reloading messages count: \(x.count)")
+                        self?.collectionView.reloadData()
+                    })
+            }
         }
         conversationVM.reloadMessages()
         avatarView.user = conversationVM.recipient
@@ -146,6 +154,9 @@ extension ConversationViewController : UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, willDisplayCell cell: UICollectionViewCell, forItemAtIndexPath indexPath: NSIndexPath) {
         if let cell = cell as? MessageCell {
             cell.cellWillAppear()
+            conversationVM.playing.value = true
+            // TODO: Get a better idea on the lifecycle
+            println("Will display cell \(indexPath)")
         }
     }
     
@@ -159,6 +170,8 @@ extension ConversationViewController : UICollectionViewDelegate {
 extension ConversationViewController : MessageCellDelegate {
     func messageCell(cell: MessageCell, didPlayMessage message: MessageViewModel) {
         if let indexPath = collectionView.indexPathForCell(cell) {
+            println("did stop playing cell \(indexPath)")
+            conversationVM.playing.value = false
             var newPath: NSIndexPath!
             if indexPath.row < collectionView.numberOfItemsInSection(indexPath.section) - 1 {
                 newPath = NSIndexPath(forItem: indexPath.row + 1, inSection: indexPath.section)
@@ -171,7 +184,17 @@ extension ConversationViewController : MessageCellDelegate {
 }
 
 extension ConversationViewController : ProducerDelegate {
+    
+    func producerWillStartRecording(producer: ProducerViewController) {
+        conversationVM.recording.value = true
+    }
+    
+    func producerDidCancelRecording(producer: ProducerViewController) {
+        conversationVM.recording.value = false
+    }
+    
     func producer(producer: ProducerViewController, didProduceVideo url: NSURL) {
+        conversationVM.recording.value = false
         Log.info("I got a video \(url)")
         Globals.videoService.uploadVideo(conversationVM.recipient, localVideoURL: url)
         PKHUD.hide(animated: false)

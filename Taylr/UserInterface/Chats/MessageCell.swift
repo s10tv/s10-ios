@@ -88,7 +88,8 @@ class MessageCell : UICollectionViewCell {
     
     func openMessage() {
         if let message = message?.message
-            where message.incoming && message.statusEnum != .Opened {
+            where message.fault == false // Hack for now to avoid EXC_BAD_INSTRUCTION
+            && message.incoming && message.statusEnum != .Opened {
             // TODO: Move this into viewModel
             let delay = 30
             Meteor.openMessage(message, expireDelay: delay)

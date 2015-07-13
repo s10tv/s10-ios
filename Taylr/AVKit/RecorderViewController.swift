@@ -11,6 +11,7 @@ import SCRecorder
 import AVFoundation
 
 protocol RecorderDelegate : NSObjectProtocol {
+    func recorderWillStartRecording(recorder: RecorderViewController)
     func recorder(recorder: RecorderViewController, didRecordSession session: SCRecordSession)
 }
 

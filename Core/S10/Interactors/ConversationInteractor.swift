@@ -26,8 +26,9 @@ public class ConversationInteractor {
     public enum State {
         case Idle, Playing, Recording
     }
-    public let state = MutableProperty<State>(.Idle)
-    
+    public let playing: MutableProperty<Bool>
+    public let recording: MutableProperty<Bool>
+    public let state: PropertyOf<State>
     
     // TODO: Turns out interactor is being repeatedly created so many times. 
     // At the minimum there should not be side effects when creating interactor. 
@@ -37,6 +38,23 @@ public class ConversationInteractor {
         self.recipient = recipient
         connection = recipient.dynConnection
         messageViewModels = DynamicArray([])
+        
+        let playing = MutableProperty(false)
+        let recording = MutableProperty(false)
+        self.playing = playing
+        self.recording = recording
+        state = PropertyOf(.Idle) {
+            return combineLatest(
+                playing.producer,
+                recording.producer
+            ) |> map { playing, recording -> State in
+                if !playing && !recording { return .Idle }
+                if playing { return .Playing }
+                if recording { return .Recording }
+                return .Idle
+            } |> skipRepeats // TODO: There really shouldn't be repeats much
+        }
+
 
         downloading = PropertyOf(false) {
             VideoDownloadTaskEntry.countOfDownloads(recipient.documentID!)
@@ -66,6 +84,7 @@ public class ConversationInteractor {
             formattedStatus = Dynamic("")
             badgeText = Dynamic("")
         }
+
         // TODO: Be much more fine-grained
         nc.listen(NSManagedObjectContextObjectsDidChangeNotification) { [weak self] note in
             self?.reloadMessages()
