@@ -15,6 +15,9 @@ KEYCHAIN_PATH="$HOME/Library/Keychains/$KEYCHAIN_NAME"
 APPSTORE_TEAM_ID=227D5X5CZY
 CODE_SIGN=/usr/bin/codesign
 
+APPSTORE_PROFILE_NAME="tvs10taylrappstore.mobileprovision"
+APPSTORE_PROFILE_PATH="$PWD/$APPSTORE_PROFILE_NAME"
+
 ## Keys & Certificates
 
 cd "scripts"
@@ -28,6 +31,8 @@ security import "certs/apple_developer_relations.cer"   -k $KEYCHAIN_PATH -T $CO
 security import "keys/development.p12" -k $KEYCHAIN_PATH -T $CODE_SIGN -P $DEV_P12_PASS
 security import "keys/distribution.p12" -k $KEYCHAIN_PATH -T $CODE_SIGN -P $DIST_P12_PASS
 
+
+
 ## Provisioning Profiles
 
 mkdir -p "$PROFILE_DIR"
@@ -39,3 +44,5 @@ for profileType in development distribution; do
     echo "Will download $profileType profiles from team with id $APPSTORE_TEAM_ID"
     ios profiles:download:all --type $profileType --team $APPSTORE_TEAM_ID -u $APPLE_ID -p $APPLE_ID_PASSWORD --trace
 done
+
+mv $APPSTORE_PROFILE_NAME $APPSTORE_PROFILE_PATH
