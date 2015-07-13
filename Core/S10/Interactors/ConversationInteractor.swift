@@ -18,10 +18,16 @@ public class ConversationInteractor {
     public let formattedStatus: Dynamic<String>
     public let badgeText: Dynamic<String>
     public let messageViewModels: DynamicArray<MessageViewModel>
-    public let busy: Dynamic<Bool>
+    public let busy: PropertyOf<Bool>
     let downloading: Dynamic<Bool>
     let uploading: Dynamic<Bool>
     var disposable: Disposable!
+    
+    public enum State {
+        case Idle, Playing, Recording
+    }
+    public let state = MutableProperty<State>(.Idle)
+    
     
     // TODO: Turns out interactor is being repeatedly created so many times. 
     // At the minimum there should not be side effects when creating interactor. 
@@ -40,12 +46,20 @@ public class ConversationInteractor {
             VideoUploadTaskEntry.countOfUploads(recipient.documentID!)
                 |> map { $0 > 0 }
         }.dyn
-        busy = reduce(uploading, downloading) { $0 || $1 }
+        busy = PropertyOf(false) {
+            combineLatest(
+                VideoUploadTaskEntry.countOfUploads(recipient.documentID!),
+                VideoDownloadTaskEntry.countOfDownloads(recipient.documentID!)
+            ) |> map { uploads, downloads in
+                uploads > 0 || downloads > 0
+            }
+        }
+
         
         // TODO: Figure out how to make formattedStatus & badgeText also work when connection gets created
         if let connection = recipient.connection {
             formattedStatus = ConversationInteractor.formatStatus(connection, uploading: uploading, downloading: downloading)
-            badgeText = reduce(connection.dynUnreadCount, busy) {
+            badgeText = reduce(connection.dynUnreadCount, busy.dyn) {
                 ($0 != nil && $0! > 0 && $1 == false) ? "\($0!)" : ""
             }
         } else {

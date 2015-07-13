@@ -27,6 +27,24 @@ extension PropertyOf {
     }
 }
 
+// Counter part to ReactiveCocoa's <~ operator which is sometimes inconvenient to use
+infix operator ~> {
+    associativity left
+    precedence 93
+}
+
+func ~> <P: MutablePropertyType>(signal: Signal<P.Value, ReactiveCocoa.NoError>, property: P) -> Disposable {
+    return property <~ signal
+}
+
+func ~> <P: MutablePropertyType>(producer: SignalProducer<P.Value, ReactiveCocoa.NoError>, property: P) -> Disposable {
+    return property <~ producer
+}
+
+func ~> <Destination: MutablePropertyType, Source: PropertyType where Source.Value == Destination.Value>(sourceProperty: Source, destinationProperty: Destination) -> Disposable {
+    return destinationProperty <~ sourceProperty
+}
+
 // MARK: - ReactiveCocoa + SwiftBonds
 
 extension PropertyOf {
@@ -49,6 +67,26 @@ extension MutableProperty {
         })
         return dyn
     }
+}
+
+// Bind and fire
+
+func ->> <T, U: Bondable where U.BondType == T>(left: PropertyOf<T>, right: U) {
+    left.dyn ->> right.designatedBond
+}
+
+func ->> <T, U: Bondable where U.BondType == T>(left: MutableProperty<T>, right: U) {
+    left.dyn ->> right.designatedBond
+}
+
+// Bind only
+
+func ->| <T, U: Bondable where U.BondType == T>(left: PropertyOf<T>, right: U) {
+    left.dyn ->| right.designatedBond
+}
+
+func ->| <T, U: Bondable where U.BondType == T>(left: MutableProperty<T>, right: U) {
+    left.dyn ->| right.designatedBond
 }
 
 // MARK: ReactiveCocoa + BrightFutures

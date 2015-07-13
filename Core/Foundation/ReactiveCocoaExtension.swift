@@ -45,6 +45,7 @@ extension RACSubject {
 }
 
 extension NSObject {
+    // TODO: Convert these to RAC 3 with swift
     public func listenForNotification(name: String) -> RACSignal/*<NSNotification>*/ {
         return listenForNotification(name, object: nil)
     }
