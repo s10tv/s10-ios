@@ -4,7 +4,9 @@
 if  [[ -z "$APPLE_ID" ]] || \
     [[ -z "$APPLE_ID_PASSWORD" ]] || \
     [[ -z "$DEV_P12_PASS" ]] || \
-    [[ -z "$DIST_P12_PASS" ]]; then
+    [[ -z "$DIST_P12_PASS" ]] || \
+    [[ -z "$APPSTORE_PROFILE_NAME" ]] || \
+    [[ -z "$APPSTORE_PROFILE_PATH" ]] ; then
     echo "One or more required variables are not set"
     exit 1
 fi
@@ -14,9 +16,6 @@ KEYCHAIN_NAME="s10.keychain"
 KEYCHAIN_PATH="$HOME/Library/Keychains/$KEYCHAIN_NAME"
 APPSTORE_TEAM_ID=227D5X5CZY
 CODE_SIGN=/usr/bin/codesign
-
-APPSTORE_PROFILE_NAME="tvs10taylrappstore.mobileprovision"
-APPSTORE_PROFILE_PATH="$PWD/$APPSTORE_PROFILE_NAME"
 
 ## Keys & Certificates
 
