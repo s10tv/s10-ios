@@ -71,4 +71,7 @@ deployment:
        ./scripts/deploy_crashlytics.sh
        cd $CIRCLE_ARTIFACTS
        cp "${BN}.ipa" "${BN}_appstore.ipa"
-       sigh resign "${BN}_appstore.ipa" -p "$APPSTORE_PROFILE_PATH" -i "$SIGNING_IDENTITY"
+       sigh resign "${BN}_appstore.ipa" --provisioning_profile "$APPSTORE_PROFILE_PATH" \
+        --signing_identity "$SIGNING_IDENTITY"
+       ipa distribute:itunesconnect --apple-id 1015154738 --file "${BN}_appstore.ipa" --upload \
+        --warnings --errors --account "$APPLE_ID" --password "$APPLE_ID_PASSWORD"
