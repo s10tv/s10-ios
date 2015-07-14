@@ -233,6 +233,23 @@ class RACPlayground : AsyncTestCase {
             expect(val).to(equal(5))
             expectation.fulfill()
         }
+
+        let completed = expectationWithDescription("completed")
+        future.producer
+            |> flatMap(FlattenStrategy.Concat) { _ in
+                return SignalProducer<Int, NSError>.empty
+            }
+            |> start(completed: {
+                completed.fulfill()
+            })
+        
+        let thenCompleted = expectationWithDescription("then completed")
+        future.producer
+            |> then(SignalProducer<Int, NSError>.empty)
+            |> start(completed: {
+                thenCompleted.fulfill()
+            })
+        
         sendNext(sink, 5)
         waitForExpectationsWithTimeout(1, handler: nil)
     }

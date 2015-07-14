@@ -12,8 +12,8 @@ import Result
 
 struct RACPromise<T, E: ErrorType> {
 
+    private let sink: SinkOf<Event<T, E>>
     let future: RACFuture<T, E>
-    let sink: SinkOf<Event<T, E>>
     
     init() {
         let (buffer, sink) = SignalProducer<T, E>.buffer(1)
@@ -98,4 +98,3 @@ func |> <T, E: ErrorType>(signal: Signal<T, E>, transform: Signal<T, E> -> RACFu
 func toFuture<T, E: ErrorType>(signal: Signal<T, E>) -> RACFuture<T, E> {
     return RACFuture(startedWork: signal)
 }
-
