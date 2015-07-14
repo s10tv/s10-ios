@@ -21,7 +21,7 @@ dependencies:
     - sudo gem install cupertino shenzhen sigh xcpretty
     - ./scripts/import_credentials.sh
   override:
-    - pod update Meteor
+    - pod update Meteor Bond SugarRecord PKHUD
   cache_directories:
     - "Pods"
 
