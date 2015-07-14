@@ -62,7 +62,7 @@ struct RACFuture<T, E: ErrorType> {
     
     func onComplete(callback: Result<T, E> ->()) -> Disposable {
         var result: Result<T, E>?
-        return (deliverOn.map { buffer |> startOn($0) } ?? buffer).start(next: { v in
+        let sink = Event<T, E>.sink(next: { v in
             result = Result(value: v)
         }, completed: {
             callback(result!)
@@ -70,6 +70,12 @@ struct RACFuture<T, E: ErrorType> {
             result = Result(error: e)
             callback(result!)
         })
+        var disposable: Disposable!
+        buffer.startWithSignal { signal, innerDisposable in
+            (deliverOn.map { signal |> observeOn($0) } ?? signal).observe(sink)
+            disposable = innerDisposable
+        }
+        return disposable
     }
     
     func onSuccess(callback: T -> ()) -> Disposable {
