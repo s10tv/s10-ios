@@ -97,7 +97,10 @@ extension PropertyOf {
 
 func |> <P: PropertyType, T, U where P.Value == T>(property: P, transform: T -> U) -> PropertyOf<U> {
     return PropertyOf(transform(property.value)) {
-        property.producer |> map(transform)
+        property.producer |> map { v in
+            let retainSourceProperty = property // Force retain source property
+            return transform(v)
+        }
     }
 }
 
