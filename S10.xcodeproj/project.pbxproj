@@ -55,8 +55,6 @@
 		EA4216521B3E219000613EFA /* DigitsKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EA42164E1B3E219000613EFA /* DigitsKitResources.bundle */; };
 		EA4216531B3E219000613EFA /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA42164F1B3E219000613EFA /* TwitterCore.framework */; };
 		EA4216551B3E234B00613EFA /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA4216541B3E234B00613EFA /* Crashlytics.framework */; };
-		EA426F4E1B4F886400C19BEB /* Haneke+Futures.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA426F4D1B4F886400C19BEB /* Haneke+Futures.swift */; };
-		EA426F4F1B4F8B8300C19BEB /* Haneke+Futures.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA426F4D1B4F886400C19BEB /* Haneke+Futures.swift */; };
 		EA4756FE1B38F901002071D7 /* BondExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4756FD1B38F901002071D7 /* BondExtensions.swift */; };
 		EA4757131B392C19002071D7 /* PanInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47570C1B392C19002071D7 /* PanInteractor.swift */; };
 		EA4757141B392C19002071D7 /* ScrollTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47570D1B392C19002071D7 /* ScrollTransition.swift */; };
@@ -288,7 +286,6 @@
 		EA42164E1B3E219000613EFA /* DigitsKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DigitsKitResources.bundle; path = DigitsKit.framework/Versions/A/Resources/DigitsKitResources.bundle; sourceTree = "<group>"; };
 		EA42164F1B3E219000613EFA /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
 		EA4216541B3E234B00613EFA /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		EA426F4D1B4F886400C19BEB /* Haneke+Futures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Haneke+Futures.swift"; sourceTree = "<group>"; };
 		EA4756FD1B38F901002071D7 /* BondExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BondExtensions.swift; sourceTree = "<group>"; };
 		EA47570C1B392C19002071D7 /* PanInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanInteractor.swift; sourceTree = "<group>"; };
 		EA47570D1B392C19002071D7 /* ScrollTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollTransition.swift; sourceTree = "<group>"; };
@@ -668,7 +665,6 @@
 				EA95BBB81B3932B500701F08 /* MediaExtension.swift */,
 				EA95BBB51B3932B500701F08 /* BaseViews.swift */,
 				EA95BBB61B3932B500701F08 /* DesignableViews.swift */,
-				EA426F4D1B4F886400C19BEB /* Haneke+Futures.swift */,
 			);
 			path = Includes;
 			sourceTree = "<group>";
@@ -1452,7 +1448,6 @@
 				EAF6707B1B31F9450025D7CF /* _Message.swift in Sources */,
 				EAF6709A1B3200E10025D7CF /* MeteorService.swift in Sources */,
 				EA3965151B54C19800F5B0B3 /* ReactiveBridging.swift in Sources */,
-				EA426F4E1B4F886400C19BEB /* Haneke+Futures.swift in Sources */,
 				EA9C16661B365BD700371B50 /* AsyncOperation.swift in Sources */,
 				EAF6708A1B31F9AD0025D7CF /* Logging.swift in Sources */,
 				EACEFB931B472E8800901E85 /* DiscoverInteractor.swift in Sources */,
@@ -1568,7 +1563,6 @@
 				EA1047281B4E3C1C00B1A76A /* RACPlayground.swift in Sources */,
 				EA2406241B5109D8003A73C3 /* VideoDownloadTests.swift in Sources */,
 				EA1047341B4E756200B1A76A /* MeteorServiceTestingExtension.swift in Sources */,
-				EA426F4F1B4F8B8300C19BEB /* Haneke+Futures.swift in Sources */,
 				EA1047361B4F1F3E00B1A76A /* FutureExtensions.swift in Sources */,
 				EAF6709C1B32026F0025D7CF /* IntegrationTests.swift in Sources */,
 				EA95BBC11B3932BE00701F08 /* GenericExtensions.swift in Sources */,
