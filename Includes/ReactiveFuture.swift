@@ -70,14 +70,14 @@ struct RACFuture<T, E: ErrorType> {
         })
     }
     
-    func onSuccess(callback: T -> ()) {
-        onComplete { result in
+    func onSuccess(callback: T -> ()) -> Disposable {
+        return onComplete { result in
             result.analysis(ifSuccess: callback, ifFailure: { _ in })
         }
     }
     
-    func onFailure(callback: E -> ()) {
-        onComplete { result in
+    func onFailure(callback: E -> ()) -> Disposable {
+        return onComplete { result in
             result.analysis(ifSuccess: { _ in }, ifFailure: callback)
         }
     }
@@ -97,4 +97,30 @@ func |> <T, E: ErrorType>(signal: Signal<T, E>, transform: Signal<T, E> -> RACFu
 
 func toFuture<T, E: ErrorType>(signal: Signal<T, E>) -> RACFuture<T, E> {
     return RACFuture(startedWork: signal)
+}
+
+func future<T, E>(success: (T -> ())? = nil, failure: (E -> ())? = nil, complete: (Result<T, E> -> ())? = nil) -> SignalProducer<T, E> -> Disposable {
+    return { producer in
+        return RACFuture(workToStart: producer).onComplete { result in
+            switch result {
+            case .Success(let v):
+                success?(v.value)
+            case .Failure(let error):
+                failure?(error.value)
+            }
+            complete?(result)
+        }
+    }
+}
+
+func futureSuccess<T, E>(callback: T -> ()) -> SignalProducer<T, E> -> Disposable {
+    return future(success: callback)
+}
+
+func futureFailure<T, E>(callback: E -> ()) -> SignalProducer<T, E> -> Disposable {
+    return future(failure: callback)
+}
+
+func futureCompleted<T, E>(callback: Result<T, E> -> ()) -> SignalProducer<T, E> -> Disposable {
+    return future(complete: callback)
 }

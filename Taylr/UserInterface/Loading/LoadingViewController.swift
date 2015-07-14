@@ -21,8 +21,7 @@ class LoadingViewController : UIViewController {
         super.viewDidAppear(animated)
         Globals.accountService.state.producer
             |> skipWhile { $0 == AccountService.State.Indeterminate }
-            |> take(1)
-            |> start(next: { state in
+            |> futureSuccess { state in
                 assert(NSThread.isMainThread(), "Must be on main")
                 switch state {
                 case .LoggedOut:
@@ -34,7 +33,8 @@ class LoadingViewController : UIViewController {
                 default:
                     fatalError("impossible account status")
                 }
-            })
+            }
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

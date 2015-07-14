@@ -45,6 +45,7 @@
 		EA39651C1B54EFE400F5B0B3 /* MeteorCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA39651B1B54EFE400F5B0B3 /* MeteorCollection.swift */; };
 		EA39651E1B55062900F5B0B3 /* ReactiveFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA39651D1B55062900F5B0B3 /* ReactiveFuture.swift */; };
 		EA39651F1B55062C00F5B0B3 /* ReactiveFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA39651D1B55062900F5B0B3 /* ReactiveFuture.swift */; };
+		EA3965211B55912C00F5B0B3 /* ReactiveFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA39651D1B55062900F5B0B3 /* ReactiveFuture.swift */; };
 		EA4216451B3E092200613EFA /* _Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4216431B3E092200613EFA /* _Activity.swift */; };
 		EA4216461B3E092200613EFA /* _Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4216441B3E092200613EFA /* _Service.swift */; };
 		EA4216491B3E093400613EFA /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4216471B3E093400613EFA /* Activity.swift */; };
@@ -1554,6 +1555,7 @@
 				EA95BBB91B3932B500701F08 /* BaseViews.swift in Sources */,
 				EAF81B251B33389500EED6DD /* RecorderViewController.swift in Sources */,
 				EAA56F901B2B32E500DE3936 /* DiscoverViewController.swift in Sources */,
+				EA3965211B55912C00F5B0B3 /* ReactiveFuture.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
