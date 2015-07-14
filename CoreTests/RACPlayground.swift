@@ -148,7 +148,7 @@ class RACPlayground : AsyncTestCase {
         expect(prop.value).to(beNil())
         
         // KVC property
-        let typedProp = prop.object(String)
+        let typedProp = prop.optional(String)
         expect(typedProp.value).to(beNil())
         object.setValue("test2", forKey: "strValue")
         expect(typedProp.value).to(equal("test2"))
@@ -174,23 +174,23 @@ class RACPlayground : AsyncTestCase {
         let object = TestNSObject()
         
         let prop = object.dyn("intValue")
+
         // dyn.typed
-        println("value \(prop.value)")
         expect(prop.value as? Int).to(equal(25))
         
-        let typed2 = prop.object(Int)
+        let typed2 = prop.optional(Int)
         expect(typed2.value).to(equal(25))
 
         object.intValue = 33
         expect(typed2.value).to(equal(33))
         
-        let primitiveTyped = prop.primitive(Int)
+        let primitiveTyped = prop.force(Int)
         expect(primitiveTyped.value).to(equal(33))
         
         object.intValue = 123
         expect(primitiveTyped.value).to(equal(123))
         
-        let pof = object.dyn("intValue").primitive(Int).readonly
+        let pof = object.dyn("intValue").force(Int).readonly
         object.intValue = 333
         expect(pof.value).to(equal(333))
         

@@ -8,37 +8,10 @@
 
 import Foundation
 import ReactiveCocoa
-import BrightFutures
-import Bond
-import Box
 
-// MARK: - Reactive Extensions
+// MARK: - Typed KVO support
 
-extension MutableProperty {
-    convenience init(_ initialValue: T, @noescape _ block: () -> SignalProducer<T, ReactiveCocoa.NoError>) {
-        self.init(initialValue)
-        self <~ block()
-    }
-}
-
-extension PropertyOf {
-    init(_ initialValue: T, @noescape _ block: () -> SignalProducer<T, ReactiveCocoa.NoError>) {
-        self.init(MutableProperty(initialValue, block))
-    }
-}
-
-// Cocoa KVO support
-
-extension DynamicProperty {
-    func object<T>(type: T.Type) -> KVCObjectProperty<T> {
-        return KVCObjectProperty(backing: self, type: type)
-    }
-    func primitive<T>(type: T.Type) -> KVCPrimitiveProperty<T> {
-        return KVCPrimitiveProperty(backing: self, type: type)
-    }
-}
-
-final class KVCObjectProperty<T> : MutablePropertyType {
+final class DynamicOptionalTypedProperty<T> : MutablePropertyType {
     typealias Value = T?
     
     private let backing: DynamicProperty
@@ -63,7 +36,7 @@ final class KVCObjectProperty<T> : MutablePropertyType {
     }
 }
 
-final class KVCPrimitiveProperty<T> : MutablePropertyType {
+final class DynamicForceTypedProperty<T> : MutablePropertyType {
     typealias Value = T
     
     private let backing: DynamicProperty
@@ -72,9 +45,11 @@ final class KVCPrimitiveProperty<T> : MutablePropertyType {
         get { return backing.value as! T }
         set { backing.value = newValue as? AnyObject }
     }
+    
     var producer: SignalProducer<T, ReactiveCocoa.NoError> {
         return backing.producer |> map { $0 as! T }
     }
+    
     var readonly: PropertyOf<T> {
         return PropertyOf(self)
     }
@@ -88,26 +63,38 @@ final class KVCPrimitiveProperty<T> : MutablePropertyType {
     }
 }
 
+extension DynamicProperty {
+    func optional<T>(type: T.Type) -> DynamicOptionalTypedProperty<T> {
+        return DynamicOptionalTypedProperty(backing: self, type: type)
+    }
+    func force<T>(type: T.Type) -> DynamicForceTypedProperty<T> {
+        return DynamicForceTypedProperty(backing: self, type: type)
+    }
+}
+
 extension NSObject {
     func dyn(keyPath: String) -> DynamicProperty {
         return DynamicProperty(object: self, keyPath: keyPath)
     }
-    
-    func kvcObject<T>(keyPath: String, type: T.Type) -> KVCObjectProperty<T> {
-        return KVCObjectProperty(object: self, keyPath: keyPath, type: type)
+}
+
+// MARK: - Convenience Properties
+
+extension MutableProperty {
+    convenience init(_ initialValue: T, @noescape _ block: () -> SignalProducer<T, ReactiveCocoa.NoError>) {
+        self.init(initialValue)
+        self <~ block()
     }
-    
-    func kvcPrimitive<T>(keyPath: String, type: T.Type) -> KVCObjectProperty<T> {
-        return KVCObjectProperty(object: self, keyPath: keyPath, type: type)
-    }
-    
-    
-    func propertyOf<T>(keyPath: String, type: T.Type) -> PropertyOf<T?> {
-        return PropertyOf(kvcObject(keyPath, type: type))
+}
+
+extension PropertyOf {
+    init(_ initialValue: T, @noescape _ block: () -> SignalProducer<T, ReactiveCocoa.NoError>) {
+        self.init(MutableProperty(initialValue, block))
     }
 }
 
 // Counter part to ReactiveCocoa's <~ operator which is sometimes inconvenient to use
+
 infix operator ~> {
     associativity left
     precedence 93
@@ -125,89 +112,62 @@ func ~> <Destination: MutablePropertyType, Source: PropertyType where Source.Val
     return destinationProperty <~ sourceProperty
 }
 
-// MARK: - ReactiveCocoa + SwiftBonds
+// MARK: - RAC2 Extensions
 
-extension PropertyOf {
-    var dyn: Dynamic<T> {
-        let dyn = InternalDynamic<T>(value)
-        dyn.retain(Box(self))
-        producer.start(next: { value in
-            dyn.value = value
-        })
-        return dyn
-    }
-}
-
-extension MutableProperty {
-    var dyn: Dynamic<T> {
-        let dyn = InternalDynamic<T>(value)
-        dyn.retain(self)
-        producer.start(next: { value in
-            dyn.value = value
-        })
-        return dyn
-    }
-}
-
-// Bind and fire
-
-func ->> <T, U: Bondable where U.BondType == T>(left: PropertyOf<T>, right: U) {
-    left.dyn ->> right.designatedBond
-}
-
-func ->> <T, U: Bondable where U.BondType == T>(left: MutableProperty<T>, right: U) {
-    left.dyn ->> right.designatedBond
-}
-
-// Bind only
-
-func ->| <T, U: Bondable where U.BondType == T>(left: PropertyOf<T>, right: U) {
-    left.dyn ->| right.designatedBond
-}
-
-func ->| <T, U: Bondable where U.BondType == T>(left: MutableProperty<T>, right: U) {
-    left.dyn ->| right.designatedBond
-}
-
-// MARK: ReactiveCocoa + BrightFutures
-
-let errSignalInterrupted = NSError(domain: "ReactiveCocoa", code: NSUserCancelledError, userInfo: nil)
-
-extension SignalProducer {
-    func future() -> Future<T, NSError> {
-        let promise = Promise<T, NSError>()
-        var value: T?
-        start(error: {
-            promise.failure($0.nsError)
-            }, interrupted: {
-                promise.failure(errSignalInterrupted)
-            }, completed: {
-                if let value = value {
-                    promise.success(value)
-                } else {
-                    promise.success(() as! T)
-                }
-            }, next: {
-                assert(value == nil, "future should only have 1 value")
-                value = $0
-        })
-        return promise.future
-    }
-}
-
-extension Future {
-    func signalProducer() -> SignalProducer<T, NSError> {
-        // TODO: Make more sense of memory management
-        return SignalProducer { sink, disposable in
-            // Local variable to work around swiftc compilation bug
-            // http://www.markcornelisse.nl/swift/swift-invalid-linkage-type-for-function-declaration/
-            let successBlock: T -> () = {
-                sendNext(sink, $0)
-                sendCompleted(sink)
-            }
-            self.onSuccess(callback: successBlock).onFailure {
-                sendError(sink, $0.nsError)
-            }
+// Avoid having to type cast all the time
+extension RACSignal {
+    func subscribeNextAs<T>(nextClosure:(T) -> ()) -> RACDisposable {
+        return self.subscribeNext { (next: AnyObject!) -> () in
+            let nextAsT = next as! T
+            nextClosure(nextAsT)
         }
+    }
+    
+    func subscribeErrorOrCompleted(block: (NSError?) -> ()) {
+        subscribeError({ error in
+            block(error)
+            }, completed:{
+                block(nil)
+        })
+    }
+    
+    // replayWithSubject has the advantage that signal would be subscribed to but
+    // disposed as soon as subject is deallocated, rather than replay() in which signal is never
+    // disposed of even if no one is listening to the subject anymore
+    public func replayWithSubject() -> RACSignal {
+        let subject = RACReplaySubject()
+        subscribe(subject)
+        return subject
+    }
+}
+
+extension RACSubject {
+    func sendNextAndCompleted(value: AnyObject!) {
+        sendNext(value)
+        sendCompleted()
+    }
+}
+
+extension NSObject {
+    // TODO: Convert these to RAC 3 with swift
+    func listenForNotification(name: String) -> RACSignal/*<NSNotification>*/ {
+        return listenForNotification(name, object: nil)
+    }
+    
+    func listenForNotification(name: String, object: AnyObject?) -> RACSignal/*<NSNotification>*/ {
+        let nc = NSNotificationCenter.defaultCenter()
+        return nc.rac_addObserverForName(name, object: object).takeUntil(rac_willDeallocSignal())
+    }
+    
+    func listenForNotification(name: String, selector: Selector, object: AnyObject? = nil) {
+        let nc = NSNotificationCenter.defaultCenter()
+        nc.addObserver(self, selector: selector, name: name, object: object)
+        rac_willDeallocSignal().subscribeCompleted { [weak self] in
+            nc.removeObserver(self!)
+        }
+    }
+    
+    func racObserve(keyPath: String) -> RACSignal {
+        return self.rac_valuesForKeyPath(keyPath, observer: self)
     }
 }
