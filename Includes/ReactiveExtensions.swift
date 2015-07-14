@@ -12,7 +12,7 @@ import BrightFutures
 import Bond
 import Box
 
-// MARK: -
+// MARK: - Reactive Extensions
 
 extension MutableProperty {
     convenience init(_ initialValue: T, @noescape _ block: () -> SignalProducer<T, ReactiveCocoa.NoError>) {
@@ -24,6 +24,86 @@ extension MutableProperty {
 extension PropertyOf {
     init(_ initialValue: T, @noescape _ block: () -> SignalProducer<T, ReactiveCocoa.NoError>) {
         self.init(MutableProperty(initialValue, block))
+    }
+}
+
+// Cocoa KVO support
+
+extension DynamicProperty {
+    func object<T>(type: T.Type) -> KVCObjectProperty<T> {
+        return KVCObjectProperty(backing: self, type: type)
+    }
+    func primitive<T>(type: T.Type) -> KVCPrimitiveProperty<T> {
+        return KVCPrimitiveProperty(backing: self, type: type)
+    }
+}
+
+final class KVCObjectProperty<T> : MutablePropertyType {
+    typealias Value = T?
+    
+    private let backing: DynamicProperty
+    
+    var value: T? {
+        get { return backing.value as? T }
+        set { backing.value = newValue as? AnyObject }
+    }
+    var producer: SignalProducer<T?, ReactiveCocoa.NoError> {
+        return backing.producer |> map { $0 as? T }
+    }
+    var readonly: PropertyOf<T?> {
+        return PropertyOf(self)
+    }
+    
+    init(backing: DynamicProperty, type: T.Type) {
+        self.backing = backing
+    }
+    
+    convenience init(object: NSObject?, keyPath: String, type: T.Type) {
+        self.init(backing: DynamicProperty(object: object, keyPath: keyPath), type: type)
+    }
+}
+
+final class KVCPrimitiveProperty<T> : MutablePropertyType {
+    typealias Value = T
+    
+    private let backing: DynamicProperty
+    
+    var value: T {
+        get { return backing.value as! T }
+        set { backing.value = newValue as? AnyObject }
+    }
+    var producer: SignalProducer<T, ReactiveCocoa.NoError> {
+        return backing.producer |> map { $0 as! T }
+    }
+    var readonly: PropertyOf<T> {
+        return PropertyOf(self)
+    }
+    
+    init(backing: DynamicProperty, type: T.Type) {
+        self.backing = backing
+    }
+    
+    convenience init(object: NSObject?, keyPath: String, type: T.Type) {
+        self.init(backing: DynamicProperty(object: object, keyPath: keyPath), type: type)
+    }
+}
+
+extension NSObject {
+    func dyn(keyPath: String) -> DynamicProperty {
+        return DynamicProperty(object: self, keyPath: keyPath)
+    }
+    
+    func kvcObject<T>(keyPath: String, type: T.Type) -> KVCObjectProperty<T> {
+        return KVCObjectProperty(object: self, keyPath: keyPath, type: type)
+    }
+    
+    func kvcPrimitive<T>(keyPath: String, type: T.Type) -> KVCObjectProperty<T> {
+        return KVCObjectProperty(object: self, keyPath: keyPath, type: type)
+    }
+    
+    
+    func propertyOf<T>(keyPath: String, type: T.Type) -> PropertyOf<T?> {
+        return PropertyOf(kvcObject(keyPath, type: type))
     }
 }
 

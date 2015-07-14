@@ -11,5 +11,11 @@
 
 #import <OHHTTPStubs/OHHTTPStubs.h>
 
+@interface TestNSObject : NSObject
+
+@property (nonatomic, strong) NSString *strValue;
+@property (nonatomic, assign) int intValue;
+
+@end
 
 #endif

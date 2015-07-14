@@ -138,4 +138,63 @@ class RACPlayground : AsyncTestCase {
         }
         expect(weakMP).to(beNil())
     }
+    
+    func testTypedDynamicProperty() {
+        let object = TestNSObject()
+        // Sanity
+        let prop = DynamicProperty(object: object, keyPath: "strValue")
+        expect(prop.value as? String).to(equal("TestStr"))
+        object.setValue(nil, forKey: "strValue")
+        expect(prop.value).to(beNil())
+        
+        // KVC property
+        let typedProp = prop.object(String)
+        expect(typedProp.value).to(beNil())
+        object.setValue("test2", forKey: "strValue")
+        expect(typedProp.value).to(equal("test2"))
+        
+        // Backwards
+        typedProp.value = "test3"
+        expect(typedProp.value).to(equal("test3"))
+        expect(prop.value as? String).to(equal("test3"))
+        expect(object.strValue).to(equal("test3"))
+      
+        // propertyof
+        let pof = typedProp.readonly
+        expect(pof.value).to(equal("test3"))
+        
+        object.strValue = "test4"
+        expect(pof.value).to(equal("test4"))
+        expect(typedProp.value).to(equal("test4"))
+        expect(prop.value as? String).to(equal("test4"))
+        
+    }
+    
+    func testTypedPrimitiveDynamicProperty() {
+        let object = TestNSObject()
+        
+        let prop = object.dyn("intValue")
+        // dyn.typed
+        println("value \(prop.value)")
+        expect(prop.value as? Int).to(equal(25))
+        
+        let typed2 = prop.object(Int)
+        expect(typed2.value).to(equal(25))
+
+        object.intValue = 33
+        expect(typed2.value).to(equal(33))
+        
+        let primitiveTyped = prop.primitive(Int)
+        expect(primitiveTyped.value).to(equal(33))
+        
+        object.intValue = 123
+        expect(primitiveTyped.value).to(equal(123))
+        
+        let pof = object.dyn("intValue").primitive(Int).readonly
+        object.intValue = 333
+        expect(pof.value).to(equal(333))
+        
+    }
 }
+
+

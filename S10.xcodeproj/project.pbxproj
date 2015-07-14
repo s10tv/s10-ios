@@ -56,6 +56,7 @@
 		EA4757151B392C19002071D7 /* Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47570E1B392C19002071D7 /* Segue.swift */; };
 		EA4757161B392C19002071D7 /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47570F1B392C19002071D7 /* Transition.swift */; };
 		EA49286E1ADF291100118639 /* UpgradeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA49286D1ADF291100118639 /* UpgradeService.swift */; };
+		EA5022101B54AC4B00BC92D2 /* TestNSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = EA50220F1B54AC4B00BC92D2 /* TestNSObject.m */; };
 		EA56B88E1B53388F001488F2 /* ConnectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56B88D1B53388F001488F2 /* ConnectionViewModel.swift */; };
 		EA57CEC91B45EB4000759139 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA57CEC81B45EB4000759139 /* SignupViewController.swift */; };
 		EA57CECD1B4608EF00759139 /* Bond+XLForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA57CECC1B4608EF00759139 /* Bond+XLForm.swift */; };
@@ -285,6 +286,7 @@
 		EA47570E1B392C19002071D7 /* Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segue.swift; sourceTree = "<group>"; };
 		EA47570F1B392C19002071D7 /* Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
 		EA49286D1ADF291100118639 /* UpgradeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeService.swift; sourceTree = "<group>"; };
+		EA50220F1B54AC4B00BC92D2 /* TestNSObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestNSObject.m; sourceTree = "<group>"; };
 		EA56B88D1B53388F001488F2 /* ConnectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionViewModel.swift; sourceTree = "<group>"; };
 		EA57CEC81B45EB4000759139 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		EA57CECC1B4608EF00759139 /* Bond+XLForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bond+XLForm.swift"; sourceTree = "<group>"; };
@@ -743,6 +745,7 @@
 				EA2406231B5109D8003A73C3 /* VideoDownloadTests.swift */,
 				EA1047271B4E3C1C00B1A76A /* RACPlayground.swift */,
 				EA9F35561A74CC6900E0C65D /* Supporting Files */,
+				EA50220F1B54AC4B00BC92D2 /* TestNSObject.m */,
 			);
 			path = CoreTests;
 			sourceTree = "<group>";
@@ -1554,6 +1557,7 @@
 				EA1047361B4F1F3E00B1A76A /* FutureExtensions.swift in Sources */,
 				EAF6709C1B32026F0025D7CF /* IntegrationTests.swift in Sources */,
 				EA95BBC11B3932BE00701F08 /* GenericExtensions.swift in Sources */,
+				EA5022101B54AC4B00BC92D2 /* TestNSObject.m in Sources */,
 				EA10472F1B4E74D000B1A76A /* ReactiveExtensions.swift in Sources */,
 				EA1047351B4E756200B1A76A /* TestExtensions.swift in Sources */,
 			);
@@ -1871,6 +1875,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = A80ED835405D6C980CF3F31B /* Pods-Core-CoreTests.debug.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1882,6 +1887,8 @@
 				INFOPLIST_FILE = CoreTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CoreTests/Support/CoreTests-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
@@ -1889,6 +1896,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 263A6FE95A9436314C83E11F /* Pods-Core-CoreTests.release.xcconfig */;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -1896,6 +1904,7 @@
 				INFOPLIST_FILE = CoreTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "CoreTests/Support/CoreTests-Bridging-Header.h";
 			};
 			name = Release;
 		};
