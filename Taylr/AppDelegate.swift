@@ -28,7 +28,7 @@ let Analytics = Globals.analyticsService
 let AppDidRegisterUserNotificationSettings = "AppDidRegisterUserNotificationSettings"
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */METDDPClientDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */ {
 
     var window: UIWindow?
     
@@ -83,7 +83,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
         application.registerForRemoteNotifications()
         
         // Let's launch!
-        Meteor.delegate = self
         Meteor.startup()
         Meteor.connectDevice(env)
         
@@ -154,12 +153,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate,/* CrashlyticsDelegate, */
 //        Log.error("Crash detected during previous run \(crash)")
 //    }
     
-    // MARK: Meteor Logging
-    
-    func client(client: METDDPClient, willSendDDPMessage message: [NSObject : AnyObject]) {
-        Log.verbose("DDP > \(message)")
-    }
-    func client(client: METDDPClient, didReceiveDDPMessage message: [NSObject : AnyObject]) {
-        Log.verbose("DDP < \(message)")
-    }
 }

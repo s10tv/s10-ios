@@ -16,7 +16,7 @@ extension User {
     }
     
     class func currentUser() -> User? {
-        return Meteor.user
+        return Meteor.user.value
     }
 }
 

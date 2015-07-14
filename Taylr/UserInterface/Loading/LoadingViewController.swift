@@ -21,6 +21,7 @@ class LoadingViewController : UIViewController {
         super.viewDidAppear(animated)
         Globals.accountService.state.producer
             |> skipWhile { $0 == AccountService.State.Indeterminate }
+            |> startOn(UIScheduler())
             |> futureSuccess { state in
                 assert(NSThread.isMainThread(), "Must be on main")
                 switch state {
@@ -42,7 +43,7 @@ class LoadingViewController : UIViewController {
             segue.animated = false
             segue.replaceStrategy = .Stack
             if let vc = segue.destinationViewController as? SignupViewController {
-                vc.viewModel = SignupInteractor(meteor: Meteor, user: Meteor.user!)
+                vc.viewModel = SignupInteractor(meteor: Meteor, user: Meteor.user.value!)
                 // TODO: Move this type of stuff into the router
                 let onboarding = UIStoryboard(name: "Onboarding", bundle: nil)
                 let login = onboarding.instantiateInitialViewController() as! UIViewController

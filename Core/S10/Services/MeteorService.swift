@@ -12,7 +12,7 @@ import ReactiveCocoa
 import SugarRecord
 import Meteor
 
-public class MeteorService {
+public class MeteorService : NSObject {
     public let meteor: METCoreDataDDPClient
     public let subscriptions: (
         settings: METSubscription,
@@ -42,13 +42,9 @@ public class MeteorService {
     public var loggingIn: Bool { return meteor.loggingIn }
     public var mainContext : NSManagedObjectContext { return meteor.mainQueueManagedObjectContext }
     public let account: PropertyOf<METAccount?>
+    public let user: PropertyOf<User?>
     public var userID : String? { return meteor.userID }
-    public var user: User? { return subscriptions.userData.ready ?
-        userID.flatMap { User.findByDocumentID(mainContext, documentID: $0) } : nil }
-    public weak var delegate: METDDPClientDelegate? {
-        get { return meteor.delegate }
-        set { meteor.delegate = newValue }
-    }
+    private let _user = MutableProperty<User?>(nil)
     
     public init(serverURL: NSURL) {
         let bundle = NSBundle(forClass: MeteorService.self)
@@ -76,6 +72,9 @@ public class MeteorService {
         meta = Metadata(collection: collections.metadata)
         settings = Settings(collection: collections.settings)
         SugarRecord.addStack(MeteorCDStack(meteor: meteor))
+        user = PropertyOf(_user)
+        super.init()
+        meteor.delegate = self
     }
     
     public func startup() {
@@ -260,4 +259,29 @@ public class MeteorService {
         return meteor.call("startTask", [taskId, type, metadata])
     }
     
+}
+
+extension MeteorService : METDDPClientDelegate {
+    // MARK: Meteor Logging
+    
+    public func client(client: METDDPClient, willSendDDPMessage message: [NSObject : AnyObject]) {
+        Log.verbose("DDP > \(message)")
+    }
+    public func client(client: METDDPClient, didReceiveDDPMessage message: [NSObject : AnyObject]) {
+        Log.verbose("DDP < \(message)")
+    }
+    
+    public func client(client: METDDPClient, didSucceedLoginToAccount account: METAccount) {
+        let user = User.findByDocumentID(mainContext, documentID: account.userID)
+        assert(user != nil, "User must exist after account logs in")
+        _user.value = user
+    }
+    
+    public func client(client: METDDPClient, didFailLoginWithWithError error: NSError) {
+        _user.value = nil
+    }
+    
+    public func clientDidLogout(client: METDDPClient) {
+        _user.value = nil
+    }
 }

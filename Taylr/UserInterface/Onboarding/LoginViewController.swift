@@ -37,7 +37,7 @@ class LoginViewController : BaseViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? SignupViewController {
-            vc.viewModel = SignupInteractor(meteor: Meteor, user: Meteor.user!)
+            vc.viewModel = SignupInteractor(meteor: Meteor, user: Meteor.user.value!)
         }
         if let segue = segue as? LinkedStoryboardPushSegue where segue.matches(.Main_Discover) {
             segue.replaceStrategy = .Stack

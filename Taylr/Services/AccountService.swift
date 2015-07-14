@@ -25,16 +25,17 @@ class AccountService {
         state = PropertyOf(.Indeterminate) {
             combineLatest(
                 meteorService.account.producer,
+                meteorService.user.producer,
                 meteorService.settings.accountStatus.producer
-            ) |> map { account, status in
-                switch (account, status) {
-                case (.None, _):
+            ) |> map { account, user, status in
+                switch (account, user, status) {
+                case (.None, _, _):
                     Log.info("Status - Logged Out")
                     return .LoggedOut
-                case (.Some, .Some(.Pending)):
+                case (.Some, .Some, .Some(.Pending)):
                     Log.info("Status - Logged In")
                     return .LoggedIn
-                case (.Some, .Some(.Active)):
+                case (.Some, .Some, .Some(.Active)):
                     Log.info("Status - Signed Up")
                     return .SignedUp
                 default:
