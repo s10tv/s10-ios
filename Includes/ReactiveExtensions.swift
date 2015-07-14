@@ -23,9 +23,6 @@ final class DynamicOptionalTypedProperty<T> : MutablePropertyType {
     var producer: SignalProducer<T?, ReactiveCocoa.NoError> {
         return backing.producer |> map { $0 as? T }
     }
-    var readonly: PropertyOf<T?> {
-        return PropertyOf(self)
-    }
     
     init(backing: DynamicProperty, type: T.Type) {
         self.backing = backing
@@ -48,10 +45,6 @@ final class DynamicForceTypedProperty<T> : MutablePropertyType {
     
     var producer: SignalProducer<T, ReactiveCocoa.NoError> {
         return backing.producer |> map { $0 as! T }
-    }
-    
-    var readonly: PropertyOf<T> {
-        return PropertyOf(self)
     }
     
     init(backing: DynamicProperty, type: T.Type) {
@@ -78,10 +71,15 @@ extension NSObject {
     }
 }
 
-// MARK: - Convenience Properties
+// MARK: - Property Extensions
 
 extension MutableProperty {
     convenience init(_ initialValue: T, @noescape _ block: () -> SignalProducer<T, ReactiveCocoa.NoError>) {
+        self.init(initialValue)
+        self <~ block()
+    }
+    
+    convenience init(_ initialValue: T, @noescape _ block: () -> Signal<T, ReactiveCocoa.NoError>) {
         self.init(initialValue)
         self <~ block()
     }
@@ -91,6 +89,24 @@ extension PropertyOf {
     init(_ initialValue: T, @noescape _ block: () -> SignalProducer<T, ReactiveCocoa.NoError>) {
         self.init(MutableProperty(initialValue, block))
     }
+    
+    init(_ initialValue: T, @noescape _ block: () -> Signal<T, ReactiveCocoa.NoError>) {
+        self.init(MutableProperty(initialValue, block))
+    }
+}
+
+func |> <P: PropertyType, T, U where P.Value == T>(property: P, transform: T -> U) -> PropertyOf<U> {
+    return PropertyOf(transform(property.value)) {
+        property.producer |> map(transform)
+    }
+}
+
+func |> <P1: PropertyType, P2: PropertyType where P1.Value == P2.Value>(property: P1, transform: P1 -> P2) -> P2 {
+    return transform(property)
+}
+
+func readonly<P: PropertyType, T where P.Value == T>(property: P) -> PropertyOf<T> {
+    return PropertyOf(property)
 }
 
 // Counter part to ReactiveCocoa's <~ operator which is sometimes inconvenient to use
