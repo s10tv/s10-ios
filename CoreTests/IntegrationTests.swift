@@ -43,7 +43,6 @@ class IntegrationTests : XCTestCase {
 
     override func setUp() {
         meteor = MeteorService(serverURL: NSURL("ws://s10-dev.herokuapp.com/websocket"))
-        meteor.delegate = self
         meteor.startup()
         videoService = VideoService(meteorService: meteor)
     }
@@ -199,15 +198,5 @@ class IntegrationTests : XCTestCase {
         fileManager.removeItemAtPath(path, error: nil)
         let lockPath = path + ".lock"
         fileManager.removeItemAtPath(lockPath, error: nil)
-    }
-}
-
-// MARK: Meteor Logging
-extension IntegrationTests : METDDPClientDelegate {
-    func client(client: METDDPClient, willSendDDPMessage message: [NSObject : AnyObject]) {
-        Log.verbose("DDP > \(message)")
-    }
-    func client(client: METDDPClient, didReceiveDDPMessage message: [NSObject : AnyObject]) {
-        Log.verbose("DDP < \(message)")
     }
 }
