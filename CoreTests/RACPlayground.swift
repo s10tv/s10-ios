@@ -224,7 +224,18 @@ class RACPlayground : AsyncTestCase {
         promise.failure(NSError(domain: "Test", code: 0, userInfo: nil))
         waitForExpectationsWithTimeout(1, handler: nil)
     }
-
+    
+    func testSignalToFuture() {
+        let (signal, sink) = Signal<Int, NSError>.pipe()
+        let future = signal |> toFuture
+        let expectation = expectationWithDescription("success")
+        future.onSuccess { val in
+            expect(val).to(equal(5))
+            expectation.fulfill()
+        }
+        sendNext(sink, 5)
+        waitForExpectationsWithTimeout(1, handler: nil)
+    }
 }
 
 

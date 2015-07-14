@@ -16,9 +16,9 @@ struct RACPromise<T, E: ErrorType> {
     let sink: SinkOf<Event<T, E>>
     
     init() {
-        let (producer, sink) = SignalProducer<T, E>.buffer(1)
+        let (buffer, sink) = SignalProducer<T, E>.buffer(1)
         self.sink = sink
-        future = RACFuture(producer)
+        future = RACFuture(buffer: buffer)
     }
     
     func success(value: T) {
@@ -32,23 +32,35 @@ struct RACPromise<T, E: ErrorType> {
 }
 
 struct RACFuture<T, E: ErrorType> {
+    private let buffer: SignalProducer<T, E>
     private let _result: () -> Result<T, E>?
-    
-    let producer: SignalProducer<T, E>
     var result: Result<T, E>? { return _result() }
     var value: T? { return result?.value }
     var error: E? { return result?.error }
+    var producer: SignalProducer<T, E> { return buffer }
     
-    init(_ producer: SignalProducer<T, E>) {
-        self.producer = producer |> take(1)
+    private init(buffer: SignalProducer<T, E>) {
+        self.buffer = buffer
         var r: Result<T, E>?
         _result = { r }
         onComplete { r = $0 }
     }
     
+    init(workToStart: SignalProducer<T, E>) {
+        let (buffer, sink) = SignalProducer<T, E>.buffer(1)
+        workToStart |> take(1) |> start(sink)
+        self.init(buffer: buffer)
+    }
+    
+    init(startedWork: Signal<T, E>) {
+        let (buffer, sink) = SignalProducer<T, E>.buffer(1)
+        startedWork |> take(1) |> observe(sink)
+        self.init(buffer: buffer)
+    }
+    
     func onComplete(callback: Result<T, E> ->()) -> Disposable {
         var result: Result<T, E>?
-        return producer.start(next: { v in
+        return buffer.start(next: { v in
             result = Result(value: v)
         }, completed: {
             callback(result!)
@@ -70,3 +82,20 @@ struct RACFuture<T, E: ErrorType> {
         }
     }
 }
+
+func |> <T, E: ErrorType>(producer: SignalProducer<T, E>, transform: SignalProducer<T, E> -> RACFuture<T, E>) -> RACFuture<T, E> {
+    return transform(producer)
+}
+
+func toFuture<T, E: ErrorType>(producer: SignalProducer<T, E>) -> RACFuture<T, E> {
+    return RACFuture(workToStart: producer)
+}
+
+func |> <T, E: ErrorType>(signal: Signal<T, E>, transform: Signal<T, E> -> RACFuture<T, E>) -> RACFuture<T, E> {
+    return transform(signal)
+}
+
+func toFuture<T, E: ErrorType>(signal: Signal<T, E>) -> RACFuture<T, E> {
+    return RACFuture(startedWork: signal)
+}
+
