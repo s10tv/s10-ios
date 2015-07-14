@@ -42,6 +42,7 @@
 		EA3965151B54C19800F5B0B3 /* ReactiveBridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3965141B54C19800F5B0B3 /* ReactiveBridging.swift */; };
 		EA3965161B54C1B400F5B0B3 /* ReactiveBridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3965141B54C19800F5B0B3 /* ReactiveBridging.swift */; };
 		EA3965171B54C1B500F5B0B3 /* ReactiveBridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3965141B54C19800F5B0B3 /* ReactiveBridging.swift */; };
+		EA39651C1B54EFE400F5B0B3 /* MeteorCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA39651B1B54EFE400F5B0B3 /* MeteorCollection.swift */; };
 		EA4216451B3E092200613EFA /* _Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4216431B3E092200613EFA /* _Activity.swift */; };
 		EA4216461B3E092200613EFA /* _Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4216441B3E092200613EFA /* _Service.swift */; };
 		EA4216491B3E093400613EFA /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4216471B3E093400613EFA /* Activity.swift */; };
@@ -273,6 +274,7 @@
 		EA3777701A966EC10055DE99 /* TransatTextMedium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextMedium.otf; sourceTree = "<group>"; };
 		EA3777711A966EC10055DE99 /* TransatTextStandard.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextStandard.otf; sourceTree = "<group>"; };
 		EA3965141B54C19800F5B0B3 /* ReactiveBridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveBridging.swift; sourceTree = "<group>"; };
+		EA39651B1B54EFE400F5B0B3 /* MeteorCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorCollection.swift; sourceTree = "<group>"; };
 		EA4216431B3E092200613EFA /* _Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Activity.swift; sourceTree = "<group>"; };
 		EA4216441B3E092200613EFA /* _Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Service.swift; sourceTree = "<group>"; };
 		EA4216471B3E093400613EFA /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
@@ -877,6 +879,7 @@
 		EAF670551B31F9450025D7CF /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				EA39651B1B54EFE400F5B0B3 /* MeteorCollection.swift */,
 				EAF670561B31F9450025D7CF /* MeteorCDStack.swift */,
 				EAF670571B31F9450025D7CF /* MeteorExtension.swift */,
 				EAF670581B31F9450025D7CF /* SugarRecordExtension.swift */,
@@ -1463,6 +1466,7 @@
 				EAF670971B31FE6A0025D7CF /* Environment.swift in Sources */,
 				EACEFB911B472E8800901E85 /* ChatsInteractor.swift in Sources */,
 				EAF6707F1B31F9450025D7CF /* Connection.swift in Sources */,
+				EA39651C1B54EFE400F5B0B3 /* MeteorCollection.swift in Sources */,
 				EAF670731B31F9450025D7CF /* MeteorCDStack.swift in Sources */,
 				EA4216461B3E092200613EFA /* _Service.swift in Sources */,
 				EA36B1D61B40DE3C002ADD91 /* ActivityViewModel.swift in Sources */,
