@@ -145,7 +145,7 @@ CHECKOUT OPTIONS:
     :commit: 3800ef8762fd4edd16d816882409a6c83533c313
     :git: https://github.com/duemunk/Async.git
   Bond:
-    :commit: 1ddec9e06bb73f6a5ae5ab53008d7638debd5495
+    :commit: 6e922dd49fba64812f2e83fe26b49d0e11bf5506
     :git: https://github.com/tonyxiao/Bond.git
   Meteor:
     :commit: 0f40ef742583cb4b8c2e987121ff1d1f4a6afdfb

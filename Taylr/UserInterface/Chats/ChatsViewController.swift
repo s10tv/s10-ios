@@ -14,18 +14,16 @@ class ChatsViewController : BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var chatsVM : ChatsInteractor!
-    var dataSourceBond: UITableViewDataSourceBond<UITableViewCell>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dataSourceBond = UITableViewDataSourceBond(tableView: tableView, disableAnimation: false)
         chatsVM = ChatsInteractor()
         chatsVM.connectionViewModels.map { [unowned self] (connectionVM, index) -> UITableViewCell in
             let cell = self.tableView.dequeueReusableCellWithIdentifier(.ConnectionCell,
                 forIndexPath: NSIndexPath(forRow: index, inSection: 0)) as! ConnectionCell
             cell.viewModel = connectionVM
             return cell
-        } ->> dataSourceBond
+        } ->> tableView
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

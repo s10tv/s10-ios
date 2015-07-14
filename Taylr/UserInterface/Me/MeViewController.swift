@@ -20,7 +20,6 @@ class MeViewController : BaseViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     
     var viewModel: MeInteractor!
-    var dataSourceBond: UICollectionViewDataSourceBond<UICollectionViewCell>!
     var linkAccountService: LinkAccountService!
     
     // Explicitly setting collectionView delegate.nil to avoid crash. For some reason
@@ -36,7 +35,6 @@ class MeViewController : BaseViewController {
         viewModel.displayName ->> nameLabel
         viewModel.username ->> usernameLabel
         
-        dataSourceBond = UICollectionViewDataSourceBond(collectionView: collectionView)
         let servicesSection = viewModel.linkedServices.map { [unowned self] (service, index) -> UICollectionViewCell in
             let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier(.MeServiceCell,
                 forIndexPath: NSIndexPath(forRow: index, inSection: 0)) as! MeServiceCell
@@ -47,7 +45,7 @@ class MeViewController : BaseViewController {
             return self.collectionView.dequeueReusableCellWithReuseIdentifier(.AddCell, forIndexPath: NSIndexPath(forRow: 0, inSection: 1))
         }
         
-        DynamicArray([servicesSection, addSection]) ->> dataSourceBond
+        DynamicArray([servicesSection, addSection]) ->> collectionView
         linkAccountService = LinkAccountService(env: Globals.env)
     }
     

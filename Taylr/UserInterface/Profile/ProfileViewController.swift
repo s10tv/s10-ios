@@ -16,7 +16,6 @@ import Core
 class ProfileViewController : BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var dataSourceBond: UITableViewDataSourceBond<UITableViewCell>!
     var mainCell: ProfileMainCell!
     var profileVM: ProfileInteractor!
     
@@ -25,7 +24,6 @@ class ProfileViewController : BaseViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 500
         
-        dataSourceBond = UITableViewDataSourceBond(tableView: tableView, disableAnimation: false)
         let mainSection = DynamicArray([profileVM.user]).map { [unowned self] (user, index) -> UITableViewCell in
             if self.mainCell == nil {
                 self.mainCell = self.tableView.dequeueReusableCellWithIdentifier(.ProfileMainCell,
@@ -40,7 +38,7 @@ class ProfileViewController : BaseViewController {
             cell.activity = activity
             return cell
         }
-        DynamicArray([mainSection, activitiesSection]) ->> dataSourceBond
+        DynamicArray([mainSection, activitiesSection]) ->> tableView
     }
     
     override func viewWillAppear(animated: Bool) {

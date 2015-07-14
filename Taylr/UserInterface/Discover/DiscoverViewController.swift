@@ -16,7 +16,6 @@ class DiscoverViewController : BaseViewController {
     @IBOutlet weak var collectionView : UICollectionView!
     
     var discoverVM : DiscoverInteractor!
-    var dataSourceBond: UICollectionViewDataSourceBond<UICollectionViewCell>!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,14 +26,13 @@ class DiscoverViewController : BaseViewController {
         layout.sectionInset = UIEdgeInsets(inset: 5)
         collectionView.collectionViewLayout = layout
 
-        dataSourceBond = UICollectionViewDataSourceBond(collectionView: collectionView)
         discoverVM = DiscoverInteractor()
         discoverVM.candidates.map { [unowned self] (vm, index) -> UICollectionViewCell in
             let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier(.CandidateCell,
                 forIndexPath: NSIndexPath(forItem: index, inSection: 0)) as! CandidateCell
             cell.bindViewModel(vm)
             return cell
-        } ->> dataSourceBond
+        } ->> collectionView
 
         discoverVM.unreadConnectionsCount.map { $0 > 0 ? "Taylr (\($0))" : "Taylr" } ->> navigationItem.dynTitle
     }

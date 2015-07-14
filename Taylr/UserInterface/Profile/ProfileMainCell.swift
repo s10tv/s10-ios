@@ -21,8 +21,6 @@ class ProfileMainCell : UITableViewCell {
     @IBOutlet weak var aboutLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
     
-    var dataSourceBond: UICollectionViewDataSourceBond<UICollectionViewCell>!
-    
     func bindViewModel(viewModel: ProfileInteractor) {
         viewModel.avatarURL ->> avatarView.dynImageURL
         viewModel.coverURL ->> coverImageView.dynImageURL
@@ -36,7 +34,7 @@ class ProfileMainCell : UITableViewCell {
                 forIndexPath: NSIndexPath(forRow: index, inSection: 0)) as! ProfileServiceCell
             cell.service = service
             return cell
-        } ->> dataSourceBond
+        } ->> collectionView
     }
     
     override func prepareForReuse() {
@@ -49,6 +47,5 @@ class ProfileMainCell : UITableViewCell {
         coverImageView.clipsToBounds = true
         avatarView.dynPlaceholderImage = avatarView.image
         coverImageView.dynPlaceholderImage = coverImageView.image
-        dataSourceBond = UICollectionViewDataSourceBond(collectionView: collectionView)
     }
 }
