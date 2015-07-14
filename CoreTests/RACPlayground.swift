@@ -160,7 +160,7 @@ class RACPlayground : AsyncTestCase {
         expect(object.strValue).to(equal("test3"))
       
         // propertyof
-        let pof = typedProp.readonly
+        let pof = typedProp |> readonly
         expect(pof.value).to(equal("test3"))
         
         object.strValue = "test4"
@@ -190,7 +190,7 @@ class RACPlayground : AsyncTestCase {
         object.intValue = 123
         expect(primitiveTyped.value).to(equal(123))
         
-        let pof = object.dyn("intValue").force(Int).readonly
+        let pof = object.dyn("intValue").force(Int) |> readonly
         object.intValue = 333
         expect(pof.value).to(equal(333))
         
