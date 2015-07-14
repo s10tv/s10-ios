@@ -35,6 +35,7 @@ PODS:
   - Heap (2.1.5)
   - InflectorKit (0.0.1)
   - INTULocationManager (3.0.3)
+  - JVFloatLabeledTextField (1.1.0)
   - Meteor (0.1.4):
     - InflectorKit
     - PocketSocket
@@ -103,6 +104,7 @@ DEPENDENCIES:
   - FormatterKit/TimeIntervalFormatter (~> 1.8)
   - Heap (~> 2.1)
   - INTULocationManager (~> 3.0)
+  - JVFloatLabeledTextField (~> 1.1)
   - Meteor (from `https://github.com/tonyxiao/meteor-ios`, branch `dev`)
   - Nimble (~> 0.4.0)
   - NSLogger (~> 1.5)
@@ -177,6 +179,7 @@ SPEC CHECKSUMS:
   Heap: 9d41b3d07bc86c9127364b638c710d854390a113
   InflectorKit: 64497199e6764f4d8337cab7f700a77b13d76a73
   INTULocationManager: e79327803a163f5fec28eb042bb124ed0c6e4876
+  JVFloatLabeledTextField: ea4a3d8387ddd43724c472bb2b8ab39b79af05d4
   Meteor: e061bb07cbce6a99b2adf6fdde6a83f08e40da8c
   Nimble: 49b7a7da8919f42823d37c6d68cc6d15a7009f32
   NSLogger: 5ed223a2436df96244e033be750656dacdeec034

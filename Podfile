@@ -54,6 +54,7 @@ target :Core do
         pod 'XLForm', '~> 3.0'
         pod 'SCRecorder', '~> 2.5'
 
+        pod 'JVFloatLabeledTextField', '~> 1.1'
         pod 'UICollectionViewLeftAlignedLayout', '~> 1.0'
         pod 'CHTCollectionViewWaterfallLayout', '~> 0.9'
 

@@ -46,6 +46,7 @@
 		EA39651E1B55062900F5B0B3 /* ReactiveFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA39651D1B55062900F5B0B3 /* ReactiveFuture.swift */; };
 		EA39651F1B55062C00F5B0B3 /* ReactiveFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA39651D1B55062900F5B0B3 /* ReactiveFuture.swift */; };
 		EA3965211B55912C00F5B0B3 /* ReactiveFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA39651D1B55062900F5B0B3 /* ReactiveFuture.swift */; };
+		EA3965231B55C47200F5B0B3 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3965221B55C47200F5B0B3 /* EditProfileViewController.swift */; };
 		EA4216451B3E092200613EFA /* _Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4216431B3E092200613EFA /* _Activity.swift */; };
 		EA4216461B3E092200613EFA /* _Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4216441B3E092200613EFA /* _Service.swift */; };
 		EA4216491B3E093400613EFA /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4216471B3E093400613EFA /* Activity.swift */; };
@@ -277,6 +278,7 @@
 		EA3965141B54C19800F5B0B3 /* ReactiveBridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveBridging.swift; sourceTree = "<group>"; };
 		EA39651B1B54EFE400F5B0B3 /* MeteorCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorCollection.swift; sourceTree = "<group>"; };
 		EA39651D1B55062900F5B0B3 /* ReactiveFuture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveFuture.swift; sourceTree = "<group>"; };
+		EA3965221B55C47200F5B0B3 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		EA4216431B3E092200613EFA /* _Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Activity.swift; sourceTree = "<group>"; };
 		EA4216441B3E092200613EFA /* _Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Service.swift; sourceTree = "<group>"; };
 		EA4216471B3E093400613EFA /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
@@ -815,6 +817,7 @@
 				EA773D251B431514009A9945 /* ProfileServiceCell.swift */,
 				EA36B1D11B3F23ED002ADD91 /* ActivityImageCell.swift */,
 				EA36B1D31B3F23F4002ADD91 /* ActivityTextCell.swift */,
+				EA3965221B55C47200F5B0B3 /* EditProfileViewController.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1544,6 +1547,7 @@
 				EA36B1D21B3F23ED002ADD91 /* ActivityImageCell.swift in Sources */,
 				EA49286E1ADF291100118639 /* UpgradeService.swift in Sources */,
 				EAA56FB11B2BCAC700DE3936 /* CandidateCell.swift in Sources */,
+				EA3965231B55C47200F5B0B3 /* EditProfileViewController.swift in Sources */,
 				EAF81B2B1B3373F000EED6DD /* ProducerCell.swift in Sources */,
 				EABAEDA51B4334EB000261F0 /* MeServiceCell.swift in Sources */,
 				EAA56FA51B2B32E500DE3936 /* UserAvatarView.swift in Sources */,
