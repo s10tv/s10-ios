@@ -56,14 +56,14 @@ public class ConversationInteractor {
         }
 
 
-        downloading = PropertyOf(false) {
+        downloading = toBondDynamic(PropertyOf(false) {
             VideoDownloadTaskEntry.countOfDownloads(recipient.documentID!)
                 |> map { $0 > 0 }
-        }.dyn
-        uploading = PropertyOf(false) {
+        })
+        uploading = toBondDynamic(PropertyOf(false) {
             VideoUploadTaskEntry.countOfUploads(recipient.documentID!)
                 |> map { $0 > 0 }
-        }.dyn
+        })
         busy = PropertyOf(false) {
             combineLatest(
                 VideoUploadTaskEntry.countOfUploads(recipient.documentID!),
@@ -77,7 +77,7 @@ public class ConversationInteractor {
         // TODO: Figure out how to make formattedStatus & badgeText also work when connection gets created
         if let connection = recipient.connection {
             formattedStatus = ConversationInteractor.formatStatus(connection, uploading: uploading, downloading: downloading)
-            badgeText = reduce(connection.dynUnreadCount, busy.dyn) {
+            badgeText = reduce(connection.dynUnreadCount, toBondDynamic(busy)) {
                 ($0 != nil && $0! > 0 && $1 == false) ? "\($0!)" : ""
             }
         } else {

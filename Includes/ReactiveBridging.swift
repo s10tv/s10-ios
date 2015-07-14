@@ -14,46 +14,25 @@ import Box
 
 // MARK: - ReactiveCocoa + SwiftBonds
 
-extension PropertyOf {
-    var dyn: Dynamic<T> {
-        let dyn = InternalDynamic<T>(value)
-        dyn.retain(Box(self))
-        producer.start(next: { value in
-            dyn.value = value
-        })
-        return dyn
-    }
-}
-
-extension MutableProperty {
-    var dyn: Dynamic<T> {
-        let dyn = InternalDynamic<T>(value)
-        dyn.retain(self)
-        producer.start(next: { value in
-            dyn.value = value
-        })
-        return dyn
-    }
+func toBondDynamic<T, P: PropertyType where P.Value == T>(property: P) -> Dynamic<T> {
+    let dyn = InternalDynamic<T>(property.value)
+    dyn.retain(Box(property))
+    property.producer.start(next: { value in
+        dyn.value = value
+    })
+    return dyn
 }
 
 // Bind and fire
 
-func ->> <T, U: Bondable where U.BondType == T>(left: PropertyOf<T>, right: U) {
-    left.dyn ->> right.designatedBond
-}
-
-func ->> <T, U: Bondable where U.BondType == T>(left: MutableProperty<T>, right: U) {
-    left.dyn ->> right.designatedBond
+func ->> <T: PropertyType, U: Bondable where T.Value == U.BondType>(left: T, right: U) {
+    toBondDynamic(left) ->> right.designatedBond
 }
 
 // Bind only
 
-func ->| <T, U: Bondable where U.BondType == T>(left: PropertyOf<T>, right: U) {
-    left.dyn ->| right.designatedBond
-}
-
-func ->| <T, U: Bondable where U.BondType == T>(left: MutableProperty<T>, right: U) {
-    left.dyn ->| right.designatedBond
+func ->| <T: PropertyType, U: Bondable where T.Value == U.BondType>(left: T, right: U) {
+    toBondDynamic(left) ->| right.designatedBond
 }
 
 // MARK: ReactiveCocoa + BrightFutures
