@@ -123,7 +123,7 @@ class SignupViewController : XLFormViewController {
         pickImage() { image in
             let scaledImage = image.scaleToMaxDimension(1400, pixelSize: true)
             PKHUD.showActivity(dimsBackground: true)
-            self.viewModel.uploadAvatar(scaledImage).onComplete { _ in
+            self.viewModel.uploadCoverPhoto(scaledImage).onComplete { _ in
                 PKHUD.showText("Success")
                 PKHUD.hide(animated: false)
             }.onFailure {
