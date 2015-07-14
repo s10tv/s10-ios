@@ -68,8 +68,8 @@ class LoginViewController : BaseViewController {
             }
         }, completed: {
             assert(NSThread.isMainThread(), "Only on main")
-            switch Globals.accountService.status {
-            case .Pending:
+            switch Globals.accountService.state.value {
+            case .LoggedIn:
                 self.performSegue(.LoginToSignup, sender: self)
             case .SignedUp:
                 self.performSegue(.Main_Discover, sender: self)

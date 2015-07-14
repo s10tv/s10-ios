@@ -41,7 +41,7 @@ public class MeteorService {
     public var connected: Bool { return meteor.connected }
     public var loggingIn: Bool { return meteor.loggingIn }
     public var mainContext : NSManagedObjectContext { return meteor.mainQueueManagedObjectContext }
-    public var account: METAccount? { return meteor.account }
+    public let account: PropertyOf<METAccount?>
     public var userID : String? { return meteor.userID }
     public var user: User? { return subscriptions.userData.ready ?
         userID.flatMap { User.findByDocumentID(mainContext, documentID: $0) } : nil }
@@ -54,6 +54,7 @@ public class MeteorService {
         let bundle = NSBundle(forClass: MeteorService.self)
         let model = NSManagedObjectModel.mergedModelFromBundles([bundle as AnyObject])
         meteor = METCoreDataDDPClient(serverURL: serverURL, account: nil, managedObjectModel: model)
+        account = meteor.dyn("account").optional(METAccount) |> readonly
         subscriptions = (
             settings: meteor.addSubscriptionWithName("settings"),
             metadata: meteor.addSubscriptionWithName("metadata"),

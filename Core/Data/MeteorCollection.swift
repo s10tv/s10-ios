@@ -17,6 +17,12 @@ struct BoxedValue {
     }
 }
 
+extension BoxedValue : Printable {
+    var description: String {
+        return "Boxed[\(value)]"
+    }
+}
+
 class MeteorCollection {
     let nc = NSNotificationCenter.defaultCenter().proxy()
     let c: METCollection

@@ -8,6 +8,7 @@
 
 import Foundation
 import Meteor
+import ReactiveCocoa
 
 public class Settings {
     public enum Key : String {
@@ -25,6 +26,10 @@ public class Settings {
         case Women = "women"
         case Both = "both"
     }
+    public enum AccountStatus : String {
+        case Pending = "pending"
+        case Active = "active"
+    }
     public let collection : METCollection
     
     public var softMinBuild : Int? { return getValue(.SoftMinBuild) as? Int }
@@ -37,14 +42,21 @@ public class Settings {
         return GenderPref(rawValue: (getValue(.GenderPref) as? String) ?? "")
     }
     public var debugLoginMode: Bool { return getValue(.DebugLoginMode) as? Bool ?? false }
+    public let accountStatus: PropertyOf<AccountStatus?>
+    
+    let c: MeteorCollection
     
     public init(collection: METCollection) {
         self.collection = collection
+        c = MeteorCollection(collection)
+
+        accountStatus = c.propertyOf("accountStatus")
+            |> { $0.typed(String).flatMap { AccountStatus(rawValue: $0) }
+        }
     }
     
     public func getValue(key: String) -> AnyObject? {
-        return nil
-        return collection.documentWithID(key).fields["value"]
+        return (collection.documentWithID(key) as METDocument?)?.fields["value"]
     }
     
     public func getValue(key: Key) -> AnyObject? {

@@ -12,23 +12,37 @@ import DigitsKit
 import Core
 
 class AccountService {
-    enum Status {
-        case NotLoggedIn, Pending, SignedUp
+    enum State {
+        case Indeterminate, LoggedOut, LoggedIn, SignedUp
     }
     private let meteorService: MeteorService
     let digits = Digits.sharedInstance()
-    
-    var status: Status {
-        if meteorService.account == nil {
-            return .NotLoggedIn
-        } else if meteorService.user?.dynStatus.value != .Active {
-            return .Pending
-        }
-        return .SignedUp
-    }
+    let state: PropertyOf<State>
     
     init(meteorService: MeteorService) {
         self.meteorService = meteorService
+        
+        state = PropertyOf(.Indeterminate) {
+            combineLatest(
+                meteorService.account.producer,
+                meteorService.settings.accountStatus.producer
+            ) |> map { account, status in
+                switch (account, status) {
+                case (.None, _):
+                    Log.info("Status - Logged Out")
+                    return .LoggedOut
+                case (.Some, .Some(.Pending)):
+                    Log.info("Status - Logged In")
+                    return .LoggedIn
+                case (.Some, .Some(.Active)):
+                    Log.info("Status - Signed Up")
+                    return .SignedUp
+                default:
+                    Log.info("Status - Indeterminate")
+                    return .Indeterminate
+                }
+            }
+        }
     }
     
     private func didLogin() {
