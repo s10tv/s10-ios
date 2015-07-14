@@ -2,7 +2,7 @@ PODS:
   - Alamofire (1.2.3)
   - AnalyticsSwift (0.1.0)
   - Appsee (2.1.3)
-  - Async (1.2.1)
+  - Async (1.3.0)
   - Bolts (1.2.0):
     - Bolts/AppLinks (= 1.2.0)
     - Bolts/Tasks (= 1.2.0)
@@ -20,16 +20,16 @@ PODS:
   - DTFoundation/DTASN1 (1.7.6):
     - DTFoundation/Core
   - EDColor (1.0.0)
-  - FBSDKCoreKit (4.3.0):
+  - FBSDKCoreKit (4.4.0):
     - Bolts (~> 1.1)
-    - FBSDKCoreKit/arc (= 4.3.0)
-    - FBSDKCoreKit/no-arc (= 4.3.0)
-  - FBSDKCoreKit/arc (4.3.0):
+    - FBSDKCoreKit/arc (= 4.4.0)
+    - FBSDKCoreKit/no-arc (= 4.4.0)
+  - FBSDKCoreKit/arc (4.4.0):
     - Bolts (~> 1.1)
-  - FBSDKCoreKit/no-arc (4.3.0):
+  - FBSDKCoreKit/no-arc (4.4.0):
     - Bolts (~> 1.1)
     - FBSDKCoreKit/arc
-  - FBSDKLoginKit (4.3.0):
+  - FBSDKLoginKit (4.4.0):
     - FBSDKCoreKit
   - FormatterKit/TimeIntervalFormatter (1.8.0)
   - Heap (2.1.5)
@@ -73,9 +73,9 @@ PODS:
     - Box (~> 1.2)
   - Reveal-iOS-SDK (1.5.1)
   - SCRecorder (2.5.0)
-  - SDWebImage (3.7.2):
-    - SDWebImage/Core (= 3.7.2)
-  - SDWebImage/Core (3.7.2)
+  - SDWebImage (3.7.3):
+    - SDWebImage/Core (= 3.7.3)
+  - SDWebImage/Core (3.7.3)
   - SimpleKeychain (0.4.0)
   - SugarRecord/Core (1.0.7)
   - SugarRecord/CoreData (1.0.7):
@@ -142,7 +142,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Async:
-    :commit: 7536a4d8059be119fd4a4550d674996f8a1cdd54
+    :commit: 3800ef8762fd4edd16d816882409a6c83533c313
     :git: https://github.com/duemunk/Async.git
   Bond:
     :commit: 1ddec9e06bb73f6a5ae5ab53008d7638debd5495
@@ -161,7 +161,7 @@ SPEC CHECKSUMS:
   Alamofire: 5550bf0b575ed1a4bf9be572f9463e1015cc169e
   AnalyticsSwift: 903cb2c6d522709fa7637285553840c02accd149
   Appsee: 375075f06fdd807e0b17df52cbb7c972c4eb17da
-  Async: d9ee6fc9c415d44fcb892f4c289d1e79ce8ae92d
+  Async: 5ba000b344028a256e6ebbe75f74dac907fbb365
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
   Bond: 4cb4a52a8a236ce17ca594438594757a86ca7e8a
   Box: a92e8aa4c099e6bc0733829665caf9e668ef53b8
@@ -171,8 +171,8 @@ SPEC CHECKSUMS:
   DateTools: 9bcc89e4f2f9004d8a7a2bd1b49269cf78968e65
   DTFoundation: bf431de2292484461ff7d92295fdae7dc15a3820
   EDColor: c83f9a61f9f9b3c23d541f1feb561558e29cb088
-  FBSDKCoreKit: a3a60225a84abeace291d0fe71cae29a627382c2
-  FBSDKLoginKit: 6bc2f8f2628c3b6d2e346762fff8cb55cfd3a58d
+  FBSDKCoreKit: 75bdd75c980e811db218488d99dd93b7740f4474
+  FBSDKLoginKit: 02a9254a4c132412fa03577b0d53e936d068a7fb
   FormatterKit: bddde83e054edf9d9ee14f9de3b3a5103db256f4
   Heap: 9d41b3d07bc86c9127364b638c710d854390a113
   InflectorKit: 64497199e6764f4d8337cab7f700a77b13d76a73
@@ -192,7 +192,7 @@ SPEC CHECKSUMS:
   Result: b44f6bc8762bbffaf2c5df58f2c7d12c3496ced8
   Reveal-iOS-SDK: c9c55cad2729c85f6ced415f1b21857c9a2d8ef9
   SCRecorder: 90075f2d9deb03cd8280faff8cd3cca11c036025
-  SDWebImage: 71b7cdc1d1721d6a82ed62889030225f2c249e29
+  SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   SimpleKeychain: ed7fcbc2a235ad6919a3d2385ed4b44ab866d874
   SugarRecord: 9d55ce666e8161eacdc95c996173eb53eb6d3683
   SwiftTryCatch: fb6d2b34abe48efd69578dac919293a44f95b481
