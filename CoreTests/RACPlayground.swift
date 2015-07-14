@@ -195,6 +195,36 @@ class RACPlayground : AsyncTestCase {
         expect(pof.value).to(equal(333))
         
     }
+    
+    func testRacFuture() {
+        let promise = RACPromise<Int, NSError>()
+        let future = promise.future
+        let expectation = expectationWithDescription("success")
+        future.onSuccess { val in
+            expect(val).to(equal(3))
+            expect(future.value).to(equal(3))
+            expectation.fulfill()
+        }
+        promise.success(3)
+        waitForExpectationsWithTimeout(1, handler: nil)
+    }
+    
+    func testRacFutureFail() {
+        let promise = RACPromise<Int, NSError>()
+        let future = promise.future
+        let expectation = expectationWithDescription("fail")
+        future.onSuccess { val in
+            fail("Should not get here")
+            expectation.fulfill()
+        }
+        future.onFailure { err in
+            expect(err).toNot(beNil())
+            expectation.fulfill()
+        }
+        promise.failure(NSError(domain: "Test", code: 0, userInfo: nil))
+        waitForExpectationsWithTimeout(1, handler: nil)
+    }
+
 }
 
 

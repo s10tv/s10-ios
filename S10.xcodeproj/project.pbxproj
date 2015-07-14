@@ -16,8 +16,8 @@
 		EA0FED451ADE5BC500FC6FCB /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */; };
 		EA1047281B4E3C1C00B1A76A /* RACPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1047271B4E3C1C00B1A76A /* RACPlayground.swift */; };
 		EA10472C1B4E746800B1A76A /* FutureExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA10472B1B4E746800B1A76A /* FutureExtensions.swift */; };
-		EA10472F1B4E74D000B1A76A /* ReactiveExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA10472D1B4E74A300B1A76A /* ReactiveExtensions.swift */; };
-		EA1047301B4E74D000B1A76A /* ReactiveExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA10472D1B4E74A300B1A76A /* ReactiveExtensions.swift */; };
+		EA10472F1B4E74D000B1A76A /* ReactiveProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA10472D1B4E74A300B1A76A /* ReactiveProperties.swift */; };
+		EA1047301B4E74D000B1A76A /* ReactiveProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA10472D1B4E74A300B1A76A /* ReactiveProperties.swift */; };
 		EA1047341B4E756200B1A76A /* MeteorServiceTestingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1047321B4E756200B1A76A /* MeteorServiceTestingExtension.swift */; };
 		EA1047351B4E756200B1A76A /* TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1047331B4E756200B1A76A /* TestExtensions.swift */; };
 		EA1047361B4F1F3E00B1A76A /* FutureExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA10472B1B4E746800B1A76A /* FutureExtensions.swift */; };
@@ -43,6 +43,8 @@
 		EA3965161B54C1B400F5B0B3 /* ReactiveBridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3965141B54C19800F5B0B3 /* ReactiveBridging.swift */; };
 		EA3965171B54C1B500F5B0B3 /* ReactiveBridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3965141B54C19800F5B0B3 /* ReactiveBridging.swift */; };
 		EA39651C1B54EFE400F5B0B3 /* MeteorCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA39651B1B54EFE400F5B0B3 /* MeteorCollection.swift */; };
+		EA39651E1B55062900F5B0B3 /* ReactiveFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA39651D1B55062900F5B0B3 /* ReactiveFuture.swift */; };
+		EA39651F1B55062C00F5B0B3 /* ReactiveFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA39651D1B55062900F5B0B3 /* ReactiveFuture.swift */; };
 		EA4216451B3E092200613EFA /* _Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4216431B3E092200613EFA /* _Activity.swift */; };
 		EA4216461B3E092200613EFA /* _Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4216441B3E092200613EFA /* _Service.swift */; };
 		EA4216491B3E093400613EFA /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4216471B3E093400613EFA /* Activity.swift */; };
@@ -82,7 +84,7 @@
 		EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3681AA26597003383BE /* SBConstants.swift */; };
 		EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3691AA26597003383BE /* StyleKit.swift */; };
 		EA82CF971B504FC500A12D94 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA82CF961B504FC500A12D94 /* Image.swift */; };
-		EA8896221B4F3C1300E180A6 /* ReactiveExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA10472D1B4E74A300B1A76A /* ReactiveExtensions.swift */; };
+		EA8896221B4F3C1300E180A6 /* ReactiveProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA10472D1B4E74A300B1A76A /* ReactiveProperties.swift */; };
 		EA925C741AD99ED8008E9F41 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA925C731AD99ED8008E9F41 /* R.swift */; };
 		EA95BBA71B39308A00701F08 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBA61B39308A00701F08 /* PageViewController.swift */; };
 		EA95BBAF1B3930B000701F08 /* Bond+SDWebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBA91B3930B000701F08 /* Bond+SDWebImage.swift */; };
@@ -250,7 +252,7 @@
 		EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
 		EA1047271B4E3C1C00B1A76A /* RACPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACPlayground.swift; sourceTree = "<group>"; };
 		EA10472B1B4E746800B1A76A /* FutureExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FutureExtensions.swift; sourceTree = "<group>"; };
-		EA10472D1B4E74A300B1A76A /* ReactiveExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveExtensions.swift; sourceTree = "<group>"; };
+		EA10472D1B4E74A300B1A76A /* ReactiveProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveProperties.swift; sourceTree = "<group>"; };
 		EA1047321B4E756200B1A76A /* MeteorServiceTestingExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorServiceTestingExtension.swift; sourceTree = "<group>"; };
 		EA1047331B4E756200B1A76A /* TestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestExtensions.swift; sourceTree = "<group>"; };
 		EA1F9C8B1B47678700D1620F /* AvatarCoverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarCoverCell.swift; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 		EA3777711A966EC10055DE99 /* TransatTextStandard.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextStandard.otf; sourceTree = "<group>"; };
 		EA3965141B54C19800F5B0B3 /* ReactiveBridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveBridging.swift; sourceTree = "<group>"; };
 		EA39651B1B54EFE400F5B0B3 /* MeteorCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorCollection.swift; sourceTree = "<group>"; };
+		EA39651D1B55062900F5B0B3 /* ReactiveFuture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveFuture.swift; sourceTree = "<group>"; };
 		EA4216431B3E092200613EFA /* _Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Activity.swift; sourceTree = "<group>"; };
 		EA4216441B3E092200613EFA /* _Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Service.swift; sourceTree = "<group>"; };
 		EA4216471B3E093400613EFA /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
@@ -657,7 +660,8 @@
 		EA95BBB41B3932B500701F08 /* Includes */ = {
 			isa = PBXGroup;
 			children = (
-				EA10472D1B4E74A300B1A76A /* ReactiveExtensions.swift */,
+				EA10472D1B4E74A300B1A76A /* ReactiveProperties.swift */,
+				EA39651D1B55062900F5B0B3 /* ReactiveFuture.swift */,
 				EA3965141B54C19800F5B0B3 /* ReactiveBridging.swift */,
 				EA95BBB71B3932B500701F08 /* GenericExtensions.swift */,
 				EA95BBB81B3932B500701F08 /* MediaExtension.swift */,
@@ -1454,6 +1458,7 @@
 				EA4757161B392C19002071D7 /* Transition.swift in Sources */,
 				EABAEDA31B432745000261F0 /* CandidateViewModel.swift in Sources */,
 				EAF670901B31FA2E0025D7CF /* UserDefaults.swift in Sources */,
+				EA39651E1B55062900F5B0B3 /* ReactiveFuture.swift in Sources */,
 				EAF670831B31F9450025D7CF /* Video.swift in Sources */,
 				EA2406201B50F0F1003A73C3 /* VideoDownloadOperation.swift in Sources */,
 				EACEFB961B472E8800901E85 /* SignupInteractor.swift in Sources */,
@@ -1479,7 +1484,7 @@
 				EA42164A1B3E093400613EFA /* Service.swift in Sources */,
 				EAF670761B31F9450025D7CF /* FoundationExtension.swift in Sources */,
 				EA2406221B50F79E003A73C3 /* VideoCache.swift in Sources */,
-				EA8896221B4F3C1300E180A6 /* ReactiveExtensions.swift in Sources */,
+				EA8896221B4F3C1300E180A6 /* ReactiveProperties.swift in Sources */,
 				EA56B88E1B53388F001488F2 /* ConnectionViewModel.swift in Sources */,
 				EAF6708F1B31FA2E0025D7CF /* Settings.swift in Sources */,
 				EA4757131B392C19002071D7 /* PanInteractor.swift in Sources */,
@@ -1499,7 +1504,7 @@
 				EA95BBB31B3930B000701F08 /* XLFormExtensions.m in Sources */,
 				EACEFB871B46740500901E85 /* LoadingViewController.swift in Sources */,
 				EAAD921D1ACF342C0014BA25 /* TaylrEnvironment.swift in Sources */,
-				EA1047301B4E74D000B1A76A /* ReactiveExtensions.swift in Sources */,
+				EA1047301B4E74D000B1A76A /* ReactiveProperties.swift in Sources */,
 				EA376CB21B505FCD00C819E9 /* LinkAccountService.swift in Sources */,
 				EAE1E07B1AE34C6200F03F13 /* LocationService.swift in Sources */,
 				EAF81B231B33388700EED6DD /* ProducerViewController.swift in Sources */,
@@ -1556,6 +1561,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA39651F1B55062C00F5B0B3 /* ReactiveFuture.swift in Sources */,
 				EA9C16771B3759B700371B50 /* FormatterTests.swift in Sources */,
 				EA1047281B4E3C1C00B1A76A /* RACPlayground.swift in Sources */,
 				EA2406241B5109D8003A73C3 /* VideoDownloadTests.swift in Sources */,
@@ -1565,7 +1571,7 @@
 				EAF6709C1B32026F0025D7CF /* IntegrationTests.swift in Sources */,
 				EA95BBC11B3932BE00701F08 /* GenericExtensions.swift in Sources */,
 				EA5022101B54AC4B00BC92D2 /* TestNSObject.m in Sources */,
-				EA10472F1B4E74D000B1A76A /* ReactiveExtensions.swift in Sources */,
+				EA10472F1B4E74D000B1A76A /* ReactiveProperties.swift in Sources */,
 				EA3965161B54C1B400F5B0B3 /* ReactiveBridging.swift in Sources */,
 				EA1047351B4E756200B1A76A /* TestExtensions.swift in Sources */,
 			);
