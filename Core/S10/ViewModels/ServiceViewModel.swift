@@ -23,6 +23,7 @@ public struct ServiceViewModel {
                 // TODO: Figure out ways to avoid hardcoding non-localized string
                 case .Facebook: return "Facebook"
                 case .Instagram: return "Instagram"
+                case .Github: return "Github"
                 }
             }
             return ""
@@ -33,6 +34,7 @@ public struct ServiceViewModel {
                 // TODO: Figure out ways to avoid hardcoding image name
                 case .Facebook: return UIImage(named: "ic-facebook")
                 case .Instagram: return UIImage(named: "ic-instagram")
+                case .Github: return UIImage(named: "ic-github")
                 }
             }
             return nil

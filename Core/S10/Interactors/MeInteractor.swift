@@ -39,7 +39,8 @@ public class MeInteractor {
             .results(Service).map { ServiceViewModel($0) }
         linkableAccounts = [
             LinkableAccount(type: .Facebook, name: "Facebook", icon: UIImage(named: "ic-facebook")),
-            LinkableAccount(type: .Instagram, name: "Instagram", icon: UIImage(named: "ic-instagram"))
+            LinkableAccount(type: .Instagram, name: "Instagram", icon: UIImage(named: "ic-instagram")),
+            LinkableAccount(type: .Github, name: "Github", icon: UIImage(named: "ic-github"))
         ]
         servicesSubscription = meteor.subscribeServices(currentUser)
     }

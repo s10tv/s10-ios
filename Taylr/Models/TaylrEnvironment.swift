@@ -38,6 +38,8 @@ class TaylrEnvironment : Environment {
     let oauthCallbackPath = "_oauth"
     let instagramClientId = "39f17d7de9e440cba144c960913bc1a4"
     let crashlyticsAPIKey = "4cdb005d0ddfebc8865c0a768de9b43c993e9113"
+    let githubClientId: String
+    let githubClientSecret: String
     let bugfenderAppToken: String
     let segmentWriteKey: String
     let appseeApiKey: String
@@ -55,6 +57,8 @@ class TaylrEnvironment : Environment {
                 segmentWriteKey = "vfnxR5SsgYkNQqRznBWHXDp2LMFkUNTv"
                 heapAppId = "2150081452"
                 appseeApiKey = "90e5824e7a294045a992e56bbbb3f2f3"
+                githubClientId = "fb2414c4535ddd7a86a1"
+                githubClientSecret = "b4b16bca1611ee8318c56a61040ef1683d611a6a"
             case .Beta:
                 upgradeURL = NSURL("https://taylrapp.com/beta")
                 serverHostName = "s10-beta.herokuapp.com"
@@ -62,6 +66,8 @@ class TaylrEnvironment : Environment {
                 segmentWriteKey = "SGEB9gVQGFYgeptFbtnETHCka8FCOuoc"
                 heapAppId = "1572509943"
                 appseeApiKey = "9a350ef30cb24154a547e8ebaebfe272"
+                githubClientId = "d3d17fc593c45429cf29"     // this is wrong. need to make beta app.
+                githubClientSecret = "4a6f949c772bfd87ae6e9be1ccc6ab21265de649"
             case .AppStore:
                 upgradeURL = NSURL("https://taylrapp.com/download")
                 serverHostName = "s10.herokuapp.com"
@@ -69,6 +75,8 @@ class TaylrEnvironment : Environment {
                 segmentWriteKey = "JPCrmGwQqlgohXoowBFSLwesir9Zn5Bv"
                 heapAppId = "538095372"
                 appseeApiKey = "a33413513aab4ad296f379481caf8d90"
+                githubClientId = "d3d17fc593c45429cf29"
+                githubClientSecret = "4a6f949c772bfd87ae6e9be1ccc6ab21265de649"
         }
         super.init(provisioningProfile: provisioningProfile)
     }

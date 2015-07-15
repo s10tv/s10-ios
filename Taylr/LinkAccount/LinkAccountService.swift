@@ -31,9 +31,37 @@ class LinkAccountService {
             return linkFacebook()
         case .Instagram:
             return linkInstagram(authWebVC: useWebView ? makeAuthWebVC() : nil)
+        case .Github:
+            return linkGithub(authWebVC: useWebView ? makeAuthWebVC() : nil)
         }
     }
-    
+
+    func linkGithub(authWebVC: AuthWebViewController? = nil) -> RACSignal {
+        let subject = RACReplaySubject()
+        let oauth = OAuth2Swift(
+            consumerKey: env.githubClientId,
+            consumerSecret: env.githubClientSecret,
+            authorizeUrl: "https://github.com/login/oauth/authorize",
+            accessTokenUrl: "https://github.com/login/oauth/access_token",
+            responseType: "code"
+        )
+        oauth.authorize_url_handler = authWebVC ?? oauth.authorize_url_handler
+        oauth.authorizeWithCallbackURL(NSURL("\(env.audience.urlScheme)\(env.oauthCallbackPath)/github"),
+            scope: "user:email",
+            state: generateStateWithLength(20) as String,
+            success: { credential, response, parameters in
+                subject.sendNext(nil)
+                Async.main {
+                    Meteor.addService(.Github, accessToken: credential.oauth_token).subscribe(subject)
+                }
+                Log.debug("Successfulled received token from github")
+            }, failure: { error in
+                Log.error("Unable to link instagram", error)
+                subject.sendError(error)
+        })
+        return subject.deliverOnMainThread()
+    }
+
     func linkInstagram(authWebVC: AuthWebViewController? = nil) -> RACSignal {
         let subject = RACReplaySubject()
         let oauth = OAuth2Swift(

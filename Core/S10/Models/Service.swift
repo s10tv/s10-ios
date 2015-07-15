@@ -13,6 +13,7 @@ public class Service : _Service {
     public enum ServiceType : String {
     case Facebook = "facebook"
     case Instagram = "instagram"
+    case Github = "github"
     }
     
     public private(set) lazy var dynUserDisplayName: Dynamic<String?> = {
