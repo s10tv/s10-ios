@@ -27,17 +27,17 @@ class LoadingViewController : UIViewController {
                 case .LoggedOut:
                     self.performSegue(.Onboarding_Login, sender: self)
                 case .LoggedIn:
-                    break
-//                    self.performSegue(.Onboarding_Signup, sender: self)
+//                    break
+                    self.performSegue(.Onboarding_Signup, sender: self)
                 case .SignedUp:
-                    break
-//                    self.performSegue(.LoadingToDiscover, sender: self)
+//                    break
+                    self.performSegue(.LoadingToDiscover, sender: self)
                 default:
                     fatalError("impossible account status")
                 }
-                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("EditProfile") as! EditProfileViewController
-                vc.interactor = EditProfileInteractor(meteor: Meteor, user: Meteor.user.value!)
-                self.navigationController?.pushViewController(vc, animated: true)
+//                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("EditProfile") as! EditProfileViewController
+//                vc.interactor = EditProfileInteractor(meteor: Meteor, user: Meteor.user.value!)
+//                self.navigationController?.pushViewController(vc, animated: true)
             }
         
     }
