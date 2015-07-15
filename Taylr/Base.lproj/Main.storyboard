@@ -1194,8 +1194,8 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S7k-eI-PX7" id="Fu4-Bo-WFz">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="sample-cover-image" translatesAutoresizingMaskIntoConstraints="NO" id="Mmq-ff-Gkx">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="200"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-cover-image" translatesAutoresizingMaskIntoConstraints="NO" id="Mmq-ff-Gkx">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="199"/>
                                                 </imageView>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="8hD-TE-i8H">
                                                     <rect key="frame" x="250" y="49" width="100" height="101"/>
@@ -1224,9 +1224,9 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3YF-0U-mG2" id="OOE-TS-IAr">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CPC-9R-MN9" customClass="JVFloatLabeledTextField">
-                                                    <rect key="frame" x="28" y="15" width="75" height="29"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CPC-9R-MN9" customClass="JVFloatLabeledTextField">
+                                                    <rect key="frame" x="28" y="12" width="544" height="36"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
@@ -1236,6 +1236,7 @@
                                                 </textField>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="CPC-9R-MN9" secondAttribute="trailing" constant="20" id="1is-ze-aCz"/>
                                                 <constraint firstItem="CPC-9R-MN9" firstAttribute="leading" secondItem="OOE-TS-IAr" secondAttribute="leadingMargin" constant="20" id="55v-CS-XMM"/>
                                                 <constraint firstAttribute="centerY" secondItem="CPC-9R-MN9" secondAttribute="centerY" id="LCM-4e-uF6"/>
                                             </constraints>
@@ -1246,9 +1247,9 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lha-3s-GHe" id="Tmp-Y1-seD">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kXU-hv-A2T" customClass="JVFloatLabeledTextField">
-                                                    <rect key="frame" x="28" y="16" width="74" height="29"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kXU-hv-A2T" customClass="JVFloatLabeledTextField">
+                                                    <rect key="frame" x="28" y="12" width="544" height="36"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
@@ -1260,6 +1261,7 @@
                                             <constraints>
                                                 <constraint firstItem="kXU-hv-A2T" firstAttribute="leading" secondItem="Tmp-Y1-seD" secondAttribute="leadingMargin" constant="20" id="HNh-KS-RbZ"/>
                                                 <constraint firstAttribute="centerY" secondItem="kXU-hv-A2T" secondAttribute="centerY" id="S7E-EP-Xfp"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="kXU-hv-A2T" secondAttribute="trailing" constant="20" id="fJy-y9-Cts"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1272,7 +1274,7 @@
                                                     <rect key="frame" x="28" y="8" width="544" height="163"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</string>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="About"/>
@@ -1299,9 +1301,9 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LaK-f5-a99" id="QOa-oR-rD8">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yRB-v4-b8z" customClass="JVFloatLabeledTextField">
-                                                    <rect key="frame" x="28" y="15" width="70" height="29"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yRB-v4-b8z" customClass="JVFloatLabeledTextField">
+                                                    <rect key="frame" x="28" y="12" width="544" height="36"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
@@ -1311,6 +1313,7 @@
                                                 </textField>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="yRB-v4-b8z" secondAttribute="trailing" constant="20" id="dXI-Do-Td3"/>
                                                 <constraint firstItem="yRB-v4-b8z" firstAttribute="leading" secondItem="QOa-oR-rD8" secondAttribute="leadingMargin" constant="20" id="kaR-zy-Bfo"/>
                                                 <constraint firstAttribute="centerY" secondItem="yRB-v4-b8z" secondAttribute="centerY" id="myO-Hm-CqI"/>
                                             </constraints>

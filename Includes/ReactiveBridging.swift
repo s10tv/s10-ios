@@ -29,6 +29,14 @@ func ->> <T: PropertyType, U: Bondable where T.Value == U.BondType>(left: T, rig
     toBondDynamic(left) ->> right.designatedBond
 }
 
+func ->> (left: PropertyOf<String>, right: UITextField) {
+    toBondDynamic(left) ->> right.designatedBond
+}
+
+func ->> (left: PropertyOf<String>, right: UITextView) {
+    toBondDynamic(left) ->> right.designatedBond
+}
+
 // Bind only
 
 func ->| <T: PropertyType, U: Bondable where T.Value == U.BondType>(left: T, right: U) {

@@ -8,6 +8,7 @@
 
 import UIKit
 import ReactiveCocoa
+import Bond
 import JVFloatLabeledTextField
 import Core
 
@@ -20,12 +21,19 @@ class EditProfileViewController : UITableViewController {
     @IBOutlet weak var aboutTextView: JVFloatLabeledTextView!
     @IBOutlet weak var usernameLabel: JVFloatLabeledTextField!
     
+    var interactor: EditProfileInteractor!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Fix for tableview layout http://stackoverflow.com/questions/18880341/why-is-there-extra-padding-at-the-top-of-my-uitableview-with-style-uitableviewst
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 0.01))
         coverImageView.clipsToBounds = true
         avatarImageView.makeCircular()
+        
+        interactor.firstName ->> firstNameField
+        interactor.lastName ->> lastNameField
+        interactor.about ->> aboutTextView
+        interactor.username ->> usernameLabel
     }
     
     override func viewWillAppear(animated: Bool) {

@@ -13,6 +13,8 @@
 		D6555C3D41C17908B83EB27C /* Pods_Core_Taylr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1D48B38C28B60559AEB8949 /* Pods_Core_Taylr.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		EA06AAB81B3B2D2B000E128C /* PKHUDExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBAB1B3930B000701F08 /* PKHUDExtension.swift */; };
 		EA06AAB91B3B2D8F000E128C /* ResourceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBAC1B3930B000701F08 /* ResourceExtension.swift */; };
+		EA0C8C871B55DA1E00C2FB0A /* EditProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0C8C861B55DA1E00C2FB0A /* EditProfileInteractor.swift */; };
+		EA0C8C891B55DA2E00C2FB0A /* EditProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0C8C881B55DA2E00C2FB0A /* EditProfileTests.swift */; };
 		EA0FED451ADE5BC500FC6FCB /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */; };
 		EA1047281B4E3C1C00B1A76A /* RACPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1047271B4E3C1C00B1A76A /* RACPlayground.swift */; };
 		EA10472C1B4E746800B1A76A /* FutureExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA10472B1B4E746800B1A76A /* FutureExtensions.swift */; };
@@ -249,6 +251,8 @@
 		8E0110CE5A12BB3B852FE247 /* Pods-Core-TestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core-TestApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Core-TestApp/Pods-Core-TestApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A80ED835405D6C980CF3F31B /* Pods-Core-CoreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core-CoreTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Core-CoreTests/Pods-Core-CoreTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C97F216A216ACE06C7336869 /* Pods-Core-Taylr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core-Taylr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Core-Taylr/Pods-Core-Taylr.release.xcconfig"; sourceTree = "<group>"; };
+		EA0C8C861B55DA1E00C2FB0A /* EditProfileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileInteractor.swift; sourceTree = "<group>"; };
+		EA0C8C881B55DA2E00C2FB0A /* EditProfileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileTests.swift; sourceTree = "<group>"; };
 		EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
 		EA1047271B4E3C1C00B1A76A /* RACPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACPlayground.swift; sourceTree = "<group>"; };
 		EA10472B1B4E746800B1A76A /* FutureExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FutureExtensions.swift; sourceTree = "<group>"; };
@@ -749,6 +753,7 @@
 			children = (
 				EA1047311B4E756200B1A76A /* Extensions */,
 				EA9C16761B3759B700371B50 /* FormatterTests.swift */,
+				EA0C8C881B55DA2E00C2FB0A /* EditProfileTests.swift */,
 				EAF6709B1B32026F0025D7CF /* IntegrationTests.swift */,
 				EA2406231B5109D8003A73C3 /* VideoDownloadTests.swift */,
 				EA1047271B4E3C1C00B1A76A /* RACPlayground.swift */,
@@ -860,6 +865,7 @@
 				EACEFB8F1B472E8800901E85 /* ProfileInteractor.swift */,
 				EACEFB8B1B472E8800901E85 /* ChatsInteractor.swift */,
 				EACEFB8C1B472E8800901E85 /* ConversationInteractor.swift */,
+				EA0C8C861B55DA1E00C2FB0A /* EditProfileInteractor.swift */,
 			);
 			path = Interactors;
 			sourceTree = "<group>";
@@ -1469,6 +1475,7 @@
 				EA4216451B3E092200613EFA /* _Activity.swift in Sources */,
 				EAF670971B31FE6A0025D7CF /* Environment.swift in Sources */,
 				EACEFB911B472E8800901E85 /* ChatsInteractor.swift in Sources */,
+				EA0C8C871B55DA1E00C2FB0A /* EditProfileInteractor.swift in Sources */,
 				EAF6707F1B31F9450025D7CF /* Connection.swift in Sources */,
 				EA39651C1B54EFE400F5B0B3 /* MeteorCollection.swift in Sources */,
 				EAF670731B31F9450025D7CF /* MeteorCDStack.swift in Sources */,
@@ -1570,6 +1577,7 @@
 				EA1047361B4F1F3E00B1A76A /* FutureExtensions.swift in Sources */,
 				EAF6709C1B32026F0025D7CF /* IntegrationTests.swift in Sources */,
 				EA95BBC11B3932BE00701F08 /* GenericExtensions.swift in Sources */,
+				EA0C8C891B55DA2E00C2FB0A /* EditProfileTests.swift in Sources */,
 				EA5022101B54AC4B00BC92D2 /* TestNSObject.m in Sources */,
 				EA10472F1B4E74D000B1A76A /* ReactiveProperties.swift in Sources */,
 				EA3965161B54C1B400F5B0B3 /* ReactiveBridging.swift in Sources */,
