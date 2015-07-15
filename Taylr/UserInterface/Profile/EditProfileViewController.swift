@@ -93,5 +93,4 @@ class EditProfileViewController : UITableViewController {
             }
         }
     }
-    
 }

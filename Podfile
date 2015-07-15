@@ -55,6 +55,7 @@ target :Core do
         pod 'SCRecorder', '~> 2.5'
 
         pod 'JVFloatLabeledTextField', '~> 1.1'
+        pod 'TPKeyboardAvoiding', '~> 1.2'
         pod 'UICollectionViewLeftAlignedLayout', '~> 1.0'
         pod 'CHTCollectionViewWaterfallLayout', '~> 0.9'
 

@@ -33,14 +33,21 @@ public class EditProfileInteractor {
     }
     
     public func saveEdits() -> RACFuture<(), NSError> {
-        // TODO: Add client side validation logic
         let promise = RACPromise<(), NSError>()
-        meteor.updateProfile([
-            "firstName": firstName.value,
-            "lastName": lastName.value,
-            "about": about.value,
-        ]).subscribeErrorOrCompleted {
-            $0.map { promise.failure($0) } ?? promise.success()
+        // TODO: Add client side validation logic
+        if firstName.value == user.firstName &&
+            lastName.value == user.lastName &&
+            about.value == user.about {
+            // Early exit case
+            promise.success()
+        } else {
+            meteor.updateProfile([
+                "firstName": firstName.value,
+                "lastName": lastName.value,
+                "about": about.value,
+            ]).subscribeErrorOrCompleted {
+                $0.map { promise.failure($0) } ?? promise.success()
+            }
         }
         return promise.future
     }

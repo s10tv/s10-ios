@@ -85,6 +85,7 @@ PODS:
   - SwiftyJSON (2.2.0)
   - SwiftyUserDefaults (1.3.0)
   - SwipeView (1.3.2)
+  - TPKeyboardAvoiding (1.2.8)
   - UICollectionViewLeftAlignedLayout (1.0.0)
   - XLForm (3.0.0)
 
@@ -124,6 +125,7 @@ DEPENDENCIES:
   - SwiftyJSON (~> 2.1)
   - SwiftyUserDefaults (~> 1.3)
   - SwipeView (~> 1.3)
+  - TPKeyboardAvoiding (~> 1.2)
   - UICollectionViewLeftAlignedLayout (~> 1.0)
   - XLForm (~> 3.0)
 
@@ -202,6 +204,7 @@ SPEC CHECKSUMS:
   SwiftyJSON: 0b3e6c07af17ff745e77e8e9984097b55c956e5c
   SwiftyUserDefaults: 507da0dcabec653f76ecab845635a6d220c1484a
   SwipeView: bd67cfaf7760c036438446b3ccb28a3b84fce009
+  TPKeyboardAvoiding: f1ef0028fe9ba98ef2871cf55b4bbc39cae0267b
   UICollectionViewLeftAlignedLayout: c3dddf91b3dc72ede7eca7a532545804389ab833
   XLForm: 10fc7eb9e2d5df21a515fa3a794f4e26319abd0e
 
