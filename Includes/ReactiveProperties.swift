@@ -116,6 +116,15 @@ func readonly<P : MutablePropertyType, T where P.Value == T>(property: P) -> Pro
     return PropertyOf(property)
 }
 
+func mutable<P : PropertyType, T where P.Value == T>(property: P) -> MutableProperty<T> {
+    return MutableProperty(property.value) {
+        property.producer |> map { v in
+            let retainSourceProperty = property // Force retain source property
+            return v
+        }
+    }
+}
+
 // Counter part to ReactiveCocoa's <~ operator which is sometimes inconvenient to use
 
 infix operator ~> {

@@ -25,15 +25,10 @@ func toBondDynamic<T, P: PropertyType where P.Value == T>(property: P) -> Dynami
 
 // Bind and fire
 
+extension UITextField : Bondable {
+}
+
 func ->> <T: PropertyType, U: Bondable where T.Value == U.BondType>(left: T, right: U) {
-    toBondDynamic(left) ->> right.designatedBond
-}
-
-func ->> (left: PropertyOf<String>, right: UITextField) {
-    toBondDynamic(left) ->> right.designatedBond
-}
-
-func ->> (left: PropertyOf<String>, right: UITextView) {
     toBondDynamic(left) ->> right.designatedBond
 }
 
