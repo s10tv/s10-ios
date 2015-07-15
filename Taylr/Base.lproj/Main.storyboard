@@ -1194,15 +1194,23 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S7k-eI-PX7" id="Fu4-Bo-WFz">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-cover-image" translatesAutoresizingMaskIntoConstraints="NO" id="Mmq-ff-Gkx">
+                                                <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-cover-image" translatesAutoresizingMaskIntoConstraints="NO" id="Mmq-ff-Gkx">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="199"/>
+                                                    <gestureRecognizers/>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="HeM-j3-bJZ" appends="YES" id="653-Ya-TFN"/>
+                                                    </connections>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="8hD-TE-i8H">
+                                                <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="8hD-TE-i8H">
                                                     <rect key="frame" x="250" y="49" width="100" height="101"/>
+                                                    <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="wut-Yr-AMn"/>
                                                         <constraint firstAttribute="width" secondItem="8hD-TE-i8H" secondAttribute="height" multiplier="66:67" constant="1" id="xN8-iQ-WUD"/>
                                                     </constraints>
+                                                    <connections>
+                                                        <outletCollection property="gestureRecognizers" destination="Wpx-6X-1JX" appends="YES" id="m8S-aj-0xu"/>
+                                                    </connections>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
@@ -1348,6 +1356,16 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NFN-Ku-3H2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Wpx-6X-1JX" userLabel="Avatar Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="didTapAvatarImageView:" destination="GLZ-GV-JCx" id="Twl-8P-a42"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="HeM-j3-bJZ" userLabel="Cover Tap Gesture Recognizer">
+                    <connections>
+                        <action selector="didTapCoverImageView:" destination="GLZ-GV-JCx" id="0oO-Vn-uHO"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-260" y="2912"/>
         </scene>

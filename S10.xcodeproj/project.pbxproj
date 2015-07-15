@@ -77,6 +77,7 @@
 		EA7004621ACF912A00D0E467 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA7004641ACF912A00D0E467 /* Onboarding.storyboard */; };
 		EA7078781B39345800BB9D08 /* AVKit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA70787B1B39345800BB9D08 /* AVKit.storyboard */; };
 		EA7078791B39345800BB9D08 /* AVKit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA70787B1B39345800BB9D08 /* AVKit.storyboard */; };
+		EA7134121B56E47100B810F6 /* ImagePickerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7134111B56E47100B810F6 /* ImagePickerExtensions.swift */; };
 		EA773D261B431514009A9945 /* ProfileServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA773D251B431514009A9945 /* ProfileServiceCell.swift */; };
 		EA773D281B43179B009A9945 /* ServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA773D271B43179B009A9945 /* ServiceViewModel.swift */; };
 		EA78C8781B320A2A0016AB73 /* AlamofireExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA78C8761B320A2A0016AB73 /* AlamofireExtension.swift */; };
@@ -313,6 +314,7 @@
 		EA6650EB1AA00A9C001BA40C /* AccountService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		EA7004631ACF912A00D0E467 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Onboarding.storyboard; sourceTree = "<group>"; };
 		EA70787A1B39345800BB9D08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AVKit.storyboard; sourceTree = "<group>"; };
+		EA7134111B56E47100B810F6 /* ImagePickerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerExtensions.swift; sourceTree = "<group>"; };
 		EA773D251B431514009A9945 /* ProfileServiceCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileServiceCell.swift; sourceTree = "<group>"; };
 		EA773D271B43179B009A9945 /* ServiceViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceViewModel.swift; sourceTree = "<group>"; };
 		EA78C8761B320A2A0016AB73 /* AlamofireExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireExtension.swift; sourceTree = "<group>"; };
@@ -649,6 +651,7 @@
 		EA95BBA81B3930B000701F08 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				EA7134111B56E47100B810F6 /* ImagePickerExtensions.swift */,
 				EA95BBA91B3930B000701F08 /* Bond+SDWebImage.swift */,
 				EA95BBAB1B3930B000701F08 /* PKHUDExtension.swift */,
 				EA95BBAC1B3930B000701F08 /* ResourceExtension.swift */,
@@ -1511,6 +1514,7 @@
 				EA1047301B4E74D000B1A76A /* ReactiveProperties.swift in Sources */,
 				EA376CB21B505FCD00C819E9 /* LinkAccountService.swift in Sources */,
 				EAE1E07B1AE34C6200F03F13 /* LocationService.swift in Sources */,
+				EA7134121B56E47100B810F6 /* ImagePickerExtensions.swift in Sources */,
 				EAF81B231B33388700EED6DD /* ProducerViewController.swift in Sources */,
 				EA6650ED1AA00A9C001BA40C /* AccountService.swift in Sources */,
 				EAA56FA21B2B32E500DE3936 /* BaseViewController.swift in Sources */,

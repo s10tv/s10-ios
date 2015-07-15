@@ -35,6 +35,8 @@ class EditProfileViewController : UITableViewController {
         interactor.lastName <->> lastNameField
         interactor.about <->> aboutTextView
         interactor.username ->> usernameLabel
+        interactor.avatarImageURL ->> avatarImageView.dynImageURL
+        interactor.coverImageURL ->> coverImageView.dynImageURL
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -44,6 +46,40 @@ class EditProfileViewController : UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+    }
+    
+    // MARK: - Actions
+    
+    @IBAction func didTapAvatarImageView(sender: AnyObject) {
+        pickImage { image in
+            let scaledImage = image.scaleToMaxDimension(200, pixelSize: true)
+            PKHUD.showActivity(dimsBackground: true)
+            self.interactor.upload(scaledImage, taskType: .ProfilePic).onComplete { result in
+                if let error = result.error {
+                    PKHUD.hide(animated: false)
+                    self.showErrorAlert(error)
+                } else {
+                    PKHUD.showText("Profile Updated")
+                    PKHUD.hide(afterDelay: 0.5)
+                }
+            }
+        }
+    }
+    
+    @IBAction func didTapCoverImageView(sender: AnyObject) {
+        pickImage { image in
+            let scaledImage = image.scaleToMaxDimension(1400, pixelSize: true)
+            PKHUD.showActivity(dimsBackground: true)
+            self.interactor.upload(scaledImage, taskType: .CoverPic).onComplete { result in
+                if let error = result.error {
+                    PKHUD.hide(animated: false)
+                    self.showErrorAlert(error)
+                } else {
+                    PKHUD.showText("Cover Photo Updated")
+                    PKHUD.hide(afterDelay: 0.5)
+                }
+            }
+        }
     }
     
     @IBAction func didPressDone(sender: AnyObject) {

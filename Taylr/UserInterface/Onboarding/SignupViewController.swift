@@ -89,25 +89,10 @@ class SignupViewController : XLFormViewController {
         }
     }
     
-    func pickImage(block: (UIImage) -> ()) {
-        let picker = UIImagePickerController()
-        picker.rac_imageSelectedSignal().subscribeNext({
-            if let info = $0 as? NSDictionary,
-                let image = (info[UIImagePickerControllerEditedImage]
-                          ?? info[UIImagePickerControllerOriginalImage]) as? UIImage {
-                block(image)
-            }
-            picker.dismissViewController(animated: true)
-        }, completed: {
-            picker.dismissViewController(animated: true)
-        })
-        presentViewController(picker, animated: true)
-    }
-    
     // MARK: -
     
     @IBAction func didTapAvatar(sender: AnyObject) {
-        pickImage() { image in
+        pickImage { image in
             let scaledImage = image.scaleToMaxDimension(200, pixelSize: true)
             PKHUD.showActivity(dimsBackground: true)
             self.viewModel.uploadAvatar(scaledImage).onComplete { _ in
@@ -120,7 +105,7 @@ class SignupViewController : XLFormViewController {
     }
     
     @IBAction func didTapCoverPhoto(sender: AnyObject) {
-        pickImage() { image in
+        pickImage { image in
             let scaledImage = image.scaleToMaxDimension(1400, pixelSize: true)
             PKHUD.showActivity(dimsBackground: true)
             self.viewModel.uploadCoverPhoto(scaledImage).onComplete { _ in

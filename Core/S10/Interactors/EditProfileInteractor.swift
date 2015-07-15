@@ -17,6 +17,7 @@ public class EditProfileInteractor {
     public let avatarImageURL: PropertyOf<NSURL?>
     public let coverImageURL: PropertyOf<NSURL?>
     
+    let operationQueue = NSOperationQueue()
     let meteor: MeteorService
     let user: User
     
@@ -42,5 +43,13 @@ public class EditProfileInteractor {
             $0.map { promise.failure($0) } ?? promise.success()
         }
         return promise.future
+    }
+    
+    // MARK: -
+    
+    public func upload(image: UIImage, taskType: PhotoUploadOperation.TaskType) -> RACFuture<(), NSError> {
+        return operationQueue.addAsyncOperation {
+            PhotoUploadOperation(meteor: meteor, image: image, taskType: taskType)
+        }.signalProducer() |> toFuture
     }
 }
