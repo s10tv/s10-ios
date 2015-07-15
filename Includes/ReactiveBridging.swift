@@ -23,6 +23,25 @@ func toBondDynamic<T, P: PropertyType where P.Value == T>(property: P) -> Dynami
     return dyn
 }
 
+func fromBondDynamic<T, D: Dynamical where D.DynamicType == T>(d: D) -> PropertyOf<T> {
+    return fromBondDynamic(d.designatedDynamic)
+}
+
+func fromBondDynamic<T>(dynamic: Dynamic<T>) -> PropertyOf<T> {
+    let (signal, sink) = Signal<T, ReactiveCocoa.NoError>.pipe()
+    let bond = Bond<T>() { value in
+        sendNext(sink, value)
+    }
+    bond.bind(dynamic, fire: false, strongly: true)
+    return PropertyOf(dynamic.value) {
+        return signal |> map { v in
+            let retainedBond = bond // Force retain bond
+            return v
+        }
+    }
+}
+
+
 // Bind and fire
 
 extension UITextField : Bondable {

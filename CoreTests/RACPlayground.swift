@@ -12,6 +12,7 @@ import ReactiveCocoa
 import Async
 import Nimble
 import BrightFutures
+import Bond
 
 class RACPlayground : AsyncTestCase {
 
@@ -252,6 +253,25 @@ class RACPlayground : AsyncTestCase {
         
         sendNext(sink, 5)
         waitForExpectationsWithTimeout(1, handler: nil)
+    }
+    
+    func testBondDynamic() {
+        weak var wDynamic: Dynamic<Int>!
+        var prop: PropertyOf<Int>!
+        autoreleasepool {
+            
+            let dynamic = Dynamic(3)
+            wDynamic = dynamic
+            expect(dynamic.value) == 3
+            
+            prop = fromBondDynamic(dynamic)
+            expect(prop.value) == 3
+            
+            dynamic.value = 55
+            expect(prop.value) == 55
+        }
+        expect(prop).toNot(beNil())
+        expect(wDynamic).toNot(beNil())
     }
 }
 
