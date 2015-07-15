@@ -31,11 +31,15 @@ public class EditProfileInteractor {
         coverImageURL = user.dyn("coverUrl").optional(String) |> map { NSURL.fromString($0) }
     }
     
-    public func saveEdits(callback: NSError? -> ()) {
+    public func saveEdits() -> RACFuture<(), NSError> {
+        let promise = RACPromise<(), NSError>()
         meteor.updateProfile([
             "firstName": firstName.value,
             "lastName": lastName.value,
             "about": about.value,
-        ]).deliverOnMainThread().subscribeErrorOrCompleted(callback)
+        ]).subscribeErrorOrCompleted {
+            $0.map { promise.failure($0) } ?? promise.success()
+        }
+        return promise.future
     }
 }

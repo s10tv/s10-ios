@@ -48,9 +48,9 @@ class EditProfileViewController : UITableViewController {
     
     @IBAction func didPressDone(sender: AnyObject) {
         PKHUD.showActivity(dimsBackground: true)
-        interactor.saveEdits { err in
+        interactor.saveEdits().onComplete(UIScheduler()) { result in
             PKHUD.hide(animated: false)
-            if let err = err {
+            if let err = result.error {
                 self.showErrorAlert(err)
             } else {
                 self.navigationController?.popViewControllerAnimated(true)
