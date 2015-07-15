@@ -14,6 +14,7 @@ import Nimble
 import BrightFutures
 import Bond
 import Box
+import Core
 
 class RACPlayground : AsyncTestCase {
 
