@@ -32,6 +32,7 @@ public class EditProfileInteractor {
     }
     
     public func saveEdits() -> RACFuture<(), NSError> {
+        // TODO: Add client side validation logic
         let promise = RACPromise<(), NSError>()
         meteor.updateProfile([
             "firstName": firstName.value,
