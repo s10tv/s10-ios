@@ -53,6 +53,9 @@ class MeViewController : BaseViewController {
         if let vc = segue.destinationViewController as? ProfileViewController {
             vc.profileVM = ProfileInteractor(meteor: Meteor, user: viewModel.currentUser)
         }
+        if let vc = segue.destinationViewController as? EditProfileViewController {
+            vc.interactor = EditProfileInteractor(meteor: Meteor, user: viewModel.currentUser)
+        }
         if let segue = segue as? LinkedStoryboardPushSegue where segue.matches(.Onboarding_Login) {
             segue.replaceStrategy = .Stack
         }
