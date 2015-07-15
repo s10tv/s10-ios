@@ -15,6 +15,7 @@
 		EA06AAB91B3B2D8F000E128C /* ResourceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBAC1B3930B000701F08 /* ResourceExtension.swift */; };
 		EA0C8C871B55DA1E00C2FB0A /* EditProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0C8C861B55DA1E00C2FB0A /* EditProfileInteractor.swift */; };
 		EA0C8C891B55DA2E00C2FB0A /* EditProfileTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0C8C881B55DA2E00C2FB0A /* EditProfileTests.swift */; };
+		EA0C8C8B1B56DAAE00C2FB0A /* ReactiveFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0C8C8A1B56DAAE00C2FB0A /* ReactiveFuture.swift */; };
 		EA0FED451ADE5BC500FC6FCB /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */; };
 		EA1047281B4E3C1C00B1A76A /* RACPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1047271B4E3C1C00B1A76A /* RACPlayground.swift */; };
 		EA10472C1B4E746800B1A76A /* FutureExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA10472B1B4E746800B1A76A /* FutureExtensions.swift */; };
@@ -45,9 +46,6 @@
 		EA3965161B54C1B400F5B0B3 /* ReactiveBridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3965141B54C19800F5B0B3 /* ReactiveBridging.swift */; };
 		EA3965171B54C1B500F5B0B3 /* ReactiveBridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3965141B54C19800F5B0B3 /* ReactiveBridging.swift */; };
 		EA39651C1B54EFE400F5B0B3 /* MeteorCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA39651B1B54EFE400F5B0B3 /* MeteorCollection.swift */; };
-		EA39651E1B55062900F5B0B3 /* ReactiveFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA39651D1B55062900F5B0B3 /* ReactiveFuture.swift */; };
-		EA39651F1B55062C00F5B0B3 /* ReactiveFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA39651D1B55062900F5B0B3 /* ReactiveFuture.swift */; };
-		EA3965211B55912C00F5B0B3 /* ReactiveFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA39651D1B55062900F5B0B3 /* ReactiveFuture.swift */; };
 		EA3965231B55C47200F5B0B3 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3965221B55C47200F5B0B3 /* EditProfileViewController.swift */; };
 		EA4216451B3E092200613EFA /* _Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4216431B3E092200613EFA /* _Activity.swift */; };
 		EA4216461B3E092200613EFA /* _Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4216441B3E092200613EFA /* _Service.swift */; };
@@ -253,6 +251,7 @@
 		C97F216A216ACE06C7336869 /* Pods-Core-Taylr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core-Taylr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Core-Taylr/Pods-Core-Taylr.release.xcconfig"; sourceTree = "<group>"; };
 		EA0C8C861B55DA1E00C2FB0A /* EditProfileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileInteractor.swift; sourceTree = "<group>"; };
 		EA0C8C881B55DA2E00C2FB0A /* EditProfileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileTests.swift; sourceTree = "<group>"; };
+		EA0C8C8A1B56DAAE00C2FB0A /* ReactiveFuture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveFuture.swift; sourceTree = "<group>"; };
 		EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
 		EA1047271B4E3C1C00B1A76A /* RACPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACPlayground.swift; sourceTree = "<group>"; };
 		EA10472B1B4E746800B1A76A /* FutureExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FutureExtensions.swift; sourceTree = "<group>"; };
@@ -281,7 +280,6 @@
 		EA3777711A966EC10055DE99 /* TransatTextStandard.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextStandard.otf; sourceTree = "<group>"; };
 		EA3965141B54C19800F5B0B3 /* ReactiveBridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveBridging.swift; sourceTree = "<group>"; };
 		EA39651B1B54EFE400F5B0B3 /* MeteorCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorCollection.swift; sourceTree = "<group>"; };
-		EA39651D1B55062900F5B0B3 /* ReactiveFuture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveFuture.swift; sourceTree = "<group>"; };
 		EA3965221B55C47200F5B0B3 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		EA4216431B3E092200613EFA /* _Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Activity.swift; sourceTree = "<group>"; };
 		EA4216441B3E092200613EFA /* _Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Service.swift; sourceTree = "<group>"; };
@@ -665,7 +663,6 @@
 			isa = PBXGroup;
 			children = (
 				EA10472D1B4E74A300B1A76A /* ReactiveProperties.swift */,
-				EA39651D1B55062900F5B0B3 /* ReactiveFuture.swift */,
 				EA3965141B54C19800F5B0B3 /* ReactiveBridging.swift */,
 				EA95BBB71B3932B500701F08 /* GenericExtensions.swift */,
 				EA95BBB81B3932B500701F08 /* MediaExtension.swift */,
@@ -903,6 +900,7 @@
 			isa = PBXGroup;
 			children = (
 				EAF6705A1B31F9450025D7CF /* FoundationExtension.swift */,
+				EA0C8C8A1B56DAAE00C2FB0A /* ReactiveFuture.swift */,
 				EAF6705B1B31F9450025D7CF /* NotificationCenterExtensions.swift */,
 				EAF670891B31F9AD0025D7CF /* Logging.swift */,
 				EA9C16651B365BD700371B50 /* AsyncOperation.swift */,
@@ -1463,8 +1461,8 @@
 				EA4757161B392C19002071D7 /* Transition.swift in Sources */,
 				EABAEDA31B432745000261F0 /* CandidateViewModel.swift in Sources */,
 				EAF670901B31FA2E0025D7CF /* UserDefaults.swift in Sources */,
-				EA39651E1B55062900F5B0B3 /* ReactiveFuture.swift in Sources */,
 				EAF670831B31F9450025D7CF /* Video.swift in Sources */,
+				EA0C8C8B1B56DAAE00C2FB0A /* ReactiveFuture.swift in Sources */,
 				EA2406201B50F0F1003A73C3 /* VideoDownloadOperation.swift in Sources */,
 				EACEFB961B472E8800901E85 /* SignupInteractor.swift in Sources */,
 				EAF6707C1B31F9450025D7CF /* _User.swift in Sources */,
@@ -1561,7 +1559,6 @@
 				EA95BBB91B3932B500701F08 /* BaseViews.swift in Sources */,
 				EAF81B251B33389500EED6DD /* RecorderViewController.swift in Sources */,
 				EAA56F901B2B32E500DE3936 /* DiscoverViewController.swift in Sources */,
-				EA3965211B55912C00F5B0B3 /* ReactiveFuture.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1569,7 +1566,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA39651F1B55062C00F5B0B3 /* ReactiveFuture.swift in Sources */,
 				EA9C16771B3759B700371B50 /* FormatterTests.swift in Sources */,
 				EA1047281B4E3C1C00B1A76A /* RACPlayground.swift in Sources */,
 				EA2406241B5109D8003A73C3 /* VideoDownloadTests.swift in Sources */,
