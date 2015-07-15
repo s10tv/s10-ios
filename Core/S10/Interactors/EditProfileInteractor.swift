@@ -30,4 +30,12 @@ public class EditProfileInteractor {
         avatarImageURL = user.dyn("avatarUrl").optional(String) |> map { NSURL.fromString($0) }
         coverImageURL = user.dyn("coverUrl").optional(String) |> map { NSURL.fromString($0) }
     }
+    
+    public func saveEdits(callback: NSError? -> ()) {
+        meteor.updateProfile([
+            "firstName": firstName.value,
+            "lastName": lastName.value,
+            "about": about.value,
+        ]).deliverOnMainThread().subscribeErrorOrCompleted(callback)
+    }
 }

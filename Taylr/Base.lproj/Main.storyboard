@@ -1178,7 +1178,7 @@
             </objects>
             <point key="canvasLocation" x="-766" y="2615"/>
         </scene>
-        <!--Edit Profile View Controller-->
+        <!--Edit Profile-->
         <scene sceneID="h30-kk-M5h">
             <objects>
                 <tableViewController storyboardIdentifier="EditProfile" id="GLZ-GV-JCx" customClass="EditProfileViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
@@ -1327,6 +1327,14 @@
                             <outlet property="delegate" destination="GLZ-GV-JCx" id="Icb-Me-4OO"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Edit Profile" id="25G-Hw-cud">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="GTU-NF-arw">
+                            <connections>
+                                <action selector="didPressDone:" destination="GLZ-GV-JCx" id="t2r-DD-CSA"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="aboutTextView" destination="4Oe-rd-vPP" id="FDk-3F-WSR"/>
                         <outlet property="avatarImageView" destination="8hD-TE-i8H" id="E8O-KZ-ezn"/>

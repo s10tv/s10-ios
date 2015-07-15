@@ -11,6 +11,7 @@ import ReactiveCocoa
 import Bond
 import JVFloatLabeledTextField
 import Core
+import PKHUD
 
 class EditProfileViewController : UITableViewController {
     
@@ -44,4 +45,17 @@ class EditProfileViewController : UITableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
     }
+    
+    @IBAction func didPressDone(sender: AnyObject) {
+        PKHUD.showActivity(dimsBackground: true)
+        interactor.saveEdits { err in
+            PKHUD.hide(animated: false)
+            if let err = err {
+                self.showErrorAlert(err)
+            } else {
+                self.navigationController?.popViewControllerAnimated(true)
+            }
+        }
+    }
+    
 }
