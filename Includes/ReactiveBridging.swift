@@ -14,19 +14,42 @@ import Box
 
 // MARK: - ReactiveCocoa + SwiftBonds
 
+/// Output Dynamic retains input property
 func toBondDynamic<T, P: PropertyType where P.Value == T>(property: P) -> Dynamic<T> {
     let dyn = InternalDynamic<T>(property.value)
     dyn.retain(Box(property))
-    property.producer.start(next: { value in
-        dyn.value = value
+    property.producer.start(next: { [weak dyn] value in
+        dyn?.value = value
     })
     return dyn
 }
 
+/// Output Dynamic retains input property
+func toBondDynamic<T, P: MutablePropertyType where P.Value == T>(property: P) -> Dynamic<T> {
+    var updatingFromSelf = false
+    let reverseBond = Bond<T>() { [weak property] v in
+        if !updatingFromSelf {
+            property?.value = v
+        }
+    }
+    let dyn = InternalDynamic<T>(property.value)
+    dyn.retain(Box(property))
+    dyn.retain(reverseBond)
+    property.producer.start(next: { [weak dyn] value in
+        updatingFromSelf = true
+        dyn?.value = value
+        updatingFromSelf = false
+    })
+    reverseBond.bind(dyn, fire: false, strongly: false)
+    return dyn
+}
+
+/// Output PropertyOf which retains source dynamic
 func fromBondDynamic<T, D: Dynamical where D.DynamicType == T>(d: D) -> PropertyOf<T> {
     return fromBondDynamic(d.designatedDynamic)
 }
 
+/// Output PropertyOf which retains source dynamic
 func fromBondDynamic<T>(dynamic: Dynamic<T>) -> PropertyOf<T> {
     let (signal, sink) = Signal<T, ReactiveCocoa.NoError>.pipe()
     let bond = Bond<T>() { value in
@@ -41,11 +64,24 @@ func fromBondDynamic<T>(dynamic: Dynamic<T>) -> PropertyOf<T> {
     }
 }
 
+// MARK: Bindings
+
+extension UITextField : Bondable, Dynamical {
+}
+extension UITextView : Dynamical {
+}
+
+// Two way bind
+
+func <->> <T, P: MutablePropertyType where P.Value == T>(left: P, right: Dynamic<T>) {
+    toBondDynamic(left) <->> right
+}
+
+func <->> <D: Dynamical, P: MutablePropertyType where D.DynamicType == P.Value>(left: P, right: D) {
+    toBondDynamic(left) <->> right.designatedDynamic
+}
 
 // Bind and fire
-
-extension UITextField : Bondable {
-}
 
 func ->> <T: PropertyType, U: Bondable where T.Value == U.BondType>(left: T, right: U) {
     toBondDynamic(left) ->> right.designatedBond
@@ -57,7 +93,7 @@ func ->| <T: PropertyType, U: Bondable where T.Value == U.BondType>(left: T, rig
     toBondDynamic(left) ->| right.designatedBond
 }
 
-// MARK: ReactiveCocoa + BrightFutures
+// MARK: - ReactiveCocoa + BrightFutures
 
 let errSignalInterrupted = NSError(domain: "ReactiveCocoa", code: NSUserCancelledError, userInfo: nil)
 

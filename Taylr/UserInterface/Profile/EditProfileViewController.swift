@@ -30,9 +30,9 @@ class EditProfileViewController : UITableViewController {
         coverImageView.clipsToBounds = true
         avatarImageView.makeCircular()
         
-        interactor.firstName ->> firstNameField
-        interactor.lastName ->> lastNameField
-        interactor.about ->> aboutTextView
+        interactor.firstName <->> firstNameField
+        interactor.lastName <->> lastNameField
+        interactor.about <->> aboutTextView
         interactor.username ->> usernameLabel
     }
     

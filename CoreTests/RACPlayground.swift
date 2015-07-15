@@ -13,6 +13,7 @@ import Async
 import Nimble
 import BrightFutures
 import Bond
+import Box
 
 class RACPlayground : AsyncTestCase {
 
@@ -257,22 +258,56 @@ class RACPlayground : AsyncTestCase {
     
     func testBondDynamic() {
         weak var wDynamic: Dynamic<Int>!
-        var prop: PropertyOf<Int>!
         autoreleasepool {
-            
             let dynamic = Dynamic(3)
             wDynamic = dynamic
             expect(dynamic.value) == 3
             
-            prop = fromBondDynamic(dynamic)
+            let prop = fromBondDynamic(dynamic)
             expect(prop.value) == 3
             
             dynamic.value = 55
             expect(prop.value) == 55
         }
-        expect(prop).toNot(beNil())
+        // TODO: Figure why it doesn't dealloc yet
         expect(wDynamic).toNot(beNil())
+//        let eventuallyNil = expectationWithDescription("eventually nil")
+//        timer(0.05, onScheduler: QueueScheduler.mainQueueScheduler)
+//            |> start(next: { _ in
+//                if wDynamic == nil {
+//                    eventuallyNil.fulfill()
+//                }
+//            })
+//        waitForExpectationsWithTimeout(1, handler: nil)
     }
-}
+    
+    func testTwoWayBinding() {
+        weak var wDyn: Dynamic<Int>!
+        weak var wProp: MutableProperty<Int>!
+        autoreleasepool {
+            let dyn = Dynamic<Int>(0)
+            autoreleasepool {
+                let prop = MutableProperty(100)
+                wProp = prop
+                wDyn = dyn
 
+                expect(prop.value) == 100
+                expect(dyn.value) == 0
+                
+                prop <->> dyn
+                expect(dyn.value) == 100
+                
+                prop.value = 500
+                expect(dyn.value) == 500
+                
+                dyn.value = 111
+                expect(prop.value) == 111
+            }
+            expect(wProp).toNot(beNil())
+        }
+        expect(wProp).to(beNil())
+        expect(wDyn).to(beNil())
+    }
+    
+}
 
