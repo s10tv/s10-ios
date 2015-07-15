@@ -60,10 +60,10 @@ class MeteorCollection {
     }
     
     func propertyOf<T>(documentID: String, field: String = "value", type: T.Type) -> PropertyOf<T?> {
-        return propertyOf(documentID, field: field) |> { $0.typed(T.self) }
+        return propertyOf(documentID, field: field) |> map { $0.typed(T.self) }
     }
     
     func propertyOf<T>(documentID: String, field: String = "value", defaultValue: T) -> PropertyOf<T> {
-        return propertyOf(documentID, field: field) |> { $0.typed(T.self) ?? defaultValue }
+        return propertyOf(documentID, field: field) |> map { $0.typed(T.self) ?? defaultValue }
     }
 }

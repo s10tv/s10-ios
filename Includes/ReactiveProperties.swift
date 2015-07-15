@@ -95,19 +95,25 @@ extension PropertyOf {
     }
 }
 
-func |> <P: PropertyType, T, U where P.Value == T>(property: P, transform: T -> U) -> PropertyOf<U> {
-    return PropertyOf(transform(property.value)) {
-        property.producer |> map { v in
-            let retainSourceProperty = property // Force retain source property
-            return transform(v)
+func |> <P1 : PropertyType, X>(property: P1, @noescape transform: P1 -> X) -> X {
+    return transform(property)
+}
+
+func map<P : PropertyType, T, U where P.Value == T>(transform: T -> U) -> P -> PropertyOf<U> {
+    return { property in
+        return PropertyOf(transform(property.value)) {
+            property.producer |> map { v in
+                let retainSourceProperty = property // Force retain source property
+                return transform(v)
+            }
         }
     }
 }
 
 /// `mutableProperty |> readonly` will render a read only version of any mutable property type
 /// Readonly is essentially an identity function
-func readonly<T>(value: T) -> T {
-    return value
+func readonly<P : MutablePropertyType, T where P.Value == T>(property: P) -> PropertyOf<T> {
+    return PropertyOf(property)
 }
 
 // Counter part to ReactiveCocoa's <~ operator which is sometimes inconvenient to use

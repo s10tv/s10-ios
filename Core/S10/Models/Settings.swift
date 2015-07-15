@@ -51,7 +51,7 @@ public class Settings {
         c = MeteorCollection(collection)
 
         accountStatus = c.propertyOf("accountStatus")
-            |> { $0.typed(String).flatMap { AccountStatus(rawValue: $0) }
+            |> map { $0.typed(String).flatMap { AccountStatus(rawValue: $0) }
         }
     }
     

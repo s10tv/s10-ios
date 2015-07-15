@@ -23,11 +23,11 @@ public class EditProfileInteractor {
     public init(meteor: MeteorService, user: User) {
         self.meteor = meteor
         self.user = user
-        firstName = user.dyn("firstName").optional(String) |> { $0 ?? "" }
-        lastName = user.dyn("lastName").optional(String) |> { $0 ?? "" }
-        about = user.dyn("about").optional(String) |> { $0 ?? "" }
-        username = user.dyn("username").optional(String) |> { $0 ?? "" }
-        avatarImageURL = user.dyn("avatarUrl").optional(String) |> { NSURL.fromString($0) }
-        coverImageURL = user.dyn("coverUrl").optional(String) |> { NSURL.fromString($0) }
+        firstName = user.dyn("firstName").optional(String) |> map { $0 ?? "" }
+        lastName = user.dyn("lastName").optional(String) |> map { $0 ?? "" }
+        about = user.dyn("about").optional(String) |> map { $0 ?? "" }
+        username = user.dyn("username").optional(String) |> map { $0 ?? "" }
+        avatarImageURL = user.dyn("avatarUrl").optional(String) |> map { NSURL.fromString($0) }
+        coverImageURL = user.dyn("coverUrl").optional(String) |> map { NSURL.fromString($0) }
     }
 }
