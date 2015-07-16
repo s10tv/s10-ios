@@ -4,11 +4,16 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="TransatTextBlack.otf">
             <string>TransatTextBlack</string>
             <string>TransatTextBlack</string>
+            <string>TransatTextBlack</string>
+        </mutableArray>
+        <mutableArray key="TransatTextStandard.otf">
+            <string>TransatTextStandard</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -168,7 +173,7 @@
             </objects>
             <point key="canvasLocation" x="-531" y="274"/>
         </scene>
-        <!--Complete Your Profile-->
+        <!--Signup-->
         <scene sceneID="c7e-uH-hgv">
             <objects>
                 <viewController storyboardIdentifier="Signup" id="BbE-3o-NVZ" customClass="SignupViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
@@ -245,7 +250,7 @@
                         </constraints>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Complete Your Profile" id="kaR-5U-hTV">
+                    <navigationItem key="navigationItem" title="Signup" id="kaR-5U-hTV">
                         <barButtonItem key="rightBarButtonItem" title="Done" id="WcB-e4-dr7">
                             <connections>
                                 <action selector="submitRegistration:" destination="BbE-3o-NVZ" id="Amb-fD-yFV"/>
@@ -258,6 +263,7 @@
                         <outlet property="tableView" destination="T4Y-Zp-oMf" id="Wyj-rp-zD1"/>
                         <outlet property="view" destination="AWr-CH-w9L" id="UaW-Y6-19D"/>
                         <segue destination="4LR-tW-qvj" kind="custom" identifier="Main_Discover" customClass="LinkedStoryboardPushSegue" id="vTJ-7J-HJ1"/>
+                        <segue destination="mQ4-CY-XPl" kind="show" identifier="SignupToLinkService" id="oTm-8D-ZZH"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zA5-0f-p8h" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -292,11 +298,131 @@
             </objects>
             <point key="canvasLocation" x="727" y="274"/>
         </scene>
+        <!--Complete Your Profile-->
+        <scene sceneID="bZf-70-MIq">
+            <objects>
+                <tableViewController storyboardIdentifier="LinkService" id="mQ4-CY-XPl" customClass="LinkServiceViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="yzc-Kc-o7y">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection id="bMh-2Y-rr0">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="180" id="nUb-cr-ilG">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="nUb-cr-ilG" id="jnB-Bi-FHC">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-cover-image" translatesAutoresizingMaskIntoConstraints="NO" id="NeC-my-09M">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="179"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylor Swift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g41-ny-tgg">
+                                                    <rect key="frame" x="156" y="47" width="131" height="26"/>
+                                                    <fontDescription key="fontDescription" name="TransatTextBlack" family="Transat Text" pointSize="24"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <size key="shadowOffset" width="1" height="1"/>
+                                                </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="HEN-jG-lm9">
+                                                    <rect key="frame" x="20" y="30" width="120" height="120"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="120" id="R0Z-R6-yNB"/>
+                                                        <constraint firstAttribute="width" secondItem="HEN-jG-lm9" secondAttribute="height" multiplier="1:1" id="s8U-Jl-f50"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="api-Kh-Gya">
+                                                    <rect key="frame" x="156" y="110" width="170" height="30"/>
+                                                    <color key="backgroundColor" red="0.71160075190000005" green="0.8876953125" blue="0.47190699079999998" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="170" id="PVZ-uS-7zl"/>
+                                                    </constraints>
+                                                    <size key="titleShadowOffset" width="1" height="1"/>
+                                                    <state key="normal" title="Tap to see your profile">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <integer key="value" value="10"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@tswift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Epm-qI-fJ4">
+                                                    <rect key="frame" x="156" y="81" width="68" height="21"/>
+                                                    <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="20"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <color key="shadowColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <size key="shadowOffset" width="1" height="1"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="NeC-my-09M" firstAttribute="top" secondItem="jnB-Bi-FHC" secondAttribute="top" id="0nz-Bc-EQ2"/>
+                                                <constraint firstAttribute="trailing" secondItem="NeC-my-09M" secondAttribute="trailing" id="7b6-uO-2Ld"/>
+                                                <constraint firstItem="NeC-my-09M" firstAttribute="leading" secondItem="jnB-Bi-FHC" secondAttribute="leading" id="DFQ-Zd-m9e"/>
+                                                <constraint firstItem="g41-ny-tgg" firstAttribute="leading" secondItem="HEN-jG-lm9" secondAttribute="trailing" constant="16" id="GXe-GN-90g"/>
+                                                <constraint firstItem="Epm-qI-fJ4" firstAttribute="leading" secondItem="api-Kh-Gya" secondAttribute="leading" id="IZz-8Y-Pkh"/>
+                                                <constraint firstItem="api-Kh-Gya" firstAttribute="top" secondItem="Epm-qI-fJ4" secondAttribute="bottom" constant="8" id="ddl-Rh-tgj"/>
+                                                <constraint firstItem="Epm-qI-fJ4" firstAttribute="top" secondItem="g41-ny-tgg" secondAttribute="bottom" constant="8" id="mmF-fT-yeC"/>
+                                                <constraint firstItem="HEN-jG-lm9" firstAttribute="leading" secondItem="jnB-Bi-FHC" secondAttribute="leadingMargin" constant="12" id="nll-Cb-oie"/>
+                                                <constraint firstAttribute="centerY" secondItem="HEN-jG-lm9" secondAttribute="centerY" id="qqn-v6-Y4m"/>
+                                                <constraint firstItem="HEN-jG-lm9" firstAttribute="centerY" secondItem="g41-ny-tgg" secondAttribute="centerY" constant="30" id="rw5-mj-Ch9"/>
+                                                <constraint firstAttribute="bottom" secondItem="NeC-my-09M" secondAttribute="bottom" id="z44-aH-Nhk"/>
+                                                <constraint firstItem="Epm-qI-fJ4" firstAttribute="leading" secondItem="g41-ny-tgg" secondAttribute="leading" id="zrn-ac-3LC"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection id="Xiv-vZ-yxK">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="49" id="DDg-se-hKu">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DDg-se-hKu" id="FjD-Ps-QWM">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nobody likes to look at an empty profile" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBb-dM-IFS">
+                                                    <rect key="frame" x="148" y="13" width="305" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerX" secondItem="OBb-dM-IFS" secondAttribute="centerX" constant="-0.5" id="4po-e2-fFN"/>
+                                                <constraint firstAttribute="centerY" secondItem="OBb-dM-IFS" secondAttribute="centerY" constant="0.5" id="T1q-ta-L3k"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="mQ4-CY-XPl" id="tzM-6o-2e2"/>
+                            <outlet property="delegate" destination="mQ4-CY-XPl" id="9Na-k4-g8C"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Complete Your Profile" id="eFv-84-aLI">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="AmH-VY-2Pv"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2Di-Hk-xoi" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="902" y="772"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ic-addphoto-plus" width="73" height="73"/>
         <image name="ic-edit" width="39" height="40"/>
         <image name="sample-cover-image" width="579" height="214"/>
+        <image name="sample-taylor-avatar" width="66" height="67"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="vTJ-7J-HJ1"/>
