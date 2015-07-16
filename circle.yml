@@ -8,6 +8,7 @@ machine:
     CRASHLYTICS_BUILD_SECRET: 1406e03532dd866d616ac19642903e2db44a36d93de980165c1e2e01fc17b215
     CRASHLYTICS_FRAMEWORK_PATH: Includes/Crashlytics.framework
     APPSTORE_PROFILE_NAME: tvs10taylrappstore.mobileprovision
+    APPSTORE_PROFILE_PATH: $HOME/s10-ios/scripts/tvs10taylrappstore.mobileprovision
     SIGNING_IDENTITY: "iPhone Distribution: S10 Inc. (227D5X5CZY)"
 
 dependencies:
