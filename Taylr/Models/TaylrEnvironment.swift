@@ -44,6 +44,7 @@ class TaylrEnvironment : Environment {
     let segmentWriteKey: String
     let appseeApiKey: String
     let heapAppId: String
+    let ouralabsKey = "5994e77086c6fcabc4bd5d5fe6c3e556"
     
     init(audience: Audience, provisioningProfile: ProvisioningProfile?) {
         self.audience = audience

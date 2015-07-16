@@ -13,6 +13,7 @@ import SwiftyUserDefaults
 import Fabric
 import DigitsKit
 import Crashlytics
+import Ouralabs
 import Core
 
 // Globally accessible variables and shorthands
@@ -36,6 +37,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         // Configure the environment
         let env = TaylrEnvironment.configureFromEmbeddedProvisioningProfile()
         Fabric.with([Digits(), Crashlytics()])
+        
+        Ouralabs.initWithKey(env.ouralabsKey)
+        Log.callback = { msg, level in
+            Ouralabs.log(.Info, tag: "Test", message: msg, kvp: nil)
+        }
         
         // Start crash reporting and logging as soon as we can
 //        Bugfender.activateLogger(env.bugfenderAppToken)

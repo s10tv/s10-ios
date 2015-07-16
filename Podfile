@@ -71,6 +71,7 @@ target :Core do
         pod 'AnalyticsSwift', '~> 0.1.0'
         pod 'Heap', '~> 2.1'
         pod 'Appsee', '~> 2.1'
+        pod 'Ouralabs', '~> 2.3'
         #pod 'BugfenderSDK', :git => 'https://github.com/bugfender/BugfenderSDK-iOS.git', :tag => '0.3.2'
 
         # Debug only

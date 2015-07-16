@@ -46,6 +46,7 @@ PODS:
   - NSLogger/Standard (1.5.1)
   - OAuthSwift (0.3.6)
   - OHHTTPStubs (4.0.2)
+  - Ouralabs (2.3.0)
   - PKHUD (2.0.1)
   - PocketSocket (0.6.4)
   - Quick (0.3.1)
@@ -111,6 +112,7 @@ DEPENDENCIES:
   - NSLogger (~> 1.5)
   - OAuthSwift (~> 0.3)
   - OHHTTPStubs (~> 4.0.2)
+  - Ouralabs (~> 2.3)
   - PKHUD (from `https://github.com/tonyxiao/PKHUD`)
   - Quick (~> 0.3.0)
   - RBBAnimation (~> 0.4.0)
@@ -187,6 +189,7 @@ SPEC CHECKSUMS:
   NSLogger: 5ed223a2436df96244e033be750656dacdeec034
   OAuthSwift: 3517e94380923085dfa7f23421bc3d4a61ce48c0
   OHHTTPStubs: dbd1957d414659783e07b49c961940b7564c23d9
+  Ouralabs: a3d82090d80d5d6328e3dd9e60cbb5383440f069
   PKHUD: 27346b72187c3cbff20c174f2b1f88c999a4ef13
   PocketSocket: eee7ef375f55b98e7ca79e097d9c61fd688e9494
   Quick: 824572d3d198d51e52cf4aa722cebf7e59952a35

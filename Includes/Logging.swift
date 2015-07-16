@@ -32,7 +32,6 @@ public class Logger {
     }
     
     private let nslogger : NSLogger = NSLogger()
-    public var callback: ((String, LogLevel) -> ())?
     
     // MARK: Metadata API
     
@@ -88,7 +87,6 @@ public class Logger {
 
         // Swift default
         println("[\(level)] \(message)")
-        callback?(message, level)
     }
     
 //    func formatForBugFender(level: LogLevel, message: String) -> (BFLogLevel, String) {
