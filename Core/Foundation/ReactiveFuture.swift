@@ -22,16 +22,21 @@ public struct RACPromise<T, E: ErrorType> {
     }
     
     public func complete(result: Result<T, E>) {
-        result.analysis(ifSuccess: { success($0) }, ifFailure: { failure($0) })
+        assert(future.result == nil, "Promise should not be fulfulled multiple times")
+        result.analysis(ifSuccess: {
+            sendNext(sink, $0)
+            sendCompleted(sink)
+        }, ifFailure: {
+            sendError(sink, $0)
+        })
     }
     
     public func success(value: T) {
-        sendNext(sink, value)
-        sendCompleted(sink)
+        complete(Result(value: value))
     }
     
     public func failure(error: E) {
-        sendError(sink, error)
+        complete(Result(error: error))
     }
 }
 
@@ -80,16 +85,19 @@ public struct RACFuture<T, E: ErrorType> {
         return disposable
     }
     
-    public func onSuccess(_ deliverOn: SchedulerType? = nil, callback: T -> ()) -> Disposable {
-        return onComplete { result in
-            result.analysis(ifSuccess: callback, ifFailure: { _ in })
+    public func on(_ deliverOn: SchedulerType? = nil, success: (T -> ())? = nil, failure: (E -> ())? = nil, complete: (() -> ())? = nil) -> Disposable {
+        return onComplete(deliverOn) { result in
+            result.analysis(ifSuccess: { success?($0) }, ifFailure: { failure?($0) })
+            complete?()
         }
     }
     
+    public func onSuccess(_ deliverOn: SchedulerType? = nil, callback: T -> ()) -> Disposable {
+        return on(deliverOn, success: callback)
+    }
+    
     public func onFailure(_ deliverOn: SchedulerType? = nil, callback: E -> ()) -> Disposable {
-        return onComplete { result in
-            result.analysis(ifSuccess: { _ in }, ifFailure: callback)
-        }
+        return on(deliverOn, failure: callback)
     }
 }
 
