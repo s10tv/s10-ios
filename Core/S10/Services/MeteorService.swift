@@ -128,22 +128,32 @@ public class MeteorService : NSObject {
     // TODO: Add permission statuses for push, location, etc
     
     // MARK: - Authentication
+    func login(#method: String, params: [AnyObject]?) -> RACSignal {
+        // HACK ALERT: Delegate callback does not happen in time for Meteor.user
+        // to be populated by the time completion gets called.
+        // Instead we will force compute the user before returning signal
+        return meteor.loginWithMethod(method, params: params).doCompleted {
+            if let userId = self.userID {
+                self._user.value = User.findByDocumentID(self.mainContext, documentID: userId)!
+            }
+        }
+    }
 
     public func debugLoginWithUserId(userId: String) -> RACSignal {
-        return meteor.loginWithMethod("login", params: [[
+        return login(method: "login", params: [[
             "debug": ["userId": userId]
         ]])
     }
     
     public func loginWithDigits(#userId: String, authToken: String, authTokenSecret: String, phoneNumber: String) -> RACSignal {
-        return meteor.loginWithMethod("login", params: [[
+        return login(method: "login", params: [[
             "digits": [
                 "userId": userId,
                 "authToken": authToken,
                 "authTokenSecret": authTokenSecret,
                 "phoneNumber": phoneNumber
             ]
-        ]])
+        ]]).delay(0)
     }
     
     public func confirmRegistration(username: String) -> RACSignal {
@@ -151,7 +161,7 @@ public class MeteorService : NSObject {
     }
     
     public func loginWithFacebook(#accessToken: String, expiresAt: NSDate) -> RACSignal {
-        return meteor.loginWithMethod("login", params: [[
+        return login(method: "login", params: [[
             "fb-access": [
                 "accessToken": accessToken,
                 "expireAt": expiresAt.timeIntervalSince1970
@@ -160,7 +170,7 @@ public class MeteorService : NSObject {
     }
 
     public func loginWithPhoneNumber(phoneNumber: String) -> RACSignal {
-        return meteor.loginWithMethod("login", params: [[
+        return login(method: "login", params: [[
             "phone-access": [
                 "id": phoneNumber,
             ]

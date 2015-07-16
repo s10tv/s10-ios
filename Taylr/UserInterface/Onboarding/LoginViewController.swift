@@ -67,7 +67,7 @@ class LoginViewController : BaseViewController {
             case .SignedUp:
                 self.performSegue(.Main_Discover, sender: self)
             default:
-                break
+                assertionFailure("Expecting either LoggedIn or SignedUp")
             }
         }, failure: { error in
             if error.domain == METDDPErrorDomain {
