@@ -82,9 +82,14 @@ class TaylrEnvironment : Environment {
     }
     
     class func configureFromEmbeddedProvisioningProfile() -> TaylrEnvironment {
-        func audienceFromProfile(profile: ProvisioningProfile?) -> Audience {
+        let profile = ProvisioningProfile.embeddedProfile()
+        func getAudience() -> Audience {
             if IS_TARGET_IPHONE_SIMULATOR {
-                return .Dev
+                switch NSBundle.mainBundle().bundleIdentifier ?? "" {
+                    case "tv.s10.taylr": return .AppStore
+                    case "tv.s10.taylr.beta": return .Beta
+                    default: return .Dev
+                }
             }
             let profileType = profile?.type ?? .AppStore
 
@@ -94,7 +99,6 @@ class TaylrEnvironment : Environment {
                 case .Adhoc, .AppStore: return .AppStore
             }
         }
-        let profile = ProvisioningProfile.embeddedProfile()
-        return TaylrEnvironment(audience: audienceFromProfile(profile), provisioningProfile: profile)
+        return TaylrEnvironment(audience: getAudience(), provisioningProfile: profile)
     }
 }
