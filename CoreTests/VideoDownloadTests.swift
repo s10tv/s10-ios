@@ -62,7 +62,7 @@ class VideoDownloadTests: AsyncTestCase {
                 fail("Expect download to be cancelled, but got success")
                 fulfill()
             }
-            Async.main(after: 0.5) {
+            Async.main(after: 0.9) {
                 expect(op.executing)
                 op.cancel()
                 expect(op.cancelled)
