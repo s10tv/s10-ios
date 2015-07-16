@@ -196,6 +196,7 @@
 		F996C7221A81F1E000314FF8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C7211A81F1E000314FF8 /* AVFoundation.framework */; };
 		F996C7241A81F1E700314FF8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C7231A81F1E700314FF8 /* QuartzCore.framework */; };
 		F996C7261A81F1F200314FF8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C7251A81F1F200314FF8 /* OpenGLES.framework */; };
+		F9D545491B57988200A4661B /* InviteOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D545481B57988200A4661B /* InviteOperation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -426,6 +427,7 @@
 		F996C7211A81F1E000314FF8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F996C7231A81F1E700314FF8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F996C7251A81F1F200314FF8 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		F9D545481B57988200A4661B /* InviteOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -967,6 +969,7 @@
 				EA24061F1B50F0F1003A73C3 /* VideoDownloadOperation.swift */,
 				F912AC5C1B3745AC00DEA6B1 /* VideoUploadOperation.swift */,
 				EABA05431B474EC900154C75 /* PhotoUploadOperation.swift */,
+				F9D545481B57988200A4661B /* InviteOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -1473,6 +1476,7 @@
 				EACEFB961B472E8800901E85 /* SignupInteractor.swift in Sources */,
 				EAF6707C1B31F9450025D7CF /* _User.swift in Sources */,
 				EA78C8781B320A2A0016AB73 /* AlamofireExtension.swift in Sources */,
+				F9D545491B57988200A4661B /* InviteOperation.swift in Sources */,
 				EAF670751B31F9450025D7CF /* SugarRecordExtension.swift in Sources */,
 				EABA05441B474EC900154C75 /* PhotoUploadOperation.swift in Sources */,
 				EAF670951B31FCBE0025D7CF /* ProvisioningProfile.swift in Sources */,

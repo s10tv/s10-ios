@@ -193,6 +193,62 @@ class IntegrationTests : XCTestCase {
         self.waitForExpectationsWithTimeout(30.0, handler: nil)
     }
 
+    func testInviteWithEmail() {
+        let filePath = NSHomeDirectory().stringByAppendingPathComponent("test.txt")
+        let url = NSURL(string: filePath)
+
+        whileAuthenticated {
+            let subject = RACReplaySubject()
+            let upload = InviteOperation(meteor: self.meteor,
+                localVideoURL: url!,
+                recipientFirstName: "test", // don't rename. else server will actually send email
+                recipientLastName: "Fang",
+                recipientPhoneOrEmail: "qf26@cornell.edu")
+            upload.completionBlock = {
+                switch upload.result! {
+                case .Success:
+                    subject.sendCompleted()
+                case .Error(let error):
+                    subject.sendError(error)
+                    XCTFail("Failed to upload \(error)")
+                case .Cancelled:
+                    subject.sendError(nil)
+                    XCTFail("Upload unexpectedly cancelled")
+                }
+            }
+            upload.start()
+            return subject
+        }
+    }
+
+    func testInviteWithText() {
+        let filePath = NSHomeDirectory().stringByAppendingPathComponent("test.txt")
+        let url = NSURL(string: filePath)
+
+        whileAuthenticated {
+            let subject = RACReplaySubject()
+            let upload = InviteOperation(meteor: self.meteor,
+                localVideoURL: url!,
+                recipientFirstName: "test", // don't rename. else server will actually send text
+                recipientLastName: "Fang",
+                recipientPhoneOrEmail: "6172596512")
+            upload.completionBlock = {
+                switch upload.result! {
+                case .Success:
+                    subject.sendCompleted()
+                case .Error(let error):
+                    subject.sendError(error)
+                    XCTFail("Failed to upload \(error)")
+                case .Cancelled:
+                    subject.sendError(nil)
+                    XCTFail("Upload unexpectedly cancelled")
+                }
+            }
+            upload.start()
+            return subject
+        }
+    }
+
     class func deleteRealmFilesAtPath(path: String) {
         let fileManager = NSFileManager.defaultManager()
         fileManager.removeItemAtPath(path, error: nil)
