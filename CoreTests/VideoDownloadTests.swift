@@ -55,7 +55,9 @@ class VideoDownloadTests: AsyncTestCase {
         waitForExpectationsWithTimeout(10, handler: nil)
     }
     
-    func testDownloadResume() {
+    // Don't test for now, need to figure out how to hook into download progress in order
+    // to properly cancel after some progress is made but before file is fully downloaded
+    func _testDownloadResume() {
         expectFulfill("download cancel then resumes") { fulfill in
             let op = VideoDownloadOperation(videoId: videoId, senderId: senderId, remoteURL: goodURL)
             let future = queue.addAsyncOperation(op).onSuccess {
