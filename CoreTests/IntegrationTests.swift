@@ -68,11 +68,13 @@ class IntegrationTests : XCTestCase {
         }.then {
             return block()
         }.then {
+            return self.meteor.clearTestInvites()
+        }.then {
             return self.meteor.clearUserData(self.meteor.userID!)
         }.subscribeErrorOrCompleted { _ in
             expectation.fulfill()
         }
-        waitForExpectationsWithTimeout(30, handler: nil)
+        waitForExpectationsWithTimeout(45, handler: nil)
     }
 
     func testConnection() {

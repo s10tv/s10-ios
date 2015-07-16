@@ -17,6 +17,10 @@ extension MeteorService {
         return self.meteor.call("dev/user/remove", [userId])
     }
 
+    func clearTestInvites() -> RACSignal {
+        return self.meteor.call("dev/invite/clear", [])
+    }
+
     func clearConnections() -> RACSignal {
         var signals = [RACSignal]()
         Connection.all().fetch().each { item in
