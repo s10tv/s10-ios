@@ -59,14 +59,7 @@ class LoginViewController : BaseViewController {
             showErrorAlert(NSError(.NetworkUnreachable))
             return
         }
-        Globals.accountService.login().subscribeError({ error in
-            if error.domain == METDDPErrorDomain {
-                self.showAlert(LS(.errUnableToLoginTitle), message: LS(.errUnableToLoginMessage))
-            } else if error.domain == DGTErrorDomain {
-                // Ignoring digits error for now
-                Log.warn("Ignoring digits error, not handling for now \(error)")
-            }
-        }, completed: {
+        Globals.accountService.login().on(UIScheduler(), success: {
             assert(NSThread.isMainThread(), "Only on main")
             switch Globals.accountService.state.value {
             case .LoggedIn:
@@ -75,6 +68,13 @@ class LoginViewController : BaseViewController {
                 self.performSegue(.Main_Discover, sender: self)
             default:
                 break
+            }
+        }, failure: { error in
+            if error.domain == METDDPErrorDomain {
+                self.showAlert(LS(.errUnableToLoginTitle), message: LS(.errUnableToLoginMessage))
+            } else if error.domain == DGTErrorDomain {
+                // Ignoring digits error for now
+                Log.warn("Ignoring digits error, not handling for now \(error)")
             }
         })
     }

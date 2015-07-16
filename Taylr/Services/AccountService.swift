@@ -11,6 +11,22 @@ import ReactiveCocoa
 import DigitsKit
 import Core
 
+extension Digits {
+    func authenticate() -> RACFuture<DGTSession, NSError> {
+        let promise = RACPromise<DGTSession, NSError>()
+        authenticateWithCompletion { (session: DGTSession?, error: NSError?) in
+            if let session = session {
+                promise.success(session)
+            } else if let error = error {
+                promise.failure(error)
+            } else {
+                assertionFailure("Should either succeed or fail")
+            }
+        }
+        return promise.future
+    }
+}
+
 class AccountService {
     enum State {
         case Indeterminate, LoggedOut, LoggedIn, SignedUp
@@ -62,27 +78,27 @@ class AccountService {
         }
     }
     
-    func login() -> RACSignal {
-        let subject = RACReplaySubject()
-        digits.authenticateWithCompletion { (session: DGTSession?, error: NSError?) in
-            println("Session userId= \(session?.userID) error \(error)")
-            if let session = session {
+    func login() -> RACFuture<(), NSError> {
+        let promise = RACPromise<(), NSError>()
+        digits.authenticate().onComplete(UIScheduler()) {
+            println("Session userId= \($0.value?.userID) error \($0.error)")
+            if let session = $0.value {
                 self.meteorService.loginWithDigits(
                     userId: session.userID,
                     authToken: session.authToken,
                     authTokenSecret: session.authTokenSecret,
                     phoneNumber: session.phoneNumber
-                ).deliverOnMainThread().subscribeError({
-                    subject.sendError($0)
+                ).subscribeError({
+                    promise.failure($0)
                 }, completed: {
                     self.didLogin()
-                    subject.sendCompleted()
+                    promise.success()
                 })
             } else {
-                subject.sendError(error)
+                promise.failure($0.error!)
             }
         }
-        return subject
+        return promise.future
     }
     
     func logout() -> RACSignal {
