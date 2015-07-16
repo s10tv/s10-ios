@@ -11,6 +11,7 @@ import Core
 import SDWebImage
 import Bond
 import PKHUD
+import JVFloatLabeledTextField
 
 class MeViewController : BaseViewController {
     
@@ -18,6 +19,9 @@ class MeViewController : BaseViewController {
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var inviteeFirstNameField: JVFloatLabeledTextField!
+    @IBOutlet weak var inviteeLastNameField: JVFloatLabeledTextField!
+    @IBOutlet weak var inviteeEmailOrPhoneField: JVFloatLabeledTextField!
     
     var viewModel: MeInteractor!
     var linkAccountService: LinkAccountService!
@@ -79,6 +83,9 @@ class MeViewController : BaseViewController {
         }, completed: {
             PKHUD.hide(animated: false)
         })
+    }
+    
+    @IBAction func didPressInviteButton(sender: AnyObject) {
     }
     
     @IBAction func showLinkServiceOptions(sender: AnyObject) {
