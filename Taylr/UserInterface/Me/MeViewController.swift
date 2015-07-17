@@ -11,6 +11,7 @@ import Core
 import SDWebImage
 import Bond
 import PKHUD
+import ReactiveCocoa
 import JVFloatLabeledTextField
 
 class MeViewController : BaseViewController {
@@ -38,6 +39,10 @@ class MeViewController : BaseViewController {
         viewModel.avatarURL ->> avatarView.dynImageURL
         viewModel.displayName ->> nameLabel
         viewModel.username ->> usernameLabel
+        viewModel.inviteeFirstName <->> inviteeFirstNameField
+        viewModel.inviteeLastName <->> inviteeLastNameField
+        viewModel.inviteeEmailOrPhone <->> inviteeEmailOrPhoneField
+        
         
         let servicesSection = viewModel.linkedServices.map { [unowned self] (service, index) -> UICollectionViewCell in
             let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier(.MeServiceCell,
@@ -86,6 +91,9 @@ class MeViewController : BaseViewController {
     }
     
     @IBAction func didPressInviteButton(sender: AnyObject) {
+        let producer = UIStoryboard(name: "AVKit", bundle: nil).instantiateInitialViewController() as! ProducerViewController
+        producer.producerDelegate = self
+        presentViewController(producer, animated: true)
     }
     
     @IBAction func showLinkServiceOptions(sender: AnyObject) {
@@ -124,5 +132,25 @@ extension MeViewController : UICollectionViewDelegate {
         } else {
             showLinkServiceOptions(self)
         }
+    }
+}
+
+extension MeViewController : ProducerDelegate {
+    func producerWillStartRecording(producer: ProducerViewController) {
+    }
+    
+    func producerDidCancelRecording(producer: ProducerViewController) {
+        producer.dismissViewController(animated: true)
+    }
+    
+    func producer(producer: ProducerViewController, didProduceVideo url: NSURL) {
+        producer.dismissViewController(animated: true)
+        viewModel.sendInvite(url).on(UIScheduler(), success: {
+            PKHUD.showText("Sent Successfully!")
+            PKHUD.hide(afterDelay: 0.25)
+        }, failure: { error in
+            PKHUD.hide(animated: false)
+            self.showErrorAlert(error)
+        })
     }
 }
