@@ -20,7 +20,7 @@ var env: Environment!
 
 class IntegrationTests : XCTestCase {
     var meteor: MeteorService!
-    var videoService: VideoService!
+    var taskService: TaskService!
     var notificationToken: NotificationToken?
 
     let PHONE_NUMBER = "6172596512"
@@ -44,7 +44,7 @@ class IntegrationTests : XCTestCase {
     override func setUp() {
         meteor = MeteorService(serverURL: NSURL("ws://s10-dev.herokuapp.com/websocket"))
         meteor.startup()
-        videoService = VideoService(meteorService: meteor)
+        taskService = TaskService(meteorService: meteor)
     }
 
     override func tearDown() {
@@ -169,7 +169,7 @@ class IntegrationTests : XCTestCase {
                 self.meteor.mainContext, documentID: res as! String)
             otherUserId = connection?.otherUser?.documentID
 
-            self.videoService.uploadVideo(connection!.otherUser!, localVideoURL: url!)
+            self.taskService.uploadVideo(connection!.otherUser!, localVideoURL: url!)
             return RACSignal.empty()
         }
 

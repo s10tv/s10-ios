@@ -104,7 +104,7 @@
 		EA95BBC11B3932BE00701F08 /* GenericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBB71B3932B500701F08 /* GenericExtensions.swift */; };
 		EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA9A6ACE1AAFDE19009EDD6D /* Localizable.strings */; };
 		EA9C16661B365BD700371B50 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C16651B365BD700371B50 /* AsyncOperation.swift */; };
-		EA9C166C1B368FD600371B50 /* VideoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C166B1B368FD600371B50 /* VideoService.swift */; };
+		EA9C166C1B368FD600371B50 /* TaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C166B1B368FD600371B50 /* TaskService.swift */; };
 		EA9C166F1B3726E300371B50 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C166E1B3726E300371B50 /* MessageViewModel.swift */; };
 		EA9C16771B3759B700371B50 /* FormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C16761B3759B700371B50 /* FormatterTests.swift */; };
 		EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
@@ -338,7 +338,7 @@
 		EA95BBB81B3932B500701F08 /* MediaExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaExtension.swift; sourceTree = "<group>"; };
 		EA9A6ACF1AAFDFA2009EDD6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA9C16651B365BD700371B50 /* AsyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
-		EA9C166B1B368FD600371B50 /* VideoService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoService.swift; sourceTree = "<group>"; };
+		EA9C166B1B368FD600371B50 /* TaskService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskService.swift; sourceTree = "<group>"; };
 		EA9C166E1B3726E300371B50 /* MessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		EA9C16761B3759B700371B50 /* FormatterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatterTests.swift; sourceTree = "<group>"; };
 		EA9F353A1A74CC6900E0C65D /* Taylr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taylr.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -999,7 +999,7 @@
 			isa = PBXGroup;
 			children = (
 				EAF670991B3200E10025D7CF /* MeteorService.swift */,
-				EA9C166B1B368FD600371B50 /* VideoService.swift */,
+				EA9C166B1B368FD600371B50 /* TaskService.swift */,
 				EA2406211B50F79E003A73C3 /* VideoCache.swift */,
 			);
 			path = Services;
@@ -1442,7 +1442,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA9C166C1B368FD600371B50 /* VideoService.swift in Sources */,
+				EA9C166C1B368FD600371B50 /* TaskService.swift in Sources */,
 				EAF670771B31F9450025D7CF /* NotificationCenterExtensions.swift in Sources */,
 				EAF670881B31F9450025D7CF /* UIKitExtension.swift in Sources */,
 				EA10472C1B4E746800B1A76A /* FutureExtensions.swift in Sources */,

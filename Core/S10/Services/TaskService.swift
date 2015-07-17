@@ -11,7 +11,7 @@ import RealmSwift
 import ReactiveCocoa
 import SwiftyJSON
 
-public class VideoService {
+public class TaskService {
     
     let nc = NSNotificationCenter.defaultCenter().proxy()
     let uploadQueue = NSOperationQueue()

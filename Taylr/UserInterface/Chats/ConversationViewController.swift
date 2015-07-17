@@ -196,7 +196,7 @@ extension ConversationViewController : ProducerDelegate {
     func producer(producer: ProducerViewController, didProduceVideo url: NSURL) {
         conversationVM.recording.value = false
         Log.info("I got a video \(url)")
-        Globals.videoService.uploadVideo(conversationVM.recipient, localVideoURL: url)
+        Globals.taskService.uploadVideo(conversationVM.recipient, localVideoURL: url)
         PKHUD.hide(animated: false)
     }
 }

@@ -58,7 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
             analyticsService: AnalyticsService(env: env),
             upgradeService: UpgradeService(env: env, settings: meteor.settings),
             locationService: LocationService(meteorService: meteor),
-            videoService: VideoService(meteorService: meteor)
+            taskService: TaskService(meteorService: meteor)
         )
 
         // Startup the services
@@ -93,8 +93,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         Meteor.connectDevice(env)
         
         // Resume unfinished business
-        Globals.videoService.resumeUploads()
-        Globals.videoService.resumeDownloads()
+        Globals.taskService.resumeUploads()
+        Globals.taskService.resumeDownloads()
         
         Log.info("App Launched")
         Analytics.track("App Open")
