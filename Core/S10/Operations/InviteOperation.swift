@@ -11,25 +11,27 @@ import Core
 import SwiftyJSON
 import ReactiveCocoa
 import Alamofire
+import RealmSwift
 
 public class InviteOperation : AsyncOperation {
     let taskType: String = "INVITE"
 
     let meteor: MeteorService
+    let taskId: String
     let localVideoURL: NSURL
     let recipientFirstName: String
     let recipientLastName: String
     let recipientPhoneOrEmail: String
 
-    public init(meteor: MeteorService, localVideoURL: NSURL, recipientFirstName: String,
-        recipientLastName: String, recipientPhoneOrEmail: String) {
-            self.meteor = meteor
-            self.localVideoURL = localVideoURL
-            self.recipientFirstName = recipientFirstName
-            self.recipientLastName = recipientLastName
-            self.recipientPhoneOrEmail = recipientPhoneOrEmail
+    public init(meteor: MeteorService, task: InviteTaskEntry) {
+        self.meteor = meteor
+        taskId = task.taskId
+        localVideoURL = NSURL(task.localVideoUrl)
+        recipientFirstName = task.firstName
+        recipientLastName = task.lastName
+        recipientPhoneOrEmail = task.emailOrPhone
     }
-
+    
     public override func run() {
         let taskId = NSUUID().UUIDString
 
@@ -55,6 +57,15 @@ public class InviteOperation : AsyncOperation {
         }.subscribeError({
             self.finish(.Error($0))
         }, completed: {
+            let realm = Realm()
+            if let task = InviteTaskEntry.findByTaskId(self.taskId, realm: realm) {
+                realm.write {
+                    realm.delete(task)
+                }
+                NSFileManager().removeItemAtURL(self.localVideoURL, error: nil)
+            } else {
+                Log.error("InviteTask complete but unable to find task with taskId=\(self.taskId)")
+            }
             self.finish(.Success)
         })
     }

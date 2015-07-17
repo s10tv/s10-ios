@@ -95,6 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         // Resume unfinished business
         Globals.taskService.resumeUploads()
         Globals.taskService.resumeDownloads()
+        Globals.taskService.resumeInvites()
         
         Log.info("App Launched")
         Analytics.track("App Open")

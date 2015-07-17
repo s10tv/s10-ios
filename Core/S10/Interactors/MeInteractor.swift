@@ -19,6 +19,7 @@ public struct LinkableAccount {
 
 public class MeInteractor {
     let meteor: MeteorService
+    let taskService: TaskService
     let servicesSubscription: METSubscription
     
     public let currentUser: User
@@ -27,14 +28,14 @@ public class MeInteractor {
     public let username: Dynamic<String>
     public let linkedServices: DynamicArray<ServiceViewModel>
     public let linkableAccounts: [LinkableAccount]
-    let tempQueue = NSOperationQueue()
     
     public let inviteeFirstName = MutableProperty("")
     public let inviteeLastName = MutableProperty("")
     public let inviteeEmailOrPhone = MutableProperty("")
     
-    public init(meteor: MeteorService, currentUser: User) {
+    public init(meteor: MeteorService, taskService: TaskService, currentUser: User) {
         self.meteor = meteor
+        self.taskService = taskService
         self.currentUser = currentUser
         avatarURL = currentUser.avatarURL
         displayName = currentUser.displayName
@@ -52,24 +53,15 @@ public class MeInteractor {
     }
 
     public func sendInvite(videoURL: NSURL) -> RACFuture<(), NSError> {
-        return RACPromise { promise in
-            if self.inviteeEmailOrPhone.value.isEmpty {
-                promise.failure(NSError())
-                return
-            }
-            // TODO: Invite tasks should be saved to disk and retried until success
-            self.tempQueue.addAsyncOperation {
-                InviteOperation(meteor: self.meteor,
-                    localVideoURL: videoURL,
-                    recipientFirstName: self.inviteeFirstName.value,
-                    recipientLastName: self.inviteeLastName.value,
-                    recipientPhoneOrEmail: self.inviteeEmailOrPhone.value)
-            }.onSuccess {
-                promise.success()
-            }.onFailure {
-                promise.failure($0)
-            }
-        }.future
+        let promise = RACPromise<(), NSError>()
+        if self.inviteeEmailOrPhone.value.isEmpty {
+            promise.failure(NSError())
+            return promise.future
+        }
+        return taskService.invite(inviteeEmailOrPhone.value,
+            localVideoURL: videoURL,
+            firstName: inviteeFirstName.value,
+            lastName: inviteeLastName.value)
     }
     
     deinit {

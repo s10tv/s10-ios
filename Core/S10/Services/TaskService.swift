@@ -16,6 +16,7 @@ public class TaskService {
     let nc = NSNotificationCenter.defaultCenter().proxy()
     let uploadQueue = NSOperationQueue()
     let downloadQueue = NSOperationQueue()
+    let inviteQueue = NSOperationQueue()
     let meteorService: MeteorService
 
     public init(meteorService: MeteorService) {
@@ -96,6 +97,49 @@ public class TaskService {
                 downloadQueue.addAsyncOperation(VideoDownloadOperation(task: task))
                 }.onComplete { [weak self] _ in
                     self?.resumeDownloads()
+            }
+        }
+    }
+    
+    // MARK: - Invites
+    
+    public func invite(emailOrPhone: String, localVideoURL: NSURL, firstName: String?, lastName: String?) -> RACFuture<(), NSError> {
+        let promise = RACPromise<(), NSError>()
+        let realm = Realm()
+        realm.write {
+            let task = InviteTaskEntry()
+            task.taskId = NSUUID().UUIDString
+            task.emailOrPhone = emailOrPhone
+            task.localVideoUrl = localVideoURL.absoluteString!
+            task.firstName = firstName ?? ""
+            task.lastName = lastName ?? ""
+            realm.add(task, update: true)
+            self.inviteQueue.addAsyncOperation {
+                InviteOperation(meteor: self.meteorService, task: task)
+            }.onSuccess {
+                promise.success()
+            }.onFailure {
+                promise.failure($0)
+            }.onComplete { _ in
+                self.resumeInvites()
+            }
+        }
+        return promise.future
+    }
+    
+    public func resumeInvites() {
+        let queuedTaskIds = Set(inviteQueue.operations
+            .map { $0 as! InviteOperation }
+            .map { $0.taskId }
+        )
+        for task in Realm().objects(InviteTaskEntry) {
+            if queuedTaskIds.contains(task.taskId) {
+                continue
+            }
+            inviteQueue.addAsyncOperation {
+                InviteOperation(meteor: self.meteorService, task: task)
+            }.onComplete { [weak self] _ in
+                self?.resumeInvites()
             }
         }
     }

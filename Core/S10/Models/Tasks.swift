@@ -11,7 +11,7 @@ import ReactiveCocoa
 import RealmSwift
 
 public class VideoUploadTaskEntry : Object {
-    dynamic var id = ""
+    dynamic var id = "" // taskID
     dynamic var recipientId = ""
     dynamic var localURL = ""
 
@@ -59,10 +59,16 @@ public class VideoDownloadTaskEntry : Object {
 }
 
 public class InviteTaskEntry : Object {
+    dynamic var taskId = ""
     dynamic var localVideoUrl = ""
     dynamic var firstName = ""
     dynamic var lastName = ""
     dynamic var emailOrPhone = ""
+    
+    public class func findByTaskId(taskId: String, realm: Realm = Realm()) -> InviteTaskEntry? {
+        let pred = NSPredicate(format: "taskId = %@", taskId)
+        return realm.objects(self).filter(pred).first
+    }
     
     public class func countInvites(realm: Realm = Realm()) -> Int {
         return realm.objects(self).count
