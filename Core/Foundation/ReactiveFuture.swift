@@ -15,10 +15,11 @@ public struct RACPromise<T, E: ErrorType> {
     private let sink: SinkOf<Event<T, E>>
     public let future: RACFuture<T, E>
     
-    public init() {
+    public init(_ block: ((RACPromise<T, E>) -> ())? = nil) {
         let (buffer, sink) = SignalProducer<T, E>.buffer(1)
         self.sink = sink
         future = RACFuture(buffer: buffer)
+        block?(self)
     }
     
     public func complete(result: Result<T, E>) {
@@ -37,6 +38,12 @@ public struct RACPromise<T, E: ErrorType> {
     
     public func failure(error: E) {
         complete(Result(error: error))
+    }
+    
+    public static func create<T, E: ErrorType>(@noescape block: (RACPromise<T, E> -> ())) -> RACFuture<T, E> {
+        let promise = RACPromise<T, E>()
+        block(promise)
+        return promise.future
     }
 }
 

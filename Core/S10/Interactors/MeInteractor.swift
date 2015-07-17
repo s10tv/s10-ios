@@ -9,6 +9,7 @@
 import Foundation
 import Bond
 import Meteor
+import ReactiveCocoa
 
 public struct LinkableAccount {
     public let type: Service.ServiceType
@@ -26,6 +27,11 @@ public class MeInteractor {
     public let username: Dynamic<String>
     public let linkedServices: DynamicArray<ServiceViewModel>
     public let linkableAccounts: [LinkableAccount]
+    let tempQueue = NSOperationQueue()
+    
+    public let inviteeFirstName = MutableProperty("")
+    public let inviteeLastName = MutableProperty("")
+    public let inviteeEmailOrPhone = MutableProperty("")
     
     public init(meteor: MeteorService, currentUser: User) {
         self.meteor = meteor
@@ -43,6 +49,27 @@ public class MeInteractor {
             LinkableAccount(type: .Github, name: "Github", icon: UIImage(named: "ic-github"))
         ]
         servicesSubscription = meteor.subscribeServices(currentUser)
+    }
+
+    public func sendInvite(videoURL: NSURL) -> RACFuture<(), NSError> {
+        return RACPromise { promise in
+            if self.inviteeEmailOrPhone.value.isEmpty {
+                promise.failure(NSError())
+                return
+            }
+            // TODO: Invite tasks should be saved to disk and retried until success
+            self.tempQueue.addAsyncOperation {
+                InviteOperation(meteor: self.meteor,
+                    localVideoURL: videoURL,
+                    recipientFirstName: self.inviteeFirstName.value,
+                    recipientLastName: self.inviteeLastName.value,
+                    recipientPhoneOrEmail: self.inviteeEmailOrPhone.value)
+            }.onSuccess {
+                promise.success()
+            }.onFailure {
+                promise.failure($0)
+            }
+        }.future
     }
     
     deinit {
