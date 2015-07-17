@@ -58,12 +58,14 @@ public class VideoDownloadTaskEntry : Object {
     }
 }
 
+// TODO: Do not store absolute path to local files in the database because they contain
+// uuid of the sandbox which might sometimes change after application upgrade
 public class InviteTaskEntry : Object {
-    dynamic var taskId = ""
-    dynamic var localVideoUrl = ""
-    dynamic var firstName = ""
-    dynamic var lastName = ""
-    dynamic var emailOrPhone = ""
+    public dynamic var taskId = ""
+    public dynamic var localVideoUrl = ""
+    public dynamic var firstName = ""
+    public dynamic var lastName = ""
+    public dynamic var emailOrPhone = ""
     
     override public static func primaryKey() -> String? {
         return "taskId"

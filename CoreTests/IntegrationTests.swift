@@ -201,11 +201,13 @@ class IntegrationTests : XCTestCase {
 
         whileAuthenticated {
             let subject = RACReplaySubject()
-            let upload = InviteOperation(meteor: self.meteor,
-                localVideoURL: url!,
-                recipientFirstName: "test", // don't rename. else server will actually send email
-                recipientLastName: "Fang",
-                recipientPhoneOrEmail: "qf26@cornell.edu")
+            let task = InviteTaskEntry()
+            task.taskId = NSUUID().UUIDString
+            task.localVideoUrl = url!.absoluteString!
+            task.firstName = "test" // don't rename. else server will actually send email
+            task.lastName = "Fang"
+            task.emailOrPhone = "qf26@cornell.edu"
+            let upload = InviteOperation(meteor: self.meteor, task: task)
             upload.completionBlock = {
                 switch upload.result! {
                 case .Success:
@@ -229,11 +231,13 @@ class IntegrationTests : XCTestCase {
 
         whileAuthenticated {
             let subject = RACReplaySubject()
-            let upload = InviteOperation(meteor: self.meteor,
-                localVideoURL: url!,
-                recipientFirstName: "test", // don't rename. else server will actually send text
-                recipientLastName: "Fang",
-                recipientPhoneOrEmail: "6172596512")
+            let task = InviteTaskEntry()
+            task.taskId = NSUUID().UUIDString
+            task.localVideoUrl = url!.absoluteString!
+            task.firstName = "test" // don't rename. else server will actually send email
+            task.lastName = "Fang"
+            task.emailOrPhone = "qf26@cornell.edu"
+            let upload = InviteOperation(meteor: self.meteor, task: task)
             upload.completionBlock = {
                 switch upload.result! {
                 case .Success:

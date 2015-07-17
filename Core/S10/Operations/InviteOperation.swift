@@ -19,26 +19,24 @@ public class InviteOperation : AsyncOperation {
     let meteor: MeteorService
     let taskId: String
     let localVideoURL: NSURL
-    let recipientFirstName: String
-    let recipientLastName: String
-    let recipientPhoneOrEmail: String
+    let firstName: String
+    let lastName: String
+    let emailOrPhone: String
 
     public init(meteor: MeteorService, task: InviteTaskEntry) {
         self.meteor = meteor
         taskId = task.taskId
         localVideoURL = NSURL(task.localVideoUrl)
-        recipientFirstName = task.firstName
-        recipientLastName = task.lastName
-        recipientPhoneOrEmail = task.emailOrPhone
+        firstName = task.firstName
+        lastName = task.lastName
+        emailOrPhone = task.emailOrPhone
     }
     
     public override func run() {
-        let taskId = NSUUID().UUIDString
-
         let metadata = [
-            "to": self.recipientPhoneOrEmail,
-            "firstName": self.recipientFirstName,
-            "lastName": self.recipientLastName
+            "to": emailOrPhone,
+            "firstName": firstName,
+            "lastName": lastName
         ]
 
         meteor.startTask(taskId, type: taskType, metadata: metadata).flattenMap {
@@ -51,7 +49,7 @@ public class InviteOperation : AsyncOperation {
             return Alamofire.upload(request, self.localVideoURL).rac_statuscode()
         }.flattenMap {
             if let code = $0 as? Int where code >= 200 && code < 300 {
-                return self.meteor.finishTask(taskId)
+                return self.meteor.finishTask(self.taskId)
             }
             return RACSignal.error(NSError(domain: "Azure", code: $0 as! Int, userInfo: nil))
         }.subscribeError({
