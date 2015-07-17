@@ -57,3 +57,18 @@ public class VideoDownloadTaskEntry : Object {
         return Realm().notifier() |> map { _ in self.countDownloads(senderId) }
     }
 }
+
+public class InviteTaskEntry : Object {
+    dynamic var localVideoUrl = ""
+    dynamic var firstName = ""
+    dynamic var lastName = ""
+    dynamic var emailOrPhone = ""
+    
+    public class func countInvites(realm: Realm = Realm()) -> Int {
+        return realm.objects(self).count
+    }
+    
+    public class func countOfInvites() -> SignalProducer<Int, NoError> {
+        return Realm().notifier() |> map { _ in self.countInvites() }
+    }
+}
