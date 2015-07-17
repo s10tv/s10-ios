@@ -65,6 +65,10 @@ public class InviteTaskEntry : Object {
     dynamic var lastName = ""
     dynamic var emailOrPhone = ""
     
+    override public static func primaryKey() -> String? {
+        return "taskId"
+    }
+    
     public class func findByTaskId(taskId: String, realm: Realm = Realm()) -> InviteTaskEntry? {
         let pred = NSPredicate(format: "taskId = %@", taskId)
         return realm.objects(self).filter(pred).first
