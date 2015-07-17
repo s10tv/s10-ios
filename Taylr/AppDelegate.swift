@@ -36,9 +36,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Configure the environment
         let env = TaylrEnvironment.configureFromEmbeddedProvisioningProfile()
+        // Initialize Ouralabs before Crashlytics so crashlytics handler
+        // so Crashlytics handler does not get overwritten
+        Ouralabs.initWithKey(env.ouralabsKey)
         Fabric.with([Digits(), Crashlytics()])
         
-        Ouralabs.initWithKey(env.ouralabsKey)
         Log.callback = { msg, level in
             Ouralabs.log(.Info, tag: "Test", message: msg, kvp: nil)
         }
