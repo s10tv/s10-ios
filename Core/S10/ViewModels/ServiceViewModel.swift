@@ -24,6 +24,7 @@ public struct ServiceViewModel {
                 case .Facebook: return "Facebook"
                 case .Instagram: return "Instagram"
                 case .Github: return "Github"
+                case .Twitter: return "Twitter"
                 }
             }
             return ""
@@ -35,6 +36,7 @@ public struct ServiceViewModel {
                 case .Facebook: return UIImage(named: "ic-facebook")
                 case .Instagram: return UIImage(named: "ic-instagram")
                 case .Github: return UIImage(named: "ic-github")
+                case .Twitter: return UIImage(named: "ic-twitter")
                 }
             }
             return nil

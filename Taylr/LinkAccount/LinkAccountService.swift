@@ -33,6 +33,8 @@ class LinkAccountService {
             return linkInstagram(authWebVC: useWebView ? makeAuthWebVC() : nil)
         case .Github:
             return linkGithub(authWebVC: useWebView ? makeAuthWebVC() : nil)
+        case .Twitter:
+            return RACSignal.empty()
         }
     }
 

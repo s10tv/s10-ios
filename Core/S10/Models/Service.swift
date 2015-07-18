@@ -14,6 +14,7 @@ public class Service : _Service {
     case Facebook = "facebook"
     case Instagram = "instagram"
     case Github = "github"
+    case Twitter = "twitter"
     }
     
     public private(set) lazy var dynUserDisplayName: Dynamic<String?> = {
