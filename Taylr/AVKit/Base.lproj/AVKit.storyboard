@@ -142,6 +142,19 @@
                                     <action selector="didTapPlayOrPause:" destination="rTJ-l0-lHc" eventType="touchUpInside" id="Cht-Ui-oyb"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mk-p7-037" userLabel="Skip">
+                                <rect key="frame" x="520" y="270" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="XQW-QR-jns"/>
+                                    <constraint firstAttribute="width" constant="80" id="Y5P-dB-RKB"/>
+                                </constraints>
+                                <state key="normal" image="ic-skip">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapSkip:" destination="rTJ-l0-lHc" eventType="touchUpInside" id="6Ac-W1-CyD"/>
+                                </connections>
+                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="b6o-4m-xPz">
                                 <rect key="frame" x="8" y="542" width="50" height="50"/>
                                 <constraints>
@@ -165,19 +178,6 @@
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <size key="shadowOffset" width="1" height="1"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mk-p7-037" userLabel="Skip">
-                                <rect key="frame" x="520" y="270" width="80" height="80"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="80" id="XQW-QR-jns"/>
-                                    <constraint firstAttribute="width" constant="80" id="Y5P-dB-RKB"/>
-                                </constraints>
-                                <state key="normal" image="ic-skip">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="didTapSkip:" destination="rTJ-l0-lHc" eventType="touchUpInside" id="6Ac-W1-CyD"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -208,6 +208,9 @@
                         <outlet property="playerView" destination="RFF-jQ-Kok" id="dDw-6V-kYh"/>
                         <outlet property="progressView" destination="DQV-th-jma" id="aYH-i8-MVg"/>
                         <outlet property="timestampLabel" destination="jf7-ly-dLo" id="5Ma-rK-hPj"/>
+                        <outletCollection property="playbackControls" destination="5p3-YQ-26h" collectionClass="NSMutableArray" id="Cyr-uq-XSR"/>
+                        <outletCollection property="playbackControls" destination="wgu-FP-Yqj" collectionClass="NSMutableArray" id="9V9-Bw-N1d"/>
+                        <outletCollection property="playbackControls" destination="3mk-p7-037" collectionClass="NSMutableArray" id="nna-nM-nJ6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uFR-IP-tYk" userLabel="First Responder" sceneMemberID="firstResponder"/>

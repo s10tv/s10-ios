@@ -23,6 +23,8 @@ class PlayerViewController : UIViewController {
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var playPauseButton: UIButton!
     
+    @IBOutlet var playbackControls: [UIButton]!
+    
     var interactor: PlayerInteractor!
     var player: SCPlayer { return playerView.player! }
     lazy var videoURLBond: Bond<NSURL?> = {
@@ -57,13 +59,15 @@ class PlayerViewController : UIViewController {
         interactor.timestampText ->> timestampLabel
         interactor.durationText ->> durationLabel
         interactor.currentPercent ->> progressView
-        interactor.isPlaying ->> playPauseButton.dynHidden
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         player.beginSendingPlayMessages()
         interactor.playNextVideo()
+//        playbackControls.each {
+//            $0.setHiddenAnimated(hidden: true, duration: 0.5, delay: 1)
+//        }
     }
     
     override func viewDidDisappear(animated: Bool) {
