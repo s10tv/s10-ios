@@ -9,8 +9,6 @@
 import Foundation
 import SCRecorder
 
-
-
 class AVKit {
     static let defaultFilters = AVKit.allFilters()
     
@@ -29,4 +27,15 @@ class AVKit {
             emptyFilter,
         ]
     }
+}
+
+struct PlayerVideoViewModel {
+    let url: NSURL
+    let duration: NSTimeInterval
+    let timestamp: NSDate
+    let avatarURL: NSURL
+}
+
+class PlayerInteractor {
+    var videos: [PlayerVideoViewModel] = []
 }

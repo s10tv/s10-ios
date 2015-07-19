@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="B5O-Nb-tlk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="B5O-Nb-tlk">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="TransatTextStandard.otf">
+            <string>TransatTextStandard</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Producer View Controller-->
         <scene sceneID="KVl-aQ-lmO">
@@ -16,7 +22,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CgU-v0-x1p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-58" y="249"/>
+            <point key="canvasLocation" x="-946" y="1082"/>
         </scene>
         <!--Editor View Controller-->
         <scene sceneID="6PV-4o-iXN">
@@ -85,6 +91,105 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQY-Y5-Atw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="405" y="1082"/>
+        </scene>
+        <!--Player View Controller-->
+        <scene sceneID="cY1-yM-ghH">
+            <objects>
+                <viewController storyboardIdentifier="Player" id="rTJ-l0-lHc" customClass="PlayerViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="3ra-S8-UUG"/>
+                        <viewControllerLayoutGuide type="bottom" id="CMP-Tk-LYc"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mky-an-EVL">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RFF-jQ-Kok" customClass="SCVideoPlayerView">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5p3-YQ-26h" userLabel="Rewind">
+                                <rect key="frame" x="20" y="298" width="24" height="24"/>
+                                <state key="normal" image="ic-rewind">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapRewind:" destination="rTJ-l0-lHc" eventType="touchUpInside" id="JU2-GH-Nwk"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wgu-FP-Yqj" userLabel="Play / Pause">
+                                <rect key="frame" x="288" y="298" width="24" height="24"/>
+                                <state key="normal" image="ic-play">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapPlayOrPause:" destination="rTJ-l0-lHc" eventType="touchUpInside" id="Cht-Ui-oyb"/>
+                                </connections>
+                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="b6o-4m-xPz">
+                                <rect key="frame" x="8" y="542" width="50" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="b6o-4m-xPz" secondAttribute="height" multiplier="1:1" id="M9I-TY-Lcs"/>
+                                    <constraint firstAttribute="width" constant="50" id="xra-c4-LeE"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10m" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jf7-ly-dLo">
+                                <rect key="frame" x="66" y="558" width="31" height="18"/>
+                                <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="shadowOffset" width="1" height="1"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AmD-xc-WPD" userLabel="Duration">
+                                <rect key="frame" x="564" y="36" width="20" height="22"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <size key="shadowOffset" width="1" height="1"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mk-p7-037" userLabel="Skip">
+                                <rect key="frame" x="556" y="298" width="24" height="24"/>
+                                <state key="normal" image="ic-skip">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapSkip:" destination="rTJ-l0-lHc" eventType="touchUpInside" id="6Ac-W1-CyD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="RFF-jQ-Kok" firstAttribute="trailing" secondItem="3mk-p7-037" secondAttribute="trailing" constant="20" id="2mH-TL-07f"/>
+                            <constraint firstItem="RFF-jQ-Kok" firstAttribute="leading" secondItem="Mky-an-EVL" secondAttribute="leading" id="8xx-xQ-7YE"/>
+                            <constraint firstItem="CMP-Tk-LYc" firstAttribute="top" secondItem="RFF-jQ-Kok" secondAttribute="bottom" id="IHV-ad-GP7"/>
+                            <constraint firstItem="RFF-jQ-Kok" firstAttribute="bottom" secondItem="b6o-4m-xPz" secondAttribute="bottom" constant="8" id="NJd-pE-CQz"/>
+                            <constraint firstItem="RFF-jQ-Kok" firstAttribute="centerX" secondItem="wgu-FP-Yqj" secondAttribute="centerX" id="U4f-Nd-RhU"/>
+                            <constraint firstItem="jf7-ly-dLo" firstAttribute="centerY" secondItem="b6o-4m-xPz" secondAttribute="centerY" id="boL-9U-AN5"/>
+                            <constraint firstItem="RFF-jQ-Kok" firstAttribute="top" secondItem="3ra-S8-UUG" secondAttribute="bottom" id="cmo-Hs-usD"/>
+                            <constraint firstItem="RFF-jQ-Kok" firstAttribute="centerY" secondItem="wgu-FP-Yqj" secondAttribute="centerY" id="dcb-ol-uzG"/>
+                            <constraint firstAttribute="trailing" secondItem="RFF-jQ-Kok" secondAttribute="trailing" id="kDa-4V-ANo"/>
+                            <constraint firstItem="5p3-YQ-26h" firstAttribute="leading" secondItem="RFF-jQ-Kok" secondAttribute="leading" constant="20" id="kdR-yx-NgN"/>
+                            <constraint firstItem="RFF-jQ-Kok" firstAttribute="centerY" secondItem="3mk-p7-037" secondAttribute="centerY" id="rOQ-Bi-ZjA"/>
+                            <constraint firstItem="RFF-jQ-Kok" firstAttribute="trailing" secondItem="AmD-xc-WPD" secondAttribute="trailing" constant="16" id="rRn-5M-iMm"/>
+                            <constraint firstItem="jf7-ly-dLo" firstAttribute="leading" secondItem="b6o-4m-xPz" secondAttribute="trailing" constant="8" symbolic="YES" id="rvC-kR-I7f"/>
+                            <constraint firstItem="b6o-4m-xPz" firstAttribute="leading" secondItem="RFF-jQ-Kok" secondAttribute="leading" constant="8" id="uY1-Z3-uUv"/>
+                            <constraint firstItem="AmD-xc-WPD" firstAttribute="top" secondItem="RFF-jQ-Kok" secondAttribute="top" constant="16" id="ykS-bn-qy5"/>
+                            <constraint firstItem="5p3-YQ-26h" firstAttribute="centerY" secondItem="RFF-jQ-Kok" secondAttribute="centerY" id="yuS-97-HCd"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="avatarView" destination="b6o-4m-xPz" id="C2e-hg-XF3"/>
+                        <outlet property="playPauseButton" destination="wgu-FP-Yqj" id="8zs-Co-0nm"/>
+                        <outlet property="playerView" destination="RFF-jQ-Kok" id="dDw-6V-kYh"/>
+                        <outlet property="timestampLabel" destination="jf7-ly-dLo" id="5Ma-rK-hPj"/>
+                        <outlet property="totalDurationLabel" destination="AmD-xc-WPD" id="qCg-2i-o3A"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uFR-IP-tYk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-316" y="413"/>
         </scene>
         <!--Recorder View Controller-->
         <scene sceneID="RK2-8S-S6h">
@@ -161,6 +266,10 @@
         <image name="ic-camera-flip" width="39" height="30"/>
         <image name="ic-capture" width="83" height="84"/>
         <image name="ic-close" width="28" height="28"/>
+        <image name="ic-play" width="24" height="24"/>
+        <image name="ic-rewind" width="21" height="24"/>
         <image name="ic-save" width="38" height="39"/>
+        <image name="ic-skip" width="21" height="24"/>
+        <image name="sample-taylor-avatar" width="66" height="67"/>
     </resources>
 </document>

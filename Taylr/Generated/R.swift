@@ -164,12 +164,16 @@ public enum R {
         case icClose = "ic-close"
         /// ic-disclosure
         case icDisclosure = "ic-disclosure"
+        /// ic-edit
+        case icEdit = "ic-edit"
         /// ic-edit-text
         case icEditText = "ic-edit-text"
         /// ic-facebook
         case icFacebook = "ic-facebook"
         /// ic-flag
         case icFlag = "ic-flag"
+        /// ic-github
+        case icGithub = "ic-github"
         /// ic-home
         case icHome = "ic-home"
         /// ic-instagram
@@ -184,12 +188,18 @@ public enum R {
         case icMore = "ic-more"
         /// ic-mute
         case icMute = "ic-mute"
+        /// ic-pause
+        case icPause = "ic-pause"
         /// ic-people
         case icPeople = "ic-people"
         /// ic-play
         case icPlay = "ic-play"
+        /// ic-rewind
+        case icRewind = "ic-rewind"
         /// ic-save
         case icSave = "ic-save"
+        /// ic-skip
+        case icSkip = "ic-skip"
         /// ic-twitter
         case icTwitter = "ic-twitter"
         /// ic-upvote

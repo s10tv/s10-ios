@@ -11,6 +11,8 @@
 		640DB2B4B8DE9B8DDC392B01 /* Pods_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28970C9FC888535D277B71D5 /* Pods_Core.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		C0694BB32891795853D2C3CF /* Pods_Core_TestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F09ED94DDC00446577DFD4 /* Pods_Core_TestApp.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D6555C3D41C17908B83EB27C /* Pods_Core_Taylr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1D48B38C28B60559AEB8949 /* Pods_Core_Taylr.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		EA03D3371B5B2C58007A0CF7 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA03D3361B5B2C58007A0CF7 /* PlayerViewController.swift */; };
+		EA03D3381B5B368E007A0CF7 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA03D3361B5B2C58007A0CF7 /* PlayerViewController.swift */; };
 		EA06AAB81B3B2D2B000E128C /* PKHUDExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBAB1B3930B000701F08 /* PKHUDExtension.swift */; };
 		EA06AAB91B3B2D8F000E128C /* ResourceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBAC1B3930B000701F08 /* ResourceExtension.swift */; };
 		EA0C8C871B55DA1E00C2FB0A /* EditProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0C8C861B55DA1E00C2FB0A /* EditProfileInteractor.swift */; };
@@ -252,6 +254,7 @@
 		8E0110CE5A12BB3B852FE247 /* Pods-Core-TestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core-TestApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Core-TestApp/Pods-Core-TestApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A80ED835405D6C980CF3F31B /* Pods-Core-CoreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core-CoreTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Core-CoreTests/Pods-Core-CoreTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C97F216A216ACE06C7336869 /* Pods-Core-Taylr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core-Taylr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Core-Taylr/Pods-Core-Taylr.release.xcconfig"; sourceTree = "<group>"; };
+		EA03D3361B5B2C58007A0CF7 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		EA0C8C861B55DA1E00C2FB0A /* EditProfileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileInteractor.swift; sourceTree = "<group>"; };
 		EA0C8C881B55DA2E00C2FB0A /* EditProfileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileTests.swift; sourceTree = "<group>"; };
 		EA0C8C8A1B56DAAE00C2FB0A /* ReactiveFuture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveFuture.swift; sourceTree = "<group>"; };
@@ -1012,6 +1015,7 @@
 				EAF81B221B33388700EED6DD /* ProducerViewController.swift */,
 				EAF81B241B33389500EED6DD /* RecorderViewController.swift */,
 				EAF81B261B33391000EED6DD /* EditorViewController.swift */,
+				EA03D3361B5B2C58007A0CF7 /* PlayerViewController.swift */,
 				EAF81B301B3388C600EED6DD /* TouchDetector.swift */,
 				EAF81B371B3395E700EED6DD /* AVKit.swift */,
 			);
@@ -1435,6 +1439,7 @@
 				EA06AAB91B3B2D8F000E128C /* ResourceExtension.swift in Sources */,
 				EAF81B341B33890300EED6DD /* SBConstants.swift in Sources */,
 				EA5B740B1B30F7BB008E5CBC /* TestAppDelegate.swift in Sources */,
+				EA03D3381B5B368E007A0CF7 /* PlayerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1521,6 +1526,7 @@
 				EA1047301B4E74D000B1A76A /* ReactiveProperties.swift in Sources */,
 				EA376CB21B505FCD00C819E9 /* LinkAccountService.swift in Sources */,
 				EAE1E07B1AE34C6200F03F13 /* LocationService.swift in Sources */,
+				EA03D3371B5B2C58007A0CF7 /* PlayerViewController.swift in Sources */,
 				EA7134121B56E47100B810F6 /* ImagePickerExtensions.swift in Sources */,
 				EAF81B231B33388700EED6DD /* ProducerViewController.swift in Sources */,
 				EA6650ED1AA00A9C001BA40C /* AccountService.swift in Sources */,

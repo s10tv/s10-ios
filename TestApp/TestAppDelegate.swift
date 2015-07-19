@@ -17,7 +17,6 @@ class TestAppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        let task = Task(clientId: "", type: "")
         return true
     }
 
