@@ -13,10 +13,32 @@ import Core
 class TestAppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
+    func showPlayer() {
+        let videos = [PlayerVideoViewModel(
+            url: NSURL(string: "https://v.cdn.vine.co/r/videos/5B77925E891217906329730072576_3e987288317.3.3.11608692995557014311.mp4")!,
+            duration: 5,
+            timestamp: NSDate(),
+            avatarURL: NSURL(string: "https://s10tv.blob.core.windows.net/s10tv-dev/e9iNi8Xt6riZ2rDq4/profilepic/503F4409-0938-42F1-8691-772023E24915/CfRwWcJt7PEKg5hyN.jpg")!
+        ), PlayerVideoViewModel(
+            url: NSURL(string: "https://v.cdn.vine.co/r/videos/89F94EC3621216192216171937792_3476958eaf4.3.3.9427939328810040060.mp4")!,
+            duration: 5,
+            timestamp: NSDate(),
+            avatarURL: NSURL(string: "https://s10tv.blob.core.windows.net/s10tv-dev/e9iNi8Xt6riZ2rDq4/profilepic/503F4409-0938-42F1-8691-772023E24915/CfRwWcJt7PEKg5hyN.jpg")!
+        )]
+        
+        let sb = UIStoryboard(name: "AVKit", bundle: nil)
+        let player = sb.instantiateViewControllerWithIdentifier("Player") as! PlayerViewController
+        player.interactor = PlayerInteractor()
+        player.interactor.videoQueue = videos
+        
+        let root = UINavigationController(rootViewController: player)
+        window?.rootViewController = root
+    }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        showPlayer() 
         return true
     }
 

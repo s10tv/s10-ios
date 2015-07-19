@@ -8,6 +8,7 @@
 
 import Foundation
 import SCRecorder
+import ReactiveCocoa
 
 class AVKit {
     static let defaultFilters = AVKit.allFilters()
@@ -37,5 +38,19 @@ struct PlayerVideoViewModel {
 }
 
 class PlayerInteractor {
-    var videos: [PlayerVideoViewModel] = []
+    var videoQueue: [PlayerVideoViewModel] = []
+    private let _currentVideo = MutableProperty<PlayerVideoViewModel?>(nil)
+    let currentVideo: PropertyOf<PlayerVideoViewModel?>
+    
+    init() {
+        currentVideo = PropertyOf(_currentVideo)
+    }
+    
+    func playNextVideo() {
+        if videoQueue.count > 0 {
+            _currentVideo.value = videoQueue.removeAtIndex(0)
+        } else {
+            _currentVideo.value = nil
+        }
+    }
 }

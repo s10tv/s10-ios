@@ -166,6 +166,7 @@ extension UIImage {
         return scaleToSize(scaledSize, pixelSize: pixelSize)
     }
     
+    
     public func scaleToSize(newSize: CGSize, pixelSize: Bool = false) -> UIImage {
         UIGraphicsBeginImageContext(newSize)
         // In next line, pass 0.0 to use the current device's pixel scaling factor (and thus account for Retina resolution).
@@ -175,6 +176,16 @@ extension UIImage {
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return newImage
+    }
+    
+    public class func imageWithColor(color: UIColor, size: CGSize = CGSizeMake(1, 1)) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, true, 0)
+        let context = UIGraphicsGetCurrentContext()
+        color.setFill()
+        CGContextFillRect(context, CGRectMake(0, 0, size.width, size.height))
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
     }
 }
 
