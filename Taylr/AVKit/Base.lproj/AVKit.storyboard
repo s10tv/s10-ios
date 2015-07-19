@@ -108,8 +108,20 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5p3-YQ-26h" userLabel="Rewind">
-                                <rect key="frame" x="20" y="298" width="24" height="24"/>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="DQV-th-jma">
+                                <rect key="frame" x="559" y="62" width="30" height="2"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="FXf-WC-DLD"/>
+                                </constraints>
+                                <color key="progressTintColor" red="0.61960784310000006" green="0.4941176471" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="trackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </progressView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5p3-YQ-26h" userLabel="Rewind">
+                                <rect key="frame" x="0.0" y="270" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="SJy-8Q-wmn"/>
+                                    <constraint firstAttribute="width" constant="80" id="fVf-c0-Bnl"/>
+                                </constraints>
                                 <state key="normal" image="ic-rewind">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -118,7 +130,11 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wgu-FP-Yqj" userLabel="Play / Pause">
-                                <rect key="frame" x="288" y="298" width="24" height="24"/>
+                                <rect key="frame" x="260" y="270" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="Kn8-8d-8Dk"/>
+                                    <constraint firstAttribute="width" constant="80" id="rn1-j4-FHF"/>
+                                </constraints>
                                 <state key="normal" image="ic-play">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -149,8 +165,12 @@
                                 <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <size key="shadowOffset" width="1" height="1"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mk-p7-037" userLabel="Skip">
-                                <rect key="frame" x="556" y="298" width="24" height="24"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3mk-p7-037" userLabel="Skip">
+                                <rect key="frame" x="520" y="270" width="80" height="80"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="XQW-QR-jns"/>
+                                    <constraint firstAttribute="width" constant="80" id="Y5P-dB-RKB"/>
+                                </constraints>
                                 <state key="normal" image="ic-skip">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -161,16 +181,18 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="RFF-jQ-Kok" firstAttribute="trailing" secondItem="3mk-p7-037" secondAttribute="trailing" constant="20" id="2mH-TL-07f"/>
+                            <constraint firstItem="DQV-th-jma" firstAttribute="top" secondItem="AmD-xc-WPD" secondAttribute="bottom" constant="4" id="2VK-43-DBd"/>
+                            <constraint firstItem="RFF-jQ-Kok" firstAttribute="trailing" secondItem="3mk-p7-037" secondAttribute="trailing" id="2mH-TL-07f"/>
                             <constraint firstItem="RFF-jQ-Kok" firstAttribute="leading" secondItem="Mky-an-EVL" secondAttribute="leading" id="8xx-xQ-7YE"/>
                             <constraint firstItem="CMP-Tk-LYc" firstAttribute="top" secondItem="RFF-jQ-Kok" secondAttribute="bottom" id="IHV-ad-GP7"/>
                             <constraint firstItem="RFF-jQ-Kok" firstAttribute="bottom" secondItem="b6o-4m-xPz" secondAttribute="bottom" constant="8" id="NJd-pE-CQz"/>
                             <constraint firstItem="RFF-jQ-Kok" firstAttribute="centerX" secondItem="wgu-FP-Yqj" secondAttribute="centerX" id="U4f-Nd-RhU"/>
                             <constraint firstItem="jf7-ly-dLo" firstAttribute="centerY" secondItem="b6o-4m-xPz" secondAttribute="centerY" id="boL-9U-AN5"/>
+                            <constraint firstItem="DQV-th-jma" firstAttribute="centerX" secondItem="AmD-xc-WPD" secondAttribute="centerX" id="cOx-IP-HNW"/>
                             <constraint firstItem="RFF-jQ-Kok" firstAttribute="top" secondItem="3ra-S8-UUG" secondAttribute="bottom" id="cmo-Hs-usD"/>
                             <constraint firstItem="RFF-jQ-Kok" firstAttribute="centerY" secondItem="wgu-FP-Yqj" secondAttribute="centerY" id="dcb-ol-uzG"/>
                             <constraint firstAttribute="trailing" secondItem="RFF-jQ-Kok" secondAttribute="trailing" id="kDa-4V-ANo"/>
-                            <constraint firstItem="5p3-YQ-26h" firstAttribute="leading" secondItem="RFF-jQ-Kok" secondAttribute="leading" constant="20" id="kdR-yx-NgN"/>
+                            <constraint firstItem="5p3-YQ-26h" firstAttribute="leading" secondItem="RFF-jQ-Kok" secondAttribute="leading" id="kdR-yx-NgN"/>
                             <constraint firstItem="RFF-jQ-Kok" firstAttribute="centerY" secondItem="3mk-p7-037" secondAttribute="centerY" id="rOQ-Bi-ZjA"/>
                             <constraint firstItem="RFF-jQ-Kok" firstAttribute="trailing" secondItem="AmD-xc-WPD" secondAttribute="trailing" constant="16" id="rRn-5M-iMm"/>
                             <constraint firstItem="jf7-ly-dLo" firstAttribute="leading" secondItem="b6o-4m-xPz" secondAttribute="trailing" constant="8" symbolic="YES" id="rvC-kR-I7f"/>
@@ -181,10 +203,11 @@
                     </view>
                     <connections>
                         <outlet property="avatarView" destination="b6o-4m-xPz" id="C2e-hg-XF3"/>
+                        <outlet property="durationLabel" destination="AmD-xc-WPD" id="In6-ZL-nxf"/>
                         <outlet property="playPauseButton" destination="wgu-FP-Yqj" id="8zs-Co-0nm"/>
                         <outlet property="playerView" destination="RFF-jQ-Kok" id="dDw-6V-kYh"/>
+                        <outlet property="progressView" destination="DQV-th-jma" id="aYH-i8-MVg"/>
                         <outlet property="timestampLabel" destination="jf7-ly-dLo" id="5Ma-rK-hPj"/>
-                        <outlet property="totalDurationLabel" destination="AmD-xc-WPD" id="qCg-2i-o3A"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uFR-IP-tYk" userLabel="First Responder" sceneMemberID="firstResponder"/>

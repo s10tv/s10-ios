@@ -9,46 +9,67 @@
 import Foundation
 import SCRecorder
 import Async
+import Bond
+import Core
 
 class PlayerViewController : UIViewController {
 
     @IBOutlet weak var playerView: SCVideoPlayerView!
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var timestampLabel: UILabel!
-    @IBOutlet weak var totalDurationLabel: UILabel!
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var playPauseButton: UIButton!
     
-    var player: SCPlayer { return playerView.player! }
     var interactor: PlayerInteractor!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        playerView.tapToPauseEnabled = true
-        playerView.playerLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill
-        playerView.delegate = self
-        player.delegate = self
-        interactor.currentVideo.producer.start(next: { [weak self] in
+    var player: SCPlayer { return playerView.player! }
+    lazy var videoURLBond: Bond<NSURL?> = {
+        return Bond<NSURL?> {
             // NOTE: Despite the fact that we are on main thread it appears that
             // because MutableProperty dispatch_sync to a different queue
             // AVPlayer.setItemByUrl ends up being a no-op. I can't explain it but
             // dispatching it again to main thread works around this issue.
             // the temp variable video is needed to avoid compiler crash
-            let video = $0
+            let videoURL = $0
             Async.main {
-                println("Playing video at url \(video?.url)")
-                self?.player.setItemByUrl(video?.url)
-                self?.player.play()
+                Log.info("Playing video at url \(videoURL)")
+                self.player.setItemByUrl(videoURL)
+                self.player.play()
             }
-        })
+        }
+    }()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        avatarView.makeCircular()
+        playerView.tapToPauseEnabled = true
+        playerView.playerLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill
+        playerView.delegate = self
+        player.delegate = self
+        
+        interactor.videoURL ->> videoURLBond
+        interactor.avatarURL ->> avatarView.dynImageURL
+        interactor.timestampText ->> timestampLabel
+        interactor.durationText ->> durationLabel
+        interactor.currentPercent ->> progressView
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        player.beginSendingPlayMessages()
         interactor.playNextVideo()
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        player.endSendingPlayMessages()
+    }
+    
+    // MARK: -
+    
     @IBAction func didTapRewind(sender: AnyObject) {
-        
+        player.seekToTime(CMTimeMakeWithSeconds(0, 1))
+        player.play()
     }
 
     @IBAction func didTapPlayOrPause(sender: AnyObject) {
@@ -70,6 +91,17 @@ extension PlayerViewController : SCVideoPlayerViewDelegate {
 }
 
 extension PlayerViewController : SCPlayerDelegate {
+    
+    func player(player: SCPlayer, itemReadyToPlay item: AVPlayerItem) {
+        
+    }
+    
+    func player(player: SCPlayer, didPlay currentTime: CMTime, loopsCount: Int) {
+        if !player.itemDuration.impliedValue && !currentTime.impliedValue {
+            interactor.updatePlaybackPosition(currentTime.seconds)
+        }
+    }
+    
     func player(player: SCPlayer, didReachEndForItem item: AVPlayerItem) {
         interactor.playNextVideo()
     }

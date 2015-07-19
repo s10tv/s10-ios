@@ -9,6 +9,7 @@
 import Foundation
 import SCRecorder
 import ReactiveCocoa
+import Core
 
 class AVKit {
     static let defaultFilters = AVKit.allFilters()
@@ -37,20 +38,55 @@ struct PlayerVideoViewModel {
     let avatarURL: NSURL
 }
 
+protocol PlayerInteractorDelegate {
+    func didFinishVideo(video: PlayerVideoViewModel)
+}
+
 class PlayerInteractor {
+    private let currentVideo = MutableProperty<PlayerVideoViewModel?>(nil)
+    private let currentTime = MutableProperty<NSTimeInterval>(0)
+    private let totalDuration = MutableProperty<NSTimeInterval>(0)
     var videoQueue: [PlayerVideoViewModel] = []
-    private let _currentVideo = MutableProperty<PlayerVideoViewModel?>(nil)
-    let currentVideo: PropertyOf<PlayerVideoViewModel?>
+    
+    let videoURL: PropertyOf<NSURL?>
+    let avatarURL: PropertyOf<NSURL?>
+    let timestampText: PropertyOf<String>
+    let currentPercent: PropertyOf<Float>
+    let durationText: PropertyOf<String>
     
     init() {
-        currentVideo = PropertyOf(_currentVideo)
+        videoURL = currentVideo |> map { $0?.url }
+        avatarURL = currentVideo |> map { $0?.avatarURL }
+        timestampText = currentVideo |> map {
+            Formatters.formatInterval($0?.timestamp, relativeTo: NSDate()) ?? ""
+        }
+        durationText = PropertyOf("", combineLatest(
+            currentTime.producer,
+            totalDuration.producer
+        ) |> map { current, total in
+            assert(current <= total, "Expect current time to be less than total duration")
+            return "\(Int(ceil(total - current)))"
+        })
+        currentPercent = PropertyOf(0, combineLatest(
+            currentVideo.producer,
+            currentTime.producer
+        ) |> map { video, time in
+            video.map { Float(time / $0.duration) } ?? 0
+        })
     }
     
     func playNextVideo() {
         if videoQueue.count > 0 {
-            _currentVideo.value = videoQueue.removeAtIndex(0)
+            currentVideo.value = videoQueue.removeAtIndex(0)
         } else {
-            _currentVideo.value = nil
+            currentVideo.value = nil
         }
+        currentTime.value = 0
+        totalDuration.value = videoQueue.map { $0.duration }.reduce(0, combine: +)
+                            + (currentVideo.value?.duration ?? 0)
+    }
+    
+    func updatePlaybackPosition(currentTime: NSTimeInterval) {
+        self.currentTime.value = currentTime
     }
 }
