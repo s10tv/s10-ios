@@ -14,6 +14,8 @@ import Core
 
 class PlayerViewController : UIViewController {
 
+    // TODO: Consider using AVQueuePlayer instead of SCPlayer for
+    // gapless video playback
     @IBOutlet weak var playerView: SCVideoPlayerView!
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var timestampLabel: UILabel!
@@ -46,12 +48,16 @@ class PlayerViewController : UIViewController {
         playerView.playerLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill
         playerView.delegate = self
         player.delegate = self
+        player.dyn("rate").producer.start(next: { [weak self] _ in
+            self?.interactor.updateIsPlaying(self?.player.isPlaying ?? false)
+        })
         
         interactor.videoURL ->> videoURLBond
         interactor.avatarURL ->> avatarView.dynImageURL
         interactor.timestampText ->> timestampLabel
         interactor.durationText ->> durationLabel
         interactor.currentPercent ->> progressView
+        interactor.isPlaying ->> playPauseButton.dynHidden
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -73,7 +79,7 @@ class PlayerViewController : UIViewController {
     }
 
     @IBAction func didTapPlayOrPause(sender: AnyObject) {
-        
+        player.isPlaying ? player.pause() : player.play()
     }
     
     @IBAction func didTapSkip(sender: AnyObject) {

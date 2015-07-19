@@ -46,8 +46,10 @@ class PlayerInteractor {
     private let currentVideo = MutableProperty<PlayerVideoViewModel?>(nil)
     private let currentTime = MutableProperty<NSTimeInterval>(0)
     private let totalDuration = MutableProperty<NSTimeInterval>(0)
+    private let _isPlaying = MutableProperty(false)
     var videoQueue: [PlayerVideoViewModel] = []
     
+    let isPlaying: PropertyOf<Bool>
     let videoURL: PropertyOf<NSURL?>
     let avatarURL: PropertyOf<NSURL?>
     let timestampText: PropertyOf<String>
@@ -55,6 +57,7 @@ class PlayerInteractor {
     let durationText: PropertyOf<String>
     
     init() {
+        isPlaying = PropertyOf(_isPlaying)
         videoURL = currentVideo |> map { $0?.url }
         avatarURL = currentVideo |> map { $0?.avatarURL }
         timestampText = currentVideo |> map {
@@ -86,7 +89,13 @@ class PlayerInteractor {
                             + (currentVideo.value?.duration ?? 0)
     }
     
-    func updatePlaybackPosition(currentTime: NSTimeInterval) {
-        self.currentTime.value = currentTime
+    // Hooks for PlayerViewController to update state
+    
+    func updatePlaybackPosition(position: NSTimeInterval) {
+        currentTime.value = position
+    }
+    
+    func updateIsPlaying(isPlaying: Bool) {
+        _isPlaying.value = isPlaying
     }
 }
