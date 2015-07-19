@@ -86,6 +86,10 @@ extension MutableProperty {
 }
 
 extension PropertyOf {
+    init(_ initialValue: T, _ producer: SignalProducer<T, ReactiveCocoa.NoError>) {
+        self.init(MutableProperty(initialValue, { producer }))
+    }
+    
     init(_ initialValue: T, @noescape _ block: () -> SignalProducer<T, ReactiveCocoa.NoError>) {
         self.init(MutableProperty(initialValue, block))
     }

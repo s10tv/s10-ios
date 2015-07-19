@@ -83,11 +83,19 @@ func <->> <D: Dynamical, P: MutablePropertyType where D.DynamicType == P.Value>(
 
 // Bind and fire
 
+func ->> <P: PropertyType, T where P.Value == T>(left: P, right: Bond<T>) {
+    toBondDynamic(left) ->> right
+}
+
 func ->> <T: PropertyType, U: Bondable where T.Value == U.BondType>(left: T, right: U) {
     toBondDynamic(left) ->> right.designatedBond
 }
 
 // Bind only
+
+func ->| <P: PropertyType, T where P.Value == T>(left: P, right: Bond<T>) {
+    toBondDynamic(left) ->| right
+}
 
 func ->| <T: PropertyType, U: Bondable where T.Value == U.BondType>(left: T, right: U) {
     toBondDynamic(left) ->| right.designatedBond
