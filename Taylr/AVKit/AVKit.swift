@@ -67,8 +67,8 @@ class PlayerInteractor {
             currentTime.producer,
             totalDuration.producer
         ) |> map { current, total in
-            assert(current <= total, "Expect current time to be less than total duration")
-            return "\(Int(ceil(total - current)))"
+            let secondsLeft = Int(ceil(max(total - current, 0)))
+            return "\(secondsLeft)"
         })
         currentPercent = PropertyOf(0, combineLatest(
             currentVideo.producer,

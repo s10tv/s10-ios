@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 S10. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import SCRecorder
 import Async
 import Bond
@@ -21,9 +21,11 @@ class PlayerViewController : UIViewController {
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
-    @IBOutlet weak var playPauseButton: UIButton!
+    @IBOutlet weak var rewindImage: UIImageView!
+    @IBOutlet weak var playPauseImage: UIImageView!
+    @IBOutlet weak var skipImage: UIImageView!
     
-    @IBOutlet var playbackControls: [UIButton]!
+    @IBOutlet var playbackControls: [UIImageView]!
     
     var interactor: PlayerInteractor!
     var player: SCPlayer { return playerView.player! }
@@ -65,9 +67,11 @@ class PlayerViewController : UIViewController {
         super.viewDidAppear(animated)
         player.beginSendingPlayMessages()
         interactor.playNextVideo()
-//        playbackControls.each {
+        playbackControls.each {
+            $0.alpha = 0
+//            $0.imageView?.contentMode = .ScaleAspectFit
 //            $0.setHiddenAnimated(hidden: true, duration: 0.5, delay: 1)
-//        }
+        }
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -77,26 +81,69 @@ class PlayerViewController : UIViewController {
     
     // MARK: -
     
-    @IBAction func didTapRewind(sender: AnyObject) {
+    func flashPlayPulseImage(image: UIImage?) {
+        playPauseImage.image = image
+        playPauseImage.alpha = 1
+        UIView.animate(0.5, delay: 0.5) {
+            self.playPauseImage.alpha = 0
+        }
+    }
+    
+    // MARK: -
+    
+    @IBAction func rewind() {
         player.seekToTime(CMTimeMakeWithSeconds(0, 1))
         player.play()
     }
-
-    @IBAction func didTapPlayOrPause(sender: AnyObject) {
+    
+    @IBAction func playOrPause() {
         player.isPlaying ? player.pause() : player.play()
     }
     
-    @IBAction func didTapSkip(sender: AnyObject) {
+    @IBAction func advance() {
         interactor.playNextVideo()
+    }
+    
+    @IBAction func didPanOnPlayer(pan: UIPanGestureRecognizer) {
+        let view = pan.view!
+        let point = pan.translationInView(view)
+        let percent = point.x / view.frame.width
+        let threshold: CGFloat = 0.25
+        let forwardScale = min(max(percent / threshold, 0), 1)
+        let reverseScale = min(max(-percent / threshold, 0), 1)
+        switch pan.state {
+        case .Changed:
+            skipImage.alpha = forwardScale
+            rewindImage.alpha = reverseScale
+            skipImage.transform = CGAffineTransform(scale: 1 + forwardScale)
+            rewindImage.transform = CGAffineTransform(scale: 1 + reverseScale)
+        case .Ended:
+            if forwardScale == 1 {
+                advance()
+            } else if reverseScale == 1 {
+                rewind()
+            }
+            fallthrough
+        case .Cancelled:
+            UIView.animate(0.25) {
+                self.skipImage.alpha = 0
+                self.rewindImage.alpha = 0
+                self.skipImage.transform = CGAffineTransformIdentity
+                self.rewindImage.transform = CGAffineTransformIdentity
+            }
+        default:
+            break
+        }
     }
 }
 
 extension PlayerViewController : SCVideoPlayerViewDelegate {
     func videoPlayerViewTappedToPlay(videoPlayerView: SCVideoPlayerView) {
+        flashPlayPulseImage(UIImage(.icPlay))
     }
     
     func videoPlayerViewTappedToPause(videoPlayerView: SCVideoPlayerView) {
-        
+        flashPlayPulseImage(UIImage(.icPause))
     }
 }
 
