@@ -16,17 +16,17 @@ class TestAppDelegate: UIResponder, UIApplicationDelegate {
     
     func showPlayer() {
         let videos = [PlayerVideoViewModel(
-            url: NSURL(string: "https://v.cdn.vine.co/r/videos/5B77925E891217906329730072576_3e987288317.3.3.11608692995557014311.mp4")!,
+            url: NSBundle.mainBundle().URLForResource("v1", withExtension: "mp4")!,
             duration: 6,
             timestamp: NSDate(),
             avatarURL: NSURL(string: "https://s10tv.blob.core.windows.net/s10tv-dev/e9iNi8Xt6riZ2rDq4/profilepic/503F4409-0938-42F1-8691-772023E24915/CfRwWcJt7PEKg5hyN.jpg")!
         ), PlayerVideoViewModel(
-            url: NSURL(string: "https://v.cdn.vine.co/r/videos/DE304AF9521216082525936840704_336a4655a3e.3.3.17437121352171969120.mp4")!,
+            url: NSBundle.mainBundle().URLForResource("v2", withExtension: "mp4")!,
             duration: 6,
             timestamp: NSDate(),
             avatarURL: NSURL(string: "https://s10tv.blob.core.windows.net/s10tv-dev/e9iNi8Xt6riZ2rDq4/profilepic/503F4409-0938-42F1-8691-772023E24915/CfRwWcJt7PEKg5hyN.jpg")!
         ), PlayerVideoViewModel(
-            url: NSURL(string: "https://v.cdn.vine.co/r/videos/F086D6E9481218670775406940160_34b732a0065.3.1.13650996883359060211.mp4")!,
+            url: NSBundle.mainBundle().URLForResource("v3", withExtension: "mp4")!,
             duration: 6,
             timestamp: NSDate(),
             avatarURL: NSURL(string: "https://s10tv.blob.core.windows.net/s10tv-dev/e9iNi8Xt6riZ2rDq4/profilepic/503F4409-0938-42F1-8691-772023E24915/CfRwWcJt7PEKg5hyN.jpg")!
@@ -37,7 +37,7 @@ class TestAppDelegate: UIResponder, UIApplicationDelegate {
             timestamp: NSDate(),
             avatarURL: NSURL(string: "https://s10tv.blob.core.windows.net/s10tv-dev/e9iNi8Xt6riZ2rDq4/profilepic/503F4409-0938-42F1-8691-772023E24915/CfRwWcJt7PEKg5hyN.jpg")!
         ), PlayerVideoViewModel(
-            url: NSURL(string: "https://v.cdn.vine.co/r/videos/89F94EC3621216192216171937792_3476958eaf4.3.3.9427939328810040060.mp4")!,
+            url: NSBundle.mainBundle().URLForResource("v4", withExtension: "mp4")!,
             duration: 6,
             timestamp: NSDate(),
             avatarURL: NSURL(string: "https://s10tv.blob.core.windows.net/s10tv-dev/e9iNi8Xt6riZ2rDq4/profilepic/503F4409-0938-42F1-8691-772023E24915/CfRwWcJt7PEKg5hyN.jpg")!
