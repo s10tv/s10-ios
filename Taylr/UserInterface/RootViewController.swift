@@ -22,6 +22,11 @@ class RootViewController : UINavigationController {
         view.whenEdgePanned(.Right) { [weak self] a, b in self!.handleEdgePan(a, edge: b) }
         
         transitionManager = TransitionManager(navigationController: self)
+        
+        navigationBar.titleTextAttributes = [
+            NSFontAttributeName: UIFont(.cabinMedium, size: 20),
+            NSForegroundColorAttributeName: StyleKit.defaultWhite
+        ]
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
