@@ -17,7 +17,7 @@ public enum SegueIdentifier : String {
     case ConversationPage = "ConversationPage"
     case DiscoverToChats = "DiscoverToChats"
     case DiscoverToMe = "DiscoverToMe"
-    case LoadingToDiscover = "LoadingToDiscover"
+    case LoadingToRootTab = "LoadingToRootTab"
     case LoginToSignup = "LoginToSignup"
     case Main_Chat = "Main_Chat"
     case Main_Discover = "Main_Discover"

@@ -31,7 +31,7 @@ class LoadingViewController : UIViewController {
                     self.performSegue(.Onboarding_Signup, sender: self)
                 case .SignedUp:
 //                    break
-                    self.performSegue(.LoadingToDiscover, sender: self)
+                    self.performSegue(.LoadingToRootTab, sender: self)
                 default:
                     fatalError("impossible account status")
                 }

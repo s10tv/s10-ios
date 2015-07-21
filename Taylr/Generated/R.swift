@@ -164,6 +164,8 @@ public enum R {
         case icClose = "ic-close"
         /// ic-disclosure
         case icDisclosure = "ic-disclosure"
+        /// ic-discover
+        case icDiscover = "ic-discover"
         /// ic-edit
         case icEdit = "ic-edit"
         /// ic-edit-text
