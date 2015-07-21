@@ -21,9 +21,9 @@ class DiscoverViewController : BaseViewController {
         super.viewDidLoad()
         
         let layout = CHTCollectionViewWaterfallLayout()
-        layout.minimumColumnSpacing = 5
-        layout.minimumInteritemSpacing = 5
-        layout.sectionInset = UIEdgeInsets(inset: 5)
+        layout.minimumColumnSpacing = 10
+        layout.minimumInteritemSpacing = 10
+        layout.sectionInset = UIEdgeInsets(inset: 10)
         collectionView.collectionViewLayout = layout
 
         discoverVM = DiscoverInteractor()
@@ -56,7 +56,7 @@ class DiscoverViewController : BaseViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        collectionView.contentInset = UIEdgeInsets(top: topLayoutGuide.length, left: 0,
+        collectionView.contentInset = UIEdgeInsets(top: 66, left: 0, // HARCK ALERT: Hard-coded
                                                 bottom: bottomLayoutGuide.length, right: 0)
     }
     
