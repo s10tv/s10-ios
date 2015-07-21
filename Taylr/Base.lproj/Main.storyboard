@@ -193,7 +193,7 @@
                             <constraint firstItem="5D7-hF-WjP" firstAttribute="top" secondItem="13x-l4-1hd" secondAttribute="top" id="d16-EX-QBy"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="ic-chats" id="MDC-z7-KZY">
+                    <tabBarItem key="tabBarItem" title="" image="ic-discover" id="MDC-z7-KZY">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
@@ -1383,6 +1383,7 @@
         <image name="ic-back" width="17" height="23"/>
         <image name="ic-camera" width="83" height="84"/>
         <image name="ic-chats" width="27" height="24"/>
+        <image name="ic-discover" width="20" height="26"/>
         <image name="ic-edit" width="39" height="40"/>
         <image name="ic-facebook" width="28" height="28"/>
         <image name="ic-me" width="29" height="28"/>
