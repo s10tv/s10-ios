@@ -122,13 +122,13 @@
                                 <color key="progressTintColor" red="0.61960784310000006" green="0.4941176471" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <color key="trackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </progressView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-rewind" translatesAutoresizingMaskIntoConstraints="NO" id="9Xy-Ea-CDc">
+                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-rewind" translatesAutoresizingMaskIntoConstraints="NO" id="9Xy-Ea-CDc">
                                 <rect key="frame" x="24" y="298" width="21" height="24"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-play" translatesAutoresizingMaskIntoConstraints="NO" id="IoN-et-h84">
+                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-play" translatesAutoresizingMaskIntoConstraints="NO" id="IoN-et-h84">
                                 <rect key="frame" x="288" y="298" width="24" height="24"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-skip" translatesAutoresizingMaskIntoConstraints="NO" id="Rmb-Kd-zDt">
+                            <imageView userInteractionEnabled="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-skip" translatesAutoresizingMaskIntoConstraints="NO" id="Rmb-Kd-zDt">
                                 <rect key="frame" x="555" y="298" width="21" height="24"/>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="b6o-4m-xPz">
@@ -192,9 +192,10 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uFR-IP-tYk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="kRf-nd-wGw">
+                <panGestureRecognizer cancelsTouchesInView="NO" minimumNumberOfTouches="1" id="kRf-nd-wGw">
                     <connections>
                         <action selector="didPanOnPlayer:" destination="rTJ-l0-lHc" id="wIm-1I-CmN"/>
+                        <outlet property="delegate" destination="rTJ-l0-lHc" id="ly2-Xo-1Qa"/>
                     </connections>
                 </panGestureRecognizer>
             </objects>

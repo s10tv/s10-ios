@@ -67,11 +67,6 @@ class PlayerViewController : UIViewController {
         super.viewDidAppear(animated)
         player.beginSendingPlayMessages()
         interactor.playNextVideo()
-        playbackControls.each {
-            $0.alpha = 0
-//            $0.imageView?.contentMode = .ScaleAspectFit
-//            $0.setHiddenAnimated(hidden: true, duration: 0.5, delay: 1)
-        }
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -161,5 +156,11 @@ extension PlayerViewController : SCPlayerDelegate {
     
     func player(player: SCPlayer, didReachEndForItem item: AVPlayerItem) {
         interactor.playNextVideo()
+    }
+}
+
+extension PlayerViewController : UIGestureRecognizerDelegate {
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }
