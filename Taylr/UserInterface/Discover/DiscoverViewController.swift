@@ -72,9 +72,6 @@ class DiscoverViewController : BaseViewController {
             let user = discoverVM.candidates[indexPath.row].user
             profileVC.profileVM = ProfileInteractor(meteor: Meteor, user: user)
         }
-        if let meVC = segue.destinationViewController as? MeViewController {
-            meVC.viewModel = MeInteractor(meteor: Meteor, taskService: Globals.taskService, currentUser: Meteor.user.value!)
-        }
     }
 
     // MARK: - Actions

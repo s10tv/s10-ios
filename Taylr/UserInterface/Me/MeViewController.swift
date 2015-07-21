@@ -36,6 +36,7 @@ class MeViewController : BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewModel = MeInteractor(meteor: Meteor, taskService: Globals.taskService, currentUser: Meteor.user.value!)
         viewModel.avatarURL ->> avatarView.dynImageURL
         viewModel.displayName ->> nameLabel
         viewModel.username ->> usernameLabel
