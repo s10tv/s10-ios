@@ -17,7 +17,6 @@ class PlayerViewController : UIViewController {
     // TODO: Consider using AVQueuePlayer instead of SCPlayer for
     // gapless video playback
     @IBOutlet weak var playerView: SCVideoPlayerView!
-    @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
@@ -27,7 +26,7 @@ class PlayerViewController : UIViewController {
     
     @IBOutlet var playbackControls: [UIImageView]!
     
-    var interactor: PlayerInteractor!
+    var interactor = PlayerInteractor()
     var player: SCPlayer { return playerView.player! }
     lazy var videoURLBond: Bond<NSURL?> = {
         return Bond<NSURL?> {
@@ -47,7 +46,6 @@ class PlayerViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        avatarView.makeCircular()
         playerView.tapToPauseEnabled = true
         playerView.playerLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill
         playerView.delegate = self
@@ -57,7 +55,6 @@ class PlayerViewController : UIViewController {
         })
         
         interactor.videoURL ->> videoURLBond
-        interactor.avatarURL ->> avatarView.dynImageURL
         interactor.timestampText ->> timestampLabel
         interactor.durationText ->> durationLabel
         interactor.currentPercent ->> progressView
@@ -101,8 +98,7 @@ class PlayerViewController : UIViewController {
     
     @IBAction func didPanOnPlayer(pan: UIPanGestureRecognizer) {
         let view = pan.view!
-        let point = pan.translationInView(view)
-        let percent = point.x / view.frame.width
+        let percent = pan.translationInView(view).x / view.frame.width
         let threshold: CGFloat = 0.25
         let forwardScale = min(max(percent / threshold, 0), 1)
         let reverseScale = min(max(-percent / threshold, 0), 1)
@@ -143,10 +139,6 @@ extension PlayerViewController : SCVideoPlayerViewDelegate {
 }
 
 extension PlayerViewController : SCPlayerDelegate {
-    
-    func player(player: SCPlayer, itemReadyToPlay item: AVPlayerItem) {
-        
-    }
     
     func player(player: SCPlayer, didPlay currentTime: CMTime, loopsCount: Int) {
         if !player.itemDuration.impliedValue && !currentTime.impliedValue {

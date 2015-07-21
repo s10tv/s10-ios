@@ -11,6 +11,7 @@ import ReactiveCocoa
 import PKHUD
 import Bond
 import Core
+import Async
 
 class ConversationViewController : BaseViewController {
     
@@ -26,25 +27,15 @@ class ConversationViewController : BaseViewController {
     var producer: ProducerViewController!
     var conversationVM: ConversationInteractor!
     lazy var dataBond: Bond<[MessageViewModel]> = {
-        return Bond { [weak self] x in
+        return Bond { [weak self] messages in
+            Log.info("Reloading messages count: \(messages.count)")
+            self?.player.interactor.videoQueue = messages.map { $0 as PlayableVideo }
             if let stateProducer = self?.conversationVM.state.producer {
                 stateProducer
-                    |> filter { $0 == .Idle }
+                    |> filter { $0 != .Recording }
                     |> take(1)
                     |> start(completed: { [weak self] in
-                        Log.info("Reloading messages count: \(x.count)")
-                        if let messages = self?.conversationVM.messageViewModels.value,
-                            let interactor = self?.player.interactor {
-                                interactor.videoQueue = messages.map {
-                                    PlayerVideoViewModel(
-                                        url: $0.videoURL.value!,
-                                        duration: 6,
-                                        timestamp: $0.message.createdAt!,
-                                        avatarURL: self!.conversationVM.recipient.avatarURL.value!
-                                    )
-                                }
-                                self?.showPlayer()
-                        }
+                        self?.showPlayer()
                     })
             }
         }
@@ -55,7 +46,6 @@ class ConversationViewController : BaseViewController {
 
         let avkit = UIStoryboard(name: "AVKit", bundle: nil)
         player = avkit.instantiateViewControllerWithIdentifier("Player") as! PlayerViewController
-        player.interactor = PlayerInteractor()
         player.interactor.delegate = self
         producer = avkit.instantiateViewControllerWithIdentifier("Producer") as! ProducerViewController
         producer.producerDelegate = self
@@ -72,7 +62,6 @@ class ConversationViewController : BaseViewController {
         conversationVM.badgeText ->> badgeLabel
         conversationVM.formattedStatus.map { $0.length == 0 } ->> nameCenterConstraint.dynActive
         conversationVM.messageViewModels ->> dataBond
-
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -167,9 +156,25 @@ extension ConversationViewController : ProducerDelegate {
 }
 
 extension ConversationViewController : PlayerInteractorDelegate {
-    func player(interactor: PlayerInteractor, didFinishVideo video: PlayerVideoViewModel) {
+    func player(interactor: PlayerInteractor, didFinishVideo video: PlayableVideo) {
         if interactor.videoQueue.count == 0 {
             showProducer(animated: true)
         }
+        // TODO: Move into ViewModel
+        if let message = (video as? MessageViewModel)?.message
+            where message.fault == false // Hack for now to avoid EXC_BAD_INSTRUCTION
+                && message.sender != nil // Hack for now to avoid nil crash
+                && message.incoming && message.statusEnum != .Opened {
+            Meteor.openMessage(message, expireDelay: 0)
+            if let videoId = message.video?.documentID {
+                VideoCache.sharedInstance.removeVideo(videoId)
+            }
+        }
     }
+}
+
+extension MessageViewModel : PlayableVideo {
+    var url: NSURL { return videoURL.value! }
+    var duration: NSTimeInterval { return 6 }
+    var timestamp: NSDate { return message.createdAt! }
 }

@@ -55,6 +55,8 @@
 		EA394B0C1B5D9EF4009184EB /* v2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = EA394B081B5D9EF4009184EB /* v2.mp4 */; };
 		EA394B0D1B5D9EF4009184EB /* v3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = EA394B091B5D9EF4009184EB /* v3.mp4 */; };
 		EA394B0E1B5D9EF4009184EB /* v4.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = EA394B0A1B5D9EF4009184EB /* v4.mp4 */; };
+		EA394B101B5E16F2009184EB /* PlayerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA394B0F1B5E16F2009184EB /* PlayerInteractor.swift */; };
+		EA394B111B5E1725009184EB /* PlayerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA394B0F1B5E16F2009184EB /* PlayerInteractor.swift */; };
 		EA3965151B54C19800F5B0B3 /* ReactiveBridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3965141B54C19800F5B0B3 /* ReactiveBridging.swift */; };
 		EA3965161B54C1B400F5B0B3 /* ReactiveBridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3965141B54C19800F5B0B3 /* ReactiveBridging.swift */; };
 		EA3965171B54C1B500F5B0B3 /* ReactiveBridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3965141B54C19800F5B0B3 /* ReactiveBridging.swift */; };
@@ -295,6 +297,7 @@
 		EA394B081B5D9EF4009184EB /* v2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = v2.mp4; path = ../../../../Documents/Videos/v2.mp4; sourceTree = "<group>"; };
 		EA394B091B5D9EF4009184EB /* v3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = v3.mp4; path = ../../../../Documents/Videos/v3.mp4; sourceTree = "<group>"; };
 		EA394B0A1B5D9EF4009184EB /* v4.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = v4.mp4; path = ../../../../Documents/Videos/v4.mp4; sourceTree = "<group>"; };
+		EA394B0F1B5E16F2009184EB /* PlayerInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerInteractor.swift; sourceTree = "<group>"; };
 		EA3965141B54C19800F5B0B3 /* ReactiveBridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveBridging.swift; sourceTree = "<group>"; };
 		EA39651B1B54EFE400F5B0B3 /* MeteorCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorCollection.swift; sourceTree = "<group>"; };
 		EA3965221B55C47200F5B0B3 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
@@ -1031,6 +1034,7 @@
 				EAF81B241B33389500EED6DD /* RecorderViewController.swift */,
 				EAF81B261B33391000EED6DD /* EditorViewController.swift */,
 				EA03D3361B5B2C58007A0CF7 /* PlayerViewController.swift */,
+				EA394B0F1B5E16F2009184EB /* PlayerInteractor.swift */,
 				EAF81B301B3388C600EED6DD /* TouchDetector.swift */,
 				EAF81B371B3395E700EED6DD /* AVKit.swift */,
 			);
@@ -1450,6 +1454,7 @@
 				EA009D531B5B7A4600FC7E3D /* DesignableViews.swift in Sources */,
 				EA009D521B5B7A4600FC7E3D /* BaseViews.swift in Sources */,
 				EAF81B391B3395E700EED6DD /* AVKit.swift in Sources */,
+				EA394B111B5E1725009184EB /* PlayerInteractor.swift in Sources */,
 				EAF81B2D1B33883A00EED6DD /* ProducerViewController.swift in Sources */,
 				EAF81B351B33890E00EED6DD /* R.swift in Sources */,
 				EAF81B321B3388C600EED6DD /* TouchDetector.swift in Sources */,
@@ -1593,6 +1598,7 @@
 				EA49286E1ADF291100118639 /* UpgradeService.swift in Sources */,
 				EAA56FB11B2BCAC700DE3936 /* CandidateCell.swift in Sources */,
 				EA3965231B55C47200F5B0B3 /* EditProfileViewController.swift in Sources */,
+				EA394B101B5E16F2009184EB /* PlayerInteractor.swift in Sources */,
 				EAF81B2B1B3373F000EED6DD /* ProducerCell.swift in Sources */,
 				EABAEDA51B4334EB000261F0 /* MeServiceCell.swift in Sources */,
 				EAA56FA51B2B32E500DE3936 /* UserAvatarView.swift in Sources */,
