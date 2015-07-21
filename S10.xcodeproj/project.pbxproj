@@ -99,6 +99,7 @@
 		EA7934ED1B5708F000385824 /* LinkServiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7934EC1B5708F000385824 /* LinkServiceViewController.swift */; };
 		EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3681AA26597003383BE /* SBConstants.swift */; };
 		EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3691AA26597003383BE /* StyleKit.swift */; };
+		EA7FB08D1B5EEA070052B394 /* RootTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7FB08C1B5EEA070052B394 /* RootTabController.swift */; };
 		EA82CF971B504FC500A12D94 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA82CF961B504FC500A12D94 /* Image.swift */; };
 		EA8896221B4F3C1300E180A6 /* ReactiveProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA10472D1B4E74A300B1A76A /* ReactiveProperties.swift */; };
 		EA925C741AD99ED8008E9F41 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA925C731AD99ED8008E9F41 /* R.swift */; };
@@ -338,6 +339,7 @@
 		EA7934EC1B5708F000385824 /* LinkServiceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkServiceViewController.swift; sourceTree = "<group>"; };
 		EA7AA3681AA26597003383BE /* SBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstants.swift; sourceTree = "<group>"; };
 		EA7AA3691AA26597003383BE /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
+		EA7FB08C1B5EEA070052B394 /* RootTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabController.swift; sourceTree = "<group>"; };
 		EA82CF961B504FC500A12D94 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		EA925C731AD99ED8008E9F41 /* R.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.swift; sourceTree = "<group>"; };
 		EA95BBA61B39308A00701F08 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -902,6 +904,7 @@
 				EAA56F741B2B32E500DE3936 /* Me */,
 				EAA56F801B2B32E500DE3936 /* Profile */,
 				EAA56F851B2B32E500DE3936 /* RootViewController.swift */,
+				EA7FB08C1B5EEA070052B394 /* RootTabController.swift */,
 			);
 			path = UserInterface;
 			sourceTree = "<group>";
@@ -1575,6 +1578,7 @@
 				EA95BBBB1B3932B500701F08 /* DesignableViews.swift in Sources */,
 				EA7934ED1B5708F000385824 /* LinkServiceViewController.swift in Sources */,
 				EAE1E07D1AE3788300F03F13 /* Globals.swift in Sources */,
+				EA7FB08D1B5EEA070052B394 /* RootTabController.swift in Sources */,
 				EA95BBB11B3930B000701F08 /* PKHUDExtension.swift in Sources */,
 				EAA56F9C1B2B32E500DE3936 /* LoginViewController.swift in Sources */,
 				EA376CB11B505FCD00C819E9 /* AuthWebViewController.swift in Sources */,

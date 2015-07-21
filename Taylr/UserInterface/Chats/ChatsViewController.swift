@@ -32,6 +32,12 @@ class ChatsViewController : BaseViewController {
         }
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.contentInset = UIEdgeInsets(top: topLayoutGuide.length, left: 0,
+                                           bottom: bottomLayoutGuide.length, right: 0)
+    }
+    
     override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
         Log.debug("Handding to edge \(edge) from dockVC")
         if edge == .Left {

@@ -54,6 +54,12 @@ class DiscoverViewController : BaseViewController {
         Globals.locationService.requestPermission()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        collectionView.contentInset = UIEdgeInsets(top: topLayoutGuide.length, left: 0,
+                                                bottom: bottomLayoutGuide.length, right: 0)
+    }
+    
     override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
         Log.debug("Handding to edge \(edge) from gameVC")
         if edge == .Right {
