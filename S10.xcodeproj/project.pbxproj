@@ -38,7 +38,6 @@
 		EA2406221B50F79E003A73C3 /* VideoCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2406211B50F79E003A73C3 /* VideoCache.swift */; };
 		EA2406241B5109D8003A73C3 /* VideoDownloadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2406231B5109D8003A73C3 /* VideoDownloadTests.swift */; };
 		EA3594141B2DE5C300E91337 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594131B2DE5C300E91337 /* ConversationViewController.swift */; };
-		EA3594161B2DEF0C00E91337 /* MessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594151B2DEF0C00E91337 /* MessageCell.swift */; };
 		EA3594191B2FEA1F00E91337 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594181B2FEA1F00E91337 /* TransitionManager.swift */; };
 		EA36B1D21B3F23ED002ADD91 /* ActivityImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36B1D11B3F23ED002ADD91 /* ActivityImageCell.swift */; };
 		EA36B1D41B3F23F4002ADD91 /* ActivityTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36B1D31B3F23F4002ADD91 /* ActivityTextCell.swift */; };
@@ -188,7 +187,6 @@
 		EAF81B231B33388700EED6DD /* ProducerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B221B33388700EED6DD /* ProducerViewController.swift */; };
 		EAF81B251B33389500EED6DD /* RecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B241B33389500EED6DD /* RecorderViewController.swift */; };
 		EAF81B271B33391000EED6DD /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B261B33391000EED6DD /* EditorViewController.swift */; };
-		EAF81B2B1B3373F000EED6DD /* ProducerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B2A1B3373F000EED6DD /* ProducerCell.swift */; };
 		EAF81B2D1B33883A00EED6DD /* ProducerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B221B33388700EED6DD /* ProducerViewController.swift */; };
 		EAF81B2E1B33883A00EED6DD /* RecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B241B33389500EED6DD /* RecorderViewController.swift */; };
 		EAF81B2F1B33883A00EED6DD /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B261B33391000EED6DD /* EditorViewController.swift */; };
@@ -278,7 +276,6 @@
 		EA2406211B50F79E003A73C3 /* VideoCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCache.swift; sourceTree = "<group>"; };
 		EA2406231B5109D8003A73C3 /* VideoDownloadTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDownloadTests.swift; sourceTree = "<group>"; };
 		EA3594131B2DE5C300E91337 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
-		EA3594151B2DEF0C00E91337 /* MessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCell.swift; sourceTree = "<group>"; };
 		EA3594181B2FEA1F00E91337 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		EA36B1D11B3F23ED002ADD91 /* ActivityImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ActivityImageCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		EA36B1D31B3F23F4002ADD91 /* ActivityTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTextCell.swift; sourceTree = "<group>"; };
@@ -430,7 +427,6 @@
 		EAF81B221B33388700EED6DD /* ProducerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProducerViewController.swift; sourceTree = "<group>"; };
 		EAF81B241B33389500EED6DD /* RecorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderViewController.swift; sourceTree = "<group>"; };
 		EAF81B261B33391000EED6DD /* EditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
-		EAF81B2A1B3373F000EED6DD /* ProducerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProducerCell.swift; sourceTree = "<group>"; };
 		EAF81B301B3388C600EED6DD /* TouchDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchDetector.swift; sourceTree = "<group>"; };
 		EAF81B371B3395E700EED6DD /* AVKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVKit.swift; sourceTree = "<group>"; };
 		F1D48B38C28B60559AEB8949 /* Pods_Core_Taylr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Core_Taylr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -805,8 +801,6 @@
 				EAA56F6C1B2B32E500DE3936 /* ChatsViewController.swift */,
 				EAA56F6D1B2B32E500DE3936 /* ConnectionCell.swift */,
 				EA3594131B2DE5C300E91337 /* ConversationViewController.swift */,
-				EA3594151B2DEF0C00E91337 /* MessageCell.swift */,
-				EAF81B2A1B3373F000EED6DD /* ProducerCell.swift */,
 			);
 			path = Chats;
 			sourceTree = "<group>";
@@ -1561,7 +1555,6 @@
 				EA773D261B431514009A9945 /* ProfileServiceCell.swift in Sources */,
 				EAA56F9F1B2B32E500DE3936 /* ProfileViewController.swift in Sources */,
 				EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */,
-				EA3594161B2DEF0C00E91337 /* MessageCell.swift in Sources */,
 				EA57CEC91B45EB4000759139 /* SignupViewController.swift in Sources */,
 				EA36B1D41B3F23F4002ADD91 /* ActivityTextCell.swift in Sources */,
 				EA95BBA71B39308A00701F08 /* PageViewController.swift in Sources */,
@@ -1599,7 +1592,6 @@
 				EAA56FB11B2BCAC700DE3936 /* CandidateCell.swift in Sources */,
 				EA3965231B55C47200F5B0B3 /* EditProfileViewController.swift in Sources */,
 				EA394B101B5E16F2009184EB /* PlayerInteractor.swift in Sources */,
-				EAF81B2B1B3373F000EED6DD /* ProducerCell.swift in Sources */,
 				EABAEDA51B4334EB000261F0 /* MeServiceCell.swift in Sources */,
 				EAA56FA51B2B32E500DE3936 /* UserAvatarView.swift in Sources */,
 				EA95BBB91B3932B500701F08 /* BaseViews.swift in Sources */,
