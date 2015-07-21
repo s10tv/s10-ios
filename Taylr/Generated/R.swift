@@ -26,6 +26,18 @@ public enum R {
         case unablePhone3x = "unable-phone@3x.png"
     }
     public enum Fonts : String {
+        /// Cabin-Bold
+        case cabinBold = "Cabin-Bold"
+        /// Cabin-BoldItalic
+        case cabinBoldItalic = "Cabin-BoldItalic"
+        /// Cabin-Italic
+        case cabinItalic = "Cabin-Italic"
+        /// Cabin-Medium
+        case cabinMedium = "Cabin-Medium"
+        /// Cabin-MediumItalic
+        case cabinMediumItalic = "Cabin-MediumItalic"
+        /// Cabin-Regular
+        case cabinRegular = "Cabin-Regular"
         /// TransatTextBlack
         case transatTextBlack = "TransatTextBlack"
         /// TransatTextBold

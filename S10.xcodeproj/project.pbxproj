@@ -100,6 +100,12 @@
 		EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3681AA26597003383BE /* SBConstants.swift */; };
 		EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3691AA26597003383BE /* StyleKit.swift */; };
 		EA7FB08D1B5EEA070052B394 /* RootTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7FB08C1B5EEA070052B394 /* RootTabController.swift */; };
+		EA7FB0941B5EF9D50052B394 /* Cabin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB08E1B5EF9D50052B394 /* Cabin-Bold.ttf */; };
+		EA7FB0951B5EF9D50052B394 /* Cabin-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB08F1B5EF9D50052B394 /* Cabin-BoldItalic.ttf */; };
+		EA7FB0961B5EF9D50052B394 /* Cabin-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB0901B5EF9D50052B394 /* Cabin-Italic.ttf */; };
+		EA7FB0971B5EF9D50052B394 /* Cabin-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB0911B5EF9D50052B394 /* Cabin-Medium.ttf */; };
+		EA7FB0981B5EF9D50052B394 /* Cabin-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB0921B5EF9D50052B394 /* Cabin-MediumItalic.ttf */; };
+		EA7FB0991B5EF9D50052B394 /* Cabin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB0931B5EF9D50052B394 /* Cabin-Regular.ttf */; };
 		EA82CF971B504FC500A12D94 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA82CF961B504FC500A12D94 /* Image.swift */; };
 		EA8896221B4F3C1300E180A6 /* ReactiveProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA10472D1B4E74A300B1A76A /* ReactiveProperties.swift */; };
 		EA925C741AD99ED8008E9F41 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA925C731AD99ED8008E9F41 /* R.swift */; };
@@ -340,6 +346,12 @@
 		EA7AA3681AA26597003383BE /* SBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstants.swift; sourceTree = "<group>"; };
 		EA7AA3691AA26597003383BE /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
 		EA7FB08C1B5EEA070052B394 /* RootTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootTabController.swift; sourceTree = "<group>"; };
+		EA7FB08E1B5EF9D50052B394 /* Cabin-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Bold.ttf"; sourceTree = "<group>"; };
+		EA7FB08F1B5EF9D50052B394 /* Cabin-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-BoldItalic.ttf"; sourceTree = "<group>"; };
+		EA7FB0901B5EF9D50052B394 /* Cabin-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Italic.ttf"; sourceTree = "<group>"; };
+		EA7FB0911B5EF9D50052B394 /* Cabin-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Medium.ttf"; sourceTree = "<group>"; };
+		EA7FB0921B5EF9D50052B394 /* Cabin-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-MediumItalic.ttf"; sourceTree = "<group>"; };
+		EA7FB0931B5EF9D50052B394 /* Cabin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Regular.ttf"; sourceTree = "<group>"; };
 		EA82CF961B504FC500A12D94 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		EA925C731AD99ED8008E9F41 /* R.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.swift; sourceTree = "<group>"; };
 		EA95BBA61B39308A00701F08 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -590,6 +602,12 @@
 		EA37776C1A966E380055DE99 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				EA7FB08E1B5EF9D50052B394 /* Cabin-Bold.ttf */,
+				EA7FB08F1B5EF9D50052B394 /* Cabin-BoldItalic.ttf */,
+				EA7FB0901B5EF9D50052B394 /* Cabin-Italic.ttf */,
+				EA7FB0911B5EF9D50052B394 /* Cabin-Medium.ttf */,
+				EA7FB0921B5EF9D50052B394 /* Cabin-MediumItalic.ttf */,
+				EA7FB0931B5EF9D50052B394 /* Cabin-Regular.ttf */,
 				EA37776F1A966EC10055DE99 /* TransatTextLight.otf */,
 				EA3777711A966EC10055DE99 /* TransatTextStandard.otf */,
 				EA3777701A966EC10055DE99 /* TransatTextMedium.otf */,
@@ -1232,10 +1250,13 @@
 				EA3777761A966EC10055DE99 /* TransatTextStandard.otf in Resources */,
 				EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */,
 				EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */,
+				EA7FB0971B5EF9D50052B394 /* Cabin-Medium.ttf in Resources */,
 				EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */,
 				EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */,
 				EA4216521B3E219000613EFA /* DigitsKitResources.bundle in Resources */,
+				EA7FB0981B5EF9D50052B394 /* Cabin-MediumItalic.ttf in Resources */,
 				EA7078781B39345800BB9D08 /* AVKit.storyboard in Resources */,
+				EA7FB0991B5EF9D50052B394 /* Cabin-Regular.ttf in Resources */,
 				EA3777751A966EC10055DE99 /* TransatTextMedium.otf in Resources */,
 				EA376CB51B505FF100C819E9 /* LinkAccount.storyboard in Resources */,
 				EAB8E7A61AE04D8D00B3046F /* Settings.storyboard in Resources */,
@@ -1244,6 +1265,9 @@
 				EAB5B1161B4A390300BDB05E /* TransatTextBold.otf in Resources */,
 				EA3777721A966EC10055DE99 /* TransatTextBlack.otf in Resources */,
 				EAB5B1171B4A390600BDB05E /* TransatTextLight.otf in Resources */,
+				EA7FB0951B5EF9D50052B394 /* Cabin-BoldItalic.ttf in Resources */,
+				EA7FB0941B5EF9D50052B394 /* Cabin-Bold.ttf in Resources */,
+				EA7FB0961B5EF9D50052B394 /* Cabin-Italic.ttf in Resources */,
 				EA7004621ACF912A00D0E467 /* Onboarding.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
