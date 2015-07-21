@@ -4,8 +4,6 @@ public enum CollectionViewCellreuseIdentifier : String {
     case AddCell = "AddCell"
     case CandidateCell = "CandidateCell"
     case MeServiceCell = "MeServiceCell"
-    case MessageCell = "MessageCell"
-    case ProducerCell = "ProducerCell"
     case ServiceCell = "ServiceCell"
 }
 
@@ -16,6 +14,7 @@ public enum NavigationControllerStoryboardIdentifier : String {
 public enum SegueIdentifier : String {
     case ChatsToConversation = "ChatsToConversation"
     case ChatsToDiscover = "ChatsToDiscover"
+    case ConversationPage = "ConversationPage"
     case DiscoverToChats = "DiscoverToChats"
     case DiscoverToMe = "DiscoverToMe"
     case LoadingToDiscover = "LoadingToDiscover"

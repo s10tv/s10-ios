@@ -38,8 +38,8 @@ struct PlayerVideoViewModel {
     let avatarURL: NSURL
 }
 
-protocol PlayerInteractorDelegate {
-    func didFinishVideo(video: PlayerVideoViewModel)
+protocol PlayerInteractorDelegate : class {
+    func player(interactor: PlayerInteractor, didFinishVideo video: PlayerVideoViewModel)
 }
 
 class PlayerInteractor {
@@ -48,6 +48,7 @@ class PlayerInteractor {
     private let totalDuration = MutableProperty<NSTimeInterval>(0)
     private let _isPlaying = MutableProperty(false)
     var videoQueue: [PlayerVideoViewModel] = []
+    weak var delegate: PlayerInteractorDelegate?
     
     let isPlaying: PropertyOf<Bool>
     let videoURL: PropertyOf<NSURL?>
@@ -79,6 +80,9 @@ class PlayerInteractor {
     }
     
     func playNextVideo() {
+        if let video = currentVideo.value {
+            delegate?.player(self, didFinishVideo: video)
+        }
         if videoQueue.count > 0 {
             currentVideo.value = videoQueue.removeAtIndex(0)
         } else {
