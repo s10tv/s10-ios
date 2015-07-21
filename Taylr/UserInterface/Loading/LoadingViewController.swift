@@ -42,6 +42,10 @@ class LoadingViewController : UIViewController {
         
     }
     
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let segue = segue as? AdvancedPushSegue {
             segue.animated = false

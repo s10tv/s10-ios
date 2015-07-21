@@ -12,8 +12,9 @@ class RootTabController : UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        delegate = self
+        UITabBar.appearance().tintColor = StyleKit.brandPurple
         navigationController?.navigationBarHidden = false
+        delegate = self
         selectedIndex = 1 // Discover Scene
     }
     

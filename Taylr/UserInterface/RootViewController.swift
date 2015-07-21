@@ -17,20 +17,15 @@ class RootViewController : UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.window?.tintColor = StyleKit.brandPurple
-        UITabBar.appearance().tintColor = StyleKit.brandPurple
-        navigationBar.tintColor = StyleKit.brandPurple
-        
+
         view.whenEdgePanned(.Left) { [weak self] a, b in self!.handleEdgePan(a, edge: b) }
         view.whenEdgePanned(.Right) { [weak self] a, b in self!.handleEdgePan(a, edge: b) }
         
         transitionManager = TransitionManager(navigationController: self)
-        
-//        if Meteor.account == nil {
-//            let onboarding = UIStoryboard(name: "Onboarding", bundle: nil)
-//            let signup = onboarding.instantiateInitialViewController() as! SignupViewController
-//            pushViewController(signup, animated: false)
-//        }
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
     
     // MARK: Target Action
