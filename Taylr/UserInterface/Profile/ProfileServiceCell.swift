@@ -19,12 +19,12 @@ class ProfileServiceCell : UICollectionViewCell {
     }
     
     func bindService(service: ServiceViewModel) {
-        service.serviceIcon ->> serviceIconView
+        service.serviceIconURL ->> serviceIconView.dynImageURL
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        serviceIconView.designatedBond.unbindAll()
+        serviceIconView.unbindDynImageURL()
     }
     
 }

@@ -9,7 +9,6 @@
 import Foundation
 import ReactiveCocoa
 import Async
-import OAuthSwift
 import FBSDKLoginKit
 import Core
 
@@ -25,67 +24,26 @@ class LinkAccountService {
         return UIStoryboard(name: "LinkAccount", bundle: nil).instantiateViewControllerWithIdentifier("AuthWeb") as! AuthWebViewController
     }
     
-    func linkNewService(type: Service.ServiceType, useWebView: Bool = true) -> RACSignal {
-        switch type {
-        case .Facebook:
+    func linkNewService(serviceType: ServiceType, useWebView: Bool = true) -> RACSignal {
+        switch serviceType.documentID ?? "" {
+        case "facebook":
             return linkFacebook()
-        case .Instagram:
-            return linkInstagram(authWebVC: useWebView ? makeAuthWebVC() : nil)
-        case .Github:
-            return linkGithub(authWebVC: useWebView ? makeAuthWebVC() : nil)
-        case .Twitter:
+        case "twitter":
+            return RACSignal.empty()
+        default:
+            if let url = serviceType.dynURL.value {
+                return linkWithWebview(url)
+            }
             return RACSignal.empty()
         }
     }
 
-    func linkGithub(authWebVC: AuthWebViewController? = nil) -> RACSignal {
+    func linkWithWebview(url: NSURL) -> RACSignal {
         let subject = RACReplaySubject()
-        let oauth = OAuth2Swift(
-            consumerKey: env.githubClientId,
-            consumerSecret: env.githubClientSecret,
-            authorizeUrl: "https://github.com/login/oauth/authorize",
-            accessTokenUrl: "https://github.com/login/oauth/access_token",
-            responseType: "code"
-        )
-        oauth.authorize_url_handler = authWebVC ?? oauth.authorize_url_handler
-        oauth.authorizeWithCallbackURL(NSURL("\(env.audience.urlScheme)\(env.oauthCallbackPath)/github"),
-            scope: "user:email",
-            state: generateStateWithLength(20) as String,
-            success: { credential, response, parameters in
-                subject.sendNext(nil)
-                Async.main {
-                    Meteor.addService(.Github, accessToken: credential.oauth_token).subscribe(subject)
-                }
-                Log.debug("Successfulled received token from github")
-            }, failure: { error in
-                Log.error("Unable to link instagram", error)
-                subject.sendError(error)
-        })
-        return subject.deliverOnMainThread()
-    }
-
-    func linkInstagram(authWebVC: AuthWebViewController? = nil) -> RACSignal {
-        let subject = RACReplaySubject()
-        let oauth = OAuth2Swift(
-            consumerKey: env.instagramClientId,
-            consumerSecret: "",
-            authorizeUrl: "https://api.instagram.com/oauth/authorize",
-            responseType: "token"
-        )
-        oauth.authorize_url_handler = authWebVC ?? oauth.authorize_url_handler
-        oauth.authorizeWithCallbackURL(NSURL("\(env.audience.urlScheme)\(env.oauthCallbackPath)/instagram"),
-            scope: "likes",
-            state: generateStateWithLength(20) as String,
-            success: { credential, response, parameters in
-                subject.sendNext(nil)
-            Async.main {
-                Meteor.addService(.Instagram, accessToken: credential.oauth_token).subscribe(subject)
-            }
-            Log.debug("Successfulled received token from instagram")
-        }, failure: { error in
-            Log.error("Unable to link instagram", error)
-            subject.sendError(error)
-        })
+        let authWebVC = makeAuthWebVC()
+        authWebVC.targetURL = url
+        let rootVC = UIApplication.sharedApplication().keyWindow?.rootViewController
+        rootVC?.presentViewController(authWebVC, animated: true, completion: nil)
         return subject.deliverOnMainThread()
     }
     
@@ -113,7 +71,7 @@ class LinkAccountService {
                 subject.sendNext(nil) // TODO: Used to signal progress, make more explicit
                 Log.debug("Successfulled received token from facebook")
                 Async.main {
-                    Meteor.addService(.Facebook, accessToken: result.token.tokenString).subscribe(subject)
+                    Meteor.addService("facebook", accessToken: result.token.tokenString).subscribe(subject)
                 }
             }
         }
@@ -131,55 +89,6 @@ class LinkAccountService {
             sourceApplication: sourceApplication, annotation: annotation) {
             return true
         }
-        let oauth1Keys = [
-            "twitter",
-            "flickr",
-            "fitbit",
-            "withings",
-            "linkedin",
-            "bitbucket",
-            "smugmug",
-            "intuit",
-            "zaim",
-            "tumblr",
-        ]
-        let oauth2Keys = [
-            "github",
-            "instagram",
-            "foursquare",
-            "dropbox",
-            "dribbble",
-            "salesforce",
-            "google",
-            "linkedin2",
-        ]
-        if let path = url.path where url.host == Globals.env.oauthCallbackPath {
-            for key in oauth1Keys {
-                if path.hasPrefix("/" + key) {
-                    OAuth1Swift.handleOpenURL(url)
-                    return true
-                }
-            }
-            for key in oauth2Keys {
-                if path.hasPrefix("/" + key) {
-                    OAuth2Swift.handleOpenURL(url)
-                    return true
-                }
-            }
-        } else {
-            // TODO: Should check explicitly whether it's a google request
-            // Google provider is the only one with your.bundle.id url schema.
-            OAuth2Swift.handleOpenURL(url)
-            return true // For now return false because we don't do google yet
-        }
         return false
-    }
-}
-
-extension AuthWebViewController : OAuthSwiftURLHandlerType {
-    @objc func handle(url: NSURL) {
-        targetURL = url
-        let rootVC = UIApplication.sharedApplication().keyWindow?.rootViewController
-        rootVC?.presentViewController(self, animated: true, completion: nil)
     }
 }

@@ -16,13 +16,13 @@ class MeServiceCell : UICollectionViewCell {
     @IBOutlet weak var userDisplayNameLabel: UILabel!
     
     func bindViewModel(viewModel: ServiceViewModel) {
-        viewModel.serviceIcon ->> serviceIconView
+        viewModel.serviceIconURL ->> serviceIconView.dynImageURL
         viewModel.userDisplayName ->> userDisplayNameLabel
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        serviceIconView.designatedBond.unbindAll()
+        serviceIconView.unbindDynImageURL()
         userDisplayNameLabel.designatedBond.unbindAll()
     }
 }

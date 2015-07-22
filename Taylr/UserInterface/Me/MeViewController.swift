@@ -71,7 +71,7 @@ class MeViewController : BaseViewController {
         }
     }
         
-    func linkService(type: Service.ServiceType) {
+    func linkService(type: ServiceType) {
         linkAccountService.linkNewService(type, useWebView: true).subscribeNext({ _ in
             PKHUD.showActivity()
         }, error: { error in
@@ -90,9 +90,9 @@ class MeViewController : BaseViewController {
     
     @IBAction func showLinkServiceOptions(sender: AnyObject) {
         let sheet = UIAlertController(title: LS(.meLinkNewSerivceTitle), message: nil, preferredStyle: .ActionSheet)
-        for option in viewModel.linkableAccounts {
-            sheet.addAction(option.name) { _ in
-                self.linkService(option.type)
+        for option in viewModel.serviceTypes.value {
+            sheet.addAction(option.name ?? "") { _ in
+                self.linkService(option)
             }
         }
         sheet.addAction(LS(.meCancelTitle), style: .Cancel)
