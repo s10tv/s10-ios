@@ -15,46 +15,48 @@ class TestAppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
     func showPlayer() {
-        let videos = [PlayerVideoViewModel(
-            url: NSBundle.mainBundle().URLForResource("v1", withExtension: "mp4")!,
-            duration: 6,
-            timestamp: NSDate(),
-            avatarURL: NSURL(string: "https://s10tv.blob.core.windows.net/s10tv-dev/e9iNi8Xt6riZ2rDq4/profilepic/503F4409-0938-42F1-8691-772023E24915/CfRwWcJt7PEKg5hyN.jpg")!
-        ), PlayerVideoViewModel(
-            url: NSBundle.mainBundle().URLForResource("v2", withExtension: "mp4")!,
-            duration: 6,
-            timestamp: NSDate(),
-            avatarURL: NSURL(string: "https://s10tv.blob.core.windows.net/s10tv-dev/e9iNi8Xt6riZ2rDq4/profilepic/503F4409-0938-42F1-8691-772023E24915/CfRwWcJt7PEKg5hyN.jpg")!
-        ), PlayerVideoViewModel(
-            url: NSBundle.mainBundle().URLForResource("v3", withExtension: "mp4")!,
-            duration: 6,
-            timestamp: NSDate(),
-            avatarURL: NSURL(string: "https://s10tv.blob.core.windows.net/s10tv-dev/e9iNi8Xt6riZ2rDq4/profilepic/503F4409-0938-42F1-8691-772023E24915/CfRwWcJt7PEKg5hyN.jpg")!
-        ), PlayerVideoViewModel(
-            // TODO: Handle player error
-            url: NSURL(string: "https://v.cdn.vine.co/r/thumbs/8636A156941218322045914730496_3.1.5.1291864700104997071.mp4")!,
-            duration: 6,
-            timestamp: NSDate(),
-            avatarURL: NSURL(string: "https://s10tv.blob.core.windows.net/s10tv-dev/e9iNi8Xt6riZ2rDq4/profilepic/503F4409-0938-42F1-8691-772023E24915/CfRwWcJt7PEKg5hyN.jpg")!
-        ), PlayerVideoViewModel(
-            url: NSBundle.mainBundle().URLForResource("v4", withExtension: "mp4")!,
-            duration: 6,
-            timestamp: NSDate(),
-            avatarURL: NSURL(string: "https://s10tv.blob.core.windows.net/s10tv-dev/e9iNi8Xt6riZ2rDq4/profilepic/503F4409-0938-42F1-8691-772023E24915/CfRwWcJt7PEKg5hyN.jpg")!
-        )]
-        
-        let sb = UIStoryboard(name: "AVKit", bundle: nil)
-        let player = sb.instantiateViewControllerWithIdentifier("Player") as! PlayerViewController
-        player.interactor = PlayerInteractor()
-        player.interactor.videoQueue = videos
-        
-        let root = UINavigationController(rootViewController: player)
-        window?.rootViewController = root
+//        let videos = [PlayerVideoViewModel(
+//            url: NSBundle.mainBundle().URLForResource("v1", withExtension: "mp4")!,
+//            duration: 6,
+//            timestamp: NSDate(),
+//            avatarURL: NSURL(string: "https://s10tv.blob.core.windows.net/s10tv-dev/e9iNi8Xt6riZ2rDq4/profilepic/503F4409-0938-42F1-8691-772023E24915/CfRwWcJt7PEKg5hyN.jpg")!
+//        ), PlayerVideoViewModel(
+//            url: NSBundle.mainBundle().URLForResource("v2", withExtension: "mp4")!,
+//            duration: 6,
+//            timestamp: NSDate(),
+//            avatarURL: NSURL(string: "https://s10tv.blob.core.windows.net/s10tv-dev/e9iNi8Xt6riZ2rDq4/profilepic/503F4409-0938-42F1-8691-772023E24915/CfRwWcJt7PEKg5hyN.jpg")!
+//        ), PlayerVideoViewModel(
+//            url: NSBundle.mainBundle().URLForResource("v3", withExtension: "mp4")!,
+//            duration: 6,
+//            timestamp: NSDate(),
+//            avatarURL: NSURL(string: "https://s10tv.blob.core.windows.net/s10tv-dev/e9iNi8Xt6riZ2rDq4/profilepic/503F4409-0938-42F1-8691-772023E24915/CfRwWcJt7PEKg5hyN.jpg")!
+//        ), PlayerVideoViewModel(
+//            // TODO: Handle player error
+//            url: NSURL(string: "https://v.cdn.vine.co/r/thumbs/8636A156941218322045914730496_3.1.5.1291864700104997071.mp4")!,
+//            duration: 6,
+//            timestamp: NSDate(),
+//            avatarURL: NSURL(string: "https://s10tv.blob.core.windows.net/s10tv-dev/e9iNi8Xt6riZ2rDq4/profilepic/503F4409-0938-42F1-8691-772023E24915/CfRwWcJt7PEKg5hyN.jpg")!
+//        ), PlayerVideoViewModel(
+//            url: NSBundle.mainBundle().URLForResource("v4", withExtension: "mp4")!,
+//            duration: 6,
+//            timestamp: NSDate(),
+//            avatarURL: NSURL(string: "https://s10tv.blob.core.windows.net/s10tv-dev/e9iNi8Xt6riZ2rDq4/profilepic/503F4409-0938-42F1-8691-772023E24915/CfRwWcJt7PEKg5hyN.jpg")!
+//        )]
+//        
+//        let sb = UIStoryboard(name: "AVKit", bundle: nil)
+//        let player = sb.instantiateViewControllerWithIdentifier("Player") as! PlayerViewController
+//        player.interactor = PlayerInteractor()
+//        player.interactor.videoQueue = videos
+//        
+//        let root = UINavigationController(rootViewController: player)
+//        window?.rootViewController = root
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        window?.rootViewController = UIStoryboard(name: "Test", bundle: nil).instantiateInitialViewController() as? UIViewController
         
-        showPlayer() 
+        
+//        showPlayer() 
         return true
     }
 

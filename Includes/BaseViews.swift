@@ -31,6 +31,26 @@ extension UIView {
         get { return UIColor(CGColor: layer.shadowColor) }
         set { layer.shadowColor = newValue?.CGColor }
     }
+    
+    @IBInspectable public var shadowOffset: CGSize {
+        get { return layer.shadowOffset }
+        set { layer.shadowOffset = newValue }
+    }
+    
+    @IBInspectable public var shadowRadius: CGFloat {
+        get { return layer.shadowRadius }
+        set { layer.shadowRadius = newValue }
+    }
+    
+    @IBInspectable public var shadowOpacity: Float {
+        get { return layer.shadowOpacity }
+        set { layer.shadowOpacity = newValue }
+    }
+    
+    @IBInspectable public var masksToBounds: Bool {
+        get { return layer.masksToBounds }
+        set { layer.masksToBounds = newValue }
+    }
 }
 
 public class BaseView : UIView {

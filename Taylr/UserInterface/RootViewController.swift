@@ -25,7 +25,7 @@ class RootViewController : UINavigationController {
         
         navigationBar.titleTextAttributes = [
             NSFontAttributeName: UIFont(.cabinMedium, size: 20),
-            NSForegroundColorAttributeName: StyleKit.defaultWhite
+            NSForegroundColorAttributeName: StyleKit.textWhite
         ]
     }
     

@@ -20,8 +20,8 @@ public class StyleKit : NSObject {
         static var brandPurple: UIColor = UIColor(red: 0.290, green: 0.078, blue: 0.549, alpha: 1.000)
         static var teal: UIColor = UIColor(red: 0.137, green: 0.588, blue: 0.580, alpha: 1.000)
         static var navy: UIColor = UIColor(red: 0.051, green: 0.392, blue: 0.537, alpha: 1.000)
-        static var defaultWhite: UIColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
-        static var white: UIColor = UIColor(red: 0.941, green: 0.976, blue: 0.980, alpha: 1.000)
+        static var textWhite: UIColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
+        static var backgroundWhite: UIColor = UIColor(red: 0.933, green: 0.941, blue: 0.949, alpha: 1.000)
         static var waterBlue: UIColor = UIColor(red: 0.055, green: 0.894, blue: 0.941, alpha: 1.000)
         static var waterAlt: UIColor = UIColor(red: 0.263, green: 0.871, blue: 0.863, alpha: 1.000)
         static var gradientWaterColor: UIColor = UIColor(red: 0.549, green: 0.976, blue: 1.000, alpha: 1.000)
@@ -29,7 +29,6 @@ public class StyleKit : NSObject {
         static var gradientSandColor: UIColor = UIColor(red: 0.882, green: 0.871, blue: 0.788, alpha: 1.000)
         static var gradientSandColor2: UIColor = UIColor(red: 0.941, green: 0.980, blue: 0.969, alpha: 1.000)
         static var pureWhite: UIColor = UIColor(red: 1.000, green: 1.000, blue: 1.000, alpha: 1.000)
-        static var darkWhite: UIColor = StyleKit.white.colorWithBrightness(0.95)
         static var waterTop: UIColor = UIColor(red: 0.773, green: 1.000, blue: 0.997, alpha: 1.000)
         static var waterBottom: UIColor = UIColor(red: 0.055, green: 0.894, blue: 0.941, alpha: 1.000)
         static var navyLight: UIColor = StyleKit.navy.colorWithAlpha(0.22)
@@ -38,7 +37,7 @@ public class StyleKit : NSObject {
         static var navy35: UIColor = StyleKit.navy.colorWithAlpha(0.35)
         static var gradientWater: CGGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [StyleKit.gradientWaterColor.CGColor, StyleKit.waterBlue.CGColor, StyleKit.waterAlt.CGColor], [0, 0.19, 1])
         static var gradientSand: CGGradient = CGGradientCreateWithColors(CGColorSpaceCreateDeviceRGB(), [StyleKit.gradientSandColor.CGColor, StyleKit.gradientSandColor2.CGColor], [0, 1])
-        static var shadow: NSShadow = NSShadow(color: UIColor.blackColor().colorWithAlphaComponent(0.08), offset: CGSizeMake(0.1, 2.1), blurRadius: 5)
+        static var candidateShadow: NSShadow = NSShadow(color: UIColor.blackColor().colorWithAlphaComponent(0.1), offset: CGSizeMake(0.1, -1.1), blurRadius: 3)
     }
 
     //// Colors
@@ -46,8 +45,8 @@ public class StyleKit : NSObject {
     public class var brandPurple: UIColor { return Cache.brandPurple }
     public class var teal: UIColor { return Cache.teal }
     public class var navy: UIColor { return Cache.navy }
-    public class var defaultWhite: UIColor { return Cache.defaultWhite }
-    public class var white: UIColor { return Cache.white }
+    public class var textWhite: UIColor { return Cache.textWhite }
+    public class var backgroundWhite: UIColor { return Cache.backgroundWhite }
     public class var waterBlue: UIColor { return Cache.waterBlue }
     public class var waterAlt: UIColor { return Cache.waterAlt }
     public class var gradientWaterColor: UIColor { return Cache.gradientWaterColor }
@@ -55,7 +54,6 @@ public class StyleKit : NSObject {
     public class var gradientSandColor: UIColor { return Cache.gradientSandColor }
     public class var gradientSandColor2: UIColor { return Cache.gradientSandColor2 }
     public class var pureWhite: UIColor { return Cache.pureWhite }
-    public class var darkWhite: UIColor { return Cache.darkWhite }
     public class var waterTop: UIColor { return Cache.waterTop }
     public class var waterBottom: UIColor { return Cache.waterBottom }
     public class var navyLight: UIColor { return Cache.navyLight }
@@ -70,7 +68,7 @@ public class StyleKit : NSObject {
 
     //// Shadows
 
-    public class var shadow: NSShadow { return Cache.shadow }
+    public class var candidateShadow: NSShadow { return Cache.candidateShadow }
 
 }
 

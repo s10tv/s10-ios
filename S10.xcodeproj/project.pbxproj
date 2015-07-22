@@ -80,6 +80,7 @@
 		EA56B88E1B53388F001488F2 /* ConnectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA56B88D1B53388F001488F2 /* ConnectionViewModel.swift */; };
 		EA57CEC91B45EB4000759139 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA57CEC81B45EB4000759139 /* SignupViewController.swift */; };
 		EA57CECD1B4608EF00759139 /* Bond+XLForm.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA57CECC1B4608EF00759139 /* Bond+XLForm.swift */; };
+		EA588DB81B5F1437000962B8 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA588DB71B5F1437000962B8 /* TestViewController.swift */; };
 		EA5B740B1B30F7BB008E5CBC /* TestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5B740A1B30F7BB008E5CBC /* TestAppDelegate.swift */; };
 		EA5B74141B30F7BB008E5CBC /* TestApp.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA5B74131B30F7BB008E5CBC /* TestApp.xcassets */; };
 		EA5B74171B30F7BB008E5CBC /* TestLaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA5B74151B30F7BB008E5CBC /* TestLaunchScreen.xib */; };
@@ -324,6 +325,7 @@
 		EA56B88D1B53388F001488F2 /* ConnectionViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionViewModel.swift; sourceTree = "<group>"; };
 		EA57CEC81B45EB4000759139 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		EA57CECC1B4608EF00759139 /* Bond+XLForm.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bond+XLForm.swift"; sourceTree = "<group>"; };
+		EA588DB71B5F1437000962B8 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		EA5B74061B30F7BB008E5CBC /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA5B74091B30F7BB008E5CBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		EA5B740A1B30F7BB008E5CBC /* TestAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestAppDelegate.swift; sourceTree = "<group>"; };
@@ -642,6 +644,7 @@
 			isa = PBXGroup;
 			children = (
 				EA5B740A1B30F7BB008E5CBC /* TestAppDelegate.swift */,
+				EA588DB71B5F1437000962B8 /* TestViewController.swift */,
 				EA5B742B1B30FC9D008E5CBC /* Test.storyboard */,
 				EA5B74131B30F7BB008E5CBC /* TestApp.xcassets */,
 				EA5B74151B30F7BB008E5CBC /* TestLaunchScreen.xib */,
@@ -1479,6 +1482,7 @@
 				EAF81B2D1B33883A00EED6DD /* ProducerViewController.swift in Sources */,
 				EAF81B351B33890E00EED6DD /* R.swift in Sources */,
 				EAF81B321B3388C600EED6DD /* TouchDetector.swift in Sources */,
+				EA588DB81B5F1437000962B8 /* TestViewController.swift in Sources */,
 				EAF81B2E1B33883A00EED6DD /* RecorderViewController.swift in Sources */,
 				EA009D541B5BFED900FC7E3D /* Bond+SDWebImage.swift in Sources */,
 				EA06AAB81B3B2D2B000E128C /* PKHUDExtension.swift in Sources */,
