@@ -17,9 +17,6 @@ class RootViewController : UINavigationController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        view.whenEdgePanned(.Left) { [weak self] a, b in self!.handleEdgePan(a, edge: b) }
-        view.whenEdgePanned(.Right) { [weak self] a, b in self!.handleEdgePan(a, edge: b) }
         
         transitionManager = TransitionManager(navigationController: self)
         
@@ -34,23 +31,6 @@ class RootViewController : UINavigationController {
     }
     
     // MARK: Target Action
-    
-    func handleEdgePan(gesture: UIScreenEdgePanGestureRecognizer, edge: UIRectEdge) {
-//        if Meteor.settings.edgePanEnabled != true {
-//            return
-//        }
-        switch gesture.state {
-        case .Began:
-            transitionManager.currentEdgePan = gesture
-            if let vc = self.topViewController as? BaseViewController {
-                vc.handleScreenEdgePan(edge)
-            }
-        case .Ended, .Cancelled:
-            transitionManager.currentEdgePan = nil
-        default:
-            break
-        }
-    }
     
     @IBAction func goBack(sender: AnyObject) {
         if let vc = presentedViewController {

@@ -3,6 +3,7 @@
 public enum CollectionViewCellreuseIdentifier : String {
     case AddCell = "AddCell"
     case CandidateCell = "CandidateCell"
+    case CandidateService = "CandidateService"
     case MeServiceCell = "MeServiceCell"
     case ServiceCell = "ServiceCell"
 }
@@ -13,16 +14,12 @@ public enum NavigationControllerStoryboardIdentifier : String {
 
 public enum SegueIdentifier : String {
     case ChatsToConversation = "ChatsToConversation"
-    case ChatsToDiscover = "ChatsToDiscover"
     case ConversationPage = "ConversationPage"
-    case DiscoverToChats = "DiscoverToChats"
-    case DiscoverToMe = "DiscoverToMe"
     case LoadingToRootTab = "LoadingToRootTab"
     case LoginToSignup = "LoginToSignup"
     case Main_Chat = "Main_Chat"
     case Main_Discover = "Main_Discover"
     case Main_Profile = "Main_Profile"
-    case MeToDiscover = "MeToDiscover"
     case MeToEditProfile = "MeToEditProfile"
     case Onboarding_Login = "Onboarding_Login"
     case Onboarding_Signup = "Onboarding_Signup"

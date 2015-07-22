@@ -16,10 +16,6 @@ class BaseViewController : UIViewController {
     
     private var metadataDisposable: RACDisposable?
     
-    func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
-        return false
-    }
-    
     // MARK: - Initialization
 
     required init(coder aDecoder: NSCoder) {

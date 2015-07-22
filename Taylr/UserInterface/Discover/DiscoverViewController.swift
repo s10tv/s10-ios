@@ -60,18 +60,6 @@ class DiscoverViewController : BaseViewController {
                                                 bottom: bottomLayoutGuide.length, right: 0)
     }
     
-    override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
-        Log.debug("Handding to edge \(edge) from gameVC")
-        if edge == .Right {
-            performSegue(.DiscoverToChats)
-            return true
-        } else if edge == .Left {
-            performSegue(.DiscoverToMe)
-            return true
-        }
-        return super.handleScreenEdgePan(edge)
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let profileVC = segue.destinationViewController as? ProfileViewController,
             let indexPath = collectionView.indexPathsForSelectedItems().first as? NSIndexPath {

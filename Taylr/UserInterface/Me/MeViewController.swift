@@ -70,16 +70,7 @@ class MeViewController : BaseViewController {
             segue.replaceStrategy = .Stack
         }
     }
-    
-    override func handleScreenEdgePan(edge: UIRectEdge) -> Bool {
-        Log.debug("Handding to edge \(edge) from dockVC")
-        if edge == .Right {
-            performSegue(.MeToDiscover)
-            return true
-        }
-        return super.handleScreenEdgePan(edge)
-    }
-    
+        
     func linkService(type: Service.ServiceType) {
         linkAccountService.linkNewService(type, useWebView: true).subscribeNext({ _ in
             PKHUD.showActivity()
