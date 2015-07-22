@@ -30,7 +30,6 @@ public class ProfileInteractor {
         self.user = user
         services = Service
             .by(ServiceKeys.user, value: user)
-            .sorted(by: ServiceKeys.serviceType.rawValue, ascending: true)
             .results(Service).map { ServiceViewModel($0) }
         activities = Activity
             .by(ActivityKeys.user, value: user)
