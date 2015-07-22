@@ -31,7 +31,8 @@ public class MeteorService : NSObject {
         connections: METCollection,
         messages: METCollection,
         posts: METCollection,
-        videos: METCollection
+        videos: METCollection,
+        serviceTypes: METCollection
     )
     public let meta: Metadata
     public let settings: Settings
@@ -69,7 +70,8 @@ public class MeteorService : NSObject {
             connections: meteor.database.collectionWithName("connections"),
             messages: meteor.database.collectionWithName("messages"),
             posts: meteor.database.collectionWithName("posts"),
-            videos: meteor.database.collectionWithName("videos")
+            videos: meteor.database.collectionWithName("videos"),
+            serviceTypes: meteor.database.collectionWithName("serviceTypes")
         )
         meta = Metadata(collection: collections.metadata)
         settings = Settings(collection: collections.settings)

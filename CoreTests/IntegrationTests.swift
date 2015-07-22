@@ -254,6 +254,27 @@ class IntegrationTests : XCTestCase {
             return subject
         }
     }
+    
+    func testServiceTypes() {
+        whileAuthenticated {
+            let subject = RACReplaySubject()
+            
+            expect(self.meteor.collections.serviceTypes.allDocuments.count).toEventually(beGreaterThan(0), timeout: 5)
+            expect(ServiceType.all().fetch().count).toEventually(beGreaterThan(0), timeout: 5)
+            
+//            self.meteor.subscriptions.serviceTypes.whenDone { _ in
+//                let numServiceTypes = ServiceType.all().fetch().count
+//                
+//                expect(numServiceTypes) > 0
+//                
+//                
+//                subject.sendCompleted()
+//            }
+            subject.sendCompleted()
+            
+            return subject
+        }
+    }
 
     class func deleteRealmFilesAtPath(path: String) {
         let fileManager = NSFileManager.defaultManager()
