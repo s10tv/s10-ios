@@ -7,11 +7,11 @@ public enum ServiceKeys: String, Printable {
 
     case avatar = "avatar"
 
-    case serviceType = "serviceType"
-
     case userDisplayName = "userDisplayName"
 
     case userIdentifier = "userIdentifier"
+
+    case serviceType = "serviceType"
 
     case user = "user"
 
@@ -50,11 +50,6 @@ class _Service: NSManagedObject {
     // func validateAvatar(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged public
-    var serviceType: String?
-
-    // func validateServiceType(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
-
-    @NSManaged public
     var userDisplayName: String?
 
     // func validateUserDisplayName(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
@@ -65,6 +60,11 @@ class _Service: NSManagedObject {
     // func validateUserIdentifier(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
+
+    @NSManaged public
+    var serviceType: ServiceType?
+
+    // func validateServiceType(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged public
     var user: User?

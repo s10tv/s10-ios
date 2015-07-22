@@ -8,38 +8,21 @@
 
 import Foundation
 import Bond
+import ReactiveCocoa
 
 public struct ServiceViewModel {
     public let service: Service
-    public let name: Dynamic<String>
-    public let serviceIcon: Dynamic<UIImage?>
+    public let name: PropertyOf<String>
+    public let serviceIconURL: PropertyOf<NSURL?>
     public let userDisplayName: Dynamic<String>
     
     public init(_ service: Service) {
         self.service = service
-        name = service.type.map {
-            if let type = $0 {
-                switch type {
-                // TODO: Figure out ways to avoid hardcoding non-localized string
-                case .Facebook: return "Facebook"
-                case .Instagram: return "Instagram"
-                case .Github: return "Github"
-                case .Twitter: return "Twitter"
-                }
-            }
-            return ""
+        name = service.dynServiceType |> map {
+            return $0?.name ?? ""
         }
-        serviceIcon = service.type.map {
-            if let type = $0 {
-                switch type {
-                // TODO: Figure out ways to avoid hardcoding image name
-                case .Facebook: return UIImage(named: "ic-facebook")
-                case .Instagram: return UIImage(named: "ic-instagram")
-                case .Github: return UIImage(named: "ic-github")
-                case .Twitter: return UIImage(named: "ic-twitter")
-                }
-            }
-            return nil
+        serviceIconURL = service.dynServiceType |> map {
+            return $0?.dynIconURL.value
         }
         userDisplayName = service.dynUserDisplayName.map { $0 ?? "" }
     }

@@ -8,6 +8,7 @@
 
 import Foundation
 import Bond
+import ReactiveCocoa
 
 public struct ActivityViewModel {
     let activity: Activity
@@ -17,7 +18,7 @@ public struct ActivityViewModel {
     public let image: Dynamic<Image?>
     public let text: Dynamic<String>
     public let quote: Dynamic<String>
-    public let serviceName: Dynamic<String>
+    public let serviceName: PropertyOf<String>
     
     public init(_ activity: Activity) {
         self.activity = activity
@@ -30,6 +31,6 @@ public struct ActivityViewModel {
         image = activity.dynImage
         text = activity.dynText.map(Formatters.cleanString)
         quote = activity.dynQuote.map(Formatters.cleanString)
-        serviceName = service.type.map { $0?.rawValue ?? "" }
+        serviceName = service.dynServiceType |> map { $0?.name ?? "" }
     }
 }

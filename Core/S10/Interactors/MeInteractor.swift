@@ -11,12 +11,6 @@ import Bond
 import Meteor
 import ReactiveCocoa
 
-public struct LinkableAccount {
-    public let type: Service.ServiceType
-    public let name: String
-    public let icon: UIImage?
-}
-
 public class MeInteractor {
     let meteor: MeteorService
     let taskService: TaskService
@@ -27,7 +21,7 @@ public class MeInteractor {
     public let displayName: Dynamic<String>
     public let username: Dynamic<String>
     public let linkedServices: DynamicArray<ServiceViewModel>
-    public let linkableAccounts: [LinkableAccount]
+    public let serviceTypes: FetchedResultsArray<ServiceType>
     
     public let inviteeFirstName = MutableProperty("")
     public let inviteeLastName = MutableProperty("")
@@ -44,11 +38,8 @@ public class MeInteractor {
             .by(ServiceKeys.user, value: currentUser)
             .sorted(by: ServiceKeys.serviceType.rawValue, ascending: true)
             .results(Service).map { ServiceViewModel($0) }
-        linkableAccounts = [
-            LinkableAccount(type: .Facebook, name: "Facebook", icon: UIImage(named: "ic-facebook")),
-            LinkableAccount(type: .Instagram, name: "Instagram", icon: UIImage(named: "ic-instagram")),
-            LinkableAccount(type: .Github, name: "Github", icon: UIImage(named: "ic-github"))
-        ]
+        serviceTypes = ServiceType.all().results(ServiceType)
+        
         servicesSubscription = meteor.subscribeServices(currentUser)
     }
 

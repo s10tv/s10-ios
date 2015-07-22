@@ -109,6 +109,8 @@
 		EA7FB0981B5EF9D50052B394 /* Cabin-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB0921B5EF9D50052B394 /* Cabin-MediumItalic.ttf */; };
 		EA7FB0991B5EF9D50052B394 /* Cabin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB0931B5EF9D50052B394 /* Cabin-Regular.ttf */; };
 		EA82677E1B5F41ED00D3AE70 /* RootInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA82677D1B5F41ED00D3AE70 /* RootInteractor.swift */; };
+		EA8267801B5F6DA200D3AE70 /* _ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA82677F1B5F6DA200D3AE70 /* _ServiceType.swift */; };
+		EA8267821B5F6DAA00D3AE70 /* ServiceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8267811B5F6DAA00D3AE70 /* ServiceType.swift */; };
 		EA82CF971B504FC500A12D94 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA82CF961B504FC500A12D94 /* Image.swift */; };
 		EA8896221B4F3C1300E180A6 /* ReactiveProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA10472D1B4E74A300B1A76A /* ReactiveProperties.swift */; };
 		EA925C741AD99ED8008E9F41 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA925C731AD99ED8008E9F41 /* R.swift */; };
@@ -358,6 +360,8 @@
 		EA7FB0921B5EF9D50052B394 /* Cabin-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-MediumItalic.ttf"; sourceTree = "<group>"; };
 		EA7FB0931B5EF9D50052B394 /* Cabin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Regular.ttf"; sourceTree = "<group>"; };
 		EA82677D1B5F41ED00D3AE70 /* RootInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootInteractor.swift; sourceTree = "<group>"; };
+		EA82677F1B5F6DA200D3AE70 /* _ServiceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _ServiceType.swift; sourceTree = "<group>"; };
+		EA8267811B5F6DAA00D3AE70 /* ServiceType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServiceType.swift; sourceTree = "<group>"; };
 		EA82CF961B504FC500A12D94 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		EA925C731AD99ED8008E9F41 /* R.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.swift; sourceTree = "<group>"; };
 		EA95BBA61B39308A00701F08 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
@@ -984,6 +988,7 @@
 				EAF6706B1B31F9450025D7CF /* Video.swift */,
 				EA4216471B3E093400613EFA /* Activity.swift */,
 				EA4216481B3E093400613EFA /* Service.swift */,
+				EA8267811B5F6DAA00D3AE70 /* ServiceType.swift */,
 				EAF670681B31F9450025D7CF /* Models.xcdatamodeld */,
 				EA82CF961B504FC500A12D94 /* Image.swift */,
 				EAF6708B1B31FA2E0025D7CF /* Metadata.swift */,
@@ -1004,6 +1009,7 @@
 				EAF670641B31F9450025D7CF /* _Video.swift */,
 				EA4216431B3E092200613EFA /* _Activity.swift */,
 				EA4216441B3E092200613EFA /* _Service.swift */,
+				EA82677F1B5F6DA200D3AE70 /* _ServiceType.swift */,
 			);
 			path = _Models;
 			sourceTree = "<group>";
@@ -1524,6 +1530,7 @@
 				EACEFB921B472E8800901E85 /* ConversationInteractor.swift in Sources */,
 				EAF670741B31F9450025D7CF /* MeteorExtension.swift in Sources */,
 				EA9C166F1B3726E300371B50 /* MessageViewModel.swift in Sources */,
+				EA8267801B5F6DA200D3AE70 /* _ServiceType.swift in Sources */,
 				EAF6707B1B31F9450025D7CF /* _Message.swift in Sources */,
 				EAF6709A1B3200E10025D7CF /* MeteorService.swift in Sources */,
 				EA3965151B54C19800F5B0B3 /* ReactiveBridging.swift in Sources */,
@@ -1539,6 +1546,7 @@
 				EA2406201B50F0F1003A73C3 /* VideoDownloadOperation.swift in Sources */,
 				EACEFB961B472E8800901E85 /* SignupInteractor.swift in Sources */,
 				EAF6707C1B31F9450025D7CF /* _User.swift in Sources */,
+				EA8267821B5F6DAA00D3AE70 /* ServiceType.swift in Sources */,
 				EA78C8781B320A2A0016AB73 /* AlamofireExtension.swift in Sources */,
 				F9D545491B57988200A4661B /* InviteOperation.swift in Sources */,
 				EAF670751B31F9450025D7CF /* SugarRecordExtension.swift in Sources */,

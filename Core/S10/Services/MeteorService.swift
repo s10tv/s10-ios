@@ -20,7 +20,8 @@ public class MeteorService : NSObject {
         discover: METSubscription,
         chats: METSubscription,
         messages: METSubscription,
-        userData: METSubscription
+        userData: METSubscription,
+        serviceTypes: METSubscription
     )
     public let collections: (
         metadata: METCollection,
@@ -57,7 +58,8 @@ public class MeteorService : NSObject {
             discover: meteor.addSubscriptionWithName("discover"),
             chats: meteor.addSubscriptionWithName("chats"),
             messages: meteor.addSubscriptionWithName("messages"),
-            userData: meteor.addSubscriptionWithName("userData")
+            userData: meteor.addSubscriptionWithName("userData"),
+            serviceTypes: meteor.addSubscriptionWithName("serviceTypes")
         )
         collections = (
             metadata: meteor.database.collectionWithName("metadata"),
@@ -188,8 +190,8 @@ public class MeteorService : NSObject {
     
     // MARK: - Services
     
-    public func addService(serviceType: Service.ServiceType, accessToken: String) -> RACSignal {
-        return meteor.call("me/service/add", [serviceType.rawValue, accessToken])
+    public func addService(serviceTypeId: String, accessToken: String) -> RACSignal {
+        return meteor.call("me/service/add", [serviceTypeId, accessToken])
     }
     
     public func removeService(service: Service) -> RACSignal {
