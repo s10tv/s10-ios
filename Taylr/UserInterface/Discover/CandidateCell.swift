@@ -52,5 +52,9 @@ class CandidateCell : UICollectionViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         avatarView.clipsToBounds = true
+        /// http://stackoverflow.com/questions/10133109/fastest-way-to-do-shadows-on-ios/10133182#10133182
+        /// Improve shadow performance, especially when scrolling
+        layer.shouldRasterize = true
+        layer.rasterizationScale = UIScreen.mainScreen().scale
     }
 }
