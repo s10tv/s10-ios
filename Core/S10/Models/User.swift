@@ -12,21 +12,6 @@ import Bond
 
 @objc(User)
 public class User: _User {
-    
-    public enum Gender : String {
-        case Male = "male"
-        case Female = "female"
-    }
-
-    public enum Status: String {
-        case Pending = "pending"
-        case Active = "active"
-        case Disabled = "disabled"
-    }
-    
-    public private(set) lazy var dynStatus: Dynamic<Status?> = {
-        return self.dynValue(UserKeys.status).map { $0.flatMap { Status(rawValue: $0) } }
-    }()
 
     public private(set) lazy var dynFirstName: Dynamic<String?> = {
         return self.dynValue(UserKeys.firstName)

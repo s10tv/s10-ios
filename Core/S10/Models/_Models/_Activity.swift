@@ -11,8 +11,6 @@ public enum ActivityKeys: String, Printable {
 
     case image = "image"
 
-    case imageUrl = "imageUrl"
-
     case text = "text"
 
     case timestamp = "timestamp"
@@ -66,11 +64,6 @@ class _Activity: NSManagedObject {
     var image: AnyObject?
 
     // func validateImage(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
-
-    @NSManaged public
-    var imageUrl: String?
-
-    // func validateImageUrl(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged public
     var text: String?

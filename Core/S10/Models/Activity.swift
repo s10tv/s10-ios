@@ -16,10 +16,6 @@ public class Activity : _Activity {
         case Like = "like"
     }
 
-    public private(set) lazy var imageURL: Dynamic<NSURL?> = {
-        return self.dynValue(ActivityKeys.imageUrl).map { NSURL.fromString($0) }
-    }()
-    
     public private(set) lazy var dynImage: Dynamic<Image?> = { // TOOD: Write a flatMap for dynamic / propertyOf
         return self.dynValue(ActivityKeys.image).map { $0.map { Image.fromDict($0) } ?? nil }
     }()

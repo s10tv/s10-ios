@@ -4,7 +4,6 @@
         <attribute name="action" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="caption" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="imageUrl" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="videoUrl" optional="YES" attributeType="String" syncable="YES"/>
@@ -42,10 +41,8 @@
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="distance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="gender" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastActive" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="connection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Connection" inverseName="otherUser" inverseEntity="Connection" syncable="YES">
             <userInfo>
@@ -69,11 +66,11 @@
         </relationship>
     </entity>
     <elements>
-        <element name="Activity" positionX="790" positionY="72" width="128" height="180"/>
+        <element name="Activity" positionX="790" positionY="72" width="128" height="165"/>
         <element name="Connection" positionX="-819" positionY="9" width="128" height="135"/>
         <element name="Message" positionX="-207" positionY="27" width="128" height="135"/>
         <element name="Service" positionX="700" positionY="-297" width="128" height="120"/>
-        <element name="User" positionX="268" positionY="-261" width="128" height="255"/>
+        <element name="User" positionX="268" positionY="-261" width="128" height="225"/>
         <element name="Video" positionX="-234" positionY="90" width="128" height="105"/>
     </elements>
 </model>
