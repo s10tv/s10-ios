@@ -121,7 +121,6 @@
                         <segue destination="lnc-Fm-oTi" kind="relationship" relationship="viewControllers" id="doz-Fa-bbU"/>
                         <segue destination="5Q6-Kt-6sh" kind="relationship" relationship="viewControllers" id="siY-pH-qKt"/>
                         <segue destination="GSL-sK-91w" kind="relationship" relationship="viewControllers" id="UNI-B6-dNU"/>
-                        <segue destination="mIZ-vh-lBm" kind="relationship" relationship="viewControllers" id="OuW-ZH-qPz"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JRV-fZ-84H" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -972,7 +971,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gHe-b3-ukq">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHe-b3-ukq">
                                 <rect key="frame" x="0.0" y="64" width="600" height="152"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylor Swift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxr-IQ-qXL">
@@ -999,15 +998,12 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbD-Xd-M9J">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbD-Xd-M9J">
                                         <rect key="frame" x="289" y="8" width="303" height="136"/>
                                         <state key="normal" title="Edit">
                                             <color key="titleColor" red="0.61960784310000006" green="0.4941176471" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
-                                        <connections>
-                                            <segue destination="GLZ-GV-JCx" kind="show" identifier="MeToEditProfile" id="cbZ-be-oIq"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1031,7 +1027,7 @@
                                     <outletCollection property="gestureRecognizers" destination="Qbq-hv-eUJ" appends="YES" id="im1-NY-lCH"/>
                                 </connections>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MyP-Vv-W6L">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MyP-Vv-W6L">
                                 <rect key="frame" x="36" y="550" width="49" height="30"/>
                                 <state key="normal" title="Logout">
                                     <color key="titleColor" red="0.61960784310000006" green="0.4941176471" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1041,7 +1037,7 @@
                                     <action selector="showLogoutOptions:" destination="mIZ-vh-lBm" eventType="touchUpInside" id="JQ8-TW-8yB"/>
                                 </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ywF-Eq-btS">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ywF-Eq-btS">
                                 <rect key="frame" x="16" y="347" width="568" height="300"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1149,12 +1145,12 @@
                                     <outlet property="delegate" destination="mIZ-vh-lBm" id="77D-Ed-fd6"/>
                                 </connections>
                             </collectionView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="P1R-HM-3wq" customClass="JVFloatLabeledTextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="P1R-HM-3wq" customClass="JVFloatLabeledTextField">
                                 <rect key="frame" x="16" y="250" width="251" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qac-Tv-qie">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qac-Tv-qie">
                                 <rect key="frame" x="534" y="266" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="CeM-iI-2Sp"/>
@@ -1167,18 +1163,18 @@
                                     <action selector="didPressInviteButton:" destination="mIZ-vh-lBm" eventType="touchUpInside" id="GoG-EH-NWo"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hkr-0F-0DU" customClass="JVFloatLabeledTextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hkr-0F-0DU" customClass="JVFloatLabeledTextField">
                                 <rect key="frame" x="275" y="250" width="251" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Know someone who should be on Taylr? Send a personal invite" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xsP-zD-0HY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Know someone who should be on Taylr? Send a personal invite" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xsP-zD-0HY">
                                 <rect key="frame" x="16" y="224" width="568" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email or Phone" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VR4-NQ-JIF" customClass="JVFloatLabeledTextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email or Phone" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VR4-NQ-JIF" customClass="JVFloatLabeledTextField">
                                 <rect key="frame" x="16" y="297" width="510" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
@@ -1227,17 +1223,12 @@
                         <outlet property="inviteeLastNameField" destination="hkr-0F-0DU" id="dm6-Sn-0fc"/>
                         <outlet property="nameLabel" destination="Lxr-IQ-qXL" id="xZv-uD-p8B"/>
                         <outlet property="usernameLabel" destination="D9T-Ho-de1" id="8Fo-jI-Fow"/>
-                        <segue destination="VVH-o2-j4o" kind="custom" identifier="Onboarding_Login" customClass="LinkedStoryboardPushSegue" id="tQ4-cK-7eW"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yWV-ja-hlq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="Qbq-hv-eUJ">
-                    <connections>
-                        <segue destination="O0f-xd-Ps7" kind="show" id="zOU-zf-DhR"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Qbq-hv-eUJ"/>
             </objects>
-            <point key="canvasLocation" x="-273" y="2032"/>
+            <point key="canvasLocation" x="-1736" y="2016"/>
         </scene>
         <!--Onboarding - Login-->
         <scene sceneID="IJI-Me-SMT">
@@ -1255,7 +1246,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="h0p-Zh-CC4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-775" y="2199"/>
+            <point key="canvasLocation" x="-779" y="691"/>
         </scene>
         <!--Edit Profile-->
         <scene sceneID="h30-kk-M5h">
@@ -1456,7 +1447,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-273" y="2986"/>
+            <point key="canvasLocation" x="-273" y="3154"/>
         </scene>
         <!--Onboarding - Signup-->
         <scene sceneID="rd6-Ha-sjX">
@@ -1474,7 +1465,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uGc-ka-nq9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-775" y="1857"/>
+            <point key="canvasLocation" x="-1061" y="691"/>
         </scene>
         <!--Me-->
         <scene sceneID="mpb-Iu-zWb">
@@ -1751,7 +1742,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-1381" y="2199"/>
+            <point key="canvasLocation" x="-273" y="2127"/>
         </scene>
         <!--Page View Controller-->
         <scene sceneID="Kj1-tC-fKy">
@@ -1875,7 +1866,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="spw-9c-vG5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2068" y="2283.5"/>
+            <point key="canvasLocation" x="-960" y="2445.5"/>
         </scene>
     </scenes>
     <resources>
@@ -1895,9 +1886,8 @@
         <image name="sample-taylor-video-frame" width="375" height="375"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="MDC-mS-pup"/>
-        <segue reference="pTL-As-d01"/>
         <segue reference="Hrk-zE-6Yh"/>
+        <segue reference="pTL-As-d01"/>
         <segue reference="yhs-PQ-k4J"/>
     </inferredMetricsTieBreakers>
 </document>
