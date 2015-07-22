@@ -259,17 +259,14 @@ class IntegrationTests : XCTestCase {
         whileAuthenticated {
             let subject = RACReplaySubject()
             
-            expect(self.meteor.collections.serviceTypes.allDocuments.count).toEventually(beGreaterThan(0), timeout: 5)
-            expect(ServiceType.all().fetch().count).toEventually(beGreaterThan(0), timeout: 5)
-            
-//            self.meteor.subscriptions.serviceTypes.whenDone { _ in
-//                let numServiceTypes = ServiceType.all().fetch().count
-//                
-//                expect(numServiceTypes) > 0
-//                
-//                
-//                subject.sendCompleted()
-//            }
+            self.meteor.subscriptions.serviceTypes.whenDone { _ in
+                
+                expect(self.meteor.collections.serviceTypes.allDocuments.count) > 0
+                expect(ServiceType.all().fetch().count) > 0
+                
+                
+                subject.sendCompleted()
+            }
             subject.sendCompleted()
             
             return subject
