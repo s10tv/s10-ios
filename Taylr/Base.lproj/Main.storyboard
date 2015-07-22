@@ -146,18 +146,35 @@
                                             <rect key="frame" x="0.0" y="0.0" width="180" height="298"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" image="sample-taylor-avatar-square" translatesAutoresizingMaskIntoConstraints="NO" id="OLv-LL-2Yz">
-                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="218"/>
-                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jwx-T1-rAX" userLabel="Avatar Container">
+                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="222"/>
+                                                    <subviews>
+                                                        <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" image="sample-taylor-avatar-square" translatesAutoresizingMaskIntoConstraints="NO" id="OLv-LL-2Yz">
+                                                            <rect key="frame" x="0.0" y="0.0" width="180" height="219"/>
+                                                        </imageView>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstItem="OLv-LL-2Yz" firstAttribute="top" secondItem="jwx-T1-rAX" secondAttribute="top" id="0zU-fR-VUT"/>
+                                                        <constraint firstAttribute="trailing" secondItem="OLv-LL-2Yz" secondAttribute="trailing" id="2TC-rW-oDu"/>
+                                                        <constraint firstItem="OLv-LL-2Yz" firstAttribute="leading" secondItem="jwx-T1-rAX" secondAttribute="leading" id="FWO-Ju-ZUO"/>
+                                                        <constraint firstAttribute="bottom" secondItem="OLv-LL-2Yz" secondAttribute="bottom" constant="3" id="pSQ-Q0-vFY"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                                 <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fhZ-Pj-Tcn" userLabel="Name Background">
-                                                    <rect key="frame" x="0.0" y="178" width="180" height="40"/>
+                                                    <rect key="frame" x="0.0" y="179" width="180" height="40"/>
                                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="40" id="Bvo-bz-WEm"/>
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylor Swift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ib-JK-1el" userLabel="Name">
-                                                    <rect key="frame" x="8" y="188" width="81" height="20"/>
+                                                    <rect key="frame" x="8" y="189" width="81" height="20"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Medium" family="Cabin" pointSize="16"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -220,19 +237,19 @@
                                             <constraint firstItem="0dW-0L-MEx" firstAttribute="leading" secondItem="5p8-O9-cl0" secondAttribute="leadingMargin" id="0is-me-wur"/>
                                             <constraint firstAttribute="trailing" secondItem="fhZ-Pj-Tcn" secondAttribute="trailing" id="1eD-Hp-Nnb"/>
                                             <constraint firstItem="2eB-0R-AfQ" firstAttribute="leading" secondItem="5p8-O9-cl0" secondAttribute="leadingMargin" id="6pu-1T-Iwq"/>
-                                            <constraint firstItem="OLv-LL-2Yz" firstAttribute="leading" secondItem="5p8-O9-cl0" secondAttribute="leading" id="93l-54-1ov"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="2eB-0R-AfQ" secondAttribute="bottom" id="DPO-PM-lHu"/>
                                             <constraint firstItem="TKI-xG-zC5" firstAttribute="top" secondItem="0dW-0L-MEx" secondAttribute="bottom" id="EU6-43-KvC"/>
-                                            <constraint firstItem="0dW-0L-MEx" firstAttribute="top" secondItem="OLv-LL-2Yz" secondAttribute="bottom" constant="8" symbolic="YES" id="Hvi-VC-J8b"/>
+                                            <constraint firstAttribute="trailing" secondItem="jwx-T1-rAX" secondAttribute="trailing" id="Eee-iI-qJ4"/>
                                             <constraint firstItem="2eB-0R-AfQ" firstAttribute="top" secondItem="TKI-xG-zC5" secondAttribute="bottom" constant="8" symbolic="YES" id="I5W-8Z-1xF"/>
+                                            <constraint firstItem="OLv-LL-2Yz" firstAttribute="bottom" secondItem="fhZ-Pj-Tcn" secondAttribute="bottom" id="Kjv-5g-WJV"/>
                                             <constraint firstItem="7Ib-JK-1el" firstAttribute="leading" secondItem="5p8-O9-cl0" secondAttribute="leadingMargin" id="Qz8-hx-tm0"/>
-                                            <constraint firstItem="OLv-LL-2Yz" firstAttribute="top" secondItem="5p8-O9-cl0" secondAttribute="top" id="RzV-MJ-l7s"/>
-                                            <constraint firstItem="OLv-LL-2Yz" firstAttribute="bottom" secondItem="fhZ-Pj-Tcn" secondAttribute="bottom" id="UMb-it-2lJ"/>
-                                            <constraint firstAttribute="trailing" secondItem="OLv-LL-2Yz" secondAttribute="trailing" id="XBQ-QX-k3b"/>
+                                            <constraint firstItem="jwx-T1-rAX" firstAttribute="top" secondItem="5p8-O9-cl0" secondAttribute="top" id="iUz-iI-2ms"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="2eB-0R-AfQ" secondAttribute="trailing" id="nLX-QK-Ktv"/>
+                                            <constraint firstItem="0dW-0L-MEx" firstAttribute="top" secondItem="jwx-T1-rAX" secondAttribute="bottom" constant="4" id="pWO-Qv-9hj"/>
                                             <constraint firstItem="fhZ-Pj-Tcn" firstAttribute="leading" secondItem="5p8-O9-cl0" secondAttribute="leading" id="r1f-Wp-cFQ"/>
                                             <constraint firstItem="TKI-xG-zC5" firstAttribute="leading" secondItem="5p8-O9-cl0" secondAttribute="leadingMargin" id="syM-c5-1Eb"/>
                                             <constraint firstItem="fhZ-Pj-Tcn" firstAttribute="centerY" secondItem="7Ib-JK-1el" secondAttribute="centerY" id="tBD-EB-A3E"/>
+                                            <constraint firstItem="jwx-T1-rAX" firstAttribute="leading" secondItem="5p8-O9-cl0" secondAttribute="leading" id="ut2-KR-gh9"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -943,7 +960,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gHe-b3-ukq">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHe-b3-ukq">
                                 <rect key="frame" x="0.0" y="64" width="600" height="152"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylor Swift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxr-IQ-qXL">
@@ -970,7 +987,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbD-Xd-M9J">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbD-Xd-M9J">
                                         <rect key="frame" x="289" y="8" width="303" height="136"/>
                                         <state key="normal" title="Edit">
                                             <color key="titleColor" red="0.61960784310000006" green="0.4941176471" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1002,7 +1019,7 @@
                                     <outletCollection property="gestureRecognizers" destination="Qbq-hv-eUJ" appends="YES" id="im1-NY-lCH"/>
                                 </connections>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MyP-Vv-W6L">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MyP-Vv-W6L">
                                 <rect key="frame" x="36" y="550" width="49" height="30"/>
                                 <state key="normal" title="Logout">
                                     <color key="titleColor" red="0.61960784310000006" green="0.4941176471" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1012,7 +1029,7 @@
                                     <action selector="showLogoutOptions:" destination="mIZ-vh-lBm" eventType="touchUpInside" id="JQ8-TW-8yB"/>
                                 </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ywF-Eq-btS">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ywF-Eq-btS">
                                 <rect key="frame" x="16" y="347" width="568" height="300"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1120,12 +1137,12 @@
                                     <outlet property="delegate" destination="mIZ-vh-lBm" id="77D-Ed-fd6"/>
                                 </connections>
                             </collectionView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="P1R-HM-3wq" customClass="JVFloatLabeledTextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="P1R-HM-3wq" customClass="JVFloatLabeledTextField">
                                 <rect key="frame" x="16" y="250" width="251" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qac-Tv-qie">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qac-Tv-qie">
                                 <rect key="frame" x="534" y="266" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="CeM-iI-2Sp"/>
@@ -1138,18 +1155,18 @@
                                     <action selector="didPressInviteButton:" destination="mIZ-vh-lBm" eventType="touchUpInside" id="GoG-EH-NWo"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hkr-0F-0DU" customClass="JVFloatLabeledTextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hkr-0F-0DU" customClass="JVFloatLabeledTextField">
                                 <rect key="frame" x="275" y="250" width="251" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Know someone who should be on Taylr? Send a personal invite" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xsP-zD-0HY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Know someone who should be on Taylr? Send a personal invite" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xsP-zD-0HY">
                                 <rect key="frame" x="16" y="224" width="568" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email or Phone" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VR4-NQ-JIF" customClass="JVFloatLabeledTextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email or Phone" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VR4-NQ-JIF" customClass="JVFloatLabeledTextField">
                                 <rect key="frame" x="16" y="297" width="510" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
