@@ -33,8 +33,6 @@ class DiscoverViewController : BaseViewController {
             cell.bindViewModel(vm)
             return cell
         } ->> collectionView
-
-        discoverVM.unreadConnectionsCount.map { $0 > 0 ? "Taylr (\($0))" : "Taylr" } ->> navigationItem.dynTitle
     }
     
     override func viewWillAppear(animated: Bool) {

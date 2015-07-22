@@ -11,9 +11,7 @@ import CoreData
 import Bond
 
 public class DiscoverInteractor {
-    let unreadConversations: FetchedResultsArray<Connection>
     public let candidates: DynamicArray<CandidateViewModel>
-    public let unreadConnectionsCount: Dynamic<Int>
     
     public init() {
         // Filter out candidate without users for now
@@ -21,10 +19,6 @@ public class DiscoverInteractor {
             .by("\(UserKeys.candidateScore) != nil")
             .sorted(by: UserKeys.candidateScore.rawValue, ascending: false)
             .results(User).map { CandidateViewModel(user: $0) }
-        unreadConversations = Connection
-            .by(NSPredicate(format: "%K > 0", ConnectionKeys.unreadCount.rawValue))
-            .results(Connection)
-        unreadConnectionsCount = unreadConversations.dynCount
     }
     
     public func loadNextPage() {

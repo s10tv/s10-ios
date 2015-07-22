@@ -7,14 +7,19 @@
 //
 
 import UIKit
+import Core
 
 class RootTabController : UITabBarController {
+    
+    var interactor: RootInteractor!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         UITabBar.appearance().tintColor = StyleKit.brandPurple
         navigationController?.navigationBarHidden = false
         delegate = self
+
+        interactor = RootInteractor()
         selectedIndex = 1 // Discover Scene
     }
     
