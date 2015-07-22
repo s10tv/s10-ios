@@ -30,9 +30,14 @@ class Me2ViewController : UITableViewController {
         interactor.username ->> usernameLabel
     }
     
+    var hackedOffset = false
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        tableView.contentOffset = CGPoint(x: 0, y: -66) // Totally stupid hack, donno why
+         // Totally stupid hack, donno why needed, probably related to nesting TabBarViewController inside nav controller
+        if !hackedOffset {
+            hackedOffset = true
+            tableView.contentOffset = CGPoint(x: 0, y: -66)
+        }
     }
     
     override func viewDidLayoutSubviews() {
