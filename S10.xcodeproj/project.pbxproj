@@ -162,6 +162,7 @@
 		EACEFB941B472E8800901E85 /* MeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACEFB8E1B472E8800901E85 /* MeInteractor.swift */; };
 		EACEFB951B472E8800901E85 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACEFB8F1B472E8800901E85 /* ProfileInteractor.swift */; };
 		EACEFB961B472E8800901E85 /* SignupInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACEFB901B472E8800901E85 /* SignupInteractor.swift */; };
+		EAD1BB251B60347600D250C5 /* Me2ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1BB241B60347600D250C5 /* Me2ViewController.swift */; };
 		EAE1E07B1AE34C6200F03F13 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1E07A1AE34C6200F03F13 /* LocationService.swift */; };
 		EAE1E07D1AE3788300F03F13 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1E07C1AE3788300F03F13 /* Globals.swift */; };
 		EAF6701D1B31E6550025D7CF /* Core.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF6701C1B31E6550025D7CF /* Core.m */; };
@@ -418,6 +419,7 @@
 		EACEFB8E1B472E8800901E85 /* MeInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeInteractor.swift; sourceTree = "<group>"; };
 		EACEFB8F1B472E8800901E85 /* ProfileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		EACEFB901B472E8800901E85 /* SignupInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupInteractor.swift; sourceTree = "<group>"; };
+		EAD1BB241B60347600D250C5 /* Me2ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Me2ViewController.swift; sourceTree = "<group>"; };
 		EAE1E07A1AE34C6200F03F13 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		EAE1E07C1AE3788300F03F13 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		EAF6701C1B31E6550025D7CF /* Core.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Core.m; sourceTree = "<group>"; };
@@ -851,6 +853,7 @@
 			children = (
 				EAA56F751B2B32E500DE3936 /* MeViewController.swift */,
 				EABAEDA41B4334EB000261F0 /* MeServiceCell.swift */,
+				EAD1BB241B60347600D250C5 /* Me2ViewController.swift */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -1591,6 +1594,7 @@
 				EACEFB871B46740500901E85 /* LoadingViewController.swift in Sources */,
 				EAAD921D1ACF342C0014BA25 /* TaylrEnvironment.swift in Sources */,
 				EA1047301B4E74D000B1A76A /* ReactiveProperties.swift in Sources */,
+				EAD1BB251B60347600D250C5 /* Me2ViewController.swift in Sources */,
 				EA376CB21B505FCD00C819E9 /* LinkAccountService.swift in Sources */,
 				EA588DBA1B5F1D36000962B8 /* CandidateServiceCell.swift in Sources */,
 				EAE1E07B1AE34C6200F03F13 /* LocationService.swift in Sources */,
