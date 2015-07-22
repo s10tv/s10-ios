@@ -17,7 +17,7 @@ public struct CandidateViewModel {
     
     public init(user: User) {
         self.user = user
-        avatarURL = user.avatarURL
+        avatarURL = user.dynAvatar.map { $0?.url }
         displayName = user.displayName
         distance = user.dynDistance.map { $0.flatMap { Formatters.formatDistance($0) } ?? "" }
     }

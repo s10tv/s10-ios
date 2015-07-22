@@ -37,7 +37,7 @@ public class MeInteractor {
         self.meteor = meteor
         self.taskService = taskService
         self.currentUser = currentUser
-        avatarURL = currentUser.avatarURL
+        avatarURL = currentUser.dynAvatar.map { $0?.url }
         displayName = currentUser.displayName
         username = currentUser.dynUsername.map { $0 ?? "" }
         linkedServices = Service

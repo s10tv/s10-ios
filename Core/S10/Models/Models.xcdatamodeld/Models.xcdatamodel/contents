@@ -36,9 +36,9 @@
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="about" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="avatarUrl" optional="YES" attributeType="String" valueTransformerName="PhotosValueTransformer" syncable="YES"/>
+        <attribute name="avatar" optional="YES" attributeType="Transformable" valueTransformerName="PhotosValueTransformer" syncable="YES"/>
         <attribute name="candidateScore" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="coverUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="cover" optional="YES" attributeType="Transformable" syncable="YES"/>
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="distance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>

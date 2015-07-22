@@ -28,8 +28,8 @@ public class SignupInteractor {
         user.dynLastName.map { $0 ?? "" } ->> lastName
         user.dynUsername.map { $0 ?? "" } ->> username
         user.dynAbout.map { $0 ?? "" } ->> about
-        avatarURL = user.avatarURL
-        coverURL = user.coverURL
+        avatarURL = user.dynAvatar.map { $0?.url }
+        coverURL = user.dynAvatar.map { $0?.url }
     }
     
     public func uploadAvatar(image: UIImage) -> Future<(), NSError> {

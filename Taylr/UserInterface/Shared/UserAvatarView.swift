@@ -30,7 +30,7 @@ class UserAvatarView : UIImageView {
     
     var user : User? { didSet {
         if let user = user {
-            user.avatarURL ->> dynImageURL
+            user.dynAvatar.map { $0?.url } ->> dynImageURL
         } else {
             unbindDynImageURL()
             image = UIImage(R.TaylrAssets.girlPlaceholder)

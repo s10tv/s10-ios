@@ -36,8 +36,8 @@ public class ProfileInteractor {
             .by(ActivityKeys.user, value: user)
             .sorted(by: ActivityKeys.timestamp.rawValue, ascending: false)
             .results(Activity).map { ActivityViewModel($0) }
-        avatarURL = user.avatarURL
-        coverURL  = user.coverURL
+        avatarURL = user.dynAvatar.map { $0?.url }
+        coverURL  = user.dynCover.map { $0?.url }
         displayName = user.displayName
         username = user.dynUsername.map { $0 ?? "" }
         distance = user.dynDistance.map { $0.map { Formatters.formatDistance($0) + " away" } ?? "" }

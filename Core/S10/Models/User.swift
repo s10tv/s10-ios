@@ -52,12 +52,12 @@ public class User: _User {
         return self.dynValue(UserKeys.about)
     }()
     
-    public private(set) lazy var avatarURL: Dynamic<NSURL?> = {
-        return self.dynValue(UserKeys.avatarUrl).map { NSURL.fromString($0) }
+    public private(set) lazy var dynAvatar: Dynamic<Image?> = {
+        return self.dynValue(UserKeys.avatar).map { $0.map { Image.fromDict($0) } ?? nil }
     }()
     
-    public private(set) lazy var coverURL: Dynamic<NSURL?> = {
-        return self.dynValue(UserKeys.coverUrl).map { NSURL.fromString($0) }
+    public private(set) lazy var dynCover: Dynamic<Image?> = {
+        return self.dynValue(UserKeys.cover).map { $0.map { Image.fromDict($0) } ?? nil }
     }()
 
     public private(set) lazy var displayName: Dynamic<String> = {
