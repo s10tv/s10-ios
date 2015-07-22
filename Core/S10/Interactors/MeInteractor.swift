@@ -36,7 +36,7 @@ public class MeInteractor {
         username = currentUser.dynUsername.map { $0 ?? "" }
         linkedServices = Service
             .by(ServiceKeys.user, value: currentUser)
-            .sorted(by: ServiceKeys.serviceType.rawValue, ascending: true)
+//            .sorted(by: ServiceKeys.serviceType.rawValue, ascending: true) // Not sortable
             .results(Service).map { ServiceViewModel($0) }
         serviceTypes = ServiceType.all().results(ServiceType)
         
