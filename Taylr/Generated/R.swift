@@ -188,12 +188,18 @@ public enum R {
         case icFlag = "ic-flag"
         /// ic-github
         case icGithub = "ic-github"
+        /// ic-github-small
+        case icGithubSmall = "ic-github-small"
         /// ic-home
         case icHome = "ic-home"
         /// ic-instagram
         case icInstagram = "ic-instagram"
+        /// ic-instagram-small
+        case icInstagramSmall = "ic-instagram-small"
         /// ic-linkedin
         case icLinkedin = "ic-linkedin"
+        /// ic-linkedin-small
+        case icLinkedinSmall = "ic-linkedin-small"
         /// ic-magic-wand
         case icMagicWand = "ic-magic-wand"
         /// ic-me
@@ -216,6 +222,8 @@ public enum R {
         case icSkip = "ic-skip"
         /// ic-twitter
         case icTwitter = "ic-twitter"
+        /// ic-twitter-small
+        case icTwitterSmall = "ic-twitter-small"
         /// ic-upvote
         case icUpvote = "ic-upvote"
         /// ic-youtube

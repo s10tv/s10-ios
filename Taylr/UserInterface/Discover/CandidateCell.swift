@@ -14,29 +14,38 @@ import Bond
 class CandidateCell : UICollectionViewCell {
     
     @IBOutlet weak var avatarView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var jobTitleLabel: UILabel!
+    @IBOutlet weak var employerLabel: UILabel!
+    @IBOutlet weak var serviceIconsView: UICollectionView!
     
     func bindViewModel(viewModel: CandidateViewModel) {
         viewModel.avatarURL ->> avatarView.dynImageURL
-        viewModel.displayName ->> titleLabel
+        viewModel.displayName ->> nameLabel
+        let cells = DynamicArray([
+            UIImage(.icTwitterSmall),
+            UIImage(.icGithubSmall),
+            UIImage(.icLinkedinSmall),
+            UIImage(.icInstagramSmall)
+        ]).map { (image, index) -> UICollectionViewCell in
+            let cell = self.serviceIconsView.dequeueReusableCellWithReuseIdentifier("CandidateService", forIndexPath: NSIndexPath(forItem: index, inSection: 0)) as! CandidateServiceCell
+            cell.imageView.image = image
+            return cell
+        }
+        
+        cells ->> serviceIconsView
     }
     
     override func prepareForReuse() {
-        
         super.prepareForReuse()
         avatarView.image = nil
         avatarView.unbindDynImageURL()
-        titleLabel.designatedBond.unbindAll()
-        subtitleLabel.designatedBond.unbindAll()
+        nameLabel.designatedBond.unbindAll()
+        serviceIconsView.designatedBond.unbindAll()
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
         avatarView.clipsToBounds = true
-//        clipsToBounds = false
-//        layer.shadowColor = UIColor.blackColor().CGColor // (StyleKit.candidateShadow.shadowColor as? UIColor)?.CGColor
-//        layer.shadowOffset = StyleKit.candidateShadow.shadowOffset
-//        layer.shadowRadius = StyleKit.candidateShadow.shadowBlurRadius
     }
 }

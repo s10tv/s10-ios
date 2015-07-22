@@ -13,6 +13,9 @@
         <mutableArray key="Cabin-Medium.ttf">
             <string>Cabin-Medium</string>
         </mutableArray>
+        <mutableArray key="Cabin-Regular.ttf">
+            <string>Cabin-Regular</string>
+        </mutableArray>
         <mutableArray key="TransatTextBlack.otf">
             <string>TransatTextBlack</string>
             <string>TransatTextBlack</string>
@@ -130,7 +133,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="u3H-VG-WK1">
-                                    <size key="itemSize" width="180" height="250"/>
+                                    <size key="itemSize" width="180" height="298"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="10" minY="10" maxX="10" maxY="0.0"/>
@@ -140,22 +143,73 @@
                                         <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="180" height="250"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="180" height="298"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" image="sample-taylor-avatar-square" translatesAutoresizingMaskIntoConstraints="NO" id="OLv-LL-2Yz">
-                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="192"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="180" height="218"/>
                                                 </imageView>
+                                                <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fhZ-Pj-Tcn" userLabel="Name Background">
+                                                    <rect key="frame" x="0.0" y="178" width="180" height="40"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="40" id="Bvo-bz-WEm"/>
+                                                    </constraints>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylor Swift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ib-JK-1el" userLabel="Name">
-                                                    <rect key="frame" x="8" y="200" width="81" height="20"/>
+                                                    <rect key="frame" x="8" y="188" width="81" height="20"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Medium" family="Cabin" pointSize="16"/>
-                                                    <color key="textColor" red="0.2901606559753418" green="0.29021650552749634" blue="0.29015710949897766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Singer &amp; Songwriter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKI-xG-zC5" userLabel="Name">
-                                                    <rect key="frame" x="8" y="224" width="109" height="18"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Big Machine Records" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKI-xG-zC5" userLabel="Employer">
+                                                    <rect key="frame" x="8" y="244" width="115" height="18"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Italic" family="Cabin" pointSize="14"/>
                                                     <color key="textColor" red="0.60777515172958374" green="0.60788232088088989" blue="0.60776835680007935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2eB-0R-AfQ">
+                                                    <rect key="frame" x="8" y="270" width="164" height="20"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="20" id="DMt-Kh-Otj"/>
+                                                    </constraints>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="5" id="tyn-di-qZO">
+                                                        <size key="itemSize" width="20" height="20"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="CandidateService" id="Jaw-B6-ap7" customClass="CandidateServiceCell" customModule="Taylr" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2TC-zC-crt">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                                    </imageView>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            </view>
+                                                            <constraints>
+                                                                <constraint firstItem="2TC-zC-crt" firstAttribute="leading" secondItem="Jaw-B6-ap7" secondAttribute="leading" id="5rX-PR-YT6"/>
+                                                                <constraint firstAttribute="bottom" secondItem="2TC-zC-crt" secondAttribute="bottom" id="C1X-ED-0kH"/>
+                                                                <constraint firstAttribute="trailing" secondItem="2TC-zC-crt" secondAttribute="trailing" id="uPb-Az-SY6"/>
+                                                                <constraint firstItem="2TC-zC-crt" firstAttribute="top" secondItem="Jaw-B6-ap7" secondAttribute="top" id="wkH-Ir-b9d"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="imageView" destination="2TC-zC-crt" id="HNp-bT-QrF"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                </collectionView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Singer &amp; Songwriter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0dW-0L-MEx" userLabel="Job Title">
+                                                    <rect key="frame" x="8" y="226" width="117" height="18"/>
+                                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
+                                                    <color key="textColor" red="0.2901606559753418" green="0.29021650552749634" blue="0.29015710949897766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -163,15 +217,22 @@
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
+                                            <constraint firstItem="0dW-0L-MEx" firstAttribute="leading" secondItem="5p8-O9-cl0" secondAttribute="leadingMargin" id="0is-me-wur"/>
+                                            <constraint firstAttribute="trailing" secondItem="fhZ-Pj-Tcn" secondAttribute="trailing" id="1eD-Hp-Nnb"/>
+                                            <constraint firstItem="2eB-0R-AfQ" firstAttribute="leading" secondItem="5p8-O9-cl0" secondAttribute="leadingMargin" id="6pu-1T-Iwq"/>
                                             <constraint firstItem="OLv-LL-2Yz" firstAttribute="leading" secondItem="5p8-O9-cl0" secondAttribute="leading" id="93l-54-1ov"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="TKI-xG-zC5" secondAttribute="bottom" id="Qmk-Oj-Qvf"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="2eB-0R-AfQ" secondAttribute="bottom" id="DPO-PM-lHu"/>
+                                            <constraint firstItem="TKI-xG-zC5" firstAttribute="top" secondItem="0dW-0L-MEx" secondAttribute="bottom" id="EU6-43-KvC"/>
+                                            <constraint firstItem="0dW-0L-MEx" firstAttribute="top" secondItem="OLv-LL-2Yz" secondAttribute="bottom" constant="8" symbolic="YES" id="Hvi-VC-J8b"/>
+                                            <constraint firstItem="2eB-0R-AfQ" firstAttribute="top" secondItem="TKI-xG-zC5" secondAttribute="bottom" constant="8" symbolic="YES" id="I5W-8Z-1xF"/>
                                             <constraint firstItem="7Ib-JK-1el" firstAttribute="leading" secondItem="5p8-O9-cl0" secondAttribute="leadingMargin" id="Qz8-hx-tm0"/>
                                             <constraint firstItem="OLv-LL-2Yz" firstAttribute="top" secondItem="5p8-O9-cl0" secondAttribute="top" id="RzV-MJ-l7s"/>
-                                            <constraint firstItem="7Ib-JK-1el" firstAttribute="top" secondItem="OLv-LL-2Yz" secondAttribute="bottom" constant="8" id="TpB-bw-IKX"/>
-                                            <constraint firstAttribute="bottomMargin" secondItem="7Ib-JK-1el" secondAttribute="bottom" id="UCL-gc-UYs"/>
+                                            <constraint firstItem="OLv-LL-2Yz" firstAttribute="bottom" secondItem="fhZ-Pj-Tcn" secondAttribute="bottom" id="UMb-it-2lJ"/>
                                             <constraint firstAttribute="trailing" secondItem="OLv-LL-2Yz" secondAttribute="trailing" id="XBQ-QX-k3b"/>
-                                            <constraint firstItem="TKI-xG-zC5" firstAttribute="top" secondItem="7Ib-JK-1el" secondAttribute="bottom" constant="4" id="jqe-1Q-qS8"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="2eB-0R-AfQ" secondAttribute="trailing" id="nLX-QK-Ktv"/>
+                                            <constraint firstItem="fhZ-Pj-Tcn" firstAttribute="leading" secondItem="5p8-O9-cl0" secondAttribute="leading" id="r1f-Wp-cFQ"/>
                                             <constraint firstItem="TKI-xG-zC5" firstAttribute="leading" secondItem="5p8-O9-cl0" secondAttribute="leadingMargin" id="syM-c5-1Eb"/>
+                                            <constraint firstItem="fhZ-Pj-Tcn" firstAttribute="centerY" secondItem="7Ib-JK-1el" secondAttribute="centerY" id="tBD-EB-A3E"/>
                                         </constraints>
                                         <userDefinedRuntimeAttributes>
                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
@@ -191,15 +252,12 @@
                                             </userDefinedRuntimeAttribute>
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="masksToBounds" value="NO"/>
                                         </userDefinedRuntimeAttributes>
-                                        <variation key="default">
-                                            <mask key="constraints">
-                                                <exclude reference="UCL-gc-UYs"/>
-                                            </mask>
-                                        </variation>
                                         <connections>
                                             <outlet property="avatarView" destination="OLv-LL-2Yz" id="P4K-c4-PQy"/>
-                                            <outlet property="subtitleLabel" destination="TKI-xG-zC5" id="fOC-Tn-4JO"/>
-                                            <outlet property="titleLabel" destination="7Ib-JK-1el" id="iTt-7q-d0l"/>
+                                            <outlet property="employerLabel" destination="TKI-xG-zC5" id="6h4-m1-cHl"/>
+                                            <outlet property="jobTitleLabel" destination="0dW-0L-MEx" id="xR8-Sz-6wV"/>
+                                            <outlet property="nameLabel" destination="7Ib-JK-1el" id="M0u-ZG-zgm"/>
+                                            <outlet property="serviceIconsView" destination="2eB-0R-AfQ" id="iRt-9B-fSV"/>
                                             <segue destination="O0f-xd-Ps7" kind="show" identifier="" id="Fwv-Pj-RXP"/>
                                         </connections>
                                     </collectionViewCell>
