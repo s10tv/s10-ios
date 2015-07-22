@@ -67,17 +67,21 @@ class DiscoverViewController : BaseViewController {
             profileVC.profileVM = ProfileInteractor(meteor: Meteor, user: user)
         }
     }
-
-    // MARK: - Actions
-    
-    @IBAction func unwindToDiscover(sender: UIStoryboardSegue) {
-    }
 }
 
 extension DiscoverViewController : CHTCollectionViewDelegateWaterfallLayout {
     func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
-//        CGSize size = CGSizeMake(arc4random() % 50 + 50, arc4random() % 50 + 50);
+        if let avatar = discoverVM.candidates[indexPath.item].avatar.value,
+            let layout = collectionViewLayout as? CHTCollectionViewWaterfallLayout {
+                // TODO: Consider using prototype cell for this
+                let rowWidth = collectionView.frame.width - layout.sectionInset.left - layout.sectionInset.right
+                let itemWidth = (rowWidth - (layout.columnCount.f - 1) * layout.minimumColumnSpacing) / layout.columnCount.f
+                let imageHeight = (avatar.height.f / avatar.width.f) * itemWidth
+                // 79 is magic number for distance between bottom of avatar image view and bottom of cell
+                let itemHeight = imageHeight + 79
+            return CGSize(width: itemWidth, height: itemHeight)
+        }
+        Log.error("Returning default layout size 50x80, avatar likely missing")
         return CGSize(width: 50, height: 80)
-//        return CGSize(width: CGFloat(arc4random() % 30 + 50), height: CGFloat(arc4random() % 30 + 80))
     }
 }
