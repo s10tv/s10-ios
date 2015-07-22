@@ -9,9 +9,18 @@
 import Foundation
 import Meteor
 import Bond
+import ReactiveCocoa
 
 @objc(User)
 public class User: _User {
+    
+    public private(set) lazy var dynEmployer: PropertyOf<String?> = {
+        return self.dyn(UserKeys.employer.rawValue).optional(String) |> readonly
+    }()
+    
+    public private(set) lazy var dynJobTitle: PropertyOf<String?> = {
+        return self.dyn(UserKeys.jobTitle.rawValue).optional(String) |> readonly
+    }()
 
     public private(set) lazy var dynFirstName: Dynamic<String?> = {
         return self.dynValue(UserKeys.firstName)

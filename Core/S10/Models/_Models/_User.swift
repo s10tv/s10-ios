@@ -17,7 +17,11 @@ public enum UserKeys: String, Printable {
 
     case distance = "distance"
 
+    case employer = "employer"
+
     case firstName = "firstName"
+
+    case jobTitle = "jobTitle"
 
     case lastActive = "lastActive"
 
@@ -89,9 +93,19 @@ class _User: NSManagedObject {
     // func validateDistance(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged public
+    var employer: String?
+
+    // func validateEmployer(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged public
     var firstName: String?
 
     // func validateFirstName(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged public
+    var jobTitle: String?
+
+    // func validateJobTitle(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged public
     var lastActive: NSDate?

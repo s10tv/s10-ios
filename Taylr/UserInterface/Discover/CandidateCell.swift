@@ -10,6 +10,7 @@ import Foundation
 import SDWebImage
 import Core
 import Bond
+import ReactiveCocoa
 
 class CandidateCell : UICollectionViewCell {
     
@@ -22,6 +23,9 @@ class CandidateCell : UICollectionViewCell {
     func bindViewModel(viewModel: CandidateViewModel) {
         viewModel.avatarURL ->> avatarView.dynImageURL
         viewModel.displayName ->> nameLabel
+        viewModel.jobTitle ->> jobTitleLabel
+        viewModel.employer ->> employerLabel
+        
         let cells = DynamicArray([
             UIImage(.icTwitterSmall),
             UIImage(.icGithubSmall),
@@ -32,7 +36,6 @@ class CandidateCell : UICollectionViewCell {
             cell.imageView.image = image
             return cell
         }
-        
         cells ->> serviceIconsView
     }
     
@@ -41,6 +44,8 @@ class CandidateCell : UICollectionViewCell {
         avatarView.image = nil
         avatarView.unbindDynImageURL()
         nameLabel.designatedBond.unbindAll()
+        jobTitleLabel.designatedBond.unbindAll()
+        employerLabel.designatedBond.unbindAll()
         serviceIconsView.designatedBond.unbindAll()
     }
     
