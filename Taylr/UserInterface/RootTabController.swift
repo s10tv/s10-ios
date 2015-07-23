@@ -20,7 +20,7 @@ class RootTabController : UITabBarController {
         delegate = self
 
         interactor = RootInteractor()
-        selectedIndex = 1 // Discover Scene
+//        selectedIndex = 1 // Discover Scene
     }
     
     override func viewWillAppear(animated: Bool) {

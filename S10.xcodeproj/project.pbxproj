@@ -62,6 +62,7 @@
 		EA39651C1B54EFE400F5B0B3 /* MeteorCollection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA39651B1B54EFE400F5B0B3 /* MeteorCollection.swift */; };
 		EA3965231B55C47200F5B0B3 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3965221B55C47200F5B0B3 /* EditProfileViewController.swift */; };
 		EA3C36D81B60515200A47F64 /* InviteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3C36D71B60515200A47F64 /* InviteInteractor.swift */; };
+		EA3C36DA1B605FC800A47F64 /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3C36D91B605FC800A47F64 /* ServicesViewController.swift */; };
 		EA4216451B3E092200613EFA /* _Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4216431B3E092200613EFA /* _Activity.swift */; };
 		EA4216461B3E092200613EFA /* _Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4216441B3E092200613EFA /* _Service.swift */; };
 		EA4216491B3E093400613EFA /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4216471B3E093400613EFA /* Activity.swift */; };
@@ -314,6 +315,7 @@
 		EA39651B1B54EFE400F5B0B3 /* MeteorCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorCollection.swift; sourceTree = "<group>"; };
 		EA3965221B55C47200F5B0B3 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		EA3C36D71B60515200A47F64 /* InviteInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteInteractor.swift; sourceTree = "<group>"; };
+		EA3C36D91B605FC800A47F64 /* ServicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServicesViewController.swift; sourceTree = "<group>"; };
 		EA4216431B3E092200613EFA /* _Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Activity.swift; sourceTree = "<group>"; };
 		EA4216441B3E092200613EFA /* _Service.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Service.swift; sourceTree = "<group>"; };
 		EA4216471B3E093400613EFA /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
@@ -859,6 +861,7 @@
 				EABAEDA41B4334EB000261F0 /* MeServiceCell.swift */,
 				EAD1BB241B60347600D250C5 /* Me2ViewController.swift */,
 				EAD1BB281B604A3D00D250C5 /* InviteViewController.swift */,
+				EA3C36D91B605FC800A47F64 /* ServicesViewController.swift */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -1610,6 +1613,7 @@
 				EA7134121B56E47100B810F6 /* ImagePickerExtensions.swift in Sources */,
 				EAF81B231B33388700EED6DD /* ProducerViewController.swift in Sources */,
 				EA6650ED1AA00A9C001BA40C /* AccountService.swift in Sources */,
+				EA3C36DA1B605FC800A47F64 /* ServicesViewController.swift in Sources */,
 				EAA56FA21B2B32E500DE3936 /* BaseViewController.swift in Sources */,
 				EA773D261B431514009A9945 /* ProfileServiceCell.swift in Sources */,
 				EAA56F9F1B2B32E500DE3936 /* ProfileViewController.swift in Sources */,

@@ -26,3 +26,23 @@ class MeServiceCell : UICollectionViewCell {
         userDisplayNameLabel.designatedBond.unbindAll()
     }
 }
+
+class ServiceCell : UICollectionViewCell {
+    
+    @IBOutlet weak var iconView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var statusImageView: UIImageView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
+    func bindViewModel(viewModel: ServiceViewModel) {
+        
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        iconView.unbindDynImageURL()
+        statusImageView.unbindDynImageURL()
+        titleLabel.designatedBond.unbindAll()
+        spinner.designatedBond.unbindAll()
+    }
+}
