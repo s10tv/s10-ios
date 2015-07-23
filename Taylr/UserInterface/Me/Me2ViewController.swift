@@ -17,7 +17,10 @@ class Me2ViewController : UITableViewController {
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
+    @IBOutlet weak var servicesContainer: UIView!
+    @IBOutlet weak var inviteContainer: UIView!
     
+    var servicesVC: ServicesViewController!
     var interactor: MeInteractor!
     
     override func viewDidLoad() {
@@ -28,6 +31,12 @@ class Me2ViewController : UITableViewController {
         interactor.avatarURL ->> avatarView.dynImageURL
         interactor.displayName ->> nameLabel
         interactor.username ->> usernameLabel
+        
+        // Proactively improve shadow performance
+        [servicesContainer, inviteContainer].each {
+            $0.layer.shouldRasterize = true
+            $0.layer.rasterizationScale = UIScreen.mainScreen().scale
+        }
     }
     
     var hackedOffset = false
@@ -47,6 +56,9 @@ class Me2ViewController : UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let vc = segue.destinationViewController as? ServicesViewController {
+            servicesVC = vc
+        }
         if let vc = segue.destinationViewController as? ProfileViewController {
             vc.profileVM = ProfileInteractor(meteor: Meteor, user: interactor.currentUser)
         }
@@ -74,5 +86,15 @@ class Me2ViewController : UITableViewController {
         }
         sheet.addAction(LS(.settingsLogoutCancel), style: .Cancel)
         presentViewController(sheet)
+    }
+}
+
+extension Me2ViewController : UITableViewDelegate {
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        // TODO: Should we consider autolayout?
+        if indexPath.section == 1 { // Services section
+            return servicesVC.collectionView!.collectionViewLayout.collectionViewContentSize().height + 16 // Padding
+        }
+        return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
     }
 }
