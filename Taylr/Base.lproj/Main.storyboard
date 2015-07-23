@@ -33,6 +33,7 @@
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
+            <string>Cabin-Regular</string>
         </mutableArray>
         <mutableArray key="TransatTextBlack.otf">
             <string>TransatTextBlack</string>
@@ -42,8 +43,6 @@
             <string>TransatTextBold</string>
         </mutableArray>
         <mutableArray key="TransatTextStandard.otf">
-            <string>TransatTextStandard</string>
-            <string>TransatTextStandard</string>
             <string>TransatTextStandard</string>
         </mutableArray>
     </customFonts>
@@ -762,9 +761,9 @@
                                     <constraint firstAttribute="height" constant="80" id="Tf0-zI-THR"/>
                                     <constraint firstAttribute="width" constant="60" id="xYp-0J-Oz6"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="17"/>
-                                <size key="titleShadowOffset" width="1" height="1"/>
-                                <state key="normal" title="BACK">
+                                <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
+                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Back" image="ic-back-arrow">
                                     <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -777,9 +776,9 @@
                                     <constraint firstAttribute="height" constant="80" id="hLy-ln-oA5"/>
                                     <constraint firstAttribute="width" constant="60" id="jPg-JG-YO0"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <size key="titleShadowOffset" width="1" height="1"/>
-                                <state key="normal" title="MORE">
+                                <state key="normal" image="ic-eclipse">
                                     <color key="titleShadowColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -989,7 +988,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gHe-b3-ukq">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gHe-b3-ukq">
                                 <rect key="frame" x="0.0" y="64" width="600" height="152"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylor Swift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxr-IQ-qXL">
@@ -1016,7 +1015,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbD-Xd-M9J">
+                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lbD-Xd-M9J">
                                         <rect key="frame" x="289" y="8" width="303" height="136"/>
                                         <state key="normal" title="Edit">
                                             <color key="titleColor" red="0.61960784310000006" green="0.4941176471" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1055,7 +1054,7 @@
                                     <action selector="showLogoutOptions:" destination="mIZ-vh-lBm" eventType="touchUpInside" id="JQ8-TW-8yB"/>
                                 </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ywF-Eq-btS">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ywF-Eq-btS">
                                 <rect key="frame" x="16" y="347" width="568" height="300"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -1163,12 +1162,12 @@
                                     <outlet property="delegate" destination="mIZ-vh-lBm" id="77D-Ed-fd6"/>
                                 </connections>
                             </collectionView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="P1R-HM-3wq" customClass="JVFloatLabeledTextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="First Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="P1R-HM-3wq" customClass="JVFloatLabeledTextField">
                                 <rect key="frame" x="16" y="250" width="251" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qac-Tv-qie">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qac-Tv-qie">
                                 <rect key="frame" x="534" y="266" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="CeM-iI-2Sp"/>
@@ -1181,18 +1180,18 @@
                                     <action selector="didPressInviteButton:" destination="mIZ-vh-lBm" eventType="touchUpInside" id="GoG-EH-NWo"/>
                                 </connections>
                             </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hkr-0F-0DU" customClass="JVFloatLabeledTextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Last Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hkr-0F-0DU" customClass="JVFloatLabeledTextField">
                                 <rect key="frame" x="275" y="250" width="251" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Know someone who should be on Taylr? Send a personal invite" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xsP-zD-0HY">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Know someone who should be on Taylr? Send a personal invite" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xsP-zD-0HY">
                                 <rect key="frame" x="16" y="224" width="568" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email or Phone" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VR4-NQ-JIF" customClass="JVFloatLabeledTextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email or Phone" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="VR4-NQ-JIF" customClass="JVFloatLabeledTextField">
                                 <rect key="frame" x="16" y="297" width="510" height="42"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
@@ -2009,10 +2008,12 @@
     </scenes>
     <resources>
         <image name="ic-back" width="17" height="23"/>
+        <image name="ic-back-arrow" width="12" height="21"/>
         <image name="ic-camera" width="83" height="84"/>
         <image name="ic-chats" width="27" height="24"/>
         <image name="ic-checkmark" width="28" height="28"/>
         <image name="ic-discover" width="20" height="26"/>
+        <image name="ic-eclipse" width="29" height="7"/>
         <image name="ic-edit" width="39" height="40"/>
         <image name="ic-facebook" width="28" height="28"/>
         <image name="ic-me" width="29" height="28"/>
