@@ -46,23 +46,23 @@ PODS:
   - NSLogger/Standard (1.5.1)
   - OAuthSwift (0.3.6)
   - OHHTTPStubs (4.0.2)
-  - Ouralabs (2.3.0)
+  - Ouralabs (2.4.0)
   - PKHUD (2.0.1)
   - PocketSocket (0.6.4)
   - Quick (0.3.1)
   - RBBAnimation (0.4.0)
-  - ReactiveCocoa (3.0-beta.9):
+  - ReactiveCocoa (3.0-RC.1):
     - Box (~> 1.2.0)
-    - ReactiveCocoa/UI (= 3.0-beta.9)
+    - ReactiveCocoa/UI (= 3.0-RC.1)
     - Result (~> 0.4.1)
-  - ReactiveCocoa/Core (3.0-beta.9):
+  - ReactiveCocoa/Core (3.0-RC.1):
     - Box (~> 1.2.0)
     - ReactiveCocoa/no-arc
     - Result (~> 0.4.1)
-  - ReactiveCocoa/no-arc (3.0-beta.9):
+  - ReactiveCocoa/no-arc (3.0-RC.1):
     - Box (~> 1.2.0)
     - Result (~> 0.4.1)
-  - ReactiveCocoa/UI (3.0-beta.9):
+  - ReactiveCocoa/UI (3.0-RC.1):
     - Box (~> 1.2.0)
     - ReactiveCocoa/Core
     - Result (~> 0.4.1)
@@ -116,7 +116,7 @@ DEPENDENCIES:
   - PKHUD (from `https://github.com/tonyxiao/PKHUD`)
   - Quick (~> 0.3.0)
   - RBBAnimation (~> 0.4.0)
-  - ReactiveCocoa (= 3.0-beta.9)
+  - ReactiveCocoa (= 3.0-RC.1)
   - RealmSwift (~> 0.93.2)
   - Reveal-iOS-SDK (~> 1.5)
   - SCRecorder (~> 2.5)
@@ -189,12 +189,12 @@ SPEC CHECKSUMS:
   NSLogger: 5ed223a2436df96244e033be750656dacdeec034
   OAuthSwift: 3517e94380923085dfa7f23421bc3d4a61ce48c0
   OHHTTPStubs: dbd1957d414659783e07b49c961940b7564c23d9
-  Ouralabs: a3d82090d80d5d6328e3dd9e60cbb5383440f069
+  Ouralabs: eac60753414390c357c12aefb157e56fb32e1453
   PKHUD: 27346b72187c3cbff20c174f2b1f88c999a4ef13
   PocketSocket: eee7ef375f55b98e7ca79e097d9c61fd688e9494
   Quick: 824572d3d198d51e52cf4aa722cebf7e59952a35
   RBBAnimation: 4b2d66f6d993febce63cd564da934985313b9c59
-  ReactiveCocoa: 14285e72691519ac4fbd06ba411a6707914d6e10
+  ReactiveCocoa: c85fe01be4e047dc1d9fba3e1e0b7070846d3296
   Realm: 2fdd0ae74f730e190384e0338d8a0d3654df8220
   RealmSwift: 231b064da9f98b1c4f325fe1f1cb8756aae2b8d6
   Result: b44f6bc8762bbffaf2c5df58f2c7d12c3496ced8
@@ -211,4 +211,4 @@ SPEC CHECKSUMS:
   UICollectionViewLeftAlignedLayout: c3dddf91b3dc72ede7eca7a532545804389ab833
   XLForm: 10fc7eb9e2d5df21a515fa3a794f4e26319abd0e
 
-COCOAPODS: 0.38.0.beta.2
+COCOAPODS: 0.38.0

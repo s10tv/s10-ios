@@ -9,7 +9,7 @@ target :Core do
     link_with 'Core'
     # Foundation
     pod 'BrightFutures', '~> 2.0'
-    pod 'ReactiveCocoa', '3.0-beta.9'
+    pod 'ReactiveCocoa', '3.0-RC.1'
     pod 'Bond', :git => 'https://github.com/tonyxiao/Bond.git', :branch => 'coredata'
     pod 'Async', :git => 'https://github.com/duemunk/Async.git'
     pod 'SwiftTryCatch', '~> 0.0.1'
