@@ -7,11 +7,17 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="Cabin-Bold.ttf">
+            <string>Cabin-Bold</string>
+        </mutableArray>
         <mutableArray key="Cabin-Italic.ttf">
+            <string>Cabin-Italic</string>
+            <string>Cabin-Italic</string>
             <string>Cabin-Italic</string>
             <string>Cabin-Italic</string>
         </mutableArray>
         <mutableArray key="Cabin-Medium.ttf">
+            <string>Cabin-Medium</string>
             <string>Cabin-Medium</string>
             <string>Cabin-Medium</string>
             <string>Cabin-Medium</string>
@@ -31,10 +37,8 @@
         <mutableArray key="TransatTextBlack.otf">
             <string>TransatTextBlack</string>
             <string>TransatTextBlack</string>
-            <string>TransatTextBlack</string>
         </mutableArray>
         <mutableArray key="TransatTextBold.otf">
-            <string>TransatTextBold</string>
             <string>TransatTextBold</string>
         </mutableArray>
         <mutableArray key="TransatTextStandard.otf">
@@ -435,55 +439,52 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-cover-image" translatesAutoresizingMaskIntoConstraints="NO" id="6ml-E6-ZMG">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="200"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="200" id="tCc-d3-wwh"/>
+                                                        <constraint firstAttribute="height" constant="220" id="tCc-d3-wwh"/>
                                                     </constraints>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="qh5-iy-Fge" customClass="UserAvatarView" customModule="Taylr" customModuleProvider="target">
-                                                    <rect key="frame" x="8" y="140" width="100" height="100"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="100" id="EEH-eM-i4h"/>
-                                                        <constraint firstAttribute="width" secondItem="qh5-iy-Fge" secondAttribute="height" id="Tqa-U9-35s"/>
-                                                    </constraints>
-                                                </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pNm-He-lw7" userLabel="Cover Overlay">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.20000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylor Swift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2Sg-08-WeT">
-                                                    <rect key="frame" x="120" y="147" width="136" height="26"/>
-                                                    <fontDescription key="fontDescription" name="TransatTextBlack" family="Transat Text" pointSize="25"/>
+                                                    <rect key="frame" x="120" y="110" width="123" height="30"/>
+                                                    <fontDescription key="fontDescription" name="Cabin-Bold" family="Cabin" pointSize="24"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                     <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <size key="shadowOffset" width="1" height="1"/>
+                                                    <size key="shadowOffset" width="0.0" height="0.0"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@tswift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="brj-Vp-1XD">
-                                                    <rect key="frame" x="120" y="181" width="60" height="18"/>
-                                                    <fontDescription key="fontDescription" name="TransatTextBold" family="Transat Text" pointSize="17"/>
+                                                    <rect key="frame" x="120" y="148" width="56" height="22"/>
+                                                    <fontDescription key="fontDescription" name="Cabin-Medium" family="Cabin" pointSize="18"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                     <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <size key="shadowOffset" width="1" height="1"/>
+                                                    <size key="shadowOffset" width="0.0" height="0.0"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="255" verticalCompressionResistancePriority="751" text="0.5 miles away" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uE6-2o-4dx">
-                                                    <rect key="frame" x="13" y="248" width="90" height="16"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
-                                                    <color key="textColor" red="0.60777515172958374" green="0.60788232088088989" blue="0.60776835680007935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <rect key="frame" x="230" y="193" width="86" height="18"/>
+                                                    <fontDescription key="fontDescription" name="Cabin-Italic" family="Cabin" pointSize="14"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5m ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbX-bI-Gli">
-                                                    <rect key="frame" x="111" y="248" width="46" height="16"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                                    <color key="textColor" red="0.60777515172958374" green="0.60788232088088989" blue="0.60776835680007935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <rect key="frame" x="324" y="193" width="43" height="18"/>
+                                                    <fontDescription key="fontDescription" name="Cabin-Italic" family="Cabin" pointSize="14"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="247" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.94999999999999996" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vCn-Te-NpZ">
-                                                    <rect key="frame" x="18" y="272" width="339" height="112"/>
+                                                    <rect key="frame" x="18" y="266" width="339" height="118"/>
                                                     <string key="text">Born in 1989. Taylor Alison Swift is an American singer-songwriter and actress. Raised in Wyomissing, Pennsylvania, Swift moved to Nashville, Tennessee, at the age of 14 to pursue a career in country music</string>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MHj-3N-OfG">
-                                                    <rect key="frame" x="299" y="156" width="68" height="36"/>
+                                                    <rect key="frame" x="299" y="60" width="68" height="36"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="68" id="PHg-9M-YRy"/>
                                                         <constraint firstAttribute="height" constant="36" id="SfU-7v-oOT"/>
@@ -523,7 +524,7 @@
                                                     </variation>
                                                 </view>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NCh-eV-aXm">
-                                                    <rect key="frame" x="116" y="208" width="251" height="30"/>
+                                                    <rect key="frame" x="8" y="228" width="359" height="30"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="30" id="loq-1D-Bpd"/>
@@ -560,41 +561,56 @@
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="qh5-iy-Fge" customClass="UserAvatarView" customModule="Taylr" customModuleProvider="target">
+                                                    <rect key="frame" x="8" y="90" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="EEH-eM-i4h"/>
+                                                        <constraint firstAttribute="width" secondItem="qh5-iy-Fge" secondAttribute="height" id="Tqa-U9-35s"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderRadius">
+                                                            <integer key="value" value="50"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <integer key="value" value="2"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="6ml-E6-ZMG" firstAttribute="bottom" secondItem="MHj-3N-OfG" secondAttribute="bottom" constant="8" id="7vv-rc-bnH"/>
+                                                <constraint firstItem="vCn-Te-NpZ" firstAttribute="top" secondItem="NCh-eV-aXm" secondAttribute="bottom" constant="8" symbolic="YES" id="3pO-Td-lV2"/>
+                                                <constraint firstItem="NCh-eV-aXm" firstAttribute="leading" secondItem="uY6-9P-VPb" secondAttribute="leadingMargin" id="4kX-im-aZ2"/>
+                                                <constraint firstItem="vbX-bI-Gli" firstAttribute="leading" secondItem="uE6-2o-4dx" secondAttribute="trailing" constant="8" symbolic="YES" id="6NH-z4-qtD"/>
                                                 <constraint firstItem="NCh-eV-aXm" firstAttribute="trailing" secondItem="uY6-9P-VPb" secondAttribute="trailingMargin" id="8It-bi-p3B"/>
-                                                <constraint firstItem="uE6-2o-4dx" firstAttribute="top" secondItem="qh5-iy-Fge" secondAttribute="bottom" constant="8" id="9Fe-fE-t6b"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="vCn-Te-NpZ" secondAttribute="bottom" constant="8" id="ASx-Ow-KGy"/>
-                                                <constraint firstItem="qh5-iy-Fge" firstAttribute="centerY" secondItem="2Sg-08-WeT" secondAttribute="centerY" constant="30" id="Emf-58-sSV"/>
+                                                <constraint firstItem="qh5-iy-Fge" firstAttribute="centerY" secondItem="2Sg-08-WeT" secondAttribute="centerY" constant="15" id="Emf-58-sSV"/>
                                                 <constraint firstItem="2Sg-08-WeT" firstAttribute="leading" secondItem="qh5-iy-Fge" secondAttribute="trailing" constant="12" id="FJb-lL-hDL"/>
+                                                <constraint firstItem="pNm-He-lw7" firstAttribute="leading" secondItem="6ml-E6-ZMG" secondAttribute="leading" id="Gos-mn-LPa"/>
                                                 <constraint firstItem="vCn-Te-NpZ" firstAttribute="leading" secondItem="uY6-9P-VPb" secondAttribute="leadingMargin" constant="10" id="KRa-0h-PQC"/>
-                                                <constraint firstItem="NCh-eV-aXm" firstAttribute="leading" secondItem="qh5-iy-Fge" secondAttribute="trailing" constant="8" id="Kin-Sb-7bb"/>
                                                 <constraint firstItem="6ml-E6-ZMG" firstAttribute="trailing" secondItem="MHj-3N-OfG" secondAttribute="trailing" constant="8" id="LXu-3i-IHm"/>
+                                                <constraint firstItem="pNm-He-lw7" firstAttribute="top" secondItem="6ml-E6-ZMG" secondAttribute="top" id="Ndf-LH-U4L"/>
+                                                <constraint firstItem="pNm-He-lw7" firstAttribute="bottom" secondItem="6ml-E6-ZMG" secondAttribute="bottom" id="OX6-1Q-eZJ"/>
                                                 <constraint firstAttribute="bottom" secondItem="6R8-aE-7Ce" secondAttribute="bottom" id="PvE-a4-7Fr"/>
                                                 <constraint firstItem="brj-Vp-1XD" firstAttribute="leading" secondItem="2Sg-08-WeT" secondAttribute="leading" id="Qq3-Hc-68c"/>
                                                 <constraint firstItem="qh5-iy-Fge" firstAttribute="leading" secondItem="uY6-9P-VPb" secondAttribute="leadingMargin" id="RBX-Ha-UR6"/>
+                                                <constraint firstItem="6ml-E6-ZMG" firstAttribute="bottom" secondItem="vbX-bI-Gli" secondAttribute="bottom" constant="9" id="Rez-8l-cii"/>
                                                 <constraint firstItem="6ml-E6-ZMG" firstAttribute="leading" secondItem="uY6-9P-VPb" secondAttribute="leading" id="Sa9-Qc-IWI"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="vCn-Te-NpZ" secondAttribute="trailing" constant="10" id="Ts4-gB-5d3"/>
                                                 <constraint firstItem="NCh-eV-aXm" firstAttribute="top" secondItem="6ml-E6-ZMG" secondAttribute="bottom" constant="8" id="VJF-ea-e5j"/>
-                                                <constraint firstItem="qh5-iy-Fge" firstAttribute="bottom" secondItem="6ml-E6-ZMG" secondAttribute="bottom" constant="40" id="Ygx-Oi-EoH"/>
+                                                <constraint firstItem="qh5-iy-Fge" firstAttribute="bottom" secondItem="6ml-E6-ZMG" secondAttribute="bottom" constant="-30" id="Ygx-Oi-EoH"/>
                                                 <constraint firstAttribute="trailing" secondItem="6ml-E6-ZMG" secondAttribute="trailing" id="Z7a-nQ-BqT"/>
                                                 <constraint firstItem="6R8-aE-7Ce" firstAttribute="leading" secondItem="uY6-9P-VPb" secondAttribute="leading" id="ZBp-g2-Kor"/>
-                                                <constraint firstItem="qh5-iy-Fge" firstAttribute="centerX" secondItem="uE6-2o-4dx" secondAttribute="centerX" id="aTw-a5-x2d"/>
-                                                <constraint firstItem="qh5-iy-Fge" firstAttribute="centerY" relation="lessThanOrEqual" secondItem="vbX-bI-Gli" secondAttribute="centerY" id="are-Vj-8rR"/>
                                                 <constraint firstItem="brj-Vp-1XD" firstAttribute="top" secondItem="2Sg-08-WeT" secondAttribute="bottom" constant="8" id="c16-SJ-B8x"/>
                                                 <constraint firstAttribute="trailing" secondItem="6R8-aE-7Ce" secondAttribute="trailing" id="d76-rv-NrY"/>
-                                                <constraint firstItem="vbX-bI-Gli" firstAttribute="top" secondItem="qh5-iy-Fge" secondAttribute="bottom" constant="8" id="dA8-VW-rS1"/>
-                                                <constraint firstItem="vCn-Te-NpZ" firstAttribute="top" secondItem="uE6-2o-4dx" secondAttribute="bottom" constant="8" id="jxb-kd-Ylb"/>
-                                                <constraint firstItem="vbX-bI-Gli" firstAttribute="baseline" secondItem="uE6-2o-4dx" secondAttribute="baseline" id="u3R-8i-RlO"/>
-                                                <constraint firstItem="vbX-bI-Gli" firstAttribute="leading" secondItem="uE6-2o-4dx" secondAttribute="trailing" constant="8" id="w2W-h1-mrY"/>
+                                                <constraint firstItem="pNm-He-lw7" firstAttribute="trailing" secondItem="6ml-E6-ZMG" secondAttribute="trailing" id="pou-JB-aMC"/>
+                                                <constraint firstItem="6ml-E6-ZMG" firstAttribute="top" secondItem="MHj-3N-OfG" secondAttribute="top" constant="-60" id="vPn-6P-6gq"/>
+                                                <constraint firstItem="uE6-2o-4dx" firstAttribute="baseline" secondItem="vbX-bI-Gli" secondAttribute="baseline" id="wDk-8e-Ytc"/>
+                                                <constraint firstItem="vbX-bI-Gli" firstAttribute="trailing" secondItem="uY6-9P-VPb" secondAttribute="trailingMargin" id="xAA-7g-sCf"/>
                                                 <constraint firstItem="6ml-E6-ZMG" firstAttribute="top" secondItem="uY6-9P-VPb" secondAttribute="top" id="zFn-2Z-b9R"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="u3R-8i-RlO"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="aboutLabel" destination="vCn-Te-NpZ" id="LdE-Do-CEi"/>
@@ -603,6 +619,7 @@
                                             <outlet property="collectionView" destination="NCh-eV-aXm" id="BMN-69-vZt"/>
                                             <outlet property="coverImageHeight" destination="tCc-d3-wwh" id="t4c-je-DCU"/>
                                             <outlet property="coverImageView" destination="6ml-E6-ZMG" id="0p4-5b-ZO8"/>
+                                            <outlet property="coverOverlay" destination="pNm-He-lw7" id="r5K-qG-4B4"/>
                                             <outlet property="distanceLabel" destination="uE6-2o-4dx" id="5ZZ-wQ-4XR"/>
                                             <outlet property="nameLabel" destination="2Sg-08-WeT" id="9K8-bK-ekA"/>
                                             <outlet property="usernameLabel" destination="brj-Vp-1XD" id="Y8Y-G1-rL3"/>
@@ -2009,8 +2026,8 @@
         <image name="sample-taylor-video-frame" width="375" height="375"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Hrk-zE-6Yh"/>
         <segue reference="pTL-As-d01"/>
+        <segue reference="5l2-qW-Xr9"/>
         <segue reference="yhs-PQ-k4J"/>
     </inferredMetricsTieBreakers>
 </document>

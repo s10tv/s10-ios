@@ -13,6 +13,7 @@ import Bond
 class ProfileMainCell : UITableViewCell {
     @IBOutlet weak var coverImageHeight: NSLayoutConstraint!
     @IBOutlet weak var coverImageView: UIImageView!
+    @IBOutlet weak var coverOverlay: UIView!
     @IBOutlet weak var avatarView: UserAvatarView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
@@ -46,6 +47,6 @@ class ProfileMainCell : UITableViewCell {
         super.awakeFromNib()
         coverImageView.clipsToBounds = true
         avatarView.dynPlaceholderImage = avatarView.image
-        coverImageView.dynPlaceholderImage = coverImageView.image
+        coverImageView.dynPlaceholderImage = coverImageView.image        
     }
 }

@@ -100,6 +100,7 @@ extension ProfileViewController : UIScrollViewDelegate {
             frame.origin.y = yOffset
             frame.size.height = mainCell.coverImageHeight.constant + -yOffset
             imageView.frame = frame
+            mainCell.coverOverlay.frame = frame
         }
     }
 }
