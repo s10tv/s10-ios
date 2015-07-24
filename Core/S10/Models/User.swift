@@ -10,8 +10,7 @@ import Foundation
 import Meteor
 import Bond
 import ReactiveCocoa
-import Argo
-import Runes
+import ObjectMapper
 
 extension _User {
     func dyn(keyPath: UserKeys) -> DynamicProperty {
@@ -34,40 +33,46 @@ public struct STUser {
         jobTitle = user.dyn(.jobTitle).optional(String)
     }
     
-    public struct Profile {
-        public let id: String
-//        public let icon: Image
-//        public let avatar: Image
-        public let displayName: String
-        public let displayId: String?
-//        public let authenticated: Bool
-        public let url: NSURL
-//        public let attributes: [Attribute]
+    public struct Profile : Mappable {
+        public var id: String!
+        public var icon: Image!
+        public var avatar: Image!
+        public var displayName: String!
+        public var displayId: String?
+        public var authenticated: Bool?
+        public var url: NSURL!
+        public var attributes: [Attribute]!
         
-        public struct Attribute {
-            public let label: String
-            public let value: String
+        public init?(_ map: Map) {
+            mapping(map)
+        }
+        
+        public mutating func mapping(map: Map) {
+            id <- map["id"]
+            icon <- map["icon"]
+            avatar <- map["avatar"]
+            displayName <- map["displayName"]
+            displayId <- map["displayId"]
+            authenticated <- map["authenticated"]
+            url <- (map["url"], URLTransform())
+            attributes <- map["attributes"]
+        }
+        
+        public struct Attribute : Mappable {
+            public var label: String!
+            public var value: String!
+            
+            public init?(_ map: Map) {
+                mapping(map)
+            }
+            
+            public mutating func mapping(map: Map) {
+                label <- map["label"]
+                value <- map["value"]
+            }
         }
     }
 }
-
-
-extension STUser.Profile : Decodable {
-    
-    static func create(id: String)(displayName: String)(displayId: String?)/*(authenticated: Bool)*/(url: NSURL) -> STUser.Profile {
-        return STUser.Profile(id: id, displayName: displayName, displayId: displayId,/* authenticated: authenticated,*/ url: url)
-    }
-
-    public static func decode(j: JSON) -> Decoded<STUser.Profile> {
-        return create
-            <^> j <| "id"
-            <*> j <| "displayName"
-            <*> j <|? "displayId"
-//            <*> j <| "authenticated"
-            <*> j <| "url"
-    }
-}
-
 
 @objc(User)
 public class User: _User {
@@ -105,11 +110,11 @@ public class User: _User {
     }()
     
     public private(set) lazy var dynAvatar: Dynamic<Image?> = {
-        return self.dynValue(UserKeys.avatar).map { $0.flatMap(decode) }
+        return self.dynValue(UserKeys.avatar).map(Mapper<Image>().map)
     }()
     
     public private(set) lazy var dynCover: Dynamic<Image?> = {
-        return self.dynValue(UserKeys.cover).map { $0 >>- decode }
+        return self.dynValue(UserKeys.cover).map(Mapper<Image>().map)
     }()
 
     public private(set) lazy var displayName: Dynamic<String> = {

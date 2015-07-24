@@ -7,8 +7,7 @@
 //
 
 import Bond
-import Argo
-import Runes
+import ObjectMapper
 
 @objc(Activity)
 public class Activity : _Activity {
@@ -19,7 +18,7 @@ public class Activity : _Activity {
     }
 
     public private(set) lazy var dynImage: Dynamic<Image?> = { // TOOD: Write a flatMap for dynamic / propertyOf
-        return self.dynValue(ActivityKeys.image).map { $0 >>- decode }
+        return self.dynValue(ActivityKeys.image).map(Mapper<Image>().map)
     }()
     
     public private(set) lazy var dynTimestamp: Dynamic<NSDate?> = {

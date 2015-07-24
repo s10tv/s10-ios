@@ -20,6 +20,7 @@
 		EA009D541B5BFED900FC7E3D /* Bond+SDWebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBA91B3930B000701F08 /* Bond+SDWebImage.swift */; };
 		EA03D3371B5B2C58007A0CF7 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA03D3361B5B2C58007A0CF7 /* PlayerViewController.swift */; };
 		EA03D3381B5B368E007A0CF7 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA03D3361B5B2C58007A0CF7 /* PlayerViewController.swift */; };
+		EA043F5C1B621D620047BDCA /* STUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F5B1B621D620047BDCA /* STUser.swift */; };
 		EA06AAB81B3B2D2B000E128C /* PKHUDExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBAB1B3930B000701F08 /* PKHUDExtension.swift */; };
 		EA06AAB91B3B2D8F000E128C /* ResourceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBAC1B3930B000701F08 /* ResourceExtension.swift */; };
 		EA0C8C871B55DA1E00C2FB0A /* EditProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0C8C861B55DA1E00C2FB0A /* EditProfileInteractor.swift */; };
@@ -279,6 +280,7 @@
 		A80ED835405D6C980CF3F31B /* Pods-Core-CoreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core-CoreTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Core-CoreTests/Pods-Core-CoreTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C97F216A216ACE06C7336869 /* Pods-Core-Taylr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core-Taylr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Core-Taylr/Pods-Core-Taylr.release.xcconfig"; sourceTree = "<group>"; };
 		EA03D3361B5B2C58007A0CF7 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		EA043F5B1B621D620047BDCA /* STUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = STUser.swift; sourceTree = "<group>"; };
 		EA0C8C861B55DA1E00C2FB0A /* EditProfileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileInteractor.swift; sourceTree = "<group>"; };
 		EA0C8C881B55DA2E00C2FB0A /* EditProfileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileTests.swift; sourceTree = "<group>"; };
 		EA0C8C8A1B56DAAE00C2FB0A /* ReactiveFuture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveFuture.swift; sourceTree = "<group>"; };
@@ -997,6 +999,7 @@
 			isa = PBXGroup;
 			children = (
 				EAF6705F1B31F9450025D7CF /* _Models */,
+				EA043F5B1B621D620047BDCA /* STUser.swift */,
 				EAF6706A1B31F9450025D7CF /* User.swift */,
 				EAF670661B31F9450025D7CF /* Connection.swift */,
 				EAF670671B31F9450025D7CF /* Message.swift */,
@@ -1571,6 +1574,7 @@
 				EA4216451B3E092200613EFA /* _Activity.swift in Sources */,
 				EAF670971B31FE6A0025D7CF /* Environment.swift in Sources */,
 				EACEFB911B472E8800901E85 /* ChatsInteractor.swift in Sources */,
+				EA043F5C1B621D620047BDCA /* STUser.swift in Sources */,
 				EA0C8C871B55DA1E00C2FB0A /* EditProfileInteractor.swift in Sources */,
 				EAF6707F1B31F9450025D7CF /* Connection.swift in Sources */,
 				EA39651C1B54EFE400F5B0B3 /* MeteorCollection.swift in Sources */,

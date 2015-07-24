@@ -21,7 +21,7 @@ target :Core do
     pod 'RealmSwift', '~> 0.93.2'
     pod 'SwiftyUserDefaults', '~> 1.3'
     pod 'SwiftyJSON', '~> 2.1'
-    pod 'Argo', '~> 1.0'
+    pod 'ObjectMapper', '~> 0.12'
 
     # Networking
     pod 'Alamofire', '~> 1.2'

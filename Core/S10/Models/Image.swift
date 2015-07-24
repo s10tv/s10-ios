@@ -7,48 +7,26 @@
 //
 
 import Foundation
-import Argo
-import Runes
+import ObjectMapper
 
-extension NSURL : Decodable {
-    public static func decode(json: JSON) -> Decoded<NSURL> {
-        switch json {
-        case let .String(s): return .fromOptional(NSURL(string: s))
-        default: return .TypeMismatch("\(json) is not a string")
-        }
-    }
-}
-
-public struct Image {
-    public let url: NSURL
-    public let width: Int?
-    public let height: Int?
+public struct Image : Mappable {
+    public var url: NSURL!
+    public var width: Int?
+    public var height: Int?
     
-    public static func fromDict(dict: NSDictionary) -> Image? {
-        if let width = dict["width"] as? Int,
-            let height = dict["height"] as? Int,
-            let url = NSURL.fromString(dict["url"] as? String) {
-            return Image(url: url, width: width, height: height)
-        }
-        return nil
+    public init?(_ map: Map) {
+        mapping(map)
+    }
+    
+    public mutating func mapping(map: Map) {
+        url <- (map["url"], URLTransform())
+        width <- map["width"]
+        height <- map["height"]
     }
 }
 
 extension Image : Printable {
     public var description: String {
         return "Image[url=\(url), w=\(width) h=\(height)]"
-    }
-}
-
-extension Image : Decodable {
-    static func create(url: NSURL)(width: Int?)(height: Int?) -> Image {
-        return Image(url: url, width: width, height: height)
-    }
-    
-    public static func decode(json: JSON) -> Decoded<Image> {
-        return create
-            <^> json <| "url"
-            <*> json <|? "width"
-            <*> json <|? "height"
     }
 }

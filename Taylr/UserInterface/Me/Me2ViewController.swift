@@ -12,6 +12,7 @@ import ReactiveCocoa
 import Core
 import Argo
 import Runes
+import ObjectMapper
 
 class Me2ViewController : UITableViewController {
     
@@ -51,10 +52,17 @@ class Me2ViewController : UITableViewController {
             tableView.contentOffset = CGPoint(x: 0, y: -66)
         }
         
-        if let connectedProfiles: AnyObject = interactor.currentUser.connectedProfiles {
-            let profiles: Decoded<[STUser.Profile]> = decode(connectedProfiles)
-            println("Profiles \(profiles)")
-        }
+//        let abc: String? = decode("aasa")
+//        println("\(abc)")
+//        if let connectedProfiles: AnyObject = interactor.currentUser.connectedProfiles {
+//            let mapper = Mapper<STUser.Profile>()
+//            let profiles = mapper.mapArray(connectedProfiles)
+//            let toAndBackAgain = mapper.toJSONArray(profiles!)
+////            let profiles: Decoded<[STUser.Profile]> = decode(connectedProfiles)
+//
+//            println("Profiles \(profiles)")
+//            println("Back \(toAndBackAgain)")
+//        }
     }
     
     override func viewDidLayoutSubviews() {
