@@ -1,105 +1,98 @@
 //
 //  MeViewController.swift
-//  Taylr
+//  S10
 //
-//  Created by Tony Xiao on 6/12/15.
-//  Copyright (c) 2015 S10 Inc. All rights reserved.
+//  Created by Tony Xiao on 7/22/15.
+//  Copyright (c) 2015 S10. All rights reserved.
 //
 
 import Foundation
-import Core
-import SDWebImage
 import Bond
-import PKHUD
 import ReactiveCocoa
-import JVFloatLabeledTextField
+import Argo
+import Runes
+import ObjectMapper
+import Core
 
-class MeViewController : BaseViewController {
+class MeViewController : UITableViewController {
     
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var inviteeFirstNameField: JVFloatLabeledTextField!
-    @IBOutlet weak var inviteeLastNameField: JVFloatLabeledTextField!
-    @IBOutlet weak var inviteeEmailOrPhoneField: JVFloatLabeledTextField!
+    @IBOutlet weak var servicesContainer: UIView!
+    @IBOutlet weak var inviteContainer: UIView!
     
-    var viewModel: MeInteractor!
-    var linkAccountService: LinkAccountService!
-    
-    // Explicitly setting collectionView delegate.nil to avoid crash. For some reason
-    // after view controller dealloc collectionView still calls delegate
-    deinit {
-        collectionView.delegate = nil
-    }
+    var servicesVC: IntegrationsViewController!
+    var vm: MeViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 0.01))
         
-        viewModel = MeInteractor(meteor: Meteor, taskService: Globals.taskService, currentUser: Meteor.user.value!)
-        viewModel.avatarURL ->> avatarView.dynImageURL
-        viewModel.displayName ->> nameLabel
-        viewModel.username ->> usernameLabel
-        viewModel.inviteeFirstName <->> inviteeFirstNameField
-        viewModel.inviteeLastName <->> inviteeLastNameField
-        viewModel.inviteeEmailOrPhone <->> inviteeEmailOrPhoneField
+        vm = MeViewModel(meteor: Meteor, currentUser: Meteor.user.value!)
+        vm.avatarURL ->> avatarView.dynImageURL
+        vm.displayName ->> nameLabel
+        vm.username ->> usernameLabel
         
         
-        let servicesSection = viewModel.linkedServices.map { [unowned self] (service, index) -> UICollectionViewCell in
-            let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier(.MeServiceCell,
-                forIndexPath: NSIndexPath(forRow: index, inSection: 0)) as! MeServiceCell
-            cell.bindViewModel(service)
-            return cell
+        // Proactively improve shadow performance
+        [servicesContainer, inviteContainer].each {
+            $0.layer.shouldRasterize = true
+            $0.layer.rasterizationScale = UIScreen.mainScreen().scale
         }
-        let addSection = DynamicArray(["Add"]).map { [unowned self] (_, _) -> UICollectionViewCell in
-            return self.collectionView.dequeueReusableCellWithReuseIdentifier(.AddCell, forIndexPath: NSIndexPath(forRow: 0, inSection: 1))
+
+        // Observe collectionView height and reload table view cell height whenever appropriate
+        servicesVC.collectionView!.dyn("contentSize").force(NSValue).producer
+            |> skip(1)
+            |> skipRepeats
+            |> observeOn(QueueScheduler.mainQueueScheduler)
+            |> start(next: { _ in
+                self.tableView.beginUpdates()
+                self.tableView.endUpdates()
+            })
+    }
+    
+    var hackedOffset = false
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+         // Totally stupid hack, donno why needed, probably related to nesting TabBarViewController inside nav controller
+        if !hackedOffset {
+            hackedOffset = true
+            tableView.contentOffset = CGPoint(x: 0, y: -66)
         }
-        
-        DynamicArray([servicesSection, addSection]) ->> collectionView
-        linkAccountService = LinkAccountService(env: Globals.env)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        tableView.contentInset = UIEdgeInsets(top: topLayoutGuide.length, left: 0,
+            bottom: bottomLayoutGuide.length, right: 0)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let vc = segue.destinationViewController as? IntegrationsViewController {
+            servicesVC = vc
+        }
         if let vc = segue.destinationViewController as? ProfileViewController {
-            vc.profileVM = ProfileInteractor(meteor: Meteor, user: viewModel.currentUser)
+            vc.profileVM = ProfileInteractor(meteor: Meteor, user: vm.currentUser)
         }
         if let vc = segue.destinationViewController as? EditProfileViewController {
-            vc.interactor = EditProfileInteractor(meteor: Meteor, user: viewModel.currentUser)
+            vc.interactor = EditProfileInteractor(meteor: Meteor, user: vm.currentUser)
         }
         if let segue = segue as? LinkedStoryboardPushSegue where segue.matches(.Onboarding_Login) {
             segue.replaceStrategy = .Stack
         }
     }
-        
-    func linkService(type: ServiceType) {
-        linkAccountService.linkNewService(type, useWebView: true).subscribeNext({ _ in
-            PKHUD.showActivity()
-        }, error: { error in
-            PKHUD.hide(animated: false)
-            self.showAlert(LS(.errUnableToAddServiceTitle), message: LS(.errUnableToAddServiceMessage))
-        }, completed: {
-            PKHUD.hide(animated: false)
-        })
+    
+    // MARK: -
+    
+    @IBAction func didPressContactSupport(sender: AnyObject) {
+        let alert = UIAlertController(title: "To be implemented", message: nil, preferredStyle: .Alert)
+        alert.addAction("Ok", style: .Cancel)
+        presentViewController(alert)
     }
     
-    @IBAction func didPressInviteButton(sender: AnyObject) {
-        let producer = UIStoryboard(name: "AVKit", bundle: nil).instantiateInitialViewController() as! ProducerViewController
-        producer.producerDelegate = self
-        presentViewController(producer, animated: true)
-    }
-    
-    @IBAction func showLinkServiceOptions(sender: AnyObject) {
-        let sheet = UIAlertController(title: LS(.meLinkNewSerivceTitle), message: nil, preferredStyle: .ActionSheet)
-        for option in viewModel.serviceTypes.value {
-            sheet.addAction(option.name ?? "") { _ in
-                self.linkService(option)
-            }
-        }
-        sheet.addAction(LS(.meCancelTitle), style: .Cancel)
-        presentViewController(sheet)
-    }
-    
-    @IBAction func showLogoutOptions(sender: AnyObject) {
+    @IBAction func didPressLogout(sender: AnyObject) {
         let sheet = UIAlertController(title: LS(.settingsLogoutTitle), message: nil, preferredStyle: .ActionSheet)
         sheet.addAction(LS(.settingsLogoutLogout)) { _ in
             Globals.accountService.logout()
@@ -110,39 +103,13 @@ class MeViewController : BaseViewController {
     }
 }
 
-extension MeViewController : UICollectionViewDelegate {
-    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        if indexPath.section == 0 {
-            let service = viewModel.linkedServices[indexPath.row]
-            let title = LS(.meRemoveServiceTitle, service.name.value, service.userDisplayName.value)
-            let sheet = UIAlertController(title: title, message: nil, preferredStyle: .ActionSheet)
-            sheet.addAction(LS(.meRemoveServiceConfirm), style: .Destructive) { _ in
-                Meteor.removeService(service.service)
-            }
-            sheet.addAction(LS(.meCancelTitle), style: .Cancel)
-            presentViewController(sheet)
-        } else {
-            showLinkServiceOptions(self)
+extension MeViewController : UITableViewDelegate {
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        // TODO: Should we consider autolayout?
+        if indexPath.section == 1 { // Integrations section
+            let height = servicesVC.collectionView!.collectionViewLayout.collectionViewContentSize().height + 16
+            return height
         }
-    }
-}
-
-extension MeViewController : ProducerDelegate {
-    func producerWillStartRecording(producer: ProducerViewController) {
-    }
-    
-    func producerDidCancelRecording(producer: ProducerViewController) {
-        producer.dismissViewController(animated: true)
-    }
-    
-    func producer(producer: ProducerViewController, didProduceVideo url: NSURL) {
-        producer.dismissViewController(animated: true)
-        viewModel.sendInvite(url).on(UIScheduler(), success: {
-            PKHUD.showText("Sent Successfully!")
-            PKHUD.hide(afterDelay: 0.25)
-        }, failure: { error in
-            PKHUD.hide(animated: false)
-            self.showErrorAlert(error)
-        })
+        return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
     }
 }
