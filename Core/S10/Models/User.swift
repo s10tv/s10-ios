@@ -51,14 +51,6 @@ public struct STUser {
     }
 }
 
-extension NSURL : Decodable {
-    public static func decode(json: JSON) -> Decoded<NSURL> {
-        switch json {
-        case let .String(s): return .fromOptional(NSURL(string: s))
-        default: return .TypeMismatch("\(json) is not a string")
-        }
-    }
-}
 
 extension STUser.Profile : Decodable {
     
@@ -113,11 +105,11 @@ public class User: _User {
     }()
     
     public private(set) lazy var dynAvatar: Dynamic<Image?> = {
-        return self.dynValue(UserKeys.avatar).map { $0.map { Image.fromDict($0) } ?? nil }
+        return self.dynValue(UserKeys.avatar).map { $0.flatMap(decode) }
     }()
     
     public private(set) lazy var dynCover: Dynamic<Image?> = {
-        return self.dynValue(UserKeys.cover).map { $0.map { Image.fromDict($0) } ?? nil }
+        return self.dynValue(UserKeys.cover).map { $0 >>- decode }
     }()
 
     public private(set) lazy var displayName: Dynamic<String> = {

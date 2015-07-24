@@ -41,7 +41,7 @@ class ActivityImageCell : UITableViewCell {
         activity.image.map { [unowned self] image in
             if let image = image {
                 let width = self.contentImageView.frame.width
-                self.imageHeightConstraint.constant = width / image.width.f * image.height.f
+                self.imageHeightConstraint.constant = width / image.width!.f * image.height!.f
                 return image.url
             } else {
                 self.imageHeightConstraint.constant = 0

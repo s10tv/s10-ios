@@ -7,11 +7,22 @@
 //
 
 import Foundation
+import Argo
+import Runes
+
+extension NSURL : Decodable {
+    public static func decode(json: JSON) -> Decoded<NSURL> {
+        switch json {
+        case let .String(s): return .fromOptional(NSURL(string: s))
+        default: return .TypeMismatch("\(json) is not a string")
+        }
+    }
+}
 
 public struct Image {
     public let url: NSURL
-    public let width: Int
-    public let height: Int
+    public let width: Int?
+    public let height: Int?
     
     public static func fromDict(dict: NSDictionary) -> Image? {
         if let width = dict["width"] as? Int,
@@ -26,5 +37,18 @@ public struct Image {
 extension Image : Printable {
     public var description: String {
         return "Image[url=\(url), w=\(width) h=\(height)]"
+    }
+}
+
+extension Image : Decodable {
+    static func create(url: NSURL)(width: Int?)(height: Int?) -> Image {
+        return Image(url: url, width: width, height: height)
+    }
+    
+    public static func decode(json: JSON) -> Decoded<Image> {
+        return create
+            <^> json <| "url"
+            <*> json <|? "width"
+            <*> json <|? "height"
     }
 }
