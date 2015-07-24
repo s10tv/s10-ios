@@ -18,6 +18,13 @@
         <relationship name="lastSender" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
         <relationship name="otherUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="connection" inverseEntity="User" syncable="YES"/>
     </entity>
+    <entity name="Integration" representedClassName="Integration" syncable="YES">
+        <attribute name="hasError" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="iconUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="isIndexing" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="linkedAccountName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Message" representedClassName="Message" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="expiresAt" optional="YES" attributeType="Date" syncable="YES"/>
@@ -87,5 +94,6 @@
         <element name="ServiceType" positionX="-612" positionY="-144" width="128" height="75"/>
         <element name="User" positionX="268" positionY="-261" width="128" height="270"/>
         <element name="Video" positionX="-234" positionY="90" width="128" height="105"/>
+        <element name="Integration" positionX="-612" positionY="-144" width="128" height="120"/>
     </elements>
 </model>

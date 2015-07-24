@@ -88,6 +88,10 @@ public class MeteorService : NSObject {
     
     // MARK: - Publications
     
+    func subscribe(name: String, params: [AnyObject]? = nil) -> METSubscription {
+        return meteor.addSubscriptionWithName(name, parameters: params)
+    }
+    
     public func subscribeServices(user: User) -> METSubscription {
         return meteor.addSubscriptionWithName("userServices", parameters: [user])
     }

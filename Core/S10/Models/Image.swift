@@ -11,8 +11,25 @@ import ObjectMapper
 
 public struct Image : Mappable {
     public var url: NSURL!
+    public var image: UIImage?
     public var width: Int?
     public var height: Int?
+    
+    public init?(_ urlString: String?) {
+        if let url = urlString.flatMap({ NSURL(string: $0) }) {
+            self.url = url
+        } else {
+            return nil
+        }
+    }
+    
+    public init(_ url: NSURL) {
+        self.url = url
+    }
+    
+    public init(_ image: UIImage) {
+        self.image = image
+    }
     
     public init?(_ map: Map) {
         mapping(map)

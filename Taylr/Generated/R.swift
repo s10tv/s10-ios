@@ -158,6 +158,8 @@ public enum R {
         case appDev = "AppIconDev"
         /// girl-placeholder
         case girlPlaceholder = "girl-placeholder"
+        /// ic-add
+        case icAdd = "ic-add"
         /// ic-addphoto-plus
         case icAddphotoPlus = "ic-addphoto-plus"
         /// ic-back
@@ -236,6 +238,8 @@ public enum R {
         case icUpvote = "ic-upvote"
         /// ic-video
         case icVideo = "ic-video"
+        /// ic-warning
+        case icWarning = "ic-warning"
         /// ic-youtube
         case icYoutube = "ic-youtube"
         /// Logo
