@@ -135,6 +135,7 @@
 		EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35461A74CC6900E0C65D /* Main.storyboard */; };
 		EA9F354A1A74CC6900E0C65D /* Taylr.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Taylr.xcassets */; };
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
+		EA9F819E1B61BD1F00919C04 /* DynamicProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F819D1B61BD1F00919C04 /* DynamicProperties.swift */; };
 		EAA56F8D1B2B32E500DE3936 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F6C1B2B32E500DE3936 /* ChatsViewController.swift */; };
 		EAA56F8E1B2B32E500DE3936 /* ConnectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F6D1B2B32E500DE3936 /* ConnectionCell.swift */; };
 		EAA56F901B2B32E500DE3936 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F701B2B32E500DE3936 /* DiscoverViewController.swift */; };
@@ -394,6 +395,7 @@
 		EA9F35521A74CC6900E0C65D /* CoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9F35571A74CC6900E0C65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		EA9F35621A74CD8800E0C65D /* Taylr-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Taylr-Bridging.h"; path = "Taylr/Taylr-Bridging.h"; sourceTree = SOURCE_ROOT; };
+		EA9F819D1B61BD1F00919C04 /* DynamicProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicProperties.swift; sourceTree = "<group>"; };
 		EAA56F6C1B2B32E500DE3936 /* ChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		EAA56F6D1B2B32E500DE3936 /* ConnectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionCell.swift; sourceTree = "<group>"; };
 		EAA56F701B2B32E500DE3936 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
@@ -970,6 +972,7 @@
 			children = (
 				EAF6705A1B31F9450025D7CF /* FoundationExtension.swift */,
 				EA0C8C8A1B56DAAE00C2FB0A /* ReactiveFuture.swift */,
+				EA9F819D1B61BD1F00919C04 /* DynamicProperties.swift */,
 				EAF6705B1B31F9450025D7CF /* NotificationCenterExtensions.swift */,
 				EAF670891B31F9AD0025D7CF /* Logging.swift */,
 				EA9C16651B365BD700371B50 /* AsyncOperation.swift */,
@@ -1537,6 +1540,7 @@
 				EA82CF971B504FC500A12D94 /* Image.swift in Sources */,
 				EAF670801B31F9450025D7CF /* Message.swift in Sources */,
 				EAF6707D1B31F9450025D7CF /* _Video.swift in Sources */,
+				EA9F819E1B61BD1F00919C04 /* DynamicProperties.swift in Sources */,
 				EA4757151B392C19002071D7 /* Segue.swift in Sources */,
 				EAF6701D1B31E6550025D7CF /* Core.m in Sources */,
 				EACEFB921B472E8800901E85 /* ConversationInteractor.swift in Sources */,

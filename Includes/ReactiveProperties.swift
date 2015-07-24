@@ -9,68 +9,6 @@
 import Foundation
 import ReactiveCocoa
 
-// MARK: - Typed KVO support
-
-final class DynamicOptionalTypedProperty<T> : MutablePropertyType {
-    typealias Value = T?
-    
-    private let backing: DynamicProperty
-    
-    var value: T? {
-        get { return backing.value as? T }
-        set { backing.value = newValue as? AnyObject }
-    }
-    var producer: SignalProducer<T?, ReactiveCocoa.NoError> {
-        return backing.producer |> map { $0 as? T }
-    }
-    
-    init(backing: DynamicProperty, type: T.Type) {
-        self.backing = backing
-    }
-    
-    convenience init(object: NSObject?, keyPath: String, type: T.Type) {
-        self.init(backing: DynamicProperty(object: object, keyPath: keyPath), type: type)
-    }
-}
-
-final class DynamicForceTypedProperty<T> : MutablePropertyType {
-    typealias Value = T
-    
-    private let backing: DynamicProperty
-    
-    var value: T {
-        get { return backing.value as! T }
-        set { backing.value = newValue as? AnyObject }
-    }
-    
-    var producer: SignalProducer<T, ReactiveCocoa.NoError> {
-        return backing.producer |> map { $0 as! T }
-    }
-    
-    init(backing: DynamicProperty, type: T.Type) {
-        self.backing = backing
-    }
-    
-    convenience init(object: NSObject?, keyPath: String, type: T.Type) {
-        self.init(backing: DynamicProperty(object: object, keyPath: keyPath), type: type)
-    }
-}
-
-extension DynamicProperty {
-    func optional<T>(type: T.Type) -> DynamicOptionalTypedProperty<T> {
-        return DynamicOptionalTypedProperty(backing: self, type: type)
-    }
-    func force<T>(type: T.Type) -> DynamicForceTypedProperty<T> {
-        return DynamicForceTypedProperty(backing: self, type: type)
-    }
-}
-
-extension NSObject {
-    func dyn(keyPath: String) -> DynamicProperty {
-        return DynamicProperty(object: self, keyPath: keyPath)
-    }
-}
-
 // MARK: - Property Extensions
 
 extension MutableProperty {
