@@ -12,6 +12,10 @@ public enum ServiceTypeKeys: String, Printable {
     public var description: String { return rawValue }
 }
 
+public enum ServiceTypeUserInfo: String {
+    case collectionName = "collectionName"
+}
+
 @objc public
 class _ServiceType: NSManagedObject {
 

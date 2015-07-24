@@ -10,6 +10,8 @@ import Foundation
 import Bond
 import ReactiveCocoa
 import Core
+import Argo
+import Runes
 
 class Me2ViewController : UITableViewController {
     
@@ -32,6 +34,7 @@ class Me2ViewController : UITableViewController {
         interactor.displayName ->> nameLabel
         interactor.username ->> usernameLabel
         
+        
         // Proactively improve shadow performance
         [servicesContainer, inviteContainer].each {
             $0.layer.shouldRasterize = true
@@ -46,6 +49,11 @@ class Me2ViewController : UITableViewController {
         if !hackedOffset {
             hackedOffset = true
             tableView.contentOffset = CGPoint(x: 0, y: -66)
+        }
+        
+        if let connectedProfiles: AnyObject = interactor.currentUser.connectedProfiles {
+            let profiles: Decoded<[STUser.Profile]> = decode(connectedProfiles)
+            println("Profiles \(profiles)")
         }
     }
     

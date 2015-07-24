@@ -162,6 +162,8 @@ public enum R {
         case icAddphotoPlus = "ic-addphoto-plus"
         /// ic-back
         case icBack = "ic-back"
+        /// ic-back-arrow
+        case icBackArrow = "ic-back-arrow"
         /// ic-back-white
         case icBackWhite = "ic-back-white"
         /// ic-camera
@@ -172,12 +174,16 @@ public enum R {
         case icCapture = "ic-capture"
         /// ic-chats
         case icChats = "ic-chats"
+        /// ic-checkmark
+        case icCheckmark = "ic-checkmark"
         /// ic-close
         case icClose = "ic-close"
         /// ic-disclosure
         case icDisclosure = "ic-disclosure"
         /// ic-discover
         case icDiscover = "ic-discover"
+        /// ic-eclipse
+        case icEclipse = "ic-eclipse"
         /// ic-edit
         case icEdit = "ic-edit"
         /// ic-edit-text
@@ -222,10 +228,14 @@ public enum R {
         case icSkip = "ic-skip"
         /// ic-twitter
         case icTwitter = "ic-twitter"
+        /// ic-twitter-color
+        case icTwitterColor = "ic-twitter-color"
         /// ic-twitter-small
         case icTwitterSmall = "ic-twitter-small"
         /// ic-upvote
         case icUpvote = "ic-upvote"
+        /// ic-video
+        case icVideo = "ic-video"
         /// ic-youtube
         case icYoutube = "ic-youtube"
         /// Logo

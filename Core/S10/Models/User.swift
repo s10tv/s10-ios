@@ -10,6 +10,72 @@ import Foundation
 import Meteor
 import Bond
 import ReactiveCocoa
+import Argo
+import Runes
+
+extension _User {
+    func dyn(keyPath: UserKeys) -> DynamicProperty {
+        return dyn(keyPath.rawValue)
+    }
+}
+
+public struct STUser {
+    
+    let _user: _User
+    public let firstName: DynamicOptionalTypedProperty<String>
+    public let lastName: DynamicOptionalTypedProperty<String>
+    public let jobTitle: DynamicOptionalTypedProperty<String>
+    public let profiles: PropertyOf<[Profile]>? = nil
+    
+    public init(user: _User) {
+        _user = user
+        firstName = user.dyn(.firstName).optional(String)
+        lastName = user.dyn(.lastName).optional(String)
+        jobTitle = user.dyn(.jobTitle).optional(String)
+    }
+    
+    public struct Profile {
+        public let id: String
+//        public let icon: Image
+//        public let avatar: Image
+        public let displayName: String
+        public let displayId: String?
+//        public let authenticated: Bool
+        public let url: NSURL
+//        public let attributes: [Attribute]
+        
+        public struct Attribute {
+            public let label: String
+            public let value: String
+        }
+    }
+}
+
+extension NSURL : Decodable {
+    public static func decode(json: JSON) -> Decoded<NSURL> {
+        switch json {
+        case let .String(s): return .fromOptional(NSURL(string: s))
+        default: return .TypeMismatch("\(json) is not a string")
+        }
+    }
+}
+
+extension STUser.Profile : Decodable {
+    
+    static func create(id: String)(displayName: String)(displayId: String?)/*(authenticated: Bool)*/(url: NSURL) -> STUser.Profile {
+        return STUser.Profile(id: id, displayName: displayName, displayId: displayId,/* authenticated: authenticated,*/ url: url)
+    }
+
+    public static func decode(j: JSON) -> Decoded<STUser.Profile> {
+        return create
+            <^> j <| "id"
+            <*> j <| "displayName"
+            <*> j <|? "displayId"
+//            <*> j <| "authenticated"
+            <*> j <| "url"
+    }
+}
+
 
 @objc(User)
 public class User: _User {
