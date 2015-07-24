@@ -10,6 +10,7 @@ import Foundation
 import ObjectMapper
 
 public struct IntegrationViewModel {
+    public let id: String
     public let icon: Image
     public let title: String
     public let statusImage: Image?
@@ -17,6 +18,7 @@ public struct IntegrationViewModel {
     public let url: NSURL?
     
     public init(integration: Integration) {
+        id = integration.documentID!
         icon = Mapper<Image>().map(integration.icon)!
         title = integration.username ?? integration.name
         switch integration.status {

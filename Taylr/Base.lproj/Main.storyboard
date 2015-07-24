@@ -1870,7 +1870,7 @@
                                     <outlet property="spinner" destination="CZO-5h-hWA" id="amM-ve-GlM"/>
                                     <outlet property="statusView" destination="DMg-9a-tHp" id="XWX-yy-G2Z"/>
                                     <outlet property="titleLabel" destination="cGE-rX-da0" id="ihH-dr-ONl"/>
-                                    <segue destination="OW3-uH-BKk" kind="presentation" id="HFr-ec-Lne"/>
+                                    <segue destination="OW3-uH-BKk" kind="presentation" identifier="IntegrationsToWeb" modalPresentationStyle="pageSheet" id="HFr-ec-Lne"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
