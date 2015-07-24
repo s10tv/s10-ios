@@ -9,6 +9,7 @@
 import UIKit
 import Bond
 import SDWebImage
+import Core
 
 var imageURLDynamicHandleUIImageView: UInt8 = 0;
 var placeholderimageDynamicHandleUIImageView: UInt8 = 0;
@@ -40,6 +41,17 @@ extension UIImageView {
     public func unbindDynImageURL() {
         dynImageURL.valueBond.unbindAll()
         sd_cancelCurrentImageLoad()
+    }
+    
+    public func bindImage(image: Image?) {
+        sd_cancelCurrentImageLoad()
+        if let image = image?.image {
+            self.image = image
+        } else if let url = image?.url {
+            sd_setImageWithURL(url)
+        } else {
+            self.image = nil
+        }
     }
 }
 

@@ -991,13 +991,13 @@
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gHe-b3-ukq">
                                 <rect key="frame" x="0.0" y="64" width="600" height="152"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Taylor Swift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxr-IQ-qXL">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylor Swift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lxr-IQ-qXL">
                                         <rect key="frame" x="152" y="48" width="130" height="25"/>
                                         <fontDescription key="fontDescription" name="TransatTextBlack" family="Transat Text" pointSize="24"/>
                                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="@tswift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9T-Ho-de1">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="@tswift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="D9T-Ho-de1">
                                         <rect key="frame" x="152" y="81" width="67" height="20"/>
                                         <fontDescription key="fontDescription" name="TransatTextStandard" family="Transat Text" pointSize="20"/>
                                         <color key="textColor" red="0.60777515172958374" green="0.60788232088088989" blue="0.60776835680007935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1800,10 +1800,10 @@
             </objects>
             <point key="canvasLocation" x="1706" y="3140"/>
         </scene>
-        <!--Services View Controller-->
+        <!--Integrations View Controller-->
         <scene sceneID="cm9-Yf-B2o">
             <objects>
-                <collectionViewController id="rLF-La-PWZ" customClass="ServicesViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                <collectionViewController storyboardIdentifier="Integrations" id="rLF-La-PWZ" customClass="IntegrationsViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="Xdj-y5-Aa6">
                         <rect key="frame" x="0.0" y="0.0" width="584" height="64"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1815,15 +1815,19 @@
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
-                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ServiceCell" id="f4Z-Le-Ufv" customClass="ServiceCell" customModule="Taylr" customModuleProvider="target">
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="IntegrationCell" id="f4Z-Le-Ufv" customClass="IntegrationCell" customModule="Taylr" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-twitter-color" translatesAutoresizingMaskIntoConstraints="NO" id="D8v-Aq-FJD">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-twitter-color" translatesAutoresizingMaskIntoConstraints="NO" id="D8v-Aq-FJD">
                                             <rect key="frame" x="12" y="16" width="28" height="28"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="28" id="CTz-QM-uhn"/>
+                                                <constraint firstAttribute="width" constant="28" id="bwA-lX-oaw"/>
+                                            </constraints>
                                         </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Twitter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cGE-rX-da0">
                                             <rect key="frame" x="50" y="19" width="53" height="22"/>
@@ -1862,10 +1866,10 @@
                                     <constraint firstItem="D8v-Aq-FJD" firstAttribute="centerY" secondItem="cGE-rX-da0" secondAttribute="centerY" id="w1l-BI-5x9"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="iconView" destination="D8v-Aq-FJD" id="7XX-1P-56f"/>
-                                    <outlet property="spinner" destination="CZO-5h-hWA" id="05j-kh-GgC"/>
-                                    <outlet property="statusImageView" destination="DMg-9a-tHp" id="1Hf-Rg-MGO"/>
-                                    <outlet property="titleLabel" destination="cGE-rX-da0" id="WDi-gz-gCV"/>
+                                    <outlet property="iconView" destination="D8v-Aq-FJD" id="cae-Mo-iX0"/>
+                                    <outlet property="spinner" destination="CZO-5h-hWA" id="amM-ve-GlM"/>
+                                    <outlet property="statusView" destination="DMg-9a-tHp" id="XWX-yy-G2Z"/>
+                                    <outlet property="titleLabel" destination="cGE-rX-da0" id="ihH-dr-ONl"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>

@@ -23,7 +23,7 @@ class Me2ViewController : UITableViewController {
     @IBOutlet weak var servicesContainer: UIView!
     @IBOutlet weak var inviteContainer: UIView!
     
-    var servicesVC: ServicesViewController!
+    var servicesVC: IntegrationsViewController!
     var interactor: MeInteractor!
     
     override func viewDidLoad() {
@@ -47,6 +47,7 @@ class Me2ViewController : UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
          // Totally stupid hack, donno why needed, probably related to nesting TabBarViewController inside nav controller
+        tableView.reloadData() // TEmp hack to get integrations to show up
         if !hackedOffset {
             hackedOffset = true
             tableView.contentOffset = CGPoint(x: 0, y: -66)
@@ -72,7 +73,7 @@ class Me2ViewController : UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let vc = segue.destinationViewController as? ServicesViewController {
+        if let vc = segue.destinationViewController as? IntegrationsViewController {
             servicesVC = vc
         }
         if let vc = segue.destinationViewController as? ProfileViewController {
@@ -109,7 +110,8 @@ extension Me2ViewController : UITableViewDelegate {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         // TODO: Should we consider autolayout?
         if indexPath.section == 1 { // Services section
-            return servicesVC.collectionView!.collectionViewLayout.collectionViewContentSize().height + 16 // Padding
+            let height = servicesVC.collectionView!.collectionViewLayout.collectionViewContentSize().height + 16
+            return height
         }
         return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
     }

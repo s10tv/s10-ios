@@ -19,6 +19,7 @@ class LoadingViewController : UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        
         Globals.accountService.state.producer
             |> skipWhile { $0 == AccountService.State.Indeterminate }
             |> futureSuccess(UIScheduler()) { state in
@@ -27,16 +28,13 @@ class LoadingViewController : UIViewController {
                 case .LoggedOut:
                     self.performSegue(.Onboarding_Login, sender: self)
                 case .LoggedIn:
-//                    break
                     self.performSegue(.Onboarding_Signup, sender: self)
                 case .SignedUp:
-//                    break
                     self.performSegue(.LoadingToRootTab, sender: self)
                 default:
                     fatalError("impossible account status")
                 }
-//                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("EditProfile") as! EditProfileViewController
-//                vc.interactor = EditProfileInteractor(meteor: Meteor, user: Meteor.user.value!)
+//                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("Integrations") as! UIViewController
 //                self.navigationController?.pushViewController(vc, animated: true)
             }
         

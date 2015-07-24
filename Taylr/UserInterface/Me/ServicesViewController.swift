@@ -13,9 +13,12 @@ import Core
 
 class ServicesViewController : UICollectionViewController {
     
+    let vm = IntegrationListViewModel(meteor: Meteor)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let cells = DynamicArray([1,2,3,4,5]).map { (_, index) -> UICollectionViewCell in
+        
+        let cells = vm.integrations.map { (_, index) -> UICollectionViewCell in
             let cell = self.collectionView!.dequeueReusableCellWithReuseIdentifier("ServiceCell", forIndexPath: NSIndexPath(forItem: index, inSection: 0)) as! UICollectionViewCell
             return cell
         }

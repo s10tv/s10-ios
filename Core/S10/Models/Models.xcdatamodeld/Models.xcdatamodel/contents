@@ -20,10 +20,18 @@
     </entity>
     <entity name="Integration" representedClassName="Integration" syncable="YES">
         <attribute name="hasError" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="iconUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="iconUrl" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="fieldName" value="icon"/>
+            </userInfo>
+        </attribute>
         <attribute name="isIndexing" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="linkedAccountName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="fieldName" value="id"/>
+            </userInfo>
+        </attribute>
     </entity>
     <entity name="Message" representedClassName="Message" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>

@@ -26,6 +26,8 @@
 		EA043F621B62C0F80047BDCA /* _Integration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F611B62C0F80047BDCA /* _Integration.swift */; };
 		EA043F641B62C0FE0047BDCA /* Integration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F631B62C0FE0047BDCA /* Integration.swift */; };
 		EA043F681B62CB3E0047BDCA /* IntegrationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F671B62CB3E0047BDCA /* IntegrationListViewModel.swift */; };
+		EA043F6B1B62CE770047BDCA /* IntegrationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F6A1B62CE770047BDCA /* IntegrationCell.swift */; };
+		EA043F6D1B62CE880047BDCA /* IntegrationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F6C1B62CE880047BDCA /* IntegrationsViewController.swift */; };
 		EA06AAB81B3B2D2B000E128C /* PKHUDExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBAB1B3930B000701F08 /* PKHUDExtension.swift */; };
 		EA06AAB91B3B2D8F000E128C /* ResourceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBAC1B3930B000701F08 /* ResourceExtension.swift */; };
 		EA0C8C871B55DA1E00C2FB0A /* EditProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0C8C861B55DA1E00C2FB0A /* EditProfileInteractor.swift */; };
@@ -291,6 +293,8 @@
 		EA043F611B62C0F80047BDCA /* _Integration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Integration.swift; sourceTree = "<group>"; };
 		EA043F631B62C0FE0047BDCA /* Integration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Integration.swift; sourceTree = "<group>"; };
 		EA043F671B62CB3E0047BDCA /* IntegrationListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationListViewModel.swift; sourceTree = "<group>"; };
+		EA043F6A1B62CE770047BDCA /* IntegrationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationCell.swift; sourceTree = "<group>"; };
+		EA043F6C1B62CE880047BDCA /* IntegrationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationsViewController.swift; sourceTree = "<group>"; };
 		EA0C8C861B55DA1E00C2FB0A /* EditProfileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileInteractor.swift; sourceTree = "<group>"; };
 		EA0C8C881B55DA2E00C2FB0A /* EditProfileTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileTests.swift; sourceTree = "<group>"; };
 		EA0C8C8A1B56DAAE00C2FB0A /* ReactiveFuture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveFuture.swift; sourceTree = "<group>"; };
@@ -585,6 +589,15 @@
 				63C64A9E2EFB79A49BB786AB /* Pods-Core-TestApp.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		EA043F691B62CE6B0047BDCA /* Integration */ = {
+			isa = PBXGroup;
+			children = (
+				EA043F6A1B62CE770047BDCA /* IntegrationCell.swift */,
+				EA043F6C1B62CE880047BDCA /* IntegrationsViewController.swift */,
+			);
+			path = Integration;
 			sourceTree = "<group>";
 		};
 		EA1047311B4E756200B1A76A /* Extensions */ = {
@@ -958,6 +971,7 @@
 				EAA56F861B2B32E500DE3936 /* Shared */,
 				EA3594171B2FEA1500E91337 /* Transitions */,
 				EACEFB851B4673F700901E85 /* Loading */,
+				EA043F691B62CE6B0047BDCA /* Integration */,
 				EAA56F7D1B2B32E500DE3936 /* Onboarding */,
 				EAA56F6F1B2B32E500DE3936 /* Discover */,
 				EAA56F6B1B2B32E500DE3936 /* Chats */,
@@ -1635,6 +1649,7 @@
 				EAD1BB251B60347600D250C5 /* Me2ViewController.swift in Sources */,
 				EA376CB21B505FCD00C819E9 /* LinkAccountService.swift in Sources */,
 				EA588DBA1B5F1D36000962B8 /* CandidateServiceCell.swift in Sources */,
+				EA043F6B1B62CE770047BDCA /* IntegrationCell.swift in Sources */,
 				EAE1E07B1AE34C6200F03F13 /* LocationService.swift in Sources */,
 				EA03D3371B5B2C58007A0CF7 /* PlayerViewController.swift in Sources */,
 				EAD1BB291B604A3D00D250C5 /* InviteViewController.swift in Sources */,
@@ -1660,6 +1675,7 @@
 				EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */,
 				EA57CECD1B4608EF00759139 /* Bond+XLForm.swift in Sources */,
 				EAA56F8E1B2B32E500DE3936 /* ConnectionCell.swift in Sources */,
+				EA043F6D1B62CE880047BDCA /* IntegrationsViewController.swift in Sources */,
 				EAF670541B31F78E0025D7CF /* ModelExtensions.swift in Sources */,
 				EA95BBBF1B3932B500701F08 /* MediaExtension.swift in Sources */,
 				EAA56F8D1B2B32E500DE3936 /* ChatsViewController.swift in Sources */,

@@ -86,6 +86,10 @@ public class MeteorService : NSObject {
         meteor.connect()
     }
     
+    public func collection(name: String) -> METCollection {
+        return meteor.database.collectionWithName(name)
+    }
+    
     // MARK: - Publications
     
     func subscribe(name: String, params: [AnyObject]? = nil) -> METSubscription {
