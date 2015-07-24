@@ -1245,7 +1245,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yWV-ja-hlq" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="Qbq-hv-eUJ"/>
             </objects>
-            <point key="canvasLocation" x="-1736" y="2016"/>
+            <point key="canvasLocation" x="-2522" y="1992"/>
         </scene>
         <!--Onboarding - Login-->
         <scene sceneID="IJI-Me-SMT">
@@ -1870,6 +1870,7 @@
                                     <outlet property="spinner" destination="CZO-5h-hWA" id="amM-ve-GlM"/>
                                     <outlet property="statusView" destination="DMg-9a-tHp" id="XWX-yy-G2Z"/>
                                     <outlet property="titleLabel" destination="cGE-rX-da0" id="ihH-dr-ONl"/>
+                                    <segue destination="OW3-uH-BKk" kind="presentation" id="HFr-ec-Lne"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -2008,6 +2009,60 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="spw-9c-vG5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-960" y="2445.5"/>
+        </scene>
+        <!--Auth Web View Controller-->
+        <scene sceneID="3bH-eD-Kfq">
+            <objects>
+                <viewController storyboardIdentifier="AuthWeb" id="OW3-uH-BKk" customClass="AuthWebViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Gfi-gN-zCT"/>
+                        <viewControllerLayoutGuide type="bottom" id="4v2-Pi-5bX"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="bgL-g9-jR2">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dCS-kF-ja3">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                <color key="barTintColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <items>
+                                    <navigationItem title="Integration Name" id="h2Z-Gf-bse">
+                                        <barButtonItem key="leftBarButtonItem" title="Cancel" id="KNR-Cq-ofM">
+                                            <color key="tintColor" red="0.61960784310000006" green="0.4941176471" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <connections>
+                                                <action selector="cancelAuth:" destination="OW3-uH-BKk" id="IBh-UA-7ud"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s0H-r8-9Hj">
+                                <rect key="frame" x="0.0" y="44" width="600" height="556"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="delegate" destination="OW3-uH-BKk" id="WfB-9J-oWR"/>
+                                </connections>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="dCS-kF-ja3" firstAttribute="top" secondItem="Gfi-gN-zCT" secondAttribute="bottom" id="1Er-dF-HyC"/>
+                            <constraint firstItem="s0H-r8-9Hj" firstAttribute="top" secondItem="dCS-kF-ja3" secondAttribute="bottom" id="Koj-vZ-1av"/>
+                            <constraint firstAttribute="trailing" secondItem="dCS-kF-ja3" secondAttribute="trailing" id="MIu-a2-Plu"/>
+                            <constraint firstItem="dCS-kF-ja3" firstAttribute="leading" secondItem="bgL-g9-jR2" secondAttribute="leading" id="ZeQ-4k-f1S"/>
+                            <constraint firstItem="4v2-Pi-5bX" firstAttribute="top" secondItem="s0H-r8-9Hj" secondAttribute="bottom" id="qNn-Ta-i4u"/>
+                            <constraint firstItem="s0H-r8-9Hj" firstAttribute="leading" secondItem="bgL-g9-jR2" secondAttribute="leading" id="u5X-6o-hzX"/>
+                            <constraint firstAttribute="trailing" secondItem="s0H-r8-9Hj" secondAttribute="trailing" id="yEp-Jq-KvK"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="navBar" destination="dCS-kF-ja3" id="pV4-vk-yER"/>
+                        <outlet property="webView" destination="s0H-r8-9Hj" id="fCw-pA-kPB"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1iv-CK-fEN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1634" y="2237"/>
         </scene>
     </scenes>
     <resources>

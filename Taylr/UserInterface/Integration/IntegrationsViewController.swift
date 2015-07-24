@@ -19,12 +19,11 @@ class IntegrationsViewController : UICollectionViewController {
         super.viewDidLoad()
         
         vm.subscribe()
-        let cells = vm.integrations.map { (vm, index) -> UICollectionViewCell in
+        vm.integrations.map { (vm, index) -> UICollectionViewCell in
             let cell = self.collectionView!.dequeueReusableCellWithReuseIdentifier("IntegrationCell", forIndexPath: NSIndexPath(forItem: index, inSection: 0)) as! IntegrationCell
             cell.bind(vm)
             return cell
-        }
-        cells ->> collectionView!
+        } ->> collectionView!
     }
     
     override func viewDidLayoutSubviews() {
@@ -33,10 +32,12 @@ class IntegrationsViewController : UICollectionViewController {
         layout.itemSize = CGSize(width: view.frame.width, height: 60)
     }
     
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        println("integrations \(vm.integrations.count)")
-        let count = Meteor.collection("integrations").allDocuments.count
-        println("integrations2 \(count)")
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let vc = segue.destinationViewController as? AuthWebViewController,
+            let indexPath = collectionView?.indexPathsForSelectedItems().first as? NSIndexPath {
+                let integration = vm.integrations[indexPath.item]
+                vc.targetURL = integration.url
+                vc.title = integration.title
+        }
     }
 }

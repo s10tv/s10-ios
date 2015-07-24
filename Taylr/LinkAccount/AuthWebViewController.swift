@@ -16,7 +16,8 @@ class AuthWebViewController: UIViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        self.webView.loadRequest(NSURLRequest(URL: targetURL))
+        webView.loadRequest(NSURLRequest(URL: targetURL))
+        navBar.topItem?.title = title
     }
     
     @IBAction func cancelAuth(sender: AnyObject) {

@@ -14,6 +14,7 @@ public struct IntegrationViewModel {
     public let title: String
     public let statusImage: Image?
     public let showSpinner: Bool
+    public let url: NSURL?
     
     public init(integration: Integration) {
         icon = Mapper<Image>().map(integration.icon)!
@@ -32,5 +33,6 @@ public struct IntegrationViewModel {
             showSpinner = false
             statusImage = Image(UIImage(named: "ic-add")!)
         }
+        url = NSURL(string: integration.url ?? "")
     }
 }

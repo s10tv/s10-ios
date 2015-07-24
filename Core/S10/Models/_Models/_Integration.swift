@@ -13,6 +13,8 @@ public enum IntegrationKeys: String, Printable {
 
     case updatedAt = "updatedAt"
 
+    case url = "url"
+
     case username = "username"
 
     public var description: String { return rawValue }
@@ -63,6 +65,11 @@ class _Integration: NSManagedObject {
     var updatedAt: NSDate?
 
     // func validateUpdatedAt(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged public
+    var url: String?
+
+    // func validateUrl(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged public
     var username: String?
