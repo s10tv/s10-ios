@@ -12,68 +12,6 @@ import Bond
 import ReactiveCocoa
 import ObjectMapper
 
-extension _User {
-    func dyn(keyPath: UserKeys) -> DynamicProperty {
-        return dyn(keyPath.rawValue)
-    }
-}
-
-public struct STUser {
-    
-    let _user: _User
-    public let firstName: DynamicOptionalTypedProperty<String>
-    public let lastName: DynamicOptionalTypedProperty<String>
-    public let jobTitle: DynamicOptionalTypedProperty<String>
-    public let profiles: PropertyOf<[Profile]>? = nil
-    
-    public init(user: _User) {
-        _user = user
-        firstName = user.dyn(.firstName).optional(String)
-        lastName = user.dyn(.lastName).optional(String)
-        jobTitle = user.dyn(.jobTitle).optional(String)
-    }
-    
-    public struct Profile : Mappable {
-        public var id: String!
-        public var icon: Image!
-        public var avatar: Image!
-        public var displayName: String!
-        public var displayId: String?
-        public var authenticated: Bool?
-        public var url: NSURL!
-        public var attributes: [Attribute]!
-        
-        public init?(_ map: Map) {
-            mapping(map)
-        }
-        
-        public mutating func mapping(map: Map) {
-            id <- map["id"]
-            icon <- map["icon"]
-            avatar <- map["avatar"]
-            displayName <- map["displayName"]
-            displayId <- map["displayId"]
-            authenticated <- map["authenticated"]
-            url <- (map["url"], URLTransform())
-            attributes <- map["attributes"]
-        }
-        
-        public struct Attribute : Mappable {
-            public var label: String!
-            public var value: String!
-            
-            public init?(_ map: Map) {
-                mapping(map)
-            }
-            
-            public mutating func mapping(map: Map) {
-                label <- map["label"]
-                value <- map["value"]
-            }
-        }
-    }
-}
-
 @objc(User)
 public class User: _User {
     
