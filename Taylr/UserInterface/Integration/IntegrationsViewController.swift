@@ -30,7 +30,7 @@ class IntegrationsViewController : UICollectionViewController {
         
         vm.subscribe()
         vm.integrations.map { (vm, index) -> UICollectionViewCell in
-            let cell = self.collectionView!.dequeueReusableCellWithReuseIdentifier("IntegrationCell", forIndexPath: NSIndexPath(forItem: index, inSection: 0)) as! IntegrationCell
+            let cell = self.collectionView!.dequeueReusableCellWithReuseIdentifier(.IntegrationCell, forIndexPath: NSIndexPath(forItem: index, inSection: 0)) as! IntegrationCell
             cell.bind(vm)
             return cell
         } ->> collectionView!
@@ -51,10 +51,8 @@ class IntegrationsViewController : UICollectionViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let vc = segue.destinationViewController as? AuthWebViewController,
-            let integration = selectedIntegration {
-                vc.targetURL = integration.url
-                vc.title = integration.title
+        if let vc = segue.destinationViewController as? IntegrationWebViewController {
+            vc.integration = selectedIntegration
         }
     }
     
@@ -108,5 +106,19 @@ class IntegrationsViewController : UICollectionViewController {
             }
         }
         return subject.deliverOnMainThread()
+    }
+    
+    // MARK: - App Delegate Hooks
+    
+    class func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+    }
+    
+    class func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        if FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url,
+            sourceApplication: sourceApplication, annotation: annotation) {
+                return true
+        }
+        return false
     }
 }

@@ -67,7 +67,7 @@ class _Integration: NSManagedObject {
     // func validateUpdatedAt(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged public
-    var url: String?
+    var url: String
 
     // func validateUrl(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 

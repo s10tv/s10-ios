@@ -56,9 +56,6 @@
 		EA36B1D41B3F23F4002ADD91 /* ActivityTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36B1D31B3F23F4002ADD91 /* ActivityTextCell.swift */; };
 		EA36B1D81B40E1A5002ADD91 /* CurrentDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36B1D71B40E1A5002ADD91 /* CurrentDate.swift */; };
 		EA36D2AB1AE71366006FD5D8 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36D2AA1AE71366006FD5D8 /* Errors.swift */; };
-		EA376CB11B505FCD00C819E9 /* AuthWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA376CAF1B505FCD00C819E9 /* AuthWebViewController.swift */; };
-		EA376CB21B505FCD00C819E9 /* LinkAccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA376CB01B505FCD00C819E9 /* LinkAccountService.swift */; };
-		EA376CB51B505FF100C819E9 /* LinkAccount.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA376CB71B505FF100C819E9 /* LinkAccount.storyboard */; };
 		EA3777721A966EC10055DE99 /* TransatTextBlack.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */; };
 		EA3777751A966EC10055DE99 /* TransatTextMedium.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA3777701A966EC10055DE99 /* TransatTextMedium.otf */; };
 		EA3777761A966EC10055DE99 /* TransatTextStandard.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA3777711A966EC10055DE99 /* TransatTextStandard.otf */; };
@@ -154,6 +151,7 @@
 		EAA56FA21B2B32E500DE3936 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F871B2B32E500DE3936 /* BaseViewController.swift */; };
 		EAA56FA51B2B32E500DE3936 /* UserAvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F8A1B2B32E500DE3936 /* UserAvatarView.swift */; };
 		EAA56FB11B2BCAC700DE3936 /* CandidateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56FB01B2BCAC700DE3936 /* CandidateCell.swift */; };
+		EAA8D6C31B62F2A400D5A6DC /* IntegrationWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA8D6C21B62F2A400D5A6DC /* IntegrationWebViewController.swift */; };
 		EAAD921D1ACF342C0014BA25 /* TaylrEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921C1ACF342C0014BA25 /* TaylrEnvironment.swift */; };
 		EAB5B1161B4A390300BDB05E /* TransatTextBold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776E1A966EC10055DE99 /* TransatTextBold.otf */; };
 		EAB5B1171B4A390600BDB05E /* TransatTextLight.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA37776F1A966EC10055DE99 /* TransatTextLight.otf */; };
@@ -316,9 +314,6 @@
 		EA36B1D31B3F23F4002ADD91 /* ActivityTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTextCell.swift; sourceTree = "<group>"; };
 		EA36B1D71B40E1A5002ADD91 /* CurrentDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentDate.swift; sourceTree = "<group>"; };
 		EA36D2AA1AE71366006FD5D8 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
-		EA376CAF1B505FCD00C819E9 /* AuthWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthWebViewController.swift; sourceTree = "<group>"; };
-		EA376CB01B505FCD00C819E9 /* LinkAccountService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkAccountService.swift; sourceTree = "<group>"; };
-		EA376CB61B505FF100C819E9 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LinkAccount.storyboard; sourceTree = "<group>"; };
 		EA37776D1A966EC10055DE99 /* TransatTextBlack.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextBlack.otf; sourceTree = "<group>"; };
 		EA37776E1A966EC10055DE99 /* TransatTextBold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextBold.otf; sourceTree = "<group>"; };
 		EA37776F1A966EC10055DE99 /* TransatTextLight.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = TransatTextLight.otf; sourceTree = "<group>"; };
@@ -419,6 +414,7 @@
 		EAA56F871B2B32E500DE3936 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		EAA56F8A1B2B32E500DE3936 /* UserAvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserAvatarView.swift; sourceTree = "<group>"; };
 		EAA56FB01B2BCAC700DE3936 /* CandidateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateCell.swift; sourceTree = "<group>"; };
+		EAA8D6C21B62F2A400D5A6DC /* IntegrationWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationWebViewController.swift; sourceTree = "<group>"; };
 		EAAD921C1ACF342C0014BA25 /* TaylrEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaylrEnvironment.swift; sourceTree = "<group>"; };
 		EAB8E7A71AE04D8D00B3046F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Settings.storyboard; sourceTree = "<group>"; };
 		EABA05431B474EC900154C75 /* PhotoUploadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoUploadOperation.swift; sourceTree = "<group>"; };
@@ -590,6 +586,7 @@
 			children = (
 				EA043F6A1B62CE770047BDCA /* IntegrationCell.swift */,
 				EA043F6C1B62CE880047BDCA /* IntegrationsViewController.swift */,
+				EAA8D6C21B62F2A400D5A6DC /* IntegrationWebViewController.swift */,
 			);
 			path = Integration;
 			sourceTree = "<group>";
@@ -669,16 +666,6 @@
 				EA5B74341B3139EA008E5CBC /* Supporting Files */,
 			);
 			path = Core;
-			sourceTree = "<group>";
-		};
-		EA376CAE1B505FCD00C819E9 /* LinkAccount */ = {
-			isa = PBXGroup;
-			children = (
-				EA376CAF1B505FCD00C819E9 /* AuthWebViewController.swift */,
-				EA376CB01B505FCD00C819E9 /* LinkAccountService.swift */,
-				EA376CB71B505FF100C819E9 /* LinkAccount.storyboard */,
-			);
-			path = LinkAccount;
 			sourceTree = "<group>";
 		};
 		EA37776C1A966E380055DE99 /* Fonts */ = {
@@ -842,7 +829,6 @@
 			children = (
 				EA95BBA81B3930B000701F08 /* Extensions */,
 				EAF81B1F1B3337EA00EED6DD /* AVKit */,
-				EA376CAE1B505FCD00C819E9 /* LinkAccount */,
 				EA5634DE1A7741FF00F62B52 /* Models */,
 				EA6650E91AA00A9C001BA40C /* Services */,
 				EAF4D7441A79AA5E00D35330 /* UserInterface */,
@@ -1351,7 +1337,6 @@
 				EA7078781B39345800BB9D08 /* AVKit.storyboard in Resources */,
 				EA7FB0991B5EF9D50052B394 /* Cabin-Regular.ttf in Resources */,
 				EA3777751A966EC10055DE99 /* TransatTextMedium.otf in Resources */,
-				EA376CB51B505FF100C819E9 /* LinkAccount.storyboard in Resources */,
 				EAB8E7A61AE04D8D00B3046F /* Settings.storyboard in Resources */,
 				EA9F354A1A74CC6900E0C65D /* Taylr.xcassets in Resources */,
 				EA78C8801B323E140016AB73 /* Images.xcassets in Resources */,
@@ -1676,9 +1661,9 @@
 				EA95BBB31B3930B000701F08 /* XLFormExtensions.m in Sources */,
 				EACEFB871B46740500901E85 /* LoadingViewController.swift in Sources */,
 				EAAD921D1ACF342C0014BA25 /* TaylrEnvironment.swift in Sources */,
+				EAA8D6C31B62F2A400D5A6DC /* IntegrationWebViewController.swift in Sources */,
 				EA1047301B4E74D000B1A76A /* ReactiveProperties.swift in Sources */,
 				EAD1BB251B60347600D250C5 /* MeViewController.swift in Sources */,
-				EA376CB21B505FCD00C819E9 /* LinkAccountService.swift in Sources */,
 				EA588DBA1B5F1D36000962B8 /* CandidateServiceCell.swift in Sources */,
 				EA043F6B1B62CE770047BDCA /* IntegrationCell.swift in Sources */,
 				EAE1E07B1AE34C6200F03F13 /* LocationService.swift in Sources */,
@@ -1714,7 +1699,6 @@
 				EA7FB08D1B5EEA070052B394 /* RootTabController.swift in Sources */,
 				EA95BBB11B3930B000701F08 /* PKHUDExtension.swift in Sources */,
 				EAA56F9C1B2B32E500DE3936 /* LoginViewController.swift in Sources */,
-				EA376CB11B505FCD00C819E9 /* AuthWebViewController.swift in Sources */,
 				EA95BBAF1B3930B000701F08 /* Bond+SDWebImage.swift in Sources */,
 				EAA56FA11B2B32E500DE3936 /* RootViewController.swift in Sources */,
 				EA95BBB21B3930B000701F08 /* ResourceExtension.swift in Sources */,
@@ -1771,14 +1755,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		EA376CB71B505FF100C819E9 /* LinkAccount.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				EA376CB61B505FF100C819E9 /* Base */,
-			);
-			name = LinkAccount.storyboard;
-			sourceTree = "<group>";
-		};
 		EA5B74151B30F7BB008E5CBC /* TestLaunchScreen.xib */ = {
 			isa = PBXVariantGroup;
 			children = (

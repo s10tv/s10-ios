@@ -1,23 +1,25 @@
 //
-//  AuthWebViewController.swift
+//  IntegrationWebViewController.swift
 //  S10
 //
-//  Created by Tony Xiao on 6/30/15.
+//  Created by Tony Xiao on 7/24/15.
 //  Copyright (c) 2015 S10. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import Core
 
-class AuthWebViewController: UIViewController {
+class IntegrationWebViewController: UIViewController {
     
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var webView: UIWebView!
-    var targetURL: NSURL!
-
+    
+    var integration: IntegrationViewModel!
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        webView.loadRequest(NSURLRequest(URL: targetURL))
-        navBar.topItem?.title = title
+        webView.loadRequest(NSURLRequest(URL: integration.url))
+        navBar.topItem?.title = integration.title
     }
     
     @IBAction func cancelAuth(sender: AnyObject) {
@@ -25,7 +27,7 @@ class AuthWebViewController: UIViewController {
     }
 }
 
-extension AuthWebViewController : UIWebViewDelegate {
+extension IntegrationWebViewController : UIWebViewDelegate {
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         if let scheme = request.URL?.scheme where Globals.env.audience.urlScheme.hasPrefix(scheme) {
             self.dismissViewController(animated: true)

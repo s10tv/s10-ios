@@ -1,11 +1,9 @@
 // Auto generated file from SBConstants - any changes may be lost
 
 public enum CollectionViewCellreuseIdentifier : String {
-    case AddCell = "AddCell"
     case CandidateCell = "CandidateCell"
     case CandidateService = "CandidateService"
     case IntegrationCell = "IntegrationCell"
-    case MeServiceCell = "MeServiceCell"
     case ServiceCell = "ServiceCell"
 }
 
@@ -56,7 +54,6 @@ public enum ViewControllerStoryboardIdentifier : String {
     case Discover = "Discover"
     case Editor = "Editor"
     case Login = "Login"
-    case Me = "Me"
     case Player = "Player"
     case Recorder = "Recorder"
     case Settings = "Settings"

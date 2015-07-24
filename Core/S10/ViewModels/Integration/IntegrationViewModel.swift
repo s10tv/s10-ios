@@ -13,14 +13,15 @@ public struct IntegrationViewModel {
     public let id: String
     public let icon: Image
     public let title: String
+    public let url: NSURL
     public let statusImage: Image?
     public let showSpinner: Bool
-    public let url: NSURL?
     
     public init(integration: Integration) {
         id = integration.documentID!
         icon = Mapper<Image>().map(integration.icon)!
         title = integration.username ?? integration.name
+        url = NSURL(integration.url)
         switch integration.status {
         case "linked":
             showSpinner = false
@@ -35,6 +36,5 @@ public struct IntegrationViewModel {
             showSpinner = false
             statusImage = Image(UIImage(named: "ic-add")!)
         }
-        url = NSURL(string: integration.url ?? "")
     }
 }
