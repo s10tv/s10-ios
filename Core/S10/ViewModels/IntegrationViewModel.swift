@@ -7,28 +7,25 @@
 //
 
 import Foundation
+import ObjectMapper
 
 public struct IntegrationViewModel {
-//    public enum Status {
-//        case NotLinked, Indexing, Linked, Error
-//    }
-    
     public let icon: Image
     public let title: String
     public let statusImage: Image?
     public let showSpinner: Bool
     
     public init(integration: Integration) {
-        icon = Image(integration.iconUrl) ?? Image(UIImage(named: "ic-add")!)
-        title = integration.linkedAccountName ?? integration.name ?? ""
-        switch (integration.linkedAccountName, integration.isIndexing?.boolValue, integration.hasError?.boolValue) {
-        case (.Some, .Some(false), .Some(false)):
+        icon = Mapper<Image>().map(integration.icon)!
+        title = integration.username ?? integration.name
+        switch integration.status {
+        case "linked":
             showSpinner = false
             statusImage = Image(UIImage(named: "ic-checkmark")!)
-        case (.Some, .Some(true), .Some(false)):
+        case "busy":
             showSpinner = true
             statusImage = nil
-        case (.Some, .Some(false), .Some(true)):
+        case "error":
             showSpinner = false
             statusImage = Image(UIImage(named: "ic-warning")!)
         default:

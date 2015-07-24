@@ -5,15 +5,15 @@ import CoreData
 
 public enum IntegrationKeys: String, Printable {
 
-    case hasError = "hasError"
-
-    case iconUrl = "iconUrl"
-
-    case isIndexing = "isIndexing"
-
-    case linkedAccountName = "linkedAccountName"
+    case icon = "icon"
 
     case name = "name"
+
+    case status = "status"
+
+    case updatedAt = "updatedAt"
+
+    case username = "username"
 
     public var description: String { return rawValue }
 }
@@ -45,29 +45,29 @@ class _Integration: NSManagedObject {
     // MARK: - Properties
 
     @NSManaged public
-    var hasError: NSNumber?
+    var icon: AnyObject
 
-    // func validateHasError(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
-
-    @NSManaged public
-    var iconUrl: String?
-
-    // func validateIconUrl(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateIcon(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged public
-    var isIndexing: NSNumber?
-
-    // func validateIsIndexing(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
-
-    @NSManaged public
-    var linkedAccountName: String?
-
-    // func validateLinkedAccountName(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
-
-    @NSManaged public
-    var name: String?
+    var name: String
 
     // func validateName(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged public
+    var status: String
+
+    // func validateStatus(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged public
+    var updatedAt: NSDate?
+
+    // func validateUpdatedAt(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged public
+    var username: String?
+
+    // func validateUsername(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
 

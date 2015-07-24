@@ -4,8 +4,13 @@ public enum CollectionViewCellreuseIdentifier : String {
     case AddCell = "AddCell"
     case CandidateCell = "CandidateCell"
     case CandidateService = "CandidateService"
+    case IntegrationCell = "IntegrationCell"
     case MeServiceCell = "MeServiceCell"
     case ServiceCell = "ServiceCell"
+}
+
+public enum CollectionViewControllerStoryboardIdentifier : String {
+    case Integrations = "Integrations"
 }
 
 public enum NavigationControllerStoryboardIdentifier : String {

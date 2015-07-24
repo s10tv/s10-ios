@@ -19,19 +19,11 @@
         <relationship name="otherUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="connection" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Integration" representedClassName="Integration" syncable="YES">
-        <attribute name="hasError" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="iconUrl" optional="YES" attributeType="String" syncable="YES">
-            <userInfo>
-                <entry key="fieldName" value="icon"/>
-            </userInfo>
-        </attribute>
-        <attribute name="isIndexing" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="linkedAccountName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="name" optional="YES" attributeType="String" syncable="YES">
-            <userInfo>
-                <entry key="fieldName" value="id"/>
-            </userInfo>
-        </attribute>
+        <attribute name="icon" attributeType="Transformable" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="status" attributeType="String" syncable="YES"/>
+        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Message" representedClassName="Message" syncable="YES">
         <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>

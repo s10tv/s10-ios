@@ -16,7 +16,8 @@ public struct IntegrationListViewModel {
     public init(meteor: MeteorService) {
         self.meteor = meteor
         integrations = Integration
-            .sorted(by: IntegrationKeys.linkedAccountName.rawValue, ascending: true)
+            .sorted(by: IntegrationKeys.status.rawValue, ascending: true)
+            .sorted(by: IntegrationKeys.updatedAt.rawValue, ascending: true)
             .results(Integration)
             .map { IntegrationViewModel(integration: $0) }
     }

@@ -41,17 +41,28 @@ class Me2ViewController : UITableViewController {
             $0.layer.shouldRasterize = true
             $0.layer.rasterizationScale = UIScreen.mainScreen().scale
         }
+
+        // Observe collectionView height and reload table view cell height whenever appropriate
+        servicesVC.collectionView!.dyn("contentSize").force(NSValue).producer
+            |> skip(1)
+            |> skipRepeats
+            |> observeOn(QueueScheduler.mainQueueScheduler)
+            |> start(next: { _ in
+                self.tableView.beginUpdates()
+                self.tableView.endUpdates()
+            })
     }
     
     var hackedOffset = false
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
          // Totally stupid hack, donno why needed, probably related to nesting TabBarViewController inside nav controller
-        tableView.reloadData() // TEmp hack to get integrations to show up
         if !hackedOffset {
             hackedOffset = true
             tableView.contentOffset = CGPoint(x: 0, y: -66)
         }
+
+
         
 //        let abc: String? = decode("aasa")
 //        println("\(abc)")
@@ -109,7 +120,7 @@ class Me2ViewController : UITableViewController {
 extension Me2ViewController : UITableViewDelegate {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         // TODO: Should we consider autolayout?
-        if indexPath.section == 1 { // Services section
+        if indexPath.section == 1 { // Integrations section
             let height = servicesVC.collectionView!.collectionViewLayout.collectionViewContentSize().height + 16
             return height
         }
