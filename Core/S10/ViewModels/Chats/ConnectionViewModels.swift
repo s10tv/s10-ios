@@ -10,6 +10,12 @@ import Foundation
 import ReactiveCocoa
 import Bond
 
+extension Connection {
+    func dyn(keyPath: ConnectionKeys) -> DynamicProperty {
+        return dyn(keyPath.rawValue)
+    }
+}
+
 public protocol ConnectionViewModel {
     var avatar: PropertyOf<Image?> { get }
     var displayName: PropertyOf<String> { get }
@@ -30,8 +36,8 @@ public struct ContactConnectionViewModel : ConnectionViewModel {
         let user = connection.otherUser
         avatar = user.pAvatar()
         displayName = user.pDisplayName()
-        busy = connection.pBusy()
-        statusMessage = connection.pStatusMessage()
+        busy = connection.otherUser.pConversationBusy()
+        statusMessage = connection.otherUser.pConversationStatus()
         unreadCount = connection.dyn(.unreadCount).force(Int) |> readonly
     }
 }
@@ -55,7 +61,7 @@ public struct NewConnectionViewModel : ConnectionViewModel {
         jobTitle = user.pJobTitle()
         employer = user.pEmployer()
         profileIcons = DynamicArray(user.connectedProfiles.map { $0.icon })
-        busy = connection.pBusy()
+        busy = connection.otherUser.pConversationBusy()
         displayTime = relativeTime(connection.updatedAt)
     }
 }

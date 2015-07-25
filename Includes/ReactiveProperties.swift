@@ -24,6 +24,10 @@ extension MutableProperty {
 }
 
 extension PropertyOf {
+    init(_ constantValue: T) {
+        self.init(ConstantProperty(constantValue))
+    }
+    
     init(_ initialValue: T, _ producer: SignalProducer<T, ReactiveCocoa.NoError>) {
         self.init(MutableProperty(initialValue, { producer }))
     }
@@ -47,6 +51,17 @@ func map<P : PropertyType, T, U where P.Value == T>(transform: T -> U) -> P -> P
             property.producer |> map { v in
                 let retainSourceProperty = property // Force retain source property
                 return transform(v)
+            }
+        }
+    }
+}
+
+func flatMap<P : PropertyType, P2 : PropertyType, T, U where P.Value == T, P2.Value == U>(transform: T -> P2) -> P -> PropertyOf<U> {
+    return { property in
+        return PropertyOf(transform(property.value).value) {
+            property.producer |> flatMap(.Latest) { v in
+                let retainSourceProperty = property // Force retain source property
+                return transform(v).producer
             }
         }
     }

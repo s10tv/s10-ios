@@ -62,12 +62,12 @@
 		EA2DC2A11B637FA50034434E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2921B637FA50034434E /* Message.swift */; };
 		EA2DC2A21B637FA50034434E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2931B637FA50034434E /* User.swift */; };
 		EA2DC2A61B63EF270034434E /* ReactiveUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2A51B63EF270034434E /* ReactiveUser.swift */; };
-		EA2DC2A81B63F9B50034434E /* ReactiveConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2A71B63F9B50034434E /* ReactiveConnection.swift */; };
 		EA2DC2AA1B63F9F10034434E /* ConnectionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2A91B63F9F10034434E /* ConnectionListViewModel.swift */; };
 		EA2DC2AD1B63FBA60034434E /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2AC1B63FBA60034434E /* SignupViewModel.swift */; };
 		EA2DC2B01B63FC990034434E /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2AE1B63FC990034434E /* EditProfileViewModel.swift */; };
 		EA2DC2B11B63FC990034434E /* InviteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2AF1B63FC990034434E /* InviteViewModel.swift */; };
 		EA2DC2B31B63FCAF0034434E /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2B21B63FCAF0034434E /* RootViewModel.swift */; };
+		EA2DC2B51B63FDF50034434E /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2B41B63FDF50034434E /* ConversationViewModel.swift */; };
 		EA3594141B2DE5C300E91337 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594131B2DE5C300E91337 /* ConversationViewController.swift */; };
 		EA3594191B2FEA1F00E91337 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594181B2FEA1F00E91337 /* TransitionManager.swift */; };
 		EA36B1D21B3F23ED002ADD91 /* ActivityImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36B1D11B3F23ED002ADD91 /* ActivityImageCell.swift */; };
@@ -314,12 +314,12 @@
 		EA2DC2921B637FA50034434E /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EA2DC2931B637FA50034434E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EA2DC2A51B63EF270034434E /* ReactiveUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveUser.swift; sourceTree = "<group>"; };
-		EA2DC2A71B63F9B50034434E /* ReactiveConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveConnection.swift; sourceTree = "<group>"; };
 		EA2DC2A91B63F9F10034434E /* ConnectionListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionListViewModel.swift; sourceTree = "<group>"; };
 		EA2DC2AC1B63FBA60034434E /* SignupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		EA2DC2AE1B63FC990034434E /* EditProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
 		EA2DC2AF1B63FC990034434E /* InviteViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteViewModel.swift; sourceTree = "<group>"; };
 		EA2DC2B21B63FCAF0034434E /* RootViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
+		EA2DC2B41B63FDF50034434E /* ConversationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewModel.swift; sourceTree = "<group>"; };
 		EA3594131B2DE5C300E91337 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		EA3594181B2FEA1F00E91337 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		EA36B1D11B3F23ED002ADD91 /* ActivityImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ActivityImageCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -602,6 +602,7 @@
 			children = (
 				EA2DC2A91B63F9F10034434E /* ConnectionListViewModel.swift */,
 				EA043F771B62EF5D0047BDCA /* ConnectionViewModels.swift */,
+				EA2DC2B41B63FDF50034434E /* ConversationViewModel.swift */,
 				EA043F781B62EF5D0047BDCA /* MessageViewModel.swift */,
 			);
 			path = Chats;
@@ -832,7 +833,6 @@
 				EA043F741B62EF5D0047BDCA /* Discover */,
 				EA043F761B62EF5D0047BDCA /* Chats */,
 				EA2DC2A51B63EF270034434E /* ReactiveUser.swift */,
-				EA2DC2A71B63F9B50034434E /* ReactiveConnection.swift */,
 				EA2DC2B21B63FCAF0034434E /* RootViewModel.swift */,
 			);
 			path = ViewModels;
@@ -1607,6 +1607,7 @@
 				F9D545491B57988200A4661B /* InviteOperation.swift in Sources */,
 				EAF670751B31F9450025D7CF /* SugarRecordExtension.swift in Sources */,
 				EABA05441B474EC900154C75 /* PhotoUploadOperation.swift in Sources */,
+				EA2DC2B51B63FDF50034434E /* ConversationViewModel.swift in Sources */,
 				EAF670951B31FCBE0025D7CF /* ProvisioningProfile.swift in Sources */,
 				EA2DC2981B637FA50034434E /* _User.swift in Sources */,
 				EA2DC2B11B63FC990034434E /* InviteViewModel.swift in Sources */,
@@ -1633,7 +1634,6 @@
 				EAF670761B31F9450025D7CF /* FoundationExtension.swift in Sources */,
 				EA2406221B50F79E003A73C3 /* VideoCache.swift in Sources */,
 				EA8896221B4F3C1300E180A6 /* ReactiveProperties.swift in Sources */,
-				EA2DC2A81B63F9B50034434E /* ReactiveConnection.swift in Sources */,
 				EAF6708F1B31FA2E0025D7CF /* Settings.swift in Sources */,
 				EA4757131B392C19002071D7 /* PanInteractor.swift in Sources */,
 				EA2DC2AD1B63FBA60034434E /* SignupViewModel.swift in Sources */,

@@ -15,12 +15,12 @@ public struct MessageViewModel {
     
     let message: Message
     public let formattedDate: PropertyOf<String>
-    public let video: Video
+    public let localVideoURL: NSURL
     
-    init(message: Message) {
+    init(message: Message, localVideoURL: NSURL) {
         self.message = message
+        self.localVideoURL = localVideoURL
         formattedDate = relativeTime(message.createdAt, interval: 1)
-        video = message.video
     }
 }
 
