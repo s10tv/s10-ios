@@ -38,15 +38,8 @@ public struct ActivityImageViewModel : ActivityViewModel {
     }
 }
 
-public struct ActivityListViewModel {
-    let activities: DynamicArray<ActivityViewModel>
-    
-    init(user: User, profile: ConnectedProfile) {
-        activities = Activity
-            .by(ActivityKeys.user, value: user)
-            .sorted(by: ActivityKeys.timestamp.rawValue, ascending: false)
-            .results(Activity)
-            .filter { $0.type == .Image }
-            .map { ActivityImageViewModel(activity: $0, profile: profile) }
-    }
+public struct ActivityTextViewModel {
+}
+
+public struct ActivityLinkViewModel {
 }

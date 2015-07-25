@@ -22,7 +22,7 @@
 		EA03D3381B5B368E007A0CF7 /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA03D3361B5B2C58007A0CF7 /* PlayerViewController.swift */; };
 		EA043F6B1B62CE770047BDCA /* IntegrationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F6A1B62CE770047BDCA /* IntegrationCell.swift */; };
 		EA043F6D1B62CE880047BDCA /* IntegrationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F6C1B62CE880047BDCA /* IntegrationsViewController.swift */; };
-		EA043F791B62EF5D0047BDCA /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F6F1B62EF5D0047BDCA /* ActivityViewModel.swift */; };
+		EA043F791B62EF5D0047BDCA /* ActivityViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F6F1B62EF5D0047BDCA /* ActivityViewModels.swift */; };
 		EA043F7A1B62EF5D0047BDCA /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F701B62EF5D0047BDCA /* UserViewModel.swift */; };
 		EA043F7D1B62EF5D0047BDCA /* CandidateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F751B62EF5D0047BDCA /* CandidateViewModel.swift */; };
 		EA043F7E1B62EF5D0047BDCA /* ConnectionViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F771B62EF5D0047BDCA /* ConnectionViewModels.swift */; };
@@ -279,7 +279,7 @@
 		EA03D3361B5B2C58007A0CF7 /* PlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 		EA043F6A1B62CE770047BDCA /* IntegrationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationCell.swift; sourceTree = "<group>"; };
 		EA043F6C1B62CE880047BDCA /* IntegrationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationsViewController.swift; sourceTree = "<group>"; };
-		EA043F6F1B62EF5D0047BDCA /* ActivityViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewModel.swift; sourceTree = "<group>"; };
+		EA043F6F1B62EF5D0047BDCA /* ActivityViewModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewModels.swift; sourceTree = "<group>"; };
 		EA043F701B62EF5D0047BDCA /* UserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		EA043F751B62EF5D0047BDCA /* CandidateViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateViewModel.swift; sourceTree = "<group>"; };
 		EA043F771B62EF5D0047BDCA /* ConnectionViewModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionViewModels.swift; sourceTree = "<group>"; };
@@ -585,8 +585,8 @@
 			isa = PBXGroup;
 			children = (
 				EA2DC2B61B641ECD0034434E /* ProfileViewModel.swift */,
+				EA043F6F1B62EF5D0047BDCA /* ActivityViewModels.swift */,
 				EA043F701B62EF5D0047BDCA /* UserViewModel.swift */,
-				EA043F6F1B62EF5D0047BDCA /* ActivityViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1628,7 +1628,7 @@
 				EA2DC26A1B637CB20034434E /* InviteTask.swift in Sources */,
 				EA2DC2AA1B63F9F10034434E /* ChatsViewModel.swift in Sources */,
 				EA043F7E1B62EF5D0047BDCA /* ConnectionViewModels.swift in Sources */,
-				EA043F791B62EF5D0047BDCA /* ActivityViewModel.swift in Sources */,
+				EA043F791B62EF5D0047BDCA /* ActivityViewModels.swift in Sources */,
 				EA043F831B62EF8B0047BDCA /* IntegrationListViewModel.swift in Sources */,
 				EA39651C1B54EFE400F5B0B3 /* MeteorCollection.swift in Sources */,
 				EA043F841B62EF8B0047BDCA /* IntegrationViewModel.swift in Sources */,
