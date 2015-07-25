@@ -12,10 +12,14 @@ import ReactiveCocoa
 import Bond
 
 public struct RootViewModel {
+    let meteor: MeteorService
+    let taskService: TaskService
     let unreadConversations: FetchedResultsArray<Connection>
     public let unreadConnectionsCount: PropertyOf<Int>
     
-    public init() {
+    public init(meteor: MeteorService, taskService: TaskService) {
+        self.meteor = meteor
+        self.taskService = taskService
         unreadConversations = Connection
             .by(NSPredicate(format: "%K > 0", ConnectionKeys.unreadCount.rawValue))
             .results(Connection)

@@ -13,22 +13,12 @@ import SugarRecord
 import Meteor
 
 public class MeteorService : NSObject {
-    public let meteor: METCoreDataDDPClient
-    public let subscriptions: (
-        settings: METSubscription,
-        userData: METSubscription
-    )
-    public let settings: Settings
-
-    // Proxied accessors
-    public var networkReachable: Bool { return meteor.networkReachable }
-    public var connectionStatus: METDDPConnectionStatus { return meteor.connectionStatus }
-    public var connected: Bool { return meteor.connected }
-    public var loggingIn: Bool { return meteor.loggingIn }
-    public var mainContext : NSManagedObjectContext { return meteor.mainQueueManagedObjectContext }
-    public let account: PropertyOf<METAccount?>
-    public var userID : String? { return meteor.userID }
+    private let meteor: METCoreDataDDPClient
+    private var mainContext : NSManagedObjectContext { return meteor.mainQueueManagedObjectContext }
     private let _user = MutableProperty<User?>(nil)
+    
+    let account: PropertyOf<METAccount?>
+    let connectionStatus: PropertyOf<METDDPConnectionStatus>
     let user: PropertyOf<User?>
 
     public init(serverURL: NSURL) {
@@ -36,22 +26,17 @@ public class MeteorService : NSObject {
         let model = NSManagedObjectModel.mergedModelFromBundles([bundle as AnyObject])
         meteor = METCoreDataDDPClient(serverURL: serverURL, account: nil, managedObjectModel: model)
         account = meteor.dyn("account").optional(METAccount) |> readonly
-        subscriptions = (
-            settings: meteor.addSubscriptionWithName("settings"),
-            userData: meteor.addSubscriptionWithName("userData")
-        )
-        SugarRecord.addStack(MeteorCDStack(meteor: meteor))
-        user = PropertyOf(_user)
-        settings = Settings(meteor: meteor)
+        connectionStatus = meteor.dyn("connectionStatus").force(METDDPConnectionStatus) |> readonly
+        user = PropertyOf(nil, _user.producer |> observeOn(UIScheduler()))
         super.init()
         meteor.delegate = self
+        SugarRecord.addStack(MeteorCDStack(meteor: meteor))
     }
 
-    func startup() {
+    public func startup() {
         meteor.account = METAccount.defaultAccount()
         meteor.connect()
     }
-
 
     // MARK: - Publications & Collections
 
@@ -99,7 +84,7 @@ public class MeteorService : NSObject {
         // to be populated by the time completion gets called.
         // Instead we will force compute the user before returning signal
         return meteor.loginWithMethod(method, params: params).doCompleted {
-            if let userId = self.userID {
+            if let userId = self.meteor.userID {
                 self._user.value = self.mainContext.objectInCollection("users", documentID: userId) as? User
             }
         }
@@ -165,10 +150,7 @@ public class MeteorService : NSObject {
     // MARK: - Profile
 
     func updateProfile(values: NSDictionary) -> RACSignal {
-        return meteor.call("me/update", [values]) {
-//            User.currentUser()?.about = about
-            return nil
-        }
+        return meteor.call("me/update", [values])
     }
 
     // MARK: - Candidates
@@ -200,14 +182,12 @@ public class MeteorService : NSObject {
 
     func openMessage(message: Message, expireDelay: Int = 30) -> RACSignal {
         return meteor.call("message/open", [message, expireDelay]) {
-//            println("pre message \(message.documentID) status \(message.status) expire \(message.expiresAt)")
             message.status_ = Message.Status.Opened.rawValue
             message.expiresAt = NSDate(timeIntervalSinceNow: NSTimeInterval(expireDelay))
             let connection = message.connection
             connection.unreadCount = (connection.unreadCount?.intValue ?? 1) - 1
             connection.updatedAt = NSDate()
             message.save()
-//            println("post message \(message.documentID) status \(message.status) expire \(message.expiresAt)")
             return nil
         }
     }

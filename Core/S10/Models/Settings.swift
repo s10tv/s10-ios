@@ -22,16 +22,13 @@ public class Settings {
     public let hardMinBuild: PropertyOf<Int?>
     public let accountStatus: PropertyOf<AccountStatus?>
     
-    public init(meteor: METDDPClient) {
-        c = MeteorCollection(meteor.database.collectionWithName("settings"))
+    public init(meteor: MeteorService) {
+        c = meteor.collection("settings")
+        subscription = meteor.subscribe("settings")
         softMinBuild = c.propertyOf("softMinBuild") |> map { $0.typed(Int) }
         hardMinBuild = c.propertyOf("hardMinBuild") |> map { $0.typed(Int) }
         accountStatus = c.propertyOf("accountStatus")
             |> map { $0.typed(String).flatMap { AccountStatus(rawValue: $0) }
         }
-        subscription = MeteorSubscription(
-            meteor: meteor,
-            subscription: meteor.addSubscriptionWithName("settings")
-        )
     }
 }
