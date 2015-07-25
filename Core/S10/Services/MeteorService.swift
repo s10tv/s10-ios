@@ -52,20 +52,16 @@ public class MeteorService : NSObject {
         meteor.connect()
     }
 
-    func collection(name: String) -> METCollection {
-        return meteor.database.collectionWithName(name)
+
+    // MARK: - Publications & Collections
+
+    func collection(name: String) -> MeteorCollection {
+        return MeteorCollection(meteor.database.collectionWithName(name))
     }
-
-    // MARK: - Publications
-
-    func subscribe(name: String, params: [AnyObject]? = nil) -> METSubscription {
-        return meteor.addSubscriptionWithName(name, parameters: params)
-    }
-
-    func unsubscribe(subscription: METSubscription?) {
-        if let subscription = subscription {
-            meteor.removeSubscription(subscription)
-        }
+    
+    func subscribe(name: String, params: [AnyObject]? = nil) -> MeteorSubscription {
+        let sub = meteor.addSubscriptionWithName(name, parameters: params)
+        return MeteorSubscription(meteor: meteor, subscription: sub)
     }
 
     // MARK: - Device

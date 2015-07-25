@@ -16,6 +16,7 @@ public class Settings {
         case Active = "active"
     }
     let c: MeteorCollection
+    let subscription: MeteorSubscription
     
     public let softMinBuild: PropertyOf<Int?>
     public let hardMinBuild: PropertyOf<Int?>
@@ -28,6 +29,9 @@ public class Settings {
         accountStatus = c.propertyOf("accountStatus")
             |> map { $0.typed(String).flatMap { AccountStatus(rawValue: $0) }
         }
-        meteor.addSubscriptionWithName("settings")
+        subscription = MeteorSubscription(
+            meteor: meteor,
+            subscription: meteor.addSubscriptionWithName("settings")
+        )
     }
 }

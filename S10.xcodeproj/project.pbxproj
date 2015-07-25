@@ -68,6 +68,8 @@
 		EA2DC2B11B63FC990034434E /* InviteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2AF1B63FC990034434E /* InviteViewModel.swift */; };
 		EA2DC2B31B63FCAF0034434E /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2B21B63FCAF0034434E /* RootViewModel.swift */; };
 		EA2DC2B51B63FDF50034434E /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2B41B63FDF50034434E /* ConversationViewModel.swift */; };
+		EA2DC2B71B641ECD0034434E /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2B61B641ECD0034434E /* ProfileViewModel.swift */; };
+		EA2DC2B91B641F070034434E /* MeteorSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2B81B641F070034434E /* MeteorSubscription.swift */; };
 		EA3594141B2DE5C300E91337 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594131B2DE5C300E91337 /* ConversationViewController.swift */; };
 		EA3594191B2FEA1F00E91337 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594181B2FEA1F00E91337 /* TransitionManager.swift */; };
 		EA36B1D21B3F23ED002ADD91 /* ActivityImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36B1D11B3F23ED002ADD91 /* ActivityImageCell.swift */; };
@@ -319,6 +321,8 @@
 		EA2DC2AF1B63FC990034434E /* InviteViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteViewModel.swift; sourceTree = "<group>"; };
 		EA2DC2B21B63FCAF0034434E /* RootViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
 		EA2DC2B41B63FDF50034434E /* ConversationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewModel.swift; sourceTree = "<group>"; };
+		EA2DC2B61B641ECD0034434E /* ProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		EA2DC2B81B641F070034434E /* MeteorSubscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorSubscription.swift; sourceTree = "<group>"; };
 		EA3594131B2DE5C300E91337 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		EA3594181B2FEA1F00E91337 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		EA36B1D11B3F23ED002ADD91 /* ActivityImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ActivityImageCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -580,8 +584,9 @@
 		EA043F6E1B62EF5D0047BDCA /* Profile */ = {
 			isa = PBXGroup;
 			children = (
-				EA043F6F1B62EF5D0047BDCA /* ActivityViewModel.swift */,
+				EA2DC2B61B641ECD0034434E /* ProfileViewModel.swift */,
 				EA043F701B62EF5D0047BDCA /* UserViewModel.swift */,
+				EA043F6F1B62EF5D0047BDCA /* ActivityViewModel.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -1027,6 +1032,7 @@
 			isa = PBXGroup;
 			children = (
 				EA39651B1B54EFE400F5B0B3 /* MeteorCollection.swift */,
+				EA2DC2B81B641F070034434E /* MeteorSubscription.swift */,
 				EAF670561B31F9450025D7CF /* MeteorCDStack.swift */,
 				EAF670571B31F9450025D7CF /* MeteorExtension.swift */,
 				EAF670581B31F9450025D7CF /* SugarRecordExtension.swift */,
@@ -1579,11 +1585,13 @@
 				EA043F7F1B62EF5D0047BDCA /* MessageViewModel.swift in Sources */,
 				EA9F819E1B61BD1F00919C04 /* DynamicProperties.swift in Sources */,
 				EA2DC29F1B637FA50034434E /* Connection.swift in Sources */,
+				EA2DC2B91B641F070034434E /* MeteorSubscription.swift in Sources */,
 				EA4757151B392C19002071D7 /* Segue.swift in Sources */,
 				EAF6701D1B31E6550025D7CF /* Core.m in Sources */,
 				EA2DC2A61B63EF270034434E /* ReactiveUser.swift in Sources */,
 				EAF670741B31F9450025D7CF /* MeteorExtension.swift in Sources */,
 				EAF6709A1B3200E10025D7CF /* MeteorService.swift in Sources */,
+				EA2DC2B71B641ECD0034434E /* ProfileViewModel.swift in Sources */,
 				EA2DC2941B637FA50034434E /* _Activity.swift in Sources */,
 				EA043F7D1B62EF5D0047BDCA /* CandidateViewModel.swift in Sources */,
 				EA3965151B54C19800F5B0B3 /* ReactiveBridging.swift in Sources */,

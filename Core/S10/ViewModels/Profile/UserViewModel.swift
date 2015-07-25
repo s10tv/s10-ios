@@ -13,7 +13,6 @@ import Bond
 
 public struct UserViewModel {
     let meteor: MeteorService
-    let subscription: METSubscription!
     let user: User
     public let username: PropertyOf<String>
     public let jobTitle: PropertyOf<String>
@@ -46,7 +45,7 @@ public struct UserViewModel {
         ) |> map {
             Formatters.formatRelativeDate($0, relativeTo: $1) ?? ""
         })
-        subscription = meteor.subscribe("userActivities", params: [user.documentID!])
+//        subscription = meteor.subscribe("userActivities", params: [user.documentID!])
         activities = DynamicArray([])
 //            Activity
 //            .by(ActivityKeys.user, value: user)
@@ -59,10 +58,6 @@ public struct UserViewModel {
                 array?.value = mapped ?? []
             })
         profiles = array
-    }
-    
-    public func unsubscribe() {
-        meteor.unsubscribe(subscription)
     }
     
 
