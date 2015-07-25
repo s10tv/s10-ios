@@ -40,6 +40,8 @@ public struct Image : Mappable {
         width <- map["width"]
         height <- map["height"]
     }
+    
+    public static let mapper = Mapper<Image>()
 }
 
 extension Image : Printable {

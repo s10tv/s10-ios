@@ -3,11 +3,11 @@
 
 import CoreData
 
-public enum ConnectionKeys: String, Printable {
+internal enum ConnectionKeys: String, Printable {
 
-    case createdAt = "createdAt"
+    case cold = "cold"
 
-    case lastMessageStatus = "lastMessageStatus"
+    case lastMessageStatus_ = "lastMessageStatus_"
 
     case unreadCount = "unreadCount"
 
@@ -17,64 +17,64 @@ public enum ConnectionKeys: String, Printable {
 
     case otherUser = "otherUser"
 
-    public var description: String { return rawValue }
+    internal var description: String { return rawValue }
 }
 
-@objc public
+@objc internal
 class _Connection: NSManagedObject {
 
     // MARK: - Class methods
 
-    public class func entityName () -> String {
+    internal class func entityName () -> String {
         return "Connection"
     }
 
-    public class func entity(managedObjectContext: NSManagedObjectContext!) -> NSEntityDescription! {
+    internal class func entity(managedObjectContext: NSManagedObjectContext!) -> NSEntityDescription! {
         return NSEntityDescription.entityForName(self.entityName(), inManagedObjectContext: managedObjectContext);
     }
 
     // MARK: - Life cycle methods
 
-    public override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
+    internal override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
 
-    public convenience init(managedObjectContext: NSManagedObjectContext!) {
+    internal convenience init(managedObjectContext: NSManagedObjectContext!) {
         let entity = _Connection.entity(managedObjectContext)
         self.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
     }
 
     // MARK: - Properties
 
-    @NSManaged public
-    var createdAt: NSDate?
+    @NSManaged internal
+    var cold: NSNumber?
 
-    // func validateCreatedAt(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateCold(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
-    @NSManaged public
-    var lastMessageStatus: String?
+    @NSManaged internal
+    var lastMessageStatus_: String?
 
-    // func validateLastMessageStatus(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateLastMessageStatus_(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
-    @NSManaged public
+    @NSManaged internal
     var unreadCount: NSNumber?
 
     // func validateUnreadCount(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
-    @NSManaged public
-    var updatedAt: NSDate?
+    @NSManaged internal
+    var updatedAt: NSDate
 
     // func validateUpdatedAt(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
 
-    @NSManaged public
+    @NSManaged internal
     var lastSender: User?
 
     // func validateLastSender(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
-    @NSManaged public
-    var otherUser: User?
+    @NSManaged internal
+    var otherUser: User
 
     // func validateOtherUser(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 

@@ -6,7 +6,7 @@ ROOT=$(dirname "$0")
 # TODO: Get paths reference in order...
 cd "Core/S10"
 mogenerator --swift --template-path "../../scripts/motemplates" \
-            -m Models/Models.xcdatamodeld/Models.xcdatamodel/ --human-dir Models --machine-dir Models/_Models
+            -m Models/CoreData/Models.xcdatamodeld/Models.xcdatamodel/ --human-dir Models/CoreData --machine-dir Models/CoreData/_Models
 
 # Regenerate Taylr assets
 cd "../../Taylr"

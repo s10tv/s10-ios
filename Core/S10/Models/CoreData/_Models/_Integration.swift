@@ -3,75 +3,75 @@
 
 import CoreData
 
-public enum IntegrationKeys: String, Printable {
+internal enum IntegrationKeys: String, Printable {
 
-    case icon = "icon"
+    case icon_ = "icon_"
 
     case name = "name"
 
-    case status = "status"
+    case status_ = "status_"
 
     case updatedAt = "updatedAt"
 
-    case url = "url"
+    case url_ = "url_"
 
     case username = "username"
 
-    public var description: String { return rawValue }
+    internal var description: String { return rawValue }
 }
 
-@objc public
+@objc internal
 class _Integration: NSManagedObject {
 
     // MARK: - Class methods
 
-    public class func entityName () -> String {
+    internal class func entityName () -> String {
         return "Integration"
     }
 
-    public class func entity(managedObjectContext: NSManagedObjectContext!) -> NSEntityDescription! {
+    internal class func entity(managedObjectContext: NSManagedObjectContext!) -> NSEntityDescription! {
         return NSEntityDescription.entityForName(self.entityName(), inManagedObjectContext: managedObjectContext);
     }
 
     // MARK: - Life cycle methods
 
-    public override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
+    internal override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
 
-    public convenience init(managedObjectContext: NSManagedObjectContext!) {
+    internal convenience init(managedObjectContext: NSManagedObjectContext!) {
         let entity = _Integration.entity(managedObjectContext)
         self.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
     }
 
     // MARK: - Properties
 
-    @NSManaged public
-    var icon: AnyObject
+    @NSManaged internal
+    var icon_: AnyObject
 
-    // func validateIcon(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateIcon_(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
-    @NSManaged public
+    @NSManaged internal
     var name: String
 
     // func validateName(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
-    @NSManaged public
-    var status: String
+    @NSManaged internal
+    var status_: String
 
-    // func validateStatus(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateStatus_(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
-    @NSManaged public
+    @NSManaged internal
     var updatedAt: NSDate?
 
     // func validateUpdatedAt(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
-    @NSManaged public
-    var url: String
+    @NSManaged internal
+    var url_: String
 
-    // func validateUrl(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateUrl_(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
-    @NSManaged public
+    @NSManaged internal
     var username: String?
 
     // func validateUsername(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}

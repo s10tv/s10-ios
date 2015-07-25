@@ -7,7 +7,7 @@
 //
 
 @objc(<$managedObjectClassName$>)
-public class <$managedObjectClassName$>: _<$managedObjectClassName$> {
+internal class <$managedObjectClassName$>: _<$managedObjectClassName$> {
 
 	// Custom logic goes here.
 

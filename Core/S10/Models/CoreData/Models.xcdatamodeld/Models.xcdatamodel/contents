@@ -2,45 +2,88 @@
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Activity" representedClassName="Activity" syncable="YES">
         <attribute name="caption" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="image" optional="YES" attributeType="Transformable" syncable="YES"/>
+        <attribute name="image_" optional="YES" attributeType="Transformable" syncable="YES">
+            <userInfo>
+                <entry key="fieldName" value="image"/>
+            </userInfo>
+        </attribute>
         <attribute name="profileId" attributeType="String" syncable="YES"/>
         <attribute name="text" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" attributeType="Date" syncable="YES"/>
-        <attribute name="type" attributeType="String" syncable="YES"/>
-        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type_" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="fieldName" value="type"/>
+            </userInfo>
+        </attribute>
+        <attribute name="url_" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="fieldName" value="url"/>
+            </userInfo>
+        </attribute>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
     </entity>
     <entity name="Connection" representedClassName="Connection" syncable="YES">
-        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="lastMessageStatus" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="unreadCount" optional="YES" attributeType="Integer 16" syncable="YES"/>
-        <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="cold" attributeType="Boolean" syncable="YES"/>
+        <attribute name="lastMessageStatus_" optional="YES" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="fieldName" value="lastMessageStatus"/>
+            </userInfo>
+        </attribute>
+        <attribute name="unreadCount" attributeType="Integer 16" syncable="YES"/>
+        <attribute name="updatedAt" attributeType="Date" syncable="YES"/>
         <relationship name="lastSender" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
-        <relationship name="otherUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="connection" inverseEntity="User" syncable="YES"/>
+        <relationship name="otherUser" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="connection" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Integration" representedClassName="Integration" syncable="YES">
-        <attribute name="icon" attributeType="Transformable" syncable="YES"/>
+        <attribute name="icon_" attributeType="Transformable" syncable="YES">
+            <userInfo>
+                <entry key="fieldName" value="icon"/>
+            </userInfo>
+        </attribute>
         <attribute name="name" attributeType="String" syncable="YES"/>
-        <attribute name="status" attributeType="String" syncable="YES"/>
+        <attribute name="status_" attributeType="String" syncable="YES"/>
         <attribute name="updatedAt" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="url" attributeType="String" syncable="YES"/>
+        <attribute name="url_" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="fieldName" value="url"/>
+            </userInfo>
+        </attribute>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Message" representedClassName="Message" syncable="YES">
-        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="createdAt" attributeType="Date" syncable="YES"/>
         <attribute name="expiresAt" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="status" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="connection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Connection" syncable="YES"/>
-        <relationship name="sender" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
-        <relationship name="video" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Video" inverseName="message" inverseEntity="Video" syncable="YES"/>
+        <attribute name="status_" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="fieldName" value="status"/>
+            </userInfo>
+        </attribute>
+        <attribute name="video_" attributeType="Transformable" syncable="YES">
+            <userInfo>
+                <entry key="fieldName" value="video"/>
+            </userInfo>
+        </attribute>
+        <relationship name="connection" maxCount="1" deletionRule="Nullify" destinationEntity="Connection" syncable="YES"/>
+        <relationship name="sender" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="about" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="avatar" optional="YES" attributeType="Transformable" valueTransformerName="PhotosValueTransformer" syncable="YES"/>
+        <attribute name="avatar_" optional="YES" attributeType="Transformable" valueTransformerName="PhotosValueTransformer" syncable="YES">
+            <userInfo>
+                <entry key="fieldName" value="avatar"/>
+            </userInfo>
+        </attribute>
         <attribute name="candidateScore" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="connectedProfiles" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="cover" optional="YES" attributeType="Transformable" syncable="YES"/>
-        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="connectedProfiles_" optional="YES" attributeType="Transformable" syncable="YES">
+            <userInfo>
+                <entry key="fieldName" value="connectedProfiles"/>
+            </userInfo>
+        </attribute>
+        <attribute name="cover_" optional="YES" attributeType="Transformable" syncable="YES">
+            <userInfo>
+                <entry key="fieldName" value="cover"/>
+            </userInfo>
+        </attribute>
         <attribute name="distance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="employer" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
@@ -54,22 +97,11 @@
             </userInfo>
         </relationship>
     </entity>
-    <entity name="Video" representedClassName="Video" syncable="YES">
-        <attribute name="coverFrameUrl" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="createdAt" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="message" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Message" inverseName="video" inverseEntity="Message" syncable="YES">
-            <userInfo>
-                <entry key="storage" value="false"/>
-            </userInfo>
-        </relationship>
-    </entity>
     <elements>
         <element name="Activity" positionX="790" positionY="72" width="128" height="165"/>
         <element name="Connection" positionX="-819" positionY="9" width="128" height="135"/>
         <element name="Integration" positionX="-612" positionY="-144" width="128" height="135"/>
         <element name="Message" positionX="-207" positionY="27" width="128" height="135"/>
-        <element name="User" positionX="268" positionY="-261" width="128" height="255"/>
-        <element name="Video" positionX="-234" positionY="90" width="128" height="105"/>
+        <element name="User" positionX="268" positionY="-261" width="128" height="240"/>
     </elements>
 </model>

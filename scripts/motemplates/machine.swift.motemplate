@@ -5,7 +5,7 @@ import CoreData
 
 <$if hasCustomBaseCaseImport$>import <$baseClassImport$><$endif$>
 
-public enum <$managedObjectClassName$>Keys: String, Printable {
+internal enum <$managedObjectClassName$>Keys: String, Printable {
 <$foreach Attribute noninheritedAttributes do$>
     case <$Attribute.name$> = "<$Attribute.name$>"
 <$endforeach do$>
@@ -15,35 +15,35 @@ public enum <$managedObjectClassName$>Keys: String, Printable {
 <$foreach FetchedProperty noninheritedFetchedProperties do$>
     case <$FetchedProperty.name$> = "<$FetchedProperty.name$>"
 <$endforeach do$>
-    public var description: String { return rawValue }
+    internal var description: String { return rawValue }
 }
 
 <$if hasUserInfoKeys$>
-public enum <$managedObjectClassName$>UserInfo: String {<$foreach UserInfo userInfoKeyValues do$>
+internal enum <$managedObjectClassName$>UserInfo: String {<$foreach UserInfo userInfoKeyValues do$>
     case <$UserInfo.key$> = "<$UserInfo.key$>"<$endforeach do$>
 }
 <$endif$>
 
-@objc public
+@objc internal
 class _<$managedObjectClassName$>: <$customSuperentity$> {
 
     // MARK: - Class methods
 
-    <$if hasCustomSuperentity$>override <$endif$>public class func entityName () -> String {
+    <$if hasCustomSuperentity$>override <$endif$>internal class func entityName () -> String {
         return "<$name$>"
     }
 
-    <$if hasCustomSuperentity$>override <$endif$>public class func entity(managedObjectContext: NSManagedObjectContext!) -> NSEntityDescription! {
+    <$if hasCustomSuperentity$>override <$endif$>internal class func entity(managedObjectContext: NSManagedObjectContext!) -> NSEntityDescription! {
         return NSEntityDescription.entityForName(self.entityName(), inManagedObjectContext: managedObjectContext);
     }
 
     // MARK: - Life cycle methods
 
-    public override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
+    internal override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
 
-    public convenience init(managedObjectContext: NSManagedObjectContext!) {
+    internal convenience init(managedObjectContext: NSManagedObjectContext!) {
         let entity = _<$managedObjectClassName$>.entity(managedObjectContext)
         self.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
     }
@@ -53,18 +53,18 @@ class _<$managedObjectClassName$>: <$customSuperentity$> {
 <$if Attribute.hasDefinedAttributeType$>
 <$if Attribute.hasScalarAttributeType$>
 <$if Attribute.isReadonly$>
-    @NSManaged public
+    @NSManaged internal
     let <$Attribute.name$>: NSNumber?
 <$else$>
-    @NSManaged public
+    @NSManaged internal
     var <$Attribute.name$>: NSNumber?
 <$endif$>
 <$else$>
 <$if Attribute.isReadonly$>
-    @NSManaged public
+    @NSManaged internal
     let <$Attribute.name$>: <$Attribute.objectAttributeType$><$if Attribute.isOptional$>?<$endif$>
 <$else$>
-    @NSManaged public
+    @NSManaged internal
     var <$Attribute.name$>: <$Attribute.objectAttributeType$><$if Attribute.isOptional$>?<$endif$>
 <$endif$>
 <$endif$>
@@ -75,11 +75,11 @@ class _<$managedObjectClassName$>: <$customSuperentity$> {
     // MARK: - Relationships
 <$foreach Relationship noninheritedRelationships do$>
 <$if Relationship.isToMany$>
-    @NSManaged public
+    @NSManaged internal
     var <$Relationship.name$>: <$Relationship.immutableCollectionClassName$>
 
 <$else$>
-    @NSManaged public
+    @NSManaged internal
     var <$Relationship.name$>: <$Relationship.destinationEntity.managedObjectClassName$><$if Relationship.isOptional$>?<$endif$>
 
     // func validate<$Relationship.name.initialCapitalString$>(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
@@ -151,7 +151,7 @@ class _<$managedObjectClassName$>: <$customSuperentity$> {
 <$endforeach do$>
 
 <$foreach FetchedProperty noninheritedFetchedProperties do$>
-    @NSManaged public
+    @NSManaged internal
     let <$FetchedProperty.name$>: [<$FetchedProperty.entity.managedObjectClassName$>]
 <$endforeach do$>
 }

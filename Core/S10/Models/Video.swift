@@ -1,18 +1,48 @@
 //
 //  Video.swift
-//  Serendipity
+//  S10
 //
-//  Created by Tony Xiao on 6/12/15.
-//  Copyright (c) 2015 Serendipity. All rights reserved.
+//  Created by Tony Xiao on 7/25/15.
+//  Copyright (c) 2015 S10. All rights reserved.
 //
 
-import Bond
+import Foundation
+import ObjectMapper
 
-@objc(Video)
-public class Video: _Video {
+public struct Video : Mappable {
+    public var url: NSURL!
+    public var duration: NSTimeInterval?
+    public var width: Int?
+    public var height: Int?
     
-    public var URL: Dynamic<NSURL?> {
-        return self.dynValue(VideoKeys.url).map { NSURL.fromString($0) }
+    public init?(_ urlString: String?) {
+        if let url = urlString.flatMap({ NSURL(string: $0) }) {
+            self.url = url
+        } else {
+            return nil
+        }
     }
+    
+    public init(_ url: NSURL) {
+        self.url = url
+    }
+    
+    public init?(_ map: Map) {
+        mapping(map)
+    }
+    
+    public mutating func mapping(map: Map) {
+        url <- (map["url"], URLTransform())
+        url <- map["duration"]
+        width <- map["width"]
+        height <- map["height"]
+    }
+    
+    public static let mapper = Mapper<Video>()
+}
 
+extension Video : Printable {
+    public var description: String {
+        return "Video[url=\(url), w=\(width) h=\(height)]"
+    }
 }

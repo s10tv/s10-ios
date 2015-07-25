@@ -3,19 +3,17 @@
 
 import CoreData
 
-public enum UserKeys: String, Printable {
+internal enum UserKeys: String, Printable {
 
     case about = "about"
 
-    case avatar = "avatar"
+    case avatar_ = "avatar_"
 
     case candidateScore = "candidateScore"
 
-    case connectedProfiles = "connectedProfiles"
+    case connectedProfiles_ = "connectedProfiles_"
 
-    case cover = "cover"
-
-    case createdAt = "createdAt"
+    case cover_ = "cover_"
 
     case distance = "distance"
 
@@ -33,103 +31,98 @@ public enum UserKeys: String, Printable {
 
     case connection = "connection"
 
-    public var description: String { return rawValue }
+    internal var description: String { return rawValue }
 }
 
-@objc public
+@objc internal
 class _User: NSManagedObject {
 
     // MARK: - Class methods
 
-    public class func entityName () -> String {
+    internal class func entityName () -> String {
         return "User"
     }
 
-    public class func entity(managedObjectContext: NSManagedObjectContext!) -> NSEntityDescription! {
+    internal class func entity(managedObjectContext: NSManagedObjectContext!) -> NSEntityDescription! {
         return NSEntityDescription.entityForName(self.entityName(), inManagedObjectContext: managedObjectContext);
     }
 
     // MARK: - Life cycle methods
 
-    public override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
+    internal override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext!) {
         super.init(entity: entity, insertIntoManagedObjectContext: context)
     }
 
-    public convenience init(managedObjectContext: NSManagedObjectContext!) {
+    internal convenience init(managedObjectContext: NSManagedObjectContext!) {
         let entity = _User.entity(managedObjectContext)
         self.init(entity: entity, insertIntoManagedObjectContext: managedObjectContext)
     }
 
     // MARK: - Properties
 
-    @NSManaged public
+    @NSManaged internal
     var about: String?
 
     // func validateAbout(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
-    @NSManaged public
-    var avatar: AnyObject?
+    @NSManaged internal
+    var avatar_: AnyObject?
 
-    // func validateAvatar(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateAvatar_(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
-    @NSManaged public
+    @NSManaged internal
     var candidateScore: NSNumber?
 
     // func validateCandidateScore(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
-    @NSManaged public
-    var connectedProfiles: AnyObject?
+    @NSManaged internal
+    var connectedProfiles_: AnyObject?
 
-    // func validateConnectedProfiles(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateConnectedProfiles_(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
-    @NSManaged public
-    var cover: AnyObject?
+    @NSManaged internal
+    var cover_: AnyObject?
 
-    // func validateCover(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateCover_(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
-    @NSManaged public
-    var createdAt: NSDate?
-
-    // func validateCreatedAt(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
-
-    @NSManaged public
+    @NSManaged internal
     var distance: NSNumber?
 
     // func validateDistance(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
-    @NSManaged public
+    @NSManaged internal
     var employer: String?
 
     // func validateEmployer(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
-    @NSManaged public
+    @NSManaged internal
     var firstName: String?
 
     // func validateFirstName(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
-    @NSManaged public
+    @NSManaged internal
     var jobTitle: String?
 
     // func validateJobTitle(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
-    @NSManaged public
+    @NSManaged internal
     var lastActive: NSDate?
 
     // func validateLastActive(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
-    @NSManaged public
+    @NSManaged internal
     var lastName: String?
 
     // func validateLastName(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
-    @NSManaged public
+    @NSManaged internal
     var username: String?
 
     // func validateUsername(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
 
-    @NSManaged public
+    @NSManaged internal
     var connection: Connection?
 
     // func validateConnection(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}

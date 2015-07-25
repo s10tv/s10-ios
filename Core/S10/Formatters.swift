@@ -9,6 +9,16 @@
 import Foundation
 import FormatterKit
 import DateTools
+import ReactiveCocoa
+
+internal func relativeTime(date: NSDate?, interval: NSTimeInterval = 1) -> PropertyOf<String> {
+    return PropertyOf("") {
+        timer(interval, onScheduler: QueueScheduler.mainQueueScheduler) |> map {
+            Formatters.formatRelativeDate(date, relativeTo: $0) ?? ""
+        }
+    }
+}
+
 
 public struct Formatters {
     private static let height : NSLengthFormatter = {
