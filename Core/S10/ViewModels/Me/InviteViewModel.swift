@@ -1,5 +1,5 @@
 //
-//  InviteInteractor.swift
+//  InviteViewModel.swift
 //  S10
 //
 //  Created by Tony Xiao on 7/22/15.
@@ -11,7 +11,7 @@ import Bond
 import Meteor
 import ReactiveCocoa
 
-public class InviteInteractor {
+public struct InviteViewModel {
     let meteor: MeteorService
     let taskService: TaskService
     

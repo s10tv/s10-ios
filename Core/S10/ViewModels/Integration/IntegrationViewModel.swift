@@ -17,19 +17,19 @@ public struct IntegrationViewModel {
     public let statusImage: Image?
     public let showSpinner: Bool
     
-    public init(integration: Integration) {
+    init(integration: Integration) {
         id = integration.documentID!
-        icon = Mapper<Image>().map(integration.icon)!
+        icon = integration.icon
         title = integration.username ?? integration.name
-        url = NSURL(integration.url)
+        url = integration.url
         switch integration.status {
-        case "linked":
+        case .Linked:
             showSpinner = false
             statusImage = Image(UIImage(named: "ic-checkmark")!)
-        case "busy":
+        case .Busy:
             showSpinner = true
             statusImage = nil
-        case "error":
+        case .Error:
             showSpinner = false
             statusImage = Image(UIImage(named: "ic-warning")!)
         default:

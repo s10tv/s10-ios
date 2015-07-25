@@ -201,7 +201,7 @@ class IntegrationTests : XCTestCase {
 
         whileAuthenticated {
             let subject = RACReplaySubject()
-            let task = InviteTaskEntry()
+            let task = InviteTask()
             task.taskId = NSUUID().UUIDString
             task.localVideoUrl = url!.absoluteString!
             task.firstName = "test" // don't rename. else server will actually send email
@@ -231,7 +231,7 @@ class IntegrationTests : XCTestCase {
 
         whileAuthenticated {
             let subject = RACReplaySubject()
-            let task = InviteTaskEntry()
+            let task = InviteTask()
             task.taskId = NSUUID().UUIDString
             task.localVideoUrl = url!.absoluteString!
             task.firstName = "test" // don't rename. else server will actually send email

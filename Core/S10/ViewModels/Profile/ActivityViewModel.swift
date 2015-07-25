@@ -28,25 +28,25 @@ public struct ActivityImageViewModel : ActivityViewModel {
     
     public let image: Image
     
-    public init(activity: Activity, profile: UserViewModel.Profile) {
+    init(activity: Activity, profile: ConnectedProfile) {
         avatar = profile.avatar
         displayName = profile.displayName
         displayTime = relativeTime(activity.timestamp)
         integrationName = profile.displayId! // Need integrationName
         integrationColor = UIColor.blackColor()
-        image = Mapper<Image>().map(activity.image!)!
+        image = activity.image
     }
 }
 
 public struct ActivityListViewModel {
     let activities: DynamicArray<ActivityViewModel>
     
-    public init(user: User, profile: UserViewModel.Profile) {
+    init(user: User, profile: ConnectedProfile) {
         activities = Activity
             .by(ActivityKeys.user, value: user)
             .sorted(by: ActivityKeys.timestamp.rawValue, ascending: false)
             .results(Activity)
-            .filter { $0.type == "image" }
+            .filter { $0.type == .Image }
             .map { ActivityImageViewModel(activity: $0, profile: profile) }
     }
 }

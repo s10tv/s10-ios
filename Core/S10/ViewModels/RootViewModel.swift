@@ -1,5 +1,5 @@
 //
-//  RootInteractor.swift
+//  RootViewModel.swift
 //  S10
 //
 //  Created by Tony Xiao on 7/21/15.
@@ -11,14 +11,14 @@ import CoreData
 import ReactiveCocoa
 import Bond
 
-public class RootInteractor {
+public struct RootViewModel {
     let unreadConversations: FetchedResultsArray<Connection>
-    public let unreadConnectionsCount: Dynamic<Int>
+    public let unreadConnectionsCount: PropertyOf<Int>
     
     public init() {
         unreadConversations = Connection
             .by(NSPredicate(format: "%K > 0", ConnectionKeys.unreadCount.rawValue))
             .results(Connection)
-        unreadConnectionsCount = unreadConversations.dynCount
+        unreadConnectionsCount = fromBondDynamic(unreadConversations.dynCount)
     }
 }

@@ -7,29 +7,29 @@
 //
 
 import Foundation
+import ReactiveCocoa
 import BrightFutures
-import Bond
 
-public class SignupInteractor {
+public struct SignupViewModel {
     let meteor: MeteorService
     let user: User
     let operationQueue = NSOperationQueue()
-    public let avatarURL: Dynamic<NSURL?>
-    public let coverURL: Dynamic<NSURL?>
-    public let firstName = Dynamic("")
-    public let lastName = Dynamic("")
-    public let username = Dynamic("")
-    public let about = Dynamic("")
+    public let avatar: PropertyOf<Image?>
+    public let cover: PropertyOf<Image?>
+    public let firstName: MutableProperty<String>
+    public let lastName: MutableProperty<String>
+    public let username: MutableProperty<String>
+    public let about: MutableProperty<String>
     
-    public init(meteor: MeteorService, user: User) {
+    init(meteor: MeteorService) {
         self.meteor = meteor
-        self.user = user
-        user.dynFirstName.map { $0 ?? "" } ->> firstName
-        user.dynLastName.map { $0 ?? "" } ->> lastName
-        user.dynUsername.map { $0 ?? "" } ->> username
-        user.dynAbout.map { $0 ?? "" } ->> about
-        avatarURL = user.dynAvatar.map { $0?.url }
-        coverURL = user.dynAvatar.map { $0?.url }
+        self.user = meteor.user.value!
+        firstName = user.pFirstName() |> mutable
+        lastName = user.pLastName() |> mutable
+        username = user.pUsername() |> mutable
+        about = user.pAbout() |> mutable
+        avatar = user.pAvatar()
+        cover = user.pCover()
     }
     
     public func uploadAvatar(image: UIImage) -> Future<(), NSError> {

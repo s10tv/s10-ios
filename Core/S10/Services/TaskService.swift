@@ -22,9 +22,9 @@ public class TaskService {
     public init(meteorService: MeteorService) {
         self.meteorService = meteorService
         nc.listen(METIncrementalStoreObjectsDidChangeNotification) { [weak self] _ in
-            for video in Video.all().fetch().map({ $0 as! Video }) {
-                if video.message?.statusEnum == .Sent {
-                    self?.downloadVideo(video)
+            for message in Message.all().fetch().map({ $0 as! Message }) {
+                if message.status == .Sent {
+                    self?.downloadVideo(message)
                 }
             }
         }
@@ -32,7 +32,7 @@ public class TaskService {
     
     // MARK: - Uploads
     
-    public func uploadVideo(recipient: User, localVideoURL: NSURL) {
+    func uploadVideo(recipient: User, localVideoURL: NSURL) {
         let operation = VideoUploadOperation(
             recipientId: recipient.documentID!,
             localVideoURL: localVideoURL,
@@ -48,7 +48,7 @@ public class TaskService {
             .filter { $0.taskId != nil }
             .map { $0.taskId! }
         )
-        for task in Realm().objects(VideoUploadTaskEntry) {
+        for task in Realm().objects(VideoUploadTask) {
             if queuedTaskIds.contains(task.id) {
                 continue
             }
@@ -65,19 +65,19 @@ public class TaskService {
 
     // MARK: - Downloads
     
-    public func downloadVideo(video: Video) {
-        if let videoId = video.documentID,
-            let senderId = video.message?.sender?.documentID,
-            let remoteUrl = video.url {
+    func downloadVideo(message: Message) {
+        if let videoId = message.documentID,
+            let senderId = message.sender.documentID,
+            let remoteUrl = message.video.url {
             if VideoCache.sharedInstance.hasVideo(videoId) {
                 return
             }
             let realm = Realm()
             realm.write {
-                let task = VideoDownloadTaskEntry()
+                let task = VideoDownloadTask()
                 task.videoId = videoId
                 task.senderId = senderId
-                task.remoteUrl = remoteUrl
+                task.remoteUrl = remoteUrl.absoluteString!
                 realm.add(task, update: true)
             }
             resumeDownloads()
@@ -89,7 +89,7 @@ public class TaskService {
             .map { $0 as! VideoDownloadOperation }
             .map { $0.videoId }
         )
-        for task in Realm().objects(VideoDownloadTaskEntry) {
+        for task in Realm().objects(VideoDownloadTask) {
             if queuedVideoIds.contains(task.videoId) {
                 continue
             }
@@ -107,7 +107,7 @@ public class TaskService {
         let promise = RACPromise<(), NSError>()
         let realm = Realm()
         realm.write {
-            let task = InviteTaskEntry()
+            let task = InviteTask()
             task.taskId = NSUUID().UUIDString
             task.emailOrPhone = emailOrPhone
             task.localVideoUrl = localVideoURL.absoluteString!
@@ -132,7 +132,7 @@ public class TaskService {
             .map { $0 as! InviteOperation }
             .map { $0.taskId }
         )
-        for task in Realm().objects(InviteTaskEntry) {
+        for task in Realm().objects(InviteTask) {
             if queuedTaskIds.contains(task.taskId) {
                 continue
             }

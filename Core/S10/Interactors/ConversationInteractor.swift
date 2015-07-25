@@ -57,17 +57,17 @@ public class ConversationInteractor {
 
 
         downloading = toBondDynamic(PropertyOf(false) {
-            VideoDownloadTaskEntry.countOfDownloads(recipient.documentID!)
+            VideoDownloadTask.countOfDownloads(recipient.documentID!)
                 |> map { $0 > 0 }
         })
         uploading = toBondDynamic(PropertyOf(false) {
-            VideoUploadTaskEntry.countOfUploads(recipient.documentID!)
+            VideoUploadTask.countOfUploads(recipient.documentID!)
                 |> map { $0 > 0 }
         })
         busy = PropertyOf(false) {
             combineLatest(
-                VideoUploadTaskEntry.countOfUploads(recipient.documentID!),
-                VideoDownloadTaskEntry.countOfDownloads(recipient.documentID!)
+                VideoUploadTask.countOfUploads(recipient.documentID!),
+                VideoDownloadTask.countOfDownloads(recipient.documentID!)
             ) |> map { uploads, downloads in
                 uploads > 0 || downloads > 0
             }

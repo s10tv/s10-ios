@@ -1,5 +1,5 @@
 //
-//  EditProfileInteractor.swift
+//  EditProfileViewModel.swift
 //  S10
 //
 //  Created by Tony Xiao on 7/14/15.
@@ -9,27 +9,27 @@
 import Foundation
 import ReactiveCocoa
 
-public class EditProfileInteractor {
+public struct EditProfileViewModel {
     public let firstName: MutableProperty<String>
     public let lastName: MutableProperty<String>
     public let about: MutableProperty<String>
     public let username: PropertyOf<String>
-    public let avatarImageURL: PropertyOf<NSURL?>
-    public let coverImageURL: PropertyOf<NSURL?>
+    public let avatarImage: PropertyOf<Image?>
+    public let coverImage: PropertyOf<Image?>
     
     let operationQueue = NSOperationQueue()
     let meteor: MeteorService
     let user: User
     
-    public init(meteor: MeteorService, user: User) {
+    public init(meteor: MeteorService) {
         self.meteor = meteor
-        self.user = user
-        firstName = user.dyn("firstName").optional(String) |> map { $0 ?? "" } |> mutable
-        lastName = user.dyn("lastName").optional(String) |> map { $0 ?? "" } |> mutable
-        about = user.dyn("about").optional(String) |> map { $0 ?? "" } |> mutable
-        username = user.dyn("username").optional(String) |> map { $0 ?? "" }
-        avatarImageURL = user.dyn("avatar").optional(Image) |> map { $0?.url }
-        coverImageURL = user.dyn("cover").optional(Image) |> map { $0?.url }
+        self.user = meteor.user.value!
+        firstName = user.pFirstName() |> mutable
+        lastName = user.pLastName() |> mutable
+        about = user.pAbout() |> mutable
+        username = user.pUsername()
+        avatarImage = user.pAvatar()
+        coverImage = user.pCover()
     }
     
     public func saveEdits() -> RACFuture<(), NSError> {
