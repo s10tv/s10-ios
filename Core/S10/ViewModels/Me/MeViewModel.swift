@@ -11,16 +11,14 @@ import Meteor
 import ReactiveCocoa
 
 public struct MeViewModel {
-    let meteor: MeteorService
     let subscription: MeteorSubscription
     public let avatar: PropertyOf<Image?>
     public let displayName: PropertyOf<String>
     public let username: PropertyOf<String>
     
     public init(meteor: MeteorService) {
-        self.meteor = meteor
-        subscription = meteor.subscribe("userData")
         let user = meteor.user.value!
+        subscription = meteor.subscribe("me")
         avatar = user.pAvatar()
         displayName = user.pDisplayName()
         username = user.pUsername()

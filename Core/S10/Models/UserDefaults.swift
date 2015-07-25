@@ -9,6 +9,8 @@
 import Foundation
 import SwiftyUserDefaults
 
+// TODO: Replce with mutableProperty
+
 // NOTE: Use Hungarian notation (http://en.wikipedia.org/wiki/Hungarian_notation)
 // to name UserDefaultKey's because they are not statically typed
 public enum UserDefaultKey : String {

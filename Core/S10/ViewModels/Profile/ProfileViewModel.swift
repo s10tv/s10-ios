@@ -7,3 +7,12 @@
 //
 
 import Foundation
+import ReactiveCocoa
+
+public struct ProfileViewModel {
+    let subscription: MeteorSubscription
+    
+    init(meteor: MeteorService, user: User) {
+        subscription = meteor.subscribe("activities", params: [user])
+    }
+}

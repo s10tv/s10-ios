@@ -45,7 +45,6 @@ public struct UserViewModel {
         ) |> map {
             Formatters.formatRelativeDate($0, relativeTo: $1) ?? ""
         })
-//        subscription = meteor.subscribe("userActivities", params: [user.documentID!])
         activities = DynamicArray([])
 //            Activity
 //            .by(ActivityKeys.user, value: user)

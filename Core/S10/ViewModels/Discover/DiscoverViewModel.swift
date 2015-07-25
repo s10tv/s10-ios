@@ -10,10 +10,11 @@ import Foundation
 import Bond
 
 public struct DiscoverViewModel {
+    let subscription: MeteorSubscription
     public let candidates: DynamicArray<CandidateViewModel>
     
-    public init() {
-        // Filter out candidate without users for now
+    public init(meteor: MeteorService) {
+        subscription = meteor.subscribe("discover")
         candidates = User
             .by("\(UserKeys.candidateScore) != nil")
             .sorted(by: UserKeys.candidateScore.rawValue, ascending: false)

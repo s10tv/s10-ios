@@ -12,11 +12,15 @@ import Bond
 
 public struct ChatsViewModel {
     let meteor: MeteorService
+    let chatsSub: MeteorSubscription
+    let messagesSub: MeteorSubscription
     public let contactsConnections: DynamicArray<ContactConnectionViewModel>
     public let newConnections: DynamicArray<NewConnectionViewModel>
     
     public init(meteor: MeteorService) {
         self.meteor = meteor
+        chatsSub = meteor.subscribe("chats")
+        messagesSub = meteor.subscribe("messages")
         contactsConnections = Connection
             .by("\(ConnectionKeys.otherUser) != nil && \(ConnectionKeys.cold) == false")
             .sorted(by: ConnectionKeys.updatedAt.rawValue, ascending: false)
@@ -27,6 +31,5 @@ public struct ChatsViewModel {
             .sorted(by: ConnectionKeys.updatedAt.rawValue, ascending: false)
             .results(Connection)
             .map { NewConnectionViewModel(connection: $0) }
-        meteor.subscribe("chats")
     }
 }
