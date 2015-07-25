@@ -16,6 +16,13 @@ class IntegrationWebViewController: UIViewController {
     
     var integration: IntegrationViewModel!
     
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        webView.scrollView.scrollEnabled = false
+        webView.scrollView.bounces = false
+        webView.scrollView.delegate = self
+    }
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         webView.loadRequest(NSURLRequest(URL: integration.url))
@@ -33,5 +40,11 @@ extension IntegrationWebViewController : UIWebViewDelegate {
             self.dismissViewController(animated: true)
         }
         return true
+    }
+}
+
+extension IntegrationWebViewController : UIScrollViewDelegate {
+    func viewForZoomingInScrollView(scrollView: UIScrollView) -> UIView? {
+        return nil
     }
 }
