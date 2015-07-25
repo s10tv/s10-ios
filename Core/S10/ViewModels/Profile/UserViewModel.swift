@@ -88,6 +88,7 @@ public struct UserViewModel {
         public var displayId: String?
         public var authenticated: Bool?
         public var url: NSURL!
+        public var integrationName: String!
         public var attributes: [Attribute]!
         
         public init?(_ map: Map) {
@@ -101,6 +102,7 @@ public struct UserViewModel {
             displayName <- map["displayName"]
             displayId <- map["displayId"]
             authenticated <- map["authenticated"]
+            integrationName <- map["integrationName"]
             url <- (map["url"], URLTransform())
             attributes <- map["attributes"]
         }

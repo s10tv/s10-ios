@@ -9,28 +9,44 @@
 import Foundation
 import Bond
 import ReactiveCocoa
+import ObjectMapper
 
-public struct ActivityViewModel {
-    let activity: Activity
-    public let avatarURL: Dynamic<NSURL?>
-    public let username: Dynamic<String>
-    public let formattedDate: Dynamic<String>
-    public let image: Dynamic<Image?>
-    public let text: Dynamic<String>
-    public let quote: Dynamic<String>
-    public let serviceName: PropertyOf<String>
+public protocol ActivityViewModel {
+    var avatar: Image { get }
+    var displayName: String { get }
+    var displayTime: PropertyOf<String> { get }
+    var integrationName: String { get }
+    var integrationColor: UIColor  { get }
+}
+
+public struct ActivityImageViewModel : ActivityViewModel {
+    public let avatar: Image
+    public let displayName: String
+    public let displayTime: PropertyOf<String>
+    public let integrationName: String
+    public let integrationColor: UIColor
     
-    public init(_ activity: Activity) {
-        self.activity = activity
-        let service = activity.service!
-        avatarURL = service.userAvatarURL
-        username = service.dynUserDisplayName.map(Formatters.cleanString)
-        formattedDate = reduce(activity.dynTimestamp, CurrentDate) {
-            Formatters.formatInterval($0, relativeTo: $1) ?? ""
-        }
-        image = activity.dynImage
-        text = activity.dynText.map(Formatters.cleanString)
-        quote = activity.dynQuote.map(Formatters.cleanString)
-        serviceName = service.dynServiceType |> map { $0?.name ?? "" }
+    public let image: Image
+    
+    public init(activity: Activity, profile: UserViewModel.Profile) {
+        avatar = profile.avatar
+        displayName = profile.displayName
+        displayTime = relativeTime(activity.timestamp)
+        integrationName = profile.displayId! // Need integrationName
+        integrationColor = UIColor.blackColor()
+        image = Mapper<Image>().map(activity.image!)!
+    }
+}
+
+public struct ActivityListViewModel {
+    let activities: DynamicArray<ActivityViewModel>
+    
+    public init(user: User, profile: UserViewModel.Profile) {
+        activities = Activity
+            .by(ActivityKeys.user, value: user)
+            .sorted(by: ActivityKeys.timestamp.rawValue, ascending: false)
+            .results(Activity)
+            .filter { $0.type == "image" }
+            .map { ActivityImageViewModel(activity: $0, profile: profile) }
     }
 }

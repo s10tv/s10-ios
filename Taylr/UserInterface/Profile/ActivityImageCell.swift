@@ -32,22 +32,22 @@ class ActivityImageCell : UITableViewCell {
     }
     
     func bindActivity(activity: ActivityViewModel) {
-        activity.avatarURL ->> userImageView.dynImageURL
-        activity.username ->> usernameLabel
-        activity.formattedDate ->> timestampLabel
-        activity.text ->> contentTextLabel
-        activity.quote ->> quoteLabel
-        activity.serviceName ->> serviceNameLabel
-        activity.image.map { [unowned self] image in
-            if let image = image {
-                let width = self.contentImageView.frame.width
-                self.imageHeightConstraint.constant = width / image.width!.f * image.height!.f
-                return image.url
-            } else {
-                self.imageHeightConstraint.constant = 0
-                return nil
-            }
-        } ->> contentImageView.dynImageURL
+//        activity.avatarURL ->> userImageView.dynImageURL
+//        activity.username ->> usernameLabel
+//        activity.formattedDate ->> timestampLabel
+//        activity.text ->> contentTextLabel
+//        activity.quote ->> quoteLabel
+//        activity.serviceName ->> serviceNameLabel
+//        activity.image.map { [unowned self] image in
+//            if let image = image {
+//                let width = self.contentImageView.frame.width
+//                self.imageHeightConstraint.constant = width / image.width!.f * image.height!.f
+//                return image.url
+//            } else {
+//                self.imageHeightConstraint.constant = 0
+//                return nil
+//            }
+//        } ->> contentImageView.dynImageURL
     }
     
     override func prepareForReuse() {

@@ -5,19 +5,19 @@ import CoreData
 
 public enum ActivityKeys: String, Printable {
 
-    case action = "action"
-
     case caption = "caption"
 
     case image = "image"
+
+    case profileId = "profileId"
 
     case text = "text"
 
     case timestamp = "timestamp"
 
-    case videoUrl = "videoUrl"
+    case type = "type"
 
-    case service = "service"
+    case url = "url"
 
     case user = "user"
 
@@ -51,11 +51,6 @@ class _Activity: NSManagedObject {
     // MARK: - Properties
 
     @NSManaged public
-    var action: String?
-
-    // func validateAction(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
-
-    @NSManaged public
     var caption: String?
 
     // func validateCaption(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
@@ -66,26 +61,31 @@ class _Activity: NSManagedObject {
     // func validateImage(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged public
+    var profileId: String
+
+    // func validateProfileId(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged public
     var text: String?
 
     // func validateText(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged public
-    var timestamp: NSDate?
+    var timestamp: NSDate
 
     // func validateTimestamp(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged public
-    var videoUrl: String?
+    var type: String
 
-    // func validateVideoUrl(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
-
-    // MARK: - Relationships
+    // func validateType(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged public
-    var service: Service?
+    var url: String?
 
-    // func validateService(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateUrl(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    // MARK: - Relationships
 
     @NSManaged public
     var user: User?

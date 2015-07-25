@@ -18,3 +18,12 @@ public let CurrentDate: Dynamic<NSDate> = {
     }
     return dynamic
 }()
+
+
+internal func relativeTime(date: NSDate?, interval: NSTimeInterval = 1) -> PropertyOf<String> {
+    return PropertyOf("") {
+        timer(interval, onScheduler: QueueScheduler.mainQueueScheduler) |> map {
+            Formatters.formatRelativeDate(date, relativeTo: $0) ?? ""
+        }
+    }
+}
