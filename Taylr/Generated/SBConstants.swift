@@ -38,6 +38,7 @@ public enum TableViewCellreuseIdentifier : String {
     case ConnectionCell = "ConnectionCell"
     case ImageCell = "ImageCell"
     case ProfileCoverCell = "ProfileCoverCell"
+    case ProfileSelectorRowCell = "ProfileSelectorRowCell"
     case SettingsLabelCell = "SettingsLabelCell"
     case SettingsPhotoCell = "SettingsPhotoCell"
     case SettingsTextCell = "SettingsTextCell"

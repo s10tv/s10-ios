@@ -61,11 +61,12 @@ public struct UserViewModel {
         ) |> map {
             String(format: "%@ %@", $0, $1).nonBlank() ?? ""
         })
-        subscription = meteor.subscribe("userActivitiess", params: [user.documentID!])
-        activities = Activity
-            .by(ActivityKeys.user, value: user)
-            .sorted(by: ActivityKeys.timestamp.rawValue, ascending: false)
-            .results(Activity).map { ActivityViewModel($0) }
+        subscription = meteor.subscribe("userActivities", params: [user.documentID!])
+        activities = DynamicArray([])
+//            Activity
+//            .by(ActivityKeys.user, value: user)
+//            .sorted(by: ActivityKeys.timestamp.rawValue, ascending: false)
+//            .results(Activity).map { ActivityViewModel($0) }
         let array = DynamicArray<Profile>([])
         user.dyn(.connectedProfiles).producer
             |> map(Mapper<Profile>().mapArray)
