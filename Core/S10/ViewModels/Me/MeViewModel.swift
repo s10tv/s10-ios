@@ -17,10 +17,12 @@ public struct MeViewModel {
     public let username: PropertyOf<String>
     
     public init(meteor: MeteorService) {
-        let user = meteor.user.value!
         subscription = meteor.subscribe("me")
-        avatar = user.pAvatar()
-        displayName = user.pDisplayName()
-        username = user.pUsername()
+        avatar = meteor.user
+            |> flatMap { $0?.pAvatar() ?? PropertyOf(nil) }
+        displayName = meteor.user
+            |> flatMap { $0?.pDisplayName() ?? PropertyOf("") }
+        username = meteor.user
+            |> flatMap { $0?.pUsername() ?? PropertyOf("") }
     }
 }
