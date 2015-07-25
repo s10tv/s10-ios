@@ -26,8 +26,8 @@ class ProfileCoverCell : UITableViewCell {
         (vm.cover |> map { $0?.url }) ->> coverImageView.dynImageURL
         vm.displayName ->> nameLabel
         vm.username ->> usernameLabel
-//        viewModel.distance ->> distanceLabel
-//        viewModel.lastActive ->> activityLabel
+        vm.distance ->> distanceLabel
+        vm.lastActive ->> activityLabel
     }
     
     override func prepareForReuse() {

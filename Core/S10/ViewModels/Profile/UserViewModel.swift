@@ -29,9 +29,9 @@ public struct UserViewModel {
     public let about: PropertyOf<String>
     public let avatar: PropertyOf<Image?>
     public let cover: PropertyOf<Image?>
-//    public let distance: PropertyOf<String>
-//    public let lastActive: PropertyOf<String>
     public let displayName: PropertyOf<String>
+    public let distance: PropertyOf<String>
+    public let lastActive: PropertyOf<String>
     public let activities: DynamicArray<ActivityViewModel>
     public let profiles: DynamicArray<Profile>
     
@@ -46,6 +46,15 @@ public struct UserViewModel {
         about = user.dyn(.about).optional(String) |> map { $0 ?? "" }
         avatar = user.dyn(.avatar) |> map(Mapper<Image>().map)
         cover = user.dyn(.cover) |> map(Mapper<Image>().map)
+        distance = user.dyn(.distance).optional(Double) |> map {
+            $0.map { Formatters.formatDistance($0) + " away" } ?? ""
+        }
+        lastActive = PropertyOf("", combineLatest(
+            user.dyn(.lastActive).optional(NSDate).producer,
+            timer(1, onScheduler: QueueScheduler.mainQueueScheduler)
+        ) |> map {
+            Formatters.formatRelativeDate($0, relativeTo: $1) ?? ""
+        })
         displayName = PropertyOf("", combineLatest(
             self.firstName.producer,
             self.lastName.producer
