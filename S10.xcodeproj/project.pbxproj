@@ -220,6 +220,9 @@
 		F996C7221A81F1E000314FF8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C7211A81F1E000314FF8 /* AVFoundation.framework */; };
 		F996C7241A81F1E700314FF8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C7231A81F1E700314FF8 /* QuartzCore.framework */; };
 		F996C7261A81F1F200314FF8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C7251A81F1F200314FF8 /* OpenGLES.framework */; };
+		F9ABA2CE1B6412A00098B7E4 /* DiscoverIntegrationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9ABA2CD1B6412A00098B7E4 /* DiscoverIntegrationTest.swift */; };
+		F9ABA2D01B6412CF0098B7E4 /* IntegrationTestEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9ABA2CF1B6412CF0098B7E4 /* IntegrationTestEnvironment.swift */; };
+		F9ABA2D21B643EF30098B7E4 /* MeIntegrationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9ABA2D11B643EF30098B7E4 /* MeIntegrationTest.swift */; };
 		F9D545491B57988200A4661B /* InviteOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D545481B57988200A4661B /* InviteOperation.swift */; };
 /* End PBXBuildFile section */
 
@@ -470,6 +473,9 @@
 		F996C7211A81F1E000314FF8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F996C7231A81F1E700314FF8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		F996C7251A81F1F200314FF8 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
+		F9ABA2CD1B6412A00098B7E4 /* DiscoverIntegrationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverIntegrationTest.swift; sourceTree = "<group>"; };
+		F9ABA2CF1B6412CF0098B7E4 /* IntegrationTestEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationTestEnvironment.swift; sourceTree = "<group>"; };
+		F9ABA2D11B643EF30098B7E4 /* MeIntegrationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeIntegrationTest.swift; sourceTree = "<group>"; };
 		F9D545481B57988200A4661B /* InviteOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -913,6 +919,9 @@
 			isa = PBXGroup;
 			children = (
 				EA1047311B4E756200B1A76A /* Extensions */,
+				F9ABA2CF1B6412CF0098B7E4 /* IntegrationTestEnvironment.swift */,
+				F9ABA2CD1B6412A00098B7E4 /* DiscoverIntegrationTest.swift */,
+				F9ABA2D11B643EF30098B7E4 /* MeIntegrationTest.swift */,
 				EA9C16761B3759B700371B50 /* FormatterTests.swift */,
 				EA0C8C881B55DA2E00C2FB0A /* EditProfileTests.swift */,
 				EAF6709B1B32026F0025D7CF /* IntegrationTests.swift */,
@@ -1728,7 +1737,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9ABA2D21B643EF30098B7E4 /* MeIntegrationTest.swift in Sources */,
+				F9ABA2D01B6412CF0098B7E4 /* IntegrationTestEnvironment.swift in Sources */,
 				EA9C16771B3759B700371B50 /* FormatterTests.swift in Sources */,
+				F9ABA2CE1B6412A00098B7E4 /* DiscoverIntegrationTest.swift in Sources */,
 				EA1047281B4E3C1C00B1A76A /* RACPlayground.swift in Sources */,
 				EA2406241B5109D8003A73C3 /* VideoDownloadTests.swift in Sources */,
 				EA1047341B4E756200B1A76A /* MeteorServiceTestingExtension.swift in Sources */,

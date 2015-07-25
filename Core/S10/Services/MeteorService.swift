@@ -13,7 +13,7 @@ import SugarRecord
 import Meteor
 
 public class MeteorService : NSObject {
-    private let meteor: METCoreDataDDPClient
+    public let meteor: METCoreDataDDPClient
     private var mainContext : NSManagedObjectContext { return meteor.mainQueueManagedObjectContext }
     private let _user = MutableProperty<User?>(nil)
     
@@ -120,7 +120,7 @@ public class MeteorService : NSObject {
         ]])
     }
 
-    func loginWithPhoneNumber(phoneNumber: String) -> RACSignal {
+    public func loginWithPhoneNumber(phoneNumber: String) -> RACSignal {
         return login(method: "login", params: [[
             "phone-access": [
                 "id": phoneNumber,
@@ -128,7 +128,7 @@ public class MeteorService : NSObject {
         ]])
     }
 
-    func logout() -> RACSignal {
+    public func logout() -> RACSignal {
         meteor.account = nil // No reason to wait for network to clear account
         return meteor.logout()
     }

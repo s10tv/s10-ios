@@ -17,41 +17,14 @@ extension MeteorService {
         return self.meteor.call("dev/user/remove", [userId])
     }
 
-    func clearTestInvites() -> RACSignal {
-        return self.meteor.call("dev/invite/clear", [])
+    func testNewUser() -> RACSignal {
+        return self.meteor.call("testing/user/create", [])
     }
 
-    func clearConnections() -> RACSignal {
-        var signals = [RACSignal]()
-        Connection.all().fetch().each { item in
-            signals.append(self.meteor.call("/connections/remove", [["_id": item.documentID]]))
-        }
-
-        return RACSignal.merge(signals)
-    }
-
-    func clearVideos() -> RACSignal {
-        var signals = [RACSignal]()
-        Video.all().fetch().each { item in
-            signals.append(self.meteor.call("/videos/remove", [["_id": item.documentID]]))
-        }
-
-        return RACSignal.merge(signals)
-    }
-
-    func clearUsers() -> RACSignal {
-        var signals = [RACSignal]()
-        User.all().fetch().each { item in
-            signals.append(self.meteor.call("/users/remove", [["_id": item.documentID]]))
-        }
-
-        return RACSignal.merge(signals)
-    }
-
-    func newUser(phoneNumber: String) -> RACSignal {
+    func testLogin(userId: String) -> RACSignal {
         return self.meteor.call("login", [[
-            "phone-access": [
-                "id": phoneNumber,
+            "debug": [
+                "userId": userId,
             ]
         ]])
     }
