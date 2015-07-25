@@ -9,7 +9,6 @@
 import Foundation
 import FormatterKit
 import ReactiveCocoa
-import Bond
 
 public struct MessageViewModel {
     

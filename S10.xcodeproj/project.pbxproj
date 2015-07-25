@@ -62,7 +62,7 @@
 		EA2DC2A11B637FA50034434E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2921B637FA50034434E /* Message.swift */; };
 		EA2DC2A21B637FA50034434E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2931B637FA50034434E /* User.swift */; };
 		EA2DC2A61B63EF270034434E /* ReactiveUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2A51B63EF270034434E /* ReactiveUser.swift */; };
-		EA2DC2AA1B63F9F10034434E /* ConnectionListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2A91B63F9F10034434E /* ConnectionListViewModel.swift */; };
+		EA2DC2AA1B63F9F10034434E /* ChatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2A91B63F9F10034434E /* ChatsViewModel.swift */; };
 		EA2DC2AD1B63FBA60034434E /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2AC1B63FBA60034434E /* SignupViewModel.swift */; };
 		EA2DC2B01B63FC990034434E /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2AE1B63FC990034434E /* EditProfileViewModel.swift */; };
 		EA2DC2B11B63FC990034434E /* InviteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2AF1B63FC990034434E /* InviteViewModel.swift */; };
@@ -92,7 +92,6 @@
 		EA4216521B3E219000613EFA /* DigitsKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EA42164E1B3E219000613EFA /* DigitsKitResources.bundle */; };
 		EA4216531B3E219000613EFA /* TwitterCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA42164F1B3E219000613EFA /* TwitterCore.framework */; };
 		EA4216551B3E234B00613EFA /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA4216541B3E234B00613EFA /* Crashlytics.framework */; };
-		EA4756FE1B38F901002071D7 /* BondExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4756FD1B38F901002071D7 /* BondExtensions.swift */; };
 		EA4757131B392C19002071D7 /* PanInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47570C1B392C19002071D7 /* PanInteractor.swift */; };
 		EA4757141B392C19002071D7 /* ScrollTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47570D1B392C19002071D7 /* ScrollTransition.swift */; };
 		EA4757151B392C19002071D7 /* Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47570E1B392C19002071D7 /* Segue.swift */; };
@@ -314,7 +313,7 @@
 		EA2DC2921B637FA50034434E /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EA2DC2931B637FA50034434E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EA2DC2A51B63EF270034434E /* ReactiveUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveUser.swift; sourceTree = "<group>"; };
-		EA2DC2A91B63F9F10034434E /* ConnectionListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionListViewModel.swift; sourceTree = "<group>"; };
+		EA2DC2A91B63F9F10034434E /* ChatsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewModel.swift; sourceTree = "<group>"; };
 		EA2DC2AC1B63FBA60034434E /* SignupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		EA2DC2AE1B63FC990034434E /* EditProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
 		EA2DC2AF1B63FC990034434E /* InviteViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteViewModel.swift; sourceTree = "<group>"; };
@@ -343,7 +342,6 @@
 		EA42164E1B3E219000613EFA /* DigitsKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DigitsKitResources.bundle; path = DigitsKit.framework/Versions/A/Resources/DigitsKitResources.bundle; sourceTree = "<group>"; };
 		EA42164F1B3E219000613EFA /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
 		EA4216541B3E234B00613EFA /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
-		EA4756FD1B38F901002071D7 /* BondExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BondExtensions.swift; sourceTree = "<group>"; };
 		EA47570C1B392C19002071D7 /* PanInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanInteractor.swift; sourceTree = "<group>"; };
 		EA47570D1B392C19002071D7 /* ScrollTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollTransition.swift; sourceTree = "<group>"; };
 		EA47570E1B392C19002071D7 /* Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segue.swift; sourceTree = "<group>"; };
@@ -600,7 +598,7 @@
 		EA043F761B62EF5D0047BDCA /* Chats */ = {
 			isa = PBXGroup;
 			children = (
-				EA2DC2A91B63F9F10034434E /* ConnectionListViewModel.swift */,
+				EA2DC2A91B63F9F10034434E /* ChatsViewModel.swift */,
 				EA043F771B62EF5D0047BDCA /* ConnectionViewModels.swift */,
 				EA2DC2B41B63FDF50034434E /* ConversationViewModel.swift */,
 				EA043F781B62EF5D0047BDCA /* MessageViewModel.swift */,
@@ -620,9 +618,9 @@
 		EA043F851B62F07E0047BDCA /* Me */ = {
 			isa = PBXGroup;
 			children = (
-				EA2DC2AE1B63FC990034434E /* EditProfileViewModel.swift */,
-				EA2DC2AF1B63FC990034434E /* InviteViewModel.swift */,
 				EA043F861B62F07E0047BDCA /* MeViewModel.swift */,
+				EA2DC2AF1B63FC990034434E /* InviteViewModel.swift */,
+				EA2DC2AE1B63FC990034434E /* EditProfileViewModel.swift */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -1032,7 +1030,6 @@
 				EAF670561B31F9450025D7CF /* MeteorCDStack.swift */,
 				EAF670571B31F9450025D7CF /* MeteorExtension.swift */,
 				EAF670581B31F9450025D7CF /* SugarRecordExtension.swift */,
-				EA4756FD1B38F901002071D7 /* BondExtensions.swift */,
 				EA5CA5801B51292300284B04 /* RealmExtensions.swift */,
 			);
 			path = Data;
@@ -1614,7 +1611,7 @@
 				EA043F871B62F07E0047BDCA /* MeViewModel.swift in Sources */,
 				EAF670971B31FE6A0025D7CF /* Environment.swift in Sources */,
 				EA2DC26A1B637CB20034434E /* InviteTask.swift in Sources */,
-				EA2DC2AA1B63F9F10034434E /* ConnectionListViewModel.swift in Sources */,
+				EA2DC2AA1B63F9F10034434E /* ChatsViewModel.swift in Sources */,
 				EA043F7E1B62EF5D0047BDCA /* ConnectionViewModels.swift in Sources */,
 				EA043F791B62EF5D0047BDCA /* ActivityViewModel.swift in Sources */,
 				EA043F831B62EF8B0047BDCA /* IntegrationListViewModel.swift in Sources */,
@@ -1640,7 +1637,6 @@
 				EA5CA5811B51292300284B04 /* RealmExtensions.swift in Sources */,
 				EA2DC2961B637FA50034434E /* _Integration.swift in Sources */,
 				EAF670871B31F9450025D7CF /* GeometryExtensions.swift in Sources */,
-				EA4756FE1B38F901002071D7 /* BondExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

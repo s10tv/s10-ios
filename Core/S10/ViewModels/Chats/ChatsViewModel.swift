@@ -1,5 +1,5 @@
 //
-//  ConnectionListViewModel.swift
+//  ChatsViewModel.swift
 //  S10
 //
 //  Created by Tony Xiao on 7/25/15.
@@ -10,7 +10,7 @@ import Foundation
 import ReactiveCocoa
 import Bond
 
-public struct ConnectionListViewModel {
+public struct ChatsViewModel {
     let meteor: MeteorService
     public let contactsConnections: DynamicArray<ContactConnectionViewModel>
     public let newConnections: DynamicArray<NewConnectionViewModel>
