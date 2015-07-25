@@ -42,7 +42,7 @@ class VideoDownloadTests: AsyncTestCase {
                 fail($0)
             }
         }
-        waitForExpectationsWithTimeout(10, handler: nil)
+        waitForExpectationsWithTimeout(20, handler: nil)
     }
     
     func testDownloadFailure() {
