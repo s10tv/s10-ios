@@ -45,7 +45,7 @@ class IntegrationTestEnvironment : XCTestCase {
     }
 
     override func setUp() {
-        meteor = MeteorService(serverURL: NSURL("ws://localhost:3000/websocket"))
+        meteor = MeteorService(serverURL: NSURL("ws://s10-dev.herokuapp.com/websocket"))
         meteor.startup()
         taskService = TaskService(meteorService: meteor)
     }
