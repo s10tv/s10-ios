@@ -76,7 +76,7 @@ class ConversationViewController : BaseViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ProfileViewController {
-            vc.profileVM = ProfileInteractor(meteor: Meteor, user: conversationVM.recipient)
+            vc.vm = UserViewModel(meteor: Meteor, user: conversationVM.recipient)
         }
         if segue.matches(.ConversationPage) {
             pageVC = segue.destinationViewController as! UIPageViewController

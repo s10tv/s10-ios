@@ -16,23 +16,23 @@ import Core
 class ProfileViewController : BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var mainCell: ProfileMainCell!
-    var profileVM: ProfileInteractor!
+    var coverCell: ProfileCoverCell!
+    var vm: UserViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 500
         
-        let mainSection = DynamicArray([profileVM.user]).map { [unowned self] (user, index) -> UITableViewCell in
-            if self.mainCell == nil {
-                self.mainCell = self.tableView.dequeueReusableCellWithIdentifier(.ProfileMainCell,
-                forIndexPath: NSIndexPath(forRow: index, inSection: 0)) as! ProfileMainCell
-                self.mainCell.bindViewModel(self.profileVM)
+        let mainSection = DynamicArray([vm]).map { [unowned self] (user, index) -> UITableViewCell in
+            if self.coverCell == nil {
+                self.coverCell = self.tableView.dequeueReusableCellWithIdentifier(.ProfileCoverCell,
+                forIndexPath: NSIndexPath(forRow: index, inSection: 0)) as! ProfileCoverCell
+                self.coverCell.bind(self.vm)
             }
-            return self.mainCell
+            return self.coverCell
         }
-        let activitiesSection = profileVM.activities.map { [unowned self] (activity, index) -> UITableViewCell in
+        let activitiesSection = vm.activities.map { [unowned self] (activity, index) -> UITableViewCell in
             let cell = self.tableView.dequeueReusableCellWithIdentifier(.ImageCell,
                 forIndexPath: NSIndexPath(forRow: index, inSection: 2)) as! ActivityImageCell
             cell.activity = activity
@@ -57,7 +57,7 @@ class ProfileViewController : BaseViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ConversationViewController {
-            vc.conversationVM = ConversationInteractor(recipient: profileVM.user)
+            vc.conversationVM = ConversationInteractor(recipient: vm.user)
         }
     }
     
@@ -65,7 +65,7 @@ class ProfileViewController : BaseViewController {
     
     @IBAction func showMoreOptions(sender: AnyObject) {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        sheet.addAction(LS(.moreSheetReport, profileVM.user.firstName!), style: .Destructive) { _ in
+        sheet.addAction(LS(.moreSheetReport, vm.firstName.value), style: .Destructive) { _ in
             self.reportUser(sender)
         }
         sheet.addAction(LS(.moreSheetCancel), style: .Cancel)
@@ -78,7 +78,7 @@ class ProfileViewController : BaseViewController {
         alert.addAction(LS(.reportAlertCancel), style: .Cancel)
         alert.addAction(LS(.reportAlertConfirm), style: .Destructive) { _ in
             if let reportReason = (alert.textFields?[0] as? UITextField)?.text {
-                Meteor.reportUser(self.profileVM.user, reason: reportReason)
+                Meteor.reportUser(self.vm.user, reason: reportReason)
             }
         }
         presentViewController(alert)
@@ -95,12 +95,12 @@ extension ProfileViewController : UIScrollViewDelegate {
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let yOffset = scrollView.contentOffset.y
         if (yOffset < 0) {
-            let imageView = mainCell.coverImageView
+            let imageView = coverCell.coverImageView
             var frame = imageView.frame
             frame.origin.y = yOffset
-            frame.size.height = mainCell.coverImageHeight.constant + -yOffset
+            frame.size.height = coverCell.coverImageHeight.constant + -yOffset
             imageView.frame = frame
-            mainCell.coverOverlay.frame = frame
+            coverCell.coverOverlay.frame = frame
         }
     }
 }

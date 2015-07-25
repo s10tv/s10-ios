@@ -72,7 +72,7 @@ class MeViewController : UITableViewController {
             servicesVC = vc
         }
         if let vc = segue.destinationViewController as? ProfileViewController {
-            vc.profileVM = ProfileInteractor(meteor: Meteor, user: vm.currentUser)
+            vc.vm = UserViewModel(meteor: Meteor, user: vm.currentUser)
         }
         if let vc = segue.destinationViewController as? EditProfileViewController {
             vc.interactor = EditProfileInteractor(meteor: Meteor, user: vm.currentUser)

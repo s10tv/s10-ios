@@ -4,7 +4,7 @@ public enum CollectionViewCellreuseIdentifier : String {
     case CandidateCell = "CandidateCell"
     case CandidateService = "CandidateService"
     case IntegrationCell = "IntegrationCell"
-    case ServiceCell = "ServiceCell"
+    case ProfileSelectorCell = "ProfileSelectorCell"
 }
 
 public enum CollectionViewControllerStoryboardIdentifier : String {
@@ -37,7 +37,7 @@ public enum TableViewCellreuseIdentifier : String {
     case AvatarCoverCell = "AvatarCoverCell"
     case ConnectionCell = "ConnectionCell"
     case ImageCell = "ImageCell"
-    case ProfileMainCell = "ProfileMainCell"
+    case ProfileCoverCell = "ProfileCoverCell"
     case SettingsLabelCell = "SettingsLabelCell"
     case SettingsPhotoCell = "SettingsPhotoCell"
     case SettingsTextCell = "SettingsTextCell"
