@@ -42,40 +42,25 @@ public struct ConversationViewModel {
     public let avatar: PropertyOf<Image?>
     public let displayName: PropertyOf<String>
     public let displayStatus: PropertyOf<String>
-//    public let busy: PropertyOf<Bool>
-//    
-//    public let playback: PlaybackViewModel
-//    public let record: RecordViewModel
+    public let busy: PropertyOf<Bool>
 
+    public let playback: PlaybackViewModel
+    public let record: RecordViewModel
 
     init(recipient: User?) {
         let playback = PlaybackViewModel()
         let record = RecordViewModel()
         self.recipient = recipient
-        
-        
-        
-        let currentRecipient = playback.currentMessage
-            |> map { $0?.message.sender ?? recipient }
-        avatar = currentRecipient
-            |> flatMap { $0?.pAvatar() ?? PropertyOf(nil) }
-        displayName = currentRecipient
-            |> flatMap { $0?.pDisplayName() ?? PropertyOf("") }
-        displayStatus = playback.currentMessage
-            |> flatMap { $0?.formattedDate ?? PropertyOf("") }
-        
-        
-//
-//
-//        let ava: SignalProducer<Image?, NoError> = currentRecipient.producer
-//            |> flatMap(.Latest) {
-//                $0.pAvatar().producer
-//            }
-        
-        
-//        currentRecipient |>
-        
-        
+        self.playback = playback
+        self.record = record
+        avatar = playback._currentMessage
+            |> flatMap { $0?.message.sender.pAvatar() ?? PropertyOf(nil) }
+        displayName = playback._currentMessage
+            |> flatMap { $0?.message.sender.pDisplayName() ?? PropertyOf("") }
+        displayStatus = playback._currentMessage
+            |> flatMap { $0?.formattedDate ?? recipient?.pConversationStatus() ?? PropertyOf("") }
+        busy = playback._currentMessage
+            |> flatMap { $0?.message.sender.pConversationBusy() ?? PropertyOf(false) }
     }
     
     func reloadMessages() {
