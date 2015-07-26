@@ -18,11 +18,8 @@ public struct MeViewModel {
     
     public init(meteor: MeteorService) {
         subscription = meteor.subscribe("me")
-        avatar = meteor.user
-            |> flatMap { $0?.pAvatar() ?? PropertyOf(nil) }
-        displayName = meteor.user
-            |> flatMap { $0?.pDisplayName() ?? PropertyOf("") }
-        username = meteor.user
-            |> flatMap { $0?.pUsername() ?? PropertyOf("") }
+        avatar = meteor.user |> flatMap { $0.pAvatar() }
+        displayName = meteor.user |> flatMap(nilValue: "") { $0.pDisplayName() }
+        username = meteor.user |> flatMap(nilValue: "") { $0.pUsername() }
     }
 }
