@@ -36,6 +36,7 @@ public struct RecordViewModel {
 
 public struct ConversationViewModel {
 
+    let meteor: MeteorService
     let messages = DynamicArray<MessageViewModel>([])
     let recipient: User?
     
@@ -47,12 +48,11 @@ public struct ConversationViewModel {
     public let playback: PlaybackViewModel
     public let record: RecordViewModel
 
-    init(recipient: User?) {
-        let playback = PlaybackViewModel()
-        let record = RecordViewModel()
+    init(meteor: MeteorService, recipient: User?) {
+        self.meteor = meteor
         self.recipient = recipient
-        self.playback = playback
-        self.record = record
+        playback = PlaybackViewModel()
+        record = RecordViewModel()
         avatar = playback._currentMessage
             |> flatMap { $0.message.sender.pAvatar() }
         displayName = playback._currentMessage
