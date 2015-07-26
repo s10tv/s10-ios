@@ -13,12 +13,13 @@ import SugarRecord
 import Meteor
 
 public class MeteorService : NSObject {
-    public let meteor: METCoreDataDDPClient
+    public let meteor: METCoreDataDDPClient // TODO: MAKE PRIVATE
     private var mainContext : NSManagedObjectContext { return meteor.mainQueueManagedObjectContext }
     private let _user = MutableProperty<User?>(nil)
     
-    let account: PropertyOf<METAccount?>
-    let connectionStatus: PropertyOf<METDDPConnectionStatus>
+    public let account: PropertyOf<METAccount?>
+    public let connectionStatus: PropertyOf<METDDPConnectionStatus>
+    public let loggedIn: PropertyOf<Bool>
     let user: PropertyOf<User?>
 
     public init(serverURL: NSURL) {
@@ -28,6 +29,7 @@ public class MeteorService : NSObject {
         account = meteor.dyn("account").optional(METAccount) |> readonly
         connectionStatus = meteor.dyn("connectionStatus").force(METDDPConnectionStatus) |> readonly
         user = PropertyOf(nil, _user.producer |> observeOn(UIScheduler()))
+        loggedIn = user |> map { $0 != nil }
         super.init()
         meteor.delegate = self
         SugarRecord.addStack(MeteorCDStack(meteor: meteor))
@@ -38,7 +40,7 @@ public class MeteorService : NSObject {
         meteor.connect()
     }
 
-    // MARK: - Publications & Collections
+    // MARK: - Publications & Collections & RPC
 
     func collection(name: String) -> MeteorCollection {
         return MeteorCollection(meteor.database.collectionWithName(name))
@@ -47,6 +49,17 @@ public class MeteorService : NSObject {
     func subscribe(name: String, params: [AnyObject]? = nil) -> MeteorSubscription {
         let sub = meteor.addSubscriptionWithName(name, parameters: params)
         return MeteorSubscription(meteor: meteor, subscription: sub)
+    }
+    
+    public func call<T>(name: String, params: [AnyObject]? = nil) -> MeteorMethod<T> {
+        let promise = RACPromise<T, NSError>()
+        return MeteorMethod(stubValue: meteor.callMethodWithName(name, parameters: params) { res, error in
+            if let error = error {
+                promise.failure(error)
+            } else {
+                promise.success(res as! T)
+            }
+        }, future: promise.future)
     }
 
     // MARK: - Device
@@ -67,7 +80,7 @@ public class MeteorService : NSObject {
         ]])
     }
 
-    func updateDeviceLocation(location: CLLocation) -> RACSignal {
+    public func updateDeviceLocation(location: CLLocation) -> RACSignal {
         return meteor.call("device/update/location", [[
             "lat": location.coordinate.latitude,
             "long": location.coordinate.longitude,
@@ -90,13 +103,13 @@ public class MeteorService : NSObject {
         }
     }
 
-    func debugLoginWithUserId(userId: String) -> RACSignal {
+    public func debugLoginWithUserId(userId: String) -> RACSignal {
         return login(method: "login", params: [[
             "debug": ["userId": userId]
         ]])
     }
 
-    func loginWithDigits(#userId: String, authToken: String, authTokenSecret: String, phoneNumber: String) -> RACSignal {
+    public func loginWithDigits(#userId: String, authToken: String, authTokenSecret: String, phoneNumber: String) -> RACSignal {
         return login(method: "login", params: [[
             "digits": [
                 "userId": userId,
@@ -133,7 +146,7 @@ public class MeteorService : NSObject {
         return meteor.logout()
     }
 
-    func deleteAccount() -> RACSignal {
+    public func deleteAccount() -> RACSignal {
         return meteor.call("deleteAccount")
     }
 
