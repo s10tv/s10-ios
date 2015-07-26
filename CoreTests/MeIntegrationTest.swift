@@ -1,5 +1,5 @@
 //
-//  MeIntegrationTest FUCK YOU!
+//  MeIntegrationTest.swift
 //  S10
 //
 //  Created by Qiming Fang on 7/25/15.
