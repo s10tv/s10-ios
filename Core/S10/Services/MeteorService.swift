@@ -46,18 +46,18 @@ public class MeteorService : NSObject {
         return MeteorCollection(meteor.database.collectionWithName(name))
     }
     
-    func subscribe(name: String, params: [AnyObject]? = nil) -> MeteorSubscription {
+    func subscribe(name: String, _ params: AnyObject...) -> MeteorSubscription {
         let sub = meteor.addSubscriptionWithName(name, parameters: params)
         return MeteorSubscription(meteor: meteor, subscription: sub)
     }
     
-    public func call<T>(name: String, params: [AnyObject]? = nil) -> MeteorMethod<T> {
-        let promise = RACPromise<T, NSError>()
+    public func call(name: String, _ params: AnyObject...) -> MeteorMethod<AnyObject?> {
+        let promise = RACPromise<AnyObject?, NSError>()
         return MeteorMethod(stubValue: meteor.callMethodWithName(name, parameters: params) { res, error in
             if let error = error {
                 promise.failure(error)
             } else {
-                promise.success(res as! T)
+                promise.success(res)
             }
         }, future: promise.future)
     }

@@ -21,7 +21,7 @@ public struct ProfileViewModel {
     public let activities: DynamicArray<ActivityViewModel>
     
     init(meteor: MeteorService, user: User) {
-        subscription = meteor.subscribe("activities", params: [user])
+        subscription = meteor.subscribe("activities", user)
         currentFilter = MutableProperty(nil)
         coverVM = DynamicArray([ProfileCoverViewModel(user: user)])
         infoVM = toBondDynamicArray(currentFilter |> map {
