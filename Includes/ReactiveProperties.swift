@@ -62,7 +62,13 @@ func flatMap<P : PropertyType, P2 : PropertyType, T, U where P.Value == T, P2.Va
         return PropertyOf(transform(property.value).value) {
             property.producer |> flatMap(.Latest) { v in
                 let retainSourceProperty = property // Force retain source property
-                return transform(v).producer
+                return SignalProducer<U, NoError> { sink, disposable in
+                    let innerProperty = transform(v)
+                    disposable.addDisposable(innerProperty.producer.start(sink))
+                    disposable.addDisposable {
+                        let retainedProperty = innerProperty // Force retain inner property
+                    }
+                }
             }
         }
     }
@@ -73,7 +79,18 @@ func flatMap<P : PropertyType, P2 : PropertyType, T, U where P.Value == T?, P2.V
         return PropertyOf(property.value.map { transform($0).value } ?? nilValue) {
             property.producer |> flatMap(.Latest) { v in
                 let retainSourceProperty = property // Force retain source property
-                return v.map { transform($0).producer } ?? SignalProducer(value: nilValue)
+                return SignalProducer<U, NoError> { sink, disposable in
+                    if let v = v {
+                        let innerProperty = transform(v)
+                        disposable.addDisposable(innerProperty.producer.start(sink))
+                        disposable.addDisposable {
+                            let retainedProperty = innerProperty // Force retain inner property
+                        }
+                    } else {
+                        sendNext(sink, nilValue)
+                        sendCompleted(sink)
+                    }
+                }
             }
         }
     }
