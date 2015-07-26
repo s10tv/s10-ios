@@ -21,7 +21,7 @@ public struct SignupViewModel {
     public let username: MutableProperty<String>
     public let about: MutableProperty<String>
     
-    init(meteor: MeteorService) {
+    public init(meteor: MeteorService) {
         self.meteor = meteor
         self.user = meteor.user.value!
         firstName = user.pFirstName() |> mutable

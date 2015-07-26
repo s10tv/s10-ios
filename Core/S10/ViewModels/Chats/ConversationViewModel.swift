@@ -63,6 +63,7 @@ public struct ConversationViewModel {
             |> flatMap(nilValue: false) { $0.message.sender.pConversationBusy() }
     }
     
+    // BUGBUG: Never called thus no message will show up
     func reloadMessages() {
         let messages = Message
             // MASSIVE HACK ALERT: Ascending should be true but empirically
@@ -79,5 +80,10 @@ public struct ConversationViewModel {
         if self.messages.value != playableMessages {
             self.messages.setArray(playableMessages)
         }
+    }
+    
+    public func profileVM() -> ProfileViewModel {
+        let user = playback.currentMessage.value?.message.sender ?? recipient!
+        return ProfileViewModel(meteor: meteor, user: user)
     }
 }

@@ -32,4 +32,8 @@ public struct ChatsViewModel {
             .results(Connection)
             .map { NewConnectionViewModel(connection: $0) }
     }
+    
+    public func conversationVM(index: Int) -> ContactConnectionViewModel {
+        return ContactConnectionViewModel(connection: contactsConnections[index].connection)
+    }
 }

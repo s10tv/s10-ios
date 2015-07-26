@@ -21,9 +21,9 @@ public struct EditProfileViewModel {
     let meteor: MeteorService
     let user: User
     
-    public init(meteor: MeteorService) {
+    init(meteor: MeteorService, user: User) {
         self.meteor = meteor
-        self.user = meteor.user.value!
+        self.user = user
         firstName = user.pFirstName() |> mutable
         lastName = user.pLastName() |> mutable
         about = user.pAbout() |> mutable
