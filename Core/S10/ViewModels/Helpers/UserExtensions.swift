@@ -31,7 +31,7 @@ extension User {
         }
         return ""
     }
-    
+        
     func pDisplayName() -> PropertyOf<String> {
         return PropertyOf("", combineLatest(
             dyn(.firstName).producer,
@@ -71,6 +71,10 @@ extension User {
     
     func pAbout() -> PropertyOf<String> {
         return dyn(.about).optional(String) |> map { $0 ?? "" }
+    }
+    
+    func pConnectedProfiles() -> PropertyOf<[ConnectedProfile]> {
+        return dyn(.connectedProfiles_) |> map { Mapper<ConnectedProfile>().mapArray($0) ?? [] }
     }
     
     func pConversationBusy() -> PropertyOf<Bool> {

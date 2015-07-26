@@ -11,8 +11,24 @@ import Bond
 import ReactiveCocoa
 import ObjectMapper
 
+func viewModelForActivity(activity: Activity) -> ActivityViewModel? {
+    if let type = activity.type {
+        switch type {
+        case .Image:
+            return ActivityImageViewModel(activity: activity)
+        case .Text:
+            return nil
+        case .Link:
+            return nil
+        case .Video:
+            return nil
+        }
+    }
+    return nil
+}
+
 public protocol ActivityViewModel {
-    var avatar: Image { get }
+    var avatar: Image? { get }
     var displayName: String { get }
     var displayTime: PropertyOf<String> { get }
     var integrationName: String { get }
@@ -20,7 +36,7 @@ public protocol ActivityViewModel {
 }
 
 public struct ActivityImageViewModel : ActivityViewModel {
-    public let avatar: Image
+    public let avatar: Image? // TODO: Get a placeholder
     public let displayName: String
     public let displayTime: PropertyOf<String>
     public let integrationName: String
@@ -28,11 +44,12 @@ public struct ActivityImageViewModel : ActivityViewModel {
     
     public let image: Image
     
-    init(activity: Activity, profile: ConnectedProfile) {
-        avatar = profile.avatar
-        displayName = profile.displayName
+    init(activity: Activity) {
+        let profile = activity.profile()
+        avatar = profile?.avatar
+        displayName = profile?.displayName ?? ""
         displayTime = relativeTime(activity.timestamp)
-        integrationName = profile.displayId! // Need integrationName
+        integrationName = profile?.displayId ?? ""
         integrationColor = UIColor.blackColor()
         image = activity.image
     }

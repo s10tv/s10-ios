@@ -14,6 +14,16 @@ internal class Activity: _Activity {
         case Video = "video"
         case Link = "link"
     }
+    
+    func profile() -> User.ConnectedProfile? {
+        // TODO: Consider memoizing with a dictionary
+        for profile in (user?.connectedProfiles ?? []) {
+            if profile.id == profileId {
+                return profile
+            }
+        }
+        return nil
+    }
 
     var image: Image {
         return Image.mapper.map(image_)!
