@@ -54,13 +54,13 @@ public struct ConversationViewModel {
         self.playback = playback
         self.record = record
         avatar = playback._currentMessage
-            |> flatMap { $0?.message.sender.pAvatar() ?? PropertyOf(nil) }
+            |> flatMap { $0.message.sender.pAvatar() }
         displayName = playback._currentMessage
-            |> flatMap { $0?.message.sender.pDisplayName() ?? PropertyOf("") }
+            |> flatMap(nilValue: "") { $0.message.sender.pDisplayName() }
         displayStatus = playback._currentMessage
             |> flatMap { $0?.formattedDate ?? recipient?.pConversationStatus() ?? PropertyOf("") }
         busy = playback._currentMessage
-            |> flatMap { $0?.message.sender.pConversationBusy() ?? PropertyOf(false) }
+            |> flatMap(nilValue: false) { $0.message.sender.pConversationBusy() }
     }
     
     func reloadMessages() {

@@ -56,6 +56,7 @@ func map<P : PropertyType, T, U where P.Value == T>(transform: T -> U) -> P -> P
     }
 }
 
+
 func flatMap<P : PropertyType, P2 : PropertyType, T, U where P.Value == T, P2.Value == U>(transform: T -> P2) -> P -> PropertyOf<U> {
     return { property in
         return PropertyOf(transform(property.value).value) {
@@ -66,6 +67,22 @@ func flatMap<P : PropertyType, P2 : PropertyType, T, U where P.Value == T, P2.Va
         }
     }
 }
+
+func flatMap<P : PropertyType, P2 : PropertyType, T, U where P.Value == T?, P2.Value == U>(#nilValue: U, transform: T -> P2) -> P -> PropertyOf<U> {
+    return { property in
+        return PropertyOf(property.value.map { transform($0).value } ?? nilValue) {
+            property.producer |> flatMap(.Latest) { v in
+                let retainSourceProperty = property // Force retain source property
+                return v.map { transform($0).producer } ?? SignalProducer(value: nilValue)
+            }
+        }
+    }
+}
+
+func flatMap<P : PropertyType, P2 : PropertyType, T, U where P.Value == T?, P2.Value == U?>(transform: T -> P2) -> P -> PropertyOf<U?> {
+    return flatMap(nilValue: nil, transform)
+}
+
 
 /// `mutableProperty |> readonly` will render a read only version of any mutable property type
 /// Readonly is essentially an identity function

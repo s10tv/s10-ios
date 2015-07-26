@@ -40,14 +40,15 @@ class RACPlayground : AsyncTestCase {
         let testUser2 = TestUser()
         testUser.testUser.value = testUser2
         
-        let pName2 = p1 |> flatMap {
-            $0!.testUser
-        } |> flatMap {
-            $0!.testName
-        }
+        let pName2 = p1
+            |> flatMap { $0.testUser }
+            |> flatMap(nilValue: "nilVal") { $0.testName }
         expect(pName2.value) == "default"
         testUser2._testName.value = "nestedChange"
         expect(pName2.value) == "nestedChange"
+        
+        p1.value = nil
+        expect(pName2.value) == "nilVal"
         
     }
 
