@@ -7,39 +7,41 @@
 //
 
 import Foundation
-import SDWebImage
-import DateTools
-import Core
+import ReactiveCocoa
 import Bond
+import Core
 
 class ConnectionCell : UITableViewCell {
     
-    @IBOutlet weak var avatarView: UserAvatarView!
+    @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var badgeLabel: UILabel!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet var nameCenterConstraint: NSLayoutConstraint! // TODO: Why is strong needed?
     
-    var viewModel : ConversationInteractor? {
-        didSet { if let vm = viewModel { bindViewModel(vm) } }
-    }
-    
-    func bindViewModel(viewModel: ConversationInteractor) {
-        avatarView.user = viewModel.recipient
-        viewModel.recipient.displayName ->> nameLabel
-        viewModel.busy ->> spinner
-        viewModel.formattedStatus ->> subtitleLabel
-        viewModel.badgeText ->> badgeLabel
-        viewModel.formattedStatus.map { $0.length == 0 } ->> nameCenterConstraint.dynActive
+    func bindViewModel(vm: ContactConnectionViewModel) {
+        vm.avatar ->> avatarView.imageBond
+        vm.displayName ->> nameLabel
+        vm.busy ->> spinner
+        vm.statusMessage ->> subtitleLabel
+        vm.badgeText ->> badgeLabel
+        (vm.statusMessage |> map { $0.length == 0 }) ->> nameCenterConstraint.dynActive
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         avatarView.unbindDynImageURL()
-        unbindAll(nameLabel, subtitleLabel, badgeLabel)
+        [nameLabel, subtitleLabel, badgeLabel].each {
+            $0.designatedBond.unbindAll()
+        }
         badgeLabel.dynHidden.designatedBond.unbindAll()
         nameCenterConstraint.dynActive.designatedBond.unbindAll()
         spinner.designatedBond.unbindAll()
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        avatarView.makeCircular()
     }
 }

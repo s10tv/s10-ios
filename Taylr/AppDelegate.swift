@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReactiveCocoa
 import Meteor
 import SugarRecord
 import SwiftyUserDefaults
@@ -54,36 +55,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         
         // Setup global services
         let meteor = MeteorService(serverURL: env.serverURL)
+        let settings = Settings(meteor: meteor)
         _GlobalsContainer.instance = GlobalsContainer(env: env,
             meteorService: meteor,
-            accountService: AccountService(meteorService: meteor),
+            accountService: AccountService(meteorService: meteor, settings: settings),
             analyticsService: AnalyticsService(env: env),
-            upgradeService: UpgradeService(env: env, settings: meteor.settings),
+            upgradeService: UpgradeService(env: env, settings: settings),
             locationService: LocationService(meteorService: meteor),
-            taskService: TaskService(meteorService: meteor)
+            taskService: TaskService(meteorService: meteor),
+            settings: settings
         )
 
         // Startup the services
-//        Meteor.meta.bugfenderId = Bugfender.deviceIdentifier()
-        // HACK ALERT: Adding 0.1 second delay because for some reason when subscriptions are ready
-        // the value in the collections are not ready yet. Really need to figure out what the right timing
-        // is and get rid of these nasty 0.1 second delay hacks, but for 0.1.0 release it fixes the issue
-        Meteor.subscriptions.userData.signal.delay(0.5).deliverOnMainThread().subscribeCompleted {
-            if let currentUser = User.currentUser() {
-                Analytics.identifyUser(Meteor.userID!)
-                UD[.sMeteorUserId] ?= currentUser.documentID!
-                UD[.sUserDisplayName] = currentUser.displayName.value
-                Log.setUserId(currentUser.documentID!)
-                Log.setUserName(currentUser.displayName.value)
-            }
-        }
-        Meteor.subscriptions.settings.signal.delay(0.1).deliverOnMainThread().subscribeCompleted {
-            UD[.sUserEmail] = Meteor.settings.email
-            Log.setUserEmail(UD[.sUserEmail].string)
-        }
-        Meteor.subscriptions.metadata.signal.delay(0.1).deliverOnMainThread().subscribeCompleted {
-            Globals.upgradeService.promptForUpgradeIfNeeded()
-        }
+
+        Meteor.loggedIn.producer
+            |> takeWhile { $0 == false }
+            |> start(completed: {
+                Globals.upgradeService.promptForUpgradeIfNeeded()
+            })
         
         SugarRecordLogger.currentLevel = SugarRecordLogger.logLevelError
         
@@ -92,7 +81,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         
         // Let's launch!
         Meteor.startup()
-        Meteor.connectDevice(env)
+        Meteor.call("connectDevice", env.deviceId, [
+            "appId": env.appId,
+            "version": env.version,
+            "build": env.build
+        ])
         
         // Resume unfinished business
         Globals.taskService.resumeUploads()

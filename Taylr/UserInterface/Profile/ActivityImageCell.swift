@@ -52,7 +52,9 @@ class ActivityImageCell : UITableViewCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        unbindAll(usernameLabel, timestampLabel, contentTextLabel, quoteLabel)
+        [usernameLabel, timestampLabel, contentTextLabel, quoteLabel].each {
+            $0.designatedBond.unbindAll()
+        }
         [userImageView, contentImageView].each {
             $0.image = nil
             $0.unbindDynImageURL()

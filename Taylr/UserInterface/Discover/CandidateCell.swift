@@ -20,11 +20,11 @@ class CandidateCell : UICollectionViewCell {
     @IBOutlet weak var employerLabel: UILabel!
     @IBOutlet weak var serviceIconsView: UICollectionView!
     
-    func bindViewModel(viewModel: CandidateViewModel) {
-        viewModel.avatarURL ->> avatarView.dynImageURL
-        viewModel.displayName ->> nameLabel
-        viewModel.jobTitle ->> jobTitleLabel
-        viewModel.employer ->> employerLabel
+    func bindViewModel(vm: CandidateViewModel) {
+        avatarView.sd_setImageWithURL(vm.avatar?.url)
+        nameLabel.text = vm.displayName
+        jobTitleLabel.text = vm.jobTitle
+        employerLabel.text = vm.employer
         
         let cells = DynamicArray([
             UIImage(.icTwitterSmall),

@@ -23,11 +23,11 @@ public class MeteorSubscription {
     }
 }
 
-public class MeteorMethod<T> {
+public class MeteorMethod {
     public let stubValue: AnyObject?
-    public let future: RACFuture<T, NSError>
+    public let future: RACFuture<AnyObject?, NSError>
     
-    public init(stubValue: AnyObject?, future: RACFuture<T, NSError>) {
+    public init(stubValue: AnyObject?, future: RACFuture<AnyObject?, NSError>) {
         self.stubValue = stubValue
         self.future = future
     }

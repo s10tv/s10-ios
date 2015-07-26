@@ -21,13 +21,13 @@ class ProfileCoverCell : UITableViewCell {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var activityLabel: UILabel!
     
-    func bind(vm: UserViewModel) {
-        (vm.avatar |> map { $0?.url }) ->> avatarView.dynImageURL
-        (vm.cover |> map { $0?.url }) ->> coverImageView.dynImageURL
-        vm.displayName ->> nameLabel
-        vm.username ->> usernameLabel
-        vm.distance ->> distanceLabel
-        vm.lastActive ->> activityLabel
+    func bind(vm: ProfileCoverViewModel) {
+        vm.avatar ->> avatarView.imageBond
+        vm.cover ->> coverImageView.imageBond
+        vm.firstName ->> nameLabel // TODO: should we show username?
+        vm.lastName ->> usernameLabel
+        vm.proximity ->> distanceLabel
+        // TODO: Remove ActivityLabel
     }
     
     override func prepareForReuse() {
@@ -39,7 +39,7 @@ class ProfileCoverCell : UITableViewCell {
         super.awakeFromNib()
         avatarView.makeCircular()
         coverImageView.clipsToBounds = true
-        avatarView.dynPlaceholderImage = avatarView.image
+//        avatarView.dynPlaceholderImage = avatarView.image // TODO: Use a better avatar placeholder
         coverImageView.dynPlaceholderImage = coverImageView.image
     }
 }

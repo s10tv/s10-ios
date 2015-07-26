@@ -14,8 +14,8 @@ public struct EditProfileViewModel {
     public let lastName: MutableProperty<String>
     public let about: MutableProperty<String>
     public let username: PropertyOf<String>
-    public let avatarImage: PropertyOf<Image?>
-    public let coverImage: PropertyOf<Image?>
+    public let avatar: PropertyOf<Image?>
+    public let cover: PropertyOf<Image?>
     
     let operationQueue = NSOperationQueue()
     let meteor: MeteorService
@@ -28,8 +28,8 @@ public struct EditProfileViewModel {
         lastName = user.pLastName() |> mutable
         about = user.pAbout() |> mutable
         username = user.pUsername()
-        avatarImage = user.pAvatar()
-        coverImage = user.pCover()
+        avatar = user.pAvatar()
+        cover = user.pCover()
     }
     
     public func saveEdits() -> RACFuture<(), NSError> {

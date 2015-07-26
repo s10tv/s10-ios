@@ -15,10 +15,11 @@ class DiscoverViewController : BaseViewController {
     
     @IBOutlet weak var collectionView : UICollectionView!
     
-    var discoverVM : DiscoverInteractor!
+    let vm = DiscoverViewModel(meteor: Meteor)
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         
         let layout = CHTCollectionViewWaterfallLayout()
         layout.minimumColumnSpacing = 10
@@ -26,8 +27,7 @@ class DiscoverViewController : BaseViewController {
         layout.sectionInset = UIEdgeInsets(inset: 10)
         collectionView.collectionViewLayout = layout
 
-        discoverVM = DiscoverInteractor()
-        discoverVM.candidates.map { [unowned self] (vm, index) -> UICollectionViewCell in
+        vm.candidates.map { [unowned self] (vm, index) -> UICollectionViewCell in
             let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier(.CandidateCell,
                 forIndexPath: NSIndexPath(forItem: index, inSection: 0)) as! CandidateCell
             cell.bindViewModel(vm)
@@ -61,15 +61,14 @@ class DiscoverViewController : BaseViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let profileVC = segue.destinationViewController as? ProfileViewController,
             let indexPath = collectionView.indexPathsForSelectedItems().first as? NSIndexPath {
-            let user = discoverVM.candidates[indexPath.row].user
-            profileVC.vm = UserViewModel(meteor: Meteor, user: user)
+            profileVC.vm = vm.profileVM(indexPath.row)
         }
     }
 }
 
 extension DiscoverViewController : CHTCollectionViewDelegateWaterfallLayout {
     func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
-        if let avatar = discoverVM.candidates[indexPath.item].avatar.value,
+        if let avatar = vm.candidates[indexPath.item].avatar,
             let layout = collectionViewLayout as? CHTCollectionViewWaterfallLayout {
                 // TODO: Consider using prototype cell for this
                 let rowWidth = collectionView.frame.width - layout.sectionInset.left - layout.sectionInset.right

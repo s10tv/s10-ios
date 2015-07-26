@@ -33,7 +33,7 @@ public struct ChatsViewModel {
             .map { NewConnectionViewModel(connection: $0) }
     }
     
-    public func conversationVM(index: Int) -> ContactConnectionViewModel {
-        return ContactConnectionViewModel(connection: contactsConnections[index].connection)
+    public func conversationVM(index: Int) -> ConversationViewModel {
+        return ConversationViewModel(meteor: meteor, recipient: contactsConnections[index].connection.otherUser)
     }
 }

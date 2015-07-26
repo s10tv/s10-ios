@@ -19,14 +19,13 @@ class InviteViewController : UIViewController {
     @IBOutlet weak var lastNameField: JVFloatLabeledTextField!
     @IBOutlet weak var emailOrPhoneField: JVFloatLabeledTextField!
     
-    var interactor: InviteInteractor!
+    let vm = InviteViewModel(meteor: Meteor, taskService: Globals.taskService)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        interactor = InviteInteractor(meteor: Meteor, taskService: Globals.taskService)
-        interactor.firstName <->> firstNameField
-        interactor.lastName <->> lastNameField
-        interactor.emailOrPhone <->> emailOrPhoneField
+        vm.firstName <->> firstNameField
+        vm.lastName <->> lastNameField
+        vm.emailOrPhone <->> emailOrPhoneField
     }
     
     @IBAction func didPressSend(sender: AnyObject) {
@@ -46,7 +45,7 @@ extension InviteViewController : ProducerDelegate {
     
     func producer(producer: ProducerViewController, didProduceVideo url: NSURL) {
         producer.dismissViewController(animated: true)
-        interactor.sendInvite(url).on(UIScheduler(), success: {
+        vm.sendInvite(url).on(UIScheduler(), success: {
             PKHUD.showText("Sent Successfully!")
             PKHUD.hide(afterDelay: 0.25)
         }, failure: { error in

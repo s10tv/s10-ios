@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Meteor
 import ReactiveCocoa
 import Core
 
@@ -18,10 +17,10 @@ class UpgradeService : NSObject {
         return Int((env.build as NSString).intValue)
     }
     var needsHardUpgrade: Bool {
-        return buildNumber < (settings.hardMinBuild ?? 0)
+        return buildNumber < (settings.hardMinBuild.value ?? 0)
     }
     var needsSoftUpgrade: Bool {
-        return buildNumber < (settings.softMinBuild ?? 0)
+        return buildNumber < (settings.softMinBuild.value ?? 0)
     }
     // TODO: Need to figure out a better way to decide when is a bad time to prompt for upgrade
     var promptInProgress = false
@@ -32,7 +31,12 @@ class UpgradeService : NSObject {
         self.env = env
         self.settings = settings
         super.init()
-        NC.addObserver(self, selector: "databaseDidChange:", name: METDatabaseDidChangeNotification, object: nil)
+        combineLatest(
+            settings.softMinBuild.producer |> skip(1),
+            settings.hardMinBuild.producer |> skip(1)
+        ).start(next: { [weak self] _ in
+            self?.promptForUpgradeIfNeeded()
+        })
     }
     
     func promptForUpgradeIfNeeded() {
@@ -84,21 +88,5 @@ class UpgradeService : NSObject {
         }
         viewController.presentViewController(alert, animated: true)
         return signal
-    }
-    
-    // MARK: -
-    
-    func databaseDidChange(notification: NSNotification) {
-        if let changes = notification.userInfo?[METDatabaseChangesKey] as? METDatabaseChanges {
-            let pairs = Array(changes.affectedDocumentKeys())
-                .map { $0 as! METDocumentKey }
-                .map { ($0.collectionName, $0.documentID as! String) }
-            for (name, key) in pairs {
-                if name == "metadata" && (key == "softMinBuild" || key == "hardMinBuild") {
-                    self.promptForUpgradeIfNeeded()
-                    return
-                }
-            }
-        }
     }
 }

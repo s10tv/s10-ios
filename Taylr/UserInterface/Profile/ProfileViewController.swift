@@ -17,34 +17,34 @@ class ProfileViewController : BaseViewController {
 
     @IBOutlet weak var tableView: UITableView!
     var coverCell: ProfileCoverCell!
-    var vm: UserViewModel!
+    var vm: ProfileViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 500
         
-        let coverSection = DynamicArray([vm]).map { [unowned self] (user, index) -> UITableViewCell in
-            if self.coverCell == nil {
-                self.coverCell = self.tableView.dequeueReusableCellWithIdentifier(.ProfileCoverCell,
-                forIndexPath: NSIndexPath(forRow: index, inSection: 0)) as! ProfileCoverCell
-                self.coverCell.bind(self.vm)
-            }
-            return self.coverCell
-        }
-        let profilesSection = DynamicArray([vm]).map { [unowned self] (vm, index) -> UITableViewCell in
-            let cell = self.tableView.dequeueReusableCellWithIdentifier(.ProfileSelectorRowCell,
-                forIndexPath: NSIndexPath(forRow: index, inSection: 1)) as! ProfileSelectorRowCell
-            cell.bind(vm.profiles)
-            return cell
-        }
-        let activitiesSection = vm.activities.map { [unowned self] (activity, index) -> UITableViewCell in
-            let cell = self.tableView.dequeueReusableCellWithIdentifier(.ImageCell,
-                forIndexPath: NSIndexPath(forRow: index, inSection: 2)) as! ActivityImageCell
-            cell.activity = activity
-            return cell
-        }
-        DynamicArray([coverSection, profilesSection, activitiesSection]) ->> tableView
+//        let coverSection = DynamicArray([vm]).map { [unowned self] (user, index) -> UITableViewCell in
+//            if self.coverCell == nil {
+//                self.coverCell = self.tableView.dequeueReusableCellWithIdentifier(.ProfileCoverCell,
+//                forIndexPath: NSIndexPath(forRow: index, inSection: 0)) as! ProfileCoverCell
+//                self.coverCell.bind(self.vm)
+//            }
+//            return self.coverCell
+//        }
+//        let profilesSection = DynamicArray([vm]).map { [unowned self] (vm, index) -> UITableViewCell in
+//            let cell = self.tableView.dequeueReusableCellWithIdentifier(.ProfileSelectorRowCell,
+//                forIndexPath: NSIndexPath(forRow: index, inSection: 1)) as! ProfileSelectorRowCell
+//            cell.bind(vm.profiles)
+//            return cell
+//        }
+//        let activitiesSection = vm.activities.map { [unowned self] (activity, index) -> UITableViewCell in
+//            let cell = self.tableView.dequeueReusableCellWithIdentifier(.ImageCell,
+//                forIndexPath: NSIndexPath(forRow: index, inSection: 2)) as! ActivityImageCell
+//            cell.activity = activity
+//            return cell
+//        }
+//        DynamicArray([coverSection, profilesSection, activitiesSection]) ->> tableView
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -63,31 +63,31 @@ class ProfileViewController : BaseViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ConversationViewController {
-            vc.conversationVM = ConversationInteractor(recipient: vm.user)
+            vc.vm = vm.conversationVM()
         }
     }
     
     // MARK: - Action
     
     @IBAction func showMoreOptions(sender: AnyObject) {
-        let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        sheet.addAction(LS(.moreSheetReport, vm.firstName.value), style: .Destructive) { _ in
-            self.reportUser(sender)
-        }
-        sheet.addAction(LS(.moreSheetCancel), style: .Cancel)
-        presentViewController(sheet)
+//        let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+//        sheet.addAction(LS(.moreSheetReport, vm.coverVM.firstName.value), style: .Destructive) { _ in
+//            self.reportUser(sender)
+//        }
+//        sheet.addAction(LS(.moreSheetCancel), style: .Cancel)
+//        presentViewController(sheet)
     }
     
     @IBAction func reportUser(sender: AnyObject) {
-        let alert = UIAlertController(title: LS(.reportAlertTitle), message: LS(.reportAlertMessage), preferredStyle: .Alert)
-        alert.addTextFieldWithConfigurationHandler(nil)
-        alert.addAction(LS(.reportAlertCancel), style: .Cancel)
-        alert.addAction(LS(.reportAlertConfirm), style: .Destructive) { _ in
-            if let reportReason = (alert.textFields?[0] as? UITextField)?.text {
-                Meteor.reportUser(self.vm.user, reason: reportReason)
-            }
-        }
-        presentViewController(alert)
+//        let alert = UIAlertController(title: LS(.reportAlertTitle), message: LS(.reportAlertMessage), preferredStyle: .Alert)
+//        alert.addTextFieldWithConfigurationHandler(nil)
+//        alert.addAction(LS(.reportAlertCancel), style: .Cancel)
+//        alert.addAction(LS(.reportAlertConfirm), style: .Destructive) { _ in
+//            if let reportReason = (alert.textFields?[0] as? UITextField)?.text {
+//                Meteor.reportUser(self.vm.user, reason: reportReason)
+//            }
+//        }
+//        presentViewController(alert)
     }
 }
 

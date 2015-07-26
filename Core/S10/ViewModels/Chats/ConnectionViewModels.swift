@@ -28,7 +28,7 @@ public struct ContactConnectionViewModel : ConnectionViewModel {
     public let avatar: PropertyOf<Image?>
     public let displayName: PropertyOf<String>
     public let statusMessage: PropertyOf<String>
-    public let unreadCount: PropertyOf<Int>
+    public let badgeText: PropertyOf<String>
     public let busy: PropertyOf<Bool>
     
     init(connection: Connection) {
@@ -38,7 +38,7 @@ public struct ContactConnectionViewModel : ConnectionViewModel {
         displayName = user.pDisplayName()
         busy = connection.otherUser.pConversationBusy()
         statusMessage = connection.otherUser.pConversationStatus()
-        unreadCount = connection.dyn(.unreadCount).force(Int) |> readonly
+        badgeText = connection.dyn(.unreadCount).force(Int) |> map { "\($0)" }
     }
 }
 

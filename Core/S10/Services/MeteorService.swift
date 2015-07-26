@@ -51,7 +51,7 @@ public class MeteorService : NSObject {
         return MeteorSubscription(meteor: meteor, subscription: sub)
     }
     
-    public func call(name: String, _ params: AnyObject...) -> MeteorMethod<AnyObject?> {
+    public func call(name: String, _ params: AnyObject...) -> MeteorMethod {
         let promise = RACPromise<AnyObject?, NSError>()
         return MeteorMethod(stubValue: meteor.callMethodWithName(name, parameters: params) { res, error in
             if let error = error {
@@ -73,11 +73,11 @@ public class MeteorService : NSObject {
         ]])
     }
 
-    func updateDevicePush(apsEnv: String, pushToken: String? = nil) -> RACSignal {
-        return meteor.call("device/update/push", [[
+    public func updateDevicePush(apsEnv: String, pushToken: String? = nil) -> MeteorMethod {
+        return call("device/update/push", [
             "apsEnv": apsEnv,
             "pushToken": pushToken ?? NSNull()
-        ]])
+        ])
     }
 
     public func updateDeviceLocation(location: CLLocation) -> RACSignal {
@@ -152,7 +152,7 @@ public class MeteorService : NSObject {
 
     // MARK: - Services
 
-    func addService(serviceTypeId: String, accessToken: String) -> RACSignal {
+    public func addService(serviceTypeId: String, accessToken: String) -> RACSignal {
         return meteor.call("me/service/add", [serviceTypeId, accessToken])
     }
 

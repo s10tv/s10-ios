@@ -13,6 +13,7 @@ import Core
 
 var imageURLDynamicHandleUIImageView: UInt8 = 0;
 var placeholderimageDynamicHandleUIImageView: UInt8 = 0;
+var imageBondDynamicHandleUIImageView: UInt8 = 0;
 
 extension UIImageView {
     public var dynPlaceholderImage: UIImage? {
@@ -48,9 +49,21 @@ extension UIImageView {
         if let image = image?.image {
             self.image = image
         } else if let url = image?.url {
-            sd_setImageWithURL(url)
+            sd_setImageWithURL(url, placeholderImage: dynPlaceholderImage)
         } else {
             self.image = nil
+        }
+    }
+    
+    public var imageBond: Bond<Image?> {
+        if let d: AnyObject = objc_getAssociatedObject(self, &imageBondDynamicHandleUIImageView) {
+            return (d as? Bond<Image?>)!
+        } else {
+            let bond = Bond<Image?>() { [weak self] v in if let s = self {
+                s.bindImage(v)
+            }}
+            objc_setAssociatedObject(self, &imageBondDynamicHandleUIImageView, bond, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
+            return bond
         }
     }
 }

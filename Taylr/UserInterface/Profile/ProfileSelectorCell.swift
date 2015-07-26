@@ -13,9 +13,9 @@ class ProfileSelectorCell : UICollectionViewCell {
     
     @IBOutlet weak var iconView: UIImageView!
     
-    func bind(profile: UserViewModel.Profile) {
-        iconView.bindImage(profile.icon)
-    }
+//    func bind(profile: UserViewModel.Profile) {
+//        iconView.bindImage(profile.icon)
+//    }
     
     override func prepareForReuse() {
         super.prepareForReuse()

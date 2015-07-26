@@ -23,7 +23,7 @@ public struct DiscoverViewModel {
             .results(User).map { CandidateViewModel(user: $0) }
     }
     
-    func profileVM(index: Int) -> ProfileViewModel {
+    public func profileVM(index: Int) -> ProfileViewModel {
         return ProfileViewModel(meteor: meteor, user: candidates[index].user)
     }
 }

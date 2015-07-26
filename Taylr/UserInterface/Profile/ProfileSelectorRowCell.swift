@@ -14,14 +14,14 @@ class ProfileSelectorRowCell : UITableViewCell {
 
     @IBOutlet weak var collectionView: UICollectionView!
 
-    func bind(profiles: DynamicArray<UserViewModel.Profile>) {
-        profiles.map { [unowned self] (profile, index) -> UICollectionViewCell in
-            let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier(.ProfileSelectorCell,
-                forIndexPath: NSIndexPath(forRow: index, inSection: 0)) as! ProfileSelectorCell
-            cell.bind(profile)
-            return cell
-        } ->> collectionView
-    }
+//    func bind(profiles: DynamicArray<UserViewModel.Profile>) {
+//        profiles.map { [unowned self] (profile, index) -> UICollectionViewCell in
+//            let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier(.ProfileSelectorCell,
+//                forIndexPath: NSIndexPath(forRow: index, inSection: 0)) as! ProfileSelectorCell
+//            cell.bind(profile)
+//            return cell
+//        } ->> collectionView
+//    }
     
     override func prepareForReuse() {
         super.prepareForReuse()

@@ -12,6 +12,8 @@ import Bond
 import Box
 
 public struct ProfileViewModel {
+    let meteor: MeteorService
+    let user: User
     let subscription: MeteorSubscription
     let currentFilter: MutableProperty<User.ConnectedProfile?>
     let frc: NSFetchedResultsController
@@ -21,6 +23,8 @@ public struct ProfileViewModel {
     public let activities: DynamicArray<ActivityViewModel>
     
     init(meteor: MeteorService, user: User) {
+        self.meteor = meteor
+        self.user = user
         subscription = meteor.subscribe("activities", user)
         currentFilter = MutableProperty(nil)
         coverVM = DynamicArray([ProfileCoverViewModel(user: user)])
@@ -40,6 +44,10 @@ public struct ProfileViewModel {
     
     public func selectProfile(profileId: String) {
         // TODO: Implement filtering profile by id
+    }
+    
+    public func conversationVM() -> ConversationViewModel {
+        return ConversationViewModel(meteor: meteor, recipient: user)
     }
 }
 

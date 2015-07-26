@@ -13,22 +13,21 @@ import Bond
 class ChatsViewController : BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    var chatsVM : ChatsInteractor!
+    let vm: ChatsViewModel = ChatsViewModel(meteor: Meteor)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        chatsVM = ChatsInteractor()
-        chatsVM.connectionViewModels.map { [unowned self] (connectionVM, index) -> UITableViewCell in
+        vm.contactsConnections.map { [unowned self] (vm, index) -> UITableViewCell in
             let cell = self.tableView.dequeueReusableCellWithIdentifier(.ConnectionCell,
                 forIndexPath: NSIndexPath(forRow: index, inSection: 0)) as! ConnectionCell
-            cell.viewModel = connectionVM
+            cell.bindViewModel(vm)
             return cell
         } ->> tableView
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ConversationViewController {
-            vc.conversationVM = chatsVM.connectionViewModels[tableView.indexPathForSelectedRow()!.row]
+            vc.vm = vm.conversationVM(tableView.indexPathForSelectedRow()!.row)
         }
     }
     

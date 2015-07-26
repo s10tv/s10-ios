@@ -11,7 +11,7 @@ import Core
 
 class RootTabController : UITabBarController {
     
-    var interactor: RootInteractor!
+    let vm = RootViewModel(meteor: Meteor, taskService: Globals.taskService)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,8 +19,7 @@ class RootTabController : UITabBarController {
         navigationController?.navigationBarHidden = false
         delegate = self
 
-        interactor = RootInteractor()
-//        selectedIndex = 1 // Discover Scene
+        selectedIndex = 1 // Discover Scene
     }
     
     override func viewWillAppear(animated: Bool) {

@@ -64,7 +64,7 @@ public struct ConversationViewModel {
     }
     
     // BUGBUG: Never called thus no message will show up
-    func reloadMessages() {
+    public func reloadMessages() {
         let messages = Message
             // MASSIVE HACK ALERT: Ascending should be true but empirically
             // ascending = false seems to actually give us the correct result. FML.
