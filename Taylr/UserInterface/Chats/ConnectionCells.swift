@@ -12,7 +12,6 @@ import Bond
 import Core
 
 class ContactConnectionCell : UITableViewCell, BindableCell {
-    typealias ViewModel = ContactConnectionViewModel
     
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -49,19 +48,23 @@ class ContactConnectionCell : UITableViewCell, BindableCell {
 }
 
 class NewConnectionCell : UITableViewCell, BindableCell {
-    typealias ViewModel = NewConnectionViewModel
     
     @IBOutlet weak var avatarView: UIImageView!
-    
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var playIcon: UIImageView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var profileIconsView: UICollectionView!
  
-    func bind(vm: ViewModel) {
-        
+    func bind(vm: NewConnectionViewModel) {
+        vm.avatar ->> avatarView.imageBond
+        vm.displayName ->> nameLabel
+        vm.displayTime ->> timestampLabel
+//        playIcon //
+//        spinner //
+//        vm.profileIcons.map
     }
     
     static func reuseId() -> String {

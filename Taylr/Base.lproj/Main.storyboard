@@ -47,6 +47,7 @@
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
+            <string>Cabin-Regular</string>
         </mutableArray>
         <mutableArray key="TransatTextBlack.otf">
             <string>TransatTextBlack</string>
@@ -435,6 +436,12 @@
                                                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ZiW-n2-xbS">
                                                     <rect key="frame" x="572" y="50" width="20" height="20"/>
                                                 </activityIndicatorView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="5m ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xTq-x7-jCX">
+                                                    <rect key="frame" x="550" y="8" width="42" height="21"/>
+                                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="ak0-HZ-F5s">
                                                     <rect key="frame" x="115" y="81" width="449" height="20"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -469,12 +476,14 @@
                                                 <constraint firstItem="Xte-Hk-mjs" firstAttribute="top" secondItem="zro-AR-epX" secondAttribute="bottom" constant="3" id="4GX-NU-RNA"/>
                                                 <constraint firstItem="ZiW-n2-xbS" firstAttribute="trailing" secondItem="bS9-4F-8Pe" secondAttribute="trailingMargin" id="8GI-F2-3Sa"/>
                                                 <constraint firstItem="NiJ-6B-ywn" firstAttribute="leading" secondItem="CXi-7U-9Oq" secondAttribute="trailing" constant="15" id="AS2-uJ-CSC"/>
+                                                <constraint firstItem="xTq-x7-jCX" firstAttribute="top" secondItem="bS9-4F-8Pe" secondAttribute="topMargin" id="FZY-rY-TJ2"/>
                                                 <constraint firstItem="CXi-7U-9Oq" firstAttribute="leading" secondItem="bS9-4F-8Pe" secondAttribute="leading" id="GMk-Aw-WB3"/>
                                                 <constraint firstItem="ZiW-n2-xbS" firstAttribute="leading" secondItem="ak0-HZ-F5s" secondAttribute="trailing" constant="8" symbolic="YES" id="Hc7-SJ-oeW"/>
                                                 <constraint firstItem="Xte-Hk-mjs" firstAttribute="leading" secondItem="zro-AR-epX" secondAttribute="leading" id="ICH-4t-L9A"/>
                                                 <constraint firstAttribute="bottom" secondItem="CXi-7U-9Oq" secondAttribute="bottom" id="OKI-Ts-cpF"/>
                                                 <constraint firstItem="i8x-Z8-Zq6" firstAttribute="centerY" secondItem="ZiW-n2-xbS" secondAttribute="centerY" id="Uve-ep-kAD"/>
                                                 <constraint firstItem="zro-AR-epX" firstAttribute="leading" secondItem="NiJ-6B-ywn" secondAttribute="leading" id="c9P-Ih-YGR"/>
+                                                <constraint firstItem="xTq-x7-jCX" firstAttribute="trailing" secondItem="bS9-4F-8Pe" secondAttribute="trailingMargin" id="hfO-WY-wUg"/>
                                                 <constraint firstItem="CXi-7U-9Oq" firstAttribute="top" secondItem="bS9-4F-8Pe" secondAttribute="top" id="kzN-JV-Dtb"/>
                                                 <constraint firstItem="zro-AR-epX" firstAttribute="top" secondItem="NiJ-6B-ywn" secondAttribute="bottom" constant="3" id="nB6-d6-oTS"/>
                                                 <constraint firstItem="ak0-HZ-F5s" firstAttribute="top" secondItem="Xte-Hk-mjs" secondAttribute="bottom" constant="5" id="nbx-wJ-vyY"/>
@@ -491,6 +500,7 @@
                                             <outlet property="profileIconsView" destination="ak0-HZ-F5s" id="EI4-QG-Ex7"/>
                                             <outlet property="spinner" destination="ZiW-n2-xbS" id="dqM-6O-FYf"/>
                                             <outlet property="subtitleLabel" destination="Xte-Hk-mjs" id="xeY-vY-qCs"/>
+                                            <outlet property="timestampLabel" destination="xTq-x7-jCX" id="jd9-ph-yNz"/>
                                             <outlet property="titleLabel" destination="zro-AR-epX" id="qIL-tr-qg6"/>
                                         </connections>
                                     </tableViewCell>

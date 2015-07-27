@@ -48,5 +48,11 @@ class ChatsViewController : BaseViewController {
     
     @IBAction func didSelectSegment(sender: UISegmentedControl) {
         vm.currentSection.value = ChatsViewModel.Section(rawValue: sender.selectedSegmentIndex)!
+        switch vm.currentSection.value {
+        case .Contacts:
+            tableView.rowHeight = 76
+        case .New:
+            tableView.rowHeight = 120
+        }
     }
 }
