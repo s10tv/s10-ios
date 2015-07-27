@@ -26,17 +26,15 @@ class CandidateCell : UICollectionViewCell {
         jobTitleLabel.text = vm.jobTitle
         employerLabel.text = vm.employer
         
-        let cells = DynamicArray([
+        let array = DynamicArray([
             UIImage(.icTwitterSmall),
             UIImage(.icGithubSmall),
             UIImage(.icLinkedinSmall),
             UIImage(.icInstagramSmall)
-        ]).map { (image, index) -> UICollectionViewCell in
-            let cell = self.serviceIconsView.dequeueReusableCellWithReuseIdentifier("CandidateService", forIndexPath: NSIndexPath(forItem: index, inSection: 0)) as! CandidateServiceCell
-            cell.imageView.image = image
-            return cell
-        }
-        cells ->> serviceIconsView
+        ])
+        array.map(
+            serviceIconsView.factory(CandidateServiceCell)(section: 0)
+        ) ->> serviceIconsView
     }
     
     override func prepareForReuse() {
