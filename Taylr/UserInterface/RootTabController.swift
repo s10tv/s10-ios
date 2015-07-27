@@ -25,11 +25,13 @@ class RootTabController : UITabBarController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.title = selectedViewController?.title
+        navigationItem.titleView = selectedViewController?.navigationItem.titleView
     }
 }
 
 extension RootTabController : UITabBarControllerDelegate {
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
         tabBarController.navigationItem.title = viewController.title
+        tabBarController.navigationItem.titleView = viewController.navigationItem.titleView
     }
 }
