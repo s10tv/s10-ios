@@ -27,12 +27,7 @@ class DiscoverViewController : BaseViewController {
         layout.sectionInset = UIEdgeInsets(inset: 10)
         collectionView.collectionViewLayout = layout
 
-        vm.candidates.map { [unowned self] (vm, index) -> UICollectionViewCell in
-            let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier(.CandidateCell,
-                forIndexPath: NSIndexPath(forItem: index, inSection: 0)) as! CandidateCell
-            cell.bindViewModel(vm)
-            return cell
-        } ->> collectionView
+        vm.candidates.map(collectionView.factory(CandidateCell)) ->> collectionView
     }
     
     override func viewWillAppear(animated: Bool) {

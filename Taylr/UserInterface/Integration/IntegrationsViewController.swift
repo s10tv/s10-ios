@@ -27,11 +27,7 @@ class IntegrationsViewController : UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        vm.integrations.map { (vm, index) -> UICollectionViewCell in
-            let cell = self.collectionView!.dequeueReusableCellWithReuseIdentifier(.IntegrationCell, forIndexPath: NSIndexPath(forItem: index, inSection: 0)) as! IntegrationCell
-            cell.bind(vm)
-            return cell
-        } ->> collectionView!
+        vm.integrations.map(collectionView!.factory(IntegrationCell)) ->> collectionView!
     }
     
     override func viewDidLayoutSubviews() {

@@ -27,6 +27,7 @@ class ProfileCoverCell : UITableViewCell {
         vm.firstName ->> nameLabel // TODO: should we show username?
         vm.lastName ->> usernameLabel
         vm.proximity ->> proximityLabel
+        
         vm.selectorImages.map { [unowned self] (image, index) -> UICollectionViewCell in
             let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier(.ProfileSelectorCell,
                 forIndexPath: NSIndexPath(forItem: index, inSection: 0)) as! ProfileSelectorCell

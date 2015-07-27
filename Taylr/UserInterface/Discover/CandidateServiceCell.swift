@@ -18,6 +18,6 @@ class CandidateServiceCell : UICollectionViewCell, BindableCell {
     }
     
     static func reuseId() -> String {
-        return CollectionViewCellreuseIdentifier.CandidateService.rawValue
+        return reuseId(.CandidateService)
     }
 }

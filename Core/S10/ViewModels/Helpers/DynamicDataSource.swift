@@ -16,7 +16,7 @@ public protocol BindableCell {
 }
 
 extension UITableView {
-    public func factory<C: BindableCell, VM where C.ViewModel == VM>(cell: C.Type)(section: Int) -> (VM, Int) -> UITableViewCell {
+    public func factory<C: BindableCell, VM where C.ViewModel == VM>(cell: C.Type, section: Int = 0) -> (VM, Int) -> UITableViewCell {
         let reuseId = cell.reuseId()
         return { [unowned self] vm, row in
             let cell = self.dequeueReusableCellWithIdentifier(reuseId, forIndexPath: NSIndexPath(forRow: row, inSection: section)) as! UITableViewCell
@@ -27,7 +27,7 @@ extension UITableView {
 }
 
 extension UICollectionView {
-    public func factory<C: BindableCell, VM where C.ViewModel == VM>(cell: C.Type)(section: Int) -> (VM, Int) -> UICollectionViewCell {
+    public func factory<C: BindableCell, VM where C.ViewModel == VM>(cell: C.Type, section: Int = 0) -> (VM, Int) -> UICollectionViewCell {
         let reuseId = cell.reuseId()
         return { [unowned self] vm, item in
             let cell = self.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: NSIndexPath(forItem: item, inSection: section)) as! UICollectionViewCell

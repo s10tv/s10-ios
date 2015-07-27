@@ -12,7 +12,8 @@ import Core
 import Bond
 import ReactiveCocoa
 
-class CandidateCell : UICollectionViewCell {
+class CandidateCell : UICollectionViewCell, BindableCell {
+    typealias ViewModel = CandidateViewModel
     
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -20,7 +21,7 @@ class CandidateCell : UICollectionViewCell {
     @IBOutlet weak var employerLabel: UILabel!
     @IBOutlet weak var serviceIconsView: UICollectionView!
     
-    func bindViewModel(vm: CandidateViewModel) {
+    func bind(vm: CandidateViewModel) {
         avatarView.sd_setImageWithURL(vm.avatar?.url)
         nameLabel.text = vm.displayName
         jobTitleLabel.text = vm.jobTitle
@@ -33,7 +34,7 @@ class CandidateCell : UICollectionViewCell {
             UIImage(.icInstagramSmall)
         ])
         array.map(
-            serviceIconsView.factory(CandidateServiceCell)(section: 0)
+            serviceIconsView.factory(CandidateServiceCell)
         ) ->> serviceIconsView
     }
     
@@ -54,5 +55,9 @@ class CandidateCell : UICollectionViewCell {
         /// Improve shadow performance, especially when scrolling
         layer.shouldRasterize = true
         layer.rasterizationScale = UIScreen.mainScreen().scale
+    }
+    
+    static func reuseId() -> String {
+        return reuseId(.CandidateCell)
     }
 }

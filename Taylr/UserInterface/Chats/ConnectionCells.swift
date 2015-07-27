@@ -11,7 +11,8 @@ import ReactiveCocoa
 import Bond
 import Core
 
-class ContactConnectionCell : UITableViewCell {
+class ContactConnectionCell : UITableViewCell, BindableCell {
+    typealias ViewModel = ContactConnectionViewModel
     
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -19,7 +20,7 @@ class ContactConnectionCell : UITableViewCell {
     @IBOutlet weak var badgeLabel: UILabel!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
-    func bindViewModel(vm: ContactConnectionViewModel) {
+    func bind(vm: ContactConnectionViewModel) {
         vm.avatar ->> avatarView.imageBond
         vm.displayName ->> nameLabel
         vm.busy ->> spinner
@@ -41,9 +42,14 @@ class ContactConnectionCell : UITableViewCell {
         super.awakeFromNib()
         avatarView.makeCircular()
     }
+    
+    static func reuseId() -> String {
+        return reuseId(.ContactConnectionCell)
+    }
 }
 
-class NewConnectionCell : UITableViewCell {
+class NewConnectionCell : UITableViewCell, BindableCell {
+    typealias ViewModel = NewConnectionViewModel
     
     @IBOutlet weak var avatarView: UIImageView!
     
@@ -53,6 +59,12 @@ class NewConnectionCell : UITableViewCell {
     @IBOutlet weak var playIcon: UIImageView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var profileIconsView: UICollectionView!
+ 
+    func bind(vm: ViewModel) {
+        
+    }
     
-    
+    static func reuseId() -> String {
+        return reuseId(.NewConnectionCell)
+    }
 }

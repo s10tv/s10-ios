@@ -20,11 +20,17 @@ class ChatsViewController : BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        vm.connections.map { [unowned self] (vm, index) -> UITableViewCell in
-            let cell = self.tableView.dequeueReusableCellWithIdentifier(.ContactConnectionCell,
-                forIndexPath: NSIndexPath(forRow: index, inSection: 0)) as! ContactConnectionCell
-            cell.bindViewModel(vm as! ContactConnectionViewModel)
-            return cell
+        let contactCellFactory = tableView.factory(ContactConnectionCell)
+        let newCellFactory = tableView.factory(NewConnectionCell)
+        vm.connections.map { (vm, index) -> UITableViewCell in
+            switch vm {
+            case let vm as ContactConnectionViewModel:
+                return contactCellFactory(vm, index)
+            case let vm as NewConnectionViewModel:
+                return newCellFactory(vm, index)
+            default:
+                fatalError("Unexpected cell type")
+            }
         } ->> tableView
     }
 
