@@ -24,40 +24,37 @@ class ProfileViewController : BaseViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 500
         
-        let coverSection = vm.coverVM.map { [unowned self] (coverVM, index) -> UITableViewCell in
+        let coverFactory = tableView.factory(ProfileCoverCell)
+        let taylrProfileFactory = tableView.factory(TaylrProfileInfoCell.self, section: 1)
+        let connectedProfileFactory = tableView.factory(ConnectedProfileInfoCell.self, section: 1)
+        let imageCellFactory = tableView.factory(ActivityImageCell.self, section: 2)
+
+        let coverSection = vm.coverVM.map { [unowned self] (vm, index) -> UITableViewCell in
             if self.coverCell == nil {
-                self.coverCell = self.tableView.dequeueReusableCellWithIdentifier(.ProfileCoverCell,
-                forIndexPath: NSIndexPath(forRow: index, inSection: 0)) as! ProfileCoverCell
-                self.coverCell.bind(coverVM)
+                self.coverCell = coverFactory(vm, index) as! ProfileCoverCell
             }
             return self.coverCell
         }
-        let infoSection = vm.infoVM.map { [unowned self] (infoVM, index) -> UITableViewCell in
-            if let infoVM = infoVM as? TaylrProfileInfoViewModel {
-                let cell = self.tableView.dequeueReusableCellWithIdentifier(.TaylrProfileInfoCell,
-                                forIndexPath: NSIndexPath(forRow: index, inSection: 1)) as! TaylrProfileInfoCell
-                cell.bind(infoVM)
-                return cell
+        let infoSection = vm.infoVM.map { (vm, index) -> UITableViewCell in
+            switch vm {
+            case let vm as TaylrProfileInfoViewModel:
+                return taylrProfileFactory(vm, index)
+            case let vm as ConnectedProfileInfoViewModel:
+                return connectedProfileFactory(vm, index)
+            default:
+                fatalError("Unexpected cell type")
             }
-            if let infoVM = infoVM as? ConnectedProfileInfoViewModel {
-//                let cell = self.tableView.dequeueReusableCellWithIdentifier(.TaylrProfileInfoCell,
-//                    forIndexPath: NSIndexPath(forRow: index, inSection: 1)) as! TaylrProfileInfoCell
-//                cell.bind(infoVM)
-//                return cell
-            }
-            fatalError("Unexpected infoVM type")
-//            let cell = self.tableView.dequeueReusableCellWithIdentifier(.Profile,
-//                forIndexPath: NSIndexPath(forRow: index, inSection: 1)) as! ProfileSelectorRowCell
-//            cell.bind(vm.profiles)
-//            return cell
         }
-//        let activitiesSection = vm.activities.map { [unowned self] (activity, index) -> UITableViewCell in
-//            let cell = self.tableView.dequeueReusableCellWithIdentifier(.ImageCell,
-//                forIndexPath: NSIndexPath(forRow: index, inSection: 2)) as! ActivityImageCell
-//            cell.activity = activity
-//            return cell
-//        }
-        DynamicArray([coverSection, infoSection/*, activitiesSection*/]) ->> tableView
+        
+        let activitiesSection = vm.activities.map { (vm, index) -> UITableViewCell in
+            switch vm {
+            case let vm as ActivityImageViewModel:
+                return imageCellFactory(vm, index)
+            default:
+                fatalError("Unexpected cell type")
+            }
+        }
+        DynamicArray([coverSection, infoSection, activitiesSection]) ->> tableView
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -105,7 +102,6 @@ class ProfileViewController : BaseViewController {
 }
 
 extension ProfileViewController : UITableViewDelegate {
-    
 }
 
 // MARK: ScrollView Delegate
@@ -114,10 +110,11 @@ extension ProfileViewController : UIScrollViewDelegate {
     func scrollViewDidScroll(scrollView: UIScrollView) {
         let yOffset = scrollView.contentOffset.y
         if (yOffset < 0) {
+            let originalHeight = coverCell.frame.height - coverCell.collectionView.frame.height
             let imageView = coverCell.coverImageView
             var frame = imageView.frame
             frame.origin.y = yOffset
-            frame.size.height = coverCell.coverImageHeight.constant + -yOffset
+            frame.size.height = originalHeight + -yOffset
             imageView.frame = frame
             coverCell.coverOverlay.frame = frame
         }

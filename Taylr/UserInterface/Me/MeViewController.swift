@@ -35,10 +35,10 @@ class MeViewController : UITableViewController {
         
         
         // Proactively improve shadow performance
-        [servicesContainer, inviteContainer].each {
-            $0.layer.shouldRasterize = true
-            $0.layer.rasterizationScale = UIScreen.mainScreen().scale
-        }
+//        [servicesContainer, inviteContainer].each {
+//            $0.layer.shouldRasterize = true
+//            $0.layer.rasterizationScale = UIScreen.mainScreen().scale
+//        }
 
         // Observe collectionView height and reload table view cell height whenever appropriate
         servicesVC.collectionView!.dyn("contentSize").force(NSValue).producer

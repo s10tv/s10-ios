@@ -65,7 +65,7 @@ public struct ProfileCoverViewModel {
         avatar = user.pAvatar()
         cover = user.pCover()
         selectorImages = toBondDynamicArray(
-            user.pConnectedProfiles() |> map { $0.map { $0.avatar } }
+            user.pConnectedProfiles() |> map { $0.map { $0.icon } }
         )
         proximity = PropertyOf("", combineLatest(
             user.dyn(.distance).optional(Double).producer,

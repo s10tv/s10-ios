@@ -12,7 +12,9 @@ import ReactiveCocoa
 import ObjectMapper
 
 func viewModelForActivity(activity: Activity) -> ActivityViewModel? {
+//    return nil // TODO: Invalid server data causes a crash, what to do?
     if let type = activity.type {
+        return ActivityImageViewModel(activity: activity)
         switch type {
         case .Image:
             return ActivityImageViewModel(activity: activity)
@@ -43,6 +45,7 @@ public struct ActivityImageViewModel : ActivityViewModel {
     public let integrationColor: UIColor
     
     public let image: Image
+    public let text: String?
     
     init(activity: Activity) {
         let profile = activity.profile()
@@ -50,8 +53,9 @@ public struct ActivityImageViewModel : ActivityViewModel {
         displayName = profile?.displayName ?? ""
         displayTime = relativeTime(activity.timestamp)
         integrationName = profile?.displayId ?? ""
-        integrationColor = UIColor.blackColor()
+        integrationColor = UIColor.whiteColor()
         image = activity.image
+        text = activity.text
     }
 }
 

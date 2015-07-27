@@ -11,8 +11,7 @@ import ReactiveCocoa
 import Core
 import Bond
 
-class ProfileCoverCell : UITableViewCell {
-    @IBOutlet weak var coverImageHeight: NSLayoutConstraint!
+class ProfileCoverCell : UITableViewCell, BindableCell {
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var coverOverlay: UIView!
     @IBOutlet weak var avatarView: UIImageView!
@@ -27,13 +26,7 @@ class ProfileCoverCell : UITableViewCell {
         vm.firstName ->> nameLabel // TODO: should we show username?
         vm.lastName ->> usernameLabel
         vm.proximity ->> proximityLabel
-        
-        vm.selectorImages.map { [unowned self] (image, index) -> UICollectionViewCell in
-            let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier(.ProfileSelectorCell,
-                forIndexPath: NSIndexPath(forItem: index, inSection: 0)) as! ProfileSelectorCell
-            cell.iconView.bindImage(image)
-            return cell
-        }
+        vm.selectorImages.map(collectionView.factory(ProfileSelectorCell)) ->> collectionView
     }
     
     override func prepareForReuse() {
@@ -48,14 +41,22 @@ class ProfileCoverCell : UITableViewCell {
 //        avatarView.dynPlaceholderImage = avatarView.image // TODO: Use a better avatar placeholder
         coverImageView.dynPlaceholderImage = coverImageView.image
     }
+    
+    static func reuseId() -> String {
+        return reuseId(.ProfileCoverCell)
+    }
 }
 
-class ProfileSelectorCell : UICollectionViewCell {
+class ProfileSelectorCell : UICollectionViewCell, BindableCell {
+    typealias ViewModel = Image
     
     @IBOutlet weak var iconView: UIImageView!
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        iconView.bindImage(nil)
+    func bind(vm: ViewModel) {
+        iconView.bindImage(vm)
+    }
+    
+    static func reuseId() -> String {
+        return reuseId(.ProfileSelectorCell)
     }
 }

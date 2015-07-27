@@ -10,7 +10,7 @@ import Foundation
 import Bond
 import Core
 
-class TaylrProfileInfoCell : UITableViewCell {
+class TaylrProfileInfoCell : UITableViewCell, BindableCell {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var aboutLabel: UILabel!
@@ -20,8 +20,19 @@ class TaylrProfileInfoCell : UITableViewCell {
         vm.employer ->> subtitleLabel
         vm.about ->> aboutLabel
     }
+    
+    static func reuseId() -> String {
+        return reuseId(.TaylrProfileInfoCell)
+    }
 }
 
-class ConnectedProfileInfoCell : UITableViewCell {
+class ConnectedProfileInfoCell : UITableViewCell, BindableCell {
     
+    func bind(vm: ConnectedProfileInfoViewModel) {
+        
+    }
+    
+    static func reuseId() -> String {
+        return ""
+    }
 }

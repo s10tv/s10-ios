@@ -31,9 +31,9 @@ public enum SegueIdentifier : String {
 }
 
 public enum TableViewCellreuseIdentifier : String {
+    case ActivityImageCell = "ActivityImageCell"
     case AvatarCoverCell = "AvatarCoverCell"
     case ContactConnectionCell = "ContactConnectionCell"
-    case ImageCell = "ImageCell"
     case NewConnectionCell = "NewConnectionCell"
     case ProfileCoverCell = "ProfileCoverCell"
     case TaylrProfileInfoCell = "TaylrProfileInfoCell"
