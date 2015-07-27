@@ -27,7 +27,8 @@ public class MeteorService : NSObject {
         let model = NSManagedObjectModel.mergedModelFromBundles([bundle as AnyObject])
         meteor = METCoreDataDDPClient(serverURL: serverURL, account: nil, managedObjectModel: model)
         account = meteor.dyn("account").optional(METAccount) |> readonly
-        connectionStatus = meteor.dyn("connectionStatus").force(METDDPConnectionStatus) |> readonly
+        connectionStatus = meteor.dyn("connectionStatus").force(NSNumber)
+            |> map { METDDPConnectionStatus(rawValue: Int($0.intValue))! }
         user = PropertyOf(nil, _user.producer |> observeOn(UIScheduler()))
         loggedIn = user |> map { $0 != nil }
         super.init()
