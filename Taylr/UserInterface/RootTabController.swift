@@ -19,7 +19,7 @@ class RootTabController : UITabBarController {
         navigationController?.navigationBarHidden = false
         delegate = self
 
-        selectedIndex = 1 // Discover Scene
+        selectedIndex = 2// Discover Scene
     }
     
     override func viewWillAppear(animated: Bool) {

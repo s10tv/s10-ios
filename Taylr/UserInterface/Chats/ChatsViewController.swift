@@ -13,14 +13,17 @@ import Bond
 class ChatsViewController : BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
     let vm: ChatsViewModel = ChatsViewModel(meteor: Meteor)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        vm.contactsConnections.map { [unowned self] (vm, index) -> UITableViewCell in
+        
+        vm.connections.map { [unowned self] (vm, index) -> UITableViewCell in
             let cell = self.tableView.dequeueReusableCellWithIdentifier(.ContactConnectionCell,
                 forIndexPath: NSIndexPath(forRow: index, inSection: 0)) as! ContactConnectionCell
-            cell.bindViewModel(vm)
+            cell.bindViewModel(vm as! ContactConnectionViewModel)
             return cell
         } ->> tableView
     }
@@ -35,5 +38,9 @@ class ChatsViewController : BaseViewController {
         super.viewDidLayoutSubviews()
         tableView.contentInset = UIEdgeInsets(top: topLayoutGuide.length, left: 0,
                                            bottom: bottomLayoutGuide.length, right: 0)
+    }
+    
+    @IBAction func didSelectSegment(sender: UISegmentedControl) {
+        vm.currentSection.value = ChatsViewModel.Section(rawValue: sender.selectedSegmentIndex)!
     }
 }

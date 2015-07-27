@@ -512,10 +512,14 @@
                                 <segment title="Contacts"/>
                                 <segment title="New"/>
                             </segments>
+                            <connections>
+                                <action selector="didSelectSegment:" destination="GSL-sK-91w" eventType="valueChanged" id="N4W-QB-WNx"/>
+                            </connections>
                         </segmentedControl>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
+                        <outlet property="segmentedControl" destination="omL-rj-1qF" id="dyM-3X-oRq"/>
                         <outlet property="tableView" destination="4cg-hq-bZ8" id="YhK-na-cJu"/>
                     </connections>
                 </viewController>
