@@ -74,9 +74,9 @@ class IntegrationTestEnvironment : XCTestCase {
         }.then {
             return block()
         }.subscribeErrorOrCompleted { error in
-            self.meteor.clearUserData(self.userId!)
-            self.meteor.clearUserData(self.candidateUserId!)
-            self.meteor.clearUserData(self.connectionUserId!)
+            self.userId.map { self.meteor.clearUserData($0) }
+            self.candidateUserId.map { self.meteor.clearUserData($0) }
+            self.connectionUserId.map { self.meteor.clearUserData($0) }
 
             expect(error).to(beNil())
             expectation.fulfill()
