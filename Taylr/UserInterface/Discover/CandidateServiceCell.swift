@@ -10,11 +10,11 @@ import UIKit
 import Core
 
 class CandidateServiceCell : UICollectionViewCell, BindableCell {
-    typealias ViewModel = UIImage?
+    typealias ViewModel = Image
     @IBOutlet weak var imageView: UIImageView!
     
-    func bind(vm: UIImage?) {
-        imageView.image = vm
+    func bind(vm: Image) {
+        imageView.bindImage(vm)
     }
     
     static func reuseId() -> String {

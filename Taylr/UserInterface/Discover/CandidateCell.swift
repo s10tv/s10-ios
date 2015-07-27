@@ -27,15 +27,7 @@ class CandidateCell : UICollectionViewCell, BindableCell {
         jobTitleLabel.text = vm.jobTitle
         employerLabel.text = vm.employer
         
-        let array = DynamicArray([
-            UIImage(.icTwitterSmall),
-            UIImage(.icGithubSmall),
-            UIImage(.icLinkedinSmall),
-            UIImage(.icInstagramSmall)
-        ])
-        array.map(
-            serviceIconsView.factory(CandidateServiceCell)
-        ) ->> serviceIconsView
+        vm.profileIcons.map(serviceIconsView.factory(CandidateServiceCell)) ->> serviceIconsView
     }
     
     override func prepareForReuse() {
