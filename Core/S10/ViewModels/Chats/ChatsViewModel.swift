@@ -31,8 +31,13 @@ public struct ChatsViewModel {
             .sorted(by: ConnectionKeys.updatedAt.rawValue, ascending: false)
             .results(Connection)
         connections = results
-            .map { ContactConnectionViewModel(connection: $0) }
-//            .map { NewConnectionViewModel(connection: $0) }
+            .map { (connection: Connection) -> ConnectionViewModel in
+                if connection.cold?.boolValue == true {
+                    return NewConnectionViewModel(connection: connection)
+                } else {
+                    return ContactConnectionViewModel(connection: connection)
+                }
+            }
 
         (currentSection
             |> map {
