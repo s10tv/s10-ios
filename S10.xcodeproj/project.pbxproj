@@ -167,6 +167,7 @@
 		EABA05441B474EC900154C75 /* PhotoUploadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABA05431B474EC900154C75 /* PhotoUploadOperation.swift */; };
 		EABA05461B474FED00154C75 /* test-avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EABA05451B474FED00154C75 /* test-avatar.jpg */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
+		EAC725B81B65BB50004113FD /* ProfileInfoCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC725B71B65BB50004113FD /* ProfileInfoCells.swift */; };
 		EACCA3A21B37B02A00015C88 /* ProfileCoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACCA3A11B37B02A00015C88 /* ProfileCoverCell.swift */; };
 		EACEFB841B4672A800901E85 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACEFB831B4672A800901E85 /* AppRouter.swift */; };
 		EACEFB871B46740500901E85 /* LoadingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACEFB861B46740500901E85 /* LoadingViewController.swift */; };
@@ -424,6 +425,7 @@
 		EABD43D91AA1D29C00B07813 /* Beta.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
 		EABD43DA1AA1D29C00B07813 /* Prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
 		EABF2AB41AD04659005880E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EAC725B71B65BB50004113FD /* ProfileInfoCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInfoCells.swift; sourceTree = "<group>"; };
 		EACCA3A11B37B02A00015C88 /* ProfileCoverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCoverCell.swift; sourceTree = "<group>"; };
 		EACEFB831B4672A800901E85 /* AppRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		EACEFB861B46740500901E85 /* LoadingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingViewController.swift; sourceTree = "<group>"; };
@@ -977,6 +979,7 @@
 			children = (
 				EAA56F831B2B32E500DE3936 /* ProfileViewController.swift */,
 				EACCA3A11B37B02A00015C88 /* ProfileCoverCell.swift */,
+				EAC725B71B65BB50004113FD /* ProfileInfoCells.swift */,
 				EA36B1D11B3F23ED002ADD91 /* ActivityImageCell.swift */,
 				EA36B1D31B3F23F4002ADD91 /* ActivityTextCell.swift */,
 				EA3965221B55C47200F5B0B3 /* EditProfileViewController.swift */,
@@ -1660,6 +1663,7 @@
 				EAA8D6C31B62F2A400D5A6DC /* IntegrationWebViewController.swift in Sources */,
 				EA1047301B4E74D000B1A76A /* ReactiveProperties.swift in Sources */,
 				EAD1BB251B60347600D250C5 /* MeViewController.swift in Sources */,
+				EAC725B81B65BB50004113FD /* ProfileInfoCells.swift in Sources */,
 				EA588DBA1B5F1D36000962B8 /* CandidateServiceCell.swift in Sources */,
 				EA043F6B1B62CE770047BDCA /* IntegrationCell.swift in Sources */,
 				EAE1E07B1AE34C6200F03F13 /* LocationService.swift in Sources */,

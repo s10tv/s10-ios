@@ -32,19 +32,32 @@ class ProfileViewController : BaseViewController {
             }
             return self.coverCell
         }
-//        let profilesSection = DynamicArray([vm]).map { [unowned self] (vm, index) -> UITableViewCell in
-//            let cell = self.tableView.dequeueReusableCellWithIdentifier(.ProfileSelectorRowCell,
+        let infoSection = vm.infoVM.map { [unowned self] (infoVM, index) -> UITableViewCell in
+            if let infoVM = infoVM as? TaylrProfileInfoViewModel {
+                let cell = self.tableView.dequeueReusableCellWithIdentifier(.TaylrProfileInfoCell,
+                                forIndexPath: NSIndexPath(forRow: index, inSection: 1)) as! TaylrProfileInfoCell
+                cell.bind(infoVM)
+                return cell
+            }
+            if let infoVM = infoVM as? ConnectedProfileInfoViewModel {
+//                let cell = self.tableView.dequeueReusableCellWithIdentifier(.TaylrProfileInfoCell,
+//                    forIndexPath: NSIndexPath(forRow: index, inSection: 1)) as! TaylrProfileInfoCell
+//                cell.bind(infoVM)
+//                return cell
+            }
+            fatalError("Unexpected infoVM type")
+//            let cell = self.tableView.dequeueReusableCellWithIdentifier(.Profile,
 //                forIndexPath: NSIndexPath(forRow: index, inSection: 1)) as! ProfileSelectorRowCell
 //            cell.bind(vm.profiles)
 //            return cell
-//        }
+        }
 //        let activitiesSection = vm.activities.map { [unowned self] (activity, index) -> UITableViewCell in
 //            let cell = self.tableView.dequeueReusableCellWithIdentifier(.ImageCell,
 //                forIndexPath: NSIndexPath(forRow: index, inSection: 2)) as! ActivityImageCell
 //            cell.activity = activity
 //            return cell
 //        }
-        DynamicArray([coverSection/*, profilesSection, activitiesSection*/]) ->> tableView
+        DynamicArray([coverSection, infoSection/*, activitiesSection*/]) ->> tableView
     }
     
     override func viewWillAppear(animated: Bool) {

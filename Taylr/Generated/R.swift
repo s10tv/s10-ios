@@ -228,6 +228,8 @@ public enum R {
         case icSave = "ic-save"
         /// ic-skip
         case icSkip = "ic-skip"
+        /// ic-start-chat
+        case icStartChat = "ic-start-chat"
         /// ic-twitter
         case icTwitter = "ic-twitter"
         /// ic-twitter-color

@@ -35,6 +35,7 @@ public enum TableViewCellreuseIdentifier : String {
     case ConnectionCell = "ConnectionCell"
     case ImageCell = "ImageCell"
     case ProfileCoverCell = "ProfileCoverCell"
+    case TaylrProfileInfoCell = "TaylrProfileInfoCell"
 }
 
 public enum TableViewControllerStoryboardIdentifier : String {
