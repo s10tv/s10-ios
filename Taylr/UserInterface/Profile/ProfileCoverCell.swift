@@ -18,16 +18,21 @@ class ProfileCoverCell : UITableViewCell {
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var distanceLabel: UILabel!
-    @IBOutlet weak var activityLabel: UILabel!
+    @IBOutlet weak var proximityLabel: UILabel!
+    @IBOutlet weak var collectionView: UICollectionView!
     
     func bind(vm: ProfileCoverViewModel) {
         vm.avatar ->> avatarView.imageBond
         vm.cover ->> coverImageView.imageBond
         vm.firstName ->> nameLabel // TODO: should we show username?
         vm.lastName ->> usernameLabel
-        vm.proximity ->> distanceLabel
-        // TODO: Remove ActivityLabel
+        vm.proximity ->> proximityLabel
+        vm.selectorImages.map { [unowned self] (image, index) -> UICollectionViewCell in
+            let cell = self.collectionView.dequeueReusableCellWithReuseIdentifier(.ProfileSelectorCell,
+                forIndexPath: NSIndexPath(forItem: index, inSection: 0)) as! ProfileSelectorCell
+            cell.iconView.bindImage(image)
+            return cell
+        }
     }
     
     override func prepareForReuse() {
@@ -41,5 +46,15 @@ class ProfileCoverCell : UITableViewCell {
         coverImageView.clipsToBounds = true
 //        avatarView.dynPlaceholderImage = avatarView.image // TODO: Use a better avatar placeholder
         coverImageView.dynPlaceholderImage = coverImageView.image
+    }
+}
+
+class ProfileSelectorCell : UICollectionViewCell {
+    
+    @IBOutlet weak var iconView: UIImageView!
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        iconView.bindImage(nil)
     }
 }

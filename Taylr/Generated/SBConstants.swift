@@ -21,15 +21,12 @@ public enum SegueIdentifier : String {
     case IntegrationsToWeb = "IntegrationsToWeb"
     case LoadingToRootTab = "LoadingToRootTab"
     case LoginToSignup = "LoginToSignup"
-    case Main_Chat = "Main_Chat"
     case Main_Discover = "Main_Discover"
-    case Main_Profile = "Main_Profile"
     case MeToEditProfile = "MeToEditProfile"
     case MeToProfile = "MeToProfile"
     case Onboarding_Login = "Onboarding_Login"
     case Onboarding_Signup = "Onboarding_Signup"
     case RecorderToEditor = "RecorderToEditor"
-    case SettingsToLoading = "SettingsToLoading"
     case SignupToLinkService = "SignupToLinkService"
 }
 
@@ -38,10 +35,6 @@ public enum TableViewCellreuseIdentifier : String {
     case ConnectionCell = "ConnectionCell"
     case ImageCell = "ImageCell"
     case ProfileCoverCell = "ProfileCoverCell"
-    case ProfileSelectorRowCell = "ProfileSelectorRowCell"
-    case SettingsLabelCell = "SettingsLabelCell"
-    case SettingsPhotoCell = "SettingsPhotoCell"
-    case SettingsTextCell = "SettingsTextCell"
 }
 
 public enum TableViewControllerStoryboardIdentifier : String {
@@ -57,7 +50,5 @@ public enum ViewControllerStoryboardIdentifier : String {
     case Login = "Login"
     case Player = "Player"
     case Recorder = "Recorder"
-    case Settings = "Settings"
-    case SettingsForm = "SettingsForm"
     case Signup = "Signup"
 }

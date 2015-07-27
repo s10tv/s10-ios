@@ -24,14 +24,14 @@ class ProfileViewController : BaseViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 500
         
-//        let coverSection = DynamicArray([vm]).map { [unowned self] (user, index) -> UITableViewCell in
-//            if self.coverCell == nil {
-//                self.coverCell = self.tableView.dequeueReusableCellWithIdentifier(.ProfileCoverCell,
-//                forIndexPath: NSIndexPath(forRow: index, inSection: 0)) as! ProfileCoverCell
-//                self.coverCell.bind(self.vm)
-//            }
-//            return self.coverCell
-//        }
+        let coverSection = vm.coverVM.map { [unowned self] (coverVM, index) -> UITableViewCell in
+            if self.coverCell == nil {
+                self.coverCell = self.tableView.dequeueReusableCellWithIdentifier(.ProfileCoverCell,
+                forIndexPath: NSIndexPath(forRow: index, inSection: 0)) as! ProfileCoverCell
+                self.coverCell.bind(coverVM)
+            }
+            return self.coverCell
+        }
 //        let profilesSection = DynamicArray([vm]).map { [unowned self] (vm, index) -> UITableViewCell in
 //            let cell = self.tableView.dequeueReusableCellWithIdentifier(.ProfileSelectorRowCell,
 //                forIndexPath: NSIndexPath(forRow: index, inSection: 1)) as! ProfileSelectorRowCell
@@ -44,7 +44,7 @@ class ProfileViewController : BaseViewController {
 //            cell.activity = activity
 //            return cell
 //        }
-//        DynamicArray([coverSection, profilesSection, activitiesSection]) ->> tableView
+        DynamicArray([coverSection/*, profilesSection, activitiesSection*/]) ->> tableView
     }
     
     override func viewWillAppear(animated: Bool) {
