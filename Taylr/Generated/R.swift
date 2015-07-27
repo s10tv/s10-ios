@@ -222,6 +222,8 @@ public enum R {
         case icPeople = "ic-people"
         /// ic-play
         case icPlay = "ic-play"
+        /// ic-play-small
+        case icPlaySmall = "ic-play-small"
         /// ic-rewind
         case icRewind = "ic-rewind"
         /// ic-save

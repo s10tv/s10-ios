@@ -18,8 +18,8 @@ class ChatsViewController : BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         vm.contactsConnections.map { [unowned self] (vm, index) -> UITableViewCell in
-            let cell = self.tableView.dequeueReusableCellWithIdentifier(.ConnectionCell,
-                forIndexPath: NSIndexPath(forRow: index, inSection: 0)) as! ConnectionCell
+            let cell = self.tableView.dequeueReusableCellWithIdentifier(.ContactConnectionCell,
+                forIndexPath: NSIndexPath(forRow: index, inSection: 0)) as! ContactConnectionCell
             cell.bindViewModel(vm)
             return cell
         } ->> tableView

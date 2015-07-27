@@ -11,14 +11,13 @@ import ReactiveCocoa
 import Bond
 import Core
 
-class ConnectionCell : UITableViewCell {
+class ContactConnectionCell : UITableViewCell {
     
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var badgeLabel: UILabel!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
-    @IBOutlet var nameCenterConstraint: NSLayoutConstraint! // TODO: Why is strong needed?
     
     func bindViewModel(vm: ContactConnectionViewModel) {
         vm.avatar ->> avatarView.imageBond
@@ -26,7 +25,6 @@ class ConnectionCell : UITableViewCell {
         vm.busy ->> spinner
         vm.statusMessage ->> subtitleLabel
         vm.badgeText ->> badgeLabel
-        (vm.statusMessage |> map { $0.length == 0 }) ->> nameCenterConstraint.dynActive
     }
     
     override func prepareForReuse() {
@@ -36,7 +34,6 @@ class ConnectionCell : UITableViewCell {
             $0.designatedBond.unbindAll()
         }
         badgeLabel.dynHidden.designatedBond.unbindAll()
-        nameCenterConstraint.dynActive.designatedBond.unbindAll()
         spinner.designatedBond.unbindAll()
     }
     
@@ -44,4 +41,18 @@ class ConnectionCell : UITableViewCell {
         super.awakeFromNib()
         avatarView.makeCircular()
     }
+}
+
+class NewConnectionCell : UITableViewCell {
+    
+    @IBOutlet weak var avatarView: UIImageView!
+    
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var playIcon: UIImageView!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var profileIconsView: UICollectionView!
+    
+    
 }
