@@ -23,7 +23,7 @@ public class InviteOperation : AsyncOperation {
     let lastName: String
     let emailOrPhone: String
 
-    public init(meteor: MeteorService, task: InviteTaskEntry) {
+    public init(meteor: MeteorService, task: InviteTask) {
         self.meteor = meteor
         taskId = task.taskId
         localVideoURL = NSURL(task.localVideoUrl)
@@ -56,7 +56,7 @@ public class InviteOperation : AsyncOperation {
             self.finish(.Error($0))
         }, completed: {
             let realm = Realm()
-            if let task = InviteTaskEntry.findByTaskId(self.taskId, realm: realm) {
+            if let task = InviteTask.findByTaskId(self.taskId, realm: realm) {
                 realm.write {
                     realm.delete(task)
                 }

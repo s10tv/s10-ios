@@ -7,7 +7,17 @@
 //
 
 import UIKit
+import Core
 
-class CandidateServiceCell : UICollectionViewCell {
+class CandidateServiceCell : UICollectionViewCell, BindableCell {
+    typealias ViewModel = Image
     @IBOutlet weak var imageView: UIImageView!
+    
+    func bind(vm: Image) {
+        imageView.bindImage(vm)
+    }
+    
+    static func reuseId() -> String {
+        return reuseId(.CandidateService)
+    }
 }

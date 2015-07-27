@@ -33,13 +33,13 @@ public class VideoUploadOperation : AsyncOperation {
     override public func run() {
         let realm = Realm()
         let predicate = NSPredicate(format: "localURL = %@", localVideoURL.path!)
-        let results = realm.objects(VideoUploadTaskEntry).filter(predicate)
+        let results = realm.objects(VideoUploadTask).filter(predicate)
         
         switch (results.count) {
         case 0:
             taskId = NSUUID().UUIDString
 
-            let entry = VideoUploadTaskEntry()
+            let entry = VideoUploadTask()
             entry.id = taskId!
             entry.localURL = localVideoURL.path!
             entry.recipientId = recipientId
@@ -77,7 +77,7 @@ public class VideoUploadOperation : AsyncOperation {
         }, completed: { () -> Void in
             let realm = Realm()
             realm.write {
-                realm.delete(realm.objects(VideoUploadTaskEntry).filter(
+                realm.delete(realm.objects(VideoUploadTask).filter(
                     NSPredicate(format: "id = %@", self.taskId!)))
             }
             self.finish(.Success)

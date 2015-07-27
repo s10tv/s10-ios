@@ -13,22 +13,30 @@ import Bond
 class ChatsViewController : BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
-    var chatsVM : ChatsInteractor!
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
+    
+    let vm: ChatsViewModel = ChatsViewModel(meteor: Meteor)
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        chatsVM = ChatsInteractor()
-        chatsVM.connectionViewModels.map { [unowned self] (connectionVM, index) -> UITableViewCell in
-            let cell = self.tableView.dequeueReusableCellWithIdentifier(.ConnectionCell,
-                forIndexPath: NSIndexPath(forRow: index, inSection: 0)) as! ConnectionCell
-            cell.viewModel = connectionVM
-            return cell
+        
+        let contactCellFactory = tableView.factory(ContactConnectionCell)
+        let newCellFactory = tableView.factory(NewConnectionCell)
+        vm.connections.map { (vm, index) -> UITableViewCell in
+            switch vm {
+            case let vm as ContactConnectionViewModel:
+                return contactCellFactory(vm, index)
+            case let vm as NewConnectionViewModel:
+                return newCellFactory(vm, index)
+            default:
+                fatalError("Unexpected cell type")
+            }
         } ->> tableView
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ConversationViewController {
-            vc.conversationVM = chatsVM.connectionViewModels[tableView.indexPathForSelectedRow()!.row]
+            vc.vm = vm.conversationVM(tableView.indexPathForSelectedRow()!.row)
         }
     }
     
@@ -36,5 +44,15 @@ class ChatsViewController : BaseViewController {
         super.viewDidLayoutSubviews()
         tableView.contentInset = UIEdgeInsets(top: topLayoutGuide.length, left: 0,
                                            bottom: bottomLayoutGuide.length, right: 0)
+    }
+    
+    @IBAction func didSelectSegment(sender: UISegmentedControl) {
+        vm.currentSection.value = ChatsViewModel.Section(rawValue: sender.selectedSegmentIndex)!
+        switch vm.currentSection.value {
+        case .Contacts:
+            tableView.rowHeight = 76
+        case .New:
+            tableView.rowHeight = 120
+        }
     }
 }

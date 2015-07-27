@@ -10,20 +10,15 @@ import Foundation
 import Core
 import Bond
 
-class ActivityImageCell : UITableViewCell {
+class ActivityImageCell : UITableViewCell, BindableCell {
     
     @IBOutlet weak var userImageView: UIImageView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var contentImageView: UIImageView!
     @IBOutlet weak var contentTextLabel: UILabel!
-    @IBOutlet weak var quoteLabel: UILabel!
     @IBOutlet weak var serviceNameLabel: UILabel!
     @IBOutlet weak var imageHeightConstraint: NSLayoutConstraint!
-    
-    var activity: ActivityViewModel? {
-        didSet { if let a = activity { bindActivity(a) } }
-    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,31 +26,27 @@ class ActivityImageCell : UITableViewCell {
         contentImageView.clipsToBounds = true
     }
     
-    func bindActivity(activity: ActivityViewModel) {
-//        activity.avatarURL ->> userImageView.dynImageURL
-//        activity.username ->> usernameLabel
-//        activity.formattedDate ->> timestampLabel
-//        activity.text ->> contentTextLabel
-//        activity.quote ->> quoteLabel
-//        activity.serviceName ->> serviceNameLabel
-//        activity.image.map { [unowned self] image in
-//            if let image = image {
-//                let width = self.contentImageView.frame.width
-//                self.imageHeightConstraint.constant = width / image.width!.f * image.height!.f
-//                return image.url
-//            } else {
-//                self.imageHeightConstraint.constant = 0
-//                return nil
-//            }
-//        } ->> contentImageView.dynImageURL
+    func bind(vm: ActivityImageViewModel) {
+        usernameLabel.text = vm.displayName
+        contentTextLabel.text = vm.text
+        serviceNameLabel.text = vm.integrationName
+        serviceNameLabel.textColor = vm.integrationColor
+        userImageView.bindImage(vm.avatar)
+        contentImageView.bindImage(vm.image)
+        vm.displayTime ->> timestampLabel
+//        imageHeightConstraint.constant = CGFloat(vm.image.height ?? 0)
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        unbindAll(usernameLabel, timestampLabel, contentTextLabel, quoteLabel)
+        timestampLabel.designatedBond.unbindAll()
         [userImageView, contentImageView].each {
-            $0.image = nil
-            $0.unbindDynImageURL()
+            $0.bindImage(nil)
         }
     }
+    
+    static func reuseId() -> String {
+        return reuseId(.ActivityImageCell)
+    }
+    
 }

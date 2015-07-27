@@ -42,7 +42,7 @@ class VideoDownloadTests: AsyncTestCase {
                 fail($0)
             }
         }
-        waitForExpectationsWithTimeout(10, handler: nil)
+        waitForExpectationsWithTimeout(20, handler: nil)
     }
     
     func testDownloadFailure() {
@@ -71,7 +71,7 @@ class VideoDownloadTests: AsyncTestCase {
             }
             future.onFailure { _ in
                 expect(op.finished).to(beTrue())
-                let task = VideoDownloadTaskEntry.findByVideoId(self.videoId)
+                let task = VideoDownloadTask.findByVideoId(self.videoId)
                 expect(task).toNot(beNil())
                 if let task = task {
                     let op2 = VideoDownloadOperation(task: task)

@@ -11,7 +11,7 @@ import Core
 
 class RootTabController : UITabBarController {
     
-    var interactor: RootInteractor!
+    let vm = RootViewModel(meteor: Meteor, taskService: Globals.taskService)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,18 +19,19 @@ class RootTabController : UITabBarController {
         navigationController?.navigationBarHidden = false
         delegate = self
 
-        interactor = RootInteractor()
-//        selectedIndex = 1 // Discover Scene
+        selectedIndex = 2// Discover Scene
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.title = selectedViewController?.title
+        navigationItem.titleView = selectedViewController?.navigationItem.titleView
     }
 }
 
 extension RootTabController : UITabBarControllerDelegate {
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
         tabBarController.navigationItem.title = viewController.title
+        tabBarController.navigationItem.titleView = viewController.navigationItem.titleView
     }
 }

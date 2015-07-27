@@ -20,6 +20,10 @@ class RootViewController : UINavigationController {
         
         transitionManager = TransitionManager(navigationController: self)
         
+        UISegmentedControl.appearance().setTitleTextAttributes([
+            NSFontAttributeName: UIFont(.cabinRegular, size: 14)
+        ], forState: .Normal)
+        
         navigationBar.titleTextAttributes = [
             NSFontAttributeName: UIFont(.cabinMedium, size: 20),
             NSForegroundColorAttributeName: StyleKit.textWhite

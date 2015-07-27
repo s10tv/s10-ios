@@ -28,17 +28,17 @@ class MeViewController : UITableViewController {
         super.viewDidLoad()
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 0.01))
         
-        vm = MeViewModel(meteor: Meteor, currentUser: Meteor.user.value!)
-        vm.avatarURL ->> avatarView.dynImageURL
+        vm = MeViewModel(meteor: Meteor)
+        vm.avatar ->> avatarView.imageBond
         vm.displayName ->> nameLabel
         vm.username ->> usernameLabel
         
         
         // Proactively improve shadow performance
-        [servicesContainer, inviteContainer].each {
-            $0.layer.shouldRasterize = true
-            $0.layer.rasterizationScale = UIScreen.mainScreen().scale
-        }
+//        [servicesContainer, inviteContainer].each {
+//            $0.layer.shouldRasterize = true
+//            $0.layer.rasterizationScale = UIScreen.mainScreen().scale
+//        }
 
         // Observe collectionView height and reload table view cell height whenever appropriate
         servicesVC.collectionView!.dyn("contentSize").force(NSValue).producer
@@ -72,10 +72,10 @@ class MeViewController : UITableViewController {
             servicesVC = vc
         }
         if let vc = segue.destinationViewController as? ProfileViewController {
-            vc.vm = UserViewModel(meteor: Meteor, user: vm.currentUser)
+            vc.vm = vm.profileVM()
         }
         if let vc = segue.destinationViewController as? EditProfileViewController {
-            vc.interactor = EditProfileInteractor(meteor: Meteor, user: vm.currentUser)
+            vc.vm = vm.editProfileVM()
         }
         if let segue = segue as? LinkedStoryboardPushSegue where segue.matches(.Onboarding_Login) {
             segue.replaceStrategy = .Stack

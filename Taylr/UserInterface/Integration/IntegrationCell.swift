@@ -9,7 +9,8 @@
 import UIKit
 import Core
 
-class IntegrationCell : UICollectionViewCell {
+class IntegrationCell : UICollectionViewCell, BindableCell {
+    typealias ViewModel = IntegrationViewModel
     
     @IBOutlet weak var iconView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -21,5 +22,9 @@ class IntegrationCell : UICollectionViewCell {
         titleLabel.text = vm.title
         statusView.bindImage(vm.statusImage)
         vm.showSpinner ? spinner.startAnimating() : spinner.stopAnimating()
+    }
+    
+    static func reuseId() -> String {
+        return reuseId(.IntegrationCell)
     }
 }

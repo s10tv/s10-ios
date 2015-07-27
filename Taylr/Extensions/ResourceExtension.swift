@@ -47,9 +47,21 @@ extension UITableView {
     }
 }
 
+extension UITableViewCell {
+    static func reuseId(id: TableViewCellreuseIdentifier) -> String {
+        return id.rawValue
+    }
+}
+
 extension UICollectionView {
     func dequeueReusableCellWithReuseIdentifier(identifier: CollectionViewCellreuseIdentifier, forIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell {
         return dequeueReusableCellWithReuseIdentifier(identifier.rawValue, forIndexPath: indexPath) as! UICollectionViewCell
+    }
+}
+
+extension UICollectionViewCell {
+    static func reuseId(id: CollectionViewCellreuseIdentifier) -> String {
+        return id.rawValue
     }
 }
 

@@ -14,7 +14,25 @@ import Box
 
 // MARK: - ReactiveCocoa + SwiftBonds
 
-/// Output Dynamic retains input property
+private class RetainingDynamicArray<T>: DynamicArray<T> {
+    override init(_ v: Array<T>) {
+        super.init(v)
+    }
+    var retainedObjects: [AnyObject] = []
+    func retain(object: AnyObject) {
+        retainedObjects.append(object)
+    }
+}
+
+func toBondDynamicArray<T, P: PropertyType where P.Value == [T]>(property: P) -> DynamicArray<T> {
+    let dyn = RetainingDynamicArray<T>(property.value)
+    dyn.retain(Box(property))
+    property.producer.start(next: { [weak dyn] value in
+        dyn?.value = value
+    })
+    return dyn
+}
+
 func toBondDynamic<T, P: PropertyType where P.Value == T>(property: P) -> Dynamic<T> {
     let dyn = InternalDynamic<T>(property.value)
     dyn.retain(Box(property))

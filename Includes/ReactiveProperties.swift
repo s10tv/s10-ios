@@ -24,6 +24,10 @@ extension MutableProperty {
 }
 
 extension PropertyOf {
+    init(_ constantValue: T) {
+        self.init(ConstantProperty(constantValue))
+    }
+    
     init(_ initialValue: T, _ producer: SignalProducer<T, ReactiveCocoa.NoError>) {
         self.init(MutableProperty(initialValue, { producer }))
     }
@@ -51,6 +55,51 @@ func map<P : PropertyType, T, U where P.Value == T>(transform: T -> U) -> P -> P
         }
     }
 }
+
+
+func flatMap<P : PropertyType, P2 : PropertyType, T, U where P.Value == T, P2.Value == U>(transform: T -> P2) -> P -> PropertyOf<U> {
+    return { property in
+        return PropertyOf(transform(property.value).value) {
+            property.producer |> flatMap(.Latest) { v in
+                let retainSourceProperty = property // Force retain source property
+                return SignalProducer<U, NoError> { sink, disposable in
+                    let innerProperty = transform(v)
+                    disposable.addDisposable(innerProperty.producer.start(sink))
+                    disposable.addDisposable {
+                        let retainedProperty = innerProperty // Force retain inner property
+                    }
+                }
+            }
+        }
+    }
+}
+
+func flatMap<P : PropertyType, P2 : PropertyType, T, U where P.Value == T?, P2.Value == U>(#nilValue: U, transform: T -> P2) -> P -> PropertyOf<U> {
+    return { property in
+        return PropertyOf(property.value.map { transform($0).value } ?? nilValue) {
+            property.producer |> flatMap(.Latest) { v in
+                let retainSourceProperty = property // Force retain source property
+                return SignalProducer<U, NoError> { sink, disposable in
+                    if let v = v {
+                        let innerProperty = transform(v)
+                        disposable.addDisposable(innerProperty.producer.start(sink))
+                        disposable.addDisposable {
+                            let retainedProperty = innerProperty // Force retain inner property
+                        }
+                    } else {
+                        sendNext(sink, nilValue)
+                        sendCompleted(sink)
+                    }
+                }
+            }
+        }
+    }
+}
+
+func flatMap<P : PropertyType, P2 : PropertyType, T, U where P.Value == T?, P2.Value == U?>(transform: T -> P2) -> P -> PropertyOf<U?> {
+    return flatMap(nilValue: nil, transform)
+}
+
 
 /// `mutableProperty |> readonly` will render a read only version of any mutable property type
 /// Readonly is essentially an identity function

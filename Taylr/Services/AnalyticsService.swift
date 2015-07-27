@@ -41,7 +41,9 @@ class AnalyticsService {
         // Send traits up to our own backend server
         if let traits = traits {
             for (key, value) in traits {
-                Meteor.meta.setValue(value, metadataKey: key)
+                // TODO: Put stuff into Meteor.meta as needed
+                // or some other channel that's easily viewable from server
+//                Meteor.meta.setValue(value, metadataKey: key)
             }
         }
         segment.enqueue(IdentifyMessageBuilder().traits(traits ?? [:]).userId(userId ?? ""))

@@ -29,7 +29,7 @@ public class VideoDownloadOperation : AsyncOperation {
         resumeData = nil
     }
     
-    public init(task: VideoDownloadTaskEntry) {
+    public init(task: VideoDownloadTask) {
         videoId = task.videoId
         senderId = task.senderId
         remoteURL = NSURL(string: task.remoteUrl)!
@@ -41,7 +41,7 @@ public class VideoDownloadOperation : AsyncOperation {
         // Persist record
         let realm = Realm()
         realm.write {
-            let task = VideoDownloadTaskEntry()
+            let task = VideoDownloadTask()
             task.videoId = self.videoId
             task.senderId = self.senderId
             task.remoteUrl = self.remoteURL.absoluteString!
@@ -64,7 +64,7 @@ public class VideoDownloadOperation : AsyncOperation {
         }.andThen { result in
             NSFileManager().removeItemAtURL(self.tempURL, error: nil)
             let realm = Realm()
-            if let task = VideoDownloadTaskEntry.findByVideoId(self.videoId, realm: realm) {
+            if let task = VideoDownloadTask.findByVideoId(self.videoId, realm: realm) {
                 realm.write {
                     switch result {
                     case .Success:

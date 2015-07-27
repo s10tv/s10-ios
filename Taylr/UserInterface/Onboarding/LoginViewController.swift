@@ -37,7 +37,7 @@ class LoginViewController : BaseViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? SignupViewController {
-            vc.viewModel = SignupInteractor(meteor: Meteor, user: Meteor.user.value!)
+//            vc.viewModel = SignupInteractor(meteor: Meteor, user: Meteor.user.value!)
         }
         if let segue = segue as? LinkedStoryboardPushSegue where segue.matches(.Main_Discover) {
             segue.replaceStrategy = .Stack
@@ -55,7 +55,7 @@ class LoginViewController : BaseViewController {
     }
     
     @IBAction func startLogin(sender: AnyObject) {
-        if !Meteor.networkReachable {
+        if Meteor.connectionStatus.value != .Connected {
             showErrorAlert(NSError(.NetworkUnreachable))
             return
         }
@@ -83,7 +83,7 @@ class LoginViewController : BaseViewController {
     
     private func startLogin(loginBlock: () -> RACSignal, errorBlock: (NSError?) -> ()) {
         // TODO: We need to think about holistic, not just adhoc error handling
-        if !Meteor.networkReachable {
+        if Meteor.connectionStatus.value != .Connected {
             showErrorAlert(NSError(.NetworkUnreachable))
             return
         }
@@ -99,7 +99,7 @@ class LoginViewController : BaseViewController {
     
     @IBAction func debugLogin(sender: AnyObject) {
         Analytics.track("Debug Login Attempt")
-        if !Meteor.settings.debugLoginMode {
+        if Globals.settings.debugLoginMode.value != true {
             return
         }
         let alert = UIAlertController(title: "DEBUG LOGIN MODE", message: nil, preferredStyle: .Alert)

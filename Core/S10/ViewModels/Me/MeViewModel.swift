@@ -7,22 +7,29 @@
 //
 
 import Foundation
-import Bond
 import Meteor
 import ReactiveCocoa
 
 public struct MeViewModel {
     let meteor: MeteorService
-    public let currentUser: User
-    public let avatarURL: Dynamic<NSURL?>
-    public let displayName: Dynamic<String>
-    public let username: Dynamic<String>
+    let subscription: MeteorSubscription
+    public let avatar: PropertyOf<Image?>
+    public let displayName: PropertyOf<String>
+    public let username: PropertyOf<String>
     
-    public init(meteor: MeteorService, currentUser: User) {
+    public init(meteor: MeteorService) {
         self.meteor = meteor
-        self.currentUser = currentUser
-        avatarURL = currentUser.dynAvatar.map { $0?.url }
-        displayName = currentUser.displayName
-        username = currentUser.dynUsername.map { $0 ?? "" }
+        subscription = meteor.subscribe("me")
+        avatar = meteor.user |> flatMap { $0.pAvatar() }
+        displayName = meteor.user |> flatMap(nilValue: "") { $0.pDisplayName() }
+        username = meteor.user |> flatMap(nilValue: "") { $0.pUsername() }
+    }
+    
+    public func profileVM() -> ProfileViewModel? {
+        return meteor.user.value.map { ProfileViewModel(meteor: meteor, user: $0) }
+    }
+    
+    public func editProfileVM() -> EditProfileViewModel? {
+        return meteor.user.value.map { EditProfileViewModel(meteor: meteor, user: $0) }
     }
 }

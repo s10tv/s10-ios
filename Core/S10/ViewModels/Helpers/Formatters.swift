@@ -56,6 +56,10 @@ public struct Formatters {
         return date.map { timeInterval.stringForTimeIntervalFromDate(NSDate(), toDate: $0) }
     }
     
+    public static func formatFullname(firstName: String?, lastName: String?) -> String {
+        return String(format: "%@ %@", firstName ?? "", lastName ?? "").nonBlank() ?? ""
+    }
+    
     public static func formatRelativeDate(date: NSDate?, relativeTo: NSDate = NSDate()) -> String? {
         if let date = date {
             let interval = relativeTo.timeIntervalSinceDate(date)

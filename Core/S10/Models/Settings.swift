@@ -16,18 +16,21 @@ public class Settings {
         case Active = "active"
     }
     let c: MeteorCollection
+    let subscription: MeteorSubscription
     
     public let softMinBuild: PropertyOf<Int?>
     public let hardMinBuild: PropertyOf<Int?>
+    public let debugLoginMode: PropertyOf<Bool?>
     public let accountStatus: PropertyOf<AccountStatus?>
     
     public init(meteor: MeteorService) {
-        c = MeteorCollection(meteor.collection("settings"))
+        c = meteor.collection("settings")
+        subscription = meteor.subscribe("settings")
         softMinBuild = c.propertyOf("softMinBuild") |> map { $0.typed(Int) }
         hardMinBuild = c.propertyOf("hardMinBuild") |> map { $0.typed(Int) }
+        debugLoginMode = c.propertyOf("debugLoginMode") |> map { $0.typed(Bool) }
         accountStatus = c.propertyOf("accountStatus")
             |> map { $0.typed(String).flatMap { AccountStatus(rawValue: $0) }
         }
-        meteor.subscribe("settings")
     }
 }

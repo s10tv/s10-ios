@@ -10,19 +10,15 @@ import Foundation
 import Bond
 
 public struct IntegrationListViewModel {
-    let meteor: MeteorService
+    let subscription: MeteorSubscription
     public let integrations: DynamicArray<IntegrationViewModel>
     
     public init(meteor: MeteorService) {
-        self.meteor = meteor
+        subscription = meteor.subscribe("integrations")
         integrations = Integration
-            .sorted(by: IntegrationKeys.status.rawValue, ascending: true)
+            .sorted(by: IntegrationKeys.status_.rawValue, ascending: true)
             .sorted(by: IntegrationKeys.updatedAt.rawValue, ascending: true)
             .results(Integration)
             .map { IntegrationViewModel(integration: $0) }
-    }
-    
-    public func subscribe() {
-        meteor.subscribe("integrations")
     }
 }

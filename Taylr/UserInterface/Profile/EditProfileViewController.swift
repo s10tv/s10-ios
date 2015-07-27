@@ -22,7 +22,7 @@ class EditProfileViewController : UITableViewController {
     @IBOutlet weak var aboutTextView: JVFloatLabeledTextView!
     @IBOutlet weak var usernameLabel: JVFloatLabeledTextField!
     
-    var interactor: EditProfileInteractor!
+    var vm: EditProfileViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,12 +31,12 @@ class EditProfileViewController : UITableViewController {
         coverImageView.clipsToBounds = true
         avatarImageView.makeCircular()
         
-        interactor.firstName <->> firstNameField
-        interactor.lastName <->> lastNameField
-        interactor.about <->> aboutTextView
-        interactor.username ->> usernameLabel
-        interactor.avatarImageURL ->> avatarImageView.dynImageURL
-        interactor.coverImageURL ->> coverImageView.dynImageURL
+        vm.firstName <->> firstNameField
+        vm.lastName <->> lastNameField
+        vm.about <->> aboutTextView
+        vm.username ->> usernameLabel
+        vm.avatar ->> avatarImageView.imageBond
+        vm.cover ->> coverImageView.imageBond
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -54,7 +54,7 @@ class EditProfileViewController : UITableViewController {
         pickImage { image in
             let scaledImage = image.scaleToMaxDimension(200, pixelSize: true)
             PKHUD.showActivity(dimsBackground: true)
-            self.interactor.upload(scaledImage, taskType: .ProfilePic).onComplete { result in
+            self.vm.upload(scaledImage, taskType: .ProfilePic).onComplete { result in
                 if let error = result.error {
                     PKHUD.hide(animated: false)
                     self.showErrorAlert(error)
@@ -70,7 +70,7 @@ class EditProfileViewController : UITableViewController {
         pickImage { image in
             let scaledImage = image.scaleToMaxDimension(1400, pixelSize: true)
             PKHUD.showActivity(dimsBackground: true)
-            self.interactor.upload(scaledImage, taskType: .CoverPic).onComplete { result in
+            self.vm.upload(scaledImage, taskType: .CoverPic).onComplete { result in
                 if let error = result.error {
                     PKHUD.hide(animated: false)
                     self.showErrorAlert(error)
@@ -84,7 +84,7 @@ class EditProfileViewController : UITableViewController {
     
     @IBAction func didPressDone(sender: AnyObject) {
         PKHUD.showActivity(dimsBackground: true)
-        interactor.saveEdits().onComplete(UIScheduler()) { result in
+        vm.saveEdits().onComplete(UIScheduler()) { result in
             PKHUD.hide(animated: false)
             if let err = result.error {
                 self.showErrorAlert(err)

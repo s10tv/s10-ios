@@ -35,23 +35,23 @@ class AccountService {
     let digits = Digits.sharedInstance()
     let state: PropertyOf<State>
     
-    init(meteorService: MeteorService) {
+    init(meteorService: MeteorService, settings: Settings) {
         self.meteorService = meteorService
         
         state = PropertyOf(.Indeterminate) {
             combineLatest(
                 meteorService.account.producer,
-                meteorService.user.producer,
-                meteorService.settings.accountStatus.producer
-            ) |> map { account, user, status in
-                switch (account, user, status) {
+                meteorService.loggedIn.producer,
+                settings.accountStatus.producer
+            ) |> map { account, loggedIn, status in
+                switch (account, loggedIn, status) {
                 case (.None, _, _):
                     Log.info("Status - Logged Out")
                     return .LoggedOut
-                case (.Some, .Some, .Some(.Pending)):
+                case (.Some, true, .Some(.Pending)):
                     Log.info("Status - Logged In")
                     return .LoggedIn
-                case (.Some, .Some, .Some(.Active)):
+                case (.Some, true, .Some(.Active)):
                     Log.info("Status - Signed Up")
                     return .SignedUp
                 default:

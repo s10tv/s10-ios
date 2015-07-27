@@ -14,5 +14,4 @@ class ActivityTextCell : UITableViewCell {
     @IBOutlet weak var serviceIconView: UIImageView!
     @IBOutlet weak var activityTextLabel: UILabel!
     
-    var activity: Activity?
 }

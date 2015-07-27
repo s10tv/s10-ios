@@ -12,7 +12,8 @@ import Core
 import Bond
 import ReactiveCocoa
 
-class CandidateCell : UICollectionViewCell {
+class CandidateCell : UICollectionViewCell, BindableCell {
+    typealias ViewModel = CandidateViewModel
     
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -20,23 +21,13 @@ class CandidateCell : UICollectionViewCell {
     @IBOutlet weak var employerLabel: UILabel!
     @IBOutlet weak var serviceIconsView: UICollectionView!
     
-    func bindViewModel(viewModel: CandidateViewModel) {
-        viewModel.avatarURL ->> avatarView.dynImageURL
-        viewModel.displayName ->> nameLabel
-        viewModel.jobTitle ->> jobTitleLabel
-        viewModel.employer ->> employerLabel
+    func bind(vm: CandidateViewModel) {
+        avatarView.sd_setImageWithURL(vm.avatar?.url)
+        nameLabel.text = vm.displayName
+        jobTitleLabel.text = vm.jobTitle
+        employerLabel.text = vm.employer
         
-        let cells = DynamicArray([
-            UIImage(.icTwitterSmall),
-            UIImage(.icGithubSmall),
-            UIImage(.icLinkedinSmall),
-            UIImage(.icInstagramSmall)
-        ]).map { (image, index) -> UICollectionViewCell in
-            let cell = self.serviceIconsView.dequeueReusableCellWithReuseIdentifier("CandidateService", forIndexPath: NSIndexPath(forItem: index, inSection: 0)) as! CandidateServiceCell
-            cell.imageView.image = image
-            return cell
-        }
-        cells ->> serviceIconsView
+        vm.profileIcons.map(serviceIconsView.factory(CandidateServiceCell)) ->> serviceIconsView
     }
     
     override func prepareForReuse() {
@@ -56,5 +47,9 @@ class CandidateCell : UICollectionViewCell {
         /// Improve shadow performance, especially when scrolling
         layer.shouldRasterize = true
         layer.rasterizationScale = UIScreen.mainScreen().scale
+    }
+    
+    static func reuseId() -> String {
+        return reuseId(.CandidateCell)
     }
 }

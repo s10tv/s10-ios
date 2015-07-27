@@ -14,8 +14,6 @@ class BaseViewController : UIViewController {
     
     var screenName: String?
     
-    private var metadataDisposable: RACDisposable?
-    
     // MARK: - Initialization
 
     required init(coder aDecoder: NSCoder) {
@@ -43,24 +41,9 @@ class BaseViewController : UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        metadataDisposable = listenForNotification(METDatabaseDidChangeNotification)
-            .deliverOnMainThread().subscribeNextAs { (notification: NSNotification) in
-            if let changes = notification.userInfo?[METDatabaseChangesKey] as? METDatabaseChanges {
-                Array(changes.affectedDocumentKeys()).filter {
-                    ($0 as! METDocumentKey).collectionName == "metadata"
-                }.map { ($0 as! METDocumentKey).documentID as! String }.each {
-                    self.metadataDidUpdateWhileViewActive($0, value: Meteor.meta.getValue($0))
-                }
-            }
-        }
         if let screenName = screenName {
             Analytics.track("Screen: \(screenName)")
         }
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        metadataDisposable?.dispose()
     }
     
     func metadataDidUpdateWhileViewActive(metadataKey: String, value: AnyObject?) { }
