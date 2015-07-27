@@ -1546,7 +1546,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "./Includes/Fabric.framework/run 67f7b1cc77f3e88b8e5b17a5bbc2ca6cb6f7ae53 1406e03532dd866d616ac19642903e2db44a36d93de980165c1e2e01fc17b215";
+			shellScript = "if [ -n \"$CI\" ]; then\n    echo \"Uploading DSYM to Fabric\"\n    ./Includes/Fabric.framework/run 67f7b1cc77f3e88b8e5b17a5bbc2ca6cb6f7ae53 1406e03532dd866d616ac19642903e2db44a36d93de980165c1e2e01fc17b215\nelse\n    echo \"Not running on CI, skip uploading to Fabric\";\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 
