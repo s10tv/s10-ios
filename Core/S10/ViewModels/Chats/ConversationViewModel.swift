@@ -53,14 +53,16 @@ public struct ConversationViewModel {
         self.recipient = recipient
         playback = PlaybackViewModel()
         record = RecordViewModel()
-        avatar = playback._currentMessage
-            |> flatMap { $0.message.sender.pAvatar() }
-        displayName = playback._currentMessage
-            |> flatMap(nilValue: "") { $0.message.sender.pDisplayName() }
+        let currentUser = playback._currentMessage
+            |> map { $0?.message.sender ?? recipient }
+        avatar = currentUser
+            |> flatMap { $0.pAvatar() }
+        displayName = currentUser
+            |> flatMap(nilValue: "") { $0.pDisplayName() }
+        busy = currentUser
+            |> flatMap(nilValue: false) { $0.pConversationBusy() }
         displayStatus = playback._currentMessage
             |> flatMap { $0?.formattedDate ?? recipient?.pConversationStatus() ?? PropertyOf("") }
-        busy = playback._currentMessage
-            |> flatMap(nilValue: false) { $0.message.sender.pConversationBusy() }
     }
     
     // BUGBUG: Never called thus no message will show up

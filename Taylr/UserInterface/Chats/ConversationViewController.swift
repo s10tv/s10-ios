@@ -18,9 +18,7 @@ class ConversationViewController : BaseViewController {
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var activityLabel: UILabel!
-    @IBOutlet weak var badgeLabel: UILabel!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
-    @IBOutlet weak var nameCenterConstraint: NSLayoutConstraint!
     
     var pageVC: UIPageViewController!
     var player: PlayerViewController!
@@ -46,17 +44,8 @@ class ConversationViewController : BaseViewController {
         vm.displayName ->> nameLabel
         vm.busy ->> spinner
         vm.displayStatus ->> activityLabel
-        (vm.displayStatus |> map { $0.length == 0 }) ->> nameCenterConstraint.dynActive
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        navigationController?.navigationBarHidden = true
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        navigationController?.navigationBarHidden = false
+        
+        showPlayer()
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

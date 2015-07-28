@@ -17,14 +17,8 @@ class PlayerViewController : UIViewController {
     // TODO: Consider using AVQueuePlayer instead of SCPlayer for
     // gapless video playback
     @IBOutlet weak var playerView: SCVideoPlayerView!
-    @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
-    @IBOutlet weak var rewindImage: UIImageView!
-    @IBOutlet weak var playPauseImage: UIImageView!
-    @IBOutlet weak var skipImage: UIImageView!
-    
-    @IBOutlet var playbackControls: [UIImageView]!
     
     var interactor = PlayerInteractor()
     var player: SCPlayer { return playerView.player! }
@@ -55,7 +49,6 @@ class PlayerViewController : UIViewController {
         })
         
         interactor.videoURL ->> videoURLBond
-        interactor.timestampText ->> timestampLabel
         interactor.durationText ->> durationLabel
         interactor.currentPercent ->> progressView
     }
@@ -74,11 +67,11 @@ class PlayerViewController : UIViewController {
     // MARK: -
     
     func flashPlayPulseImage(image: UIImage?) {
-        playPauseImage.image = image
-        playPauseImage.alpha = 1
-        UIView.animate(0.5, delay: 0.5) {
-            self.playPauseImage.alpha = 0
-        }
+//        playPauseImage.image = image
+//        playPauseImage.alpha = 1
+//        UIView.animate(0.5, delay: 0.5) {
+//            self.playPauseImage.alpha = 0
+//        }
     }
     
     // MARK: -
@@ -97,34 +90,34 @@ class PlayerViewController : UIViewController {
     }
     
     @IBAction func didPanOnPlayer(pan: UIPanGestureRecognizer) {
-        let view = pan.view!
-        let percent = pan.translationInView(view).x / view.frame.width
-        let threshold: CGFloat = 0.25
-        let forwardScale = min(max(percent / threshold, 0), 1)
-        let reverseScale = min(max(-percent / threshold, 0), 1)
-        switch pan.state {
-        case .Changed:
-            skipImage.alpha = forwardScale
-            rewindImage.alpha = reverseScale
-            skipImage.transform = CGAffineTransform(scale: 1 + forwardScale)
-            rewindImage.transform = CGAffineTransform(scale: 1 + reverseScale)
-        case .Ended:
-            if forwardScale == 1 {
-                advance()
-            } else if reverseScale == 1 {
-                rewind()
-            }
-            fallthrough
-        case .Cancelled:
-            UIView.animate(0.25) {
-                self.skipImage.alpha = 0
-                self.rewindImage.alpha = 0
-                self.skipImage.transform = CGAffineTransformIdentity
-                self.rewindImage.transform = CGAffineTransformIdentity
-            }
-        default:
-            break
-        }
+//        let view = pan.view!
+//        let percent = pan.translationInView(view).x / view.frame.width
+//        let threshold: CGFloat = 0.25
+//        let forwardScale = min(max(percent / threshold, 0), 1)
+//        let reverseScale = min(max(-percent / threshold, 0), 1)
+//        switch pan.state {
+//        case .Changed:
+//            skipImage.alpha = forwardScale
+//            rewindImage.alpha = reverseScale
+//            skipImage.transform = CGAffineTransform(scale: 1 + forwardScale)
+//            rewindImage.transform = CGAffineTransform(scale: 1 + reverseScale)
+//        case .Ended:
+//            if forwardScale == 1 {
+//                advance()
+//            } else if reverseScale == 1 {
+//                rewind()
+//            }
+//            fallthrough
+//        case .Cancelled:
+//            UIView.animate(0.25) {
+//                self.skipImage.alpha = 0
+//                self.rewindImage.alpha = 0
+//                self.skipImage.transform = CGAffineTransformIdentity
+//                self.rewindImage.transform = CGAffineTransformIdentity
+//            }
+//        default:
+//            break
+//        }
     }
 }
 
