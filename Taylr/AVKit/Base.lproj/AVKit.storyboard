@@ -293,10 +293,10 @@
                             <constraint firstAttribute="centerX" secondItem="7s2-e5-NVe" secondAttribute="centerX" constant="-0.5" id="Nn2-UL-EV3"/>
                             <constraint firstItem="zPO-M3-p5L" firstAttribute="top" secondItem="kas-4p-VNL" secondAttribute="bottom" id="QAi-JY-D6E"/>
                             <constraint firstItem="aym-vv-YK7" firstAttribute="top" secondItem="Pxo-oy-0Oy" secondAttribute="bottom" constant="16" id="hdK-EJ-2ac"/>
-                            <constraint firstItem="aym-vv-YK7" firstAttribute="leading" secondItem="M3U-qM-guW" secondAttribute="leadingMargin" id="lNj-ui-v4R"/>
+                            <constraint firstItem="aym-vv-YK7" firstAttribute="leading" secondItem="M3U-qM-guW" secondAttribute="leading" constant="16" id="lNj-ui-v4R"/>
                             <constraint firstItem="zPO-M3-p5L" firstAttribute="leading" secondItem="M3U-qM-guW" secondAttribute="leading" id="q8M-gD-ei7"/>
                             <constraint firstItem="sS8-ya-4lZ" firstAttribute="top" secondItem="7s2-e5-NVe" secondAttribute="bottom" constant="20" id="tdQ-bU-MSn"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="b3o-63-A2P" secondAttribute="trailing" id="xsV-me-1SL"/>
+                            <constraint firstAttribute="trailing" secondItem="b3o-63-A2P" secondAttribute="trailing" constant="16" id="xsV-me-1SL"/>
                             <constraint firstItem="Pxo-oy-0Oy" firstAttribute="leading" secondItem="M3U-qM-guW" secondAttribute="leading" id="yFW-tw-buW"/>
                             <constraint firstItem="2Fw-rH-c9r" firstAttribute="top" secondItem="M3U-qM-guW" secondAttribute="top" id="zCu-rM-mCx"/>
                         </constraints>

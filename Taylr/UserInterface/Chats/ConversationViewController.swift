@@ -19,8 +19,8 @@ class ConversationViewController : BaseViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var activityLabel: UILabel!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var scrollView: UIScrollView!
     
-    var pageVC: UIPageViewController!
     var player: PlayerViewController!
     var producer: ProducerViewController!
     var vm: ConversationViewModel!
@@ -35,9 +35,12 @@ class ConversationViewController : BaseViewController {
         producer = avkit.instantiateViewControllerWithIdentifier("Producer") as! ProducerViewController
         producer.producerDelegate = self
         
-        // TODO: Need to get rid of the delay when starting up
-        pageVC.view.backgroundColor = UIColor.blackColor()
-        pageVC.dataSource = self
+        addChildViewController(player)
+        scrollView.addSubview(player.view)
+        player.didMoveToParentViewController(self)
+        addChildViewController(producer)
+        scrollView.addSubview(producer.view)
+        player.didMoveToParentViewController(self)
         
         vm.reloadMessages()
         vm.avatar ->> avatarView.imageBond
@@ -48,12 +51,20 @@ class ConversationViewController : BaseViewController {
         showPlayer()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        var contentSize = scrollView.bounds.size
+        contentSize.height *= 2
+        scrollView.contentSize = contentSize
+        player.view.frame = CGRect(origin: CGPointZero, size: scrollView.bounds.size)
+        producer.view.frame = CGRect(origin: CGPoint(x: 0, y: scrollView.bounds.height), size: scrollView.bounds.size)
+        scrollView.contentOffset = CGPointZero
+        scrollView.contentInset = UIEdgeInsetsZero
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ProfileViewController {
             vc.vm = vm.profileVM()
-        }
-        if segue.matches(.ConversationPage) {
-            pageVC = segue.destinationViewController as! UIPageViewController
         }
     }
     
@@ -70,11 +81,11 @@ class ConversationViewController : BaseViewController {
     // MARK: - Actions
     
     func showPlayer(animated: Bool = false) {
-        pageVC.setViewControllers([player], direction: .Reverse, animated: animated, completion: nil)
+        scrollView.scrollRectToVisible(CGRect(origin: CGPointZero, size: scrollView.bounds.size), animated: animated)
     }
     
     func showProducer(animated: Bool = false) {
-        pageVC.setViewControllers([producer], direction: .Forward, animated: animated, completion: nil)
+        scrollView.scrollRectToVisible(CGRect(origin: CGPoint(x: 0, y: scrollView.bounds.height), size: scrollView.bounds.size), animated: animated)
     }
     
     @IBAction func showMoreOptions(sender: AnyObject) {

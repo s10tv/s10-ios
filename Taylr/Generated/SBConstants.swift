@@ -17,7 +17,6 @@ public enum NavigationControllerStoryboardIdentifier : String {
 
 public enum SegueIdentifier : String {
     case ChatsToConversation = "ChatsToConversation"
-    case ConversationPage = "ConversationPage"
     case IntegrationsToWeb = "IntegrationsToWeb"
     case LoadingToRootTab = "LoadingToRootTab"
     case LoginToCreateProfile = "LoginToCreateProfile"
@@ -27,12 +26,6 @@ public enum SegueIdentifier : String {
     case Onboarding_CreateProfile = "Onboarding_CreateProfile"
     case Onboarding_Login = "Onboarding_Login"
     case RecorderToEditor = "RecorderToEditor"
-}
-
-public enum StoryboardNames : String {
-    case AVKit = "AVKit"
-    case Main = "Main"
-    case Onboarding = "Onboarding"
 }
 
 public enum TableViewCellreuseIdentifier : String {

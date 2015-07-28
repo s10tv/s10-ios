@@ -156,6 +156,8 @@ public enum R {
         case appBeta = "AppIconBeta"
         /// AppIconDev
         case appDev = "AppIconDev"
+        /// empty-profile-pic
+        case emptyProfilePic = "empty-profile-pic"
         /// girl-placeholder
         case girlPlaceholder = "girl-placeholder"
         /// ic-add
@@ -172,6 +174,10 @@ public enum R {
         case icCamera = "ic-camera"
         /// ic-camera-flip
         case icCameraFlip = "ic-camera-flip"
+        /// ic-camera-switch
+        case icCameraSwitch = "ic-camera-switch"
+        /// ic-cancel-round
+        case icCancelRound = "ic-cancel-round"
         /// ic-capture
         case icCapture = "ic-capture"
         /// ic-chats
@@ -194,6 +200,8 @@ public enum R {
         case icFacebook = "ic-facebook"
         /// ic-flag
         case icFlag = "ic-flag"
+        /// ic-flash
+        case icFlash = "ic-flash"
         /// ic-github
         case icGithub = "ic-github"
         /// ic-github-small
@@ -204,6 +212,8 @@ public enum R {
         case icInstagram = "ic-instagram"
         /// ic-instagram-small
         case icInstagramSmall = "ic-instagram-small"
+        /// ic-left-chevron
+        case icLeftChevron = "ic-left-chevron"
         /// ic-linkedin
         case icLinkedin = "ic-linkedin"
         /// ic-linkedin-small
@@ -222,12 +232,22 @@ public enum R {
         case icPeople = "ic-people"
         /// ic-play
         case icPlay = "ic-play"
+        /// ic-play-medium
+        case icPlayMedium = "ic-play-medium"
         /// ic-play-small
         case icPlaySmall = "ic-play-small"
+        /// ic-record
+        case icRecord = "ic-record"
         /// ic-rewind
         case icRewind = "ic-rewind"
+        /// ic-right-chevron
+        case icRightChevron = "ic-right-chevron"
         /// ic-save
         case icSave = "ic-save"
+        /// ic-save-round
+        case icSaveRound = "ic-save-round"
+        /// ic-send-round
+        case icSendRound = "ic-send-round"
         /// ic-skip
         case icSkip = "ic-skip"
         /// ic-start-chat
@@ -246,8 +266,8 @@ public enum R {
         case icWarning = "ic-warning"
         /// ic-youtube
         case icYoutube = "ic-youtube"
-        /// logo
-        case logo = "logo"
+        /// Logo
+        case logo = "Logo"
         /// sample-cover-image
         case sampleCover = "sample-cover-image"
         /// sample-selfie-preview
