@@ -28,7 +28,7 @@ class LoadingViewController : UIViewController {
                 case .LoggedOut:
                     self.performSegue(.Onboarding_Login, sender: self)
                 case .LoggedIn:
-                    self.performSegue(.Onboarding_Signup, sender: self)
+                    self.performSegue(.Onboarding_CreateProfile, sender: self)
                 case .SignedUp:
                     self.performSegue(.LoadingToRootTab, sender: self)
                 default:

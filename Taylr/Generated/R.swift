@@ -246,8 +246,8 @@ public enum R {
         case icWarning = "ic-warning"
         /// ic-youtube
         case icYoutube = "ic-youtube"
-        /// Logo
-        case logo = "Logo"
+        /// logo
+        case logo = "logo"
         /// sample-cover-image
         case sampleCover = "sample-cover-image"
         /// sample-selfie-preview

@@ -63,7 +63,7 @@ class LoginViewController : BaseViewController {
             assert(NSThread.isMainThread(), "Only on main")
             switch Globals.accountService.state.value {
             case .LoggedIn:
-                self.performSegue(.LoginToSignup, sender: self)
+                self.performSegue(.LoginToCreateProfile, sender: self)
             case .SignedUp:
                 self.performSegue(.Main_Discover, sender: self)
             default:
