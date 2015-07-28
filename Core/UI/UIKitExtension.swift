@@ -178,14 +178,24 @@ extension UIImage {
         return newImage
     }
     
-    public class func imageWithColor(color: UIColor, size: CGSize = CGSizeMake(1, 1)) -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(size, true, 0)
+    public class func imageWithColor(color: UIColor, opaque: Bool = true, size: CGSize = CGSizeMake(1, 1)) -> UIImage {
+        UIGraphicsBeginImageContextWithOptions(size, opaque, 0)
         let context = UIGraphicsGetCurrentContext()
         color.setFill()
         CGContextFillRect(context, CGRectMake(0, 0, size.width, size.height))
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         return image
+    }
+}
+
+extension UINavigationBar {
+    public func setBackgroundColor(color: UIColor?, translucent: Bool = true) {
+        let backgroundImage = color.map { UIImage.imageWithColor($0, opaque: !translucent) }
+        let shadowImage = color.map { _ in UIImage() }
+        self.setBackgroundImage(backgroundImage, forBarMetrics: UIBarMetrics.Default)
+        self.shadowImage = shadowImage
+        self.translucent = translucent
     }
 }
 

@@ -37,19 +37,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wdl-9Q-6Ta" userLabel="Custom Top Layout Guide">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                <color key="backgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="dIP-46-eYt"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="jrS-6I-cjW" userLabel="Filtered Video View" customClass="SCSwipeableFilterView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Wdl-9Q-6Ta" userLabel="Custom Top Layout Guide">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
-                                <color key="backgroundColor" red="0.99989169840000003" green="1" blue="0.99988096950000005" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="66" id="dIP-46-eYt"/>
-                                </constraints>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUP-YK-Qgv" userLabel="Save">
-                                <rect key="frame" x="16" y="78" width="40" height="40"/>
+                                <rect key="frame" x="16" y="76" width="40" height="40"/>
                                 <state key="normal" image="ic-save-round">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -114,6 +114,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lep-Xz-fsY" userLabel="Custom Top Layout Guide">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="Pzk-ev-Gha"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RFF-jQ-Kok" customClass="SCVideoPlayerView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -122,42 +129,35 @@
                                     <outletCollection property="gestureRecognizers" destination="kRf-nd-wGw" appends="YES" id="XvQ-4p-HYO"/>
                                 </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lep-Xz-fsY" userLabel="Custom Top Layout Guide">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="66" id="Pzk-ev-Gha"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2jn-jg-8ht" userLabel="Paused Overlay">
-                                <rect key="frame" x="0.0" y="66" width="600" height="534"/>
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaZ-5C-h6l" userLabel="Rewind">
-                                        <rect key="frame" x="16" y="256" width="24" height="22"/>
+                                        <rect key="frame" x="16" y="257" width="24" height="22"/>
                                         <state key="normal" image="ic-right-chevron">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wEk-rz-lGs" userLabel="Play">
-                                        <rect key="frame" x="280" y="247" width="40" height="40"/>
+                                        <rect key="frame" x="280" y="248" width="40" height="40"/>
                                         <state key="normal" image="ic-play-medium">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="haJ-Sa-zem" userLabel="Skip">
-                                        <rect key="frame" x="560" y="256" width="24" height="22"/>
+                                        <rect key="frame" x="560" y="257" width="24" height="22"/>
                                         <state key="normal" image="ic-left-chevron">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="swipe to skip to prev msg" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="80" translatesAutoresizingMaskIntoConstraints="NO" id="geD-5e-XtS">
-                                        <rect key="frame" x="16" y="286" width="79" height="35"/>
+                                        <rect key="frame" x="16" y="287" width="79" height="34.5"/>
                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="swipe to skip to next msg" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="80" translatesAutoresizingMaskIntoConstraints="NO" id="OeW-3s-4te">
-                                        <rect key="frame" x="505" y="286" width="79" height="35"/>
+                                        <rect key="frame" x="505" y="287" width="79" height="34.5"/>
                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -178,7 +178,7 @@
                                 </constraints>
                             </view>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="DQV-th-jma">
-                                <rect key="frame" x="559" y="108" width="30" height="2"/>
+                                <rect key="frame" x="559" y="105.5" width="30" height="2"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="FXf-WC-DLD"/>
                                 </constraints>
@@ -186,7 +186,7 @@
                                 <color key="trackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AmD-xc-WPD" userLabel="Duration">
-                                <rect key="frame" x="564" y="82" width="20" height="22"/>
+                                <rect key="frame" x="564" y="80" width="20" height="21.5"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -241,23 +241,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pxo-oy-0Oy" userLabel="Custom Top Layout Guide">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                <color key="backgroundColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="OM8-pJ-sb0"/>
+                                </constraints>
+                            </view>
                             <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Fw-rH-c9r" userLabel="Camera Preview" customClass="SCSwipeableFilterView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pxo-oy-0Oy" userLabel="Custom Top Layout Guide">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
-                                <color key="backgroundColor" red="0.99989169836044312" green="1" blue="0.99988096952438354" alpha="0.5" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="66" id="OM8-pJ-sb0"/>
-                                </constraints>
                             </view>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zPO-M3-p5L">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="2"/>
                                 <color key="trackTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </progressView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3o-63-A2P" userLabel="Flip Camera">
-                                <rect key="frame" x="554" y="82" width="30" height="23"/>
+                                <rect key="frame" x="554" y="80" width="30" height="23"/>
                                 <state key="normal" image="ic-camera-switch">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -266,7 +266,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aym-vv-YK7" userLabel="Torch">
-                                <rect key="frame" x="16" y="82" width="19" height="25"/>
+                                <rect key="frame" x="16" y="80" width="19" height="25"/>
                                 <state key="normal" image="ic-flash">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>

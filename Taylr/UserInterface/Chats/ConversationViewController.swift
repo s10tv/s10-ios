@@ -57,6 +57,16 @@ class ConversationViewController : BaseViewController {
         }
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.setBackgroundColor(UIColor(white: 0.5, alpha: 0.4))
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        navigationController?.navigationBar.setBackgroundColor(nil)
+    }
+    
     // MARK: - Actions
     
     func showPlayer(animated: Bool = false) {
