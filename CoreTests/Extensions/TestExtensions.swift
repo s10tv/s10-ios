@@ -6,24 +6,21 @@
 //  Copyright (c) 2015 S10. All rights reserved.
 //
 
+import ReactiveCocoa
 import Foundation
 import XCTest
 import Nimble
+import Core
 
 // MARK: - Async Testing with RACFutures
 
 extension XCTestExpectation {
-    public func fulfill<T, E>(token: InvalidationToken? = nil, @noescape futureProducer: () -> RACFuture<T, E>) {
-        let future = futureProducer().andThen { _ in }
-        if let token = token {
-            future.onComplete(token: token) { _ in self.fulfill() }
-        } else {
-            future.onComplete { _ in self.fulfill() }
-        }
+    public func fulfill<T, E>(@noescape futureProducer: () -> RACFuture<T, E>) -> Disposable {
+        return futureProducer().observe { _ in self.fulfill() }
     }
     
-    public func fulfill<T, E>(token: InvalidationToken? = nil, future: RACFuture<T, E>) {
-        fulfill(token: token) { future }
+    public func fulfill<T, E>(future: RACFuture<T, E>) -> Disposable {
+        return fulfill { future }
     }
 }
 
@@ -35,19 +32,20 @@ extension XCTestCase {
 }
 
 public class AsyncTestCase : XCTestCase {
-    var invalidationTokens: [InvalidationToken] = []
+    var disposable: CompositeDisposable!
+    
+    public override func setUp() {
+        super.setUp()
+        disposable = CompositeDisposable()
+    }
     
     public override func tearDown() {
         super.tearDown()
-        for token in invalidationTokens {
-            token.invalidate()
-        }
-        invalidationTokens.removeAll(keepCapacity: false)
+        disposable.dispose()
     }
     
     public func expectComplete<T, E>(_ description: String = "future completed", @noescape futureProducer: () -> RACFuture<T, E>) {
-        let token = InvalidationToken()
-        expectationWithDescription(description).fulfill(token: token, futureProducer: futureProducer)
+        disposable.addDisposable(expectationWithDescription(description).fulfill(futureProducer))
     }
 }
 
