@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import BrightFutures
 
 extension NSError {
     public var isCancelled: Bool {
@@ -16,13 +15,13 @@ extension NSError {
 }
 
 extension NSOperationQueue {
-    public func addAsyncOperation(@noescape opProducer: () -> AsyncOperation) -> Future<(), NSError> {
+    public func addAsyncOperation(@noescape opProducer: () -> AsyncOperation) -> RACFuture<(), NSError> {
         let op = opProducer()
         addOperation(op)
         return op.future
     }
     
-    public func addAsyncOperation(op: AsyncOperation) -> Future<(), NSError> {
+    public func addAsyncOperation(op: AsyncOperation) -> RACFuture<(), NSError> {
         return addAsyncOperation { op }
     }
 }
@@ -78,15 +77,15 @@ public class AsyncOperation : NSOperation {
     
     public private(set) var result : Result?
     
-    public var future: Future<(), NSError> {
+    public var future: RACFuture<(), NSError> {
         return promise.future
     }
     
-    let promise = Promise<(), NSError>()
+    let promise = RACPromise<(), NSError>()
     
     // MARK: - API for consumers
     
-    public func manuallyStart() -> Future<(), NSError> {
+    public func manuallyStart() -> RACFuture<(), NSError> {
         start()
         return future
     }

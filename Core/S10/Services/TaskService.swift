@@ -93,11 +93,10 @@ public class TaskService {
             if queuedVideoIds.contains(task.videoId) {
                 continue
             }
-            perform {
-                downloadQueue.addAsyncOperation(VideoDownloadOperation(task: task))
-                }.onComplete { [weak self] _ in
+            downloadQueue.addAsyncOperation(VideoDownloadOperation(task: task))
+                .onComplete { [weak self] _ in
                     self?.resumeDownloads()
-            }
+                }
         }
     }
     

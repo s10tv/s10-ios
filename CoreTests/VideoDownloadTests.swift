@@ -10,7 +10,6 @@ import Foundation
 import XCTest
 import Core
 import Nimble
-import BrightFutures
 import Async
 import RealmSwift
 
@@ -36,7 +35,7 @@ class VideoDownloadTests: AsyncTestCase {
     }
     
     func testDownloadSuccess() {
-        expectComplete("download succeeds") { () -> Future<(), NSError> in
+        expectComplete("download succeeds") { () -> RACFuture<(), NSError> in
             let op = VideoDownloadOperation(videoId: videoId, senderId: senderId, remoteURL: goodURL)
             return queue.addAsyncOperation(op).onFailure {
                 fail($0)
@@ -46,7 +45,7 @@ class VideoDownloadTests: AsyncTestCase {
     }
     
     func testDownloadFailure() {
-        expectComplete("download fails") { () -> Future<(), NSError> in
+        expectComplete("download fails") { () -> RACFuture<(), NSError> in
             let op = VideoDownloadOperation(videoId: videoId, senderId: senderId, remoteURL: bogusURL)
             return queue.addAsyncOperation(op).onSuccess {
                 fail("Expected download to fail, instead it succeeded")

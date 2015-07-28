@@ -57,6 +57,6 @@ public struct EditProfileViewModel {
     public func upload(image: UIImage, taskType: PhotoUploadOperation.TaskType) -> RACFuture<(), NSError> {
         return operationQueue.addAsyncOperation {
             PhotoUploadOperation(meteor: meteor, image: image, taskType: taskType)
-        }.signalProducer() |> toFuture
+        }
     }
 }

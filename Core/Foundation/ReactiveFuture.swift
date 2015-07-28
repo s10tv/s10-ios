@@ -62,6 +62,14 @@ public struct RACFuture<T, E: ErrorType> {
         onComplete { r = $0 }
     }
     
+    public init(error: E) {
+        self.init(buffer: SignalProducer(error: error))
+    }
+    
+    public init(value: T) {
+        self.init(buffer: SignalProducer(value: value))
+    }
+    
     public init(workToStart: SignalProducer<T, E>) {
         let (buffer, sink) = SignalProducer<T, E>.buffer(1)
         (workToStart |> take(1)).start(sink)
@@ -137,6 +145,7 @@ public struct RACFuture<T, E: ErrorType> {
             return RACFuture<V, G>(buffer: transform(otherFuture.buffer)(self.buffer))
         }
     }
+    
 }
 
 // Pipe operator support and free fuctions
@@ -168,6 +177,15 @@ public func onComplete<T, E>(block: Result<T, E> -> ()) -> RACFuture<T, E> -> RA
         return future.onComplete(block)
     }
 }
+
+public func flatMap<T, U, E>(transform: T -> RACFuture<U, E>) -> RACFuture<T, E> -> RACFuture<U, E> {
+    return { future in
+        // Specific strategy here doesn't matter because there will only ever be at most value to be
+        // transformed
+        return future |> flatMap(.Latest) { transform($0).buffer }
+    }
+}
+
 
 // Unary Lift
 

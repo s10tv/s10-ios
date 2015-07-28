@@ -9,12 +9,11 @@
 import Foundation
 import XCTest
 import Nimble
-import BrightFutures
 
-// MARK: - Async Testing with Futures
+// MARK: - Async Testing with RACFutures
 
 extension XCTestExpectation {
-    public func fulfill<T, E>(token: InvalidationToken? = nil, @noescape futureProducer: () -> Future<T, E>) {
+    public func fulfill<T, E>(token: InvalidationToken? = nil, @noescape futureProducer: () -> RACFuture<T, E>) {
         let future = futureProducer().andThen { _ in }
         if let token = token {
             future.onComplete(token: token) { _ in self.fulfill() }
@@ -23,7 +22,7 @@ extension XCTestExpectation {
         }
     }
     
-    public func fulfill<T, E>(token: InvalidationToken? = nil, future: Future<T, E>) {
+    public func fulfill<T, E>(token: InvalidationToken? = nil, future: RACFuture<T, E>) {
         fulfill(token: token) { future }
     }
 }
@@ -46,7 +45,7 @@ public class AsyncTestCase : XCTestCase {
         invalidationTokens.removeAll(keepCapacity: false)
     }
     
-    public func expectComplete<T, E>(_ description: String = "future completed", @noescape futureProducer: () -> Future<T, E>) {
+    public func expectComplete<T, E>(_ description: String = "future completed", @noescape futureProducer: () -> RACFuture<T, E>) {
         let token = InvalidationToken()
         expectationWithDescription(description).fulfill(token: token, futureProducer: futureProducer)
     }

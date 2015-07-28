@@ -11,7 +11,6 @@ import XCTest
 import ReactiveCocoa
 import Async
 import Nimble
-import BrightFutures
 import Bond
 import Box
 import Core
@@ -87,7 +86,7 @@ class RACPlayground : AsyncTestCase {
     }
     
     func testFutureToSignal() {
-        let promise = Promise<Int, NSError>()
+        let promise = RACPromise<Int, NSError>()
         let sp = promise.future.signalProducer()
         
         let completeCalled = expectationWithDescription("complete called")
@@ -99,7 +98,7 @@ class RACPlayground : AsyncTestCase {
     }
     
     func testFutureMaterialize() {
-        let promise = Promise<Int, NSError>()
+        let promise = RACPromise<Int, NSError>()
 
         let sp = promise.future.signalProducer()
             |> materialize
@@ -115,7 +114,7 @@ class RACPlayground : AsyncTestCase {
     }
     
     func testExpectComplete() {
-        expectComplete { () -> Future<(), NSError> in
+        expectComplete { () -> RACFuture<(), NSError> in
             let (producer, sink) = SignalProducer<(), NSError>.buffer(1)
             sendCompleted(sink)
             return producer.future()

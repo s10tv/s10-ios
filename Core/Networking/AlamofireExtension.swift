@@ -3,7 +3,6 @@
 import Foundation
 import Alamofire
 import ReactiveCocoa
-import BrightFutures
 
 public enum NSURLSessionType {
     case Default, Ephemeral, Background(String)
@@ -57,8 +56,8 @@ public let kAlamofireResumeData = "resumeData"
 
 extension Request {
     
-    public func responseData() -> Future<NSData?, NSError> {
-        let promise = Promise<NSData?, NSError>()
+    public func responseData() -> RACFuture<NSData?, NSError> {
+        let promise = RACPromise<NSData?, NSError>()
         response { urlRequest, urlResponse, value, error in
             if let e = error {
                 var userInfo = e.userInfo ?? [:]

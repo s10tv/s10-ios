@@ -35,12 +35,10 @@
 		EA0C8C8B1B56DAAE00C2FB0A /* ReactiveFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0C8C8A1B56DAAE00C2FB0A /* ReactiveFuture.swift */; };
 		EA0FED451ADE5BC500FC6FCB /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */; };
 		EA1047281B4E3C1C00B1A76A /* RACPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1047271B4E3C1C00B1A76A /* RACPlayground.swift */; };
-		EA10472C1B4E746800B1A76A /* FutureExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA10472B1B4E746800B1A76A /* FutureExtensions.swift */; };
 		EA10472F1B4E74D000B1A76A /* ReactiveProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA10472D1B4E74A300B1A76A /* ReactiveProperties.swift */; };
 		EA1047301B4E74D000B1A76A /* ReactiveProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA10472D1B4E74A300B1A76A /* ReactiveProperties.swift */; };
 		EA1047341B4E756200B1A76A /* MeteorServiceTestingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1047321B4E756200B1A76A /* MeteorServiceTestingExtension.swift */; };
 		EA1047351B4E756200B1A76A /* TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1047331B4E756200B1A76A /* TestExtensions.swift */; };
-		EA1047361B4F1F3E00B1A76A /* FutureExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA10472B1B4E746800B1A76A /* FutureExtensions.swift */; };
 		EA1F9C8C1B47678700D1620F /* AvatarCoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1F9C8B1B47678700D1620F /* AvatarCoverCell.swift */; };
 		EA2406201B50F0F1003A73C3 /* VideoDownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA24061F1B50F0F1003A73C3 /* VideoDownloadOperation.swift */; };
 		EA2406221B50F79E003A73C3 /* VideoCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2406211B50F79E003A73C3 /* VideoCache.swift */; };
@@ -294,7 +292,6 @@
 		EA0C8C8A1B56DAAE00C2FB0A /* ReactiveFuture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveFuture.swift; sourceTree = "<group>"; };
 		EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
 		EA1047271B4E3C1C00B1A76A /* RACPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACPlayground.swift; sourceTree = "<group>"; };
-		EA10472B1B4E746800B1A76A /* FutureExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FutureExtensions.swift; sourceTree = "<group>"; };
 		EA10472D1B4E74A300B1A76A /* ReactiveProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveProperties.swift; sourceTree = "<group>"; };
 		EA1047321B4E756200B1A76A /* MeteorServiceTestingExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorServiceTestingExtension.swift; sourceTree = "<group>"; };
 		EA1047331B4E756200B1A76A /* TestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestExtensions.swift; sourceTree = "<group>"; };
@@ -1070,7 +1067,6 @@
 				EAF6705B1B31F9450025D7CF /* NotificationCenterExtensions.swift */,
 				EAF670891B31F9AD0025D7CF /* Logging.swift */,
 				EA9C16651B365BD700371B50 /* AsyncOperation.swift */,
-				EA10472B1B4E746800B1A76A /* FutureExtensions.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -1597,7 +1593,6 @@
 				EA9C166C1B368FD600371B50 /* TaskService.swift in Sources */,
 				EAF670771B31F9450025D7CF /* NotificationCenterExtensions.swift in Sources */,
 				EAF670881B31F9450025D7CF /* UIKitExtension.swift in Sources */,
-				EA10472C1B4E746800B1A76A /* FutureExtensions.swift in Sources */,
 				F912AC5D1B3745AC00DEA6B1 /* VideoUploadOperation.swift in Sources */,
 				EA82CF971B504FC500A12D94 /* Image.swift in Sources */,
 				EA043F7F1B62EF5D0047BDCA /* MessageViewModel.swift in Sources */,
@@ -1748,7 +1743,6 @@
 				EA1047281B4E3C1C00B1A76A /* RACPlayground.swift in Sources */,
 				EA2406241B5109D8003A73C3 /* VideoDownloadTests.swift in Sources */,
 				EA1047341B4E756200B1A76A /* MeteorServiceTestingExtension.swift in Sources */,
-				EA1047361B4F1F3E00B1A76A /* FutureExtensions.swift in Sources */,
 				EAF6709C1B32026F0025D7CF /* IntegrationTests.swift in Sources */,
 				EA95BBC11B3932BE00701F08 /* GenericExtensions.swift in Sources */,
 				EA0C8C891B55DA2E00C2FB0A /* EditProfileTests.swift in Sources */,

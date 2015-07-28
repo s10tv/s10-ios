@@ -7,9 +7,9 @@
 //
 
 import Foundation
+import ReactiveCocoa
 import RealmSwift
 import Alamofire
-import BrightFutures
 import Core
 
 public class VideoDownloadOperation : AsyncOperation {
@@ -56,29 +56,29 @@ public class VideoDownloadOperation : AsyncOperation {
                 ?? alamo.download(.GET, remoteURL, destination: dest)
         
         // Handle request
-        let future = perform {
-            request!.validate().responseData()
-        }.flatMap { (data: NSData?) -> Future<NSData?, NSError> in
-            let error = self.videoCache.setVideo(self.videoId, fileURL: self.tempURL)
-            return error.map { Future.failed($0) } ?? Future.succeeded(data)
-        }.andThen { result in
-            NSFileManager().removeItemAtURL(self.tempURL, error: nil)
-            let realm = Realm()
-            if let task = VideoDownloadTask.findByVideoId(self.videoId, realm: realm) {
-                realm.write {
-                    switch result {
-                    case .Success:
-                        realm.delete(task)
-                    case .Failure(let error):
-                        task.resumeData = error.value.userInfo?[kAlamofireResumeData] as? NSData ?? NSData()
-                        let desc = NSString(data:task.resumeData, encoding:NSUTF8StringEncoding) as! String
-                        Log.debug("VideoDownload got resumeData \(desc)")
-                    }
-                }
-            } else {
-                Log.error("VideoDownloadOperation complete but unable to find task with videoId=\(self.videoId)")
+        let future = request!.validate().responseData()
+            |> flatMap { (data: NSData?) -> RACFuture<NSData?, NSError> in
+                let error = self.videoCache.setVideo(self.videoId, fileURL: self.tempURL)
+                return error.map { RACFuture(error: $0) } ?? RACFuture(value: data)
             }
-        }
+            |> onComplete { result in
+                NSFileManager().removeItemAtURL(self.tempURL, error: nil)
+                let realm = Realm()
+                if let task = VideoDownloadTask.findByVideoId(self.videoId, realm: realm) {
+                    realm.write {
+                        switch result {
+                        case .Success:
+                            realm.delete(task)
+                        case .Failure(let error):
+                            task.resumeData = error.value.userInfo?[kAlamofireResumeData] as? NSData ?? NSData()
+                            let desc = NSString(data:task.resumeData, encoding:NSUTF8StringEncoding) as! String
+                            Log.debug("VideoDownload got resumeData \(desc)")
+                        }
+                    }
+                } else {
+                    Log.error("VideoDownloadOperation complete but unable to find task with videoId=\(self.videoId)")
+                }
+            }
         
         // Report result
         future.onComplete { result in
