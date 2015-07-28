@@ -8,6 +8,7 @@
     <customFonts key="customFonts">
         <mutableArray key="Cabin-Bold.ttf">
             <string>Cabin-Bold</string>
+            <string>Cabin-Bold</string>
         </mutableArray>
         <mutableArray key="Cabin-Italic.ttf">
             <string>Cabin-Italic</string>
@@ -50,9 +51,6 @@
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
         </mutableArray>
-        <mutableArray key="TransatTextBlack.otf">
-            <string>TransatTextBlack</string>
-        </mutableArray>
     </customFonts>
     <scenes>
         <!--Root View Controller-->
@@ -94,13 +92,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Loading" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aFy-Jv-pbN">
-                                <rect key="frame" x="228" y="280" width="145" height="40"/>
-                                <fontDescription key="fontDescription" name="TransatTextBlack" family="Transat Text" pointSize="40"/>
+                                <rect key="frame" x="232" y="275.5" width="137" height="49"/>
+                                <fontDescription key="fontDescription" name="Cabin-Bold" family="Cabin" pointSize="40"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.61960784310000006" green="0.4941176471" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.46897470951080322" green="0.27513545751571655" blue="0.68778532743453979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="aFy-Jv-pbN" secondAttribute="centerX" id="VbL-Ii-cBf"/>
                             <constraint firstAttribute="centerY" secondItem="aFy-Jv-pbN" secondAttribute="centerY" id="Ze3-ZG-2Aa"/>
@@ -1867,8 +1865,8 @@
         <image name="sample-taylor-video-frame" width="375" height="375"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="kNN-lk-QB3"/>
         <segue reference="TFP-eW-cVI"/>
-        <segue reference="pTL-As-d01"/>
         <segue reference="Gd9-HM-lnj"/>
     </inferredMetricsTieBreakers>
 </document>
