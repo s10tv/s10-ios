@@ -30,18 +30,18 @@ public struct CreateProfileViewModel {
     public let tagline: MutableProperty<String>
     public let aboutMe: MutableProperty<String>
     
-    public func updateAvatar(image: UIImage, width: Int, height: Int) -> RACFuture<Void, Error> {
-        let promise = RACPromise<(), Error>()
+    public func updateAvatar(image: UIImage, width: Int, height: Int) -> Future<Void, Error> {
+        let promise = Promise<(), Error>()
         return promise.future
     }
 
-    public func updateCover(image: UIImage, width: Int, height: Int) -> RACFuture<Void, Error> {
-        let promise = RACPromise<(), Error>()
+    public func updateCover(image: UIImage, width: Int, height: Int) -> Future<Void, Error> {
+        let promise = Promise<(), Error>()
         return promise.future
     }
     
-    public func saveProfile() -> RACFuture<Void, Error> {
-        let promise = RACPromise<(), Error>()
+    public func saveProfile() -> Future<Void, Error> {
+        let promise = Promise<(), Error>()
         return promise.future
     }
 }

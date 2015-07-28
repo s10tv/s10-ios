@@ -18,8 +18,8 @@ public struct ConnectServicesViewModel {
         public var nsError: NSError { return NSError() }
     }
     
-    public func finish() -> RACFuture<Void, Error> {
-        let promise = RACPromise<(), Error>()
+    public func finish() -> Future<Void, Error> {
+        let promise = Promise<(), Error>()
         return promise.future
     }
 }

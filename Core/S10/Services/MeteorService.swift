@@ -53,7 +53,7 @@ public class MeteorService : NSObject {
     }
     
     public func call(name: String, _ params: AnyObject...) -> MeteorMethod {
-        let promise = RACPromise<AnyObject?, NSError>()
+        let promise = Promise<AnyObject?, NSError>()
         return MeteorMethod(stubValue: meteor.callMethodWithName(name, parameters: params) { res, error in
             if let error = error {
                 promise.failure(error)

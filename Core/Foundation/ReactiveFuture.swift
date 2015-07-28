@@ -10,15 +10,15 @@ import Foundation
 import ReactiveCocoa
 import Result
 
-public struct RACPromise<T, E: ErrorType> {
+public struct Promise<T, E: ErrorType> {
 
     private let sink: SinkOf<Event<T, E>>
-    public let future: RACFuture<T, E>
+    public let future: Future<T, E>
     
-    public init(_ block: ((RACPromise<T, E>) -> ())? = nil) {
+    public init(_ block: ((Promise<T, E>) -> ())? = nil) {
         let (buffer, sink) = SignalProducer<T, E>.buffer(1)
         self.sink = sink
-        future = RACFuture(buffer: buffer)
+        future = Future(buffer: buffer)
         block?(self)
     }
     
@@ -40,14 +40,14 @@ public struct RACPromise<T, E: ErrorType> {
         complete(Result(error: error))
     }
     
-    public static func create<T, E: ErrorType>(@noescape block: (RACPromise<T, E> -> ())) -> RACFuture<T, E> {
-        let promise = RACPromise<T, E>()
+    public static func create<T, E: ErrorType>(@noescape block: (Promise<T, E> -> ())) -> Future<T, E> {
+        let promise = Promise<T, E>()
         block(promise)
         return promise.future
     }
 }
 
-public struct RACFuture<T, E: ErrorType> {
+public struct Future<T, E: ErrorType> {
     private let buffer: SignalProducer<T, E>
     private let _result: () -> Result<T, E>?
     public var result: Result<T, E>? { return _result() }
@@ -107,42 +107,42 @@ public struct RACFuture<T, E: ErrorType> {
         }
     }
     
-    public func onComplete(callback: Result<T, E> ->()) -> RACFuture<T, E> {
+    public func onComplete(callback: Result<T, E> ->()) -> Future<T, E> {
         observe(callback)
         return self
     }
     
-    public func onSuccess(callback: T -> ()) -> RACFuture<T, E> {
+    public func onSuccess(callback: T -> ()) -> Future<T, E> {
         observe(success: callback)
         return self
     }
     
-    public func onFailure(callback: E -> ()) -> RACFuture<T, E> {
+    public func onFailure(callback: E -> ()) -> Future<T, E> {
         observe(failure: callback)
         return self
     }
     
     // Unary lift
     
-    public func lift<U, F>(transform: Signal<T, E> -> Signal<U, F>) -> RACFuture<U, F> {
-        return RACFuture<U, F>(buffer: buffer.lift(transform))
+    public func lift<U, F>(transform: Signal<T, E> -> Signal<U, F>) -> Future<U, F> {
+        return Future<U, F>(buffer: buffer.lift(transform))
     }
     
-    public func lift<U, F>(transform: SignalProducer<T, E> -> SignalProducer<U, F>) -> RACFuture<U, F> {
-        return RACFuture<U, F>(buffer: transform(buffer))
+    public func lift<U, F>(transform: SignalProducer<T, E> -> SignalProducer<U, F>) -> Future<U, F> {
+        return Future<U, F>(buffer: transform(buffer))
     }
     
     // Binary lift
     
-    public func lift<U, F, V, G>(transform: Signal<U, F> -> (Signal<T, E> -> Signal<V, G>)) -> RACFuture<U, F> -> RACFuture<V, G> {
+    public func lift<U, F, V, G>(transform: Signal<U, F> -> (Signal<T, E> -> Signal<V, G>)) -> Future<U, F> -> Future<V, G> {
         return { otherFuture in
-            return RACFuture<V, G>(buffer: self.buffer.lift(transform)(otherFuture.buffer))
+            return Future<V, G>(buffer: self.buffer.lift(transform)(otherFuture.buffer))
         }
     }
     
-    public func lift<U, F, V, G>(transform: SignalProducer<U, F> -> (SignalProducer<T, E> -> SignalProducer<V, G>)) -> RACFuture<U, F> -> RACFuture<V, G> {
+    public func lift<U, F, V, G>(transform: SignalProducer<U, F> -> (SignalProducer<T, E> -> SignalProducer<V, G>)) -> Future<U, F> -> Future<V, G> {
         return { otherFuture in
-            return RACFuture<V, G>(buffer: transform(otherFuture.buffer)(self.buffer))
+            return Future<V, G>(buffer: transform(otherFuture.buffer)(self.buffer))
         }
     }
     
@@ -150,35 +150,35 @@ public struct RACFuture<T, E: ErrorType> {
 
 // Pipe operator support and free fuctions
 
-public func |> <T, E, X>(future: RACFuture<T, E>, @noescape transform: RACFuture<T, E> -> X) -> X {
+public func |> <T, E, X>(future: Future<T, E>, @noescape transform: Future<T, E> -> X) -> X {
     return transform(future)
 }
 
-public func deliverOn<T, E>(scheduler: SchedulerType) -> RACFuture<T, E> -> RACFuture<T, E> {
+public func deliverOn<T, E>(scheduler: SchedulerType) -> Future<T, E> -> Future<T, E> {
     return { future in
-        return RACFuture(buffer: future.buffer |> observeOn(scheduler))
+        return Future(buffer: future.buffer |> observeOn(scheduler))
     }
 }
 
-public func onSuccess<T, E>(block: T -> ()) -> RACFuture<T, E> -> RACFuture<T, E> {
+public func onSuccess<T, E>(block: T -> ()) -> Future<T, E> -> Future<T, E> {
     return { future in
         return future.onSuccess(block)
     }
 }
 
-public func onFailure<T, E>(block: E -> ()) -> RACFuture<T, E> -> RACFuture<T, E> {
+public func onFailure<T, E>(block: E -> ()) -> Future<T, E> -> Future<T, E> {
     return { future in
         return future.onFailure(block)
     }
 }
 
-public func onComplete<T, E>(block: Result<T, E> -> ()) -> RACFuture<T, E> -> RACFuture<T, E> {
+public func onComplete<T, E>(block: Result<T, E> -> ()) -> Future<T, E> -> Future<T, E> {
     return { future in
         return future.onComplete(block)
     }
 }
 
-public func flatMap<T, U, E>(transform: T -> RACFuture<U, E>) -> RACFuture<T, E> -> RACFuture<U, E> {
+public func flatMap<T, U, E>(transform: T -> Future<U, E>) -> Future<T, E> -> Future<U, E> {
     return { future in
         // Specific strategy here doesn't matter because there will only ever be at most value to be
         // transformed
@@ -189,20 +189,20 @@ public func flatMap<T, U, E>(transform: T -> RACFuture<U, E>) -> RACFuture<T, E>
 
 // Unary Lift
 
-public func |> <T, E, U, F>(future: RACFuture<T, E>, transform: Signal<T, E> -> Signal<U, F>) -> RACFuture<U, F> {
+public func |> <T, E, U, F>(future: Future<T, E>, transform: Signal<T, E> -> Signal<U, F>) -> Future<U, F> {
     return future.lift(transform)
 }
 
-public func |> <T, E, U, F>(future: RACFuture<T, E>, transform: SignalProducer<T, E> -> SignalProducer<U, F>) -> RACFuture<U, F> {
+public func |> <T, E, U, F>(future: Future<T, E>, transform: SignalProducer<T, E> -> SignalProducer<U, F>) -> Future<U, F> {
     return future.lift(transform)
 }
 
 // Convert from signal producer & signal
 
-public func toFuture<T, E: ErrorType>(producer: SignalProducer<T, E>) -> RACFuture<T, E> {
-    return RACFuture(workToStart: producer)
+public func toFuture<T, E: ErrorType>(producer: SignalProducer<T, E>) -> Future<T, E> {
+    return Future(workToStart: producer)
 }
 
-public func toFuture<T, E: ErrorType>(signal: Signal<T, E>) -> RACFuture<T, E> {
-    return RACFuture(startedWork: signal)
+public func toFuture<T, E: ErrorType>(signal: Signal<T, E>) -> Future<T, E> {
+    return Future(startedWork: signal)
 }

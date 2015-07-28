@@ -57,9 +57,9 @@ public class VideoDownloadOperation : AsyncOperation {
         
         // Handle request
         let future = request!.validate().responseData()
-            |> flatMap { (data: NSData?) -> RACFuture<NSData?, NSError> in
+            |> flatMap { (data: NSData?) -> Future<NSData?, NSError> in
                 let error = self.videoCache.setVideo(self.videoId, fileURL: self.tempURL)
-                return error.map { RACFuture(error: $0) } ?? RACFuture(value: data)
+                return error.map { Future(error: $0) } ?? Future(value: data)
             }
             |> onComplete { result in
                 NSFileManager().removeItemAtURL(self.tempURL, error: nil)

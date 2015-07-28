@@ -12,8 +12,8 @@ import DigitsKit
 import Core
 
 extension Digits {
-    func authenticate() -> RACFuture<DGTSession, NSError> {
-        let promise = RACPromise<DGTSession, NSError>()
+    func authenticate() -> Future<DGTSession, NSError> {
+        let promise = Promise<DGTSession, NSError>()
         authenticateWithCompletion { (session: DGTSession?, error: NSError?) in
             if let session = session {
                 promise.success(session)
@@ -78,8 +78,8 @@ class AccountService {
         }
     }
     
-    func login() -> RACFuture<(), NSError> {
-        let promise = RACPromise<(), NSError>()
+    func login() -> Future<(), NSError> {
+        let promise = Promise<(), NSError>()
         digits.authenticate()
             |> deliverOn(UIScheduler())
             |> onComplete {

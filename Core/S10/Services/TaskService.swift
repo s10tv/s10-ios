@@ -102,8 +102,8 @@ public class TaskService {
     
     // MARK: - Invites
     
-    public func invite(emailOrPhone: String, localVideoURL: NSURL, firstName: String?, lastName: String?) -> RACFuture<(), NSError> {
-        let promise = RACPromise<(), NSError>()
+    public func invite(emailOrPhone: String, localVideoURL: NSURL, firstName: String?, lastName: String?) -> Future<(), NSError> {
+        let promise = Promise<(), NSError>()
         let realm = Realm()
         realm.write {
             let task = InviteTask()

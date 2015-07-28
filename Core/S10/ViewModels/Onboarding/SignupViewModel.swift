@@ -31,17 +31,17 @@ public struct SignupViewModel {
         cover = user.pCover()
     }
     
-    public func uploadAvatar(image: UIImage) -> RACFuture<(), NSError> {
+    public func uploadAvatar(image: UIImage) -> Future<(), NSError> {
         return upload(image, taskType: .ProfilePic)
     }
     
-    public func uploadCoverPhoto(image: UIImage) -> RACFuture<(), NSError> {
+    public func uploadCoverPhoto(image: UIImage) -> Future<(), NSError> {
         return upload(image, taskType: .CoverPic)
     }
     
     // MARK: -
     
-    func upload(image: UIImage, taskType: PhotoUploadOperation.TaskType) -> RACFuture<(), NSError> {
+    func upload(image: UIImage, taskType: PhotoUploadOperation.TaskType) -> Future<(), NSError> {
         return operationQueue.addAsyncOperation {
             PhotoUploadOperation(meteor: meteor, image: image, taskType: taskType)
         }

@@ -23,8 +23,8 @@ public struct InviteViewModel {
         self.taskService = taskService
     }
     
-    public func sendInvite(videoURL: NSURL) -> RACFuture<(), NSError> {
-        let promise = RACPromise<(), NSError>()
+    public func sendInvite(videoURL: NSURL) -> Future<(), NSError> {
+        let promise = Promise<(), NSError>()
         if self.emailOrPhone.value.isEmpty {
             promise.failure(NSError())
             return promise.future

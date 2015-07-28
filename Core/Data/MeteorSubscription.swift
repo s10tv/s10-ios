@@ -13,12 +13,12 @@ import ReactiveCocoa
 public class MeteorSubscription {
     private let subscription: METSubscription
     private let meteor: METDDPClient
-    public let ready: RACFuture<(), NSError>
+    public let ready: Future<(), NSError>
     
     public init(meteor: METDDPClient, subscription: METSubscription) {
         self.meteor = meteor
         self.subscription = subscription
-        ready = RACPromise { promise in
+        ready = Promise { promise in
             subscription.whenDone {
                 if let error = $0 {
                     promise.failure(error)
@@ -36,9 +36,9 @@ public class MeteorSubscription {
 
 public class MeteorMethod {
     public let stubValue: AnyObject?
-    public let future: RACFuture<AnyObject?, NSError>
+    public let future: Future<AnyObject?, NSError>
     
-    public init(stubValue: AnyObject?, future: RACFuture<AnyObject?, NSError>) {
+    public init(stubValue: AnyObject?, future: Future<AnyObject?, NSError>) {
         self.stubValue = stubValue
         self.future = future
     }

@@ -15,13 +15,13 @@ extension NSError {
 }
 
 extension NSOperationQueue {
-    public func addAsyncOperation(@noescape opProducer: () -> AsyncOperation) -> RACFuture<(), NSError> {
+    public func addAsyncOperation(@noescape opProducer: () -> AsyncOperation) -> Future<(), NSError> {
         let op = opProducer()
         addOperation(op)
         return op.future
     }
     
-    public func addAsyncOperation(op: AsyncOperation) -> RACFuture<(), NSError> {
+    public func addAsyncOperation(op: AsyncOperation) -> Future<(), NSError> {
         return addAsyncOperation { op }
     }
 }
@@ -77,15 +77,15 @@ public class AsyncOperation : NSOperation {
     
     public private(set) var result : Result?
     
-    public var future: RACFuture<(), NSError> {
+    public var future: Future<(), NSError> {
         return promise.future
     }
     
-    let promise = RACPromise<(), NSError>()
+    let promise = Promise<(), NSError>()
     
     // MARK: - API for consumers
     
-    public func manuallyStart() -> RACFuture<(), NSError> {
+    public func manuallyStart() -> Future<(), NSError> {
         start()
         return future
     }

@@ -28,8 +28,8 @@ public struct UsernameViewModel {
     public let statusMessage: PropertyOf<String>
     public let statusColor: PropertyOf<UIColor>
 
-    public func saveUsername() -> RACFuture<Void, Error> {
-        let promise = RACPromise<(), Error>()
+    public func saveUsername() -> Future<Void, Error> {
+        let promise = Promise<(), Error>()
         return promise.future
     }
 }

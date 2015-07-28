@@ -15,7 +15,7 @@ import Core
 class ReactiveTests : XCTestCase {
     
     func testFutureUnaryLift() {
-        let promise = RACPromise<Int, ReactiveCocoa.NoError>()
+        let promise = Promise<Int, ReactiveCocoa.NoError>()
         let expectation = expectationWithDescription("Promise fulfills")
         promise.future
             |> map {
@@ -30,7 +30,7 @@ class ReactiveTests : XCTestCase {
     }
     
     func testFutureOperator() {
-        let promise = RACPromise<Int, ReactiveCocoa.NoError>()
+        let promise = Promise<Int, ReactiveCocoa.NoError>()
         let expectation = expectationWithDescription("Promise fulfills")
         let completed = expectationWithDescription("completed")
         promise.future

@@ -86,7 +86,7 @@ class RACPlayground : AsyncTestCase {
     }
     
     func testFutureToSignal() {
-        let promise = RACPromise<Int, NSError>()
+        let promise = Promise<Int, NSError>()
         let sp = promise.future.producer
         
         let completeCalled = expectationWithDescription("complete called")
@@ -98,7 +98,7 @@ class RACPlayground : AsyncTestCase {
     }
     
     func testFutureMaterialize() {
-        let promise = RACPromise<Int, NSError>()
+        let promise = Promise<Int, NSError>()
 
         let sp = promise.future.producer
             |> materialize
@@ -114,7 +114,7 @@ class RACPlayground : AsyncTestCase {
     }
     
     func testExpectComplete() {
-        expectComplete { () -> RACFuture<(), NSError> in
+        expectComplete { () -> Future<(), NSError> in
             let (producer, sink) = SignalProducer<(), NSError>.buffer(1)
             sendCompleted(sink)
             return producer |> toFuture
@@ -233,7 +233,7 @@ class RACPlayground : AsyncTestCase {
     }
     
     func testRacFuture() {
-        let promise = RACPromise<Int, NSError>()
+        let promise = Promise<Int, NSError>()
         let future = promise.future
         let expectation = expectationWithDescription("success")
         future.onSuccess { val in
@@ -246,7 +246,7 @@ class RACPlayground : AsyncTestCase {
     }
     
     func testRacFutureFail() {
-        let promise = RACPromise<Int, NSError>()
+        let promise = Promise<Int, NSError>()
         let future = promise.future
         let expectation = expectationWithDescription("fail")
         future.onSuccess { val in

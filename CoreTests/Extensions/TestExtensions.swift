@@ -12,14 +12,14 @@ import XCTest
 import Nimble
 import Core
 
-// MARK: - Async Testing with RACFutures
+// MARK: - Async Testing with Futures
 
 extension XCTestExpectation {
-    public func fulfill<T, E>(@noescape futureProducer: () -> RACFuture<T, E>) -> Disposable {
+    public func fulfill<T, E>(@noescape futureProducer: () -> Future<T, E>) -> Disposable {
         return futureProducer().observe { _ in self.fulfill() }
     }
     
-    public func fulfill<T, E>(future: RACFuture<T, E>) -> Disposable {
+    public func fulfill<T, E>(future: Future<T, E>) -> Disposable {
         return fulfill { future }
     }
 }
@@ -44,7 +44,7 @@ public class AsyncTestCase : XCTestCase {
         disposable.dispose()
     }
     
-    public func expectComplete<T, E>(_ description: String = "future completed", @noescape futureProducer: () -> RACFuture<T, E>) {
+    public func expectComplete<T, E>(_ description: String = "future completed", @noescape futureProducer: () -> Future<T, E>) {
         disposable.addDisposable(expectationWithDescription(description).fulfill(futureProducer))
     }
 }

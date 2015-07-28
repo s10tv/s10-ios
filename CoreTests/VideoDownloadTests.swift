@@ -35,7 +35,7 @@ class VideoDownloadTests: AsyncTestCase {
     }
     
     func testDownloadSuccess() {
-        expectComplete("download succeeds") { () -> RACFuture<(), NSError> in
+        expectComplete("download succeeds") { () -> Future<(), NSError> in
             let op = VideoDownloadOperation(videoId: videoId, senderId: senderId, remoteURL: goodURL)
             return queue.addAsyncOperation(op).onFailure {
                 fail($0)
@@ -45,7 +45,7 @@ class VideoDownloadTests: AsyncTestCase {
     }
     
     func testDownloadFailure() {
-        expectComplete("download fails") { () -> RACFuture<(), NSError> in
+        expectComplete("download fails") { () -> Future<(), NSError> in
             let op = VideoDownloadOperation(videoId: videoId, senderId: senderId, remoteURL: bogusURL)
             return queue.addAsyncOperation(op).onSuccess {
                 fail("Expected download to fail, instead it succeeded")

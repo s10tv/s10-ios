@@ -32,8 +32,8 @@ public struct EditProfileViewModel {
         cover = user.pCover()
     }
     
-    public func saveEdits() -> RACFuture<(), NSError> {
-        let promise = RACPromise<(), NSError>()
+    public func saveEdits() -> Future<(), NSError> {
+        let promise = Promise<(), NSError>()
         // TODO: Add client side validation logic
         if firstName.value == user.firstName &&
             lastName.value == user.lastName &&
@@ -54,7 +54,7 @@ public struct EditProfileViewModel {
     
     // MARK: -
     
-    public func upload(image: UIImage, taskType: PhotoUploadOperation.TaskType) -> RACFuture<(), NSError> {
+    public func upload(image: UIImage, taskType: PhotoUploadOperation.TaskType) -> Future<(), NSError> {
         return operationQueue.addAsyncOperation {
             PhotoUploadOperation(meteor: meteor, image: image, taskType: taskType)
         }
