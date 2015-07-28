@@ -42,6 +42,8 @@ class RecorderViewController : UIViewController {
             return
         }
         syncPreviewTransform()
+        
+        previewView.selectFilterScrollView.directionalLockEnabled = true
 
         recordButton.addGestureRecognizer(TouchDetector(target: self, action: "handleRecordButtonTouch:"))
     }

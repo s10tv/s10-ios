@@ -942,7 +942,7 @@
         <!--Conversation View Controller-->
         <scene sceneID="9Wr-pj-gUK">
             <objects>
-                <viewController id="kBv-HD-oBL" customClass="ConversationViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Conversation" id="kBv-HD-oBL" customClass="ConversationViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3df-Wc-RQz"/>
                         <viewControllerLayoutGuide type="bottom" id="so0-au-wZg"/>
@@ -951,7 +951,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1u-RV-bi9">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" directionalLockEnabled="YES" bounces="NO" pagingEnabled="YES" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v1u-RV-bi9">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </scrollView>
                         </subviews>
