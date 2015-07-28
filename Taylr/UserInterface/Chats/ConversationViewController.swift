@@ -73,8 +73,8 @@ class ConversationViewController : BaseViewController {
         navigationController?.navigationBar.setBackgroundColor(UIColor(white: 0.5, alpha: 0.4))
     }
     
-    override func viewDidDisappear(animated: Bool) {
-        super.viewDidDisappear(animated)
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
         navigationController?.navigationBar.setBackgroundColor(nil)
     }
     
