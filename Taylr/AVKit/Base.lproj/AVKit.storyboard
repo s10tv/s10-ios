@@ -80,18 +80,18 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="jrS-6I-cjW" firstAttribute="leading" secondItem="Mm1-nh-CJO" secondAttribute="leading" id="1ZM-DU-aBC"/>
+                            <constraint firstItem="Wdl-9Q-6Ta" firstAttribute="top" secondItem="Mm1-nh-CJO" secondAttribute="top" id="7dw-NW-Ggb"/>
                             <constraint firstItem="gUP-YK-Qgv" firstAttribute="leading" secondItem="Ahy-43-dzw" secondAttribute="leading" id="9TQ-dd-FMs"/>
+                            <constraint firstAttribute="bottom" secondItem="jrS-6I-cjW" secondAttribute="bottom" id="BBw-sA-faP"/>
                             <constraint firstAttribute="trailing" secondItem="jrS-6I-cjW" secondAttribute="trailing" id="CoB-i3-2n0"/>
                             <constraint firstItem="gUP-YK-Qgv" firstAttribute="top" secondItem="Wdl-9Q-6Ta" secondAttribute="bottom" constant="12" id="LpR-ke-rd3"/>
                             <constraint firstItem="xwQ-nI-9Ji" firstAttribute="bottom" secondItem="Ahy-43-dzw" secondAttribute="bottom" id="U62-Bk-UTE"/>
                             <constraint firstAttribute="trailingMargin" secondItem="xwQ-nI-9Ji" secondAttribute="trailing" id="XVI-KV-UGc"/>
-                            <constraint firstItem="Wdl-9Q-6Ta" firstAttribute="top" secondItem="NLf-hM-Uv9" secondAttribute="bottom" id="ZEO-0O-HId"/>
                             <constraint firstItem="Ahy-43-dzw" firstAttribute="leading" secondItem="Mm1-nh-CJO" secondAttribute="leadingMargin" id="b8G-VH-qIq"/>
                             <constraint firstItem="ccj-Kj-OsA" firstAttribute="top" secondItem="Ahy-43-dzw" secondAttribute="bottom" constant="12" id="bEN-zB-UK1"/>
-                            <constraint firstItem="ccj-Kj-OsA" firstAttribute="top" secondItem="jrS-6I-cjW" secondAttribute="bottom" id="k0F-GU-REJ"/>
                             <constraint firstAttribute="trailing" secondItem="Wdl-9Q-6Ta" secondAttribute="trailing" id="lms-lh-Du9"/>
                             <constraint firstItem="Wdl-9Q-6Ta" firstAttribute="leading" secondItem="Mm1-nh-CJO" secondAttribute="leading" id="r7B-zR-BbH"/>
-                            <constraint firstItem="jrS-6I-cjW" firstAttribute="top" secondItem="NLf-hM-Uv9" secondAttribute="bottom" id="wcp-HX-sdu"/>
+                            <constraint firstItem="jrS-6I-cjW" firstAttribute="top" secondItem="Mm1-nh-CJO" secondAttribute="top" id="yaL-0W-3Og"/>
                         </constraints>
                     </view>
                     <connections>
