@@ -11,7 +11,7 @@ import Bond
 
 public struct DiscoverViewModel {
     let meteor: MeteorService
-    let subscription: MeteorSubscription
+    public let subscription: MeteorSubscription // TODO: Test only
     public let candidates: DynamicArray<CandidateViewModel>
     
     public init(meteor: MeteorService) {

@@ -8,14 +8,25 @@
 
 import Foundation
 import Meteor
+import ReactiveCocoa
 
 public class MeteorSubscription {
     private let subscription: METSubscription
     private let meteor: METDDPClient
+    public let ready: RACFuture<(), NSError>
     
     public init(meteor: METDDPClient, subscription: METSubscription) {
         self.meteor = meteor
         self.subscription = subscription
+        ready = RACPromise { promise in
+            subscription.whenDone {
+                if let error = $0 {
+                    promise.failure(error)
+                } else {
+                    promise.success()
+                }
+            }
+        }.future
     }
     
     deinit {

@@ -63,25 +63,35 @@ class IntegrationTestEnvironment : XCTestCase {
     func getResource(filename: String) -> NSURL? {
         return bundle.URLForResource(filename.stringByDeletingPathExtension, withExtension: filename.pathExtension)
     }
-
-    func whileAuthenticated(block: () -> (RACSignal)) {
+    
+    func doWhileAuthenticated(block: (Void -> Void) -> Void) {
         let expectation = expectationWithDescription("Test Finished")
+        let cleanup: () -> () = {
+            self.userId.map { self.meteor.clearUserData($0) }
+            self.candidateUserId.map { self.meteor.clearUserData($0) }
+            self.connectionUserId.map { self.meteor.clearUserData($0) }
+            expectation.fulfill()
+        }
         self.meteor.testNewUser().flattenMap { res in
             self.userId = res["userId"] as? String
             self.candidateUserId = res["candidateUserId"] as? String
             self.connectionUserId = res["connectionUserId"] as? String
             return self.meteor.testLogin(self.userId!)
-        }.then {
-            return block()
         }.subscribeErrorOrCompleted { error in
-            self.userId.map { self.meteor.clearUserData($0) }
-            self.candidateUserId.map { self.meteor.clearUserData($0) }
-            self.connectionUserId.map { self.meteor.clearUserData($0) }
-
             expect(error).to(beNil())
-            expectation.fulfill()
+            block(cleanup)
         }
         waitForExpectationsWithTimeout(45, handler: nil)
+    }
+
+
+    func whileAuthenticated(block: () -> (RACSignal)) {
+        doWhileAuthenticated { callback in
+            block().subscribeErrorOrCompleted { error in
+                expect(error).to(beNil())
+                callback()
+            }
+        }
     }
 
     class func deleteRealmFilesAtPath(path: String) {

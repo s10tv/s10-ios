@@ -17,15 +17,21 @@ import RealmSwift
 import Core
 
 class DiscoverIntegrationTest : IntegrationTestEnvironment {
+    
+    var vm: DiscoverViewModel!
 
     func testDiscover() {
-        whileAuthenticated {
-            let model = DiscoverViewModel(meteor: self.meteor)
-            expect(model.candidates.count).toEventually(equal(1))
-            let count = model.candidates.count
-            println("Here \(count)")
-
-            return RACSignal.empty() //subject.replay()
+        doWhileAuthenticated { done in
+            self.vm = DiscoverViewModel(meteor: self.meteor)
+//            expect(model.candidates.count).toEventually(equal(1))
+//            let count = model.candidates.count
+            
+            self.vm.subscription.ready.onComplete { result in
+                expect(result.error).to(beNil())
+                expect(self.vm.candidates.count) > 0
+//                expect(self.vm.candidates.first?.displayName) == "Tony Xiao"
+                done()
+            }
         }
     }
 
