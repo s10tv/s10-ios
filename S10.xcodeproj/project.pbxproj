@@ -152,6 +152,7 @@
 		EA9F354A1A74CC6900E0C65D /* Taylr.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Taylr.xcassets */; };
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
 		EA9F819E1B61BD1F00919C04 /* DynamicProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F819D1B61BD1F00919C04 /* DynamicProperties.swift */; };
+		EA9FE6471B67F85E006F8E73 /* ReactiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9FE6461B67F85E006F8E73 /* ReactiveTests.swift */; };
 		EAA56F8D1B2B32E500DE3936 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F6C1B2B32E500DE3936 /* ChatsViewController.swift */; };
 		EAA56F8E1B2B32E500DE3936 /* ConnectionCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F6D1B2B32E500DE3936 /* ConnectionCells.swift */; };
 		EAA56F901B2B32E500DE3936 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F701B2B32E500DE3936 /* DiscoverViewController.swift */; };
@@ -413,6 +414,7 @@
 		EA9F35571A74CC6900E0C65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		EA9F35621A74CD8800E0C65D /* Taylr-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Taylr-Bridging.h"; path = "Taylr/Taylr-Bridging.h"; sourceTree = SOURCE_ROOT; };
 		EA9F819D1B61BD1F00919C04 /* DynamicProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicProperties.swift; sourceTree = "<group>"; };
+		EA9FE6461B67F85E006F8E73 /* ReactiveTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveTests.swift; sourceTree = "<group>"; };
 		EAA56F6C1B2B32E500DE3936 /* ChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		EAA56F6D1B2B32E500DE3936 /* ConnectionCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionCells.swift; sourceTree = "<group>"; };
 		EAA56F701B2B32E500DE3936 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
@@ -929,6 +931,7 @@
 				EAF6709B1B32026F0025D7CF /* IntegrationTests.swift */,
 				EA2406231B5109D8003A73C3 /* VideoDownloadTests.swift */,
 				EA1047271B4E3C1C00B1A76A /* RACPlayground.swift */,
+				EA9FE6461B67F85E006F8E73 /* ReactiveTests.swift */,
 				EA9F35561A74CC6900E0C65D /* Supporting Files */,
 				EA50220F1B54AC4B00BC92D2 /* TestNSObject.m */,
 			);
@@ -1741,6 +1744,7 @@
 				F9ABA2D01B6412CF0098B7E4 /* IntegrationTestEnvironment.swift in Sources */,
 				EA9C16771B3759B700371B50 /* FormatterTests.swift in Sources */,
 				F9ABA2CE1B6412A00098B7E4 /* DiscoverIntegrationTest.swift in Sources */,
+				EA9FE6471B67F85E006F8E73 /* ReactiveTests.swift in Sources */,
 				EA1047281B4E3C1C00B1A76A /* RACPlayground.swift in Sources */,
 				EA2406241B5109D8003A73C3 /* VideoDownloadTests.swift in Sources */,
 				EA1047341B4E756200B1A76A /* MeteorServiceTestingExtension.swift in Sources */,

@@ -26,6 +26,11 @@ class DiscoverIntegrationTest : IntegrationTestEnvironment {
 //            expect(model.candidates.count).toEventually(equal(1))
 //            let count = model.candidates.count
             
+//            let otherFuture = self.vm.subscription.ready |> map { _ in
+//                return 444
+//            }
+
+            
             self.vm.subscription.ready.onComplete { result in
                 expect(result.error).to(beNil())
                 expect(self.vm.candidates.count) > 0
