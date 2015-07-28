@@ -45,12 +45,15 @@ extension InviteViewController : ProducerDelegate {
     
     func producer(producer: ProducerViewController, didProduceVideo url: NSURL) {
         producer.dismissViewController(animated: true)
-        vm.sendInvite(url).on(UIScheduler(), success: {
-            PKHUD.showText("Sent Successfully!")
-            PKHUD.hide(afterDelay: 0.25)
-        }, failure: { error in
-            PKHUD.hide(animated: false)
-            self.showErrorAlert(error)
-        })
+        vm.sendInvite(url)
+            |> deliverOn(UIScheduler())
+            |> onSuccess {
+                PKHUD.showText("Sent Successfully!")
+                PKHUD.hide(afterDelay: 0.25)
+            }
+            |> onFailure { error in
+                PKHUD.hide(animated: false)
+                self.showErrorAlert(error)
+            }
     }
 }

@@ -33,7 +33,7 @@ public struct InviteViewModel {
             localVideoURL: videoURL,
             firstName: firstName.value,
             lastName: lastName.value)
-        future.onSuccess(UIScheduler()) {
+        future |> deliverOn(UIScheduler()) |> onSuccess {
             self.firstName.value = ""
             self.lastName.value = ""
             self.emailOrPhone.value = ""

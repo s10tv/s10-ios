@@ -80,7 +80,9 @@ class AccountService {
     
     func login() -> RACFuture<(), NSError> {
         let promise = RACPromise<(), NSError>()
-        digits.authenticate().onComplete(UIScheduler()) {
+        digits.authenticate()
+            |> deliverOn(UIScheduler())
+            |> onComplete {
             println("Session userId= \($0.value?.userID) error \($0.error)")
             if let session = $0.value {
                 self.meteorService.loginWithDigits(

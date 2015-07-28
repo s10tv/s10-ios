@@ -64,17 +64,17 @@ public struct RACFuture<T, E: ErrorType> {
     
     public init(workToStart: SignalProducer<T, E>) {
         let (buffer, sink) = SignalProducer<T, E>.buffer(1)
-        workToStart |> take(1) |> start(sink)
+        (workToStart |> take(1)).start(sink)
         self.init(buffer: buffer)
     }
     
     public init(startedWork: Signal<T, E>) {
         let (buffer, sink) = SignalProducer<T, E>.buffer(1)
-        startedWork |> take(1) |> observe(sink)
+        (startedWork |> take(1)).observe(sink)
         self.init(buffer: buffer)
     }
     
-    public func onComplete(_ deliverOn: SchedulerType? = nil, callback: Result<T, E> ->()) -> Disposable {
+    public func observe(callback: Result<T, E> ->()) -> Disposable {
         var result: Result<T, E>?
         let sink = Event<T, E>.sink(next: { v in
             result = Result(value: v)
@@ -86,25 +86,32 @@ public struct RACFuture<T, E: ErrorType> {
         })
         var disposable: Disposable!
         buffer.startWithSignal { signal, innerDisposable in
-            (deliverOn.map { signal |> observeOn($0) } ?? signal).observe(sink)
+            signal.observe(sink)
             disposable = innerDisposable
         }
         return disposable
     }
     
-    public func on(_ deliverOn: SchedulerType? = nil, success: (T -> ())? = nil, failure: (E -> ())? = nil, complete: (() -> ())? = nil) -> Disposable {
-        return onComplete(deliverOn) { result in
+    public func observe(success: (T -> ())? = nil, failure: (E -> ())? = nil, complete: (() -> ())? = nil) -> Disposable {
+        return observe { result in
             result.analysis(ifSuccess: { success?($0) }, ifFailure: { failure?($0) })
             complete?()
         }
     }
     
-    public func onSuccess(_ deliverOn: SchedulerType? = nil, callback: T -> ()) -> Disposable {
-        return on(deliverOn, success: callback)
+    public func onComplete(callback: Result<T, E> ->()) -> RACFuture<T, E> {
+        observe(callback)
+        return self
     }
     
-    public func onFailure(_ deliverOn: SchedulerType? = nil, callback: E -> ()) -> Disposable {
-        return on(deliverOn, failure: callback)
+    public func onSuccess(callback: T -> ()) -> RACFuture<T, E> {
+        observe(success: callback)
+        return self
+    }
+    
+    public func onFailure(callback: E -> ()) -> RACFuture<T, E> {
+        observe(failure: callback)
+        return self
     }
     
     // Unary lift
@@ -132,28 +139,33 @@ public struct RACFuture<T, E: ErrorType> {
     }
 }
 
+// Pipe operator support and free fuctions
+
 public func |> <T, E, X>(future: RACFuture<T, E>, @noescape transform: RACFuture<T, E> -> X) -> X {
     return transform(future)
 }
 
+public func deliverOn<T, E>(scheduler: SchedulerType) -> RACFuture<T, E> -> RACFuture<T, E> {
+    return { future in
+        return RACFuture(buffer: future.buffer |> observeOn(scheduler))
+    }
+}
+
 public func onSuccess<T, E>(block: T -> ()) -> RACFuture<T, E> -> RACFuture<T, E> {
     return { future in
-        future.onSuccess(callback: block)
-        return future
+        return future.onSuccess(block)
     }
 }
 
 public func onFailure<T, E>(block: E -> ()) -> RACFuture<T, E> -> RACFuture<T, E> {
     return { future in
-        future.onFailure(callback: block)
-        return future
+        return future.onFailure(block)
     }
 }
 
 public func onComplete<T, E>(block: Result<T, E> -> ()) -> RACFuture<T, E> -> RACFuture<T, E> {
     return { future in
-        future.onComplete(callback: block)
-        return future
+        return future.onComplete(block)
     }
 }
 
@@ -175,33 +187,4 @@ public func toFuture<T, E: ErrorType>(producer: SignalProducer<T, E>) -> RACFutu
 
 public func toFuture<T, E: ErrorType>(signal: Signal<T, E>) -> RACFuture<T, E> {
     return RACFuture(startedWork: signal)
-}
-
-
-// Deprecated
-
-public func future<T, E>(deliverOn: SchedulerType? = nil, success: (T -> ())? = nil, failure: (E -> ())? = nil, complete: (Result<T, E> -> ())? = nil) -> SignalProducer<T, E> -> Disposable {
-    return { producer in
-        return RACFuture(workToStart: producer).onComplete(deliverOn) { result in
-            switch result {
-            case .Success(let v):
-                success?(v.value)
-            case .Failure(let error):
-                failure?(error.value)
-            }
-            complete?(result)
-        }
-    }
-}
-
-public func futureSuccess<T, E>(_ deliverOn: SchedulerType? = nil, callback: T -> ()) -> SignalProducer<T, E> -> Disposable {
-    return future(deliverOn: deliverOn, success: callback)
-}
-
-public func futureFailure<T, E>(_ deliverOn: SchedulerType? = nil, callback: E -> ()) -> SignalProducer<T, E> -> Disposable {
-    return future(deliverOn: deliverOn, failure: callback)
-}
-
-public func futureCompleted<T, E>(_ deliverOn: SchedulerType? = nil, callback: Result<T, E> -> ()) -> SignalProducer<T, E> -> Disposable {
-    return future(deliverOn: deliverOn, complete: callback)
 }

@@ -22,7 +22,9 @@ class LoadingViewController : UIViewController {
         
         Globals.accountService.state.producer
             |> skipWhile { $0 == AccountService.State.Indeterminate }
-            |> futureSuccess(UIScheduler()) { state in
+            |> toFuture
+            |> deliverOn(UIScheduler())
+            |> onSuccess { state in
                 assert(NSThread.isMainThread(), "Must be on main")
                 switch state {
                 case .LoggedOut:

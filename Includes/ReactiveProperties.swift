@@ -45,6 +45,7 @@ func |> <P1 : PropertyType, X>(property: P1, @noescape transform: P1 -> X) -> X 
     return transform(property)
 }
 
+// TODO: Add lifting support to properties
 func map<P : PropertyType, T, U where P.Value == T>(transform: T -> U) -> P -> PropertyOf<U> {
     return { property in
         return PropertyOf(transform(property.value)) {

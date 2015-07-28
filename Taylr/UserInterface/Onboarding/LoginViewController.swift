@@ -59,24 +59,27 @@ class LoginViewController : BaseViewController {
             showErrorAlert(NSError(.NetworkUnreachable))
             return
         }
-        Globals.accountService.login().on(UIScheduler(), success: {
-            assert(NSThread.isMainThread(), "Only on main")
-            switch Globals.accountService.state.value {
-            case .LoggedIn:
-                self.performSegue(.LoginToCreateProfile, sender: self)
-            case .SignedUp:
-                self.performSegue(.Main_Discover, sender: self)
-            default:
-                assertionFailure("Expecting either LoggedIn or SignedUp")
+        Globals.accountService.login()
+            |> deliverOn(UIScheduler())
+            |> onSuccess {
+                assert(NSThread.isMainThread(), "Only on main")
+                switch Globals.accountService.state.value {
+                case .LoggedIn:
+                    self.performSegue(.LoginToCreateProfile, sender: self)
+                case .SignedUp:
+                    self.performSegue(.Main_Discover, sender: self)
+                default:
+                    assertionFailure("Expecting either LoggedIn or SignedUp")
+                }
             }
-        }, failure: { error in
-            if error.domain == METDDPErrorDomain {
-                self.showAlert(LS(.errUnableToLoginTitle), message: LS(.errUnableToLoginMessage))
-            } else if error.domain == DGTErrorDomain {
-                // Ignoring digits error for now
-                Log.warn("Ignoring digits error, not handling for now \(error)")
+            |> onFailure { error in
+                if error.domain == METDDPErrorDomain {
+                    self.showAlert(LS(.errUnableToLoginTitle), message: LS(.errUnableToLoginMessage))
+                } else if error.domain == DGTErrorDomain {
+                    // Ignoring digits error for now
+                    Log.warn("Ignoring digits error, not handling for now \(error)")
+                }
             }
-        })
     }
     
     // MARK; - Debugging

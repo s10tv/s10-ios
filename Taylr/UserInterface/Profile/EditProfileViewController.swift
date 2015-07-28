@@ -84,13 +84,15 @@ class EditProfileViewController : UITableViewController {
     
     @IBAction func didPressDone(sender: AnyObject) {
         PKHUD.showActivity(dimsBackground: true)
-        vm.saveEdits().onComplete(UIScheduler()) { result in
-            PKHUD.hide(animated: false)
-            if let err = result.error {
-                self.showErrorAlert(err)
-            } else {
-                self.navigationController?.popViewControllerAnimated(true)
+        vm.saveEdits()
+            |> deliverOn(UIScheduler())
+            |> onComplete { result in
+                PKHUD.hide(animated: false)
+                if let err = result.error {
+                    self.showErrorAlert(err)
+                } else {
+                    self.navigationController?.popViewControllerAnimated(true)
+                }
             }
-        }
     }
 }
