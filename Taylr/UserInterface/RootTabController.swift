@@ -19,7 +19,8 @@ class RootTabController : UITabBarController {
         navigationController?.navigationBarHidden = false
         delegate = self
 
-        selectedIndex = 1 // Discover Scene
+        // Default to show Discover Scene first, then save user pref
+        selectedIndex = UD[.iLastTabIndex].int ?? 1
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -33,5 +34,6 @@ extension RootTabController : UITabBarControllerDelegate {
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
         tabBarController.navigationItem.title = viewController.title
         tabBarController.navigationItem.titleView = viewController.navigationItem.titleView
+        UD[.iLastTabIndex] = selectedIndex
     }
 }

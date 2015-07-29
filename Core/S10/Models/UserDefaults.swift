@@ -17,6 +17,7 @@ public enum UserDefaultKey : String {
     case sMeteorUserId = "meteorUserId"
     case sUserDisplayName = "userDisplayName"
     case sUserEmail = "userEmail"
+    case iLastTabIndex = "lastTabIndex"
     
     public func defaultValue() -> Any? {
         switch self {
