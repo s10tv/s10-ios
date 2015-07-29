@@ -638,7 +638,7 @@
                                                         <constraint firstAttribute="height" constant="60" id="NW7-d2-jAX"/>
                                                     </constraints>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="5" minimumInteritemSpacing="10" id="fCk-xM-sFK">
-                                                        <size key="itemSize" width="36" height="36"/>
+                                                        <size key="itemSize" width="40" height="40"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -648,20 +648,22 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                                <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-twitter" translatesAutoresizingMaskIntoConstraints="NO" id="96a-9V-ZQt">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="36" height="36"/>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-twitter-color" translatesAutoresizingMaskIntoConstraints="NO" id="96a-9V-ZQt">
+                                                                        <rect key="frame" x="2" y="2" width="36" height="36"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="height" constant="36" id="XCg-Pj-MiX"/>
+                                                                            <constraint firstAttribute="width" constant="36" id="caB-g5-3FP"/>
+                                                                        </constraints>
                                                                     </imageView>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             </view>
                                                             <constraints>
-                                                                <constraint firstAttribute="trailing" secondItem="96a-9V-ZQt" secondAttribute="trailing" id="jTz-9R-LMF"/>
-                                                                <constraint firstAttribute="bottom" secondItem="96a-9V-ZQt" secondAttribute="bottom" id="qMS-Yt-8OO"/>
-                                                                <constraint firstItem="96a-9V-ZQt" firstAttribute="top" secondItem="2ZU-Ga-Ajh" secondAttribute="top" id="zAE-dh-6J1"/>
-                                                                <constraint firstItem="96a-9V-ZQt" firstAttribute="leading" secondItem="2ZU-Ga-Ajh" secondAttribute="leading" id="zl9-0g-4FO"/>
+                                                                <constraint firstAttribute="centerX" secondItem="96a-9V-ZQt" secondAttribute="centerX" id="1A8-qi-u9U"/>
+                                                                <constraint firstAttribute="centerY" secondItem="96a-9V-ZQt" secondAttribute="centerY" id="uCW-Gh-GPY"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="iconView" destination="96a-9V-ZQt" id="Jqz-B3-l0L"/>
