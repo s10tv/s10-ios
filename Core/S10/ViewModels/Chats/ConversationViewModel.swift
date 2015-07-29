@@ -70,7 +70,11 @@ public struct ConversationViewModel {
     
     // BUGBUG: Never called thus no message will show up
     public func reloadMessages() {
-        let messages = Message
+        let query = recipient.map {
+            Message.by(MessageKeys.sender.rawValue, value: $0)
+        } ?? Message.all()
+        
+        let messages = query
             // MASSIVE HACK ALERT: Ascending should be true but empirically
             // ascending = false seems to actually give us the correct result. FML.
             .sorted(by: MessageKeys.createdAt.rawValue, ascending: false)
