@@ -205,8 +205,8 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Big Machine Records" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKI-xG-zC5" userLabel="Employer">
-                                                    <rect key="frame" x="8" y="245" width="134.5" height="16.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Big Machine Records" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TKI-xG-zC5" userLabel="Employer">
+                                                    <rect key="frame" x="8" y="244" width="164" height="17.5"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Italic" family="Cabin" pointSize="14"/>
                                                     <color key="textColor" red="0.60777515172958374" green="0.60788232088088989" blue="0.60776835680007935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -251,8 +251,8 @@
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Singer &amp; Songwriter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0dW-0L-MEx" userLabel="Job Title">
-                                                    <rect key="frame" x="8" y="229" width="125" height="16.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Singer &amp; Songwriter" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0dW-0L-MEx" userLabel="Job Title">
+                                                    <rect key="frame" x="8" y="227" width="164" height="17.5"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                                     <color key="textColor" red="0.2901606559753418" green="0.29021650552749634" blue="0.29015710949897766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -264,6 +264,7 @@
                                         <constraints>
                                             <constraint firstItem="0dW-0L-MEx" firstAttribute="leading" secondItem="5p8-O9-cl0" secondAttribute="leadingMargin" id="0is-me-wur"/>
                                             <constraint firstAttribute="trailing" secondItem="fhZ-Pj-Tcn" secondAttribute="trailing" id="1eD-Hp-Nnb"/>
+                                            <constraint firstItem="TKI-xG-zC5" firstAttribute="trailing" secondItem="5p8-O9-cl0" secondAttribute="trailingMargin" id="2km-yi-71p"/>
                                             <constraint firstItem="2eB-0R-AfQ" firstAttribute="leading" secondItem="5p8-O9-cl0" secondAttribute="leadingMargin" id="6pu-1T-Iwq"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="2eB-0R-AfQ" secondAttribute="bottom" id="DPO-PM-lHu"/>
                                             <constraint firstItem="TKI-xG-zC5" firstAttribute="top" secondItem="0dW-0L-MEx" secondAttribute="bottom" id="EU6-43-KvC"/>
@@ -273,6 +274,7 @@
                                             <constraint firstItem="7Ib-JK-1el" firstAttribute="leading" secondItem="5p8-O9-cl0" secondAttribute="leadingMargin" id="Qz8-hx-tm0"/>
                                             <constraint firstItem="jwx-T1-rAX" firstAttribute="top" secondItem="5p8-O9-cl0" secondAttribute="top" id="iUz-iI-2ms"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="2eB-0R-AfQ" secondAttribute="trailing" id="nLX-QK-Ktv"/>
+                                            <constraint firstItem="0dW-0L-MEx" firstAttribute="trailing" secondItem="5p8-O9-cl0" secondAttribute="trailingMargin" id="nyG-ix-062"/>
                                             <constraint firstItem="0dW-0L-MEx" firstAttribute="top" secondItem="jwx-T1-rAX" secondAttribute="bottom" constant="4" id="pWO-Qv-9hj"/>
                                             <constraint firstItem="fhZ-Pj-Tcn" firstAttribute="leading" secondItem="5p8-O9-cl0" secondAttribute="leading" id="r1f-Wp-cFQ"/>
                                             <constraint firstItem="TKI-xG-zC5" firstAttribute="leading" secondItem="5p8-O9-cl0" secondAttribute="leadingMargin" id="syM-c5-1Eb"/>
@@ -323,6 +325,20 @@
                     <tabBarItem key="tabBarItem" title="" image="ic-discover" id="MDC-z7-KZY">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
+                    <navigationItem key="navigationItem" id="3Lz-qe-3sD">
+                        <nil key="title"/>
+                        <view key="titleView" contentMode="scaleToFill" id="UsO-Mo-HgH">
+                            <rect key="frame" x="268" y="4.5" width="64" height="35"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="discover-logo" translatesAutoresizingMaskIntoConstraints="NO" id="4dB-rS-cQI">
+                                    <rect key="frame" x="0.0" y="0.0" width="64" height="35"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        </view>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="collectionView" destination="5D7-hF-WjP" id="geM-dN-w4M"/>
                     </connections>
@@ -1980,6 +1996,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="discover-logo" width="64" height="35"/>
         <image name="ic-back-arrow" width="12" height="21"/>
         <image name="ic-chats" width="27" height="24"/>
         <image name="ic-checkmark" width="28" height="28"/>
@@ -1998,8 +2015,8 @@
         <image name="sample-taylor-video-frame" width="375" height="375"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="yhs-PQ-k4J"/>
+        <segue reference="Fwv-Pj-RXP"/>
         <segue reference="kNN-lk-QB3"/>
-        <segue reference="Nm9-7n-EUh"/>
+        <segue reference="TFP-eW-cVI"/>
     </inferredMetricsTieBreakers>
 </document>
