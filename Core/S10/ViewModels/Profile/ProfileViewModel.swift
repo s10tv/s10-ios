@@ -11,6 +11,13 @@ import ReactiveCocoa
 import Bond
 import Box
 
+private func supportedActivitiesByUser(user: User) -> NSPredicate {
+    let supportedTypes: [Activity.ContentType] = [.Image, .Text]
+    return NSPredicate(format: "%K == %@ && %K IN %@",
+        ActivityKeys.user.rawValue, user,
+        ActivityKeys.type_.rawValue, supportedTypes.map { $0.rawValue })
+}
+
 public struct ProfileViewModel {
     let meteor: MeteorService
     let user: User
@@ -33,13 +40,11 @@ public struct ProfileViewModel {
                 ?? [TaylrProfileInfoViewModel(user: user)]
         })
         frc = Activity
-            .by(ActivityKeys.user, value: user)
+            .by(supportedActivitiesByUser(user))
             .sorted(by: ActivityKeys.timestamp.rawValue, ascending: false)
             .fetchedResultsController(nil)
         activities = frc.results(Activity)
             .map(viewModelForActivity)
-            .filter { $0 != nil }
-            .map { vm, _ in vm! }
     }
     
     public func selectProfile(profileId: String) {

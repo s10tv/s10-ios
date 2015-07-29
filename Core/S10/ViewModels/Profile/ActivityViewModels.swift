@@ -11,7 +11,7 @@ import Bond
 import ReactiveCocoa
 import ObjectMapper
 
-func viewModelForActivity(activity: Activity) -> ActivityViewModel? {
+func viewModelForActivity(activity: Activity) -> ActivityViewModel {
 //    return nil // TODO: Invalid server data causes a crash, what to do?
     if let type = activity.type {
         switch type {
@@ -21,13 +21,11 @@ func viewModelForActivity(activity: Activity) -> ActivityViewModel? {
             return ActivityTextViewModel(activity: activity)
         case .Link:
             fatalError("Not supported")
-            return nil
         case .Video:
             fatalError("Not supported")
-            return nil
         }
     }
-    return nil
+    fatalError("Not supported")
 }
 
 public protocol ActivityViewModel {
