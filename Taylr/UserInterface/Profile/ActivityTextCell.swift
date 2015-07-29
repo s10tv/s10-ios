@@ -21,7 +21,8 @@ class ActivityTextCell : UITableViewCell, BindableCell {
     @IBOutlet weak var captionContainer: UIView!
     @IBOutlet weak var captionLabel: UILabel!
     @IBOutlet weak var captionToTextSpacing: NSLayoutConstraint!
-    @IBOutlet weak var captionContainerHeight: NSLayoutConstraint!
+    // Strong because otherwise it will be deallocated when inactive
+    @IBOutlet var captionContainerHeight: NSLayoutConstraint!
     
     override func awakeFromNib() {
         super.awakeFromNib()
