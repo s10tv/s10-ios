@@ -212,13 +212,13 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2eB-0R-AfQ">
-                                                    <rect key="frame" x="8" y="270" width="164" height="20"/>
+                                                    <rect key="frame" x="8" y="268" width="164" height="22"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="20" id="DMt-Kh-Otj"/>
+                                                        <constraint firstAttribute="height" constant="22" id="DMt-Kh-Otj"/>
                                                     </constraints>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="5" id="tyn-di-qZO">
-                                                        <size key="itemSize" width="20" height="20"/>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="3" minimumInteritemSpacing="3" id="tyn-di-qZO">
+                                                        <size key="itemSize" width="22" height="22"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -228,20 +228,22 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                                <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2TC-zC-crt">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="20" height="20"/>
+                                                                        <rect key="frame" x="1" y="1" width="20" height="20"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="20" id="2qa-jQ-75u"/>
+                                                                            <constraint firstAttribute="height" constant="20" id="kfS-Xa-XML"/>
+                                                                        </constraints>
                                                                     </imageView>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                             </view>
                                                             <constraints>
-                                                                <constraint firstItem="2TC-zC-crt" firstAttribute="leading" secondItem="Jaw-B6-ap7" secondAttribute="leading" id="5rX-PR-YT6"/>
-                                                                <constraint firstAttribute="bottom" secondItem="2TC-zC-crt" secondAttribute="bottom" id="C1X-ED-0kH"/>
-                                                                <constraint firstAttribute="trailing" secondItem="2TC-zC-crt" secondAttribute="trailing" id="uPb-Az-SY6"/>
-                                                                <constraint firstItem="2TC-zC-crt" firstAttribute="top" secondItem="Jaw-B6-ap7" secondAttribute="top" id="wkH-Ir-b9d"/>
+                                                                <constraint firstAttribute="centerX" secondItem="2TC-zC-crt" secondAttribute="centerX" id="5sX-ry-hqh"/>
+                                                                <constraint firstAttribute="centerY" secondItem="2TC-zC-crt" secondAttribute="centerY" id="oIQ-P0-Lfo"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="imageView" destination="2TC-zC-crt" id="HNp-bT-QrF"/>
@@ -266,7 +268,7 @@
                                             <constraint firstAttribute="bottomMargin" secondItem="2eB-0R-AfQ" secondAttribute="bottom" id="DPO-PM-lHu"/>
                                             <constraint firstItem="TKI-xG-zC5" firstAttribute="top" secondItem="0dW-0L-MEx" secondAttribute="bottom" id="EU6-43-KvC"/>
                                             <constraint firstAttribute="trailing" secondItem="jwx-T1-rAX" secondAttribute="trailing" id="Eee-iI-qJ4"/>
-                                            <constraint firstItem="2eB-0R-AfQ" firstAttribute="top" secondItem="TKI-xG-zC5" secondAttribute="bottom" constant="8" symbolic="YES" id="I5W-8Z-1xF"/>
+                                            <constraint firstItem="2eB-0R-AfQ" firstAttribute="top" secondItem="TKI-xG-zC5" secondAttribute="bottom" constant="6" id="I5W-8Z-1xF"/>
                                             <constraint firstItem="OLv-LL-2Yz" firstAttribute="bottom" secondItem="fhZ-Pj-Tcn" secondAttribute="bottom" id="Kjv-5g-WJV"/>
                                             <constraint firstItem="7Ib-JK-1el" firstAttribute="leading" secondItem="5p8-O9-cl0" secondAttribute="leadingMargin" id="Qz8-hx-tm0"/>
                                             <constraint firstItem="jwx-T1-rAX" firstAttribute="top" secondItem="5p8-O9-cl0" secondAttribute="top" id="iUz-iI-2ms"/>
@@ -597,8 +599,8 @@
                                                     <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <size key="shadowOffset" width="0.0" height="0.0"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="0.5 miles away, 5m ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbX-bI-Gli">
-                                                    <rect key="frame" x="220" y="194.5" width="147" height="16.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.5 miles away, 5m ago" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vbX-bI-Gli">
+                                                    <rect key="frame" x="233" y="193.5" width="134" height="17.5"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Italic" family="Cabin" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
@@ -1985,8 +1987,8 @@
         <image name="sample-taylor-video-frame" width="375" height="375"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="kNN-lk-QB3"/>
         <segue reference="TFP-eW-cVI"/>
-        <segue reference="Gd9-HM-lnj"/>
+        <segue reference="kNN-lk-QB3"/>
+        <segue reference="Fwv-Pj-RXP"/>
     </inferredMetricsTieBreakers>
 </document>
