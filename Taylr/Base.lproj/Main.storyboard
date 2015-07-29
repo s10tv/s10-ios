@@ -574,7 +574,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-cover-image" translatesAutoresizingMaskIntoConstraints="NO" id="6ml-E6-ZMG">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" priority="751" constant="220" id="Uga-nJ-Tne"/>
+                                                        <constraint firstAttribute="height" constant="220" id="Uga-nJ-Tne"/>
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pNm-He-lw7" userLabel="Cover Overlay">
@@ -688,7 +688,7 @@
                                                 <constraint firstItem="qh5-iy-Fge" firstAttribute="bottom" secondItem="6ml-E6-ZMG" secondAttribute="bottom" constant="-30" id="Ygx-Oi-EoH"/>
                                                 <constraint firstAttribute="trailing" secondItem="6ml-E6-ZMG" secondAttribute="trailing" id="Z7a-nQ-BqT"/>
                                                 <constraint firstItem="6R8-aE-7Ce" firstAttribute="leading" secondItem="uY6-9P-VPb" secondAttribute="leading" id="ZBp-g2-Kor"/>
-                                                <constraint firstAttribute="bottom" secondItem="NCh-eV-aXm" secondAttribute="bottom" id="ZMD-1G-MoV"/>
+                                                <constraint firstAttribute="bottom" secondItem="NCh-eV-aXm" secondAttribute="bottom" priority="249" id="ZMD-1G-MoV"/>
                                                 <constraint firstItem="brj-Vp-1XD" firstAttribute="top" secondItem="2Sg-08-WeT" secondAttribute="bottom" constant="8" id="c16-SJ-B8x"/>
                                                 <constraint firstItem="NCh-eV-aXm" firstAttribute="top" secondItem="6ml-E6-ZMG" secondAttribute="bottom" id="cag-dc-X35"/>
                                                 <constraint firstAttribute="trailing" secondItem="6R8-aE-7Ce" secondAttribute="trailing" id="d76-rv-NrY"/>
