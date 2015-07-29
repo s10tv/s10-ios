@@ -27,7 +27,7 @@ class CandidateCell : UICollectionViewCell, BindableCell {
         jobTitleLabel.text = vm.jobTitle
         employerLabel.text = vm.employer
         
-        vm.profileIcons.map(serviceIconsView.factory(CandidateServiceCell)) ->> serviceIconsView
+        vm.profileIcons.map(serviceIconsView.factory(ProfileIconCell)) ->> serviceIconsView
     }
     
     override func prepareForReuse() {

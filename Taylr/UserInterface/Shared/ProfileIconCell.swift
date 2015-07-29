@@ -9,8 +9,7 @@
 import UIKit
 import Core
 
-class CandidateServiceCell : UICollectionViewCell, BindableCell {
-    typealias ViewModel = Image
+class ProfileIconCell : UICollectionViewCell, BindableCell {
     @IBOutlet weak var imageView: UIImageView!
     
     func bind(vm: Image) {
@@ -18,6 +17,6 @@ class CandidateServiceCell : UICollectionViewCell, BindableCell {
     }
     
     static func reuseId() -> String {
-        return reuseId(.CandidateService)
+        return reuseId(.ProfileIconCell)
     }
 }

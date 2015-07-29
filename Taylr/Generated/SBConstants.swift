@@ -2,8 +2,8 @@
 
 public enum CollectionViewCellreuseIdentifier : String {
     case CandidateCell = "CandidateCell"
-    case CandidateService = "CandidateService"
     case IntegrationCell = "IntegrationCell"
+    case ProfileIconCell = "ProfileIconCell"
     case ProfileSelectorCell = "ProfileSelectorCell"
 }
 
@@ -44,6 +44,7 @@ public enum TableViewControllerStoryboardIdentifier : String {
 public enum ViewControllerStoryboardIdentifier : String {
     case AuthWeb = "AuthWeb"
     case Chats = "Chats"
+    case Conversation = "Conversation"
     case Discover = "Discover"
     case Editor = "Editor"
     case Login = "Login"

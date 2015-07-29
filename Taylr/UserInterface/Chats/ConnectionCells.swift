@@ -62,9 +62,14 @@ class NewConnectionCell : UITableViewCell, BindableCell {
         vm.avatar ->> avatarView.imageBond
         vm.displayName ->> nameLabel
         vm.displayTime ->> timestampLabel
-//        playIcon //
-//        spinner //
-//        vm.profileIcons.map
+        vm.jobTitle ->> titleLabel
+        vm.employer ->> subtitleLabel
+        vm.profileIcons.map(profileIconsView.factory(ProfileIconCell)) ->> profileIconsView
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        avatarView.masksToBounds = true
     }
     
     static func reuseId() -> String {

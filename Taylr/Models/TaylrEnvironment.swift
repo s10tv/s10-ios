@@ -51,7 +51,7 @@ class TaylrEnvironment : Environment {
         switch audience {
             case .Dev:
                 upgradeURL = NSURL("https://apps-ios.crashlytics.com/projects/54f16f389f24291fde000043")
-                serverHostName = "s10-dev.herokuapp.com"
+                serverHostName = "s10-demo.herokuapp.com"
 //                serverHostName = "10.1.1.12:3000"
 //                serverHostName = "s10-beta.herokuapp.com"
                 bugfenderAppToken = "RBsiKkpkyiXUW2Sk50JTKTKUYlNpXsFn"
