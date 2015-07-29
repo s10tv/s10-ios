@@ -44,7 +44,7 @@ class ActivityImageCell : UITableViewCell, BindableCell {
             $0.bindImage(nil)
         }
     }
-    
+        
     static func reuseId() -> String {
         return reuseId(.ActivityImageCell)
     }

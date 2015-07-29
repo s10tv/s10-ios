@@ -14,15 +14,16 @@ import ObjectMapper
 func viewModelForActivity(activity: Activity) -> ActivityViewModel? {
 //    return nil // TODO: Invalid server data causes a crash, what to do?
     if let type = activity.type {
-        return ActivityImageViewModel(activity: activity)
         switch type {
         case .Image:
             return ActivityImageViewModel(activity: activity)
         case .Text:
-            return nil
+            return ActivityTextViewModel(activity: activity)
         case .Link:
+            fatalError("Not supported")
             return nil
         case .Video:
+            fatalError("Not supported")
             return nil
         }
     }
@@ -52,14 +53,33 @@ public struct ActivityImageViewModel : ActivityViewModel {
         avatar = profile?.avatar
         displayName = profile?.displayName ?? ""
         displayTime = relativeTime(activity.timestamp)
-        integrationName = profile?.displayId ?? ""
-        integrationColor = UIColor.whiteColor()
+        integrationName = profile?.integrationName ?? ""
+        integrationColor = profile?.themeColor ?? UIColor.whiteColor()
         image = activity.image
         text = activity.text
     }
 }
 
-public struct ActivityTextViewModel {
+public struct ActivityTextViewModel : ActivityViewModel {
+    public let avatar: Image?
+    public let displayName: String
+    public let displayTime: PropertyOf<String>
+    public let integrationName: String
+    public let integrationColor: UIColor
+    
+    public let text: String
+    public let caption: String?
+    
+    init(activity: Activity) {
+        let profile = activity.profile()
+        avatar = profile?.avatar
+        displayName = profile?.displayName ?? ""
+        displayTime = relativeTime(activity.timestamp)
+        integrationName = profile?.integrationName ?? ""
+        integrationColor = profile?.themeColor ?? UIColor.blackColor()
+        text = activity.text!
+        caption = activity.caption
+    }
 }
 
 public struct ActivityLinkViewModel {

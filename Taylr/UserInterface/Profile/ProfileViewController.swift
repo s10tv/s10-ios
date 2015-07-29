@@ -28,6 +28,7 @@ class ProfileViewController : BaseViewController {
         let taylrProfileFactory = tableView.factory(TaylrProfileInfoCell.self, section: 1)
         let connectedProfileFactory = tableView.factory(ConnectedProfileInfoCell.self, section: 1)
         let imageCellFactory = tableView.factory(ActivityImageCell.self, section: 2)
+        let textCellFactory = tableView.factory(ActivityTextCell.self, section: 2)
 
         let coverSection = vm.coverVM.map { [unowned self] (vm, index) -> UITableViewCell in
             if self.coverCell == nil {
@@ -50,6 +51,8 @@ class ProfileViewController : BaseViewController {
             switch vm {
             case let vm as ActivityImageViewModel:
                 return imageCellFactory(vm, index)
+            case let vm as ActivityTextViewModel:
+                return textCellFactory(vm, index)
             default:
                 fatalError("Unexpected cell type")
             }

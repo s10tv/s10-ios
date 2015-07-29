@@ -7,6 +7,27 @@
 //
 
 import ObjectMapper
+import EDColor
+
+internal class ColorTransform: TransformType {
+    typealias Object = UIColor
+    typealias JSON = String
+    
+    init() {}
+    
+    func transformFromJSON(value: AnyObject?) -> UIColor? {
+        if let colorHex = value as? String {
+            return UIColor(hexString: colorHex)
+        }
+        return nil
+    }
+    
+    func transformToJSON(value: UIColor?) -> String? {
+        // BUGBUG?
+        return nil
+    }
+}
+
 
 @objc(User)
 internal class User: _User {
@@ -32,6 +53,7 @@ internal class User: _User {
         var authenticated: Bool?
         var url: NSURL!
         var integrationName: String!
+        var themeColor: UIColor!
         var attributes: [Attribute]!
         
         init?(_ map: Map) {
@@ -46,6 +68,7 @@ internal class User: _User {
             displayId <- map["displayId"]
             authenticated <- map["authenticated"]
             integrationName <- map["integrationName"]
+            themeColor <- (map["themeColor"], ColorTransform())
             url <- (map["url"], URLTransform())
             attributes <- map["attributes"]
         }
