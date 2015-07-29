@@ -64,13 +64,13 @@ class PlayerViewModel {
     func prevVideo() -> PlayableVideo? {
         return currentVideoIndex().flatMap {
             $0 > 0 ? $0 - 1 : nil
-        }.map { playlist.value[$0] }
+        }.map { playlist.value[$0] } ?? playlist.value.first
     }
     
     func nextVideo() -> PlayableVideo? {
         return currentVideoIndex().flatMap {
-            $0 < playlist.value.count ? $0 + 1 : nil
-        }.map { playlist.value[$0] }
+            $0 < playlist.value.count - 1 ? $0 + 1 : nil
+        }.map { playlist.value[$0] } ?? playlist.value.first
     }
     
     func playPrevVideo() {
@@ -96,6 +96,7 @@ class PlayerViewModel {
     // MARK: - 
     
     private func playVideo(video: PlayableVideo?) -> Bool {
+        Log.debug("Will play video with id \(video?.uniqueId) url: \(video?.url)")
         currentVideo.value.map { delegate?.player(self, didPlayVideo: $0) }
         currentTime.value = 0
         currentVideo.value = video

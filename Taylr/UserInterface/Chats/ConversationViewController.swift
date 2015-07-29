@@ -48,6 +48,7 @@ class ConversationViewController : BaseViewController {
         vm.busy ->> spinner
         vm.displayStatus ->> activityLabel
         
+        player.vm.playlist <~ (vm.messages |> map { $0.map { (msg: MessageViewModel) in msg as PlayableVideo } })
         showPlayer()
     }
     

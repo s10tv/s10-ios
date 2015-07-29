@@ -161,6 +161,7 @@
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstAttribute="centerY" secondItem="haJ-Sa-zem" secondAttribute="centerY" id="2VF-ub-iv8"/>
                                     <constraint firstAttribute="centerX" secondItem="wEk-rz-lGs" secondAttribute="centerX" id="3gb-uO-CaU"/>
@@ -173,6 +174,9 @@
                                     <constraint firstItem="geD-5e-XtS" firstAttribute="leading" secondItem="gaZ-5C-h6l" secondAttribute="leading" id="lq8-DQ-Tdl"/>
                                     <constraint firstAttribute="centerY" secondItem="wEk-rz-lGs" secondAttribute="centerY" id="o5Z-Z0-qbf"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Ao6-Q3-mjZ" appends="YES" id="J8a-Ff-rE0"/>
+                                </connections>
                             </view>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="DQV-th-jma">
                                 <rect key="frame" x="559" y="105.5" width="30" height="2"/>
@@ -217,6 +221,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uFR-IP-tYk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Ao6-Q3-mjZ">
+                    <connections>
+                        <action selector="playOrPause" destination="rTJ-l0-lHc" id="bLh-bV-ZJD"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-316" y="413"/>
         </scene>

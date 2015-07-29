@@ -19,14 +19,14 @@ extension User {
         if let connection = connection,
             let status = connection.lastMessageStatus{
             let receivedLast = (self == connection.lastSender)
-            let formattedDate = Formatters.formatRelativeDate(connection.updatedAt)
+            let formattedDate = Formatters.formatRelativeDate(connection.updatedAt)!
             let action: String = {
                 switch status {
                 case .Sent: return receivedLast ? "Received" : "Sent"
                 case .Opened: return receivedLast ? "Received" : "Opened"
                 case .Expired: return receivedLast ? "Received" : "Opened"
                 }
-                }()
+            }()
             return "\(action) \(formattedDate)"
         }
         return ""

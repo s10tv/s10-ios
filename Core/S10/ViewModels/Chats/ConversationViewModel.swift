@@ -37,13 +37,14 @@ public struct RecordViewModel {
 public struct ConversationViewModel {
 
     let meteor: MeteorService
-    let messages = DynamicArray<MessageViewModel>([])
+    let _messages: MutableProperty<[MessageViewModel]>
     let recipient: User?
     
     public let avatar: PropertyOf<Image?>
     public let displayName: PropertyOf<String>
     public let displayStatus: PropertyOf<String>
     public let busy: PropertyOf<Bool>
+    public let messages: PropertyOf<[MessageViewModel]>
 
     public let playback: PlaybackViewModel
     public let record: RecordViewModel
@@ -63,6 +64,8 @@ public struct ConversationViewModel {
             |> flatMap(nilValue: false) { $0.pConversationBusy() }
         displayStatus = playback._currentMessage
             |> flatMap { $0?.formattedDate ?? recipient?.pConversationStatus() ?? PropertyOf("") }
+        _messages = MutableProperty([])
+        messages = PropertyOf(_messages)
     }
     
     // BUGBUG: Never called thus no message will show up
@@ -79,8 +82,8 @@ public struct ConversationViewModel {
                 playableMessages.append(MessageViewModel(message: message, localVideoURL: localURL))
             }
         }
-        if self.messages.value != playableMessages {
-            self.messages.setArray(playableMessages)
+        if _messages.value != playableMessages {
+            _messages.value = playableMessages
         }
     }
     

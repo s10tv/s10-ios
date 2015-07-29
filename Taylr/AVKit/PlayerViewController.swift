@@ -40,9 +40,7 @@ class PlayerViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        playerView.tapToPauseEnabled = true
         playerView.playerLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill
-        playerView.delegate = self
         player.delegate = self
         player.dyn("rate").producer.start(next: { [weak self] _ in
             self?.vm.updateIsPlaying(self?.player.isPlaying ?? false)
@@ -81,14 +79,6 @@ class PlayerViewController : UIViewController {
     
     @IBAction func advance() {
         vm.playNextVideo()
-    }
-}
-
-extension PlayerViewController : SCVideoPlayerViewDelegate {
-    func videoPlayerViewTappedToPlay(videoPlayerView: SCVideoPlayerView) {
-    }
-    
-    func videoPlayerViewTappedToPause(videoPlayerView: SCVideoPlayerView) {
     }
 }
 
