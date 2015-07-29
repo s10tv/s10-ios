@@ -22,7 +22,12 @@ protocol PlayerDelegate : class {
     func player(player: PlayerViewModel, didPlayVideo video: PlayableVideo)
 }
 
-struct PlayerViewModel {
+// TODO: Struct vs. class?
+// For some reason struct causes crash, also doesn't work quite well with the idea of
+// delegate. Need to figure out a better pattern of whether struct or class is the right
+// approach and when
+// http://www.objc.io/issues/16-swift/swift-classes-vs-structs/#the-advantages-of-value-types
+class PlayerViewModel {
     private let currentVideo = MutableProperty<PlayableVideo?>(nil)
     private let currentTime = MutableProperty<NSTimeInterval>(0)
     private let _isPlaying = MutableProperty(false)

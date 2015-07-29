@@ -20,7 +20,7 @@ class PlayerViewController : UIViewController {
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
     
-    var vm = PlayerViewModel()
+    let vm = PlayerViewModel()
     var player: SCPlayer { return playerView.player! }
     lazy var videoURLBond: Bond<NSURL?> = {
         return Bond<NSURL?> {
