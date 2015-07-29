@@ -52,6 +52,13 @@ class PlayerViewController : UIViewController {
         vm.totalDurationLeft ->> durationLabel
         vm.currentVideoProgress ->> progressView
         vm.isPlaying ->> overlay.dynHidden
+        // Slight hack to get around the issue that playback momentarily stops when switching video
+        vm.isPlaying.producer.start(next: {
+            let isPlaying = $0
+            UIView.animate(0.25, options: nil, delay: 0.25, animations: { [weak self] in
+                self?.overlay.alpha = isPlaying ? 0 : 1
+            })
+        })
     }
     
     override func viewDidAppear(animated: Bool) {
