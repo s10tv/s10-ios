@@ -752,11 +752,14 @@
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PBZ-8J-2mE">
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PBZ-8J-2mE" userLabel="Chat">
                                                             <rect key="frame" x="287" y="15" width="50" height="30"/>
                                                             <state key="normal" image="ic-start-chat">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
+                                                            <connections>
+                                                                <segue destination="kBv-HD-oBL" kind="show" identifier="ProfileToConversation" id="Nm9-7n-EUh"/>
+                                                            </connections>
                                                         </button>
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1163,11 +1166,7 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OaH-F1-uJP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="314-8z-971">
-                    <connections>
-                        <segue destination="O0f-xd-Ps7" kind="show" id="Gd9-HM-lnj"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="314-8z-971"/>
             </objects>
             <point key="canvasLocation" x="1030" y="3090"/>
         </scene>
@@ -1999,8 +1998,8 @@
         <image name="sample-taylor-video-frame" width="375" height="375"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="TFP-eW-cVI"/>
+        <segue reference="yhs-PQ-k4J"/>
         <segue reference="kNN-lk-QB3"/>
-        <segue reference="Fwv-Pj-RXP"/>
+        <segue reference="Nm9-7n-EUh"/>
     </inferredMetricsTieBreakers>
 </document>
