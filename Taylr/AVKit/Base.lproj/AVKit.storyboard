@@ -176,6 +176,8 @@
                                 </constraints>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="Ao6-Q3-mjZ" appends="YES" id="J8a-Ff-rE0"/>
+                                    <outletCollection property="gestureRecognizers" destination="7ac-N3-RQq" appends="YES" id="mlm-2j-LW8"/>
+                                    <outletCollection property="gestureRecognizers" destination="9ra-nl-kkz" appends="YES" id="eGa-ZQ-6tn"/>
                                 </connections>
                             </view>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="DQV-th-jma">
@@ -216,6 +218,7 @@
                     </view>
                     <connections>
                         <outlet property="durationLabel" destination="AmD-xc-WPD" id="In6-ZL-nxf"/>
+                        <outlet property="overlay" destination="2jn-jg-8ht" id="rWM-SG-drW"/>
                         <outlet property="playerView" destination="RFF-jQ-Kok" id="dDw-6V-kYh"/>
                         <outlet property="progressView" destination="DQV-th-jma" id="aYH-i8-MVg"/>
                     </connections>
@@ -226,6 +229,16 @@
                         <action selector="playOrPause" destination="rTJ-l0-lHc" id="bLh-bV-ZJD"/>
                     </connections>
                 </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="7ac-N3-RQq" userLabel="Left Swipe Gesture Recognizer">
+                    <connections>
+                        <action selector="advance" destination="rTJ-l0-lHc" id="Tp5-VS-dnT"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="9ra-nl-kkz" userLabel="Right Swipe Gesture Recognizer">
+                    <connections>
+                        <action selector="rewind" destination="rTJ-l0-lHc" id="XkW-6n-zPv"/>
+                    </connections>
+                </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-316" y="413"/>
         </scene>

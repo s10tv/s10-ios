@@ -22,6 +22,15 @@ protocol PlayerDelegate : class {
     func player(player: PlayerViewModel, didPlayVideo video: PlayableVideo)
 }
 
+private func findVideo(video: PlayableVideo?, inPlaylist playlist: [PlayableVideo]) -> Int? {
+    for (index, v) in enumerate(playlist) {
+        if v.uniqueId == video?.uniqueId {
+            return index
+        }
+    }
+    return nil
+}
+
 // TODO: Struct vs. class?
 // For some reason struct causes crash, also doesn't work quite well with the idea of
 // delegate. Need to figure out a better pattern of whether struct or class is the right
@@ -31,7 +40,7 @@ class PlayerViewModel {
     private let currentVideo = MutableProperty<PlayableVideo?>(nil)
     private let currentTime = MutableProperty<NSTimeInterval>(0)
     private let _isPlaying = MutableProperty(false)
-    private let totalDuration: PropertyOf<NSTimeInterval>
+    private let unfinishedVideoDuration: PropertyOf<NSTimeInterval>
     weak var delegate: PlayerDelegate?
     
     let playlist = MutableProperty<[PlayableVideo]>([])
@@ -43,9 +52,15 @@ class PlayerViewModel {
     init() {
         isPlaying = PropertyOf(_isPlaying)
         videoURL = currentVideo |> map { $0?.url }
-        totalDuration = playlist |> map {
-            return $0.map { $0.duration }.reduce(0, combine: +)
-        }
+        unfinishedVideoDuration = PropertyOf(0, combineLatest(
+            currentVideo.producer,
+            playlist.producer
+        ) |> map {currentVideo, playlist in
+            let i = findVideo(currentVideo, inPlaylist: playlist) ?? 0
+            return playlist[i..<playlist.count]
+                .map { $0.duration }
+                .reduce(0, combine: +)
+        })
         currentVideoProgress = PropertyOf(0, combineLatest(
             currentVideo.producer,
             currentTime.producer
@@ -54,9 +69,9 @@ class PlayerViewModel {
         })
         totalDurationLeft = PropertyOf("", combineLatest(
             currentTime.producer,
-            totalDuration.producer
-        ) |> map { current, total in
-            let secondsLeft = Int(ceil(max(total - current, 0)))
+            unfinishedVideoDuration.producer
+        ) |> map { currentTime, unfinishedVideoDuration in
+            let secondsLeft = Int(ceil(max(unfinishedVideoDuration - currentTime, 0)))
             return "\(secondsLeft)"
         })
     }
@@ -64,7 +79,7 @@ class PlayerViewModel {
     func prevVideo() -> PlayableVideo? {
         return currentVideoIndex().flatMap {
             $0 > 0 ? $0 - 1 : nil
-        }.map { playlist.value[$0] } ?? playlist.value.first
+        }.map { playlist.value[$0] }
     }
     
     func nextVideo() -> PlayableVideo? {
@@ -105,11 +120,6 @@ class PlayerViewModel {
     }
     
     private func currentVideoIndex() -> Int? {
-        for (index, video) in enumerate(playlist.value) {
-            if video.uniqueId == currentVideo.value?.uniqueId {
-                return index
-            }
-        }
-        return nil
+        return findVideo(currentVideo.value, inPlaylist: playlist.value)
     }
 }

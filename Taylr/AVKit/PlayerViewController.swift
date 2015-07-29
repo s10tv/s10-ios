@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import ReactiveCocoa
+import Bond
 import SCRecorder
 import Async
-import Bond
 import Core
 
 class PlayerViewController : UIViewController {
@@ -19,6 +20,7 @@ class PlayerViewController : UIViewController {
     @IBOutlet weak var playerView: SCVideoPlayerView!
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var overlay: UIView!
     
     let vm = PlayerViewModel()
     var player: SCPlayer { return playerView.player! }
@@ -49,6 +51,7 @@ class PlayerViewController : UIViewController {
         vm.videoURL ->> videoURLBond
         vm.totalDurationLeft ->> durationLabel
         vm.currentVideoProgress ->> progressView
+//        (vm.isPlaying |> map { $0 ? 0.f : 1.f }) ->> overlay.dynAlpha
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -65,7 +68,8 @@ class PlayerViewController : UIViewController {
     // MARK: -
     
     @IBAction func rewind() {
-        if player.currentTime().seconds < 1 || player.itemDuration.seconds < 1 {
+        if (player.currentTime().seconds < 2 || player.itemDuration.seconds < 2)
+            && vm.prevVideo() != nil {
             vm.playPrevVideo()
         } else {
             player.seekToTime(CMTimeMakeWithSeconds(0, 1))
