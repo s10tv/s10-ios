@@ -978,6 +978,11 @@
                                                         <constraint firstItem="E9T-KH-Tqg" firstAttribute="leading" secondItem="NlT-ri-jMO" secondAttribute="leading" constant="10" id="uX6-4w-5Jf"/>
                                                         <constraint firstItem="Jnn-Ur-nhX" firstAttribute="leading" secondItem="NlT-ri-jMO" secondAttribute="leading" constant="10" id="zVg-KT-CbL"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </view>
                                             </subviews>
                                             <constraints>
