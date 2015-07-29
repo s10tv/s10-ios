@@ -574,7 +574,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-cover-image" translatesAutoresizingMaskIntoConstraints="NO" id="6ml-E6-ZMG">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="220"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="220" id="Uga-nJ-Tne"/>
+                                                        <constraint firstAttribute="height" priority="751" constant="220" id="Uga-nJ-Tne"/>
                                                     </constraints>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pNm-He-lw7" userLabel="Cover Overlay">
