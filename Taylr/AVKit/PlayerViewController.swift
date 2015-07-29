@@ -32,10 +32,10 @@ class PlayerViewController : UIViewController {
             // dispatching it again to main thread works around this issue.
             // the temp variable video is needed to avoid compiler crash
             let videoURL = $0
-            Async.main {
+            Async.main { [weak self] in
                 Log.info("Playing video at url \(videoURL)")
-                self.player.setItemByUrl(videoURL)
-                self.player.play()
+                self?.player.setItemByUrl(videoURL)
+                self?.player.play()
             }
         }
     }()
@@ -51,7 +51,7 @@ class PlayerViewController : UIViewController {
         vm.videoURL ->> videoURLBond
         vm.totalDurationLeft ->> durationLabel
         vm.currentVideoProgress ->> progressView
-//        (vm.isPlaying |> map { $0 ? 0.f : 1.f }) ->> overlay.dynAlpha
+        vm.isPlaying ->> overlay.dynHidden
     }
     
     override func viewDidAppear(animated: Bool) {

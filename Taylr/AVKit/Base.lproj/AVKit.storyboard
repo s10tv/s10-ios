@@ -125,8 +125,13 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Ao6-Q3-mjZ" appends="YES" id="Og6-k1-UPh"/>
+                                    <outletCollection property="gestureRecognizers" destination="7ac-N3-RQq" appends="YES" id="a2u-SN-jPC"/>
+                                    <outletCollection property="gestureRecognizers" destination="9ra-nl-kkz" appends="YES" id="geZ-s0-BHa"/>
+                                </connections>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2jn-jg-8ht" userLabel="Paused Overlay">
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2jn-jg-8ht" userLabel="Paused Overlay">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaZ-5C-h6l" userLabel="Rewind">
@@ -174,11 +179,6 @@
                                     <constraint firstItem="geD-5e-XtS" firstAttribute="leading" secondItem="gaZ-5C-h6l" secondAttribute="leading" id="lq8-DQ-Tdl"/>
                                     <constraint firstAttribute="centerY" secondItem="wEk-rz-lGs" secondAttribute="centerY" id="o5Z-Z0-qbf"/>
                                 </constraints>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Ao6-Q3-mjZ" appends="YES" id="J8a-Ff-rE0"/>
-                                    <outletCollection property="gestureRecognizers" destination="7ac-N3-RQq" appends="YES" id="mlm-2j-LW8"/>
-                                    <outletCollection property="gestureRecognizers" destination="9ra-nl-kkz" appends="YES" id="eGa-ZQ-6tn"/>
-                                </connections>
                             </view>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="DQV-th-jma">
                                 <rect key="frame" x="559" y="105.5" width="30" height="2"/>

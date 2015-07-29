@@ -44,14 +44,14 @@ class PlayerViewModel {
     weak var delegate: PlayerDelegate?
     
     let playlist = MutableProperty<[PlayableVideo]>([])
-    let isPlaying: PropertyOf<Bool>
     let videoURL: PropertyOf<NSURL?>
+    let isPlaying: PropertyOf<Bool>
     let currentVideoProgress: PropertyOf<Float>
     let totalDurationLeft: PropertyOf<String>
     
     init() {
-        isPlaying = PropertyOf(_isPlaying)
         videoURL = currentVideo |> map { $0?.url }
+        isPlaying = PropertyOf(_isPlaying)
         unfinishedVideoDuration = PropertyOf(0, combineLatest(
             currentVideo.producer,
             playlist.producer
