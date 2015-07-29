@@ -12,7 +12,8 @@ import DateTools
 import ReactiveCocoa
 
 internal func relativeTime(date: NSDate?, interval: NSTimeInterval = 1) -> PropertyOf<String> {
-    return PropertyOf("") {
+    let initialValue = Formatters.formatRelativeDate(date, relativeTo: NSDate()) ?? ""
+    return PropertyOf(initialValue) {
         timer(interval, onScheduler: QueueScheduler.mainQueueScheduler) |> map {
             Formatters.formatRelativeDate(date, relativeTo: $0) ?? ""
         }
