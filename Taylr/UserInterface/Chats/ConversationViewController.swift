@@ -31,7 +31,7 @@ class ConversationViewController : BaseViewController {
 
         let avkit = UIStoryboard(name: "AVKit", bundle: nil)
         player = avkit.instantiateViewControllerWithIdentifier("Player") as! PlayerViewController
-        player.interactor.delegate = self
+        player.vm.delegate = self
         producer = avkit.instantiateViewControllerWithIdentifier("Producer") as! ProducerViewController
         producer.producerDelegate = self
         
@@ -150,26 +150,40 @@ extension ConversationViewController : ProducerDelegate {
     }
 }
 
-extension ConversationViewController : PlayerInteractorDelegate {
-    func player(interactor: PlayerInteractor, didFinishVideo video: PlayableVideo) {
-        if interactor.videoQueue.count == 0 {
-            showProducer(animated: true)
-        }
-//        // TODO: Move into ViewModel
-//        if let message = (video as? MessageViewModel)?.message
-//            where message.fault == false // Hack for now to avoid EXC_BAD_INSTRUCTION
-//                && message.sender != nil // Hack for now to avoid nil crash
-//                && message.incoming && message.statusEnum != .Opened {
-//            Meteor.openMessage(message, expireDelay: 0)
-//            if let videoId = message.video?.documentID {
-//                VideoCache.sharedInstance.removeVideo(videoId)
-//            }
-//        }
+extension ConversationViewController : PlayerDelegate {
+    func playerDidFinishPlaylist(player: PlayerViewModel) {
+        
+    }
+    
+    func player(player: PlayerViewModel, willPlayVideo video: PlayableVideo) {
+        
+    }
+    
+    func player(player: PlayerViewModel, didPlayVideo video: PlayableVideo) {
+        
     }
 }
 
-//extension MessageViewModel : PlayableVideo {
-//    var url: NSURL { return videoURL.value! }
-//    var duration: NSTimeInterval { return 6 }
-//    var timestamp: NSDate { return message.createdAt! }
+extension MessageViewModel : PlayableVideo {
+    var uniqueId: String { return messageId }
+    var url: NSURL { return localVideoURL }
+    var duration: NSTimeInterval { return videoDuration }
+}
+
+
+
+//func player(player: , didFinishVideo video: PlayableVideo) {
+//    if interactor.videoQueue.count == 0 {
+//        showProducer(animated: true)
+//    }
+//    //        // TODO: Move into ViewModel
+//    //        if let message = (video as? MessageViewModel)?.message
+//    //            where message.fault == false // Hack for now to avoid EXC_BAD_INSTRUCTION
+//    //                && message.sender != nil // Hack for now to avoid nil crash
+//    //                && message.incoming && message.statusEnum != .Opened {
+//    //            Meteor.openMessage(message, expireDelay: 0)
+//    //            if let videoId = message.video?.documentID {
+//    //                VideoCache.sharedInstance.removeVideo(videoId)
+//    //            }
+//    //        }
 //}

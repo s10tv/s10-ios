@@ -556,7 +556,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="280" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="usC-gW-R9r">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="280" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="usC-gW-R9r">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="1151"/>
                                 <color key="backgroundColor" red="0.93299722671508789" green="0.94112014770507812" blue="0.94931834936141968" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
@@ -938,7 +938,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eMh-jf-Tma" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="366.5" y="3186"/>
+            <point key="canvasLocation" x="366.5" y="3338"/>
         </scene>
         <!--Conversation View Controller-->
         <scene sceneID="9Wr-pj-gUK">
@@ -1870,6 +1870,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="kNN-lk-QB3"/>
         <segue reference="TFP-eW-cVI"/>
-        <segue reference="Fwv-Pj-RXP"/>
+        <segue reference="Gd9-HM-lnj"/>
     </inferredMetricsTieBreakers>
 </document>

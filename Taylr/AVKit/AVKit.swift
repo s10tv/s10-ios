@@ -8,6 +8,9 @@
 
 import Foundation
 import SCRecorder
+import ReactiveCocoa
+import Bond
+import Core
 
 class AVKit {
     static let defaultFilters = AVKit.allFilters()

@@ -125,9 +125,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="kRf-nd-wGw" appends="YES" id="XvQ-4p-HYO"/>
-                                </connections>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2jn-jg-8ht" userLabel="Paused Overlay">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
@@ -220,12 +217,6 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uFR-IP-tYk" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer cancelsTouchesInView="NO" minimumNumberOfTouches="1" id="kRf-nd-wGw">
-                    <connections>
-                        <action selector="didPanOnPlayer:" destination="rTJ-l0-lHc" id="wIm-1I-CmN"/>
-                        <outlet property="delegate" destination="rTJ-l0-lHc" id="ly2-Xo-1Qa"/>
-                    </connections>
-                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-316" y="413"/>
         </scene>

@@ -20,7 +20,7 @@ class PlayerViewController : UIViewController {
     @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var progressView: UIProgressView!
     
-    var interactor = PlayerInteractor()
+    var vm = PlayerViewModel()
     var player: SCPlayer { return playerView.player! }
     lazy var videoURLBond: Bond<NSURL?> = {
         return Bond<NSURL?> {
@@ -45,18 +45,18 @@ class PlayerViewController : UIViewController {
         playerView.delegate = self
         player.delegate = self
         player.dyn("rate").producer.start(next: { [weak self] _ in
-            self?.interactor.updateIsPlaying(self?.player.isPlaying ?? false)
+            self?.vm.updateIsPlaying(self?.player.isPlaying ?? false)
         })
         
-        interactor.videoURL ->> videoURLBond
-        interactor.durationText ->> durationLabel
-        interactor.currentPercent ->> progressView
+        vm.videoURL ->> videoURLBond
+        vm.totalDurationLeft ->> durationLabel
+        vm.currentVideoProgress ->> progressView
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         player.beginSendingPlayMessages()
-        interactor.playNextVideo()
+        vm.playNextVideo()
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -66,19 +66,13 @@ class PlayerViewController : UIViewController {
     
     // MARK: -
     
-    func flashPlayPulseImage(image: UIImage?) {
-//        playPauseImage.image = image
-//        playPauseImage.alpha = 1
-//        UIView.animate(0.5, delay: 0.5) {
-//            self.playPauseImage.alpha = 0
-//        }
-    }
-    
-    // MARK: -
-    
     @IBAction func rewind() {
-        player.seekToTime(CMTimeMakeWithSeconds(0, 1))
-        player.play()
+        if player.currentTime().seconds < 1 || player.itemDuration.seconds < 1 {
+            vm.playPrevVideo()
+        } else {
+            player.seekToTime(CMTimeMakeWithSeconds(0, 1))
+            player.play()
+        }
     }
     
     @IBAction func playOrPause() {
@@ -86,48 +80,15 @@ class PlayerViewController : UIViewController {
     }
     
     @IBAction func advance() {
-        interactor.playNextVideo()
-    }
-    
-    @IBAction func didPanOnPlayer(pan: UIPanGestureRecognizer) {
-//        let view = pan.view!
-//        let percent = pan.translationInView(view).x / view.frame.width
-//        let threshold: CGFloat = 0.25
-//        let forwardScale = min(max(percent / threshold, 0), 1)
-//        let reverseScale = min(max(-percent / threshold, 0), 1)
-//        switch pan.state {
-//        case .Changed:
-//            skipImage.alpha = forwardScale
-//            rewindImage.alpha = reverseScale
-//            skipImage.transform = CGAffineTransform(scale: 1 + forwardScale)
-//            rewindImage.transform = CGAffineTransform(scale: 1 + reverseScale)
-//        case .Ended:
-//            if forwardScale == 1 {
-//                advance()
-//            } else if reverseScale == 1 {
-//                rewind()
-//            }
-//            fallthrough
-//        case .Cancelled:
-//            UIView.animate(0.25) {
-//                self.skipImage.alpha = 0
-//                self.rewindImage.alpha = 0
-//                self.skipImage.transform = CGAffineTransformIdentity
-//                self.rewindImage.transform = CGAffineTransformIdentity
-//            }
-//        default:
-//            break
-//        }
+        vm.playNextVideo()
     }
 }
 
 extension PlayerViewController : SCVideoPlayerViewDelegate {
     func videoPlayerViewTappedToPlay(videoPlayerView: SCVideoPlayerView) {
-        flashPlayPulseImage(UIImage(.icPlay))
     }
     
     func videoPlayerViewTappedToPause(videoPlayerView: SCVideoPlayerView) {
-        flashPlayPulseImage(UIImage(.icPause))
     }
 }
 
@@ -135,12 +96,12 @@ extension PlayerViewController : SCPlayerDelegate {
     
     func player(player: SCPlayer, didPlay currentTime: CMTime, loopsCount: Int) {
         if !player.itemDuration.impliedValue && !currentTime.impliedValue {
-            interactor.updatePlaybackPosition(currentTime.seconds)
+            vm.updatePlaybackPosition(currentTime.seconds)
         }
     }
     
     func player(player: SCPlayer, didReachEndForItem item: AVPlayerItem) {
-        interactor.playNextVideo()
+        vm.playNextVideo()
     }
 }
 
