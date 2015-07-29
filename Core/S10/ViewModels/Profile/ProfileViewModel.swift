@@ -75,7 +75,7 @@ public struct ProfileCoverViewModel {
         proximity = PropertyOf("", combineLatest(
             user.dyn(.distance).optional(Double).producer,
             user.dyn(.lastActive).optional(NSDate).producer,
-            timer(1, onScheduler: QueueScheduler.mainQueueScheduler)
+            CurrentTime.producer
         ) |> map {
             let distance = $0.map { Formatters.formatDistance($0) + " away" } ?? ""
             let lastActive = Formatters.formatRelativeDate($1, relativeTo: $2) ?? ""

@@ -22,7 +22,7 @@ public struct MessageViewModel {
         self.message = message
         self.localVideoURL = localVideoURL
         messageId = message.documentID!
-        formattedDate = relativeTime(message.createdAt, interval: 1)
+        formattedDate = relativeTime(message.createdAt)
         videoDuration = 6 // WRONG!!!!
     }
 }

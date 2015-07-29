@@ -11,15 +11,15 @@ import FormatterKit
 import DateTools
 import ReactiveCocoa
 
-internal func relativeTime(date: NSDate?, interval: NSTimeInterval = 1) -> PropertyOf<String> {
-    let initialValue = Formatters.formatRelativeDate(date, relativeTo: NSDate()) ?? ""
-    return PropertyOf(initialValue) {
-        timer(interval, onScheduler: QueueScheduler.mainQueueScheduler) |> map {
-            Formatters.formatRelativeDate(date, relativeTo: $0) ?? ""
-        }
-    }
+internal let CurrentTime: PropertyOf<NSDate> = PropertyOf(NSDate()) {
+    timer(1, onScheduler: QueueScheduler.mainQueueScheduler)
 }
 
+internal func relativeTime(date: NSDate?) -> PropertyOf<String> {
+    return CurrentTime |> map {
+        Formatters.formatRelativeDate(date, relativeTo: $0) ?? ""
+    }
+}
 
 public struct Formatters {
     private static let height : NSLengthFormatter = {
