@@ -43,14 +43,15 @@ class ConversationViewController : BaseViewController {
         vm.displayName ->> nameLabel
         vm.busy ->> spinner
         vm.displayStatus ->> activityLabel
-        vm.reloadMessages()
         
         let avkit = UIStoryboard(name: "AVKit", bundle: nil)
         producer = avkit.instantiateViewControllerWithIdentifier("Producer") as! ProducerViewController
         producer.producerDelegate = self
         player = avkit.instantiateViewControllerWithIdentifier("Player") as! PlayerViewController
         player.vm.delegate = self
-        player.vm.playlist <~ (vm.messages |> map { $0.map { (msg: MessageViewModel) in msg as PlayableVideo } })
+        player.vm.playlist <~ (vm.messages.producer |> map {
+            $0.map { (msg: MessageViewModel) in msg as PlayableVideo }
+        })
         
         addChildViewController(player)
         addChildViewController(producer)
