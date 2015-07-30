@@ -10,8 +10,9 @@ import Foundation
 import ReactiveCocoa
 import PKHUD
 import Bond
-import Core
 import Async
+import SwipeView
+import Core
 
 class ConversationViewController : BaseViewController {
     
@@ -19,16 +20,15 @@ class ConversationViewController : BaseViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var activityLabel: UILabel!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
-    @IBOutlet weak var scrollView: UIScrollView!
+    @IBOutlet weak var swipeView: SwipeView!
     
     var player: PlayerViewController!
     var producer: ProducerViewController!
     var vm: ConversationViewModel!
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         let avkit = UIStoryboard(name: "AVKit", bundle: nil)
         player = avkit.instantiateViewControllerWithIdentifier("Player") as! PlayerViewController
         player.vm.delegate = self
@@ -36,10 +36,12 @@ class ConversationViewController : BaseViewController {
         producer.producerDelegate = self
         
         addChildViewController(player)
-        scrollView.addSubview(player.view)
-        player.didMoveToParentViewController(self)
         addChildViewController(producer)
-        scrollView.addSubview(producer.view)
+        swipeView.vertical = true
+        swipeView.bounces = false
+        swipeView.dataSource = self
+        swipeView.delegate = self
+        player.didMoveToParentViewController(self)
         player.didMoveToParentViewController(self)
         
         vm.reloadMessages()
@@ -49,24 +51,18 @@ class ConversationViewController : BaseViewController {
         vm.displayStatus ->> activityLabel
         
         player.vm.playlist <~ (vm.messages |> map { $0.map { (msg: MessageViewModel) in msg as PlayableVideo } })
-        showPlayer()
+        if player.vm.playNextVideo() {
+            showPlayer()
+        }
+//        else {
+//            showProducer()
+//        }
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        var contentSize = scrollView.bounds.size
-        contentSize.height *= 2
-        scrollView.contentSize = contentSize
-        player.view.frame = CGRect(origin: CGPointZero, size: scrollView.bounds.size)
-        producer.view.frame = CGRect(origin: CGPoint(x: 0, y: scrollView.bounds.height), size: scrollView.bounds.size)
-        scrollView.contentOffset = CGPointZero
+        let scrollView = swipeView.valueForKey("scrollView") as! UIScrollView
         scrollView.contentInset = UIEdgeInsetsZero
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let vc = segue.destinationViewController as? ProfileViewController {
-            vc.vm = vm.profileVM()
-        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -79,14 +75,20 @@ class ConversationViewController : BaseViewController {
         navigationController?.navigationBar.setBackgroundColor(nil)
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let vc = segue.destinationViewController as? ProfileViewController {
+            vc.vm = vm.profileVM()
+        }
+    }
+    
     // MARK: - Actions
     
     func showPlayer(animated: Bool = false) {
-        scrollView.scrollRectToVisible(CGRect(origin: CGPointZero, size: scrollView.bounds.size), animated: animated)
+        swipeView.scrollToItemAtIndex(0, duration: animated ? 0.25 : 0)
     }
     
     func showProducer(animated: Bool = false) {
-        scrollView.scrollRectToVisible(CGRect(origin: CGPoint(x: 0, y: scrollView.bounds.height), size: scrollView.bounds.size), animated: animated)
+        swipeView.scrollToItemAtIndex(1, duration: animated ? 0.25 : 0)
     }
     
     @IBAction func showMoreOptions(sender: AnyObject) {
@@ -123,15 +125,24 @@ class ConversationViewController : BaseViewController {
     }
 }
 
-extension ConversationViewController : UIPageViewControllerDataSource {
-    func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        return viewController == producer ? player : nil
+extension ConversationViewController : SwipeViewDataSource {
+    func numberOfItemsInSwipeView(swipeView: SwipeView!) -> Int {
+        return 2
     }
     
-    func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        return viewController == player ? producer : nil
+    func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, reusingView view: UIView!) -> UIView! {
+        return index == 0 ? player.view : producer.view
     }
 }
+
+extension ConversationViewController : SwipeViewDelegate {
+    
+    func swipeViewCurrentItemIndexDidChange(swipeView: SwipeView!) {
+        
+    }
+}
+
+
 
 extension ConversationViewController : ProducerDelegate {
     

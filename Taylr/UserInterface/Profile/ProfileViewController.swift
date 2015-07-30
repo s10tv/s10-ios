@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SwipeView
 import SDWebImage
 import Cartography
 import Bond

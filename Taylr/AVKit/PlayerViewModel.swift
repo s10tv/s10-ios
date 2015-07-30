@@ -88,14 +88,14 @@ class PlayerViewModel {
         }.map { playlist.value[$0] } ?? playlist.value.first
     }
     
-    func playPrevVideo() {
-        playVideo(prevVideo())
+    func playPrevVideo() -> Bool {
+        return playVideo(prevVideo())
     }
     
-    func playNextVideo() {
-        if !playVideo(nextVideo()) {
-            delegate?.playerDidFinishPlaylist(self)
-        }
+    func playNextVideo() -> Bool {
+        let played = playVideo(nextVideo())
+        if !played { delegate?.playerDidFinishPlaylist(self) }
+        return played
     }
     
     // MARK: - Hooks for PlayerViewController to update state

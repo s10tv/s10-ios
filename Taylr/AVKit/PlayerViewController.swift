@@ -23,6 +23,7 @@ class PlayerViewController : UIViewController {
     @IBOutlet weak var overlay: UIView!
     
     let vm = PlayerViewModel()
+    var userPaused: Bool = false
     var player: SCPlayer { return playerView.player! }
     lazy var videoURLBond: Bond<NSURL?> = {
         return Bond<NSURL?> { [weak self] in
@@ -64,7 +65,7 @@ class PlayerViewController : UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         player.beginSendingPlayMessages()
-        vm.playNextVideo()
+        if !userPaused { player.play() }
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -87,6 +88,7 @@ class PlayerViewController : UIViewController {
     
     @IBAction func playOrPause() {
         player.isPlaying ? player.pause() : player.play()
+        userPaused = !player.isPlaying
     }
     
     @IBAction func advance() {
