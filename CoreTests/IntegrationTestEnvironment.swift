@@ -22,12 +22,6 @@ class IntegrationTestEnvironment : XCTestCase {
     var meteor: MeteorService!
     var taskService: TaskService!
     var notificationToken: NotificationToken?
-    var userId: String?
-    var candidateUserId: String?
-    var connectionUserId: String?
-
-    let PHONE_NUMBER = "6172596512"
-    let CONNECTION_PHONE_NUMBER = "6501001010"
     let bundle = NSBundle(forClass: IntegrationTestEnvironment.self)
 
     override class func setUp() {
@@ -44,6 +38,11 @@ class IntegrationTestEnvironment : XCTestCase {
         })
     }
 
+    override class func tearDown() {
+        super.tearDown()
+        OHHTTPStubs.removeAllStubs()
+    }
+
     override func setUp() {
         meteor = MeteorService(serverURL: NSURL("ws://s10-test.herokuapp.com/websocket"))
         meteor.startup()
@@ -55,46 +54,13 @@ class IntegrationTestEnvironment : XCTestCase {
         meteor.logout()
     }
 
-    override class func tearDown() {
-        super.tearDown()
-        OHHTTPStubs.removeAllStubs()
-    }
-
     func getResource(filename: String) -> NSURL? {
         return bundle.URLForResource(filename.stringByDeletingPathExtension, withExtension: filename.pathExtension)
     }
-    
-    func doWhileAuthenticated(block: (Void -> Void) -> Void) {
-        let expectation = expectationWithDescription("Test Finished")
-        let cleanup: () -> () = {
-            self.userId.map { self.meteor.clearUserData($0) }
-            self.candidateUserId.map { self.meteor.clearUserData($0) }
-            self.connectionUserId.map { self.meteor.clearUserData($0) }
-            expectation.fulfill()
-        }
-        self.meteor.testNewUser().flattenMap { res in
-            self.userId = res["userId"] as? String
-            self.candidateUserId = res["candidateUserId"] as? String
-            self.connectionUserId = res["connectionUserId"] as? String
-            return self.meteor.testLogin(self.userId!)
-        }.subscribeErrorOrCompleted { error in
-            expect(error).to(beNil())
-            block(cleanup)
-        }
-        waitForExpectationsWithTimeout(45, handler: nil)
-    }
 
+    // MARK: - Private Functions
 
-    func whileAuthenticated(block: () -> (RACSignal)) {
-        doWhileAuthenticated { callback in
-            block().subscribeErrorOrCompleted { error in
-                expect(error).to(beNil())
-                callback()
-            }
-        }
-    }
-
-    class func deleteRealmFilesAtPath(path: String) {
+    private class func deleteRealmFilesAtPath(path: String) {
         let fileManager = NSFileManager.defaultManager()
         fileManager.removeItemAtPath(path, error: nil)
         let lockPath = path + ".lock"
