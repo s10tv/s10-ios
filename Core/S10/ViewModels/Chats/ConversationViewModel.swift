@@ -68,6 +68,8 @@ public class ConversationViewModel {
     public let displayStatus: PropertyOf<String>
     public let busy: PropertyOf<Bool>
     public let messages: PropertyOf<[MessageViewModel]>
+    public let hideSwipeUpHint: PropertyOf<Bool>
+    public let hideSwipeDownHint: PropertyOf<Bool>
     public let exitAtEnd: Bool
     
     public let currentMessage: MutableProperty<MessageViewModel?>
@@ -106,6 +108,11 @@ public class ConversationViewModel {
             |> flatMap(nilValue: "") { $0.pDisplayName() }
         busy = currentUser
             |> flatMap(nilValue: false) { $0.pConversationBusy() }
+        hideSwipeUpHint = state
+            |> map { $0 != .PlaybackStopped }
+         // TODO: Should also depend on whether or not there's actually new messages
+        hideSwipeDownHint = state
+            |> map { $0 != .RecordIdle }
         
         currentMessageDate = currentMessage
             |> flatMap { $0.formattedDate |> map { Optional($0) } }

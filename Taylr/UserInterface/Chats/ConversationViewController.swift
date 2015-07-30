@@ -27,6 +27,8 @@ class ConversationViewController : BaseViewController {
     @IBOutlet weak var activityLabel: UILabel!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var swipeView: SwipeView!
+    @IBOutlet weak var swipeDownHint: UIView!
+    @IBOutlet weak var swipeUpHint: UIView!
     
     var player: PlayerViewController!
     var producer: ProducerViewController!
@@ -39,6 +41,8 @@ class ConversationViewController : BaseViewController {
         vm.displayName ->> nameLabel
         vm.busy ->> spinner
         vm.displayStatus ->> activityLabel
+        vm.hideSwipeUpHint ->> swipeUpHint.dynHidden
+        vm.hideSwipeDownHint ->> swipeDownHint.dynHidden
         
         let avkit = UIStoryboard(name: "AVKit", bundle: nil)
         producer = avkit.instantiateViewControllerWithIdentifier("Producer") as! ProducerViewController
@@ -160,6 +164,22 @@ extension ConversationViewController : SwipeViewDataSource {
 }
 
 extension ConversationViewController : SwipeViewDelegate {
+    func swipeViewWillBeginDragging(swipeView: SwipeView!) {
+        UIView.animate(0.25, options: nil, delay: 0.25) {
+            [self.swipeUpHint, self.swipeDownHint].each {
+                $0.alpha = 0
+            }
+        }
+    }
+    
+    func swipeViewDidEndDragging(swipeView: SwipeView!, willDecelerate decelerate: Bool) {
+        UIView.animate(0.25, options: nil, delay: 0.25) {
+            [self.swipeUpHint, self.swipeDownHint].each {
+                $0.alpha = 1
+            }
+        }
+    }
+    
     func swipeViewCurrentItemIndexDidChange(swipeView: SwipeView!) {
         vm.page.value = ConversationViewModel.Page(rawValue: swipeView.currentItemIndex)!
     }

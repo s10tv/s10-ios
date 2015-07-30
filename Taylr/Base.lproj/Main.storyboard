@@ -55,6 +55,8 @@
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
+            <string>Cabin-Regular</string>
+            <string>Cabin-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -327,7 +329,7 @@
                     <navigationItem key="navigationItem" id="3Lz-qe-3sD">
                         <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="UsO-Mo-HgH">
-                            <rect key="frame" x="268" y="4.5" width="64" height="35"/>
+                            <rect key="frame" x="268" y="5" width="64" height="35"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="discover-logo" translatesAutoresizingMaskIntoConstraints="NO" id="4dB-rS-cQI">
@@ -1096,18 +1098,72 @@
                         <viewControllerLayoutGuide type="bottom" id="so0-au-wZg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="oxw-6G-nOi">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jtm-KQ-nId" customClass="SwipeView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </view>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yZe-l1-1Cf" userLabel="Swipe Down Hint">
+                                <rect key="frame" x="233" y="99" width="135" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="new messages" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="80" translatesAutoresizingMaskIntoConstraints="NO" id="TF6-BS-vja">
+                                        <rect key="frame" x="15" y="6" width="86" height="18"/>
+                                        <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-down-chevron-small" translatesAutoresizingMaskIntoConstraints="NO" id="zok-cl-nzy">
+                                        <rect key="frame" x="109" y="9" width="11" height="12"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="zok-cl-nzy" secondAttribute="trailing" constant="15" id="2YX-ti-Bse"/>
+                                    <constraint firstItem="zok-cl-nzy" firstAttribute="leading" secondItem="TF6-BS-vja" secondAttribute="trailing" constant="8" id="5W0-Qz-NsU"/>
+                                    <constraint firstItem="TF6-BS-vja" firstAttribute="leading" secondItem="yZe-l1-1Cf" secondAttribute="leading" constant="15" id="9Fy-07-VbA"/>
+                                    <constraint firstAttribute="height" constant="30" id="bKo-ir-wR1"/>
+                                    <constraint firstItem="zok-cl-nzy" firstAttribute="centerY" secondItem="TF6-BS-vja" secondAttribute="centerY" id="nlj-km-Wa1"/>
+                                    <constraint firstAttribute="centerY" secondItem="TF6-BS-vja" secondAttribute="centerY" id="odc-Tz-ZyP"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lf3-Y8-ztX" userLabel="Swipe Up Hint">
+                                <rect key="frame" x="250" y="539" width="101" height="51"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-up-chevron" translatesAutoresizingMaskIntoConstraints="NO" id="6FU-Of-cdK">
+                                        <rect key="frame" x="39" y="0.0" width="22" height="25"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="swipe up to reply" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="80" translatesAutoresizingMaskIntoConstraints="NO" id="BEd-v4-YDM">
+                                        <rect key="frame" x="0.0" y="33" width="101" height="18"/>
+                                        <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="BEd-v4-YDM" secondAttribute="trailing" id="1rg-zX-T5A"/>
+                                    <constraint firstAttribute="centerX" secondItem="6FU-Of-cdK" secondAttribute="centerX" id="7IR-HT-fPk"/>
+                                    <constraint firstItem="BEd-v4-YDM" firstAttribute="leading" secondItem="lf3-Y8-ztX" secondAttribute="leading" id="JYO-8X-WJH"/>
+                                    <constraint firstItem="BEd-v4-YDM" firstAttribute="top" secondItem="6FU-Of-cdK" secondAttribute="bottom" constant="8" id="RFP-du-cdl"/>
+                                    <constraint firstAttribute="bottom" secondItem="BEd-v4-YDM" secondAttribute="bottom" id="nzs-Fe-g2n"/>
+                                    <constraint firstItem="6FU-Of-cdK" firstAttribute="top" secondItem="lf3-Y8-ztX" secondAttribute="top" id="qly-dt-kp4"/>
+                                </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="centerX" secondItem="yZe-l1-1Cf" secondAttribute="centerX" id="1fH-Ae-Pep"/>
                             <constraint firstItem="jtm-KQ-nId" firstAttribute="top" secondItem="oxw-6G-nOi" secondAttribute="top" id="4mS-3w-iQW"/>
+                            <constraint firstItem="so0-au-wZg" firstAttribute="top" secondItem="lf3-Y8-ztX" secondAttribute="bottom" constant="10" id="E1Y-Nn-G6F"/>
+                            <constraint firstItem="yZe-l1-1Cf" firstAttribute="top" secondItem="3df-Wc-RQz" secondAttribute="bottom" constant="35" id="HGV-cw-AGp"/>
                             <constraint firstItem="jtm-KQ-nId" firstAttribute="leading" secondItem="oxw-6G-nOi" secondAttribute="leading" id="ban-XE-JPi"/>
+                            <constraint firstAttribute="centerX" secondItem="lf3-Y8-ztX" secondAttribute="centerX" id="e8E-9v-rEa"/>
                             <constraint firstAttribute="bottom" secondItem="jtm-KQ-nId" secondAttribute="bottom" id="sx7-zY-vvz"/>
                             <constraint firstAttribute="trailing" secondItem="jtm-KQ-nId" secondAttribute="trailing" id="wpU-yK-xHE"/>
                         </constraints>
@@ -1115,7 +1171,7 @@
                     <navigationItem key="navigationItem" id="ueA-O6-Djt">
                         <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="KPL-gz-OCJ" userLabel="Title View">
-                            <rect key="frame" x="93" y="5" width="190" height="34"/>
+                            <rect key="frame" x="205" y="5" width="190" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="uD7-V4-mF6">
@@ -1173,13 +1229,15 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="activityLabel" destination="Xhe-ik-k94" id="hWw-q1-f3l"/>
                         <outlet property="avatarView" destination="uD7-V4-mF6" id="iA7-v4-S7S"/>
                         <outlet property="nameLabel" destination="e0x-EU-7eq" id="DLz-9l-GuL"/>
                         <outlet property="spinner" destination="b5e-73-k20" id="qwm-1K-pem"/>
+                        <outlet property="swipeDownHint" destination="yZe-l1-1Cf" id="7GX-jH-UP2"/>
+                        <outlet property="swipeUpHint" destination="lf3-Y8-ztX" id="rGI-Sz-itq"/>
                         <outlet property="swipeView" destination="jtm-KQ-nId" id="tMC-TD-PIu"/>
                     </connections>
                 </viewController>
@@ -2015,6 +2073,7 @@
         <image name="ic-chats" width="27" height="24"/>
         <image name="ic-checkmark" width="28" height="28"/>
         <image name="ic-compass" width="28" height="28"/>
+        <image name="ic-down-chevron-small" width="11" height="12"/>
         <image name="ic-eclipse" width="29" height="7"/>
         <image name="ic-edit" width="39" height="40"/>
         <image name="ic-me" width="29" height="28"/>
@@ -2023,6 +2082,7 @@
         <image name="ic-right-arrow" width="8" height="11"/>
         <image name="ic-start-chat" width="50" height="30"/>
         <image name="ic-twitter-color" width="28" height="28"/>
+        <image name="ic-up-chevron" width="22" height="25"/>
         <image name="ic-video" width="42" height="26"/>
         <image name="sample-cover-image" width="750" height="368"/>
         <image name="sample-taylor-avatar" width="66" height="67"/>
@@ -2030,8 +2090,8 @@
         <image name="sample-taylor-video-frame" width="375" height="375"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="TFP-eW-cVI"/>
         <segue reference="kNN-lk-QB3"/>
         <segue reference="zqv-ca-egq"/>
-        <segue reference="Nm9-7n-EUh"/>
     </inferredMetricsTieBreakers>
 </document>
