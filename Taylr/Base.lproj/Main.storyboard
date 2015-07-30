@@ -55,7 +55,6 @@
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
-            <string>Cabin-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -391,12 +390,6 @@
                                                 <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="UhH-a0-qxF">
                                                     <rect key="frame" x="572" y="28" width="20" height="20"/>
                                                 </activityIndicatorView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wDP-LB-Cob" userLabel="Badge">
-                                                    <rect key="frame" x="583.5" y="29.5" width="8.5" height="17.5"/>
-                                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="15"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-right-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="FxC-Bm-I8H">
                                                     <rect key="frame" x="584" y="32.5" width="8" height="11"/>
                                                 </imageView>
@@ -406,9 +399,7 @@
                                                 <constraint firstItem="4Uc-p6-gzK" firstAttribute="top" secondItem="4hE-7L-rNx" secondAttribute="topMargin" id="3zx-9n-aha"/>
                                                 <constraint firstItem="liE-Iz-QQI" firstAttribute="leading" secondItem="4Uc-p6-gzK" secondAttribute="trailing" constant="10" id="Blx-yv-Naj"/>
                                                 <constraint firstItem="4Uc-p6-gzK" firstAttribute="centerY" secondItem="liE-Iz-QQI" secondAttribute="centerY" constant="11" id="HNl-af-LDp"/>
-                                                <constraint firstItem="wDP-LB-Cob" firstAttribute="trailing" secondItem="4hE-7L-rNx" secondAttribute="trailingMargin" id="HyW-La-LOs"/>
                                                 <constraint firstItem="zRz-eM-Pe7" firstAttribute="leading" secondItem="liE-Iz-QQI" secondAttribute="leading" id="Jhk-mP-idp"/>
-                                                <constraint firstAttribute="centerY" secondItem="wDP-LB-Cob" secondAttribute="centerY" id="Pwq-vi-YtG"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="4Uc-p6-gzK" secondAttribute="bottom" id="TVW-oX-YfT"/>
                                                 <constraint firstItem="4Uc-p6-gzK" firstAttribute="leading" secondItem="4hE-7L-rNx" secondAttribute="leadingMargin" constant="2" id="XQj-Cg-EDs"/>
                                                 <constraint firstItem="UhH-a0-qxF" firstAttribute="trailing" secondItem="4hE-7L-rNx" secondAttribute="trailingMargin" id="amR-nr-Pzw"/>
@@ -419,7 +410,6 @@
                                         </tableViewCellContentView>
                                         <connections>
                                             <outlet property="avatarView" destination="4Uc-p6-gzK" id="NF5-ki-BX7"/>
-                                            <outlet property="badgeLabel" destination="wDP-LB-Cob" id="e3z-Md-Y3W"/>
                                             <outlet property="nameLabel" destination="liE-Iz-QQI" id="NWC-nL-NKm"/>
                                             <outlet property="rightArrow" destination="FxC-Bm-I8H" id="wHO-Of-SQ0"/>
                                             <outlet property="spinner" destination="UhH-a0-qxF" id="3xS-KL-ACS"/>
@@ -1864,7 +1854,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email or Phone" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jTs-WI-JxO" customClass="JVFloatLabeledTextField">
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email or Phone" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="jTs-WI-JxO" customClass="JVFloatLabeledTextField">
                                 <rect key="frame" x="10" y="55" width="574" height="55"/>
                                 <fontDescription key="fontDescription" name="Cabin-Medium" family="Cabin" pointSize="16"/>
                                 <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
@@ -2022,8 +2012,8 @@
         <image name="sample-taylor-video-frame" width="375" height="375"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Fwv-Pj-RXP"/>
         <segue reference="kNN-lk-QB3"/>
-        <segue reference="TFP-eW-cVI"/>
+        <segue reference="Fwv-Pj-RXP"/>
+        <segue reference="Hrk-zE-6Yh"/>
     </inferredMetricsTieBreakers>
 </document>

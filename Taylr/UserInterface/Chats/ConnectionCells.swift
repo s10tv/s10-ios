@@ -9,6 +9,7 @@
 import Foundation
 import ReactiveCocoa
 import Bond
+import JSBadgeView
 import Core
 
 class ContactConnectionCell : UITableViewCell, BindableCell {
@@ -16,25 +17,26 @@ class ContactConnectionCell : UITableViewCell, BindableCell {
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var subtitleLabel: UILabel!
-    @IBOutlet weak var badgeLabel: UILabel!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var rightArrow: UIImageView!
+    var badgeView: JSBadgeView!
     
     func bind(vm: ContactConnectionViewModel) {
         vm.avatar ->> avatarView.imageBond
         vm.displayName ->> nameLabel
         vm.busy ->> spinner
         vm.statusMessage ->> subtitleLabel
-        vm.badgeText ->> badgeLabel
         vm.hideRightArrow ->> rightArrow.dynHidden
+        vm.badgeText ->> badgeView
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         avatarView.unbindDynImageURL()
-        [nameLabel, subtitleLabel, badgeLabel].each {
+        [nameLabel, subtitleLabel].each {
             $0.designatedBond.unbindAll()
         }
+        badgeView.designatedBond.unbindAll()
         spinner.designatedBond.unbindAll()
         rightArrow.dynHidden.valueBond.unbindAll()
     }
@@ -42,6 +44,12 @@ class ContactConnectionCell : UITableViewCell, BindableCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         avatarView.makeCircular()
+        badgeView = JSBadgeView(parentView: self, alignment: .CenterRight)
+        badgeView.badgeTextFont = UIFont(.cabinRegular, size: 12)
+        badgeView.badgeStrokeWidth = 5
+        badgeView.badgeStrokeColor = StyleKit.brandPurple
+        badgeView.badgeBackgroundColor = StyleKit.brandPurple
+        badgeView.badgePositionAdjustment = CGPoint(x: -22, y: 0)
     }
     
     static func reuseId() -> String {

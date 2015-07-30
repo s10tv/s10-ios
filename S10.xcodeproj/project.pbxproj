@@ -43,6 +43,7 @@
 		EA2406201B50F0F1003A73C3 /* VideoDownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA24061F1B50F0F1003A73C3 /* VideoDownloadOperation.swift */; };
 		EA2406221B50F79E003A73C3 /* VideoCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2406211B50F79E003A73C3 /* VideoCache.swift */; };
 		EA2406241B5109D8003A73C3 /* VideoDownloadTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2406231B5109D8003A73C3 /* VideoDownloadTests.swift */; };
+		EA24E9231B69E2BF00261873 /* Bond+JSBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA24E9221B69E2BF00261873 /* Bond+JSBadgeView.swift */; };
 		EA2DC2591B6377C00034434E /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2581B6377C00034434E /* Video.swift */; };
 		EA2DC2661B637CA30034434E /* VideoUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2651B637CA30034434E /* VideoUploadTask.swift */; };
 		EA2DC2681B637CAB0034434E /* VideoDownloadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2671B637CAB0034434E /* VideoDownloadTask.swift */; };
@@ -299,6 +300,7 @@
 		EA24061F1B50F0F1003A73C3 /* VideoDownloadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDownloadOperation.swift; sourceTree = "<group>"; };
 		EA2406211B50F79E003A73C3 /* VideoCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCache.swift; sourceTree = "<group>"; };
 		EA2406231B5109D8003A73C3 /* VideoDownloadTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDownloadTests.swift; sourceTree = "<group>"; };
+		EA24E9221B69E2BF00261873 /* Bond+JSBadgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bond+JSBadgeView.swift"; sourceTree = "<group>"; };
 		EA2DC2581B6377C00034434E /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		EA2DC2651B637CA30034434E /* VideoUploadTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoUploadTask.swift; sourceTree = "<group>"; };
 		EA2DC2671B637CAB0034434E /* VideoDownloadTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDownloadTask.swift; sourceTree = "<group>"; };
@@ -818,11 +820,12 @@
 		EA95BBA81B3930B000701F08 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				EA7134111B56E47100B810F6 /* ImagePickerExtensions.swift */,
+				EA24E9221B69E2BF00261873 /* Bond+JSBadgeView.swift */,
 				EA95BBA91B3930B000701F08 /* Bond+SDWebImage.swift */,
+				EA57CECC1B4608EF00759139 /* Bond+XLForm.swift */,
+				EA7134111B56E47100B810F6 /* ImagePickerExtensions.swift */,
 				EA95BBAB1B3930B000701F08 /* PKHUDExtension.swift */,
 				EA95BBAC1B3930B000701F08 /* ResourceExtension.swift */,
-				EA57CECC1B4608EF00759139 /* Bond+XLForm.swift */,
 				EA95BBAD1B3930B000701F08 /* XLFormExtensions.h */,
 				EA95BBAE1B3930B000701F08 /* XLFormExtensions.m */,
 			);
@@ -1698,6 +1701,7 @@
 				EA36D2AB1AE71366006FD5D8 /* Errors.swift in Sources */,
 				EA3965171B54C1B500F5B0B3 /* ReactiveBridging.swift in Sources */,
 				EA3594141B2DE5C300E91337 /* ConversationViewController.swift in Sources */,
+				EA24E9231B69E2BF00261873 /* Bond+JSBadgeView.swift in Sources */,
 				EAF81B381B3395E700EED6DD /* AVKit.swift in Sources */,
 				EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */,
 				EA57CECD1B4608EF00759139 /* Bond+XLForm.swift in Sources */,

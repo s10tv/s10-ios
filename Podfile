@@ -28,6 +28,7 @@ target :Core do
     # UI
     pod 'Cartography', '~> 0.5'
     pod 'EDColor', '~> 1.0'
+    pod 'JSBadgeView', '~> 1.4'
 
     # ViewModels
     pod 'DateTools', '~> 1.6'
