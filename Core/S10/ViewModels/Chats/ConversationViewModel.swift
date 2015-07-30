@@ -45,6 +45,7 @@ public class ConversationViewModel {
     var openedMessages = Set<Message>()
     
     public let avatar: PropertyOf<Image?>
+    public let firstName: PropertyOf<String>
     public let displayName: PropertyOf<String>
     public let displayStatus: PropertyOf<String>
     public let busy: PropertyOf<Bool>
@@ -63,6 +64,8 @@ public class ConversationViewModel {
             |> map { $0?.message.sender ?? recipient }
         avatar = currentUser
             |> flatMap { $0.pAvatar() }
+        firstName = currentUser
+            |> flatMap(nilValue: "") { $0.pFirstName() }
         displayName = currentUser
             |> flatMap(nilValue: "") { $0.pDisplayName() }
         busy = currentUser
@@ -88,6 +91,14 @@ public class ConversationViewModel {
         }
         meteor.expireMessages(Array(openedMessages))
         openedMessages.removeAll()
+    }
+    
+    public func reportUser(reason: String) {
+        currentUser.value.map { meteor.reportUser($0, reason: reason) }
+    }
+    
+    public func blockUser() {
+        currentUser.value.map { meteor.blockUser($0) }
     }
     
     public func profileVM() -> ProfileViewModel {

@@ -148,6 +148,8 @@ public enum R {
         case softUpgradeAlertOk = "SoftUpgradeAlertOk"
         /// New version is available
         case softUpgradeAlertTitle = "SoftUpgradeAlertTitle"
+        /// View Profile
+        case viewProfile = "ViewProfile"
     }
     public enum TaylrAssets : String {
         /// AppIcon
