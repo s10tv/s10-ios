@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dFw-q9-bre">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4FY-Nx-fFw">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -68,7 +68,7 @@
                                     <action selector="startLogin:" destination="dFw-q9-bre" eventType="touchUpInside" id="LLF-Ml-IV2"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c0f-ne-erJ" userLabel="Terms &amp; Privacy">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0f-ne-erJ" userLabel="Terms &amp; Privacy">
                                 <rect key="frame" x="130" y="630" width="117" height="29"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Pp-CT-PMh" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
@@ -158,11 +158,11 @@
             </objects>
             <point key="canvasLocation" x="-531" y="274"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Create Profile-->
         <scene sceneID="ziZ-yX-Hqk">
             <objects>
-                <tableViewController storyboardIdentifier="CreateProfile" clearsSelectionOnViewWillAppear="NO" id="4FY-Nx-fFw" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="0aF-Ww-ePD">
+                <tableViewController storyboardIdentifier="CreateProfile" clearsSelectionOnViewWillAppear="NO" id="4FY-Nx-fFw" customClass="CreateProfileViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="0aF-Ww-ePD">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -234,34 +234,54 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tmv-wN-Oba" id="5F8-K1-dTd">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qFp-u9-8YE">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K5S-M5-nhA" customClass="JVFloatLabeledTextField">
+                                                    <rect key="frame" x="10" y="8" width="167" height="43"/>
+                                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
+                                                            <color key="value" red="0.46897470951080322" green="0.27513545751571655" blue="0.68778532743453979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="floatingLabelYPadding">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textField>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qFp-u9-8YE" userLabel="Vertical Divider">
                                                     <rect key="frame" x="187" y="0.0" width="1" height="59"/>
                                                     <color key="backgroundColor" red="0.93333333333333335" green="0.94117647058823528" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="1" id="due-gI-89T"/>
                                                     </constraints>
                                                 </view>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K5S-M5-nhA">
-                                                    <rect key="frame" x="10" y="20" width="167" height="20"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R72-mS-4Cy" customClass="JVFloatLabeledTextField">
+                                                    <rect key="frame" x="198" y="8" width="167" height="43"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R72-mS-4Cy">
-                                                    <rect key="frame" x="198" y="20" width="167" height="20"/>
-                                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
+                                                            <color key="value" red="0.46897470951080322" green="0.27513545751571655" blue="0.68778532743453979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="floatingLabelYPadding">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </textField>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="centerY" secondItem="K5S-M5-nhA" secondAttribute="centerY" id="4Gh-cQ-H9f"/>
+                                                <constraint firstItem="R72-mS-4Cy" firstAttribute="top" secondItem="5F8-K1-dTd" secondAttribute="topMargin" id="4KI-cS-Eyj"/>
                                                 <constraint firstAttribute="centerY" secondItem="R72-mS-4Cy" secondAttribute="centerY" id="5hx-60-ZLV"/>
+                                                <constraint firstItem="R72-mS-4Cy" firstAttribute="bottom" secondItem="5F8-K1-dTd" secondAttribute="bottomMargin" id="6TH-C9-cCZ"/>
                                                 <constraint firstItem="qFp-u9-8YE" firstAttribute="top" secondItem="5F8-K1-dTd" secondAttribute="top" id="BkI-rT-Xrb"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="qFp-u9-8YE" secondAttribute="bottomMargin" constant="1" id="Nf5-ER-zgO"/>
                                                 <constraint firstItem="R72-mS-4Cy" firstAttribute="leading" secondItem="qFp-u9-8YE" secondAttribute="trailing" constant="10" id="Vaq-3X-r8t"/>
                                                 <constraint firstAttribute="centerX" secondItem="qFp-u9-8YE" secondAttribute="centerX" id="bcg-mS-efv"/>
+                                                <constraint firstItem="K5S-M5-nhA" firstAttribute="top" secondItem="5F8-K1-dTd" secondAttribute="topMargin" id="mZx-vX-NHs"/>
                                                 <constraint firstItem="qFp-u9-8YE" firstAttribute="leading" secondItem="K5S-M5-nhA" secondAttribute="trailing" constant="10" id="v3U-fy-YDj"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="R72-mS-4Cy" secondAttribute="trailing" constant="2" id="yic-70-acn"/>
                                                 <constraint firstItem="K5S-M5-nhA" firstAttribute="leading" secondItem="5F8-K1-dTd" secondAttribute="leadingMargin" constant="2" id="z63-RO-bgS"/>
+                                                <constraint firstItem="K5S-M5-nhA" firstAttribute="bottom" secondItem="5F8-K1-dTd" secondAttribute="bottomMargin" id="zRu-ci-yXM"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -271,16 +291,26 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xgl-pv-VmL" id="xmd-Ga-0AA">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tagline" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aY0-03-vXb">
-                                                    <rect key="frame" x="10" y="20" width="355" height="20"/>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tagline" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aY0-03-vXb" customClass="JVFloatLabeledTextField">
+                                                    <rect key="frame" x="10" y="8" width="355" height="43"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
+                                                            <color key="value" red="0.46897470951080322" green="0.27513545751571655" blue="0.68778532743453979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="floatingLabelYPadding">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                 </textField>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="aY0-03-vXb" firstAttribute="leading" secondItem="xmd-Ga-0AA" secondAttribute="leadingMargin" constant="2" id="7SO-iy-DvR"/>
                                                 <constraint firstAttribute="centerY" secondItem="aY0-03-vXb" secondAttribute="centerY" id="KMr-Sj-Fh8"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="aY0-03-vXb" secondAttribute="trailing" constant="2" id="cxQ-nu-qaR"/>
+                                                <constraint firstItem="aY0-03-vXb" firstAttribute="top" secondItem="xmd-Ga-0AA" secondAttribute="topMargin" id="r6Z-9W-0Yq"/>
+                                                <constraint firstItem="aY0-03-vXb" firstAttribute="bottom" secondItem="xmd-Ga-0AA" secondAttribute="bottomMargin" id="xKl-WJ-5et"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
@@ -295,16 +325,24 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NYa-St-Knz" id="i4R-TL-1aZ">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="About Me (optional)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="83K-3H-qRF">
-                                                    <rect key="frame" x="10" y="20" width="355" height="20"/>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gNz-Zb-kjq" customClass="JVFloatLabeledTextView">
+                                                    <rect key="frame" x="8" y="8" width="359" height="43"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="About (Optional)"/>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
+                                                            <color key="value" red="0.46897470951080322" green="0.27513545751571655" blue="0.68778532743453979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="centerY" secondItem="83K-3H-qRF" secondAttribute="centerY" id="hmE-Tt-ysQ"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="83K-3H-qRF" secondAttribute="trailing" constant="2" id="jzL-hT-MR5"/>
-                                                <constraint firstItem="83K-3H-qRF" firstAttribute="leading" secondItem="i4R-TL-1aZ" secondAttribute="leadingMargin" constant="2" id="l7I-ui-k99"/>
+                                                <constraint firstItem="gNz-Zb-kjq" firstAttribute="leading" secondItem="i4R-TL-1aZ" secondAttribute="leadingMargin" id="QoK-kX-kYy"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="gNz-Zb-kjq" secondAttribute="bottom" id="b11-3J-3B8"/>
+                                                <constraint firstItem="gNz-Zb-kjq" firstAttribute="top" secondItem="i4R-TL-1aZ" secondAttribute="topMargin" id="k1f-Rp-Ptb"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="gNz-Zb-kjq" secondAttribute="trailing" id="nLl-wS-pQa"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -316,11 +354,19 @@
                             <outlet property="delegate" destination="4FY-Nx-fFw" id="vka-pJ-P7d"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Create Profile" id="R0Q-H7-z7a"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+                    <connections>
+                        <outlet property="aboutView" destination="gNz-Zb-kjq" id="hjQ-x8-8Ge"/>
+                        <outlet property="firstNameField" destination="K5S-M5-nhA" id="2u2-Pg-uZ4"/>
+                        <outlet property="lastNameField" destination="R72-mS-4Cy" id="D0r-aQ-O6V"/>
+                        <outlet property="taglineField" destination="aY0-03-vXb" id="SbZ-eZ-I47"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v97-2k-B6C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="373" y="621"/>
+            <point key="canvasLocation" x="372.5" y="620.5"/>
         </scene>
         <!--Main - Discover-->
         <scene sceneID="ucd-nb-Qyk">
