@@ -14,6 +14,12 @@ import Async
 import SwipeView
 import Core
 
+extension MessageViewModel : PlayableVideo {
+    var uniqueId: String { return messageId }
+    var url: NSURL { return localVideoURL }
+    var duration: NSTimeInterval { return videoDuration }
+}
+
 class ConversationViewController : BaseViewController {
     
     @IBOutlet weak var avatarView: UIImageView!
@@ -29,34 +35,30 @@ class ConversationViewController : BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        vm.avatar ->> avatarView.imageBond
+        vm.displayName ->> nameLabel
+        vm.busy ->> spinner
+        vm.displayStatus ->> activityLabel
+        vm.reloadMessages()
+        
         let avkit = UIStoryboard(name: "AVKit", bundle: nil)
-        player = avkit.instantiateViewControllerWithIdentifier("Player") as! PlayerViewController
-        player.vm.delegate = self
         producer = avkit.instantiateViewControllerWithIdentifier("Producer") as! ProducerViewController
         producer.producerDelegate = self
+        player = avkit.instantiateViewControllerWithIdentifier("Player") as! PlayerViewController
+        player.vm.delegate = self
+        player.vm.playlist <~ (vm.messages |> map { $0.map { (msg: MessageViewModel) in msg as PlayableVideo } })
         
         addChildViewController(player)
         addChildViewController(producer)
         swipeView.vertical = true
         swipeView.bounces = false
+        swipeView.currentItemIndex = player.vm.nextVideo() != nil ? 0 : 1
         swipeView.dataSource = self
         swipeView.delegate = self
         player.didMoveToParentViewController(self)
-        player.didMoveToParentViewController(self)
+        producer.didMoveToParentViewController(self)
         
-        vm.reloadMessages()
-        vm.avatar ->> avatarView.imageBond
-        vm.displayName ->> nameLabel
-        vm.busy ->> spinner
-        vm.displayStatus ->> activityLabel
-        
-        player.vm.playlist <~ (vm.messages |> map { $0.map { (msg: MessageViewModel) in msg as PlayableVideo } })
-        if player.vm.playNextVideo() {
-            showPlayer()
-        }
-//        else {
-//            showProducer()
-//        }
+        player.vm.playNextVideo()
     }
     
     override func viewDidLayoutSubviews() {
@@ -81,15 +83,7 @@ class ConversationViewController : BaseViewController {
         }
     }
     
-    // MARK: - Actions
-    
-    func showPlayer(animated: Bool = false) {
-        swipeView.scrollToItemAtIndex(0, duration: animated ? 0.25 : 0)
-    }
-    
-    func showProducer(animated: Bool = false) {
-        swipeView.scrollToItemAtIndex(1, duration: animated ? 0.25 : 0)
-    }
+    // MARK: Actions
     
     @IBAction func showMoreOptions(sender: AnyObject) {
 //        let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
@@ -125,6 +119,8 @@ class ConversationViewController : BaseViewController {
     }
 }
 
+// MARK: - SwipeView Delegate & DataSource
+
 extension ConversationViewController : SwipeViewDataSource {
     func numberOfItemsInSwipeView(swipeView: SwipeView!) -> Int {
         return 2
@@ -136,13 +132,11 @@ extension ConversationViewController : SwipeViewDataSource {
 }
 
 extension ConversationViewController : SwipeViewDelegate {
-    
     func swipeViewCurrentItemIndexDidChange(swipeView: SwipeView!) {
-        
     }
 }
 
-
+// MARK: - Producer Delegate
 
 extension ConversationViewController : ProducerDelegate {
     
@@ -162,6 +156,8 @@ extension ConversationViewController : ProducerDelegate {
     }
 }
 
+// MARK: - Player Delegate
+
 extension ConversationViewController : PlayerDelegate {
     func playerDidFinishPlaylist(player: PlayerViewModel) {
         
@@ -172,30 +168,19 @@ extension ConversationViewController : PlayerDelegate {
     }
     
     func player(player: PlayerViewModel, didPlayVideo video: PlayableVideo) {
-        
+        //    if interactor.videoQueue.count == 0 {
+        //        showProducer(animated: true)
+        //    }
+        //    //        // TODO: Move into ViewModel
+        //    //        if let message = (video as? MessageViewModel)?.message
+        //    //            where message.fault == false // Hack for now to avoid EXC_BAD_INSTRUCTION
+        //    //                && message.sender != nil // Hack for now to avoid nil crash
+        //    //                && message.incoming && message.statusEnum != .Opened {
+        //    //            Meteor.openMessage(message, expireDelay: 0)
+        //    //            if let videoId = message.video?.documentID {
+        //    //                VideoCache.sharedInstance.removeVideo(videoId)
+        //    //            }
+        //    //        }
+
     }
 }
-
-extension MessageViewModel : PlayableVideo {
-    var uniqueId: String { return messageId }
-    var url: NSURL { return localVideoURL }
-    var duration: NSTimeInterval { return videoDuration }
-}
-
-
-
-//func player(player: , didFinishVideo video: PlayableVideo) {
-//    if interactor.videoQueue.count == 0 {
-//        showProducer(animated: true)
-//    }
-//    //        // TODO: Move into ViewModel
-//    //        if let message = (video as? MessageViewModel)?.message
-//    //            where message.fault == false // Hack for now to avoid EXC_BAD_INSTRUCTION
-//    //                && message.sender != nil // Hack for now to avoid nil crash
-//    //                && message.incoming && message.statusEnum != .Opened {
-//    //            Meteor.openMessage(message, expireDelay: 0)
-//    //            if let videoId = message.video?.documentID {
-//    //                VideoCache.sharedInstance.removeVideo(videoId)
-//    //            }
-//    //        }
-//}
