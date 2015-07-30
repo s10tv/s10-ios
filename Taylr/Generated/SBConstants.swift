@@ -16,7 +16,6 @@ public enum NavigationControllerStoryboardIdentifier : String {
 }
 
 public enum SegueIdentifier : String {
-    case ChatsToConversation = "ChatsToConversation"
     case IntegrationsToWeb = "IntegrationsToWeb"
     case LoadingToRootTab = "LoadingToRootTab"
     case LoginToCreateProfile = "LoginToCreateProfile"
@@ -25,7 +24,6 @@ public enum SegueIdentifier : String {
     case MeToProfile = "MeToProfile"
     case Onboarding_CreateProfile = "Onboarding_CreateProfile"
     case Onboarding_Login = "Onboarding_Login"
-    case ProfileToConversation = "ProfileToConversation"
     case RecorderToEditor = "RecorderToEditor"
 }
 

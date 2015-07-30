@@ -156,6 +156,8 @@ public enum R {
         case appBeta = "AppIconBeta"
         /// AppIconDev
         case appDev = "AppIconDev"
+        /// discover-logo
+        case discoverLogo = "discover-logo"
         /// empty-profile-pic
         case emptyProfilePic = "empty-profile-pic"
         /// girl-placeholder
@@ -170,22 +172,18 @@ public enum R {
         case icBackArrow = "ic-back-arrow"
         /// ic-back-white
         case icBackWhite = "ic-back-white"
-        /// ic-camera
-        case icCamera = "ic-camera"
-        /// ic-camera-flip
-        case icCameraFlip = "ic-camera-flip"
         /// ic-camera-switch
         case icCameraSwitch = "ic-camera-switch"
         /// ic-cancel-round
         case icCancelRound = "ic-cancel-round"
-        /// ic-capture
-        case icCapture = "ic-capture"
         /// ic-chats
         case icChats = "ic-chats"
         /// ic-checkmark
         case icCheckmark = "ic-checkmark"
         /// ic-close
         case icClose = "ic-close"
+        /// ic-compass
+        case icCompass = "ic-compass"
         /// ic-disclosure
         case icDisclosure = "ic-disclosure"
         /// ic-discover
@@ -240,6 +238,8 @@ public enum R {
         case icRecord = "ic-record"
         /// ic-rewind
         case icRewind = "ic-rewind"
+        /// ic-right-arrow
+        case icRightArrow = "ic-right-arrow"
         /// ic-right-chevron
         case icRightChevron = "ic-right-chevron"
         /// ic-save

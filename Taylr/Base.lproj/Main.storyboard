@@ -414,7 +414,7 @@
                                             <outlet property="rightArrow" destination="FxC-Bm-I8H" id="wHO-Of-SQ0"/>
                                             <outlet property="spinner" destination="UhH-a0-qxF" id="3xS-KL-ACS"/>
                                             <outlet property="subtitleLabel" destination="zRz-eM-Pe7" id="3eu-R2-ycm"/>
-                                            <segue destination="kBv-HD-oBL" kind="show" identifier="ChatsToConversation" id="Hrk-zE-6Yh"/>
+                                            <segue destination="kBv-HD-oBL" kind="show" identifier="" id="Hrk-zE-6Yh"/>
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="NewConnectionCell" rowHeight="120" id="efO-pw-6MY" customClass="NewConnectionCell" customModule="Taylr" customModuleProvider="target">
@@ -531,7 +531,7 @@
                                             <outlet property="subtitleLabel" destination="Xte-Hk-mjs" id="xeY-vY-qCs"/>
                                             <outlet property="timestampLabel" destination="xTq-x7-jCX" id="jd9-ph-yNz"/>
                                             <outlet property="titleLabel" destination="zro-AR-epX" id="qIL-tr-qg6"/>
-                                            <segue destination="kBv-HD-oBL" kind="show" identifier="ChatsToConversation" id="TFP-eW-cVI"/>
+                                            <segue destination="kBv-HD-oBL" kind="show" identifier="" id="TFP-eW-cVI"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -770,7 +770,7 @@
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
                                                             <connections>
-                                                                <segue destination="kBv-HD-oBL" kind="show" identifier="ProfileToConversation" id="Nm9-7n-EUh"/>
+                                                                <segue destination="kBv-HD-oBL" kind="show" identifier="" id="Nm9-7n-EUh"/>
                                                             </connections>
                                                         </button>
                                                     </subviews>
@@ -1096,11 +1096,11 @@
                         <viewControllerLayoutGuide type="bottom" id="so0-au-wZg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="oxw-6G-nOi">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jtm-KQ-nId" customClass="SwipeView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -1115,7 +1115,7 @@
                     <navigationItem key="navigationItem" id="ueA-O6-Djt">
                         <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="KPL-gz-OCJ" userLabel="Title View">
-                            <rect key="frame" x="205" y="5" width="190" height="34"/>
+                            <rect key="frame" x="92.5" y="5" width="190" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="uD7-V4-mF6">
@@ -1181,7 +1181,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OaH-F1-uJP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="314-8z-971"/>
+                <tapGestureRecognizer id="314-8z-971">
+                    <connections>
+                        <segue destination="O0f-xd-Ps7" kind="show" id="zqv-ca-egq"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1030" y="3090"/>
         </scene>
@@ -2016,7 +2020,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="kNN-lk-QB3"/>
-        <segue reference="Fwv-Pj-RXP"/>
-        <segue reference="Hrk-zE-6Yh"/>
+        <segue reference="zqv-ca-egq"/>
+        <segue reference="Nm9-7n-EUh"/>
     </inferredMetricsTieBreakers>
 </document>
