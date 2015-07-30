@@ -20,7 +20,20 @@ class VideoDownloadTests: AsyncTestCase {
     var queue: NSOperationQueue!
     var videoId: String!
     var senderId: String!
-    
+
+    override class func setUp() {
+        Realm.defaultPath = NSHomeDirectory().stringByAppendingPathComponent("test.realm")
+        deleteRealmFilesAtPath(Realm.defaultPath)
+    }
+
+    class func deleteRealmFilesAtPath(path: String) {
+        let fileManager = NSFileManager.defaultManager()
+        fileManager.removeItemAtPath(path, error: nil)
+        let lockPath = path + ".lock"
+        fileManager.removeItemAtPath(lockPath, error: nil)
+    }
+
+
     override func setUp() {
         super.setUp()
         // NOTE: Logic testing does not appear to support background session type, returns unknown error otherwise
