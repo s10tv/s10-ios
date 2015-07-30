@@ -70,9 +70,12 @@ public class VideoDownloadOperation : AsyncOperation {
                         case .Success:
                             realm.delete(task)
                         case .Failure(let error):
-                            task.resumeData = error.value.userInfo?[kAlamofireResumeData] as? NSData ?? NSData()
-                            let desc = NSString(data:task.resumeData, encoding:NSUTF8StringEncoding) as! String
-                            Log.debug("VideoDownload got resumeData \(desc)")
+                            if let resumeData = error.value.userInfo?[kAlamofireResumeData] as? NSData {
+                                task.resumeData = resumeData
+                                Log.debug("VideoDownload got resumeData length=\(resumeData.length)")
+                            } else {
+                                realm.delete(task)
+                            }
                         }
                     }
                 } else {
