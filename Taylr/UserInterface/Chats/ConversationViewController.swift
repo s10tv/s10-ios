@@ -74,6 +74,9 @@ class ConversationViewController : BaseViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.setBackgroundColor(UIColor(white: 0.5, alpha: 0.4))
+        if let view = navigationItem.titleView {
+            view.bounds.size = view.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
