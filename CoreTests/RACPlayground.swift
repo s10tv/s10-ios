@@ -113,15 +113,15 @@ class RACPlayground : AsyncTestCase {
         waitForExpectationsWithTimeout(1, handler: nil)
     }
     
-    func testExpectComplete() {
-        expectComplete { () -> Future<(), NSError> in
-            let (producer, sink) = SignalProducer<(), NSError>.buffer(1)
-            sendCompleted(sink)
-            return producer |> toFuture
-        }
-        waitForExpectationsWithTimeout(1, handler: nil)
-    }
-    
+//    func testExpectComplete() {
+//        expectComplete { () -> Future<(), NSError> in
+//            let (producer, sink) = SignalProducer<(), NSError>.buffer(1)
+//            sendCompleted(sink)
+//            return producer |> toFuture
+//        }
+//        waitForExpectationsWithTimeout(1, handler: nil)
+//    }
+
     func testExpectFulfill() {
         expectFulfill { fulfill in
             let block = { fulfill() }
