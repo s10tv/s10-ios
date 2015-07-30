@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="B5O-Nb-tlk">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -11,20 +11,6 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Producer View Controller-->
-        <scene sceneID="KVl-aQ-lmO">
-            <objects>
-                <navigationController storyboardIdentifier="Producer" navigationBarHidden="YES" id="B5O-Nb-tlk" customClass="ProducerViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="d6I-cJ-RgF">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="CgU-v0-x1p" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-946" y="1082"/>
-        </scene>
         <!--Editor View Controller-->
         <scene sceneID="6PV-4o-iXN">
             <objects>
@@ -241,6 +227,24 @@
                 </swipeGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-316" y="413"/>
+        </scene>
+        <!--Producer View Controller-->
+        <scene sceneID="iTe-MQ-cxU">
+            <objects>
+                <viewController storyboardIdentifier="Producer" id="0DE-rZ-SWb" customClass="ProducerViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="jBF-U1-Mdj"/>
+                        <viewControllerLayoutGuide type="bottom" id="Ugu-0e-9mg"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kGV-Vg-sZS">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BaY-8E-Oce" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-965" y="981"/>
         </scene>
         <!--Recorder View Controller-->
         <scene sceneID="RK2-8S-S6h">

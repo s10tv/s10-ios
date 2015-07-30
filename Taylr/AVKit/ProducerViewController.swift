@@ -15,7 +15,7 @@ protocol ProducerDelegate : NSObjectProtocol {
     func producer(producer: ProducerViewController, didProduceVideo url: NSURL)
 }
 
-class ProducerViewController : UINavigationController {
+class ProducerViewController : UIViewController {
     
     var recorderVC: RecorderViewController!
     var editorVC: EditorViewController!
@@ -29,7 +29,23 @@ class ProducerViewController : UINavigationController {
         recorderVC.delegate = self
         editorVC.delegate = self
         
-        viewControllers = [recorderVC]
+        addChildViewController(recorderVC)
+        addChildViewController(editorVC)
+        recorderVC.didMoveToParentViewController(self)
+        editorVC.didMoveToParentViewController(self)
+        showRecorder()
+    }
+    
+    func showRecorder() {
+        editorVC.view.removeFromSuperview()
+        view.addSubview(recorderVC.view)
+        recorderVC.view.makeEdgesEqualTo(view)
+    }
+    
+    func showEditor() {
+        recorderVC.view.removeFromSuperview()
+        view.addSubview(editorVC.view)
+        editorVC.view.makeEdgesEqualTo(view)
     }
 }
 
@@ -42,7 +58,7 @@ extension ProducerViewController : RecorderDelegate {
         editorVC.recordSession = session
         currentFilter = recorder.previewView.selectedFilter
         editorVC.recordSessionFilter = currentFilter
-        pushViewController(editorVC, animated: false)
+        showEditor()
     }
 }
 
@@ -50,12 +66,12 @@ extension ProducerViewController : EditorDelegate {
     func editorDidCancel(editor: EditorViewController) {
         currentFilter = editorVC.filterView.selectedFilter
         recorderVC.previewView.selectedFilter = currentFilter
-        popViewControllerAnimated(false)
+        showRecorder()
         producerDelegate?.producerDidCancelRecording(self)
     }
     
     func editor(editor: EditorViewController, didEditVideo outputURL: NSURL) {
         producerDelegate?.producer(self, didProduceVideo: outputURL)
-        popViewControllerAnimated(false)
+        showRecorder()
     }
 }
