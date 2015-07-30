@@ -52,6 +52,8 @@ class PlayerViewController : UIViewController {
         vm.videoURL ->> videoURLBond
         vm.totalDurationLeft ->> durationLabel
         vm.currentVideoProgress ->> progressView
+        vm.hideProgress ->> durationLabel.dynHidden
+        vm.hideProgress ->> progressView.dynHidden
         vm.isPlaying ->> overlay.dynHidden
         // Slight hack to get around the issue that playback momentarily stops when switching video
         vm.isPlaying.producer.start(next: { [weak self] in

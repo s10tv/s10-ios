@@ -48,6 +48,7 @@ class PlayerViewModel {
     let isPlaying: PropertyOf<Bool>
     let currentVideoProgress: PropertyOf<Float>
     let totalDurationLeft: PropertyOf<String>
+    let hideProgress: PropertyOf<Bool>
     
     init() {
         videoURL = currentVideo |> map { $0?.url }
@@ -74,6 +75,7 @@ class PlayerViewModel {
             let secondsLeft = Int(ceil(max(unfinishedVideoDuration - currentTime, 0)))
             return "\(secondsLeft)"
         })
+        hideProgress = currentVideo |> map { $0 == nil }
     }
     
     func prevVideo() -> PlayableVideo? {
@@ -83,9 +85,12 @@ class PlayerViewModel {
     }
     
     func nextVideo() -> PlayableVideo? {
+        if currentVideo.value == nil {
+            return playlist.value.first
+        }
         return currentVideoIndex().flatMap {
             $0 < playlist.value.count - 1 ? $0 + 1 : nil
-        }.map { playlist.value[$0] } ?? playlist.value.first
+        }.map { playlist.value[$0] }
     }
     
     func playPrevVideo() -> Bool {

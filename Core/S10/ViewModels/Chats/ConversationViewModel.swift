@@ -45,6 +45,7 @@ public struct ConversationViewModel {
     public let displayStatus: PropertyOf<String>
     public let busy: PropertyOf<Bool>
     public let messages: PropertyOf<[MessageViewModel]>
+    public let exitAtEnd: Bool
 
     public let playback: PlaybackViewModel
     public let record: RecordViewModel
@@ -66,6 +67,7 @@ public struct ConversationViewModel {
             |> flatMap { $0?.formattedDate ?? recipient?.pConversationStatus() ?? PropertyOf("") }
         _messages = MutableProperty([])
         messages = PropertyOf(_messages)
+        exitAtEnd = recipient == nil
     }
     
     // BUGBUG: Never called thus no message will show up

@@ -21,6 +21,10 @@ extension MessageViewModel : PlayableVideo {
 }
 
 class ConversationViewController : BaseViewController {
+    enum Page : Int {
+        case Player = 0
+        case Producer = 1
+    }
     
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -84,6 +88,9 @@ class ConversationViewController : BaseViewController {
     }
     
     // MARK: Actions
+    func showPage(page: Page, animated: Bool = false) {
+        swipeView.scrollToItemAtIndex(page.rawValue, duration: animated ? 0.25 : 0)
+    }
     
     @IBAction func showMoreOptions(sender: AnyObject) {
 //        let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
@@ -127,7 +134,7 @@ extension ConversationViewController : SwipeViewDataSource {
     }
     
     func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, reusingView view: UIView!) -> UIView! {
-        return index == 0 ? player.view : producer.view
+        return index == Page.Player.rawValue ? player.view : producer.view
     }
 }
 
@@ -160,7 +167,11 @@ extension ConversationViewController : ProducerDelegate {
 
 extension ConversationViewController : PlayerDelegate {
     func playerDidFinishPlaylist(player: PlayerViewModel) {
-        
+        if vm.exitAtEnd {
+            navigationController?.popViewControllerAnimated(true)
+        } else {
+            showPage(.Producer, animated: true)
+        }
     }
     
     func player(player: PlayerViewModel, willPlayVideo video: PlayableVideo) {
@@ -168,19 +179,15 @@ extension ConversationViewController : PlayerDelegate {
     }
     
     func player(player: PlayerViewModel, didPlayVideo video: PlayableVideo) {
-        //    if interactor.videoQueue.count == 0 {
-        //        showProducer(animated: true)
-        //    }
-        //    //        // TODO: Move into ViewModel
-        //    //        if let message = (video as? MessageViewModel)?.message
-        //    //            where message.fault == false // Hack for now to avoid EXC_BAD_INSTRUCTION
-        //    //                && message.sender != nil // Hack for now to avoid nil crash
-        //    //                && message.incoming && message.statusEnum != .Opened {
-        //    //            Meteor.openMessage(message, expireDelay: 0)
-        //    //            if let videoId = message.video?.documentID {
-        //    //                VideoCache.sharedInstance.removeVideo(videoId)
-        //    //            }
-        //    //        }
-
+//        // TODO: Move into ViewModel
+//        if let message = (video as? MessageViewModel)?.message
+//            where message.fault == false // Hack for now to avoid EXC_BAD_INSTRUCTION
+//                && message.sender != nil // Hack for now to avoid nil crash
+//                && message.incoming && message.statusEnum != .Opened {
+//            Meteor.openMessage(message, expireDelay: 0)
+//            if let videoId = message.video?.documentID {
+//                VideoCache.sharedInstance.removeVideo(videoId)
+//            }
+//        }
     }
 }
