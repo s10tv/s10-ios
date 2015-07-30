@@ -359,9 +359,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="4cg-hq-bZ8">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="76" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="4cg-hq-bZ8">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ContactConnectionCell" rowHeight="76" id="pVQ-Tu-jcV" customClass="ContactConnectionCell" customModule="Taylr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
@@ -397,6 +397,9 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-right-arrow" translatesAutoresizingMaskIntoConstraints="NO" id="FxC-Bm-I8H">
+                                                    <rect key="frame" x="584" y="32.5" width="8" height="11"/>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="centerY" secondItem="UhH-a0-qxF" secondAttribute="centerY" id="11D-lR-lwP"/>
@@ -409,6 +412,8 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="4Uc-p6-gzK" secondAttribute="bottom" id="TVW-oX-YfT"/>
                                                 <constraint firstItem="4Uc-p6-gzK" firstAttribute="leading" secondItem="4hE-7L-rNx" secondAttribute="leadingMargin" constant="2" id="XQj-Cg-EDs"/>
                                                 <constraint firstItem="UhH-a0-qxF" firstAttribute="trailing" secondItem="4hE-7L-rNx" secondAttribute="trailingMargin" id="amR-nr-Pzw"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="FxC-Bm-I8H" secondAttribute="trailing" id="gNH-Wu-FOJ"/>
+                                                <constraint firstAttribute="centerY" secondItem="FxC-Bm-I8H" secondAttribute="centerY" id="o41-wQ-Neb"/>
                                                 <constraint firstItem="zRz-eM-Pe7" firstAttribute="top" secondItem="liE-Iz-QQI" secondAttribute="bottom" id="qOU-Gu-89E"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -416,6 +421,7 @@
                                             <outlet property="avatarView" destination="4Uc-p6-gzK" id="NF5-ki-BX7"/>
                                             <outlet property="badgeLabel" destination="wDP-LB-Cob" id="e3z-Md-Y3W"/>
                                             <outlet property="nameLabel" destination="liE-Iz-QQI" id="NWC-nL-NKm"/>
+                                            <outlet property="rightArrow" destination="FxC-Bm-I8H" id="wHO-Of-SQ0"/>
                                             <outlet property="spinner" destination="UhH-a0-qxF" id="3xS-KL-ACS"/>
                                             <outlet property="subtitleLabel" destination="zRz-eM-Pe7" id="3eu-R2-ycm"/>
                                             <segue destination="kBv-HD-oBL" kind="show" identifier="ChatsToConversation" id="Hrk-zE-6Yh"/>
@@ -566,7 +572,7 @@
                             </connections>
                         </segmentedControl>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="segmentedControl" destination="omL-rj-1qF" id="dyM-3X-oRq"/>
                         <outlet property="tableView" destination="4cg-hq-bZ8" id="YhK-na-cJu"/>
@@ -2006,6 +2012,7 @@
         <image name="ic-me" width="29" height="28"/>
         <image name="ic-more" width="29" height="7"/>
         <image name="ic-play-small" width="22" height="22"/>
+        <image name="ic-right-arrow" width="8" height="11"/>
         <image name="ic-start-chat" width="50" height="30"/>
         <image name="ic-twitter-color" width="28" height="28"/>
         <image name="ic-video" width="42" height="26"/>
