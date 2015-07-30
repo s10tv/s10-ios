@@ -19,6 +19,7 @@ class ChatsViewController : BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 0.01))
         
         let contactCellFactory = tableView.factory(ContactConnectionCell)
         let newCellFactory = tableView.factory(NewConnectionCell)

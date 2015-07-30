@@ -30,6 +30,7 @@ public struct ContactConnectionViewModel : ConnectionViewModel {
     public let statusMessage: PropertyOf<String>
     public let badgeText: PropertyOf<String>
     public let busy: PropertyOf<Bool>
+    public let hideRightArrow: PropertyOf<Bool>
     
     init(connection: Connection) {
         self.connection = connection
@@ -38,7 +39,14 @@ public struct ContactConnectionViewModel : ConnectionViewModel {
         displayName = user.pDisplayName()
         busy = connection.otherUser.pConversationBusy()
         statusMessage = connection.otherUser.pConversationStatus()
-        badgeText = connection.dyn(.unreadCount).force(Int) |> map { "\($0)" }
+        badgeText = connection.dyn(.unreadCount).force(Int)
+            |> map { $0 > 0 ? "\($0)" : "" }
+        hideRightArrow = PropertyOf(true, combineLatest(
+            busy.producer,
+            badgeText.producer
+        ) |> map {
+            $0 || $1.length > 0
+        })
     }
 }
 
@@ -51,6 +59,7 @@ public struct NewConnectionViewModel : ConnectionViewModel {
     public let jobTitle: PropertyOf<String>
     public let employer: PropertyOf<String>
     public let busy: PropertyOf<Bool>
+    public let hidePlayIcon: PropertyOf<Bool>
     public let profileIcons: DynamicArray<Image>
 
     init(connection: Connection) {
@@ -62,6 +71,12 @@ public struct NewConnectionViewModel : ConnectionViewModel {
         employer = user.pEmployer()
         profileIcons = DynamicArray(user.connectedProfiles.map { $0.icon })
         busy = connection.otherUser.pConversationBusy()
+        hidePlayIcon = PropertyOf(true, combineLatest(
+            busy.producer,
+            connection.dyn(.unreadCount).force(Int).producer
+        ) |> map {
+            $0 || $1 == 0
+        })
         displayTime = relativeTime(connection.updatedAt)
     }
 }

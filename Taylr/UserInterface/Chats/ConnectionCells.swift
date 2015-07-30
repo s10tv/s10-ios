@@ -18,6 +18,7 @@ class ContactConnectionCell : UITableViewCell, BindableCell {
     @IBOutlet weak var subtitleLabel: UILabel!
     @IBOutlet weak var badgeLabel: UILabel!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
+    @IBOutlet weak var rightArrow: UIImageView!
     
     func bind(vm: ContactConnectionViewModel) {
         vm.avatar ->> avatarView.imageBond
@@ -25,6 +26,7 @@ class ContactConnectionCell : UITableViewCell, BindableCell {
         vm.busy ->> spinner
         vm.statusMessage ->> subtitleLabel
         vm.badgeText ->> badgeLabel
+        vm.hideRightArrow ->> rightArrow.dynHidden
     }
     
     override func prepareForReuse() {
@@ -33,8 +35,8 @@ class ContactConnectionCell : UITableViewCell, BindableCell {
         [nameLabel, subtitleLabel, badgeLabel].each {
             $0.designatedBond.unbindAll()
         }
-        badgeLabel.dynHidden.designatedBond.unbindAll()
         spinner.designatedBond.unbindAll()
+        rightArrow.dynHidden.valueBond.unbindAll()
     }
     
     override func awakeFromNib() {
@@ -64,7 +66,18 @@ class NewConnectionCell : UITableViewCell, BindableCell {
         vm.displayTime ->> timestampLabel
         vm.jobTitle ->> titleLabel
         vm.employer ->> subtitleLabel
+        vm.hidePlayIcon ->> playIcon.dynHidden
         vm.profileIcons.map(profileIconsView.factory(ProfileIconCell)) ->> profileIconsView
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        [nameLabel, timestampLabel, titleLabel, subtitleLabel].each {
+            $0.designatedBond.unbindAll()
+        }
+        avatarView.imageBond.unbindAll()
+        playIcon.dynHidden.designatedBond.unbindAll()
+        profileIconsView.designatedBond.unbindAll()
     }
     
     override func awakeFromNib() {
