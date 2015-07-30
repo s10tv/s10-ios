@@ -10,35 +10,12 @@ import Foundation
 import ReactiveCocoa
 import Bond
 
-public struct PlaybackViewModel {
-    let _currentMessage = MutableProperty<MessageViewModel?>(nil)
-    let _currentTrackRatio = MutableProperty<CGFloat>(0)
-    let _totalTimeRemaining = MutableProperty<String>("")
-    
-    public var currentMessage: PropertyOf<MessageViewModel?> {
-        return PropertyOf(_currentMessage)
-    }
-    public var currentTrackRatio: PropertyOf<CGFloat> {
-        return PropertyOf(_currentTrackRatio)
-    }
-    public var totalTimeRemaining: PropertyOf<String> {
-        return PropertyOf(_totalTimeRemaining)
-    }
-}
-
-public struct RecordViewModel {
-    let _hasNewMessage = MutableProperty<Bool>(false)
-
-    public var hasNewMessage: PropertyOf<Bool> {
-        return PropertyOf(_hasNewMessage)
-    }
-}
-
 public struct ConversationViewModel {
 
     let meteor: MeteorService
     let _messages: MutableProperty<[MessageViewModel]>
     let recipient: User?
+    let currentUser: PropertyOf<User?>
     
     public let avatar: PropertyOf<Image?>
     public let displayName: PropertyOf<String>
@@ -46,16 +23,15 @@ public struct ConversationViewModel {
     public let busy: PropertyOf<Bool>
     public let messages: PropertyOf<[MessageViewModel]>
     public let exitAtEnd: Bool
-
-    public let playback: PlaybackViewModel
-    public let record: RecordViewModel
+    
+    public let currentMessage: MutableProperty<MessageViewModel?>
 
     init(meteor: MeteorService, recipient: User?) {
         self.meteor = meteor
         self.recipient = recipient
-        playback = PlaybackViewModel()
-        record = RecordViewModel()
-        let currentUser = playback._currentMessage
+
+        currentMessage = MutableProperty(nil)
+        currentUser = currentMessage
             |> map { $0?.message.sender ?? recipient }
         avatar = currentUser
             |> flatMap { $0.pAvatar() }
@@ -63,7 +39,7 @@ public struct ConversationViewModel {
             |> flatMap(nilValue: "") { $0.pDisplayName() }
         busy = currentUser
             |> flatMap(nilValue: false) { $0.pConversationBusy() }
-        displayStatus = playback._currentMessage
+        displayStatus = currentMessage
             |> flatMap { $0?.formattedDate ?? recipient?.pConversationStatus() ?? PropertyOf("") }
         _messages = MutableProperty([])
         messages = PropertyOf(_messages)
@@ -94,7 +70,6 @@ public struct ConversationViewModel {
     }
     
     public func profileVM() -> ProfileViewModel {
-        let user = playback.currentMessage.value?.message.sender ?? recipient!
-        return ProfileViewModel(meteor: meteor, user: user)
+        return ProfileViewModel(meteor: meteor, user: currentUser.value!)
     }
 }

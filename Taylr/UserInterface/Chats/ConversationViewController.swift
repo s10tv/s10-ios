@@ -175,10 +175,11 @@ extension ConversationViewController : PlayerDelegate {
     }
     
     func player(player: PlayerViewModel, willPlayVideo video: PlayableVideo) {
-        
+        vm.currentMessage.value = video as? MessageViewModel
     }
     
     func player(player: PlayerViewModel, didPlayVideo video: PlayableVideo) {
+        vm.currentMessage.value = nil
 //        // TODO: Move into ViewModel
 //        if let message = (video as? MessageViewModel)?.message
 //            where message.fault == false // Hack for now to avoid EXC_BAD_INSTRUCTION
