@@ -25,7 +25,7 @@ class PlayerViewController : UIViewController {
     let vm = PlayerViewModel()
     var player: SCPlayer { return playerView.player! }
     lazy var videoURLBond: Bond<NSURL?> = {
-        return Bond<NSURL?> {
+        return Bond<NSURL?> { [weak self] in
             // NOTE: Despite the fact that we are on main thread it appears that
             // because MutableProperty dispatch_sync to a different queue
             // AVPlayer.setItemByUrl ends up being a no-op. I can't explain it but
@@ -53,7 +53,7 @@ class PlayerViewController : UIViewController {
         vm.currentVideoProgress ->> progressView
         vm.isPlaying ->> overlay.dynHidden
         // Slight hack to get around the issue that playback momentarily stops when switching video
-        vm.isPlaying.producer.start(next: {
+        vm.isPlaying.producer.start(next: { [weak self] in
             let isPlaying = $0
             UIView.animate(0.25, options: nil, delay: 0.25, animations: { [weak self] in
                 self?.overlay.alpha = isPlaying ? 0 : 1
@@ -70,6 +70,7 @@ class PlayerViewController : UIViewController {
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         player.endSendingPlayMessages()
+        player.pause()
     }
     
     // MARK: -
