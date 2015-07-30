@@ -46,7 +46,7 @@ public class InviteOperation : AsyncOperation {
             request.addValue("2014-02-14", forHTTPHeaderField: "x-ms-version")
             request.addValue("BlockBlob", forHTTPHeaderField: "x-ms-blob-type")
             request.addValue("video/mp4", forHTTPHeaderField: "Content-Type")
-            return Alamofire.upload(request, self.localVideoURL).rac_statuscode()
+            return Alamofire.upload(request, file: self.localVideoURL).rac_statuscode()
         }.flattenMap {
             if let code = $0 as? Int where code >= 200 && code < 300 {
                 return self.meteor.finishTask(self.taskId)

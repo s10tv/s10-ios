@@ -37,7 +37,7 @@ public class PhotoUploadOperation : AsyncOperation {
             request.addValue("2014-02-14", forHTTPHeaderField: "x-ms-version")
             request.addValue("BlockBlob", forHTTPHeaderField: "x-ms-blob-type")
             request.addValue("image/jpeg", forHTTPHeaderField: "Content-Type")
-            return Alamofire.upload(request, imageData).rac_statuscode()
+            return Alamofire.upload(request, data: imageData).rac_statuscode()
         }.flattenMap {
             if let code = $0 as? Int where code >= 200 && code < 300 {
                 return self.meteor.finishTask(taskId)

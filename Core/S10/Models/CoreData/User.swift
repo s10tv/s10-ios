@@ -56,10 +56,6 @@ internal class User: _User {
         var themeColor: UIColor!
         var attributes: [Attribute]!
         
-        init?(_ map: Map) {
-            mapping(map)
-        }
-        
         mutating func mapping(map: Map) {
             id <- map["id"]
             icon <- map["icon"]
@@ -73,12 +69,16 @@ internal class User: _User {
             attributes <- map["attributes"]
         }
         
+        static func newInstance() -> Mappable {
+            return ConnectedProfile()
+        }
+        
         struct Attribute : Mappable {
             var label: String!
             var value: String!
-            
-            init?(_ map: Map) {
-                mapping(map)
+
+            static func newInstance() -> Mappable {
+                return Attribute()
             }
             
             mutating func mapping(map: Map) {

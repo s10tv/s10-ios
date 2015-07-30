@@ -1,8 +1,8 @@
 PODS:
-  - Alamofire (1.2.3)
+  - Alamofire (1.3.0)
   - AnalyticsSwift (0.1.0)
   - Appsee (2.1.3)
-  - Async (1.3.0)
+  - Async (1.3.1)
   - Bolts (1.2.0):
     - Bolts/AppLinks (= 1.2.0)
     - Bolts/Tasks (= 1.2.0)
@@ -14,8 +14,8 @@ PODS:
   - Cartography (0.5.0)
   - CHTCollectionViewWaterfallLayout (0.9.1)
   - DateTools (1.6.1)
-  - DTFoundation/Core (1.7.6)
-  - DTFoundation/DTASN1 (1.7.6):
+  - DTFoundation/Core (1.7.7)
+  - DTFoundation/DTASN1 (1.7.7):
     - DTFoundation/Core
   - EDColor (1.0.0)
   - FBSDKCoreKit (4.4.0):
@@ -44,7 +44,7 @@ PODS:
     - NSLogger/Standard (= 1.5.1)
   - NSLogger/Standard (1.5.1)
   - OAuthSwift (0.3.6)
-  - ObjectMapper (0.12)
+  - ObjectMapper (0.14)
   - OHHTTPStubs (4.0.2)
   - Ouralabs (2.4.0)
   - PKHUD (2.0.1)
@@ -66,11 +66,11 @@ PODS:
     - Box (~> 1.2.0)
     - ReactiveCocoa/Core
     - Result (~> 0.4.1)
-  - Realm (0.93.2):
-    - Realm/Headers (= 0.93.2)
-  - Realm/Headers (0.93.2)
-  - RealmSwift (0.93.2):
-    - Realm (= 0.93.2)
+  - Realm (0.94.0):
+    - Realm/Headers (= 0.94.0)
+  - Realm/Headers (0.94.0)
+  - RealmSwift (0.94.0):
+    - Realm (= 0.94.0)
   - Result (0.4.4):
     - Box (~> 1.2)
   - Reveal-iOS-SDK (1.5.1)
@@ -83,15 +83,15 @@ PODS:
   - SugarRecord/CoreData (1.0.7):
     - SugarRecord/Core
   - SwiftTryCatch (0.0.1)
-  - SwiftyJSON (2.2.0)
+  - SwiftyJSON (2.2.1)
   - SwiftyUserDefaults (1.3.0)
   - SwipeView (1.3.2)
-  - TPKeyboardAvoiding (1.2.8)
+  - TPKeyboardAvoiding (1.2.9)
   - UICollectionViewLeftAlignedLayout (1.0.0)
-  - XLForm (3.0.0)
+  - XLForm (3.0.1)
 
 DEPENDENCIES:
-  - Alamofire (~> 1.2)
+  - Alamofire (~> 1.3)
   - AnalyticsSwift (~> 0.1.0)
   - Appsee (~> 2.1)
   - Async (from `https://github.com/duemunk/Async.git`)
@@ -111,21 +111,21 @@ DEPENDENCIES:
   - Nimble (~> 0.4.0)
   - NSLogger (~> 1.5)
   - OAuthSwift (~> 0.3)
-  - ObjectMapper (~> 0.12)
+  - ObjectMapper (~> 0.14)
   - OHHTTPStubs (~> 4.0.2)
   - Ouralabs (~> 2.3)
   - PKHUD (from `https://github.com/tonyxiao/PKHUD`)
   - Quick (~> 0.3.0)
   - RBBAnimation (~> 0.4.0)
   - ReactiveCocoa (= 3.0-RC.1)
-  - RealmSwift (~> 0.93.2)
+  - RealmSwift (~> 0.94)
   - Reveal-iOS-SDK (~> 1.5)
   - SCRecorder (~> 2.5)
   - SDWebImage (~> 3.7)
   - SimpleKeychain (~> 0.4)
   - SugarRecord/CoreData (from `https://github.com/tonyxiao/SugarRecord`, branch `develop`)
   - SwiftTryCatch (~> 0.0.1)
-  - SwiftyJSON (~> 2.1)
+  - SwiftyJSON (~> 2.2)
   - SwiftyUserDefaults (~> 1.3)
   - SwipeView (~> 1.3)
   - TPKeyboardAvoiding (~> 1.2)
@@ -149,7 +149,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   Async:
-    :commit: 3800ef8762fd4edd16d816882409a6c83533c313
+    :commit: 9e64046b767fe11010891f5b7fe2aed613a6ee55
     :git: https://github.com/duemunk/Async.git
   Bond:
     :commit: 413dd59017c91667894440fadff489d41d547171
@@ -165,17 +165,17 @@ CHECKOUT OPTIONS:
     :git: https://github.com/tonyxiao/SugarRecord
 
 SPEC CHECKSUMS:
-  Alamofire: 5550bf0b575ed1a4bf9be572f9463e1015cc169e
+  Alamofire: 220403a8d5840e0b4c946a6fbaf209dbca124282
   AnalyticsSwift: 903cb2c6d522709fa7637285553840c02accd149
   Appsee: 375075f06fdd807e0b17df52cbb7c972c4eb17da
-  Async: 5ba000b344028a256e6ebbe75f74dac907fbb365
+  Async: edb15b1e34181d7c9873ce6b5d6eabc1c99e638b
   Bolts: d176cb1e0012175589e389a9db49b85e27787576
   Bond: 4cb4a52a8a236ce17ca594438594757a86ca7e8a
   Box: a92e8aa4c099e6bc0733829665caf9e668ef53b8
   Cartography: 774e5cc446f5a6bca5d4345c5aa6af9a1fe74dc6
   CHTCollectionViewWaterfallLayout: 1a8da4fc662702cbddda8926ced266036a829f84
   DateTools: 9bcc89e4f2f9004d8a7a2bd1b49269cf78968e65
-  DTFoundation: bf431de2292484461ff7d92295fdae7dc15a3820
+  DTFoundation: c9b3362b83f0017389082ec067ede719826a579d
   EDColor: c83f9a61f9f9b3c23d541f1feb561558e29cb088
   FBSDKCoreKit: 75bdd75c980e811db218488d99dd93b7740f4474
   FBSDKLoginKit: 02a9254a4c132412fa03577b0d53e936d068a7fb
@@ -189,7 +189,7 @@ SPEC CHECKSUMS:
   Nimble: 49b7a7da8919f42823d37c6d68cc6d15a7009f32
   NSLogger: 5ed223a2436df96244e033be750656dacdeec034
   OAuthSwift: 3517e94380923085dfa7f23421bc3d4a61ce48c0
-  ObjectMapper: ef4a369cbab75546029ceb7e8155772b5f8e8841
+  ObjectMapper: 45b97fa0a68c3851daad3efca87bc6c1ab1718c0
   OHHTTPStubs: dbd1957d414659783e07b49c961940b7564c23d9
   Ouralabs: eac60753414390c357c12aefb157e56fb32e1453
   PKHUD: 27346b72187c3cbff20c174f2b1f88c999a4ef13
@@ -197,8 +197,8 @@ SPEC CHECKSUMS:
   Quick: 824572d3d198d51e52cf4aa722cebf7e59952a35
   RBBAnimation: 4b2d66f6d993febce63cd564da934985313b9c59
   ReactiveCocoa: c85fe01be4e047dc1d9fba3e1e0b7070846d3296
-  Realm: 2fdd0ae74f730e190384e0338d8a0d3654df8220
-  RealmSwift: 231b064da9f98b1c4f325fe1f1cb8756aae2b8d6
+  Realm: a046149653e0ca220b65b5783da907aa5b74d86c
+  RealmSwift: 5efbbf1a5c179a7237e4d428594e41619fa167ba
   Result: b44f6bc8762bbffaf2c5df58f2c7d12c3496ced8
   Reveal-iOS-SDK: c9c55cad2729c85f6ced415f1b21857c9a2d8ef9
   SCRecorder: 90075f2d9deb03cd8280faff8cd3cca11c036025
@@ -206,11 +206,11 @@ SPEC CHECKSUMS:
   SimpleKeychain: ed7fcbc2a235ad6919a3d2385ed4b44ab866d874
   SugarRecord: 9d55ce666e8161eacdc95c996173eb53eb6d3683
   SwiftTryCatch: fb6d2b34abe48efd69578dac919293a44f95b481
-  SwiftyJSON: 0b3e6c07af17ff745e77e8e9984097b55c956e5c
+  SwiftyJSON: ae2d0a3d68025d136602a33c4ee215091ced3e33
   SwiftyUserDefaults: 507da0dcabec653f76ecab845635a6d220c1484a
   SwipeView: bd67cfaf7760c036438446b3ccb28a3b84fce009
-  TPKeyboardAvoiding: f1ef0028fe9ba98ef2871cf55b4bbc39cae0267b
+  TPKeyboardAvoiding: ff1ee4e5a5a0c119b965552af8f183868ea20207
   UICollectionViewLeftAlignedLayout: c3dddf91b3dc72ede7eca7a532545804389ab833
-  XLForm: 10fc7eb9e2d5df21a515fa3a794f4e26319abd0e
+  XLForm: 1a20da41c009e4f99e802e886a8eef5f2b086644
 
-COCOAPODS: 0.38.0
+COCOAPODS: 0.38.2

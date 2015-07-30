@@ -38,7 +38,7 @@ class PrototypeRow : XLFormRowDescriptor {
         super.init(tag: tag, rowType: nil, title: nil)
     }
     
-    override func cellForFormController(formController: XLFormViewController!) -> XLFormBaseCell! {
+    override func cellForFormController(formController: XLFormViewController) -> XLFormBaseCell {
         if cell == nil {
             cell = formController.tableView.dequeueReusableCellWithIdentifier(cellReuseId) as! XLFormBaseCell
             configureCellAtCreationTime()

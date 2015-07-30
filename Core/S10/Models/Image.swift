@@ -31,14 +31,17 @@ public struct Image : Mappable {
         self.image = image
     }
     
-    public init?(_ map: Map) {
-        mapping(map)
+    init() {
     }
     
     public mutating func mapping(map: Map) {
         url <- (map["url"], URLTransform())
         width <- map["width"]
         height <- map["height"]
+    }
+    
+    public static func newInstance() -> Mappable {
+        return Image()
     }
     
     public static let mapper = Mapper<Image>()

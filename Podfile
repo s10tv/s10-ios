@@ -17,13 +17,13 @@ target :Core do
     # Data
     pod 'SugarRecord/CoreData', :git => 'https://github.com/tonyxiao/SugarRecord', :branch => 'develop'
     pod 'Meteor', :git => 'https://github.com/tonyxiao/meteor-ios', :branch => 'dev'
-    pod 'RealmSwift', '~> 0.93.2'
+    pod 'RealmSwift', '~> 0.94'
     pod 'SwiftyUserDefaults', '~> 1.3'
-    pod 'SwiftyJSON', '~> 2.1'
-    pod 'ObjectMapper', '~> 0.12'
+    pod 'SwiftyJSON', '~> 2.2'
+    pod 'ObjectMapper', '~> 0.14'
 
     # Networking
-    pod 'Alamofire', '~> 1.2'
+    pod 'Alamofire', '~> 1.3'
 
     # UI
     pod 'Cartography', '~> 0.5'
@@ -43,7 +43,6 @@ target :Core do
         pod 'Quick', '~> 0.3.0' # TODO: Upgrade after swift 2.0
         pod 'Nimble', '~> 0.4.0' # TODO: Upgrade after swift 2.0
         pod 'OHHTTPStubs', '~> 4.0.2'
-        pod 'SwiftyJSON', '~> 2.1'
     end
 
     target :Taylr do

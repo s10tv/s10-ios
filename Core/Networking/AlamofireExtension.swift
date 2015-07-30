@@ -61,10 +61,10 @@ extension Request {
         response { urlRequest, urlResponse, value, error in
             if let e = error {
                 var userInfo = e.userInfo ?? [:]
-                userInfo[kAlamofireResumeData] = value as? NSData
+                userInfo[kAlamofireResumeData] = value
                 promise.failure(NSError(domain: e.domain, code: e.code, userInfo: userInfo))
             } else {
-                promise.success(value as? NSData)
+                promise.success(value)
             }
         }
         return promise.future
