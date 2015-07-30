@@ -29,12 +29,12 @@ class MeIntegrationTest : IntegrationTestEnvironment {
                 self.vm.subscription.ready.onComplete { result in
                     expect(result.error).to(beNil())
                     // last name changes, so match on first name
-                    expect(self.vm.displayName.value).toEventually(match("^Lya"))
+                    expect(self.vm.displayName.value).toEventually(match("^Lauren"))
 
                     expect(self.vm.avatar.value?.url.absoluteString!).toEventually(
                         match("^http:\\/\\/images\\.gotinder\\.com.+jpg$"))
 
-                    expect(self.vm.username.value).toEventually(match("^[A-Za-z0-9]+$"))
+                    expect(self.vm.username.value).toEventually(match("^[A-Za-z0-9\\_\\.]+$"))
 
                     let profileVm = self.vm.profileVM()
                     let profiles : [ProfileCoverViewModel]? = profileVm?.coverVM.value
@@ -60,7 +60,7 @@ class MeIntegrationTest : IntegrationTestEnvironment {
 
         }
 
-        waitForExpectationsWithTimeout(15, handler: nil)
+        waitForExpectationsWithTimeout(30, handler: nil)
     }
     
 }
