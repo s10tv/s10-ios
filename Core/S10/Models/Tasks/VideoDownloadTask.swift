@@ -31,6 +31,7 @@ public class VideoDownloadTask : Object {
     }
     
     public class func countOfDownloads(senderId: String) -> SignalProducer<Int, NoError> {
-        return Realm().notifier() |> map { _ in self.countDownloads(senderId) }
+        return SignalProducer(value: countDownloads(senderId))
+            |> concat(Realm().notifier() |> map { _ in self.countDownloads(senderId) })
     }
 }

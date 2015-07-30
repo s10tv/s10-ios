@@ -17,7 +17,7 @@ extension User {
     
     func serverStatus() -> String {
         if let connection = connection,
-            let status = connection.lastMessageStatus{
+            let status = connection.lastMessageStatus {
             let receivedLast = (self == connection.lastSender)
             let formattedDate = Formatters.formatRelativeDate(connection.updatedAt)!
             let action: String = {
@@ -90,8 +90,7 @@ extension User {
         return PropertyOf("", combineLatest(
             VideoUploadTask.countOfUploads(documentID!),
             VideoDownloadTask.countOfDownloads(documentID!),
-            timer(1, onScheduler: QueueScheduler.mainQueueScheduler)
-                |> map { [weak self] _ in self?.serverStatus() }
+            CurrentTime.producer |> map { [weak self] _ in self?.serverStatus() }
         ) |> map {
             if $0 > 0 { return "Sending..." }
             if $1 > 0 { return "Receiving..." }

@@ -29,6 +29,7 @@ public class VideoUploadTask : Object {
     }
     
     public class func countOfUploads(recipientId: String) -> SignalProducer<Int, NoError> {
-        return Realm().notifier() |> map { _ in self.countUploads(recipientId) }
+        return SignalProducer(value: countUploads(recipientId))
+            |> concat(Realm().notifier() |> map { _ in self.countUploads(recipientId) })
     }
 }
