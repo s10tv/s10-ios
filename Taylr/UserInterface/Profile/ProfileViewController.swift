@@ -73,6 +73,15 @@ class ProfileViewController : BaseViewController {
         return .LightContent
     }
     
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        if identifier == SegueIdentifier.ProfileToConversation.rawValue
+            && navigationController?.lastViewController is ConversationViewController {
+                navigationController?.popViewControllerAnimated(true)
+                return false
+        }
+        return super.shouldPerformSegueWithIdentifier(identifier, sender: sender)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ConversationViewController {
             vc.vm = vm.conversationVM()

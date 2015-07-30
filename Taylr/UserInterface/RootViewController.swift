@@ -12,6 +12,15 @@ import ReactiveCocoa
 import Core
 import Bond
 
+extension UINavigationController {
+    var lastViewController: UIViewController? {
+        if viewControllers.count >= 2 {
+            return viewControllers[viewControllers.count - 2] as? UIViewController
+        }
+        return nil
+    }
+}
+
 class RootViewController : UINavigationController {
     var transitionManager : TransitionManager!
     

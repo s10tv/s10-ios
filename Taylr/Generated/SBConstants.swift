@@ -11,10 +11,6 @@ public enum CollectionViewControllerStoryboardIdentifier : String {
     case Integrations = "Integrations"
 }
 
-public enum NavigationControllerStoryboardIdentifier : String {
-    case Producer = "Producer"
-}
-
 public enum SegueIdentifier : String {
     case ConversationToProfile = "ConversationToProfile"
     case IntegrationsToWeb = "IntegrationsToWeb"
@@ -25,6 +21,7 @@ public enum SegueIdentifier : String {
     case MeToProfile = "MeToProfile"
     case Onboarding_CreateProfile = "Onboarding_CreateProfile"
     case Onboarding_Login = "Onboarding_Login"
+    case ProfileToConversation = "ProfileToConversation"
     case RecorderToEditor = "RecorderToEditor"
 }
 
@@ -50,5 +47,6 @@ public enum ViewControllerStoryboardIdentifier : String {
     case Editor = "Editor"
     case Login = "Login"
     case Player = "Player"
+    case Producer = "Producer"
     case Recorder = "Recorder"
 }
