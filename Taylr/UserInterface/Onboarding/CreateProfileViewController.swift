@@ -91,6 +91,10 @@ class CreateProfileViewController : UITableViewController {
             }
         }
     }
+    
+    @IBAction func didTapNext(sender: AnyObject) {
+        
+    }
 }
 
 // MARK: - Zoom in cover photo on tableView overscroll

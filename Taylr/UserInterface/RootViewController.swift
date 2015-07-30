@@ -37,6 +37,10 @@ class RootViewController : UINavigationController {
             NSFontAttributeName: UIFont(.cabinMedium, size: 20),
             NSForegroundColorAttributeName: StyleKit.textWhite
         ]
+        
+        UIBarButtonItem.appearance().setTitleTextAttributes([
+            NSFontAttributeName : UIFont(.cabinRegular, size: 16)
+        ], forState: .Normal)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

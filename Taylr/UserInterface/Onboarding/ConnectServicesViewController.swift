@@ -1,0 +1,60 @@
+//
+//  ConnectServicesViewController.swift
+//  S10
+//
+//  Created by Tony Xiao on 7/30/15.
+//  Copyright (c) 2015 S10. All rights reserved.
+//
+
+import UIKit
+import ReactiveCocoa
+
+class ConnectServicesViewController : UITableViewController {
+    
+    @IBOutlet weak var descriptionCell: UITableViewCell!
+    @IBOutlet weak var integrationsCell: UITableViewCell!
+    @IBOutlet weak var promptLabel: UILabel!
+    @IBOutlet weak var integrationsContainer: UIView!
+    var integrationsVC: IntegrationsViewController!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        integrationsVC = storyboard.instantiateViewControllerWithIdentifier("Integrations")
+            as! IntegrationsViewController
+        addChildViewController(integrationsVC)
+        integrationsContainer.addSubview(integrationsVC.view)
+        integrationsVC.view.makeEdgesEqualTo(integrationsContainer)
+        integrationsVC.didMoveToParentViewController(self)
+
+        integrationsVC.view.cornerRadius = 3
+        integrationsVC.collectionView!.dyn("contentSize").force(NSValue).producer
+            |> skip(1)
+            |> skipRepeats
+            |> observeOn(QueueScheduler.mainQueueScheduler)
+            |> start(next: { _ in
+                self.tableView.beginUpdates()
+                self.tableView.endUpdates()
+            })
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+}
+
+extension ConnectServicesViewController : UITableViewDelegate {
+
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        // NOTE: Margins are hardcoded here. careful
+        if indexPath.row == 0 {
+            promptLabel.preferredMaxLayoutWidth = tableView.bounds.width - 16
+            return promptLabel.intrinsicContentSize().height + 50
+        } else {
+            let layout = integrationsVC.collectionView!.collectionViewLayout
+            return layout.collectionViewContentSize().height + 16
+        }
+    }
+}
