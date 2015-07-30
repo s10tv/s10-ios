@@ -26,7 +26,7 @@ class IntegrationWebViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         webView.loadRequest(NSURLRequest(URL: integration.url))
-        navBar.topItem?.title = integration.title
+        navBar.topItem?.title = integration.name
     }
     
     @IBAction func cancelAuth(sender: AnyObject) {

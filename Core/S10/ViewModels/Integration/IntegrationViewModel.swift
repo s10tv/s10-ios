@@ -12,7 +12,8 @@ import ObjectMapper
 public struct IntegrationViewModel {
     public let id: String
     public let icon: Image
-    public let title: String
+    public let name: String
+    public let username: String?
     public let url: NSURL
     public let statusImage: Image?
     public let showSpinner: Bool
@@ -20,7 +21,8 @@ public struct IntegrationViewModel {
     init(integration: Integration) {
         id = integration.documentID!
         icon = integration.icon
-        title = integration.username ?? integration.name
+        name = integration.name
+        username = integration.username
         url = integration.url
         switch integration.status {
         case .Linked:

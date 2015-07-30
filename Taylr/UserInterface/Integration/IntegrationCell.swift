@@ -7,19 +7,21 @@
 //
 
 import UIKit
+import JVFloatLabeledTextField
 import Core
 
 class IntegrationCell : UICollectionViewCell, BindableCell {
     typealias ViewModel = IntegrationViewModel
     
     @IBOutlet weak var iconView: UIImageView!
-    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleField: JVFloatLabeledTextField!
     @IBOutlet weak var statusView: UIImageView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     func bind(vm: IntegrationViewModel) {
         iconView.bindImage(vm.icon)
-        titleLabel.text = vm.title
+        titleField.placeholder = vm.name.capitalizedString // TEMP HACK FOR NOW TILL SERVER CHANGE
+        titleField.text = vm.username
         statusView.bindImage(vm.statusImage)
         vm.showSpinner ? spinner.startAnimating() : spinner.stopAnimating()
     }
