@@ -15,6 +15,7 @@ import Fabric
 import DigitsKit
 import Crashlytics
 import Ouralabs
+import RealmSwift
 import Core
 
 // Globally accessible variables and shorthands
@@ -52,6 +53,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         Log.setUserName(UD[.sUserDisplayName].string)
         Log.setUserEmail(UD[.sUserEmail].string)
 //        Crashlytics.sharedInstance().setObjectValue(env.deviceId, forKey: "DeviceId")
+        
+        // Migrate db if needed
+        setDefaultRealmSchemaVersion(3) { migration, oldSchemaVersion in
+            // Automatic migration
+        }
         
         // Setup global services
         let meteor = MeteorService(serverURL: env.serverURL)
