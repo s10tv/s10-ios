@@ -15,7 +15,7 @@ class ChatsViewController : BaseViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
-    let vm: ChatsViewModel = ChatsViewModel(meteor: Meteor)
+    let vm: ChatsViewModel = ChatsViewModel(meteor: Meteor, taskService: Globals.taskService)
     
     override func viewDidLoad() {
         super.viewDidLoad()

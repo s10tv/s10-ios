@@ -160,19 +160,15 @@ extension ConversationViewController : SwipeViewDelegate {
 // MARK: - Producer Delegate
 
 extension ConversationViewController : ProducerDelegate {
-    
     func producerWillStartRecording(producer: ProducerViewController) {
-//        conversationVM.recording.value = true
     }
     
     func producerDidCancelRecording(producer: ProducerViewController) {
-//        conversationVM.recording.value = false
     }
     
     func producer(producer: ProducerViewController, didProduceVideo url: NSURL) {
-//        conversationVM.recording.value = false
-        Log.info("I got a video \(url)")
-//        Globals.taskService.uploadVideo(conversationVM.recipient, localVideoURL: url)
+        Log.info("Will send video \(url)")
+        vm.sendVideo(url)
         PKHUD.hide(animated: false)
     }
 }

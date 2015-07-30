@@ -15,7 +15,7 @@ class DiscoverViewController : BaseViewController {
     
     @IBOutlet weak var collectionView : UICollectionView!
     
-    let vm = DiscoverViewModel(meteor: Meteor)
+    let vm = DiscoverViewModel(meteor: Meteor, taskService: Globals.taskService)
     
     override func viewDidLoad() {
         super.viewDidLoad()

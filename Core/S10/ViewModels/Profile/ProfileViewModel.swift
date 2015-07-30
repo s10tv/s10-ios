@@ -20,6 +20,7 @@ private func supportedActivitiesByUser(user: User) -> NSPredicate {
 
 public struct ProfileViewModel {
     let meteor: MeteorService
+    let taskService: TaskService
     let user: User
     let subscription: MeteorSubscription
     let currentFilter: MutableProperty<User.ConnectedProfile?>
@@ -29,8 +30,9 @@ public struct ProfileViewModel {
     public let infoVM: DynamicArray<ProfileInfoViewModel>
     public let activities: DynamicArray<ActivityViewModel>
     
-    init(meteor: MeteorService, user: User) {
+    init(meteor: MeteorService, taskService: TaskService, user: User) {
         self.meteor = meteor
+        self.taskService = taskService
         self.user = user
         subscription = meteor.subscribe("activities", user)
         currentFilter = MutableProperty(nil)
@@ -52,7 +54,7 @@ public struct ProfileViewModel {
     }
     
     public func conversationVM() -> ConversationViewModel {
-        return ConversationViewModel(meteor: meteor, recipient: user)
+        return ConversationViewModel(meteor: meteor, taskService: taskService, recipient: user)
     }
 }
 

@@ -15,14 +15,16 @@ public struct ChatsViewModel {
         case Contacts = 0, New = 1
     }
     let meteor: MeteorService
+    let taskService: TaskService
     let chatsSub: MeteorSubscription
     let messagesSub: MeteorSubscription
     let results: FetchedResultsArray<Connection>
     public let connections: DynamicArray<ConnectionViewModel>
     public let currentSection = MutableProperty<Section>(.Contacts)
     
-    public init(meteor: MeteorService) {
+    public init(meteor: MeteorService, taskService: TaskService) {
         self.meteor = meteor
+        self.taskService = taskService
         chatsSub = meteor.subscribe("chats")
         messagesSub = meteor.subscribe("messages")
         results = Connection
@@ -60,6 +62,6 @@ public struct ChatsViewModel {
         if let vm = connections[index] as? ContactConnectionViewModel {
             connection = vm.connection
         }
-        return ConversationViewModel(meteor: meteor, recipient: connection.otherUser)
+        return ConversationViewModel(meteor: meteor, taskService: taskService, recipient: connection.otherUser)
     }
 }

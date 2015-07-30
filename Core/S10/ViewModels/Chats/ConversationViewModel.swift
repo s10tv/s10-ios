@@ -39,6 +39,7 @@ func messageLoader(sender: User?) -> () -> [MessageViewModel] {
 public class ConversationViewModel {
 
     let meteor: MeteorService
+    let taskService: TaskService
     let _messages: MutableProperty<[MessageViewModel]>
     let recipient: User?
     let currentUser: PropertyOf<User?>
@@ -54,8 +55,9 @@ public class ConversationViewModel {
     
     public let currentMessage: MutableProperty<MessageViewModel?>
 
-    init(meteor: MeteorService, recipient: User?) {
+    init(meteor: MeteorService, taskService: TaskService, recipient: User?) {
         self.meteor = meteor
+        self.taskService = taskService
         self.recipient = recipient
         let loadMessages = messageLoader(recipient)
 
@@ -93,6 +95,12 @@ public class ConversationViewModel {
         openedMessages.removeAll()
     }
     
+    public func sendVideo(localURL: NSURL) {
+        if let user = currentUser.value {
+            taskService.uploadVideo(user, localVideoURL: localURL)
+        }
+    }
+    
     public func reportUser(reason: String) {
         currentUser.value.map { meteor.reportUser($0, reason: reason) }
     }
@@ -102,6 +110,6 @@ public class ConversationViewModel {
     }
     
     public func profileVM() -> ProfileViewModel {
-        return ProfileViewModel(meteor: meteor, user: currentUser.value!)
+        return ProfileViewModel(meteor: meteor, taskService: taskService, user: currentUser.value!)
     }
 }

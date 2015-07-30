@@ -11,11 +11,13 @@ import Bond
 
 public struct DiscoverViewModel {
     let meteor: MeteorService
+    let taskService: TaskService
     public let subscription: MeteorSubscription // TODO: Test only
     public let candidates: DynamicArray<CandidateViewModel>
     
-    public init(meteor: MeteorService) {
+    public init(meteor: MeteorService, taskService: TaskService) {
         self.meteor = meteor
+        self.taskService = taskService
         subscription = meteor.subscribe("discover")
         candidates = User
             .by("\(UserKeys.candidateScore) != nil")
@@ -24,6 +26,6 @@ public struct DiscoverViewModel {
     }
     
     public func profileVM(index: Int) -> ProfileViewModel {
-        return ProfileViewModel(meteor: meteor, user: candidates[index].user)
+        return ProfileViewModel(meteor: meteor, taskService: taskService, user: candidates[index].user)
     }
 }

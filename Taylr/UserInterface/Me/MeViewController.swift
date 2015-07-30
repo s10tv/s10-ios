@@ -28,7 +28,7 @@ class MeViewController : UITableViewController {
         super.viewDidLoad()
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 0.01))
         
-        vm = MeViewModel(meteor: Meteor)
+        vm = MeViewModel(meteor: Meteor, taskService: Globals.taskService)
         vm.avatar ->> avatarView.imageBond
         vm.displayName ->> nameLabel
         vm.username ->> usernameLabel
