@@ -36,12 +36,13 @@ func messageLoader(sender: User?) -> () -> [MessageViewModel] {
 }
 
 // Class or struct?
-public struct ConversationViewModel {
+public class ConversationViewModel {
 
     let meteor: MeteorService
     let _messages: MutableProperty<[MessageViewModel]>
     let recipient: User?
     let currentUser: PropertyOf<User?>
+    var openedMessages = Set<Message>()
     
     public let avatar: PropertyOf<Image?>
     public let displayName: PropertyOf<String>
@@ -75,6 +76,18 @@ public struct ConversationViewModel {
         // NOTE: ManagedObjectContext changes are ignored
         // So if video is removed nothing will happen
         _messages <~ Realm().notifier() |> map { _ in loadMessages() } |> skipRepeats { $0 == $1 }
+    }
+    
+    public func openMessage(message: MessageViewModel) {
+        openedMessages.insert(message.message)
+    }
+    
+    public func expireOpenedMessages() {
+        for message in openedMessages {
+            VideoCache.sharedInstance.removeVideo(message.documentID!)
+        }
+        meteor.expireMessages(Array(openedMessages))
+        openedMessages.removeAll()
     }
     
     public func profileVM() -> ProfileViewModel {

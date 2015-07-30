@@ -85,6 +85,13 @@ class ConversationViewController : BaseViewController {
         navigationController?.navigationBar.setBackgroundColor(nil)
     }
     
+    override func willMoveToParentViewController(parent: UIViewController?) {
+        super.willMoveToParentViewController(parent)
+        if parent == nil {
+            vm.expireOpenedMessages()
+        }
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ProfileViewController {
             vc.vm = vm.profileVM()
@@ -184,15 +191,8 @@ extension ConversationViewController : PlayerDelegate {
     
     func player(player: PlayerViewModel, didPlayVideo video: PlayableVideo) {
         vm.currentMessage.value = nil
-//        // TODO: Move into ViewModel
-//        if let message = (video as? MessageViewModel)?.message
-//            where message.fault == false // Hack for now to avoid EXC_BAD_INSTRUCTION
-//                && message.sender != nil // Hack for now to avoid nil crash
-//                && message.incoming && message.statusEnum != .Opened {
-//            Meteor.openMessage(message, expireDelay: 0)
-//            if let videoId = message.video?.documentID {
-//                VideoCache.sharedInstance.removeVideo(videoId)
-//            }
-//        }
+        if let message = video as? MessageViewModel {
+            vm.openMessage(message)
+        }
     }
 }
