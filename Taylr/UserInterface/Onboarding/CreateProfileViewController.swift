@@ -15,6 +15,7 @@ import Bond
 
 class CreateProfileViewController : UITableViewController {
     
+    @IBOutlet weak var coverCell: UITableViewCell!
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var coverView: UIImageView!
     @IBOutlet weak var firstNameField: JVFloatLabeledTextField!
@@ -26,8 +27,13 @@ class CreateProfileViewController : UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        avatarView.makeCircular()
 
+        // Fix for tableview layout http://stackoverflow.com/questions/18880341/why-is-there-extra-padding-at-the-top-of-my-uitableview-with-style-uitableviewst
+        tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 0.01))
+        // Give some room below aobutTextView
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
+
+        avatarView.makeCircular()
         aboutView.floatingLabelFont = UIFont(.cabinRegular, size: 11)
         aboutView.setPlaceholder("About (Optional)", floatingTitle: "About")
         aboutView.font = UIFont(.cabinRegular, size: 16)
@@ -39,8 +45,8 @@ class CreateProfileViewController : UITableViewController {
         vm.tagline ->> taglineField
         vm.avatar ->> avatarView.imageBond
         vm.cover ->> coverView.imageBond
-        // Give some room below aobutTextView
-        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
+        
+//        Meteor.subscribe("me")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -87,10 +93,25 @@ class CreateProfileViewController : UITableViewController {
     }
 }
 
+// MARK: - Zoom in cover photo on tableView overscroll
+
+extension CreateProfileViewController : UIScrollViewDelegate {
+    override func scrollViewDidScroll(scrollView: UIScrollView) {
+        let yOffset = scrollView.contentOffset.y
+        if (yOffset < 0) {
+            let originalHeight = coverCell.frame.height
+            var frame = coverView.frame
+            frame.origin.y = yOffset
+            frame.size.height = originalHeight + -yOffset
+            coverView.frame = frame
+        }
+    }
+}
+
 // MARK: - Get AboutTextField's row to resize to fit content
 
 // HACK ALERT: Better way than hardcode?
-let AboutIndexPath = NSIndexPath(forRow: 3, inSection: 0)
+let AboutIndexPath = NSIndexPath(forRow: 2, inSection: 1)
 
 extension CreateProfileViewController : UITableViewDelegate {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
@@ -103,6 +124,7 @@ extension CreateProfileViewController : UITableViewDelegate {
     }
 }
 
+
 extension CreateProfileViewController : UITextViewDelegate {
     func textViewDidChange(textView: UITextView) {
         // Force tableView to recalculate the height of the textView
@@ -110,3 +132,4 @@ extension CreateProfileViewController : UITextViewDelegate {
         tableView.endUpdates()
     }
 }
+
