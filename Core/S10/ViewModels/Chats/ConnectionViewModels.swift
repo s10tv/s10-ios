@@ -28,8 +28,8 @@ public struct ContactConnectionViewModel : ConnectionViewModel {
     public let avatar: PropertyOf<Image?>
     public let displayName: PropertyOf<String>
     public let statusMessage: PropertyOf<String>
-    public let badgeText: PropertyOf<String>
     public let busy: PropertyOf<Bool>
+    public let badgeText: PropertyOf<String>
     public let hideRightArrow: PropertyOf<Bool>
     
     init(connection: Connection) {
@@ -37,10 +37,14 @@ public struct ContactConnectionViewModel : ConnectionViewModel {
         let user = connection.otherUser
         avatar = user.pAvatar()
         displayName = user.pDisplayName()
-        busy = connection.otherUser.pConversationBusy()
         statusMessage = connection.otherUser.pConversationStatus()
-        badgeText = connection.dyn(.unreadCount).force(Int)
-            |> map { $0 > 0 ? "\($0)" : "" }
+        busy = connection.otherUser.pConversationBusy()
+        badgeText = PropertyOf("", combineLatest(
+            busy.producer,
+            connection.dyn(.unreadCount).force(Int).producer
+        ) |> map { busy, unreadCount in
+            (busy || unreadCount == 0) ? "" : "\(unreadCount)"
+        })
         hideRightArrow = PropertyOf(true, combineLatest(
             busy.producer,
             badgeText.producer
