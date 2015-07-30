@@ -27,13 +27,14 @@ class IntegrationsViewController : UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Get rid of warnings around initial item width too large
+        updateLayoutItemSize()
         vm.integrations.map(collectionView!.factory(IntegrationCell)) ->> collectionView!
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        let layout = collectionViewLayout as! UICollectionViewFlowLayout
-        layout.itemSize = CGSize(width: view.frame.width, height: 60)
+    override func viewWillLayoutSubviews() {
+        updateLayoutItemSize()
+        super.viewWillLayoutSubviews()
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
@@ -51,6 +52,11 @@ class IntegrationsViewController : UICollectionViewController {
     }
     
     // MARK: -
+    
+    func updateLayoutItemSize() {
+        let layout = collectionViewLayout as! UICollectionViewFlowLayout
+        layout.itemSize = CGSize(width: view.frame.width - layout.sectionInset.left - layout.sectionInset.right, height: 60)
+    }
 
     func linkClientSide(integrationId: String) -> Bool {
         var signal: RACSignal?

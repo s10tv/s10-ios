@@ -409,10 +409,10 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Create Profile" id="R0Q-H7-z7a">
+                        <barButtonItem key="backBarButtonItem" title="Profile" id="Qw2-9M-xZV"/>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="AkV-BS-mDu">
                             <connections>
-                                <action selector="didTapNext:" destination="4FY-Nx-fFw" id="aJY-z2-xnw"/>
-                                <segue destination="UL1-t5-ar3" kind="show" id="4OI-WI-miT"/>
+                                <segue destination="UL1-t5-ar3" kind="show" identifier="CreateProfileToConnectServices" id="4OI-WI-miT"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

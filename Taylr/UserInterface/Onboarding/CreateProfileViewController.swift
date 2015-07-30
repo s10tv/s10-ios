@@ -54,6 +54,14 @@ class CreateProfileViewController : UITableViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        if identifier == SegueIdentifier.CreateProfileToConnectServices.rawValue {
+            // TODO: Add validation here
+            return true
+        }
+        return super.shouldPerformSegueWithIdentifier(identifier, sender: sender)
+    }
+    
     // MARK: - Actions
     
     @IBAction func didTabEditAvatar(sender: AnyObject) {
@@ -91,10 +99,7 @@ class CreateProfileViewController : UITableViewController {
             }
         }
     }
-    
-    @IBAction func didTapNext(sender: AnyObject) {
-        
-    }
+
 }
 
 // MARK: - Zoom in cover photo on tableView overscroll

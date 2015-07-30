@@ -13,6 +13,7 @@ public enum CollectionViewControllerStoryboardIdentifier : String {
 
 public enum SegueIdentifier : String {
     case ConversationToProfile = "ConversationToProfile"
+    case CreateProfileToConnectServices = "CreateProfileToConnectServices"
     case IntegrationsToWeb = "IntegrationsToWeb"
     case LoadingToRootTab = "LoadingToRootTab"
     case LoginToCreateProfile = "LoginToCreateProfile"
@@ -35,6 +36,7 @@ public enum TableViewCellreuseIdentifier : String {
 }
 
 public enum TableViewControllerStoryboardIdentifier : String {
+    case ConnectServices = "ConnectServices"
     case CreateProfile = "CreateProfile"
     case EditProfile = "EditProfile"
 }
