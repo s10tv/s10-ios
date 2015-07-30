@@ -41,6 +41,9 @@ class RootViewController : UINavigationController {
         UIBarButtonItem.appearance().setTitleTextAttributes([
             NSFontAttributeName : UIFont(.cabinRegular, size: 16)
         ], forState: .Normal)
+        
+        // http://stackoverflow.com/questions/19833939/uinavigationcontoller-interactivepopgesturerecognizer-inactive-when-navigation-b
+        interactivePopGestureRecognizer.delegate = nil
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
