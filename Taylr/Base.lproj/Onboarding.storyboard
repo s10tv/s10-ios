@@ -162,7 +162,7 @@
         <scene sceneID="ziZ-yX-Hqk">
             <objects>
                 <tableViewController storyboardIdentifier="CreateProfile" clearsSelectionOnViewWillAppear="NO" id="4FY-Nx-fFw" customClass="CreateProfileViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="0aF-Ww-ePD" customClass="TPKeyboardAvoidingTableView">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="static" style="plain" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="0aF-Ww-ePD" customClass="TPKeyboardAvoidingTableView">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -175,11 +175,15 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aaP-b6-Uhf" id="1L0-nh-6NF">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-cover-image" translatesAutoresizingMaskIntoConstraints="NO" id="RI3-ac-5pk">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-cover-image" translatesAutoresizingMaskIntoConstraints="NO" id="RI3-ac-5pk">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="179"/>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-profile-pic" translatesAutoresizingMaskIntoConstraints="NO" id="kbC-db-s5W">
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-profile-pic" translatesAutoresizingMaskIntoConstraints="NO" id="kbC-db-s5W">
                                                     <rect key="frame" x="20" y="40" width="100" height="100"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="100" id="uMf-lu-B6x"/>
+                                                        <constraint firstAttribute="height" constant="100" id="wF0-wr-vL5"/>
+                                                    </constraints>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Svg-WX-nWX">
                                                     <rect key="frame" x="54" y="140" width="30" height="32"/>
@@ -188,6 +192,9 @@
                                                         <color key="titleColor" red="0.94771684653267474" green="1" blue="0.98100255936701775" alpha="1" colorSpace="calibratedRGB"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
+                                                    <connections>
+                                                        <action selector="didTabEditAvatar:" destination="4FY-Nx-fFw" eventType="touchUpInside" id="sEN-Vx-v7y"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sXE-uY-6ws">
                                                     <rect key="frame" x="300" y="134" width="60" height="30"/>
@@ -211,6 +218,9 @@
                                                             <real key="value" value="3"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="didTabEditCover:" destination="4FY-Nx-fFw" eventType="touchUpInside" id="NVp-dY-fgW"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <constraints>
@@ -359,6 +369,8 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="aboutView" destination="gNz-Zb-kjq" id="hjQ-x8-8Ge"/>
+                        <outlet property="avatarView" destination="kbC-db-s5W" id="JLw-M4-0bM"/>
+                        <outlet property="coverView" destination="RI3-ac-5pk" id="6xK-Mm-ZJQ"/>
                         <outlet property="firstNameField" destination="K5S-M5-nhA" id="2u2-Pg-uZ4"/>
                         <outlet property="lastNameField" destination="R72-mS-4Cy" id="D0r-aQ-O6V"/>
                         <outlet property="taglineField" destination="aY0-03-vXb" id="SbZ-eZ-I47"/>
