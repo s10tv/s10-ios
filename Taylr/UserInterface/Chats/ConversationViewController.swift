@@ -60,6 +60,7 @@ class ConversationViewController : BaseViewController {
         swipeView.currentItemIndex = player.vm.nextVideo() != nil ? 0 : 1
         swipeView.dataSource = self
         swipeView.delegate = self
+        swipeView.layoutIfNeeded()
         player.didMoveToParentViewController(self)
         producer.didMoveToParentViewController(self)
         
