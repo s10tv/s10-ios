@@ -21,11 +21,7 @@ extension MessageViewModel : PlayableVideo {
 }
 
 class ConversationViewController : BaseViewController {
-    enum Page : Int {
-        case Player = 0
-        case Producer = 1
-    }
-    
+
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var activityLabel: UILabel!
@@ -52,12 +48,13 @@ class ConversationViewController : BaseViewController {
         player.vm.playlist <~ (vm.messages.producer |> map {
             $0.map { (msg: MessageViewModel) in msg as PlayableVideo }
         })
+        vm.playing <~ player.vm.isPlaying
         
         addChildViewController(player)
         addChildViewController(producer)
         swipeView.vertical = true
         swipeView.bounces = false
-        swipeView.currentItemIndex = player.vm.nextVideo() != nil ? 0 : 1
+        swipeView.currentItemIndex = vm.page.value.rawValue
         swipeView.dataSource = self
         swipeView.delegate = self
         swipeView.layoutIfNeeded()
@@ -109,7 +106,7 @@ class ConversationViewController : BaseViewController {
     }
     
     // MARK: Actions
-    func showPage(page: Page, animated: Bool = false) {
+    func showPage(page: ConversationViewModel.Page, animated: Bool = false) {
         swipeView.scrollToItemAtIndex(page.rawValue, duration: animated ? 0.25 : 0)
     }
     
@@ -158,12 +155,13 @@ extension ConversationViewController : SwipeViewDataSource {
     }
     
     func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, reusingView view: UIView!) -> UIView! {
-        return index == Page.Player.rawValue ? player.view : producer.view
+        return index == ConversationViewModel.Page.Player.rawValue ? player.view : producer.view
     }
 }
 
 extension ConversationViewController : SwipeViewDelegate {
     func swipeViewCurrentItemIndexDidChange(swipeView: SwipeView!) {
+        vm.page.value = ConversationViewModel.Page(rawValue: swipeView.currentItemIndex)!
     }
 }
 
@@ -171,12 +169,15 @@ extension ConversationViewController : SwipeViewDelegate {
 
 extension ConversationViewController : ProducerDelegate {
     func producerWillStartRecording(producer: ProducerViewController) {
+        vm.recording.value = true
     }
     
     func producerDidCancelRecording(producer: ProducerViewController) {
+        vm.recording.value = false
     }
     
     func producer(producer: ProducerViewController, didProduceVideo url: NSURL) {
+        vm.recording.value = false
         Log.info("Will send video \(url)")
         vm.sendVideo(url)
         PKHUD.hide(animated: false)
