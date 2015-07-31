@@ -58,7 +58,6 @@
 		EA2DC2A11B637FA50034434E /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2921B637FA50034434E /* Message.swift */; };
 		EA2DC2A21B637FA50034434E /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2931B637FA50034434E /* User.swift */; };
 		EA2DC2AA1B63F9F10034434E /* ChatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2A91B63F9F10034434E /* ChatsViewModel.swift */; };
-		EA2DC2AD1B63FBA60034434E /* SignupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2AC1B63FBA60034434E /* SignupViewModel.swift */; };
 		EA2DC2B01B63FC990034434E /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2AE1B63FC990034434E /* EditProfileViewModel.swift */; };
 		EA2DC2B11B63FC990034434E /* InviteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2AF1B63FC990034434E /* InviteViewModel.swift */; };
 		EA2DC2B31B63FCAF0034434E /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2B21B63FCAF0034434E /* RootViewModel.swift */; };
@@ -313,7 +312,6 @@
 		EA2DC2921B637FA50034434E /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EA2DC2931B637FA50034434E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EA2DC2A91B63F9F10034434E /* ChatsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewModel.swift; sourceTree = "<group>"; };
-		EA2DC2AC1B63FBA60034434E /* SignupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewModel.swift; sourceTree = "<group>"; };
 		EA2DC2AE1B63FC990034434E /* EditProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
 		EA2DC2AF1B63FC990034434E /* InviteViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteViewModel.swift; sourceTree = "<group>"; };
 		EA2DC2B21B63FCAF0034434E /* RootViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
@@ -680,7 +678,6 @@
 		EA2DC2AB1B63FBA60034434E /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
-				EA2DC2AC1B63FBA60034434E /* SignupViewModel.swift */,
 				EAC725BB1B66D76D004113FD /* CreateProfileViewModel.swift */,
 				EAC725BD1B66DD92004113FD /* ConnectServicesViewModel.swift */,
 				EAC725BF1B66DF66004113FD /* UsernameViewModel.swift */,
@@ -1646,7 +1643,6 @@
 				EA8896221B4F3C1300E180A6 /* ReactiveProperties.swift in Sources */,
 				EAF6708F1B31FA2E0025D7CF /* Settings.swift in Sources */,
 				EA4757131B392C19002071D7 /* PanInteractor.swift in Sources */,
-				EA2DC2AD1B63FBA60034434E /* SignupViewModel.swift in Sources */,
 				EA5CA5811B51292300284B04 /* RealmExtensions.swift in Sources */,
 				EA2DC2961B637FA50034434E /* _Integration.swift in Sources */,
 				EAF670871B31F9450025D7CF /* GeometryExtensions.swift in Sources */,
