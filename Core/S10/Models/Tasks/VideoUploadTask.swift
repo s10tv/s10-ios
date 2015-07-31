@@ -10,25 +10,25 @@ import Foundation
 import ReactiveCocoa
 import RealmSwift
 
-public class VideoUploadTask : Object {
+internal class VideoUploadTask : Object {
     dynamic var id = "" // taskID
     dynamic var recipientId = ""
     dynamic var localURL = ""
     
-    override public static func primaryKey() -> String? {
+    override static func primaryKey() -> String? {
         return "id"
     }
     
-    public class func findById(id: String, realm: Realm = Realm()) -> VideoDownloadTask? {
+    class func findById(id: String, realm: Realm = Realm()) -> VideoDownloadTask? {
         let pred = NSPredicate(format: "id = %@", id)
         return realm.objects(VideoDownloadTask).filter(pred).first
     }
     
-    public class func countUploads(recipientId: String, realm: Realm = Realm()) -> Int {
+    class func countUploads(recipientId: String, realm: Realm = Realm()) -> Int {
         return realm.objects(self).filter("recipientId = %@", recipientId).count
     }
     
-    public class func countOfUploads(recipientId: String) -> SignalProducer<Int, NoError> {
+    class func countOfUploads(recipientId: String) -> SignalProducer<Int, NoError> {
         return SignalProducer(value: countUploads(recipientId))
             |> concat(Realm().notifier() |> map { _ in self.countUploads(recipientId) })
     }

@@ -12,22 +12,24 @@ import SwiftyJSON
 import ReactiveCocoa
 import Alamofire
 
-public class PhotoUploadOperation : AsyncOperation {
-    public enum TaskType : String {
-        case ProfilePic = "PROFILE_PIC"
-        case CoverPic = "COVER_PIC"
-    }
+public enum PhotoTaskType : String {
+    case ProfilePic = "PROFILE_PIC"
+    case CoverPic = "COVER_PIC"
+}
+
+internal class PhotoUploadOperation : AsyncOperation {
+    
     let meteor: MeteorService
     let image: UIImage
-    let taskType: TaskType
+    let taskType: PhotoTaskType
     
-    public init(meteor: MeteorService, image: UIImage, taskType: TaskType) {
+    init(meteor: MeteorService, image: UIImage, taskType: PhotoTaskType) {
         self.meteor = meteor
         self.image = image
         self.taskType = taskType
     }
     
-    public override func run() {
+    override func run() {
         let imageData = UIImageJPEGRepresentation(image, 0.8)
         let taskId = NSUUID().UUIDString
         meteor.startTask(taskId, type: taskType.rawValue, metadata: [:]).flattenMap {

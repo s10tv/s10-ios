@@ -44,7 +44,7 @@ public struct CreateProfileViewModel {
     }
     
     // TODO: Add width & Height
-    public func upload(image: UIImage, taskType: PhotoUploadOperation.TaskType) -> Future<(), NSError> {
+    public func upload(image: UIImage, taskType: PhotoTaskType) -> Future<(), NSError> {
         return operationQueue.addAsyncOperation {
             PhotoUploadOperation(meteor: meteor, image: image, taskType: taskType)
         }

@@ -14,14 +14,14 @@ import RealmSwift
 import SwiftyJSON
 import ReactiveCocoa
 
-public class VideoUploadOperation : AsyncOperation {
+internal class VideoUploadOperation : AsyncOperation {
 
     var taskId: String?
     let recipientId: String
     let localVideoURL: NSURL
     let meteorService: MeteorService
 
-    public init(
+    init(
             recipientId: String,
             localVideoURL: NSURL,
             meteorService: MeteorService) {
@@ -30,7 +30,7 @@ public class VideoUploadOperation : AsyncOperation {
         self.meteorService = meteorService
     }
 
-    override public func run() {
+    override func run() {
         let realm = Realm()
         let predicate = NSPredicate(format: "localURL = %@", localVideoURL.path!)
         let results = realm.objects(VideoUploadTask).filter(predicate)

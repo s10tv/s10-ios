@@ -13,7 +13,7 @@ import ReactiveCocoa
 import Alamofire
 import RealmSwift
 
-public class InviteOperation : AsyncOperation {
+internal class InviteOperation : AsyncOperation {
     let taskType: String = "INVITE"
 
     let meteor: MeteorService
@@ -23,7 +23,7 @@ public class InviteOperation : AsyncOperation {
     let lastName: String
     let emailOrPhone: String
 
-    public init(meteor: MeteorService, task: InviteTask) {
+    init(meteor: MeteorService, task: InviteTask) {
         self.meteor = meteor
         taskId = task.taskId
         localVideoURL = NSURL(task.localVideoUrl)
@@ -32,7 +32,7 @@ public class InviteOperation : AsyncOperation {
         emailOrPhone = task.emailOrPhone
     }
     
-    public override func run() {
+    override func run() {
         let metadata = [
             "to": emailOrPhone,
             "firstName": firstName,

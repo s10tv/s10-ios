@@ -1061,10 +1061,10 @@
 		EAF6705D1B31F9450025D7CF /* S10 */ = {
 			isa = PBXGroup;
 			children = (
+				EAF6706C1B31F9450025D7CF /* Operations */,
 				EAF6705E1B31F9450025D7CF /* Models */,
 				EA9C166D1B3726DA00371B50 /* ViewModels */,
 				EAF670981B3200E10025D7CF /* Services */,
-				EAF6706C1B31F9450025D7CF /* Operations */,
 			);
 			path = S10;
 			sourceTree = "<group>";

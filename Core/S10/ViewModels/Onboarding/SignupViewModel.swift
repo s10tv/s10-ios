@@ -41,7 +41,7 @@ public struct SignupViewModel {
     
     // MARK: -
     
-    func upload(image: UIImage, taskType: PhotoUploadOperation.TaskType) -> Future<(), NSError> {
+    func upload(image: UIImage, taskType: PhotoTaskType) -> Future<(), NSError> {
         return operationQueue.addAsyncOperation {
             PhotoUploadOperation(meteor: meteor, image: image, taskType: taskType)
         }

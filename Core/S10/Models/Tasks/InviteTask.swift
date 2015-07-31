@@ -12,27 +12,27 @@ import RealmSwift
 
 // TODO: Do not store absolute path to local files in the database because they contain
 // uuid of the sandbox which might sometimes change after application upgrade
-public class InviteTask : Object {
-    public dynamic var taskId = ""
-    public dynamic var localVideoUrl = ""
-    public dynamic var firstName = ""
-    public dynamic var lastName = ""
-    public dynamic var emailOrPhone = ""
+internal class InviteTask : Object {
+    dynamic var taskId = ""
+    dynamic var localVideoUrl = ""
+    dynamic var firstName = ""
+    dynamic var lastName = ""
+    dynamic var emailOrPhone = ""
     
-    override public static func primaryKey() -> String? {
+    override static func primaryKey() -> String? {
         return "taskId"
     }
     
-    public class func findByTaskId(taskId: String, realm: Realm = Realm()) -> InviteTask? {
+    class func findByTaskId(taskId: String, realm: Realm = Realm()) -> InviteTask? {
         let pred = NSPredicate(format: "taskId = %@", taskId)
         return realm.objects(self).filter(pred).first
     }
     
-    public class func countInvites(realm: Realm = Realm()) -> Int {
+    class func countInvites(realm: Realm = Realm()) -> Int {
         return realm.objects(self).count
     }
     
-    public class func countOfInvites() -> SignalProducer<Int, NoError> {
+    class func countOfInvites() -> SignalProducer<Int, NoError> {
         return Realm().notifier() |> map { _ in self.countInvites() }
     }
 }

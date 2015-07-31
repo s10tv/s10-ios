@@ -12,31 +12,31 @@ import RealmSwift
 import Alamofire
 import Core
 
-public class VideoDownloadOperation : AsyncOperation {
+internal class VideoDownloadOperation : AsyncOperation {
     let videoCache = VideoCache.sharedInstance
     let alamo = Manager(sessionType: .Default)
     let tempURL = NSURL(fileURLWithPath: NSTemporaryDirectory())!.URLByAppendingPathComponent(NSUUID().UUIDString)
     let videoId: String
     let senderId: String
     let remoteURL: NSURL
-    public let resumeData: NSData? // TODO: Make internal after Xcode 7
+    let resumeData: NSData? // TODO: Make internal after Xcode 7
     var request: Request?
     
-    public init(videoId: String, senderId: String, remoteURL: NSURL) {
+    init(videoId: String, senderId: String, remoteURL: NSURL) {
         self.videoId = videoId
         self.senderId = senderId
         self.remoteURL = remoteURL
         resumeData = nil
     }
     
-    public init(task: VideoDownloadTask) {
+    init(task: VideoDownloadTask) {
         videoId = task.videoId
         senderId = task.senderId
         remoteURL = NSURL(string: task.remoteUrl)!
         resumeData = task.resumeData.length > 0 ? task.resumeData : nil
     }
     
-    public override func run() {
+    override func run() {
         Log.info("Start VideoDownload id=\(videoId)")
         // Persist record
         let realm = Realm()
@@ -101,7 +101,7 @@ public class VideoDownloadOperation : AsyncOperation {
         }
     }
     
-    public override func cancel() {
+    override func cancel() {
         super.cancel()
         request?.cancel()
         Log.info("Cancel VideoDownload id=\(videoId)")
