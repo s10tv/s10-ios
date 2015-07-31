@@ -42,7 +42,7 @@ class CreateProfileViewController : UITableViewController {
         vm.firstName <->> firstNameField
         vm.lastName <->> lastNameField
         vm.about <->> aboutView
-        vm.tagline ->> taglineField
+        vm.tagline <->> taglineField
         vm.avatar ->> avatarView.imageBond
         vm.cover ->> coverView.imageBond
         
@@ -52,14 +52,6 @@ class CreateProfileViewController : UITableViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-    
-    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
-        if identifier == SegueIdentifier.CreateProfileToConnectServices.rawValue {
-            // TODO: Add validation here
-            return true
-        }
-        return super.shouldPerformSegueWithIdentifier(identifier, sender: sender)
     }
     
     // MARK: - Actions
@@ -100,6 +92,23 @@ class CreateProfileViewController : UITableViewController {
         }
     }
 
+    @IBAction func didSelectNext(sender: AnyObject) {
+        self.vm.saveProfile()
+            |> deliverOn(UIScheduler())
+            |> onComplete { result in
+                result.analysis(ifSuccess: {
+
+                    self.performSegue(SegueIdentifier.Onboarding_profileToIntegrations, sender: self)
+                }, ifFailure: { error in
+                    let alert = UIAlertController(
+                        title: error.title,
+                        message: error.body,
+                        preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                    self.presentViewController(alert, animated: true)
+                })
+            }
+    }
 }
 
 // MARK: - Zoom in cover photo on tableView overscroll

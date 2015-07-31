@@ -10,19 +10,6 @@ import Foundation
 import ReactiveCocoa
 
 public struct CreateProfileViewModel {
-    public enum Error : ErrorType {
-        case Offline
-        case FailedToUpdateAvatar
-        case FailedToUpdateCover
-        case FirstNameRequired
-        case LastNameRequired
-        case TaglineRequired
-        
-        public var alertTitle: String { return "" }
-        public var alertBody: String { return "" }
-        public var nsError: NSError { return NSError() }
-    }
-    
     let meteor: MeteorService
     let operationQueue = NSOperationQueue()
     public let avatar: PropertyOf<Image?>
@@ -52,6 +39,50 @@ public struct CreateProfileViewModel {
     
     public func saveProfile() -> Future<Void, Error> {
         let promise = Promise<(), Error>()
+
+        var errorReason : String?
+
+        if (firstName.value.stringByTrimmingCharactersInSet(
+            NSCharacterSet.whitespaceCharacterSet()).length == 0) {
+                errorReason = "Forgot to set first name?"
+        } else if (lastName.value.stringByTrimmingCharactersInSet(
+            NSCharacterSet.whitespaceCharacterSet()).length == 0) {
+                errorReason = "Forgot to set last name?"
+        } else if (tagline.value.stringByTrimmingCharactersInSet(
+            NSCharacterSet.whitespaceCharacterSet()).length == 0) {
+                errorReason = "Forgot to set tagline?"
+        } else if (avatar.value == nil) {
+            errorReason = "Forgot to upload avatar?"
+        }
+
+        if let errorReason = errorReason {
+            promise.failure(Error(title: "Problem with Registration",
+                body: errorReason))
+        } else {
+            var fields = [
+                "firstName": firstName.value,
+                "lastName": lastName.value,
+                "tagline": tagline.value,
+            ]
+
+            if self.about.value.stringByTrimmingCharactersInSet(
+                NSCharacterSet.whitespaceCharacterSet()).length != 0 {
+                    fields["about"] = self.about.value
+            }
+
+            self.meteor.updateProfile(fields).subscribeError({ error in
+                var errorReason : String
+                if let reason = error.localizedFailureReason {
+                    errorReason = reason
+                } else {
+                    errorReason = "Please try again later."
+                }
+                promise.failure(Error(title: "Problem with Registration", body: errorReason))
+            }, completed: {
+                promise.success()
+            })
+        }
+
         return promise.future
     }
 }

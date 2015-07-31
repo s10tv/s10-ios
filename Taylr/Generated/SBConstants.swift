@@ -20,6 +20,7 @@ public enum SegueIdentifier : String {
     case MeToEditProfile = "MeToEditProfile"
     case MeToProfile = "MeToProfile"
     case Onboarding_Login = "Onboarding_Login"
+    case Onboarding_profileToIntegrations = "Onboarding_profileToIntegrations"
     case ProfileToConversation = "ProfileToConversation"
     case RecorderToEditor = "RecorderToEditor"
 }

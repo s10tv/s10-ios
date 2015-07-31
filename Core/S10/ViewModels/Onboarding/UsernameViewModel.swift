@@ -11,19 +11,6 @@ import ReactiveCocoa
 import Async
 
 public struct UsernameViewModel {
-    public class Error : ErrorType {
-
-        public var nsError: NSError { return NSError() }
-
-        public let title: String
-        public let body: String
-
-        public init(title: String, body: String) {
-            self.title = title
-            self.body = body
-        }
-    }
-    
     public let usernamePlaceholder: String
     public let username: MutableProperty<String>
     public let statusImage: PropertyOf<Image?>

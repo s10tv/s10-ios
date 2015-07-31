@@ -76,10 +76,10 @@
                                     <action selector="startLogin:" destination="dFw-q9-bre" eventType="touchUpInside" id="LLF-Ml-IV2"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c0f-ne-erJ" userLabel="Terms &amp; Privacy">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0f-ne-erJ" userLabel="Terms &amp; Privacy">
                                 <rect key="frame" x="245" y="563" width="110" height="29"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Pp-CT-PMh" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Pp-CT-PMh" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="37" height="29"/>
                                         <state key="normal">
                                             <attributedString key="attributedTitle">
@@ -103,7 +103,7 @@
                                             <action selector="viewTerms:" destination="dFw-q9-bre" eventType="touchUpInside" id="7qQ-pM-k90"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ODl-1I-fve" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ODl-1I-fve" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
                                         <rect key="frame" x="67" y="0.0" width="43" height="29"/>
                                         <state key="normal">
                                             <attributedString key="attributedTitle">
@@ -428,7 +428,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="UL1-t5-ar3" kind="show" identifier="CreateProfileToConnectServices" id="XlJ-Gy-iwV"/>
+                                    <action selector="didSelectNext:" destination="4FY-Nx-fFw" eventType="touchUpInside" id="8Qu-bB-hW9"/>
                                 </connections>
                             </button>
                         </barButtonItem>
@@ -443,6 +443,7 @@
                         <outlet property="firstNameField" destination="K5S-M5-nhA" id="2u2-Pg-uZ4"/>
                         <outlet property="lastNameField" destination="R72-mS-4Cy" id="D0r-aQ-O6V"/>
                         <outlet property="taglineField" destination="aY0-03-vXb" id="SbZ-eZ-I47"/>
+                        <segue destination="UL1-t5-ar3" kind="show" identifier="Onboarding_profileToIntegrations" id="pEl-yJ-X6T"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v97-2k-B6C" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -643,7 +644,7 @@
                     <navigationItem key="navigationItem" title="Username" id="RgQ-9H-C4q">
                         <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="5O0-ue-LrC">
                             <connections>
-                                <action selector="didTapDone:" destination="EwH-br-Xzx" id="Zlv-GK-YI6"/>
+                                <action selector="didTapDone:" destination="EwH-br-Xzx" id="s4f-Yv-jA0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -653,6 +654,7 @@
                         <outlet property="statusImageView" destination="3Ce-pj-Mcy" id="acD-uX-Dqf"/>
                         <outlet property="statusLabel" destination="0w8-t4-wka" id="naE-Ds-7mk"/>
                         <outlet property="usernameField" destination="YYM-ra-ksE" id="LHl-cc-VMw"/>
+                        <segue destination="4LR-tW-qvj" kind="custom" identifier="Main_RootTab" customClass="LinkedStoryboardPushSegue" id="t1S-gH-XOP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A3U-9v-K1p" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -667,4 +669,7 @@
         <image name="ic-right-arrow-white" width="12" height="21"/>
         <image name="sample-cover-image" width="750" height="368"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="t1S-gH-XOP"/>
+    </inferredMetricsTieBreakers>
 </document>

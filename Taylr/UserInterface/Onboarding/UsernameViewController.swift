@@ -9,6 +9,7 @@
 import UIKit
 import Bond
 import Core
+import ReactiveCocoa
 
 class UsernameViewController : UIViewController {
  
@@ -46,21 +47,23 @@ class UsernameViewController : UIViewController {
             segue.replaceStrategy = .Stack
         }
     }
-    
+
     // MARK: -
     
     @IBAction func didTapDone(sender: AnyObject) {
-        self.vm.saveUsername().onComplete { result in
-            result.analysis(ifSuccess: {
-                self.performSegueWithIdentifier("discover", sender: nil)
-            }, ifFailure: { error in
-                let alert = UIAlertController(
-                    title: error.title,
-                    message: error.body,
-                    preferredStyle: UIAlertControllerStyle.Alert)
-                alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-                self.presentViewController(alert, animated: true)
-            })
+        self.vm.saveUsername()
+            |> deliverOn(UIScheduler())
+            |> onComplete { result in
+                result.analysis(ifSuccess: {
+                    self.performSegue(SegueIdentifier.Main_RootTab, sender: nil)
+                }, ifFailure: { error in
+                    let alert = UIAlertController(
+                        title: error.title,
+                        message: error.body,
+                        preferredStyle: UIAlertControllerStyle.Alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                    self.presentViewController(alert, animated: true)
+                })
         }
     }
 }
