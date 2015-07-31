@@ -66,7 +66,7 @@ class CreateProfileViewController : UITableViewController {
     
     @IBAction func didTabEditAvatar(sender: AnyObject) {
         pickImage { image in
-            let scaledImage = image.scaleToMaxDimension(20, pixelSize: true)
+            let scaledImage = image.scaleToMaxDimension(200, pixelSize: true)
             PKHUD.showActivity(dimsBackground: true)
             self.vm.upload(scaledImage, taskType: .ProfilePic)
                 |> deliverOn(UIScheduler())

@@ -27,19 +27,14 @@ class LoadingViewController : UIViewController {
             |> onSuccess { state in
                 assert(NSThread.isMainThread(), "Must be on main")
                 switch state {
-                case .LoggedOut:
+                case .LoggedOut, .LoggedIn:
                     self.performSegue(.Onboarding_Login, sender: self)
-                case .LoggedIn:
-                    self.performSegueWithIdentifier("Onboarding_CreateProfile", sender: self)
                 case .SignedUp:
                     self.performSegue(.LoadingToRootTab, sender: self)
                 default:
                     fatalError("impossible account status")
                 }
-//                let vc = self.storyboard?.instantiateViewControllerWithIdentifier("Integrations") as! UIViewController
-//                self.navigationController?.pushViewController(vc, animated: true)
             }
-        
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
