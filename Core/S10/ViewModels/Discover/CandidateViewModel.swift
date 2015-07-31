@@ -14,16 +14,14 @@ public struct CandidateViewModel {
     let user: User
     public let avatar: Image?
     public let displayName: String
-    public let jobTitle: String
-    public let employer: String
+    public let tagline: String
     public let profileIcons: DynamicArray<Image>
     
     init(user: User) {
         self.user = user
         avatar = user.avatar
         displayName = user.pDisplayName().value
-        jobTitle = user.jobTitle ?? ""
-        employer = user.employer ?? ""
+        tagline = user.tagline ?? ""
         profileIcons = DynamicArray(user.connectedProfiles.map { $0.icon })
     }
 }

@@ -89,11 +89,10 @@
             </userInfo>
         </attribute>
         <attribute name="distance" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="employer" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="firstName" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="jobTitle" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="lastActive" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tagline" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="username" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="connection" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Connection" inverseName="otherUser" inverseEntity="Connection" syncable="YES">
             <userInfo>
@@ -106,6 +105,6 @@
         <element name="Connection" positionX="-819" positionY="9" width="128" height="135"/>
         <element name="Integration" positionX="-612" positionY="-144" width="128" height="135"/>
         <element name="Message" positionX="-207" positionY="27" width="128" height="135"/>
-        <element name="User" positionX="268" positionY="-261" width="128" height="240"/>
+        <element name="User" positionX="268" positionY="-261" width="128" height="225"/>
     </elements>
 </model>

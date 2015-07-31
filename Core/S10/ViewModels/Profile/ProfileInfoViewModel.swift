@@ -13,13 +13,11 @@ public protocol ProfileInfoViewModel {
 }
 
 public struct TaylrProfileInfoViewModel : ProfileInfoViewModel{
-    public let jobTitle: PropertyOf<String>
-    public let employer: PropertyOf<String>
+    public let tagline: PropertyOf<String>
     public let about: PropertyOf<String>
     
     init(user: User) {
-        jobTitle = user.pJobTitle()
-        employer = user.pEmployer()
+        tagline = user.pTagline()
         about = user.pAbout()
     }
 }

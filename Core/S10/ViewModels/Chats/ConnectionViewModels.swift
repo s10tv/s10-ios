@@ -60,8 +60,7 @@ public struct NewConnectionViewModel : ConnectionViewModel {
     public let avatar: PropertyOf<Image?>
     public let displayName: PropertyOf<String>
     public let displayTime: PropertyOf<String>
-    public let jobTitle: PropertyOf<String>
-    public let employer: PropertyOf<String>
+    public let tagline: PropertyOf<String>
     public let busy: PropertyOf<Bool>
     public let hidePlayIcon: PropertyOf<Bool>
     public let profileIcons: DynamicArray<Image>
@@ -71,8 +70,7 @@ public struct NewConnectionViewModel : ConnectionViewModel {
         let user = connection.otherUser
         avatar = user.pAvatar()
         displayName = user.pDisplayName()
-        jobTitle = user.pJobTitle()
-        employer = user.pEmployer()
+        tagline = user.pTagline()
         profileIcons = DynamicArray(user.connectedProfiles.map { $0.icon })
         busy = connection.otherUser.pConversationBusy()
         hidePlayIcon = PropertyOf(true, combineLatest(
