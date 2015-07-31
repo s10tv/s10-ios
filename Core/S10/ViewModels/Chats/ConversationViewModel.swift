@@ -112,9 +112,10 @@ public class ConversationViewModel {
             |> flatMap(nilValue: "") { $0.pDisplayName() }
         busy = currentUser
             |> flatMap(nilValue: false) { $0.pConversationBusy() }
-         // TODO: Should also depend on whether or not there's actually new messages
-        hideNewMessagesHint = state
-            |> map { $0 != .RecordIdle }
+         // TODO: Bring the actual logic back
+        hideNewMessagesHint = PropertyOf(true)
+//            state
+//            |> map { $0 != .RecordIdle }
         
         currentMessageDate = currentMessage
             |> flatMap { $0.formattedDate |> map { Optional($0) } }
