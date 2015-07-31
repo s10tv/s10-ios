@@ -75,6 +75,7 @@ class RecorderViewController : UIViewController {
     
     func handleRecordButtonTouch(touchDetector: TouchDetector) {
         if touchDetector.state == .Began {
+            delegate?.recorderWillStartRecording(self)
             recorder.record()
         } else if touchDetector.state == .Ended {
             recorder.pause()
