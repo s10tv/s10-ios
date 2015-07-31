@@ -158,6 +158,10 @@ public enum R {
         case appBeta = "AppIconBeta"
         /// AppIconDev
         case appDev = "AppIconDev"
+        /// bg-player-default
+        case bgPlayerDefault = "bg-player-default"
+        /// bg-record-hint
+        case bgRecordHint = "bg-record-hint"
         /// discover-logo
         case discoverLogo = "discover-logo"
         /// empty-profile-pic
@@ -184,12 +188,16 @@ public enum R {
         case icCheckmark = "ic-checkmark"
         /// ic-close
         case icClose = "ic-close"
+        /// ic-close-cross
+        case icCloseCross = "ic-close-cross"
         /// ic-compass
         case icCompass = "ic-compass"
         /// ic-disclosure
         case icDisclosure = "ic-disclosure"
         /// ic-discover
         case icDiscover = "ic-discover"
+        /// ic-down-chevron-small
+        case icDownChevronSmall = "ic-down-chevron-small"
         /// ic-eclipse
         case icEclipse = "ic-eclipse"
         /// ic-edit
@@ -212,6 +220,8 @@ public enum R {
         case icInstagram = "ic-instagram"
         /// ic-instagram-small
         case icInstagramSmall = "ic-instagram-small"
+        /// ic-left-arrow
+        case icLeftArrow = "ic-left-arrow"
         /// ic-left-chevron
         case icLeftChevron = "ic-left-chevron"
         /// ic-linkedin
@@ -242,6 +252,8 @@ public enum R {
         case icRewind = "ic-rewind"
         /// ic-right-arrow
         case icRightArrow = "ic-right-arrow"
+        /// ic-right-arrow-white
+        case icRightArrowWhite = "ic-right-arrow-white"
         /// ic-right-chevron
         case icRightChevron = "ic-right-chevron"
         /// ic-save
@@ -260,6 +272,8 @@ public enum R {
         case icTwitterColor = "ic-twitter-color"
         /// ic-twitter-small
         case icTwitterSmall = "ic-twitter-small"
+        /// ic-up-chevron
+        case icUpChevron = "ic-up-chevron"
         /// ic-upvote
         case icUpvote = "ic-upvote"
         /// ic-video

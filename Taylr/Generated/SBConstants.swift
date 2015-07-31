@@ -17,7 +17,7 @@ public enum SegueIdentifier : String {
     case IntegrationsToWeb = "IntegrationsToWeb"
     case LoadingToRootTab = "LoadingToRootTab"
     case LoginToCreateProfile = "LoginToCreateProfile"
-    case Main_Discover = "Main_Discover"
+    case Main_RootTab = "Main_RootTab"
     case MeToEditProfile = "MeToEditProfile"
     case MeToProfile = "MeToProfile"
     case Onboarding_CreateProfile = "Onboarding_CreateProfile"
@@ -51,4 +51,5 @@ public enum ViewControllerStoryboardIdentifier : String {
     case Player = "Player"
     case Producer = "Producer"
     case Recorder = "Recorder"
+    case Username = "Username"
 }

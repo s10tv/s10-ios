@@ -39,7 +39,7 @@ class LoginViewController : BaseViewController {
         if let vc = segue.destinationViewController as? SignupViewController {
 //            vc.viewModel = SignupInteractor(meteor: Meteor, user: Meteor.user.value!)
         }
-        if let segue = segue as? LinkedStoryboardPushSegue where segue.matches(.Main_Discover) {
+        if let segue = segue as? LinkedStoryboardPushSegue where segue.matches(.Main_RootTab) {
             segue.replaceStrategy = .Stack
         }
     }
@@ -67,7 +67,7 @@ class LoginViewController : BaseViewController {
                 case .LoggedIn:
                     self.performSegue(.LoginToCreateProfile, sender: self)
                 case .SignedUp:
-                    self.performSegue(.Main_Discover, sender: self)
+                    self.performSegue(.Main_RootTab, sender: self)
                 default:
                     assertionFailure("Expecting either LoggedIn or SignedUp")
                 }
