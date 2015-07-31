@@ -28,7 +28,7 @@ import UIKit
 @IBDesignable public class DesignableLabel : UILabel {
 
     @IBInspectable public var fontSize: CGFloat = 13.0
-    @IBInspectable public var fontName: String = "TransatTextMedium"
+    @IBInspectable public var fontName: String = "Cabin-Regular"
     @IBInspectable public var fontKern: CGFloat = 0
     
     public var rawText : String! {
@@ -45,7 +45,7 @@ import UIKit
 
 @IBDesignable public class DesignableButton : UIButton {
     @IBInspectable public var fontSize: CGFloat = 13.0
-    @IBInspectable public var fontName: String = "TransatTextStandard"
+    @IBInspectable public var fontName: String = "Cabin-Regular"
     @IBInspectable public var fontKern: CGFloat = 0
     
     public var attributedText : NSAttributedString? {

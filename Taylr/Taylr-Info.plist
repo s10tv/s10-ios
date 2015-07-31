@@ -76,11 +76,6 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>TransatTextLight.otf</string>
-		<string>TransatTextStandard.otf</string>
-		<string>TransatTextMedium.otf</string>
-		<string>TransatTextBold.otf</string>
-		<string>TransatTextBlack.otf</string>
 		<string>Cabin-Bold.ttf</string>
 		<string>Cabin-BoldItalic.ttf</string>
 		<string>Cabin-Italic.ttf</string>
