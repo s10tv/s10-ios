@@ -27,6 +27,7 @@ class ConversationViewController : BaseViewController {
     @IBOutlet weak var activityLabel: UILabel!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var swipeView: SwipeView!
+    @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var newMessagesHint: UIView!
     @IBOutlet var producerContainer: UIView!
     @IBOutlet var playerContainer: UIView!
@@ -43,8 +44,8 @@ class ConversationViewController : BaseViewController {
         vm.displayName ->> nameLabel
         vm.busy ->> spinner
         vm.displayStatus ->> activityLabel
-//        vm.hideSwipeUpHint ->> swipeUpHint.dynHidden
-        vm.hideSwipeDownHint ->> newMessagesHint.dynHidden
+        vm.hideNewMessagesHint ->> newMessagesHint.dynHidden
+        vm.cover ->> coverImageView.imageBond
         
         let avkit = UIStoryboard(name: "AVKit", bundle: nil)
         producer = avkit.instantiateViewControllerWithIdentifier("Producer") as! ProducerViewController
@@ -92,6 +93,7 @@ class ConversationViewController : BaseViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.setBackgroundColor(UIColor(white: 0.5, alpha: 0.4))
+        navigationController?.lastViewController?.navigationItem.backBarButtonItem?.title = "Leave"
         if let view = navigationItem.titleView {
             view.bounds.size = view.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
         }
@@ -127,6 +129,11 @@ class ConversationViewController : BaseViewController {
     // MARK: Actions
     func showPage(page: ConversationViewModel.Page, animated: Bool = false) {
         swipeView.scrollToItemAtIndex(page.rawValue, duration: animated ? 0.25 : 0)
+    }
+
+    @IBAction func didTapLeave(sender: AnyObject) {
+        vm.expireOpenedMessages()
+        navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func showMoreOptions(sender: AnyObject) {

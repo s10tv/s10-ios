@@ -63,13 +63,13 @@ public class ConversationViewModel {
     
     public let state: PropertyOf<State>
     public let avatar: PropertyOf<Image?>
+    public let cover: PropertyOf<Image?>
     public let firstName: PropertyOf<String>
     public let displayName: PropertyOf<String>
     public let displayStatus: PropertyOf<String>
     public let busy: PropertyOf<Bool>
     public let messages: PropertyOf<[MessageViewModel]>
-    public let hideSwipeUpHint: PropertyOf<Bool>
-    public let hideSwipeDownHint: PropertyOf<Bool>
+    public let hideNewMessagesHint: PropertyOf<Bool>
     public let exitAtEnd: Bool
     
     public let currentMessage: MutableProperty<MessageViewModel?>
@@ -102,16 +102,16 @@ public class ConversationViewModel {
             |> map { $0?.message.sender ?? recipient }
         avatar = currentUser
             |> flatMap { $0.pAvatar() }
+        cover = currentUser
+            |> flatMap { $0.pCover() }
         firstName = currentUser
             |> flatMap(nilValue: "") { $0.pFirstName() }
         displayName = currentUser
             |> flatMap(nilValue: "") { $0.pDisplayName() }
         busy = currentUser
             |> flatMap(nilValue: false) { $0.pConversationBusy() }
-        hideSwipeUpHint = state
-            |> map { $0 != .PlaybackStopped }
          // TODO: Should also depend on whether or not there's actually new messages
-        hideSwipeDownHint = state
+        hideNewMessagesHint = state
             |> map { $0 != .RecordIdle }
         
         currentMessageDate = currentMessage

@@ -65,6 +65,7 @@
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
+            <string>Cabin-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1156,8 +1157,8 @@
                                                     <constraint firstAttribute="centerX" secondItem="6FU-Of-cdK" secondAttribute="centerX" id="x7V-oe-v9Q"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No video from Taylor Swift" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="250" translatesAutoresizingMaskIntoConstraints="NO" id="D2N-Vt-lOa">
-                                                <rect key="frame" x="188" y="287" width="225" height="25"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No new videos" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="250" translatesAutoresizingMaskIntoConstraints="NO" id="D2N-Vt-lOa">
+                                                <rect key="frame" x="238" y="287" width="125" height="25"/>
                                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="20"/>
                                                 <color key="textColor" red="0.92926174402236938" green="0.92917501926422119" blue="0.94562381505966187" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1246,6 +1247,21 @@
                     </view>
                     <navigationItem key="navigationItem" id="ueA-O6-Djt">
                         <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" id="Km7-BD-Gu1">
+                            <inset key="imageInsets" minX="-10" minY="0.0" maxX="0.0" maxY="0.0"/>
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="GhG-Mr-a9M">
+                                <rect key="frame" x="16" y="11" width="53" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
+                                <state key="normal" title="Leave" image="ic-left-arrow">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapLeave:" destination="kBv-HD-oBL" eventType="touchUpInside" id="R33-6b-zYJ"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
                         <view key="titleView" contentMode="scaleToFill" id="KPL-gz-OCJ" userLabel="Title View">
                             <rect key="frame" x="205" y="5" width="190" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -1310,6 +1326,7 @@
                     <connections>
                         <outlet property="activityLabel" destination="Xhe-ik-k94" id="hWw-q1-f3l"/>
                         <outlet property="avatarView" destination="uD7-V4-mF6" id="iA7-v4-S7S"/>
+                        <outlet property="coverImageView" destination="xcA-cM-lGe" id="Wm5-Yp-u6D"/>
                         <outlet property="nameLabel" destination="e0x-EU-7eq" id="DLz-9l-GuL"/>
                         <outlet property="newMessagesHint" destination="yZe-l1-1Cf" id="wHg-BJ-noc"/>
                         <outlet property="playerContainer" destination="6Ez-Ho-vPa" id="aAh-6f-uZc"/>
@@ -1895,7 +1912,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-twitter-color" translatesAutoresizingMaskIntoConstraints="NO" id="D8v-Aq-FJD">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic-twitter-color" translatesAutoresizingMaskIntoConstraints="NO" id="D8v-Aq-FJD">
                                             <rect key="frame" x="12" y="17" width="28" height="28"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="28" id="CTz-QM-uhn"/>
@@ -1915,7 +1932,7 @@
                                                 <constraint firstAttribute="height" constant="1" id="Elx-nD-V26"/>
                                             </constraints>
                                         </view>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Integration Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XcD-Gl-qea" customClass="JVFloatLabeledTextField">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Integration Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XcD-Gl-qea" customClass="JVFloatLabeledTextField">
                                             <rect key="frame" x="50" y="8" width="130" height="44"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
@@ -2184,7 +2201,7 @@
                                             </userDefinedRuntimeAttribute>
                                         </userDefinedRuntimeAttributes>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Once you leave this conversation, videos that you have seen are automatically removed in order to save space on your device." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="270" translatesAutoresizingMaskIntoConstraints="NO" id="VY0-0t-w8t">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Once you leave this conversation, videos that you have seen are automatically removed in order to save space on your device." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="270" translatesAutoresizingMaskIntoConstraints="NO" id="VY0-0t-w8t">
                                         <rect key="frame" x="155" y="36" width="259" height="105"/>
                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2308,6 +2325,7 @@
         <image name="ic-down-chevron-small" width="11" height="12"/>
         <image name="ic-eclipse" width="29" height="7"/>
         <image name="ic-edit" width="39" height="40"/>
+        <image name="ic-left-arrow" width="12" height="21"/>
         <image name="ic-left-chevron" width="24" height="21"/>
         <image name="ic-me" width="29" height="28"/>
         <image name="ic-more" width="29" height="7"/>
@@ -2327,6 +2345,6 @@
     <inferredMetricsTieBreakers>
         <segue reference="kNN-lk-QB3"/>
         <segue reference="TFP-eW-cVI"/>
-        <segue reference="Fwv-Pj-RXP"/>
+        <segue reference="zqv-ca-egq"/>
     </inferredMetricsTieBreakers>
 </document>
