@@ -104,6 +104,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         IntegrationsViewController.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         Globals.accountService.login()
+        Appearance.setupGlobalAppearances()
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.rootViewController = RootNavController(account: Globals.accountService)

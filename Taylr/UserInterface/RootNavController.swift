@@ -12,55 +12,24 @@ import ReactiveCocoa
 import Core
 import Bond
 
-extension UINavigationController {
-    var lastViewController: UIViewController? {
-        if viewControllers.count >= 2 {
-            return viewControllers[viewControllers.count - 2] as? UIViewController
-        }
-        return nil
-    }
-}
 
 class RootNavController : UINavigationController {
-    var transitionManager : TransitionManager!
 
     let onboarding = UIStoryboard(name: "Onboarding", bundle: nil)
     let main = UIStoryboard(name: "Main", bundle: nil)
+    var transitionManager : TransitionManager!
     
     init(account: AccountService) {
         let sb = account.hasAccount() ? main : onboarding
         super.init(rootViewController: sb.instantiateInitialViewController() as! UIViewController)
     }
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        transitionManager = TransitionManager(navigationController: self)
-        
-        UINavigationBar.appearance().barTintColor = StyleKit.brandPurple
-        UINavigationBar.appearance().tintColor = StyleKit.textWhite
-        UINavigationBar.appearance().titleTextAttributes = [
-            NSFontAttributeName: UIFont(.cabinMedium, size: 20),
-            NSForegroundColorAttributeName: StyleKit.textWhite
-        ]
-
-        UIBarButtonItem.appearance().setTitleTextAttributes([
-            NSFontAttributeName : UIFont(.cabinRegular, size: 16)
-        ], forState: .Normal)
-        
-        UISegmentedControl.appearance().setTitleTextAttributes([
-            NSFontAttributeName: UIFont(.cabinRegular, size: 14)
-        ], forState: .Normal)
         // http://stackoverflow.com/questions/19833939/uinavigationcontoller-interactivepopgesturerecognizer-inactive-when-navigation-b
         interactivePopGestureRecognizer.delegate = nil
+        
+        transitionManager = TransitionManager(navigationController: self)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -75,5 +44,15 @@ class RootNavController : UINavigationController {
         } else {
             popViewControllerAnimated(true)
         }
+    }
+    
+    // MARK: - Required init overrides
+    
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
 }

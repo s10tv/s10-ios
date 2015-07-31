@@ -10,6 +10,16 @@ import UIKit
 import ReactiveCocoa
 import Meteor
 
+
+extension UINavigationController {
+    var lastViewController: UIViewController? {
+        if viewControllers.count >= 2 {
+            return viewControllers[viewControllers.count - 2] as? UIViewController
+        }
+        return nil
+    }
+}
+
 class BaseViewController : UIViewController {
     
     var screenName: String?
@@ -45,7 +55,4 @@ class BaseViewController : UIViewController {
             Analytics.track("Screen: \(screenName)")
         }
     }
-    
-    func metadataDidUpdateWhileViewActive(metadataKey: String, value: AnyObject?) { }
-    
 }
