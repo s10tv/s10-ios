@@ -62,6 +62,10 @@ class AccountService {
         }
     }
     
+    func hasAccount() -> Bool {
+        return digits.session() != nil && meteorService.account.value != nil
+    }
+    
     private func didLogin() {
         // Allow this to be set by server rather than client
 //        self.meteorService.meta.hasBeenWelcomed = false
