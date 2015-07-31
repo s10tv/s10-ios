@@ -5,7 +5,12 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="Cabin-Medium.ttf">
+            <string>Cabin-Medium</string>
+        </mutableArray>
         <mutableArray key="Cabin-Regular.ttf">
+            <string>Cabin-Regular</string>
+            <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
@@ -185,8 +190,8 @@
                                                         <constraint firstAttribute="height" constant="100" id="wF0-wr-vL5"/>
                                                     </constraints>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Svg-WX-nWX">
-                                                    <rect key="frame" x="54" y="148" width="30" height="32"/>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Svg-WX-nWX">
+                                                    <rect key="frame" x="54" y="148" width="30" height="31"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                                     <state key="normal" title="Edit">
                                                         <color key="titleColor" red="0.94771684653267474" green="1" blue="0.98100255936701775" alpha="1" colorSpace="calibratedRGB"/>
@@ -196,8 +201,8 @@
                                                         <action selector="didTabEditAvatar:" destination="4FY-Nx-fFw" eventType="touchUpInside" id="sEN-Vx-v7y"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sXE-uY-6ws">
-                                                    <rect key="frame" x="525" y="135" width="60" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sXE-uY-6ws">
+                                                    <rect key="frame" x="525" y="136" width="60" height="29"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="60" id="6yA-gd-oBm"/>
@@ -522,7 +527,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Connect Services" id="Lfe-Mw-brm">
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="pJg-hS-40K"/>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="pJg-hS-40K">
+                            <connections>
+                                <segue destination="EwH-br-Xzx" kind="show" id="mnc-wY-9eZ"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="descriptionCell" destination="hSm-O9-Jix" id="f62-Qq-e3r"/>
@@ -535,10 +544,100 @@
             </objects>
             <point key="canvasLocation" x="1236" y="620"/>
         </scene>
+        <!--Username-->
+        <scene sceneID="9K3-TS-HJy">
+            <objects>
+                <viewController storyboardIdentifier="Username" id="EwH-br-Xzx" customClass="UsernameViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="KVx-og-MzV"/>
+                        <viewControllerLayoutGuide type="bottom" id="Fq3-MA-ugK"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="EBe-1w-rl6">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The username you select will be permanent." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUv-yp-E8l">
+                                <rect key="frame" x="16" y="64" width="568" height="22"/>
+                                <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="18"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Z7-AZ-EkO">
+                                <rect key="frame" x="16" y="101" width="568" height="50"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="cduncan" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YYM-ra-ksE">
+                                        <rect key="frame" x="8" y="0.0" width="516" height="50"/>
+                                        <fontDescription key="fontDescription" name="Cabin-Medium" family="Cabin" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="3Ce-pj-Mcy">
+                                        <rect key="frame" x="532" y="11" width="28" height="28"/>
+                                    </imageView>
+                                    <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Mor-tM-I7n">
+                                        <rect key="frame" x="536" y="15" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="3Ce-pj-Mcy" firstAttribute="centerX" secondItem="Mor-tM-I7n" secondAttribute="centerX" id="FW3-wE-V9I"/>
+                                    <constraint firstItem="YYM-ra-ksE" firstAttribute="leading" secondItem="5Z7-AZ-EkO" secondAttribute="leading" constant="8" id="J0U-sc-SgE"/>
+                                    <constraint firstItem="3Ce-pj-Mcy" firstAttribute="leading" secondItem="YYM-ra-ksE" secondAttribute="trailing" constant="8" id="NOu-hH-a58"/>
+                                    <constraint firstAttribute="centerY" secondItem="3Ce-pj-Mcy" secondAttribute="centerY" id="PnQ-py-OLn"/>
+                                    <constraint firstAttribute="centerY" secondItem="YYM-ra-ksE" secondAttribute="centerY" id="UE4-jv-VaV"/>
+                                    <constraint firstAttribute="height" constant="50" id="bNx-mc-Dx3"/>
+                                    <constraint firstAttribute="bottom" secondItem="YYM-ra-ksE" secondAttribute="bottom" id="fc2-6I-yY1"/>
+                                    <constraint firstItem="3Ce-pj-Mcy" firstAttribute="centerY" secondItem="Mor-tM-I7n" secondAttribute="centerY" id="fhI-2F-ulb"/>
+                                    <constraint firstItem="YYM-ra-ksE" firstAttribute="top" secondItem="5Z7-AZ-EkO" secondAttribute="top" id="k0l-LM-Tug"/>
+                                    <constraint firstAttribute="trailing" secondItem="3Ce-pj-Mcy" secondAttribute="trailing" constant="8" id="wnE-vo-tE4"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username is already taken" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0w8-t4-wka">
+                                <rect key="frame" x="213" y="159" width="175" height="20"/>
+                                <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
+                                <color key="textColor" red="0.92029339075088501" green="0.0" blue="0.065614230930805206" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93299722671508789" green="0.94112014770507812" blue="0.94931834936141968" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="5Z7-AZ-EkO" firstAttribute="leading" secondItem="EBe-1w-rl6" secondAttribute="leadingMargin" id="3Xq-1v-8oH"/>
+                            <constraint firstItem="0w8-t4-wka" firstAttribute="top" secondItem="5Z7-AZ-EkO" secondAttribute="bottom" constant="8" id="PFk-Cn-BCp"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gUv-yp-E8l" secondAttribute="trailing" id="Srz-bz-9hZ"/>
+                            <constraint firstItem="gUv-yp-E8l" firstAttribute="leading" secondItem="EBe-1w-rl6" secondAttribute="leadingMargin" id="WCo-gN-lGf"/>
+                            <constraint firstItem="gUv-yp-E8l" firstAttribute="top" secondItem="KVx-og-MzV" secondAttribute="bottom" constant="20" id="ZMb-LM-XgN"/>
+                            <constraint firstItem="5Z7-AZ-EkO" firstAttribute="top" secondItem="gUv-yp-E8l" secondAttribute="bottom" constant="15" id="dDw-9M-6D8"/>
+                            <constraint firstItem="5Z7-AZ-EkO" firstAttribute="trailing" secondItem="EBe-1w-rl6" secondAttribute="trailingMargin" id="kRW-1v-ORS"/>
+                            <constraint firstItem="0w8-t4-wka" firstAttribute="centerX" secondItem="5Z7-AZ-EkO" secondAttribute="centerX" id="oW8-1y-Gqj"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Username" id="RgQ-9H-C4q">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="wMU-Xs-jK2">
+                            <connections>
+                                <action selector="didTapDone:" destination="EwH-br-Xzx" id="TNM-aE-Ilb"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="spinner" destination="Mor-tM-I7n" id="6eA-La-s6D"/>
+                        <outlet property="statusImageView" destination="3Ce-pj-Mcy" id="acD-uX-Dqf"/>
+                        <outlet property="statusLabel" destination="0w8-t4-wka" id="naE-Ds-7mk"/>
+                        <outlet property="usernameField" destination="YYM-ra-ksE" id="LHl-cc-VMw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="A3U-9v-K1p" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1986" y="620"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Logo" width="204" height="113"/>
         <image name="empty-profile-pic" width="100" height="100"/>
+        <image name="ic-checkmark" width="28" height="28"/>
         <image name="sample-cover-image" width="750" height="368"/>
     </resources>
 </document>
