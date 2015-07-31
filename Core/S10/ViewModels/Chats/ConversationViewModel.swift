@@ -70,6 +70,7 @@ public class ConversationViewModel {
     public let busy: PropertyOf<Bool>
     public let messages: PropertyOf<[MessageViewModel]>
     public let hideNewMessagesHint: PropertyOf<Bool>
+    public let showTutorial: Bool
     public let exitAtEnd: Bool
     
     public let currentMessage: MutableProperty<MessageViewModel?>
@@ -95,7 +96,8 @@ public class ConversationViewModel {
             case .Producer: return $2 ? .RecordCapturing : .RecordIdle
             }
         })
-
+        
+        showTutorial = true // TODO: Use userdefaults
         exitAtEnd = recipient == nil
         currentMessage = MutableProperty(nil)
         currentUser = currentMessage

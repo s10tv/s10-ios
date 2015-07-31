@@ -27,14 +27,16 @@ class ConversationViewController : BaseViewController {
     @IBOutlet weak var activityLabel: UILabel!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var swipeView: SwipeView!
+    @IBOutlet weak var playerEmptyView: UIView!
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var newMessagesHint: UIView!
     @IBOutlet var producerContainer: UIView!
     @IBOutlet var playerContainer: UIView!
-    @IBOutlet weak var tutorialContainer: UIView!
+    @IBOutlet var tutorialContainer: UIView!
     
     var player: PlayerViewController!
     var producer: ProducerViewController!
+    var tutorial: ConversationTutorialViewController!
     var vm: ConversationViewModel!
 
     override func viewDidLoad() {
@@ -72,8 +74,7 @@ class ConversationViewController : BaseViewController {
             $0.removeFromSuperview()
             $0.setTranslatesAutoresizingMaskIntoConstraints(true)
         }
-        tutorialContainer.removeFromSuperview()
-        
+    
         swipeView.vertical = true
         swipeView.bounces = false
         swipeView.currentItemIndex = 0//vm.page.value.rawValue
@@ -81,7 +82,12 @@ class ConversationViewController : BaseViewController {
         swipeView.delegate = self
         swipeView.layoutIfNeeded()
         
-        player.advance()
+        if !vm.showTutorial {
+            tutorialContainer.removeFromSuperview()
+            player.advance()
+        } else {
+            playerEmptyView.hidden = true
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -123,6 +129,9 @@ class ConversationViewController : BaseViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ProfileViewController {
             vc.vm = vm.profileVM()
+        }
+        if let vc = segue.destinationViewController as? ConversationTutorialViewController {
+            vc.delegate = self
         }
     }
     
@@ -173,6 +182,18 @@ class ConversationViewController : BaseViewController {
     }
 }
 
+// MARK: - Tutorial
+
+extension ConversationViewController : ConversationTutorialDelegate {
+    func tutorialDidFinish() {
+        playerEmptyView.hidden = false
+        tutorialContainer.removeFromSuperview()
+        if player.vm.nextVideo() != nil {
+            player.advance()
+        }
+    }
+}
+
 // MARK: - SwipeView Delegate & DataSource
 
 extension ConversationViewController : SwipeViewDataSource {
@@ -186,22 +207,6 @@ extension ConversationViewController : SwipeViewDataSource {
 }
 
 extension ConversationViewController : SwipeViewDelegate {
-    func swipeViewWillBeginDragging(swipeView: SwipeView!) {
-//        UIView.animate(0.25, options: nil, delay: 0.25) {
-//            [self.swipeUpHint, self.swipeDownHint].each {
-//                $0.alpha = 0
-//            }
-//        }
-    }
-    
-    func swipeViewDidEndDragging(swipeView: SwipeView!, willDecelerate decelerate: Bool) {
-//        UIView.animate(0.25, options: nil, delay: 0.25) {
-//            [self.swipeUpHint, self.swipeDownHint].each {
-//                $0.alpha = 1
-//            }
-//        }
-    }
-    
     func swipeViewCurrentItemIndexDidChange(swipeView: SwipeView!) {
         vm.page.value = ConversationViewModel.Page(rawValue: swipeView.currentItemIndex)!
     }
