@@ -20,6 +20,8 @@ class RecorderViewController : UIViewController {
     @IBOutlet weak var previewView: SCSwipeableFilterView!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var filterHint: UIView!
+    @IBOutlet weak var recordHint: UIView!
     
     let recorder = SCRecorder.sharedRecorder()
     weak var delegate: RecorderDelegate?
@@ -41,6 +43,7 @@ class RecorderViewController : UIViewController {
             self?.recorder.switchCaptureDevices()
             return
         }
+        previewView.delegate = self
         syncPreviewTransform()
         
         previewView.selectFilterScrollView.directionalLockEnabled = true
@@ -84,6 +87,11 @@ class RecorderViewController : UIViewController {
 }
 
 extension RecorderViewController : SCRecorderDelegate {
+    func recorder(recorder: SCRecorder, didBeginSegmentInSession session: SCRecordSession, error: NSError?) {
+        filterHint.hidden = true
+        recordHint.hidden = true
+    }
+    
     func recorder(recorder: SCRecorder, didReconfigureVideoInput videoInputError: NSError?) {
         syncPreviewTransform()
     }
@@ -98,5 +106,11 @@ extension RecorderViewController : SCRecorderDelegate {
     
     func recorder(recorder: SCRecorder, didCompleteSegment segment: SCRecordSessionSegment?, inSession session: SCRecordSession, error: NSError?) {
         delegate?.recorder(self, didRecordSession: session)
+    }
+}
+
+extension RecorderViewController : SCSwipeableFilterViewDelegate {
+    func swipeableFilterView(swipeableFilterView: SCSwipeableFilterView, didScrollToFilter filter: SCFilter?) {
+        filterHint.hidden = true
     }
 }
