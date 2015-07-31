@@ -11,7 +11,6 @@ target :Core do
     pod 'ReactiveCocoa', '3.0-RC.1'
     pod 'Bond', :git => 'https://github.com/tonyxiao/Bond.git', :branch => 'coredata'
     pod 'Async', :git => 'https://github.com/duemunk/Async.git'
-    pod 'SwiftTryCatch', '~> 0.0.1'
     pod 'NSLogger', '~> 1.5', :configuration => ['Debug']
 
     # Data
@@ -28,7 +27,6 @@ target :Core do
     # UI
     pod 'Cartography', '~> 0.5'
     pod 'EDColor', '~> 1.0'
-    pod 'JSBadgeView', '~> 1.4'
 
     # ViewModels
     pod 'DateTools', '~> 1.6'
@@ -52,26 +50,20 @@ target :Core do
         pod 'SDWebImage', '~> 3.7'
         pod 'PKHUD', :git => 'https://github.com/tonyxiao/PKHUD' # Fork is needed to work around xcasset compilation issue inside pod
         pod 'SCRecorder', '~> 2.5'
-
+        
+        pod 'JSBadgeView', '~> 1.4'
         pod 'JVFloatLabeledTextField', '~> 1.1'
         pod 'TPKeyboardAvoiding', '~> 1.2'
-        pod 'UICollectionViewLeftAlignedLayout', '~> 1.0'
         pod 'CHTCollectionViewWaterfallLayout', '~> 0.9'
-
-        #pod 'Spring', '~> 1.0'
-        #pod 'pop', '~> 1.0'
-        pod 'RBBAnimation', '~> 0.4.0'
 
         pod 'INTULocationManager', '~> 3.0'
 
         # 3rd Party Service SDKs
-        pod 'OAuthSwift', '~> 0.3' # TODO: Consider using server based oauth
         pod 'FBSDKLoginKit', '~> 4.3'
         pod 'AnalyticsSwift', '~> 0.1.0'
         pod 'Heap', '~> 2.1'
         pod 'Appsee', '~> 2.1'
         pod 'Ouralabs', '~> 2.3'
-        #pod 'BugfenderSDK', :git => 'https://github.com/bugfender/BugfenderSDK-iOS.git', :tag => '0.3.2'
 
         # Debug only
 

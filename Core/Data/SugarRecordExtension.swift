@@ -8,7 +8,6 @@
 
 import CoreData
 import SugarRecord
-import SwiftTryCatch
 import Bond
 
 extension SugarRecord {
@@ -60,12 +59,7 @@ extension NSFetchedResultsController {
     public func fetchObjects() -> [AnyObject] {
         if fetchedObjects == nil {
             var error: NSError?
-            var success : Bool = false
-            SwiftTryCatch.try({
-                success = self.performFetch(&error)
-            }, catch: { (exception) in
-                Log.error("Got exception when fetch frc \(self) exception \(exception)")
-            }, finally: { })
+            var success = self.performFetch(&error)
             if !success || error != nil {
                 Log.error("Failed when fetch frc \(self)", error)
             }
