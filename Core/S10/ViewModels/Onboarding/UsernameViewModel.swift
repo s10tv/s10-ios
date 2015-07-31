@@ -11,14 +11,17 @@ import ReactiveCocoa
 import Async
 
 public struct UsernameViewModel {
-    public enum Error : ErrorType {
-        case NoInternet
-        case NoUsernameSelected
-        case UsernameIsTaken
-        
-        public var alertTitle: String { return "" }
-        public var alertBody: String { return "" }
+    public class Error : ErrorType {
+
         public var nsError: NSError { return NSError() }
+
+        public let title: String
+        public let body: String
+
+        public init(title: String, body: String) {
+            self.title = title
+            self.body = body
+        }
     }
     
     public let usernamePlaceholder: String
@@ -58,6 +61,18 @@ public struct UsernameViewModel {
     
     public func saveUsername() -> Future<Void, Error> {
         let promise = Promise<(), Error>()
+        self.meteor.confirmRegistration(username.value).subscribeError({ error in
+            var errorReason : String
+            if let reason = error.localizedFailureReason {
+                errorReason = reason
+            } else {
+                errorReason = "Please try again later."
+            }
+            promise.failure(Error(title: "Problem with Registration", body: errorReason))
+        }, completed: {
+            promise.success()
+        })
+
         return promise.future
     }
 }

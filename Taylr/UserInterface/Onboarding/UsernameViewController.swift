@@ -50,6 +50,17 @@ class UsernameViewController : UIViewController {
     // MARK: -
     
     @IBAction func didTapDone(sender: AnyObject) {
-        
+        self.vm.saveUsername().onComplete { result in
+            result.analysis(ifSuccess: {
+                self.performSegueWithIdentifier("discover", sender: nil)
+            }, ifFailure: { error in
+                let alert = UIAlertController(
+                    title: error.title,
+                    message: error.body,
+                    preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
+                self.presentViewController(alert, animated: true)
+            })
+        }
     }
 }

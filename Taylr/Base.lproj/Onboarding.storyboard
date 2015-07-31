@@ -643,7 +643,7 @@
                     <navigationItem key="navigationItem" title="Username" id="RgQ-9H-C4q">
                         <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="5O0-ue-LrC">
                             <connections>
-                                <segue destination="4LR-tW-qvj" kind="custom" identifier="Main_RootTab" customClass="LinkedStoryboardPushSegue" id="fFO-hd-Zbi"/>
+                                <action selector="didTapDone:" destination="EwH-br-Xzx" id="Zlv-GK-YI6"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -667,7 +667,4 @@
         <image name="ic-right-arrow-white" width="12" height="21"/>
         <image name="sample-cover-image" width="750" height="368"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="fFO-hd-Zbi"/>
-    </inferredMetricsTieBreakers>
 </document>
