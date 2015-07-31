@@ -69,6 +69,7 @@ extension DiscoverViewController : CHTCollectionViewDelegateWaterfallLayout {
                 let rowWidth = collectionView.frame.width - layout.sectionInset.left - layout.sectionInset.right
                 let itemWidth = (rowWidth - (layout.columnCount.f - 1) * layout.minimumColumnSpacing) / layout.columnCount.f
                 let imageHeight = ((avatar.height ?? 100).f / (avatar.width ?? 100).f) * itemWidth
+                // TODO: take into account height of the tagline
                 // 79 is magic number for distance between bottom of avatar image view and bottom of cell
                 let itemHeight = imageHeight + 79
             return CGSize(width: itemWidth, height: itemHeight)

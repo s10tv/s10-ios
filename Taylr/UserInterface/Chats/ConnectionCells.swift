@@ -61,8 +61,7 @@ class NewConnectionCell : UITableViewCell, BindableCell {
     
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var taglineLabel: UILabel!
     @IBOutlet weak var timestampLabel: UILabel!
     @IBOutlet weak var playIcon: UIImageView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
@@ -72,15 +71,14 @@ class NewConnectionCell : UITableViewCell, BindableCell {
         vm.avatar ->> avatarView.imageBond
         vm.displayName ->> nameLabel
         vm.displayTime ->> timestampLabel
-        vm.jobTitle ->> titleLabel
-        vm.employer ->> subtitleLabel
+        vm.tagline ->> taglineLabel
         vm.hidePlayIcon ->> playIcon.dynHidden
         vm.profileIcons.map(profileIconsView.factory(ProfileIconCell)) ->> profileIconsView
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        [nameLabel, timestampLabel, titleLabel, subtitleLabel].each {
+        [nameLabel, timestampLabel, taglineLabel].each {
             $0.designatedBond.unbindAll()
         }
         avatarView.imageBond.unbindAll()

@@ -11,13 +11,11 @@ import Bond
 import Core
 
 class TaylrProfileInfoCell : UITableViewCell, BindableCell {
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var subtitleLabel: UILabel!
+    @IBOutlet weak var taglineLabel: UILabel!
     @IBOutlet weak var aboutLabel: UILabel!
     
     func bind(vm: TaylrProfileInfoViewModel) {
-        vm.jobTitle ->> titleLabel
-        vm.employer ->> subtitleLabel
+        vm.tagline ->> taglineLabel
         vm.about ->> aboutLabel
     }
     

@@ -17,15 +17,13 @@ class CandidateCell : UICollectionViewCell, BindableCell {
     
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var jobTitleLabel: UILabel!
-    @IBOutlet weak var employerLabel: UILabel!
+    @IBOutlet weak var taglineLabel: UILabel!
     @IBOutlet weak var serviceIconsView: UICollectionView!
     
     func bind(vm: CandidateViewModel) {
         avatarView.sd_setImageWithURL(vm.avatar?.url)
         nameLabel.text = vm.displayName
-        jobTitleLabel.text = vm.jobTitle
-        employerLabel.text = vm.employer
+        taglineLabel.text = vm.tagline
         
         vm.profileIcons.map(serviceIconsView.factory(ProfileIconCell)) ->> serviceIconsView
     }
@@ -35,8 +33,7 @@ class CandidateCell : UICollectionViewCell, BindableCell {
         avatarView.image = nil
         avatarView.unbindDynImageURL()
         nameLabel.designatedBond.unbindAll()
-        jobTitleLabel.designatedBond.unbindAll()
-        employerLabel.designatedBond.unbindAll()
+        taglineLabel.designatedBond.unbindAll()
         serviceIconsView.designatedBond.unbindAll()
     }
     
