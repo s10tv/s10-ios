@@ -34,9 +34,8 @@ class PlayerViewController : UIViewController {
             // the temp variable video is needed to avoid compiler crash
             let videoURL = $0
             Async.main { [weak self] in
-                Log.info("Playing video at url \(videoURL)")
                 self?.player.setItemByUrl(videoURL)
-                self?.player.play()
+                Log.debug("set videoURL to \(videoURL)")
             }
         }
     }()
@@ -80,7 +79,7 @@ class PlayerViewController : UIViewController {
     @IBAction func rewind() {
         if (player.currentTime().seconds < 2 || player.itemDuration.seconds < 2)
             && vm.prevVideo() != nil {
-            vm.playPrevVideo()
+            vm.seekPrevVideo()
         } else {
             player.seekToTime(CMTimeMakeWithSeconds(0, 1))
             player.play()
@@ -93,7 +92,8 @@ class PlayerViewController : UIViewController {
     }
     
     @IBAction func advance() {
-        vm.playNextVideo()
+        vm.seekNextVideo()
+        Async.main { self.player.play() }
     }
 }
 
@@ -106,7 +106,7 @@ extension PlayerViewController : SCPlayerDelegate {
     }
     
     func player(player: SCPlayer, didReachEndForItem item: AVPlayerItem) {
-        vm.playNextVideo()
+        advance()
     }
 }
 

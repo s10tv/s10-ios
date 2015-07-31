@@ -81,7 +81,7 @@ class ConversationViewController : BaseViewController {
         swipeView.delegate = self
         swipeView.layoutIfNeeded()
         
-        player.vm.playNextVideo()
+        player.advance()
     }
     
     override func viewDidLayoutSubviews() {

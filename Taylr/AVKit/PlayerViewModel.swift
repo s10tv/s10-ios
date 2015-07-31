@@ -93,12 +93,12 @@ class PlayerViewModel {
         }.map { playlist.value[$0] }
     }
     
-    func playPrevVideo() -> Bool {
-        return playVideo(prevVideo())
+    func seekPrevVideo() -> Bool {
+        return seekVideo(prevVideo())
     }
     
-    func playNextVideo() -> Bool {
-        let played = playVideo(nextVideo())
+    func seekNextVideo() -> Bool {
+        let played = seekVideo(nextVideo())
         if !played { delegate?.playerDidFinishPlaylist(self) }
         return played
     }
@@ -115,8 +115,8 @@ class PlayerViewModel {
     
     // MARK: - 
     
-    private func playVideo(video: PlayableVideo?) -> Bool {
-        Log.debug("Will play video with id \(video?.uniqueId) url: \(video?.url)")
+    private func seekVideo(video: PlayableVideo?) -> Bool {
+        Log.debug("Will seek video with id \(video?.uniqueId) url: \(video?.url)")
         currentVideo.value.map { delegate?.player(self, didPlayVideo: $0) }
         currentTime.value = 0
         currentVideo.value = video
