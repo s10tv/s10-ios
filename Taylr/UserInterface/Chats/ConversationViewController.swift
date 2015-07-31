@@ -27,8 +27,10 @@ class ConversationViewController : BaseViewController {
     @IBOutlet weak var activityLabel: UILabel!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var swipeView: SwipeView!
-    @IBOutlet weak var swipeDownHint: UIView!
-    @IBOutlet weak var swipeUpHint: UIView!
+    @IBOutlet weak var newMessagesHint: UIView!
+    @IBOutlet var producerContainer: UIView!
+    @IBOutlet var playerContainer: UIView!
+    @IBOutlet weak var tutorialContainer: UIView!
     
     var player: PlayerViewController!
     var producer: ProducerViewController!
@@ -41,8 +43,8 @@ class ConversationViewController : BaseViewController {
         vm.displayName ->> nameLabel
         vm.busy ->> spinner
         vm.displayStatus ->> activityLabel
-        vm.hideSwipeUpHint ->> swipeUpHint.dynHidden
-        vm.hideSwipeDownHint ->> swipeDownHint.dynHidden
+//        vm.hideSwipeUpHint ->> swipeUpHint.dynHidden
+        vm.hideSwipeDownHint ->> newMessagesHint.dynHidden
         
         let avkit = UIStoryboard(name: "AVKit", bundle: nil)
         producer = avkit.instantiateViewControllerWithIdentifier("Producer") as! ProducerViewController
@@ -55,15 +57,28 @@ class ConversationViewController : BaseViewController {
         vm.playing <~ player.vm.isPlaying
         
         addChildViewController(player)
+        playerContainer.addSubview(player.view)
+        player.view.makeEdgesEqualTo(playerContainer)
+        player.didMoveToParentViewController(self)
+        
         addChildViewController(producer)
+        producerContainer.insertSubview(producer.view, atIndex: 0)
+        producer.view.makeEdgesEqualTo(producerContainer)
+        producer.didMoveToParentViewController(self)
+        
+        [playerContainer, producerContainer].each {
+            $0.bounds = view.bounds
+            $0.removeFromSuperview()
+            $0.setTranslatesAutoresizingMaskIntoConstraints(true)
+        }
+        tutorialContainer.removeFromSuperview()
+        
         swipeView.vertical = true
         swipeView.bounces = false
-        swipeView.currentItemIndex = vm.page.value.rawValue
+        swipeView.currentItemIndex = 0//vm.page.value.rawValue
         swipeView.dataSource = self
         swipeView.delegate = self
         swipeView.layoutIfNeeded()
-        player.didMoveToParentViewController(self)
-        producer.didMoveToParentViewController(self)
         
         player.vm.playNextVideo()
     }
@@ -159,25 +174,25 @@ extension ConversationViewController : SwipeViewDataSource {
     }
     
     func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, reusingView view: UIView!) -> UIView! {
-        return index == ConversationViewModel.Page.Player.rawValue ? player.view : producer.view
+        return index == ConversationViewModel.Page.Player.rawValue ? playerContainer : producerContainer
     }
 }
 
 extension ConversationViewController : SwipeViewDelegate {
     func swipeViewWillBeginDragging(swipeView: SwipeView!) {
-        UIView.animate(0.25, options: nil, delay: 0.25) {
-            [self.swipeUpHint, self.swipeDownHint].each {
-                $0.alpha = 0
-            }
-        }
+//        UIView.animate(0.25, options: nil, delay: 0.25) {
+//            [self.swipeUpHint, self.swipeDownHint].each {
+//                $0.alpha = 0
+//            }
+//        }
     }
     
     func swipeViewDidEndDragging(swipeView: SwipeView!, willDecelerate decelerate: Bool) {
-        UIView.animate(0.25, options: nil, delay: 0.25) {
-            [self.swipeUpHint, self.swipeDownHint].each {
-                $0.alpha = 1
-            }
-        }
+//        UIView.animate(0.25, options: nil, delay: 0.25) {
+//            [self.swipeUpHint, self.swipeDownHint].each {
+//                $0.alpha = 1
+//            }
+//        }
     }
     
     func swipeViewCurrentItemIndexDidChange(swipeView: SwipeView!) {

@@ -48,12 +48,11 @@ class PlayerViewController : UIViewController {
         player.dyn("rate").producer.start(next: { [weak self] _ in
             self?.vm.updateIsPlaying(self?.player.isPlaying ?? false)
         })
-        
+
+        vm.hideView ->> view.dynHidden
         vm.videoURL ->> videoURLBond
         vm.totalDurationLeft ->> durationLabel
         vm.currentVideoProgress ->> progressView
-        vm.hideProgress ->> durationLabel.dynHidden
-        vm.hideProgress ->> progressView.dynHidden
         vm.isPlaying ->> overlay.dynHidden
         // Slight hack to get around the issue that playback momentarily stops when switching video
         vm.isPlaying.producer.start(next: { [weak self] in

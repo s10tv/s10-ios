@@ -48,7 +48,7 @@ class PlayerViewModel {
     let isPlaying: PropertyOf<Bool>
     let currentVideoProgress: PropertyOf<Float>
     let totalDurationLeft: PropertyOf<String>
-    let hideProgress: PropertyOf<Bool>
+    let hideView: PropertyOf<Bool>
     
     init() {
         videoURL = currentVideo |> map { $0?.url }
@@ -75,7 +75,7 @@ class PlayerViewModel {
             let secondsLeft = Int(ceil(max(unfinishedVideoDuration - currentTime, 0)))
             return "\(secondsLeft)"
         })
-        hideProgress = currentVideo |> map { $0 == nil }
+        hideView = currentVideo |> map { $0 == nil }
     }
     
     func prevVideo() -> PlayableVideo? {

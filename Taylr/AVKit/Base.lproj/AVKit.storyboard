@@ -4,12 +4,6 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
-    <customFonts key="customFonts">
-        <mutableArray key="Cabin-Regular.ttf">
-            <string>Cabin-Regular</string>
-            <string>Cabin-Regular</string>
-        </mutableArray>
-    </customFonts>
     <scenes>
         <!--Editor View Controller-->
         <scene sceneID="6PV-4o-iXN">
@@ -120,54 +114,22 @@
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2jn-jg-8ht" userLabel="Paused Overlay">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gaZ-5C-h6l" userLabel="Rewind">
-                                        <rect key="frame" x="16" y="289" width="24" height="22"/>
-                                        <state key="normal" image="ic-right-chevron">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wEk-rz-lGs" userLabel="Play">
                                         <rect key="frame" x="280" y="280" width="40" height="40"/>
                                         <state key="normal" image="ic-play-medium">
                                             <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="haJ-Sa-zem" userLabel="Skip">
-                                        <rect key="frame" x="560" y="289" width="24" height="22"/>
-                                        <state key="normal" image="ic-left-chevron">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="swipe to skip to prev msg" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="80" translatesAutoresizingMaskIntoConstraints="NO" id="geD-5e-XtS">
-                                        <rect key="frame" x="16" y="319" width="79" height="34.5"/>
-                                        <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="swipe to skip to next msg" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="80" translatesAutoresizingMaskIntoConstraints="NO" id="OeW-3s-4te">
-                                        <rect key="frame" x="505" y="319" width="79" height="34.5"/>
-                                        <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                                 <constraints>
-                                    <constraint firstAttribute="centerY" secondItem="haJ-Sa-zem" secondAttribute="centerY" id="2VF-ub-iv8"/>
                                     <constraint firstAttribute="centerX" secondItem="wEk-rz-lGs" secondAttribute="centerX" id="3gb-uO-CaU"/>
-                                    <constraint firstItem="geD-5e-XtS" firstAttribute="top" secondItem="gaZ-5C-h6l" secondAttribute="bottom" constant="8" id="6XQ-z7-yvo"/>
-                                    <constraint firstAttribute="centerY" secondItem="gaZ-5C-h6l" secondAttribute="centerY" id="TQe-QL-cPI"/>
-                                    <constraint firstItem="OeW-3s-4te" firstAttribute="trailing" secondItem="haJ-Sa-zem" secondAttribute="trailing" id="bon-ow-h4h"/>
-                                    <constraint firstItem="gaZ-5C-h6l" firstAttribute="leading" secondItem="2jn-jg-8ht" secondAttribute="leading" constant="16" id="c9U-DZ-IjE"/>
-                                    <constraint firstItem="OeW-3s-4te" firstAttribute="top" secondItem="haJ-Sa-zem" secondAttribute="bottom" constant="8" id="hWg-6x-FrW"/>
-                                    <constraint firstAttribute="trailing" secondItem="haJ-Sa-zem" secondAttribute="trailing" constant="16" id="jxS-qx-VDb"/>
-                                    <constraint firstItem="geD-5e-XtS" firstAttribute="leading" secondItem="gaZ-5C-h6l" secondAttribute="leading" id="lq8-DQ-Tdl"/>
                                     <constraint firstAttribute="centerY" secondItem="wEk-rz-lGs" secondAttribute="centerY" id="o5Z-Z0-qbf"/>
                                 </constraints>
                             </view>
                             <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="DQV-th-jma">
-                                <rect key="frame" x="559" y="105.5" width="30" height="2"/>
+                                <rect key="frame" x="559" y="106" width="30" height="2"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="30" id="FXf-WC-DLD"/>
                                 </constraints>
@@ -175,7 +137,7 @@
                                 <color key="trackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </progressView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AmD-xc-WPD" userLabel="Duration">
-                                <rect key="frame" x="564" y="80" width="20" height="21.5"/>
+                                <rect key="frame" x="564" y="80" width="20" height="22"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -336,10 +298,8 @@
         <image name="ic-camera-switch" width="30" height="23"/>
         <image name="ic-cancel-round" width="50" height="50"/>
         <image name="ic-flash" width="19" height="25"/>
-        <image name="ic-left-chevron" width="24" height="21"/>
         <image name="ic-play-medium" width="40" height="40"/>
         <image name="ic-record" width="80" height="81"/>
-        <image name="ic-right-chevron" width="24" height="21"/>
         <image name="ic-save-round" width="40" height="40"/>
         <image name="ic-send-round" width="50" height="50"/>
     </resources>

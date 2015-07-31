@@ -15,7 +15,7 @@ import Foundation
 
 extension Array {
     
-    func each(block: T -> ()) {
+    func each(@noescape block: T -> ()) {
         for element in self {
             block(element)
         }
