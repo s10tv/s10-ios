@@ -26,7 +26,8 @@ dependencies:
     - "Pods"
 
 test:
-  post:
+  # TODO: Add testing back to circle as soon as we can (Swift 2 / Xcode 7)?
+  override:
     # First build the core dependency so that later building of main target can be super fast
     - |
       xcodebuild -sdk iphoneos -workspace $XCODE_WORKSPACE -scheme "Core" \
