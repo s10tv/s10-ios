@@ -136,13 +136,19 @@ class ConversationViewController : BaseViewController {
     }
     
     // MARK: Actions
+    
     func showPage(page: ConversationViewModel.Page, animated: Bool = false) {
         swipeView.scrollToItemAtIndex(page.rawValue, duration: animated ? 0.25 : 0)
     }
+    
 
     @IBAction func didTapLeave(sender: AnyObject) {
         vm.expireOpenedMessages()
         navigationController?.popViewControllerAnimated(true)
+    }
+    
+    @IBAction func didTapNewMessagesHint(sender: AnyObject) {
+        showPage(.Player, animated: true)
     }
     
     @IBAction func showMoreOptions(sender: AnyObject) {
