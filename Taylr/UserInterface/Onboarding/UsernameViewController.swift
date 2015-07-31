@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Bond
 import Core
 
 class UsernameViewController : UIViewController {
@@ -15,6 +16,19 @@ class UsernameViewController : UIViewController {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var statusImageView: UIImageView!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
+    let vm = UsernameViewModel(meteor: Meteor)
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        usernameField.placeholder = vm.usernamePlaceholder
+        vm.username <->> usernameField
+        vm.statusImage ->> statusImageView.imageBond
+        vm.hideSpinner ->> spinner.dynHidden
+        vm.statusMessage ->> statusLabel
+        vm.statusColor ->> statusLabel.dynTextColor
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
