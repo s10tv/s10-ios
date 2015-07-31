@@ -1839,14 +1839,15 @@
                                         </view>
                                         <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Integration Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XcD-Gl-qea" customClass="JVFloatLabeledTextField">
                                             <rect key="frame" x="50" y="8" width="130" height="44"/>
-                                            <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="18"/>
+                                            <nil key="textColor"/>
+                                            <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                             <textInputTraits key="textInputTraits"/>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
                                                     <color key="value" red="0.46897470951080322" green="0.27513545751571655" blue="0.68778532743453979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </userDefinedRuntimeAttribute>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="floatingLabelYPadding">
-                                                    <real key="value" value="3"/>
+                                                    <real key="value" value="4"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
                                         </textField>
