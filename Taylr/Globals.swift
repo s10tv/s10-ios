@@ -20,6 +20,3 @@ struct GlobalsContainer {
     let settings: Settings
 }
 
-// Frequently used shorthands
-let NC = NSNotificationCenter.defaultCenter()
-let UD = NSUserDefaults.standardUserDefaults()

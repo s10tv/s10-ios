@@ -28,7 +28,7 @@ class AnalyticsService {
 //        }
         
         // Set initial userId
-        if let meteorUserId = UD[.sMeteorUserId].string {
+        if let meteorUserId = UD.meteorUserId.value {
             identifyUser(meteorUserId)
         } else {
             identifyUser(env.deviceId)

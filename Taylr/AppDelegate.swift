@@ -49,9 +49,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         
         // Start crash reporting and logging as soon as we can
 //        Bugfender.activateLogger(env.bugfenderAppToken)
-        Log.setUserId(UD[.sMeteorUserId].string)
-        Log.setUserName(UD[.sUserDisplayName].string)
-        Log.setUserEmail(UD[.sUserEmail].string)
+        Log.setUserId(UD.meteorUserId.value)
+        Log.setUserName(UD.userDisplayName.value)
+        Log.setUserEmail(UD.userEmail.value)
+        
 //        Crashlytics.sharedInstance().setObjectValue(env.deviceId, forKey: "DeviceId")
         
         // Migrate db if needed
@@ -145,7 +146,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
     
     // MARK: - Push Handling
     func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
-        NC.postNotificationName(AppDidRegisterUserNotificationSettings, object: notificationSettings)
+        let nc = NSNotificationCenter.defaultCenter()
+        nc.postNotificationName(AppDidRegisterUserNotificationSettings, object: notificationSettings)
     }
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
