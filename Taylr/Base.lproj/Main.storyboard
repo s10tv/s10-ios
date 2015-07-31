@@ -111,7 +111,9 @@
                             <constraint firstAttribute="centerY" secondItem="aFy-Jv-pbN" secondAttribute="centerY" id="Ze3-ZG-2Aa"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="3GV-dD-ZKw"/>
+                    <navigationItem key="navigationItem" id="3GV-dD-ZKw">
+                        <barButtonItem key="backBarButtonItem" title=" " id="vNJ-S5-H0p"/>
+                    </navigationItem>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <segue destination="VVH-o2-j4o" kind="custom" identifier="Onboarding_Login" customClass="LinkedStoryboardPushSegue" id="kNN-lk-QB3"/>
@@ -126,7 +128,7 @@
         <!--Root Tab Controller-->
         <scene sceneID="h2A-x6-m7w">
             <objects>
-                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="02w-g0-91K" customClass="RootTabController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                <tabBarController storyboardIdentifier="RootTab" automaticallyAdjustsScrollViewInsets="NO" id="02w-g0-91K" customClass="RootTabController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" itemPositioning="centered" id="uQQ-os-LlG">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="49"/>
@@ -1817,7 +1819,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-twitter-color" translatesAutoresizingMaskIntoConstraints="NO" id="D8v-Aq-FJD">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic-twitter-color" translatesAutoresizingMaskIntoConstraints="NO" id="D8v-Aq-FJD">
                                             <rect key="frame" x="12" y="17" width="28" height="28"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="28" id="CTz-QM-uhn"/>
@@ -1837,7 +1839,7 @@
                                                 <constraint firstAttribute="height" constant="1" id="Elx-nD-V26"/>
                                             </constraints>
                                         </view>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Integration Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XcD-Gl-qea" customClass="JVFloatLabeledTextField">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Integration Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XcD-Gl-qea" customClass="JVFloatLabeledTextField">
                                             <rect key="frame" x="50" y="8" width="130" height="44"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>

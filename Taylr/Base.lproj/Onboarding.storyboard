@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="4FY-Nx-fFw">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dFw-q9-bre">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -9,6 +9,8 @@
             <string>Cabin-Medium</string>
         </mutableArray>
         <mutableArray key="Cabin-Regular.ttf">
+            <string>Cabin-Regular</string>
+            <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
@@ -74,8 +76,8 @@
                                     <action selector="startLogin:" destination="dFw-q9-bre" eventType="touchUpInside" id="LLF-Ml-IV2"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c0f-ne-erJ" userLabel="Terms &amp; Privacy">
-                                <rect key="frame" x="130" y="563" width="117" height="29"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0f-ne-erJ" userLabel="Terms &amp; Privacy">
+                                <rect key="frame" x="245" y="563" width="110" height="29"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Pp-CT-PMh" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="37" height="29"/>
@@ -155,7 +157,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="loginButton" destination="isY-Ks-GfE" id="zst-37-Oho"/>
-                        <segue destination="4LR-tW-qvj" kind="custom" identifier="Main_Discover" customClass="LinkedStoryboardPushSegue" id="ztg-XZ-LWS"/>
+                        <segue destination="4LR-tW-qvj" kind="custom" identifier="Main_RootTab" customClass="LinkedStoryboardPushSegue" id="ztg-XZ-LWS"/>
                         <segue destination="4FY-Nx-fFw" kind="custom" identifier="LoginToCreateProfile" id="3Zq-0p-8Rx"/>
                     </connections>
                 </viewController>
@@ -415,13 +417,24 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Create Profile" id="R0Q-H7-z7a">
                         <barButtonItem key="backBarButtonItem" title="Profile" id="Qw2-9M-xZV"/>
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="AkV-BS-mDu">
-                            <connections>
-                                <segue destination="UL1-t5-ar3" kind="show" identifier="CreateProfileToConnectServices" id="4OI-WI-miT"/>
-                            </connections>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="yAs-54-x8C">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sBo-Sy-9fs">
+                                <rect key="frame" x="451" y="7" width="50" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
+                                <inset key="titleEdgeInsets" minX="-25" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Next" image="ic-right-arrow-white">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="UL1-t5-ar3" kind="show" id="XlJ-Gy-iwV"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <connections>
                         <outlet property="aboutView" destination="gNz-Zb-kjq" id="hjQ-x8-8Ge"/>
                         <outlet property="avatarView" destination="kbC-db-s5W" id="JLw-M4-0bM"/>
@@ -434,13 +447,13 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v97-2k-B6C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="372.5" y="620.5"/>
+            <point key="canvasLocation" x="199" y="274"/>
         </scene>
         <!--Main - Discover-->
         <scene sceneID="ucd-nb-Qyk">
             <objects>
                 <viewController id="4LR-tW-qvj" userLabel="Main - Discover" sceneMemberID="viewController">
-                    <label key="view" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Main - Discover" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tEe-SV-0hk">
+                    <label key="view" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Main - RootTab" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tEe-SV-0hk">
                         <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -452,7 +465,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dOh-La-D4o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="767" y="40"/>
+            <point key="canvasLocation" x="13" y="-288"/>
         </scene>
         <!--Connect Services-->
         <scene sceneID="VBO-uB-dxI">
@@ -527,12 +540,24 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Connect Services" id="Lfe-Mw-brm">
-                        <barButtonItem key="rightBarButtonItem" title="Next" id="pJg-hS-40K">
-                            <connections>
-                                <segue destination="EwH-br-Xzx" kind="show" id="mnc-wY-9eZ"/>
-                            </connections>
+                        <barButtonItem key="backBarButtonItem" title="Services" id="3gU-59-HU4"/>
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="lab-8i-ax4">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AkU-Wx-NWg">
+                                <rect key="frame" x="451" y="7" width="50" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
+                                <inset key="titleEdgeInsets" minX="-25" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Next" image="ic-right-arrow-white">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="EwH-br-Xzx" kind="show" id="3KS-zy-Yjq"/>
+                                </connections>
+                            </button>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <connections>
                         <outlet property="descriptionCell" destination="hSm-O9-Jix" id="f62-Qq-e3r"/>
                         <outlet property="integrationsCell" destination="b2w-R9-bGF" id="ISh-sq-Wgs"/>
@@ -542,7 +567,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KZS-aq-ICv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1236" y="620"/>
+            <point key="canvasLocation" x="878" y="274"/>
         </scene>
         <!--Username-->
         <scene sceneID="9K3-TS-HJy">
@@ -556,13 +581,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="The username you select will be permanent." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUv-yp-E8l">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="The username you select will be permanent." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUv-yp-E8l">
                                 <rect key="frame" x="16" y="64" width="568" height="22"/>
                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="18"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5Z7-AZ-EkO">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Z7-AZ-EkO">
                                 <rect key="frame" x="16" y="101" width="568" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="cduncan" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YYM-ra-ksE">
@@ -596,7 +621,7 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="username is already taken" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0w8-t4-wka">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="username is already taken" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0w8-t4-wka">
                                 <rect key="frame" x="213" y="159" width="175" height="20"/>
                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                 <color key="textColor" red="0.92029339075088501" green="0.0" blue="0.065614230930805206" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -616,12 +641,13 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Username" id="RgQ-9H-C4q">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="wMU-Xs-jK2">
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="5O0-ue-LrC">
                             <connections>
-                                <action selector="didTapDone:" destination="EwH-br-Xzx" id="TNM-aE-Ilb"/>
+                                <segue destination="4LR-tW-qvj" kind="custom" identifier="Main_RootTab" customClass="LinkedStoryboardPushSegue" id="fFO-hd-Zbi"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <connections>
                         <outlet property="spinner" destination="Mor-tM-I7n" id="6eA-La-s6D"/>
                         <outlet property="statusImageView" destination="3Ce-pj-Mcy" id="acD-uX-Dqf"/>
@@ -631,13 +657,17 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A3U-9v-K1p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1986" y="620"/>
+            <point key="canvasLocation" x="1546" y="274"/>
         </scene>
     </scenes>
     <resources>
         <image name="Logo" width="204" height="113"/>
         <image name="empty-profile-pic" width="100" height="100"/>
         <image name="ic-checkmark" width="28" height="28"/>
+        <image name="ic-right-arrow-white" width="12" height="21"/>
         <image name="sample-cover-image" width="750" height="368"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="fFO-hd-Zbi"/>
+    </inferredMetricsTieBreakers>
 </document>

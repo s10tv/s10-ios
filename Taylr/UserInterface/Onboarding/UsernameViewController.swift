@@ -40,6 +40,15 @@ class UsernameViewController : UIViewController {
         usernameField.becomeFirstResponder()
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let segue = segue as? AdvancedPushSegue {
+            segue.animated = true
+            segue.replaceStrategy = .Stack
+        }
+    }
+    
+    // MARK: -
+    
     @IBAction func didTapDone(sender: AnyObject) {
         
     }
