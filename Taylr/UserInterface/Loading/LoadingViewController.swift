@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 S10. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import ReactiveCocoa
 import Core
 
@@ -45,13 +45,6 @@ class LoadingViewController : UIViewController {
         if let segue = segue as? AdvancedPushSegue {
             segue.animated = false
             segue.replaceStrategy = .Stack
-            if let vc = segue.destinationViewController as? SignupViewController {
-//                vc.vm = SignupViewModel(meteor: Meteor, user: Meteor.user.value!)
-                // TODO: Move this type of stuff into the router
-                let onboarding = UIStoryboard(name: "Onboarding", bundle: nil)
-                let login = onboarding.instantiateInitialViewController() as! UIViewController
-                segue.replaceStrategy = .BackStack([login])
-            }
         }
     }
     

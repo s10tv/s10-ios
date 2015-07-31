@@ -51,7 +51,6 @@ target :Core do
         pod 'SwipeView', '~> 1.3'
         pod 'SDWebImage', '~> 3.7'
         pod 'PKHUD', :git => 'https://github.com/tonyxiao/PKHUD' # Fork is needed to work around xcasset compilation issue inside pod
-        pod 'XLForm', '~> 3.0'
         pod 'SCRecorder', '~> 2.5'
 
         pod 'JVFloatLabeledTextField', '~> 1.1'

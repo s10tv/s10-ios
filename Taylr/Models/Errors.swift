@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 S10 Inc. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 enum ErrorCode : Int {
     case NetworkUnreachable = -1

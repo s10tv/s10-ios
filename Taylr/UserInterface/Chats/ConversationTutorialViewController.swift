@@ -6,7 +6,7 @@
 //  Copyright (c) 2015 S10. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol ConversationTutorialDelegate : class {
     func tutorialDidFinish()

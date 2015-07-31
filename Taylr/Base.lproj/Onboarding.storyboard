@@ -158,7 +158,7 @@
                     <connections>
                         <outlet property="loginButton" destination="isY-Ks-GfE" id="zst-37-Oho"/>
                         <segue destination="4LR-tW-qvj" kind="custom" identifier="Main_RootTab" customClass="LinkedStoryboardPushSegue" id="ztg-XZ-LWS"/>
-                        <segue destination="4FY-Nx-fFw" kind="custom" identifier="LoginToCreateProfile" id="3Zq-0p-8Rx"/>
+                        <segue destination="4FY-Nx-fFw" kind="show" identifier="LoginToCreateProfile" id="3Zq-0p-8Rx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lbl-0u-moe" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -417,7 +417,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Create Profile" id="R0Q-H7-z7a">
                         <barButtonItem key="backBarButtonItem" title="Profile" id="Qw2-9M-xZV"/>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="yAs-54-x8C">
+                        <barButtonItem key="rightBarButtonItem" id="yAs-54-x8C">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="sBo-Sy-9fs">
                                 <rect key="frame" x="451" y="7" width="50" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -541,7 +541,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Connect Services" id="Lfe-Mw-brm">
                         <barButtonItem key="backBarButtonItem" title="Services" id="3gU-59-HU4"/>
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="lab-8i-ax4">
+                        <barButtonItem key="rightBarButtonItem" id="lab-8i-ax4">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AkU-Wx-NWg">
                                 <rect key="frame" x="451" y="7" width="50" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -641,7 +641,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Username" id="RgQ-9H-C4q">
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="5O0-ue-LrC">
+                        <barButtonItem key="rightBarButtonItem" title="Done" style="done" id="5O0-ue-LrC">
                             <connections>
                                 <segue destination="4LR-tW-qvj" kind="custom" identifier="Main_RootTab" customClass="LinkedStoryboardPushSegue" id="fFO-hd-Zbi"/>
                             </connections>
