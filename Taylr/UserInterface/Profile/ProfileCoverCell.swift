@@ -11,6 +11,20 @@ import ReactiveCocoa
 import Core
 import Bond
 
+class ProfileSelectorCell : UICollectionViewCell, BindableCell {
+    typealias ViewModel = Image
+    
+    @IBOutlet weak var iconView: UIImageView!
+    
+    func bind(vm: ViewModel) {
+        iconView.bindImage(vm)
+    }
+    
+    static func reuseId() -> String {
+        return reuseId(.ProfileSelectorCell)
+    }
+}
+
 class ProfileCoverCell : UITableViewCell, BindableCell {
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var coverOverlay: UIView!
@@ -40,6 +54,7 @@ class ProfileCoverCell : UITableViewCell, BindableCell {
         coverImageView.clipsToBounds = true
 //        avatarView.dynPlaceholderImage = avatarView.image // TODO: Use a better avatar placeholder
         coverImageView.dynPlaceholderImage = coverImageView.image
+        collectionView.delegate = self
     }
     
     static func reuseId() -> String {
@@ -47,16 +62,15 @@ class ProfileCoverCell : UITableViewCell, BindableCell {
     }
 }
 
-class ProfileSelectorCell : UICollectionViewCell, BindableCell {
-    typealias ViewModel = Image
-    
-    @IBOutlet weak var iconView: UIImageView!
-    
-    func bind(vm: ViewModel) {
-        iconView.bindImage(vm)
-    }
-    
-    static func reuseId() -> String {
-        return reuseId(.ProfileSelectorCell)
+// MARK: Center align profile selector icon cells
+
+extension ProfileCoverCell : UICollectionViewDelegateFlowLayout {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        let layout = collectionViewLayout as! UICollectionViewFlowLayout
+        let cellSpacing = layout.minimumInteritemSpacing
+        let cellWidth = layout.itemSize.width
+        let cellCount = CGFloat(collectionView.numberOfItemsInSection(section))
+        let inset = (collectionView.bounds.width - cellCount * (cellWidth + cellSpacing)) * 0.5
+        return UIEdgeInsets(top: 0, left: max(inset, 0), bottom: 0, right: 0)
     }
 }
