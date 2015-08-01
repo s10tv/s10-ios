@@ -23,8 +23,8 @@ public struct ProfileViewModel {
     let taskService: TaskService
     let user: User
     let subscription: MeteorSubscription
-    let currentFilter: MutableProperty<User.ConnectedProfile?>
-    let frc: NSFetchedResultsController
+    let results: FetchedResultsArray<Activity>
+    let predicate: PropertyOf<NSPredicate>
     
     public let coverVM: DynamicArray<ProfileCoverViewModel>
     public let infoVM: DynamicArray<ProfileInfoViewModel>
@@ -34,23 +34,26 @@ public struct ProfileViewModel {
         self.meteor = meteor
         self.taskService = taskService
         self.user = user
+        let cvm = ProfileCoverViewModel(user: user)
         subscription = meteor.subscribe("activities", user)
-        currentFilter = MutableProperty(nil)
-        coverVM = DynamicArray([ProfileCoverViewModel(user: user)])
-        infoVM = toBondDynamicArray(currentFilter |> map {
-            $0.map { [ConnectedProfileInfoViewModel(profile: $0)] }
-                ?? [TaylrProfileInfoViewModel(user: user)]
+        coverVM = DynamicArray([cvm])
+        infoVM = toBondDynamicArray(cvm.selectedProfile |> map { _ in
+return [TaylrProfileInfoViewModel(user: user)]
+//            $0.profile.map { [ConnectedProfileInfoViewModel(profile: $0)] }
+//                ?? [TaylrProfileInfoViewModel(user: user)]
         })
-        frc = Activity
+        results = Activity
             .by(supportedActivitiesByUser(user))
             .sorted(by: ActivityKeys.timestamp.rawValue, ascending: false)
             .fetchedResultsController(nil)
-        activities = frc.results(Activity)
-            .map(viewModelForActivity)
-    }
-    
-    public func selectProfile(profileId: String) {
-        // TODO: Implement filtering profile by id
+            .results(Activity)
+        activities = results.map(viewModelForActivity)
+        predicate = cvm.selectedProfile |> map {
+            ($0.profile?.id).map {
+                NSPredicate(format: "%K == %@", ActivityKeys.profileId.rawValue, $0)
+            } ?? NSPredicate(format: "%K == %@", ActivityKeys.user.rawValue, user)
+        }
+        toBondDynamic(predicate) ->> results.predicateBond
     }
     
     public func conversationVM() -> ConversationViewModel {
@@ -64,15 +67,22 @@ public struct ProfileCoverViewModel {
     public let proximity: PropertyOf<String>
     public let avatar: PropertyOf<Image?>
     public let cover: PropertyOf<Image?>
-    public let selectorImages: DynamicArray<Image>
+    public let selectors: DynamicArray<ProfileSelectorViewModel>
+    public let selectedProfile: MutableProperty<ProfileSelectorViewModel>
     
     init(user: User) {
         firstName = user.pFirstName()
         lastName = user.pLastName()
         avatar = user.pAvatar()
         cover = user.pCover()
-        selectorImages = toBondDynamicArray(
-            user.pConnectedProfiles() |> map { $0.map { $0.icon } }
+        selectors = toBondDynamicArray(
+            user.pConnectedProfiles() |> map {
+                var selectors = [ProfileSelectorViewModel(profile: nil)]
+                selectors.extend($0.map {
+                    ProfileSelectorViewModel(profile: $0)
+                })
+                return selectors
+            }
         )
         proximity = PropertyOf("", combineLatest(
             user.dyn(.distance).optional(Double).producer,
@@ -83,6 +93,23 @@ public struct ProfileCoverViewModel {
             let lastActive = Formatters.formatRelativeDate($1, relativeTo: $2) ?? ""
             return "\(distance), \(lastActive)"
         })
+        selectedProfile = MutableProperty(selectors[0])
+    }
+    
+    public func selectProfileAtIndex(index: Int) {
+        selectedProfile.value = selectors[index]
     }
 }
 
+public struct ProfileSelectorViewModel {
+    let profile: User.ConnectedProfile?
+    public let icon: Image
+    //    let altImage: Image?
+    public let color: UIColor
+    
+    init(profile: User.ConnectedProfile?) {
+        self.profile = profile
+        icon = profile?.icon ?? Image(UIImage(named: "ic-all")!)
+        color = profile?.themeColor ?? UIColor(red: 0.290, green: 0.078, blue: 0.549, alpha: 1.000) // brandPurple
+    }
+}
