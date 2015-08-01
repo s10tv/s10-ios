@@ -9,22 +9,21 @@
 import UIKit
 import ReactiveCocoa
 
-// Counter part to ReactiveCocoa's <~ operator which is sometimes inconvenient to use
-
-infix operator ~> {
-    associativity left
-    precedence 93
-}
-
 // MARK: - Actions
-// Technically doesn't belong in this file, but let's see if it compiles
 
 extension UIControl {
     public func addAction<I, O, E: ErrorType>(action: Action<I, O, E>, forControlEvents events: UIControlEvents = .TouchUpInside) {
         addTarget(action.unsafeCocoaAction, action: CocoaAction.selector, forControlEvents: events)
+        action.enabled.producer
+            |> observeOn(UIScheduler())
+            |> start(next: { [weak self] enabled in
+                self?.enabled = enabled
+            })
     }
 }
 
-public func ~> <I, O, E: ErrorType>(control: UIControl, action: Action<I, O, E>) {
+// Extend the meaning of the <~ operator in RAC to stream events from UIControls into Action
+
+public func <~ <I, O, E: ErrorType>(action: Action<I, O, E>, control: UIControl) {
     control.addAction(action)
 }

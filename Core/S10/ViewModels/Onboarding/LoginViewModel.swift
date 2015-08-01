@@ -22,7 +22,8 @@ public struct LoginViewModel {
     public let logoutButtonText: PropertyOf<String>
     public let termsAndConditionURL = NSURL("http://taylrapp.com/terms")
     public let privacyURL = NSURL("http://taylrapp.com/privacy")
-    public let loginAction: Action<AnyObject?, (), NSError>
+    public let loginAction: Action<AnyObject, (), NSError>
+    public let logoutAction: Action<AnyObject, (), NoError>
     
     public init(delegate: LoginDelegate) {
         self.delegate = delegate
@@ -37,9 +38,8 @@ public struct LoginViewModel {
         loginAction = Action { _ in
             delegate.login() |> deliverOn(UIScheduler())
         }
-    }
-
-    public func logout() {
-        delegate.logout()
+        logoutAction = Action { _ in
+            Future(value: delegate.logout())
+        }
     }
 }
