@@ -28,6 +28,12 @@ class RootNavController : UINavigationController {
         super.viewDidLoad()
         // http://stackoverflow.com/questions/19833939/uinavigationcontoller-interactivepopgesturerecognizer-inactive-when-navigation-b
         interactivePopGestureRecognizer.delegate = nil
+        navigationBar.barTintColor = StyleKit.brandPurple
+        navigationBar.tintColor = StyleKit.textWhite
+        navigationBar.titleTextAttributes = [
+            NSFontAttributeName: UIFont(.cabinMedium, size: 20),
+            NSForegroundColorAttributeName: StyleKit.textWhite
+        ]
         
         transitionManager = TransitionManager(navigationController: self)
     }
