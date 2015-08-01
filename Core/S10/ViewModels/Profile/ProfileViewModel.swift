@@ -103,12 +103,13 @@ public struct ProfileCoverViewModel {
 public struct ProfileSelectorViewModel {
     let profile: User.ConnectedProfile?
     public let icon: Image
-    //    let altImage: Image?
+    public let altIcon: Image
     public let color: UIColor
     
     init(profile: User.ConnectedProfile?) {
         self.profile = profile
         icon = profile?.icon ?? Image(UIImage(named: "ic-all")!)
+        altIcon = profile?.altIcon ?? Image(UIImage(named: "ic-all-gray")!)
         color = profile?.themeColor ?? UIColor(red: 0.290, green: 0.078, blue: 0.549, alpha: 1.000) // brandPurple
     }
 }

@@ -47,6 +47,7 @@ internal class User: _User {
     struct ConnectedProfile : Mappable {
         var id: String!
         var icon: Image!
+        var altIcon: Image!
         var avatar: Image!
         var displayName: String!
         var displayId: String?
@@ -59,6 +60,7 @@ internal class User: _User {
         mutating func mapping(map: Map) {
             id <- map["id"]
             icon <- map["icon"]
+            altIcon <- map["altIcon"]
             avatar <- map["avatar"]
             displayName <- map["displayName"]
             displayId <- map["displayId"]

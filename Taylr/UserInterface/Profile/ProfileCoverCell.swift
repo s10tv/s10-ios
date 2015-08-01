@@ -10,23 +10,37 @@ import Foundation
 import ReactiveCocoa
 import Bond
 import EDColor
+import Async
+import Cartography
 import Core
 
 class ProfileSelectorCell : UICollectionViewCell, BindableCell {
     
     @IBOutlet weak var iconView: UIImageView!
-    var vm: ProfileSelectorViewModel!
+    var vm: ProfileSelectorViewModel?
     
     override var selected: Bool {
         didSet {
-            iconView.tintColor = selected ? vm.color : UIColor(hex: 0x9B9B9B)
-            iconView.image = iconView.image?.imageWithRenderingMode(.AlwaysTemplate)
+            // TODO: Use UIImageView highlighted image...
+            iconView.bindImage(selected ? vm?.icon : vm?.altIcon)
         }
     }
     
     func bind(vm: ProfileSelectorViewModel) {
         self.vm = vm
-        iconView.bindImage(vm.icon)
+        iconView.bindImage(vm.altIcon)
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        let view = UIView(frame: bounds)
+        let imageView = UIImageView(image: UIImage(named: "ic-up-triangle")!)
+        view.addSubview(imageView)
+        constrain(view, imageView) { view, imageView in
+            imageView.bottom == view.bottom
+            imageView.centerX == view.centerX
+        }
+        selectedBackgroundView = view
     }
     
     static func reuseId() -> String {
@@ -53,6 +67,12 @@ class ProfileCoverCell : UITableViewCell, BindableCell {
         vm.lastName ->> usernameLabel
         vm.proximity ->> proximityLabel
         vm.selectors.map(collectionView.factory(ProfileSelectorCell)) ->> collectionView
+        // Cell is not available for immediate selection, therefore we'll wait for it to populate first
+        Async.main {
+            self.collectionView.selectItemAtIndexPath(NSIndexPath(forItem: 0, inSection: 0),
+                        animated: false, scrollPosition: .None)
+            
+        }
     }
     
     override func prepareForReuse() {

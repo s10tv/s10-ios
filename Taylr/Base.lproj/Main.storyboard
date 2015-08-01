@@ -555,19 +555,6 @@
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6R8-aE-7Ce" userLabel="Divider">
-                                                    <rect key="frame" x="0.0" y="278" width="375" height="2"/>
-                                                    <color key="backgroundColor" red="0.8862745098" green="0.8862745098" blue="0.8862745098" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="2" id="LLR-PW-IOq"/>
-                                                        <constraint firstAttribute="width" constant="4" id="xG9-JU-fH9"/>
-                                                    </constraints>
-                                                    <variation key="default">
-                                                        <mask key="constraints">
-                                                            <exclude reference="xG9-JU-fH9"/>
-                                                        </mask>
-                                                    </variation>
-                                                </view>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="qh5-iy-Fge">
                                                     <rect key="frame" x="8" y="90" width="100" height="100"/>
                                                     <constraints>
@@ -590,7 +577,7 @@
                                                         <constraint firstAttribute="height" constant="60" id="NW7-d2-jAX"/>
                                                     </constraints>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="15" minimumInteritemSpacing="15" id="fCk-xM-sFK">
-                                                        <size key="itemSize" width="40" height="40"/>
+                                                        <size key="itemSize" width="40" height="60"/>
                                                         <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                         <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                         <inset key="sectionInset" minX="10" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -600,11 +587,11 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                             <autoresizingMask key="autoresizingMask"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                                <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="40" height="60"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
                                                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-twitter-color" translatesAutoresizingMaskIntoConstraints="NO" id="96a-9V-ZQt">
-                                                                        <rect key="frame" x="2" y="2" width="36" height="36"/>
+                                                                        <rect key="frame" x="2" y="10" width="36" height="36"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="height" constant="36" id="XCg-Pj-MiX"/>
                                                                             <constraint firstAttribute="width" constant="36" id="caB-g5-3FP"/>
@@ -615,7 +602,7 @@
                                                             </view>
                                                             <constraints>
                                                                 <constraint firstAttribute="centerX" secondItem="96a-9V-ZQt" secondAttribute="centerX" id="1A8-qi-u9U"/>
-                                                                <constraint firstAttribute="centerY" secondItem="96a-9V-ZQt" secondAttribute="centerY" id="uCW-Gh-GPY"/>
+                                                                <constraint firstItem="96a-9V-ZQt" firstAttribute="top" secondItem="2ZU-Ga-Ajh" secondAttribute="top" constant="10" id="RWh-Kx-NMx"/>
                                                             </constraints>
                                                             <connections>
                                                                 <outlet property="iconView" destination="96a-9V-ZQt" id="Jqz-B3-l0L"/>
@@ -631,7 +618,6 @@
                                                 <constraint firstAttribute="trailing" secondItem="NCh-eV-aXm" secondAttribute="trailing" id="K9Z-r4-QiN"/>
                                                 <constraint firstItem="pNm-He-lw7" firstAttribute="top" secondItem="6ml-E6-ZMG" secondAttribute="top" id="Ndf-LH-U4L"/>
                                                 <constraint firstItem="pNm-He-lw7" firstAttribute="bottom" secondItem="6ml-E6-ZMG" secondAttribute="bottom" id="OX6-1Q-eZJ"/>
-                                                <constraint firstAttribute="bottom" secondItem="6R8-aE-7Ce" secondAttribute="bottom" id="PvE-a4-7Fr"/>
                                                 <constraint firstItem="NCh-eV-aXm" firstAttribute="leading" secondItem="uY6-9P-VPb" secondAttribute="leading" id="Qhs-kY-EvX"/>
                                                 <constraint firstItem="brj-Vp-1XD" firstAttribute="leading" secondItem="2Sg-08-WeT" secondAttribute="leading" id="Qq3-Hc-68c"/>
                                                 <constraint firstItem="qh5-iy-Fge" firstAttribute="leading" secondItem="uY6-9P-VPb" secondAttribute="leadingMargin" id="RBX-Ha-UR6"/>
@@ -639,11 +625,9 @@
                                                 <constraint firstItem="6ml-E6-ZMG" firstAttribute="leading" secondItem="uY6-9P-VPb" secondAttribute="leading" id="Sa9-Qc-IWI"/>
                                                 <constraint firstItem="qh5-iy-Fge" firstAttribute="bottom" secondItem="6ml-E6-ZMG" secondAttribute="bottom" constant="-30" id="Ygx-Oi-EoH"/>
                                                 <constraint firstAttribute="trailing" secondItem="6ml-E6-ZMG" secondAttribute="trailing" id="Z7a-nQ-BqT"/>
-                                                <constraint firstItem="6R8-aE-7Ce" firstAttribute="leading" secondItem="uY6-9P-VPb" secondAttribute="leading" id="ZBp-g2-Kor"/>
                                                 <constraint firstAttribute="bottom" secondItem="NCh-eV-aXm" secondAttribute="bottom" priority="249" id="ZMD-1G-MoV"/>
                                                 <constraint firstItem="brj-Vp-1XD" firstAttribute="top" secondItem="2Sg-08-WeT" secondAttribute="bottom" constant="8" id="c16-SJ-B8x"/>
                                                 <constraint firstItem="NCh-eV-aXm" firstAttribute="top" secondItem="6ml-E6-ZMG" secondAttribute="bottom" id="cag-dc-X35"/>
-                                                <constraint firstAttribute="trailing" secondItem="6R8-aE-7Ce" secondAttribute="trailing" id="d76-rv-NrY"/>
                                                 <constraint firstItem="pNm-He-lw7" firstAttribute="trailing" secondItem="6ml-E6-ZMG" secondAttribute="trailing" id="pou-JB-aMC"/>
                                                 <constraint firstItem="vbX-bI-Gli" firstAttribute="trailing" secondItem="uY6-9P-VPb" secondAttribute="trailingMargin" id="xAA-7g-sCf"/>
                                                 <constraint firstItem="6ml-E6-ZMG" firstAttribute="top" secondItem="uY6-9P-VPb" secondAttribute="top" id="zFn-2Z-b9R"/>
