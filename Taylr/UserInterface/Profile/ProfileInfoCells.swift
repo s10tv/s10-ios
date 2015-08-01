@@ -10,6 +10,21 @@ import Foundation
 import Bond
 import Core
 
+class ProfileAttributeCell : UICollectionViewCell, BindableCell {
+    
+    @IBOutlet weak var valueLabel: UILabel!
+    @IBOutlet weak var attrLabel: UILabel!
+    
+    func bind(vm: ConnectedProfileInfoViewModel.Attribute) {
+        valueLabel.text = vm.value
+        attrLabel.text = vm.label
+    }
+    
+    static func reuseId() -> String {
+        return reuseId(.ProfileAttributeCell)
+    }
+}
+
 class TaylrProfileInfoCell : UITableViewCell, BindableCell {
     @IBOutlet weak var taglineLabel: UILabel!
     @IBOutlet weak var aboutLabel: UILabel!
@@ -33,10 +48,10 @@ class ConnectedProfileInfoCell : UITableViewCell, BindableCell {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var openButton: UIButton!
     
-    var vm: ConnectedProfileInfoViewModel!
+    private var vm: ConnectedProfileInfoViewModel!
     
     func bind(vm: ConnectedProfileInfoViewModel) {
-        self.vm = vmt
+        self.vm = vm
         avatarView.bindImage(vm.avatar)
         nameLabel.text = vm.displayName
         displayIdLabel.text = vm.displayId
@@ -49,22 +64,25 @@ class ConnectedProfileInfoCell : UITableViewCell, BindableCell {
         UIApplication.sharedApplication().openURL(vm.url)
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        avatarView.makeCircular()
+        collectionView.delegate = self
+    }
+    
     static func reuseId() -> String {
         return reuseId(.ConnectedProfileInfoCell)
     }
 }
 
-class ProfileAttributeCell : UICollectionViewCell, BindableCell {
-    
-    @IBOutlet weak var valueLabel: UILabel!
-    @IBOutlet weak var attrLabel: UILabel!
-    
-    func bind(vm: ConnectedProfileInfoViewModel.Attribute) {
-        valueLabel.text = vm.value
-        attrLabel.text = vm.label
-    }
-    
-    static func reuseId() -> String {
-        return reuseId(.ProfileAttributeCell)
+// MARK: 3 column layout
+
+extension ConnectedProfileInfoCell : UICollectionViewDelegateFlowLayout {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let layout = collectionViewLayout as! UICollectionViewFlowLayout
+        let columns = CGFloat(3)
+        var size = layout.itemSize
+        size.width = ((collectionView.bounds.width - layout.sectionInset.left - layout.sectionInset.right) - (layout.minimumInteritemSpacing) * (columns - 1)) / columns
+        return size
     }
 }

@@ -11,6 +11,15 @@ import ReactiveCocoa
 import Cartography
 import EDColor
 
+extension UIView {
+    public func parentViewOfType<T: UIView>(type: T.Type) -> T? {
+        if let superview = superview as? T {
+            return superview
+        }
+        return superview?.parentViewOfType(type)
+    }
+}
+
 extension UIViewController {
     public func presentViewController(viewControllerToPresent: UIViewController, animated: Bool = true) -> RACSignal {
         let subject = RACReplaySubject()

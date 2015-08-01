@@ -35,7 +35,7 @@ class ProfileViewController : BaseViewController {
             }
             return self.coverCell
         }
-        let infoSection = vm.infoVM.map { (vm, index) -> UITableViewCell in
+        let infoSection = vm.infoVM.map { [weak self] (vm, index) -> UITableViewCell in
             switch vm {
             case let vm as TaylrProfileInfoViewModel:
                 return taylrProfileFactory(vm, index)
