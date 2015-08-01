@@ -653,27 +653,27 @@
                                                     <rect key="frame" x="15" y="10" width="345" height="135"/>
                                                     <subviews>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o4v-3T-RsW" userLabel="Divider">
-                                                            <rect key="frame" x="5" y="55" width="335" height="1"/>
+                                                            <rect key="frame" x="5" y="66" width="335" height="1"/>
                                                             <color key="backgroundColor" red="0.93299722671508789" green="0.94112014770507812" blue="0.94931834936141968" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <constraints>
                                                                 <constraint firstAttribute="height" constant="1" id="PSw-9K-aaX"/>
                                                             </constraints>
                                                         </view>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Travelling through Europe. In town for 3 days, looking for fellow travellers!" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agL-sb-Y6s">
-                                                            <rect key="frame" x="8" y="10" width="271" height="35"/>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Customer Communicastions Consultant at Padmapper" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="agL-sb-Y6s">
+                                                            <rect key="frame" x="8" y="16" width="271" height="35"/>
                                                             <fontDescription key="fontDescription" name="Cabin-Italic" family="Cabin" pointSize="14"/>
                                                             <color key="textColor" red="0.2901606559753418" green="0.29021650552749634" blue="0.29015710949897766" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Sh-4s-Djb">
-                                                            <rect key="frame" x="8" y="64" width="329" height="63"/>
+                                                            <rect key="frame" x="8" y="75" width="329" height="52"/>
                                                             <string key="text">Nam dapibus nisl vitae elit fringilla rutrum. Aenean sollicitudin, erat a elementum rutrum, neque sem pretium metus, vitae elit fringilla.</string>
                                                             <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" horizontalCompressionResistancePriority="752" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PBZ-8J-2mE" userLabel="Chat">
-                                                            <rect key="frame" x="287" y="12" width="50" height="30"/>
+                                                        <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PBZ-8J-2mE" userLabel="Chat">
+                                                            <rect key="frame" x="287" y="18" width="50" height="30"/>
                                                             <state key="normal" image="ic-start-chat">
                                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                             </state>
@@ -684,16 +684,16 @@
                                                     </subviews>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <constraints>
-                                                        <constraint firstItem="PBZ-8J-2mE" firstAttribute="top" secondItem="eFF-TK-kGD" secondAttribute="top" constant="12" id="02E-4S-t3x"/>
+                                                        <constraint firstItem="PBZ-8J-2mE" firstAttribute="top" secondItem="eFF-TK-kGD" secondAttribute="top" constant="18" id="02E-4S-t3x"/>
                                                         <constraint firstAttribute="trailing" secondItem="PBZ-8J-2mE" secondAttribute="trailing" constant="8" id="6qd-Ag-Y70"/>
                                                         <constraint firstItem="agL-sb-Y6s" firstAttribute="centerY" secondItem="PBZ-8J-2mE" secondAttribute="centerY" id="CwO-zA-PAT"/>
                                                         <constraint firstItem="o4v-3T-RsW" firstAttribute="leading" secondItem="eFF-TK-kGD" secondAttribute="leading" constant="5" id="FeD-Hd-4ZE"/>
                                                         <constraint firstAttribute="trailing" secondItem="7Sh-4s-Djb" secondAttribute="trailing" constant="8" id="Isc-ho-EaC"/>
+                                                        <constraint firstAttribute="trailing" secondItem="agL-sb-Y6s" secondAttribute="trailing" constant="66" id="SX7-Cb-PPc"/>
                                                         <constraint firstAttribute="bottom" secondItem="7Sh-4s-Djb" secondAttribute="bottom" constant="8" id="TRp-od-QmV"/>
-                                                        <constraint firstItem="PBZ-8J-2mE" firstAttribute="leading" secondItem="agL-sb-Y6s" secondAttribute="trailing" constant="8" id="Zfu-fV-XpX"/>
                                                         <constraint firstItem="7Sh-4s-Djb" firstAttribute="top" secondItem="o4v-3T-RsW" secondAttribute="bottom" constant="8" id="gg0-Nn-cwe"/>
                                                         <constraint firstItem="agL-sb-Y6s" firstAttribute="leading" secondItem="eFF-TK-kGD" secondAttribute="leading" constant="8" id="jvK-xf-3Qw"/>
-                                                        <constraint firstItem="o4v-3T-RsW" firstAttribute="top" secondItem="eFF-TK-kGD" secondAttribute="top" constant="55" id="kyM-7E-DcE"/>
+                                                        <constraint firstItem="o4v-3T-RsW" firstAttribute="top" secondItem="eFF-TK-kGD" secondAttribute="top" constant="66" id="kyM-7E-DcE"/>
                                                         <constraint firstItem="7Sh-4s-Djb" firstAttribute="leading" secondItem="eFF-TK-kGD" secondAttribute="leading" constant="8" id="s7l-5k-OoQ"/>
                                                         <constraint firstAttribute="trailing" secondItem="o4v-3T-RsW" secondAttribute="trailing" constant="5" id="uaz-L1-GhC"/>
                                                     </constraints>
@@ -1938,7 +1938,7 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic-twitter-color" translatesAutoresizingMaskIntoConstraints="NO" id="D8v-Aq-FJD">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-twitter-color" translatesAutoresizingMaskIntoConstraints="NO" id="D8v-Aq-FJD">
                                             <rect key="frame" x="12" y="17" width="28" height="28"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="28" id="CTz-QM-uhn"/>
@@ -1958,7 +1958,7 @@
                                                 <constraint firstAttribute="height" constant="1" id="Elx-nD-V26"/>
                                             </constraints>
                                         </view>
-                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Integration Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XcD-Gl-qea" customClass="JVFloatLabeledTextField">
+                                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Integration Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="XcD-Gl-qea" customClass="JVFloatLabeledTextField">
                                             <rect key="frame" x="50" y="8" width="130" height="44"/>
                                             <nil key="textColor"/>
                                             <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
