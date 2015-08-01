@@ -30,6 +30,8 @@ class LoginViewController : BaseViewController {
         vm.loginButtonText ->> loginButton.titleBond
         vm.logoutButtonText ->> logoutButton.titleBond
         vm.loginAction <~ loginButton
+        vm.logoutAction <~ logoutButton
+        
         vm.loginAction.values.observe(next: { [unowned self] in
             assert(NSThread.isMainThread(), "Only on main")
             switch Globals.accountService.state.value {
@@ -49,7 +51,13 @@ class LoginViewController : BaseViewController {
                 Log.warn("Ignoring digits error, not handling for now \(error)")
             }
         })
-        vm.logoutAction <~ logoutButton
+        vm.loginAction.executing.producer.start(next: { executing in
+            if executing {
+                PKHUD.showActivity(dimsBackground: true)
+            } else {
+                PKHUD.hide(animated: false)
+            }
+        })
     }
     
     override func viewWillAppear(animated: Bool) {
