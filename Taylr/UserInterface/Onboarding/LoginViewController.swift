@@ -22,7 +22,8 @@ class LoginViewController : BaseViewController {
     let vm = LoginViewModel(delegate: Globals.accountService)
     
     override func commonInit() {
-        screenName = "Signup"
+        super.commonInit()
+        screenName = "Login"
     }
     
     override func viewDidLoad() {
@@ -51,23 +52,19 @@ class LoginViewController : BaseViewController {
                 Log.warn("Ignoring digits error, not handling for now \(error)")
             }
         })
-        vm.loginAction.mExecuting.start(next: { executing in
-            if executing {
-                PKHUD.showActivity(dimsBackground: true)
-            } else {
-                PKHUD.hide(animated: false)
-            }
-        })
+        combineLatest(appearanceState.producer, vm.loginAction.executing.producer)
+            |> start(next: { state, executing in
+                if state == .Appeared && executing {
+                    PKHUD.showActivity(dimsBackground: true)
+                } else {
+                    PKHUD.hide(animated: false)
+                }
+            })
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBarHidden = true
-    }
-    
-    override func viewWillDisappear(animated: Bool) {
-        super.viewWillDisappear(animated)
-        PKHUD.hide(animated: false)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {

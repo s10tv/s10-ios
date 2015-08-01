@@ -21,7 +21,17 @@ extension UINavigationController {
 }
 
 class BaseViewController : UIViewController {
+    // For docs see WWDC 2013 Session 218 Custom Transitions using View Controllers
+    enum AppearanceState : Equatable {
+        case Appearing(Bool) // Animated
+        case Appeared
+        case Disappearing(Bool) // Animated
+        case Disappeared
+    }
     
+    private let _appearanceState = MutableProperty<AppearanceState>(.Disappeared)
+    
+    var appearanceState: PropertyOf<AppearanceState>!
     var screenName: String?
     
     // MARK: - Initialization
@@ -40,19 +50,45 @@ class BaseViewController : UIViewController {
         self.init(nibName: nil, bundle: nil)
     }
     
-    func commonInit() { }
+    func commonInit() {
+        appearanceState = PropertyOf(_appearanceState)
+    }
     
     // MARK: State Management
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        tabBarController?.navigationItem.title = title
+        _appearanceState.value = .Appearing(animated)
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if let screenName = screenName {
-            Analytics.track("Screen: \(screenName)")
-        }
+        _appearanceState.value = .Appeared
+        screenName.map { Analytics.track("Screen: \($0)") }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        _appearanceState.value = .Disappearing(animated)
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        _appearanceState.value = .Disappeared
+    }
+}
+
+func == (lhs: BaseViewController.AppearanceState, rhs: BaseViewController.AppearanceState) -> Bool {
+    switch (lhs, rhs) {
+    case (.Appeared, .Appeared):
+        return true
+    case (.Disappeared, .Disappeared):
+        return true
+    case let (.Appearing(left), .Appearing(right)):
+        return left == right
+    case let (.Disappearing(left), .Disappearing(right)):
+        return left == right
+    default:
+        return false
     }
 }
