@@ -13,7 +13,7 @@ import DigitsKit
 public protocol LoginDelegate {
     var loggedInPhone: PropertyOf<String?> { get }
     func logout()
-//    func login()
+    func login() -> Future<(), NSError>
 }
 
 public struct LoginViewModel {
@@ -22,6 +22,7 @@ public struct LoginViewModel {
     public let logoutButtonText: PropertyOf<String>
     public let termsAndConditionURL = NSURL("http://taylrapp.com/terms")
     public let privacyURL = NSURL("http://taylrapp.com/privacy")
+    public let loginAction: Action<AnyObject?, (), NSError>
     
     public init(delegate: LoginDelegate) {
         self.delegate = delegate
@@ -32,6 +33,9 @@ public struct LoginViewModel {
         }
         logoutButtonText = delegate.loggedInPhone |> map {
             $0 != nil ? "Not you? Tap to logout." : ""
+        }
+        loginAction = Action { _ in
+            delegate.login() |> deliverOn(UIScheduler())
         }
     }
 

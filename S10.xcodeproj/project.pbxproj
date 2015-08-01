@@ -31,7 +31,6 @@
 		EA043F871B62F07E0047BDCA /* MeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F861B62F07E0047BDCA /* MeViewModel.swift */; };
 		EA06AAB81B3B2D2B000E128C /* PKHUDExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBAB1B3930B000701F08 /* PKHUDExtension.swift */; };
 		EA06AAB91B3B2D8F000E128C /* ResourceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBAC1B3930B000701F08 /* ResourceExtension.swift */; };
-		EA0C8C8B1B56DAAE00C2FB0A /* ReactiveFuture.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0C8C8A1B56DAAE00C2FB0A /* ReactiveFuture.swift */; };
 		EA0FED451ADE5BC500FC6FCB /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */; };
 		EA1047281B4E3C1C00B1A76A /* RACPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1047271B4E3C1C00B1A76A /* RACPlayground.swift */; };
 		EA10472F1B4E74D000B1A76A /* ReactiveProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA10472D1B4E74A300B1A76A /* ReactiveProperties.swift */; };
@@ -106,6 +105,13 @@
 		EA5CA5811B51292300284B04 /* RealmExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5CA5801B51292300284B04 /* RealmExtensions.swift */; };
 		EA6639A21B64BBB9009DD17F /* ProfileInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6639A11B64BBB9009DD17F /* ProfileInfoViewModel.swift */; };
 		EA6650ED1AA00A9C001BA40C /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650EB1AA00A9C001BA40C /* AccountService.swift */; };
+		EA6E40571B6D2F1200FF5126 /* RACGenericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E40561B6D2F1200FF5126 /* RACGenericExtensions.swift */; };
+		EA6E40581B6D2F1900FF5126 /* RACGenericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E40561B6D2F1200FF5126 /* RACGenericExtensions.swift */; };
+		EA6E40591B6D2F1B00FF5126 /* RACGenericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E40561B6D2F1200FF5126 /* RACGenericExtensions.swift */; };
+		EA6E405D1B6D334D00FF5126 /* DynamicProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E405B1B6D334D00FF5126 /* DynamicProperties.swift */; };
+		EA6E405E1B6D334D00FF5126 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E405C1B6D334D00FF5126 /* Future.swift */; };
+		EA6E40601B6D336F00FF5126 /* PropertyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E405F1B6D336F00FF5126 /* PropertyExtensions.swift */; };
+		EA6E40621B6D33F500FF5126 /* ActionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E40611B6D33F500FF5126 /* ActionExtensions.swift */; };
 		EA7004621ACF912A00D0E467 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA7004641ACF912A00D0E467 /* Onboarding.storyboard */; };
 		EA7078781B39345800BB9D08 /* AVKit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA70787B1B39345800BB9D08 /* AVKit.storyboard */; };
 		EA7078791B39345800BB9D08 /* AVKit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA70787B1B39345800BB9D08 /* AVKit.storyboard */; };
@@ -144,7 +150,6 @@
 		EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35461A74CC6900E0C65D /* Main.storyboard */; };
 		EA9F354A1A74CC6900E0C65D /* Taylr.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Taylr.xcassets */; };
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
-		EA9F819E1B61BD1F00919C04 /* DynamicProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F819D1B61BD1F00919C04 /* DynamicProperties.swift */; };
 		EA9FE6471B67F85E006F8E73 /* ReactiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9FE6461B67F85E006F8E73 /* ReactiveTests.swift */; };
 		EA9FE6491B684FA0006F8E73 /* ProfileIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9FE6481B684FA0006F8E73 /* ProfileIconCell.swift */; };
 		EAA56F8D1B2B32E500DE3936 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F6C1B2B32E500DE3936 /* ChatsViewController.swift */; };
@@ -284,7 +289,6 @@
 		EA043F811B62EF8B0047BDCA /* IntegrationListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationListViewModel.swift; sourceTree = "<group>"; };
 		EA043F821B62EF8B0047BDCA /* IntegrationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationViewModel.swift; sourceTree = "<group>"; };
 		EA043F861B62F07E0047BDCA /* MeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewModel.swift; sourceTree = "<group>"; };
-		EA0C8C8A1B56DAAE00C2FB0A /* ReactiveFuture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveFuture.swift; sourceTree = "<group>"; };
 		EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
 		EA1047271B4E3C1C00B1A76A /* RACPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACPlayground.swift; sourceTree = "<group>"; };
 		EA10472D1B4E74A300B1A76A /* ReactiveProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveProperties.swift; sourceTree = "<group>"; };
@@ -358,6 +362,11 @@
 		EA5CA5801B51292300284B04 /* RealmExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RealmExtensions.swift; sourceTree = "<group>"; };
 		EA6639A11B64BBB9009DD17F /* ProfileInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInfoViewModel.swift; sourceTree = "<group>"; };
 		EA6650EB1AA00A9C001BA40C /* AccountService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
+		EA6E40561B6D2F1200FF5126 /* RACGenericExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACGenericExtensions.swift; sourceTree = "<group>"; };
+		EA6E405B1B6D334D00FF5126 /* DynamicProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicProperties.swift; sourceTree = "<group>"; };
+		EA6E405C1B6D334D00FF5126 /* Future.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
+		EA6E405F1B6D336F00FF5126 /* PropertyExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyExtensions.swift; sourceTree = "<group>"; };
+		EA6E40611B6D33F500FF5126 /* ActionExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionExtensions.swift; sourceTree = "<group>"; };
 		EA7004631ACF912A00D0E467 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Onboarding.storyboard; sourceTree = "<group>"; };
 		EA70787A1B39345800BB9D08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/AVKit.storyboard; sourceTree = "<group>"; };
 		EA7134111B56E47100B810F6 /* ImagePickerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerExtensions.swift; sourceTree = "<group>"; };
@@ -398,7 +407,6 @@
 		EA9F35521A74CC6900E0C65D /* CoreTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CoreTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9F35571A74CC6900E0C65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		EA9F35621A74CD8800E0C65D /* Taylr-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Taylr-Bridging.h"; path = "Taylr/Taylr-Bridging.h"; sourceTree = SOURCE_ROOT; };
-		EA9F819D1B61BD1F00919C04 /* DynamicProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicProperties.swift; sourceTree = "<group>"; };
 		EA9FE6461B67F85E006F8E73 /* ReactiveTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveTests.swift; sourceTree = "<group>"; };
 		EA9FE6481B684FA0006F8E73 /* ProfileIconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileIconCell.swift; sourceTree = "<group>"; };
 		EAA56F6C1B2B32E500DE3936 /* ChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
@@ -794,6 +802,17 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		EA6E405A1B6D334D00FF5126 /* RAC */ = {
+			isa = PBXGroup;
+			children = (
+				EA6E405C1B6D334D00FF5126 /* Future.swift */,
+				EA6E405B1B6D334D00FF5126 /* DynamicProperties.swift */,
+				EA6E405F1B6D336F00FF5126 /* PropertyExtensions.swift */,
+				EA6E40611B6D33F500FF5126 /* ActionExtensions.swift */,
+			);
+			path = RAC;
+			sourceTree = "<group>";
+		};
 		EA78C8751B320A2A0016AB73 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -818,6 +837,7 @@
 		EA95BBB41B3932B500701F08 /* Includes */ = {
 			isa = PBXGroup;
 			children = (
+				EA6E40561B6D2F1200FF5126 /* RACGenericExtensions.swift */,
 				EA10472D1B4E74A300B1A76A /* ReactiveProperties.swift */,
 				EA3965141B54C19800F5B0B3 /* ReactiveBridging.swift */,
 				EA95BBB71B3932B500701F08 /* GenericExtensions.swift */,
@@ -1039,9 +1059,8 @@
 		EAF670591B31F9450025D7CF /* Foundation */ = {
 			isa = PBXGroup;
 			children = (
+				EA6E405A1B6D334D00FF5126 /* RAC */,
 				EAF6705A1B31F9450025D7CF /* FoundationExtension.swift */,
-				EA0C8C8A1B56DAAE00C2FB0A /* ReactiveFuture.swift */,
-				EA9F819D1B61BD1F00919C04 /* DynamicProperties.swift */,
 				EAF6705B1B31F9450025D7CF /* NotificationCenterExtensions.swift */,
 				EAF670891B31F9AD0025D7CF /* Logging.swift */,
 				EA9C16651B365BD700371B50 /* AsyncOperation.swift */,
@@ -1552,6 +1571,7 @@
 				EA06AAB81B3B2D2B000E128C /* PKHUDExtension.swift in Sources */,
 				EA009D4E1B5B7A4600FC7E3D /* ReactiveProperties.swift in Sources */,
 				EA06AAB91B3B2D8F000E128C /* ResourceExtension.swift in Sources */,
+				EA6E40591B6D2F1B00FF5126 /* RACGenericExtensions.swift in Sources */,
 				EAF81B341B33890300EED6DD /* SBConstants.swift in Sources */,
 				EA009D501B5B7A4600FC7E3D /* GenericExtensions.swift in Sources */,
 				EA5B740B1B30F7BB008E5CBC /* TestAppDelegate.swift in Sources */,
@@ -1563,15 +1583,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA6E405D1B6D334D00FF5126 /* DynamicProperties.swift in Sources */,
 				EA9C166C1B368FD600371B50 /* TaskService.swift in Sources */,
 				EAF670771B31F9450025D7CF /* NotificationCenterExtensions.swift in Sources */,
 				EAF670881B31F9450025D7CF /* UIKitExtension.swift in Sources */,
 				F912AC5D1B3745AC00DEA6B1 /* VideoUploadOperation.swift in Sources */,
 				EA82CF971B504FC500A12D94 /* Image.swift in Sources */,
 				EA043F7F1B62EF5D0047BDCA /* MessageViewModel.swift in Sources */,
-				EA9F819E1B61BD1F00919C04 /* DynamicProperties.swift in Sources */,
 				EAC725C01B66DF66004113FD /* UsernameViewModel.swift in Sources */,
 				EA2DC29F1B637FA50034434E /* Connection.swift in Sources */,
+				EA6E405E1B6D334D00FF5126 /* Future.swift in Sources */,
 				EA2DC2B91B641F070034434E /* MeteorSubscription.swift in Sources */,
 				EA4757151B392C19002071D7 /* Segue.swift in Sources */,
 				EAF6701D1B31E6550025D7CF /* Core.m in Sources */,
@@ -1589,7 +1610,6 @@
 				EA2DC2BE1B642A4A0034434E /* UserExtensions.swift in Sources */,
 				EAF670901B31FA2E0025D7CF /* UserDefaults.swift in Sources */,
 				EA95A6501B6371A1006046E5 /* DiscoverViewModel.swift in Sources */,
-				EA0C8C8B1B56DAAE00C2FB0A /* ReactiveFuture.swift in Sources */,
 				EA2DC29E1B637FA50034434E /* Activity.swift in Sources */,
 				EA2DC2971B637FA50034434E /* _Message.swift in Sources */,
 				EA2DC2831B637DFE0034434E /* Models.xcdatamodeld in Sources */,
@@ -1604,8 +1624,10 @@
 				EAF670951B31FCBE0025D7CF /* ProvisioningProfile.swift in Sources */,
 				EA2DC2981B637FA50034434E /* _User.swift in Sources */,
 				EA2DC2B11B63FC990034434E /* InviteViewModel.swift in Sources */,
+				EA6E40621B6D33F500FF5126 /* ActionExtensions.swift in Sources */,
 				EA043F871B62F07E0047BDCA /* MeViewModel.swift in Sources */,
 				EAC725BA1B66036A004113FD /* DynamicDataSource.swift in Sources */,
+				EA6E40571B6D2F1200FF5126 /* RACGenericExtensions.swift in Sources */,
 				EAC725BE1B66DD92004113FD /* ConnectServicesViewModel.swift in Sources */,
 				EAF670971B31FE6A0025D7CF /* Environment.swift in Sources */,
 				EA2DC26A1B637CB20034434E /* InviteTask.swift in Sources */,
@@ -1626,6 +1648,7 @@
 				EA2DC2A21B637FA50034434E /* User.swift in Sources */,
 				EA4757141B392C19002071D7 /* ScrollTransition.swift in Sources */,
 				EA2DC2681B637CAB0034434E /* VideoDownloadTask.swift in Sources */,
+				EA6E40601B6D336F00FF5126 /* PropertyExtensions.swift in Sources */,
 				EA2DC2591B6377C00034434E /* Video.swift in Sources */,
 				EA2DC2B01B63FC990034434E /* EditProfileViewModel.swift in Sources */,
 				EAF670761B31F9450025D7CF /* FoundationExtension.swift in Sources */,
@@ -1672,6 +1695,7 @@
 				EA89C0881B6AC0410007C6CB /* ConnectServicesViewController.swift in Sources */,
 				EA36D2AB1AE71366006FD5D8 /* Errors.swift in Sources */,
 				EA3965171B54C1B500F5B0B3 /* ReactiveBridging.swift in Sources */,
+				EA6E40581B6D2F1900FF5126 /* RACGenericExtensions.swift in Sources */,
 				EA3594141B2DE5C300E91337 /* ConversationViewController.swift in Sources */,
 				EA89C0861B6AA2060007C6CB /* CreateProfileViewController.swift in Sources */,
 				EA24E9231B69E2BF00261873 /* Bond+JSBadgeView.swift in Sources */,
