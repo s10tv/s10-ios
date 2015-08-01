@@ -38,16 +38,6 @@ public enum R {
         case cabinMediumItalic = "Cabin-MediumItalic"
         /// Cabin-Regular
         case cabinRegular = "Cabin-Regular"
-        /// TransatTextBlack
-        case transatTextBlack = "TransatTextBlack"
-        /// TransatTextBold
-        case transatTextBold = "TransatTextBold"
-        /// TransatTextLight
-        case transatTextLight = "TransatTextLight"
-        /// TransatTextMedium
-        case transatTextMedium = "TransatTextMedium"
-        /// TransatTextStandard
-        case transatTextStandard = "TransatTextStandard"
     }
     public enum Strings : String {
         /// Unexpected Error
@@ -172,6 +162,12 @@ public enum R {
         case icAdd = "ic-add"
         /// ic-addphoto-plus
         case icAddphotoPlus = "ic-addphoto-plus"
+        /// ic-all
+        case icAll = "ic-all"
+        /// ic-all-gray
+        case icAllGray = "ic-all-gray"
+        /// ic-approved
+        case icApproved = "ic-approved"
         /// ic-back
         case icBack = "ic-back"
         /// ic-back-arrow

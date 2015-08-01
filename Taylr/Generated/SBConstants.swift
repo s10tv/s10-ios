@@ -3,6 +3,7 @@
 public enum CollectionViewCellreuseIdentifier : String {
     case CandidateCell = "CandidateCell"
     case IntegrationCell = "IntegrationCell"
+    case ProfileAttributeCell = "ProfileAttributeCell"
     case ProfileIconCell = "ProfileIconCell"
     case ProfileSelectorCell = "ProfileSelectorCell"
 }
@@ -13,7 +14,6 @@ public enum CollectionViewControllerStoryboardIdentifier : String {
 
 public enum SegueIdentifier : String {
     case ConversationToProfile = "ConversationToProfile"
-    case CreateProfileToConnectServices = "CreateProfileToConnectServices"
     case IntegrationsToWeb = "IntegrationsToWeb"
     case LoginToCreateProfile = "LoginToCreateProfile"
     case Main_RootTab = "Main_RootTab"
@@ -28,6 +28,7 @@ public enum SegueIdentifier : String {
 public enum TableViewCellreuseIdentifier : String {
     case ActivityImageCell = "ActivityImageCell"
     case ActivityTextCell = "ActivityTextCell"
+    case ConnectedProfileInfoCell = "ConnectedProfileInfoCell"
     case ContactConnectionCell = "ContactConnectionCell"
     case NewConnectionCell = "NewConnectionCell"
     case ProfileCoverCell = "ProfileCoverCell"

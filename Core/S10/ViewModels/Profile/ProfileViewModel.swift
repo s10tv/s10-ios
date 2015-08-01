@@ -37,10 +37,9 @@ public struct ProfileViewModel {
         let cvm = ProfileCoverViewModel(user: user)
         subscription = meteor.subscribe("activities", user)
         coverVM = DynamicArray([cvm])
-        infoVM = toBondDynamicArray(cvm.selectedProfile |> map { _ in
-return [TaylrProfileInfoViewModel(user: user)]
-//            $0.profile.map { [ConnectedProfileInfoViewModel(profile: $0)] }
-//                ?? [TaylrProfileInfoViewModel(user: user)]
+        infoVM = toBondDynamicArray(cvm.selectedProfile |> map {
+            $0.profile.map { [ConnectedProfileInfoViewModel(profile: $0)] }
+                ?? [TaylrProfileInfoViewModel(user: user)]
         })
         results = Activity
             .by(supportedActivitiesByUser(user))
