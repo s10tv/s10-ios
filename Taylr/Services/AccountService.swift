@@ -121,18 +121,24 @@ class AccountService {
         return promise.future
     }
     
-    func logout() -> RACSignal {
+    func logout() {
         Analytics.track("Logged Out")
         Analytics.identifyUser(Globals.env.deviceId) // Reset to deviceId based tracking
         UD.resetAll()
         digits.logOut()
         _digitsSession.value = nil
-        return meteorService.logout().deliverOnMainThread()
+        meteorService.logout()
     }
     
     func deleteAccount() -> RACSignal {
         digits.logOut()
         UD.resetAll()
         return meteorService.deleteAccount().deliverOnMainThread()
+    }
+}
+
+extension AccountService : LoginDelegate {
+    var loggedInPhone: PropertyOf<String?> {
+        return _digitsSession |> map { $0?.phoneNumber }
     }
 }

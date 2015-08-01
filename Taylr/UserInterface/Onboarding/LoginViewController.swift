@@ -19,7 +19,7 @@ class LoginViewController : BaseViewController {
     @IBOutlet weak var loginButton: DesignableButton!
     @IBOutlet weak var logoutButton: UIButton!
     
-    let vm = LoginViewModel(account: Globals.accountService)
+    let vm = LoginViewModel(delegate: Globals.accountService)
     
     override func commonInit() {
         screenName = "Signup"

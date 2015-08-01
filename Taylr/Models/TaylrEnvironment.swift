@@ -27,8 +27,6 @@ class TaylrEnvironment : Environment {
     }
     
     let audience : Audience
-    let termsAndConditionURL = NSURL("http://taylrapp.com/terms")
-    let privacyURL = NSURL("http://taylrapp.com/privacy")
     let upgradeURL: NSURL
     let serverProtocol = "wss"
     let serverHostName: String
