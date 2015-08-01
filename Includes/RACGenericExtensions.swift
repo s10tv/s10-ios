@@ -22,6 +22,21 @@ extension Action {
         })
     }
     
+    var mEvents: Signal<Event<Output, Error>, NoError> {
+        return events |> observeOn(UIScheduler())
+    }
+    var mValues: Signal<Output, NoError> {
+        return values |> observeOn(UIScheduler())
+    }
+    var mErrors: Signal<Error, NoError> {
+        return errors |> observeOn(UIScheduler())
+    }
+    var mExecuting: SignalProducer<Bool, NoError> {
+        return executing.producer |> observeOn(UIScheduler())
+    }
+    var mEnabled: SignalProducer<Bool, NoError> {
+        return enabled.producer |> observeOn(UIScheduler())
+    }
 }
 
 // MARK: - Property Extensions

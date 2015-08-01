@@ -32,7 +32,7 @@ class LoginViewController : BaseViewController {
         vm.loginAction <~ loginButton
         vm.logoutAction <~ logoutButton
         
-        vm.loginAction.values.observe(next: { [unowned self] in
+        vm.loginAction.mValues.observe(next: { [unowned self] in
             assert(NSThread.isMainThread(), "Only on main")
             switch Globals.accountService.state.value {
             case .LoggedIn:
@@ -43,7 +43,7 @@ class LoginViewController : BaseViewController {
                 assertionFailure("Expecting either LoggedIn or Onboarded")
             }
         })
-        vm.loginAction.errors.observe(next: { [unowned self] error in
+        vm.loginAction.mErrors.observe(next: { [unowned self] error in
             if error.domain == METDDPErrorDomain {
                 self.showAlert(LS(.errUnableToLoginTitle), message: LS(.errUnableToLoginMessage))
             } else if error.domain == DGTErrorDomain {
@@ -51,7 +51,7 @@ class LoginViewController : BaseViewController {
                 Log.warn("Ignoring digits error, not handling for now \(error)")
             }
         })
-        vm.loginAction.executing.producer.start(next: { executing in
+        vm.loginAction.mExecuting.start(next: { executing in
             if executing {
                 PKHUD.showActivity(dimsBackground: true)
             } else {
@@ -63,6 +63,11 @@ class LoginViewController : BaseViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBarHidden = true
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        PKHUD.hide(animated: false)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
