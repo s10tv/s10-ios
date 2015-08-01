@@ -17,6 +17,10 @@ class DiscoverViewController : BaseViewController {
     
     let vm = DiscoverViewModel(meteor: Meteor, taskService: Globals.taskService)
     
+    deinit {
+        collectionView.delegate = nil
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
