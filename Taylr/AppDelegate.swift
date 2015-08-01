@@ -10,7 +10,6 @@ import UIKit
 import ReactiveCocoa
 import Meteor
 import SugarRecord
-import SwiftyUserDefaults
 import Fabric
 import DigitsKit
 import Crashlytics
