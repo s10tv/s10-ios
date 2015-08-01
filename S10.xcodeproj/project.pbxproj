@@ -94,6 +94,8 @@
 		EA49286E1ADF291100118639 /* UpgradeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA49286D1ADF291100118639 /* UpgradeService.swift */; };
 		EA5022101B54AC4B00BC92D2 /* TestNSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = EA50220F1B54AC4B00BC92D2 /* TestNSObject.m */; };
 		EA57734A1B6C214E00BCF449 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5773491B6C214E00BCF449 /* Appearance.swift */; };
+		EA57734C1B6C4A5A00BCF449 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA57734B1B6C4A5A00BCF449 /* LoginViewModel.swift */; };
+		EA57734E1B6C5D6800BCF449 /* Bond+UIButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA57734D1B6C5D6800BCF449 /* Bond+UIButton.swift */; };
 		EA588DB81B5F1437000962B8 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA588DB71B5F1437000962B8 /* TestViewController.swift */; };
 		EA5B740B1B30F7BB008E5CBC /* TestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5B740A1B30F7BB008E5CBC /* TestAppDelegate.swift */; };
 		EA5B74141B30F7BB008E5CBC /* TestApp.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA5B74131B30F7BB008E5CBC /* TestApp.xcassets */; };
@@ -341,6 +343,8 @@
 		EA49286D1ADF291100118639 /* UpgradeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeService.swift; sourceTree = "<group>"; };
 		EA50220F1B54AC4B00BC92D2 /* TestNSObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestNSObject.m; sourceTree = "<group>"; };
 		EA5773491B6C214E00BCF449 /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
+		EA57734B1B6C4A5A00BCF449 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
+		EA57734D1B6C5D6800BCF449 /* Bond+UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bond+UIButton.swift"; sourceTree = "<group>"; };
 		EA588DB71B5F1437000962B8 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		EA5B74061B30F7BB008E5CBC /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA5B74091B30F7BB008E5CBC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -739,6 +743,7 @@
 		EA5634DE1A7741FF00F62B52 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				EA57734B1B6C4A5A00BCF449 /* LoginViewModel.swift */,
 				EAAD921C1ACF342C0014BA25 /* TaylrEnvironment.swift */,
 				EA36D2AA1AE71366006FD5D8 /* Errors.swift */,
 			);
@@ -802,6 +807,7 @@
 			children = (
 				EA24E9221B69E2BF00261873 /* Bond+JSBadgeView.swift */,
 				EA95BBA91B3930B000701F08 /* Bond+SDWebImage.swift */,
+				EA57734D1B6C5D6800BCF449 /* Bond+UIButton.swift */,
 				EA7134111B56E47100B810F6 /* ImagePickerExtensions.swift */,
 				EA95BBAB1B3930B000701F08 /* PKHUDExtension.swift */,
 				EA95BBAC1B3930B000701F08 /* ResourceExtension.swift */,
@@ -1671,6 +1677,7 @@
 				EAF81B381B3395E700EED6DD /* AVKit.swift in Sources */,
 				EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */,
 				EAA56F8E1B2B32E500DE3936 /* ConnectionCells.swift in Sources */,
+				EA57734E1B6C5D6800BCF449 /* Bond+UIButton.swift in Sources */,
 				EA043F6D1B62CE880047BDCA /* IntegrationsViewController.swift in Sources */,
 				EA95BBBF1B3932B500701F08 /* MediaExtension.swift in Sources */,
 				EAA56F8D1B2B32E500DE3936 /* ChatsViewController.swift in Sources */,
@@ -1682,6 +1689,7 @@
 				EA95BBAF1B3930B000701F08 /* Bond+SDWebImage.swift in Sources */,
 				EAA56FA11B2B32E500DE3936 /* RootNavController.swift in Sources */,
 				EA95BBB21B3930B000701F08 /* ResourceExtension.swift in Sources */,
+				EA57734C1B6C4A5A00BCF449 /* LoginViewModel.swift in Sources */,
 				EA0FED451ADE5BC500FC6FCB /* AnalyticsService.swift in Sources */,
 				EAF81B311B3388C600EED6DD /* TouchDetector.swift in Sources */,
 				EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */,

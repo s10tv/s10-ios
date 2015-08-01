@@ -68,4 +68,12 @@ import UIKit
         let font = UIFont(name: fontName, size: fontSize)!
         attributedText = attributedText?.replace(font: font, kern: fontKern)
     }
+    
+    public override func intrinsicContentSize() -> CGSize {
+        let s = super.intrinsicContentSize()
+        return CGSize(
+            width: s.width + titleEdgeInsets.left + titleEdgeInsets.right,
+            height: s.height + titleEdgeInsets.top + titleEdgeInsets.bottom
+        )
+    }
 }

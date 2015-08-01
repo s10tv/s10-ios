@@ -5,6 +5,9 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="Cabin-Italic.ttf">
+            <string>Cabin-Italic</string>
+        </mutableArray>
         <mutableArray key="Cabin-Medium.ttf">
             <string>Cabin-Medium</string>
         </mutableArray>
@@ -37,8 +40,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Discover interesting people around you" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="250" translatesAutoresizingMaskIntoConstraints="NO" id="RgB-LM-On4" customClass="DesignableLabel" customModule="Taylr" customModuleProvider="target">
-                                <rect key="frame" x="195" y="279" width="211" height="44"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discover interesting people around you" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="250" translatesAutoresizingMaskIntoConstraints="NO" id="RgB-LM-On4" customClass="DesignableLabel" customModule="Taylr" customModuleProvider="target">
+                                <rect key="frame" x="195" y="278" width="211" height="44"/>
                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="18"/>
                                 <color key="textColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -49,14 +52,14 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="Cabin"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isY-Ks-GfE" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
-                                <rect key="frame" x="171" y="410" width="260" height="50"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isY-Ks-GfE" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
+                                <rect key="frame" x="170" y="410" width="260" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="3Tw-Lk-b0L"/>
-                                    <constraint firstAttribute="width" constant="260" id="5h1-vp-zFT"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="18"/>
+                                <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
                                 <state key="normal" title="Log in with phone number">
                                     <color key="titleColor" red="0.94771684653267474" green="1" blue="0.98100255936701775" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -137,14 +140,27 @@
                                     <constraint firstItem="1Pp-CT-PMh" firstAttribute="leading" secondItem="c0f-ne-erJ" secondAttribute="leading" id="xUj-Hg-ayT"/>
                                 </constraints>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="0kc-Ov-g9d">
-                                <rect key="frame" x="199" y="100" width="204" height="113"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="0kc-Ov-g9d">
+                                <rect key="frame" x="198" y="100" width="204" height="113"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVd-2q-11O">
+                                <rect key="frame" x="232" y="468" width="136" height="31"/>
+                                <fontDescription key="fontDescription" name="Cabin-Italic" family="Cabin" pointSize="15"/>
+                                <state key="normal" title="Not you? Tap to logout">
+                                    <color key="titleColor" red="0.95200854539871216" green="0.98464363813400269" blue="0.97639530897140503" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapLogout:" destination="dFw-q9-bre" eventType="touchUpInside" id="gqj-0v-hub"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.29019607843137252" green="0.078431372549019607" blue="0.5490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="hxv-04-ouP" firstAttribute="top" secondItem="isY-Ks-GfE" secondAttribute="bottom" constant="140" id="5lr-7z-EwM"/>
                             <constraint firstAttribute="centerY" secondItem="RgB-LM-On4" secondAttribute="centerY" id="9m2-1d-vAf"/>
+                            <constraint firstItem="xVd-2q-11O" firstAttribute="top" secondItem="isY-Ks-GfE" secondAttribute="bottom" constant="8" id="Dkh-RN-NVh"/>
+                            <constraint firstItem="xVd-2q-11O" firstAttribute="centerX" secondItem="isY-Ks-GfE" secondAttribute="centerX" id="FF5-fB-8IK"/>
                             <constraint firstItem="hxv-04-ouP" firstAttribute="top" relation="greaterThanOrEqual" secondItem="0kc-Ov-g9d" secondAttribute="bottom" constant="300" id="H1w-X7-dDn"/>
                             <constraint firstAttribute="bottom" secondItem="c0f-ne-erJ" secondAttribute="bottom" constant="8" id="IPA-LP-kRP"/>
                             <constraint firstItem="0kc-Ov-g9d" firstAttribute="top" secondItem="hwB-lg-PKL" secondAttribute="bottom" priority="749" constant="100" id="Pk8-Xl-B9n"/>
@@ -157,6 +173,7 @@
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="loginButton" destination="isY-Ks-GfE" id="zst-37-Oho"/>
+                        <outlet property="logoutButton" destination="xVd-2q-11O" id="uyB-oZ-w27"/>
                         <segue destination="4LR-tW-qvj" kind="custom" identifier="Main_RootTab" customClass="LinkedStoryboardPushSegue" id="ztg-XZ-LWS"/>
                         <segue destination="4FY-Nx-fFw" kind="show" identifier="LoginToCreateProfile" id="3Zq-0p-8Rx"/>
                     </connections>
@@ -670,6 +687,6 @@
         <image name="sample-cover-image" width="750" height="368"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="t1S-gH-XOP"/>
+        <segue reference="ztg-XZ-LWS"/>
     </inferredMetricsTieBreakers>
 </document>

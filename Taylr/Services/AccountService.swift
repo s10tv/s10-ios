@@ -41,13 +41,16 @@ class AccountService {
         }
     }
     private let meteorService: MeteorService
+    private let _digitsSession: MutableProperty<DGTSession?>
     let digits = Digits.sharedInstance()
     let state: PropertyOf<State>
-    
+    let digitsSession: PropertyOf<DGTSession?>
     
     init(meteorService: MeteorService, settings: Settings) {
         self.meteorService = meteorService
         
+        _digitsSession = MutableProperty(digits.session())
+        digitsSession = PropertyOf(_digitsSession)
         state = PropertyOf(.Indeterminate) {
             combineLatest(
                 meteorService.account.producer,
@@ -97,6 +100,7 @@ class AccountService {
         digits.authenticate()
             |> deliverOn(UIScheduler())
             |> onComplete {
+                self._digitsSession.value = $0.value
             println("Session userId= \($0.value?.userID) error \($0.error)")
             if let session = $0.value {
                 self.meteorService.loginWithDigits(
@@ -122,6 +126,7 @@ class AccountService {
         Analytics.identifyUser(Globals.env.deviceId) // Reset to deviceId based tracking
         UD.resetAll()
         digits.logOut()
+        _digitsSession.value = nil
         return meteorService.logout().deliverOnMainThread()
     }
     

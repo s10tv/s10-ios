@@ -11,11 +11,15 @@ import PKHUD
 import DigitsKit
 import ReactiveCocoa
 import Meteor
+import Bond
 import Core
 
 class LoginViewController : BaseViewController {
 
     @IBOutlet weak var loginButton: DesignableButton!
+    @IBOutlet weak var logoutButton: UIButton!
+    
+    let vm = LoginViewModel(account: Globals.accountService)
     
     override func commonInit() {
         screenName = "Signup"
@@ -23,6 +27,8 @@ class LoginViewController : BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        vm.loginButtonText ->> loginButton.titleBond
+        vm.logoutButtonText ->> logoutButton.titleBond
         loginButton.whenLongPressEnded { [weak self] in self!.debugLogin(self!) }
     }
     
@@ -42,13 +48,16 @@ class LoginViewController : BaseViewController {
     }
     
     // MARK: Actions
-        
+    @IBAction func didTapLogout(sender: AnyObject) {
+        vm.logout()
+    }
+    
     @IBAction func viewTerms(sender: AnyObject) {
-        UIApplication.sharedApplication().openURL(Globals.env.termsAndConditionURL)
+        UIApplication.sharedApplication().openURL(vm.termsAndConditionURL)
     }
     
     @IBAction func viewPrivacy(sender: AnyObject) {
-        UIApplication.sharedApplication().openURL(Globals.env.privacyURL)
+        UIApplication.sharedApplication().openURL(vm.privacyURL)
     }
     
     @IBAction func startLogin(sender: AnyObject) {
