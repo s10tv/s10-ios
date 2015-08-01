@@ -29,11 +29,21 @@ extension Digits {
 
 class AccountService {
     enum State {
-        case Indeterminate, LoggedOut, LoggedIn, SignedUp
+        case Indeterminate, LoggedOut, LoggedIn, Onboarded
+        
+        var onboardingNeeded: Bool {
+            switch self {
+            case .Indeterminate, .Onboarded:
+                return false
+            case .LoggedOut, .LoggedIn:
+                return true
+            }
+        }
     }
     private let meteorService: MeteorService
     let digits = Digits.sharedInstance()
     let state: PropertyOf<State>
+    
     
     init(meteorService: MeteorService, settings: Settings) {
         self.meteorService = meteorService
@@ -53,7 +63,7 @@ class AccountService {
                     return .LoggedIn
                 case (.Some, true, .Some(.Active)):
                     Log.info("Status - Signed Up")
-                    return .SignedUp
+                    return .Onboarded
                 default:
                     Log.info("Status - Indeterminate")
                     return .Indeterminate

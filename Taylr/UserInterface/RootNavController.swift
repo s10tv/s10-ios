@@ -20,7 +20,7 @@ class RootNavController : UINavigationController {
     var transitionManager : TransitionManager!
     
     init(account: AccountService) {
-        let sb = account.hasAccount() ? main : onboarding
+        let sb = account.state.value.onboardingNeeded ? onboarding : main
         super.init(rootViewController: sb.instantiateInitialViewController() as! UIViewController)
     }
     
@@ -44,6 +44,10 @@ class RootNavController : UINavigationController {
         } else {
             popViewControllerAnimated(true)
         }
+    }
+    
+    @IBAction func goToLogin() {
+        viewControllers = [onboarding.instantiateInitialViewController()]
     }
     
     // MARK: - Required init overrides

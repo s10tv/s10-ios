@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ReactiveCocoa
 import Core
 
 class RootTabController : UITabBarController {
@@ -21,6 +22,13 @@ class RootTabController : UITabBarController {
 
         // Default to show Discover Scene first, then save user pref
         selectedIndex = UD.lastTabIndex.value ?? 1
+        
+        let nav = self.navigationController as? RootNavController
+        Globals.accountService.state.producer
+            |> takeWhile { $0.onboardingNeeded == false }
+            |> start(completed: {
+                nav?.goToLogin()
+            })
     }
     
     override func viewWillAppear(animated: Bool) {

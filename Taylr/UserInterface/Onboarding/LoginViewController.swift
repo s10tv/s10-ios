@@ -63,10 +63,10 @@ class LoginViewController : BaseViewController {
                 switch Globals.accountService.state.value {
                 case .LoggedIn:
                     self.performSegue(.LoginToCreateProfile, sender: self)
-                case .SignedUp:
+                case .Onboarded:
                     self.performSegue(.Main_RootTab, sender: self)
                 default:
-                    assertionFailure("Expecting either LoggedIn or SignedUp")
+                    assertionFailure("Expecting either LoggedIn or Onboarded")
                 }
             }
             |> onFailure { error in
