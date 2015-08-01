@@ -2024,7 +2024,7 @@
                             </navigationBar>
                             <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s0H-r8-9Hj">
                                 <rect key="frame" x="0.0" y="44" width="600" height="556"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.94886761903762817" green="0.94878417253494263" blue="0.9652295708656311" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="delegate" destination="OW3-uH-BKk" id="WfB-9J-oWR"/>
                                 </connections>

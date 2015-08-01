@@ -18,8 +18,6 @@ class IntegrationWebViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        webView.scrollView.scrollEnabled = false
-        webView.scrollView.bounces = false
         webView.scrollView.delegate = self
     }
     
