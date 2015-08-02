@@ -30,15 +30,17 @@ class LoginViewController : BaseViewController {
         super.viewDidLoad()
         vm.loginButtonText ->> loginButton.titleBond
         vm.logoutButtonText ->> logoutButton.titleBond
-        vm.loginAction <~ loginButton
         vm.logoutAction <~ logoutButton
-        showProgress <~ vm.loginAction.executing
-        showErrorAction <~ vm.loginAction.mErrors |> map { $0 as AlertableError }
-        segueAction <~ vm.loginAction.mValues |> map {
-            switch $0 {
-            case .LoggedIn: return .LoginToCreateProfile
-            case .Onboarded: return .Main_RootTab
-            default: fatalError("Expecting either LoggedIn or Onboarded")
+        
+        loginButton.addAction(vm.loginAction) { values, errors, executing in
+            showProgress <~ executing
+            showErrorAction <~ errors |> map { $0 as AlertableError }
+            segueAction <~ values |> map {
+                switch $0 {
+                case .LoggedIn: return .LoginToCreateProfile
+                case .Onboarded: return .Main_RootTab
+                default: fatalError("Expecting either LoggedIn or Onboarded")
+                }
             }
         }
     }

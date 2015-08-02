@@ -12,20 +12,22 @@ import ReactiveCocoa
 // MARK: - Actions
 
 extension UIControl {
-    public func addAction<I, O, E: ErrorType>(action: Action<I, O, E>, forControlEvents events: UIControlEvents = .TouchUpInside) {
+    public func addAction<I, O, E: ErrorType>(action: Action<I, O, E>, forControlEvents events: UIControlEvents = .TouchUpInside,
+        @noescape configure: (Signal<O, NoError>, Signal<E, NoError>, PropertyOf<Bool>) -> ()) {
         addTarget(action.unsafeCocoaAction, action: CocoaAction.selector, forControlEvents: events)
         action.enabled.producer
             |> observeOn(UIScheduler())
             |> start(next: { [weak self] enabled in
                 self?.enabled = enabled
             })
+        configure(action.mValues, action.mErrors, action.executing)
     }
 }
 
 // Extend the meaning of the <~ operator in RAC to stream events from UIControls into Action
 
 public func <~ <I, O, E: ErrorType>(action: Action<I, O, E>, control: UIControl) {
-    control.addAction(action)
+    control.addAction(action) { _, _, _ in }
 }
 
 // Piping value of Signal and SignalProducer into Action
