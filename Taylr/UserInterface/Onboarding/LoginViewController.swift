@@ -44,12 +44,15 @@ class LoginViewController : BaseViewController {
                 assertionFailure("Expecting either LoggedIn or Onboarded")
             }
         })
+        
         vm.loginAction.mErrors.observe(next: { [unowned self] error in
-            if error.domain == METDDPErrorDomain {
-                self.showAlert(LS(.errUnableToLoginTitle), message: LS(.errUnableToLoginMessage))
-            } else if error.domain == DGTErrorDomain {
+            if error.matches(DGTErrorDomain) {
                 // Ignoring digits error for now
                 Log.warn("Ignoring digits error, not handling for now \(error)")
+            } else {
+//                error.domain == METDDPErrorDomain
+//                self.showAlert(LS(.errUnableToLoginTitle), message: LS(.errUnableToLoginMessage))
+                self.showErrorAction.apply(error).start()
             }
         })
         combineLatest(appearanceState.producer, vm.loginAction.executing.producer)

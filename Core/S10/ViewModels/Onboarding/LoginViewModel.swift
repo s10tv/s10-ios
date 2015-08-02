@@ -22,7 +22,7 @@ public struct LoginViewModel {
     public let logoutButtonText: PropertyOf<String>
     public let termsAndConditionURL = NSURL("http://taylrapp.com/terms")
     public let privacyURL = NSURL("http://taylrapp.com/privacy")
-    public let loginAction: Action<AnyObject, (), NSError>
+    public let loginAction: Action<AnyObject, (), ErrorAlert>
     public let logoutAction: Action<AnyObject, (), NoError>
     
     public init(delegate: LoginDelegate) {
@@ -36,7 +36,12 @@ public struct LoginViewModel {
             $0 != nil ? "Not you? Tap to logout." : ""
         }
         loginAction = Action { _ in
-            delegate.login() |> deliverOn(UIScheduler())
+//            return Future(error: ErrorAlert(title: "Unable to login"))
+            return delegate.login()
+                |> deliverOn(UIScheduler())
+                |> mapError { e in
+                    ErrorAlert(title: "Unable to login", message: e.localizedDescription, underlyingError: e)
+                }
         }
         logoutAction = Action { _ in
             Future(value: delegate.logout())

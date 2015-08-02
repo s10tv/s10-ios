@@ -65,6 +65,8 @@
 		EA2DC2B91B641F070034434E /* MeteorSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2B81B641F070034434E /* MeteorSubscription.swift */; };
 		EA2DC2BD1B642A4A0034434E /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2BB1B642A4A0034434E /* Formatters.swift */; };
 		EA2DC2BE1B642A4A0034434E /* UserExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2BC1B642A4A0034434E /* UserExtensions.swift */; };
+		EA35613D1B6D49DA00F058CC /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA35613C1B6D49DA00F058CC /* Errors.swift */; };
+		EA35613F1B6DBCDB00F058CC /* AlertableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA35613E1B6DBCDB00F058CC /* AlertableError.swift */; };
 		EA3594141B2DE5C300E91337 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594131B2DE5C300E91337 /* ConversationViewController.swift */; };
 		EA3594191B2FEA1F00E91337 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594181B2FEA1F00E91337 /* TransitionManager.swift */; };
 		EA36B1D21B3F23ED002ADD91 /* ActivityImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36B1D11B3F23ED002ADD91 /* ActivityImageCell.swift */; };
@@ -322,6 +324,8 @@
 		EA2DC2B81B641F070034434E /* MeteorSubscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorSubscription.swift; sourceTree = "<group>"; };
 		EA2DC2BB1B642A4A0034434E /* Formatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		EA2DC2BC1B642A4A0034434E /* UserExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserExtensions.swift; sourceTree = "<group>"; };
+		EA35613C1B6D49DA00F058CC /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		EA35613E1B6DBCDB00F058CC /* AlertableError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertableError.swift; sourceTree = "<group>"; };
 		EA3594131B2DE5C300E91337 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		EA3594181B2FEA1F00E91337 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		EA36B1D11B3F23ED002ADD91 /* ActivityImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ActivityImageCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -697,6 +701,8 @@
 				EA2DC2BB1B642A4A0034434E /* Formatters.swift */,
 				EA2DC2BC1B642A4A0034434E /* UserExtensions.swift */,
 				EAC725B91B66036A004113FD /* DynamicDataSource.swift */,
+				EA35613C1B6D49DA00F058CC /* Errors.swift */,
+				EA35613E1B6DBCDB00F058CC /* AlertableError.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1601,6 +1607,7 @@
 				EA2DC2B71B641ECD0034434E /* ProfileViewModel.swift in Sources */,
 				EA2DC2941B637FA50034434E /* _Activity.swift in Sources */,
 				EA043F7D1B62EF5D0047BDCA /* CandidateViewModel.swift in Sources */,
+				EA35613D1B6D49DA00F058CC /* Errors.swift in Sources */,
 				EA3965151B54C19800F5B0B3 /* ReactiveBridging.swift in Sources */,
 				EA2DC2A11B637FA50034434E /* Message.swift in Sources */,
 				EA9C16661B365BD700371B50 /* AsyncOperation.swift in Sources */,
@@ -1627,6 +1634,7 @@
 				EA6E40621B6D33F500FF5126 /* ActionExtensions.swift in Sources */,
 				EA043F871B62F07E0047BDCA /* MeViewModel.swift in Sources */,
 				EAC725BA1B66036A004113FD /* DynamicDataSource.swift in Sources */,
+				EA35613F1B6DBCDB00F058CC /* AlertableError.swift in Sources */,
 				EA6E40571B6D2F1200FF5126 /* RACGenericExtensions.swift in Sources */,
 				EAC725BE1B66DD92004113FD /* ConnectServicesViewModel.swift in Sources */,
 				EAF670971B31FE6A0025D7CF /* Environment.swift in Sources */,

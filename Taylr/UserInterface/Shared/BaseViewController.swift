@@ -9,6 +9,7 @@
 import UIKit
 import ReactiveCocoa
 import Meteor
+import Core
 
 
 extension UINavigationController {
@@ -32,6 +33,7 @@ class BaseViewController : UIViewController {
     private let _appearanceState = MutableProperty<AppearanceState>(.Disappeared)
     
     var appearanceState: PropertyOf<AppearanceState>!
+    var showErrorAction: Action<AlertableError, Void, NoError>!
     var screenName: String?
     
     // MARK: - Initialization
@@ -52,8 +54,20 @@ class BaseViewController : UIViewController {
     
     func commonInit() {
         appearanceState = PropertyOf(_appearanceState)
+        showErrorAction = Action<AlertableError, Void, NoError> { [weak self] error in
+            return SignalProducer<Void, NoError> { [weak self] observer, disposable in
+                let alert = error.alert
+                let vc = UIAlertController(title: alert.title, message: alert.message, preferredStyle: alert.style)
+                alert.actions.each {
+                    vc.addAction($0)
+                }
+                self?.presentViewController(vc, animated: true) {
+                    sendCompleted(observer)
+                }
+            }
+        }
     }
-    
+        
     // MARK: State Management
     
     override func viewWillAppear(animated: Bool) {
