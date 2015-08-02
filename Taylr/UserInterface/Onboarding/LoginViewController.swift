@@ -32,7 +32,8 @@ class LoginViewController : BaseViewController {
         vm.logoutButtonText ->> logoutButton.titleBond
         vm.loginAction <~ loginButton
         vm.logoutAction <~ logoutButton
-        
+        showProgress <~ vm.loginAction.executing
+        showErrorAction <~ vm.loginAction.mErrors |> map { $0 as AlertableError }
         segueAction <~ vm.loginAction.mValues |> map {
             switch $0 {
             case .LoggedIn: return .LoginToCreateProfile
@@ -40,16 +41,6 @@ class LoginViewController : BaseViewController {
             default: fatalError("Expecting either LoggedIn or Onboarded")
             }
         }
-        showErrorAction <~ vm.loginAction.mErrors |> map { $0 as AlertableError }
-        
-        combineLatest(appearanceState.producer, vm.loginAction.executing.producer)
-            |> start(next: { state, executing in
-                if state == .Appeared && executing {
-                    PKHUD.showActivity(dimsBackground: true)
-                } else {
-                    PKHUD.hide(animated: false)
-                }
-            })
     }
     
     override func viewWillAppear(animated: Bool) {

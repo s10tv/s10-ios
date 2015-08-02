@@ -10,6 +10,7 @@ import UIKit
 import ReactiveCocoa
 import Meteor
 import Result
+import PKHUD
 import Core
 
 
@@ -36,6 +37,7 @@ class BaseViewController : UIViewController {
     var appearanceState: PropertyOf<AppearanceState>!
     var showErrorAction: Action<AlertableError, Void, NoError>!
     var segueAction: Action<SegueIdentifier, Void, NoError>!
+    var showProgress: MutableProperty<Bool>!
     var screenName: String?
     
     // MARK: - Initialization
@@ -72,6 +74,15 @@ class BaseViewController : UIViewController {
             self.map { $0.performSegue(identifier, sender: $0) }
             return Result(value: ())
         }
+        showProgress = MutableProperty(false)
+        combineLatest(appearanceState.producer, showProgress.producer)
+            |> start(next: { state, executing in
+                if state == .Appeared && executing {
+                    PKHUD.showActivity(dimsBackground: true)
+                } else {
+                    PKHUD.hide(animated: false)
+                }
+            })
     }
         
     // MARK: State Management
