@@ -45,15 +45,7 @@ class LoginViewController : BaseViewController {
             }
         })
         
-        showErrorAction <~ vm.loginAction.mErrors
-            |> filter {
-                if $0.matches(DGTErrorDomain) {
-                    Log.warn("Ignoring digits error, not handling for now \($0)")
-                    return false
-                }
-                return true
-            }
-            |> map { $0 as AlertableError }
+        showErrorAction <~ vm.loginAction.mErrors |> map { $0 as AlertableError }
         
         combineLatest(appearanceState.producer, vm.loginAction.executing.producer)
             |> start(next: { state, executing in

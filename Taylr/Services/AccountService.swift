@@ -17,6 +17,8 @@ extension Digits {
         authenticateWithCompletion { (session: DGTSession?, error: NSError?) in
             if let session = session {
                 promise.success(session)
+            } else if let error = error where error.code == DGTErrorCode.UserCanceledAuthentication.rawValue {
+                promise.cancel()
             } else if let error = error {
                 promise.failure(error)
             } else {
@@ -101,23 +103,24 @@ class AccountService {
             |> deliverOn(UIScheduler())
             |> onComplete {
                 self._digitsSession.value = $0.value
-            println("Session userId= \($0.value?.userID) error \($0.error)")
-            if let session = $0.value {
-                self.meteorService.loginWithDigits(
-                    userId: session.userID,
-                    authToken: session.authToken,
-                    authTokenSecret: session.authTokenSecret,
-                    phoneNumber: session.phoneNumber
-                ).subscribeError({
-                    promise.failure($0)
-                }, completed: {
-                    self.didLogin()
-                    promise.success()
-                })
-            } else {
-                promise.failure($0.error!)
+                println("Session userId= \($0.value?.userID) error \($0.error)")
+                if let session = $0.value {
+                    self.meteorService.loginWithDigits(
+                        userId: session.userID,
+                        authToken: session.authToken,
+                        authTokenSecret: session.authTokenSecret,
+                        phoneNumber: session.phoneNumber
+                    ).subscribeError({
+                        promise.failure($0)
+                    }, completed: {
+                        self.didLogin()
+                        promise.success()
+                    })
+                } else {
+                    promise.failure($0.error!)
+                }
             }
-        }
+            |> onCancel { promise.cancel() }
         return promise.future
     }
     
