@@ -8,7 +8,6 @@
 
 import Foundation
 import ReactiveCocoa
-import DigitsKit
 
 public protocol LoginDelegate {
     var loggedInPhone: PropertyOf<String?> { get }

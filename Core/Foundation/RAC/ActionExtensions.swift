@@ -27,3 +27,18 @@ extension UIControl {
 public func <~ <I, O, E: ErrorType>(action: Action<I, O, E>, control: UIControl) {
     control.addAction(action)
 }
+
+// Piping value of Signal and SignalProducer into Action
+
+public func <~ <I, O, E: ErrorType>(action: Action<I, O, E>, signal: Signal<I, NoError>) {
+    signal.observe(next: {
+        action.apply($0).start()
+    })
+}
+
+public func <~ <I, O, E: ErrorType>(action: Action<I, O, E>, producer: SignalProducer<I, NoError>) {
+    producer.start(next: {
+        action.apply($0).start()
+    })
+}
+

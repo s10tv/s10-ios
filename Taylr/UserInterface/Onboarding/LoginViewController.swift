@@ -45,16 +45,16 @@ class LoginViewController : BaseViewController {
             }
         })
         
-        vm.loginAction.mErrors.observe(next: { [unowned self] error in
-            if error.matches(DGTErrorDomain) {
-                // Ignoring digits error for now
-                Log.warn("Ignoring digits error, not handling for now \(error)")
-            } else {
-//                error.domain == METDDPErrorDomain
-//                self.showAlert(LS(.errUnableToLoginTitle), message: LS(.errUnableToLoginMessage))
-                self.showErrorAction.apply(error).start()
+        showErrorAction <~ vm.loginAction.mErrors
+            |> filter {
+                if $0.matches(DGTErrorDomain) {
+                    Log.warn("Ignoring digits error, not handling for now \($0)")
+                    return false
+                }
+                return true
             }
-        })
+            |> map { $0 as AlertableError }
+        
         combineLatest(appearanceState.producer, vm.loginAction.executing.producer)
             |> start(next: { state, executing in
                 if state == .Appeared && executing {
