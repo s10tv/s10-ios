@@ -22,14 +22,22 @@ public struct Promise<T, E: ErrorType> {
         block?(self)
     }
     
-    public func complete(result: Result<T, E>) {
+    public func complete(result: Result<T, E>?) {
         assert(future.result == nil, "Promise should not be fulfulled multiple times")
-        result.analysis(ifSuccess: {
-            sendNext(sink, $0)
-            sendCompleted(sink)
-        }, ifFailure: {
-            sendError(sink, $0)
-        })
+        if let result = result {
+            result.analysis(ifSuccess: {
+                sendNext(sink, $0)
+                sendCompleted(sink)
+            }, ifFailure: {
+                sendError(sink, $0)
+            })
+        } else {
+            sendInterrupted(sink)
+        }
+    }
+    
+    public func cancel() {
+        complete(nil)
     }
     
     public func success(value: T) {
@@ -82,7 +90,7 @@ public struct Future<T, E: ErrorType> {
         self.init(buffer: buffer)
     }
     
-    public func observe(callback: Result<T, E> ->()) -> Disposable {
+    public func observe(callback: Result<T, E>? ->()) -> Disposable {
         var result: Result<T, E>?
         let sink = Event<T, E>.sink(next: { v in
             result = Result(value: v)
@@ -91,6 +99,8 @@ public struct Future<T, E: ErrorType> {
         }, error: { e in
             result = Result(error: e)
             callback(result!)
+        }, interrupted: {
+            callback(nil)
         })
         var disposable: Disposable!
         buffer.startWithSignal { signal, innerDisposable in
@@ -100,15 +110,24 @@ public struct Future<T, E: ErrorType> {
         return disposable
     }
     
-    public func observe(success: (T -> ())? = nil, failure: (E -> ())? = nil, complete: (() -> ())? = nil) -> Disposable {
+    public func observe(success: (T -> ())? = nil, failure: (E -> ())? = nil, cancel: (() -> ())? = nil, complete: (Result<T, E> -> ())? = nil) -> Disposable {
         return observe { result in
-            result.analysis(ifSuccess: { success?($0) }, ifFailure: { failure?($0) })
-            complete?()
+            if let result = result {
+                result.analysis(ifSuccess: { success?($0) }, ifFailure: { failure?($0) })
+                complete?(result)
+            } else {
+                cancel?()
+            }
         }
     }
     
     public func onComplete(callback: Result<T, E> ->()) -> Future<T, E> {
-        observe(callback)
+        observe(complete: callback)
+        return self
+    }
+    
+    public func onCancel(callback: () -> ()) -> Future<T, E> {
+        observe(cancel: callback)
         return self
     }
     
@@ -175,6 +194,12 @@ public func onFailure<T, E>(block: E -> ()) -> Future<T, E> -> Future<T, E> {
 public func onComplete<T, E>(block: Result<T, E> -> ()) -> Future<T, E> -> Future<T, E> {
     return { future in
         return future.onComplete(block)
+    }
+}
+
+public func onCancel<T, E>(block: () -> ()) -> Future<T, E> -> Future<T, E> {
+    return { future in
+        return future.onCancel(block)
     }
 }
 

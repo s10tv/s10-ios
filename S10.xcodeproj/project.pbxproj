@@ -11,7 +11,6 @@
 		640DB2B4B8DE9B8DDC392B01 /* Pods_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28970C9FC888535D277B71D5 /* Pods_Core.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		C0694BB32891795853D2C3CF /* Pods_Core_TestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F09ED94DDC00446577DFD4 /* Pods_Core_TestApp.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		D6555C3D41C17908B83EB27C /* Pods_Core_Taylr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1D48B38C28B60559AEB8949 /* Pods_Core_Taylr.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
-		EA009D4E1B5B7A4600FC7E3D /* ReactiveProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA10472D1B4E74A300B1A76A /* ReactiveProperties.swift */; };
 		EA009D4F1B5B7A4600FC7E3D /* ReactiveBridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3965141B54C19800F5B0B3 /* ReactiveBridging.swift */; };
 		EA009D501B5B7A4600FC7E3D /* GenericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBB71B3932B500701F08 /* GenericExtensions.swift */; };
 		EA009D511B5B7A4600FC7E3D /* MediaExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBB81B3932B500701F08 /* MediaExtension.swift */; };
@@ -33,8 +32,6 @@
 		EA06AAB91B3B2D8F000E128C /* ResourceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBAC1B3930B000701F08 /* ResourceExtension.swift */; };
 		EA0FED451ADE5BC500FC6FCB /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */; };
 		EA1047281B4E3C1C00B1A76A /* RACPlayground.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1047271B4E3C1C00B1A76A /* RACPlayground.swift */; };
-		EA10472F1B4E74D000B1A76A /* ReactiveProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA10472D1B4E74A300B1A76A /* ReactiveProperties.swift */; };
-		EA1047301B4E74D000B1A76A /* ReactiveProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA10472D1B4E74A300B1A76A /* ReactiveProperties.swift */; };
 		EA1047341B4E756200B1A76A /* MeteorServiceTestingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1047321B4E756200B1A76A /* MeteorServiceTestingExtension.swift */; };
 		EA1047351B4E756200B1A76A /* TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1047331B4E756200B1A76A /* TestExtensions.swift */; };
 		EA2406201B50F0F1003A73C3 /* VideoDownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA24061F1B50F0F1003A73C3 /* VideoDownloadOperation.swift */; };
@@ -130,7 +127,6 @@
 		EA7FB0981B5EF9D50052B394 /* Cabin-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB0921B5EF9D50052B394 /* Cabin-MediumItalic.ttf */; };
 		EA7FB0991B5EF9D50052B394 /* Cabin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB0931B5EF9D50052B394 /* Cabin-Regular.ttf */; };
 		EA82CF971B504FC500A12D94 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA82CF961B504FC500A12D94 /* Image.swift */; };
-		EA8896221B4F3C1300E180A6 /* ReactiveProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA10472D1B4E74A300B1A76A /* ReactiveProperties.swift */; };
 		EA89C0861B6AA2060007C6CB /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0851B6AA2060007C6CB /* CreateProfileViewController.swift */; };
 		EA89C0881B6AC0410007C6CB /* ConnectServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0871B6AC0410007C6CB /* ConnectServicesViewController.swift */; };
 		EA925C741AD99ED8008E9F41 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA925C731AD99ED8008E9F41 /* R.swift */; };
@@ -293,7 +289,6 @@
 		EA043F861B62F07E0047BDCA /* MeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewModel.swift; sourceTree = "<group>"; };
 		EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
 		EA1047271B4E3C1C00B1A76A /* RACPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACPlayground.swift; sourceTree = "<group>"; };
-		EA10472D1B4E74A300B1A76A /* ReactiveProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveProperties.swift; sourceTree = "<group>"; };
 		EA1047321B4E756200B1A76A /* MeteorServiceTestingExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorServiceTestingExtension.swift; sourceTree = "<group>"; };
 		EA1047331B4E756200B1A76A /* TestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestExtensions.swift; sourceTree = "<group>"; };
 		EA24061F1B50F0F1003A73C3 /* VideoDownloadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDownloadOperation.swift; sourceTree = "<group>"; };
@@ -844,7 +839,6 @@
 			isa = PBXGroup;
 			children = (
 				EA6E40561B6D2F1200FF5126 /* RACGenericExtensions.swift */,
-				EA10472D1B4E74A300B1A76A /* ReactiveProperties.swift */,
 				EA3965141B54C19800F5B0B3 /* ReactiveBridging.swift */,
 				EA95BBB71B3932B500701F08 /* GenericExtensions.swift */,
 				EA95BBB81B3932B500701F08 /* MediaExtension.swift */,
@@ -1575,7 +1569,6 @@
 				EAF81B2E1B33883A00EED6DD /* RecorderViewController.swift in Sources */,
 				EA009D541B5BFED900FC7E3D /* Bond+SDWebImage.swift in Sources */,
 				EA06AAB81B3B2D2B000E128C /* PKHUDExtension.swift in Sources */,
-				EA009D4E1B5B7A4600FC7E3D /* ReactiveProperties.swift in Sources */,
 				EA06AAB91B3B2D8F000E128C /* ResourceExtension.swift in Sources */,
 				EA6E40591B6D2F1B00FF5126 /* RACGenericExtensions.swift in Sources */,
 				EAF81B341B33890300EED6DD /* SBConstants.swift in Sources */,
@@ -1662,7 +1655,6 @@
 				EAF670761B31F9450025D7CF /* FoundationExtension.swift in Sources */,
 				EA5773501B6C652800BCF449 /* LoginViewModel.swift in Sources */,
 				EA2406221B50F79E003A73C3 /* VideoCache.swift in Sources */,
-				EA8896221B4F3C1300E180A6 /* ReactiveProperties.swift in Sources */,
 				EAF6708F1B31FA2E0025D7CF /* Settings.swift in Sources */,
 				EA4757131B392C19002071D7 /* PanInteractor.swift in Sources */,
 				EA5CA5811B51292300284B04 /* RealmExtensions.swift in Sources */,
@@ -1678,7 +1670,6 @@
 				EA95BBBD1B3932B500701F08 /* GenericExtensions.swift in Sources */,
 				EAAD921D1ACF342C0014BA25 /* TaylrEnvironment.swift in Sources */,
 				EAA8D6C31B62F2A400D5A6DC /* IntegrationWebViewController.swift in Sources */,
-				EA1047301B4E74D000B1A76A /* ReactiveProperties.swift in Sources */,
 				EAD1BB251B60347600D250C5 /* MeViewController.swift in Sources */,
 				EAC725B81B65BB50004113FD /* ProfileInfoCells.swift in Sources */,
 				EA043F6B1B62CE770047BDCA /* IntegrationCell.swift in Sources */,
@@ -1753,7 +1744,6 @@
 				EAF6709C1B32026F0025D7CF /* IntegrationTests.swift in Sources */,
 				EA95BBC11B3932BE00701F08 /* GenericExtensions.swift in Sources */,
 				EA5022101B54AC4B00BC92D2 /* TestNSObject.m in Sources */,
-				EA10472F1B4E74D000B1A76A /* ReactiveProperties.swift in Sources */,
 				EA3965161B54C1B400F5B0B3 /* ReactiveBridging.swift in Sources */,
 				EA1047351B4E756200B1A76A /* TestExtensions.swift in Sources */,
 			);
