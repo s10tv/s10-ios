@@ -118,7 +118,7 @@ public class MeteorService : NSObject {
                 "authTokenSecret": authTokenSecret,
                 "phoneNumber": phoneNumber
             ]
-        ]]).delay(0)
+        ]]).delay(0.1)
     }
 
     func confirmRegistration(username: String) -> RACSignal {

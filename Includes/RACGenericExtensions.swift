@@ -8,6 +8,7 @@
 
 import Foundation
 import ReactiveCocoa
+import Result
 import Core
 
 // MARK: - Action extension
@@ -18,6 +19,19 @@ extension Action {
         self.init(enabledIf: ConstantProperty(true), { input in
             SignalProducer<Output, Error> { observer, disposable in
                 disposable += future(input).producer.start(observer)
+            }
+        })
+    }
+    
+    convenience init(_ transform: Input -> Result<Output, Error>) {
+        self.init(enabledIf: ConstantProperty(true), { input in
+            SignalProducer<Output, Error> { observer, disposable in
+                transform(input).analysis(ifSuccess: {
+                    sendNext(observer, $0)
+                    sendCompleted(observer)
+                }, ifFailure: {
+                    sendError(observer, $0)
+                })
             }
         })
     }

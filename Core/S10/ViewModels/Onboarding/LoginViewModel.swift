@@ -12,7 +12,20 @@ import ReactiveCocoa
 public protocol LoginDelegate {
     var loggedInPhone: PropertyOf<String?> { get }
     func logout()
-    func login() -> Future<(), NSError>
+    func login() -> Future<AccountState, NSError>
+}
+
+public enum AccountState {
+    case Indeterminate, LoggedOut, LoggedIn, Onboarded
+    
+    public var onboardingNeeded: Bool {
+        switch self {
+        case .Indeterminate, .Onboarded:
+            return false
+        case .LoggedOut, .LoggedIn:
+            return true
+        }
+    }
 }
 
 public struct LoginViewModel {
@@ -21,7 +34,7 @@ public struct LoginViewModel {
     public let logoutButtonText: PropertyOf<String>
     public let termsAndConditionURL = NSURL("http://taylrapp.com/terms")
     public let privacyURL = NSURL("http://taylrapp.com/privacy")
-    public let loginAction: Action<AnyObject, (), ErrorAlert>
+    public let loginAction: Action<AnyObject, AccountState, ErrorAlert>
     public let logoutAction: Action<AnyObject, (), NoError>
     
     public init(delegate: LoginDelegate) {

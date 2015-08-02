@@ -9,6 +9,7 @@
 import UIKit
 import ReactiveCocoa
 import Meteor
+import Result
 import Core
 
 
@@ -34,6 +35,7 @@ class BaseViewController : UIViewController {
     
     var appearanceState: PropertyOf<AppearanceState>!
     var showErrorAction: Action<AlertableError, Void, NoError>!
+    var segueAction: Action<SegueIdentifier, Void, NoError>!
     var screenName: String?
     
     // MARK: - Initialization
@@ -65,6 +67,10 @@ class BaseViewController : UIViewController {
                     sendCompleted(observer)
                 }
             }
+        }
+        segueAction = Action { [weak self] identifier -> Result<Void, NoError> in
+            self.map { $0.performSegue(identifier, sender: $0) }
+            return Result(value: ())
         }
     }
         

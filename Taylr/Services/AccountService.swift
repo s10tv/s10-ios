@@ -30,22 +30,10 @@ extension Digits {
 }
 
 class AccountService {
-    enum State {
-        case Indeterminate, LoggedOut, LoggedIn, Onboarded
-        
-        var onboardingNeeded: Bool {
-            switch self {
-            case .Indeterminate, .Onboarded:
-                return false
-            case .LoggedOut, .LoggedIn:
-                return true
-            }
-        }
-    }
     private let meteorService: MeteorService
     private let _digitsSession: MutableProperty<DGTSession?>
     let digits = Digits.sharedInstance()
-    let state: PropertyOf<State>
+    let state: PropertyOf<AccountState>
     let digitsSession: PropertyOf<DGTSession?>
     
     init(meteorService: MeteorService, settings: Settings) {
@@ -97,8 +85,8 @@ class AccountService {
         }
     }
     
-    func login() -> Future<(), NSError> {
-        let promise = Promise<(), NSError>()
+    func login() -> Future<AccountState, NSError> {
+        let promise = Promise<AccountState, NSError>()
         digits.authenticate()
             |> deliverOn(UIScheduler())
             |> onComplete {
@@ -114,7 +102,7 @@ class AccountService {
                         promise.failure($0)
                     }, completed: {
                         self.didLogin()
-                        promise.success()
+                        promise.success(self.state.value)
                     })
                 } else {
                     promise.failure($0.error!)

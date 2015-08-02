@@ -33,18 +33,13 @@ class LoginViewController : BaseViewController {
         vm.loginAction <~ loginButton
         vm.logoutAction <~ logoutButton
         
-        vm.loginAction.mValues.observe(next: { [unowned self] in
-            assert(NSThread.isMainThread(), "Only on main")
-            switch Globals.accountService.state.value {
-            case .LoggedIn:
-                self.performSegue(.LoginToCreateProfile, sender: self)
-            case .Onboarded:
-                self.performSegue(.Main_RootTab, sender: self)
-            default:
-                assertionFailure("Expecting either LoggedIn or Onboarded")
+        segueAction <~ vm.loginAction.mValues |> map {
+            switch $0 {
+            case .LoggedIn: return .LoginToCreateProfile
+            case .Onboarded: return .Main_RootTab
+            default: fatalError("Expecting either LoggedIn or Onboarded")
             }
-        })
-        
+        }
         showErrorAction <~ vm.loginAction.mErrors |> map { $0 as AlertableError }
         
         combineLatest(appearanceState.producer, vm.loginAction.executing.producer)
