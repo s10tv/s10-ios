@@ -11,15 +11,16 @@ import UIKit
 extension UIViewController {
     func pickImage(block: (UIImage) -> ()) {
         let picker = UIImagePickerController()
-        picker.rac_imageSelectedSignal().subscribeNext({
-            if let info = $0 as? NSDictionary,
-                let image = (info[UIImagePickerControllerEditedImage]
-                    ?? info[UIImagePickerControllerOriginalImage]) as? UIImage {
-                        block(image)
+        picker.rac_imageSelectedSignal().subscribeNext({ info in
+            picker.dismissViewControllerAnimated(true) {
+                if let info = info as? NSDictionary,
+                    let image = (info[UIImagePickerControllerEditedImage]
+                        ?? info[UIImagePickerControllerOriginalImage]) as? UIImage {
+                            block(image)
+                }
             }
+        }, completed: {
             picker.dismissViewController(animated: true)
-            }, completed: {
-                picker.dismissViewController(animated: true)
         })
         presentViewController(picker, animated: true)
     }

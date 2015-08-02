@@ -23,7 +23,7 @@ class CreateProfileViewController : UITableViewController {
     @IBOutlet weak var taglineField: JVFloatLabeledTextField!
     @IBOutlet weak var aboutView: JVFloatLabeledTextView!
     
-    let vm = CreateProfileViewModel(meteor: Meteor)
+    var vm: CreateProfileViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,6 +39,7 @@ class CreateProfileViewController : UITableViewController {
         aboutView.font = UIFont(.cabinRegular, size: 16)
         aboutView.delegate = self
         
+        vm = CreateProfileViewModel(meteor: Meteor)
         vm.firstName <->> firstNameField
         vm.lastName <->> lastNameField
         vm.about <->> aboutView
@@ -59,36 +60,14 @@ class CreateProfileViewController : UITableViewController {
     @IBAction func didTabEditAvatar(sender: AnyObject) {
         pickImage { image in
             let scaledImage = image.scaleToMaxDimension(200, pixelSize: true)
-            PKHUD.showActivity(dimsBackground: true)
-            self.vm.upload(scaledImage, taskType: .ProfilePic)
-                |> deliverOn(UIScheduler())
-                |> onComplete { result in
-                if let error = result.error {
-                    PKHUD.hide(animated: false)
-                    self.showErrorAlert(error)
-                } else {
-                    PKHUD.showText("Cover Photo Updated")
-                    PKHUD.hide(afterDelay: 0.5)
-                }
-            }
+            self.execute(self.vm.uploadImageAction, input: (scaledImage, .ProfilePic), showProgress: true)
         }
     }
     
     @IBAction func didTabEditCover(sender: AnyObject) {
         pickImage { image in
             let scaledImage = image.scaleToMaxDimension(1400, pixelSize: true)
-            PKHUD.showActivity(dimsBackground: true)
-            self.vm.upload(scaledImage, taskType: .CoverPic)
-                |> deliverOn(UIScheduler())
-                |> onComplete { result in
-                if let error = result.error {
-                    PKHUD.hide(animated: false)
-                    self.showErrorAlert(error)
-                } else {
-                    PKHUD.showText("Cover Photo Updated")
-                    PKHUD.hide(afterDelay: 0.5)
-                }
-            }
+            self.execute(self.vm.uploadImageAction, input: (scaledImage, .CoverPic), showProgress: true)
         }
     }
 

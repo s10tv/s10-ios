@@ -27,7 +27,7 @@ public enum AccountState {
         }
     }
 }
-
+// TODO: make delegate weak
 public struct LoginViewModel {
     private let delegate: LoginDelegate
     public let loginButtonText: PropertyOf<String>

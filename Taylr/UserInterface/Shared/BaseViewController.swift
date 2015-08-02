@@ -23,6 +23,28 @@ extension UINavigationController {
     }
 }
 
+extension UIViewController {
+    func execute<I,O,E>(action: Action<I,O,E>, input: I, showProgress: Bool = false) -> Future<O, ActionError<E>> {
+        return Future(workToStart: action.apply(input)
+            |> observeOn(UIScheduler())
+            |> on(started: {
+                    if showProgress { PKHUD.show(dimsBackground: true) }
+                }, error: { [weak self] in
+                    switch $0 {
+                    case .ProducerError(let e as AlertableError):
+                        let vc = UIAlertController(title: e.alert.title, message: e.alert.message, preferredStyle: e.alert.style)
+                        e.alert.actions.each { vc.addAction($0) }
+                        self?.presentViewController(vc, animated: true, completion: nil)
+                    default:
+                        break
+                    }
+                }, terminated: {
+                    if showProgress { PKHUD.hide(animated: false) }
+                })
+        )
+    }
+}
+
 class BaseViewController : UIViewController {
     // For docs see WWDC 2013 Session 218 Custom Transitions using View Controllers
     enum AppearanceState : Equatable {

@@ -11,13 +11,14 @@ import ReactiveCocoa
 
 public struct CreateProfileViewModel {
     let meteor: MeteorService
-    let operationQueue = NSOperationQueue()
+    let operationQueue: NSOperationQueue
     public let avatar: PropertyOf<Image?>
     public let cover: PropertyOf<Image?>
     public let firstName: MutableProperty<String>
     public let lastName: MutableProperty<String>
     public let tagline: MutableProperty<String>
     public let about: MutableProperty<String>
+    public let uploadImageAction: Action<(image: UIImage, type: PhotoTaskType), (), ErrorAlert>
     
     public init(meteor: MeteorService) {
         self.meteor = meteor
@@ -28,6 +29,15 @@ public struct CreateProfileViewModel {
         avatar = user.pAvatar()
         cover = user.pCover()
         tagline = MutableProperty("")
+        operationQueue = NSOperationQueue()
+        let queue = operationQueue
+        uploadImageAction = Action { tuple -> Future<(), ErrorAlert> in
+            queue.addAsyncOperation {
+                PhotoUploadOperation(meteor: meteor, image: tuple.image, taskType: tuple.type)
+            } |> mapError { e in
+                ErrorAlert(title: "Unable to upload", message: e.localizedDescription, underlyingError: e)
+            }
+        }
     }
     
     // TODO: Add width & Height

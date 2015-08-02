@@ -70,6 +70,12 @@ public struct Future<T, E: ErrorType> {
         onComplete { r = $0 }
     }
     
+    public static var cancelled: Future {
+        return self(buffer: SignalProducer { observer, disposable in
+            sendInterrupted(observer)
+        })
+    }
+    
     public init(error: E) {
         self.init(buffer: SignalProducer(error: error))
     }
@@ -141,6 +147,11 @@ public struct Future<T, E: ErrorType> {
         return self
     }
     
+    public func onTerminate(callback: Result<T, E>? -> ()) -> Future<T, E> {
+        observe(callback)
+        return self
+    }
+    
     // Unary lift
     
     public func lift<U, F>(transform: Signal<T, E> -> Signal<U, F>) -> Future<U, F> {
@@ -203,6 +214,13 @@ public func onCancel<T, E>(block: () -> ()) -> Future<T, E> -> Future<T, E> {
     }
 }
 
+public func onTerminate<T, E>(block: Result<T, E>? -> ()) -> Future<T, E> -> Future<T, E> {
+    return { future in
+        return future.onTerminate(block)
+    }
+}
+
+
 public func flatMap<T, U, E>(transform: T -> Future<U, E>) -> Future<T, E> -> Future<U, E> {
     return { future in
         // Specific strategy here doesn't matter because there will only ever be at most value to be
@@ -210,7 +228,6 @@ public func flatMap<T, U, E>(transform: T -> Future<U, E>) -> Future<T, E> -> Fu
         return future |> flatMap(.Latest) { transform($0).buffer }
     }
 }
-
 
 // Unary Lift
 
