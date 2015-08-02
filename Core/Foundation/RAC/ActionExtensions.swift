@@ -30,15 +30,19 @@ public func <~ <I, O, E: ErrorType>(action: Action<I, O, E>, control: UIControl)
 
 // Piping value of Signal and SignalProducer into Action
 
-public func <~ <I, O, E: ErrorType>(action: Action<I, O, E>, signal: Signal<I, NoError>) {
-    signal.observe(next: {
-        action.apply($0).start()
+public func <~ <I, O, E: ErrorType>(action: Action<I, O, E>, signal: Signal<I, NoError>) -> Disposable {
+    let disposable = CompositeDisposable()
+    disposable += signal.observe(next: {
+        disposable += action.apply($0).start()
     })
+    return disposable
 }
 
-public func <~ <I, O, E: ErrorType>(action: Action<I, O, E>, producer: SignalProducer<I, NoError>) {
-    producer.start(next: {
-        action.apply($0).start()
+public func <~ <I, O, E: ErrorType>(action: Action<I, O, E>, producer: SignalProducer<I, NoError>) -> Disposable {
+    let disposable = CompositeDisposable()
+    disposable += producer.start(next: {
+        disposable += action.apply($0).start()
     })
+    return disposable
 }
 
