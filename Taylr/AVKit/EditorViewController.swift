@@ -8,13 +8,14 @@
 
 import UIKit
 import AVFoundation
+import ReactiveCocoa
 import SCRecorder
-import AssetsLibrary
 import PKHUD
+import Core
 
 protocol EditorDelegate : NSObjectProtocol {
     func editorDidCancel(editor: EditorViewController)
-    func editor(editor: EditorViewController, didEditVideo outputURL:NSURL)
+    func editor(editor: EditorViewController, didEditVideo video: VideoSession)
 }
 
 class EditorViewController : UIViewController {
@@ -52,38 +53,25 @@ class EditorViewController : UIViewController {
         player.setItem(nil)
     }
     
-    func exportVideo(block: ((NSURL) -> Void)) {
-        let exporter = SCAssetExportSession(asset: recordSession.assetRepresentingSegments())
-        exporter.videoConfiguration.filter = filterView.selectedFilter
-        exporter.outputFileType = AVFileTypeMPEG4
-        exporter.outputUrl = recordSession.outputUrl
-        exporter.exportAsynchronouslyWithCompletionHandler {
-            block(exporter.outputUrl!)
-        }
-    }
-    
     @IBAction func cancelEditing(sender: AnyObject) {
         delegate?.editorDidCancel(self)
     }
 
     @IBAction func finishEditing(sender: AnyObject) {
-        UIApplication.sharedApplication().beginIgnoringInteractionEvents()
         player.pause()
-        PKHUD.showText("Sending")
-        exportVideo { url in
-            self.delegate?.editor(self, didEditVideo: url)
-            UIApplication.sharedApplication().endIgnoringInteractionEvents()
-        }
+        let video = VideoSession(recordSession: recordSession, filter: filterView.selectedFilter)
+        delegate?.editor(self, didEditVideo: video)
     }
     
     @IBAction func saveToCameraRoll(sender: AnyObject) {
-        exportVideo { url in
-            PKHUD.showActivity(dimsBackground: true)
-            ALAssetsLibrary().writeVideoAtPathToSavedPhotosAlbum(url) { url, err in
+        PKHUD.showActivity(dimsBackground: true)
+        AVKit.exportVideo(recordSession, filter: filterView.selectedFilter)
+            |> flatMap { AVKit.writeToSavedPhotosAlbum($0) }
+            |> observeOn(UIScheduler())
+            |> onSuccess { assetURL in
                 PKHUD.hide(animated: true)
-                println("Finished writing \(url), \(err)")
+                println("Finished writing to assetURL \(assetURL)")
             }
-        }
     }
 }
 

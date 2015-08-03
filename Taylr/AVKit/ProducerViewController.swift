@@ -12,7 +12,7 @@ import SCRecorder
 protocol ProducerDelegate : NSObjectProtocol {
     func producerWillStartRecording(producer: ProducerViewController)
     func producerDidCancelRecording(producer: ProducerViewController)
-    func producer(producer: ProducerViewController, didProduceVideo url: NSURL, duration: NSTimeInterval)
+    func producer(producer: ProducerViewController, didProduceVideo video: VideoSession, duration: NSTimeInterval)
 }
 
 class ProducerViewController : UIViewController {
@@ -89,8 +89,8 @@ extension ProducerViewController : EditorDelegate {
         producerDelegate?.producerDidCancelRecording(self)
     }
     
-    func editor(editor: EditorViewController, didEditVideo outputURL: NSURL) {
-        producerDelegate?.producer(self, didProduceVideo: outputURL, duration: editor.recordSession.duration.seconds)
+    func editor(editor: EditorViewController, didEditVideo video: VideoSession) {
+        producerDelegate?.producer(self, didProduceVideo: video, duration: editor.recordSession.duration.seconds)
         showRecorder()
     }
 }

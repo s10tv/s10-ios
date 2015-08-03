@@ -48,17 +48,11 @@ extension InviteViewController : ProducerDelegate {
         producer.dismissViewController(animated: true)
     }
     
-    func producer(producer: ProducerViewController, didProduceVideo url: NSURL, duration: NSTimeInterval) {
+    func producer(producer: ProducerViewController, didProduceVideo video: VideoSession, duration: NSTimeInterval) {
         producer.dismissViewController(animated: true)
-        AVKit.exportFirstFrame(url)
-            |> flatMap { self.vm.sendInvite(url, thumbnail: $0) }
-            |> onSuccess {
-                PKHUD.showText("Sent Successfully!")
-                PKHUD.hide(afterDelay: 0.25)
-            }
-            |> onFailure { error in
-                PKHUD.hide(animated: false)
-                self.showErrorAlert(error)
-            }
+        wrapFuture(showProgress: true) {
+            video.exportWithFirstFrame()
+                |> flatMap { self.vm.sendInvite($0, thumbnail: $1) }
+        }
     }
 }

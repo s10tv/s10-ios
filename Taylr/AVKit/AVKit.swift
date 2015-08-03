@@ -9,12 +9,56 @@
 import Foundation
 import AVFoundation
 import ReactiveCocoa
+import AssetsLibrary
 import Bond
 import SCRecorder
 import Core
 
+struct VideoSession {
+    let recordSession: SCRecordSession
+    let filter: SCFilter?
+    
+    func export() -> Future<NSURL, NSError> {
+        return AVKit.exportVideo(recordSession, filter: filter)
+    }
+    
+    func exportWithFirstFrame() -> Future<(NSURL, UIImage), NSError> {
+        let videoURL = export()
+        let firstFrame = videoURL |> flatMap(AVKit.exportFirstFrame)
+        return zip(videoURL.producer, firstFrame.producer) |> toFuture
+    }
+}
+
 class AVKit {
     static let defaultFilters = AVKit.allFilters()
+    
+    class func writeToSavedPhotosAlbum(url: NSURL, library: ALAssetsLibrary = ALAssetsLibrary()) -> Future<NSURL, NSError> {
+        let promise = Promise<NSURL, NSError>()
+        library.writeVideoAtPathToSavedPhotosAlbum(url) { assetURL, error in
+            if let error = error {
+                promise.failure(error)
+            } else {
+                promise.success(assetURL)
+            }
+        }
+        return promise.future
+    }
+    
+    class func exportVideo(session: SCRecordSession, filter: SCFilter? = nil) -> Future<NSURL, NSError> {
+        let promise = Promise<NSURL, NSError>()
+        let exporter = SCAssetExportSession(asset: session.assetRepresentingSegments())
+        exporter.videoConfiguration.filter = filter
+        exporter.outputFileType = AVFileTypeMPEG4
+        exporter.outputUrl = session.outputUrl
+        exporter.exportAsynchronouslyWithCompletionHandler {
+            if let error = exporter.error {
+                promise.failure(error)
+            } else {
+                promise.success(exporter.outputUrl!)
+            }
+        }
+        return promise.future
+    }
     
     class func exportFirstFrame(url: NSURL) -> Future<UIImage, NSError> {
         let generator = AVAssetImageGenerator(asset: AVURLAsset(URL: url, options: nil))
