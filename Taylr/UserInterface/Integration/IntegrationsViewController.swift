@@ -37,17 +37,10 @@ class IntegrationsViewController : UICollectionViewController {
         super.viewWillLayoutSubviews()
     }
     
-    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
-        if identifier == SegueIdentifier.IntegrationsToWeb.rawValue
-            && linkClientSide(selectedIntegration?.id ?? "") {
-            return false
-        }
-        return true
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? IntegrationWebViewController {
             vc.integration = selectedIntegration
+            vc.integrationDelegate = self
         }
     }
     
@@ -57,24 +50,39 @@ class IntegrationsViewController : UICollectionViewController {
         let layout = collectionViewLayout as! UICollectionViewFlowLayout
         layout.itemSize = CGSize(width: view.frame.width - layout.sectionInset.left - layout.sectionInset.right, height: 60)
     }
+    
+    // MARK: - App Delegate Hooks
+    
+    class func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+    }
+    
+    class func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+        if FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url,
+            sourceApplication: sourceApplication, annotation: annotation) {
+                return true
+        }
+        return false
+    }
+}
 
-    func linkClientSide(integrationId: String) -> Bool {
-        var signal: RACSignal?
+extension IntegrationsViewController : ClientIntegrationDelegate {
+    func linkClientSide(integrationId: String) -> Future<(), ErrorAlert>? {
+        let promise = Promise<(), ErrorAlert>()
         switch integrationId {
         case "facebook":
-            signal = linkFacebook()
+            linkFacebook().subscribeError({
+                Log.error("Failed to link", $0)
+                promise.failure(ErrorAlert(title: LS(.errUnableToAddServiceTitle),
+                                           message: LS(.errUnableToAddServiceMessage)))
+//                promise.failure($0)
+            }, completed: {
+                promise.success()
+            })
+            return promise.future
         default:
-            return false
+            return nil
         }
-        signal?.subscribeNext({ _ in
-            PKHUD.showActivity()
-        }, error: { error in
-            PKHUD.hide(animated: false)
-            self.showAlert(LS(.errUnableToAddServiceTitle), message: LS(.errUnableToAddServiceMessage))
-        }, completed: {
-            PKHUD.hide(animated: false)
-        })
-        return true
     }
     
     func linkFacebook() -> RACSignal {
@@ -106,19 +114,5 @@ class IntegrationsViewController : UICollectionViewController {
             }
         }
         return subject.deliverOnMainThread()
-    }
-    
-    // MARK: - App Delegate Hooks
-    
-    class func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        return FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
-    }
-    
-    class func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
-        if FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url,
-            sourceApplication: sourceApplication, annotation: annotation) {
-                return true
-        }
-        return false
     }
 }
