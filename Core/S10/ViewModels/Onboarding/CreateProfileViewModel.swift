@@ -42,13 +42,6 @@ public struct CreateProfileViewModel {
         subscription = meteor.subscribe("me")
     }
     
-    // TODO: Add width & Height
-    public func upload(image: UIImage, taskType: PhotoTaskType) -> Future<(), NSError> {
-        return operationQueue.addAsyncOperation {
-            PhotoUploadOperation(meteor: meteor, image: image, taskType: taskType)
-        }
-    }
-    
     public func saveProfile() -> Future<Void, ErrorAlert> {
         let promise = Promise<(), ErrorAlert>()
 

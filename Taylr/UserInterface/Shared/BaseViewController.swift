@@ -35,7 +35,7 @@ extension UIViewController {
         return producer
             |> observeOn(UIScheduler())
             |> on(started: {
-                    if showProgress { PKHUD.show(dimsBackground: true) }
+                    if showProgress { PKHUD.showActivity(dimsBackground: true) }
                 }, error: { [weak self] in
                     if let e = $0 as? ActionError<E> {
                         switch e {

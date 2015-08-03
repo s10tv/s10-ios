@@ -60,9 +60,11 @@ public struct EditProfileViewModel {
     
     // MARK: -
     
-    public func upload(image: UIImage, taskType: PhotoTaskType) -> Future<(), NSError> {
+    public func upload(image: UIImage, taskType: PhotoTaskType) -> Future<(), ErrorAlert> {
         return operationQueue.addAsyncOperation {
             PhotoUploadOperation(meteor: meteor, image: image, taskType: taskType)
+        } |> mapError { e in
+            ErrorAlert(title: "Unable to upload", message: e.localizedDescription, underlyingError: e)
         }
     }
 }
