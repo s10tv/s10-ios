@@ -10,16 +10,24 @@ import Foundation
 import ReactiveCocoa
 
 public struct ConnectServicesViewModel {
-    public enum Error : ErrorType {
-        case NoServiceConnected
-        
-        public var alertTitle: String { return "" }
-        public var alertBody: String { return "" }
-        public var nsError: NSError { return NSError() }
-    }
     
-    public func finish() -> Future<Void, Error> {
-        let promise = Promise<(), Error>()
+    let meteor: MeteorService
+    
+    public init(meteor: MeteorService) {
+        self.meteor = meteor
+    }
+
+    public func finish() -> Future<Void, ErrorAlert> {
+        let promise = Promise<(), ErrorAlert>()
+        let count = Integration
+            .by(IntegrationKeys.status_, value: Integration.Status.Linked.rawValue)
+            .count()
+        if count < 1 {
+            promise.failure(ErrorAlert(title: "No Service Connected",
+                message: "Please connect at least one service to coninue"))
+        } else {
+            promise.success()
+        }
         return promise.future
     }
 }

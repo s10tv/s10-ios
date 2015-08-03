@@ -8,6 +8,7 @@
 
 import UIKit
 import ReactiveCocoa
+import Core
 
 class ConnectServicesViewController : UITableViewController {
     
@@ -16,6 +17,8 @@ class ConnectServicesViewController : UITableViewController {
     @IBOutlet weak var promptLabel: UILabel!
     @IBOutlet weak var integrationsContainer: UIView!
     var integrationsVC: IntegrationsViewController!
+    
+    let vm = ConnectServicesViewModel(meteor: Meteor)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +46,13 @@ class ConnectServicesViewController : UITableViewController {
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
     
+    @IBAction func didTapNext(sender: AnyObject) {
+        wrapFuture {
+            vm.finish()
+        }.onSuccess {
+            self.performSegue(.ConnectServicesToCreateProfile)
+        }
+    }
 }
 
 extension ConnectServicesViewController : UITableViewDelegate {
