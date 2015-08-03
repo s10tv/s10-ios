@@ -102,14 +102,19 @@ public class TaskService {
     
     // MARK: - Invites
     
-    public func invite(emailOrPhone: String, localVideoURL: NSURL, firstName: String?, lastName: String?) -> Future<(), NSError> {
+    public func invite(emailOrPhone: String, localVideoURL: NSURL, thumbnail: UIImage, firstName: String?, lastName: String?) -> Future<(), NSError> {
         let promise = Promise<(), NSError>()
         let realm = Realm()
         realm.write {
             let task = InviteTask()
             task.taskId = NSUUID().UUIDString
+            println("Will start invite task with id \(task.taskId)")
             task.emailOrPhone = emailOrPhone
             task.localVideoUrl = localVideoURL.absoluteString!
+            task.thumbnailData = UIImageJPEGRepresentation(thumbnail, 0.8)
+            // NOTE: Is it correct to use video width & height instead of thumb?
+            task.videoWidth = Int(thumbnail.size.width * thumbnail.scale)
+            task.videoHeight = Int(thumbnail.size.height * thumbnail.scale)
             task.firstName = firstName ?? ""
             task.lastName = lastName ?? ""
             realm.add(task, update: true)

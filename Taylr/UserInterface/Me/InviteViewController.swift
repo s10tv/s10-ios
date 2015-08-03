@@ -50,8 +50,8 @@ extension InviteViewController : ProducerDelegate {
     
     func producer(producer: ProducerViewController, didProduceVideo url: NSURL, duration: NSTimeInterval) {
         producer.dismissViewController(animated: true)
-        vm.sendInvite(url)
-            |> deliverOn(UIScheduler())
+        AVKit.exportFirstFrame(url)
+            |> flatMap { self.vm.sendInvite(url, thumbnail: $0) }
             |> onSuccess {
                 PKHUD.showText("Sent Successfully!")
                 PKHUD.hide(afterDelay: 0.25)

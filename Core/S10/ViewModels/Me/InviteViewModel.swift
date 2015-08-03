@@ -34,21 +34,20 @@ public struct InviteViewModel {
         return nil
     }
     
-    public func sendInvite(videoURL: NSURL) -> Future<(), NSError> {
-        let promise = Promise<(), NSError>()
-        if self.emailOrPhone.value.isEmpty {
-            promise.failure(NSError())
-            return promise.future
-        }
-        let future = taskService.invite(emailOrPhone.value,
+    // TODO: Turn into AlertableError
+    public func sendInvite(videoURL: NSURL, thumbnail: UIImage) -> Future<(), NSError> {
+        println("Will send invite with video \(videoURL)")
+        return taskService.invite(emailOrPhone.value,
             localVideoURL: videoURL,
+            thumbnail: thumbnail,
             firstName: firstName.value,
-            lastName: lastName.value)
-        future |> deliverOn(UIScheduler()) |> onSuccess {
-            self.firstName.value = ""
-            self.lastName.value = ""
-            self.emailOrPhone.value = ""
-        }
-        return future
+            lastName: lastName.value
+        )
+            |> deliverOn(UIScheduler())
+            |> onSuccess {
+                self.firstName.value = ""
+                self.lastName.value = ""
+                self.emailOrPhone.value = ""
+            }
     }
 }

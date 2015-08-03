@@ -13,6 +13,7 @@ public enum ClientError : String, AlertableError {
     case Validation = "validation"
     case Offline = "offline"
     case InvalidInvite = "Invalid Invite"
+    case InvalidServerResponse = "Invalid Server Response"
     
     public var nsError: NSError {
         return NSError(domain: "Client", code: 0, userInfo: [
