@@ -66,6 +66,8 @@
 		EA35613F1B6DBCDB00F058CC /* AlertableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA35613E1B6DBCDB00F058CC /* AlertableError.swift */; };
 		EA3594141B2DE5C300E91337 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594131B2DE5C300E91337 /* ConversationViewController.swift */; };
 		EA3594191B2FEA1F00E91337 /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594181B2FEA1F00E91337 /* TransitionManager.swift */; };
+		EA359AE51B6FFB2B00AF0A65 /* AzureClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA359AE41B6FFB2B00AF0A65 /* AzureClient.swift */; };
+		EA359AE71B700B8A00AF0A65 /* SignalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA359AE61B700B8A00AF0A65 /* SignalExtensions.swift */; };
 		EA36B1D21B3F23ED002ADD91 /* ActivityImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36B1D11B3F23ED002ADD91 /* ActivityImageCell.swift */; };
 		EA36B1D41B3F23F4002ADD91 /* ActivityTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36B1D31B3F23F4002ADD91 /* ActivityTextCell.swift */; };
 		EA36D2AB1AE71366006FD5D8 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36D2AA1AE71366006FD5D8 /* Errors.swift */; };
@@ -322,6 +324,8 @@
 		EA35613E1B6DBCDB00F058CC /* AlertableError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertableError.swift; sourceTree = "<group>"; };
 		EA3594131B2DE5C300E91337 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		EA3594181B2FEA1F00E91337 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
+		EA359AE41B6FFB2B00AF0A65 /* AzureClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AzureClient.swift; sourceTree = "<group>"; };
+		EA359AE61B700B8A00AF0A65 /* SignalExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignalExtensions.swift; sourceTree = "<group>"; };
 		EA36B1D11B3F23ED002ADD91 /* ActivityImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = ActivityImageCell.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		EA36B1D31B3F23F4002ADD91 /* ActivityTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTextCell.swift; sourceTree = "<group>"; };
 		EA36D2AA1AE71366006FD5D8 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
@@ -807,6 +811,7 @@
 				EA6E405B1B6D334D00FF5126 /* DynamicProperties.swift */,
 				EA6E405F1B6D336F00FF5126 /* PropertyExtensions.swift */,
 				EA6E40611B6D33F500FF5126 /* ActionExtensions.swift */,
+				EA359AE61B700B8A00AF0A65 /* SignalExtensions.swift */,
 			);
 			path = RAC;
 			sourceTree = "<group>";
@@ -815,6 +820,7 @@
 			isa = PBXGroup;
 			children = (
 				EA78C8761B320A2A0016AB73 /* AlamofireExtension.swift */,
+				EA359AE41B6FFB2B00AF0A65 /* AzureClient.swift */,
 			);
 			path = Networking;
 			sourceTree = "<group>";
@@ -1585,6 +1591,7 @@
 				EAF670881B31F9450025D7CF /* UIKitExtension.swift in Sources */,
 				F912AC5D1B3745AC00DEA6B1 /* VideoUploadOperation.swift in Sources */,
 				EA82CF971B504FC500A12D94 /* Image.swift in Sources */,
+				EA359AE51B6FFB2B00AF0A65 /* AzureClient.swift in Sources */,
 				EA043F7F1B62EF5D0047BDCA /* MessageViewModel.swift in Sources */,
 				EAC725C01B66DF66004113FD /* UsernameViewModel.swift in Sources */,
 				EA2DC29F1B637FA50034434E /* Connection.swift in Sources */,
@@ -1648,6 +1655,7 @@
 				EA6E40601B6D336F00FF5126 /* PropertyExtensions.swift in Sources */,
 				EA2DC2591B6377C00034434E /* Video.swift in Sources */,
 				EA2DC2B01B63FC990034434E /* EditProfileViewModel.swift in Sources */,
+				EA359AE71B700B8A00AF0A65 /* SignalExtensions.swift in Sources */,
 				EAF670761B31F9450025D7CF /* FoundationExtension.swift in Sources */,
 				EA5773501B6C652800BCF449 /* LoginViewModel.swift in Sources */,
 				EA2406221B50F79E003A73C3 /* VideoCache.swift in Sources */,
