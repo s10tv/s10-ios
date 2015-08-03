@@ -149,12 +149,22 @@ extension RACSignal {
 
 extension RACSubject {
     func sendNextAndCompleted(value: AnyObject!) {
-        sendNext(value)
-        sendCompleted()
+        self.sendNext(value)
+        self.sendCompleted()
     }
 }
 
 extension NSObject {
+
+    func listenForNotification(name: String, object: AnyObject? = nil) -> SignalProducer<NSNotification, NoError> {
+        let nc = NSNotificationCenter.defaultCenter()
+        return nc.rac_addObserverForName(name, object: object)
+            .takeUntil(rac_willDeallocSignal())
+            .toSignalProducer()
+            |> catch { _ in .empty }
+            |> map { $0 as! NSNotification }
+    }
+    
     // TODO: Convert these to RAC 3 with swift
     func listenForNotification(name: String) -> RACSignal/*<NSNotification>*/ {
         return listenForNotification(name, object: nil)

@@ -28,6 +28,7 @@ let Meteor = Globals.meteorService
 let Analytics = Globals.analyticsService
 
 let AppDidRegisterUserNotificationSettings = "AppDidRegisterUserNotificationSettings"
+let DidTouchStatusBar = "DidTouchStatusBar"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */ {
@@ -165,6 +166,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         Log.debug("Did receive notification \(userInfo)")
+    }
+    
+    // MARK: Event Handling
+    
+    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+        super.touchesBegan(touches, withEvent: event)
+        if let touch = event.allTouches()?.first as? UITouch,
+            let location = window.map({ touch.locationInView($0) })
+            where location.y > 0 && location.y < 20 {
+            NSNotificationCenter.defaultCenter().postNotificationName(DidTouchStatusBar, object: nil)
+        }    
     }
     
     // MARK: Crashlytics

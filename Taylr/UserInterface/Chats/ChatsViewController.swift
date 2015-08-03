@@ -50,6 +50,10 @@ class ChatsViewController : BaseViewController {
             let title = count > 0 ? "New (\(count))" : "New"
             self?.segmentedControl.setTitle(title, forSegmentAtIndex: 1)
         })
+        
+        listenForNotification(DidTouchStatusBar).start(next: { [weak self] _ in
+            self?.tableView.scrollToTop(animated: true)
+        })
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

@@ -7,10 +7,11 @@
 //
 
 import Foundation
-import Core
-import CHTCollectionViewWaterfallLayout
+import ReactiveCocoa
 import Bond
+import CHTCollectionViewWaterfallLayout
 import AMScrollingNavbar
+import Core
 
 class DiscoverViewController : BaseViewController {
     
@@ -33,6 +34,11 @@ class DiscoverViewController : BaseViewController {
         collectionView.collectionViewLayout = layout
 
         vm.candidates.map(collectionView.factory(CandidateCell)) ->> collectionView
+        
+        listenForNotification(DidTouchStatusBar).start(next: { [weak self] _ in
+            self?.showNavBarAnimated(true)
+            self?.collectionView.scrollToTop(animated: true)
+        })
     }
     
     override func viewWillAppear(animated: Bool) {

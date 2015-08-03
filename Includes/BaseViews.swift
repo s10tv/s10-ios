@@ -138,3 +138,9 @@ public class OneDScrollView : UIScrollView {
         super.updateConstraints()
     }
 }
+
+public extension UIScrollView {
+    public func scrollToTop(#animated: Bool) {
+        setContentOffset(CGPointMake(0, -contentInset.top), animated: animated)
+    }
+}

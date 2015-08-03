@@ -38,12 +38,6 @@ class MeViewController : UITableViewController {
         vm.avatar ->> avatarView.imageBond
         vm.displayName ->> nameLabel
         vm.username ->> usernameLabel
-        
-        // Proactively improve shadow performance
-//        [servicesContainer, inviteContainer].each {
-//            $0.layer.shouldRasterize = true
-//            $0.layer.rasterizationScale = UIScreen.mainScreen().scale
-//        }
 
         // Observe collectionView height and reload table view cell height whenever appropriate
         servicesVC.collectionView!.dyn("contentSize").force(NSValue).producer
@@ -54,6 +48,10 @@ class MeViewController : UITableViewController {
                 self.tableView.beginUpdates()
                 self.tableView.endUpdates()
             })
+        
+        listenForNotification(DidTouchStatusBar).start(next: { [weak self] _ in
+            self?.tableView.scrollToTop(animated: true)
+        })
     }
     
     var hackedOffset = false
