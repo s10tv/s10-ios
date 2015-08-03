@@ -61,6 +61,13 @@ class AccountService {
                     Log.info("Status - Indeterminate")
                     return .Indeterminate
                 }
+            } |> map { (state: AccountState) -> AccountState in
+                if state != .Indeterminate {
+                    UD.accountState.value = state.rawValue
+                    return state
+                } else {
+                    return UD.accountState.value.flatMap { AccountState(rawValue: $0) } ?? .Indeterminate
+                }
             }
         }
     }

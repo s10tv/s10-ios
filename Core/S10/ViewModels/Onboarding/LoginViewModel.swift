@@ -15,8 +15,11 @@ public protocol LoginDelegate {
     func login() -> Future<AccountState, NSError>
 }
 
-public enum AccountState {
-    case Indeterminate, LoggedOut, LoggedIn, Onboarded
+public enum AccountState : String {
+    case Indeterminate = "Indeterminate"
+    case LoggedOut = "LoggedOut"
+    case LoggedIn = "LoggedIn"
+    case Onboarded = "Onboarded"
     
     public var onboardingNeeded: Bool {
         switch self {
