@@ -18,6 +18,13 @@ private func supportedActivitiesByUser(user: User) -> NSPredicate {
         ActivityKeys.type_.rawValue, supportedTypes.map { $0.rawValue })
 }
 
+private func supportedActivitiesByProfile(profile: User.ConnectedProfile) -> NSPredicate {
+    let supportedTypes: [Activity.ContentType] = [.Image, .Text]
+    return NSPredicate(format: "%K == %@ && %K IN %@",
+        ActivityKeys.profileId.rawValue, profile.id,
+        ActivityKeys.type_.rawValue, supportedTypes.map { $0.rawValue })
+}
+
 public struct ProfileViewModel {
     let meteor: MeteorService
     let taskService: TaskService
@@ -48,9 +55,7 @@ public struct ProfileViewModel {
             .results(Activity)
         activities = results.map(viewModelForActivity)
         predicate = cvm.selectedProfile |> map {
-            ($0.profile?.id).map {
-                NSPredicate(format: "%K == %@", ActivityKeys.profileId.rawValue, $0)
-            } ?? NSPredicate(format: "%K == %@", ActivityKeys.user.rawValue, user)
+            $0.profile.map(supportedActivitiesByProfile) ?? supportedActivitiesByUser(user)
         }
         toBondDynamic(predicate) ->> results.predicateBond
     }
