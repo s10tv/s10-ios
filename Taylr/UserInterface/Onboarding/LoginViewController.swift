@@ -39,6 +39,7 @@ class LoginViewController : BaseViewController {
                 switch $0 {
                 case .LoggedIn: return .LoginToConnectServices
                 case .Onboarded: return .Main_RootTab
+                    // TODO: Fix me perma crash...
                 default: fatalError("Expecting either LoggedIn or Onboarded")
                 }
             }
