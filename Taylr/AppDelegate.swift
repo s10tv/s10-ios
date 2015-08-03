@@ -62,6 +62,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         // Setup global services
         let meteor = MeteorService(serverURL: env.serverURL)
         let settings = Settings(meteor: meteor)
+        // WARMING: Startup meteor before initializing accountService
+        // so that account.state is initially correct
+        meteor.startup()
+        
         _GlobalsContainer.instance = GlobalsContainer(env: env,
             meteorService: meteor,
             accountService: AccountService(meteorService: meteor, settings: settings),
@@ -86,7 +90,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         application.registerForRemoteNotifications()
         
         // Let's launch!
-        Meteor.startup()
         Meteor.call("connectDevice", env.deviceId, [
             "appId": env.appId,
             "version": env.version,
