@@ -30,6 +30,7 @@ class InviteViewController : UIViewController {
     
     @IBAction func didPressSend(sender: AnyObject) {
         let producer = UIStoryboard(name: "AVKit", bundle: nil).instantiateInitialViewController() as! ProducerViewController
+        producer.title = "Invite \(vm.firstName.value)"
         producer.producerDelegate = self
         presentViewController(producer, animated: true)
     }

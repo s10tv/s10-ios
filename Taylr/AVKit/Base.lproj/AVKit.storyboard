@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="0DE-rZ-SWb">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Cabin-Regular.ttf">
+            <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
         </mutableArray>
     </customFonts>
@@ -81,6 +82,7 @@
                     </view>
                     <connections>
                         <outlet property="filterView" destination="jrS-6I-cjW" id="m1Y-7N-7EG"/>
+                        <outlet property="topLayoutHeight" destination="dIP-46-eYt" id="D3K-gQ-YzK"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQY-Y5-Atw" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -206,8 +208,51 @@
                     <view key="view" contentMode="scaleToFill" id="kGV-Vg-sZS">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="k1V-iJ-CSP">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invite Samantha" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hOd-ob-Pcl">
+                                        <rect key="frame" x="231" y="32" width="138" height="25"/>
+                                        <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="20"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P1p-js-a4G" userLabel="Close">
+                                        <rect key="frame" x="0.0" y="23" width="43" height="43"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="43" id="ZaA-U5-bPU"/>
+                                            <constraint firstAttribute="width" constant="43" id="z1T-VQ-xy0"/>
+                                        </constraints>
+                                        <state key="normal" image="ic-close-cross">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTapClose:" destination="0DE-rZ-SWb" eventType="touchUpInside" id="Trp-Dj-zs0"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="centerX" secondItem="hOd-ob-Pcl" secondAttribute="centerX" id="QaU-Xg-iLd"/>
+                                    <constraint firstAttribute="height" constant="66" id="XvA-p6-QMT"/>
+                                    <constraint firstItem="P1p-js-a4G" firstAttribute="leading" secondItem="k1V-iJ-CSP" secondAttribute="leading" id="Zyf-BK-yda"/>
+                                    <constraint firstAttribute="bottom" secondItem="hOd-ob-Pcl" secondAttribute="bottom" constant="9" id="sSo-cT-Fbs"/>
+                                    <constraint firstAttribute="bottom" secondItem="P1p-js-a4G" secondAttribute="bottom" id="zVM-r0-bdC"/>
+                                </constraints>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="k1V-iJ-CSP" secondAttribute="trailing" id="5uM-B4-wvp"/>
+                            <constraint firstItem="k1V-iJ-CSP" firstAttribute="top" secondItem="kGV-Vg-sZS" secondAttribute="top" id="ILQ-Bx-qNa"/>
+                            <constraint firstItem="k1V-iJ-CSP" firstAttribute="leading" secondItem="kGV-Vg-sZS" secondAttribute="leading" id="KaT-gJ-JRR"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="headerView" destination="k1V-iJ-CSP" id="nEc-9c-7fz"/>
+                        <outlet property="titleLabel" destination="hOd-ob-Pcl" id="JQL-zw-MHz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BaY-8E-Oce" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -334,6 +379,7 @@
                         <outlet property="previewView" destination="2Fw-rH-c9r" id="0cp-IO-f9u"/>
                         <outlet property="progressView" destination="zPO-M3-p5L" id="MVy-cv-Da7"/>
                         <outlet property="recordButton" destination="7s2-e5-NVe" id="eOl-bu-Bic"/>
+                        <outlet property="topLayoutHeight" destination="OM8-pJ-sb0" id="gTQ-JZ-4s5"/>
                         <outlet property="torchButton" destination="aym-vv-YK7" id="oBx-5C-jUs"/>
                         <segue destination="uPv-0o-aed" kind="show" identifier="RecorderToEditor" id="SWo-hc-sLD"/>
                     </connections>
@@ -356,6 +402,7 @@
     <resources>
         <image name="ic-camera-switch" width="30" height="23"/>
         <image name="ic-cancel-round" width="50" height="50"/>
+        <image name="ic-close-cross" width="16" height="16"/>
         <image name="ic-flash" width="19" height="25"/>
         <image name="ic-play-medium" width="40" height="40"/>
         <image name="ic-record" width="80" height="81"/>

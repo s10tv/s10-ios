@@ -17,6 +17,9 @@ protocol ProducerDelegate : NSObjectProtocol {
 
 class ProducerViewController : UIViewController {
     
+    @IBOutlet weak var headerView: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
+    
     var recorderVC: RecorderViewController!
     var editorVC: EditorViewController!
     var currentFilter: SCFilter?
@@ -36,16 +39,32 @@ class ProducerViewController : UIViewController {
         showRecorder()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        titleLabel.text = title
+        headerView.hidden = title == nil
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+    
+    // MARK: -
+    
     func showRecorder() {
         editorVC.view.removeFromSuperview()
-        view.addSubview(recorderVC.view)
+        view.insertSubview(recorderVC.view, atIndex: 0)
         recorderVC.view.makeEdgesEqualTo(view)
     }
     
     func showEditor() {
         recorderVC.view.removeFromSuperview()
-        view.addSubview(editorVC.view)
+        view.insertSubview(editorVC.view, atIndex: 0)
         editorVC.view.makeEdgesEqualTo(view)
+    }
+    
+    @IBAction func didTapClose(sender: AnyObject) {
+        dismissViewController(animated: true)
     }
 }
 

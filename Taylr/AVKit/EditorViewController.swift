@@ -19,6 +19,7 @@ protocol EditorDelegate : NSObjectProtocol {
 
 class EditorViewController : UIViewController {
     
+    @IBOutlet weak var topLayoutHeight: NSLayoutConstraint!
     @IBOutlet weak var filterView: SCSwipeableFilterView!
     
     let player = SCPlayer()

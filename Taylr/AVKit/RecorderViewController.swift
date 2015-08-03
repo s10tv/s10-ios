@@ -17,7 +17,7 @@ protocol RecorderDelegate : NSObjectProtocol {
 }
 
 class RecorderViewController : UIViewController {
-    
+    @IBOutlet weak var topLayoutHeight: NSLayoutConstraint!
     @IBOutlet weak var previewView: SCSwipeableFilterView!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var torchButton: UIButton!
