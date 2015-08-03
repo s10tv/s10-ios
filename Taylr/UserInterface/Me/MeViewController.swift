@@ -11,10 +11,13 @@ import MessageUI
 import Bond
 import ReactiveCocoa
 import ObjectMapper
-import AMScrollingNavbar
 import Core
 
 class MeViewController : UITableViewController {
+    
+    enum Section: Int {
+        case Profile, Services, Invite, Options
+    }
     
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var avatarView: UIImageView!
@@ -25,17 +28,11 @@ class MeViewController : UITableViewController {
     
     var servicesVC: IntegrationsViewController!
     var vm: MeViewModel!
-    
-    deinit {
-        stopFollowingScrollView()
-    }
+    var filteredSections: [Section] = [.Profile, .Services]
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 0.01))
-
-        setUseSuperview(false)
-        followScrollView(tableView, withDelay: 50)
         
         vm = MeViewModel(meteor: Meteor, taskService: Globals.taskService)
         vm.avatar ->> avatarView.imageBond
@@ -95,6 +92,13 @@ class MeViewController : UITableViewController {
         }
     }
     
+    func checkSection(section: Int) -> Bool {
+        for s in filteredSections {
+            if s.rawValue == section { return true }
+        }
+        return false
+    }
+    
     // MARK: -
     
     @IBAction func didPressContactSupport(sender: AnyObject) {
@@ -118,9 +122,41 @@ class MeViewController : UITableViewController {
         sheet.addAction(LS(.settingsLogoutCancel), style: .Cancel)
         presentViewController(sheet)
     }
+    
+    @IBAction func didTapSegmentedControl(control: UISegmentedControl) {
+        if control.selectedSegmentIndex == 0 {
+            filteredSections = [.Profile, .Services]
+        } else {
+            filteredSections = [.Profile, .Invite, .Options]
+        }
+        tableView.reloadData()
+    }
+}
+
+extension MeViewController : UITableViewDataSource {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if !checkSection(section) {
+            return 0
+        }
+        return super.tableView(tableView, numberOfRowsInSection: section)
+    }
 }
 
 extension MeViewController : UITableViewDelegate {
+   override  func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if !checkSection(section) {
+            return nil
+        }
+        return super.tableView(tableView, titleForHeaderInSection: section)
+    }
+    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if !checkSection(section) {
+            return 0.1
+        }
+        return super.tableView(tableView, heightForHeaderInSection: section)
+    }
+    
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         // TODO: Should we consider autolayout?
         if indexPath.section == 1 { // Integrations section
