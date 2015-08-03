@@ -20,7 +20,6 @@ class DiscoverViewController : BaseViewController {
     let vm = DiscoverViewModel(meteor: Meteor, taskService: Globals.taskService)
     
     deinit {
-        stopFollowingScrollView()
         collectionView?.delegate = nil
     }
     
@@ -34,12 +33,12 @@ class DiscoverViewController : BaseViewController {
         collectionView.collectionViewLayout = layout
 
         vm.candidates.map(collectionView.factory(CandidateCell)) ->> collectionView
-        followScrollView(collectionView, usingTopConstraint: topLayoutConstraint, withDelay: 50)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBarHidden = false
+        followScrollView(collectionView, usingTopConstraint: topLayoutConstraint, withDelay: 50)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -57,6 +56,7 @@ class DiscoverViewController : BaseViewController {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         showNavBarAnimated(false)
+        stopFollowingScrollView()
     }
     
     override func viewDidLayoutSubviews() {
