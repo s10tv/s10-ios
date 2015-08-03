@@ -211,7 +211,6 @@
 		EAF81B381B3395E700EED6DD /* AVKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B371B3395E700EED6DD /* AVKit.swift */; };
 		EAF81B391B3395E700EED6DD /* AVKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B371B3395E700EED6DD /* AVKit.swift */; };
 		F912AC5D1B3745AC00DEA6B1 /* VideoUploadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F912AC5C1B3745AC00DEA6B1 /* VideoUploadOperation.swift */; };
-		F930D6151B6C2E5D000AE1AF /* OnboardingError.swift in Sources */ = {isa = PBXBuildFile; fileRef = F930D6141B6C2E5D000AE1AF /* OnboardingError.swift */; };
 		F95D95DF1A84A1170068F090 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95D95DE1A84A1170068F090 /* MediaPlayer.framework */; };
 		F996C71E1A81F1D100314FF8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71D1A81F1D100314FF8 /* CoreMedia.framework */; };
 		F996C7201A81F1D800314FF8 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71F1A81F1D800314FF8 /* CoreVideo.framework */; };
@@ -463,7 +462,6 @@
 		F2C759AA125AEB809731B1D6 /* Pods-Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.release.xcconfig"; path = "Pods/Target Support Files/Pods-Core/Pods-Core.release.xcconfig"; sourceTree = "<group>"; };
 		F912AC5C1B3745AC00DEA6B1 /* VideoUploadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoUploadOperation.swift; sourceTree = "<group>"; };
 		F92F687E1B34974B00171FE4 /* CoreTests-bridging-header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreTests-bridging-header.h"; sourceTree = "<group>"; };
-		F930D6141B6C2E5D000AE1AF /* OnboardingError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingError.swift; sourceTree = "<group>"; };
 		F95D95DE1A84A1170068F090 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		F996C71D1A81F1D100314FF8 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		F996C71F1A81F1D800314FF8 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -685,7 +683,6 @@
 				EAC725BB1B66D76D004113FD /* CreateProfileViewModel.swift */,
 				EAC725BD1B66DD92004113FD /* ConnectServicesViewModel.swift */,
 				EAC725BF1B66DF66004113FD /* UsernameViewModel.swift */,
-				F930D6141B6C2E5D000AE1AF /* OnboardingError.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -1634,7 +1631,6 @@
 				EA2DC26A1B637CB20034434E /* InviteTask.swift in Sources */,
 				EA2DC2AA1B63F9F10034434E /* ChatsViewModel.swift in Sources */,
 				EA043F7E1B62EF5D0047BDCA /* ConnectionViewModels.swift in Sources */,
-				F930D6151B6C2E5D000AE1AF /* OnboardingError.swift in Sources */,
 				EA043F791B62EF5D0047BDCA /* ActivityViewModels.swift in Sources */,
 				EA043F831B62EF8B0047BDCA /* IntegrationListViewModel.swift in Sources */,
 				EA39651C1B54EFE400F5B0B3 /* MeteorCollection.swift in Sources */,

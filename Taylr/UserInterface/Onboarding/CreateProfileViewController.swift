@@ -72,21 +72,9 @@ class CreateProfileViewController : UITableViewController {
     }
 
     @IBAction func didSelectNext(sender: AnyObject) {
-        self.vm.saveProfile()
-            |> deliverOn(UIScheduler())
-            |> onComplete { result in
-                result.analysis(ifSuccess: {
-
-                    self.performSegue(SegueIdentifier.Onboarding_profileToIntegrations, sender: self)
-                }, ifFailure: { error in
-                    let alert = UIAlertController(
-                        title: error.title,
-                        message: error.body,
-                        preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-                    self.presentViewController(alert, animated: true)
-                })
-            }
+        wrapFuture(vm.saveProfile(), showProgress: true).onSuccess { [weak self] in
+            self?.performSegue(.Onboarding_profileToIntegrations)
+        }
     }
 }
 

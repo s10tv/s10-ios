@@ -46,8 +46,8 @@ public struct UsernameViewModel {
         )
     }
     
-    public func saveUsername() -> Future<Void, Error> {
-        let promise = Promise<(), Error>()
+    public func saveUsername() -> Future<Void, ErrorAlert> {
+        let promise = Promise<(), ErrorAlert>()
         self.meteor.confirmRegistration(username.value).subscribeError({ error in
             var errorReason : String
             if let reason = error.localizedFailureReason {
@@ -55,7 +55,7 @@ public struct UsernameViewModel {
             } else {
                 errorReason = "Please try again later."
             }
-            promise.failure(Error(title: "Problem with Registration", body: errorReason))
+            promise.failure(ErrorAlert(title: "Problem with Registration", message: errorReason))
         }, completed: {
             promise.success()
         })

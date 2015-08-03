@@ -59,7 +59,7 @@ class UsernameViewController : UIViewController {
                 }, ifFailure: { error in
                     let alert = UIAlertController(
                         title: error.title,
-                        message: error.body,
+                        message: error.message,
                         preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
                     self.presentViewController(alert, animated: true)

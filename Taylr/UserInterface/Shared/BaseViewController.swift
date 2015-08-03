@@ -24,24 +24,44 @@ extension UINavigationController {
 }
 
 extension UIViewController {
-    func execute<I,O,E>(action: Action<I,O,E>, input: I, showProgress: Bool = false) -> Future<O, ActionError<E>> {
-        return Future(workToStart: action.apply(input)
+    func execute<T, E>(producer: SignalProducer<T, E>, showProgress: Bool = false) -> Disposable {
+        return producer
             |> observeOn(UIScheduler())
             |> on(started: {
                     if showProgress { PKHUD.show(dimsBackground: true) }
                 }, error: { [weak self] in
-                    switch $0 {
-                    case .ProducerError(let e as AlertableError):
-                        let vc = UIAlertController(title: e.alert.title, message: e.alert.message, preferredStyle: e.alert.style)
-                        e.alert.actions.each { vc.addAction($0) }
+                    var alert: ErrorAlert?
+                    if let e = $0 as? ActionError<E> {
+                        switch e {
+                        case .ProducerError(let e as AlertableError):
+                            alert = e.alert
+                        default:
+                            break
+                        }
+                    }
+                    if let e = $0 as? AlertableError {
+                        alert = e.alert
+                    }
+                    if let alert = alert {
+                        let vc = UIAlertController(title: alert.title, message: alert.message, preferredStyle: alert.style)
+                        alert.actions.each { vc.addAction($0) }
                         self?.presentViewController(vc, animated: true, completion: nil)
-                    default:
-                        break
                     }
                 }, terminated: {
                     if showProgress { PKHUD.hide(animated: false) }
                 })
-        )
+            |> start()
+    }
+    
+    func execute<I,O,E>(action: Action<I,O,E>, input: I, showProgress: Bool = false) -> Disposable {
+        let producer = action.apply(input)
+        return execute(producer, showProgress: showProgress)
+    }
+    
+    func wrapFuture<T, E>(@autoclosure future: () -> Future<T, E>, showProgress: Bool = false ) -> Future<T, E> {
+        let future = future()
+        execute(future.producer, showProgress: showProgress)
+        return future
     }
 }
 

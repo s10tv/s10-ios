@@ -47,8 +47,8 @@ public struct CreateProfileViewModel {
         }
     }
     
-    public func saveProfile() -> Future<Void, Error> {
-        let promise = Promise<(), Error>()
+    public func saveProfile() -> Future<Void, ErrorAlert> {
+        let promise = Promise<(), ErrorAlert>()
 
         var errorReason : String?
 
@@ -66,8 +66,8 @@ public struct CreateProfileViewModel {
         }
 
         if let errorReason = errorReason {
-            promise.failure(Error(title: "Problem with Registration",
-                body: errorReason))
+            promise.failure(ErrorAlert(title: "Problem with Registration",
+                message: errorReason))
         } else {
             var fields = [
                 "firstName": firstName.value,
@@ -87,7 +87,7 @@ public struct CreateProfileViewModel {
                 } else {
                     errorReason = "Please try again later."
                 }
-                promise.failure(Error(title: "Problem with Registration", body: errorReason))
+                promise.failure(ErrorAlert(title: "Problem with Registration", message: errorReason))
             }, completed: {
                 promise.success()
             })
