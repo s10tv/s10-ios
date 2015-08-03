@@ -47,8 +47,6 @@ class CreateProfileViewController : UITableViewController {
         vm.tagline <->> taglineField
         vm.avatar ->> avatarView.imageBond
         vm.cover ->> coverView.imageBond
-        
-//        Meteor.subscribe("me")
     }
     
     override func viewWillAppear(animated: Bool) {

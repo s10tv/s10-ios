@@ -61,7 +61,7 @@ extension UIViewController {
     func wrapFuture<T, E>(showProgress: Bool = false, @noescape future: () -> Future<T, E>) -> Future<T, E> {
         let future = future()
         execute(future.producer, showProgress: showProgress)
-        return future
+        return future |> observeOn(UIScheduler())
     }
 }
 
