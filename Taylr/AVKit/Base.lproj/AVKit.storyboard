@@ -268,7 +268,11 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3o-63-A2P" userLabel="Flip Camera">
-                                <rect key="frame" x="554" y="80" width="30" height="23"/>
+                                <rect key="frame" x="540" y="64" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="C2y-Uc-tlT"/>
+                                    <constraint firstAttribute="height" constant="60" id="q5t-8L-CRZ"/>
+                                </constraints>
                                 <state key="normal" image="ic-camera-switch">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -277,12 +281,16 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aym-vv-YK7" userLabel="Torch">
-                                <rect key="frame" x="16" y="80" width="19" height="25"/>
+                                <rect key="frame" x="0.0" y="64" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="8vz-CU-XKD"/>
+                                    <constraint firstAttribute="height" constant="60" id="FK8-06-Mtj"/>
+                                </constraints>
                                 <state key="normal" image="ic-flash">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <action selector="flipCamera:" destination="Mkj-ew-cSR" eventType="touchUpInside" id="4kh-lZ-Maf"/>
+                                    <action selector="toggleTorch:" destination="Mkj-ew-cSR" eventType="touchUpInside" id="qwf-E6-khZ"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7s2-e5-NVe" userLabel="Capture">
@@ -301,7 +309,7 @@
                         <constraints>
                             <constraint firstItem="2Fw-rH-c9r" firstAttribute="leading" secondItem="M3U-qM-guW" secondAttribute="leading" id="3PL-62-xQu"/>
                             <constraint firstAttribute="trailing" secondItem="Pxo-oy-0Oy" secondAttribute="trailing" id="4nG-i0-P9B"/>
-                            <constraint firstItem="b3o-63-A2P" firstAttribute="top" secondItem="Pxo-oy-0Oy" secondAttribute="bottom" constant="16" id="5Ai-Bw-PFb"/>
+                            <constraint firstItem="b3o-63-A2P" firstAttribute="top" secondItem="Pxo-oy-0Oy" secondAttribute="bottom" id="5Ai-Bw-PFb"/>
                             <constraint firstAttribute="trailing" secondItem="2Fw-rH-c9r" secondAttribute="trailing" id="72f-e3-Gy6"/>
                             <constraint firstItem="Pxo-oy-0Oy" firstAttribute="top" secondItem="M3U-qM-guW" secondAttribute="top" id="B2E-aI-Tdk"/>
                             <constraint firstAttribute="centerY" secondItem="6eQ-8N-xkE" secondAttribute="centerY" id="Gjh-7b-JjN"/>
@@ -310,11 +318,11 @@
                             <constraint firstAttribute="centerX" secondItem="7s2-e5-NVe" secondAttribute="centerX" constant="-0.5" id="Nn2-UL-EV3"/>
                             <constraint firstAttribute="centerX" secondItem="6eQ-8N-xkE" secondAttribute="centerX" id="OfQ-Ep-ehu"/>
                             <constraint firstItem="zPO-M3-p5L" firstAttribute="top" secondItem="kas-4p-VNL" secondAttribute="bottom" id="QAi-JY-D6E"/>
-                            <constraint firstItem="aym-vv-YK7" firstAttribute="top" secondItem="Pxo-oy-0Oy" secondAttribute="bottom" constant="16" id="hdK-EJ-2ac"/>
-                            <constraint firstItem="aym-vv-YK7" firstAttribute="leading" secondItem="M3U-qM-guW" secondAttribute="leading" constant="16" id="lNj-ui-v4R"/>
+                            <constraint firstItem="aym-vv-YK7" firstAttribute="top" secondItem="Pxo-oy-0Oy" secondAttribute="bottom" id="hdK-EJ-2ac"/>
+                            <constraint firstItem="aym-vv-YK7" firstAttribute="leading" secondItem="M3U-qM-guW" secondAttribute="leading" id="lNj-ui-v4R"/>
                             <constraint firstItem="zPO-M3-p5L" firstAttribute="leading" secondItem="M3U-qM-guW" secondAttribute="leading" id="q8M-gD-ei7"/>
                             <constraint firstItem="sS8-ya-4lZ" firstAttribute="top" secondItem="7s2-e5-NVe" secondAttribute="bottom" constant="20" id="tdQ-bU-MSn"/>
-                            <constraint firstAttribute="trailing" secondItem="b3o-63-A2P" secondAttribute="trailing" constant="16" id="xsV-me-1SL"/>
+                            <constraint firstAttribute="trailing" secondItem="b3o-63-A2P" secondAttribute="trailing" id="xsV-me-1SL"/>
                             <constraint firstItem="Pxo-oy-0Oy" firstAttribute="leading" secondItem="M3U-qM-guW" secondAttribute="leading" id="yFW-tw-buW"/>
                             <constraint firstItem="2Fw-rH-c9r" firstAttribute="top" secondItem="M3U-qM-guW" secondAttribute="top" id="zCu-rM-mCx"/>
                         </constraints>
@@ -326,6 +334,7 @@
                         <outlet property="previewView" destination="2Fw-rH-c9r" id="0cp-IO-f9u"/>
                         <outlet property="progressView" destination="zPO-M3-p5L" id="MVy-cv-Da7"/>
                         <outlet property="recordButton" destination="7s2-e5-NVe" id="eOl-bu-Bic"/>
+                        <outlet property="torchButton" destination="aym-vv-YK7" id="oBx-5C-jUs"/>
                         <segue destination="uPv-0o-aed" kind="show" identifier="RecorderToEditor" id="SWo-hc-sLD"/>
                     </connections>
                 </viewController>

@@ -20,6 +20,7 @@ class RecorderViewController : UIViewController {
     
     @IBOutlet weak var previewView: SCSwipeableFilterView!
     @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var torchButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var filterHint: UIView!
     let recordTip = AMPopTip()
@@ -65,13 +66,18 @@ class RecorderViewController : UIViewController {
         recorder.startRunning()
     }
     
+    @IBAction func toggleTorch(sender: AnyObject) {
+        recorder.flashMode = recorder.flashMode == .Off ? .Light : .Off
+    }
+    
     @IBAction func flipCamera(sender: AnyObject) {
         recorder.switchCaptureDevices()
     }
     
     func syncPreviewTransform() {
+        torchButton.hidden = !recorder.deviceHasFlash
         if recorder.device == .Front {
-            self.previewView.transform = CGAffineTransformMakeScale(-1, 1)
+            previewView.transform = CGAffineTransformMakeScale(-1, 1)
         } else {
             self.previewView.transform = CGAffineTransformIdentity
         }
