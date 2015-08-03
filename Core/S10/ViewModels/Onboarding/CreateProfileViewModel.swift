@@ -12,6 +12,7 @@ import ReactiveCocoa
 public struct CreateProfileViewModel {
     let meteor: MeteorService
     let operationQueue: NSOperationQueue
+    let subscription: MeteorSubscription
     public let avatar: MutableProperty<Image?>
     public let cover: MutableProperty<Image?>
     public let firstName: MutableProperty<String>
@@ -38,6 +39,7 @@ public struct CreateProfileViewModel {
                 ErrorAlert(title: "Unable to upload", message: e.localizedDescription, underlyingError: e)
             }
         }
+        subscription = meteor.subscribe("me")
     }
     
     // TODO: Add width & Height
@@ -52,15 +54,10 @@ public struct CreateProfileViewModel {
 
         var errorReason : String?
 
-        if (firstName.value.stringByTrimmingCharactersInSet(
-            NSCharacterSet.whitespaceCharacterSet()).length == 0) {
-                errorReason = "Forgot to set first name?"
-        } else if (lastName.value.stringByTrimmingCharactersInSet(
-            NSCharacterSet.whitespaceCharacterSet()).length == 0) {
-                errorReason = "Forgot to set last name?"
-        } else if (tagline.value.stringByTrimmingCharactersInSet(
-            NSCharacterSet.whitespaceCharacterSet()).length == 0) {
-                errorReason = "Forgot to set tagline?"
+        if (firstName.value.nonBlank() == nil) {
+            errorReason = "Forgot to set first name?"
+        } else if (lastName.value.nonBlank() == nil) {
+            errorReason = "Forgot to set last name?"
         } else if (avatar.value == nil) {
             errorReason = "Forgot to upload avatar?"
         }
@@ -72,12 +69,12 @@ public struct CreateProfileViewModel {
             var fields = [
                 "firstName": firstName.value,
                 "lastName": lastName.value,
-                "tagline": tagline.value,
             ]
-
-            if self.about.value.stringByTrimmingCharactersInSet(
-                NSCharacterSet.whitespaceCharacterSet()).length != 0 {
-                    fields["about"] = self.about.value
+            if let tagline = tagline.value.nonBlank() {
+                fields["tagline"] = tagline
+            }
+            if let about = about.value.nonBlank() {
+                fields["about"] = about
             }
 
             self.meteor.updateProfile(fields).subscribeError({ error in
