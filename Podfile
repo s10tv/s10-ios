@@ -49,8 +49,9 @@ target :Core do
         pod 'SDWebImage', '~> 3.7'
         pod 'PKHUD', :git => 'https://github.com/tonyxiao/PKHUD' # Fork is needed to work around xcasset compilation issue inside pod
         pod 'SCRecorder', '~> 2.5'
+
         pod 'AMPopTip', '~> 0.9'
-        
+        pod 'AMScrollingNavbar', '~> 1.5'
         pod 'JSBadgeView', '~> 1.4'
         pod 'JVFloatLabeledTextField', '~> 1.1'
         pod 'TPKeyboardAvoiding', '~> 1.2'

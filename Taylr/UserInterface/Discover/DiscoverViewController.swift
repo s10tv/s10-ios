@@ -10,20 +10,22 @@ import Foundation
 import Core
 import CHTCollectionViewWaterfallLayout
 import Bond
+import AMScrollingNavbar
 
 class DiscoverViewController : BaseViewController {
     
     @IBOutlet weak var collectionView : UICollectionView!
+    @IBOutlet weak var topLayoutConstraint: NSLayoutConstraint!
     
     let vm = DiscoverViewModel(meteor: Meteor, taskService: Globals.taskService)
     
     deinit {
+        stopFollowingScrollView()
         collectionView?.delegate = nil
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         
         let layout = CHTCollectionViewWaterfallLayout()
         layout.minimumColumnSpacing = 10
@@ -32,6 +34,7 @@ class DiscoverViewController : BaseViewController {
         collectionView.collectionViewLayout = layout
 
         vm.candidates.map(collectionView.factory(CandidateCell)) ->> collectionView
+        followScrollView(collectionView, usingTopConstraint: topLayoutConstraint, withDelay: 50)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -49,6 +52,11 @@ class DiscoverViewController : BaseViewController {
             categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
         Globals.locationService.requestPermission()
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        showNavBarAnimated(false)
     }
     
     override func viewDidLayoutSubviews() {

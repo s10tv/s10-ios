@@ -11,6 +11,7 @@ import MessageUI
 import Bond
 import ReactiveCocoa
 import ObjectMapper
+import AMScrollingNavbar
 import Core
 
 class MeViewController : UITableViewController {
@@ -25,15 +26,21 @@ class MeViewController : UITableViewController {
     var servicesVC: IntegrationsViewController!
     var vm: MeViewModel!
     
+    deinit {
+        stopFollowingScrollView()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 0.01))
+
+        setUseSuperview(false)
+        followScrollView(tableView, withDelay: 50)
         
         vm = MeViewModel(meteor: Meteor, taskService: Globals.taskService)
         vm.avatar ->> avatarView.imageBond
         vm.displayName ->> nameLabel
         vm.username ->> usernameLabel
-        
         
         // Proactively improve shadow performance
 //        [servicesContainer, inviteContainer].each {
@@ -60,6 +67,11 @@ class MeViewController : UITableViewController {
             hackedOffset = true
             tableView.contentOffset = CGPoint(x: 0, y: -66)
         }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        showNavBarAnimated(false)
     }
     
     override func viewDidLayoutSubviews() {
