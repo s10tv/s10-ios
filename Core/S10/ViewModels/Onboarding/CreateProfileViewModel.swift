@@ -12,8 +12,8 @@ import ReactiveCocoa
 public struct CreateProfileViewModel {
     let meteor: MeteorService
     let operationQueue: NSOperationQueue
-    public let avatar: PropertyOf<Image?>
-    public let cover: PropertyOf<Image?>
+    public let avatar: MutableProperty<Image?>
+    public let cover: MutableProperty<Image?>
     public let firstName: MutableProperty<String>
     public let lastName: MutableProperty<String>
     public let tagline: MutableProperty<String>
@@ -26,8 +26,8 @@ public struct CreateProfileViewModel {
         firstName = user.pFirstName() |> mutable
         lastName = user.pLastName() |> mutable
         about = user.pAbout() |> mutable
-        avatar = user.pAvatar()
-        cover = user.pCover()
+        avatar = user.pAvatar() |> mutable
+        cover = user.pCover() |> mutable
         tagline = MutableProperty("")
         operationQueue = NSOperationQueue()
         let queue = operationQueue

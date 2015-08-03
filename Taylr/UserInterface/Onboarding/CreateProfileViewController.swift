@@ -58,21 +58,23 @@ class CreateProfileViewController : UITableViewController {
     // MARK: - Actions
     
     @IBAction func didTabEditAvatar(sender: AnyObject) {
-        pickImage { image in
-            let scaledImage = image.scaleToMaxDimension(200, pixelSize: true)
-            self.execute(self.vm.uploadImageAction, input: (scaledImage, .ProfilePic), showProgress: true)
+        pickSingleImage(maxDimension: 200).onSuccess { image in
+            self.vm.avatar.value = Image(image)
+            self.execute(self.vm.uploadImageAction, input: (image, .ProfilePic), showProgress: true)
         }
     }
     
     @IBAction func didTabEditCover(sender: AnyObject) {
-        pickImage { image in
-            let scaledImage = image.scaleToMaxDimension(1400, pixelSize: true)
-            self.execute(self.vm.uploadImageAction, input: (scaledImage, .CoverPic), showProgress: true)
+        pickSingleImage(maxDimension: 1400).onSuccess { image in
+            self.vm.cover.value = Image(image)
+            self.execute(self.vm.uploadImageAction, input: (image, .CoverPic), showProgress: true)
         }
     }
 
     @IBAction func didSelectNext(sender: AnyObject) {
-        wrapFuture(vm.saveProfile(), showProgress: true).onSuccess { [weak self] in
+        wrapFuture(showProgress: true) {
+            vm.saveProfile()
+        }.onSuccess { [weak self] in
             self?.performSegue(.Onboarding_profileToIntegrations)
         }
     }

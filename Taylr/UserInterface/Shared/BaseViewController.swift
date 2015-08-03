@@ -58,7 +58,7 @@ extension UIViewController {
         return execute(producer, showProgress: showProgress)
     }
     
-    func wrapFuture<T, E>(@autoclosure future: () -> Future<T, E>, showProgress: Bool = false ) -> Future<T, E> {
+    func wrapFuture<T, E>(showProgress: Bool = false, @noescape future: () -> Future<T, E>) -> Future<T, E> {
         let future = future()
         execute(future.producer, showProgress: showProgress)
         return future

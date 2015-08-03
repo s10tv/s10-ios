@@ -51,10 +51,9 @@ class EditProfileViewController : UITableViewController {
     // MARK: - Actions
     
     @IBAction func didTapAvatarImageView(sender: AnyObject) {
-        pickImage { image in
-            let scaledImage = image.scaleToMaxDimension(200, pixelSize: true)
+        pickSingleImage(maxDimension: 200).onSuccess { image in
             PKHUD.showActivity(dimsBackground: true)
-            self.vm.upload(scaledImage, taskType: .ProfilePic).onComplete { result in
+            self.vm.upload(image, taskType: .ProfilePic).onComplete { result in
                 if let error = result.error {
                     PKHUD.hide(animated: false)
                     self.showErrorAlert(error)
@@ -67,10 +66,9 @@ class EditProfileViewController : UITableViewController {
     }
     
     @IBAction func didTapCoverImageView(sender: AnyObject) {
-        pickImage { image in
-            let scaledImage = image.scaleToMaxDimension(1400, pixelSize: true)
+        pickSingleImage(maxDimension: 1400).onSuccess { image in
             PKHUD.showActivity(dimsBackground: true)
-            self.vm.upload(scaledImage, taskType: .CoverPic).onComplete { result in
+            self.vm.upload(image, taskType: .CoverPic).onComplete { result in
                 if let error = result.error {
                     PKHUD.hide(animated: false)
                     self.showErrorAlert(error)

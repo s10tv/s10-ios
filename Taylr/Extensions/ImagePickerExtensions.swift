@@ -7,22 +7,34 @@
 //
 
 import UIKit
+import ReactiveCocoa
+import Core
 
 extension UIViewController {
-    func pickImage(block: (UIImage) -> ()) {
+    func pickSingleImage(maxDimension: CGFloat? = nil, animated: Bool = true) -> Future<UIImage, NoError> {
+        let promise = Promise<UIImage, NoError>()
         let picker = UIImagePickerController()
+        var gotImage = false
         picker.rac_imageSelectedSignal().subscribeNext({ info in
-            picker.dismissViewControllerAnimated(true) {
-                if let info = info as? NSDictionary,
-                    let image = (info[UIImagePickerControllerEditedImage]
-                        ?? info[UIImagePickerControllerOriginalImage]) as? UIImage {
-                            block(image)
+            if let info = info as? NSDictionary,
+                let image = (info[UIImagePickerControllerEditedImage]
+                    ?? info[UIImagePickerControllerOriginalImage]) as? UIImage {
+                gotImage = true
+                let img = maxDimension.map { image.scaleToMaxDimension($0, pixelSize: true) } ?? image
+                picker.dismissViewControllerAnimated(animated) {
+                    promise.success(img)
                 }
             }
         }, completed: {
-            picker.dismissViewController(animated: true)
+            if !gotImage {
+                picker.dismissViewControllerAnimated(animated) {
+                    promise.cancel()
+                }
+            }
+            
         })
-        presentViewController(picker, animated: true)
+        presentViewController(picker, animated: animated)
+        return promise.future
     }
 }
 
