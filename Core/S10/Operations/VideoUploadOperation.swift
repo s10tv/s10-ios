@@ -21,8 +21,7 @@ internal class VideoUploadOperation : AsyncOperation {
     let localVideoURL: NSURL
     let meteorService: MeteorService
 
-    init(
-            recipientId: String,
+    init(recipientId: String,
             localVideoURL: NSURL,
             meteorService: MeteorService) {
         self.recipientId = recipientId

@@ -48,7 +48,7 @@ extension InviteViewController : ProducerDelegate {
         producer.dismissViewController(animated: true)
     }
     
-    func producer(producer: ProducerViewController, didProduceVideo url: NSURL) {
+    func producer(producer: ProducerViewController, didProduceVideo url: NSURL, duration: NSTimeInterval) {
         producer.dismissViewController(animated: true)
         vm.sendInvite(url)
             |> deliverOn(UIScheduler())
