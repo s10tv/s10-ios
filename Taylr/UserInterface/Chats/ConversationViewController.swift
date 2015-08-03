@@ -77,7 +77,7 @@ class ConversationViewController : BaseViewController {
     
         swipeView.vertical = true
         swipeView.bounces = false
-        swipeView.currentItemIndex = 0//vm.page.value.rawValue
+        swipeView.currentItemIndex = vm.page.value.rawValue
         swipeView.dataSource = self
         swipeView.delegate = self
         swipeView.layoutIfNeeded()

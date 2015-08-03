@@ -80,12 +80,16 @@ public class ConversationViewModel {
         self.taskService = taskService
         self.recipient = recipient
         let loadMessages = messageLoader(recipient)
+        let showTutorial = UD.showPlayerTutorial.value ?? true
+        
+        self.showTutorial = showTutorial
+        exitAtEnd = recipient == nil
         
         _messages = MutableProperty(loadMessages())
         messages = PropertyOf(_messages)
         playing = MutableProperty(false)
         recording = MutableProperty(false)
-        page = MutableProperty(_messages.value.count > 0 ? .Player : .Producer)
+        page = MutableProperty((_messages.value.count > 0 || showTutorial) ? .Player : .Producer)
         state = PropertyOf(.PlaybackStopped, combineLatest(
             page.producer,
             playing.producer,
@@ -97,8 +101,6 @@ public class ConversationViewModel {
             }
         })
         
-        showTutorial = UD.showPlayerTutorial.value ?? true
-        exitAtEnd = recipient == nil
         currentMessage = MutableProperty(nil)
         currentUser = currentMessage
             |> map { $0?.message.sender ?? recipient }
