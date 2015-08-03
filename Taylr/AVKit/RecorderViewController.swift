@@ -23,6 +23,8 @@ class RecorderViewController : UIViewController {
     @IBOutlet weak var filterHint: UIView!
     @IBOutlet weak var recordHint: UIView!
     
+    let ud = NSUserDefaults.standardUserDefaults()
+    
     let recorder = SCRecorder.sharedRecorder()
     weak var delegate: RecorderDelegate?
     
@@ -49,6 +51,8 @@ class RecorderViewController : UIViewController {
         previewView.selectFilterScrollView.directionalLockEnabled = true
 
         recordButton.addGestureRecognizer(TouchDetector(target: self, action: "handleRecordButtonTouch:"))
+        
+        filterHint.hidden = ud.boolForKey("hideSwipeFilterHint")
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -90,6 +94,7 @@ extension RecorderViewController : SCRecorderDelegate {
     func recorder(recorder: SCRecorder, didBeginSegmentInSession session: SCRecordSession, error: NSError?) {
         filterHint.hidden = true
         recordHint.hidden = true
+        ud.setBool(true, forKey: "hideSwipeFilterHint")
     }
     
     func recorder(recorder: SCRecorder, didReconfigureVideoInput videoInputError: NSError?) {

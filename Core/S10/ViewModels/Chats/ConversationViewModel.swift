@@ -97,7 +97,7 @@ public class ConversationViewModel {
             }
         })
         
-        showTutorial = true // TODO: Use userdefaults
+        showTutorial = UD.showPlayerTutorial.value ?? true
         exitAtEnd = recipient == nil
         currentMessage = MutableProperty(nil)
         currentUser = currentMessage
@@ -137,6 +137,10 @@ public class ConversationViewModel {
         // NOTE: ManagedObjectContext changes are ignored
         // So if video is removed nothing will happen
         _messages <~ Realm().notifier() |> map { _ in loadMessages() } |> skipRepeats { $0 == $1 }
+    }
+    
+    public func finishTutorial() {
+        UD.showPlayerTutorial.value = false
     }
     
     public func openMessage(message: MessageViewModel) {

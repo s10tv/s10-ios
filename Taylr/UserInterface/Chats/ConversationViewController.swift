@@ -197,6 +197,7 @@ extension ConversationViewController : ConversationTutorialDelegate {
         if player.vm.nextVideo() != nil {
             player.advance()
         }
+        vm.finishTutorial()
     }
 }
 

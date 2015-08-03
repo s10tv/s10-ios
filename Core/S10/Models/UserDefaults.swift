@@ -17,6 +17,8 @@ public struct UserDefaults {
     public let meteorUserId = ud.dyn("meteorUserId").optional(String)
     public let userDisplayName = ud.dyn("userDisplayName").optional(String)
     public let userEmail = ud.dyn("userEmail").optional(String)
+    public let showPlayerTutorial = ud.dyn("showPlayerTutorial").optional(Bool)
+    public let showSwipeFilterHint = ud.dyn("showSwipeFilterHint").optional(Bool)
     
     public func resetAll() {
         NSBundle.mainBundle().bundleIdentifier.map {
