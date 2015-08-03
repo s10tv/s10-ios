@@ -10,6 +10,13 @@ import Foundation
 import ReactiveCocoa
 import Bond
 
+func countUnreadConnections(#cold: Bool) -> Int {
+    let pred = NSPredicate(format: "%K == %@ && %K > 0",
+        ConnectionKeys.cold.rawValue, cold,
+        ConnectionKeys.unreadCount.rawValue)
+    return Connection.by(pred).count()
+}
+
 public struct ChatsViewModel {
     public enum Section : Int {
         case Contacts = 0, New = 1
@@ -40,7 +47,20 @@ public struct ChatsViewModel {
                     return ContactConnectionViewModel(connection: connection)
                 }
             }
-
+        currentSection <~ chatsSub.ready.producer
+            |> catch { _ in .empty }
+            |> observeOn(UIScheduler())
+            |> then(SignalProducer { observer, _ in
+                let cold = countUnreadConnections(cold: true)
+                let warm = countUnreadConnections(cold: false)
+                if cold > 0 && warm == 0 {
+                    sendNext(observer, .New)
+                } else {
+                    sendNext(observer, .Contacts)
+                }
+                sendCompleted(observer)
+            })
+        
         (currentSection
             |> map {
                 switch $0 {
