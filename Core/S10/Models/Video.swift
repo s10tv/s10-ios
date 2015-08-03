@@ -32,7 +32,7 @@ public struct Video : Mappable {
     
     public mutating func mapping(map: Map) {
         url <- (map["url"], URLTransform())
-        url <- map["duration"]
+        duration <- map["duration"]
         width <- map["width"]
         height <- map["height"]
     }
