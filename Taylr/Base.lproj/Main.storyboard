@@ -70,7 +70,6 @@
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
-            <string>Cabin-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1801,40 +1800,6 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="" id="Q06-5g-eu7" userLabel="Options">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="RdT-bb-bTz">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="RdT-bb-bTz" id="NPg-t8-W68">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mgM-Tu-k3Z" userLabel="Horizontal Divider">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="1"/>
-                                                    <color key="backgroundColor" red="0.93299722671508789" green="0.94112014770507812" blue="0.94931834936141968" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="1" id="nln-q0-6ct"/>
-                                                    </constraints>
-                                                </view>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Let other people discover me" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UPj-hd-ND2">
-                                                    <rect key="frame" x="18" y="20" width="236" height="21"/>
-                                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="18"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Fhl-Al-zlH">
-                                                    <rect key="frame" x="533" y="15" width="51" height="31"/>
-                                                    <color key="onTintColor" red="0.46897470951080322" green="0.27513545751571655" blue="0.68778532743453979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                </switch>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="centerY" secondItem="Fhl-Al-zlH" secondAttribute="centerY" id="C5b-TI-SfE"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Fhl-Al-zlH" secondAttribute="trailing" constant="10" id="F1v-2t-xwt"/>
-                                                <constraint firstItem="UPj-hd-ND2" firstAttribute="leading" secondItem="NPg-t8-W68" secondAttribute="leadingMargin" constant="10" id="VFH-e8-ffG"/>
-                                                <constraint firstAttribute="centerY" secondItem="UPj-hd-ND2" secondAttribute="centerY" id="WOE-hn-csV"/>
-                                                <constraint firstAttribute="trailing" secondItem="mgM-Tu-k3Z" secondAttribute="trailing" id="cZT-7j-63Q"/>
-                                                <constraint firstItem="mgM-Tu-k3Z" firstAttribute="leading" secondItem="NPg-t8-W68" secondAttribute="leading" id="fiQ-Ky-UJa"/>
-                                                <constraint firstItem="mgM-Tu-k3Z" firstAttribute="top" secondItem="NPg-t8-W68" secondAttribute="top" id="gXQ-tk-ySq"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="bxU-B7-C7f">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bxU-B7-C7f" id="czG-fX-5H5">

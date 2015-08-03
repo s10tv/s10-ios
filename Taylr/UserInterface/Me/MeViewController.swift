@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MessageUI
 import Bond
 import ReactiveCocoa
 import ObjectMapper
@@ -85,9 +86,15 @@ class MeViewController : UITableViewController {
     // MARK: -
     
     @IBAction func didPressContactSupport(sender: AnyObject) {
-        let alert = UIAlertController(title: "To be implemented", message: nil, preferredStyle: .Alert)
-        alert.addAction("Ok", style: .Cancel)
-        presentViewController(alert)
+        if MFMailComposeViewController.canSendMail() {
+            let mail = MFMailComposeViewController()
+            mail.setToRecipients(["hello@s10.tv"])
+            mail.setSubject("Taylr Feedback")
+            mail.mailComposeDelegate = self
+            presentViewController(mail, animated: true)
+        } else {
+            showAlert("Cannot contact support", message: "No email account available.")
+        }
     }
     
     @IBAction func didPressLogout(sender: AnyObject) {
@@ -109,5 +116,11 @@ extension MeViewController : UITableViewDelegate {
             return height
         }
         return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+    }
+}
+
+extension MeViewController : MFMailComposeViewControllerDelegate {
+    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+        controller.dismissViewController(animated: true)
     }
 }
