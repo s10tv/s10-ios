@@ -51,7 +51,7 @@ extension UIImageView {
         } else if let url = image?.url {
             sd_setImageWithURL(url, placeholderImage: dynPlaceholderImage)
         } else {
-            self.image = nil
+            self.image = dynPlaceholderImage
         }
     }
     
