@@ -53,7 +53,7 @@ class EditProfileViewController : UITableViewController {
     // MARK: - Actions
     
     @IBAction func didTapAvatarImageView(sender: AnyObject) {
-        pickSingleImage(maxDimension: 200).onSuccess { image in
+        pickSingleImage(maxDimension: 640).onSuccess { image in
             PKHUD.showActivity(dimsBackground: true)
             self.vm.upload(image, taskType: .ProfilePic).onComplete { result in
                 if let error = result.error {

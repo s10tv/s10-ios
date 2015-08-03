@@ -32,7 +32,12 @@ internal class PhotoUploadOperation : AsyncOperation {
     override func run() {
         let imageData = UIImageJPEGRepresentation(image, 0.8)
         let taskId = NSUUID().UUIDString
-        meteor.startTask(taskId, type: taskType.rawValue, metadata: [:]).flattenMap {
+        let width = image.size.width * image.scale
+        let height = image.size.height * image.scale
+        meteor.startTask(taskId, type: taskType.rawValue, metadata: [
+            "width" : width,
+            "height": height
+            ]).flattenMap {
             let url = JSON($0)["url"].string!
             let request = NSMutableURLRequest(URL: NSURL(string : url)!)
             request.HTTPMethod = "PUT"

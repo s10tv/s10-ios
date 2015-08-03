@@ -59,7 +59,7 @@ class CreateProfileViewController : UITableViewController {
     // MARK: - Actions
     
     @IBAction func didTabEditAvatar(sender: AnyObject) {
-        pickSingleImage(maxDimension: 200).onSuccess { image in
+        pickSingleImage(maxDimension: 640).onSuccess { image in
             self.vm.avatar.value = Image(image)
             self.execute(self.vm.uploadImageAction, input: (image, .ProfilePic), showProgress: true)
         }

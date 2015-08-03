@@ -166,7 +166,7 @@ extension UIColor {
 extension UIImage {
     
     public func scaleToMaxDimension(length: CGFloat, pixelSize: Bool = false) -> UIImage {
-        let scaleFactor = length / min(size.width, size.height)
+        let scaleFactor = length / max(size.width, size.height)
         // Don't scale up, only scale down
         if scaleFactor > 1 {
             return self
