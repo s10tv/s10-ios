@@ -28,10 +28,12 @@ class ProfileAttributeCell : UICollectionViewCell, BindableCell {
 class TaylrProfileInfoCell : UITableViewCell, BindableCell {
     @IBOutlet weak var taglineLabel: UILabel!
     @IBOutlet weak var aboutLabel: UILabel!
+    @IBOutlet weak var chatButton: UIButton!
     
     func bind(vm: TaylrProfileInfoViewModel) {
         vm.tagline ->> taglineLabel
         vm.about ->> aboutLabel
+        chatButton.hidden = vm.hideChatButton
     }
     
     static func reuseId() -> String {

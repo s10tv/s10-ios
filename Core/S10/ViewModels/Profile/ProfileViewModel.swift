@@ -46,7 +46,7 @@ public struct ProfileViewModel {
         coverVM = DynamicArray([cvm])
         infoVM = toBondDynamicArray(cvm.selectedProfile |> map {
             $0.profile.map { [ConnectedProfileInfoViewModel(profile: $0)] }
-                ?? [TaylrProfileInfoViewModel(user: user)]
+                ?? [TaylrProfileInfoViewModel(meteor: meteor, user: user)]
         })
         results = Activity
             .by(supportedActivitiesByUser(user))

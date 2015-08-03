@@ -718,6 +718,7 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="aboutLabel" destination="7Sh-4s-Djb" id="Vxs-LQ-gaL"/>
+                                            <outlet property="chatButton" destination="PBZ-8J-2mE" id="hpc-cw-3c5"/>
                                             <outlet property="taglineLabel" destination="agL-sb-Y6s" id="FQx-mi-SD4"/>
                                         </connections>
                                     </tableViewCell>
