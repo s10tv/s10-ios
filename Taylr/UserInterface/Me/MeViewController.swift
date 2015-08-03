@@ -38,6 +38,7 @@ class MeViewController : UITableViewController {
         vm.avatar ->> avatarView.imageBond
         vm.displayName ->> nameLabel
         vm.username ->> usernameLabel
+        versionLabel.text = "Taylr v\(Globals.env.version) (\(Globals.env.build))"
 
         // Observe collectionView height and reload table view cell height whenever appropriate
         servicesVC.collectionView!.dyn("contentSize").force(NSValue).producer
