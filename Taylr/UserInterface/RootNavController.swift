@@ -18,6 +18,7 @@ class RootNavController : UINavigationController {
     let onboarding = UIStoryboard(name: "Onboarding", bundle: nil)
     let main = UIStoryboard(name: "Main", bundle: nil)
     var transitionManager : TransitionManager!
+    let vm = RootNavViewModel(meteor: Meteor)
     
     init(account: AccountService) {
         let sb = account.state.value.onboardingNeeded ? onboarding : main

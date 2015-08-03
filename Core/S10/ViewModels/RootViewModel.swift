@@ -11,10 +11,25 @@ import CoreData
 import ReactiveCocoa
 import Bond
 
-public struct RootViewModel {
+public struct RootNavViewModel {
+    let prefetchedSubscriptions: [MeteorSubscription]
+    public init(meteor: MeteorService) {
+        // Subscriptions which are globally useful that we are gonna try to fetch asap
+        // so that there's content to show immediately
+        prefetchedSubscriptions = [
+            meteor.subscribe("me"),
+            meteor.subscribe("discover"),
+            meteor.subscribe("chats"),
+            meteor.subscribe("integrations")
+        ]
+    }
+}
+
+public struct RootTabViewModel {
     let meteor: MeteorService
     let taskService: TaskService
     let unreadConversations: FetchedResultsArray<Connection>
+    
     public let unreadConnectionsCount: PropertyOf<Int>
     
     public init(meteor: MeteorService, taskService: TaskService) {
@@ -24,5 +39,6 @@ public struct RootViewModel {
             .by(NSPredicate(format: "%K > 0", ConnectionKeys.unreadCount.rawValue))
             .results(Connection)
         unreadConnectionsCount = fromBondDynamic(unreadConversations.dynCount)
+        
     }
 }
