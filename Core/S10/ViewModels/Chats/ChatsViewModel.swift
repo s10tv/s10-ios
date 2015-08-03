@@ -10,11 +10,19 @@ import Foundation
 import ReactiveCocoa
 import Bond
 
-func countUnreadConnections(#cold: Bool) -> Int {
+func countOfUnreadConnections(#cold: Bool) -> PropertyOf<Int> {
     let pred = NSPredicate(format: "%K == %@ && %K > 0",
         ConnectionKeys.cold.rawValue, cold,
         ConnectionKeys.unreadCount.rawValue)
-    return Connection.by(pred).count()
+    return PropertyOf(0, SignalProducer<Int, NoError> { sink, disposable in
+        let results = Connection.by(pred).results(Connection)
+        let bond = Bond<Int> { sendNext(sink, $0) }
+        results.dynCount.bindTo(bond)
+        disposable.addDisposable {
+            let retainedResults = results
+            let retainedBond = bond
+        }
+    })
 }
 
 public struct ChatsViewModel {
@@ -28,6 +36,8 @@ public struct ChatsViewModel {
     let results: FetchedResultsArray<Connection>
     public let connections: DynamicArray<ConnectionViewModel>
     public let currentSection = MutableProperty<Section>(.Contacts)
+    public let newUnreadCount = countOfUnreadConnections(cold: true)
+    public let contactsUnreadCount = countOfUnreadConnections(cold: false)
     
     public init(meteor: MeteorService, taskService: TaskService) {
         self.meteor = meteor
@@ -51,8 +61,8 @@ public struct ChatsViewModel {
             |> catch { _ in .empty }
             |> observeOn(UIScheduler())
             |> then(SignalProducer { observer, _ in
-                let cold = countUnreadConnections(cold: true)
-                let warm = countUnreadConnections(cold: false)
+                let cold = countOfUnreadConnections(cold: true).value
+                let warm = countOfUnreadConnections(cold: false).value
                 if cold > 0 && warm == 0 {
                     sendNext(observer, .New)
                 } else {

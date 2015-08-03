@@ -42,6 +42,14 @@ class ChatsViewController : BaseViewController {
                 self?.tableView.rowHeight = 120
             }
         })
+        vm.contactsUnreadCount.producer.start(next: { [weak self] count in
+            let title = count > 0 ? "Contacts (\(count))" : "Contacts"
+            self?.segmentedControl.setTitle(title, forSegmentAtIndex: 0)
+        })
+        vm.newUnreadCount.producer.start(next: { [weak self] count in
+            let title = count > 0 ? "New (\(count))" : "New"
+            self?.segmentedControl.setTitle(title, forSegmentAtIndex: 1)
+        })
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
