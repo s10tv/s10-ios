@@ -159,7 +159,7 @@ public struct Future<T, E: ErrorType> {
     }
     
     public func lift<U, F>(transform: SignalProducer<T, E> -> SignalProducer<U, F>) -> Future<U, F> {
-        return Future<U, F>(buffer: transform(buffer))
+        return Future<U, F>(workToStart: transform(buffer))
     }
     
     // Binary lift
@@ -172,7 +172,7 @@ public struct Future<T, E: ErrorType> {
     
     public func lift<U, F, V, G>(transform: SignalProducer<U, F> -> (SignalProducer<T, E> -> SignalProducer<V, G>)) -> Future<U, F> -> Future<V, G> {
         return { otherFuture in
-            return Future<V, G>(buffer: transform(otherFuture.buffer)(self.buffer))
+            return Future<V, G>(workToStart: transform(otherFuture.buffer)(self.buffer))
         }
     }
     
