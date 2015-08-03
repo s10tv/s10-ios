@@ -24,28 +24,28 @@ extension UINavigationController {
 }
 
 extension UIViewController {
+    func presentError<E: AlertableError>(e: E) {
+        let alert = e.alert
+        let vc = UIAlertController(title: alert.title, message: alert.message, preferredStyle: alert.style)
+        alert.actions.each { vc.addAction($0) }
+        presentViewController(vc, animated: true, completion: nil)
+    }
+    
     func execute<T, E>(producer: SignalProducer<T, E>, showProgress: Bool = false) -> Disposable {
         return producer
             |> observeOn(UIScheduler())
             |> on(started: {
                     if showProgress { PKHUD.show(dimsBackground: true) }
                 }, error: { [weak self] in
-                    var alert: ErrorAlert?
                     if let e = $0 as? ActionError<E> {
                         switch e {
                         case .ProducerError(let e as AlertableError):
-                            alert = e.alert
+                            self?.presentError(e.alert)
                         default:
                             break
                         }
-                    }
-                    if let e = $0 as? AlertableError {
-                        alert = e.alert
-                    }
-                    if let alert = alert {
-                        let vc = UIAlertController(title: alert.title, message: alert.message, preferredStyle: alert.style)
-                        alert.actions.each { vc.addAction($0) }
-                        self?.presentViewController(vc, animated: true, completion: nil)
+                    } else if let e = $0 as? AlertableError {
+                        self?.presentError(e.alert)
                     }
                 }, terminated: {
                     if showProgress { PKHUD.hide(animated: false) }

@@ -23,6 +23,17 @@ public struct InviteViewModel {
         self.taskService = taskService
     }
     
+    public func validateInvite() -> ErrorAlert? {
+        if firstName.value.nonBlank() == nil {
+            return ErrorAlert(title: "Invalid Invite", message: "First name is required")
+        } else if lastName.value.nonBlank() == nil {
+            return ErrorAlert(title: "Invalid Invite", message: "Last name is required")
+        } else if emailOrPhone.value.nonBlank() == nil {
+            return ErrorAlert(title: "Invalid Invite", message: "Email or phone is required")
+        }
+        return nil
+    }
+    
     public func sendInvite(videoURL: NSURL) -> Future<(), NSError> {
         let promise = Promise<(), NSError>()
         if self.emailOrPhone.value.isEmpty {

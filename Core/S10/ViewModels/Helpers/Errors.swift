@@ -12,6 +12,7 @@ import ReactiveCocoa
 public enum ClientError : String, AlertableError {
     case Validation = "validation"
     case Offline = "offline"
+    case InvalidInvite = "Invalid Invite"
     
     public var nsError: NSError {
         return NSError(domain: "Client", code: 0, userInfo: [
