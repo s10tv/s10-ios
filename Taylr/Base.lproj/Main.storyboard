@@ -298,7 +298,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pVQ-Tu-jcV" id="4hE-7L-rNx">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="4Uc-p6-gzK">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-taylor-avatar" translatesAutoresizingMaskIntoConstraints="NO" id="4Uc-p6-gzK">
                                                     <rect key="frame" x="10" y="8" width="59" height="59"/>
                                                     <gestureRecognizers/>
                                                     <constraints>
@@ -1641,7 +1641,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OjQ-Z2-Rjk" id="Y7h-a5-tcW">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-profile-pic" translatesAutoresizingMaskIntoConstraints="NO" id="VMj-KH-MYk">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-profile-pic" translatesAutoresizingMaskIntoConstraints="NO" id="VMj-KH-MYk">
                                                     <rect key="frame" x="8" y="15" width="84" height="84"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="84" id="Hea-S2-DQS"/>
@@ -2208,7 +2208,7 @@
                         <viewControllerLayoutGuide type="bottom" id="f9H-5c-O94"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="aTd-Nu-TtE">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wRa-4w-SGN" userLabel="Step 2 View">
@@ -2241,7 +2241,7 @@
                                             <action selector="didTapDone:" destination="6pB-a5-0KZ" eventType="touchUpInside" id="Zom-65-udc"/>
                                         </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Once you leave this conversation, videos that you have seen are automatically removed in order to save space on your device." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="270" translatesAutoresizingMaskIntoConstraints="NO" id="VY0-0t-w8t">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Once you leave this conversation, videos that you have seen are automatically removed in order to save space on your device." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="270" translatesAutoresizingMaskIntoConstraints="NO" id="VY0-0t-w8t">
                                         <rect key="frame" x="155" y="36" width="259" height="105"/>
                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2392,7 +2392,7 @@
         <image name="sample-taylor-video-frame" width="375" height="375"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Fwv-Pj-RXP"/>
-        <segue reference="TFP-eW-cVI"/>
+        <segue reference="yhs-PQ-k4J"/>
+        <segue reference="Nm9-7n-EUh"/>
     </inferredMetricsTieBreakers>
 </document>

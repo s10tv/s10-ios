@@ -52,7 +52,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="Cabin"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isY-Ks-GfE" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isY-Ks-GfE" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
                                 <rect key="frame" x="170" y="410" width="260" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
