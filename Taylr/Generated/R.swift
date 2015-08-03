@@ -270,6 +270,8 @@ public enum R {
         case icTwitterSmall = "ic-twitter-small"
         /// ic-up-chevron
         case icUpChevron = "ic-up-chevron"
+        /// ic-up-triangle
+        case icUpTriangle = "ic-up-triangle"
         /// ic-upvote
         case icUpvote = "ic-upvote"
         /// ic-video

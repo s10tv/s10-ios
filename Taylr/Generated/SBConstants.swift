@@ -13,14 +13,15 @@ public enum CollectionViewControllerStoryboardIdentifier : String {
 }
 
 public enum SegueIdentifier : String {
+    case ConnectServicesToCreateProfile = "ConnectServicesToCreateProfile"
     case ConversationToProfile = "ConversationToProfile"
+    case CreateProfileToUsername = "CreateProfileToUsername"
     case IntegrationsToWeb = "IntegrationsToWeb"
-    case LoginToCreateProfile = "LoginToCreateProfile"
+    case LoginToConnectServices = "LoginToConnectServices"
     case Main_RootTab = "Main_RootTab"
     case MeToEditProfile = "MeToEditProfile"
     case MeToProfile = "MeToProfile"
     case Onboarding_Login = "Onboarding_Login"
-    case Onboarding_profileToIntegrations = "Onboarding_profileToIntegrations"
     case ProfileToConversation = "ProfileToConversation"
     case RecorderToEditor = "RecorderToEditor"
 }

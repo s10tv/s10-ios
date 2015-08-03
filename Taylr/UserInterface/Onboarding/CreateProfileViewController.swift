@@ -74,7 +74,7 @@ class CreateProfileViewController : UITableViewController {
         wrapFuture(showProgress: true) {
             vm.saveProfile()
         }.onSuccess { [weak self] in
-            self?.performSegue(.Onboarding_profileToIntegrations)
+            self?.performSegue(.CreateProfileToUsername)
         }
     }
 }

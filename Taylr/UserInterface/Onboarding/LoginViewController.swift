@@ -37,7 +37,7 @@ class LoginViewController : BaseViewController {
             showErrorAction <~ errors |> map { $0 as AlertableError }
             segueAction <~ values |> map {
                 switch $0 {
-                case .LoggedIn: return .LoginToCreateProfile
+                case .LoggedIn: return .LoginToConnectServices
                 case .Onboarded: return .Main_RootTab
                 default: fatalError("Expecting either LoggedIn or Onboarded")
                 }
