@@ -22,28 +22,17 @@ public struct UsernameViewModel {
     
     public init(meteor: MeteorService) {
         self.meteor = meteor
-        usernamePlaceholder = "tswift"
-        username = MutableProperty("")
+        
+        usernamePlaceholder = "Username"
+        username = MutableProperty(meteor.user.value.map {
+            (($0.firstName ?? "") + ($0.lastName ?? "")).lowercaseString
+        } ?? "")
+        
+        // TODO: Implement reactive username checking. Currently they are incomplete
         statusImage = PropertyOf(nil)
         hideSpinner = PropertyOf(true)
-        
-        statusMessage = PropertyOf("", username.producer
-            |> skip(1)
-            |> map { username -> String in
-                if username.length < 4 {
-                    return "Username must be at least 4 characters"
-                }
-                if username.length > 20 {
-                    return "Username must be at less than 20 characters"
-                }
-                return ""
-            }
-        )
-        statusColor = PropertyOf(UIColor.blackColor(), statusMessage.producer
-            |> map {
-                $0.length > 0 ? UIColor.redColor() : UIColor.blackColor()
-            }
-        )
+        statusMessage = PropertyOf("")
+        statusColor = PropertyOf(UIColor.blackColor())
     }
     
     public func saveUsername() -> Future<Void, ErrorAlert> {

@@ -27,7 +27,7 @@ public struct ErrorAlert : AlertableError {
         self.title = title
         self.message = message
         self.style = style
-        self.actions = actions ?? [UIAlertAction(title: "Dismiss", style: .Cancel, handler: nil)]
+        self.actions = actions ?? [UIAlertAction(title: "Ok", style: .Cancel, handler: nil)]
         self.underlyingError = underlyingError
     }
     

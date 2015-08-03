@@ -120,6 +120,12 @@ public class MeteorService : NSObject {
             ]
         ]]).delay(0.1)
     }
+    
+    
+    func isUsernameTaken(username: String) -> Future<Bool, NSError> {
+        return call("isUsernameTaken", username).future |> map { $0 as! Bool }
+    }
+
 
     func confirmRegistration(username: String) -> RACSignal {
         return meteor.call("confirmRegistration", [username])

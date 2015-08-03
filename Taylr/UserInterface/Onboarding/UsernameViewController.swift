@@ -51,19 +51,10 @@ class UsernameViewController : UIViewController {
     // MARK: -
     
     @IBAction func didTapDone(sender: AnyObject) {
-        self.vm.saveUsername()
-            |> deliverOn(UIScheduler())
-            |> onComplete { result in
-                result.analysis(ifSuccess: {
-                    self.performSegue(SegueIdentifier.Main_RootTab, sender: nil)
-                }, ifFailure: { error in
-                    let alert = UIAlertController(
-                        title: error.title,
-                        message: error.message,
-                        preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-                    self.presentViewController(alert, animated: true)
-                })
+        wrapFuture(showProgress: true) {
+            vm.saveUsername()
+        }.onSuccess {
+            self.performSegue(SegueIdentifier.Main_RootTab)
         }
     }
 }
