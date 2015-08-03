@@ -19,6 +19,7 @@ class EditProfileViewController : UITableViewController {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var firstNameField: JVFloatLabeledTextField!
     @IBOutlet weak var lastNameField: JVFloatLabeledTextField!
+    @IBOutlet weak var taglineField: JVFloatLabeledTextField!
     @IBOutlet weak var aboutTextView: JVFloatLabeledTextView!
     @IBOutlet weak var usernameLabel: JVFloatLabeledTextField!
     
@@ -33,6 +34,7 @@ class EditProfileViewController : UITableViewController {
         
         vm.firstName <->> firstNameField
         vm.lastName <->> lastNameField
+        vm.tagline <->> taglineField
         vm.about <->> aboutTextView
         vm.username ->> usernameLabel
         vm.avatar ->> avatarImageView.imageBond
@@ -81,16 +83,10 @@ class EditProfileViewController : UITableViewController {
     }
     
     @IBAction func didPressDone(sender: AnyObject) {
-        PKHUD.showActivity(dimsBackground: true)
-        vm.saveEdits()
-            |> deliverOn(UIScheduler())
-            |> onComplete { result in
-                PKHUD.hide(animated: false)
-                if let err = result.error {
-                    self.showErrorAlert(err)
-                } else {
-                    self.navigationController?.popViewControllerAnimated(true)
-                }
-            }
+        wrapFuture(showProgress: true) {
+            vm.saveEdits()
+        }.onSuccess {
+            self.navigationController?.popViewControllerAnimated(true)
+        }
     }
 }

@@ -12,6 +12,7 @@ import ReactiveCocoa
 public struct EditProfileViewModel {
     public let firstName: MutableProperty<String>
     public let lastName: MutableProperty<String>
+    public let tagline: MutableProperty<String>
     public let about: MutableProperty<String>
     public let username: PropertyOf<String>
     public let avatar: PropertyOf<Image?>
@@ -26,17 +27,19 @@ public struct EditProfileViewModel {
         self.user = user
         firstName = user.pFirstName() |> mutable
         lastName = user.pLastName() |> mutable
+        tagline = user.pTagline() |> mutable
         about = user.pAbout() |> mutable
         username = user.pUsername()
         avatar = user.pAvatar()
         cover = user.pCover()
     }
     
-    public func saveEdits() -> Future<(), NSError> {
-        let promise = Promise<(), NSError>()
+    public func saveEdits() -> Future<(), ErrorAlert> {
+        let promise = Promise<(), ErrorAlert>()
         // TODO: Add client side validation logic
         if firstName.value == user.firstName &&
             lastName.value == user.lastName &&
+            tagline.value == user.tagline &&
             about.value == user.about {
             // Early exit case
             promise.success()
@@ -44,10 +47,13 @@ public struct EditProfileViewModel {
             meteor.updateProfile([
                 "firstName": firstName.value,
                 "lastName": lastName.value,
+                "tagline": tagline.value,
                 "about": about.value,
-            ]).subscribeErrorOrCompleted {
-                $0.map { promise.failure($0) } ?? promise.success()
-            }
+            ]).subscribeError({ error in
+                promise.failure(ErrorAlert(title: "Unable to save", message: error.localizedDescription))
+            }, completed: {
+                promise.success()
+            })
         }
         return promise.future
     }
