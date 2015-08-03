@@ -34,6 +34,8 @@ class CreateProfileViewController : UITableViewController {
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
 
         avatarView.makeCircular()
+        avatarView.dynPlaceholderImage = avatarView.image
+        coverView.dynPlaceholderImage = coverView.image
         aboutView.floatingLabelFont = UIFont(.cabinRegular, size: 11)
         aboutView.setPlaceholder("About (Optional)", floatingTitle: "About")
         taglineField.setPlaceholder("Tagline. (e.g. New to SF, hails from NY)", floatingTitle: "Tagline")

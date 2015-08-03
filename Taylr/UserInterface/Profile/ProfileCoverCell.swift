@@ -84,7 +84,8 @@ class ProfileCoverCell : UITableViewCell, BindableCell {
         super.awakeFromNib()
         avatarView.makeCircular()
         coverImageView.clipsToBounds = true
-//        avatarView.dynPlaceholderImage = avatarView.image // TODO: Use a better avatar placeholder
+        // TODO: Use a better avatar placeholder
+        avatarView.dynPlaceholderImage = avatarView.image
         coverImageView.dynPlaceholderImage = coverImageView.image
         collectionView.delegate = self
     }
