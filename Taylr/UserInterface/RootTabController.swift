@@ -29,6 +29,11 @@ class RootTabController : UITabBarController {
             |> start(completed: {
                 nav?.goToLogin()
             })
+        vm.chatsBadge.producer.start(next: { [weak self] badge in
+            if let item = self?.tabBar.items?[2] as? UITabBarItem {
+                item.badgeValue = badge
+            }
+        })
     }
     
     override func viewWillAppear(animated: Bool) {

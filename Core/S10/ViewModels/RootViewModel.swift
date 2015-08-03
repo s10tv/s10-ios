@@ -30,7 +30,7 @@ public struct RootTabViewModel {
     let taskService: TaskService
     let unreadConversations: FetchedResultsArray<Connection>
     
-    public let unreadConnectionsCount: PropertyOf<Int>
+    public let chatsBadge: PropertyOf<String?>
     
     public init(meteor: MeteorService, taskService: TaskService) {
         self.meteor = meteor
@@ -38,7 +38,6 @@ public struct RootTabViewModel {
         unreadConversations = Connection
             .by(NSPredicate(format: "%K > 0", ConnectionKeys.unreadCount.rawValue))
             .results(Connection)
-        unreadConnectionsCount = fromBondDynamic(unreadConversations.dynCount)
-        
+        chatsBadge = fromBondDynamic(unreadConversations.dynCount) |> map { $0 > 0 ? "\($0)" : nil }
     }
 }
