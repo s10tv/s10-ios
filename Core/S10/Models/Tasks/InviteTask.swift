@@ -17,6 +17,9 @@ internal class InviteTask : Object {
     dynamic var localVideoUrl = ""
     dynamic var firstName = ""
     dynamic var lastName = ""
+    dynamic var thumbnailData = NSData()
+    dynamic var videoWidth = 0
+    dynamic var videoHeight = 0
     dynamic var emailOrPhone = ""
     
     override static func primaryKey() -> String? {

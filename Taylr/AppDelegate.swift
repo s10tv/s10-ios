@@ -56,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
 //        Crashlytics.sharedInstance().setObjectValue(env.deviceId, forKey: "DeviceId")
         
         // Migrate db if needed
-        setDefaultRealmSchemaVersion(4) { migration, oldSchemaVersion in
+        setDefaultRealmSchemaVersion(5) { migration, oldSchemaVersion in
             // Automatic migration
         }
         
