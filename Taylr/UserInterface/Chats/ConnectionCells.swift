@@ -72,6 +72,7 @@ class NewConnectionCell : UITableViewCell, BindableCell {
         vm.displayName ->> nameLabel
         vm.displayTime ->> timestampLabel
         vm.tagline ->> taglineLabel
+        vm.busy ->> spinner
         vm.hidePlayIcon ->> playIcon.dynHidden
         vm.profileIcons.map(profileIconsView.factory(ProfileIconCell)) ->> profileIconsView
     }
