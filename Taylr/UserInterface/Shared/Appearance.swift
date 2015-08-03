@@ -8,6 +8,7 @@
 
 
 import UIKit
+import AMPopTip
 
 struct Appearance {
     
@@ -19,5 +20,8 @@ struct Appearance {
         UISegmentedControl.appearance().setTitleTextAttributes([
             NSFontAttributeName: UIFont(.cabinRegular, size: 14)
         ], forState: .Normal)
+        
+        AMPopTip.appearance().font = UIFont(.cabinRegular, size: 14)
+        AMPopTip.appearance().popoverColor = UIColor(white: 0, alpha: 0.4)
     }
 }

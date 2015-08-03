@@ -9,6 +9,7 @@
 import Foundation
 import SCRecorder
 import AVFoundation
+import AMPopTip
 
 protocol RecorderDelegate : NSObjectProtocol {
     func recorderWillStartRecording(recorder: RecorderViewController)
@@ -21,7 +22,7 @@ class RecorderViewController : UIViewController {
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var filterHint: UIView!
-    @IBOutlet weak var recordHint: UIView!
+    let recordTip = AMPopTip()
     
     let ud = NSUserDefaults.standardUserDefaults()
     
@@ -49,8 +50,6 @@ class RecorderViewController : UIViewController {
         syncPreviewTransform()
         
         previewView.selectFilterScrollView.directionalLockEnabled = true
-
-        recordButton.addGestureRecognizer(TouchDetector(target: self, action: "handleRecordButtonTouch:"))
         
         filterHint.hidden = ud.boolForKey("hideSwipeFilterHint")
     }
@@ -80,11 +79,16 @@ class RecorderViewController : UIViewController {
     
     // MARK: -
     
-    func handleRecordButtonTouch(touchDetector: TouchDetector) {
-        if touchDetector.state == .Began {
+    @IBAction func handleRecordTap(sender: AnyObject) {
+        recordTip.showText("Press and hold to record", direction: .Up, maxWidth: 135,
+            inView: view, fromFrame: recordButton.frame, duration: 1.5)
+    }
+    
+    @IBAction func handleRecordLongPress(sender: UILongPressGestureRecognizer) {
+        if sender.state == .Began {
             delegate?.recorderWillStartRecording(self)
             recorder.record()
-        } else if touchDetector.state == .Ended {
+        } else if sender.state == .Ended {
             recorder.pause()
         }
     }
@@ -93,7 +97,6 @@ class RecorderViewController : UIViewController {
 extension RecorderViewController : SCRecorderDelegate {
     func recorder(recorder: SCRecorder, didBeginSegmentInSession session: SCRecordSession, error: NSError?) {
         filterHint.hidden = true
-        recordHint.hidden = true
         ud.setBool(true, forKey: "hideSwipeFilterHint")
     }
     

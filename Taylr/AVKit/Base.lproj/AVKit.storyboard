@@ -7,7 +7,6 @@
     <customFonts key="customFonts">
         <mutableArray key="Cabin-Regular.ttf">
             <string>Cabin-Regular</string>
-            <string>Cabin-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -268,29 +267,6 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Fm-0C-T8K" userLabel="Record Hint">
-                                <rect key="frame" x="234" y="435" width="135" height="56"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-record-hint" translatesAutoresizingMaskIntoConstraints="NO" id="mMr-8b-grJ">
-                                        <rect key="frame" x="0.0" y="0.0" width="135" height="56"/>
-                                    </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Press and hold to record" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="115" translatesAutoresizingMaskIntoConstraints="NO" id="0kq-r8-f3m">
-                                        <rect key="frame" x="15" y="4" width="105" height="35"/>
-                                        <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="mMr-8b-grJ" firstAttribute="leading" secondItem="1Fm-0C-T8K" secondAttribute="leading" id="A9I-jJ-YBI"/>
-                                    <constraint firstItem="mMr-8b-grJ" firstAttribute="centerX" secondItem="0kq-r8-f3m" secondAttribute="centerX" id="Hp7-Nx-H0u"/>
-                                    <constraint firstAttribute="trailing" secondItem="mMr-8b-grJ" secondAttribute="trailing" id="Wm7-06-a1y"/>
-                                    <constraint firstAttribute="bottom" secondItem="mMr-8b-grJ" secondAttribute="bottom" id="YuL-IX-epe"/>
-                                    <constraint firstItem="mMr-8b-grJ" firstAttribute="top" secondItem="1Fm-0C-T8K" secondAttribute="top" id="fJa-kA-C3C"/>
-                                    <constraint firstItem="mMr-8b-grJ" firstAttribute="top" secondItem="0kq-r8-f3m" secondAttribute="top" constant="-4" id="tFP-ca-5zY"/>
-                                </constraints>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b3o-63-A2P" userLabel="Flip Camera">
                                 <rect key="frame" x="554" y="80" width="30" height="23"/>
                                 <state key="normal" image="ic-camera-switch">
@@ -311,15 +287,18 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7s2-e5-NVe" userLabel="Capture">
                                 <rect key="frame" x="261" y="499" width="80" height="81"/>
+                                <gestureRecognizers/>
                                 <state key="normal" image="ic-record">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="jSu-ac-jcd" appends="YES" id="umJ-Pf-wnS"/>
+                                    <outletCollection property="gestureRecognizers" destination="Njg-2T-Xep" appends="YES" id="EcR-9F-O1I"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="1Fm-0C-T8K" firstAttribute="centerX" secondItem="7s2-e5-NVe" secondAttribute="centerX" id="0Rc-9o-NN3"/>
-                            <constraint firstItem="7s2-e5-NVe" firstAttribute="top" secondItem="1Fm-0C-T8K" secondAttribute="bottom" constant="8" id="2FS-kv-1Sa"/>
                             <constraint firstItem="2Fw-rH-c9r" firstAttribute="leading" secondItem="M3U-qM-guW" secondAttribute="leading" id="3PL-62-xQu"/>
                             <constraint firstAttribute="trailing" secondItem="Pxo-oy-0Oy" secondAttribute="trailing" id="4nG-i0-P9B"/>
                             <constraint firstItem="b3o-63-A2P" firstAttribute="top" secondItem="Pxo-oy-0Oy" secondAttribute="bottom" constant="16" id="5Ai-Bw-PFb"/>
@@ -347,17 +326,25 @@
                         <outlet property="previewView" destination="2Fw-rH-c9r" id="0cp-IO-f9u"/>
                         <outlet property="progressView" destination="zPO-M3-p5L" id="MVy-cv-Da7"/>
                         <outlet property="recordButton" destination="7s2-e5-NVe" id="eOl-bu-Bic"/>
-                        <outlet property="recordHint" destination="1Fm-0C-T8K" id="n0I-L2-1Ek"/>
                         <segue destination="uPv-0o-aed" kind="show" identifier="RecorderToEditor" id="SWo-hc-sLD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bxK-es-QuW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="jSu-ac-jcd">
+                    <connections>
+                        <action selector="handleRecordLongPress:" destination="Mkj-ew-cSR" id="caN-4Y-0oX"/>
+                    </connections>
+                </pongPressGestureRecognizer>
+                <tapGestureRecognizer id="Njg-2T-Xep">
+                    <connections>
+                        <action selector="handleRecordTap:" destination="Mkj-ew-cSR" id="AYp-dr-s0Q"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-316" y="1082"/>
         </scene>
     </scenes>
     <resources>
-        <image name="bg-record-hint" width="135" height="56"/>
         <image name="ic-camera-switch" width="30" height="23"/>
         <image name="ic-cancel-round" width="50" height="50"/>
         <image name="ic-flash" width="19" height="25"/>
