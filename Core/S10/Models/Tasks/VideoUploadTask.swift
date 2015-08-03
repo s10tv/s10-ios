@@ -14,6 +14,13 @@ internal class VideoUploadTask : Object {
     dynamic var id = "" // taskID
     dynamic var recipientId = ""
     dynamic var localURL = ""
+    dynamic var duration: NSTimeInterval = 0
+    
+    var localVideo: Video {
+        var video = Video(NSURL(localURL))
+        video.duration = duration
+        return video
+    }
     
     override static func primaryKey() -> String? {
         return "id"

@@ -18,20 +18,21 @@ internal class VideoUploadOperation : AsyncOperation {
 
     var taskId: String?
     let recipientId: String
-    let localVideoURL: NSURL
+    let localVideo: Video
     let meteorService: MeteorService
 
     init(recipientId: String,
-            localVideoURL: NSURL,
+            localVideo: Video,
             meteorService: MeteorService) {
+        assert(localVideo.url.fileURL, "Local video url must be fileURL")
         self.recipientId = recipientId
-        self.localVideoURL = localVideoURL
+        self.localVideo = localVideo
         self.meteorService = meteorService
     }
 
     override func run() {
         let realm = Realm()
-        let predicate = NSPredicate(format: "localURL = %@", localVideoURL.path!)
+        let predicate = NSPredicate(format: "localURL = %@", localVideo.url.path!)
         let results = realm.objects(VideoUploadTask).filter(predicate)
         
         switch (results.count) {
@@ -40,8 +41,9 @@ internal class VideoUploadOperation : AsyncOperation {
 
             let entry = VideoUploadTask()
             entry.id = taskId!
-            entry.localURL = localVideoURL.path!
+            entry.localURL = localVideo.url.path!
             entry.recipientId = recipientId
+            entry.duration = localVideo.duration ?? 0
 
             realm.write {
                 realm.add(entry)
@@ -55,14 +57,14 @@ internal class VideoUploadOperation : AsyncOperation {
         }
 
         meteorService.startTask(taskId!, type: "MESSAGE",
-                metadata: ["userId": self.recipientId]).flattenMap { res in
+                metadata: ["userId": self.recipientId, "duration": self.localVideo.duration ?? 0]).flattenMap { res in
             let videoUrl = JSON(res)["videoUrl"].string!
             let request = NSMutableURLRequest(URL: NSURL(string : videoUrl)!)
             request.HTTPMethod = "PUT"
             request.addValue("2014-02-14", forHTTPHeaderField: "x-ms-version")
             request.addValue("BlockBlob", forHTTPHeaderField: "x-ms-blob-type")
             request.addValue("video/mp4", forHTTPHeaderField: "Content-Type")
-            return Alamofire.upload(request, file: self.localVideoURL).rac_statuscode()
+            return Alamofire.upload(request, file: self.localVideo.url).rac_statuscode()
         }.flattenMap { res in
             let statusCode = res as! Int
             if (statusCode < 200 || statusCode >= 300) {

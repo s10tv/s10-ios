@@ -233,7 +233,9 @@ extension ConversationViewController : ProducerDelegate {
     func producer(producer: ProducerViewController, didProduceVideo url: NSURL, duration: NSTimeInterval) {
         vm.recording.value = false
         Log.info("Will send video \(url)")
-        vm.sendVideo(url)
+        var video = Video(url)
+        video.duration = duration
+        vm.sendVideo(video)
         PKHUD.hide(animated: false)
     }
 }

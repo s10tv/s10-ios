@@ -157,9 +157,9 @@ public class ConversationViewModel {
         openedMessages.removeAll()
     }
     
-    public func sendVideo(localURL: NSURL) {
+    public func sendVideo(video: Video) {
         if let user = currentUser.value {
-            taskService.uploadVideo(user, localVideoURL: localURL)
+            taskService.uploadVideo(user, localVideo: video)
         }
     }
     

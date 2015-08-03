@@ -32,10 +32,10 @@ public class TaskService {
     
     // MARK: - Uploads
     
-    func uploadVideo(recipient: User, localVideoURL: NSURL) {
+    func uploadVideo(recipient: User, localVideo: Video) {
         let operation = VideoUploadOperation(
             recipientId: recipient.documentID!,
-            localVideoURL: localVideoURL,
+            localVideo: localVideo,
             meteorService: self.meteorService)
         uploadQueue.addAsyncOperation(operation).onComplete { [weak self] _ in
             self?.resumeUploads()
@@ -54,7 +54,7 @@ public class TaskService {
             }
             let operation = VideoUploadOperation(
                 recipientId: task.recipientId,
-                localVideoURL: NSURL(task.localURL),
+                localVideo: task.localVideo,
                 meteorService: meteorService)
             operation.taskId = task.id
             uploadQueue.addAsyncOperation(operation).onComplete { [weak self] _ in
