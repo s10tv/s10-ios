@@ -1,0 +1,79 @@
+//
+//  RecordButton.swift
+//  Taylr
+//
+//  Created on 8/4/15.
+//  Copyright (c) 2015 S10 Inc. All rights reserved.
+//
+
+import UIKit
+import Core
+
+@IBDesignable
+class RecordButton : BaseView {
+    
+    private let progressTrack = CAShapeLayer()
+    private let outerBorderWidth: CGFloat = 3
+    private var innerCircleRadius: CGFloat = 0
+    private var trackWidth: CGFloat = 0
+    private var trackRadius: CGFloat = 0
+    private var outerRadius: CGFloat = 0
+    
+    var progress: Float = 0 {
+        didSet {
+            assert(progress >= 0 && progress <= 1, "Progress must be between 0 and 1")
+            progressTrack.timeOffset = CFTimeInterval(progress)
+            layer.timeOffset = CFTimeInterval(progress)
+        }
+    }
+    
+    override func commonInit() {
+        progressTrack.fillColor = UIColor.clearColor().CGColor
+        progressTrack.strokeColor = StyleKit.brandPurple.CGColor
+        progressTrack.strokeEnd = 0.2
+        layer.addSublayer(progressTrack)
+        
+        // Animate the progress track
+        let strokeAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        strokeAnimation.duration = 1
+        strokeAnimation.fromValue = 0 // no circle
+        strokeAnimation.toValue = 1 // full circle
+        progressTrack.addAnimation(strokeAnimation, forKey: "stroke")
+        progressTrack.speed = 0 // Pause animation
+        
+        // Make the button 40% larger as we go
+        let original = NSValue(CATransform3D: CATransform3DIdentity)
+        let scaled = NSValue(CATransform3D: CATransform3DMakeScale(1.4, 1.4, 1))
+        let scaleAnimation = CAKeyframeAnimation(keyPath: "transform")
+        scaleAnimation.duration = 1
+        scaleAnimation.values = [original, scaled, scaled]
+        scaleAnimation.keyTimes = [0, 0.2, 1]
+        layer.addAnimation(scaleAnimation, forKey: "scale")
+        layer.speed = 0
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        let radius = bounds.width/2
+        outerRadius = radius - outerBorderWidth / 2
+        trackWidth = (radius - outerBorderWidth) * 0.4
+        innerCircleRadius = (radius - outerBorderWidth) * 0.6
+        trackRadius = innerCircleRadius + trackWidth / 2
+        
+        progressTrack.frame = bounds
+        progressTrack.lineWidth = trackWidth
+        progressTrack.path = UIBezierPath(arcCenter: bounds.center, radius: trackRadius,
+            startAngle: -π/2, endAngle: 3/2*π, clockwise: true).CGPath
+    }
+    
+    override func drawRect(rect: CGRect) {
+        let outerBorderPath = UIBezierPath(circleCenter: bounds.center, radius: outerRadius)
+        outerBorderPath.lineWidth = outerBorderWidth
+        UIColor.whiteColor().setStroke()
+        outerBorderPath.stroke()
+        
+        let innerCircle = UIBezierPath(circleCenter: bounds.center, radius: innerCircleRadius)
+        UIColor(white: 1, alpha: 0.6).setFill()
+        innerCircle.fill()
+    }
+}

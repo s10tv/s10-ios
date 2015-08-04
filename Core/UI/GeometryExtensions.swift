@@ -48,6 +48,10 @@ extension CGRect {
         self.init(origin: origin, size: CGSize(width: width, height: height))
     }
     
+    public init(center: CGPoint, radius: CGFloat) {
+        self.init(center: center, width: radius * 2, height: radius * 2)
+    }
+    
     // TODO: Make this scalable from any anchor point of choice
     public func scaleFromCenter(scale: CGFloat) -> CGRect {
         return CGRect(center: center, width: scale * width, height: scale * height)
@@ -65,6 +69,10 @@ extension UIBezierPath {
     
     public func addLineTo(#x: CGFloat, y: CGFloat) {
         addLineToPoint(CGPoint(x: x, y: y))
+    }
+    
+    public convenience init(circleCenter: CGPoint, radius: CGFloat) {
+        self.init(ovalInRect: CGRect(center: circleCenter, radius: radius))
     }
     
     public class func sineWave(amplitude a: CGFloat, wavelength λ: CGFloat, periods: CGFloat, phase: CGFloat = 0, pointsPerStep: CGFloat = 5)  -> UIBezierPath {

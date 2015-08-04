@@ -176,6 +176,8 @@
 		EACEFB841B4672A800901E85 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACEFB831B4672A800901E85 /* AppRouter.swift */; };
 		EAD1BB251B60347600D250C5 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1BB241B60347600D250C5 /* MeViewController.swift */; };
 		EAD1BB291B604A3D00D250C5 /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1BB281B604A3D00D250C5 /* InviteViewController.swift */; };
+		EAE066F51B71237A00A2FF76 /* DurationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE066F31B71237A00A2FF76 /* DurationTimer.swift */; };
+		EAE066F61B71237A00A2FF76 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE066F41B71237A00A2FF76 /* RecordButton.swift */; };
 		EAE1E07B1AE34C6200F03F13 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1E07A1AE34C6200F03F13 /* LocationService.swift */; };
 		EAE1E07D1AE3788300F03F13 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1E07C1AE3788300F03F13 /* Globals.swift */; };
 		EAF6701D1B31E6550025D7CF /* Core.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF6701C1B31E6550025D7CF /* Core.m */; };
@@ -438,6 +440,8 @@
 		EACEFB831B4672A800901E85 /* AppRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		EAD1BB241B60347600D250C5 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		EAD1BB281B604A3D00D250C5 /* InviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteViewController.swift; sourceTree = "<group>"; };
+		EAE066F31B71237A00A2FF76 /* DurationTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationTimer.swift; sourceTree = "<group>"; };
+		EAE066F41B71237A00A2FF76 /* RecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		EAE1E07A1AE34C6200F03F13 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		EAE1E07C1AE3788300F03F13 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		EAF6701C1B31E6550025D7CF /* Core.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Core.m; sourceTree = "<group>"; };
@@ -898,6 +902,7 @@
 				EAF81B1F1B3337EA00EED6DD /* AVKit */,
 				EA5634DE1A7741FF00F62B52 /* Models */,
 				EA6650E91AA00A9C001BA40C /* Services */,
+				EAE066F21B71235E00A2FF76 /* Views */,
 				EAF4D7441A79AA5E00D35330 /* UserInterface */,
 				EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */,
 				EACEFB831B4672A800901E85 /* AppRouter.swift */,
@@ -1027,6 +1032,15 @@
 			);
 			name = Configs;
 			path = ../Configs;
+			sourceTree = "<group>";
+		};
+		EAE066F21B71235E00A2FF76 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EAE066F31B71237A00A2FF76 /* DurationTimer.swift */,
+				EAE066F41B71237A00A2FF76 /* RecordButton.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		EAF4D7441A79AA5E00D35330 /* UserInterface */ = {
@@ -1681,6 +1695,7 @@
 				EA03D3371B5B2C58007A0CF7 /* PlayerViewController.swift in Sources */,
 				EA57734A1B6C214E00BCF449 /* Appearance.swift in Sources */,
 				EAD1BB291B604A3D00D250C5 /* InviteViewController.swift in Sources */,
+				EAE066F61B71237A00A2FF76 /* RecordButton.swift in Sources */,
 				EA7134121B56E47100B810F6 /* ImagePickerExtensions.swift in Sources */,
 				EAF81B231B33388700EED6DD /* ProducerViewController.swift in Sources */,
 				EA6650ED1AA00A9C001BA40C /* AccountService.swift in Sources */,
@@ -1704,6 +1719,7 @@
 				EA24E9231B69E2BF00261873 /* Bond+JSBadgeView.swift in Sources */,
 				EAF81B381B3395E700EED6DD /* AVKit.swift in Sources */,
 				EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */,
+				EAE066F51B71237A00A2FF76 /* DurationTimer.swift in Sources */,
 				EAA56F8E1B2B32E500DE3936 /* ConnectionCells.swift in Sources */,
 				EA57734E1B6C5D6800BCF449 /* Bond+UIButton.swift in Sources */,
 				EA043F6D1B62CE880047BDCA /* IntegrationsViewController.swift in Sources */,
