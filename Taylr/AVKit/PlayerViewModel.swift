@@ -79,6 +79,9 @@ class PlayerViewModel {
     }
     
     func prevVideo() -> PlayableVideo? {
+        if currentVideo.value == nil {
+            return playlist.value.last
+        }
         return currentVideoIndex().flatMap {
             $0 > 0 ? $0 - 1 : nil
         }.map { playlist.value[$0] }

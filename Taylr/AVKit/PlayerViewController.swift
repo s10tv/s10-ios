@@ -77,7 +77,9 @@ class PlayerViewController : UIViewController {
     // MARK: -
     
     @IBAction func rewind() {
-        if (player.currentTime().seconds < 2 || player.itemDuration.seconds < 2)
+        if (player.currentTime().seconds < 2
+            || player.itemDuration.seconds < 2
+            || vm.videoURL.value == nil)
             && vm.prevVideo() != nil {
             vm.seekPrevVideo()
         } else {
