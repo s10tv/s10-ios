@@ -28,6 +28,7 @@ class ConversationViewController : BaseViewController {
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var swipeView: SwipeView!
     @IBOutlet weak var playerEmptyView: UIView!
+    @IBOutlet weak var replayButton: DesignableButton!
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var newMessagesHint: UIView!
     @IBOutlet var producerContainer: UIView!
@@ -46,6 +47,7 @@ class ConversationViewController : BaseViewController {
         vm.displayName ->> nameLabel
         vm.busy ->> spinner
         vm.displayStatus ->> activityLabel
+        vm.hideReplayButton ->> replayButton.dynHidden
         vm.hideNewMessagesHint ->> newMessagesHint.dynHidden
         vm.cover ->> coverImageView.imageBond
         
@@ -149,6 +151,11 @@ class ConversationViewController : BaseViewController {
     
     @IBAction func didTapNewMessagesHint(sender: AnyObject) {
         showPage(.Player, animated: true)
+    }
+    
+    @IBAction func didTapReplay(sender: AnyObject) {
+        // TODO: maybe better method name to better align with semantic?
+        player.advance()
     }
     
     @IBAction func showMoreOptions(sender: AnyObject) {
