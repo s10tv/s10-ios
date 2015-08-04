@@ -55,7 +55,7 @@ public class ConversationViewModel {
     let currentUser: PropertyOf<User?>
     let currentMessageDate: PropertyOf<String?>
     let currentConversationStatus: PropertyOf<String?>
-    var openedMessages = Set<Message>()
+    let openedMessages: MutableProperty<Set<Message>>
     
     public let playing: MutableProperty<Bool>
     public let recording: MutableProperty<Bool>
@@ -101,6 +101,7 @@ public class ConversationViewModel {
             case .Producer: return $2 ? .RecordCapturing : .RecordIdle
             }
         })
+        openedMessages = MutableProperty(Set())
         
         currentMessage = MutableProperty(nil)
         currentUser = currentMessage
@@ -115,11 +116,14 @@ public class ConversationViewModel {
             |> flatMap(nilValue: "") { $0.pDisplayName() }
         busy = currentUser
             |> flatMap(nilValue: false) { $0.pConversationBusy() }
-         // TODO: Bring the actual logic back
+        
         hideReplayButton = _messages |> map { $0.count == 0 }
-        hideNewMessagesHint = PropertyOf(true)
-//            state
-//            |> map { $0 != .RecordIdle }
+        hideNewMessagesHint = PropertyOf(true, combineLatest(
+            messages.producer,
+            openedMessages.producer
+        ) |> map {
+            $0.count == $1.count
+        })
         
         currentMessageDate = currentMessage
             |> flatMap { $0.formattedDate |> map { Optional($0) } }
@@ -148,15 +152,16 @@ public class ConversationViewModel {
     }
     
     public func openMessage(message: MessageViewModel) {
-        openedMessages.insert(message.message)
+        var msgs = openedMessages.value
+        msgs.insert(message.message)
+        openedMessages.value = msgs
     }
     
     public func expireOpenedMessages() {
-        for message in openedMessages {
+        for message in openedMessages.value {
             VideoCache.sharedInstance.removeVideo(message.documentID!)
         }
-        meteor.expireMessages(Array(openedMessages))
-        openedMessages.removeAll()
+        meteor.expireMessages(Array(openedMessages.value))
     }
     
     public func sendVideo(video: Video) {

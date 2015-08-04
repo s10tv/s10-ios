@@ -118,13 +118,6 @@ class ConversationViewController : BaseViewController {
         navigationController?.navigationBar.setBackgroundColor(nil)
     }
     
-    override func willMoveToParentViewController(parent: UIViewController?) {
-        super.willMoveToParentViewController(parent)
-        if parent == nil {
-            vm.expireOpenedMessages()
-        }
-    }
-    
     override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
         if identifier == SegueIdentifier.ConversationToProfile.rawValue
             && navigationController?.lastViewController is ProfileViewController {

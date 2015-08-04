@@ -35,7 +35,7 @@ class PlayerViewController : UIViewController {
             let videoURL = $0
             Async.main { [weak self] in
                 self?.player.setItemByUrl(videoURL)
-                Log.debug("set videoURL to \(videoURL)")
+//                Log.debug("set videoURL to \(videoURL)")
             }
         }
     }()
