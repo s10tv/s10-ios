@@ -51,7 +51,7 @@ class TaylrEnvironment : Environment {
 //                serverHostName = "10.1.1.12:3000"
 //                serverHostName = "s10-beta.herokuapp.com"
                 bugfenderAppToken = "RBsiKkpkyiXUW2Sk50JTKTKUYlNpXsFn"
-                segmentWriteKey = "vfnxR5SsgYkNQqRznBWHXDp2LMFkUNTv"
+                segmentWriteKey = "pZimciABfGDaOLvEx9NWAFSoYHyCOg1n"
                 heapAppId = "2150081452"
                 appseeApiKey = "90e5824e7a294045a992e56bbbb3f2f3"
                 githubClientId = "fb2414c4535ddd7a86a1"
@@ -59,7 +59,7 @@ class TaylrEnvironment : Environment {
             case .Beta:
                 serverHostName = "s10-beta.herokuapp.com"
                 bugfenderAppToken = "lO35cfZMdPxzIraCq4YFKISSKZ2EAIwe"
-                segmentWriteKey = "SGEB9gVQGFYgeptFbtnETHCka8FCOuoc"
+                segmentWriteKey = "SGEB9gVQGFYgeptFbtnETHCka8FCOuoc" // this is wrong.
                 heapAppId = "1572509943"
                 appseeApiKey = "9a350ef30cb24154a547e8ebaebfe272"
                 githubClientId = "d3d17fc593c45429cf29"     // this is wrong. need to make beta app.
@@ -67,7 +67,7 @@ class TaylrEnvironment : Environment {
             case .AppStore:
                 serverHostName = "s10.herokuapp.com"
                 bugfenderAppToken = "ow9JOdNYSo5iVqPUUAEbS8HfmwZqb1tQ"
-                segmentWriteKey = "JPCrmGwQqlgohXoowBFSLwesir9Zn5Bv"
+                segmentWriteKey = "DwMJMhxsvn6EDrO33gANHBjvg3FUsfPJ"
                 heapAppId = "538095372"
                 appseeApiKey = "a33413513aab4ad296f379481caf8d90"
                 githubClientId = "d3d17fc593c45429cf29"

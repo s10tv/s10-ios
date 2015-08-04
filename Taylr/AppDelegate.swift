@@ -70,7 +70,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         _GlobalsContainer.instance = GlobalsContainer(env: env,
             meteorService: meteor,
             accountService: AccountService(meteorService: meteor, settings: settings),
-            analyticsService: AnalyticsService(env: env),
+            analyticsService: AnalyticsService(env: env, meteorService: meteor),
             upgradeService: UpgradeService(env: env, settings: settings),
             locationService: LocationService(meteorService: meteor),
             taskService: TaskService(meteorService: meteor),

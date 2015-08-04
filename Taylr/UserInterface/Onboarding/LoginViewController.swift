@@ -45,6 +45,11 @@ class LoginViewController : BaseViewController {
             }
         }
     }
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        Globals.analyticsService.screen("Login")
+    }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)

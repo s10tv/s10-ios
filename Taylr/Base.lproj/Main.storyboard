@@ -1944,6 +1944,7 @@
                     <connections>
                         <outlet property="avatarView" destination="VMj-KH-MYk" id="YwB-iH-B5b"/>
                         <outlet property="inviteContainer" destination="Dcj-XZ-Syf" id="IES-9Z-Fvd"/>
+                        <outlet property="meSettingsControl" destination="Er5-df-TiI" id="F3h-Gk-Vrb"/>
                         <outlet property="nameLabel" destination="pde-J4-Tv8" id="cd9-Sv-ZxG"/>
                         <outlet property="servicesContainer" destination="ryg-lH-bTX" id="3yp-Ah-5NL"/>
                         <outlet property="usernameLabel" destination="Qmt-za-Eo6" id="GBh-tF-5Rh"/>
@@ -2430,6 +2431,6 @@ While you are in the conversation though you can reply videos you just watched i
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Nm9-7n-EUh"/>
-        <segue reference="zqv-ca-egq"/>
+        <segue reference="yhs-PQ-k4J"/>
     </inferredMetricsTieBreakers>
 </document>

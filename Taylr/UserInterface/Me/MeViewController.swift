@@ -25,6 +25,7 @@ class MeViewController : UITableViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var servicesContainer: UIView!
     @IBOutlet weak var inviteContainer: UIView!
+    @IBOutlet weak var meSettingsControl: UISegmentedControl!
     
     var servicesVC: IntegrationsViewController!
     var vm: MeViewModel!
@@ -64,7 +65,16 @@ class MeViewController : UITableViewController {
             tableView.contentOffset = CGPoint(x: 0, y: -66)
         }
     }
-    
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if meSettingsControl.selectedSegmentIndex == 0 {
+            Globals.analyticsService.screen("Me - Me")
+        } else {
+            Globals.analyticsService.screen("Me - Settings")
+        }
+    }
+
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         showNavBarAnimated(false)
@@ -101,6 +111,7 @@ class MeViewController : UITableViewController {
     // MARK: -
     
     @IBAction func didPressContactSupport(sender: AnyObject) {
+        Globals.analyticsService.track("Contacted Support")
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.setToRecipients(["hello@s10.tv"])
@@ -113,6 +124,7 @@ class MeViewController : UITableViewController {
     }
     
     @IBAction func didPressLogout(sender: AnyObject) {
+        Globals.analyticsService.track("Logged Out")
         let sheet = UIAlertController(title: LS(.settingsLogoutTitle), message: nil, preferredStyle: .ActionSheet)
         sheet.addAction(LS(.settingsLogoutLogout)) { _ in
             Globals.accountService.logout()
@@ -124,8 +136,10 @@ class MeViewController : UITableViewController {
     
     @IBAction func didTapSegmentedControl(control: UISegmentedControl) {
         if control.selectedSegmentIndex == 0 {
+            Globals.analyticsService.screen("Me - Me")
             filteredSections = [.Profile, .Services]
         } else {
+            Globals.analyticsService.screen("Me - Settings")
             filteredSections = [.Profile, .Invite, .Options]
         }
         tableView.reloadData()

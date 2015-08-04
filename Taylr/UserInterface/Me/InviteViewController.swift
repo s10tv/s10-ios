@@ -32,6 +32,10 @@ class InviteViewController : UIViewController {
         if let error = vm.validateInvite() {
             presentError(error)
         } else {
+            Globals.analyticsService.track("Started Invite", properties:[
+                "firstName": vm.firstName.value,
+                "lastName": vm.lastName.value,
+                "emailOrPhone": vm.emailOrPhone.value])
             let producer = UIStoryboard(name: "AVKit", bundle: nil).instantiateInitialViewController() as! ProducerViewController
             producer.title = "Invite \(vm.firstName.value)"
             producer.producerDelegate = self

@@ -27,7 +27,13 @@ class IntegrationWebViewController: UIViewController {
         super.viewDidLoad()
         webView.scrollView.delegate = self
     }
-    
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        Globals.analyticsService.track("Selected Integration", properties: [
+            "integration" : integration.name])
+    }
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         webView.loadRequest(NSURLRequest(URL: integration.url))

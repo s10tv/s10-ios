@@ -16,7 +16,7 @@ class AnalyticsService {
     private(set) var userId: String?
     let segment: AnalyticsSwift.Analytics
 
-    init(env: TaylrEnvironment) {
+    init(env: TaylrEnvironment, meteorService: MeteorService) {
         // Segmentio
         segment = AnalyticsSwift.Analytics.create(env.segmentWriteKey)
         Appsee.start(env.appseeApiKey)
@@ -33,6 +33,12 @@ class AnalyticsService {
         } else {
             identifyUser(env.deviceId)
         }
+
+        meteorService.userId.producer.start(next: { userId in
+            if let userId = userId {
+                self.identifyUser(userId)
+            }
+        })
     }
     
     private func identify(userId: String?, traits: [String: AnyObject]? = nil) {
@@ -55,6 +61,13 @@ class AnalyticsService {
         segment.enqueue(TrackMessageBuilder(event: event).properties(properties ?? [:]).userId(userId ?? ""))
         segment.flush()
         Log.verbose("[analytics] track '\(event)' properties: \(properties)")
+    }
+
+    func screen(screenName: String, properties: [String: AnyObject]? = nil) {
+        segment.enqueue(ScreenMessageBuilder(name: screenName).properties(
+            properties ?? [:]).userId(userId ?? ""))
+        segment.flush()
+        Log.verbose("[analytics] screen '\(screenName)' properties: \(properties)")
     }
 }
 

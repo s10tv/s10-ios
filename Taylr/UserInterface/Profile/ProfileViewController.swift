@@ -60,7 +60,12 @@ class ProfileViewController : BaseViewController {
         }
         DynamicArray([coverSection, infoSection, activitiesSection]) ->> tableView
     }
-    
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        Globals.analyticsService.screen("Profile")
+    }
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)

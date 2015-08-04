@@ -68,6 +68,15 @@ class ChatsViewController : BaseViewController {
         })
     }
 
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        if segmentedControl.selectedSegmentIndex == ChatsViewModel.Section.New.rawValue {
+            Globals.analyticsService.screen("Chats - New")
+        } else if segmentedControl.selectedSegmentIndex == ChatsViewModel.Section.Contacts.rawValue {
+            Globals.analyticsService.screen("Chats - Contacts")
+        }
+    }
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ConversationViewController {
             vc.vm = vm.conversationVM(tableView.indexPathForSelectedRow()!.row)
@@ -81,6 +90,12 @@ class ChatsViewController : BaseViewController {
     }
     
     @IBAction func didSelectSegment(sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == ChatsViewModel.Section.New.rawValue {
+            Globals.analyticsService.screen("Chats - New")
+        } else if sender.selectedSegmentIndex == ChatsViewModel.Section.Contacts.rawValue {
+            Globals.analyticsService.screen("Chats - Contacts")
+        }
+
         vm.currentSection.value = ChatsViewModel.Section(rawValue: sender.selectedSegmentIndex)!
     }
 }

@@ -20,6 +20,7 @@ public class MeteorService : NSObject {
     public let account: PropertyOf<METAccount?>
     public let connectionStatus: PropertyOf<METDDPConnectionStatus>
     public let loggedIn: PropertyOf<Bool>
+    public let userId: PropertyOf<String?>
     let user: PropertyOf<User?>
 
     public init(serverURL: NSURL) {
@@ -31,6 +32,7 @@ public class MeteorService : NSObject {
             |> map { METDDPConnectionStatus(rawValue: Int($0.intValue))! }
         user = PropertyOf(nil, _user.producer |> observeOn(UIScheduler()))
         loggedIn = user |> map { $0 != nil }
+        userId = user |> map { $0?.documentID }
         super.init()
         meteor.delegate = self
         SugarRecord.addStack(MeteorCDStack(meteor: meteor))

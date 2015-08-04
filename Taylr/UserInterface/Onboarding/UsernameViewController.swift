@@ -39,8 +39,9 @@ class UsernameViewController : UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         usernameField.becomeFirstResponder()
+        Globals.analyticsService.screen("Pick Username")
     }
-    
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let segue = segue as? AdvancedPushSegue {
             segue.animated = true

@@ -55,7 +55,12 @@ class CreateProfileViewController : UITableViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
-    
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        Globals.analyticsService.screen("Create Profile")
+    }
+
     // MARK: - Actions
     
     @IBAction func didTabEditAvatar(sender: AnyObject) {

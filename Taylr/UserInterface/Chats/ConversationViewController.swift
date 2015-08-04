@@ -221,6 +221,12 @@ extension ConversationViewController : SwipeViewDataSource {
 
 extension ConversationViewController : SwipeViewDelegate {
     func swipeViewCurrentItemIndexDidChange(swipeView: SwipeView!) {
+        if swipeView.currentItemIndex == ConversationViewModel.Page.Player.rawValue {
+            Globals.analyticsService.screen("Conversation - Player")
+        } else if swipeView.currentItemIndex == ConversationViewModel.Page.Producer.rawValue {
+            Globals.analyticsService.screen("Conversation - Recorder")
+        }
+
         vm.page.value = ConversationViewModel.Page(rawValue: swipeView.currentItemIndex)!
     }
 }
@@ -230,8 +236,9 @@ extension ConversationViewController : SwipeViewDelegate {
 extension ConversationViewController : ProducerDelegate {
     func producerWillStartRecording(producer: ProducerViewController) {
         vm.recording.value = true
+        Globals.analyticsService.track("Started Message")
     }
-    
+
     func producerDidCancelRecording(producer: ProducerViewController) {
         vm.recording.value = false
     }
@@ -266,6 +273,8 @@ extension ConversationViewController : PlayerDelegate {
     func player(player: PlayerViewModel, didPlayVideo video: PlayableVideo) {
         vm.currentMessage.value = nil
         if let message = video as? MessageViewModel {
+            Globals.analyticsService.track("Viewed Message", properties:[
+                "messageId": message.messageId])
             vm.openMessage(message)
         }
     }

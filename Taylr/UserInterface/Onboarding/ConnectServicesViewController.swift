@@ -40,7 +40,12 @@ class ConnectServicesViewController : UITableViewController {
                 self.tableView.endUpdates()
             })
     }
-    
+
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        Globals.analyticsService.screen("Connect Services")
+    }
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)

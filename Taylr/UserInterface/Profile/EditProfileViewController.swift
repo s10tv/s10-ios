@@ -48,6 +48,7 @@ class EditProfileViewController : UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        Globals.analyticsService.screen("Edit Profile")
     }
     
     // MARK: - Actions

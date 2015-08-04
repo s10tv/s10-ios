@@ -66,6 +66,7 @@ class DiscoverViewController : BaseViewController {
             categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
         Globals.locationService.requestPermission()
+        Globals.analyticsService.screen("Discover")
     }
     
     override func viewWillDisappear(animated: Bool) {
