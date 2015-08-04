@@ -71,6 +71,6 @@
 "errNetworkUnreachable" = "Network Unavailable";
 "errNetworkUnreachableRecovery" = "Seems like we don't have any network connection right now, try again later.";
 
-"emptyContactsMessage" = "This is where the messages you have sent or replied to appear.";
-"emptyNewMessage" = "People reaching out to you for the first time will show up here";
+"emptyContactsMessage" = "This is where the messages you\nhave sent or replied to appear.";
+"emptyNewMessage" = "People reaching out to you for the\nfirst time will show up here";
 "emptyDiscoverMessage" = "We couldn't find anybody around you yet.\nWhen we do they will show up here.";

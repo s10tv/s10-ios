@@ -20,6 +20,7 @@ class DiscoverViewController : BaseViewController {
     @IBOutlet weak var topLayoutConstraint: NSLayoutConstraint!
     
     let vm = DiscoverViewModel(meteor: Meteor, taskService: Globals.taskService)
+    let emptyDataBond = ArrayBond<CandidateViewModel>()
     
     deinit {
         collectionView?.delegate = nil
@@ -37,6 +38,10 @@ class DiscoverViewController : BaseViewController {
         collectionView.collectionViewLayout = layout
 
         vm.candidates.map(collectionView.factory(CandidateCell)) ->> collectionView
+        vm.candidates.bindTo(emptyDataBond)
+        emptyDataBond.didPerformBatchUpdatesListener = { [weak self] in
+            self?.collectionView.reloadEmptyDataSet()
+        }
         
         listenForNotification(DidTouchStatusBar).start(next: { [weak self] _ in
             self?.showNavBarAnimated(true)

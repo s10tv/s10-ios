@@ -17,6 +17,7 @@ class ChatsViewController : BaseViewController {
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     let vm: ChatsViewModel = ChatsViewModel(meteor: Meteor, taskService: Globals.taskService)
+    let emptyDataBond = ArrayBond<ConnectionViewModel>()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,6 +45,11 @@ class ChatsViewController : BaseViewController {
                 self?.tableView.rowHeight = 120
             }
         })
+        vm.connections.bindTo(emptyDataBond)
+        emptyDataBond.didPerformBatchUpdatesListener = { [weak self] in
+            self?.tableView.reloadEmptyDataSet()
+        }
+        
         vm.contactsUnreadCount.producer.start(next: { [weak self] count in
             let title = count > 0 ? "Contacts (\(count))" : "Contacts"
             self?.segmentedControl.setTitle(title, forSegmentAtIndex: 0)
