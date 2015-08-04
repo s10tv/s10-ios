@@ -19,6 +19,10 @@ class ChatsViewController : BaseViewController {
     let vm: ChatsViewModel = ChatsViewModel(meteor: Meteor, taskService: Globals.taskService)
     let emptyDataBond = ArrayBond<ConnectionViewModel>()
     
+    deinit {
+        tableView.emptyDataSetSource = nil
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 0.01))

@@ -99,7 +99,7 @@ DEPENDENCIES:
   - CHTCollectionViewWaterfallLayout (~> 0.9)
   - DateTools (~> 1.6)
   - DTFoundation/DTASN1 (~> 1.7)
-  - DZNEmptyDataSet (~> 1.6)
+  - DZNEmptyDataSet (from `https://github.com/dzenbot/DZNEmptyDataSet.git`)
   - EDColor (~> 1.0)
   - FBSDKLoginKit (~> 4.3)
   - FormatterKit/TimeIntervalFormatter (~> 1.8)
@@ -132,6 +132,8 @@ EXTERNAL SOURCES:
   Bond:
     :branch: coredata
     :git: https://github.com/tonyxiao/Bond.git
+  DZNEmptyDataSet:
+    :git: https://github.com/dzenbot/DZNEmptyDataSet.git
   Meteor:
     :branch: dev
     :git: https://github.com/tonyxiao/meteor-ios
@@ -148,6 +150,9 @@ CHECKOUT OPTIONS:
   Bond:
     :commit: 413dd59017c91667894440fadff489d41d547171
     :git: https://github.com/tonyxiao/Bond.git
+  DZNEmptyDataSet:
+    :commit: 8356f17605f7c5cf8eaed2bbaf1363948ff73150
+    :git: https://github.com/dzenbot/DZNEmptyDataSet.git
   Meteor:
     :commit: 0f40ef742583cb4b8c2e987121ff1d1f4a6afdfb
     :git: https://github.com/tonyxiao/meteor-ios

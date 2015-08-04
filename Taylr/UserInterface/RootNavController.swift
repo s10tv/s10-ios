@@ -21,7 +21,7 @@ class RootNavController : UINavigationController {
     let vm = RootNavViewModel(meteor: Meteor)
     
     init(account: AccountService) {
-        let sb = /*account.state.value.onboardingNeeded ? onboarding : */ main
+        let sb = account.state.value.onboardingNeeded ? onboarding : main
         super.init(rootViewController: sb.instantiateInitialViewController() as! UIViewController)
     }
     
