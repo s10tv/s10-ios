@@ -24,8 +24,11 @@ class RecorderViewController : UIViewController {
     @IBOutlet weak var torchButton: UIButton!
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var filterHint: UIView!
-    let recordTip = AMPopTip()
     @IBOutlet var recordTapGesture: UITapGestureRecognizer!
+    var filterPanGesture: UIPanGestureRecognizer {
+        return previewView.selectFilterScrollView.panGestureRecognizer
+    }
+    let recordTip = AMPopTip()
     
     let ud = NSUserDefaults.standardUserDefaults()
     
@@ -55,6 +58,7 @@ class RecorderViewController : UIViewController {
         previewView.selectFilterScrollView.directionalLockEnabled = true
         
         filterHint.hidden = ud.boolForKey("hideSwipeFilterHint")
+        
         let touchDetector = TouchDetector(target: self, action: "handleRecordTouch:")
         recordTapGesture.delegate = self
         recordButton.addGestureRecognizer(touchDetector)
@@ -68,6 +72,16 @@ class RecorderViewController : UIViewController {
 
         recorder.startRunning()
         restartSession()
+        // Fix panning on screen edge pan to get back
+        if let popGesture = navigationController?.interactivePopGestureRecognizer {
+            popGesture.delegate = self
+            filterPanGesture.requireGestureRecognizerToFail(popGesture)
+        }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.interactivePopGestureRecognizer.delegate = nil
     }
     
     func restartSession() {
@@ -146,6 +160,12 @@ extension RecorderViewController : SCSwipeableFilterViewDelegate {
 
 extension RecorderViewController : UIGestureRecognizerDelegate {
     override func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        return otherGestureRecognizer is TouchDetector
+        if gestureRecognizer is UIScreenEdgePanGestureRecognizer {
+            return otherGestureRecognizer is UIPanGestureRecognizer
+        }
+        if gestureRecognizer is UITapGestureRecognizer {
+            return otherGestureRecognizer is TouchDetector
+        }
+        return false
     }
 }
