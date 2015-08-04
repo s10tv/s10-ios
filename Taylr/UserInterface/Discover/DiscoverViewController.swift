@@ -11,6 +11,7 @@ import ReactiveCocoa
 import Bond
 import CHTCollectionViewWaterfallLayout
 import AMScrollingNavbar
+import DZNEmptyDataSet
 import Core
 
 class DiscoverViewController : BaseViewController {
@@ -26,6 +27,8 @@ class DiscoverViewController : BaseViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        collectionView.emptyDataSetSource = self
         
         let layout = CHTCollectionViewWaterfallLayout()
         layout.minimumColumnSpacing = 10
@@ -94,5 +97,13 @@ extension DiscoverViewController : CHTCollectionViewDelegateWaterfallLayout {
         }
         Log.error("Returning default layout size 50x80, avatar likely missing")
         return CGSize(width: 50, height: 80)
+    }
+}
+
+extension DiscoverViewController : DZNEmptyDataSetSource {
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        return NSAttributedString(string: LS(.emptyDiscoverMessage), attributes: [
+            NSFontAttributeName: UIFont(.cabinRegular, size: 20)
+        ])
     }
 }

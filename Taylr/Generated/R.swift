@@ -43,6 +43,8 @@ public enum R {
         /// This is where the messages you have sent or replied to appear.
         case emptyContactsMessage = "emptyContactsMessage"
         /// People reaching out to you for the first time will show up here
+        case emptyDiscoverMessage = "emptyDiscoverMessage"
+        /// People reaching out to you for the first time will show up here
         case emptyNewMessage = "emptyNewMessage"
         /// Unexpected Error
         case errDefault = "errDefault"
