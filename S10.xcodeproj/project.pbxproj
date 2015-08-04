@@ -176,8 +176,9 @@
 		EACEFB841B4672A800901E85 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACEFB831B4672A800901E85 /* AppRouter.swift */; };
 		EAD1BB251B60347600D250C5 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1BB241B60347600D250C5 /* MeViewController.swift */; };
 		EAD1BB291B604A3D00D250C5 /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1BB281B604A3D00D250C5 /* InviteViewController.swift */; };
-		EAE066F51B71237A00A2FF76 /* DurationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE066F31B71237A00A2FF76 /* DurationTimer.swift */; };
-		EAE066F61B71237A00A2FF76 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE066F41B71237A00A2FF76 /* RecordButton.swift */; };
+		EAE066FA1B71344700A2FF76 /* DurationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE066F81B71344700A2FF76 /* DurationTimer.swift */; };
+		EAE066FB1B71344700A2FF76 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE066F91B71344700A2FF76 /* RecordButton.swift */; };
+		EAE066FD1B71346B00A2FF76 /* TouchDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE066FC1B71346B00A2FF76 /* TouchDetector.swift */; };
 		EAE1E07B1AE34C6200F03F13 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1E07A1AE34C6200F03F13 /* LocationService.swift */; };
 		EAE1E07D1AE3788300F03F13 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1E07C1AE3788300F03F13 /* Globals.swift */; };
 		EAF6701D1B31E6550025D7CF /* Core.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF6701C1B31E6550025D7CF /* Core.m */; };
@@ -207,8 +208,6 @@
 		EAF81B2D1B33883A00EED6DD /* ProducerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B221B33388700EED6DD /* ProducerViewController.swift */; };
 		EAF81B2E1B33883A00EED6DD /* RecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B241B33389500EED6DD /* RecorderViewController.swift */; };
 		EAF81B2F1B33883A00EED6DD /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B261B33391000EED6DD /* EditorViewController.swift */; };
-		EAF81B311B3388C600EED6DD /* TouchDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B301B3388C600EED6DD /* TouchDetector.swift */; };
-		EAF81B321B3388C600EED6DD /* TouchDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B301B3388C600EED6DD /* TouchDetector.swift */; };
 		EAF81B341B33890300EED6DD /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3681AA26597003383BE /* SBConstants.swift */; };
 		EAF81B351B33890E00EED6DD /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA925C731AD99ED8008E9F41 /* R.swift */; };
 		EAF81B361B33893E00EED6DD /* Taylr.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Taylr.xcassets */; };
@@ -440,8 +439,9 @@
 		EACEFB831B4672A800901E85 /* AppRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		EAD1BB241B60347600D250C5 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		EAD1BB281B604A3D00D250C5 /* InviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteViewController.swift; sourceTree = "<group>"; };
-		EAE066F31B71237A00A2FF76 /* DurationTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationTimer.swift; sourceTree = "<group>"; };
-		EAE066F41B71237A00A2FF76 /* RecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
+		EAE066F81B71344700A2FF76 /* DurationTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationTimer.swift; sourceTree = "<group>"; };
+		EAE066F91B71344700A2FF76 /* RecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
+		EAE066FC1B71346B00A2FF76 /* TouchDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchDetector.swift; sourceTree = "<group>"; };
 		EAE1E07A1AE34C6200F03F13 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		EAE1E07C1AE3788300F03F13 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		EAF6701C1B31E6550025D7CF /* Core.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Core.m; sourceTree = "<group>"; };
@@ -464,7 +464,6 @@
 		EAF81B221B33388700EED6DD /* ProducerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProducerViewController.swift; sourceTree = "<group>"; };
 		EAF81B241B33389500EED6DD /* RecorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderViewController.swift; sourceTree = "<group>"; };
 		EAF81B261B33391000EED6DD /* EditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
-		EAF81B301B3388C600EED6DD /* TouchDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchDetector.swift; sourceTree = "<group>"; };
 		EAF81B371B3395E700EED6DD /* AVKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVKit.swift; sourceTree = "<group>"; };
 		F1D48B38C28B60559AEB8949 /* Pods_Core_Taylr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Core_Taylr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C759AA125AEB809731B1D6 /* Pods-Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.release.xcconfig"; path = "Pods/Target Support Files/Pods-Core/Pods-Core.release.xcconfig"; sourceTree = "<group>"; };
@@ -902,7 +901,6 @@
 				EAF81B1F1B3337EA00EED6DD /* AVKit */,
 				EA5634DE1A7741FF00F62B52 /* Models */,
 				EA6650E91AA00A9C001BA40C /* Services */,
-				EAE066F21B71235E00A2FF76 /* Views */,
 				EAF4D7441A79AA5E00D35330 /* UserInterface */,
 				EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */,
 				EACEFB831B4672A800901E85 /* AppRouter.swift */,
@@ -1034,11 +1032,12 @@
 			path = ../Configs;
 			sourceTree = "<group>";
 		};
-		EAE066F21B71235E00A2FF76 /* Views */ = {
+		EAE066F71B71344700A2FF76 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				EAE066F31B71237A00A2FF76 /* DurationTimer.swift */,
-				EAE066F41B71237A00A2FF76 /* RecordButton.swift */,
+				EAE066F81B71344700A2FF76 /* DurationTimer.swift */,
+				EAE066F91B71344700A2FF76 /* RecordButton.swift */,
+				EAE066FC1B71346B00A2FF76 /* TouchDetector.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1154,13 +1153,13 @@
 		EAF81B1F1B3337EA00EED6DD /* AVKit */ = {
 			isa = PBXGroup;
 			children = (
+				EAE066F71B71344700A2FF76 /* Views */,
 				EA70787B1B39345800BB9D08 /* AVKit.storyboard */,
 				EAF81B221B33388700EED6DD /* ProducerViewController.swift */,
 				EAF81B241B33389500EED6DD /* RecorderViewController.swift */,
 				EAF81B261B33391000EED6DD /* EditorViewController.swift */,
 				EA03D3361B5B2C58007A0CF7 /* PlayerViewController.swift */,
 				EA394B0F1B5E16F2009184EB /* PlayerViewModel.swift */,
-				EAF81B301B3388C600EED6DD /* TouchDetector.swift */,
 				EAF81B371B3395E700EED6DD /* AVKit.swift */,
 			);
 			path = AVKit;
@@ -1581,7 +1580,6 @@
 				EA394B111B5E1725009184EB /* PlayerViewModel.swift in Sources */,
 				EAF81B2D1B33883A00EED6DD /* ProducerViewController.swift in Sources */,
 				EAF81B351B33890E00EED6DD /* R.swift in Sources */,
-				EAF81B321B3388C600EED6DD /* TouchDetector.swift in Sources */,
 				EA588DB81B5F1437000962B8 /* TestViewController.swift in Sources */,
 				EAF81B2E1B33883A00EED6DD /* RecorderViewController.swift in Sources */,
 				EA009D541B5BFED900FC7E3D /* Bond+SDWebImage.swift in Sources */,
@@ -1695,7 +1693,7 @@
 				EA03D3371B5B2C58007A0CF7 /* PlayerViewController.swift in Sources */,
 				EA57734A1B6C214E00BCF449 /* Appearance.swift in Sources */,
 				EAD1BB291B604A3D00D250C5 /* InviteViewController.swift in Sources */,
-				EAE066F61B71237A00A2FF76 /* RecordButton.swift in Sources */,
+				EAE066FB1B71344700A2FF76 /* RecordButton.swift in Sources */,
 				EA7134121B56E47100B810F6 /* ImagePickerExtensions.swift in Sources */,
 				EAF81B231B33388700EED6DD /* ProducerViewController.swift in Sources */,
 				EA6650ED1AA00A9C001BA40C /* AccountService.swift in Sources */,
@@ -1719,7 +1717,8 @@
 				EA24E9231B69E2BF00261873 /* Bond+JSBadgeView.swift in Sources */,
 				EAF81B381B3395E700EED6DD /* AVKit.swift in Sources */,
 				EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */,
-				EAE066F51B71237A00A2FF76 /* DurationTimer.swift in Sources */,
+				EAE066FA1B71344700A2FF76 /* DurationTimer.swift in Sources */,
+				EAE066FD1B71346B00A2FF76 /* TouchDetector.swift in Sources */,
 				EAA56F8E1B2B32E500DE3936 /* ConnectionCells.swift in Sources */,
 				EA57734E1B6C5D6800BCF449 /* Bond+UIButton.swift in Sources */,
 				EA043F6D1B62CE880047BDCA /* IntegrationsViewController.swift in Sources */,
@@ -1734,7 +1733,6 @@
 				EAA56FA11B2B32E500DE3936 /* RootNavController.swift in Sources */,
 				EA95BBB21B3930B000701F08 /* ResourceExtension.swift in Sources */,
 				EA0FED451ADE5BC500FC6FCB /* AnalyticsService.swift in Sources */,
-				EAF81B311B3388C600EED6DD /* TouchDetector.swift in Sources */,
 				EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */,
 				EACCA3A21B37B02A00015C88 /* ProfileCoverCell.swift in Sources */,
 				EA3594191B2FEA1F00E91337 /* TransitionManager.swift in Sources */,

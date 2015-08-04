@@ -20,9 +20,8 @@ protocol RecorderDelegate : NSObjectProtocol {
 class RecorderViewController : UIViewController {
     @IBOutlet weak var topLayoutHeight: NSLayoutConstraint!
     @IBOutlet weak var previewView: SCSwipeableFilterView!
-    @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var torchButton: UIButton!
-    @IBOutlet weak var recordButton: UIButton!
+    @IBOutlet weak var recordButton: RecordButton!
     @IBOutlet weak var filterHint: UIView!
     @IBOutlet var recordTapGesture: UITapGestureRecognizer!
     var filterPanGesture: UIPanGestureRecognizer {
@@ -85,7 +84,7 @@ class RecorderViewController : UIViewController {
     }
     
     func restartSession() {
-        progressView.progress = 0
+        recordButton.progress = 0
         recorder.session!.cancelSession(nil)
     }
     
@@ -134,11 +133,11 @@ extension RecorderViewController : SCRecorderDelegate {
     }
     
     func recorder(recorder: SCRecorder, didAppendVideoSampleBufferInSession session: SCRecordSession) {
-        progressView.progress = Float(recorder.ratioRecorded)
+        recordButton.progress = Float(recorder.ratioRecorded)
     }
     
     func recorder(recorder: SCRecorder, didAppendAudioSampleBufferInSession session: SCRecordSession) {
-        progressView.progress = Float(recorder.ratioRecorded)
+        recordButton.progress = Float(recorder.ratioRecorded)
     }
     
     func recorder(recorder: SCRecorder, didCompleteSegment segment: SCRecordSessionSegment?, inSession session: SCRecordSession, error: NSError?) {

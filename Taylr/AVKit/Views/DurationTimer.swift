@@ -8,6 +8,7 @@
 
 import UIKit
 import Core
+import ReactiveCocoa
 
 @IBDesignable
 class DurationTimer : BaseView {
@@ -17,27 +18,29 @@ class DurationTimer : BaseView {
     let label = UILabel()
     
     var progress: Float = 0 {
-        didSet { progressTrack.timeOffset = CFTimeInterval(progress) }
+        didSet {
+            assert(progress >= 0 && progress <= 1, "Progress must be between 0 and 1")
+            assert(NSThread.isMainThread(), "Must run on main")
+            if progressTrack.animationForKey("stroke") == nil {
+                setupAnimations()
+            }
+            progressTrack.timeOffset = CFTimeInterval(progress)
+        }
     }
     
     override func commonInit() {
         progressTrack.fillColor = UIColor.clearColor().CGColor
         progressTrack.strokeColor = UIColor.whiteColor().CGColor
-        progressTrack.strokeEnd = 0.2
+        progressTrack.strokeEnd = 1
         layer.addSublayer(progressTrack)
         
         label.textColor = UIColor.whiteColor()
         label.textAlignment = .Center
         label.font = UIFont(name: "GillSans", size: 14)
+        label.text = "100"
         addSubview(label)
         
-        // Animate the progress track
-        let strokeAnimation = CABasicAnimation(keyPath: "strokeEnd")
-        strokeAnimation.duration = 1
-        strokeAnimation.fromValue = 1
-        strokeAnimation.toValue = 0
-        progressTrack.addAnimation(strokeAnimation, forKey: "stroke")
-        progressTrack.speed = 0 // Pause animation
+        setupAnimations()
     }
     
     override func layoutSubviews() {
@@ -55,5 +58,15 @@ class DurationTimer : BaseView {
         let circle = UIBezierPath(circleCenter: bounds.center, radius: circleRadius)
         UIColor(white: 0, alpha: 0.6).setFill()
         circle.fill()
+    }
+    
+    func setupAnimations() {
+        // Animate the progress track
+        let strokeAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        strokeAnimation.duration = 1
+        strokeAnimation.fromValue = 1
+        strokeAnimation.toValue = 0
+        progressTrack.addAnimation(strokeAnimation, forKey: "stroke")
+        progressTrack.speed = 0 // Pause animation
     }
 }

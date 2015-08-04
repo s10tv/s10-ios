@@ -18,8 +18,7 @@ class PlayerViewController : UIViewController {
     // TODO: Consider using AVQueuePlayer instead of SCPlayer for
     // gapless video playback
     @IBOutlet weak var playerView: SCVideoPlayerView!
-    @IBOutlet weak var durationLabel: UILabel!
-    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var durationTimer: DurationTimer!
     @IBOutlet weak var overlay: UIView!
     
     let vm = PlayerViewModel()
@@ -50,9 +49,13 @@ class PlayerViewController : UIViewController {
 
         vm.hideView ->> view.dynHidden
         vm.videoURL ->> videoURLBond
-        vm.totalDurationLeft ->> durationLabel
-        vm.currentVideoProgress ->> progressView
         vm.isPlaying ->> overlay.dynHidden
+        vm.totalDurationLeft ->> durationTimer.label
+        
+        vm.currentVideoProgress.producer.start(next: { [weak self] v in
+            self?.durationTimer.progress = v
+        })
+        
         // Slight hack to get around the issue that playback momentarily stops when switching video
         vm.isPlaying.producer.start(next: { [weak self] in
             let isPlaying = $0

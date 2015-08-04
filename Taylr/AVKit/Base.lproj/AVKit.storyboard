@@ -135,47 +135,36 @@
                                     <constraint firstAttribute="centerY" secondItem="wEk-rz-lGs" secondAttribute="centerY" id="o5Z-Z0-qbf"/>
                                 </constraints>
                             </view>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="1" translatesAutoresizingMaskIntoConstraints="NO" id="DQV-th-jma">
-                                <rect key="frame" x="559" y="106" width="30" height="2"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wkw-bV-YTb" customClass="DurationTimer" customModule="Taylr" customModuleProvider="target">
+                                <rect key="frame" x="544" y="80" width="40" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="FXf-WC-DLD"/>
+                                    <constraint firstAttribute="width" constant="40" id="8h1-DH-aJH"/>
+                                    <constraint firstAttribute="height" constant="40" id="ddN-Zt-XXL"/>
                                 </constraints>
-                                <color key="progressTintColor" red="0.61960784310000006" green="0.4941176471" blue="0.66274509800000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="trackTintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            </progressView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AmD-xc-WPD" userLabel="Duration">
-                                <rect key="frame" x="564" y="80" width="20" height="22"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <size key="shadowOffset" width="1" height="1"/>
-                            </label>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="DQV-th-jma" firstAttribute="top" secondItem="AmD-xc-WPD" secondAttribute="bottom" constant="4" id="2VK-43-DBd"/>
                             <constraint firstItem="Lep-Xz-fsY" firstAttribute="top" secondItem="Mky-an-EVL" secondAttribute="top" id="3gv-1Z-Z5O"/>
-                            <constraint firstItem="AmD-xc-WPD" firstAttribute="top" secondItem="Lep-Xz-fsY" secondAttribute="bottom" constant="16" id="4jh-en-bMQ"/>
                             <constraint firstItem="RFF-jQ-Kok" firstAttribute="top" secondItem="Mky-an-EVL" secondAttribute="top" id="5Zy-gS-CAM"/>
                             <constraint firstAttribute="trailing" secondItem="Lep-Xz-fsY" secondAttribute="trailing" id="8aL-rX-aJy"/>
                             <constraint firstItem="RFF-jQ-Kok" firstAttribute="leading" secondItem="Mky-an-EVL" secondAttribute="leading" id="8xx-xQ-7YE"/>
                             <constraint firstItem="RFF-jQ-Kok" firstAttribute="top" secondItem="2jn-jg-8ht" secondAttribute="top" id="NQS-26-vt5"/>
                             <constraint firstItem="RFF-jQ-Kok" firstAttribute="trailing" secondItem="2jn-jg-8ht" secondAttribute="trailing" id="TPV-sh-vUO"/>
-                            <constraint firstItem="DQV-th-jma" firstAttribute="centerX" secondItem="AmD-xc-WPD" secondAttribute="centerX" id="cOx-IP-HNW"/>
+                            <constraint firstAttribute="trailing" secondItem="wkw-bV-YTb" secondAttribute="trailing" constant="16" id="bBj-g9-dEF"/>
                             <constraint firstItem="RFF-jQ-Kok" firstAttribute="leading" secondItem="2jn-jg-8ht" secondAttribute="leading" id="fOm-xB-phq"/>
                             <constraint firstAttribute="trailing" secondItem="RFF-jQ-Kok" secondAttribute="trailing" id="kDa-4V-ANo"/>
                             <constraint firstAttribute="bottom" secondItem="RFF-jQ-Kok" secondAttribute="bottom" id="kI2-O9-VHi"/>
+                            <constraint firstItem="wkw-bV-YTb" firstAttribute="top" secondItem="Lep-Xz-fsY" secondAttribute="bottom" constant="16" id="kdj-ck-Syq"/>
                             <constraint firstItem="RFF-jQ-Kok" firstAttribute="bottom" secondItem="2jn-jg-8ht" secondAttribute="bottom" id="qOL-ug-tdB"/>
-                            <constraint firstItem="RFF-jQ-Kok" firstAttribute="trailing" secondItem="AmD-xc-WPD" secondAttribute="trailing" constant="16" id="rRn-5M-iMm"/>
                             <constraint firstItem="Lep-Xz-fsY" firstAttribute="leading" secondItem="Mky-an-EVL" secondAttribute="leading" id="xvs-HK-y5H"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="durationLabel" destination="AmD-xc-WPD" id="In6-ZL-nxf"/>
+                        <outlet property="durationTimer" destination="wkw-bV-YTb" id="r57-7F-Ltt"/>
                         <outlet property="overlay" destination="2jn-jg-8ht" id="rWM-SG-drW"/>
                         <outlet property="playerView" destination="RFF-jQ-Kok" id="dDw-6V-kYh"/>
-                        <outlet property="progressView" destination="DQV-th-jma" id="aYH-i8-MVg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uFR-IP-tYk" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -281,14 +270,6 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
-                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="zPO-M3-p5L">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="8"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="8" id="9BA-9e-GXS"/>
-                                </constraints>
-                                <color key="progressTintColor" red="0.46897470951080322" green="0.27513545751571655" blue="0.68778532743453979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <color key="trackTintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </progressView>
                             <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6eQ-8N-xkE" userLabel="Filter Hint">
                                 <rect key="frame" x="233" y="282" width="135" height="36"/>
                                 <subviews>
@@ -338,16 +319,14 @@
                                     <action selector="toggleTorch:" destination="Mkj-ew-cSR" eventType="touchUpInside" id="qwf-E6-khZ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7s2-e5-NVe" userLabel="Capture">
-                                <rect key="frame" x="261" y="499" width="80" height="81"/>
-                                <gestureRecognizers/>
-                                <state key="normal" image="ic-record">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="Njg-2T-Xep" appends="YES" id="EcR-9F-O1I"/>
-                                </connections>
-                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6fl-by-yUv" customClass="RecordButton" customModule="Taylr" customModuleProvider="target">
+                                <rect key="frame" x="260" y="500" width="80" height="80"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="80" id="eyB-1k-ONB"/>
+                                    <constraint firstAttribute="width" constant="80" id="xNi-3u-fs8"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -358,14 +337,11 @@
                             <constraint firstItem="Pxo-oy-0Oy" firstAttribute="top" secondItem="M3U-qM-guW" secondAttribute="top" id="B2E-aI-Tdk"/>
                             <constraint firstAttribute="centerY" secondItem="6eQ-8N-xkE" secondAttribute="centerY" id="Gjh-7b-JjN"/>
                             <constraint firstAttribute="bottom" secondItem="2Fw-rH-c9r" secondAttribute="bottom" id="Kgd-GR-EaK"/>
-                            <constraint firstAttribute="trailing" secondItem="zPO-M3-p5L" secondAttribute="trailing" id="MPs-Sw-JzS"/>
-                            <constraint firstAttribute="centerX" secondItem="7s2-e5-NVe" secondAttribute="centerX" constant="-0.5" id="Nn2-UL-EV3"/>
                             <constraint firstAttribute="centerX" secondItem="6eQ-8N-xkE" secondAttribute="centerX" id="OfQ-Ep-ehu"/>
-                            <constraint firstItem="zPO-M3-p5L" firstAttribute="top" secondItem="kas-4p-VNL" secondAttribute="bottom" id="QAi-JY-D6E"/>
+                            <constraint firstAttribute="centerX" secondItem="6fl-by-yUv" secondAttribute="centerX" id="bJN-ts-qPa"/>
                             <constraint firstItem="aym-vv-YK7" firstAttribute="top" secondItem="Pxo-oy-0Oy" secondAttribute="bottom" id="hdK-EJ-2ac"/>
                             <constraint firstItem="aym-vv-YK7" firstAttribute="leading" secondItem="M3U-qM-guW" secondAttribute="leading" id="lNj-ui-v4R"/>
-                            <constraint firstItem="zPO-M3-p5L" firstAttribute="leading" secondItem="M3U-qM-guW" secondAttribute="leading" id="q8M-gD-ei7"/>
-                            <constraint firstItem="sS8-ya-4lZ" firstAttribute="top" secondItem="7s2-e5-NVe" secondAttribute="bottom" constant="20" id="tdQ-bU-MSn"/>
+                            <constraint firstItem="sS8-ya-4lZ" firstAttribute="top" secondItem="6fl-by-yUv" secondAttribute="bottom" constant="20" id="nSc-AL-VtL"/>
                             <constraint firstAttribute="trailing" secondItem="b3o-63-A2P" secondAttribute="trailing" id="xsV-me-1SL"/>
                             <constraint firstItem="Pxo-oy-0Oy" firstAttribute="leading" secondItem="M3U-qM-guW" secondAttribute="leading" id="yFW-tw-buW"/>
                             <constraint firstItem="2Fw-rH-c9r" firstAttribute="top" secondItem="M3U-qM-guW" secondAttribute="top" id="zCu-rM-mCx"/>
@@ -376,8 +352,7 @@
                     <connections>
                         <outlet property="filterHint" destination="6eQ-8N-xkE" id="7k4-MP-aJv"/>
                         <outlet property="previewView" destination="2Fw-rH-c9r" id="0cp-IO-f9u"/>
-                        <outlet property="progressView" destination="zPO-M3-p5L" id="MVy-cv-Da7"/>
-                        <outlet property="recordButton" destination="7s2-e5-NVe" id="eOl-bu-Bic"/>
+                        <outlet property="recordButton" destination="6fl-by-yUv" id="dID-2B-Wj7"/>
                         <outlet property="recordTapGesture" destination="Njg-2T-Xep" id="2bB-3h-GSo"/>
                         <outlet property="topLayoutHeight" destination="OM8-pJ-sb0" id="gTQ-JZ-4s5"/>
                         <outlet property="torchButton" destination="aym-vv-YK7" id="oBx-5C-jUs"/>
@@ -400,7 +375,6 @@
         <image name="ic-close-cross" width="16" height="16"/>
         <image name="ic-flash" width="19" height="25"/>
         <image name="ic-play-medium" width="40" height="40"/>
-        <image name="ic-record" width="80" height="81"/>
         <image name="ic-save-round" width="40" height="40"/>
         <image name="ic-send-round" width="50" height="50"/>
     </resources>
