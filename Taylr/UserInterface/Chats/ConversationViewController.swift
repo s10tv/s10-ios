@@ -168,8 +168,8 @@ class ConversationViewController : BaseViewController {
     
     @IBAction func blockUser(sender: AnyObject) {
         let alert = UIAlertController(title: LS(.reportAlertTitle), message: LS(.reportAlertMessage), preferredStyle: .Alert)
-        alert.addAction(LS(.reportAlertCancel), style: .Cancel)
-        alert.addAction(LS(.reportAlertConfirm), style: .Destructive) { _ in
+        alert.addAction("Cancel", style: .Cancel)
+        alert.addAction("Block", style: .Destructive) { _ in
             self.vm.blockUser()
         }
         presentViewController(alert)

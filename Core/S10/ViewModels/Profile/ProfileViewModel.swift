@@ -33,15 +33,18 @@ public struct ProfileViewModel {
     let results: FetchedResultsArray<Activity>
     let predicate: PropertyOf<NSPredicate>
     
+    public let cvm: ProfileCoverViewModel
     public let coverVM: DynamicArray<ProfileCoverViewModel>
     public let infoVM: DynamicArray<ProfileInfoViewModel>
     public let activities: DynamicArray<ActivityViewModel>
+    public let showMoreOptions: Bool
     
     init(meteor: MeteorService, taskService: TaskService, user: User) {
         self.meteor = meteor
         self.taskService = taskService
         self.user = user
-        let cvm = ProfileCoverViewModel(user: user)
+        showMoreOptions = meteor.user.value != user
+        cvm = ProfileCoverViewModel(user: user)
         subscription = meteor.subscribe("activities", user)
         coverVM = DynamicArray([cvm])
         infoVM = toBondDynamicArray(cvm.selectedProfile |> map {
@@ -58,6 +61,14 @@ public struct ProfileViewModel {
             $0.profile.map(supportedActivitiesByProfile) ?? supportedActivitiesByUser(user)
         }
         toBondDynamic(predicate) ->> results.predicateBond
+    }
+    
+    public func reportUser(reason: String) {
+        meteor.reportUser(user, reason: reason)
+    }
+    
+    public func blockUser() {
+        meteor.blockUser(user)
     }
     
     public func conversationVM() -> ConversationViewModel {

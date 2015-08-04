@@ -14,6 +14,7 @@ import Core
 
 class ProfileViewController : BaseViewController {
 
+    @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     var coverCell: ProfileCoverCell!
     var vm: ProfileViewModel!
@@ -22,6 +23,7 @@ class ProfileViewController : BaseViewController {
         super.viewDidLoad()
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 500
+        moreButton.hidden = !vm.showMoreOptions
         
         let coverFactory = tableView.factory(ProfileCoverCell)
         let taylrProfileFactory = tableView.factory(TaylrProfileInfoCell.self, section: 1)
@@ -90,25 +92,41 @@ class ProfileViewController : BaseViewController {
     
     // MARK: - Action
     
+    // Very repetitive. Consider refactor along with ConversationViewController
     @IBAction func showMoreOptions(sender: AnyObject) {
-//        let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-//        sheet.addAction(LS(.moreSheetReport, vm.coverVM.firstName.value), style: .Destructive) { _ in
-//            self.reportUser(sender)
-//        }
-//        sheet.addAction(LS(.moreSheetCancel), style: .Cancel)
-//        presentViewController(sheet)
+        let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
+        sheet.addAction("Message \(vm.cvm.firstName.value)") { _ in
+            self.performSegue(.ProfileToConversation)
+        }
+        sheet.addAction(LS(.moreSheetBlock, vm.cvm.firstName.value), style: .Destructive) { _ in
+            self.blockUser(self)
+        }
+        sheet.addAction(LS(.moreSheetReport, vm.cvm.firstName.value), style: .Destructive) { _ in
+            self.reportUser(self)
+        }
+        sheet.addAction(LS(.moreSheetCancel), style: .Cancel)
+        presentViewController(sheet)
+    }
+    
+    @IBAction func blockUser(sender: AnyObject) {
+        let alert = UIAlertController(title: "Block User", message: "Are you sure you want to block \(vm.cvm.firstName.value)?", preferredStyle: .Alert)
+        alert.addAction("Cancel", style: .Cancel)
+        alert.addAction("Block", style: .Destructive) { _ in
+            self.vm.blockUser()
+        }
+        presentViewController(alert)
     }
     
     @IBAction func reportUser(sender: AnyObject) {
-//        let alert = UIAlertController(title: LS(.reportAlertTitle), message: LS(.reportAlertMessage), preferredStyle: .Alert)
-//        alert.addTextFieldWithConfigurationHandler(nil)
-//        alert.addAction(LS(.reportAlertCancel), style: .Cancel)
-//        alert.addAction(LS(.reportAlertConfirm), style: .Destructive) { _ in
-//            if let reportReason = (alert.textFields?[0] as? UITextField)?.text {
-//                Meteor.reportUser(self.vm.user, reason: reportReason)
-//            }
-//        }
-//        presentViewController(alert)
+        let alert = UIAlertController(title: LS(.reportAlertTitle), message: LS(.reportAlertMessage), preferredStyle: .Alert)
+        alert.addTextFieldWithConfigurationHandler(nil)
+        alert.addAction(LS(.reportAlertCancel), style: .Cancel)
+        alert.addAction(LS(.reportAlertConfirm), style: .Destructive) { _ in
+            if let reportReason = (alert.textFields?[0] as? UITextField)?.text {
+                self.vm.reportUser(reportReason)
+            }
+        }
+        presentViewController(alert)
     }
 }
 

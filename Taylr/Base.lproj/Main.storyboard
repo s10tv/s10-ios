@@ -1097,7 +1097,7 @@
                                     <action selector="goBack:" destination="eMh-jf-Tma" eventType="touchUpInside" id="J0d-9J-Tmx"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpo-V3-MGZ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hpo-V3-MGZ" userLabel="More">
                                 <rect key="frame" x="315" y="0.0" width="60" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="hLy-ln-oA5"/>
@@ -1129,6 +1129,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="375" height="1200"/>
                     <connections>
+                        <outlet property="moreButton" destination="hpo-V3-MGZ" id="HFN-4K-phX"/>
                         <outlet property="tableView" destination="usC-gW-R9r" id="44z-jr-6Pg"/>
                     </connections>
                 </viewController>
