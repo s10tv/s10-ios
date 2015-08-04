@@ -20,7 +20,7 @@ class IntegrationCell : UICollectionViewCell, BindableCell {
     
     func bind(vm: IntegrationViewModel) {
         iconView.bindImage(vm.icon)
-        titleField.placeholder = vm.name.capitalizedString // TEMP HACK FOR NOW TILL SERVER CHANGE
+        titleField.placeholder = vm.name
         titleField.text = vm.username
         statusView.bindImage(vm.statusImage)
         vm.showSpinner ? spinner.startAnimating() : spinner.stopAnimating()
