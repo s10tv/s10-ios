@@ -99,7 +99,7 @@ extension ProfileCoverCell : UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         vm.selectProfileAtIndex(indexPath.item)
         Globals.analyticsService.screen("Connected Profiles", properties: [
-            "name": vm.selectedProfile.value.name])
+            "integrationName": vm.selectedProfile.value.integrationName])
     }
 }
 

@@ -121,11 +121,11 @@ public struct ProfileSelectorViewModel {
     public let icon: Image
     public let altIcon: Image
     public let color: UIColor
-    public let name: String
+    public let integrationName: String
     
     init(profile: User.ConnectedProfile?) {
         self.profile = profile
-        name = profile?.displayName ?? ""
+        integrationName = profile?.integrationName ?? ""
         icon = profile?.icon ?? Image(UIImage(named: "ic-all")!)
         altIcon = profile?.altIcon ?? Image(UIImage(named: "ic-all-gray")!)
         color = profile?.themeColor ?? UIColor(red: 0.290, green: 0.078, blue: 0.549, alpha: 1.000) // brandPurple
