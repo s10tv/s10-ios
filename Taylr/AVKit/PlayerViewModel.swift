@@ -67,7 +67,7 @@ class PlayerViewModel {
             currentVideo.producer,
             currentTime.producer
         ) |> map { video, time in
-            video.map { Float(time / $0.duration) } ?? 0
+            video.map { Float(min(time / $0.duration, 1)) } ?? 0
         })
         totalDurationLeft = PropertyOf("", combineLatest(
             currentTime.producer,
