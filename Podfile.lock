@@ -19,6 +19,7 @@ PODS:
   - DTFoundation/Core (1.7.7)
   - DTFoundation/DTASN1 (1.7.7):
     - DTFoundation/Core
+  - DZNEmptyDataSet (1.6.1)
   - EDColor (1.0.0)
   - FBSDKCoreKit (4.4.0):
     - Bolts (~> 1.1)
@@ -98,6 +99,7 @@ DEPENDENCIES:
   - CHTCollectionViewWaterfallLayout (~> 0.9)
   - DateTools (~> 1.6)
   - DTFoundation/DTASN1 (~> 1.7)
+  - DZNEmptyDataSet (~> 1.6)
   - EDColor (~> 1.0)
   - FBSDKLoginKit (~> 4.3)
   - FormatterKit/TimeIntervalFormatter (~> 1.8)
@@ -170,6 +172,7 @@ SPEC CHECKSUMS:
   CHTCollectionViewWaterfallLayout: 1a8da4fc662702cbddda8926ced266036a829f84
   DateTools: 9bcc89e4f2f9004d8a7a2bd1b49269cf78968e65
   DTFoundation: c9b3362b83f0017389082ec067ede719826a579d
+  DZNEmptyDataSet: 3d31c27758230f03c71199f8c522bcfa99fba16c
   EDColor: c83f9a61f9f9b3c23d541f1feb561558e29cb088
   FBSDKCoreKit: 75bdd75c980e811db218488d99dd93b7740f4474
   FBSDKLoginKit: 02a9254a4c132412fa03577b0d53e936d068a7fb

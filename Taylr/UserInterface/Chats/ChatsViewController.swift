@@ -9,6 +9,7 @@
 import Foundation
 import Core
 import Bond
+import DZNEmptyDataSet
 
 class ChatsViewController : BaseViewController {
     
@@ -20,6 +21,7 @@ class ChatsViewController : BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 0.01))
+        tableView.emptyDataSetSource = self
         
         let contactCellFactory = tableView.factory(ContactConnectionCell)
         let newCellFactory = tableView.factory(NewConnectionCell)
@@ -70,5 +72,20 @@ class ChatsViewController : BaseViewController {
     
     @IBAction func didSelectSegment(sender: UISegmentedControl) {
         vm.currentSection.value = ChatsViewModel.Section(rawValue: sender.selectedSegmentIndex)!
+    }
+}
+
+extension ChatsViewController : DZNEmptyDataSetSource {
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        let message: String
+        switch vm.currentSection.value {
+        case .Contacts:
+            message = LS(.emptyContactsMessage)
+        case .New:
+            message = LS(.emptyNewMessage)
+        }
+        return NSAttributedString(string: message, attributes: [
+            NSFontAttributeName: UIFont(.cabinRegular, size: 20)
+        ])
     }
 }

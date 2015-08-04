@@ -40,6 +40,10 @@ public enum R {
         case cabinRegular = "Cabin-Regular"
     }
     public enum Strings : String {
+        /// This is where the messages you have sent or replied to appear.
+        case emptyContactsMessage = "emptyContactsMessage"
+        /// People reaching out to you for the first time will show up here
+        case emptyNewMessage = "emptyNewMessage"
         /// Unexpected Error
         case errDefault = "errDefault"
         /// Ooops, something unexpected has happened. Please close the app and try again later.

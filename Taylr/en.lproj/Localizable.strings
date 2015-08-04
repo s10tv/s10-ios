@@ -70,3 +70,6 @@
 "errDefaultRecovery" = "Ooops, something unexpected has happened. Please close the app and try again later.";
 "errNetworkUnreachable" = "Network Unavailable";
 "errNetworkUnreachableRecovery" = "Seems like we don't have any network connection right now, try again later.";
+
+"emptyContactsMessage" = "This is where the messages you have sent or replied to appear.";
+"emptyNewMessage" = "People reaching out to you for the first time will show up here";
