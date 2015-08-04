@@ -13,6 +13,7 @@ import AMPopTip
 
 protocol RecorderDelegate : NSObjectProtocol {
     func recorderWillStartRecording(recorder: RecorderViewController)
+    func recorderDidCancelRecording(recorder: RecorderViewController)
     func recorder(recorder: RecorderViewController, didRecordSession session: SCRecordSession)
 }
 
@@ -24,6 +25,7 @@ class RecorderViewController : UIViewController {
     @IBOutlet weak var recordButton: UIButton!
     @IBOutlet weak var filterHint: UIView!
     let recordTip = AMPopTip()
+    @IBOutlet var recordTapGesture: UITapGestureRecognizer!
     
     let ud = NSUserDefaults.standardUserDefaults()
     
@@ -53,17 +55,24 @@ class RecorderViewController : UIViewController {
         previewView.selectFilterScrollView.directionalLockEnabled = true
         
         filterHint.hidden = ud.boolForKey("hideSwipeFilterHint")
+        let touchDetector = TouchDetector(target: self, action: "handleRecordTouch:")
+        recordTapGesture.delegate = self
+        recordButton.addGestureRecognizer(touchDetector)
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         // Start new recording
         // HACK ALERT: Force previewView to generate a GL context to draw on. 
-
         previewView.CIImage = CIImage(color: CIColor(red: 0, green: 0, blue: 0))
-        recorder.session!.cancelSession(nil)
-        progressView.progress = 0
+
         recorder.startRunning()
+        restartSession()
+    }
+    
+    func restartSession() {
+        progressView.progress = 0
+        recorder.session!.cancelSession(nil)
     }
     
     @IBAction func toggleTorch(sender: AnyObject) {
@@ -90,7 +99,7 @@ class RecorderViewController : UIViewController {
             inView: view, fromFrame: recordButton.frame, duration: 1.5)
     }
     
-    @IBAction func handleRecordLongPress(sender: UILongPressGestureRecognizer) {
+    @IBAction func handleRecordTouch(sender: TouchDetector) {
         if sender.state == .Began {
             delegate?.recorderWillStartRecording(self)
             recorder.record()
@@ -119,12 +128,24 @@ extension RecorderViewController : SCRecorderDelegate {
     }
     
     func recorder(recorder: SCRecorder, didCompleteSegment segment: SCRecordSessionSegment?, inSession session: SCRecordSession, error: NSError?) {
-        delegate?.recorder(self, didRecordSession: session)
+        // Ignore super short videos less than 1s
+        if recorder.session!.duration.seconds < 1 {
+            restartSession()
+            delegate?.recorderDidCancelRecording(self)
+        } else {
+            delegate?.recorder(self, didRecordSession: session)
+        }
     }
 }
 
 extension RecorderViewController : SCSwipeableFilterViewDelegate {
     func swipeableFilterView(swipeableFilterView: SCSwipeableFilterView, didScrollToFilter filter: SCFilter?) {
         filterHint.hidden = true
+    }
+}
+
+extension RecorderViewController : UIGestureRecognizerDelegate {
+    override func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return otherGestureRecognizer is TouchDetector
     }
 }

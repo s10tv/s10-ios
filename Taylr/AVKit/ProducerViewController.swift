@@ -73,6 +73,10 @@ extension ProducerViewController : RecorderDelegate {
         producerDelegate?.producerWillStartRecording(self)
     }
     
+    func recorderDidCancelRecording(recorder: RecorderViewController) {
+        producerDelegate?.producerDidCancelRecording(self)
+    }
+    
     func recorder(recorder: RecorderViewController, didRecordSession session: SCRecordSession) {
         editorVC.recordSession = session
         currentFilter = recorder.previewView.selectedFilter

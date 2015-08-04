@@ -345,7 +345,6 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <outletCollection property="gestureRecognizers" destination="jSu-ac-jcd" appends="YES" id="umJ-Pf-wnS"/>
                                     <outletCollection property="gestureRecognizers" destination="Njg-2T-Xep" appends="YES" id="EcR-9F-O1I"/>
                                 </connections>
                             </button>
@@ -379,17 +378,13 @@
                         <outlet property="previewView" destination="2Fw-rH-c9r" id="0cp-IO-f9u"/>
                         <outlet property="progressView" destination="zPO-M3-p5L" id="MVy-cv-Da7"/>
                         <outlet property="recordButton" destination="7s2-e5-NVe" id="eOl-bu-Bic"/>
+                        <outlet property="recordTapGesture" destination="Njg-2T-Xep" id="2bB-3h-GSo"/>
                         <outlet property="topLayoutHeight" destination="OM8-pJ-sb0" id="gTQ-JZ-4s5"/>
                         <outlet property="torchButton" destination="aym-vv-YK7" id="oBx-5C-jUs"/>
                         <segue destination="uPv-0o-aed" kind="show" identifier="RecorderToEditor" id="SWo-hc-sLD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bxK-es-QuW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <pongPressGestureRecognizer allowableMovement="10" minimumPressDuration="0.5" id="jSu-ac-jcd">
-                    <connections>
-                        <action selector="handleRecordLongPress:" destination="Mkj-ew-cSR" id="caN-4Y-0oX"/>
-                    </connections>
-                </pongPressGestureRecognizer>
                 <tapGestureRecognizer id="Njg-2T-Xep">
                     <connections>
                         <action selector="handleRecordTap:" destination="Mkj-ew-cSR" id="AYp-dr-s0Q"/>

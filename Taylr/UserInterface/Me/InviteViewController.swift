@@ -43,9 +43,7 @@ class InviteViewController : UIViewController {
 extension InviteViewController : ProducerDelegate {
     func producerWillStartRecording(producer: ProducerViewController) {
     }
-    
     func producerDidCancelRecording(producer: ProducerViewController) {
-        producer.dismissViewController(animated: true)
     }
     
     func producer(producer: ProducerViewController, didProduceVideo video: VideoSession, duration: NSTimeInterval) {
