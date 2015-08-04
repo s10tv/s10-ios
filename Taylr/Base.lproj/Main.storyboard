@@ -1365,13 +1365,14 @@
                                 <constraint firstAttribute="bottom" secondItem="uD7-V4-mF6" secondAttribute="bottom" id="WqJ-ZX-FwG"/>
                                 <constraint firstItem="b5e-73-k20" firstAttribute="leading" secondItem="e0x-EU-7eq" secondAttribute="trailing" priority="249" constant="8" symbolic="YES" id="hno-4F-Zyk"/>
                                 <constraint firstItem="uD7-V4-mF6" firstAttribute="leading" secondItem="KPL-gz-OCJ" secondAttribute="leading" priority="749" constant="28" id="ilA-IT-aF5"/>
-                                <constraint firstItem="Xhe-ik-k94" firstAttribute="centerX" secondItem="e0x-EU-7eq" secondAttribute="centerX" id="kjK-E6-6hT"/>
+                                <constraint firstItem="Xhe-ik-k94" firstAttribute="centerX" secondItem="e0x-EU-7eq" secondAttribute="centerX" priority="748" id="kjK-E6-6hT"/>
                                 <constraint firstAttribute="bottom" secondItem="Xhe-ik-k94" secondAttribute="bottom" id="m8r-aS-g1a"/>
+                                <constraint firstItem="Xhe-ik-k94" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="e0x-EU-7eq" secondAttribute="leading" id="mbO-9r-yQv"/>
                                 <constraint firstItem="uD7-V4-mF6" firstAttribute="top" secondItem="KPL-gz-OCJ" secondAttribute="top" id="nYh-zc-Lzk"/>
                                 <constraint firstItem="e0x-EU-7eq" firstAttribute="leading" secondItem="uD7-V4-mF6" secondAttribute="trailing" constant="8" symbolic="YES" id="qGD-oQ-LbG"/>
                                 <constraint firstItem="b5e-73-k20" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="e0x-EU-7eq" secondAttribute="trailing" constant="8" symbolic="YES" id="sJb-Zr-9MH"/>
                                 <constraint firstAttribute="trailing" secondItem="b5e-73-k20" secondAttribute="trailing" id="u9I-1G-sal"/>
-                                <constraint firstItem="b5e-73-k20" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Xhe-ik-k94" secondAttribute="trailing" constant="8" symbolic="YES" id="y2z-Yi-W14"/>
+                                <constraint firstItem="b5e-73-k20" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Xhe-ik-k94" secondAttribute="trailing" priority="749" constant="8" symbolic="YES" id="y2z-Yi-W14"/>
                             </constraints>
                             <connections>
                                 <outletCollection property="gestureRecognizers" destination="314-8z-971" appends="YES" id="aI5-uL-5X0"/>
