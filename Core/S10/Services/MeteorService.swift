@@ -199,18 +199,6 @@ public class MeteorService : NSObject {
     }
 
     // MARK: - Messages
-
-    func openMessage(message: Message, expireDelay: Int = 30) -> RACSignal {
-        return meteor.call("message/open", [message, expireDelay]) {
-            message.status_ = Message.Status.Opened.rawValue
-            message.expiresAt = NSDate(timeIntervalSinceNow: NSTimeInterval(expireDelay))
-            let connection = message.connection
-            connection.unreadCount = (connection.unreadCount?.intValue ?? 1) - 1
-            connection.updatedAt = NSDate()
-            message.save()
-            return nil
-        }
-    }
     
     func expireMessages(messages: [Message]) -> RACSignal {
         return meteor.call("messages/expire", [messages.map { $0.documentID! }]) {
