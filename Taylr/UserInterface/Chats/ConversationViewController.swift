@@ -84,6 +84,13 @@ class ConversationViewController : BaseViewController {
         swipeView.delegate = self
         swipeView.layoutIfNeeded()
         
+        playerEmptyView.whenSwiped(.Left) { [weak self] _ in
+            self?.player.advance()
+        }
+        playerEmptyView.whenSwiped(.Right) { [weak self] _ in
+            self?.player.rewind()
+        }
+        
         if !vm.showTutorial {
             tutorialContainer.removeFromSuperview()
             player.advance()
