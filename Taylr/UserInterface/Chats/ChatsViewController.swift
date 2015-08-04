@@ -20,7 +20,7 @@ class ChatsViewController : BaseViewController {
     let emptyDataBond = ArrayBond<ConnectionViewModel>()
     
     deinit {
-        tableView.emptyDataSetSource = nil
+        tableView?.emptyDataSetSource = nil
     }
     
     override func viewDidLoad() {

@@ -24,7 +24,7 @@ class DiscoverViewController : BaseViewController {
     
     deinit {
         collectionView?.delegate = nil
-        collectionView.emptyDataSetSource = nil
+        collectionView?.emptyDataSetSource = nil
     }
     
     override func viewDidLoad() {
