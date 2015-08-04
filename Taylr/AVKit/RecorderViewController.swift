@@ -47,6 +47,7 @@ class RecorderViewController : UIViewController {
         recorder.delegate = self
 
         previewView.filters = AVKit.defaultFilters
+        previewView.selectedFilter = AVKit.defaultFilters.first // Force set it else doesn't seem to register
         previewView.whenTapped(numberOfTaps: 2) { [weak self] _ in
             self?.recorder.switchCaptureDevices()
             return
