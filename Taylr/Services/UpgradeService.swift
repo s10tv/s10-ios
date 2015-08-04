@@ -58,7 +58,8 @@ class UpgradeService {
         }
         combineLatest(
             settings.softMinBuild.producer |> skip(1),
-            settings.hardMinBuild.producer |> skip(1)
+            settings.hardMinBuild.producer |> skip(1),
+            settings.upgradeURL.producer |> skip(1)
         ).start(next: { [weak self] _ in
             self?.promptForUpgradeIfNeeded()
         })

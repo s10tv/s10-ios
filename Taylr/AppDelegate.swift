@@ -78,13 +78,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         )
 
         // Startup the services
-
-        Meteor.loggedIn.producer
-            |> takeWhile { $0 == false }
-            |> start(completed: {
-                Globals.upgradeService.promptForUpgradeIfNeeded()
-            })
-        
         SugarRecordLogger.currentLevel = SugarRecordLogger.logLevelError
         
         // Should be probably extracted into push service
