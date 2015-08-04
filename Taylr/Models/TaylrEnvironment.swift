@@ -27,7 +27,6 @@ class TaylrEnvironment : Environment {
     }
     
     let audience : Audience
-    let upgradeURL: NSURL
     let serverProtocol = "wss"
     let serverHostName: String
     var serverURL: NSURL {
@@ -48,7 +47,6 @@ class TaylrEnvironment : Environment {
         self.audience = audience
         switch audience {
             case .Dev:
-                upgradeURL = NSURL("https://apps-ios.crashlytics.com/projects/54f16f389f24291fde000043")
                 serverHostName = "s10-dev.herokuapp.com"
 //                serverHostName = "10.1.1.12:3000"
 //                serverHostName = "s10-beta.herokuapp.com"
@@ -59,7 +57,6 @@ class TaylrEnvironment : Environment {
                 githubClientId = "fb2414c4535ddd7a86a1"
                 githubClientSecret = "b4b16bca1611ee8318c56a61040ef1683d611a6a"
             case .Beta:
-                upgradeURL = NSURL("https://taylrapp.com/beta")
                 serverHostName = "s10-beta.herokuapp.com"
                 bugfenderAppToken = "lO35cfZMdPxzIraCq4YFKISSKZ2EAIwe"
                 segmentWriteKey = "SGEB9gVQGFYgeptFbtnETHCka8FCOuoc"
@@ -68,7 +65,6 @@ class TaylrEnvironment : Environment {
                 githubClientId = "d3d17fc593c45429cf29"     // this is wrong. need to make beta app.
                 githubClientSecret = "4a6f949c772bfd87ae6e9be1ccc6ab21265de649"
             case .AppStore:
-                upgradeURL = NSURL("https://taylrapp.com/download")
                 serverHostName = "s10.herokuapp.com"
                 bugfenderAppToken = "ow9JOdNYSo5iVqPUUAEbS8HfmwZqb1tQ"
                 segmentWriteKey = "JPCrmGwQqlgohXoowBFSLwesir9Zn5Bv"

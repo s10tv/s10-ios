@@ -20,6 +20,7 @@ public class Settings {
     
     public let softMinBuild: PropertyOf<Int?>
     public let hardMinBuild: PropertyOf<Int?>
+    public let upgradeURL: PropertyOf<NSURL?>
     public let debugLoginMode: PropertyOf<Bool?>
     public let accountStatus: PropertyOf<AccountStatus?>
     
@@ -28,6 +29,7 @@ public class Settings {
         subscription = meteor.subscribe("settings")
         softMinBuild = c.propertyOf("softMinBuild") |> map { $0.typed(Int) }
         hardMinBuild = c.propertyOf("hardMinBuild") |> map { $0.typed(Int) }
+        upgradeURL = c.propertyOf("upgradeUrl") |> map { $0.typed(String).flatMap { NSURL($0) } }
         debugLoginMode = c.propertyOf("debugLoginMode") |> map { $0.typed(Bool) }
         accountStatus = c.propertyOf("accountStatus")
             |> map { $0.typed(String).flatMap { AccountStatus(rawValue: $0) }
