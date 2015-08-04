@@ -49,6 +49,7 @@ class PlayerViewModel {
     let currentVideoProgress: PropertyOf<Float>
     let totalDurationLeft: PropertyOf<String>
     let hideView: PropertyOf<Bool>
+    var finishedAtIndex: Int?
     
     init() {
         videoURL = currentVideo |> map { $0?.url }
@@ -76,6 +77,13 @@ class PlayerViewModel {
             return "\(secondsLeft)"
         })
         hideView = currentVideo |> map { $0 == nil }
+        // If we are at the end and new video arrives we'll automatically try to play it
+        playlist.producer.start(next: { [weak self] playlist in
+            if let this = self,
+            let index = this.finishedAtIndex where index < playlist.count - 1 {
+                this.seekVideo(playlist[index + 1])
+            }
+        })
     }
     
     func prevVideo() -> PlayableVideo? {
@@ -102,7 +110,10 @@ class PlayerViewModel {
     
     func seekNextVideo() -> Bool {
         let played = seekVideo(nextVideo())
-        if !played { delegate?.playerDidFinishPlaylist(self) }
+        if !played {
+            finishedAtIndex = playlist.value.count - 1
+            delegate?.playerDidFinishPlaylist(self)
+        }
         return played
     }
     
@@ -120,6 +131,7 @@ class PlayerViewModel {
     
     private func seekVideo(video: PlayableVideo?) -> Bool {
         Log.debug("Will seek video with id \(video?.uniqueId) url: \(video?.url)")
+        finishedAtIndex = nil
         currentVideo.value.map { delegate?.player(self, didPlayVideo: $0) }
         currentTime.value = 0
         currentVideo.value = video
