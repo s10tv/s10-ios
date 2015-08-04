@@ -40,7 +40,11 @@
                 <entry key="fieldName" value="icon"/>
             </userInfo>
         </attribute>
-        <attribute name="name" attributeType="String" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="fieldName" value="displayName"/>
+            </userInfo>
+        </attribute>
         <attribute name="status_" attributeType="String" syncable="YES">
             <userInfo>
                 <entry key="fieldName" value="status"/>
