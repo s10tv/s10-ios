@@ -42,6 +42,13 @@ extension METDDPClient {
     }
     
     public func callMethod(method: String, params: [AnyObject]? = nil, stub: METMethodStub? = nil) -> RACSignal {
+//        if !networkReachable {
+//            let error = NSError(domain: "Client", code: 0, userInfo: [
+//                NSLocalizedDescriptionKey: "Internet Offline",
+//                NSLocalizedFailureReasonErrorKey: "Your network connection appears to be offline. Please try again later."
+//                ])
+//            return RACSignal.error(error)
+//        }
         let subject = RACReplaySubject()
         callMethodWithName(method, parameters: params, completionHandler: { res, error in
             if error != nil {
@@ -55,6 +62,13 @@ extension METDDPClient {
     }
     
     public func loginWithMethod(method: String, params: [AnyObject]?) -> RACSignal {
+//        if !networkReachable {
+//            let error = NSError(domain: "Client", code: 0, userInfo: [
+//                NSLocalizedDescriptionKey: "Internet Offline",
+//                NSLocalizedFailureReasonErrorKey: "Your network connection appears to be offline. Please try again later."
+//                ])
+//            return RACSignal.error(error)
+//        }
         let subject = RACReplaySubject()
         loginWithMethodName(method, parameters: params) { (err) -> Void in
             err != nil ? subject.sendError(err) : subject.sendCompleted()
@@ -63,6 +77,13 @@ extension METDDPClient {
     }
     
     public func logout() -> RACSignal {
+//        if !networkReachable {
+//            let error = NSError(domain: "Client", code: 0, userInfo: [
+//                NSLocalizedDescriptionKey: "Internet Offline",
+//                NSLocalizedFailureReasonErrorKey: "Your network connection appears to be offline. Please try again later."
+//                ])
+//            return RACSignal.error(error)
+//        }
         let subject = RACReplaySubject()
         logoutWithCompletionHandler { (error) -> Void in
             if error != nil {

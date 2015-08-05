@@ -55,7 +55,7 @@ public struct LoginViewModel {
             return delegate.login()
                 |> deliverOn(UIScheduler())
                 |> mapError { e in
-                    ErrorAlert(title: "Unable to login", message: e.localizedDescription, underlyingError: e)
+                    ErrorAlert(title: "Unable to login", message: e.localizedFailureReason, underlyingError: e)
                 }
         }
         logoutAction = Action { _ in
