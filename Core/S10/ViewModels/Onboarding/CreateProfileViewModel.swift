@@ -48,11 +48,11 @@ public struct CreateProfileViewModel {
         var errorReason : String?
 
         if (firstName.value.nonBlank() == nil) {
-            errorReason = "Forgot to set first name?"
+            errorReason = "First name is required."
         } else if (lastName.value.nonBlank() == nil) {
-            errorReason = "Forgot to set last name?"
+            errorReason = "Last name is required."
         } else if (avatar.value == nil) {
-            errorReason = "Forgot to upload avatar?"
+            errorReason = "Avatar is required."
         }
 
         if let errorReason = errorReason {

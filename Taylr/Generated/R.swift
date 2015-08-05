@@ -42,7 +42,7 @@ public enum R {
     public enum Strings : String {
         /// This is where the messages you have sent or replied to appear.
         case emptyContactsMessage = "emptyContactsMessage"
-        /// People reaching out to you for the first time will show up here
+        /// We couldn't find anybody around you yet. When we do they will show up here.
         case emptyDiscoverMessage = "emptyDiscoverMessage"
         /// People reaching out to you for the first time will show up here
         case emptyNewMessage = "emptyNewMessage"
@@ -96,12 +96,6 @@ public enum R {
         case reportAlertMessage = "ReportAlertMessage"
         /// Thank you for your feedback
         case reportAlertTitle = "ReportAlertTitle"
-        /// What's catchy about you?
-        case settingsAboutPrompt = "SettingsAboutPrompt"
-        /// %d years old
-        case settingsAgeFormat = "SettingsAgeFormat"
-        /// Set your age in Facebook
-        case settingsAgePrompt = "SettingsAgePrompt"
         /// Cancel
         case settingsDeleteAccountCancel = "SettingsDeleteAccountCancel"
         /// Confirm
@@ -112,18 +106,6 @@ public enum R {
         case settingsDeleteAccountPlaceholder = "SettingsDeleteAccountPlaceholder"
         /// Delete Account
         case settingsDeleteAccountTitle = "SettingsDeleteAccountTitle"
-        /// %@
-        case settingsEducationFormat = "SettingsEducationFormat"
-        /// What's your school?
-        case settingsEducationPrompt = "SettingsEducationPrompt"
-        /// Interested in %@
-        case settingsGenderPreferenceFormat = "SettingsGenderPreferenceFormat"
-        /// What's your gender preference?
-        case settingsGenderPreferencePrompt = "SettingsGenderPreferencePrompt"
-        /// %@
-        case settingsHeightFormat = "SettingsHeightFormat"
-        /// What's your height?
-        case settingsHeightPrompt = "SettingsHeightPrompt"
         /// Cancel
         case settingsLogoutCancel = "SettingsLogoutCancel"
         /// Delete my account
@@ -132,10 +114,6 @@ public enum R {
         case settingsLogoutLogout = "SettingsLogoutLogout"
         /// What would you like to do?
         case settingsLogoutTitle = "SettingsLogoutTitle"
-        /// %@
-        case settingsWorkFormat = "SettingsWorkFormat"
-        /// What's your occupation?
-        case settingsWorkPrompt = "SettingsWorkPrompt"
         /// Later
         case softUpgradeAlertCancel = "SoftUpgradeAlertCancel"
         /// Please upgrade to the latest version.
@@ -266,6 +244,10 @@ public enum R {
         case icSendRound = "ic-send-round"
         /// ic-skip
         case icSkip = "ic-skip"
+        /// ic-speaker
+        case icSpeaker = "ic-speaker"
+        /// ic-speaker-muted
+        case icSpeakerMuted = "ic-speaker-muted"
         /// ic-start-chat
         case icStartChat = "ic-start-chat"
         /// ic-twitter
