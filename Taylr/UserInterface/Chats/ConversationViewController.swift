@@ -136,6 +136,11 @@ class ConversationViewController : BaseViewController {
         }
     }
     
+    override func willMoveToParentViewController(parent: UIViewController?) {
+        super.willMoveToParentViewController(parent)
+        if parent == nil { vm.expireOpenedMessages() }
+    }
+    
     // MARK: Actions
     
     func showPage(page: ConversationViewModel.Page, animated: Bool = false) {
@@ -144,7 +149,6 @@ class ConversationViewController : BaseViewController {
     
 
     @IBAction func didTapLeave(sender: AnyObject) {
-        vm.expireOpenedMessages()
         navigationController?.popViewControllerAnimated(true)
     }
     
