@@ -55,21 +55,35 @@ enum AudioCategory {
 }
 
 class AudioController {
-    let audioSession: AVAudioSession  // Readonly
-    let audioCategory: MutableProperty<AudioCategory> // Readonly
-    let muteSwitchOn: MutableProperty<Bool> // Readonly
-    let systemVolume: MutableProperty<Float> // Readonly
+    private let audioSession: AVAudioSession
+    private let audioCategory: MutableProperty<AudioCategory>
+    private let muteSwitchOn: MutableProperty<Bool>
+    private let _systemVolume: MutableProperty<Float>
+    let systemVolume: PropertyOf<Float>
     let muted: PropertyOf<Bool>
     
     init() {
+        let nc = NSNotificationCenter.defaultCenter()
         audioSession = AVAudioSession.sharedInstance()
         audioCategory = MutableProperty(audioSession.audioCategory)
+        audioCategory <~ nc.rac_notifications(name:AVAudioSessionRouteChangeNotification, object: nil)
+            |> map { note -> AudioCategory? in
+                Log.debug("Did receive audio route change notification \(note.userInfo)")
+                if let reason = (note.userInfo?[AVAudioSessionRouteChangeReasonKey]?.intValue)
+                    .flatMap({ AVAudioSessionRouteChangeReason(rawValue: UInt($0)) }),
+                    let session = note.object as? AVAudioSession
+                    where reason == .CategoryChange {
+                    return session.audioCategory
+                }
+                return nil
+            }
+            |> ignoreNil
+            |> observeOn(QueueScheduler.mainQueueScheduler)
+        _systemVolume = MutableProperty(audioSession.outputVolume)
+        _systemVolume <~ nc.rac_notifications(name:"AVSystemController_SystemVolumeDidChangeNotification", object: nil)
+            |> map { $0.userInfo?["AVSystemController_AudioVolumeNotificationParameter"]?.floatValue ?? 0 }
+        systemVolume = PropertyOf(_systemVolume)
         muteSwitchOn = MutableProperty(false)
-        systemVolume = MutableProperty(audioSession.outputVolume)
-        systemVolume <~ NSNotificationCenter.defaultCenter().rac_notifications(
-            name:"AVSystemController_SystemVolumeDidChangeNotification", object: nil) |> map {
-            $0.userInfo?["AVSystemController_AudioVolumeNotificationParameter"]?.floatValue ?? 0
-        }
         muted = PropertyOf(false, combineLatest(
             muteSwitchOn.producer,
             systemVolume.producer,
@@ -89,10 +103,15 @@ class AudioController {
         }
     }
     
+    func getAudioCategory() -> AudioCategory {
+        return audioSession.audioCategory
+    }
+    
     func setAudioCategory(category: AudioCategory) {
         if category != audioSession.audioCategory {
             audioSession.setCategory(category.string, error: nil)
-            audioCategory.value = category
         }
     }
+    
+    static let sharedController = AudioController()
 }

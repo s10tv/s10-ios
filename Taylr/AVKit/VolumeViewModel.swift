@@ -20,7 +20,7 @@ struct VolumeViewModel {
     var alpha: CGFloat { return audio.muted.value ? 1 : 0.01 }
     
     init() {
-        audio = AudioController()
+        audio = AudioController.sharedController
         icon = audio.muted
             |> map { $0 ? VolumeViewModel.mutedIcon : VolumeViewModel.normalIcon }
         value = PropertyOf(0, combineLatest(
@@ -42,7 +42,7 @@ struct VolumeViewModel {
     }
     
     func toggleAudioCategory() {
-        let category = audio.audioSession.audioCategory
+        let category = audio.getAudioCategory()
         audio.setAudioCategory(category == .PlaybackAndRecord ? .SoloAmbient : .PlaybackAndRecord)
     }
 }
