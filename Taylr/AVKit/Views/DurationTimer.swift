@@ -19,7 +19,7 @@ class DurationTimer : BaseView {
     
     var progress: Float = 0 {
         didSet {
-            assert(progress >= 0 && progress <= 1, "Progress must be between 0 and 1")
+            let progress = max(min(self.progress, 1), 0)
             assert(NSThread.isMainThread(), "Must run on main")
             if progressTrack.animationForKey("stroke") == nil {
                 setupAnimations()
