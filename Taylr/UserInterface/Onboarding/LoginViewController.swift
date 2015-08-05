@@ -19,7 +19,7 @@ class LoginViewController : BaseViewController {
     @IBOutlet weak var loginButton: DesignableButton!
     @IBOutlet weak var logoutButton: UIButton!
     
-    let vm = LoginViewModel(delegate: Globals.accountService)
+    let vm = LoginViewModel(meteor: Meteor, delegate: Globals.accountService)
     
     override func commonInit() {
         super.commonInit()

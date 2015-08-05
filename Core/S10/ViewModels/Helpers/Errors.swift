@@ -9,6 +9,8 @@
 import UIKit
 import ReactiveCocoa
 
+public let eOffline = ErrorAlert(title: "No Network Connection", message: "Your internet connection appears to be offline right now. Please try again later.")
+
 public enum ClientError : String, AlertableError {
     case Validation = "validation"
     case Offline = "offline"
@@ -38,16 +40,3 @@ public enum ServerError : String, AlertableError {
         return ErrorAlert(title: rawValue, underlyingError: self)
     }
 }
-
-/*
-{
-    error: {
-        code: 55
-        code '1232'
-        alert: {
-            title: ""
-            message: ""
-        }
-    }
-}
-*/

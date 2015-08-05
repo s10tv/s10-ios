@@ -21,6 +21,7 @@ public class MeteorService : NSObject {
     public let connectionStatus: PropertyOf<METDDPConnectionStatus>
     public let loggedIn: PropertyOf<Bool>
     public let userId: PropertyOf<String?>
+    public var offline: Bool { return !meteor.networkReachable }
     let user: PropertyOf<User?>
 
     public init(serverURL: NSURL) {
