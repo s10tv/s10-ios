@@ -33,6 +33,10 @@
                             <view contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="jrS-6I-cjW" userLabel="Filtered Video View" customClass="SCSwipeableFilterView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="TqC-gW-J05" appends="YES" id="jpa-YR-Sbx"/>
+                                </connections>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gUP-YK-Qgv" userLabel="Save">
                                 <rect key="frame" x="16" y="76" width="40" height="40"/>
@@ -86,6 +90,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="DQY-Y5-Atw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="TqC-gW-J05">
+                    <connections>
+                        <action selector="didTapOnPlayer:" destination="uPv-0o-aed" id="cM7-jR-HMd"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="405" y="1082"/>
         </scene>

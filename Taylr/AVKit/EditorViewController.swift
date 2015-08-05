@@ -53,6 +53,10 @@ class EditorViewController : UIViewController {
         player.setItem(nil)
     }
     
+    @IBAction func didTapOnPlayer(sender: AnyObject) {
+        player.isPlaying ? player.pause() : player.play()
+    }
+    
     @IBAction func cancelEditing(sender: AnyObject) {
         delegate?.editorDidCancel(self)
     }
