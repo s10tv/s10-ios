@@ -38,7 +38,7 @@ class VolumeView : BaseView {
         
         // Volume
         valueTrack.fillColor = UIColor.clearColor().CGColor
-        valueTrack.strokeColor = UIColor.whiteColor().CGColor
+        valueTrack.strokeColor = UIColor(white: 1, alpha: 0.75).CGColor
         valueTrack.strokeEnd = 0.2
         layer.addSublayer(valueTrack)
         

@@ -34,7 +34,7 @@ class RecordButton : BaseView {
     
     override func commonInit() {
         progressTrack.fillColor = UIColor.clearColor().CGColor
-        progressTrack.strokeColor = StyleKit.brandPurple.CGColor
+        progressTrack.strokeColor = StyleKit.brandPurple.colorWithAlpha(0.6).CGColor
         progressTrack.strokeEnd = 0
         layer.addSublayer(progressTrack)
         

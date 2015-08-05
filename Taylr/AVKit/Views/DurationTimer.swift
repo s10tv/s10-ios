@@ -30,7 +30,7 @@ class DurationTimer : BaseView {
     
     override func commonInit() {
         progressTrack.fillColor = UIColor.clearColor().CGColor
-        progressTrack.strokeColor = UIColor.whiteColor().CGColor
+        progressTrack.strokeColor = UIColor(white: 1, alpha: 0.75).CGColor
         progressTrack.strokeEnd = 1
         layer.addSublayer(progressTrack)
         
