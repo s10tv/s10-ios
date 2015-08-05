@@ -43,7 +43,7 @@ public struct ErrorAlert : AlertableError {
             NSError(domain: "Alert", code: 0, userInfo: [
                 NSLocalizedDescriptionKey: title ?? "",
                 NSLocalizedFailureReasonErrorKey: message ?? ""
-            ])
+                ])
     }
     
     public var alert: ErrorAlert { return self }
@@ -79,16 +79,4 @@ public func ==(lhs: AlertableError, rhs: ServerError) -> Bool {
         return lhs == rhs
     }
     return lhs.alert.matches(rhs)
-}
-
-// Strings Extension
-
-extension ErrorAlert {
-    init(title: R.Strings, message: R.Strings? = nil, style: UIAlertControllerStyle = .Alert, actions: [UIAlertAction]? = nil, underlyingError: ErrorType? = nil) {
-        self.init(title: title, message: message?.rawValue, style: style, actions: actions, underlyingError: underlyingError)
-    }
-    
-    init(title: R.Strings, message: String? = nil, style: UIAlertControllerStyle = .Alert, actions: [UIAlertAction]? = nil, underlyingError: ErrorType? = nil) {
-        self.init(title: title.rawValue, message: message, style: style, actions: actions, underlyingError: underlyingError)
-    }
 }

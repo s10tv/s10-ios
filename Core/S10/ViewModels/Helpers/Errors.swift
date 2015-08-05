@@ -39,12 +39,6 @@ public enum ServerError : String, AlertableError {
     }
 }
 
-/// WARNING DUPLICATED FUNCTION!
-func LS(key: R.Strings, args: CVarArgType...) -> String {
-    return NSString(format: NSLocalizedString(key.rawValue, comment: ""),
-        arguments: getVaList(args)) as String
-}
-
 /*
 {
     error: {

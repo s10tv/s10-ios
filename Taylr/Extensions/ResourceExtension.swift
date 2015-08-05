@@ -8,7 +8,6 @@
 //  Extensions to make accessing generated resources easier
 
 import UIKit
-import Core
 
 // SBConstants
 

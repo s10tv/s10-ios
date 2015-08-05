@@ -36,7 +36,7 @@ public struct CreateProfileViewModel {
             queue.addAsyncOperation {
                 PhotoUploadOperation(meteor: meteor, image: tuple.image, taskType: tuple.type)
             } |> mapError { e in
-                ErrorAlert(title: .unableToUpload, message: e.localizedFailureReason, underlyingError: e)
+                ErrorAlert(title: "Unable to upload", message: e.localizedDescription, underlyingError: e)
             }
         }
         subscription = meteor.subscribe("me")
@@ -45,18 +45,19 @@ public struct CreateProfileViewModel {
     public func saveProfile() -> Future<Void, ErrorAlert> {
         let promise = Promise<(), ErrorAlert>()
 
-        var errorReason: R.Strings?
+        var errorReason : String?
 
         if (firstName.value.nonBlank() == nil) {
-            errorReason = .firstNameMissing
+            errorReason = "Forgot to set first name?"
         } else if (lastName.value.nonBlank() == nil) {
-            errorReason = .lastNameMissing
+            errorReason = "Forgot to set last name?"
         } else if (avatar.value == nil) {
-            errorReason = .avatarMissing
+            errorReason = "Forgot to upload avatar?"
         }
 
         if let errorReason = errorReason {
-            promise.failure(ErrorAlert(title: .invalidRegistration, message: errorReason))
+            promise.failure(ErrorAlert(title: "Problem with Registration",
+                message: errorReason))
         } else {
             var fields = [
                 "firstName": firstName.value,
@@ -70,13 +71,13 @@ public struct CreateProfileViewModel {
             }
 
             self.meteor.updateProfile(fields).subscribeError({ error in
-                let errorReason : String
+                var errorReason : String
                 if let reason = error.localizedFailureReason {
                     errorReason = reason
                 } else {
-                    errorReason = LS(.tryAgainLater)
+                    errorReason = "Please try again later."
                 }
-                promise.failure(ErrorAlert(title: .cannotCreateProfile, message: errorReason))
+                promise.failure(ErrorAlert(title: "Problem with Registration", message: errorReason))
             }, completed: {
                 promise.success()
             })

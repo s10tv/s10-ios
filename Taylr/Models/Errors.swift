@@ -7,10 +7,6 @@
 //
 
 import UIKit
-import ReactiveCocoa
-import Core
-
-/* Deprecated stuff..... */
 
 enum ErrorCode : Int {
     case NetworkUnreachable = -1
