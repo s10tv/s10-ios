@@ -27,6 +27,10 @@ public struct MeViewModel {
         username = meteor.user |> flatMap(nilValue: "") { $0.pUsername() }
     }
     
+    public func canViewOrEditProfile() -> Bool {
+        return meteor.user.value != nil
+    }
+    
     public func profileVM() -> ProfileViewModel? {
         return meteor.user.value.map { ProfileViewModel(meteor: meteor, taskService: taskService, user: $0) }
     }

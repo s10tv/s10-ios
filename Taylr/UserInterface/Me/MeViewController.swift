@@ -86,6 +86,13 @@ class MeViewController : UITableViewController {
             bottom: bottomLayoutGuide.length, right: 0)
     }
     
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        if identifier == SegueIdentifier.MeToEditProfile.rawValue || identifier == SegueIdentifier.MeToProfile.rawValue {
+            return vm.canViewOrEditProfile()
+        }
+        return super.shouldPerformSegueWithIdentifier(identifier, sender: sender)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? IntegrationsViewController {
             servicesVC = vc
