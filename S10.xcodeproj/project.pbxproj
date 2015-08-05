@@ -179,6 +179,11 @@
 		EAE066FA1B71344700A2FF76 /* DurationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE066F81B71344700A2FF76 /* DurationTimer.swift */; };
 		EAE066FB1B71344700A2FF76 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE066F91B71344700A2FF76 /* RecordButton.swift */; };
 		EAE066FD1B71346B00A2FF76 /* TouchDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE066FC1B71346B00A2FF76 /* TouchDetector.swift */; };
+		EAE067111B717A8F00A2FF76 /* VolumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE067101B717A8F00A2FF76 /* VolumeView.swift */; };
+		EAE067191B717AD500A2FF76 /* VolumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE067181B717AD500A2FF76 /* VolumeViewModel.swift */; };
+		EAE067201B71850F00A2FF76 /* MuteChecker.caf in Resources */ = {isa = PBXBuildFile; fileRef = EAE0671D1B71850F00A2FF76 /* MuteChecker.caf */; };
+		EAE067211B71850F00A2FF76 /* MuteChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE0671F1B71850F00A2FF76 /* MuteChecker.m */; };
+		EAE067231B71851E00A2FF76 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE067221B71851E00A2FF76 /* AudioController.swift */; };
 		EAE1E07B1AE34C6200F03F13 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1E07A1AE34C6200F03F13 /* LocationService.swift */; };
 		EAE1E07D1AE3788300F03F13 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1E07C1AE3788300F03F13 /* Globals.swift */; };
 		EAF6701D1B31E6550025D7CF /* Core.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF6701C1B31E6550025D7CF /* Core.m */; };
@@ -442,6 +447,12 @@
 		EAE066F81B71344700A2FF76 /* DurationTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationTimer.swift; sourceTree = "<group>"; };
 		EAE066F91B71344700A2FF76 /* RecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		EAE066FC1B71346B00A2FF76 /* TouchDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchDetector.swift; sourceTree = "<group>"; };
+		EAE067101B717A8F00A2FF76 /* VolumeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumeView.swift; sourceTree = "<group>"; };
+		EAE067181B717AD500A2FF76 /* VolumeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumeViewModel.swift; sourceTree = "<group>"; };
+		EAE0671D1B71850F00A2FF76 /* MuteChecker.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MuteChecker.caf; sourceTree = "<group>"; };
+		EAE0671E1B71850F00A2FF76 /* MuteChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MuteChecker.h; sourceTree = "<group>"; };
+		EAE0671F1B71850F00A2FF76 /* MuteChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MuteChecker.m; sourceTree = "<group>"; };
+		EAE067221B71851E00A2FF76 /* AudioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
 		EAE1E07A1AE34C6200F03F13 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		EAE1E07C1AE3788300F03F13 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
 		EAF6701C1B31E6550025D7CF /* Core.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Core.m; sourceTree = "<group>"; };
@@ -1035,11 +1046,23 @@
 		EAE066F71B71344700A2FF76 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				EAE067101B717A8F00A2FF76 /* VolumeView.swift */,
 				EAE066F81B71344700A2FF76 /* DurationTimer.swift */,
 				EAE066F91B71344700A2FF76 /* RecordButton.swift */,
 				EAE066FC1B71346B00A2FF76 /* TouchDetector.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		EAE0671C1B71850F00A2FF76 /* AudioController */ = {
+			isa = PBXGroup;
+			children = (
+				EAE0671D1B71850F00A2FF76 /* MuteChecker.caf */,
+				EAE0671E1B71850F00A2FF76 /* MuteChecker.h */,
+				EAE0671F1B71850F00A2FF76 /* MuteChecker.m */,
+				EAE067221B71851E00A2FF76 /* AudioController.swift */,
+			);
+			path = AudioController;
 			sourceTree = "<group>";
 		};
 		EAF4D7441A79AA5E00D35330 /* UserInterface */ = {
@@ -1153,6 +1176,7 @@
 		EAF81B1F1B3337EA00EED6DD /* AVKit */ = {
 			isa = PBXGroup;
 			children = (
+				EAE0671C1B71850F00A2FF76 /* AudioController */,
 				EAE066F71B71344700A2FF76 /* Views */,
 				EA70787B1B39345800BB9D08 /* AVKit.storyboard */,
 				EAF81B221B33388700EED6DD /* ProducerViewController.swift */,
@@ -1160,6 +1184,7 @@
 				EAF81B261B33391000EED6DD /* EditorViewController.swift */,
 				EA03D3361B5B2C58007A0CF7 /* PlayerViewController.swift */,
 				EA394B0F1B5E16F2009184EB /* PlayerViewModel.swift */,
+				EAE067181B717AD500A2FF76 /* VolumeViewModel.swift */,
 				EAF81B371B3395E700EED6DD /* AVKit.swift */,
 			);
 			path = AVKit;
@@ -1370,6 +1395,7 @@
 				EA7FB0951B5EF9D50052B394 /* Cabin-BoldItalic.ttf in Resources */,
 				EA7FB0941B5EF9D50052B394 /* Cabin-Bold.ttf in Resources */,
 				EA7FB0961B5EF9D50052B394 /* Cabin-Italic.ttf in Resources */,
+				EAE067201B71850F00A2FF76 /* MuteChecker.caf in Resources */,
 				EA7004621ACF912A00D0E467 /* Onboarding.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1718,6 +1744,8 @@
 				EAF81B381B3395E700EED6DD /* AVKit.swift in Sources */,
 				EA9F35401A74CC6900E0C65D /* AppDelegate.swift in Sources */,
 				EAE066FA1B71344700A2FF76 /* DurationTimer.swift in Sources */,
+				EAE067211B71850F00A2FF76 /* MuteChecker.m in Sources */,
+				EAE067111B717A8F00A2FF76 /* VolumeView.swift in Sources */,
 				EAE066FD1B71346B00A2FF76 /* TouchDetector.swift in Sources */,
 				EAA56F8E1B2B32E500DE3936 /* ConnectionCells.swift in Sources */,
 				EA57734E1B6C5D6800BCF449 /* Bond+UIButton.swift in Sources */,
@@ -1731,8 +1759,10 @@
 				EAA56F9C1B2B32E500DE3936 /* LoginViewController.swift in Sources */,
 				EA95BBAF1B3930B000701F08 /* Bond+SDWebImage.swift in Sources */,
 				EAA56FA11B2B32E500DE3936 /* RootNavController.swift in Sources */,
+				EAE067231B71851E00A2FF76 /* AudioController.swift in Sources */,
 				EA95BBB21B3930B000701F08 /* ResourceExtension.swift in Sources */,
 				EA0FED451ADE5BC500FC6FCB /* AnalyticsService.swift in Sources */,
+				EAE067191B717AD500A2FF76 /* VolumeViewModel.swift in Sources */,
 				EA7AA36B1AA26597003383BE /* SBConstants.swift in Sources */,
 				EACCA3A21B37B02A00015C88 /* ProfileCoverCell.swift in Sources */,
 				EA3594191B2FEA1F00E91337 /* TransitionManager.swift in Sources */,

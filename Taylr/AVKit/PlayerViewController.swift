@@ -20,6 +20,7 @@ class PlayerViewController : UIViewController {
     @IBOutlet weak var playerView: SCVideoPlayerView!
     @IBOutlet weak var durationTimer: DurationTimer!
     @IBOutlet weak var overlay: UIView!
+    @IBOutlet weak var volumeView: VolumeView!
     
     let vm = PlayerViewModel()
     var userPaused: Bool = false
@@ -67,8 +68,13 @@ class PlayerViewController : UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        player.beginSendingPlayMessages()
-        if !userPaused { player.play() }
+        // Async HACK to get around the issue that if we start player.play immediately
+        // then checkMuteSwitch won't work because the silent audio will be interrupted by system
+        volumeView.checkMuteSwitch()
+        Async.main {
+            self.player.beginSendingPlayMessages()
+            if !self.userPaused { self.player.play() }
+        }
     }
     
     override func viewDidDisappear(animated: Bool) {

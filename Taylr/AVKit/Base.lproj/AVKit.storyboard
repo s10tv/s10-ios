@@ -143,6 +143,14 @@
                                     <constraint firstAttribute="height" constant="40" id="ddN-Zt-XXL"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QoH-gy-sfH" customClass="VolumeView" customModule="Taylr" customModuleProvider="target">
+                                <rect key="frame" x="16" y="80" width="30" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="ibM-dR-KDH"/>
+                                    <constraint firstAttribute="height" constant="30" id="uxA-jW-qNS"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -152,11 +160,13 @@
                             <constraint firstItem="RFF-jQ-Kok" firstAttribute="leading" secondItem="Mky-an-EVL" secondAttribute="leading" id="8xx-xQ-7YE"/>
                             <constraint firstItem="RFF-jQ-Kok" firstAttribute="top" secondItem="2jn-jg-8ht" secondAttribute="top" id="NQS-26-vt5"/>
                             <constraint firstItem="RFF-jQ-Kok" firstAttribute="trailing" secondItem="2jn-jg-8ht" secondAttribute="trailing" id="TPV-sh-vUO"/>
+                            <constraint firstItem="QoH-gy-sfH" firstAttribute="top" secondItem="Lep-Xz-fsY" secondAttribute="bottom" constant="16" id="YUd-sB-KFu"/>
                             <constraint firstAttribute="trailing" secondItem="wkw-bV-YTb" secondAttribute="trailing" constant="16" id="bBj-g9-dEF"/>
                             <constraint firstItem="RFF-jQ-Kok" firstAttribute="leading" secondItem="2jn-jg-8ht" secondAttribute="leading" id="fOm-xB-phq"/>
                             <constraint firstAttribute="trailing" secondItem="RFF-jQ-Kok" secondAttribute="trailing" id="kDa-4V-ANo"/>
                             <constraint firstAttribute="bottom" secondItem="RFF-jQ-Kok" secondAttribute="bottom" id="kI2-O9-VHi"/>
                             <constraint firstItem="wkw-bV-YTb" firstAttribute="top" secondItem="Lep-Xz-fsY" secondAttribute="bottom" constant="16" id="kdj-ck-Syq"/>
+                            <constraint firstItem="QoH-gy-sfH" firstAttribute="leading" secondItem="Lep-Xz-fsY" secondAttribute="leading" constant="16" id="oFO-7D-qU5"/>
                             <constraint firstItem="RFF-jQ-Kok" firstAttribute="bottom" secondItem="2jn-jg-8ht" secondAttribute="bottom" id="qOL-ug-tdB"/>
                             <constraint firstItem="Lep-Xz-fsY" firstAttribute="leading" secondItem="Mky-an-EVL" secondAttribute="leading" id="xvs-HK-y5H"/>
                         </constraints>
@@ -165,6 +175,7 @@
                         <outlet property="durationTimer" destination="wkw-bV-YTb" id="r57-7F-Ltt"/>
                         <outlet property="overlay" destination="2jn-jg-8ht" id="rWM-SG-drW"/>
                         <outlet property="playerView" destination="RFF-jQ-Kok" id="dDw-6V-kYh"/>
+                        <outlet property="volumeView" destination="QoH-gy-sfH" id="tk3-Km-bV3"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uFR-IP-tYk" userLabel="First Responder" sceneMemberID="firstResponder"/>
