@@ -140,24 +140,16 @@ public enum R {
         case discoverLogo = "discover-logo"
         /// empty-profile-pic
         case emptyProfilePic = "empty-profile-pic"
-        /// girl-placeholder
-        case girlPlaceholder = "girl-placeholder"
         /// ic-add
         case icAdd = "ic-add"
-        /// ic-addphoto-plus
-        case icAddphotoPlus = "ic-addphoto-plus"
         /// ic-all
         case icAll = "ic-all"
         /// ic-all-gray
         case icAllGray = "ic-all-gray"
         /// ic-approved
         case icApproved = "ic-approved"
-        /// ic-back
-        case icBack = "ic-back"
         /// ic-back-arrow
         case icBackArrow = "ic-back-arrow"
-        /// ic-back-white
-        case icBackWhite = "ic-back-white"
         /// ic-camera-switch
         case icCameraSwitch = "ic-camera-switch"
         /// ic-cancel-round
@@ -166,114 +158,58 @@ public enum R {
         case icChats = "ic-chats"
         /// ic-checkmark
         case icCheckmark = "ic-checkmark"
-        /// ic-close
-        case icClose = "ic-close"
         /// ic-close-cross
         case icCloseCross = "ic-close-cross"
         /// ic-compass
         case icCompass = "ic-compass"
-        /// ic-disclosure
-        case icDisclosure = "ic-disclosure"
-        /// ic-discover
-        case icDiscover = "ic-discover"
         /// ic-down-chevron-small
         case icDownChevronSmall = "ic-down-chevron-small"
         /// ic-eclipse
         case icEclipse = "ic-eclipse"
         /// ic-edit
         case icEdit = "ic-edit"
-        /// ic-edit-text
-        case icEditText = "ic-edit-text"
-        /// ic-facebook
-        case icFacebook = "ic-facebook"
-        /// ic-flag
-        case icFlag = "ic-flag"
         /// ic-flash
         case icFlash = "ic-flash"
-        /// ic-github
-        case icGithub = "ic-github"
-        /// ic-github-small
-        case icGithubSmall = "ic-github-small"
-        /// ic-home
-        case icHome = "ic-home"
-        /// ic-instagram
-        case icInstagram = "ic-instagram"
-        /// ic-instagram-small
-        case icInstagramSmall = "ic-instagram-small"
-        /// ic-left-arrow
-        case icLeftArrow = "ic-left-arrow"
         /// ic-left-chevron
         case icLeftChevron = "ic-left-chevron"
-        /// ic-linkedin
-        case icLinkedin = "ic-linkedin"
-        /// ic-linkedin-small
-        case icLinkedinSmall = "ic-linkedin-small"
-        /// ic-magic-wand
-        case icMagicWand = "ic-magic-wand"
         /// ic-me
         case icMe = "ic-me"
         /// ic-more
         case icMore = "ic-more"
-        /// ic-mute
-        case icMute = "ic-mute"
-        /// ic-pause
-        case icPause = "ic-pause"
-        /// ic-people
-        case icPeople = "ic-people"
-        /// ic-play
-        case icPlay = "ic-play"
         /// ic-play-medium
         case icPlayMedium = "ic-play-medium"
         /// ic-play-small
         case icPlaySmall = "ic-play-small"
-        /// ic-record
-        case icRecord = "ic-record"
-        /// ic-rewind
-        case icRewind = "ic-rewind"
         /// ic-right-arrow
         case icRightArrow = "ic-right-arrow"
         /// ic-right-arrow-white
         case icRightArrowWhite = "ic-right-arrow-white"
         /// ic-right-chevron
         case icRightChevron = "ic-right-chevron"
-        /// ic-save
-        case icSave = "ic-save"
         /// ic-save-round
         case icSaveRound = "ic-save-round"
         /// ic-send-round
         case icSendRound = "ic-send-round"
-        /// ic-skip
-        case icSkip = "ic-skip"
         /// ic-speaker
         case icSpeaker = "ic-speaker"
         /// ic-speaker-muted
         case icSpeakerMuted = "ic-speaker-muted"
         /// ic-start-chat
         case icStartChat = "ic-start-chat"
-        /// ic-twitter
-        case icTwitter = "ic-twitter"
         /// ic-twitter-color
         case icTwitterColor = "ic-twitter-color"
-        /// ic-twitter-small
-        case icTwitterSmall = "ic-twitter-small"
         /// ic-up-chevron
         case icUpChevron = "ic-up-chevron"
         /// ic-up-triangle
         case icUpTriangle = "ic-up-triangle"
-        /// ic-upvote
-        case icUpvote = "ic-upvote"
         /// ic-video
         case icVideo = "ic-video"
         /// ic-warning
         case icWarning = "ic-warning"
-        /// ic-youtube
-        case icYoutube = "ic-youtube"
         /// Logo
         case logo = "Logo"
         /// sample-cover-image
         case sampleCover = "sample-cover-image"
-        /// sample-selfie-preview
-        case sampleSelfiePreview = "sample-selfie-preview"
         /// sample-taylor-avatar
         case sampleTaylorAvatar = "sample-taylor-avatar"
         /// sample-taylor-avatar-square
