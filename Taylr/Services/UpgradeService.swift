@@ -23,7 +23,7 @@ class UpgradeService {
                 Log.debug("Might prompt upgrade build=\(buildNumber) hardMin=\(settings.hardMinBuild) softMin=\(settings.softMinBuild)")
                 
                 // Local builds produced by xcode, disable prompt
-                if buildNumber == 0 && env.audience == .Dev {
+                if env.audience == .Dev {
                     sendInterrupted(observer)
                     return
                 }
