@@ -1,14 +1,10 @@
 /* 
-  Localizable.strings
+  Taylr.strings
   Taylr
 
   Created by Tony Xiao on 2/9/15.
   Copyright (c) 2015 S10 Inc. All rights reserved.
 */
-
-/* Facebook Permission Screen */
-"FBPermDeniedAlertTitle" = "Permission Denied";
-"FBPermDeniedAlertMessage" = "We are not able to log you in. Please try again.";
 
 /* Profile Screen */
 "ViewProfile" = "View Profile";
@@ -35,19 +31,6 @@
 "MeRemoveServiceConfirm" = "Remove";
 "MeCancelTitle" = "Cancel";
 
-"SettingsAgeFormat" = "%d years old";
-"SettingsGenderPreferenceFormat" = "Interested in %@";
-"SettingsWorkFormat" = "%@";
-"SettingsEducationFormat" = "%@";
-"SettingsHeightFormat" = "%@";
-
-"SettingsAgePrompt" = "Set your age in Facebook";
-"SettingsGenderPreferencePrompt" = "What's your gender preference?";
-"SettingsWorkPrompt" = "What's your occupation?";
-"SettingsEducationPrompt" = "What's your school?";
-"SettingsHeightPrompt" = "What's your height?";
-"SettingsAboutPrompt" = "What's catchy about you?";
-
 "SettingsLogoutTitle" = "What would you like to do?";
 "SettingsLogoutLogout" = "Just logout";
 "SettingsLogoutDeleteAccount" = "Delete my account";
@@ -71,6 +54,19 @@
 "errNetworkUnreachable" = "Network Unavailable";
 "errNetworkUnreachableRecovery" = "Seems like we don't have any network connection right now, try again later.";
 
+/* Chats */
 "emptyContactsMessage" = "This is where the messages you\nhave sent or replied to appear.";
 "emptyNewMessage" = "People reaching out to you for the\nfirst time will show up here";
+
+/* Discover */
 "emptyDiscoverMessage" = "We couldn't find anybody around you yet.\nWhen we do they will show up here.";
+
+/* CreateProfile */
+"InvalidRegistration" = "Problem with registration";
+"FirstNameMissing" = "First name is required.";
+"LastNameMissing" = "Last name is required.";
+"AvatarMissing" = "Avatar is required.";
+
+"CannotCreateProfile" = "Unable to create profile";
+"TryAgainLater" = "Please try again later.";
+"UnableToUpload" = "Unable to upload";

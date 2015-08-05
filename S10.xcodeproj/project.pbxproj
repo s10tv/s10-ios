@@ -106,6 +106,7 @@
 		EA5CA5811B51292300284B04 /* RealmExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5CA5801B51292300284B04 /* RealmExtensions.swift */; };
 		EA6639A21B64BBB9009DD17F /* ProfileInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6639A11B64BBB9009DD17F /* ProfileInfoViewModel.swift */; };
 		EA6650ED1AA00A9C001BA40C /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6650EB1AA00A9C001BA40C /* AccountService.swift */; };
+		EA6E2E7A1B71D59300059C5F /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA925C731AD99ED8008E9F41 /* R.swift */; };
 		EA6E40571B6D2F1200FF5126 /* RACGenericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E40561B6D2F1200FF5126 /* RACGenericExtensions.swift */; };
 		EA6E40581B6D2F1900FF5126 /* RACGenericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E40561B6D2F1200FF5126 /* RACGenericExtensions.swift */; };
 		EA6E40591B6D2F1B00FF5126 /* RACGenericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E40561B6D2F1200FF5126 /* RACGenericExtensions.swift */; };
@@ -131,7 +132,6 @@
 		EA82CF971B504FC500A12D94 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA82CF961B504FC500A12D94 /* Image.swift */; };
 		EA89C0861B6AA2060007C6CB /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0851B6AA2060007C6CB /* CreateProfileViewController.swift */; };
 		EA89C0881B6AC0410007C6CB /* ConnectServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0871B6AC0410007C6CB /* ConnectServicesViewController.swift */; };
-		EA925C741AD99ED8008E9F41 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA925C731AD99ED8008E9F41 /* R.swift */; };
 		EA95A6501B6371A1006046E5 /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95A64F1B6371A1006046E5 /* DiscoverViewModel.swift */; };
 		EA95BBA71B39308A00701F08 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBA61B39308A00701F08 /* PageViewController.swift */; };
 		EA95BBAF1B3930B000701F08 /* Bond+SDWebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBA91B3930B000701F08 /* Bond+SDWebImage.swift */; };
@@ -142,7 +142,7 @@
 		EA95BBBD1B3932B500701F08 /* GenericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBB71B3932B500701F08 /* GenericExtensions.swift */; };
 		EA95BBBF1B3932B500701F08 /* MediaExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBB81B3932B500701F08 /* MediaExtension.swift */; };
 		EA95BBC11B3932BE00701F08 /* GenericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBB71B3932B500701F08 /* GenericExtensions.swift */; };
-		EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA9A6ACE1AAFDE19009EDD6D /* Localizable.strings */; };
+		EA9A6ACC1AAFDE19009EDD6D /* Taylr.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA9A6ACE1AAFDE19009EDD6D /* Taylr.strings */; };
 		EA9C16661B365BD700371B50 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C16651B365BD700371B50 /* AsyncOperation.swift */; };
 		EA9C166C1B368FD600371B50 /* TaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C166B1B368FD600371B50 /* TaskService.swift */; };
 		EA9C16771B3759B700371B50 /* FormatterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C16761B3759B700371B50 /* FormatterTests.swift */; };
@@ -214,7 +214,6 @@
 		EAF81B2E1B33883A00EED6DD /* RecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B241B33389500EED6DD /* RecorderViewController.swift */; };
 		EAF81B2F1B33883A00EED6DD /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B261B33391000EED6DD /* EditorViewController.swift */; };
 		EAF81B341B33890300EED6DD /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3681AA26597003383BE /* SBConstants.swift */; };
-		EAF81B351B33890E00EED6DD /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA925C731AD99ED8008E9F41 /* R.swift */; };
 		EAF81B361B33893E00EED6DD /* Taylr.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Taylr.xcassets */; };
 		EAF81B381B3395E700EED6DD /* AVKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B371B3395E700EED6DD /* AVKit.swift */; };
 		EAF81B391B3395E700EED6DD /* AVKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B371B3395E700EED6DD /* AVKit.swift */; };
@@ -402,7 +401,7 @@
 		EA95BBB61B3932B500701F08 /* DesignableViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableViews.swift; sourceTree = "<group>"; };
 		EA95BBB71B3932B500701F08 /* GenericExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericExtensions.swift; sourceTree = "<group>"; };
 		EA95BBB81B3932B500701F08 /* MediaExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaExtension.swift; sourceTree = "<group>"; };
-		EA9A6ACF1AAFDFA2009EDD6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		EA9A6ACF1AAFDFA2009EDD6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Taylr.strings; sourceTree = "<group>"; };
 		EA9C16651B365BD700371B50 /* AsyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
 		EA9C166B1B368FD600371B50 /* TaskService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskService.swift; sourceTree = "<group>"; };
 		EA9C16761B3759B700371B50 /* FormatterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatterTests.swift; sourceTree = "<group>"; };
@@ -930,7 +929,7 @@
 				EABD43D71AA1D27400B07813 /* Configs */,
 				EA37776C1A966E380055DE99 /* Fonts */,
 				EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */,
-				EA9A6ACE1AAFDE19009EDD6D /* Localizable.strings */,
+				EA9A6ACE1AAFDE19009EDD6D /* Taylr.strings */,
 				EABF2AB51AD04659005880E7 /* InfoPlist.strings */,
 				EA9F35621A74CD8800E0C65D /* Taylr-Bridging.h */,
 				EA9F353E1A74CC6900E0C65D /* Taylr-Info.plist */,
@@ -1384,7 +1383,7 @@
 				EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */,
 				EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */,
 				EA7FB0971B5EF9D50052B394 /* Cabin-Medium.ttf in Resources */,
-				EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */,
+				EA9A6ACC1AAFDE19009EDD6D /* Taylr.strings in Resources */,
 				EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */,
 				EA4216521B3E219000613EFA /* DigitsKitResources.bundle in Resources */,
 				EA7FB0981B5EF9D50052B394 /* Cabin-MediumItalic.ttf in Resources */,
@@ -1605,7 +1604,6 @@
 				EAF81B391B3395E700EED6DD /* AVKit.swift in Sources */,
 				EA394B111B5E1725009184EB /* PlayerViewModel.swift in Sources */,
 				EAF81B2D1B33883A00EED6DD /* ProducerViewController.swift in Sources */,
-				EAF81B351B33890E00EED6DD /* R.swift in Sources */,
 				EA588DB81B5F1437000962B8 /* TestViewController.swift in Sources */,
 				EAF81B2E1B33883A00EED6DD /* RecorderViewController.swift in Sources */,
 				EA009D541B5BFED900FC7E3D /* Bond+SDWebImage.swift in Sources */,
@@ -1691,6 +1689,7 @@
 				EA4757141B392C19002071D7 /* ScrollTransition.swift in Sources */,
 				EA2DC2681B637CAB0034434E /* VideoDownloadTask.swift in Sources */,
 				EA6E40601B6D336F00FF5126 /* PropertyExtensions.swift in Sources */,
+				EA6E2E7A1B71D59300059C5F /* R.swift in Sources */,
 				EA2DC2591B6377C00034434E /* Video.swift in Sources */,
 				EA2DC2B01B63FC990034434E /* EditProfileViewModel.swift in Sources */,
 				EA359AE71B700B8A00AF0A65 /* SignalExtensions.swift in Sources */,
@@ -1729,7 +1728,6 @@
 				EAB1B9901B6AF5BA0010FBAB /* UsernameViewController.swift in Sources */,
 				EA36B1D41B3F23F4002ADD91 /* ActivityTextCell.swift in Sources */,
 				EA95BBA71B39308A00701F08 /* PageViewController.swift in Sources */,
-				EA925C741AD99ED8008E9F41 /* R.swift in Sources */,
 				EAB1B9921B6B34630010FBAB /* ConversationTutorialViewController.swift in Sources */,
 				EA9FE6491B684FA0006F8E73 /* ProfileIconCell.swift in Sources */,
 				EAF81B271B33391000EED6DD /* EditorViewController.swift in Sources */,
@@ -1837,12 +1835,12 @@
 			name = AVKit.storyboard;
 			sourceTree = "<group>";
 		};
-		EA9A6ACE1AAFDE19009EDD6D /* Localizable.strings */ = {
+		EA9A6ACE1AAFDE19009EDD6D /* Taylr.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
 				EA9A6ACF1AAFDFA2009EDD6D /* en */,
 			);
-			name = Localizable.strings;
+			name = Taylr.strings;
 			sourceTree = "<group>";
 		};
 		EA9F35461A74CC6900E0C65D /* Main.storyboard */ = {
