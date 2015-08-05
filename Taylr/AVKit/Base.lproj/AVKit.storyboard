@@ -346,6 +346,9 @@
                                     <constraint firstAttribute="height" constant="80" id="eyB-1k-ONB"/>
                                     <constraint firstAttribute="width" constant="80" id="xNi-3u-fs8"/>
                                 </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Njg-2T-Xep" appends="YES" id="d1U-IQ-b7G"/>
+                                </connections>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
