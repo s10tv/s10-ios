@@ -177,7 +177,9 @@ class ConversationViewController : BaseViewController {
     }
     
     @IBAction func blockUser(sender: AnyObject) {
-        let alert = UIAlertController(title: LS(.reportAlertTitle), message: LS(.reportAlertMessage), preferredStyle: .Alert)
+        let alert = UIAlertController(title: "Block User",
+            message: "Are you sure you want to block \(vm.firstName.value)?",
+            preferredStyle: .Alert)
         alert.addAction("Cancel", style: .Cancel)
         alert.addAction("Block", style: .Destructive) { _ in
             self.vm.blockUser()
