@@ -39,19 +39,15 @@ class VolumeView : BaseView {
         // Volume
         valueTrack.fillColor = UIColor.clearColor().CGColor
         valueTrack.strokeColor = UIColor(white: 1, alpha: 0.75).CGColor
-        valueTrack.strokeEnd = 0.2
+        valueTrack.strokeEnd = 0
         layer.addSublayer(valueTrack)
         
         bindViewModel()
     }
     
-    func checkMuteSwitch() {
-        vm.checkMuteSwitch()
-    }
-    
     func bindViewModel() {
-        vm.icon ->> imageView
         alpha = vm.alpha
+        vm.icon ->> imageView
         vm.value.producer.start(next: { [weak self] v in
             assert(NSThread.isMainThread(), "Must update on main")
             self?.valueTrack.strokeEnd = CGFloat(v)

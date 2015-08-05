@@ -55,6 +55,7 @@ enum AudioCategory {
 }
 
 class AudioController {
+    private let muteChecker = MuteChecker()
     private let audioSession: AVAudioSession
     private let audioCategory: MutableProperty<AudioCategory>
     private let muteSwitchOn: MutableProperty<Bool>
@@ -97,9 +98,8 @@ class AudioController {
     }
     
     func checkMuteSwitch() {
-        let property = muteSwitchOn
-        MuteChecker.check { muted in
-            property.value = muted
+        muteChecker.check { [weak self] muted in
+            self?.muteSwitchOn.value = muted
         }
     }
     
@@ -109,9 +109,18 @@ class AudioController {
     
     func setAudioCategory(category: AudioCategory) {
         if category != audioSession.audioCategory {
-            audioSession.setCategory(category.string, error: nil)
+            var error: NSError?
+            if category == .PlaybackAndRecord {
+                let options: AVAudioSessionCategoryOptions = .DefaultToSpeaker
+                audioSession.setCategory(category.string, withOptions: options, error:&error)
+            } else {
+                audioSession.setCategory(category.string, error:&error)
+            }
+            assert(audioSession.audioCategory == category, "Failed to set audio category")
         }
     }
+    
+    
     
     static let sharedController = AudioController()
 }

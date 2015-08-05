@@ -27,18 +27,6 @@ struct VolumeViewModel {
             audio.muted.producer,
             audio.systemVolume.producer
         ) |> map { $0 ? 0 : $1 } |> skipRepeats)
-        
-        // Whenever user presses volume button we'll switch to an active audio category
-        // so that there's sound
-        audio.systemVolume.producer
-            |> skip(1)
-            |> start(next: { [weak audio] _ in
-                audio?.setAudioCategory(.PlaybackAndRecord)
-            })
-    }
-    
-    func checkMuteSwitch() {
-        audio.checkMuteSwitch()
     }
     
     func toggleAudioCategory() {

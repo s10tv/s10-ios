@@ -39,6 +39,7 @@ class PlayerViewController : UIViewController {
             }
         }
     }()
+    var audioDisposable: Disposable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,23 +65,26 @@ class PlayerViewController : UIViewController {
                 self?.overlay.alpha = isPlaying ? 0 : 1
             })
         })
+        // Whenever user presses volume button we'll switch to an active audio category
+        // so that there's sound
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        // Async HACK to get around the issue that if we start player.play immediately
-        // then checkMuteSwitch won't work because the silent audio will be interrupted by system
-        volumeView.checkMuteSwitch()
-        Async.main {
-            self.player.beginSendingPlayMessages()
-            if !self.userPaused { self.player.play() }
-        }
+        self.player.beginSendingPlayMessages()
+        if !self.userPaused { self.player.play() }
+        audioDisposable = AudioController.sharedController.systemVolume.producer
+            |> skip(1)
+            |> start(next: { _ in
+                AudioController.sharedController.setAudioCategory(.PlaybackAndRecord)
+            })
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         player.endSendingPlayMessages()
         player.pause()
+        audioDisposable?.dispose()
     }
     
     // MARK: -

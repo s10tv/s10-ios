@@ -75,6 +75,7 @@ class ChatsViewController : BaseViewController {
         } else if segmentedControl.selectedSegmentIndex == ChatsViewModel.Section.Contacts.rawValue {
             Globals.analyticsService.screen("Chats - Contacts")
         }
+        AudioController.sharedController.checkMuteSwitch() // Early mute switch check
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
