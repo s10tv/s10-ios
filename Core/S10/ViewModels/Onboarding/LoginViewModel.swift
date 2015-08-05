@@ -35,8 +35,8 @@ public struct LoginViewModel {
     private let delegate: LoginDelegate
     public let loginButtonText: PropertyOf<String>
     public let logoutButtonText: PropertyOf<String>
-    public let termsAndConditionURL = NSURL("http://taylrapp.com/terms")
-    public let privacyURL = NSURL("http://taylrapp.com/privacy")
+    public let termsAndConditionURL = NSURL("http://www.taylrapp.com/terms")
+    public let privacyURL = NSURL("http://www.taylrapp.com/privacy")
     public let loginAction: Action<AnyObject, AccountState, ErrorAlert>
     public let logoutAction: Action<AnyObject, (), NoError>
     
