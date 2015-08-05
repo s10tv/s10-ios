@@ -144,11 +144,11 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QoH-gy-sfH" customClass="VolumeView" customModule="Taylr" customModuleProvider="target">
-                                <rect key="frame" x="16" y="80" width="30" height="30"/>
+                                <rect key="frame" x="16" y="80" width="36" height="36"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="30" id="ibM-dR-KDH"/>
-                                    <constraint firstAttribute="height" constant="30" id="uxA-jW-qNS"/>
+                                    <constraint firstAttribute="width" constant="36" id="ibM-dR-KDH"/>
+                                    <constraint firstAttribute="height" constant="36" id="uxA-jW-qNS"/>
                                 </constraints>
                             </view>
                         </subviews>

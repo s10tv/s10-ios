@@ -76,12 +76,13 @@ class RecordButton : BaseView {
         progressTrack.speed = 0 // Pause animation
         
         // Make the button 40% larger as we go
+        let expectedAnimationDuration: CGFloat = 15
         let original = NSValue(CATransform3D: CATransform3DIdentity)
         let scaled = NSValue(CATransform3D: CATransform3DMakeScale(1.4, 1.4, 1))
         let scaleAnimation = CAKeyframeAnimation(keyPath: "transform")
         scaleAnimation.duration = 1
         scaleAnimation.values = [original, scaled, scaled]
-        scaleAnimation.keyTimes = [0, 0.2, 1]
+        scaleAnimation.keyTimes = [0, 1/expectedAnimationDuration, 1]
         layer.addAnimation(scaleAnimation, forKey: "scale")
         layer.speed = 0
     }

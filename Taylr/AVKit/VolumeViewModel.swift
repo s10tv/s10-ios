@@ -26,7 +26,7 @@ struct VolumeViewModel {
         value = PropertyOf(0, combineLatest(
             audio.muted.producer,
             audio.systemVolume.producer
-        ) |> map { $0 ? 0 : $1 })
+        ) |> map { $0 ? 0 : $1 } |> skipRepeats)
         
         // Whenever user presses volume button we'll switch to an active audio category
         // so that there's sound
