@@ -112,12 +112,17 @@ class ProfileViewController : BaseViewController {
         sheet.addAction(LS(.moreSheetCancel), style: .Cancel)
         presentViewController(sheet)
     }
-    
+
+    // TODO: FIX CODE DUPLICATION WITH ConversationViewController
     @IBAction func blockUser(sender: AnyObject) {
         let alert = UIAlertController(title: "Block User", message: "Are you sure you want to block \(vm.cvm.firstName.value)?", preferredStyle: .Alert)
         alert.addAction("Cancel", style: .Cancel)
         alert.addAction("Block", style: .Destructive) { _ in
             self.vm.blockUser()
+
+            let dialog = UIAlertController(title: "Block User", message: "\(self.vm.cvm.firstName.value) will no longer be able to contact you in the future", preferredStyle: .Alert)
+            dialog.addAction("Ok", style: .Default)
+            self.presentViewController(dialog)
         }
         presentViewController(alert)
     }
