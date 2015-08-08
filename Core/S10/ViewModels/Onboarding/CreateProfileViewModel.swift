@@ -24,12 +24,15 @@ public struct CreateProfileViewModel {
     public init(meteor: MeteorService) {
         self.meteor = meteor
         let user = meteor.user.value!
-        firstName = user.pFirstName() |> mutable
-        lastName = user.pLastName() |> mutable
-        about = user.pAbout() |> mutable
+        // Avoid names getting overwritten when user uploads avatar
+        // and CoreData notifies changes to unrelated properties such as username
+        // TODO: Think of better pattern
+        firstName = MutableProperty(user.firstName ?? "")
+        lastName = MutableProperty(user.lastName ?? "")
+        tagline = MutableProperty(user.tagline ?? "")
+        about = MutableProperty(user.about ?? "")
         avatar = user.pAvatar() |> mutable
         cover = user.pCover() |> mutable
-        tagline = MutableProperty("")
         operationQueue = NSOperationQueue()
         let queue = operationQueue
         uploadImageAction = Action { tuple -> Future<(), ErrorAlert> in
