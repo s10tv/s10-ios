@@ -26,8 +26,6 @@ public struct InviteViewModel {
     public func validateInvite() -> ErrorAlert? {
         if firstName.value.nonBlank() == nil {
             return ErrorAlert(title: "Invalid Invite", message: "First name is required")
-        } else if lastName.value.nonBlank() == nil {
-            return ErrorAlert(title: "Invalid Invite", message: "Last name is required")
         } else if emailOrPhone.value.nonBlank() == nil {
             return ErrorAlert(title: "Invalid Invite", message: "Email or phone is required")
         }

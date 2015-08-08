@@ -43,7 +43,7 @@ class RecorderViewController : UIViewController {
         recorder.device = .Front
         recorder.CIImageRenderer = previewView
         recorder.keepMirroringOnWrite = true
-        recorder.maxRecordDuration = CMTimeMake(90, 1) // 90 seconds
+        recorder.maxRecordDuration = CMTimeMake(15, 1) // 15 seconds
         recorder.delegate = self
 
         previewView.filters = AVKit.defaultFilters
