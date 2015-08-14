@@ -28,7 +28,19 @@ class LocationService {
         }
         let subject = RACSubject()
         // Small timeout to hack the fact that manager does have perm request API
-        manager.requestLocationWithDesiredAccuracy(.City, timeout: 0.01, delayUntilAuthorized: true) { _, _, _ in
+        manager.requestLocationWithDesiredAccuracy(.City, timeout: 0.01, delayUntilAuthorized: true) { _, _, status in
+            if status == INTULocationStatus.ServicesDenied {
+                Globals.analyticsService.track("Location Service Denied")
+            } else if status == INTULocationStatus.ServicesRestricted {
+                Globals.analyticsService.track("Location Service Restricted")
+            } else if status == INTULocationStatus.ServicesDisabled {
+                Globals.analyticsService.track("Location Service Disabled")
+            } else if status == INTULocationStatus.Error {
+                Globals.analyticsService.track("Location Service Error")
+            } else if status == INTULocationStatus.ServicesNotDetermined {
+                Globals.analyticsService.track("Location Service Not Determined")
+            }
+
             subject.sendCompleted()
         }
         return subject
