@@ -150,11 +150,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         Log.info("Registered for push \(deviceToken)")
         if let apsEnv = Globals.env.provisioningProfile?.apsEnvironment?.rawValue {
             Meteor.updateDevicePush(apsEnv, pushToken: deviceToken.hexString() as String)
+            Globals.analyticsService.track("Registered Push")
+
         }
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         Log.warn("Faild to register for push \(error)")
+        Globals.analyticsService.track("Failed to Register Push")
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
