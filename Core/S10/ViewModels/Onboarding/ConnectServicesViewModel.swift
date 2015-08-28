@@ -24,7 +24,7 @@ public struct ConnectServicesViewModel {
             .count()
         if count < 1 {
             promise.failure(ErrorAlert(title: "No Service Connected",
-                message: "Please connect at least one service to coninue"))
+                message: "Please connect at least one service to continue."))
         } else {
             promise.success()
         }
