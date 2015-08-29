@@ -37,7 +37,7 @@ public struct Video : Mappable {
         height <- map["height"]
     }
     
-    public static func newInstance() -> Mappable {
+    public static func newInstance(map: Map) -> Mappable? {
         return Video()
     }
     

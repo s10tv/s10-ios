@@ -71,7 +71,7 @@ internal class User: _User {
             attributes <- map["attributes"]
         }
         
-        static func newInstance() -> Mappable {
+        static func newInstance(map: Map) -> Mappable? {
             return ConnectedProfile()
         }
         
@@ -79,7 +79,7 @@ internal class User: _User {
             var label: String!
             var value: String!
 
-            static func newInstance() -> Mappable {
+            static func newInstance(map: Map) -> Mappable? {
                 return Attribute()
             }
             

@@ -1,36 +1,36 @@
 PODS:
-  - Alamofire (1.3.0)
-  - AMPopTip (0.9.11)
+  - Alamofire (1.3.1)
+  - AMPopTip (0.9.12)
   - AMScrollingNavbar (1.5.1)
   - AnalyticsSwift (0.1.0)
   - Appsee (2.1.3)
   - Async (1.3.1)
-  - Bolts (1.2.0):
-    - Bolts/AppLinks (= 1.2.0)
-    - Bolts/Tasks (= 1.2.0)
-  - Bolts/AppLinks (1.2.0):
+  - Bolts (1.2.1):
+    - Bolts/AppLinks (= 1.2.1)
+    - Bolts/Tasks (= 1.2.1)
+  - Bolts/AppLinks (1.2.1):
     - Bolts/Tasks
-  - Bolts/Tasks (1.2.0)
+  - Bolts/Tasks (1.2.1)
   - Bond (3.9.0)
   - Box (1.2.2)
   - Cartography (0.5.0)
-  - CHTCollectionViewWaterfallLayout (0.9.1)
+  - CHTCollectionViewWaterfallLayout (0.9.2)
   - DateTools (1.6.1)
   - DTFoundation/Core (1.7.7)
   - DTFoundation/DTASN1 (1.7.7):
     - DTFoundation/Core
-  - DZNEmptyDataSet (1.6.1)
+  - DZNEmptyDataSet (1.7.1)
   - EDColor (1.0.0)
-  - FBSDKCoreKit (4.4.0):
+  - FBSDKCoreKit (4.5.1):
     - Bolts (~> 1.1)
-    - FBSDKCoreKit/arc (= 4.4.0)
-    - FBSDKCoreKit/no-arc (= 4.4.0)
-  - FBSDKCoreKit/arc (4.4.0):
+    - FBSDKCoreKit/arc (= 4.5.1)
+    - FBSDKCoreKit/no-arc (= 4.5.1)
+  - FBSDKCoreKit/arc (4.5.1):
     - Bolts (~> 1.1)
-  - FBSDKCoreKit/no-arc (4.4.0):
+  - FBSDKCoreKit/no-arc (4.5.1):
     - Bolts (~> 1.1)
     - FBSDKCoreKit/arc
-  - FBSDKLoginKit (4.4.0):
+  - FBSDKLoginKit (4.5.1):
     - FBSDKCoreKit
   - FormatterKit/TimeIntervalFormatter (1.8.0)
   - Heap (2.1.5)
@@ -46,9 +46,9 @@ PODS:
   - NSLogger (1.5.1):
     - NSLogger/Standard (= 1.5.1)
   - NSLogger/Standard (1.5.1)
-  - ObjectMapper (0.14)
+  - ObjectMapper (0.15)
   - OHHTTPStubs (4.0.2)
-  - Ouralabs (2.4.0)
+  - Ouralabs (2.5.0)
   - PKHUD (2.0.1)
   - PocketSocket (0.6.4)
   - Quick (0.3.1)
@@ -67,11 +67,11 @@ PODS:
     - Box (~> 1.2.0)
     - ReactiveCocoa/Core
     - Result (~> 0.4.1)
-  - Realm (0.94.0):
-    - Realm/Headers (= 0.94.0)
-  - Realm/Headers (0.94.0)
-  - RealmSwift (0.94.0):
-    - Realm (= 0.94.0)
+  - Realm (0.95.0):
+    - Realm/Headers (= 0.95.0)
+  - Realm/Headers (0.95.0)
+  - RealmSwift (0.95.0):
+    - Realm (= 0.95.0)
   - Result (0.4.4):
     - Box (~> 1.2)
   - Reveal-iOS-SDK (1.5.1)
@@ -79,7 +79,7 @@ PODS:
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
-  - SimpleKeychain (0.4.0)
+  - SimpleKeychain (0.5.0)
   - SugarRecord/Core (1.0.7)
   - SugarRecord/CoreData (1.0.7):
     - SugarRecord/Core
@@ -151,7 +151,7 @@ CHECKOUT OPTIONS:
     :commit: 413dd59017c91667894440fadff489d41d547171
     :git: https://github.com/tonyxiao/Bond.git
   DZNEmptyDataSet:
-    :commit: 8356f17605f7c5cf8eaed2bbaf1363948ff73150
+    :commit: cf90cad44c0096c816ae36316cfa7c1a8b9fa859
     :git: https://github.com/dzenbot/DZNEmptyDataSet.git
   Meteor:
     :commit: 0f40ef742583cb4b8c2e987121ff1d1f4a6afdfb
@@ -164,23 +164,23 @@ CHECKOUT OPTIONS:
     :git: https://github.com/tonyxiao/SugarRecord
 
 SPEC CHECKSUMS:
-  Alamofire: 220403a8d5840e0b4c946a6fbaf209dbca124282
-  AMPopTip: cd807573e1bbd8f6b1e963a6439f2710dc303c5c
+  Alamofire: e4ab637e3195b645c814b87a652373439e59f2a4
+  AMPopTip: 3c98a9b38148868366b57765064bd9565f653038
   AMScrollingNavbar: 767ed2db60d927a809bddff5d01b739b7020b12b
   AnalyticsSwift: 903cb2c6d522709fa7637285553840c02accd149
   Appsee: 375075f06fdd807e0b17df52cbb7c972c4eb17da
   Async: edb15b1e34181d7c9873ce6b5d6eabc1c99e638b
-  Bolts: d176cb1e0012175589e389a9db49b85e27787576
+  Bolts: 7686a5cb204d1ac54cee26f12d9b7622db3f80d1
   Bond: 4cb4a52a8a236ce17ca594438594757a86ca7e8a
   Box: a92e8aa4c099e6bc0733829665caf9e668ef53b8
   Cartography: 774e5cc446f5a6bca5d4345c5aa6af9a1fe74dc6
-  CHTCollectionViewWaterfallLayout: 1a8da4fc662702cbddda8926ced266036a829f84
+  CHTCollectionViewWaterfallLayout: 43232febcb3e4d3985cd758718cbe499b21b822f
   DateTools: 9bcc89e4f2f9004d8a7a2bd1b49269cf78968e65
   DTFoundation: c9b3362b83f0017389082ec067ede719826a579d
-  DZNEmptyDataSet: 3d31c27758230f03c71199f8c522bcfa99fba16c
+  DZNEmptyDataSet: 2a398066c2bf5848f7f693fb50954b5064debd12
   EDColor: c83f9a61f9f9b3c23d541f1feb561558e29cb088
-  FBSDKCoreKit: 75bdd75c980e811db218488d99dd93b7740f4474
-  FBSDKLoginKit: 02a9254a4c132412fa03577b0d53e936d068a7fb
+  FBSDKCoreKit: f335eaf6865e1e1597dee1debfb533045500da47
+  FBSDKLoginKit: 225cc9a388a92916ee3f3bb14422017b6e44b65b
   FormatterKit: bddde83e054edf9d9ee14f9de3b3a5103db256f4
   Heap: 9d41b3d07bc86c9127364b638c710d854390a113
   InflectorKit: 64497199e6764f4d8337cab7f700a77b13d76a73
@@ -190,20 +190,20 @@ SPEC CHECKSUMS:
   Meteor: e061bb07cbce6a99b2adf6fdde6a83f08e40da8c
   Nimble: 49b7a7da8919f42823d37c6d68cc6d15a7009f32
   NSLogger: 5ed223a2436df96244e033be750656dacdeec034
-  ObjectMapper: 45b97fa0a68c3851daad3efca87bc6c1ab1718c0
+  ObjectMapper: 0656dc1c155825897e5acfcd25362c6b61786dcb
   OHHTTPStubs: dbd1957d414659783e07b49c961940b7564c23d9
-  Ouralabs: eac60753414390c357c12aefb157e56fb32e1453
+  Ouralabs: 9aebd99ac992be00e79e25d04e5479257d44f7e0
   PKHUD: 27346b72187c3cbff20c174f2b1f88c999a4ef13
   PocketSocket: eee7ef375f55b98e7ca79e097d9c61fd688e9494
   Quick: 824572d3d198d51e52cf4aa722cebf7e59952a35
   ReactiveCocoa: c85fe01be4e047dc1d9fba3e1e0b7070846d3296
-  Realm: a046149653e0ca220b65b5783da907aa5b74d86c
-  RealmSwift: 5efbbf1a5c179a7237e4d428594e41619fa167ba
+  Realm: bbb171b96728ea136ed5cd354dca2a3d6529923c
+  RealmSwift: 35eeb642bf0b43dedfe363451ba3288d0e72ebb9
   Result: b44f6bc8762bbffaf2c5df58f2c7d12c3496ced8
   Reveal-iOS-SDK: c9c55cad2729c85f6ced415f1b21857c9a2d8ef9
   SCRecorder: 90075f2d9deb03cd8280faff8cd3cca11c036025
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
-  SimpleKeychain: ed7fcbc2a235ad6919a3d2385ed4b44ab866d874
+  SimpleKeychain: ae04c7ca6a960a146081010b412cf0ba2ecb10fe
   SugarRecord: 9d55ce666e8161eacdc95c996173eb53eb6d3683
   SwiftyJSON: ae2d0a3d68025d136602a33c4ee215091ced3e33
   SwipeView: bd67cfaf7760c036438446b3ccb28a3b84fce009
