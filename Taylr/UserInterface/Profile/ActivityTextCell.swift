@@ -45,6 +45,11 @@ class ActivityTextCell : UITableViewCell, BindableCell {
             captionContainerHeight.constant = 0
             captionContainerHeight.active = true
         }
+        // http://stackoverflow.com/questions/30916163/uilabel-not-wrapping-reliably
+        // https://app.asana.com/0/44915751562108/44316757241088
+        // Hack to fix issue related to label not wrapping consistently
+        contentView.setNeedsLayout()
+        contentView.layoutIfNeeded()
     }
  
     override func prepareForReuse() {
