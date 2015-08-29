@@ -70,6 +70,7 @@ class AVKit {
         let emptyFilter = SCFilter.emptyFilter()
         emptyFilter.name = "#nofilter"
         return [
+            emptyFilter,
             SCFilter(CIFilterName: "CIPhotoEffectProcess"),
             SCFilter(CIFilterName: "CIPhotoEffectChrome"),
             SCFilter(CIFilterName: "CIPhotoEffectMono"),
@@ -78,7 +79,6 @@ class AVKit {
             SCFilter(CIFilterName: "CIPhotoEffectNoir"),
             SCFilter(CIFilterName: "CIPhotoEffectTonal"),
             SCFilter(CIFilterName: "CIPhotoEffectTransfer"),
-            emptyFilter,
         ]
     }
 }
