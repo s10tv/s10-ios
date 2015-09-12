@@ -176,6 +176,7 @@
 		EACEFB841B4672A800901E85 /* AppRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACEFB831B4672A800901E85 /* AppRouter.swift */; };
 		EAD1BB251B60347600D250C5 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1BB241B60347600D250C5 /* MeViewController.swift */; };
 		EAD1BB291B604A3D00D250C5 /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1BB281B604A3D00D250C5 /* InviteViewController.swift */; };
+		EAD7C6801BA4D9E600FD8A27 /* MatchTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7C67F1BA4D9E600FD8A27 /* MatchTimer.swift */; };
 		EAE066FA1B71344700A2FF76 /* DurationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE066F81B71344700A2FF76 /* DurationTimer.swift */; };
 		EAE066FB1B71344700A2FF76 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE066F91B71344700A2FF76 /* RecordButton.swift */; };
 		EAE066FD1B71346B00A2FF76 /* TouchDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE066FC1B71346B00A2FF76 /* TouchDetector.swift */; };
@@ -444,6 +445,7 @@
 		EACEFB831B4672A800901E85 /* AppRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		EAD1BB241B60347600D250C5 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		EAD1BB281B604A3D00D250C5 /* InviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteViewController.swift; sourceTree = "<group>"; };
+		EAD7C67F1BA4D9E600FD8A27 /* MatchTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchTimer.swift; sourceTree = "<group>"; };
 		EAE066F81B71344700A2FF76 /* DurationTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationTimer.swift; sourceTree = "<group>"; };
 		EAE066F91B71344700A2FF76 /* RecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		EAE066FC1B71346B00A2FF76 /* TouchDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchDetector.swift; sourceTree = "<group>"; };
@@ -984,6 +986,7 @@
 			children = (
 				EAA56F701B2B32E500DE3936 /* DiscoverViewController.swift */,
 				EAA56FB01B2BCAC700DE3936 /* CandidateCell.swift */,
+				EAD7C67F1BA4D9E600FD8A27 /* MatchTimer.swift */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -1732,6 +1735,7 @@
 				EA925C741AD99ED8008E9F41 /* R.swift in Sources */,
 				EAB1B9921B6B34630010FBAB /* ConversationTutorialViewController.swift in Sources */,
 				EA9FE6491B684FA0006F8E73 /* ProfileIconCell.swift in Sources */,
+				EAD7C6801BA4D9E600FD8A27 /* MatchTimer.swift in Sources */,
 				EAF81B271B33391000EED6DD /* EditorViewController.swift in Sources */,
 				EACEFB841B4672A800901E85 /* AppRouter.swift in Sources */,
 				EA89C0881B6AC0410007C6CB /* ConnectServicesViewController.swift in Sources */,

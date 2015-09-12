@@ -26,6 +26,7 @@ class CandidateCell : UICollectionViewCell, BindableCell {
         taglineLabel.text = vm.tagline
         
         vm.profileIcons.map(serviceIconsView.factory(ProfileIconCell)) ->> serviceIconsView
+        serviceIconsView.invalidateIntrinsicContentSize()
     }
     
     override func prepareForReuse() {

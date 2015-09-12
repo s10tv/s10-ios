@@ -36,7 +36,7 @@ class DiscoverViewController : BaseViewController {
         layout.minimumColumnSpacing = 10
         layout.minimumInteritemSpacing = 10
         layout.sectionInset = UIEdgeInsets(inset: 10)
-        collectionView.collectionViewLayout = layout
+//        collectionView.collectionViewLayout = layout
 
         vm.candidates.map(collectionView.factory(CandidateCell)) ->> collectionView
         vm.candidates.bindTo(emptyDataBond)
@@ -53,7 +53,7 @@ class DiscoverViewController : BaseViewController {
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBarHidden = false
-        followScrollView(collectionView, usingTopConstraint: topLayoutConstraint, withDelay: 50)
+//        followScrollView(collectionView, usingTopConstraint: topLayoutConstraint, withDelay: 50)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -71,8 +71,8 @@ class DiscoverViewController : BaseViewController {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        showNavBarAnimated(false)
-        stopFollowingScrollView()
+//        showNavBarAnimated(false)
+//        stopFollowingScrollView()
     }
     
     override func viewDidLayoutSubviews() {
@@ -89,23 +89,23 @@ class DiscoverViewController : BaseViewController {
     }
 }
 
-extension DiscoverViewController : CHTCollectionViewDelegateWaterfallLayout {
-    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
-        if let avatar = vm.candidates[indexPath.item].avatar,
-            let layout = collectionViewLayout as? CHTCollectionViewWaterfallLayout {
-                // TODO: Consider using prototype cell for this
-                let rowWidth = collectionView.frame.width - layout.sectionInset.left - layout.sectionInset.right
-                let itemWidth = (rowWidth - (layout.columnCount.f - 1) * layout.minimumColumnSpacing) / layout.columnCount.f
-                let imageHeight = ((avatar.height ?? 100).f / (avatar.width ?? 100).f) * itemWidth
-                // TODO: take into account height of the tagline
-                // 79 is magic number for distance between bottom of avatar image view and bottom of cell
-                let itemHeight = imageHeight + 79
-            return CGSize(width: itemWidth, height: itemHeight)
-        }
-        Log.error("Returning default layout size 50x80, avatar likely missing")
-        return CGSize(width: 50, height: 80)
-    }
-}
+//extension DiscoverViewController : CHTCollectionViewDelegateWaterfallLayout {
+//    func collectionView(collectionView: UICollectionView!, layout collectionViewLayout: UICollectionViewLayout!, sizeForItemAtIndexPath indexPath: NSIndexPath!) -> CGSize {
+//        if let avatar = vm.candidates[indexPath.item].avatar,
+//            let layout = collectionViewLayout as? CHTCollectionViewWaterfallLayout {
+//                // TODO: Consider using prototype cell for this
+//                let rowWidth = collectionView.frame.width - layout.sectionInset.left - layout.sectionInset.right
+//                let itemWidth = (rowWidth - (layout.columnCount.f - 1) * layout.minimumColumnSpacing) / layout.columnCount.f
+//                let imageHeight = ((avatar.height ?? 100).f / (avatar.width ?? 100).f) * itemWidth
+//                // TODO: take into account height of the tagline
+//                // 79 is magic number for distance between bottom of avatar image view and bottom of cell
+//                let itemHeight = imageHeight + 79
+//            return CGSize(width: itemWidth, height: itemHeight)
+//        }
+//        Log.error("Returning default layout size 50x80, avatar likely missing")
+//        return CGSize(width: 50, height: 80)
+//    }
+//}
 
 extension DiscoverViewController : DZNEmptyDataSetSource {
     func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
