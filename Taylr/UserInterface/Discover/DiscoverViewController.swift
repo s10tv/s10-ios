@@ -37,6 +37,7 @@ class DiscoverViewController : BaseViewController {
         layout.minimumInteritemSpacing = 10
         layout.sectionInset = UIEdgeInsets(inset: 10)
 //        collectionView.collectionViewLayout = layout
+//        collectionView.decelerationRate = UIScrollViewDecelerationRateFast
 
         vm.candidates.map(collectionView.factory(CandidateCell)) ->> collectionView
         vm.candidates.bindTo(emptyDataBond)
@@ -48,6 +49,15 @@ class DiscoverViewController : BaseViewController {
             self?.showNavBarAnimated(true)
             self?.collectionView.scrollToTop(animated: true)
         })
+        
+        let label = UILabel(frame: CGRect(origin: CGPoint(x: 100, y: -44), size: CGSizeMake(200, 44)))
+        label.text = "Next recommendation in 22:23:11"
+        
+        let historyLabel = UILabel(frame: CGRect(origin: CGPoint(x: 100, y: collectionView.bounds.height), size: CGSizeMake(200, 44)))
+        historyLabel.text = "Previous recommendations"
+
+        collectionView.addSubview(label)
+        collectionView.addSubview(historyLabel)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -104,6 +114,16 @@ class DiscoverViewController : BaseViewController {
 //        }
 //        Log.error("Returning default layout size 50x80, avatar likely missing")
 //        return CGSize(width: 50, height: 80)
+//    }
+
+//extension DiscoverViewController : UIScrollViewDelegate {
+//    func scrollViewWillEndDragging(scrollView: UIScrollView, withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+//        println("Scrolling to y = \(targetContentOffset.memory.y)")
+//        if targetContentOffset.memory.y < 600 {
+////            setContentOffset(CGPointMake(0, -contentInset.top), animated: animated)
+//            targetContentOffset.memory.y = -scrollView.contentInset.top
+////            scrollView.setContentOffset(CGPoint(x: 0, y: -scrollView.contentInset.top), animated: true)
+//        }
 //    }
 //}
 

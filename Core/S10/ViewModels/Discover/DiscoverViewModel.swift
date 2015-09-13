@@ -19,10 +19,12 @@ public struct DiscoverViewModel {
         self.meteor = meteor
         self.taskService = taskService
         subscription = meteor.subscribe("discover")
-        candidates = User
-            .by("\(UserKeys.candidateScore) != nil")
+        let frc = User
+            .by("\(UserKeys.firstName) == \"Tony\"")
             .sorted(by: UserKeys.candidateScore.rawValue, ascending: false)
-            .results(User).map { CandidateViewModel(user: $0) }
+            .first().frc()
+        frc.fetchRequest.fetchLimit = 1
+        candidates = frc.results(User).map { CandidateViewModel(user: $0) }
     }
     
     public func profileVM(index: Int) -> ProfileViewModel {
