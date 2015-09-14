@@ -65,7 +65,7 @@ class TaylrEnvironment : Environment {
                 githubClientId = "d3d17fc593c45429cf29"     // this is wrong. need to make beta app.
                 githubClientSecret = "4a6f949c772bfd87ae6e9be1ccc6ab21265de649"
             case .AppStore:
-                serverHostName = "s10.herokuapp.com"
+                serverHostName = "taylr.herokuapp.com"
                 bugfenderAppToken = "ow9JOdNYSo5iVqPUUAEbS8HfmwZqb1tQ"
                 segmentWriteKey = "DwMJMhxsvn6EDrO33gANHBjvg3FUsfPJ"
                 heapAppId = "538095372"
