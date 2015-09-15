@@ -12,6 +12,7 @@ import ReactiveCocoa
 
 public struct CurrentCandidateViewModel {
     let user: User
+    public let cover: Image?
     public let avatar: Image?
     public let displayName: String
     public let reason: String
@@ -21,6 +22,7 @@ public struct CurrentCandidateViewModel {
     
     init(candidate: Candidate) {
         user = candidate.user
+        cover = user.cover
         avatar = user.avatar
         displayName = user.pDisplayName().value
         reason = candidate.reason
