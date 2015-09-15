@@ -17,6 +17,7 @@ public enum SegueIdentifier : String {
     case ConnectServicesToCreateProfile = "ConnectServicesToCreateProfile"
     case ConversationToProfile = "ConversationToProfile"
     case CreateProfileToUsername = "CreateProfileToUsername"
+    case DiscoverToConversation = "DiscoverToConversation"
     case IntegrationsToWeb = "IntegrationsToWeb"
     case LoginToConnectServices = "LoginToConnectServices"
     case Main_RootTab = "Main_RootTab"

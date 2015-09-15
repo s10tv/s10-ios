@@ -102,6 +102,10 @@ class DiscoverViewController : BaseViewController {
             let profileVM = vm.profileVM() {
             profileVC.vm = profileVM
         }
+        if let vc = segue.destinationViewController as? ConversationViewController,
+            let conversationVM = vm.conversationVM() {
+            vc.vm = conversationVM
+        }
     }
 }
 

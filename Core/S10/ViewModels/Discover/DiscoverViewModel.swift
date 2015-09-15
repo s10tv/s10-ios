@@ -30,6 +30,12 @@ public struct DiscoverViewModel {
             return ProfileViewModel(meteor: meteor, taskService: taskService, user: candidate[0].user)
         }
         return nil
-//        return candidate.first.map { ProfileViewModel(meteor: meteor, taskService: taskService, user:$0.user) }
+    }
+    
+    public func conversationVM() -> ConversationViewModel? {
+        if candidate.count > 0 {
+            return ConversationViewModel(meteor: meteor, taskService: taskService, recipient: candidate[0].user)
+        }
+        return nil
     }
 }
