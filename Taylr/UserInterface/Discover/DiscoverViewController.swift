@@ -20,7 +20,7 @@ class DiscoverViewController : BaseViewController {
     @IBOutlet weak var topLayoutConstraint: NSLayoutConstraint!
     
     let vm = DiscoverViewModel(meteor: Meteor, taskService: Globals.taskService)
-    let emptyDataBond = ArrayBond<CandidateViewModel>()
+    let emptyDataBond = ArrayBond<CurrentCandidateViewModel>()
     
     deinit {
         collectionView?.delegate = nil
@@ -39,11 +39,11 @@ class DiscoverViewController : BaseViewController {
 //        collectionView.collectionViewLayout = layout
 //        collectionView.decelerationRate = UIScrollViewDecelerationRateFast
         
-//        vm.candidates.map(collectionView.factory(CandidateCell)) ->> collectionView
-//        vm.candidates.bindTo(emptyDataBond)
-//        emptyDataBond.didPerformBatchUpdatesListener = { [weak self] in
-//            self?.collectionView.reloadEmptyDataSet()
-//        }
+        vm.candidate.map(collectionView.factory(CandidateCell)) ->> collectionView
+        vm.candidate.bindTo(emptyDataBond)
+        emptyDataBond.didPerformBatchUpdatesListener = { [weak self] in
+            self?.collectionView.reloadEmptyDataSet()
+        }
         
         listenForNotification(DidTouchStatusBar).start(next: { [weak self] _ in
             self?.showNavBarAnimated(true)
@@ -89,6 +89,12 @@ class DiscoverViewController : BaseViewController {
         super.viewDidLayoutSubviews()
         collectionView.contentInset = UIEdgeInsets(top: 66, left: 0, // HARCK ALERT: Hard-coded
                                                 bottom: bottomLayoutGuide.length, right: 0)
+        
+        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        var itemSize = collectionView.bounds.size
+        itemSize.width -= 20 // 10 on each side
+        itemSize.height -= (topLayoutGuide.length + bottomLayoutGuide.length + 20) // 10 on each side
+        layout.itemSize = itemSize
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

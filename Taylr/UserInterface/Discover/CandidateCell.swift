@@ -13,21 +13,21 @@ import Bond
 import ReactiveCocoa
 
 class CandidateCell : UICollectionViewCell, BindableCell {
-    typealias ViewModel = CandidateViewModel
+    typealias ViewModel = CurrentCandidateViewModel
     
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var taglineLabel: UILabel!
     @IBOutlet weak var serviceIconsView: UICollectionView!
     
-    func bind(vm: CandidateViewModel) {
-        avatarView.sd_setImageWithURL(vm.avatar?.url)
-        nameLabel.text = vm.displayName
-        taglineLabel.text = vm.tagline
-        
-        vm.profileIcons.map(serviceIconsView.factory(ProfileIconCell)) ->> serviceIconsView
-        serviceIconsView.invalidateIntrinsicContentSize()
-    }
+//    func bind(vm: CandidateViewModel) {
+//        avatarView.sd_setImageWithURL(vm.avatar?.url)
+//        nameLabel.text = vm.displayName
+//        taglineLabel.text = vm.tagline
+//        
+//        vm.profileIcons.map(serviceIconsView.factory(ProfileIconCell)) ->> serviceIconsView
+//        serviceIconsView.invalidateIntrinsicContentSize()
+//    }
     
     func bind(vm: CurrentCandidateViewModel) {
         avatarView.sd_setImageWithURL(vm.avatar?.url)
