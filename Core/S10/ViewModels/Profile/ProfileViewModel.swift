@@ -44,7 +44,7 @@ public struct ProfileViewModel {
         self.taskService = taskService
         self.user = user
         showMoreOptions = meteor.user.value != user
-        cvm = ProfileCoverViewModel(user: user)
+        cvm = ProfileCoverViewModel(meteor: meteor, user: user)
         subscription = meteor.subscribe("activities", user)
         coverVM = DynamicArray([cvm])
         infoVM = toBondDynamicArray(cvm.selectedProfile |> map {
@@ -79,15 +79,18 @@ public struct ProfileViewModel {
 public struct ProfileCoverViewModel {
     public let firstName: PropertyOf<String>
     public let lastName: PropertyOf<String>
+    public let displayName : PropertyOf<String>
     public let proximity: PropertyOf<String>
     public let avatar: PropertyOf<Image?>
     public let cover: PropertyOf<Image?>
     public let selectors: DynamicArray<ProfileSelectorViewModel>
     public let selectedProfile: MutableProperty<ProfileSelectorViewModel>
+    public let hideChatButton: Bool
     
-    init(user: User) {
+    init(meteor: MeteorService, user: User) {
         firstName = user.pFirstName()
         lastName = user.pLastName()
+        displayName = user.pDisplayName()
         avatar = user.pAvatar()
         cover = user.pCover()
         selectors = toBondDynamicArray(
@@ -109,6 +112,7 @@ public struct ProfileCoverViewModel {
             return "\(distance), \(lastActive)"
         })
         selectedProfile = MutableProperty(selectors[0])
+        hideChatButton = meteor.user.value == user
     }
     
     public func selectProfileAtIndex(index: Int) {

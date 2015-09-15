@@ -16,10 +16,8 @@ public protocol ProfileInfoViewModel {
 public struct TaylrProfileInfoViewModel : ProfileInfoViewModel{
     public let tagline: PropertyOf<String>
     public let about: PropertyOf<String>
-    public let hideChatButton: Bool
     
     init(meteor: MeteorService, user: User) {
-        hideChatButton = meteor.user.value == user
         tagline = user.pTagline()
         about = user.pAbout()
     }
