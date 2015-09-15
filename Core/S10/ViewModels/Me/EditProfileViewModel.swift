@@ -27,7 +27,7 @@ public struct EditProfileViewModel {
         self.user = user
         firstName = user.pFirstName() |> mutable
         lastName = user.pLastName() |> mutable
-        tagline = user.pTagline() |> mutable
+        tagline = MutableProperty("") // TODO: Turn this major and gradYear
         about = user.pAbout() |> mutable
         username = user.pUsername()
         avatar = user.pAvatar()
@@ -39,7 +39,7 @@ public struct EditProfileViewModel {
         // TODO: Add client side validation logic
         if firstName.value == user.firstName &&
             lastName.value == user.lastName &&
-            tagline.value == user.tagline &&
+//            tagline.value == user.tagline && // TODO: Turn into major & class year
             about.value == user.about {
             // Early exit case
             promise.success()

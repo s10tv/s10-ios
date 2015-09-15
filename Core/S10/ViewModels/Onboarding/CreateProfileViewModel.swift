@@ -29,7 +29,7 @@ public struct CreateProfileViewModel {
         // TODO: Think of better pattern
         firstName = MutableProperty(user.firstName ?? "")
         lastName = MutableProperty(user.lastName ?? "")
-        tagline = MutableProperty(user.tagline ?? "")
+        tagline = MutableProperty("") // TODO: Turn this into major and grad year!@@!@#@#
         about = MutableProperty(user.about ?? "")
         avatar = user.pAvatar() |> mutable
         cover = user.pCover() |> mutable

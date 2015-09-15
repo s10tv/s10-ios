@@ -61,8 +61,12 @@ extension User {
         return dyn(.lastName).optional(String) |> map { $0 ?? "" }
     }
     
-    func pTagline() -> PropertyOf<String> {
-        return dyn(.tagline).optional(String) |> map { $0 ?? "" }
+    func pGradYear() -> PropertyOf<String> {
+        return dyn(.gradYear).optional(String) |> map { $0 ?? "" }
+    }
+    
+    func pMajor() -> PropertyOf<String> {
+        return dyn(.major).optional(String) |> map { $0 ?? "" }
     }
     
     func pAbout() -> PropertyOf<String> {

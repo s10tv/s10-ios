@@ -14,11 +14,11 @@ public protocol ProfileInfoViewModel {
 }
 
 public struct TaylrProfileInfoViewModel : ProfileInfoViewModel{
-    public let tagline: PropertyOf<String>
+    public let major: PropertyOf<String>
     public let about: PropertyOf<String>
     
     init(meteor: MeteorService, user: User) {
-        tagline = user.pTagline()
+        major = user.pMajor()
         about = user.pAbout()
     }
 }

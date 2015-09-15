@@ -70,7 +70,7 @@ public struct NewConnectionViewModel : ConnectionViewModel {
         let user = connection.otherUser
         avatar = user.pAvatar()
         displayName = user.pDisplayName()
-        tagline = user.pTagline()
+        tagline = PropertyOf("") // TODO: Make me something else
         profileIcons = DynamicArray(user.connectedProfiles.map { $0.icon })
         busy = connection.otherUser.pConversationBusy()
         hidePlayIcon = PropertyOf(true, combineLatest(

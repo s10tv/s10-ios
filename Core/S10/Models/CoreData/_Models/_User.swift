@@ -19,11 +19,13 @@ internal enum UserKeys: String, Printable {
 
     case firstName = "firstName"
 
+    case gradYear = "gradYear"
+
     case lastActive = "lastActive"
 
     case lastName = "lastName"
 
-    case tagline = "tagline"
+    case major = "major"
 
     case username = "username"
 
@@ -94,6 +96,11 @@ class _User: NSManagedObject {
     // func validateFirstName(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged internal
+    var gradYear: String?
+
+    // func validateGradYear(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged internal
     var lastActive: NSDate?
 
     // func validateLastActive(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
@@ -104,9 +111,9 @@ class _User: NSManagedObject {
     // func validateLastName(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged internal
-    var tagline: String?
+    var major: String?
 
-    // func validateTagline(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+    // func validateMajor(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged internal
     var username: String?
