@@ -177,6 +177,8 @@
 		EAD1BB251B60347600D250C5 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1BB241B60347600D250C5 /* MeViewController.swift */; };
 		EAD1BB291B604A3D00D250C5 /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1BB281B604A3D00D250C5 /* InviteViewController.swift */; };
 		EAD7C6801BA4D9E600FD8A27 /* MatchTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7C67F1BA4D9E600FD8A27 /* MatchTimer.swift */; };
+		EAD7C6821BA7960600FD8A27 /* _Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7C6811BA7960600FD8A27 /* _Candidate.swift */; };
+		EAD7C6841BA7960E00FD8A27 /* Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7C6831BA7960E00FD8A27 /* Candidate.swift */; };
 		EAE066FA1B71344700A2FF76 /* DurationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE066F81B71344700A2FF76 /* DurationTimer.swift */; };
 		EAE066FB1B71344700A2FF76 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE066F91B71344700A2FF76 /* RecordButton.swift */; };
 		EAE066FD1B71346B00A2FF76 /* TouchDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE066FC1B71346B00A2FF76 /* TouchDetector.swift */; };
@@ -446,6 +448,8 @@
 		EAD1BB241B60347600D250C5 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		EAD1BB281B604A3D00D250C5 /* InviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteViewController.swift; sourceTree = "<group>"; };
 		EAD7C67F1BA4D9E600FD8A27 /* MatchTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MatchTimer.swift; sourceTree = "<group>"; };
+		EAD7C6811BA7960600FD8A27 /* _Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Candidate.swift; sourceTree = "<group>"; };
+		EAD7C6831BA7960E00FD8A27 /* Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Candidate.swift; sourceTree = "<group>"; };
 		EAE066F81B71344700A2FF76 /* DurationTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationTimer.swift; sourceTree = "<group>"; };
 		EAE066F91B71344700A2FF76 /* RecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		EAE066FC1B71346B00A2FF76 /* TouchDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchDetector.swift; sourceTree = "<group>"; };
@@ -679,6 +683,7 @@
 				EA2DC2911B637FA50034434E /* Integration.swift */,
 				EA2DC2921B637FA50034434E /* Message.swift */,
 				EA2DC2931B637FA50034434E /* User.swift */,
+				EAD7C6831BA7960E00FD8A27 /* Candidate.swift */,
 				EA2DC2771B637DFE0034434E /* Models.xcdatamodeld */,
 			);
 			path = CoreData;
@@ -692,6 +697,7 @@
 				EA2DC2871B637FA50034434E /* _Integration.swift */,
 				EA2DC2881B637FA50034434E /* _Message.swift */,
 				EA2DC2891B637FA50034434E /* _User.swift */,
+				EAD7C6811BA7960600FD8A27 /* _Candidate.swift */,
 			);
 			path = _Models;
 			sourceTree = "<group>";
@@ -1650,6 +1656,7 @@
 				EA2DC2A11B637FA50034434E /* Message.swift in Sources */,
 				EA9C16661B365BD700371B50 /* AsyncOperation.swift in Sources */,
 				EA2DC2661B637CA30034434E /* VideoUploadTask.swift in Sources */,
+				EAD7C6841BA7960E00FD8A27 /* Candidate.swift in Sources */,
 				EAF6708A1B31F9AD0025D7CF /* Logging.swift in Sources */,
 				EA4757161B392C19002071D7 /* Transition.swift in Sources */,
 				EA2DC2BE1B642A4A0034434E /* UserExtensions.swift in Sources */,
@@ -1681,6 +1688,7 @@
 				EA043F7E1B62EF5D0047BDCA /* ConnectionViewModels.swift in Sources */,
 				EA043F791B62EF5D0047BDCA /* ActivityViewModels.swift in Sources */,
 				EA043F831B62EF8B0047BDCA /* IntegrationListViewModel.swift in Sources */,
+				EAD7C6821BA7960600FD8A27 /* _Candidate.swift in Sources */,
 				EA39651C1B54EFE400F5B0B3 /* MeteorCollection.swift in Sources */,
 				EA043F841B62EF8B0047BDCA /* IntegrationViewModel.swift in Sources */,
 				EAF670731B31F9450025D7CF /* MeteorCDStack.swift in Sources */,

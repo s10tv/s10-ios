@@ -29,6 +29,15 @@ class CandidateCell : UICollectionViewCell, BindableCell {
         serviceIconsView.invalidateIntrinsicContentSize()
     }
     
+    func bind(vm: CurrentCandidateViewModel) {
+        avatarView.sd_setImageWithURL(vm.avatar?.url)
+        nameLabel.text = vm.displayName
+        taglineLabel.text = vm.reason
+        
+        vm.profileIcons.map(serviceIconsView.factory(ProfileIconCell)) ->> serviceIconsView
+        serviceIconsView.invalidateIntrinsicContentSize()
+    }
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         avatarView.image = nil

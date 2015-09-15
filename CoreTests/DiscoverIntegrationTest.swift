@@ -29,9 +29,8 @@ class DiscoverIntegrationTest : IntegrationTestEnvironment {
                 self.vm.subscription.ready.onComplete { result in
                     expect(result.error).to(beNil())
 
-                    expect(self.vm.candidates.count).toEventually(beGreaterThan(0))
-
-                    println(self.vm.candidates[0].displayName)
+                    expect(self.vm.candidate.value).toEventually(beNotNil())
+                    println(self.vm.candidate.value.displayName)
 
 //                    expect(self.vm.candidates[0].displayName.length).toEventually(beGreaterThan(0))
 //                    expect(self.vm.candidates[0].employer.length).toEventually(beGreaterThan(0))

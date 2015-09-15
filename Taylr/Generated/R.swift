@@ -54,7 +54,7 @@ public enum R {
         case errNetworkUnreachable = "errNetworkUnreachable"
         /// Seems like we don't have any network connection right now, try again later.
         case errNetworkUnreachableRecovery = "errNetworkUnreachableRecovery"
-        /// Sorry we're not able to add service the moment. Please try again later :(
+        /// Sorry we're not able to add this service at the moment. Please try again later :(
         case errUnableToAddServiceMessage = "errUnableToAddServiceMessage"
         /// Unable to add service
         case errUnableToAddServiceTitle = "errUnableToAddServiceTitle"
@@ -132,14 +132,14 @@ public enum R {
         case appBeta = "AppIconBeta"
         /// AppIconDev
         case appDev = "AppIconDev"
-        /// bg-player-default
-        case bgPlayerDefault = "bg-player-default"
         /// bg-record-hint
         case bgRecordHint = "bg-record-hint"
         /// discover-logo
         case discoverLogo = "discover-logo"
         /// empty-profile-pic
         case emptyProfilePic = "empty-profile-pic"
+        /// girl-placeholder
+        case girlPlaceholder = "girl-placeholder"
         /// ic-add
         case icAdd = "ic-add"
         /// ic-all
@@ -204,17 +204,13 @@ public enum R {
         case icUpTriangle = "ic-up-triangle"
         /// ic-video
         case icVideo = "ic-video"
+        /// ic-video-small
+        case icVideoSmall = "ic-video-small"
         /// ic-warning
         case icWarning = "ic-warning"
         /// Logo
         case logo = "Logo"
-        /// sample-cover-image
-        case sampleCover = "sample-cover-image"
-        /// sample-taylor-avatar
-        case sampleTaylorAvatar = "sample-taylor-avatar"
-        /// sample-taylor-avatar-square
-        case sampleTaylorAvatarSquare = "sample-taylor-avatar-square"
-        /// sample-taylor-video-frame
-        case sampleTaylorVideoFrame = "sample-taylor-video-frame"
+        /// sample-photo
+        case samplePhoto = "sample-photo"
     }
 }

@@ -32,18 +32,18 @@ class DiscoverViewController : BaseViewController {
         
         collectionView.emptyDataSetSource = self
         
-        let layout = CHTCollectionViewWaterfallLayout()
-        layout.minimumColumnSpacing = 10
-        layout.minimumInteritemSpacing = 10
-        layout.sectionInset = UIEdgeInsets(inset: 10)
+//        let layout = CHTCollectionViewWaterfallLayout()
+//        layout.minimumColumnSpacing = 10
+//        layout.minimumInteritemSpacing = 10
+//        layout.sectionInset = UIEdgeInsets(inset: 10)
 //        collectionView.collectionViewLayout = layout
 //        collectionView.decelerationRate = UIScrollViewDecelerationRateFast
-
-        vm.candidates.map(collectionView.factory(CandidateCell)) ->> collectionView
-        vm.candidates.bindTo(emptyDataBond)
-        emptyDataBond.didPerformBatchUpdatesListener = { [weak self] in
-            self?.collectionView.reloadEmptyDataSet()
-        }
+        
+//        vm.candidates.map(collectionView.factory(CandidateCell)) ->> collectionView
+//        vm.candidates.bindTo(emptyDataBond)
+//        emptyDataBond.didPerformBatchUpdatesListener = { [weak self] in
+//            self?.collectionView.reloadEmptyDataSet()
+//        }
         
         listenForNotification(DidTouchStatusBar).start(next: { [weak self] _ in
             self?.showNavBarAnimated(true)
@@ -93,8 +93,8 @@ class DiscoverViewController : BaseViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let profileVC = segue.destinationViewController as? ProfileViewController,
-            let indexPath = collectionView.indexPathsForSelectedItems().first as? NSIndexPath {
-            profileVC.vm = vm.profileVM(indexPath.row)
+            let profileVM = vm.profileVM() {
+            profileVC.vm = profileVM
         }
     }
 }

@@ -3,6 +3,7 @@
 public enum CollectionViewCellreuseIdentifier : String {
     case CandidateCell = "CandidateCell"
     case IntegrationCell = "IntegrationCell"
+    case PrevCandidateCell = "PrevCandidateCell"
     case ProfileAttributeCell = "ProfileAttributeCell"
     case ProfileIconCell = "ProfileIconCell"
     case ProfileSelectorCell = "ProfileSelectorCell"
@@ -48,6 +49,7 @@ public enum ViewControllerStoryboardIdentifier : String {
     case Conversation = "Conversation"
     case Discover = "Discover"
     case Editor = "Editor"
+    case History = "History"
     case Login = "Login"
     case Player = "Player"
     case Producer = "Producer"

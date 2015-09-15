@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14E46" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="7701" systemVersion="14F27" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="Activity" representedClassName="Activity" syncable="YES">
         <attribute name="caption" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="image_" optional="YES" attributeType="Transformable" syncable="YES">
@@ -21,6 +21,16 @@
             </userInfo>
         </attribute>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
+    </entity>
+    <entity name="Candidate" representedClassName="Candidate" syncable="YES">
+        <attribute name="date" attributeType="Date" syncable="YES"/>
+        <attribute name="reason" attributeType="String" syncable="YES"/>
+        <attribute name="status_" attributeType="String" syncable="YES">
+            <userInfo>
+                <entry key="fieldName" value="type"/>
+            </userInfo>
+        </attribute>
+        <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
     </entity>
     <entity name="Connection" representedClassName="Connection" syncable="YES">
         <attribute name="cold" attributeType="Boolean" syncable="YES"/>
@@ -110,5 +120,6 @@
         <element name="Integration" positionX="-612" positionY="-144" width="128" height="135"/>
         <element name="Message" positionX="-207" positionY="27" width="128" height="135"/>
         <element name="User" positionX="268" positionY="-261" width="128" height="225"/>
+        <element name="Candidate" positionX="-612" positionY="-108" width="128" height="105"/>
     </elements>
 </model>

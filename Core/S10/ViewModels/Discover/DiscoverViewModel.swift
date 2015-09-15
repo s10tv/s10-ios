@@ -7,27 +7,47 @@
 //
 
 import Foundation
+import ReactiveCocoa
 import Bond
 
-public struct DiscoverViewModel {
+public class DiscoverViewModel : NSObject {
     let meteor: MeteorService
     let taskService: TaskService
+    let frc: NSFetchedResultsController
     public let subscription: MeteorSubscription // TODO: Test only
-    public let candidates: DynamicArray<CandidateViewModel>
+    
+    public let candidate: MutableProperty<CurrentCandidateViewModel?>
     
     public init(meteor: MeteorService, taskService: TaskService) {
         self.meteor = meteor
         self.taskService = taskService
-        subscription = meteor.subscribe("discover")
-        let frc = User
-            .by("\(UserKeys.firstName) == \"Tony\"")
-            .sorted(by: UserKeys.candidateScore.rawValue, ascending: false)
-            .first().frc()
-        frc.fetchRequest.fetchLimit = 1
-        candidates = frc.results(User).map { CandidateViewModel(user: $0) }
+        subscription = meteor.subscribe("candidate-discover")
+        frc = Candidate.all()/*.by(CandidateKeys.status_, value: Candidate.Status.Active.rawValue)*/.first().frc()
+        candidate = MutableProperty(nil)
+        super.init()
+        frc.delegate = self
+        frc.performFetch(nil)
+        controllerDidChangeContent(frc)
     }
     
-    public func profileVM(index: Int) -> ProfileViewModel {
-        return ProfileViewModel(meteor: meteor, taskService: taskService, user: candidates[index].user)
+    deinit {
+        frc.delegate = nil
+    }
+    
+    public func profileVM() -> ProfileViewModel? {
+        return candidate.value.map { ProfileViewModel(meteor: meteor, taskService: taskService, user:$0.user) }
+    }
+}
+
+
+// TODO: Establish better pattern for reactively finding a single element
+// that does not require becoming delegate of NSFetchedResultsController
+extension DiscoverViewModel : NSFetchedResultsControllerDelegate {
+    public func controllerDidChangeContent(controller: NSFetchedResultsController) {
+        if let candidate = controller.fetchObjects().first as? Candidate {
+            self.candidate.value = CurrentCandidateViewModel(candidate: candidate)
+        } else {
+            self.candidate.value = nil
+        }
     }
 }
