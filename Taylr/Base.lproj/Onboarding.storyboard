@@ -10,8 +10,12 @@
         </mutableArray>
         <mutableArray key="Cabin-Medium.ttf">
             <string>Cabin-Medium</string>
+            <string>Cabin-Medium</string>
         </mutableArray>
         <mutableArray key="Cabin-Regular.ttf">
+            <string>Cabin-Regular</string>
+            <string>Cabin-Regular</string>
+            <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
@@ -52,7 +56,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="Cabin"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isY-Ks-GfE" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isY-Ks-GfE" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
                                 <rect key="frame" x="170" y="410" width="260" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -169,12 +173,12 @@
                         <outlet property="loginButton" destination="isY-Ks-GfE" id="zst-37-Oho"/>
                         <outlet property="logoutButton" destination="xVd-2q-11O" id="uyB-oZ-w27"/>
                         <segue destination="4LR-tW-qvj" kind="custom" identifier="Main_RootTab" customClass="LinkedStoryboardPushSegue" id="ztg-XZ-LWS"/>
-                        <segue destination="UL1-t5-ar3" kind="show" identifier="LoginToConnectServices" id="4l7-2L-QEa"/>
+                        <segue destination="L2P-Fc-Zcm" kind="show" identifier="LoginToRegisterEmail" id="LER-0P-1dS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lbl-0u-moe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-531" y="274"/>
+            <point key="canvasLocation" x="-998" y="284"/>
         </scene>
         <!--Create Profile-->
         <scene sceneID="ziZ-yX-Hqk">
@@ -274,14 +278,14 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tmv-wN-Oba" id="5F8-K1-dTd">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Swt-3x-U44" userLabel="Horizontal Divider">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Swt-3x-U44" userLabel="Horizontal Divider">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
                                                     <color key="backgroundColor" red="0.93333333330000001" green="0.94117647059999998" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="rP9-EU-Uhe"/>
                                                     </constraints>
                                                 </view>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K5S-M5-nhA" customClass="JVFloatLabeledTextField">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K5S-M5-nhA" customClass="JVFloatLabeledTextField">
                                                     <rect key="frame" x="10" y="8" width="167" height="44"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
@@ -294,14 +298,14 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qFp-u9-8YE" userLabel="Vertical Divider">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qFp-u9-8YE" userLabel="Vertical Divider">
                                                     <rect key="frame" x="187" y="0.0" width="1" height="59"/>
                                                     <color key="backgroundColor" red="0.93333333333333335" green="0.94117647058823528" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="1" id="due-gI-89T"/>
                                                     </constraints>
                                                 </view>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R72-mS-4Cy" customClass="JVFloatLabeledTextField">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R72-mS-4Cy" customClass="JVFloatLabeledTextField">
                                                     <rect key="frame" x="198" y="8" width="167" height="44"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
@@ -314,7 +318,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xzg-gN-hJZ" userLabel="Horizontal Divider">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xzg-gN-hJZ" userLabel="Horizontal Divider">
                                                     <rect key="frame" x="0.0" y="59" width="375" height="1"/>
                                                     <color key="backgroundColor" red="0.93333333330000001" green="0.94117647059999998" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -351,7 +355,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xgl-pv-VmL" id="xmd-Ga-0AA">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tagline" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aY0-03-vXb" customClass="JVFloatLabeledTextField">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tagline" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aY0-03-vXb" customClass="JVFloatLabeledTextField">
                                                     <rect key="frame" x="10" y="8" width="355" height="44"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -364,7 +368,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eJq-n2-O8k" userLabel="Horizontal Divider">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eJq-n2-O8k" userLabel="Horizontal Divider">
                                                     <rect key="frame" x="0.0" y="59" width="375" height="1"/>
                                                     <color key="backgroundColor" red="0.93333333330000001" green="0.94117647059999998" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -395,7 +399,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NYa-St-Knz" id="i4R-TL-1aZ">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNz-Zb-kjq" customClass="JVFloatLabeledTextView">
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNz-Zb-kjq" customClass="JVFloatLabeledTextView">
                                                     <rect key="frame" x="8" y="8" width="359" height="46"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
@@ -407,7 +411,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </textView>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1x7-sO-vKM" userLabel="Horizontal Divider">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1x7-sO-vKM" userLabel="Horizontal Divider">
                                                     <rect key="frame" x="0.0" y="69" width="375" height="1"/>
                                                     <color key="backgroundColor" red="0.93333333330000001" green="0.94117647059999998" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -477,7 +481,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="880" y="274"/>
+            <point key="canvasLocation" x="1236" y="284"/>
         </scene>
         <!--Main - Discover-->
         <scene sceneID="ucd-nb-Qyk">
@@ -495,7 +499,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dOh-La-D4o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="13" y="-288"/>
+            <point key="canvasLocation" x="765" y="-344"/>
         </scene>
         <!--Connect Services-->
         <scene sceneID="VBO-uB-dxI">
@@ -599,7 +603,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KZS-aq-ICv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="179" y="274"/>
+            <point key="canvasLocation" x="537" y="284"/>
         </scene>
         <!--Username-->
         <scene sceneID="9K3-TS-HJy">
@@ -690,7 +694,105 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="A3U-9v-K1p" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1546" y="274"/>
+            <point key="canvasLocation" x="1924" y="284"/>
+        </scene>
+        <!--RegisterSchool-->
+        <scene sceneID="ird-U3-ocg">
+            <objects>
+                <viewController storyboardIdentifier="RegisterEmail" id="L2P-Fc-Zcm" userLabel="RegisterSchool" customClass="RegisterEmailViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="gTq-GE-3Kz"/>
+                        <viewControllerLayoutGuide type="bottom" id="bk7-8I-Q2b"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="N0V-h4-qzh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UUq-Uv-n6C">
+                                <rect key="frame" x="16" y="138" width="568" height="50"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="tonyx@student.ubc.ca" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VZ5-xw-InF">
+                                        <rect key="frame" x="8" y="0.0" width="516" height="50"/>
+                                        <fontDescription key="fontDescription" name="Cabin-Medium" family="Cabin" pointSize="18"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="VZ5-xw-InF" firstAttribute="leading" secondItem="UUq-Uv-n6C" secondAttribute="leading" constant="8" id="FoB-6r-28U"/>
+                                    <constraint firstAttribute="height" constant="50" id="RfP-Tv-ljB"/>
+                                    <constraint firstAttribute="trailing" secondItem="VZ5-xw-InF" secondAttribute="trailing" constant="44" id="bFc-Bh-0fU"/>
+                                    <constraint firstAttribute="bottom" secondItem="VZ5-xw-InF" secondAttribute="bottom" id="dIL-04-lyR"/>
+                                    <constraint firstAttribute="centerY" secondItem="VZ5-xw-InF" secondAttribute="centerY" id="j6f-4U-A1e"/>
+                                    <constraint firstItem="VZ5-xw-InF" firstAttribute="top" secondItem="UUq-Uv-n6C" secondAttribute="top" id="pVx-m8-FBZ"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="3"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylr is exclusively for university students." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXK-Fa-VvT">
+                                <rect key="frame" x="16" y="64" width="568" height="22"/>
+                                <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="18"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your .edu email address to confirm your school." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sd8-Jk-JEN">
+                                <rect key="frame" x="16" y="101" width="568" height="22"/>
+                                <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="18"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.93299722669999996" green="0.94112014769999996" blue="0.94931834940000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="UUq-Uv-n6C" firstAttribute="trailing" secondItem="N0V-h4-qzh" secondAttribute="trailingMargin" id="4PN-K9-rLL"/>
+                            <constraint firstItem="Sd8-Jk-JEN" firstAttribute="top" secondItem="lXK-Fa-VvT" secondAttribute="bottom" constant="15" id="8Az-E7-8aK"/>
+                            <constraint firstItem="UUq-Uv-n6C" firstAttribute="leading" secondItem="N0V-h4-qzh" secondAttribute="leadingMargin" id="Hyj-aC-URz"/>
+                            <constraint firstItem="lXK-Fa-VvT" firstAttribute="leading" secondItem="N0V-h4-qzh" secondAttribute="leadingMargin" id="NLV-v3-jBk"/>
+                            <constraint firstItem="lXK-Fa-VvT" firstAttribute="top" secondItem="gTq-GE-3Kz" secondAttribute="bottom" constant="20" id="QAR-LJ-gVp"/>
+                            <constraint firstItem="UUq-Uv-n6C" firstAttribute="top" secondItem="Sd8-Jk-JEN" secondAttribute="bottom" constant="15" id="SLf-H4-Jwo"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="lXK-Fa-VvT" secondAttribute="trailing" id="Sjp-o6-30U"/>
+                            <constraint firstItem="UUq-Uv-n6C" firstAttribute="top" secondItem="lXK-Fa-VvT" secondAttribute="bottom" constant="15" id="Tii-YJ-bs2"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="Sd8-Jk-JEN" secondAttribute="trailing" id="jGg-oJ-w8B"/>
+                            <constraint firstItem="Sd8-Jk-JEN" firstAttribute="leading" secondItem="N0V-h4-qzh" secondAttribute="leadingMargin" id="pTY-F4-ViI"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Tii-YJ-bs2"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="School" id="gcQ-aq-1WH">
+                        <barButtonItem key="rightBarButtonItem" id="7IP-Wl-YZj">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VEz-jj-cdA">
+                                <rect key="frame" x="451" y="7" width="50" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
+                                <inset key="titleEdgeInsets" minX="-25" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Next" image="ic-right-arrow-white">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="didTapNext:" destination="L2P-Fc-Zcm" eventType="touchUpInside" id="ent-k4-pgI"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="emailField" destination="VZ5-xw-InF" id="2S5-4b-PpK"/>
+                        <outlet property="nextButton" destination="VEz-jj-cdA" id="iKp-zw-FDM"/>
+                        <segue destination="UL1-t5-ar3" kind="show" identifier="RegisterEmailToConnectServices" id="Var-ru-86N"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zSb-bi-FVe" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-220" y="284"/>
         </scene>
     </scenes>
     <resources>
