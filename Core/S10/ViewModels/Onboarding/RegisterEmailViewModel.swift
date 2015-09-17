@@ -13,6 +13,8 @@ import Async
 public struct RegisterEmailViewModel {
     public let registerEmailPlaceholder: String
     public let email: MutableProperty<String>
+    public let statusMessage: PropertyOf<String>
+    public let statusColor: PropertyOf<UIColor>
 
     let meteor: MeteorService
 
@@ -23,11 +25,19 @@ public struct RegisterEmailViewModel {
         email = MutableProperty(meteor.user.value.map {
             ($0.email ?? "").lowercaseString
         } ?? "")
+
+        // TODO
+        statusMessage = PropertyOf("")
+        statusColor = PropertyOf(UIColor.grayColor())
     }
 
     public func saveEmail() -> Future<Void, ErrorAlert> {
         let promise = Promise<(), ErrorAlert>()
-        self.meteor.registerEmail(email.value).subscribeError({ error in
+
+        self.meteor.registerEmail(email.value).subscribeNext({ schoolName in
+            // TODO: display this as an animation into statusMessage
+
+        }, error: { error in
             var errorReason : String
             if let reason = error.localizedFailureReason {
                 errorReason = reason
@@ -35,8 +45,8 @@ public struct RegisterEmailViewModel {
                 errorReason = "Please try again later."
             }
             promise.failure(ErrorAlert(title: "Problem with Registration", message: errorReason))
-            }, completed: {
-                promise.success()
+        }, completed: {
+            promise.success()
         })
 
         return promise.future

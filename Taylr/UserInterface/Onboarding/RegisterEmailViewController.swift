@@ -13,6 +13,7 @@ import ReactiveCocoa
 
 class RegisterEmailViewController : UIViewController {
 
+    @IBOutlet weak var schoolNameField: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var emailField: UITextField!
 
@@ -20,8 +21,8 @@ class RegisterEmailViewController : UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         vm.email <->> emailField
+        vm.statusMessage ->> schoolNameField
     }
 
     override func viewWillAppear(animated: Bool) {
