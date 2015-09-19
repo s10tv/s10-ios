@@ -28,8 +28,6 @@
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
-            <string>Cabin-Regular</string>
-            <string>Cabin-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -45,7 +43,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Discover interesting people around you" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="250" translatesAutoresizingMaskIntoConstraints="NO" id="RgB-LM-On4" customClass="DesignableLabel" customModule="Taylr" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discover interesting people around you" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="250" translatesAutoresizingMaskIntoConstraints="NO" id="RgB-LM-On4" customClass="DesignableLabel" customModule="Taylr" customModuleProvider="target">
                                 <rect key="frame" x="195" y="278" width="211" height="44"/>
                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="18"/>
                                 <color key="textColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
@@ -81,10 +79,10 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c0f-ne-erJ" userLabel="Terms &amp; Privacy">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0f-ne-erJ" userLabel="Terms &amp; Privacy">
                                 <rect key="frame" x="245" y="563" width="110" height="29"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Pp-CT-PMh" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Pp-CT-PMh" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="37" height="29"/>
                                         <state key="normal">
                                             <attributedString key="attributedTitle">
@@ -108,7 +106,7 @@
                                             <action selector="viewTerms:" destination="dFw-q9-bre" eventType="touchUpInside" id="7qQ-pM-k90"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ODl-1I-fve" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ODl-1I-fve" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
                                         <rect key="frame" x="67" y="0.0" width="43" height="29"/>
                                         <state key="normal">
                                             <attributedString key="attributedTitle">
@@ -145,7 +143,7 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="0kc-Ov-g9d">
                                 <rect key="frame" x="198" y="100" width="204" height="113"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVd-2q-11O">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVd-2q-11O">
                                 <rect key="frame" x="232" y="468" width="136" height="31"/>
                                 <fontDescription key="fontDescription" name="Cabin-Italic" family="Cabin" pointSize="15"/>
                                 <state key="normal" title="Not you? Tap to logout">
@@ -186,7 +184,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="CreateProfile" clearsSelectionOnViewWillAppear="NO" id="4FY-Nx-fFw" customClass="CreateProfileViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="static" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="0aF-Ww-ePD" customClass="TPKeyboardAvoidingTableView">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexTrackingBackgroundColor" red="0.94901960780000005" green="0.20324405249999999" blue="0.1249939658" alpha="1" colorSpace="calibratedRGB"/>
@@ -194,11 +192,13 @@
                             <tableViewSection id="bZ6-ID-pRi">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="195" id="aaP-b6-Uhf">
+                                        <rect key="frame" x="0.0" y="99" width="375" height="195"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="aaP-b6-Uhf" id="1L0-nh-6NF">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="195"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-photo" translatesAutoresizingMaskIntoConstraints="NO" id="RI3-ac-5pk">
+                                                <imageView clipsSubviews="YES" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="sample-photo" translatesAutoresizingMaskIntoConstraints="NO" id="RI3-ac-5pk">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="195"/>
                                                     <gestureRecognizers/>
                                                     <connections>
@@ -274,19 +274,20 @@
                             <tableViewSection id="Wac-XP-fAN">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="Tmv-wN-Oba">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="314" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Tmv-wN-Oba" id="5F8-K1-dTd">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Swt-3x-U44" userLabel="Horizontal Divider">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Swt-3x-U44" userLabel="Horizontal Divider">
                                                     <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
                                                     <color key="backgroundColor" red="0.93333333330000001" green="0.94117647059999998" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="1" id="rP9-EU-Uhe"/>
                                                     </constraints>
                                                 </view>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K5S-M5-nhA" customClass="JVFloatLabeledTextField">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="K5S-M5-nhA" customClass="JVFloatLabeledTextField">
                                                     <rect key="frame" x="10" y="8" width="167" height="44"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
@@ -299,14 +300,14 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qFp-u9-8YE" userLabel="Vertical Divider">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qFp-u9-8YE" userLabel="Vertical Divider">
                                                     <rect key="frame" x="187" y="0.0" width="1" height="59"/>
                                                     <color key="backgroundColor" red="0.93333333333333335" green="0.94117647058823528" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="1" id="due-gI-89T"/>
                                                     </constraints>
                                                 </view>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R72-mS-4Cy" customClass="JVFloatLabeledTextField">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="R72-mS-4Cy" customClass="JVFloatLabeledTextField">
                                                     <rect key="frame" x="198" y="8" width="167" height="44"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
@@ -319,7 +320,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xzg-gN-hJZ" userLabel="Horizontal Divider">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xzg-gN-hJZ" userLabel="Horizontal Divider">
                                                     <rect key="frame" x="0.0" y="59" width="375" height="1"/>
                                                     <color key="backgroundColor" red="0.93333333330000001" green="0.94117647059999998" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -351,12 +352,13 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="Xgl-pv-VmL">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="374" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xgl-pv-VmL" id="xmd-Ga-0AA">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tagline" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aY0-03-vXb" customClass="JVFloatLabeledTextField">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tagline" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aY0-03-vXb" customClass="JVFloatLabeledTextField">
                                                     <rect key="frame" x="10" y="8" width="355" height="44"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -369,7 +371,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eJq-n2-O8k" userLabel="Horizontal Divider">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eJq-n2-O8k" userLabel="Horizontal Divider">
                                                     <rect key="frame" x="0.0" y="59" width="375" height="1"/>
                                                     <color key="backgroundColor" red="0.93333333330000001" green="0.94117647059999998" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -395,9 +397,10 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="NYa-St-Knz">
-                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="434" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NYa-St-Knz" id="i4R-TL-1aZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNz-Zb-kjq" customClass="JVFloatLabeledTextView">
@@ -412,7 +415,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </textView>
-                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1x7-sO-vKM" userLabel="Horizontal Divider">
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1x7-sO-vKM" userLabel="Horizontal Divider">
                                                     <rect key="frame" x="0.0" y="69" width="375" height="1"/>
                                                     <color key="backgroundColor" red="0.93333333330000001" green="0.94117647059999998" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -507,19 +510,21 @@
             <objects>
                 <tableViewController storyboardIdentifier="ConnectServices" id="UL1-t5-ar3" customClass="ConnectServicesViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="6rs-zh-bnt">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93299722671508789" green="0.94112014770507812" blue="0.94931834936141968" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <sections>
                             <tableViewSection id="J1u-E8-ygB">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="106" id="hSm-O9-Jix">
+                                        <rect key="frame" x="0.0" y="64" width="375" height="106"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="hSm-O9-Jix" id="0Sv-nm-9H2">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="106"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DKH-wm-IHB">
-                                                    <rect key="frame" x="8" y="8" width="584" height="90"/>
+                                                    <rect key="frame" x="8" y="8" width="359" height="90"/>
                                                     <string key="text">We use the following services to fill out your Taylr profile and match you with other people with similar interest. The more services you connect, the better your matches will be.</string>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="18"/>
                                                     <nil key="highlightedColor"/>
@@ -536,12 +541,14 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="316" id="b2w-R9-bGF">
+                                        <rect key="frame" x="0.0" y="170" width="375" height="316"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="b2w-R9-bGF" id="aCV-za-pFh">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="316"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GFf-eC-z7L">
-                                                    <rect key="frame" x="8" y="8" width="584" height="300"/>
+                                                    <rect key="frame" x="8" y="8" width="359" height="300"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
@@ -615,28 +622,28 @@
                         <viewControllerLayoutGuide type="bottom" id="Fq3-MA-ugK"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="EBe-1w-rl6">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="The username you select will be permanent." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gUv-yp-E8l">
-                                <rect key="frame" x="16" y="64" width="568" height="22"/>
+                                <rect key="frame" x="16" y="64" width="343" height="22"/>
                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="18"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="5Z7-AZ-EkO">
-                                <rect key="frame" x="16" y="101" width="568" height="50"/>
+                                <rect key="frame" x="16" y="101" width="343" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="cduncan" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="YYM-ra-ksE">
-                                        <rect key="frame" x="8" y="0.0" width="516" height="50"/>
+                                        <rect key="frame" x="8" y="0.0" width="291" height="50"/>
                                         <fontDescription key="fontDescription" name="Cabin-Medium" family="Cabin" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-checkmark" translatesAutoresizingMaskIntoConstraints="NO" id="3Ce-pj-Mcy">
-                                        <rect key="frame" x="532" y="11" width="28" height="28"/>
+                                        <rect key="frame" x="307" y="11" width="28" height="28"/>
                                     </imageView>
                                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="Mor-tM-I7n">
-                                        <rect key="frame" x="536" y="15" width="20" height="20"/>
+                                        <rect key="frame" x="311" y="15" width="20" height="20"/>
                                     </activityIndicatorView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -659,7 +666,7 @@
                                 </userDefinedRuntimeAttributes>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="username is already taken" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0w8-t4-wka">
-                                <rect key="frame" x="213" y="159" width="175" height="20"/>
+                                <rect key="frame" x="101" y="159" width="175" height="20"/>
                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                 <color key="textColor" red="0.92029339075088501" green="0.0" blue="0.065614230930805206" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -697,23 +704,23 @@
             </objects>
             <point key="canvasLocation" x="1924" y="284"/>
         </scene>
-        <!--RegisterSchool-->
+        <!--VerifyCode-->
         <scene sceneID="ird-U3-ocg">
             <objects>
-                <viewController storyboardIdentifier="RegisterEmail" id="L2P-Fc-Zcm" userLabel="RegisterSchool" customClass="RegisterEmailViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RegisterEmail" id="L2P-Fc-Zcm" userLabel="VerifyCode" customClass="VerifyCodeViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gTq-GE-3Kz"/>
                         <viewControllerLayoutGuide type="bottom" id="bk7-8I-Q2b"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="N0V-h4-qzh">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UUq-Uv-n6C">
-                                <rect key="frame" x="16" y="138" width="568" height="50"/>
+                                <rect key="frame" x="16" y="155" width="343" height="50"/>
                                 <subviews>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="tonyx@student.ubc.ca" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VZ5-xw-InF">
-                                        <rect key="frame" x="8" y="0.0" width="516" height="50"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="i.e. 183502" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VZ5-xw-InF">
+                                        <rect key="frame" x="8" y="0.0" width="291" height="50"/>
                                         <fontDescription key="fontDescription" name="Cabin-Medium" family="Cabin" pointSize="18"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
@@ -732,40 +739,37 @@
                                         <real key="value" value="3"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="pVx-m8-FBZ"/>
+                                    </mask>
+                                </variation>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylr is exclusively for university students." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXK-Fa-VvT">
-                                <rect key="frame" x="16" y="64" width="568" height="22"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylr is currently only available to students at the University of British Columbia. Enter your invitation code to get started" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXK-Fa-VvT">
+                                <rect key="frame" x="16" y="64" width="343" height="66"/>
                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="18"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your .edu email address to confirm your school." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sd8-Jk-JEN">
-                                <rect key="frame" x="16" y="101" width="568" height="22"/>
-                                <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="18"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="University of British Columbia" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xmx-km-umd">
-                                <rect key="frame" x="201" y="203" width="200" height="20"/>
-                                <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
-                                <color key="textColor" white="0.45000000000000001" alpha="1" colorSpace="calibratedWhite"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qfF-rF-JkU">
+                                <rect key="frame" x="120" y="568" width="134" height="30"/>
+                                <state key="normal" title="Don't have a code?">
+                                    <color key="titleColor" red="0.73333333333333328" green="0.73333333333333328" blue="0.73333333333333328" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.93299722669999996" green="0.94112014769999996" blue="0.94931834940000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="UUq-Uv-n6C" firstAttribute="trailing" secondItem="N0V-h4-qzh" secondAttribute="trailingMargin" id="4PN-K9-rLL"/>
-                            <constraint firstItem="Sd8-Jk-JEN" firstAttribute="top" secondItem="lXK-Fa-VvT" secondAttribute="bottom" constant="15" id="8Az-E7-8aK"/>
                             <constraint firstItem="UUq-Uv-n6C" firstAttribute="leading" secondItem="N0V-h4-qzh" secondAttribute="leadingMargin" id="Hyj-aC-URz"/>
-                            <constraint firstItem="xmx-km-umd" firstAttribute="top" secondItem="VZ5-xw-InF" secondAttribute="bottom" constant="15" id="Lgw-Md-N5R"/>
                             <constraint firstItem="lXK-Fa-VvT" firstAttribute="leading" secondItem="N0V-h4-qzh" secondAttribute="leadingMargin" id="NLV-v3-jBk"/>
+                            <constraint firstItem="VZ5-xw-InF" firstAttribute="top" secondItem="lXK-Fa-VvT" secondAttribute="bottom" constant="25" id="PSN-RS-nTm"/>
                             <constraint firstItem="lXK-Fa-VvT" firstAttribute="top" secondItem="gTq-GE-3Kz" secondAttribute="bottom" constant="20" id="QAR-LJ-gVp"/>
-                            <constraint firstAttribute="centerX" secondItem="xmx-km-umd" secondAttribute="centerX" constant="-1" id="S7i-zi-bBE"/>
-                            <constraint firstItem="UUq-Uv-n6C" firstAttribute="top" secondItem="Sd8-Jk-JEN" secondAttribute="bottom" constant="15" id="SLf-H4-Jwo"/>
                             <constraint firstAttribute="trailingMargin" secondItem="lXK-Fa-VvT" secondAttribute="trailing" id="Sjp-o6-30U"/>
                             <constraint firstItem="UUq-Uv-n6C" firstAttribute="top" secondItem="lXK-Fa-VvT" secondAttribute="bottom" constant="15" id="Tii-YJ-bs2"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Sd8-Jk-JEN" secondAttribute="trailing" id="jGg-oJ-w8B"/>
-                            <constraint firstItem="Sd8-Jk-JEN" firstAttribute="leading" secondItem="N0V-h4-qzh" secondAttribute="leadingMargin" id="pTY-F4-ViI"/>
+                            <constraint firstAttribute="centerX" secondItem="qfF-rF-JkU" secondAttribute="centerX" id="dnf-kR-2G5"/>
+                            <constraint firstItem="bk7-8I-Q2b" firstAttribute="top" secondItem="qfF-rF-JkU" secondAttribute="bottom" constant="25" id="rRj-o5-NIA"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -774,10 +778,10 @@
                         </variation>
                     </view>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="School" id="gcQ-aq-1WH">
+                    <navigationItem key="navigationItem" title="Welcome" id="gcQ-aq-1WH">
                         <barButtonItem key="rightBarButtonItem" id="7IP-Wl-YZj">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="VEz-jj-cdA">
-                                <rect key="frame" x="451" y="7" width="50" height="22"/>
+                                <rect key="frame" x="309" y="11" width="50" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                 <inset key="titleEdgeInsets" minX="-25" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -793,10 +797,10 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
-                        <outlet property="emailField" destination="VZ5-xw-InF" id="2S5-4b-PpK"/>
                         <outlet property="nextButton" destination="VEz-jj-cdA" id="iKp-zw-FDM"/>
-                        <outlet property="schoolNameField" destination="xmx-km-umd" id="VOj-Da-zwA"/>
+                        <outlet property="verificationTokenField" destination="VZ5-xw-InF" id="o6p-SB-HyY"/>
                         <segue destination="UL1-t5-ar3" kind="show" identifier="RegisterEmailToConnectServices" id="Var-ru-86N"/>
                     </connections>
                 </viewController>

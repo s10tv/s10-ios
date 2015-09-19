@@ -129,8 +129,8 @@ public class MeteorService : NSObject {
         return call("isUsernameTaken", username).future |> map { $0 as! Bool }
     }
 
-    func registerEmail(email: String) -> RACSignal {
-        return meteor.call("addNetwork", [email])
+    func verifyCode(code: String) -> RACSignal {
+        return meteor.call("confirmInviteCode", [code])
     }
 
     func confirmRegistration(username: String) -> RACSignal {

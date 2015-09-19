@@ -27,7 +27,7 @@ class TaylrEnvironment : Environment {
     }
     
     let audience : Audience
-    let serverProtocol = "wss"
+    let serverProtocol = "ws"
     let serverHostName: String
     var serverURL: NSURL {
         return NSURL("\(serverProtocol)://\(serverHostName)/websocket")
@@ -47,7 +47,7 @@ class TaylrEnvironment : Environment {
         self.audience = audience
         switch audience {
             case .Dev:
-                serverHostName = "s10-dev.herokuapp.com"
+                serverHostName = "localhost:3000"
 //                serverHostName = "10.1.1.12:3000"
 //                serverHostName = "s10-beta.herokuapp.com"
                 bugfenderAppToken = "RBsiKkpkyiXUW2Sk50JTKTKUYlNpXsFn"

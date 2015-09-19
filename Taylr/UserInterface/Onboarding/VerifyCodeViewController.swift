@@ -11,18 +11,16 @@ import Bond
 import Core
 import ReactiveCocoa
 
-class RegisterEmailViewController : UIViewController {
+class VerifyCodeViewController : UIViewController {
 
-    @IBOutlet weak var schoolNameField: UILabel!
     @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var verificationTokenField: UITextField!
 
-    let vm = RegisterEmailViewModel(meteor: Meteor)
+    let vm = VerifyCodeViewModel(meteor: Meteor)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        vm.email <->> emailField
-        vm.statusMessage ->> schoolNameField
+        vm.code <->> verificationTokenField
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -32,8 +30,8 @@ class RegisterEmailViewController : UIViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        emailField.becomeFirstResponder()
-        Globals.analyticsService.screen("Register School")
+        verificationTokenField.becomeFirstResponder()
+        Globals.analyticsService.screen("Verify Invite Code")
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -44,10 +42,9 @@ class RegisterEmailViewController : UIViewController {
     }
 
     // MARK: -
-
     @IBAction func didTapNext(sender: AnyObject) {
         wrapFuture {
-            self.vm.saveEmail()
+            self.vm.verifyCode()
         }.onSuccess {
             self.performSegue(.RegisterEmailToConnectServices)
         }

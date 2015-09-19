@@ -10,9 +10,8 @@ import Foundation
 import ReactiveCocoa
 import Async
 
-public struct RegisterEmailViewModel {
-    public let registerEmailPlaceholder: String
-    public let email: MutableProperty<String>
+public struct VerifyCodeViewModel {
+    public let code: MutableProperty<String>
     public let statusMessage: PropertyOf<String>
     public let statusColor: PropertyOf<UIColor>
 
@@ -20,21 +19,17 @@ public struct RegisterEmailViewModel {
 
     public init(meteor: MeteorService) {
         self.meteor = meteor
-
-        registerEmailPlaceholder = "School"
-        email = MutableProperty(meteor.user.value.map {
-            ($0.email ?? "").lowercaseString
-        } ?? "")
+        code = MutableProperty("")
 
         // TODO
         statusMessage = PropertyOf("")
         statusColor = PropertyOf(UIColor.grayColor())
     }
 
-    public func saveEmail() -> Future<Void, ErrorAlert> {
+    public func verifyCode() -> Future<Void, ErrorAlert> {
         let promise = Promise<(), ErrorAlert>()
 
-        self.meteor.registerEmail(email.value).subscribeNext({ schoolName in
+        self.meteor.verifyCode(code.value).subscribeNext({ schoolName in
             // TODO: display this as an animation into statusMessage
 
         }, error: { error in
@@ -44,7 +39,7 @@ public struct RegisterEmailViewModel {
             } else {
                 errorReason = "Please try again later."
             }
-            promise.failure(ErrorAlert(title: "Problem with Registration", message: errorReason))
+            promise.failure(ErrorAlert(title: "Could not verify your invitation code.", message: errorReason))
         }, completed: {
             promise.success()
         })
