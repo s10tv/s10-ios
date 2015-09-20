@@ -16,7 +16,6 @@ public enum CollectionViewControllerStoryboardIdentifier : String {
 public enum SegueIdentifier : String {
     case ConnectServicesToCreateProfile = "ConnectServicesToCreateProfile"
     case ConversationToProfile = "ConversationToProfile"
-    case CreateProfileToUsername = "CreateProfileToUsername"
     case DiscoverToConversation = "DiscoverToConversation"
     case IntegrationsToWeb = "IntegrationsToWeb"
     case LoginToRegisterEmail = "LoginToRegisterEmail"

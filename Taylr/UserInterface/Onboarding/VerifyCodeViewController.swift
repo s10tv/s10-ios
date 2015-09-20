@@ -12,7 +12,7 @@ import Core
 import ReactiveCocoa
 
 class VerifyCodeViewController : UIViewController {
-
+    @IBOutlet weak var errorLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var verificationTokenField: UITextField!
 
@@ -21,6 +21,7 @@ class VerifyCodeViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         vm.code <->> verificationTokenField
+        vm.statusMessage ->> errorLabel
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -42,6 +43,12 @@ class VerifyCodeViewController : UIViewController {
     }
 
     // MARK: -
+    @IBAction func didPressShareButton(sender: AnyObject) {
+        let shareText = "Anyone have a Taylr invite code?"
+        let activity = UIActivityViewController(activityItems: [shareText], applicationActivities: nil)
+        presentViewController(activity)
+    }
+
     @IBAction func didTapNext(sender: AnyObject) {
         wrapFuture {
             self.vm.verifyCode()

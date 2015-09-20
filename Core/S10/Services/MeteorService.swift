@@ -123,18 +123,13 @@ public class MeteorService : NSObject {
             ]
         ]]).delay(0.1)
     }
-    
-    
-    func isUsernameTaken(username: String) -> Future<Bool, NSError> {
-        return call("isUsernameTaken", username).future |> map { $0 as! Bool }
-    }
 
     func verifyCode(code: String) -> RACSignal {
         return meteor.call("confirmInviteCode", [code])
     }
 
-    func confirmRegistration(username: String) -> RACSignal {
-        return meteor.call("confirmRegistration", [username])
+    func confirmRegistration() -> RACSignal {
+        return meteor.call("confirmRegistration", [])
     }
 
     func loginWithFacebook(#accessToken: String, expiresAt: NSDate) -> RACSignal {

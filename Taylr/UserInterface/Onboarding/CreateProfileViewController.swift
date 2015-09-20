@@ -19,6 +19,8 @@ class CreateProfileViewController : UITableViewController {
     @IBOutlet weak var coverView: UIImageView!
     @IBOutlet weak var firstNameField: JVFloatLabeledTextField!
     @IBOutlet weak var lastNameField: JVFloatLabeledTextField!
+    @IBOutlet weak var majorField: JVFloatLabeledTextField!
+    @IBOutlet weak var yearField: JVFloatLabeledTextField!
     @IBOutlet weak var taglineField: JVFloatLabeledTextField!
     @IBOutlet weak var hometownField: JVFloatLabeledTextField!
     @IBOutlet weak var aboutView: JVFloatLabeledTextView!
@@ -47,6 +49,8 @@ class CreateProfileViewController : UITableViewController {
         vm.firstName <->> firstNameField
         vm.lastName <->> lastNameField
         vm.hometown <->> hometownField
+        vm.major <->> majorField
+        vm.year <->> yearField
         vm.about <->> aboutView
         vm.tagline <->> taglineField
         vm.avatar ->> avatarView.imageBond
@@ -79,11 +83,11 @@ class CreateProfileViewController : UITableViewController {
         }
     }
 
-    @IBAction func didSelectNext(sender: AnyObject) {
+    @IBAction func didTapDone(sender: AnyObject) {
         wrapFuture(showProgress: true) {
-            vm.saveProfile()
+            self.vm.saveProfile()
         }.onSuccess { [weak self] in
-            self?.performSegue(.CreateProfileToUsername)
+            self?.performSegue(SegueIdentifier.Main_RootTab)
         }
     }
 }

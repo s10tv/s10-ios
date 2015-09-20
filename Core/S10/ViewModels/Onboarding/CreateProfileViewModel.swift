@@ -17,6 +17,8 @@ public struct CreateProfileViewModel {
     public let cover: MutableProperty<Image?>
     public let firstName: MutableProperty<String>
     public let lastName: MutableProperty<String>
+    public let major: MutableProperty<String>
+    public let year: MutableProperty<String>
     public let tagline: MutableProperty<String>
     public let hometown: MutableProperty<String>
     public let about: MutableProperty<String>
@@ -30,11 +32,13 @@ public struct CreateProfileViewModel {
         // TODO: Think of better pattern
         firstName = MutableProperty(user.firstName ?? "")
         lastName = MutableProperty(user.lastName ?? "")
-        tagline = MutableProperty("") // TODO: Turn this into major and grad year!@@!@#@#
+        tagline = MutableProperty(user.tagline ?? "")
         about = MutableProperty(user.about ?? "")
         avatar = user.pAvatar() |> mutable
         cover = user.pCover() |> mutable
         hometown = MutableProperty(user.hometown ?? "")
+        major = MutableProperty(user.major ?? "")
+        year = MutableProperty(user.gradYear ?? "")
         operationQueue = NSOperationQueue()
         let queue = operationQueue
         uploadImageAction = Action { tuple -> Future<(), ErrorAlert> in
@@ -77,8 +81,16 @@ public struct CreateProfileViewModel {
             if let hometown = hometown.value.nonBlank() {
                 fields["hometown"] = hometown
             }
+            if let major = major.value.nonBlank() {
+                fields["major"] = major
+            }
+            if let year = year.value.nonBlank() {
+                fields["gradYear"] = year
+            }
 
-            self.meteor.updateProfile(fields).subscribeError({ error in
+            self.meteor.updateProfile(fields).then {
+                self.meteor.confirmRegistration()
+            }.subscribeError({ error in
                 var errorReason : String
                 if let reason = error.localizedFailureReason {
                     errorReason = reason

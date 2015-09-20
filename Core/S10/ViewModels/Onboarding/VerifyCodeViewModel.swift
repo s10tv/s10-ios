@@ -11,9 +11,10 @@ import ReactiveCocoa
 import Async
 
 public struct VerifyCodeViewModel {
+    let _statusMessage: MutableProperty<String>
+
     public let code: MutableProperty<String>
     public let statusMessage: PropertyOf<String>
-    public let statusColor: PropertyOf<UIColor>
 
     let meteor: MeteorService
 
@@ -21,9 +22,8 @@ public struct VerifyCodeViewModel {
         self.meteor = meteor
         code = MutableProperty("")
 
-        // TODO
-        statusMessage = PropertyOf("")
-        statusColor = PropertyOf(UIColor.grayColor())
+        _statusMessage = MutableProperty("")
+        statusMessage = PropertyOf(_statusMessage)
     }
 
     public func verifyCode() -> Future<Void, ErrorAlert> {
@@ -39,6 +39,9 @@ public struct VerifyCodeViewModel {
             } else {
                 errorReason = "Please try again later."
             }
+
+            self._statusMessage.value = errorReason
+
             promise.failure(ErrorAlert(title: "Registration Problem", message: errorReason))
         }, completed: {
             promise.success()
@@ -46,4 +49,6 @@ public struct VerifyCodeViewModel {
 
         return promise.future
     }
+
+
 }
