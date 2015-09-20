@@ -14,13 +14,13 @@ import Core
 import Bond
 
 class CreateProfileViewController : UITableViewController {
-    
     @IBOutlet weak var coverCell: UITableViewCell!
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var coverView: UIImageView!
     @IBOutlet weak var firstNameField: JVFloatLabeledTextField!
     @IBOutlet weak var lastNameField: JVFloatLabeledTextField!
     @IBOutlet weak var taglineField: JVFloatLabeledTextField!
+    @IBOutlet weak var hometownField: JVFloatLabeledTextField!
     @IBOutlet weak var aboutView: JVFloatLabeledTextView!
     
     var vm: CreateProfileViewModel!
@@ -36,6 +36,7 @@ class CreateProfileViewController : UITableViewController {
         avatarView.makeCircular()
         avatarView.dynPlaceholderImage = avatarView.image
         coverView.dynPlaceholderImage = coverView.image
+        hometownField.setPlaceholder("Hometown (optional)", floatingTitle: "Hometown (optional)")
         aboutView.floatingLabelFont = UIFont(.cabinRegular, size: 11)
         aboutView.setPlaceholder("About (Optional)", floatingTitle: "About")
         taglineField.setPlaceholder("Tagline. (e.g. New to SF, hails from NY)", floatingTitle: "Tagline")
@@ -45,6 +46,7 @@ class CreateProfileViewController : UITableViewController {
         vm = CreateProfileViewModel(meteor: Meteor)
         vm.firstName <->> firstNameField
         vm.lastName <->> lastNameField
+        vm.hometown <->> hometownField
         vm.about <->> aboutView
         vm.tagline <->> taglineField
         vm.avatar ->> avatarView.imageBond

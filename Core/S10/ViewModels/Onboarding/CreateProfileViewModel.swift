@@ -18,6 +18,7 @@ public struct CreateProfileViewModel {
     public let firstName: MutableProperty<String>
     public let lastName: MutableProperty<String>
     public let tagline: MutableProperty<String>
+    public let hometown: MutableProperty<String>
     public let about: MutableProperty<String>
     public let uploadImageAction: Action<(image: UIImage, type: PhotoTaskType), (), ErrorAlert>
     
@@ -33,6 +34,7 @@ public struct CreateProfileViewModel {
         about = MutableProperty(user.about ?? "")
         avatar = user.pAvatar() |> mutable
         cover = user.pCover() |> mutable
+        hometown = MutableProperty(user.hometown ?? "")
         operationQueue = NSOperationQueue()
         let queue = operationQueue
         uploadImageAction = Action { tuple -> Future<(), ErrorAlert> in
@@ -71,6 +73,9 @@ public struct CreateProfileViewModel {
             }
             if let about = about.value.nonBlank() {
                 fields["about"] = about
+            }
+            if let hometown = hometown.value.nonBlank() {
+                fields["hometown"] = hometown
             }
 
             self.meteor.updateProfile(fields).subscribeError({ error in

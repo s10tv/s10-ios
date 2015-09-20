@@ -39,7 +39,7 @@ public struct VerifyCodeViewModel {
             } else {
                 errorReason = "Please try again later."
             }
-            promise.failure(ErrorAlert(title: "Could not verify your invitation code.", message: errorReason))
+            promise.failure(ErrorAlert(title: "Registration Problem", message: errorReason))
         }, completed: {
             promise.success()
         })
