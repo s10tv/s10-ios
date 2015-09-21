@@ -35,9 +35,10 @@ extension User {
     func pDisplayName() -> PropertyOf<String> {
         return PropertyOf("", combineLatest(
             dyn(.firstName).producer,
-            dyn(.lastName).producer
+            dyn(.lastName).producer,
+            dyn(.gradYear).producer
         ) |> map {
-            Formatters.formatFullname($0 as? String, lastName: $1 as? String)
+            Formatters.formatFullname($0 as? String, lastName: $1 as? String, gradYear: $2 as? String)
         })
     }
     
