@@ -15,10 +15,13 @@ import ReactiveCocoa
 class CandidateCell : UICollectionViewCell, BindableCell {
     typealias ViewModel = CurrentCandidateViewModel
     
+    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var coverView: UIImageView!
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var taglineLabel: UILabel!
+    @IBOutlet weak var majorLabel: UILabel!
+    @IBOutlet weak var hometownLabel: UILabel!
+    @IBOutlet weak var reasonLabel: DesignableLabel!
     @IBOutlet weak var serviceIconsView: UICollectionView!
     
 //    func bind(vm: CandidateViewModel) {
@@ -34,7 +37,7 @@ class CandidateCell : UICollectionViewCell, BindableCell {
         coverView.sd_setImageWithURL(vm.cover?.url)
         avatarView.sd_setImageWithURL(vm.avatar?.url)
         nameLabel.text = vm.displayName
-        taglineLabel.text = vm.reason
+        reasonLabel.rawText = vm.reason
         
         vm.profileIcons.map(serviceIconsView.factory(ProfileIconCell)) ->> serviceIconsView
         serviceIconsView.invalidateIntrinsicContentSize()
@@ -43,9 +46,9 @@ class CandidateCell : UICollectionViewCell, BindableCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         avatarView.image = nil
+        coverView.image = nil
         avatarView.unbindDynImageURL()
-        nameLabel.designatedBond.unbindAll()
-        taglineLabel.designatedBond.unbindAll()
+        coverView.unbindDynImageURL()
         serviceIconsView.designatedBond.unbindAll()
     }
     
