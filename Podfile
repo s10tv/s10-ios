@@ -26,6 +26,7 @@ target :Core do
     # UI
     pod 'Cartography', '~> 0.5'
     pod 'EDColor', '~> 1.0'
+    pod 'JBKenBurnsView', '~> 1.0'
 
     # ViewModels
     pod 'DateTools', '~> 1.6'

@@ -39,11 +39,21 @@
                         <viewControllerLayoutGuide type="bottom" id="hxv-04-ouP"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="CmC-zd-xMf">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Discover interesting people around you" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="250" translatesAutoresizingMaskIntoConstraints="NO" id="RgB-LM-On4" customClass="DesignableLabel" customModule="Taylr" customModuleProvider="target">
-                                <rect key="frame" x="195" y="278" width="211" height="44"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VLL-6c-KCb" customClass="JBKenBurnsView">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <color key="backgroundColor" red="1" green="0.31398414759999999" blue="0.32039438910000001" alpha="1" colorSpace="calibratedRGB"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Branch Out" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sxY-tb-2Q3">
+                                <rect key="frame" x="125" y="319" width="125" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get introduced to one new classmate a day." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="250" translatesAutoresizingMaskIntoConstraints="NO" id="RgB-LM-On4" customClass="DesignableLabel" customModule="Taylr" customModuleProvider="target">
+                                <rect key="frame" x="84" y="379" width="207" height="44"/>
                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="18"/>
                                 <color key="textColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -55,14 +65,14 @@
                                 </userDefinedRuntimeAttributes>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isY-Ks-GfE" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
-                                <rect key="frame" x="200" y="410" width="200" height="50"/>
+                                <rect key="frame" x="88" y="517" width="199" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="3Tw-Lk-b0L"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="18"/>
                                 <inset key="titleEdgeInsets" minX="10" minY="0.0" maxX="10" maxY="0.0"/>
-                                <state key="normal" title="Log in with phone number">
+                                <state key="normal" title="Login with Phone Number">
                                     <color key="titleColor" red="0.94771684653267474" green="1" blue="0.98100255936701775" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -79,7 +89,7 @@
                                 </userDefinedRuntimeAttributes>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0f-ne-erJ" userLabel="Terms &amp; Privacy">
-                                <rect key="frame" x="245" y="563" width="110" height="29"/>
+                                <rect key="frame" x="132" y="630" width="110" height="29"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Pp-CT-PMh" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="37" height="29"/>
@@ -140,10 +150,10 @@
                                 </constraints>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo" translatesAutoresizingMaskIntoConstraints="NO" id="0kc-Ov-g9d">
-                                <rect key="frame" x="198" y="100" width="204" height="113"/>
+                                <rect key="frame" x="85" y="80" width="204" height="113"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVd-2q-11O">
-                                <rect key="frame" x="232" y="468" width="136" height="31"/>
+                                <rect key="frame" x="119" y="575" width="136" height="31"/>
                                 <fontDescription key="fontDescription" name="Cabin-Italic" family="Cabin" pointSize="15"/>
                                 <state key="normal" title="Not you? Tap to logout">
                                     <color key="titleColor" red="0.95200854539871216" green="0.98464363813400269" blue="0.97639530897140503" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -151,23 +161,30 @@
                                 </state>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" red="0.29019607843137252" green="0.078431372549019607" blue="0.5490196078431373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="hxv-04-ouP" firstAttribute="top" secondItem="isY-Ks-GfE" secondAttribute="bottom" constant="140" id="5lr-7z-EwM"/>
-                            <constraint firstAttribute="centerY" secondItem="RgB-LM-On4" secondAttribute="centerY" id="9m2-1d-vAf"/>
+                            <constraint firstItem="VLL-6c-KCb" firstAttribute="leading" secondItem="CmC-zd-xMf" secondAttribute="leading" id="5RH-Ub-vcU"/>
+                            <constraint firstItem="hxv-04-ouP" firstAttribute="top" secondItem="isY-Ks-GfE" secondAttribute="bottom" constant="100" id="5lr-7z-EwM"/>
+                            <constraint firstAttribute="trailing" secondItem="VLL-6c-KCb" secondAttribute="trailing" id="Dan-pM-vHq"/>
                             <constraint firstItem="xVd-2q-11O" firstAttribute="top" secondItem="isY-Ks-GfE" secondAttribute="bottom" constant="8" id="Dkh-RN-NVh"/>
                             <constraint firstItem="xVd-2q-11O" firstAttribute="centerX" secondItem="isY-Ks-GfE" secondAttribute="centerX" id="FF5-fB-8IK"/>
                             <constraint firstItem="hxv-04-ouP" firstAttribute="top" relation="greaterThanOrEqual" secondItem="0kc-Ov-g9d" secondAttribute="bottom" constant="300" id="H1w-X7-dDn"/>
                             <constraint firstAttribute="bottom" secondItem="c0f-ne-erJ" secondAttribute="bottom" constant="8" id="IPA-LP-kRP"/>
-                            <constraint firstItem="0kc-Ov-g9d" firstAttribute="top" secondItem="hwB-lg-PKL" secondAttribute="bottom" priority="749" constant="100" id="Pk8-Xl-B9n"/>
-                            <constraint firstAttribute="centerX" secondItem="RgB-LM-On4" secondAttribute="centerX" id="Zzg-ng-olR"/>
+                            <constraint firstItem="VLL-6c-KCb" firstAttribute="top" secondItem="CmC-zd-xMf" secondAttribute="top" id="L4V-jL-00y"/>
+                            <constraint firstAttribute="centerX" secondItem="sxY-tb-2Q3" secondAttribute="centerX" id="N7W-av-DJU"/>
+                            <constraint firstAttribute="centerY" secondItem="sxY-tb-2Q3" secondAttribute="centerY" id="OaA-0d-hl0"/>
+                            <constraint firstItem="0kc-Ov-g9d" firstAttribute="top" secondItem="hwB-lg-PKL" secondAttribute="bottom" priority="749" constant="80" id="Pk8-Xl-B9n"/>
+                            <constraint firstAttribute="bottom" secondItem="VLL-6c-KCb" secondAttribute="bottom" id="UCN-ue-mW5"/>
+                            <constraint firstAttribute="centerX" secondItem="RgB-LM-On4" secondAttribute="centerX" id="bTt-CC-tVU"/>
                             <constraint firstAttribute="centerX" secondItem="c0f-ne-erJ" secondAttribute="centerX" id="cle-r0-H9A"/>
                             <constraint firstAttribute="centerX" secondItem="0kc-Ov-g9d" secondAttribute="centerX" id="jkU-iJ-mp9"/>
+                            <constraint firstItem="RgB-LM-On4" firstAttribute="top" secondItem="sxY-tb-2Q3" secondAttribute="bottom" constant="30" id="o7L-ba-Trl"/>
                             <constraint firstAttribute="centerX" secondItem="isY-Ks-GfE" secondAttribute="centerX" id="rqt-IB-Zsr"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
+                        <outlet property="kenView" destination="VLL-6c-KCb" id="YX9-TP-XV1"/>
                         <outlet property="loginButton" destination="isY-Ks-GfE" id="zst-37-Oho"/>
                         <outlet property="logoutButton" destination="xVd-2q-11O" id="uyB-oZ-w27"/>
                         <segue destination="4LR-tW-qvj" kind="custom" identifier="Main_RootTab" customClass="LinkedStoryboardPushSegue" id="ztg-XZ-LWS"/>
@@ -176,7 +193,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lbl-0u-moe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-998" y="284"/>
+            <point key="canvasLocation" x="-998.5" y="283.5"/>
         </scene>
         <!--Create Profile-->
         <scene sceneID="ziZ-yX-Hqk">
@@ -859,6 +876,6 @@
         <image name="sample-photo" width="1242" height="660"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SNP-Rr-KYN"/>
+        <segue reference="ztg-XZ-LWS"/>
     </inferredMetricsTieBreakers>
 </document>

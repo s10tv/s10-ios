@@ -6,6 +6,7 @@
 //  Copyright (c) 2015 Serendipity. All rights reserved.
 //
 
+import JBKenBurnsView
 import Foundation
 import PKHUD
 import DigitsKit
@@ -16,6 +17,7 @@ import Core
 
 class LoginViewController : BaseViewController {
 
+    @IBOutlet var kenView: JBKenBurnsView!
     @IBOutlet weak var loginButton: DesignableButton!
     @IBOutlet weak var logoutButton: UIButton!
     
@@ -25,9 +27,15 @@ class LoginViewController : BaseViewController {
         super.commonInit()
         screenName = "Login"
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        self.kenView.animateWithImages([UIImage(named: "college1")!, UIImage(named: "college2")!,
+            UIImage(named: "college3")!],
+            transitionDuration: 10, initialDelay: 0, loop: true, isLandscape: true)
+
+
         vm.loginButtonText ->> loginButton.titleBond
         vm.logoutButtonText ->> logoutButton.titleBond
         vm.logoutAction <~ logoutButton

@@ -36,6 +36,7 @@ PODS:
   - Heap (2.1.5)
   - InflectorKit (0.0.1)
   - INTULocationManager (3.0.3)
+  - JBKenBurnsView (1.0)
   - JSBadgeView (1.4.1)
   - JVFloatLabeledTextField (1.1.0)
   - Meteor (0.1.4):
@@ -105,6 +106,7 @@ DEPENDENCIES:
   - FormatterKit/TimeIntervalFormatter (~> 1.8)
   - Heap (~> 2.1)
   - INTULocationManager (~> 3.0)
+  - JBKenBurnsView (~> 1.0)
   - JSBadgeView (~> 1.4)
   - JVFloatLabeledTextField (~> 1.1)
   - Meteor (from `https://github.com/tonyxiao/meteor-ios`, branch `dev`)
@@ -185,6 +187,7 @@ SPEC CHECKSUMS:
   Heap: 9d41b3d07bc86c9127364b638c710d854390a113
   InflectorKit: 64497199e6764f4d8337cab7f700a77b13d76a73
   INTULocationManager: e79327803a163f5fec28eb042bb124ed0c6e4876
+  JBKenBurnsView: e40d10fcd4fbeb652c29fa431d4748780a4672ff
   JSBadgeView: 3861ddee41094284d9468e6d0af5107f703aaac5
   JVFloatLabeledTextField: ea4a3d8387ddd43724c472bb2b8ab39b79af05d4
   Meteor: e061bb07cbce6a99b2adf6fdde6a83f08e40da8c

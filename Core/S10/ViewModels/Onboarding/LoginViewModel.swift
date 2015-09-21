@@ -45,7 +45,7 @@ public struct LoginViewModel {
         loginButtonText = delegate.loggedInPhone |> map {
             $0.map {
                 "Continue as \($0)"
-            } ?? "Login with phone number"
+            } ?? "Login with Phone Number"
         }
         logoutButtonText = delegate.loggedInPhone |> map {
             $0 != nil ? "Not you? Tap to logout." : ""
