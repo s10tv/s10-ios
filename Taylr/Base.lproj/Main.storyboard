@@ -386,17 +386,20 @@
                     <navigationItem key="navigationItem" id="3Lz-qe-3sD">
                         <nil key="title"/>
                         <view key="titleView" contentMode="scaleToFill" id="UsO-Mo-HgH">
-                            <rect key="frame" x="268" y="5" width="64" height="35"/>
+                            <rect key="frame" x="255" y="5" width="91" height="35"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="discover-logo" translatesAutoresizingMaskIntoConstraints="NO" id="4dB-rS-cQI">
                                     <rect key="frame" x="0.0" y="0.0" width="64" height="35"/>
                                 </imageView>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic-ubc" translatesAutoresizingMaskIntoConstraints="NO" id="5Kb-gq-uOn">
+                                    <rect key="frame" x="72" y="6" width="19" height="26"/>
+                                </imageView>
                             </subviews>
                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         </view>
                     </navigationItem>
-                    <nil key="simulatedTopBarMetrics"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <connections>
                         <outlet property="collectionView" destination="5D7-hF-WjP" id="geM-dN-w4M"/>
                         <outlet property="topLayoutConstraint" destination="d16-EX-QBy" id="drz-Q8-cTO"/>
@@ -2751,6 +2754,7 @@ While you are in the conversation though you can replay videos you just watched 
         <image name="ic-right-arrow" width="8" height="11"/>
         <image name="ic-right-chevron" width="24" height="21"/>
         <image name="ic-twitter-color" width="28" height="28"/>
+        <image name="ic-ubc" width="19" height="26"/>
         <image name="ic-up-chevron" width="22" height="25"/>
         <image name="ic-video" width="42" height="26"/>
         <image name="ic-video-small" width="25" height="14"/>
