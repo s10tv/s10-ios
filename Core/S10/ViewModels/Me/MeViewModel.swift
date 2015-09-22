@@ -16,6 +16,7 @@ public struct MeViewModel {
     let taskService: TaskService
     public let subscription: MeteorSubscription
     public let avatar: PropertyOf<Image?>
+    public let cover: PropertyOf<Image?>
     public let displayName: PropertyOf<String>
     public let username: PropertyOf<String>
     public let profileIcons: PropertyOf<[Image]>
@@ -25,6 +26,7 @@ public struct MeViewModel {
         self.taskService = taskService
         subscription = meteor.subscribe("me")
         avatar = meteor.user |> flatMap { $0.pAvatar() }
+        cover = meteor.user |> flatMap { $0.pCover() }
         displayName = meteor.user |> flatMap(nilValue: "") { $0.pDisplayName() }
         username = meteor.user |> flatMap(nilValue: "") { $0.pUsername() }
         profileIcons = meteor.user

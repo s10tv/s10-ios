@@ -15,6 +15,7 @@ import Core
 
 class MeViewController : UITableViewController {
     
+    @IBOutlet weak var coverView: UIImageView!
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -30,6 +31,7 @@ class MeViewController : UITableViewController {
         
         vm = MeViewModel(meteor: Meteor, taskService: Globals.taskService)
         vm.avatar ->> avatarView.imageBond
+        vm.cover ->> coverView.imageBond
         vm.displayName ->> nameLabel
         
         // Turn PropertyOf<[Image]> into DynamicArray<Image>
