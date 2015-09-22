@@ -81,6 +81,19 @@ public struct Formatters {
         }
         return nil
     }
+    
+    public static func formateDaysAgo(date: NSDate) -> String {
+        let cal = NSCalendar.currentCalendar()
+        let days = cal.components(.CalendarUnitDay, fromDate: date, toDate: NSDate(), options: nil).day
+        switch days {
+        case 0: return "Today"
+        case 1: return "Yesterday"
+        default: return "\(days) days ago"
+        }
+    }
+    
+    
+    
     public static func formatDistance(distance: Double) -> String {
         // TODO: Security concern?
         if distance < 1.0 {

@@ -14,6 +14,7 @@ public struct CandidateViewModel {
     let user: User
     public let avatar: Image?
     public let displayName: String
+    public let displayDate: String
     public let reason: String
     public let profileIcons: DynamicArray<Image>
     
@@ -23,5 +24,6 @@ public struct CandidateViewModel {
         avatar = user.avatar
         displayName = user.pDisplayName().value
         profileIcons = DynamicArray(user.connectedProfiles.map { $0.icon })
+        displayDate = Formatters.formateDaysAgo(candidate.date)
     }
 }

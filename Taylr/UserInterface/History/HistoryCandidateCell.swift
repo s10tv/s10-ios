@@ -25,6 +25,7 @@ class HistoryCandidateCell : UICollectionViewCell, BindableCell {
     
     func bind(vm: CandidateViewModel) {
         avatarView.sd_setImageWithURL(vm.avatar?.url)
+        dateLabel.text = vm.displayDate
         nameLabel.text = vm.displayName
         reasonLabel.text = vm.reason
         

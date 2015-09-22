@@ -57,7 +57,8 @@ extension HistoryViewController : CHTCollectionViewDelegateWaterfallLayout {
                 let imageHeight = ((avatar.height ?? 100).f / (avatar.width ?? 100).f) * itemWidth
                 // TODO: take into account height of the tagline
                 // 79 is magic number for distance between bottom of avatar image view and bottom of cell
-                let itemHeight = imageHeight + 79
+                // 33 is the magic number for top of the card to top of the cell
+                let itemHeight = imageHeight + 79 + 33
             return CGSize(width: itemWidth, height: itemHeight)
         }
         Log.error("Returning default layout size 50x80, avatar likely missing")
