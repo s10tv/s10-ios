@@ -74,7 +74,6 @@
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
-            <string>Cabin-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -172,13 +171,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Today" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eG0-5g-yXT" userLabel="Date">
-                                                    <rect key="frame" x="311" y="8" width="36" height="18"/>
-                                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
-                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Taylor Swift '12" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ib-JK-1el" userLabel="Name">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylor Swift '12" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ib-JK-1el" userLabel="Name">
                                                     <rect key="frame" x="15" y="247" width="114" height="22"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Medium" family="Cabin" pointSize="18"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -227,13 +220,13 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-mortar" translatesAutoresizingMaskIntoConstraints="NO" id="T96-qO-5S9">
                                                             <rect key="frame" x="4" y="8" width="22" height="18"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Economics" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.89999997615814209" translatesAutoresizingMaskIntoConstraints="NO" id="WQN-mi-DCX" userLabel="Major">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Economics" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.89999997615814209" translatesAutoresizingMaskIntoConstraints="NO" id="WQN-mi-DCX" userLabel="Major">
                                                             <rect key="frame" x="36" y="7" width="74" height="20"/>
                                                             <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                                             <color key="textColor" red="0.29016065600000002" green="0.2902165055" blue="0.29015710950000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Vancouver, Canada" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.89999997615814209" translatesAutoresizingMaskIntoConstraints="NO" id="kHw-pN-pgR" userLabel="Hometown">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vancouver, Canada" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.89999997615814209" translatesAutoresizingMaskIntoConstraints="NO" id="kHw-pN-pgR" userLabel="Hometown">
                                                             <rect key="frame" x="36" y="34" width="129" height="20"/>
                                                             <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                                             <color key="textColor" red="0.29016065600000002" green="0.2902165055" blue="0.29015710950000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -318,14 +311,12 @@
                                         </view>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="eG0-5g-yXT" firstAttribute="top" secondItem="5p8-O9-cl0" secondAttribute="topMargin" id="0Ns-mW-Ukb"/>
                                             <constraint firstItem="7Ib-JK-1el" firstAttribute="leading" secondItem="jwx-T1-rAX" secondAttribute="leading" constant="15" id="5Ui-yx-z09"/>
                                             <constraint firstAttribute="trailing" secondItem="jwx-T1-rAX" secondAttribute="trailing" id="5k6-sD-cDg"/>
                                             <constraint firstItem="0dW-0L-MEx" firstAttribute="top" secondItem="IMj-k6-3nh" secondAttribute="bottom" constant="15" id="611-Fz-ulP"/>
                                             <constraint firstItem="IMj-k6-3nh" firstAttribute="trailing" secondItem="5p8-O9-cl0" secondAttribute="trailingMargin" id="6xP-g6-EFg"/>
                                             <constraint firstItem="7Ib-JK-1el" firstAttribute="centerY" secondItem="2eB-0R-AfQ" secondAttribute="centerY" id="FFq-0v-BgD"/>
                                             <constraint firstItem="jwx-T1-rAX" firstAttribute="top" secondItem="5p8-O9-cl0" secondAttribute="top" id="G2l-Jk-74I"/>
-                                            <constraint firstAttribute="trailingMargin" secondItem="eG0-5g-yXT" secondAttribute="trailing" id="Ie7-dA-hZ4"/>
                                             <constraint firstItem="OLv-LL-2Yz" firstAttribute="centerY" secondItem="jwx-T1-rAX" secondAttribute="centerY" id="WlR-ND-PAL"/>
                                             <constraint firstItem="IMj-k6-3nh" firstAttribute="leading" secondItem="5p8-O9-cl0" secondAttribute="leadingMargin" id="a7x-rJ-cMa"/>
                                             <constraint firstItem="OLv-LL-2Yz" firstAttribute="centerX" secondItem="jwx-T1-rAX" secondAttribute="centerX" id="bOy-9M-xkm"/>
@@ -345,7 +336,6 @@
                                         <connections>
                                             <outlet property="avatarView" destination="OLv-LL-2Yz" id="P4K-c4-PQy"/>
                                             <outlet property="coverView" destination="ijw-TH-Sdd" id="waK-zu-RLr"/>
-                                            <outlet property="dateLabel" destination="eG0-5g-yXT" id="2SA-Lc-z5z"/>
                                             <outlet property="hometownLabel" destination="kHw-pN-pgR" id="ibZ-C7-qeG"/>
                                             <outlet property="majorLabel" destination="WQN-mi-DCX" id="mNd-mG-71M"/>
                                             <outlet property="nameLabel" destination="7Ib-JK-1el" id="M0u-ZG-zgm"/>
@@ -371,21 +361,7 @@
                     <tabBarItem key="tabBarItem" title="" image="ic-compass" id="MDC-z7-KZY">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
-                    <navigationItem key="navigationItem" id="3Lz-qe-3sD">
-                        <nil key="title"/>
-                        <view key="titleView" contentMode="scaleToFill" id="UsO-Mo-HgH">
-                            <rect key="frame" x="254.5" y="4.5" width="91" height="35"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="discover-logo" translatesAutoresizingMaskIntoConstraints="NO" id="4dB-rS-cQI">
-                                    <rect key="frame" x="0.0" y="0.0" width="64" height="35"/>
-                                </imageView>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ic-ubc" translatesAutoresizingMaskIntoConstraints="NO" id="5Kb-gq-uOn">
-                                    <rect key="frame" x="72" y="6" width="19" height="26"/>
-                                </imageView>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        </view>
+                    <navigationItem key="navigationItem" title="Today" id="3Lz-qe-3sD">
                         <barButtonItem key="rightBarButtonItem" title="History" id="zIy-4N-SFh">
                             <connections>
                                 <segue destination="lud-7P-YlL" kind="show" id="YwC-pq-v2K"/>
@@ -1205,7 +1181,7 @@
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yZe-l1-1Cf" userLabel="New Messages Hint">
                                         <rect key="frame" x="121" y="100" width="135" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="new messages" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="80" translatesAutoresizingMaskIntoConstraints="NO" id="TF6-BS-vja">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="new messages" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="80" translatesAutoresizingMaskIntoConstraints="NO" id="TF6-BS-vja">
                                                 <rect key="frame" x="34" y="6" width="86" height="17.5"/>
                                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -1253,16 +1229,16 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AdU-B0-hmM" userLabel="Empty View">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
-                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lf3-Y8-ztX" userLabel="Swipe Up To Reply Hint">
+                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lf3-Y8-ztX" userLabel="Swipe Up To Reply Hint">
                                                 <rect key="frame" x="232" y="529" width="137.5" height="50.5"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Swipe up to send video" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="180" translatesAutoresizingMaskIntoConstraints="NO" id="BEd-v4-YDM">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up to send video" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="180" translatesAutoresizingMaskIntoConstraints="NO" id="BEd-v4-YDM">
                                                         <rect key="frame" x="0.0" y="0.0" width="137.5" height="17.5"/>
                                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic-up-chevron" translatesAutoresizingMaskIntoConstraints="NO" id="6FU-Of-cdK">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-up-chevron" translatesAutoresizingMaskIntoConstraints="NO" id="6FU-Of-cdK">
                                                         <rect key="frame" x="57" y="25" width="22" height="25"/>
                                                     </imageView>
                                                 </subviews>
@@ -1276,7 +1252,7 @@
                                                     <constraint firstAttribute="centerX" secondItem="6FU-Of-cdK" secondAttribute="centerX" id="x7V-oe-v9Q"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="No new videos" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="250" translatesAutoresizingMaskIntoConstraints="NO" id="D2N-Vt-lOa">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No new videos" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="250" translatesAutoresizingMaskIntoConstraints="NO" id="D2N-Vt-lOa">
                                                 <rect key="frame" x="238" y="288" width="124.5" height="24.5"/>
                                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="20"/>
                                                 <color key="textColor" red="0.92926174402236938" green="0.92917501926422119" blue="0.94562381505966187" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1381,13 +1357,13 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="251" misplaced="YES" text="Taylor Swift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0x-EU-7eq">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="251" text="Taylor Swift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0x-EU-7eq">
                                     <rect key="frame" x="70" y="0.0" width="80" height="20"/>
                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Received just now" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhe-ik-k94">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Received just now" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhe-ik-k94">
                                     <rect key="frame" x="74" y="21" width="71" height="13"/>
                                     <fontDescription key="fontDescription" name="Cabin-Italic" family="Cabin" pointSize="10"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2451,7 +2427,7 @@ While you are in the conversation though you can replay videos you just watched 
                             <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hoF-ox-KEb" userLabel="Step 1 View">
                                 <rect key="frame" x="16" y="20" width="568" height="580"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="This is where you can watch the videos you receive" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="250" translatesAutoresizingMaskIntoConstraints="NO" id="U12-Eg-012">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This is where you can watch the videos you receive" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="250" translatesAutoresizingMaskIntoConstraints="NO" id="U12-Eg-012">
                                         <rect key="frame" x="163" y="36" width="242.5" height="44"/>
                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="18"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -2732,7 +2708,6 @@ While you are in the conversation though you can replay videos you just watched 
         </scene>
     </scenes>
     <resources>
-        <image name="discover-logo" width="64" height="35"/>
         <image name="empty-profile-pic" width="100" height="100"/>
         <image name="ic-approved" width="18" height="18"/>
         <image name="ic-back-arrow" width="12" height="21"/>
@@ -2759,6 +2734,6 @@ While you are in the conversation though you can replay videos you just watched 
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="33G-iq-iGB"/>
-        <segue reference="1xM-N2-wS8"/>
+        <segue reference="Fwv-Pj-RXP"/>
     </inferredMetricsTieBreakers>
 </document>
