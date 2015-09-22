@@ -1340,7 +1340,7 @@
                             </connections>
                         </barButtonItem>
                         <view key="titleView" contentMode="scaleToFill" id="KPL-gz-OCJ" userLabel="Title View">
-                            <rect key="frame" x="92.5" y="5" width="190" height="34"/>
+                            <rect key="frame" x="205" y="5" width="190" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-profile-pic" translatesAutoresizingMaskIntoConstraints="NO" id="uD7-V4-mF6">
@@ -1452,26 +1452,26 @@
         <scene sceneID="h30-kk-M5h">
             <objects>
                 <tableViewController storyboardIdentifier="EditProfile" id="GLZ-GV-JCx" customClass="EditProfileViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="static" style="grouped" allowsSelection="NO" rowHeight="60" sectionHeaderHeight="10" sectionFooterHeight="10" id="6Zt-YK-6an" customClass="TPKeyboardAvoidingTableView">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="static" style="grouped" separatorStyle="none" allowsSelection="NO" rowHeight="60" sectionHeaderHeight="10" sectionFooterHeight="10" id="6Zt-YK-6an" customClass="TPKeyboardAvoidingTableView">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
-                            <tableViewSection id="rQB-QO-zO9">
+                            <tableViewSection id="rQB-QO-zO9" userLabel="Photos">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="200" id="S7k-eI-PX7">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S7k-eI-PX7" id="Fu4-Bo-WFz">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-photo" translatesAutoresizingMaskIntoConstraints="NO" id="Mmq-ff-Gkx" userLabel="Cover">
+                                                <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="sample-photo" translatesAutoresizingMaskIntoConstraints="NO" id="Mmq-ff-Gkx" userLabel="Cover">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="199"/>
                                                     <gestureRecognizers/>
                                                     <connections>
                                                         <outletCollection property="gestureRecognizers" destination="HeM-j3-bJZ" appends="YES" id="653-Ya-TFN"/>
                                                     </connections>
                                                 </imageView>
-                                                <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-profile-pic" translatesAutoresizingMaskIntoConstraints="NO" id="8hD-TE-i8H" userLabel="Avatar">
+                                                <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="empty-profile-pic" translatesAutoresizingMaskIntoConstraints="NO" id="8hD-TE-i8H" userLabel="Avatar">
                                                     <rect key="frame" x="25" y="52" width="100" height="99"/>
                                                     <gestureRecognizers/>
                                                     <constraints>
@@ -1490,7 +1490,7 @@
                                                         <outletCollection property="gestureRecognizers" destination="Wpx-6X-1JX" appends="YES" id="m8S-aj-0xu"/>
                                                     </connections>
                                                 </imageView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BAR-at-Y9B" userLabel="Edit Cover">
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BAR-at-Y9B" userLabel="Edit Cover">
                                                     <rect key="frame" x="520" y="154" width="60" height="30"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
                                                     <constraints>
@@ -1516,7 +1516,7 @@
                                                         <action selector="didTapCoverImageView:" destination="GLZ-GV-JCx" eventType="touchUpInside" id="rrf-3r-fjG"/>
                                                     </connections>
                                                 </button>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yBN-gU-LQQ" userLabel="Edit Avatar">
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yBN-gU-LQQ" userLabel="Edit Avatar">
                                                     <rect key="frame" x="60" y="151" width="30" height="32"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                                     <state key="normal" title="Edit">
@@ -1544,7 +1544,7 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection headerTitle="Connected Services" id="j1x-Lq-zuv">
+                            <tableViewSection headerTitle="services" id="j1x-Lq-zuv" userLabel="Services">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="PJH-Dc-HXf">
                                         <autoresizingMask key="autoresizingMask"/>
@@ -1583,147 +1583,242 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="w3g-9F-nZX">
+                            <tableViewSection id="JMe-fD-cLG" userLabel="Info">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="3YF-0U-mG2">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="HGQ-Zc-MqS">
+                                        <rect key="frame" x="0.0" y="314" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3YF-0U-mG2" id="OOE-TS-IAr">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="HGQ-Zc-MqS" id="ZXl-sJ-lsv">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CPC-9R-MN9" customClass="JVFloatLabeledTextField">
-                                                    <rect key="frame" x="28" y="12" width="544" height="36"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rEI-Ku-Qep" userLabel="Horizontal Divider">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="1"/>
+                                                    <color key="backgroundColor" red="0.93333333330000001" green="0.94117647059999998" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="Vef-Hh-8Vb"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="X6V-I1-eyh" userLabel="Vertical Divider">
+                                                    <rect key="frame" x="299.5" y="0.0" width="1" height="59"/>
+                                                    <color key="backgroundColor" red="0.93333333330000001" green="0.94117647059999998" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="1" id="WV1-0J-0Qv"/>
+                                                    </constraints>
+                                                </view>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iuP-6j-Dz0" customClass="JVFloatLabeledTextField">
+                                                    <rect key="frame" x="310.5" y="8" width="279.5" height="44"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
-                                                            <color key="value" red="0.46897470951080322" green="0.27513545751571655" blue="0.68778532743453979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="CPC-9R-MN9" secondAttribute="trailing" constant="20" id="1is-ze-aCz"/>
-                                                <constraint firstItem="CPC-9R-MN9" firstAttribute="leading" secondItem="OOE-TS-IAr" secondAttribute="leadingMargin" constant="20" id="55v-CS-XMM"/>
-                                                <constraint firstAttribute="centerY" secondItem="CPC-9R-MN9" secondAttribute="centerY" id="LCM-4e-uF6"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Lha-3s-GHe">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Lha-3s-GHe" id="Tmp-Y1-seD">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="kXU-hv-A2T" customClass="JVFloatLabeledTextField">
-                                                    <rect key="frame" x="28" y="12" width="544" height="36"/>
-                                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
-                                                            <color key="value" red="0.46897470951080322" green="0.27513545751571655" blue="0.68778532743453979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="kXU-hv-A2T" firstAttribute="leading" secondItem="Tmp-Y1-seD" secondAttribute="leadingMargin" constant="20" id="HNh-KS-RbZ"/>
-                                                <constraint firstAttribute="centerY" secondItem="kXU-hv-A2T" secondAttribute="centerY" id="S7E-EP-Xfp"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="kXU-hv-A2T" secondAttribute="trailing" constant="20" id="fJy-y9-Cts"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="fgm-4a-YB3">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fgm-4a-YB3" id="xAt-Ze-H0r">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Major" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="GQg-11-mAR" customClass="JVFloatLabeledTextField">
-                                                    <rect key="frame" x="28" y="12" width="544" height="36"/>
-                                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
-                                                            <color key="value" red="0.46897470951080322" green="0.27513545751571655" blue="0.68778532743453979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="centerY" secondItem="GQg-11-mAR" secondAttribute="centerY" id="gNF-Xz-IuC"/>
-                                                <constraint firstItem="GQg-11-mAR" firstAttribute="leading" secondItem="xAt-Ze-H0r" secondAttribute="leadingMargin" constant="20" id="lLA-C0-32K"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="GQg-11-mAR" secondAttribute="trailing" constant="20" id="lkV-Lv-3Y0"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="v6I-yF-A6I">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v6I-yF-A6I" id="goc-jt-KRB">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Class Year" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Adf-PX-irr" customClass="JVFloatLabeledTextField">
-                                                    <rect key="frame" x="28" y="12" width="544" height="36"/>
-                                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
                                                             <color key="value" red="0.46897470949999998" green="0.27513545750000001" blue="0.68778532739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="floatingLabelYPadding">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="Adf-PX-irr" firstAttribute="leading" secondItem="goc-jt-KRB" secondAttribute="leadingMargin" constant="20" id="1VI-BJ-QWB"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="Adf-PX-irr" secondAttribute="trailing" constant="20" id="TyG-wZ-Grj"/>
-                                                <constraint firstAttribute="centerY" secondItem="Adf-PX-irr" secondAttribute="centerY" id="lAW-Pd-pDd"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Sfn-lG-orl">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sfn-lG-orl" id="HK1-ly-aJF">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Hometown" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hAt-0K-5k2" customClass="JVFloatLabeledTextField">
-                                                    <rect key="frame" x="28" y="12" width="544" height="36"/>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eJH-4I-agq" userLabel="Horizontal Divider">
+                                                    <rect key="frame" x="0.0" y="59" width="600" height="1"/>
+                                                    <color key="backgroundColor" red="0.93333333330000001" green="0.94117647059999998" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="j8n-6D-yVY"/>
+                                                    </constraints>
+                                                </view>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iD2-zR-2tE" customClass="JVFloatLabeledTextField">
+                                                    <rect key="frame" x="10" y="8" width="279.5" height="44"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
                                                             <color key="value" red="0.46897470949999998" green="0.27513545750000001" blue="0.68778532739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="floatingLabelYPadding">
+                                                            <real key="value" value="5"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="hAt-0K-5k2" secondAttribute="trailing" constant="20" id="L8N-nZ-QeQ"/>
-                                                <constraint firstAttribute="centerY" secondItem="hAt-0K-5k2" secondAttribute="centerY" id="Lo5-Va-AMl"/>
-                                                <constraint firstItem="hAt-0K-5k2" firstAttribute="leading" secondItem="HK1-ly-aJF" secondAttribute="leadingMargin" constant="20" id="u85-TX-jNU"/>
+                                                <constraint firstAttribute="centerY" secondItem="iuP-6j-Dz0" secondAttribute="centerY" id="0cq-WS-ZUC"/>
+                                                <constraint firstAttribute="centerX" secondItem="X6V-I1-eyh" secondAttribute="centerX" id="1cl-Ki-057"/>
+                                                <constraint firstItem="eJH-4I-agq" firstAttribute="leading" secondItem="ZXl-sJ-lsv" secondAttribute="leading" id="4Yo-a4-k97"/>
+                                                <constraint firstItem="iD2-zR-2tE" firstAttribute="top" secondItem="ZXl-sJ-lsv" secondAttribute="topMargin" id="7Yy-Ri-EnH"/>
+                                                <constraint firstItem="iD2-zR-2tE" firstAttribute="leading" secondItem="ZXl-sJ-lsv" secondAttribute="leadingMargin" constant="2" id="8Av-ZT-mgH"/>
+                                                <constraint firstAttribute="trailing" secondItem="rEI-Ku-Qep" secondAttribute="trailing" id="8Ty-o6-8Qw"/>
+                                                <constraint firstAttribute="bottom" secondItem="eJH-4I-agq" secondAttribute="bottom" id="B6F-OL-BOg"/>
+                                                <constraint firstAttribute="trailing" secondItem="eJH-4I-agq" secondAttribute="trailing" id="EUx-e6-5r6"/>
+                                                <constraint firstItem="iuP-6j-Dz0" firstAttribute="leading" secondItem="X6V-I1-eyh" secondAttribute="trailing" constant="10" id="Udf-sn-rlK"/>
+                                                <constraint firstItem="X6V-I1-eyh" firstAttribute="top" secondItem="ZXl-sJ-lsv" secondAttribute="top" id="WrI-3x-jMt"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="X6V-I1-eyh" secondAttribute="bottomMargin" constant="1" id="X9W-zU-yOX"/>
+                                                <constraint firstAttribute="centerY" secondItem="iD2-zR-2tE" secondAttribute="centerY" id="ZyP-A5-GqM"/>
+                                                <constraint firstItem="X6V-I1-eyh" firstAttribute="leading" secondItem="iD2-zR-2tE" secondAttribute="trailing" constant="10" id="b3B-m9-Zql"/>
+                                                <constraint firstItem="iD2-zR-2tE" firstAttribute="bottom" secondItem="ZXl-sJ-lsv" secondAttribute="bottomMargin" id="dNL-Se-wo0"/>
+                                                <constraint firstItem="rEI-Ku-Qep" firstAttribute="leading" secondItem="ZXl-sJ-lsv" secondAttribute="leading" id="etr-da-0NS"/>
+                                                <constraint firstItem="iuP-6j-Dz0" firstAttribute="top" secondItem="ZXl-sJ-lsv" secondAttribute="topMargin" id="fTq-T1-F8i"/>
+                                                <constraint firstItem="iuP-6j-Dz0" firstAttribute="bottom" secondItem="ZXl-sJ-lsv" secondAttribute="bottomMargin" id="jj4-le-nX5"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="iuP-6j-Dz0" secondAttribute="trailing" constant="2" id="l2o-jo-PFC"/>
+                                                <constraint firstItem="rEI-Ku-Qep" firstAttribute="top" secondItem="ZXl-sJ-lsv" secondAttribute="top" id="sjk-yh-IOH"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="180" id="Vee-go-nqc">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="iXs-FK-zOr">
+                                        <rect key="frame" x="0.0" y="314" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Vee-go-nqc" id="6Qz-D6-PlX">
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="iXs-FK-zOr" id="mbT-pi-df9">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Oe-rd-vPP" customClass="JVFloatLabeledTextView">
-                                                    <rect key="frame" x="28" y="8" width="544" height="163"/>
-                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam.</string>
+                                                <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Scn-jt-qci" userLabel="Horizontal Divider">
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="1"/>
+                                                    <color key="backgroundColor" red="0.93333333330000001" green="0.94117647059999998" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="dIf-mn-p3c"/>
+                                                    </constraints>
+                                                </view>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0RX-yq-Cuh" userLabel="Vertical Divider">
+                                                    <rect key="frame" x="299.5" y="0.0" width="1" height="59"/>
+                                                    <color key="backgroundColor" red="0.93333333330000001" green="0.94117647059999998" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="1" id="Dyx-S5-dST"/>
+                                                    </constraints>
+                                                </view>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Year" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="65y-1M-E5N" customClass="JVFloatLabeledTextField">
+                                                    <rect key="frame" x="310.5" y="8" width="279.5" height="44"/>
+                                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
+                                                            <color key="value" red="0.46897470949999998" green="0.27513545750000001" blue="0.68778532739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="floatingLabelYPadding">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textField>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="76K-Qq-BxH" userLabel="Horizontal Divider">
+                                                    <rect key="frame" x="0.0" y="59" width="600" height="1"/>
+                                                    <color key="backgroundColor" red="0.93333333330000001" green="0.94117647059999998" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="n6F-YZ-yK7"/>
+                                                    </constraints>
+                                                </view>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Major" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B0V-BN-knd" customClass="JVFloatLabeledTextField">
+                                                    <rect key="frame" x="10" y="8" width="279.5" height="44"/>
+                                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
+                                                            <color key="value" red="0.46897470949999998" green="0.27513545750000001" blue="0.68778532739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="floatingLabelYPadding">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottomMargin" secondItem="0RX-yq-Cuh" secondAttribute="bottomMargin" constant="1" id="2w1-pp-dFI"/>
+                                                <constraint firstItem="Scn-jt-qci" firstAttribute="leading" secondItem="mbT-pi-df9" secondAttribute="leading" id="BZ2-Bs-74t"/>
+                                                <constraint firstAttribute="trailing" secondItem="Scn-jt-qci" secondAttribute="trailing" id="Ing-fe-xPu"/>
+                                                <constraint firstAttribute="centerY" secondItem="65y-1M-E5N" secondAttribute="centerY" id="N5e-BD-8aD"/>
+                                                <constraint firstItem="Scn-jt-qci" firstAttribute="top" secondItem="mbT-pi-df9" secondAttribute="top" id="NUt-VL-44s"/>
+                                                <constraint firstItem="65y-1M-E5N" firstAttribute="top" secondItem="mbT-pi-df9" secondAttribute="topMargin" id="NzE-eF-rBk"/>
+                                                <constraint firstItem="0RX-yq-Cuh" firstAttribute="top" secondItem="mbT-pi-df9" secondAttribute="top" id="Q67-EI-IEK"/>
+                                                <constraint firstItem="65y-1M-E5N" firstAttribute="bottom" secondItem="mbT-pi-df9" secondAttribute="bottomMargin" id="R98-SQ-ulR"/>
+                                                <constraint firstItem="B0V-BN-knd" firstAttribute="bottom" secondItem="mbT-pi-df9" secondAttribute="bottomMargin" id="RqU-Rg-Dv3"/>
+                                                <constraint firstItem="65y-1M-E5N" firstAttribute="leading" secondItem="0RX-yq-Cuh" secondAttribute="trailing" constant="10" id="W2X-8t-hVe"/>
+                                                <constraint firstAttribute="bottom" secondItem="76K-Qq-BxH" secondAttribute="bottom" id="age-f0-VkT"/>
+                                                <constraint firstAttribute="centerY" secondItem="B0V-BN-knd" secondAttribute="centerY" id="by5-Dh-Xzd"/>
+                                                <constraint firstItem="76K-Qq-BxH" firstAttribute="leading" secondItem="mbT-pi-df9" secondAttribute="leading" id="bzy-06-tKe"/>
+                                                <constraint firstAttribute="trailing" secondItem="76K-Qq-BxH" secondAttribute="trailing" id="jwN-Og-wkc"/>
+                                                <constraint firstItem="B0V-BN-knd" firstAttribute="leading" secondItem="mbT-pi-df9" secondAttribute="leadingMargin" constant="2" id="ldG-Kd-0pt"/>
+                                                <constraint firstItem="0RX-yq-Cuh" firstAttribute="leading" secondItem="B0V-BN-knd" secondAttribute="trailing" constant="10" id="njp-JO-qff"/>
+                                                <constraint firstAttribute="centerX" secondItem="0RX-yq-Cuh" secondAttribute="centerX" id="sli-WC-Aib"/>
+                                                <constraint firstItem="B0V-BN-knd" firstAttribute="top" secondItem="mbT-pi-df9" secondAttribute="topMargin" id="tLf-UI-pJP"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="65y-1M-E5N" secondAttribute="trailing" constant="2" id="vYK-1V-lSK"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="0x3-t7-wst">
+                                        <rect key="frame" x="0.0" y="374" width="375" height="60"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0x3-t7-wst" id="vb1-2P-mau">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SmE-z5-zey" userLabel="Horizontal Divider">
+                                                    <rect key="frame" x="0.0" y="59" width="600" height="1"/>
+                                                    <color key="backgroundColor" red="0.93333333330000001" green="0.94117647059999998" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="6RA-go-WRc"/>
+                                                    </constraints>
+                                                </view>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Hometown" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="gws-0w-dHV" customClass="JVFloatLabeledTextField">
+                                                    <rect key="frame" x="10" y="11" width="81.5" height="39"/>
+                                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
+                                                            <color key="value" red="0.46897470949999998" green="0.27513545750000001" blue="0.68778532739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="floatingLabelYPadding">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="SmE-z5-zey" firstAttribute="leading" secondItem="vb1-2P-mau" secondAttribute="leading" id="73i-ay-YVg"/>
+                                                <constraint firstAttribute="bottom" secondItem="SmE-z5-zey" secondAttribute="bottom" id="QV0-kj-PAv"/>
+                                                <constraint firstItem="gws-0w-dHV" firstAttribute="leading" secondItem="vb1-2P-mau" secondAttribute="leadingMargin" constant="2" id="QcF-rg-XgF" userLabel="Horizontal Space - Hometown (optional) - Content View"/>
+                                                <constraint firstAttribute="bottom" secondItem="gws-0w-dHV" secondAttribute="bottom" constant="10" id="YfQ-xr-PZT"/>
+                                                <constraint firstAttribute="trailing" secondItem="SmE-z5-zey" secondAttribute="trailing" id="Ykr-gn-VrQ"/>
+                                                <constraint firstItem="gws-0w-dHV" firstAttribute="top" secondItem="vb1-2P-mau" secondAttribute="top" constant="11" id="gQL-ru-NFT"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                    <real key="value" value="0.0"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="ea4-50-CNf">
+                                        <rect key="frame" x="0.0" y="434" width="375" height="70"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ea4-50-CNf" id="74z-5u-Nbh">
+                                            <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Exq-zK-hgt" userLabel="Horizontal Divider">
+                                                    <rect key="frame" x="0.0" y="69" width="600" height="1"/>
+                                                    <color key="backgroundColor" red="0.93333333330000001" green="0.94117647059999998" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="1" id="xxz-Gd-NEJ"/>
+                                                    </constraints>
+                                                </view>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ojZ-et-51R" customClass="JVFloatLabeledTextView">
+                                                    <rect key="frame" x="10" y="8" width="580" height="54"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="About"/>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
-                                                            <color key="value" red="0.46897470951080322" green="0.27513545751571655" blue="0.68778532743453979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="value" red="0.46897470949999998" green="0.27513545750000001" blue="0.68778532739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </textView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="4Oe-rd-vPP" firstAttribute="top" secondItem="6Qz-D6-PlX" secondAttribute="topMargin" id="3Wl-ne-51u"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="4Oe-rd-vPP" secondAttribute="trailing" constant="20" id="IkR-LS-gfg"/>
-                                                <constraint firstItem="4Oe-rd-vPP" firstAttribute="leading" secondItem="6Qz-D6-PlX" secondAttribute="leadingMargin" constant="20" id="fL5-Ph-h7m"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="4Oe-rd-vPP" secondAttribute="bottom" id="x5V-tp-XLL"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="ojZ-et-51R" secondAttribute="trailing" constant="2" id="3Md-T0-uRQ"/>
+                                                <constraint firstItem="ojZ-et-51R" firstAttribute="leading" secondItem="74z-5u-Nbh" secondAttribute="leadingMargin" constant="2" id="9OS-mh-IL3"/>
+                                                <constraint firstItem="ojZ-et-51R" firstAttribute="top" secondItem="74z-5u-Nbh" secondAttribute="topMargin" id="GnK-FD-Qyz"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="ojZ-et-51R" secondAttribute="bottom" id="Hj1-4e-x3d"/>
+                                                <constraint firstItem="Exq-zK-hgt" firstAttribute="leading" secondItem="74z-5u-Nbh" secondAttribute="leading" id="Mj8-5o-38h"/>
+                                                <constraint firstAttribute="trailing" secondItem="Exq-zK-hgt" secondAttribute="trailing" id="fqV-eP-eeu"/>
+                                                <constraint firstAttribute="bottom" secondItem="Exq-zK-hgt" secondAttribute="bottom" id="qQF-pE-qeY"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1746,14 +1841,14 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="900"/>
                     <connections>
-                        <outlet property="aboutTextView" destination="4Oe-rd-vPP" id="FDk-3F-WSR"/>
+                        <outlet property="aboutTextView" destination="ojZ-et-51R" id="loJ-QC-sB1"/>
                         <outlet property="avatarImageView" destination="8hD-TE-i8H" id="E8O-KZ-ezn"/>
                         <outlet property="coverImageView" destination="Mmq-ff-Gkx" id="IW3-rd-EFZ"/>
-                        <outlet property="firstNameField" destination="CPC-9R-MN9" id="exq-dc-RKt"/>
-                        <outlet property="gradYearField" destination="Adf-PX-irr" id="IK9-gM-slR"/>
-                        <outlet property="hometownField" destination="hAt-0K-5k2" id="e9b-Ms-ra7"/>
-                        <outlet property="lastNameField" destination="kXU-hv-A2T" id="gHZ-Sr-elg"/>
-                        <outlet property="majorField" destination="GQg-11-mAR" id="SHd-61-F46"/>
+                        <outlet property="firstNameField" destination="iD2-zR-2tE" id="Wvn-bM-m57"/>
+                        <outlet property="gradYearField" destination="65y-1M-E5N" id="SB3-ij-CdQ"/>
+                        <outlet property="hometownField" destination="gws-0w-dHV" id="Eiw-r0-qdE"/>
+                        <outlet property="lastNameField" destination="iuP-6j-Dz0" id="qaJ-LS-hLh"/>
+                        <outlet property="majorField" destination="B0V-BN-knd" id="rOP-uQ-kcC"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NFN-Ku-3H2" userLabel="First Responder" sceneMemberID="firstResponder"/>

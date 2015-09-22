@@ -43,7 +43,10 @@ class EditProfileViewController : UITableViewController {
         vm.avatar ->> avatarImageView.imageBond
         vm.cover ->> coverImageView.imageBond
         
+        aboutTextView.floatingLabelFont = UIFont(.cabinRegular, size: 11)
         aboutTextView.font = UIFont(.cabinRegular, size: 16)
+        aboutTextView.delegate = self
+        
         // Observe collectionView height and reload table view cell height whenever appropriate
         servicesVC.collectionView!.dyn("contentSize").force(NSValue).producer
             |> skip(1)
@@ -100,15 +103,33 @@ class EditProfileViewController : UITableViewController {
     }
 }
 
+// HACK ALERT: Better way than hardcode?
+private let AboutIndexPath = NSIndexPath(forRow: 3, inSection: 2)
+private let IntegrationSection = 1
 
 extension EditProfileViewController : UITableViewDelegate {
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         // TODO: Should we consider autolayout?
-        if indexPath.section == 1 { // Integrations section
+        if indexPath.section == IntegrationSection { // Integrations section
             let height = servicesVC.collectionView!.collectionViewLayout.collectionViewContentSize().height + 20
             return height
+        }
+        if let size = aboutTextView.superview?.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+            where indexPath == AboutIndexPath {
+                // NOTE: UITableViewAutomaticDimension doesn't work for reason not clear to me
+                // +30 is a big hack, last line gets cut off for some reason otherwise...
+                return size.height + 30
         }
         return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
     }
 }
+
+extension EditProfileViewController : UITextViewDelegate {
+    func textViewDidChange(textView: UITextView) {
+        // Force tableView to recalculate the height of the textView
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
+}
+
