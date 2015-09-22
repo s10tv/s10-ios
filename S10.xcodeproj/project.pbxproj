@@ -230,6 +230,8 @@
 		F9ABA2CE1B6412A00098B7E4 /* DiscoverIntegrationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9ABA2CD1B6412A00098B7E4 /* DiscoverIntegrationTest.swift */; };
 		F9ABA2D01B6412CF0098B7E4 /* IntegrationTestEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9ABA2CF1B6412CF0098B7E4 /* IntegrationTestEnvironment.swift */; };
 		F9ABA2D21B643EF30098B7E4 /* MeIntegrationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9ABA2D11B643EF30098B7E4 /* MeIntegrationTest.swift */; };
+		F9BF43111BB07EFC007D30A0 /* TutorialContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BF43101BB07EFC007D30A0 /* TutorialContentViewController.swift */; };
+		F9BF43131BB0813E007D30A0 /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BF43121BB0813E007D30A0 /* TutorialPageViewController.swift */; };
 		F9D545491B57988200A4661B /* InviteOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D545481B57988200A4661B /* InviteOperation.swift */; };
 		F9DEB2ED1BAE9D0B00ED7BF4 /* VerifyCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9608B841BAA9B040067E1EF /* VerifyCodeViewController.swift */; };
 /* End PBXBuildFile section */
@@ -495,6 +497,8 @@
 		F9ABA2CD1B6412A00098B7E4 /* DiscoverIntegrationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverIntegrationTest.swift; sourceTree = "<group>"; };
 		F9ABA2CF1B6412CF0098B7E4 /* IntegrationTestEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationTestEnvironment.swift; sourceTree = "<group>"; };
 		F9ABA2D11B643EF30098B7E4 /* MeIntegrationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeIntegrationTest.swift; sourceTree = "<group>"; };
+		F9BF43101BB07EFC007D30A0 /* TutorialContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialContentViewController.swift; sourceTree = "<group>"; };
+		F9BF43121BB0813E007D30A0 /* TutorialPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
 		F9D545481B57988200A4661B /* InviteOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -1013,6 +1017,8 @@
 				EA89C0851B6AA2060007C6CB /* CreateProfileViewController.swift */,
 				EA89C0871B6AC0410007C6CB /* ConnectServicesViewController.swift */,
 				F9608B841BAA9B040067E1EF /* VerifyCodeViewController.swift */,
+				F9BF43101BB07EFC007D30A0 /* TutorialContentViewController.swift */,
+				F9BF43121BB0813E007D30A0 /* TutorialPageViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -1723,6 +1729,7 @@
 			files = (
 				EA95BBBD1B3932B500701F08 /* GenericExtensions.swift in Sources */,
 				EAAD921D1ACF342C0014BA25 /* TaylrEnvironment.swift in Sources */,
+				F9BF43131BB0813E007D30A0 /* TutorialPageViewController.swift in Sources */,
 				EAA8D6C31B62F2A400D5A6DC /* IntegrationWebViewController.swift in Sources */,
 				EAD1BB251B60347600D250C5 /* MeViewController.swift in Sources */,
 				EAC725B81B65BB50004113FD /* ProfileInfoCells.swift in Sources */,
@@ -1735,6 +1742,7 @@
 				EA7134121B56E47100B810F6 /* ImagePickerExtensions.swift in Sources */,
 				EAF81B231B33388700EED6DD /* ProducerViewController.swift in Sources */,
 				EA6650ED1AA00A9C001BA40C /* AccountService.swift in Sources */,
+				F9BF43111BB07EFC007D30A0 /* TutorialContentViewController.swift in Sources */,
 				EAA56FA21B2B32E500DE3936 /* BaseViewController.swift in Sources */,
 				EAA56F9F1B2B32E500DE3936 /* ProfileViewController.swift in Sources */,
 				EA7AA36C1AA26597003383BE /* StyleKit.swift in Sources */,

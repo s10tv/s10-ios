@@ -15,9 +15,9 @@ import Meteor
 import Bond
 import Core
 
-class LoginViewController : BaseViewController {
+class LoginViewController : BaseViewController, TutorialViewController {
 
-    @IBOutlet var kenView: JBKenBurnsView!
+    var index = 0
     @IBOutlet weak var loginButton: DesignableButton!
     @IBOutlet weak var logoutButton: UIButton!
     
@@ -31,10 +31,7 @@ class LoginViewController : BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.kenView.animateWithImages([UIImage(named: "college1")!, UIImage(named: "college2")!,
-            UIImage(named: "college3")!],
-            transitionDuration: 10, initialDelay: 0, loop: true, isLandscape: true)
-
+        self.view.backgroundColor = UIColor.clearColor()
 
         vm.loginButtonText ->> loginButton.titleBond
         vm.logoutButtonText ->> logoutButton.titleBond
@@ -83,4 +80,15 @@ class LoginViewController : BaseViewController {
     @IBAction func viewPrivacy(sender: AnyObject) {
         UIApplication.sharedApplication().openURL(vm.privacyURL)
     }
+
+    // MARK: Tutorial View Protocol
+
+    func getViewController() -> UIViewController {
+        return self as UIViewController
+    }
+
+    func getIndex() -> Int {
+        return index
+    }
+
 }
