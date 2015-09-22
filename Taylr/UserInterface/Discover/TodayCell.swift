@@ -12,8 +12,8 @@ import Core
 import Bond
 import ReactiveCocoa
 
-class CandidateCell : UICollectionViewCell, BindableCell {
-    typealias ViewModel = CurrentCandidateViewModel
+class TodayCell: UICollectionViewCell, BindableCell {
+    typealias ViewModel = TodayViewModel
     
     @IBOutlet weak var coverView: UIImageView!
     @IBOutlet weak var avatarView: UIImageView!
@@ -23,7 +23,7 @@ class CandidateCell : UICollectionViewCell, BindableCell {
     @IBOutlet weak var reasonLabel: DesignableLabel!
     @IBOutlet weak var serviceIconsView: UICollectionView!
     
-    func bind(vm: CurrentCandidateViewModel) {
+    func bind(vm: TodayViewModel) {
         coverView.sd_setImageWithURL(vm.cover?.url)
         avatarView.sd_setImageWithURL(vm.avatar?.url)
         nameLabel.text = vm.displayName
@@ -55,6 +55,6 @@ class CandidateCell : UICollectionViewCell, BindableCell {
     }
     
     static func reuseId() -> String {
-        return reuseId(.CandidateCell)
+        return reuseId(.TodayCell)
     }
 }

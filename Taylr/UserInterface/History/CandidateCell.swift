@@ -14,7 +14,7 @@ import Core
 import Bond
 import ReactiveCocoa
 
-class HistoryCandidateCell : UICollectionViewCell, BindableCell {
+class CandidateCell : UICollectionViewCell, BindableCell {
     typealias ViewModel = CandidateViewModel
     
     @IBOutlet weak var dateLabel: UILabel!
@@ -49,6 +49,6 @@ class HistoryCandidateCell : UICollectionViewCell, BindableCell {
     }
     
     static func reuseId() -> String {
-        return reuseId(.HistoryCandidateCell)
+        return reuseId(.CandidateCell)
     }
 }

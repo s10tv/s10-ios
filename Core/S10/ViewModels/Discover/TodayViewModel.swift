@@ -10,7 +10,7 @@ import Foundation
 import Bond
 import ReactiveCocoa
 
-public struct CurrentCandidateViewModel {
+public struct TodayViewModel {
     let user: User
     public let cover: Image?
     public let avatar: Image?

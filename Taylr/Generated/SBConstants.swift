@@ -2,11 +2,11 @@
 
 public enum CollectionViewCellreuseIdentifier : String {
     case CandidateCell = "CandidateCell"
-    case HistoryCandidateCell = "HistoryCandidateCell"
     case IntegrationCell = "IntegrationCell"
     case ProfileAttributeCell = "ProfileAttributeCell"
     case ProfileIconCell = "ProfileIconCell"
     case ProfileSelectorCell = "ProfileSelectorCell"
+    case TodayCell = "TodayCell"
 }
 
 public enum CollectionViewControllerStoryboardIdentifier : String {
@@ -17,6 +17,7 @@ public enum SegueIdentifier : String {
     case ConnectServicesToCreateProfile = "ConnectServicesToCreateProfile"
     case ConversationToProfile = "ConversationToProfile"
     case DiscoverToConversation = "DiscoverToConversation"
+    case HistoryToProfile = "HistoryToProfile"
     case IntegrationsToWeb = "IntegrationsToWeb"
     case LoginToRegisterEmail = "LoginToRegisterEmail"
     case Main_RootTab = "Main_RootTab"

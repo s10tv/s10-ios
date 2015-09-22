@@ -18,7 +18,7 @@ class DiscoverViewController : BaseViewController {
     @IBOutlet weak var topLayoutConstraint: NSLayoutConstraint!
     
     let vm = DiscoverViewModel(meteor: Meteor, taskService: Globals.taskService)
-    let emptyDataBond = ArrayBond<CurrentCandidateViewModel>()
+    let emptyDataBond = ArrayBond<TodayViewModel>()
     
     deinit {
         collectionView?.delegate = nil
@@ -29,7 +29,7 @@ class DiscoverViewController : BaseViewController {
         super.viewDidLoad()
         
         collectionView.emptyDataSetSource = self
-        vm.candidate.map(collectionView.factory(CandidateCell)) ->> collectionView
+        vm.candidate.map(collectionView.factory(TodayCell)) ->> collectionView
         vm.candidate.bindTo(emptyDataBond)
         emptyDataBond.didPerformBatchUpdatesListener = { [weak self] in
             self?.collectionView.reloadEmptyDataSet()

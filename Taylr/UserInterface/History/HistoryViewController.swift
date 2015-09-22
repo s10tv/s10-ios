@@ -30,7 +30,7 @@ class HistoryViewController : BaseViewController {
         layout.sectionInset = UIEdgeInsets(inset: 10)
         collectionView.collectionViewLayout = layout
             
-        vm.candidates.map(collectionView.factory(HistoryCandidateCell)) ->> collectionView
+        vm.candidates.map(collectionView.factory(CandidateCell)) ->> collectionView
         
         listenForNotification(DidTouchStatusBar).start(next: { [weak self] _ in
             self?.showNavBarAnimated(true)
