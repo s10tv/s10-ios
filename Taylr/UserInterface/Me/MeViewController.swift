@@ -115,3 +115,30 @@ extension MeViewController : MFMailComposeViewControllerDelegate {
         controller.dismissViewController(animated: true)
     }
 }
+
+// Hide the invites section
+
+extension MeViewController : UITableViewDataSource {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if section == 1 {
+            return 0
+        }
+        return super.tableView(tableView, numberOfRowsInSection: section)
+    }
+}
+
+extension MeViewController : UITableViewDelegate {
+    override  func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 1 {
+            return nil
+        }
+        return super.tableView(tableView, titleForHeaderInSection: section)
+    }
+    
+    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        if section == 1 {
+            return 0.1
+        }
+        return super.tableView(tableView, heightForHeaderInSection: section)
+    }
+}
