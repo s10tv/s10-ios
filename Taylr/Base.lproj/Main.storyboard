@@ -288,9 +288,12 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yc8-2Z-YPQ">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yc8-2Z-YPQ">
                                                     <rect key="frame" x="12" y="476" width="331" height="44"/>
                                                     <color key="backgroundColor" red="0.46897470951080322" green="0.27513545751571655" blue="0.68778532743453979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Yc8-2Z-YPQ" secondAttribute="height" multiplier="331:44" id="SPj-dg-mxb"/>
+                                                    </constraints>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                                     <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -315,8 +318,11 @@
                                             <constraint firstAttribute="trailing" secondItem="jwx-T1-rAX" secondAttribute="trailing" id="5k6-sD-cDg"/>
                                             <constraint firstItem="0dW-0L-MEx" firstAttribute="top" secondItem="IMj-k6-3nh" secondAttribute="bottom" constant="15" id="611-Fz-ulP"/>
                                             <constraint firstItem="IMj-k6-3nh" firstAttribute="trailing" secondItem="5p8-O9-cl0" secondAttribute="trailingMargin" id="6xP-g6-EFg"/>
+                                            <constraint firstAttribute="bottomMargin" secondItem="Yc8-2Z-YPQ" secondAttribute="bottom" constant="4" id="DYN-Ap-DZG"/>
+                                            <constraint firstAttribute="trailingMargin" secondItem="Yc8-2Z-YPQ" secondAttribute="trailing" constant="4" id="ECm-Wc-wU4"/>
                                             <constraint firstItem="7Ib-JK-1el" firstAttribute="centerY" secondItem="2eB-0R-AfQ" secondAttribute="centerY" id="FFq-0v-BgD"/>
                                             <constraint firstItem="jwx-T1-rAX" firstAttribute="top" secondItem="5p8-O9-cl0" secondAttribute="top" id="G2l-Jk-74I"/>
+                                            <constraint firstItem="Yc8-2Z-YPQ" firstAttribute="leading" secondItem="5p8-O9-cl0" secondAttribute="leadingMargin" constant="4" id="M5K-8k-p2y"/>
                                             <constraint firstItem="OLv-LL-2Yz" firstAttribute="centerY" secondItem="jwx-T1-rAX" secondAttribute="centerY" id="WlR-ND-PAL"/>
                                             <constraint firstItem="IMj-k6-3nh" firstAttribute="leading" secondItem="5p8-O9-cl0" secondAttribute="leadingMargin" id="a7x-rJ-cMa"/>
                                             <constraint firstItem="OLv-LL-2Yz" firstAttribute="centerX" secondItem="jwx-T1-rAX" secondAttribute="centerX" id="bOy-9M-xkm"/>
@@ -2574,8 +2580,8 @@ While you are in the conversation though you can replay videos you just watched 
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vG2-be-Sfa" userLabel="Name Background">
                                                             <rect key="frame" x="0.0" y="165" width="180" height="40"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylor Swift '12" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zc6-Vy-MOX" userLabel="Name">
-                                                                    <rect key="frame" x="8" y="10" width="101" height="19.5"/>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylor Swift '12" lineBreakMode="middleTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="Zc6-Vy-MOX" userLabel="Name">
+                                                                    <rect key="frame" x="8" y="10" width="164" height="19.5"/>
                                                                     <fontDescription key="fontDescription" name="Cabin-Medium" family="Cabin" pointSize="16"/>
                                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                     <nil key="highlightedColor"/>
@@ -2586,6 +2592,7 @@ While you are in the conversation though you can replay videos you just watched 
                                                                 <constraint firstAttribute="height" constant="40" id="1C1-Uq-GmF"/>
                                                                 <constraint firstItem="Zc6-Vy-MOX" firstAttribute="leading" secondItem="vG2-be-Sfa" secondAttribute="leading" constant="8" id="KtC-cp-XCC"/>
                                                                 <constraint firstAttribute="centerY" secondItem="Zc6-Vy-MOX" secondAttribute="centerY" id="cdu-XX-7ar"/>
+                                                                <constraint firstAttribute="trailing" secondItem="Zc6-Vy-MOX" secondAttribute="trailing" constant="8" id="tIi-66-Ns7"/>
                                                             </constraints>
                                                         </view>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You and Samantha have 5 friends in common and both like the Walking Dead." lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" minimumScaleFactor="0.89999997615814209" translatesAutoresizingMaskIntoConstraints="NO" id="KGs-32-vFn" userLabel="Reason">
