@@ -77,7 +77,7 @@
                                 </variation>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Npy-aE-tSn" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
-                                <rect key="frame" x="88" y="517" width="199" height="50"/>
+                                <rect key="frame" x="88" y="389" width="199" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="XLn-by-deI"/>
@@ -104,6 +104,7 @@
                         <color key="backgroundColor" red="0.38823529410000002" green="0.70196078429999997" blue="0.30588235289999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Xja-ES-dSS" firstAttribute="top" secondItem="dNu-nU-tCi" secondAttribute="top" constant="80" id="2Zx-AS-P0B"/>
+                            <constraint firstItem="Npy-aE-tSn" firstAttribute="top" secondItem="gtg-GD-hG9" secondAttribute="bottom" constant="50" id="EF2-Ar-v4z"/>
                             <constraint firstAttribute="centerX" secondItem="Npy-aE-tSn" secondAttribute="centerX" id="YCw-gR-XSV"/>
                             <constraint firstItem="Npy-aE-tSn" firstAttribute="top" secondItem="gtg-GD-hG9" secondAttribute="bottom" constant="50" id="nIG-JA-etB"/>
                             <constraint firstAttribute="bottom" secondItem="Npy-aE-tSn" secondAttribute="bottom" constant="100" id="pGr-fn-PXu"/>
@@ -114,6 +115,7 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="nIG-JA-etB"/>
+                                <exclude reference="pGr-fn-PXu"/>
                             </mask>
                         </variation>
                     </view>
@@ -975,7 +977,7 @@
         <image name="sample-photo" width="1242" height="660"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="LER-0P-1dS"/>
+        <segue reference="dft-KV-aae"/>
         <segue reference="ztg-XZ-LWS"/>
     </inferredMetricsTieBreakers>
 </document>
