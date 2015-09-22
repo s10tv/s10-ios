@@ -80,7 +80,6 @@ public struct ProfileCoverViewModel {
     public let firstName: PropertyOf<String>
     public let lastName: PropertyOf<String>
     public let displayName : PropertyOf<String>
-    public let proximity: PropertyOf<String>
     public let avatar: PropertyOf<Image?>
     public let cover: PropertyOf<Image?>
     public let selectors: DynamicArray<ProfileSelectorViewModel>
@@ -102,15 +101,6 @@ public struct ProfileCoverViewModel {
                 return selectors
             }
         )
-        proximity = PropertyOf("", combineLatest(
-            user.dyn(.distance).optional(Double).producer,
-            user.dyn(.lastActive).optional(NSDate).producer,
-            CurrentTime.producer
-        ) |> map {
-            let distance = $0.map { Formatters.formatDistance($0) + " away" } ?? ""
-            let lastActive = Formatters.formatRelativeDate($1, relativeTo: $2) ?? ""
-            return "\(distance), \(lastActive)"
-        })
         selectedProfile = MutableProperty(selectors[0])
         hideChatButton = meteor.user.value == user
     }
