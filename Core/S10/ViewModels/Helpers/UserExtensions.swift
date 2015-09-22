@@ -50,10 +50,6 @@ extension User {
         return dyn(.cover_) |> map(Mapper<Image>().map)
     }
     
-    func pUsername() -> PropertyOf<String> {
-        return dyn(.username).optional(String) |> map { $0 ?? "" }
-    }
-    
     func pFirstName() -> PropertyOf<String> {
         return dyn(.firstName).optional(String) |> map { $0 ?? "" }
     }

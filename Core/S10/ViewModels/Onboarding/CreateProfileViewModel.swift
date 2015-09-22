@@ -19,7 +19,6 @@ public struct CreateProfileViewModel {
     public let lastName: MutableProperty<String>
     public let major: MutableProperty<String>
     public let year: MutableProperty<String>
-    public let tagline: MutableProperty<String>
     public let hometown: MutableProperty<String>
     public let about: MutableProperty<String>
     public let uploadImageAction: Action<(image: UIImage, type: PhotoTaskType), (), ErrorAlert>
@@ -32,7 +31,6 @@ public struct CreateProfileViewModel {
         // TODO: Think of better pattern
         firstName = MutableProperty(user.firstName ?? "")
         lastName = MutableProperty(user.lastName ?? "")
-        tagline = MutableProperty(user.tagline ?? "")
         about = MutableProperty(user.about ?? "")
         avatar = user.pAvatar() |> mutable
         cover = user.pCover() |> mutable
@@ -72,9 +70,6 @@ public struct CreateProfileViewModel {
                 "firstName": firstName.value,
                 "lastName": lastName.value,
             ]
-            if let tagline = tagline.value.nonBlank() {
-                fields["tagline"] = tagline
-            }
             if let about = about.value.nonBlank() {
                 fields["about"] = about
             }

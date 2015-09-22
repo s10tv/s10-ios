@@ -16,7 +16,6 @@ public struct EditProfileViewModel {
     public let gradYear: MutableProperty<String>
     public let hometown: MutableProperty<String>
     public let about: MutableProperty<String>
-    public let username: PropertyOf<String>
     public let avatar: PropertyOf<Image?>
     public let cover: PropertyOf<Image?>
     
@@ -33,7 +32,6 @@ public struct EditProfileViewModel {
         gradYear = user.pGradYear() |> mutable
         hometown = user.pHometown() |> mutable
         about = user.pAbout() |> mutable
-        username = user.pUsername()
         avatar = user.pAvatar()
         cover = user.pCover()
     }

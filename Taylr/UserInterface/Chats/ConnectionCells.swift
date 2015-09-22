@@ -93,6 +93,6 @@ class NewConnectionCell : UITableViewCell, BindableCell {
     }
     
     static func reuseId() -> String {
-        return reuseId(.NewConnectionCell)
+        return "NewConnectionCell" // TODO: Remove me
     }
 }

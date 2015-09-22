@@ -18,7 +18,6 @@ public struct MeViewModel {
     public let avatar: PropertyOf<Image?>
     public let cover: PropertyOf<Image?>
     public let displayName: PropertyOf<String>
-    public let username: PropertyOf<String>
     public let profileIcons: PropertyOf<[Image]>
     
     public init(meteor: MeteorService, taskService: TaskService) {
@@ -28,7 +27,6 @@ public struct MeViewModel {
         avatar = meteor.user |> flatMap { $0.pAvatar() }
         cover = meteor.user |> flatMap { $0.pCover() }
         displayName = meteor.user |> flatMap(nilValue: "") { $0.pDisplayName() }
-        username = meteor.user |> flatMap(nilValue: "") { $0.pUsername() }
         profileIcons = meteor.user
             |> flatMap(nilValue: []) { $0.pConnectedProfiles() }
             |> map { $0.map { $0.icon } }

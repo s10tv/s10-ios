@@ -29,10 +29,6 @@ internal enum UserKeys: String, Printable {
 
     case major = "major"
 
-    case tagline = "tagline"
-
-    case username = "username"
-
     case connection = "connection"
 
     internal var description: String { return rawValue }
@@ -123,16 +119,6 @@ class _User: NSManagedObject {
     var major: String?
 
     // func validateMajor(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
-
-    @NSManaged internal
-    var tagline: String?
-
-    // func validateTagline(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
-
-    @NSManaged internal
-    var username: String?
-
-    // func validateUsername(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
 

@@ -1,5 +1,5 @@
 //
-//  UsernameViewController.swift
+//  VerifyCodeViewController.swift
 //  S10
 //
 //  Created by Tony Xiao on 7/30/15.

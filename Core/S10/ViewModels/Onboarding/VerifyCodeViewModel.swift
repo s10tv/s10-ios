@@ -1,5 +1,5 @@
 //
-//  UsernameViewModel.swift
+//  VerifyCodeViewModel.swift
 //  S10
 //
 //  Created by Tony Xiao on 7/27/15.

@@ -21,7 +21,6 @@ class CreateProfileViewController : UITableViewController {
     @IBOutlet weak var lastNameField: JVFloatLabeledTextField!
     @IBOutlet weak var majorField: JVFloatLabeledTextField!
     @IBOutlet weak var yearField: JVFloatLabeledTextField!
-    @IBOutlet weak var taglineField: JVFloatLabeledTextField!
     @IBOutlet weak var hometownField: JVFloatLabeledTextField!
     @IBOutlet weak var aboutView: JVFloatLabeledTextView!
     
@@ -41,7 +40,6 @@ class CreateProfileViewController : UITableViewController {
         hometownField.setPlaceholder("Hometown (optional)", floatingTitle: "Hometown (optional)")
         aboutView.floatingLabelFont = UIFont(.cabinRegular, size: 11)
         aboutView.setPlaceholder("About (Optional)", floatingTitle: "About")
-        taglineField.setPlaceholder("Tagline. (e.g. New to SF, hails from NY)", floatingTitle: "Tagline")
         aboutView.font = UIFont(.cabinRegular, size: 16)
         aboutView.delegate = self
         
@@ -52,7 +50,6 @@ class CreateProfileViewController : UITableViewController {
         vm.major <->> majorField
         vm.year <->> yearField
         vm.about <->> aboutView
-        vm.tagline <->> taglineField
         vm.avatar ->> avatarView.imageBond
         vm.cover ->> coverView.imageBond
     }
