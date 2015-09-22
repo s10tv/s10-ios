@@ -107,7 +107,7 @@ extension CreateProfileViewController : UIScrollViewDelegate {
 // MARK: - Get AboutTextField's row to resize to fit content
 
 // HACK ALERT: Better way than hardcode?
-let AboutIndexPath = NSIndexPath(forRow: 2, inSection: 1)
+let AboutIndexPath = NSIndexPath(forRow: 3, inSection: 1)
 
 extension CreateProfileViewController : UITableViewDelegate {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

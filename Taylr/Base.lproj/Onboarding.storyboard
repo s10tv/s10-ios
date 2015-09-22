@@ -53,7 +53,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Connect your social accounts to get tailored matches" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xja-ES-dSS">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect your social accounts to get tailored matches" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xja-ES-dSS">
                                 <rect key="frame" x="37" y="80" width="300" height="59"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="Vs8-Ge-Ilq"/>
@@ -62,7 +62,7 @@
                                 <color key="textColor" red="0.95215992650000003" green="0.95215992650000003" blue="0.95215992650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="150" translatesAutoresizingMaskIntoConstraints="NO" id="gtg-GD-hG9">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="150" translatesAutoresizingMaskIntoConstraints="NO" id="gtg-GD-hG9">
                                 <rect key="frame" x="37" y="189" width="300" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="350" id="Y3W-OR-94t"/>
@@ -75,7 +75,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Npy-aE-tSn" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Npy-aE-tSn" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
                                 <rect key="frame" x="88" y="389" width="199" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -124,6 +124,7 @@
                         <outlet property="tutorialImageView" destination="gtg-GD-hG9" id="MJ8-kA-0wV"/>
                         <outlet property="tutorialTitle" destination="Xja-ES-dSS" id="Qg2-Xa-ZYZ"/>
                         <segue destination="L2P-Fc-Zcm" kind="show" identifier="LoginToRegisterEmail" id="dft-KV-aae"/>
+                        <segue destination="4LR-tW-qvj" kind="custom" identifier="Main_RootTab" customClass="LinkedStoryboardPresentSegue" id="BEQ-vP-9mV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GzM-Al-kXL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -148,7 +149,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Get introduced to one new classmate a day." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="250" translatesAutoresizingMaskIntoConstraints="NO" id="RgB-LM-On4" customClass="DesignableLabel" customModule="Taylr" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get introduced to one new classmate a day." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="250" translatesAutoresizingMaskIntoConstraints="NO" id="RgB-LM-On4" customClass="DesignableLabel" customModule="Taylr" customModuleProvider="target">
                                 <rect key="frame" x="84" y="379" width="207" height="44"/>
                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="18"/>
                                 <color key="textColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
@@ -160,7 +161,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="Cabin"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isY-Ks-GfE" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isY-Ks-GfE" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
                                 <rect key="frame" x="88" y="517" width="199" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -184,10 +185,10 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c0f-ne-erJ" userLabel="Terms &amp; Privacy">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0f-ne-erJ" userLabel="Terms &amp; Privacy">
                                 <rect key="frame" x="132" y="630" width="110" height="29"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Pp-CT-PMh" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Pp-CT-PMh" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="37" height="29"/>
                                         <state key="normal">
                                             <attributedString key="attributedTitle">
@@ -211,7 +212,7 @@
                                             <action selector="viewTerms:" destination="dFw-q9-bre" eventType="touchUpInside" id="7qQ-pM-k90"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ODl-1I-fve" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ODl-1I-fve" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
                                         <rect key="frame" x="67" y="0.0" width="43" height="29"/>
                                         <state key="normal">
                                             <attributedString key="attributedTitle">
@@ -245,7 +246,7 @@
                                     <constraint firstItem="1Pp-CT-PMh" firstAttribute="leading" secondItem="c0f-ne-erJ" secondAttribute="leading" id="xUj-Hg-ayT"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVd-2q-11O">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVd-2q-11O">
                                 <rect key="frame" x="119" y="575" width="136" height="31"/>
                                 <fontDescription key="fontDescription" name="Cabin-Italic" family="Cabin" pointSize="15"/>
                                 <state key="normal" title="Not you? Tap to logout">
@@ -552,7 +553,7 @@
                                                     </constraints>
                                                 </view>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Hometown (optional)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KpY-zc-8ou" customClass="JVFloatLabeledTextField">
-                                                    <rect key="frame" x="10" y="8" width="355" height="44"/>
+                                                    <rect key="frame" x="10" y="11" width="149" height="39"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <userDefinedRuntimeAttributes>
@@ -566,13 +567,11 @@
                                                 </textField>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="KpY-zc-8ou" firstAttribute="top" secondItem="mN0-wG-Pic" secondAttribute="topMargin" id="Epe-XZ-58v"/>
                                                 <constraint firstAttribute="bottom" secondItem="Ha7-GI-26m" secondAttribute="bottom" id="OV4-ZS-FqF"/>
-                                                <constraint firstItem="KpY-zc-8ou" firstAttribute="leading" secondItem="mN0-wG-Pic" secondAttribute="leadingMargin" constant="2" id="S2v-OY-va4"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="KpY-zc-8ou" secondAttribute="bottom" id="jsG-ph-b3y"/>
-                                                <constraint firstAttribute="centerY" secondItem="KpY-zc-8ou" secondAttribute="centerY" id="myr-0T-6bJ"/>
+                                                <constraint firstItem="KpY-zc-8ou" firstAttribute="leading" secondItem="mN0-wG-Pic" secondAttribute="leadingMargin" constant="2" id="S2v-OY-va4" userLabel="Horizontal Space - Hometown (optional) - Content View"/>
+                                                <constraint firstAttribute="bottom" secondItem="KpY-zc-8ou" secondAttribute="bottom" constant="10" id="j09-NE-xbp"/>
+                                                <constraint firstItem="KpY-zc-8ou" firstAttribute="top" secondItem="mN0-wG-Pic" secondAttribute="top" constant="11" id="jEW-vR-Kas"/>
                                                 <constraint firstAttribute="trailing" secondItem="Ha7-GI-26m" secondAttribute="trailing" id="oYp-gU-b2A"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="KpY-zc-8ou" secondAttribute="trailing" constant="2" id="pFm-Ef-7qN"/>
                                                 <constraint firstItem="Ha7-GI-26m" firstAttribute="leading" secondItem="mN0-wG-Pic" secondAttribute="leading" id="r1y-Jy-WUT"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
@@ -614,24 +613,10 @@
                                                 <constraint firstAttribute="bottom" secondItem="1x7-sO-vKM" secondAttribute="bottom" id="7c9-2P-AKh"/>
                                                 <constraint firstAttribute="trailing" secondItem="1x7-sO-vKM" secondAttribute="trailing" id="7d5-jL-dEd"/>
                                                 <constraint firstItem="gNz-Zb-kjq" firstAttribute="leading" secondItem="i4R-TL-1aZ" secondAttribute="leadingMargin" constant="12" id="9f0-x7-CRn"/>
-                                                <constraint firstItem="gNz-Zb-kjq" firstAttribute="leading" secondItem="i4R-TL-1aZ" secondAttribute="leadingMargin" constant="12" id="ChI-se-XEu"/>
-                                                <constraint firstItem="gNz-Zb-kjq" firstAttribute="leading" secondItem="i4R-TL-1aZ" secondAttribute="leading" constant="50" id="CqC-PF-yXB"/>
-                                                <constraint firstItem="gNz-Zb-kjq" firstAttribute="leading" secondItem="i4R-TL-1aZ" secondAttribute="leadingMargin" constant="2" id="QoK-kX-kYy"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="gNz-Zb-kjq" secondAttribute="bottom" constant="4" id="F5Z-o3-W1C"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="gNz-Zb-kjq" secondAttribute="trailing" constant="2" id="RCg-2w-Cen"/>
-                                                <constraint firstAttribute="trailing" secondItem="gNz-Zb-kjq" secondAttribute="trailing" constant="10" id="aJa-9M-Xtd"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="gNz-Zb-kjq" secondAttribute="bottom" priority="749" constant="10" id="b11-3J-3B8"/>
                                                 <constraint firstItem="gNz-Zb-kjq" firstAttribute="top" secondItem="i4R-TL-1aZ" secondAttribute="topMargin" id="k1f-Rp-Ptb"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="gNz-Zb-kjq" secondAttribute="trailing" constant="2" id="nLl-wS-pQa"/>
                                             </constraints>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="ChI-se-XEu"/>
-                                                    <exclude reference="CqC-PF-yXB"/>
-                                                    <exclude reference="QoK-kX-kYy"/>
-                                                    <exclude reference="b11-3J-3B8"/>
-                                                    <exclude reference="nLl-wS-pQa"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
