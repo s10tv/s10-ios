@@ -25,11 +25,9 @@ class MeViewController : UITableViewController {
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var servicesContainer: UIView!
     @IBOutlet weak var inviteContainer: UIView!
-    @IBOutlet weak var meSettingsControl: UISegmentedControl!
     
     var servicesVC: IntegrationsViewController!
     var vm: MeViewModel!
-    var filteredSections: [Section] = [.Profile, .Services]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,11 +66,7 @@ class MeViewController : UITableViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        if meSettingsControl.selectedSegmentIndex == 0 {
-            Globals.analyticsService.screen("Me - Me")
-        } else {
-            Globals.analyticsService.screen("Me - Settings")
-        }
+        Globals.analyticsService.screen("Me")
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -108,13 +102,6 @@ class MeViewController : UITableViewController {
         }
     }
     
-    func checkSection(section: Int) -> Bool {
-        for s in filteredSections {
-            if s.rawValue == section { return true }
-        }
-        return false
-    }
-    
     // MARK: -
     
     @IBAction func didPressContactSupport(sender: AnyObject) {
@@ -140,42 +127,9 @@ class MeViewController : UITableViewController {
         sheet.addAction(LS(.settingsLogoutCancel), style: .Cancel)
         presentViewController(sheet)
     }
-    
-    @IBAction func didTapSegmentedControl(control: UISegmentedControl) {
-        if control.selectedSegmentIndex == 0 {
-            Globals.analyticsService.screen("Me - Me")
-            filteredSections = [.Profile, .Services]
-        } else {
-            Globals.analyticsService.screen("Me - Settings")
-            filteredSections = [.Profile, .Invite, .Options]
-        }
-        tableView.reloadData()
-    }
-}
-
-extension MeViewController : UITableViewDataSource {
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if !checkSection(section) {
-            return 0
-        }
-        return super.tableView(tableView, numberOfRowsInSection: section)
-    }
 }
 
 extension MeViewController : UITableViewDelegate {
-   override  func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if !checkSection(section) {
-            return nil
-        }
-        return super.tableView(tableView, titleForHeaderInSection: section)
-    }
-    
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        if !checkSection(section) {
-            return 0.1
-        }
-        return super.tableView(tableView, heightForHeaderInSection: section)
-    }
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         // TODO: Should we consider autolayout?

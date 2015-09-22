@@ -1947,27 +1947,13 @@
                     <tabBarItem key="tabBarItem" title="" image="ic-me" id="UWs-Vj-PK0">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
-                    <navigationItem key="navigationItem" id="m7p-VQ-SA5">
-                        <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Er5-df-TiI">
-                            <rect key="frame" x="180" y="7" width="240" height="30"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="Me"/>
-                                <segment title="Settings"/>
-                            </segments>
-                            <connections>
-                                <action selector="didTapSegmentedControl:" destination="lnc-Fm-oTi" eventType="valueChanged" id="bnq-dT-fpQ"/>
-                            </connections>
-                        </segmentedControl>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Me" id="m7p-VQ-SA5"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="800"/>
                     <connections>
                         <outlet property="avatarView" destination="VMj-KH-MYk" id="YwB-iH-B5b"/>
                         <outlet property="inviteContainer" destination="Dcj-XZ-Syf" id="IES-9Z-Fvd"/>
-                        <outlet property="meSettingsControl" destination="Er5-df-TiI" id="F3h-Gk-Vrb"/>
                         <outlet property="nameLabel" destination="pde-J4-Tv8" id="cd9-Sv-ZxG"/>
                         <outlet property="servicesContainer" destination="ryg-lH-bTX" id="3yp-Ah-5NL"/>
                         <outlet property="usernameLabel" destination="Qmt-za-Eo6" id="GBh-tF-5Rh"/>
@@ -2634,6 +2620,6 @@ While you are in the conversation though you can replay videos you just watched 
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Hrk-zE-6Yh"/>
-        <segue reference="Fwv-Pj-RXP"/>
+        <segue reference="yhs-PQ-k4J"/>
     </inferredMetricsTieBreakers>
 </document>
