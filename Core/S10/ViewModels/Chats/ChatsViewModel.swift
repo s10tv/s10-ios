@@ -26,18 +26,12 @@ func countOfUnreadConnections(#cold: Bool) -> PropertyOf<Int> {
 }
 
 public struct ChatsViewModel {
-    public enum Section : Int {
-        case Contacts = 0, New = 1
-    }
     let meteor: MeteorService
     let taskService: TaskService
     let chatsSub: MeteorSubscription
     let messagesSub: MeteorSubscription
     let results: FetchedResultsArray<Connection>
-    public let connections: DynamicArray<ConnectionViewModel>
-    public let currentSection = MutableProperty<Section>(.Contacts)
-    public let newUnreadCount = countOfUnreadConnections(cold: true)
-    public let contactsUnreadCount = countOfUnreadConnections(cold: false)
+    public let connections: DynamicArray<ContactConnectionViewModel>
     
     public init(meteor: MeteorService, taskService: TaskService) {
         self.meteor = meteor
@@ -45,53 +39,14 @@ public struct ChatsViewModel {
         chatsSub = meteor.subscribe("chats")
         messagesSub = meteor.subscribe("messages")
         results = Connection
-            .by(NSPredicate(format: "%K != nil && %K == true",
-                ConnectionKeys.otherUser.rawValue, ConnectionKeys.cold.rawValue))
+            .by(NSPredicate(format: "%K != nil", ConnectionKeys.otherUser.rawValue))
             .sorted(by: ConnectionKeys.updatedAt.rawValue, ascending: false)
             .results(Connection)
-        connections = results
-            .map { (connection: Connection) -> ConnectionViewModel in
-                if connection.cold?.boolValue == true {
-                    return NewConnectionViewModel(connection: connection)
-                } else {
-                    return ContactConnectionViewModel(connection: connection)
-                }
-            }
-        currentSection <~ chatsSub.ready.producer
-            |> catch { _ in .empty }
-            |> observeOn(UIScheduler())
-            |> then(SignalProducer { observer, _ in
-                let cold = countOfUnreadConnections(cold: true).value
-                let warm = countOfUnreadConnections(cold: false).value
-                if cold > 0 && warm == 0 {
-                    sendNext(observer, .New)
-                } else {
-                    sendNext(observer, .Contacts)
-                }
-                sendCompleted(observer)
-            })
-        
-        (currentSection
-            |> map {
-                switch $0 {
-                case .Contacts:
-                    return NSPredicate(format: "%K != nil && %K == false",
-                        ConnectionKeys.otherUser.rawValue, ConnectionKeys.cold.rawValue)
-                case .New:
-                    return NSPredicate(format: "%K != nil && %K == true",
-                        ConnectionKeys.otherUser.rawValue, ConnectionKeys.cold.rawValue)
-                }
-            }) ->> results.predicateBond
+        connections = results.map { ContactConnectionViewModel(connection: $0) }
     }
     
     public func conversationVM(index: Int) -> ConversationViewModel {
-        var connection: Connection!
-        if let vm = connections[index] as? NewConnectionViewModel {
-            connection = vm.connection
-        }
-        if let vm = connections[index] as? ContactConnectionViewModel {
-            connection = vm.connection
-        }
+        let connection = connections[index].connection
         return ConversationViewModel(meteor: meteor, taskService: taskService, recipient: connection.otherUser)
     }
 }
