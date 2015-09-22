@@ -8,6 +8,7 @@
 
 import Foundation
 import ReactiveCocoa
+import AMScrollingNavbar
 import Bond
 import CHTCollectionViewWaterfallLayout
 import DZNEmptyDataSet
@@ -30,6 +31,11 @@ class HistoryViewController : BaseViewController {
         collectionView.collectionViewLayout = layout
             
         vm.candidates.map(collectionView.factory(HistoryCandidateCell)) ->> collectionView
+        
+        listenForNotification(DidTouchStatusBar).start(next: { [weak self] _ in
+            self?.showNavBarAnimated(true)
+            self?.collectionView.scrollToTop(animated: true)
+        })
     }
     
     override func viewDidLayoutSubviews() {

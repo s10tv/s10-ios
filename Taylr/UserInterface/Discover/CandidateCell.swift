@@ -15,7 +15,6 @@ import ReactiveCocoa
 class CandidateCell : UICollectionViewCell, BindableCell {
     typealias ViewModel = CurrentCandidateViewModel
     
-    @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var coverView: UIImageView!
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -23,15 +22,6 @@ class CandidateCell : UICollectionViewCell, BindableCell {
     @IBOutlet weak var hometownLabel: UILabel!
     @IBOutlet weak var reasonLabel: DesignableLabel!
     @IBOutlet weak var serviceIconsView: UICollectionView!
-    
-//    func bind(vm: CandidateViewModel) {
-//        avatarView.sd_setImageWithURL(vm.avatar?.url)
-//        nameLabel.text = vm.displayName
-//        taglineLabel.text = vm.tagline
-//        
-//        vm.profileIcons.map(serviceIconsView.factory(ProfileIconCell)) ->> serviceIconsView
-//        serviceIconsView.invalidateIntrinsicContentSize()
-//    }
     
     func bind(vm: CurrentCandidateViewModel) {
         coverView.sd_setImageWithURL(vm.cover?.url)
@@ -58,8 +48,8 @@ class CandidateCell : UICollectionViewCell, BindableCell {
         super.awakeFromNib()
         avatarView.makeCircular()
 //        avatarView.clipsToBounds = true
-        /// http://stackoverflow.com/questions/10133109/fastest-way-to-do-shadows-on-ios/10133182#10133182
-        /// Improve shadow performance, especially when scrolling
+/// http://stackoverflow.com/questions/10133109/fastest-way-to-do-shadows-on-ios/10133182#10133182
+/// Improve shadow performance, especially when scrolling
 //        layer.shouldRasterize = true
 //        layer.rasterizationScale = UIScreen.mainScreen().scale
     }
