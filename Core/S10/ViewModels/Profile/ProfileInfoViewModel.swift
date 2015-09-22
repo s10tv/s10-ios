@@ -16,10 +16,12 @@ public protocol ProfileInfoViewModel {
 public struct TaylrProfileInfoViewModel : ProfileInfoViewModel{
     public let major: PropertyOf<String>
     public let about: PropertyOf<String>
+    public let hometown: PropertyOf<String>
     
     init(meteor: MeteorService, user: User) {
         major = user.pMajor()
         about = user.pAbout()
+        hometown = user.pHometown()
     }
 }
 

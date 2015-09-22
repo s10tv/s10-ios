@@ -26,11 +26,14 @@ class ProfileAttributeCell : UICollectionViewCell, BindableCell {
 }
 
 class TaylrProfileInfoCell : UITableViewCell, BindableCell {
-    @IBOutlet weak var taglineLabel: UILabel!
+    @IBOutlet weak var hometownLabel: UILabel!
+    @IBOutlet weak var majorLabel: UILabel!
     @IBOutlet weak var aboutLabel: UILabel!
     
     func bind(vm: TaylrProfileInfoViewModel) {
         vm.about ->> aboutLabel
+        vm.major ->> majorLabel
+        vm.hometown ->> hometownLabel
     }
     
     static func reuseId() -> String {
