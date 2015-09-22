@@ -17,12 +17,12 @@ public struct DiscoverViewModel {
     
     public let candidate: DynamicArray<TodayViewModel>
     
-    public init(meteor: MeteorService, taskService: TaskService) {
+    public init(meteor: MeteorService, taskService: TaskService, settings: Settings) {
         self.meteor = meteor
         self.taskService = taskService
         subscription = meteor.subscribe("candidate-discover")
         let frc = Candidate.by(CandidateKeys.status_, value: Candidate.Status.Active.rawValue).first().frc()
-        candidate = frc.results(Candidate).map { TodayViewModel(candidate: $0) }
+        candidate = frc.results(Candidate).map { TodayViewModel(candidate: $0, settings: settings) }
     }
     
     public func profileVM() -> ProfileViewModel? {

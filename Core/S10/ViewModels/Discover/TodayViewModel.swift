@@ -19,10 +19,10 @@ public struct TodayViewModel {
     public let major: String
     public let reason: String
     public let profileIcons: DynamicArray<Image>
-    public let timeRemaining: PropertyOf<String>
+    public let timeRemaining: PropertyOf<String?>
     public let fractionRemaining: PropertyOf<CGFloat>
     
-    init(candidate: Candidate) {
+    init(candidate: Candidate, settings: Settings) {
         user = candidate.user
         cover = user.cover
         avatar = user.avatar
@@ -31,7 +31,7 @@ public struct TodayViewModel {
         displayName = user.pDisplayName().value
         reason = candidate.reason
         profileIcons = DynamicArray(user.connectedProfiles.map { $0.icon })
-        timeRemaining = PropertyOf("22:23")
+        timeRemaining = PropertyOf(Formatters.formatInterval(settings.nextMatchDate.value))
         fractionRemaining = PropertyOf(0.25)
     }
 }

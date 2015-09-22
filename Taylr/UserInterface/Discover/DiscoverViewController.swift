@@ -17,7 +17,7 @@ class DiscoverViewController : BaseViewController {
     @IBOutlet weak var collectionView : UICollectionView!
     @IBOutlet weak var topLayoutConstraint: NSLayoutConstraint!
     
-    let vm = DiscoverViewModel(meteor: Meteor, taskService: Globals.taskService)
+    let vm = DiscoverViewModel(meteor: Meteor, taskService: Globals.taskService, settings: Globals.settings)
     let emptyDataBond = ArrayBond<TodayViewModel>()
     
     deinit {
