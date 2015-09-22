@@ -49,15 +49,6 @@ class DiscoverViewController : BaseViewController {
             self?.showNavBarAnimated(true)
             self?.collectionView.scrollToTop(animated: true)
         })
-        
-        let label = UILabel(frame: CGRect(origin: CGPoint(x: 100, y: -44), size: CGSizeMake(200, 44)))
-        label.text = "Next recommendation in 22:23:11"
-        
-        let historyLabel = UILabel(frame: CGRect(origin: CGPoint(x: 100, y: collectionView.bounds.height), size: CGSizeMake(200, 44)))
-        historyLabel.text = "Previous recommendations"
-
-        collectionView.addSubview(label)
-        collectionView.addSubview(historyLabel)
     }
     
     override func viewWillAppear(animated: Bool) {
