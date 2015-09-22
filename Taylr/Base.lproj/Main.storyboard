@@ -234,7 +234,7 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vancouver, Canada" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.89999997615814209" translatesAutoresizingMaskIntoConstraints="NO" id="kHw-pN-pgR" userLabel="Hometown">
-                                                            <rect key="frame" x="35" y="34" width="129" height="20"/>
+                                                            <rect key="frame" x="36" y="34" width="129" height="20"/>
                                                             <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                                             <color key="textColor" red="0.29016065600000002" green="0.2902165055" blue="0.29015710950000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
@@ -263,6 +263,7 @@
                                                         <constraint firstItem="T96-qO-5S9" firstAttribute="leading" secondItem="IMj-k6-3nh" secondAttribute="leading" constant="4" id="7wi-tz-L2r"/>
                                                         <constraint firstItem="Cdd-B4-NSb" firstAttribute="centerX" secondItem="T96-qO-5S9" secondAttribute="centerX" id="9At-IJ-zXP"/>
                                                         <constraint firstItem="Cdd-B4-NSb" firstAttribute="top" secondItem="T96-qO-5S9" secondAttribute="bottom" constant="10" id="9D0-n1-j8r"/>
+                                                        <constraint firstItem="kHw-pN-pgR" firstAttribute="leading" secondItem="WQN-mi-DCX" secondAttribute="leading" id="GJW-gP-PIi"/>
                                                         <constraint firstAttribute="trailing" secondItem="y0g-Db-f9W" secondAttribute="trailing" constant="4" id="GdH-xc-g2c"/>
                                                         <constraint firstAttribute="centerY" secondItem="y0g-Db-f9W" secondAttribute="centerY" id="IZf-lr-k8B"/>
                                                         <constraint firstItem="T96-qO-5S9" firstAttribute="top" secondItem="IMj-k6-3nh" secondAttribute="top" constant="8" id="Lgc-ve-KtW"/>
@@ -271,7 +272,6 @@
                                                         <constraint firstItem="WQN-mi-DCX" firstAttribute="centerY" secondItem="T96-qO-5S9" secondAttribute="centerY" id="VFJ-8Y-0dL"/>
                                                         <constraint firstAttribute="height" constant="74" id="ZIg-CF-wyP"/>
                                                         <constraint firstAttribute="bottom" secondItem="PG2-Kb-iy3" secondAttribute="bottom" id="fKx-SF-LvN"/>
-                                                        <constraint firstItem="kHw-pN-pgR" firstAttribute="leading" secondItem="Cdd-B4-NSb" secondAttribute="trailing" constant="10" id="ixX-yz-osz"/>
                                                         <constraint firstItem="kHw-pN-pgR" firstAttribute="centerY" secondItem="Cdd-B4-NSb" secondAttribute="centerY" id="jwc-ER-Ly7"/>
                                                         <constraint firstItem="WQN-mi-DCX" firstAttribute="leading" secondItem="T96-qO-5S9" secondAttribute="trailing" constant="10" id="rr2-sh-qX8"/>
                                                     </constraints>

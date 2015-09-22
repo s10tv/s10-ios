@@ -15,6 +15,8 @@ public struct CurrentCandidateViewModel {
     public let cover: Image?
     public let avatar: Image?
     public let displayName: String
+    public let hometown: String
+    public let major: String
     public let reason: String
     public let profileIcons: DynamicArray<Image>
     public let timeRemaining: PropertyOf<String>
@@ -24,6 +26,8 @@ public struct CurrentCandidateViewModel {
         user = candidate.user
         cover = user.cover
         avatar = user.avatar
+        hometown = user.hometown ?? ""
+        major = user.major ?? ""
         displayName = user.pDisplayName().value
         reason = candidate.reason
         profileIcons = DynamicArray(user.connectedProfiles.map { $0.icon })

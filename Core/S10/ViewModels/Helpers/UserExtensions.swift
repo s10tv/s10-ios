@@ -70,6 +70,10 @@ extension User {
         return dyn(.major).optional(String) |> map { $0 ?? "" }
     }
     
+    func pHometown() -> PropertyOf<String> {
+        return dyn(.hometown).optional(String) |> map { $0 ?? "" }
+    }
+    
     func pAbout() -> PropertyOf<String> {
         return dyn(.about).optional(String) |> map { $0 ?? "" }
     }

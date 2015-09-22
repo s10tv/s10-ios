@@ -28,12 +28,6 @@ public enum SegueIdentifier : String {
     case RegisterEmailToConnectServices = "RegisterEmailToConnectServices"
 }
 
-public enum StoryboardNames : String {
-    case AVKit = "AVKit"
-    case Main = "Main"
-    case Onboarding = "Onboarding"
-}
-
 public enum TableViewCellreuseIdentifier : String {
     case ActivityImageCell = "ActivityImageCell"
     case ActivityTextCell = "ActivityTextCell"
@@ -62,5 +56,5 @@ public enum ViewControllerStoryboardIdentifier : String {
     case Producer = "Producer"
     case Recorder = "Recorder"
     case RegisterEmail = "RegisterEmail"
-    case Username = "Username"
+    case TutorialContentViewController = "TutorialContentViewController"
 }

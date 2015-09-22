@@ -170,12 +170,16 @@ public enum R {
         case icEdit = "ic-edit"
         /// ic-flash
         case icFlash = "ic-flash"
+        /// ic-house
+        case icHouse = "ic-house"
         /// ic-left-chevron
         case icLeftChevron = "ic-left-chevron"
         /// ic-me
         case icMe = "ic-me"
         /// ic-more
         case icMore = "ic-more"
+        /// ic-mortar
+        case icMortar = "ic-mortar"
         /// ic-play-medium
         case icPlayMedium = "ic-play-medium"
         /// ic-play-small
@@ -198,6 +202,8 @@ public enum R {
         case icStartChat = "ic-start-chat"
         /// ic-twitter-color
         case icTwitterColor = "ic-twitter-color"
+        /// ic-ubc
+        case icUbc = "ic-ubc"
         /// ic-up-chevron
         case icUpChevron = "ic-up-chevron"
         /// ic-up-triangle
@@ -210,6 +216,20 @@ public enum R {
         case icWarning = "ic-warning"
         /// Logo
         case logo = "Logo"
+        /// onboarding-college1
+        case onboardingCollege1 = "onboarding-college1"
+        /// onboarding-college2
+        case onboardingCollege2 = "onboarding-college2"
+        /// onboarding-college3
+        case onboardingCollege3 = "onboarding-college3"
+        /// onboarding-connections
+        case onboardingConnections = "onboarding-connections"
+        /// onboarding-profile
+        case onboardingProfile = "onboarding-profile"
+        /// onboarding-selfie
+        case onboardingSelfie = "onboarding-selfie"
+        /// onboarding-services
+        case onboardingServices = "onboarding-services"
         /// sample-photo
         case samplePhoto = "sample-photo"
     }

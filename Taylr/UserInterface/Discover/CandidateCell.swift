@@ -38,6 +38,8 @@ class CandidateCell : UICollectionViewCell, BindableCell {
         avatarView.sd_setImageWithURL(vm.avatar?.url)
         nameLabel.text = vm.displayName
         reasonLabel.rawText = vm.reason
+        hometownLabel.text = vm.hometown
+        majorLabel.text = vm.major
         
         vm.profileIcons.map(serviceIconsView.factory(ProfileIconCell)) ->> serviceIconsView
         serviceIconsView.invalidateIntrinsicContentSize()
