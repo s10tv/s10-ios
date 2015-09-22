@@ -22,6 +22,7 @@ class MeViewController : UITableViewController {
     @IBOutlet weak var servicesCollectionView: UICollectionView!
     
     var vm: MeViewModel!
+    var profileIcons = DynamicArray<Image>([])
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +31,12 @@ class MeViewController : UITableViewController {
         vm = MeViewModel(meteor: Meteor, taskService: Globals.taskService)
         vm.avatar ->> avatarView.imageBond
         vm.displayName ->> nameLabel
-        vm.profileIcons.map(servicesCollectionView.factory(ProfileIconCell)) ->> servicesCollectionView
+        
+        // Turn PropertyOf<[Image]> into DynamicArray<Image>
+        vm.profileIcons.producer.start(next: { [weak self] v in
+            self?.profileIcons.setArray(v)
+        })
+        profileIcons.map(servicesCollectionView.factory(ProfileIconCell)) ->> servicesCollectionView
         
         versionLabel.text = "Taylr v\(Globals.env.version) (\(Globals.env.build))"
         

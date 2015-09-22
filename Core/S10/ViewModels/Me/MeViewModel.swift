@@ -11,16 +11,14 @@ import Meteor
 import ReactiveCocoa
 import Bond
 
-// TODO: Class vs struct
-public class MeViewModel {
+public struct MeViewModel {
     let meteor: MeteorService
     let taskService: TaskService
     public let subscription: MeteorSubscription
     public let avatar: PropertyOf<Image?>
     public let displayName: PropertyOf<String>
     public let username: PropertyOf<String>
-    public let profileIcons: DynamicArray<Image>
-    public var disposable: Disposable!
+    public let profileIcons: PropertyOf<[Image]>
     
     public init(meteor: MeteorService, taskService: TaskService) {
         self.meteor = meteor
@@ -29,18 +27,9 @@ public class MeViewModel {
         avatar = meteor.user |> flatMap { $0.pAvatar() }
         displayName = meteor.user |> flatMap(nilValue: "") { $0.pDisplayName() }
         username = meteor.user |> flatMap(nilValue: "") { $0.pUsername() }
-        profileIcons = DynamicArray([])
-        disposable = meteor.user.producer.start(next: { [weak self] user in
-            if let user = user {
-                self?.profileIcons.setArray(user.connectedProfiles.map { $0.icon })
-            } else {
-                self?.profileIcons.setArray([])
-            }
-        })
-    }
-    
-    deinit {
-        disposable.dispose()
+        profileIcons = meteor.user
+            |> flatMap(nilValue: []) { $0.pConnectedProfiles() }
+            |> map { $0.map { $0.icon } }
     }
     
     public func canViewOrEditProfile() -> Bool {
