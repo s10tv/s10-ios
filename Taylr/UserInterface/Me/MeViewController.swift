@@ -18,8 +18,8 @@ class MeViewController : UITableViewController {
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var inviteContainer: UIView!
+    @IBOutlet weak var servicesCollectionView: UICollectionView!
     
     var vm: MeViewModel!
     
@@ -30,7 +30,8 @@ class MeViewController : UITableViewController {
         vm = MeViewModel(meteor: Meteor, taskService: Globals.taskService)
         vm.avatar ->> avatarView.imageBond
         vm.displayName ->> nameLabel
-        vm.username ->> usernameLabel
+        vm.profileIcons.map(servicesCollectionView.factory(ProfileIconCell)) ->> servicesCollectionView
+        
         versionLabel.text = "Taylr v\(Globals.env.version) (\(Globals.env.build))"
         
         listenForNotification(DidTouchStatusBar).start(next: { [weak self] _ in

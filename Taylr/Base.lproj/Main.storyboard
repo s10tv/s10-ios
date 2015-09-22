@@ -17,7 +17,6 @@
             <string>Cabin-Italic</string>
             <string>Cabin-Italic</string>
             <string>Cabin-Italic</string>
-            <string>Cabin-Italic</string>
         </mutableArray>
         <mutableArray key="Cabin-Medium.ttf">
             <string>Cabin-Medium</string>
@@ -170,19 +169,19 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Today" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eG0-5g-yXT" userLabel="Date">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Today" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eG0-5g-yXT" userLabel="Date">
                                                     <rect key="frame" x="311" y="8" width="36" height="18"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Taylor Swift '12" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ib-JK-1el" userLabel="Name">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylor Swift '12" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ib-JK-1el" userLabel="Name">
                                                     <rect key="frame" x="15" y="247" width="114" height="22"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Medium" family="Cabin" pointSize="18"/>
                                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" placeholderIntrinsicWidth="22" placeholderIntrinsicHeight="22" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2eB-0R-AfQ" userLabel="Service Icons" customClass="IntrinsicSizeCollectionView" customModule="Taylr" customModuleProvider="target">
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" placeholderIntrinsicWidth="22" placeholderIntrinsicHeight="22" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2eB-0R-AfQ" userLabel="Service Icons" customClass="IntrinsicSizeCollectionView" customModule="Taylr" customModuleProvider="target">
                                                     <rect key="frame" x="325" y="247" width="22" height="22"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="3" minimumInteritemSpacing="3" id="tyn-di-qZO">
@@ -225,13 +224,13 @@
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-mortar" translatesAutoresizingMaskIntoConstraints="NO" id="T96-qO-5S9">
                                                             <rect key="frame" x="4" y="8" width="22" height="18"/>
                                                         </imageView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Economics" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.89999997615814209" translatesAutoresizingMaskIntoConstraints="NO" id="WQN-mi-DCX" userLabel="Major">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Economics" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.89999997615814209" translatesAutoresizingMaskIntoConstraints="NO" id="WQN-mi-DCX" userLabel="Major">
                                                             <rect key="frame" x="36" y="7" width="74" height="20"/>
                                                             <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                                             <color key="textColor" red="0.29016065600000002" green="0.2902165055" blue="0.29015710950000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Vancouver, Canada" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.89999997615814209" translatesAutoresizingMaskIntoConstraints="NO" id="kHw-pN-pgR" userLabel="Hometown">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Vancouver, Canada" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.89999997615814209" translatesAutoresizingMaskIntoConstraints="NO" id="kHw-pN-pgR" userLabel="Hometown">
                                                             <rect key="frame" x="36" y="34" width="129" height="20"/>
                                                             <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                                             <color key="textColor" red="0.29016065600000002" green="0.2902165055" blue="0.29015710950000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -1189,7 +1188,7 @@
                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yZe-l1-1Cf" userLabel="New Messages Hint">
                                         <rect key="frame" x="121" y="100" width="135" height="30"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="new messages" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="80" translatesAutoresizingMaskIntoConstraints="NO" id="TF6-BS-vja">
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="new messages" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="80" translatesAutoresizingMaskIntoConstraints="NO" id="TF6-BS-vja">
                                                 <rect key="frame" x="34" y="6" width="86" height="18"/>
                                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -1240,13 +1239,13 @@
                                             <view userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lf3-Y8-ztX" userLabel="Swipe Up To Reply Hint">
                                                 <rect key="frame" x="232" y="529" width="138" height="51"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Swipe up to send video" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="180" translatesAutoresizingMaskIntoConstraints="NO" id="BEd-v4-YDM">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up to send video" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="180" translatesAutoresizingMaskIntoConstraints="NO" id="BEd-v4-YDM">
                                                         <rect key="frame" x="0.0" y="0.0" width="138" height="18"/>
                                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic-up-chevron" translatesAutoresizingMaskIntoConstraints="NO" id="6FU-Of-cdK">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-up-chevron" translatesAutoresizingMaskIntoConstraints="NO" id="6FU-Of-cdK">
                                                         <rect key="frame" x="58" y="26" width="22" height="25"/>
                                                     </imageView>
                                                 </subviews>
@@ -1365,13 +1364,13 @@
                                         </userDefinedRuntimeAttribute>
                                     </userDefinedRuntimeAttributes>
                                 </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="251" misplaced="YES" text="Taylor Swift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0x-EU-7eq">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="251" text="Taylor Swift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e0x-EU-7eq">
                                     <rect key="frame" x="70" y="0.0" width="80" height="20"/>
                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Received just now" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhe-ik-k94">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Received just now" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xhe-ik-k94">
                                     <rect key="frame" x="74" y="21" width="71" height="13"/>
                                     <fontDescription key="fontDescription" name="Cabin-Italic" family="Cabin" pointSize="10"/>
                                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1769,20 +1768,54 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Taylor Swift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pde-J4-Tv8">
-                                                    <rect key="frame" x="108" y="15" width="93" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylor Swift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pde-J4-Tv8">
+                                                    <rect key="frame" x="108" y="15" width="91" height="22"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Medium" family="Cabin" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="taylorswift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qmt-za-Eo6">
-                                                    <rect key="frame" x="108" y="41" width="74" height="19"/>
-                                                    <fontDescription key="fontDescription" name="Cabin-Italic" family="Cabin" pointSize="16"/>
-                                                    <color key="textColor" red="0.60777515172958374" green="0.60788232088088989" blue="0.60776835680007935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tic-o2-2Fq">
-                                                    <rect key="frame" x="108" y="70" width="476" height="29"/>
+                                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bvu-yC-ZDf" userLabel="Service Icons">
+                                                    <rect key="frame" x="108" y="43" width="476" height="22"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="22" id="jEu-N4-Jy0"/>
+                                                    </constraints>
+                                                    <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="3" minimumInteritemSpacing="3" id="2pa-Nf-SjI">
+                                                        <size key="itemSize" width="22" height="22"/>
+                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                        <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                    </collectionViewFlowLayout>
+                                                    <cells>
+                                                        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProfileIconCell" id="uZ8-Ke-Psn" customClass="ProfileIconCell" customModule="Taylr" customModuleProvider="target">
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                            <autoresizingMask key="autoresizingMask"/>
+                                                            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                                <rect key="frame" x="0.0" y="0.0" width="22" height="22"/>
+                                                                <autoresizingMask key="autoresizingMask"/>
+                                                                <subviews>
+                                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YfB-DA-3wc">
+                                                                        <rect key="frame" x="1" y="1" width="20" height="20"/>
+                                                                        <constraints>
+                                                                            <constraint firstAttribute="width" constant="20" id="BtA-iV-9A4"/>
+                                                                            <constraint firstAttribute="height" constant="20" id="ayL-8f-ZQ1"/>
+                                                                        </constraints>
+                                                                    </imageView>
+                                                                </subviews>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                            </view>
+                                                            <constraints>
+                                                                <constraint firstAttribute="centerY" secondItem="YfB-DA-3wc" secondAttribute="centerY" id="11f-CP-jaZ"/>
+                                                                <constraint firstAttribute="centerX" secondItem="YfB-DA-3wc" secondAttribute="centerX" id="2gn-cJ-ak2"/>
+                                                            </constraints>
+                                                            <connections>
+                                                                <outlet property="imageView" destination="YfB-DA-3wc" id="xUi-bX-7yD"/>
+                                                            </connections>
+                                                        </collectionViewCell>
+                                                    </cells>
+                                                </collectionView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tic-o2-2Fq">
+                                                    <rect key="frame" x="108" y="69" width="476" height="30"/>
                                                     <color key="backgroundColor" red="0.78030639886856079" green="0.7804415225982666" blue="0.78029787540435791" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                                     <state key="normal" title="Edit Profile">
@@ -1800,15 +1833,16 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Qmt-za-Eo6" firstAttribute="leading" secondItem="pde-J4-Tv8" secondAttribute="leading" id="AB9-ds-9vl"/>
+                                                <constraint firstItem="pde-J4-Tv8" firstAttribute="leading" secondItem="Tic-o2-2Fq" secondAttribute="leading" id="0rS-SC-WLp"/>
                                                 <constraint firstItem="VMj-KH-MYk" firstAttribute="top" secondItem="pde-J4-Tv8" secondAttribute="top" id="FGo-q9-FbP"/>
                                                 <constraint firstItem="VMj-KH-MYk" firstAttribute="bottom" secondItem="Tic-o2-2Fq" secondAttribute="bottom" id="KDF-q2-XEa"/>
                                                 <constraint firstItem="VMj-KH-MYk" firstAttribute="leading" secondItem="Y7h-a5-tcW" secondAttribute="leadingMargin" id="LPv-s4-It7"/>
-                                                <constraint firstItem="Qmt-za-Eo6" firstAttribute="leading" secondItem="Tic-o2-2Fq" secondAttribute="leading" id="Vs9-QY-xsF"/>
                                                 <constraint firstItem="pde-J4-Tv8" firstAttribute="leading" secondItem="VMj-KH-MYk" secondAttribute="trailing" constant="16" id="b0s-1y-fda"/>
-                                                <constraint firstItem="Qmt-za-Eo6" firstAttribute="top" secondItem="pde-J4-Tv8" secondAttribute="bottom" constant="5" id="bdS-Tl-fxR"/>
                                                 <constraint firstAttribute="centerY" secondItem="VMj-KH-MYk" secondAttribute="centerY" id="iJq-fi-nkD"/>
+                                                <constraint firstItem="pde-J4-Tv8" firstAttribute="leading" secondItem="bvu-yC-ZDf" secondAttribute="leading" id="lJW-F4-vbU"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Tic-o2-2Fq" secondAttribute="trailing" constant="8" id="u5n-P4-U6w"/>
+                                                <constraint firstItem="bvu-yC-ZDf" firstAttribute="top" secondItem="pde-J4-Tv8" secondAttribute="bottom" constant="6" id="uZZ-yh-nwa"/>
+                                                <constraint firstItem="bvu-yC-ZDf" firstAttribute="trailing" secondItem="Tic-o2-2Fq" secondAttribute="trailing" id="zH4-eb-Xfm"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
@@ -1975,7 +2009,7 @@
                         <outlet property="avatarView" destination="VMj-KH-MYk" id="YwB-iH-B5b"/>
                         <outlet property="inviteContainer" destination="Dcj-XZ-Syf" id="IES-9Z-Fvd"/>
                         <outlet property="nameLabel" destination="pde-J4-Tv8" id="cd9-Sv-ZxG"/>
-                        <outlet property="usernameLabel" destination="Qmt-za-Eo6" id="GBh-tF-5Rh"/>
+                        <outlet property="servicesCollectionView" destination="bvu-yC-ZDf" id="Nir-IG-V53"/>
                         <outlet property="versionLabel" destination="Xvn-b4-dl4" id="48e-6F-pFh"/>
                         <segue destination="VVH-o2-j4o" kind="custom" identifier="Onboarding_Login" customClass="LinkedStoryboardPushSegue" id="pTL-As-d01"/>
                     </connections>
@@ -2638,7 +2672,7 @@ While you are in the conversation though you can replay videos you just watched 
         <image name="sample-photo" width="1242" height="660"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Hrk-zE-6Yh"/>
+        <segue reference="33G-iq-iGB"/>
         <segue reference="yhs-PQ-k4J"/>
     </inferredMetricsTieBreakers>
 </document>
