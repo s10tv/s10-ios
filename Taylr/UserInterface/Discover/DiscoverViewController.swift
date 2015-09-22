@@ -66,7 +66,6 @@ class DiscoverViewController : BaseViewController {
                 UIUserNotificationType.Sound,
             categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
-        Globals.locationService.requestPermission()
         Globals.analyticsService.screen("Discover")
     }
     
