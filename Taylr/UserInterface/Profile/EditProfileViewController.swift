@@ -21,8 +21,9 @@ class EditProfileViewController : UITableViewController {
     @IBOutlet weak var lastNameField: JVFloatLabeledTextField!
     @IBOutlet weak var taglineField: JVFloatLabeledTextField!
     @IBOutlet weak var aboutTextView: JVFloatLabeledTextView!
-    @IBOutlet weak var usernameLabel: JVFloatLabeledTextField!
-    
+    @IBOutlet weak var servicesContainer: UIView!
+
+    var servicesVC: IntegrationsViewController!
     var vm: EditProfileViewModel!
     
     override func viewDidLoad() {
@@ -36,9 +37,18 @@ class EditProfileViewController : UITableViewController {
         vm.lastName <->> lastNameField
         vm.tagline <->> taglineField
         vm.about <->> aboutTextView
-        vm.username ->> usernameLabel
         vm.avatar ->> avatarImageView.imageBond
         vm.cover ->> coverImageView.imageBond
+        
+        // Observe collectionView height and reload table view cell height whenever appropriate
+        servicesVC.collectionView!.dyn("contentSize").force(NSValue).producer
+            |> skip(1)
+            |> skipRepeats
+            |> observeOn(QueueScheduler.mainQueueScheduler)
+            |> start(next: { _ in
+                self.tableView.beginUpdates()
+                self.tableView.endUpdates()
+            })
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -49,6 +59,12 @@ class EditProfileViewController : UITableViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         Globals.analyticsService.screen("Edit Profile")
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let vc = segue.destinationViewController as? IntegrationsViewController {
+            servicesVC = vc
+        }
     }
     
     // MARK: - Actions
@@ -77,5 +93,18 @@ class EditProfileViewController : UITableViewController {
         }.onSuccess {
             self.navigationController?.popViewControllerAnimated(true)
         }
+    }
+}
+
+
+extension EditProfileViewController : UITableViewDelegate {
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        // TODO: Should we consider autolayout?
+        if indexPath.section == 1 { // Integrations section
+            let height = servicesVC.collectionView!.collectionViewLayout.collectionViewContentSize().height + 20
+            return height
+        }
+        return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
     }
 }

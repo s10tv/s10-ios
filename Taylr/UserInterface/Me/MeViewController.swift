@@ -15,18 +15,12 @@ import Core
 
 class MeViewController : UITableViewController {
     
-    enum Section: Int {
-        case Profile, Services, Invite, Options
-    }
-    
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var servicesContainer: UIView!
     @IBOutlet weak var inviteContainer: UIView!
     
-    var servicesVC: IntegrationsViewController!
     var vm: MeViewModel!
     
     override func viewDidLoad() {
@@ -38,16 +32,6 @@ class MeViewController : UITableViewController {
         vm.displayName ->> nameLabel
         vm.username ->> usernameLabel
         versionLabel.text = "Taylr v\(Globals.env.version) (\(Globals.env.build))"
-
-        // Observe collectionView height and reload table view cell height whenever appropriate
-        servicesVC.collectionView!.dyn("contentSize").force(NSValue).producer
-            |> skip(1)
-            |> skipRepeats
-            |> observeOn(QueueScheduler.mainQueueScheduler)
-            |> start(next: { _ in
-                self.tableView.beginUpdates()
-                self.tableView.endUpdates()
-            })
         
         listenForNotification(DidTouchStatusBar).start(next: { [weak self] _ in
             self?.tableView.scrollToTop(animated: true)
@@ -88,9 +72,6 @@ class MeViewController : UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let vc = segue.destinationViewController as? IntegrationsViewController {
-            servicesVC = vc
-        }
         if let vc = segue.destinationViewController as? ProfileViewController {
             vc.vm = vm.profileVM()
         }
@@ -126,18 +107,6 @@ class MeViewController : UITableViewController {
         }
         sheet.addAction(LS(.settingsLogoutCancel), style: .Cancel)
         presentViewController(sheet)
-    }
-}
-
-extension MeViewController : UITableViewDelegate {
-    
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-        // TODO: Should we consider autolayout?
-        if indexPath.section == 1 { // Integrations section
-            let height = servicesVC.collectionView!.collectionViewLayout.collectionViewContentSize().height + 16
-            return height
-        }
-        return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
     }
 }
 

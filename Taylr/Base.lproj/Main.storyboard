@@ -71,7 +71,6 @@
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
-            <string>Cabin-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1462,7 +1461,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="EditProfile" id="GLZ-GV-JCx" customClass="EditProfileViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" keyboardDismissMode="interactive" dataMode="static" style="grouped" allowsSelection="NO" rowHeight="60" sectionHeaderHeight="10" sectionFooterHeight="10" id="6Zt-YK-6an" customClass="TPKeyboardAvoidingTableView">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="900"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
@@ -1511,6 +1510,45 @@
                                                 <constraint firstAttribute="bottom" secondItem="Mmq-ff-Gkx" secondAttribute="bottom" id="oqr-qN-kTr"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="Connected Services" id="j1x-Lq-zuv">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="PJH-Dc-HXf">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="PJH-Dc-HXf" id="ZrQ-nn-zPb">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="fzZ-QA-b2C">
+                                                    <rect key="frame" x="8" y="8" width="584" height="64"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
+                                                            <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
+                                                            <real key="value" value="0.050000000000000003"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
+                                                            <real key="value" value="3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
+                                                            <size key="value" width="0.0" height="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <segue destination="rLF-La-PWZ" kind="embed" id="uHe-nL-zm0"/>
+                                                    </connections>
+                                                </containerView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="fzZ-QA-b2C" firstAttribute="bottom" secondItem="ZrQ-nn-zPb" secondAttribute="bottomMargin" id="45x-zJ-lWT"/>
+                                                <constraint firstItem="fzZ-QA-b2C" firstAttribute="top" secondItem="ZrQ-nn-zPb" secondAttribute="topMargin" id="MbH-f9-oc0"/>
+                                                <constraint firstItem="fzZ-QA-b2C" firstAttribute="trailing" secondItem="ZrQ-nn-zPb" secondAttribute="trailingMargin" id="Tas-gV-Eum"/>
+                                                <constraint firstItem="fzZ-QA-b2C" firstAttribute="leading" secondItem="ZrQ-nn-zPb" secondAttribute="leadingMargin" id="hJq-OD-37o"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1614,34 +1652,6 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
-                            <tableViewSection id="XKw-mU-Ee3">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="LaK-f5-a99">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LaK-f5-a99" id="QOa-oR-rD8">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yRB-v4-b8z" customClass="JVFloatLabeledTextField">
-                                                    <rect key="frame" x="28" y="12" width="544" height="36"/>
-                                                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
-                                                            <color key="value" red="0.46897470951080322" green="0.27513545751571655" blue="0.68778532743453979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                </textField>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstAttribute="trailingMargin" secondItem="yRB-v4-b8z" secondAttribute="trailing" constant="20" id="dXI-Do-Td3"/>
-                                                <constraint firstItem="yRB-v4-b8z" firstAttribute="leading" secondItem="QOa-oR-rD8" secondAttribute="leadingMargin" constant="20" id="kaR-zy-Bfo"/>
-                                                <constraint firstAttribute="centerY" secondItem="yRB-v4-b8z" secondAttribute="centerY" id="myO-Hm-CqI"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="GLZ-GV-JCx" id="oq6-Ck-tEk"/>
@@ -1657,7 +1667,7 @@
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="600" height="800"/>
+                    <size key="freeformSize" width="600" height="900"/>
                     <connections>
                         <outlet property="aboutTextView" destination="4Oe-rd-vPP" id="FDk-3F-WSR"/>
                         <outlet property="avatarImageView" destination="8hD-TE-i8H" id="E8O-KZ-ezn"/>
@@ -1665,7 +1675,6 @@
                         <outlet property="firstNameField" destination="CPC-9R-MN9" id="exq-dc-RKt"/>
                         <outlet property="lastNameField" destination="kXU-hv-A2T" id="gHZ-Sr-elg"/>
                         <outlet property="taglineField" destination="GQg-11-mAR" id="ZEL-Gu-OeW"/>
-                        <outlet property="usernameLabel" destination="yRB-v4-b8z" id="Bt2-1M-Ch0"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NFN-Ku-3H2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1756,45 +1765,6 @@
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="I5R-ka-3jv" appends="YES" id="LGy-ks-Quf"/>
                                         </connections>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="Services" id="3yL-dR-PIN">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="80" id="9lI-q0-vFe">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="9lI-q0-vFe" id="ZMH-Fw-8UL">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ryg-lH-bTX">
-                                                    <rect key="frame" x="8" y="8" width="584" height="64"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                                            <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                            <real key="value" value="0.050000000000000003"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                            <real key="value" value="3"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                                            <size key="value" width="0.0" height="1"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <segue destination="rLF-La-PWZ" kind="embed" id="44v-NU-T9Q"/>
-                                                    </connections>
-                                                </containerView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="ryg-lH-bTX" firstAttribute="trailing" secondItem="ZMH-Fw-8UL" secondAttribute="trailingMargin" id="390-2P-cWx"/>
-                                                <constraint firstItem="ryg-lH-bTX" firstAttribute="bottom" secondItem="ZMH-Fw-8UL" secondAttribute="bottomMargin" id="JRn-xU-Rtj"/>
-                                                <constraint firstItem="ryg-lH-bTX" firstAttribute="leading" secondItem="ZMH-Fw-8UL" secondAttribute="leadingMargin" id="lN5-ys-I2V"/>
-                                                <constraint firstItem="ryg-lH-bTX" firstAttribute="top" secondItem="ZMH-Fw-8UL" secondAttribute="topMargin" id="pbk-3g-XC5"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1955,7 +1925,6 @@
                         <outlet property="avatarView" destination="VMj-KH-MYk" id="YwB-iH-B5b"/>
                         <outlet property="inviteContainer" destination="Dcj-XZ-Syf" id="IES-9Z-Fvd"/>
                         <outlet property="nameLabel" destination="pde-J4-Tv8" id="cd9-Sv-ZxG"/>
-                        <outlet property="servicesContainer" destination="ryg-lH-bTX" id="3yp-Ah-5NL"/>
                         <outlet property="usernameLabel" destination="Qmt-za-Eo6" id="GBh-tF-5Rh"/>
                         <outlet property="versionLabel" destination="Xvn-b4-dl4" id="48e-6F-pFh"/>
                         <segue destination="VVH-o2-j4o" kind="custom" identifier="Onboarding_Login" customClass="LinkedStoryboardPushSegue" id="pTL-As-d01"/>
@@ -2066,7 +2035,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tfv-bD-2Q4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-972" y="1992"/>
+            <point key="canvasLocation" x="-960" y="3204"/>
         </scene>
         <!--Invite View Controller-->
         <scene sceneID="ctk-hn-GDV">
@@ -2241,7 +2210,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1iv-CK-fEN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1654" y="2032"/>
+            <point key="canvasLocation" x="-1642" y="3244"/>
         </scene>
         <!--Conversation Tutorial View Controller-->
         <scene sceneID="Zrk-Ze-d0g">
