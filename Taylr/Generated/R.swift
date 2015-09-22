@@ -42,10 +42,10 @@ public enum R {
     public enum Strings : String {
         /// This is where the messages you have sent or replied to appear.
         case emptyContactsMessage = "emptyContactsMessage"
-        /// We couldn't find anybody around you yet. When we do they will show up here.
+        /// Loading...
         case emptyDiscoverMessage = "emptyDiscoverMessage"
-        /// People reaching out to you for the first time will show up here
-        case emptyNewMessage = "emptyNewMessage"
+        /// People you have been introduced to before will show up here.
+        case emptyHistoryMessage = "emptyHistoryMessage"
         /// Unexpected Error
         case errDefault = "errDefault"
         /// Ooops, something unexpected has happened. Please close the app and try again later.

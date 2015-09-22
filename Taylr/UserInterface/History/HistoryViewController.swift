@@ -20,9 +20,17 @@ class HistoryViewController : BaseViewController {
     @IBOutlet weak var topLayoutConstraint: NSLayoutConstraint!
     
     let vm = HistoryViewModel(meteor: Meteor, taskService: Globals.taskService)
+    let emptyDataBond = ArrayBond<CandidateViewModel>()
+    
+    deinit {
+        collectionView?.delegate = nil
+        collectionView?.emptyDataSetSource = nil
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        collectionView.emptyDataSetSource = self
         
         let layout = CHTCollectionViewWaterfallLayout()
         layout.minimumColumnSpacing = 10
@@ -31,6 +39,10 @@ class HistoryViewController : BaseViewController {
         collectionView.collectionViewLayout = layout
             
         vm.candidates.map(collectionView.factory(CandidateCell)) ->> collectionView
+        
+        emptyDataBond.didPerformBatchUpdatesListener = { [weak self] in
+            self?.collectionView.reloadEmptyDataSet()
+        }
         
         listenForNotification(DidTouchStatusBar).start(next: { [weak self] _ in
             self?.showNavBarAnimated(true)
@@ -69,5 +81,13 @@ extension HistoryViewController : CHTCollectionViewDelegateWaterfallLayout {
         }
         Log.error("Returning default layout size 50x80, avatar likely missing")
         return CGSize(width: 50, height: 80)
+    }
+}
+
+extension HistoryViewController : DZNEmptyDataSetSource {
+    func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+        return NSAttributedString(string: LS(.emptyHistoryMessage), attributes: [
+            NSFontAttributeName: UIFont(.cabinRegular, size: 20)
+            ])
     }
 }
