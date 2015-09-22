@@ -22,7 +22,7 @@
 		EA043F6B1B62CE770047BDCA /* IntegrationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F6A1B62CE770047BDCA /* IntegrationCell.swift */; };
 		EA043F6D1B62CE880047BDCA /* IntegrationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F6C1B62CE880047BDCA /* IntegrationsViewController.swift */; };
 		EA043F791B62EF5D0047BDCA /* ActivityViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F6F1B62EF5D0047BDCA /* ActivityViewModels.swift */; };
-		EA043F7D1B62EF5D0047BDCA /* CandidateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F751B62EF5D0047BDCA /* CandidateViewModel.swift */; };
+		EA043F7D1B62EF5D0047BDCA /* CurrentCandidateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F751B62EF5D0047BDCA /* CurrentCandidateViewModel.swift */; };
 		EA043F7E1B62EF5D0047BDCA /* ConnectionViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F771B62EF5D0047BDCA /* ConnectionViewModels.swift */; };
 		EA043F7F1B62EF5D0047BDCA /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F781B62EF5D0047BDCA /* MessageViewModel.swift */; };
 		EA043F831B62EF8B0047BDCA /* IntegrationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F811B62EF8B0047BDCA /* IntegrationListViewModel.swift */; };
@@ -187,6 +187,10 @@
 		EAE067231B71851E00A2FF76 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE067221B71851E00A2FF76 /* AudioController.swift */; };
 		EAE1E07B1AE34C6200F03F13 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1E07A1AE34C6200F03F13 /* LocationService.swift */; };
 		EAE1E07D1AE3788300F03F13 /* Globals.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE1E07C1AE3788300F03F13 /* Globals.swift */; };
+		EAF0203D1BB1D2C5006C789F /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF0203C1BB1D2C5006C789F /* HistoryViewModel.swift */; };
+		EAF0203F1BB1D329006C789F /* CandidateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF0203E1BB1D329006C789F /* CandidateViewModel.swift */; };
+		EAF020421BB1D3DF006C789F /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF020411BB1D3DF006C789F /* HistoryViewController.swift */; };
+		EAF020441BB1D446006C789F /* HistoryCandidateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF020431BB1D446006C789F /* HistoryCandidateCell.swift */; };
 		EAF6701D1B31E6550025D7CF /* Core.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF6701C1B31E6550025D7CF /* Core.m */; };
 		EAF670731B31F9450025D7CF /* MeteorCDStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670561B31F9450025D7CF /* MeteorCDStack.swift */; };
 		EAF670741B31F9450025D7CF /* MeteorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670571B31F9450025D7CF /* MeteorExtension.swift */; };
@@ -293,7 +297,7 @@
 		EA043F6A1B62CE770047BDCA /* IntegrationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationCell.swift; sourceTree = "<group>"; };
 		EA043F6C1B62CE880047BDCA /* IntegrationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationsViewController.swift; sourceTree = "<group>"; };
 		EA043F6F1B62EF5D0047BDCA /* ActivityViewModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewModels.swift; sourceTree = "<group>"; };
-		EA043F751B62EF5D0047BDCA /* CandidateViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateViewModel.swift; sourceTree = "<group>"; };
+		EA043F751B62EF5D0047BDCA /* CurrentCandidateViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentCandidateViewModel.swift; sourceTree = "<group>"; };
 		EA043F771B62EF5D0047BDCA /* ConnectionViewModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionViewModels.swift; sourceTree = "<group>"; };
 		EA043F781B62EF5D0047BDCA /* MessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		EA043F811B62EF8B0047BDCA /* IntegrationListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationListViewModel.swift; sourceTree = "<group>"; };
@@ -461,6 +465,10 @@
 		EAE067221B71851E00A2FF76 /* AudioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
 		EAE1E07A1AE34C6200F03F13 /* LocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		EAE1E07C1AE3788300F03F13 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		EAF0203C1BB1D2C5006C789F /* HistoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
+		EAF0203E1BB1D329006C789F /* CandidateViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateViewModel.swift; sourceTree = "<group>"; };
+		EAF020411BB1D3DF006C789F /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
+		EAF020431BB1D446006C789F /* HistoryCandidateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryCandidateCell.swift; sourceTree = "<group>"; };
 		EAF6701C1B31E6550025D7CF /* Core.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Core.m; sourceTree = "<group>"; };
 		EAF670561B31F9450025D7CF /* MeteorCDStack.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorCDStack.swift; sourceTree = "<group>"; };
 		EAF670571B31F9450025D7CF /* MeteorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorExtension.swift; sourceTree = "<group>"; };
@@ -624,7 +632,7 @@
 			isa = PBXGroup;
 			children = (
 				EA95A64F1B6371A1006046E5 /* DiscoverViewModel.swift */,
-				EA043F751B62EF5D0047BDCA /* CandidateViewModel.swift */,
+				EA043F751B62EF5D0047BDCA /* CurrentCandidateViewModel.swift */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -886,6 +894,7 @@
 				EA043F851B62F07E0047BDCA /* Me */,
 				EA043F6E1B62EF5D0047BDCA /* Profile */,
 				EA043F741B62EF5D0047BDCA /* Discover */,
+				EAF0203B1BB1D2BC006C789F /* History */,
 				EA043F761B62EF5D0047BDCA /* Chats */,
 				EA2DC2B21B63FCAF0034434E /* RootViewModel.swift */,
 			);
@@ -1080,6 +1089,24 @@
 			path = AudioController;
 			sourceTree = "<group>";
 		};
+		EAF0203B1BB1D2BC006C789F /* History */ = {
+			isa = PBXGroup;
+			children = (
+				EAF0203C1BB1D2C5006C789F /* HistoryViewModel.swift */,
+				EAF0203E1BB1D329006C789F /* CandidateViewModel.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
+		EAF020401BB1D3CF006C789F /* History */ = {
+			isa = PBXGroup;
+			children = (
+				EAF020411BB1D3DF006C789F /* HistoryViewController.swift */,
+				EAF020431BB1D446006C789F /* HistoryCandidateCell.swift */,
+			);
+			path = History;
+			sourceTree = "<group>";
+		};
 		EAF4D7441A79AA5E00D35330 /* UserInterface */ = {
 			isa = PBXGroup;
 			children = (
@@ -1088,6 +1115,7 @@
 				EA043F691B62CE6B0047BDCA /* Integration */,
 				EAA56F7D1B2B32E500DE3936 /* Onboarding */,
 				EAA56F6F1B2B32E500DE3936 /* Discover */,
+				EAF020401BB1D3CF006C789F /* History */,
 				EAA56F6B1B2B32E500DE3936 /* Chats */,
 				EAA56F741B2B32E500DE3936 /* Me */,
 				EAA56F801B2B32E500DE3936 /* Profile */,
@@ -1654,10 +1682,11 @@
 				EA4757151B392C19002071D7 /* Segue.swift in Sources */,
 				EAF6701D1B31E6550025D7CF /* Core.m in Sources */,
 				EAF670741B31F9450025D7CF /* MeteorExtension.swift in Sources */,
+				EAF0203D1BB1D2C5006C789F /* HistoryViewModel.swift in Sources */,
 				EAF6709A1B3200E10025D7CF /* MeteorService.swift in Sources */,
 				EA2DC2B71B641ECD0034434E /* ProfileViewModel.swift in Sources */,
 				EA2DC2941B637FA50034434E /* _Activity.swift in Sources */,
-				EA043F7D1B62EF5D0047BDCA /* CandidateViewModel.swift in Sources */,
+				EA043F7D1B62EF5D0047BDCA /* CurrentCandidateViewModel.swift in Sources */,
 				EA35613D1B6D49DA00F058CC /* Errors.swift in Sources */,
 				EA3965151B54C19800F5B0B3 /* ReactiveBridging.swift in Sources */,
 				EA2DC2A11B637FA50034434E /* Message.swift in Sources */,
@@ -1719,6 +1748,7 @@
 				EA4757131B392C19002071D7 /* PanInteractor.swift in Sources */,
 				EA5CA5811B51292300284B04 /* RealmExtensions.swift in Sources */,
 				EA2DC2961B637FA50034434E /* _Integration.swift in Sources */,
+				EAF0203F1BB1D329006C789F /* CandidateViewModel.swift in Sources */,
 				EAF670871B31F9450025D7CF /* GeometryExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1751,6 +1781,7 @@
 				EA925C741AD99ED8008E9F41 /* R.swift in Sources */,
 				EAB1B9921B6B34630010FBAB /* ConversationTutorialViewController.swift in Sources */,
 				EA9FE6491B684FA0006F8E73 /* ProfileIconCell.swift in Sources */,
+				EAF020421BB1D3DF006C789F /* HistoryViewController.swift in Sources */,
 				EAD7C6801BA4D9E600FD8A27 /* MatchTimer.swift in Sources */,
 				EAF81B271B33391000EED6DD /* EditorViewController.swift in Sources */,
 				EACEFB841B4672A800901E85 /* AppRouter.swift in Sources */,
@@ -1770,6 +1801,7 @@
 				EAA56F8E1B2B32E500DE3936 /* ConnectionCells.swift in Sources */,
 				EA57734E1B6C5D6800BCF449 /* Bond+UIButton.swift in Sources */,
 				EA043F6D1B62CE880047BDCA /* IntegrationsViewController.swift in Sources */,
+				EAF020441BB1D446006C789F /* HistoryCandidateCell.swift in Sources */,
 				EA95BBBF1B3932B500701F08 /* MediaExtension.swift in Sources */,
 				EAA56F8D1B2B32E500DE3936 /* ChatsViewController.swift in Sources */,
 				EA95BBBB1B3932B500701F08 /* DesignableViews.swift in Sources */,

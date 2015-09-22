@@ -2,8 +2,8 @@
 
 public enum CollectionViewCellreuseIdentifier : String {
     case CandidateCell = "CandidateCell"
+    case HistoryCandidateCell = "HistoryCandidateCell"
     case IntegrationCell = "IntegrationCell"
-    case PrevCandidateCell = "PrevCandidateCell"
     case ProfileAttributeCell = "ProfileAttributeCell"
     case ProfileIconCell = "ProfileIconCell"
     case ProfileSelectorCell = "ProfileSelectorCell"

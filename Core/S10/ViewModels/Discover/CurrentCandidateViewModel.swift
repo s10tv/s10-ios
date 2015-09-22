@@ -35,17 +35,3 @@ public struct CurrentCandidateViewModel {
         fractionRemaining = PropertyOf(0.25)
     }
 }
-
-public struct CandidateViewModel {
-    let user: User
-    public let avatar: Image?
-    public let displayName: String
-    public let profileIcons: DynamicArray<Image>
-    
-    init(user: User) {
-        self.user = user
-        avatar = user.avatar
-        displayName = user.pDisplayName().value
-        profileIcons = DynamicArray(user.connectedProfiles.map { $0.icon })
-    }
-}

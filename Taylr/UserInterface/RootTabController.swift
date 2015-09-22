@@ -38,8 +38,9 @@ class RootTabController : UITabBarController {
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        navigationItem.title = selectedViewController?.title
-        navigationItem.titleView = selectedViewController?.navigationItem.titleView
+        if let vc = selectedViewController {
+            tabBarController(self, didSelectViewController: vc)
+        }
     }
 }
 
@@ -47,6 +48,8 @@ extension RootTabController : UITabBarControllerDelegate {
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
         tabBarController.navigationItem.title = viewController.title
         tabBarController.navigationItem.titleView = viewController.navigationItem.titleView
+        tabBarController.navigationItem.rightBarButtonItems = viewController.navigationItem.rightBarButtonItems
+        tabBarController.navigationItem.leftBarButtonItems = viewController.navigationItem.leftBarButtonItems
         UD.lastTabIndex.value = selectedIndex
     }
 }
