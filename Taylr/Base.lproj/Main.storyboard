@@ -72,6 +72,8 @@
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
+            <string>Cabin-Regular</string>
+            <string>Cabin-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1473,42 +1475,81 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="S7k-eI-PX7" id="Fu4-Bo-WFz">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-photo" translatesAutoresizingMaskIntoConstraints="NO" id="Mmq-ff-Gkx">
+                                                <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-photo" translatesAutoresizingMaskIntoConstraints="NO" id="Mmq-ff-Gkx" userLabel="Cover">
                                                     <rect key="frame" x="0.0" y="0.0" width="600" height="199"/>
                                                     <gestureRecognizers/>
                                                     <connections>
                                                         <outletCollection property="gestureRecognizers" destination="HeM-j3-bJZ" appends="YES" id="653-Ya-TFN"/>
                                                     </connections>
                                                 </imageView>
-                                                <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-profile-pic" translatesAutoresizingMaskIntoConstraints="NO" id="8hD-TE-i8H">
-                                                    <rect key="frame" x="250" y="50" width="100" height="99"/>
+                                                <imageView contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-profile-pic" translatesAutoresizingMaskIntoConstraints="NO" id="8hD-TE-i8H" userLabel="Avatar">
+                                                    <rect key="frame" x="25" y="52" width="100" height="99"/>
                                                     <gestureRecognizers/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="100" id="wut-Yr-AMn"/>
                                                         <constraint firstAttribute="width" secondItem="8hD-TE-i8H" secondAttribute="height" constant="1" id="xN8-iQ-WUD"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="2"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
                                                     <connections>
                                                         <outletCollection property="gestureRecognizers" destination="Wpx-6X-1JX" appends="YES" id="m8S-aj-0xu"/>
                                                     </connections>
                                                 </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-edit" translatesAutoresizingMaskIntoConstraints="NO" id="KjJ-8A-6D3">
-                                                    <rect key="frame" x="561" y="159" width="39" height="40"/>
-                                                </imageView>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-edit" translatesAutoresizingMaskIntoConstraints="NO" id="ZBE-ru-lGM">
-                                                    <rect key="frame" x="311" y="109" width="39" height="40"/>
-                                                </imageView>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BAR-at-Y9B" userLabel="Edit Cover">
+                                                    <rect key="frame" x="520" y="154" width="60" height="30"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="60" id="XS4-D3-tP4"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
+                                                    <state key="normal" title="Edit">
+                                                        <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <action selector="didTapCoverImageView:" destination="GLZ-GV-JCx" eventType="touchUpInside" id="rrf-3r-fjG"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yBN-gU-LQQ" userLabel="Edit Avatar">
+                                                    <rect key="frame" x="60" y="151" width="30" height="32"/>
+                                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
+                                                    <state key="normal" title="Edit">
+                                                        <color key="titleColor" red="0.94771684649999999" green="1" blue="0.98100255940000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="didTapAvatarImageView:" destination="GLZ-GV-JCx" eventType="touchUpInside" id="rwN-Zp-N4V"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="Mmq-ff-Gkx" secondAttribute="trailing" id="3hk-ko-88b"/>
-                                                <constraint firstAttribute="centerY" secondItem="8hD-TE-i8H" secondAttribute="centerY" id="3kb-Jr-P9h"/>
-                                                <constraint firstItem="KjJ-8A-6D3" firstAttribute="trailing" secondItem="Mmq-ff-Gkx" secondAttribute="trailing" id="8vy-7R-OBe"/>
-                                                <constraint firstItem="8hD-TE-i8H" firstAttribute="bottom" secondItem="ZBE-ru-lGM" secondAttribute="bottom" id="CCj-RX-InH"/>
-                                                <constraint firstAttribute="centerX" secondItem="8hD-TE-i8H" secondAttribute="centerX" id="LcW-hS-OyL"/>
-                                                <constraint firstItem="8hD-TE-i8H" firstAttribute="trailing" secondItem="ZBE-ru-lGM" secondAttribute="trailing" id="NLe-vd-QmE"/>
+                                                <constraint firstItem="8hD-TE-i8H" firstAttribute="leading" secondItem="Fu4-Bo-WFz" secondAttribute="leading" constant="25" id="81w-wC-NQ0"/>
+                                                <constraint firstAttribute="trailing" secondItem="BAR-at-Y9B" secondAttribute="trailing" constant="20" id="JKb-UV-JNf"/>
                                                 <constraint firstItem="Mmq-ff-Gkx" firstAttribute="leading" secondItem="Fu4-Bo-WFz" secondAttribute="leading" id="dyX-pD-aBU"/>
+                                                <constraint firstAttribute="bottom" secondItem="BAR-at-Y9B" secondAttribute="bottom" constant="15" id="egg-Ak-I3F"/>
                                                 <constraint firstItem="Mmq-ff-Gkx" firstAttribute="top" secondItem="Fu4-Bo-WFz" secondAttribute="top" id="gfl-Zl-8rj"/>
-                                                <constraint firstItem="KjJ-8A-6D3" firstAttribute="bottom" secondItem="Mmq-ff-Gkx" secondAttribute="bottom" id="iFf-xT-mCp"/>
                                                 <constraint firstAttribute="bottom" secondItem="Mmq-ff-Gkx" secondAttribute="bottom" id="oqr-qN-kTr"/>
+                                                <constraint firstAttribute="bottom" secondItem="yBN-gU-LQQ" secondAttribute="bottom" constant="16" id="s1p-2a-afj"/>
+                                                <constraint firstItem="8hD-TE-i8H" firstAttribute="centerX" secondItem="yBN-gU-LQQ" secondAttribute="centerX" id="tAU-LS-Sbb"/>
+                                                <constraint firstItem="yBN-gU-LQQ" firstAttribute="top" secondItem="8hD-TE-i8H" secondAttribute="bottom" id="tXp-Qp-WQd"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1751,31 +1792,31 @@
                         <sections>
                             <tableViewSection id="ID2-bT-Fov" userLabel="Profile">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="114" id="OjQ-Z2-Rjk">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="120" id="OjQ-Z2-Rjk">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OjQ-Z2-Rjk" id="Y7h-a5-tcW">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-profile-pic" translatesAutoresizingMaskIntoConstraints="NO" id="VMj-KH-MYk">
-                                                    <rect key="frame" x="8" y="15" width="84" height="84"/>
+                                                    <rect key="frame" x="8" y="15" width="90" height="90"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="84" id="Hea-S2-DQS"/>
+                                                        <constraint firstAttribute="width" constant="90" id="Hea-S2-DQS"/>
                                                         <constraint firstAttribute="width" secondItem="VMj-KH-MYk" secondAttribute="height" multiplier="1:1" id="q2R-el-7uB"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                            <integer key="value" value="5"/>
+                                                            <integer key="value" value="45"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylor Swift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pde-J4-Tv8">
-                                                    <rect key="frame" x="108" y="15" width="91" height="22"/>
+                                                    <rect key="frame" x="114" y="15" width="91" height="22"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Medium" family="Cabin" pointSize="18"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="bvu-yC-ZDf" userLabel="Service Icons">
-                                                    <rect key="frame" x="108" y="43" width="476" height="22"/>
+                                                    <rect key="frame" x="114" y="43" width="470" height="22"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="22" id="jEu-N4-Jy0"/>
@@ -1815,7 +1856,7 @@
                                                     </cells>
                                                 </collectionView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tic-o2-2Fq">
-                                                    <rect key="frame" x="108" y="69" width="476" height="30"/>
+                                                    <rect key="frame" x="114" y="75" width="470" height="30"/>
                                                     <color key="backgroundColor" red="0.78030639886856079" green="0.7804415225982666" blue="0.78029787540435791" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                                     <state key="normal" title="Edit Profile">
@@ -2655,7 +2696,6 @@ While you are in the conversation though you can replay videos you just watched 
         <image name="ic-compass" width="28" height="28"/>
         <image name="ic-down-chevron-small" width="11" height="12"/>
         <image name="ic-eclipse" width="29" height="7"/>
-        <image name="ic-edit" width="39" height="40"/>
         <image name="ic-house" width="20" height="17"/>
         <image name="ic-left-chevron" width="24" height="21"/>
         <image name="ic-me" width="29" height="28"/>
