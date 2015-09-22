@@ -19,9 +19,10 @@ class EditProfileViewController : UITableViewController {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var firstNameField: JVFloatLabeledTextField!
     @IBOutlet weak var lastNameField: JVFloatLabeledTextField!
-    @IBOutlet weak var taglineField: JVFloatLabeledTextField!
+    @IBOutlet weak var majorField: JVFloatLabeledTextField!
+    @IBOutlet weak var gradYearField: JVFloatLabeledTextField!
+    @IBOutlet weak var hometownField: JVFloatLabeledTextField!
     @IBOutlet weak var aboutTextView: JVFloatLabeledTextView!
-    @IBOutlet weak var servicesContainer: UIView!
 
     var servicesVC: IntegrationsViewController!
     var vm: EditProfileViewModel!
@@ -35,11 +36,14 @@ class EditProfileViewController : UITableViewController {
         
         vm.firstName <->> firstNameField
         vm.lastName <->> lastNameField
-        vm.tagline <->> taglineField
+        vm.major <->> majorField
+        vm.gradYear <->> gradYearField
+        vm.hometown <->> hometownField
         vm.about <->> aboutTextView
         vm.avatar ->> avatarImageView.imageBond
         vm.cover ->> coverImageView.imageBond
         
+        aboutTextView.font = UIFont(.cabinRegular, size: 16)
         // Observe collectionView height and reload table view cell height whenever appropriate
         servicesVC.collectionView!.dyn("contentSize").force(NSValue).producer
             |> skip(1)

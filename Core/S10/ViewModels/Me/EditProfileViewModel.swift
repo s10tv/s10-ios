@@ -12,7 +12,9 @@ import ReactiveCocoa
 public struct EditProfileViewModel {
     public let firstName: MutableProperty<String>
     public let lastName: MutableProperty<String>
-    public let tagline: MutableProperty<String>
+    public let major: MutableProperty<String>
+    public let gradYear: MutableProperty<String>
+    public let hometown: MutableProperty<String>
     public let about: MutableProperty<String>
     public let username: PropertyOf<String>
     public let avatar: PropertyOf<Image?>
@@ -27,7 +29,9 @@ public struct EditProfileViewModel {
         self.user = user
         firstName = user.pFirstName() |> mutable
         lastName = user.pLastName() |> mutable
-        tagline = MutableProperty("") // TODO: Turn this major and gradYear
+        major = user.pMajor() |> mutable
+        gradYear = user.pGradYear() |> mutable
+        hometown = user.pHometown() |> mutable
         about = user.pAbout() |> mutable
         username = user.pUsername()
         avatar = user.pAvatar()
@@ -39,7 +43,9 @@ public struct EditProfileViewModel {
         // TODO: Add client side validation logic
         if firstName.value == user.firstName &&
             lastName.value == user.lastName &&
-//            tagline.value == user.tagline && // TODO: Turn into major & class year
+            major.value == user.major &&
+            gradYear.value == user.gradYear &&
+            hometown.value == user.hometown &&
             about.value == user.about {
             // Early exit case
             promise.success()
@@ -47,7 +53,9 @@ public struct EditProfileViewModel {
             meteor.updateProfile([
                 "firstName": firstName.value,
                 "lastName": lastName.value,
-                "tagline": tagline.value,
+                "major": major.value,
+                "gradYear": gradYear.value,
+                "hometown": hometown.value,
                 "about": about.value,
             ]).subscribeError({ error in
                 promise.failure(ErrorAlert(title: "Unable to save", message: error.localizedDescription))

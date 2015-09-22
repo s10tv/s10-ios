@@ -71,6 +71,8 @@
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
+            <string>Cabin-Regular</string>
+            <string>Cabin-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1605,7 +1607,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fgm-4a-YB3" id="xAt-Ze-H0r">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Tagline" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="GQg-11-mAR" userLabel="Tagline" customClass="JVFloatLabeledTextField">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Major" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="GQg-11-mAR" customClass="JVFloatLabeledTextField">
                                                     <rect key="frame" x="28" y="12" width="544" height="36"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -1620,6 +1622,52 @@
                                                 <constraint firstAttribute="centerY" secondItem="GQg-11-mAR" secondAttribute="centerY" id="gNF-Xz-IuC"/>
                                                 <constraint firstItem="GQg-11-mAR" firstAttribute="leading" secondItem="xAt-Ze-H0r" secondAttribute="leadingMargin" constant="20" id="lLA-C0-32K"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="GQg-11-mAR" secondAttribute="trailing" constant="20" id="lkV-Lv-3Y0"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="v6I-yF-A6I">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="v6I-yF-A6I" id="goc-jt-KRB">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Class Year" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Adf-PX-irr" customClass="JVFloatLabeledTextField">
+                                                    <rect key="frame" x="28" y="12" width="544" height="36"/>
+                                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
+                                                            <color key="value" red="0.46897470949999998" green="0.27513545750000001" blue="0.68778532739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="Adf-PX-irr" firstAttribute="leading" secondItem="goc-jt-KRB" secondAttribute="leadingMargin" constant="20" id="1VI-BJ-QWB"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Adf-PX-irr" secondAttribute="trailing" constant="20" id="TyG-wZ-Grj"/>
+                                                <constraint firstAttribute="centerY" secondItem="Adf-PX-irr" secondAttribute="centerY" id="lAW-Pd-pDd"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="Sfn-lG-orl">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Sfn-lG-orl" id="HK1-ly-aJF">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Hometown" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="hAt-0K-5k2" customClass="JVFloatLabeledTextField">
+                                                    <rect key="frame" x="28" y="12" width="544" height="36"/>
+                                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
+                                                            <color key="value" red="0.46897470949999998" green="0.27513545750000001" blue="0.68778532739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </textField>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="hAt-0K-5k2" secondAttribute="trailing" constant="20" id="L8N-nZ-QeQ"/>
+                                                <constraint firstAttribute="centerY" secondItem="hAt-0K-5k2" secondAttribute="centerY" id="Lo5-Va-AMl"/>
+                                                <constraint firstItem="hAt-0K-5k2" firstAttribute="leading" secondItem="HK1-ly-aJF" secondAttribute="leadingMargin" constant="20" id="u85-TX-jNU"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1673,8 +1721,10 @@
                         <outlet property="avatarImageView" destination="8hD-TE-i8H" id="E8O-KZ-ezn"/>
                         <outlet property="coverImageView" destination="Mmq-ff-Gkx" id="IW3-rd-EFZ"/>
                         <outlet property="firstNameField" destination="CPC-9R-MN9" id="exq-dc-RKt"/>
+                        <outlet property="gradYearField" destination="Adf-PX-irr" id="IK9-gM-slR"/>
+                        <outlet property="hometownField" destination="hAt-0K-5k2" id="e9b-Ms-ra7"/>
                         <outlet property="lastNameField" destination="kXU-hv-A2T" id="gHZ-Sr-elg"/>
-                        <outlet property="taglineField" destination="GQg-11-mAR" id="ZEL-Gu-OeW"/>
+                        <outlet property="majorField" destination="GQg-11-mAR" id="SHd-61-F46"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NFN-Ku-3H2" userLabel="First Responder" sceneMemberID="firstResponder"/>
