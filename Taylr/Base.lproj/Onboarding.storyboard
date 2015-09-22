@@ -617,18 +617,12 @@
                                                 <constraint firstAttribute="trailing" secondItem="Ha7-GI-26m" secondAttribute="trailing" id="oYp-gU-b2A"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="KpY-zc-8ou" secondAttribute="trailing" constant="2" id="pFm-Ef-7qN"/>
                                                 <constraint firstItem="Ha7-GI-26m" firstAttribute="leading" secondItem="mN0-wG-Pic" secondAttribute="leading" id="r1y-Jy-WUT"/>
-                                                <constraint firstItem="Ha7-GI-26m" firstAttribute="top" secondItem="KpY-zc-8ou" secondAttribute="bottom" id="vHg-gx-9ek"/>
                                             </constraints>
                                             <userDefinedRuntimeAttributes>
                                                 <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
                                                     <real key="value" value="0.0"/>
                                                 </userDefinedRuntimeAttribute>
                                             </userDefinedRuntimeAttributes>
-                                            <variation key="default">
-                                                <mask key="constraints">
-                                                    <exclude reference="vHg-gx-9ek"/>
-                                                </mask>
-                                            </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="NYa-St-Knz">
@@ -646,7 +640,7 @@
                                                     </constraints>
                                                 </view>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNz-Zb-kjq" customClass="JVFloatLabeledTextView">
-                                                    <rect key="frame" x="8" y="8" width="359" height="50"/>
+                                                    <rect key="frame" x="20" y="8" width="345" height="50"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -662,11 +656,25 @@
                                                 <constraint firstItem="1x7-sO-vKM" firstAttribute="leading" secondItem="i4R-TL-1aZ" secondAttribute="leading" id="189-iM-7NS"/>
                                                 <constraint firstAttribute="bottom" secondItem="1x7-sO-vKM" secondAttribute="bottom" id="7c9-2P-AKh"/>
                                                 <constraint firstAttribute="trailing" secondItem="1x7-sO-vKM" secondAttribute="trailing" id="7d5-jL-dEd"/>
-                                                <constraint firstItem="gNz-Zb-kjq" firstAttribute="leading" secondItem="i4R-TL-1aZ" secondAttribute="leadingMargin" id="QoK-kX-kYy"/>
+                                                <constraint firstItem="gNz-Zb-kjq" firstAttribute="leading" secondItem="i4R-TL-1aZ" secondAttribute="leadingMargin" constant="12" id="9f0-x7-CRn"/>
+                                                <constraint firstItem="gNz-Zb-kjq" firstAttribute="leading" secondItem="i4R-TL-1aZ" secondAttribute="leadingMargin" constant="12" id="ChI-se-XEu"/>
+                                                <constraint firstItem="gNz-Zb-kjq" firstAttribute="leading" secondItem="i4R-TL-1aZ" secondAttribute="leading" constant="50" id="CqC-PF-yXB"/>
+                                                <constraint firstItem="gNz-Zb-kjq" firstAttribute="leading" secondItem="i4R-TL-1aZ" secondAttribute="leadingMargin" constant="2" id="QoK-kX-kYy"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="gNz-Zb-kjq" secondAttribute="trailing" constant="2" id="RCg-2w-Cen"/>
+                                                <constraint firstAttribute="trailing" secondItem="gNz-Zb-kjq" secondAttribute="trailing" constant="10" id="aJa-9M-Xtd"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="gNz-Zb-kjq" secondAttribute="bottom" priority="749" constant="10" id="b11-3J-3B8"/>
                                                 <constraint firstItem="gNz-Zb-kjq" firstAttribute="top" secondItem="i4R-TL-1aZ" secondAttribute="topMargin" id="k1f-Rp-Ptb"/>
-                                                <constraint firstAttribute="trailingMargin" secondItem="gNz-Zb-kjq" secondAttribute="trailing" id="nLl-wS-pQa"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="gNz-Zb-kjq" secondAttribute="trailing" constant="2" id="nLl-wS-pQa"/>
                                             </constraints>
+                                            <variation key="default">
+                                                <mask key="constraints">
+                                                    <exclude reference="ChI-se-XEu"/>
+                                                    <exclude reference="CqC-PF-yXB"/>
+                                                    <exclude reference="QoK-kX-kYy"/>
+                                                    <exclude reference="b11-3J-3B8"/>
+                                                    <exclude reference="nLl-wS-pQa"/>
+                                                </mask>
+                                            </variation>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -966,6 +974,6 @@
         <image name="sample-photo" width="1242" height="660"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="ztg-XZ-LWS"/>
+        <segue reference="SNP-Rr-KYN"/>
     </inferredMetricsTieBreakers>
 </document>
