@@ -23,7 +23,7 @@
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
     </entity>
     <entity name="Candidate" representedClassName="Candidate" syncable="YES">
-        <attribute name="date" attributeType="Date" syncable="YES"/>
+        <attribute name="date" attributeType="Date" indexed="YES" syncable="YES"/>
         <attribute name="reason" attributeType="String" syncable="YES"/>
         <attribute name="status_" attributeType="String" syncable="YES">
             <userInfo>

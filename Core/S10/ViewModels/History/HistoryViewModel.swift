@@ -19,7 +19,8 @@ public struct HistoryViewModel {
         self.meteor = meteor
         self.taskService = taskService
         subscription = meteor.subscribe("candidate-discover")
-        candidates = Candidate.all().frc().results(Candidate)
+        candidates = Candidate.sorted(by: CandidateKeys.date.rawValue, ascending: false)
+            .frc().results(Candidate)
             .map { CandidateViewModel(candidate: $0) }
     }
     
