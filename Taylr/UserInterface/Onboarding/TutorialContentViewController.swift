@@ -39,7 +39,11 @@ class TutorialContentViewController : BaseViewController, TutorialViewController
         loginButton.hidden = isLoginButtonHidden
 
         if isLoginButtonHidden == false {
+
+            // dup code alert. consolidate this with login view controller.
             let vm = LoginViewModel(meteor: Meteor, delegate: Globals.accountService)
+
+            vm.loginButtonText ->> loginButton.titleBond
             loginButton.addAction(vm.loginAction) { values, errors, executing in
                 showProgress <~ executing
                 showErrorAction <~ errors |> map { $0 as AlertableError }

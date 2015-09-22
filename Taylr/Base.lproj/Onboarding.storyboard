@@ -122,6 +122,7 @@
                         <outlet property="loginButton" destination="Npy-aE-tSn" id="6BI-CT-zvJ"/>
                         <outlet property="tutorialImageView" destination="gtg-GD-hG9" id="MJ8-kA-0wV"/>
                         <outlet property="tutorialTitle" destination="Xja-ES-dSS" id="Qg2-Xa-ZYZ"/>
+                        <segue destination="L2P-Fc-Zcm" kind="show" identifier="LoginToRegisterEmail" id="dft-KV-aae"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GzM-Al-kXL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -974,6 +975,7 @@
         <image name="sample-photo" width="1242" height="660"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SNP-Rr-KYN"/>
+        <segue reference="LER-0P-1dS"/>
+        <segue reference="ztg-XZ-LWS"/>
     </inferredMetricsTieBreakers>
 </document>

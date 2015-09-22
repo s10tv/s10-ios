@@ -69,6 +69,10 @@ class TutorialPageViewController : UIPageViewController, UIPageViewControllerDat
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
 
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
+    }
+
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
         var index = (viewController as! TutorialViewController).getIndex()
 
