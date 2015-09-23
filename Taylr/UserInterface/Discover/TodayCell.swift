@@ -22,6 +22,7 @@ class TodayCell: UICollectionViewCell, BindableCell {
     @IBOutlet weak var hometownLabel: UILabel!
     @IBOutlet weak var reasonLabel: DesignableLabel!
     @IBOutlet weak var serviceIconsView: UICollectionView!
+    @IBOutlet weak var messageButton: UIButton!
     
     func bind(vm: TodayViewModel) {
         coverView.sd_setImageWithURL(vm.cover?.url)
@@ -30,6 +31,7 @@ class TodayCell: UICollectionViewCell, BindableCell {
         reasonLabel.rawText = vm.reason
         hometownLabel.text = vm.hometown
         majorLabel.text = vm.major
+        vm.timeRemaining ->> messageButton.dynTitle
         
         vm.profileIcons.map(serviceIconsView.factory(ProfileIconCell)) ->> serviceIconsView
         serviceIconsView.invalidateIntrinsicContentSize()

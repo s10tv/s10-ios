@@ -231,14 +231,6 @@
                                                             <color key="textColor" red="0.29016065600000002" green="0.2902165055" blue="0.29015710950000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y0g-Db-f9W" customClass="MatchTimer" customModule="Taylr" customModuleProvider="target">
-                                                            <rect key="frame" x="275" y="7" width="60" height="60"/>
-                                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="width" constant="60" id="39W-fo-prf"/>
-                                                                <constraint firstAttribute="height" constant="60" id="ZnX-Vp-kyb"/>
-                                                            </constraints>
-                                                        </view>
                                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PG2-Kb-iy3" userLabel="Divider">
                                                             <rect key="frame" x="4" y="73" width="331" height="1"/>
                                                             <color key="backgroundColor" red="0.90980392156862744" green="0.91764705882352937" blue="0.92156862745098034" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -256,10 +248,7 @@
                                                         <constraint firstItem="Cdd-B4-NSb" firstAttribute="centerX" secondItem="T96-qO-5S9" secondAttribute="centerX" id="9At-IJ-zXP"/>
                                                         <constraint firstItem="Cdd-B4-NSb" firstAttribute="top" secondItem="T96-qO-5S9" secondAttribute="bottom" constant="10" id="9D0-n1-j8r"/>
                                                         <constraint firstItem="kHw-pN-pgR" firstAttribute="leading" secondItem="WQN-mi-DCX" secondAttribute="leading" id="GJW-gP-PIi"/>
-                                                        <constraint firstAttribute="trailing" secondItem="y0g-Db-f9W" secondAttribute="trailing" constant="4" id="GdH-xc-g2c"/>
-                                                        <constraint firstAttribute="centerY" secondItem="y0g-Db-f9W" secondAttribute="centerY" id="IZf-lr-k8B"/>
                                                         <constraint firstItem="T96-qO-5S9" firstAttribute="top" secondItem="IMj-k6-3nh" secondAttribute="top" constant="8" id="Lgc-ve-KtW"/>
-                                                        <constraint firstItem="y0g-Db-f9W" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="kHw-pN-pgR" secondAttribute="trailing" constant="8" id="R0p-gl-3ux"/>
                                                         <constraint firstAttribute="trailing" secondItem="PG2-Kb-iy3" secondAttribute="trailing" constant="4" id="RBx-Kf-4WR"/>
                                                         <constraint firstItem="PG2-Kb-iy3" firstAttribute="leading" secondItem="IMj-k6-3nh" secondAttribute="leading" constant="4" id="Rgc-U6-NRo"/>
                                                         <constraint firstItem="WQN-mi-DCX" firstAttribute="centerY" secondItem="T96-qO-5S9" secondAttribute="centerY" id="VFJ-8Y-0dL"/>
@@ -267,7 +256,6 @@
                                                         <constraint firstAttribute="bottom" secondItem="PG2-Kb-iy3" secondAttribute="bottom" id="fKx-SF-LvN"/>
                                                         <constraint firstItem="kHw-pN-pgR" firstAttribute="centerY" secondItem="Cdd-B4-NSb" secondAttribute="centerY" id="jwc-ER-Ly7"/>
                                                         <constraint firstItem="WQN-mi-DCX" firstAttribute="leading" secondItem="T96-qO-5S9" secondAttribute="trailing" constant="10" id="rr2-sh-qX8"/>
-                                                        <constraint firstItem="y0g-Db-f9W" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="WQN-mi-DCX" secondAttribute="trailing" constant="8" id="t8i-GW-GDJ"/>
                                                     </constraints>
                                                 </view>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.90000000000000013" translatesAutoresizingMaskIntoConstraints="NO" id="0dW-0L-MEx" userLabel="Reason" customClass="DesignableLabel" customModule="Taylr" customModuleProvider="target">
@@ -298,7 +286,7 @@
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                                     <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                     <inset key="imageEdgeInsets" minX="-5" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                    <state key="normal" title="Hello" image="ic-video-small">
+                                                    <state key="normal" title="12:11:32" image="ic-video-small">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <userDefinedRuntimeAttributes>
@@ -345,6 +333,7 @@
                                             <outlet property="coverView" destination="ijw-TH-Sdd" id="waK-zu-RLr"/>
                                             <outlet property="hometownLabel" destination="kHw-pN-pgR" id="ibZ-C7-qeG"/>
                                             <outlet property="majorLabel" destination="WQN-mi-DCX" id="mNd-mG-71M"/>
+                                            <outlet property="messageButton" destination="Yc8-2Z-YPQ" id="xgz-2G-Tw1"/>
                                             <outlet property="nameLabel" destination="7Ib-JK-1el" id="M0u-ZG-zgm"/>
                                             <outlet property="reasonLabel" destination="0dW-0L-MEx" id="7nQ-cV-mMy"/>
                                             <outlet property="serviceIconsView" destination="2eB-0R-AfQ" id="iRt-9B-fSV"/>
@@ -2843,7 +2832,7 @@ While you are in the conversation though you can replay videos you just watched 
         <image name="sample-photo" width="1242" height="660"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Fwv-Pj-RXP"/>
         <segue reference="33G-iq-iGB"/>
-        <segue reference="1xM-N2-wS8"/>
     </inferredMetricsTieBreakers>
 </document>

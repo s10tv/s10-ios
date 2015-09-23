@@ -19,7 +19,7 @@ public struct TodayViewModel {
     public let major: String
     public let reason: String
     public let profileIcons: DynamicArray<Image>
-    public let timeRemaining: PropertyOf<String?>
+    public let timeRemaining: PropertyOf<String>
     public let fractionRemaining: PropertyOf<CGFloat>
     
     init(candidate: Candidate, settings: Settings) {
@@ -31,7 +31,16 @@ public struct TodayViewModel {
         displayName = user.pDisplayName().value
         reason = candidate.reason
         profileIcons = DynamicArray(user.connectedProfiles.map { $0.icon })
-        timeRemaining = PropertyOf(Formatters.formatInterval(settings.nextMatchDate.value))
-        fractionRemaining = PropertyOf(0.25)
+        timeRemaining = PropertyOf("", combineLatest(
+            CurrentTime.producer,
+            settings.nextMatchDate.producer
+        ) |> map { currentTime, nextMatchDate in
+            let interval = max(Int((nextMatchDate ?? NSDate()).timeIntervalSinceDate(currentTime)), 0)
+            let hours = interval / 3600
+            let minutes = (interval - hours * 3600) / 60
+            let seconds = interval - hours * 3600 - minutes * 60
+            return String(format: "%d:%02d:%02d", hours, minutes, seconds)
+        })
+        fractionRemaining = PropertyOf(0.5)
     }
 }
