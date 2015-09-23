@@ -53,7 +53,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Connect your social accounts to get tailored matches" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xja-ES-dSS">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Connect your social accounts to get tailored matches" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xja-ES-dSS">
                                 <rect key="frame" x="37" y="80" width="300" height="59"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="300" id="Vs8-Ge-Ilq"/>
@@ -62,7 +62,7 @@
                                 <color key="textColor" red="0.95215992650000003" green="0.95215992650000003" blue="0.95215992650000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="150" translatesAutoresizingMaskIntoConstraints="NO" id="gtg-GD-hG9">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="300" placeholderIntrinsicHeight="150" translatesAutoresizingMaskIntoConstraints="NO" id="gtg-GD-hG9">
                                 <rect key="frame" x="37" y="189" width="300" height="150"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="350" id="Y3W-OR-94t"/>
@@ -75,7 +75,7 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Npy-aE-tSn" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Npy-aE-tSn" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
                                 <rect key="frame" x="88" y="389" width="199" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -150,7 +150,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Get introduced to one new classmate a day." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="250" translatesAutoresizingMaskIntoConstraints="NO" id="RgB-LM-On4" customClass="DesignableLabel" customModule="Taylr" customModuleProvider="target">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get introduced to one new classmate a day." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="250" translatesAutoresizingMaskIntoConstraints="NO" id="RgB-LM-On4" customClass="DesignableLabel" customModule="Taylr" customModuleProvider="target">
                                 <rect key="frame" x="84" y="379" width="207" height="44"/>
                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="18"/>
                                 <color key="textColor" red="0.94117647058823528" green="0.98039215686274506" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
@@ -162,7 +162,7 @@
                                     <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="Cabin"/>
                                 </userDefinedRuntimeAttributes>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isY-Ks-GfE" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="isY-Ks-GfE" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
                                 <rect key="frame" x="88" y="517" width="199" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -186,10 +186,10 @@
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </button>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="c0f-ne-erJ" userLabel="Terms &amp; Privacy">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="c0f-ne-erJ" userLabel="Terms &amp; Privacy">
                                 <rect key="frame" x="132" y="630" width="110" height="29"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Pp-CT-PMh" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Pp-CT-PMh" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="37" height="29"/>
                                         <state key="normal">
                                             <attributedString key="attributedTitle">
@@ -213,7 +213,7 @@
                                             <action selector="viewTerms:" destination="dFw-q9-bre" eventType="touchUpInside" id="7qQ-pM-k90"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ODl-1I-fve" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ODl-1I-fve" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
                                         <rect key="frame" x="67" y="0.0" width="43" height="29"/>
                                         <state key="normal">
                                             <attributedString key="attributedTitle">
@@ -247,7 +247,7 @@
                                     <constraint firstItem="1Pp-CT-PMh" firstAttribute="leading" secondItem="c0f-ne-erJ" secondAttribute="leading" id="xUj-Hg-ayT"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVd-2q-11O">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xVd-2q-11O">
                                 <rect key="frame" x="119" y="575" width="136" height="31"/>
                                 <fontDescription key="fontDescription" name="Cabin-Italic" family="Cabin" pointSize="15"/>
                                 <state key="normal" title="Not you? Tap to logout">
@@ -463,7 +463,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="6us-9L-23b">
-                                        <rect key="frame" x="0.0" y="314" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="374" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="6us-9L-23b" id="mr0-QA-tAS">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
@@ -541,7 +541,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="vmj-nq-S2F">
-                                        <rect key="frame" x="0.0" y="374" width="375" height="60"/>
+                                        <rect key="frame" x="0.0" y="434" width="375" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="vmj-nq-S2F" id="mN0-wG-Pic">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
@@ -554,7 +554,7 @@
                                                         <constraint firstAttribute="height" constant="1" id="xYV-Df-Tsd"/>
                                                     </constraints>
                                                 </view>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Hometown (optional)" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KpY-zc-8ou" customClass="JVFloatLabeledTextField">
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Hometown" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KpY-zc-8ou" customClass="JVFloatLabeledTextField">
                                                     <rect key="frame" x="10" y="11" width="149" height="39"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
@@ -584,7 +584,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="NYa-St-Knz">
-                                        <rect key="frame" x="0.0" y="434" width="375" height="70"/>
+                                        <rect key="frame" x="0.0" y="494" width="375" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NYa-St-Knz" id="i4R-TL-1aZ">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="70"/>
@@ -598,12 +598,12 @@
                                                     </constraints>
                                                 </view>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gNz-Zb-kjq" customClass="JVFloatLabeledTextView">
-                                                    <rect key="frame" x="20" y="8" width="345" height="50"/>
+                                                    <rect key="frame" x="10" y="8" width="355" height="50"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="About (Optional)"/>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="About"/>
                                                         <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
                                                             <color key="value" red="0.46897470951080322" green="0.27513545751571655" blue="0.68778532743453979" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                         </userDefinedRuntimeAttribute>
@@ -614,7 +614,7 @@
                                                 <constraint firstItem="1x7-sO-vKM" firstAttribute="leading" secondItem="i4R-TL-1aZ" secondAttribute="leading" id="189-iM-7NS"/>
                                                 <constraint firstAttribute="bottom" secondItem="1x7-sO-vKM" secondAttribute="bottom" id="7c9-2P-AKh"/>
                                                 <constraint firstAttribute="trailing" secondItem="1x7-sO-vKM" secondAttribute="trailing" id="7d5-jL-dEd"/>
-                                                <constraint firstItem="gNz-Zb-kjq" firstAttribute="leading" secondItem="i4R-TL-1aZ" secondAttribute="leadingMargin" constant="12" id="9f0-x7-CRn"/>
+                                                <constraint firstItem="gNz-Zb-kjq" firstAttribute="leading" secondItem="i4R-TL-1aZ" secondAttribute="leadingMargin" constant="2" id="9f0-x7-CRn"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="gNz-Zb-kjq" secondAttribute="bottom" constant="4" id="F5Z-o3-W1C"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="gNz-Zb-kjq" secondAttribute="trailing" constant="2" id="RCg-2w-Cen"/>
                                                 <constraint firstItem="gNz-Zb-kjq" firstAttribute="top" secondItem="i4R-TL-1aZ" secondAttribute="topMargin" id="k1f-Rp-Ptb"/>
@@ -764,7 +764,7 @@
                         <barButtonItem key="backBarButtonItem" title="Services" id="3gU-59-HU4"/>
                         <barButtonItem key="rightBarButtonItem" id="lab-8i-ax4">
                             <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="AkU-Wx-NWg">
-                                <rect key="frame" x="451" y="7" width="50" height="22"/>
+                                <rect key="frame" x="309" y="11" width="50" height="22"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                 <inset key="titleEdgeInsets" minX="-25" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -804,7 +804,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UUq-Uv-n6C">
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UUq-Uv-n6C">
                                 <rect key="frame" x="16" y="155" width="343" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="i.e. 183502" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VZ5-xw-InF">
@@ -833,7 +833,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylr is currently only available to students at the University of British Columbia. Enter your invitation code to get started" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXK-Fa-VvT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Taylr is currently only available to students at the University of British Columbia. Enter your invitation code to get started" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXK-Fa-VvT">
                                 <rect key="frame" x="16" y="64" width="343" height="66"/>
                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="18"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -849,7 +849,7 @@
                                     <action selector="didPressShareButton:" destination="L2P-Fc-Zcm" eventType="touchDown" id="Bsh-2m-sv9"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invitation Code Invalid" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vW6-Mp-WaE">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Invitation Code Invalid" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vW6-Mp-WaE">
                                 <rect key="frame" x="116" y="225" width="144" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="1" green="0.31398414759999999" blue="0.32039438910000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -907,7 +907,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zSb-bi-FVe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-272.5" y="337.5"/>
+            <point key="canvasLocation" x="-241.5" y="337.5"/>
         </scene>
     </scenes>
     <resources>
@@ -917,8 +917,8 @@
         <image name="sample-photo" width="1242" height="660"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dft-KV-aae"/>
-        <segue reference="hVL-vj-Vvb"/>
-        <segue reference="BEQ-vP-9mV"/>
+        <segue reference="yuv-L5-5XE"/>
+        <segue reference="LER-0P-1dS"/>
+        <segue reference="SNP-Rr-KYN"/>
     </inferredMetricsTieBreakers>
 </document>

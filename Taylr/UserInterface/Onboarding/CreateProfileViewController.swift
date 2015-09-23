@@ -37,7 +37,7 @@ class CreateProfileViewController : UITableViewController {
         avatarView.makeCircular()
         avatarView.dynPlaceholderImage = avatarView.image
         coverView.dynPlaceholderImage = coverView.image
-        hometownField.setPlaceholder("Hometown (optional)", floatingTitle: "Hometown (optional)")
+        hometownField.setPlaceholder("Hometown", floatingTitle: "Hometown")
         aboutView.floatingLabelFont = UIFont(.cabinRegular, size: 11)
         aboutView.setPlaceholder("About (Optional)", floatingTitle: "About")
         aboutView.font = UIFont(.cabinRegular, size: 16)

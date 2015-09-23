@@ -27,7 +27,7 @@ class TaylrEnvironment : Environment {
     }
     
     let audience : Audience
-    let serverProtocol = "ws"
+    let serverProtocol = "wss"
     let serverHostName: String
     var serverURL: NSURL {
         return NSURL("\(serverProtocol)://\(serverHostName)/websocket")

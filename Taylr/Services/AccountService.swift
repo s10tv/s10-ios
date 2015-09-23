@@ -45,16 +45,20 @@ class AccountService {
             combineLatest(
                 meteorService.account.producer,
                 meteorService.loggedIn.producer,
-                settings.accountStatus.producer
-            ) |> map { account, loggedIn, status in
-                switch (account, loggedIn, status) {
-                case (.None, _, _):
+                settings.accountStatus.producer,
+                settings.disableConfirmation.producer
+            ) |> map { account, loggedIn, status, disableConfirmation in
+                switch (account, loggedIn, status, disableConfirmation) {
+                case (.None, _, _, _):
                     Log.info("Status - Logged Out")
                     return .LoggedOut
-                case (.Some, true, .Some(.Pending)):
+                case (.Some, true, .Some(.Pending), .Some(false)):
                     Log.info("Status - Logged In")
                     return .LoggedIn
-                case (.Some, true, .Some(.Active)):
+                case (.Some, true, .Some(.Pending), .Some(true)):
+                    Log.info("Status - Logged In, but skipping confirmation")
+                    return .LoggedInButCodeDisabled
+                case (.Some, true, .Some(.Active), _):
                     Log.info("Status - Signed Up")
                     return .Onboarded
                 default:
