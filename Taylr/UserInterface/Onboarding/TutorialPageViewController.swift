@@ -30,11 +30,8 @@ class TutorialPageViewController : UIPageViewController, UIPageViewControllerDat
             title: "Get introduced to one new classmate a day.",
             imageFile: "onboarding-profile"),
         TutorialPageContent(
-            title: "Connect and exchange messages with your classmates.",
-            imageFile: "onboarding-connections"),
-        TutorialPageContent(
-            title: "Send a video message and introduce yourself!",
-            imageFile: "onboarding-selfie"),
+            title: "Exchange messages and meet more classmates.",
+            imageFile: "onboarding-connections")
     ]
 
     override func viewDidLoad() {
