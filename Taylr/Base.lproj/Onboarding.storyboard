@@ -39,7 +39,7 @@
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MJe-Cn-PpC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1795.5" y="283.5"/>
+            <point key="canvasLocation" x="-1675.5" y="-62.5"/>
         </scene>
         <!--Tutorial Content View Controller-->
         <scene sceneID="0oX-K3-TIb">
@@ -125,11 +125,12 @@
                         <outlet property="tutorialTitle" destination="Xja-ES-dSS" id="Qg2-Xa-ZYZ"/>
                         <segue destination="L2P-Fc-Zcm" kind="show" identifier="LoginToRegisterEmail" id="dft-KV-aae"/>
                         <segue destination="4LR-tW-qvj" kind="custom" identifier="Main_RootTab" customClass="LinkedStoryboardPresentSegue" id="BEQ-vP-9mV"/>
+                        <segue destination="UL1-t5-ar3" kind="show" identifier="TutorialToConnectServices" id="hVL-vj-Vvb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GzM-Al-kXL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1795.5" y="-450.5"/>
+            <point key="canvasLocation" x="-1144.5" y="-561.5"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="mSO-WA-QEY">
@@ -282,11 +283,12 @@
                         <outlet property="logoutButton" destination="xVd-2q-11O" id="uyB-oZ-w27"/>
                         <segue destination="4LR-tW-qvj" kind="custom" identifier="Main_RootTab" customClass="LinkedStoryboardPushSegue" id="ztg-XZ-LWS"/>
                         <segue destination="L2P-Fc-Zcm" kind="show" identifier="LoginToRegisterEmail" id="LER-0P-1dS"/>
+                        <segue destination="UL1-t5-ar3" kind="show" identifier="LoginToConnectServices" id="yuv-L5-5XE"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lbl-0u-moe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-998.5" y="283.5"/>
+            <point key="canvasLocation" x="-1144.5" y="337.5"/>
         </scene>
         <!--Create Profile-->
         <scene sceneID="ziZ-yX-Hqk">
@@ -662,7 +664,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1236" y="284"/>
+            <point key="canvasLocation" x="1241.5" y="337.5"/>
         </scene>
         <!--Main - Discover-->
         <scene sceneID="ucd-nb-Qyk">
@@ -680,7 +682,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dOh-La-D4o" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="765" y="-344"/>
+            <point key="canvasLocation" x="225" y="-684"/>
         </scene>
         <!--Connect Services-->
         <scene sceneID="VBO-uB-dxI">
@@ -788,7 +790,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KZS-aq-ICv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="537" y="284"/>
+            <point key="canvasLocation" x="520.5" y="337.5"/>
         </scene>
         <!--VerifyCode-->
         <scene sceneID="ird-U3-ocg">
@@ -802,7 +804,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UUq-Uv-n6C">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UUq-Uv-n6C">
                                 <rect key="frame" x="16" y="155" width="343" height="50"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="i.e. 183502" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="VZ5-xw-InF">
@@ -831,7 +833,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Taylr is currently only available to students at the University of British Columbia. Enter your invitation code to get started" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXK-Fa-VvT">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylr is currently only available to students at the University of British Columbia. Enter your invitation code to get started" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lXK-Fa-VvT">
                                 <rect key="frame" x="16" y="64" width="343" height="66"/>
                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="18"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -847,7 +849,7 @@
                                     <action selector="didPressShareButton:" destination="L2P-Fc-Zcm" eventType="touchDown" id="Bsh-2m-sv9"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Invitation Code Invalid" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vW6-Mp-WaE">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invitation Code Invalid" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vW6-Mp-WaE">
                                 <rect key="frame" x="116" y="225" width="144" height="17"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="1" green="0.31398414759999999" blue="0.32039438910000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -905,7 +907,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zSb-bi-FVe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-220.5" y="283.5"/>
+            <point key="canvasLocation" x="-272.5" y="337.5"/>
         </scene>
     </scenes>
     <resources>
@@ -916,6 +918,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dft-KV-aae"/>
-        <segue reference="SNP-Rr-KYN"/>
+        <segue reference="hVL-vj-Vvb"/>
+        <segue reference="BEQ-vP-9mV"/>
     </inferredMetricsTieBreakers>
 </document>

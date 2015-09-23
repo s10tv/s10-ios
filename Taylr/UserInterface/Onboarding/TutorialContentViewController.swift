@@ -39,13 +39,14 @@ class TutorialContentViewController : BaseViewController, TutorialViewController
         loginButton.hidden = isLoginButtonHidden
 
         if isLoginButtonHidden == false {
-            let vm = LoginViewModel(meteor: Meteor, delegate: Globals.accountService)
+            let vm = LoginViewModel(meteor: Meteor, settings: Globals.settings, delegate: Globals.accountService)
             loginButton.addAction(vm.loginAction) { values, errors, executing in
                 showProgress <~ executing
                 showErrorAction <~ errors |> map { $0 as AlertableError }
                 segueAction <~ values |> map {
                     switch $0 {
                     case .LoggedIn: return .LoginToRegisterEmail
+                    case .LoggedInButCodeDisabled: return .TutorialToConnectServices
                     case .Onboarded: return .Main_RootTab
                         // TODO: Fix me perma crash...
                     default: fatalError("Expecting either LoggedIn or Onboarded")

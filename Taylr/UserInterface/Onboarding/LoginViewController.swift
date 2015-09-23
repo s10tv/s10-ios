@@ -21,7 +21,7 @@ class LoginViewController : BaseViewController, TutorialViewController {
     @IBOutlet weak var loginButton: DesignableButton!
     @IBOutlet weak var logoutButton: UIButton!
     
-    let vm = LoginViewModel(meteor: Meteor, delegate: Globals.accountService)
+    let vm = LoginViewModel(meteor: Meteor, settings: Globals.settings, delegate: Globals.accountService)
     
     override func commonInit() {
         super.commonInit()
@@ -43,6 +43,7 @@ class LoginViewController : BaseViewController, TutorialViewController {
             segueAction <~ values |> map {
                 switch $0 {
                 case .LoggedIn: return .LoginToRegisterEmail
+                case .LoggedInButCodeDisabled: return .LoginToConnectServices
                 case .Onboarded: return .Main_RootTab
                     // TODO: Fix me perma crash...
                 default: fatalError("Expecting either LoggedIn or Onboarded")

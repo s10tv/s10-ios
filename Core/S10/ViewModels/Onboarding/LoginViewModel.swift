@@ -19,11 +19,12 @@ public enum AccountState : String {
     case Indeterminate = "Indeterminate"
     case LoggedOut = "LoggedOut"
     case LoggedIn = "LoggedIn"
+    case LoggedInButCodeDisabled = "LoggedInButCodeDisabled"
     case Onboarded = "Onboarded"
     
     public var onboardingNeeded: Bool {
         switch self {
-        case .Indeterminate, .Onboarded:
+        case .Indeterminate, .LoggedInButCodeDisabled, .Onboarded:
             return false
         case .LoggedOut, .LoggedIn:
             return true
@@ -40,7 +41,7 @@ public struct LoginViewModel {
     public let loginAction: Action<AnyObject, AccountState, ErrorAlert>
     public let logoutAction: Action<AnyObject, (), NoError>
     
-    public init(meteor: MeteorService, delegate: LoginDelegate) {
+    public init(meteor: MeteorService, settings: Settings, delegate: LoginDelegate) {
         self.delegate = delegate
         loginButtonText = delegate.loggedInPhone |> map {
             $0.map {
@@ -52,6 +53,11 @@ public struct LoginViewModel {
         }
         loginAction = Action { _ -> Future<AccountState, ErrorAlert> in
             if meteor.offline { return Future(error: eOffline) }
+
+            // if we have explicitly disabled confirmation screen, return early.
+            let disableConfirmation = settings.disableConfirmation.value ?? false
+            if disableConfirmation { return Future(value: .LoggedInButCodeDisabled) }
+
             return delegate.login()
                 |> deliverOn(UIScheduler())
                 |> mapError { e in

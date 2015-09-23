@@ -23,6 +23,7 @@ public class Settings {
     public let upgradeURL: PropertyOf<NSURL?>
     public let debugLoginMode: PropertyOf<Bool?>
     public let accountStatus: PropertyOf<AccountStatus?>
+    public let disableConfirmation: PropertyOf<Bool?>
     public let nextMatchDate: PropertyOf<NSDate?>
     public let matchInterval: PropertyOf<Int?>
     
@@ -36,6 +37,7 @@ public class Settings {
         accountStatus = c.propertyOf("accountStatus")
             |> map { $0.typed(String).flatMap { AccountStatus(rawValue: $0) }
         }
+        disableConfirmation = c.propertyOf("disableConfirmation") |> map { $0.typed(Bool) }
         nextMatchDate = c.propertyOf("nextMatchDate") |> map { $0.typed(NSDate) }
         matchInterval = c.propertyOf("matchInterval") |> map { $0.typed(Int) }
     }
