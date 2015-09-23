@@ -35,13 +35,6 @@ class VerifyCodeViewController : UIViewController {
         Globals.analyticsService.screen("Verify Invite Code")
     }
 
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let segue = segue as? AdvancedPushSegue {
-            segue.animated = true
-            segue.replaceStrategy = .Stack
-        }
-    }
-
     // MARK: -
     @IBAction func didPressShareButton(sender: AnyObject) {
         let shareText = "Anyone have a Taylr invite code?"

@@ -63,6 +63,13 @@ class CreateProfileViewController : UITableViewController {
         super.viewDidAppear(animated)
         Globals.analyticsService.screen("Create Profile")
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let segue = segue as? AdvancedPushSegue {
+            segue.animated = true
+            segue.replaceStrategy = .Stack
+        }
+    }
 
     // MARK: - Actions
     
