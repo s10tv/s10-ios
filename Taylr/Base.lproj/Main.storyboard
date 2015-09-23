@@ -73,6 +73,7 @@
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
+            <string>Cabin-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -2030,6 +2031,44 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="My School" id="9Rg-53-tMy" userLabel="Network">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="40" id="Cjj-4F-JPu">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Cjj-4F-JPu" id="gOH-KD-9yD">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SV2-TG-voL">
+                                                    <rect key="frame" x="186" y="7" width="227" height="26"/>
+                                                    <subviews>
+                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-ubc" translatesAutoresizingMaskIntoConstraints="NO" id="2pZ-Bk-15s">
+                                                            <rect key="frame" x="0.0" y="0.0" width="19" height="26"/>
+                                                        </imageView>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="University of British Columbia" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yYf-RR-7VQ">
+                                                            <rect key="frame" x="27" y="3" width="200" height="19.5"/>
+                                                            <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
+                                                            <nil key="highlightedColor"/>
+                                                        </label>
+                                                    </subviews>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="bottom" secondItem="2pZ-Bk-15s" secondAttribute="bottom" id="BY0-yJ-54d"/>
+                                                        <constraint firstItem="yYf-RR-7VQ" firstAttribute="centerY" secondItem="2pZ-Bk-15s" secondAttribute="centerY" id="GsE-eo-RA5"/>
+                                                        <constraint firstItem="2pZ-Bk-15s" firstAttribute="top" secondItem="SV2-TG-voL" secondAttribute="top" id="LEO-Rz-EoR"/>
+                                                        <constraint firstItem="yYf-RR-7VQ" firstAttribute="leading" secondItem="2pZ-Bk-15s" secondAttribute="trailing" constant="8" id="ZeV-du-iuW"/>
+                                                        <constraint firstAttribute="trailing" secondItem="yYf-RR-7VQ" secondAttribute="trailing" id="hYH-mH-N0k"/>
+                                                        <constraint firstItem="2pZ-Bk-15s" firstAttribute="leading" secondItem="SV2-TG-voL" secondAttribute="leading" id="x6S-jk-dZr"/>
+                                                    </constraints>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerX" secondItem="SV2-TG-voL" secondAttribute="centerX" id="mqu-P8-oi0"/>
+                                                <constraint firstAttribute="centerY" secondItem="SV2-TG-voL" secondAttribute="centerY" id="v1h-o1-zJL"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                             <tableViewSection headerTitle="" id="Q06-5g-eu7" userLabel="Options">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="bxU-B7-C7f">
@@ -2116,20 +2155,15 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="v0.1.0 (224d)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xvn-b4-dl4">
-                                                    <rect key="frame" x="260" y="32" width="89" height="20"/>
+                                                    <rect key="frame" x="255.5" y="32.5" width="89" height="19.5"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
                                                     <color key="textColor" red="0.60777515172958374" green="0.60788232088088989" blue="0.60776835680007935" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-ubc" translatesAutoresizingMaskIntoConstraints="NO" id="g5D-IJ-Qxr">
-                                                    <rect key="frame" x="233" y="29" width="19" height="26"/>
-                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Xvn-b4-dl4" firstAttribute="leading" secondItem="g5D-IJ-Qxr" secondAttribute="trailing" constant="8" id="6GS-Rr-fBi"/>
-                                                <constraint firstItem="g5D-IJ-Qxr" firstAttribute="centerY" secondItem="Xvn-b4-dl4" secondAttribute="centerY" id="nDe-Bd-Xxc"/>
                                                 <constraint firstItem="Xvn-b4-dl4" firstAttribute="bottom" secondItem="rN1-NB-YrY" secondAttribute="bottomMargin" id="o3r-1a-3TF"/>
-                                                <constraint firstAttribute="centerX" secondItem="Xvn-b4-dl4" secondAttribute="centerX" constant="-4" id="slt-LS-qzR"/>
+                                                <constraint firstAttribute="centerX" secondItem="Xvn-b4-dl4" secondAttribute="centerX" id="slt-LS-qzR"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.94886761903762817" green="0.94878417253494263" blue="0.9652295708656311" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -2450,11 +2484,11 @@
                         <viewControllerLayoutGuide type="bottom" id="f9H-5c-O94"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="aTd-Nu-TtE">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="1136"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view hidden="YES" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wRa-4w-SGN" userLabel="Step 2 View">
-                                <rect key="frame" x="16" y="20" width="343" height="580"/>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wRa-4w-SGN" userLabel="Step 2 View">
+                                <rect key="frame" x="16" y="20" width="568" height="580"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uux-7g-9bg" customClass="DesignableButton" customModule="Taylr" customModuleProvider="target">
                                         <rect key="frame" x="195" y="500" width="180" height="40"/>
@@ -2500,8 +2534,8 @@ While you are in the conversation though you can replay videos you just watched 
                                     <constraint firstAttribute="centerX" secondItem="Uux-7g-9bg" secondAttribute="centerX" id="aL1-K4-BaM"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hoF-ox-KEb" userLabel="Step 1 View">
-                                <rect key="frame" x="16" y="20" width="343" height="580"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hoF-ox-KEb" userLabel="Step 1 View">
+                                <rect key="frame" x="16" y="20" width="568" height="580"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="This is where you can watch the videos you receive" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="250" translatesAutoresizingMaskIntoConstraints="NO" id="U12-Eg-012">
                                         <rect key="frame" x="49" y="36" width="242.5" height="44"/>
@@ -2509,10 +2543,10 @@ While you are in the conversation though you can replay videos you just watched 
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic-right-chevron" translatesAutoresizingMaskIntoConstraints="NO" id="caL-lN-xkU">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-right-chevron" translatesAutoresizingMaskIntoConstraints="NO" id="caL-lN-xkU">
                                         <rect key="frame" x="0.0" y="280" width="24" height="21"/>
                                     </imageView>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="swipe to skip to prev msg" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="fn4-uc-UBp">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="swipe to skip to prev msg" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="fn4-uc-UBp">
                                         <rect key="frame" x="0.0" y="309" width="95" height="35"/>
                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -2527,8 +2561,8 @@ While you are in the conversation though you can replay videos you just watched 
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic-left-chevron" translatesAutoresizingMaskIntoConstraints="NO" id="2r3-Ck-Dqv">
-                                        <rect key="frame" x="319" y="280" width="24" height="21"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-left-chevron" translatesAutoresizingMaskIntoConstraints="NO" id="2r3-Ck-Dqv">
+                                        <rect key="frame" x="544" y="280" width="24" height="21"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="swipe to skip to next msg" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="IIE-q7-Dbi">
                                         <rect key="frame" x="248" y="309" width="95" height="35"/>
@@ -2826,7 +2860,7 @@ While you are in the conversation though you can replay videos you just watched 
         <image name="sample-photo" width="1242" height="660"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Fwv-Pj-RXP"/>
         <segue reference="xra-sT-n24"/>
+        <segue reference="yhs-PQ-k4J"/>
     </inferredMetricsTieBreakers>
 </document>
