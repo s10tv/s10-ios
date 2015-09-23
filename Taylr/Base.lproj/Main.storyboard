@@ -169,6 +169,9 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                 </imageView>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-ubc" translatesAutoresizingMaskIntoConstraints="NO" id="rCO-l9-Tzr">
+                                                    <rect key="frame" x="220" y="176" width="19" height="26"/>
+                                                </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylor Swift '12" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7Ib-JK-1el" userLabel="Name">
                                                     <rect key="frame" x="15" y="247" width="114" height="22"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Medium" family="Cabin" pointSize="18"/>
@@ -306,11 +309,13 @@
                                             <constraint firstAttribute="trailing" secondItem="jwx-T1-rAX" secondAttribute="trailing" id="5k6-sD-cDg"/>
                                             <constraint firstItem="0dW-0L-MEx" firstAttribute="top" secondItem="IMj-k6-3nh" secondAttribute="bottom" constant="15" id="611-Fz-ulP"/>
                                             <constraint firstItem="IMj-k6-3nh" firstAttribute="trailing" secondItem="5p8-O9-cl0" secondAttribute="trailingMargin" id="6xP-g6-EFg"/>
+                                            <constraint firstItem="OLv-LL-2Yz" firstAttribute="bottom" secondItem="rCO-l9-Tzr" secondAttribute="bottom" constant="8" id="Akd-WQ-unD"/>
                                             <constraint firstAttribute="bottomMargin" secondItem="Yc8-2Z-YPQ" secondAttribute="bottom" constant="4" id="DYN-Ap-DZG"/>
                                             <constraint firstAttribute="trailingMargin" secondItem="Yc8-2Z-YPQ" secondAttribute="trailing" constant="4" id="ECm-Wc-wU4"/>
                                             <constraint firstItem="7Ib-JK-1el" firstAttribute="centerY" secondItem="2eB-0R-AfQ" secondAttribute="centerY" id="FFq-0v-BgD"/>
                                             <constraint firstItem="jwx-T1-rAX" firstAttribute="top" secondItem="5p8-O9-cl0" secondAttribute="top" id="G2l-Jk-74I"/>
                                             <constraint firstItem="Yc8-2Z-YPQ" firstAttribute="leading" secondItem="5p8-O9-cl0" secondAttribute="leadingMargin" constant="4" id="M5K-8k-p2y"/>
+                                            <constraint firstItem="OLv-LL-2Yz" firstAttribute="trailing" secondItem="rCO-l9-Tzr" secondAttribute="trailing" constant="8" id="VpN-xH-1Fu"/>
                                             <constraint firstItem="OLv-LL-2Yz" firstAttribute="centerY" secondItem="jwx-T1-rAX" secondAttribute="centerY" id="WlR-ND-PAL"/>
                                             <constraint firstItem="IMj-k6-3nh" firstAttribute="leading" secondItem="5p8-O9-cl0" secondAttribute="leadingMargin" id="a7x-rJ-cMa"/>
                                             <constraint firstItem="OLv-LL-2Yz" firstAttribute="centerX" secondItem="jwx-T1-rAX" secondAttribute="centerX" id="bOy-9M-xkm"/>
