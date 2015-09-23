@@ -109,9 +109,6 @@ class ProfileViewController : BaseViewController {
     // Very repetitive. Consider refactor along with ConversationViewController
     @IBAction func showMoreOptions(sender: AnyObject) {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        sheet.addAction("Message \(vm.cvm.firstName.value)") { _ in
-            self.performSegue(.ProfileToConversation)
-        }
         sheet.addAction(LS(.moreSheetBlock, vm.cvm.firstName.value), style: .Destructive) { _ in
             self.blockUser(self)
         }
