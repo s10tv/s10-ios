@@ -54,7 +54,6 @@ class ProfileCoverCell : UITableViewCell, BindableCell {
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var chatButton: UIButton!
     
     var vm: ProfileCoverViewModel!
     
@@ -64,7 +63,6 @@ class ProfileCoverCell : UITableViewCell, BindableCell {
         vm.cover ->> coverImageView.imageBond
         vm.displayName ->> nameLabel
         vm.selectors.map(collectionView.factory(ProfileSelectorCell)) ->> collectionView
-        chatButton.hidden = vm.hideChatButton
         // Cell is not available for immediate selection, therefore we'll wait for it to populate first
         Async.main {
             self.collectionView.selectItemAtIndexPath(NSIndexPath(forItem: 0, inSection: 0),

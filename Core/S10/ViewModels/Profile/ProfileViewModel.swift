@@ -84,7 +84,6 @@ public struct ProfileCoverViewModel {
     public let cover: PropertyOf<Image?>
     public let selectors: DynamicArray<ProfileSelectorViewModel>
     public let selectedProfile: MutableProperty<ProfileSelectorViewModel>
-    public let hideChatButton: Bool
     
     init(meteor: MeteorService, user: User) {
         firstName = user.pFirstName()
@@ -102,7 +101,6 @@ public struct ProfileCoverViewModel {
             }
         )
         selectedProfile = MutableProperty(selectors[0])
-        hideChatButton = meteor.user.value == user
     }
     
     public func selectProfileAtIndex(index: Int) {
