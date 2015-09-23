@@ -27,7 +27,7 @@ public struct DiscoverViewModel {
     
     public func profileVM() -> ProfileViewModel? {
         if candidate.count > 0 {
-            return ProfileViewModel(meteor: meteor, taskService: taskService, user: candidate[0].user)
+            return ProfileViewModel(meteor: meteor, taskService: taskService, user: candidate[0].user, timeRemaining: candidate[0].timeRemaining)
         }
         return nil
     }

@@ -38,11 +38,15 @@ public struct ProfileViewModel {
     public let infoVM: DynamicArray<ProfileInfoViewModel>
     public let activities: DynamicArray<ActivityViewModel>
     public let showMoreOptions: Bool
+    public let allowMessage: Bool
+    public let timeRemaining: PropertyOf<String>
     
-    init(meteor: MeteorService, taskService: TaskService, user: User) {
+    init(meteor: MeteorService, taskService: TaskService, user: User, timeRemaining: PropertyOf<String>? = nil) {
         self.meteor = meteor
         self.taskService = taskService
         self.user = user
+        self.timeRemaining = timeRemaining ?? PropertyOf("")
+        allowMessage = timeRemaining != nil
         showMoreOptions = meteor.user.value != user
         cvm = ProfileCoverViewModel(meteor: meteor, user: user)
         subscription = meteor.subscribe("activities", user)

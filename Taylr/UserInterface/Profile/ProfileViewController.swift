@@ -14,6 +14,7 @@ import Core
 
 class ProfileViewController : BaseViewController {
 
+    @IBOutlet weak var messageButton: UIButton!
     @IBOutlet weak var moreButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     var coverCell: ProfileCoverCell!
@@ -24,6 +25,8 @@ class ProfileViewController : BaseViewController {
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 500
         moreButton.hidden = !vm.showMoreOptions
+        messageButton.hidden = !vm.allowMessage
+        vm.timeRemaining ->> messageButton.dynTitle
         
         let coverFactory = tableView.factory(ProfileCoverCell)
         let taylrProfileFactory = tableView.factory(TaylrProfileInfoCell.self, section: 1)
@@ -74,6 +77,12 @@ class ProfileViewController : BaseViewController {
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        let bottomInset = messageButton.hidden ? 0 : messageButton.frame.height
+        tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: bottomInset, right: 0)
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
