@@ -8,22 +8,6 @@
 
 import Foundation
 
-public func between<T : Comparable>(minLimit: T, value: T, maxLimit: T) -> T {
-    assert(minLimit <= maxLimit, "Minimum must be smaller than or equal to max")
-    return max(minLimit, min(value, maxLimit))
-}
-
-public func mapOptional<S : SequenceType, T>(source: S, transform: S.Generator.Element -> T?) -> [T] {
-    return map(source) { transform($0) }.filter { $0 != nil }.map { $0! }
-}
-
-func find<C: CollectionType>(source: C, match: C.Generator.Element -> Bool) -> C.Index? {
-    for idx in indices(source) {
-        if match(source[idx]) { return idx }
-    }
-    return nil
-}
-
 // Floats
 extension Int {
     public var f: CGFloat { return CGFloat(self) }
@@ -40,7 +24,8 @@ extension Double {
 // Foundation Types
 
 extension String {
-    public var length: Int { return count(self) }
+    
+    public var length: Int { return characters.count }
     
     public var stringByCapitalizingFirstCharacter : String {
         let firstChar = substringToIndex(1)
@@ -52,36 +37,36 @@ extension String {
     
     // MARK: - sub String
     public func substringToIndex(index:Int) -> String {
-        return self.substringToIndex(advance(self.startIndex, index))
+        return self.substringToIndex(self.startIndex.advancedBy(index))
     }
     public func substringFromIndex(index:Int) -> String {
-        return self.substringFromIndex(advance(self.startIndex, index))
+        return self.substringFromIndex(self.startIndex.advancedBy(index))
     }
     public func substringWithRange(range:Range<Int>) -> String {
-        let start = advance(self.startIndex, range.startIndex)
-        let end = advance(self.startIndex, range.endIndex)
+        let start = self.startIndex.advancedBy(range.startIndex)
+        let end = self.startIndex.advancedBy(range.endIndex)
         return self.substringWithRange(start..<end)
     }
     
     public subscript(index:Int) -> Character {
-        return self[advance(self.startIndex, index)]
+        return self[self.startIndex.advancedBy(index)]
     }
     public subscript(range:Range<Int>) -> String {
-        let start = advance(self.startIndex, range.startIndex)
-        let end = advance(self.startIndex, range.endIndex)
+        let start = self.startIndex.advancedBy(range.startIndex)
+        let end = self.startIndex.advancedBy(range.endIndex)
         return self[start..<end]
     }
     
     // MARK: - replace
     public func replaceCharactersInRange(range:Range<Int>, withString: String!) -> String {
-        var result:NSMutableString = NSMutableString(string: self)
+        let result:NSMutableString = NSMutableString(string: self)
         result.replaceCharactersInRange(NSRange(range), withString: withString)
         return result as String
     }
     
     public func nonBlank() -> String? {
         let trimmed = stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-        return trimmed.length > 0 ? trimmed : nil
+        return trimmed.isEmpty ? nil : trimmed
     }
 }
 
@@ -100,7 +85,7 @@ extension NSURL {
 
 extension NSData {
     public func hexString() -> NSString {
-        var str = NSMutableString()
+        let str = NSMutableString()
         let bytes = UnsafeBufferPointer<UInt8>(start: UnsafePointer(self.bytes), count:self.length)
         for byte in bytes {
             str.appendFormat("%02hhx", byte)
@@ -110,13 +95,13 @@ extension NSData {
 }
 
 extension NSAttributedString {
-    public func replace(#text: String) -> NSAttributedString {
+    public func replace(text text: String) -> NSAttributedString {
         let attrString = mutableCopy() as! NSMutableAttributedString
         attrString.mutableString.setString(text)
         return attrString
     }
     
-    public func replace(#font: UIFont, kern: CGFloat? = nil, color: UIColor? = nil) -> NSAttributedString {
+    public func replace(font font: UIFont, kern: CGFloat? = nil, color: UIColor? = nil) -> NSAttributedString {
         let attrString = mutableCopy() as! NSMutableAttributedString
         let range = NSMakeRange(0, attrString.length)
         attrString.addAttribute(NSFontAttributeName, value:font, range: range)
