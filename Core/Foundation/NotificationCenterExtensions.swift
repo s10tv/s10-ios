@@ -20,7 +20,7 @@ extension NSNotificationCenter {
         }
         
         deinit {
-            observers.map { self.center.removeObserver($0) }
+            for o in observers { center.removeObserver(o) }
         }
         
         public func listen(name: String, object: AnyObject? = nil, block: (NSNotification) -> ()) -> Proxy {

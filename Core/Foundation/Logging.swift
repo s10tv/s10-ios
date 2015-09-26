@@ -12,7 +12,7 @@ import Foundation
 public let Log = Logger()
 
 public class Logger {
-    public enum LogLevel : Int, Printable {
+    public enum LogLevel : Int, CustomStringConvertible {
         case Error = 0
         case Warn
         case Info
@@ -86,7 +86,7 @@ public class Logger {
 //        Crashlytics.logMessage(formatForCrashlytics(message, level, function, file, line))
 
         // Swift default
-        println("[\(level)] \(message)")
+        print("[\(level)] \(message)")
         callback?(message, level)
     }
     
@@ -104,7 +104,7 @@ public class Logger {
 //    }
     
     func formatForCrashlytics(message: String, _ level: LogLevel, _ function: String, _ file: String, _ line: Int) -> String {
-        let filename = file.lastPathComponent.stringByDeletingPathExtension
+        let filename = NSURL(fileURLWithPath: file).URLByDeletingPathExtension?.lastPathComponent
         return "[\(level)] \(filename):\(line) \(message)"
     }
 }
