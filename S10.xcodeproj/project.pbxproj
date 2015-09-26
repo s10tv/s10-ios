@@ -68,11 +68,11 @@
 		EA81ADC41BB66A1400F94006 /* NotificationCenterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6705B1B31F9450025D7CF /* NotificationCenterExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81ADC81BB66C5300F94006 /* SignalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA359AE61B700B8A00AF0A65 /* SignalExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81ADCE1BB6731200F94006 /* GenericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA81ADCD1BB6731200F94006 /* GenericExtensions.swift */; settings = {ASSET_TAGS = (); }; };
-		EA81ADD11BB6735800F94006 /* RACGenericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA81ADCF1BB6735800F94006 /* RACGenericExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81ADD21BB6735800F94006 /* ReactiveBridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA81ADD01BB6735800F94006 /* ReactiveBridging.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81ADD31BB673B100F94006 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E405C1B6D334D00FF5126 /* Future.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81ADD41BB6793500F94006 /* ActionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E40611B6D33F500FF5126 /* ActionExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81ADD51BB679D300F94006 /* DynamicProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E405B1B6D334D00FF5126 /* DynamicProperties.swift */; settings = {ASSET_TAGS = (); }; };
+		EA81ADD61BB67A6800F94006 /* PropertyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E405F1B6D336F00FF5126 /* PropertyExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		EA89C0861B6AA2060007C6CB /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0851B6AA2060007C6CB /* CreateProfileViewController.swift */; };
 		EA89C0881B6AC0410007C6CB /* ConnectServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0871B6AC0410007C6CB /* ConnectServicesViewController.swift */; };
 		EA925C741AD99ED8008E9F41 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA925C731AD99ED8008E9F41 /* R.swift */; };
@@ -302,7 +302,6 @@
 		EA7FB0921B5EF9D50052B394 /* Cabin-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-MediumItalic.ttf"; sourceTree = "<group>"; };
 		EA7FB0931B5EF9D50052B394 /* Cabin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Regular.ttf"; sourceTree = "<group>"; };
 		EA81ADCD1BB6731200F94006 /* GenericExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericExtensions.swift; sourceTree = "<group>"; };
-		EA81ADCF1BB6735800F94006 /* RACGenericExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACGenericExtensions.swift; sourceTree = "<group>"; };
 		EA81ADD01BB6735800F94006 /* ReactiveBridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveBridging.swift; sourceTree = "<group>"; };
 		EA82CF961B504FC500A12D94 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		EA89C0851B6AA2060007C6CB /* CreateProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
@@ -745,13 +744,12 @@
 		EA6E405A1B6D334D00FF5126 /* RAC */ = {
 			isa = PBXGroup;
 			children = (
-				EA81ADCF1BB6735800F94006 /* RACGenericExtensions.swift */,
-				EA81ADD01BB6735800F94006 /* ReactiveBridging.swift */,
-				EA6E405C1B6D334D00FF5126 /* Future.swift */,
-				EA6E405B1B6D334D00FF5126 /* DynamicProperties.swift */,
-				EA6E405F1B6D336F00FF5126 /* PropertyExtensions.swift */,
-				EA6E40611B6D33F500FF5126 /* ActionExtensions.swift */,
 				EA359AE61B700B8A00AF0A65 /* SignalExtensions.swift */,
+				EA6E40611B6D33F500FF5126 /* ActionExtensions.swift */,
+				EA6E405F1B6D336F00FF5126 /* PropertyExtensions.swift */,
+				EA6E405B1B6D334D00FF5126 /* DynamicProperties.swift */,
+				EA6E405C1B6D334D00FF5126 /* Future.swift */,
+				EA81ADD01BB6735800F94006 /* ReactiveBridging.swift */,
 			);
 			path = RAC;
 			sourceTree = "<group>";
@@ -1559,9 +1557,9 @@
 				EA81ADD51BB679D300F94006 /* DynamicProperties.swift in Sources */,
 				EA81ADD21BB6735800F94006 /* ReactiveBridging.swift in Sources */,
 				EA81ADC41BB66A1400F94006 /* NotificationCenterExtensions.swift in Sources */,
-				EA81ADD11BB6735800F94006 /* RACGenericExtensions.swift in Sources */,
 				EA81ADBF1BB6679400F94006 /* Logging.swift in Sources */,
 				EA81ADD31BB673B100F94006 /* Future.swift in Sources */,
+				EA81ADD61BB67A6800F94006 /* PropertyExtensions.swift in Sources */,
 				EA81ADCE1BB6731200F94006 /* GenericExtensions.swift in Sources */,
 				EA81ADC21BB6688400F94006 /* Core.m in Sources */,
 				EA81ADD41BB6793500F94006 /* ActionExtensions.swift in Sources */,

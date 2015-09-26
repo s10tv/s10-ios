@@ -9,51 +9,59 @@
 import Foundation
 import ReactiveCocoa
 
-public func |> <P1 : PropertyType, X>(property: P1, @noescape transform: P1 -> X) -> X {
-    return transform(property)
-}
-
 // TODO: Add lifting support to properties
-public func map<P : PropertyType, T, U where P.Value == T>(transform: T -> U) -> P -> PropertyOf<U> {
-    return { property in
-        return PropertyOf(transform(property.value)) {
-            property.producer |> map { v in
-                let retainSourceProperty = property // Force retain source property
+//public func |> <P1 : PropertyType, X>(property: P1, @noescape transform: P1 -> X) -> X {
+//    return transform(property)
+//}
+
+// MARK: - Property Type Extensions
+
+extension PropertyType {
+    public func map<U>(transform: Value -> U) -> PropertyOf<U> {
+        return PropertyOf(transform(self.value)) {
+            self.producer.map { v in
+                _ = self // Force retain source property
                 return transform(v)
             }
         }
     }
-}
-
-
-public func flatMap<P : PropertyType, P2 : PropertyType, T, U where P.Value == T, P2.Value == U>(transform: T -> P2) -> P -> PropertyOf<U> {
-    return { property in
-        return PropertyOf(transform(property.value).value) {
-            property.producer |> flatMap(.Latest) { v in
-                let retainSourceProperty = property // Force retain source property
+    
+    public func flatMap<P2 : PropertyType, U where P2.Value == U>(transform: Value -> P2) -> PropertyOf<U> {
+        return PropertyOf(transform(self.value).value) {
+            self.producer.flatMap(.Latest) { v in
+                _ = self // Force retain source property
                 return SignalProducer<U, NoError> { sink, disposable in
                     let innerProperty = transform(v)
                     disposable.addDisposable(innerProperty.producer.start(sink))
                     disposable.addDisposable {
-                        let retainedProperty = innerProperty // Force retain inner property
+                        _ = innerProperty // Force retain inner property
                     }
                 }
             }
         }
     }
+    
+    public func mutable() -> MutableProperty<Value> {
+        return MutableProperty(self.value) {
+            self.producer.map { v in
+                _ = self // Force retain source property
+                return v
+            }
+        }
+    }
 }
 
-public func flatMap<P : PropertyType, P2 : PropertyType, T, U where P.Value == T?, P2.Value == U>(#nilValue: U, transform: T -> P2) -> P -> PropertyOf<U> {
-    return { property in
-        return PropertyOf(property.value.map { transform($0).value } ?? nilValue) {
-            property.producer |> flatMap(.Latest) { v in
-                let retainSourceProperty = property // Force retain source property
+extension PropertyType where Value: OptionalType {
+    public func flatMap<P2 : PropertyType,  U where P2.Value == U>(nilValue nilValue: U, transform: Value.T -> P2) -> PropertyOf<U> {
+        return PropertyOf(self.value.optional.map { transform($0).value } ?? nilValue) {
+            self.producer.flatMap(.Latest) { v in
+                _ = self // Force retain source property
                 return SignalProducer<U, NoError> { sink, disposable in
-                    if let v = v {
+                    if let v = v.optional {
                         let innerProperty = transform(v)
                         disposable.addDisposable(innerProperty.producer.start(sink))
                         disposable.addDisposable {
-                            let retainedProperty = innerProperty // Force retain inner property
+                            _ = innerProperty // Force retain inner property
                         }
                     } else {
                         sendNext(sink, nilValue)
@@ -63,24 +71,48 @@ public func flatMap<P : PropertyType, P2 : PropertyType, T, U where P.Value == T
             }
         }
     }
+    
+    public func flatMap<P2 : PropertyType, U where P2.Value == U?>(transform: Value.T -> P2) -> PropertyOf<U?> {
+        return flatMap(nilValue: nil, transform: transform)
+    }
 }
 
-public func flatMap<P : PropertyType, P2 : PropertyType, T, U where P.Value == T?, P2.Value == U?>(transform: T -> P2) -> P -> PropertyOf<U?> {
-    return flatMap(nilValue: nil, transform)
+extension MutablePropertyType {
+    /// `readonly` will render a read only version of any mutable property type
+    /// Readonly is essentially an identity function
+    public func readonly() -> PropertyOf<Value> {
+        return PropertyOf(self)
+    }
 }
 
+// MARK: - Property Extensions
 
-/// `mutableProperty |> readonly` will render a read only version of any mutable property type
-/// Readonly is essentially an identity function
-public func readonly<P : MutablePropertyType, T where P.Value == T>(property: P) -> PropertyOf<T> {
-    return PropertyOf(property)
+extension MutableProperty {
+    convenience init(_ initialValue: T, @noescape _ block: () -> SignalProducer<T, ReactiveCocoa.NoError>) {
+        self.init(initialValue)
+        self <~ block()
+    }
+    
+    convenience init(_ initialValue: T, @noescape _ block: () -> Signal<T, ReactiveCocoa.NoError>) {
+        self.init(initialValue)
+        self <~ block()
+    }
 }
 
-public func mutable<P : PropertyType, T where P.Value == T>(property: P) -> MutableProperty<T> {
-    return MutableProperty(property.value) {
-        property.producer |> map { v in
-            let retainSourceProperty = property // Force retain source property
-            return v
-        }
+extension PropertyOf {
+    init(_ constantValue: T) {
+        self.init(ConstantProperty(constantValue))
+    }
+    
+    init(_ initialValue: T, _ producer: SignalProducer<T, ReactiveCocoa.NoError>) {
+        self.init(MutableProperty(initialValue, { producer }))
+    }
+    
+    init(_ initialValue: T, @noescape _ block: () -> SignalProducer<T, ReactiveCocoa.NoError>) {
+        self.init(MutableProperty(initialValue, block))
+    }
+    
+    init(_ initialValue: T, @noescape _ block: () -> Signal<T, ReactiveCocoa.NoError>) {
+        self.init(MutableProperty(initialValue, block))
     }
 }
