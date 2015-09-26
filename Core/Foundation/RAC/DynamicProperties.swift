@@ -21,7 +21,7 @@ final public class DynamicOptionalTypedProperty<T> : MutablePropertyType {
         set { backing.value = newValue as? AnyObject }
     }
     public var producer: SignalProducer<T?, ReactiveCocoa.NoError> {
-        return backing.producer |> map { $0 as? T }
+        return backing.producer.map { $0 as? T }
     }
     
     public init(backing: DynamicProperty, type: T.Type) {
@@ -44,7 +44,7 @@ final public class DynamicForceTypedProperty<T> : MutablePropertyType {
     }
     
     public var producer: SignalProducer<T, ReactiveCocoa.NoError> {
-        return backing.producer |> map { $0 as! T }
+        return backing.producer.map { $0 as! T }
     }
     
     public init(backing: DynamicProperty, type: T.Type) {
