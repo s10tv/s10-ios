@@ -181,15 +181,9 @@ public struct Future<T, E: ErrorType> {
         return Future(buffer: buffer.observeOn(scheduler))
     }
 
-    // TODO: Fix me
-//    public func flatMap<T, U, E>(transform: T -> Future<U, E>) -> Future<T, E> -> Future<U, E> {
-//        return { future in
-//            // Specific strategy here doesn't matter because there will only ever be at most value to be
-//            // transformed
-//            return future |> flatMap(.Latest) { transform($0).buffer }
-//        }
-//    }
-
+    public func flatMap<U>(transform: T -> Future<U, E>) -> Future<U, E> {
+        return Future<U, E>(buffer: buffer.flatMap(.Latest) { transform($0).buffer })
+    }
 }
 
 extension Future : SignalProducerType {

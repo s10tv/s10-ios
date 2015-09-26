@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Core
 import SwiftyJSON
 import ReactiveCocoa
 import Alamofire
@@ -49,9 +48,9 @@ internal class InviteOperation : AsyncOperation {
         ]
         
         meteor.startTask(taskId, type: taskType, metadata: metadata).toSignalProducer()
-            |> toFuture
+            .toFuture()
             // Valid startTask server response
-            |> flatMap { res -> Future<(url: NSURL, thumbnailURL: NSURL), NSError> in
+            .flatMap { res -> Future<(url: NSURL, thumbnailURL: NSURL), NSError> in
                 if let json = res.map({ JSON($0) }),
                 let url = json["url"].string.flatMap({ NSURL($0) }),
                 let thumbnailURL = json["thumbnailUrl"].string.flatMap({ NSURL($0) }) {
@@ -62,38 +61,38 @@ internal class InviteOperation : AsyncOperation {
                 ]))
             }
             // Upload video + thumbnail to azure
-            |> flatMap { res -> Future<(), NSError> in
+            .flatMap { res -> Future<(), NSError> in
                 let thumb = self.azure.put(res.thumbnailURL, data: self.thumbnailData, contentType: "image/jpeg")
                 let vid = self.azure.put(res.url, file: self.localVideoURL, contentType: "video/mp4")
                 return zip(thumb.producer, vid.producer)
-                    |> map { _ in () }
-                    |> toFuture
+                    .map { _ in () }
+                    .toFuture()
             }
-            |> flatMap { () -> Future<(), NSError> in
+            .flatMap { () -> Future<(), NSError> in
                 return self.meteor.finishTask(self.taskId)
-                    .toSignalProducer() |> toFuture |> map { _ in () }
+                    .toSignalProducer().map { _ in () }.toFuture()
             }
             // Cleanup task
-            |> onTerminate {
+            .onTerminate {
                 // Unconditionally remove invite for now to avoid infinite retries
                 // TODO: Make me offline capable
-                let realm = Realm()
+                let realm = unsafeNewRealm()
                 if let task = InviteTask.findByTaskId(self.taskId, realm: realm) {
                     realm.write {
                         realm.delete(task)
                     }
-                    NSFileManager().removeItemAtURL(self.localVideoURL, error: nil)
+                    _ = try? NSFileManager().removeItemAtURL(self.localVideoURL)
                 } else {
                     Log.error("InviteTask complete but unable to find task with taskId=\(self.taskId)")
                 }
                 if let result = $0 {
                     switch result {
                     case .Success:
-                        println("Succeeded invite task \(self.taskId)")
+                        print("Succeeded invite task \(self.taskId)")
                         self.finish(.Success)
                     case .Failure(let e):
-                        println("Failed invite task \(self.taskId) error \(e.value)")
-                        self.finish(.Error(e.value))
+                        print("Failed invite task \(self.taskId) error \(e)")
+                        self.finish(.Error(e))
                     }
                 } else {
                     self.finish(.Cancelled)

@@ -10,12 +10,11 @@ import Foundation
 import ReactiveCocoa
 import RealmSwift
 import Alamofire
-import Core
 
 internal class VideoDownloadOperation : AsyncOperation {
     let videoCache = VideoCache.sharedInstance
     let alamo = Manager(sessionType: .Default)
-    let tempURL = NSURL(fileURLWithPath: NSTemporaryDirectory())!.URLByAppendingPathComponent(NSUUID().UUIDString)
+    let tempURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent(NSUUID().UUIDString)
     let videoId: String
     let senderId: String
     let remoteURL: NSURL
@@ -39,12 +38,12 @@ internal class VideoDownloadOperation : AsyncOperation {
     override func run() {
         Log.info("Start VideoDownload id=\(videoId)")
         // Persist record
-        let realm = Realm()
+        let realm = unsafeNewRealm()
         realm.write {
             let task = VideoDownloadTask()
             task.videoId = self.videoId
             task.senderId = self.senderId
-            task.remoteUrl = self.remoteURL.absoluteString!
+            task.remoteUrl = self.remoteURL.absoluteString
             realm.add(task, update: true)
         }
         
@@ -57,20 +56,20 @@ internal class VideoDownloadOperation : AsyncOperation {
         
         // Handle request
         let future = request!.validate().responseData()
-            |> flatMap { (data: NSData?) -> Future<NSData?, NSError> in
+            .flatMap { (data: NSData?) -> Future<NSData?, NSError> in
                 let error = self.videoCache.setVideo(self.videoId, fileURL: self.tempURL)
                 return error.map { Future(error: $0) } ?? Future(value: data)
             }
-            |> onComplete { result in
-                NSFileManager().removeItemAtURL(self.tempURL, error: nil)
-                let realm = Realm()
+            .onComplete { result in
+                _ = try? NSFileManager().removeItemAtURL(self.tempURL)
+                let realm = unsafeNewRealm()
                 if let task = VideoDownloadTask.findByVideoId(self.videoId, realm: realm) {
                     realm.write {
                         switch result {
                         case .Success:
                             realm.delete(task)
                         case .Failure(let error):
-                            if let resumeData = error.value.userInfo?[kAlamofireResumeData] as? NSData {
+                            if let resumeData = error.userInfo[kAlamofireResumeData] as? NSData {
                                 task.resumeData = resumeData
                                 Log.debug("VideoDownload got resumeData length=\(resumeData.length)")
                             } else {
@@ -94,7 +93,7 @@ internal class VideoDownloadOperation : AsyncOperation {
                     self.finish(.Success)
                     Log.info("VideoDownload didSucceed id=\(self.videoId)")
                 case .Failure(let error):
-                    self.finish(.Error(error.value))
+                    self.finish(.Error(error))
                     Log.info("VideoDownload didFail id=\(self.videoId)")
                 }
             }

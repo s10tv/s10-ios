@@ -26,14 +26,14 @@ public class MeteorService : NSObject {
 
     public init(serverURL: NSURL) {
         let bundle = NSBundle(forClass: MeteorService.self)
-        let model = NSManagedObjectModel.mergedModelFromBundles([bundle as AnyObject])
+        let model = NSManagedObjectModel.mergedModelFromBundles([bundle])
         meteor = METCoreDataDDPClient(serverURL: serverURL, account: nil, managedObjectModel: model)
-        account = meteor.dyn("account").optional(METAccount) |> readonly
+        account = meteor.dyn("account").optional(METAccount).readonly()
         connectionStatus = meteor.dyn("connectionStatus").force(NSNumber)
-            |> map { METDDPConnectionStatus(rawValue: Int($0.intValue))! }
-        user = PropertyOf(nil, _user.producer |> observeOn(UIScheduler()))
-        loggedIn = user |> map { $0 != nil }
-        userId = user |> map { $0?.documentID }
+            .map { METDDPConnectionStatus(rawValue: Int($0.intValue))! }
+        user = PropertyOf(nil, _user.producer.observeOn(UIScheduler()))
+        loggedIn = user.map { $0 != nil }
+        userId = user.map { $0?.documentID }
         super.init()
         meteor.delegate = self
         SugarRecord.addStack(MeteorCDStack(meteor: meteor))
@@ -96,7 +96,7 @@ public class MeteorService : NSObject {
     // TODO: Add permission statuses for push, location, etc
 
     // MARK: - Authentication
-    func login(#method: String, params: [AnyObject]?) -> RACSignal {
+    func login(method method: String, params: [AnyObject]?) -> RACSignal {
         // HACK ALERT: Delegate callback does not happen in time for Meteor.user
         // to be populated by the time completion gets called.
         // Instead we will force compute the user before returning signal
@@ -113,7 +113,7 @@ public class MeteorService : NSObject {
         ]])
     }
 
-    public func loginWithDigits(#userId: String, authToken: String, authTokenSecret: String, phoneNumber: String) -> RACSignal {
+    public func loginWithDigits(userId userId: String, authToken: String, authTokenSecret: String, phoneNumber: String) -> RACSignal {
         return login(method: "login", params: [[
             "digits": [
                 "userId": userId,
@@ -132,7 +132,7 @@ public class MeteorService : NSObject {
         return meteor.call("confirmRegistration", [])
     }
 
-    func loginWithFacebook(#accessToken: String, expiresAt: NSDate) -> RACSignal {
+    func loginWithFacebook(accessToken accessToken: String, expiresAt: NSDate) -> RACSignal {
         return login(method: "login", params: [[
             "fb-access": [
                 "accessToken": accessToken,

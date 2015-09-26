@@ -31,20 +31,23 @@ public class VideoCache {
     public func setVideo(videoId: String, fileURL: NSURL) -> NSError? {
         // Remove current if exists
         removeVideo(videoId)
-        var error: NSError?
-        fm.linkItemAtURL(fileURL, toURL: cacheURLForVideo(videoId), error: &error)
-        return error
+        do {
+            try fm.linkItemAtURL(fileURL, toURL: cacheURLForVideo(videoId))
+        } catch let error as NSError {
+            return error
+        }
+        return nil
     }
     
     public func removeVideo(videoId: String) {
-        fm.removeItemAtURL(cacheURLForVideo(videoId), error: nil)
+        _ = try? fm.removeItemAtURL(cacheURLForVideo(videoId))
     }
     
     public static let sharedInstance: VideoCache = {
         let fm = NSFileManager()
-        let cachesDir = fm.URLsForDirectory(.CachesDirectory, inDomains: .UserDomainMask)[0] as! NSURL
+        let cachesDir = fm.URLsForDirectory(.CachesDirectory, inDomains: .UserDomainMask)[0]
         let dir = cachesDir.URLByAppendingPathComponent("Videos")
-        fm.createDirectoryAtURL(dir, withIntermediateDirectories: true, attributes: nil, error: nil)
+        _ = try? fm.createDirectoryAtURL(dir, withIntermediateDirectories: true, attributes: nil)
         return VideoCache(cacheDir: dir)
     }()
 }
