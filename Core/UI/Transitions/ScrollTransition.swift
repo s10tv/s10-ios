@@ -24,13 +24,13 @@ public class ScrollTransition : ViewControllerTransition {
     public override func animate() -> RACSignal {
         var leftFrame = containerView.bounds
         leftFrame.origin.x -= leftFrame.width
-        var centerFrame = containerView.bounds
+        let centerFrame = containerView.bounds
         var rightFrame = containerView.bounds
         rightFrame.origin.x += rightFrame.width
         
         self.containerView.addSubview(self.toView!)
-        var toInitialFrame = direction == .RightToLeft ? rightFrame : leftFrame
-        var fromFinalFrame = direction == .RightToLeft ? leftFrame : rightFrame
+        let toInitialFrame = direction == .RightToLeft ? rightFrame : leftFrame
+        let fromFinalFrame = direction == .RightToLeft ? leftFrame : rightFrame
         toView?.frame = toInitialFrame
         
         return UIView.animate(duration, options: .CurveEaseInOut) {

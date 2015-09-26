@@ -215,10 +215,10 @@ extension UICollectionViewFlowLayout {
 }
 
 public func DebugPrintAllFonts() {
-    for familyName in UIFont.familyNames() as! [String] {
-        println("Family: \(familyName)")
+    for familyName in UIFont.familyNames() {
+        print("Family: \(familyName)")
         for fontName in UIFont.fontNamesForFamilyName(familyName) {
-            println("\tFont: \(fontName)")
+            print("\tFont: \(fontName)")
         }
     }
 }

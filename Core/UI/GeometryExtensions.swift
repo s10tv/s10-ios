@@ -61,13 +61,13 @@ extension CGRect {
 extension UIBezierPath {
     
     // North = 0 degrees, east = 90, south = 180, west = 270
-    public func addLineTo(#distance: CGFloat, bearing: CGFloat) {
+    public func addLineTo(distance distance: CGFloat, bearing: CGFloat) {
         let dx = distance * sin(bearing * π / 180)
         let dy = -1 * distance * cos(bearing * π / 180) // -1 because y axis increases toward south
         addLineToPoint(currentPoint + CGPoint(x: dx, y: dy))
     }
     
-    public func addLineTo(#x: CGFloat, y: CGFloat) {
+    public func addLineTo(x x: CGFloat, y: CGFloat) {
         addLineToPoint(CGPoint(x: x, y: y))
     }
     
