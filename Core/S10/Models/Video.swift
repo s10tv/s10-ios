@@ -27,7 +27,7 @@ public struct Video : Mappable {
         self.url = url
     }
     
-    init() {
+    public init?(_ map: Map) {
     }
     
     public mutating func mapping(map: Map) {
@@ -37,14 +37,10 @@ public struct Video : Mappable {
         height <- map["height"]
     }
     
-    public static func newInstance(map: Map) -> Mappable? {
-        return Video()
-    }
-    
     public static let mapper = Mapper<Video>()
 }
 
-extension Video : Printable {
+extension Video : CustomStringConvertible {
     public var description: String {
         return "Video[url=\(url), w=\(width) h=\(height)]"
     }
