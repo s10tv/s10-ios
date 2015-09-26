@@ -8,71 +8,7 @@
 
 import Foundation
 
-// Floats
-extension Int {
-    public var f: CGFloat { return CGFloat(self) }
-}
-
-extension Float {
-    public var f: CGFloat { return CGFloat(self) }
-}
-
-extension Double {
-    public var f: CGFloat { return CGFloat(self) }
-}
-
 // Foundation Types
-
-extension String {
-    
-    public var length: Int { return characters.count }
-    
-    public var stringByCapitalizingFirstCharacter : String {
-        let firstChar = substringToIndex(1)
-        let rest = substringFromIndex(1)
-        return "\(firstChar.uppercaseString)\(rest)"
-    }
-    
-    // Courtesy of http://stackoverflow.com/questions/24029163/finding-index-of-character-in-swift-string
-    
-    // MARK: - sub String
-    public func substringToIndex(index:Int) -> String {
-        return self.substringToIndex(self.startIndex.advancedBy(index))
-    }
-    public func substringFromIndex(index:Int) -> String {
-        return self.substringFromIndex(self.startIndex.advancedBy(index))
-    }
-    public func substringWithRange(range:Range<Int>) -> String {
-        let start = self.startIndex.advancedBy(range.startIndex)
-        let end = self.startIndex.advancedBy(range.endIndex)
-        return self.substringWithRange(start..<end)
-    }
-    
-    public subscript(index:Int) -> Character {
-        return self[self.startIndex.advancedBy(index)]
-    }
-    public subscript(range:Range<Int>) -> String {
-        let start = self.startIndex.advancedBy(range.startIndex)
-        let end = self.startIndex.advancedBy(range.endIndex)
-        return self[start..<end]
-    }
-    
-    // MARK: - replace
-    public func replaceCharactersInRange(range:Range<Int>, withString: String!) -> String {
-        let result:NSMutableString = NSMutableString(string: self)
-        result.replaceCharactersInRange(NSRange(range), withString: withString)
-        return result as String
-    }
-    
-    public func nonBlank() -> String? {
-        let trimmed = stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
-        return trimmed.isEmpty ? nil : trimmed
-    }
-}
-
-public func += <T>(inout array: [T], element: T) {
-    array.append(element)
-}
 
 extension NSURL {
     public convenience init!(_ urlString: String) {
@@ -119,6 +55,35 @@ extension NSAttributedString {
         let range = NSMakeRange(0, attrString.length)
         configure(attrString, range)
         return attrString
+    }
+}
+
+
+extension NSNotificationCenter {
+    public class Proxy {
+        let queue : NSOperationQueue
+        let center : NSNotificationCenter
+        var observers : [NSObjectProtocol] = []
+        
+        init(center: NSNotificationCenter, queue: NSOperationQueue = NSOperationQueue.mainQueue()) {
+            self.center = center
+            self.queue = queue
+        }
+        
+        deinit {
+            for o in observers { center.removeObserver(o) }
+        }
+        
+        public func listen(name: String, object: AnyObject? = nil, block: (NSNotification) -> ()) -> Proxy {
+            observers += center.addObserverForName(name, object: object, queue: queue) { note in
+                block(note)
+            }
+            return self
+        }
+    }
+    
+    public func proxy() -> Proxy {
+        return Proxy(center: self)
     }
 }
 

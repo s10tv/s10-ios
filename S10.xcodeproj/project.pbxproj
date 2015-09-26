@@ -65,14 +65,14 @@
 		EA81ADBD1BB65FB800F94006 /* FoundationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6705A1B31F9450025D7CF /* FoundationExtension.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81ADBF1BB6679400F94006 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670891B31F9AD0025D7CF /* Logging.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81ADC21BB6688400F94006 /* Core.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF6701C1B31E6550025D7CF /* Core.m */; settings = {ASSET_TAGS = (); }; };
-		EA81ADC41BB66A1400F94006 /* NotificationCenterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6705B1B31F9450025D7CF /* NotificationCenterExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81ADC81BB66C5300F94006 /* SignalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA359AE61B700B8A00AF0A65 /* SignalExtensions.swift */; settings = {ASSET_TAGS = (); }; };
-		EA81ADCE1BB6731200F94006 /* GenericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA81ADCD1BB6731200F94006 /* GenericExtensions.swift */; settings = {ASSET_TAGS = (); }; };
+		EA81ADCE1BB6731200F94006 /* SwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA81ADCD1BB6731200F94006 /* SwiftExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81ADD21BB6735800F94006 /* ReactiveBridging.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA81ADD01BB6735800F94006 /* ReactiveBridging.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81ADD31BB673B100F94006 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E405C1B6D334D00FF5126 /* Future.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81ADD41BB6793500F94006 /* ActionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E40611B6D33F500FF5126 /* ActionExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81ADD51BB679D300F94006 /* DynamicProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E405B1B6D334D00FF5126 /* DynamicProperties.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81ADD61BB67A6800F94006 /* PropertyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E405F1B6D336F00FF5126 /* PropertyExtensions.swift */; settings = {ASSET_TAGS = (); }; };
+		EA81ADD71BB6823F00F94006 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C16651B365BD700371B50 /* AsyncOperation.swift */; settings = {ASSET_TAGS = (); }; };
 		EA89C0861B6AA2060007C6CB /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0851B6AA2060007C6CB /* CreateProfileViewController.swift */; };
 		EA89C0881B6AC0410007C6CB /* ConnectServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0871B6AC0410007C6CB /* ConnectServicesViewController.swift */; };
 		EA925C741AD99ED8008E9F41 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA925C731AD99ED8008E9F41 /* R.swift */; };
@@ -301,7 +301,7 @@
 		EA7FB0911B5EF9D50052B394 /* Cabin-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Medium.ttf"; sourceTree = "<group>"; };
 		EA7FB0921B5EF9D50052B394 /* Cabin-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-MediumItalic.ttf"; sourceTree = "<group>"; };
 		EA7FB0931B5EF9D50052B394 /* Cabin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Regular.ttf"; sourceTree = "<group>"; };
-		EA81ADCD1BB6731200F94006 /* GenericExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenericExtensions.swift; sourceTree = "<group>"; };
+		EA81ADCD1BB6731200F94006 /* SwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftExtensions.swift; sourceTree = "<group>"; };
 		EA81ADD01BB6735800F94006 /* ReactiveBridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveBridging.swift; sourceTree = "<group>"; };
 		EA82CF961B504FC500A12D94 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		EA89C0851B6AA2060007C6CB /* CreateProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
@@ -377,7 +377,6 @@
 		EAF670571B31F9450025D7CF /* MeteorExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorExtension.swift; sourceTree = "<group>"; };
 		EAF670581B31F9450025D7CF /* SugarRecordExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SugarRecordExtension.swift; sourceTree = "<group>"; };
 		EAF6705A1B31F9450025D7CF /* FoundationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationExtension.swift; sourceTree = "<group>"; };
-		EAF6705B1B31F9450025D7CF /* NotificationCenterExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationCenterExtensions.swift; sourceTree = "<group>"; };
 		EAF670701B31F9450025D7CF /* AnimationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationExtensions.swift; sourceTree = "<group>"; };
 		EAF670711B31F9450025D7CF /* GeometryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometryExtensions.swift; sourceTree = "<group>"; };
 		EAF670721B31F9450025D7CF /* UIKitExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
@@ -1042,11 +1041,10 @@
 			isa = PBXGroup;
 			children = (
 				EA6E405A1B6D334D00FF5126 /* RAC */,
+				EA81ADCD1BB6731200F94006 /* SwiftExtensions.swift */,
 				EAF6705A1B31F9450025D7CF /* FoundationExtension.swift */,
-				EAF6705B1B31F9450025D7CF /* NotificationCenterExtensions.swift */,
-				EA81ADCD1BB6731200F94006 /* GenericExtensions.swift */,
-				EAF670891B31F9AD0025D7CF /* Logging.swift */,
 				EA9C16651B365BD700371B50 /* AsyncOperation.swift */,
+				EAF670891B31F9AD0025D7CF /* Logging.swift */,
 			);
 			path = Foundation;
 			sourceTree = "<group>";
@@ -1556,12 +1554,12 @@
 				EA81ADC81BB66C5300F94006 /* SignalExtensions.swift in Sources */,
 				EA81ADD51BB679D300F94006 /* DynamicProperties.swift in Sources */,
 				EA81ADD21BB6735800F94006 /* ReactiveBridging.swift in Sources */,
-				EA81ADC41BB66A1400F94006 /* NotificationCenterExtensions.swift in Sources */,
 				EA81ADBF1BB6679400F94006 /* Logging.swift in Sources */,
 				EA81ADD31BB673B100F94006 /* Future.swift in Sources */,
 				EA81ADD61BB67A6800F94006 /* PropertyExtensions.swift in Sources */,
-				EA81ADCE1BB6731200F94006 /* GenericExtensions.swift in Sources */,
+				EA81ADCE1BB6731200F94006 /* SwiftExtensions.swift in Sources */,
 				EA81ADC21BB6688400F94006 /* Core.m in Sources */,
+				EA81ADD71BB6823F00F94006 /* AsyncOperation.swift in Sources */,
 				EA81ADD41BB6793500F94006 /* ActionExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

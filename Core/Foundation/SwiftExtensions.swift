@@ -1,17 +1,74 @@
 //
-//  GenericExtensions.swift
+//  SwiftExtensions.swift
 //  S10
 //
 //  Created by Tony Xiao on 6/17/15.
 //  Copyright (c) 2015 S10. All rights reserved.
 //
 
-// Generic extensions cannot be included as part of Framework as of latest swift version
-// yet, therefore this file should be included as part of every target that wants these extensions
-// Files in this catagory should not have any other external dependencies in addition to Swift runtime
-// itself
 
-import Foundation
+public func += <T>(inout array: [T], element: T) {
+    array.append(element)
+}
+
+extension Int {
+    public var f: CGFloat { return CGFloat(self) }
+}
+
+extension Float {
+    public var f: CGFloat { return CGFloat(self) }
+}
+
+extension Double {
+    public var f: CGFloat { return CGFloat(self) }
+}
+
+extension String {
+    
+    public var length: Int { return characters.count }
+    
+    public var stringByCapitalizingFirstCharacter : String {
+        let firstChar = substringToIndex(1)
+        let rest = substringFromIndex(1)
+        return "\(firstChar.uppercaseString)\(rest)"
+    }
+    
+    // Courtesy of http://stackoverflow.com/questions/24029163/finding-index-of-character-in-swift-string
+    
+    // MARK: - sub String
+    public func substringToIndex(index:Int) -> String {
+        return self.substringToIndex(self.startIndex.advancedBy(index))
+    }
+    public func substringFromIndex(index:Int) -> String {
+        return self.substringFromIndex(self.startIndex.advancedBy(index))
+    }
+    public func substringWithRange(range:Range<Int>) -> String {
+        let start = self.startIndex.advancedBy(range.startIndex)
+        let end = self.startIndex.advancedBy(range.endIndex)
+        return self.substringWithRange(start..<end)
+    }
+    
+    public subscript(index:Int) -> Character {
+        return self[self.startIndex.advancedBy(index)]
+    }
+    public subscript(range:Range<Int>) -> String {
+        let start = self.startIndex.advancedBy(range.startIndex)
+        let end = self.startIndex.advancedBy(range.endIndex)
+        return self[start..<end]
+    }
+    
+    // MARK: - replace
+    public func replaceCharactersInRange(range:Range<Int>, withString: String!) -> String {
+        let result:NSMutableString = NSMutableString(string: self)
+        result.replaceCharactersInRange(NSRange(range), withString: withString)
+        return result as String
+    }
+    
+    public func nonBlank() -> String? {
+        let trimmed = stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceCharacterSet())
+        return trimmed.isEmpty ? nil : trimmed
+    }
+}
 
 public extension Array {
     
@@ -20,10 +77,6 @@ public extension Array {
             block(element)
         }
     }
-    
-//    func mapOptional<U>(transform: T -> U?) -> [U] {
-//        return Core.mapOptional(self, transform)
-//    }
     
     // Deletes all the items in self that are equal to element.
     mutating func remove <U: Equatable> (element: U) {
