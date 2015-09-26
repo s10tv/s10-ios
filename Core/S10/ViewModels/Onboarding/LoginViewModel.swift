@@ -43,21 +43,22 @@ public struct LoginViewModel {
     
     public init(meteor: MeteorService, delegate: LoginDelegate) {
         self.delegate = delegate
-        loginButtonText = delegate.loggedInPhone |> map {
+        loginButtonText = delegate.loggedInPhone.map {
             $0.map {
                 "Continue as \($0)"
             } ?? "Login with Phone Number"
         }
-        logoutButtonText = delegate.loggedInPhone |> map {
+        logoutButtonText = delegate.loggedInPhone.map {
             $0 != nil ? "Not you? Tap to logout." : ""
         }
         loginAction = Action { _ -> Future<AccountState, ErrorAlert> in
             if meteor.offline { return Future(error: eOffline) }
             return delegate.login()
-                |> deliverOn(UIScheduler())
-                |> mapError { e in
+                .deliverOn(UIScheduler())
+                .mapError { e in
                     ErrorAlert(title: "Unable to login", message: e.localizedFailureReason, underlyingError: e)
                 }
+                .toFuture()
         }
         logoutAction = Action { _ in
             Future(value: delegate.logout())

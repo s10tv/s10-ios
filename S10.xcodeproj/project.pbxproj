@@ -123,6 +123,10 @@
 		EA81AE171BB6993B00F94006 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA35613C1B6D49DA00F058CC /* Errors.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE181BB6995100F94006 /* UserExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2BC1B642A4A0034434E /* UserExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE191BB6996C00F94006 /* DynamicDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC725B91B66036A004113FD /* DynamicDataSource.swift */; settings = {ASSET_TAGS = (); }; };
+		EA81AE1B1BB699E200F94006 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA57734F1B6C652800BCF449 /* LoginViewModel.swift */; settings = {ASSET_TAGS = (); }; };
+		EA81AE1C1BB69A6300F94006 /* CreateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC725BB1B66D76D004113FD /* CreateProfileViewModel.swift */; settings = {ASSET_TAGS = (); }; };
+		EA81AE1D1BB69A8D00F94006 /* ConnectServicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC725BD1B66DD92004113FD /* ConnectServicesViewModel.swift */; settings = {ASSET_TAGS = (); }; };
+		EA81AE1E1BB69A9600F94006 /* VerifyCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9608B861BAA9F3F0067E1EF /* VerifyCodeViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA89C0861B6AA2060007C6CB /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0851B6AA2060007C6CB /* CreateProfileViewController.swift */; };
 		EA89C0881B6AC0410007C6CB /* ConnectServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0871B6AC0410007C6CB /* ConnectServicesViewController.swift */; };
 		EA925C741AD99ED8008E9F41 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA925C731AD99ED8008E9F41 /* R.swift */; };
@@ -1605,11 +1609,13 @@
 				EA81ADEB1BB6891F00F94006 /* RealmExtensions.swift in Sources */,
 				EA81ADBD1BB65FB800F94006 /* FoundationExtension.swift in Sources */,
 				EA81AE091BB6912D00F94006 /* VideoDownloadTask.swift in Sources */,
+				EA81AE1C1BB69A6300F94006 /* CreateProfileViewModel.swift in Sources */,
 				EA81ADDE1BB6852600F94006 /* Environment.swift in Sources */,
 				EA81ADED1BB689FC00F94006 /* MeteorSubscription.swift in Sources */,
 				EA81AE191BB6996C00F94006 /* DynamicDataSource.swift in Sources */,
 				EA81AE161BB6989A00F94006 /* AlertableError.swift in Sources */,
 				EA81ADFB1BB68E2100F94006 /* _Message.swift in Sources */,
+				EA81AE1E1BB69A9600F94006 /* VerifyCodeViewModel.swift in Sources */,
 				EA81ADC81BB66C5300F94006 /* SignalExtensions.swift in Sources */,
 				EA81AE181BB6995100F94006 /* UserExtensions.swift in Sources */,
 				EA81ADFD1BB68E2100F94006 /* _Candidate.swift in Sources */,
@@ -1618,6 +1624,7 @@
 				EA81AE0C1BB693B800F94006 /* MeteorService.swift in Sources */,
 				EA81ADD51BB679D300F94006 /* DynamicProperties.swift in Sources */,
 				EA81ADE91BB6883A00F94006 /* AnimationExtensions.swift in Sources */,
+				EA81AE1D1BB69A8D00F94006 /* ConnectServicesViewModel.swift in Sources */,
 				EA81AE0A1BB6912D00F94006 /* InviteTask.swift in Sources */,
 				EA81ADFF1BB68E2100F94006 /* Connection.swift in Sources */,
 				EA81ADFE1BB68E2100F94006 /* Activity.swift in Sources */,
@@ -1648,6 +1655,7 @@
 				EA81ADE51BB686EF00F94006 /* Transition.swift in Sources */,
 				EA81AE101BB6965E00F94006 /* VideoDownloadOperation.swift in Sources */,
 				EA81ADCE1BB6731200F94006 /* SwiftExtensions.swift in Sources */,
+				EA81AE1B1BB699E200F94006 /* LoginViewModel.swift in Sources */,
 				EA81ADC21BB6688400F94006 /* Core.m in Sources */,
 				EA81ADD71BB6823F00F94006 /* AsyncOperation.swift in Sources */,
 				EA81ADF91BB68E2100F94006 /* _Connection.swift in Sources */,

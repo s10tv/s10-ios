@@ -32,8 +32,8 @@ public struct CreateProfileViewModel {
         firstName = MutableProperty(user.firstName ?? "")
         lastName = MutableProperty(user.lastName ?? "")
         about = MutableProperty(user.about ?? "")
-        avatar = user.pAvatar() |> mutable
-        cover = user.pCover() |> mutable
+        avatar = user.pAvatar().mutable()
+        cover = user.pCover().mutable()
         hometown = MutableProperty(user.hometown ?? "")
         major = MutableProperty(user.major ?? "")
         year = MutableProperty(user.gradYear ?? "")
@@ -42,9 +42,9 @@ public struct CreateProfileViewModel {
         uploadImageAction = Action { tuple -> Future<(), ErrorAlert> in
             queue.addAsyncOperation {
                 PhotoUploadOperation(meteor: meteor, image: tuple.image, taskType: tuple.type)
-            } |> mapError { e in
+            }.mapError { e in
                 ErrorAlert(title: "Unable to upload", message: e.localizedDescription, underlyingError: e)
-            }
+            }.toFuture()
         }
         subscription = meteor.subscribe("me")
     }
