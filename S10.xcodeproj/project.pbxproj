@@ -75,6 +75,9 @@
 		EA81ADD71BB6823F00F94006 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C16651B365BD700371B50 /* AsyncOperation.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81ADDA1BB6839200F94006 /* AlamofireExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA78C8761B320A2A0016AB73 /* AlamofireExtension.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81ADDB1BB6839200F94006 /* AzureClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA359AE41B6FFB2B00AF0A65 /* AzureClient.swift */; settings = {ASSET_TAGS = (); }; };
+		EA81ADDC1BB6852600F94006 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670921B31FCBE0025D7CF /* DeviceInfo.swift */; settings = {ASSET_TAGS = (); }; };
+		EA81ADDD1BB6852600F94006 /* ProvisioningProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670931B31FCBE0025D7CF /* ProvisioningProfile.swift */; settings = {ASSET_TAGS = (); }; };
+		EA81ADDE1BB6852600F94006 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670961B31FE6A0025D7CF /* Environment.swift */; settings = {ASSET_TAGS = (); }; };
 		EA89C0861B6AA2060007C6CB /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0851B6AA2060007C6CB /* CreateProfileViewController.swift */; };
 		EA89C0881B6AC0410007C6CB /* ConnectServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0871B6AC0410007C6CB /* ConnectServicesViewController.swift */; };
 		EA925C741AD99ED8008E9F41 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA925C731AD99ED8008E9F41 /* R.swift */; };
@@ -1553,12 +1556,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA81ADBD1BB65FB800F94006 /* FoundationExtension.swift in Sources */,
+				EA81ADDE1BB6852600F94006 /* Environment.swift in Sources */,
 				EA81ADC81BB66C5300F94006 /* SignalExtensions.swift in Sources */,
 				EA81ADD51BB679D300F94006 /* DynamicProperties.swift in Sources */,
+				EA81ADDD1BB6852600F94006 /* ProvisioningProfile.swift in Sources */,
 				EA81ADD21BB6735800F94006 /* ReactiveBridging.swift in Sources */,
 				EA81ADDA1BB6839200F94006 /* AlamofireExtension.swift in Sources */,
 				EA81ADBF1BB6679400F94006 /* Logging.swift in Sources */,
 				EA81ADDB1BB6839200F94006 /* AzureClient.swift in Sources */,
+				EA81ADDC1BB6852600F94006 /* DeviceInfo.swift in Sources */,
 				EA81ADD31BB673B100F94006 /* Future.swift in Sources */,
 				EA81ADD61BB67A6800F94006 /* PropertyExtensions.swift in Sources */,
 				EA81ADCE1BB6731200F94006 /* SwiftExtensions.swift in Sources */,
