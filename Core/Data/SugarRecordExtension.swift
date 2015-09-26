@@ -8,7 +8,7 @@
 
 import CoreData
 import SugarRecord
-import Bond
+//import Bond
 
 extension SugarRecord {
     public class func transaction(closure: (context: SugarRecordContext) -> ()) {
@@ -30,26 +30,26 @@ extension SugarRecordFinder {
         return fetchedResultsController(nil)
     }
     
-    public func results<T : NSManagedObject>(type: T.Type, loadData: Bool = true) -> FetchedResultsArray<T> {
-        return fetchedResultsController(nil).results(type, loadData: loadData)
-    }
-    
     public func fetch() -> [AnyObject] {
-        return map(self.find(), { (record) -> AnyObject in
+        return self.find().map { (record) -> AnyObject in
             return record
-        })
+        }
     }
     
     public func fetchFirst() -> AnyObject? {
         return first().find().firstObject()
     }
+    
+    //    public func results<T : NSManagedObject>(type: T.Type, loadData: Bool = true) -> FetchedResultsArray<T> {
+    //        return fetchedResultsController(nil).results(type, loadData: loadData)
+    //    }
 }
 
 extension NSManagedObject {
     public class func by(key: String, value: AnyObject?) -> SugarRecordFinder {
         return all().by(key, value: value)
     }
-    public class func by(key: Printable, value: AnyObject?) -> SugarRecordFinder {
+    public class func by(key: CustomStringConvertible, value: AnyObject?) -> SugarRecordFinder {
         return by(key.description, value: value)
     }
 }
@@ -58,9 +58,9 @@ extension NSManagedObject {
 extension NSFetchedResultsController {
     public func fetchObjects() -> [AnyObject] {
         if fetchedObjects == nil {
-            var error: NSError?
-            var success = self.performFetch(&error)
-            if !success || error != nil {
+            do {
+                try self.performFetch()
+            } catch let error as NSError {
                 Log.error("Failed when fetch frc \(self)", error)
             }
         }

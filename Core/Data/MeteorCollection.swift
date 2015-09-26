@@ -17,7 +17,7 @@ struct BoxedValue {
     }
 }
 
-extension BoxedValue : Printable {
+extension BoxedValue : CustomStringConvertible {
     var description: String {
         return "Boxed[\(value)]"
     }
@@ -46,9 +46,9 @@ class MeteorCollection {
     func signal(documentID: String, field: String = "value") -> Signal<BoxedValue, NoError> {
         let documentKey = METDocumentKey(collectionName: c.name, documentID: documentID)
         return databaseChanges
-            |> filter { contains($0.affectedDocumentKeys(), documentKey) }
-            |> map { $0.changeDetailsForDocumentWithKey(documentKey).fieldsAfterChanges?[field] }
-            |> map { BoxedValue(value: $0) }
+            .filter { $0.affectedDocumentKeys().contains(documentKey) }
+            .map { $0.changeDetailsForDocumentWithKey(documentKey).fieldsAfterChanges?[field] }
+            .map { BoxedValue(value: $0) }
     }
     
     func mutableProperty(documentID: String, field: String = "value") -> MutableProperty<BoxedValue> {
@@ -60,10 +60,10 @@ class MeteorCollection {
     }
     
     func propertyOf<T>(documentID: String, field: String = "value", type: T.Type) -> PropertyOf<T?> {
-        return propertyOf(documentID, field: field) |> map { $0.typed(T.self) }
+        return propertyOf(documentID, field: field).map { $0.typed(T.self) }
     }
     
     func propertyOf<T>(documentID: String, field: String = "value", defaultValue: T) -> PropertyOf<T> {
-        return propertyOf(documentID, field: field) |> map { $0.typed(T.self) ?? defaultValue }
+        return propertyOf(documentID, field: field).map { $0.typed(T.self) ?? defaultValue }
     }
 }

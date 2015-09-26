@@ -27,12 +27,11 @@ public class MeteorCDStack : SugarRecordStackProtocol {
     func saveChanges() {
         // Defining saving closure
         let save = { (context: NSManagedObjectContext) -> () in
-            var error: NSError?
-            context.save(&error)
-            if error != nil {
-                Log.error("Pending changes in the main context couldn't be saved", error)
-            } else {
+            do {
+                try context.save()
                 Log.info("Existing changes persisted to the database")
+            } catch let error as NSError {
+                Log.error("Pending changes in the main context couldn't be saved", error)
             }
 // TODO: Not clear why, but this crashes sometimes. Commenting out in attempt to fix
 // https://fabric.io/ketch-app/ios/apps/com.milasya.ketch.dev/issues/55380d655141dcfd8f8bc896/sessions/553805da00e5000103de373436616236

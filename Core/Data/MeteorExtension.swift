@@ -112,9 +112,9 @@ extension NSManagedObjectContext {
         return objectID != nil ? objectWithID(objectID!) : nil
     }
     
-    public func existingObjectInCollection(collection: String, documentID: String, error: NSErrorPointer) -> NSManagedObject? {
+    public func existingObjectInCollection(collection: String, documentID: String) -> NSManagedObject? {
         let objectID = objectIDWithCollection(collection, documentID: documentID)
-        return objectID != nil ? existingObjectWithID(objectID!, error: error) : nil
+        return objectID != nil ? (try? existingObjectWithID(objectID!)) : nil
     }
 }
 
