@@ -6,8 +6,7 @@
 //  Copyright (c) 2015 S10. All rights reserved.
 //
 
-import Foundation
-import Bond
+import UIKit
 
 public protocol BindableCell {
     typealias ViewModel
@@ -19,7 +18,7 @@ extension UITableView {
     public func factory<C: BindableCell, VM where C.ViewModel == VM>(cell: C.Type, section: Int = 0) -> (VM, Int) -> UITableViewCell {
         let reuseId = cell.reuseId()
         return { [unowned self] vm, row in
-            let cell = self.dequeueReusableCellWithIdentifier(reuseId, forIndexPath: NSIndexPath(forRow: row, inSection: section)) as! UITableViewCell
+            let cell = self.dequeueReusableCellWithIdentifier(reuseId, forIndexPath: NSIndexPath(forRow: row, inSection: section))
             (cell as! C).bind(vm)
             return cell
         }
@@ -30,7 +29,7 @@ extension UICollectionView {
     public func factory<C: BindableCell, VM where C.ViewModel == VM>(cell: C.Type, section: Int = 0) -> (VM, Int) -> UICollectionViewCell {
         let reuseId = cell.reuseId()
         return { [unowned self] vm, item in
-            let cell = self.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: NSIndexPath(forItem: item, inSection: section)) as! UICollectionViewCell
+            let cell = self.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: NSIndexPath(forItem: item, inSection: section))
             (cell as! C).bind(vm)
             return cell
         }

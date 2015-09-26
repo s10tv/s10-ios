@@ -118,6 +118,11 @@
 		EA81AE121BB696B900F94006 /* PhotoUploadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABA05431B474EC900154C75 /* PhotoUploadOperation.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE131BB696D000F94006 /* InviteOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D545481B57988200A4661B /* InviteOperation.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE141BB6976900F94006 /* TaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C166B1B368FD600371B50 /* TaskService.swift */; settings = {ASSET_TAGS = (); }; };
+		EA81AE151BB6981200F94006 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2BB1B642A4A0034434E /* Formatters.swift */; settings = {ASSET_TAGS = (); }; };
+		EA81AE161BB6989A00F94006 /* AlertableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA35613E1B6DBCDB00F058CC /* AlertableError.swift */; settings = {ASSET_TAGS = (); }; };
+		EA81AE171BB6993B00F94006 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA35613C1B6D49DA00F058CC /* Errors.swift */; settings = {ASSET_TAGS = (); }; };
+		EA81AE181BB6995100F94006 /* UserExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2BC1B642A4A0034434E /* UserExtensions.swift */; settings = {ASSET_TAGS = (); }; };
+		EA81AE191BB6996C00F94006 /* DynamicDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC725B91B66036A004113FD /* DynamicDataSource.swift */; settings = {ASSET_TAGS = (); }; };
 		EA89C0861B6AA2060007C6CB /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0851B6AA2060007C6CB /* CreateProfileViewController.swift */; };
 		EA89C0881B6AC0410007C6CB /* ConnectServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0871B6AC0410007C6CB /* ConnectServicesViewController.swift */; };
 		EA925C741AD99ED8008E9F41 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA925C731AD99ED8008E9F41 /* R.swift */; };
@@ -1602,8 +1607,11 @@
 				EA81AE091BB6912D00F94006 /* VideoDownloadTask.swift in Sources */,
 				EA81ADDE1BB6852600F94006 /* Environment.swift in Sources */,
 				EA81ADED1BB689FC00F94006 /* MeteorSubscription.swift in Sources */,
+				EA81AE191BB6996C00F94006 /* DynamicDataSource.swift in Sources */,
+				EA81AE161BB6989A00F94006 /* AlertableError.swift in Sources */,
 				EA81ADFB1BB68E2100F94006 /* _Message.swift in Sources */,
 				EA81ADC81BB66C5300F94006 /* SignalExtensions.swift in Sources */,
+				EA81AE181BB6995100F94006 /* UserExtensions.swift in Sources */,
 				EA81ADFD1BB68E2100F94006 /* _Candidate.swift in Sources */,
 				EA81AE001BB68E2100F94006 /* Integration.swift in Sources */,
 				EA81ADFC1BB68E2100F94006 /* _User.swift in Sources */,
@@ -1617,6 +1625,7 @@
 				EA81ADDD1BB6852600F94006 /* ProvisioningProfile.swift in Sources */,
 				EA81ADEE1BB68A0500F94006 /* MeteorCollection.swift in Sources */,
 				EA81ADD21BB6735800F94006 /* ReactiveBridging.swift in Sources */,
+				EA81AE171BB6993B00F94006 /* Errors.swift in Sources */,
 				EA81ADF61BB68E0400F94006 /* Models.xcdatamodeld in Sources */,
 				EA81AE021BB68E2100F94006 /* User.swift in Sources */,
 				EA81AE141BB6976900F94006 /* TaskService.swift in Sources */,
@@ -1646,6 +1655,7 @@
 				EA81ADFA1BB68E2100F94006 /* _Integration.swift in Sources */,
 				EA81ADE81BB6881200F94006 /* UIKitExtension.swift in Sources */,
 				EA81ADE41BB686EF00F94006 /* Segue.swift in Sources */,
+				EA81AE151BB6981200F94006 /* Formatters.swift in Sources */,
 				EA81AE011BB68E2100F94006 /* Message.swift in Sources */,
 				EA81AE031BB68E2100F94006 /* Candidate.swift in Sources */,
 				EA81AE0B1BB6930900F94006 /* Settings.swift in Sources */,

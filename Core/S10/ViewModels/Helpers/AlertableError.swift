@@ -9,6 +9,13 @@
 import Foundation
 import ReactiveCocoa
 
+// For some reason ErrorType can always be cast as NSError...
+extension ErrorType {
+    public var nsError: NSError {
+        return self as NSError
+    }
+}
+
 public protocol AlertableError : ErrorType {
     var alert: ErrorAlert { get }
 }
