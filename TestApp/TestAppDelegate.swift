@@ -53,9 +53,13 @@ class TestAppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        window?.rootViewController = UIStoryboard(name: "Test", bundle: nil).instantiateInitialViewController() as? UIViewController
+        window?.rootViewController = UIStoryboard(name: "Test", bundle: nil).instantiateInitialViewController()
         
         
+        let array  = [1,2,3,4,5]
+        array.each {
+            print($0)
+        }
 //        showPlayer() 
         return true
     }

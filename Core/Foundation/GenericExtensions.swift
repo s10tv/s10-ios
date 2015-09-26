@@ -13,7 +13,7 @@
 
 import Foundation
 
-extension Array {
+public extension Array {
     
     func each(@noescape block: Element -> ()) {
         for element in self {
