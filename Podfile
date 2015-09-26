@@ -8,28 +8,28 @@ use_frameworks!
 target :Core do
     link_with 'Core'
     # Foundation
-    pod 'ReactiveCocoa', '3.0-RC.1'
-    pod 'Bond', :git => 'https://github.com/tonyxiao/Bond.git', :branch => 'coredata'
-    pod 'Async', :git => 'https://github.com/duemunk/Async.git'
+    pod 'ReactiveCocoa', '~> 4.0.2-alpha-1'
+    pod 'Bond', '~> 4.0.0-beta3'
+    pod 'Async', :git => 'https://github.com/duemunk/Async.git', :branch => 'feature/Swift_2.0'
     pod 'NSLogger', '~> 1.5', :configuration => ['Debug']
 
     # Data
-    pod 'SugarRecord/CoreData', :git => 'https://github.com/tonyxiao/SugarRecord', :branch => 'develop'
+    pod 'SugarRecord/CoreData', :git => 'https://github.com/ykobets/SugarRecord', :branch => 'swift2.0'
     pod 'Meteor', :git => 'https://github.com/tonyxiao/meteor-ios', :branch => 'dev'
-    pod 'RealmSwift', '~> 0.94'
-    pod 'SwiftyJSON', '~> 2.2'
-    pod 'ObjectMapper', '~> 0.14'
+    pod 'RealmSwift', '~> 0.95'
+    pod 'SwiftyJSON', '~> 2.3'
+    pod 'ObjectMapper', '~> 0.17'
 
     # Networking
-    pod 'Alamofire', '~> 1.3'
+    pod 'Alamofire', '~> 3.0.0-beta.1'
 
     # UI
-    pod 'Cartography', '~> 0.5'
+    pod 'Cartography', '~> 0.6'
     pod 'EDColor', '~> 1.0'
     pod 'JBKenBurnsView', '~> 1.0'
 
     # ViewModels
-    pod 'DateTools', '~> 1.6'
+    pod 'DateTools', '~> 1.7'
     pod 'FormatterKit/TimeIntervalFormatter', '~> 1.8'
 
     # Utils
@@ -38,9 +38,9 @@ target :Core do
 
     target :CoreTests do
         link_with 'CoreTests'
-        pod 'Quick', '~> 0.3.0' # TODO: Upgrade after swift 2.0
-        pod 'Nimble', '~> 0.4.0' # TODO: Upgrade after swift 2.0
-        pod 'OHHTTPStubs', '~> 4.0.2'
+        pod 'Quick', '~> 0.6'
+        pod 'Nimble', '~> 2.0.0-rc.3'
+        pod 'OHHTTPStubs', '~> 4.3'
     end
 
     target :Taylr do
@@ -53,19 +53,15 @@ target :Core do
 
         pod 'DZNEmptyDataSet', :git => 'https://github.com/dzenbot/DZNEmptyDataSet.git' # Fork is needed to work around the crash
         pod 'AMPopTip', '~> 0.9'
-        pod 'AMScrollingNavbar', '~> 1.5'
         pod 'JSBadgeView', '~> 1.4'
         pod 'JVFloatLabeledTextField', '~> 1.1'
         pod 'TPKeyboardAvoiding', '~> 1.2'
         pod 'CHTCollectionViewWaterfallLayout', '~> 0.9'
 
-        pod 'INTULocationManager', '~> 3.0'
-
         # 3rd Party Service SDKs
-        pod 'FBSDKLoginKit', '~> 4.3'
+        pod 'FBSDKLoginKit', '~> 4.6'
         pod 'AnalyticsSwift', '~> 0.1.0'
-        pod 'Heap', '~> 2.1'
-        pod 'Appsee', '~> 2.1'
+        pod 'Heap', '~> 2.2'
         pod 'Ouralabs', '~> 2.3'
 
         # Debug only
