@@ -27,18 +27,18 @@ public class Settings {
     public let nextMatchDate: PropertyOf<NSDate?>
     public let matchInterval: PropertyOf<Int?>
     
-    public init(meteor: MeteorService) {
-        c = meteor.collection("settings")
-        subscription = meteor.subscribe("settings")
-        softMinBuild = c.propertyOf("softMinBuild") |> map { $0.typed(Int) }
-        hardMinBuild = c.propertyOf("hardMinBuild") |> map { $0.typed(Int) }
-        upgradeURL = c.propertyOf("upgradeUrl") |> map { $0.typed(String).flatMap { NSURL($0) } }
-        debugLoginMode = c.propertyOf("debugLoginMode") |> map { $0.typed(Bool) }
+    init(collection: MeteorCollection, subscription: MeteorSubscription) {
+        self.c = collection
+        self.subscription = subscription
+        softMinBuild = c.propertyOf("softMinBuild").map { $0.typed(Int) }
+        hardMinBuild = c.propertyOf("hardMinBuild").map { $0.typed(Int) }
+        upgradeURL = c.propertyOf("upgradeUrl").map { $0.typed(String).flatMap { NSURL($0) } }
+        debugLoginMode = c.propertyOf("debugLoginMode").map { $0.typed(Bool) }
         accountStatus = c.propertyOf("accountStatus")
-            |> map { $0.typed(String).flatMap { AccountStatus(rawValue: $0) }
+            .map { $0.typed(String).flatMap { AccountStatus(rawValue: $0) }
         }
-        disableConfirmation = c.propertyOf("disableConfirmation") |> map { $0.typed(Bool) }
-        nextMatchDate = c.propertyOf("nextMatchDate") |> map { $0.typed(NSDate) }
-        matchInterval = c.propertyOf("matchInterval") |> map { $0.typed(Int) }
+        disableConfirmation = c.propertyOf("disableConfirmation").map { $0.typed(Bool) }
+        nextMatchDate = c.propertyOf("nextMatchDate").map { $0.typed(NSDate) }
+        matchInterval = c.propertyOf("matchInterval").map { $0.typed(Int) }
     }
 }
