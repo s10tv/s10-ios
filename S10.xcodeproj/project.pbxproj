@@ -80,6 +80,8 @@
 		EA81ADBF1BB6679400F94006 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670891B31F9AD0025D7CF /* Logging.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81ADC21BB6688400F94006 /* Core.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF6701C1B31E6550025D7CF /* Core.m */; settings = {ASSET_TAGS = (); }; };
 		EA81ADC41BB66A1400F94006 /* NotificationCenterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6705B1B31F9450025D7CF /* NotificationCenterExtensions.swift */; settings = {ASSET_TAGS = (); }; };
+		EA81ADC81BB66C5300F94006 /* SignalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA359AE61B700B8A00AF0A65 /* SignalExtensions.swift */; settings = {ASSET_TAGS = (); }; };
+		EA81ADCC1BB66DDB00F94006 /* GenericExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBB71B3932B500701F08 /* GenericExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		EA89C0861B6AA2060007C6CB /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0851B6AA2060007C6CB /* CreateProfileViewController.swift */; };
 		EA89C0881B6AC0410007C6CB /* ConnectServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0871B6AC0410007C6CB /* ConnectServicesViewController.swift */; };
 		EA925C741AD99ED8008E9F41 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA925C731AD99ED8008E9F41 /* R.swift */; };
@@ -1587,9 +1589,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA81ADBD1BB65FB800F94006 /* FoundationExtension.swift in Sources */,
+				EA81ADC81BB66C5300F94006 /* SignalExtensions.swift in Sources */,
 				EA81ADC41BB66A1400F94006 /* NotificationCenterExtensions.swift in Sources */,
 				EA81ADBF1BB6679400F94006 /* Logging.swift in Sources */,
 				EA81ADC21BB6688400F94006 /* Core.m in Sources */,
+				EA81ADCC1BB66DDB00F94006 /* GenericExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

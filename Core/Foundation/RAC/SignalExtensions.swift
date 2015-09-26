@@ -13,5 +13,5 @@ import ReactiveCocoa
 public enum NoValue {}
 
 public func ignoreValues<T, E>(signal: Signal<T, E>) -> Signal<NoValue, E> {
-    return signal |> filter { _ in false } |> map { $0 as! NoValue }
+    return signal.filter { _ in false }.map { $0 as! NoValue }
 }

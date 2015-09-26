@@ -15,7 +15,7 @@ import Foundation
 
 extension Array {
     
-    func each(@noescape block: T -> ()) {
+    func each(@noescape block: Element -> ()) {
         for element in self {
             block(element)
         }
@@ -29,8 +29,7 @@ extension Array {
     mutating func remove <U: Equatable> (element: U) {
         let anotherSelf = self
         removeAll(keepCapacity: true)
-        
-        for (index, current) in enumerate(anotherSelf) {
+        for (_, current) in anotherSelf.enumerate() {
             if current as! U != element {
                 self.append(current)
             }
@@ -38,19 +37,19 @@ extension Array {
     }
     
     // Return first element matching block
-    func match(criteria: T -> Bool) -> T? {
+    func match(criteria: Element -> Bool) -> Element? {
         return filter(criteria).first
     }
     
-    func randomElement() -> T? {
+    func randomElement() -> Element? {
         if count == 0 { return nil }
         let index = Int(arc4random_uniform(UInt32(count)))
         return self[index]
     }
     
-    func minElement(scorer: ((T) -> Float)) -> T? {
+    func minElement(scorer: ((Element) -> Float)) -> Element? {
         var minScore: Float?
-        var minElement: T?
+        var minElement: Element?
         for element in self {
             let score = scorer(element)
             if minScore == nil || score < minScore! {
@@ -61,7 +60,7 @@ extension Array {
         return minElement
     }
     
-    func elementAtIndex(index: Int?) -> T? {
+    func elementAtIndex(index: Int?) -> Element? {
         if let i = index {
             return (i >= 0 && i < count) ? self[i] : nil
         }
@@ -78,17 +77,17 @@ extension Dictionary {
     }
     
     func map<OutKey: Hashable, OutValue>(transform: Element -> (OutKey, OutValue)) -> [OutKey: OutValue] {
-        return Dictionary<OutKey, OutValue>(Swift.map(self, transform))
+        return Dictionary<OutKey, OutValue>(self.map(transform))
     }
     
     func filter(includeElement: Element -> Bool) -> [Key: Value] {
-        return Dictionary(Swift.filter(self, includeElement))
+        return Dictionary(self.filter(includeElement))
     }
 }
 
-extension Zip2 {
+extension Zip2Sequence {
     
-    func map<U>(transform: (S0.Generator.Element, S1.Generator.Element) -> U) -> [U] {
+    func map<U>(transform: (Sequence1.Generator.Element, Sequence2.Generator.Element) -> U) -> [U] {
         var results = [U]()
         for (e0, e1) in self {
             results.append(transform(e0, e1))
@@ -96,7 +95,7 @@ extension Zip2 {
         return results
     }
     
-    func each(block: (S0.Generator.Element, S1.Generator.Element) -> ()) {
+    func each(block: (Sequence1.Generator.Element, Sequence2.Generator.Element) -> ()) {
         for (e0, e1) in self {
             block(e0, e1)
         }
