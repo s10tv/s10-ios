@@ -97,6 +97,10 @@ class ConversationViewController : BaseViewController {
         } else {
             playerEmptyView.hidden = true
         }
+        
+        listenForNotification(UIApplicationDidEnterBackgroundNotification).subscribeNext { [weak self] _ in
+            self?.vm.expireOpenedMessages()
+        }
     }
     
     override func viewDidLayoutSubviews() {
