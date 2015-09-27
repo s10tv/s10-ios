@@ -25,7 +25,7 @@ extension XCTestExpectation {
 }
 
 extension XCTestCase {
-    func expectFulfill(_ description: String = "expectation", @noescape block: (()-> ()) ->  ()) {
+    func expectFulfill(description: String = "expectation", @noescape block: (()-> ()) ->  ()) {
         let expectation = expectationWithDescription(description)
         block { expectation.fulfill() }
     }
@@ -44,7 +44,7 @@ public class AsyncTestCase : XCTestCase {
         disposable.dispose()
     }
     
-    public func expectComplete<T, E>(_ description: String = "future completed", @noescape futureProducer: () -> Future<T, E>) {
+    public func expectComplete<T, E>(description: String = "future completed", @noescape futureProducer: () -> Future<T, E>) {
         disposable.addDisposable(expectationWithDescription(description).fulfill(futureProducer))
     }
 }
@@ -58,6 +58,10 @@ public func fail(error: NSError, file: String = __FILE__, line: UInt = __LINE__)
 public func existOnDisk() -> MatcherFunc<NSURL> {
     return MatcherFunc { expression, failureMessage in
         failureMessage.postfixMessage = "exist on disk"
-        return expression.evaluate()?.checkResourceIsReachableAndReturnError(nil) ?? false
+        do {
+            return try expression.evaluate()?.checkResourceIsReachableAndReturnError(nil) ?? false
+        } catch {
+            return false
+        }
     }
 }

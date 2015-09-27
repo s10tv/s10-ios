@@ -24,6 +24,7 @@ class DiscoverIntegrationTest : IntegrationTestEnvironment {
         let expectation = expectationWithDescription("Can discover users")
         self.meteor.loginWithDigits(userId: "0", authToken: "0", authTokenSecret: "0",
             phoneNumber: "0").subscribeErrorOrCompleted { error in
+                
                 expect(error).to(beNil())
                 self.vm = DiscoverViewModel(meteor: self.meteor, taskService: self.taskService)
                 self.vm.subscription.ready.onComplete { result in
