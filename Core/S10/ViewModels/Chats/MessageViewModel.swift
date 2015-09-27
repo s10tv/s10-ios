@@ -27,7 +27,7 @@ public struct MessageViewModel {
     }
 }
 
-extension MessageViewModel : Printable {
+extension MessageViewModel : CustomStringConvertible {
     public var description: String {
         return "MessageViewModel[\(message.documentID!)]"
     }

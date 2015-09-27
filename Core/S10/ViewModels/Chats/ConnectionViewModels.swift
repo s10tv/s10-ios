@@ -42,13 +42,13 @@ public struct ContactConnectionViewModel : ConnectionViewModel {
         badgeText = PropertyOf("", combineLatest(
             busy.producer,
             connection.dyn(.unreadCount).force(Int).producer
-        ) |> map { busy, unreadCount in
+        ).map { busy, unreadCount in
             (busy || unreadCount == 0) ? "" : "\(unreadCount)"
         })
         hideRightArrow = PropertyOf(true, combineLatest(
             busy.producer,
             badgeText.producer
-        ) |> map {
+        ).map {
             $0 || $1.length > 0
         })
     }
@@ -63,7 +63,7 @@ public struct NewConnectionViewModel : ConnectionViewModel {
     public let tagline: PropertyOf<String>
     public let busy: PropertyOf<Bool>
     public let hidePlayIcon: PropertyOf<Bool>
-    public let profileIcons: DynamicArray<Image>
+    public let profileIcons: ArrayProperty<Image>
 
     init(connection: Connection) {
         self.connection = connection
@@ -71,12 +71,12 @@ public struct NewConnectionViewModel : ConnectionViewModel {
         avatar = user.pAvatar()
         displayName = user.pDisplayName()
         tagline = PropertyOf("") // TODO: Make me something else
-        profileIcons = DynamicArray(user.connectedProfiles.map { $0.icon })
+        profileIcons = ArrayProperty(user.connectedProfiles.map { $0.icon })
         busy = connection.otherUser.pConversationBusy()
         hidePlayIcon = PropertyOf(true, combineLatest(
             busy.producer,
             connection.dyn(.unreadCount).force(Int).producer
-        ) |> map {
+        ).map {
             $0 || $1 == 0
         })
         displayTime = relativeTime(connection.updatedAt)
