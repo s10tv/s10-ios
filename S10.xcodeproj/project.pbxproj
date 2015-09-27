@@ -127,6 +127,8 @@
 		EA81AE1C1BB69A6300F94006 /* CreateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC725BB1B66D76D004113FD /* CreateProfileViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE1D1BB69A8D00F94006 /* ConnectServicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC725BD1B66DD92004113FD /* ConnectServicesViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE1E1BB69A9600F94006 /* VerifyCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9608B861BAA9F3F0067E1EF /* VerifyCodeViewModel.swift */; settings = {ASSET_TAGS = (); }; };
+		EA81AE311BB7732800F94006 /* ArrayProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA81AE301BB7732800F94006 /* ArrayProperty.swift */; settings = {ASSET_TAGS = (); }; };
+		EA81AE331BB7944D00F94006 /* FetchedResultsArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA81AE321BB7944D00F94006 /* FetchedResultsArray.swift */; settings = {ASSET_TAGS = (); }; };
 		EA89C0861B6AA2060007C6CB /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0851B6AA2060007C6CB /* CreateProfileViewController.swift */; };
 		EA89C0881B6AC0410007C6CB /* ConnectServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0871B6AC0410007C6CB /* ConnectServicesViewController.swift */; };
 		EA925C741AD99ED8008E9F41 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA925C731AD99ED8008E9F41 /* R.swift */; };
@@ -357,6 +359,8 @@
 		EA7FB0931B5EF9D50052B394 /* Cabin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Regular.ttf"; sourceTree = "<group>"; };
 		EA81ADCD1BB6731200F94006 /* SwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftExtensions.swift; sourceTree = "<group>"; };
 		EA81ADD01BB6735800F94006 /* ReactiveBridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveBridging.swift; sourceTree = "<group>"; };
+		EA81AE301BB7732800F94006 /* ArrayProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayProperty.swift; sourceTree = "<group>"; };
+		EA81AE321BB7944D00F94006 /* FetchedResultsArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsArray.swift; sourceTree = "<group>"; };
 		EA82CF961B504FC500A12D94 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		EA89C0851B6AA2060007C6CB /* CreateProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
 		EA89C0871B6AC0410007C6CB /* ConnectServicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectServicesViewController.swift; sourceTree = "<group>"; };
@@ -801,6 +805,8 @@
 				EA6E40611B6D33F500FF5126 /* ActionExtensions.swift */,
 				EA6E405F1B6D336F00FF5126 /* PropertyExtensions.swift */,
 				EA6E405B1B6D334D00FF5126 /* DynamicProperties.swift */,
+				EA81AE301BB7732800F94006 /* ArrayProperty.swift */,
+				EA81AE321BB7944D00F94006 /* FetchedResultsArray.swift */,
 				EA6E405C1B6D334D00FF5126 /* Future.swift */,
 				EA81ADD01BB6735800F94006 /* ReactiveBridging.swift */,
 			);
@@ -1607,6 +1613,7 @@
 				EA81AE0E1BB6944100F94006 /* VideoCache.swift in Sources */,
 				EA81ADEA1BB688C700F94006 /* ScrollTransition.swift in Sources */,
 				EA81ADEB1BB6891F00F94006 /* RealmExtensions.swift in Sources */,
+				EA81AE331BB7944D00F94006 /* FetchedResultsArray.swift in Sources */,
 				EA81ADBD1BB65FB800F94006 /* FoundationExtension.swift in Sources */,
 				EA81AE091BB6912D00F94006 /* VideoDownloadTask.swift in Sources */,
 				EA81AE1C1BB69A6300F94006 /* CreateProfileViewModel.swift in Sources */,
@@ -1648,6 +1655,7 @@
 				EA81ADD31BB673B100F94006 /* Future.swift in Sources */,
 				EA81ADE71BB687F700F94006 /* GeometryExtensions.swift in Sources */,
 				EA81AE051BB68E6700F94006 /* Video.swift in Sources */,
+				EA81AE311BB7732800F94006 /* ArrayProperty.swift in Sources */,
 				EA81AE081BB6912D00F94006 /* VideoUploadTask.swift in Sources */,
 				EA81ADE21BB686EF00F94006 /* PanInteractor.swift in Sources */,
 				EA81ADD61BB67A6800F94006 /* PropertyExtensions.swift in Sources */,
