@@ -19,6 +19,12 @@
 		EA42D6351BB7B37900B07526 /* MeteorServiceTestingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1047321B4E756200B1A76A /* MeteorServiceTestingExtension.swift */; settings = {ASSET_TAGS = (); }; };
 		EA42D6361BB7B38100B07526 /* IntegrationTestEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9ABA2CF1B6412CF0098B7E4 /* IntegrationTestEnvironment.swift */; settings = {ASSET_TAGS = (); }; };
 		EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; settings = {ASSET_TAGS = (); }; };
+		EA42D64B1BB7BE3600B07526 /* TaylrEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921C1ACF342C0014BA25 /* TaylrEnvironment.swift */; settings = {ASSET_TAGS = (); }; };
+		EA42D64C1BB7BE4700B07526 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36D2AA1AE71366006FD5D8 /* Errors.swift */; settings = {ASSET_TAGS = (); }; };
+		EA42D64D1BB7BE5600B07526 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA925C731AD99ED8008E9F41 /* R.swift */; settings = {ASSET_TAGS = (); }; };
+		EA42D64E1BB7BE5A00B07526 /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3691AA26597003383BE /* StyleKit.swift */; settings = {ASSET_TAGS = (); }; };
+		EA42D64F1BB7BE5D00B07526 /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3681AA26597003383BE /* SBConstants.swift */; settings = {ASSET_TAGS = (); }; };
+		EA42D6501BB7BE6100B07526 /* ResourceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBAC1B3930B000701F08 /* ResourceExtension.swift */; settings = {ASSET_TAGS = (); }; };
 		EA5022101B54AC4B00BC92D2 /* TestNSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = EA50220F1B54AC4B00BC92D2 /* TestNSObject.m */; };
 		EA588DB81B5F1437000962B8 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA588DB71B5F1437000962B8 /* TestViewController.swift */; };
 		EA5B740B1B30F7BB008E5CBC /* TestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5B740A1B30F7BB008E5CBC /* TestAppDelegate.swift */; };
@@ -349,7 +355,6 @@
 		EAC725BB1B66D76D004113FD /* CreateProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileViewModel.swift; sourceTree = "<group>"; };
 		EAC725BD1B66DD92004113FD /* ConnectServicesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectServicesViewModel.swift; sourceTree = "<group>"; };
 		EACCA3A11B37B02A00015C88 /* ProfileCoverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCoverCell.swift; sourceTree = "<group>"; };
-		EACEFB831B4672A800901E85 /* AppRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppRouter.swift; sourceTree = "<group>"; };
 		EAD1BB241B60347600D250C5 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		EAD1BB281B604A3D00D250C5 /* InviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteViewController.swift; sourceTree = "<group>"; };
 		EAD7C6811BA7960600FD8A27 /* _Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Candidate.swift; sourceTree = "<group>"; };
@@ -826,7 +831,6 @@
 				EA6650E91AA00A9C001BA40C /* Services */,
 				EAF4D7441A79AA5E00D35330 /* UserInterface */,
 				EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */,
-				EACEFB831B4672A800901E85 /* AppRouter.swift */,
 				EAE1E07C1AE3788300F03F13 /* Globals.swift */,
 				EA9F35461A74CC6900E0C65D /* Main.storyboard */,
 				EA7004641ACF912A00D0E467 /* Onboarding.storyboard */,
@@ -1633,8 +1637,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA42D64E1BB7BE5A00B07526 /* StyleKit.swift in Sources */,
+				EA42D64C1BB7BE4700B07526 /* Errors.swift in Sources */,
 				EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */,
 				EAE067211B71850F00A2FF76 /* MuteChecker.m in Sources */,
+				EA42D64F1BB7BE5D00B07526 /* SBConstants.swift in Sources */,
+				EA42D64D1BB7BE5600B07526 /* R.swift in Sources */,
+				EA42D64B1BB7BE3600B07526 /* TaylrEnvironment.swift in Sources */,
+				EA42D6501BB7BE6100B07526 /* ResourceExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
