@@ -31,9 +31,9 @@ class TaylrProfileInfoCell : UITableViewCell, BindableCell {
     @IBOutlet weak var aboutLabel: UILabel!
     
     func bind(vm: TaylrProfileInfoViewModel) {
-        vm.about ->> aboutLabel
-        vm.major ->> majorLabel
-        vm.hometown ->> hometownLabel
+        vm.about ->> aboutLabel.bnd_text
+        vm.major ->> majorLabel.bnd_text
+        vm.hometown ->> hometownLabel.bnd_text
     }
     
     static func reuseId() -> String {
@@ -59,7 +59,12 @@ class ConnectedProfileInfoCell : UITableViewCell, BindableCell {
         displayIdLabel.text = vm.displayId
         authenticatedIconView.image = vm.authenticatedIcon
         authenticatedIconView.tintColor = vm.themeColor
-        vm.attributes.map(collectionView.factory(ProfileAttributeCell)) ->> collectionView
+        collectionView.bindTo(vm.attributes, cell: ProfileAttributeCell.self)
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        collectionView.unbind()
     }
     
     @IBAction func didTapOpen(sender: AnyObject) {

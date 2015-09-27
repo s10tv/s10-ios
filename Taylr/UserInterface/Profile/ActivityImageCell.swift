@@ -33,16 +33,16 @@ class ActivityImageCell : UITableViewCell, BindableCell {
         serviceNameLabel.textColor = vm.integrationColor
         userImageView.bindImage(vm.avatar)
         contentImageView.bindImage(vm.image)
-        vm.displayTime ->> timestampLabel
+        // TODO: Figure out how to unbind then use binding
+        timestampLabel.text = vm.displayTime.value
+//        vm.displayTime ->> timestampLabel.bnd_text
 //        imageHeightConstraint.constant = CGFloat(vm.image.height ?? 0)
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        timestampLabel.designatedBond.unbindAll()
-        [userImageView, contentImageView].each {
-            $0.bindImage(nil)
-        }
+        userImageView.unbindImage()
+        contentImageView.unbindImage()
     }
         
     static func reuseId() -> String {

@@ -59,10 +59,10 @@ class ProfileCoverCell : UITableViewCell, BindableCell {
     
     func bind(vm: ProfileCoverViewModel) {
         self.vm = vm
-        vm.avatar ->> avatarView.imageBond
-        vm.cover ->> coverImageView.imageBond
-        vm.displayName ->> nameLabel
-        vm.selectors.map(collectionView.factory(ProfileSelectorCell)) ->> collectionView
+        vm.avatar ->> avatarView.rac_image
+        vm.cover ->> coverImageView.rac_image
+        vm.displayName ->> nameLabel.bnd_text
+        collectionView.bindTo(vm.selectors, cell: ProfileSelectorCell.self)
         // Cell is not available for immediate selection, therefore we'll wait for it to populate first
         Async.main {
             self.collectionView.selectItemAtIndexPath(NSIndexPath(forItem: 0, inSection: 0),
@@ -81,8 +81,8 @@ class ProfileCoverCell : UITableViewCell, BindableCell {
         avatarView.makeCircular()
         coverImageView.clipsToBounds = true
         // TODO: Use a better avatar placeholder
-        avatarView.dynPlaceholderImage = avatarView.image
-        coverImageView.dynPlaceholderImage = coverImageView.image
+        avatarView.placeholderImage = avatarView.image
+        coverImageView.placeholderImage = coverImageView.image
         collectionView.delegate = self
     }
     

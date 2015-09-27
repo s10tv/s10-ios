@@ -35,7 +35,9 @@ class ActivityTextCell : UITableViewCell, BindableCell {
         integrationNameLabel.text = vm.integrationName
         integrationNameLabel.textColor = vm.integrationColor
         avatarView.bindImage(vm.avatar)
-        vm.displayTime ->> timestampLabel
+        // MAJOR TODO: Figure out how to unbind then bind
+        timestampLabel.text = vm.displayTime.value
+//        vm.displayTime ->> timestampLabel.bnd_text
         captionLabel.text = vm.caption
         if vm.caption != nil {
             captionToTextSpacing.constant = 24
@@ -54,8 +56,7 @@ class ActivityTextCell : UITableViewCell, BindableCell {
  
     override func prepareForReuse() {
         super.prepareForReuse()
-        timestampLabel.designatedBond.unbindAll()
-        avatarView.bindImage(nil)
+        avatarView.unbindImage()
     }
     
     static func reuseId() -> String {

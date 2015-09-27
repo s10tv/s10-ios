@@ -183,6 +183,11 @@
 		EAA5762C1BB85B6200661A4F /* ConversationTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB1B9911B6B34630010FBAB /* ConversationTutorialViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA5762D1BB85B7200661A4F /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594131B2DE5C300E91337 /* ConversationViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA5762E1BB85C3100661A4F /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F6C1B2B32E500DE3936 /* ChatsViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA5762F1BB85D2E00661A4F /* ProfileCoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EACCA3A11B37B02A00015C88 /* ProfileCoverCell.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA576301BB85F7400661A4F /* ProfileInfoCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC725B71B65BB50004113FD /* ProfileInfoCells.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA576311BB85FCD00661A4F /* ActivityImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36B1D11B3F23ED002ADD91 /* ActivityImageCell.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA576321BB8601600661A4F /* ActivityTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36B1D31B3F23F4002ADD91 /* ActivityTextCell.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA576331BB8604900661A4F /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3965221B55C47200F5B0B3 /* EditProfileViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EABA05461B474FED00154C75 /* test-avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EABA05451B474FED00154C75 /* test-avatar.jpg */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
 		EAE067201B71850F00A2FF76 /* MuteChecker.caf in Resources */ = {isa = PBXBuildFile; fileRef = EAE0671D1B71850F00A2FF76 /* MuteChecker.caf */; };
@@ -1696,7 +1701,9 @@
 				EA42D65E1BB7C67900B07526 /* BaseViews.swift in Sources */,
 				EAA576041BB7DCC100661A4F /* PlayerViewController.swift in Sources */,
 				EAA576191BB7E9FB00661A4F /* ConnectServicesViewController.swift in Sources */,
+				EAA576301BB85F7400661A4F /* ProfileInfoCells.swift in Sources */,
 				EAE067211B71850F00A2FF76 /* MuteChecker.m in Sources */,
+				EAA576321BB8601600661A4F /* ActivityTextCell.swift in Sources */,
 				EA42D64F1BB7BE5D00B07526 /* SBConstants.swift in Sources */,
 				EAA576011BB7DC5B00661A4F /* DurationTimer.swift in Sources */,
 				EAA576121BB7E3BB00661A4F /* IntegrationWebViewController.swift in Sources */,
@@ -1713,6 +1720,7 @@
 				EAA5760C1BB7E20800661A4F /* Appearance.swift in Sources */,
 				EAA575F71BB7CE3000661A4F /* PlayerViewModel.swift in Sources */,
 				EA42D64D1BB7BE5600B07526 /* R.swift in Sources */,
+				EAA576311BB85FCD00661A4F /* ActivityImageCell.swift in Sources */,
 				EA42D6561BB7C3B400B07526 /* Globals.swift in Sources */,
 				EAA576181BB7E6D200661A4F /* CreateProfileViewController.swift in Sources */,
 				EA42D6551BB7C35100B07526 /* AccountService.swift in Sources */,
@@ -1729,6 +1737,7 @@
 				EA42D6621BB7CD0A00B07526 /* AVKit.swift in Sources */,
 				EAA576251BB8584D00661A4F /* HistoryViewController.swift in Sources */,
 				EAA576271BB8591F00661A4F /* InviteViewController.swift in Sources */,
+				EAA5762F1BB85D2E00661A4F /* ProfileCoverCell.swift in Sources */,
 				EAA576071BB7DF9600661A4F /* ProducerViewController.swift in Sources */,
 				EAA576001BB7DBF800661A4F /* VolumeView.swift in Sources */,
 				EA42D64B1BB7BE3600B07526 /* TaylrEnvironment.swift in Sources */,
@@ -1737,6 +1746,7 @@
 				EAA576031BB7DC6C00661A4F /* TouchDetector.swift in Sources */,
 				EAA5760E1BB7E29900661A4F /* RootTabController.swift in Sources */,
 				EAA5761F1BB8423200661A4F /* DiscoverViewController.swift in Sources */,
+				EAA576331BB8604900661A4F /* EditProfileViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
