@@ -113,14 +113,12 @@
 		EA81AE161BB6989A00F94006 /* AlertableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA35613E1B6DBCDB00F058CC /* AlertableError.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE171BB6993B00F94006 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA35613C1B6D49DA00F058CC /* Errors.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE181BB6995100F94006 /* UserExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2BC1B642A4A0034434E /* UserExtensions.swift */; settings = {ASSET_TAGS = (); }; };
-		EA81AE191BB6996C00F94006 /* DynamicDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC725B91B66036A004113FD /* DynamicDataSource.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE1B1BB699E200F94006 /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA57734F1B6C652800BCF449 /* LoginViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE1C1BB69A6300F94006 /* CreateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC725BB1B66D76D004113FD /* CreateProfileViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE1D1BB69A8D00F94006 /* ConnectServicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC725BD1B66DD92004113FD /* ConnectServicesViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE1E1BB69A9600F94006 /* VerifyCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9608B861BAA9F3F0067E1EF /* VerifyCodeViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE311BB7732800F94006 /* ArrayProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA81AE301BB7732800F94006 /* ArrayProperty.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE331BB7944D00F94006 /* FetchedResultsArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA81AE321BB7944D00F94006 /* FetchedResultsArray.swift */; settings = {ASSET_TAGS = (); }; };
-		EA81AE351BB795F700F94006 /* UITableViewBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA81AE341BB795F700F94006 /* UITableViewBinding.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE361BB79FDF00F94006 /* IntegrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F821B62EF8B0047BDCA /* IntegrationViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE371BB79FEB00F94006 /* IntegrationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F811B62EF8B0047BDCA /* IntegrationListViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE381BB7A08200F94006 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2AE1B63FC990034434E /* EditProfileViewModel.swift */; settings = {ASSET_TAGS = (); }; };
@@ -174,7 +172,6 @@
 		EAA5761B1BB7EA6700661A4F /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BF43121BB0813E007D30A0 /* TutorialPageViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA5761D1BB841A100661A4F /* TodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56FB01B2BCAC700DE3936 /* TodayCell.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA5761F1BB8423200661A4F /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F701B2B32E500DE3936 /* DiscoverViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		EAA576211BB854D700661A4F /* UICollectionViewBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA576201BB854D700661A4F /* UICollectionViewBinding.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA576231BB857A000661A4F /* CandidateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF020431BB1D446006C789F /* CandidateCell.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA576251BB8584D00661A4F /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF020411BB1D3DF006C789F /* HistoryViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA576261BB8587300661A4F /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1BB241B60347600D250C5 /* MeViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -189,6 +186,9 @@
 		EAA576321BB8601600661A4F /* ActivityTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36B1D31B3F23F4002ADD91 /* ActivityTextCell.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA576331BB8604900661A4F /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3965221B55C47200F5B0B3 /* EditProfileViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA576341BB8614A00661A4F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F831B2B32E500DE3936 /* ProfileViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA5763B1BB86A5000661A4F /* BindableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA576381BB86A5000661A4F /* BindableCell.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA5763C1BB86A5000661A4F /* UICollectionViewBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA576391BB86A5000661A4F /* UICollectionViewBinding.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA5763D1BB86A5000661A4F /* UITableViewBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA5763A1BB86A5000661A4F /* UITableViewBinding.swift */; settings = {ASSET_TAGS = (); }; };
 		EABA05461B474FED00154C75 /* test-avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EABA05451B474FED00154C75 /* test-avatar.jpg */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
 		EAE067201B71850F00A2FF76 /* MuteChecker.caf in Resources */ = {isa = PBXBuildFile; fileRef = EAE0671D1B71850F00A2FF76 /* MuteChecker.caf */; };
@@ -364,7 +364,6 @@
 		EA81ADD01BB6735800F94006 /* RAC2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAC2.swift; sourceTree = "<group>"; };
 		EA81AE301BB7732800F94006 /* ArrayProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayProperty.swift; sourceTree = "<group>"; };
 		EA81AE321BB7944D00F94006 /* FetchedResultsArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsArray.swift; sourceTree = "<group>"; };
-		EA81AE341BB795F700F94006 /* UITableViewBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewBinding.swift; sourceTree = "<group>"; };
 		EA82CF961B504FC500A12D94 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		EA89C0851B6AA2060007C6CB /* CreateProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
 		EA89C0871B6AC0410007C6CB /* ConnectServicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectServicesViewController.swift; sourceTree = "<group>"; };
@@ -397,7 +396,9 @@
 		EAA56F851B2B32E500DE3936 /* RootNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNavController.swift; sourceTree = "<group>"; };
 		EAA56F871B2B32E500DE3936 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		EAA56FB01B2BCAC700DE3936 /* TodayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayCell.swift; sourceTree = "<group>"; };
-		EAA576201BB854D700661A4F /* UICollectionViewBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewBinding.swift; sourceTree = "<group>"; };
+		EAA576381BB86A5000661A4F /* BindableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindableCell.swift; sourceTree = "<group>"; };
+		EAA576391BB86A5000661A4F /* UICollectionViewBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewBinding.swift; sourceTree = "<group>"; };
+		EAA5763A1BB86A5000661A4F /* UITableViewBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewBinding.swift; sourceTree = "<group>"; };
 		EAA8D6C21B62F2A400D5A6DC /* IntegrationWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationWebViewController.swift; sourceTree = "<group>"; };
 		EAAD921C1ACF342C0014BA25 /* TaylrEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaylrEnvironment.swift; sourceTree = "<group>"; };
 		EAB1B9911B6B34630010FBAB /* ConversationTutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationTutorialViewController.swift; sourceTree = "<group>"; };
@@ -408,7 +409,6 @@
 		EABD43DA1AA1D29C00B07813 /* Prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
 		EABF2AB41AD04659005880E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EAC725B71B65BB50004113FD /* ProfileInfoCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInfoCells.swift; sourceTree = "<group>"; };
-		EAC725B91B66036A004113FD /* DynamicDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicDataSource.swift; sourceTree = "<group>"; };
 		EAC725BB1B66D76D004113FD /* CreateProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileViewModel.swift; sourceTree = "<group>"; };
 		EAC725BD1B66DD92004113FD /* ConnectServicesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectServicesViewModel.swift; sourceTree = "<group>"; };
 		EACCA3A11B37B02A00015C88 /* ProfileCoverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCoverCell.swift; sourceTree = "<group>"; };
@@ -681,7 +681,6 @@
 			children = (
 				EA2DC2BB1B642A4A0034434E /* Formatters.swift */,
 				EA2DC2BC1B642A4A0034434E /* UserExtensions.swift */,
-				EAC725B91B66036A004113FD /* DynamicDataSource.swift */,
 				EA35613C1B6D49DA00F058CC /* Errors.swift */,
 				EA35613E1B6DBCDB00F058CC /* AlertableError.swift */,
 			);
@@ -996,6 +995,16 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
+		EAA576371BB86A5000661A4F /* Bindings */ = {
+			isa = PBXGroup;
+			children = (
+				EAA576381BB86A5000661A4F /* BindableCell.swift */,
+				EAA576391BB86A5000661A4F /* UICollectionViewBinding.swift */,
+				EAA5763A1BB86A5000661A4F /* UITableViewBinding.swift */,
+			);
+			path = Bindings;
+			sourceTree = "<group>";
+		};
 		EABD43D71AA1D27400B07813 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1128,12 +1137,11 @@
 		EAF6706F1B31F9450025D7CF /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				EAA576371BB86A5000661A4F /* Bindings */,
 				EA47570B1B392C19002071D7 /* Transitions */,
 				EAF670701B31F9450025D7CF /* AnimationExtensions.swift */,
 				EAF670711B31F9450025D7CF /* GeometryExtensions.swift */,
 				EAF670721B31F9450025D7CF /* UIKitExtension.swift */,
-				EA81AE341BB795F700F94006 /* UITableViewBinding.swift */,
-				EAA576201BB854D700661A4F /* UICollectionViewBinding.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1604,7 +1612,6 @@
 				EA81AE1C1BB69A6300F94006 /* CreateProfileViewModel.swift in Sources */,
 				EA81ADDE1BB6852600F94006 /* Environment.swift in Sources */,
 				EA81ADED1BB689FC00F94006 /* MeteorSubscription.swift in Sources */,
-				EA81AE191BB6996C00F94006 /* DynamicDataSource.swift in Sources */,
 				EA81AE391BB7A0B900F94006 /* InviteViewModel.swift in Sources */,
 				EA81AE161BB6989A00F94006 /* AlertableError.swift in Sources */,
 				EA81ADFB1BB68E2100F94006 /* _Message.swift in Sources */,
@@ -1618,7 +1625,6 @@
 				EA81ADD51BB679D300F94006 /* DynamicProperties.swift in Sources */,
 				EA81AE401BB7ABE300F94006 /* ActivityViewModels.swift in Sources */,
 				EA81AE3E1BB7AB4B00F94006 /* TodayViewModel.swift in Sources */,
-				EAA576211BB854D700661A4F /* UICollectionViewBinding.swift in Sources */,
 				EA81ADE91BB6883A00F94006 /* AnimationExtensions.swift in Sources */,
 				EA81AE1D1BB69A8D00F94006 /* ConnectServicesViewModel.swift in Sources */,
 				EA81AE0A1BB6912D00F94006 /* InviteTask.swift in Sources */,
@@ -1642,16 +1648,17 @@
 				EA81AE041BB68E5B00F94006 /* Image.swift in Sources */,
 				EA81ADDB1BB6839200F94006 /* AzureClient.swift in Sources */,
 				EA81AE3D1BB7AB1100F94006 /* HistoryViewModel.swift in Sources */,
-				EA81AE351BB795F700F94006 /* UITableViewBinding.swift in Sources */,
 				EA81ADEC1BB6893500F94006 /* MeteorExtension.swift in Sources */,
 				EA81ADF81BB68E2100F94006 /* _Activity.swift in Sources */,
 				EA81ADDC1BB6852600F94006 /* DeviceInfo.swift in Sources */,
 				EA81AE111BB696A400F94006 /* VideoUploadOperation.swift in Sources */,
 				EA81AE3A1BB7A0DF00F94006 /* MeViewModel.swift in Sources */,
 				EA81AE3F1BB7AB6C00F94006 /* DiscoverViewModel.swift in Sources */,
+				EAA5763C1BB86A5000661A4F /* UICollectionViewBinding.swift in Sources */,
 				EA81ADD31BB673B100F94006 /* Future.swift in Sources */,
 				EA81ADE71BB687F700F94006 /* GeometryExtensions.swift in Sources */,
 				EA81AE051BB68E6700F94006 /* Video.swift in Sources */,
+				EAA5763B1BB86A5000661A4F /* BindableCell.swift in Sources */,
 				EA81AE311BB7732800F94006 /* ArrayProperty.swift in Sources */,
 				EA81AE081BB6912D00F94006 /* VideoUploadTask.swift in Sources */,
 				EA81ADE21BB686EF00F94006 /* PanInteractor.swift in Sources */,
@@ -1675,6 +1682,7 @@
 				EA81AE031BB68E2100F94006 /* Candidate.swift in Sources */,
 				EA81AE0B1BB6930900F94006 /* Settings.swift in Sources */,
 				EA81ADD41BB6793500F94006 /* ActionExtensions.swift in Sources */,
+				EAA5763D1BB86A5000661A4F /* UITableViewBinding.swift in Sources */,
 				EA81AE411BB7ABFC00F94006 /* ProfileInfoViewModel.swift in Sources */,
 				EA81AE431BB7AEAF00F94006 /* MessageViewModel.swift in Sources */,
 				EA81ADF01BB68A7300F94006 /* MeteorCDStack.swift in Sources */,

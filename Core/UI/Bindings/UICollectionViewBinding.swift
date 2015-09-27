@@ -76,15 +76,6 @@ extension UICollectionView {
         return binding
     }
     
-    public func bindTo<Source: ArrayPropertyType, C: BindableCell where Source.ElementType == C.ViewModel>(source: Source, cell: C.Type) -> CollectionViewBinding<Source, Source.ElementType> {
-        let reuseId = cell.reuseId()
-        return bindTo(source) { collectionView, vm, row in
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: NSIndexPath(forRow: row, inSection: 0))
-            (cell as! C).bind(vm)
-            return cell
-        }
-    }
-    
     public func unbind() {
         self.binding = nil
         self.reloadData()
