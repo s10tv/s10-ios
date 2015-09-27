@@ -177,6 +177,8 @@
 		EAA576211BB854D700661A4F /* UICollectionViewBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA576201BB854D700661A4F /* UICollectionViewBinding.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA576231BB857A000661A4F /* CandidateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF020431BB1D446006C789F /* CandidateCell.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA576251BB8584D00661A4F /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF020411BB1D3DF006C789F /* HistoryViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA576261BB8587300661A4F /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1BB241B60347600D250C5 /* MeViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA576271BB8591F00661A4F /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1BB281B604A3D00D250C5 /* InviteViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EABA05461B474FED00154C75 /* test-avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EABA05451B474FED00154C75 /* test-avatar.jpg */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
 		EAE067201B71850F00A2FF76 /* MuteChecker.caf in Resources */ = {isa = PBXBuildFile; fileRef = EAE0671D1B71850F00A2FF76 /* MuteChecker.caf */; };
@@ -1700,6 +1702,7 @@
 				EAA576051BB7DED100661A4F /* EditorViewController.swift in Sources */,
 				EA42D6611BB7CC7B00B07526 /* ImagePickerExtensions.swift in Sources */,
 				EAA575F61BB7CD9600661A4F /* AudioController.swift in Sources */,
+				EAA576261BB8587300661A4F /* MeViewController.swift in Sources */,
 				EA42D6601BB7CBAE00B07526 /* PKHUDExtension.swift in Sources */,
 				EAA5760C1BB7E20800661A4F /* Appearance.swift in Sources */,
 				EAA575F71BB7CE3000661A4F /* PlayerViewModel.swift in Sources */,
@@ -1717,6 +1720,7 @@
 				EAA575FA1BB7CFD900661A4F /* Bond+JSBadgeView.swift in Sources */,
 				EA42D6621BB7CD0A00B07526 /* AVKit.swift in Sources */,
 				EAA576251BB8584D00661A4F /* HistoryViewController.swift in Sources */,
+				EAA576271BB8591F00661A4F /* InviteViewController.swift in Sources */,
 				EAA576071BB7DF9600661A4F /* ProducerViewController.swift in Sources */,
 				EAA576001BB7DBF800661A4F /* VolumeView.swift in Sources */,
 				EA42D64B1BB7BE3600B07526 /* TaylrEnvironment.swift in Sources */,

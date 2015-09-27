@@ -7,11 +7,11 @@
 //
 
 import Foundation
-import JVFloatLabeledTextField
 import ReactiveCocoa
 import Bond
-import Core
+import JVFloatLabeledTextField
 import PKHUD
+import Core
 
 class InviteViewController : UIViewController {
     
@@ -23,9 +23,9 @@ class InviteViewController : UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        vm.firstName <->> firstNameField
-        vm.lastName <->> lastNameField
-        vm.emailOrPhone <->> emailOrPhoneField
+        vm.firstName ->>< firstNameField.bnd_text
+        vm.lastName ->>< lastNameField.bnd_text
+        vm.emailOrPhone ->>< emailOrPhoneField.bnd_text
     }
     
     @IBAction func didPressSend(sender: AnyObject) {
@@ -33,9 +33,9 @@ class InviteViewController : UIViewController {
             presentError(error)
         } else {
             Globals.analyticsService.track("Started Invite", properties:[
-                "firstName": vm.firstName.value,
-                "lastName": vm.lastName.value,
-                "emailOrPhone": vm.emailOrPhone.value])
+                "firstName": vm.firstName.value!,
+                "lastName": vm.lastName.value!,
+                "emailOrPhone": vm.emailOrPhone.value!])
             let producer = UIStoryboard(name: "AVKit", bundle: nil).instantiateInitialViewController() as! ProducerViewController
             producer.title = "Invite \(vm.firstName.value)"
             producer.producerDelegate = self
@@ -54,7 +54,7 @@ extension InviteViewController : ProducerDelegate {
         producer.dismissViewController(animated: true)
         wrapFuture(showProgress: true) {
             video.exportWithFirstFrame()
-                |> flatMap { self.vm.sendInvite($0, thumbnail: $1) }
+                .flatMap { self.vm.sendInvite($0, thumbnail: $1) }
         }
     }
 }
