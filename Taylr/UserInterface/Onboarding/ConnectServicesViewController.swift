@@ -32,13 +32,13 @@ class ConnectServicesViewController : UITableViewController {
 
         integrationsVC.view.cornerRadius = 3
         integrationsVC.collectionView!.dyn("contentSize").force(NSValue).producer
-            |> skip(1)
-            |> skipRepeats
-            |> observeOn(QueueScheduler.mainQueueScheduler)
-            |> start(next: { _ in
+            .skip(1)
+            .skipRepeats()
+            .observeOn(QueueScheduler.mainQueueScheduler)
+            .startWithNext { _ in
                 self.tableView.beginUpdates()
                 self.tableView.endUpdates()
-            })
+            }
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -60,7 +60,7 @@ class ConnectServicesViewController : UITableViewController {
     }
 }
 
-extension ConnectServicesViewController : UITableViewDelegate {
+extension ConnectServicesViewController /* : UITableViewDelegate */ {
 
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         // NOTE: Margins are hardcoded here. careful

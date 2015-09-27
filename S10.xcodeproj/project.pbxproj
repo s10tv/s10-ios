@@ -166,6 +166,12 @@
 		EAA576111BB7E3A900661A4F /* IntegrationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F6A1B62CE770047BDCA /* IntegrationCell.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA576121BB7E3BB00661A4F /* IntegrationWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA8D6C21B62F2A400D5A6DC /* IntegrationWebViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA576131BB7E40400661A4F /* IntegrationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F6C1B62CE880047BDCA /* IntegrationsViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA576151BB7E57600661A4F /* TutorialContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BF43101BB07EFC007D30A0 /* TutorialContentViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA576171BB7E5B600661A4F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F7F1B2B32E500DE3936 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA576181BB7E6D200661A4F /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0851B6AA2060007C6CB /* CreateProfileViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA576191BB7E9FB00661A4F /* ConnectServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0871B6AC0410007C6CB /* ConnectServicesViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA5761A1BB7EA2C00661A4F /* VerifyCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9608B841BAA9B040067E1EF /* VerifyCodeViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA5761B1BB7EA6700661A4F /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BF43121BB0813E007D30A0 /* TutorialPageViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EABA05461B474FED00154C75 /* test-avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EABA05451B474FED00154C75 /* test-avatar.jpg */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
 		EAE067201B71850F00A2FF76 /* MuteChecker.caf in Resources */ = {isa = PBXBuildFile; fileRef = EAE0671D1B71850F00A2FF76 /* MuteChecker.caf */; };
@@ -1659,6 +1665,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAA576151BB7E57600661A4F /* TutorialContentViewController.swift in Sources */,
 				EA42D64E1BB7BE5A00B07526 /* StyleKit.swift in Sources */,
 				EAA5760B1BB7E1F700661A4F /* ProfileIconCell.swift in Sources */,
 				EAA575FD1BB7D31500661A4F /* Bond+ReactiveCocoa.swift in Sources */,
@@ -1666,11 +1673,13 @@
 				EAA576111BB7E3A900661A4F /* IntegrationCell.swift in Sources */,
 				EAA576081BB7E04C00661A4F /* BaseViewController.swift in Sources */,
 				EA42D64C1BB7BE4700B07526 /* Errors.swift in Sources */,
+				EAA5761A1BB7EA2C00661A4F /* VerifyCodeViewController.swift in Sources */,
 				EA42D6541BB7C33100B07526 /* UpgradeService.swift in Sources */,
 				EA42D6531BB7C2C500B07526 /* AnalyticsService.swift in Sources */,
 				EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */,
 				EA42D65E1BB7C67900B07526 /* BaseViews.swift in Sources */,
 				EAA576041BB7DCC100661A4F /* PlayerViewController.swift in Sources */,
+				EAA576191BB7E9FB00661A4F /* ConnectServicesViewController.swift in Sources */,
 				EAE067211B71850F00A2FF76 /* MuteChecker.m in Sources */,
 				EA42D64F1BB7BE5D00B07526 /* SBConstants.swift in Sources */,
 				EAA576011BB7DC5B00661A4F /* DurationTimer.swift in Sources */,
@@ -1686,12 +1695,15 @@
 				EAA575F71BB7CE3000661A4F /* PlayerViewModel.swift in Sources */,
 				EA42D64D1BB7BE5600B07526 /* R.swift in Sources */,
 				EA42D6561BB7C3B400B07526 /* Globals.swift in Sources */,
+				EAA576181BB7E6D200661A4F /* CreateProfileViewController.swift in Sources */,
 				EA42D6551BB7C35100B07526 /* AccountService.swift in Sources */,
 				EAA576101BB7E30600661A4F /* RootNavController.swift in Sources */,
 				EA42D65B1BB7C66600B07526 /* MediaExtension.swift in Sources */,
 				EA42D65F1BB7C67900B07526 /* DesignableViews.swift in Sources */,
+				EAA576171BB7E5B600661A4F /* LoginViewController.swift in Sources */,
 				EAA575FC1BB7D0F000661A4F /* Bond+SDWebImage.swift in Sources */,
 				EAA576091BB7E0E700661A4F /* PageViewController.swift in Sources */,
+				EAA5761B1BB7EA6700661A4F /* TutorialPageViewController.swift in Sources */,
 				EAA575FA1BB7CFD900661A4F /* Bond+JSBadgeView.swift in Sources */,
 				EA42D6621BB7CD0A00B07526 /* AVKit.swift in Sources */,
 				EAA576071BB7DF9600661A4F /* ProducerViewController.swift in Sources */,

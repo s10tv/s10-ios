@@ -8,11 +8,16 @@
 
 import UIKit
 import SDWebImage
+import ReactiveCocoa
 import Core
 
 var kPlaceholderImage: UInt8 = 0;
 
 extension UIImageView {
+    public var rac_image: Event<Image?, NoError>.Sink {
+        return Event.sink(next: { [weak self] in self?.bindImage($0) })
+    }
+    
     public var placeholderImage: UIImage? {
         get { return objc_getAssociatedObject(self, &kPlaceholderImage) as? UIImage }
         set { objc_setAssociatedObject(self, &kPlaceholderImage, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }

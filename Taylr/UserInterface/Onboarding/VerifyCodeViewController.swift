@@ -20,8 +20,8 @@ class VerifyCodeViewController : UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        vm.code <->> verificationTokenField
-        vm.statusMessage ->> errorLabel
+        vm.code ->>< verificationTokenField.bnd_text
+        vm.statusMessage ->> errorLabel.bnd_text
     }
 
     override func viewWillAppear(animated: Bool) {

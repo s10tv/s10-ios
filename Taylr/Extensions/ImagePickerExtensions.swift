@@ -11,7 +11,7 @@ import ReactiveCocoa
 import Core
 
 extension UIViewController {
-    func pickSingleImage(maxDimension: CGFloat? = nil, animated: Bool = true) -> Future<UIImage, NoError> {
+    func pickSingleImage(maxDimension maxDimension: CGFloat? = nil, animated: Bool = true) -> Future<UIImage, NoError> {
         let promise = Promise<UIImage, NoError>()
         let picker = UIImagePickerController()
         var gotImage = false

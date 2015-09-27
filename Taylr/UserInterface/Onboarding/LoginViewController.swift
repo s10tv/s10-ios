@@ -33,14 +33,13 @@ class LoginViewController : BaseViewController, TutorialViewController {
 
         self.view.backgroundColor = UIColor.clearColor()
 
-        vm.loginButtonText ->> loginButton.titleBond
-        vm.logoutButtonText ->> logoutButton.titleBond
-        vm.logoutAction <~ logoutButton
-        
+        vm.loginButtonText ->> loginButton.bnd_title
+        vm.logoutButtonText ->> logoutButton.bnd_title
+
         loginButton.addAction(vm.loginAction) { values, errors, executing in
             showProgress <~ executing
-            showErrorAction <~ errors |> map { $0 as AlertableError }
-            segueAction <~ values |> map {
+            showErrorAction <~ errors.map { $0 as AlertableError }
+            segueAction <~ values.map {
                 switch $0 {
                 case .LoggedIn: return .LoginToRegisterEmail
                 case .LoggedInButCodeDisabled: return .LoginToConnectServices
@@ -50,6 +49,7 @@ class LoginViewController : BaseViewController, TutorialViewController {
                 }
             }
         }
+        logoutButton.addAction(vm.logoutAction) { _, _, _ in }
     }
 
     override func viewDidAppear(animated: Bool) {

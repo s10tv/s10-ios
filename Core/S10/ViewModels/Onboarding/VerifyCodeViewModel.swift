@@ -13,7 +13,7 @@ import Async
 public struct VerifyCodeViewModel {
     let _statusMessage: MutableProperty<String>
 
-    public let code: MutableProperty<String>
+    public let code: MutableProperty<String?>
     public let statusMessage: PropertyOf<String>
 
     let meteor: MeteorService
@@ -29,7 +29,7 @@ public struct VerifyCodeViewModel {
     public func verifyCode() -> Future<Void, ErrorAlert> {
         let promise = Promise<(), ErrorAlert>()
 
-        self.meteor.verifyCode(code.value).subscribeNext({ schoolName in
+        self.meteor.verifyCode(code.value ?? "").subscribeNext({ schoolName in
             // TODO: display this as an animation into statusMessage
 
         }, error: { error in
