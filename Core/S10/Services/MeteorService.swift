@@ -21,6 +21,7 @@ public class MeteorService : NSObject {
     public let connectionStatus: PropertyOf<METDDPConnectionStatus>
     public let loggedIn: PropertyOf<Bool>
     public let userId: PropertyOf<String?>
+    public let settings: Settings
     public var offline: Bool { return !meteor.networkReachable }
     let user: PropertyOf<User?>
 
@@ -34,6 +35,10 @@ public class MeteorService : NSObject {
         user = PropertyOf(nil, _user.producer.observeOn(UIScheduler()))
         loggedIn = user.map { $0 != nil }
         userId = user.map { $0?.documentID }
+        let name = "settings"
+        let c = MeteorCollection(meteor.database.collectionWithName(name))
+        let s = MeteorSubscription(meteor: meteor, subscription: meteor.addSubscriptionWithName(name))
+        settings = Settings(collection: c, subscription: s)
         super.init()
         meteor.delegate = self
         SugarRecord.addStack(MeteorCDStack(meteor: meteor))
