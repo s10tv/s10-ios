@@ -129,6 +129,7 @@
 		EA81AE1E1BB69A9600F94006 /* VerifyCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9608B861BAA9F3F0067E1EF /* VerifyCodeViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE311BB7732800F94006 /* ArrayProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA81AE301BB7732800F94006 /* ArrayProperty.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE331BB7944D00F94006 /* FetchedResultsArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA81AE321BB7944D00F94006 /* FetchedResultsArray.swift */; settings = {ASSET_TAGS = (); }; };
+		EA81AE351BB795F700F94006 /* UITableViewBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA81AE341BB795F700F94006 /* UITableViewBinding.swift */; settings = {ASSET_TAGS = (); }; };
 		EA89C0861B6AA2060007C6CB /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0851B6AA2060007C6CB /* CreateProfileViewController.swift */; };
 		EA89C0881B6AC0410007C6CB /* ConnectServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0871B6AC0410007C6CB /* ConnectServicesViewController.swift */; };
 		EA925C741AD99ED8008E9F41 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA925C731AD99ED8008E9F41 /* R.swift */; };
@@ -361,6 +362,7 @@
 		EA81ADD01BB6735800F94006 /* ReactiveBridging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveBridging.swift; sourceTree = "<group>"; };
 		EA81AE301BB7732800F94006 /* ArrayProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayProperty.swift; sourceTree = "<group>"; };
 		EA81AE321BB7944D00F94006 /* FetchedResultsArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsArray.swift; sourceTree = "<group>"; };
+		EA81AE341BB795F700F94006 /* UITableViewBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewBinding.swift; sourceTree = "<group>"; };
 		EA82CF961B504FC500A12D94 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		EA89C0851B6AA2060007C6CB /* CreateProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
 		EA89C0871B6AC0410007C6CB /* ConnectServicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectServicesViewController.swift; sourceTree = "<group>"; };
@@ -1151,6 +1153,7 @@
 				EAF670701B31F9450025D7CF /* AnimationExtensions.swift */,
 				EAF670711B31F9450025D7CF /* GeometryExtensions.swift */,
 				EAF670721B31F9450025D7CF /* UIKitExtension.swift */,
+				EA81AE341BB795F700F94006 /* UITableViewBinding.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1648,6 +1651,7 @@
 				EA81ADF11BB68CDD00F94006 /* SugarRecordExtension.swift in Sources */,
 				EA81AE041BB68E5B00F94006 /* Image.swift in Sources */,
 				EA81ADDB1BB6839200F94006 /* AzureClient.swift in Sources */,
+				EA81AE351BB795F700F94006 /* UITableViewBinding.swift in Sources */,
 				EA81ADEC1BB6893500F94006 /* MeteorExtension.swift in Sources */,
 				EA81ADF81BB68E2100F94006 /* _Activity.swift in Sources */,
 				EA81ADDC1BB6852600F94006 /* DeviceInfo.swift in Sources */,
