@@ -15,7 +15,7 @@ import UIKit
         let nib = UINib(nibName: self.nibName(), bundle: bundle)
         let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
         insertSubview(view, atIndex: 0)
-        view.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view.translatesAutoresizingMaskIntoConstraints = false
         view.makeEdgesEqualTo(self)
     }
     
@@ -31,15 +31,15 @@ import UIKit
     @IBInspectable public var fontName: String = "Cabin-Regular"
     @IBInspectable public var fontKern: CGFloat = 0
     
-    public var rawText : String! {
-        get { return attributedText.string }
-        set { attributedText = attributedText.replace(text: newValue ?? "") }
+    public var rawText : String? {
+        get { return attributedText?.string }
+        set { attributedText = attributedText?.replace(text: newValue ?? "") }
     }
 
     public override func awakeFromNib() {
         super.awakeFromNib()
         let font = UIFont(name: fontName, size: fontSize)!
-        attributedText = attributedText.replace(font: font, kern: fontKern)
+        attributedText = attributedText?.replace(font: font, kern: fontKern)
     }
 }
 

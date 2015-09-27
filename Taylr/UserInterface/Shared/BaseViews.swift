@@ -23,12 +23,12 @@ extension UIView {
     }
     
     @IBInspectable public var borderColor: UIColor? {
-        get { return UIColor(CGColor: layer.borderColor) }
+        get { return layer.borderColor.flatMap { UIColor(CGColor: $0) } }
         set { layer.borderColor = newValue?.CGColor }
     }
     
     @IBInspectable public var shadowColor: UIColor? {
-        get { return UIColor(CGColor: layer.shadowColor) }
+        get { return layer.shadowColor.flatMap { UIColor(CGColor: $0) } }
         set { layer.shadowColor = newValue?.CGColor }
     }
     
@@ -64,7 +64,7 @@ public class BaseView : UIView {
         commonInit()
     }
     
-    public required init(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
@@ -81,7 +81,7 @@ public class TransparentView : BaseView {
             if !passThroughTouchOnSelf {
                 return true
             }
-            for subview in subviews as! [UIView] {
+            for subview in subviews {
                 if !subview.hidden &&
                     subview.pointInside(convertPoint(point, toView: subview), withEvent: event) {
                         return true
@@ -126,7 +126,7 @@ public class OneDScrollView : UIScrollView {
         if let constraint = dimensionConstraint {
             removeConstraint(constraint)
         }
-        if let contentView = subviews.first as? UIView {
+        if let contentView = subviews.first {
             let attribute : NSLayoutAttribute = verticalMode ? .Width : .Height
             dimensionConstraint = NSLayoutConstraint(
                 item: self, attribute: attribute,
@@ -140,7 +140,7 @@ public class OneDScrollView : UIScrollView {
 }
 
 public extension UIScrollView {
-    public func scrollToTop(#animated: Bool) {
+    public func scrollToTop(animated animated: Bool) {
         setContentOffset(CGPointMake(0, -contentInset.top), animated: animated)
     }
 }
