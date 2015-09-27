@@ -37,6 +37,13 @@ public extension PropertyType {
         disposable.otherDisposable = producer.startWithNext(sink).bnd()
         return disposable
     }
+    
+    public func bindTo<B: BindableType where B.Element == Optional<Value>>(bindable: B) -> DisposableType {
+        let disposable = SerialDisposable(otherDisposable: nil)
+        let sink = bindable.sink(disposable)
+        disposable.otherDisposable = producer.startWithNext { sink($0) }.bnd()
+        return disposable
+    }
 }
 
 public extension MutablePropertyType {
@@ -50,6 +57,10 @@ public extension MutablePropertyType {
 }
 
 public func ->> <O: PropertyType, B: BindableType where B.Element == O.Value>(source: O, destination: B) -> DisposableType {
+    return source.bindTo(destination)
+}
+
+public func ->> <O: PropertyType, B: BindableType where B.Element == Optional<O.Value>>(source: O, destination: B) -> DisposableType {
     return source.bindTo(destination)
 }
 

@@ -148,6 +148,14 @@
 		EAA575FA1BB7CFD900661A4F /* Bond+JSBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA24E9221B69E2BF00261873 /* Bond+JSBadgeView.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA575FC1BB7D0F000661A4F /* Bond+SDWebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBA91B3930B000701F08 /* Bond+SDWebImage.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA575FD1BB7D31500661A4F /* Bond+ReactiveCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA42D6321BB7B1C700B07526 /* Bond+ReactiveCocoa.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA576001BB7DBF800661A4F /* VolumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE067101B717A8F00A2FF76 /* VolumeView.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA576011BB7DC5B00661A4F /* DurationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE066F81B71344700A2FF76 /* DurationTimer.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA576021BB7DC6A00661A4F /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE066F91B71344700A2FF76 /* RecordButton.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA576031BB7DC6C00661A4F /* TouchDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE066FC1B71346B00A2FF76 /* TouchDetector.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA576041BB7DCC100661A4F /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA03D3361B5B2C58007A0CF7 /* PlayerViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA576051BB7DED100661A4F /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B261B33391000EED6DD /* EditorViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA576061BB7DF4300661A4F /* RecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B241B33389500EED6DD /* RecorderViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA576071BB7DF9600661A4F /* ProducerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B221B33388700EED6DD /* ProducerViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EABA05461B474FED00154C75 /* test-avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EABA05451B474FED00154C75 /* test-avatar.jpg */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
 		EAE067201B71850F00A2FF76 /* MuteChecker.caf in Resources */ = {isa = PBXBuildFile; fileRef = EAE0671D1B71850F00A2FF76 /* MuteChecker.caf */; };
@@ -1648,9 +1656,13 @@
 				EA42D6531BB7C2C500B07526 /* AnalyticsService.swift in Sources */,
 				EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */,
 				EA42D65E1BB7C67900B07526 /* BaseViews.swift in Sources */,
+				EAA576041BB7DCC100661A4F /* PlayerViewController.swift in Sources */,
 				EAE067211B71850F00A2FF76 /* MuteChecker.m in Sources */,
 				EA42D64F1BB7BE5D00B07526 /* SBConstants.swift in Sources */,
+				EAA576011BB7DC5B00661A4F /* DurationTimer.swift in Sources */,
 				EAA575F51BB7CD8000661A4F /* VolumeViewModel.swift in Sources */,
+				EAA576021BB7DC6A00661A4F /* RecordButton.swift in Sources */,
+				EAA576051BB7DED100661A4F /* EditorViewController.swift in Sources */,
 				EA42D6611BB7CC7B00B07526 /* ImagePickerExtensions.swift in Sources */,
 				EAA575F61BB7CD9600661A4F /* AudioController.swift in Sources */,
 				EA42D6601BB7CBAE00B07526 /* PKHUDExtension.swift in Sources */,
@@ -1663,8 +1675,12 @@
 				EAA575FC1BB7D0F000661A4F /* Bond+SDWebImage.swift in Sources */,
 				EAA575FA1BB7CFD900661A4F /* Bond+JSBadgeView.swift in Sources */,
 				EA42D6621BB7CD0A00B07526 /* AVKit.swift in Sources */,
+				EAA576071BB7DF9600661A4F /* ProducerViewController.swift in Sources */,
+				EAA576001BB7DBF800661A4F /* VolumeView.swift in Sources */,
 				EA42D64B1BB7BE3600B07526 /* TaylrEnvironment.swift in Sources */,
+				EAA576061BB7DF4300661A4F /* RecorderViewController.swift in Sources */,
 				EA42D6501BB7BE6100B07526 /* ResourceExtension.swift in Sources */,
+				EAA576031BB7DC6C00661A4F /* TouchDetector.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

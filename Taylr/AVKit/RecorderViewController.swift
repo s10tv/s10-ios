@@ -81,7 +81,7 @@ class RecorderViewController : UIViewController {
 
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.interactivePopGestureRecognizer.delegate = nil
+        navigationController?.interactivePopGestureRecognizer?.delegate = nil
     }
 
     func restartSession() {
@@ -159,7 +159,7 @@ extension RecorderViewController : SCSwipeableFilterViewDelegate {
 }
 
 extension RecorderViewController : UIGestureRecognizerDelegate {
-    override func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         if gestureRecognizer is UIScreenEdgePanGestureRecognizer {
             return otherGestureRecognizer is UIPanGestureRecognizer
         }
