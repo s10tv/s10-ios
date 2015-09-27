@@ -31,9 +31,9 @@ class TodayCell: UICollectionViewCell, BindableCell {
         reasonLabel.rawText = vm.reason
         hometownLabel.text = vm.hometown
         majorLabel.text = vm.major
-        vm.timeRemaining ->> messageButton.dynTitle
-        
-        vm.profileIcons.map(serviceIconsView.factory(ProfileIconCell)) ->> serviceIconsView
+        vm.timeRemaining ->> messageButton.bnd_title
+// MAJOR TODO: Make this work
+//        vm.profileIcons.map(serviceIconsView.factory(ProfileIconCell)) ->> serviceIconsView
         serviceIconsView.invalidateIntrinsicContentSize()
     }
     
@@ -41,9 +41,10 @@ class TodayCell: UICollectionViewCell, BindableCell {
         super.prepareForReuse()
         avatarView.image = nil
         coverView.image = nil
-        avatarView.unbindDynImageURL()
-        coverView.unbindDynImageURL()
-        serviceIconsView.designatedBond.unbindAll()
+        avatarView.unbindImage()
+        coverView.unbindImage()
+// MAJOR TODO: Make this work
+//        serviceIconsView.designatedBond.unbindAll()
     }
     
     override func awakeFromNib() {

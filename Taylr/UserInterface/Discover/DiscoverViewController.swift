@@ -18,7 +18,6 @@ class DiscoverViewController : BaseViewController {
     @IBOutlet weak var topLayoutConstraint: NSLayoutConstraint!
     
     let vm = DiscoverViewModel(meteor: Meteor, taskService: Globals.taskService, settings: Globals.settings)
-    let emptyDataBond = ArrayBond<TodayViewModel>()
     
     deinit {
         collectionView?.delegate = nil
@@ -29,9 +28,9 @@ class DiscoverViewController : BaseViewController {
         super.viewDidLoad()
         
         collectionView.emptyDataSetSource = self
-        vm.candidate.map(collectionView.factory(TodayCell)) ->> collectionView
-        vm.candidate.bindTo(emptyDataBond)
-        emptyDataBond.didPerformBatchUpdatesListener = { [weak self] in
+        // MAJOR TODO: Make this work
+//        vm.candidate.map(collectionView.factory(TodayCell)) ->> collectionView
+        vm.candidate.changes.observeNext { [weak self] _ in
             self?.collectionView.reloadEmptyDataSet()
         }
     }
@@ -44,11 +43,7 @@ class DiscoverViewController : BaseViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         // TODO: Temporarily request all access to all permissions
-        let settings = UIUserNotificationSettings(forTypes:
-            UIUserNotificationType.Badge |
-                UIUserNotificationType.Alert |
-                UIUserNotificationType.Sound,
-            categories: nil)
+        let settings = UIUserNotificationSettings(forTypes:[.Badge, .Alert, .Sound], categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
         Globals.analyticsService.screen("Discover")
     }
@@ -60,20 +55,20 @@ class DiscoverViewController : BaseViewController {
         
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.sectionInset = UIEdgeInsets(inset: 10)
-        var itemSize = collectionView.bounds.rectByInsetting(dx: 10, dy: 10).size
+        var itemSize = collectionView.bounds.insetBy(dx: 10, dy: 10).size
         itemSize.height -= topLayoutGuide.length + bottomLayoutGuide.length
         layout.itemSize = itemSize
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let profileVC = segue.destinationViewController as? ProfileViewController,
-            let profileVM = vm.profileVM() {
-            profileVC.vm = profileVM
-        }
-        if let vc = segue.destinationViewController as? ConversationViewController,
-            let conversationVM = vm.conversationVM() {
-            vc.vm = conversationVM
-        }
+//        if let profileVC = segue.destinationViewController as? ProfileViewController,
+//            let profileVM = vm.profileVM() {
+//            profileVC.vm = profileVM
+//        }
+//        if let vc = segue.destinationViewController as? ConversationViewController,
+//            let conversationVM = vm.conversationVM() {
+//            vc.vm = conversationVM
+//        }
     }
 }
 
