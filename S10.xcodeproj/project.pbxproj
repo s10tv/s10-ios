@@ -188,6 +188,7 @@
 		EAA576311BB85FCD00661A4F /* ActivityImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36B1D11B3F23ED002ADD91 /* ActivityImageCell.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA576321BB8601600661A4F /* ActivityTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36B1D31B3F23F4002ADD91 /* ActivityTextCell.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA576331BB8604900661A4F /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3965221B55C47200F5B0B3 /* EditProfileViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA576341BB8614A00661A4F /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F831B2B32E500DE3936 /* ProfileViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EABA05461B474FED00154C75 /* test-avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EABA05451B474FED00154C75 /* test-avatar.jpg */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
 		EAE067201B71850F00A2FF76 /* MuteChecker.caf in Resources */ = {isa = PBXBuildFile; fileRef = EAE0671D1B71850F00A2FF76 /* MuteChecker.caf */; };
@@ -1690,6 +1691,7 @@
 				EAA575FD1BB7D31500661A4F /* Bond+ReactiveCocoa.swift in Sources */,
 				EAA5760F1BB7E2E000661A4F /* TransitionManager.swift in Sources */,
 				EAA576111BB7E3A900661A4F /* IntegrationCell.swift in Sources */,
+				EAA576341BB8614A00661A4F /* ProfileViewController.swift in Sources */,
 				EAA576081BB7E04C00661A4F /* BaseViewController.swift in Sources */,
 				EA42D64C1BB7BE4700B07526 /* Errors.swift in Sources */,
 				EAA5761A1BB7EA2C00661A4F /* VerifyCodeViewController.swift in Sources */,
