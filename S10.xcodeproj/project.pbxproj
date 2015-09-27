@@ -15,7 +15,6 @@
 		EA394B0C1B5D9EF4009184EB /* v2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = EA394B081B5D9EF4009184EB /* v2.mp4 */; };
 		EA394B0D1B5D9EF4009184EB /* v3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = EA394B091B5D9EF4009184EB /* v3.mp4 */; };
 		EA394B0E1B5D9EF4009184EB /* v4.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = EA394B0A1B5D9EF4009184EB /* v4.mp4 */; };
-		EA4216521B3E219000613EFA /* DigitsKitResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = EA42164E1B3E219000613EFA /* DigitsKitResources.bundle */; };
 		EA42D6341BB7B2F300B07526 /* TestExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1047331B4E756200B1A76A /* TestExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		EA42D6351BB7B37900B07526 /* MeteorServiceTestingExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1047321B4E756200B1A76A /* MeteorServiceTestingExtension.swift */; settings = {ASSET_TAGS = (); }; };
 		EA42D6361BB7B38100B07526 /* IntegrationTestEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9ABA2CF1B6412CF0098B7E4 /* IntegrationTestEnvironment.swift */; settings = {ASSET_TAGS = (); }; };
@@ -255,11 +254,6 @@
 		EA394B0F1B5E16F2009184EB /* PlayerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
 		EA39651B1B54EFE400F5B0B3 /* MeteorCollection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorCollection.swift; sourceTree = "<group>"; };
 		EA3965221B55C47200F5B0B3 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
-		EA42164C1B3E219000613EFA /* Fabric.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Fabric.framework; sourceTree = "<group>"; };
-		EA42164D1B3E219000613EFA /* DigitsKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DigitsKit.framework; sourceTree = "<group>"; };
-		EA42164E1B3E219000613EFA /* DigitsKitResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = DigitsKitResources.bundle; path = DigitsKit.framework/Versions/A/Resources/DigitsKitResources.bundle; sourceTree = "<group>"; };
-		EA42164F1B3E219000613EFA /* TwitterCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = TwitterCore.framework; sourceTree = "<group>"; };
-		EA4216541B3E234B00613EFA /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = "<group>"; };
 		EA42D6321BB7B1C700B07526 /* Bond+ReactiveCocoa.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bond+ReactiveCocoa.swift"; sourceTree = "<group>"; };
 		EA47570C1B392C19002071D7 /* PanInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanInteractor.swift; sourceTree = "<group>"; };
 		EA47570D1B392C19002071D7 /* ScrollTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollTransition.swift; sourceTree = "<group>"; };
@@ -463,11 +457,6 @@
 		2C9F4D1EF3D7E4C4FBB0AEDB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EA4216541B3E234B00613EFA /* Crashlytics.framework */,
-				EA42164C1B3E219000613EFA /* Fabric.framework */,
-				EA42164D1B3E219000613EFA /* DigitsKit.framework */,
-				EA42164E1B3E219000613EFA /* DigitsKitResources.bundle */,
-				EA42164F1B3E219000613EFA /* TwitterCore.framework */,
 				F95D95DE1A84A1170068F090 /* MediaPlayer.framework */,
 				F996C7251A81F1F200314FF8 /* OpenGLES.framework */,
 				F996C7231A81F1E700314FF8 /* QuartzCore.framework */,
@@ -1333,7 +1322,6 @@
 				EA7FB0971B5EF9D50052B394 /* Cabin-Medium.ttf in Resources */,
 				EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */,
 				EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */,
-				EA4216521B3E219000613EFA /* DigitsKitResources.bundle in Resources */,
 				EA7FB0981B5EF9D50052B394 /* Cabin-MediumItalic.ttf in Resources */,
 				EA7078781B39345800BB9D08 /* AVKit.storyboard in Resources */,
 				EA7FB0991B5EF9D50052B394 /* Cabin-Regular.ttf in Resources */,
@@ -1535,7 +1523,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "if [ -n \"$CI\" ]; then\n    echo \"Uploading DSYM to Fabric\"\n    ./Includes/Fabric.framework/run 67f7b1cc77f3e88b8e5b17a5bbc2ca6cb6f7ae53 1406e03532dd866d616ac19642903e2db44a36d93de980165c1e2e01fc17b215\nelse\n    echo \"Not running on CI, skip uploading to Fabric\";\nfi";
+			shellScript = "if [ -n \"$CI\" ]; then\n    echo \"Uploading DSYM to Fabric\"\n    \"${PODS_ROOT}/Fabric/Fabric.framework/run\" 67f7b1cc77f3e88b8e5b17a5bbc2ca6cb6f7ae53 1406e03532dd866d616ac19642903e2db44a36d93de980165c1e2e01fc17b215\nelse\n    echo \"Not running on CI, skip uploading to Fabric\";\nfi";
 		};
 /* End PBXShellScriptBuildPhase section */
 

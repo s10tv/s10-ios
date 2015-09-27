@@ -1,6 +1,0 @@
-framework module DigitsKit {
-    umbrella header "DigitsKit.h"
-    
-    export *
-    module * { export * }
-}

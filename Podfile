@@ -59,9 +59,13 @@ target :Core do
 
         # 3rd Party Service SDKs
         pod 'FBSDKLoginKit', '~> 4.6'
-        pod 'AnalyticsSwift', :git => 'https://github.com/tonyxiao/analytics-swift.git'
-        pod 'Heap', '~> 2.2'
+        pod 'Fabric', '~> 1.5'
+        pod 'Crashlytics', '~> 3.3'
+        pod 'TwitterCore', '~> 1.11'
+        pod 'Digits', '~> 1.11'
         pod 'Ouralabs', '~> 2.3'
+        pod 'Heap', '~> 2.2'
+        pod 'AnalyticsSwift', :git => 'https://github.com/tonyxiao/analytics-swift.git'
 
         # Debug only
 
