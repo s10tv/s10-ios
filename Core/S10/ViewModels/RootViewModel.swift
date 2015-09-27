@@ -37,7 +37,7 @@ public struct RootTabViewModel {
         self.taskService = taskService
         unreadConversations = Connection
             .by(NSPredicate(format: "%K > 0", ConnectionKeys.unreadCount.rawValue))
-            .results(Connection)
-        chatsBadge = fromBondDynamic(unreadConversations.dynCount) |> map { $0 > 0 ? "\($0)" : nil }
+            .results { $0 as! Connection }
+        chatsBadge = unreadConversations.count.map { $0 > 0 ? "\($0)" : nil }
     }
 }

@@ -24,6 +24,14 @@ public protocol ArrayPropertyType {
     var changes: Signal<ArrayOperation, NoError> { get }
 }
 
+extension ArrayPropertyType where Self : AnyObject {
+    var count: PropertyOf<Int> {
+        let prop = MutableProperty(array.count)
+        prop <~ changes.map { [weak self] _ in self?.array.count ?? 0 }
+        return prop.readonly()
+    }
+}
+
 public class ArrayProperty<T> : ArrayPropertyType {
     private let changesSink: Event<ArrayOperation, NoError>.Sink
     public typealias ElementType = T
