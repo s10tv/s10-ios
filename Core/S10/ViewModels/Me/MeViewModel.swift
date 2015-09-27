@@ -18,7 +18,7 @@ public struct MeViewModel {
     public let avatar: PropertyOf<Image?>
     public let cover: PropertyOf<Image?>
     public let displayName: PropertyOf<String>
-    public let profileIcons: PropertyOf<[Image]>
+    public let profileIcons: ArrayProperty<Image>
     
     public init(meteor: MeteorService, taskService: TaskService) {
         self.meteor = meteor
@@ -30,6 +30,7 @@ public struct MeViewModel {
         profileIcons = meteor.user
             .flatMap(nilValue: []) { $0.pConnectedProfiles() }
             .map { $0.map { $0.icon } }
+            .array()
     }
     
     public func canViewOrEditProfile() -> Bool {

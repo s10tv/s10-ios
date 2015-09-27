@@ -24,16 +24,35 @@ public protocol ArrayPropertyType {
     var changes: Signal<ArrayOperation, NoError> { get }
 }
 
-public struct ConstantArray<T> : ArrayPropertyType {
+public class ArrayProperty<T> : ArrayPropertyType {
+    private let changesSink: Event<ArrayOperation, NoError>.Sink
     public typealias ElementType = T
-    public let array: [T]
-    public let changes: Signal<ArrayOperation, NoError>
+    public var array: [T] {
+        didSet { sendNext(changesSink, .Reset) }
+    }
     public subscript(index: Int) -> T {
         return array[index]
     }
+    public let changes: Signal<ArrayOperation, NoError>
 
-    public init(array: [T]) {
+    public init(_ array: [T]) {
         self.array = array
-        self.changes = Signal.never
+        (changes, changesSink) = Signal<ArrayOperation, NoError>.pipe()
+    }
+    
+    deinit {
+        sendCompleted(changesSink)
     }
 }
+
+extension PropertyType where Value : CollectionType {
+    public func array() -> ArrayProperty<Value.Generator.Element> {
+        let array = ArrayProperty<Value.Generator.Element>([])
+        producer.startWithNext { [weak array] value in
+            _ = self // Intentionally strongly retain property
+            array?.array = Array(value)
+        }
+        return array
+    }
+}
+
