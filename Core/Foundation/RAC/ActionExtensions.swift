@@ -14,7 +14,7 @@ import Result
 
 extension Action {
     
-    convenience init(_ future: Input -> Future<Output, Error>) {
+    public convenience init(_ future: Input -> Future<Output, Error>) {
         self.init(enabledIf: ConstantProperty(true), { input in
             SignalProducer<Output, Error> { observer, disposable in
                 disposable += future(input).producer.start(observer)
@@ -22,7 +22,7 @@ extension Action {
         })
     }
     
-    convenience init(_ transform: Input -> Result<Output, Error>) {
+    public convenience init(_ transform: Input -> Result<Output, Error>) {
         self.init(enabledIf: ConstantProperty(true), { input in
             SignalProducer<Output, Error> { observer, disposable in
                 transform(input).analysis(ifSuccess: {
@@ -35,19 +35,19 @@ extension Action {
         })
     }
     
-    var mEvents: Signal<Event<Output, Error>, NoError> {
+    public var mEvents: Signal<Event<Output, Error>, NoError> {
         return events.observeOn(UIScheduler())
     }
-    var mValues: Signal<Output, NoError> {
+    public var mValues: Signal<Output, NoError> {
         return values.observeOn(UIScheduler())
     }
-    var mErrors: Signal<Error, NoError> {
+    public var mErrors: Signal<Error, NoError> {
         return errors.observeOn(UIScheduler())
     }
-    var mExecuting: SignalProducer<Bool, NoError> {
+    public var mExecuting: SignalProducer<Bool, NoError> {
         return executing.producer.observeOn(UIScheduler())
     }
-    var mEnabled: SignalProducer<Bool, NoError> {
+    public var mEnabled: SignalProducer<Bool, NoError> {
         return enabled.producer.observeOn(UIScheduler())
     }
 }

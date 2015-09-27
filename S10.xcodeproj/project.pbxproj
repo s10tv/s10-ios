@@ -156,6 +156,10 @@
 		EAA576051BB7DED100661A4F /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B261B33391000EED6DD /* EditorViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA576061BB7DF4300661A4F /* RecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B241B33389500EED6DD /* RecorderViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA576071BB7DF9600661A4F /* ProducerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF81B221B33388700EED6DD /* ProducerViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA576081BB7E04C00661A4F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F871B2B32E500DE3936 /* BaseViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA576091BB7E0E700661A4F /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBA61B39308A00701F08 /* PageViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA5760B1BB7E1F700661A4F /* ProfileIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9FE6481B684FA0006F8E73 /* ProfileIconCell.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA5760C1BB7E20800661A4F /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5773491B6C214E00BCF449 /* Appearance.swift */; settings = {ASSET_TAGS = (); }; };
 		EABA05461B474FED00154C75 /* test-avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EABA05451B474FED00154C75 /* test-avatar.jpg */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
 		EAE067201B71850F00A2FF76 /* MuteChecker.caf in Resources */ = {isa = PBXBuildFile; fileRef = EAE0671D1B71850F00A2FF76 /* MuteChecker.caf */; };
@@ -1650,7 +1654,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA42D64E1BB7BE5A00B07526 /* StyleKit.swift in Sources */,
+				EAA5760B1BB7E1F700661A4F /* ProfileIconCell.swift in Sources */,
 				EAA575FD1BB7D31500661A4F /* Bond+ReactiveCocoa.swift in Sources */,
+				EAA576081BB7E04C00661A4F /* BaseViewController.swift in Sources */,
 				EA42D64C1BB7BE4700B07526 /* Errors.swift in Sources */,
 				EA42D6541BB7C33100B07526 /* UpgradeService.swift in Sources */,
 				EA42D6531BB7C2C500B07526 /* AnalyticsService.swift in Sources */,
@@ -1666,6 +1672,7 @@
 				EA42D6611BB7CC7B00B07526 /* ImagePickerExtensions.swift in Sources */,
 				EAA575F61BB7CD9600661A4F /* AudioController.swift in Sources */,
 				EA42D6601BB7CBAE00B07526 /* PKHUDExtension.swift in Sources */,
+				EAA5760C1BB7E20800661A4F /* Appearance.swift in Sources */,
 				EAA575F71BB7CE3000661A4F /* PlayerViewModel.swift in Sources */,
 				EA42D64D1BB7BE5600B07526 /* R.swift in Sources */,
 				EA42D6561BB7C3B400B07526 /* Globals.swift in Sources */,
@@ -1673,6 +1680,7 @@
 				EA42D65B1BB7C66600B07526 /* MediaExtension.swift in Sources */,
 				EA42D65F1BB7C67900B07526 /* DesignableViews.swift in Sources */,
 				EAA575FC1BB7D0F000661A4F /* Bond+SDWebImage.swift in Sources */,
+				EAA576091BB7E0E700661A4F /* PageViewController.swift in Sources */,
 				EAA575FA1BB7CFD900661A4F /* Bond+JSBadgeView.swift in Sources */,
 				EA42D6621BB7CD0A00B07526 /* AVKit.swift in Sources */,
 				EAA576071BB7DF9600661A4F /* ProducerViewController.swift in Sources */,
