@@ -32,6 +32,8 @@
 		EA42D65B1BB7C66600B07526 /* MediaExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA42D65A1BB7C66600B07526 /* MediaExtension.swift */; settings = {ASSET_TAGS = (); }; };
 		EA42D65E1BB7C67900B07526 /* BaseViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA42D65C1BB7C67900B07526 /* BaseViews.swift */; settings = {ASSET_TAGS = (); }; };
 		EA42D65F1BB7C67900B07526 /* DesignableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA42D65D1BB7C67900B07526 /* DesignableViews.swift */; settings = {ASSET_TAGS = (); }; };
+		EA42D6601BB7CBAE00B07526 /* PKHUDExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBAB1B3930B000701F08 /* PKHUDExtension.swift */; settings = {ASSET_TAGS = (); }; };
+		EA42D6611BB7CC7B00B07526 /* ImagePickerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7134111B56E47100B810F6 /* ImagePickerExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		EA5022101B54AC4B00BC92D2 /* TestNSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = EA50220F1B54AC4B00BC92D2 /* TestNSObject.m */; };
 		EA588DB81B5F1437000962B8 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA588DB71B5F1437000962B8 /* TestViewController.swift */; };
 		EA5B740B1B30F7BB008E5CBC /* TestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5B740A1B30F7BB008E5CBC /* TestAppDelegate.swift */; };
@@ -766,12 +768,12 @@
 			isa = PBXGroup;
 			children = (
 				EA42D65A1BB7C66600B07526 /* MediaExtension.swift */,
+				EA95BBAB1B3930B000701F08 /* PKHUDExtension.swift */,
+				EA95BBAC1B3930B000701F08 /* ResourceExtension.swift */,
+				EA7134111B56E47100B810F6 /* ImagePickerExtensions.swift */,
 				EA24E9221B69E2BF00261873 /* Bond+JSBadgeView.swift */,
 				EA95BBA91B3930B000701F08 /* Bond+SDWebImage.swift */,
 				EA57734D1B6C5D6800BCF449 /* Bond+UIButton.swift */,
-				EA7134111B56E47100B810F6 /* ImagePickerExtensions.swift */,
-				EA95BBAB1B3930B000701F08 /* PKHUDExtension.swift */,
-				EA95BBAC1B3930B000701F08 /* ResourceExtension.swift */,
 				EA42D6321BB7B1C700B07526 /* Bond+ReactiveCocoa.swift */,
 			);
 			path = Extensions;
@@ -1642,6 +1644,8 @@
 				EA42D65E1BB7C67900B07526 /* BaseViews.swift in Sources */,
 				EAE067211B71850F00A2FF76 /* MuteChecker.m in Sources */,
 				EA42D64F1BB7BE5D00B07526 /* SBConstants.swift in Sources */,
+				EA42D6611BB7CC7B00B07526 /* ImagePickerExtensions.swift in Sources */,
+				EA42D6601BB7CBAE00B07526 /* PKHUDExtension.swift in Sources */,
 				EA42D64D1BB7BE5600B07526 /* R.swift in Sources */,
 				EA42D6561BB7C3B400B07526 /* Globals.swift in Sources */,
 				EA42D6551BB7C35100B07526 /* AccountService.swift in Sources */,

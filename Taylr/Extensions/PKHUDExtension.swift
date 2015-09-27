@@ -20,7 +20,7 @@ extension PKHUD {
     }
     class func showActivity(dimsBackground: Bool = false) {
         sharedHUD.contentView = PKHUDSystemActivityIndicatorView()
-        show(dimsBackground: dimsBackground)
+        show(dimsBackground)
     }
     class func hide(animated anim: Bool = true) {
         sharedHUD.hide(animated: anim)
