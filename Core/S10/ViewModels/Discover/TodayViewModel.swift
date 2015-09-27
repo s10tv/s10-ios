@@ -18,7 +18,7 @@ public struct TodayViewModel {
     public let hometown: String
     public let major: String
     public let reason: String
-    public let profileIcons: DynamicArray<Image>
+    public let profileIcons: ArrayProperty<Image>
     public let timeRemaining: PropertyOf<String>
     public let fractionRemaining: PropertyOf<CGFloat>
     
@@ -30,11 +30,11 @@ public struct TodayViewModel {
         major = user.major ?? ""
         displayName = user.pDisplayName().value
         reason = candidate.reason
-        profileIcons = DynamicArray(user.connectedProfiles.map { $0.icon })
+        profileIcons = ArrayProperty(user.connectedProfiles.map { $0.icon })
         timeRemaining = PropertyOf("", combineLatest(
             CurrentTime.producer,
             settings.nextMatchDate.producer
-        ) |> map { currentTime, nextMatchDate in
+        ).map { currentTime, nextMatchDate in
             let interval = max(Int((nextMatchDate ?? NSDate()).timeIntervalSinceDate(currentTime)), 0)
             let hours = interval / 3600
             let minutes = (interval - hours * 3600) / 60

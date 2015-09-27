@@ -138,6 +138,8 @@
 		EA81AE3B1BB7A8D000F94006 /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2B21B63FCAF0034434E /* RootViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE3C1BB7AAE500F94006 /* CandidateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF0203E1BB1D329006C789F /* CandidateViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE3D1BB7AB1100F94006 /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF0203C1BB1D2C5006C789F /* HistoryViewModel.swift */; settings = {ASSET_TAGS = (); }; };
+		EA81AE3E1BB7AB4B00F94006 /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F751B62EF5D0047BDCA /* TodayViewModel.swift */; settings = {ASSET_TAGS = (); }; };
+		EA81AE3F1BB7AB6C00F94006 /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95A64F1B6371A1006046E5 /* DiscoverViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA89C0861B6AA2060007C6CB /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0851B6AA2060007C6CB /* CreateProfileViewController.swift */; };
 		EA89C0881B6AC0410007C6CB /* ConnectServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0871B6AC0410007C6CB /* ConnectServicesViewController.swift */; };
 		EA925C741AD99ED8008E9F41 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA925C731AD99ED8008E9F41 /* R.swift */; };
@@ -1643,6 +1645,7 @@
 				EA81ADFC1BB68E2100F94006 /* _User.swift in Sources */,
 				EA81AE0C1BB693B800F94006 /* MeteorService.swift in Sources */,
 				EA81ADD51BB679D300F94006 /* DynamicProperties.swift in Sources */,
+				EA81AE3E1BB7AB4B00F94006 /* TodayViewModel.swift in Sources */,
 				EA81ADE91BB6883A00F94006 /* AnimationExtensions.swift in Sources */,
 				EA81AE1D1BB69A8D00F94006 /* ConnectServicesViewModel.swift in Sources */,
 				EA81AE0A1BB6912D00F94006 /* InviteTask.swift in Sources */,
@@ -1671,6 +1674,7 @@
 				EA81ADDC1BB6852600F94006 /* DeviceInfo.swift in Sources */,
 				EA81AE111BB696A400F94006 /* VideoUploadOperation.swift in Sources */,
 				EA81AE3A1BB7A0DF00F94006 /* MeViewModel.swift in Sources */,
+				EA81AE3F1BB7AB6C00F94006 /* DiscoverViewModel.swift in Sources */,
 				EA81ADD31BB673B100F94006 /* Future.swift in Sources */,
 				EA81ADE71BB687F700F94006 /* GeometryExtensions.swift in Sources */,
 				EA81AE051BB68E6700F94006 /* Video.swift in Sources */,

@@ -24,6 +24,10 @@ public protocol ArrayPropertyType {
     var changes: Signal<ArrayOperation, NoError> { get }
 }
 
+extension ArrayPropertyType {
+    var count: Int { return array.count }
+}
+
 extension ArrayPropertyType where Self : AnyObject {
     var count: PropertyOf<Int> {
         let prop = MutableProperty(array.count)
