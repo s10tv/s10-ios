@@ -174,6 +174,7 @@
 		EAA5761B1BB7EA6700661A4F /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BF43121BB0813E007D30A0 /* TutorialPageViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA5761D1BB841A100661A4F /* TodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56FB01B2BCAC700DE3936 /* TodayCell.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA5761F1BB8423200661A4F /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F701B2B32E500DE3936 /* DiscoverViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA576211BB854D700661A4F /* UICollectionViewBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA576201BB854D700661A4F /* UICollectionViewBinding.swift */; settings = {ASSET_TAGS = (); }; };
 		EABA05461B474FED00154C75 /* test-avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EABA05451B474FED00154C75 /* test-avatar.jpg */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
 		EAE067201B71850F00A2FF76 /* MuteChecker.caf in Resources */ = {isa = PBXBuildFile; fileRef = EAE0671D1B71850F00A2FF76 /* MuteChecker.caf */; };
@@ -382,6 +383,7 @@
 		EAA56F851B2B32E500DE3936 /* RootNavController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootNavController.swift; sourceTree = "<group>"; };
 		EAA56F871B2B32E500DE3936 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		EAA56FB01B2BCAC700DE3936 /* TodayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayCell.swift; sourceTree = "<group>"; };
+		EAA576201BB854D700661A4F /* UICollectionViewBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewBinding.swift; sourceTree = "<group>"; };
 		EAA8D6C21B62F2A400D5A6DC /* IntegrationWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationWebViewController.swift; sourceTree = "<group>"; };
 		EAAD921C1ACF342C0014BA25 /* TaylrEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaylrEnvironment.swift; sourceTree = "<group>"; };
 		EAB1B9911B6B34630010FBAB /* ConversationTutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationTutorialViewController.swift; sourceTree = "<group>"; };
@@ -1117,6 +1119,7 @@
 				EAF670711B31F9450025D7CF /* GeometryExtensions.swift */,
 				EAF670721B31F9450025D7CF /* UIKitExtension.swift */,
 				EA81AE341BB795F700F94006 /* UITableViewBinding.swift */,
+				EAA576201BB854D700661A4F /* UICollectionViewBinding.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -1601,6 +1604,7 @@
 				EA81ADD51BB679D300F94006 /* DynamicProperties.swift in Sources */,
 				EA81AE401BB7ABE300F94006 /* ActivityViewModels.swift in Sources */,
 				EA81AE3E1BB7AB4B00F94006 /* TodayViewModel.swift in Sources */,
+				EAA576211BB854D700661A4F /* UICollectionViewBinding.swift in Sources */,
 				EA81ADE91BB6883A00F94006 /* AnimationExtensions.swift in Sources */,
 				EA81AE1D1BB69A8D00F94006 /* ConnectServicesViewModel.swift in Sources */,
 				EA81AE0A1BB6912D00F94006 /* InviteTask.swift in Sources */,
