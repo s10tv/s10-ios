@@ -16,14 +16,14 @@ public struct CandidateViewModel {
     public let displayName: String
     public let displayDate: String
     public let reason: String
-    public let profileIcons: DynamicArray<Image>
+    public let profileIcons: ArrayProperty<Image>
     
     init(candidate: Candidate) {
         user = candidate.user
         reason = candidate.reason
         avatar = user.avatar
         displayName = user.pDisplayName().value
-        profileIcons = DynamicArray(user.connectedProfiles.map { $0.icon })
+        profileIcons = ArrayProperty(user.connectedProfiles.map { $0.icon })
         displayDate = Formatters.formateDaysAgo(candidate.date)
     }
 }
