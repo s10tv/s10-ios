@@ -124,7 +124,7 @@ DEPENDENCIES:
   - ObjectMapper (~> 0.17)
   - OHHTTPStubs (~> 4.3)
   - Ouralabs (~> 2.3)
-  - PKHUD (from `https://github.com/tonyxiao/PKHUD`, branch `swift2`)
+  - PKHUD (~> 2.2)
   - Quick (~> 0.6)
   - ReactiveCocoa (~> 4.0.2-alpha-1)
   - RealmSwift (~> 0.95)
@@ -147,9 +147,6 @@ EXTERNAL SOURCES:
   Meteor:
     :branch: dev
     :git: https://github.com/tonyxiao/meteor-ios
-  PKHUD:
-    :branch: swift2
-    :git: https://github.com/tonyxiao/PKHUD
   SugarRecord:
     :branch: swift2.0
     :git: https://github.com/tonyxiao/SugarRecord
@@ -164,9 +161,6 @@ CHECKOUT OPTIONS:
   Meteor:
     :commit: 0f40ef742583cb4b8c2e987121ff1d1f4a6afdfb
     :git: https://github.com/tonyxiao/meteor-ios
-  PKHUD:
-    :commit: 5c8125e8d3685eb82541feb92a0792f943b125f5
-    :git: https://github.com/tonyxiao/PKHUD
   SugarRecord:
     :commit: 8253757e26f57869c4b3baebf8f63dfe59f6ee55
     :git: https://github.com/tonyxiao/SugarRecord
@@ -201,7 +195,7 @@ SPEC CHECKSUMS:
   ObjectMapper: fa286b7cb5a398f1b0d8d64d0dd33fd1b307022c
   OHHTTPStubs: 0aec5755528693a165bd616cb79f69387de306a8
   Ouralabs: 9aebd99ac992be00e79e25d04e5479257d44f7e0
-  PKHUD: ab3b0260d3f87515b38b59708700113d59441b5b
+  PKHUD: 7104c90ba34cc43165a583fb1a51693592dc9288
   PocketSocket: eee7ef375f55b98e7ca79e097d9c61fd688e9494
   Quick: 563686dbcf0ae0f9f7401ac9cd2d786ee1b7f3d7
   ReactiveCocoa: 652cf90e5de65708e7e2111f77405756da21aabe
