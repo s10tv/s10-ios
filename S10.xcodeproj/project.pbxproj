@@ -179,6 +179,10 @@
 		EAA576251BB8584D00661A4F /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF020411BB1D3DF006C789F /* HistoryViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA576261BB8587300661A4F /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1BB241B60347600D250C5 /* MeViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA576271BB8591F00661A4F /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD1BB281B604A3D00D250C5 /* InviteViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA5762A1BB85A0800661A4F /* ConnectionCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F6D1B2B32E500DE3936 /* ConnectionCells.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA5762C1BB85B6200661A4F /* ConversationTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB1B9911B6B34630010FBAB /* ConversationTutorialViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA5762D1BB85B7200661A4F /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594131B2DE5C300E91337 /* ConversationViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA5762E1BB85C3100661A4F /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F6C1B2B32E500DE3936 /* ChatsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EABA05461B474FED00154C75 /* test-avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EABA05451B474FED00154C75 /* test-avatar.jpg */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
 		EAE067201B71850F00A2FF76 /* MuteChecker.caf in Resources */ = {isa = PBXBuildFile; fileRef = EAE0671D1B71850F00A2FF76 /* MuteChecker.caf */; };
@@ -1684,6 +1688,7 @@
 				EAA576081BB7E04C00661A4F /* BaseViewController.swift in Sources */,
 				EA42D64C1BB7BE4700B07526 /* Errors.swift in Sources */,
 				EAA5761A1BB7EA2C00661A4F /* VerifyCodeViewController.swift in Sources */,
+				EAA5762C1BB85B6200661A4F /* ConversationTutorialViewController.swift in Sources */,
 				EAA576231BB857A000661A4F /* CandidateCell.swift in Sources */,
 				EA42D6541BB7C33100B07526 /* UpgradeService.swift in Sources */,
 				EA42D6531BB7C2C500B07526 /* AnalyticsService.swift in Sources */,
@@ -1703,6 +1708,7 @@
 				EA42D6611BB7CC7B00B07526 /* ImagePickerExtensions.swift in Sources */,
 				EAA575F61BB7CD9600661A4F /* AudioController.swift in Sources */,
 				EAA576261BB8587300661A4F /* MeViewController.swift in Sources */,
+				EAA5762D1BB85B7200661A4F /* ConversationViewController.swift in Sources */,
 				EA42D6601BB7CBAE00B07526 /* PKHUDExtension.swift in Sources */,
 				EAA5760C1BB7E20800661A4F /* Appearance.swift in Sources */,
 				EAA575F71BB7CE3000661A4F /* PlayerViewModel.swift in Sources */,
@@ -1711,6 +1717,8 @@
 				EAA576181BB7E6D200661A4F /* CreateProfileViewController.swift in Sources */,
 				EA42D6551BB7C35100B07526 /* AccountService.swift in Sources */,
 				EAA576101BB7E30600661A4F /* RootNavController.swift in Sources */,
+				EAA5762E1BB85C3100661A4F /* ChatsViewController.swift in Sources */,
+				EAA5762A1BB85A0800661A4F /* ConnectionCells.swift in Sources */,
 				EA42D65B1BB7C66600B07526 /* MediaExtension.swift in Sources */,
 				EA42D65F1BB7C67900B07526 /* DesignableViews.swift in Sources */,
 				EAA576171BB7E5B600661A4F /* LoginViewController.swift in Sources */,

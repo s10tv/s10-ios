@@ -67,7 +67,7 @@ extension UICollectionViewCell {
 
 // xcres
 
-func LS(key: R.Strings, args: CVarArgType...) -> String {
+func LS(key: R.Strings, _ args: CVarArgType...) -> String {
     return NSString(format: NSLocalizedString(key.rawValue, comment: ""),
         arguments: getVaList(args)) as String
 }

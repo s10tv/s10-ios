@@ -22,23 +22,24 @@ class ContactConnectionCell : UITableViewCell, BindableCell {
     var badgeView: JSBadgeView!
     
     func bind(vm: ContactConnectionViewModel) {
-        vm.avatar ->> avatarView.imageBond
-        vm.displayName ->> nameLabel
-        vm.busy ->> spinner
-        vm.statusMessage ->> subtitleLabel
-        vm.hideRightArrow ->> rightArrow.dynHidden
-        vm.badgeText ->> badgeView
+        vm.avatar ->> avatarView.rac_image
+        vm.displayName ->> nameLabel.bnd_text
+        vm.busy ->> spinner.bnd_animating
+        vm.statusMessage ->> subtitleLabel.bnd_text
+        vm.hideRightArrow ->> rightArrow.bnd_hidden
+        vm.badgeText ->> badgeView.rac_badgeText
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        avatarView.unbindDynImageURL()
-        [nameLabel, subtitleLabel].each {
-            $0.designatedBond.unbindAll()
-        }
-        badgeView.designatedBond.unbindAll()
-        spinner.designatedBond.unbindAll()
-        rightArrow.dynHidden.valueBond.unbindAll()
+        avatarView.unbindImage()
+        // MAJOR TODO: Figure out how to unbind
+//        [nameLabel, subtitleLabel].each {
+//            $0.designatedBond.unbindAll()
+//        }
+//        badgeView.designatedBond.unbindAll()
+//        spinner.designatedBond.unbindAll()
+//        rightArrow.dynHidden.valueBond.unbindAll()
     }
     
     override func awakeFromNib() {
@@ -68,23 +69,24 @@ class NewConnectionCell : UITableViewCell, BindableCell {
     @IBOutlet weak var profileIconsView: UICollectionView!
  
     func bind(vm: NewConnectionViewModel) {
-        vm.avatar ->> avatarView.imageBond
-        vm.displayName ->> nameLabel
-        vm.displayTime ->> timestampLabel
-        vm.tagline ->> taglineLabel
-        vm.busy ->> spinner
-        vm.hidePlayIcon ->> playIcon.dynHidden
-        vm.profileIcons.map(profileIconsView.factory(ProfileIconCell)) ->> profileIconsView
+        vm.avatar ->> avatarView.rac_image
+        vm.displayName ->> nameLabel.bnd_text
+        vm.displayTime ->> timestampLabel.bnd_text
+        vm.tagline ->> taglineLabel.bnd_text
+        vm.busy ->> spinner.bnd_animating
+        vm.hidePlayIcon ->> playIcon.bnd_hidden
+        profileIconsView.bindTo(vm.profileIcons, cell: ProfileIconCell.self)
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        [nameLabel, timestampLabel, taglineLabel].each {
-            $0.designatedBond.unbindAll()
-        }
-        avatarView.imageBond.unbindAll()
-        playIcon.dynHidden.designatedBond.unbindAll()
-        profileIconsView.designatedBond.unbindAll()
+        // MAJOR TODO: Figure out how to unbind....
+//        [nameLabel, timestampLabel, taglineLabel].each {
+//            $0.designatedBond.unbindAll()
+//        }
+//        avatarView.imageBond.unbindAll()
+//        playIcon.dynHidden.designatedBond.unbindAll()
+//        profileIconsView.designatedBond.unbindAll()
     }
     
     override func awakeFromNib() {

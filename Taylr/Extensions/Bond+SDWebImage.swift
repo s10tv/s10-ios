@@ -35,6 +35,7 @@ extension UIImageView {
     }
     
     public func unbindImage() {
+        // MAJOR TODO: Unbind rac_image
         self.image = placeholderImage
         sd_cancelCurrentImageLoad()
     }

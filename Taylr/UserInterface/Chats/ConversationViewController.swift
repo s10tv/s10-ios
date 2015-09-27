@@ -43,20 +43,21 @@ class ConversationViewController : BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        vm.avatar ->> avatarView.imageBond
-        vm.displayName ->> nameLabel
-        vm.busy ->> spinner
-        vm.displayStatus ->> activityLabel
-        vm.hideReplayButton ->> replayButton.dynHidden
-        vm.hideNewMessagesHint ->> newMessagesHint.dynHidden
-        vm.cover ->> coverImageView.imageBond
+        // MAJOR TODO: Figure out how to unbind
+        vm.avatar ->> avatarView.rac_image
+        vm.displayName ->> nameLabel.bnd_text
+        vm.busy ->> spinner.bnd_animating
+        vm.displayStatus ->> activityLabel.bnd_text
+        vm.hideReplayButton ->> replayButton.bnd_hidden
+        vm.hideNewMessagesHint ->> newMessagesHint.bnd_hidden
+        vm.cover ->> coverImageView.rac_image
         
         let avkit = UIStoryboard(name: "AVKit", bundle: nil)
         producer = avkit.instantiateViewControllerWithIdentifier("Producer") as! ProducerViewController
         producer.producerDelegate = self
         player = avkit.instantiateViewControllerWithIdentifier("Player") as! PlayerViewController
         player.vm.delegate = self
-        player.vm.playlist <~ (vm.messages.producer |> map {
+        player.vm.playlist <~ (vm.messages.producer.map {
             $0.map { (msg: MessageViewModel) in msg as PlayableVideo }
         })
         vm.playing <~ player.vm.isPlaying
@@ -74,7 +75,7 @@ class ConversationViewController : BaseViewController {
         [playerContainer, producerContainer].each {
             $0.bounds = view.bounds
             $0.removeFromSuperview()
-            $0.setTranslatesAutoresizingMaskIntoConstraints(true)
+            $0.translatesAutoresizingMaskIntoConstraints = true
         }
     
         swipeView.vertical = true
@@ -122,19 +123,20 @@ class ConversationViewController : BaseViewController {
         navigationController?.navigationBar.setBackgroundColor(nil)
     }
     
-    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
-        if identifier == SegueIdentifier.ConversationToProfile.rawValue
-            && navigationController?.lastViewController is ProfileViewController {
-                navigationController?.popViewControllerAnimated(true)
-                return false
-        }
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        // MAJOR TODO: Search for all segue related things...
+//        if identifier == SegueIdentifier.ConversationToProfile.rawValue
+//            && navigationController?.lastViewController is ProfileViewController {
+//                navigationController?.popViewControllerAnimated(true)
+//                return false
+//        }
         return super.shouldPerformSegueWithIdentifier(identifier, sender: sender)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let vc = segue.destinationViewController as? ProfileViewController {
-            vc.vm = vm.profileVM()
-        }
+//        if let vc = segue.destinationViewController as? ProfileViewController {
+//            vc.vm = vm.profileVM()
+//        }
         if let vc = segue.destinationViewController as? ConversationTutorialViewController {
             vc.delegate = self
         }
@@ -202,7 +204,7 @@ class ConversationViewController : BaseViewController {
         alert.addTextFieldWithConfigurationHandler(nil)
         alert.addAction(LS(.reportAlertCancel), style: .Cancel)
         alert.addAction(LS(.reportAlertConfirm), style: .Destructive) { _ in
-            if let reportReason = (alert.textFields?[0] as? UITextField)?.text {
+            if let reportReason = alert.textFields?[0].text {
                 self.vm.reportUser(reportReason)
             }
         }
