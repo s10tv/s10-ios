@@ -20,7 +20,7 @@ class IntegrationsViewController : UICollectionViewController {
     let vm = IntegrationListViewModel(meteor: Meteor)
     
     var selectedIntegration: IntegrationViewModel? {
-        return (collectionView?.indexPathsForSelectedItems().first as? NSIndexPath).flatMap {
+        return (collectionView?.indexPathsForSelectedItems()?.first).flatMap {
             vm.integrations[$0.item]
         }
     }
@@ -29,7 +29,8 @@ class IntegrationsViewController : UICollectionViewController {
         super.viewDidLoad()
         // Get rid of warnings around initial item width too large
         updateLayoutItemSize()
-        vm.integrations.map(collectionView!.factory(IntegrationCell)) ->> collectionView!
+        // MAJOR TODO: Bind IntegrationModels to CollectionView
+//        vm.integrations.map(collectionView!.factory(IntegrationCell)) ->> collectionView!
     }
     
     override func viewWillLayoutSubviews() {
@@ -99,7 +100,7 @@ extension IntegrationsViewController : ClientIntegrationDelegate {
             // extended permissions
             "email"
         ]
-        fb.logInWithReadPermissions(readPerms) { result, error in
+        fb.logInWithReadPermissions(readPerms, fromViewController: nil) { result, error in
             // Todo: check result.grantedPermissions is complete
             if error != nil {
                 subject.sendError(error)

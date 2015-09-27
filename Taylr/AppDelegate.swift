@@ -100,7 +100,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         Log.info("App Launched")
         Analytics.track("App Open")
         
-//        IntegrationsViewController.application(application, didFinishLaunchingWithOptions: launchOptions)
+        IntegrationsViewController.application(application, didFinishLaunchingWithOptions: launchOptions)
         
         Globals.accountService.login()
         Appearance.setupGlobalAppearances()
@@ -135,9 +135,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-//        if IntegrationsViewController.application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation) {
-//            return true
-//        }
+        if IntegrationsViewController.application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation) {
+            return true
+        }
         return false
     }
     

@@ -163,6 +163,9 @@
 		EAA5760E1BB7E29900661A4F /* RootTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7FB08C1B5EEA070052B394 /* RootTabController.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA5760F1BB7E2E000661A4F /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594181B2FEA1F00E91337 /* TransitionManager.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA576101BB7E30600661A4F /* RootNavController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F851B2B32E500DE3936 /* RootNavController.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA576111BB7E3A900661A4F /* IntegrationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F6A1B62CE770047BDCA /* IntegrationCell.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA576121BB7E3BB00661A4F /* IntegrationWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA8D6C21B62F2A400D5A6DC /* IntegrationWebViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA576131BB7E40400661A4F /* IntegrationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F6C1B62CE880047BDCA /* IntegrationsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EABA05461B474FED00154C75 /* test-avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EABA05451B474FED00154C75 /* test-avatar.jpg */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
 		EAE067201B71850F00A2FF76 /* MuteChecker.caf in Resources */ = {isa = PBXBuildFile; fileRef = EAE0671D1B71850F00A2FF76 /* MuteChecker.caf */; };
@@ -1660,6 +1663,7 @@
 				EAA5760B1BB7E1F700661A4F /* ProfileIconCell.swift in Sources */,
 				EAA575FD1BB7D31500661A4F /* Bond+ReactiveCocoa.swift in Sources */,
 				EAA5760F1BB7E2E000661A4F /* TransitionManager.swift in Sources */,
+				EAA576111BB7E3A900661A4F /* IntegrationCell.swift in Sources */,
 				EAA576081BB7E04C00661A4F /* BaseViewController.swift in Sources */,
 				EA42D64C1BB7BE4700B07526 /* Errors.swift in Sources */,
 				EA42D6541BB7C33100B07526 /* UpgradeService.swift in Sources */,
@@ -1670,6 +1674,8 @@
 				EAE067211B71850F00A2FF76 /* MuteChecker.m in Sources */,
 				EA42D64F1BB7BE5D00B07526 /* SBConstants.swift in Sources */,
 				EAA576011BB7DC5B00661A4F /* DurationTimer.swift in Sources */,
+				EAA576121BB7E3BB00661A4F /* IntegrationWebViewController.swift in Sources */,
+				EAA576131BB7E40400661A4F /* IntegrationsViewController.swift in Sources */,
 				EAA575F51BB7CD8000661A4F /* VolumeViewModel.swift in Sources */,
 				EAA576021BB7DC6A00661A4F /* RecordButton.swift in Sources */,
 				EAA576051BB7DED100661A4F /* EditorViewController.swift in Sources */,

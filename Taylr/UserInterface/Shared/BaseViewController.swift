@@ -57,7 +57,7 @@ extension UIViewController {
         return execute(producer, showProgress: showProgress)
     }
     
-    func wrapFuture<T, E>(showProgress: Bool = false, @noescape future: () -> Future<T, E>) -> Future<T, E> {
+    func wrapFuture<T, E>(showProgress showProgress: Bool = false, @noescape future: () -> Future<T, E>) -> Future<T, E> {
         let future = future()
         execute(future.producer, showProgress: showProgress)
         return future.observeOn(UIScheduler()).toFuture()
@@ -112,7 +112,7 @@ class BaseViewController : UIViewController {
             }
         }
         segueAction = Action { [weak self] identifier -> Result<Void, NoError> in
-            self.map { $0.performSegue(identifier, sender: $0) }
+            if let s = self { s.performSegue(identifier, sender: s) }
             return Result(value: ())
         }
         showProgress = MutableProperty(false)
