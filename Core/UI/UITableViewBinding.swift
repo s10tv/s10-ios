@@ -9,10 +9,12 @@
 import UIKit
 import ReactiveCocoa
 
-public class TableViewBinding<Source: ArrayPropertyType> : NSObject, UITableViewDataSource {
+public class TableViewBinding<Source: ArrayPropertyType, T where Source.ElementType == T> : NSObject, UITableViewDataSource {
+    public typealias CellFactory = ((UITableView, T, Int) -> UITableViewCell)
     
     public private(set) weak var tableView: UITableView?
     public var source: Source?
+    public var createCell: CellFactory?
     
     let rowAnimation: UITableViewRowAnimation
     
@@ -20,6 +22,7 @@ public class TableViewBinding<Source: ArrayPropertyType> : NSObject, UITableView
         self.tableView = tableView
         self.rowAnimation = rowAnimation
         super.init()
+        tableView.dataSource = self
     }
     
     func performOperation(operation: ArrayOperation) {
@@ -39,8 +42,9 @@ public class TableViewBinding<Source: ArrayPropertyType> : NSObject, UITableView
         }
     }
     
-    func bind(source: Source) {
+    func bind(source: Source, createCell: CellFactory) {
         self.source = source
+        self.createCell = createCell
         tableView?.reloadData()
         source.changes.observeNext { [weak self] operation in
             self?.performOperation(operation)
@@ -50,16 +54,40 @@ public class TableViewBinding<Source: ArrayPropertyType> : NSObject, UITableView
     // MARK: - UITableViewDataSource
     
     @objc public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return source?.array.count ?? 0
+        return source!.array.count
     }
     
     @objc public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        return createCell!(tableView, source![indexPath.row], indexPath.row)
     }
 }
 
-//extension UITableView {
-//    private struct AssociatedKeys {
-//        static var BindingKey = "bindingKey"
-//    }
-//}
+private var kTableBinding: UInt8 = 0;
+
+extension UITableView {
+    
+    public var binding: AnyObject? { // TODO: Figure out a strongly typed way to do this
+        get { return objc_getAssociatedObject(self, &kTableBinding) }
+        set { objc_setAssociatedObject(self, &kTableBinding, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
+    }
+    
+    public func bindTo<Source: ArrayPropertyType, T where Source.ElementType == T>(source: Source, createCell: (UITableView, T, Int) -> UITableViewCell) -> TableViewBinding<Source, T> {
+        let binding = TableViewBinding<Source, T>(tableView: self)
+        binding.bind(source, createCell: createCell)
+        self.binding = binding
+        return binding
+    }
+    
+    public func bindTo<Source: ArrayPropertyType, C: BindableCell where Source.ElementType == C.ViewModel>(source: Source, cell: C.Type) -> TableViewBinding<Source, Source.ElementType> {
+        let reuseId = cell.reuseId()
+        return bindTo(source) { tableView, vm, row in
+            let cell = tableView.dequeueReusableCellWithIdentifier(reuseId, forIndexPath: NSIndexPath(forRow: row, inSection: 0))
+            (cell as! C).bind(vm)
+            return cell
+        }
+    }
+    
+    public func unbind() {
+        self.binding = nil
+    }
+}
