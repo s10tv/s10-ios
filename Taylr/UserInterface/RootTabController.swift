@@ -25,15 +25,15 @@ class RootTabController : UITabBarController {
         
         let nav = self.navigationController as? RootNavController
         Globals.accountService.state.producer
-            |> takeWhile { $0.onboardingNeeded == false }
-            |> start(completed: {
+            .takeWhile { $0.onboardingNeeded == false }
+            .startWithCompleted {
                 nav?.goToLogin()
-            })
-        vm.chatsBadge.producer.start(next: { [weak self] badge in
-            if let item = self?.tabBar.items?[2] as? UITabBarItem {
+            }
+        vm.chatsBadge.producer.startWithNext { [weak self] badge in
+            if let item = self?.tabBar.items?[2] {
                 item.badgeValue = badge
             }
-        })
+        }
     }
     
     override func viewWillAppear(animated: Bool) {

@@ -20,14 +20,14 @@ class TransitionManager : NSObject, UINavigationControllerDelegate {
     func navigationController(navigationController: UINavigationController, animationControllerForOperation operation: UINavigationControllerOperation, fromViewController fromVC: UIViewController, toViewController toVC: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         
         switch (fromVC, toVC) {
-        case (_ as DiscoverViewController, _ as MeViewController):
-            return ScrollTransition(fromVC: fromVC, toVC: toVC, direction: .LeftToRight, panGesture: currentEdgePan)
-        case (_ as MeViewController, _ as DiscoverViewController):
-            return ScrollTransition(fromVC: fromVC, toVC: toVC, direction: .RightToLeft, panGesture: currentEdgePan)
-        case (_ as DiscoverViewController, _ as ChatsViewController):
-            return ScrollTransition(fromVC: fromVC, toVC: toVC, direction: .RightToLeft, panGesture: currentEdgePan)
-        case (_ as ChatsViewController, _ as DiscoverViewController):
-            return ScrollTransition(fromVC: fromVC, toVC: toVC, direction: .LeftToRight, panGesture: currentEdgePan)
+//        case (_ as DiscoverViewController, _ as MeViewController):
+//            return ScrollTransition(fromVC: fromVC, toVC: toVC, direction: .LeftToRight, panGesture: currentEdgePan)
+//        case (_ as MeViewController, _ as DiscoverViewController):
+//            return ScrollTransition(fromVC: fromVC, toVC: toVC, direction: .RightToLeft, panGesture: currentEdgePan)
+//        case (_ as DiscoverViewController, _ as ChatsViewController):
+//            return ScrollTransition(fromVC: fromVC, toVC: toVC, direction: .RightToLeft, panGesture: currentEdgePan)
+//        case (_ as ChatsViewController, _ as DiscoverViewController):
+//            return ScrollTransition(fromVC: fromVC, toVC: toVC, direction: .LeftToRight, panGesture: currentEdgePan)
             
         default:
             return nil
