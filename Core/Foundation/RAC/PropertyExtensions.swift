@@ -88,31 +88,31 @@ extension MutablePropertyType {
 // MARK: - Property Extensions
 
 extension MutableProperty {
-    convenience init(_ initialValue: T, @noescape _ block: () -> SignalProducer<T, ReactiveCocoa.NoError>) {
+    public convenience init(_ initialValue: T, @noescape _ block: () -> SignalProducer<T, ReactiveCocoa.NoError>) {
         self.init(initialValue)
         self <~ block()
     }
     
-    convenience init(_ initialValue: T, @noescape _ block: () -> Signal<T, ReactiveCocoa.NoError>) {
+    public convenience init(_ initialValue: T, @noescape _ block: () -> Signal<T, ReactiveCocoa.NoError>) {
         self.init(initialValue)
         self <~ block()
     }
 }
 
 extension PropertyOf {
-    init(_ constantValue: T) {
+    public init(_ constantValue: T) {
         self.init(ConstantProperty(constantValue))
     }
     
-    init(_ initialValue: T, _ producer: SignalProducer<T, ReactiveCocoa.NoError>) {
+    public init(_ initialValue: T, _ producer: SignalProducer<T, ReactiveCocoa.NoError>) {
         self.init(MutableProperty(initialValue, { producer }))
     }
     
-    init(_ initialValue: T, @noescape _ block: () -> SignalProducer<T, ReactiveCocoa.NoError>) {
+    public init(_ initialValue: T, @noescape _ block: () -> SignalProducer<T, ReactiveCocoa.NoError>) {
         self.init(MutableProperty(initialValue, block))
     }
     
-    init(_ initialValue: T, @noescape _ block: () -> Signal<T, ReactiveCocoa.NoError>) {
+    public init(_ initialValue: T, @noescape _ block: () -> Signal<T, ReactiveCocoa.NoError>) {
         self.init(MutableProperty(initialValue, block))
     }
 }

@@ -9,7 +9,7 @@
 import Foundation
 import AnalyticsSwift
 import Core
-import Appsee
+//import Appsee
 //import Heap
 
 class AnalyticsService {
@@ -19,7 +19,7 @@ class AnalyticsService {
     init(env: TaylrEnvironment, meteorService: MeteorService) {
         // Segmentio
         segment = AnalyticsSwift.Analytics.create(env.segmentWriteKey)
-        Appsee.start(env.appseeApiKey)
+//        Appsee.start(env.appseeApiKey)
         
 //        // Heap
 //        Heap.setAppId(env.heapAppId)
@@ -34,24 +34,24 @@ class AnalyticsService {
             identifyUser(env.deviceId)
         }
 
-        meteorService.userId.producer.start(next: { userId in
+        meteorService.userId.producer.startWithNext { userId in
             if let userId = userId {
                 self.identifyUser(userId)
             }
-        })
+        }
     }
     
     private func identify(userId: String?, traits: [String: AnyObject]? = nil) {
         self.userId = userId
-        Appsee.setUserID(userId)
+//        Appsee.setUserID(userId)
         // Send traits up to our own backend server
-        if let traits = traits {
-            for (key, value) in traits {
-                // TODO: Put stuff into Meteor.meta as needed
-                // or some other channel that's easily viewable from server
-//                Meteor.meta.setValue(value, metadataKey: key)
-            }
-        }
+//        if let traits = traits {
+//            for (key, value) in traits {
+//                // TODO: Put stuff into Meteor.meta as needed
+//                // or some other channel that's easily viewable from server
+////                Meteor.meta.setValue(value, metadataKey: key)
+//            }
+//        }
         segment.enqueue(IdentifyMessageBuilder().traits(traits ?? [:]).userId(userId ?? ""))
         segment.flush()
         Log.verbose("[analytics] identify \(userId) traits: \(traits)")

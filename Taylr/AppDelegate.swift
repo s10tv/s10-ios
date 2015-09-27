@@ -17,18 +17,18 @@ import UIKit
 //import RealmSwift
 //import Core
 //
-//// Globally accessible variables and shorthands
-//private struct _GlobalsContainer {
-//    static var instance: GlobalsContainer!
-//}
-//let Globals = _GlobalsContainer.instance
-//
-//// Shorthand services because they are used all over the place
-//let Meteor = Globals.meteorService
-//let Analytics = Globals.analyticsService
-//
-//let AppDidRegisterUserNotificationSettings = "AppDidRegisterUserNotificationSettings"
-//let DidTouchStatusBar = "DidTouchStatusBar"
+// Globally accessible variables and shorthands
+private struct _GlobalsContainer {
+    static var instance: GlobalsContainer!
+}
+let Globals = _GlobalsContainer.instance
+
+// Shorthand services because they are used all over the place
+let Meteor = Globals.meteorService
+let Analytics = Globals.analyticsService
+
+let AppDidRegisterUserNotificationSettings = "AppDidRegisterUserNotificationSettings"
+let DidTouchStatusBar = "DidTouchStatusBar"
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */ {
