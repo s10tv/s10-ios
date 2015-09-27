@@ -7,112 +7,58 @@
 //
 
 import Foundation
+import ReactiveCocoa
+import Bond
 
-//
-//// MARK: - ReactiveCocoa + SwiftBonds
-//
-//private class RetainingDynamicArray<T>: DynamicArray<T> {
-//    override init(_ v: Array<T>) {
-//        super.init(v)
-//    }
-//    var retainedObjects: [AnyObject] = []
-//    func retain(object: AnyObject) {
-//        retainedObjects.append(object)
-//    }
-//}
-//
-//func toBondDynamicArray<T, P: PropertyType where P.Value == [T]>(property: P) -> DynamicArray<T> {
-//    let dyn = RetainingDynamicArray<T>(property.value)
-//    dyn.retain(Box(property))
-//    property.producer.start(next: { [weak dyn] value in
-//        dyn?.value = value
-//    })
-//    return dyn
-//}
-//
-//func toBondDynamic<T, P: PropertyType where P.Value == T>(property: P) -> Dynamic<T> {
-//    let dyn = InternalDynamic<T>(property.value)
-//    dyn.retain(Box(property))
-//    property.producer.start(next: { [weak dyn] value in
-//        dyn?.value = value
-//    })
-//    return dyn
-//}
-//
-///// Output Dynamic retains input property
-//func toBondDynamic<T, P: MutablePropertyType where P.Value == T>(property: P) -> Dynamic<T> {
-//    var updatingFromSelf = false
-//    let reverseBond = Bond<T>() { [weak property] v in
-//        if !updatingFromSelf {
-//            property?.value = v
-//        }
-//    }
-//    let dyn = InternalDynamic<T>(property.value)
-//    dyn.retain(Box(property))
-//    dyn.retain(reverseBond)
-//    property.producer.start(next: { [weak dyn] value in
-//        updatingFromSelf = true
-//        dyn?.value = value
-//        updatingFromSelf = false
-//    })
-//    reverseBond.bind(dyn, fire: false, strongly: false)
-//    return dyn
-//}
-//
-///// Output PropertyOf which retains source dynamic
-//func fromBondDynamic<T, D: Dynamical where D.DynamicType == T>(d: D) -> PropertyOf<T> {
-//    return fromBondDynamic(d.designatedDynamic)
-//}
-//
-///// Output PropertyOf which retains source dynamic
-//func fromBondDynamic<T>(dynamic: Dynamic<T>) -> PropertyOf<T> {
-//    let (signal, sink) = Signal<T, ReactiveCocoa.NoError>.pipe()
-//    let bond = Bond<T>() { value in
-//        sendNext(sink, value)
-//    }
-//    bond.bind(dynamic, fire: false, strongly: true)
-//    return PropertyOf(dynamic.value) {
-//        return signal |> map { v in
-//            let retainedBond = bond // Force retain bond
-//            return v
-//        }
-//    }
-//}
-//
-//// MARK: Bindings
-//
-//extension UITextField : Bondable, Dynamical {
-//}
-//extension UITextView : Dynamical {
-//}
-//
-//// Two way bind
-//
-//func <->> <T, P: MutablePropertyType where P.Value == T>(left: P, right: Dynamic<T>) {
-//    toBondDynamic(left) <->> right
-//}
-//
-//func <->> <D: Dynamical, P: MutablePropertyType where D.DynamicType == P.Value>(left: P, right: D) {
-//    toBondDynamic(left) <->> right.designatedDynamic
-//}
-//
-//// Bind and fire
-//
-//func ->> <P: PropertyType, T where P.Value == T>(left: P, right: Bond<T>) {
-//    toBondDynamic(left) ->> right
-//}
-//
-//func ->> <T: PropertyType, U: Bondable where T.Value == U.BondType>(left: T, right: U) {
-//    toBondDynamic(left) ->> right.designatedBond
-//}
-//
-//// Bind only
-//
-//func ->| <P: PropertyType, T where P.Value == T>(left: P, right: Bond<T>) {
-//    toBondDynamic(left) ->| right
-//}
-//
-//func ->| <T: PropertyType, U: Bondable where T.Value == U.BondType>(left: T, right: U) {
-//    toBondDynamic(left) ->| right.designatedBond
-//}
-//
+// MARK: - ReactiveCocoa + SwiftBonds
+
+private class BridgeDisposable : Bond.DisposableType {
+    let disposable: ReactiveCocoa.Disposable
+    var isDisposed: Bool { return disposable.disposed }
+    
+    init(_ disposable: ReactiveCocoa.Disposable) {
+        self.disposable = disposable
+    }
+    func dispose() {
+        disposable.dispose()
+    }
+}
+
+extension Disposable {
+    private func bnd() -> Bond.DisposableType {
+        return BridgeDisposable(self)
+    }
+}
+
+public extension PropertyType {
+    public func bindTo<B: BindableType where B.Element == Value>(bindable: B) -> DisposableType {
+        let disposable = SerialDisposable(otherDisposable: nil)
+        let sink = bindable.sink(disposable)
+        disposable.otherDisposable = producer.startWithNext(sink).bnd()
+        return disposable
+    }
+}
+
+public extension MutablePropertyType {
+    public func bidirectionalBindTo<B: BindableType where B: EventProducerType, B.EventType == Value, B.Element == Value>(bindable: B) -> DisposableType {
+        let d1 = bindTo(bindable)
+        let d2 = bindable.observeNew { [weak self] value in
+            self?.value = value
+        }
+        return Bond.CompositeDisposable([d1, d2])
+    }
+}
+
+public func ->> <O: PropertyType, B: BindableType where B.Element == O.Value>(source: O, destination: B) -> DisposableType {
+    return source.bindTo(destination)
+}
+
+public func ->>< <O: MutablePropertyType, B: BindableType where B: EventProducerType, B.EventType == O.Value, B.Element == O.Value>(source: O, destination: B) -> DisposableType {
+    return source.bidirectionalBindTo(destination)
+}
+
+// MARK: - ReactiveCocoa only binding
+
+public func ->> <P: PropertyType, T where P.Value == T>(source: P, sink: Event<T, NoError>.Sink) -> Disposable {
+    return source.producer.start(sink)
+}

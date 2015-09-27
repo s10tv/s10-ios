@@ -145,6 +145,9 @@
 		EAA575F51BB7CD8000661A4F /* VolumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE067181B717AD500A2FF76 /* VolumeViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA575F61BB7CD9600661A4F /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE067221B71851E00A2FF76 /* AudioController.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA575F71BB7CE3000661A4F /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA394B0F1B5E16F2009184EB /* PlayerViewModel.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA575FA1BB7CFD900661A4F /* Bond+JSBadgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA24E9221B69E2BF00261873 /* Bond+JSBadgeView.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA575FC1BB7D0F000661A4F /* Bond+SDWebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBA91B3930B000701F08 /* Bond+SDWebImage.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA575FD1BB7D31500661A4F /* Bond+ReactiveCocoa.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA42D6321BB7B1C700B07526 /* Bond+ReactiveCocoa.swift */; settings = {ASSET_TAGS = (); }; };
 		EABA05461B474FED00154C75 /* test-avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EABA05451B474FED00154C75 /* test-avatar.jpg */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
 		EAE067201B71850F00A2FF76 /* MuteChecker.caf in Resources */ = {isa = PBXBuildFile; fileRef = EAE0671D1B71850F00A2FF76 /* MuteChecker.caf */; };
@@ -284,7 +287,6 @@
 		EA49286D1ADF291100118639 /* UpgradeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeService.swift; sourceTree = "<group>"; };
 		EA50220F1B54AC4B00BC92D2 /* TestNSObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestNSObject.m; sourceTree = "<group>"; };
 		EA5773491B6C214E00BCF449 /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
-		EA57734D1B6C5D6800BCF449 /* Bond+UIButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bond+UIButton.swift"; sourceTree = "<group>"; };
 		EA57734F1B6C652800BCF449 /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
 		EA588DB71B5F1437000962B8 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		EA5B74061B30F7BB008E5CBC /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -777,7 +779,6 @@
 				EA7134111B56E47100B810F6 /* ImagePickerExtensions.swift */,
 				EA24E9221B69E2BF00261873 /* Bond+JSBadgeView.swift */,
 				EA95BBA91B3930B000701F08 /* Bond+SDWebImage.swift */,
-				EA57734D1B6C5D6800BCF449 /* Bond+UIButton.swift */,
 				EA42D6321BB7B1C700B07526 /* Bond+ReactiveCocoa.swift */,
 			);
 			path = Extensions;
@@ -1641,6 +1642,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA42D64E1BB7BE5A00B07526 /* StyleKit.swift in Sources */,
+				EAA575FD1BB7D31500661A4F /* Bond+ReactiveCocoa.swift in Sources */,
 				EA42D64C1BB7BE4700B07526 /* Errors.swift in Sources */,
 				EA42D6541BB7C33100B07526 /* UpgradeService.swift in Sources */,
 				EA42D6531BB7C2C500B07526 /* AnalyticsService.swift in Sources */,
@@ -1658,6 +1660,8 @@
 				EA42D6551BB7C35100B07526 /* AccountService.swift in Sources */,
 				EA42D65B1BB7C66600B07526 /* MediaExtension.swift in Sources */,
 				EA42D65F1BB7C67900B07526 /* DesignableViews.swift in Sources */,
+				EAA575FC1BB7D0F000661A4F /* Bond+SDWebImage.swift in Sources */,
+				EAA575FA1BB7CFD900661A4F /* Bond+JSBadgeView.swift in Sources */,
 				EA42D6621BB7CD0A00B07526 /* AVKit.swift in Sources */,
 				EA42D64B1BB7BE3600B07526 /* TaylrEnvironment.swift in Sources */,
 				EA42D6501BB7BE6100B07526 /* ResourceExtension.swift in Sources */,

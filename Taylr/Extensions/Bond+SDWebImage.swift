@@ -7,41 +7,15 @@
 //
 
 import UIKit
-import Bond
 import SDWebImage
 import Core
 
-var imageURLDynamicHandleUIImageView: UInt8 = 0;
-var placeholderimageDynamicHandleUIImageView: UInt8 = 0;
-var imageBondDynamicHandleUIImageView: UInt8 = 0;
+var kPlaceholderImage: UInt8 = 0;
 
 extension UIImageView {
-    public var dynPlaceholderImage: UIImage? {
-        get {
-            return objc_getAssociatedObject(self, &placeholderimageDynamicHandleUIImageView) as? UIImage
-        }
-        set {
-            objc_setAssociatedObject(self, &placeholderimageDynamicHandleUIImageView,
-                newValue, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
-        }
-    }
-    
-    public var dynImageURL: Dynamic<NSURL?> {
-        if let d: AnyObject = objc_getAssociatedObject(self, &imageURLDynamicHandleUIImageView) {
-            return (d as? Dynamic<NSURL?>)!
-        } else {
-            let d = InternalDynamic<NSURL?>(self.sd_imageURL())
-            let bond = Bond<NSURL?>() { [weak self] v in if let s = self { s.sd_setImageWithURL(v, placeholderImage: s.dynPlaceholderImage) } }
-            d.bindTo(bond, fire: false, strongly: false)
-            d.retain(bond)
-            objc_setAssociatedObject(self, &imageURLDynamicHandleUIImageView, d, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
-            return d
-        }
-    }
-    
-    public func unbindDynImageURL() {
-        dynImageURL.valueBond.unbindAll()
-        sd_cancelCurrentImageLoad()
+    public var placeholderImage: UIImage? {
+        get { return objc_getAssociatedObject(self, &kPlaceholderImage) as? UIImage }
+        set { objc_setAssociatedObject(self, &kPlaceholderImage, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
     }
     
     public func bindImage(image: Image?) {
@@ -49,22 +23,15 @@ extension UIImageView {
         if let image = image?.image {
             self.image = image
         } else if let url = image?.url {
-            sd_setImageWithURL(url, placeholderImage: dynPlaceholderImage)
+            sd_setImageWithURL(url, placeholderImage: placeholderImage)
         } else {
-            self.image = dynPlaceholderImage
+            self.image = placeholderImage
         }
     }
     
-    public var imageBond: Bond<Image?> {
-        if let d: AnyObject = objc_getAssociatedObject(self, &imageBondDynamicHandleUIImageView) {
-            return (d as? Bond<Image?>)!
-        } else {
-            let bond = Bond<Image?>() { [weak self] v in if let s = self {
-                s.bindImage(v)
-            }}
-            objc_setAssociatedObject(self, &imageBondDynamicHandleUIImageView, bond, objc_AssociationPolicy(OBJC_ASSOCIATION_RETAIN_NONATOMIC))
-            return bond
-        }
+    public func unbindImage() {
+        self.image = placeholderImage
+        sd_cancelCurrentImageLoad()
     }
 }
 
