@@ -87,5 +87,6 @@ extension UICollectionView {
     
     public func unbind() {
         self.binding = nil
+        self.reloadData()
     }
 }

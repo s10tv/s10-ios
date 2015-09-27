@@ -29,8 +29,7 @@ class IntegrationsViewController : UICollectionViewController {
         super.viewDidLoad()
         // Get rid of warnings around initial item width too large
         updateLayoutItemSize()
-        // MAJOR TODO: Bind IntegrationModels to CollectionView
-//        vm.integrations.map(collectionView!.factory(IntegrationCell)) ->> collectionView!
+        collectionView?.bindTo(vm.integrations, cell: IntegrationCell.self)
     }
     
     override func viewWillLayoutSubviews() {

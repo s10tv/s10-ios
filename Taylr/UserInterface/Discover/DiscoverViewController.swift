@@ -28,8 +28,7 @@ class DiscoverViewController : BaseViewController {
         super.viewDidLoad()
         
         collectionView.emptyDataSetSource = self
-        // MAJOR TODO: Make this work
-//        vm.candidate.map(collectionView.factory(TodayCell)) ->> collectionView
+        collectionView.bindTo(vm.candidate, cell: TodayCell.self)
         vm.candidate.changes.observeNext { [weak self] _ in
             self?.collectionView.reloadEmptyDataSet()
         }
