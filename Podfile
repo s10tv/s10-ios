@@ -46,7 +46,7 @@ target :Core do
         pod 'Bond', '~> 4.0.0-beta3' # For UI bindings only
         pod 'SwipeView', '~> 1.3'
         pod 'SDWebImage', '~> 3.7'
-        pod 'PKHUD', :git => 'https://github.com/tonyxiao/PKHUD' # Fork is needed to work around xcasset compilation issue inside pod
+        pod 'PKHUD', :git => 'https://github.com/tonyxiao/PKHUD', :branch => 'swift2' # Fork is needed to work around xcasset compilation issue inside pod
         pod 'SCRecorder', '~> 2.5'
 
         pod 'DZNEmptyDataSet', :git => 'https://github.com/dzenbot/DZNEmptyDataSet.git' # Fork is needed to work around the crash
@@ -59,7 +59,7 @@ target :Core do
 
         # 3rd Party Service SDKs
         pod 'FBSDKLoginKit', '~> 4.6'
-        pod 'AnalyticsSwift', '~> 0.1.0'
+        pod 'AnalyticsSwift', :git => 'https://github.com/tonyxiao/analytics-swift.git'
         pod 'Heap', '~> 2.2'
         pod 'Ouralabs', '~> 2.3'
 
