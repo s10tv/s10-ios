@@ -24,8 +24,8 @@ struct VideoSession {
     
     func exportWithFirstFrame() -> Future<(NSURL, UIImage), NSError> {
         let videoURL = export()
-        let firstFrame = videoURL |> flatMap(AVKit.exportFirstFrame)
-        return zip(videoURL.producer, firstFrame.producer) |> toFuture
+        let firstFrame = videoURL.flatMap(AVKit.exportFirstFrame)
+        return zip(videoURL.producer, firstFrame.producer).toFuture()
     }
 }
 
@@ -63,7 +63,7 @@ class AVKit {
     class func exportFirstFrame(url: NSURL) -> Future<UIImage, NSError> {
         let generator = AVAssetImageGenerator(asset: AVURLAsset(URL: url, options: nil))
         generator.appliesPreferredTrackTransform = true
-        return generator.generateImages([CMTimeMake(1, 60)]) |> toFuture
+        return generator.generateImages([CMTimeMake(1, 60)]).toFuture()
     }
     
     class func allFilters() -> [SCFilter] {
@@ -92,9 +92,9 @@ extension AVAssetImageGenerator {
             self.generateCGImagesAsynchronouslyForTimes(times) { requestTime, image, actualTime, result, error in
                 switch result {
                 case .Succeeded:
-                    sendNext(sink, UIImage(CGImage: image)!)
+                    sendNext(sink, UIImage(CGImage: image!))
                 case .Failed:
-                    sendError(sink, error)
+                    sendError(sink, error!)
                 case .Cancelled:
                     sendInterrupted(sink)
                 }

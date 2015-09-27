@@ -23,7 +23,7 @@ protocol PlayerDelegate : class {
 }
 
 private func findVideo(video: PlayableVideo?, inPlaylist playlist: [PlayableVideo]) -> Int? {
-    for (index, v) in enumerate(playlist) {
+    for (index, v) in playlist.enumerate() {
         if v.uniqueId == video?.uniqueId {
             return index
         }
@@ -52,12 +52,12 @@ class PlayerViewModel {
     var finishedAtIndex: Int?
     
     init() {
-        videoURL = currentVideo |> map { $0?.url }
+        videoURL = currentVideo.map { $0?.url }
         isPlaying = PropertyOf(_isPlaying)
         unfinishedVideoDuration = PropertyOf(0, combineLatest(
             currentVideo.producer,
             playlist.producer
-        ) |> map {currentVideo, playlist in
+        ).map {currentVideo, playlist in
             let i = findVideo(currentVideo, inPlaylist: playlist) ?? 0
             return playlist[i..<playlist.count]
                 .map { $0.duration }
@@ -66,24 +66,24 @@ class PlayerViewModel {
         currentVideoProgress = PropertyOf(0, combineLatest(
             currentVideo.producer,
             currentTime.producer
-        ) |> map { video, time in
+        ).map { video, time in
             video.map { Float(min(time / $0.duration, 1)) } ?? 0
         })
         totalDurationLeft = PropertyOf("", combineLatest(
             currentTime.producer,
             unfinishedVideoDuration.producer
-        ) |> map { currentTime, unfinishedVideoDuration in
+        ).map { currentTime, unfinishedVideoDuration in
             let secondsLeft = Int(ceil(max(unfinishedVideoDuration - currentTime, 0)))
             return "\(secondsLeft)"
         })
-        hideView = currentVideo |> map { $0 == nil }
+        hideView = currentVideo.map { $0 == nil }
         // If we are at the end and new video arrives we'll automatically try to play it
-        playlist.producer.start(next: { [weak self] playlist in
+        playlist.producer.startWithNext { [weak self] playlist in
             if let this = self,
             let index = this.finishedAtIndex where index < playlist.count - 1 {
                 this.seekVideo(playlist[index + 1])
             }
-        })
+        }
     }
     
     func prevVideo() -> PlayableVideo? {
@@ -132,10 +132,10 @@ class PlayerViewModel {
     private func seekVideo(video: PlayableVideo?) -> Bool {
         Log.debug("Will seek video with id \(video?.uniqueId) url: \(video?.url)")
         finishedAtIndex = nil
-        currentVideo.value.map { delegate?.player(self, didPlayVideo: $0) }
+        if let v = currentVideo.value { delegate?.player(self, didPlayVideo: v) }
         currentTime.value = 0
         currentVideo.value = video
-        video.map { delegate?.player(self, willPlayVideo: $0) }
+        if let v = video { delegate?.player(self, willPlayVideo: v) }
         return video != nil
     }
     

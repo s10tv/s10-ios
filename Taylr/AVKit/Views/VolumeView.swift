@@ -9,7 +9,6 @@
 import UIKit
 import MediaPlayer
 import ReactiveCocoa
-import Bond
 import Core
 
 @IBDesignable

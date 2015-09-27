@@ -48,7 +48,7 @@ enum AudioCategory {
         case AVAudioSessionCategoryAudioProcessing: return .AudioProcessing
         case AVAudioSessionCategoryMultiRoute: return .MultiRoute
         default:
-            println("WARNING: Unrecongized category provided \(category)")
+            print("WARNING: Unrecongized category provided \(category)")
             return .SoloAmbient
         }
     }
@@ -67,8 +67,8 @@ class AudioController {
         let nc = NSNotificationCenter.defaultCenter()
         audioSession = AVAudioSession.sharedInstance()
         audioCategory = MutableProperty(audioSession.audioCategory)
-        audioCategory <~ nc.rac_notifications(name:AVAudioSessionRouteChangeNotification, object: nil)
-            |> map { note -> AudioCategory? in
+        audioCategory <~ nc.rac_notifications(AVAudioSessionRouteChangeNotification, object: nil)
+           .map { note -> AudioCategory? in
                 Log.debug("Did receive audio route change notification \(note.userInfo)")
                 if let reason = (note.userInfo?[AVAudioSessionRouteChangeReasonKey]?.intValue)
                     .flatMap({ AVAudioSessionRouteChangeReason(rawValue: UInt($0)) }),
@@ -78,18 +78,18 @@ class AudioController {
                 }
                 return nil
             }
-            |> ignoreNil
-            |> observeOn(QueueScheduler.mainQueueScheduler)
+           .ignoreNil()
+           .observeOn(QueueScheduler.mainQueueScheduler)
         _systemVolume = MutableProperty(audioSession.outputVolume)
-        _systemVolume <~ nc.rac_notifications(name:"AVSystemController_SystemVolumeDidChangeNotification", object: nil)
-            |> map { $0.userInfo?["AVSystemController_AudioVolumeNotificationParameter"]?.floatValue ?? 0 }
+        _systemVolume <~ nc.rac_notifications("AVSystemController_SystemVolumeDidChangeNotification", object: nil)
+           .map { $0.userInfo?["AVSystemController_AudioVolumeNotificationParameter"]?.floatValue ?? 0 }
         systemVolume = PropertyOf(_systemVolume)
         muteSwitchOn = MutableProperty(false)
         muted = PropertyOf(false, combineLatest(
             muteSwitchOn.producer,
             systemVolume.producer,
             audioCategory.producer
-        ) |> map { muteSwitchOn, volume, category in
+        ).map { muteSwitchOn, volume, category in
             if muteSwitchOn && category.respectsMuteSwitch {
                 return true
             }
@@ -109,12 +109,15 @@ class AudioController {
     
     func setAudioCategory(category: AudioCategory) {
         if category != audioSession.audioCategory {
-            var error: NSError?
-            if category == .PlaybackAndRecord {
-                let options: AVAudioSessionCategoryOptions = .DefaultToSpeaker
-                audioSession.setCategory(category.string, withOptions: options, error:&error)
-            } else {
-                audioSession.setCategory(category.string, error:&error)
+            do {
+                if category == .PlaybackAndRecord {
+                    let options: AVAudioSessionCategoryOptions = .DefaultToSpeaker
+                    try audioSession.setCategory(category.string, withOptions: options)
+                } else {
+                    try audioSession.setCategory(category.string)
+                }
+            } catch let error as NSError {
+                Log.error("Failed to set audioSession category", error)
             }
             assert(audioSession.audioCategory == category, "Failed to set audio category")
         }

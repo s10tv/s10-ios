@@ -22,11 +22,11 @@ struct VolumeViewModel {
     init() {
         audio = AudioController.sharedController
         icon = audio.muted
-            |> map { $0 ? VolumeViewModel.mutedIcon : VolumeViewModel.normalIcon }
+           .map { $0 ? VolumeViewModel.mutedIcon : VolumeViewModel.normalIcon }
         value = PropertyOf(0, combineLatest(
             audio.muted.producer,
             audio.systemVolume.producer
-        ) |> map { $0 ? 0 : $1 } |> skipRepeats)
+        ).map { $0 ? 0 : $1 }.skipRepeats)
     }
     
     func toggleAudioCategory() {
