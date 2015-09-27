@@ -7,11 +7,9 @@
 //
 
 import Foundation
-
 import Foundation
 import SDWebImage
 import Core
-import Bond
 import ReactiveCocoa
 
 class CandidateCell : UICollectionViewCell, BindableCell {
@@ -29,15 +27,15 @@ class CandidateCell : UICollectionViewCell, BindableCell {
         nameLabel.text = vm.displayName
         reasonLabel.text = vm.reason
         
-        vm.profileIcons.map(serviceIconsView.factory(ProfileIconCell)) ->> serviceIconsView
+        serviceIconsView.bindTo(vm.profileIcons, cell: ProfileIconCell.self)
         serviceIconsView.invalidateIntrinsicContentSize()
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         avatarView.image = nil
-        avatarView.unbindDynImageURL()
-        serviceIconsView.designatedBond.unbindAll()
+        avatarView.unbindImage()
+        serviceIconsView.unbind()
     }
     
     override func awakeFromNib() {
