@@ -20,7 +20,7 @@ target :Core do
     pod 'ObjectMapper', '~> 0.17'
 
     # Networking
-    pod 'Alamofire', '~> 3.0.0-beta.1'
+    pod 'Alamofire', '~> 3.0.0-beta.2'
 
     # UI
     pod 'Cartography', '~> 0.6'
@@ -43,7 +43,7 @@ target :Core do
     target :Taylr do
         link_with 'Taylr'
 
-        pod 'Bond', '~> 4.0.0-beta3' # For UI bindings only
+        pod 'Bond', '~> 4.0' # For UI bindings only
         pod 'SwipeView', '~> 1.3'
         pod 'SDWebImage', '~> 3.7'
         pod 'PKHUD', :git => 'https://github.com/tonyxiao/PKHUD', :branch => 'swift2' # Fork is needed to work around xcasset compilation issue inside pod
@@ -65,7 +65,7 @@ target :Core do
         pod 'Digits', '~> 1.11'
         pod 'Ouralabs', '~> 2.3'
         pod 'Heap', '~> 2.2'
-        pod 'AnalyticsSwift', :git => 'https://github.com/tonyxiao/analytics-swift.git'
+        pod 'AnalyticsSwift', '~> 0.2'
 
         # Debug only
 
