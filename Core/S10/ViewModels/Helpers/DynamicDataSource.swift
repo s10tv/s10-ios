@@ -15,6 +15,15 @@ public protocol BindableCell {
 }
 
 extension UITableView {
+    
+    public func dequeue<C: BindableCell, VM where C.ViewModel == VM>(cell: C.Type, indexPath: NSIndexPath, vm: VM? = nil) -> C {
+        let cell = dequeueReusableCellWithIdentifier(cell.reuseId(), forIndexPath: indexPath) as! C
+        if let vm = vm {
+            cell.bind(vm)
+        }
+        return cell
+    }
+    
     public func factory<C: BindableCell, VM where C.ViewModel == VM>(cell: C.Type, section: Int = 0) -> (VM, Int) -> UITableViewCell {
         let reuseId = cell.reuseId()
         return { [unowned self] vm, row in

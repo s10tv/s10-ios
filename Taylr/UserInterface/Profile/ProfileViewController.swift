@@ -13,6 +13,12 @@ import Bond
 import Core
 
 class ProfileViewController : BaseViewController {
+    
+    enum Section : Int {
+        case Cover = 0
+        case Info = 1
+        case Activities = 2
+    }
 
     @IBOutlet weak var messageButton: UIButton!
     @IBOutlet weak var moreButton: UIButton!
@@ -27,42 +33,17 @@ class ProfileViewController : BaseViewController {
         moreButton.hidden = !vm.showMoreOptions
         messageButton.hidden = !vm.allowMessage
         vm.timeRemaining ->> messageButton.bnd_title
+        tableView.dataSource = self
         
-        // MAJOR TODO: Obviously restore me...
-//        let coverFactory = tableView.factory(ProfileCoverCell)
-//        let taylrProfileFactory = tableView.factory(TaylrProfileInfoCell.self, section: 1)
-//        let connectedProfileFactory = tableView.factory(ConnectedProfileInfoCell.self, section: 1)
-//        let imageCellFactory = tableView.factory(ActivityImageCell.self, section: 2)
-//        let textCellFactory = tableView.factory(ActivityTextCell.self, section: 2)
-
-//        let coverSection = vm.coverVM.map { [unowned self] (vm, index) -> UITableViewCell in
-//            if self.coverCell == nil {
-//                self.coverCell = coverFactory(vm, index) as! ProfileCoverCell
-//            }
-//            return self.coverCell
-//        }
-//        let infoSection = vm.infoVM.map { (vm, index) -> UITableViewCell in
-//            switch vm {
-//            case let vm as TaylrProfileInfoViewModel:
-//                return taylrProfileFactory(vm, index)
-//            case let vm as ConnectedProfileInfoViewModel:
-//                return connectedProfileFactory(vm, index)
-//            default:
-//                fatalError("Unexpected cell type")
-//            }
-//        }
-//        
-//        let activitiesSection = vm.activities.map { (vm, index) -> UITableViewCell in
-//            switch vm {
-//            case let vm as ActivityImageViewModel:
-//                return imageCellFactory(vm, index)
-//            case let vm as ActivityTextViewModel:
-//                return textCellFactory(vm, index)
-//            default:
-//                fatalError("Unexpected cell type")
-//            }
-//        }
-//        DynamicArray([coverSection, infoSection, activitiesSection]) ->> tableView
+        // TODO: Refactor into separate binding & handle more granular changes
+        vm.infoVM.producer.startWithNext { [weak self] _ in
+            self?.tableView.reloadData()
+//            self?.tableView.reloadSections(NSIndexSet(index: Section.Info.rawValue), withRowAnimation: .Automatic)
+        }
+        vm.activities.changes.observeNext { [weak self] _ in
+            self?.tableView.reloadData()
+//            self?.tableView.reloadSections(NSIndexSet(index: Section.Activities.rawValue), withRowAnimation: .Automatic)
+        }
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -144,6 +125,48 @@ class ProfileViewController : BaseViewController {
             }
         }
         presentViewController(alert)
+    }
+}
+
+extension ProfileViewController : UITableViewDataSource {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 3
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch Section(rawValue: section)! {
+        case .Cover: return 1
+        case .Info: return 1
+        case .Activities: return vm.activities.array.count
+        }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        switch Section(rawValue: indexPath.section)! {
+        case .Cover:
+            if coverCell == nil {
+                coverCell = tableView.dequeue(ProfileCoverCell.self, indexPath: indexPath, vm: vm.coverVM)
+            }
+            return coverCell
+        case .Info:
+            switch vm.infoVM.value {
+            case let vm as TaylrProfileInfoViewModel:
+                return tableView.dequeue(TaylrProfileInfoCell.self, indexPath: indexPath, vm: vm)
+            case let vm as ConnectedProfileInfoViewModel:
+                return tableView.dequeue(ConnectedProfileInfoCell.self, indexPath: indexPath, vm: vm)
+            default:
+                fatalError("Unexpected cell type")
+            }
+        case .Activities:
+            switch vm.activities[indexPath.row] {
+            case let vm as ActivityImageViewModel:
+                return tableView.dequeue(ActivityImageCell.self, indexPath: indexPath, vm: vm)
+            case let vm as ActivityTextViewModel:
+                return tableView.dequeue(ActivityTextCell.self, indexPath: indexPath, vm: vm)
+            default:
+                fatalError("Unexpected cell type")
+            }
+        }
     }
 }
 
