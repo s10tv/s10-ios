@@ -9,7 +9,6 @@
 import Foundation
 import CoreData
 import ReactiveCocoa
-import Bond
 
 public struct RootNavViewModel {
     let prefetchedSubscriptions: [MeteorSubscription]

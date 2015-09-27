@@ -8,7 +8,6 @@
 
 import Foundation
 import ReactiveCocoa
-import Bond
 import RealmSwift
 
 func messageLoader(sender: User?) -> () -> [MessageViewModel] {

@@ -8,7 +8,6 @@
 
 import Foundation
 import ReactiveCocoa
-import Bond
 
 public struct CandidateViewModel {
     let user: User

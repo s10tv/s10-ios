@@ -8,7 +8,6 @@
 
 import Foundation
 import ReactiveCocoa
-import Bond
 
 private func supportedActivitiesByUser(user: User) -> NSPredicate {
     let supportedTypes: [Activity.ContentType] = [.Image, .Text]

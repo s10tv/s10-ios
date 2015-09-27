@@ -7,7 +7,6 @@
 
 import Foundation
 import ReactiveCocoa
-import Bond
 
 public struct HistoryViewModel {
     let meteor: MeteorService

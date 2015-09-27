@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Bond
 import ReactiveCocoa
 
 public struct TodayViewModel {

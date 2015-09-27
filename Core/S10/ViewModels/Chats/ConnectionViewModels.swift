@@ -8,7 +8,6 @@
 
 import Foundation
 import ReactiveCocoa
-import Bond
 
 extension Connection {
     func dyn(keyPath: ConnectionKeys) -> DynamicProperty {

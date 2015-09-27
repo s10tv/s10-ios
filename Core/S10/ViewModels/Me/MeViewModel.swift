@@ -9,7 +9,6 @@
 import Foundation
 import Meteor
 import ReactiveCocoa
-import Bond
 
 public struct MeViewModel {
     let meteor: MeteorService

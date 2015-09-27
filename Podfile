@@ -9,7 +9,6 @@ target :Core do
     link_with 'Core'
     # Foundation
     pod 'ReactiveCocoa', '~> 4.0.2-alpha-1'
-    pod 'Bond', '~> 4.0.0-beta3'
     pod 'Async', :git => 'https://github.com/duemunk/Async.git', :branch => 'feature/Swift_2.0'
     pod 'NSLogger', '~> 1.5', :configuration => ['Debug']
 
@@ -26,8 +25,6 @@ target :Core do
     # UI
     pod 'Cartography', '~> 0.6'
     pod 'EDColor', '~> 1.0'
-    pod 'JBKenBurnsView', '~> 1.0'
-
     # ViewModels
     pod 'DateTools', '~> 1.7'
     pod 'FormatterKit/TimeIntervalFormatter', '~> 1.8'
@@ -46,6 +43,7 @@ target :Core do
     target :Taylr do
         link_with 'Taylr'
 
+        pod 'Bond', '~> 4.0.0-beta3' # For UI bindings only
         pod 'SwipeView', '~> 1.3'
         pod 'SDWebImage', '~> 3.7'
         pod 'PKHUD', :git => 'https://github.com/tonyxiao/PKHUD' # Fork is needed to work around xcasset compilation issue inside pod
@@ -57,6 +55,7 @@ target :Core do
         pod 'JVFloatLabeledTextField', '~> 1.1'
         pod 'TPKeyboardAvoiding', '~> 1.2'
         pod 'CHTCollectionViewWaterfallLayout', '~> 0.9'
+        pod 'JBKenBurnsView', '~> 1.0'
 
         # 3rd Party Service SDKs
         pod 'FBSDKLoginKit', '~> 4.6'
