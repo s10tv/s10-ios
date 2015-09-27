@@ -7,18 +7,16 @@
 //
 
 import Foundation
-import Bond
 
 public struct IntegrationListViewModel {
     let subscription: MeteorSubscription
-    public let integrations: DynamicArray<IntegrationViewModel>
+    public let integrations: FetchedResultsArray<IntegrationViewModel>
     
     public init(meteor: MeteorService) {
         subscription = meteor.subscribe("integrations")
         integrations = Integration
             .sorted(by: IntegrationKeys.status_.rawValue, ascending: true)
             .sorted(by: IntegrationKeys.updatedAt.rawValue, ascending: true)
-            .results(Integration)
-            .map { IntegrationViewModel(integration: $0) }
+            .results { IntegrationViewModel(integration: $0 as! Integration) }
     }
 }
