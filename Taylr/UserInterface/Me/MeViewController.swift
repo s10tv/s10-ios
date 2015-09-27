@@ -74,12 +74,12 @@ class MeViewController : UITableViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if let vc = segue.destinationViewController as? ProfileViewController {
-//            vc.vm = vm.profileVM()
-//        }
-//        if let vc = segue.destinationViewController as? EditProfileViewController {
-//            vc.vm = vm.editProfileVM()
-//        }
+        if let vc = segue.destinationViewController as? ProfileViewController {
+            vc.vm = vm.profileVM()
+        }
+        if let vc = segue.destinationViewController as? EditProfileViewController {
+            vc.vm = vm.editProfileVM()
+        }
         if let segue = segue as? LinkedStoryboardPushSegue where segue.matches(.Onboarding_Login) {
             segue.replaceStrategy = .Stack
         }

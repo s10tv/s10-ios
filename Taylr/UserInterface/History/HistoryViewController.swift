@@ -52,10 +52,10 @@ class HistoryViewController : BaseViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if let profileVC = segue.destinationViewController as? ProfileViewController,
-//            let indexPath = collectionView.indexPathsForSelectedItems().first as? NSIndexPath {
-//            profileVC.vm = vm.profileVM(indexPath.row)
-//        }
+        if let profileVC = segue.destinationViewController as? ProfileViewController,
+            let indexPath = collectionView.indexPathsForSelectedItems()?.first {
+            profileVC.vm = vm.profileVM(indexPath.row)
+        }
     }
     
 }

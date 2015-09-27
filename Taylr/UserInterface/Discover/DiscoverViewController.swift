@@ -60,14 +60,14 @@ class DiscoverViewController : BaseViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if let profileVC = segue.destinationViewController as? ProfileViewController,
-//            let profileVM = vm.profileVM() {
-//            profileVC.vm = profileVM
-//        }
-//        if let vc = segue.destinationViewController as? ConversationViewController,
-//            let conversationVM = vm.conversationVM() {
-//            vc.vm = conversationVM
-//        }
+        if let profileVC = segue.destinationViewController as? ProfileViewController,
+            let profileVM = vm.profileVM() {
+            profileVC.vm = profileVM
+        }
+        if let vc = segue.destinationViewController as? ConversationViewController,
+            let conversationVM = vm.conversationVM() {
+            vc.vm = conversationVM
+        }
     }
 }
 
