@@ -24,7 +24,7 @@ public struct HistoryViewModel {
             .results { CandidateViewModel(candidate: $0 as! Candidate) }
     }
     
-//    public func profileVM(index: Int) -> ProfileViewModel? {
-//        return ProfileViewModel(meteor: meteor, taskService: taskService, user: candidates[index].user)
-//    }
+    public func profileVM(index: Int) -> ProfileViewModel? {
+        return ProfileViewModel(meteor: meteor, taskService: taskService, user: candidates[index].user)
+    }
 }

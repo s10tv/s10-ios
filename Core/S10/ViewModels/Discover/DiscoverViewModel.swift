@@ -27,17 +27,17 @@ public struct DiscoverViewModel {
             .results { TodayViewModel(candidate: $0 as! Candidate, settings: settings) }
     }
     
-//    public func profileVM() -> ProfileViewModel? {
-//        if candidate.count > 0 {
-//            return ProfileViewModel(meteor: meteor, taskService: taskService, user: candidate[0].user, timeRemaining: candidate[0].timeRemaining)
-//        }
-//        return nil
-//    }
-//    
-//    public func conversationVM() -> ConversationViewModel? {
-//        if candidate.count > 0 {
-//            return ConversationViewModel(meteor: meteor, taskService: taskService, recipient: candidate[0].user)
-//        }
-//        return nil
-//    }
+    public func profileVM() -> ProfileViewModel? {
+        if candidate.count > 0 {
+            return ProfileViewModel(meteor: meteor, taskService: taskService, user: candidate[0].user, timeRemaining: candidate[0].timeRemaining)
+        }
+        return nil
+    }
+    
+    public func conversationVM() -> ConversationViewModel? {
+        if candidate.count > 0 {
+            return ConversationViewModel(meteor: meteor, taskService: taskService, recipient: candidate[0].user)
+        }
+        return nil
+    }
 }

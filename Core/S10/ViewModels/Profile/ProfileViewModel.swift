@@ -69,9 +69,9 @@ public struct ProfileViewModel {
         meteor.blockUser(user)
     }
     
-//    public func conversationVM() -> ConversationViewModel {
-//        return ConversationViewModel(meteor: meteor, taskService: taskService, recipient: user)
-//    }
+    public func conversationVM() -> ConversationViewModel {
+        return ConversationViewModel(meteor: meteor, taskService: taskService, recipient: user)
+    }
 }
 
 public struct ProfileCoverViewModel {

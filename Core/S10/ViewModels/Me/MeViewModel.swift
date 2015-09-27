@@ -37,10 +37,9 @@ public struct MeViewModel {
         return meteor.user.value != nil
     }
     
-// TODO: Put me back
-//    public func profileVM() -> ProfileViewModel? {
-//        return meteor.user.value.map { ProfileViewModel(meteor: meteor, taskService: taskService, user: $0) }
-//    }
+    public func profileVM() -> ProfileViewModel? {
+        return meteor.user.value.map { ProfileViewModel(meteor: meteor, taskService: taskService, user: $0) }
+    }
     
     public func editProfileVM() -> EditProfileViewModel? {
         return meteor.user.value.map { EditProfileViewModel(meteor: meteor, user: $0) }
