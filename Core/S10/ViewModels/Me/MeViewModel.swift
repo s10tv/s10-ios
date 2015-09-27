@@ -24,21 +24,22 @@ public struct MeViewModel {
         self.meteor = meteor
         self.taskService = taskService
         subscription = meteor.subscribe("me")
-        avatar = meteor.user |> flatMap { $0.pAvatar() }
-        cover = meteor.user |> flatMap { $0.pCover() }
-        displayName = meteor.user |> flatMap(nilValue: "") { $0.pDisplayName() }
+        avatar = meteor.user.flatMap { $0.pAvatar() }
+        cover = meteor.user.flatMap { $0.pCover() }
+        displayName = meteor.user.flatMap(nilValue: "") { $0.pDisplayName() }
         profileIcons = meteor.user
-            |> flatMap(nilValue: []) { $0.pConnectedProfiles() }
-            |> map { $0.map { $0.icon } }
+            .flatMap(nilValue: []) { $0.pConnectedProfiles() }
+            .map { $0.map { $0.icon } }
     }
     
     public func canViewOrEditProfile() -> Bool {
         return meteor.user.value != nil
     }
     
-    public func profileVM() -> ProfileViewModel? {
-        return meteor.user.value.map { ProfileViewModel(meteor: meteor, taskService: taskService, user: $0) }
-    }
+// TODO: Put me back
+//    public func profileVM() -> ProfileViewModel? {
+//        return meteor.user.value.map { ProfileViewModel(meteor: meteor, taskService: taskService, user: $0) }
+//    }
     
     public func editProfileVM() -> EditProfileViewModel? {
         return meteor.user.value.map { EditProfileViewModel(meteor: meteor, user: $0) }

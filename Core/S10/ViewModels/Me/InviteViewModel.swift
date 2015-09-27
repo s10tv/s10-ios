@@ -34,18 +34,16 @@ public struct InviteViewModel {
     
     // TODO: Turn into AlertableError
     public func sendInvite(videoURL: NSURL, thumbnail: UIImage) -> Future<(), NSError> {
-        println("Will send invite with video \(videoURL)")
+        print("Will send invite with video \(videoURL)")
         return taskService.invite(emailOrPhone.value,
             localVideoURL: videoURL,
             thumbnail: thumbnail,
             firstName: firstName.value,
             lastName: lastName.value
-        )
-            |> deliverOn(UIScheduler())
-            |> onSuccess {
+        ).onSuccess {
                 self.firstName.value = ""
                 self.lastName.value = ""
                 self.emailOrPhone.value = ""
-            }
+        }.deliverOn(UIScheduler())
     }
 }

@@ -132,6 +132,9 @@
 		EA81AE351BB795F700F94006 /* UITableViewBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA81AE341BB795F700F94006 /* UITableViewBinding.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE361BB79FDF00F94006 /* IntegrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F821B62EF8B0047BDCA /* IntegrationViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE371BB79FEB00F94006 /* IntegrationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F811B62EF8B0047BDCA /* IntegrationListViewModel.swift */; settings = {ASSET_TAGS = (); }; };
+		EA81AE381BB7A08200F94006 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2AE1B63FC990034434E /* EditProfileViewModel.swift */; settings = {ASSET_TAGS = (); }; };
+		EA81AE391BB7A0B900F94006 /* InviteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2AF1B63FC990034434E /* InviteViewModel.swift */; settings = {ASSET_TAGS = (); }; };
+		EA81AE3A1BB7A0DF00F94006 /* MeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA043F861B62F07E0047BDCA /* MeViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA89C0861B6AA2060007C6CB /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0851B6AA2060007C6CB /* CreateProfileViewController.swift */; };
 		EA89C0881B6AC0410007C6CB /* ConnectServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0871B6AC0410007C6CB /* ConnectServicesViewController.swift */; };
 		EA925C741AD99ED8008E9F41 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA925C731AD99ED8008E9F41 /* R.swift */; };
@@ -1626,6 +1629,7 @@
 				EA81ADDE1BB6852600F94006 /* Environment.swift in Sources */,
 				EA81ADED1BB689FC00F94006 /* MeteorSubscription.swift in Sources */,
 				EA81AE191BB6996C00F94006 /* DynamicDataSource.swift in Sources */,
+				EA81AE391BB7A0B900F94006 /* InviteViewModel.swift in Sources */,
 				EA81AE161BB6989A00F94006 /* AlertableError.swift in Sources */,
 				EA81ADFB1BB68E2100F94006 /* _Message.swift in Sources */,
 				EA81AE1E1BB69A9600F94006 /* VerifyCodeViewModel.swift in Sources */,
@@ -1660,6 +1664,7 @@
 				EA81ADF81BB68E2100F94006 /* _Activity.swift in Sources */,
 				EA81ADDC1BB6852600F94006 /* DeviceInfo.swift in Sources */,
 				EA81AE111BB696A400F94006 /* VideoUploadOperation.swift in Sources */,
+				EA81AE3A1BB7A0DF00F94006 /* MeViewModel.swift in Sources */,
 				EA81ADD31BB673B100F94006 /* Future.swift in Sources */,
 				EA81ADE71BB687F700F94006 /* GeometryExtensions.swift in Sources */,
 				EA81AE051BB68E6700F94006 /* Video.swift in Sources */,
@@ -1678,6 +1683,7 @@
 				EA81AE121BB696B900F94006 /* PhotoUploadOperation.swift in Sources */,
 				EA81ADFA1BB68E2100F94006 /* _Integration.swift in Sources */,
 				EA81ADE81BB6881200F94006 /* UIKitExtension.swift in Sources */,
+				EA81AE381BB7A08200F94006 /* EditProfileViewModel.swift in Sources */,
 				EA81ADE41BB686EF00F94006 /* Segue.swift in Sources */,
 				EA81AE151BB6981200F94006 /* Formatters.swift in Sources */,
 				EA81AE011BB68E2100F94006 /* Message.swift in Sources */,

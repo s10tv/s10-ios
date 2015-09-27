@@ -26,12 +26,12 @@ public struct EditProfileViewModel {
     init(meteor: MeteorService, user: User) {
         self.meteor = meteor
         self.user = user
-        firstName = user.pFirstName() |> mutable
-        lastName = user.pLastName() |> mutable
-        major = user.pMajor() |> mutable
-        gradYear = user.pGradYear() |> mutable
-        hometown = user.pHometown() |> mutable
-        about = user.pAbout() |> mutable
+        firstName = user.pFirstName().mutable()
+        lastName = user.pLastName().mutable()
+        major = user.pMajor().mutable()
+        gradYear = user.pGradYear().mutable()
+        hometown = user.pHometown().mutable()
+        about = user.pAbout().mutable()
         avatar = user.pAvatar()
         cover = user.pCover()
     }
@@ -69,8 +69,8 @@ public struct EditProfileViewModel {
     public func upload(image: UIImage, taskType: PhotoTaskType) -> Future<(), ErrorAlert> {
         return operationQueue.addAsyncOperation {
             PhotoUploadOperation(meteor: meteor, image: image, taskType: taskType)
-        } |> mapError { e in
+        }.mapError { e in
             ErrorAlert(title: "Unable to upload", message: e.localizedDescription, underlyingError: e)
-        }
+        }.toFuture()
     }
 }
