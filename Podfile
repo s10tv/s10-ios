@@ -46,7 +46,7 @@ target :Core do
         pod 'Bond', '~> 4.0' # For UI bindings only
         pod 'SwipeView', '~> 1.3'
         pod 'SDWebImage', '~> 3.7'
-        pod 'PKHUD', '~> 2.2'
+        pod 'PKHUD', :git => 'https://github.com/tonyxiao/PKHUD', :branch => 'swift2' # Fork is needed to work around xcasset compilation issue inside pod
         pod 'SCRecorder', '~> 2.5'
 
         pod 'DZNEmptyDataSet', :git => 'https://github.com/dzenbot/DZNEmptyDataSet.git' # Fork is needed to work around the crash
