@@ -55,7 +55,8 @@ public struct ProfileViewModel {
             .by(supportedActivitiesByUser(user))
             .sorted(by: ActivityKeys.timestamp.rawValue, ascending: false)
             .results(viewModelForActivity)
-        activities.predicate <~ coverVM.selectedProfile.map {
+        // NOTE: Cannot use <~ with map on right hand side due to immediate memory mgmt release issue
+        activities.predicate <~ coverVM.selectedProfile.producer.skip(1).map {
             $0.profile.map(supportedActivitiesByProfile) ?? supportedActivitiesByUser(user)
         }
     }
