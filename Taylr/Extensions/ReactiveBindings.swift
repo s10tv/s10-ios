@@ -48,6 +48,6 @@ private var kBadgeText: UInt8 = 0
 
 extension JSBadgeView {
     public var rac_badgeText: MutableProperty<String> {
-        return associatedProperty(&kBadgeText, setter: { self.badgeText = $0 }, getter: { self.badgeText })
+        return associatedProperty(&kBadgeText, setter: { self.badgeText = $0 }, getter: { self.badgeText ?? "" })
     }
 }
