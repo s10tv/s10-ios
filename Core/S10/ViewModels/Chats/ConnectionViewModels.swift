@@ -17,19 +17,19 @@ extension Connection {
 
 public protocol ConnectionViewModel {
     var avatar: PropertyOf<Image?> { get }
-    var displayName: PropertyOf<String> { get }
-    var busy: PropertyOf<Bool> { get }
+    var displayName: ProducerProperty<String> { get }
+    var busy: ProducerProperty<Bool> { get }
 }
 
 public struct ContactConnectionViewModel : ConnectionViewModel {
     let connection: Connection
     
     public let avatar: PropertyOf<Image?>
-    public let displayName: PropertyOf<String>
-    public let statusMessage: PropertyOf<String>
-    public let busy: PropertyOf<Bool>
-    public let badgeText: PropertyOf<String>
-    public let hideRightArrow: PropertyOf<Bool>
+    public let displayName: ProducerProperty<String>
+    public let statusMessage: ProducerProperty<String>
+    public let busy: ProducerProperty<Bool>
+    public let badgeText: ProducerProperty<String>
+    public let hideRightArrow: ProducerProperty<Bool>
     
     init(connection: Connection) {
         self.connection = connection
@@ -38,46 +38,17 @@ public struct ContactConnectionViewModel : ConnectionViewModel {
         displayName = user.pDisplayName()
         statusMessage = connection.otherUser.pConversationStatus()
         busy = connection.otherUser.pConversationBusy()
-        badgeText = PropertyOf("", combineLatest(
+        badgeText = ProducerProperty(combineLatest(
             busy.producer,
             connection.dyn(.unreadCount).force(Int).producer
         ).map { busy, unreadCount in
-            (busy || unreadCount == 0) ? "" : "\(unreadCount)"
+                (busy || unreadCount == 0) ? "" : "\(unreadCount)"
         })
-        hideRightArrow = PropertyOf(true, combineLatest(
+        hideRightArrow = ProducerProperty(combineLatest(
             busy.producer,
             badgeText.producer
         ).map {
             $0 || $1.length > 0
         })
-    }
-}
-
-public struct NewConnectionViewModel : ConnectionViewModel {
-    let connection: Connection
-    
-    public let avatar: PropertyOf<Image?>
-    public let displayName: PropertyOf<String>
-    public let displayTime: PropertyOf<String>
-    public let tagline: PropertyOf<String>
-    public let busy: PropertyOf<Bool>
-    public let hidePlayIcon: PropertyOf<Bool>
-    public let profileIcons: ArrayProperty<Image>
-
-    init(connection: Connection) {
-        self.connection = connection
-        let user = connection.otherUser
-        avatar = user.pAvatar()
-        displayName = user.pDisplayName()
-        tagline = PropertyOf("") // TODO: Make me something else
-        profileIcons = ArrayProperty(user.connectedProfiles.map { $0.icon })
-        busy = connection.otherUser.pConversationBusy()
-        hidePlayIcon = PropertyOf(true, combineLatest(
-            busy.producer,
-            connection.dyn(.unreadCount).force(Int).producer
-        ).map {
-            $0 || $1 == 0
-        })
-        displayTime = relativeTime(connection.updatedAt)
     }
 }

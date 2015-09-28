@@ -26,6 +26,24 @@ public func <~ <Destination: MutablePropertyType, Source: PropertyType where Des
     return destinationProperty <~ sourceProperty.producer
 }
 
+// MARK: ProducerProperty
+
+public struct ProducerProperty<T> : PropertyType {
+    public typealias Value = T
+    
+    public let producer: SignalProducer<T, NoError>
+    public var value: T {
+        guard let v = producer.first()?.value else {
+            fatalError("BufferProperty producer must produce a value when started")
+        }
+        return v
+    }
+    
+    public init(_ producer: SignalProducer<T, NoError>) {
+        self.producer = producer
+    }
+}
+
 // MARK: - Property Type Extensions
 
 extension PropertyType {

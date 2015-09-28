@@ -32,8 +32,8 @@ extension User {
         return ""
     }
         
-    func pDisplayName() -> PropertyOf<String> {
-        return PropertyOf("", combineLatest(
+    func pDisplayName() -> ProducerProperty<String> {
+        return ProducerProperty(combineLatest(
             dyn(.firstName).producer,
             dyn(.lastName).producer,
             dyn(.gradYear).producer
@@ -78,8 +78,8 @@ extension User {
         return dyn(.connectedProfiles_).map { Mapper<ConnectedProfile>().mapArray($0) ?? [] }
     }
     
-    func pConversationBusy() -> PropertyOf<Bool> {
-        return PropertyOf(false, combineLatest(
+    func pConversationBusy() -> ProducerProperty<Bool> {
+        return ProducerProperty(combineLatest(
             VideoUploadTask.countOfUploads(documentID!),
             VideoDownloadTask.countOfDownloads(documentID!)
         ).map { uploads, downloads in
@@ -87,8 +87,8 @@ extension User {
         })
     }
     
-    func pConversationStatus() -> PropertyOf<String> {
-        return PropertyOf("", combineLatest(
+    func pConversationStatus() -> ProducerProperty<String> {
+        return ProducerProperty(combineLatest(
             VideoUploadTask.countOfUploads(documentID!),
             VideoDownloadTask.countOfDownloads(documentID!),
             CurrentTime.producer.map { [weak self] _ in self?.serverStatus() }

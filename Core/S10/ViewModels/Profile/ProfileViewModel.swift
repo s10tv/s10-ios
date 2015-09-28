@@ -77,7 +77,7 @@ public struct ProfileViewModel {
 public struct ProfileCoverViewModel {
     public let firstName: PropertyOf<String>
     public let lastName: PropertyOf<String>
-    public let displayName : PropertyOf<String>
+    public let displayName : ProducerProperty<String>
     public let avatar: PropertyOf<Image?>
     public let cover: PropertyOf<Image?>
     public let selectors: ArrayProperty<ProfileSelectorViewModel>
