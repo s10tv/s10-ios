@@ -78,4 +78,4 @@ deployment:
        sigh resign "${BN}_appstore.ipa" --provisioning_profile "$APPSTORE_PROFILE_PATH" \
         --signing_identity "$SIGNING_IDENTITY"
        ipa distribute:itunesconnect --apple-id 1015154738 --file "${BN}_appstore.ipa" --upload \
-        --warnings --errors --account "$APPLE_ID" --password "$APPLE_ID_PASSWORD"
+        --warnings --errors --account "$APPLE_ID" --password "$APPLE_ID_PASSWORD" --verbose
