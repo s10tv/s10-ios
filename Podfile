@@ -43,7 +43,6 @@ target :Core do
     target :Taylr do
         link_with 'Taylr'
 
-        pod 'Bond', '~> 4.0' # For UI bindings only
         pod 'SwipeView', '~> 1.3'
         pod 'SDWebImage', '~> 3.7'
         pod 'PKHUD', :git => 'https://github.com/tonyxiao/PKHUD', :branch => 'swift2' # Fork is needed to work around xcasset compilation issue inside pod
