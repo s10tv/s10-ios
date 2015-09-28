@@ -7,12 +7,21 @@
 //
 
 import UIKit
+import ReactiveCocoa
 
 public protocol BindableCell {
     typealias ViewModel
     func bind(vm: ViewModel)
     static func reuseId() -> String
 }
+
+//extension ArrayPropertyType {
+//    public func pair<C: BindableCell where C.ViewModel == ElementType>(cell: C.Type) -> (Self, C.Type) {
+//        return (self, cell)
+//    }
+//}
+
+// MARK: - UITableView
 
 extension UITableView {
     public func dequeue<C: BindableCell, VM where C.ViewModel == VM>(cell: C.Type, indexPath: NSIndexPath, vm: VM? = nil) -> C {
@@ -33,6 +42,20 @@ extension UITableView {
     }
 }
 
+public func <~ <Source: ArrayPropertyType, C: BindableCell where Source.ElementType == C.ViewModel>(tableView: UITableView, tuple: (source: Source, cell: C.Type)) -> Disposable {
+    let reuseId = tuple.cell.reuseId()
+    tableView.bindTo(tuple.source) { collectionView, vm, row in
+        let cell = tableView.dequeueReusableCellWithIdentifier(reuseId, forIndexPath: NSIndexPath(forRow: row, inSection: 0))
+        (cell as! C).bind(vm)
+        return cell
+    }
+    return ActionDisposable {
+        tableView.unbind()
+    }
+}
+
+// MARK: - UICollectionView
+
 extension UICollectionView {
     public func dequeue<C: BindableCell, VM where C.ViewModel == VM>(cell: C.Type, indexPath: NSIndexPath, vm: VM? = nil) -> C {
         let cell = dequeueReusableCellWithReuseIdentifier(cell.reuseId(), forIndexPath: indexPath) as! C
@@ -44,10 +67,23 @@ extension UICollectionView {
     
     public func bindTo<Source: ArrayPropertyType, C: BindableCell where Source.ElementType == C.ViewModel>(source: Source, cell: C.Type) -> CollectionViewBinding<Source, Source.ElementType> {
         let reuseId = cell.reuseId()
-        return bindTo(source) { collectionView, vm, row in
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: NSIndexPath(forRow: row, inSection: 0))
+        return bindTo(source) { collectionView, vm, item in
+            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: NSIndexPath(forItem: item, inSection: 0))
             (cell as! C).bind(vm)
             return cell
         }
+    }
+}
+
+
+public func <~ <Source: ArrayPropertyType, C: BindableCell where Source.ElementType == C.ViewModel>(collectionView: UICollectionView, tuple: (source: Source, cell: C.Type)) -> Disposable {
+    let reuseId = tuple.cell.reuseId()
+    collectionView.bindTo(tuple.source) { collectionView, vm, item in
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: NSIndexPath(forItem: item, inSection: 0))
+        (cell as! C).bind(vm)
+        return cell
+    }
+    return ActionDisposable {
+        collectionView.unbind()
     }
 }

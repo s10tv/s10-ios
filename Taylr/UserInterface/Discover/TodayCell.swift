@@ -27,6 +27,7 @@ class TodayCell: UICollectionViewCell, BindableCell {
     func bind(vm: TodayViewModel) {
         cd = CompositeDisposable()
         cd.addDisposable { messageButton.rac_title <~ vm.timeRemaining }
+        cd.addDisposable { serviceIconsView <~ (vm.profileIcons, ProfileIconCell.self) }
         
         coverView.sd_image.value = vm.cover
         avatarView.sd_image.value = vm.avatar
@@ -35,14 +36,12 @@ class TodayCell: UICollectionViewCell, BindableCell {
         hometownLabel.text = vm.hometown
         majorLabel.text = vm.major
         
-        serviceIconsView.bindTo(vm.profileIcons, cell: ProfileIconCell.self)
         serviceIconsView.invalidateIntrinsicContentSize()
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         cd.dispose()
-        serviceIconsView.unbind()
     }
     
     override func awakeFromNib() {

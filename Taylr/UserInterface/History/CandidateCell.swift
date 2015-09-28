@@ -21,20 +21,23 @@ class CandidateCell : UICollectionViewCell, BindableCell {
     @IBOutlet weak var reasonLabel: UILabel!
     @IBOutlet weak var serviceIconsView: UICollectionView!
     
+    var cd: CompositeDisposable!
+    
     func bind(vm: CandidateViewModel) {
+        cd = CompositeDisposable()
+        cd.addDisposable { serviceIconsView <~ (vm.profileIcons, ProfileIconCell.self) }
+        
         avatarView.sd_image.value = vm.avatar
         dateLabel.text = vm.displayDate
         nameLabel.text = vm.displayName
         reasonLabel.text = vm.reason
         
-        serviceIconsView.bindTo(vm.profileIcons, cell: ProfileIconCell.self)
         serviceIconsView.invalidateIntrinsicContentSize()
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        avatarView.image = nil
-        serviceIconsView.unbind()
+        cd.dispose()
     }
     
     override func awakeFromNib() {
