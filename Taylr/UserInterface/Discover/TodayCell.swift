@@ -28,8 +28,8 @@ class TodayCell: UICollectionViewCell, BindableCell {
         cd = CompositeDisposable()
         cd.addDisposable { messageButton.rac_title <~ vm.timeRemaining }
         
-        coverView.rac_image.value = vm.cover
-        avatarView.rac_image.value = vm.avatar
+        coverView.sd_image.value = vm.cover
+        avatarView.sd_image.value = vm.avatar
         nameLabel.text = vm.displayName
         reasonLabel.rawText = vm.reason
         hometownLabel.text = vm.hometown

@@ -19,10 +19,10 @@ class IntegrationCell : UICollectionViewCell, BindableCell {
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     func bind(vm: IntegrationViewModel) {
-        iconView.rac_image.value = vm.icon
+        iconView.sd_image.value = vm.icon
         titleField.placeholder = vm.name
         titleField.text = vm.username
-        statusView.rac_image.value = vm.statusImage
+        statusView.sd_image.value = vm.statusImage
         vm.showSpinner ? spinner.startAnimating() : spinner.stopAnimating()
     }
     

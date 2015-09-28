@@ -36,8 +36,8 @@ class ActivityImageCell : UITableViewCell, BindableCell {
         contentTextLabel.text = vm.text
         serviceNameLabel.text = vm.integrationName
         serviceNameLabel.textColor = vm.integrationColor
-        userImageView.rac_image.value = vm.avatar
-        contentImageView.rac_image.value = vm.image
+        userImageView.sd_image.value = vm.avatar
+        contentImageView.sd_image.value = vm.image
 //        imageHeightConstraint.constant = CGFloat(vm.image.height ?? 0)
     }
     

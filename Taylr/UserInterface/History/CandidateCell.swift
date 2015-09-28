@@ -22,7 +22,7 @@ class CandidateCell : UICollectionViewCell, BindableCell {
     @IBOutlet weak var serviceIconsView: UICollectionView!
     
     func bind(vm: CandidateViewModel) {
-        avatarView.rac_image.value = vm.avatar
+        avatarView.sd_image.value = vm.avatar
         dateLabel.text = vm.displayDate
         nameLabel.text = vm.displayName
         reasonLabel.text = vm.reason

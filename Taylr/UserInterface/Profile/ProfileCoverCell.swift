@@ -22,13 +22,13 @@ class ProfileSelectorCell : UICollectionViewCell, BindableCell {
     override var selected: Bool {
         didSet {
             // TODO: Use UIImageView highlighted image...
-            iconView.rac_image.value = selected ? vm?.icon : vm?.altIcon
+            iconView.sd_image.value = selected ? vm?.icon : vm?.altIcon
         }
     }
     
     func bind(vm: ProfileSelectorViewModel) {
         self.vm = vm
-        iconView.rac_image.value = vm.altIcon
+        iconView.sd_image.value = vm.altIcon
     }
     
     override func awakeFromNib() {
@@ -59,8 +59,8 @@ class ProfileCoverCell : UITableViewCell, BindableCell {
     
     func bind(vm: ProfileCoverViewModel) {
         self.vm = vm
-        avatarView.rac_image <~ vm.avatar
-        coverImageView.rac_image <~ vm.cover
+        avatarView.sd_image <~ vm.avatar
+        coverImageView.sd_image <~ vm.cover
         vm.displayName ->> nameLabel.bnd_text
         collectionView.bindTo(vm.selectors, cell: ProfileSelectorCell.self)
         // Cell is not available for immediate selection, therefore we'll wait for it to populate first
@@ -81,8 +81,8 @@ class ProfileCoverCell : UITableViewCell, BindableCell {
         avatarView.makeCircular()
         coverImageView.clipsToBounds = true
         // TODO: Use a better avatar placeholder
-        avatarView.placeholderImage = avatarView.image
-        coverImageView.placeholderImage = coverImageView.image
+        avatarView.sd_placeholderImage = avatarView.image
+        coverImageView.sd_placeholderImage = coverImageView.image
         collectionView.delegate = self
     }
     

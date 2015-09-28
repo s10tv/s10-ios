@@ -16,13 +16,13 @@ private var kPlaceholderImage: UInt8 = 0
 private var kImage: UInt8 = 0
 
 extension UIImageView {
-    // TODO: Wrap placeholderImage directly into Image class
-    public var placeholderImage: UIImage? {
+    // TODO: Wrap sd_placeholderImage directly into Image class
+    public var sd_placeholderImage: UIImage? {
         get { return objc_getAssociatedObject(self, &kPlaceholderImage) as? UIImage }
         set { objc_setAssociatedObject(self, &kPlaceholderImage, newValue, .OBJC_ASSOCIATION_RETAIN_NONATOMIC) }
     }
 
-    public var rac_image: MutableProperty<Image?> {
+    public var sd_image: MutableProperty<Image?> {
         return associatedObject(&kImage) { [weak self] in
             let property = MutableProperty<Image?>(nil)
             property.producer.startWithNext { [weak self] image in
@@ -30,13 +30,13 @@ extension UIImageView {
                 if let image = image?.image {
                     self?.image = image
                 } else if let url = image?.url {
-                    self?.sd_setImageWithURL(url, placeholderImage: self?.placeholderImage) { image, error, cacheType, url in
+                    self?.sd_setImageWithURL(url, placeholderImage: self?.sd_placeholderImage) { image, error, cacheType, url in
                         if let error = error {
                             Log.warn("Unable to load image at \(url) \(error)")
                         }
                     }
                 } else {
-                    self?.image = self?.placeholderImage
+                    self?.image = self?.sd_placeholderImage
                 }
             }
             return property

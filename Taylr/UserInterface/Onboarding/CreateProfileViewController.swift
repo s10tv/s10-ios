@@ -35,8 +35,8 @@ class CreateProfileViewController : UITableViewController {
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
 
         avatarView.makeCircular()
-        avatarView.placeholderImage = avatarView.image
-        coverView.placeholderImage = coverView.image
+        avatarView.sd_placeholderImage = avatarView.image
+        coverView.sd_placeholderImage = coverView.image
         hometownField.setPlaceholder("Hometown", floatingTitle: "Hometown")
         aboutView.floatingLabelFont = UIFont(.cabinRegular, size: 11)
         aboutView.setPlaceholder("About (Optional)", floatingTitle: "About")
@@ -50,8 +50,8 @@ class CreateProfileViewController : UITableViewController {
         vm.major ->>< majorField.bnd_text
         vm.year ->>< yearField.bnd_text
         vm.about ->>< aboutView.bnd_text
-        avatarView.rac_image <~ vm.avatar
-        coverView.rac_image <~ vm.cover
+        avatarView.sd_image <~ vm.avatar
+        coverView.sd_image <~ vm.cover
     }
     
     override func viewWillAppear(animated: Bool) {

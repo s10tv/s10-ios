@@ -38,7 +38,7 @@ class ActivityTextCell : UITableViewCell, BindableCell {
         contentTextLabel.text = vm.text
         integrationNameLabel.text = vm.integrationName
         integrationNameLabel.textColor = vm.integrationColor
-        avatarView.rac_image.value = vm.avatar
+        avatarView.sd_image.value = vm.avatar
         captionLabel.text = vm.caption
         if vm.caption != nil {
             captionToTextSpacing.constant = 24

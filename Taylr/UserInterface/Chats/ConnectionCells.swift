@@ -25,7 +25,7 @@ class ContactConnectionCell : UITableViewCell, BindableCell {
     
     func bind(vm: ContactConnectionViewModel) {
         cd = CompositeDisposable()
-        cd.addDisposable { avatarView.rac_image <~ vm.avatar }
+        cd.addDisposable { avatarView.sd_image <~ vm.avatar }
         cd.addDisposable { badgeView.rac_badgeText <~ vm.badgeText }
         cd.addDisposable { nameLabel.rac_text <~ vm.displayName }
         cd.addDisposable { subtitleLabel.rac_text <~ vm.statusMessage }
