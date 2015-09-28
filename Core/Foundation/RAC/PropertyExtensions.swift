@@ -116,3 +116,31 @@ extension PropertyOf {
         self.init(MutableProperty(initialValue, block))
     }
 }
+
+// MARK: - lazily creates a gettable associated property via the given factory
+
+public func lazyAssociatedObject<T: AnyObject>(host: AnyObject, key: UnsafePointer<Void>, factory: () -> T) -> T {
+    return objc_getAssociatedObject(host, key) as? T ?? {
+        let associatedProperty = factory()
+        objc_setAssociatedObject(host, key, associatedProperty, .OBJC_ASSOCIATION_RETAIN)
+        return associatedProperty
+    }()
+}
+
+public func lazyAssociatedProperty<T>(host: AnyObject, key: UnsafePointer<Void>, setter: T -> (), getter: () -> T) -> MutableProperty<T> {
+    return lazyAssociatedObject(host, key: key) {
+        let property = MutableProperty<T>(getter())
+        property.producer.startWithNext(setter)
+        return property
+    }
+}
+
+extension NSObject {
+    public func associatedObject<T: AnyObject>(key: UnsafePointer<Void>, factory: () -> T) -> T {
+        return lazyAssociatedObject(self, key: key, factory: factory)
+    }
+    
+    public func associatedProperty<T>(key: UnsafePointer<Void>, setter: T -> (), getter: () -> T) -> MutableProperty<T> {
+        return lazyAssociatedProperty(self, key: key, setter: setter, getter: getter)
+    }
+}

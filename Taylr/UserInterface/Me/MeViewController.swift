@@ -28,8 +28,8 @@ class MeViewController : UITableViewController {
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 0.01))
         
         vm = MeViewModel(meteor: Meteor, taskService: Globals.taskService)
-        vm.avatar ->> avatarView.rac_image
-        vm.cover ->> coverView.rac_image
+        avatarView.rac_image <~ vm.avatar
+        coverView.rac_image <~ vm.cover
         vm.displayName ->> nameLabel.bnd_text
         
         servicesCollectionView.bindTo(vm.profileIcons, cell: ProfileIconCell.self)

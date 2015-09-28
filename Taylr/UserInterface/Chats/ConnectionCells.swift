@@ -22,17 +22,16 @@ class ContactConnectionCell : UITableViewCell, BindableCell {
     var badgeView: JSBadgeView!
     
     func bind(vm: ContactConnectionViewModel) {
-        vm.avatar ->> avatarView.rac_image
+        avatarView.rac_image <~ vm.avatar
         vm.displayName ->> nameLabel.bnd_text
         vm.busy ->> spinner.bnd_animating
         vm.statusMessage ->> subtitleLabel.bnd_text
         vm.hideRightArrow ->> rightArrow.bnd_hidden
-        vm.badgeText ->> badgeView.rac_badgeText
+        badgeView.rac_badgeText <~ vm.badgeText
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        avatarView.unbindImage()
         // MAJOR TODO: Figure out how to unbind
 //        [nameLabel, subtitleLabel].each {
 //            $0.designatedBond.unbindAll()
@@ -69,7 +68,7 @@ class NewConnectionCell : UITableViewCell, BindableCell {
     @IBOutlet weak var profileIconsView: UICollectionView!
  
     func bind(vm: NewConnectionViewModel) {
-        vm.avatar ->> avatarView.rac_image
+        avatarView.rac_image <~ vm.avatar
         vm.displayName ->> nameLabel.bnd_text
         vm.displayTime ->> timestampLabel.bnd_text
         vm.tagline ->> taglineLabel.bnd_text

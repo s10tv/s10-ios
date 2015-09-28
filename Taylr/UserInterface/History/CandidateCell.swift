@@ -22,7 +22,7 @@ class CandidateCell : UICollectionViewCell, BindableCell {
     @IBOutlet weak var serviceIconsView: UICollectionView!
     
     func bind(vm: CandidateViewModel) {
-        avatarView.sd_setImageWithURL(vm.avatar?.url)
+        avatarView.rac_image.value = vm.avatar
         dateLabel.text = vm.displayDate
         nameLabel.text = vm.displayName
         reasonLabel.text = vm.reason
@@ -34,7 +34,6 @@ class CandidateCell : UICollectionViewCell, BindableCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         avatarView.image = nil
-        avatarView.unbindImage()
         serviceIconsView.unbind()
     }
     

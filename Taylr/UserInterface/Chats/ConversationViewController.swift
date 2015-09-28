@@ -44,13 +44,13 @@ class ConversationViewController : BaseViewController {
         super.viewDidLoad()
         
         // MAJOR TODO: Figure out how to unbind
-        vm.avatar ->> avatarView.rac_image
+        avatarView.rac_image <~ vm.avatar
         vm.displayName ->> nameLabel.bnd_text
         vm.busy ->> spinner.bnd_animating
         vm.displayStatus ->> activityLabel.bnd_text
         vm.hideReplayButton ->> replayButton.bnd_hidden
         vm.hideNewMessagesHint ->> newMessagesHint.bnd_hidden
-        vm.cover ->> coverImageView.rac_image
+        coverImageView.rac_image <~ vm.cover
         
         let avkit = UIStoryboard(name: "AVKit", bundle: nil)
         producer = avkit.instantiateViewControllerWithIdentifier("Producer") as! ProducerViewController

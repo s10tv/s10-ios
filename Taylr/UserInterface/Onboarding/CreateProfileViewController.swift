@@ -50,8 +50,8 @@ class CreateProfileViewController : UITableViewController {
         vm.major ->>< majorField.bnd_text
         vm.year ->>< yearField.bnd_text
         vm.about ->>< aboutView.bnd_text
-        vm.avatar ->> avatarView.rac_image
-        vm.cover ->> coverView.rac_image
+        avatarView.rac_image <~ vm.avatar
+        coverView.rac_image <~ vm.cover
     }
     
     override func viewWillAppear(animated: Bool) {

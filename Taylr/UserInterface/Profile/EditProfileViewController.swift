@@ -41,8 +41,8 @@ class EditProfileViewController : UITableViewController {
 //        vm.gradYear ->>< gradYearField
 //        vm.hometown ->>< hometownField
 //        vm.about ->>< aboutTextView
-        vm.avatar ->> avatarImageView.rac_image
-        vm.cover ->> coverImageView.rac_image
+        avatarImageView.rac_image <~ vm.avatar
+        coverImageView.rac_image <~ vm.cover
         
         aboutTextView.floatingLabelFont = UIFont(.cabinRegular, size: 11)
         aboutTextView.font = UIFont(.cabinRegular, size: 16)

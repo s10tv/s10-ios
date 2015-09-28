@@ -54,7 +54,7 @@ class ConnectedProfileInfoCell : UITableViewCell, BindableCell {
     
     func bind(vm: ConnectedProfileInfoViewModel) {
         self.vm = vm
-        avatarView.bindImage(vm.avatar)
+        avatarView.rac_image.value = vm.avatar
         nameLabel.text = vm.displayName
         displayIdLabel.text = vm.displayId
         authenticatedIconView.image = vm.authenticatedIcon

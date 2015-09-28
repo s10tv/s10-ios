@@ -25,8 +25,8 @@ class TodayCell: UICollectionViewCell, BindableCell {
     @IBOutlet weak var messageButton: UIButton!
     
     func bind(vm: TodayViewModel) {
-        coverView.sd_setImageWithURL(vm.cover?.url)
-        avatarView.sd_setImageWithURL(vm.avatar?.url)
+        coverView.rac_image.value = vm.cover
+        avatarView.rac_image.value = vm.avatar
         nameLabel.text = vm.displayName
         reasonLabel.rawText = vm.reason
         hometownLabel.text = vm.hometown
@@ -38,10 +38,6 @@ class TodayCell: UICollectionViewCell, BindableCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        avatarView.image = nil
-        coverView.image = nil
-        avatarView.unbindImage()
-        coverView.unbindImage()
         serviceIconsView.unbind()
     }
     

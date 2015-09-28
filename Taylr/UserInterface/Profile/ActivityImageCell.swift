@@ -31,8 +31,8 @@ class ActivityImageCell : UITableViewCell, BindableCell {
         contentTextLabel.text = vm.text
         serviceNameLabel.text = vm.integrationName
         serviceNameLabel.textColor = vm.integrationColor
-        userImageView.bindImage(vm.avatar)
-        contentImageView.bindImage(vm.image)
+        userImageView.rac_image.value = vm.avatar
+        contentImageView.rac_image.value = vm.image
         // TODO: Figure out how to unbind then use binding
         timestampLabel.text = vm.displayTime.value
 //        vm.displayTime ->> timestampLabel.bnd_text
@@ -41,8 +41,6 @@ class ActivityImageCell : UITableViewCell, BindableCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        userImageView.unbindImage()
-        contentImageView.unbindImage()
     }
         
     static func reuseId() -> String {
