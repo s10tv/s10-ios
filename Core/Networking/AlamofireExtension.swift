@@ -37,7 +37,7 @@ private func URLRequest(method: Alamofire.Method, URL: URLStringConvertible) -> 
 extension Request {
     public func rac_statuscode() -> RACSignal {
         return RACSignal.createSignal({ subscriber in
-            self.response({ (request, response, body, error) -> Void in
+            self.response(completionHandler: { (request, response, body, error) -> Void in
                 if(error == nil) {
                     subscriber.sendNext(response?.statusCode)
                     subscriber.sendCompleted()

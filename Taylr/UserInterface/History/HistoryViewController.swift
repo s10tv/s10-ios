@@ -8,8 +8,6 @@
 
 import Foundation
 import ReactiveCocoa
-import AMScrollingNavbar
-import Bond
 import CHTCollectionViewWaterfallLayout
 import DZNEmptyDataSet
 import Core
@@ -20,7 +18,6 @@ class HistoryViewController : BaseViewController {
     @IBOutlet weak var topLayoutConstraint: NSLayoutConstraint!
     
     let vm = HistoryViewModel(meteor: Meteor, taskService: Globals.taskService)
-    let emptyDataBond = ArrayBond<CandidateViewModel>()
     
     deinit {
         collectionView?.delegate = nil
@@ -37,17 +34,15 @@ class HistoryViewController : BaseViewController {
         layout.minimumInteritemSpacing = 10
         layout.sectionInset = UIEdgeInsets(inset: 10)
         collectionView.collectionViewLayout = layout
-            
-        vm.candidates.map(collectionView.factory(CandidateCell)) ->> collectionView
-        
-        emptyDataBond.didPerformBatchUpdatesListener = { [weak self] in
+        collectionView <~ (vm.candidates, CandidateCell.self)
+        vm.candidates.changes.observeNext { [weak self] _ in
             self?.collectionView.reloadEmptyDataSet()
         }
         
-        listenForNotification(DidTouchStatusBar).start(next: { [weak self] _ in
-            self?.showNavBarAnimated(true)
+        listenForNotification(DidTouchStatusBar).startWithNext { [weak self] _ in
+//            self?.showNavBarAnimated(true)
             self?.collectionView.scrollToTop(animated: true)
-        })
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -58,7 +53,7 @@ class HistoryViewController : BaseViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let profileVC = segue.destinationViewController as? ProfileViewController,
-            let indexPath = collectionView.indexPathsForSelectedItems().first as? NSIndexPath {
+            let indexPath = collectionView.indexPathsForSelectedItems()?.first {
             profileVC.vm = vm.profileVM(indexPath.row)
         }
     }

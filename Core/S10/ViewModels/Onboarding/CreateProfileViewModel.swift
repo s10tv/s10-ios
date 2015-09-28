@@ -15,12 +15,12 @@ public struct CreateProfileViewModel {
     let subscription: MeteorSubscription
     public let avatar: MutableProperty<Image?>
     public let cover: MutableProperty<Image?>
-    public let firstName: MutableProperty<String>
-    public let lastName: MutableProperty<String>
-    public let major: MutableProperty<String>
-    public let year: MutableProperty<String>
-    public let hometown: MutableProperty<String>
-    public let about: MutableProperty<String>
+    public let firstName: MutableProperty<String?>
+    public let lastName: MutableProperty<String?>
+    public let major: MutableProperty<String?>
+    public let year: MutableProperty<String?>
+    public let hometown: MutableProperty<String?>
+    public let about: MutableProperty<String?>
     public let uploadImageAction: Action<(image: UIImage, type: PhotoTaskType), (), ErrorAlert>
     
     public init(meteor: MeteorService) {
@@ -29,22 +29,22 @@ public struct CreateProfileViewModel {
         // Avoid names getting overwritten when user uploads avatar
         // and CoreData notifies changes to unrelated properties such as username
         // TODO: Think of better pattern
-        firstName = MutableProperty(user.firstName ?? "")
-        lastName = MutableProperty(user.lastName ?? "")
-        about = MutableProperty(user.about ?? "")
-        avatar = user.pAvatar() |> mutable
-        cover = user.pCover() |> mutable
-        hometown = MutableProperty(user.hometown ?? "")
-        major = MutableProperty(user.major ?? "")
-        year = MutableProperty(user.gradYear ?? "")
+        firstName = MutableProperty(user.firstName)
+        lastName = MutableProperty(user.lastName)
+        about = MutableProperty(user.about)
+        avatar = user.pAvatar().mutable()
+        cover = user.pCover().mutable()
+        hometown = MutableProperty(user.hometown)
+        major = MutableProperty(user.major)
+        year = MutableProperty(user.gradYear)
         operationQueue = NSOperationQueue()
         let queue = operationQueue
         uploadImageAction = Action { tuple -> Future<(), ErrorAlert> in
             queue.addAsyncOperation {
                 PhotoUploadOperation(meteor: meteor, image: tuple.image, taskType: tuple.type)
-            } |> mapError { e in
+            }.mapError { e in
                 ErrorAlert(title: "Unable to upload", message: e.localizedDescription, underlyingError: e)
-            }
+            }.toFuture()
         }
         subscription = meteor.subscribe("me")
     }
@@ -54,9 +54,9 @@ public struct CreateProfileViewModel {
 
         var errorReason : String?
 
-        if (firstName.value.nonBlank() == nil) {
+        if (firstName.value?.nonBlank() == nil) {
             errorReason = "First name is required."
-        } else if (lastName.value.nonBlank() == nil) {
+        } else if (lastName.value?.nonBlank() == nil) {
             errorReason = "Last name is required."
         } else if (avatar.value == nil) {
             errorReason = "Avatar is required."
@@ -67,19 +67,19 @@ public struct CreateProfileViewModel {
                 message: errorReason))
         } else {
             var fields = [
-                "firstName": firstName.value,
-                "lastName": lastName.value,
+                "firstName": firstName.value!,
+                "lastName": lastName.value!,
             ]
-            if let about = about.value.nonBlank() {
+            if let about = about.value?.nonBlank() {
                 fields["about"] = about
             }
-            if let hometown = hometown.value.nonBlank() {
+            if let hometown = hometown.value?.nonBlank() {
                 fields["hometown"] = hometown
             }
-            if let major = major.value.nonBlank() {
+            if let major = major.value?.nonBlank() {
                 fields["major"] = major
             }
-            if let year = year.value.nonBlank() {
+            if let year = year.value?.nonBlank() {
                 fields["gradYear"] = year
             }
 

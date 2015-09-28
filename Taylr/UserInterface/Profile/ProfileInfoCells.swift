@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Bond
+import ReactiveCocoa
 import Core
 
 class ProfileAttributeCell : UICollectionViewCell, BindableCell {
@@ -30,10 +30,18 @@ class TaylrProfileInfoCell : UITableViewCell, BindableCell {
     @IBOutlet weak var majorLabel: UILabel!
     @IBOutlet weak var aboutLabel: UILabel!
     
+    var cd: CompositeDisposable!
+    
     func bind(vm: TaylrProfileInfoViewModel) {
-        vm.about ->> aboutLabel
-        vm.major ->> majorLabel
-        vm.hometown ->> hometownLabel
+        cd = CompositeDisposable()
+        cd.addDisposable { aboutLabel.rac_text <~ vm.about }
+        cd.addDisposable { majorLabel.rac_text <~ vm.major }
+        cd.addDisposable { hometownLabel.rac_text <~ vm.hometown }
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        cd.dispose()
     }
     
     static func reuseId() -> String {
@@ -51,15 +59,23 @@ class ConnectedProfileInfoCell : UITableViewCell, BindableCell {
     @IBOutlet weak var openButton: UIButton!
     
     private var vm: ConnectedProfileInfoViewModel!
+    var cd: CompositeDisposable!
     
     func bind(vm: ConnectedProfileInfoViewModel) {
         self.vm = vm
-        avatarView.bindImage(vm.avatar)
+        cd = CompositeDisposable()
+        cd.addDisposable { collectionView <~ (vm.attributes, ProfileAttributeCell.self) }
+        
+        avatarView.sd_image.value = vm.avatar
         nameLabel.text = vm.displayName
         displayIdLabel.text = vm.displayId
         authenticatedIconView.image = vm.authenticatedIcon
         authenticatedIconView.tintColor = vm.themeColor
-        vm.attributes.map(collectionView.factory(ProfileAttributeCell)) ->> collectionView
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        cd.dispose()
     }
     
     @IBAction func didTapOpen(sender: AnyObject) {

@@ -59,7 +59,7 @@ extension IntegrationWebViewController : UIWebViewDelegate {
     func webView(webView: UIWebView, shouldStartLoadWithRequest request: NSURLRequest, navigationType: UIWebViewNavigationType) -> Bool {
         if let path = request.URL?.path where path.hasPrefix("/facebook/auth") {
             // Workaround for http://stackoverflow.com/questions/1840355/uiwebview-shouldstartloadwithrequest-only-called-once
-            webView.request.map { self.webView.loadRequest($0) }
+            if let r = webView.request { webView.loadRequest(r) }
             return tryLinkClientSide("facebook") == false
         }
         if let scheme = request.URL?.scheme where Globals.env.audience.urlScheme.hasPrefix(scheme) {

@@ -8,7 +8,6 @@
 
 import Foundation
 import ReactiveCocoa
-import Bond
 import EDColor
 import Async
 import Cartography
@@ -22,13 +21,13 @@ class ProfileSelectorCell : UICollectionViewCell, BindableCell {
     override var selected: Bool {
         didSet {
             // TODO: Use UIImageView highlighted image...
-            iconView.bindImage(selected ? vm?.icon : vm?.altIcon)
+            iconView.sd_image.value = selected ? vm?.icon : vm?.altIcon
         }
     }
     
     func bind(vm: ProfileSelectorViewModel) {
         self.vm = vm
-        iconView.bindImage(vm.altIcon)
+        iconView.sd_image.value = vm.altIcon
     }
     
     override func awakeFromNib() {
@@ -56,13 +55,16 @@ class ProfileCoverCell : UITableViewCell, BindableCell {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var vm: ProfileCoverViewModel!
+    var cd: CompositeDisposable!
     
     func bind(vm: ProfileCoverViewModel) {
         self.vm = vm
-        vm.avatar ->> avatarView.imageBond
-        vm.cover ->> coverImageView.imageBond
-        vm.displayName ->> nameLabel
-        vm.selectors.map(collectionView.factory(ProfileSelectorCell)) ->> collectionView
+        cd = CompositeDisposable()
+        cd.addDisposable { avatarView.sd_image <~ vm.avatar }
+        cd.addDisposable { coverImageView.sd_image <~ vm.cover }
+        cd.addDisposable { nameLabel.rac_text <~ vm.displayName }
+        cd.addDisposable { collectionView <~ (vm.selectors, ProfileSelectorCell.self) }
+        
         // Cell is not available for immediate selection, therefore we'll wait for it to populate first
         Async.main {
             self.collectionView.selectItemAtIndexPath(NSIndexPath(forItem: 0, inSection: 0),
@@ -73,6 +75,7 @@ class ProfileCoverCell : UITableViewCell, BindableCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        cd.dispose()
         fatalError("ProfileCoverCell is not designed to be re-used")
     }
     
@@ -81,8 +84,8 @@ class ProfileCoverCell : UITableViewCell, BindableCell {
         avatarView.makeCircular()
         coverImageView.clipsToBounds = true
         // TODO: Use a better avatar placeholder
-        avatarView.dynPlaceholderImage = avatarView.image
-        coverImageView.dynPlaceholderImage = coverImageView.image
+        avatarView.sd_placeholderImage = avatarView.image
+        coverImageView.sd_placeholderImage = coverImageView.image
         collectionView.delegate = self
     }
     

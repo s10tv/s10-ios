@@ -10,7 +10,6 @@ import UIKit
 import Meteor
 import ReactiveCocoa
 import Core
-import Bond
 
 
 class RootNavController : UINavigationController {
@@ -22,13 +21,13 @@ class RootNavController : UINavigationController {
     
     init(account: AccountService) {
         let sb = account.state.value.onboardingNeeded ? onboarding : main
-        super.init(rootViewController: sb.instantiateInitialViewController() as! UIViewController)
+        super.init(rootViewController: sb.instantiateInitialViewController()!)
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // http://stackoverflow.com/questions/19833939/uinavigationcontoller-interactivepopgesturerecognizer-inactive-when-navigation-b
-        interactivePopGestureRecognizer.delegate = nil
+        interactivePopGestureRecognizer?.delegate = nil
         navigationBar.barTintColor = StyleKit.brandPurple
         navigationBar.tintColor = StyleKit.textWhite
         navigationBar.titleTextAttributes = [
@@ -47,14 +46,14 @@ class RootNavController : UINavigationController {
     
     @IBAction func goBack(sender: AnyObject) {
         if let vc = presentedViewController {
-            dismissViewController(animated: true)
+            vc.dismissViewController(animated: true)
         } else {
             popViewControllerAnimated(true)
         }
     }
     
     @IBAction func goToLogin() {
-        viewControllers = [onboarding.instantiateInitialViewController()]
+        viewControllers = [onboarding.instantiateInitialViewController()!]
     }
     
     // MARK: - Required init overrides
@@ -63,7 +62,7 @@ class RootNavController : UINavigationController {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
     }
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
 }

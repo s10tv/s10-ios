@@ -22,3 +22,7 @@ extension Realm {
         }
     }
 }
+
+func unsafeNewRealm() -> Realm {
+    return (try? Realm())!
+}

@@ -8,8 +8,6 @@
 
 import Foundation
 import ReactiveCocoa
-import Bond
-import Box
 
 private func supportedActivitiesByUser(user: User) -> NSPredicate {
     let supportedTypes: [Activity.ContentType] = [.Image, .Text]
@@ -30,13 +28,10 @@ public struct ProfileViewModel {
     let taskService: TaskService
     let user: User
     let subscription: MeteorSubscription
-    let results: FetchedResultsArray<Activity>
-    let predicate: PropertyOf<NSPredicate>
     
-    public let cvm: ProfileCoverViewModel
-    public let coverVM: DynamicArray<ProfileCoverViewModel>
-    public let infoVM: DynamicArray<ProfileInfoViewModel>
-    public let activities: DynamicArray<ActivityViewModel>
+    public let coverVM: ProfileCoverViewModel
+    public let infoVM: PropertyOf<ProfileInfoViewModel>
+    public let activities: FetchedResultsArray<ActivityViewModel>
     public let showMoreOptions: Bool
     public let allowMessage: Bool
     public let timeRemaining: PropertyOf<String>
@@ -48,23 +43,22 @@ public struct ProfileViewModel {
         self.timeRemaining = timeRemaining ?? PropertyOf("")
         allowMessage = timeRemaining != nil
         showMoreOptions = meteor.user.value != user
-        cvm = ProfileCoverViewModel(meteor: meteor, user: user)
         subscription = meteor.subscribe("activities", user)
-        coverVM = DynamicArray([cvm])
-        infoVM = toBondDynamicArray(cvm.selectedProfile |> map {
-            $0.profile.map { [ConnectedProfileInfoViewModel(profile: $0)] }
-                ?? [TaylrProfileInfoViewModel(meteor: meteor, user: user)]
-        })
-        results = Activity
+        coverVM = ProfileCoverViewModel(meteor: meteor, user: user)
+        infoVM = coverVM.selectedProfile.map {
+            if let connectedProfile = $0.profile {
+                return ConnectedProfileInfoViewModel(profile: connectedProfile)
+            }
+            return TaylrProfileInfoViewModel(meteor: meteor, user: user)
+        }
+        activities = Activity
             .by(supportedActivitiesByUser(user))
             .sorted(by: ActivityKeys.timestamp.rawValue, ascending: false)
-            .fetchedResultsController(nil)
-            .results(Activity)
-        activities = results.map(viewModelForActivity)
-        predicate = cvm.selectedProfile |> map {
+            .results(viewModelForActivity)
+        // NOTE: Cannot use <~ with map on right hand side due to immediate memory mgmt release issue
+        activities.predicate <~ coverVM.selectedProfile.producer.skip(1).map {
             $0.profile.map(supportedActivitiesByProfile) ?? supportedActivitiesByUser(user)
         }
-        toBondDynamic(predicate) ->> results.predicateBond
     }
     
     public func reportUser(reason: String) {
@@ -83,10 +77,10 @@ public struct ProfileViewModel {
 public struct ProfileCoverViewModel {
     public let firstName: PropertyOf<String>
     public let lastName: PropertyOf<String>
-    public let displayName : PropertyOf<String>
+    public let displayName : ProducerProperty<String>
     public let avatar: PropertyOf<Image?>
     public let cover: PropertyOf<Image?>
-    public let selectors: DynamicArray<ProfileSelectorViewModel>
+    public let selectors: ArrayProperty<ProfileSelectorViewModel>
     public let selectedProfile: MutableProperty<ProfileSelectorViewModel>
     
     init(meteor: MeteorService, user: User) {
@@ -95,15 +89,13 @@ public struct ProfileCoverViewModel {
         displayName = user.pDisplayName()
         avatar = user.pAvatar()
         cover = user.pCover()
-        selectors = toBondDynamicArray(
-            user.pConnectedProfiles() |> map {
-                var selectors = [ProfileSelectorViewModel(profile: nil)]
-                selectors.extend($0.map {
-                    ProfileSelectorViewModel(profile: $0)
-                })
-                return selectors
-            }
-        )
+        selectors = user.pConnectedProfiles().map { profiles -> [ProfileSelectorViewModel] in
+            var selectors = [ProfileSelectorViewModel(profile: nil)]
+            selectors.appendContentsOf(profiles.map {
+                ProfileSelectorViewModel(profile: $0)
+            })
+            return selectors
+        }.array()
         selectedProfile = MutableProperty(selectors[0])
     }
     

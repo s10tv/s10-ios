@@ -13,11 +13,10 @@ import Result
 import PKHUD
 import Core
 
-
 extension UINavigationController {
     var lastViewController: UIViewController? {
         if viewControllers.count >= 2 {
-            return viewControllers[viewControllers.count - 2] as? UIViewController
+            return viewControllers[viewControllers.count - 2]
         }
         return nil
     }
@@ -33,8 +32,8 @@ extension UIViewController {
     
     func execute<T, E>(producer: SignalProducer<T, E>, showProgress: Bool = false) -> Disposable {
         return producer
-            |> observeOn(UIScheduler())
-            |> on(started: {
+            .observeOn(UIScheduler())
+            .on(started: {
                     if showProgress { PKHUD.showActivity(dimsBackground: true) }
                 }, error: { [weak self] in
                     if let e = $0 as? ActionError<E> {
@@ -50,7 +49,7 @@ extension UIViewController {
                 }, terminated: {
                     if showProgress { PKHUD.hide(animated: false) }
                 })
-            |> start()
+            .start()
     }
     
     func execute<I,O,E>(action: Action<I,O,E>, input: I, showProgress: Bool = false) -> Disposable {
@@ -58,10 +57,10 @@ extension UIViewController {
         return execute(producer, showProgress: showProgress)
     }
     
-    func wrapFuture<T, E>(showProgress: Bool = false, @noescape future: () -> Future<T, E>) -> Future<T, E> {
+    func wrapFuture<T, E>(showProgress showProgress: Bool = false, @noescape future: () -> Future<T, E>) -> Future<T, E> {
         let future = future()
         execute(future.producer, showProgress: showProgress)
-        return future |> observeOn(UIScheduler())
+        return future.observeOn(UIScheduler()).toFuture()
     }
 }
 
@@ -84,7 +83,7 @@ class BaseViewController : UIViewController {
     
     // MARK: - Initialization
 
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         commonInit()
     }
@@ -113,18 +112,18 @@ class BaseViewController : UIViewController {
             }
         }
         segueAction = Action { [weak self] identifier -> Result<Void, NoError> in
-            self.map { $0.performSegue(identifier, sender: $0) }
+            if let s = self { s.performSegue(identifier, sender: s) }
             return Result(value: ())
         }
         showProgress = MutableProperty(false)
         combineLatest(appearanceState.producer, showProgress.producer)
-            |> start(next: { state, executing in
+            .startWithNext { state, executing in
                 if state == .Appeared && executing {
                     PKHUD.showActivity(dimsBackground: true)
                 } else {
                     PKHUD.hide(animated: false)
                 }
-            })
+            }
     }
         
     // MARK: State Management
@@ -137,7 +136,7 @@ class BaseViewController : UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         _appearanceState.value = .Appeared
-        screenName.map { Analytics.track("Screen: \($0)") }
+        if let s = screenName { Analytics.track("Screen: \(s)") }
     }
     
     override func viewWillDisappear(animated: Bool) {

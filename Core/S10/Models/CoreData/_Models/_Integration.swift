@@ -3,7 +3,7 @@
 
 import CoreData
 
-internal enum IntegrationKeys: String, Printable {
+internal enum IntegrationKeys: String, CustomStringConvertible {
 
     case icon_ = "icon_"
 

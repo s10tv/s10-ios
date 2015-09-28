@@ -8,7 +8,6 @@
 
 import UIKit
 import ReactiveCocoa
-import Bond
 import JVFloatLabeledTextField
 import Core
 import PKHUD
@@ -33,15 +32,16 @@ class EditProfileViewController : UITableViewController {
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 0.01))
         coverImageView.clipsToBounds = true
         avatarImageView.makeCircular()
+
+        firstNameField.rac_text <<~> vm.firstName
+        lastNameField.rac_text <<~> vm.lastName
+        majorField.rac_text <<~> vm.major
+        gradYearField.rac_text <<~> vm.gradYear
+        hometownField.rac_text <<~> vm.hometown
+        aboutTextView.rac_text <<~> vm.about
         
-        vm.firstName <->> firstNameField
-        vm.lastName <->> lastNameField
-        vm.major <->> majorField
-        vm.gradYear <->> gradYearField
-        vm.hometown <->> hometownField
-        vm.about <->> aboutTextView
-        vm.avatar ->> avatarImageView.imageBond
-        vm.cover ->> coverImageView.imageBond
+        avatarImageView.sd_image <~ vm.avatar
+        coverImageView.sd_image <~ vm.cover
         
         aboutTextView.floatingLabelFont = UIFont(.cabinRegular, size: 11)
         aboutTextView.font = UIFont(.cabinRegular, size: 16)
@@ -49,13 +49,13 @@ class EditProfileViewController : UITableViewController {
         
         // Observe collectionView height and reload table view cell height whenever appropriate
         servicesVC.collectionView!.dyn("contentSize").force(NSValue).producer
-            |> skip(1)
-            |> skipRepeats
-            |> observeOn(QueueScheduler.mainQueueScheduler)
-            |> start(next: { _ in
+            .skip(1)
+            .skipRepeats()
+            .observeOn(QueueScheduler.mainQueueScheduler)
+            .startWithNext { _ in
                 self.tableView.beginUpdates()
                 self.tableView.endUpdates()
-            })
+            }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -107,7 +107,7 @@ class EditProfileViewController : UITableViewController {
 private let AboutIndexPath = NSIndexPath(forRow: 3, inSection: 2)
 private let IntegrationSection = 1
 
-extension EditProfileViewController : UITableViewDelegate {
+extension EditProfileViewController /*: UITableViewDelegate */{
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         // TODO: Should we consider autolayout?

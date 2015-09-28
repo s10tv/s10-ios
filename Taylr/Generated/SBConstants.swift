@@ -31,12 +31,6 @@ public enum SegueIdentifier : String {
     case TutorialToConnectServices = "TutorialToConnectServices"
 }
 
-public enum StoryboardNames : String {
-    case AVKit = "AVKit"
-    case Main = "Main"
-    case Onboarding = "Onboarding"
-}
-
 public enum TableViewCellreuseIdentifier : String {
     case ActivityImageCell = "ActivityImageCell"
     case ActivityTextCell = "ActivityTextCell"

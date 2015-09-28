@@ -18,7 +18,7 @@ public class ViewControllerTransition : NSObject {
     public var interactor : UIViewControllerInteractiveTransitioning?
     
     public var containerView : UIView {
-        return context.containerView()
+        return context.containerView()!
     }
     public var fromView : UIView? {
         return context.viewForKey(UITransitionContextFromViewKey)
@@ -53,7 +53,7 @@ public class ViewControllerTransition : NSObject {
 }
 
 extension ViewControllerTransition : UIViewControllerAnimatedTransitioning {
-    public func transitionDuration(transitionContext: UIViewControllerContextTransitioning) -> NSTimeInterval {
+    public func transitionDuration(transitionContext: UIViewControllerContextTransitioning?) -> NSTimeInterval {
         context = transitionContext
         return duration
     }

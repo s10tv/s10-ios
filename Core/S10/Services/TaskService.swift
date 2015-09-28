@@ -48,7 +48,7 @@ public class TaskService {
             .filter { $0.taskId != nil }
             .map { $0.taskId! }
         )
-        for task in Realm().objects(VideoUploadTask) {
+        for task in unsafeNewRealm().objects(VideoUploadTask) {
             if queuedTaskIds.contains(task.id) {
                 continue
             }
@@ -72,12 +72,12 @@ public class TaskService {
             if VideoCache.sharedInstance.hasVideo(videoId) {
                 return
             }
-            let realm = Realm()
+            let realm = unsafeNewRealm()
             realm.write {
                 let task = VideoDownloadTask()
                 task.videoId = videoId
                 task.senderId = senderId
-                task.remoteUrl = remoteUrl.absoluteString!
+                task.remoteUrl = remoteUrl.absoluteString
                 realm.add(task, update: true)
             }
             resumeDownloads()
@@ -89,7 +89,7 @@ public class TaskService {
             .map { $0 as! VideoDownloadOperation }
             .map { $0.videoId }
         )
-        for task in Realm().objects(VideoDownloadTask) {
+        for task in unsafeNewRealm().objects(VideoDownloadTask) {
             if queuedVideoIds.contains(task.videoId) {
                 continue
             }
@@ -104,14 +104,14 @@ public class TaskService {
     
     public func invite(emailOrPhone: String, localVideoURL: NSURL, thumbnail: UIImage, firstName: String?, lastName: String?) -> Future<(), NSError> {
         let promise = Promise<(), NSError>()
-        let realm = Realm()
+        let realm = unsafeNewRealm()
         realm.write {
             let task = InviteTask()
             task.taskId = NSUUID().UUIDString
-            println("Will start invite task with id \(task.taskId)")
+            print("Will start invite task with id \(task.taskId)")
             task.emailOrPhone = emailOrPhone
-            task.localVideoUrl = localVideoURL.absoluteString!
-            task.thumbnailData = UIImageJPEGRepresentation(thumbnail, 0.8)
+            task.localVideoUrl = localVideoURL.absoluteString
+            task.thumbnailData = UIImageJPEGRepresentation(thumbnail, 0.8)!
             // NOTE: Is it correct to use video width & height instead of thumb?
             task.videoWidth = Int(thumbnail.size.width * thumbnail.scale)
             task.videoHeight = Int(thumbnail.size.height * thumbnail.scale)
@@ -136,7 +136,7 @@ public class TaskService {
             .map { $0 as! InviteOperation }
             .map { $0.taskId }
         )
-        for task in Realm().objects(InviteTask) {
+        for task in unsafeNewRealm().objects(InviteTask) {
             if queuedTaskIds.contains(task.taskId) {
                 continue
             }

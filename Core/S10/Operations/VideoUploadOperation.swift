@@ -6,9 +6,8 @@
 //  Copyright (c) 2015 S10. All rights reserved.
 //
 
-import Alamofire
-import Core
 import Foundation
+import Alamofire
 import Meteor
 import RealmSwift
 import SwiftyJSON
@@ -31,7 +30,7 @@ internal class VideoUploadOperation : AsyncOperation {
     }
 
     override func run() {
-        let realm = Realm()
+        let realm = unsafeNewRealm()
         let predicate = NSPredicate(format: "localURL = %@", localVideo.url.path!)
         let results = realm.objects(VideoUploadTask).filter(predicate)
         
@@ -76,7 +75,7 @@ internal class VideoUploadOperation : AsyncOperation {
         }.subscribeError({ (error) -> Void in
             self.finish(.Error(error))
         }, completed: { () -> Void in
-            let realm = Realm()
+            let realm = unsafeNewRealm()
             realm.write {
                 realm.delete(realm.objects(VideoUploadTask).filter(
                     NSPredicate(format: "id = %@", self.taskId!)))

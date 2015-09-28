@@ -14,12 +14,12 @@ class PageViewController : BaseViewController {
     let pageVC = UIPageViewController(transitionStyle: .Scroll, navigationOrientation: .Horizontal, options: nil)
     var viewControllers : [UIViewController] = []
     var currentViewController : UIViewController? {
-        assert(pageVC.viewControllers.count <= 1, "Expecting at most 1 in viewControllers")
-        return pageVC.viewControllers.last as! UIViewController?
+        assert(pageVC.viewControllers!.count <= 1, "Expecting at most 1 in viewControllers")
+        return pageVC.viewControllers?.last
     }
     var currentPage : Int? {
         if let currentVC = currentViewController {
-            return find(viewControllers, currentVC)
+            return viewControllers.indexOf(currentVC)
         }
         return nil
     }
@@ -33,11 +33,11 @@ class PageViewController : BaseViewController {
         pageVC.didMoveToParentViewController(self)
     }
     
-    func scrollTo(#viewController: UIViewController, animated: Bool = true) -> RACSignal {
+    func scrollTo(viewController viewController: UIViewController, animated: Bool = true) -> RACSignal {
         let subject = RACReplaySubject()
         var direction = UIPageViewControllerNavigationDirection.Forward
         if let current = currentPage {
-            if let page = find(viewControllers, viewController) {
+            if let page = viewControllers.indexOf(viewController) {
                 if current > page {
                     direction = .Reverse
                 }
@@ -50,7 +50,7 @@ class PageViewController : BaseViewController {
         return subject
     }
     
-    func scrollTo(#page: Int, animated: Bool = true) -> RACSignal {
+    func scrollTo(page page: Int, animated: Bool = true) -> RACSignal {
         return scrollTo(viewController: viewControllers[page], animated: animated)
     }
     
@@ -60,14 +60,14 @@ class PageViewController : BaseViewController {
 
 extension PageViewController : UIPageViewControllerDataSource {
     func pageViewController(pageViewController: UIPageViewController, viewControllerBeforeViewController viewController: UIViewController) -> UIViewController? {
-        if let index = find(viewControllers, viewController) {
+        if let index = viewControllers.indexOf(viewController) {
             return viewControllers.elementAtIndex(index - 1)
         }
         return nil
     }
     
     func pageViewController(pageViewController: UIPageViewController, viewControllerAfterViewController viewController: UIViewController) -> UIViewController? {
-        if let index = find(viewControllers, viewController) {
+        if let index = viewControllers.indexOf(viewController) {
             return viewControllers.elementAtIndex(index + 1)
         }
         return nil

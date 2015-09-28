@@ -21,8 +21,8 @@ public struct UserDefaults {
     public let showSwipeFilterHint = ud.dyn("showSwipeFilterHint").optional(Bool)
     
     public func resetAll() {
-        NSBundle.mainBundle().bundleIdentifier.map {
-            ud.removePersistentDomainForName($0)
+        if let id = NSBundle.mainBundle().bundleIdentifier {
+            ud.removePersistentDomainForName(id)
         }
     }
 }

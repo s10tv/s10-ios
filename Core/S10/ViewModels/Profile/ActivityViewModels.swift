@@ -7,13 +7,12 @@
 //
 
 import Foundation
-import Bond
 import ReactiveCocoa
 import ObjectMapper
 
-func viewModelForActivity(activity: Activity) -> ActivityViewModel {
+func viewModelForActivity(activity: AnyObject) -> ActivityViewModel {
 //    return nil // TODO: Invalid server data causes a crash, what to do?
-    if let type = activity.type {
+    if let activity = activity as? Activity, let type = activity.type {
         switch type {
         case .Image:
             return ActivityImageViewModel(activity: activity)

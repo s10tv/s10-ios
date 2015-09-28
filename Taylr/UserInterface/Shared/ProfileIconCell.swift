@@ -13,7 +13,7 @@ class ProfileIconCell : UICollectionViewCell, BindableCell {
     @IBOutlet weak var imageView: UIImageView!
     
     func bind(vm: Image) {
-        imageView.bindImage(vm)
+        imageView.sd_image.value = vm
     }
     
     static func reuseId() -> String {

@@ -1,6 +1,6 @@
 machine:
   xcode:
-    version: "6.3.1"
+    version: "7.0"
   environment:
     XCODE_WORKSPACE: S10.xcworkspace
     XCODE_SCHEME: Core
@@ -21,7 +21,7 @@ dependencies:
     - sudo gem install cupertino shenzhen sigh xcpretty
     - ./scripts/import_credentials.sh
   override:
-    - pod update Meteor Bond SugarRecord PKHUD
+    - pod update Meteor SugarRecord PKHUD
   cache_directories:
     - "Pods"
 

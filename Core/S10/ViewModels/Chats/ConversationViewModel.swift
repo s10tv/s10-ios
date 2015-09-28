@@ -8,7 +8,6 @@
 
 import Foundation
 import ReactiveCocoa
-import Bond
 import RealmSwift
 
 func messageLoader(sender: User?) -> () -> [MessageViewModel] {
@@ -95,7 +94,7 @@ public class ConversationViewModel {
             page.producer,
             playing.producer,
             recording.producer
-        ) |> map {
+        ).map {
             switch $0 {
             case .Player: return $1 ? .PlaybackPlaying : .PlaybackStopped
             case .Producer: return $2 ? .RecordCapturing : .RecordIdle
@@ -105,35 +104,35 @@ public class ConversationViewModel {
         
         currentMessage = MutableProperty(nil)
         currentUser = currentMessage
-            |> map { $0?.message.sender ?? recipient }
+           .map { $0?.message.sender ?? recipient }
         avatar = currentUser
-            |> flatMap { $0.pAvatar() }
+           .flatMap { $0.pAvatar() }
         cover = currentUser
-            |> flatMap { $0.pCover() }
+           .flatMap { $0.pCover() }
         firstName = currentUser
-            |> flatMap(nilValue: "") { $0.pFirstName() }
+           .flatMap(nilValue: "") { $0.pFirstName() }
         displayName = currentUser
-            |> flatMap(nilValue: "") { $0.pDisplayName() }
+           .flatMap(nilValue: "") { $0.pDisplayName() }
         busy = currentUser
-            |> flatMap(nilValue: false) { $0.pConversationBusy() }
+           .flatMap(nilValue: false) { $0.pConversationBusy() }
         
-        hideReplayButton = _messages |> map { $0.count == 0 }
+        hideReplayButton = _messages.map { $0.count == 0 }
         hideNewMessagesHint = PropertyOf(true, combineLatest(
             messages.producer,
             openedMessages.producer
-        ) |> map {
+        ).map {
             $0.count == $1.count
         })
         
         currentMessageDate = currentMessage
-            |> flatMap { $0.formattedDate |> map { Optional($0) } }
+           .flatMap { $0.formattedDate.map { Optional($0) } }
         currentConversationStatus = currentUser
-            |> flatMap { $0.pConversationStatus() |> map { Optional($0) } }
+           .flatMap { $0.pConversationStatus().map { Optional($0) } }
         displayStatus = PropertyOf("", combineLatest(
             state.producer,
             currentMessageDate.producer,
             currentConversationStatus.producer
-        ) |> map {
+        ).map {
             switch $0 {
             case .PlaybackStopped, .PlaybackPlaying:
                 return $1 ?? $2 ?? ""
@@ -144,7 +143,7 @@ public class ConversationViewModel {
         
         // NOTE: ManagedObjectContext changes are ignored
         // So if video is removed nothing will happen
-        _messages <~ Realm().notifier() |> map { _ in loadMessages() } |> skipRepeats { $0 == $1 }
+        _messages <~ unsafeNewRealm().notifier().map { _ in loadMessages() }.skipRepeats { $0 == $1 }
     }
     
     public func finishTutorial() {
@@ -171,11 +170,11 @@ public class ConversationViewModel {
     }
     
     public func reportUser(reason: String) {
-        currentUser.value.map { meteor.reportUser($0, reason: reason) }
+        if let u = currentUser.value { meteor.reportUser(u, reason: reason) }
     }
     
     public func blockUser() {
-        currentUser.value.map { meteor.blockUser($0) }
+        if let u = currentUser.value { meteor.blockUser(u) }
     }
     
     public func profileVM() -> ProfileViewModel {

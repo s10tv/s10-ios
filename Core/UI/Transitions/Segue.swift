@@ -10,8 +10,8 @@ import Foundation
 import QuartzCore
 
 extension UIStoryboardSegue {
-    var sourceVC : UIViewController { return sourceViewController as! UIViewController }
-    var destVC : UIViewController { return destinationViewController as! UIViewController }
+    var sourceVC : UIViewController { return sourceViewController }
+    var destVC : UIViewController { return destinationViewController }
     var navVC : UINavigationController? { return sourceVC.navigationController }
 }
 
@@ -49,8 +49,8 @@ public class AdvancedPushSegue : UIStoryboardSegue {
 
 @objc(LinkedStoryboardPushSegue)
 public class LinkedStoryboardPushSegue : AdvancedPushSegue {
-    override init!(identifier: String!, source: UIViewController, destination: UIViewController) {
-        super.init(identifier: identifier, source: source, destination: loadSceneNamed(identifier))
+    override init(identifier: String?, source: UIViewController, destination: UIViewController) {
+        super.init(identifier: identifier, source: source, destination: loadSceneNamed(identifier!))
     }
 }
 
@@ -58,8 +58,8 @@ public class LinkedStoryboardPushSegue : AdvancedPushSegue {
 public class LinkedStoryboardPresentSegue : UIStoryboardSegue {
     public var animated = true
     
-    override init!(identifier: String!, source: UIViewController, destination: UIViewController) {
-        super.init(identifier: identifier, source: source, destination: loadSceneNamed(identifier))
+    override init(identifier: String?, source: UIViewController, destination: UIViewController) {
+        super.init(identifier: identifier, source: source, destination: loadSceneNamed(identifier!))
     }
 
     public override func perform() {
@@ -83,26 +83,25 @@ private func loadSceneNamed(fullIdentifier: String) -> UIViewController {
     // TODO: Find better pattern for this ugly code
     let comps = fullIdentifier.componentsSeparatedByString("_")
     let storyboard = UIStoryboard(name: comps[0], bundle: nil)
-    if let vcIdentifier = comps.count > 1 ? comps[1] : nil {
-        if vcIdentifier.length > 0 {
-            return storyboard.instantiateViewControllerWithIdentifier(vcIdentifier) as! UIViewController
-        }
+    let vcIdentifier = comps.count > 1 ? comps[1] : ""
+    if vcIdentifier.length > 0 {
+        return storyboard.instantiateViewControllerWithIdentifier(vcIdentifier)
     }
-    return storyboard.instantiateInitialViewController() as! UIViewController
+    return storyboard.instantiateInitialViewController()!
 }
 
 // TODO: Remove this class after we investigate CoreAnimation calls inside perform
 class PushFromLeftSegue : UIStoryboardSegue {
     
     override func perform() {
-        if let navVC = (self.sourceViewController as! UIViewController).navigationController {
+        if let navVC = self.sourceViewController.navigationController {
             let transition = CATransition()
             transition.duration = 0.25
             transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
             transition.type = kCATransitionPush
             transition.subtype = kCATransitionFromLeft
             navVC.view.layer.addAnimation(transition, forKey: kCATransition)
-            navVC.pushViewController(destinationViewController as! UIViewController, animated: false)
+            navVC.pushViewController(destinationViewController, animated: false)
         }
     }
 }

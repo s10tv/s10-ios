@@ -3,7 +3,7 @@
 
 import CoreData
 
-internal enum ConnectionKeys: String, Printable {
+internal enum ConnectionKeys: String, CustomStringConvertible {
 
     case cold = "cold"
 

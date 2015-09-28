@@ -8,7 +8,6 @@
 
 import Foundation
 import ReactiveCocoa
-import Bond
 
 public protocol ProfileInfoViewModel {
 }
@@ -37,7 +36,7 @@ public struct ConnectedProfileInfoViewModel : ProfileInfoViewModel {
     public let authenticatedIcon: UIImage?
     public let themeColor: UIColor
     public let url: NSURL
-    public let attributes: DynamicArray<Attribute>
+    public let attributes: ArrayProperty<Attribute>
     
     init(profile: User.ConnectedProfile) {
         avatar = profile.avatar
@@ -47,7 +46,7 @@ public struct ConnectedProfileInfoViewModel : ProfileInfoViewModel {
         authenticatedIcon = profile.authenticated == true
             ? UIImage(named: "ic-approved")!.imageWithRenderingMode(.AlwaysTemplate) : nil
         url = profile.url
-        attributes = DynamicArray(profile.attributes.map {
+        attributes = ArrayProperty(profile.attributes.map {
             Attribute(label: $0.label, value: $0.value)
         })
     }

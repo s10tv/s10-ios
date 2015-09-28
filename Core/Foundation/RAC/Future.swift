@@ -12,7 +12,7 @@ import Result
 
 public struct Promise<T, E: ErrorType> {
 
-    private let sink: SinkOf<Event<T, E>>
+    private let sink: Event<T, E>.Sink
     public let future: Future<T, E>
     
     public init(_ block: ((Promise<T, E>) -> ())? = nil) {
@@ -61,7 +61,6 @@ public struct Future<T, E: ErrorType> {
     public var result: Result<T, E>? { return _result() }
     public var value: T? { return result?.value }
     public var error: E? { return result?.error }
-    public var producer: SignalProducer<T, E> { return buffer }
     
     private init(buffer: SignalProducer<T, E>) {
         self.buffer = buffer
@@ -71,7 +70,7 @@ public struct Future<T, E: ErrorType> {
     }
     
     public static var cancelled: Future {
-        return self(buffer: SignalProducer { observer, disposable in
+        return self.init(buffer: SignalProducer { observer, disposable in
             sendInterrupted(observer)
         })
     }
@@ -86,13 +85,13 @@ public struct Future<T, E: ErrorType> {
     
     public init(workToStart: SignalProducer<T, E>) {
         let (buffer, sink) = SignalProducer<T, E>.buffer(1)
-        (workToStart |> take(1)).start(sink)
+        workToStart.take(1).start(sink)
         self.init(buffer: buffer)
     }
     
     public init(startedWork: Signal<T, E>) {
         let (buffer, sink) = SignalProducer<T, E>.buffer(1)
-        (startedWork |> take(1)).observe(sink)
+        startedWork.take(1).observe(sink)
         self.init(buffer: buffer)
     }
     
@@ -116,7 +115,7 @@ public struct Future<T, E: ErrorType> {
         return disposable
     }
     
-    public func observe(success: (T -> ())? = nil, failure: (E -> ())? = nil, cancel: (() -> ())? = nil, complete: (Result<T, E> -> ())? = nil) -> Disposable {
+    public func observe(success success: (T -> ())? = nil, failure: (E -> ())? = nil, cancel: (() -> ())? = nil, complete: (Result<T, E> -> ())? = nil) -> Disposable {
         return observe { result in
             if let result = result {
                 result.analysis(ifSuccess: { success?($0) }, ifFailure: { failure?($0) })
@@ -176,75 +175,38 @@ public struct Future<T, E: ErrorType> {
         }
     }
     
-}
+    // Other support functions
+    
+    public func deliverOn(scheduler: SchedulerType) -> Future<T, E> {
+        return Future(buffer: buffer.observeOn(scheduler))
+    }
 
-// Pipe operator support and free fuctions
-
-public func |> <T, E, X>(future: Future<T, E>, @noescape transform: Future<T, E> -> X) -> X {
-    return transform(future)
-}
-
-public func deliverOn<T, E>(scheduler: SchedulerType) -> Future<T, E> -> Future<T, E> {
-    return { future in
-        return Future(buffer: future.buffer |> observeOn(scheduler))
+    public func flatMap<U>(transform: T -> Future<U, E>) -> Future<U, E> {
+        return Future<U, E>(buffer: buffer.flatMap(.Latest) { transform($0).buffer })
     }
 }
 
-public func onSuccess<T, E>(block: T -> ()) -> Future<T, E> -> Future<T, E> {
-    return { future in
-        return future.onSuccess(block)
+extension Future : SignalProducerType {
+    public var producer: SignalProducer<T, E> {
+        return buffer
     }
-}
-
-public func onFailure<T, E>(block: E -> ()) -> Future<T, E> -> Future<T, E> {
-    return { future in
-        return future.onFailure(block)
+    
+    public func startWithSignal(@noescape setUp: (Signal<T, E>, Disposable) -> ()) {
+        buffer.startWithSignal(setUp)
     }
-}
-
-public func onComplete<T, E>(block: Result<T, E> -> ()) -> Future<T, E> -> Future<T, E> {
-    return { future in
-        return future.onComplete(block)
-    }
-}
-
-public func onCancel<T, E>(block: () -> ()) -> Future<T, E> -> Future<T, E> {
-    return { future in
-        return future.onCancel(block)
-    }
-}
-
-public func onTerminate<T, E>(block: Result<T, E>? -> ()) -> Future<T, E> -> Future<T, E> {
-    return { future in
-        return future.onTerminate(block)
-    }
-}
-
-
-public func flatMap<T, U, E>(transform: T -> Future<U, E>) -> Future<T, E> -> Future<U, E> {
-    return { future in
-        // Specific strategy here doesn't matter because there will only ever be at most value to be
-        // transformed
-        return future |> flatMap(.Latest) { transform($0).buffer }
-    }
-}
-
-// Unary Lift
-
-public func |> <T, E, U, F>(future: Future<T, E>, transform: Signal<T, E> -> Signal<U, F>) -> Future<U, F> {
-    return future.lift(transform)
-}
-
-public func |> <T, E, U, F>(future: Future<T, E>, transform: SignalProducer<T, E> -> SignalProducer<U, F>) -> Future<U, F> {
-    return future.lift(transform)
 }
 
 // Convert from signal producer & signal
 
-public func toFuture<T, E: ErrorType>(producer: SignalProducer<T, E>) -> Future<T, E> {
-    return Future(workToStart: producer)
+extension SignalProducerType {
+    public func toFuture() -> Future<T, E> {
+        return Future(workToStart: producer)
+    }
 }
 
-public func toFuture<T, E: ErrorType>(signal: Signal<T, E>) -> Future<T, E> {
-    return Future(startedWork: signal)
+extension SignalType {
+    public func toFuture() -> Future<T, E> {
+        return Future(startedWork: signal)
+    }
 }
+

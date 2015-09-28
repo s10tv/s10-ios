@@ -8,7 +8,6 @@
 
 import UIKit
 import ReactiveCocoa
-import Bond
 import SCRecorder
 import Async
 import Core
@@ -25,46 +24,43 @@ class PlayerViewController : UIViewController {
     let vm = PlayerViewModel()
     var userPaused: Bool = false
     var player: SCPlayer { return playerView.player! }
-    lazy var videoURLBond: Bond<NSURL?> = {
-        return Bond<NSURL?> { [weak self] in
-            // NOTE: Despite the fact that we are on main thread it appears that
-            // because MutableProperty dispatch_sync to a different queue
-            // AVPlayer.setItemByUrl ends up being a no-op. I can't explain it but
-            // dispatching it again to main thread works around this issue.
-            // the temp variable video is needed to avoid compiler crash
-            let videoURL = $0
-            Async.main { [weak self] in
-                self?.player.setItemByUrl(videoURL)
-//                Log.debug("set videoURL to \(videoURL)")
-            }
-        }
-    }()
     var audioDisposable: Disposable?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         playerView.playerLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill
         player.delegate = self
-        player.dyn("rate").producer.start(next: { [weak self] _ in
+        player.dyn("rate").producer.startWithNext { [weak self] _ in
             self?.vm.updateIsPlaying(self?.player.isPlaying ?? false)
-        })
+        }
 
-        vm.hideView ->> view.dynHidden
-        vm.videoURL ->> videoURLBond
-        vm.isPlaying ->> overlay.dynHidden
-        vm.totalDurationLeft ->> durationTimer.label
+        view.rac_hidden <~ vm.hideView
+        overlay.rac_hidden <~ vm.isPlaying
+        durationTimer.label.rac_text <~ vm.totalDurationLeft
+        vm.videoURL.producer.startWithNext { [weak self] url in
+            let videoURL = url
+            // NOTE: Despite the fact that we are on main thread it appears that
+            // because MutableProperty dispatch_sync to a different queue
+            // AVPlayer.setItemByUrl ends up being a no-op. I can't explain it but
+            // dispatching it again to main thread works around this issue.
+            // the temp variable video is needed to avoid compiler crash
+            Async.main { [weak self] in
+                self?.player.setItemByUrl(videoURL)
+//                Log.debug("set videoURL to \(videoURL)")
+            }
+        }
         
-        vm.currentVideoProgress.producer.start(next: { [weak self] v in
+        vm.currentVideoProgress.producer.startWithNext { [weak self] v in
             self?.durationTimer.progress = v
-        })
+        }
         
         // Slight hack to get around the issue that playback momentarily stops when switching video
-        vm.isPlaying.producer.start(next: { [weak self] in
+        vm.isPlaying.producer.startWithNext { [weak self] in
             let isPlaying = $0
-            UIView.animate(0.25, options: nil, delay: 0.25, animations: { [weak self] in
+            UIView.animate(0.25, options: [], delay: 0.25, animations: { [weak self] in
                 self?.overlay.alpha = isPlaying ? 0 : 1
             })
-        })
+        }
         // Whenever user presses volume button we'll switch to an active audio category
         // so that there's sound
     }
@@ -74,10 +70,10 @@ class PlayerViewController : UIViewController {
         self.player.beginSendingPlayMessages()
         if !self.userPaused { self.player.play() }
         audioDisposable = AudioController.sharedController.systemVolume.producer
-            |> skip(1)
-            |> start(next: { _ in
+            .skip(1)
+            .startWithNext { _ in
                 AudioController.sharedController.setAudioCategory(.PlaybackAndRecord)
-            })
+            }
     }
     
     override func viewDidDisappear(animated: Bool) {
@@ -126,7 +122,7 @@ extension PlayerViewController : SCPlayerDelegate {
 }
 
 extension PlayerViewController : UIGestureRecognizerDelegate {
-    override func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
     }
 }

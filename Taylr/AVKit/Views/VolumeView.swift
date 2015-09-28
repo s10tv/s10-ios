@@ -9,7 +9,6 @@
 import UIKit
 import MediaPlayer
 import ReactiveCocoa
-import Bond
 import Core
 
 @IBDesignable
@@ -47,15 +46,15 @@ class VolumeView : BaseView {
     
     func bindViewModel() {
         alpha = vm.alpha
-        vm.icon ->> imageView
-        vm.value.producer.start(next: { [weak self] v in
+        imageView.rac_image <~ vm.icon
+        vm.value.producer.startWithNext { [weak self] v in
             assert(NSThread.isMainThread(), "Must update on main")
             self?.valueTrack.strokeEnd = CGFloat(v)
             self?.alpha = 1
             UIView.animateSpring(0.5, delay: 1) { [weak self] in
                 self?.alpha = self?.vm.alpha ?? 1
             }
-        })
+        }
     }
     
     @IBAction func didTapVolumeControl() {

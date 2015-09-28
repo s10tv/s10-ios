@@ -7,11 +7,10 @@
 //
 
 import UIKit
-import JVFloatLabeledTextField
 import ReactiveCocoa
+import JVFloatLabeledTextField
 import PKHUD
 import Core
-import Bond
 
 class CreateProfileViewController : UITableViewController {
     @IBOutlet weak var coverCell: UITableViewCell!
@@ -35,8 +34,8 @@ class CreateProfileViewController : UITableViewController {
         tableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50, right: 0)
 
         avatarView.makeCircular()
-        avatarView.dynPlaceholderImage = avatarView.image
-        coverView.dynPlaceholderImage = coverView.image
+        avatarView.sd_placeholderImage = avatarView.image
+        coverView.sd_placeholderImage = coverView.image
         hometownField.setPlaceholder("Hometown", floatingTitle: "Hometown")
         aboutView.floatingLabelFont = UIFont(.cabinRegular, size: 11)
         aboutView.setPlaceholder("About (Optional)", floatingTitle: "About")
@@ -44,14 +43,14 @@ class CreateProfileViewController : UITableViewController {
         aboutView.delegate = self
         
         vm = CreateProfileViewModel(meteor: Meteor)
-        vm.firstName <->> firstNameField
-        vm.lastName <->> lastNameField
-        vm.hometown <->> hometownField
-        vm.major <->> majorField
-        vm.year <->> yearField
-        vm.about <->> aboutView
-        vm.avatar ->> avatarView.imageBond
-        vm.cover ->> coverView.imageBond
+        firstNameField.rac_text <<~> vm.firstName
+        lastNameField.rac_text <<~> vm.lastName
+        hometownField.rac_text <<~> vm.hometown
+        majorField.rac_text <<~> vm.major
+        yearField.rac_text <<~> vm.year
+        aboutView.rac_text <<~> vm.about
+        avatarView.sd_image <~ vm.avatar
+        coverView.sd_image <~ vm.cover
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -98,7 +97,7 @@ class CreateProfileViewController : UITableViewController {
 
 // MARK: - Zoom in cover photo on tableView overscroll
 
-extension CreateProfileViewController : UIScrollViewDelegate {
+extension CreateProfileViewController /*: UIScrollViewDelegate */ {
     override func scrollViewDidScroll(scrollView: UIScrollView) {
         let yOffset = scrollView.contentOffset.y
         if (yOffset < 0) {
@@ -116,7 +115,7 @@ extension CreateProfileViewController : UIScrollViewDelegate {
 // HACK ALERT: Better way than hardcode?
 private let AboutIndexPath = NSIndexPath(forRow: 3, inSection: 1)
 
-extension CreateProfileViewController : UITableViewDelegate {
+extension CreateProfileViewController /*: UITableViewDelegate */ {
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if let size = aboutView.superview?.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
             where indexPath == AboutIndexPath {

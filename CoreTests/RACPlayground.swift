@@ -11,8 +11,6 @@ import XCTest
 import ReactiveCocoa
 import Async
 import Nimble
-import Bond
-import Box
 import Core
 
 class RACPlayground : AsyncTestCase {
@@ -26,7 +24,7 @@ class RACPlayground : AsyncTestCase {
             var testUser = MutableProperty<TestUser?>(nil)
         }
         let p1 = MutableProperty<TestUser?>(nil)
-        let pName = p1 |> flatMap { $0?.testName ?? PropertyOf("fallback") }
+        let pName = p1.flatMap { $0?.testName ?? PropertyOf("fallback") }
         expect(pName.value) == "fallback"
 
         let testUser = TestUser()
@@ -40,8 +38,8 @@ class RACPlayground : AsyncTestCase {
         testUser.testUser.value = testUser2
         
         let pName2 = p1
-            |> flatMap { $0.testUser }
-            |> flatMap(nilValue: "nilVal") { $0.testName }
+           .flatMap { $0.testUser }
+           .flatMap(nilValue: "nilVal") { $0.testName }
         expect(pName2.value) == "default"
         testUser2._testName.value = "nestedChange"
         expect(pName2.value) == "nestedChange"
@@ -54,7 +52,7 @@ class RACPlayground : AsyncTestCase {
     func testSignalProducer() {
         let (producer, sink) = SignalProducer<Int, ReactiveCocoa.NoError>.buffer()
         producer
-            |> on(next: { value in
+           .on(next: { value in
                 fail("unexpectedly received value")
             })
         sendNext(sink, 5)
@@ -81,7 +79,7 @@ class RACPlayground : AsyncTestCase {
             return $0.description
         }
 
-        signal |> map(transform)
+        signal.map(transform)
         waitForExpectationsWithTimeout(1, handler: nil)
     }
     
@@ -90,7 +88,7 @@ class RACPlayground : AsyncTestCase {
         let sp = promise.future.producer
         
         let completeCalled = expectationWithDescription("complete called")
-        sp.start(completed: {
+        sp.startWithCompleted {
             completeCalled.fulfill()
         })
         promise.success(3)
@@ -101,13 +99,13 @@ class RACPlayground : AsyncTestCase {
         let promise = Promise<Int, NSError>()
 
         let sp = promise.future.producer
-            |> materialize
-            |> dematerialize
+           .materialize
+           .dematerialize
         
         promise.failure(NSError(domain: "", code: 0, userInfo: nil))
         
         let errorReceived = expectationWithDescription("error received")
-        sp |> toFuture |> onFailure { _ in
+        sp.toFuture().onFailure { _ in
             errorReceived.fulfill()
         }
         waitForExpectationsWithTimeout(1, handler: nil)
@@ -117,7 +115,7 @@ class RACPlayground : AsyncTestCase {
 //        expectComplete { () -> Future<(), NSError> in
 //            let (producer, sink) = SignalProducer<(), NSError>.buffer(1)
 //            sendCompleted(sink)
-//            return producer |> toFuture
+//            return producer.toFuture()
 //        }
 //        waitForExpectationsWithTimeout(1, handler: nil)
 //    }
@@ -196,7 +194,7 @@ class RACPlayground : AsyncTestCase {
         expect(object.strValue).to(equal("test3"))
       
         // propertyof
-        let pof = typedProp |> readonly
+        let pof = typedProp.readonly
         expect(pof.value).to(equal("test3"))
         
         object.strValue = "test4"
@@ -226,7 +224,7 @@ class RACPlayground : AsyncTestCase {
         object.intValue = 123
         expect(primitiveTyped.value).to(equal(123))
         
-        let pof = object.dyn("intValue").force(Int) |> readonly
+        let pof = object.dyn("intValue").force(Int).readonly
         object.intValue = 333
         expect(pof.value).to(equal(333))
         
@@ -263,7 +261,7 @@ class RACPlayground : AsyncTestCase {
     
     func testSignalToFuture() {
         let (signal, sink) = Signal<Int, NSError>.pipe()
-        let future = signal |> toFuture
+        let future = signal.toFuture()
         let expectation = expectationWithDescription("success")
         future.onSuccess { val in
             expect(val).to(equal(5))
@@ -272,75 +270,22 @@ class RACPlayground : AsyncTestCase {
 
         let completed = expectationWithDescription("completed")
         future.producer
-            |> flatMap(FlattenStrategy.Concat) { _ in
+           .flatMap(FlattenStrategy.Concat) { _ in
                 return SignalProducer<Int, NSError>.empty
             }
-            |> start(completed: {
+           .start(completed: {
                 completed.fulfill()
             })
         
         let thenCompleted = expectationWithDescription("then completed")
         future.producer
-            |> then(SignalProducer<Int, NSError>.empty)
-            |> start(completed: {
+           .then(SignalProducer<Int, NSError>.empty)
+           .start(completed: {
                 thenCompleted.fulfill()
             })
         
         sendNext(sink, 5)
         waitForExpectationsWithTimeout(1, handler: nil)
-    }
-    
-    func testBondDynamic() {
-        weak var wDynamic: Dynamic<Int>!
-        autoreleasepool {
-            let dynamic = Dynamic(3)
-            wDynamic = dynamic
-            expect(dynamic.value) == 3
-            
-            let prop = fromBondDynamic(dynamic)
-            expect(prop.value) == 3
-            
-            dynamic.value = 55
-            expect(prop.value) == 55
-        }
-        // TODO: Figure why it doesn't dealloc yet
-        expect(wDynamic).toNot(beNil())
-//        let eventuallyNil = expectationWithDescription("eventually nil")
-//        timer(0.05, onScheduler: QueueScheduler.mainQueueScheduler)
-//            |> start(next: { _ in
-//                if wDynamic == nil {
-//                    eventuallyNil.fulfill()
-//                }
-//            })
-//        waitForExpectationsWithTimeout(1, handler: nil)
-    }
-    
-    func testTwoWayBinding() {
-        weak var wDyn: Dynamic<Int>!
-        weak var wProp: MutableProperty<Int>!
-        autoreleasepool {
-            let dyn = Dynamic<Int>(0)
-            autoreleasepool {
-                let prop = MutableProperty(100)
-                wProp = prop
-                wDyn = dyn
-
-                expect(prop.value) == 100
-                expect(dyn.value) == 0
-                
-                prop <->> dyn
-                expect(dyn.value) == 100
-                
-                prop.value = 500
-                expect(dyn.value) == 500
-                
-                dyn.value = 111
-                expect(prop.value) == 111
-            }
-            expect(wProp).toNot(beNil())
-        }
-        expect(wProp).to(beNil())
-        expect(wDyn).to(beNil())
     }
     
 }

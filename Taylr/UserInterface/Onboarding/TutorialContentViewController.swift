@@ -9,7 +9,6 @@
 import UIKit
 import Core
 import ReactiveCocoa
-import Bond
 
 protocol TutorialViewController {
     func getViewController() -> UIViewController
@@ -42,8 +41,8 @@ class TutorialContentViewController : BaseViewController, TutorialViewController
             let vm = LoginViewModel(meteor: Meteor, delegate: Globals.accountService)
             loginButton.addAction(vm.loginAction) { values, errors, executing in
                 showProgress <~ executing
-                showErrorAction <~ errors |> map { $0 as AlertableError }
-                segueAction <~ values |> map {
+                showErrorAction <~ errors.map { $0 as AlertableError }
+                segueAction <~ values.map {
                     switch $0 {
                     case .LoggedIn: return .LoginToRegisterEmail
                     case .LoggedInButCodeDisabled: return .TutorialToConnectServices

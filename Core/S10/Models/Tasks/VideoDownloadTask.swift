@@ -21,17 +21,17 @@ internal class VideoDownloadTask : Object {
         return "videoId"
     }
     
-    class func findByVideoId(videoId: String, realm: Realm = Realm()) -> VideoDownloadTask? {
+    class func findByVideoId(videoId: String, realm: Realm = unsafeNewRealm()) -> VideoDownloadTask? {
         let pred = NSPredicate(format: "videoId = %@", videoId)
         return realm.objects(VideoDownloadTask).filter(pred).first
     }
     
-    class func countDownloads(senderId: String, realm: Realm = Realm()) -> Int {
+    class func countDownloads(senderId: String, realm: Realm = unsafeNewRealm()) -> Int {
         return realm.objects(self).filter("senderId = %@", senderId).count
     }
     
     class func countOfDownloads(senderId: String) -> SignalProducer<Int, NoError> {
         return SignalProducer(value: countDownloads(senderId))
-            |> concat(Realm().notifier() |> map { _ in self.countDownloads(senderId) })
+            .concat(unsafeNewRealm().notifier().map { _ in self.countDownloads(senderId) })
     }
 }

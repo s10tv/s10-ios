@@ -3,7 +3,7 @@
 
 import CoreData
 
-internal enum ActivityKeys: String, Printable {
+internal enum ActivityKeys: String, CustomStringConvertible {
 
     case caption = "caption"
 

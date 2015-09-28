@@ -8,13 +8,12 @@
 
 import UIKit
 import ReactiveCocoa
-import Core
 
 extension UIView {
-    public func setHiddenAnimated(#hidden: Bool, duration: NSTimeInterval = 0.3, delay: NSTimeInterval = 0) -> RACSignal {
+    public func setHiddenAnimated(hidden hidden: Bool, duration: NSTimeInterval = 0.3, delay: NSTimeInterval = 0) -> RACSignal {
         // TODO: This is obviously repetitive, but let's wait to RAC 3.0 is out to clean this up
         let subject = RACSubject()
-        UIView.animateWithDuration(duration, delay: delay, options: nil, animations: {
+        UIView.animateWithDuration(duration, delay: delay, options: [], animations: {
             if hidden {
                 self.alpha = 0
             } else {
@@ -39,7 +38,7 @@ extension UIView {
 //    }
     
     public class func animateSpring(duration: NSTimeInterval, damping: CGFloat = 0.7, velocity: CGFloat = 0.7,
-                        options: UIViewAnimationOptions = nil, delay: NSTimeInterval = 0, animations: () -> ()) -> RACSignal {
+                        options: UIViewAnimationOptions = [], delay: NSTimeInterval = 0, animations: () -> ()) -> RACSignal {
         let subject = RACSubject()
         UIView.animateWithDuration(duration, delay: delay,
             usingSpringWithDamping: damping, initialSpringVelocity: velocity,
@@ -53,7 +52,7 @@ extension UIView {
 //        return UIView.animate(duration, delay: 0, animations: animations)
 //    }
     
-    public class func animate(duration: NSTimeInterval, options: UIViewAnimationOptions = nil, delay: NSTimeInterval = 0, animations: () -> ()) -> RACSignal {
+    public class func animate(duration: NSTimeInterval, options: UIViewAnimationOptions = [], delay: NSTimeInterval = 0, animations: () -> ()) -> RACSignal {
         let subject = RACSubject()
         UIView.animateWithDuration(duration, delay: delay, options: options, animations: animations) { finished in
             subject.sendNextAndCompleted(finished)
@@ -76,7 +75,7 @@ extension CALayer {
         return animateKeyPath("opacity", toValue: opacity, duration: duration, fillMode: fillMode)
     }
     
-    public func animate(#keyPath: String, fillMode: CAMediaTimingFillMode = .Removed, configure: (CABasicAnimation, CALayer) -> ()) -> RACSignal {
+    public func animate(keyPath keyPath: String, fillMode: CAMediaTimingFillMode = .Removed, configure: (CABasicAnimation, CALayer) -> ()) -> RACSignal {
         let animation = CABasicAnimation(keyPath, fillMode: fillMode)
         configure(animation, self)
         return animation.addToLayerAndReturnSignal(self, forKey: keyPath)
@@ -89,7 +88,7 @@ extension CAAnimation {
     private class ProxyDelegate : NSObject {
         let subject = RACSubject()
         
-        override func animationDidStop(anim: CAAnimation!, finished flag: Bool) {
+        override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
             subject.sendNextAndCompleted(flag)
         }
     }

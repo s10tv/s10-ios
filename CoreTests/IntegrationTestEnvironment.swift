@@ -27,8 +27,9 @@ class IntegrationTestEnvironment : XCTestCase {
     override class func setUp() {
         super.setUp()
         environment = Environment(provisioningProfile: nil)
-        Realm.defaultPath = NSHomeDirectory().stringByAppendingPathComponent("test.realm")
-        deleteRealmFilesAtPath(Realm.defaultPath)
+        let path = NSURL(fileURLWithPath: NSHomeDirectory()).URLByAppendingPathComponent("test.realm").path
+        Realm.Configuration.defaultConfiguration.path = path
+        deleteRealmFilesAtPath(path!)
         OHHTTPStubs.stubRequestsPassingTest({ request in
             let isAzure = request.URL!.host!.rangeOfString("s10tv.blob.core.windows.net") != nil
             return isAzure
@@ -55,15 +56,16 @@ class IntegrationTestEnvironment : XCTestCase {
     }
 
     func getResource(filename: String) -> NSURL? {
-        return bundle.URLForResource(filename.stringByDeletingPathExtension, withExtension: filename.pathExtension)
+        let file = NSURL(fileURLWithPath: filename)
+        return bundle.URLForResource(file.URLByDeletingPathExtension?.lastPathComponent, withExtension: file.pathExtension)
     }
 
     // MARK: - Private Functions
 
     private class func deleteRealmFilesAtPath(path: String) {
         let fileManager = NSFileManager.defaultManager()
-        fileManager.removeItemAtPath(path, error: nil)
+        _ = try? fileManager.removeItemAtPath(path)
         let lockPath = path + ".lock"
-        fileManager.removeItemAtPath(lockPath, error: nil)
+        _ = try? fileManager.removeItemAtPath(lockPath)
     }
 }

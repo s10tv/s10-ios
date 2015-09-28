@@ -7,12 +7,17 @@
 //
 
 import Foundation
-import SDWebImage
+import ReactiveCocoa
 import Cartography
-import Bond
 import Core
 
 class ProfileViewController : BaseViewController {
+    
+    enum Section : Int {
+        case Cover = 0
+        case Info = 1
+        case Activities = 2
+    }
 
     @IBOutlet weak var messageButton: UIButton!
     @IBOutlet weak var moreButton: UIButton!
@@ -26,42 +31,18 @@ class ProfileViewController : BaseViewController {
         tableView.estimatedRowHeight = 500
         moreButton.hidden = !vm.showMoreOptions
         messageButton.hidden = !vm.allowMessage
-        vm.timeRemaining ->> messageButton.dynTitle
+        messageButton.rac_title <~ vm.timeRemaining
+        tableView.dataSource = self
         
-        let coverFactory = tableView.factory(ProfileCoverCell)
-        let taylrProfileFactory = tableView.factory(TaylrProfileInfoCell.self, section: 1)
-        let connectedProfileFactory = tableView.factory(ConnectedProfileInfoCell.self, section: 1)
-        let imageCellFactory = tableView.factory(ActivityImageCell.self, section: 2)
-        let textCellFactory = tableView.factory(ActivityTextCell.self, section: 2)
-
-        let coverSection = vm.coverVM.map { [unowned self] (vm, index) -> UITableViewCell in
-            if self.coverCell == nil {
-                self.coverCell = coverFactory(vm, index) as! ProfileCoverCell
-            }
-            return self.coverCell
+        // TODO: Refactor into separate binding & handle more granular changes
+        vm.infoVM.producer.startWithNext { [weak self] _ in
+            self?.tableView.reloadData()
+//            self?.tableView.reloadSections(NSIndexSet(index: Section.Info.rawValue), withRowAnimation: .Automatic)
         }
-        let infoSection = vm.infoVM.map { (vm, index) -> UITableViewCell in
-            switch vm {
-            case let vm as TaylrProfileInfoViewModel:
-                return taylrProfileFactory(vm, index)
-            case let vm as ConnectedProfileInfoViewModel:
-                return connectedProfileFactory(vm, index)
-            default:
-                fatalError("Unexpected cell type")
-            }
+        vm.activities.changes.observeNext { [weak self] _ in
+            self?.tableView.reloadData()
+//            self?.tableView.reloadSections(NSIndexSet(index: Section.Activities.rawValue), withRowAnimation: .Automatic)
         }
-        
-        let activitiesSection = vm.activities.map { (vm, index) -> UITableViewCell in
-            switch vm {
-            case let vm as ActivityImageViewModel:
-                return imageCellFactory(vm, index)
-            case let vm as ActivityTextViewModel:
-                return textCellFactory(vm, index)
-            default:
-                fatalError("Unexpected cell type")
-            }
-        }
-        DynamicArray([coverSection, infoSection, activitiesSection]) ->> tableView
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -89,7 +70,7 @@ class ProfileViewController : BaseViewController {
         return .LightContent
     }
     
-    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         if identifier == SegueIdentifier.ProfileToConversation.rawValue
             && navigationController?.lastViewController is ConversationViewController {
                 navigationController?.popViewControllerAnimated(true)
@@ -109,10 +90,10 @@ class ProfileViewController : BaseViewController {
     // Very repetitive. Consider refactor along with ConversationViewController
     @IBAction func showMoreOptions(sender: AnyObject) {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        sheet.addAction(LS(.moreSheetBlock, vm.cvm.firstName.value), style: .Destructive) { _ in
+        sheet.addAction(LS(.moreSheetBlock, vm.coverVM.firstName.value), style: .Destructive) { _ in
             self.blockUser(self)
         }
-        sheet.addAction(LS(.moreSheetReport, vm.cvm.firstName.value), style: .Destructive) { _ in
+        sheet.addAction(LS(.moreSheetReport, vm.coverVM.firstName.value), style: .Destructive) { _ in
             self.reportUser(self)
         }
         sheet.addAction(LS(.moreSheetCancel), style: .Cancel)
@@ -121,12 +102,12 @@ class ProfileViewController : BaseViewController {
 
     // TODO: FIX CODE DUPLICATION WITH ConversationViewController
     @IBAction func blockUser(sender: AnyObject) {
-        let alert = UIAlertController(title: "Block User", message: "Are you sure you want to block \(vm.cvm.firstName.value)?", preferredStyle: .Alert)
+        let alert = UIAlertController(title: "Block User", message: "Are you sure you want to block \(vm.coverVM.firstName.value)?", preferredStyle: .Alert)
         alert.addAction("Cancel", style: .Cancel)
         alert.addAction("Block", style: .Destructive) { _ in
             self.vm.blockUser()
 
-            let dialog = UIAlertController(title: "Block User", message: "\(self.vm.cvm.firstName.value) will no longer be able to contact you in the future", preferredStyle: .Alert)
+            let dialog = UIAlertController(title: "Block User", message: "\(self.vm.coverVM.firstName.value) will no longer be able to contact you in the future", preferredStyle: .Alert)
             dialog.addAction("Ok", style: .Default)
             self.presentViewController(dialog)
         }
@@ -138,11 +119,53 @@ class ProfileViewController : BaseViewController {
         alert.addTextFieldWithConfigurationHandler(nil)
         alert.addAction(LS(.reportAlertCancel), style: .Cancel)
         alert.addAction(LS(.reportAlertConfirm), style: .Destructive) { _ in
-            if let reportReason = (alert.textFields?[0] as? UITextField)?.text {
+            if let reportReason = alert.textFields?[0].text {
                 self.vm.reportUser(reportReason)
             }
         }
         presentViewController(alert)
+    }
+}
+
+extension ProfileViewController : UITableViewDataSource {
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 3
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        switch Section(rawValue: section)! {
+        case .Cover: return 1
+        case .Info: return 1
+        case .Activities: return vm.activities.array.count
+        }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        switch Section(rawValue: indexPath.section)! {
+        case .Cover:
+            if coverCell == nil {
+                coverCell = tableView.dequeue(ProfileCoverCell.self, indexPath: indexPath, vm: vm.coverVM)
+            }
+            return coverCell
+        case .Info:
+            switch vm.infoVM.value {
+            case let vm as TaylrProfileInfoViewModel:
+                return tableView.dequeue(TaylrProfileInfoCell.self, indexPath: indexPath, vm: vm)
+            case let vm as ConnectedProfileInfoViewModel:
+                return tableView.dequeue(ConnectedProfileInfoCell.self, indexPath: indexPath, vm: vm)
+            default:
+                fatalError("Unexpected cell type")
+            }
+        case .Activities:
+            switch vm.activities[indexPath.row] {
+            case let vm as ActivityImageViewModel:
+                return tableView.dequeue(ActivityImageCell.self, indexPath: indexPath, vm: vm)
+            case let vm as ActivityTextViewModel:
+                return tableView.dequeue(ActivityTextCell.self, indexPath: indexPath, vm: vm)
+            default:
+                fatalError("Unexpected cell type")
+            }
+        }
     }
 }
 

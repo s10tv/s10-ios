@@ -70,11 +70,12 @@ class EditorViewController : UIViewController {
     @IBAction func saveToCameraRoll(sender: AnyObject) {
         PKHUD.showActivity(dimsBackground: true)
         AVKit.exportVideo(recordSession, filter: filterView.selectedFilter)
-            |> flatMap { AVKit.writeToSavedPhotosAlbum($0) }
-            |> observeOn(UIScheduler())
-            |> onSuccess { assetURL in
+            .flatMap { AVKit.writeToSavedPhotosAlbum($0) }
+            .observeOn(UIScheduler())
+            .toFuture()
+            .onSuccess { assetURL in
                 PKHUD.hide(animated: true)
-                println("Finished writing to assetURL \(assetURL)")
+                print("Finished writing to assetURL \(assetURL)")
             }
     }
 }

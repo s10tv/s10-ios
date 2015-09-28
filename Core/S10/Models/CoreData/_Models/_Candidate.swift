@@ -3,7 +3,7 @@
 
 import CoreData
 
-internal enum CandidateKeys: String, Printable {
+internal enum CandidateKeys: String, CustomStringConvertible {
 
     case date = "date"
 

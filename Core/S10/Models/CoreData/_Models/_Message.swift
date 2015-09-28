@@ -3,7 +3,7 @@
 
 import CoreData
 
-internal enum MessageKeys: String, Printable {
+internal enum MessageKeys: String, CustomStringConvertible {
 
     case createdAt = "createdAt"
 

@@ -9,51 +9,89 @@
 import Foundation
 import ReactiveCocoa
 
-public func |> <P1 : PropertyType, X>(property: P1, @noescape transform: P1 -> X) -> X {
-    return transform(property)
+// TODO: Add lifting support to properties
+//public func |> <P1 : PropertyType, X>(property: P1, @noescape transform: P1 -> X) -> X {
+//    return transform(property)
+//}
+
+public func <~ <P: MutablePropertyType, T where P.Value == Optional<T>>(property: P, signal: Signal<T, NoError>) -> Disposable {
+    return property <~ signal.map { Optional($0) }
 }
 
-// TODO: Add lifting support to properties
-public func map<P : PropertyType, T, U where P.Value == T>(transform: T -> U) -> P -> PropertyOf<U> {
-    return { property in
-        return PropertyOf(transform(property.value)) {
-            property.producer |> map { v in
-                let retainSourceProperty = property // Force retain source property
+public func <~ <P: MutablePropertyType, T where P.Value == Optional<T>>(property: P, producer: SignalProducer<T, NoError>) -> Disposable {
+    return property <~ producer.map { Optional($0) }
+}
+
+public func <~ <Destination: MutablePropertyType, Source: PropertyType where Destination.Value == Optional<Source.Value>>(destinationProperty: Destination, sourceProperty: Source) -> Disposable {
+    return destinationProperty <~ sourceProperty.producer
+}
+
+// MARK: ProducerProperty
+
+public struct ProducerProperty<T> : PropertyType {
+    public typealias Value = T
+    
+    public let producer: SignalProducer<T, NoError>
+    public var value: T {
+        guard let v = producer.first()?.value else {
+            fatalError("BufferProperty producer must produce a value when started")
+        }
+        return v
+    }
+    
+    public init(_ producer: SignalProducer<T, NoError>) {
+        self.producer = producer
+    }
+}
+
+// MARK: - Property Type Extensions
+
+extension PropertyType {
+    public func map<U>(transform: Value -> U) -> PropertyOf<U> {
+        return PropertyOf(transform(self.value)) {
+            self.producer.map { v in
+                _ = self // Force retain source property
                 return transform(v)
             }
         }
     }
-}
-
-
-public func flatMap<P : PropertyType, P2 : PropertyType, T, U where P.Value == T, P2.Value == U>(transform: T -> P2) -> P -> PropertyOf<U> {
-    return { property in
-        return PropertyOf(transform(property.value).value) {
-            property.producer |> flatMap(.Latest) { v in
-                let retainSourceProperty = property // Force retain source property
+    
+    public func flatMap<P2 : PropertyType, U where P2.Value == U>(transform: Value -> P2) -> PropertyOf<U> {
+        return PropertyOf(transform(self.value).value) {
+            self.producer.flatMap(.Latest) { v in
+                _ = self // Force retain source property
                 return SignalProducer<U, NoError> { sink, disposable in
                     let innerProperty = transform(v)
                     disposable.addDisposable(innerProperty.producer.start(sink))
                     disposable.addDisposable {
-                        let retainedProperty = innerProperty // Force retain inner property
+                        _ = innerProperty // Force retain inner property
                     }
                 }
             }
         }
     }
+    
+    public func mutable() -> MutableProperty<Value> {
+        return MutableProperty(self.value) {
+            self.producer.map { v in
+                _ = self // Force retain source property
+                return v
+            }
+        }
+    }
 }
 
-public func flatMap<P : PropertyType, P2 : PropertyType, T, U where P.Value == T?, P2.Value == U>(#nilValue: U, transform: T -> P2) -> P -> PropertyOf<U> {
-    return { property in
-        return PropertyOf(property.value.map { transform($0).value } ?? nilValue) {
-            property.producer |> flatMap(.Latest) { v in
-                let retainSourceProperty = property // Force retain source property
+extension PropertyType where Value: OptionalType {
+    public func flatMap<P2 : PropertyType,  U where P2.Value == U>(nilValue nilValue: U, transform: Value.T -> P2) -> PropertyOf<U> {
+        return PropertyOf(self.value.optional.map { transform($0).value } ?? nilValue) {
+            self.producer.flatMap(.Latest) { v in
+                _ = self // Force retain source property
                 return SignalProducer<U, NoError> { sink, disposable in
-                    if let v = v {
+                    if let v = v.optional {
                         let innerProperty = transform(v)
                         disposable.addDisposable(innerProperty.producer.start(sink))
                         disposable.addDisposable {
-                            let retainedProperty = innerProperty // Force retain inner property
+                            _ = innerProperty // Force retain inner property
                         }
                     } else {
                         sendNext(sink, nilValue)
@@ -63,24 +101,76 @@ public func flatMap<P : PropertyType, P2 : PropertyType, T, U where P.Value == T
             }
         }
     }
+    
+    public func flatMap<P2 : PropertyType, U where P2.Value == U?>(transform: Value.T -> P2) -> PropertyOf<U?> {
+        return flatMap(nilValue: nil, transform: transform)
+    }
 }
 
-public func flatMap<P : PropertyType, P2 : PropertyType, T, U where P.Value == T?, P2.Value == U?>(transform: T -> P2) -> P -> PropertyOf<U?> {
-    return flatMap(nilValue: nil, transform)
+extension MutablePropertyType {
+    /// `readonly` will render a read only version of any mutable property type
+    /// Readonly is essentially an identity function
+    public func readonly() -> PropertyOf<Value> {
+        return PropertyOf(self)
+    }
 }
 
+// MARK: - Property Extensions
 
-/// `mutableProperty |> readonly` will render a read only version of any mutable property type
-/// Readonly is essentially an identity function
-public func readonly<P : MutablePropertyType, T where P.Value == T>(property: P) -> PropertyOf<T> {
-    return PropertyOf(property)
+extension MutableProperty {
+    public convenience init(_ initialValue: T, @noescape _ block: () -> SignalProducer<T, ReactiveCocoa.NoError>) {
+        self.init(initialValue)
+        self <~ block()
+    }
+    
+    public convenience init(_ initialValue: T, @noescape _ block: () -> Signal<T, ReactiveCocoa.NoError>) {
+        self.init(initialValue)
+        self <~ block()
+    }
 }
 
-public func mutable<P : PropertyType, T where P.Value == T>(property: P) -> MutableProperty<T> {
-    return MutableProperty(property.value) {
-        property.producer |> map { v in
-            let retainSourceProperty = property // Force retain source property
-            return v
-        }
+extension PropertyOf {
+    public init(_ constantValue: T) {
+        self.init(ConstantProperty(constantValue))
+    }
+    
+    public init(_ initialValue: T, _ producer: SignalProducer<T, ReactiveCocoa.NoError>) {
+        self.init(MutableProperty(initialValue, { producer }))
+    }
+    
+    public init(_ initialValue: T, @noescape _ block: () -> SignalProducer<T, ReactiveCocoa.NoError>) {
+        self.init(MutableProperty(initialValue, block))
+    }
+    
+    public init(_ initialValue: T, @noescape _ block: () -> Signal<T, ReactiveCocoa.NoError>) {
+        self.init(MutableProperty(initialValue, block))
+    }
+}
+
+// MARK: - lazily creates a gettable associated property via the given factory
+
+public func lazyAssociatedObject<T: AnyObject>(host: AnyObject, key: UnsafePointer<Void>, factory: () -> T) -> T {
+    return objc_getAssociatedObject(host, key) as? T ?? {
+        let associatedProperty = factory()
+        objc_setAssociatedObject(host, key, associatedProperty, .OBJC_ASSOCIATION_RETAIN)
+        return associatedProperty
+    }()
+}
+
+public func lazyAssociatedProperty<T>(host: AnyObject, key: UnsafePointer<Void>, setter: T -> (), getter: () -> T) -> MutableProperty<T> {
+    return lazyAssociatedObject(host, key: key) {
+        let property = MutableProperty<T>(getter())
+        property.producer.startWithNext(setter)
+        return property
+    }
+}
+
+extension NSObject {
+    public func associatedObject<T: AnyObject>(key: UnsafePointer<Void>, factory: () -> T) -> T {
+        return lazyAssociatedObject(self, key: key, factory: factory)
+    }
+    
+    public func associatedProperty<T>(key: UnsafePointer<Void>, setter: T -> (), getter: () -> T) -> MutableProperty<T> {
+        return lazyAssociatedProperty(self, key: key, setter: setter, getter: getter)
     }
 }

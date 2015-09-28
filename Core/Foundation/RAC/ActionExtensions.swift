@@ -8,6 +8,49 @@
 
 import UIKit
 import ReactiveCocoa
+import Result
+
+// MARK: - Action extension
+
+extension Action {
+    
+    public convenience init(_ future: Input -> Future<Output, Error>) {
+        self.init(enabledIf: ConstantProperty(true), { input in
+            SignalProducer<Output, Error> { observer, disposable in
+                disposable += future(input).producer.start(observer)
+            }
+        })
+    }
+    
+    public convenience init(_ transform: Input -> Result<Output, Error>) {
+        self.init(enabledIf: ConstantProperty(true), { input in
+            SignalProducer<Output, Error> { observer, disposable in
+                transform(input).analysis(ifSuccess: {
+                    sendNext(observer, $0)
+                    sendCompleted(observer)
+                }, ifFailure: {
+                    sendError(observer, $0)
+                })
+            }
+        })
+    }
+    
+    public var mEvents: Signal<Event<Output, Error>, NoError> {
+        return events.observeOn(UIScheduler())
+    }
+    public var mValues: Signal<Output, NoError> {
+        return values.observeOn(UIScheduler())
+    }
+    public var mErrors: Signal<Error, NoError> {
+        return errors.observeOn(UIScheduler())
+    }
+    public var mExecuting: SignalProducer<Bool, NoError> {
+        return executing.producer.observeOn(UIScheduler())
+    }
+    public var mEnabled: SignalProducer<Bool, NoError> {
+        return enabled.producer.observeOn(UIScheduler())
+    }
+}
 
 // MARK: - Actions
 
@@ -16,35 +59,35 @@ extension UIControl {
         @noescape configure: (Signal<O, NoError>, Signal<E, NoError>, PropertyOf<Bool>) -> ()) {
         addTarget(action.unsafeCocoaAction, action: CocoaAction.selector, forControlEvents: events)
         action.enabled.producer
-            |> observeOn(UIScheduler())
-            |> start(next: { [weak self] enabled in
+            .observeOn(UIScheduler())
+            .startWithNext { [weak self] enabled in
                 self?.enabled = enabled
-            })
+            }
         configure(action.mValues, action.mErrors, action.executing)
     }
 }
 
 // Extend the meaning of the <~ operator in RAC to stream events from UIControls into Action
 
-public func <~ <I, O, E: ErrorType>(action: Action<I, O, E>, control: UIControl) {
-    control.addAction(action) { _, _, _ in }
-}
+//public func <~ <I, O, E: ErrorType>(action: Action<I, O, E>, control: UIControl) {
+//    control.addAction(action) { _, _, _ in }
+//}
 
 // Piping value of Signal and SignalProducer into Action
 
 public func <~ <I, O, E: ErrorType>(action: Action<I, O, E>, signal: Signal<I, NoError>) -> Disposable {
     let disposable = CompositeDisposable()
-    disposable += signal.observe(next: {
+    disposable += signal.observeNext {
         disposable += action.apply($0).start()
-    })
+    }
     return disposable
 }
 
 public func <~ <I, O, E: ErrorType>(action: Action<I, O, E>, producer: SignalProducer<I, NoError>) -> Disposable {
     let disposable = CompositeDisposable()
-    disposable += producer.start(next: {
+    disposable += producer.startWithNext {
         disposable += action.apply($0).start()
-    })
+    }
     return disposable
 }
 

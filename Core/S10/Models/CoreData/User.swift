@@ -41,7 +41,12 @@ internal class User: _User {
     }
     
     var connectedProfiles: [ConnectedProfile] {
-        return connectedProfiles_.flatMap(Mapper<ConnectedProfile>().mapArray) ?? []
+        // Need to use the longer and verbose form because shorter version does not compile in release mode...
+        let mapper = Mapper<ConnectedProfile>()
+        if let connectedProfiles_ = connectedProfiles_ {
+            return mapper.mapArray(connectedProfiles_) ?? []
+        }
+        return []
     }
     
     struct ConnectedProfile : Mappable {
@@ -57,6 +62,9 @@ internal class User: _User {
         var themeColor: UIColor!
         var attributes: [Attribute]!
         
+        init?(_ map: Map) {
+        }
+        
         mutating func mapping(map: Map) {
             id <- map["id"]
             icon <- map["icon"]
@@ -71,16 +79,11 @@ internal class User: _User {
             attributes <- map["attributes"]
         }
         
-        static func newInstance(map: Map) -> Mappable? {
-            return ConnectedProfile()
-        }
-        
         struct Attribute : Mappable {
             var label: String!
             var value: String!
 
-            static func newInstance(map: Map) -> Mappable? {
-                return Attribute()
+            init?(_ map: Map) {
             }
             
             mutating func mapping(map: Map) {

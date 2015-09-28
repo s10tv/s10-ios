@@ -32,10 +32,11 @@ enum ErrorCode : Int {
 
 extension NSError {
     convenience init(_ errorCode: ErrorCode) {
-        self.init(domain: ErrorCode.nsErrorDomain, code: errorCode.rawValue, userInfo: [
-            NSLocalizedDescriptionKey: errorCode.localizedDescription,
-            NSLocalizedRecoverySuggestionErrorKey: errorCode.localizedRecoverySuggestion ?? NSNull()
-        ].filter { k, v in v != NSNull() })
+        var userInfo = [NSLocalizedDescriptionKey: errorCode.localizedDescription]
+        if let suggestion = errorCode.localizedRecoverySuggestion {
+            userInfo[NSLocalizedRecoverySuggestionErrorKey] = suggestion
+        }
+        self.init(domain: ErrorCode.nsErrorDomain, code: errorCode.rawValue, userInfo: userInfo)
     }
     
     var recoverable: Bool {

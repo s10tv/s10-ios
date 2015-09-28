@@ -8,7 +8,6 @@
 
 import Foundation
 import ReactiveCocoa
-import Bond
 import Core
 
 class ActivityTextCell : UITableViewCell, BindableCell {
@@ -24,18 +23,22 @@ class ActivityTextCell : UITableViewCell, BindableCell {
     // Strong because otherwise it will be deallocated when inactive
     @IBOutlet var captionContainerHeight: NSLayoutConstraint!
     
+    var cd: CompositeDisposable!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         avatarView.makeCircular()
     }
     
     func bind(vm: ActivityTextViewModel) {
+        cd = CompositeDisposable()
+        cd.addDisposable(timestampLabel.rac_text <~ vm.displayTime)
+        
         usernameLabel.text = vm.displayName
         contentTextLabel.text = vm.text
         integrationNameLabel.text = vm.integrationName
         integrationNameLabel.textColor = vm.integrationColor
-        avatarView.bindImage(vm.avatar)
-        vm.displayTime ->> timestampLabel
+        avatarView.sd_image.value = vm.avatar
         captionLabel.text = vm.caption
         if vm.caption != nil {
             captionToTextSpacing.constant = 24
@@ -54,8 +57,7 @@ class ActivityTextCell : UITableViewCell, BindableCell {
  
     override func prepareForReuse() {
         super.prepareForReuse()
-        timestampLabel.designatedBond.unbindAll()
-        avatarView.bindImage(nil)
+        cd.dispose()
     }
     
     static func reuseId() -> String {

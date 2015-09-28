@@ -10,12 +10,12 @@ import Foundation
 import ReactiveCocoa
 
 public struct EditProfileViewModel {
-    public let firstName: MutableProperty<String>
-    public let lastName: MutableProperty<String>
-    public let major: MutableProperty<String>
-    public let gradYear: MutableProperty<String>
-    public let hometown: MutableProperty<String>
-    public let about: MutableProperty<String>
+    public let firstName = MutableProperty<String?>(nil)
+    public let lastName = MutableProperty<String?>(nil)
+    public let major = MutableProperty<String?>(nil)
+    public let gradYear = MutableProperty<String?>(nil)
+    public let hometown = MutableProperty<String?>(nil)
+    public let about = MutableProperty<String?>(nil)
     public let avatar: PropertyOf<Image?>
     public let cover: PropertyOf<Image?>
     
@@ -26,14 +26,14 @@ public struct EditProfileViewModel {
     init(meteor: MeteorService, user: User) {
         self.meteor = meteor
         self.user = user
-        firstName = user.pFirstName() |> mutable
-        lastName = user.pLastName() |> mutable
-        major = user.pMajor() |> mutable
-        gradYear = user.pGradYear() |> mutable
-        hometown = user.pHometown() |> mutable
-        about = user.pAbout() |> mutable
         avatar = user.pAvatar()
         cover = user.pCover()
+        firstName <~ user.pFirstName()
+        lastName <~ user.pLastName()
+        major <~ user.pMajor()
+        gradYear <~ user.pGradYear()
+        hometown <~ user.pHometown()
+        about <~ user.pAbout()
     }
     
     public func saveEdits() -> Future<(), ErrorAlert> {
@@ -49,12 +49,12 @@ public struct EditProfileViewModel {
             promise.success()
         } else {
             meteor.updateProfile([
-                "firstName": firstName.value,
-                "lastName": lastName.value,
-                "major": major.value,
-                "gradYear": gradYear.value,
-                "hometown": hometown.value,
-                "about": about.value,
+                "firstName": firstName.value ?? "",
+                "lastName": lastName.value ?? "",
+                "major": major.value ?? "",
+                "gradYear": gradYear.value ?? "",
+                "hometown": hometown.value ?? "",
+                "about": about.value ?? "",
             ]).subscribeError({ error in
                 promise.failure(ErrorAlert(title: "Unable to save", message: error.localizedDescription))
             }, completed: {
@@ -69,8 +69,8 @@ public struct EditProfileViewModel {
     public func upload(image: UIImage, taskType: PhotoTaskType) -> Future<(), ErrorAlert> {
         return operationQueue.addAsyncOperation {
             PhotoUploadOperation(meteor: meteor, image: image, taskType: taskType)
-        } |> mapError { e in
+        }.mapError { e in
             ErrorAlert(title: "Unable to upload", message: e.localizedDescription, underlyingError: e)
-        }
+        }.toFuture()
     }
 }

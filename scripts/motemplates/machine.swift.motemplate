@@ -5,7 +5,7 @@ import CoreData
 
 <$if hasCustomBaseCaseImport$>import <$baseClassImport$><$endif$>
 
-internal enum <$managedObjectClassName$>Keys: String, Printable {
+internal enum <$managedObjectClassName$>Keys: String, CustomStringConvertible {
 <$foreach Attribute noninheritedAttributes do$>
     case <$Attribute.name$> = "<$Attribute.name$>"
 <$endforeach do$>

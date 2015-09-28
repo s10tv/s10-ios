@@ -26,16 +26,16 @@ internal class InviteTask : Object {
         return "taskId"
     }
     
-    class func findByTaskId(taskId: String, realm: Realm = Realm()) -> InviteTask? {
+    class func findByTaskId(taskId: String, realm: Realm = unsafeNewRealm()) -> InviteTask? {
         let pred = NSPredicate(format: "taskId = %@", taskId)
         return realm.objects(self).filter(pred).first
     }
     
-    class func countInvites(realm: Realm = Realm()) -> Int {
+    class func countInvites(realm: Realm = unsafeNewRealm()) -> Int {
         return realm.objects(self).count
     }
     
     class func countOfInvites() -> SignalProducer<Int, NoError> {
-        return Realm().notifier() |> map { _ in self.countInvites() }
+        return unsafeNewRealm().notifier().map { _ in self.countInvites() }
     }
 }

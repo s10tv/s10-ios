@@ -7,11 +7,9 @@
 //
 
 import Foundation
-
 import Foundation
 import SDWebImage
 import Core
-import Bond
 import ReactiveCocoa
 
 class CandidateCell : UICollectionViewCell, BindableCell {
@@ -23,21 +21,23 @@ class CandidateCell : UICollectionViewCell, BindableCell {
     @IBOutlet weak var reasonLabel: UILabel!
     @IBOutlet weak var serviceIconsView: UICollectionView!
     
+    var cd: CompositeDisposable!
+    
     func bind(vm: CandidateViewModel) {
-        avatarView.sd_setImageWithURL(vm.avatar?.url)
+        cd = CompositeDisposable()
+        cd.addDisposable { serviceIconsView <~ (vm.profileIcons, ProfileIconCell.self) }
+        
+        avatarView.sd_image.value = vm.avatar
         dateLabel.text = vm.displayDate
         nameLabel.text = vm.displayName
         reasonLabel.text = vm.reason
         
-        vm.profileIcons.map(serviceIconsView.factory(ProfileIconCell)) ->> serviceIconsView
         serviceIconsView.invalidateIntrinsicContentSize()
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        avatarView.image = nil
-        avatarView.unbindDynImageURL()
-        serviceIconsView.designatedBond.unbindAll()
+        cd.dispose()
     }
     
     override func awakeFromNib() {

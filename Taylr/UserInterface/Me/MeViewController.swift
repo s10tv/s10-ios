@@ -7,10 +7,8 @@
 //
 
 import Foundation
-import MessageUI
-import Bond
 import ReactiveCocoa
-import ObjectMapper
+import MessageUI
 import Core
 
 class MeViewController : UITableViewController {
@@ -23,28 +21,22 @@ class MeViewController : UITableViewController {
     @IBOutlet weak var servicesCollectionView: UICollectionView!
     
     var vm: MeViewModel!
-    var profileIcons = DynamicArray<Image>([])
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 0.01))
         
         vm = MeViewModel(meteor: Meteor, taskService: Globals.taskService)
-        vm.avatar ->> avatarView.imageBond
-        vm.cover ->> coverView.imageBond
-        vm.displayName ->> nameLabel
-        
-        // Turn PropertyOf<[Image]> into DynamicArray<Image>
-        vm.profileIcons.producer.start(next: { [weak self] v in
-            self?.profileIcons.setArray(v)
-        })
-        profileIcons.map(servicesCollectionView.factory(ProfileIconCell)) ->> servicesCollectionView
+        avatarView.sd_image <~ vm.avatar
+        coverView.sd_image <~ vm.cover
+        nameLabel.rac_text <~ vm.displayName
+        servicesCollectionView <~ (vm.profileIcons, ProfileIconCell.self)
         
         versionLabel.text = "Taylr v\(Globals.env.version) (\(Globals.env.build))"
         
-        listenForNotification(DidTouchStatusBar).start(next: { [weak self] _ in
+        listenForNotification(DidTouchStatusBar).startWithNext { [weak self] _ in
             self?.tableView.scrollToTop(animated: true)
-        })
+        }
     }
     
     var hackedOffset = false
@@ -64,7 +56,6 @@ class MeViewController : UITableViewController {
 
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        showNavBarAnimated(false)
     }
     
     override func viewDidLayoutSubviews() {
@@ -73,7 +64,7 @@ class MeViewController : UITableViewController {
             bottom: bottomLayoutGuide.length, right: 0)
     }
     
-    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
         if identifier == SegueIdentifier.MeToEditProfile.rawValue || identifier == SegueIdentifier.MeToProfile.rawValue {
             return vm.canViewOrEditProfile()
         }
@@ -120,14 +111,14 @@ class MeViewController : UITableViewController {
 }
 
 extension MeViewController : MFMailComposeViewControllerDelegate {
-    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+    func mailComposeController(controller: MFMailComposeViewController, didFinishWithResult result: MFMailComposeResult, error: NSError?) {
         controller.dismissViewController(animated: true)
     }
 }
 
 // Hide the invites section
 
-extension MeViewController : UITableViewDataSource {
+extension MeViewController /*: UITableViewDataSource */{
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == 1 {
             return 0
@@ -136,7 +127,7 @@ extension MeViewController : UITableViewDataSource {
     }
 }
 
-extension MeViewController : UITableViewDelegate {
+extension MeViewController /*: UITableViewDelegate */{
     override  func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 1 {
             return nil

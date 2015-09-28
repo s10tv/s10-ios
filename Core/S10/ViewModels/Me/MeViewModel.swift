@@ -9,7 +9,6 @@
 import Foundation
 import Meteor
 import ReactiveCocoa
-import Bond
 
 public struct MeViewModel {
     let meteor: MeteorService
@@ -18,18 +17,19 @@ public struct MeViewModel {
     public let avatar: PropertyOf<Image?>
     public let cover: PropertyOf<Image?>
     public let displayName: PropertyOf<String>
-    public let profileIcons: PropertyOf<[Image]>
+    public let profileIcons: ArrayProperty<Image>
     
     public init(meteor: MeteorService, taskService: TaskService) {
         self.meteor = meteor
         self.taskService = taskService
         subscription = meteor.subscribe("me")
-        avatar = meteor.user |> flatMap { $0.pAvatar() }
-        cover = meteor.user |> flatMap { $0.pCover() }
-        displayName = meteor.user |> flatMap(nilValue: "") { $0.pDisplayName() }
+        avatar = meteor.user.flatMap { $0.pAvatar() }
+        cover = meteor.user.flatMap { $0.pCover() }
+        displayName = meteor.user.flatMap(nilValue: "") { $0.pDisplayName() }
         profileIcons = meteor.user
-            |> flatMap(nilValue: []) { $0.pConnectedProfiles() }
-            |> map { $0.map { $0.icon } }
+            .flatMap(nilValue: []) { $0.pConnectedProfiles() }
+            .map { $0.map { $0.icon } }
+            .array()
     }
     
     public func canViewOrEditProfile() -> Bool {

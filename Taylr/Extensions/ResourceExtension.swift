@@ -13,10 +13,10 @@ import UIKit
 
 extension UIStoryboard {
     func makeViewController(identifier: ViewControllerStoryboardIdentifier) -> UIViewController {
-        return instantiateViewControllerWithIdentifier(identifier.rawValue) as! UIViewController
+        return instantiateViewControllerWithIdentifier(identifier.rawValue)
     }
     func makeInitialViewController() -> UIViewController {
-        return instantiateInitialViewController() as! UIViewController
+        return instantiateInitialViewController()!
     }
 }
 
@@ -38,12 +38,12 @@ extension UIStoryboardSegue {
 
 extension UITableView {
     func dequeueReusableCellWithIdentifier(identifier: TableViewCellreuseIdentifier) -> UITableViewCell? {
-        return dequeueReusableCellWithIdentifier(identifier.rawValue) as? UITableViewCell
+        return dequeueReusableCellWithIdentifier(identifier.rawValue)
     }
     
-    @availability(iOS, introduced=6.0)
+    @available(iOS, introduced=6.0)
     func dequeueReusableCellWithIdentifier(identifier: TableViewCellreuseIdentifier, forIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        return dequeueReusableCellWithIdentifier(identifier.rawValue, forIndexPath: indexPath) as! UITableViewCell
+        return dequeueReusableCellWithIdentifier(identifier.rawValue, forIndexPath: indexPath)
     }
 }
 
@@ -55,7 +55,7 @@ extension UITableViewCell {
 
 extension UICollectionView {
     func dequeueReusableCellWithReuseIdentifier(identifier: CollectionViewCellreuseIdentifier, forIndexPath indexPath: NSIndexPath!) -> UICollectionViewCell {
-        return dequeueReusableCellWithReuseIdentifier(identifier.rawValue, forIndexPath: indexPath) as! UICollectionViewCell
+        return dequeueReusableCellWithReuseIdentifier(identifier.rawValue, forIndexPath: indexPath)
     }
 }
 
@@ -67,7 +67,7 @@ extension UICollectionViewCell {
 
 // xcres
 
-func LS(key: R.Strings, args: CVarArgType...) -> String {
+func LS(key: R.Strings, _ args: CVarArgType...) -> String {
     return NSString(format: NSLocalizedString(key.rawValue, comment: ""),
         arguments: getVaList(args)) as String
 }

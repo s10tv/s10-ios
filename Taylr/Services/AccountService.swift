@@ -47,7 +47,7 @@ class AccountService {
                 meteorService.loggedIn.producer,
                 settings.accountStatus.producer,
                 settings.disableConfirmation.producer
-            ) |> map { account, loggedIn, status, disableConfirmation in
+            ).map { account, loggedIn, status, disableConfirmation in
                 switch (account, loggedIn, status, disableConfirmation) {
                 case (.None, _, _, _):
                     Log.info("Status - Logged Out")
@@ -65,7 +65,7 @@ class AccountService {
                     Log.info("Status - Indeterminate")
                     return .Indeterminate
                 }
-            } |> map { (state: AccountState) -> AccountState in
+            }.map { (state: AccountState) -> AccountState in
                 if state != .Indeterminate {
                     UD.accountState.value = state.rawValue
                     return state
@@ -99,10 +99,10 @@ class AccountService {
     func login() -> Future<AccountState, NSError> {
         let promise = Promise<AccountState, NSError>()
         digits.authenticate()
-            |> deliverOn(UIScheduler())
-            |> onComplete {
+           .deliverOn(UIScheduler())
+           .onComplete {
                 self._digitsSession.value = $0.value
-                println("Session userId= \($0.value?.userID) error \($0.error)")
+                print("Session userId= \($0.value?.userID) error \($0.error)")
                 if let session = $0.value {
                     self.meteorService.loginWithDigits(
                         userId: session.userID,
@@ -119,7 +119,7 @@ class AccountService {
                     promise.failure($0.error!)
                 }
             }
-            |> onCancel { promise.cancel() }
+           .onCancel { promise.cancel() }
         return promise.future
     }
     
@@ -141,6 +141,6 @@ class AccountService {
 
 extension AccountService : LoginDelegate {
     var loggedInPhone: PropertyOf<String?> {
-        return _digitsSession |> map { $0?.phoneNumber }
+        return _digitsSession.map { $0?.phoneNumber }
     }
 }

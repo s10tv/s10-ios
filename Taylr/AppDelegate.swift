@@ -56,13 +56,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
 //        Crashlytics.sharedInstance().setObjectValue(env.deviceId, forKey: "DeviceId")
         
         // Migrate db if needed
-        setDefaultRealmSchemaVersion(5) { migration, oldSchemaVersion in
-            // Automatic migration
-        }
+        Realm.Configuration.defaultConfiguration = Realm.Configuration(
+            schemaVersion: 5,
+            migrationBlock: { migration, oldSchemaVersion in
+                // Automatic migration
+            }
+        )
         
         // Setup global services
         let meteor = MeteorService(serverURL: env.serverURL)
-        let settings = Settings(meteor: meteor)
+        let settings = meteor.settings
         // WARMING: Startup meteor before initializing accountService
         // so that account.state is initially correct
         meteor.startup()
@@ -72,7 +75,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
             accountService: AccountService(meteorService: meteor, settings: settings),
             analyticsService: AnalyticsService(env: env, meteorService: meteor),
             upgradeService: UpgradeService(env: env, settings: settings),
-            locationService: LocationService(meteorService: meteor),
             taskService: TaskService(meteorService: meteor),
             settings: settings
         )
@@ -122,7 +124,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
     
     func applicationDidBecomeActive(application: UIApplication) {
         application.applicationIconBadgeNumber = 0 // Clear notification first
-        Globals.locationService.updateLatestLocationIfAvailable()
     }
     
     func applicationWillResignActive(application: UIApplication) {
@@ -133,7 +134,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         SugarRecord.applicationWillTerminate()
     }
     
-    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject?) -> Bool {
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
         if IntegrationsViewController.application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation) {
             return true
         }
@@ -166,13 +167,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
     
     // MARK: Event Handling
     
-    override func touchesBegan(touches: Set<NSObject>, withEvent event: UIEvent) {
+    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesBegan(touches, withEvent: event)
-        if let touch = event.allTouches()?.first as? UITouch,
+        if let touch = event?.allTouches()?.first,
             let location = window.map({ touch.locationInView($0) })
             where location.y > 0 && location.y < 20 {
             NSNotificationCenter.defaultCenter().postNotificationName(DidTouchStatusBar, object: nil)
-        }    
+        }
     }
     
     // MARK: Crashlytics

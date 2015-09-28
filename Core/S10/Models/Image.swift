@@ -31,7 +31,7 @@ public struct Image : Mappable {
         self.image = image
     }
     
-    init() {
+    public init?(_ map: Map) {
     }
     
     public mutating func mapping(map: Map) {
@@ -40,14 +40,10 @@ public struct Image : Mappable {
         height <- map["height"]
     }
     
-    public static func newInstance(map: Map) -> Mappable? {
-        return Image()
-    }
-    
     public static let mapper = Mapper<Image>()
 }
 
-extension Image : Printable {
+extension Image : CustomStringConvertible {
     public var description: String {
         return "Image[url=\(url), w=\(width) h=\(height)]"
     }

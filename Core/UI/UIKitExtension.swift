@@ -29,7 +29,7 @@ extension UIViewController {
         return subject
     }
     
-    public func dismissViewController(animated: Bool = true) -> RACSignal {
+    public func dismissViewController(animated animated: Bool = true) -> RACSignal {
         let subject = RACReplaySubject()
         dismissViewControllerAnimated(animated) {
             subject.sendCompleted()
@@ -96,7 +96,7 @@ extension UIView {
     }
     
     // TODO: Figure out when to tear down the subscriptions for gesture recognizers
-    public func whenTapped(numberOfTaps: Int = 1, block: (UITapGestureRecognizer) -> ()) {
+    public func whenTapped(numberOfTaps numberOfTaps: Int = 1, block: (UITapGestureRecognizer) -> ()) {
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = numberOfTaps
         tap.numberOfTouchesRequired = 1
@@ -215,10 +215,10 @@ extension UICollectionViewFlowLayout {
 }
 
 public func DebugPrintAllFonts() {
-    for familyName in UIFont.familyNames() as! [String] {
-        println("Family: \(familyName)")
+    for familyName in UIFont.familyNames() {
+        print("Family: \(familyName)")
         for fontName in UIFont.fontNamesForFamilyName(familyName) {
-            println("\tFont: \(fontName)")
+            print("\tFont: \(fontName)")
         }
     }
 }

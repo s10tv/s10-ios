@@ -77,10 +77,12 @@ public class ProvisioningProfile {
         
         @objc func parser(parser: DTASN1Parser!, foundData data: NSData!) {
             if currentObjectIdentifier == "1.2.840.113549.1.7.1" {
-                let option = NSPropertyListReadOptions(NSPropertyListMutabilityOptions.Immutable.rawValue)
-                var error: NSError?
-                parsedDict = NSPropertyListSerialization.propertyListWithData(data, options: option, format: nil, error: &error) as? [NSObject: AnyObject]
-                assert(parsedDict != nil, "Failed to parse dict \(error)")
+                let option = NSPropertyListReadOptions(rawValue: NSPropertyListMutabilityOptions.Immutable.rawValue)
+                do {
+                    try parsedDict = NSPropertyListSerialization.propertyListWithData(data, options: option, format: nil) as? [NSObject: AnyObject]
+                } catch {
+                    assert(parsedDict != nil, "Failed to parse dict \(error)")
+                }
                 currentObjectIdentifier = nil
             }
         }

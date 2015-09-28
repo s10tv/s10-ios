@@ -3,7 +3,7 @@
 
 import CoreData
 
-internal enum UserKeys: String, Printable {
+internal enum UserKeys: String, CustomStringConvertible {
 
     case about = "about"
 

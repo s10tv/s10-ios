@@ -15,7 +15,6 @@ struct GlobalsContainer {
     let accountService: AccountService
     let analyticsService : AnalyticsService
     let upgradeService: UpgradeService
-    let locationService: LocationService
     let taskService: TaskService
     let settings: Settings
 }

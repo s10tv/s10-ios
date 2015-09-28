@@ -10,7 +10,7 @@ import Foundation
 import PKHUD
 
 extension PKHUD {
-    class func show(dimsBackground: Bool = false) {
+    class func show(dimsBackground dimsBackground: Bool = false) {
         sharedHUD.dimsBackground = dimsBackground
         sharedHUD.show()
     }
@@ -18,7 +18,7 @@ extension PKHUD {
         sharedHUD.contentView = PKHUDTextView(text: text)
         show()
     }
-    class func showActivity(dimsBackground: Bool = false) {
+    class func showActivity(dimsBackground dimsBackground: Bool = false) {
         sharedHUD.contentView = PKHUDSystemActivityIndicatorView()
         show(dimsBackground: dimsBackground)
     }

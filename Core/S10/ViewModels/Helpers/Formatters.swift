@@ -16,7 +16,7 @@ internal let CurrentTime: PropertyOf<NSDate> = PropertyOf(NSDate()) {
 }
 
 internal func relativeTime(date: NSDate?) -> PropertyOf<String> {
-    return CurrentTime |> map {
+    return CurrentTime.map {
         Formatters.formatRelativeDate(date, relativeTo: $0) ?? ""
     }
 }
@@ -84,15 +84,13 @@ public struct Formatters {
     
     public static func formateDaysAgo(date: NSDate) -> String {
         let cal = NSCalendar.currentCalendar()
-        let days = cal.components(.CalendarUnitDay, fromDate: date, toDate: NSDate(), options: nil).day
+        let days = cal.components(.Day, fromDate: date, toDate: NSDate(), options: []).day
         switch days {
         case 0: return "Today"
         case 1: return "Yesterday"
         default: return "\(days) days ago"
         }
     }
-    
-    
     
     public static func formatDistance(distance: Double) -> String {
         // TODO: Security concern?

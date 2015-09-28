@@ -7,16 +7,15 @@
 //
 
 import Foundation
-import Core
-import Bond
+import ReactiveCocoa
 import DZNEmptyDataSet
+import Core
 
 class ChatsViewController : BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
     let vm: ChatsViewModel = ChatsViewModel(meteor: Meteor, taskService: Globals.taskService)
-    let emptyDataBond = ArrayBond<ContactConnectionViewModel>()
     
     deinit {
         tableView?.emptyDataSetSource = nil
@@ -27,15 +26,15 @@ class ChatsViewController : BaseViewController {
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 0.01))
         tableView.emptyDataSetSource = self
         
-        vm.connections.map(tableView.factory(ContactConnectionCell)) ->> tableView
-        vm.connections.bindTo(emptyDataBond)
-        emptyDataBond.didPerformBatchUpdatesListener = { [weak self] in
+        tableView <~ (vm.connections, ContactConnectionCell.self)
+        
+        vm.connections.changes.observeNext { [weak self] _ in
             self?.tableView.reloadEmptyDataSet()
         }
         
-        listenForNotification(DidTouchStatusBar).start(next: { [weak self] _ in
+        listenForNotification(DidTouchStatusBar).startWithNext { [weak self] _ in
             self?.tableView.scrollToTop(animated: true)
-        })
+        }
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -46,7 +45,7 @@ class ChatsViewController : BaseViewController {
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ConversationViewController {
-            vc.vm = vm.conversationVM(tableView.indexPathForSelectedRow()!.row)
+            vc.vm = vm.conversationVM(tableView.indexPathForSelectedRow!.row)
         }
     }
     

@@ -8,21 +8,22 @@
 
 import Foundation
 import ReactiveCocoa
-import Bond
 
 public struct DiscoverViewModel {
     let meteor: MeteorService
     let taskService: TaskService
     public let subscription: MeteorSubscription // TODO: Test only
     
-    public let candidate: DynamicArray<TodayViewModel>
+    public let candidate: FetchedResultsArray<TodayViewModel>
     
     public init(meteor: MeteorService, taskService: TaskService, settings: Settings) {
         self.meteor = meteor
         self.taskService = taskService
         subscription = meteor.subscribe("candidate-discover")
-        let frc = Candidate.by(CandidateKeys.status_, value: Candidate.Status.Active.rawValue).first().frc()
-        candidate = frc.results(Candidate).map { TodayViewModel(candidate: $0, settings: settings) }
+        candidate = Candidate
+            .by(CandidateKeys.status_, value: Candidate.Status.Active.rawValue)
+            .first()
+            .results { TodayViewModel(candidate: $0 as! Candidate, settings: settings) }
     }
     
     public func profileVM() -> ProfileViewModel? {
