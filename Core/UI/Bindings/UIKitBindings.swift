@@ -10,12 +10,21 @@ import Foundation
 import ReactiveCocoa
 
 private var kText: UInt8 = 0
+private var kTitle: UInt8 = 0
 private var kHidden: UInt8 = 0
 private var kAnimating: UInt8 = 0
 
 extension UIView {
     public var rac_hidden: MutableProperty<Bool> {
         return associatedProperty(&kHidden, setter: { [weak self] in self?.hidden = $0 }, getter: { self.hidden })
+    }
+}
+
+extension UIButton {
+    public var rac_title: MutableProperty<String?> {
+        return associatedProperty(&kTitle, setter: { [weak self] in
+            self?.setTitle($0, forState: .Normal)
+        }, getter: { self.titleForState(.Normal) })
     }
 }
 

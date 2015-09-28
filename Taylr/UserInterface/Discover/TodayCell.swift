@@ -7,10 +7,8 @@
 //
 
 import Foundation
-import SDWebImage
-import Core
-import Bond
 import ReactiveCocoa
+import Core
 
 class TodayCell: UICollectionViewCell, BindableCell {
     typealias ViewModel = TodayViewModel
@@ -24,20 +22,26 @@ class TodayCell: UICollectionViewCell, BindableCell {
     @IBOutlet weak var serviceIconsView: UICollectionView!
     @IBOutlet weak var messageButton: UIButton!
     
+    var cd: CompositeDisposable!
+    
     func bind(vm: TodayViewModel) {
+        cd = CompositeDisposable()
+        cd.addDisposable { messageButton.rac_title <~ vm.timeRemaining }
+        
         coverView.rac_image.value = vm.cover
         avatarView.rac_image.value = vm.avatar
         nameLabel.text = vm.displayName
         reasonLabel.rawText = vm.reason
         hometownLabel.text = vm.hometown
         majorLabel.text = vm.major
-        vm.timeRemaining ->> messageButton.bnd_title
+        
         serviceIconsView.bindTo(vm.profileIcons, cell: ProfileIconCell.self)
         serviceIconsView.invalidateIntrinsicContentSize()
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        cd.dispose()
         serviceIconsView.unbind()
     }
     
