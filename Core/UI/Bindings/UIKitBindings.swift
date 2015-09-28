@@ -10,6 +10,7 @@ import Foundation
 import ReactiveCocoa
 
 private var kText: UInt8 = 0
+private var kImage: UInt8 = 0
 private var kTitle: UInt8 = 0
 private var kHidden: UInt8 = 0
 private var kAnimating: UInt8 = 0
@@ -25,6 +26,12 @@ extension UIButton {
         return associatedProperty(&kTitle, setter: { [weak self] in
             self?.setTitle($0, forState: .Normal)
         }, getter: { self.titleForState(.Normal) })
+    }
+}
+
+extension UIImageView {
+    public var rac_image: MutableProperty<UIImage?> {
+        return associatedProperty(&kImage, setter: { [weak self] in self?.image = $0 }, getter: { self.image })
     }
 }
 

@@ -9,7 +9,6 @@
 import UIKit
 import MediaPlayer
 import ReactiveCocoa
-import Bond
 import Core
 
 @IBDesignable
@@ -47,7 +46,7 @@ class VolumeView : BaseView {
     
     func bindViewModel() {
         alpha = vm.alpha
-        vm.icon ->> imageView.bnd_image
+        imageView.rac_image <~ vm.icon
         vm.value.producer.startWithNext { [weak self] v in
             assert(NSThread.isMainThread(), "Must update on main")
             self?.valueTrack.strokeEnd = CGFloat(v)
