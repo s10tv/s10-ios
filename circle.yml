@@ -6,7 +6,7 @@ machine:
     XCODE_SCHEME: Core
     CRASHLYTICS_API_KEY: 67f7b1cc77f3e88b8e5b17a5bbc2ca6cb6f7ae53
     CRASHLYTICS_BUILD_SECRET: 1406e03532dd866d616ac19642903e2db44a36d93de980165c1e2e01fc17b215
-    CRASHLYTICS_FRAMEWORK_PATH: Includes/Crashlytics.framework
+    CRASHLYTICS_FRAMEWORK_PATH: Pods/Crashlytics/Crashlytics.framework
     APPSTORE_PROFILE_NAME: tvs10taylrappstore.mobileprovision
     APPSTORE_PROFILE_PATH: $HOME/s10-ios/scripts/tvs10taylrappstore.mobileprovision
     SIGNING_IDENTITY: "iPhone Distribution: S10 Inc. (227D5X5CZY)"
