@@ -7,9 +7,8 @@
 //
 
 import Foundation
-import SDWebImage
+import ReactiveCocoa
 import Cartography
-import Bond
 import Core
 
 class ProfileViewController : BaseViewController {
@@ -32,7 +31,7 @@ class ProfileViewController : BaseViewController {
         tableView.estimatedRowHeight = 500
         moreButton.hidden = !vm.showMoreOptions
         messageButton.hidden = !vm.allowMessage
-        vm.timeRemaining ->> messageButton.bnd_title
+        messageButton.rac_title <~ vm.timeRemaining
         tableView.dataSource = self
         
         // TODO: Refactor into separate binding & handle more granular changes

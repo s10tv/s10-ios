@@ -8,7 +8,6 @@
 
 import Foundation
 import ReactiveCocoa
-import Bond
 import JVFloatLabeledTextField
 import PKHUD
 import Core
@@ -23,9 +22,9 @@ class InviteViewController : UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        vm.firstName ->>< firstNameField.bnd_text
-        vm.lastName ->>< lastNameField.bnd_text
-        vm.emailOrPhone ->>< emailOrPhoneField.bnd_text
+        firstNameField.rac_text <<~> vm.firstName
+        lastNameField.rac_text <<~> vm.lastName
+        emailOrPhoneField.rac_text <<~> vm.emailOrPhone
     }
     
     @IBAction func didPressSend(sender: AnyObject) {

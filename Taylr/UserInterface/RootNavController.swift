@@ -10,7 +10,6 @@ import UIKit
 import Meteor
 import ReactiveCocoa
 import Core
-import Bond
 
 
 class RootNavController : UINavigationController {

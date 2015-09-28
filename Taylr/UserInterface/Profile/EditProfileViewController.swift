@@ -8,7 +8,6 @@
 
 import UIKit
 import ReactiveCocoa
-import Bond
 import JVFloatLabeledTextField
 import Core
 import PKHUD

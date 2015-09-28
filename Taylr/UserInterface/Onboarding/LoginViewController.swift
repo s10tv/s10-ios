@@ -12,7 +12,6 @@ import PKHUD
 import DigitsKit
 import ReactiveCocoa
 import Meteor
-import Bond
 import Core
 
 class LoginViewController : BaseViewController, TutorialViewController {
@@ -33,8 +32,8 @@ class LoginViewController : BaseViewController, TutorialViewController {
 
         self.view.backgroundColor = UIColor.clearColor()
 
-        vm.loginButtonText ->> loginButton.bnd_title
-        vm.logoutButtonText ->> logoutButton.bnd_title
+        loginButton.rac_title <~ vm.loginButtonText
+        logoutButton.rac_title <~ vm.logoutButtonText
 
         loginButton.addAction(vm.loginAction) { values, errors, executing in
             showProgress <~ executing

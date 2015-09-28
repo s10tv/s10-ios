@@ -8,7 +8,6 @@
 
 import UIKit
 import ReactiveCocoa
-import Bond
 import SCRecorder
 import Async
 import Core
@@ -35,9 +34,9 @@ class PlayerViewController : UIViewController {
             self?.vm.updateIsPlaying(self?.player.isPlaying ?? false)
         }
 
-        vm.hideView ->> view.bnd_hidden
-        vm.isPlaying ->> overlay.bnd_hidden
-        vm.totalDurationLeft ->> durationTimer.label.bnd_text
+        view.rac_hidden <~ vm.hideView
+        overlay.rac_hidden <~ vm.isPlaying
+        durationTimer.label.rac_text <~ vm.totalDurationLeft
         vm.videoURL.producer.startWithNext { [weak self] url in
             let videoURL = url
             // NOTE: Despite the fact that we are on main thread it appears that

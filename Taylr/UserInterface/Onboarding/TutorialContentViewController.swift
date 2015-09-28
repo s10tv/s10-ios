@@ -9,7 +9,6 @@
 import UIKit
 import Core
 import ReactiveCocoa
-import Bond
 
 protocol TutorialViewController {
     func getViewController() -> UIViewController

@@ -9,7 +9,6 @@
 import Foundation
 import ReactiveCocoa
 import PKHUD
-import Bond
 import Async
 import SwipeView
 import Core
@@ -45,11 +44,11 @@ class ConversationViewController : BaseViewController {
         
         // MAJOR TODO: Figure out how to unbind
         avatarView.sd_image <~ vm.avatar
-        vm.displayName ->> nameLabel.bnd_text
-        vm.busy ->> spinner.bnd_animating
-        vm.displayStatus ->> activityLabel.bnd_text
-        vm.hideReplayButton ->> replayButton.bnd_hidden
-        vm.hideNewMessagesHint ->> newMessagesHint.bnd_hidden
+        nameLabel.rac_text <~ vm.displayName
+        spinner.rac_animating <~ vm.busy
+        activityLabel.rac_text <~ vm.displayStatus
+        replayButton.rac_hidden <~ vm.hideReplayButton
+        newMessagesHint.rac_hidden <~ vm.hideNewMessagesHint
         coverImageView.sd_image <~ vm.cover
         
         let avkit = UIStoryboard(name: "AVKit", bundle: nil)

@@ -7,11 +7,10 @@
 //
 
 import UIKit
-import JVFloatLabeledTextField
 import ReactiveCocoa
+import JVFloatLabeledTextField
 import PKHUD
 import Core
-import Bond
 
 class CreateProfileViewController : UITableViewController {
     @IBOutlet weak var coverCell: UITableViewCell!
@@ -44,12 +43,12 @@ class CreateProfileViewController : UITableViewController {
         aboutView.delegate = self
         
         vm = CreateProfileViewModel(meteor: Meteor)
-        vm.firstName ->>< firstNameField.bnd_text
-        vm.lastName ->>< lastNameField.bnd_text
-        vm.hometown ->>< hometownField.bnd_text
-        vm.major ->>< majorField.bnd_text
-        vm.year ->>< yearField.bnd_text
-        vm.about ->>< aboutView.bnd_text
+        firstNameField.rac_text <<~> vm.firstName
+        lastNameField.rac_text <<~> vm.lastName
+        hometownField.rac_text <<~> vm.hometown
+        majorField.rac_text <<~> vm.major
+        yearField.rac_text <<~> vm.year
+        aboutView.rac_text <<~> vm.about
         avatarView.sd_image <~ vm.avatar
         coverView.sd_image <~ vm.cover
     }

@@ -7,9 +7,8 @@
 //
 
 import UIKit
-import Bond
-import Core
 import ReactiveCocoa
+import Core
 
 class VerifyCodeViewController : UIViewController {
     @IBOutlet weak var errorLabel: UILabel!
@@ -20,8 +19,8 @@ class VerifyCodeViewController : UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        vm.code ->>< verificationTokenField.bnd_text
-        vm.statusMessage ->> errorLabel.bnd_text
+        verificationTokenField.rac_text <<~> vm.code
+        errorLabel.rac_text <~ vm.statusMessage
     }
 
     override func viewWillAppear(animated: Bool) {

@@ -10,7 +10,6 @@ import Foundation
 import AVFoundation
 import ReactiveCocoa
 import AssetsLibrary
-import Bond
 import SCRecorder
 import Core
 
