@@ -14,6 +14,18 @@ import ReactiveCocoa
 //    return transform(property)
 //}
 
+public func <~ <P: MutablePropertyType, T where P.Value == Optional<T>>(property: P, signal: Signal<T, NoError>) -> Disposable {
+    return property <~ signal.map { Optional($0) }
+}
+
+public func <~ <P: MutablePropertyType, T where P.Value == Optional<T>>(property: P, producer: SignalProducer<T, NoError>) -> Disposable {
+    return property <~ producer.map { Optional($0) }
+}
+
+public func <~ <Destination: MutablePropertyType, Source: PropertyType where Destination.Value == Optional<Source.Value>>(destinationProperty: Destination, sourceProperty: Source) -> Disposable {
+    return destinationProperty <~ sourceProperty.producer
+}
+
 // MARK: - Property Type Extensions
 
 extension PropertyType {
