@@ -48,14 +48,16 @@ public struct EditProfileViewModel {
             // Early exit case
             promise.success()
         } else {
-            meteor.updateProfile([
+            // Separate variable here to reduce compilation time / inference duties
+            let payload: [String: String] = [
                 "firstName": firstName.value ?? "",
                 "lastName": lastName.value ?? "",
                 "major": major.value ?? "",
                 "gradYear": gradYear.value ?? "",
                 "hometown": hometown.value ?? "",
                 "about": about.value ?? "",
-            ]).subscribeError({ error in
+            ]
+            meteor.updateProfile(payload).subscribeError({ error in
                 promise.failure(ErrorAlert(title: "Unable to save", message: error.localizedDescription))
             }, completed: {
                 promise.success()
