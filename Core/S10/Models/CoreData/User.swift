@@ -41,7 +41,12 @@ internal class User: _User {
     }
     
     var connectedProfiles: [ConnectedProfile] {
-        return connectedProfiles_.flatMap(Mapper<ConnectedProfile>().mapArray) ?? []
+        // Need to use the longer and verbose form because shorter version does not compile in release mode...
+        let mapper = Mapper<ConnectedProfile>()
+        if let connectedProfiles_ = connectedProfiles_ {
+            return mapper.mapArray(connectedProfiles_) ?? []
+        }
+        return []
     }
     
     struct ConnectedProfile : Mappable {
