@@ -34,7 +34,7 @@ class HistoryViewController : BaseViewController {
         layout.minimumInteritemSpacing = 10
         layout.sectionInset = UIEdgeInsets(inset: 10)
         collectionView.collectionViewLayout = layout
-        collectionView.bindTo(vm.candidates, cell: CandidateCell.self)
+        collectionView <~ (vm.candidates, CandidateCell.self)
         vm.candidates.changes.observeNext { [weak self] _ in
             self?.collectionView.reloadEmptyDataSet()
         }

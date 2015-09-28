@@ -15,12 +15,6 @@ public protocol BindableCell {
     static func reuseId() -> String
 }
 
-//extension ArrayPropertyType {
-//    public func pair<C: BindableCell where C.ViewModel == ElementType>(cell: C.Type) -> (Self, C.Type) {
-//        return (self, cell)
-//    }
-//}
-
 // MARK: - UITableView
 
 extension UITableView {
@@ -30,15 +24,6 @@ extension UITableView {
             cell.bind(vm)
         }
         return cell
-    }
-    
-    public func bindTo<Source: ArrayPropertyType, C: BindableCell where Source.ElementType == C.ViewModel>(source: Source, cell: C.Type) -> TableViewBinding<Source, Source.ElementType> {
-        let reuseId = cell.reuseId()
-        return bindTo(source) { tableView, vm, row in
-            let cell = tableView.dequeueReusableCellWithIdentifier(reuseId, forIndexPath: NSIndexPath(forRow: row, inSection: 0))
-            (cell as! C).bind(vm)
-            return cell
-        }
     }
 }
 
@@ -64,17 +49,7 @@ extension UICollectionView {
         }
         return cell
     }
-    
-    public func bindTo<Source: ArrayPropertyType, C: BindableCell where Source.ElementType == C.ViewModel>(source: Source, cell: C.Type) -> CollectionViewBinding<Source, Source.ElementType> {
-        let reuseId = cell.reuseId()
-        return bindTo(source) { collectionView, vm, item in
-            let cell = collectionView.dequeueReusableCellWithReuseIdentifier(reuseId, forIndexPath: NSIndexPath(forItem: item, inSection: 0))
-            (cell as! C).bind(vm)
-            return cell
-        }
-    }
 }
-
 
 public func <~ <Source: ArrayPropertyType, C: BindableCell where Source.ElementType == C.ViewModel>(collectionView: UICollectionView, tuple: (source: Source, cell: C.Type)) -> Disposable {
     let reuseId = tuple.cell.reuseId()

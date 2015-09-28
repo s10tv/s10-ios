@@ -30,9 +30,8 @@ class MeViewController : UITableViewController {
         vm = MeViewModel(meteor: Meteor, taskService: Globals.taskService)
         avatarView.sd_image <~ vm.avatar
         coverView.sd_image <~ vm.cover
-        vm.displayName ->> nameLabel.bnd_text
-        
-        servicesCollectionView.bindTo(vm.profileIcons, cell: ProfileIconCell.self)
+        nameLabel.rac_text <~ vm.displayName
+        servicesCollectionView <~ (vm.profileIcons, ProfileIconCell.self)
         
         versionLabel.text = "Taylr v\(Globals.env.version) (\(Globals.env.build))"
         

@@ -7,9 +7,9 @@
 //
 
 import Foundation
-import Core
-import Bond
+import ReactiveCocoa
 import DZNEmptyDataSet
+import Core
 
 class ChatsViewController : BaseViewController {
     
@@ -26,7 +26,8 @@ class ChatsViewController : BaseViewController {
         tableView.tableHeaderView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.bounds.width, height: 0.01))
         tableView.emptyDataSetSource = self
         
-        tableView.bindTo(vm.connections, cell: ContactConnectionCell.self)
+        tableView <~ (vm.connections, ContactConnectionCell.self)
+        
         vm.connections.changes.observeNext { [weak self] _ in
             self?.tableView.reloadEmptyDataSet()
         }

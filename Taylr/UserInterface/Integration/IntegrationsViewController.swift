@@ -8,7 +8,6 @@
 
 import Foundation
 import ReactiveCocoa
-import Bond
 import Meteor
 import FBSDKLoginKit
 import Async
@@ -29,7 +28,7 @@ class IntegrationsViewController : UICollectionViewController {
         super.viewDidLoad()
         // Get rid of warnings around initial item width too large
         updateLayoutItemSize()
-        collectionView?.bindTo(vm.integrations, cell: IntegrationCell.self)
+        collectionView! <~ (vm.integrations, IntegrationCell.self)
     }
     
     override func viewWillLayoutSubviews() {

@@ -8,7 +8,6 @@
 
 import Foundation
 import ReactiveCocoa
-import Bond
 import EDColor
 import Async
 import Cartography
@@ -56,13 +55,16 @@ class ProfileCoverCell : UITableViewCell, BindableCell {
     @IBOutlet weak var collectionView: UICollectionView!
     
     var vm: ProfileCoverViewModel!
+    var cd: CompositeDisposable!
     
     func bind(vm: ProfileCoverViewModel) {
         self.vm = vm
-        avatarView.sd_image <~ vm.avatar
-        coverImageView.sd_image <~ vm.cover
-        vm.displayName ->> nameLabel.bnd_text
-        collectionView.bindTo(vm.selectors, cell: ProfileSelectorCell.self)
+        cd = CompositeDisposable()
+        cd.addDisposable { avatarView.sd_image <~ vm.avatar }
+        cd.addDisposable { coverImageView.sd_image <~ vm.cover }
+        cd.addDisposable { nameLabel.rac_text <~ vm.displayName }
+        cd.addDisposable { collectionView <~ (vm.selectors, ProfileSelectorCell.self) }
+        
         // Cell is not available for immediate selection, therefore we'll wait for it to populate first
         Async.main {
             self.collectionView.selectItemAtIndexPath(NSIndexPath(forItem: 0, inSection: 0),
@@ -73,6 +75,7 @@ class ProfileCoverCell : UITableViewCell, BindableCell {
     
     override func prepareForReuse() {
         super.prepareForReuse()
+        cd.dispose()
         fatalError("ProfileCoverCell is not designed to be re-used")
     }
     
