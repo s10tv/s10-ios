@@ -60,6 +60,7 @@ public class CollectionViewBinding<Source: ArrayPropertyType, T where Source.Ele
     }
 }
 
+// MAJOR TODO: Figure out how to easily unbind, not just bind...
 private var kCollectionBinding: UInt8 = 0;
 
 extension UICollectionView {

@@ -21,24 +21,21 @@ class ContactConnectionCell : UITableViewCell, BindableCell {
     @IBOutlet weak var rightArrow: UIImageView!
     var badgeView: JSBadgeView!
     
+    var cd: ReactiveCocoa.CompositeDisposable!
+    
     func bind(vm: ContactConnectionViewModel) {
-        avatarView.rac_image <~ vm.avatar
-        vm.displayName ->> nameLabel.bnd_text
-        vm.busy ->> spinner.bnd_animating
-        vm.statusMessage ->> subtitleLabel.bnd_text
-        vm.hideRightArrow ->> rightArrow.bnd_hidden
-        badgeView.rac_badgeText <~ vm.badgeText
+        cd = CompositeDisposable()
+        cd.addDisposable { avatarView.rac_image <~ vm.avatar }
+        cd.addDisposable { badgeView.rac_badgeText <~ vm.badgeText }
+        cd.addDisposable { nameLabel.rac_text <~ vm.displayName }
+        cd.addDisposable { subtitleLabel.rac_text <~ vm.statusMessage }
+        cd.addDisposable { rightArrow.rac_hidden <~ vm.hideRightArrow }
+        cd.addDisposable { spinner.rac_animating <~ vm.busy }
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
-        // MAJOR TODO: Figure out how to unbind
-//        [nameLabel, subtitleLabel].each {
-//            $0.designatedBond.unbindAll()
-//        }
-//        badgeView.designatedBond.unbindAll()
-//        spinner.designatedBond.unbindAll()
-//        rightArrow.dynHidden.valueBond.unbindAll()
+        cd.dispose()
     }
     
     override func awakeFromNib() {
@@ -54,46 +51,5 @@ class ContactConnectionCell : UITableViewCell, BindableCell {
     
     static func reuseId() -> String {
         return reuseId(.ContactConnectionCell)
-    }
-}
-
-class NewConnectionCell : UITableViewCell, BindableCell {
-    
-    @IBOutlet weak var avatarView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var taglineLabel: UILabel!
-    @IBOutlet weak var timestampLabel: UILabel!
-    @IBOutlet weak var playIcon: UIImageView!
-    @IBOutlet weak var spinner: UIActivityIndicatorView!
-    @IBOutlet weak var profileIconsView: UICollectionView!
- 
-    func bind(vm: NewConnectionViewModel) {
-        avatarView.rac_image <~ vm.avatar
-        vm.displayName ->> nameLabel.bnd_text
-        vm.displayTime ->> timestampLabel.bnd_text
-        vm.tagline ->> taglineLabel.bnd_text
-        vm.busy ->> spinner.bnd_animating
-        vm.hidePlayIcon ->> playIcon.bnd_hidden
-        profileIconsView.bindTo(vm.profileIcons, cell: ProfileIconCell.self)
-    }
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        // MAJOR TODO: Figure out how to unbind....
-//        [nameLabel, timestampLabel, taglineLabel].each {
-//            $0.designatedBond.unbindAll()
-//        }
-//        avatarView.imageBond.unbindAll()
-//        playIcon.dynHidden.designatedBond.unbindAll()
-//        profileIconsView.designatedBond.unbindAll()
-    }
-    
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        avatarView.masksToBounds = true
-    }
-    
-    static func reuseId() -> String {
-        return "NewConnectionCell" // TODO: Remove me
     }
 }

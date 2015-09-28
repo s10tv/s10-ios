@@ -11,6 +11,7 @@ import ReactiveCocoa
 
 private var kText: UInt8 = 0
 private var kHidden: UInt8 = 0
+private var kAnimating: UInt8 = 0
 
 extension UIView {
     public var rac_hidden: MutableProperty<Bool> {
@@ -54,6 +55,22 @@ extension UITextView {
             property.producer.startWithNext { [weak self] in
                 if !updatingFromSelf {
                     self?.text = $0
+                }
+            }
+            return property
+        }
+    }
+}
+
+extension UIActivityIndicatorView {
+    public var rac_animating: MutableProperty<Bool> {
+        return associatedObject(&kAnimating) { [weak self] in
+            let property = MutableProperty<Bool>(self?.isAnimating() ?? false)
+            property.producer.startWithNext { [weak self] animating in
+                if animating {
+                    self?.startAnimating()
+                } else {
+                    self?.stopAnimating()
                 }
             }
             return property
