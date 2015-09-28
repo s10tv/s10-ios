@@ -30,7 +30,11 @@ extension UIImageView {
                 if let image = image?.image {
                     self?.image = image
                 } else if let url = image?.url {
-                    self?.sd_setImageWithURL(url, placeholderImage: self?.placeholderImage)
+                    self?.sd_setImageWithURL(url, placeholderImage: self?.placeholderImage) { image, error, cacheType, url in
+                        if let error = error {
+                            Log.warn("Unable to load image at \(url) \(error)")
+                        }
+                    }
                 } else {
                     self?.image = self?.placeholderImage
                 }
