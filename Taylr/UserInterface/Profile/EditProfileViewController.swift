@@ -34,13 +34,13 @@ class EditProfileViewController : UITableViewController {
         coverImageView.clipsToBounds = true
         avatarImageView.makeCircular()
 
-        // MAJOR TODO: Figure out what to do here
-//        vm.firstName ->>< firstNameField
-//        vm.lastName ->>< lastNameField
-//        vm.major ->>< majorField
-//        vm.gradYear ->>< gradYearField
-//        vm.hometown ->>< hometownField
-//        vm.about ->>< aboutTextView
+        firstNameField.rac_text <<~> vm.firstName
+        lastNameField.rac_text <<~> vm.lastName
+        majorField.rac_text <<~> vm.major
+        gradYearField.rac_text <<~> vm.gradYear
+        hometownField.rac_text <<~> vm.hometown
+        aboutTextView.rac_text <<~> vm.about
+        
         avatarImageView.sd_image <~ vm.avatar
         coverImageView.sd_image <~ vm.cover
         
