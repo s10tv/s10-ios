@@ -63,7 +63,6 @@ target :Core do
         pod 'TwitterCore', '~> 1.11'
         pod 'Digits', '~> 1.11'
         pod 'Ouralabs', '~> 2.3'
-        pod 'Heap', '~> 2.2'
         pod 'AnalyticsSwift', '~> 0.2'
 
         # Debug only

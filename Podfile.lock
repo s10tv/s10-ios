@@ -34,7 +34,6 @@ PODS:
   - FBSDKLoginKit (4.6.0):
     - FBSDKCoreKit
   - FormatterKit/TimeIntervalFormatter (1.8.0)
-  - Heap (2.2.0)
   - InflectorKit (0.0.1)
   - JBKenBurnsView (1.0)
   - JSBadgeView (1.4.1)
@@ -112,7 +111,6 @@ DEPENDENCIES:
   - Fabric (~> 1.5)
   - FBSDKLoginKit (~> 4.6)
   - FormatterKit/TimeIntervalFormatter (~> 1.8)
-  - Heap (~> 2.2)
   - JBKenBurnsView (~> 1.0)
   - JSBadgeView (~> 1.4)
   - JVFloatLabeledTextField (~> 1.1)
@@ -187,7 +185,6 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 9954492d90c5fd65ae831395697a1660360d61f1
   FBSDKLoginKit: 3d07febbfa884b9878cacba54f705bb41f07d4b6
   FormatterKit: bddde83e054edf9d9ee14f9de3b3a5103db256f4
-  Heap: 1f2735d88b2f39b2ddabd4cbeb7aa491aa737902
   InflectorKit: 64497199e6764f4d8337cab7f700a77b13d76a73
   JBKenBurnsView: e40d10fcd4fbeb652c29fa431d4748780a4672ff
   JSBadgeView: 3861ddee41094284d9468e6d0af5107f703aaac5
