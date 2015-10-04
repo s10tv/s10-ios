@@ -17,10 +17,10 @@ target :Core do
     pod 'Meteor', :git => 'https://github.com/tonyxiao/meteor-ios', :branch => 'dev'
     pod 'RealmSwift', '~> 0.95'
     pod 'SwiftyJSON', '~> 2.3'
-    pod 'ObjectMapper', '~> 0.17'
+    pod 'ObjectMapper', '~> 0.18'
 
     # Networking
-    pod 'Alamofire', '~> 3.0.0-beta.2'
+    pod 'Alamofire', '~> 3.0.0-beta.3'
 
     # UI
     pod 'Cartography', '~> 0.6'
@@ -62,7 +62,7 @@ target :Core do
         pod 'Crashlytics', '~> 3.3'
         pod 'TwitterCore', '~> 1.11'
         pod 'Digits', '~> 1.11'
-        pod 'Ouralabs', '~> 2.3'
+        pod 'Ouralabs', '~> 2.6'
         pod 'AnalyticsSwift', '~> 0.2'
 
         # Debug only
