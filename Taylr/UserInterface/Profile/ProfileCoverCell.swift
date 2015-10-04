@@ -60,10 +60,10 @@ class ProfileCoverCell : UITableViewCell, BindableCell {
     func bind(vm: ProfileCoverViewModel) {
         self.vm = vm
         cd = CompositeDisposable()
-        cd.addDisposable { avatarView.sd_image <~ vm.avatar }
-        cd.addDisposable { coverImageView.sd_image <~ vm.cover }
-        cd.addDisposable { nameLabel.rac_text <~ vm.displayName }
-        cd.addDisposable { collectionView <~ (vm.selectors, ProfileSelectorCell.self) }
+        cd += avatarView.sd_image <~ vm.avatar
+        cd += coverImageView.sd_image <~ vm.cover
+        cd += nameLabel.rac_text <~ vm.displayName
+        cd += collectionView <~ (vm.selectors, ProfileSelectorCell.self)
         
         // Cell is not available for immediate selection, therefore we'll wait for it to populate first
         Async.main {

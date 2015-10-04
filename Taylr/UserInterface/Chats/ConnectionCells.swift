@@ -24,12 +24,12 @@ class ContactConnectionCell : UITableViewCell, BindableCell {
     
     func bind(vm: ContactConnectionViewModel) {
         cd = CompositeDisposable()
-        cd.addDisposable { avatarView.sd_image <~ vm.avatar }
-        cd.addDisposable { badgeView.rac_badgeText <~ vm.badgeText }
-        cd.addDisposable { nameLabel.rac_text <~ vm.displayName }
-        cd.addDisposable { subtitleLabel.rac_text <~ vm.statusMessage }
-        cd.addDisposable { rightArrow.rac_hidden <~ vm.hideRightArrow }
-        cd.addDisposable { spinner.rac_animating <~ vm.busy }
+        cd += avatarView.sd_image <~ vm.avatar
+        cd += badgeView.rac_badgeText <~ vm.badgeText
+        cd += nameLabel.rac_text <~ vm.displayName
+        cd += subtitleLabel.rac_text <~ vm.statusMessage
+        cd += rightArrow.rac_hidden <~ vm.hideRightArrow
+        cd += spinner.rac_animating <~ vm.busy
     }
     
     override func prepareForReuse() {

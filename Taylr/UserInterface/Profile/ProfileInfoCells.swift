@@ -34,9 +34,9 @@ class TaylrProfileInfoCell : UITableViewCell, BindableCell {
     
     func bind(vm: TaylrProfileInfoViewModel) {
         cd = CompositeDisposable()
-        cd.addDisposable { aboutLabel.rac_text <~ vm.about }
-        cd.addDisposable { majorLabel.rac_text <~ vm.major }
-        cd.addDisposable { hometownLabel.rac_text <~ vm.hometown }
+        cd += aboutLabel.rac_text <~ vm.about
+        cd += majorLabel.rac_text <~ vm.major
+        cd += hometownLabel.rac_text <~ vm.hometown
     }
     
     override func prepareForReuse() {
@@ -64,7 +64,7 @@ class ConnectedProfileInfoCell : UITableViewCell, BindableCell {
     func bind(vm: ConnectedProfileInfoViewModel) {
         self.vm = vm
         cd = CompositeDisposable()
-        cd.addDisposable { collectionView <~ (vm.attributes, ProfileAttributeCell.self) }
+        cd += collectionView <~ (vm.attributes, ProfileAttributeCell.self)
         
         avatarView.sd_image.value = vm.avatar
         nameLabel.text = vm.displayName

@@ -25,7 +25,7 @@ class CandidateCell : UICollectionViewCell, BindableCell {
     
     func bind(vm: CandidateViewModel) {
         cd = CompositeDisposable()
-        cd.addDisposable { serviceIconsView <~ (vm.profileIcons, ProfileIconCell.self) }
+        cd += serviceIconsView <~ (vm.profileIcons, ProfileIconCell.self)
         
         avatarView.sd_image.value = vm.avatar
         dateLabel.text = vm.displayDate

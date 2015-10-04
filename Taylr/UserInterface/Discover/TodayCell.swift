@@ -26,8 +26,8 @@ class TodayCell: UICollectionViewCell, BindableCell {
     
     func bind(vm: TodayViewModel) {
         cd = CompositeDisposable()
-        cd.addDisposable { messageButton.rac_title <~ vm.timeRemaining }
-        cd.addDisposable { serviceIconsView <~ (vm.profileIcons, ProfileIconCell.self) }
+        cd += messageButton.rac_title <~ vm.timeRemaining
+        cd += serviceIconsView <~ (vm.profileIcons, ProfileIconCell.self)
         
         coverView.sd_image.value = vm.cover
         avatarView.sd_image.value = vm.avatar
