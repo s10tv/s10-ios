@@ -182,7 +182,12 @@ public struct Future<T, E: ErrorType> {
     }
 
     public func flatMap<U>(transform: T -> Future<U, E>) -> Future<U, E> {
-        return Future<U, E>(buffer: buffer.flatMap(.Latest) { transform($0).buffer })
+        // NOTE: Do not use buffer here, otherwise mutliple calls to the onComplete method
+        // will result in transform block to be called multiple times
+        // Also to keep inline with semantic of Future all transformations are started immediately and
+        // then buffered. This proves that Future is really hard to get right, and maybe we shouldn't use it
+        // and should just stick with signal producers
+        return Future<U, E>(workToStart: buffer.flatMap(.Latest) { return transform($0).buffer })
     }
 }
 

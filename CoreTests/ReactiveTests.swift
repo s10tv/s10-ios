@@ -14,14 +14,32 @@ import Core
 
 class ReactiveTests : XCTestCase {
     
+    func testFutureFlatMap() {
+        let promise = Promise<Int, ReactiveCocoa.NoError>()
+        let expectation = expectationWithDescription("Promise fulfills")
+        var count = 0
+        promise.future.flatMap { (value) -> Future<Int, NoError> in
+            count++
+            if count != 1 {
+//                fail("Should only execute this block once")
+                fail()
+            }
+            return Future(value: value + 1)
+        }.onSuccess { (value) -> () in
+            expectation.fulfill()
+        }
+
+        promise.success(55)
+        waitForExpectationsWithTimeout(5, handler: nil)
+        
+    }
+    
     func testFutureUnaryLift() {
         let promise = Promise<Int, ReactiveCocoa.NoError>()
         let expectation = expectationWithDescription("Promise fulfills")
-        promise.future
-            |> map {
+        promise.future.map {
                 return "\($0)"
-            }
-            |> onSuccess { value in
+            }.toFuture().onSuccess { value in
                 expect(value) == "55"
                 expectation.fulfill()
             }
@@ -34,11 +52,10 @@ class ReactiveTests : XCTestCase {
         let expectation = expectationWithDescription("Promise fulfills")
         let completed = expectationWithDescription("completed")
         promise.future
-            |> onSuccess { intValue in
+            .onSuccess { intValue in
                 expect(intValue) == 55
                 expectation.fulfill()
-            }
-            |> onComplete { _ in
+            }.onComplete { _ in
                 completed.fulfill()
             }
 
