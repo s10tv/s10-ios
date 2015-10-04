@@ -100,16 +100,16 @@ extension UIView {
         let tap = UITapGestureRecognizer()
         tap.numberOfTapsRequired = numberOfTaps
         tap.numberOfTouchesRequired = 1
-        tap.rac_gestureSignal().subscribeNextAs { (recognizer : UITapGestureRecognizer) -> () in
-            block(recognizer)
+        tap.rac_gestureSignal().subscribeNext {
+            block($0 as! UITapGestureRecognizer)
         }
         addGestureRecognizer(tap)
     }
     
     public func whenLongPressed(block: (UILongPressGestureRecognizer) -> ()) {
         let tap = UILongPressGestureRecognizer()
-        tap.rac_gestureSignal().subscribeNextAs { (recognizer : UILongPressGestureRecognizer) -> () in
-            block(recognizer)
+        tap.rac_gestureSignal().subscribeNext {
+            block($0 as! UILongPressGestureRecognizer)
         }
         addGestureRecognizer(tap)
     }
@@ -117,16 +117,16 @@ extension UIView {
     public func whenSwiped(direction: UISwipeGestureRecognizerDirection, block: (UISwipeGestureRecognizer) -> ()) {
         let swipe = UISwipeGestureRecognizer()
         swipe.direction = direction
-        swipe.rac_gestureSignal().subscribeNextAs { (recognizer : UISwipeGestureRecognizer) -> () in
-            block(recognizer)
+        swipe.rac_gestureSignal().subscribeNext {
+            block($0 as! UISwipeGestureRecognizer)
         }
         addGestureRecognizer(swipe)
     }
     
     public func whenPanned(handler: (UIPanGestureRecognizer) -> ()) {
         let pan = UIPanGestureRecognizer()
-        pan.rac_gestureSignal().subscribeNextAs { (recognizer : UIPanGestureRecognizer) -> () in
-            handler(recognizer)
+        pan.rac_gestureSignal().subscribeNext {
+            handler($0 as! UIPanGestureRecognizer)
         }
         addGestureRecognizer(pan)
     }
@@ -134,8 +134,8 @@ extension UIView {
     public func whenEdgePanned(edge: UIRectEdge, handler: (UIScreenEdgePanGestureRecognizer, UIRectEdge) -> ()) {
         let edgePan = UIScreenEdgePanGestureRecognizer()
         edgePan.edges = edge
-        edgePan.rac_gestureSignal().subscribeNextAs { (recognizer : UIScreenEdgePanGestureRecognizer) -> () in
-            handler(recognizer, edge)
+        edgePan.rac_gestureSignal().subscribeNext {
+            handler($0 as! UIScreenEdgePanGestureRecognizer, edge)
         }
         addGestureRecognizer(edgePan)
     }

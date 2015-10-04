@@ -61,7 +61,7 @@
 		EA81ADC21BB6688400F94006 /* Core.m in Sources */ = {isa = PBXBuildFile; fileRef = EAF6701C1B31E6550025D7CF /* Core.m */; settings = {ASSET_TAGS = (); }; };
 		EA81ADC81BB66C5300F94006 /* SignalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA359AE61B700B8A00AF0A65 /* SignalExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81ADCE1BB6731200F94006 /* SwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA81ADCD1BB6731200F94006 /* SwiftExtensions.swift */; settings = {ASSET_TAGS = (); }; };
-		EA81ADD21BB6735800F94006 /* RAC2.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA81ADD01BB6735800F94006 /* RAC2.swift */; settings = {ASSET_TAGS = (); }; };
+		EA81ADD21BB6735800F94006 /* Foundation+RACSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA81ADD01BB6735800F94006 /* Foundation+RACSupport.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81ADD31BB673B100F94006 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E405C1B6D334D00FF5126 /* Future.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81ADD41BB6793500F94006 /* ActionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E40611B6D33F500FF5126 /* ActionExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81ADD51BB679D300F94006 /* DynamicProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E405B1B6D334D00FF5126 /* DynamicProperties.swift */; settings = {ASSET_TAGS = (); }; };
@@ -364,7 +364,7 @@
 		EA7FB0921B5EF9D50052B394 /* Cabin-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-MediumItalic.ttf"; sourceTree = "<group>"; };
 		EA7FB0931B5EF9D50052B394 /* Cabin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Regular.ttf"; sourceTree = "<group>"; };
 		EA81ADCD1BB6731200F94006 /* SwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftExtensions.swift; sourceTree = "<group>"; };
-		EA81ADD01BB6735800F94006 /* RAC2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RAC2.swift; sourceTree = "<group>"; };
+		EA81ADD01BB6735800F94006 /* Foundation+RACSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+RACSupport.swift"; sourceTree = "<group>"; };
 		EA81AE301BB7732800F94006 /* ArrayProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayProperty.swift; sourceTree = "<group>"; };
 		EA81AE321BB7944D00F94006 /* FetchedResultsArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsArray.swift; sourceTree = "<group>"; };
 		EA82CF961B504FC500A12D94 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
@@ -800,9 +800,9 @@
 				EA6E405B1B6D334D00FF5126 /* DynamicProperties.swift */,
 				EA81AE301BB7732800F94006 /* ArrayProperty.swift */,
 				EA81AE321BB7944D00F94006 /* FetchedResultsArray.swift */,
-				EA6E405C1B6D334D00FF5126 /* Future.swift */,
-				EA81ADD01BB6735800F94006 /* RAC2.swift */,
 				EA337E041BB9212100F09A92 /* TwoWayBindings.swift */,
+				EA6E405C1B6D334D00FF5126 /* Future.swift */,
+				EA81ADD01BB6735800F94006 /* Foundation+RACSupport.swift */,
 			);
 			path = RAC;
 			sourceTree = "<group>";
@@ -1639,7 +1639,7 @@
 				EA81AE071BB68E6700F94006 /* UserDefaults.swift in Sources */,
 				EA81ADDD1BB6852600F94006 /* ProvisioningProfile.swift in Sources */,
 				EA81ADEE1BB68A0500F94006 /* MeteorCollection.swift in Sources */,
-				EA81ADD21BB6735800F94006 /* RAC2.swift in Sources */,
+				EA81ADD21BB6735800F94006 /* Foundation+RACSupport.swift in Sources */,
 				EA81AE171BB6993B00F94006 /* Errors.swift in Sources */,
 				EA81AE371BB79FEB00F94006 /* IntegrationListViewModel.swift in Sources */,
 				EA81AE3C1BB7AAE500F94006 /* CandidateViewModel.swift in Sources */,
