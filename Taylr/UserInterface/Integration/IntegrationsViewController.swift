@@ -67,24 +67,16 @@ class IntegrationsViewController : UICollectionViewController {
 
 extension IntegrationsViewController : ClientIntegrationDelegate {
     func linkClientSide(integrationId: String) -> Future<(), ErrorAlert>? {
-        let promise = Promise<(), ErrorAlert>()
         switch integrationId {
         case "facebook":
-            linkFacebook().subscribeError({
-                Log.error("Failed to link", $0)
-                promise.failure(ErrorAlert(title: LS(.errUnableToAddServiceTitle),
-                                           message: LS(.errUnableToAddServiceMessage)))
-//                promise.failure($0)
-            }, completed: {
-                promise.success()
-            })
-            return promise.future
+            return linkFacebook()
         default:
             return nil
         }
     }
     
-    func linkFacebook() -> RACSignal {
+    func linkFacebook() -> Future<(), ErrorAlert> {
+        let promise = Promise<(), ErrorAlert>()
         let subject = RACReplaySubject()
         let fb = FBSDKLoginManager()
         let readPerms = [
@@ -95,23 +87,26 @@ extension IntegrationsViewController : ClientIntegrationDelegate {
             "user_education_history",
             "user_birthday",
             "user_posts",
+            // TODO: What other permissions do we need here?
             // extended permissions
             "email"
         ]
         fb.logInWithReadPermissions(readPerms, fromViewController: nil) { result, error in
             // Todo: check result.grantedPermissions is complete
             if error != nil {
-                subject.sendError(error)
+//                promise.failure(error)
+                promise.failure(ErrorAlert(title: LS(.errUnableToAddServiceTitle),
+                    message: LS(.errUnableToAddServiceMessage)))
             } else if result.isCancelled {
-                subject.sendError(nil) // TODO: Send explicit error
+                promise.cancel() // TODO: Check whether or not this is actuallly correct behavior
             } else {
-                subject.sendNext(nil) // TODO: Used to signal progress, make more explicit
+                promise.success()
                 Log.debug("Successfulled received token from facebook")
                 Async.main {
                     Meteor.addService("facebook", accessToken: result.token.tokenString).subscribe(subject)
                 }
             }
         }
-        return subject.deliverOnMainThread()
+        return promise.future.deliverOn(UIScheduler())
     }
 }
