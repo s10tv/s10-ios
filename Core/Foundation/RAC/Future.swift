@@ -153,9 +153,9 @@ public struct Future<T, E: ErrorType> {
     
     // Unary lift
     
-    public func lift<U, F>(transform: Signal<T, E> -> Signal<U, F>) -> Future<U, F> {
-        return Future<U, F>(buffer: buffer.lift(transform))
-    }
+//    public func lift<U, F>(transform: Signal<T, E> -> Signal<U, F>) -> Future<U, F> {
+//        return Future<U, F>(buffer: buffer.lift(transform))
+//    }
     
     public func lift<U, F>(transform: SignalProducer<T, E> -> SignalProducer<U, F>) -> Future<U, F> {
         return Future<U, F>(workToStart: transform(buffer))
@@ -163,11 +163,11 @@ public struct Future<T, E: ErrorType> {
     
     // Binary lift
     
-    public func lift<U, F, V, G>(transform: Signal<U, F> -> (Signal<T, E> -> Signal<V, G>)) -> Future<U, F> -> Future<V, G> {
-        return { otherFuture in
-            return Future<V, G>(buffer: self.buffer.lift(transform)(otherFuture.buffer))
-        }
-    }
+//    public func lift<U, F, V, G>(transform: Signal<U, F> -> (Signal<T, E> -> Signal<V, G>)) -> Future<U, F> -> Future<V, G> {
+//        return { otherFuture in
+//            return Future<V, G>(buffer: self.buffer.lift(transform)(otherFuture.buffer))
+//        }
+//    }
     
     public func lift<U, F, V, G>(transform: SignalProducer<U, F> -> (SignalProducer<T, E> -> SignalProducer<V, G>)) -> Future<U, F> -> Future<V, G> {
         return { otherFuture in
@@ -189,6 +189,11 @@ public struct Future<T, E: ErrorType> {
         // and should just stick with signal producers
         return Future<U, E>(workToStart: buffer.flatMap(.Latest) { return transform($0).buffer })
     }
+    
+    public func map<U>(transform: T -> U) -> Future<U, E> {
+        return lift { $0.map(transform) }
+    }
+
 }
 
 extension Future : SignalProducerType {
