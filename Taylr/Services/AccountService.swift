@@ -90,12 +90,6 @@ class AccountService {
     
     // MARK: -
     
-    func debugLogin(userId: String) -> RACSignal {
-        return meteorService.debugLoginWithUserId(userId).replayWithSubject().deliverOnMainThread().doCompleted {
-            self.didLogin()
-        }
-    }
-    
     func login() -> Future<AccountState, NSError> {
         let promise = Promise<AccountState, NSError>()
         digits.authenticate()
@@ -132,11 +126,6 @@ class AccountService {
         meteorService.logout()
     }
     
-    func deleteAccount() -> RACSignal {
-        digits.logOut()
-        UD.resetAll()
-        return meteorService.deleteAccount().deliverOnMainThread()
-    }
 }
 
 extension AccountService : LoginDelegate {

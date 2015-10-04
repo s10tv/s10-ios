@@ -61,7 +61,7 @@
 //        return bundle.URLForResource(filename.stringByDeletingPathExtension, withExtension: filename.pathExtension)
 //    }
 //    
-//    func whileAuthenticated(block: () -> (RACSignal)) {
+//    func whileAuthenticated(block: () -> (Future<(), NSError>)) {
 //        let expectation = expectationWithDescription("Test Finished")
 //        self.meteor.loginWithPhoneNumber(self.PHONE_NUMBER).then {
 //            return self.meteor.vet(self.meteor.userID!)
@@ -170,7 +170,7 @@
 //            otherUserId = connection?.otherUser?.documentID
 //
 //            self.taskService.uploadVideo(connection!.otherUser!, localVideoURL: url!)
-//            return RACSignal.empty()
+//            return Future
 //        }
 //
 //        var expectedNotifications = 2
