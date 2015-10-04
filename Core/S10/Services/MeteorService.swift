@@ -205,22 +205,6 @@ public class MeteorService : NSObject {
     }
 
     // MARK: - Messages
-    
-    func expireMessages(messages: [Message]) -> RACSignal {
-        return meteor.call("messages/expire", [messages.map { $0.documentID! }]) {
-            let context = messages.first?.context()
-            context?.beginWriting()
-            for message in messages {
-                let connection = message.connection
-                let estimatedUnreadCount = (connection.unreadCount?.integerValue ?? 1) - 1
-                connection.unreadCount = max(estimatedUnreadCount, 0)
-                connection.updatedAt = NSDate()
-                message.delete()
-            }
-            context?.endWriting()
-            return nil
-        }
-    }
 
     // MARK: - Tasks
 

@@ -156,13 +156,6 @@ public class ConversationViewModel {
         openedMessages.value = msgs
     }
     
-    public func expireOpenedMessages() {
-        for message in openedMessages.value {
-            VideoCache.sharedInstance.removeVideo(message.documentID!)
-        }
-        meteor.expireMessages(Array(openedMessages.value))
-    }
-    
     public func sendVideo(video: Video) {
         if let user = currentUser.value {
             taskService.uploadVideo(user, localVideo: video)

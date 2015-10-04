@@ -97,10 +97,6 @@ class ConversationViewController : BaseViewController {
         } else {
             playerEmptyView.hidden = true
         }
-        
-        listenForNotification(UIApplicationDidEnterBackgroundNotification).subscribeNext { [weak self] _ in
-            self?.vm.expireOpenedMessages()
-        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -138,11 +134,6 @@ class ConversationViewController : BaseViewController {
         if let vc = segue.destinationViewController as? ConversationTutorialViewController {
             vc.delegate = self
         }
-    }
-    
-    override func willMoveToParentViewController(parent: UIViewController?) {
-        super.willMoveToParentViewController(parent)
-        if parent == nil { vm.expireOpenedMessages() }
     }
     
     // MARK: Actions
