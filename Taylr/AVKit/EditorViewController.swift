@@ -22,6 +22,8 @@ class EditorViewController : UIViewController {
     
     @IBOutlet weak var topLayoutHeight: NSLayoutConstraint!
     @IBOutlet weak var filterView: SCSwipeableFilterView!
+    @IBOutlet weak var overlayView: TransparentView!
+    @IBOutlet weak var captionField: UITextField!
     
     let player = SCPlayer()
     var recordSession: SCRecordSession!
@@ -36,6 +38,7 @@ class EditorViewController : UIViewController {
         
         player.loopEnabled = true
         player.CIImageRenderer = filterView
+        captionField.delegate = self
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -53,6 +56,7 @@ class EditorViewController : UIViewController {
         player.setItem(nil)
     }
     
+    
     @IBAction func didTapOnPlayer(sender: AnyObject) {
         player.isPlaying ? player.pause() : player.play()
     }
@@ -69,7 +73,7 @@ class EditorViewController : UIViewController {
     
     @IBAction func saveToCameraRoll(sender: AnyObject) {
         PKHUD.showActivity(dimsBackground: true)
-        AVKit.exportVideo(recordSession, filter: filterView.selectedFilter)
+        AVKit.exportVideo(recordSession, filter: filterView.selectedFilter, overlay: overlayView)
             .flatMap { AVKit.writeToSavedPhotosAlbum($0) }
             .observeOn(UIScheduler())
             .toFuture()
@@ -77,6 +81,13 @@ class EditorViewController : UIViewController {
                 PKHUD.hide(animated: true)
                 print("Finished writing to assetURL \(assetURL)")
             }
+    }
+}
+
+extension EditorViewController : UITextFieldDelegate {
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.endEditing(true)
+        return true
     }
 }
 

@@ -43,10 +43,11 @@ class AVKit {
         return promise.future
     }
     
-    class func exportVideo(session: SCRecordSession, filter: SCFilter? = nil) -> Future<NSURL, NSError> {
+    class func exportVideo(session: SCRecordSession, filter: SCFilter? = nil, overlay: UIView? = nil) -> Future<NSURL, NSError> {
         let promise = Promise<NSURL, NSError>()
         let exporter = SCAssetExportSession(asset: session.assetRepresentingSegments())
         exporter.videoConfiguration.filter = filter
+        exporter.videoConfiguration.overlay = overlay
         exporter.outputFileType = AVFileTypeMPEG4
         exporter.outputUrl = session.outputUrl
         exporter.exportAsynchronouslyWithCompletionHandler {
