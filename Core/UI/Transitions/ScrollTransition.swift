@@ -21,7 +21,7 @@ public class ScrollTransition : ViewControllerTransition {
         duration = 0.3
     }
     
-    public override func animate() -> RACSignal {
+    public override func animate() -> Future<Bool, NoError> {
         var leftFrame = containerView.bounds
         leftFrame.origin.x -= leftFrame.width
         let centerFrame = containerView.bounds
@@ -36,7 +36,7 @@ public class ScrollTransition : ViewControllerTransition {
         return UIView.animate(duration, options: .CurveEaseInOut) {
             self.fromView?.frame = fromFinalFrame
             self.toView?.frame = centerFrame
-        }.doCompleted {
+        }.onComplete { _ in
             if (self.cancelled) {
                 self.fromView?.frame = centerFrame
             }

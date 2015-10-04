@@ -8,6 +8,7 @@
 
 import Foundation
 import ReactiveCocoa
+import Core
 
 class PageViewController : BaseViewController {
     
@@ -33,8 +34,8 @@ class PageViewController : BaseViewController {
         pageVC.didMoveToParentViewController(self)
     }
     
-    func scrollTo(viewController viewController: UIViewController, animated: Bool = true) -> RACSignal {
-        let subject = RACReplaySubject()
+    func scrollTo(viewController viewController: UIViewController, animated: Bool = true) -> Future<Bool, NoError> {
+        let promise = Promise<Bool, NoError>()
         var direction = UIPageViewControllerNavigationDirection.Forward
         if let current = currentPage {
             if let page = viewControllers.indexOf(viewController) {
@@ -45,12 +46,12 @@ class PageViewController : BaseViewController {
         }
         
         pageVC.setViewControllers([viewController], direction: direction, animated: animated) { finished in
-            subject.sendNextAndCompleted(finished)
+            promise.success(finished)
         }
-        return subject
+        return promise.future
     }
     
-    func scrollTo(page page: Int, animated: Bool = true) -> RACSignal {
+    func scrollTo(page page: Int, animated: Bool = true) -> Future<Bool, NoError> {
         return scrollTo(viewController: viewControllers[page], animated: animated)
     }
     

@@ -39,8 +39,8 @@ public class ViewControllerTransition : NSObject {
     public func setup() {
     }
 
-    public func animate() -> RACSignal {
-        return RACSignal.empty()
+    public func animate() -> Future<Bool, NoError> {
+        return Future(value: true)
     }
     
     // Helper, doesn't need to be called by subclass
@@ -60,7 +60,7 @@ extension ViewControllerTransition : UIViewControllerAnimatedTransitioning {
     
     public func animateTransition(transitionContext: UIViewControllerContextTransitioning) {
         context = transitionContext
-        animate().subscribeCompleted {
+        animate().onComplete { _ in
             self.completeTransition()
         }
     }

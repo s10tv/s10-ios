@@ -21,20 +21,20 @@ extension UIView {
 }
 
 extension UIViewController {
-    public func presentViewController(viewControllerToPresent: UIViewController, animated: Bool = true) -> RACSignal {
-        let subject = RACReplaySubject()
+    public func presentViewController(viewControllerToPresent: UIViewController, animated: Bool = true) -> Future<(), NoError> {
+        let promise = Promise<(), NoError>()
         presentViewController(viewControllerToPresent, animated: animated) {
-            subject.sendCompleted()
+            promise.success()
         }
-        return subject
+        return promise.future
     }
     
-    public func dismissViewController(animated animated: Bool = true) -> RACSignal {
-        let subject = RACReplaySubject()
+    public func dismissViewController(animated animated: Bool = true) -> Future<(), NoError> {
+        let promise = Promise<(), NoError>()
         dismissViewControllerAnimated(animated) {
-            subject.sendCompleted()
+            promise.success()
         }
-        return subject
+        return promise.future
     }
     
     public func showAlert(title: String?, message: String?) {

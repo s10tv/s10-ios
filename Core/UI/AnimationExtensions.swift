@@ -9,55 +9,26 @@
 import UIKit
 import ReactiveCocoa
 
-extension UIView {
-    public func setHiddenAnimated(hidden hidden: Bool, duration: NSTimeInterval = 0.3, delay: NSTimeInterval = 0) -> RACSignal {
-        // TODO: This is obviously repetitive, but let's wait to RAC 3.0 is out to clean this up
-        let subject = RACSubject()
-        UIView.animateWithDuration(duration, delay: delay, options: [], animations: {
-            if hidden {
-                self.alpha = 0
-            } else {
-                self.hidden = false
-                self.alpha = 1
-            }
-        }) { finished in
-            if hidden && finished {
-                self.hidden = true
-            }
-            subject.sendNextAndCompleted(finished)
-        }
-        return subject
-    }
-}
-
 // Class Extensions
 extension UIView {
     
-//    public class func animateSpring(duration: NSTimeInterval, animations: () -> ()) -> RACSignal {
-//        return UIView.animateSpring(duration, delay: 0, animations: animations)
-//    }
-    
     public class func animateSpring(duration: NSTimeInterval, damping: CGFloat = 0.7, velocity: CGFloat = 0.7,
-                        options: UIViewAnimationOptions = [], delay: NSTimeInterval = 0, animations: () -> ()) -> RACSignal {
-        let subject = RACSubject()
+                        options: UIViewAnimationOptions = [], delay: NSTimeInterval = 0, animations: () -> ()) -> Future<Bool, NoError> {
+        let promise = Promise<Bool, NoError>()
         UIView.animateWithDuration(duration, delay: delay,
             usingSpringWithDamping: damping, initialSpringVelocity: velocity,
             options: options, animations:animations) { finished in
-            subject.sendNextAndCompleted(finished)
+            promise.success(finished)
         }
-        return subject
+        return promise.future
     }
     
-//    public class func animate(duration: NSTimeInterval, animations: () -> ()) -> RACSignal {
-//        return UIView.animate(duration, delay: 0, animations: animations)
-//    }
-    
-    public class func animate(duration: NSTimeInterval, options: UIViewAnimationOptions = [], delay: NSTimeInterval = 0, animations: () -> ()) -> RACSignal {
-        let subject = RACSubject()
+    public class func animate(duration: NSTimeInterval, options: UIViewAnimationOptions = [], delay: NSTimeInterval = 0, animations: () -> ()) -> Future<Bool, NoError> {
+        let promise = Promise<Bool, NoError>()
         UIView.animateWithDuration(duration, delay: delay, options: options, animations: animations) { finished in
-            subject.sendNextAndCompleted(finished)
+            promise.success(finished)
         }
-        return subject
+        return promise.future
     }
 }
 
@@ -65,20 +36,20 @@ extension UIView {
 
 extension CALayer {
     
-    public func animateKeyPath(keyPath: String, toValue: AnyObject!, duration: CGFloat, fillMode: CAMediaTimingFillMode = .Removed) -> RACSignal {
+    public func animateKeyPath(keyPath: String, toValue: AnyObject!, duration: CGFloat, fillMode: CAMediaTimingFillMode = .Removed) -> Future<Bool, NoError> {
         let animation = CABasicAnimation(keyPath, fillMode: fillMode)
         animation.toValue = toValue
-        return animation.addToLayerAndReturnSignal(self, forKey: keyPath)
+        return animation.addToLayerAndReturnFuture(self, forKey: keyPath)
     }
     
-    public func animateOpacity(opacity: CGFloat, duration: CGFloat, fillMode: CAMediaTimingFillMode = .Removed) -> RACSignal {
+    public func animateOpacity(opacity: CGFloat, duration: CGFloat, fillMode: CAMediaTimingFillMode = .Removed) -> Future<Bool, NoError> {
         return animateKeyPath("opacity", toValue: opacity, duration: duration, fillMode: fillMode)
     }
     
-    public func animate(keyPath keyPath: String, fillMode: CAMediaTimingFillMode = .Removed, configure: (CABasicAnimation, CALayer) -> ()) -> RACSignal {
+    public func animate(keyPath keyPath: String, fillMode: CAMediaTimingFillMode = .Removed, configure: (CABasicAnimation, CALayer) -> ()) -> Future<Bool, NoError> {
         let animation = CABasicAnimation(keyPath, fillMode: fillMode)
         configure(animation, self)
-        return animation.addToLayerAndReturnSignal(self, forKey: keyPath)
+        return animation.addToLayerAndReturnFuture(self, forKey: keyPath)
     }
 }
 
@@ -86,40 +57,40 @@ extension CALayer {
 
 extension CAAnimation {
     private class ProxyDelegate : NSObject {
-        let subject = RACSubject()
+        let promise = Promise<Bool, NoError>()
         
         override func animationDidStop(anim: CAAnimation, finished flag: Bool) {
-            subject.sendNextAndCompleted(flag)
+            promise.success(flag)
         }
     }
 
     // CAAnimation is an exception and actually retains its delegate, thus no need to use objc_associated_object
     // BUG NOTE: Trying to merge stopSignals is problematic. Next values are not being delivered
-    public var stopSignal : RACSignal {
+    public var stopFuture : Future<Bool, NoError> {
         if !(delegate is ProxyDelegate) {
             delegate = ProxyDelegate()
         }
-        return (delegate as! ProxyDelegate).subject
+        return (delegate as! ProxyDelegate).promise.future
     }
     
     // CAAnimation has value semantic, must save signal prior to adding to layer
-    public func addToLayerAndReturnSignal(layer: CALayer, forKey: String) -> RACSignal {
-        let signal = stopSignal
+    public func addToLayerAndReturnFuture(layer: CALayer, forKey: String) -> Future<Bool, NoError> {
+        let future = stopFuture
         layer.addAnimation(self, forKey: forKey)
-        return signal
+        return future
     }
 }
 
 extension CATransaction {
-    public class func perform(animations: () -> ()) -> RACSignal {
-        let subject = RACSubject()
+    public class func perform(animations: () -> ()) -> Future<(), NoError> {
+        let promise = Promise<(), NoError>()
         CATransaction.begin()
         animations()
         CATransaction.setCompletionBlock {
-            subject.sendCompleted()
+            promise.success()
         }
         CATransaction.commit()
-        return subject
+        return promise.future
     }
 }
 
