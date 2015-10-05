@@ -33,13 +33,3 @@ public class MeteorSubscription {
         meteor.removeSubscription(subscription)
     }
 }
-
-public class MeteorMethod {
-    public let stubValue: AnyObject?
-    public let future: Future<AnyObject?, NSError>
-    
-    public init(stubValue: AnyObject?, future: Future<AnyObject?, NSError>) {
-        self.stubValue = stubValue
-        self.future = future
-    }
-}

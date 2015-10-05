@@ -82,10 +82,10 @@ public struct CreateProfileViewModel {
             if let year = year.value?.nonBlank() {
                 fields["gradYear"] = year
             }
-
-            self.meteor.updateProfile(fields).then {
+            
+            meteor.updateProfile(fields).flatMap {
                 self.meteor.confirmRegistration()
-            }.subscribeError({ error in
+            }.onFailure { error in
                 var errorReason : String
                 if let reason = error.localizedFailureReason {
                     errorReason = reason
@@ -93,9 +93,9 @@ public struct CreateProfileViewModel {
                     errorReason = "Please try again later."
                 }
                 promise.failure(ErrorAlert(title: "Problem with Registration", message: errorReason))
-            }, completed: {
+            }.onSuccess {
                 promise.success()
-            })
+            }
         }
 
         return promise.future

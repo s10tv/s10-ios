@@ -21,11 +21,13 @@ internal class PhotoUploadOperation : AsyncOperation {
     let meteor: MeteorService
     let image: UIImage
     let taskType: PhotoTaskType
+    let azure: AzureClient
     
     init(meteor: MeteorService, image: UIImage, taskType: PhotoTaskType) {
         self.meteor = meteor
         self.image = image
         self.taskType = taskType
+        self.azure = AzureClient()
     }
     
     override func run() {
@@ -36,23 +38,15 @@ internal class PhotoUploadOperation : AsyncOperation {
         meteor.startTask(taskId, type: taskType.rawValue, metadata: [
             "width" : width,
             "height": height
-            ]).flattenMap {
-            let url = JSON($0)["url"].string!
-            let request = NSMutableURLRequest(URL: NSURL(string : url)!)
-            request.HTTPMethod = "PUT"
-            request.addValue("2014-02-14", forHTTPHeaderField: "x-ms-version")
-            request.addValue("BlockBlob", forHTTPHeaderField: "x-ms-blob-type")
-            request.addValue("image/jpeg", forHTTPHeaderField: "Content-Type")
-            return Alamofire.upload(request, data: imageData!).rac_statuscode()
-        }.flattenMap {
-            if let code = $0 as? Int where code >= 200 && code < 300 {
-                return self.meteor.finishTask(taskId)
-            }
-            return RACSignal.error(NSError(domain: "Azure", code: $0 as! Int, userInfo: nil))
-        }.subscribeError({
+        ]).flatMap { res -> Future<NSData?, NSError> in
+            let url = NSURL(string: JSON(res!)["videoUrl"].string!)!
+            return self.azure.put(url, data: imageData!, contentType: "image/jpeg")
+        }.flatMap { _ in
+            return self.meteor.finishTask(taskId)
+        }.onFailure {
             self.finish(.Error($0))
-        }, completed: {
+        }.onSuccess {
             self.finish(.Success)
-        })
+        }
     }
 }

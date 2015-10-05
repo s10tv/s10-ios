@@ -10,6 +10,40 @@ import Foundation
 import SugarRecord
 import Meteor
 
+// MARK: - Meteor CoreData
+
+extension NSManagedObjectContext {
+    public var meteorStore : METIncrementalStore? {
+        return persistentStoreCoordinator?.persistentStores.first as? METIncrementalStore
+    }
+    
+    public func objectIDWithCollection(collection: String, documentID: String) -> NSManagedObjectID? {
+        return meteorStore?.objectIDForDocumentKey(METDocumentKey(collectionName: collection, documentID: documentID))
+    }
+    
+    public func objectInCollection(collection: String, documentID: String) -> NSManagedObject? {
+        let objectID = objectIDWithCollection(collection, documentID: documentID)
+        return objectID != nil ? objectWithID(objectID!) : nil
+    }
+    
+    public func existingObjectInCollection(collection: String, documentID: String) -> NSManagedObject? {
+        let objectID = objectIDWithCollection(collection, documentID: documentID)
+        return objectID != nil ? (try? existingObjectWithID(objectID!)) : nil
+    }
+}
+
+extension NSManagedObject {
+    public var meteorStore : METIncrementalStore? {
+        return managedObjectContext?.meteorStore
+    }
+    
+    public var documentID : String? {
+        return meteorStore?.documentKeyForObjectID(objectID).documentID as? String
+    }
+}
+
+// MARK: Meteor SugarRecord
+
 public class MeteorCDStack : SugarRecordStackProtocol {
     public let name = "MeteorCDStack"
     public let stackType = SugarRecordEngine.SugarRecordEngineCoreData

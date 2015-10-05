@@ -47,8 +47,7 @@ internal class InviteOperation : AsyncOperation {
             "videoHeight": videoHeight
         ]
         
-        meteor.startTask(taskId, type: taskType, metadata: metadata).toSignalProducer()
-            .toFuture()
+        meteor.startTask(taskId, type: taskType, metadata: metadata)
             // Valid startTask server response
             .flatMap { res -> Future<(url: NSURL, thumbnailURL: NSURL), NSError> in
                 if let json = res.map({ JSON($0) }),
@@ -70,7 +69,6 @@ internal class InviteOperation : AsyncOperation {
             }
             .flatMap { () -> Future<(), NSError> in
                 return self.meteor.finishTask(self.taskId)
-                    .toSignalProducer().map { _ in () }.toFuture()
             }
             // Cleanup task
             .onTerminate {

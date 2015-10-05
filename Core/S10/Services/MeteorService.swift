@@ -73,161 +73,124 @@ public class MeteorService : NSObject {
 
     // MARK: - Device
 
-    func connectDevice(env: Environment) -> RACSignal {
+    func connectDevice(env: Environment) -> Future<(), NSError> {
         // Technically this should be a barrier method, but barrier is not exposed by meteor-ios at the moment
-        return meteor.call("connectDevice", [env.deviceId, [
+        return meteor.call("connectDevice", env.deviceId, [
             "appId": env.appId,
             "version": env.version,
             "build": env.build
-        ]])
+        ])
     }
 
-    public func updateDevicePush(apsEnv: String, pushToken: String? = nil) -> MeteorMethod {
-        return call("device/update/push", [
+    public func updateDevicePush(apsEnv: String, pushToken: String? = nil) -> Future<(), NSError> {
+        return meteor.call("device/update/push", [
             "apsEnv": apsEnv,
             "pushToken": pushToken ?? NSNull()
         ])
     }
 
-    public func updateDeviceLocation(location: CLLocation) -> RACSignal {
-        return meteor.call("device/update/location", [[
+    public func updateDeviceLocation(location: CLLocation) -> Future<(), NSError> {
+        return meteor.call("device/update/location", [
             "lat": location.coordinate.latitude,
             "long": location.coordinate.longitude,
             "accuracy": location.horizontalAccuracy,
             "timestamp": location.timestamp
-        ]])
+        ])
     }
 
     // TODO: Add permission statuses for push, location, etc
 
     // MARK: - Authentication
-    func login(method method: String, params: [AnyObject]?) -> RACSignal {
+    func login(type: String, _ serviceData: [String: AnyObject]) -> Future<(), NSError> {
         // HACK ALERT: Delegate callback does not happen in time for Meteor.user
         // to be populated by the time completion gets called.
         // Instead we will force compute the user before returning signal
-        return meteor.loginWithMethod(method, params: params).doCompleted {
+        return meteor.login("login", [type: serviceData]).map {
             if let userId = self.meteor.userID {
                 self._user.value = self.mainContext.objectInCollection("users", documentID: userId) as? User
             }
         }
     }
-
-    public func debugLoginWithUserId(userId: String) -> RACSignal {
-        return login(method: "login", params: [[
-            "debug": ["userId": userId]
-        ]])
+    
+    public func loginWithDigits(userId userId: String, authToken: String, authTokenSecret: String, phoneNumber: String) -> Future<(), NSError> {
+        return login("digits", [
+            "userId": userId,
+            "authToken": authToken,
+            "authTokenSecret": authTokenSecret,
+            "phoneNumber": phoneNumber
+        ])
+        // HACK ALERT: No longer delaying by 0.1 anymore .delay(0.1)
     }
 
-    public func loginWithDigits(userId userId: String, authToken: String, authTokenSecret: String, phoneNumber: String) -> RACSignal {
-        return login(method: "login", params: [[
-            "digits": [
-                "userId": userId,
-                "authToken": authToken,
-                "authTokenSecret": authTokenSecret,
-                "phoneNumber": phoneNumber
-            ]
-        ]]).delay(0.1)
+
+    func loginWithFacebook(accessToken accessToken: String, expiresAt: NSDate) -> Future<(), NSError> {
+        return login("fb-access", [
+            "accessToken": accessToken,
+            "expireAt": expiresAt.timeIntervalSince1970
+        ])
     }
 
-    func verifyCode(code: String) -> RACSignal {
-        return meteor.call("confirmInviteCode", [code])
-    }
-
-    func confirmRegistration() -> RACSignal {
-        return meteor.call("confirmRegistration", [])
-    }
-
-    func loginWithFacebook(accessToken accessToken: String, expiresAt: NSDate) -> RACSignal {
-        return login(method: "login", params: [[
-            "fb-access": [
-                "accessToken": accessToken,
-                "expireAt": expiresAt.timeIntervalSince1970
-            ]
-        ]])
-    }
-
-    public func loginWithPhoneNumber(phoneNumber: String) -> RACSignal {
-        return login(method: "login", params: [[
-            "phone-access": [
-                "id": phoneNumber,
-            ]
-        ]])
-    }
-
-    public func logout() -> RACSignal {
+    public func logout() -> Future<(), NSError> {
         meteor.account = nil // No reason to wait for network to clear account
         return meteor.logout()
     }
-
-    public func deleteAccount() -> RACSignal {
-        return meteor.call("deleteAccount")
+    
+    // MARK: -
+    
+    func verifyCode(code: String) -> Future<(), NSError> {
+        return meteor.call("confirmInviteCode", code)
+    }
+    
+    func confirmRegistration() -> Future<(), NSError> {
+        return meteor.call("confirmRegistration")
     }
 
     // MARK: - Services
 
-    public func addService(serviceTypeId: String, accessToken: String) -> RACSignal {
-        return meteor.call("me/service/add", [serviceTypeId, accessToken])
+    public func addService(serviceTypeId: String, accessToken: String) -> Future<(), NSError> {
+        return meteor.call("me/service/add", serviceTypeId, accessToken)
     }
 
-    func removeService(serviceId: String) -> RACSignal {
-        return meteor.call("me/service/remove", [serviceId])
+    func removeService(serviceId: String) -> Future<(), NSError> {
+        return meteor.call("me/service/remove", serviceId)
     }
 
     // MARK: - Profile
 
-    func updateProfile(values: NSDictionary) -> RACSignal {
-        return meteor.call("me/update", [values])
+    func updateProfile(values: NSDictionary) -> Future<(), NSError> {
+        return meteor.call("me/update", values)
     }
 
     // MARK: - Candidates
 
-    func hideUser(user: User) -> RACSignal {
-        return meteor.call("user/hide", [user], stub: {
+    func hideUser(user: User) -> Future<(), NSError> {
+        return meteor.callMethod("user/hide", params: [user], stub: { _ in
             user.delete()
             return nil
-        })
+        }).future.map { _ in }
     }
 
     // MARK: - Users
 
-    func nudgeUser(user: User) -> RACSignal {
-        return meteor.call("user/action", [user, "nudge"], stub: {
-            return nil
-        })
+    func blockUser(user: User) -> Future<(), NSError> {
+        return meteor.call("user/block", user)
     }
 
-    func blockUser(user: User) -> RACSignal {
-        return meteor.call("user/block", [user])
-    }
-
-    func reportUser(user: User, reason: String) -> RACSignal {
-        return meteor.call("user/report", [user, reason])
+    func reportUser(user: User, reason: String) -> Future<(), NSError> {
+        return meteor.call("user/report", user, reason)
     }
 
     // MARK: - Messages
 
     // MARK: - Tasks
 
-    func startVideoMessageTask(taskId: String, recipientId: String) -> RACSignal {
-        return meteor.call("task/start", [taskId, "VideoMessage", ["recipientId": recipientId]])
+    func startTask(taskId: String, type: String, metadata: NSDictionary) -> Future<AnyObject?, NSError> {
+        return meteor.callMethod("startTask", params: [taskId, type, metadata]).future
     }
-
-    func startInviteTask(taskId: String, recipientInfo: String) -> RACSignal {
-        return meteor.call("task/start", [taskId, "Invite", ["recipientInfo": recipientInfo]])
+    
+    func finishTask(taskId: String) -> Future<(), NSError> {
+        return meteor.call("finishTask", taskId)
     }
-
-    func startProfilePicTask(taskId: String) -> RACSignal {
-        return meteor.call("startTask", [taskId, "PROFILE_PIC"])
-    }
-
-    func finishTask(taskId: String) -> RACSignal {
-        return meteor.call("finishTask", [taskId])
-    }
-
-    func startTask(taskId: String, type: String, metadata: NSDictionary) -> RACSignal {
-        return meteor.call("startTask", [taskId, type, metadata])
-    }
-
 }
 
 extension MeteorService : METDDPClientDelegate {

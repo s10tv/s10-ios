@@ -29,10 +29,8 @@ public struct VerifyCodeViewModel {
     public func verifyCode() -> Future<Void, ErrorAlert> {
         let promise = Promise<(), ErrorAlert>()
 
-        self.meteor.verifyCode(code.value ?? "").subscribeNext({ schoolName in
-            // TODO: display this as an animation into statusMessage
-
-        }, error: { error in
+        // TODO: display this as an animation into statusMessage
+        self.meteor.verifyCode(code.value ?? "").onFailure { error in
             var errorReason : String
             if let reason = error.localizedFailureReason {
                 errorReason = reason
@@ -43,10 +41,9 @@ public struct VerifyCodeViewModel {
             self._statusMessage.value = errorReason
 
             promise.failure(ErrorAlert(title: "Registration Problem", message: errorReason))
-        }, completed: {
+        }.onSuccess {
             promise.success()
-        })
-
+        }
         return promise.future
     }
 

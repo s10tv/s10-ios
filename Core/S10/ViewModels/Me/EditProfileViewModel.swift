@@ -57,11 +57,11 @@ public struct EditProfileViewModel {
                 "hometown": hometown.value ?? "",
                 "about": about.value ?? "",
             ]
-            meteor.updateProfile(payload).subscribeError({ error in
+            meteor.updateProfile(payload).onFailure { error in
                 promise.failure(ErrorAlert(title: "Unable to save", message: error.localizedDescription))
-            }, completed: {
+            }.onSuccess {
                 promise.success()
-            })
+            }
         }
         return promise.future
     }

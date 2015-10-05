@@ -19,6 +19,7 @@ internal class VideoUploadOperation : AsyncOperation {
     let recipientId: String
     let localVideo: Video
     let meteorService: MeteorService
+    let azure: AzureClient
 
     init(recipientId: String,
             localVideo: Video,
@@ -27,6 +28,7 @@ internal class VideoUploadOperation : AsyncOperation {
         self.recipientId = recipientId
         self.localVideo = localVideo
         self.meteorService = meteorService
+        self.azure = AzureClient()
     }
 
     override func run() {
@@ -54,33 +56,24 @@ internal class VideoUploadOperation : AsyncOperation {
         default:
             NSException(name: "Exception", reason: "Multiple localVideoURL", userInfo: nil).raise()
         }
-
-        meteorService.startTask(taskId!, type: "MESSAGE",
-                metadata: ["userId": self.recipientId, "duration": self.localVideo.duration ?? 0]).flattenMap { res in
-            let videoUrl = JSON(res)["videoUrl"].string!
-            let request = NSMutableURLRequest(URL: NSURL(string : videoUrl)!)
-            request.HTTPMethod = "PUT"
-            request.addValue("2014-02-14", forHTTPHeaderField: "x-ms-version")
-            request.addValue("BlockBlob", forHTTPHeaderField: "x-ms-blob-type")
-            request.addValue("video/mp4", forHTTPHeaderField: "Content-Type")
-            return Alamofire.upload(request, file: self.localVideo.url).rac_statuscode()
-        }.flattenMap { res in
-            let statusCode = res as! Int
-            if (statusCode < 200 || statusCode >= 300) {
-                return RACSignal.error(
-                    NSError(domain: "Upload to Azure", code: statusCode, userInfo: nil))
-            } else {
-                return self.meteorService.finishTask(self.taskId!)
-            }
-        }.subscribeError({ (error) -> Void in
+        
+        meteorService.startTask(taskId!,
+            type: "MESSAGE",
+            metadata: ["userId": self.recipientId, "duration": self.localVideo.duration ?? 0]
+        ).flatMap { res -> Future<NSData?, NSError> in
+            let url = NSURL(string: JSON(res!)["videoUrl"].string!)!
+            return self.azure.put(url, file: self.localVideo.url, contentType: "video/mp4")
+        }.flatMap { _ in
+            return self.meteorService.finishTask(self.taskId!)
+        }.onFailure { error in
             self.finish(.Error(error))
-        }, completed: { () -> Void in
+        }.onSuccess {
             let realm = unsafeNewRealm()
             realm.write {
                 realm.delete(realm.objects(VideoUploadTask).filter(
                     NSPredicate(format: "id = %@", self.taskId!)))
             }
             self.finish(.Success)
-        })
+        }
     }
 }
