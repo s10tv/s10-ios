@@ -18,7 +18,7 @@ dependencies:
     - brew upgrade xctool
     - sudo gem uninstall highline commander --ignore-dependencies -x
     - sudo gem install cocoapods -v $(var=$(tail -1 Podfile.lock); echo ${var##COCOAPODS:})
-    - sudo gem install cupertino shenzhen sigh xcpretty
+    - sudo gem install cupertino shenzhen sigh xcpretty gym
     - ./scripts/import_credentials.sh
   override:
     - pod update Meteor SugarRecord PKHUD
@@ -34,12 +34,12 @@ test:
        -configuration 'Release' build | tee $CIRCLE_ARTIFACTS/core_build.log | xcpretty
     - ? |
         source ./scripts/circle_env.sh
-        ipa build --scheme Taylr \
+        gym build --scheme Taylr \
                   --xcconfig Configs/${XCCONFIG_NAME}.xcconfig \
                   --xcargs BUNDLE_BUILD=$BN \
-                  --no-clean --verbose -t | tee $CIRCLE_ARTIFACTS/build.log | xcpretty
-        mv Taylr.ipa $CIRCLE_ARTIFACTS/${BN}.ipa
-        mv Taylr.app.dSYM.zip $CIRCLE_ARTIFACTS/${BN}.app.dSYM.zip
+                  --export_method $EXPORT_METHOD \
+                  --buildlog_path $CIRCLE_ARTIFACTS/build.log \
+                  --output_directory $CIRCLE_ARTIFACTS
         ./scripts/circle_release_notes.sh >> $CIRCLE_ARTIFACTS/release_notes.txt
       : timeout: 1200
     - zip -FSr $CIRCLE_ARTIFACTS/Pods.zip Pods/
