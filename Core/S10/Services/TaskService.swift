@@ -18,14 +18,14 @@ public class TaskService {
     let downloadQueue = NSOperationQueue()
     let inviteQueue = NSOperationQueue()
     let meteorService: MeteorService
+    
+    // BIG TODO: Figure out how to cache & expire videos
 
     public init(meteorService: MeteorService) {
         self.meteorService = meteorService
         nc.listen(METIncrementalStoreObjectsDidChangeNotification) { [weak self] _ in
             for message in Message.all().fetch().map({ $0 as! Message }) {
-                if message.status == .Sent {
-                    self?.downloadVideo(message)
-                }
+                self?.downloadVideo(message)
             }
         }
     }
