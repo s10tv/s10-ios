@@ -14,7 +14,7 @@ protocol PlayableVideo {
     var uniqueId: String { get }
     var url: NSURL { get }
     var duration: NSTimeInterval { get }
-    var thumbnail: Image { get }
+    var thumbnail: Image? { get }
 }
 
 protocol PlayerDelegate : class {
