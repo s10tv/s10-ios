@@ -29,6 +29,6 @@ public struct ChatsViewModel {
     
     public func conversationVM(index: Int) -> ConversationViewModel {
         let connection = connections[index].connection
-        return ConversationViewModel(meteor: meteor, taskService: taskService, recipient: connection.otherUser)
+        return ConversationViewModel(meteor: meteor, taskService: taskService, recipient: connection.otherUser, connection: connection)
     }
 }

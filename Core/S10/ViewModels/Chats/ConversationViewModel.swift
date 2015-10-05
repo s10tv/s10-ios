@@ -10,13 +10,15 @@ import Foundation
 import ReactiveCocoa
 import RealmSwift
 
-func messageLoader(sender: User?) -> () -> [MessageViewModel] {
+func messageLoader(sender: User?, connection: Connection?) -> () -> [MessageViewModel] {
     return {
         // TODO: Move this off the main thread
         assert(NSThread.isMainThread(), "Must be performed on main for now")
-        let query = sender.map {
+        let query = connection.map {
+            Message.by(MessageKeys.connection.rawValue, value: $0)
+        } ?? sender.map {
             Message.by(MessageKeys.sender.rawValue, value: $0)
-            } ?? Message.all()
+        } ?? Message.all()
         
         let messages = query
             // MASSIVE HACK ALERT: Ascending should be true but empirically
@@ -55,6 +57,7 @@ public class ConversationViewModel {
     let currentMessageDate: PropertyOf<String?>
     let currentConversationStatus: PropertyOf<String?>
     let openedMessages: MutableProperty<Set<Message>>
+    let connection: Connection?
     
     public let playing: MutableProperty<Bool>
     public let recording: MutableProperty<Bool>
@@ -74,11 +77,12 @@ public class ConversationViewModel {
     
     public let currentMessage: MutableProperty<MessageViewModel?>
   
-    init(meteor: MeteorService, taskService: TaskService, recipient: User?) {
+    init(meteor: MeteorService, taskService: TaskService, recipient: User?, connection: Connection? = nil) {
         self.meteor = meteor
         self.taskService = taskService
         self.recipient = recipient
-        let loadMessages = messageLoader(recipient)
+        self.connection = connection
+        let loadMessages = messageLoader(recipient, connection: connection)
         let showTutorial = UD.showPlayerTutorial.value ?? true
         
         self.showTutorial = showTutorial
