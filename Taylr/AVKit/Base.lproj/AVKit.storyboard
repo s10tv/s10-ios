@@ -174,6 +174,47 @@
                                     <constraint firstAttribute="centerY" secondItem="wEk-rz-lGs" secondAttribute="centerY" id="o5Z-Z0-qbf"/>
                                 </constraints>
                             </view>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="oIa-WJ-ehI">
+                                <rect key="frame" x="0.0" y="521" width="600" height="79"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="79" id="yKd-Rv-J9l"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="6" minimumInteritemSpacing="6" id="9DH-eI-zgM">
+                                    <size key="itemSize" width="38" height="67"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="6" minY="0.0" maxX="6" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TimelineCell" id="93Y-3b-JRU" customClass="TimelineCell" customModule="Taylr" customModuleProvider="target">
+                                        <rect key="frame" x="6" y="6" width="38" height="67"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="38" height="67"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Xw-h1-pHh">
+                                                    <rect key="frame" x="0.0" y="0.0" width="38" height="67"/>
+                                                </imageView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <constraints>
+                                            <constraint firstItem="2Xw-h1-pHh" firstAttribute="leading" secondItem="93Y-3b-JRU" secondAttribute="leading" id="0f9-eY-SIK"/>
+                                            <constraint firstItem="2Xw-h1-pHh" firstAttribute="top" secondItem="93Y-3b-JRU" secondAttribute="top" id="EN7-9G-HMc"/>
+                                            <constraint firstAttribute="trailing" secondItem="2Xw-h1-pHh" secondAttribute="trailing" id="YS5-WQ-OJe"/>
+                                            <constraint firstAttribute="bottom" secondItem="2Xw-h1-pHh" secondAttribute="bottom" id="zEg-nl-lem"/>
+                                        </constraints>
+                                        <connections>
+                                            <outlet property="imageView" destination="2Xw-h1-pHh" id="fWJ-AO-fjg"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="delegate" destination="rTJ-l0-lHc" id="rzz-rE-2sF"/>
+                                </connections>
+                            </collectionView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wkw-bV-YTb" customClass="DurationTimer" customModule="Taylr" customModuleProvider="target">
                                 <rect key="frame" x="544" y="80" width="40" height="40"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -193,12 +234,15 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottomMargin" secondItem="oIa-WJ-ehI" secondAttribute="bottom" id="0xz-IL-f3p"/>
                             <constraint firstItem="Lep-Xz-fsY" firstAttribute="top" secondItem="Mky-an-EVL" secondAttribute="top" id="3gv-1Z-Z5O"/>
                             <constraint firstItem="RFF-jQ-Kok" firstAttribute="top" secondItem="Mky-an-EVL" secondAttribute="top" id="5Zy-gS-CAM"/>
                             <constraint firstAttribute="trailing" secondItem="Lep-Xz-fsY" secondAttribute="trailing" id="8aL-rX-aJy"/>
                             <constraint firstItem="RFF-jQ-Kok" firstAttribute="leading" secondItem="Mky-an-EVL" secondAttribute="leading" id="8xx-xQ-7YE"/>
                             <constraint firstItem="RFF-jQ-Kok" firstAttribute="top" secondItem="2jn-jg-8ht" secondAttribute="top" id="NQS-26-vt5"/>
+                            <constraint firstAttribute="trailing" secondItem="oIa-WJ-ehI" secondAttribute="trailing" id="NsG-DD-Odi"/>
                             <constraint firstItem="RFF-jQ-Kok" firstAttribute="trailing" secondItem="2jn-jg-8ht" secondAttribute="trailing" id="TPV-sh-vUO"/>
+                            <constraint firstItem="oIa-WJ-ehI" firstAttribute="leading" secondItem="Mky-an-EVL" secondAttribute="leading" id="VdV-v0-2Z9"/>
                             <constraint firstItem="QoH-gy-sfH" firstAttribute="top" secondItem="Lep-Xz-fsY" secondAttribute="bottom" constant="16" id="YUd-sB-KFu"/>
                             <constraint firstAttribute="trailing" secondItem="wkw-bV-YTb" secondAttribute="trailing" constant="16" id="bBj-g9-dEF"/>
                             <constraint firstItem="RFF-jQ-Kok" firstAttribute="leading" secondItem="2jn-jg-8ht" secondAttribute="leading" id="fOm-xB-phq"/>
@@ -214,6 +258,7 @@
                         <outlet property="durationTimer" destination="wkw-bV-YTb" id="r57-7F-Ltt"/>
                         <outlet property="overlay" destination="2jn-jg-8ht" id="rWM-SG-drW"/>
                         <outlet property="playerView" destination="RFF-jQ-Kok" id="dDw-6V-kYh"/>
+                        <outlet property="timelineView" destination="oIa-WJ-ehI" id="Rse-FA-j0d"/>
                         <outlet property="volumeView" destination="QoH-gy-sfH" id="tk3-Km-bV3"/>
                     </connections>
                 </viewController>

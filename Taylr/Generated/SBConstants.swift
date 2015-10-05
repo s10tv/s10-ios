@@ -6,6 +6,7 @@ public enum CollectionViewCellreuseIdentifier : String {
     case ProfileAttributeCell = "ProfileAttributeCell"
     case ProfileIconCell = "ProfileIconCell"
     case ProfileSelectorCell = "ProfileSelectorCell"
+    case TimelineCell = "TimelineCell"
     case TodayCell = "TodayCell"
 }
 

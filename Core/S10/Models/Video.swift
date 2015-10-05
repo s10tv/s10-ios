@@ -14,6 +14,7 @@ public struct Video : Mappable {
     public var duration: NSTimeInterval?
     public var width: Int?
     public var height: Int?
+    public var thumbnail: Image?
     
     public init?(_ urlString: String?) {
         if let url = urlString.flatMap({ NSURL(string: $0) }) {
@@ -35,6 +36,7 @@ public struct Video : Mappable {
         duration <- map["duration"]
         width <- map["width"]
         height <- map["height"]
+        thumbnail <- map["thumbnail"]
     }
     
     public static let mapper = Mapper<Video>()

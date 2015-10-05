@@ -14,6 +14,7 @@ protocol PlayableVideo {
     var uniqueId: String { get }
     var url: NSURL { get }
     var duration: NSTimeInterval { get }
+    var thumbnail: Image { get }
 }
 
 protocol PlayerDelegate : class {
@@ -42,6 +43,8 @@ class PlayerViewModel {
     private let _isPlaying = MutableProperty(false)
     private let unfinishedVideoDuration: PropertyOf<NSTimeInterval>
     weak var delegate: PlayerDelegate?
+    
+    let videos: ArrayProperty<PlayableVideo>
     
     let playlist = MutableProperty<[PlayableVideo]>([])
     let videoURL: PropertyOf<NSURL?>
@@ -76,9 +79,11 @@ class PlayerViewModel {
             let secondsLeft = Int(ceil(max(unfinishedVideoDuration - currentTime, 0)))
             return "\(secondsLeft)"
         })
+        videos = ArrayProperty([])
         hideView = currentVideo.map { $0 == nil }
         // If we are at the end and new video arrives we'll automatically try to play it
         playlist.producer.startWithNext { [weak self] playlist in
+            self?.videos.array = playlist
             if let this = self,
             let index = this.finishedAtIndex where index < playlist.count - 1 {
                 this.seekVideo(playlist[index + 1])
@@ -106,6 +111,10 @@ class PlayerViewModel {
     
     func seekPrevVideo() -> Bool {
         return seekVideo(prevVideo())
+    }
+    
+    func seekVideoAtIndex(index: Int) -> Bool {
+        return seekVideo(playlist.value[index])
     }
     
     func seekNextVideo() -> Bool {

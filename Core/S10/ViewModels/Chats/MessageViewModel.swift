@@ -17,6 +17,7 @@ public struct MessageViewModel {
     public let localVideoURL: NSURL
     public let messageId: String
     public let videoDuration: NSTimeInterval
+    public let video: Video
     
     init(message: Message, localVideoURL: NSURL) {
         self.message = message
@@ -24,6 +25,7 @@ public struct MessageViewModel {
         messageId = message.documentID!
         formattedDate = relativeTime(message.createdAt)
         videoDuration = message.video.duration ?? 0
+        video = message.video
     }
 }
 

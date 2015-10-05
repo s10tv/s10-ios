@@ -20,6 +20,7 @@ class PlayerViewController : UIViewController {
     @IBOutlet weak var durationTimer: DurationTimer!
     @IBOutlet weak var overlay: UIView!
     @IBOutlet weak var volumeView: VolumeView!
+    @IBOutlet weak var timelineView: UICollectionView!
     
     let vm = PlayerViewModel()
     var userPaused: Bool = false
@@ -49,6 +50,7 @@ class PlayerViewController : UIViewController {
 //                Log.debug("set videoURL to \(videoURL)")
             }
         }
+        timelineView <~ (vm.videos, TimelineCell.self)
         
         vm.currentVideoProgress.producer.startWithNext { [weak self] v in
             self?.durationTimer.progress = v
@@ -124,5 +126,11 @@ extension PlayerViewController : SCPlayerDelegate {
 extension PlayerViewController : UIGestureRecognizerDelegate {
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
+    }
+}
+
+extension PlayerViewController : UICollectionViewDelegate {
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        vm.seekVideoAtIndex(indexPath.item)
     }
 }

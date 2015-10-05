@@ -17,6 +17,7 @@ extension MessageViewModel : PlayableVideo {
     var uniqueId: String { return messageId }
     var url: NSURL { return localVideoURL }
     var duration: NSTimeInterval { return videoDuration }
+    var thumbnail: Image { return video.thumbnail! }
 }
 
 class ConversationViewController : BaseViewController {
