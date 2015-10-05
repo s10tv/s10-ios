@@ -52,11 +52,11 @@ public class ConversationViewModel {
     let meteor: MeteorService
     let taskService: TaskService
     let _messages: MutableProperty<[MessageViewModel]>
+    let _hasUnreadMessage = MutableProperty(false)
     let recipient: User?
     let currentUser: PropertyOf<User?>
     let currentMessageDate: PropertyOf<String?>
     let currentConversationStatus: PropertyOf<String?>
-    let openedMessages: MutableProperty<Set<Message>>
     let connection: Connection?
     
     public let playing: MutableProperty<Bool>
@@ -103,7 +103,6 @@ public class ConversationViewModel {
             case .Producer: return $2 ? .RecordCapturing : .RecordIdle
             }
         })
-        openedMessages = MutableProperty(Set())
         
         currentMessage = MutableProperty(nil)
         currentUser = currentMessage
@@ -118,13 +117,8 @@ public class ConversationViewModel {
            .flatMap(nilValue: "") { $0.pDisplayName() }
         busy = currentUser
            .flatMap(nilValue: false) { $0.pConversationBusy() }
-        
-        hideNewMessagesHint = PropertyOf(true, combineLatest(
-            messages.producer,
-            openedMessages.producer
-        ).map {
-            $0.count == $1.count
-        })
+        // TODO: Properly implement me taking into account both connection case as well as user case
+        hideNewMessagesHint = PropertyOf(_hasUnreadMessage)
         
         currentMessageDate = currentMessage
            .flatMap { $0.formattedDate.map { Optional($0) } }
@@ -153,9 +147,7 @@ public class ConversationViewModel {
     }
     
     public func openMessage(message: MessageViewModel) {
-        var msgs = openedMessages.value
-        msgs.insert(message.message)
-        openedMessages.value = msgs
+        meteor.openMessage(message.message)
     }
     
     public func sendVideo(video: Video) {

@@ -181,6 +181,13 @@ public class MeteorService : NSObject {
     }
 
     // MARK: - Messages
+    
+    func openMessage(message: Message) -> Future<(), NSError> {
+        return meteor.callMethod("message/open", params: [message], stub: { _ in
+            message.status_ = Message.Status.Opened.rawValue
+            return nil
+        }).future.map { _ in }
+    }
 
     // MARK: - Tasks
 
