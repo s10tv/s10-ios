@@ -80,7 +80,7 @@ class PlayerViewModel {
             return "\(secondsLeft)"
         })
         videos = ArrayProperty([])
-        hideView = currentVideo.map { $0 == nil }
+        hideView = playlist.map { $0.count == 0 }
         // If we are at the end and new video arrives we'll automatically try to play it
         playlist.producer.startWithNext { [weak self] playlist in
             self?.videos.array = playlist

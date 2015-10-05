@@ -28,7 +28,6 @@ class ConversationViewController : BaseViewController {
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var swipeView: SwipeView!
     @IBOutlet weak var playerEmptyView: UIView!
-    @IBOutlet weak var replayButton: DesignableButton!
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var newMessagesHint: UIView!
     @IBOutlet var producerContainer: UIView!
@@ -48,7 +47,6 @@ class ConversationViewController : BaseViewController {
         nameLabel.rac_text <~ vm.displayName
         spinner.rac_animating <~ vm.busy
         activityLabel.rac_text <~ vm.displayStatus
-        replayButton.rac_hidden <~ vm.hideReplayButton
         newMessagesHint.rac_hidden <~ vm.hideNewMessagesHint
         coverImageView.sd_image <~ vm.cover
         
@@ -84,13 +82,6 @@ class ConversationViewController : BaseViewController {
         swipeView.dataSource = self
         swipeView.delegate = self
         swipeView.layoutIfNeeded()
-        
-        playerEmptyView.whenSwiped(.Left) { [weak self] _ in
-            self?.player.advance()
-        }
-        playerEmptyView.whenSwiped(.Right) { [weak self] _ in
-            self?.player.rewind()
-        }
         
         if !vm.showTutorial {
             tutorialContainer.removeFromSuperview()

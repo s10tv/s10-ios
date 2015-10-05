@@ -68,7 +68,6 @@ public class ConversationViewModel {
     public let displayStatus: PropertyOf<String>
     public let busy: PropertyOf<Bool>
     public let messages: PropertyOf<[MessageViewModel]>
-    public let hideReplayButton: PropertyOf<Bool>
     public let hideNewMessagesHint: PropertyOf<Bool>
     public let showTutorial: Bool
     public let exitAtEnd: Bool
@@ -116,7 +115,6 @@ public class ConversationViewModel {
         busy = currentUser
            .flatMap(nilValue: false) { $0.pConversationBusy() }
         
-        hideReplayButton = _messages.map { $0.count == 0 }
         hideNewMessagesHint = PropertyOf(true, combineLatest(
             messages.producer,
             openedMessages.producer
