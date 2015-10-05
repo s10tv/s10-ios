@@ -160,6 +160,9 @@ extension RecorderViewController : SCSwipeableFilterViewDelegate {
 
 extension RecorderViewController : UIGestureRecognizerDelegate {
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        if gestureRecognizer is UIScreenEdgePanGestureRecognizer {
+            return otherGestureRecognizer is UIPanGestureRecognizer
+        }
         if gestureRecognizer is UITapGestureRecognizer {
             return otherGestureRecognizer is TouchDetector
         }

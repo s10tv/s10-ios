@@ -125,9 +125,6 @@ extension PlayerViewController : SCPlayerDelegate {
 
 extension PlayerViewController : UIGestureRecognizerDelegate {
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWithGestureRecognizer otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-        if otherGestureRecognizer is UIScreenEdgePanGestureRecognizer {
-            return false
-        }
         return true
     }
 }

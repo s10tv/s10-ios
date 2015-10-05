@@ -103,11 +103,13 @@ class ConversationViewController : BaseViewController {
         if let view = navigationItem.titleView {
             view.bounds.size = view.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
         }
+        navigationController?.interactivePopGestureRecognizer?.enabled = false
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.navigationBar.setBackgroundColor(nil)
+        navigationController?.interactivePopGestureRecognizer?.enabled = true
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
