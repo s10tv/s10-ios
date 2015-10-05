@@ -15,65 +15,59 @@ import ReactiveCocoa
 
 internal class VideoUploadOperation : AsyncOperation {
 
-    var taskId: String?
-    let recipientId: String
-    let localVideo: Video
+    let taskId: String
+    let recipient: Recipient
+    let localURL: NSURL
+    let thumbnailData: NSData
+    let width: Int
+    let height: Int
+    let duration: NSTimeInterval
     let meteorService: MeteorService
-    let azure: AzureClient
+    let azure = AzureClient()
 
-    init(recipientId: String,
-            localVideo: Video,
-            meteorService: MeteorService) {
-        assert(localVideo.url.fileURL, "Local video url must be fileURL")
-        self.recipientId = recipientId
-        self.localVideo = localVideo
+    init(taskId: String,
+        recipient: Recipient,
+        localURL: NSURL,
+        thumbnailData: NSData,
+        width: Int,
+        height: Int,
+        duration: NSTimeInterval,
+        meteorService: MeteorService) {
+        assert(localURL.fileURL, "Local video url must be fileURL")
+        self.taskId = taskId
+        self.recipient = recipient
+        self.localURL = localURL
+        self.thumbnailData = thumbnailData
+        self.width = width
+        self.height = height
+        self.duration = duration
         self.meteorService = meteorService
-        self.azure = AzureClient()
     }
 
     override func run() {
-        let realm = unsafeNewRealm()
-        let predicate = NSPredicate(format: "localURL = %@", localVideo.url.path!)
-        let results = realm.objects(VideoUploadTask).filter(predicate)
-        
-        switch (results.count) {
-        case 0:
-            taskId = NSUUID().UUIDString
-
-            let entry = VideoUploadTask()
-            entry.id = taskId!
-            entry.localURL = localVideo.url.path!
-            entry.recipientId = recipientId
-            entry.duration = localVideo.duration ?? 0
-
-            realm.write {
-                realm.add(entry)
+        let info: [String: AnyObject] = [
+            "duration": duration,
+            "width": width,
+            "height": height
+        ]
+        meteorService.startMessageTask(taskId, recipient: recipient, info: info)
+            .flatMap { res -> Future<(), NSError> in
+                let thumb = self.azure.put(res.thumbnailURL, data: self.thumbnailData, contentType: "image/jpeg")
+                let vid = self.azure.put(res.videoURL, file: self.localURL, contentType: "video/mp4")
+                return zip(thumb.producer, vid.producer).map { _ in }.toFuture()
+            }.flatMap { _ in
+                return self.meteorService.finishTask(self.taskId)
+            }.onFailure { error in
+                self.finish(.Error(error))
+            }.onSuccess {
+                let realm = unsafeNewRealm()
+                if let task = VideoUploadTask.findByTaskId(self.taskId, realm: realm) {
+                    realm.write {
+                        realm.delete(task)
+                    }
+                    _ = try? NSFileManager().removeItemAtURL(self.localURL)
+                }
+                self.finish(.Success)
             }
-            break
-        case 1:
-            taskId = results.first!.id
-            break
-        default:
-            NSException(name: "Exception", reason: "Multiple localVideoURL", userInfo: nil).raise()
-        }
-        
-        meteorService.startTask(taskId!,
-            type: "MESSAGE",
-            metadata: ["userId": self.recipientId, "duration": self.localVideo.duration ?? 0]
-        ).flatMap { res -> Future<NSData?, NSError> in
-            let url = NSURL(string: JSON(res!)["videoUrl"].string!)!
-            return self.azure.put(url, file: self.localVideo.url, contentType: "video/mp4")
-        }.flatMap { _ in
-            return self.meteorService.finishTask(self.taskId!)
-        }.onFailure { error in
-            self.finish(.Error(error))
-        }.onSuccess {
-            let realm = unsafeNewRealm()
-            realm.write {
-                realm.delete(realm.objects(VideoUploadTask).filter(
-                    NSPredicate(format: "id = %@", self.taskId!)))
-            }
-            self.finish(.Success)
-        }
     }
 }

@@ -29,6 +29,9 @@ public struct Image : Mappable {
     
     public init(_ image: UIImage) {
         self.image = image
+        // TODO: Check if this is ok in general
+        self.width = Int(image.size.width * image.scale)
+        self.height = Int(image.size.height * image.scale)
     }
     
     public init?(_ map: Map) {

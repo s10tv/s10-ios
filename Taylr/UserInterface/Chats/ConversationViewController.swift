@@ -242,11 +242,12 @@ extension ConversationViewController : ProducerDelegate {
         vm.recording.value = false
     }
     
-    func producer(producer: ProducerViewController, didProduceVideo video: VideoSession, duration: NSTimeInterval) {
+    func producer(producer: ProducerViewController, didProduceVideo session: VideoSession, duration: NSTimeInterval) {
         vm.recording.value = false
         wrapFuture(showProgress: true) {
-            video.export().onSuccess { url in
+            session.exportWithFirstFrame().onSuccess { (url, thumbnail) in
                 var video = Video(url)
+                video.thumbnail = Image(thumbnail)
                 video.duration = duration
                 self.vm.sendVideo(video)
             }

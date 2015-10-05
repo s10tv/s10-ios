@@ -6,6 +6,11 @@
 //  Copyright (c) 2015 S10 Inc. All rights reserved.
 //
 
+enum Recipient {
+    case User(String)
+    case Connection(String)
+}
+
 @objc(Message)
 internal class Message: _Message {
 

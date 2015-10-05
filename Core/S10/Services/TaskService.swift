@@ -33,31 +33,45 @@ public class TaskService {
     // MARK: - Uploads
     
     func uploadVideo(recipient: User, localVideo: Video) {
-        let operation = VideoUploadOperation(
-            recipientId: recipient.documentID!,
-            localVideo: localVideo,
-            meteorService: self.meteorService)
-        uploadQueue.addAsyncOperation(operation).onComplete { [weak self] _ in
-            self?.resumeUploads()
+        let realm = unsafeNewRealm()
+        realm.write {
+            let task = VideoUploadTask()
+            task.taskId = NSUUID().UUIDString
+            task.recipientId = recipient.documentID!
+            task.connectionId = recipient.connection?.documentID ?? ""
+            task.localVideoUrl = localVideo.url.absoluteString
+            task.duration = localVideo.duration ?? 0
+            task.thumbnailData = UIImageJPEGRepresentation(localVideo.thumbnail!.image!, 0.8)!
+            task.width = localVideo.thumbnail?.width ?? 0
+            task.height = localVideo.thumbnail?.height ?? 0
+            realm.add(task)
         }
+        resumeUploads()
     }
     
     public func resumeUploads() {
-        let queuedTaskIds = Set(uploadQueue.operations
-            .map { $0 as! VideoUploadOperation }
-            .filter { $0.taskId != nil }
-            .map { $0.taskId! }
-        )
+        let queuedTaskIds = Set(uploadQueue.operations.map {
+            ($0 as! VideoUploadOperation).taskId
+        })
         for task in unsafeNewRealm().objects(VideoUploadTask) {
-            if queuedTaskIds.contains(task.id) {
+            if queuedTaskIds.contains(task.taskId) {
                 continue
             }
-            let operation = VideoUploadOperation(
-                recipientId: task.recipientId,
-                localVideo: task.localVideo,
-                meteorService: meteorService)
-            operation.taskId = task.id
-            uploadQueue.addAsyncOperation(operation).onComplete { [weak self] _ in
+            let recipient: Recipient = task.connectionId.length > 0
+                ? .Connection(task.connectionId)
+                : .User(task.recipientId)
+            uploadQueue.addAsyncOperation(
+                VideoUploadOperation(
+                    taskId: task.taskId,
+                    recipient: recipient,
+                    localURL: NSURL(string: task.localVideoUrl)!,
+                    thumbnailData: task.thumbnailData,
+                    width: task.width,
+                    height: task.height,
+                    duration: task.duration,
+                    meteorService: meteorService
+                )
+            ).onComplete { [weak self] _ in
                 self?.resumeUploads()
             }
         }
@@ -93,10 +107,11 @@ public class TaskService {
             if queuedVideoIds.contains(task.videoId) {
                 continue
             }
-            downloadQueue.addAsyncOperation(VideoDownloadOperation(task: task))
-                .onComplete { [weak self] _ in
-                    self?.resumeDownloads()
-                }
+            downloadQueue.addAsyncOperation(
+                VideoDownloadOperation(task: task)
+            ).onComplete { [weak self] _ in
+                self?.resumeDownloads()
+            }
         }
     }
     

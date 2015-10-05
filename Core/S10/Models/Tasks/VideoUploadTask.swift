@@ -11,24 +11,28 @@ import ReactiveCocoa
 import RealmSwift
 
 internal class VideoUploadTask : Object {
-    dynamic var id = "" // taskID
+    dynamic var taskId = ""
     dynamic var recipientId = ""
-    dynamic var localURL = ""
+    dynamic var connectionId = ""
+    dynamic var localVideoUrl = ""
     dynamic var duration: NSTimeInterval = 0
+    dynamic var thumbnailData = NSData()
+    dynamic var width = 0
+    dynamic var height = 0
     
     var localVideo: Video {
-        var video = Video(NSURL(localURL))
+        var video = Video(NSURL(localVideoUrl))
         video.duration = duration
         return video
     }
     
     override static func primaryKey() -> String? {
-        return "id"
+        return "taskId"
     }
     
-    class func findById(id: String, realm: Realm = unsafeNewRealm()) -> VideoDownloadTask? {
-        let pred = NSPredicate(format: "id = %@", id)
-        return realm.objects(VideoDownloadTask).filter(pred).first
+    class func findByTaskId(id: String, realm: Realm = unsafeNewRealm()) -> VideoUploadTask? {
+        let pred = NSPredicate(format: "taskId = %@", id)
+        return realm.objects(VideoUploadTask).filter(pred).first
     }
     
     class func countUploads(recipientId: String, realm: Realm = unsafeNewRealm()) -> Int {

@@ -151,6 +151,7 @@ public class ConversationViewModel {
     }
     
     public func sendVideo(video: Video) {
+        // BIG TODO: OOPS.. CurrentUser cannot be self
         if let user = currentUser.value {
             taskService.uploadVideo(user, localVideo: video)
         }

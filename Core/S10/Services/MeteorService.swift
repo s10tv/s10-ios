@@ -10,6 +10,7 @@ import Foundation
 import CoreLocation
 import ReactiveCocoa
 import SugarRecord
+import SwiftyJSON
 import Meteor
 
 public class MeteorService : NSObject {
@@ -193,6 +194,20 @@ public class MeteorService : NSObject {
 
     func startTask(taskId: String, type: String, metadata: NSDictionary) -> Future<AnyObject?, NSError> {
         return meteor.callMethod("startTask", params: [taskId, type, metadata]).future
+    }
+    
+    func startMessageTask(taskId: String, recipient: Recipient, info: [String: AnyObject]) -> Future<(videoURL: NSURL, thumbnailURL: NSURL), NSError> {
+        var metadata = info
+        switch recipient {
+        case .Connection(let connectionId):
+            metadata["connectionId"] = connectionId
+        case .User(let userId):
+            metadata["userId"] = userId
+        }
+        return startTask(taskId, type: "MESSAGE", metadata: metadata).map {
+            let json = JSON($0!)
+            return (NSURL(json["videoUrl"].string!)!, NSURL(json["thumbnailUrl"].string!)!)
+        }
     }
     
     func finishTask(taskId: String) -> Future<(), NSError> {
