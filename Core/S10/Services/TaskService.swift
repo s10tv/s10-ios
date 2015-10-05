@@ -32,13 +32,17 @@ public class TaskService {
     
     // MARK: - Uploads
     
-    func uploadVideo(recipient: User, localVideo: Video) {
+    func uploadVideo(recipient: Recipient, localVideo: Video) {
         let realm = unsafeNewRealm()
         realm.write {
             let task = VideoUploadTask()
             task.taskId = NSUUID().UUIDString
-            task.recipientId = recipient.documentID!
-            task.connectionId = recipient.connection?.documentID ?? ""
+            switch recipient {
+            case .Connection(let connectionId):
+                task.connectionId = connectionId
+            case .User(let userId):
+                task.userId = userId
+            }
             task.localVideoUrl = localVideo.url.absoluteString
             task.duration = localVideo.duration ?? 0
             task.thumbnailData = UIImageJPEGRepresentation(localVideo.thumbnail!.image!, 0.8)!
@@ -59,7 +63,7 @@ public class TaskService {
             }
             let recipient: Recipient = task.connectionId.length > 0
                 ? .Connection(task.connectionId)
-                : .User(task.recipientId)
+                : .User(task.userId)
             uploadQueue.addAsyncOperation(
                 VideoUploadOperation(
                     taskId: task.taskId,

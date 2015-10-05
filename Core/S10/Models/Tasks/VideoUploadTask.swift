@@ -12,13 +12,15 @@ import RealmSwift
 
 internal class VideoUploadTask : Object {
     dynamic var taskId = ""
-    dynamic var recipientId = ""
+    dynamic var userId = ""
     dynamic var connectionId = ""
     dynamic var localVideoUrl = ""
     dynamic var duration: NSTimeInterval = 0
     dynamic var thumbnailData = NSData()
     dynamic var width = 0
     dynamic var height = 0
+    
+    // TODO: Add accessor for Recipient on VideoUploadTask
     
     var localVideo: Video {
         var video = Video(NSURL(localVideoUrl))
@@ -35,12 +37,12 @@ internal class VideoUploadTask : Object {
         return realm.objects(VideoUploadTask).filter(pred).first
     }
     
-    class func countUploads(recipientId: String, realm: Realm = unsafeNewRealm()) -> Int {
-        return realm.objects(self).filter("recipientId = %@", recipientId).count
+    class func countUploads(userId: String, realm: Realm = unsafeNewRealm()) -> Int {
+        return realm.objects(self).filter("userId = %@", userId).count
     }
     
-    class func countOfUploads(recipientId: String) -> SignalProducer<Int, NoError> {
-        return SignalProducer(value: countUploads(recipientId))
-            .concat(unsafeNewRealm().notifier().map { _ in self.countUploads(recipientId) })
+    class func countOfUploads(userId: String) -> SignalProducer<Int, NoError> {
+        return SignalProducer(value: countUploads(userId))
+            .concat(unsafeNewRealm().notifier().map { _ in self.countUploads(userId) })
     }
 }
