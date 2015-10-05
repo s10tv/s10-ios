@@ -77,7 +77,6 @@ extension IntegrationsViewController : ClientIntegrationDelegate {
     
     func linkFacebook() -> Future<(), ErrorAlert> {
         let promise = Promise<(), ErrorAlert>()
-        let subject = RACReplaySubject()
         let fb = FBSDKLoginManager()
         let readPerms = [
             "user_about_me",
@@ -100,10 +99,14 @@ extension IntegrationsViewController : ClientIntegrationDelegate {
             } else if result.isCancelled {
                 promise.cancel() // TODO: Check whether or not this is actuallly correct behavior
             } else {
-                promise.success()
                 Log.debug("Successfulled received token from facebook")
                 Async.main {
-                    Meteor.addService("facebook", accessToken: result.token.tokenString).subscribe(subject)
+                    Meteor.addService("facebook", accessToken: result.token.tokenString).onSuccess {
+                        promise.success()
+                    }.onFailure { _ in
+                        promise.failure(ErrorAlert(title: LS(.errUnableToAddServiceTitle),
+                            message: LS(.errUnableToAddServiceMessage)))
+                    }
                 }
             }
         }

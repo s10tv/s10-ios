@@ -103,12 +103,12 @@ class AccountService {
                         authToken: session.authToken,
                         authTokenSecret: session.authTokenSecret,
                         phoneNumber: session.phoneNumber
-                    ).subscribeError({
+                    ).onFailure {
                         promise.failure($0)
-                    }, completed: {
+                    }.onSuccess {
                         self.didLogin()
                         promise.success(self.state.value)
-                    })
+                    }
                 } else {
                     promise.failure($0.error!)
                 }
