@@ -105,8 +105,15 @@ public class ConversationViewModel {
         })
         
         currentMessage = MutableProperty(nil)
-        currentUser = currentMessage
-           .map { $0?.message.sender ?? recipient }
+        currentUser = PropertyOf(nil, combineLatest(
+            page.producer,
+            currentMessage.producer
+        ).map {
+            switch $0 {
+            case .Player: return $1?.message.sender ?? recipient
+            case .Producer: return recipient
+            }
+        })
         avatar = currentUser
            .flatMap { $0.pAvatar() }
         cover = currentUser
