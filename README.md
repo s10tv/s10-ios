@@ -61,3 +61,11 @@ private key in newfile.key.pem
 ```
 openssl x509 -inform der -in scripts/certs/apns_prod-com.milasya.Taylr.beta.cer -out betaapns.pem
 ```
+
+## Retry Circle build with ssh access
+
+```
+curl -X POST https://circleci.com/api/v1/project/s10tv/s10-ios/605/ssh?circle-token=xxxxxx
+```
+
+find the token at https://circleci.com/account/api
