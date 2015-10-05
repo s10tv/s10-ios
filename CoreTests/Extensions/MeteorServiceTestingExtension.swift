@@ -7,45 +7,45 @@
 //
 
 import Foundation
-import Core
 import Meteor
 import ReactiveCocoa
 import SwiftyJSON
+@testable import Core
 
 extension MeteorService {
-    func clearUserData(userId: String) -> RACSignal {
-        return self.meteor.call("dev/user/remove", [userId])
+    func clearUserData(userId: String) -> Future<(), NSError> {
+        return meteor.call("dev/user/remove", userId)
     }
 
-    func testNewUser() -> RACSignal {
-        return self.meteor.call("testing/user/create", [])
+    func testNewUser() -> Future<(), NSError> {
+        return meteor.call("testing/user/create")
     }
 
-    func testLogin(userId: String) -> RACSignal {
-        return self.meteor.call("login", [[
+    func testLogin(userId: String) -> Future<(), NSError> {
+        return meteor.login("login", [
             "debug": [
                 "userId": userId,
             ]
-        ]])
+        ])
     }
 
-    func connectWithNewUser() -> RACSignal {
-        return meteor.call("dev/user/connectWithNewUser", [])
+    func connectWithNewUser() -> Future<(), NSError> {
+        return meteor.call("dev/user/connectWithNewUser")
     }
 
-    func vet(userId: String) -> RACSignal {
-        return self.meteor.call("admin/user/vet", [userId])
+    func vet(userId: String) -> Future<(), NSError> {
+        return meteor.call("admin/user/vet", userId)
     }
 
-    public func connectUsers(firstUserId: String, secondUserId: String) -> RACSignal {
+    public func connectUsers(firstUserId: String, secondUserId: String) -> Future<(), NSError> {
         var id: String = ""
 
-        return self.meteor.call("candidate/new", [firstUserId, secondUserId])
-        .flattenMap { candidateId in
+        return meteor.callMethod("candidate/new", params: [firstUserId, secondUserId]).future
+         .flatMap { candidateId in
             id = candidateId as! String
-            return self.meteor.call("candidate/makeChoice", [candidateId, "yes"])
-        }.then {
-            return self.meteor.call("candidate/makeChoiceForInverse", [id, "yes"])
+            return self.meteor.call("candidate/makeChoice", id, "yes")
+        }.flatMap {
+            return self.meteor.call("candidate/makeChoiceForInverse", id, "yes")
         }
     }
 }

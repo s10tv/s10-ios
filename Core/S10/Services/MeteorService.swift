@@ -13,9 +13,9 @@ import SugarRecord
 import Meteor
 
 public class MeteorService : NSObject {
-    public let meteor: METCoreDataDDPClient // TODO: MAKE PRIVATE
     private var mainContext : NSManagedObjectContext { return meteor.mainQueueManagedObjectContext }
     private let _user = MutableProperty<User?>(nil)
+    let meteor: METCoreDataDDPClient
     
     public let account: PropertyOf<METAccount?>
     public let connectionStatus: PropertyOf<METDDPConnectionStatus>
