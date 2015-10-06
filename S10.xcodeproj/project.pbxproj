@@ -143,7 +143,7 @@
 		EA9F35481A74CC6900E0C65D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35461A74CC6900E0C65D /* Main.storyboard */; };
 		EA9F354A1A74CC6900E0C65D /* Taylr.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Taylr.xcassets */; };
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
-		EAA058AB1BC35C0100FCB86C /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA058AA1BC35C0100FCB86C /* Conversation.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA058AD1BC35F0200FCB86C /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA058AC1BC35F0200FCB86C /* Conversation.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA575F51BB7CD8000661A4F /* VolumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE067181B717AD500A2FF76 /* VolumeViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA575F61BB7CD9600661A4F /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE067221B71851E00A2FF76 /* AudioController.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA575F71BB7CE3000661A4F /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA394B0F1B5E16F2009184EB /* PlayerViewModel.swift */; settings = {ASSET_TAGS = (); }; };
@@ -392,7 +392,7 @@
 		EA9F35621A74CD8800E0C65D /* Taylr-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Taylr-Bridging.h"; path = "Taylr/Taylr-Bridging.h"; sourceTree = SOURCE_ROOT; };
 		EA9FE6461B67F85E006F8E73 /* ReactiveTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveTests.swift; sourceTree = "<group>"; };
 		EA9FE6481B684FA0006F8E73 /* ProfileIconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileIconCell.swift; sourceTree = "<group>"; };
-		EAA058AA1BC35C0100FCB86C /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
+		EAA058AC1BC35F0200FCB86C /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		EAA56F6C1B2B32E500DE3936 /* ChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		EAA56F6D1B2B32E500DE3936 /* ConnectionCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionCells.swift; sourceTree = "<group>"; };
 		EAA56F701B2B32E500DE3936 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
@@ -688,7 +688,6 @@
 				EA2DC2BC1B642A4A0034434E /* ModelExtensions.swift */,
 				EA35613C1B6D49DA00F058CC /* Errors.swift */,
 				EA35613E1B6DBCDB00F058CC /* AlertableError.swift */,
-				EAA058AA1BC35C0100FCB86C /* Conversation.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1134,6 +1133,7 @@
 				EA2DC2581B6377C00034434E /* Video.swift */,
 				EAF6708C1B31FA2E0025D7CF /* Settings.swift */,
 				EAF6708D1B31FA2E0025D7CF /* UserDefaults.swift */,
+				EAA058AC1BC35F0200FCB86C /* Conversation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1663,6 +1663,7 @@
 				EA81ADDB1BB6839200F94006 /* AzureClient.swift in Sources */,
 				EA81AE3D1BB7AB1100F94006 /* HistoryViewModel.swift in Sources */,
 				EA81ADEC1BB6893500F94006 /* MeteorMethod.swift in Sources */,
+				EAA058AD1BC35F0200FCB86C /* Conversation.swift in Sources */,
 				EA8E694A1BC1DA30002D4BF1 /* TwoWayBindings.swift in Sources */,
 				EA8E69491BC1DA30002D4BF1 /* PropertyExtensions.swift in Sources */,
 				EA81ADF81BB68E2100F94006 /* _Activity.swift in Sources */,
@@ -1689,7 +1690,6 @@
 				EA81ADD71BB6823F00F94006 /* AsyncOperation.swift in Sources */,
 				EA81ADF91BB68E2100F94006 /* _Connection.swift in Sources */,
 				EA81AE121BB696B900F94006 /* PhotoUploadOperation.swift in Sources */,
-				EAA058AB1BC35C0100FCB86C /* Conversation.swift in Sources */,
 				EA81ADFA1BB68E2100F94006 /* _Integration.swift in Sources */,
 				EA81ADE81BB6881200F94006 /* UIKitExtension.swift in Sources */,
 				EA81AE381BB7A08200F94006 /* EditProfileViewModel.swift in Sources */,

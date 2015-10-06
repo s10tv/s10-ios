@@ -11,6 +11,11 @@ import ReactiveCocoa
 import SugarRecord
 import RealmSwift
 
+enum ConversationId {
+    case UserId(String)
+    case ConnectionId(String)
+}
+
 enum Conversation {
     case User(Core.User)
     case Connection(Core.Connection)
@@ -24,7 +29,7 @@ enum Conversation {
         }
     }
     
-    var id: RecipientId {
+    var id: ConversationId {
         switch self {
         case .Connection(let connection): return .ConnectionId(connection.documentID!)
         case .User(let user): return .UserId(user.documentID!)

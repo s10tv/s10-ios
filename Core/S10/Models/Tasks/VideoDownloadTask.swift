@@ -26,7 +26,7 @@ internal class VideoDownloadTask : Object {
         return realm.objects(VideoDownloadTask).filter(pred).first
     }
     
-    class func countDownloads(conversationId: RecipientId, realm: Realm = unsafeNewRealm()) -> Int {
+    class func countDownloads(conversationId: ConversationId, realm: Realm = unsafeNewRealm()) -> Int {
         let results = realm.objects(self)
         switch conversationId {
         case .ConnectionId(let connectionId):
@@ -36,7 +36,7 @@ internal class VideoDownloadTask : Object {
         }
     }
     
-    class func countOfDownloads(conversationId: RecipientId) -> SignalProducer<Int, NoError> {
+    class func countOfDownloads(conversationId: ConversationId) -> SignalProducer<Int, NoError> {
         return SignalProducer(value: countDownloads(conversationId))
             .concat(unsafeNewRealm().notifier().map { _ in self.countDownloads(conversationId) })
     }

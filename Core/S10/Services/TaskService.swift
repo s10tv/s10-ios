@@ -32,7 +32,7 @@ public class TaskService {
     
     // MARK: - Uploads
     
-    func uploadVideo(recipient: RecipientId, localVideo: Video) {
+    func uploadVideo(recipient: ConversationId, localVideo: Video) {
         let realm = unsafeNewRealm()
         realm.write {
             let task = VideoUploadTask()
@@ -61,7 +61,7 @@ public class TaskService {
             if queuedTaskIds.contains(task.taskId) {
                 continue
             }
-            let recipient: RecipientId = task.connectionId.length > 0
+            let recipient: ConversationId = task.connectionId.length > 0
                 ? .ConnectionId(task.connectionId)
                 : .UserId(task.userId)
             uploadQueue.addAsyncOperation(

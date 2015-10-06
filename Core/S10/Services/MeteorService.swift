@@ -196,7 +196,7 @@ public class MeteorService : NSObject {
         return meteor.callMethod("startTask", params: [taskId, type, metadata]).future
     }
     
-    func startMessageTask(taskId: String, recipient: RecipientId, info: [String: AnyObject]) -> Future<(videoURL: NSURL, thumbnailURL: NSURL), NSError> {
+    func startMessageTask(taskId: String, recipient: ConversationId, info: [String: AnyObject]) -> Future<(videoURL: NSURL, thumbnailURL: NSURL), NSError> {
         var metadata = info
         switch recipient {
         case .ConnectionId(let connectionId):
