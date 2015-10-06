@@ -22,7 +22,6 @@ public struct ChatsViewModel {
         chatsSub = meteor.subscribe("chats")
         messagesSub = meteor.subscribe("messages")
         connections = Connection
-            .by(NSPredicate(format: "%K != nil", ConnectionKeys.otherUser.rawValue))
             .sorted(by: ConnectionKeys.updatedAt.rawValue, ascending: false)
             .results { ContactConnectionViewModel(connection: $0 as! Connection) }
     }

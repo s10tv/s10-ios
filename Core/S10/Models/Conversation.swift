@@ -25,6 +25,7 @@ enum Conversation {
         case .Connection(let connection):
             return Message.by(MessageKeys.connection.rawValue, value: connection)
         case .User(let user):
+            // BIG TODO: Doesn't include recipient, is a problem
             return Message.by(MessageKeys.sender.rawValue, value: user)
         }
     }

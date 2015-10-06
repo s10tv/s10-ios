@@ -48,6 +48,7 @@ public class ConversationViewModel {
     let _messages: MutableProperty<[MessageViewModel]>
     let _hasUnreadMessage = MutableProperty(false)
     let conversation: Conversation
+    let subscription: MeteorSubscription?
     
     public let playing: MutableProperty<Bool>
     public let recording: MutableProperty<Bool>
@@ -69,6 +70,9 @@ public class ConversationViewModel {
         self.meteor = meteor
         self.taskService = taskService
         self.conversation = conversation
+        self.subscription = conversation.connection?.documentID.map {
+            meteor.subscribe("messages-by-connection", $0)
+        }
         let loadMessages = messageLoader(conversation)
         let showTutorial = UD.showPlayerTutorial.value ?? true
         
