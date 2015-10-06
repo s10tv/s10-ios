@@ -158,7 +158,7 @@ public class ConversationViewModel {
     }
     
     public func sendVideo(video: Video) {
-        let to: Recipient = connection.map { .Connection($0.documentID!) } ?? .User(recipient!.documentID!)
+        let to: RecipientId = connection.map { .ConnectionId($0.documentID!) } ?? .UserId(recipient!.documentID!)
         taskService.uploadVideo(to, localVideo: video)
     }
     

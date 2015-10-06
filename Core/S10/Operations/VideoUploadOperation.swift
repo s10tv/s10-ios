@@ -13,10 +13,15 @@ import RealmSwift
 import SwiftyJSON
 import ReactiveCocoa
 
+internal enum RecipientId {
+    case UserId(String)
+    case ConnectionId(String)
+}
+
 internal class VideoUploadOperation : AsyncOperation {
 
     let taskId: String
-    let recipient: Recipient
+    let recipient: RecipientId
     let localURL: NSURL
     let thumbnailData: NSData
     let width: Int
@@ -26,7 +31,7 @@ internal class VideoUploadOperation : AsyncOperation {
     let azure = AzureClient()
 
     init(taskId: String,
-        recipient: Recipient,
+        recipient: RecipientId,
         localURL: NSURL,
         thumbnailData: NSData,
         width: Int,
