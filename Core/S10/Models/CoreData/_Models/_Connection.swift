@@ -88,7 +88,7 @@ class _Connection: NSManagedObject {
     // func validateLastSender(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged internal
-    var otherUser: User
+    var otherUser: User?
 
     // func validateOtherUser(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 

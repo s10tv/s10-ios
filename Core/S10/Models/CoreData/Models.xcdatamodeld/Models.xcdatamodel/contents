@@ -52,7 +52,7 @@
         <attribute name="unreadCount" attributeType="Integer 16" syncable="YES"/>
         <attribute name="updatedAt" attributeType="Date" syncable="YES"/>
         <relationship name="lastSender" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
-        <relationship name="otherUser" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="connection" inverseEntity="User" syncable="YES"/>
+        <relationship name="otherUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="connection" inverseEntity="User" syncable="YES"/>
     </entity>
     <entity name="Integration" representedClassName="Integration" syncable="YES">
         <attribute name="icon_" attributeType="Transformable" syncable="YES">
