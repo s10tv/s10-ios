@@ -18,10 +18,15 @@ public struct MessageViewModel {
     public let messageId: String
     public let videoDuration: NSTimeInterval
     public let video: Video
+    public var unread: Bool {
+        return message.status == .Sent && !outgoing
+    }
+    public let outgoing: Bool
     
-    init(message: Message, localVideoURL: NSURL) {
+    init(meteor: MeteorService, message: Message, localVideoURL: NSURL) {
         self.message = message
         self.localVideoURL = localVideoURL
+        outgoing = (message.sender.documentID == meteor.userId.value)
         messageId = message.documentID!
         formattedDate = relativeTime(message.createdAt)
         videoDuration = message.video.duration ?? 0

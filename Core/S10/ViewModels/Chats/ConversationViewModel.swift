@@ -9,7 +9,7 @@
 import Foundation
 import ReactiveCocoa
 
-func messageLoader(conversation: Conversation) -> () -> [MessageViewModel] {
+func messageLoader(meteor: MeteorService, conversation: Conversation) -> () -> [MessageViewModel] {
     return {
         // TODO: Move this off the main thread
         assert(NSThread.isMainThread(), "Must be performed on main for now")
@@ -23,7 +23,7 @@ func messageLoader(conversation: Conversation) -> () -> [MessageViewModel] {
         var playableMessages: [MessageViewModel] = []
         for message in messages {
             if let localURL = VideoCache.sharedInstance.getVideo(message.documentID!) {
-                playableMessages.append(MessageViewModel(message: message, localVideoURL: localURL))
+                playableMessages.append(MessageViewModel(meteor: meteor, message: message, localVideoURL: localURL))
             }
         }
         return playableMessages
@@ -46,7 +46,7 @@ public class ConversationViewModel {
     let meteor: MeteorService
     let taskService: TaskService
     let _messages: MutableProperty<[MessageViewModel]>
-    let _hasUnreadMessage = MutableProperty(false)
+    let _hasUnreadMessage = MutableProperty(true)
     let conversation: Conversation
     let subscription: MeteorSubscription?
     
@@ -73,7 +73,7 @@ public class ConversationViewModel {
         self.subscription = conversation.connection?.documentID.map {
             meteor.subscribe("messages-by-connection", $0)
         }
-        let loadMessages = messageLoader(conversation)
+        let loadMessages = messageLoader(meteor, conversation: conversation)
         let showTutorial = UD.showPlayerTutorial.value ?? true
         
         self.showTutorial = showTutorial

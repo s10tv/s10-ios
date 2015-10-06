@@ -108,6 +108,12 @@ class PlayerViewController : UIViewController {
         vm.seekNextVideo()
         Async.main { self.player.play() }
     }
+    
+    @IBAction func autoplayNextUnread() {
+        if vm.seekNextUnreadVideo() {
+            Async.main { self.player.play() }
+        }
+    }
 }
 
 extension PlayerViewController : SCPlayerDelegate {
@@ -119,7 +125,7 @@ extension PlayerViewController : SCPlayerDelegate {
     }
     
     func player(player: SCPlayer, didReachEndForItem item: AVPlayerItem) {
-        advance()
+        autoplayNextUnread()
     }
 }
 

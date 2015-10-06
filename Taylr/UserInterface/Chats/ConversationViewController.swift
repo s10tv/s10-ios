@@ -85,7 +85,7 @@ class ConversationViewController : BaseViewController {
         
         if !vm.showTutorial {
             tutorialContainer.removeFromSuperview()
-            player.advance()
+            player.autoplayNextUnread()
         } else {
             playerEmptyView.hidden = true
         }
@@ -273,7 +273,9 @@ extension ConversationViewController : PlayerDelegate {
         if let message = video as? MessageViewModel {
             Globals.analyticsService.track("Viewed Message", properties:[
                 "messageId": message.messageId])
-            vm.openMessage(message)
+            if message.unread {
+                vm.openMessage(message)
+            }
         }
     }
 }

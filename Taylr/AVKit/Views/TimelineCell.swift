@@ -14,11 +14,14 @@ class TimelineCell : UICollectionViewCell, BindableCell {
     typealias ViewModel = PlayableVideo
     
     @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var badgeView: UIView!
     
     var cd: CompositeDisposable!
+    
     func bind(vm: PlayableVideo) {
         cd = CompositeDisposable()
         imageView.sd_image.value = vm.thumbnail
+        badgeView.hidden = !vm.unread
     }
     
     override func prepareForReuse() {

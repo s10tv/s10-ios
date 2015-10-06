@@ -197,16 +197,32 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Xw-h1-pHh">
                                                     <rect key="frame" x="0.0" y="0.0" width="38" height="67"/>
                                                 </imageView>
+                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FCl-vY-HuQ" userLabel="Unread Badge">
+                                                    <rect key="frame" x="23" y="5" width="10" height="10"/>
+                                                    <color key="backgroundColor" red="0.92029339075088501" green="0.0" blue="0.065614230930805206" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="10" id="P6N-b1-mdn"/>
+                                                        <constraint firstAttribute="height" constant="10" id="UDz-sn-QQE"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                         <constraints>
                                             <constraint firstItem="2Xw-h1-pHh" firstAttribute="leading" secondItem="93Y-3b-JRU" secondAttribute="leading" id="0f9-eY-SIK"/>
                                             <constraint firstItem="2Xw-h1-pHh" firstAttribute="top" secondItem="93Y-3b-JRU" secondAttribute="top" id="EN7-9G-HMc"/>
+                                            <constraint firstItem="FCl-vY-HuQ" firstAttribute="top" secondItem="2Xw-h1-pHh" secondAttribute="top" constant="5" id="Oo5-FE-lhu"/>
                                             <constraint firstAttribute="trailing" secondItem="2Xw-h1-pHh" secondAttribute="trailing" id="YS5-WQ-OJe"/>
+                                            <constraint firstItem="FCl-vY-HuQ" firstAttribute="trailing" secondItem="2Xw-h1-pHh" secondAttribute="trailing" constant="-5" id="Yn5-Bc-zbw"/>
                                             <constraint firstAttribute="bottom" secondItem="2Xw-h1-pHh" secondAttribute="bottom" id="zEg-nl-lem"/>
                                         </constraints>
                                         <connections>
+                                            <outlet property="badgeView" destination="FCl-vY-HuQ" id="A5j-a5-oke"/>
                                             <outlet property="imageView" destination="2Xw-h1-pHh" id="fWJ-AO-fjg"/>
                                         </connections>
                                     </collectionViewCell>

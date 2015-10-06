@@ -15,6 +15,7 @@ protocol PlayableVideo {
     var url: NSURL { get }
     var duration: NSTimeInterval { get }
     var thumbnail: Image? { get }
+    var unread: Bool { get }
 }
 
 protocol PlayerDelegate : class {
@@ -109,6 +110,16 @@ class PlayerViewModel {
         }.map { playlist.value[$0] }
     }
     
+    func nextUnreadVideo() -> PlayableVideo? {
+        if playlist.value.count > 0 {
+            let start = currentVideoIndex() ?? 0
+            for video in playlist.value[start..<playlist.value.count] {
+                if video.unread { return video }
+            }
+        }
+        return nil
+    }
+    
     func seekPrevVideo() -> Bool {
         return seekVideo(prevVideo())
     }
@@ -121,6 +132,14 @@ class PlayerViewModel {
         let played = seekVideo(nextVideo())
         if !played {
             finishedAtIndex = playlist.value.count - 1
+            delegate?.playerDidFinishPlaylist(self)
+        }
+        return played
+    }
+    
+    func seekNextUnreadVideo() -> Bool {
+        let played = seekVideo(nextUnreadVideo())
+        if !played {
             delegate?.playerDidFinishPlaylist(self)
         }
         return played
