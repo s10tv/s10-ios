@@ -41,7 +41,7 @@ public class TaskService {
             case .ConnectionId(let connectionId):
                 task.connectionId = connectionId
             case .UserId(let userId):
-                task.userId = userId
+                task.recipientId = userId
             }
             task.localVideoUrl = localVideo.url.absoluteString
             task.duration = localVideo.duration ?? 0
@@ -63,7 +63,7 @@ public class TaskService {
             }
             let recipient: ConversationId = task.connectionId.length > 0
                 ? .ConnectionId(task.connectionId)
-                : .UserId(task.userId)
+                : .UserId(task.recipientId)
             uploadQueue.addAsyncOperation(
                 VideoUploadOperation(
                     taskId: task.taskId,

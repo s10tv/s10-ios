@@ -12,7 +12,7 @@ import RealmSwift
 
 internal class VideoUploadTask : Object {
     dynamic var taskId = ""
-    dynamic var userId = ""
+    dynamic var recipientId = ""
     dynamic var connectionId = ""
     dynamic var localVideoUrl = ""
     dynamic var duration: NSTimeInterval = 0
@@ -43,7 +43,7 @@ internal class VideoUploadTask : Object {
         case .ConnectionId(let connectionId):
             return results.filter("connectionId = %@", connectionId).count
         case .UserId(let userId):
-            return results.filter("userId = %@", userId).count
+            return results.filter("recipientId = %@", userId).count
         }
     }
     
