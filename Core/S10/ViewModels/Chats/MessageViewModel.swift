@@ -22,6 +22,8 @@ public struct MessageViewModel {
         return message.status == .Sent && !outgoing
     }
     public let outgoing: Bool
+    public let senderInfo: String
+    public let messageInfo: String
     
     init(meteor: MeteorService, message: Message, localVideoURL: NSURL) {
         self.message = message
@@ -31,6 +33,9 @@ public struct MessageViewModel {
         formattedDate = relativeTime(message.createdAt)
         videoDuration = message.video.duration ?? 0
         video = message.video
+        senderInfo = message.sender.pDisplayName().value
+        let status = (message.status == .Sent) ? "Sent" : "Opened"
+        messageInfo = "\(formattedDate.value) - \(status)"
     }
 }
 

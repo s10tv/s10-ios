@@ -196,6 +196,7 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="2Xw-h1-pHh">
                                                     <rect key="frame" x="0.0" y="0.0" width="38" height="67"/>
+                                                    <gestureRecognizers/>
                                                 </imageView>
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FCl-vY-HuQ" userLabel="Unread Badge">
                                                     <rect key="frame" x="23" y="5" width="10" height="10"/>
