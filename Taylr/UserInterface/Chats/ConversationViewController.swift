@@ -13,13 +13,6 @@ import Async
 import SwipeView
 import Core
 
-extension MessageViewModel : PlayableVideo {
-    var uniqueId: String { return messageId }
-    var url: NSURL { return localVideoURL }
-    var duration: NSTimeInterval { return videoDuration }
-    var thumbnail: Image? { return video.thumbnail }
-}
-
 class ConversationViewController : BaseViewController {
 
     @IBOutlet weak var avatarView: UIImageView!
@@ -56,7 +49,7 @@ class ConversationViewController : BaseViewController {
         player = avkit.instantiateViewControllerWithIdentifier("Player") as! PlayerViewController
         player.vm.delegate = self
         player.vm.playlist <~ (vm.messages.producer.map {
-            $0.map { (msg: MessageViewModel) in msg as PlayableVideo }
+            $0.map { (msg: MessageViewModel) in msg as MessageViewModel }
         })
         vm.playing <~ player.vm.isPlaying
         
@@ -264,18 +257,16 @@ extension ConversationViewController : PlayerDelegate {
         showPage(.Producer, animated: true)
     }
     
-    func player(player: PlayerViewModel, willPlayVideo video: PlayableVideo) {
-        vm.currentMessage.value = video as? MessageViewModel
+    func player(player: PlayerViewModel, willPlayVideo video: MessageViewModel) {
+        vm.currentMessage.value = video
     }
     
-    func player(player: PlayerViewModel, didPlayVideo video: PlayableVideo) {
+    func player(player: PlayerViewModel, didPlayVideo video: MessageViewModel) {
         vm.currentMessage.value = nil
-        if let message = video as? MessageViewModel {
-            Globals.analyticsService.track("Viewed Message", properties:[
-                "messageId": message.messageId])
-            if message.unread {
-                vm.openMessage(message)
-            }
+        Globals.analyticsService.track("Viewed Message", properties:[
+            "messageId": video.messageId])
+        if video.unread {
+            vm.openMessage(video)
         }
     }
 }

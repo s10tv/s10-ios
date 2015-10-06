@@ -11,14 +11,14 @@ import ReactiveCocoa
 import Core
 
 class TimelineCell : UICollectionViewCell, BindableCell {
-    typealias ViewModel = PlayableVideo
+    typealias ViewModel = MessageViewModel
     
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var badgeView: UIView!
     
     var cd: CompositeDisposable!
     
-    func bind(vm: PlayableVideo) {
+    func bind(vm: MessageViewModel) {
         cd = CompositeDisposable()
         imageView.sd_image.value = vm.thumbnail
         badgeView.hidden = !vm.unread

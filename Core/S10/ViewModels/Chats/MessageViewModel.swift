@@ -34,6 +34,14 @@ public struct MessageViewModel {
     }
 }
 
+extension MessageViewModel {
+    public var uniqueId: String { return messageId }
+    public var url: NSURL { return localVideoURL }
+    public var duration: NSTimeInterval { return videoDuration }
+    public var thumbnail: Image? { return video.thumbnail }
+}
+
+
 extension MessageViewModel : CustomStringConvertible {
     public var description: String {
         return "MessageViewModel[\(message.documentID!)]"

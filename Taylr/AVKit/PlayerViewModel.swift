@@ -10,21 +10,13 @@ import Foundation
 import ReactiveCocoa
 import Core
 
-protocol PlayableVideo {
-    var uniqueId: String { get }
-    var url: NSURL { get }
-    var duration: NSTimeInterval { get }
-    var thumbnail: Image? { get }
-    var unread: Bool { get }
-}
-
 protocol PlayerDelegate : class {
     func playerDidFinishPlaylist(player: PlayerViewModel)
-    func player(player: PlayerViewModel, willPlayVideo video: PlayableVideo)
-    func player(player: PlayerViewModel, didPlayVideo video: PlayableVideo)
+    func player(player: PlayerViewModel, willPlayVideo video: MessageViewModel)
+    func player(player: PlayerViewModel, didPlayVideo video: MessageViewModel)
 }
 
-private func findVideo(video: PlayableVideo?, inPlaylist playlist: [PlayableVideo]) -> Int? {
+private func findVideo(video: MessageViewModel?, inPlaylist playlist: [MessageViewModel]) -> Int? {
     for (index, v) in playlist.enumerate() {
         if v.uniqueId == video?.uniqueId {
             return index
@@ -39,15 +31,15 @@ private func findVideo(video: PlayableVideo?, inPlaylist playlist: [PlayableVide
 // approach and when
 // http://www.objc.io/issues/16-swift/swift-classes-vs-structs/#the-advantages-of-value-types
 class PlayerViewModel {
-    private let currentVideo = MutableProperty<PlayableVideo?>(nil)
+    private let currentVideo = MutableProperty<MessageViewModel?>(nil)
     private let currentTime = MutableProperty<NSTimeInterval>(0)
     private let _isPlaying = MutableProperty(false)
     private let unfinishedVideoDuration: PropertyOf<NSTimeInterval>
     weak var delegate: PlayerDelegate?
     
-    let videos: ArrayProperty<PlayableVideo>
+    let videos: ArrayProperty<MessageViewModel>
     
-    let playlist = MutableProperty<[PlayableVideo]>([])
+    let playlist = MutableProperty<[MessageViewModel]>([])
     let videoURL: PropertyOf<NSURL?>
     let isPlaying: PropertyOf<Bool>
     let currentVideoProgress: PropertyOf<Float>
@@ -92,7 +84,7 @@ class PlayerViewModel {
         }
     }
     
-    func prevVideo() -> PlayableVideo? {
+    func prevVideo() -> MessageViewModel? {
         if currentVideo.value == nil {
             return playlist.value.last
         }
@@ -101,7 +93,7 @@ class PlayerViewModel {
         }.map { playlist.value[$0] }
     }
     
-    func nextVideo() -> PlayableVideo? {
+    func nextVideo() -> MessageViewModel? {
         if currentVideo.value == nil {
             return playlist.value.first
         }
@@ -110,7 +102,7 @@ class PlayerViewModel {
         }.map { playlist.value[$0] }
     }
     
-    func nextUnreadVideo() -> PlayableVideo? {
+    func nextUnreadVideo() -> MessageViewModel? {
         if playlist.value.count > 0 {
             let start = currentVideoIndex() ?? 0
             for video in playlist.value[start..<playlist.value.count] {
@@ -157,7 +149,7 @@ class PlayerViewModel {
     
     // MARK: - 
     
-    private func seekVideo(video: PlayableVideo?) -> Bool {
+    private func seekVideo(video: MessageViewModel?) -> Bool {
         Log.debug("Will seek video with id \(video?.uniqueId) url: \(video?.url)")
         finishedAtIndex = nil
         if let v = currentVideo.value { delegate?.player(self, didPlayVideo: v) }
