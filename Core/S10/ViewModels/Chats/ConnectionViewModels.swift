@@ -33,10 +33,11 @@ public struct ContactConnectionViewModel : ConnectionViewModel {
     
     init(connection: Connection) {
         self.connection = connection
+        let conversation = Conversation.Connection(connection)
         avatar = connection.pThumbnail()
         displayName = connection.pTitle()
-        statusMessage = connection.otherUser.pConversationStatus()
-        busy = connection.otherUser.pConversationBusy()
+        statusMessage = conversation.pStatus()
+        busy = conversation.pBusy()
         badgeText = ProducerProperty(combineLatest(
             busy.producer,
             connection.dyn(.unreadCount).force(Int).producer

@@ -8,19 +8,13 @@
 
 import Foundation
 import ReactiveCocoa
-import RealmSwift
 
-func messageLoader(sender: User?, connection: Connection?) -> () -> [MessageViewModel] {
+func messageLoader(conversation: Conversation) -> () -> [MessageViewModel] {
     return {
         // TODO: Move this off the main thread
         assert(NSThread.isMainThread(), "Must be performed on main for now")
-        let query = connection.map {
-            Message.by(MessageKeys.connection.rawValue, value: $0)
-        } ?? sender.map {
-            Message.by(MessageKeys.sender.rawValue, value: $0)
-        } ?? Message.all()
         
-        let messages = query
+        let messages = conversation.messagesFinder
             // MASSIVE HACK ALERT: Ascending should be true but empirically
             // ascending = false seems to actually give us the correct result. FML.
             .sorted(by: MessageKeys.createdAt.rawValue, ascending: false)
@@ -53,11 +47,7 @@ public class ConversationViewModel {
     let taskService: TaskService
     let _messages: MutableProperty<[MessageViewModel]>
     let _hasUnreadMessage = MutableProperty(false)
-    let recipient: User?
-    let currentUser: PropertyOf<User?>
-    let currentMessageDate: PropertyOf<String?>
-    let currentConversationStatus: PropertyOf<String?>
-    let connection: Connection?
+    let conversation: Conversation
     
     public let playing: MutableProperty<Bool>
     public let recording: MutableProperty<Bool>
@@ -66,27 +56,23 @@ public class ConversationViewModel {
     public let state: PropertyOf<State>
     public let avatar: PropertyOf<Image?>
     public let cover: PropertyOf<Image?>
-    public let firstName: PropertyOf<String>
     public let displayName: PropertyOf<String>
-    public let displayStatus: PropertyOf<String>
-    public let busy: PropertyOf<Bool>
+    public let displayStatus: ProducerProperty<String>
+    public let busy: ProducerProperty<Bool>
     public let messages: PropertyOf<[MessageViewModel]>
     public let hideNewMessagesHint: PropertyOf<Bool>
     public let showTutorial: Bool
-    public let exitAtEnd: Bool
     
     public let currentMessage: MutableProperty<MessageViewModel?>
   
-    init(meteor: MeteorService, taskService: TaskService, recipient: User?, connection: Connection? = nil) {
+    init(meteor: MeteorService, taskService: TaskService, conversation: Conversation) {
         self.meteor = meteor
         self.taskService = taskService
-        self.recipient = recipient
-        self.connection = connection
-        let loadMessages = messageLoader(recipient, connection: connection)
+        self.conversation = conversation
+        let loadMessages = messageLoader(conversation)
         let showTutorial = UD.showPlayerTutorial.value ?? true
         
         self.showTutorial = showTutorial
-        exitAtEnd = recipient == nil
         
         _messages = MutableProperty(loadMessages())
         messages = PropertyOf(_messages)
@@ -105,44 +91,23 @@ public class ConversationViewModel {
         })
         
         currentMessage = MutableProperty(nil)
-        currentUser = PropertyOf(nil, combineLatest(
-            page.producer,
-            currentMessage.producer
-        ).map {
-            switch $0 {
-            case .Player: return $1?.message.sender ?? recipient
-            case .Producer: return recipient
-            }
-        })
-        avatar = currentUser
-           .flatMap { $0.pAvatar() }
-        cover = currentUser
-           .flatMap { $0.pCover() }
-        firstName = currentUser
-           .flatMap(nilValue: "") { $0.pFirstName() }
-        displayName = currentUser
-           .flatMap(nilValue: "") { $0.pDisplayName() }
-        busy = currentUser
-           .flatMap(nilValue: false) { $0.pConversationBusy() }
+        
+        displayStatus = conversation.pStatus()
+        busy = conversation.pBusy()
+        
+        switch conversation {
+        case .Connection(let connection):
+            avatar = connection.pThumbnail()
+            displayName = connection.pTitle()
+            cover = connection.otherUser.pCover()
+        case .User(let user):
+            avatar = user.pAvatar()
+            displayName = PropertyOf(user.pDisplayName())
+            cover = user.pCover()
+        }
+        
         // TODO: Properly implement me taking into account both connection case as well as user case
         hideNewMessagesHint = PropertyOf(_hasUnreadMessage)
-        
-        currentMessageDate = currentMessage
-           .flatMap { $0.formattedDate.map { Optional($0) } }
-        currentConversationStatus = currentUser
-           .flatMap { $0.pConversationStatus().map { Optional($0) } }
-        displayStatus = PropertyOf("", combineLatest(
-            state.producer,
-            currentMessageDate.producer,
-            currentConversationStatus.producer
-        ).map {
-            switch $0 {
-            case .PlaybackStopped, .PlaybackPlaying:
-                return $1 ?? $2 ?? ""
-            case .RecordIdle, .RecordCapturing:
-                return $2 ?? ""
-            }
-        })
         
         // NOTE: ManagedObjectContext changes are ignored
         // So if video is removed nothing will happen
@@ -158,19 +123,21 @@ public class ConversationViewModel {
     }
     
     public func sendVideo(video: Video) {
-        let to: RecipientId = connection.map { .ConnectionId($0.documentID!) } ?? .UserId(recipient!.documentID!)
-        taskService.uploadVideo(to, localVideo: video)
+        taskService.uploadVideo(conversation.id, localVideo: video)
     }
     
     public func reportUser(reason: String) {
-        if let u = currentUser.value { meteor.reportUser(u, reason: reason) }
+        if let u = conversation.user { meteor.reportUser(u, reason: reason) }
     }
     
     public func blockUser() {
-        if let u = currentUser.value { meteor.blockUser(u) }
+        if let u = conversation.user { meteor.blockUser(u) }
     }
     
-    public func profileVM() -> ProfileViewModel {
-        return ProfileViewModel(meteor: meteor, taskService: taskService, user: currentUser.value!)
+    public func profileVM() -> ProfileViewModel? {
+        if let u = conversation.user {
+            return ProfileViewModel(meteor: meteor, taskService: taskService, user: u)
+        }
+        return nil
     }
 }

@@ -77,27 +77,6 @@ extension User {
     func pConnectedProfiles() -> PropertyOf<[ConnectedProfile]> {
         return dyn(.connectedProfiles_).map { Mapper<ConnectedProfile>().mapArray($0) ?? [] }
     }
-    
-    func pConversationBusy() -> ProducerProperty<Bool> {
-        return ProducerProperty(combineLatest(
-            VideoUploadTask.countOfUploads(documentID!),
-            VideoDownloadTask.countOfDownloads(documentID!)
-        ).map { uploads, downloads in
-            uploads > 0 || downloads > 0
-        })
-    }
-    
-    func pConversationStatus() -> ProducerProperty<String> {
-        return ProducerProperty(combineLatest(
-            VideoUploadTask.countOfUploads(documentID!),
-            VideoDownloadTask.countOfDownloads(documentID!),
-            CurrentTime.producer.map { [weak self] _ in self?.serverStatus() }
-        ).map {
-            if $0 > 0 { return "Sending..." }
-            if $1 > 0 { return "Receiving..." }
-            return $2 ?? ""
-        })
-    }
 }
 
 extension Connection {

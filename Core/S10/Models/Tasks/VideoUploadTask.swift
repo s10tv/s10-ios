@@ -37,12 +37,18 @@ internal class VideoUploadTask : Object {
         return realm.objects(VideoUploadTask).filter(pred).first
     }
     
-    class func countUploads(userId: String, realm: Realm = unsafeNewRealm()) -> Int {
-        return realm.objects(self).filter("userId = %@", userId).count
+    class func countUploads(conversationId: RecipientId, realm: Realm = unsafeNewRealm()) -> Int {
+        let results = realm.objects(self)
+        switch conversationId {
+        case .ConnectionId(let connectionId):
+            return results.filter("connectionId = %@", connectionId).count
+        case .UserId(let userId):
+            return results.filter("userId = %@", userId).count
+        }
     }
     
-    class func countOfUploads(userId: String) -> SignalProducer<Int, NoError> {
-        return SignalProducer(value: countUploads(userId))
-            .concat(unsafeNewRealm().notifier().map { _ in self.countUploads(userId) })
+    class func countOfUploads(conversationId: RecipientId) -> SignalProducer<Int, NoError> {
+        return SignalProducer(value: countUploads(conversationId))
+            .concat(unsafeNewRealm().notifier().map { _ in self.countUploads(conversationId) })
     }
 }

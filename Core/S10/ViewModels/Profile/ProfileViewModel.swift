@@ -70,7 +70,7 @@ public struct ProfileViewModel {
     }
     
     public func conversationVM() -> ConversationViewModel {
-        return ConversationViewModel(meteor: meteor, taskService: taskService, recipient: user)
+        return ConversationViewModel(meteor: meteor, taskService: taskService, conversation: .User(user))
     }
 }
 

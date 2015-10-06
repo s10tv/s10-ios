@@ -155,10 +155,10 @@ class ConversationViewController : BaseViewController {
         sheet.addAction(LS(.viewProfile)) { _ in
             self.performSegue(.ConversationToProfile)
         }
-        sheet.addAction(LS(.moreSheetBlock, vm.firstName.value), style: .Destructive) { _ in
+        sheet.addAction(LS(.moreSheetBlock, vm.displayName.value), style: .Destructive) { _ in
             self.blockUser(self)
         }
-        sheet.addAction(LS(.moreSheetReport, vm.firstName.value), style: .Destructive) { _ in
+        sheet.addAction(LS(.moreSheetReport, vm.displayName.value), style: .Destructive) { _ in
             self.reportUser(self)
         }
         sheet.addAction(LS(.moreSheetCancel), style: .Cancel)
@@ -168,13 +168,13 @@ class ConversationViewController : BaseViewController {
     // TODO: FIX CODE DUPLICATION WITH ProfileViewController
     @IBAction func blockUser(sender: AnyObject) {
         let alert = UIAlertController(title: "Block User",
-            message: "Are you sure you want to block \(vm.firstName.value)?",
+            message: "Are you sure you want to block \(vm.displayName.value)?",
             preferredStyle: .Alert)
         alert.addAction("Cancel", style: .Cancel)
         alert.addAction("Block", style: .Destructive) { _ in
             self.vm.blockUser()
 
-            let dialog = UIAlertController(title: "Block User", message: "\(self.vm.firstName.value) will no longer be able to contact you in the future", preferredStyle: .Alert)
+            let dialog = UIAlertController(title: "Block User", message: "\(self.vm.displayName.value) will no longer be able to contact you in the future", preferredStyle: .Alert)
             dialog.addAction("Ok", style: .Default)
             self.presentViewController(dialog)
 
@@ -261,11 +261,7 @@ extension ConversationViewController : ProducerDelegate {
 
 extension ConversationViewController : PlayerDelegate {
     func playerDidFinishPlaylist(player: PlayerViewModel) {
-        if vm.exitAtEnd {
-            navigationController?.popViewControllerAnimated(true)
-        } else {
-            showPage(.Producer, animated: true)
-        }
+        showPage(.Producer, animated: true)
     }
     
     func player(player: PlayerViewModel, willPlayVideo video: PlayableVideo) {
