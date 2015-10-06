@@ -16,37 +16,24 @@ internal class VideoDownloadOperation : AsyncOperation {
     let alamo = Manager(sessionType: .Default)
     let tempURL = NSURL(fileURLWithPath: NSTemporaryDirectory()).URLByAppendingPathComponent(NSUUID().UUIDString)
     let videoId: String
-    let senderId: String
     let remoteURL: NSURL
     let resumeData: NSData? // TODO: Make internal after Xcode 7
     var request: Request?
     
-    init(videoId: String, senderId: String, remoteURL: NSURL) {
+    init(videoId: String, remoteURL: NSURL) {
         self.videoId = videoId
-        self.senderId = senderId
         self.remoteURL = remoteURL
         resumeData = nil
     }
     
     init(task: VideoDownloadTask) {
         videoId = task.videoId
-        senderId = task.senderId
         remoteURL = NSURL(string: task.remoteUrl)!
         resumeData = task.resumeData.length > 0 ? task.resumeData : nil
     }
     
     override func run() {
         Log.info("Start VideoDownload id=\(videoId)")
-        // Persist record
-        let realm = unsafeNewRealm()
-        realm.write {
-            let task = VideoDownloadTask()
-            task.videoId = self.videoId
-            task.senderId = self.senderId
-            task.remoteUrl = self.remoteURL.absoluteString
-            realm.add(task, update: true)
-        }
-        
         // Make request
         let dest: (NSURL, NSURLResponse) -> NSURL = { _, _ in
             return self.tempURL

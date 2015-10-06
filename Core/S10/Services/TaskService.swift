@@ -86,6 +86,7 @@ public class TaskService {
     func downloadVideo(message: Message) {
         if let videoId = message.documentID,
             let senderId = message.sender.documentID,
+            let connectionId = message.connection.documentID,
             let remoteUrl = message.video.url {
             if VideoCache.sharedInstance.hasVideo(videoId) {
                 return
@@ -95,6 +96,7 @@ public class TaskService {
                 let task = VideoDownloadTask()
                 task.videoId = videoId
                 task.senderId = senderId
+                task.connectionId = connectionId
                 task.remoteUrl = remoteUrl.absoluteString
                 realm.add(task, update: true)
             }

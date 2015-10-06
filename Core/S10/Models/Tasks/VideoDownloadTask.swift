@@ -13,8 +13,10 @@ import RealmSwift
 internal class VideoDownloadTask : Object {
     dynamic var videoId = ""
     dynamic var senderId = ""
+    dynamic var connectionId = ""
     dynamic var remoteUrl = ""
     dynamic var resumeData = NSData()
+    
     // Should be NSData?, workaround for issue https://github.com/realm/realm-cocoa/issues/628
     
     override static func primaryKey() -> String? {
