@@ -80,11 +80,15 @@ extension User {
 }
 
 extension Connection {
+    func pTitle() -> PropertyOf<String> {
+        return dyn(.title).optional(String).map { $0 ?? "" }
+    }
+    
     func pThumbnail() -> PropertyOf<Image?> {
         return dyn(.thumbnail_).map(Mapper<Image>().map)
     }
     
-    func pTitle() -> PropertyOf<String> {
-        return dyn(.title).optional(String).map { $0 ?? "" }
+    func pCover() -> PropertyOf<Image?> {
+        return dyn(.cover_).map(Mapper<Image>().map)
     }
 }

@@ -15,6 +15,10 @@ internal class Connection: _Connection {
         return Image.mapper.map(thumbnail_)
     }
     
+    var cover: Image? {
+        return Image.mapper.map(cover_)
+    }
+    
     var lastMessageStatus: Message.Status? {
         return lastMessageStatus_.flatMap { Message.Status(rawValue: $0) }
     }

@@ -99,7 +99,7 @@ public class ConversationViewModel {
         case .Connection(let connection):
             avatar = connection.pThumbnail()
             displayName = connection.pTitle()
-            cover = connection.otherUser.pCover()
+            cover = connection.pCover()
         case .User(let user):
             avatar = user.pAvatar()
             displayName = PropertyOf(user.pDisplayName())
