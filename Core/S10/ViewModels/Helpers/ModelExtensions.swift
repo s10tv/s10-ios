@@ -99,3 +99,13 @@ extension User {
         })
     }
 }
+
+extension Connection {
+    func pThumbnail() -> PropertyOf<Image?> {
+        return dyn(.thumbnail_).map(Mapper<Image>().map)
+    }
+    
+    func pTitle() -> PropertyOf<String> {
+        return dyn(.title).optional(String).map { $0 ?? "" }
+    }
+}

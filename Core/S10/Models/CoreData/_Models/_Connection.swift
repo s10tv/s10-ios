@@ -5,9 +5,11 @@ import CoreData
 
 internal enum ConnectionKeys: String, CustomStringConvertible {
 
-    case cold = "cold"
-
     case lastMessageStatus_ = "lastMessageStatus_"
+
+    case thumbnail_ = "thumbnail_"
+
+    case title = "title"
 
     case unreadCount = "unreadCount"
 
@@ -47,14 +49,19 @@ class _Connection: NSManagedObject {
     // MARK: - Properties
 
     @NSManaged internal
-    var cold: NSNumber?
-
-    // func validateCold(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
-
-    @NSManaged internal
     var lastMessageStatus_: String?
 
     // func validateLastMessageStatus_(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged internal
+    var thumbnail_: AnyObject
+
+    // func validateThumbnail_(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
+
+    @NSManaged internal
+    var title: String
+
+    // func validateTitle(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     @NSManaged internal
     var unreadCount: NSNumber?

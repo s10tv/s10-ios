@@ -33,12 +33,17 @@
         <relationship name="user" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
     </entity>
     <entity name="Connection" representedClassName="Connection" syncable="YES">
-        <attribute name="cold" attributeType="Boolean" syncable="YES"/>
         <attribute name="lastMessageStatus_" optional="YES" attributeType="String" syncable="YES">
             <userInfo>
                 <entry key="fieldName" value="lastMessageStatus"/>
             </userInfo>
         </attribute>
+        <attribute name="thumbnail_" attributeType="Transformable" syncable="YES">
+            <userInfo>
+                <entry key="fieldName" value="thumbnail"/>
+            </userInfo>
+        </attribute>
+        <attribute name="title" attributeType="String" syncable="YES"/>
         <attribute name="unreadCount" attributeType="Integer 16" syncable="YES"/>
         <attribute name="updatedAt" attributeType="Date" syncable="YES"/>
         <relationship name="lastSender" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
@@ -118,7 +123,7 @@
     <elements>
         <element name="Activity" positionX="790" positionY="72" width="128" height="165"/>
         <element name="Candidate" positionX="-612" positionY="-108" width="128" height="105"/>
-        <element name="Connection" positionX="-819" positionY="9" width="128" height="135"/>
+        <element name="Connection" positionX="-819" positionY="9" width="128" height="150"/>
         <element name="Integration" positionX="-612" positionY="-144" width="128" height="135"/>
         <element name="Message" positionX="-207" positionY="27" width="128" height="135"/>
         <element name="User" positionX="268" positionY="-261" width="128" height="240"/>

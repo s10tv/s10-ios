@@ -6,10 +6,15 @@
 //  Copyright (c) 2015 S10 Inc. All rights reserved.
 //
 
+import ObjectMapper
 
 @objc(Connection)
 internal class Connection: _Connection {
-
+    
+    var thumbnail: Image? {
+        return Image.mapper.map(thumbnail_)
+    }
+    
     var lastMessageStatus: Message.Status? {
         return lastMessageStatus_.flatMap { Message.Status(rawValue: $0) }
     }

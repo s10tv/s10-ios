@@ -17,7 +17,7 @@ extension Connection {
 
 public protocol ConnectionViewModel {
     var avatar: PropertyOf<Image?> { get }
-    var displayName: ProducerProperty<String> { get }
+    var displayName: PropertyOf<String> { get }
     var busy: ProducerProperty<Bool> { get }
 }
 
@@ -25,7 +25,7 @@ public struct ContactConnectionViewModel : ConnectionViewModel {
     let connection: Connection
     
     public let avatar: PropertyOf<Image?>
-    public let displayName: ProducerProperty<String>
+    public let displayName: PropertyOf<String>
     public let statusMessage: ProducerProperty<String>
     public let busy: ProducerProperty<Bool>
     public let badgeText: ProducerProperty<String>
@@ -33,9 +33,8 @@ public struct ContactConnectionViewModel : ConnectionViewModel {
     
     init(connection: Connection) {
         self.connection = connection
-        let user = connection.otherUser
-        avatar = user.pAvatar()
-        displayName = user.pDisplayName()
+        avatar = connection.pThumbnail()
+        displayName = connection.pTitle()
         statusMessage = connection.otherUser.pConversationStatus()
         busy = connection.otherUser.pConversationBusy()
         badgeText = ProducerProperty(combineLatest(
