@@ -251,7 +251,7 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottomMargin" secondItem="oIa-WJ-ehI" secondAttribute="bottom" id="0xz-IL-f3p"/>
+                            <constraint firstAttribute="bottom" secondItem="oIa-WJ-ehI" secondAttribute="bottom" id="0xz-IL-f3p"/>
                             <constraint firstItem="Lep-Xz-fsY" firstAttribute="top" secondItem="Mky-an-EVL" secondAttribute="top" id="3gv-1Z-Z5O"/>
                             <constraint firstItem="RFF-jQ-Kok" firstAttribute="top" secondItem="Mky-an-EVL" secondAttribute="top" id="5Zy-gS-CAM"/>
                             <constraint firstAttribute="trailing" secondItem="Lep-Xz-fsY" secondAttribute="trailing" id="8aL-rX-aJy"/>
