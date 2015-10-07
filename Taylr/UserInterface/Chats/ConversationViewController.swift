@@ -254,7 +254,7 @@ extension ConversationViewController : ProducerDelegate {
 
 extension ConversationViewController : PlayerDelegate {
     func playerDidFinishPlaylist(player: PlayerViewModel) {
-        showPage(.Producer, animated: true)
+//        showPage(.Producer, animated: true)
     }
     
     func player(player: PlayerViewModel, willPlayVideo video: MessageViewModel) {

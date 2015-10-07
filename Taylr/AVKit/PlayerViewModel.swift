@@ -42,6 +42,7 @@ class PlayerViewModel {
     let playlist = MutableProperty<[MessageViewModel]>([])
     let videoURL: PropertyOf<NSURL?>
     let isPlaying: PropertyOf<Bool>
+    let hideOverlay: PropertyOf<Bool>
     let currentVideoProgress: PropertyOf<Float>
     let totalDurationLeft: PropertyOf<String>
     let hideView: PropertyOf<Bool>
@@ -73,7 +74,14 @@ class PlayerViewModel {
             return "\(secondsLeft)"
         })
         videos = ArrayProperty([])
-        hideView = playlist.map { $0.count == 0 }
+        hideView = currentVideo.map { $0 == nil }
+        hideOverlay = PropertyOf(true, combineLatest(
+            isPlaying.producer,
+            hideView.producer
+        ).map { playing, hide in
+            return playing || hide
+        })
+        
         // If we are at the end and new video arrives we'll automatically try to play it
         playlist.producer.startWithNext { [weak self] playlist in
             self?.videos.array = playlist

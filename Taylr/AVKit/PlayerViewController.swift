@@ -35,8 +35,9 @@ class PlayerViewController : UIViewController {
             self?.vm.updateIsPlaying(self?.player.isPlaying ?? false)
         }
 
-        view.rac_hidden <~ vm.hideView
-        overlay.rac_hidden <~ vm.isPlaying
+        playerView.rac_hidden <~ vm.hideView
+        durationTimer.rac_hidden <~ vm.hideView
+        overlay.rac_hidden <~ vm.hideOverlay
         durationTimer.label.rac_text <~ vm.totalDurationLeft
         vm.videoURL.producer.startWithNext { [weak self] url in
             let videoURL = url
