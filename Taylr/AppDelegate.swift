@@ -57,7 +57,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         
         // Migrate db if needed
         Realm.Configuration.defaultConfiguration = Realm.Configuration(
-            schemaVersion: 5,
+            schemaVersion: 6,
             migrationBlock: { migration, oldSchemaVersion in
                 // Automatic migration
             }
