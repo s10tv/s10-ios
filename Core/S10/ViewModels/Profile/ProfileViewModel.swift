@@ -34,13 +34,13 @@ public struct ProfileViewModel {
     public let activities: FetchedResultsArray<ActivityViewModel>
     public let showMoreOptions: Bool
     public let allowMessage: Bool
-    public let timeRemaining: PropertyOf<String>
+    public let timeRemaining: ProducerProperty<String>
     
-    init(meteor: MeteorService, taskService: TaskService, user: User, timeRemaining: PropertyOf<String>? = nil) {
+    init(meteor: MeteorService, taskService: TaskService, user: User, timeRemaining: ProducerProperty<String>? = nil) {
         self.meteor = meteor
         self.taskService = taskService
         self.user = user
-        self.timeRemaining = timeRemaining ?? PropertyOf("")
+        self.timeRemaining = timeRemaining ?? ProducerProperty(SignalProducer(value: ""))
         allowMessage = timeRemaining != nil
         showMoreOptions = meteor.user.value != user
         subscription = meteor.subscribe("activities", user)

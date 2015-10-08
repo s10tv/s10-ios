@@ -18,7 +18,7 @@ public struct TodayViewModel {
     public let major: String
     public let reason: String
     public let profileIcons: ArrayProperty<Image>
-    public let timeRemaining: PropertyOf<String>
+    public let timeRemaining: ProducerProperty<String>
     public let fractionRemaining: PropertyOf<CGFloat>
     
     init(candidate: Candidate, settings: Settings) {
@@ -30,7 +30,9 @@ public struct TodayViewModel {
         displayName = user.pDisplayName().value
         reason = candidate.reason
         profileIcons = ArrayProperty(user.connectedProfiles.map { $0.icon })
-        timeRemaining = PropertyOf("", combineLatest(
+        // TODO: There are memory management issues related to PropertyOf
+        // that takes a signalProducer. ProducerProperty seems to solve it
+        timeRemaining = ProducerProperty(combineLatest(
             CurrentTime.producer,
             settings.nextMatchDate.producer
         ).map { currentTime, nextMatchDate in
