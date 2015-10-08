@@ -16,9 +16,10 @@ import Core
 struct VideoSession {
     let recordSession: SCRecordSession
     let filter: SCFilter?
+    let overlayImage: UIImage?
     
     func export() -> Future<NSURL, NSError> {
-        return AVKit.exportVideo(recordSession, filter: filter)
+        return AVKit.exportVideo(recordSession, filter: filter, watermark: overlayImage)
     }
     
     func exportWithFirstFrame() -> Future<(NSURL, UIImage), NSError> {
@@ -43,11 +44,12 @@ class AVKit {
         return promise.future
     }
     
-    class func exportVideo(session: SCRecordSession, filter: SCFilter? = nil, overlay: UIView? = nil) -> Future<NSURL, NSError> {
+    class func exportVideo(session: SCRecordSession, filter: SCFilter? = nil, watermark: UIImage? = nil) -> Future<NSURL, NSError> {
         let promise = Promise<NSURL, NSError>()
         let exporter = SCAssetExportSession(asset: session.assetRepresentingSegments())
         exporter.videoConfiguration.filter = filter
-        exporter.videoConfiguration.overlay = overlay
+        exporter.videoConfiguration.watermarkImage = watermark
+        exporter.videoConfiguration.watermarkFrame = CGRectMake(0, 0, 480, 640) // TODO: Fix this hard-coded hack
         exporter.outputFileType = AVFileTypeMPEG4
         exporter.outputUrl = session.outputUrl
         exporter.exportAsynchronouslyWithCompletionHandler {

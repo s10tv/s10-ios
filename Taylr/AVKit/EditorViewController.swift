@@ -56,6 +56,17 @@ class EditorViewController : UIViewController {
         player.setItem(nil)
     }
     
+    // MARK: -
+    func getVideoSession() -> VideoSession {
+        UIGraphicsBeginImageContextWithOptions(overlayView.bounds.size, false, 0.0)
+        let context = UIGraphicsGetCurrentContext()
+        overlayView.layer.renderInContext(context!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return VideoSession(recordSession: recordSession, filter: filterView.selectedFilter, overlayImage: image)
+    }
+    
+    // MARK: -
     
     @IBAction func didTapOnPlayer(sender: AnyObject) {
         player.isPlaying ? player.pause() : player.play()
@@ -67,13 +78,13 @@ class EditorViewController : UIViewController {
 
     @IBAction func finishEditing(sender: AnyObject) {
         player.pause()
-        let video = VideoSession(recordSession: recordSession, filter: filterView.selectedFilter)
-        delegate?.editor(self, didEditVideo: video)
+        delegate?.editor(self, didEditVideo: getVideoSession())
     }
     
     @IBAction func saveToCameraRoll(sender: AnyObject) {
+        let video = getVideoSession()
         PKHUD.showActivity(dimsBackground: true)
-        AVKit.exportVideo(recordSession, filter: filterView.selectedFilter, overlay: overlayView)
+        video.export()
             .flatMap { AVKit.writeToSavedPhotosAlbum($0) }
             .observeOn(UIScheduler())
             .toFuture()
