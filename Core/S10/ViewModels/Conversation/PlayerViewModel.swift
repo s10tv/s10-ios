@@ -8,9 +8,8 @@
 
 import Foundation
 import ReactiveCocoa
-import Core
 
-protocol PlayerDelegate : class {
+public protocol PlayerDelegate : class {
     func playerDidFinishPlaylist(player: PlayerViewModel)
     func player(player: PlayerViewModel, willPlayVideo video: MessageViewModel)
     func player(player: PlayerViewModel, didPlayVideo video: MessageViewModel)
@@ -30,25 +29,25 @@ private func findVideo(video: MessageViewModel?, inPlaylist playlist: [MessageVi
 // delegate. Need to figure out a better pattern of whether struct or class is the right
 // approach and when
 // http://www.objc.io/issues/16-swift/swift-classes-vs-structs/#the-advantages-of-value-types
-class PlayerViewModel {
+public class PlayerViewModel {
     private let currentVideo = MutableProperty<MessageViewModel?>(nil)
     private let currentTime = MutableProperty<NSTimeInterval>(0)
     private let _isPlaying = MutableProperty(false)
     private let unfinishedVideoDuration: PropertyOf<NSTimeInterval>
-    weak var delegate: PlayerDelegate?
+    public weak var delegate: PlayerDelegate?
     
-    let videos: ArrayProperty<MessageViewModel>
+    public let videos: ArrayProperty<MessageViewModel>
     
-    let playlist = MutableProperty<[MessageViewModel]>([])
-    let videoURL: PropertyOf<NSURL?>
-    let isPlaying: PropertyOf<Bool>
-    let hideOverlay: PropertyOf<Bool>
-    let currentVideoProgress: PropertyOf<Float>
-    let totalDurationLeft: PropertyOf<String>
-    let hideView: PropertyOf<Bool>
-    var finishedAtIndex: Int?
+    public let playlist = MutableProperty<[MessageViewModel]>([])
+    public let videoURL: PropertyOf<NSURL?>
+    public let isPlaying: PropertyOf<Bool>
+    public let hideOverlay: PropertyOf<Bool>
+    public let currentVideoProgress: PropertyOf<Float>
+    public let totalDurationLeft: PropertyOf<String>
+    public let hideView: PropertyOf<Bool>
+    public var finishedAtIndex: Int?
     
-    init() {
+    public init() {
         videoURL = currentVideo.map { $0?.url }
         isPlaying = PropertyOf(_isPlaying)
         unfinishedVideoDuration = PropertyOf(0, combineLatest(
@@ -92,7 +91,7 @@ class PlayerViewModel {
         }
     }
     
-    func prevVideo() -> MessageViewModel? {
+    public func prevVideo() -> MessageViewModel? {
         if currentVideo.value == nil {
             return playlist.value.last
         }
@@ -101,7 +100,7 @@ class PlayerViewModel {
         }.map { playlist.value[$0] }
     }
     
-    func nextVideo() -> MessageViewModel? {
+    public func nextVideo() -> MessageViewModel? {
         if currentVideo.value == nil {
             return playlist.value.first
         }
@@ -110,7 +109,7 @@ class PlayerViewModel {
         }.map { playlist.value[$0] }
     }
     
-    func nextUnreadVideo() -> MessageViewModel? {
+    public func nextUnreadVideo() -> MessageViewModel? {
         if playlist.value.count > 0 {
             let start = currentVideoIndex() ?? 0
             for video in playlist.value[start..<playlist.value.count] {
@@ -120,15 +119,15 @@ class PlayerViewModel {
         return nil
     }
     
-    func seekPrevVideo() -> Bool {
+    public func seekPrevVideo() -> Bool {
         return seekVideo(prevVideo())
     }
     
-    func seekVideoAtIndex(index: Int) -> Bool {
+    public func seekVideoAtIndex(index: Int) -> Bool {
         return seekVideo(playlist.value[index])
     }
     
-    func seekNextVideo() -> Bool {
+    public func seekNextVideo() -> Bool {
         let played = seekVideo(nextVideo())
         if !played {
             finishedAtIndex = playlist.value.count - 1
@@ -137,7 +136,7 @@ class PlayerViewModel {
         return played
     }
     
-    func seekNextUnreadVideo() -> Bool {
+    public func seekNextUnreadVideo() -> Bool {
         let played = seekVideo(nextUnreadVideo())
         if !played {
             delegate?.playerDidFinishPlaylist(self)
@@ -147,11 +146,11 @@ class PlayerViewModel {
     
     // MARK: - Hooks for PlayerViewController to update state
     
-    func updatePlaybackPosition(position: NSTimeInterval) {
+    public func updatePlaybackPosition(position: NSTimeInterval) {
         currentTime.value = position
     }
     
-    func updateIsPlaying(isPlaying: Bool) {
+    public func updateIsPlaying(isPlaying: Bool) {
         _isPlaying.value = isPlaying
     }
     
