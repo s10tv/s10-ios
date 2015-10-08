@@ -17,7 +17,7 @@ case $CIRCLE_BRANCH in
 	prod)
 		BN=${CIRCLE_BUILD_NUM}
 		XCCONFIG_NAME=Prod
-		EXPORT_METHOD=app-store
+		EXPORT_METHOD=ad-hoc
 		;;
 	*)
 		BN=${CIRCLE_BUILD_NUM}\*

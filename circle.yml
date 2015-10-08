@@ -40,8 +40,7 @@ test:
                   --export_method $EXPORT_METHOD \
                   --buildlog_path $CIRCLE_ARTIFACTS \
                   --output_directory $CIRCLE_ARTIFACTS \
-                  --output_name ${BN}_appstore.ipa \
-                  --provisioning_profile_path scripts/profiles/f331e97e-2ea1-426f-879e-972eaff3d115.mobileprovision
+                  --output_name ${BN}.ipa
         ./scripts/circle_release_notes.sh >> $CIRCLE_ARTIFACTS/release_notes.txt
       : timeout: 1200
     - zip -FSr $CIRCLE_ARTIFACTS/Pods.zip Pods/
@@ -74,6 +73,17 @@ deployment:
    commands:
      - |
        source ./scripts/circle_env.sh
+       ./scripts/deploy_crashlytics.sh
+     - |
+       source ./scripts/circle_env.sh
+       gym build --scheme Taylr \
+                 --xcconfig Configs/${XCCONFIG_NAME}.xcconfig \
+                 --xcargs BUNDLE_BUILD=$BN \
+                 --export_method "app-store" \
+                 --buildlog_path $CIRCLE_ARTIFACTS \
+                 --output_directory $CIRCLE_ARTIFACTS \
+                 --output_name ${BN}_appstore.ipa \
+                 --provisioning_profile_path scripts/profiles/f331e97e-2ea1-426f-879e-972eaff3d115.mobileprovision
        cd $CIRCLE_ARTIFACTS
        ipa distribute:itunesconnect --apple-id 1015154738 --file "${BN}_appstore.ipa" --upload \
         --warnings --errors --account "$APPLE_ID" --password "$APPLE_ID_PASSWORD" --verbose
