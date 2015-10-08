@@ -12,6 +12,7 @@ import ReactiveCocoa
 import SugarRecord
 import SwiftyJSON
 import Meteor
+import Async
 
 public class MeteorService : NSObject {
     private var mainContext : NSManagedObjectContext { return meteor.mainQueueManagedObjectContext }
@@ -106,11 +107,19 @@ public class MeteorService : NSObject {
         // HACK ALERT: Delegate callback does not happen in time for Meteor.user
         // to be populated by the time completion gets called.
         // Instead we will force compute the user before returning signal
-        return meteor.login("login", [type: serviceData]).map {
-            if let userId = self.meteor.userID {
-                self._user.value = self.mainContext.objectInCollection("users", documentID: userId) as? User
+        let promise = Promise<(), NSError>()
+        meteor.login("login", [type: serviceData]).start(Event.sink(error: {
+            promise.failure($0)
+        }, completed: { [weak self] in
+            if let userId = self?.meteor.userID {
+                self?._user.value = self?.mainContext.objectInCollection("users", documentID: userId) as? User
             }
-        }
+            // HACK ALERT: Bring back the 0.1 second delay to fix login...
+            Async.main(after: 0.1) {
+                promise.success()
+            }
+        }))
+        return promise.future
     }
     
     public func loginWithDigits(userId userId: String, authToken: String, authTokenSecret: String, phoneNumber: String) -> Future<(), NSError> {
@@ -120,7 +129,6 @@ public class MeteorService : NSObject {
             "authTokenSecret": authTokenSecret,
             "phoneNumber": phoneNumber
         ])
-        // HACK ALERT: No longer delaying by 0.1 anymore .delay(0.1)
     }
 
 

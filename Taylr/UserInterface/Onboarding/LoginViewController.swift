@@ -38,7 +38,7 @@ class LoginViewController : BaseViewController, TutorialViewController {
         loginButton.addAction(vm.loginAction) { values, errors, executing in
             showProgress <~ executing
             showErrorAction <~ errors.map { $0 as AlertableError }
-            segueAction <~ values.map {
+            segueAction <~ values.filter { $0 != .LoggedOut }.map {
                 switch $0 {
                 case .LoggedIn: return .LoginToRegisterEmail
                 case .LoggedInButCodeDisabled: return .LoginToConnectServices
