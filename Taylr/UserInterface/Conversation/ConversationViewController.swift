@@ -43,7 +43,7 @@ class ConversationViewController : BaseViewController {
         newMessagesHint.rac_hidden <~ vm.hideNewMessagesHint
         coverImageView.sd_image <~ vm.cover
         
-        let avkit = UIStoryboard(name: "AVKit", bundle: nil)
+        let avkit = UIStoryboard(name: "Conversation", bundle: nil)
         producer = avkit.instantiateViewControllerWithIdentifier("Producer") as! ProducerViewController
         producer.producerDelegate = self
         player = avkit.instantiateViewControllerWithIdentifier("Player") as! PlayerViewController
