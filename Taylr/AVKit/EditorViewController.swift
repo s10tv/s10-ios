@@ -39,6 +39,7 @@ class EditorViewController : UIViewController {
         player.loopEnabled = true
         player.CIImageRenderer = filterView
         captionField.delegate = self
+        captionField.addTarget(self, action: "textFieldDidChange:", forControlEvents: .EditingChanged)
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -99,6 +100,14 @@ extension EditorViewController : UITextFieldDelegate {
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.endEditing(true)
         return true
+    }
+    
+    func textFieldDidChange(textField: UITextField) {
+        if textField.text?.length == 0 {
+            textField.backgroundColor = UIColor.clearColor()
+        } else {
+            textField.backgroundColor = UIColor(white: 0, alpha: 0.5)
+        }
     }
 }
 
