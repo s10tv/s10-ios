@@ -192,6 +192,8 @@
 		EAC1BEFC1BC7121200864B8C /* ConnectionViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC1BEF81BC7121200864B8C /* ConnectionViewModels.swift */; settings = {ASSET_TAGS = (); }; };
 		EAC1BEFE1BC712CF00864B8C /* PlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC1BEFD1BC712CF00864B8C /* PlayerViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EAC1BF021BC7146900864B8C /* VolumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC1BF011BC7146900864B8C /* VolumeViewModel.swift */; settings = {ASSET_TAGS = (); }; };
+		EAC1BF041BC7155900864B8C /* ChatHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC1BF031BC7155900864B8C /* ChatHistoryViewModel.swift */; settings = {ASSET_TAGS = (); }; };
+		EAC1BF061BC715B400864B8C /* ReceiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC1BF051BC715B400864B8C /* ReceiveViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EAE067201B71850F00A2FF76 /* MuteChecker.caf in Resources */ = {isa = PBXBuildFile; fileRef = EAE0671D1B71850F00A2FF76 /* MuteChecker.caf */; };
 		EAE067211B71850F00A2FF76 /* MuteChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE0671F1B71850F00A2FF76 /* MuteChecker.m */; };
 		EAF44D011BC1C7BB005BE59E /* ReactiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9FE6461B67F85E006F8E73 /* ReactiveTests.swift */; settings = {ASSET_TAGS = (); }; };
@@ -420,6 +422,8 @@
 		EAC1BEF81BC7121200864B8C /* ConnectionViewModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionViewModels.swift; sourceTree = "<group>"; };
 		EAC1BEFD1BC712CF00864B8C /* PlayerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayerViewModel.swift; sourceTree = "<group>"; };
 		EAC1BF011BC7146900864B8C /* VolumeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumeViewModel.swift; sourceTree = "<group>"; };
+		EAC1BF031BC7155900864B8C /* ChatHistoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatHistoryViewModel.swift; sourceTree = "<group>"; };
+		EAC1BF051BC715B400864B8C /* ReceiveViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiveViewModel.swift; sourceTree = "<group>"; };
 		EAC725B71B65BB50004113FD /* ProfileInfoCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInfoCells.swift; sourceTree = "<group>"; };
 		EAC725BB1B66D76D004113FD /* CreateProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileViewModel.swift; sourceTree = "<group>"; };
 		EAC725BD1B66DD92004113FD /* ConnectServicesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectServicesViewModel.swift; sourceTree = "<group>"; };
@@ -1081,6 +1085,8 @@
 				EAC1BEF41BC7121200864B8C /* ConversationViewModel.swift */,
 				EAC1BEF51BC7121200864B8C /* MessageViewModel.swift */,
 				EAC1BEFD1BC712CF00864B8C /* PlayerViewModel.swift */,
+				EAC1BF031BC7155900864B8C /* ChatHistoryViewModel.swift */,
+				EAC1BF051BC715B400864B8C /* ReceiveViewModel.swift */,
 			);
 			path = Conversation;
 			sourceTree = "<group>";
@@ -1665,6 +1671,7 @@
 				EA81ADEA1BB688C700F94006 /* ScrollTransition.swift in Sources */,
 				EA81ADEB1BB6891F00F94006 /* RealmExtensions.swift in Sources */,
 				EA8E69481BC1DA30002D4BF1 /* FetchedResultsArray.swift in Sources */,
+				EAC1BF041BC7155900864B8C /* ChatHistoryViewModel.swift in Sources */,
 				EA81AE421BB7AC1C00F94006 /* ProfileViewModel.swift in Sources */,
 				EA81ADBD1BB65FB800F94006 /* FoundationExtension.swift in Sources */,
 				EA81AE361BB79FDF00F94006 /* IntegrationViewModel.swift in Sources */,
@@ -1703,6 +1710,7 @@
 				EA81AE021BB68E2100F94006 /* User.swift in Sources */,
 				EA81AE141BB6976900F94006 /* TaskService.swift in Sources */,
 				EA81ADDA1BB6839200F94006 /* AlamofireExtension.swift in Sources */,
+				EAC1BF061BC715B400864B8C /* ReceiveViewModel.swift in Sources */,
 				EA81ADBF1BB6679400F94006 /* Logging.swift in Sources */,
 				EA81AE3B1BB7A8D000F94006 /* RootViewModel.swift in Sources */,
 				EA81ADF11BB68CDD00F94006 /* SugarRecordExtension.swift in Sources */,

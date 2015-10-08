@@ -34,6 +34,20 @@ extension ArrayPropertyType where Self : AnyObject {
         prop <~ changes.map { [weak self] _ in self?.array.count ?? 0 }
         return prop.readonly()
     }
+    var producer: SignalProducer<[ElementType], NoError> {
+        return SignalProducer { [weak self] observer, disposable in
+            if let this = self {
+                sendNext(observer, this.array)
+                disposable += this.changes.observe(Event.sink(next: { [weak self] _ in
+                    if let this = self { sendNext(observer, this.array) }
+                }, completed: {
+                    sendCompleted(observer)
+                }))
+            } else {
+                sendInterrupted(observer)
+            }
+        }
+    }
 }
 
 public class ArrayProperty<T> : ArrayPropertyType {
@@ -54,6 +68,24 @@ public class ArrayProperty<T> : ArrayPropertyType {
     
     deinit {
         sendCompleted(changesSink)
+    }
+}
+
+// Queue Implementation
+
+extension ArrayProperty {
+    public func dequeue() -> T? {
+        if let first = array.first {
+            array.removeAtIndex(0)
+            sendNext(changesSink, .Delete(0))
+            return first
+        }
+        return nil
+    }
+    
+    public func enqueue(element: T) {
+        array.append(element)
+        sendNext(changesSink, .Insert(array.count))
     }
 }
 
