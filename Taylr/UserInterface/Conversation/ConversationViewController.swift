@@ -54,6 +54,8 @@ class ConversationViewController : BaseViewController {
         chatHistory = avkit.instantiateViewControllerWithIdentifier("ChatHistory") as! ChatHistoryViewController
         producer = avkit.instantiateViewControllerWithIdentifier("Producer") as! ProducerViewController
         producer.producerDelegate = self
+        receiver.vm = vm.receiveVM
+        chatHistory.vm = vm.chatHistoryVM
         
         addChildViewController(receiver)
         receiveContainer.addSubview(receiver.view)
@@ -83,9 +85,10 @@ class ConversationViewController : BaseViewController {
         swipeView.delegate = self
         swipeView.layoutIfNeeded()
         
+        receiveContainer.hidden = !vm.hasUnreadMessage.value
+        
         if !vm.showTutorial {
             tutorialContainer.removeFromSuperview()
-//            player.autoplayNextUnread()
         } else {
             playerEmptyView.hidden = true
         }

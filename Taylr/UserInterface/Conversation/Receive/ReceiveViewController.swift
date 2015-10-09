@@ -64,8 +64,9 @@ class ReceiveViewController : UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.player.beginSendingPlayMessages()
-        self.player.play()
+        player.beginSendingPlayMessages()
+        player.play()
+        advance()
         // Whenever user presses volume button we'll switch to an active audio category
         // so that there's sound
         audioDisposable = AudioController.sharedController.systemVolume.producer

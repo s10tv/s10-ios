@@ -45,6 +45,7 @@ public class ConversationViewModel {
     public let displayName: PropertyOf<String>
     public let displayStatus: ProducerProperty<String>
     public let busy: ProducerProperty<Bool>
+    public let hasUnreadMessage: PropertyOf<Bool>
     public let hideNewMessagesHint: PropertyOf<Bool>
     public let showTutorial: Bool
     
@@ -78,9 +79,8 @@ public class ConversationViewModel {
             displayName = PropertyOf(user.pDisplayName())
             cover = user.pCover()
         }
-        
-        // TODO: Properly implement me taking into account both connection case as well as user case
-        hideNewMessagesHint = PropertyOf(true, receiveVM.playlist.producer.map { $0.count == 0 })
+        hasUnreadMessage = PropertyOf(false, receiveVM.playlist.producer.map { $0.count > 0 })
+        hideNewMessagesHint = hasUnreadMessage.map { !$0 }
     }
     
     public func finishTutorial() {
