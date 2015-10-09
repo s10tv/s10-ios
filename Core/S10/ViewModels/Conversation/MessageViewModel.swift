@@ -15,12 +15,11 @@ public struct MessageViewModel {
     let message: Message
     public let messageId: String
     public let formattedDate: PropertyOf<String>
-    public var unread: Bool {
-        return message.status == .Sent && !outgoing
-    }
+    public let unread: PropertyOf<Bool>
     public let outgoing: Bool
     public let senderInfo: String
-    public let messageInfo: String
+    public let messageInfo: PropertyOf<String>
+    
     // Video Specific
     public let video: Video
     public let url: NSURL
@@ -28,17 +27,18 @@ public struct MessageViewModel {
     public let thumbnail: Image?
     
     init(meteor: MeteorService, message: Message, localVideoURL: NSURL) {
+        let sentByMe = (message.sender.documentID == meteor.userId.value)
         self.message = message
         url = localVideoURL
-        outgoing = (message.sender.documentID == meteor.userId.value)
+        outgoing = sentByMe
+        unread = message.pStatus().map { $0 == .Sent && !sentByMe }
         messageId = message.documentID!
         formattedDate = relativeTime(message.createdAt)
         duration = message.video.duration ?? 0
         video = message.video
         senderInfo = message.sender.pDisplayName().value
         thumbnail = message.video.thumbnail
-        let status = (message.status == .Sent) ? "Sent" : "Opened"
-        messageInfo = "\(formattedDate.value) - \(status)"
+        messageInfo = message.pStatus().map { $0 == .Sent ? "Sent" : "Opened" }
     }
 }
 

@@ -80,6 +80,10 @@ extension User {
 }
 
 extension Connection {
+    func dyn(keyPath: ConnectionKeys) -> DynamicProperty {
+        return dyn(keyPath.rawValue)
+    }
+    
     func pTitle() -> PropertyOf<String> {
         return dyn(.title).optional(String).map { $0 ?? "" }
     }
@@ -90,6 +94,16 @@ extension Connection {
     
     func pCover() -> PropertyOf<Image?> {
         return dyn(.cover_).map(Mapper<Image>().map)
+    }
+}
+
+extension Message {
+    func dyn(keyPath: MessageKeys) -> DynamicProperty {
+        return dyn(keyPath.rawValue)
+    }
+    
+    func pStatus() -> PropertyOf<Status?> {
+        return dyn(.status_).optional(String).map { $0.flatMap { Status(rawValue: $0) } }
     }
 }
 
@@ -114,7 +128,7 @@ extension Conversation {
     }
     
     func unreadPlayableMessages(meteor: MeteorService) -> [MessageViewModel] {
-        return allPlayableMessages(meteor).filter { $0.unread }
+        return allPlayableMessages(meteor).filter { $0.unread.value }
     }
     
     // NOTE: ManagedObjectContext changes are ignored

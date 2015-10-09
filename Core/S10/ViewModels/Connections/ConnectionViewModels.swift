@@ -9,12 +9,6 @@
 import Foundation
 import ReactiveCocoa
 
-extension Connection {
-    func dyn(keyPath: ConnectionKeys) -> DynamicProperty {
-        return dyn(keyPath.rawValue)
-    }
-}
-
 public protocol ConnectionViewModel {
     var avatar: PropertyOf<Image?> { get }
     var displayName: PropertyOf<String> { get }

@@ -23,7 +23,7 @@ class TimelineCell : UICollectionViewCell, BindableCell {
         self.vm = vm
         cd = CompositeDisposable()
         imageView.sd_image.value = vm.thumbnail
-        badgeView.hidden = !vm.unread
+        cd += badgeView.rac_hidden <~ vm.unread.producer.map { !$0 }
     }
     
     override func prepareForReuse() {
@@ -40,7 +40,7 @@ class TimelineCell : UICollectionViewCell, BindableCell {
             if gesture.state == .Began {
                 let sheet = UIAlertController(
                     title: self?.vm?.senderInfo,
-                    message: self?.vm?.messageInfo,
+                    message: self?.vm?.messageInfo.value,
                     preferredStyle: .ActionSheet
                 )
                 if self?.vm?.outgoing == true {
