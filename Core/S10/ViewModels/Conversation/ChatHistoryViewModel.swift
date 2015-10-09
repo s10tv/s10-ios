@@ -25,8 +25,8 @@ public class ChatHistoryViewModel {
     public let currentVideoProgress: PropertyOf<Float>
     public let durationLeft: PropertyOf<String>
     
-    public init() {
-        messages = ArrayProperty([])
+    init(meteor: MeteorService, conversation: Conversation) {
+        messages = conversation.allPlayableMessagesProperty(meteor)
         currentVideoURL = currentVideo.map { $0?.url }
         isPlaying = PropertyOf(_isPlaying)
         currentVideoProgress = PropertyOf(0, combineLatest(

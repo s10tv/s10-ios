@@ -21,8 +21,8 @@ public class ReceiveViewModel {
     public let currentVideoProgress: PropertyOf<Float>
     public let isPlaying: PropertyOf<Bool>
     
-    public init() {
-        playlist = ArrayProperty([])
+    init(meteor: MeteorService, conversation: Conversation) {
+        playlist = conversation.unreadPlayableMessagesProperty(meteor)
         currentVideoURL = currentVideo.map { $0?.url }
         isPlaying = PropertyOf(_isPlaying)
         totalDuration = PropertyOf(0, playlist.producer.map { array in

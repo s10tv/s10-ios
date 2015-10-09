@@ -92,3 +92,42 @@ extension Connection {
         return dyn(.cover_).map(Mapper<Image>().map)
     }
 }
+
+extension Conversation {
+    func allPlayableMessages(meteor: MeteorService) -> [MessageViewModel] {
+        // TODO: Move this off the main thread
+        assert(NSThread.isMainThread(), "Must be performed on main for now")
+        
+        let messages = messagesFinder
+            // MASSIVE HACK ALERT: Ascending should be true but empirically
+            // ascending = false seems to actually give us the correct result. FML.
+            .sorted(by: MessageKeys.createdAt.rawValue, ascending: false)
+            .fetch().map { $0 as! Message }
+        
+        var playableMessages: [MessageViewModel] = []
+        for message in messages {
+            if let localURL = VideoCache.sharedInstance.getVideo(message.documentID!) {
+                playableMessages.append(MessageViewModel(meteor: meteor, message: message, localVideoURL: localURL))
+            }
+        }
+        return playableMessages
+    }
+    
+    func unreadPlayableMessages(meteor: MeteorService) -> [MessageViewModel] {
+        return allPlayableMessages(meteor).filter { $0.unread }
+    }
+    
+    func allPlayableMessagesProperty(meteor: MeteorService) -> ArrayProperty<MessageViewModel> {
+        let updates = unsafeNewRealm().notifier().map { _ in
+            return self.allPlayableMessages(meteor)
+        }
+        return ArrayProperty(allPlayableMessages(meteor), updates: updates)
+    }
+    
+    func unreadPlayableMessagesProperty(meteor: MeteorService) -> ArrayProperty<MessageViewModel> {
+        let updates = unsafeNewRealm().notifier().map { _ in
+            return self.unreadPlayableMessages(meteor)
+        }
+        return ArrayProperty(unreadPlayableMessages(meteor), updates: updates)
+    }
+}

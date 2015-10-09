@@ -22,7 +22,7 @@ class ReceiveViewController : UIViewController {
     @IBOutlet weak var overlay: UIView!
     @IBOutlet weak var volumeView: VolumeView!
     
-    let vm = ReceiveViewModel()
+    var vm: ReceiveViewModel!
     var player: SCPlayer { return playerView.player! }
     var audioDisposable: Disposable?
     

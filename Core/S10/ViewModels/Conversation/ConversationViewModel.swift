@@ -65,6 +65,8 @@ public class ConversationViewModel {
     public let showTutorial: Bool
     
     public let currentMessage: MutableProperty<MessageViewModel?>
+    public let receiveVM: ReceiveViewModel
+    public let chatHistoryVM: ChatHistoryViewModel
   
     init(meteor: MeteorService, taskService: TaskService, conversation: Conversation) {
         self.meteor = meteor
@@ -77,6 +79,9 @@ public class ConversationViewModel {
         let showTutorial = UD.showPlayerTutorial.value ?? true
         
         self.showTutorial = showTutorial
+        
+        receiveVM = ReceiveViewModel(meteor: meteor, conversation: conversation)
+        chatHistoryVM = ChatHistoryViewModel(meteor: meteor, conversation: conversation)
         
         _messages = MutableProperty(loadMessages())
         messages = PropertyOf(_messages)

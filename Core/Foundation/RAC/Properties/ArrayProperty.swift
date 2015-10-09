@@ -52,6 +52,7 @@ extension ArrayPropertyType where Self : AnyObject {
 
 public class ArrayProperty<T> : ArrayPropertyType {
     private let changesSink: Event<ArrayOperation, NoError>.Sink
+    private var updatesDisposable: Disposable?
     public typealias ElementType = T
     public var array: [T] {
         didSet { sendNext(changesSink, .Reset) }
@@ -61,13 +62,17 @@ public class ArrayProperty<T> : ArrayPropertyType {
     }
     public let changes: Signal<ArrayOperation, NoError>
 
-    public init(_ array: [T]) {
+    public init(_ array: [T], updates: SignalProducer<[T], NoError>? = nil) {
         self.array = array
         (changes, changesSink) = Signal<ArrayOperation, NoError>.pipe()
+        updatesDisposable = updates?.startWithNext { [weak self] array in
+            self?.array = array
+        }
     }
     
     deinit {
         sendCompleted(changesSink)
+        updatesDisposable?.dispose()
     }
 }
 

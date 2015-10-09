@@ -22,7 +22,7 @@ class ChatHistoryViewController : UIViewController {
     @IBOutlet weak var volumeView: VolumeView!
     @IBOutlet weak var timelineView: UICollectionView!
     
-    let vm = ChatHistoryViewModel()
+    var vm: ChatHistoryViewModel!
     var userPaused: Bool = false
     var player: SCPlayer { return playerView.player! }
     var audioDisposable: Disposable?
