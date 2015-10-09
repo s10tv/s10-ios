@@ -196,6 +196,8 @@
 		EAC1BF061BC715B400864B8C /* ReceiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC1BF051BC715B400864B8C /* ReceiveViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EAE067201B71850F00A2FF76 /* MuteChecker.caf in Resources */ = {isa = PBXBuildFile; fileRef = EAE0671D1B71850F00A2FF76 /* MuteChecker.caf */; };
 		EAE067211B71850F00A2FF76 /* MuteChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE0671F1B71850F00A2FF76 /* MuteChecker.m */; };
+		EAE637C51BC84BBE00A958A8 /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE637C41BC84BBE00A958A8 /* ReceiveViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EAE637C71BC84BC700A958A8 /* ChatHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE637C61BC84BC700A958A8 /* ChatHistoryViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EAF44D011BC1C7BB005BE59E /* ReactiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9FE6461B67F85E006F8E73 /* ReactiveTests.swift */; settings = {ASSET_TAGS = (); }; };
 		EAF81B131B325A6B00EED6DD /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5B74321B3139EA008E5CBC /* Core.framework */; };
 		EAF81B141B325A6B00EED6DD /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EA5B74321B3139EA008E5CBC /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -437,6 +439,8 @@
 		EAE0671F1B71850F00A2FF76 /* MuteChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MuteChecker.m; sourceTree = "<group>"; };
 		EAE067221B71851E00A2FF76 /* AudioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
 		EAE1E07C1AE3788300F03F13 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		EAE637C41BC84BBE00A958A8 /* ReceiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
+		EAE637C61BC84BC700A958A8 /* ChatHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatHistoryViewController.swift; sourceTree = "<group>"; };
 		EAF0203C1BB1D2C5006C789F /* HistoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
 		EAF0203E1BB1D329006C789F /* CandidateViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateViewModel.swift; sourceTree = "<group>"; };
 		EAF020411BB1D3DF006C789F /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
@@ -1036,6 +1040,7 @@
 		EAC1BED21BC70E0E00864B8C /* History */ = {
 			isa = PBXGroup;
 			children = (
+				EAE637C61BC84BC700A958A8 /* ChatHistoryViewController.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -1044,6 +1049,7 @@
 			isa = PBXGroup;
 			children = (
 				EAC1BED41BC70E0E00864B8C /* PlayerViewController.swift */,
+				EAE637C41BC84BBE00A958A8 /* ReceiveViewController.swift */,
 			);
 			path = Receive;
 			sourceTree = "<group>";
@@ -1809,9 +1815,11 @@
 				EA42D6551BB7C35100B07526 /* AccountService.swift in Sources */,
 				EAA576101BB7E30600661A4F /* RootNavController.swift in Sources */,
 				EAC1BEE71BC70E0E00864B8C /* RecorderViewController.swift in Sources */,
+				EAE637C71BC84BC700A958A8 /* ChatHistoryViewController.swift in Sources */,
 				EAC1BEE21BC70E0E00864B8C /* ConversationViewController.swift in Sources */,
 				EA42D65B1BB7C66600B07526 /* MediaExtension.swift in Sources */,
 				EA42D65F1BB7C67900B07526 /* DesignableViews.swift in Sources */,
+				EAE637C51BC84BBE00A958A8 /* ReceiveViewController.swift in Sources */,
 				EAA576171BB7E5B600661A4F /* LoginViewController.swift in Sources */,
 				EAC1BEE31BC70E0E00864B8C /* PlayerViewController.swift in Sources */,
 				EAC1BEF11BC70EC900864B8C /* VolumeView.swift in Sources */,

@@ -49,6 +49,7 @@ public enum TableViewControllerStoryboardIdentifier : String {
 
 public enum ViewControllerStoryboardIdentifier : String {
     case AuthWeb = "AuthWeb"
+    case ChatHistory = "ChatHistory"
     case Chats = "Chats"
     case Conversation = "Conversation"
     case Discover = "Discover"
@@ -57,6 +58,7 @@ public enum ViewControllerStoryboardIdentifier : String {
     case Login = "Login"
     case Player = "Player"
     case Producer = "Producer"
+    case Receive = "Receive"
     case Recorder = "Recorder"
     case RegisterEmail = "RegisterEmail"
     case TutorialContentViewController = "TutorialContentViewController"
