@@ -36,8 +36,8 @@ class ReceiveViewController : UIViewController {
         
         overlay.rac_hidden <~ vm.isPlaying
         durationTimer.label.rac_text <~ vm.totalDurationLeft
-        vm.currentVideoURL.producer.startWithNext { [weak self] url in
-            let videoURL = url
+        vm.currentVideo.producer.startWithNext { [weak self] message in
+            let videoURL = message?.url
             // NOTE: Despite the fact that we are on main thread it appears that
             // because MutableProperty dispatch_sync to a different queue
             // AVPlayer.setItemByUrl ends up being a no-op. I can't explain it but
@@ -110,5 +110,9 @@ extension ReceiveViewController : SCPlayerDelegate {
     
     func player(player: SCPlayer, didReachEndForItem item: AVPlayerItem) {
         advance()
+        if let message = vm.currentVideo.value {
+            Globals.analyticsService.track("Viewed Message", properties: [
+                "messageId": message.messageId])
+        }
     }
 }
