@@ -24,6 +24,7 @@ public class ChatHistoryViewModel {
     public let currentVideoURL: PropertyOf<NSURL?>
     public let currentVideoProgress: PropertyOf<Float>
     public let durationLeft: PropertyOf<String>
+    public let hidePlaybackViews: PropertyOf<Bool>
     
     init(meteor: MeteorService, conversation: Conversation) {
         messages = conversation.allPlayableMessagesProperty(meteor)
@@ -43,6 +44,7 @@ public class ChatHistoryViewModel {
             let secondsLeft = Int(ceil(max(duration - currentTime, 0)))
             return "\(secondsLeft)"
         })
+        hidePlaybackViews = currentVideo.map { $0 == nil }
     }
     
     public func prevVideo() -> MessageViewModel? {
@@ -83,6 +85,10 @@ public class ChatHistoryViewModel {
     
     public func updateIsPlaying(isPlaying: Bool) {
         _isPlaying.value = isPlaying
+    }
+    
+    public func finishPlayback() {
+        currentVideo.value = nil
     }
     
     // MARK: -

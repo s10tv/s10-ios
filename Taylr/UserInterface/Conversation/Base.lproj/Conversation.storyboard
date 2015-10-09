@@ -298,7 +298,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-316" y="413"/>
+            <point key="canvasLocation" x="-1054" y="275"/>
         </scene>
         <!--Producer View Controller-->
         <scene sceneID="iTe-MQ-cxU">
@@ -612,31 +612,65 @@
                                     <constraint firstAttribute="height" constant="64" id="TWy-2o-Rpb"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7EX-gf-TAo" customClass="SCVideoPlayerView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
-                                <connections>
-                                    <outletCollection property="gestureRecognizers" destination="j2x-dG-Vaf" appends="YES" id="3p3-Em-y58"/>
-                                    <outletCollection property="gestureRecognizers" destination="5jb-lM-Lab" appends="YES" id="fV5-L5-zKU"/>
-                                    <outletCollection property="gestureRecognizers" destination="3V8-lm-EiK" appends="YES" id="HPQ-Rx-l2H"/>
-                                </connections>
-                            </view>
-                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IOY-8o-Obg" userLabel="Paused Overlay">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Xh-EV-ZwE" userLabel="Playback Container">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gy-hc-QwK" userLabel="Play">
-                                        <rect key="frame" x="280" y="280" width="40" height="40"/>
-                                        <state key="normal" image="ic-play-medium">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7EX-gf-TAo" customClass="SCVideoPlayerView">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="5jb-lM-Lab" appends="YES" id="fV5-L5-zKU"/>
+                                            <outletCollection property="gestureRecognizers" destination="j2x-dG-Vaf" appends="YES" id="3p3-Em-y58"/>
+                                            <outletCollection property="gestureRecognizers" destination="3V8-lm-EiK" appends="YES" id="HPQ-Rx-l2H"/>
+                                        </connections>
+                                    </view>
+                                    <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IOY-8o-Obg" userLabel="Paused Overlay">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3gy-hc-QwK" userLabel="Play">
+                                                <rect key="frame" x="280" y="280" width="40" height="40"/>
+                                                <state key="normal" image="ic-play-medium">
+                                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                </state>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="0.0" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
+                                        <constraints>
+                                            <constraint firstAttribute="centerY" secondItem="3gy-hc-QwK" secondAttribute="centerY" id="hVe-PF-SBm"/>
+                                            <constraint firstAttribute="centerX" secondItem="3gy-hc-QwK" secondAttribute="centerX" id="wS8-M9-ZfS"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jab-LS-ca7" customClass="DurationTimer" customModule="Taylr" customModuleProvider="target">
+                                        <rect key="frame" x="544" y="80" width="40" height="40"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="40" id="icS-Bl-Xhp"/>
+                                            <constraint firstAttribute="width" constant="40" id="tPT-YM-wnl"/>
+                                        </constraints>
+                                    </view>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ORa-2X-Cqo" customClass="VolumeView" customModule="Taylr" customModuleProvider="target">
+                                        <rect key="frame" x="16" y="80" width="36" height="36"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="KR4-ts-FCT"/>
+                                            <constraint firstAttribute="width" constant="36" id="iPm-Rd-95J"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
-                                <gestureRecognizers/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="centerY" secondItem="3gy-hc-QwK" secondAttribute="centerY" id="hVe-PF-SBm"/>
-                                    <constraint firstAttribute="centerX" secondItem="3gy-hc-QwK" secondAttribute="centerX" id="wS8-M9-ZfS"/>
+                                    <constraint firstItem="IOY-8o-Obg" firstAttribute="leading" secondItem="7EX-gf-TAo" secondAttribute="leading" id="9qJ-19-Y54"/>
+                                    <constraint firstItem="IOY-8o-Obg" firstAttribute="bottom" secondItem="7EX-gf-TAo" secondAttribute="bottom" id="B39-TC-Gpk"/>
+                                    <constraint firstItem="ORa-2X-Cqo" firstAttribute="leading" secondItem="6Xh-EV-ZwE" secondAttribute="leading" constant="16" id="BFZ-o5-lTi"/>
+                                    <constraint firstItem="IOY-8o-Obg" firstAttribute="top" secondItem="7EX-gf-TAo" secondAttribute="top" id="FFZ-C0-NTq"/>
+                                    <constraint firstAttribute="trailing" secondItem="jab-LS-ca7" secondAttribute="trailing" constant="16" id="I14-pf-DWD"/>
+                                    <constraint firstAttribute="bottom" secondItem="7EX-gf-TAo" secondAttribute="bottom" id="IM8-g9-pyO"/>
+                                    <constraint firstItem="7EX-gf-TAo" firstAttribute="leading" secondItem="6Xh-EV-ZwE" secondAttribute="leading" id="NAD-YQ-jED"/>
+                                    <constraint firstItem="IOY-8o-Obg" firstAttribute="trailing" secondItem="7EX-gf-TAo" secondAttribute="trailing" id="PuQ-te-Zrp"/>
+                                    <constraint firstAttribute="trailing" secondItem="7EX-gf-TAo" secondAttribute="trailing" id="u0H-zE-oqW"/>
+                                    <constraint firstItem="7EX-gf-TAo" firstAttribute="top" secondItem="6Xh-EV-ZwE" secondAttribute="top" id="x3b-ya-MHq"/>
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" showsHorizontalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="NYI-xe-SKz">
@@ -697,48 +731,27 @@
                                     <outlet property="delegate" destination="32V-a1-dpk" id="9Ab-gd-MSA"/>
                                 </connections>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jab-LS-ca7" customClass="DurationTimer" customModule="Taylr" customModuleProvider="target">
-                                <rect key="frame" x="544" y="80" width="40" height="40"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="icS-Bl-Xhp"/>
-                                    <constraint firstAttribute="width" constant="40" id="tPT-YM-wnl"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ORa-2X-Cqo" customClass="VolumeView" customModule="Taylr" customModuleProvider="target">
-                                <rect key="frame" x="16" y="80" width="36" height="36"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="36" id="KR4-ts-FCT"/>
-                                    <constraint firstAttribute="width" constant="36" id="iPm-Rd-95J"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="7EX-gf-TAo" secondAttribute="trailing" id="3HO-ME-RZW"/>
                             <constraint firstAttribute="bottom" secondItem="NYI-xe-SKz" secondAttribute="bottom" id="59C-ab-kl9"/>
                             <constraint firstAttribute="trailing" secondItem="NYI-xe-SKz" secondAttribute="trailing" id="9W0-jC-WFq"/>
+                            <constraint firstItem="ORa-2X-Cqo" firstAttribute="top" secondItem="MFW-f0-Pql" secondAttribute="bottom" constant="16" id="Aw9-dq-z7f"/>
+                            <constraint firstAttribute="bottom" secondItem="6Xh-EV-ZwE" secondAttribute="bottom" id="Bd5-HB-Dpc"/>
                             <constraint firstAttribute="trailing" secondItem="MFW-f0-Pql" secondAttribute="trailing" id="HLm-v6-XnS"/>
-                            <constraint firstItem="7EX-gf-TAo" firstAttribute="leading" secondItem="6P9-uZ-FWr" secondAttribute="leading" id="IXk-Rh-qFG"/>
-                            <constraint firstItem="7EX-gf-TAo" firstAttribute="top" secondItem="IOY-8o-Obg" secondAttribute="top" id="Jfc-R6-Kmc"/>
                             <constraint firstItem="MFW-f0-Pql" firstAttribute="leading" secondItem="6P9-uZ-FWr" secondAttribute="leading" id="LMC-Oq-PNd"/>
-                            <constraint firstItem="7EX-gf-TAo" firstAttribute="trailing" secondItem="IOY-8o-Obg" secondAttribute="trailing" id="LNo-oU-DJJ"/>
-                            <constraint firstItem="7EX-gf-TAo" firstAttribute="leading" secondItem="IOY-8o-Obg" secondAttribute="leading" id="MDW-6m-qgr"/>
-                            <constraint firstItem="7EX-gf-TAo" firstAttribute="top" secondItem="6P9-uZ-FWr" secondAttribute="top" id="W5s-DE-RXU"/>
                             <constraint firstItem="MFW-f0-Pql" firstAttribute="top" secondItem="6P9-uZ-FWr" secondAttribute="top" id="WhE-IB-XeX"/>
-                            <constraint firstAttribute="trailing" secondItem="jab-LS-ca7" secondAttribute="trailing" constant="16" id="bi5-ds-u8r"/>
-                            <constraint firstItem="jab-LS-ca7" firstAttribute="top" secondItem="MFW-f0-Pql" secondAttribute="bottom" constant="16" id="dg9-Lo-FLc"/>
+                            <constraint firstAttribute="trailing" secondItem="6Xh-EV-ZwE" secondAttribute="trailing" id="Zpc-C6-Y8t"/>
                             <constraint firstItem="NYI-xe-SKz" firstAttribute="leading" secondItem="6P9-uZ-FWr" secondAttribute="leading" id="gFf-ST-0id"/>
-                            <constraint firstAttribute="bottom" secondItem="7EX-gf-TAo" secondAttribute="bottom" id="gdY-4c-eE1"/>
-                            <constraint firstItem="ORa-2X-Cqo" firstAttribute="top" secondItem="MFW-f0-Pql" secondAttribute="bottom" constant="16" id="nBC-Eh-5zQ"/>
-                            <constraint firstItem="7EX-gf-TAo" firstAttribute="bottom" secondItem="IOY-8o-Obg" secondAttribute="bottom" id="s6S-1d-op0"/>
-                            <constraint firstItem="ORa-2X-Cqo" firstAttribute="leading" secondItem="MFW-f0-Pql" secondAttribute="leading" constant="16" id="sfu-Zv-Lbr"/>
+                            <constraint firstItem="6Xh-EV-ZwE" firstAttribute="leading" secondItem="6P9-uZ-FWr" secondAttribute="leading" id="gqG-gh-9b9"/>
+                            <constraint firstAttribute="top" secondItem="6Xh-EV-ZwE" secondAttribute="top" id="kDg-Ao-FmB"/>
+                            <constraint firstItem="jab-LS-ca7" firstAttribute="top" secondItem="MFW-f0-Pql" secondAttribute="bottom" constant="16" id="qug-gV-DJv"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="durationTimer" destination="jab-LS-ca7" id="HkY-ag-2z5"/>
                         <outlet property="overlay" destination="IOY-8o-Obg" id="p9n-CE-py6"/>
+                        <outlet property="playbackContainer" destination="6Xh-EV-ZwE" id="jhD-Jh-ZzL"/>
                         <outlet property="playerView" destination="7EX-gf-TAo" id="FLV-cr-VuA"/>
                         <outlet property="timelineView" destination="NYI-xe-SKz" id="pG4-Kv-8Rq"/>
                         <outlet property="volumeView" destination="ORa-2X-Cqo" id="Uok-Fm-1Pb"/>
@@ -761,7 +774,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-316" y="413"/>
+            <point key="canvasLocation" x="342" y="413"/>
         </scene>
     </scenes>
     <resources>

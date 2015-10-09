@@ -16,6 +16,7 @@ class ChatHistoryViewController : UIViewController {
     
     // TODO: Consider using AVQueuePlayer instead of SCPlayer for
     // gapless video playback
+    @IBOutlet weak var playbackContainer: UIView!
     @IBOutlet weak var playerView: SCVideoPlayerView!
     @IBOutlet weak var durationTimer: DurationTimer!
     @IBOutlet weak var overlay: UIView!
@@ -35,6 +36,7 @@ class ChatHistoryViewController : UIViewController {
             self?.vm.updateIsPlaying(self?.player.isPlaying ?? false)
         }
         
+        playbackContainer.rac_hidden <~ vm.hidePlaybackViews
         overlay.rac_hidden <~ vm.isPlaying
         durationTimer.label.rac_text <~ vm.durationLeft
         vm.currentVideoURL.producer.startWithNext { [weak self] url in
@@ -117,10 +119,15 @@ extension ChatHistoryViewController : SCPlayerDelegate {
         }
     }
     
+    func player(player: SCPlayer, didReachEndForItem item: AVPlayerItem) {
+        vm.finishPlayback()
+    }
+    
 }
 
 extension ChatHistoryViewController : UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         vm.seekVideoAtIndex(indexPath.item)
+        Async.main { self.player.play() }
     }
 }
