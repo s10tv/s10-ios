@@ -18,7 +18,8 @@ public class ChatHistoryViewModel {
     private let currentVideo = MutableProperty<MessageViewModel?>(nil)
     private let currentVideoPosition = MutableProperty<NSTimeInterval>(0)
     private let _isPlaying = MutableProperty(false)
-    
+    private let meteor: MeteorService
+
     public let messages: ArrayProperty<MessageViewModel>
     public let isPlaying: PropertyOf<Bool>
     public let currentVideoURL: PropertyOf<NSURL?>
@@ -27,6 +28,7 @@ public class ChatHistoryViewModel {
     public let hidePlaybackViews: PropertyOf<Bool>
     
     init(meteor: MeteorService, conversation: Conversation) {
+        self.meteor = meteor
         messages = conversation.allPlayableMessagesProperty(meteor)
         currentVideoURL = currentVideo.map { $0?.url }
         isPlaying = PropertyOf(_isPlaying)
@@ -88,13 +90,16 @@ public class ChatHistoryViewModel {
     }
     
     public func finishPlayback() {
-        currentVideo.value = nil
+        seekVideo(nil)
     }
     
     // MARK: -
     
     private func seekVideo(video: MessageViewModel?) -> Bool {
         Log.debug("Will seek video with id \(video) url: \(video?.url)")
+        if let video = currentVideo.value where video.unread.value == true {
+            meteor.openMessage(video.message)
+        }
         currentVideoPosition.value = 0
         currentVideo.value = video
         return video != nil
