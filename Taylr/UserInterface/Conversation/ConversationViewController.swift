@@ -51,11 +51,12 @@ class ConversationViewController : BaseViewController {
         
         let avkit = UIStoryboard(name: "Conversation", bundle: nil)
         receiver = avkit.instantiateViewControllerWithIdentifier("Receive") as! ReceiveViewController
+        receiver.vm = vm.receiveVM
+        receiver.delegate = self
         chatHistory = avkit.instantiateViewControllerWithIdentifier("ChatHistory") as! ChatHistoryViewController
+        chatHistory.vm = vm.chatHistoryVM
         producer = avkit.instantiateViewControllerWithIdentifier("Producer") as! ProducerViewController
         producer.producerDelegate = self
-        receiver.vm = vm.receiveVM
-        chatHistory.vm = vm.chatHistoryVM
         
         addChildViewController(receiver)
         receiveContainer.addSubview(receiver.view)
@@ -85,10 +86,13 @@ class ConversationViewController : BaseViewController {
         swipeView.delegate = self
         swipeView.layoutIfNeeded()
         
-        receiveContainer.hidden = !vm.hasUnreadMessage.value
-        
         if !vm.showTutorial {
             tutorialContainer.removeFromSuperview()
+            if vm.hasUnreadMessage.value {
+                showReceiver()
+            } else {
+                hideReceiver()
+            }
         } else {
             playerEmptyView.hidden = true
         }
@@ -134,6 +138,15 @@ class ConversationViewController : BaseViewController {
     }
     
     // MARK: Actions
+    
+    func showReceiver() {
+        receiveContainer.hidden = false
+        receiver.advance()
+    }
+    
+    func hideReceiver() {
+        receiveContainer.hidden = true
+    }
     
     func showPage(page: Page, animated: Bool = false) {
         swipeView.scrollToItemAtIndex(page.rawValue, duration: animated ? 0.25 : 0)
@@ -248,5 +261,11 @@ extension ConversationViewController : ProducerDelegate {
                 self.vm.sendVideo(video)
             }
         }
+    }
+}
+
+extension ConversationViewController : ReceiveViewControllerDelegate {
+    func didFinishPlaylist(receiveVC: ReceiveViewController) {
+        hideReceiver()
     }
 }

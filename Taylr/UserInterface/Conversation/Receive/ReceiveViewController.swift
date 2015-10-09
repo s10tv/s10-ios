@@ -13,6 +13,10 @@ import SCRecorder
 import Async
 import Core
 
+protocol ReceiveViewControllerDelegate : class {
+    func didFinishPlaylist(receiveVC: ReceiveViewController)
+}
+
 class ReceiveViewController : UIViewController {
     
     // TODO: Consider using AVQueuePlayer instead of SCPlayer for
@@ -21,6 +25,8 @@ class ReceiveViewController : UIViewController {
     @IBOutlet weak var durationTimer: DurationTimer!
     @IBOutlet weak var overlay: UIView!
     @IBOutlet weak var volumeView: VolumeView!
+    
+    weak var delegate: ReceiveViewControllerDelegate?
     
     var vm: ReceiveViewModel!
     var player: SCPlayer { return playerView.player! }
@@ -66,7 +72,6 @@ class ReceiveViewController : UIViewController {
         super.viewDidAppear(animated)
         player.beginSendingPlayMessages()
         player.play()
-        advance()
         // Whenever user presses volume button we'll switch to an active audio category
         // so that there's sound
         audioDisposable = AudioController.sharedController.systemVolume.producer
@@ -95,8 +100,11 @@ class ReceiveViewController : UIViewController {
     }
     
     @IBAction func advance() {
-        vm.seekNextVideo()
-        Async.main { self.player.play() }
+        if vm.seekNextVideo() {
+            Async.main { self.player.play() }
+        } else {
+            delegate?.didFinishPlaylist(self)
+        }
     }
 }
 

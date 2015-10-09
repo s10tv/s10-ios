@@ -117,9 +117,6 @@ extension ChatHistoryViewController : SCPlayerDelegate {
         }
     }
     
-    func player(player: SCPlayer, didReachEndForItem item: AVPlayerItem) {
-        advance()
-    }
 }
 
 extension ChatHistoryViewController : UICollectionViewDelegate {
