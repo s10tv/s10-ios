@@ -14,6 +14,10 @@ import SwipeView
 import Core
 
 class ConversationViewController : BaseViewController {
+    enum Page : Int {
+        case ChatHistory = 0
+        case Producer = 1
+    }
 
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
@@ -23,11 +27,13 @@ class ConversationViewController : BaseViewController {
     @IBOutlet weak var playerEmptyView: UIView!
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var newMessagesHint: UIView!
+    @IBOutlet weak var receiveContainer: UIView!
     @IBOutlet var producerContainer: UIView!
-    @IBOutlet var playerContainer: UIView!
+    @IBOutlet var chatHistoryContainer: UIView!
     @IBOutlet var tutorialContainer: UIView!
     
-    var player: PlayerViewController!
+    var receiver: ReceiveViewController!
+    var chatHistory: ChatHistoryViewController!
     var producer: ProducerViewController!
     var tutorial: ConversationTutorialViewController!
     var vm: ConversationViewModel!
@@ -44,26 +50,27 @@ class ConversationViewController : BaseViewController {
         coverImageView.sd_image <~ vm.cover
         
         let avkit = UIStoryboard(name: "Conversation", bundle: nil)
+        receiver = avkit.instantiateViewControllerWithIdentifier("Receive") as! ReceiveViewController
+        chatHistory = avkit.instantiateViewControllerWithIdentifier("ChatHistory") as! ChatHistoryViewController
         producer = avkit.instantiateViewControllerWithIdentifier("Producer") as! ProducerViewController
         producer.producerDelegate = self
-        player = avkit.instantiateViewControllerWithIdentifier("Player") as! PlayerViewController
-        player.vm.delegate = self
-        player.vm.playlist <~ (vm.messages.producer.map {
-            $0.map { (msg: MessageViewModel) in msg as MessageViewModel }
-        })
-        vm.playing <~ player.vm.isPlaying
         
-        addChildViewController(player)
-        playerContainer.addSubview(player.view)
-        player.view.makeEdgesEqualTo(playerContainer)
-        player.didMoveToParentViewController(self)
+        addChildViewController(receiver)
+        receiveContainer.addSubview(receiver.view)
+        receiver.view.makeEdgesEqualTo(receiveContainer)
+        receiver.didMoveToParentViewController(self)
+        
+        addChildViewController(chatHistory)
+        chatHistoryContainer.addSubview(chatHistory.view)
+        chatHistory.view.makeEdgesEqualTo(chatHistoryContainer)
+        chatHistory.didMoveToParentViewController(self)
         
         addChildViewController(producer)
         producerContainer.insertSubview(producer.view, atIndex: 0)
         producer.view.makeEdgesEqualTo(producerContainer)
         producer.didMoveToParentViewController(self)
         
-        [playerContainer, producerContainer].each {
+        [chatHistoryContainer, producerContainer].each {
             $0.bounds = view.bounds
             $0.removeFromSuperview()
             $0.translatesAutoresizingMaskIntoConstraints = true
@@ -71,14 +78,14 @@ class ConversationViewController : BaseViewController {
     
         swipeView.vertical = true
         swipeView.bounces = false
-        swipeView.currentItemIndex = vm.page.value.rawValue
+        swipeView.currentItemIndex = Page.Producer.rawValue
         swipeView.dataSource = self
         swipeView.delegate = self
         swipeView.layoutIfNeeded()
         
         if !vm.showTutorial {
             tutorialContainer.removeFromSuperview()
-            player.autoplayNextUnread()
+//            player.autoplayNextUnread()
         } else {
             playerEmptyView.hidden = true
         }
@@ -125,7 +132,7 @@ class ConversationViewController : BaseViewController {
     
     // MARK: Actions
     
-    func showPage(page: ConversationViewModel.Page, animated: Bool = false) {
+    func showPage(page: Page, animated: Bool = false) {
         swipeView.scrollToItemAtIndex(page.rawValue, duration: animated ? 0.25 : 0)
     }
     
@@ -135,12 +142,7 @@ class ConversationViewController : BaseViewController {
     }
     
     @IBAction func didTapNewMessagesHint(sender: AnyObject) {
-        showPage(.Player, animated: true)
-    }
-    
-    @IBAction func didTapReplay(sender: AnyObject) {
-        // TODO: maybe better method name to better align with semantic?
-        player.advance()
+        // TODO: Do something
     }
     
     @IBAction func showMoreOptions(sender: AnyObject) {
@@ -194,10 +196,8 @@ extension ConversationViewController : ConversationTutorialDelegate {
     func tutorialDidFinish() {
         playerEmptyView.hidden = false
         tutorialContainer.removeFromSuperview()
-        if player.vm.nextVideo() != nil {
-            player.advance()
-        }
         vm.finishTutorial()
+        // TODO: Move onto playing the first received video
     }
 }
 
@@ -209,19 +209,17 @@ extension ConversationViewController : SwipeViewDataSource {
     }
     
     func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, reusingView view: UIView!) -> UIView! {
-        return index == ConversationViewModel.Page.Player.rawValue ? playerContainer : producerContainer
+        return index == Page.ChatHistory.rawValue ? chatHistoryContainer : producerContainer
     }
 }
 
 extension ConversationViewController : SwipeViewDelegate {
     func swipeViewCurrentItemIndexDidChange(swipeView: SwipeView!) {
-        if swipeView.currentItemIndex == ConversationViewModel.Page.Player.rawValue {
-            Globals.analyticsService.screen("Conversation - Player")
-        } else if swipeView.currentItemIndex == ConversationViewModel.Page.Producer.rawValue {
+        if swipeView.currentItemIndex == Page.ChatHistory.rawValue {
+            Globals.analyticsService.screen("Conversation - ChatHistory")
+        } else if swipeView.currentItemIndex == Page.Producer.rawValue {
             Globals.analyticsService.screen("Conversation - Recorder")
         }
-
-        vm.page.value = ConversationViewModel.Page(rawValue: swipeView.currentItemIndex)!
     }
 }
 
@@ -246,27 +244,6 @@ extension ConversationViewController : ProducerDelegate {
                 video.duration = duration
                 self.vm.sendVideo(video)
             }
-        }
-    }
-}
-
-// MARK: - Player Delegate
-
-extension ConversationViewController : PlayerDelegate {
-    func playerDidFinishPlaylist(player: PlayerViewModel) {
-//        showPage(.Producer, animated: true)
-    }
-    
-    func player(player: PlayerViewModel, willPlayVideo video: MessageViewModel) {
-        vm.currentMessage.value = video
-    }
-    
-    func player(player: PlayerViewModel, didPlayVideo video: MessageViewModel) {
-        vm.currentMessage.value = nil
-        Globals.analyticsService.track("Viewed Message", properties:[
-            "messageId": video.messageId])
-        if video.unread {
-            vm.openMessage(video)
         }
     }
 }

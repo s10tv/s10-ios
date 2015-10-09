@@ -117,6 +117,9 @@ extension Conversation {
         return allPlayableMessages(meteor).filter { $0.unread }
     }
     
+    // NOTE: ManagedObjectContext changes are ignored
+    // So if video is removed nothing will happen
+    
     func allPlayableMessagesProperty(meteor: MeteorService) -> ArrayProperty<MessageViewModel> {
         let updates = unsafeNewRealm().notifier().map { _ in
             return self.allPlayableMessages(meteor)

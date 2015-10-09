@@ -32,39 +32,22 @@ func messageLoader(meteor: MeteorService, conversation: Conversation) -> () -> [
 
 // Class or struct?
 public class ConversationViewModel {
-    public enum Page : Int {
-        case Player = 0
-        case Producer = 1
-    }
-    public enum State {
-        case PlaybackStopped
-        case PlaybackPlaying
-        case RecordIdle
-        case RecordCapturing
-    }
-
     let meteor: MeteorService
     let taskService: TaskService
-    let _messages: MutableProperty<[MessageViewModel]>
-    let _hasUnreadMessage = MutableProperty(true)
     let conversation: Conversation
     let subscription: MeteorSubscription?
     
     public let playing: MutableProperty<Bool>
     public let recording: MutableProperty<Bool>
-    public let page: MutableProperty<Page>
     
-    public let state: PropertyOf<State>
     public let avatar: PropertyOf<Image?>
     public let cover: PropertyOf<Image?>
     public let displayName: PropertyOf<String>
     public let displayStatus: ProducerProperty<String>
     public let busy: ProducerProperty<Bool>
-    public let messages: PropertyOf<[MessageViewModel]>
     public let hideNewMessagesHint: PropertyOf<Bool>
     public let showTutorial: Bool
     
-    public let currentMessage: MutableProperty<MessageViewModel?>
     public let receiveVM: ReceiveViewModel
     public let chatHistoryVM: ChatHistoryViewModel
   
@@ -72,35 +55,16 @@ public class ConversationViewModel {
         self.meteor = meteor
         self.taskService = taskService
         self.conversation = conversation
-        self.subscription = conversation.connection?.documentID.map {
+        subscription = conversation.connection?.documentID.map {
             meteor.subscribe("messages-by-connection", $0)
         }
-        let loadMessages = messageLoader(meteor, conversation: conversation)
-        let showTutorial = UD.showPlayerTutorial.value ?? true
-        
-        self.showTutorial = showTutorial
+        showTutorial = (UD.showPlayerTutorial.value ?? true)
         
         receiveVM = ReceiveViewModel(meteor: meteor, conversation: conversation)
         chatHistoryVM = ChatHistoryViewModel(meteor: meteor, conversation: conversation)
         
-        _messages = MutableProperty(loadMessages())
-        messages = PropertyOf(_messages)
         playing = MutableProperty(false)
         recording = MutableProperty(false)
-        page = MutableProperty((_messages.value.count > 0 || showTutorial) ? .Player : .Producer)
-        state = PropertyOf(.PlaybackStopped, combineLatest(
-            page.producer,
-            playing.producer,
-            recording.producer
-        ).map {
-            switch $0 {
-            case .Player: return $1 ? .PlaybackPlaying : .PlaybackStopped
-            case .Producer: return $2 ? .RecordCapturing : .RecordIdle
-            }
-        })
-        
-        currentMessage = MutableProperty(nil)
-        
         displayStatus = conversation.pStatus()
         busy = conversation.pBusy()
         
@@ -116,11 +80,7 @@ public class ConversationViewModel {
         }
         
         // TODO: Properly implement me taking into account both connection case as well as user case
-        hideNewMessagesHint = PropertyOf(_hasUnreadMessage)
-        
-        // NOTE: ManagedObjectContext changes are ignored
-        // So if video is removed nothing will happen
-        _messages <~ unsafeNewRealm().notifier().map { _ in loadMessages() }.skipRepeats { $0 == $1 }
+        hideNewMessagesHint = PropertyOf(true, receiveVM.playlist.producer.map { $0.count == 0 })
     }
     
     public func finishTutorial() {

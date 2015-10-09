@@ -1153,20 +1153,24 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jtm-KQ-nId" customClass="SwipeView">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jtm-KQ-nId" customClass="SwipeView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </view>
-                            <containerView opaque="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h0t-94-KVm">
-                                <rect key="frame" x="0.0" y="64" width="375" height="1136"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="69M-k7-fVV" userLabel="Receive Container">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h0t-94-KVm">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <connections>
                                     <segue destination="6pB-a5-0KZ" kind="embed" id="4k6-PP-xo1"/>
                                 </connections>
                             </containerView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o5h-1f-xqR" userLabel="Producer Container">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o5h-1f-xqR" userLabel="Producer Container">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="yZe-l1-1Cf" userLabel="New Messages Hint">
-                                        <rect key="frame" x="121" y="100" width="135" height="30"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yZe-l1-1Cf" userLabel="New Messages Hint">
+                                        <rect key="frame" x="232.5" y="100" width="135" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="new messages" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="80" translatesAutoresizingMaskIntoConstraints="NO" id="TF6-BS-vja">
                                                 <rect key="frame" x="34" y="6.5" width="86" height="17.5"/>
@@ -1203,21 +1207,21 @@
                                     <constraint firstItem="yZe-l1-1Cf" firstAttribute="top" secondItem="o5h-1f-xqR" secondAttribute="top" constant="100" id="mN3-LY-gET"/>
                                 </constraints>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Ez-Ho-vPa" userLabel="Player Container">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Ez-Ho-vPa" userLabel="Chat History Container">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="sample-photo" translatesAutoresizingMaskIntoConstraints="NO" id="xcA-cM-lGe" userLabel="Cover Image">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-photo" translatesAutoresizingMaskIntoConstraints="NO" id="xcA-cM-lGe" userLabel="Cover Image">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                     </imageView>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YAq-N9-nMj" userLabel="Cover Overlay">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YAq-N9-nMj" userLabel="Cover Overlay">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
-                                    <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="AdU-B0-hmM" userLabel="Empty View">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AdU-B0-hmM" userLabel="Empty View">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
-                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lf3-Y8-ztX" userLabel="Swipe Up To Reply Hint">
-                                                <rect key="frame" x="230" y="1129" width="138" height="51"/>
+                                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lf3-Y8-ztX" userLabel="Swipe Up To Reply Hint">
+                                                <rect key="frame" x="231" y="449" width="138" height="51"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up to send video" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="180" translatesAutoresizingMaskIntoConstraints="NO" id="BEd-v4-YDM">
                                                         <rect key="frame" x="0.0" y="0.0" width="137.5" height="17.5"/>
@@ -1239,8 +1243,8 @@
                                                     <constraint firstAttribute="centerX" secondItem="6FU-Of-cdK" secondAttribute="centerX" id="x7V-oe-v9Q"/>
                                                 </constraints>
                                             </view>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="A simple hello can lead to a million things" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="250" translatesAutoresizingMaskIntoConstraints="NO" id="D2N-Vt-lOa">
-                                                <rect key="frame" x="70" y="576" width="234" height="49"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A simple hello can lead to a million things" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="250" translatesAutoresizingMaskIntoConstraints="NO" id="D2N-Vt-lOa">
+                                                <rect key="frame" x="182.5" y="276" width="234" height="49"/>
                                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="20"/>
                                                 <color key="textColor" red="0.92926174402236938" green="0.92917501926422119" blue="0.94562381505966187" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1277,17 +1281,21 @@
                             <constraint firstItem="jtm-KQ-nId" firstAttribute="leading" secondItem="6Ez-Ho-vPa" secondAttribute="leading" id="ADH-Mj-nDz"/>
                             <constraint firstItem="h0t-94-KVm" firstAttribute="top" secondItem="3df-Wc-RQz" secondAttribute="bottom" id="RsR-1k-sYL"/>
                             <constraint firstAttribute="trailing" secondItem="jtm-KQ-nId" secondAttribute="trailing" id="Xgw-EM-WM3"/>
+                            <constraint firstItem="69M-k7-fVV" firstAttribute="leading" secondItem="oxw-6G-nOi" secondAttribute="leading" id="YBk-1r-LuO"/>
                             <constraint firstItem="o5h-1f-xqR" firstAttribute="trailing" secondItem="jtm-KQ-nId" secondAttribute="trailing" id="YSM-WN-ny3"/>
                             <constraint firstItem="o5h-1f-xqR" firstAttribute="top" secondItem="jtm-KQ-nId" secondAttribute="top" id="dmN-Vh-nPG"/>
                             <constraint firstItem="o5h-1f-xqR" firstAttribute="leading" secondItem="jtm-KQ-nId" secondAttribute="leading" id="efp-cX-hv9"/>
                             <constraint firstItem="jtm-KQ-nId" firstAttribute="leading" secondItem="oxw-6G-nOi" secondAttribute="leading" id="hdX-4D-O4d"/>
                             <constraint firstItem="jtm-KQ-nId" firstAttribute="top" secondItem="6Ez-Ho-vPa" secondAttribute="top" id="jGG-pE-mpV"/>
+                            <constraint firstAttribute="top" secondItem="69M-k7-fVV" secondAttribute="top" id="jGG-x7-0RD"/>
                             <constraint firstAttribute="bottom" secondItem="jtm-KQ-nId" secondAttribute="bottom" id="jNh-rn-2bA"/>
+                            <constraint firstAttribute="bottom" secondItem="69M-k7-fVV" secondAttribute="bottom" id="jrA-Gh-KGy"/>
                             <constraint firstItem="o5h-1f-xqR" firstAttribute="bottom" secondItem="jtm-KQ-nId" secondAttribute="bottom" id="kxt-o3-2P2"/>
                             <constraint firstItem="jtm-KQ-nId" firstAttribute="bottom" secondItem="6Ez-Ho-vPa" secondAttribute="bottom" id="lrE-st-Cu5"/>
                             <constraint firstItem="h0t-94-KVm" firstAttribute="leading" secondItem="oxw-6G-nOi" secondAttribute="leading" id="nEI-uc-XXE"/>
                             <constraint firstAttribute="trailing" secondItem="h0t-94-KVm" secondAttribute="trailing" id="nN5-sx-kzs"/>
                             <constraint firstItem="so0-au-wZg" firstAttribute="top" secondItem="h0t-94-KVm" secondAttribute="bottom" id="opC-vU-DXZ"/>
+                            <constraint firstAttribute="trailing" secondItem="69M-k7-fVV" secondAttribute="trailing" id="sgs-pn-NoH"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="ueA-O6-Djt">
@@ -1363,12 +1371,13 @@
                     <connections>
                         <outlet property="activityLabel" destination="Xhe-ik-k94" id="hWw-q1-f3l"/>
                         <outlet property="avatarView" destination="uD7-V4-mF6" id="iA7-v4-S7S"/>
+                        <outlet property="chatHistoryContainer" destination="6Ez-Ho-vPa" id="wo7-x3-Y9D"/>
                         <outlet property="coverImageView" destination="xcA-cM-lGe" id="Wm5-Yp-u6D"/>
                         <outlet property="nameLabel" destination="e0x-EU-7eq" id="DLz-9l-GuL"/>
                         <outlet property="newMessagesHint" destination="yZe-l1-1Cf" id="wHg-BJ-noc"/>
-                        <outlet property="playerContainer" destination="6Ez-Ho-vPa" id="aAh-6f-uZc"/>
                         <outlet property="playerEmptyView" destination="AdU-B0-hmM" id="nzz-Xh-Xjp"/>
                         <outlet property="producerContainer" destination="o5h-1f-xqR" id="nSm-94-frg"/>
+                        <outlet property="receiveContainer" destination="69M-k7-fVV" id="M3I-Lu-hwN"/>
                         <outlet property="spinner" destination="b5e-73-k20" id="qwm-1K-pem"/>
                         <outlet property="swipeView" destination="jtm-KQ-nId" id="tMC-TD-PIu"/>
                         <outlet property="tutorialContainer" destination="h0t-94-KVm" id="rw3-NV-Nao"/>
