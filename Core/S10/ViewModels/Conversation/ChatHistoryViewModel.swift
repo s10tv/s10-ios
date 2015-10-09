@@ -94,7 +94,7 @@ public class ChatHistoryViewModel {
     // MARK: -
     
     private func seekVideo(video: MessageViewModel?) -> Bool {
-        Log.debug("Will seek video with id \(video?.uniqueId) url: \(video?.url)")
+        Log.debug("Will seek video with id \(video) url: \(video?.url)")
         currentVideoPosition.value = 0
         currentVideo.value = video
         return video != nil
@@ -102,9 +102,7 @@ public class ChatHistoryViewModel {
     
     private func currentMessageIndex() -> Int? {
         for (index, v) in messages.array.enumerate() {
-            if v.uniqueId == currentVideo.value?.uniqueId {
-                return index
-            }
+            if v == currentVideo.value { return index }
         }
         return nil
     }
