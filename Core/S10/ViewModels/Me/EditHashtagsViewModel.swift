@@ -57,7 +57,7 @@ public struct EditHashtagsViewModel {
     
     public func autocompleteHashtags(hint: String) -> Future<[Hashtag], NSError> {
         let promise = Promise<[Hashtag], NSError>()
-        promise.success(hashtags.array)
+        promise.success(hint.length > 0 ? hashtags.array : [])
         return promise.future
     }
     

@@ -50,8 +50,8 @@ target :Core do
 
         # Fork is needed to work around the crash
         pod 'DZNEmptyDataSet', :git => 'https://github.com/dzenbot/DZNEmptyDataSet.git'
-        # Master since cocoapods is pretty outdated for some
-        pod 'MLPAutoCompleteTextField', :git => 'https://github.com/EddyBorja/MLPAutoCompleteTextField.git'reason
+        # Master since cocoapods is pretty outdated for some reason
+        pod 'MLPAutoCompleteTextField', :git => 'https://github.com/EddyBorja/MLPAutoCompleteTextField.git'
         pod 'AMPopTip', '~> 0.9'
         pod 'JSBadgeView', '~> 1.4'
         pod 'JVFloatLabeledTextField', '~> 1.1'
