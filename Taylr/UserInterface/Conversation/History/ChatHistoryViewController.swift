@@ -24,7 +24,6 @@ class ChatHistoryViewController : UIViewController {
     @IBOutlet weak var timelineView: UICollectionView!
     
     var vm: ChatHistoryViewModel!
-    var userPaused: Bool = false
     var player: SCPlayer { return playerView.player! }
     var audioDisposable: Disposable?
     
@@ -68,8 +67,7 @@ class ChatHistoryViewController : UIViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.player.beginSendingPlayMessages()
-        if !self.userPaused { self.player.play() }
+        player.beginSendingPlayMessages()
         // Whenever user presses volume button we'll switch to an active audio category
         // so that there's sound
         audioDisposable = AudioController.sharedController.systemVolume.producer
@@ -82,7 +80,7 @@ class ChatHistoryViewController : UIViewController {
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         player.endSendingPlayMessages()
-        player.pause()
+        vm.finishPlayback()
         audioDisposable?.dispose()
     }
     
@@ -102,7 +100,6 @@ class ChatHistoryViewController : UIViewController {
     
     @IBAction func playOrPause() {
         player.isPlaying ? player.pause() : player.play()
-        userPaused = !player.isPlaying
     }
     
     @IBAction func advance() {
