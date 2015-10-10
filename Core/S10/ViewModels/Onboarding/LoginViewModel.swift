@@ -24,9 +24,9 @@ public enum AccountState : String {
     
     public var onboardingNeeded: Bool {
         switch self {
-        case .Indeterminate, .LoggedInButCodeDisabled, .Onboarded:
+        case .Indeterminate, .Onboarded:
             return false
-        case .LoggedOut, .LoggedIn:
+        case .LoggedOut, .LoggedIn, .LoggedInButCodeDisabled:
             return true
         }
     }
