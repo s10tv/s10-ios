@@ -141,7 +141,7 @@ class ConversationViewController : BaseViewController {
     
     func showReceiver() {
         receiveContainer.hidden = false
-        receiver.advance()
+        receiver.player.play()
     }
     
     func hideReceiver() {
@@ -158,7 +158,7 @@ class ConversationViewController : BaseViewController {
     }
     
     @IBAction func didTapNewMessagesHint(sender: AnyObject) {
-        // TODO: Do something
+        showReceiver()
     }
     
     @IBAction func showMoreOptions(sender: AnyObject) {

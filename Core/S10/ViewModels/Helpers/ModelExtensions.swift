@@ -107,6 +107,12 @@ extension Message {
     }
 }
 
+// MAJOR TODO: 
+// 1) We need to show videos which are not locally stored on device. Stream if need be
+// 2) Pre-download videos to watch via BackgroundURLSession
+// 3) Respond to NSManagedObjectContext changes, not just Realm changes
+// 4) Purge cache for old videos from device
+
 extension Conversation {
     func allPlayableMessages(meteor: MeteorService) -> [MessageViewModel] {
         // TODO: Move this off the main thread

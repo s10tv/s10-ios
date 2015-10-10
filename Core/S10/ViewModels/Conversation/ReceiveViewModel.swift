@@ -11,7 +11,6 @@ import ReactiveCocoa
 
 public class ReceiveViewModel {
     private let currentVideoPosition = MutableProperty<NSTimeInterval>(0)
-    private let _currentVideo = MutableProperty<MessageViewModel?>(nil)
     private let _isPlaying = MutableProperty(false)
     private let meteor: MeteorService
     
@@ -24,7 +23,7 @@ public class ReceiveViewModel {
     init(meteor: MeteorService, conversation: Conversation) {
         self.meteor = meteor
         playlist = conversation.unreadPlayableMessagesProperty(meteor)
-        currentVideo = PropertyOf(_currentVideo)
+        currentVideo = PropertyOf(nil, playlist.producer.map { $0.first }.skipRepeats { $0 == $1 })
         isPlaying = PropertyOf(_isPlaying)
         currentVideoProgress = PropertyOf(0, combineLatest(
             currentVideo.producer,
@@ -33,21 +32,19 @@ public class ReceiveViewModel {
             video.map { Float(min(time / $0.duration, 1)) } ?? 0
         })
         totalDurationLeft = PropertyOf("", combineLatest(
-            currentVideo.producer,
             currentVideoPosition.producer,
             playlist.producer
-        ).map { video, position, playlist in
-            let total = playlist.map { $0.duration }.reduce(0, combine: +) + (video?.duration ?? 0)
+        ).map { position, playlist in
+            let total = playlist.map { $0.duration }.reduce(0, combine: +)
             let secondsLeft = Int(ceil(max(total - position, 0)))
             return "\(secondsLeft)"
         })
     }
     
     public func seekNextVideo() -> Bool {
-        if let video = currentVideo.value {
+        if let video = playlist.dequeue() {
             meteor.openMessage(video.message)
         }
-        _currentVideo.value = playlist.dequeue()
         return currentVideo.value != nil
     }
     
