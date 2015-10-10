@@ -51,6 +51,10 @@ public struct EditHashtagsViewModel {
         hashtags.array = array
     }
     
+    public func selectHashtag(text: String) {
+        hashtags.array.insert(Hashtag(text: text, selected: true), atIndex: 0)
+    }
+    
     public func autocompleteHashtags(hint: String) -> Future<[Hashtag], NSError> {
         let promise = Promise<[Hashtag], NSError>()
         promise.success(hashtags.array)

@@ -82,7 +82,8 @@ extension ArrayProperty {
     public func dequeue() -> T? {
         if let first = array.first {
             array.removeAtIndex(0)
-            sendNext(changesSink, .Delete(0))
+            // BIG TODO: array.removeAtindex actually triggers .Reset. Fix me
+//            sendNext(changesSink, .Delete(0))
             return first
         }
         return nil
@@ -90,7 +91,8 @@ extension ArrayProperty {
     
     public func enqueue(element: T) {
         array.append(element)
-        sendNext(changesSink, .Insert(array.count))
+        // BIG TODO: array.append actually triggers .Reset
+//        sendNext(changesSink, .Insert(array.count-1))
     }
 }
 

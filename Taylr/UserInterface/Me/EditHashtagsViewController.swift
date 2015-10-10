@@ -23,6 +23,7 @@ class EditHashtagsViewController : UIViewController {
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.estimatedItemSize = CGSizeMake(80, 35)
         textField.autoCompleteTableAppearsAsKeyboardAccessory = true
+        textField.shouldResignFirstResponderFromKeyboardAfterSelectionOfAutoCompleteRows = false
         textField.autocorrectionType = .No
         
         vm = EditHashtagsViewModel(meteor: Meteor)
@@ -68,6 +69,11 @@ extension EditHashtagsViewController : MLPAutoCompleteTextFieldDelegate {
         return false
     }
     
+    func autoCompleteTextField(textField: MLPAutoCompleteTextField!, didSelectAutoCompleteString selectedString: String!, withAutoCompleteObject selectedObject: MLPAutoCompletionObject!, forRowAtIndexPath indexPath: NSIndexPath!) {
+        vm.selectHashtag(selectedString.substringFromIndex(1))
+        textField.text = nil
+        textField.reloadData()
+    }
 }
 
 extension EditHashtagsViewController : MLPAutoCompleteTextFieldDataSource {
