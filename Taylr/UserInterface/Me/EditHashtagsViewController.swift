@@ -46,7 +46,7 @@ extension EditHashtagsViewController : UICollectionViewDelegateFlowLayout {
         let hashtag = vm.hashtags.array[indexPath.item]
         var size = (hashtag.displayText as NSString).boundingRectWithSize(CGSizeMake(1000, 1000),
             options: [], attributes: [NSFontAttributeName: HashtagFont], context: nil).size
-        size.width += 8 * 2
+        size.width += 10 * 2
         size.height += 8 * 2
         return size
     }
