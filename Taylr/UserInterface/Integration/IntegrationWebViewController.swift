@@ -46,7 +46,7 @@ class IntegrationWebViewController: UIViewController {
     
     func tryLinkClientSide(integrationId: String) -> Bool {
         if let future = integrationDelegate?.linkClientSide(integrationId) {
-            wrapFuture(showProgress: true) { future }.onSuccess {
+            wrapFuture(showProgress: false) { future }.onSuccess {
                 self.dismissViewController(animated: true)
             }
             return true

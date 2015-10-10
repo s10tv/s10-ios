@@ -90,6 +90,7 @@ extension IntegrationsViewController : ClientIntegrationDelegate {
             // extended permissions
             "email"
         ]
+        
         fb.logInWithReadPermissions(readPerms, fromViewController: nil) { result, error in
             // Todo: check result.grantedPermissions is complete
             if error != nil {
@@ -101,6 +102,10 @@ extension IntegrationsViewController : ClientIntegrationDelegate {
             } else {
                 Log.debug("Successfulled received token from facebook")
                 Async.main {
+                    PKHUD.showActivity()
+                    promise.future.deliverOn(UIScheduler()).onComplete { _ in
+                        PKHUD.hide(animated: false)
+                    }
                     Meteor.addService("facebook", accessToken: result.token.tokenString).onSuccess {
                         promise.success()
                     }.onFailure { _ in
