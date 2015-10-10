@@ -2,6 +2,7 @@
 
 public enum CollectionViewCellreuseIdentifier : String {
     case CandidateCell = "CandidateCell"
+    case HashtagCell = "HashtagCell"
     case IntegrationCell = "IntegrationCell"
     case ProfileAttributeCell = "ProfileAttributeCell"
     case ProfileIconCell = "ProfileIconCell"
@@ -56,7 +57,6 @@ public enum ViewControllerStoryboardIdentifier : String {
     case Editor = "Editor"
     case History = "History"
     case Login = "Login"
-    case Player = "Player"
     case Producer = "Producer"
     case Receive = "Receive"
     case Recorder = "Recorder"
