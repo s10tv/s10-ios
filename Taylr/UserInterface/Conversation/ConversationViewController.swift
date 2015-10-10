@@ -30,12 +30,10 @@ class ConversationViewController : BaseViewController {
     @IBOutlet weak var receiveContainer: UIView!
     @IBOutlet var producerContainer: UIView!
     @IBOutlet var chatHistoryContainer: UIView!
-    @IBOutlet var tutorialContainer: UIView!
     
     var receiver: ReceiveViewController!
     var chatHistory: ChatHistoryViewController!
     var producer: ProducerViewController!
-    var tutorial: ConversationTutorialViewController!
     var vm: ConversationViewModel!
 
     override func viewDidLoad() {
@@ -81,20 +79,16 @@ class ConversationViewController : BaseViewController {
     
         swipeView.vertical = true
         swipeView.bounces = false
-        swipeView.currentItemIndex = Page.Producer.rawValue
+        swipeView.currentItemIndex = vm.showTutorial ? Page.ChatHistory.rawValue
+                                                     : Page.Producer.rawValue
         swipeView.dataSource = self
         swipeView.delegate = self
         swipeView.layoutIfNeeded()
-        
-        if !vm.showTutorial {
-            tutorialContainer.removeFromSuperview()
-            if vm.hasUnreadMessage.value {
-                showReceiver()
-            } else {
-                hideReceiver()
-            }
+
+        if vm.hasUnreadMessage.value {
+            showReceiver()
         } else {
-            playerEmptyView.hidden = true
+            hideReceiver()
         }
     }
     
@@ -131,9 +125,6 @@ class ConversationViewController : BaseViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ProfileViewController {
             vc.vm = vm.profileVM()
-        }
-        if let vc = segue.destinationViewController as? ConversationTutorialViewController {
-            vc.delegate = self
         }
     }
     
@@ -206,17 +197,6 @@ class ConversationViewController : BaseViewController {
     }
 }
 
-// MARK: - Tutorial
-
-extension ConversationViewController : ConversationTutorialDelegate {
-    func tutorialDidFinish() {
-        playerEmptyView.hidden = false
-        tutorialContainer.removeFromSuperview()
-        vm.finishTutorial()
-        // TODO: Move onto playing the first received video
-    }
-}
-
 // MARK: - SwipeView Delegate & DataSource
 
 extension ConversationViewController : SwipeViewDataSource {
@@ -235,6 +215,7 @@ extension ConversationViewController : SwipeViewDelegate {
             Globals.analyticsService.screen("Conversation - ChatHistory")
         } else if swipeView.currentItemIndex == Page.Producer.rawValue {
             Globals.analyticsService.screen("Conversation - Recorder")
+            vm.finishTutorial()
         }
     }
 }

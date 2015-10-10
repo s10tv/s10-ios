@@ -174,7 +174,6 @@
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
 		EAC1BECA1BC70CB200864B8C /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC1BEC51BC70CB200864B8C /* ChatsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EAC1BECB1BC70CB200864B8C /* ConnectionCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC1BEC61BC70CB200864B8C /* ConnectionCells.swift */; settings = {ASSET_TAGS = (); }; };
-		EAC1BEE11BC70E0E00864B8C /* ConversationTutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC1BED01BC70E0E00864B8C /* ConversationTutorialViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EAC1BEE21BC70E0E00864B8C /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC1BED11BC70E0E00864B8C /* ConversationViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EAC1BEE51BC70E0E00864B8C /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC1BED71BC70E0E00864B8C /* EditorViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EAC1BEE61BC70E0E00864B8C /* ProducerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC1BED81BC70E0E00864B8C /* ProducerViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -404,7 +403,6 @@
 		EABF2AB41AD04659005880E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EAC1BEC51BC70CB200864B8C /* ChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		EAC1BEC61BC70CB200864B8C /* ConnectionCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionCells.swift; sourceTree = "<group>"; };
-		EAC1BED01BC70E0E00864B8C /* ConversationTutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationTutorialViewController.swift; sourceTree = "<group>"; };
 		EAC1BED11BC70E0E00864B8C /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		EAC1BED71BC70E0E00864B8C /* EditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		EAC1BED81BC70E0E00864B8C /* ProducerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProducerViewController.swift; sourceTree = "<group>"; };
@@ -1027,7 +1025,6 @@
 				EAC1BED31BC70E0E00864B8C /* Receive */,
 				EAC1BED21BC70E0E00864B8C /* History */,
 				EAC1BEEE1BC70E3600864B8C /* Conversation.storyboard */,
-				EAC1BED01BC70E0E00864B8C /* ConversationTutorialViewController.swift */,
 				EAC1BED11BC70E0E00864B8C /* ConversationViewController.swift */,
 			);
 			path = Conversation;
@@ -1803,7 +1800,6 @@
 				EAC1BEEA1BC70E0E00864B8C /* DurationTimer.swift in Sources */,
 				EAA576311BB85FCD00661A4F /* ActivityImageCell.swift in Sources */,
 				EA42D6561BB7C3B400B07526 /* Globals.swift in Sources */,
-				EAC1BEE11BC70E0E00864B8C /* ConversationTutorialViewController.swift in Sources */,
 				EAA576181BB7E6D200661A4F /* CreateProfileViewController.swift in Sources */,
 				EA42D6551BB7C35100B07526 /* AccountService.swift in Sources */,
 				EAA576101BB7E30600661A4F /* RootNavController.swift in Sources */,
