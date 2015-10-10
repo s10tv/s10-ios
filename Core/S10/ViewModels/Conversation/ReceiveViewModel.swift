@@ -10,21 +10,19 @@ import Foundation
 import ReactiveCocoa
 
 public class ReceiveViewModel {
-    private let currentVideoPosition = MutableProperty<NSTimeInterval>(0)
-    private let _isPlaying = MutableProperty(false)
     private let meteor: MeteorService
     
     public let playlist: ArrayProperty<MessageViewModel>
     public let totalDurationLeft: PropertyOf<String>
     public let currentVideo: PropertyOf<MessageViewModel?>
     public let currentVideoProgress: PropertyOf<Float>
-    public let isPlaying: PropertyOf<Bool>
+    public let currentVideoPosition = MutableProperty<NSTimeInterval>(0)
+    public let isPlaying = MutableProperty(false)
     
     init(meteor: MeteorService, conversation: Conversation) {
         self.meteor = meteor
         playlist = conversation.unreadPlayableMessagesProperty(meteor)
         currentVideo = PropertyOf(nil, playlist.producer.map { $0.first }.skipRepeats { $0 == $1 })
-        isPlaying = PropertyOf(_isPlaying)
         currentVideoProgress = PropertyOf(0, combineLatest(
             currentVideo.producer,
             currentVideoPosition.producer
@@ -46,16 +44,6 @@ public class ReceiveViewModel {
             meteor.openMessage(video.message)
         }
         return currentVideo.value != nil
-    }
-    
-    // MARK: - Hooks for PlayerViewController to update state
-    
-    public func updatePlaybackPosition(position: NSTimeInterval) {
-        currentVideoPosition.value = position
-    }
-    
-    public func updateIsPlaying(isPlaying: Bool) {
-        _isPlaying.value = isPlaying
     }
 }
 

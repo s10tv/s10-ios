@@ -37,7 +37,7 @@ class ReceiveViewController : UIViewController {
         playerView.playerLayer!.videoGravity = AVLayerVideoGravityResizeAspectFill
         player.delegate = self
         player.dyn("rate").producer.startWithNext { [weak self] _ in
-            self?.vm.updateIsPlaying(self?.player.isPlaying ?? false)
+            self?.vm.isPlaying.value = self?.player.isPlaying ?? false
         }
         
         overlay.rac_hidden <~ vm.isPlaying
@@ -112,7 +112,7 @@ extension ReceiveViewController : SCPlayerDelegate {
     
     func player(player: SCPlayer, didPlay currentTime: CMTime, loopsCount: Int) {
         if !player.itemDuration.impliedValue && !currentTime.impliedValue {
-            vm.updatePlaybackPosition(currentTime.seconds)
+            vm.currentVideoPosition.value = currentTime.seconds
         }
     }
     
