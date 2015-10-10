@@ -22,16 +22,16 @@ PODS:
   - Fabric (1.5.5):
     - Fabric/Base (= 1.5.5)
   - Fabric/Base (1.5.5)
-  - FBSDKCoreKit (4.6.0):
+  - FBSDKCoreKit (4.7.0):
     - Bolts (~> 1.1)
-    - FBSDKCoreKit/arc (= 4.6.0)
-    - FBSDKCoreKit/no-arc (= 4.6.0)
-  - FBSDKCoreKit/arc (4.6.0):
+    - FBSDKCoreKit/arc (= 4.7.0)
+    - FBSDKCoreKit/no-arc (= 4.7.0)
+  - FBSDKCoreKit/arc (4.7.0):
     - Bolts (~> 1.1)
-  - FBSDKCoreKit/no-arc (4.6.0):
+  - FBSDKCoreKit/no-arc (4.7.0):
     - Bolts (~> 1.1)
     - FBSDKCoreKit/arc
-  - FBSDKLoginKit (4.6.0):
+  - FBSDKLoginKit (4.7.0):
     - FBSDKCoreKit
   - FormatterKit/TimeIntervalFormatter (1.8.0)
   - InflectorKit (0.0.1)
@@ -60,7 +60,7 @@ PODS:
   - OHHTTPStubs/NSURLSession (4.3.0):
     - OHHTTPStubs/Core
   - OHHTTPStubs/OHPathHelpers (4.3.0)
-  - Ouralabs (2.6.0)
+  - Ouralabs (2.7.0)
   - PKHUD (2.2.1)
   - PocketSocket (0.6.4)
   - Quick (0.6.0)
@@ -155,7 +155,7 @@ CHECKOUT OPTIONS:
     :commit: abe23c18d8d3a708a325b5db10231388e1ca5b88
     :git: https://github.com/duemunk/Async.git
   DZNEmptyDataSet:
-    :commit: f5e7aee5db085b8c56247cea6d69babfd4938769
+    :commit: 844f0dccf06887129a0bf763916b03a3efcf7b13
     :git: https://github.com/dzenbot/DZNEmptyDataSet.git
   Meteor:
     :commit: 0f40ef742583cb4b8c2e987121ff1d1f4a6afdfb
@@ -182,8 +182,8 @@ SPEC CHECKSUMS:
   DZNEmptyDataSet: 0ec00bfc230d7450997b60c127afdd0b9f24f3b6
   EDColor: c83f9a61f9f9b3c23d541f1feb561558e29cb088
   Fabric: 190bf1a6eb65f7500de1347d027d2e59a7e53db1
-  FBSDKCoreKit: 9954492d90c5fd65ae831395697a1660360d61f1
-  FBSDKLoginKit: 3d07febbfa884b9878cacba54f705bb41f07d4b6
+  FBSDKCoreKit: eb580bfc2040ad44f4c0b4f4d0befb1d35bce59c
+  FBSDKLoginKit: 01bce8dd3f3a26a023b0ba4ffdde7ef5062889fe
   FormatterKit: bddde83e054edf9d9ee14f9de3b3a5103db256f4
   InflectorKit: 64497199e6764f4d8337cab7f700a77b13d76a73
   JBKenBurnsView: e40d10fcd4fbeb652c29fa431d4748780a4672ff
@@ -194,7 +194,7 @@ SPEC CHECKSUMS:
   NSLogger: 5ed223a2436df96244e033be750656dacdeec034
   ObjectMapper: 0dec0fec1e10b707ba94dd0891580a582ab84cf0
   OHHTTPStubs: 0aec5755528693a165bd616cb79f69387de306a8
-  Ouralabs: af12a235cfc75fc4f6c124e590bea48ff789fb6e
+  Ouralabs: f76d5c1a96f5d63fcc3bb8520c41721cf9469080
   PKHUD: ab3b0260d3f87515b38b59708700113d59441b5b
   PocketSocket: eee7ef375f55b98e7ca79e097d9c61fd688e9494
   Quick: 563686dbcf0ae0f9f7401ac9cd2d786ee1b7f3d7
@@ -212,4 +212,4 @@ SPEC CHECKSUMS:
   TPKeyboardAvoiding: ff1ee4e5a5a0c119b965552af8f183868ea20207
   TwitterCore: 171dbd2f8d55707397f461af5158d987fb34aa36
 
-COCOAPODS: 0.39.0.rc.1
+COCOAPODS: 0.39.0
