@@ -39,7 +39,7 @@ internal class PhotoUploadOperation : AsyncOperation {
             "width" : width,
             "height": height
         ]).flatMap { res -> Future<NSData?, NSError> in
-            let url = NSURL(string: JSON(res!)["videoUrl"].string!)!
+            let url = NSURL(string: JSON(res!)["url"].string!)!
             return self.azure.put(url, data: imageData!, contentType: "image/jpeg")
         }.flatMap { _ in
             return self.meteor.finishTask(taskId)
