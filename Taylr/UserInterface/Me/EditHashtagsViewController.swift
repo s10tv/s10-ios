@@ -20,8 +20,6 @@ class EditHashtagsViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        layout.estimatedItemSize = CGSizeMake(80, 35)
         textField.autoCompleteTableAppearsAsKeyboardAccessory = true
         textField.shouldResignFirstResponderFromKeyboardAfterSelectionOfAutoCompleteRows = false
         textField.autocorrectionType = .No
