@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import ReactiveCocoa
 
 public struct Hashtag {
-    let text: String
+    public let text: String
     
     public var selected: Bool
     public var displayText: String {
@@ -48,6 +49,12 @@ public struct EditHashtagsViewModel {
         var array = hashtags.array
         array[index].selected = !array[index].selected
         hashtags.array = array
+    }
+    
+    public func autocompleteHashtags(hint: String) -> Future<[Hashtag], NSError> {
+        let promise = Promise<[Hashtag], NSError>()
+        promise.success(hashtags.array)
+        return promise.future
     }
     
 }

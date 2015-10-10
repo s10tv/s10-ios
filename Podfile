@@ -48,7 +48,10 @@ target :Core do
         pod 'PKHUD', :git => 'https://github.com/tonyxiao/PKHUD', :branch => 'swift2' # Fork is needed to work around xcasset compilation issue inside pod
         pod 'SCRecorder', '~> 2.5'
 
-        pod 'DZNEmptyDataSet', :git => 'https://github.com/dzenbot/DZNEmptyDataSet.git' # Fork is needed to work around the crash
+        # Fork is needed to work around the crash
+        pod 'DZNEmptyDataSet', :git => 'https://github.com/dzenbot/DZNEmptyDataSet.git'
+        # Master since cocoapods is pretty outdated for some
+        pod 'MLPAutoCompleteTextField', :git => 'https://github.com/EddyBorja/MLPAutoCompleteTextField.git'reason
         pod 'AMPopTip', '~> 0.9'
         pod 'JSBadgeView', '~> 1.4'
         pod 'JVFloatLabeledTextField', '~> 1.1'

@@ -8,33 +8,35 @@
 
 import UIKit
 import ReactiveCocoa
+import MLPAutoCompleteTextField
 import Core
 
 class EditHashtagsViewController : UIViewController {
+    @IBOutlet weak var textField: MLPAutoCompleteTextField!
     @IBOutlet weak var collectionView: UICollectionView!
     
     var vm: EditHashtagsViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        vm = EditHashtagsViewModel(meteor: Meteor)
         
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.estimatedItemSize = CGSizeMake(80, 35)
+        textField.autoCompleteTableAppearsAsKeyboardAccessory = true
+        textField.autocorrectionType = .No
         
-
+        vm = EditHashtagsViewModel(meteor: Meteor)
         collectionView <~ (vm.hashtags, HashtagCell.self)
     }
 }
 
 extension EditHashtagsViewController : UICollectionViewDelegate {
-    
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         vm.toggleHashtagAtIndex(indexPath.item)
     }
 }
 
-// MARK: - 
+// MARK: - UICollectionViewDelegateFlowLayout
 
 // TODO: Eventually use self-sizing UICollectionViewCell instead of hardcoding like this...
 
@@ -48,5 +50,32 @@ extension EditHashtagsViewController : UICollectionViewDelegateFlowLayout {
         size.width += 8 * 2
         size.height += 8 * 2
         return size
+    }
+}
+
+// MARK: - MLPAutoCompleteTextField DataSource / Delegate
+
+//extension Hashtag : MLPAutoCompletionObject {
+//    public func autocompleteString() -> String! {
+//        return text
+//    }
+//}
+
+extension EditHashtagsViewController : MLPAutoCompleteTextFieldDelegate {
+    
+    func autoCompleteTextField(textField: MLPAutoCompleteTextField!, shouldConfigureCell cell: UITableViewCell!, withAutoCompleteString autocompleteString: String!, withAttributedString boldedString: NSAttributedString!, forAutoCompleteObject autocompleteObject: MLPAutoCompletionObject!, forRowAtIndexPath indexPath: NSIndexPath!) -> Bool {
+        cell.textLabel?.text = "#" + autocompleteString
+        return false
+    }
+    
+}
+
+extension EditHashtagsViewController : MLPAutoCompleteTextFieldDataSource {
+    
+    func autoCompleteTextField(textField: MLPAutoCompleteTextField!, possibleCompletionsForString string: String!, completionHandler handler: (([AnyObject]!) -> Void)!) {
+        // TODO: Dispose me
+        vm.autocompleteHashtags(string).onSuccess { hashtags in
+            handler(hashtags.map { $0.text })
+        }
     }
 }
