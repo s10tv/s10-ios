@@ -195,10 +195,12 @@ public class MeteorService : NSObject {
         return meteor.callMethod("me/hashtag/add", params: [hashtag], stub: { _ in
             if let tag = Hashtag.by(HashtagKeys.text.rawValue, value: hashtag).fetchFirst() as? Hashtag {
                 tag.selected = true
-            } else {
-                let tag = Hashtag.create() as! Hashtag
-                tag.selected = true
             }
+            // Figure out how to better latency compensate. This current way results in empty "#" getting created...
+//            else {
+//                let tag = Hashtag.create() as! Hashtag
+//                tag.selected = true
+//            }
             return nil
         }).future.map { _ in }
     }

@@ -35,7 +35,7 @@
                                     <outlet property="autoCompleteDelegate" destination="mcp-Sh-vTg" id="1QS-II-eJr"/>
                                 </connections>
                             </textField>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4jU-jy-5QE">
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4jU-jy-5QE">
                                 <rect key="frame" x="16" y="163" width="568" height="421"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewLayout key="collectionViewLayout" id="30O-RC-K7C" customClass="UICollectionViewLeftAlignedLayout"/>
