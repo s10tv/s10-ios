@@ -104,8 +104,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5D7-hF-WjP">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="5D7-hF-WjP">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="u3H-VG-WK1">
                                     <size key="itemSize" width="355" height="532"/>
@@ -115,7 +115,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TodayCell" id="5p8-O9-cl0" userLabel="TodayCell" customClass="TodayCell" customModule="Taylr" customModuleProvider="target">
-                                        <rect key="frame" x="123" y="10" width="355" height="532"/>
+                                        <rect key="frame" x="122.5" y="10" width="355" height="532"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="532"/>
@@ -352,7 +352,13 @@
                             <constraint firstItem="5D7-hF-WjP" firstAttribute="leading" secondItem="13x-l4-1hd" secondAttribute="leading" id="M36-SB-Bic"/>
                             <constraint firstAttribute="trailing" secondItem="5D7-hF-WjP" secondAttribute="trailing" id="SvD-dR-6Sd"/>
                             <constraint firstItem="5D7-hF-WjP" firstAttribute="top" secondItem="13x-l4-1hd" secondAttribute="top" id="d16-EX-QBy"/>
+                            <constraint firstItem="5D7-hF-WjP" firstAttribute="top" secondItem="zvc-KD-L5T" secondAttribute="bottom" id="ku1-Gf-eZe"/>
                         </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="d16-EX-QBy"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="ic-compass" id="MDC-z7-KZY">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
@@ -391,7 +397,7 @@
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ContactConnectionCell" rowHeight="76" id="pVQ-Tu-jcV" customClass="ContactConnectionCell" customModule="Taylr" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="50" width="600" height="76"/>
+                                        <rect key="frame" x="0.0" y="49.5" width="600" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pVQ-Tu-jcV" id="4hE-7L-rNx">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="76"/>
@@ -1092,7 +1098,7 @@
                                     <action selector="showMoreOptions:" destination="O0f-xd-Ps7" eventType="touchUpInside" id="dil-ff-Yhp"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XK8-Sw-dlb">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XK8-Sw-dlb">
                                 <rect key="frame" x="0.0" y="1095" width="375" height="57"/>
                                 <color key="backgroundColor" red="0.46897470949999998" green="0.27513545750000001" blue="0.68778532739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -1293,7 +1299,7 @@
                             </connections>
                         </barButtonItem>
                         <view key="titleView" contentMode="scaleToFill" id="KPL-gz-OCJ" userLabel="Title View">
-                            <rect key="frame" x="92.5" y="5" width="190" height="34"/>
+                            <rect key="frame" x="205" y="5" width="190" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-profile-pic" translatesAutoresizingMaskIntoConstraints="NO" id="uD7-V4-mF6">
@@ -2224,8 +2230,10 @@
                     <tabBarItem key="tabBarItem" title="" image="ic-me" id="UWs-Vj-PK0">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
-                    <navigationItem key="navigationItem" title="Me" id="m7p-VQ-SA5"/>
-                    <nil key="simulatedTopBarMetrics"/>
+                    <navigationItem key="navigationItem" title="Me" id="m7p-VQ-SA5">
+                        <barButtonItem key="rightBarButtonItem" image="ic-more" id="uUl-q4-5Ad"/>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="600" height="800"/>
                     <connections>
@@ -2751,7 +2759,7 @@
         <image name="sample-photo" width="1242" height="660"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="Fwv-Pj-RXP"/>
         <segue reference="33G-iq-iGB"/>
-        <segue reference="yhs-PQ-k4J"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -48,13 +48,13 @@ class DiscoverViewController : BaseViewController {
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        collectionView.contentInset = UIEdgeInsets(top: 66, left: 0, // HACK ALERT: Hard-coded
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, // HACK ALERT: Hard-coded
                                                 bottom: bottomLayoutGuide.length, right: 0)
         
         let layout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         layout.sectionInset = UIEdgeInsets(inset: 10)
         var itemSize = collectionView.bounds.insetBy(dx: 10, dy: 10).size
-        itemSize.height -= topLayoutGuide.length + bottomLayoutGuide.length
+        itemSize.height -= bottomLayoutGuide.length
         layout.itemSize = itemSize
     }
     
