@@ -189,6 +189,14 @@ public class MeteorService : NSObject {
         }
     }
 
+    func insertHashtag(hashtag: String) -> Future<(), NSError> {
+        return meteor.call("me/hashtag/add", hashtag)
+    }
+
+    func removeHashtag(hashtag: String) -> Future<(), NSError> {
+        return meteor.call("me/hashtag/remove", hashtag)
+    }
+
     // MARK: - Users
 
     func blockUser(user: User) -> Future<(), NSError> {

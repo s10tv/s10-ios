@@ -22,6 +22,13 @@ public struct EditHashtagsViewModel {
         subMyTags = meteor.subscribe("my-hashtags")
         subSuggestedTags = meteor.subscribe("suggested-hashtags")
         collection = meteor.collection("hashtags")
+
+//        let documentKey = METDocumentKey(collectionName: "hashtags", documentID: nil)
+//        return databaseChanges
+//            .filter { $0.affectedDocumentKeys().contains(documentKey) }
+//            .map { $0.changeDetailsForDocumentWithKey(documentKey).fieldsAfterChanges?[field] }
+//            .map { BoxedValue(value: $0) }
+
         hashtags = ArrayProperty([
             Hashtag(text: "eco101", selected: true),
             Hashtag(text: "taylrswift", selected: true),
@@ -38,12 +45,22 @@ public struct EditHashtagsViewModel {
     
     public func toggleHashtagAtIndex(index: Int) {
         var array = hashtags.array
-        array[index].selected = !array[index].selected
-        hashtags.array = array
+
+        if (array[index].selected) {
+            self.meteor.removeHashtag(array[index].text).onComplete { _ in
+
+            }
+        } else {
+            self.meteor.insertHashtag(array[index].text).onComplete { _ in
+
+            }
+        }
     }
     
     public func selectHashtag(text: String) {
-        hashtags.array.insert(Hashtag(text: text, selected: true), atIndex: 0)
+        self.meteor.insertHashtag(text).onComplete { _ in
+            self.hashtags.array.insert(Hashtag(text: text, selected: true), atIndex: 0)
+        }
     }
     
     public func autocompleteHashtags(hint: String) -> Future<[Hashtag], NSError> {
