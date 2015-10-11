@@ -88,14 +88,16 @@ public enum R {
         case settingsDeleteAccountPlaceholder = "SettingsDeleteAccountPlaceholder"
         /// Delete Account
         case settingsDeleteAccountTitle = "SettingsDeleteAccountTitle"
+        /// Give Feedback
+        case settingsFeedbackTitle = "SettingsFeedbackTitle"
         /// Cancel
         case settingsLogoutCancel = "SettingsLogoutCancel"
         /// Delete my account
         case settingsLogoutDeleteAccount = "SettingsLogoutDeleteAccount"
-        /// Just logout
-        case settingsLogoutLogout = "SettingsLogoutLogout"
-        /// What would you like to do?
+        /// Logout
         case settingsLogoutTitle = "SettingsLogoutTitle"
+        /// What would you like to do?
+        case settingsMoreTitle = "SettingsMoreTitle"
         /// Later
         case softUpgradeAlertCancel = "SoftUpgradeAlertCancel"
         /// Please upgrade to the latest version.

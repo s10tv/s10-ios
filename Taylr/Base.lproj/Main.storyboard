@@ -67,7 +67,6 @@
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
-            <string>Cabin-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -115,7 +114,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TodayCell" id="5p8-O9-cl0" userLabel="TodayCell" customClass="TodayCell" customModule="Taylr" customModuleProvider="target">
-                                        <rect key="frame" x="122.5" y="10" width="355" height="532"/>
+                                        <rect key="frame" x="123" y="10" width="355" height="532"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="532"/>
@@ -397,7 +396,7 @@
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ContactConnectionCell" rowHeight="76" id="pVQ-Tu-jcV" customClass="ContactConnectionCell" customModule="Taylr" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49.5" width="600" height="76"/>
+                                        <rect key="frame" x="0.0" y="50" width="600" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pVQ-Tu-jcV" id="4hE-7L-rNx">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="76"/>
@@ -1098,7 +1097,7 @@
                                     <action selector="showMoreOptions:" destination="O0f-xd-Ps7" eventType="touchUpInside" id="dil-ff-Yhp"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XK8-Sw-dlb">
+                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XK8-Sw-dlb">
                                 <rect key="frame" x="0.0" y="1095" width="375" height="57"/>
                                 <color key="backgroundColor" red="0.46897470949999998" green="0.27513545750000001" blue="0.68778532739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -2130,10 +2129,10 @@
                                                         <constraint firstAttribute="height" constant="1" id="le0-XE-nLj"/>
                                                     </constraints>
                                                 </view>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1vU-ZI-jjL">
-                                                    <rect key="frame" x="18" y="14" width="574" height="32"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1vU-ZI-jjL">
+                                                    <rect key="frame" x="18" y="13" width="574" height="33"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="17"/>
-                                                    <state key="normal" title="Contact Support">
+                                                    <state key="normal" title="Contact Us">
                                                         <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -2152,54 +2151,8 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="0Ye-gs-dXY">
-                                        <rect key="frame" x="0.0" y="701" width="600" height="60"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="0Ye-gs-dXY" id="uQq-3h-FqR">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XIi-Nx-kBf" userLabel="Horizontal Divider">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="1"/>
-                                                    <color key="backgroundColor" red="0.93299722671508789" green="0.94112014770507812" blue="0.94931834936141968" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="1" id="CqY-DO-Um0"/>
-                                                    </constraints>
-                                                </view>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zN2-dr-3Im">
-                                                    <rect key="frame" x="18" y="14" width="574" height="32"/>
-                                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="17"/>
-                                                    <state key="normal" title="Logout">
-                                                        <color key="titleColor" red="1" green="0.28846168518066406" blue="0.27259308099746704" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                                    </state>
-                                                    <connections>
-                                                        <action selector="didPressLogout:" destination="lnc-Fm-oTi" eventType="touchUpInside" id="clG-bW-jmo"/>
-                                                    </connections>
-                                                </button>
-                                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ayt-jL-iWo" userLabel="Horizontal Divider">
-                                                    <rect key="frame" x="0.0" y="59" width="600" height="1"/>
-                                                    <color key="backgroundColor" red="0.93299722671508789" green="0.94112014770507812" blue="0.94931834936141968" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="1" id="YGW-JW-45O"/>
-                                                    </constraints>
-                                                </view>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="zN2-dr-3Im" firstAttribute="leading" secondItem="uQq-3h-FqR" secondAttribute="leadingMargin" constant="10" id="Gkp-vW-7Ll"/>
-                                                <constraint firstItem="XIi-Nx-kBf" firstAttribute="leading" secondItem="uQq-3h-FqR" secondAttribute="leading" id="I6z-DQ-9VU"/>
-                                                <constraint firstAttribute="trailing" secondItem="XIi-Nx-kBf" secondAttribute="trailing" id="Jlk-wr-SEP"/>
-                                                <constraint firstAttribute="bottom" secondItem="ayt-jL-iWo" secondAttribute="bottom" id="THe-r8-eLb"/>
-                                                <constraint firstItem="ayt-jL-iWo" firstAttribute="leading" secondItem="uQq-3h-FqR" secondAttribute="leading" id="Wpf-tn-hAs"/>
-                                                <constraint firstAttribute="centerY" secondItem="zN2-dr-3Im" secondAttribute="centerY" id="fcb-w2-f1m"/>
-                                                <constraint firstAttribute="trailing" secondItem="ayt-jL-iWo" secondAttribute="trailing" id="p1N-HR-d3M"/>
-                                                <constraint firstItem="zN2-dr-3Im" firstAttribute="trailing" secondItem="uQq-3h-FqR" secondAttribute="trailingMargin" id="t8z-M8-v4N"/>
-                                                <constraint firstItem="XIi-Nx-kBf" firstAttribute="top" secondItem="uQq-3h-FqR" secondAttribute="top" id="yCn-YD-4hP"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="X76-Dw-dgV">
-                                        <rect key="frame" x="0.0" y="761" width="600" height="60"/>
+                                        <rect key="frame" x="0.0" y="701" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="X76-Dw-dgV" id="rN1-NB-YrY">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
@@ -2231,7 +2184,11 @@
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
                     <navigationItem key="navigationItem" title="Me" id="m7p-VQ-SA5">
-                        <barButtonItem key="rightBarButtonItem" image="ic-more" id="uUl-q4-5Ad"/>
+                        <barButtonItem key="rightBarButtonItem" image="ic-more" id="uUl-q4-5Ad">
+                            <connections>
+                                <action selector="didPressMore:" destination="lnc-Fm-oTi" id="mGS-pd-XbE"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -2759,7 +2716,7 @@
         <image name="sample-photo" width="1242" height="660"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Fwv-Pj-RXP"/>
         <segue reference="33G-iq-iGB"/>
+        <segue reference="yhs-PQ-k4J"/>
     </inferredMetricsTieBreakers>
 </document>

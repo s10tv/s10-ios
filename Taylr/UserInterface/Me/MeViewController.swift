@@ -101,7 +101,7 @@ class MeViewController : UITableViewController {
         Globals.analyticsService.track("Contacted Support")
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
-            mail.setToRecipients(["hello@s10.tv"])
+            mail.setToRecipients(["hello@taylrapp.com"])
             mail.setSubject("Taylr Feedback")
             mail.mailComposeDelegate = self
             presentViewController(mail, animated: true)
@@ -110,10 +110,12 @@ class MeViewController : UITableViewController {
         }
     }
     
-    @IBAction func didPressLogout(sender: AnyObject) {
-        Globals.analyticsService.track("Logged Out")
-        let sheet = UIAlertController(title: LS(.settingsLogoutTitle), message: nil, preferredStyle: .ActionSheet)
-        sheet.addAction(LS(.settingsLogoutLogout)) { _ in
+    @IBAction func didPressMore(sender: AnyObject) {
+        let sheet = UIAlertController(title: LS(.settingsMoreTitle), message: nil, preferredStyle: .ActionSheet)
+        sheet.addAction(LS(.settingsFeedbackTitle)) { _ in
+            self.didPressContactSupport(sender)
+        }
+        sheet.addAction(LS(.settingsLogoutTitle), style: .Destructive) { _ in
             Globals.accountService.logout()
             self.performSegue(.Onboarding_Login, sender: self)
         }

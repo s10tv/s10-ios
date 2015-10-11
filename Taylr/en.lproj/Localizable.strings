@@ -35,8 +35,9 @@
 "MeRemoveServiceConfirm" = "Remove";
 "MeCancelTitle" = "Cancel";
 
-"SettingsLogoutTitle" = "What would you like to do?";
-"SettingsLogoutLogout" = "Just logout";
+"SettingsMoreTitle" = "What would you like to do?";
+"SettingsFeedbackTitle" = "Give Feedback";
+"SettingsLogoutTitle" = "Logout";
 "SettingsLogoutDeleteAccount" = "Delete my account";
 "SettingsLogoutCancel" = "Cancel";
 "SettingsDeleteAccountTitle" = "Delete Account";
