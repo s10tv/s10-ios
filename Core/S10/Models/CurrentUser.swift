@@ -1,5 +1,5 @@
 //
-//  Settings.swift
+//  CurrentUser.swift
 //  Taylr
 //
 //  Created by Tony Xiao on 4/19/15.
@@ -7,10 +7,10 @@
 //
 
 import Foundation
-import Meteor
 import ReactiveCocoa
+import Meteor
 
-public class Settings {
+public class CurrentUser {
     public enum AccountStatus : String {
         case Pending = "pending"
         case Active = "active"
@@ -27,9 +27,9 @@ public class Settings {
     public let nextMatchDate: PropertyOf<NSDate?>
     public let matchInterval: PropertyOf<Int?>
     
-    init(collection: MeteorCollection, subscription: MeteorSubscription) {
-        self.c = collection
-        self.subscription = subscription
+    init(meteor: MeteorService) {
+        self.c = meteor.collection("settings")
+        self.subscription = meteor.subscribe("settings")
         softMinBuild = c.propertyOf("softMinBuild").map { $0.typed(Int) }
         hardMinBuild = c.propertyOf("hardMinBuild").map { $0.typed(Int) }
         upgradeURL = c.propertyOf("upgradeUrl").map { $0.typed(String).flatMap { NSURL($0) } }

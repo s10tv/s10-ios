@@ -21,7 +21,7 @@ public struct TodayViewModel {
     public let timeRemaining: ProducerProperty<String>
     public let fractionRemaining: PropertyOf<CGFloat>
     
-    init(candidate: Candidate, settings: Settings) {
+    init(candidate: Candidate, currentUser: CurrentUser) {
         user = candidate.user
         cover = user.cover
         avatar = user.avatar
@@ -34,7 +34,7 @@ public struct TodayViewModel {
         // that takes a signalProducer. ProducerProperty seems to solve it
         timeRemaining = ProducerProperty(combineLatest(
             CurrentTime.producer,
-            settings.nextMatchDate.producer
+            currentUser.nextMatchDate.producer
         ).map { currentTime, nextMatchDate in
             let interval = max(Int((nextMatchDate ?? NSDate()).timeIntervalSinceDate(currentTime)), 0)
             let hours = interval / 3600

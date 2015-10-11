@@ -64,18 +64,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         
         // Setup global services
         let meteor = MeteorService(serverURL: env.serverURL)
-        let settings = meteor.settings
         // WARMING: Startup meteor before initializing accountService
         // so that account.state is initially correct
         meteor.startup()
         
         _GlobalsContainer.instance = GlobalsContainer(env: env,
             meteorService: meteor,
-            accountService: AccountService(meteorService: meteor, settings: settings),
+            accountService: AccountService(meteorService: meteor),
             analyticsService: AnalyticsService(env: env, meteorService: meteor),
-            upgradeService: UpgradeService(env: env, settings: settings),
-            taskService: TaskService(meteorService: meteor),
-            settings: settings
+            upgradeService: UpgradeService(env: env, currentUser: meteor.currentUser),
+            taskService: TaskService(meteorService: meteor)
         )
 
         // Startup the services

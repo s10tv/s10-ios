@@ -102,7 +102,7 @@
 		EA81AE081BB6912D00F94006 /* VideoUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2651B637CA30034434E /* VideoUploadTask.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE091BB6912D00F94006 /* VideoDownloadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2671B637CAB0034434E /* VideoDownloadTask.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE0A1BB6912D00F94006 /* InviteTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2691B637CB20034434E /* InviteTask.swift */; settings = {ASSET_TAGS = (); }; };
-		EA81AE0B1BB6930900F94006 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6708C1B31FA2E0025D7CF /* Settings.swift */; settings = {ASSET_TAGS = (); }; };
+		EA81AE0B1BB6930900F94006 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6708C1B31FA2E0025D7CF /* CurrentUser.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE0C1BB693B800F94006 /* MeteorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670991B3200E10025D7CF /* MeteorService.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE0E1BB6944100F94006 /* VideoCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2406211B50F79E003A73C3 /* VideoCache.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE101BB6965E00F94006 /* VideoDownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA24061F1B50F0F1003A73C3 /* VideoDownloadOperation.swift */; settings = {ASSET_TAGS = (); }; };
@@ -462,7 +462,7 @@
 		EAF670711B31F9450025D7CF /* GeometryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometryExtensions.swift; sourceTree = "<group>"; };
 		EAF670721B31F9450025D7CF /* UIKitExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
 		EAF670891B31F9AD0025D7CF /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
-		EAF6708C1B31FA2E0025D7CF /* Settings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		EAF6708C1B31FA2E0025D7CF /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		EAF6708D1B31FA2E0025D7CF /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		EAF670921B31FCBE0025D7CF /* DeviceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		EAF670931B31FCBE0025D7CF /* ProvisioningProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvisioningProfile.swift; sourceTree = "<group>"; };
@@ -1208,11 +1208,11 @@
 			children = (
 				EA2DC26B1B637DFE0034434E /* CoreData */,
 				EA2DC2641B637C980034434E /* Tasks */,
+				EAA058AC1BC35F0200FCB86C /* Conversation.swift */,
 				EA82CF961B504FC500A12D94 /* Image.swift */,
 				EA2DC2581B6377C00034434E /* Video.swift */,
-				EAF6708C1B31FA2E0025D7CF /* Settings.swift */,
+				EAF6708C1B31FA2E0025D7CF /* CurrentUser.swift */,
 				EAF6708D1B31FA2E0025D7CF /* UserDefaults.swift */,
-				EAA058AC1BC35F0200FCB86C /* Conversation.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1775,7 +1775,7 @@
 				EA81AE151BB6981200F94006 /* Formatters.swift in Sources */,
 				EA81AE011BB68E2100F94006 /* Message.swift in Sources */,
 				EA81AE031BB68E2100F94006 /* Candidate.swift in Sources */,
-				EA81AE0B1BB6930900F94006 /* Settings.swift in Sources */,
+				EA81AE0B1BB6930900F94006 /* CurrentUser.swift in Sources */,
 				EA81ADD41BB6793500F94006 /* ActionExtensions.swift in Sources */,
 				EAD16D2E1BCA4AB40040CEB8 /* _Hashtag.swift in Sources */,
 				EAA5763D1BB86A5000661A4F /* UITableViewBinding.swift in Sources */,

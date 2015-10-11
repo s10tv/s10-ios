@@ -36,9 +36,9 @@ class AccountService {
     let state: PropertyOf<AccountState>
     let digitsSession: PropertyOf<DGTSession?>
     
-    init(meteorService: MeteorService, settings: Settings) {
+    init(meteorService: MeteorService) {
         self.meteorService = meteorService
-        
+        let settings = meteorService.currentUser
         _digitsSession = MutableProperty(digits.session())
         digitsSession = PropertyOf(_digitsSession)
         state = PropertyOf(.Indeterminate) {

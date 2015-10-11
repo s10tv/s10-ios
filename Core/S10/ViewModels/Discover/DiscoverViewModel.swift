@@ -16,14 +16,14 @@ public struct DiscoverViewModel {
     
     public let candidate: FetchedResultsArray<TodayViewModel>
     
-    public init(meteor: MeteorService, taskService: TaskService, settings: Settings) {
+    public init(meteor: MeteorService, taskService: TaskService) {
         self.meteor = meteor
         self.taskService = taskService
         subscription = meteor.subscribe("candidate-discover")
         candidate = Candidate
             .by(CandidateKeys.status_, value: Candidate.Status.Active.rawValue)
             .first()
-            .results { TodayViewModel(candidate: $0 as! Candidate, settings: settings) }
+            .results { TodayViewModel(candidate: $0 as! Candidate, currentUser: meteor.currentUser) }
     }
     
     public func profileVM() -> ProfileViewModel? {

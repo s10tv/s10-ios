@@ -13,14 +13,14 @@ import Core
 class UpgradeService {
     let promptAction: Action<(), (), NoError>
     
-    init(env: TaylrEnvironment, settings: Settings) {
+    init(env: TaylrEnvironment, currentUser: CurrentUser) {
         promptAction = Action {
             SignalProducer { observer, disposable in
                 let buildNumber = Int((env.build as NSString).intValue)
-                let needsHardUpgrade = buildNumber < (settings.hardMinBuild.value ?? 0)
-                let needsSoftUpgrade = buildNumber < (settings.softMinBuild.value ?? 0)
-                let upgradeURL = settings.upgradeURL.value
-                Log.debug("Might prompt upgrade build=\(buildNumber) hardMin=\(settings.hardMinBuild) softMin=\(settings.softMinBuild)")
+                let needsHardUpgrade = buildNumber < (currentUser.hardMinBuild.value ?? 0)
+                let needsSoftUpgrade = buildNumber < (currentUser.softMinBuild.value ?? 0)
+                let upgradeURL = currentUser.upgradeURL.value
+                Log.debug("Might prompt upgrade build=\(buildNumber) hardMin=\(currentUser.hardMinBuild) softMin=\(currentUser.softMinBuild)")
                 
                 // Local builds produced by xcode, disable prompt
                 if env.audience == .Dev {
@@ -57,9 +57,9 @@ class UpgradeService {
             }.startOn(UIScheduler())
         }
         combineLatest(
-            settings.softMinBuild.producer.skip(1),
-            settings.hardMinBuild.producer.skip(1),
-            settings.upgradeURL.producer.skip(1)
+            currentUser.softMinBuild.producer.skip(1),
+            currentUser.hardMinBuild.producer.skip(1),
+            currentUser.upgradeURL.producer.skip(1)
         ).startWithNext { [weak self] _ in
             self?.promptForUpgradeIfNeeded()
         }
