@@ -1,5 +1,7 @@
 PODS:
   - Alamofire (3.0.0-beta.3)
+  - Amplitude-iOS (3.1.1):
+    - FMDB/standard (~> 2.5)
   - AMPopTip (0.9.12)
   - AnalyticsSwift (0.2.0)
   - Async (1.3.1)
@@ -33,6 +35,9 @@ PODS:
     - FBSDKCoreKit/arc
   - FBSDKLoginKit (4.7.0):
     - FBSDKCoreKit
+  - FMDB/common (2.5)
+  - FMDB/standard (2.5):
+    - FMDB/common
   - FormatterKit/TimeIntervalFormatter (1.8.0)
   - InflectorKit (0.0.1)
   - JBKenBurnsView (1.0)
@@ -99,6 +104,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (~> 3.0.0-beta.3)
+  - Amplitude-iOS (~> 3.1)
   - AMPopTip (~> 0.9)
   - AnalyticsSwift (~> 0.2)
   - Async (from `https://github.com/duemunk/Async.git`, branch `feature/Swift_2.0`)
@@ -178,6 +184,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: c89149e58431f6f94527e8c01f920456afe39bd0
+  Amplitude-iOS: baba94b99a0166d5b874b46e5ef723f48b804bdd
   AMPopTip: 3c98a9b38148868366b57765064bd9565f653038
   AnalyticsSwift: 76329ac0b66be9747e9f718076c53d264ed24089
   Async: edb15b1e34181d7c9873ce6b5d6eabc1c99e638b
@@ -193,6 +200,7 @@ SPEC CHECKSUMS:
   Fabric: 190bf1a6eb65f7500de1347d027d2e59a7e53db1
   FBSDKCoreKit: eb580bfc2040ad44f4c0b4f4d0befb1d35bce59c
   FBSDKLoginKit: 01bce8dd3f3a26a023b0ba4ffdde7ef5062889fe
+  FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
   FormatterKit: bddde83e054edf9d9ee14f9de3b3a5103db256f4
   InflectorKit: 64497199e6764f4d8337cab7f700a77b13d76a73
   JBKenBurnsView: e40d10fcd4fbeb652c29fa431d4748780a4672ff

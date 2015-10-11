@@ -68,6 +68,7 @@ target :Core do
         pod 'Digits', '~> 1.11'
         pod 'Ouralabs', '~> 2.6'
         pod 'AnalyticsSwift', '~> 0.2'
+        pod 'Amplitude-iOS', '~> 3.1'
 
         # Debug only
 

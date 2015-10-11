@@ -8,6 +8,7 @@
 
 import Foundation
 import AnalyticsSwift
+import Amplitude_iOS
 import Core
 //import Appsee
 //import Heap
@@ -15,9 +16,12 @@ import Core
 class AnalyticsService {
     private(set) var userId: String?
     let segment: AnalyticsSwift.Analytics
+    let amplitude: Amplitude
 
     init(env: TaylrEnvironment, meteorService: MeteorService) {
         // Segmentio
+        Amplitude.initializeApiKey(env.amplitudeKey)
+        amplitude = Amplitude.instance()
         segment = AnalyticsSwift.Analytics.create(env.segmentWriteKey)
 //        Appsee.start(env.appseeApiKey)
         
@@ -43,6 +47,7 @@ class AnalyticsService {
     
     private func identify(userId: String?, traits: [String: AnyObject]? = nil) {
         self.userId = userId
+        amplitude.setUserId(userId)
 //        Appsee.setUserID(userId)
         // Send traits up to our own backend server
 //        if let traits = traits {
@@ -60,6 +65,8 @@ class AnalyticsService {
     func track(event: String, properties: [String: AnyObject]? = nil) {
         segment.enqueue(TrackMessageBuilder(event: event).properties(properties ?? [:]).userId(userId ?? ""))
         segment.flush()
+        amplitude.logEvent(event, withEventProperties: properties)
+        amplitude.uploadEvents()
         Log.verbose("[analytics] track '\(event)' properties: \(properties)")
     }
 
@@ -67,6 +74,8 @@ class AnalyticsService {
         segment.enqueue(ScreenMessageBuilder(name: screenName).properties(
             properties ?? [:]).userId(userId ?? ""))
         segment.flush()
+        amplitude.logEvent("Screen: \(screenName)", withEventProperties: properties)
+        amplitude.uploadEvents()
         Log.verbose("[analytics] screen '\(screenName)' properties: \(properties)")
     }
 }

@@ -48,7 +48,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         }
         
         // Start crash reporting and logging as soon as we can
-//        Bugfender.activateLogger(env.bugfenderAppToken)
         Log.setUserId(UD.meteorUserId.value)
         Log.setUserName(UD.userDisplayName.value)
         Log.setUserEmail(UD.userEmail.value)
