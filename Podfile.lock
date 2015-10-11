@@ -101,6 +101,7 @@ PODS:
   - TPKeyboardAvoiding (1.2.9)
   - TwitterCore (1.11.4)
   - UICollectionViewLeftAlignedLayout (1.0.0)
+  - UXCam (2.3.2)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0.0-beta.3)
@@ -143,6 +144,7 @@ DEPENDENCIES:
   - TPKeyboardAvoiding (~> 1.2)
   - TwitterCore (~> 1.11)
   - UICollectionViewLeftAlignedLayout (~> 1.0)
+  - UXCam (~> 2.3)
 
 EXTERNAL SOURCES:
   Async:
@@ -230,5 +232,6 @@ SPEC CHECKSUMS:
   TPKeyboardAvoiding: ff1ee4e5a5a0c119b965552af8f183868ea20207
   TwitterCore: 171dbd2f8d55707397f461af5158d987fb34aa36
   UICollectionViewLeftAlignedLayout: c3dddf91b3dc72ede7eca7a532545804389ab833
+  UXCam: b4914853e5512ac16a3e4a33499cd470230d7a6e
 
 COCOAPODS: 0.39.0

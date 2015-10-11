@@ -69,6 +69,7 @@ target :Core do
         pod 'Ouralabs', '~> 2.6'
         pod 'AnalyticsSwift', '~> 0.2'
         pod 'Amplitude-iOS', '~> 3.1'
+        pod 'UXCam', '~> 2.3'
 
         # Debug only
 

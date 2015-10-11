@@ -10,8 +10,6 @@ import Foundation
 import AnalyticsSwift
 import Amplitude_iOS
 import Core
-//import Appsee
-//import Heap
 
 class AnalyticsService {
     private(set) var userId: String?
@@ -23,13 +21,7 @@ class AnalyticsService {
         segment = AnalyticsSwift.Analytics.create(env.segmentWriteKey)
         amplitude = Amplitude.instance()
         amplitude.initializeApiKey(env.amplitudeKey)
-//        Appsee.start(env.appseeApiKey)
-        
-//        // Heap
-//        Heap.setAppId(env.heapAppId)
-//        if env.audience == .Dev {
-//            Heap.enableVisualizer()
-//        }
+        UXCam.startWithKey(env.uxcamKey)
         
         // Set initial userId
         if let meteorUserId = UD.meteorUserId.value {
