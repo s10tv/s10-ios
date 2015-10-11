@@ -67,6 +67,7 @@
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
+            <string>Cabin-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -1097,7 +1098,7 @@
                                     <action selector="showMoreOptions:" destination="O0f-xd-Ps7" eventType="touchUpInside" id="dil-ff-Yhp"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XK8-Sw-dlb">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XK8-Sw-dlb">
                                 <rect key="frame" x="0.0" y="1095" width="375" height="57"/>
                                 <color key="backgroundColor" red="0.46897470949999998" green="0.27513545750000001" blue="0.68778532739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
@@ -1919,11 +1920,34 @@
                                                         </collectionViewCell>
                                                     </cells>
                                                 </collectionView>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tic-o2-2Fq">
-                                                    <rect key="frame" x="114" y="85" width="470" height="30"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C0O-ep-XEw">
+                                                    <rect key="frame" x="114" y="85" width="231" height="30"/>
                                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
-                                                    <state key="normal" title="Edit Profile">
+                                                    <state key="normal" title="View">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <real key="value" value="3"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                                                            <color key="value" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
+                                                            <real key="value" value="1"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <segue destination="O0f-xd-Ps7" kind="show" id="AOm-r3-fj8"/>
+                                                    </connections>
+                                                </button>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tic-o2-2Fq">
+                                                    <rect key="frame" x="353" y="85" width="231" height="30"/>
+                                                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.59999999999999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
+                                                    <state key="normal" title="Edit">
                                                         <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
@@ -1944,11 +1968,13 @@
                                                 </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="pde-J4-Tv8" firstAttribute="leading" secondItem="Tic-o2-2Fq" secondAttribute="leading" id="0rS-SC-WLp"/>
+                                                <constraint firstItem="C0O-ep-XEw" firstAttribute="width" secondItem="Tic-o2-2Fq" secondAttribute="width" id="3um-2C-1bf"/>
                                                 <constraint firstAttribute="trailing" secondItem="Va2-Od-B8U" secondAttribute="trailing" id="7hv-rp-q8g"/>
                                                 <constraint firstItem="VMj-KH-MYk" firstAttribute="top" secondItem="pde-J4-Tv8" secondAttribute="top" id="FGo-q9-FbP"/>
+                                                <constraint firstItem="C0O-ep-XEw" firstAttribute="bottom" secondItem="VMj-KH-MYk" secondAttribute="bottom" id="GIe-Ce-df6"/>
                                                 <constraint firstItem="VMj-KH-MYk" firstAttribute="bottom" secondItem="Tic-o2-2Fq" secondAttribute="bottom" id="KDF-q2-XEa"/>
                                                 <constraint firstItem="VMj-KH-MYk" firstAttribute="leading" secondItem="Y7h-a5-tcW" secondAttribute="leadingMargin" id="LPv-s4-It7"/>
+                                                <constraint firstItem="C0O-ep-XEw" firstAttribute="leading" secondItem="bvu-yC-ZDf" secondAttribute="leading" id="W9c-9W-GAB"/>
                                                 <constraint firstItem="D7k-fA-zME" firstAttribute="top" secondItem="Va2-Od-B8U" secondAttribute="top" id="WFp-2M-Qyr"/>
                                                 <constraint firstItem="D7k-fA-zME" firstAttribute="bottom" secondItem="Va2-Od-B8U" secondAttribute="bottom" id="YoB-CH-QKo"/>
                                                 <constraint firstItem="pde-J4-Tv8" firstAttribute="leading" secondItem="VMj-KH-MYk" secondAttribute="trailing" constant="16" id="b0s-1y-fda"/>
@@ -1958,6 +1984,7 @@
                                                 <constraint firstItem="Va2-Od-B8U" firstAttribute="top" secondItem="Y7h-a5-tcW" secondAttribute="top" id="h1u-96-3Lw"/>
                                                 <constraint firstAttribute="centerY" secondItem="VMj-KH-MYk" secondAttribute="centerY" id="iJq-fi-nkD"/>
                                                 <constraint firstItem="pde-J4-Tv8" firstAttribute="leading" secondItem="bvu-yC-ZDf" secondAttribute="leading" id="lJW-F4-vbU"/>
+                                                <constraint firstItem="Tic-o2-2Fq" firstAttribute="leading" secondItem="C0O-ep-XEw" secondAttribute="trailing" constant="8" id="s3j-fB-C8k"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Tic-o2-2Fq" secondAttribute="trailing" constant="8" id="u5n-P4-U6w"/>
                                                 <constraint firstItem="D7k-fA-zME" firstAttribute="trailing" secondItem="Va2-Od-B8U" secondAttribute="trailing" id="uW9-6X-Xzp"/>
                                                 <constraint firstItem="bvu-yC-ZDf" firstAttribute="top" secondItem="pde-J4-Tv8" secondAttribute="bottom" constant="6" id="uZZ-yh-nwa"/>
@@ -2717,6 +2744,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="33G-iq-iGB"/>
-        <segue reference="yhs-PQ-k4J"/>
+        <segue reference="AOm-r3-fj8"/>
     </inferredMetricsTieBreakers>
 </document>
