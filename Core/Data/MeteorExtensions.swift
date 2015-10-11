@@ -14,13 +14,13 @@ extension METDDPClient {
     
     func callMethod(method: String, params: [AnyObject]? = nil, stub: METMethodStub? = nil) -> MeteorMethod {
         let promise = Promise<AnyObject?, NSError>()
-        return MeteorMethod(stubValue: callMethodWithName(method, parameters: params) { res, error in
+        return MeteorMethod(stubValue: callMethodWithName(method, parameters: params, completionHandler: { res, error in
             if let error = error {
                 promise.failure(error)
             } else {
                 promise.success(res)
             }
-        }, future: promise.future)
+        }, methodStub: stub), future: promise.future)
     }
     
     func subscribe(name: String, params: [AnyObject]? = nil) -> MeteorSubscription {

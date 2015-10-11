@@ -188,11 +188,24 @@ public class MeteorService : NSObject {
     }
 
     func insertHashtag(hashtag: String) -> Future<(), NSError> {
-        return meteor.call("me/hashtag/add", hashtag)
+        return meteor.callMethod("me/hashtag/add", params: [hashtag], stub: { _ in
+            if let tag = Hashtag.by(HashtagKeys.text.rawValue, value: hashtag).fetchFirst() as? Hashtag {
+                tag.selected = true
+            } else {
+                let tag = Hashtag.create() as! Hashtag
+                tag.selected = true
+            }
+            return nil
+        }).future.map { _ in }
     }
 
     func removeHashtag(hashtag: String) -> Future<(), NSError> {
-        return meteor.call("me/hashtag/remove", hashtag)
+        return meteor.callMethod("me/hashtag/remove", params: [hashtag], stub: { _ in
+            if let tag = Hashtag.by(HashtagKeys.text.rawValue, value: hashtag).fetchFirst() as? Hashtag {
+                tag.selected = false
+            }
+            return nil
+        }).future.map { _ in }
     }
 
     // MARK: - Users
