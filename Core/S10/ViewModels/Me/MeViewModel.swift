@@ -18,7 +18,7 @@ public struct MeViewModel {
     public let cover: PropertyOf<Image?>
     public let displayName: PropertyOf<String>
     public let profileIcons: ArrayProperty<Image>
-    public let hashtags: ArrayProperty<Hashtag>
+    public let hashtags: ArrayProperty<HashtagViewModel>
     
     public init(meteor: MeteorService, taskService: TaskService) {
         self.meteor = meteor
@@ -32,12 +32,12 @@ public struct MeViewModel {
             .map { $0.map { $0.icon } }
             .array()
         hashtags = ArrayProperty([
-            Hashtag(text: "eco101", selected: true),
-            Hashtag(text: "taylrswift", selected: true),
-            Hashtag(text: "skiing", selected: true),
-            Hashtag(text: "snowboard", selected: true),
-            Hashtag(text: "manila", selected: true),
-            Hashtag(text: "surf", selected: true)
+            HashtagViewModel(text: "eco101", selected: true),
+            HashtagViewModel(text: "taylrswift", selected: true),
+            HashtagViewModel(text: "skiing", selected: true),
+            HashtagViewModel(text: "snowboard", selected: true),
+            HashtagViewModel(text: "manila", selected: true),
+            HashtagViewModel(text: "surf", selected: true)
         ])
     }
     

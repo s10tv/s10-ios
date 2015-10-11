@@ -79,7 +79,7 @@ extension EditHashtagsViewController : MLPAutoCompleteTextFieldDataSource {
     func autoCompleteTextField(textField: MLPAutoCompleteTextField!, possibleCompletionsForString string: String!, completionHandler handler: (([AnyObject]!) -> Void)!) {
         // TODO: Dispose me
         vm.autocompleteHashtags(string).onSuccess { hashtags in
-            handler(hashtags.map { $0.text })
+            handler(hashtags)
         }
     }
 }

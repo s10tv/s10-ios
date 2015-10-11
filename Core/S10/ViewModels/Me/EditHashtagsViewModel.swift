@@ -15,7 +15,7 @@ public struct EditHashtagsViewModel {
     let subMyTags: MeteorSubscription
     let subSuggestedTags: MeteorSubscription
     
-    public let hashtags: ArrayProperty<Hashtag>
+    public let hashtags: ArrayProperty<HashtagViewModel>
     
     public init(meteor: MeteorService) {
         self.meteor = meteor
@@ -30,16 +30,16 @@ public struct EditHashtagsViewModel {
 //            .map { BoxedValue(value: $0) }
 
         hashtags = ArrayProperty([
-            Hashtag(text: "eco101", selected: true),
-            Hashtag(text: "taylrswift", selected: true),
-            Hashtag(text: "skiing", selected: true),
-            Hashtag(text: "snowboard", selected: true),
-            Hashtag(text: "manila", selected: true),
-            Hashtag(text: "surf", selected: true),
-            Hashtag(text: "paris", selected: false),
-            Hashtag(text: "gateman", selected: false),
-            Hashtag(text: "ubcpride", selected: false),
-            Hashtag(text: "leagueoflegends", selected: false)
+            HashtagViewModel(text: "eco101", selected: true),
+            HashtagViewModel(text: "taylrswift", selected: true),
+            HashtagViewModel(text: "skiing", selected: true),
+            HashtagViewModel(text: "snowboard", selected: true),
+            HashtagViewModel(text: "manila", selected: true),
+            HashtagViewModel(text: "surf", selected: true),
+            HashtagViewModel(text: "paris", selected: false),
+            HashtagViewModel(text: "gateman", selected: false),
+            HashtagViewModel(text: "ubcpride", selected: false),
+            HashtagViewModel(text: "leagueoflegends", selected: false)
         ])
     }
     
@@ -58,12 +58,12 @@ public struct EditHashtagsViewModel {
     }
     
     public func selectHashtag(text: String) {
-        meteor.insertHashtag(text).onComplete { _ in
-            self.hashtags.array.insert(Hashtag(text: text, selected: true), atIndex: 0)
-        }
+//        meteor.insertHashtag(text).onComplete { _ in
+//            self.hashtags.array.insert(Hashtag(text: text, selected: true), atIndex: 0)
+//        }
     }
     
-    public func autocompleteHashtags(hint: String) -> Future<[Hashtag], NSError> {
+    public func autocompleteHashtags(hint: String) -> Future<[String], NSError> {
         return hint.length > 0 ? meteor.searchHashtag(hint).deliverOn(UIScheduler()) : Future(value: [])
     }
     

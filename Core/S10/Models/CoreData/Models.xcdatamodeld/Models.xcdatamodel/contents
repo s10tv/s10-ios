@@ -54,6 +54,14 @@
         <relationship name="lastSender" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" syncable="YES"/>
         <relationship name="otherUser" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="connection" inverseEntity="User" syncable="YES"/>
     </entity>
+    <entity name="Hashtag" representedClassName="Hashtag" syncable="YES">
+        <attribute name="selected" attributeType="Boolean" syncable="YES">
+            <userInfo>
+                <entry key="fieldName" value="isMine"/>
+            </userInfo>
+        </attribute>
+        <attribute name="text" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Integration" representedClassName="Integration" syncable="YES">
         <attribute name="icon_" attributeType="Transformable" syncable="YES">
             <userInfo>
@@ -132,5 +140,6 @@
         <element name="Integration" positionX="-612" positionY="-144" width="128" height="135"/>
         <element name="Message" positionX="-207" positionY="27" width="128" height="135"/>
         <element name="User" positionX="268" positionY="-261" width="128" height="240"/>
+        <element name="Hashtag" positionX="-612" positionY="-108" width="128" height="75"/>
     </elements>
 </model>

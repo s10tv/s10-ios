@@ -180,12 +180,10 @@ public class MeteorService : NSObject {
     }
 
     // MARK: - Hashtags
-    func searchHashtag(query: String) -> Future<[Hashtag], NSError> {
+    func searchHashtag(query: String) -> Future<[String], NSError> {
         return meteor.callMethod("hashtags/search", params: [query]).future.map {
             let json : [JSON] = JSON($0!).array!
-            return json.map {
-                return Hashtag(text: $0["text"].string!, selected: false)
-            }
+            return json.map { $0["text"].string! }
         }
     }
 

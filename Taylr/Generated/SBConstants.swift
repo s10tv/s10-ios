@@ -24,6 +24,7 @@ public enum SegueIdentifier : String {
     case LoginToConnectServices = "LoginToConnectServices"
     case LoginToRegisterEmail = "LoginToRegisterEmail"
     case Main_RootTab = "Main_RootTab"
+    case MeToEditHashtags = "MeToEditHashtags"
     case MeToEditProfile = "MeToEditProfile"
     case MeToProfile = "MeToProfile"
     case Onboarding_Login = "Onboarding_Login"

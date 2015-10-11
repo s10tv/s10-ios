@@ -10,11 +10,11 @@ import UIKit
 import Core
 
 class HashtagCell: UICollectionViewCell, BindableCell {
-    typealias ViewModel = Hashtag
+    typealias ViewModel = HashtagViewModel
     
     @IBOutlet weak var label: UILabel!
     
-    func bind(vm: Hashtag) {
+    func bind(vm: HashtagViewModel) {
         label.text = vm.displayText
         backgroundColor = vm.selected ? UIColor(hex: 0x7E57C2) : UIColor(hex: 0xE1DFDF)
         label.textColor = vm.selected ? UIColor.whiteColor() : UIColor(hex: 0x656567)
