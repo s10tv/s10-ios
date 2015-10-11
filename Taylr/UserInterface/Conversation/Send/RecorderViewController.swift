@@ -40,7 +40,7 @@ class RecorderViewController : UIViewController {
         recorder.session!.fileType = AVFileTypeMPEG4
         recorder.captureSessionPreset = AVCaptureSessionPreset640x480 // SCRecorderTools.bestCaptureSessionPresetCompatibleWithAllDevices()
 //        recorder.autoSetVideoOrientation = true
-        recorder.device = .Front
+        recorder.device = .Back
         recorder.CIImageRenderer = previewView
         recorder.keepMirroringOnWrite = true
         recorder.maxRecordDuration = CMTimeMake(15, 1) // 15 seconds
