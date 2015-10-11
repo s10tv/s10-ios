@@ -143,7 +143,7 @@ public class MeteorService : NSObject {
         meteor.account = nil // No reason to wait for network to clear account
         return meteor.logout()
     }
-    
+
     // MARK: -
     
     func verifyCode(code: String) -> Future<(), NSError> {
@@ -177,6 +177,16 @@ public class MeteorService : NSObject {
             user.delete()
             return nil
         }).future.map { _ in }
+    }
+
+    // MARK: - Hashtags
+    func searchHashtag(query: String) -> Future<[Hashtag], NSError> {
+        return meteor.callMethod("hashtags/search", params: [query]).future.map {
+            let json : [JSON] = JSON($0!).array!
+            return json.map {
+                return Hashtag(text: $0["text"].string!, selected: false)
+            }
+        }
     }
 
     // MARK: - Users

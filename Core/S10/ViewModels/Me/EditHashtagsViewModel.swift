@@ -47,9 +47,7 @@ public struct EditHashtagsViewModel {
     }
     
     public func autocompleteHashtags(hint: String) -> Future<[Hashtag], NSError> {
-        let promise = Promise<[Hashtag], NSError>()
-        promise.success(hint.length > 0 ? hashtags.array : [])
-        return promise.future
+        return self.meteor.searchHashtag(hint);
     }
     
 }
