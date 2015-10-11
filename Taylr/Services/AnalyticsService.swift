@@ -20,9 +20,9 @@ class AnalyticsService {
 
     init(env: TaylrEnvironment, meteorService: MeteorService) {
         // Segmentio
-        Amplitude.initializeApiKey(env.amplitudeKey)
-        amplitude = Amplitude.instance()
         segment = AnalyticsSwift.Analytics.create(env.segmentWriteKey)
+        amplitude = Amplitude.instance()
+        amplitude.initializeApiKey(env.amplitudeKey)
 //        Appsee.start(env.appseeApiKey)
         
 //        // Heap
