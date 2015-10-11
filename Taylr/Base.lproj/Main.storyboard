@@ -2106,6 +2106,10 @@
                                                 <constraint firstAttribute="trailing" secondItem="6yT-YD-Zua" secondAttribute="trailing" id="yWl-FU-9PD"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <gestureRecognizers/>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="0po-GF-mw0" appends="YES" id="oQU-Z3-2hU"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -2241,9 +2245,14 @@
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AF9-kY-ZhD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="I5R-ka-3jv">
+                <tapGestureRecognizer id="I5R-ka-3jv" userLabel="Tap to Show Profile">
                     <connections>
                         <segue destination="O0f-xd-Ps7" kind="show" identifier="MeToProfile" id="yhs-PQ-k4J"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="0po-GF-mw0" userLabel="Tag to Edit Hashtags">
+                    <connections>
+                        <segue destination="7HG-cz-0xI" kind="show" identifier="MeToEditHashtags" id="5xn-Lc-xWc"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
@@ -2346,6 +2355,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tfv-bD-2Q4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-960" y="3204"/>
+        </scene>
+        <!--Me-->
+        <scene sceneID="Ytv-XC-FBg">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Me" id="7HG-cz-0xI" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Nv7-CW-Nyz" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-806" y="2097"/>
         </scene>
         <!--Invite View Controller-->
         <scene sceneID="ctk-hn-GDV">
