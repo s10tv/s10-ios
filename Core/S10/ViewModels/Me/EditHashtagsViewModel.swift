@@ -47,24 +47,24 @@ public struct EditHashtagsViewModel {
         var array = hashtags.array
 
         if (array[index].selected) {
-            self.meteor.removeHashtag(array[index].text).onComplete { _ in
+            meteor.removeHashtag(array[index].text).onComplete { _ in
 
             }
         } else {
-            self.meteor.insertHashtag(array[index].text).onComplete { _ in
+            meteor.insertHashtag(array[index].text).onComplete { _ in
 
             }
         }
     }
     
     public func selectHashtag(text: String) {
-        self.meteor.insertHashtag(text).onComplete { _ in
+        meteor.insertHashtag(text).onComplete { _ in
             self.hashtags.array.insert(Hashtag(text: text, selected: true), atIndex: 0)
         }
     }
     
     public func autocompleteHashtags(hint: String) -> Future<[Hashtag], NSError> {
-        return self.meteor.searchHashtag(hint);
+        return hint.length > 0 ? meteor.searchHashtag(hint).deliverOn(UIScheduler()) : Future(value: [])
     }
     
 }
