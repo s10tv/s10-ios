@@ -52,6 +52,7 @@ target :Core do
         pod 'DZNEmptyDataSet', :git => 'https://github.com/dzenbot/DZNEmptyDataSet.git'
         # Master since cocoapods is pretty outdated for some reason
         pod 'MLPAutoCompleteTextField', :git => 'https://github.com/EddyBorja/MLPAutoCompleteTextField.git'
+        pod 'UICollectionViewLeftAlignedLayout', '~> 1.0'
         pod 'AMPopTip', '~> 0.9'
         pod 'JSBadgeView', '~> 1.4'
         pod 'JVFloatLabeledTextField', '~> 1.1'

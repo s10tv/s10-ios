@@ -146,7 +146,7 @@ extension MeViewController /*: UITableViewDelegate */{
     
     override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if indexPath.section == HashtagsIndexPath.section { // hashtags section
-            return hashtagsView.collectionViewLayout.collectionViewContentSize().height
+            return hashtagsView.collectionViewLayout.collectionViewContentSize().height + 16 * 2
         }
         return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
     }

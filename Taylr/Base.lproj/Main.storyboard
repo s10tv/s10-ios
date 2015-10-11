@@ -115,7 +115,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="TodayCell" id="5p8-O9-cl0" userLabel="TodayCell" customClass="TodayCell" customModule="Taylr" customModuleProvider="target">
-                                        <rect key="frame" x="122.5" y="10" width="355" height="532"/>
+                                        <rect key="frame" x="123" y="10" width="355" height="532"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="355" height="532"/>
@@ -391,10 +391,10 @@
                                 <color key="backgroundColor" red="0.93725490196078431" green="0.93725490196078431" blue="0.95686274509803926" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="ContactConnectionCell" rowHeight="76" id="pVQ-Tu-jcV" customClass="ContactConnectionCell" customModule="Taylr" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="49.5" width="600" height="76"/>
+                                        <rect key="frame" x="0.0" y="50" width="600" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="pVQ-Tu-jcV" id="4hE-7L-rNx">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="75.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="76"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-profile-pic" translatesAutoresizingMaskIntoConstraints="NO" id="4Uc-p6-gzK">
@@ -1163,7 +1163,7 @@
                                         <rect key="frame" x="232" y="100" width="135" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="new messages" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="80" translatesAutoresizingMaskIntoConstraints="NO" id="TF6-BS-vja">
-                                                <rect key="frame" x="34" y="6" width="86" height="17.5"/>
+                                                <rect key="frame" x="34" y="6" width="86" height="18"/>
                                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1214,12 +1214,12 @@
                                                 <rect key="frame" x="230" y="1049" width="138" height="51"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe up to send video" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="180" translatesAutoresizingMaskIntoConstraints="NO" id="BEd-v4-YDM">
-                                                        <rect key="frame" x="0.0" y="0.0" width="137.5" height="17.5"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="138" height="18"/>
                                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic-up-chevron" translatesAutoresizingMaskIntoConstraints="NO" id="6FU-Of-cdK">
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-up-chevron" translatesAutoresizingMaskIntoConstraints="NO" id="6FU-Of-cdK">
                                                         <rect key="frame" x="57" y="25" width="22" height="25"/>
                                                     </imageView>
                                                 </subviews>
@@ -2057,23 +2057,18 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="6yT-YD-Zua">
-                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
+                                                    <rect key="frame" x="16" y="16" width="568" height="68"/>
                                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                    <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="OaS-TL-lxE">
-                                                        <size key="itemSize" width="72" height="35"/>
-                                                        <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                        <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                        <inset key="sectionInset" minX="16" minY="12" maxX="16" maxY="16"/>
-                                                    </collectionViewFlowLayout>
+                                                    <collectionViewLayout key="collectionViewLayout" id="pSr-y2-OrT" customClass="UICollectionViewLeftAlignedLayout"/>
                                                     <cells>
                                                         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HashtagCell" id="00v-r5-l5r" customClass="HashtagCell" customModule="Taylr" customModuleProvider="target">
-                                                            <rect key="frame" x="16" y="12" width="72" height="35"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                                <rect key="frame" x="0.0" y="0.0" width="72" height="35"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                                 <autoresizingMask key="autoresizingMask"/>
                                                                 <subviews>
-                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#eco101" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4o-b3-xNx">
+                                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="#eco101" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="m4o-b3-xNx">
                                                                         <rect key="frame" x="8" y="8" width="56" height="19"/>
                                                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                                                         <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -2100,10 +2095,10 @@
                                                 </collectionView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="bottom" secondItem="6yT-YD-Zua" secondAttribute="bottom" id="Bm8-Al-xIX"/>
-                                                <constraint firstItem="6yT-YD-Zua" firstAttribute="top" secondItem="hnp-B2-AIf" secondAttribute="top" id="V0E-0S-zu6"/>
-                                                <constraint firstItem="6yT-YD-Zua" firstAttribute="leading" secondItem="hnp-B2-AIf" secondAttribute="leading" id="ZtW-GE-vUt"/>
-                                                <constraint firstAttribute="trailing" secondItem="6yT-YD-Zua" secondAttribute="trailing" id="yWl-FU-9PD"/>
+                                                <constraint firstAttribute="bottom" secondItem="6yT-YD-Zua" secondAttribute="bottom" constant="16" id="Bm8-Al-xIX"/>
+                                                <constraint firstItem="6yT-YD-Zua" firstAttribute="top" secondItem="hnp-B2-AIf" secondAttribute="top" constant="16" id="V0E-0S-zu6"/>
+                                                <constraint firstItem="6yT-YD-Zua" firstAttribute="leading" secondItem="hnp-B2-AIf" secondAttribute="leading" constant="16" id="ZtW-GE-vUt"/>
+                                                <constraint firstAttribute="trailing" secondItem="6yT-YD-Zua" secondAttribute="trailing" constant="16" id="yWl-FU-9PD"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>

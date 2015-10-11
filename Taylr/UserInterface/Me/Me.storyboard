@@ -24,23 +24,18 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4jU-jy-5QE">
-                                <rect key="frame" x="0.0" y="264" width="600" height="336"/>
+                                <rect key="frame" x="16" y="264" width="568" height="320"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="361-vK-bPQ">
-                                    <size key="itemSize" width="72" height="35"/>
-                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="16" minY="0.0" maxX="16" maxY="16"/>
-                                </collectionViewFlowLayout>
+                                <collectionViewLayout key="collectionViewLayout" id="30O-RC-K7C" customClass="UICollectionViewLeftAlignedLayout"/>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="HashtagCell" id="tzV-p3-eEg" customClass="HashtagCell" customModule="Taylr" customModuleProvider="target">
-                                        <rect key="frame" x="16" y="0.0" width="72" height="35"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="72" height="35"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="#eco101" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EYZ-hM-vKj">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="#eco101" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EYZ-hM-vKj">
                                                     <rect key="frame" x="8" y="8" width="56" height="19"/>
                                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                                     <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -107,9 +102,9 @@ The more you tag, the better introductions we can make for you. So #gocrazy</str
                             <constraint firstItem="4jU-jy-5QE" firstAttribute="top" secondItem="jcT-YG-2h4" secondAttribute="bottom" constant="8" symbolic="YES" id="3fg-Xh-DAZ"/>
                             <constraint firstItem="jcT-YG-2h4" firstAttribute="leading" secondItem="Pah-hI-MLH" secondAttribute="leadingMargin" id="5qP-f4-cDd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Cd8-kE-rKi" secondAttribute="trailing" id="83t-iV-zXi"/>
-                            <constraint firstAttribute="trailing" secondItem="4jU-jy-5QE" secondAttribute="trailing" id="JOU-o9-Zmo"/>
-                            <constraint firstItem="4jU-jy-5QE" firstAttribute="leading" secondItem="Pah-hI-MLH" secondAttribute="leading" id="aob-hH-Xhk"/>
-                            <constraint firstAttribute="bottom" secondItem="4jU-jy-5QE" secondAttribute="bottom" id="mLY-bT-I1O"/>
+                            <constraint firstAttribute="trailing" secondItem="4jU-jy-5QE" secondAttribute="trailing" constant="16" id="JOU-o9-Zmo"/>
+                            <constraint firstItem="4jU-jy-5QE" firstAttribute="leading" secondItem="Pah-hI-MLH" secondAttribute="leading" constant="16" id="aob-hH-Xhk"/>
+                            <constraint firstAttribute="bottom" secondItem="4jU-jy-5QE" secondAttribute="bottom" constant="16" id="mLY-bT-I1O"/>
                             <constraint firstAttribute="leadingMargin" secondItem="Cd8-kE-rKi" secondAttribute="leading" id="qB6-Li-PfS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jcT-YG-2h4" secondAttribute="trailing" id="zHX-gZ-0yW"/>
                             <constraint firstItem="Cd8-kE-rKi" firstAttribute="top" secondItem="un5-vE-2AL" secondAttribute="bottom" id="zw1-ac-lqk"/>

@@ -95,6 +95,7 @@ PODS:
   - SwipeView (1.3.2)
   - TPKeyboardAvoiding (1.2.9)
   - TwitterCore (1.11.4)
+  - UICollectionViewLeftAlignedLayout (1.0.0)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0.0-beta.3)
@@ -135,6 +136,7 @@ DEPENDENCIES:
   - SwipeView (~> 1.3)
   - TPKeyboardAvoiding (~> 1.2)
   - TwitterCore (~> 1.11)
+  - UICollectionViewLeftAlignedLayout (~> 1.0)
 
 EXTERNAL SOURCES:
   Async:
@@ -219,5 +221,6 @@ SPEC CHECKSUMS:
   SwipeView: bd67cfaf7760c036438446b3ccb28a3b84fce009
   TPKeyboardAvoiding: ff1ee4e5a5a0c119b965552af8f183868ea20207
   TwitterCore: 171dbd2f8d55707397f461af5158d987fb34aa36
+  UICollectionViewLeftAlignedLayout: c3dddf91b3dc72ede7eca7a532545804389ab833
 
 COCOAPODS: 0.39.0
