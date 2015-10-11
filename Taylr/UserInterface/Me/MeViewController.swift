@@ -77,7 +77,9 @@ class MeViewController : UITableViewController {
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        if identifier == SegueIdentifier.MeToEditProfile.rawValue || identifier == SegueIdentifier.MeToProfile.rawValue {
+        if identifier == SegueIdentifier.MeToEditProfile.rawValue
+            || identifier == SegueIdentifier.MeToProfile.rawValue
+            || identifier == SegueIdentifier.MeToProfile2.rawValue {
             return vm.canViewOrEditProfile()
         }
         return super.shouldPerformSegueWithIdentifier(identifier, sender: sender)

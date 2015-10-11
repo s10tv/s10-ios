@@ -1940,7 +1940,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <segue destination="O0f-xd-Ps7" kind="show" id="AOm-r3-fj8"/>
+                                                        <segue destination="O0f-xd-Ps7" kind="show" identifier="MeToProfile2" id="AOm-r3-fj8"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tic-o2-2Fq">
