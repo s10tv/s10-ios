@@ -23,8 +23,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="#whatevercomestomind" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jcT-YG-2h4" customClass="MLPAutoCompleteTextField">
+                                <rect key="frame" x="20" y="72" width="560" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                                <connections>
+                                    <outlet property="autoCompleteDataSource" destination="mcp-Sh-vTg" id="vNg-4c-qpH"/>
+                                    <outlet property="autoCompleteDelegate" destination="mcp-Sh-vTg" id="1QS-II-eJr"/>
+                                </connections>
+                            </textField>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4jU-jy-5QE">
-                                <rect key="frame" x="16" y="264" width="568" height="320"/>
+                                <rect key="frame" x="16" y="110" width="568" height="474"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewLayout key="collectionViewLayout" id="30O-RC-K7C" customClass="UICollectionViewLeftAlignedLayout"/>
                                 <cells>
@@ -60,54 +69,16 @@
                                     <outlet property="delegate" destination="mcp-Sh-vTg" id="fsd-0D-kcl"/>
                                 </connections>
                             </collectionView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="#whatevercomestomind" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jcT-YG-2h4" customClass="MLPAutoCompleteTextField">
-                                <rect key="frame" x="20" y="226" width="560" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <outlet property="autoCompleteDataSource" destination="mcp-Sh-vTg" id="vNg-4c-qpH"/>
-                                    <outlet property="autoCompleteDelegate" destination="mcp-Sh-vTg" id="1QS-II-eJr"/>
-                                </connections>
-                            </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cd8-kE-rKi" customClass="DesignableLabel" customModule="Taylr" customModuleProvider="target">
-                                <rect key="frame" x="20" y="64" width="560" height="154"/>
-                                <attributedString key="attributedText">
-                                    <fragment>
-                                        <string key="content">You can tag anything that comes to mind.
-- Classes you are taking (#eco101)
-- Your major or favorite professor (#gateman)
-- Places you have visited (#paris #manila)
-- Interest you have (#snowboard)
-- Who you hope to meet (#mentor)
-The more you tag, the better introductions we can make for you. So #gocrazy</string>
-                                        <attributes>
-                                            <color key="NSColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="16" name="Cabin-Medium"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" minimumLineHeight="22"/>
-                                        </attributes>
-                                    </fragment>
-                                </attributedString>
-                                <nil key="highlightedColor"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="string" keyPath="fontName" value="Cabin-Medium"/>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="fontSize">
-                                        <real key="value" value="16"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="jcT-YG-2h4" firstAttribute="top" secondItem="Cd8-kE-rKi" secondAttribute="bottom" constant="8" symbolic="YES" id="0CN-dT-B0I"/>
                             <constraint firstItem="4jU-jy-5QE" firstAttribute="top" secondItem="jcT-YG-2h4" secondAttribute="bottom" constant="8" symbolic="YES" id="3fg-Xh-DAZ"/>
                             <constraint firstItem="jcT-YG-2h4" firstAttribute="leading" secondItem="Pah-hI-MLH" secondAttribute="leadingMargin" id="5qP-f4-cDd"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="Cd8-kE-rKi" secondAttribute="trailing" id="83t-iV-zXi"/>
                             <constraint firstAttribute="trailing" secondItem="4jU-jy-5QE" secondAttribute="trailing" constant="16" id="JOU-o9-Zmo"/>
                             <constraint firstItem="4jU-jy-5QE" firstAttribute="leading" secondItem="Pah-hI-MLH" secondAttribute="leading" constant="16" id="aob-hH-Xhk"/>
+                            <constraint firstItem="jcT-YG-2h4" firstAttribute="top" secondItem="un5-vE-2AL" secondAttribute="bottom" constant="8" symbolic="YES" id="c1W-Az-m1a"/>
                             <constraint firstAttribute="bottom" secondItem="4jU-jy-5QE" secondAttribute="bottom" constant="16" id="mLY-bT-I1O"/>
-                            <constraint firstAttribute="leadingMargin" secondItem="Cd8-kE-rKi" secondAttribute="leading" id="qB6-Li-PfS"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jcT-YG-2h4" secondAttribute="trailing" id="zHX-gZ-0yW"/>
-                            <constraint firstItem="Cd8-kE-rKi" firstAttribute="top" secondItem="un5-vE-2AL" secondAttribute="bottom" id="zw1-ac-lqk"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Hastags" id="9xw-JN-jZW"/>
