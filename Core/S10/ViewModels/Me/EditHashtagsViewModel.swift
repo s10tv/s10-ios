@@ -29,23 +29,12 @@ public struct EditHashtagsViewModel {
     }
     
     public func toggleHashtagAtIndex(index: Int) {
-        var array = hashtags.array
-
-        if (array[index].selected) {
-            meteor.removeHashtag(array[index].text).onComplete { _ in
-
-            }
-        } else {
-            meteor.insertHashtag(array[index].text).onComplete { _ in
-
-            }
-        }
+        let hashtag = hashtags.array[index]
+        hashtag.selected ? meteor.removeHashtag(hashtag.text) : meteor.insertHashtag(hashtag.text)
     }
     
     public func selectHashtag(text: String) {
-//        meteor.insertHashtag(text).onComplete { _ in
-//            self.hashtags.array.insert(Hashtag(text: text, selected: true), atIndex: 0)
-//        }
+        meteor.insertHashtag(text)
     }
     
     public func autocompleteHashtags(hint: String) -> Future<[String], NSError> {
