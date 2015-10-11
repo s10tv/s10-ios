@@ -86,11 +86,11 @@ class CreateProfileViewController : UITableViewController {
         }
     }
 
-    @IBAction func didTapDone(sender: AnyObject) {
+    @IBAction func didTapNext(sender: AnyObject) {
         wrapFuture(showProgress: true) {
             self.vm.saveProfile()
         }.onSuccess { [weak self] in
-            self?.performSegue(SegueIdentifier.Main_RootTab)
+            self?.performSegue(SegueIdentifier.CreateProfiletoHashtag)
         }
     }
 }

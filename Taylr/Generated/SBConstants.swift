@@ -18,6 +18,7 @@ public enum CollectionViewControllerStoryboardIdentifier : String {
 public enum SegueIdentifier : String {
     case ConnectServicesToCreateProfile = "ConnectServicesToCreateProfile"
     case ConversationToProfile = "ConversationToProfile"
+    case CreateProfiletoHashtag = "CreateProfiletoHashtag"
     case DiscoverToConversation = "DiscoverToConversation"
     case HistoryToProfile = "HistoryToProfile"
     case IntegrationsToWeb = "IntegrationsToWeb"
@@ -32,6 +33,12 @@ public enum SegueIdentifier : String {
     case RecorderToEditor = "RecorderToEditor"
     case RegisterEmailToConnectServices = "RegisterEmailToConnectServices"
     case TutorialToConnectServices = "TutorialToConnectServices"
+}
+
+public enum StoryboardNames : String {
+    case Main = "Main"
+    case Me = "Me"
+    case Onboarding = "Onboarding"
 }
 
 public enum TableViewCellreuseIdentifier : String {
@@ -53,7 +60,6 @@ public enum ViewControllerStoryboardIdentifier : String {
     case AuthWeb = "AuthWeb"
     case ChatHistory = "ChatHistory"
     case Chats = "Chats"
-    case Conversation = "Conversation"
     case Discover = "Discover"
     case Editor = "Editor"
     case History = "History"
@@ -63,4 +69,8 @@ public enum ViewControllerStoryboardIdentifier : String {
     case Recorder = "Recorder"
     case RegisterEmail = "RegisterEmail"
     case TutorialContentViewController = "TutorialContentViewController"
+}
+
+public enum ViewControllerStoryboardIdentifierStoryboardNames : String {
+    case Conversation = "Conversation"
 }
