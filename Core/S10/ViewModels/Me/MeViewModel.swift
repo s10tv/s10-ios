@@ -18,6 +18,7 @@ public struct MeViewModel {
     public let cover: PropertyOf<Image?>
     public let displayName: PropertyOf<String>
     public let profileIcons: ArrayProperty<Image>
+    public let hashtags: ArrayProperty<Hashtag>
     
     public init(meteor: MeteorService, taskService: TaskService) {
         self.meteor = meteor
@@ -30,6 +31,14 @@ public struct MeViewModel {
             .flatMap(nilValue: []) { $0.pConnectedProfiles() }
             .map { $0.map { $0.icon } }
             .array()
+        hashtags = ArrayProperty([
+            Hashtag(text: "eco101", selected: true),
+            Hashtag(text: "taylrswift", selected: true),
+            Hashtag(text: "skiing", selected: true),
+            Hashtag(text: "snowboard", selected: true),
+            Hashtag(text: "manila", selected: true),
+            Hashtag(text: "surf", selected: true)
+        ])
     }
     
     public func canViewOrEditProfile() -> Bool {

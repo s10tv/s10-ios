@@ -195,6 +195,7 @@
 		EAC1BF021BC7146900864B8C /* VolumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC1BF011BC7146900864B8C /* VolumeViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EAC1BF041BC7155900864B8C /* ChatHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC1BF031BC7155900864B8C /* ChatHistoryViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EAC1BF061BC715B400864B8C /* ReceiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC1BF051BC715B400864B8C /* ReceiveViewModel.swift */; settings = {ASSET_TAGS = (); }; };
+		EAD16D2C1BCA17B70040CEB8 /* Hashtag.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD16D2B1BCA17B70040CEB8 /* Hashtag.swift */; settings = {ASSET_TAGS = (); }; };
 		EAE067201B71850F00A2FF76 /* MuteChecker.caf in Resources */ = {isa = PBXBuildFile; fileRef = EAE0671D1B71850F00A2FF76 /* MuteChecker.caf */; };
 		EAE067211B71850F00A2FF76 /* MuteChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE0671F1B71850F00A2FF76 /* MuteChecker.m */; };
 		EAE637C51BC84BBE00A958A8 /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE637C41BC84BBE00A958A8 /* ReceiveViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -432,6 +433,7 @@
 		EAC725BB1B66D76D004113FD /* CreateProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileViewModel.swift; sourceTree = "<group>"; };
 		EAC725BD1B66DD92004113FD /* ConnectServicesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectServicesViewModel.swift; sourceTree = "<group>"; };
 		EACCA3A11B37B02A00015C88 /* ProfileCoverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCoverCell.swift; sourceTree = "<group>"; };
+		EAD16D2B1BCA17B70040CEB8 /* Hashtag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hashtag.swift; sourceTree = "<group>"; };
 		EAD1BB241B60347600D250C5 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		EAD1BB281B604A3D00D250C5 /* InviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteViewController.swift; sourceTree = "<group>"; };
 		EAD7C6811BA7960600FD8A27 /* _Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Candidate.swift; sourceTree = "<group>"; };
@@ -1202,6 +1204,7 @@
 				EA82CF961B504FC500A12D94 /* Image.swift */,
 				EA2DC2581B6377C00034434E /* Video.swift */,
 				EAF6708C1B31FA2E0025D7CF /* Settings.swift */,
+				EAD16D2B1BCA17B70040CEB8 /* Hashtag.swift */,
 				EAF6708D1B31FA2E0025D7CF /* UserDefaults.swift */,
 				EAA058AC1BC35F0200FCB86C /* Conversation.swift */,
 			);
@@ -1735,6 +1738,7 @@
 				EA81ADF81BB68E2100F94006 /* _Activity.swift in Sources */,
 				EA81ADDC1BB6852600F94006 /* DeviceInfo.swift in Sources */,
 				EA81AE111BB696A400F94006 /* VideoUploadOperation.swift in Sources */,
+				EAD16D2C1BCA17B70040CEB8 /* Hashtag.swift in Sources */,
 				EA81AE3A1BB7A0DF00F94006 /* MeViewModel.swift in Sources */,
 				EA81AE3F1BB7AB6C00F94006 /* DiscoverViewModel.swift in Sources */,
 				EAA5763C1BB86A5000661A4F /* UICollectionViewBinding.swift in Sources */,

@@ -19,6 +19,7 @@ class MeViewController : UITableViewController {
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var inviteContainer: UIView!
     @IBOutlet weak var servicesCollectionView: UICollectionView!
+    @IBOutlet weak var hashtagsView: UICollectionView!
     
     var vm: MeViewModel!
     
@@ -33,6 +34,17 @@ class MeViewController : UITableViewController {
         servicesCollectionView <~ (vm.profileIcons, ProfileIconCell.self)
         
         versionLabel.text = "Taylr v\(Globals.env.version) (\(Globals.env.build))"
+        
+        hashtagsView <~ (vm.hashtags, HashtagCell.self)
+        // Observe collectionView height and reload table view cell height whenever appropriate
+        hashtagsView.dyn("contentSize").force(NSValue).producer
+            .skip(1)
+            .skipRepeats()
+            .observeOn(QueueScheduler.mainQueueScheduler)
+            .startWithNext { _ in
+                self.tableView.beginUpdates()
+                self.tableView.endUpdates()
+            }
         
         listenForNotification(DidTouchStatusBar).startWithNext { [weak self] _ in
             self?.tableView.scrollToTop(animated: true)
@@ -140,5 +152,19 @@ extension MeViewController /*: UITableViewDelegate */{
             return 0.1
         }
         return super.tableView(tableView, heightForHeaderInSection: section)
+    }
+}
+
+// Hastags Size Calculation
+private let HashtagFont = UIFont(.cabinRegular, size: 14)
+
+extension MeViewController : UICollectionViewDelegateFlowLayout {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        let hashtag = vm.hashtags.array[indexPath.item]
+        var size = (hashtag.displayText as NSString).boundingRectWithSize(CGSizeMake(1000, 1000),
+            options: [], attributes: [NSFontAttributeName: HashtagFont], context: nil).size
+        size.width += 10 * 2
+        size.height += 8 * 2
+        return size
     }
 }

@@ -9,15 +9,6 @@
 import Foundation
 import ReactiveCocoa
 
-public struct Hashtag {
-    public let text: String
-    
-    public var selected: Bool
-    public var displayText: String {
-        return "#\(text)"
-    }
-}
-
 public struct EditHashtagsViewModel {
     let meteor: MeteorService
     let collection: MeteorCollection
