@@ -41,6 +41,16 @@ class EditHashtagsViewController : UIViewController {
     }
 }
 
+// MARK: - UIScrollViewDelegate
+
+extension EditHashtagsViewController : UIScrollViewDelegate {
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        textField.resignFirstResponder()
+    }
+}
+
+// MARK: - UICollectionViewDelegate
+
 extension EditHashtagsViewController : UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         vm.toggleHashtagAtIndex(indexPath.item)
@@ -65,12 +75,6 @@ extension EditHashtagsViewController : UICollectionViewDelegateFlowLayout {
 }
 
 // MARK: - MLPAutoCompleteTextField DataSource / Delegate
-
-//extension Hashtag : MLPAutoCompletionObject {
-//    public func autocompleteString() -> String! {
-//        return text
-//    }
-//}
 
 extension EditHashtagsViewController : MLPAutoCompleteTextFieldDelegate {
     
