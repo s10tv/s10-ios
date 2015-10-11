@@ -119,7 +119,6 @@ class AccountService {
     
     func logout() {
         Analytics.track("Logged Out")
-        Analytics.identifyUser(Globals.env.deviceId) // Reset to deviceId based tracking
         UD.resetAll()
         digits.logOut()
         _digitsSession.value = nil

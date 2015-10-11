@@ -71,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         _GlobalsContainer.instance = GlobalsContainer(env: env,
             meteorService: meteor,
             accountService: AccountService(meteorService: meteor),
-            analyticsService: AnalyticsService(env: env, meteorService: meteor),
+            analyticsService: AnalyticsService(env: env, currentUser: meteor.currentUser),
             upgradeService: UpgradeService(env: env, currentUser: meteor.currentUser),
             taskService: TaskService(meteorService: meteor)
         )

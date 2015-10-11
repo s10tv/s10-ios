@@ -7,81 +7,98 @@
 //
 
 import Foundation
+import ReactiveCocoa
 import AnalyticsSwift
 import Amplitude_iOS
 import Core
 
 class AnalyticsService {
-    private(set) var userId: String?
+    let env: TaylrEnvironment
+    let currentUser: CurrentUser
     let segment: AnalyticsSwift.Analytics
     let amplitude: Amplitude
+    
+    private let cd = CompositeDisposable()
 
-    init(env: TaylrEnvironment, meteorService: MeteorService) {
-        // Segmentio
+    init(env: TaylrEnvironment, currentUser: CurrentUser) {
+        self.env = env
+        self.currentUser = currentUser
         segment = AnalyticsSwift.Analytics.create(env.segmentWriteKey)
         amplitude = Amplitude.instance()
+        amplitude.trackingSessionEvents = true
         amplitude.initializeApiKey(env.amplitudeKey)
         UXCam.startWithKey(env.uxcamKey)
         
-        // Set initial userId
-        if let meteorUserId = UD.meteorUserId.value {
-            identifyUser(meteorUserId)
-        } else {
-            identifyUser(env.deviceId)
+        cd += currentUser.userId.producer.startWithNext { [weak self] userId in
+            self?.identify(userId)
         }
-
-        meteorService.userId.producer.startWithNext { userId in
-            if let userId = userId {
-                self.identifyUser(userId)
+        let propertyList = [
+            "First Name": currentUser.firstName,
+            "Last Name": currentUser.lastName,
+            "Grad Year": currentUser.gradYear
+        ]
+        for (name, property) in propertyList {
+            cd += property.producer.startWithNext { [weak self] value in
+                if let value = value {
+                    self?.setUserProperties([name: value])
+                }
             }
         }
     }
     
-    private func identify(userId: String?, traits: [String: AnyObject]? = nil) {
-        self.userId = userId
+    deinit {
+        cd.dispose()
+    }
+    
+    private func identify(userId: String?) {
+        if let userId = currentUser.userId.value {
+            segment.enqueue(IdentifyMessageBuilder().userId(userId))
+        } else {
+            segment.enqueue(IdentifyMessageBuilder().anonymousId(env.deviceId))
+        }
         amplitude.setUserId(userId)
-//        Appsee.setUserID(userId)
-        // Send traits up to our own backend server
-//        if let traits = traits {
-//            for (key, value) in traits {
-//                // TODO: Put stuff into Meteor.meta as needed
-//                // or some other channel that's easily viewable from server
-////                Meteor.meta.setValue(value, metadataKey: key)
-//            }
-//        }
-        segment.enqueue(IdentifyMessageBuilder().traits(traits ?? [:]).userId(userId ?? ""))
-        segment.flush()
-        Log.verbose("[analytics] identify \(userId) traits: \(traits)")
+        Log.verbose("[analytics] identify \(userId)")
+        flush()
+    }
+    
+    func setUserProperties(properties: [String: AnyObject]) {
+        let msg = IdentifyMessageBuilder().traits(properties)
+        if let userId = currentUser.userId.value {
+            segment.enqueue(msg.userId(userId))
+        } else {
+            segment.enqueue(msg.anonymousId(env.deviceId))
+        }
+        amplitude.setUserProperties(properties, replace: true)
+        Log.verbose("[analytics] setUserProperties: \(properties)")
+        flush()
     }
     
     func track(event: String, properties: [String: AnyObject]? = nil) {
-        segment.enqueue(TrackMessageBuilder(event: event).properties(properties ?? [:]).userId(userId ?? ""))
-        segment.flush()
+        let msg = TrackMessageBuilder(event: event).properties(properties ?? [:])
+        if let userId = currentUser.userId.value {
+            segment.enqueue(msg.userId(userId))
+        } else {
+            segment.enqueue(msg.anonymousId(env.deviceId))
+        }
         amplitude.logEvent(event, withEventProperties: properties)
-        amplitude.uploadEvents()
         Log.verbose("[analytics] track '\(event)' properties: \(properties)")
+        flush()
     }
 
     func screen(screenName: String, properties: [String: AnyObject]? = nil) {
-        segment.enqueue(ScreenMessageBuilder(name: screenName).properties(
-            properties ?? [:]).userId(userId ?? ""))
-        segment.flush()
+        let msg = ScreenMessageBuilder(name: screenName).properties(properties ?? [:])
+        if let userId = currentUser.userId.value {
+            segment.enqueue(msg.userId(userId))
+        } else {
+            segment.enqueue(msg.anonymousId(env.deviceId))
+        }
         amplitude.logEvent("Screen: \(screenName)", withEventProperties: properties)
-        amplitude.uploadEvents()
         Log.verbose("[analytics] screen '\(screenName)' properties: \(properties)")
-    }
-}
-
-// MARK: - Explicit Identity Management
-
-extension AnalyticsService {
-    
-    // TODO: Add alias support
-    func identifyUser(userId: String) {
-        identify(userId)
+        flush()
     }
     
-    func identifyTraits(traits: [String: AnyObject]) {
-        identify(userId, traits: traits)
+    func flush() {
+        segment.flush()
+        amplitude.uploadEvents()
     }
 }
