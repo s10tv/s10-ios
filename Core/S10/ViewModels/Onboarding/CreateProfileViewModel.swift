@@ -100,4 +100,16 @@ public struct CreateProfileViewModel {
 
         return promise.future
     }
+    
+    public func confirmRegistration() -> Future<Void, ErrorAlert> {
+        return meteor.confirmRegistration().mapError { error in
+            var errorReason : String
+            if let reason = error.localizedFailureReason {
+                errorReason = reason
+            } else {
+                errorReason = "Please try again later."
+            }
+            return ErrorAlert(title: "Problem with Registration", message: errorReason)
+        }.toFuture()
+    }
 }

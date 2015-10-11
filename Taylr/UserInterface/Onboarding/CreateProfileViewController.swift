@@ -68,6 +68,13 @@ class CreateProfileViewController : UITableViewController {
             segue.animated = true
             segue.replaceStrategy = .Stack
         }
+        if let vc = segue.destinationViewController as? EditHashtagsViewController {
+            // TODO: Instead of overreaching responsibility we should probably have a container view controller
+            // for onboarding that contains the EditHastagsViewController but add additional information
+            // to help user with first time experience.
+            vc.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Done", style: UIBarButtonItemStyle.Done,
+                                                                    target: self, action: "didTapDoneOnEditHashtags:")
+        }
     }
 
     // MARK: - Actions
@@ -91,6 +98,20 @@ class CreateProfileViewController : UITableViewController {
             self.vm.saveProfile()
         }.onSuccess { [weak self] in
             self?.performSegue(SegueIdentifier.CreateProfiletoHashtag)
+        }
+    }
+    
+    @IBAction func didTapDoneOnEditHashtags(sender: AnyObject) {
+        wrapFuture(showProgress: true) {
+            self.vm.confirmRegistration()
+        }.onSuccess { [weak self] in
+            // TODO: Maybe this should be in a segue from somewhere... Kind of harsh..
+            if let nav = self?.navigationController {
+                let mainRootTab = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()!
+                UIView.transitionWithView(nav.view, duration: 1, options: [.TransitionFlipFromRight], animations: {
+                    nav.setViewControllers([mainRootTab], animated: false)
+                }, completion: nil)
+            }
         }
     }
 }
