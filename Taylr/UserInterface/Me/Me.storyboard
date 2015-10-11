@@ -6,6 +6,9 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="Cabin-Medium.ttf">
+            <string>Cabin-Medium</string>
+        </mutableArray>
         <mutableArray key="Cabin-Regular.ttf">
             <string>Cabin-Regular</string>
         </mutableArray>
@@ -24,7 +27,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="#whatevercomestomind" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jcT-YG-2h4" customClass="MLPAutoCompleteTextField">
-                                <rect key="frame" x="20" y="72" width="560" height="30"/>
+                                <rect key="frame" x="20" y="117" width="560" height="30"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
@@ -33,7 +36,7 @@
                                 </connections>
                             </textField>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="4jU-jy-5QE">
-                                <rect key="frame" x="16" y="110" width="568" height="474"/>
+                                <rect key="frame" x="16" y="163" width="568" height="421"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewLayout key="collectionViewLayout" id="30O-RC-K7C" customClass="UICollectionViewLeftAlignedLayout"/>
                                 <cells>
@@ -69,19 +72,27 @@
                                     <outlet property="delegate" destination="mcp-Sh-vTg" id="fsd-0D-kcl"/>
                                 </connections>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Help us make better introductions." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQu-5C-ijx">
+                                <rect key="frame" x="20" y="80" width="250" height="21"/>
+                                <fontDescription key="fontDescription" name="Cabin-Medium" family="Cabin" pointSize="17"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="4jU-jy-5QE" firstAttribute="top" secondItem="jcT-YG-2h4" secondAttribute="bottom" constant="8" symbolic="YES" id="3fg-Xh-DAZ"/>
+                            <constraint firstItem="4jU-jy-5QE" firstAttribute="top" secondItem="jcT-YG-2h4" secondAttribute="bottom" constant="16" id="3fg-Xh-DAZ"/>
                             <constraint firstItem="jcT-YG-2h4" firstAttribute="leading" secondItem="Pah-hI-MLH" secondAttribute="leadingMargin" id="5qP-f4-cDd"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="BQu-5C-ijx" secondAttribute="leading" id="7mL-46-3X7"/>
                             <constraint firstAttribute="trailing" secondItem="4jU-jy-5QE" secondAttribute="trailing" constant="16" id="JOU-o9-Zmo"/>
+                            <constraint firstItem="jcT-YG-2h4" firstAttribute="top" secondItem="BQu-5C-ijx" secondAttribute="bottom" constant="16" id="TdD-gt-oht"/>
                             <constraint firstItem="4jU-jy-5QE" firstAttribute="leading" secondItem="Pah-hI-MLH" secondAttribute="leading" constant="16" id="aob-hH-Xhk"/>
-                            <constraint firstItem="jcT-YG-2h4" firstAttribute="top" secondItem="un5-vE-2AL" secondAttribute="bottom" constant="8" symbolic="YES" id="c1W-Az-m1a"/>
+                            <constraint firstItem="BQu-5C-ijx" firstAttribute="top" secondItem="un5-vE-2AL" secondAttribute="bottom" constant="16" id="lyp-OG-8dd"/>
                             <constraint firstAttribute="bottom" secondItem="4jU-jy-5QE" secondAttribute="bottom" constant="16" id="mLY-bT-I1O"/>
                             <constraint firstAttribute="trailingMargin" secondItem="jcT-YG-2h4" secondAttribute="trailing" id="zHX-gZ-0yW"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Hastags" id="9xw-JN-jZW"/>
+                    <navigationItem key="navigationItem" title="My Hashtags" id="9xw-JN-jZW"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="collectionView" destination="4jU-jy-5QE" id="1Q3-NB-0jv"/>

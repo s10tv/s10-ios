@@ -9,6 +9,7 @@
 import UIKit
 import ReactiveCocoa
 import MLPAutoCompleteTextField
+import Async
 import Core
 
 class EditHashtagsViewController : UIViewController {
@@ -26,6 +27,17 @@ class EditHashtagsViewController : UIViewController {
         
         vm = EditHashtagsViewModel(meteor: Meteor)
         collectionView <~ (vm.hashtags, HashtagCell.self)
+
+        vm.placeholder.producer.startWithNext { [weak self] in
+            if let this = self where (this.textField.text?.length ?? 0) == 0 {
+                this.textField.fadeTransition(1)
+                this.textField.placeholder = $0
+            }
+        }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
     }
 }
 

@@ -19,4 +19,9 @@ extension NSObject {
             .flatMapError { _ in .empty }
             .map { $0 as! NSNotification }
     }
+    
+    public func rac_deallocProducer() -> SignalProducer<(), NoError> {
+        return rac_willDeallocSignal().toSignalProducer()
+            .map { _ in }.flatMapError { _ in .empty }
+    }
 }

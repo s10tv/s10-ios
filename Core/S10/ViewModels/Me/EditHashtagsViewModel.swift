@@ -15,6 +15,7 @@ public struct EditHashtagsViewModel {
     let subMyTags: MeteorSubscription
     let subSuggestedTags: MeteorSubscription
     
+    public let placeholder: PropertyOf<String>
     public let hashtags: FetchedResultsArray<HashtagViewModel>
     
     public init(meteor: MeteorService) {
@@ -26,6 +27,25 @@ public struct EditHashtagsViewModel {
         hashtags = Hashtag
             .sorted(by: HashtagKeys.selected.rawValue, ascending: false) // Doesn't seem right, but w/e
             .results { HashtagViewModel(hashtag: $0 as! Hashtag) }
+        
+        let placeholders = [
+            "Tag #me",
+            "Tag #myClasses #econ101",
+            "Tag #myProfessors #gateman",
+            "Tag #myHometown #paris #vancouver",
+            "Tag #myHobbies #skiing",
+            "Tag #myClubs #ubccvc",
+            "Tag #myResidence #gage #vanier #totem",
+            "Tag #myFavouritePlaceAtUBC #roseGarden",
+            "Tag #myFavouriteArtists #picasso",
+            "Tag #myFavouriteMusicians #taylorswift"
+        ]
+        var counter = 0
+        placeholder = PropertyOf(placeholders[0],
+            timer(3, onScheduler: QueueScheduler.mainQueueScheduler).map { _ in
+                counter++
+                return placeholders[counter % placeholders.count]
+            })
     }
     
     public func toggleHashtagAtIndex(index: Int) {
@@ -40,5 +60,7 @@ public struct EditHashtagsViewModel {
     public func autocompleteHashtags(hint: String) -> Future<[String], NSError> {
         return hint.length > 0 ? meteor.searchHashtag(hint).deliverOn(UIScheduler()) : Future(value: [])
     }
+    
+    
     
 }

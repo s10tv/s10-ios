@@ -18,6 +18,15 @@ extension UIView {
         }
         return superview?.parentViewOfType(type)
     }
+    
+    public func fadeTransition(duration: CFTimeInterval) {
+        let animation:CATransition = CATransition()
+        animation.timingFunction = CAMediaTimingFunction(name:
+            kCAMediaTimingFunctionEaseInEaseOut)
+        animation.type = kCATransitionFade
+        animation.duration = duration
+        layer.addAnimation(animation, forKey: kCATransitionFade)
+    }
 }
 
 extension UIViewController {
