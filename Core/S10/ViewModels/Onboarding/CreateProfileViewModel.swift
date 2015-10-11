@@ -84,7 +84,7 @@ public struct CreateProfileViewModel {
             }
             
             meteor.updateProfile(fields).flatMap {
-                self.meteor.confirmRegistration()
+                self.meteor.completeProfile()
             }.onFailure { error in
                 var errorReason : String
                 if let reason = error.localizedFailureReason {

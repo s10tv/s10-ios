@@ -154,6 +154,10 @@ public class MeteorService : NSObject {
         return meteor.call("confirmRegistration")
     }
 
+    func completeProfile() -> Future<(), NSError> {
+        return meteor.call("completeProfile")
+    }
+
     // MARK: - Services
 
     public func addService(serviceTypeId: String, accessToken: String) -> Future<(), NSError> {
