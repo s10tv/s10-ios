@@ -15,32 +15,17 @@ public struct EditHashtagsViewModel {
     let subMyTags: MeteorSubscription
     let subSuggestedTags: MeteorSubscription
     
-    public let hashtags: ArrayProperty<HashtagViewModel>
+    public let hashtags: FetchedResultsArray<HashtagViewModel>
     
     public init(meteor: MeteorService) {
         self.meteor = meteor
         subMyTags = meteor.subscribe("my-hashtags")
         subSuggestedTags = meteor.subscribe("suggested-hashtags")
         collection = meteor.collection("hashtags")
-
-//        let documentKey = METDocumentKey(collectionName: "hashtags", documentID: nil)
-//        return databaseChanges
-//            .filter { $0.affectedDocumentKeys().contains(documentKey) }
-//            .map { $0.changeDetailsForDocumentWithKey(documentKey).fieldsAfterChanges?[field] }
-//            .map { BoxedValue(value: $0) }
-
-        hashtags = ArrayProperty([
-            HashtagViewModel(text: "eco101", selected: true),
-            HashtagViewModel(text: "taylrswift", selected: true),
-            HashtagViewModel(text: "skiing", selected: true),
-            HashtagViewModel(text: "snowboard", selected: true),
-            HashtagViewModel(text: "manila", selected: true),
-            HashtagViewModel(text: "surf", selected: true),
-            HashtagViewModel(text: "paris", selected: false),
-            HashtagViewModel(text: "gateman", selected: false),
-            HashtagViewModel(text: "ubcpride", selected: false),
-            HashtagViewModel(text: "leagueoflegends", selected: false)
-        ])
+        
+        hashtags = Hashtag
+            .sorted(by: HashtagKeys.selected.rawValue, ascending: false) // Doesn't seem right, but w/e
+            .results { HashtagViewModel(hashtag: $0 as! Hashtag) }
     }
     
     public func toggleHashtagAtIndex(index: Int) {

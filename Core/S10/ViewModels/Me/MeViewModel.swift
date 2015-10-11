@@ -13,17 +13,19 @@ import ReactiveCocoa
 public struct MeViewModel {
     let meteor: MeteorService
     let taskService: TaskService
-    public let subscription: MeteorSubscription
+    let subscription: MeteorSubscription
+    let subMyTags: MeteorSubscription
     public let avatar: PropertyOf<Image?>
     public let cover: PropertyOf<Image?>
     public let displayName: PropertyOf<String>
     public let profileIcons: ArrayProperty<Image>
-    public let hashtags: ArrayProperty<HashtagViewModel>
+    public let hashtags: FetchedResultsArray<HashtagViewModel>
     
     public init(meteor: MeteorService, taskService: TaskService) {
         self.meteor = meteor
         self.taskService = taskService
         subscription = meteor.subscribe("me")
+        subMyTags = meteor.subscribe("my-hashtags")
         avatar = meteor.user.flatMap { $0.pAvatar() }
         cover = meteor.user.flatMap { $0.pCover() }
         displayName = meteor.user.flatMap(nilValue: "") { $0.pDisplayName() }
@@ -31,14 +33,9 @@ public struct MeViewModel {
             .flatMap(nilValue: []) { $0.pConnectedProfiles() }
             .map { $0.map { $0.icon } }
             .array()
-        hashtags = ArrayProperty([
-            HashtagViewModel(text: "eco101", selected: true),
-            HashtagViewModel(text: "taylrswift", selected: true),
-            HashtagViewModel(text: "skiing", selected: true),
-            HashtagViewModel(text: "snowboard", selected: true),
-            HashtagViewModel(text: "manila", selected: true),
-            HashtagViewModel(text: "surf", selected: true)
-        ])
+        hashtags = Hashtag
+            .by(HashtagKeys.selected, value: true)
+            .results { HashtagViewModel(hashtag: $0 as! Hashtag) }
     }
     
     public func canViewOrEditProfile() -> Bool {

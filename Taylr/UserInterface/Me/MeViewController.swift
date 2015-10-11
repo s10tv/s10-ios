@@ -139,8 +139,19 @@ extension MeViewController /*: UITableViewDataSource */{
     }
 }
 
+// HACK ALERT: Better way than hardcode?
+private let HashtagsIndexPath = NSIndexPath(forRow: 0, inSection: 3)
+
 extension MeViewController /*: UITableViewDelegate */{
-    override  func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    
+    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        if indexPath.section == HashtagsIndexPath.section { // hashtags section
+            return hashtagsView.collectionViewLayout.collectionViewContentSize().height
+        }
+        return super.tableView(tableView, heightForRowAtIndexPath: indexPath)
+    }
+    
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if section == 1 {
             return nil
         }
