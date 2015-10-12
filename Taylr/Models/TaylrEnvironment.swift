@@ -35,6 +35,7 @@ class TaylrEnvironment : Environment {
     let ouralabsKey = "5994e77086c6fcabc4bd5d5fe6c3e556"
     let uxcamKey = "2c0f24d77c8cdc6"
     let segmentWriteKey: String
+    let mixpanelToken: String
     let amplitudeKey: String
     
     init(audience: Audience, provisioningProfile: ProvisioningProfile?) {
@@ -46,14 +47,17 @@ class TaylrEnvironment : Environment {
                 serverHostName = "s10-dev.herokuapp.com"
                 segmentWriteKey = "pZimciABfGDaOLvEx9NWAFSoYHyCOg1n"
                 amplitudeKey = "3b3701a21192c042353851256b275185"
+                mixpanelToken = "255ede53d2307ab3a8a51314822c5f50"
             case .Beta:
                 serverHostName = "s10-beta.herokuapp.com"
                 segmentWriteKey = "SGEB9gVQGFYgeptFbtnETHCka8FCOuoc" // this is wrong.
                 amplitudeKey = "3b3701a21192c042353851256b275185" // This is also wrong. Beta audience isn't really being used at the moment...
+                mixpanelToken = "39194eed490fa8abcc026256631a4230"
             case .AppStore:
                 serverHostName = "taylr-prod.herokuapp.com"
                 segmentWriteKey = "DwMJMhxsvn6EDrO33gANHBjvg3FUsfPJ"
                 amplitudeKey = "afe5fb04a3d90ca989e34a35092b6e33"
+                mixpanelToken = "a62700cc1f055205f3b18ff95fdefc62"
         }
         super.init(provisioningProfile: provisioningProfile)
     }

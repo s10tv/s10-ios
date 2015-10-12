@@ -10,6 +10,7 @@ import Foundation
 import ReactiveCocoa
 import AnalyticsSwift
 import Amplitude_iOS
+import Mixpanel
 import Core
 
 class AnalyticsService {
@@ -17,6 +18,7 @@ class AnalyticsService {
     private let currentUser: CurrentUser
     private let segment: AnalyticsSwift.Analytics
     private let amplitude: Amplitude
+    private let mixpanel: Mixpanel
     
     private let cd = CompositeDisposable()
 
@@ -27,6 +29,7 @@ class AnalyticsService {
         amplitude = Amplitude.instance()
         amplitude.trackingSessionEvents = true
         amplitude.initializeApiKey(env.amplitudeKey)
+        mixpanel = Mixpanel.sharedInstanceWithToken(env.mixpanelToken)
         UXCam.startWithKey(env.uxcamKey)
         
         cd += currentUser.userId.producer.startWithNext { [weak self] userId in
@@ -57,6 +60,7 @@ class AnalyticsService {
             segment.enqueue(IdentifyMessageBuilder().anonymousId(env.deviceId))
         }
         amplitude.setUserId(userId)
+        mixpanel.identify(userId)
         Log.verbose("[analytics] identify \(userId)")
         flush()
     }
@@ -69,6 +73,7 @@ class AnalyticsService {
             segment.enqueue(msg.anonymousId(env.deviceId))
         }
         amplitude.setUserProperties(properties, replace: true)
+        mixpanel.people.set(properties)
         Log.verbose("[analytics] setUserProperties: \(properties)")
         flush()
     }
@@ -81,6 +86,7 @@ class AnalyticsService {
             segment.enqueue(msg.anonymousId(env.deviceId))
         }
         amplitude.logEvent(event, withEventProperties: properties)
+        mixpanel.track(event, properties: properties)
         Log.verbose("[analytics] track '\(event)' properties: \(properties)")
         flush()
     }
@@ -100,5 +106,6 @@ class AnalyticsService {
     func flush() {
         segment.flush()
         amplitude.uploadEvents()
+        mixpanel.flush()
     }
 }

@@ -67,6 +67,7 @@ target :Core do
         pod 'TwitterCore', '~> 1.11'
         pod 'Digits', '~> 1.11'
         pod 'Ouralabs', '~> 2.6'
+        pod 'Mixpanel', '~> 2.8.3'
         pod 'AnalyticsSwift', '~> 0.2'
         pod 'Amplitude-iOS', '~> 3.1'
         pod 'UXCam', '~> 2.3'

@@ -47,6 +47,9 @@ PODS:
     - InflectorKit
     - PocketSocket
     - SimpleKeychain
+  - Mixpanel (2.8.3):
+    - Mixpanel/Mixpanel (= 2.8.3)
+  - Mixpanel/Mixpanel (2.8.3)
   - MLPAutoCompleteTextField (1.6)
   - Nimble (2.0.0)
   - NSLogger (1.5.1):
@@ -124,6 +127,7 @@ DEPENDENCIES:
   - JSBadgeView (~> 1.4)
   - JVFloatLabeledTextField (~> 1.1)
   - Meteor (from `https://github.com/tonyxiao/meteor-ios`, branch `dev`)
+  - Mixpanel (~> 2.8.3)
   - MLPAutoCompleteTextField (from `https://github.com/EddyBorja/MLPAutoCompleteTextField.git`)
   - Nimble (~> 2.0.0-rc.3)
   - NSLogger (~> 1.5)
@@ -209,6 +213,7 @@ SPEC CHECKSUMS:
   JSBadgeView: 3861ddee41094284d9468e6d0af5107f703aaac5
   JVFloatLabeledTextField: ea4a3d8387ddd43724c472bb2b8ab39b79af05d4
   Meteor: e061bb07cbce6a99b2adf6fdde6a83f08e40da8c
+  Mixpanel: fd52e097ae0d27295d0595b2261c60b94d191fda
   MLPAutoCompleteTextField: 02700789c32dce9b3a7e9991810adf5edb757d80
   Nimble: 472e75466819eb8c06299233e87c694a9b51328a
   NSLogger: 5ed223a2436df96244e033be750656dacdeec034
