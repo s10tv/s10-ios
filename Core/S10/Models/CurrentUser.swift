@@ -61,7 +61,9 @@ public class CurrentUser {
         // Quite a hack
         meteor.user.producer.skip(1).startWithNext { [weak self] u in
             UD.meteorUserId.value = u?.documentID
-            self?._userId.value = u?.documentID
+            if self?._userId.value != u?.documentID {
+                self?._userId.value = u?.documentID
+            }
         }
     }
 }

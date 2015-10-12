@@ -76,10 +76,13 @@ class AnalyticsService {
         }
         amplitude.setUserProperties(properties, replace: true)
         Log.verbose("[analytics] setUserProperties: \(properties)")
-        var props = properties
-        props["$first_name"] = props.removeValueForKey("First Name")
-        props["$last_name"] = props.removeValueForKey("Last Name")
-        mixpanel.people.set(props)
+        // Only track properties to mixpanel post-digits login
+        if let userId = currentUser.userId.value where userId == mixpanel.distinctId {
+            var props = properties
+            props["$first_name"] = props.removeValueForKey("First Name")
+            props["$last_name"] = props.removeValueForKey("Last Name")
+            mixpanel.people.set(props)
+        }
         flush()
     }
 
@@ -91,7 +94,10 @@ class AnalyticsService {
             segment.enqueue(msg.anonymousId(env.deviceId))
         }
         amplitude.logEvent(event, withEventProperties: properties)
-        mixpanel.track(event, properties: properties)
+        // Only track events to mixpanel post-digits login
+        if let userId = currentUser.userId.value where userId == mixpanel.distinctId {
+            mixpanel.track(event, properties: properties)
+        }
         Log.verbose("[analytics] track '\(event)' properties: \(properties)")
         flush()
     }

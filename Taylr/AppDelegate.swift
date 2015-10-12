@@ -124,11 +124,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
     }
     
     func applicationWillResignActive(application: UIApplication) {
-        SugarRecord.applicationWillResignActive()
+        // For some reason this causes a deadlock, so let's not do it
+//        SugarRecord.applicationWillResignActive()
     }
     
     func applicationWillTerminate(application: UIApplication) {
-        SugarRecord.applicationWillTerminate()
+//        SugarRecord.applicationWillTerminate()
     }
     
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {

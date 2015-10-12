@@ -46,7 +46,7 @@ class TaylrEnvironment : Environment {
 //                serverHostName = "10.1.1.12:3000"
                 serverHostName = "s10-dev.herokuapp.com"
                 segmentWriteKey = "pZimciABfGDaOLvEx9NWAFSoYHyCOg1n"
-                amplitudeKey = "3b3701a21192c042353851256b275185"
+                amplitudeKey = "0ef2064f5f59aca8b1224ec4374064d3"
                 mixpanelToken = "9d5d89ba988e52622278165d91ccf937"
             case .Beta:
                 serverHostName = "s10-beta.herokuapp.com"
