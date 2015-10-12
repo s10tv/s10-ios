@@ -62,7 +62,8 @@ class AnalyticsService {
         } else {
             segment.enqueue(IdentifyMessageBuilder().anonymousId(env.deviceId))
             mixpanel.identify(env.deviceId)
-            amplitude.setUserId(nil)
+//            amplitude.setUserId(nil) // Setting this to nil leads to Perma crash. So let's not set to nil
+            // Also we probably would benefit from less reactivity and more just simple logic
         }
         Log.verbose("[analytics] identify \(userId)")
         flush()
