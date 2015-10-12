@@ -29,6 +29,7 @@ public class CurrentUser {
     public let matchInterval: PropertyOf<Int?>
     
     // CurrentUser
+    let _userId: MutableProperty<String?>
     public let userId: PropertyOf<String?>
     public let firstName: PropertyOf<String?>
     public let lastName: PropertyOf<String?>
@@ -50,10 +51,17 @@ public class CurrentUser {
         nextMatchDate = s.propertyOf("nextMatchDate").map { $0.typed(NSDate) }
         matchInterval = s.propertyOf("matchInterval").map { $0.typed(Int) }
         
+        _userId = MutableProperty(UD.meteorUserId.value)
+        userId = PropertyOf(_userId)
         let u = meteor.user
-        userId = u.map { $0?.documentID }
         firstName = u.flatMap { $0.pFirstName().map { Optional($0) } }
         lastName = u.flatMap { $0.pLastName().map { Optional($0) } }
         gradYear = u.flatMap { $0.pGradYear().map { Optional($0) } }
+        
+        // Quite a hack
+        meteor.user.producer.skip(1).startWithNext { [weak self] u in
+            UD.meteorUserId.value = u?.documentID
+            self?._userId.value = u?.documentID
+        }
     }
 }

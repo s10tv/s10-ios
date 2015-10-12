@@ -47,12 +47,12 @@ class TaylrEnvironment : Environment {
                 serverHostName = "s10-dev.herokuapp.com"
                 segmentWriteKey = "pZimciABfGDaOLvEx9NWAFSoYHyCOg1n"
                 amplitudeKey = "3b3701a21192c042353851256b275185"
-                mixpanelToken = "255ede53d2307ab3a8a51314822c5f50"
+                mixpanelToken = "9d5d89ba988e52622278165d91ccf937"
             case .Beta:
                 serverHostName = "s10-beta.herokuapp.com"
                 segmentWriteKey = "SGEB9gVQGFYgeptFbtnETHCka8FCOuoc" // this is wrong.
                 amplitudeKey = "3b3701a21192c042353851256b275185" // Same as Dev
-                mixpanelToken = "255ede53d2307ab3a8a51314822c5f50" // Same as Dev
+                mixpanelToken = "9d5d89ba988e52622278165d91ccf937" // Same as Dev
             case .AppStore:
                 serverHostName = "taylr-prod.herokuapp.com"
                 segmentWriteKey = "DwMJMhxsvn6EDrO33gANHBjvg3FUsfPJ"

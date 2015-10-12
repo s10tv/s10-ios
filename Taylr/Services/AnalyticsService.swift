@@ -75,8 +75,11 @@ class AnalyticsService {
             segment.enqueue(msg.anonymousId(env.deviceId))
         }
         amplitude.setUserProperties(properties, replace: true)
-        mixpanel.people.set(properties)
         Log.verbose("[analytics] setUserProperties: \(properties)")
+        var props = properties
+        props["$first_name"] = props.removeValueForKey("First Name")
+        props["$last_name"] = props.removeValueForKey("Last Name")
+        mixpanel.people.set(props)
         flush()
     }
 
