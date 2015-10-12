@@ -51,13 +51,13 @@ class TaylrEnvironment : Environment {
             case .Beta:
                 serverHostName = "s10-beta.herokuapp.com"
                 segmentWriteKey = "SGEB9gVQGFYgeptFbtnETHCka8FCOuoc" // this is wrong.
-                amplitudeKey = "3b3701a21192c042353851256b275185" // This is also wrong. Beta audience isn't really being used at the moment...
-                mixpanelToken = "39194eed490fa8abcc026256631a4230"
+                amplitudeKey = "3b3701a21192c042353851256b275185" // Same as Dev
+                mixpanelToken = "255ede53d2307ab3a8a51314822c5f50" // Same as Dev
             case .AppStore:
                 serverHostName = "taylr-prod.herokuapp.com"
                 segmentWriteKey = "DwMJMhxsvn6EDrO33gANHBjvg3FUsfPJ"
-                amplitudeKey = "afe5fb04a3d90ca989e34a35092b6e33"
-                mixpanelToken = "a62700cc1f055205f3b18ff95fdefc62"
+                amplitudeKey = "ff96d68f3ff2efd39284b33a78dbbf2c"
+                mixpanelToken = "39194eed490fa8abcc026256631a4230"
         }
         super.init(provisioningProfile: provisioningProfile)
     }
