@@ -19,7 +19,7 @@ class AnalyticsService {
     private let segment: AnalyticsSwift.Analytics
     private let amplitude: Amplitude
     private let mixpanel: Mixpanel
-    
+
     private let cd = CompositeDisposable()
 
     init(env: TaylrEnvironment, currentUser: CurrentUser) {
@@ -31,7 +31,7 @@ class AnalyticsService {
         amplitude.initializeApiKey(env.amplitudeKey)
         mixpanel = Mixpanel.sharedInstanceWithToken(env.mixpanelToken)
 //        UXCam.startWithKey(env.uxcamKey)
-        
+
         cd += currentUser.userId.producer.startWithNext { [weak self] userId in
             self?.identify(userId)
         }
@@ -48,23 +48,25 @@ class AnalyticsService {
             }
         }
     }
-    
+
     deinit {
         cd.dispose()
     }
-    
+
     private func identify(userId: String?) {
         if let userId = currentUser.userId.value {
             segment.enqueue(IdentifyMessageBuilder().userId(userId))
+            mixpanel.identify(userId)
+            amplitude.setUserId(userId)
         } else {
             segment.enqueue(IdentifyMessageBuilder().anonymousId(env.deviceId))
+            mixpanel.identify(env.deviceId)
+            amplitude.setUserId(nil)
         }
-        amplitude.setUserId(userId)
-        mixpanel.identify(userId)
         Log.verbose("[analytics] identify \(userId)")
         flush()
     }
-    
+
     func setUserProperties(properties: [String: AnyObject]) {
         let msg = IdentifyMessageBuilder().traits(properties)
         if let userId = currentUser.userId.value {
@@ -77,7 +79,7 @@ class AnalyticsService {
         Log.verbose("[analytics] setUserProperties: \(properties)")
         flush()
     }
-    
+
     func track(event: String, _ properties: [String: AnyObject]? = nil) {
         let msg = TrackMessageBuilder(event: event).properties(properties ?? [:])
         if let userId = currentUser.userId.value {
