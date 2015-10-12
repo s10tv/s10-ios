@@ -34,10 +34,8 @@ class EditHashtagsViewController : UIViewController {
                 this.textField.placeholder = $0
             }
         }
-    }
-    
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
+        
+        Analytics.track("View: EditHashtags")
     }
 }
 

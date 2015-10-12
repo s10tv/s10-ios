@@ -22,11 +22,6 @@ class LoginViewController : BaseViewController, TutorialViewController {
     
     let vm = LoginViewModel(meteor: Meteor, delegate: Globals.accountService)
     
-    override func commonInit() {
-        super.commonInit()
-        screenName = "Login"
-    }
-
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -39,6 +34,7 @@ class LoginViewController : BaseViewController, TutorialViewController {
             showProgress <~ executing
             showErrorAction <~ errors.map { $0 as AlertableError }
             segueAction <~ values.filter { $0 != .LoggedOut }.map {
+                Analytics.track("VerifyPhone")
                 switch $0 {
                 case .LoggedIn: return .LoginToRegisterEmail
                 case .LoggedInButCodeDisabled: return .LoginToConnectServices
@@ -49,11 +45,7 @@ class LoginViewController : BaseViewController, TutorialViewController {
             }
         }
         logoutButton.addAction(vm.logoutAction) { _, _, _ in }
-    }
-
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        Globals.analyticsService.screen("Login")
+        Analytics.track("View: Welcome")
     }
     
     override func viewWillAppear(animated: Bool) {

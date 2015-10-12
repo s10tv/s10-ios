@@ -225,7 +225,6 @@ extension ConversationViewController : SwipeViewDelegate {
 extension ConversationViewController : ProducerDelegate {
     func producerWillStartRecording(producer: ProducerViewController) {
         vm.recording.value = true
-        Globals.analyticsService.track("Started Message")
     }
 
     func producerDidCancelRecording(producer: ProducerViewController) {

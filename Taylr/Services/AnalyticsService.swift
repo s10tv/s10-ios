@@ -13,10 +13,10 @@ import Amplitude_iOS
 import Core
 
 class AnalyticsService {
-    let env: TaylrEnvironment
-    let currentUser: CurrentUser
-    let segment: AnalyticsSwift.Analytics
-    let amplitude: Amplitude
+    private let env: TaylrEnvironment
+    private let currentUser: CurrentUser
+    private let segment: AnalyticsSwift.Analytics
+    private let amplitude: Amplitude
     
     private let cd = CompositeDisposable()
 

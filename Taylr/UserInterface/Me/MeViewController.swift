@@ -49,6 +49,8 @@ class MeViewController : UITableViewController {
         listenForNotification(DidTouchStatusBar).startWithNext { [weak self] _ in
             self?.tableView.scrollToTop(animated: true)
         }
+        
+        Analytics.track("View: Me")
     }
     
     var hackedOffset = false
@@ -59,11 +61,6 @@ class MeViewController : UITableViewController {
             hackedOffset = true
             tableView.contentOffset = CGPoint(x: 0, y: -66)
         }
-    }
-
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        Globals.analyticsService.screen("Me")
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -100,7 +97,7 @@ class MeViewController : UITableViewController {
     // MARK: -
     
     @IBAction func didPressContactSupport(sender: AnyObject) {
-        Globals.analyticsService.track("Contacted Support")
+        Globals.analyticsService.track("Me: ContactUs")
         if MFMailComposeViewController.canSendMail() {
             let mail = MFMailComposeViewController()
             mail.setToRecipients(["hello@taylrapp.com"])

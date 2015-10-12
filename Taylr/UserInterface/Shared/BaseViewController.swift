@@ -79,7 +79,6 @@ class BaseViewController : UIViewController {
     var showErrorAction: Action<AlertableError, Void, NoError>!
     var segueAction: Action<SegueIdentifier, Void, NoError>!
     var showProgress: MutableProperty<Bool>!
-    var screenName: String?
     
     // MARK: - Initialization
 
@@ -136,7 +135,6 @@ class BaseViewController : UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         _appearanceState.value = .Appeared
-        if let s = screenName { Analytics.track("Screen: \(s)") }
     }
     
     override func viewWillDisappear(animated: Bool) {

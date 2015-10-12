@@ -39,11 +39,7 @@ class ConnectServicesViewController : UITableViewController {
                 self.tableView.beginUpdates()
                 self.tableView.endUpdates()
             }
-    }
-
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        Globals.analyticsService.screen("Connect Services")
+        Analytics.track("View: ConnectServices")
     }
 
     override func viewWillAppear(animated: Bool) {

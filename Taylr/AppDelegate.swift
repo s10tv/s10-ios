@@ -95,7 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         Globals.taskService.resumeInvites()
         
         Log.info("App Launched")
-        Analytics.track("App Open")
+        Analytics.track("AppOpen")
         
         IntegrationsViewController.application(application, didFinishLaunchingWithOptions: launchOptions)
         
@@ -111,12 +111,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
     
     func applicationWillEnterForeground(application: UIApplication) {
         SugarRecord.applicationWillEnterForeground()
-        Analytics.track("App Open")
+        Analytics.track("AppOpen")
         Globals.upgradeService.promptForUpgradeIfNeeded()
     }
     
     func applicationDidEnterBackground(application: UIApplication) {
-        Analytics.track("App Close")
+        Analytics.track("AppClose")
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
@@ -148,14 +148,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         Log.info("Registered for push \(deviceToken)")
         if let apsEnv = Globals.env.provisioningProfile?.apsEnvironment?.rawValue {
             Meteor.updateDevicePush(apsEnv, pushToken: deviceToken.hexString() as String)
-            Globals.analyticsService.track("Registered Push")
-
+            Analytics.setUserProperties(["RegisteredPush": true])
         }
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         Log.warn("Faild to register for push \(error)")
-        Globals.analyticsService.track("Failed to Register Push")
+        Analytics.setUserProperties(["RegisteredPush": false])
     }
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {

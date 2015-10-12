@@ -51,16 +51,13 @@ class CreateProfileViewController : UITableViewController {
         aboutView.rac_text <<~> vm.about
         avatarView.sd_image <~ vm.avatar
         coverView.sd_image <~ vm.cover
+        
+        Analytics.track("View: CreateProfile")
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
-    }
-
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-        Globals.analyticsService.screen("Create Profile")
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -105,6 +102,7 @@ class CreateProfileViewController : UITableViewController {
         wrapFuture(showProgress: true) {
             self.vm.confirmRegistration()
         }.onSuccess { [weak self] in
+            Analytics.track("Signup")
             // TODO: Maybe this should be in a segue from somewhere... Kind of harsh..
             if let nav = self?.navigationController {
                 let mainRootTab = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()!

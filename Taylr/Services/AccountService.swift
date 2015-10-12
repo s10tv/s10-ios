@@ -80,14 +80,6 @@ class AccountService {
         return digits.session() != nil && meteorService.account.value != nil
     }
     
-    private func didLogin() {
-        // Allow this to be set by server rather than client
-//        self.meteorService.meta.hasBeenWelcomed = false
-//        self.meteorService.meta.gameTutorialMode = true
-//        // TODO: Figure out whether user signed up or logged in
-//        Analytics.track("Logged In")
-    }
-    
     // MARK: -
     
     func login() -> Future<AccountState, NSError> {
@@ -106,7 +98,6 @@ class AccountService {
                     ).onFailure {
                         promise.failure($0)
                     }.onSuccess {
-                        self.didLogin()
                         promise.success(self.state.value)
                     }
                 } else {
@@ -118,7 +109,6 @@ class AccountService {
     }
     
     func logout() {
-        Analytics.track("Logged Out")
         UD.resetAll()
         digits.logOut()
         _digitsSession.value = nil

@@ -100,6 +100,11 @@ class ReceiveViewController : UIViewController {
     }
     
     @IBAction func advance() {
+        if let message = vm.currentVideo.value {
+            Analytics.track("Message: Open", properties: [
+                "MessageId": message.messageId
+            ])
+        }
         if vm.seekNextVideo() {
             Async.main { self.player.play() }
         } else {
@@ -118,9 +123,5 @@ extension ReceiveViewController : SCPlayerDelegate {
     
     func player(player: SCPlayer, didReachEndForItem item: AVPlayerItem) {
         advance()
-        if let message = vm.currentVideo.value {
-            Globals.analyticsService.track("Viewed Message", properties: [
-                "messageId": message.messageId])
-        }
     }
 }

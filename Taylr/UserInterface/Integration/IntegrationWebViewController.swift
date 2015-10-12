@@ -30,7 +30,7 @@ class IntegrationWebViewController: UIViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        Globals.analyticsService.track("Selected Integration", properties: [
+        Analytics.track("View: Integration", properties: [
             "integration" : integration.name])
     }
 
