@@ -3,4 +3,4 @@
 //
 
 #import "MuteChecker.h"
-//#import <UXCam/UXCam.h> // UXCam resist integration using Module for some reason
+#import <UXCam/UXCam.h> // UXCam resist integration using Module for some reason
