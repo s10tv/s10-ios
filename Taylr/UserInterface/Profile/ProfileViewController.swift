@@ -47,7 +47,7 @@ class ProfileViewController : BaseViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        Globals.analyticsService.screen("Profile")
+        Analytics.track("View: Profile")
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -82,6 +82,7 @@ class ProfileViewController : BaseViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ConversationViewController {
             vc.vm = vm.conversationVM()
+            Analytics.track("Profile: TapMessage")
         }
     }
     

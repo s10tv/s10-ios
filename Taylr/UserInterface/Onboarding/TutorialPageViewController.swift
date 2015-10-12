@@ -94,6 +94,10 @@ class TutorialPageViewController : UIPageViewController, UIPageViewControllerDat
         }
         return viewControllerAtIndex(index)
     }
+    
+    func pageViewController(pageViewController: UIPageViewController, willTransitionToViewControllers pendingViewControllers: [UIViewController]) {
+        Analytics.track("Welcome: SwipeTutorial")
+    }
 
     func viewControllerAtIndex(index: Int) -> UIViewController? {
         if contents.count == 0 || index >= (contents.count + 1) {

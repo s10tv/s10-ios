@@ -101,7 +101,7 @@ class ReceiveViewController : UIViewController {
     
     @IBAction func advance() {
         if let message = vm.currentVideo.value {
-            Analytics.track("Message: Open", properties: [
+            Analytics.track("Message: Open", [
                 "MessageId": message.messageId
             ])
         }

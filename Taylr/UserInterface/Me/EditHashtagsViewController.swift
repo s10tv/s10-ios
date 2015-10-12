@@ -34,7 +34,10 @@ class EditHashtagsViewController : UIViewController {
                 this.textField.placeholder = $0
             }
         }
-        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         Analytics.track("View: EditHashtags")
     }
 }
@@ -51,6 +54,12 @@ extension EditHashtagsViewController : UIScrollViewDelegate {
 
 extension EditHashtagsViewController : UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let hashtag = vm.hashtags.array[indexPath.item]
+        if hashtag.selected {
+            Analytics.track("Hashtag: Remove", ["Text": hashtag.text])
+        } else {
+            Analytics.track("Hashtag: Add", ["Text": hashtag.text])
+        }
         vm.toggleHashtagAtIndex(indexPath.item)
     }
 }
@@ -82,7 +91,9 @@ extension EditHashtagsViewController : MLPAutoCompleteTextFieldDelegate {
     }
     
     func autoCompleteTextField(textField: MLPAutoCompleteTextField!, didSelectAutoCompleteString selectedString: String!, withAutoCompleteObject selectedObject: MLPAutoCompletionObject!, forRowAtIndexPath indexPath: NSIndexPath!) {
-        vm.selectHashtag(selectedString.substringFromIndex(1))
+        let hashtagText = selectedString.substringFromIndex(1)
+        vm.selectHashtag(hashtagText)
+        Analytics.track("Hashtag: Add", ["Text": hashtagText])
         textField.text = nil
         textField.reloadData()
     }

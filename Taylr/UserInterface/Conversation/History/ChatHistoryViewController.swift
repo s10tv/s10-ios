@@ -38,8 +38,8 @@ class ChatHistoryViewController : UIViewController {
         playbackContainer.rac_hidden <~ vm.hidePlaybackViews
         overlay.rac_hidden <~ vm.isPlaying
         durationTimer.label.rac_text <~ vm.durationLeft
-        vm.currentVideoURL.producer.startWithNext { [weak self] url in
-            let videoURL = url
+        vm.currentVideo.producer.startWithNext { [weak self] video in
+            let videoURL = video?.url
             // NOTE: Despite the fact that we are on main thread it appears that
             // because MutableProperty dispatch_sync to a different queue
             // AVPlayer.setItemByUrl ends up being a no-op. I can't explain it but
@@ -89,7 +89,7 @@ class ChatHistoryViewController : UIViewController {
     @IBAction func rewind() {
         if (player.currentTime().seconds < 2
             || player.itemDuration.seconds < 2
-            || vm.currentVideoURL.value == nil)
+            || vm.currentVideo.value == nil)
             && vm.prevVideo() != nil {
             vm.seekPrevVideo()
         } else {
@@ -125,6 +125,7 @@ extension ChatHistoryViewController : SCPlayerDelegate {
 extension ChatHistoryViewController : UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         vm.seekVideoAtIndex(indexPath.item)
+        Analytics.track("Message: Replay", ["MessageId": vm.currentVideo.value?.messageId ?? ""])
         Async.main { self.player.play() }
     }
 }

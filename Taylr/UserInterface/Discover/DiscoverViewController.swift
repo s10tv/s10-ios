@@ -43,7 +43,7 @@ class DiscoverViewController : BaseViewController {
         // TODO: Temporarily request all access to all permissions
         let settings = UIUserNotificationSettings(forTypes:[.Badge, .Alert, .Sound], categories: nil)
         UIApplication.sharedApplication().registerUserNotificationSettings(settings)
-        Globals.analyticsService.screen("Discover")
+        Analytics.track("View: Today")
     }
     
     override func viewDidLayoutSubviews() {
@@ -62,10 +62,12 @@ class DiscoverViewController : BaseViewController {
         if let profileVC = segue.destinationViewController as? ProfileViewController,
             let profileVM = vm.profileVM() {
             profileVC.vm = profileVM
+            Analytics.track("Today: TapProfile")
         }
         if let vc = segue.destinationViewController as? ConversationViewController,
             let conversationVM = vm.conversationVM() {
             vc.vm = conversationVM
+            Analytics.track("Today: TapMessage")
         }
     }
 }

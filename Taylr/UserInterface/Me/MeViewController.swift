@@ -49,7 +49,10 @@ class MeViewController : UITableViewController {
         listenForNotification(DidTouchStatusBar).startWithNext { [weak self] _ in
             self?.tableView.scrollToTop(animated: true)
         }
-        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
         Analytics.track("View: Me")
     }
     

@@ -92,6 +92,11 @@ class ConversationViewController : BaseViewController {
         }
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        Analytics.track("View: Conversation")
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         let scrollView = swipeView.valueForKey("scrollView") as! UIScrollView
@@ -175,7 +180,7 @@ class ConversationViewController : BaseViewController {
         alert.addAction("Cancel", style: .Cancel)
         alert.addAction("Block", style: .Destructive) { _ in
             self.vm.blockUser()
-
+            Analytics.track("User: Block")
             let dialog = UIAlertController(title: "Block User", message: "\(self.vm.displayName.value) will no longer be able to contact you in the future", preferredStyle: .Alert)
             dialog.addAction("Ok", style: .Default)
             self.presentViewController(dialog)
@@ -190,6 +195,7 @@ class ConversationViewController : BaseViewController {
         alert.addAction(LS(.reportAlertCancel), style: .Cancel)
         alert.addAction(LS(.reportAlertConfirm), style: .Destructive) { _ in
             if let reportReason = alert.textFields?[0].text {
+                Analytics.track("User: Report", ["Reason": reportReason])
                 self.vm.reportUser(reportReason)
             }
         }
@@ -212,9 +218,8 @@ extension ConversationViewController : SwipeViewDataSource {
 extension ConversationViewController : SwipeViewDelegate {
     func swipeViewCurrentItemIndexDidChange(swipeView: SwipeView!) {
         if swipeView.currentItemIndex == Page.ChatHistory.rawValue {
-            Globals.analyticsService.screen("Conversation - ChatHistory")
+            Analytics.track("Conversation: ViewChatHistory")
         } else if swipeView.currentItemIndex == Page.Producer.rawValue {
-            Globals.analyticsService.screen("Conversation - Recorder")
             vm.finishTutorial()
         }
     }
@@ -224,10 +229,12 @@ extension ConversationViewController : SwipeViewDelegate {
 
 extension ConversationViewController : ProducerDelegate {
     func producerWillStartRecording(producer: ProducerViewController) {
+        Analytics.track("Message: Start", ["ConversationName": vm.displayName.value])
         vm.recording.value = true
     }
 
     func producerDidCancelRecording(producer: ProducerViewController) {
+        Analytics.track("Message: Discard", ["ConversationName": vm.displayName.value])
         vm.recording.value = false
     }
     
@@ -238,6 +245,7 @@ extension ConversationViewController : ProducerDelegate {
                 var video = Video(url)
                 video.thumbnail = Image(thumbnail)
                 video.duration = duration
+                Analytics.track("Message: Send", ["ConversationName": self.vm.displayName.value])
                 self.vm.sendVideo(video)
             }
         }

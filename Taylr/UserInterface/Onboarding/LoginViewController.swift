@@ -44,13 +44,18 @@ class LoginViewController : BaseViewController, TutorialViewController {
                 }
             }
         }
+        loginButton.addTarget(self, action: "didPressLogin:", forControlEvents: .TouchDown)
         logoutButton.addAction(vm.logoutAction) { _, _, _ in }
-        Analytics.track("View: Welcome")
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBarHidden = true
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        Analytics.track("View: Welcome")
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -64,6 +69,10 @@ class LoginViewController : BaseViewController, TutorialViewController {
     }
     
     // MARK: Actions
+    
+    @IBAction func didPressLogin(sender: AnyObject) {
+        Analytics.track("Welcome: TapLoginWithPhone")
+    }
     
     @IBAction func viewTerms(sender: AnyObject) {
         UIApplication.sharedApplication().openURL(vm.termsAndConditionURL)

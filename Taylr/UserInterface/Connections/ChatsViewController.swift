@@ -39,7 +39,7 @@ class ChatsViewController : BaseViewController {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        Globals.analyticsService.screen("Chats")
+        Analytics.track("View: Connections")
         AudioController.sharedController.checkMuteSwitch() // Early mute switch check
     }
 

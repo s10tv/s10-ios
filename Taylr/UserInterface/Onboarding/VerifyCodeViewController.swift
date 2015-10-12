@@ -31,7 +31,7 @@ class VerifyCodeViewController : UIViewController {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         verificationTokenField.becomeFirstResponder()
-        Globals.analyticsService.screen("Verify Invite Code")
+        Analytics.track("View: VerifyInviteCode")
     }
 
     // MARK: -

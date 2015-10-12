@@ -15,14 +15,14 @@ import ReactiveCocoa
 // approach and when
 // http://www.objc.io/issues/16-swift/swift-classes-vs-structs/#the-advantages-of-value-types
 public class ChatHistoryViewModel {
-    private let currentVideo = MutableProperty<MessageViewModel?>(nil)
+    private let _currentVideo = MutableProperty<MessageViewModel?>(nil)
     private let currentVideoPosition = MutableProperty<NSTimeInterval>(0)
     private let _isPlaying = MutableProperty(false)
     private let meteor: MeteorService
 
     public let messages: ArrayProperty<MessageViewModel>
     public let isPlaying: PropertyOf<Bool>
-    public let currentVideoURL: PropertyOf<NSURL?>
+    public let currentVideo: PropertyOf<MessageViewModel?>
     public let currentVideoProgress: PropertyOf<Float>
     public let durationLeft: PropertyOf<String>
     public let hidePlaybackViews: PropertyOf<Bool>
@@ -30,7 +30,7 @@ public class ChatHistoryViewModel {
     init(meteor: MeteorService, conversation: Conversation) {
         self.meteor = meteor
         messages = conversation.allPlayableMessagesProperty(meteor)
-        currentVideoURL = currentVideo.map { $0?.url }
+        currentVideo = PropertyOf(_currentVideo)
         isPlaying = PropertyOf(_isPlaying)
         currentVideoProgress = PropertyOf(0, combineLatest(
             currentVideo.producer,
@@ -101,7 +101,7 @@ public class ChatHistoryViewModel {
             meteor.openMessage(video.message)
         }
         currentVideoPosition.value = 0
-        currentVideo.value = video
+        _currentVideo.value = video
         return video != nil
     }
     

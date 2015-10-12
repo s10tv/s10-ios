@@ -39,12 +39,16 @@ class ConnectServicesViewController : UITableViewController {
                 self.tableView.beginUpdates()
                 self.tableView.endUpdates()
             }
-        Analytics.track("View: ConnectServices")
     }
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        Analytics.track("View: ConnectServices")
     }
     
     @IBAction func didTapNext(sender: AnyObject) {

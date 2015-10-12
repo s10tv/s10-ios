@@ -51,13 +51,16 @@ class CreateProfileViewController : UITableViewController {
         aboutView.rac_text <<~> vm.about
         avatarView.sd_image <~ vm.avatar
         coverView.sd_image <~ vm.cover
-        
-        Analytics.track("View: CreateProfile")
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        Analytics.track("View: CreateProfile")
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

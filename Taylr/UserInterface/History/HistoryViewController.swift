@@ -45,6 +45,11 @@ class HistoryViewController : BaseViewController {
         }
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        Analytics.track("View: History")
+    }
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         collectionView.contentInset = UIEdgeInsets(top: 66, left: 0, // HACK ALERT: Hard-coded

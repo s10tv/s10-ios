@@ -97,8 +97,9 @@ class ProfileCoverCell : UITableViewCell, BindableCell {
 extension ProfileCoverCell : UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         vm.selectProfileAtIndex(indexPath.item)
-        Globals.analyticsService.screen("Connected Profiles", properties: [
-            "integrationName": vm.selectedProfile.value.integrationName])
+        Analytics.track("Profile: Switch", [
+            "Name": vm.selectedProfile.value.integrationName
+        ])
     }
 }
 

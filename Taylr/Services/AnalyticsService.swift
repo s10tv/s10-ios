@@ -78,7 +78,7 @@ class AnalyticsService {
         flush()
     }
     
-    func track(event: String, properties: [String: AnyObject]? = nil) {
+    func track(event: String, _ properties: [String: AnyObject]? = nil) {
         let msg = TrackMessageBuilder(event: event).properties(properties ?? [:])
         if let userId = currentUser.userId.value {
             segment.enqueue(msg.userId(userId))
@@ -91,18 +91,6 @@ class AnalyticsService {
         flush()
     }
 
-    func screen(screenName: String, properties: [String: AnyObject]? = nil) {
-        let msg = ScreenMessageBuilder(name: screenName).properties(properties ?? [:])
-        if let userId = currentUser.userId.value {
-            segment.enqueue(msg.userId(userId))
-        } else {
-            segment.enqueue(msg.anonymousId(env.deviceId))
-        }
-        amplitude.logEvent("Screen: \(screenName)", withEventProperties: properties)
-        Log.verbose("[analytics] screen '\(screenName)' properties: \(properties)")
-        flush()
-    }
-    
     func flush() {
         segment.flush()
         amplitude.uploadEvents()

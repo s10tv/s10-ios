@@ -65,7 +65,7 @@ class EditProfileViewController : UITableViewController {
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        Globals.analyticsService.screen("Edit Profile")
+        Analytics.track("View: EditProfile")
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -78,6 +78,7 @@ class EditProfileViewController : UITableViewController {
     
     @IBAction func didTapAvatarImageView(sender: AnyObject) {
         pickSingleImage(maxDimension: 640).onSuccess {
+            Analytics.track("EditProfile: UpdateAvatar")
             let image = $0
             self.wrapFuture(showProgress: true) {
                 self.vm.upload(image, taskType: .ProfilePic)
@@ -87,6 +88,7 @@ class EditProfileViewController : UITableViewController {
     
     @IBAction func didTapCoverImageView(sender: AnyObject) {
         pickSingleImage(maxDimension: 1400).onSuccess {
+            Analytics.track("EditProfile: UpdateCover")
             let image = $0
             self.wrapFuture(showProgress: true) {
                 self.vm.upload(image, taskType: .CoverPic)
@@ -95,6 +97,7 @@ class EditProfileViewController : UITableViewController {
     }
     
     @IBAction func didPressDone(sender: AnyObject) {
+        Analytics.track("EditProfile: Save")
         wrapFuture(showProgress: true) {
             vm.saveEdits()
         }.onSuccess {
