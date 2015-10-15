@@ -133,7 +133,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pkP-sN-BdW" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="HBc-h4-yqZ" userLabel="Tap To View Profile">
                     <connections>
-                        <segue destination="YOL-w6-TDH" kind="show" id="GQ7-2I-R5J"/>
+                        <segue destination="YOL-w6-TDH" kind="show" identifier="ConversationToProfile" id="GQ7-2I-R5J"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

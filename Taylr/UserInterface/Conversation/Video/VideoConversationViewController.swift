@@ -119,8 +119,7 @@ class VideoConversationViewController : BaseViewController {
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        if identifier == SegueIdentifier.ConversationToProfile.rawValue
-            && navigationController?.lastViewController is ProfileViewController {
+        if navigationController?.lastViewController is ProfileViewController {
                 navigationController?.popViewControllerAnimated(true)
                 return false
         }
@@ -160,7 +159,7 @@ class VideoConversationViewController : BaseViewController {
     @IBAction func showMoreOptions(sender: AnyObject) {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
         sheet.addAction(LS(.viewProfile)) { _ in
-            self.performSegue(.ConversationToProfile)
+//            self.performSegue(.ConversationToProfile)
         }
         sheet.addAction(LS(.moreSheetBlock, vm.displayName.value), style: .Destructive) { _ in
             self.blockUser(self)

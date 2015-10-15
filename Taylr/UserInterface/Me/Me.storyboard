@@ -671,7 +671,7 @@
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
                                                     <connections>
-                                                        <segue destination="t1A-ff-Lcc" kind="show" id="bXG-qY-mxs"/>
+                                                        <segue destination="t1A-ff-Lcc" kind="show" identifier="MeToProfile" id="bXG-qY-mxs"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPx-zG-Eyk">
@@ -977,7 +977,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aX7-4C-VNx" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="iF4-Mx-Ahb" userLabel="Tap to Show Profile">
                     <connections>
-                        <segue destination="t1A-ff-Lcc" kind="show" id="hfn-jz-cIv"/>
+                        <segue destination="t1A-ff-Lcc" kind="show" identifier="MeToProfile2" id="hfn-jz-cIv"/>
                     </connections>
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="ncM-Lr-Hnc" userLabel="Tag to Edit Hashtags">

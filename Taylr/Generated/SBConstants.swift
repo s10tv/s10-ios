@@ -20,26 +20,36 @@ public enum SegueIdentifier : String {
     case ConversationListToConversation = "ConversationListToConversation"
     case ConversationToProfile = "ConversationToProfile"
     case CreateProfiletoHashtag = "CreateProfiletoHashtag"
-    case HistoryToProfile = "HistoryToProfile"
     case IntegrationsToWeb = "IntegrationsToWeb"
     case LoginToConnectServices = "LoginToConnectServices"
     case LoginToRegisterEmail = "LoginToRegisterEmail"
     case Main_RootTab = "Main_RootTab"
-    case MeToEditHashtags = "MeToEditHashtags"
     case MeToEditProfile = "MeToEditProfile"
     case MeToProfile = "MeToProfile"
     case MeToProfile2 = "MeToProfile2"
     case Onboarding_Login = "Onboarding_Login"
-    case ProfileToConversation = "ProfileToConversation"
     case RecorderToEditor = "RecorderToEditor"
     case RegisterEmailToConnectServices = "RegisterEmailToConnectServices"
     case TutorialToConnectServices = "TutorialToConnectServices"
 }
 
+public enum SegueIdentifierStoryboardNames : String {
+    case Onboarding = "Onboarding"
+}
+
 public enum StoryboardNames : String {
     case Main = "Main"
+    case Profile = "Profile"
+    case VideoConversation = "VideoConversation"
+}
+
+public enum StoryboardNamestableViewControllerStoryboardIdentifier : String {
     case Me = "Me"
-    case Onboarding = "Onboarding"
+}
+
+public enum StoryboardNamesviewControllerStoryboardIdentifier : String {
+    case Conversation = "Conversation"
+    case Discover = "Discover"
 }
 
 public enum TableViewCellreuseIdentifier : String {
@@ -53,6 +63,7 @@ public enum TableViewCellreuseIdentifier : String {
 
 public enum TableViewControllerStoryboardIdentifier : String {
     case ConnectServices = "ConnectServices"
+    case ConversationList = "ConversationList"
     case CreateProfile = "CreateProfile"
     case EditProfile = "EditProfile"
 }
@@ -61,7 +72,6 @@ public enum ViewControllerStoryboardIdentifier : String {
     case AuthWeb = "AuthWeb"
     case ChatHistory = "ChatHistory"
     case Chats = "Chats"
-    case Discover = "Discover"
     case Editor = "Editor"
     case History = "History"
     case Login = "Login"
@@ -70,8 +80,4 @@ public enum ViewControllerStoryboardIdentifier : String {
     case Recorder = "Recorder"
     case RegisterEmail = "RegisterEmail"
     case TutorialContentViewController = "TutorialContentViewController"
-}
-
-public enum ViewControllerStoryboardIdentifierStoryboardNames : String {
-    case Conversation = "Conversation"
 }
