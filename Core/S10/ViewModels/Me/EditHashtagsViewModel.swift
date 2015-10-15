@@ -10,7 +10,7 @@ import Foundation
 import ReactiveCocoa
 
 public struct EditHashtagsViewModel {
-    let meteor: MeteorService
+    let ctx: Context
     let collection: MeteorCollection
     let subMyTags: MeteorSubscription
     let subSuggestedTags: MeteorSubscription
@@ -18,11 +18,11 @@ public struct EditHashtagsViewModel {
     public let placeholder: PropertyOf<String>
     public let hashtags: FetchedResultsArray<HashtagViewModel>
     
-    public init(meteor: MeteorService) {
-        self.meteor = meteor
-        subMyTags = meteor.subscribe("my-hashtags")
-        subSuggestedTags = meteor.subscribe("suggested-hashtags")
-        collection = meteor.collection("hashtags")
+    public init(ctx: Context) {
+        self.ctx = ctx
+        subMyTags = ctx.meteor.subscribe("my-hashtags")
+        subSuggestedTags = ctx.meteor.subscribe("suggested-hashtags")
+        collection = ctx.meteor.collection("hashtags")
         
         hashtags = Hashtag
             .sorted(by: HashtagKeys.selected.rawValue, ascending: false) // Doesn't seem right, but w/e
@@ -50,17 +50,15 @@ public struct EditHashtagsViewModel {
     
     public func toggleHashtagAtIndex(index: Int) {
         let hashtag = hashtags.array[index]
-        hashtag.selected ? meteor.removeHashtag(hashtag.text) : meteor.insertHashtag(hashtag.text)
+        hashtag.selected ? ctx.meteor.removeHashtag(hashtag.text) : ctx.meteor.insertHashtag(hashtag.text)
     }
     
     public func selectHashtag(text: String) {
-        meteor.insertHashtag(text)
+        ctx.meteor.insertHashtag(text)
     }
     
     public func autocompleteHashtags(hint: String) -> Future<[String], NSError> {
-        return hint.length > 0 ? meteor.searchHashtag(hint).deliverOn(UIScheduler()) : Future(value: [])
+        return hint.length > 0 ? ctx.meteor.searchHashtag(hint).deliverOn(UIScheduler()) : Future(value: [])
     }
-    
-    
     
 }

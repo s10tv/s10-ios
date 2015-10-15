@@ -11,25 +11,21 @@ import LayerKit
 
 public class ConversationListViewModel: NSObject {
     
-    let meteor: MeteorService
-    let taskService: TaskService
-    let currentUser: CurrentUser
+    let ctx: Context
     
-    public init(meteor: MeteorService, taskService: TaskService) {
-        self.meteor = meteor
-        self.currentUser = meteor.currentUser
-        self.taskService = taskService
+    public init(_ ctx: Context) {
+        self.ctx = ctx
     }
     
     public func recipientForConversation(conversation: LYRConversation) -> UserViewModel? {
-        if let u = conversation.recipient(meteor.mainContext, currentUserId: currentUser.userId.value) {
+        if let u = conversation.recipient(ctx.meteor.mainContext, currentUserId: ctx.currentUserId) {
             return UserViewModel(user: u)
         }
         return nil
     }
     
     public func conversationVM(conversation: LYRConversation) -> ConversationViewModel {
-        return ConversationViewModel(meteor: meteor, taskService: taskService, conversation: conversation)
+        return ConversationViewModel(ctx, conversation: conversation)
     }
     
 }

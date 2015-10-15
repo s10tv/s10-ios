@@ -12,8 +12,8 @@ public struct IntegrationListViewModel {
     let subscription: MeteorSubscription
     public let integrations: FetchedResultsArray<IntegrationViewModel>
     
-    public init(meteor: MeteorService) {
-        subscription = meteor.subscribe("integrations")
+    public init(_ ctx: Context) {
+        subscription = ctx.meteor.subscribe("integrations")
         integrations = Integration
             .sorted(by: IntegrationKeys.status_.rawValue, ascending: true)
             .sorted(by: IntegrationKeys.updatedAt.rawValue, ascending: true)

@@ -20,11 +20,11 @@ public struct EditProfileViewModel {
     public let cover: PropertyOf<Image?>
     
     let operationQueue = NSOperationQueue()
-    let meteor: MeteorService
+    let ctx: Context
     let user: User
     
-    init(meteor: MeteorService, user: User) {
-        self.meteor = meteor
+    init(_ ctx: Context, user: User) {
+        self.ctx = ctx
         self.user = user
         avatar = user.pAvatar()
         cover = user.pCover()
@@ -57,7 +57,7 @@ public struct EditProfileViewModel {
                 "hometown": hometown.value ?? "",
                 "about": about.value ?? "",
             ]
-            meteor.updateProfile(payload).onFailure { error in
+            ctx.meteor.updateProfile(payload).onFailure { error in
                 promise.failure(ErrorAlert(title: "Unable to save", message: error.localizedDescription))
             }.onSuccess {
                 promise.success()
@@ -70,7 +70,7 @@ public struct EditProfileViewModel {
     
     public func upload(image: UIImage, taskType: PhotoTaskType) -> Future<(), ErrorAlert> {
         return operationQueue.addAsyncOperation {
-            PhotoUploadOperation(meteor: meteor, image: image, taskType: taskType)
+            PhotoUploadOperation(meteor: ctx.meteor, image: image, taskType: taskType)
         }.mapError { e in
             ErrorAlert(title: "Unable to upload", message: e.localizedDescription, underlyingError: e)
         }.toFuture()

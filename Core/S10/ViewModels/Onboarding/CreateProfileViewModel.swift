@@ -10,7 +10,7 @@ import Foundation
 import ReactiveCocoa
 
 public struct CreateProfileViewModel {
-    let meteor: MeteorService
+    let ctx: Context
     let operationQueue: NSOperationQueue
     let subscription: MeteorSubscription
     public let avatar: MutableProperty<Image?>
@@ -23,9 +23,9 @@ public struct CreateProfileViewModel {
     public let about: MutableProperty<String?>
     public let uploadImageAction: Action<(image: UIImage, type: PhotoTaskType), (), ErrorAlert>
     
-    public init(meteor: MeteorService) {
-        self.meteor = meteor
-        let user = meteor.user.value!
+    public init(ctx: Context) {
+        self.ctx = ctx
+        let user = ctx.meteor.user.value!
         // Avoid names getting overwritten when user uploads avatar
         // and CoreData notifies changes to unrelated properties such as username
         // TODO: Think of better pattern
@@ -41,12 +41,12 @@ public struct CreateProfileViewModel {
         let queue = operationQueue
         uploadImageAction = Action { tuple -> Future<(), ErrorAlert> in
             queue.addAsyncOperation {
-                PhotoUploadOperation(meteor: meteor, image: tuple.image, taskType: tuple.type)
+                PhotoUploadOperation(meteor: ctx.meteor, image: tuple.image, taskType: tuple.type)
             }.mapError { e in
                 ErrorAlert(title: "Unable to upload", message: e.localizedDescription, underlyingError: e)
             }.toFuture()
         }
-        subscription = meteor.subscribe("me")
+        subscription = ctx.meteor.subscribe("me")
     }
     
     public func saveProfile() -> Future<Void, ErrorAlert> {
@@ -83,8 +83,8 @@ public struct CreateProfileViewModel {
                 fields["gradYear"] = year
             }
             
-            meteor.updateProfile(fields).flatMap {
-                self.meteor.completeProfile()
+            ctx.meteor.updateProfile(fields).flatMap {
+                self.ctx.meteor.completeProfile()
             }.onFailure { error in
                 var errorReason : String
                 if let reason = error.localizedFailureReason {
@@ -102,7 +102,7 @@ public struct CreateProfileViewModel {
     }
     
     public func confirmRegistration() -> Future<Void, ErrorAlert> {
-        return meteor.confirmRegistration().mapError { error in
+        return ctx.meteor.confirmRegistration().mapError { error in
             var errorReason : String
             if let reason = error.localizedFailureReason {
                 errorReason = reason

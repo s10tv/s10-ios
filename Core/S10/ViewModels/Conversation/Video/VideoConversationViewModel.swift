@@ -104,9 +104,6 @@ public class VideoConversationViewModel {
     }
     
     public func profileVM() -> ProfileViewModel? {
-        if let u = conversation.user {
-            return ProfileViewModel(meteor: meteor, taskService: taskService, user: u)
-        }
         return nil
     }
 }

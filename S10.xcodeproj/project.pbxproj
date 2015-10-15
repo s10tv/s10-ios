@@ -70,7 +70,8 @@
 		EA54FAB01BD009A000AD7E9A /* ActivityViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA8F1BD009A000AD7E9A /* ActivityViewModels.swift */; settings = {ASSET_TAGS = (); }; };
 		EA54FAB11BD009A000AD7E9A /* ProfileInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA901BD009A000AD7E9A /* ProfileInfoViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA54FAB21BD009A000AD7E9A /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA911BD009A000AD7E9A /* ProfileViewModel.swift */; settings = {ASSET_TAGS = (); }; };
-		EA54FAB31BD009A000AD7E9A /* RootViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA921BD009A000AD7E9A /* RootViewModel.swift */; settings = {ASSET_TAGS = (); }; };
+		EA54FAB31BD009A000AD7E9A /* MainTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA921BD009A000AD7E9A /* MainTabViewModel.swift */; settings = {ASSET_TAGS = (); }; };
+		EA54FAB51BD00A2F00AD7E9A /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FAB41BD00A2F00AD7E9A /* Context.swift */; settings = {ASSET_TAGS = (); }; };
 		EA588DB81B5F1437000962B8 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA588DB71B5F1437000962B8 /* TestViewController.swift */; };
 		EA5B740B1B30F7BB008E5CBC /* TestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5B740A1B30F7BB008E5CBC /* TestAppDelegate.swift */; };
 		EA5B74141B30F7BB008E5CBC /* TestApp.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA5B74131B30F7BB008E5CBC /* TestApp.xcassets */; };
@@ -358,7 +359,8 @@
 		EA54FA8F1BD009A000AD7E9A /* ActivityViewModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewModels.swift; sourceTree = "<group>"; };
 		EA54FA901BD009A000AD7E9A /* ProfileInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInfoViewModel.swift; sourceTree = "<group>"; };
 		EA54FA911BD009A000AD7E9A /* ProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
-		EA54FA921BD009A000AD7E9A /* RootViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewModel.swift; sourceTree = "<group>"; };
+		EA54FA921BD009A000AD7E9A /* MainTabViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabViewModel.swift; sourceTree = "<group>"; };
+		EA54FAB41BD00A2F00AD7E9A /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		EA5773491B6C214E00BCF449 /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		EA588DB71B5F1437000962B8 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		EA5B74061B30F7BB008E5CBC /* TestApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TestApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -715,7 +717,8 @@
 				EA54FA6A1BD009A000AD7E9A /* Conversation */,
 				EA54FA801BD009A000AD7E9A /* Me */,
 				EA54FA8E1BD009A000AD7E9A /* Profile */,
-				EA54FA921BD009A000AD7E9A /* RootViewModel.swift */,
+				EA54FA921BD009A000AD7E9A /* MainTabViewModel.swift */,
+				EA54FAB41BD00A2F00AD7E9A /* Context.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -746,10 +749,10 @@
 		EA54FA741BD009A000AD7E9A /* Discover */ = {
 			isa = PBXGroup;
 			children = (
-				EA54FA751BD009A000AD7E9A /* CandidateViewModel.swift */,
 				EA54FA761BD009A000AD7E9A /* DiscoverViewModel.swift */,
-				EA54FA771BD009A000AD7E9A /* HistoryViewModel.swift */,
 				EA54FA781BD009A000AD7E9A /* TodayViewModel.swift */,
+				EA54FA771BD009A000AD7E9A /* HistoryViewModel.swift */,
+				EA54FA751BD009A000AD7E9A /* CandidateViewModel.swift */,
 			);
 			path = Discover;
 			sourceTree = "<group>";
@@ -770,10 +773,10 @@
 		EA54FA801BD009A000AD7E9A /* Me */ = {
 			isa = PBXGroup;
 			children = (
+				EA54FA841BD009A000AD7E9A /* Integration */,
 				EA54FA811BD009A000AD7E9A /* EditHashtagsViewModel.swift */,
 				EA54FA821BD009A000AD7E9A /* EditProfileViewModel.swift */,
 				EA54FA831BD009A000AD7E9A /* HashtagViewModel.swift */,
-				EA54FA841BD009A000AD7E9A /* Integration */,
 				EA54FA871BD009A000AD7E9A /* InviteViewModel.swift */,
 				EA54FA881BD009A000AD7E9A /* MeViewModel.swift */,
 			);
@@ -1766,11 +1769,12 @@
 				EA81ADEC1BB6893500F94006 /* MeteorMethod.swift in Sources */,
 				EAA058AD1BC35F0200FCB86C /* Conversation.swift in Sources */,
 				EA8E694A1BC1DA30002D4BF1 /* TwoWayBindings.swift in Sources */,
+				EA54FAB51BD00A2F00AD7E9A /* Context.swift in Sources */,
 				EA8E69491BC1DA30002D4BF1 /* PropertyExtensions.swift in Sources */,
 				EA54FA941BD009A000AD7E9A /* ConversationViewModel.swift in Sources */,
 				EA81ADF81BB68E2100F94006 /* _Activity.swift in Sources */,
 				EA81ADDC1BB6852600F94006 /* DeviceInfo.swift in Sources */,
-				EA54FAB31BD009A000AD7E9A /* RootViewModel.swift in Sources */,
+				EA54FAB31BD009A000AD7E9A /* MainTabViewModel.swift in Sources */,
 				EA81AE111BB696A400F94006 /* VideoUploadOperation.swift in Sources */,
 				EA54FA991BD009A000AD7E9A /* ReceiveViewModel.swift in Sources */,
 				EAB31D571BCF76260080DA47 /* LayerService.swift in Sources */,

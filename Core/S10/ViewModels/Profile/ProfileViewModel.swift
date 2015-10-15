@@ -24,8 +24,7 @@ private func supportedActivitiesByProfile(profile: User.ConnectedProfile) -> NSP
 }
 
 public struct ProfileViewModel {
-    let meteor: MeteorService
-    let taskService: TaskService
+    let ctx: Context
     let user: User
     let subscription: MeteorSubscription
     
@@ -36,11 +35,11 @@ public struct ProfileViewModel {
     public let allowMessage: Bool
     public let timeRemaining: ProducerProperty<String>
     
-    init(meteor: MeteorService, taskService: TaskService, user: User, timeRemaining: ProducerProperty<String>? = nil) {
-        self.meteor = meteor
-        self.taskService = taskService
+    init(_ ctx: Context, user: User, timeRemaining: ProducerProperty<String>? = nil) {
+        self.ctx = ctx
         self.user = user
         self.timeRemaining = timeRemaining ?? ProducerProperty(SignalProducer(value: ""))
+        let meteor = ctx.meteor
         allowMessage = timeRemaining != nil
         showMoreOptions = meteor.user.value != user
         subscription = meteor.subscribe("activities", user)
@@ -62,16 +61,15 @@ public struct ProfileViewModel {
     }
     
     public func reportUser(reason: String) {
-        meteor.reportUser(user, reason: reason)
+        ctx.meteor.reportUser(user, reason: reason)
     }
     
     public func blockUser() {
-        meteor.blockUser(user)
+        ctx.meteor.blockUser(user)
     }
     
     public func conversationVM() -> ConversationViewModel {
-        fatalError()
-//        return ConversationViewModel(meteor: meteor, taskService: taskService, conversation: <#T##LYRConversation#>)
+        return ConversationViewModel(ctx, conversation: ctx.layer.conversationWithUser(user))
     }
 }
 

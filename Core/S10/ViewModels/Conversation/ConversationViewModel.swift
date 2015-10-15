@@ -12,9 +12,7 @@ import LayerKit
 
 public class ConversationViewModel: NSObject {
     
-    let meteor: MeteorService
-    let currentUser: CurrentUser
-    let taskService: TaskService
+    let ctx: Context
     public let avatar: PropertyOf<Image?>
     public let cover: PropertyOf<Image?>
     public let displayName: ProducerProperty<String>
@@ -22,12 +20,10 @@ public class ConversationViewModel: NSObject {
     
     public let conversation: LYRConversation
     
-    init(meteor: MeteorService, taskService: TaskService, conversation: LYRConversation) {
-        self.meteor = meteor
-        self.currentUser = meteor.currentUser
-        self.taskService = taskService
+    init(_ ctx: Context, conversation: LYRConversation) {
+        self.ctx = ctx
         self.conversation = conversation
-        if let u = conversation.recipient(meteor.mainContext, currentUserId: currentUser.userId.value) {
+        if let u = conversation.recipient(ctx.meteor.mainContext, currentUserId: ctx.currentUserId) {
             avatar = u.pAvatar()
             cover = u.pCover()
             displayName = u.pDisplayName()
@@ -38,28 +34,32 @@ public class ConversationViewModel: NSObject {
         }
     }
     
+    func user() -> User? {
+        return conversation.recipient(ctx.meteor.mainContext, currentUserId: ctx.currentUserId)
+    }
+    
     public func recipient() -> UserViewModel? {
-        if let u = conversation.recipient(meteor.mainContext, currentUserId: currentUser.userId.value) {
+        if let u = user() {
             return UserViewModel(user: u)
         }
         return nil
     }
     
     public func reportUser(reason: String) {
-        if let u = conversation.recipient(meteor.mainContext, currentUserId: currentUser.userId.value) {
-            meteor.reportUser(u, reason: reason)
+        if let u = user() {
+            ctx.meteor.reportUser(u, reason: reason)
         }
     }
     
     public func blockUser() {
-        if let u = conversation.recipient(meteor.mainContext, currentUserId: currentUser.userId.value) {
-            meteor.blockUser(u)
+        if let u = user() {
+            ctx.meteor.blockUser(u)
         }
     }
     
     public func profileVM() -> ProfileViewModel? {
-        if let u = conversation.recipient(meteor.mainContext, currentUserId: currentUser.userId.value) {
-            return ProfileViewModel(meteor: meteor, taskService: taskService, user: u)
+        if let u = user() {
+            return ProfileViewModel(ctx, user: u)
         }
         return nil
     }

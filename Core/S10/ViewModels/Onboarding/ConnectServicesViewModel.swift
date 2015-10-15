@@ -11,10 +11,10 @@ import ReactiveCocoa
 
 public struct ConnectServicesViewModel {
     
-    let meteor: MeteorService
+    let ctx: Context
     
-    public init(meteor: MeteorService) {
-        self.meteor = meteor
+    public init(_ ctx: Context) {
+        self.ctx = ctx
     }
 
     public func finish() -> Future<Void, ErrorAlert> {

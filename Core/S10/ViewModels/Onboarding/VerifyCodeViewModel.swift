@@ -16,10 +16,10 @@ public struct VerifyCodeViewModel {
     public let code: MutableProperty<String?>
     public let statusMessage: PropertyOf<String>
 
-    let meteor: MeteorService
+    let ctx: Context
 
-    public init(meteor: MeteorService) {
-        self.meteor = meteor
+    public init(_ ctx: Context) {
+        self.ctx = ctx
         code = MutableProperty("")
 
         _statusMessage = MutableProperty("")
@@ -30,7 +30,7 @@ public struct VerifyCodeViewModel {
         let promise = Promise<(), ErrorAlert>()
 
         // TODO: display this as an animation into statusMessage
-        self.meteor.verifyCode(code.value ?? "").onFailure { error in
+        ctx.meteor.verifyCode(code.value ?? "").onFailure { error in
             var errorReason : String
             if let reason = error.localizedFailureReason {
                 errorReason = reason

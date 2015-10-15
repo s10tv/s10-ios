@@ -9,21 +9,19 @@ import Foundation
 import ReactiveCocoa
 
 public struct HistoryViewModel {
-    let meteor: MeteorService
-    let taskService: TaskService
+    let ctx: Context
     let subscription: MeteorSubscription
     public let candidates: FetchedResultsArray<CandidateViewModel>
     
-    public init(meteor: MeteorService, taskService: TaskService) {
-        self.meteor = meteor
-        self.taskService = taskService
-        subscription = meteor.subscribe("candidate-discover")
+    public init(_ ctx: Context) {
+        self.ctx = ctx
+        subscription = ctx.meteor.subscribe("candidate-discover")
         candidates = Candidate
             .sorted(by: CandidateKeys.date.rawValue, ascending: false)
             .results { CandidateViewModel(candidate: $0 as! Candidate) }
     }
     
     public func profileVM(index: Int) -> ProfileViewModel? {
-        return ProfileViewModel(meteor: meteor, taskService: taskService, user: candidates[index].user)
+        return ProfileViewModel(ctx, user: candidates[index].user)
     }
 }

@@ -41,7 +41,7 @@ public struct LoginViewModel {
     public let loginAction: Action<AnyObject, AccountState, ErrorAlert>
     public let logoutAction: Action<AnyObject, (), NoError>
     
-    public init(meteor: MeteorService, delegate: LoginDelegate) {
+    public init(_ ctx: Context, delegate: LoginDelegate) {
         self.delegate = delegate
         loginButtonText = delegate.loggedInPhone.map {
             $0.map {
@@ -52,7 +52,7 @@ public struct LoginViewModel {
             $0 != nil ? "Not you? Tap to logout." : ""
         }
         loginAction = Action { _ -> Future<AccountState, ErrorAlert> in
-            if meteor.offline { return Future(error: eOffline) }
+            if ctx.meteor.offline { return Future(error: eOffline) }
             return delegate.login()
                 .deliverOn(UIScheduler())
                 .mapError { e in
