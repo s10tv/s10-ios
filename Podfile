@@ -15,6 +15,7 @@ target :Core do
     # Data
     pod 'SugarRecord/CoreData', :git => 'https://github.com/tonyxiao/SugarRecord', :branch => 'swift2.0'
     pod 'Meteor', :git => 'https://github.com/tonyxiao/meteor-ios', :branch => 'dev'
+    pod 'LayerKit', '~> 0.17'
     pod 'RealmSwift', '~> 0.95'
     pod 'SwiftyJSON', '~> 2.3'
     pod 'ObjectMapper', '~> 0.18'
@@ -70,7 +71,6 @@ target :Core do
         pod 'Mixpanel', '~> 2.8.3'
         pod 'AnalyticsSwift', '~> 0.2'
         pod 'Amplitude-iOS', '~> 3.1'
-        pod 'LayerKit', '~> 0.16'
         pod 'Atlas', '~> 1.0.13'
 #        pod 'UXCam', '~> 2.3'
 

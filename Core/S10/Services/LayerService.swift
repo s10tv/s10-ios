@@ -9,21 +9,19 @@
 import Foundation
 import ReactiveCocoa
 import LayerKit
-import Core
-
 
 public class LayerService {
     
     let meteor: MeteorService
-    let layerClient: LYRClient
+    public let layerClient: LYRClient
     
-    init(layerAppID: NSURL, meteor: MeteorService) {
+    public init(layerAppID: NSURL, meteor: MeteorService) {
         self.meteor = meteor
         layerClient = LYRClient(appID: layerAppID)
     }
     
     // TODO: Careful this method if not disposed will retain self
-    func connectAndKeepUserInSync() -> Disposable {
+    public func connectAndKeepUserInSync() -> Disposable {
         return combineLatest(
             layerClient.connect(),
             meteor.userIdProducer().promoteErrors(NSError)

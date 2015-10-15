@@ -129,7 +129,7 @@ DEPENDENCIES:
   - JBKenBurnsView (~> 1.0)
   - JSBadgeView (~> 1.4)
   - JVFloatLabeledTextField (~> 1.1)
-  - LayerKit (~> 0.16)
+  - LayerKit (~> 0.17)
   - Meteor (from `https://github.com/tonyxiao/meteor-ios`, branch `dev`)
   - Mixpanel (~> 2.8.3)
   - MLPAutoCompleteTextField (from `https://github.com/EddyBorja/MLPAutoCompleteTextField.git`)
