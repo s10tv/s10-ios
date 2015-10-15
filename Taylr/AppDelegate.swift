@@ -27,6 +27,7 @@ let Globals = _GlobalsContainer.instance
 // Shorthand services because they are used all over the place
 let Meteor = Globals.meteorService
 let Analytics = Globals.analyticsService
+let Layer = Globals.layerService
 
 let AppDidRegisterUserNotificationSettings = "AppDidRegisterUserNotificationSettings"
 let DidTouchStatusBar = "DidTouchStatusBar"

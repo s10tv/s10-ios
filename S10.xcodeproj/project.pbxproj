@@ -178,6 +178,7 @@
 		EAB31D4F1BCC72330080DA47 /* UXCam.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAB31D4D1BCC718B0080DA47 /* UXCam.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EAB31D511BCF50E40080DA47 /* LayerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB31D501BCF50E40080DA47 /* LayerExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		EAB31D531BCF5FDC0080DA47 /* LayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB31D521BCF5FDC0080DA47 /* LayerService.swift */; settings = {ASSET_TAGS = (); }; };
+		EAB31D551BCF70730080DA47 /* ConversationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB31D541BCF70730080DA47 /* ConversationListViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EABA05461B474FED00154C75 /* test-avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EABA05451B474FED00154C75 /* test-avatar.jpg */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
 		EAC1BECA1BC70CB200864B8C /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC1BEC51BC70CB200864B8C /* ChatsViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -414,6 +415,7 @@
 		EAB31D4D1BCC718B0080DA47 /* UXCam.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UXCam.framework; sourceTree = SOURCE_ROOT; };
 		EAB31D501BCF50E40080DA47 /* LayerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerExtensions.swift; sourceTree = "<group>"; };
 		EAB31D521BCF5FDC0080DA47 /* LayerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerService.swift; sourceTree = "<group>"; };
+		EAB31D541BCF70730080DA47 /* ConversationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListViewController.swift; sourceTree = "<group>"; };
 		EABA05431B474EC900154C75 /* PhotoUploadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoUploadOperation.swift; sourceTree = "<group>"; };
 		EABA05451B474FED00154C75 /* test-avatar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "test-avatar.jpg"; sourceTree = "<group>"; };
 		EABD43D81AA1D28700B07813 /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
@@ -1044,6 +1046,7 @@
 		EAC1BEC41BC70CB200864B8C /* Connections */ = {
 			isa = PBXGroup;
 			children = (
+				EAB31D541BCF70730080DA47 /* ConversationListViewController.swift */,
 				EAC1BEC51BC70CB200864B8C /* ChatsViewController.swift */,
 				EAC1BEC61BC70CB200864B8C /* ConnectionCells.swift */,
 			);
@@ -1800,6 +1803,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAB31D551BCF70730080DA47 /* ConversationListViewController.swift in Sources */,
 				EAA576151BB7E57600661A4F /* TutorialContentViewController.swift in Sources */,
 				EA42D64E1BB7BE5A00B07526 /* StyleKit.swift in Sources */,
 				EAA5760B1BB7E1F700661A4F /* ProfileIconCell.swift in Sources */,
