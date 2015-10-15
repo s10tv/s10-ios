@@ -1,28 +1,18 @@
 //
-//  RootNavController.swift
-//  Serendipity
+//  BaseNavigationController.swift
+//  S10
 //
-//  Created by Tony Xiao on 1/28/15.
-//  Copyright (c) 2015 Serendipity. All rights reserved.
+//  Created by Tony Xiao on 10/15/15.
+//  Copyright © 2015 S10. All rights reserved.
 //
 
 import UIKit
-import Meteor
-import ReactiveCocoa
-import Core
 
-
-class RootNavController : UINavigationController {
-
+class BaseNavigationController : UINavigationController {
+    
     let onboarding = UIStoryboard(name: "Onboarding", bundle: nil)
     let main = UIStoryboard(name: "Main", bundle: nil)
     var transitionManager : TransitionManager!
-    let vm = RootNavViewModel(meteor: Meteor)
-    
-    init(account: AccountService) {
-        let sb = account.state.value.onboardingNeeded ? onboarding : main
-        super.init(rootViewController: sb.instantiateInitialViewController()!)
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +26,11 @@ class RootNavController : UINavigationController {
         ]
         
         transitionManager = TransitionManager(navigationController: self)
+        
+        if let t = title where viewControllers.count == 0,
+            let vc = UIStoryboard(name: t, bundle: nil).instantiateInitialViewController() {
+                viewControllers = [vc]
+        }
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
@@ -54,15 +49,5 @@ class RootNavController : UINavigationController {
     
     @IBAction func goToLogin() {
         viewControllers = [onboarding.instantiateInitialViewController()!]
-    }
-    
-    // MARK: - Required init overrides
-    
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
-        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-    }
-    
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-    }
+    }    
 }

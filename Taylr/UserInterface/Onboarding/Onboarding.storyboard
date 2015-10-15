@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="9tW-EX-omO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="iAZ-V8-BnQ">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
@@ -33,10 +33,27 @@
         </mutableArray>
     </customFonts>
     <scenes>
+        <!--Base Navigation Controller-->
+        <scene sceneID="3Sg-jl-ALc">
+            <objects>
+                <navigationController id="iAZ-V8-BnQ" customClass="BaseNavigationController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="9SL-d2-TUY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="9tW-EX-omO" kind="relationship" relationship="rootViewController" id="r96-5x-0GI"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6nd-bq-WpR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-2287" y="-62"/>
+        </scene>
         <!--Tutorial Page View Controller-->
         <scene sceneID="vDt-aH-7eJ">
             <objects>
                 <pageViewController storyboardIdentifier="TutorialPageViewController" autoresizesArchivedViewToFullSize="NO" transitionStyle="scroll" navigationOrientation="horizontal" spineLocation="none" id="9tW-EX-omO" customClass="TutorialPageViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="fV9-9w-l45"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MJe-Cn-PpC" userLabel="First Responder" sceneMemberID="firstResponder"/>

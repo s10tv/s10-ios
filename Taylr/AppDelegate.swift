@@ -112,7 +112,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         Appearance.setupGlobalAppearances()
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window?.rootViewController = RootNavController(account: Globals.accountService)
+        window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() //RootNavController(account: Globals.accountService)
         window?.makeKeyAndVisible()
         
         return true

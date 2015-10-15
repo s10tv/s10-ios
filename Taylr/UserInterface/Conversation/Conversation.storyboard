@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IOB-fW-0oz">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Cabin-Italic.ttf">
+            <string>Cabin-Italic</string>
+        </mutableArray>
+        <mutableArray key="Cabin-Regular.ttf">
+            <string>Cabin-Regular</string>
+        </mutableArray>
+    </customFonts>
+    <scenes>
+        <!--Chats-->
+        <scene sceneID="8gE-i0-YdG">
+            <objects>
+                <tableViewController id="IOB-fW-0oz" customClass="ConversationListViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="zkv-gd-NDB">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.94886761900000005" green="0.94878417250000002" blue="0.96522957089999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="XoX-F3-NlU">
+                                <rect key="frame" x="0.0" y="28" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XoX-F3-NlU" id="D3f-hh-8HR">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="IOB-fW-0oz" id="fb2-bd-AKg"/>
+                            <outlet property="delegate" destination="IOB-fW-0oz" id="d5u-7V-CJ2"/>
+                        </connections>
+                    </tableView>
+                    <tabBarItem key="tabBarItem" title="" image="ic-chats" id="CS2-Rc-rKS">
+                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
+                    </tabBarItem>
+                    <navigationItem key="navigationItem" title="Chats" id="ako-zB-edL">
+                        <barButtonItem key="backBarButtonItem" title=" " id="9MX-ox-F9n"/>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="jff-6V-IXE" kind="show" identifier="ConversationListToConversation" id="AAn-44-glI">
+                            <nil key="action"/>
+                        </segue>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ypg-6a-J9B" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1769" y="1957"/>
+        </scene>
+        <!--Layer Conversation View Controller-->
+        <scene sceneID="43o-EX-2RE">
+            <objects>
+                <viewController id="jff-6V-IXE" customClass="LayerConversationViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="lh4-em-nO7">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" image="ic-back-arrow" id="bHP-VR-JP3">
+                            <connections>
+                                <action selector="didTapBackButton:" destination="jff-6V-IXE" id="gro-Dn-dvu"/>
+                            </connections>
+                        </barButtonItem>
+                        <view key="titleView" contentMode="scaleToFill" id="Gqy-DQ-9Yw" userLabel="Title View">
+                            <rect key="frame" x="205" y="5" width="190" height="34"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-profile-pic" translatesAutoresizingMaskIntoConstraints="NO" id="2oa-BK-Kcw">
+                                    <rect key="frame" x="28" y="0.0" width="34" height="34"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="34" id="KY3-jO-8Ki"/>
+                                        <constraint firstAttribute="height" constant="34" id="hLn-cm-ZgR"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <integer key="value" value="17"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="251" text="Taylor Swift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Waj-Rh-DIi">
+                                    <rect key="frame" x="70" y="0.0" width="80" height="20"/>
+                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Received just now" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jut-X1-oRj">
+                                    <rect key="frame" x="74" y="21" width="71" height="13"/>
+                                    <fontDescription key="fontDescription" name="Cabin-Italic" family="Cabin" pointSize="10"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Jie-Qi-2IU">
+                                    <rect key="frame" x="170" y="7" width="20" height="20"/>
+                                </activityIndicatorView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <gestureRecognizers/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="Jie-Qi-2IU" secondAttribute="trailing" id="18Q-3f-3B8"/>
+                                <constraint firstItem="Waj-Rh-DIi" firstAttribute="top" secondItem="Gqy-DQ-9Yw" secondAttribute="top" id="6uB-He-YbT"/>
+                                <constraint firstItem="2oa-BK-Kcw" firstAttribute="top" secondItem="Gqy-DQ-9Yw" secondAttribute="top" id="EaN-qq-2Nh"/>
+                                <constraint firstItem="Jie-Qi-2IU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Waj-Rh-DIi" secondAttribute="trailing" constant="8" symbolic="YES" id="XKP-jW-GLu"/>
+                                <constraint firstItem="Jut-X1-oRj" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Waj-Rh-DIi" secondAttribute="leading" id="a5y-hU-KiP"/>
+                                <constraint firstAttribute="bottom" secondItem="Jut-X1-oRj" secondAttribute="bottom" id="apR-de-Xyb"/>
+                                <constraint firstItem="Jie-Qi-2IU" firstAttribute="leading" secondItem="Waj-Rh-DIi" secondAttribute="trailing" priority="249" constant="8" symbolic="YES" id="cpQ-sa-QKc"/>
+                                <constraint firstItem="Jut-X1-oRj" firstAttribute="centerX" secondItem="Waj-Rh-DIi" secondAttribute="centerX" priority="748" id="ghZ-2q-PDz"/>
+                                <constraint firstItem="2oa-BK-Kcw" firstAttribute="leading" secondItem="Gqy-DQ-9Yw" secondAttribute="leading" priority="749" constant="28" id="lNt-NC-CrJ"/>
+                                <constraint firstItem="Waj-Rh-DIi" firstAttribute="leading" secondItem="2oa-BK-Kcw" secondAttribute="trailing" constant="8" symbolic="YES" id="uTI-0M-1Aa"/>
+                                <constraint firstItem="Jie-Qi-2IU" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="Jut-X1-oRj" secondAttribute="trailing" priority="749" constant="8" symbolic="YES" id="viF-md-mGW"/>
+                                <constraint firstAttribute="bottom" secondItem="2oa-BK-Kcw" secondAttribute="bottom" id="wNU-vn-1ZK"/>
+                                <constraint firstAttribute="centerY" secondItem="Jie-Qi-2IU" secondAttribute="centerY" id="x4j-Pv-887"/>
+                            </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="HBc-h4-yqZ" appends="YES" id="xra-zC-PZZ"/>
+                            </connections>
+                        </view>
+                        <barButtonItem key="rightBarButtonItem" image="ic-more" id="R0y-MH-VZr" userLabel="More">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="showMoreOptions:" destination="jff-6V-IXE" id="kKa-dr-GOi"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="avatarView" destination="2oa-BK-Kcw" id="ZoA-gF-4ZL"/>
+                        <outlet property="statusLabel" destination="Jut-X1-oRj" id="WYj-vq-b1s"/>
+                        <outlet property="titleLabel" destination="Waj-Rh-DIi" id="NUa-ih-nOA"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pkP-sN-BdW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="HBc-h4-yqZ"/>
+            </objects>
+            <point key="canvasLocation" x="1769" y="2764"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="empty-profile-pic" width="100" height="100"/>
+        <image name="ic-back-arrow" width="12" height="21"/>
+        <image name="ic-chats" width="27" height="24"/>
+        <image name="ic-more" width="29" height="7"/>
+    </resources>
+</document>

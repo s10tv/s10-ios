@@ -104,15 +104,14 @@ class CreateProfileViewController : UITableViewController {
     @IBAction func didTapDoneOnEditHashtags(sender: AnyObject) {
         wrapFuture(showProgress: true) {
             self.vm.confirmRegistration()
-        }.onSuccess { [weak self] in
+        }.onSuccess {
             Analytics.track("Signup")
             // TODO: Maybe this should be in a segue from somewhere... Kind of harsh..
-            if let nav = self?.navigationController {
-                let mainRootTab = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()!
-                UIView.transitionWithView(nav.view, duration: 1, options: [.TransitionFlipFromRight], animations: {
-                    nav.setViewControllers([mainRootTab], animated: false)
-                }, completion: nil)
-            }
+            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()!
+            let window = (UIApplication.sharedApplication().delegate?.window)!!
+            UIView.transitionWithView(window, duration: 1, options: [.TransitionFlipFromRight], animations: {
+                window.rootViewController = vc
+            }, completion: nil)
         }
     }
 }

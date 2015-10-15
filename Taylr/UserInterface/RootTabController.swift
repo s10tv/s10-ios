@@ -23,11 +23,14 @@ class RootTabController : UITabBarController {
         // Default to show Discover Scene first, then save user pref
         selectedIndex = UD.lastTabIndex.value ?? 1
         
-        let nav = self.navigationController as? RootNavController
         Globals.accountService.state.producer
             .takeWhile { $0.onboardingNeeded == false }
             .startWithCompleted {
-                nav?.goToLogin()
+                let vc = UIStoryboard(name: "Onboarding", bundle: nil).instantiateInitialViewController()!
+                let window = (UIApplication.sharedApplication().delegate?.window)!!
+                UIView.transitionWithView(window, duration: 1, options: [.TransitionFlipFromRight], animations: {
+                    window.rootViewController = vc
+                }, completion: nil)
             }
         vm.chatsBadge.producer.startWithNext { [weak self] badge in
             if let item = self?.tabBar.items?[2] {
@@ -46,10 +49,6 @@ class RootTabController : UITabBarController {
 
 extension RootTabController : UITabBarControllerDelegate {
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
-        tabBarController.navigationItem.title = viewController.title
-        tabBarController.navigationItem.titleView = viewController.navigationItem.titleView
-        tabBarController.navigationItem.rightBarButtonItems = viewController.navigationItem.rightBarButtonItems
-        tabBarController.navigationItem.leftBarButtonItems = viewController.navigationItem.leftBarButtonItems
         UD.lastTabIndex.value = selectedIndex
     }
 }
