@@ -25,9 +25,8 @@ private struct _GlobalsContainer {
 let Globals = _GlobalsContainer.instance
 
 // Shorthand services because they are used all over the place
-let Meteor = Globals.meteorService
+let MainContext = Context(meteor: Globals.meteorService, layer: Globals.layerService)
 let Analytics = Globals.analyticsService
-let Layer = Globals.layerService
 
 let AppDidRegisterUserNotificationSettings = "AppDidRegisterUserNotificationSettings"
 let DidTouchStatusBar = "DidTouchStatusBar"
@@ -92,7 +91,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         application.registerForRemoteNotifications()
         
         // Let's launch!
-        Meteor.call("connectDevice", env.deviceId, [
+        meteor.call("connectDevice", env.deviceId, [
             "appId": env.appId,
             "version": env.version,
             "build": env.build
@@ -157,7 +156,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         Log.info("Registered for push \(deviceToken)")
         if let apsEnv = Globals.env.provisioningProfile?.apsEnvironment?.rawValue {
-            Meteor.updateDevicePush(apsEnv, pushToken: deviceToken.hexString() as String)
+            MainContext.meteor.updateDevicePush(apsEnv, pushToken: deviceToken.hexString() as String)
             Analytics.setUserProperties(["RegisteredPush": true])
         }
     }

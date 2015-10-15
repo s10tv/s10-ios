@@ -15,7 +15,7 @@ class ChatsViewController : BaseViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    let vm: ChatsViewModel = ChatsViewModel(meteor: Meteor, taskService: Globals.taskService)
+    let vm: ChatsViewModel = ChatsViewModel(meteor: MainContext.meteor, taskService: Globals.taskService)
     
     deinit {
         tableView?.emptyDataSetSource = nil

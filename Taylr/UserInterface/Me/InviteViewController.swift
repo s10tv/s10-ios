@@ -18,7 +18,7 @@ class InviteViewController : UIViewController {
     @IBOutlet weak var lastNameField: JVFloatLabeledTextField!
     @IBOutlet weak var emailOrPhoneField: JVFloatLabeledTextField!
     
-    let vm = InviteViewModel(meteor: Meteor, taskService: Globals.taskService)
+    let vm = InviteViewModel(meteor: MainContext.meteor, taskService: Globals.taskService)
 
     override func viewDidLoad() {
         super.viewDidLoad()

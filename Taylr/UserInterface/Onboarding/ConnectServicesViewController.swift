@@ -18,7 +18,7 @@ class ConnectServicesViewController : UITableViewController {
     @IBOutlet weak var integrationsContainer: UIView!
     var integrationsVC: IntegrationsViewController!
     
-    let vm = ConnectServicesViewModel(meteor: Meteor)
+    let vm = ConnectServicesViewModel(MainContext)
     
     override func viewDidLoad() {
         super.viewDidLoad()

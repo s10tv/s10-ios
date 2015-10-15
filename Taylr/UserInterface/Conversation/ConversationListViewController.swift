@@ -13,13 +13,13 @@ import Core
 class ConversationListViewController : ATLConversationListViewController {
     
     var selectedConversation: LYRConversation?
-    let vm = ConversationListViewModel(meteor: Meteor, taskService: Globals.taskService)
+    let vm = ConversationListViewModel(MainContext)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Connections"
         tabBarItem.title = nil
-        layerClient = Layer.layerClient
+        layerClient = MainContext.layer.layerClient
         dataSource = vm
         delegate = self
         displaysAvatarItem = true

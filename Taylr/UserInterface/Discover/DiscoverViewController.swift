@@ -16,7 +16,7 @@ class DiscoverViewController : BaseViewController {
     @IBOutlet weak var collectionView : UICollectionView!
     @IBOutlet weak var topLayoutConstraint: NSLayoutConstraint!
     
-    let vm = DiscoverViewModel(meteor: Meteor, taskService: Globals.taskService, layerService: Layer)
+    let vm = DiscoverViewModel(MainContext)
     
     deinit {
         collectionView?.delegate = nil
@@ -65,7 +65,7 @@ class DiscoverViewController : BaseViewController {
             Analytics.track("Today: TapProfile")
         }
         if let vc = segue.destinationViewController as? ConversationViewController {
-            vc.layerClient = Layer.layerClient
+            vc.layerClient = MainContext.layer.layerClient
             vc.vm = vm.conversationVM()
             Analytics.track("Today: TapMessage")
         }

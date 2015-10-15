@@ -42,7 +42,7 @@ class CreateProfileViewController : UITableViewController {
         aboutView.font = UIFont(.cabinRegular, size: 16)
         aboutView.delegate = self
         
-        vm = CreateProfileViewModel(meteor: Meteor)
+        vm = CreateProfileViewModel(MainContext)
         firstNameField.rac_text <<~> vm.firstName
         lastNameField.rac_text <<~> vm.lastName
         hometownField.rac_text <<~> vm.hometown

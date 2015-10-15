@@ -23,7 +23,7 @@ public struct CreateProfileViewModel {
     public let about: MutableProperty<String?>
     public let uploadImageAction: Action<(image: UIImage, type: PhotoTaskType), (), ErrorAlert>
     
-    public init(ctx: Context) {
+    public init(_ ctx: Context) {
         self.ctx = ctx
         let user = ctx.meteor.user.value!
         // Avoid names getting overwritten when user uploads avatar

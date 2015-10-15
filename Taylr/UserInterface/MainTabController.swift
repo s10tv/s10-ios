@@ -12,7 +12,7 @@ import Core
 
 class MainTabController : UITabBarController {
     
-    let vm = RootTabViewModel(meteor: Meteor, taskService: Globals.taskService)
+    let vm = MainTabViewModel(MainContext)
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -16,7 +16,7 @@ public struct DiscoverViewModel {
     
     public let candidate: FetchedResultsArray<TodayViewModel>
     
-    public init(ctx: Context) {
+    public init(_ ctx: Context) {
         self.ctx = ctx
         subscription = ctx.meteor.subscribe("candidate-discover")
         candidate = Candidate

@@ -18,7 +18,7 @@ public struct EditHashtagsViewModel {
     public let placeholder: PropertyOf<String>
     public let hashtags: FetchedResultsArray<HashtagViewModel>
     
-    public init(ctx: Context) {
+    public init(_ ctx: Context) {
         self.ctx = ctx
         subMyTags = ctx.meteor.subscribe("my-hashtags")
         subSuggestedTags = ctx.meteor.subscribe("suggested-hashtags")

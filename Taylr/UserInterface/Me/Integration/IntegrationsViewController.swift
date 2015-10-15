@@ -16,7 +16,7 @@ import Core
 
 class IntegrationsViewController : UICollectionViewController {
     
-    let vm = IntegrationListViewModel(meteor: Meteor)
+    let vm = IntegrationListViewModel(MainContext)
     
     var selectedIntegration: IntegrationViewModel? {
         return (collectionView?.indexPathsForSelectedItems()?.first).flatMap {
@@ -106,7 +106,7 @@ extension IntegrationsViewController : ClientIntegrationDelegate {
                     promise.future.deliverOn(UIScheduler()).onComplete { _ in
                         PKHUD.hide(animated: false)
                     }
-                    Meteor.addService("facebook", accessToken: result.token.tokenString).onSuccess {
+                    MainContext.meteor.addService("facebook", accessToken: result.token.tokenString).onSuccess {
                         promise.success()
                     }.onFailure { _ in
                         promise.failure(ErrorAlert(title: LS(.errUnableToAddServiceTitle),

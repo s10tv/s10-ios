@@ -17,7 +17,7 @@ class HistoryViewController : BaseViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var topLayoutConstraint: NSLayoutConstraint!
     
-    let vm = HistoryViewModel(meteor: Meteor, taskService: Globals.taskService)
+    let vm = HistoryViewModel(MainContext)
     
     deinit {
         collectionView?.delegate = nil

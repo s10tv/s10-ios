@@ -25,7 +25,7 @@ class EditHashtagsViewController : UIViewController {
         textField.shouldResignFirstResponderFromKeyboardAfterSelectionOfAutoCompleteRows = false
         textField.autocorrectionType = .No
         
-        vm = EditHashtagsViewModel(meteor: Meteor)
+        vm = EditHashtagsViewModel(MainContext)
         collectionView <~ (vm.hashtags, HashtagCell.self)
 
         vm.placeholder.producer.startWithNext { [weak self] in

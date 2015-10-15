@@ -15,7 +15,7 @@ class VerifyCodeViewController : UIViewController {
     @IBOutlet weak var nextButton: UIButton!
     @IBOutlet weak var verificationTokenField: UITextField!
 
-    let vm = VerifyCodeViewModel(meteor: Meteor)
+    let vm = VerifyCodeViewModel(MainContext)
 
     override func viewDidLoad() {
         super.viewDidLoad()
