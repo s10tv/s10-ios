@@ -1,5 +1,5 @@
 //
-//  RootTabController.swift
+//  MainTabController.swift
 //  S10
 //
 //  Created by Tony Xiao on 7/21/15.
@@ -10,7 +10,7 @@ import UIKit
 import ReactiveCocoa
 import Core
 
-class RootTabController : UITabBarController {
+class MainTabController : UITabBarController {
     
     let vm = RootTabViewModel(meteor: Meteor, taskService: Globals.taskService)
     
@@ -47,7 +47,7 @@ class RootTabController : UITabBarController {
     }
 }
 
-extension RootTabController : UITabBarControllerDelegate {
+extension MainTabController : UITabBarControllerDelegate {
     func tabBarController(tabBarController: UITabBarController, didSelectViewController viewController: UIViewController) {
         UD.lastTabIndex.value = selectedIndex
     }
