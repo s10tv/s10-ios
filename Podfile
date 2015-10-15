@@ -70,6 +70,8 @@ target :Core do
         pod 'Mixpanel', '~> 2.8.3'
         pod 'AnalyticsSwift', '~> 0.2'
         pod 'Amplitude-iOS', '~> 3.1'
+        pod 'LayerKit', '~> 0.16'
+        pod 'Atlas', '~> 1.0.13'
 #        pod 'UXCam', '~> 2.3'
 
         # Debug only
