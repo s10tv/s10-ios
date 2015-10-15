@@ -106,12 +106,7 @@ class CreateProfileViewController : UITableViewController {
             self.vm.confirmRegistration()
         }.onSuccess {
             Analytics.track("Signup")
-            // TODO: Maybe this should be in a segue from somewhere... Kind of harsh..
-            let vc = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()!
-            let window = (UIApplication.sharedApplication().delegate?.window)!!
-            UIView.transitionWithView(window, duration: 1, options: [.TransitionFlipFromRight], animations: {
-                window.rootViewController = vc
-            }, completion: nil)
+            self.performSegue(.Main_RootTab)
         }
     }
 }

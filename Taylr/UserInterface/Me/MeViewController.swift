@@ -116,11 +116,7 @@ class MeViewController : UITableViewController {
         }
         sheet.addAction(LS(.settingsLogoutTitle), style: .Destructive) { _ in
             Globals.accountService.logout()
-            let vc = UIStoryboard(name: "Onboarding", bundle: nil).instantiateInitialViewController()!
-            let window = (UIApplication.sharedApplication().delegate?.window)!!
-            UIView.transitionWithView(window, duration: 1, options: [.TransitionFlipFromRight], animations: {
-                window.rootViewController = vc
-            }, completion: nil)
+            self.performSegue(.Onboarding_Login)
         }
         sheet.addAction(LS(.settingsLogoutCancel), style: .Cancel)
         presentViewController(sheet)

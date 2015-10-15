@@ -550,6 +550,14 @@
             </objects>
             <point key="canvasLocation" x="437" y="1356"/>
         </scene>
+        <!--Onboarding-->
+        <scene sceneID="I0T-n9-xCv">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Onboarding" id="AD6-x0-JlC" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="qGA-gK-vyC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-265" y="1064"/>
+        </scene>
         <!--Me-->
         <scene sceneID="Q8l-pK-Aaz">
             <objects>
@@ -963,6 +971,7 @@
                         <outlet property="nameLabel" destination="vns-XO-Vtt" id="Ruo-Va-xds"/>
                         <outlet property="servicesCollectionView" destination="xfo-Ax-Q1n" id="JiG-3U-MyF"/>
                         <outlet property="versionLabel" destination="W2x-p0-Qgh" id="7ZE-gd-Daj"/>
+                        <segue destination="AD6-x0-JlC" kind="show" identifier="Onboarding_Login" customClass="WindowRootSegue" id="jFo-yL-UTj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aX7-4C-VNx" userLabel="First Responder" sceneMemberID="firstResponder"/>

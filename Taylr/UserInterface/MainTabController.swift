@@ -26,11 +26,7 @@ class MainTabController : UITabBarController {
         Globals.accountService.state.producer
             .takeWhile { $0.onboardingNeeded == false }
             .startWithCompleted {
-                let vc = UIStoryboard(name: "Onboarding", bundle: nil).instantiateInitialViewController()!
-                let window = (UIApplication.sharedApplication().delegate?.window)!!
-                UIView.transitionWithView(window, duration: 1, options: [.TransitionFlipFromRight], animations: {
-                    window.rootViewController = vc
-                }, completion: nil)
+                self.performSegue(.Onboarding_Login)
             }
         vm.chatsBadge.producer.startWithNext { [weak self] badge in
             if let item = self?.tabBar.items?[2] {

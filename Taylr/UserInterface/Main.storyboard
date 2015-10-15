@@ -19,12 +19,21 @@
                         <segue destination="biD-g1-Tw0" kind="relationship" relationship="viewControllers" id="PY8-Tc-Td1"/>
                         <segue destination="hGd-Ln-38o" kind="relationship" relationship="viewControllers" id="xjA-Iy-FMC"/>
                         <segue destination="v5u-uf-gTv" kind="relationship" relationship="viewControllers" id="FUP-uX-gEU"/>
+                        <segue destination="pMV-sp-HqT" kind="custom" identifier="Onboarding" customClass="WindowRootSegue" id="Vfs-1s-tXj"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JRV-fZ-84H" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationItem title="Taylr" id="KlQ-zu-EEb"/>
             </objects>
             <point key="canvasLocation" x="366" y="1215"/>
+        </scene>
+        <!--Onboarding-->
+        <scene sceneID="UiV-yN-i9C">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Onboarding" id="pMV-sp-HqT" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AZP-AD-FVR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="840.5" y="1215"/>
         </scene>
         <!--Discover-->
         <scene sceneID="zu1-7I-74M">
