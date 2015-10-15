@@ -1487,11 +1487,14 @@
                                 <constraint firstItem="13P-RZ-U0e" firstAttribute="leading" secondItem="bRs-sD-QWH" secondAttribute="leading" priority="749" constant="28" id="yGl-gV-ieo"/>
                                 <constraint firstItem="srQ-lC-Cgp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DMZ-TX-pZU" secondAttribute="leading" id="zKi-7J-dDn"/>
                             </constraints>
+                            <connections>
+                                <outletCollection property="gestureRecognizers" destination="TaI-2F-1Qu" appends="YES" id="pgk-YS-3V4"/>
+                            </connections>
                         </view>
                         <barButtonItem key="rightBarButtonItem" image="ic-more" id="88a-9n-GOS" userLabel="More">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <action selector="showMoreOptions:" destination="kBv-HD-oBL" id="jLH-Nt-DLT"/>
+                                <action selector="showMoreOptions:" destination="CiI-y4-diT" id="5gV-7N-2pD"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1503,6 +1506,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fqd-uH-JwX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="TaI-2F-1Qu">
+                    <connections>
+                        <segue destination="O0f-xd-Ps7" kind="show" id="0dE-iV-3Nz"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1769" y="2764"/>
         </scene>
@@ -2862,7 +2870,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="qAm-ER-I7m"/>
+        <segue reference="0dE-iV-3Nz"/>
         <segue reference="xra-sT-n24"/>
-        <segue reference="zqv-ca-egq"/>
     </inferredMetricsTieBreakers>
 </document>

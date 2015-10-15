@@ -13,7 +13,7 @@ import Core
 class ConversationListViewController : ATLConversationListViewController {
     
     var selectedConversation: LYRConversation?
-    let vm = ConversationListViewModel(meteor: Meteor, currentUser: Meteor.currentUser)
+    let vm = ConversationListViewModel(meteor: Meteor, taskService: Globals.taskService)
     
     override func viewDidLoad() {
         super.viewDidLoad()

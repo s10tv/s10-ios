@@ -38,7 +38,7 @@ public struct DiscoverViewModel {
     
     public func layerConversationVM() -> LayerConversationViewModel {
         let conversation = layerService.conversationWithUser(candidate[0].user)
-        return LayerConversationViewModel(meteor: meteor, currentUser: meteor.currentUser, conversation: conversation)
+        return LayerConversationViewModel(meteor: meteor, taskService: taskService, conversation: conversation)
     }
     
     public func conversationVM() -> ConversationViewModel? {
