@@ -15,8 +15,8 @@ import Meteor
 import Async
 
 public class MeteorService : NSObject {
-    private var mainContext : NSManagedObjectContext { return meteor.mainQueueManagedObjectContext }
     private let _user = MutableProperty<User?>(nil)
+    var mainContext : NSManagedObjectContext { return meteor.mainQueueManagedObjectContext }
     let meteor: METCoreDataDDPClient
     
     public let account: PropertyOf<METAccount?>

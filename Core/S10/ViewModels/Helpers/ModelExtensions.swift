@@ -31,6 +31,10 @@ extension User {
         }
         return ""
     }
+    
+    func displayName() -> String {
+        return Formatters.formatFullname(firstName, lastName: lastName, gradYear: gradYear)
+    }
         
     func pDisplayName() -> ProducerProperty<String> {
         return ProducerProperty(combineLatest(

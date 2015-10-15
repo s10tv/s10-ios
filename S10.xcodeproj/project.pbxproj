@@ -204,6 +204,10 @@
 		EAD16D301BCA4ABE0040CEB8 /* Hashtag.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD16D2F1BCA4ABE0040CEB8 /* Hashtag.swift */; settings = {ASSET_TAGS = (); }; };
 		EAD16D321BCA4B050040CEB8 /* HashtagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD16D311BCA4B050040CEB8 /* HashtagViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EADE6CB81BCF7790002F1216 /* LayerConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADE6CB71BCF7790002F1216 /* LayerConversationViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EADE6CBA1BCF85D7002F1216 /* ConversationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADE6CB91BCF85D7002F1216 /* ConversationListViewModel.swift */; settings = {ASSET_TAGS = (); }; };
+		EADE6CBE1BCF8AFC002F1216 /* UserViewModel+ATLParticipant.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADE6CBD1BCF8AFC002F1216 /* UserViewModel+ATLParticipant.swift */; settings = {ASSET_TAGS = (); }; };
+		EADE6CC01BCF8D8B002F1216 /* LayerConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADE6CBF1BCF8D8B002F1216 /* LayerConversationViewModel.swift */; settings = {ASSET_TAGS = (); }; };
+		EADE6CC21BCF8FDA002F1216 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADE6CC11BCF8FDA002F1216 /* UserViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EAE067201B71850F00A2FF76 /* MuteChecker.caf in Resources */ = {isa = PBXBuildFile; fileRef = EAE0671D1B71850F00A2FF76 /* MuteChecker.caf */; };
 		EAE067211B71850F00A2FF76 /* MuteChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE0671F1B71850F00A2FF76 /* MuteChecker.m */; };
 		EAE637C51BC84BBE00A958A8 /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE637C41BC84BBE00A958A8 /* ReceiveViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -454,6 +458,10 @@
 		EAD7C6811BA7960600FD8A27 /* _Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Candidate.swift; sourceTree = "<group>"; };
 		EAD7C6831BA7960E00FD8A27 /* Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Candidate.swift; sourceTree = "<group>"; };
 		EADE6CB71BCF7790002F1216 /* LayerConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerConversationViewController.swift; sourceTree = "<group>"; };
+		EADE6CB91BCF85D7002F1216 /* ConversationListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListViewModel.swift; sourceTree = "<group>"; };
+		EADE6CBD1BCF8AFC002F1216 /* UserViewModel+ATLParticipant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserViewModel+ATLParticipant.swift"; sourceTree = "<group>"; };
+		EADE6CBF1BCF8D8B002F1216 /* LayerConversationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerConversationViewModel.swift; sourceTree = "<group>"; };
+		EADE6CC11BCF8FDA002F1216 /* UserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		EAE0671D1B71850F00A2FF76 /* MuteChecker.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MuteChecker.caf; sourceTree = "<group>"; };
 		EAE0671E1B71850F00A2FF76 /* MuteChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MuteChecker.h; sourceTree = "<group>"; };
 		EAE0671F1B71850F00A2FF76 /* MuteChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MuteChecker.m; sourceTree = "<group>"; };
@@ -706,6 +714,7 @@
 		EA2DC2BA1B642A4A0034434E /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				EADE6CC11BCF8FDA002F1216 /* UserViewModel.swift */,
 				EA2DC2BB1B642A4A0034434E /* Formatters.swift */,
 				EA2DC2BC1B642A4A0034434E /* ModelExtensions.swift */,
 				EA35613C1B6D49DA00F058CC /* Errors.swift */,
@@ -767,6 +776,7 @@
 			children = (
 				EAAD921C1ACF342C0014BA25 /* TaylrEnvironment.swift */,
 				EA36D2AA1AE71366006FD5D8 /* Errors.swift */,
+				EADE6CBD1BCF8AFC002F1216 /* UserViewModel+ATLParticipant.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1117,6 +1127,7 @@
 		EAC1BEF31BC7121200864B8C /* Conversation */ = {
 			isa = PBXGroup;
 			children = (
+				EADE6CBF1BCF8D8B002F1216 /* LayerConversationViewModel.swift */,
 				EAC1BEF41BC7121200864B8C /* ConversationViewModel.swift */,
 				EAC1BEF51BC7121200864B8C /* MessageViewModel.swift */,
 				EAC1BF031BC7155900864B8C /* ChatHistoryViewModel.swift */,
@@ -1130,6 +1141,7 @@
 			children = (
 				EAC1BEF71BC7121200864B8C /* ChatsViewModel.swift */,
 				EAC1BEF81BC7121200864B8C /* ConnectionViewModels.swift */,
+				EADE6CB91BCF85D7002F1216 /* ConversationListViewModel.swift */,
 			);
 			path = Connections;
 			sourceTree = "<group>";
@@ -1743,6 +1755,7 @@
 				EA81AE171BB6993B00F94006 /* Errors.swift in Sources */,
 				EA81AE371BB79FEB00F94006 /* IntegrationListViewModel.swift in Sources */,
 				EA81AE3C1BB7AAE500F94006 /* CandidateViewModel.swift in Sources */,
+				EADE6CBA1BCF85D7002F1216 /* ConversationListViewModel.swift in Sources */,
 				EA81ADF61BB68E0400F94006 /* Models.xcdatamodeld in Sources */,
 				EAC1BEF91BC7121200864B8C /* ConversationViewModel.swift in Sources */,
 				EA8E69461BC1DA30002D4BF1 /* ArrayProperty.swift in Sources */,
@@ -1776,6 +1789,7 @@
 				EA0ED05F1BC1F80F00A9EE08 /* MeteorExtensions.swift in Sources */,
 				EAA5763B1BB86A5000661A4F /* BindableCell.swift in Sources */,
 				EA81AE081BB6912D00F94006 /* VideoUploadTask.swift in Sources */,
+				EADE6CC21BCF8FDA002F1216 /* UserViewModel.swift in Sources */,
 				EAC1BEFA1BC7121200864B8C /* MessageViewModel.swift in Sources */,
 				EA81ADE21BB686EF00F94006 /* PanInteractor.swift in Sources */,
 				EA81AE131BB696D000F94006 /* InviteOperation.swift in Sources */,
@@ -1800,6 +1814,7 @@
 				EAD16D2E1BCA4AB40040CEB8 /* _Hashtag.swift in Sources */,
 				EAA5763D1BB86A5000661A4F /* UITableViewBinding.swift in Sources */,
 				EA81AE411BB7ABFC00F94006 /* ProfileInfoViewModel.swift in Sources */,
+				EADE6CC01BCF8D8B002F1216 /* LayerConversationViewModel.swift in Sources */,
 				EA81ADF01BB68A7300F94006 /* Meteor+CoreData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1855,6 +1870,7 @@
 				EAE637C71BC84BC700A958A8 /* ChatHistoryViewController.swift in Sources */,
 				EA1E5B171BC8DB6700E2AE83 /* HashtagCell.swift in Sources */,
 				EAC1BEE21BC70E0E00864B8C /* ConversationViewController.swift in Sources */,
+				EADE6CBE1BCF8AFC002F1216 /* UserViewModel+ATLParticipant.swift in Sources */,
 				EADE6CB81BCF7790002F1216 /* LayerConversationViewController.swift in Sources */,
 				EA42D65B1BB7C66600B07526 /* MediaExtension.swift in Sources */,
 				EA42D65F1BB7C67900B07526 /* DesignableViews.swift in Sources */,

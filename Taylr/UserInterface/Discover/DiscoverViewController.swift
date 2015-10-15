@@ -71,7 +71,7 @@ class DiscoverViewController : BaseViewController {
         }
         if let vc = segue.destinationViewController as? LayerConversationViewController {
             vc.layerClient = Layer.layerClient
-            vc.conversation = vm.conversation()
+            vc.vm = vm.layerConversationVM()
         }
     }
 }

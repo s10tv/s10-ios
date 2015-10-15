@@ -13,14 +13,15 @@ import Core
 class ConversationListViewController : ATLConversationListViewController {
     
     var selectedConversation: LYRConversation?
+    let vm = ConversationListViewModel(meteor: Meteor, currentUser: Meteor.currentUser)
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBarItem.title = nil
         layerClient = Layer.layerClient
-        dataSource = self
+        dataSource = vm
         delegate = self
-        displaysAvatarItem = false
+        displaysAvatarItem = true
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -36,15 +37,8 @@ class ConversationListViewController : ATLConversationListViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? LayerConversationViewController {
             vc.layerClient = layerClient
-            vc.conversation = selectedConversation
+            vc.vm = vm.conversationVM(selectedConversation!)
         }
-    }
-}
-
-extension ConversationListViewController : ATLConversationListViewControllerDataSource {
-    
-    func conversationListViewController(conversationListViewController: ATLConversationListViewController!, titleForConversation conversation: LYRConversation!) -> String! {
-        return "Test Conversation"
     }
 }
 
@@ -53,5 +47,17 @@ extension ConversationListViewController : ATLConversationListViewControllerDele
     func conversationListViewController(conversationListViewController: ATLConversationListViewController!, didSelectConversation conversation: LYRConversation!) {
         selectedConversation = conversation
         performSegue(.ConversationListToConversation)
+    }
+}
+
+// MARK: - ATLConversationListViewControllerDataSource
+
+extension ConversationListViewModel : ATLConversationListViewControllerDataSource {
+    public func conversationListViewController(conversationListViewController: ATLConversationListViewController!, titleForConversation conversation: LYRConversation!) -> String!  {
+        return recipientForConversation(conversation).map { $0.displayName } ?? "..."
+    }
+    
+    public func conversationListViewController(conversationListViewController: ATLConversationListViewController!, avatarItemForConversation conversation: LYRConversation!) -> ATLAvatarItem! {
+        return recipientForConversation(conversation)
     }
 }
