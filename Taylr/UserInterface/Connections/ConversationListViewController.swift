@@ -17,6 +17,7 @@ class ConversationListViewController : ATLConversationListViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Connections"
         tabBarItem.title = nil
         layerClient = Layer.layerClient
         dataSource = vm

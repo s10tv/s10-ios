@@ -20,9 +20,7 @@ public class ConversationListViewModel: NSObject {
     }
     
     public func recipientForConversation(conversation: LYRConversation) -> UserViewModel? {
-        let others = conversation.participants.filter { $0 != currentUser.userId.value }
-        if let userId = others.first as? String,
-            let u = meteor.mainContext.existingObjectInCollection("users", documentID: userId) as? User {
+        if let u = conversation.recipient(meteor.mainContext, currentUserId: currentUser.userId.value) {
             return UserViewModel(user: u)
         }
         return nil

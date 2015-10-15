@@ -16,6 +16,7 @@
             <string>Cabin-Italic</string>
             <string>Cabin-Italic</string>
             <string>Cabin-Italic</string>
+            <string>Cabin-Italic</string>
         </mutableArray>
         <mutableArray key="Cabin-Medium.ttf">
             <string>Cabin-Medium</string>
@@ -28,6 +29,7 @@
             <string>Cabin-Medium</string>
         </mutableArray>
         <mutableArray key="Cabin-Regular.ttf">
+            <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
@@ -476,7 +478,7 @@
             </objects>
             <point key="canvasLocation" x="1030" y="2032"/>
         </scene>
-        <!--Conversation List View Controller-->
+        <!--Chats-->
         <scene sceneID="tpj-Zk-eLW">
             <objects>
                 <tableViewController id="it8-ve-Pp7" customClass="ConversationListViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
@@ -502,6 +504,9 @@
                     <tabBarItem key="tabBarItem" title="" image="ic-chats" id="L1B-H5-t0D">
                         <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
                     </tabBarItem>
+                    <navigationItem key="navigationItem" title="Chats" id="SHD-OF-maw">
+                        <barButtonItem key="backBarButtonItem" title=" " id="s83-g1-70O"/>
+                    </navigationItem>
                     <connections>
                         <segue destination="CiI-y4-diT" kind="show" identifier="ConversationListToConversation" id="qAm-ER-I7m"/>
                     </connections>
@@ -1186,21 +1191,21 @@
                         <viewControllerLayoutGuide type="bottom" id="so0-au-wZg"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="oxw-6G-nOi">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jtm-KQ-nId" customClass="SwipeView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="69M-k7-fVV" userLabel="Receive Container">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o5h-1f-xqR" userLabel="Producer Container">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yZe-l1-1Cf" userLabel="New Messages Hint">
-                                        <rect key="frame" x="232" y="100" width="135" height="30"/>
+                                        <rect key="frame" x="120" y="100" width="135" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="new messages" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="80" translatesAutoresizingMaskIntoConstraints="NO" id="TF6-BS-vja">
                                                 <rect key="frame" x="34" y="6" width="86" height="18"/>
@@ -1238,17 +1243,17 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6Ez-Ho-vPa" userLabel="Chat History Container">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-photo" translatesAutoresizingMaskIntoConstraints="NO" id="xcA-cM-lGe" userLabel="Cover Image">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
                                     </imageView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YAq-N9-nMj" userLabel="Cover Overlay">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
                                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
                                     </view>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AdU-B0-hmM" userLabel="Empty View">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="1200"/>
                                         <subviews>
                                             <view userInteractionEnabled="NO" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lf3-Y8-ztX" userLabel="Swipe Up To Reply Hint">
                                                 <rect key="frame" x="230" y="1049" width="138" height="51"/>
@@ -1274,7 +1279,7 @@
                                                 </constraints>
                                             </view>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="A simple hello can lead to a million things" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="250" translatesAutoresizingMaskIntoConstraints="NO" id="D2N-Vt-lOa">
-                                                <rect key="frame" x="182" y="276" width="234" height="49"/>
+                                                <rect key="frame" x="182" y="576" width="234" height="49"/>
                                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="20"/>
                                                 <color key="textColor" red="0.92926174402236938" green="0.92917501926422119" blue="0.94562381505966187" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -1333,7 +1338,7 @@
                             </connections>
                         </barButtonItem>
                         <view key="titleView" contentMode="scaleToFill" id="KPL-gz-OCJ" userLabel="Title View">
-                            <rect key="frame" x="205" y="5" width="190" height="34"/>
+                            <rect key="frame" x="93" y="5" width="190" height="34"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-profile-pic" translatesAutoresizingMaskIntoConstraints="NO" id="uD7-V4-mF6">
@@ -1425,7 +1430,78 @@
         <!--Layer Conversation View Controller-->
         <scene sceneID="eRg-tG-mC3">
             <objects>
-                <viewController id="CiI-y4-diT" customClass="LayerConversationViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController"/>
+                <viewController id="CiI-y4-diT" customClass="LayerConversationViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="9R1-2I-m1S">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" image="ic-back-arrow" id="CKx-Na-CFu">
+                            <connections>
+                                <action selector="didTapBackButton:" destination="CiI-y4-diT" id="Iyh-WN-d5s"/>
+                            </connections>
+                        </barButtonItem>
+                        <view key="titleView" contentMode="scaleToFill" id="bRs-sD-QWH" userLabel="Title View">
+                            <rect key="frame" x="205" y="5" width="190" height="34"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-profile-pic" translatesAutoresizingMaskIntoConstraints="NO" id="13P-RZ-U0e">
+                                    <rect key="frame" x="28" y="0.0" width="34" height="34"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" constant="34" id="ckZ-yZ-tsW"/>
+                                        <constraint firstAttribute="height" constant="34" id="jGN-GG-U3d"/>
+                                    </constraints>
+                                    <userDefinedRuntimeAttributes>
+                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                            <integer key="value" value="17"/>
+                                        </userDefinedRuntimeAttribute>
+                                    </userDefinedRuntimeAttributes>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="251" text="Taylor Swift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DMZ-TX-pZU">
+                                    <rect key="frame" x="70" y="0.0" width="80" height="20"/>
+                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Received just now" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="srQ-lC-Cgp">
+                                    <rect key="frame" x="74" y="21" width="71" height="13"/>
+                                    <fontDescription key="fontDescription" name="Cabin-Italic" family="Cabin" pointSize="10"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="zLm-Pw-F1X">
+                                    <rect key="frame" x="170" y="7" width="20" height="20"/>
+                                </activityIndicatorView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <gestureRecognizers/>
+                            <constraints>
+                                <constraint firstAttribute="bottom" secondItem="srQ-lC-Cgp" secondAttribute="bottom" id="5BZ-B9-F4j"/>
+                                <constraint firstAttribute="trailing" secondItem="zLm-Pw-F1X" secondAttribute="trailing" id="8qk-a5-NkW"/>
+                                <constraint firstItem="zLm-Pw-F1X" firstAttribute="leading" secondItem="DMZ-TX-pZU" secondAttribute="trailing" priority="249" constant="8" symbolic="YES" id="BQz-kM-wQW"/>
+                                <constraint firstItem="srQ-lC-Cgp" firstAttribute="centerX" secondItem="DMZ-TX-pZU" secondAttribute="centerX" priority="748" id="LWN-hS-QVo"/>
+                                <constraint firstItem="DMZ-TX-pZU" firstAttribute="leading" secondItem="13P-RZ-U0e" secondAttribute="trailing" constant="8" symbolic="YES" id="SPm-Z2-gQq"/>
+                                <constraint firstItem="DMZ-TX-pZU" firstAttribute="top" secondItem="bRs-sD-QWH" secondAttribute="top" id="YwA-fl-JSZ"/>
+                                <constraint firstAttribute="bottom" secondItem="13P-RZ-U0e" secondAttribute="bottom" id="eJ0-al-I1M"/>
+                                <constraint firstItem="zLm-Pw-F1X" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="srQ-lC-Cgp" secondAttribute="trailing" priority="749" constant="8" symbolic="YES" id="ikA-QV-qE5"/>
+                                <constraint firstItem="zLm-Pw-F1X" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DMZ-TX-pZU" secondAttribute="trailing" constant="8" symbolic="YES" id="lFa-yv-gC5"/>
+                                <constraint firstItem="13P-RZ-U0e" firstAttribute="top" secondItem="bRs-sD-QWH" secondAttribute="top" id="oUd-wI-wdL"/>
+                                <constraint firstAttribute="centerY" secondItem="zLm-Pw-F1X" secondAttribute="centerY" id="rb5-0s-lGi"/>
+                                <constraint firstItem="13P-RZ-U0e" firstAttribute="leading" secondItem="bRs-sD-QWH" secondAttribute="leading" priority="749" constant="28" id="yGl-gV-ieo"/>
+                                <constraint firstItem="srQ-lC-Cgp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="DMZ-TX-pZU" secondAttribute="leading" id="zKi-7J-dDn"/>
+                            </constraints>
+                        </view>
+                        <barButtonItem key="rightBarButtonItem" image="ic-more" id="88a-9n-GOS" userLabel="More">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="showMoreOptions:" destination="kBv-HD-oBL" id="jLH-Nt-DLT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="avatarView" destination="13P-RZ-U0e" id="UlA-sY-cy3"/>
+                        <outlet property="statusLabel" destination="srQ-lC-Cgp" id="HUc-Yx-69w"/>
+                        <outlet property="titleLabel" destination="DMZ-TX-pZU" id="eWO-tH-dbi"/>
+                    </connections>
+                </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fqd-uH-JwX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1769" y="2764"/>
@@ -2786,7 +2862,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="qAm-ER-I7m"/>
-        <segue reference="Hrk-zE-6Yh"/>
-        <segue reference="Fwv-Pj-RXP"/>
+        <segue reference="xra-sT-n24"/>
+        <segue reference="zqv-ca-egq"/>
     </inferredMetricsTieBreakers>
 </document>

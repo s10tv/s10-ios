@@ -174,6 +174,7 @@
 		EAA5763B1BB86A5000661A4F /* BindableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA576381BB86A5000661A4F /* BindableCell.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA5763C1BB86A5000661A4F /* UICollectionViewBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA576391BB86A5000661A4F /* UICollectionViewBinding.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA5763D1BB86A5000661A4F /* UITableViewBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA5763A1BB86A5000661A4F /* UITableViewBinding.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA752F61BCF956B0065CB97 /* LayerHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA752F51BCF956B0065CB97 /* LayerHelpers.swift */; settings = {ASSET_TAGS = (); }; };
 		EAB31D4E1BCC718B0080DA47 /* UXCam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB31D4D1BCC718B0080DA47 /* UXCam.framework */; settings = {ASSET_TAGS = (); }; };
 		EAB31D4F1BCC72330080DA47 /* UXCam.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAB31D4D1BCC718B0080DA47 /* UXCam.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EAB31D551BCF70730080DA47 /* ConversationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB31D541BCF70730080DA47 /* ConversationListViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -415,6 +416,7 @@
 		EAA576381BB86A5000661A4F /* BindableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindableCell.swift; sourceTree = "<group>"; };
 		EAA576391BB86A5000661A4F /* UICollectionViewBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewBinding.swift; sourceTree = "<group>"; };
 		EAA5763A1BB86A5000661A4F /* UITableViewBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewBinding.swift; sourceTree = "<group>"; };
+		EAA752F51BCF956B0065CB97 /* LayerHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerHelpers.swift; sourceTree = "<group>"; };
 		EAA8D6C21B62F2A400D5A6DC /* IntegrationWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationWebViewController.swift; sourceTree = "<group>"; };
 		EAAD921C1ACF342C0014BA25 /* TaylrEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaylrEnvironment.swift; sourceTree = "<group>"; };
 		EAB31D4D1BCC718B0080DA47 /* UXCam.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UXCam.framework; sourceTree = SOURCE_ROOT; };
@@ -719,6 +721,7 @@
 				EA2DC2BC1B642A4A0034434E /* ModelExtensions.swift */,
 				EA35613C1B6D49DA00F058CC /* Errors.swift */,
 				EA35613E1B6DBCDB00F058CC /* AlertableError.swift */,
+				EAA752F51BCF956B0065CB97 /* LayerHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1784,6 +1787,7 @@
 				EA337DFF1BB9067800F09A92 /* UIKitBindings.swift in Sources */,
 				EA81ADD31BB673B100F94006 /* Future.swift in Sources */,
 				EA81ADE71BB687F700F94006 /* GeometryExtensions.swift in Sources */,
+				EAA752F61BCF956B0065CB97 /* LayerHelpers.swift in Sources */,
 				EA8E69471BC1DA30002D4BF1 /* DynamicProperties.swift in Sources */,
 				EA81AE051BB68E6700F94006 /* Video.swift in Sources */,
 				EA0ED05F1BC1F80F00A9EE08 /* MeteorExtensions.swift in Sources */,

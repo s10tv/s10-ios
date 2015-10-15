@@ -7,11 +7,16 @@
 //
 
 import Foundation
+import ReactiveCocoa
 import Atlas
 import Core
 
 class LayerConversationViewController : ATLConversationViewController {
 
+    @IBOutlet weak var avatarView: UIImageView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var statusLabel: UILabel!
+    
     var vm: LayerConversationViewModel! {
         didSet { conversation = vm.conversation }
     }
@@ -20,8 +25,23 @@ class LayerConversationViewController : ATLConversationViewController {
         super.viewDidLoad()
         dataSource = vm
         
-        view.backgroundColor = UIColor(hex: 0xF2F2F6)
+        let backgroundImageView = UIImageView()
+        backgroundImageView.contentMode = .ScaleAspectFill
+        backgroundImageView.clipsToBounds = true
+        view.insertSubview(backgroundImageView, atIndex: 0)
+        backgroundImageView.makeEdgesEqualTo(view)
+        
+        avatarView.sd_image <~ vm.avatar
+        titleLabel.rac_text <~ vm.displayName
+        statusLabel.rac_text <~ vm.displayStatus
+        backgroundImageView.sd_image <~ vm.cover
     }
+    
+    
+    @IBAction func didTapBackButton(sender: AnyObject) {
+        navigationController?.popViewControllerAnimated(true)
+    }
+    
 }
 
 // MARK: - ATLConversationViewControllerDataSource
