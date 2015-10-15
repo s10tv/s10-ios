@@ -7,18 +7,21 @@
 //
 
 import Foundation
+import LayerKit
 import ReactiveCocoa
 
 public struct DiscoverViewModel {
     let meteor: MeteorService
     let taskService: TaskService
+    let layerService: LayerService
     public let subscription: MeteorSubscription // TODO: Test only
     
     public let candidate: FetchedResultsArray<TodayViewModel>
     
-    public init(meteor: MeteorService, taskService: TaskService) {
+    public init(meteor: MeteorService, taskService: TaskService, layerService: LayerService) {
         self.meteor = meteor
         self.taskService = taskService
+        self.layerService = layerService
         subscription = meteor.subscribe("candidate-discover")
         candidate = Candidate
             .by(CandidateKeys.status_, value: Candidate.Status.Active.rawValue)
@@ -31,6 +34,10 @@ public struct DiscoverViewModel {
             return ProfileViewModel(meteor: meteor, taskService: taskService, user: candidate[0].user, timeRemaining: candidate[0].timeRemaining)
         }
         return nil
+    }
+    
+    public func conversation() -> LYRConversation {
+        return layerService.conversationWithUser(candidate[0].user)
     }
     
     public func conversationVM() -> ConversationViewModel? {

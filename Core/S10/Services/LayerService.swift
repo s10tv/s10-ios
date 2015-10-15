@@ -34,6 +34,14 @@ public class LayerService {
         }))
     }
     
+    func conversationWithUser(user: User) -> LYRConversation {
+        do {
+            return try layerClient.newConversationWithParticipants(Set([user.documentID!]), options: [LYRConversationOptionsDistinctByParticipantsKey: true])
+        } catch let error as NSError {
+            return error.userInfo[LYRExistingDistinctConversationKey] as! LYRConversation
+        }
+    }
+    
     // MARK: -
     
     private func syncWithUser(userId: String?) -> SignalProducer<String?, NSError> {
