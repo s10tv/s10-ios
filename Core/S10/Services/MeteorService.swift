@@ -49,10 +49,8 @@ public class MeteorService : NSObject {
     }
     
     public func userIdProducer() -> SignalProducer<String?, NoError> {
-        return combineLatest(
-            account.producer, connectionStatus.producer, userId.producer
-        ).flatMap(.Latest) { account, status, userId in
-            if account != nil && status != .Connected {
+        return combineLatest(account.producer, userId.producer).flatMap(.Latest) { account, userId in
+            if account != nil && userId == nil {
                 return .empty
             }
             return SignalProducer(value: userId)
