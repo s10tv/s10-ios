@@ -64,14 +64,10 @@ class DiscoverViewController : BaseViewController {
             profileVC.vm = profileVM
             Analytics.track("Today: TapProfile")
         }
-        if let vc = segue.destinationViewController as? ConversationViewController,
-            let conversationVM = vm.conversationVM() {
-            vc.vm = conversationVM
-            Analytics.track("Today: TapMessage")
-        }
-        if let vc = segue.destinationViewController as? LayerConversationViewController {
+        if let vc = segue.destinationViewController as? ConversationViewController {
             vc.layerClient = Layer.layerClient
-            vc.vm = vm.layerConversationVM()
+            vc.vm = vm.conversationVM()
+            Analytics.track("Today: TapMessage")
         }
     }
 }

@@ -1,5 +1,5 @@
 //
-//  LayerConversationViewController.swift
+//  ConversationViewController.swift
 //  S10
 //
 //  Created by Tony Xiao on 10/14/15.
@@ -11,13 +11,13 @@ import ReactiveCocoa
 import Atlas
 import Core
 
-class LayerConversationViewController : ATLConversationViewController {
+class ConversationViewController : ATLConversationViewController {
 
     @IBOutlet weak var avatarView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     
-    var vm: LayerConversationViewModel! {
+    var vm: ConversationViewModel! {
         didSet { conversation = vm.conversation }
     }
     
@@ -102,7 +102,7 @@ class LayerConversationViewController : ATLConversationViewController {
 
 // MARK: - ATLConversationViewControllerDataSource
 
-extension LayerConversationViewModel : ATLConversationViewControllerDataSource {
+extension ConversationViewModel : ATLConversationViewControllerDataSource {
     
     public func conversationViewController(conversationViewController: ATLConversationViewController!, participantForIdentifier participantIdentifier: String!) -> ATLParticipant! {
         return recipient()

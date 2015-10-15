@@ -713,10 +713,10 @@
             </objects>
             <point key="canvasLocation" x="-1874" y="352"/>
         </scene>
-        <!--Conversation View Controller-->
+        <!--Video Conversation View Controller-->
         <scene sceneID="pBY-6a-tvI">
             <objects>
-                <viewController storyboardIdentifier="Conversation" id="DFK-P4-pRk" customClass="ConversationViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Conversation" id="DFK-P4-pRk" customClass="VideoConversationViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="qQw-Y4-Lbc"/>
                         <viewControllerLayoutGuide type="bottom" id="pdW-Ol-8e4"/>

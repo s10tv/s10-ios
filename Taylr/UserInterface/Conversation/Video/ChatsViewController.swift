@@ -44,7 +44,7 @@ class ChatsViewController : BaseViewController {
     }
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let vc = segue.destinationViewController as? ConversationViewController {
+        if let vc = segue.destinationViewController as? VideoConversationViewController {
             vc.vm = vm.conversationVM(tableView.indexPathForSelectedRow!.row)
         }
     }

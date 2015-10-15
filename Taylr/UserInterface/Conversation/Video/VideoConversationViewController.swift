@@ -13,7 +13,7 @@ import Async
 import SwipeView
 import Core
 
-class ConversationViewController : BaseViewController {
+class VideoConversationViewController : BaseViewController {
     enum Page : Int {
         case ChatHistory = 0
         case Producer = 1
@@ -34,7 +34,7 @@ class ConversationViewController : BaseViewController {
     var receiver: ReceiveViewController!
     var chatHistory: ChatHistoryViewController!
     var producer: ProducerViewController!
-    var vm: ConversationViewModel!
+    var vm: VideoConversationViewModel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -205,7 +205,7 @@ class ConversationViewController : BaseViewController {
 
 // MARK: - SwipeView Delegate & DataSource
 
-extension ConversationViewController : SwipeViewDataSource {
+extension VideoConversationViewController : SwipeViewDataSource {
     func numberOfItemsInSwipeView(swipeView: SwipeView!) -> Int {
         return 2
     }
@@ -215,7 +215,7 @@ extension ConversationViewController : SwipeViewDataSource {
     }
 }
 
-extension ConversationViewController : SwipeViewDelegate {
+extension VideoConversationViewController : SwipeViewDelegate {
     func swipeViewCurrentItemIndexDidChange(swipeView: SwipeView!) {
         if swipeView.currentItemIndex == Page.ChatHistory.rawValue {
             Analytics.track("Conversation: ViewChatHistory")
@@ -227,7 +227,7 @@ extension ConversationViewController : SwipeViewDelegate {
 
 // MARK: - Producer Delegate
 
-extension ConversationViewController : ProducerDelegate {
+extension VideoConversationViewController : ProducerDelegate {
     func producerWillStartRecording(producer: ProducerViewController) {
         Analytics.track("Message: Start", ["ConversationName": vm.displayName.value])
         vm.recording.value = true
@@ -252,7 +252,7 @@ extension ConversationViewController : ProducerDelegate {
     }
 }
 
-extension ConversationViewController : ReceiveViewControllerDelegate {
+extension VideoConversationViewController : ReceiveViewControllerDelegate {
     func didFinishPlaylist(receiveVC: ReceiveViewController) {
         hideReceiver()
     }

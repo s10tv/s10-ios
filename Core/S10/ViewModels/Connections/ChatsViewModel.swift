@@ -26,8 +26,8 @@ public struct ChatsViewModel {
             .results { ContactConnectionViewModel(connection: $0 as! Connection) }
     }
     
-    public func conversationVM(index: Int) -> ConversationViewModel {
+    public func conversationVM(index: Int) -> VideoConversationViewModel {
         let connection = connections[index].connection
-        return ConversationViewModel(meteor: meteor, taskService: taskService, conversation: .Connection(connection))
+        return VideoConversationViewModel(meteor: meteor, taskService: taskService, conversation: .Connection(connection))
     }
 }

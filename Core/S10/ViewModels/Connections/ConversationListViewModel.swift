@@ -28,8 +28,8 @@ public class ConversationListViewModel: NSObject {
         return nil
     }
     
-    public func conversationVM(conversation: LYRConversation) -> LayerConversationViewModel {
-        return LayerConversationViewModel(meteor: meteor, taskService: taskService, conversation: conversation)
+    public func conversationVM(conversation: LYRConversation) -> ConversationViewModel {
+        return ConversationViewModel(meteor: meteor, taskService: taskService, conversation: conversation)
     }
     
 }

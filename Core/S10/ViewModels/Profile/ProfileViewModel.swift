@@ -70,7 +70,8 @@ public struct ProfileViewModel {
     }
     
     public func conversationVM() -> ConversationViewModel {
-        return ConversationViewModel(meteor: meteor, taskService: taskService, conversation: .User(user))
+        fatalError()
+//        return ConversationViewModel(meteor: meteor, taskService: taskService, conversation: <#T##LYRConversation#>)
     }
 }
 
