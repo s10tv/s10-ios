@@ -84,7 +84,6 @@
                     <connections>
                         <segue destination="lnc-Fm-oTi" kind="relationship" relationship="viewControllers" id="doz-Fa-bbU"/>
                         <segue destination="5Q6-Kt-6sh" kind="relationship" relationship="viewControllers" id="siY-pH-qKt"/>
-                        <segue destination="GSL-sK-91w" kind="relationship" relationship="viewControllers" id="UNI-B6-dNU"/>
                         <segue destination="it8-ve-Pp7" kind="relationship" relationship="viewControllers" id="C9S-hA-49T"/>
                     </connections>
                 </tabBarController>
@@ -481,10 +480,10 @@
         <scene sceneID="tpj-Zk-eLW">
             <objects>
                 <tableViewController id="it8-ve-Pp7" customClass="ConversationListViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="gXD-1s-gGA">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="gXD-1s-gGA">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.94886761903762817" green="0.94878417253494263" blue="0.9652295708656311" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="YZG-rP-d88">
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>

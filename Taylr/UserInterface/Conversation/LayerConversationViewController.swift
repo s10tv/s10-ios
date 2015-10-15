@@ -19,6 +19,8 @@ class LayerConversationViewController : ATLConversationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         dataSource = vm
+        
+        view.backgroundColor = UIColor(hex: 0xF2F2F6)
     }
 }
 
