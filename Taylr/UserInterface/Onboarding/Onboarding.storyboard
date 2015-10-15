@@ -143,8 +143,8 @@
                         <outlet property="tutorialImageView" destination="gtg-GD-hG9" id="MJ8-kA-0wV"/>
                         <outlet property="tutorialTitle" destination="Xja-ES-dSS" id="Qg2-Xa-ZYZ"/>
                         <segue destination="L2P-Fc-Zcm" kind="show" identifier="LoginToRegisterEmail" id="dft-KV-aae"/>
-                        <segue destination="4LR-tW-qvj" kind="custom" identifier="Main_RootTab" customClass="LinkedStoryboardPresentSegue" id="BEQ-vP-9mV"/>
                         <segue destination="UL1-t5-ar3" kind="show" identifier="TutorialToConnectServices" id="hVL-vj-Vvb"/>
+                        <segue destination="9ds-iQ-tCL" kind="custom" identifier="Main_RootTab" customClass="WindowRootSegue" id="quy-R4-4Qh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GzM-Al-kXL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -300,14 +300,14 @@
                     <connections>
                         <outlet property="loginButton" destination="isY-Ks-GfE" id="zst-37-Oho"/>
                         <outlet property="logoutButton" destination="xVd-2q-11O" id="uyB-oZ-w27"/>
-                        <segue destination="4LR-tW-qvj" kind="custom" identifier="Main_RootTab" customClass="LinkedStoryboardPushSegue" id="ztg-XZ-LWS"/>
                         <segue destination="L2P-Fc-Zcm" kind="show" identifier="LoginToRegisterEmail" id="LER-0P-1dS"/>
                         <segue destination="UL1-t5-ar3" kind="show" identifier="LoginToConnectServices" id="yuv-L5-5XE"/>
+                        <segue destination="9ds-iQ-tCL" kind="custom" identifier="Main_RootTab" customClass="WindowRootSegue" id="FwQ-uv-BIe"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lbl-0u-moe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1144.5" y="337.5"/>
+            <point key="canvasLocation" x="-1188.5" y="323.5"/>
         </scene>
         <!--Me-->
         <scene sceneID="ibH-i1-6qO">
@@ -688,6 +688,7 @@
                         <outlet property="majorField" destination="XtO-Cr-KKm" id="Mcn-r5-dM9"/>
                         <outlet property="yearField" destination="gzH-TT-F0l" id="hqz-bp-UNT"/>
                         <segue destination="XGl-ew-SrN" kind="show" identifier="CreateProfiletoHashtag" id="jKk-Oa-kfZ"/>
+                        <segue destination="9ds-iQ-tCL" kind="custom" identifier="Main_RootTab" customClass="WindowRootSegue" id="ggy-sK-0ev"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v97-2k-B6C" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -703,24 +704,6 @@
                 </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1086.5" y="337.5"/>
-        </scene>
-        <!--Main - Discover-->
-        <scene sceneID="ucd-nb-Qyk">
-            <objects>
-                <viewController id="4LR-tW-qvj" userLabel="Main - Discover" sceneMemberID="viewController">
-                    <label key="view" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Main - RootTab" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tEe-SV-0hk">
-                        <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="250" height="250"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dOh-La-D4o" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="225" y="-684"/>
         </scene>
         <!--Connect Services-->
         <scene sceneID="VBO-uB-dxI">
@@ -829,6 +812,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KZS-aq-ICv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="520.5" y="337.5"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="7NB-Ji-u8f">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="9ds-iQ-tCL" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="G88-Lc-HYF" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-488" y="-545"/>
         </scene>
         <!--VerifyCode-->
         <scene sceneID="ird-U3-ocg">
@@ -955,8 +946,8 @@
         <image name="sample-photo" width="1242" height="660"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Var-ru-86N"/>
+        <segue reference="quy-R4-4Qh"/>
         <segue reference="LER-0P-1dS"/>
-        <segue reference="ztg-XZ-LWS"/>
+        <segue reference="yuv-L5-5XE"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -18,6 +18,17 @@ extension UIStoryboardSegue {
 // Specify objc class to work around Xcode's bug where dragging and dropping custom segue
 // in swift modules does not store module name in IB by default and causes crash at runtime
 
+@objc(WindowRootSegue)
+public class WindowRootSegue : UIStoryboardSegue {
+    public override func perform() {
+        if let w = UIApplication.sharedApplication().delegate?.window, let window = w {
+            UIView.transitionWithView(window, duration: 1, options: [.TransitionFlipFromRight], animations: {
+                window.rootViewController = self.destVC
+            }, completion: nil)
+        }
+    }
+}
+
 
 @objc(AdvancedPushSegue)
 public class AdvancedPushSegue : UIStoryboardSegue {
@@ -33,7 +44,7 @@ public class AdvancedPushSegue : UIStoryboardSegue {
             case .None:
                 navVC.pushViewController(destVC, animated: animated)
             case .Last:
-                // TODO: Find better pattern for replace last element of an array
+                // Find better pattern for replace last element of an array?
                 var vcs = navVC.viewControllers
                 vcs.removeLast()
                 vcs.append(destVC)
@@ -47,26 +58,6 @@ public class AdvancedPushSegue : UIStoryboardSegue {
     }
 }
 
-@objc(LinkedStoryboardPushSegue)
-public class LinkedStoryboardPushSegue : AdvancedPushSegue {
-    override init(identifier: String?, source: UIViewController, destination: UIViewController) {
-        super.init(identifier: identifier, source: source, destination: loadSceneNamed(identifier!))
-    }
-}
-
-@objc(LinkedStoryboardPresentSegue)
-public class LinkedStoryboardPresentSegue : UIStoryboardSegue {
-    public var animated = true
-    
-    override init(identifier: String?, source: UIViewController, destination: UIViewController) {
-        super.init(identifier: identifier, source: source, destination: loadSceneNamed(identifier!))
-    }
-
-    public override func perform() {
-        sourceVC.presentViewController(destVC, animated: animated, completion: nil)
-    }
-}
-
 @objc(UnwindPopSegue)
 public class UnwindPopSegue : UIStoryboardSegue {
     public var animated = false
@@ -74,34 +65,6 @@ public class UnwindPopSegue : UIStoryboardSegue {
     public override func perform() {
         if let navVC = navVC {
             navVC.popToViewController(destVC, animated: animated)
-        }
-    }
-}
-
-// Loading ViewController instance from storyboard with format ${StoryboardName}_${ViewControllerIdentifier}
-private func loadSceneNamed(fullIdentifier: String) -> UIViewController {
-    // TODO: Find better pattern for this ugly code
-    let comps = fullIdentifier.componentsSeparatedByString("_")
-    let storyboard = UIStoryboard(name: comps[0], bundle: nil)
-    let vcIdentifier = comps.count > 1 ? comps[1] : ""
-    if vcIdentifier.length > 0 {
-        return storyboard.instantiateViewControllerWithIdentifier(vcIdentifier)
-    }
-    return storyboard.instantiateInitialViewController()!
-}
-
-// TODO: Remove this class after we investigate CoreAnimation calls inside perform
-class PushFromLeftSegue : UIStoryboardSegue {
-    
-    override func perform() {
-        if let navVC = self.sourceViewController.navigationController {
-            let transition = CATransition()
-            transition.duration = 0.25
-            transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-            transition.type = kCATransitionPush
-            transition.subtype = kCATransitionFromLeft
-            navVC.view.layer.addAnimation(transition, forKey: kCATransition)
-            navVC.pushViewController(destinationViewController, animated: false)
         }
     }
 }

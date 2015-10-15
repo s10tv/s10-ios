@@ -62,11 +62,6 @@ class LoginViewController : BaseViewController, TutorialViewController {
         return .LightContent
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let segue = segue as? LinkedStoryboardPushSegue where segue.matches(.Main_RootTab) {
-            segue.replaceStrategy = .Stack
-        }
-    }
     
     // MARK: Actions
     
