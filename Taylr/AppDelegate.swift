@@ -15,6 +15,7 @@ import DigitsKit
 import Crashlytics
 import Ouralabs
 import RealmSwift
+import LayerKit
 import Core
 
 // Globally accessible variables and shorthands
@@ -34,15 +35,16 @@ let DidTouchStatusBar = "DidTouchStatusBar"
 class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */ {
 
     var window: UIWindow?
+    var layerClient: LYRClient!
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        Fabric.with([Digits(), Crashlytics()])
+        
         // Configure the environment
         let env = TaylrEnvironment.configureFromEmbeddedProvisioningProfile()
         // Initialize Ouralabs before Crashlytics so crashlytics handler
         // so Crashlytics handler does not get overwritten
         Ouralabs.initWithKey(env.ouralabsKey)
-        Fabric.with([Digits(), Crashlytics()])
-        
         Log.callback = { msg, level in
             Ouralabs.log(.Info, tag: "Test", message: msg, kvp: nil)
         }
@@ -62,19 +64,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
             }
         )
         
+        
         // Setup global services
         let meteor = MeteorService(serverURL: env.serverURL)
         // WARMING: Startup meteor before initializing accountService
         // so that account.state is initially correct
         meteor.startup()
+
         
         _GlobalsContainer.instance = GlobalsContainer(env: env,
             meteorService: meteor,
             accountService: AccountService(meteorService: meteor),
             analyticsService: AnalyticsService(env: env, currentUser: meteor.currentUser),
             upgradeService: UpgradeService(env: env, currentUser: meteor.currentUser),
-            taskService: TaskService(meteorService: meteor)
+            taskService: TaskService(meteorService: meteor),
+            layerService: LayerService(layerAppID: env.layerURL, meteor: meteor)
         )
+        
+        layerClient = Globals.layerService.layerClient
+        Globals.layerService.connectAndKeepUserInSync()
 
         // Startup the services
         SugarRecordLogger.currentLevel = SugarRecordLogger.logLevelError

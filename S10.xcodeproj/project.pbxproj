@@ -177,6 +177,7 @@
 		EAB31D4E1BCC718B0080DA47 /* UXCam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB31D4D1BCC718B0080DA47 /* UXCam.framework */; settings = {ASSET_TAGS = (); }; };
 		EAB31D4F1BCC72330080DA47 /* UXCam.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAB31D4D1BCC718B0080DA47 /* UXCam.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EAB31D511BCF50E40080DA47 /* LayerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB31D501BCF50E40080DA47 /* LayerExtensions.swift */; settings = {ASSET_TAGS = (); }; };
+		EAB31D531BCF5FDC0080DA47 /* LayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB31D521BCF5FDC0080DA47 /* LayerService.swift */; settings = {ASSET_TAGS = (); }; };
 		EABA05461B474FED00154C75 /* test-avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EABA05451B474FED00154C75 /* test-avatar.jpg */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
 		EAC1BECA1BC70CB200864B8C /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC1BEC51BC70CB200864B8C /* ChatsViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -412,6 +413,7 @@
 		EAAD921C1ACF342C0014BA25 /* TaylrEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaylrEnvironment.swift; sourceTree = "<group>"; };
 		EAB31D4D1BCC718B0080DA47 /* UXCam.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UXCam.framework; sourceTree = SOURCE_ROOT; };
 		EAB31D501BCF50E40080DA47 /* LayerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerExtensions.swift; sourceTree = "<group>"; };
+		EAB31D521BCF5FDC0080DA47 /* LayerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerService.swift; sourceTree = "<group>"; };
 		EABA05431B474EC900154C75 /* PhotoUploadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoUploadOperation.swift; sourceTree = "<group>"; };
 		EABA05451B474FED00154C75 /* test-avatar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "test-avatar.jpg"; sourceTree = "<group>"; };
 		EABD43D81AA1D28700B07813 /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
@@ -804,6 +806,7 @@
 				EA6650EB1AA00A9C001BA40C /* AccountService.swift */,
 				EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */,
 				EA49286D1ADF291100118639 /* UpgradeService.swift */,
+				EAB31D521BCF5FDC0080DA47 /* LayerService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -1862,6 +1865,7 @@
 				EAA5760E1BB7E29900661A4F /* RootTabController.swift in Sources */,
 				EAA5761F1BB8423200661A4F /* DiscoverViewController.swift in Sources */,
 				EAA576331BB8604900661A4F /* EditProfileViewController.swift in Sources */,
+				EAB31D531BCF5FDC0080DA47 /* LayerService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

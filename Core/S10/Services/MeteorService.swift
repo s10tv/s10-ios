@@ -47,6 +47,17 @@ public class MeteorService : NSObject {
         meteor.account = METAccount.defaultAccount()
         meteor.connect()
     }
+    
+    public func userIdProducer() -> SignalProducer<String?, NoError> {
+        return combineLatest(
+            account.producer, connectionStatus.producer, userId.producer
+        ).flatMap(.Latest) { account, status, userId in
+            if account != nil && status != .Connected {
+                return .empty
+            }
+            return SignalProducer(value: userId)
+        }.skipRepeats { $0 == $1 }
+    }
 
     // MARK: - Publications & Collections & RPC
 
@@ -252,6 +263,10 @@ public class MeteorService : NSObject {
     
     func finishTask(taskId: String) -> Future<(), NSError> {
         return meteor.call("finishTask", taskId)
+    }
+    
+    public func layerAuth(nonce: String) -> Future<String, NSError> {
+        return meteor.callMethod("layer/auth", params: [nonce]).future.map { $0 as! String }
     }
 }
 

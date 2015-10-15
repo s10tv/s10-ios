@@ -24,6 +24,10 @@ extension LYRClient {
 }
 
 extension LYRClient {
+    var isAuthenticated: Bool {
+        return authenticatedUserID != nil
+    }
+    
     func connect() -> SignalProducer<(), NSError> {
         return SignalProducer { sink, disposable in
             self.connectWithCompletion { success, error in
