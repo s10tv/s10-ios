@@ -92,9 +92,6 @@ class MeViewController : UITableViewController {
         if let vc = segue.destinationViewController as? EditProfileViewController {
             vc.vm = vm.editProfileVM()
         }
-        if let segue = segue as? LinkedStoryboardPushSegue where segue.matches(.Onboarding_Login) {
-            segue.replaceStrategy = .Stack
-        }
     }
     
     // MARK: -
@@ -119,7 +116,11 @@ class MeViewController : UITableViewController {
         }
         sheet.addAction(LS(.settingsLogoutTitle), style: .Destructive) { _ in
             Globals.accountService.logout()
-            self.performSegue(.Onboarding_Login, sender: self)
+            let vc = UIStoryboard(name: "Onboarding", bundle: nil).instantiateInitialViewController()!
+            let window = (UIApplication.sharedApplication().delegate?.window)!!
+            UIView.transitionWithView(window, duration: 1, options: [.TransitionFlipFromRight], animations: {
+                window.rootViewController = vc
+            }, completion: nil)
         }
         sheet.addAction(LS(.settingsLogoutCancel), style: .Cancel)
         presentViewController(sheet)

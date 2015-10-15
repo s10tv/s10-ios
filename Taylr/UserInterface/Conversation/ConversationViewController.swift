@@ -42,6 +42,14 @@ class ConversationViewController : ATLConversationViewController {
         backgroundImageView.sd_image <~ vm.cover
     }
     
+    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+        if navigationController?.lastViewController is ProfileViewController {
+            navigationController?.popViewControllerAnimated(true)
+            return false
+        }
+        return super.shouldPerformSegueWithIdentifier(identifier, sender: sender)
+    }
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ProfileViewController {
             vc.vm = vm.profileVM()

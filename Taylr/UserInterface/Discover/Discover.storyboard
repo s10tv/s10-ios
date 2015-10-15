@@ -22,6 +22,14 @@
         </mutableArray>
     </customFonts>
     <scenes>
+        <!--Profile-->
+        <scene sceneID="hWC-Pf-tt8">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="CpE-kQ-lIo" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tbj-sR-qSC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="697" y="1651"/>
+        </scene>
         <!--Discover-->
         <scene sceneID="D0v-oa-Pr2">
             <objects>
@@ -222,6 +230,9 @@
                                                             <real key="value" value="3"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <segue destination="VQ3-iu-aHv" kind="show" id="J0r-Nk-Mxh"/>
+                                                    </connections>
                                                 </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -264,6 +275,7 @@
                                             <outlet property="nameLabel" destination="cIF-Fi-myb" id="MJ4-ow-aka"/>
                                             <outlet property="reasonLabel" destination="hUf-UW-ulk" id="7mo-8Q-LZr"/>
                                             <outlet property="serviceIconsView" destination="bSe-jO-CZ4" id="zwy-3N-6hu"/>
+                                            <segue destination="CpE-kQ-lIo" kind="show" id="l4N-T1-Z1z"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -307,6 +319,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xBh-rn-nyS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="320" y="1215"/>
+        </scene>
+        <!--Conversation-->
+        <scene sceneID="FG6-eG-FOi">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Conversation" referencedIdentifier="Conversation" id="VQ3-iu-aHv" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eF3-2V-Kt9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="320" y="1698"/>
         </scene>
         <!--History-->
         <scene sceneID="Kda-ml-9ty">
@@ -471,6 +491,7 @@
                                             <outlet property="nameLabel" destination="hdD-cY-I1H" id="HDS-Ak-XWc"/>
                                             <outlet property="reasonLabel" destination="91G-VW-KIz" id="V1H-Bi-gQ3"/>
                                             <outlet property="serviceIconsView" destination="TeQ-dn-Zbt" id="jVT-Uk-RCb"/>
+                                            <segue destination="CpE-kQ-lIo" kind="show" id="7OZ-La-Xc6"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -510,4 +531,7 @@
         <image name="ic-video-small" width="25" height="14"/>
         <image name="sample-photo" width="1242" height="660"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="l4N-T1-Z1z"/>
+    </inferredMetricsTieBreakers>
 </document>

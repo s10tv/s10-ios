@@ -16,7 +16,7 @@
         <!--Chats-->
         <scene sceneID="8gE-i0-YdG">
             <objects>
-                <tableViewController id="IOB-fW-0oz" customClass="ConversationListViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ConversationList" id="IOB-fW-0oz" customClass="ConversationListViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="zkv-gd-NDB">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -52,10 +52,10 @@
             </objects>
             <point key="canvasLocation" x="1769" y="1957"/>
         </scene>
-        <!--Layer Conversation View Controller-->
+        <!--Conversation View Controller-->
         <scene sceneID="43o-EX-2RE">
             <objects>
-                <viewController id="jff-6V-IXE" customClass="LayerConversationViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Conversation" id="jff-6V-IXE" customClass="ConversationViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="lh4-em-nO7">
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" image="ic-back-arrow" id="bHP-VR-JP3">
@@ -131,9 +131,21 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pkP-sN-BdW" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="HBc-h4-yqZ"/>
+                <tapGestureRecognizer id="HBc-h4-yqZ" userLabel="Tap To View Profile">
+                    <connections>
+                        <segue destination="YOL-w6-TDH" kind="show" id="GQ7-2I-R5J"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="1769" y="2764"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="6zZ-zY-aab">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="YOL-w6-TDH" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VV8-Sf-QoN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2256" y="2764"/>
         </scene>
     </scenes>
     <resources>

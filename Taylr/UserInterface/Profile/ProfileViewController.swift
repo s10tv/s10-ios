@@ -71,16 +71,16 @@ class ProfileViewController : BaseViewController {
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-        if identifier == SegueIdentifier.ProfileToConversation.rawValue
-            && navigationController?.lastViewController is ConversationViewController {
-                navigationController?.popViewControllerAnimated(true)
-                return false
+        if navigationController?.lastViewController is ConversationViewController {
+            navigationController?.popViewControllerAnimated(true)
+            return false
         }
         return super.shouldPerformSegueWithIdentifier(identifier, sender: sender)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ConversationViewController {
+            vc.layerClient = MainContext.layer.layerClient
             vc.vm = vm.conversationVM()
             Analytics.track("Profile: TapMessage")
         }

@@ -127,25 +127,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rYw-uy-MTr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="729" y="2844"/>
-        </scene>
-        <!--Onboarding - Login-->
-        <scene sceneID="Ipd-xF-abq">
-            <objects>
-                <viewController id="Jc3-zF-HVX" userLabel="Onboarding - Login" sceneMemberID="viewController">
-                    <label key="view" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Onboarding - Login" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="YT1-gX-f9L">
-                        <rect key="frame" x="0.0" y="0.0" width="250" height="250"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="250" height="250"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Fcy-SK-oTv" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-793" y="2879"/>
+            <point key="canvasLocation" x="437" y="2196"/>
         </scene>
         <!--Edit Profile-->
         <scene sceneID="SJH-ED-rFO">
@@ -566,7 +548,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-273" y="3154"/>
+            <point key="canvasLocation" x="437" y="1356"/>
         </scene>
         <!--Me-->
         <scene sceneID="Q8l-pK-Aaz">
@@ -680,6 +662,9 @@
                                                             <real key="value" value="1"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
+                                                    <connections>
+                                                        <segue destination="t1A-ff-Lcc" kind="show" id="bXG-qY-mxs"/>
+                                                    </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPx-zG-Eyk">
                                                     <rect key="frame" x="353" y="85" width="231" height="30"/>
@@ -978,11 +963,14 @@
                         <outlet property="nameLabel" destination="vns-XO-Vtt" id="Ruo-Va-xds"/>
                         <outlet property="servicesCollectionView" destination="xfo-Ax-Q1n" id="JiG-3U-MyF"/>
                         <outlet property="versionLabel" destination="W2x-p0-Qgh" id="7ZE-gd-Daj"/>
-                        <segue destination="Jc3-zF-HVX" kind="custom" identifier="Onboarding_Login" customClass="LinkedStoryboardPushSegue" id="8Ag-2N-bzP"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aX7-4C-VNx" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="iF4-Mx-Ahb" userLabel="Tap to Show Profile"/>
+                <tapGestureRecognizer id="iF4-Mx-Ahb" userLabel="Tap to Show Profile">
+                    <connections>
+                        <segue destination="t1A-ff-Lcc" kind="show" id="hfn-jz-cIv"/>
+                    </connections>
+                </tapGestureRecognizer>
                 <tapGestureRecognizer id="ncM-Lr-Hnc" userLabel="Tag to Edit Hashtags">
                     <connections>
                         <segue destination="mcp-Sh-vTg" kind="show" id="o04-G6-GqF"/>
@@ -1087,15 +1075,15 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J0W-1f-wJ5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-960" y="3204"/>
+            <point key="canvasLocation" x="1112" y="1356"/>
         </scene>
-        <!--Me-->
-        <scene sceneID="CJi-wJ-9zy">
+        <!--Profile-->
+        <scene sceneID="DbF-1X-XX4">
             <objects>
-                <viewControllerPlaceholder storyboardName="Me" id="xud-M7-Ldr" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="T48-xa-zeg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Profile" id="t1A-ff-Lcc" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NoV-ro-0cQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-806" y="2097"/>
+            <point key="canvasLocation" x="-273" y="2391"/>
         </scene>
         <!--Invite View Controller-->
         <scene sceneID="QGi-q1-K0T">
@@ -1215,7 +1203,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="H8f-oK-atd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-960" y="2445.5"/>
+            <point key="canvasLocation" x="-1026" y="1695"/>
         </scene>
         <!--Integration Web View Controller-->
         <scene sceneID="fzy-6N-sue">
@@ -1270,7 +1258,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="unb-e3-TWr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1642" y="3244"/>
+            <point key="canvasLocation" x="1774" y="1356"/>
         </scene>
     </scenes>
     <resources>
@@ -1283,4 +1271,7 @@
         <image name="ic-video" width="42" height="26"/>
         <image name="sample-photo" width="1242" height="660"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="hfn-jz-cIv"/>
+    </inferredMetricsTieBreakers>
 </document>
