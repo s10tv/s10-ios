@@ -176,6 +176,7 @@
 		EAA5763D1BB86A5000661A4F /* UITableViewBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA5763A1BB86A5000661A4F /* UITableViewBinding.swift */; settings = {ASSET_TAGS = (); }; };
 		EAB31D4E1BCC718B0080DA47 /* UXCam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB31D4D1BCC718B0080DA47 /* UXCam.framework */; settings = {ASSET_TAGS = (); }; };
 		EAB31D4F1BCC72330080DA47 /* UXCam.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAB31D4D1BCC718B0080DA47 /* UXCam.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		EAB31D511BCF50E40080DA47 /* LayerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB31D501BCF50E40080DA47 /* LayerExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		EABA05461B474FED00154C75 /* test-avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EABA05451B474FED00154C75 /* test-avatar.jpg */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
 		EAC1BECA1BC70CB200864B8C /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC1BEC51BC70CB200864B8C /* ChatsViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -410,6 +411,7 @@
 		EAA8D6C21B62F2A400D5A6DC /* IntegrationWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationWebViewController.swift; sourceTree = "<group>"; };
 		EAAD921C1ACF342C0014BA25 /* TaylrEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaylrEnvironment.swift; sourceTree = "<group>"; };
 		EAB31D4D1BCC718B0080DA47 /* UXCam.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UXCam.framework; sourceTree = SOURCE_ROOT; };
+		EAB31D501BCF50E40080DA47 /* LayerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerExtensions.swift; sourceTree = "<group>"; };
 		EABA05431B474EC900154C75 /* PhotoUploadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoUploadOperation.swift; sourceTree = "<group>"; };
 		EABA05451B474FED00154C75 /* test-avatar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "test-avatar.jpg"; sourceTree = "<group>"; };
 		EABD43D81AA1D28700B07813 /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
@@ -846,6 +848,7 @@
 				EA95BBAC1B3930B000701F08 /* ResourceExtension.swift */,
 				EA7134111B56E47100B810F6 /* ImagePickerExtensions.swift */,
 				EA95BBA91B3930B000701F08 /* ThirdPartyBindings.swift */,
+				EAB31D501BCF50E40080DA47 /* LayerExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1842,6 +1845,7 @@
 				EAC1BEE21BC70E0E00864B8C /* ConversationViewController.swift in Sources */,
 				EA42D65B1BB7C66600B07526 /* MediaExtension.swift in Sources */,
 				EA42D65F1BB7C67900B07526 /* DesignableViews.swift in Sources */,
+				EAB31D511BCF50E40080DA47 /* LayerExtensions.swift in Sources */,
 				EAE637C51BC84BBE00A958A8 /* ReceiveViewController.swift in Sources */,
 				EAA576171BB7E5B600661A4F /* LoginViewController.swift in Sources */,
 				EAC1BEF11BC70EC900864B8C /* VolumeView.swift in Sources */,

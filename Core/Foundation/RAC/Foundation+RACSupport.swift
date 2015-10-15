@@ -25,3 +25,13 @@ extension NSObject {
             .map { _ in }.flatMapError { _ in .empty }
     }
 }
+
+/// Puts a `Next` event into the given sink.
+public func sendNextAndCompleted<T, E: ErrorType>(sink: Event<T, E>.Sink, _ value: T) {
+    sendNext(sink, value)
+    sendCompleted(sink)
+}
+
+public final class NoValue {
+    private init() {}
+}
