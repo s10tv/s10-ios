@@ -23,23 +23,12 @@ class ConversationViewController : ATLConversationViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        dataSource = vm
-        
-        let backgroundImageView = UIImageView()
-        backgroundImageView.contentMode = .ScaleAspectFill
-        backgroundImageView.clipsToBounds = true
-        view.insertSubview(backgroundImageView, atIndex: 0)
-        backgroundImageView.makeEdgesEqualTo(view)
-
-        let backgroundMask = UIView()
-        backgroundMask.backgroundColor = UIColor(white: 0, alpha: 0.2)
-        view.insertSubview(backgroundMask, aboveSubview: backgroundImageView)
-        backgroundMask.makeEdgesEqualTo(backgroundImageView)
+        view.backgroundColor = UIColor(hex: 0xF2F2F6)
         
         avatarView.sd_image <~ vm.avatar
         titleLabel.rac_text <~ vm.displayName
         statusLabel.rac_text <~ vm.displayStatus
-        backgroundImageView.sd_image <~ vm.cover
+        dataSource = vm
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {

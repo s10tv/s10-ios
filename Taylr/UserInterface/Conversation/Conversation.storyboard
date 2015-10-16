@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XoX-F3-NlU" id="D3f-hh-8HR">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -50,7 +50,7 @@
         <!--Conversation View Controller-->
         <scene sceneID="43o-EX-2RE">
             <objects>
-                <viewController storyboardIdentifier="Conversation" id="jff-6V-IXE" customClass="ConversationViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Conversation" hidesBottomBarWhenPushed="YES" id="jff-6V-IXE" customClass="ConversationViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="lh4-em-nO7">
                         <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" image="ic-back-arrow" id="bHP-VR-JP3">
