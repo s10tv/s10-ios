@@ -7,14 +7,34 @@
 //
 
 import Foundation
+import ReactiveCocoa
+import Meteor
 import LayerKit
 
 public class ConversationListViewModel: NSObject {
     
     let ctx: Context
+    let chatsSub: MeteorSubscription
+    let users: MeteorCollection
+    public let changedConversations: Signal<LYRConversation, NoError>
     
     public init(_ ctx: Context) {
         self.ctx = ctx
+        chatsSub = ctx.meteor.subscribe("chats")
+        users = ctx.meteor.collection("users")
+        
+        let (signal, sink) = Signal<LYRConversation, NoError>.pipe()
+        changedConversations = signal.observeOn(UIScheduler())
+        users.databaseChanges.observeNext { changes in
+            changes.enumerateDocumentChangeDetailsUsingBlock { details, _ in
+                if details.documentKey.collectionName == "users" {
+                    let userId = details.documentKey.documentID as! String
+                    ctx.layer.findConversationsWithUserId(userId).each {
+                        sendNext(sink, $0)
+                    }
+                }
+            }
+        }
     }
     
     public func recipientForConversation(conversation: LYRConversation) -> UserViewModel? {

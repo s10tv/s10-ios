@@ -29,6 +29,10 @@ class ConversationListViewController : ATLConversationListViewController {
         layerClient = MainContext.layer.layerClient
         dataSource = vm
         delegate = self
+        
+        vm.changedConversations.observeNext { [weak self] in
+            self?.reloadCellForConversation($0)
+        }
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -61,7 +65,7 @@ extension ConversationListViewController : ATLConversationListViewControllerDele
 
 extension ConversationListViewModel : ATLConversationListViewControllerDataSource {
     public func conversationListViewController(conversationListViewController: ATLConversationListViewController!, titleForConversation conversation: LYRConversation!) -> String!  {
-        return recipientForConversation(conversation).map { $0.displayName } ?? "..."
+        return recipientForConversation(conversation).map { $0.displayName } ?? "Loading..."
     }
     
     public func conversationListViewController(conversationListViewController: ATLConversationListViewController!, avatarItemForConversation conversation: LYRConversation!) -> ATLAvatarItem! {

@@ -43,6 +43,16 @@ public class LayerService: NSObject {
         }))
     }
     
+    func findConversationsWithUserId(userId: String) -> [LYRConversation] {
+        do {
+            let query = LYRQuery(queryableClass: LYRConversation.self)
+            query.predicate = LYRPredicate(property: "participants", predicateOperator: .IsIn, value: userId)
+            return try layerClient.executeQuery(query).map { $0 as! LYRConversation }
+        } catch {
+            return []
+        }
+    }
+    
     func conversationWithUser(user: User) -> LYRConversation {
         do {
             return try layerClient.newConversationWithParticipants(Set([user.documentID!]), options: [LYRConversationOptionsDistinctByParticipantsKey: true])
