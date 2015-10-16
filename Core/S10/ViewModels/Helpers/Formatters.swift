@@ -22,6 +22,9 @@ internal func relativeTime(date: NSDate?) -> PropertyOf<String> {
     }
 }
 
+let CabinRegular11 = UIFont(name: "Cabin-Regular", size: 11)!
+let CabinBold11 = UIFont(name: "Cabin-Bold", size: 11)!
+
 public struct Formatters {
     private static let height : NSLengthFormatter = {
         let formatter = NSLengthFormatter()
@@ -204,9 +207,9 @@ public struct Formatters {
         let attrString = NSMutableAttributedString(string: dateTimeString)
         attrString.addAttributes([
             NSForegroundColorAttributeName: UIColor.grayColor(),
-            NSFontAttributeName: UIFont.systemFontOfSize(11)
+            NSFontAttributeName: CabinRegular11
         ], range: NSMakeRange(0, dateTimeString.length))
-        attrString.addAttribute(NSFontAttributeName, value: UIFont.boldSystemFontOfSize(11),
+        attrString.addAttribute(NSFontAttributeName, value: CabinBold11,
             range: NSMakeRange(0, dateString.length))
         return attrString
     }
@@ -250,7 +253,7 @@ public struct Formatters {
             statusString = Array(statuses.values).first?.description ?? ""
         }
         return NSAttributedString(string: statusString, attributes: [
-            NSFontAttributeName: UIFont.boldSystemFontOfSize(11)
+            NSFontAttributeName: CabinBold11
         ])
     }
 }

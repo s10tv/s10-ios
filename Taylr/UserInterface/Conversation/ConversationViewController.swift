@@ -24,6 +24,7 @@ class ConversationViewController : ATLConversationViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 //        view.backgroundColor = UIColor(hex: 0xF2F2F6)
+        messageInputToolbar.textInputView.font = UIFont(.cabinRegular, size: 17)
         
         avatarView.sd_image <~ vm.avatar
         titleLabel.rac_text <~ vm.displayName
