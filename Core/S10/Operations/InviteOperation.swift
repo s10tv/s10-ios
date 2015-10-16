@@ -76,7 +76,7 @@ internal class InviteOperation : AsyncOperation {
                 // TODO: Make me offline capable
                 let realm = unsafeNewRealm()
                 if let task = InviteTask.findByTaskId(self.taskId, realm: realm) {
-                    realm.write {
+                    _ = try? realm.write {
                         realm.delete(task)
                     }
                     _ = try? NSFileManager().removeItemAtURL(self.localVideoURL)

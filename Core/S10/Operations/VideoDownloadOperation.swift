@@ -51,7 +51,7 @@ internal class VideoDownloadOperation : AsyncOperation {
                 _ = try? NSFileManager().removeItemAtURL(self.tempURL)
                 let realm = unsafeNewRealm()
                 if let task = VideoDownloadTask.findByVideoId(self.videoId, realm: realm) {
-                    realm.write {
+                    _ = try? realm.write {
                         switch result {
                         case .Success:
                             realm.delete(task)

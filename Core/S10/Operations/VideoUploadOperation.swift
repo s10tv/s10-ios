@@ -72,7 +72,7 @@ internal class VideoUploadOperation : AsyncOperation {
             }.onSuccess {
                 let realm = unsafeNewRealm()
                 if let task = VideoUploadTask.findByTaskId(self.taskId, realm: realm) {
-                    realm.write {
+                    _ = try? realm.write {
                         realm.delete(task)
                     }
                     _ = try? NSFileManager().removeItemAtURL(self.localURL)

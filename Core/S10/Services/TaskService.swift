@@ -34,7 +34,7 @@ public class TaskService {
     
     func uploadVideo(recipient: ConversationId, localVideo: Video) {
         let realm = unsafeNewRealm()
-        realm.write {
+        _ = try? realm.write {
             let task = VideoUploadTask()
             task.taskId = NSUUID().UUIDString
             switch recipient {
@@ -92,7 +92,7 @@ public class TaskService {
                 return
             }
             let realm = unsafeNewRealm()
-            realm.write {
+            _ = try? realm.write {
                 let task = VideoDownloadTask()
                 task.videoId = videoId
                 task.senderId = senderId
@@ -126,7 +126,7 @@ public class TaskService {
     public func invite(emailOrPhone: String, localVideoURL: NSURL, thumbnail: UIImage, firstName: String?, lastName: String?) -> Future<(), NSError> {
         let promise = Promise<(), NSError>()
         let realm = unsafeNewRealm()
-        realm.write {
+        _ = try? realm.write {
             let task = InviteTask()
             task.taskId = NSUUID().UUIDString
             print("Will start invite task with id \(task.taskId)")
