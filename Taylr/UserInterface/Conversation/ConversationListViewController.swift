@@ -16,8 +16,11 @@ class ConversationListViewController : ATLConversationListViewController {
     let vm = ConversationListViewModel(MainContext)
     
     override func viewDidLoad() {
+        displaysAvatarItem = true
+        shouldDisplaySearchController = false
+        allowsEditing = false
         super.viewDidLoad()
-        // TODO: Order in which we set this is important because setting 
+        // TODO: Order in which we set this is important because setting
         // self.title also changes navigationItem.title
         title = nil
         navigationItem.title = "Connections"
@@ -25,7 +28,6 @@ class ConversationListViewController : ATLConversationListViewController {
         layerClient = MainContext.layer.layerClient
         dataSource = vm
         delegate = self
-        displaysAvatarItem = true
     }
     
     override func viewWillAppear(animated: Bool) {
