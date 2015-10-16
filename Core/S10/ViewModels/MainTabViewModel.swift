@@ -12,15 +12,18 @@ import ReactiveCocoa
 
 public struct MainTabViewModel {
     let ctx: Context
-    let unreadConversations: FetchedResultsArray<Connection>
+    let prefetchedSubscriptions: [MeteorSubscription]
     
     public let chatsBadge: PropertyOf<String?>
     
     public init(_ ctx: Context) {
         self.ctx = ctx
-        unreadConversations = Connection
-            .by(NSPredicate(format: "%K > 0", ConnectionKeys.unreadCount.rawValue))
-            .results { $0 as! Connection }
+        prefetchedSubscriptions = [
+            ctx.meteor.subscribe("me"),
+            ctx.meteor.subscribe("candidate-discover"),
+            ctx.meteor.subscribe("my-hashtags"),
+            ctx.meteor.subscribe("chats"),
+        ]
         chatsBadge = ctx.layer.unreadCount.map { $0 > 0 ? "\($0)" : nil }
     }
 }
