@@ -21,6 +21,6 @@ public struct MainTabViewModel {
         unreadConversations = Connection
             .by(NSPredicate(format: "%K > 0", ConnectionKeys.unreadCount.rawValue))
             .results { $0 as! Connection }
-        chatsBadge = unreadConversations.count.map { $0 > 0 ? "\($0)" : nil }
+        chatsBadge = ctx.layer.unreadCount.map { $0 > 0 ? "\($0)" : nil }
     }
 }

@@ -29,6 +29,7 @@ class MainTabController : UITabBarController {
                 self.performSegue(.Onboarding_Login)
             }
         vm.chatsBadge.producer.startWithNext { [weak self] badge in
+            Log.info("Will set badge to \(badge)")
             if let item = self?.tabBar.items?[2] {
                 item.badgeValue = badge
             }

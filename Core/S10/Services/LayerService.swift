@@ -10,14 +10,23 @@ import Foundation
 import ReactiveCocoa
 import LayerKit
 
-public class LayerService {
+public class LayerService: NSObject {
     
     let meteor: MeteorService
+    let unreadCount = MutableProperty(UInt(0))
+    let unreadQueryController: LYRQueryController
     public let layerClient: LYRClient
     
     public init(layerAppID: NSURL, meteor: MeteorService) {
         self.meteor = meteor
         layerClient = LYRClient(appID: layerAppID)
+        let query = LYRQuery(queryableClass: LYRConversation.self)
+        query.predicate = LYRPredicate(property: "hasUnreadMessages", predicateOperator: .IsEqualTo, value: true)
+        unreadQueryController = (try? layerClient.queryControllerWithQuery(query, error: ()))!
+        super.init()
+        unreadQueryController.delegate = self
+        _ = try? unreadQueryController.execute()
+        unreadCount.value = unreadQueryController.count()
     }
     
     // TODO: Careful this method if not disposed will retain self
@@ -70,5 +79,11 @@ public class LayerService {
             return SignalProducer(value: ())
         }
         return layerClient.deauthenticate()
+    }
+}
+
+extension LayerService : LYRQueryControllerDelegate {
+    public func queryControllerDidChangeContent(queryController: LYRQueryController!) {
+        unreadCount.value = queryController.count()
     }
 }
