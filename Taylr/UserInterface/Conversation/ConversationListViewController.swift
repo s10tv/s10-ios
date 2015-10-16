@@ -17,8 +17,11 @@ class ConversationListViewController : ATLConversationListViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Connections"
-        tabBarItem.title = nil
+        // TODO: Order in which we set this is important because setting 
+        // self.title also changes navigationItem.title
+        title = nil
+        navigationItem.title = "Connections"
+        
         layerClient = MainContext.layer.layerClient
         dataSource = vm
         delegate = self

@@ -13,10 +13,10 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Chats-->
+        <!--Connections-->
         <scene sceneID="8gE-i0-YdG">
             <objects>
-                <tableViewController storyboardIdentifier="ConversationList" id="IOB-fW-0oz" customClass="ConversationListViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ConversationList" title="Connections" id="IOB-fW-0oz" customClass="ConversationListViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="zkv-gd-NDB">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -26,7 +26,7 @@
                                 <rect key="frame" x="0.0" y="28" width="600" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="XoX-F3-NlU" id="D3f-hh-8HR">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                             </tableViewCell>
@@ -36,12 +36,7 @@
                             <outlet property="delegate" destination="IOB-fW-0oz" id="d5u-7V-CJ2"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="" image="ic-chats" id="CS2-Rc-rKS">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
-                    </tabBarItem>
-                    <navigationItem key="navigationItem" title="Chats" id="ako-zB-edL">
-                        <barButtonItem key="backBarButtonItem" title=" " id="9MX-ox-F9n"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Connections" id="ako-zB-edL"/>
                     <connections>
                         <segue destination="jff-6V-IXE" kind="show" identifier="ConversationListToConversation" id="AAn-44-glI">
                             <nil key="action"/>
@@ -151,7 +146,6 @@
     <resources>
         <image name="empty-profile-pic" width="100" height="100"/>
         <image name="ic-back-arrow" width="12" height="21"/>
-        <image name="ic-chats" width="27" height="24"/>
         <image name="ic-more" width="29" height="7"/>
     </resources>
 </document>

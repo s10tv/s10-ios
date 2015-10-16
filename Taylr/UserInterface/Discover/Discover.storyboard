@@ -298,9 +298,6 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="ic-compass" id="MCw-3D-ZDF">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
-                    </tabBarItem>
                     <navigationItem key="navigationItem" title="Today" id="3L8-W2-cPd">
                         <barButtonItem key="rightBarButtonItem" title="History" id="Ise-J1-vaq">
                             <connections>

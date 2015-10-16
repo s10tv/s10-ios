@@ -950,9 +950,6 @@
                             <outlet property="delegate" destination="91E-72-d0t" id="MUp-Fo-pop"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="" image="ic-me" id="oLk-A6-Ogw">
-                        <inset key="imageInsets" minX="0.0" minY="5" maxX="0.0" maxY="-5"/>
-                    </tabBarItem>
                     <navigationItem key="navigationItem" title="Me" id="KZe-ZJ-nkF">
                         <barButtonItem key="rightBarButtonItem" image="ic-more" id="7B7-Cu-O3Q">
                             <connections>
@@ -1273,7 +1270,6 @@
     <resources>
         <image name="empty-profile-pic" width="100" height="100"/>
         <image name="ic-checkmark" width="28" height="28"/>
-        <image name="ic-me" width="29" height="28"/>
         <image name="ic-more" width="29" height="7"/>
         <image name="ic-twitter-color" width="28" height="28"/>
         <image name="ic-ubc" width="19" height="26"/>
