@@ -8,6 +8,7 @@
 
 import Foundation
 import FormatterKit
+import LayerKit
 import DateTools
 import ReactiveCocoa
 
@@ -99,4 +100,172 @@ public struct Formatters {
         }
         return distanceFormatter.stringFromMeters(distance * 1609.34)
     }
+    
+    // MARK: - Date Time Formatter
+    
+    public enum DateProximity {
+        case Today, Yesterday, Week, Year, Other
+    }
+    
+    public static func proximityToDate(date: NSDate) -> DateProximity {
+        let calendar = NSCalendar.currentCalendar()
+        let now = NSDate()
+        let calendarUnits: NSCalendarUnit = [.Era, .Year, .WeekOfMonth, .Month, .Day]
+        let dateComponents = calendar.components(calendarUnits, fromDate: date)
+        let todayComponents = calendar.components(calendarUnits, fromDate: now)
+        if dateComponents.day == todayComponents.day &&
+            dateComponents.month == todayComponents.month &&
+            dateComponents.year == todayComponents.year &&
+            dateComponents.era == todayComponents.era {
+            return .Today
+        }
+        
+        let componentsToYesterday = NSDateComponents()
+        componentsToYesterday.day = -1
+        let yesterday = calendar.dateByAddingComponents(componentsToYesterday, toDate: now, options: [])!
+        let yesterdayComponents = calendar.components(calendarUnits, fromDate: yesterday)
+        if dateComponents.day == yesterdayComponents.day &&
+            dateComponents.month == yesterdayComponents.month &&
+            dateComponents.year == yesterdayComponents.year &&
+            dateComponents.era == yesterdayComponents.era {
+            return .Yesterday
+        }
+        
+        if dateComponents.weekOfMonth == todayComponents.weekOfMonth &&
+        dateComponents.month == todayComponents.month &&
+        dateComponents.year == todayComponents.year &&
+            dateComponents.era == todayComponents.era {
+            return .Week
+        }
+        
+        if dateComponents.year == todayComponents.year &&
+            dateComponents.era == todayComponents.era {
+            return .Year
+        }
+        
+        return .Other
+    }
+    
+    public static func formatMessageDate(date: NSDate) -> (dateString: String, timeString: String) {
+        var dateFormatter: NSDateFormatter!
+        switch proximityToDate(date) {
+        case .Today, .Yesterday:
+            dateFormatter = relativeDate
+        case .Week:
+            dateFormatter = dayOfWeekDate
+        case .Year:
+            dateFormatter = thisYearDate
+        case .Other:
+            dateFormatter = defaultDate
+        }
+        let dateString = dateFormatter.stringFromDate(date)
+        let timeString = shortTime.stringFromDate(date)
+        return (dateString, timeString)
+    }
+    
+    private static let shortTime: NSDateFormatter = {
+        let formatter = NSDateFormatter()
+        formatter.timeStyle = .ShortStyle
+        return formatter
+    }()
+    
+    private static let dayOfWeekDate: NSDateFormatter = {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "EEEE" // Tuesday
+        return formatter
+    }()
+    
+    private static let relativeDate: NSDateFormatter = {
+        let formatter = NSDateFormatter()
+        formatter.dateStyle = .MediumStyle
+        formatter.doesRelativeDateFormatting = true
+        return formatter
+    }()
+    
+    private static let thisYearDate: NSDateFormatter = {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "E, MM dd," // Sat, Nov 29,
+        return formatter
+    }()
+    
+    private static let defaultDate: NSDateFormatter = {
+        let formatter = NSDateFormatter()
+        formatter.dateFormat = "MMM dd, yyyy," // Nov 29, 2013,
+        return formatter
+    }()
+    
+    // MARK: - Attributed String Formatter
+    // Formatting borrowed kindly from
+    // https://github.com/layerhq/Atlas-Messenger-iOS/blob/master/Code/Controllers/ATLMConversationViewController.m#L29-L370
+    
+    public static func attributedStringForDate(date: NSDate) -> NSAttributedString {
+        let (dateString, timeString) = formatMessageDate(date)
+        let dateTimeString = "\(dateString) \(timeString)"
+        let attrString = NSMutableAttributedString(string: dateTimeString)
+        attrString.addAttributes([
+            NSForegroundColorAttributeName: UIColor.grayColor(),
+            NSFontAttributeName: UIFont.systemFontOfSize(11)
+        ], range: NSMakeRange(0, dateTimeString.length))
+        attrString.addAttribute(NSFontAttributeName, value: UIFont.boldSystemFontOfSize(11),
+            range: NSMakeRange(0, dateString.length))
+        return attrString
+    }
+    
+    public static func attributedStringForDisplayOfRecipientStatus(recipientStatus: [NSObject: AnyObject], ctx: Context) -> NSAttributedString {
+        let statuses = recipientStatus
+            .filter { key, _ in key != ctx.currentUserId }
+            .map { ($0 as! String, LYRRecipientStatus(rawValue: $1 as! Int)!) }
+        
+        var statusString: String!
+        if statuses.count > 1 {
+            var readCount = 0
+            var delivered = false
+            var sent = false
+            var pending = false
+            for (_, status) in statuses {
+                switch status {
+                case .Invalid:
+                    break
+                case .Pending:
+                    pending = true
+                case .Sent:
+                    sent = true
+                case .Delivered:
+                    delivered = true
+                case .Read:
+                    readCount++
+                }
+            }
+            if readCount > 0 {
+                let suffix = readCount > 1 ? "Participants" : "Participant"
+                statusString = "Read by \(readCount) \(suffix)"
+            } else if pending {
+                statusString = "Pending"
+            } else if delivered {
+                statusString = "Delivered"
+            } else if sent {
+                statusString = "Sent"
+            }
+        } else {
+            statusString = Array(statuses.values).first?.description ?? ""
+        }
+        return NSAttributedString(string: statusString, attributes: [
+            NSFontAttributeName: UIFont.boldSystemFontOfSize(11)
+        ])
+    }
+}
+
+
+extension LYRRecipientStatus: CustomStringConvertible {
+    
+    public var description: String {
+        switch self {
+        case .Invalid: return "Not Sent"
+        case .Pending: return "Pending"
+        case .Sent: return "Sent"
+        case .Delivered: return "Delivered"
+        case .Read: return "Read"
+        }
+    }
+    
 }

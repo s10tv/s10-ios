@@ -23,7 +23,7 @@ class ConversationViewController : ATLConversationViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = UIColor(hex: 0xF2F2F6)
+//        view.backgroundColor = UIColor(hex: 0xF2F2F6)
         
         avatarView.sd_image <~ vm.avatar
         titleLabel.rac_text <~ vm.displayName
@@ -106,11 +106,11 @@ extension ConversationViewModel : ATLConversationViewControllerDataSource {
     }
     
     public func conversationViewController(conversationViewController: ATLConversationViewController!, attributedStringForDisplayOfDate date: NSDate!) -> NSAttributedString! {
-        return NSAttributedString(string: "Date")
+        return Formatters.attributedStringForDate(date)
     }
     
     public func conversationViewController(conversationViewController: ATLConversationViewController!, attributedStringForDisplayOfRecipientStatus recipientStatus: [NSObject : AnyObject]!) -> NSAttributedString! {
-        return NSAttributedString(string: "Status")
+        return Formatters.attributedStringForDisplayOfRecipientStatus(recipientStatus, ctx: MainContext)
     }
     
 }
