@@ -19,6 +19,7 @@ class ConversationListViewController : ATLConversationListViewController {
         displaysAvatarItem = true
         shouldDisplaySearchController = false
         allowsEditing = false
+        rowHeight = 86
         super.viewDidLoad()
         // TODO: Order in which we set this is important because setting
         // self.title also changes navigationItem.title

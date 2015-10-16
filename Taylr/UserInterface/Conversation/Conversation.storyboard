@@ -17,7 +17,7 @@
         <scene sceneID="8gE-i0-YdG">
             <objects>
                 <tableViewController storyboardIdentifier="ConversationList" title="Connections" id="IOB-fW-0oz" customClass="ConversationListViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="zkv-gd-NDB">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="zkv-gd-NDB">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.94886761900000005" green="0.94878417250000002" blue="0.96522957089999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
