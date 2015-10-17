@@ -968,7 +968,7 @@
                         <outlet property="nameLabel" destination="vns-XO-Vtt" id="Ruo-Va-xds"/>
                         <outlet property="servicesCollectionView" destination="xfo-Ax-Q1n" id="JiG-3U-MyF"/>
                         <outlet property="versionLabel" destination="W2x-p0-Qgh" id="7ZE-gd-Daj"/>
-                        <segue destination="AD6-x0-JlC" kind="show" identifier="Onboarding_Login" customClass="WindowRootSegue" id="jFo-yL-UTj"/>
+                        <segue destination="AD6-x0-JlC" kind="custom" identifier="Onboarding_Login" customClass="WindowRootSegue" id="jFo-yL-UTj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aX7-4C-VNx" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1277,6 +1277,6 @@
         <image name="sample-photo" width="1242" height="660"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="hfn-jz-cIv"/>
+        <segue reference="bXG-qY-mxs"/>
     </inferredMetricsTieBreakers>
 </document>
