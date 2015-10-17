@@ -58,7 +58,19 @@ public class LayerService: NSObject {
     
     func conversationWithUser(user: User) -> LYRConversation {
         do {
-            return try layerClient.newConversationWithParticipants(Set([user.documentID!]), options: [LYRConversationOptionsDistinctByParticipantsKey: true])
+            // BIG TODO: This is gonna crash if we are offline... Store currentUser info offline in UserDefaults
+            let currentUser = meteor.user.value!
+            let currentUserId = meteor.currentUser.userId.value!
+            let otherUserId = user.documentID!
+            return try layerClient.newConversationWithParticipants(Set([user.documentID!]), options: [
+                LYRConversationOptionsDistinctByParticipantsKey: true,
+                LYRConversationOptionsMetadataKey: [
+                    lyrUserDisplayName(otherUserId): user.displayName(),
+                    lyrUserAvatarUrl(otherUserId): user.avatar?.url.absoluteString ?? "",
+                    lyrUserDisplayName(currentUserId): currentUser.displayName(),
+                    lyrUserAvatarUrl(currentUserId): currentUser.avatar?.url.absoluteString ?? ""
+                ]
+            ])
         } catch let error as NSError {
             return error.userInfo[LYRExistingDistinctConversationKey] as! LYRConversation
         }

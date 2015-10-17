@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import LayerKit
 
 // Class & inherits from LayerKit because we want it to be able to conform to Participant
 // Otherwise there's nothing class-like about this viewModel
@@ -23,5 +24,13 @@ public class UserViewModel: NSObject {
         lastName = user.lastName ?? ""
         displayName = user.displayName()
         avatar = user.avatar
+    }
+    
+    init(conversation: LYRConversation, userId: String) {
+        self.userId = userId
+        firstName = ""
+        lastName = ""
+        displayName = conversation.getUserDisplayName(userId) ?? "Loading..."
+        avatar = conversation.getUserAvatarURL(userId).flatMap { Image($0) }
     }
 }

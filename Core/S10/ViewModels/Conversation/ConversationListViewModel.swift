@@ -23,23 +23,27 @@ public class ConversationListViewModel: NSObject {
         chatsSub = ctx.meteor.subscribe("chats")
         users = ctx.meteor.collection("users")
         
-        let (signal, sink) = Signal<LYRConversation, NoError>.pipe()
+        let (signal, _) = Signal<LYRConversation, NoError>.pipe()
         changedConversations = signal.observeOn(UIScheduler())
-        users.databaseChanges.observeNext { changes in
-            changes.enumerateDocumentChangeDetailsUsingBlock { details, _ in
-                if details.documentKey.collectionName == "users" {
-                    let userId = details.documentKey.documentID as! String
-                    ctx.layer.findConversationsWithUserId(userId).each {
-                        sendNext(sink, $0)
-                    }
-                }
-            }
-        }
+        // TODO: Reload conversation if conversation metadata changes rather than when user changes
+//        users.databaseChanges.observeNext { changes in
+//            changes.enumerateDocumentChangeDetailsUsingBlock { details, _ in
+//                if details.documentKey.collectionName == "users" {
+//                    let userId = details.documentKey.documentID as! String
+//                    ctx.layer.findConversationsWithUserId(userId).each {
+//                        sendNext(sink, $0)
+//                    }
+//                }
+//            }
+//        }
     }
     
     public func recipientForConversation(conversation: LYRConversation) -> UserViewModel? {
         if let u = conversation.recipient(ctx.meteor.mainContext, currentUserId: ctx.currentUserId) {
             return UserViewModel(user: u)
+        }
+        if let userId = conversation.recipientId(ctx.currentUserId) {
+            return UserViewModel(conversation: conversation, userId: userId)
         }
         return nil
     }
