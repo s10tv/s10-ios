@@ -69,13 +69,23 @@
                                     <segue destination="jff-6V-IXE" kind="embed" id="Ig1-pD-a9W"/>
                                 </connections>
                             </containerView>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JeX-km-jRU" userLabel="Receive Container">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <segue destination="0ey-rb-p3h" kind="embed" id="cTG-80-oZJ"/>
+                                </connections>
+                            </containerView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="JeX-km-jRU" secondAttribute="bottom" id="3aV-GQ-SyY"/>
                             <constraint firstAttribute="bottom" secondItem="OVn-fS-4dN" secondAttribute="bottom" id="6we-t0-F5T"/>
+                            <constraint firstAttribute="trailing" secondItem="JeX-km-jRU" secondAttribute="trailing" id="9aj-Rq-4hy"/>
                             <constraint firstItem="OVn-fS-4dN" firstAttribute="leading" secondItem="3qq-bH-WYT" secondAttribute="leading" id="CWG-xg-vMo"/>
                             <constraint firstAttribute="trailing" secondItem="OVn-fS-4dN" secondAttribute="trailing" id="How-bq-z7i"/>
                             <constraint firstAttribute="bottom" secondItem="UsS-zH-v2N" secondAttribute="bottom" id="IRW-fx-aJ5"/>
+                            <constraint firstItem="JeX-km-jRU" firstAttribute="leading" secondItem="3qq-bH-WYT" secondAttribute="leading" id="IWi-HM-SKh"/>
+                            <constraint firstItem="JeX-km-jRU" firstAttribute="top" secondItem="3qq-bH-WYT" secondAttribute="top" id="KI9-Mt-mnk"/>
                             <constraint firstItem="UsS-zH-v2N" firstAttribute="leading" secondItem="3qq-bH-WYT" secondAttribute="leading" id="Sdo-25-B0n"/>
                             <constraint firstItem="TXB-Qd-fGd" firstAttribute="leading" secondItem="3qq-bH-WYT" secondAttribute="leading" id="WNB-fO-YrU"/>
                             <constraint firstAttribute="trailing" secondItem="TXB-Qd-fGd" secondAttribute="trailing" id="dGW-8d-e0h"/>
@@ -158,6 +168,7 @@
                         <outlet property="avatarImageView" destination="vhE-2P-KGX" id="5f5-qe-4S0"/>
                         <outlet property="chatHistoryContainer" destination="OVn-fS-4dN" id="2V6-q1-VJ2"/>
                         <outlet property="producerContainer" destination="UsS-zH-v2N" id="KvI-CT-V8U"/>
+                        <outlet property="receiveContainer" destination="JeX-km-jRU" id="m3y-oh-ymK"/>
                         <outlet property="statusLabel" destination="nUT-z4-szJ" id="oKd-Qq-2DR"/>
                         <outlet property="titleLabel" destination="yGy-LP-rew" id="aRS-ZW-wOD"/>
                     </connections>
@@ -177,7 +188,7 @@
                 <viewController hidesBottomBarWhenPushed="YES" id="jff-6V-IXE" customClass="ConversationHistoryViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pkP-sN-BdW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1756" y="3233"/>
+            <point key="canvasLocation" x="1742" y="2764"/>
         </scene>
         <!--Profile-->
         <scene sceneID="6zZ-zY-aab">
@@ -185,7 +196,7 @@
                 <viewControllerPlaceholder storyboardName="Profile" id="YOL-w6-TDH" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VV8-Sf-QoN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1491" y="2534"/>
+            <point key="canvasLocation" x="1491" y="2386"/>
         </scene>
         <!--Producer View Controller-->
         <scene sceneID="FUl-PP-ghD">
@@ -248,11 +259,120 @@
             </objects>
             <point key="canvasLocation" x="1038" y="3441"/>
         </scene>
+        <!--Receive View Controller-->
+        <scene sceneID="TYB-CG-I2j">
+            <objects>
+                <viewController storyboardIdentifier="Receive" id="0ey-rb-p3h" customClass="ReceiveViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Cm8-bs-fMa"/>
+                        <viewControllerLayoutGuide type="bottom" id="7Nb-nC-aKq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JYX-eY-mbk">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w84-3l-1Eo" userLabel="Custom Top Layout Guide">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="IWR-Yo-zwz"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lfg-Fq-QF0" customClass="SCVideoPlayerView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Sy9-AV-4MK" appends="YES" id="Sg6-wQ-Ed1"/>
+                                    <outletCollection property="gestureRecognizers" destination="kYF-5p-inK" appends="YES" id="klR-3J-Izl"/>
+                                    <outletCollection property="gestureRecognizers" destination="fQi-nb-dQ1" appends="YES" id="PjE-QF-QQK"/>
+                                </connections>
+                            </view>
+                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EZT-3N-Swg" userLabel="Paused Overlay">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cl3-nh-yus" userLabel="Play">
+                                        <rect key="frame" x="280" y="280" width="40" height="40"/>
+                                        <state key="normal" image="ic-play-medium">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.40000000000000002" colorSpace="calibratedWhite"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="centerY" secondItem="Cl3-nh-yus" secondAttribute="centerY" id="e70-Fh-KOy"/>
+                                    <constraint firstAttribute="centerX" secondItem="Cl3-nh-yus" secondAttribute="centerX" id="hLB-rM-iHN"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Q7O-tR-8Zt" customClass="DurationTimer" customModule="Taylr" customModuleProvider="target">
+                                <rect key="frame" x="544" y="80" width="40" height="40"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="40" id="kKm-Y9-S3Z"/>
+                                    <constraint firstAttribute="height" constant="40" id="lXW-Ga-LRo"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qzs-Um-3Hl" customClass="VolumeView" customModule="Taylr" customModuleProvider="target">
+                                <rect key="frame" x="16" y="80" width="36" height="36"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="36" id="c6K-is-cwp"/>
+                                    <constraint firstAttribute="height" constant="36" id="xfX-1Q-gwK"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="w84-3l-1Eo" firstAttribute="top" secondItem="JYX-eY-mbk" secondAttribute="top" id="6gZ-tc-Af6"/>
+                            <constraint firstItem="Lfg-Fq-QF0" firstAttribute="top" secondItem="EZT-3N-Swg" secondAttribute="top" id="DMb-iI-aZc"/>
+                            <constraint firstItem="qzs-Um-3Hl" firstAttribute="top" secondItem="w84-3l-1Eo" secondAttribute="bottom" constant="16" id="Gme-k4-aqk"/>
+                            <constraint firstAttribute="trailing" secondItem="Lfg-Fq-QF0" secondAttribute="trailing" id="Hyg-HF-xNh"/>
+                            <constraint firstItem="Lfg-Fq-QF0" firstAttribute="leading" secondItem="EZT-3N-Swg" secondAttribute="leading" id="IXT-uw-L3Z"/>
+                            <constraint firstItem="qzs-Um-3Hl" firstAttribute="leading" secondItem="w84-3l-1Eo" secondAttribute="leading" constant="16" id="Kdu-s9-KmA"/>
+                            <constraint firstItem="Lfg-Fq-QF0" firstAttribute="top" secondItem="JYX-eY-mbk" secondAttribute="top" id="PAM-LK-GgC"/>
+                            <constraint firstItem="Lfg-Fq-QF0" firstAttribute="bottom" secondItem="EZT-3N-Swg" secondAttribute="bottom" id="ULg-4Y-o10"/>
+                            <constraint firstItem="Q7O-tR-8Zt" firstAttribute="top" secondItem="w84-3l-1Eo" secondAttribute="bottom" constant="16" id="YHS-38-n1M"/>
+                            <constraint firstAttribute="trailing" secondItem="w84-3l-1Eo" secondAttribute="trailing" id="iP9-Va-p1a"/>
+                            <constraint firstAttribute="bottom" secondItem="Lfg-Fq-QF0" secondAttribute="bottom" id="kii-qQ-LEH"/>
+                            <constraint firstItem="w84-3l-1Eo" firstAttribute="leading" secondItem="JYX-eY-mbk" secondAttribute="leading" id="ldR-SI-i3c"/>
+                            <constraint firstItem="Lfg-Fq-QF0" firstAttribute="leading" secondItem="JYX-eY-mbk" secondAttribute="leading" id="nFf-bX-W8z"/>
+                            <constraint firstItem="Lfg-Fq-QF0" firstAttribute="trailing" secondItem="EZT-3N-Swg" secondAttribute="trailing" id="ujo-gK-Aeo"/>
+                            <constraint firstAttribute="trailing" secondItem="Q7O-tR-8Zt" secondAttribute="trailing" constant="16" id="yyf-K9-reC"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="durationTimer" destination="Q7O-tR-8Zt" id="W4a-Mg-1RL"/>
+                        <outlet property="overlay" destination="EZT-3N-Swg" id="xBk-Ji-jyC"/>
+                        <outlet property="playerView" destination="Lfg-Fq-QF0" id="ym6-JW-TJH"/>
+                        <outlet property="volumeView" destination="qzs-Um-3Hl" id="apD-VJ-7Lz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cLS-vY-oGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Sy9-AV-4MK">
+                    <connections>
+                        <action selector="playOrPause" destination="0ey-rb-p3h" id="tXL-qt-K0K"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <swipeGestureRecognizer direction="left" id="kYF-5p-inK" userLabel="Left Swipe Gesture Recognizer">
+                    <connections>
+                        <action selector="advance" destination="0ey-rb-p3h" id="Mw9-jS-MKq"/>
+                    </connections>
+                </swipeGestureRecognizer>
+                <swipeGestureRecognizer direction="right" id="fQi-nb-dQ1" userLabel="Right Swipe Gesture Recognizer">
+                    <connections>
+                        <action selector="rewind" destination="0ey-rb-p3h" id="luE-DS-dNk"/>
+                    </connections>
+                </swipeGestureRecognizer>
+            </objects>
+            <point key="canvasLocation" x="356" y="2764"/>
+        </scene>
     </scenes>
     <resources>
         <image name="empty-profile-pic" width="100" height="100"/>
         <image name="ic-back-arrow" width="12" height="21"/>
         <image name="ic-close-cross" width="16" height="16"/>
         <image name="ic-more" width="29" height="7"/>
+        <image name="ic-play-medium" width="40" height="40"/>
     </resources>
 </document>

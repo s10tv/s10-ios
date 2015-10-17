@@ -49,7 +49,7 @@ public class VideoConversationViewModel {
     public let hideNewMessagesHint: PropertyOf<Bool>
     public let showTutorial: Bool
     
-    public let receiveVM: ReceiveViewModel
+    public var receiveVM: ReceiveViewModel!
     public let chatHistoryVM: ChatHistoryViewModel
   
     init(meteor: MeteorService, taskService: TaskService, conversation: Conversation) {
@@ -61,7 +61,7 @@ public class VideoConversationViewModel {
         }
         showTutorial = (UD.showPlayerTutorial.value ?? true)
         
-        receiveVM = ReceiveViewModel(meteor: meteor, conversation: conversation)
+//        receiveVM = ReceiveViewModel(meteor: meteor, conversation: conversation)
         chatHistoryVM = ChatHistoryViewModel(meteor: meteor, conversation: conversation)
         
         playing = MutableProperty(false)

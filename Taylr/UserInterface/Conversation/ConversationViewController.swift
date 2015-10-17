@@ -17,9 +17,11 @@ class ConversationViewController : UIViewController {
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var producerContainer: UIView!
     @IBOutlet weak var chatHistoryContainer: UIView!
+    @IBOutlet weak var receiveContainer: UIView!
     
     private(set) var producerVC: ProducerViewController!
     private(set) var chatHistoryVC: ConversationHistoryViewController!
+    private(set) var receiveVC: ReceiveViewController!
     
     var vm: ConversationViewModel!
     
@@ -34,6 +36,14 @@ class ConversationViewController : UIViewController {
         
         producerVC.view.makeEdgesEqualTo(producerContainer)
         chatHistoryVC.view.makeEdgesEqualTo(chatHistoryContainer)
+        receiveVC.view.makeEdgesEqualTo(receiveContainer)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        if receiveVC.vm.playlist.array.count == 0 {
+            receiveContainer.hidden = true
+        }
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
@@ -53,6 +63,10 @@ class ConversationViewController : UIViewController {
             vc.layerClient = MainContext.layer.layerClient
             vc.vm = vm
             chatHistoryVC = vc
+        }
+        if let vc = segue.destinationViewController as? ReceiveViewController {
+            vc.vm = vm.receiveVM()
+            receiveVC = vc
         }
         if let vc = segue.destinationViewController as? ProfileViewController {
             vc.vm = vm.profileVM()

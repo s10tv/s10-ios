@@ -44,7 +44,6 @@
 		EA54FA961BD009A000AD7E9A /* ChatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA6F1BD009A000AD7E9A /* ChatsViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA54FA971BD009A000AD7E9A /* ConnectionViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA701BD009A000AD7E9A /* ConnectionViewModels.swift */; settings = {ASSET_TAGS = (); }; };
 		EA54FA981BD009A000AD7E9A /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA711BD009A000AD7E9A /* MessageViewModel.swift */; settings = {ASSET_TAGS = (); }; };
-		EA54FA991BD009A000AD7E9A /* ReceiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA721BD009A000AD7E9A /* ReceiveViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA54FA9A1BD009A000AD7E9A /* VideoConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA731BD009A000AD7E9A /* VideoConversationViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA54FA9B1BD009A000AD7E9A /* CandidateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA751BD009A000AD7E9A /* CandidateViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA54FA9C1BD009A000AD7E9A /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA761BD009A000AD7E9A /* DiscoverViewModel.swift */; settings = {ASSET_TAGS = (); }; };
@@ -180,6 +179,8 @@
 		EA81AE121BB696B900F94006 /* PhotoUploadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABA05431B474EC900154C75 /* PhotoUploadOperation.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE131BB696D000F94006 /* InviteOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D545481B57988200A4661B /* InviteOperation.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE141BB6976900F94006 /* TaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C166B1B368FD600371B50 /* TaskService.swift */; settings = {ASSET_TAGS = (); }; };
+		EA8A733A1BD3088E006DB6A9 /* VideoMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8A73391BD3088E006DB6A9 /* VideoMessageViewModel.swift */; settings = {ASSET_TAGS = (); }; };
+		EA8A733C1BD3092F006DB6A9 /* ReceiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8A733B1BD3092F006DB6A9 /* ReceiveViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA8E69461BC1DA30002D4BF1 /* ArrayProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8E69411BC1DA30002D4BF1 /* ArrayProperty.swift */; settings = {ASSET_TAGS = (); }; };
 		EA8E69471BC1DA30002D4BF1 /* DynamicProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8E69421BC1DA30002D4BF1 /* DynamicProperties.swift */; settings = {ASSET_TAGS = (); }; };
 		EA8E69481BC1DA30002D4BF1 /* FetchedResultsArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8E69431BC1DA30002D4BF1 /* FetchedResultsArray.swift */; settings = {ASSET_TAGS = (); }; };
@@ -334,7 +335,6 @@
 		EA54FA6F1BD009A000AD7E9A /* ChatsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewModel.swift; sourceTree = "<group>"; };
 		EA54FA701BD009A000AD7E9A /* ConnectionViewModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionViewModels.swift; sourceTree = "<group>"; };
 		EA54FA711BD009A000AD7E9A /* MessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
-		EA54FA721BD009A000AD7E9A /* ReceiveViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiveViewModel.swift; sourceTree = "<group>"; };
 		EA54FA731BD009A000AD7E9A /* VideoConversationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoConversationViewModel.swift; sourceTree = "<group>"; };
 		EA54FA751BD009A000AD7E9A /* CandidateViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateViewModel.swift; sourceTree = "<group>"; };
 		EA54FA761BD009A000AD7E9A /* DiscoverViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
@@ -435,6 +435,8 @@
 		EA82CF961B504FC500A12D94 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		EA89C0851B6AA2060007C6CB /* CreateProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
 		EA89C0871B6AC0410007C6CB /* ConnectServicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectServicesViewController.swift; sourceTree = "<group>"; };
+		EA8A73391BD3088E006DB6A9 /* VideoMessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoMessageViewModel.swift; sourceTree = "<group>"; };
+		EA8A733B1BD3092F006DB6A9 /* ReceiveViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiveViewModel.swift; sourceTree = "<group>"; };
 		EA8E69411BC1DA30002D4BF1 /* ArrayProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayProperty.swift; sourceTree = "<group>"; };
 		EA8E69421BC1DA30002D4BF1 /* DynamicProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicProperties.swift; sourceTree = "<group>"; };
 		EA8E69431BC1DA30002D4BF1 /* FetchedResultsArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsArray.swift; sourceTree = "<group>"; };
@@ -730,6 +732,8 @@
 			children = (
 				EA54FA6B1BD009A000AD7E9A /* ConversationListViewModel.swift */,
 				EA54FA6C1BD009A000AD7E9A /* ConversationViewModel.swift */,
+				EA8A73391BD3088E006DB6A9 /* VideoMessageViewModel.swift */,
+				EA8A733B1BD3092F006DB6A9 /* ReceiveViewModel.swift */,
 				EA54FA6D1BD009A000AD7E9A /* Video */,
 			);
 			path = Conversation;
@@ -742,7 +746,6 @@
 				EA54FA6F1BD009A000AD7E9A /* ChatsViewModel.swift */,
 				EA54FA701BD009A000AD7E9A /* ConnectionViewModels.swift */,
 				EA54FA711BD009A000AD7E9A /* MessageViewModel.swift */,
-				EA54FA721BD009A000AD7E9A /* ReceiveViewModel.swift */,
 				EA54FA731BD009A000AD7E9A /* VideoConversationViewModel.swift */,
 			);
 			path = Video;
@@ -1766,6 +1769,7 @@
 				EA54FAA51BD009A000AD7E9A /* EditHashtagsViewModel.swift in Sources */,
 				EA81ADF61BB68E0400F94006 /* Models.xcdatamodeld in Sources */,
 				EA8E69461BC1DA30002D4BF1 /* ArrayProperty.swift in Sources */,
+				EA8A733C1BD3092F006DB6A9 /* ReceiveViewModel.swift in Sources */,
 				EA81AE021BB68E2100F94006 /* User.swift in Sources */,
 				EA81AE141BB6976900F94006 /* TaskService.swift in Sources */,
 				EA81ADDA1BB6839200F94006 /* AlamofireExtension.swift in Sources */,
@@ -1778,13 +1782,13 @@
 				EAA058AD1BC35F0200FCB86C /* Conversation.swift in Sources */,
 				EA8E694A1BC1DA30002D4BF1 /* TwoWayBindings.swift in Sources */,
 				EA54FAB51BD00A2F00AD7E9A /* Context.swift in Sources */,
+				EA8A733A1BD3088E006DB6A9 /* VideoMessageViewModel.swift in Sources */,
 				EA8E69491BC1DA30002D4BF1 /* PropertyExtensions.swift in Sources */,
 				EA54FA941BD009A000AD7E9A /* ConversationViewModel.swift in Sources */,
 				EA81ADF81BB68E2100F94006 /* _Activity.swift in Sources */,
 				EA81ADDC1BB6852600F94006 /* DeviceInfo.swift in Sources */,
 				EA54FAB31BD009A000AD7E9A /* MainTabViewModel.swift in Sources */,
 				EA81AE111BB696A400F94006 /* VideoUploadOperation.swift in Sources */,
-				EA54FA991BD009A000AD7E9A /* ReceiveViewModel.swift in Sources */,
 				EAB31D571BCF76260080DA47 /* LayerService.swift in Sources */,
 				EAD16D301BCA4ABE0040CEB8 /* Hashtag.swift in Sources */,
 				EA54FAA71BD009A000AD7E9A /* HashtagViewModel.swift in Sources */,
