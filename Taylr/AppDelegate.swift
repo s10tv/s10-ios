@@ -159,6 +159,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
             MainContext.meteor.updateDevicePush(apsEnv, pushToken: deviceToken.hexString() as String)
             Analytics.setUserProperties(["RegisteredPush": true])
         }
+        do {
+            try MainContext.layer.layerClient.updateRemoteNotificationDeviceToken(deviceToken)
+        } catch let error as NSError {
+            Log.error("Unable to update Layer with push token", error)
+        }
     }
     
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
