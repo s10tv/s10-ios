@@ -38,8 +38,8 @@ public class ConversationViewModel: NSObject {
         return conversation.recipient(ctx.meteor.mainContext, currentUserId: ctx.currentUserId)
     }
     
-    public func recipient() -> UserViewModel? {
-        if let u = user() {
+    public func getUser(userId: String) -> UserViewModel? {
+        if let u = ctx.meteor.mainContext.existingObjectInCollection("users", documentID: userId) as? User {
             return UserViewModel(user: u)
         }
         return nil

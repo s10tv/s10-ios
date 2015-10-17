@@ -160,7 +160,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
             Analytics.setUserProperties(["RegisteredPush": true])
         }
         do {
-            try MainContext.layer.layerClient.updateRemoteNotificationDeviceToken(deviceToken)
+            try layerClient.updateRemoteNotificationDeviceToken(deviceToken)
         } catch let error as NSError {
             Log.error("Unable to update Layer with push token", error)
         }
@@ -171,8 +171,24 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         Analytics.setUserProperties(["RegisteredPush": false])
     }
     
-    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         Log.debug("Did receive notification \(userInfo)")
+        
+        let handled = layerClient.synchronizeWithRemoteNotification(userInfo) { changes, error in
+            if let changes = changes {
+                if changes.count > 0 {
+                    completionHandler(.NewData)
+                } else {
+                    completionHandler(.NoData)
+                }
+            } else {
+                Log.error("Failed to synchronize remote notification with layer", error)
+                completionHandler(.Failed)
+            }
+        }
+        if !handled {
+            completionHandler(.NoData)
+        }
     }
     
     // MARK: Event Handling

@@ -103,7 +103,7 @@ class ConversationViewController : ATLConversationViewController {
 extension ConversationViewModel : ATLConversationViewControllerDataSource {
     
     public func conversationViewController(conversationViewController: ATLConversationViewController!, participantForIdentifier participantIdentifier: String!) -> ATLParticipant! {
-        return recipient()
+        return getUser(participantIdentifier)
     }
     
     public func conversationViewController(conversationViewController: ATLConversationViewController!, attributedStringForDisplayOfDate date: NSDate!) -> NSAttributedString! {
