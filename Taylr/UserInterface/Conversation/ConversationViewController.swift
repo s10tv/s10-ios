@@ -38,12 +38,21 @@ class ConversationViewController : UIViewController {
         chatHistoryVC.view.makeEdgesEqualTo(chatHistoryContainer)
         receiveVC.view.makeEdgesEqualTo(receiveContainer)
     }
-    
+
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.navigationBar.setBackgroundColor(UIColor(white: 0.5, alpha: 0.4))
+        if let view = navigationItem.titleView {
+            view.bounds.size = view.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+        }
         if receiveVC.vm.playlist.array.count == 0 {
             receiveContainer.hidden = true
         }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.setBackgroundColor(nil)
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
