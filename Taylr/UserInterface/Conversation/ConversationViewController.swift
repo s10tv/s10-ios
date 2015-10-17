@@ -15,19 +15,24 @@ class ConversationViewController : UIViewController {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var producerContainer: UIView!
     @IBOutlet weak var chatHistoryContainer: UIView!
+    
+    private(set) var producerVC: ProducerViewController!
     private(set) var chatHistoryVC: ConversationHistoryViewController!
     
     var vm: ConversationViewModel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         // This is necessary because otherwise during child viewWillAppear
         // the childVC's view will have the wrong frame
         avatarImageView.sd_image <~ vm.avatar
         titleLabel.rac_text <~ vm.displayName
         statusLabel.rac_text <~ vm.displayStatus
         
+        producerVC.view.makeEdgesEqualTo(producerContainer)
         chatHistoryVC.view.makeEdgesEqualTo(chatHistoryContainer)
     }
     
@@ -40,6 +45,9 @@ class ConversationViewController : UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let vc = segue.destinationViewController as? ProducerViewController {
+            producerVC = vc
+        }
         if let vc = segue.destinationViewController as? ConversationHistoryViewController {
             assert(vm != nil, "Conversation ViewModel must be set before prepareForSegue is called")
             vc.layerClient = MainContext.layer.layerClient

@@ -10,6 +10,7 @@
         </mutableArray>
         <mutableArray key="Cabin-Regular.ttf">
             <string>Cabin-Regular</string>
+            <string>Cabin-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -47,8 +48,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UsS-zH-v2N" userLabel="Producer Container">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <segue destination="5i8-Ji-zll" kind="embed" id="57T-BP-89I"/>
+                                </connections>
+                            </containerView>
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TXB-Qd-fGd">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="A89-0s-PHF">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="light"/>
+                            </visualEffectView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OVn-fS-4dN">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="jff-6V-IXE" kind="embed" id="Ig1-pD-a9W"/>
                                 </connections>
@@ -59,7 +75,15 @@
                             <constraint firstAttribute="bottom" secondItem="OVn-fS-4dN" secondAttribute="bottom" id="6we-t0-F5T"/>
                             <constraint firstItem="OVn-fS-4dN" firstAttribute="leading" secondItem="3qq-bH-WYT" secondAttribute="leading" id="CWG-xg-vMo"/>
                             <constraint firstAttribute="trailing" secondItem="OVn-fS-4dN" secondAttribute="trailing" id="How-bq-z7i"/>
+                            <constraint firstAttribute="bottom" secondItem="UsS-zH-v2N" secondAttribute="bottom" id="IRW-fx-aJ5"/>
+                            <constraint firstItem="UsS-zH-v2N" firstAttribute="leading" secondItem="3qq-bH-WYT" secondAttribute="leading" id="Sdo-25-B0n"/>
+                            <constraint firstItem="TXB-Qd-fGd" firstAttribute="leading" secondItem="3qq-bH-WYT" secondAttribute="leading" id="WNB-fO-YrU"/>
+                            <constraint firstAttribute="trailing" secondItem="TXB-Qd-fGd" secondAttribute="trailing" id="dGW-8d-e0h"/>
+                            <constraint firstAttribute="top" secondItem="TXB-Qd-fGd" secondAttribute="top" id="er3-y5-qaR"/>
+                            <constraint firstAttribute="bottom" secondItem="TXB-Qd-fGd" secondAttribute="bottom" id="hMt-eD-wK7"/>
+                            <constraint firstAttribute="top" secondItem="UsS-zH-v2N" secondAttribute="top" id="quc-Mh-UzZ"/>
                             <constraint firstAttribute="top" secondItem="OVn-fS-4dN" secondAttribute="top" id="wUb-0U-eT1"/>
+                            <constraint firstAttribute="trailing" secondItem="UsS-zH-v2N" secondAttribute="trailing" id="ybc-Id-6Q2"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Gu7-lQ-4Uy">
@@ -133,6 +157,7 @@
                     <connections>
                         <outlet property="avatarImageView" destination="vhE-2P-KGX" id="5f5-qe-4S0"/>
                         <outlet property="chatHistoryContainer" destination="OVn-fS-4dN" id="2V6-q1-VJ2"/>
+                        <outlet property="producerContainer" destination="UsS-zH-v2N" id="KvI-CT-V8U"/>
                         <outlet property="statusLabel" destination="nUT-z4-szJ" id="oKd-Qq-2DR"/>
                         <outlet property="titleLabel" destination="yGy-LP-rew" id="aRS-ZW-wOD"/>
                     </connections>
@@ -162,10 +187,72 @@
             </objects>
             <point key="canvasLocation" x="1491" y="2534"/>
         </scene>
+        <!--Producer View Controller-->
+        <scene sceneID="FUl-PP-ghD">
+            <objects>
+                <viewController storyboardIdentifier="Producer" id="5i8-Ji-zll" customClass="ProducerViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PuY-8s-gJ3"/>
+                        <viewControllerLayoutGuide type="bottom" id="8Fe-Yf-qQR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Cn8-KP-bW5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tZe-w0-tuM">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invite Samantha" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tr3-Pq-OC2">
+                                        <rect key="frame" x="231" y="32" width="138" height="24.5"/>
+                                        <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="20"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pkH-n8-IHR" userLabel="Close">
+                                        <rect key="frame" x="0.0" y="23" width="43" height="43"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="43" id="eNn-ZW-Dor"/>
+                                            <constraint firstAttribute="width" constant="43" id="na8-V0-xsW"/>
+                                        </constraints>
+                                        <state key="normal" image="ic-close-cross">
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="didTapClose:" destination="5i8-Ji-zll" eventType="touchUpInside" id="M6L-oR-P3W"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="66" id="069-bX-hQj"/>
+                                    <constraint firstAttribute="centerX" secondItem="tr3-Pq-OC2" secondAttribute="centerX" id="Tof-7x-3Hg"/>
+                                    <constraint firstItem="pkH-n8-IHR" firstAttribute="leading" secondItem="tZe-w0-tuM" secondAttribute="leading" id="Vqj-SI-JiO"/>
+                                    <constraint firstAttribute="bottom" secondItem="tr3-Pq-OC2" secondAttribute="bottom" constant="9" id="mFH-UR-nL2"/>
+                                    <constraint firstAttribute="bottom" secondItem="pkH-n8-IHR" secondAttribute="bottom" id="zyk-B9-6Xp"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="tZe-w0-tuM" secondAttribute="trailing" id="3Lc-lf-N3g"/>
+                            <constraint firstItem="tZe-w0-tuM" firstAttribute="leading" secondItem="Cn8-KP-bW5" secondAttribute="leading" id="7NW-it-vLj"/>
+                            <constraint firstItem="tZe-w0-tuM" firstAttribute="top" secondItem="Cn8-KP-bW5" secondAttribute="top" id="92n-wM-bdA"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="headerView" destination="tZe-w0-tuM" id="AoV-2S-5Ty"/>
+                        <outlet property="titleLabel" destination="tr3-Pq-OC2" id="Yse-aG-431"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Q8S-Xk-zSD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1038" y="3441"/>
+        </scene>
     </scenes>
     <resources>
         <image name="empty-profile-pic" width="100" height="100"/>
         <image name="ic-back-arrow" width="12" height="21"/>
+        <image name="ic-close-cross" width="16" height="16"/>
         <image name="ic-more" width="29" height="7"/>
     </resources>
 </document>

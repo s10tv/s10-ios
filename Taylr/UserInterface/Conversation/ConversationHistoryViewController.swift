@@ -23,6 +23,12 @@ class ConversationHistoryViewController : ATLConversationViewController {
         messageInputToolbar.textInputView.font = UIFont(.cabinRegular, size: 17)
         dataSource = vm
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        collectionView.contentInset = UIEdgeInsets(top: topLayoutGuide.length, left: 0,
+                                                bottom: bottomLayoutGuide.length, right: 0)
+    }
 }
 
 // MARK: - ATLConversationViewControllerDataSource
