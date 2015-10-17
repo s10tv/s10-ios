@@ -27,7 +27,9 @@ public class LayerService: NSObject {
         unreadQueryController.delegate = self
         _ = try? unreadQueryController.execute()
         unreadCount.value = unreadQueryController.count()
-        layerClient.autodownloadMaximumContentSize = 50 * 1024 * 1024
+        layerClient.autodownloadMaximumContentSize = 50 * 1024 * 1024 // 50mb
+        layerClient.backgroundContentTransferEnabled = true
+        layerClient.diskCapacity = 300 * 1024 * 1024 // 300mb
     }
     
     // TODO: Careful this method if not disposed will retain self

@@ -148,6 +148,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
     }
     
     // MARK: - Push Handling
+    
     func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
         let nc = NSNotificationCenter.defaultCenter()
         nc.postNotificationName(AppDidRegisterUserNotificationSettings, object: notificationSettings)
@@ -176,6 +177,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         
         let handled = layerClient.synchronizeWithRemoteNotification(userInfo) { changes, error in
             if let changes = changes {
+                Log.info("Synchronized layer remote notification with \(changes.count) changes")
                 if changes.count > 0 {
                     completionHandler(.NewData)
                 } else {
@@ -191,7 +193,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         }
     }
     
-    // MARK: Event Handling
+    // MARK: - Background Transfer
+    
+    func application(application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: () -> Void) {
+        layerClient.handleBackgroundContentTransfersForSession(identifier) { changes, error in
+            if let changes = changes {
+                Log.info("Handled layer background transfer with \(changes.count) changes")
+            } else {
+                Log.error("Failed to handle layer background transfer", error)
+            }
+            completionHandler()
+        }
+    }
+    
+    // MARK: - Event Handling
     
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         super.touchesBegan(touches, withEvent: event)
