@@ -76,9 +76,12 @@ public class LayerService: NSObject {
         }
     }
     
-    func unplayedVideoMessages(/*conversation: LYRConversation*/) -> [LYRMessage] {
+    func unplayedVideoMessages(conversation: LYRConversation) -> [LYRMessage] {
         let query = LYRQuery(queryableClass: LYRMessage.self)
-        query.predicate = LYRPredicate(property: "parts.MIMEType", predicateOperator: .IsEqualTo, value: "video/mp4")
+        query.predicate = LYRCompoundPredicate(type: .And, subpredicates: [
+            LYRPredicate(property: "parts.MIMEType", predicateOperator: .IsEqualTo, value: "video/mp4"),
+            LYRPredicate(property: "conversation", predicateOperator: .IsEqualTo, value: conversation)
+        ])
         do {
             return try layerClient.executeQuery(query).map { $0 as! LYRMessage }
         } catch let error as NSError {
@@ -136,7 +139,5 @@ extension LayerService : LYRClientDelegate {
     }
     
     public func layerClient(client: LYRClient!, objectsDidChange changes: [AnyObject]!) {
-        let unplayed = unplayedVideoMessages()
-        print("Unplayed message count \(unplayed)")
     }
 }

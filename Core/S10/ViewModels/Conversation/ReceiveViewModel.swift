@@ -22,7 +22,7 @@ public class ReceiveViewModel {
     
     init(_ ctx: Context, conversation: LYRConversation) {
         self.ctx = ctx
-        let videos = ctx.layer.unplayedVideoMessages().map { msg -> VideoMessageViewModel in
+        let videos = ctx.layer.unplayedVideoMessages(conversation).map { msg -> VideoMessageViewModel in
             let parts = msg.parts.map { $0 as! LYRMessagePart }
             return VideoMessageViewModel(identifier: msg.identifier.absoluteString, url: parts.first!.fileURL, duration: 5)
         }
