@@ -83,7 +83,7 @@
 		EA72AE111BD004270031D652 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA72AE101BD004270031D652 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
 		EA72AE431BD005CD0031D652 /* Conversation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA72AE131BD005CD0031D652 /* Conversation.storyboard */; settings = {ASSET_TAGS = (); }; };
 		EA72AE441BD005CD0031D652 /* ConversationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE141BD005CD0031D652 /* ConversationListViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		EA72AE451BD005CD0031D652 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE151BD005CD0031D652 /* ConversationViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EA72AE451BD005CD0031D652 /* ConversationHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE151BD005CD0031D652 /* ConversationHistoryViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EA72AE461BD005CD0031D652 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE171BD005CD0031D652 /* ChatsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EA72AE471BD005CD0031D652 /* ConnectionCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE181BD005CD0031D652 /* ConnectionCells.swift */; settings = {ASSET_TAGS = (); }; };
 		EA72AE481BD005CD0031D652 /* ChatHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE1A1BD005CD0031D652 /* ChatHistoryViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -217,6 +217,7 @@
 		EADE6CBE1BCF8AFC002F1216 /* UserViewModel+ATLParticipant.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADE6CBD1BCF8AFC002F1216 /* UserViewModel+ATLParticipant.swift */; settings = {ASSET_TAGS = (); }; };
 		EAE067201B71850F00A2FF76 /* MuteChecker.caf in Resources */ = {isa = PBXBuildFile; fileRef = EAE0671D1B71850F00A2FF76 /* MuteChecker.caf */; };
 		EAE067211B71850F00A2FF76 /* MuteChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = EAE0671F1B71850F00A2FF76 /* MuteChecker.m */; };
+		EAEDF7D91BD2E7B300037BA4 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAEDF7D81BD2E7B300037BA4 /* ConversationViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EAF44D011BC1C7BB005BE59E /* ReactiveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9FE6461B67F85E006F8E73 /* ReactiveTests.swift */; settings = {ASSET_TAGS = (); }; };
 		EAF81B131B325A6B00EED6DD /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5B74321B3139EA008E5CBC /* Core.framework */; };
 		EAF81B141B325A6B00EED6DD /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EA5B74321B3139EA008E5CBC /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -381,7 +382,7 @@
 		EA72AE101BD004270031D652 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		EA72AE131BD005CD0031D652 /* Conversation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Conversation.storyboard; sourceTree = "<group>"; };
 		EA72AE141BD005CD0031D652 /* ConversationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListViewController.swift; sourceTree = "<group>"; };
-		EA72AE151BD005CD0031D652 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
+		EA72AE151BD005CD0031D652 /* ConversationHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationHistoryViewController.swift; sourceTree = "<group>"; };
 		EA72AE171BD005CD0031D652 /* ChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
 		EA72AE181BD005CD0031D652 /* ConnectionCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionCells.swift; sourceTree = "<group>"; };
 		EA72AE1A1BD005CD0031D652 /* ChatHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatHistoryViewController.swift; sourceTree = "<group>"; };
@@ -484,6 +485,7 @@
 		EAE0671F1B71850F00A2FF76 /* MuteChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MuteChecker.m; sourceTree = "<group>"; };
 		EAE067221B71851E00A2FF76 /* AudioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
 		EAE1E07C1AE3788300F03F13 /* Globals.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Globals.swift; sourceTree = "<group>"; };
+		EAEDF7D81BD2E7B300037BA4 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		EAF6701C1B31E6550025D7CF /* Core.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Core.m; sourceTree = "<group>"; };
 		EAF670561B31F9450025D7CF /* Meteor+CoreData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Meteor+CoreData.swift"; sourceTree = "<group>"; };
 		EAF670571B31F9450025D7CF /* MeteorMethod.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorMethod.swift; sourceTree = "<group>"; };
@@ -883,7 +885,8 @@
 				EA72AE161BD005CD0031D652 /* Video */,
 				EA72AE131BD005CD0031D652 /* Conversation.storyboard */,
 				EA72AE141BD005CD0031D652 /* ConversationListViewController.swift */,
-				EA72AE151BD005CD0031D652 /* ConversationViewController.swift */,
+				EAEDF7D81BD2E7B300037BA4 /* ConversationViewController.swift */,
+				EA72AE151BD005CD0031D652 /* ConversationHistoryViewController.swift */,
 			);
 			path = Conversation;
 			sourceTree = "<group>";
@@ -1846,6 +1849,7 @@
 				EA72AE5D1BD005CD0031D652 /* IntegrationCell.swift in Sources */,
 				EA72AE621BD005CD0031D652 /* MeViewController.swift in Sources */,
 				EA42D64C1BB7BE4700B07526 /* Errors.swift in Sources */,
+				EAEDF7D91BD2E7B300037BA4 /* ConversationViewController.swift in Sources */,
 				EA72AE551BD005CD0031D652 /* CandidateCell.swift in Sources */,
 				EAA5761A1BB7EA2C00661A4F /* VerifyCodeViewController.swift in Sources */,
 				EA42D6541BB7C33100B07526 /* UpgradeService.swift in Sources */,
@@ -1873,7 +1877,7 @@
 				EA72AE641BD005CD0031D652 /* ActivityTextCell.swift in Sources */,
 				EA42D6551BB7C35100B07526 /* AccountService.swift in Sources */,
 				EA72AE5A1BD005CD0031D652 /* EditHashtagsViewController.swift in Sources */,
-				EA72AE451BD005CD0031D652 /* ConversationViewController.swift in Sources */,
+				EA72AE451BD005CD0031D652 /* ConversationHistoryViewController.swift in Sources */,
 				EA72AE5C1BD005CD0031D652 /* HashtagCell.swift in Sources */,
 				EA72AE481BD005CD0031D652 /* ChatHistoryViewController.swift in Sources */,
 				EA72AE631BD005CD0031D652 /* ActivityImageCell.swift in Sources */,

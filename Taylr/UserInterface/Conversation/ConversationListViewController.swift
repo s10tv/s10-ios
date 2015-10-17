@@ -47,7 +47,6 @@ class ConversationListViewController : ATLConversationListViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ConversationViewController {
-            vc.layerClient = layerClient
             vc.vm = vm.conversationVM(selectedConversation!)
         }
     }
