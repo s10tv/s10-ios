@@ -3,8 +3,12 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="Cabin-Bold.ttf">
+            <string>Cabin-Bold</string>
+        </mutableArray>
         <mutableArray key="Cabin-Italic.ttf">
             <string>Cabin-Italic</string>
         </mutableArray>
@@ -48,52 +52,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UsS-zH-v2N" userLabel="Producer Container">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSs-Bt-5Mh">
+                                <rect key="frame" x="0.0" y="540" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="60" id="2Rr-3D-1ZP"/>
+                                    <constraint firstAttribute="height" constant="60" id="LHx-N6-Lxw"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Cabin-Bold" family="Cabin" pointSize="50"/>
+                                <state key="normal" title="T">
+                                    <color key="titleColor" red="0.88235294119999996" green="0.87450980389999999" blue="0.87450980389999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
                                 <connections>
-                                    <segue destination="5i8-Ji-zll" kind="embed" id="57T-BP-89I"/>
+                                    <action selector="switchToHistory:" destination="Cmw-2y-C3I" eventType="touchUpInside" id="0ed-Ei-3ul"/>
                                 </connections>
-                            </containerView>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TXB-Qd-fGd">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="A89-0s-PHF">
-                                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                </view>
-                                <blurEffect style="light"/>
-                            </visualEffectView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OVn-fS-4dN">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="jff-6V-IXE" kind="embed" id="Ig1-pD-a9W"/>
-                                </connections>
-                            </containerView>
-                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JeX-km-jRU" userLabel="Receive Container">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <connections>
-                                    <segue destination="0ey-rb-p3h" kind="embed" id="cTG-80-oZJ"/>
-                                </connections>
-                            </containerView>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottom" secondItem="JeX-km-jRU" secondAttribute="bottom" id="3aV-GQ-SyY"/>
-                            <constraint firstAttribute="bottom" secondItem="OVn-fS-4dN" secondAttribute="bottom" id="6we-t0-F5T"/>
-                            <constraint firstAttribute="trailing" secondItem="JeX-km-jRU" secondAttribute="trailing" id="9aj-Rq-4hy"/>
-                            <constraint firstItem="OVn-fS-4dN" firstAttribute="leading" secondItem="3qq-bH-WYT" secondAttribute="leading" id="CWG-xg-vMo"/>
-                            <constraint firstAttribute="trailing" secondItem="OVn-fS-4dN" secondAttribute="trailing" id="How-bq-z7i"/>
-                            <constraint firstAttribute="bottom" secondItem="UsS-zH-v2N" secondAttribute="bottom" id="IRW-fx-aJ5"/>
-                            <constraint firstItem="JeX-km-jRU" firstAttribute="leading" secondItem="3qq-bH-WYT" secondAttribute="leading" id="IWi-HM-SKh"/>
-                            <constraint firstItem="JeX-km-jRU" firstAttribute="top" secondItem="3qq-bH-WYT" secondAttribute="top" id="KI9-Mt-mnk"/>
-                            <constraint firstItem="UsS-zH-v2N" firstAttribute="leading" secondItem="3qq-bH-WYT" secondAttribute="leading" id="Sdo-25-B0n"/>
-                            <constraint firstItem="TXB-Qd-fGd" firstAttribute="leading" secondItem="3qq-bH-WYT" secondAttribute="leading" id="WNB-fO-YrU"/>
-                            <constraint firstAttribute="trailing" secondItem="TXB-Qd-fGd" secondAttribute="trailing" id="dGW-8d-e0h"/>
-                            <constraint firstAttribute="top" secondItem="TXB-Qd-fGd" secondAttribute="top" id="er3-y5-qaR"/>
-                            <constraint firstAttribute="bottom" secondItem="TXB-Qd-fGd" secondAttribute="bottom" id="hMt-eD-wK7"/>
-                            <constraint firstAttribute="top" secondItem="UsS-zH-v2N" secondAttribute="top" id="quc-Mh-UzZ"/>
-                            <constraint firstAttribute="top" secondItem="OVn-fS-4dN" secondAttribute="top" id="wUb-0U-eT1"/>
-                            <constraint firstAttribute="trailing" secondItem="UsS-zH-v2N" secondAttribute="trailing" id="ybc-Id-6Q2"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="hSs-Bt-5Mh" secondAttribute="bottom" id="YZy-uW-PiY"/>
+                            <constraint firstItem="hSs-Bt-5Mh" firstAttribute="leading" secondItem="3qq-bH-WYT" secondAttribute="leading" id="dvx-as-BbQ"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Gu7-lQ-4Uy">
@@ -166,10 +143,8 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="avatarImageView" destination="vhE-2P-KGX" id="5f5-qe-4S0"/>
-                        <outlet property="chatHistoryContainer" destination="OVn-fS-4dN" id="2V6-q1-VJ2"/>
-                        <outlet property="producerContainer" destination="UsS-zH-v2N" id="KvI-CT-V8U"/>
-                        <outlet property="receiveContainer" destination="JeX-km-jRU" id="m3y-oh-ymK"/>
                         <outlet property="statusLabel" destination="nUT-z4-szJ" id="oKd-Qq-2DR"/>
+                        <outlet property="textSwitchButton" destination="hSs-Bt-5Mh" id="Pgi-sd-yDh"/>
                         <outlet property="titleLabel" destination="yGy-LP-rew" id="aRS-ZW-wOD"/>
                     </connections>
                 </viewController>
@@ -185,7 +160,7 @@
         <!--Conversation History View Controller-->
         <scene sceneID="43o-EX-2RE">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="jff-6V-IXE" customClass="ConversationHistoryViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController"/>
+                <viewController storyboardIdentifier="ChatHistory" hidesBottomBarWhenPushed="YES" id="jff-6V-IXE" customClass="ConversationHistoryViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pkP-sN-BdW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1742" y="2764"/>

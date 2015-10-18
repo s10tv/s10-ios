@@ -11,7 +11,13 @@ import ReactiveCocoa
 import Atlas
 import Core
 
+protocol ConversationHistoryDelegate: class {
+    func didTapOnCameraButton()
+}
+
 class ConversationHistoryViewController : ATLConversationViewController {
+    
+    weak var historyDelegate: ConversationHistoryDelegate?
     
     var vm: ConversationViewModel! {
         didSet { conversation = vm.conversation }
@@ -24,10 +30,17 @@ class ConversationHistoryViewController : ATLConversationViewController {
         dataSource = vm
     }
     
-    override func viewDidLayoutSubviews() {
+    override func viewWillLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        collectionView.contentInset = UIEdgeInsets(top: topLayoutGuide.length, left: 0,
-                                                bottom: bottomLayoutGuide.length, right: 0)
+        if collectionView.contentInset.top != topLayoutGuide.length {
+            collectionView.contentInset.top = topLayoutGuide.length
+        }
+    }
+    
+    // override (superclass implement this, but not visible to subclass because)
+    // it's not declared in the header file
+    func messageInputToolbar(messageInputToolbar: ATLMessageInputToolbar!, didTapLeftAccessoryButton leftAccessoryButton: UIButton!) {
+        historyDelegate?.didTapOnCameraButton()
     }
 }
 
