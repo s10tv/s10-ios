@@ -14,7 +14,7 @@ public class LayerService: NSObject {
     
     let meteor: MeteorService
     let unreadCount = MutableProperty(UInt(0))
-    let unreadQueryController: LYRQueryController
+    let unreadQueryController: LYRQueryController?
     public let layerClient: LYRClient
     
     public init(layerAppID: NSURL, meteor: MeteorService) {
@@ -22,11 +22,11 @@ public class LayerService: NSObject {
         layerClient = LYRClient(appID: layerAppID)
         let query = LYRQuery(queryableClass: LYRConversation.self)
         query.predicate = LYRPredicate(property: "hasUnreadMessages", predicateOperator: .IsEqualTo, value: true)
-        unreadQueryController = (try? layerClient.queryControllerWithQuery(query, error: ()))!
+        unreadQueryController = try? layerClient.queryControllerWithQuery(query, error: ())
         super.init()
-        unreadQueryController.delegate = self
-        _ = try? unreadQueryController.execute()
-        unreadCount.value = unreadQueryController.count()
+        unreadQueryController?.delegate = self
+        _ = try? unreadQueryController?.execute()
+        unreadCount.value = UInt(unreadQueryController?.count() ?? 0)
         layerClient.autodownloadMaximumContentSize = 50 * 1024 * 1024 // 50mb
         layerClient.backgroundContentTransferEnabled = true
         layerClient.diskCapacity = 300 * 1024 * 1024 // 300mb

@@ -29,7 +29,7 @@ class AnalyticsService {
         segment = AnalyticsSwift.Analytics.create(env.segmentWriteKey)
         amplitude = Amplitude.instance()
         amplitude.trackingSessionEvents = true
-        amplitude.initializeApiKey(env.amplitudeKey)
+//        amplitude.initializeApiKey(env.amplitudeKey)
         mixpanel = Mixpanel.sharedInstanceWithToken(env.mixpanelToken)
         UXCam.startWithKey(env.uxcamKey)
         
