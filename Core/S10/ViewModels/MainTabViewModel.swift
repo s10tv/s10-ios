@@ -21,8 +21,7 @@ public struct MainTabViewModel {
         prefetchedSubscriptions = [
             ctx.meteor.subscribe("me"),
             ctx.meteor.subscribe("candidate-discover"),
-            ctx.meteor.subscribe("my-hashtags"),
-            ctx.meteor.subscribe("chats"),
+            ctx.meteor.subscribe("my-hashtags")
         ]
         chatsBadge = ctx.layer.unreadCount.map { $0 > 0 ? "\($0)" : nil }
     }

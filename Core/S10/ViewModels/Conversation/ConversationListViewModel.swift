@@ -14,14 +14,10 @@ import LayerKit
 public class ConversationListViewModel: NSObject {
     
     let ctx: Context
-    let chatsSub: MeteorSubscription
-    let users: MeteorCollection
     public let changedConversations: Signal<LYRConversation, NoError>
     
     public init(_ ctx: Context) {
         self.ctx = ctx
-        chatsSub = ctx.meteor.subscribe("chats")
-        users = ctx.meteor.collection("users")
         
         let (signal, _) = Signal<LYRConversation, NoError>.pipe()
         changedConversations = signal.observeOn(UIScheduler())
