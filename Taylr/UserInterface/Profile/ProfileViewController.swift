@@ -80,7 +80,6 @@ class ProfileViewController : BaseViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ConversationViewController {
-            vc.layerClient = MainContext.layer.layerClient
             vc.vm = vm.conversationVM()
             Analytics.track("Profile: TapMessage")
         }

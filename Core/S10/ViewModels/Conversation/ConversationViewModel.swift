@@ -10,6 +10,7 @@ import Foundation
 import ReactiveCocoa
 import LayerKit
 
+
 public class ConversationViewModel: NSObject {
     
     let ctx: Context
@@ -38,6 +39,71 @@ public class ConversationViewModel: NSObject {
         return conversation.recipient(ctx.meteor.mainContext, currentUserId: ctx.currentUserId)
     }
     
+    // MARK: -
+    
+    public func sendVideo(url: NSURL, thumbnail: UIImage, duration: NSTimeInterval) {
+        do {
+            let metadata = try NSJSONSerialization.dataWithJSONObject([
+                "duration": duration,
+                "width": Int(thumbnail.size.width * thumbnail.scale),
+                "height": Int(thumbnail.size.height * thumbnail.scale),
+            ], options: [])
+            let videoPart = LYRMessagePart(MIMEType: "video/mp4", stream: NSInputStream(URL: url))
+            let thumbPart = LYRMessagePart(MIMEType: "image/jpeg+preview", data: UIImageJPEGRepresentation(thumbnail, 0.8))
+            let metaPart = LYRMessagePart(MIMEType: "application/json+imageSize", data: metadata)
+            
+            let pushConfig = LYRPushNotificationConfiguration()
+            let senderName = ctx.meteor.user.value?.displayName() ?? "Someone"
+            pushConfig.alert = "\(senderName) sent you a new video."
+            pushConfig.sound = "layerbell.caf"
+            
+            let message = try ctx.layer.layerClient.newMessageWithParts([videoPart, thumbPart, metaPart], options: [
+                LYRMessageOptionsPushNotificationConfigurationKey: pushConfig
+            ])
+            try conversation.sendMessage(message)
+        } catch let error as NSError {
+            Log.error("Unable to send video", error)
+        }
+    }
+    
+    public func unplayedVideos() -> [VideoMessageViewModel]? {
+        return ctx.layer.unplayedVideoMessages(conversation).map { videoForMessage($0)! }
+    }
+    
+    public func videoForMessage(message: LYRMessage) -> VideoMessageViewModel? {
+        if let videoURL = message.videoPart?.fileURL,
+            let metadata = message.metadataPart?.asJson() as? NSDictionary {
+                let duration = (metadata["duration"] as? NSTimeInterval) ?? 0
+                return VideoMessageViewModel(identifier: message.identifier.absoluteString, url: videoURL, duration: duration)
+        }
+        return nil
+    }
+    
+    public func markAllMessagesAsRead() {
+        _ = try? conversation.markAllMessagesAsRead()
+    }
+    
+    public func markMessageAsRead(message: LYRMessage) {
+        _ = try? message.markAsRead()
+    }
+    
+    public func markAllNonVideoMessagesAsRead() {
+        let query = LYRQuery(queryableClass: LYRMessage.self)
+        query.predicate = LYRCompoundPredicate(type: .And, subpredicates: [
+            LYRPredicate(property: "parts.MIMEType", predicateOperator: .IsNotEqualTo, value: kMIMETypeVideo),
+            LYRPredicate(property: "conversation", predicateOperator: .IsEqualTo, value: conversation),
+            LYRPredicate(property: "isUnread", predicateOperator: .IsEqualTo, value: true),
+        ])
+        do {
+            let messages = try ctx.layer.layerClient.executeQuery(query).map { $0 as! LYRMessage }
+            for message in messages {
+                try message.markAsRead()
+            }
+        } catch let error as NSError {
+            Log.error("Unable to find unread non-video messages", error)
+        }
+    }
+    
     public func getUser(userId: String) -> UserViewModel? {
         if let u = ctx.meteor.mainContext.existingObjectInCollection("users", documentID: userId) as? User {
             return UserViewModel(user: u)
@@ -55,6 +121,10 @@ public class ConversationViewModel: NSObject {
         if let u = user() {
             ctx.meteor.blockUser(u)
         }
+    }
+    
+    public func receiveVM() -> ReceiveViewModel {
+        return ReceiveViewModel(ctx, conversation: conversation)
     }
     
     public func profileVM() -> ProfileViewModel? {

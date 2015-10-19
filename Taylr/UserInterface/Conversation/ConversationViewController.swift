@@ -2,34 +2,94 @@
 //  ConversationViewController.swift
 //  S10
 //
-//  Created by Tony Xiao on 10/14/15.
+//  Created by Tony Xiao on 10/17/15.
 //  Copyright © 2015 S10. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import ReactiveCocoa
 import Atlas
 import Core
 
-class ConversationViewController : ATLConversationViewController {
+private let sb = UIStoryboard(name: "Conversation", bundle: nil)
 
-    @IBOutlet weak var avatarView: UIImageView!
+class ConversationViewController : UIViewController {
+
+    @IBOutlet weak var textSwitchButton: UIButton!
+    @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var chatHistoryContainer: UIView!
     
-    var vm: ConversationViewModel! {
-        didSet { conversation = vm.conversation }
+    private(set) var chatHistoryVC: ConversationHistoryViewController!
+    let producerVC = sb.makeViewController(.Producer) as! ProducerViewController
+    let receiveVC = sb.makeViewController(.Receive) as! ReceiveViewController
+    
+    var vm: ConversationViewModel!
+    var overlayVC: UIViewController? {
+        didSet {
+            if isViewLoaded() {
+                if let oldVC = oldValue {
+                    oldVC.willMoveToParentViewController(nil)
+                    oldVC.view.removeFromSuperview()
+                    oldVC.removeFromParentViewController()
+                }
+                if let newVC = overlayVC {
+                    assert([producerVC, receiveVC].contains(newVC), "overlay must be either producerVC or receiveVC")
+                    chatHistoryVC.messageInputToolbar.hidden = true
+                    chatHistoryVC.messageInputToolbar.textInputView.resignFirstResponder()
+                    navigationController?.navigationBar.setBackgroundColor(UIColor(white: 0.5, alpha: 0.4))
+                    
+                    addChildViewController(newVC)
+                    newVC.view.frame = view.bounds
+                    view.insertSubview(newVC.view, aboveSubview: chatHistoryContainer)
+                    newVC.view.makeEdgesEqualTo(view)
+                    newVC.didMoveToParentViewController(self)
+                } else {
+                    chatHistoryVC.messageInputToolbar.hidden = false
+                    chatHistoryVC.messageInputToolbar.textInputView.becomeFirstResponder()
+                    navigationController?.navigationBar.setBackgroundColor(nil)
+                }
+                // More of a hack here.
+                textSwitchButton.hidden = (overlayVC != producerVC)
+            }
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        view.backgroundColor = UIColor(hex: 0xF2F2F6)
-        messageInputToolbar.textInputView.font = UIFont(.cabinRegular, size: 17)
         
-        avatarView.sd_image <~ vm.avatar
+        // This is necessary because otherwise during child viewWillAppear
+        // the childVC's view will have the wrong frame
+        avatarImageView.sd_image <~ vm.avatar
         titleLabel.rac_text <~ vm.displayName
         statusLabel.rac_text <~ vm.displayStatus
-        dataSource = vm
+        
+        producerVC.producerDelegate = self
+        
+        receiveVC.vm = vm.receiveVM()
+        receiveVC.delegate = self
+        
+        chatHistoryVC.view.makeEdgesEqualTo(chatHistoryContainer)
+        
+        if receiveVC.vm.playlist.array.count > 0 {
+            overlayVC = receiveVC
+        } else {
+            overlayVC = producerVC
+        }
+    }
+
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.setBackgroundColor(UIColor(white: 0.5, alpha: 0.4))
+        if let view = navigationItem.titleView {
+            view.bounds.size = view.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
+        }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.navigationBar.setBackgroundColor(nil)
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
@@ -41,15 +101,25 @@ class ConversationViewController : ATLConversationViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let vc = segue.destinationViewController as? ConversationHistoryViewController {
+            assert(vm != nil, "Conversation ViewModel must be set before prepareForSegue is called")
+            // TODO: Figure out some better way to do this
+            vc.layerClient = MainContext.layer.layerClient
+            vc.marksMessagesAsRead = false
+            vc.vm = vm
+            vc.delegate = self
+            vc.historyDelegate = self
+            chatHistoryVC = vc
+        }
         if let vc = segue.destinationViewController as? ProfileViewController {
             vc.vm = vm.profileVM()
         }
     }
     
-    // MARK: - Actions
+    // MARK: -
     
-    @IBAction func didTapBackButton(sender: AnyObject) {
-        navigationController?.popViewControllerAnimated(true)
+    @IBAction func switchToHistory(sender: AnyObject) {
+        overlayVC = nil
     }
     
     @IBAction func showMoreOptions(sender: AnyObject) {
@@ -98,21 +168,42 @@ class ConversationViewController : ATLConversationViewController {
     }
 }
 
-// MARK: - ATLConversationViewControllerDataSource
-
-extension ConversationViewModel : ATLConversationViewControllerDataSource {
-    
-    public func conversationViewController(conversationViewController: ATLConversationViewController!, participantForIdentifier participantIdentifier: String!) -> ATLParticipant! {
-        return getUser(participantIdentifier)
+extension ConversationViewController : ProducerDelegate {
+    func producerWillStartRecording(producer: ProducerViewController) {
     }
     
-    public func conversationViewController(conversationViewController: ATLConversationViewController!, attributedStringForDisplayOfDate date: NSDate!) -> NSAttributedString! {
-        return Formatters.attributedStringForDate(date)
+    func producerDidCancelRecording(producer: ProducerViewController) {
     }
     
-    public func conversationViewController(conversationViewController: ATLConversationViewController!, attributedStringForDisplayOfRecipientStatus recipientStatus: [NSObject : AnyObject]!) -> NSAttributedString! {
-        return Formatters.attributedStringForDisplayOfRecipientStatus(recipientStatus, ctx: MainContext)
+    func producer(producer: ProducerViewController, didProduceVideo video: VideoSession, duration: NSTimeInterval) {
+        wrapFuture(showProgress: true) {
+            video.exportWithFirstFrame().onSuccess { (url, thumbnail) in
+                Analytics.track("Message: Send", ["ConversationName": self.vm.displayName.value])
+                self.vm.sendVideo(url, thumbnail: thumbnail, duration: duration)
+            }
+        }
     }
-    
 }
 
+extension ConversationViewController : ATLConversationViewControllerDelegate {
+    func conversationViewController(viewController: ATLConversationViewController!, didSelectMessage message: LYRMessage!) {
+        if let video = vm.videoForMessage(message) {
+            receiveVC.vm.playlist.array = [video]
+            overlayVC = receiveVC
+        }
+    }
+}
+
+extension ConversationViewController : ConversationHistoryDelegate {
+    func didTapOnCameraButton() {
+        overlayVC = producerVC
+    }
+}
+
+extension ConversationViewController : ReceiveViewControllerDelegate {
+    func didFinishPlaylist(receiveVC: ReceiveViewController) {
+        overlayVC = producerVC
+        // TODO: This semantic is not correct for non-text based messages
+        vm.markAllMessagesAsRead()
+    }
+}

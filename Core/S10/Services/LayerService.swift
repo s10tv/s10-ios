@@ -76,6 +76,21 @@ public class LayerService: NSObject {
         }
     }
     
+    func unplayedVideoMessages(conversation: LYRConversation) -> [LYRMessage] {
+        let query = LYRQuery(queryableClass: LYRMessage.self)
+        query.predicate = LYRCompoundPredicate(type: .And, subpredicates: [
+            LYRPredicate(property: "parts.MIMEType", predicateOperator: .IsEqualTo, value: kMIMETypeVideo),
+            LYRPredicate(property: "conversation", predicateOperator: .IsEqualTo, value: conversation),
+            LYRPredicate(property: "isUnread", predicateOperator: .IsEqualTo, value: true),
+        ])
+        do {
+            return try layerClient.executeQuery(query).map { $0 as! LYRMessage }
+        } catch let error as NSError {
+            Log.error("Unable to find video messages", error)
+            return []
+        }
+    }
+    
     // MARK: -
     
     private func syncWithUser(userId: String?) -> SignalProducer<String?, NSError> {
@@ -110,5 +125,32 @@ public class LayerService: NSObject {
 extension LayerService : LYRQueryControllerDelegate {
     public func queryControllerDidChangeContent(queryController: LYRQueryController!) {
         unreadCount.value = queryController.count()
+    }
+}
+
+extension LayerService : LYRClientDelegate {
+    public func layerClient(client: LYRClient!, didReceiveAuthenticationChallengeWithNonce nonce: String!) {
+        meteor.layerAuth(nonce).producer.flatMap(.Concat) { identityToken in
+            self.layerClient.authenticate(identityToken)
+        }.start(Event.sink(error: { error in
+            Log.error("Unable to update user in Layer session", error)
+        }, next: { userId in
+            Log.info("Updated user in Layer session userId=\(userId)")
+        }))
+    }
+    
+    public func layerClient(client: LYRClient!, objectsDidChange changes: [AnyObject]!) {
+    }
+    
+    public func layerClient(client: LYRClient!, willBeginContentTransfer contentTransferType: LYRContentTransferType, ofObject object: AnyObject!, withProgress progress: LYRProgress!) {
+        Log.debug("Will begin \(contentTransferType) \(object)")
+    }
+    
+    public func layerClient(client: LYRClient!, didFinishContentTransfer contentTransferType: LYRContentTransferType, ofObject object: AnyObject!) {
+        Log.debug("did finish \(contentTransferType) \(object)")
+    }
+    
+    public func layerClient(client: LYRClient!, didFailOperationWithError error: NSError!) {
+        Log.error("Layer failed to perform operation", error)
     }
 }

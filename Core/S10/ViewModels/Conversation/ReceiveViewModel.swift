@@ -7,22 +7,28 @@
 //
 
 import Foundation
+import LayerKit
 import ReactiveCocoa
 
 public class ReceiveViewModel {
-    private let meteor: MeteorService
+    private let ctx: Context
     
-    public let playlist: ArrayProperty<MessageViewModel>
+    public let playlist: ArrayProperty<VideoMessageViewModel>
     public let totalDurationLeft: PropertyOf<String>
-    public let currentVideo: PropertyOf<MessageViewModel?>
+    public let currentVideo: PropertyOf<VideoMessageViewModel?>
     public let currentVideoProgress: PropertyOf<Float>
     public let currentVideoPosition = MutableProperty<NSTimeInterval>(0)
     public let isPlaying = MutableProperty(false)
     
-    init(meteor: MeteorService, conversation: Conversation) {
-        self.meteor = meteor
-        playlist = conversation.unreadPlayableMessagesProperty(meteor)
-        currentVideo = PropertyOf(nil, playlist.producer.map { $0.first }.skipRepeats { $0 == $1 })
+    init(_ ctx: Context, conversation: LYRConversation) {
+        self.ctx = ctx
+        let videos = ctx.layer.unplayedVideoMessages(conversation).map { msg -> VideoMessageViewModel in
+            let parts = msg.parts.map { $0 as! LYRMessagePart }
+            return VideoMessageViewModel(identifier: msg.identifier.absoluteString, url: parts.first!.fileURL, duration: 5)
+        }
+        playlist = ArrayProperty(videos)
+        currentVideo = PropertyOf(nil, playlist.producer.map { $0.first }
+            .skipRepeats { $0?.identifier == $1?.identifier })
         currentVideoProgress = PropertyOf(0, combineLatest(
             currentVideo.producer,
             currentVideoPosition.producer
@@ -40,8 +46,8 @@ public class ReceiveViewModel {
     }
     
     public func seekNextVideo() -> Bool {
-        if let video = playlist.dequeue() {
-            meteor.openMessage(video.message)
+        if let _ = playlist.dequeue() {
+//            meteor.openMessage(video.message)
         }
         return currentVideo.value != nil
     }

@@ -100,11 +100,11 @@ class ReceiveViewController : UIViewController {
     }
     
     @IBAction func advance() {
-        if let message = vm.currentVideo.value {
-            Analytics.track("Message: Open", [
-                "MessageId": message.messageId
-            ])
-        }
+//        if let message = vm.currentVideo.value {
+//            Analytics.track("Message: Open", [
+//                "MessageId": message.messageId
+//            ])
+//        }
         if vm.seekNextVideo() {
             Async.main { self.player.play() }
         } else {

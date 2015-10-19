@@ -27,8 +27,9 @@ class ProducerViewController : UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        recorderVC = makeViewController(.Recorder) as! RecorderViewController
-        editorVC = makeViewController(.Editor) as! EditorViewController
+        let sb = UIStoryboard(name: "VideoConversation", bundle: nil)
+        recorderVC = sb.instantiateViewControllerWithIdentifier("Recorder") as! RecorderViewController
+        editorVC = sb.instantiateViewControllerWithIdentifier("Editor") as! EditorViewController
         recorderVC.delegate = self
         editorVC.delegate = self
         

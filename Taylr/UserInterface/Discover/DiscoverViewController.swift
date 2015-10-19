@@ -65,7 +65,6 @@ class DiscoverViewController : BaseViewController {
             Analytics.track("Today: TapProfile")
         }
         if let vc = segue.destinationViewController as? ConversationViewController {
-            vc.layerClient = MainContext.layer.layerClient
             vc.vm = vm.conversationVM()
             Analytics.track("Today: TapMessage")
         }
