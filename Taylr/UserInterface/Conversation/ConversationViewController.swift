@@ -23,8 +23,8 @@ class ConversationViewController : UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var swipeView: SwipeView!
-    @IBOutlet weak var producerContainer: UIView!
-    @IBOutlet weak var chatHistoryContainer: UIView!
+    @IBOutlet var producerContainer: UIView!
+    @IBOutlet var chatHistoryContainer: UIView!
     
     private(set) var chatHistory: ChatHistoryViewController!
     private(set) var videoMaker: ProducerViewController!
@@ -68,7 +68,6 @@ class ConversationViewController : UIViewController {
         
         [chatHistoryContainer, producerContainer].each {
             $0.bounds = view.bounds
-            $0.removeFromSuperview()
             $0.translatesAutoresizingMaskIntoConstraints = true
         }
         

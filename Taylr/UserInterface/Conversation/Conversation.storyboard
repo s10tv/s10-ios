@@ -34,7 +34,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ypg-6a-J9B" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1769" y="1957"/>
+            <point key="canvasLocation" x="388" y="2764"/>
         </scene>
         <!--Conversation View Controller-->
         <scene sceneID="mKC-vm-aIf">
@@ -51,81 +51,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J9N-g4-ZBf" customClass="SwipeView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vaa-23-fm2" userLabel="Producer Container">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <subviews>
-                                    <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m34-xv-ufL" userLabel="New Messages Hint">
-                                        <rect key="frame" x="232" y="100" width="135" height="30"/>
-                                        <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="new messages" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="80" translatesAutoresizingMaskIntoConstraints="NO" id="lfn-tw-Cq9">
-                                                <rect key="frame" x="34" y="6" width="86" height="18"/>
-                                                <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
-                                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-down-chevron-small" translatesAutoresizingMaskIntoConstraints="NO" id="4m6-VH-o6V">
-                                                <rect key="frame" x="15" y="9" width="11" height="12"/>
-                                            </imageView>
-                                        </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
-                                        <gestureRecognizers/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="3Mq-2x-U1r"/>
-                                            <constraint firstItem="lfn-tw-Cq9" firstAttribute="leading" secondItem="4m6-VH-o6V" secondAttribute="trailing" constant="8" id="Ali-Tx-ken"/>
-                                            <constraint firstAttribute="centerY" secondItem="4m6-VH-o6V" secondAttribute="centerY" id="Cb9-an-MOv"/>
-                                            <constraint firstAttribute="centerY" secondItem="lfn-tw-Cq9" secondAttribute="centerY" id="LjD-p8-b1B"/>
-                                            <constraint firstItem="4m6-VH-o6V" firstAttribute="leading" secondItem="m34-xv-ufL" secondAttribute="leading" constant="15" id="bCy-z9-RII"/>
-                                            <constraint firstAttribute="trailing" secondItem="lfn-tw-Cq9" secondAttribute="trailing" constant="15" id="hYW-3D-gdl"/>
-                                        </constraints>
-                                        <userDefinedRuntimeAttributes>
-                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                                <real key="value" value="3"/>
-                                            </userDefinedRuntimeAttribute>
-                                        </userDefinedRuntimeAttributes>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="m34-xv-ufL" secondAttribute="centerX" id="2d3-k9-yIq"/>
-                                    <constraint firstItem="m34-xv-ufL" firstAttribute="top" secondItem="Vaa-23-fm2" secondAttribute="top" constant="100" id="oon-Kr-EsO"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vCJ-rY-C3m" userLabel="Chat History Container">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-photo" translatesAutoresizingMaskIntoConstraints="NO" id="TJc-dA-VpJ" userLabel="Cover Image">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                    </imageView>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jmg-YA-whJ" userLabel="Cover Overlay">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </view>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstItem="TJc-dA-VpJ" firstAttribute="leading" secondItem="vCJ-rY-C3m" secondAttribute="leading" id="0pV-64-pDe"/>
-                                    <constraint firstItem="Jmg-YA-whJ" firstAttribute="trailing" secondItem="TJc-dA-VpJ" secondAttribute="trailing" id="5eR-cD-CP3"/>
-                                    <constraint firstItem="Jmg-YA-whJ" firstAttribute="top" secondItem="TJc-dA-VpJ" secondAttribute="top" id="RDJ-KJ-Uby"/>
-                                    <constraint firstAttribute="trailing" secondItem="TJc-dA-VpJ" secondAttribute="trailing" id="S61-bQ-hPm"/>
-                                    <constraint firstItem="TJc-dA-VpJ" firstAttribute="top" secondItem="vCJ-rY-C3m" secondAttribute="top" id="TCx-F5-Wqy"/>
-                                    <constraint firstItem="Jmg-YA-whJ" firstAttribute="leading" secondItem="TJc-dA-VpJ" secondAttribute="leading" id="bEW-Ye-gha"/>
-                                    <constraint firstAttribute="bottom" secondItem="TJc-dA-VpJ" secondAttribute="bottom" id="hse-dH-XoD"/>
-                                    <constraint firstItem="Jmg-YA-whJ" firstAttribute="bottom" secondItem="TJc-dA-VpJ" secondAttribute="bottom" id="up0-Vl-we6"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="J9N-g4-ZBf" firstAttribute="bottom" secondItem="vCJ-rY-C3m" secondAttribute="bottom" id="47w-Xi-Xcl"/>
-                            <constraint firstItem="Vaa-23-fm2" firstAttribute="bottom" secondItem="J9N-g4-ZBf" secondAttribute="bottom" id="67M-UI-gB7"/>
-                            <constraint firstItem="J9N-g4-ZBf" firstAttribute="trailing" secondItem="vCJ-rY-C3m" secondAttribute="trailing" id="6ZG-PX-m0d"/>
-                            <constraint firstItem="Vaa-23-fm2" firstAttribute="top" secondItem="J9N-g4-ZBf" secondAttribute="top" id="ETM-z0-Zeh"/>
                             <constraint firstAttribute="top" secondItem="J9N-g4-ZBf" secondAttribute="top" id="FWU-q5-FU2"/>
-                            <constraint firstItem="J9N-g4-ZBf" firstAttribute="leading" secondItem="vCJ-rY-C3m" secondAttribute="leading" id="JHD-X7-cNn"/>
                             <constraint firstItem="J9N-g4-ZBf" firstAttribute="leading" secondItem="3qq-bH-WYT" secondAttribute="leading" id="Veh-BS-teO"/>
-                            <constraint firstItem="Vaa-23-fm2" firstAttribute="leading" secondItem="J9N-g4-ZBf" secondAttribute="leading" id="WQo-au-xEi"/>
                             <constraint firstAttribute="bottom" secondItem="J9N-g4-ZBf" secondAttribute="bottom" id="ahz-JK-eAp"/>
                             <constraint firstAttribute="trailing" secondItem="J9N-g4-ZBf" secondAttribute="trailing" id="pL0-d2-D1t"/>
-                            <constraint firstItem="Vaa-23-fm2" firstAttribute="trailing" secondItem="J9N-g4-ZBf" secondAttribute="trailing" id="sIh-91-5KF"/>
-                            <constraint firstItem="J9N-g4-ZBf" firstAttribute="top" secondItem="vCJ-rY-C3m" secondAttribute="top" id="xQw-eF-GCF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Gu7-lQ-4Uy">
@@ -195,7 +127,7 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <connections>
                         <outlet property="avatarImageView" destination="vhE-2P-KGX" id="5f5-qe-4S0"/>
                         <outlet property="chatHistoryContainer" destination="vCJ-rY-C3m" id="FNC-4T-c66"/>
@@ -207,13 +139,75 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Blv-WO-ctj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <view contentMode="scaleToFill" id="vCJ-rY-C3m" userLabel="Chat History Container">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sample-photo" translatesAutoresizingMaskIntoConstraints="NO" id="TJc-dA-VpJ" userLabel="Cover Image">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        </imageView>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Jmg-YA-whJ" userLabel="Cover Overlay">
+                            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="TJc-dA-VpJ" firstAttribute="leading" secondItem="vCJ-rY-C3m" secondAttribute="leading" id="0pV-64-pDe"/>
+                        <constraint firstItem="Jmg-YA-whJ" firstAttribute="trailing" secondItem="TJc-dA-VpJ" secondAttribute="trailing" id="5eR-cD-CP3"/>
+                        <constraint firstItem="Jmg-YA-whJ" firstAttribute="top" secondItem="TJc-dA-VpJ" secondAttribute="top" id="RDJ-KJ-Uby"/>
+                        <constraint firstAttribute="trailing" secondItem="TJc-dA-VpJ" secondAttribute="trailing" id="S61-bQ-hPm"/>
+                        <constraint firstItem="TJc-dA-VpJ" firstAttribute="top" secondItem="vCJ-rY-C3m" secondAttribute="top" id="TCx-F5-Wqy"/>
+                        <constraint firstItem="Jmg-YA-whJ" firstAttribute="leading" secondItem="TJc-dA-VpJ" secondAttribute="leading" id="bEW-Ye-gha"/>
+                        <constraint firstAttribute="bottom" secondItem="TJc-dA-VpJ" secondAttribute="bottom" id="hse-dH-XoD"/>
+                        <constraint firstItem="Jmg-YA-whJ" firstAttribute="bottom" secondItem="TJc-dA-VpJ" secondAttribute="bottom" id="up0-Vl-we6"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" id="Vaa-23-fm2" userLabel="Producer Container">
+                    <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <subviews>
+                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m34-xv-ufL" userLabel="New Messages Hint">
+                            <rect key="frame" x="232" y="100" width="135" height="30"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="new messages" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="80" translatesAutoresizingMaskIntoConstraints="NO" id="lfn-tw-Cq9">
+                                    <rect key="frame" x="34" y="6" width="86" height="18"/>
+                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
+                                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic-down-chevron-small" translatesAutoresizingMaskIntoConstraints="NO" id="4m6-VH-o6V">
+                                    <rect key="frame" x="15" y="9" width="11" height="12"/>
+                                </imageView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.5" colorSpace="calibratedWhite"/>
+                            <gestureRecognizers/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="30" id="3Mq-2x-U1r"/>
+                                <constraint firstItem="lfn-tw-Cq9" firstAttribute="leading" secondItem="4m6-VH-o6V" secondAttribute="trailing" constant="8" id="Ali-Tx-ken"/>
+                                <constraint firstAttribute="centerY" secondItem="4m6-VH-o6V" secondAttribute="centerY" id="Cb9-an-MOv"/>
+                                <constraint firstAttribute="centerY" secondItem="lfn-tw-Cq9" secondAttribute="centerY" id="LjD-p8-b1B"/>
+                                <constraint firstItem="4m6-VH-o6V" firstAttribute="leading" secondItem="m34-xv-ufL" secondAttribute="leading" constant="15" id="bCy-z9-RII"/>
+                                <constraint firstAttribute="trailing" secondItem="lfn-tw-Cq9" secondAttribute="trailing" constant="15" id="hYW-3D-gdl"/>
+                            </constraints>
+                            <userDefinedRuntimeAttributes>
+                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                    <real key="value" value="3"/>
+                                </userDefinedRuntimeAttribute>
+                            </userDefinedRuntimeAttributes>
+                        </view>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="centerX" secondItem="m34-xv-ufL" secondAttribute="centerX" id="2d3-k9-yIq"/>
+                        <constraint firstItem="m34-xv-ufL" firstAttribute="top" secondItem="Vaa-23-fm2" secondAttribute="top" constant="100" id="oon-Kr-EsO"/>
+                    </constraints>
+                </view>
                 <tapGestureRecognizer id="HBc-h4-yqZ" userLabel="Tap To View Profile">
                     <connections>
                         <segue destination="YOL-w6-TDH" kind="show" identifier="ConversationToProfile" id="QdA-OI-TGO"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1038" y="2764"/>
+            <point key="canvasLocation" x="1028" y="2764"/>
         </scene>
         <!--Chat History View Controller-->
         <scene sceneID="43o-EX-2RE">
@@ -221,7 +215,7 @@
                 <viewController storyboardIdentifier="ChatHistory" hidesBottomBarWhenPushed="YES" id="jff-6V-IXE" customClass="ChatHistoryViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pkP-sN-BdW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1038" y="3433"/>
+            <point key="canvasLocation" x="688" y="3433"/>
         </scene>
         <!--Profile-->
         <scene sceneID="6zZ-zY-aab">
@@ -337,7 +331,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="398" y="2764"/>
+            <point key="canvasLocation" x="1310" y="3433"/>
         </scene>
     </scenes>
     <resources>

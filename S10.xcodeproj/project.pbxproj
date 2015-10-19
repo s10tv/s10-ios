@@ -849,10 +849,10 @@
 			isa = PBXGroup;
 			children = (
 				EA09899A1BD4CF3D0014F71C /* VideoPlayer */,
+				EA72AE151BD005CD0031D652 /* ChatHistoryViewController.swift */,
 				EA72AE131BD005CD0031D652 /* Conversation.storyboard */,
 				EA72AE141BD005CD0031D652 /* ConversationListViewController.swift */,
 				EAEDF7D81BD2E7B300037BA4 /* ConversationViewController.swift */,
-				EA72AE151BD005CD0031D652 /* ChatHistoryViewController.swift */,
 			);
 			path = Conversation;
 			sourceTree = "<group>";
