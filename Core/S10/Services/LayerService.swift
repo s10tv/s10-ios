@@ -28,6 +28,17 @@ public class LayerService: NSObject {
         unreadQueryController?.delegate = self
         _ = try? unreadQueryController?.execute()
         unreadCount.value = UInt(unreadQueryController?.count() ?? 0)
+        layerClient.objectChanges().startWithNext {  changes in
+            print("****** object changes count \(changes.count) *******")
+        }
+//        SignalProducer(values: [
+//            layerClient.contentTransferStarts(),
+//            layerClient.contentTransferEnds()
+//        ]).flatten(.Merge).startWithNext { update in
+//            let count = self.countUploads()
+//            let downloads = self.countDownloads()
+//            print("Number of uploads \(count) downloads \(downloads)")
+//        }
     }
     
     // TODO: Careful this method if not disposed will retain self
@@ -194,9 +205,9 @@ extension LayerService : LYRClientDelegate {
     
     public func layerClient(client: LYRClient!, objectsDidChange changes: [AnyObject]!) {
         Log.debug("Layer objects did change \(changes)")
-        let count = countUploads()
-        let downloads = countDownloads()
-        print("Number of uploads \(count) downloads \(downloads)")
+//        let count = countUploads()
+//        let downloads = countDownloads()
+//        print("Number of uploads \(count) downloads \(downloads)")
 //        do {
 //            let msgs = try layerClient.executeQuery(LYRQuery.downloadingMessages())
 //            print("msgs \(msgs)")

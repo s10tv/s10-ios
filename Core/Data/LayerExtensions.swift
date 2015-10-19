@@ -17,6 +17,23 @@ let kMIMETypeVideo = "video/mp4"
 let kMIMETypeThumbnail = "image/jpeg+preview"
 let kMIMETypeMetadata = "application/json+imageSize"
 
+struct ContentTransferUpdate {
+    enum Kind {
+        case WillBegin(LYRProgress), DidFinish
+    }
+    let kind: Kind
+    let type: LYRContentTransferType
+    let object: AnyObject
+    var progress: LYRProgress? {
+        switch kind {
+        case .WillBegin(let progress):
+            return progress
+        default:
+            return nil
+        }
+    }
+}
+
 extension LYRMessage {
     public var messageParts: [LYRMessagePart] {
         return parts.map { $0 as! LYRMessagePart }
@@ -129,6 +146,58 @@ extension LYRClient {
             throw error
         }
         return count
+    }
+    
+    // MARK: Notifications
+    
+    func syncStarts() -> SignalProducer<NSNotification, NoError> {
+        return NSNotificationCenter.defaultCenter()
+            .rac_notifications(LYRClientWillBeginSynchronizationNotification, object: self)
+    }
+    
+    func syncEnds() -> SignalProducer<NSNotification, NoError> {
+        return NSNotificationCenter.defaultCenter()
+            .rac_notifications(LYRClientDidFinishSynchronizationNotification, object: self)
+    }
+    
+    func objectChanges() -> SignalProducer<[LYRObjectChange], NoError> {
+        return NSNotificationCenter.defaultCenter()
+            .rac_notifications(LYRClientObjectsDidChangeNotification, object: self)
+            .map { note in
+                if let changes = note.userInfo?[LYRClientObjectChangesUserInfoKey] as? [LYRObjectChange] {
+                    return changes
+                }
+                return []
+            }
+    }
+    
+    func contentTransferStarts() -> SignalProducer<ContentTransferUpdate, NoError> {
+        return NSNotificationCenter.defaultCenter()
+            .rac_notifications(LYRClientWillBeginContentTransferNotification, object: self)
+            .flatMap(.Merge) { note in
+                if let rawType = note.userInfo?[LYRClientContentTransferTypeUserInfoKey] as? Int,
+                    let type = LYRContentTransferType(rawValue: rawType),
+                    let object = note.userInfo?[LYRClientContentTransferObjectUserInfoKey],
+                    let progress = note.userInfo?[LYRClientContentTransferProgressUserInfoKey] as? LYRProgress {
+                        let update = ContentTransferUpdate(kind: .WillBegin(progress), type: type, object: object)
+                        return SignalProducer(value: update)
+                }
+                return .empty
+            }
+    }
+    
+    func contentTransferEnds() -> SignalProducer<ContentTransferUpdate, NoError> {
+        return NSNotificationCenter.defaultCenter()
+            .rac_notifications(LYRClientDidFinishContentTransferNotification, object: self)
+            .flatMap(.Merge) { note in
+                if let rawType = note.userInfo?[LYRClientContentTransferTypeUserInfoKey] as? Int,
+                    let type = LYRContentTransferType(rawValue: rawType),
+                    let object = note.userInfo?[LYRClientContentTransferObjectUserInfoKey] {
+                        let update = ContentTransferUpdate(kind: .DidFinish, type: type, object: object)
+                        return SignalProducer(value: update)
+                }
+                return .empty
+        }
     }
 }
 
