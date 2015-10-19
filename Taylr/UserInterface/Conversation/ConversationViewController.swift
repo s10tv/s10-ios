@@ -127,8 +127,8 @@ class ConversationViewController : UIViewController {
     
     // MARK: -
     
-    @IBAction func switchToHistory(sender: AnyObject) {
-//        overlayVC = nil
+    @IBAction func didTapScrollDownHint(sender: AnyObject) {
+        swipeView.scrollToPage(Page.ChatHistory.rawValue, duration: 0.4)
     }
     
     @IBAction func showMoreOptions(sender: AnyObject) {
