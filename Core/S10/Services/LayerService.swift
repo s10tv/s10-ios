@@ -140,4 +140,16 @@ extension LayerService : LYRClientDelegate {
     
     public func layerClient(client: LYRClient!, objectsDidChange changes: [AnyObject]!) {
     }
+    
+    public func layerClient(client: LYRClient!, willBeginContentTransfer contentTransferType: LYRContentTransferType, ofObject object: AnyObject!, withProgress progress: LYRProgress!) {
+        Log.debug("Will begin \(contentTransferType) \(object)")
+    }
+    
+    public func layerClient(client: LYRClient!, didFinishContentTransfer contentTransferType: LYRContentTransferType, ofObject object: AnyObject!) {
+        Log.debug("did finish \(contentTransferType) \(object)")
+    }
+    
+    public func layerClient(client: LYRClient!, didFailOperationWithError error: NSError!) {
+        Log.error("Layer failed to perform operation", error)
+    }
 }

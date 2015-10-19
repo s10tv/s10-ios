@@ -40,6 +40,31 @@ public class ConversationViewModel: NSObject {
     
     // MARK: -
     
+    public func sendVideo(url: NSURL, thumbnail: UIImage, duration: NSTimeInterval) {
+        do {
+            let metadata = try NSJSONSerialization.dataWithJSONObject([
+                "duration": duration,
+                "width": Int(thumbnail.size.width * thumbnail.scale),
+                "height": Int(thumbnail.size.height * thumbnail.scale),
+            ], options: [])
+            let videoPart = LYRMessagePart(MIMEType: "video/mp4", stream: NSInputStream(URL: url))
+            let thumbPart = LYRMessagePart(MIMEType: "image/jpeg+preview", data: UIImageJPEGRepresentation(thumbnail, 0.8))
+            let metaPart = LYRMessagePart(MIMEType: "application/json+imageSize", data: metadata)
+            
+            let pushConfig = LYRPushNotificationConfiguration()
+            let senderName = ctx.meteor.user.value?.displayName() ?? "Someone"
+            pushConfig.alert = "\(senderName) sent you a new video."
+            pushConfig.sound = "layerbell.caf"
+            
+            let message = try ctx.layer.layerClient.newMessageWithParts([videoPart, thumbPart, metaPart], options: [
+                LYRMessageOptionsPushNotificationConfigurationKey: pushConfig
+            ])
+            try conversation.sendMessage(message)
+        } catch let error as NSError {
+            Log.error("Unable to send video", error)
+        }
+    }
+    
     public func getUser(userId: String) -> UserViewModel? {
         if let u = ctx.meteor.mainContext.existingObjectInCollection("users", documentID: userId) as? User {
             return UserViewModel(user: u)

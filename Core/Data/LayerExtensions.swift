@@ -10,6 +10,15 @@ import Foundation
 import LayerKit
 import ReactiveCocoa
 
+extension LYRContentTransferType: CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case .Upload: return "Upload"
+        case .Download: return "Download"
+        }
+    }
+}
+
 extension LYRClient {
     var isAuthenticated: Bool {
         return authenticatedUserID != nil

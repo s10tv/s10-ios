@@ -63,6 +63,8 @@ class ConversationViewController : UIViewController {
         titleLabel.rac_text <~ vm.displayName
         statusLabel.rac_text <~ vm.displayStatus
         
+        producerVC.producerDelegate = self
+        
         receiveVC.vm = vm.receiveVM()
         receiveVC.delegate = self
         
@@ -159,6 +161,23 @@ class ConversationViewController : UIViewController {
             }
         }
         presentViewController(alert)
+    }
+}
+
+extension ConversationViewController : ProducerDelegate {
+    func producerWillStartRecording(producer: ProducerViewController) {
+    }
+    
+    func producerDidCancelRecording(producer: ProducerViewController) {
+    }
+    
+    func producer(producer: ProducerViewController, didProduceVideo video: VideoSession, duration: NSTimeInterval) {
+        wrapFuture(showProgress: true) {
+            video.exportWithFirstFrame().onSuccess { (url, thumbnail) in
+                Analytics.track("Message: Send", ["ConversationName": self.vm.displayName.value])
+                self.vm.sendVideo(url, thumbnail: thumbnail, duration: duration)
+            }
+        }
     }
 }
 
