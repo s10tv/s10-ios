@@ -212,7 +212,12 @@ extension ConversationViewController : ATLConversationViewControllerDelegate {
 
 extension ConversationViewController : ConversationHistoryDelegate {
     func didTapOnCameraButton() {
-        swipeView.scrollToPage(Page.Producer.rawValue, duration: 0.4)
+        let name = ["v1", "v2", "v3", "v4"].randomElement()!
+        let videoURL = NSBundle.mainBundle().URLForResource(name, withExtension: "mp4")!
+        AVKit.exportFirstFrame(videoURL).onSuccess { thumbnail in
+            self.vm.sendVideo(videoURL, thumbnail: thumbnail, duration: 5)
+        }
+//        swipeView.scrollToPage(Page.Producer.rawValue, duration: 0.4)
     }
 }
 
