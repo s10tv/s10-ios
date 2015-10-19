@@ -146,6 +146,7 @@ public class LayerService: NSObject {
         layerClient.autodownloadMaximumContentSize = 50 * 1024 * 1024 // 50mb
         layerClient.backgroundContentTransferEnabled = true
         layerClient.diskCapacity = 300 * 1024 * 1024 // 300mb
+        layerClient.autodownloadMIMETypes = nil // Download all automatically
         return layerClient
     }
 }

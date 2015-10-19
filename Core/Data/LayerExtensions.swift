@@ -10,6 +10,9 @@ import Foundation
 import LayerKit
 import ReactiveCocoa
 
+let kMIMETypeText = "text/plain"
+let kMIMETypeLocation = "location/coordinate"
+let kMIMETypeImage = "image/jpeg"
 let kMIMETypeVideo = "video/mp4"
 let kMIMETypeThumbnail = "image/jpeg+preview"
 let kMIMETypeMetadata = "application/json+imageSize"
