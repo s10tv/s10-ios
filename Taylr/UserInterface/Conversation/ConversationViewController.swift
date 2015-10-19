@@ -200,6 +200,9 @@ extension ConversationViewController : VideoMakerDelegate {
 
 extension ConversationViewController : ATLConversationViewControllerDelegate {
     func conversationViewController(viewController: ATLConversationViewController!, didSelectMessage message: LYRMessage!) {
+        for part in message.messageParts {
+            _ = try? part.downloadContent()
+        }
         if let video = vm.videoForMessage(message) {
             videoPlayer.vm.playlist.array = [video]
             presentViewController(videoPlayer, animated: false)

@@ -100,6 +100,7 @@ public class LayerService: NSObject {
         let query = LYRQuery(queryableClass: LYRMessage.self)
         query.predicate = LYRCompoundPredicate(type: .And, subpredicates: [
             LYRPredicate(property: "parts.MIMEType", predicateOperator: .IsEqualTo, value: kMIMETypeVideo),
+            LYRPredicate(property: "parts.transferStatus", predicateOperator: .IsEqualTo, value: LYRContentTransferStatus.Complete.rawValue),
             LYRPredicate(property: "conversation", predicateOperator: .IsEqualTo, value: conversation),
             LYRPredicate(property: "isUnread", predicateOperator: .IsEqualTo, value: true),
         ])
