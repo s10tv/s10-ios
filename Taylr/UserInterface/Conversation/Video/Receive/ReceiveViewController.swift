@@ -88,6 +88,10 @@ class ReceiveViewController : UIViewController {
         audioDisposable?.dispose()
     }
     
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     // MARK: -
     
     @IBAction func rewind() {

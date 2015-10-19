@@ -9,52 +9,27 @@
 import UIKit
 import ReactiveCocoa
 import Atlas
+import SwipeView
 import Core
 
-private let sb = UIStoryboard(name: "Conversation", bundle: nil)
-
 class ConversationViewController : UIViewController {
+    
+    enum Page : Int {
+        case ChatHistory = 0, Producer = 1
+    }
 
-    @IBOutlet weak var textSwitchButton: UIButton!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var swipeView: SwipeView!
+    @IBOutlet weak var producerContainer: UIView!
     @IBOutlet weak var chatHistoryContainer: UIView!
     
     private(set) var chatHistoryVC: ConversationHistoryViewController!
-    let producerVC = sb.makeViewController(.Producer) as! ProducerViewController
-    let receiveVC = sb.makeViewController(.Receive) as! ReceiveViewController
+    private(set) var producerVC: ProducerViewController!
+    private(set) var receiveVC: ReceiveViewController!
     
     var vm: ConversationViewModel!
-    var overlayVC: UIViewController? {
-        didSet {
-            if isViewLoaded() {
-                if let oldVC = oldValue {
-                    oldVC.willMoveToParentViewController(nil)
-                    oldVC.view.removeFromSuperview()
-                    oldVC.removeFromParentViewController()
-                }
-                if let newVC = overlayVC {
-                    assert([producerVC, receiveVC].contains(newVC), "overlay must be either producerVC or receiveVC")
-                    chatHistoryVC.messageInputToolbar.hidden = true
-                    chatHistoryVC.messageInputToolbar.textInputView.resignFirstResponder()
-                    navigationController?.navigationBar.setBackgroundColor(UIColor(white: 0.5, alpha: 0.4))
-                    
-                    addChildViewController(newVC)
-                    newVC.view.frame = view.bounds
-                    view.insertSubview(newVC.view, aboveSubview: chatHistoryContainer)
-                    newVC.view.makeEdgesEqualTo(view)
-                    newVC.didMoveToParentViewController(self)
-                } else {
-                    chatHistoryVC.messageInputToolbar.hidden = false
-                    chatHistoryVC.messageInputToolbar.textInputView.becomeFirstResponder()
-                    navigationController?.navigationBar.setBackgroundColor(nil)
-                }
-                // More of a hack here.
-                textSwitchButton.hidden = (overlayVC != producerVC)
-            }
-        }
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,18 +40,51 @@ class ConversationViewController : UIViewController {
         titleLabel.rac_text <~ vm.displayName
         statusLabel.rac_text <~ vm.displayStatus
         
-        producerVC.producerDelegate = self
+        let sb = UIStoryboard(name: "Conversation", bundle: nil)
         
+        receiveVC = sb.instantiateViewControllerWithIdentifier("Receive") as! ReceiveViewController
         receiveVC.vm = vm.receiveVM()
         receiveVC.delegate = self
         
-        chatHistoryVC.view.makeEdgesEqualTo(chatHistoryContainer)
+        chatHistoryVC = sb.instantiateViewControllerWithIdentifier("ChatHistory") as! ConversationHistoryViewController
+        chatHistoryVC.layerClient = MainContext.layer.layerClient
+        chatHistoryVC.marksMessagesAsRead = false
+        chatHistoryVC.vm = vm
+        chatHistoryVC.delegate = self
+        chatHistoryVC.historyDelegate = self
         
-        if receiveVC.vm.playlist.array.count > 0 {
-            overlayVC = receiveVC
-        } else {
-            overlayVC = producerVC
+        producerVC = sb.instantiateViewControllerWithIdentifier("Producer") as! ProducerViewController
+        producerVC.producerDelegate = self
+        
+        addChildViewController(chatHistoryVC)
+        chatHistoryContainer.addSubview(chatHistoryVC.view)
+        chatHistoryVC.view.makeEdgesEqualTo(chatHistoryContainer)
+        chatHistoryVC.didMoveToParentViewController(self)
+        
+        addChildViewController(producerVC)
+        producerContainer.insertSubview(producerVC.view, atIndex: 0)
+        producerVC.view.makeEdgesEqualTo(producerContainer)
+        producerVC.didMoveToParentViewController(self)
+        
+        [chatHistoryContainer, producerContainer].each {
+            $0.bounds = view.bounds
+            $0.removeFromSuperview()
+            $0.translatesAutoresizingMaskIntoConstraints = true
         }
+        
+        swipeView.vertical = true
+        swipeView.bounces = false
+        swipeView.currentItemIndex = Page.Producer.rawValue
+        swipeView.dataSource = self
+        swipeView.delegate = self
+        swipeView.layoutIfNeeded()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        // #temp hack till we figure out better way
+        let scrollView = swipeView.valueForKey("scrollView") as! UIScrollView
+        scrollView.contentInset.top = 0
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -101,16 +109,6 @@ class ConversationViewController : UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let vc = segue.destinationViewController as? ConversationHistoryViewController {
-            assert(vm != nil, "Conversation ViewModel must be set before prepareForSegue is called")
-            // TODO: Figure out some better way to do this
-            vc.layerClient = MainContext.layer.layerClient
-            vc.marksMessagesAsRead = false
-            vc.vm = vm
-            vc.delegate = self
-            vc.historyDelegate = self
-            chatHistoryVC = vc
-        }
         if let vc = segue.destinationViewController as? ProfileViewController {
             vc.vm = vm.profileVM()
         }
@@ -119,7 +117,7 @@ class ConversationViewController : UIViewController {
     // MARK: -
     
     @IBAction func switchToHistory(sender: AnyObject) {
-        overlayVC = nil
+//        overlayVC = nil
     }
     
     @IBAction func showMoreOptions(sender: AnyObject) {
@@ -168,6 +166,8 @@ class ConversationViewController : UIViewController {
     }
 }
 
+// MARK: - Video Producer
+
 extension ConversationViewController : ProducerDelegate {
     func producerWillStartRecording(producer: ProducerViewController) {
     }
@@ -185,25 +185,45 @@ extension ConversationViewController : ProducerDelegate {
     }
 }
 
+// MARK: - Chat History
+
 extension ConversationViewController : ATLConversationViewControllerDelegate {
     func conversationViewController(viewController: ATLConversationViewController!, didSelectMessage message: LYRMessage!) {
         if let video = vm.videoForMessage(message) {
             receiveVC.vm.playlist.array = [video]
-            overlayVC = receiveVC
+            presentViewController(receiveVC, animated: false)
         }
     }
 }
 
 extension ConversationViewController : ConversationHistoryDelegate {
     func didTapOnCameraButton() {
-        overlayVC = producerVC
+        swipeView.scrollToPage(Page.Producer.rawValue, duration: 0.25)
     }
 }
 
+// MARK: - Video Player
+
 extension ConversationViewController : ReceiveViewControllerDelegate {
     func didFinishPlaylist(receiveVC: ReceiveViewController) {
-        overlayVC = producerVC
+//        overlayVC = producerVC
         // TODO: This semantic is not correct for non-text based messages
         vm.markAllMessagesAsRead()
+        receiveVC.dismissViewController(animated: false)
     }
+}
+
+// MARK: - SwipeView
+
+extension ConversationViewController : SwipeViewDataSource {
+    func numberOfItemsInSwipeView(swipeView: SwipeView!) -> Int {
+        return 2
+    }
+    
+    func swipeView(swipeView: SwipeView!, viewForItemAtIndex index: Int, reusingView view: UIView!) -> UIView! {
+        return index == Page.ChatHistory.rawValue ? chatHistoryContainer : producerContainer
+    }
+}
+
+extension ConversationViewController : SwipeViewDelegate {
 }
