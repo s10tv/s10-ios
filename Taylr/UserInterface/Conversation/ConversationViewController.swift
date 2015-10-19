@@ -8,6 +8,7 @@
 
 import UIKit
 import ReactiveCocoa
+import Atlas
 import Core
 
 private let sb = UIStoryboard(name: "Conversation", bundle: nil)
@@ -100,6 +101,7 @@ class ConversationViewController : UIViewController {
             assert(vm != nil, "Conversation ViewModel must be set before prepareForSegue is called")
             vc.layerClient = MainContext.layer.layerClient
             vc.vm = vm
+            vc.delegate = self
             vc.historyDelegate = self
             chatHistoryVC = vc
         }
@@ -157,6 +159,14 @@ class ConversationViewController : UIViewController {
             }
         }
         presentViewController(alert)
+    }
+}
+
+extension ConversationViewController : ATLConversationViewControllerDelegate {
+    func conversationViewController(viewController: ATLConversationViewController!, didSelectMessage message: LYRMessage!) {
+        if message.containsVideo {
+            overlayVC = receiveVC
+        }
     }
 }
 
