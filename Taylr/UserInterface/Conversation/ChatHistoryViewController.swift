@@ -36,6 +36,13 @@ class ChatHistoryViewController : ATLConversationViewController {
         collectionView.contentInset.top = 64
     }
     
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        // NOTE: Fix for messageInputToolbar not appearing sometimes if switching between chatHistory
+        // and videoMaker too fast
+        view.becomeFirstResponder()
+    }
+    
     // override (superclass implement this, but not visible to subclass because)
     // it's not declared in the header file
     func messageInputToolbar(messageInputToolbar: ATLMessageInputToolbar!, didTapLeftAccessoryButton leftAccessoryButton: UIButton!) {
