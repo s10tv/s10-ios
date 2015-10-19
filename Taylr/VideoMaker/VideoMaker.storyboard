@@ -178,7 +178,7 @@
                                 <rect key="frame" x="233" y="282" width="135" height="36"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swipe for filters" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5OU-NY-NWO">
-                                        <rect key="frame" x="21" y="9" width="93" height="18"/>
+                                        <rect key="frame" x="22" y="10" width="93" height="18"/>
                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
@@ -245,10 +245,10 @@
                             <constraint firstAttribute="centerY" secondItem="6eQ-8N-xkE" secondAttribute="centerY" id="Gjh-7b-JjN"/>
                             <constraint firstAttribute="bottom" secondItem="2Fw-rH-c9r" secondAttribute="bottom" id="Kgd-GR-EaK"/>
                             <constraint firstAttribute="centerX" secondItem="6eQ-8N-xkE" secondAttribute="centerX" id="OfQ-Ep-ehu"/>
+                            <constraint firstAttribute="bottom" secondItem="6fl-by-yUv" secondAttribute="bottom" constant="20" id="Tdf-h1-dGu"/>
                             <constraint firstAttribute="centerX" secondItem="6fl-by-yUv" secondAttribute="centerX" id="bJN-ts-qPa"/>
                             <constraint firstItem="aym-vv-YK7" firstAttribute="top" secondItem="Pxo-oy-0Oy" secondAttribute="bottom" id="hdK-EJ-2ac"/>
                             <constraint firstItem="aym-vv-YK7" firstAttribute="leading" secondItem="M3U-qM-guW" secondAttribute="leading" id="lNj-ui-v4R"/>
-                            <constraint firstItem="sS8-ya-4lZ" firstAttribute="top" secondItem="6fl-by-yUv" secondAttribute="bottom" constant="20" id="nSc-AL-VtL"/>
                             <constraint firstAttribute="trailing" secondItem="b3o-63-A2P" secondAttribute="trailing" id="xsV-me-1SL"/>
                             <constraint firstItem="Pxo-oy-0Oy" firstAttribute="leading" secondItem="M3U-qM-guW" secondAttribute="leading" id="yFW-tw-buW"/>
                             <constraint firstItem="2Fw-rH-c9r" firstAttribute="top" secondItem="M3U-qM-guW" secondAttribute="top" id="zCu-rM-mCx"/>
@@ -478,7 +478,7 @@
                                         <rect key="frame" x="0.0" y="49.5" width="600" height="76"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Jbp-cm-Ey7" id="Zb6-el-xeR">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="75.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="76"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-profile-pic" translatesAutoresizingMaskIntoConstraints="NO" id="LRF-ED-VaQ">
