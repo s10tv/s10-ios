@@ -60,14 +60,3 @@ extension LYRConversation {
         setValue(displayName, forMetadataAtKeyPath: lyrUserDisplayName(userID))
     }
 }
-
-extension LYRMessage {
-    public var containsVideo: Bool {
-        for part in parts.map({ $0 as! LYRMessagePart }) {
-            if part.MIMEType == "video/mp4" {
-                return true
-            }
-        }
-        return false
-    }
-}

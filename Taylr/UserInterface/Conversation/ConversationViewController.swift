@@ -183,7 +183,8 @@ extension ConversationViewController : ProducerDelegate {
 
 extension ConversationViewController : ATLConversationViewControllerDelegate {
     func conversationViewController(viewController: ATLConversationViewController!, didSelectMessage message: LYRMessage!) {
-        if message.containsVideo {
+        if let video = vm.videoForMessage(message) {
+            receiveVC.vm.playlist.array = [video]
             overlayVC = receiveVC
         }
     }

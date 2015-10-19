@@ -10,6 +10,7 @@ import Foundation
 import ReactiveCocoa
 import LayerKit
 
+
 public class ConversationViewModel: NSObject {
     
     let ctx: Context
@@ -63,6 +64,15 @@ public class ConversationViewModel: NSObject {
         } catch let error as NSError {
             Log.error("Unable to send video", error)
         }
+    }
+    
+    public func videoForMessage(message: LYRMessage) -> VideoMessageViewModel? {
+        if let videoURL = message.videoPart?.fileURL,
+            let metadata = message.metadataPart?.asJson() as? NSDictionary {
+                let duration = (metadata["duration"] as? NSTimeInterval) ?? 0
+                return VideoMessageViewModel(identifier: message.identifier.absoluteString, url: videoURL, duration: duration)
+        }
+        return nil
     }
     
     public func getUser(userId: String) -> UserViewModel? {

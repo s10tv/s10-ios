@@ -10,6 +10,36 @@ import Foundation
 import LayerKit
 import ReactiveCocoa
 
+let kMIMETypeVideo = "video/mp4"
+let kMIMETypeThumbnail = "image/jpeg+preview"
+let kMIMETypeMetadata = "application/json+imageSize"
+
+extension LYRMessage {
+    public var messageParts: [LYRMessagePart] {
+        return parts.map { $0 as! LYRMessagePart }
+    }
+    public var videoPart: LYRMessagePart? {
+        return messageParts.filter { $0.MIMEType == kMIMETypeVideo }.first
+    }
+    public var thumbnailPart: LYRMessagePart? {
+        return messageParts.filter { $0.MIMEType == kMIMETypeThumbnail }.first
+    }
+    public var metadataPart: LYRMessagePart? {
+        return messageParts.filter { $0.MIMEType == kMIMETypeMetadata }.first
+    }
+}
+
+extension LYRMessagePart {
+    
+    public func asImage() -> UIImage? {
+        return (data as NSData?).flatMap { UIImage(data: $0) }
+    }
+    
+    public func asJson() -> AnyObject? {
+        return (data as NSData?).flatMap { try? NSJSONSerialization.JSONObjectWithData($0, options: []) }
+    }
+}
+
 extension LYRContentTransferType: CustomStringConvertible {
     public var description: String {
         switch self {
