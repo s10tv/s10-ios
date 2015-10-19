@@ -28,17 +28,12 @@ public class LayerService: NSObject {
         unreadQueryController?.delegate = self
         _ = try? unreadQueryController?.execute()
         unreadCount.value = UInt(unreadQueryController?.count() ?? 0)
-        layerClient.objectChanges().startWithNext {  changes in
-            print("****** object changes count \(changes.count) *******")
+        countUploadsProducer().startWithNext {  count in
+            print("****** Upload count \(count) *******")
         }
-//        SignalProducer(values: [
-//            layerClient.contentTransferStarts(),
-//            layerClient.contentTransferEnds()
-//        ]).flatten(.Merge).startWithNext { update in
-//            let count = self.countUploads()
-//            let downloads = self.countDownloads()
-//            print("Number of uploads \(count) downloads \(downloads)")
-//        }
+        countDownloadsProducer().startWithNext {  count in
+            print("****** download count \(count) *******")
+        }
     }
     
     // TODO: Careful this method if not disposed will retain self
@@ -125,6 +120,14 @@ public class LayerService: NSObject {
         }
     }
     
+    func countUploadsProducer(conversation: LYRConversation? = nil) -> SignalProducer<UInt, NoError> {
+        let current = SignalProducer<UInt, NoError>(value: countUploads(conversation))
+        let future = layerClient.objectChanges().map { _ in // TODO: Future memory leak
+            return self.countUploads(conversation)
+        }
+        return current.concat(future)
+    }
+    
     func countUploads(conversation: LYRConversation? = nil) -> UInt {
         do {
             return try layerClient.countForQuery(LYRQuery.uploadingMessages(conversation))
@@ -132,6 +135,14 @@ public class LayerService: NSObject {
             Log.error("Unable to count uploads messages", error)
         }
         return 0
+    }
+
+    func countDownloadsProducer(conversation: LYRConversation? = nil) -> SignalProducer<UInt, NoError> {
+        let current = SignalProducer<UInt, NoError>(value: countDownloads(conversation))
+        let future = layerClient.objectChanges().map { _ in // TODO: Future memory leak
+            return self.countDownloads(conversation)
+        }
+        return current.concat(future)
     }
     
     func countDownloads(conversation: LYRConversation? = nil) -> UInt {
@@ -205,15 +216,6 @@ extension LayerService : LYRClientDelegate {
     
     public func layerClient(client: LYRClient!, objectsDidChange changes: [AnyObject]!) {
         Log.debug("Layer objects did change \(changes)")
-//        let count = countUploads()
-//        let downloads = countDownloads()
-//        print("Number of uploads \(count) downloads \(downloads)")
-//        do {
-//            let msgs = try layerClient.executeQuery(LYRQuery.downloadingMessages())
-//            print("msgs \(msgs)")
-//        } catch {
-//            print("failed to get messages")
-//        }
     }
     
     public func layerClient(client: LYRClient!, willBeginContentTransfer contentTransferType: LYRContentTransferType, ofObject object: AnyObject!, withProgress progress: LYRProgress!) {
