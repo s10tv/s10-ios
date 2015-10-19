@@ -43,6 +43,11 @@ class ChatHistoryViewController : ATLConversationViewController {
         view.becomeFirstResponder()
     }
     
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        vm.markAllNonVideoMessagesAsRead()
+    }
+    
     // override (superclass implement this, but not visible to subclass because)
     // it's not declared in the header file
     func messageInputToolbar(messageInputToolbar: ATLMessageInputToolbar!, didTapLeftAccessoryButton leftAccessoryButton: UIButton!) {

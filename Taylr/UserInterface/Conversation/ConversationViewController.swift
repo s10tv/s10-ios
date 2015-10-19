@@ -46,7 +46,7 @@ class ConversationViewController : UIViewController {
         let sb = UIStoryboard(name: "Conversation", bundle: nil)
         
         videoPlayer = sb.instantiateViewControllerWithIdentifier("Receive") as! VideoPlayerViewController
-        videoPlayer.vm = vm.videoPlayerVM()
+        videoPlayer.vm = vm.videoPlayerVM
         videoPlayer.delegate = self
         
         chatHistory = sb.instantiateViewControllerWithIdentifier("ChatHistory") as! ChatHistoryViewController
@@ -76,10 +76,19 @@ class ConversationViewController : UIViewController {
         
         swipeView.vertical = true
         swipeView.bounces = false
-        swipeView.currentItemIndex = Page.Producer.rawValue
+        // Need to set currentItemIndex before dataSource
+        if vm.hasUnreadText {
+            swipeView.currentItemIndex = Page.ChatHistory.rawValue
+        } else {
+            swipeView.currentItemIndex = Page.Producer.rawValue
+        }
         swipeView.dataSource = self
         swipeView.delegate = self
         swipeView.layoutIfNeeded()
+        
+        if vm.hasUnplayedVideo {
+            presentViewController(videoPlayer, animated: false)
+        }
     }
     
     override func viewDidLayoutSubviews() {
@@ -207,10 +216,14 @@ extension ConversationViewController : ConversationHistoryDelegate {
 // MARK: - Video Player
 
 extension ConversationViewController : VideoPlayerViewControllerDelegate {
-    func didFinishPlaylist(videoPlayer: VideoPlayerViewController) {
-//        overlayVC = videoMaker
+    func videoPlayer(videoPlayer: VideoPlayerViewController, didPlayVideo video: Video) {
+        vm.markMessageAsRead(video.identifier)
+        Analytics.track("Message: Open", [
+            "MessageId": video.identifier
+        ])
+    }
+    func videoPlayerDidFinishPlaylist(videoPlayer: VideoPlayerViewController) {
         // TODO: This semantic is not correct for non-text based messages
-        vm.markAllMessagesAsRead()
         videoPlayer.dismissViewController(animated: false)
     }
 }

@@ -14,7 +14,8 @@ import Async
 import Core
 
 protocol VideoPlayerViewControllerDelegate : class {
-    func didFinishPlaylist(receiveVC: VideoPlayerViewController)
+    func videoPlayer(videoPlayer: VideoPlayerViewController, didPlayVideo video: Video)
+    func videoPlayerDidFinishPlaylist(videoPlayer: VideoPlayerViewController)
 }
 
 class VideoPlayerViewController : UIViewController {
@@ -104,15 +105,11 @@ class VideoPlayerViewController : UIViewController {
     }
     
     @IBAction func advance() {
-//        if let message = vm.currentVideo.value {
-//            Analytics.track("Message: Open", [
-//                "MessageId": message.messageId
-//            ])
-//        }
-        if vm.seekNextVideo() {
+        if let lastVideo = vm.seekNextVideo() {
+            delegate?.videoPlayer(self, didPlayVideo: lastVideo)
             Async.main { self.player.play() }
         } else {
-            delegate?.didFinishPlaylist(self)
+            delegate?.videoPlayerDidFinishPlaylist(self)
         }
     }
 }

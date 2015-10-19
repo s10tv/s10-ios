@@ -75,6 +75,27 @@ public class LayerService: NSObject {
         }
     }
     
+    func findMessage(messageId: String) -> LYRMessage? {
+        do {
+            let query = LYRQuery(queryableClass: LYRMessage.self)
+            query.predicate = LYRPredicate(property: "identifier", predicateOperator: .IsEqualTo, value: NSURL(messageId))
+            return try layerClient.executeQuery(query).firstObject as? LYRMessage
+        } catch let error as NSError {
+            Log.error("Unable to find message with id \(messageId)", error)
+        }
+        return nil
+    }
+    
+    func unreadTextMessagesQuery(conversation: LYRConversation) -> LYRQuery {
+        let query = LYRQuery(queryableClass: LYRMessage.self)
+        query.predicate = LYRCompoundPredicate(type: .And, subpredicates: [
+            LYRPredicate(property: "parts.MIMEType", predicateOperator: .IsNotEqualTo, value: kMIMETypeVideo),
+            LYRPredicate(property: "conversation", predicateOperator: .IsEqualTo, value: conversation),
+            LYRPredicate(property: "isUnread", predicateOperator: .IsEqualTo, value: true),
+        ])
+        return query
+    }
+    
     func unplayedVideoMessages(conversation: LYRConversation) -> [LYRMessage] {
         let query = LYRQuery(queryableClass: LYRMessage.self)
         query.predicate = LYRCompoundPredicate(type: .And, subpredicates: [

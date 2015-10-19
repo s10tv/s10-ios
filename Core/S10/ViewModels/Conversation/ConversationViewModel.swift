@@ -14,12 +14,21 @@ import LayerKit
 public class ConversationViewModel: NSObject {
     
     let ctx: Context
+    public let conversation: LYRConversation
     public let avatar: PropertyOf<Image?>
     public let cover: PropertyOf<Image?>
     public let displayName: ProducerProperty<String>
     public let displayStatus = PropertyOf("")
+    public let videoPlayerVM: VideoPlayerViewModel
     
-    public let conversation: LYRConversation
+    public var hasUnplayedVideo: Bool {
+        return videoPlayerVM.playlist.count > 0
+    }
+    
+    public var hasUnreadText: Bool {
+        let query = ctx.layer.unreadTextMessagesQuery(conversation)
+        return ctx.layer.layerClient.countForQuery(query, error: nil) > 0
+    }
     
     init(_ ctx: Context, conversation: LYRConversation) {
         self.ctx = ctx
@@ -34,6 +43,9 @@ public class ConversationViewModel: NSObject {
             cover = PropertyOf(conversation.getUserCoverURL(otherUserId).map { Image($0) })
             displayName = ProducerProperty(SignalProducer(value: conversation.getUserDisplayName(otherUserId) ?? ""))
         }
+        videoPlayerVM = VideoPlayerViewModel(ctx)
+        super.init()
+        videoPlayerVM.playlist.array = unplayedVideos()
     }
     
     func user() -> User? {
@@ -67,7 +79,7 @@ public class ConversationViewModel: NSObject {
         }
     }
     
-    public func unplayedVideos() -> [Video]? {
+    public func unplayedVideos() -> [Video] {
         return ctx.layer.unplayedVideoMessages(conversation).map { videoForMessage($0)! }
     }
     
@@ -86,22 +98,15 @@ public class ConversationViewModel: NSObject {
         _ = try? conversation.markAllMessagesAsRead()
     }
     
-    public func markMessageAsRead(message: LYRMessage) {
-        _ = try? message.markAsRead()
+    public func markMessageAsRead(messageId: String) {
+        _ = try? ctx.layer.findMessage(messageId)?.markAsRead()
     }
     
     public func markAllNonVideoMessagesAsRead() {
-        let query = LYRQuery(queryableClass: LYRMessage.self)
-        query.predicate = LYRCompoundPredicate(type: .And, subpredicates: [
-            LYRPredicate(property: "parts.MIMEType", predicateOperator: .IsNotEqualTo, value: kMIMETypeVideo),
-            LYRPredicate(property: "conversation", predicateOperator: .IsEqualTo, value: conversation),
-            LYRPredicate(property: "isUnread", predicateOperator: .IsEqualTo, value: true),
-        ])
         do {
+            let query = ctx.layer.unreadTextMessagesQuery(conversation)
             let messages = try ctx.layer.layerClient.executeQuery(query).map { $0 as! LYRMessage }
-            for message in messages {
-                try message.markAsRead()
-            }
+            try ctx.layer.layerClient.markMessagesAsRead(Set(messages))
         } catch let error as NSError {
             Log.error("Unable to find unread non-video messages", error)
         }
@@ -124,10 +129,6 @@ public class ConversationViewModel: NSObject {
         if let u = user() {
             ctx.meteor.blockUser(u)
         }
-    }
-    
-    public func videoPlayerVM() -> VideoPlayerViewModel {
-        return VideoPlayerViewModel(ctx, conversation: conversation)
     }
     
     public func profileVM() -> ProfileViewModel? {

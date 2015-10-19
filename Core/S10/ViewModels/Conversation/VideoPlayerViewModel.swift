@@ -20,16 +20,9 @@ public class VideoPlayerViewModel {
     public let currentVideoPosition = MutableProperty<NSTimeInterval>(0)
     public let isPlaying = MutableProperty(false)
     
-    init(_ ctx: Context, conversation: LYRConversation) {
+    init(_ ctx: Context, videos: [Video]? = nil) {
         self.ctx = ctx
-        let videos = ctx.layer.unplayedVideoMessages(conversation).map { msg -> Video in
-            let parts = msg.parts.map { $0 as! LYRMessagePart }
-            var video = Video(parts.first!.fileURL)
-            video.identifier = msg.identifier.absoluteString
-            video.duration = 5
-            return video
-        }
-        playlist = ArrayProperty(videos)
+        playlist = ArrayProperty(videos ?? [])
         currentVideo = PropertyOf(nil, playlist.producer.map { $0.first }
             .skipRepeats { $0?.identifier == $1?.identifier })
         currentVideoProgress = PropertyOf(0, combineLatest(
@@ -48,11 +41,8 @@ public class VideoPlayerViewModel {
         })
     }
     
-    public func seekNextVideo() -> Bool {
-        if let _ = playlist.dequeue() {
-//            meteor.openMessage(video.message)
-        }
-        return currentVideo.value != nil
+    public func seekNextVideo() -> Video? {
+        return playlist.dequeue()
     }
 }
 
