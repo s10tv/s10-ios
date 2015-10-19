@@ -41,8 +41,9 @@ public class VideoPlayerViewModel {
         })
     }
     
-    public func seekNextVideo() -> Video? {
-        return playlist.dequeue()
+    public func seekNextVideo() -> Bool {
+        playlist.dequeue()
+        return currentVideo.value != nil
     }
 }
 

@@ -105,8 +105,10 @@ class VideoPlayerViewController : UIViewController {
     }
     
     @IBAction func advance() {
-        if let lastVideo = vm.seekNextVideo() {
-            delegate?.videoPlayer(self, didPlayVideo: lastVideo)
+        if let video = vm.currentVideo.value {
+            delegate?.videoPlayer(self, didPlayVideo: video)
+        }
+        if vm.seekNextVideo() {
             Async.main { self.player.play() }
         } else {
             delegate?.videoPlayerDidFinishPlaylist(self)
