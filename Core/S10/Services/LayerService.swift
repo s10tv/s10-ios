@@ -17,7 +17,7 @@ public class LayerService: NSObject {
     let unreadQueryController: LYRQueryController?
     public let layerClient: LYRClient
     
-    public init(layerAppID: NSURL, meteor: MeteorService) {
+    public init(layerAppID: NSURL, meteor: MeteorService, existingClient: LYRClient? = nil) {
         self.meteor = meteor
         layerClient = LayerService.defaultLayerClient(layerAppID)
         let query = LYRQuery(queryableClass: LYRConversation.self)

@@ -209,7 +209,7 @@ extension ConversationViewController : ATLConversationViewControllerDelegate {
 
 extension ConversationViewController : ConversationHistoryDelegate {
     func didTapOnCameraButton() {
-        swipeView.scrollToPage(Page.Producer.rawValue, duration: 0.25)
+        swipeView.scrollToPage(Page.Producer.rawValue, duration: 0.4)
     }
 }
 

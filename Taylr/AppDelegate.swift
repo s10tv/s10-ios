@@ -80,7 +80,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
             accountService: AccountService(meteorService: meteor),
             analyticsService: AnalyticsService(env: env, currentUser: meteor.currentUser),
             upgradeService: UpgradeService(env: env, currentUser: meteor.currentUser),
-            layerService: LayerService(layerAppID: env.layerURL, meteor: meteor)
+            layerService: LayerService(layerAppID: env.layerURL, meteor: meteor, existingClient: layerClient)
         )
         
         layerClient = Globals.layerService.layerClient
@@ -184,6 +184,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         Log.debug("Did receive notification \(userInfo)")
         // This is needed to handle remote notification while app is in the background
         // and therefore didFinishLaunching is never invoked.
+        // TODO: LayerClient cannot be recreated, need to do again
         if layerClient == nil {
             let env = TaylrEnvironment.configureFromEmbeddedProvisioningProfile()
             layerClient = LayerService.defaultLayerClient(env.layerURL)

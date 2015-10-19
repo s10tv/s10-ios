@@ -40,6 +40,7 @@ class ChatHistoryViewController : ATLConversationViewController {
         super.viewDidAppear(animated)
         // NOTE: Fix for messageInputToolbar not appearing sometimes if switching between chatHistory
         // and videoMaker too fast
+        view.resignFirstResponder() // HACKIER FIX for when message does not show up
         view.becomeFirstResponder()
     }
     
