@@ -133,10 +133,10 @@
             </objects>
             <point key="canvasLocation" x="405" y="1082"/>
         </scene>
-        <!--Producer View Controller-->
+        <!--Video Maker View Controller-->
         <scene sceneID="iTe-MQ-cxU">
             <objects>
-                <viewController storyboardIdentifier="Producer" id="0DE-rZ-SWb" customClass="ProducerViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Producer" id="0DE-rZ-SWb" customClass="VideoMakerViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jBF-U1-Mdj"/>
                         <viewControllerLayoutGuide type="bottom" id="Ugu-0e-9mg"/>

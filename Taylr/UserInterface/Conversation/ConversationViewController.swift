@@ -27,7 +27,7 @@ class ConversationViewController : UIViewController {
     @IBOutlet var chatHistoryContainer: UIView!
     
     private(set) var chatHistory: ChatHistoryViewController!
-    private(set) var videoMaker: ProducerViewController!
+    private(set) var videoMaker: VideoMakerViewController!
     private(set) var videoPlayer: VideoPlayerViewController!
     
     var vm: ConversationViewModel!
@@ -53,7 +53,7 @@ class ConversationViewController : UIViewController {
         chatHistory.delegate = self
         chatHistory.historyDelegate = self
         
-        videoMaker = UIStoryboard(name: "VideoMaker", bundle: nil).instantiateInitialViewController() as! ProducerViewController
+        videoMaker = UIStoryboard(name: "VideoMaker", bundle: nil).instantiateInitialViewController() as! VideoMakerViewController
         videoMaker.producerDelegate = self
         
         addChildViewController(chatHistory)
@@ -167,14 +167,14 @@ class ConversationViewController : UIViewController {
 
 // MARK: - Video Producer
 
-extension ConversationViewController : ProducerDelegate {
-    func producerWillStartRecording(producer: ProducerViewController) {
+extension ConversationViewController : VideoMakerDelegate {
+    func videoMakerWillStartRecording(videoMaker: VideoMakerViewController) {
     }
     
-    func producerDidCancelRecording(producer: ProducerViewController) {
+    func videoMakerDidCancelRecording(videoMaker: VideoMakerViewController) {
     }
     
-    func producer(producer: ProducerViewController, didProduceVideo video: VideoSession, duration: NSTimeInterval) {
+    func videoMaker(videoMaker: VideoMakerViewController, didProduceVideo video: VideoSession, duration: NSTimeInterval) {
         wrapFuture(showProgress: true) {
             video.exportWithFirstFrame().onSuccess { (url, thumbnail) in
                 Analytics.track("Message: Send", ["ConversationName": self.vm.displayName.value])

@@ -16,7 +16,7 @@
 		EA09898F1BD4CEDC0014F71C /* MuteChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0989801BD4CEDC0014F71C /* MuteChecker.m */; settings = {ASSET_TAGS = (); }; };
 		EA0989901BD4CEDC0014F71C /* VideoMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0989821BD4CEDC0014F71C /* VideoMaker.swift */; settings = {ASSET_TAGS = (); }; };
 		EA0989911BD4CEDC0014F71C /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0989831BD4CEDC0014F71C /* EditorViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		EA0989921BD4CEDC0014F71C /* ProducerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0989841BD4CEDC0014F71C /* ProducerViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EA0989921BD4CEDC0014F71C /* VideoMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0989841BD4CEDC0014F71C /* VideoMakerViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EA0989931BD4CEDC0014F71C /* RecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0989851BD4CEDC0014F71C /* RecorderViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EA0989941BD4CEDC0014F71C /* VideoMaker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA0989861BD4CEDC0014F71C /* VideoMaker.storyboard */; settings = {ASSET_TAGS = (); }; };
 		EA0989951BD4CEDC0014F71C /* DurationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0989881BD4CEDC0014F71C /* DurationTimer.swift */; settings = {ASSET_TAGS = (); }; };
@@ -267,7 +267,7 @@
 		EA0989801BD4CEDC0014F71C /* MuteChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MuteChecker.m; sourceTree = "<group>"; };
 		EA0989821BD4CEDC0014F71C /* VideoMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoMaker.swift; sourceTree = "<group>"; };
 		EA0989831BD4CEDC0014F71C /* EditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
-		EA0989841BD4CEDC0014F71C /* ProducerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProducerViewController.swift; sourceTree = "<group>"; };
+		EA0989841BD4CEDC0014F71C /* VideoMakerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoMakerViewController.swift; sourceTree = "<group>"; };
 		EA0989851BD4CEDC0014F71C /* RecorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderViewController.swift; sourceTree = "<group>"; };
 		EA0989861BD4CEDC0014F71C /* VideoMaker.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VideoMaker.storyboard; sourceTree = "<group>"; };
 		EA0989881BD4CEDC0014F71C /* DurationTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationTimer.swift; sourceTree = "<group>"; };
@@ -580,7 +580,7 @@
 				EA0989871BD4CEDC0014F71C /* Views */,
 				EA0989831BD4CEDC0014F71C /* EditorViewController.swift */,
 				EA0989851BD4CEDC0014F71C /* RecorderViewController.swift */,
-				EA0989841BD4CEDC0014F71C /* ProducerViewController.swift */,
+				EA0989841BD4CEDC0014F71C /* VideoMakerViewController.swift */,
 				EA0989821BD4CEDC0014F71C /* VideoMaker.swift */,
 				EA0989861BD4CEDC0014F71C /* VideoMaker.storyboard */,
 			);
@@ -1739,7 +1739,7 @@
 				EADE6CBE1BCF8AFC002F1216 /* UserViewModel+ATLParticipant.swift in Sources */,
 				EA7475861BCFFA95009A09BC /* BaseNavigationController.swift in Sources */,
 				EA42D65B1BB7C66600B07526 /* MediaExtension.swift in Sources */,
-				EA0989921BD4CEDC0014F71C /* ProducerViewController.swift in Sources */,
+				EA0989921BD4CEDC0014F71C /* VideoMakerViewController.swift in Sources */,
 				EA42D65F1BB7C67900B07526 /* DesignableViews.swift in Sources */,
 				EAA576171BB7E5B600661A4F /* LoginViewController.swift in Sources */,
 				EA0989971BD4CEDC0014F71C /* TouchDetector.swift in Sources */,

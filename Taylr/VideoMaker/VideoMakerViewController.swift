@@ -1,5 +1,5 @@
 //
-//  RecorderController.swift
+//  VideoMakerViewController.swift
 //  S10
 //
 //  Created by Tony Xiao on 6/18/15.
@@ -9,18 +9,18 @@
 import Foundation
 import SCRecorder
 
-protocol ProducerDelegate : NSObjectProtocol {
-    func producerWillStartRecording(producer: ProducerViewController)
-    func producerDidCancelRecording(producer: ProducerViewController)
-    func producer(producer: ProducerViewController, didProduceVideo video: VideoSession, duration: NSTimeInterval)
+protocol VideoMakerDelegate : NSObjectProtocol {
+    func videoMakerWillStartRecording(videoMaker: VideoMakerViewController)
+    func videoMakerDidCancelRecording(videoMaker: VideoMakerViewController)
+    func videoMaker(videoMaker: VideoMakerViewController, didProduceVideo video: VideoSession, duration: NSTimeInterval)
 }
 
-class ProducerViewController : UIViewController {
+class VideoMakerViewController : UIViewController {
     
     var recorderVC: RecorderViewController!
     var editorVC: EditorViewController!
     var currentFilter: SCFilter?
-    weak var producerDelegate: ProducerDelegate?
+    weak var producerDelegate: VideoMakerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,13 +60,13 @@ class ProducerViewController : UIViewController {
     }
 }
 
-extension ProducerViewController : RecorderDelegate {
+extension VideoMakerViewController : RecorderDelegate {
     func recorderWillStartRecording(recorder: RecorderViewController) {
-        producerDelegate?.producerWillStartRecording(self)
+        producerDelegate?.videoMakerWillStartRecording(self)
     }
     
     func recorderDidCancelRecording(recorder: RecorderViewController) {
-        producerDelegate?.producerDidCancelRecording(self)
+        producerDelegate?.videoMakerDidCancelRecording(self)
     }
     
     func recorder(recorder: RecorderViewController, didRecordSession session: SCRecordSession) {
@@ -77,16 +77,16 @@ extension ProducerViewController : RecorderDelegate {
     }
 }
 
-extension ProducerViewController : EditorDelegate {
+extension VideoMakerViewController : EditorDelegate {
     func editorDidCancel(editor: EditorViewController) {
         currentFilter = editorVC.filterView.selectedFilter
         recorderVC.previewView.selectedFilter = currentFilter
         showRecorder()
-        producerDelegate?.producerDidCancelRecording(self)
+        producerDelegate?.videoMakerDidCancelRecording(self)
     }
     
     func editor(editor: EditorViewController, didEditVideo video: VideoSession) {
-        producerDelegate?.producer(self, didProduceVideo: video, duration: editor.recordSession.duration.seconds)
+        producerDelegate?.videoMaker(self, didProduceVideo: video, duration: editor.recordSession.duration.seconds)
         showRecorder()
     }
 }
