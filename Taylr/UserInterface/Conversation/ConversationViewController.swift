@@ -18,31 +18,37 @@ class ConversationViewController : UIViewController {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var chatHistoryContainer: UIView!
     
+    private(set) var chatHistoryVC: ConversationHistoryViewController!
     let producerVC = sb.makeViewController(.Producer) as! ProducerViewController
-    let chatHistoryVC = sb.makeViewController(.ChatHistory) as! ConversationHistoryViewController
     let receiveVC = sb.makeViewController(.Receive) as! ReceiveViewController
     
     var vm: ConversationViewModel!
-    var activeVC: UIViewController? {
+    var overlayVC: UIViewController? {
         didSet {
             if isViewLoaded() {
-                // Need `performWithoutAnimation` otherwise rapid tap will make input box disappear.
-                UIView.performWithoutAnimation {
-                    if let oldVC = oldValue {
-                        oldVC.willMoveToParentViewController(nil)
-                        oldVC.view.removeFromSuperview()
-                        oldVC.removeFromParentViewController()
-                    }
-                    if let newVC = self.activeVC {
-                        self.addChildViewController(newVC)
-                        newVC.view.frame = self.view.bounds
-                        self.view.insertSubview(newVC.view, belowSubview: self.textSwitchButton)
-                        newVC.view.makeEdgesEqualTo(self.view)
-                        newVC.didMoveToParentViewController(self)
-                    }
-                    self.textSwitchButton.hidden = (self.activeVC != self.producerVC)
+                if let oldVC = oldValue {
+                    oldVC.willMoveToParentViewController(nil)
+                    oldVC.view.removeFromSuperview()
+                    oldVC.removeFromParentViewController()
                 }
+                if let newVC = overlayVC {
+                    assert([producerVC, receiveVC].contains(newVC), "overlay must be either producerVC or receiveVC")
+                    chatHistoryVC.messageInputToolbar.hidden = true
+                    chatHistoryVC.messageInputToolbar.textInputView.resignFirstResponder()
+                    
+                    addChildViewController(newVC)
+                    newVC.view.frame = view.bounds
+                    view.insertSubview(newVC.view, aboveSubview: chatHistoryContainer)
+                    newVC.view.makeEdgesEqualTo(view)
+                    newVC.didMoveToParentViewController(self)
+                } else {
+                    chatHistoryVC.messageInputToolbar.hidden = false
+                    chatHistoryVC.messageInputToolbar.textInputView.becomeFirstResponder()
+                }
+                // More of a hack here.
+                textSwitchButton.hidden = (overlayVC != producerVC)
             }
         }
     }
@@ -56,17 +62,15 @@ class ConversationViewController : UIViewController {
         titleLabel.rac_text <~ vm.displayName
         statusLabel.rac_text <~ vm.displayStatus
         
-        chatHistoryVC.layerClient = MainContext.layer.layerClient
-        chatHistoryVC.vm = vm
-        chatHistoryVC.historyDelegate = self
-        
         receiveVC.vm = vm.receiveVM()
         receiveVC.delegate = self
         
+        chatHistoryVC.view.makeEdgesEqualTo(chatHistoryContainer)
+        
         if receiveVC.vm.playlist.array.count > 0 {
-            activeVC = receiveVC
+            overlayVC = receiveVC
         } else {
-            activeVC = producerVC
+            overlayVC = producerVC
         }
     }
 
@@ -76,9 +80,6 @@ class ConversationViewController : UIViewController {
         if let view = navigationItem.titleView {
             view.bounds.size = view.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
         }
-        chatHistoryVC.view.frame = view.bounds
-        receiveVC.view.frame = view.bounds
-        producerVC.view.frame = view.bounds
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -95,6 +96,13 @@ class ConversationViewController : UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if let vc = segue.destinationViewController as? ConversationHistoryViewController {
+            assert(vm != nil, "Conversation ViewModel must be set before prepareForSegue is called")
+            vc.layerClient = MainContext.layer.layerClient
+            vc.vm = vm
+            vc.historyDelegate = self
+            chatHistoryVC = vc
+        }
         if let vc = segue.destinationViewController as? ProfileViewController {
             vc.vm = vm.profileVM()
         }
@@ -103,7 +111,7 @@ class ConversationViewController : UIViewController {
     // MARK: -
     
     @IBAction func switchToHistory(sender: AnyObject) {
-        activeVC = chatHistoryVC
+        overlayVC = nil
     }
     
     @IBAction func showMoreOptions(sender: AnyObject) {
@@ -154,12 +162,12 @@ class ConversationViewController : UIViewController {
 
 extension ConversationViewController : ConversationHistoryDelegate {
     func didTapOnCameraButton() {
-        activeVC = producerVC
+        overlayVC = producerVC
     }
 }
 
 extension ConversationViewController : ReceiveViewControllerDelegate {
     func didFinishPlaylist(receiveVC: ReceiveViewController) {
-        activeVC = producerVC
+        overlayVC = producerVC
     }
 }

@@ -52,6 +52,12 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ywo-LV-7Pg">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <connections>
+                                    <segue destination="jff-6V-IXE" kind="embed" id="4U7-x4-j1v"/>
+                                </connections>
+                            </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSs-Bt-5Mh">
                                 <rect key="frame" x="0.0" y="540" width="60" height="60"/>
                                 <constraints>
@@ -69,7 +75,11 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="bottomMargin" secondItem="hSs-Bt-5Mh" secondAttribute="bottom" id="YZy-uW-PiY"/>
+                            <constraint firstAttribute="bottom" secondItem="Ywo-LV-7Pg" secondAttribute="bottom" id="6yO-PL-gn4"/>
+                            <constraint firstAttribute="trailing" secondItem="Ywo-LV-7Pg" secondAttribute="trailing" id="JIq-6B-ZpZ"/>
+                            <constraint firstItem="Ywo-LV-7Pg" firstAttribute="leading" secondItem="3qq-bH-WYT" secondAttribute="leading" id="SZL-gl-YqW"/>
+                            <constraint firstItem="Ywo-LV-7Pg" firstAttribute="top" secondItem="3qq-bH-WYT" secondAttribute="topMargin" id="ViN-JP-qeC"/>
+                            <constraint firstAttribute="bottom" secondItem="hSs-Bt-5Mh" secondAttribute="bottom" id="YZy-uW-PiY"/>
                             <constraint firstItem="hSs-Bt-5Mh" firstAttribute="leading" secondItem="3qq-bH-WYT" secondAttribute="leading" id="dvx-as-BbQ"/>
                         </constraints>
                     </view>
@@ -143,6 +153,7 @@
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
                     <connections>
                         <outlet property="avatarImageView" destination="vhE-2P-KGX" id="5f5-qe-4S0"/>
+                        <outlet property="chatHistoryContainer" destination="Ywo-LV-7Pg" id="ADI-3S-zkO"/>
                         <outlet property="statusLabel" destination="nUT-z4-szJ" id="oKd-Qq-2DR"/>
                         <outlet property="textSwitchButton" destination="hSs-Bt-5Mh" id="Pgi-sd-yDh"/>
                         <outlet property="titleLabel" destination="yGy-LP-rew" id="aRS-ZW-wOD"/>
@@ -232,7 +243,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Q8S-Xk-zSD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1038" y="3441"/>
+            <point key="canvasLocation" x="356" y="3433"/>
         </scene>
         <!--Receive View Controller-->
         <scene sceneID="TYB-CG-I2j">

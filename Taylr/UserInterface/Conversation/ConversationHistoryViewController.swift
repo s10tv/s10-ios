@@ -30,13 +30,6 @@ class ConversationHistoryViewController : ATLConversationViewController {
         dataSource = vm
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        if collectionView.contentInset.top != topLayoutGuide.length {
-            collectionView.contentInset.top = topLayoutGuide.length
-        }
-    }
-    
     // override (superclass implement this, but not visible to subclass because)
     // it's not declared in the header file
     func messageInputToolbar(messageInputToolbar: ATLMessageInputToolbar!, didTapLeftAccessoryButton leftAccessoryButton: UIButton!) {
