@@ -29,9 +29,10 @@ public class ConversationViewModel: NSObject {
             cover = u.pCover()
             displayName = u.pDisplayName()
         } else {
-            avatar = PropertyOf(nil)
-            cover = PropertyOf(nil)
-            displayName = ProducerProperty(SignalProducer(value: ""))
+            let otherUserId = conversation.recipientId(ctx.currentUserId)!
+            avatar = PropertyOf(conversation.getUserAvatarURL(otherUserId).map { Image($0) })
+            cover = PropertyOf(conversation.getUserCoverURL(otherUserId).map { Image($0) })
+            displayName = ProducerProperty(SignalProducer(value: conversation.getUserDisplayName(otherUserId) ?? ""))
         }
     }
     

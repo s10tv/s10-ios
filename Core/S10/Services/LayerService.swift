@@ -67,8 +67,10 @@ public class LayerService: NSObject {
                 LYRConversationOptionsMetadataKey: [
                     lyrUserDisplayName(otherUserId): user.displayName(),
                     lyrUserAvatarUrl(otherUserId): user.avatar?.url.absoluteString ?? "",
+                    lyrUserCoverUrl(otherUserId): user.cover?.url.absoluteString ?? "",
                     lyrUserDisplayName(currentUserId): currentUser.displayName(),
-                    lyrUserAvatarUrl(currentUserId): currentUser.avatar?.url.absoluteString ?? ""
+                    lyrUserAvatarUrl(currentUserId): currentUser.avatar?.url.absoluteString ?? "",
+                    lyrUserCoverUrl(currentUserId): currentUser.cover?.url.absoluteString ?? ""
                 ]
             ])
         } catch let error as NSError {

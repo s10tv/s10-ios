@@ -18,6 +18,7 @@ class ConversationViewController : UIViewController {
         case ChatHistory = 0, Producer = 1
     }
 
+    @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
@@ -34,8 +35,7 @@ class ConversationViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // This is necessary because otherwise during child viewWillAppear
-        // the childVC's view will have the wrong frame
+        coverImageView.sd_image <~ vm.cover
         avatarImageView.sd_image <~ vm.avatar
         titleLabel.rac_text <~ vm.displayName
         statusLabel.rac_text <~ vm.displayStatus

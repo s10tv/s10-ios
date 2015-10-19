@@ -206,7 +206,7 @@ public struct Formatters {
         let dateTimeString = "\(dateString) \(timeString)"
         let attrString = NSMutableAttributedString(string: dateTimeString)
         attrString.addAttributes([
-            NSForegroundColorAttributeName: UIColor.grayColor(),
+            NSForegroundColorAttributeName: UIColor.whiteColor(),
             NSFontAttributeName: CabinRegular11
         ], range: NSMakeRange(0, dateTimeString.length))
         attrString.addAttribute(NSFontAttributeName, value: CabinBold11,
@@ -253,6 +253,7 @@ public struct Formatters {
             statusString = Array(statuses.values).first?.description ?? ""
         }
         return NSAttributedString(string: statusString, attributes: [
+            NSForegroundColorAttributeName: UIColor.whiteColor(),
             NSFontAttributeName: CabinBold11
         ])
     }

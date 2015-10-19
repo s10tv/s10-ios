@@ -200,6 +200,7 @@
                     <connections>
                         <outlet property="avatarImageView" destination="vhE-2P-KGX" id="5f5-qe-4S0"/>
                         <outlet property="chatHistoryContainer" destination="vCJ-rY-C3m" id="FNC-4T-c66"/>
+                        <outlet property="coverImageView" destination="TJc-dA-VpJ" id="R6V-9o-ReH"/>
                         <outlet property="producerContainer" destination="Vaa-23-fm2" id="vwv-4L-x9S"/>
                         <outlet property="statusLabel" destination="nUT-z4-szJ" id="oKd-Qq-2DR"/>
                         <outlet property="swipeView" destination="J9N-g4-ZBf" id="ekW-2t-Fp2"/>

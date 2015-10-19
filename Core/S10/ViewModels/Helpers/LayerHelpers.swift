@@ -11,9 +11,13 @@ import LayerKit
 
 let lyrTopic = "topic"
 let lyrAvatarUrl = "avatarUrl"
+let lyrCoverUrl = "coverUrl"
 
 func lyrUserAvatarUrl(userId: String) -> String {
     return "users_\(userId)_avatarUrl"
+}
+func lyrUserCoverUrl(userId: String) -> String {
+    return "users_\(userId)_coverUrl"
 }
 func lyrUserDisplayName(userId: String) -> String {
     return "users_\(userId)_displayName"
@@ -28,6 +32,11 @@ extension LYRConversation {
     var avatarURL: NSURL? {
         get { return (metadata[lyrAvatarUrl] as? String).flatMap { NSURL(string: $0) } }
         set { setValue(newValue, forMetadataAtKeyPath: lyrAvatarUrl) }
+    }
+    
+    var coverURL: NSURL? {
+        get { return (metadata[lyrCoverUrl] as? String).flatMap { NSURL(string: $0) } }
+        set { setValue(newValue, forMetadataAtKeyPath: lyrCoverUrl) }
     }
 
     // TODO: currentUserId should probably not be nil?
@@ -50,6 +59,14 @@ extension LYRConversation {
     
     func setUserAvatarURL(userId: String, url: NSURL) {
         setValue(url.absoluteString, forMetadataAtKeyPath: lyrUserAvatarUrl(userId))
+    }
+    
+    func getUserCoverURL(userId: String) -> NSURL? {
+        return (metadata[lyrUserCoverUrl(userId)] as? String).flatMap { NSURL(string: $0) }
+    }
+    
+    func setUserCoverURL(userId: String, url: NSURL) {
+        setValue(url.absoluteString, forMetadataAtKeyPath: lyrUserCoverUrl(userId))
     }
     
     func getUserDisplayName(userId: String) -> String? {
