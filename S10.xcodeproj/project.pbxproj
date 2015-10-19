@@ -40,11 +40,6 @@
 		EA5022101B54AC4B00BC92D2 /* TestNSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = EA50220F1B54AC4B00BC92D2 /* TestNSObject.m */; };
 		EA54FA931BD009A000AD7E9A /* ConversationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA6B1BD009A000AD7E9A /* ConversationListViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA54FA941BD009A000AD7E9A /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA6C1BD009A000AD7E9A /* ConversationViewModel.swift */; settings = {ASSET_TAGS = (); }; };
-		EA54FA951BD009A000AD7E9A /* ChatHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA6E1BD009A000AD7E9A /* ChatHistoryViewModel.swift */; settings = {ASSET_TAGS = (); }; };
-		EA54FA961BD009A000AD7E9A /* ChatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA6F1BD009A000AD7E9A /* ChatsViewModel.swift */; settings = {ASSET_TAGS = (); }; };
-		EA54FA971BD009A000AD7E9A /* ConnectionViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA701BD009A000AD7E9A /* ConnectionViewModels.swift */; settings = {ASSET_TAGS = (); }; };
-		EA54FA981BD009A000AD7E9A /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA711BD009A000AD7E9A /* MessageViewModel.swift */; settings = {ASSET_TAGS = (); }; };
-		EA54FA9A1BD009A000AD7E9A /* VideoConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA731BD009A000AD7E9A /* VideoConversationViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA54FA9B1BD009A000AD7E9A /* CandidateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA751BD009A000AD7E9A /* CandidateViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA54FA9C1BD009A000AD7E9A /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA761BD009A000AD7E9A /* DiscoverViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA54FA9D1BD009A000AD7E9A /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA771BD009A000AD7E9A /* HistoryViewModel.swift */; settings = {ASSET_TAGS = (); }; };
@@ -60,7 +55,6 @@
 		EA54FAA71BD009A000AD7E9A /* HashtagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA831BD009A000AD7E9A /* HashtagViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA54FAA81BD009A000AD7E9A /* IntegrationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA851BD009A000AD7E9A /* IntegrationListViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA54FAA91BD009A000AD7E9A /* IntegrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA861BD009A000AD7E9A /* IntegrationViewModel.swift */; settings = {ASSET_TAGS = (); }; };
-		EA54FAAA1BD009A000AD7E9A /* InviteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA871BD009A000AD7E9A /* InviteViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA54FAAB1BD009A000AD7E9A /* MeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA881BD009A000AD7E9A /* MeViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA54FAAC1BD009A000AD7E9A /* ConnectServicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA8A1BD009A000AD7E9A /* ConnectServicesViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA54FAAD1BD009A000AD7E9A /* CreateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA8B1BD009A000AD7E9A /* CreateProfileViewModel.swift */; settings = {ASSET_TAGS = (); }; };
@@ -83,9 +77,6 @@
 		EA72AE431BD005CD0031D652 /* Conversation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA72AE131BD005CD0031D652 /* Conversation.storyboard */; settings = {ASSET_TAGS = (); }; };
 		EA72AE441BD005CD0031D652 /* ConversationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE141BD005CD0031D652 /* ConversationListViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EA72AE451BD005CD0031D652 /* ConversationHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE151BD005CD0031D652 /* ConversationHistoryViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		EA72AE461BD005CD0031D652 /* ChatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE171BD005CD0031D652 /* ChatsViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		EA72AE471BD005CD0031D652 /* ConnectionCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE181BD005CD0031D652 /* ConnectionCells.swift */; settings = {ASSET_TAGS = (); }; };
-		EA72AE481BD005CD0031D652 /* ChatHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE1A1BD005CD0031D652 /* ChatHistoryViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EA72AE491BD005CD0031D652 /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE1C1BD005CD0031D652 /* ReceiveViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EA72AE4A1BD005CD0031D652 /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE1E1BD005CD0031D652 /* EditorViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EA72AE4B1BD005CD0031D652 /* ProducerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE1F1BD005CD0031D652 /* ProducerViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -93,11 +84,9 @@
 		EA72AE4D1BD005CD0031D652 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE221BD005CD0031D652 /* RecordButton.swift */; settings = {ASSET_TAGS = (); }; };
 		EA72AE4E1BD005CD0031D652 /* TouchDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE231BD005CD0031D652 /* TouchDetector.swift */; settings = {ASSET_TAGS = (); }; };
 		EA72AE4F1BD005CD0031D652 /* DurationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE251BD005CD0031D652 /* DurationTimer.swift */; settings = {ASSET_TAGS = (); }; };
-		EA72AE501BD005CD0031D652 /* TimelineCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE261BD005CD0031D652 /* TimelineCell.swift */; settings = {ASSET_TAGS = (); }; };
 		EA72AE511BD005CD0031D652 /* VolumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE271BD005CD0031D652 /* VolumeView.swift */; settings = {ASSET_TAGS = (); }; };
 		EA72AE521BD005CD0031D652 /* VolumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE281BD005CD0031D652 /* VolumeViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA72AE531BD005CD0031D652 /* VideoConversation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA72AE291BD005CD0031D652 /* VideoConversation.storyboard */; settings = {ASSET_TAGS = (); }; };
-		EA72AE541BD005CD0031D652 /* VideoConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE2A1BD005CD0031D652 /* VideoConversationViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EA72AE551BD005CD0031D652 /* CandidateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE2C1BD005CD0031D652 /* CandidateCell.swift */; settings = {ASSET_TAGS = (); }; };
 		EA72AE561BD005CD0031D652 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA72AE2D1BD005CD0031D652 /* Discover.storyboard */; settings = {ASSET_TAGS = (); }; };
 		EA72AE571BD005CD0031D652 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE2E1BD005CD0031D652 /* DiscoverViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -109,7 +98,6 @@
 		EA72AE5D1BD005CD0031D652 /* IntegrationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE361BD005CD0031D652 /* IntegrationCell.swift */; settings = {ASSET_TAGS = (); }; };
 		EA72AE5E1BD005CD0031D652 /* IntegrationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE371BD005CD0031D652 /* IntegrationsViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EA72AE5F1BD005CD0031D652 /* IntegrationWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE381BD005CD0031D652 /* IntegrationWebViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		EA72AE601BD005CD0031D652 /* InviteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE391BD005CD0031D652 /* InviteViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EA72AE611BD005CD0031D652 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA72AE3A1BD005CD0031D652 /* Me.storyboard */; settings = {ASSET_TAGS = (); }; };
 		EA72AE621BD005CD0031D652 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE3B1BD005CD0031D652 /* MeViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EA72AE631BD005CD0031D652 /* ActivityImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE3D1BD005CD0031D652 /* ActivityImageCell.swift */; settings = {ASSET_TAGS = (); }; };
@@ -154,31 +142,19 @@
 		EA81ADF11BB68CDD00F94006 /* SugarRecordExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670581B31F9450025D7CF /* SugarRecordExtension.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81ADF61BB68E0400F94006 /* Models.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2771B637DFE0034434E /* Models.xcdatamodeld */; settings = {ASSET_TAGS = (); }; };
 		EA81ADF81BB68E2100F94006 /* _Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2851B637FA50034434E /* _Activity.swift */; settings = {ASSET_TAGS = (); }; };
-		EA81ADF91BB68E2100F94006 /* _Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2861B637FA50034434E /* _Connection.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81ADFA1BB68E2100F94006 /* _Integration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2871B637FA50034434E /* _Integration.swift */; settings = {ASSET_TAGS = (); }; };
-		EA81ADFB1BB68E2100F94006 /* _Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2881B637FA50034434E /* _Message.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81ADFC1BB68E2100F94006 /* _User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2891B637FA50034434E /* _User.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81ADFD1BB68E2100F94006 /* _Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7C6811BA7960600FD8A27 /* _Candidate.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81ADFE1BB68E2100F94006 /* Activity.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC28F1B637FA50034434E /* Activity.swift */; settings = {ASSET_TAGS = (); }; };
-		EA81ADFF1BB68E2100F94006 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2901B637FA50034434E /* Connection.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE001BB68E2100F94006 /* Integration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2911B637FA50034434E /* Integration.swift */; settings = {ASSET_TAGS = (); }; };
-		EA81AE011BB68E2100F94006 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2921B637FA50034434E /* Message.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE021BB68E2100F94006 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2931B637FA50034434E /* User.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE031BB68E2100F94006 /* Candidate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD7C6831BA7960E00FD8A27 /* Candidate.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE041BB68E5B00F94006 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA82CF961B504FC500A12D94 /* Image.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE051BB68E6700F94006 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2581B6377C00034434E /* Video.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE071BB68E6700F94006 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6708D1B31FA2E0025D7CF /* UserDefaults.swift */; settings = {ASSET_TAGS = (); }; };
-		EA81AE081BB6912D00F94006 /* VideoUploadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2651B637CA30034434E /* VideoUploadTask.swift */; settings = {ASSET_TAGS = (); }; };
-		EA81AE091BB6912D00F94006 /* VideoDownloadTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2671B637CAB0034434E /* VideoDownloadTask.swift */; settings = {ASSET_TAGS = (); }; };
-		EA81AE0A1BB6912D00F94006 /* InviteTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2691B637CB20034434E /* InviteTask.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE0B1BB6930900F94006 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6708C1B31FA2E0025D7CF /* CurrentUser.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE0C1BB693B800F94006 /* MeteorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670991B3200E10025D7CF /* MeteorService.swift */; settings = {ASSET_TAGS = (); }; };
-		EA81AE0E1BB6944100F94006 /* VideoCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2406211B50F79E003A73C3 /* VideoCache.swift */; settings = {ASSET_TAGS = (); }; };
-		EA81AE101BB6965E00F94006 /* VideoDownloadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA24061F1B50F0F1003A73C3 /* VideoDownloadOperation.swift */; settings = {ASSET_TAGS = (); }; };
-		EA81AE111BB696A400F94006 /* VideoUploadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F912AC5C1B3745AC00DEA6B1 /* VideoUploadOperation.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE121BB696B900F94006 /* PhotoUploadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABA05431B474EC900154C75 /* PhotoUploadOperation.swift */; settings = {ASSET_TAGS = (); }; };
-		EA81AE131BB696D000F94006 /* InviteOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9D545481B57988200A4661B /* InviteOperation.swift */; settings = {ASSET_TAGS = (); }; };
-		EA81AE141BB6976900F94006 /* TaskService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C166B1B368FD600371B50 /* TaskService.swift */; settings = {ASSET_TAGS = (); }; };
 		EA8A733A1BD3088E006DB6A9 /* VideoMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8A73391BD3088E006DB6A9 /* VideoMessageViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA8A733C1BD3092F006DB6A9 /* ReceiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8A733B1BD3092F006DB6A9 /* ReceiveViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA8E69461BC1DA30002D4BF1 /* ArrayProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8E69411BC1DA30002D4BF1 /* ArrayProperty.swift */; settings = {ASSET_TAGS = (); }; };
@@ -189,7 +165,6 @@
 		EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA9A6ACE1AAFDE19009EDD6D /* Localizable.strings */; };
 		EA9F354A1A74CC6900E0C65D /* Taylr.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Taylr.xcassets */; };
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
-		EAA058AD1BC35F0200FCB86C /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA058AC1BC35F0200FCB86C /* Conversation.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA575F61BB7CD9600661A4F /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE067221B71851E00A2FF76 /* AudioController.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA575FC1BB7D0F000661A4F /* ThirdPartyBindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBA91B3930B000701F08 /* ThirdPartyBindings.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA576081BB7E04C00661A4F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F871B2B32E500DE3936 /* BaseViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -292,23 +267,14 @@
 		EA1047271B4E3C1C00B1A76A /* RACPlayground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACPlayground.swift; sourceTree = "<group>"; };
 		EA1047321B4E756200B1A76A /* MeteorServiceTestingExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorServiceTestingExtension.swift; sourceTree = "<group>"; };
 		EA1047331B4E756200B1A76A /* TestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestExtensions.swift; sourceTree = "<group>"; };
-		EA24061F1B50F0F1003A73C3 /* VideoDownloadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDownloadOperation.swift; sourceTree = "<group>"; };
-		EA2406211B50F79E003A73C3 /* VideoCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCache.swift; sourceTree = "<group>"; };
 		EA2406231B5109D8003A73C3 /* VideoDownloadTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDownloadTests.swift; sourceTree = "<group>"; };
 		EA2DC2581B6377C00034434E /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
-		EA2DC2651B637CA30034434E /* VideoUploadTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoUploadTask.swift; sourceTree = "<group>"; };
-		EA2DC2671B637CAB0034434E /* VideoDownloadTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDownloadTask.swift; sourceTree = "<group>"; };
-		EA2DC2691B637CB20034434E /* InviteTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteTask.swift; sourceTree = "<group>"; };
 		EA2DC2781B637DFE0034434E /* Models.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Models.xcdatamodel; sourceTree = "<group>"; };
 		EA2DC2851B637FA50034434E /* _Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Activity.swift; sourceTree = "<group>"; };
-		EA2DC2861B637FA50034434E /* _Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Connection.swift; sourceTree = "<group>"; };
 		EA2DC2871B637FA50034434E /* _Integration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Integration.swift; sourceTree = "<group>"; };
-		EA2DC2881B637FA50034434E /* _Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Message.swift; sourceTree = "<group>"; };
 		EA2DC2891B637FA50034434E /* _User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _User.swift; sourceTree = "<group>"; };
 		EA2DC28F1B637FA50034434E /* Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Activity.swift; sourceTree = "<group>"; };
-		EA2DC2901B637FA50034434E /* Connection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
 		EA2DC2911B637FA50034434E /* Integration.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Integration.swift; sourceTree = "<group>"; };
-		EA2DC2921B637FA50034434E /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		EA2DC2931B637FA50034434E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EA2DC2B81B641F070034434E /* MeteorSubscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorSubscription.swift; sourceTree = "<group>"; };
 		EA337DFE1BB9067800F09A92 /* UIKitBindings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitBindings.swift; sourceTree = "<group>"; };
@@ -331,11 +297,6 @@
 		EA50220F1B54AC4B00BC92D2 /* TestNSObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestNSObject.m; sourceTree = "<group>"; };
 		EA54FA6B1BD009A000AD7E9A /* ConversationListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListViewModel.swift; sourceTree = "<group>"; };
 		EA54FA6C1BD009A000AD7E9A /* ConversationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewModel.swift; sourceTree = "<group>"; };
-		EA54FA6E1BD009A000AD7E9A /* ChatHistoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatHistoryViewModel.swift; sourceTree = "<group>"; };
-		EA54FA6F1BD009A000AD7E9A /* ChatsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewModel.swift; sourceTree = "<group>"; };
-		EA54FA701BD009A000AD7E9A /* ConnectionViewModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionViewModels.swift; sourceTree = "<group>"; };
-		EA54FA711BD009A000AD7E9A /* MessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
-		EA54FA731BD009A000AD7E9A /* VideoConversationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoConversationViewModel.swift; sourceTree = "<group>"; };
 		EA54FA751BD009A000AD7E9A /* CandidateViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateViewModel.swift; sourceTree = "<group>"; };
 		EA54FA761BD009A000AD7E9A /* DiscoverViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
 		EA54FA771BD009A000AD7E9A /* HistoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
@@ -351,7 +312,6 @@
 		EA54FA831BD009A000AD7E9A /* HashtagViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagViewModel.swift; sourceTree = "<group>"; };
 		EA54FA851BD009A000AD7E9A /* IntegrationListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationListViewModel.swift; sourceTree = "<group>"; };
 		EA54FA861BD009A000AD7E9A /* IntegrationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationViewModel.swift; sourceTree = "<group>"; };
-		EA54FA871BD009A000AD7E9A /* InviteViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteViewModel.swift; sourceTree = "<group>"; };
 		EA54FA881BD009A000AD7E9A /* MeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewModel.swift; sourceTree = "<group>"; };
 		EA54FA8A1BD009A000AD7E9A /* ConnectServicesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectServicesViewModel.swift; sourceTree = "<group>"; };
 		EA54FA8B1BD009A000AD7E9A /* CreateProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileViewModel.swift; sourceTree = "<group>"; };
@@ -383,9 +343,6 @@
 		EA72AE131BD005CD0031D652 /* Conversation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Conversation.storyboard; sourceTree = "<group>"; };
 		EA72AE141BD005CD0031D652 /* ConversationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListViewController.swift; sourceTree = "<group>"; };
 		EA72AE151BD005CD0031D652 /* ConversationHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationHistoryViewController.swift; sourceTree = "<group>"; };
-		EA72AE171BD005CD0031D652 /* ChatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatsViewController.swift; sourceTree = "<group>"; };
-		EA72AE181BD005CD0031D652 /* ConnectionCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionCells.swift; sourceTree = "<group>"; };
-		EA72AE1A1BD005CD0031D652 /* ChatHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatHistoryViewController.swift; sourceTree = "<group>"; };
 		EA72AE1C1BD005CD0031D652 /* ReceiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
 		EA72AE1E1BD005CD0031D652 /* EditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
 		EA72AE1F1BD005CD0031D652 /* ProducerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProducerViewController.swift; sourceTree = "<group>"; };
@@ -393,11 +350,9 @@
 		EA72AE221BD005CD0031D652 /* RecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		EA72AE231BD005CD0031D652 /* TouchDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchDetector.swift; sourceTree = "<group>"; };
 		EA72AE251BD005CD0031D652 /* DurationTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationTimer.swift; sourceTree = "<group>"; };
-		EA72AE261BD005CD0031D652 /* TimelineCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TimelineCell.swift; sourceTree = "<group>"; };
 		EA72AE271BD005CD0031D652 /* VolumeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumeView.swift; sourceTree = "<group>"; };
 		EA72AE281BD005CD0031D652 /* VolumeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumeViewModel.swift; sourceTree = "<group>"; };
 		EA72AE291BD005CD0031D652 /* VideoConversation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VideoConversation.storyboard; sourceTree = "<group>"; };
-		EA72AE2A1BD005CD0031D652 /* VideoConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoConversationViewController.swift; sourceTree = "<group>"; };
 		EA72AE2C1BD005CD0031D652 /* CandidateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateCell.swift; sourceTree = "<group>"; };
 		EA72AE2D1BD005CD0031D652 /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		EA72AE2E1BD005CD0031D652 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
@@ -409,7 +364,6 @@
 		EA72AE361BD005CD0031D652 /* IntegrationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationCell.swift; sourceTree = "<group>"; };
 		EA72AE371BD005CD0031D652 /* IntegrationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationsViewController.swift; sourceTree = "<group>"; };
 		EA72AE381BD005CD0031D652 /* IntegrationWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationWebViewController.swift; sourceTree = "<group>"; };
-		EA72AE391BD005CD0031D652 /* InviteViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteViewController.swift; sourceTree = "<group>"; };
 		EA72AE3A1BD005CD0031D652 /* Me.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
 		EA72AE3B1BD005CD0031D652 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		EA72AE3D1BD005CD0031D652 /* ActivityImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityImageCell.swift; sourceTree = "<group>"; };
@@ -449,7 +403,6 @@
 		EA95BBAC1B3930B000701F08 /* ResourceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceExtension.swift; sourceTree = "<group>"; };
 		EA9A6ACF1AAFDFA2009EDD6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA9C16651B365BD700371B50 /* AsyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
-		EA9C166B1B368FD600371B50 /* TaskService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskService.swift; sourceTree = "<group>"; };
 		EA9C16761B3759B700371B50 /* FormatterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FormatterTests.swift; sourceTree = "<group>"; };
 		EA9F353A1A74CC6900E0C65D /* Taylr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taylr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9F353E1A74CC6900E0C65D /* Taylr-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Taylr-Info.plist"; sourceTree = "<group>"; };
@@ -461,7 +414,6 @@
 		EA9F35621A74CD8800E0C65D /* Taylr-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Taylr-Bridging.h"; path = "Taylr/Taylr-Bridging.h"; sourceTree = SOURCE_ROOT; };
 		EA9FE6461B67F85E006F8E73 /* ReactiveTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveTests.swift; sourceTree = "<group>"; };
 		EA9FE6481B684FA0006F8E73 /* ProfileIconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileIconCell.swift; sourceTree = "<group>"; };
-		EAA058AC1BC35F0200FCB86C /* Conversation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		EAA56F7F1B2B32E500DE3936 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EAA56F871B2B32E500DE3936 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		EAA576381BB86A5000661A4F /* BindableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindableCell.swift; sourceTree = "<group>"; };
@@ -507,7 +459,6 @@
 		EAF81B371B3395E700EED6DD /* AVKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AVKit.swift; sourceTree = "<group>"; };
 		F1D48B38C28B60559AEB8949 /* Pods_Core_Taylr.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Core_Taylr.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F2C759AA125AEB809731B1D6 /* Pods-Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.release.xcconfig"; path = "Pods/Target Support Files/Pods-Core/Pods-Core.release.xcconfig"; sourceTree = "<group>"; };
-		F912AC5C1B3745AC00DEA6B1 /* VideoUploadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoUploadOperation.swift; sourceTree = "<group>"; };
 		F92F687E1B34974B00171FE4 /* CoreTests-bridging-header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreTests-bridging-header.h"; sourceTree = "<group>"; };
 		F95D95DE1A84A1170068F090 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		F9608B841BAA9B040067E1EF /* VerifyCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyCodeViewController.swift; sourceTree = "<group>"; };
@@ -521,7 +472,6 @@
 		F9ABA2D11B643EF30098B7E4 /* MeIntegrationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeIntegrationTest.swift; sourceTree = "<group>"; };
 		F9BF43101BB07EFC007D30A0 /* TutorialContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialContentViewController.swift; sourceTree = "<group>"; };
 		F9BF43121BB0813E007D30A0 /* TutorialPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
-		F9D545481B57988200A4661B /* InviteOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InviteOperation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -624,24 +574,12 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		EA2DC2641B637C980034434E /* Tasks */ = {
-			isa = PBXGroup;
-			children = (
-				EA2DC2651B637CA30034434E /* VideoUploadTask.swift */,
-				EA2DC2671B637CAB0034434E /* VideoDownloadTask.swift */,
-				EA2DC2691B637CB20034434E /* InviteTask.swift */,
-			);
-			path = Tasks;
-			sourceTree = "<group>";
-		};
 		EA2DC26B1B637DFE0034434E /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
 				EA2DC2841B637FA50034434E /* _Models */,
 				EA2DC28F1B637FA50034434E /* Activity.swift */,
-				EA2DC2901B637FA50034434E /* Connection.swift */,
 				EA2DC2911B637FA50034434E /* Integration.swift */,
-				EA2DC2921B637FA50034434E /* Message.swift */,
 				EA2DC2931B637FA50034434E /* User.swift */,
 				EAD7C6831BA7960E00FD8A27 /* Candidate.swift */,
 				EAD16D2F1BCA4ABE0040CEB8 /* Hashtag.swift */,
@@ -654,9 +592,7 @@
 			isa = PBXGroup;
 			children = (
 				EA2DC2851B637FA50034434E /* _Activity.swift */,
-				EA2DC2861B637FA50034434E /* _Connection.swift */,
 				EA2DC2871B637FA50034434E /* _Integration.swift */,
-				EA2DC2881B637FA50034434E /* _Message.swift */,
 				EA2DC2891B637FA50034434E /* _User.swift */,
 				EAD7C6811BA7960600FD8A27 /* _Candidate.swift */,
 				EAD16D2D1BCA4AB40040CEB8 /* _Hashtag.swift */,
@@ -734,21 +670,8 @@
 				EA54FA6C1BD009A000AD7E9A /* ConversationViewModel.swift */,
 				EA8A73391BD3088E006DB6A9 /* VideoMessageViewModel.swift */,
 				EA8A733B1BD3092F006DB6A9 /* ReceiveViewModel.swift */,
-				EA54FA6D1BD009A000AD7E9A /* Video */,
 			);
 			path = Conversation;
-			sourceTree = "<group>";
-		};
-		EA54FA6D1BD009A000AD7E9A /* Video */ = {
-			isa = PBXGroup;
-			children = (
-				EA54FA6E1BD009A000AD7E9A /* ChatHistoryViewModel.swift */,
-				EA54FA6F1BD009A000AD7E9A /* ChatsViewModel.swift */,
-				EA54FA701BD009A000AD7E9A /* ConnectionViewModels.swift */,
-				EA54FA711BD009A000AD7E9A /* MessageViewModel.swift */,
-				EA54FA731BD009A000AD7E9A /* VideoConversationViewModel.swift */,
-			);
-			path = Video;
 			sourceTree = "<group>";
 		};
 		EA54FA741BD009A000AD7E9A /* Discover */ = {
@@ -782,7 +705,6 @@
 				EA54FA811BD009A000AD7E9A /* EditHashtagsViewModel.swift */,
 				EA54FA821BD009A000AD7E9A /* EditProfileViewModel.swift */,
 				EA54FA831BD009A000AD7E9A /* HashtagViewModel.swift */,
-				EA54FA871BD009A000AD7E9A /* InviteViewModel.swift */,
 				EA54FA881BD009A000AD7E9A /* MeViewModel.swift */,
 			);
 			path = Me;
@@ -897,24 +819,12 @@
 		EA72AE161BD005CD0031D652 /* Video */ = {
 			isa = PBXGroup;
 			children = (
-				EA72AE171BD005CD0031D652 /* ChatsViewController.swift */,
-				EA72AE181BD005CD0031D652 /* ConnectionCells.swift */,
-				EA72AE191BD005CD0031D652 /* History */,
 				EA72AE1B1BD005CD0031D652 /* Receive */,
 				EA72AE1D1BD005CD0031D652 /* Send */,
 				EA72AE241BD005CD0031D652 /* Shared */,
 				EA72AE291BD005CD0031D652 /* VideoConversation.storyboard */,
-				EA72AE2A1BD005CD0031D652 /* VideoConversationViewController.swift */,
 			);
 			path = Video;
-			sourceTree = "<group>";
-		};
-		EA72AE191BD005CD0031D652 /* History */ = {
-			isa = PBXGroup;
-			children = (
-				EA72AE1A1BD005CD0031D652 /* ChatHistoryViewController.swift */,
-			);
-			path = History;
 			sourceTree = "<group>";
 		};
 		EA72AE1B1BD005CD0031D652 /* Receive */ = {
@@ -949,7 +859,6 @@
 			isa = PBXGroup;
 			children = (
 				EA72AE251BD005CD0031D652 /* DurationTimer.swift */,
-				EA72AE261BD005CD0031D652 /* TimelineCell.swift */,
 				EA72AE271BD005CD0031D652 /* VolumeView.swift */,
 				EA72AE281BD005CD0031D652 /* VolumeViewModel.swift */,
 			);
@@ -977,7 +886,6 @@
 				EA72AE331BD005CD0031D652 /* EditProfileViewController.swift */,
 				EA72AE321BD005CD0031D652 /* EditHashtagsViewController.swift */,
 				EA72AE341BD005CD0031D652 /* HashtagCell.swift */,
-				EA72AE391BD005CD0031D652 /* InviteViewController.swift */,
 			);
 			path = Me;
 			sourceTree = "<group>";
@@ -1241,8 +1149,6 @@
 			isa = PBXGroup;
 			children = (
 				EA2DC26B1B637DFE0034434E /* CoreData */,
-				EA2DC2641B637C980034434E /* Tasks */,
-				EAA058AC1BC35F0200FCB86C /* Conversation.swift */,
 				EA82CF961B504FC500A12D94 /* Image.swift */,
 				EA2DC2581B6377C00034434E /* Video.swift */,
 				EAF6708C1B31FA2E0025D7CF /* CurrentUser.swift */,
@@ -1254,10 +1160,7 @@
 		EAF6706C1B31F9450025D7CF /* Operations */ = {
 			isa = PBXGroup;
 			children = (
-				EA24061F1B50F0F1003A73C3 /* VideoDownloadOperation.swift */,
-				F912AC5C1B3745AC00DEA6B1 /* VideoUploadOperation.swift */,
 				EABA05431B474EC900154C75 /* PhotoUploadOperation.swift */,
-				F9D545481B57988200A4661B /* InviteOperation.swift */,
 			);
 			path = Operations;
 			sourceTree = "<group>";
@@ -1288,8 +1191,6 @@
 			isa = PBXGroup;
 			children = (
 				EAF670991B3200E10025D7CF /* MeteorService.swift */,
-				EA9C166B1B368FD600371B50 /* TaskService.swift */,
-				EA2406211B50F79E003A73C3 /* VideoCache.swift */,
 				EAB31D561BCF76260080DA47 /* LayerService.swift */,
 			);
 			path = Services;
@@ -1730,7 +1631,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA54FAA61BD009A000AD7E9A /* EditProfileViewModel.swift in Sources */,
-				EA81AE0E1BB6944100F94006 /* VideoCache.swift in Sources */,
 				EA81ADEA1BB688C700F94006 /* ScrollTransition.swift in Sources */,
 				EA54FA9F1BD009A000AD7E9A /* AlertableError.swift in Sources */,
 				EA81ADEB1BB6891F00F94006 /* RealmExtensions.swift in Sources */,
@@ -1739,16 +1639,12 @@
 				EA54FAA41BD009A000AD7E9A /* UserViewModel.swift in Sources */,
 				EA81ADBD1BB65FB800F94006 /* FoundationExtension.swift in Sources */,
 				EA54FAA91BD009A000AD7E9A /* IntegrationViewModel.swift in Sources */,
-				EA81AE091BB6912D00F94006 /* VideoDownloadTask.swift in Sources */,
-				EA54FA961BD009A000AD7E9A /* ChatsViewModel.swift in Sources */,
 				EA81ADDE1BB6852600F94006 /* Environment.swift in Sources */,
 				EA81ADED1BB689FC00F94006 /* MeteorSubscription.swift in Sources */,
 				EA54FAB21BD009A000AD7E9A /* ProfileViewModel.swift in Sources */,
-				EA81ADFB1BB68E2100F94006 /* _Message.swift in Sources */,
 				EA81ADFD1BB68E2100F94006 /* _Candidate.swift in Sources */,
 				EA81AE001BB68E2100F94006 /* Integration.swift in Sources */,
 				EA54FA9E1BD009A000AD7E9A /* TodayViewModel.swift in Sources */,
-				EA54FA981BD009A000AD7E9A /* MessageViewModel.swift in Sources */,
 				EA54FAB01BD009A000AD7E9A /* ActivityViewModels.swift in Sources */,
 				EA81ADFC1BB68E2100F94006 /* _User.swift in Sources */,
 				EA81AE0C1BB693B800F94006 /* MeteorService.swift in Sources */,
@@ -1756,10 +1652,7 @@
 				EA81ADE91BB6883A00F94006 /* AnimationExtensions.swift in Sources */,
 				EA54FA931BD009A000AD7E9A /* ConversationListViewModel.swift in Sources */,
 				EA54FAA81BD009A000AD7E9A /* IntegrationListViewModel.swift in Sources */,
-				EA81AE0A1BB6912D00F94006 /* InviteTask.swift in Sources */,
-				EA54FA971BD009A000AD7E9A /* ConnectionViewModels.swift in Sources */,
 				EA54FAAC1BD009A000AD7E9A /* ConnectServicesViewModel.swift in Sources */,
-				EA81ADFF1BB68E2100F94006 /* Connection.swift in Sources */,
 				EA81ADFE1BB68E2100F94006 /* Activity.swift in Sources */,
 				EA54FAA11BD009A000AD7E9A /* Formatters.swift in Sources */,
 				EA81AE071BB68E6700F94006 /* UserDefaults.swift in Sources */,
@@ -1771,7 +1664,6 @@
 				EA8E69461BC1DA30002D4BF1 /* ArrayProperty.swift in Sources */,
 				EA8A733C1BD3092F006DB6A9 /* ReceiveViewModel.swift in Sources */,
 				EA81AE021BB68E2100F94006 /* User.swift in Sources */,
-				EA81AE141BB6976900F94006 /* TaskService.swift in Sources */,
 				EA81ADDA1BB6839200F94006 /* AlamofireExtension.swift in Sources */,
 				EA81ADBF1BB6679400F94006 /* Logging.swift in Sources */,
 				EA81ADF11BB68CDD00F94006 /* SugarRecordExtension.swift in Sources */,
@@ -1779,7 +1671,6 @@
 				EA81ADDB1BB6839200F94006 /* AzureClient.swift in Sources */,
 				EA54FAB11BD009A000AD7E9A /* ProfileInfoViewModel.swift in Sources */,
 				EA81ADEC1BB6893500F94006 /* MeteorMethod.swift in Sources */,
-				EAA058AD1BC35F0200FCB86C /* Conversation.swift in Sources */,
 				EA8E694A1BC1DA30002D4BF1 /* TwoWayBindings.swift in Sources */,
 				EA54FAB51BD00A2F00AD7E9A /* Context.swift in Sources */,
 				EA8A733A1BD3088E006DB6A9 /* VideoMessageViewModel.swift in Sources */,
@@ -1788,12 +1679,10 @@
 				EA81ADF81BB68E2100F94006 /* _Activity.swift in Sources */,
 				EA81ADDC1BB6852600F94006 /* DeviceInfo.swift in Sources */,
 				EA54FAB31BD009A000AD7E9A /* MainTabViewModel.swift in Sources */,
-				EA81AE111BB696A400F94006 /* VideoUploadOperation.swift in Sources */,
 				EAB31D571BCF76260080DA47 /* LayerService.swift in Sources */,
 				EAD16D301BCA4ABE0040CEB8 /* Hashtag.swift in Sources */,
 				EA54FAA71BD009A000AD7E9A /* HashtagViewModel.swift in Sources */,
 				EAA5763C1BB86A5000661A4F /* UICollectionViewBinding.swift in Sources */,
-				EA54FA951BD009A000AD7E9A /* ChatHistoryViewModel.swift in Sources */,
 				EA337DFF1BB9067800F09A92 /* UIKitBindings.swift in Sources */,
 				EA81ADD31BB673B100F94006 /* Future.swift in Sources */,
 				EA81ADE71BB687F700F94006 /* GeometryExtensions.swift in Sources */,
@@ -1804,27 +1693,20 @@
 				EA81AE051BB68E6700F94006 /* Video.swift in Sources */,
 				EA0ED05F1BC1F80F00A9EE08 /* MeteorExtensions.swift in Sources */,
 				EAA5763B1BB86A5000661A4F /* BindableCell.swift in Sources */,
-				EA81AE081BB6912D00F94006 /* VideoUploadTask.swift in Sources */,
 				EA81ADE21BB686EF00F94006 /* PanInteractor.swift in Sources */,
-				EA81AE131BB696D000F94006 /* InviteOperation.swift in Sources */,
 				EA81ADE51BB686EF00F94006 /* Transition.swift in Sources */,
 				EA54FAAB1BD009A000AD7E9A /* MeViewModel.swift in Sources */,
-				EA54FA9A1BD009A000AD7E9A /* VideoConversationViewModel.swift in Sources */,
-				EA54FAAA1BD009A000AD7E9A /* InviteViewModel.swift in Sources */,
-				EA81AE101BB6965E00F94006 /* VideoDownloadOperation.swift in Sources */,
 				EAB31D591BCF76790080DA47 /* LayerExtensions.swift in Sources */,
 				EA54FA9B1BD009A000AD7E9A /* CandidateViewModel.swift in Sources */,
 				EA81ADCE1BB6731200F94006 /* SwiftExtensions.swift in Sources */,
 				EA54FAA01BD009A000AD7E9A /* Errors.swift in Sources */,
 				EA81ADC21BB6688400F94006 /* Core.m in Sources */,
 				EA81ADD71BB6823F00F94006 /* AsyncOperation.swift in Sources */,
-				EA81ADF91BB68E2100F94006 /* _Connection.swift in Sources */,
 				EA81AE121BB696B900F94006 /* PhotoUploadOperation.swift in Sources */,
 				EA81ADFA1BB68E2100F94006 /* _Integration.swift in Sources */,
 				EA81ADE81BB6881200F94006 /* UIKitExtension.swift in Sources */,
 				EA81ADE41BB686EF00F94006 /* Segue.swift in Sources */,
 				EA54FA9D1BD009A000AD7E9A /* HistoryViewModel.swift in Sources */,
-				EA81AE011BB68E2100F94006 /* Message.swift in Sources */,
 				EA54FAAD1BD009A000AD7E9A /* CreateProfileViewModel.swift in Sources */,
 				EA81AE031BB68E2100F94006 /* Candidate.swift in Sources */,
 				EA81AE0B1BB6930900F94006 /* CurrentUser.swift in Sources */,
@@ -1849,7 +1731,6 @@
 				EAA5760F1BB7E2E000661A4F /* TransitionManager.swift in Sources */,
 				EAA576081BB7E04C00661A4F /* BaseViewController.swift in Sources */,
 				EA72AE4A1BD005CD0031D652 /* EditorViewController.swift in Sources */,
-				EA72AE601BD005CD0031D652 /* InviteViewController.swift in Sources */,
 				EA72AE5D1BD005CD0031D652 /* IntegrationCell.swift in Sources */,
 				EA72AE621BD005CD0031D652 /* MeViewController.swift in Sources */,
 				EA42D64C1BB7BE4700B07526 /* Errors.swift in Sources */,
@@ -1860,15 +1741,12 @@
 				EA72AE671BD005CD0031D652 /* ProfileInfoCells.swift in Sources */,
 				EA42D6531BB7C2C500B07526 /* AnalyticsService.swift in Sources */,
 				EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */,
-				EA72AE541BD005CD0031D652 /* VideoConversationViewController.swift in Sources */,
 				EA42D65E1BB7C67900B07526 /* BaseViews.swift in Sources */,
 				EAA576191BB7E9FB00661A4F /* ConnectServicesViewController.swift in Sources */,
 				EAE067211B71850F00A2FF76 /* MuteChecker.m in Sources */,
 				EA42D64F1BB7BE5D00B07526 /* SBConstants.swift in Sources */,
-				EA72AE501BD005CD0031D652 /* TimelineCell.swift in Sources */,
 				EA42D6611BB7CC7B00B07526 /* ImagePickerExtensions.swift in Sources */,
 				EA72AE661BD005CD0031D652 /* ProfileCoverCell.swift in Sources */,
-				EA72AE461BD005CD0031D652 /* ChatsViewController.swift in Sources */,
 				EAA575F61BB7CD9600661A4F /* AudioController.swift in Sources */,
 				EA42D6601BB7CBAE00B07526 /* PKHUDExtension.swift in Sources */,
 				EA72AE441BD005CD0031D652 /* ConversationListViewController.swift in Sources */,
@@ -1883,7 +1761,6 @@
 				EA72AE5A1BD005CD0031D652 /* EditHashtagsViewController.swift in Sources */,
 				EA72AE451BD005CD0031D652 /* ConversationHistoryViewController.swift in Sources */,
 				EA72AE5C1BD005CD0031D652 /* HashtagCell.swift in Sources */,
-				EA72AE481BD005CD0031D652 /* ChatHistoryViewController.swift in Sources */,
 				EA72AE631BD005CD0031D652 /* ActivityImageCell.swift in Sources */,
 				EA72AE4D1BD005CD0031D652 /* RecordButton.swift in Sources */,
 				EADE6CBE1BCF8AFC002F1216 /* UserViewModel+ATLParticipant.swift in Sources */,
@@ -1894,7 +1771,6 @@
 				EAA575FC1BB7D0F000661A4F /* ThirdPartyBindings.swift in Sources */,
 				EA72AE491BD005CD0031D652 /* ReceiveViewController.swift in Sources */,
 				EA72AE4B1BD005CD0031D652 /* ProducerViewController.swift in Sources */,
-				EA72AE471BD005CD0031D652 /* ConnectionCells.swift in Sources */,
 				EAA576091BB7E0E700661A4F /* PageViewController.swift in Sources */,
 				EA72AE5E1BD005CD0031D652 /* IntegrationsViewController.swift in Sources */,
 				EA72AE5F1BD005CD0031D652 /* IntegrationWebViewController.swift in Sources */,

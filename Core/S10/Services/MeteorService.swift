@@ -229,34 +229,11 @@ public class MeteorService : NSObject {
     func reportUser(user: User, reason: String) -> Future<(), NSError> {
         return meteor.call("user/report", user, reason)
     }
-
-    // MARK: - Messages
     
-    func openMessage(message: Message) -> Future<(), NSError> {
-        return meteor.callMethod("message/open", params: [message], stub: { _ in
-            message.status_ = Message.Status.Opened.rawValue
-            return nil
-        }).future.map { _ in }
-    }
-
     // MARK: - Tasks
 
     func startTask(taskId: String, type: String, metadata: NSDictionary) -> Future<AnyObject?, NSError> {
         return meteor.callMethod("startTask", params: [taskId, type, metadata]).future
-    }
-    
-    func startMessageTask(taskId: String, recipient: ConversationId, info: [String: AnyObject]) -> Future<(videoURL: NSURL, thumbnailURL: NSURL), NSError> {
-        var metadata = info
-        switch recipient {
-        case .ConnectionId(let connectionId):
-            metadata["connectionId"] = connectionId
-        case .UserId(let userId):
-            metadata["userId"] = userId
-        }
-        return startTask(taskId, type: "MESSAGE", metadata: metadata).map {
-            let json = JSON($0!)
-            return (NSURL(json["videoUrl"].string!)!, NSURL(json["thumbnailUrl"].string!)!)
-        }
     }
     
     func finishTask(taskId: String) -> Future<(), NSError> {

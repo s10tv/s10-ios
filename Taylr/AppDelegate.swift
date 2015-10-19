@@ -77,7 +77,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
             accountService: AccountService(meteorService: meteor),
             analyticsService: AnalyticsService(env: env, currentUser: meteor.currentUser),
             upgradeService: UpgradeService(env: env, currentUser: meteor.currentUser),
-            taskService: TaskService(meteorService: meteor),
             layerService: LayerService(layerAppID: env.layerURL, meteor: meteor)
         )
         
@@ -96,12 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
             "version": env.version,
             "build": env.build
         ])
-        
-        // Resume unfinished business
-        Globals.taskService.resumeUploads()
-        Globals.taskService.resumeDownloads()
-        Globals.taskService.resumeInvites()
-        
+                
         Log.info("App Launched")
         Analytics.track("AppOpen")
         

@@ -29,8 +29,6 @@ internal enum UserKeys: String, CustomStringConvertible {
 
     case major = "major"
 
-    case connection = "connection"
-
     internal var description: String { return rawValue }
 }
 
@@ -121,11 +119,6 @@ class _User: NSManagedObject {
     // func validateMajor(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
     // MARK: - Relationships
-
-    @NSManaged internal
-    var connection: Connection?
-
-    // func validateConnection(value: AutoreleasingUnsafePointer<AnyObject>, error: NSErrorPointer) {}
 
 }
 

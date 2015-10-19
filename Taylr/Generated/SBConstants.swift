@@ -33,25 +33,6 @@ public enum SegueIdentifier : String {
     case TutorialToConnectServices = "TutorialToConnectServices"
 }
 
-public enum SegueIdentifierStoryboardNames : String {
-    case Onboarding = "Onboarding"
-}
-
-public enum StoryboardNames : String {
-    case Main = "Main"
-    case Profile = "Profile"
-    case VideoConversation = "VideoConversation"
-}
-
-public enum StoryboardNamestableViewControllerStoryboardIdentifier : String {
-    case Me = "Me"
-}
-
-public enum StoryboardNamesviewControllerStoryboardIdentifier : String {
-    case Conversation = "Conversation"
-    case Discover = "Discover"
-}
-
 public enum TableViewCellreuseIdentifier : String {
     case ActivityImageCell = "ActivityImageCell"
     case ActivityTextCell = "ActivityTextCell"
@@ -66,12 +47,15 @@ public enum TableViewControllerStoryboardIdentifier : String {
     case ConversationList = "ConversationList"
     case CreateProfile = "CreateProfile"
     case EditProfile = "EditProfile"
+    case Me = "Me"
 }
 
 public enum ViewControllerStoryboardIdentifier : String {
     case AuthWeb = "AuthWeb"
     case ChatHistory = "ChatHistory"
     case Chats = "Chats"
+    case Conversation = "Conversation"
+    case Discover = "Discover"
     case Editor = "Editor"
     case History = "History"
     case Login = "Login"

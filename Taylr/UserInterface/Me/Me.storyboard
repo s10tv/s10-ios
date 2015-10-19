@@ -10,10 +10,6 @@
         <mutableArray key="Cabin-Medium.ttf">
             <string>Cabin-Medium</string>
             <string>Cabin-Medium</string>
-            <string>Cabin-Medium</string>
-            <string>Cabin-Medium</string>
-            <string>Cabin-Medium</string>
-            <string>Cabin-Medium</string>
         </mutableArray>
         <mutableArray key="Cabin-Regular.ttf">
             <string>Cabin-Regular</string>
@@ -733,40 +729,12 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Invite" id="moW-yb-QnA">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="180" id="VL1-nI-Pdl">
-                                        <rect key="frame" x="0.0" y="217" width="600" height="180"/>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="0.0" id="VL1-nI-Pdl">
+                                        <rect key="frame" x="0.0" y="217" width="600" height="0.0"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="VL1-nI-Pdl" id="Vbe-vo-JsC">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="180"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="0.0"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VN7-oP-IAz">
-                                                    <rect key="frame" x="8" y="8" width="584" height="164"/>
-                                                    <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowOpacity">
-                                                            <real key="value" value="0.050000000000000003"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="shadowRadius">
-                                                            <real key="value" value="3"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="color" keyPath="shadowColor">
-                                                            <color key="value" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                        <userDefinedRuntimeAttribute type="size" keyPath="shadowOffset">
-                                                            <size key="value" width="0.0" height="1"/>
-                                                        </userDefinedRuntimeAttribute>
-                                                    </userDefinedRuntimeAttributes>
-                                                    <connections>
-                                                        <segue destination="svp-FS-dO8" kind="embed" id="Rwb-NO-SZw"/>
-                                                    </connections>
-                                                </containerView>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="VN7-oP-IAz" firstAttribute="bottom" secondItem="Vbe-vo-JsC" secondAttribute="bottomMargin" id="GUz-P0-pkp"/>
-                                                <constraint firstItem="VN7-oP-IAz" firstAttribute="top" secondItem="Vbe-vo-JsC" secondAttribute="topMargin" id="Kqv-6E-UwY"/>
-                                                <constraint firstItem="VN7-oP-IAz" firstAttribute="trailing" secondItem="Vbe-vo-JsC" secondAttribute="trailingMargin" id="lHX-4D-lIx"/>
-                                                <constraint firstItem="VN7-oP-IAz" firstAttribute="leading" secondItem="Vbe-vo-JsC" secondAttribute="leadingMargin" id="o5O-A9-rco"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </tableViewCell>
@@ -775,7 +743,7 @@
                             <tableViewSection headerTitle="My School" id="57t-Gi-M65" userLabel="Network">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="40" id="fts-3G-2rP">
-                                        <rect key="frame" x="0.0" y="439" width="600" height="40"/>
+                                        <rect key="frame" x="0.0" y="259" width="600" height="40"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fts-3G-2rP" id="l8L-SN-D8h">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="40"/>
@@ -815,7 +783,7 @@
                             <tableViewSection headerTitle="My Hashtags" id="5c4-ci-ABw" userLabel="Hashtags">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="100" id="Rbm-z2-Q4U">
-                                        <rect key="frame" x="0.0" y="521" width="600" height="100"/>
+                                        <rect key="frame" x="0.0" y="341" width="600" height="100"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Rbm-z2-Q4U" id="TLA-Ui-FIm">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="100"/>
@@ -886,7 +854,7 @@
                             <tableViewSection headerTitle="" id="C3W-Cf-23D" userLabel="Options">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="kr0-E7-xqK">
-                                        <rect key="frame" x="0.0" y="641" width="600" height="60"/>
+                                        <rect key="frame" x="0.0" y="461" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="kr0-E7-xqK" id="GIs-0L-D5L">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
@@ -922,7 +890,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="60" id="Ztt-zf-D0c">
-                                        <rect key="frame" x="0.0" y="701" width="600" height="60"/>
+                                        <rect key="frame" x="0.0" y="521" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ztt-zf-D0c" id="KoS-xY-Hls">
                                             <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
@@ -964,7 +932,6 @@
                         <outlet property="avatarView" destination="Sl0-66-r1q" id="hFm-9Z-MGK"/>
                         <outlet property="coverView" destination="zw3-hS-BTs" id="GrL-TQ-iI7"/>
                         <outlet property="hashtagsView" destination="Hra-4i-g6P" id="M1d-X1-ekE"/>
-                        <outlet property="inviteContainer" destination="VN7-oP-IAz" id="NBT-ep-8db"/>
                         <outlet property="nameLabel" destination="vns-XO-Vtt" id="Ruo-Va-xds"/>
                         <outlet property="servicesCollectionView" destination="xfo-Ax-Q1n" id="JiG-3U-MyF"/>
                         <outlet property="versionLabel" destination="W2x-p0-Qgh" id="7ZE-gd-Daj"/>
@@ -1091,126 +1058,6 @@
             </objects>
             <point key="canvasLocation" x="-273" y="2391"/>
         </scene>
-        <!--Invite View Controller-->
-        <scene sceneID="QGi-q1-K0T">
-            <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="svp-FS-dO8" customClass="InviteViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="khI-bq-1GZ"/>
-                        <viewControllerLayoutGuide type="bottom" id="NBG-uh-p21"/>
-                    </layoutGuides>
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="ejT-jn-oGc">
-                        <rect key="frame" x="0.0" y="0.0" width="584" height="164"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="First Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="BAN-uF-WFW" customClass="JVFloatLabeledTextField">
-                                <rect key="frame" x="10" y="0.0" width="277" height="54"/>
-                                <fontDescription key="fontDescription" name="Cabin-Medium" family="Cabin" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="floatingLabelYPadding">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
-                                        <color key="value" red="0.46897470949999998" green="0.27513545750000001" blue="0.68778532739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Last Name" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="ptD-Lg-GIc" customClass="JVFloatLabeledTextField">
-                                <rect key="frame" x="307" y="0.0" width="277" height="54"/>
-                                <fontDescription key="fontDescription" name="Cabin-Medium" family="Cabin" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="words" autocorrectionType="no"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="floatingLabelYPadding">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
-                                        <color key="value" red="0.46897470949999998" green="0.27513545750000001" blue="0.68778532739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email or Phone" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="871-L8-tuy" customClass="JVFloatLabeledTextField">
-                                <rect key="frame" x="10" y="55" width="574" height="55"/>
-                                <fontDescription key="fontDescription" name="Cabin-Medium" family="Cabin" pointSize="16"/>
-                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="floatingLabelYPadding">
-                                        <real key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="color" keyPath="floatingLabelActiveTextColor">
-                                        <color key="value" red="0.46897470949999998" green="0.27513545750000001" blue="0.68778532739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
-                            </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vsX-af-Jgd">
-                                <rect key="frame" x="0.0" y="110" width="584" height="54"/>
-                                <color key="backgroundColor" red="0.46897470949999998" green="0.27513545750000001" blue="0.68778532739999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <fontDescription key="fontDescription" name="Cabin-Medium" family="Cabin" pointSize="16"/>
-                                <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="10" maxY="0.0"/>
-                                <state key="normal" title="Send a personal video message" image="ic-video">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="didPressSend:" destination="svp-FS-dO8" eventType="touchUpInside" id="BJC-kv-5z7"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8Dx-m9-t3m" userLabel="Vertical Divider">
-                                <rect key="frame" x="297" y="0.0" width="1" height="54"/>
-                                <color key="backgroundColor" red="0.93299722669999996" green="0.94112014769999996" blue="0.94931834940000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="1" id="JFL-hu-ErE"/>
-                                </constraints>
-                            </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="5UF-Cu-BrR" userLabel="Horizontal Divider">
-                                <rect key="frame" x="0.0" y="54" width="584" height="1"/>
-                                <color key="backgroundColor" red="0.93299722669999996" green="0.94112014769999996" blue="0.94931834940000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="1" id="PfN-au-19H"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="ptD-Lg-GIc" firstAttribute="top" secondItem="khI-bq-1GZ" secondAttribute="bottom" id="61g-Or-bOO"/>
-                            <constraint firstItem="BAN-uF-WFW" firstAttribute="top" secondItem="khI-bq-1GZ" secondAttribute="bottom" id="DCw-q6-YT6"/>
-                            <constraint firstItem="BAN-uF-WFW" firstAttribute="leading" secondItem="ejT-jn-oGc" secondAttribute="leading" constant="10" id="J8g-Bv-z9D"/>
-                            <constraint firstItem="vsX-af-Jgd" firstAttribute="leading" secondItem="ejT-jn-oGc" secondAttribute="leading" id="KDR-gX-Hv2"/>
-                            <constraint firstItem="BAN-uF-WFW" firstAttribute="height" secondItem="vsX-af-Jgd" secondAttribute="height" id="KbB-41-xD5"/>
-                            <constraint firstItem="871-L8-tuy" firstAttribute="height" secondItem="vsX-af-Jgd" secondAttribute="height" id="Lwj-pH-6Uw"/>
-                            <constraint firstItem="ptD-Lg-GIc" firstAttribute="width" secondItem="BAN-uF-WFW" secondAttribute="width" id="OMX-0t-rQo"/>
-                            <constraint firstItem="5UF-Cu-BrR" firstAttribute="leading" secondItem="ejT-jn-oGc" secondAttribute="leading" id="Qcl-Ug-Rod"/>
-                            <constraint firstAttribute="trailing" secondItem="871-L8-tuy" secondAttribute="trailing" id="YGk-7Y-CD8"/>
-                            <constraint firstItem="8Dx-m9-t3m" firstAttribute="leading" secondItem="BAN-uF-WFW" secondAttribute="trailing" constant="10" id="ZqB-iv-zSq"/>
-                            <constraint firstItem="5UF-Cu-BrR" firstAttribute="top" secondItem="8Dx-m9-t3m" secondAttribute="bottom" id="a0k-0N-swG"/>
-                            <constraint firstAttribute="trailing" secondItem="ptD-Lg-GIc" secondAttribute="trailing" id="a2Z-TS-61k"/>
-                            <constraint firstItem="871-L8-tuy" firstAttribute="top" secondItem="BAN-uF-WFW" secondAttribute="bottom" constant="1" id="g0b-Ce-9WH"/>
-                            <constraint firstAttribute="trailing" secondItem="vsX-af-Jgd" secondAttribute="trailing" id="jIT-ka-z6I"/>
-                            <constraint firstItem="8Dx-m9-t3m" firstAttribute="top" secondItem="khI-bq-1GZ" secondAttribute="bottom" id="k7C-2b-W3S"/>
-                            <constraint firstItem="ptD-Lg-GIc" firstAttribute="height" secondItem="vsX-af-Jgd" secondAttribute="height" id="ksi-z9-QiT"/>
-                            <constraint firstItem="NBG-uh-p21" firstAttribute="top" secondItem="vsX-af-Jgd" secondAttribute="bottom" id="lXj-SO-k8n"/>
-                            <constraint firstItem="vsX-af-Jgd" firstAttribute="top" secondItem="871-L8-tuy" secondAttribute="bottom" id="m5E-l6-4Nw"/>
-                            <constraint firstItem="871-L8-tuy" firstAttribute="leading" secondItem="ejT-jn-oGc" secondAttribute="leading" constant="10" id="oQv-Ai-vLF"/>
-                            <constraint firstItem="871-L8-tuy" firstAttribute="top" secondItem="5UF-Cu-BrR" secondAttribute="bottom" id="rIP-ez-lHR"/>
-                            <constraint firstItem="ptD-Lg-GIc" firstAttribute="leading" secondItem="BAN-uF-WFW" secondAttribute="trailing" constant="20" id="wot-9k-aIY"/>
-                            <constraint firstAttribute="trailing" secondItem="5UF-Cu-BrR" secondAttribute="trailing" id="zec-Bd-3ip"/>
-                        </constraints>
-                        <userDefinedRuntimeAttributes>
-                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="3"/>
-                            </userDefinedRuntimeAttribute>
-                        </userDefinedRuntimeAttributes>
-                    </view>
-                    <toolbarItems/>
-                    <connections>
-                        <outlet property="emailOrPhoneField" destination="871-L8-tuy" id="UPl-79-7V9"/>
-                        <outlet property="firstNameField" destination="BAN-uF-WFW" id="Dqu-rQ-sWB"/>
-                        <outlet property="lastNameField" destination="ptD-Lg-GIc" id="wwF-sV-M2Z"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="H8f-oK-atd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-1026" y="1695"/>
-        </scene>
         <!--Integration Web View Controller-->
         <scene sceneID="fzy-6N-sue">
             <objects>
@@ -1273,7 +1120,6 @@
         <image name="ic-more" width="29" height="7"/>
         <image name="ic-twitter-color" width="28" height="28"/>
         <image name="ic-ubc" width="19" height="26"/>
-        <image name="ic-video" width="42" height="26"/>
         <image name="sample-photo" width="1242" height="660"/>
     </resources>
     <inferredMetricsTieBreakers>
