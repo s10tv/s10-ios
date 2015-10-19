@@ -10,8 +10,9 @@ import Foundation
 import ObjectMapper
 
 public struct Video : Mappable {
+    public var identifier: String!
     public var url: NSURL!
-    public var duration: NSTimeInterval?
+    public var duration: NSTimeInterval!
     public var width: Int?
     public var height: Int?
     public var thumbnail: Image?

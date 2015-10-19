@@ -26,9 +26,9 @@ class ConversationViewController : UIViewController {
     @IBOutlet weak var producerContainer: UIView!
     @IBOutlet weak var chatHistoryContainer: UIView!
     
-    private(set) var chatHistoryVC: ConversationHistoryViewController!
-    private(set) var producerVC: ProducerViewController!
-    private(set) var receiveVC: ReceiveViewController!
+    private(set) var chatHistory: ChatHistoryViewController!
+    private(set) var videoMaker: ProducerViewController!
+    private(set) var videoPlayer: VideoPlayerViewController!
     
     var vm: ConversationViewModel!
     
@@ -42,29 +42,29 @@ class ConversationViewController : UIViewController {
         
         let sb = UIStoryboard(name: "Conversation", bundle: nil)
         
-        receiveVC = sb.instantiateViewControllerWithIdentifier("Receive") as! ReceiveViewController
-        receiveVC.vm = vm.receiveVM()
-        receiveVC.delegate = self
+        videoPlayer = sb.instantiateViewControllerWithIdentifier("Receive") as! VideoPlayerViewController
+        videoPlayer.vm = vm.videoPlayerVM()
+        videoPlayer.delegate = self
         
-        chatHistoryVC = sb.instantiateViewControllerWithIdentifier("ChatHistory") as! ConversationHistoryViewController
-        chatHistoryVC.layerClient = MainContext.layer.layerClient
-        chatHistoryVC.marksMessagesAsRead = false
-        chatHistoryVC.vm = vm
-        chatHistoryVC.delegate = self
-        chatHistoryVC.historyDelegate = self
+        chatHistory = sb.instantiateViewControllerWithIdentifier("ChatHistory") as! ChatHistoryViewController
+        chatHistory.layerClient = MainContext.layer.layerClient
+        chatHistory.marksMessagesAsRead = false
+        chatHistory.vm = vm
+        chatHistory.delegate = self
+        chatHistory.historyDelegate = self
         
-        producerVC = UIStoryboard(name: "VideoMaker", bundle: nil).instantiateInitialViewController() as! ProducerViewController
-        producerVC.producerDelegate = self
+        videoMaker = UIStoryboard(name: "VideoMaker", bundle: nil).instantiateInitialViewController() as! ProducerViewController
+        videoMaker.producerDelegate = self
         
-        addChildViewController(chatHistoryVC)
-        chatHistoryContainer.addSubview(chatHistoryVC.view)
-        chatHistoryVC.view.makeEdgesEqualTo(chatHistoryContainer)
-        chatHistoryVC.didMoveToParentViewController(self)
+        addChildViewController(chatHistory)
+        chatHistoryContainer.addSubview(chatHistory.view)
+        chatHistory.view.makeEdgesEqualTo(chatHistoryContainer)
+        chatHistory.didMoveToParentViewController(self)
         
-        addChildViewController(producerVC)
-        producerContainer.insertSubview(producerVC.view, atIndex: 0)
-        producerVC.view.makeEdgesEqualTo(producerContainer)
-        producerVC.didMoveToParentViewController(self)
+        addChildViewController(videoMaker)
+        producerContainer.insertSubview(videoMaker.view, atIndex: 0)
+        videoMaker.view.makeEdgesEqualTo(producerContainer)
+        videoMaker.didMoveToParentViewController(self)
         
         [chatHistoryContainer, producerContainer].each {
             $0.bounds = view.bounds
@@ -190,8 +190,8 @@ extension ConversationViewController : ProducerDelegate {
 extension ConversationViewController : ATLConversationViewControllerDelegate {
     func conversationViewController(viewController: ATLConversationViewController!, didSelectMessage message: LYRMessage!) {
         if let video = vm.videoForMessage(message) {
-            receiveVC.vm.playlist.array = [video]
-            presentViewController(receiveVC, animated: false)
+            videoPlayer.vm.playlist.array = [video]
+            presentViewController(videoPlayer, animated: false)
         }
     }
 }
@@ -204,12 +204,12 @@ extension ConversationViewController : ConversationHistoryDelegate {
 
 // MARK: - Video Player
 
-extension ConversationViewController : ReceiveViewControllerDelegate {
-    func didFinishPlaylist(receiveVC: ReceiveViewController) {
-//        overlayVC = producerVC
+extension ConversationViewController : VideoPlayerViewControllerDelegate {
+    func didFinishPlaylist(videoPlayer: VideoPlayerViewController) {
+//        overlayVC = videoMaker
         // TODO: This semantic is not correct for non-text based messages
         vm.markAllMessagesAsRead()
-        receiveVC.dismissViewController(animated: false)
+        videoPlayer.dismissViewController(animated: false)
     }
 }
 

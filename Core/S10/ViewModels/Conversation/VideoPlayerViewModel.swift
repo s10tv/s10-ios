@@ -1,5 +1,5 @@
 //
-//  ReceiveViewModel.swift
+//  VideoPlayerViewModel.swift
 //  S10
 //
 //  Created by Tony Xiao on 10/8/15.
@@ -10,21 +10,24 @@ import Foundation
 import LayerKit
 import ReactiveCocoa
 
-public class ReceiveViewModel {
+public class VideoPlayerViewModel {
     private let ctx: Context
     
-    public let playlist: ArrayProperty<VideoMessageViewModel>
+    public let playlist: ArrayProperty<Video>
     public let totalDurationLeft: PropertyOf<String>
-    public let currentVideo: PropertyOf<VideoMessageViewModel?>
+    public let currentVideo: PropertyOf<Video?>
     public let currentVideoProgress: PropertyOf<Float>
     public let currentVideoPosition = MutableProperty<NSTimeInterval>(0)
     public let isPlaying = MutableProperty(false)
     
     init(_ ctx: Context, conversation: LYRConversation) {
         self.ctx = ctx
-        let videos = ctx.layer.unplayedVideoMessages(conversation).map { msg -> VideoMessageViewModel in
+        let videos = ctx.layer.unplayedVideoMessages(conversation).map { msg -> Video in
             let parts = msg.parts.map { $0 as! LYRMessagePart }
-            return VideoMessageViewModel(identifier: msg.identifier.absoluteString, url: parts.first!.fileURL, duration: 5)
+            var video = Video(parts.first!.fileURL)
+            video.identifier = msg.identifier.absoluteString
+            video.duration = 5
+            return video
         }
         playlist = ArrayProperty(videos)
         currentVideo = PropertyOf(nil, playlist.producer.map { $0.first }

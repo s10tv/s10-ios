@@ -1,5 +1,5 @@
 //
-//  ReceiveViewController.swift
+//  VideoPlayerViewController.swift
 //  S10
 //
 //  Created by Tony Xiao on 10/9/15.
@@ -13,11 +13,11 @@ import SCRecorder
 import Async
 import Core
 
-protocol ReceiveViewControllerDelegate : class {
-    func didFinishPlaylist(receiveVC: ReceiveViewController)
+protocol VideoPlayerViewControllerDelegate : class {
+    func didFinishPlaylist(receiveVC: VideoPlayerViewController)
 }
 
-class ReceiveViewController : UIViewController {
+class VideoPlayerViewController : UIViewController {
     
     // TODO: Consider using AVQueuePlayer instead of SCPlayer for
     // gapless video playback
@@ -26,9 +26,9 @@ class ReceiveViewController : UIViewController {
     @IBOutlet weak var overlay: UIView!
     @IBOutlet weak var volumeView: VolumeView!
     
-    weak var delegate: ReceiveViewControllerDelegate?
+    weak var delegate: VideoPlayerViewControllerDelegate?
     
-    var vm: ReceiveViewModel!
+    var vm: VideoPlayerViewModel!
     var player: SCPlayer { return playerView.player! }
     var audioDisposable: Disposable?
     
@@ -117,7 +117,7 @@ class ReceiveViewController : UIViewController {
     }
 }
 
-extension ReceiveViewController : SCPlayerDelegate {
+extension VideoPlayerViewController : SCPlayerDelegate {
     
     func player(player: SCPlayer, didPlay currentTime: CMTime, loopsCount: Int) {
         if !player.itemDuration.impliedValue && !currentTime.impliedValue {

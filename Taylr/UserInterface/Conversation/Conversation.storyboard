@@ -58,7 +58,7 @@
                                         <rect key="frame" x="232" y="100" width="135" height="30"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="new messages" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="80" translatesAutoresizingMaskIntoConstraints="NO" id="lfn-tw-Cq9">
-                                                <rect key="frame" x="34" y="6" width="86" height="17.5"/>
+                                                <rect key="frame" x="34" y="6" width="86" height="18"/>
                                                 <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -215,10 +215,10 @@
             </objects>
             <point key="canvasLocation" x="1038" y="2764"/>
         </scene>
-        <!--Conversation History View Controller-->
+        <!--Chat History View Controller-->
         <scene sceneID="43o-EX-2RE">
             <objects>
-                <viewController storyboardIdentifier="ChatHistory" hidesBottomBarWhenPushed="YES" id="jff-6V-IXE" customClass="ConversationHistoryViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController"/>
+                <viewController storyboardIdentifier="ChatHistory" hidesBottomBarWhenPushed="YES" id="jff-6V-IXE" customClass="ChatHistoryViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pkP-sN-BdW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1038" y="3433"/>
@@ -231,10 +231,10 @@
             </objects>
             <point key="canvasLocation" x="1477" y="2764"/>
         </scene>
-        <!--Receive View Controller-->
+        <!--Video Player View Controller-->
         <scene sceneID="TYB-CG-I2j">
             <objects>
-                <viewController storyboardIdentifier="Receive" id="0ey-rb-p3h" customClass="ReceiveViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Receive" id="0ey-rb-p3h" customClass="VideoPlayerViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Cm8-bs-fMa"/>
                         <viewControllerLayoutGuide type="bottom" id="7Nb-nC-aKq"/>

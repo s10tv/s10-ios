@@ -67,15 +67,17 @@ public class ConversationViewModel: NSObject {
         }
     }
     
-    public func unplayedVideos() -> [VideoMessageViewModel]? {
+    public func unplayedVideos() -> [Video]? {
         return ctx.layer.unplayedVideoMessages(conversation).map { videoForMessage($0)! }
     }
     
-    public func videoForMessage(message: LYRMessage) -> VideoMessageViewModel? {
+    public func videoForMessage(message: LYRMessage) -> Video? {
         if let videoURL = message.videoPart?.fileURL,
             let metadata = message.metadataPart?.asJson() as? NSDictionary {
-                let duration = (metadata["duration"] as? NSTimeInterval) ?? 0
-                return VideoMessageViewModel(identifier: message.identifier.absoluteString, url: videoURL, duration: duration)
+                var video = Video(videoURL)
+                video.identifier = message.identifier.absoluteString
+                video.duration = (metadata["duration"] as? NSTimeInterval) ?? 0
+                return video
         }
         return nil
     }
@@ -124,8 +126,8 @@ public class ConversationViewModel: NSObject {
         }
     }
     
-    public func receiveVM() -> ReceiveViewModel {
-        return ReceiveViewModel(ctx, conversation: conversation)
+    public func videoPlayerVM() -> VideoPlayerViewModel {
+        return VideoPlayerViewModel(ctx, conversation: conversation)
     }
     
     public func profileVM() -> ProfileViewModel? {

@@ -22,7 +22,7 @@
 		EA0989951BD4CEDC0014F71C /* DurationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0989881BD4CEDC0014F71C /* DurationTimer.swift */; settings = {ASSET_TAGS = (); }; };
 		EA0989961BD4CEDC0014F71C /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0989891BD4CEDC0014F71C /* RecordButton.swift */; settings = {ASSET_TAGS = (); }; };
 		EA0989971BD4CEDC0014F71C /* TouchDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09898A1BD4CEDC0014F71C /* TouchDetector.swift */; settings = {ASSET_TAGS = (); }; };
-		EA09899E1BD4CF3D0014F71C /* ReceiveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09899B1BD4CF3D0014F71C /* ReceiveViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EA09899E1BD4CF3D0014F71C /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09899B1BD4CF3D0014F71C /* VideoPlayerViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EA09899F1BD4CF3D0014F71C /* VolumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09899C1BD4CF3D0014F71C /* VolumeView.swift */; settings = {ASSET_TAGS = (); }; };
 		EA0989A01BD4CF3D0014F71C /* VolumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09899D1BD4CF3D0014F71C /* VolumeViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA0ED05F1BC1F80F00A9EE08 /* MeteorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0ED05E1BC1F80F00A9EE08 /* MeteorExtensions.swift */; settings = {ASSET_TAGS = (); }; };
@@ -89,7 +89,7 @@
 		EA72AE111BD004270031D652 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA72AE101BD004270031D652 /* Main.storyboard */; settings = {ASSET_TAGS = (); }; };
 		EA72AE431BD005CD0031D652 /* Conversation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA72AE131BD005CD0031D652 /* Conversation.storyboard */; settings = {ASSET_TAGS = (); }; };
 		EA72AE441BD005CD0031D652 /* ConversationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE141BD005CD0031D652 /* ConversationListViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		EA72AE451BD005CD0031D652 /* ConversationHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE151BD005CD0031D652 /* ConversationHistoryViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EA72AE451BD005CD0031D652 /* ChatHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE151BD005CD0031D652 /* ChatHistoryViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EA72AE551BD005CD0031D652 /* CandidateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE2C1BD005CD0031D652 /* CandidateCell.swift */; settings = {ASSET_TAGS = (); }; };
 		EA72AE561BD005CD0031D652 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA72AE2D1BD005CD0031D652 /* Discover.storyboard */; settings = {ASSET_TAGS = (); }; };
 		EA72AE571BD005CD0031D652 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE2E1BD005CD0031D652 /* DiscoverViewController.swift */; settings = {ASSET_TAGS = (); }; };
@@ -158,8 +158,7 @@
 		EA81AE0B1BB6930900F94006 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF6708C1B31FA2E0025D7CF /* CurrentUser.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE0C1BB693B800F94006 /* MeteorService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670991B3200E10025D7CF /* MeteorService.swift */; settings = {ASSET_TAGS = (); }; };
 		EA81AE121BB696B900F94006 /* PhotoUploadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABA05431B474EC900154C75 /* PhotoUploadOperation.swift */; settings = {ASSET_TAGS = (); }; };
-		EA8A733A1BD3088E006DB6A9 /* VideoMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8A73391BD3088E006DB6A9 /* VideoMessageViewModel.swift */; settings = {ASSET_TAGS = (); }; };
-		EA8A733C1BD3092F006DB6A9 /* ReceiveViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8A733B1BD3092F006DB6A9 /* ReceiveViewModel.swift */; settings = {ASSET_TAGS = (); }; };
+		EA8A733C1BD3092F006DB6A9 /* VideoPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8A733B1BD3092F006DB6A9 /* VideoPlayerViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA8E69461BC1DA30002D4BF1 /* ArrayProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8E69411BC1DA30002D4BF1 /* ArrayProperty.swift */; settings = {ASSET_TAGS = (); }; };
 		EA8E69471BC1DA30002D4BF1 /* DynamicProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8E69421BC1DA30002D4BF1 /* DynamicProperties.swift */; settings = {ASSET_TAGS = (); }; };
 		EA8E69481BC1DA30002D4BF1 /* FetchedResultsArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8E69431BC1DA30002D4BF1 /* FetchedResultsArray.swift */; settings = {ASSET_TAGS = (); }; };
@@ -274,7 +273,7 @@
 		EA0989881BD4CEDC0014F71C /* DurationTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationTimer.swift; sourceTree = "<group>"; };
 		EA0989891BD4CEDC0014F71C /* RecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		EA09898A1BD4CEDC0014F71C /* TouchDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TouchDetector.swift; sourceTree = "<group>"; };
-		EA09899B1BD4CF3D0014F71C /* ReceiveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiveViewController.swift; sourceTree = "<group>"; };
+		EA09899B1BD4CF3D0014F71C /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		EA09899C1BD4CF3D0014F71C /* VolumeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumeView.swift; sourceTree = "<group>"; };
 		EA09899D1BD4CF3D0014F71C /* VolumeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumeViewModel.swift; sourceTree = "<group>"; };
 		EA0ED05E1BC1F80F00A9EE08 /* MeteorExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorExtensions.swift; sourceTree = "<group>"; };
@@ -357,7 +356,7 @@
 		EA72AE101BD004270031D652 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		EA72AE131BD005CD0031D652 /* Conversation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Conversation.storyboard; sourceTree = "<group>"; };
 		EA72AE141BD005CD0031D652 /* ConversationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListViewController.swift; sourceTree = "<group>"; };
-		EA72AE151BD005CD0031D652 /* ConversationHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationHistoryViewController.swift; sourceTree = "<group>"; };
+		EA72AE151BD005CD0031D652 /* ChatHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatHistoryViewController.swift; sourceTree = "<group>"; };
 		EA72AE2C1BD005CD0031D652 /* CandidateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateCell.swift; sourceTree = "<group>"; };
 		EA72AE2D1BD005CD0031D652 /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
 		EA72AE2E1BD005CD0031D652 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
@@ -394,8 +393,7 @@
 		EA82CF961B504FC500A12D94 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		EA89C0851B6AA2060007C6CB /* CreateProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
 		EA89C0871B6AC0410007C6CB /* ConnectServicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectServicesViewController.swift; sourceTree = "<group>"; };
-		EA8A73391BD3088E006DB6A9 /* VideoMessageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoMessageViewModel.swift; sourceTree = "<group>"; };
-		EA8A733B1BD3092F006DB6A9 /* ReceiveViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReceiveViewModel.swift; sourceTree = "<group>"; };
+		EA8A733B1BD3092F006DB6A9 /* VideoPlayerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewModel.swift; sourceTree = "<group>"; };
 		EA8E69411BC1DA30002D4BF1 /* ArrayProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayProperty.swift; sourceTree = "<group>"; };
 		EA8E69421BC1DA30002D4BF1 /* DynamicProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicProperties.swift; sourceTree = "<group>"; };
 		EA8E69431BC1DA30002D4BF1 /* FetchedResultsArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsArray.swift; sourceTree = "<group>"; };
@@ -602,7 +600,7 @@
 		EA09899A1BD4CF3D0014F71C /* VideoPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				EA09899B1BD4CF3D0014F71C /* ReceiveViewController.swift */,
+				EA09899B1BD4CF3D0014F71C /* VideoPlayerViewController.swift */,
 				EA09899C1BD4CF3D0014F71C /* VolumeView.swift */,
 				EA09899D1BD4CF3D0014F71C /* VolumeViewModel.swift */,
 			);
@@ -712,8 +710,7 @@
 			children = (
 				EA54FA6B1BD009A000AD7E9A /* ConversationListViewModel.swift */,
 				EA54FA6C1BD009A000AD7E9A /* ConversationViewModel.swift */,
-				EA8A73391BD3088E006DB6A9 /* VideoMessageViewModel.swift */,
-				EA8A733B1BD3092F006DB6A9 /* ReceiveViewModel.swift */,
+				EA8A733B1BD3092F006DB6A9 /* VideoPlayerViewModel.swift */,
 			);
 			path = Conversation;
 			sourceTree = "<group>";
@@ -855,7 +852,7 @@
 				EA72AE131BD005CD0031D652 /* Conversation.storyboard */,
 				EA72AE141BD005CD0031D652 /* ConversationListViewController.swift */,
 				EAEDF7D81BD2E7B300037BA4 /* ConversationViewController.swift */,
-				EA72AE151BD005CD0031D652 /* ConversationHistoryViewController.swift */,
+				EA72AE151BD005CD0031D652 /* ChatHistoryViewController.swift */,
 			);
 			path = Conversation;
 			sourceTree = "<group>";
@@ -1638,7 +1635,7 @@
 				EA54FAA51BD009A000AD7E9A /* EditHashtagsViewModel.swift in Sources */,
 				EA81ADF61BB68E0400F94006 /* Models.xcdatamodeld in Sources */,
 				EA8E69461BC1DA30002D4BF1 /* ArrayProperty.swift in Sources */,
-				EA8A733C1BD3092F006DB6A9 /* ReceiveViewModel.swift in Sources */,
+				EA8A733C1BD3092F006DB6A9 /* VideoPlayerViewModel.swift in Sources */,
 				EA81AE021BB68E2100F94006 /* User.swift in Sources */,
 				EA81ADDA1BB6839200F94006 /* AlamofireExtension.swift in Sources */,
 				EA81ADBF1BB6679400F94006 /* Logging.swift in Sources */,
@@ -1649,7 +1646,6 @@
 				EA81ADEC1BB6893500F94006 /* MeteorMethod.swift in Sources */,
 				EA8E694A1BC1DA30002D4BF1 /* TwoWayBindings.swift in Sources */,
 				EA54FAB51BD00A2F00AD7E9A /* Context.swift in Sources */,
-				EA8A733A1BD3088E006DB6A9 /* VideoMessageViewModel.swift in Sources */,
 				EA8E69491BC1DA30002D4BF1 /* PropertyExtensions.swift in Sources */,
 				EA54FA941BD009A000AD7E9A /* ConversationViewModel.swift in Sources */,
 				EA81ADF81BB68E2100F94006 /* _Activity.swift in Sources */,
@@ -1736,7 +1732,7 @@
 				EA72AE641BD005CD0031D652 /* ActivityTextCell.swift in Sources */,
 				EA42D6551BB7C35100B07526 /* AccountService.swift in Sources */,
 				EA72AE5A1BD005CD0031D652 /* EditHashtagsViewController.swift in Sources */,
-				EA72AE451BD005CD0031D652 /* ConversationHistoryViewController.swift in Sources */,
+				EA72AE451BD005CD0031D652 /* ChatHistoryViewController.swift in Sources */,
 				EA72AE5C1BD005CD0031D652 /* HashtagCell.swift in Sources */,
 				EA72AE631BD005CD0031D652 /* ActivityImageCell.swift in Sources */,
 				EA09898F1BD4CEDC0014F71C /* MuteChecker.m in Sources */,
@@ -1751,7 +1747,7 @@
 				EAA576091BB7E0E700661A4F /* PageViewController.swift in Sources */,
 				EA0989901BD4CEDC0014F71C /* VideoMaker.swift in Sources */,
 				EA72AE5E1BD005CD0031D652 /* IntegrationsViewController.swift in Sources */,
-				EA09899E1BD4CF3D0014F71C /* ReceiveViewController.swift in Sources */,
+				EA09899E1BD4CF3D0014F71C /* VideoPlayerViewController.swift in Sources */,
 				EA72AE5F1BD005CD0031D652 /* IntegrationWebViewController.swift in Sources */,
 				EAA5761B1BB7EA6700661A4F /* TutorialPageViewController.swift in Sources */,
 				EA72AE5B1BD005CD0031D652 /* EditProfileViewController.swift in Sources */,

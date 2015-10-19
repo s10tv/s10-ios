@@ -1,5 +1,5 @@
 //
-//  ConversationHistoryViewController.swift
+//  ChatHistoryViewController.swift
 //  S10
 //
 //  Created by Tony Xiao on 10/14/15.
@@ -15,7 +15,7 @@ protocol ConversationHistoryDelegate: class {
     func didTapOnCameraButton()
 }
 
-class ConversationHistoryViewController : ATLConversationViewController {
+class ChatHistoryViewController : ATLConversationViewController {
     
     weak var historyDelegate: ConversationHistoryDelegate?
     
