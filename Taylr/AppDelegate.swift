@@ -182,7 +182,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
     
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         Log.debug("Did receive notification \(userInfo)")
-        // BIG TODO: Layer client is not initialized here... causing crash.
+        // This is needed to handle remote notification while app is in the background
+        // and therefore didFinishLaunching is never invoked.
+        if layerClient == nil {
+            let env = TaylrEnvironment.configureFromEmbeddedProvisioningProfile()
+            layerClient = LayerService.defaultLayerClient(env.layerURL)
+        }
         let handled = layerClient.synchronizeWithRemoteNotification(userInfo) { changes, error in
             if let changes = changes {
                 Log.info("Synchronized layer remote notification with \(changes.count) changes")

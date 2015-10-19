@@ -19,7 +19,7 @@ public class LayerService: NSObject {
     
     public init(layerAppID: NSURL, meteor: MeteorService) {
         self.meteor = meteor
-        layerClient = LYRClient(appID: layerAppID)
+        layerClient = LayerService.defaultLayerClient(layerAppID)
         let query = LYRQuery(queryableClass: LYRConversation.self)
         query.predicate = LYRPredicate(property: "hasUnreadMessages", predicateOperator: .IsEqualTo, value: true)
         unreadQueryController = try? layerClient.queryControllerWithQuery(query, error: ())
@@ -27,9 +27,6 @@ public class LayerService: NSObject {
         unreadQueryController?.delegate = self
         _ = try? unreadQueryController?.execute()
         unreadCount.value = UInt(unreadQueryController?.count() ?? 0)
-        layerClient.autodownloadMaximumContentSize = 50 * 1024 * 1024 // 50mb
-        layerClient.backgroundContentTransferEnabled = true
-        layerClient.diskCapacity = 300 * 1024 * 1024 // 300mb
     }
     
     // TODO: Careful this method if not disposed will retain self
@@ -121,6 +118,14 @@ public class LayerService: NSObject {
             return SignalProducer(value: ())
         }
         return layerClient.deauthenticate()
+    }
+    
+    public static func defaultLayerClient(layerAppID: NSURL) -> LYRClient {
+        let layerClient = LYRClient(appID: layerAppID)
+        layerClient.autodownloadMaximumContentSize = 50 * 1024 * 1024 // 50mb
+        layerClient.backgroundContentTransferEnabled = true
+        layerClient.diskCapacity = 300 * 1024 * 1024 // 300mb
+        return layerClient
     }
 }
 
