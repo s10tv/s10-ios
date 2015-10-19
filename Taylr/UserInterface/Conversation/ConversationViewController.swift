@@ -38,6 +38,7 @@ class ConversationViewController : UIViewController {
                     assert([producerVC, receiveVC].contains(newVC), "overlay must be either producerVC or receiveVC")
                     chatHistoryVC.messageInputToolbar.hidden = true
                     chatHistoryVC.messageInputToolbar.textInputView.resignFirstResponder()
+                    navigationController?.navigationBar.setBackgroundColor(UIColor(white: 0.5, alpha: 0.4))
                     
                     addChildViewController(newVC)
                     newVC.view.frame = view.bounds
@@ -47,6 +48,7 @@ class ConversationViewController : UIViewController {
                 } else {
                     chatHistoryVC.messageInputToolbar.hidden = false
                     chatHistoryVC.messageInputToolbar.textInputView.becomeFirstResponder()
+                    navigationController?.navigationBar.setBackgroundColor(nil)
                 }
                 // More of a hack here.
                 textSwitchButton.hidden = (overlayVC != producerVC)
@@ -101,7 +103,9 @@ class ConversationViewController : UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let vc = segue.destinationViewController as? ConversationHistoryViewController {
             assert(vm != nil, "Conversation ViewModel must be set before prepareForSegue is called")
+            // TODO: Figure out some better way to do this
             vc.layerClient = MainContext.layer.layerClient
+            vc.marksMessagesAsRead = false
             vc.vm = vm
             vc.delegate = self
             vc.historyDelegate = self
@@ -199,5 +203,7 @@ extension ConversationViewController : ConversationHistoryDelegate {
 extension ConversationViewController : ReceiveViewControllerDelegate {
     func didFinishPlaylist(receiveVC: ReceiveViewController) {
         overlayVC = producerVC
+        // TODO: This semantic is not correct for non-text based messages
+        vm.markAllMessagesAsRead()
     }
 }

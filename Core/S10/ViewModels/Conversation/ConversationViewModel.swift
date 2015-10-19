@@ -79,6 +79,31 @@ public class ConversationViewModel: NSObject {
         return nil
     }
     
+    public func markAllMessagesAsRead() {
+        _ = try? conversation.markAllMessagesAsRead()
+    }
+    
+    public func markMessageAsRead(message: LYRMessage) {
+        _ = try? message.markAsRead()
+    }
+    
+    public func markAllNonVideoMessagesAsRead() {
+        let query = LYRQuery(queryableClass: LYRMessage.self)
+        query.predicate = LYRCompoundPredicate(type: .And, subpredicates: [
+            LYRPredicate(property: "parts.MIMEType", predicateOperator: .IsNotEqualTo, value: kMIMETypeVideo),
+            LYRPredicate(property: "conversation", predicateOperator: .IsEqualTo, value: conversation),
+            LYRPredicate(property: "isUnread", predicateOperator: .IsEqualTo, value: true),
+        ])
+        do {
+            let messages = try ctx.layer.layerClient.executeQuery(query).map { $0 as! LYRMessage }
+            for message in messages {
+                try message.markAsRead()
+            }
+        } catch let error as NSError {
+            Log.error("Unable to find unread non-video messages", error)
+        }
+    }
+    
     public func getUser(userId: String) -> UserViewModel? {
         if let u = ctx.meteor.mainContext.existingObjectInCollection("users", documentID: userId) as? User {
             return UserViewModel(user: u)
