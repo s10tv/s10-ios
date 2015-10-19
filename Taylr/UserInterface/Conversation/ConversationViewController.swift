@@ -53,7 +53,7 @@ class ConversationViewController : UIViewController {
         chatHistoryVC.delegate = self
         chatHistoryVC.historyDelegate = self
         
-        producerVC = sb.instantiateViewControllerWithIdentifier("Producer") as! ProducerViewController
+        producerVC = UIStoryboard(name: "VideoMaker", bundle: nil).instantiateInitialViewController() as! ProducerViewController
         producerVC.producerDelegate = self
         
         addChildViewController(chatHistoryVC)

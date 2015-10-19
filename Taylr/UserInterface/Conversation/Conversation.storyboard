@@ -11,7 +11,6 @@
         <mutableArray key="Cabin-Regular.ttf">
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
-            <string>Cabin-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -232,67 +231,6 @@
             </objects>
             <point key="canvasLocation" x="1477" y="2764"/>
         </scene>
-        <!--Producer View Controller-->
-        <scene sceneID="FUl-PP-ghD">
-            <objects>
-                <viewController storyboardIdentifier="Producer" id="5i8-Ji-zll" customClass="ProducerViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="PuY-8s-gJ3"/>
-                        <viewControllerLayoutGuide type="bottom" id="8Fe-Yf-qQR"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Cn8-KP-bW5">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tZe-w0-tuM">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="66"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Invite Samantha" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tr3-Pq-OC2">
-                                        <rect key="frame" x="231" y="32" width="138" height="24.5"/>
-                                        <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="20"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pkH-n8-IHR" userLabel="Close">
-                                        <rect key="frame" x="0.0" y="23" width="43" height="43"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="43" id="eNn-ZW-Dor"/>
-                                            <constraint firstAttribute="width" constant="43" id="na8-V0-xsW"/>
-                                        </constraints>
-                                        <state key="normal" image="ic-close-cross">
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="didTapClose:" destination="5i8-Ji-zll" eventType="touchUpInside" id="M6L-oR-P3W"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.40000000000000002" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="66" id="069-bX-hQj"/>
-                                    <constraint firstAttribute="centerX" secondItem="tr3-Pq-OC2" secondAttribute="centerX" id="Tof-7x-3Hg"/>
-                                    <constraint firstItem="pkH-n8-IHR" firstAttribute="leading" secondItem="tZe-w0-tuM" secondAttribute="leading" id="Vqj-SI-JiO"/>
-                                    <constraint firstAttribute="bottom" secondItem="tr3-Pq-OC2" secondAttribute="bottom" constant="9" id="mFH-UR-nL2"/>
-                                    <constraint firstAttribute="bottom" secondItem="pkH-n8-IHR" secondAttribute="bottom" id="zyk-B9-6Xp"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="tZe-w0-tuM" secondAttribute="trailing" id="3Lc-lf-N3g"/>
-                            <constraint firstItem="tZe-w0-tuM" firstAttribute="leading" secondItem="Cn8-KP-bW5" secondAttribute="leading" id="7NW-it-vLj"/>
-                            <constraint firstItem="tZe-w0-tuM" firstAttribute="top" secondItem="Cn8-KP-bW5" secondAttribute="top" id="92n-wM-bdA"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="headerView" destination="tZe-w0-tuM" id="AoV-2S-5Ty"/>
-                        <outlet property="titleLabel" destination="tr3-Pq-OC2" id="Yse-aG-431"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Q8S-Xk-zSD" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="398" y="3433"/>
-        </scene>
         <!--Receive View Controller-->
         <scene sceneID="TYB-CG-I2j">
             <objects>
@@ -405,7 +343,6 @@
     <resources>
         <image name="empty-profile-pic" width="100" height="100"/>
         <image name="ic-back-arrow" width="12" height="21"/>
-        <image name="ic-close-cross" width="16" height="16"/>
         <image name="ic-down-chevron-small" width="11" height="12"/>
         <image name="ic-more" width="29" height="7"/>
         <image name="ic-play-medium" width="40" height="40"/>

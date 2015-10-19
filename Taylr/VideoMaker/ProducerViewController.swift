@@ -17,9 +17,6 @@ protocol ProducerDelegate : NSObjectProtocol {
 
 class ProducerViewController : UIViewController {
     
-    @IBOutlet weak var headerView: UIView!
-    @IBOutlet weak var titleLabel: UILabel!
-    
     var recorderVC: RecorderViewController!
     var editorVC: EditorViewController!
     var currentFilter: SCFilter?
@@ -38,12 +35,6 @@ class ProducerViewController : UIViewController {
         recorderVC.didMoveToParentViewController(self)
         editorVC.didMoveToParentViewController(self)
         showRecorder()
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        super.viewWillAppear(animated)
-        titleLabel.text = title
-        headerView.hidden = title == nil
     }
     
     override func preferredStatusBarStyle() -> UIStatusBarStyle {
