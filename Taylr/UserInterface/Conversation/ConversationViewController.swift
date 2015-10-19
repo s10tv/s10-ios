@@ -23,12 +23,14 @@ class ConversationViewController : UIViewController {
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
     @IBOutlet weak var swipeView: SwipeView!
+    @IBOutlet weak var scrollDownHint: UIView!
     @IBOutlet var producerContainer: UIView!
     @IBOutlet var chatHistoryContainer: UIView!
     
     private(set) var chatHistory: ChatHistoryViewController!
     private(set) var videoMaker: VideoMakerViewController!
     private(set) var videoPlayer: VideoPlayerViewController!
+    
     
     var vm: ConversationViewModel!
     
@@ -39,6 +41,7 @@ class ConversationViewController : UIViewController {
         avatarImageView.sd_image <~ vm.avatar
         titleLabel.rac_text <~ vm.displayName
         statusLabel.rac_text <~ vm.displayStatus
+        scrollDownHint.rac_hidden <~ UD.hideScrollDownHint.map { $0 ?? false }
         
         let sb = UIStoryboard(name: "Conversation", bundle: nil)
         
@@ -225,4 +228,8 @@ extension ConversationViewController : SwipeViewDataSource {
 }
 
 extension ConversationViewController : SwipeViewDelegate {
+    
+    func swipeViewCurrentItemIndexDidChange(swipeView: SwipeView!) {
+        UD.hideScrollDownHint.value = true
+    }
 }

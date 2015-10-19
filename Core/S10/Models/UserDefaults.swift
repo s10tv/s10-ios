@@ -14,6 +14,7 @@ private let ud = NSUserDefaults.standardUserDefaults()
 public struct UserDefaults {
     public let accountState = ud.dyn("accountState").optional(String)
     public let lastTabIndex = ud.dyn("lastTabIndex").optional(Int)
+    public let hideScrollDownHint = ud.dyn("hideScrollDownHint").optional(Bool)
     public let meteorUserId = ud.dyn("meteorUserId").optional(String)
     public let userDisplayName = ud.dyn("userDisplayName").optional(String)
     public let userEmail = ud.dyn("userEmail").optional(String)
