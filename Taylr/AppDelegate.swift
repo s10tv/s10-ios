@@ -16,6 +16,9 @@ import Crashlytics
 import Ouralabs
 import RealmSwift
 import LayerKit
+import SCRecorder
+import AVFoundation
+import Async
 import Core
 
 // Globally accessible variables and shorthands
@@ -107,6 +110,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() //RootNavController(account: Globals.accountService)
         window?.makeKeyAndVisible()
+        
+        // Pre-heat the camera if we can
+        Async.background {
+            if AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) == .Authorized {
+                let recorder = SCRecorder.sharedRecorder()
+                recorder.captureSessionPreset = AVCaptureSessionPreset640x480
+                recorder.device = .Back
+                recorder.keepMirroringOnWrite = true
+                recorder.startRunning()
+            }
+        }
         
         return true
     }
