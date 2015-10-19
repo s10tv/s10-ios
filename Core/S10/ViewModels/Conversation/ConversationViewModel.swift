@@ -66,6 +66,10 @@ public class ConversationViewModel: NSObject {
         }
     }
     
+    public func unplayedVideos() -> [VideoMessageViewModel]? {
+        return ctx.layer.unplayedVideoMessages(conversation).map { videoForMessage($0)! }
+    }
+    
     public func videoForMessage(message: LYRMessage) -> VideoMessageViewModel? {
         if let videoURL = message.videoPart?.fileURL,
             let metadata = message.metadataPart?.asJson() as? NSDictionary {

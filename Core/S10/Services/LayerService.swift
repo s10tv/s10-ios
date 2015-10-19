@@ -79,8 +79,9 @@ public class LayerService: NSObject {
     func unplayedVideoMessages(conversation: LYRConversation) -> [LYRMessage] {
         let query = LYRQuery(queryableClass: LYRMessage.self)
         query.predicate = LYRCompoundPredicate(type: .And, subpredicates: [
-            LYRPredicate(property: "parts.MIMEType", predicateOperator: .IsEqualTo, value: "video/mp4"),
-            LYRPredicate(property: "conversation", predicateOperator: .IsEqualTo, value: conversation)
+            LYRPredicate(property: "parts.MIMEType", predicateOperator: .IsEqualTo, value: kMIMETypeVideo),
+            LYRPredicate(property: "conversation", predicateOperator: .IsEqualTo, value: conversation),
+            LYRPredicate(property: "isUnread", predicateOperator: .IsEqualTo, value: true),
         ])
         do {
             return try layerClient.executeQuery(query).map { $0 as! LYRMessage }
