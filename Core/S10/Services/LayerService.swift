@@ -24,6 +24,7 @@ public class LayerService: NSObject {
         query.predicate = LYRPredicate(property: "hasUnreadMessages", predicateOperator: .IsEqualTo, value: true)
         unreadQueryController = try? layerClient.queryControllerWithQuery(query, error: ())
         super.init()
+        layerClient.delegate = self
         unreadQueryController?.delegate = self
         _ = try? unreadQueryController?.execute()
         unreadCount.value = UInt(unreadQueryController?.count() ?? 0)
@@ -42,6 +43,7 @@ public class LayerService: NSObject {
             Log.info("Updated user in Layer session userId=\(userId)")
         }))
     }
+    
     
     func findConversationsWithUserId(userId: String) -> [LYRConversation] {
         do {
@@ -112,6 +114,27 @@ public class LayerService: NSObject {
         }
     }
     
+    func countUploads(conversation: LYRConversation? = nil) -> UInt {
+        do {
+            return try layerClient.countForQuery(LYRQuery.uploadingMessages(conversation))
+        } catch let error as NSError {
+            Log.error("Unable to count uploads messages", error)
+        }
+        return 0
+    }
+    
+    func countDownloads(conversation: LYRConversation? = nil) -> UInt {
+//        guard let userId = meteor.userId.value else {
+//            return 0
+//        }
+        do {
+            return try layerClient.countForQuery(LYRQuery.downloadingMessages(conversation))
+        } catch let error as NSError {
+            Log.error("Unable to count downloads messages", error)
+        }
+        return 0
+    }
+    
     // MARK: -
     
     private func syncWithUser(userId: String?) -> SignalProducer<String?, NSError> {
@@ -170,6 +193,16 @@ extension LayerService : LYRClientDelegate {
     }
     
     public func layerClient(client: LYRClient!, objectsDidChange changes: [AnyObject]!) {
+        Log.debug("Layer objects did change \(changes)")
+        let count = countUploads()
+        let downloads = countDownloads()
+        print("Number of uploads \(count) downloads \(downloads)")
+//        do {
+//            let msgs = try layerClient.executeQuery(LYRQuery.downloadingMessages())
+//            print("msgs \(msgs)")
+//        } catch {
+//            print("failed to get messages")
+//        }
     }
     
     public func layerClient(client: LYRClient!, willBeginContentTransfer contentTransferType: LYRContentTransferType, ofObject object: AnyObject!, withProgress progress: LYRProgress!) {

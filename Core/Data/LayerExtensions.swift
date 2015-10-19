@@ -119,6 +119,17 @@ extension LYRClient {
             }
         }
     }
+    
+    // MARK: Queries
+    
+    func countForQuery(query: LYRQuery) throws -> UInt {
+        var error: NSError?
+        let count = countForQuery(query, error: &error)
+        if let error = error {
+            throw error
+        }
+        return count
+    }
 }
 
 // MARK: -
