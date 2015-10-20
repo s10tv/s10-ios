@@ -6,6 +6,8 @@
 //  Copyright © 2015 S10. All rights reserved.
 //
 
+// Domain-specific helpers on top of Layer
+
 import Foundation
 import LayerKit
 

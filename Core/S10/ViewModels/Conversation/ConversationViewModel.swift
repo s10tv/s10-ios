@@ -121,6 +121,24 @@ public class ConversationViewModel: NSObject {
         return nil
     }
     
+    public func ensureMessageAvailable(message: LYRMessage) {
+        if let thumbnailPart = message.thumbnailPart where thumbnailPart.fileURL == nil {
+            do {
+                _ = try? thumbnailPart.purgeContent()
+                try thumbnailPart.downloadContent()
+            } catch let error as NSError {
+                Log.error("Unable to re-download thumbnail content", error)
+            }
+        }
+        if let videoPart = message.videoPart where videoPart.fileURL == nil {
+            do {
+                try videoPart.downloadContent()
+            } catch let error as NSError {
+                Log.error("Unable to download video content", error)
+            }
+        }
+    }
+    
     public func markAllMessagesAsRead() {
         _ = try? conversation.markAllMessagesAsRead()
     }

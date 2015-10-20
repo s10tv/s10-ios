@@ -30,20 +30,7 @@ public class LayerService: NSObject {
         unreadCount.value = UInt(unreadQueryController?.count() ?? 0)
     }
     
-    // TODO: Careful this method if not disposed will retain self
-    public func connectAndKeepUserInSync() -> Disposable {
-        return combineLatest(
-            layerClient.connect(),
-            meteor.userIdProducer().promoteErrors(NSError)
-        ).flatMap(.Latest) { _, userId in
-            return self.syncWithUser(userId)
-        }.start(Event.sink(error: { error in
-            Log.error("Unable to update user in Layer session", error)
-        }, next: { userId in
-            Log.info("Updated user in Layer session userId=\(userId)")
-        }))
-    }
-    
+    // MARK: -
     
     func findConversationsWithUserId(userId: String) -> [LYRConversation] {
         do {
@@ -110,19 +97,17 @@ public class LayerService: NSObject {
     
     func countOfUploads(conversation: LYRConversation? = nil) -> PropertyOf<UInt> {
         return PropertyOf(initialValue: countUploads(conversation), producer: layerClient.objectChanges().map { _ in
-            // TODO: Future memory leak
             return self.countUploads(conversation)
         })
     }
     
     func countOfDownloads(conversation: LYRConversation? = nil) -> PropertyOf<UInt> {
         return PropertyOf(initialValue: countDownloads(conversation), producer: layerClient.objectChanges().map { _ in
-            // TODO: Future memory leak
             return self.countDownloads(conversation)
         })
     }
     
-    func countUploads(conversation: LYRConversation? = nil) -> UInt {
+    private func countUploads(conversation: LYRConversation? = nil) -> UInt {
         do {
             return try layerClient.countForQuery(LYRQuery.uploadingMessages(conversation))
         } catch let error as NSError {
@@ -132,10 +117,7 @@ public class LayerService: NSObject {
     }
 
     
-    func countDownloads(conversation: LYRConversation? = nil) -> UInt {
-//        guard let userId = meteor.userId.value else {
-//            return 0
-//        }
+    private func countDownloads(conversation: LYRConversation? = nil) -> UInt {
         do {
             return try layerClient.countForQuery(LYRQuery.downloadingMessages(conversation))
         } catch let error as NSError {
@@ -160,8 +142,22 @@ public class LayerService: NSObject {
             })
     }
     
-    // MARK: -
+    // MARK: - Authentication
     
+    // TODO: Careful this method if not disposed will retain self
+    public func connectAndKeepUserInSync() -> Disposable {
+        return combineLatest(
+            layerClient.connect(),
+            meteor.userIdProducer().promoteErrors(NSError)
+            ).flatMap(.Latest) { _, userId in
+                return self.syncWithUser(userId)
+            }.start(Event.sink(error: { error in
+                Log.error("Unable to update user in Layer session", error)
+                }, next: { userId in
+                    Log.info("Updated user in Layer session userId=\(userId)")
+            }))
+    }
+
     private func syncWithUser(userId: String?) -> SignalProducer<String?, NSError> {
         if let userId = userId {
             return self.authenticate(userId).map { $0 }
@@ -189,6 +185,8 @@ public class LayerService: NSObject {
         }
         return layerClient.deauthenticate()
     }
+    
+    // MARK: -
     
     public static func defaultLayerClient(layerAppID: NSURL) -> LYRClient {
         let layerClient = LYRClient(appID: layerAppID)

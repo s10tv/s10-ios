@@ -286,18 +286,3 @@ public struct Formatters {
     }
 
 }
-
-
-extension LYRRecipientStatus: CustomStringConvertible {
-    
-    public var description: String {
-        switch self {
-        case .Invalid: return "Not Sent"
-        case .Pending: return "Pending"
-        case .Sent: return "Sent"
-        case .Delivered: return "Delivered"
-        case .Read: return "Opened"
-        }
-    }
-    
-}

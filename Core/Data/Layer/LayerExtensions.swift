@@ -34,6 +34,27 @@ struct ContentTransferUpdate {
     }
 }
 
+extension LYRRecipientStatus: CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case .Invalid: return "Not Sent"
+        case .Pending: return "Pending"
+        case .Sent: return "Sent"
+        case .Delivered: return "Delivered"
+        case .Read: return "Opened"
+        }
+    }
+}
+
+extension LYRContentTransferType: CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case .Upload: return "Upload"
+        case .Download: return "Download"
+        }
+    }
+}
+
 extension LYRMessage {
     public var messageParts: [LYRMessagePart] {
         return parts.map { $0 as! LYRMessagePart }
@@ -64,15 +85,6 @@ extension LYRMessagePart {
     
     public func asJson() -> AnyObject? {
         return (data as NSData?).flatMap { try? NSJSONSerialization.JSONObjectWithData($0, options: []) }
-    }
-}
-
-extension LYRContentTransferType: CustomStringConvertible {
-    public var description: String {
-        switch self {
-        case .Upload: return "Upload"
-        case .Download: return "Download"
-        }
     }
 }
 
@@ -204,58 +216,6 @@ extension LYRClient {
                         return SignalProducer(value: update)
                 }
                 return .empty
-        }
-    }
-}
-
-// MARK: -
-
-extension LYRClient {
-    
-    func connectAndAuthenticateAgainstStaging() -> SignalProducer<String, NSError> {
-        return connect().flatMap(.Concat) {
-            self.requestAuthenticationNonce()
-            }.flatMap(.Concat) { nonce in
-                self.requestStagingIdentityToken(nonce)
-            }.flatMap(.Concat) { identityToken in
-                self.authenticate(identityToken)
-        }
-    }
-    
-    func requestStagingIdentityToken(nonce: String) -> SignalProducer<String, NSError> {
-        //        let userID = "12123 123 123 12"
-        //        let appID = "1232131 13 12 2232"
-        return SignalProducer { sink, disposable in
-            //            let identityTokenURL = NSURL("https://layer-identity-provider.herokuapp.com/identity_tokens")
-            //            var request = NSMutableURLRequest(URL: identityTokenURL)
-            //            request.HTTPMethod = "POST"
-            //            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            //            request.setValue("application/json", forHTTPHeaderField: "Accept")
-            //            var parameters: [NSObject : AnyObject] = ["app_id": appID, "user_id": userID, "nonce": nonce]
-            //
-            //            request.HTTPBody = try? NSJSONSerialization.dataWithJSONObject(parameters, options: [])
-            //            var sessionConfiguration = NSURLSessionConfiguration.ephemeralSessionConfiguration()
-            //            var session = NSURLSession(configuration: sessionConfiguration)
-            //
-            //            session.dataTaskWithRequest(request) { data, response, error in
-            //                if let error = error {
-            //                    sendError(sink, error)
-            //                    return
-            //                }
-            //                let responseObject: [NSObject : AnyObject] = try? NSJSONSerialization.JSONObjectWithData(data!, options: [])
-            //                if !responseObject.valueForKey("error") {
-            //                    var identityToken: String = responseObject["identity_token"]
-            //                    completion(identityToken, nil)
-            //                }
-            //                else {
-            //                    var domain: String = "layer-identity-provider.herokuapp.com"
-            //                    var code: Int = responseObject["status"].integerValue()
-            //                    var userInfo: [NSObject : AnyObject] = [NSLocalizedDescriptionKey: "Layer Identity Provider Returned an Error.", NSLocalizedRecoverySuggestionErrorKey: "There may be a problem with your APPID."]
-            //                    var error: NSErrorPointer = NSError(domain: domain, code: code, userInfo: userInfo)
-            //                    completion(nil, error)
-            //                }
-            //            }).resume()
-            
         }
     }
 }

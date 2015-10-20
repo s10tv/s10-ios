@@ -207,12 +207,14 @@ extension ConversationViewController : VideoMakerDelegate {
 
 extension ConversationViewController : ATLConversationViewControllerDelegate {
     func conversationViewController(viewController: ATLConversationViewController!, didSelectMessage message: LYRMessage!) {
-        for part in message.messageParts {
-            _ = try? part.downloadContent()
-        }
+        vm.ensureMessageAvailable(message)
         if let video = vm.videoForMessage(message) {
             videoPlayer.vm.playlist.array = [video]
             presentViewController(videoPlayer, animated: false)
+        } else if message.videoPart != nil {
+            Analytics.track("Conversation: TappedUnavailableVideo")
+            showAlert("Video Downloading",
+                message: "The video you requested is still downloading. Please try again later :(")
         }
     }
 }
