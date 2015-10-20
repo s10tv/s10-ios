@@ -54,15 +54,15 @@ public class ConversationListViewModel: NSObject {
     
     public func lastMessageTextForConversation(conversation: LYRConversation) -> String {
         if let msg = conversation.lastMessage where msg.videoPart != nil {
-            if !msg.isSent {
-                return "> Sending..."
-            }
             let sentBySelf = msg.sender.userID == ctx.currentUserId
             if sentBySelf {
+                if !msg.isSent {
+                    return "> Sending..."
+                }
                 let status = Formatters.stringForDisplayOfRecipientStatus(msg.recipientStatusByUserID, ctx: ctx)
                 return "> Video \(status.lowercaseString)"
             } else {
-                return "> Received new video"
+                return "> Received video"
             }
         }
         return conversation.lastMessage?.textPart?.asString() ?? ""

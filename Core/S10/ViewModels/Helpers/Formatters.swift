@@ -280,7 +280,7 @@ public struct Formatters {
                 }
             }
         } else {
-            return "Received"
+            return "Received \(formattedDate)"
         }
         return nil
     }
