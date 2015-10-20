@@ -11,7 +11,6 @@ import ReactiveCocoa
 import AnalyticsSwift
 import Amplitude_iOS
 import Mixpanel
-import UXCam
 import Core
 
 class AnalyticsService {

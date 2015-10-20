@@ -106,6 +106,7 @@ PODS:
   - SwipeView (1.3.2)
   - TPKeyboardAvoiding (1.2.10)
   - TwitterCore (1.11.4)
+  - UXCam (2.3.2)
 
 DEPENDENCIES:
   - Alamofire (~> 3.0.0-beta.3)
@@ -150,6 +151,7 @@ DEPENDENCIES:
   - SwipeView (~> 1.3)
   - TPKeyboardAvoiding (~> 1.2)
   - TwitterCore (~> 1.11)
+  - UXCam (~> 2.3)
 
 EXTERNAL SOURCES:
   Async:
@@ -239,5 +241,6 @@ SPEC CHECKSUMS:
   SwipeView: bd67cfaf7760c036438446b3ccb28a3b84fce009
   TPKeyboardAvoiding: 614ebec846ec28b83d548769297fa5fb56468904
   TwitterCore: 171dbd2f8d55707397f461af5158d987fb34aa36
+  UXCam: b4914853e5512ac16a3e4a33499cd470230d7a6e
 
 COCOAPODS: 0.39.0

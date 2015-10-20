@@ -71,7 +71,7 @@ target :Core do
         pod 'AnalyticsSwift', '~> 0.2'
         pod 'Amplitude-iOS', '~> 3.1'
         pod 'Atlas', '~> 1.0.13'
-#        pod 'UXCam', '~> 2.3'
+        pod 'UXCam', '~> 2.3'
 
         # Debug only
 

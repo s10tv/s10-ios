@@ -184,8 +184,6 @@
 		EAA5763B1BB86A5000661A4F /* BindableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA576381BB86A5000661A4F /* BindableCell.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA5763C1BB86A5000661A4F /* UICollectionViewBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA576391BB86A5000661A4F /* UICollectionViewBinding.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA5763D1BB86A5000661A4F /* UITableViewBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA5763A1BB86A5000661A4F /* UITableViewBinding.swift */; settings = {ASSET_TAGS = (); }; };
-		EAB31D4E1BCC718B0080DA47 /* UXCam.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAB31D4D1BCC718B0080DA47 /* UXCam.framework */; settings = {ASSET_TAGS = (); }; };
-		EAB31D4F1BCC72330080DA47 /* UXCam.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = EAB31D4D1BCC718B0080DA47 /* UXCam.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		EAB31D571BCF76260080DA47 /* LayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB31D561BCF76260080DA47 /* LayerService.swift */; settings = {ASSET_TAGS = (); }; };
 		EABA05461B474FED00154C75 /* test-avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EABA05451B474FED00154C75 /* test-avatar.jpg */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
@@ -242,7 +240,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				EAB31D4F1BCC72330080DA47 /* UXCam.framework in Embed Frameworks */,
 				EAF81B191B325A8100EED6DD /* Core.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -424,7 +421,6 @@
 		EAA576391BB86A5000661A4F /* UICollectionViewBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewBinding.swift; sourceTree = "<group>"; };
 		EAA5763A1BB86A5000661A4F /* UITableViewBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewBinding.swift; sourceTree = "<group>"; };
 		EAAD921C1ACF342C0014BA25 /* TaylrEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaylrEnvironment.swift; sourceTree = "<group>"; };
-		EAB31D4D1BCC718B0080DA47 /* UXCam.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = UXCam.framework; sourceTree = SOURCE_ROOT; };
 		EAB31D561BCF76260080DA47 /* LayerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerService.swift; sourceTree = "<group>"; };
 		EABA05431B474EC900154C75 /* PhotoUploadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoUploadOperation.swift; sourceTree = "<group>"; };
 		EABA05451B474FED00154C75 /* test-avatar.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "test-avatar.jpg"; sourceTree = "<group>"; };
@@ -499,7 +495,6 @@
 				F996C7241A81F1E700314FF8 /* QuartzCore.framework in Frameworks */,
 				F996C7221A81F1E000314FF8 /* AVFoundation.framework in Frameworks */,
 				F996C7201A81F1D800314FF8 /* CoreVideo.framework in Frameworks */,
-				EAB31D4E1BCC718B0080DA47 /* UXCam.framework in Frameworks */,
 				F996C71E1A81F1D100314FF8 /* CoreMedia.framework in Frameworks */,
 				EAF81B181B325A8100EED6DD /* Core.framework in Frameworks */,
 				D6555C3D41C17908B83EB27C /* Pods_Core_Taylr.framework in Frameworks */,
@@ -521,7 +516,6 @@
 		2C9F4D1EF3D7E4C4FBB0AEDB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				EAB31D4D1BCC718B0080DA47 /* UXCam.framework */,
 				F95D95DE1A84A1170068F090 /* MediaPlayer.framework */,
 				F996C7251A81F1F200314FF8 /* OpenGLES.framework */,
 				F996C7231A81F1E700314FF8 /* QuartzCore.framework */,
@@ -2040,6 +2034,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "$(CUSTOM_CODE_SIGN_IDENTITY)";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
