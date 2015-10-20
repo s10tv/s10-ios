@@ -25,10 +25,6 @@
 		EA09899E1BD4CF3D0014F71C /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09899B1BD4CF3D0014F71C /* VideoPlayerViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EA09899F1BD4CF3D0014F71C /* VolumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09899C1BD4CF3D0014F71C /* VolumeView.swift */; settings = {ASSET_TAGS = (); }; };
 		EA0989A01BD4CF3D0014F71C /* VolumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09899D1BD4CF3D0014F71C /* VolumeViewModel.swift */; settings = {ASSET_TAGS = (); }; };
-		EA0989A11BD56B110014F71C /* v3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = EA394B091B5D9EF4009184EB /* v3.mp4 */; settings = {ASSET_TAGS = (); }; };
-		EA0989A21BD576E70014F71C /* v1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = EA394B071B5D9EF4009184EB /* v1.mp4 */; settings = {ASSET_TAGS = (); }; };
-		EA0989A31BD576E70014F71C /* v4.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = EA394B0A1B5D9EF4009184EB /* v4.mp4 */; settings = {ASSET_TAGS = (); }; };
-		EA0989A41BD5771D0014F71C /* v2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = EA394B081B5D9EF4009184EB /* v2.mp4 */; settings = {ASSET_TAGS = (); }; };
 		EA0989A71BD5C0FF0014F71C /* LayerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0989A61BD5C0FF0014F71C /* LayerExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		EA0989AB1BD5C1540014F71C /* LayerHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0989AA1BD5C1540014F71C /* LayerHelpers.swift */; settings = {ASSET_TAGS = (); }; };
 		EA0ED05F1BC1F80F00A9EE08 /* MeteorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0ED05E1BC1F80F00A9EE08 /* MeteorExtensions.swift */; settings = {ASSET_TAGS = (); }; };
@@ -1397,12 +1393,8 @@
 				EA09898E1BD4CEDC0014F71C /* MuteChecker.caf in Resources */,
 				EA9F354A1A74CC6900E0C65D /* Taylr.xcassets in Resources */,
 				EA72AE561BD005CD0031D652 /* Discover.storyboard in Resources */,
-				EA0989A11BD56B110014F71C /* v3.mp4 in Resources */,
 				EA78C8801B323E140016AB73 /* Images.xcassets in Resources */,
-				EA0989A21BD576E70014F71C /* v1.mp4 in Resources */,
-				EA0989A31BD576E70014F71C /* v4.mp4 in Resources */,
 				EA7FB0951B5EF9D50052B394 /* Cabin-BoldItalic.ttf in Resources */,
-				EA0989A41BD5771D0014F71C /* v2.mp4 in Resources */,
 				EA7FB0941B5EF9D50052B394 /* Cabin-Bold.ttf in Resources */,
 				EA7FB0961B5EF9D50052B394 /* Cabin-Italic.ttf in Resources */,
 				EA72AE0F1BD003740031D652 /* Onboarding.storyboard in Resources */,
