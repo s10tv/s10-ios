@@ -19,7 +19,7 @@ public class ConversationViewModel: NSObject {
     public let conversation: LYRConversation
     public let avatar: PropertyOf<Image?>
     public let cover: PropertyOf<Image?>
-    public let displayName: ProducerProperty<String>
+    public let displayName: PropertyOf<String>
     public let displayStatus: PropertyOf<String>
     public let videoPlayerVM: VideoPlayerViewModel
     public let isBusy: PropertyOf<Bool>
@@ -36,23 +36,19 @@ public class ConversationViewModel: NSObject {
     init(_ ctx: Context, conversation: LYRConversation) {
         self.ctx = ctx
         self.conversation = conversation
-        if let u = conversation.recipient(ctx.meteor.mainContext, currentUserId: ctx.currentUserId) {
-            avatar = u.pAvatar()
-            cover = u.pCover()
-            displayName = u.pDisplayName()
-        } else {
-            let otherUserId = conversation.recipientId(ctx.currentUserId)!
-            avatar = PropertyOf(conversation.getUserAvatarURL(otherUserId).map { Image($0) })
-            cover = PropertyOf(conversation.getUserCoverURL(otherUserId).map { Image($0) })
-            displayName = ProducerProperty(SignalProducer(value: conversation.getUserDisplayName(otherUserId) ?? ""))
-        }
-        videoPlayerVM = VideoPlayerViewModel(ctx)
+        print("Meta \(conversation.metadata) particpiants \(conversation.participants)")
+        
+        let otherUserId = conversation.recipientId(ctx.currentUserId)!
+        let avatarURL = conversation.avatarURL ?? conversation.getUserAvatarURL(otherUserId)
+        let coverURL = conversation.coverURL ?? conversation.getUserCoverURL(otherUserId)
+        let title = conversation.title ?? conversation.getUserDisplayName(otherUserId)
         uploading = ctx.layer.countOfUploads(conversation)
         downloading = ctx.layer.countOfDownloads(conversation)
-        isBusy = PropertyOf(false, combineLatest(
-            uploading.producer,
-            downloading.producer
-        ).map { ($0 + $1) > 0 })
+        
+        // Navigation TitleView
+        avatar = PropertyOf(avatarURL.map { Image($0) })
+        cover = PropertyOf(coverURL.map { Image($0) })
+        displayName = PropertyOf(title ?? "")
         displayStatus = PropertyOf("", combineLatest(
             uploading.producer,
             downloading.producer
@@ -61,6 +57,13 @@ public class ConversationViewModel: NSObject {
             if downloading > 0 { return "Receiving" }
             return ""
         })
+        isBusy = PropertyOf(false, combineLatest(
+            uploading.producer,
+            downloading.producer
+        ).map { ($0 + $1) > 0 })
+        
+        // VideoPlayer
+        videoPlayerVM = VideoPlayerViewModel(ctx)
         super.init()
         videoPlayerVM.playlist.array = unplayedVideos()
     }

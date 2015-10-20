@@ -9,7 +9,7 @@
 import Foundation
 import LayerKit
 
-let lyrTopic = "topic"
+let lyrTitle = "title"
 let lyrAvatarUrl = "avatarUrl"
 let lyrCoverUrl = "coverUrl"
 
@@ -24,9 +24,9 @@ func lyrUserDisplayName(userId: String) -> String {
 }
 
 extension LYRConversation {
-    var topic: String? {
-        get { return metadata[lyrTopic] as? String }
-        set { setValue(newValue, forMetadataAtKeyPath: lyrTopic) }
+    var title: String? {
+        get { return metadata[lyrTitle] as? String }
+        set { setValue(newValue, forMetadataAtKeyPath: lyrTitle) }
     }
     
     var avatarURL: NSURL? {
@@ -78,7 +78,7 @@ extension LYRConversation {
     }
 }
 
-// MARK: -
+// MARK: - Conversation Messages
 
 extension LYRQuery {
     static func transferingMessages(conversation: LYRConversation? = nil) -> LYRQuery {

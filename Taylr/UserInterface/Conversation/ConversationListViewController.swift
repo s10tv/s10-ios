@@ -63,11 +63,21 @@ extension ConversationListViewController : ATLConversationListViewControllerDele
 // MARK: - ATLConversationListViewControllerDataSource
 
 extension ConversationListViewModel : ATLConversationListViewControllerDataSource {
+    class AvatarURLItem : NSObject, ATLAvatarItem {
+        let avatarImageURL: NSURL
+        let avatarImage: UIImage? = nil
+        let avatarInitials: String? = nil
+        
+        init(_ url: NSURL) {
+            avatarImageURL = url
+        }
+    }
+    
     public func conversationListViewController(conversationListViewController: ATLConversationListViewController!, titleForConversation conversation: LYRConversation!) -> String!  {
-        return recipientForConversation(conversation).map { $0.displayName } ?? "Loading..."
+        return displayNameForConversation(conversation)
     }
     
     public func conversationListViewController(conversationListViewController: ATLConversationListViewController!, avatarItemForConversation conversation: LYRConversation!) -> ATLAvatarItem! {
-        return recipientForConversation(conversation)
+        return avatarForConversation(conversation).map { AvatarURLItem($0.url) }
     }
 }
