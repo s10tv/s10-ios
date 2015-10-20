@@ -117,6 +117,9 @@ class ConversationViewController : UIViewController {
             navigationController?.popViewControllerAnimated(true)
             return false
         }
+        if identifier == SegueIdentifier.ConversationToProfile.rawValue {
+            return vm.canNavigateToProfile()
+        }
         return super.shouldPerformSegueWithIdentifier(identifier, sender: sender)
     }
     

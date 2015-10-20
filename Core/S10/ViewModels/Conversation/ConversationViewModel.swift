@@ -13,6 +13,7 @@ import LayerKit
 public class ConversationViewModel: NSObject {
     
     let ctx: Context
+    let userSubscriptions: [MeteorSubscription]
     let uploading: PropertyOf<UInt>
     let downloading: PropertyOf<UInt>
     public let conversation: LYRConversation
@@ -35,6 +36,8 @@ public class ConversationViewModel: NSObject {
     init(_ ctx: Context, conversation: LYRConversation) {
         self.ctx = ctx
         self.conversation = conversation
+        self.userSubscriptions = conversation.otherUserIds(ctx.currentUserId)
+            .map { ctx.meteor.subscribe("user", $0) }
         
         let otherParticipant = conversation.otherParticipants(ctx.currentUserId).first
         let avatarURL = conversation.avatarURL ?? otherParticipant?.avatarURL
@@ -64,13 +67,6 @@ public class ConversationViewModel: NSObject {
         videoPlayerVM = VideoPlayerViewModel(ctx)
         super.init()
         videoPlayerVM.playlist.array = unplayedVideos()
-    }
-    
-    func user() -> User? {
-        if let userId = conversation.otherUserIds(ctx.currentUserId).first {
-            return ctx.meteor.mainContext.existingObjectInCollection("users", documentID: userId) as? User
-        }
-        return nil
     }
     
     // MARK: -
@@ -139,21 +135,33 @@ public class ConversationViewModel: NSObject {
         return conversation.participantForId(participantIdentifier)
     }
     
+    // MARK: - Actions
+    
+    func recipientUser() -> User? {
+        if let userId = conversation.otherUserIds(ctx.currentUserId).first where conversation.participants.count == 2 {
+            return ctx.meteor.mainContext.existingObjectInCollection("users", documentID: userId) as? User
+        }
+        return nil
+    }
     
     public func reportUser(reason: String) {
-        if let u = user() {
+        if let u = recipientUser() {
             ctx.meteor.reportUser(u, reason: reason)
         }
     }
     
     public func blockUser() {
-        if let u = user() {
+        if let u = recipientUser() {
             ctx.meteor.blockUser(u)
         }
     }
     
+    public func canNavigateToProfile() -> Bool {
+        return recipientUser() != nil
+    }
+    
     public func profileVM() -> ProfileViewModel? {
-        if let u = user() {
+        if let u = recipientUser() {
             return ProfileViewModel(ctx, user: u)
         }
         return nil
