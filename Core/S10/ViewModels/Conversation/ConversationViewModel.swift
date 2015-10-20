@@ -14,12 +14,15 @@ import LayerKit
 public class ConversationViewModel: NSObject {
     
     let ctx: Context
+    let uploading: PropertyOf<UInt>
+    let downloading: PropertyOf<UInt>
     public let conversation: LYRConversation
     public let avatar: PropertyOf<Image?>
     public let cover: PropertyOf<Image?>
     public let displayName: ProducerProperty<String>
-    public let displayStatus = PropertyOf("")
+    public let displayStatus: PropertyOf<String>
     public let videoPlayerVM: VideoPlayerViewModel
+    public let isBusy: PropertyOf<Bool>
     
     public var hasUnplayedVideo: Bool {
         return videoPlayerVM.playlist.count > 0
@@ -44,6 +47,20 @@ public class ConversationViewModel: NSObject {
             displayName = ProducerProperty(SignalProducer(value: conversation.getUserDisplayName(otherUserId) ?? ""))
         }
         videoPlayerVM = VideoPlayerViewModel(ctx)
+        uploading = ctx.layer.countOfUploads(conversation)
+        downloading = ctx.layer.countOfDownloads(conversation)
+        isBusy = PropertyOf(false, combineLatest(
+            uploading.producer,
+            downloading.producer
+        ).map { ($0 + $1) > 0 })
+        displayStatus = PropertyOf("", combineLatest(
+            uploading.producer,
+            downloading.producer
+        ).map { uploading, downloading in
+            if uploading > 0 { return "Sending..." }
+            if downloading > 0 { return "Receiving" }
+            return ""
+        })
         super.init()
         videoPlayerVM.playlist.array = unplayedVideos()
     }

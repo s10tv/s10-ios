@@ -81,6 +81,20 @@ extension LYRConversation {
 // MARK: -
 
 extension LYRQuery {
+    static func transferingMessages(conversation: LYRConversation? = nil) -> LYRQuery {
+        let query = LYRQuery(queryableClass: LYRMessage.self)
+        let statuses: [LYRContentTransferStatus] = [.AwaitingUpload, .Uploading, .Downloading]
+        var predicates = [
+            LYRPredicate(property: "parts.MIMEType", predicateOperator: .IsEqualTo, value: kMIMETypeVideo),
+            LYRPredicate(property: "parts.transferStatus", predicateOperator: .IsIn, value: statuses.map { $0.rawValue }),
+        ]
+        if let conversation = conversation {
+            predicates.append(LYRPredicate(property: "conversation", predicateOperator: .IsEqualTo, value: conversation))
+        }
+        query.predicate = LYRCompoundPredicate(type: .And, subpredicates: predicates)
+        return query
+    }
+    
     static func uploadingMessages(conversation: LYRConversation? = nil) -> LYRQuery {
         let query = LYRQuery(queryableClass: LYRMessage.self)
         let statuses = [LYRContentTransferStatus.AwaitingUpload.rawValue, LYRContentTransferStatus.Uploading.rawValue]

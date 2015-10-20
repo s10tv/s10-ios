@@ -28,12 +28,6 @@ public class LayerService: NSObject {
         unreadQueryController?.delegate = self
         _ = try? unreadQueryController?.execute()
         unreadCount.value = UInt(unreadQueryController?.count() ?? 0)
-        countUploadsProducer().startWithNext {  count in
-            print("****** Upload count \(count) *******")
-        }
-        countDownloadsProducer().startWithNext {  count in
-            print("****** download count \(count) *******")
-        }
     }
     
     // TODO: Careful this method if not disposed will retain self
@@ -120,12 +114,18 @@ public class LayerService: NSObject {
         }
     }
     
-    func countUploadsProducer(conversation: LYRConversation? = nil) -> SignalProducer<UInt, NoError> {
-        let current = SignalProducer<UInt, NoError>(value: countUploads(conversation))
-        let future = layerClient.objectChanges().map { _ in // TODO: Future memory leak
+    func countOfUploads(conversation: LYRConversation? = nil) -> PropertyOf<UInt> {
+        return PropertyOf(initialValue: countUploads(conversation), producer: layerClient.objectChanges().map { _ in
+            // TODO: Future memory leak
             return self.countUploads(conversation)
-        }
-        return current.concat(future)
+        })
+    }
+    
+    func countOfDownloads(conversation: LYRConversation? = nil) -> PropertyOf<UInt> {
+        return PropertyOf(initialValue: countDownloads(conversation), producer: layerClient.objectChanges().map { _ in
+            // TODO: Future memory leak
+            return self.countDownloads(conversation)
+        })
     }
     
     func countUploads(conversation: LYRConversation? = nil) -> UInt {
@@ -137,13 +137,6 @@ public class LayerService: NSObject {
         return 0
     }
 
-    func countDownloadsProducer(conversation: LYRConversation? = nil) -> SignalProducer<UInt, NoError> {
-        let current = SignalProducer<UInt, NoError>(value: countDownloads(conversation))
-        let future = layerClient.objectChanges().map { _ in // TODO: Future memory leak
-            return self.countDownloads(conversation)
-        }
-        return current.concat(future)
-    }
     
     func countDownloads(conversation: LYRConversation? = nil) -> UInt {
 //        guard let userId = meteor.userId.value else {

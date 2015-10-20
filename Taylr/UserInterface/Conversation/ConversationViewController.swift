@@ -22,6 +22,7 @@ class ConversationViewController : UIViewController {
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var statusLabel: UILabel!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var swipeView: SwipeView!
     @IBOutlet weak var scrollDownHint: UIView!
     @IBOutlet var producerContainer: UIView!
@@ -41,6 +42,7 @@ class ConversationViewController : UIViewController {
         avatarImageView.sd_image <~ vm.avatar
         titleLabel.rac_text <~ vm.displayName
         statusLabel.rac_text <~ vm.displayStatus
+        spinner.rac_animating <~ vm.isBusy
         scrollDownHint.rac_hidden <~ UD.hideScrollDownHint.map { $0 ?? false }
         
         let sb = UIStoryboard(name: "Conversation", bundle: nil)
