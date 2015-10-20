@@ -43,7 +43,6 @@ class ConversationViewController : UIViewController {
         titleLabel.rac_text <~ vm.displayName
         statusLabel.rac_text <~ vm.displayStatus
         spinner.rac_animating <~ vm.isBusy
-        scrollDownHint.rac_hidden <~ UD.hideScrollDownHint.map { $0 ?? false }
         
         let sb = UIStoryboard(name: "Conversation", bundle: nil)
         
@@ -183,9 +182,11 @@ class ConversationViewController : UIViewController {
 
 extension ConversationViewController : VideoMakerDelegate {
     func videoMakerWillStartRecording(videoMaker: VideoMakerViewController) {
+        scrollDownHint.hidden = true
     }
     
     func videoMakerDidCancelRecording(videoMaker: VideoMakerViewController) {
+        scrollDownHint.hidden = false
     }
     
     func videoMaker(videoMaker: VideoMakerViewController, didProduceVideo video: VideoSession, duration: NSTimeInterval) {
@@ -193,6 +194,7 @@ extension ConversationViewController : VideoMakerDelegate {
             video.exportWithFirstFrame().onSuccess { (url, thumbnail) in
                 Analytics.track("Message: Send", ["ConversationName": self.vm.displayName.value])
                 self.vm.sendVideo(url, thumbnail: thumbnail, duration: duration)
+                self.scrollDownHint.hidden = false
             }
         }
     }
@@ -253,6 +255,5 @@ extension ConversationViewController : SwipeViewDataSource {
 extension ConversationViewController : SwipeViewDelegate {
     
     func swipeViewCurrentItemIndexDidChange(swipeView: SwipeView!) {
-        UD.hideScrollDownHint.value = true
     }
 }
