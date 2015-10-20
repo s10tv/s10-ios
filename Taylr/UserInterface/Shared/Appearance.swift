@@ -25,6 +25,7 @@ struct Appearance {
         setupPopTip()
         setupConversationCell()
         setupMessageCell()
+        setupMessageHeader()
         setupMessageInputToolbar()
     }
     
@@ -45,6 +46,12 @@ struct Appearance {
     static func setupMessageCell() {
         let cell = ATLMessageCollectionViewCell.appearance()
         cell.messageTextFont = UIFont(.cabinRegular, size: 14)
+    }
+    
+    static func setupMessageHeader() {
+        let header = ATLConversationCollectionViewHeader.appearance()
+        header.participantLabelTextColor = UIColor.whiteColor()
+        header.participantLabelFont = UIFont(.cabinRegular, size: 10)
     }
     
     static func setupMessageInputToolbar() {

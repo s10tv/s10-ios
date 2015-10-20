@@ -35,23 +35,26 @@ public class ConversationListViewModel: NSObject {
     }
     
     public func displayNameForConversation(conversation: LYRConversation) -> String {
-        let otherUserId = conversation.recipientId(ctx.currentUserId)!
-        let title = conversation.title ?? conversation.getUserDisplayName(otherUserId) ?? ""
-        return conversation.participants.count > 2 ? "\(title) (\(conversation.participants.count))" : title
+        if let title = conversation.title {
+            return conversation.participants.count > 2 ? "\(title) (\(conversation.participants.count))" : title
+        } else if let p = conversation.otherParticipants(ctx.currentUserId).first {
+            return p.displayName
+        }
+        return ""
     }
     
     public func avatarForConversation(conversation: LYRConversation) -> Image? {
-        let otherUserId = conversation.recipientId(ctx.currentUserId)!
-        let url = conversation.avatarURL ?? conversation.getUserAvatarURL(otherUserId)
-        return url.map { Image($0) }
+        if let avatarURL = conversation.avatarURL {
+            return Image(avatarURL)
+        } else if let p = conversation.otherParticipants(ctx.currentUserId).first {
+            return p.avatarURL.map { Image($0) }
+        }
+        return nil
     }
     
     public func recipientForConversation(conversation: LYRConversation) -> UserViewModel? {
-        if let u = conversation.recipient(ctx.meteor.mainContext, currentUserId: ctx.currentUserId) {
-            return UserViewModel(user: u)
-        }
-        if let userId = conversation.recipientId(ctx.currentUserId) {
-            return UserViewModel(conversation: conversation, userId: userId)
+        if let p = conversation.otherParticipants(ctx.currentUserId).first {
+            return UserViewModel(participant: p)
         }
         return nil
     }

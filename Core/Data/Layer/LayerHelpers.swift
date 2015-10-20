@@ -9,72 +9,81 @@
 import Foundation
 import LayerKit
 
-let lyrTitle = "title"
-let lyrAvatarUrl = "avatarUrl"
-let lyrCoverUrl = "coverUrl"
-
-func lyrUserAvatarUrl(userId: String) -> String {
-    return "users_\(userId)_avatarUrl"
-}
-func lyrUserCoverUrl(userId: String) -> String {
-    return "users_\(userId)_coverUrl"
-}
-func lyrUserDisplayName(userId: String) -> String {
-    return "users_\(userId)_displayName"
+public class Participant : NSObject {
+    var kAvatarURL: String { return "users_\(userId)_avatarUrl" }
+    var kCoverURL: String { return "users_\(userId)_coverUrl" }
+    var kDisplayName: String { return "users_\(userId)_displayName" }
+    var kFirstName: String { return "users_\(userId)_firstName" }
+    var kLastName: String { return "users_\(userId)_lastName" }
+    
+    public let userId: String
+    public var avatarURL: NSURL? = nil
+    public var coverURL: NSURL? = nil
+    public var firstName: String = ""
+    public var lastName: String = ""
+    public var displayName: String = ""
+    
+    init(user: User) {
+        userId = user.documentID!
+        avatarURL = user.avatar?.url
+        coverURL = user.cover?.url
+        firstName = user.firstName ?? ""
+        lastName = user.lastName ?? ""
+        displayName = user.displayName()
+        super.init()
+    }
+    
+    init(userId: String, inConversation c: LYRConversation) {
+        self.userId = userId
+        super.init()
+        avatarURL = (c.metadata[kAvatarURL] as? String).flatMap { NSURL(string: $0) }
+        coverURL = (c.metadata[kCoverURL] as? String).flatMap { NSURL(string: $0) }
+        firstName = c.metadata[kFirstName] as? String ?? ""
+        lastName = c.metadata[kLastName] as? String ?? ""
+        displayName = c.metadata[kDisplayName] as? String ?? ""
+    }
+    
+    func asDictionary() -> [String: String] {
+        return [
+            kAvatarURL: avatarURL?.absoluteString ?? "",
+            kCoverURL: coverURL?.absoluteString ?? "",
+            kFirstName: firstName,
+            kLastName: lastName,
+            kDisplayName: displayName,
+        ]
+    }
 }
 
 extension LYRConversation {
+    var kTitle: String { return "title" }
+    var kAvatarUrl: String { return "avatarUrl" }
+    var kCoverUrl: String { return "coverUrl" }
+    
     var title: String? {
-        get { return metadata[lyrTitle] as? String }
-        set { setValue(newValue, forMetadataAtKeyPath: lyrTitle) }
+        get { return metadata[kTitle] as? String }
+        set { setValue(newValue, forMetadataAtKeyPath: kTitle) }
     }
     
     var avatarURL: NSURL? {
-        get { return (metadata[lyrAvatarUrl] as? String).flatMap { NSURL(string: $0) } }
-        set { setValue(newValue, forMetadataAtKeyPath: lyrAvatarUrl) }
+        get { return (metadata[kAvatarUrl] as? String).flatMap { NSURL(string: $0) } }
+        set { setValue(newValue, forMetadataAtKeyPath: kAvatarUrl) }
     }
     
     var coverURL: NSURL? {
-        get { return (metadata[lyrCoverUrl] as? String).flatMap { NSURL(string: $0) } }
-        set { setValue(newValue, forMetadataAtKeyPath: lyrCoverUrl) }
+        get { return (metadata[kCoverUrl] as? String).flatMap { NSURL(string: $0) } }
+        set { setValue(newValue, forMetadataAtKeyPath: kCoverUrl) }
+    }
+    
+    func otherUserIds(currentUserId: String?) -> Set<String> {
+        return Set(participants.filter { $0 != currentUserId }.map { $0 as! String })
+    }
+    
+    func otherParticipants(currentUserId: String?) -> [Participant] {
+        return otherUserIds(currentUserId).map { Participant(userId: $0, inConversation: self) }
     }
 
-    // TODO: currentUserId should probably not be nil?
-    func recipientId(currentUserId: String?) -> String? {
-        let others = participants.filter { $0 != currentUserId }
-        return others.first as? String
-    }
-    
-    func recipient(context: NSManagedObjectContext, currentUserId: String?) -> User? {
-        let others = participants.filter { $0 != currentUserId }
-        if let userId = others.first as? String {
-            return context.existingObjectInCollection("users", documentID: userId) as? User
-        }
-        return nil
-    }
-    
-    func getUserAvatarURL(userId: String) -> NSURL? {
-        return (metadata[lyrUserAvatarUrl(userId)] as? String).flatMap { NSURL(string: $0) }
-    }
-    
-    func setUserAvatarURL(userId: String, url: NSURL) {
-        setValue(url.absoluteString, forMetadataAtKeyPath: lyrUserAvatarUrl(userId))
-    }
-    
-    func getUserCoverURL(userId: String) -> NSURL? {
-        return (metadata[lyrUserCoverUrl(userId)] as? String).flatMap { NSURL(string: $0) }
-    }
-    
-    func setUserCoverURL(userId: String, url: NSURL) {
-        setValue(url.absoluteString, forMetadataAtKeyPath: lyrUserCoverUrl(userId))
-    }
-    
-    func getUserDisplayName(userId: String) -> String? {
-        return metadata[lyrUserDisplayName(userId)] as? String
-    }
-    
-    func setUserDisplayName(userID: String, displayName: String) {
-        setValue(displayName, forMetadataAtKeyPath: lyrUserDisplayName(userID))
+    func participantForId(userId: String) -> Participant? {
+        return participants.contains(userId) ? Participant(userId: userId, inConversation: self) : nil
     }
 }
 

@@ -58,10 +58,18 @@ class ChatHistoryViewController : ATLConversationViewController {
 
 // MARK: - ATLConversationViewControllerDataSource
 
+extension Participant : ATLParticipant {
+    public var fullName: String! { return displayName }
+    public var participantIdentifier: String! { return userId }
+    public var avatarImageURL: NSURL! { return avatarURL }
+    public var avatarImage: UIImage! { return nil }
+    public var avatarInitials: String! { return nil }
+}
+
 extension ConversationViewModel : ATLConversationViewControllerDataSource {
     
     public func conversationViewController(conversationViewController: ATLConversationViewController!, participantForIdentifier participantIdentifier: String!) -> ATLParticipant! {
-        return getUser(participantIdentifier)
+        return getParticipant(participantIdentifier)
     }
     
     public func conversationViewController(conversationViewController: ATLConversationViewController!, attributedStringForDisplayOfDate date: NSDate!) -> NSAttributedString! {
@@ -74,3 +82,8 @@ extension ConversationViewModel : ATLConversationViewControllerDataSource {
     
 }
 
+extension ConversationViewModel : ATLConversationViewControllerDelegate {
+    public func conversationViewController(conversationViewController: ATLConversationViewController!, configureCell cell: UICollectionViewCell!, forMessage message: LYRMessage!) {
+        
+    }
+}

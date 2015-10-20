@@ -10,7 +10,6 @@ import Foundation
 import ReactiveCocoa
 import LayerKit
 
-
 public class ConversationViewModel: NSObject {
     
     let ctx: Context
@@ -36,12 +35,11 @@ public class ConversationViewModel: NSObject {
     init(_ ctx: Context, conversation: LYRConversation) {
         self.ctx = ctx
         self.conversation = conversation
-        print("Meta \(conversation.metadata) particpiants \(conversation.participants)")
         
-        let otherUserId = conversation.recipientId(ctx.currentUserId)!
-        let avatarURL = conversation.avatarURL ?? conversation.getUserAvatarURL(otherUserId)
-        let coverURL = conversation.coverURL ?? conversation.getUserCoverURL(otherUserId)
-        let title = conversation.title ?? conversation.getUserDisplayName(otherUserId)
+        let otherParticipant = conversation.otherParticipants(ctx.currentUserId).first
+        let avatarURL = conversation.avatarURL ?? otherParticipant?.avatarURL
+        let coverURL = conversation.coverURL ?? otherParticipant?.coverURL
+        let title = conversation.title ?? otherParticipant?.displayName
         uploading = ctx.layer.countOfUploads(conversation)
         downloading = ctx.layer.countOfDownloads(conversation)
         
@@ -69,7 +67,10 @@ public class ConversationViewModel: NSObject {
     }
     
     func user() -> User? {
-        return conversation.recipient(ctx.meteor.mainContext, currentUserId: ctx.currentUserId)
+        if let userId = conversation.otherUserIds(ctx.currentUserId).first {
+            return ctx.meteor.mainContext.existingObjectInCollection("users", documentID: userId) as? User
+        }
+        return nil
     }
     
     // MARK: -
@@ -134,12 +135,10 @@ public class ConversationViewModel: NSObject {
         }
     }
     
-    public func getUser(userId: String) -> UserViewModel? {
-        if let u = ctx.meteor.mainContext.existingObjectInCollection("users", documentID: userId) as? User {
-            return UserViewModel(user: u)
-        }
-        return nil
+    public func getParticipant(participantIdentifier: String) -> Participant? {
+        return conversation.participantForId(participantIdentifier)
     }
+    
     
     public func reportUser(reason: String) {
         if let u = user() {

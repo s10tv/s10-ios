@@ -26,11 +26,11 @@ public class UserViewModel: NSObject {
         avatar = user.avatar
     }
     
-    init(conversation: LYRConversation, userId: String) {
-        self.userId = userId
-        firstName = ""
-        lastName = ""
-        displayName = conversation.getUserDisplayName(userId) ?? "Loading..."
-        avatar = conversation.getUserAvatarURL(userId).flatMap { Image($0) }
+    init(participant: Participant) {
+        userId = participant.userId
+        firstName = participant.firstName
+        lastName = participant.lastName
+        displayName = participant.displayName
+        avatar = participant.avatarURL.flatMap { Image($0) }
     }
 }
