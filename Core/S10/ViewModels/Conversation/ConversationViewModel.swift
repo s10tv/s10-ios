@@ -105,9 +105,9 @@ public class ConversationViewModel: NSObject {
     }
     
     public func unplayedVideos() -> [Video] {
-        // BIG TODO: This is causing massive crash.... what to do if video is not downloaded
-        // just yet....
-        return ctx.layer.unplayedVideoMessages(conversation).map { videoForMessage($0)! }
+        // TODO: We're blatantly ignoring video right now
+        return ctx.layer.unplayedVideoMessages(conversation)
+            .map { videoForMessage($0) }.filter { $0 != nil }.map { $0! }
     }
     
     public func videoForMessage(message: LYRMessage) -> Video? {
