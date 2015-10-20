@@ -80,4 +80,8 @@ extension ConversationListViewModel : ATLConversationListViewControllerDataSourc
     public func conversationListViewController(conversationListViewController: ATLConversationListViewController!, avatarItemForConversation conversation: LYRConversation!) -> ATLAvatarItem! {
         return avatarForConversation(conversation).map { AvatarURLItem($0.url) }
     }
+    
+    public func conversationListViewController(conversationListViewController: ATLConversationListViewController!, lastMessageTextForConversation conversation: LYRConversation!) -> String! {
+        return lastMessageTextForConversation(conversation)
+    }
 }

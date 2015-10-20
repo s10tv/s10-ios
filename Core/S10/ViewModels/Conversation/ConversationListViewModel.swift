@@ -52,6 +52,22 @@ public class ConversationListViewModel: NSObject {
         return nil
     }
     
+    public func lastMessageTextForConversation(conversation: LYRConversation) -> String {
+        if let msg = conversation.lastMessage where msg.videoPart != nil {
+            if !msg.isSent {
+                return "> Sending..."
+            }
+            let sentBySelf = msg.sender.userID == ctx.currentUserId
+            if sentBySelf {
+                let status = Formatters.stringForDisplayOfRecipientStatus(msg.recipientStatusByUserID, ctx: ctx)
+                return "> Video \(status.lowercaseString)"
+            } else {
+                return "> Received new video"
+            }
+        }
+        return conversation.lastMessage?.textPart?.asString() ?? ""
+    }
+    
     public func recipientForConversation(conversation: LYRConversation) -> UserViewModel? {
         if let p = conversation.otherParticipants(ctx.currentUserId).first {
             return UserViewModel(participant: p)

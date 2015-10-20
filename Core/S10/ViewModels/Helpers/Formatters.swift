@@ -296,7 +296,7 @@ extension LYRRecipientStatus: CustomStringConvertible {
         case .Pending: return "Pending"
         case .Sent: return "Sent"
         case .Delivered: return "Delivered"
-        case .Read: return "Read"
+        case .Read: return "Opened"
         }
     }
     

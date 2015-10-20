@@ -148,7 +148,8 @@ public class LayerService: NSObject {
         return PropertyOf(initialValue: conversation.lastMessage, producer: layerClient.objectChanges()
             .flatMap(.Merge) { changes in
                 for change in changes {
-                    if let c = change.object as? LYRConversation where c == conversation && change.property == "lastMessage" {
+                    if let c = change.object as? LYRConversation, let p = change.property
+                        where c == conversation && p == "lastMessage" {
                         return SignalProducer(value: conversation.lastMessage)
                     }
                     if let m = change.object as? LYRMessage where m == conversation.lastMessage {
