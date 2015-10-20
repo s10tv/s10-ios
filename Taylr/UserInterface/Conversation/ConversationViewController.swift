@@ -28,10 +28,13 @@ class ConversationViewController : UIViewController {
     @IBOutlet var producerContainer: UIView!
     @IBOutlet var chatHistoryContainer: UIView!
     
+    var scrollView: UIScrollView {
+        return swipeView.valueForKey("scrollView") as! UIScrollView
+    }
+    
     private(set) var chatHistory: ChatHistoryViewController!
     private(set) var videoMaker: VideoMakerViewController!
     private(set) var videoPlayer: VideoPlayerViewController!
-    
     
     var vm: ConversationViewModel!
     
@@ -95,7 +98,6 @@ class ConversationViewController : UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         // #temp hack till we figure out better way
-        let scrollView = swipeView.valueForKey("scrollView") as! UIScrollView
         scrollView.contentInset.top = 0
     }
 
@@ -137,8 +139,10 @@ class ConversationViewController : UIViewController {
     
     @IBAction func showMoreOptions(sender: AnyObject) {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        sheet.addAction(LS(.viewProfile)) { _ in
-            self.performSegue(.ConversationToProfile)
+        if self.vm.canNavigateToProfile() {
+            sheet.addAction(LS(.viewProfile)) { _ in
+                self.performSegue(.ConversationToProfile)
+            }
         }
         sheet.addAction(LS(.moreSheetBlock, vm.displayName.value), style: .Destructive) { _ in
             self.blockUser(self)
@@ -186,10 +190,12 @@ class ConversationViewController : UIViewController {
 extension ConversationViewController : VideoMakerDelegate {
     func videoMakerWillStartRecording(videoMaker: VideoMakerViewController) {
         scrollDownHint.hidden = true
+        scrollView.scrollEnabled = false
     }
     
     func videoMakerDidCancelRecording(videoMaker: VideoMakerViewController) {
         scrollDownHint.hidden = false
+        scrollView.scrollEnabled = true
     }
     
     func videoMaker(videoMaker: VideoMakerViewController, didProduceVideo video: VideoSession, duration: NSTimeInterval) {
@@ -198,6 +204,7 @@ extension ConversationViewController : VideoMakerDelegate {
                 Analytics.track("Message: Send", ["ConversationName": self.vm.displayName.value])
                 self.vm.sendVideo(url, thumbnail: thumbnail, duration: duration)
                 self.scrollDownHint.hidden = false
+                self.scrollView.scrollEnabled = true
             }
         }
     }
