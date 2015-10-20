@@ -38,6 +38,9 @@ extension LYRMessage {
     public var messageParts: [LYRMessagePart] {
         return parts.map { $0 as! LYRMessagePart }
     }
+    public var textPart: LYRMessagePart? {
+        return messageParts.filter { $0.MIMEType == kMIMETypeText }.first
+    }
     public var videoPart: LYRMessagePart? {
         return messageParts.filter { $0.MIMEType == kMIMETypeVideo }.first
     }
@@ -50,6 +53,10 @@ extension LYRMessage {
 }
 
 extension LYRMessagePart {
+    
+    public func asString() -> String? {
+        return (data as NSData?).flatMap { String(data: $0, encoding: NSUTF8StringEncoding) }
+    }
     
     public func asImage() -> UIImage? {
         return (data as NSData?).flatMap { UIImage(data: $0) }

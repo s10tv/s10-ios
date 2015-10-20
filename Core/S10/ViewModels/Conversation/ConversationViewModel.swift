@@ -16,6 +16,7 @@ public class ConversationViewModel: NSObject {
     let userSubscriptions: [MeteorSubscription]
     let uploading: PropertyOf<UInt>
     let downloading: PropertyOf<UInt>
+    let lastMessage: PropertyOf<LYRMessage?>
     public let conversation: LYRConversation
     public let avatar: PropertyOf<Image?>
     public let cover: PropertyOf<Image?>
@@ -45,6 +46,7 @@ public class ConversationViewModel: NSObject {
         let title = conversation.title ?? otherParticipant?.displayName
         uploading = ctx.layer.countOfUploads(conversation)
         downloading = ctx.layer.countOfDownloads(conversation)
+        lastMessage = ctx.layer.lastMessageOf(conversation)
         
         // Navigation TitleView
         avatar = PropertyOf(avatarURL.map { Image($0) })
@@ -52,10 +54,16 @@ public class ConversationViewModel: NSObject {
         displayName = PropertyOf(title ?? "")
         displayStatus = PropertyOf("", combineLatest(
             uploading.producer,
-            downloading.producer
-        ).map { uploading, downloading in
+            downloading.producer,
+            lastMessage.producer
+        ).map { uploading, downloading, lastMessage in
             if uploading > 0 { return "Sending..." }
             if downloading > 0 { return "Receiving" }
+            if let uid = ctx.currentUserId,
+                let msg = lastMessage,
+                let status = Formatters.readableStatusWithDate(msg, currentUserId: uid) {
+                    return status
+            }
             return ""
         })
         isBusy = PropertyOf(false, combineLatest(

@@ -144,6 +144,21 @@ public class LayerService: NSObject {
         return 0
     }
     
+    func lastMessageOf(conversation: LYRConversation) -> PropertyOf<LYRMessage?> {
+        return PropertyOf(initialValue: conversation.lastMessage, producer: layerClient.objectChanges()
+            .flatMap(.Merge) { changes in
+                for change in changes {
+                    if let c = change.object as? LYRConversation where c == conversation && change.property == "lastMessage" {
+                        return SignalProducer(value: conversation.lastMessage)
+                    }
+                    if let m = change.object as? LYRMessage where m == conversation.lastMessage {
+                        return SignalProducer(value: m)
+                    }
+                }
+                return .empty
+            })
+    }
+    
     // MARK: -
     
     private func syncWithUser(userId: String?) -> SignalProducer<String?, NSError> {

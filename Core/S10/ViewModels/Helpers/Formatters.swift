@@ -214,7 +214,7 @@ public struct Formatters {
         return attrString
     }
     
-    public static func attributedStringForDisplayOfRecipientStatus(recipientStatus: [NSObject: AnyObject], ctx: Context) -> NSAttributedString {
+    public static func stringForDisplayOfRecipientStatus(recipientStatus: [NSObject: AnyObject], ctx: Context) -> String {
         let statuses = recipientStatus
             .filter { key, _ in key != ctx.currentUserId }
             .map { ($0 as! String, LYRRecipientStatus(rawValue: $1 as! Int)!) }
@@ -240,8 +240,8 @@ public struct Formatters {
                 }
             }
             if readCount > 0 {
-                let suffix = readCount > 1 ? "Participants" : "Participant"
-                statusString = "Read by \(readCount) \(suffix)"
+                let suffix = readCount > 1 ? "participants" : "participant"
+                statusString = "Opened by \(readCount) \(suffix)"
             } else if pending {
                 statusString = "Pending"
             } else if delivered {
@@ -252,11 +252,39 @@ public struct Formatters {
         } else {
             statusString = Array(statuses.values).first?.description ?? ""
         }
-        return NSAttributedString(string: statusString, attributes: [
+        return statusString
+    }
+    
+    public static func attributedStringForDisplayOfRecipientStatus(recipientStatus: [NSObject: AnyObject], ctx: Context) -> NSAttributedString {
+        return NSAttributedString(string: stringForDisplayOfRecipientStatus(recipientStatus, ctx: ctx), attributes: [
             NSForegroundColorAttributeName: UIColor.whiteColor(),
             NSFontAttributeName: CabinBold11
         ])
     }
+    
+    public static func readableStatusWithDate(msg: LYRMessage, currentUserId: String) -> String? {
+        let sentLast = msg.sender.userID == currentUserId
+        let date: NSDate? = sentLast ? msg.sentAt : msg.receivedAt
+        let formattedDate = date.flatMap { Formatters.formatRelativeDate($0) } ?? ""
+        let statuses = msg.recipientStatusByUserID
+            .filter { key, _ in key != currentUserId }
+            .map { LYRRecipientStatus(rawValue: $1 as! Int)! }
+        if sentLast == true {
+            if let status = statuses.first {
+                switch status {
+                case .Invalid: return "Sending..."
+                case .Pending: return "Sending..."
+                case .Sent: return "Sent \(formattedDate)"
+                case .Delivered: return "Delivered \(formattedDate)"
+                case .Read: return "Opened \(formattedDate)"
+                }
+            }
+        } else {
+            return "Received"
+        }
+        return nil
+    }
+
 }
 
 
