@@ -27,6 +27,18 @@ class ChatHistoryViewController : ATLConversationViewController {
         super.viewDidLoad()
         view.backgroundColor = UIColor.clearColor()
         messageInputToolbar.textInputView.font = UIFont(.cabinRegular, size: 17)
+        
+        // Slight hacky to configure typing indicator appearance
+        let label = typingIndicatorController.valueForKey("label") as! UILabel
+        label.textColor = UIColor.whiteColor()
+        label.font = UIFont(.cabinRegular, size: 12)
+        let gradientLayer = typingIndicatorController.valueForKey("backgroundGradientLayer") as! CAGradientLayer
+        gradientLayer.colors = [
+            UIColor(white: 0, alpha: 0).CGColor,
+            UIColor(white: 0, alpha: 0.75).CGColor,
+            UIColor(white: 0, alpha: 0).CGColor
+        ]
+        
         dataSource = vm
     }
     
