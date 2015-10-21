@@ -41,4 +41,11 @@ public class Environment {
     public init(provisioningProfile: ProvisioningProfile?) {
         self.provisioningProfile = provisioningProfile
     }
+    
+    public class func isRunningTestFlightBeta() -> Bool {
+        if let fileName = NSBundle.mainBundle().appStoreReceiptURL?.lastPathComponent {
+            return fileName == "sandboxReceipt"
+        }
+        return false
+    }
 }

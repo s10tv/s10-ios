@@ -47,6 +47,8 @@ class AnalyticsService {
                 }
             }
         }
+        setUserProperties(["TestFlightBeta": Environment.isRunningTestFlightBeta()])
+        setUserProperties(["Audience": env.audience.rawValue])
     }
 
     deinit {
