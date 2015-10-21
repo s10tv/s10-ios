@@ -41,6 +41,9 @@ struct Appearance {
         cell.dateLabelColor = UIColor(hex: 0x91908A)
         cell.dateLabelFont = UIFont(.cabinItalic, size: 14)
         cell.lastMessageLabelFont = UIFont(.cabinRegular, size: 13)
+        
+        let outgoingCell = ATLOutgoingMessageCollectionViewCell.appearance()
+        outgoingCell.bubbleViewColor = UIColor(hex: 0x4A148C)
     }
     
     static func setupMessageCell() {
@@ -57,5 +60,6 @@ struct Appearance {
     static func setupMessageInputToolbar() {
         let toolbar = ATLMessageInputToolbar.appearance()
         toolbar.rightAccessoryButtonFont = UIFont(.cabinBold, size: 17)
+        toolbar.rightAccessoryButtonActiveColor = UIColor(hex: 0x4A148C)
     }
 }
