@@ -42,7 +42,7 @@ test:
                   --output_directory $CIRCLE_ARTIFACTS \
                   --output_name ${BN}.ipa
         ./scripts/circle_release_notes.sh >> $CIRCLE_ARTIFACTS/release_notes.txt
-      : timeout: 1200
+      : timeout: 1800
     - zip -FSr $CIRCLE_ARTIFACTS/Pods.zip Pods/
 
 deployment:
