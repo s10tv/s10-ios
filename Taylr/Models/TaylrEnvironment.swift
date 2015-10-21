@@ -53,13 +53,13 @@ class TaylrEnvironment : Environment {
                 segmentWriteKey = "SGEB9gVQGFYgeptFbtnETHCka8FCOuoc" // this is wrong.
                 amplitudeKey = "3b3701a21192c042353851256b275185" // Same as Dev
                 mixpanelToken = "9d5d89ba988e52622278165d91ccf937" // Same as Dev
-                layerURL = NSURL("layer:///apps/staging/49574578-72bb-11e5-9a72-a4a211002a87")
+                layerURL = NSURL("layer:///apps/staging/49574578-72bb-11e5-9a72-a4a211002a87") // Same as dev
             case .AppStore:
                 serverHostName = "taylr-prod.herokuapp.com"
                 segmentWriteKey = "DwMJMhxsvn6EDrO33gANHBjvg3FUsfPJ"
                 amplitudeKey = "ff96d68f3ff2efd39284b33a78dbbf2c"
                 mixpanelToken = "39194eed490fa8abcc026256631a4230"
-                layerURL = NSURL("layer:///apps/staging/49574578-72bb-11e5-9a72-a4a211002a87")
+                layerURL = NSURL("layer:///apps/production/49574ba4-72bb-11e5-89fc-a4a211002a87")
         }
         super.init(provisioningProfile: provisioningProfile)
     }
