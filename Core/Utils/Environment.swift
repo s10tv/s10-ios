@@ -8,6 +8,8 @@
 
 import Foundation
 
+public let IS_TARGET_IPHONE_SIMULATOR = (TARGET_IPHONE_SIMULATOR == 1)
+
 public class Environment {
     public let provisioningProfile : ProvisioningProfile?
     public var appId: String {
@@ -21,6 +23,19 @@ public class Environment {
     }
     public var deviceId: String {
         return UIDevice.currentDevice().getPersistentIdentifier()
+    }
+    
+    public var apsEnvironment: ApsEnvironment? {
+        // Simulator
+        if IS_TARGET_IPHONE_SIMULATOR {
+            return nil
+        }
+         // Local / Crashlytics
+        if let provisioningProfile = provisioningProfile {
+            return provisioningProfile.apsEnvironment
+        }
+        // App Store / TestFlight
+        return .Production
     }
     
     public init(provisioningProfile: ProvisioningProfile?) {

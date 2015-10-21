@@ -9,8 +9,6 @@
 import Foundation
 import Core
 
-let IS_TARGET_IPHONE_SIMULATOR = (TARGET_IPHONE_SIMULATOR == 1)
-
 class TaylrEnvironment : Environment {
     enum Audience {
         case Dev, Beta, AppStore

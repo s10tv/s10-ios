@@ -164,9 +164,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
     
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         Log.info("Registered for push \(deviceToken)")
-        if let apsEnv = Globals.env.provisioningProfile?.apsEnvironment?.rawValue {
+        if let apsEnv = Globals.env.apsEnvironment?.rawValue {
             MainContext.meteor.updateDevicePush(apsEnv, pushToken: deviceToken.hexString() as String)
             Analytics.setUserProperties(["RegisteredPush": true])
+        } else if IS_TARGET_IPHONE_SIMULATOR == false {
+            Log.error("Non-simulator build should have valid APS environment")
+            // fatalError("Non-simulator build should have valid APS environment")
         }
         do {
             try layerClient.updateRemoteNotificationDeviceToken(deviceToken)

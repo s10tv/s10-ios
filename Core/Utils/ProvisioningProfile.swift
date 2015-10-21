@@ -9,13 +9,14 @@
 import Foundation
 import DTFoundation
 
+public enum ApsEnvironment : String {
+    case Sandbox = "development"
+    case Production = "production"
+}
+
 public class ProvisioningProfile {
     public enum Type {
         case Development, Enterprise, Adhoc, AppStore
-    }
-    public enum ApsEnvironment : String {
-        case Sandbox = "development"
-        case Production = "production"
     }
     
     public let info : [NSObject : AnyObject]
