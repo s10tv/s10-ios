@@ -68,7 +68,7 @@ public enum R {
         case moreSheetCancel = "MoreSheetCancel"
         /// Report %@
         case moreSheetReport = "MoreSheetReport"
-        /// We use your location to help you find interesting people around you!
+        /// We send your location to your connections only when you explicitly request it.
         case nsLocationWhenInUseUsageDescription = "NSLocationWhenInUseUsageDescription"
         /// Cancel
         case reportAlertCancel = "ReportAlertCancel"

@@ -59,6 +59,7 @@ public enum ViewControllerStoryboardIdentifier : String {
     case Editor = "Editor"
     case History = "History"
     case Login = "Login"
+    case NetworkVerification = "NetworkVerification"
     case Producer = "Producer"
     case Receive = "Receive"
     case Recorder = "Recorder"

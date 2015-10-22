@@ -156,6 +156,10 @@ public class MeteorService : NSObject {
         return meteor.call("confirmInviteCode", code)
     }
     
+    func joinNetwork(networkId: String, token: String) -> Future<(), NSError> {
+        return meteor.call("network/join", networkId, token)
+    }
+    
     func confirmRegistration() -> Future<(), NSError> {
         return meteor.call("confirmRegistration")
     }

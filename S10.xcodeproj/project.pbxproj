@@ -29,6 +29,7 @@
 		EA0989AB1BD5C1540014F71C /* LayerHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0989AA1BD5C1540014F71C /* LayerHelpers.swift */; settings = {ASSET_TAGS = (); }; };
 		EA0ED05F1BC1F80F00A9EE08 /* MeteorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0ED05E1BC1F80F00A9EE08 /* MeteorExtensions.swift */; settings = {ASSET_TAGS = (); }; };
 		EA337DFF1BB9067800F09A92 /* UIKitBindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA337DFE1BB9067800F09A92 /* UIKitBindings.swift */; settings = {ASSET_TAGS = (); }; };
+		EA38F8B21BD6FE7D00542334 /* NetworkVerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA38F8B11BD6FE7D00542334 /* NetworkVerificationViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EA394B0B1B5D9EF4009184EB /* v1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = EA394B071B5D9EF4009184EB /* v1.mp4 */; };
 		EA394B0C1B5D9EF4009184EB /* v2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = EA394B081B5D9EF4009184EB /* v2.mp4 */; };
 		EA394B0D1B5D9EF4009184EB /* v3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = EA394B091B5D9EF4009184EB /* v3.mp4 */; };
@@ -294,6 +295,7 @@
 		EA3594181B2FEA1F00E91337 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		EA359AE41B6FFB2B00AF0A65 /* AzureClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AzureClient.swift; sourceTree = "<group>"; };
 		EA36D2AA1AE71366006FD5D8 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
+		EA38F8B11BD6FE7D00542334 /* NetworkVerificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkVerificationViewController.swift; sourceTree = "<group>"; };
 		EA394B071B5D9EF4009184EB /* v1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = v1.mp4; path = ../../../../Documents/Videos/v1.mp4; sourceTree = "<group>"; };
 		EA394B081B5D9EF4009184EB /* v2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = v2.mp4; path = ../../../../Documents/Videos/v2.mp4; sourceTree = "<group>"; };
 		EA394B091B5D9EF4009184EB /* v3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = v3.mp4; path = ../../../../Documents/Videos/v3.mp4; sourceTree = "<group>"; };
@@ -1035,6 +1037,7 @@
 				F9608B841BAA9B040067E1EF /* VerifyCodeViewController.swift */,
 				F9BF43101BB07EFC007D30A0 /* TutorialContentViewController.swift */,
 				F9BF43121BB0813E007D30A0 /* TutorialPageViewController.swift */,
+				EA38F8B11BD6FE7D00542334 /* NetworkVerificationViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -1720,6 +1723,7 @@
 				EAA576191BB7E9FB00661A4F /* ConnectServicesViewController.swift in Sources */,
 				EA0989931BD4CEDC0014F71C /* RecorderViewController.swift in Sources */,
 				EA0989961BD4CEDC0014F71C /* RecordButton.swift in Sources */,
+				EA38F8B21BD6FE7D00542334 /* NetworkVerificationViewController.swift in Sources */,
 				EA42D64F1BB7BE5D00B07526 /* SBConstants.swift in Sources */,
 				EA42D6611BB7CC7B00B07526 /* ImagePickerExtensions.swift in Sources */,
 				EA72AE661BD005CD0031D652 /* ProfileCoverCell.swift in Sources */,

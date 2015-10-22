@@ -11,41 +11,47 @@ import ReactiveCocoa
 import Core
 
 class VerifyCodeViewController : UIViewController {
-    @IBOutlet weak var errorLabel: UILabel!
-    @IBOutlet weak var nextButton: UIButton!
-    @IBOutlet weak var verificationTokenField: UITextField!
+    @IBOutlet weak var webView: UIWebView!
+    @IBOutlet weak var introView: UIView!
 
     let vm = VerifyCodeViewModel(MainContext)
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        verificationTokenField.rac_text <<~> vm.code
-        errorLabel.rac_text <~ vm.statusMessage
+        webView.delegate = self
+        let url = NSURL("https://cas.id.ubc.ca/ubc-cas/login")
+        let req = NSURLRequest(URL: url)
+        webView.loadRequest(req)
     }
-
+    
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(false, animated: animated)
     }
 
+    @IBAction func didPressCWL(sender: AnyObject) {
+        introView.hidden = true
+//        self.performSegue(.RegisterEmailToConnectServices)
+    }
+    
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        verificationTokenField.becomeFirstResponder()
-        Analytics.track("View: VerifyInviteCode")
+        Analytics.track("View: JoinNetwork")
     }
+}
 
-    // MARK: -
-    @IBAction func didPressShareButton(sender: AnyObject) {
-        let shareText = "Anyone have a Taylr invite code?"
-        let activity = UIActivityViewController(activityItems: [shareText], applicationActivities: nil)
-        presentViewController(activity)
-    }
-
-    @IBAction func didTapNext(sender: AnyObject) {
-        wrapFuture {
-            self.vm.verifyCode()
-        }.onSuccess {
-            self.performSegue(.RegisterEmailToConnectServices)
+extension VerifyCodeViewController : UIWebViewDelegate {
+    func webViewDidFinishLoad(webView: UIWebView) {
+        if let cookie = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+            .cookies?.filter({ $0.name == "CASTGC" }).first {
+                vm.joinUBCNetwork(cookie.value).onSuccess {
+                    Analytics.track("Network: JoinSuccess")
+                    self.performSegue(.RegisterEmailToConnectServices)
+                }.onFailure { error in
+                    Analytics.track("Network: JoinError")
+                    // Handle error actually...
+                    self.performSegue(.RegisterEmailToConnectServices)
+                }
         }
     }
 }

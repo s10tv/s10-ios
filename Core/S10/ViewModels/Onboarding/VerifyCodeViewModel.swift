@@ -11,41 +11,27 @@ import ReactiveCocoa
 import Async
 
 public struct VerifyCodeViewModel {
-    let _statusMessage: MutableProperty<String>
-
-    public let code: MutableProperty<String?>
-    public let statusMessage: PropertyOf<String>
 
     let ctx: Context
 
     public init(_ ctx: Context) {
         self.ctx = ctx
-        code = MutableProperty("")
-
-        _statusMessage = MutableProperty("")
-        statusMessage = PropertyOf(_statusMessage)
     }
 
-    public func verifyCode() -> Future<Void, ErrorAlert> {
+    public func joinUBCNetwork(token: String) -> Future<Void, ErrorAlert> {
         let promise = Promise<(), ErrorAlert>()
-
         // TODO: display this as an animation into statusMessage
-        ctx.meteor.verifyCode(code.value ?? "").onFailure { error in
+        ctx.meteor.joinNetwork("ubc", token: token).onFailure { error in
             var errorReason : String
             if let reason = error.localizedFailureReason {
                 errorReason = reason
             } else {
                 errorReason = "Please try again later."
             }
-
-            self._statusMessage.value = errorReason
-
             promise.failure(ErrorAlert(title: "Registration Problem", message: errorReason))
         }.onSuccess {
             promise.success()
         }
-        return promise.future
+        return promise.future.deliverOn(UIScheduler())
     }
-
-
 }
