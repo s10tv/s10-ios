@@ -11,7 +11,7 @@ import Meteor
 import ReactiveCocoa
 
 public class MeteorSubscription {
-    private let subscription: METSubscription
+    let subscription: METSubscription
     private let meteor: METDDPClient
     public let ready: Future<(), NSError>
     

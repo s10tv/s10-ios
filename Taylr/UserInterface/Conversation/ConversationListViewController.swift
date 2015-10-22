@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ReactiveCocoa
 import Atlas
 import Core
 
@@ -30,7 +31,8 @@ class ConversationListViewController : ATLConversationListViewController {
         dataSource = vm
         delegate = self
         
-        vm.changedConversations.observeNext { [weak self] in
+        vm.changedConversations.observeOn(UIScheduler()).observeNext { [weak self] in
+            Log.debug("Reloading conversation cell \($0)")
             self?.reloadCellForConversation($0)
         }
     }
