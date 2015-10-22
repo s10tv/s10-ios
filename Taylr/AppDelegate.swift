@@ -193,16 +193,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
             layerClient = LayerService.defaultLayerClient(env.layerURL)
         }
         let handled = layerClient.synchronizeWithRemoteNotification(userInfo) { changes, error in
-            if let changes = changes {
+            if let error = error {
+                Log.error("Failed to synchronize remote notification with layer", error)
+                completionHandler(.Failed)
+            } else {
+                let changes = changes ?? []
                 Log.info("Synchronized layer remote notification with \(changes.count) changes")
                 if changes.count > 0 {
                     completionHandler(.NewData)
                 } else {
                     completionHandler(.NoData)
                 }
-            } else {
-                Log.error("Failed to synchronize remote notification with layer", error)
-                completionHandler(.Failed)
             }
         }
         if !handled {
@@ -214,10 +215,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
     
     func application(application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: () -> Void) {
         layerClient.handleBackgroundContentTransfersForSession(identifier) { changes, error in
-            if let changes = changes {
-                Log.info("Handled layer background transfer with \(changes.count) changes")
-            } else {
+            if let error = error {
                 Log.error("Failed to handle layer background transfer", error)
+            } else {
+                Log.info("Handled layer background transfer with \(changes?.count) changes")
             }
             completionHandler()
         }

@@ -158,6 +158,9 @@ public class ConversationViewModel: NSObject {
     }
     
     public func getParticipant(participantIdentifier: String) -> Participant? {
+        if let user = ctx.meteor.mainContext.existingObjectInCollection("users", documentID: participantIdentifier) as? User {
+            return Participant(user: user)
+        }
         return conversation.participantForId(participantIdentifier)
     }
     

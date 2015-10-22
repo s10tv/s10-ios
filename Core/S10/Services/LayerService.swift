@@ -49,6 +49,7 @@ public class LayerService: NSObject {
             for (k, v) in Participant(user: user).asDictionary() {
                 metadata[k] = v // Better dic merge wanted
             }
+            Log.info("Creating new conversation with metadata \(metadata)")
             return try layerClient.newConversationWithParticipants(Set([user.documentID!]), options: [
                 LYRConversationOptionsDistinctByParticipantsKey: true,
                 LYRConversationOptionsMetadataKey: metadata
