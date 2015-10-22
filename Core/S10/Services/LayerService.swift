@@ -19,7 +19,7 @@ public class LayerService: NSObject {
     
     public init(layerAppID: NSURL, meteor: MeteorService, existingClient: LYRClient? = nil) {
         self.meteor = meteor
-        layerClient = LayerService.defaultLayerClient(layerAppID)
+        layerClient = existingClient ?? LayerService.defaultLayerClient(layerAppID)
         let query = LYRQuery(queryableClass: LYRConversation.self)
         query.predicate = LYRPredicate(property: "hasUnreadMessages", predicateOperator: .IsEqualTo, value: true)
         unreadQueryController = try? layerClient.queryControllerWithQuery(query, error: ())
