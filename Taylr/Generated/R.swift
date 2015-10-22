@@ -118,6 +118,8 @@ public enum R {
         case appDev = "AppIconDev"
         /// bg-record-hint
         case bgRecordHint = "bg-record-hint"
+        /// bg-sauder
+        case bgSauder = "bg-sauder"
         /// discover-logo
         case discoverLogo = "discover-logo"
         /// empty-profile-pic
@@ -158,6 +160,8 @@ public enum R {
         case icHouse = "ic-house"
         /// ic-left-chevron
         case icLeftChevron = "ic-left-chevron"
+        /// ic-lock
+        case icLock = "ic-lock"
         /// ic-me
         case icMe = "ic-me"
         /// ic-more

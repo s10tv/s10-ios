@@ -28,6 +28,7 @@
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
             <string>Cabin-Regular</string>
+            <string>Cabin-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -45,7 +46,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6nd-bq-WpR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2287" y="-62"/>
+            <point key="canvasLocation" x="-2121" y="-958"/>
         </scene>
         <!--Tutorial Page View Controller-->
         <scene sceneID="vDt-aH-7eJ">
@@ -56,7 +57,7 @@
                 </pageViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MJe-Cn-PpC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1675.5" y="-62.5"/>
+            <point key="canvasLocation" x="-1563.5" y="-958.5"/>
         </scene>
         <!--Tutorial Content View Controller-->
         <scene sceneID="0oX-K3-TIb">
@@ -147,7 +148,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GzM-Al-kXL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1144.5" y="-561.5"/>
+            <point key="canvasLocation" x="-1142.5" y="-958.5"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="mSO-WA-QEY">
@@ -305,7 +306,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lbl-0u-moe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1188.5" y="323.5"/>
+            <point key="canvasLocation" x="-1142.5" y="-126.5"/>
         </scene>
         <!--Me-->
         <scene sceneID="ibH-i1-6qO">
@@ -313,7 +314,7 @@
                 <viewControllerPlaceholder storyboardName="Me" id="XGl-ew-SrN" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jcS-QE-Qkh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1637.5" y="338"/>
+            <point key="canvasLocation" x="865.5" y="60"/>
         </scene>
         <!--Create Profile-->
         <scene sceneID="ziZ-yX-Hqk">
@@ -701,7 +702,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1086.5" y="337.5"/>
+            <point key="canvasLocation" x="390.5" y="59.5"/>
         </scene>
         <!--Connect Services-->
         <scene sceneID="VBO-uB-dxI">
@@ -809,7 +810,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KZS-aq-ICv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="520.5" y="337.5"/>
+            <point key="canvasLocation" x="-59.5" y="51.5"/>
         </scene>
         <!--Main-->
         <scene sceneID="7NB-Ji-u8f">
@@ -817,7 +818,7 @@
                 <viewControllerPlaceholder storyboardName="Main" id="9ds-iQ-tCL" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G88-Lc-HYF" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-488" y="-545"/>
+            <point key="canvasLocation" x="746" y="-567"/>
         </scene>
         <!--VerifyCode-->
         <scene sceneID="ird-U3-ocg">
@@ -835,11 +836,11 @@
                                 <rect key="frame" x="0.0" y="-5" width="375" height="672"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ofu-h0-S2y">
-                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ofu-h0-S2y">
+                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-sauder" translatesAutoresizingMaskIntoConstraints="NO" id="9FT-9T-H8k">
-                                        <rect key="frame" x="0.0" y="0.0" width="375" height="603"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bg-sauder" translatesAutoresizingMaskIntoConstraints="NO" id="9FT-9T-H8k">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylr is currently only available to students at UBC." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="Kpe-Ks-7DU">
                                         <rect key="frame" x="43" y="100" width="289" height="58.5"/>
@@ -847,8 +848,9 @@
                                         <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="We will not store any passwords or authentication information. Your CWL will be used for authentication purposes." lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="lhB-VS-etG">
-                                        <rect key="frame" x="39" y="515" width="295.5" height="51.5"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="lhB-VS-etG">
+                                        <rect key="frame" x="48.5" y="536" width="278.5" height="51.5"/>
+                                        <string key="text">We never store your CWL password. You authenticate directly with CWL to verify your association with UBC and populate your profile.</string>
                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                         <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -900,20 +902,33 @@
                     </view>
                     <extendedEdge key="edgesForExtendedLayout" top="YES"/>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" title="UBC" id="gcQ-aq-1WH"/>
+                    <navigationItem key="navigationItem" title="UBC" id="gcQ-aq-1WH">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="heD-Y7-9SJ">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="G5x-Wh-SIj">
+                                <rect key="frame" x="309" y="11" width="50" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
+                                <inset key="titleEdgeInsets" minX="-25" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <inset key="imageEdgeInsets" minX="40" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <state key="normal" title="Next" image="ic-right-arrow-white"/>
+                                <connections>
+                                    <segue destination="UL1-t5-ar3" kind="show" identifier="JoinNetworkToConnectServices" id="2Vg-dN-1sn"/>
+                                </connections>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="introView" destination="ofu-h0-S2y" id="o9a-Mn-tbG"/>
-                        <outlet property="view" destination="N0V-h4-qzh" id="YoC-kD-cWY"/>
+                        <outlet property="nextBarButtonItem" destination="heD-Y7-9SJ" id="YjE-rW-BRc"/>
                         <outlet property="webView" destination="pcD-yV-PyB" id="P2l-Xa-bN9"/>
-                        <segue destination="UL1-t5-ar3" kind="show" identifier="RegisterEmailToConnectServices" id="Var-ru-86N"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zSb-bi-FVe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-297.5" y="923.5"/>
+            <point key="canvasLocation" x="-605.5" y="51.5"/>
         </scene>
     </scenes>
     <resources>
@@ -925,8 +940,8 @@
         <image name="sample-photo" width="1242" height="660"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Var-ru-86N"/>
+        <segue reference="2Vg-dN-1sn"/>
         <segue reference="dft-KV-aae"/>
-        <segue reference="quy-R4-4Qh"/>
+        <segue reference="FwQ-uv-BIe"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -11,7 +11,7 @@ import ReactiveCocoa
 import Async
 
 public struct VerifyCodeViewModel {
-
+    public let networkVerified = MutableProperty(false)
     let ctx: Context
 
     public init(_ ctx: Context) {
@@ -29,8 +29,10 @@ public struct VerifyCodeViewModel {
                 errorReason = "Please try again later."
             }
             promise.failure(ErrorAlert(title: "Registration Problem", message: errorReason))
+            self.networkVerified.value = false
         }.onSuccess {
             promise.success()
+            self.networkVerified.value = true
         }
         return promise.future.deliverOn(UIScheduler())
     }

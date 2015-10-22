@@ -11,17 +11,19 @@ import ReactiveCocoa
 import Core
 
 class VerifyCodeViewController : UIViewController {
-    @IBOutlet weak var webView: UIWebView!
-    @IBOutlet weak var introView: UIView!
+    @IBOutlet var nextBarButtonItem: UIBarButtonItem!
+    @IBOutlet var webView: UIWebView!
+    @IBOutlet var introView: UIView!
 
     let vm = VerifyCodeViewModel(MainContext)
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        clearCWLCookie()
+        let casRequest = NSURLRequest(URL: NSURL("https://cas.id.ubc.ca/ubc-cas/login"))
         webView.delegate = self
-        let url = NSURL("https://cas.id.ubc.ca/ubc-cas/login")
-        let req = NSURLRequest(URL: url)
-        webView.loadRequest(req)
+        webView.loadRequest(casRequest)
+        navigationItem.rightBarButtonItem = nil
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -30,8 +32,8 @@ class VerifyCodeViewController : UIViewController {
     }
 
     @IBAction func didPressCWL(sender: AnyObject) {
-        introView.hidden = true
-//        self.performSegue(.RegisterEmailToConnectServices)
+        UIView.transitionFromView(introView, toView: webView, duration: 1,
+            options: [.TransitionCurlUp], completion: nil)
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -41,17 +43,31 @@ class VerifyCodeViewController : UIViewController {
 }
 
 extension VerifyCodeViewController : UIWebViewDelegate {
+    
+    func findCWLCookie() -> NSHTTPCookie? {
+        return NSHTTPCookieStorage.sharedHTTPCookieStorage()
+            .cookies?.filter({ $0.name == "CASTGC" }).first
+    }
+    
+    func clearCWLCookie() {
+        let jar = NSHTTPCookieStorage.sharedHTTPCookieStorage()
+        if let cookie = findCWLCookie() {
+            jar.deleteCookie(cookie)
+            NSUserDefaults.standardUserDefaults().synchronize()
+        }
+    }
+    
     func webViewDidFinishLoad(webView: UIWebView) {
-        if let cookie = NSHTTPCookieStorage.sharedHTTPCookieStorage()
-            .cookies?.filter({ $0.name == "CASTGC" }).first {
-                vm.joinUBCNetwork(cookie.value).onSuccess {
-                    Analytics.track("Network: JoinSuccess")
-                    self.performSegue(.RegisterEmailToConnectServices)
-                }.onFailure { error in
-                    Analytics.track("Network: JoinError")
-                    // Handle error actually...
-                    self.performSegue(.RegisterEmailToConnectServices)
-                }
+        if let cookie = findCWLCookie() {
+            vm.joinUBCNetwork(cookie.value).onSuccess {
+                Analytics.track("Network: JoinSuccess")
+                self.performSegue(.JoinNetworkToConnectServices)
+                self.navigationItem.rightBarButtonItem = self.nextBarButtonItem
+            }.onFailure { error in
+                Analytics.track("Network: JoinError")
+                // Handle error actually...
+                self.performSegue(.JoinNetworkToConnectServices)
+            }
         }
     }
 }
