@@ -23,14 +23,13 @@ public enum SegueIdentifier : String {
     case IntegrationsToWeb = "IntegrationsToWeb"
     case JoinNetworkToConnectServices = "JoinNetworkToConnectServices"
     case LoginToConnectServices = "LoginToConnectServices"
-    case LoginToRegisterEmail = "LoginToRegisterEmail"
+    case LoginToJoinNetwork = "LoginToJoinNetwork"
     case Main_RootTab = "Main_RootTab"
     case MeToEditProfile = "MeToEditProfile"
     case MeToProfile = "MeToProfile"
     case MeToProfile2 = "MeToProfile2"
     case Onboarding_Login = "Onboarding_Login"
     case RecorderToEditor = "RecorderToEditor"
-    case RegisterEmailToConnectServices = "RegisterEmailToConnectServices"
     case TutorialToConnectServices = "TutorialToConnectServices"
 }
 
@@ -59,10 +58,10 @@ public enum ViewControllerStoryboardIdentifier : String {
     case Discover = "Discover"
     case Editor = "Editor"
     case History = "History"
+    case JoinNetwork = "JoinNetwork"
     case Login = "Login"
     case Producer = "Producer"
     case Receive = "Receive"
     case Recorder = "Recorder"
-    case RegisterEmail = "RegisterEmail"
     case TutorialContentViewController = "TutorialContentViewController"
 }

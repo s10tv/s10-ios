@@ -141,7 +141,7 @@
                         <outlet property="loginButton" destination="Npy-aE-tSn" id="6BI-CT-zvJ"/>
                         <outlet property="tutorialImageView" destination="gtg-GD-hG9" id="MJ8-kA-0wV"/>
                         <outlet property="tutorialTitle" destination="Xja-ES-dSS" id="Qg2-Xa-ZYZ"/>
-                        <segue destination="L2P-Fc-Zcm" kind="show" identifier="LoginToRegisterEmail" id="dft-KV-aae"/>
+                        <segue destination="L2P-Fc-Zcm" kind="show" identifier="LoginToJoinNetwork" id="dft-KV-aae"/>
                         <segue destination="UL1-t5-ar3" kind="show" identifier="TutorialToConnectServices" id="hVL-vj-Vvb"/>
                         <segue destination="9ds-iQ-tCL" kind="custom" identifier="Main_RootTab" customClass="WindowRootSegue" id="quy-R4-4Qh"/>
                     </connections>
@@ -299,7 +299,7 @@
                     <connections>
                         <outlet property="loginButton" destination="isY-Ks-GfE" id="zst-37-Oho"/>
                         <outlet property="logoutButton" destination="xVd-2q-11O" id="uyB-oZ-w27"/>
-                        <segue destination="L2P-Fc-Zcm" kind="show" identifier="LoginToRegisterEmail" id="LER-0P-1dS"/>
+                        <segue destination="L2P-Fc-Zcm" kind="show" identifier="LoginToJoinNetwork" id="LER-0P-1dS"/>
                         <segue destination="UL1-t5-ar3" kind="show" identifier="LoginToConnectServices" id="yuv-L5-5XE"/>
                         <segue destination="9ds-iQ-tCL" kind="custom" identifier="Main_RootTab" customClass="WindowRootSegue" id="FwQ-uv-BIe"/>
                     </connections>
@@ -823,7 +823,7 @@
         <!--VerifyCode-->
         <scene sceneID="ird-U3-ocg">
             <objects>
-                <viewController storyboardIdentifier="RegisterEmail" id="L2P-Fc-Zcm" userLabel="VerifyCode" customClass="VerifyCodeViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JoinNetwork" id="L2P-Fc-Zcm" userLabel="VerifyCode" customClass="JoinNetworkViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="gTq-GE-3Kz"/>
                         <viewControllerLayoutGuide type="bottom" id="bk7-8I-Q2b"/>
@@ -836,10 +836,10 @@
                                 <rect key="frame" x="0.0" y="-5" width="375" height="672"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </webView>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ofu-h0-S2y">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ofu-h0-S2y">
                                 <rect key="frame" x="0.0" y="44" width="375" height="623"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="bg-sauder" translatesAutoresizingMaskIntoConstraints="NO" id="9FT-9T-H8k">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bg-sauder" translatesAutoresizingMaskIntoConstraints="NO" id="9FT-9T-H8k">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Taylr is currently only available to students at UBC." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="Kpe-Ks-7DU">
@@ -848,9 +848,9 @@
                                         <color key="textColor" red="0.96862745100000003" green="0.96862745100000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="lhB-VS-etG">
-                                        <rect key="frame" x="48.5" y="536" width="278.5" height="51.5"/>
-                                        <string key="text">We never store your CWL password. You authenticate directly with CWL to verify your association with UBC and populate your profile.</string>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="lhB-VS-etG">
+                                        <rect key="frame" x="37.5" y="535.5" width="300" height="51.5"/>
+                                        <string key="text">We never handle or store your CWL password. You authenticate directly with CWL to verify your association with UBC and populate your profile.</string>
                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                         <color key="textColor" red="0.80000000000000004" green="0.80000000000000004" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
@@ -865,7 +865,7 @@
                                         <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="24"/>
                                         <inset key="titleEdgeInsets" minX="5" minY="0.0" maxX="0.0" maxY="0.0"/>
                                         <inset key="imageEdgeInsets" minX="-30" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                        <state key="normal" title="Campus Wide Login" image="ic-lock">
+                                        <state key="normal" title="Campus-Wide Login" image="ic-lock">
                                             <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
@@ -941,7 +941,7 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="2Vg-dN-1sn"/>
-        <segue reference="dft-KV-aae"/>
-        <segue reference="FwQ-uv-BIe"/>
+        <segue reference="LER-0P-1dS"/>
+        <segue reference="quy-R4-4Qh"/>
     </inferredMetricsTieBreakers>
 </document>

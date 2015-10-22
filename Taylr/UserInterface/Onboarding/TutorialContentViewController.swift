@@ -44,7 +44,7 @@ class TutorialContentViewController : BaseViewController, TutorialViewController
                 showErrorAction <~ errors.map { $0 as AlertableError }
                 segueAction <~ values.map {
                     switch $0 {
-                    case .LoggedIn: return .LoginToRegisterEmail
+                    case .LoggedIn: return .LoginToJoinNetwork
                     case .LoggedInButCodeDisabled: return .TutorialToConnectServices
                     case .Onboarded: return .Main_RootTab
                         // TODO: Fix me perma crash...

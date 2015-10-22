@@ -36,7 +36,7 @@ class LoginViewController : BaseViewController, TutorialViewController {
             segueAction <~ values.filter { $0 != .LoggedOut }.map {
                 Analytics.track("VerifyPhone")
                 switch $0 {
-                case .LoggedIn: return .LoginToRegisterEmail
+                case .LoggedIn: return .LoginToJoinNetwork
                 case .LoggedInButCodeDisabled: return .LoginToConnectServices
                 case .Onboarded: return .Main_RootTab
                     // TODO: Fix me perma crash...

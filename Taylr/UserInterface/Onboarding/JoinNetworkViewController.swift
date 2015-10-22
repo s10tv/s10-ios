@@ -1,5 +1,5 @@
 //
-//  VerifyCodeViewController.swift
+//  JoinNetworkViewController.swift
 //  S10
 //
 //  Created by Tony Xiao on 7/30/15.
@@ -8,14 +8,15 @@
 
 import UIKit
 import ReactiveCocoa
+import PKHUD
 import Core
 
-class VerifyCodeViewController : UIViewController {
+class JoinNetworkViewController : UIViewController {
     @IBOutlet var nextBarButtonItem: UIBarButtonItem!
     @IBOutlet var webView: UIWebView!
     @IBOutlet var introView: UIView!
 
-    let vm = VerifyCodeViewModel(MainContext)
+    let vm = JoinNetworkViewModel(MainContext)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,7 +43,7 @@ class VerifyCodeViewController : UIViewController {
     }
 }
 
-extension VerifyCodeViewController : UIWebViewDelegate {
+extension JoinNetworkViewController : UIWebViewDelegate {
     
     func findCWLCookie() -> NSHTTPCookie? {
         return NSHTTPCookieStorage.sharedHTTPCookieStorage()
@@ -59,15 +60,17 @@ extension VerifyCodeViewController : UIWebViewDelegate {
     
     func webViewDidFinishLoad(webView: UIWebView) {
         if let cookie = findCWLCookie() {
-            vm.joinUBCNetwork(cookie.value).onSuccess {
+            PKHUD.showActivity()
+            vm.joinNetwork("ubc", token: cookie.value).start(Event.sink(completed: {
+                PKHUD.hide(animated: false)
                 Analytics.track("Network: JoinSuccess")
                 self.performSegue(.JoinNetworkToConnectServices)
                 self.navigationItem.rightBarButtonItem = self.nextBarButtonItem
-            }.onFailure { error in
+            }, error: { e in
+                PKHUD.hide(animated: false)
                 Analytics.track("Network: JoinError")
-                // Handle error actually...
-                self.performSegue(.JoinNetworkToConnectServices)
-            }
+                self.showAlert(e.title, message: e.message)
+            }))
         }
     }
 }

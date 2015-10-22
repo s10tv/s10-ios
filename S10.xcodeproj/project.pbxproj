@@ -73,7 +73,7 @@
 		EA54FAAC1BD009A000AD7E9A /* ConnectServicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA8A1BD009A000AD7E9A /* ConnectServicesViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA54FAAD1BD009A000AD7E9A /* CreateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA8B1BD009A000AD7E9A /* CreateProfileViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA54FAAE1BD009A000AD7E9A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA8C1BD009A000AD7E9A /* LoginViewModel.swift */; settings = {ASSET_TAGS = (); }; };
-		EA54FAAF1BD009A000AD7E9A /* VerifyCodeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA8D1BD009A000AD7E9A /* VerifyCodeViewModel.swift */; settings = {ASSET_TAGS = (); }; };
+		EA54FAAF1BD009A000AD7E9A /* JoinNetworkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA8D1BD009A000AD7E9A /* JoinNetworkViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA54FAB01BD009A000AD7E9A /* ActivityViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA8F1BD009A000AD7E9A /* ActivityViewModels.swift */; settings = {ASSET_TAGS = (); }; };
 		EA54FAB11BD009A000AD7E9A /* ProfileInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA901BD009A000AD7E9A /* ProfileInfoViewModel.swift */; settings = {ASSET_TAGS = (); }; };
 		EA54FAB21BD009A000AD7E9A /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA911BD009A000AD7E9A /* ProfileViewModel.swift */; settings = {ASSET_TAGS = (); }; };
@@ -179,7 +179,7 @@
 		EAA576171BB7E5B600661A4F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F7F1B2B32E500DE3936 /* LoginViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA576181BB7E6D200661A4F /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0851B6AA2060007C6CB /* CreateProfileViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA576191BB7E9FB00661A4F /* ConnectServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0871B6AC0410007C6CB /* ConnectServicesViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		EAA5761A1BB7EA2C00661A4F /* VerifyCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9608B841BAA9B040067E1EF /* VerifyCodeViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA5761A1BB7EA2C00661A4F /* JoinNetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9608B841BAA9B040067E1EF /* JoinNetworkViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA5761B1BB7EA6700661A4F /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BF43121BB0813E007D30A0 /* TutorialPageViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA5763B1BB86A5000661A4F /* BindableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA576381BB86A5000661A4F /* BindableCell.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA5763C1BB86A5000661A4F /* UICollectionViewBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA576391BB86A5000661A4F /* UICollectionViewBinding.swift */; settings = {ASSET_TAGS = (); }; };
@@ -328,7 +328,7 @@
 		EA54FA8A1BD009A000AD7E9A /* ConnectServicesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectServicesViewModel.swift; sourceTree = "<group>"; };
 		EA54FA8B1BD009A000AD7E9A /* CreateProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileViewModel.swift; sourceTree = "<group>"; };
 		EA54FA8C1BD009A000AD7E9A /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		EA54FA8D1BD009A000AD7E9A /* VerifyCodeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyCodeViewModel.swift; sourceTree = "<group>"; };
+		EA54FA8D1BD009A000AD7E9A /* JoinNetworkViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinNetworkViewModel.swift; sourceTree = "<group>"; };
 		EA54FA8F1BD009A000AD7E9A /* ActivityViewModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewModels.swift; sourceTree = "<group>"; };
 		EA54FA901BD009A000AD7E9A /* ProfileInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInfoViewModel.swift; sourceTree = "<group>"; };
 		EA54FA911BD009A000AD7E9A /* ProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
@@ -455,7 +455,7 @@
 		F2C759AA125AEB809731B1D6 /* Pods-Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.release.xcconfig"; path = "Pods/Target Support Files/Pods-Core/Pods-Core.release.xcconfig"; sourceTree = "<group>"; };
 		F92F687E1B34974B00171FE4 /* CoreTests-bridging-header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreTests-bridging-header.h"; sourceTree = "<group>"; };
 		F95D95DE1A84A1170068F090 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		F9608B841BAA9B040067E1EF /* VerifyCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VerifyCodeViewController.swift; sourceTree = "<group>"; };
+		F9608B841BAA9B040067E1EF /* JoinNetworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinNetworkViewController.swift; sourceTree = "<group>"; };
 		F996C71D1A81F1D100314FF8 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		F996C71F1A81F1D800314FF8 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		F996C7211A81F1E000314FF8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -768,7 +768,7 @@
 				EA54FA8A1BD009A000AD7E9A /* ConnectServicesViewModel.swift */,
 				EA54FA8B1BD009A000AD7E9A /* CreateProfileViewModel.swift */,
 				EA54FA8C1BD009A000AD7E9A /* LoginViewModel.swift */,
-				EA54FA8D1BD009A000AD7E9A /* VerifyCodeViewModel.swift */,
+				EA54FA8D1BD009A000AD7E9A /* JoinNetworkViewModel.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -1032,7 +1032,7 @@
 				EAA56F7F1B2B32E500DE3936 /* LoginViewController.swift */,
 				EA89C0851B6AA2060007C6CB /* CreateProfileViewController.swift */,
 				EA89C0871B6AC0410007C6CB /* ConnectServicesViewController.swift */,
-				F9608B841BAA9B040067E1EF /* VerifyCodeViewController.swift */,
+				F9608B841BAA9B040067E1EF /* JoinNetworkViewController.swift */,
 				F9BF43101BB07EFC007D30A0 /* TutorialContentViewController.swift */,
 				F9BF43121BB0813E007D30A0 /* TutorialPageViewController.swift */,
 			);
@@ -1609,7 +1609,7 @@
 				EA81ADEA1BB688C700F94006 /* ScrollTransition.swift in Sources */,
 				EA54FA9F1BD009A000AD7E9A /* AlertableError.swift in Sources */,
 				EA81ADEB1BB6891F00F94006 /* RealmExtensions.swift in Sources */,
-				EA54FAAF1BD009A000AD7E9A /* VerifyCodeViewModel.swift in Sources */,
+				EA54FAAF1BD009A000AD7E9A /* JoinNetworkViewModel.swift in Sources */,
 				EA0989A71BD5C0FF0014F71C /* LayerExtensions.swift in Sources */,
 				EA8E69481BC1DA30002D4BF1 /* FetchedResultsArray.swift in Sources */,
 				EA54FAA41BD009A000AD7E9A /* UserViewModel.swift in Sources */,
@@ -1710,7 +1710,7 @@
 				EA0989A01BD4CF3D0014F71C /* VolumeViewModel.swift in Sources */,
 				EA09899F1BD4CF3D0014F71C /* VolumeView.swift in Sources */,
 				EA72AE551BD005CD0031D652 /* CandidateCell.swift in Sources */,
-				EAA5761A1BB7EA2C00661A4F /* VerifyCodeViewController.swift in Sources */,
+				EAA5761A1BB7EA2C00661A4F /* JoinNetworkViewController.swift in Sources */,
 				EA42D6541BB7C33100B07526 /* UpgradeService.swift in Sources */,
 				EA0989951BD4CEDC0014F71C /* DurationTimer.swift in Sources */,
 				EA72AE671BD005CD0031D652 /* ProfileInfoCells.swift in Sources */,
