@@ -1,3 +1,5 @@
+.env
+
 # Project Specific Excludes
 
 scripts/env.sh
