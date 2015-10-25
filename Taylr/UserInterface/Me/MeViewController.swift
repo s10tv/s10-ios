@@ -74,6 +74,7 @@ class MeViewController : UITableViewController {
         super.viewDidLayoutSubviews()
         tableView.contentInset = UIEdgeInsets(top: topLayoutGuide.length, left: 0,
             bottom: bottomLayoutGuide.length, right: 0)
+        hashtagsView.collectionViewLayout.invalidateLayout() // Otherwise height gets laid out as if width = 600
     }
     
     override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
