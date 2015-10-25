@@ -30,7 +30,9 @@ class AnalyticsService {
         amplitude.trackingSessionEvents = true
         amplitude.initializeApiKey(env.amplitudeKey)
         mixpanel = Mixpanel.sharedInstanceWithToken(env.mixpanelToken)
-        UXCam.startWithKey(env.uxcamKey)
+        if env.build != "0" {
+            UXCam.startWithKey(env.uxcamKey)
+        }
         
         cd += currentUser.userId.producer.startWithNext { [weak self] userId in
             self?.identify(userId)
