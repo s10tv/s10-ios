@@ -22,6 +22,7 @@ extension UIStoryboardSegue {
 public class WindowRootSegue : UIStoryboardSegue {
     public override func perform() {
         if let w = UIApplication.sharedApplication().delegate?.window, let window = w {
+            destVC.view.frame = window.bounds
             UIView.transitionWithView(window, duration: 1, options: [.TransitionFlipFromRight], animations: {
                 window.rootViewController = self.destVC
             }, completion: nil)
