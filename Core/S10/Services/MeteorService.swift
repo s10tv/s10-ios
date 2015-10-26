@@ -203,9 +203,9 @@ public class MeteorService : NSObject {
 
     func insertHashtag(hashtag: String) -> Future<(), NSError> {
         return meteor.callMethod("me/hashtag/add", params: [hashtag], stub: { _ in
-            if let tag = Hashtag.by(HashtagKeys.text.rawValue, value: hashtag).fetchFirst() as? Hashtag {
-                tag.selected = true
-            }
+//            if let tag = Hashtag.by(HashtagKeys.text.rawValue, value: hashtag).fetchFirst() as? Hashtag {
+//                tag.selected = true
+//            }
             // Figure out how to better latency compensate. This current way results in empty "#" getting created...
 //            else {
 //                let tag = Hashtag.create() as! Hashtag
@@ -217,9 +217,9 @@ public class MeteorService : NSObject {
 
     func removeHashtag(hashtag: String) -> Future<(), NSError> {
         return meteor.callMethod("me/hashtag/remove", params: [hashtag], stub: { _ in
-            if let tag = Hashtag.by(HashtagKeys.text.rawValue, value: hashtag).fetchFirst() as? Hashtag {
-                tag.selected = false
-            }
+//            if let tag = Hashtag.by(HashtagKeys.text.rawValue, value: hashtag).fetchFirst() as? Hashtag {
+//                tag.selected = false
+//            }
             return nil
         }).future.map { _ in }
     }
