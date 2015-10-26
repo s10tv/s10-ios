@@ -24,7 +24,7 @@ public class CurrentUser {
     public let upgradeURL: PropertyOf<NSURL?>
     public let debugLoginMode: PropertyOf<Bool?>
     public let accountStatus: PropertyOf<AccountStatus?>
-    public let disableConfirmation: PropertyOf<Bool?>
+    public let networkRequired: PropertyOf<Bool?>
     public let nextMatchDate: PropertyOf<NSDate?>
     public let matchInterval: PropertyOf<Int?>
     
@@ -47,7 +47,7 @@ public class CurrentUser {
         accountStatus = s.propertyOf("accountStatus")
             .map { $0.typed(String).flatMap { AccountStatus(rawValue: $0) }
         }
-        disableConfirmation = s.propertyOf("disableConfirmation").map { $0.typed(Bool) }
+        networkRequired = s.propertyOf("networkRequired").map { $0.typed(Bool) }
         nextMatchDate = s.propertyOf("nextMatchDate").map { $0.typed(NSDate) }
         matchInterval = s.propertyOf("matchInterval").map { $0.typed(Int) }
         

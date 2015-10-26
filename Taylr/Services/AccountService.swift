@@ -46,17 +46,17 @@ class AccountService {
                 meteorService.account.producer,
                 meteorService.loggedIn.producer,
                 settings.accountStatus.producer,
-                settings.disableConfirmation.producer
-            ).map { account, loggedIn, status, disableConfirmation in
-                switch (account, loggedIn, status, disableConfirmation) {
+                settings.networkRequired.producer
+            ).map { account, loggedIn, status, networkRequired in
+                switch (account, loggedIn, status, networkRequired) {
                 case (.None, _, _, _):
                     Log.info("Status - Logged Out")
                     return .LoggedOut
-                case (.Some, true, .Some(.Pending), .Some(false)):
+                case (.Some, true, .Some(.Pending), .Some(true)):
                     Log.info("Status - Logged In")
                     return .LoggedIn
-                case (.Some, true, .Some(.Pending), .Some(true)):
-                    Log.info("Status - Logged In, but skipping confirmation")
+                case (.Some, true, .Some(.Pending), .Some(false)):
+                    Log.info("Status - Logged In, but not requiring network")
                     return .LoggedInButCodeDisabled
                 case (.Some, true, .Some(.Active), _):
                     Log.info("Status - Signed Up")
