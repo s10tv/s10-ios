@@ -308,10 +308,10 @@
             </objects>
             <point key="canvasLocation" x="-1142.5" y="-126.5"/>
         </scene>
-        <!--Me-->
+        <!--EditHashtags-->
         <scene sceneID="ibH-i1-6qO">
             <objects>
-                <viewControllerPlaceholder storyboardName="Me" id="XGl-ew-SrN" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Me" referencedIdentifier="EditHashtags" id="XGl-ew-SrN" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jcS-QE-Qkh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="865.5" y="60"/>

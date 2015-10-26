@@ -34,7 +34,7 @@
         <!--Auto Complete Data Source-->
         <scene sceneID="CCY-8A-vmM">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="mcp-Sh-vTg" customClass="EditHashtagsViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EditHashtags" automaticallyAdjustsScrollViewInsets="NO" id="mcp-Sh-vTg" customClass="EditHashtagsViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="un5-vE-2AL"/>
                         <viewControllerLayoutGuide type="bottom" id="8u6-rk-AbR"/>
