@@ -109,7 +109,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         // BIG TODO: Should Instantiate different ViewControllers depending on onboarding or main
-        window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController() //RootNavController(account: Globals.accountService)
+        if !Globals.accountService.hasAccount() {
+            window?.rootViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateInitialViewController()
+        } else {
+            window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
+        }
         window?.makeKeyAndVisible()
         
         // Pre-heat the camera if we can

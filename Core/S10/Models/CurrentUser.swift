@@ -47,7 +47,8 @@ public class CurrentUser {
         accountStatus = s.propertyOf("accountStatus")
             .map { $0.typed(String).flatMap { AccountStatus(rawValue: $0) }
         }
-        networkRequired = s.propertyOf("networkRequired").map { $0.typed(Bool) }
+        let kNetworkRequired = Environment.isRunningTestFlightBeta() ? "networkRequired" : "tfNetworkRequired"
+        networkRequired = s.propertyOf(kNetworkRequired).map { $0.typed(Bool) }
         nextMatchDate = s.propertyOf("nextMatchDate").map { $0.typed(NSDate) }
         matchInterval = s.propertyOf("matchInterval").map { $0.typed(Int) }
         
