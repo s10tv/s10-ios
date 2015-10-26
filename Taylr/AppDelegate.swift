@@ -219,6 +219,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
     // MARK: - Background Transfer
     
     func application(application: UIApplication, handleEventsForBackgroundURLSession identifier: String, completionHandler: () -> Void) {
+        // TODO: Better pattern for getting layerClient is needed
+        if layerClient == nil {
+            let env = TaylrEnvironment.configureFromEmbeddedProvisioningProfile()
+            layerClient = LayerService.defaultLayerClient(env.layerURL)
+        }
         layerClient.handleBackgroundContentTransfersForSession(identifier) { changes, error in
             if let error = error {
                 Log.error("Failed to handle layer background transfer", error)
