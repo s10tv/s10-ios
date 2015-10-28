@@ -10,6 +10,8 @@ import UIKit
 import ReactiveCocoa
 import Atlas
 import SwipeView
+import NKRecorder
+import PKHUD
 import Core
 
 class ConversationViewController : UIViewController {
@@ -33,7 +35,7 @@ class ConversationViewController : UIViewController {
     }
     
     private(set) var chatHistory: ChatHistoryViewController!
-    private(set) var videoMaker: VideoMakerViewController!
+    private(set) var videoMaker: NKRecorderViewController!
     private(set) var videoPlayer: VideoPlayerViewController!
     
     var vm: ConversationViewModel!
@@ -60,8 +62,10 @@ class ConversationViewController : UIViewController {
         chatHistory.delegate = self
         chatHistory.historyDelegate = self
         
-        videoMaker = UIStoryboard(name: "VideoMaker", bundle: nil).instantiateInitialViewController() as! VideoMakerViewController
-        videoMaker.producerDelegate = self
+        videoMaker = NKRecorderViewController.mainNavController()
+        videoMaker.recorderDelegate = self
+//        videoMaker = UIStoryboard(name: "VideoMaker", bundle: nil).instantiateInitialViewController() as! VideoMakerViewController
+//        videoMaker.producerDelegate = self
         
         addChildViewController(chatHistory)
         chatHistoryContainer.addSubview(chatHistory.view)
@@ -187,25 +191,25 @@ class ConversationViewController : UIViewController {
 
 // MARK: - Video Producer
 
-extension ConversationViewController : VideoMakerDelegate {
-    func videoMakerWillStartRecording(videoMaker: VideoMakerViewController) {
+extension ConversationViewController : NKRecorderDelegate {
+    func willStartRecording(recorderViewController: NKRecorderViewController) {
         scrollDownHint.hidden = true
         scrollView.scrollEnabled = false
     }
     
-    func videoMakerDidCancelRecording(videoMaker: VideoMakerViewController) {
+    func didCancelRecording(recorderViewController: NKRecorderViewController) {
         scrollDownHint.hidden = false
         scrollView.scrollEnabled = true
     }
     
-    func videoMaker(videoMaker: VideoMakerViewController, didProduceVideo video: VideoSession, duration: NSTimeInterval) {
-        wrapFuture(showProgress: true) {
-            video.exportWithFirstFrame().onSuccess { (url, thumbnail) in
-                Analytics.track("Message: Send", ["ConversationName": self.vm.displayName.value])
-                self.vm.sendVideo(url, thumbnail: thumbnail, duration: duration)
-                self.scrollDownHint.hidden = false
-                self.scrollView.scrollEnabled = true
-            }
+    func didProduceVideo(recorderViewController: NKRecorderViewController, videoSession: NKVideoSession) {
+        PKHUD.showActivity()
+        videoSession.exportWithFirstFrame { url, thumbnail in
+            PKHUD.hide(animated: false)
+            self.scrollDownHint.hidden = false
+            self.scrollView.scrollEnabled = true
+            self.vm.sendVideo(url, thumbnail: thumbnail, duration: 5)
+            Analytics.track("Message: Send", ["ConversationName": self.vm.displayName.value])
         }
     }
 }
