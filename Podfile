@@ -9,7 +9,7 @@ target :Core do
     link_with 'Core'
     # Foundation
     pod 'ReactiveCocoa', '~> 4.0.2-alpha-1'
-    pod 'Async', :git => 'https://github.com/duemunk/Async.git', :branch => 'feature/Swift_2.0'
+    pod 'Async', :git => 'https://github.com/duemunk/Async.git', :commit => 'abe23c18d8d3a708a325b5db10231388e1ca5b88'
     pod 'NSLogger', '~> 1.5', :configuration => ['Debug']
 
     # Data
@@ -21,7 +21,7 @@ target :Core do
     pod 'ObjectMapper', '~> 0.18'
 
     # Networking
-    pod 'Alamofire', '~> 3.0.0-beta.3'
+    pod 'Alamofire', '~> 3.1'
 
     # UI
     pod 'Cartography', '~> 0.6'
@@ -37,7 +37,7 @@ target :Core do
     target :CoreTests do
         link_with 'CoreTests'
         pod 'Quick', '~> 0.6'
-        pod 'Nimble', '~> 2.0.0-rc.3'
+        pod 'Nimble', '~> 3.0'
         pod 'OHHTTPStubs', '~> 4.3'
     end
 
@@ -46,8 +46,8 @@ target :Core do
 
         pod 'SwipeView', '~> 1.3'
         pod 'SDWebImage', '~> 3.7'
-        pod 'PKHUD', :git => 'https://github.com/tonyxiao/PKHUD', :branch => 'swift2' # Fork is needed to work around xcasset compilation issue inside pod
-        pod 'SCRecorder', '~> 2.5'
+        pod 'PKHUD', :git => 'https://github.com/tonyxiao/PKHUD' # Fork is needed to work around xcasset compilation issue inside pod
+        pod 'SCRecorder', '2.5.3' # ScaleAspectFill bug
 
         # Fork is needed to work around the crash
         pod 'DZNEmptyDataSet', :git => 'https://github.com/dzenbot/DZNEmptyDataSet.git'
@@ -67,7 +67,7 @@ target :Core do
         pod 'TwitterCore', '~> 1.11'
         pod 'Digits', '~> 1.11'
         pod 'Ouralabs', '~> 2.6'
-        pod 'Mixpanel', '~> 2.8.3'
+        pod 'Mixpanel', '~> 2.9'
         pod 'AnalyticsSwift', '~> 0.2'
         pod 'Amplitude-iOS', '~> 3.1'
         pod 'Atlas', '~> 1.0.13'
@@ -92,7 +92,7 @@ target :Core do
 
     target :TestApp do
         link_with 'TestApp'
-        pod 'SCRecorder', '~> 2.5'
+        pod 'SCRecorder', '2.5.3'
         pod 'SDWebImage', '~> 3.7'
         pod 'Reveal-iOS-SDK', '~> 1.5', :configuration => ['Debug']
     end
