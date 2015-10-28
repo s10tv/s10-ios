@@ -187,6 +187,7 @@
 		EAB31D571BCF76260080DA47 /* LayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB31D561BCF76260080DA47 /* LayerService.swift */; settings = {ASSET_TAGS = (); }; };
 		EABA05461B474FED00154C75 /* test-avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EABA05451B474FED00154C75 /* test-avatar.jpg */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
+		EACFC9E51BE0EC57006963F6 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EACFC9E41BE0EC57006963F6 /* Images.xcassets */; settings = {ASSET_TAGS = (); }; };
 		EAD16D2E1BCA4AB40040CEB8 /* _Hashtag.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD16D2D1BCA4AB40040CEB8 /* _Hashtag.swift */; settings = {ASSET_TAGS = (); }; };
 		EAD16D301BCA4ABE0040CEB8 /* Hashtag.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAD16D2F1BCA4ABE0040CEB8 /* Hashtag.swift */; settings = {ASSET_TAGS = (); }; };
 		EADE6CBE1BCF8AFC002F1216 /* UserViewModel+ATLParticipant.swift in Sources */ = {isa = PBXBuildFile; fileRef = EADE6CBD1BCF8AFC002F1216 /* UserViewModel+ATLParticipant.swift */; settings = {ASSET_TAGS = (); }; };
@@ -428,6 +429,7 @@
 		EABD43D91AA1D29C00B07813 /* Beta.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
 		EABD43DA1AA1D29C00B07813 /* Prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
 		EABF2AB41AD04659005880E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EACFC9E41BE0EC57006963F6 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Pods/NKRecorder/NKRecorder/Supporting Files/Resources/Images.xcassets"; sourceTree = "<group>"; };
 		EAD16D2D1BCA4AB40040CEB8 /* _Hashtag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Hashtag.swift; sourceTree = "<group>"; };
 		EAD16D2F1BCA4ABE0040CEB8 /* Hashtag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Hashtag.swift; sourceTree = "<group>"; };
 		EAD7C6811BA7960600FD8A27 /* _Candidate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Candidate.swift; sourceTree = "<group>"; };
@@ -544,6 +546,7 @@
 		DDD7116BC0015396F5321D26 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				EACFC9E41BE0EC57006963F6 /* Images.xcassets */,
 				EA78C87F1B323E140016AB73 /* Images.xcassets */,
 				6A2FB1EC7785F957D622CCE4 /* Pods-Core.debug.xcconfig */,
 				F2C759AA125AEB809731B1D6 /* Pods-Core.release.xcconfig */,
@@ -1378,6 +1381,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */,
+				EACFC9E51BE0EC57006963F6 /* Images.xcassets in Resources */,
 				EA72AE651BD005CD0031D652 /* Profile.storyboard in Resources */,
 				EA7FB0971B5EF9D50052B394 /* Cabin-Medium.ttf in Resources */,
 				EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */,

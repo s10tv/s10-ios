@@ -201,7 +201,7 @@ CHECKOUT OPTIONS:
     :commit: b94a7479c476ccbd58b4def608255e492ea13c8a
     :git: https://github.com/EddyBorja/MLPAutoCompleteTextField.git
   NKRecorder:
-    :commit: a4254189820950de0bec02a889835a918531165e
+    :commit: 0db737ec7270796aeb84de806bbc8cfaf9596bf7
     :git: git@github.com:s10tv/video-maker.git
   PKHUD:
     :commit: 456a9a4e95565b7bfdf098cd806aa8bd93e910b2
@@ -242,7 +242,7 @@ SPEC CHECKSUMS:
   Mixpanel: 42ae6168effc48481d957f7883dd8514a398738d
   MLPAutoCompleteTextField: 02700789c32dce9b3a7e9991810adf5edb757d80
   Nimble: 4c353d43735b38b545cbb4cb91504588eb5de926
-  NKRecorder: 29dd69e672049c0d2bcb93dbb0588ce4410014f4
+  NKRecorder: ca252195116969dfb0f4fc45a0053878ac707e3e
   NSLogger: 5ed223a2436df96244e033be750656dacdeec034
   ObjectMapper: a88114e5df20f055da63029f25cbc01014847c91
   OHHTTPStubs: 1a95a653b78287a1fdb44eb38364b43257ac3550
