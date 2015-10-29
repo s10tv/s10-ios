@@ -1,5 +1,5 @@
 .env
-
+node_modules
 # Project Specific Excludes
 
 scripts/env.sh

@@ -19,6 +19,7 @@ import LayerKit
 import SCRecorder
 import AVFoundation
 import Async
+import React
 import Core
 
 // Globally accessible variables and shorthands
@@ -109,11 +110,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         // BIG TODO: Should Instantiate different ViewControllers depending on onboarding or main
-        if !Globals.accountService.hasAccount() {
-            window?.rootViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateInitialViewController()
-        } else {
-            window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
-        }
+//        if !Globals.accountService.hasAccount() {
+//            window?.rootViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateInitialViewController()
+//        } else {
+//            window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
+//        }
+        let vc = UIViewController()
+//        NSURL *jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle"];
+        // For production use, this `NSURL` could instead point to a pre-bundled file on disk:
+        //
+        //   NSURL *jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+        //
+        // To generate that file, run the curl command and add the output to your main Xcode build target:
+        //
+        //   curl http://localhost:8081/index.ios.bundle -o main.jsbundle
+        let view = RCTRootView(bundleURL: NSURL("http://localhost:8081/index.ios.bundle?platform=ios"), moduleName: "SimpleApp", initialProperties: nil, launchOptions: nil)
+        vc.view = view
+        window?.rootViewController = vc
+//        RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
+//        moduleName: @"SimpleApp"
+//        launchOptions:nil];
         window?.makeKeyAndVisible()
         
         // Pre-heat the camera if we can

@@ -76,6 +76,16 @@ PODS:
   - PKHUD (2.2.4)
   - PocketSocket (0.6.4)
   - Quick (0.8.0)
+  - React/Core (0.13.2)
+  - React/RCTImage (0.13.2):
+    - React/Core
+    - React/RCTNetwork
+  - React/RCTNetwork (0.13.2):
+    - React/Core
+  - React/RCTText (0.13.2):
+    - React/Core
+  - React/RCTWebSocket (0.13.2):
+    - React/Core
   - ReactiveCocoa (4.0.4-alpha-1):
     - ReactiveCocoa/UI (= 4.0.4-alpha-1)
     - Result (~> 0.6-beta.1)
@@ -140,6 +150,11 @@ DEPENDENCIES:
   - Ouralabs (~> 2.6)
   - PKHUD (from `https://github.com/tonyxiao/PKHUD`)
   - Quick (~> 0.6)
+  - React/Core (from `node_modules/react-native`)
+  - React/RCTImage (from `node_modules/react-native`)
+  - React/RCTNetwork (from `node_modules/react-native`)
+  - React/RCTText (from `node_modules/react-native`)
+  - React/RCTWebSocket (from `node_modules/react-native`)
   - ReactiveCocoa (~> 4.0.2-alpha-1)
   - RealmSwift (~> 0.95)
   - Reveal-iOS-SDK (~> 1.5)
@@ -166,6 +181,8 @@ EXTERNAL SOURCES:
     :git: https://github.com/EddyBorja/MLPAutoCompleteTextField.git
   PKHUD:
     :git: https://github.com/tonyxiao/PKHUD
+  React:
+    :path: node_modules/react-native
   SugarRecord:
     :branch: swift2.0
     :git: https://github.com/tonyxiao/SugarRecord
@@ -227,6 +244,7 @@ SPEC CHECKSUMS:
   PKHUD: 35da5a022cba3a9489eb0e11936869aeb6acef61
   PocketSocket: eee7ef375f55b98e7ca79e097d9c61fd688e9494
   Quick: 563d0f6ec5f72e394645adb377708639b7dd38ab
+  React: 25a94f46f38c444fe20ad66ac630dc4251506887
   ReactiveCocoa: 618a2fc13d4ed80e380aa6fa56547cef43c7341d
   Realm: 3ce8448151c571e90b85002d984d7f93f54fc8a3
   RealmSwift: 485599fe54e35461c4a0daa7d01d8fbf11424873
