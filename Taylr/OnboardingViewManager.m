@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <React/RCTBridgeModule.h>
+#import "Taylr-Swift.h"
 
 @interface OnboardingViewManager : NSObject <RCTBridgeModule>
 
@@ -18,6 +19,9 @@
 RCT_EXPORT_MODULE()
 
 RCT_EXPORT_METHOD(testMethod:(NSString *)string withAlt:(NSString *)altString) {
+    
+    id x = [[LoginViewController alloc] init];
+    
     NSLog(@"What's up with %@ alt: %@", string, altString);
 }
 

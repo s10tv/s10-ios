@@ -16,6 +16,10 @@ var {
 var onboardingViewManager = NativeModules.OnboardingViewManager;
 onboardingViewManager.testMethod('Birthday Party', '4 Privet Drive, Surrey');
 
+var mainViewManager = NativeModules.MainViewManager;
+mainViewManager.testMethod('Some stuff', 'Some other stuff');
+
+
 var Taylr = React.createClass({
   render: function() {
     return (
