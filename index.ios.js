@@ -10,7 +10,11 @@ var {
   StyleSheet,
   Text,
   View,
+  NativeModules
 } = React;
+
+var onboardingViewManager = NativeModules.OnboardingViewManager;
+onboardingViewManager.testMethod('Birthday Party', '4 Privet Drive, Surrey');
 
 var Taylr = React.createClass({
   render: function() {

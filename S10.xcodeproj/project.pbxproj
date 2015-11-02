@@ -184,6 +184,7 @@
 		EAA5763B1BB86A5000661A4F /* BindableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA576381BB86A5000661A4F /* BindableCell.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA5763C1BB86A5000661A4F /* UICollectionViewBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA576391BB86A5000661A4F /* UICollectionViewBinding.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA5763D1BB86A5000661A4F /* UITableViewBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA5763A1BB86A5000661A4F /* UITableViewBinding.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA5DA941BE73D4B00BF6B1E /* OnboardingViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA5DA931BE73D4B00BF6B1E /* OnboardingViewManager.m */; settings = {ASSET_TAGS = (); }; };
 		EAB31D571BCF76260080DA47 /* LayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB31D561BCF76260080DA47 /* LayerService.swift */; settings = {ASSET_TAGS = (); }; };
 		EABA05461B474FED00154C75 /* test-avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EABA05451B474FED00154C75 /* test-avatar.jpg */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
@@ -420,6 +421,7 @@
 		EAA576381BB86A5000661A4F /* BindableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindableCell.swift; sourceTree = "<group>"; };
 		EAA576391BB86A5000661A4F /* UICollectionViewBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewBinding.swift; sourceTree = "<group>"; };
 		EAA5763A1BB86A5000661A4F /* UITableViewBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewBinding.swift; sourceTree = "<group>"; };
+		EAA5DA931BE73D4B00BF6B1E /* OnboardingViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OnboardingViewManager.m; sourceTree = "<group>"; };
 		EAAD921C1ACF342C0014BA25 /* TaylrEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaylrEnvironment.swift; sourceTree = "<group>"; };
 		EAB31D561BCF76260080DA47 /* LayerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerService.swift; sourceTree = "<group>"; };
 		EABA05431B474EC900154C75 /* PhotoUploadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoUploadOperation.swift; sourceTree = "<group>"; };
@@ -990,6 +992,7 @@
 				EA9A6ACE1AAFDE19009EDD6D /* Localizable.strings */,
 				EABF2AB51AD04659005880E7 /* InfoPlist.strings */,
 				EA9F35621A74CD8800E0C65D /* Taylr-Bridging.h */,
+				EAA5DA931BE73D4B00BF6B1E /* OnboardingViewManager.m */,
 				EA9F353E1A74CC6900E0C65D /* Taylr-Info.plist */,
 				49A80BC478B1E012CE6D7406 /* Generated */,
 			);
@@ -1699,6 +1702,7 @@
 				EA0989911BD4CEDC0014F71C /* EditorViewController.swift in Sources */,
 				EA72AE581BD005CD0031D652 /* HistoryViewController.swift in Sources */,
 				EA42D64E1BB7BE5A00B07526 /* StyleKit.swift in Sources */,
+				EAA5DA941BE73D4B00BF6B1E /* OnboardingViewManager.m in Sources */,
 				EAA5760B1BB7E1F700661A4F /* ProfileIconCell.swift in Sources */,
 				EA72AE571BD005CD0031D652 /* DiscoverViewController.swift in Sources */,
 				EAA5760F1BB7E2E000661A4F /* TransitionManager.swift in Sources */,
