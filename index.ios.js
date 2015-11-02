@@ -5,6 +5,7 @@
 'use strict';
 
 var React = require('react-native');
+var ContainerView = require('./ContainerView');
 var {
   AppRegistry,
   StyleSheet,
@@ -14,30 +15,13 @@ var {
   MapView,
 } = React;
 
-class TSOnboardingView extends React.Component {
-  render() {
-    return <OnboardingView {...this.props} />;
-  }
-}
-
-TSOnboardingView.propTypes = {
-  storyboard: React.PropTypes.string,
-}
-
-
-var OnboardingView = React.requireNativeComponent('OnboardingView', TSOnboardingView);
-
-
-// var onboardingViewManager = NativeModules.OnboardingViewManager;
-// onboardingViewManager.testMethod('Birthday Party', '4 Privet Drive, Surrey');
-
 var mainViewManager = NativeModules.MainViewManager;
 mainViewManager.testMethod('Some stuff', 'Some other stuff');
 
 
 var Taylr = React.createClass({
   render: function() {
-    return (<TSOnboardingView storyboard='Onboarding' style={styles.container} />)
+    return (<ContainerView sbName='Discover' style={styles.container} />)
     // return (
     //   <View style={styles.container}>
     //     <Text style={styles.welcome}>
