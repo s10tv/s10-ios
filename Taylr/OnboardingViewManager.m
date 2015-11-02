@@ -20,6 +20,8 @@
 @interface TSContainerView : RCTView
 
 @property (nonatomic, strong) UIViewController *vc;
+@property (nonatomic, strong) NSString *storyboard;
+
 
 @end
 
@@ -27,8 +29,19 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        self.vc = [[UIStoryboard storyboardWithName:@"Onboarding" bundle:nil] instantiateInitialViewController];
-//        self.vc.view.translatesAutoresizingMaskIntoConstraints = NO;
+//        self.vc = [[UIStoryboard storyboardWithName:@"Onboarding" bundle:nil] instantiateInitialViewController];
+////        self.vc.view.translatesAutoresizingMaskIntoConstraints = NO;
+//        [self addSubview:self.vc.view];
+    }
+    return self;
+}
+
+- (instancetype)initWithStoryboard:(NSString *)storyboardName identifier:(NSString *)identifier {
+    if (self = [super initWithFrame:CGRectZero]) {
+        self.storyboard = storyboardName;
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:storyboardName bundle:nil];
+        self.vc = (identifier != nil) ? [storyboard instantiateViewControllerWithIdentifier:identifier]
+        : [storyboard instantiateInitialViewController];
         [self addSubview:self.vc.view];
     }
     return self;
@@ -60,10 +73,16 @@
 
 RCT_EXPORT_MODULE()
 
+RCT_EXPORT_VIEW_PROPERTY(storyboard, NSString)
+
 - (UIView *)view {
     UIView *view = [[TSContainerView alloc] initWithFrame:CGRectZero];
 //    view.translatesAutoresizingMaskIntoConstraints = NO;
     return view;
+}
+
+- (UIView *)viewWithProps:(NSDictionary *)props {
+    return [[TSContainerView alloc] initWithStoryboard:props[@"storyboard"] identifier:props[@"identifier"]];
 }
 
 

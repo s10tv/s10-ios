@@ -14,7 +14,18 @@ var {
   MapView,
 } = React;
 
-var OnboardingView = React.requireNativeComponent('OnboardingView', null);
+class TSOnboardingView extends React.Component {
+  render() {
+    return <OnboardingView {...this.props} />;
+  }
+}
+
+TSOnboardingView.propTypes = {
+  storyboard: React.PropTypes.string,
+}
+
+
+var OnboardingView = React.requireNativeComponent('OnboardingView', TSOnboardingView);
 
 
 // var onboardingViewManager = NativeModules.OnboardingViewManager;
@@ -26,7 +37,7 @@ mainViewManager.testMethod('Some stuff', 'Some other stuff');
 
 var Taylr = React.createClass({
   render: function() {
-    return (<OnboardingView style={styles.container} />)
+    return (<TSOnboardingView storyboard='Onboarding' style={styles.container} />)
     // return (
     //   <View style={styles.container}>
     //     <Text style={styles.welcome}>
