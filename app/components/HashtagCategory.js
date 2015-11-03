@@ -8,7 +8,7 @@ let {
   ScrollView,
   StyleSheet
 } = React;
-let ddp = require('../lib/ddp');
+let ddp = require('./ddp');
 
 let Hashtag = require('./Hashtag');
 
@@ -22,13 +22,7 @@ class HashtagCategory extends React.Component {
   }
  
   componentWillMount() {
-    ddp.initialize()
-    .then(() => {
-      return ddp.loginWithToken('vU8rq_HWmJm7LNHx78anzipsNu9XUYY26jsWvn8Bfdx') 
-    })
-    .then(() => {
-      return ddp.subscribe('hashtag-categories')
-    })
+    return ddp.subscribe('hashtag-categories')
     .then((res) => {
       let categoryObserver = ddp.collections.observe(() => {
         let categories = [];
@@ -86,7 +80,8 @@ class HashtagCategory extends React.Component {
       )
     });
 
-    let icon = myTagsRendered.length == 0 ? require('image!ic-warning') : require('image!ic-checkmark');
+    let icon = myTagsRendered.length == 0 ? {uri: 'https://s10tv.blob.core.windows.net/s10tv-prod/ic-warning.png'} : 
+      { uri: 'https://s10tv.blob.core.windows.net/s10tv-prod/ic-checkmark.png' };
 
     return (
       <View key={category._id} style={styles.categoryStyle}>

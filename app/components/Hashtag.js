@@ -8,7 +8,7 @@ let {
   StyleSheet
 } = React;
 
-let ddp = require('../lib/ddp');
+let ddp = require('./ddp');
 
 class HashtagContainer extends React.Component {
   constructor(props: {}) {
