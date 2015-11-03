@@ -75,14 +75,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         // so that account.state is initially correct
         meteor.startup()
 
-        
+        let reactBundleURL = NSURL("http://localhost:8081/index.ios.bundle?platform=ios")
+        let bridge = RCTBridge(bundleURL: reactBundleURL, moduleProvider: nil, launchOptions: nil)
         _GlobalsContainer.instance = GlobalsContainer(env: env,
             meteorService: meteor,
             accountService: AccountService(meteorService: meteor),
             analyticsService: AnalyticsService(env: env, currentUser: meteor.currentUser),
             upgradeService: UpgradeService(env: env, currentUser: meteor.currentUser),
-            layerService: LayerService(layerAppID: env.layerURL, meteor: meteor, existingClient: layerClient)
+            layerService: LayerService(layerAppID: env.layerURL, meteor: meteor, existingClient: layerClient),
+            reactBridge: bridge
         )
+        let token = METAccount.defaultAccount().resumeToken
+        bridge.enqueueJSCall("ddp.loginWithToken", args: [token])
         
         layerClient = Globals.layerService.layerClient
         Globals.layerService.connectAndKeepUserInSync()
@@ -115,7 +119,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
 //        } else {
 //            window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
 //        }
-        let vc = UIViewController()
+//        let vc = UIViewController()
 //        NSURL *jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle"];
         // For production use, this `NSURL` could instead point to a pre-bundled file on disk:
         //
@@ -124,12 +128,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         // To generate that file, run the curl command and add the output to your main Xcode build target:
         //
         //   curl http://localhost:8081/index.ios.bundle -o main.jsbundle
-        let view = RCTRootView(bundleURL: NSURL("http://localhost:8081/index.ios.bundle?platform=ios"), moduleName: "SimpleApp", initialProperties: nil, launchOptions: nil)
-        vc.view = view
-        window?.rootViewController = vc
+//        let view = RCTRootView(bundleURL: NSURL("http://localhost:8081/index.ios.bundle?platform=ios"), moduleName: "SimpleApp", initialProperties: nil, launchOptions: nil)
+//        vc.view = view
+//        window?.rootViewController = vc
 //        RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
 //        moduleName: @"SimpleApp"
 //        launchOptions:nil];
+        window?.rootViewController = HashtagsViewController()
         window?.makeKeyAndVisible()
         
         // Pre-heat the camera if we can
