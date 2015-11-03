@@ -5,7 +5,7 @@
 'use strict';
 
 var React = require('react-native');
-var ContainerView = require('./ContainerView');
+var ContainerView = require('./components/ContainerView');
 var {
   AppRegistry,
   StyleSheet,
@@ -42,62 +42,64 @@ var Taylr = React.createClass({
   },
 
   render: function() {
-    return (
-      <NavigatorIOS
-        style={styles.navigator}
-        itemWrapperStyle={styles.itemWrapper}
-        tintColor='white'
-        // barTintColor='black'
-        initialRoute={{
-          component: ContainerView,
-          title: 'Sup people',
-          passProps: {
-            sbName: 'Me',
-            // style: styles.container,
-          }
-        }}
-      /> 
-    )
+    return (<ContainerView sbName='Me' />)
     // return (
-    //   <TabBarIOS 
-    //     tintColor="white"
-    //     barTintColor="darkslateblue"
-    //     style={styles.container}>
-    //     <TabBarIOS.Item
-    //       selected={this.state.selectedTab === 'me'}
-    //       onPress={() => {
-    //         this.setState({
-    //           selectedTab: 'me',
-    //         });
-    //       }}
-    //       icon={{uri: base64Icon, scale: 3}}
-    //       title="Me">
-    //       <ContainerView sbName='Me' />
-    //     </TabBarIOS.Item>
-    //     <TabBarIOS.Item
-    //       selected={this.state.selectedTab === 'discover'}
-    //       onPress={() => {
-    //         this.setState({
-    //           selectedTab: 'discover',
-    //         });
-    //       }}
-    //       icon={{uri: base64Icon, scale: 3}}
-    //       title="Discover">
-    //       <ContainerView sbName='Discover' />
-    //     </TabBarIOS.Item>
-    //     <TabBarIOS.Item
-    //       selected={this.state.selectedTab === 'conversation'}
-    //       onPress={() => {
-    //         this.setState({
-    //           selectedTab: 'conversation',
-    //         });
-    //       }}
-    //       icon={{uri: base64Icon, scale: 3}}
-    //       title="Conversation">
-    //       <ContainerView sbName='Conversation' />
-    //     </TabBarIOS.Item>
-    //   </TabBarIOS>
+    //   <NavigatorIOS
+    //     style={styles.navigator}
+    //     itemWrapperStyle={styles.itemWrapper}
+    //     tintColor='white'
+    //     // barTintColor='black'
+    //     initialRoute={{
+    //       component: ContainerView,
+    //       title: 'Sup people',
+    //       passProps: {
+    //         sbName: 'Me',
+    //         // style: styles.container,
+    //       }
+    //     }}
+    //   /> 
     // )
+
+    return (
+      <TabBarIOS 
+        tintColor="white"
+        barTintColor="darkslateblue"
+        style={styles.container}>
+        <TabBarIOS.Item
+          selected={this.state.selectedTab === 'me'}
+          onPress={() => {
+            this.setState({
+              selectedTab: 'me',
+            });
+          }}
+          icon={{uri: base64Icon, scale: 3}}
+          title="Me">
+          <ContainerView sbName='Me' />
+        </TabBarIOS.Item>
+        <TabBarIOS.Item
+          selected={this.state.selectedTab === 'discover'}
+          onPress={() => {
+            this.setState({
+              selectedTab: 'discover',
+            });
+          }}
+          icon={{uri: base64Icon, scale: 3}}
+          title="Discover">
+          <ContainerView sbName='Discover' />
+        </TabBarIOS.Item>
+        <TabBarIOS.Item
+          selected={this.state.selectedTab === 'conversation'}
+          onPress={() => {
+            this.setState({
+              selectedTab: 'conversation',
+            });
+          }}
+          icon={{uri: base64Icon, scale: 3}}
+          title="Conversation">
+          <ContainerView sbName='Conversation' />
+        </TabBarIOS.Item>
+      </TabBarIOS>
+    )
     
 
     // return (

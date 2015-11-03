@@ -43,7 +43,7 @@ target :Core do
 
     target :Taylr do
         link_with 'Taylr'
-        pod 'React', :path => 'node_modules/react-native', :subspecs => [
+        pod 'React', :path => 'app/node_modules/react-native', :subspecs => [
           'Core',
           'RCTImage',
           'RCTNetwork',
