@@ -38,6 +38,11 @@ RCT_EXPORT_VIEW_PROPERTY(vcIdentifier, NSString)
 
 @implementation TSContainerView
 
+- (void)dealloc {
+    [self.vc willMoveToParentViewController:nil];
+    [self.vc removeFromParentViewController];
+}
+
 - (void)willMoveToSuperview:(UIView *)newSuperview {
     if (newSuperview != nil && self.vc == nil) {
         UIStoryboard *storyboard = [UIStoryboard storyboardWithName:self.sbName bundle:nil];
@@ -45,19 +50,30 @@ RCT_EXPORT_VIEW_PROPERTY(vcIdentifier, NSString)
                 ? [storyboard instantiateViewControllerWithIdentifier:self.vcIdentifier]
                 : [storyboard instantiateInitialViewController];
         [self addSubview:self.vc.view];
-    }
-    if (newSuperview == nil) {
-        [self.vc willMoveToParentViewController:nil];
+        // Optimistically add, hopefully allowing viewWillAppear: to be invoked
+        [self reactAddControllerToClosestParent:self.vc];
     }
 }
 
-- (void)didMoveToSuperview {
-    if (self.superview == nil) {
-        [self.vc removeFromParentViewController];
+- (void)willMoveToWindow:(UIWindow *)newWindow {
+    if (newWindow != nil) {
+        // Optimistically add, hopefully allowing viewWillAppear: to be invoked
+        [self reactAddControllerToClosestParent:self.vc];
+    }
+}
+
+- (void)didMoveToWindow {
+    if (self.window != nil) {
+        [self reactAddControllerToClosestParent:self.vc];
+        NSAssert(self.vc.parentViewController != nil, @"ParentVC should not be nil");
     }
 }
 
 - (void)reactBridgeDidFinishTransaction {
+    // Optimistically add, hopefully allowing viewWillAppear: to be invoked
+    // NOTE: Unfortunately it's not always guaranteed, so any contained viewController will
+    // need to be able to handle viewDidAppear: being called viewWillAppear and not have any bugs
+    // which depends on viewWillAppear being called. In other words it should be a strict optimization
     [self reactAddControllerToClosestParent:self.vc];
 }
 
