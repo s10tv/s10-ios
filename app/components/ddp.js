@@ -1,3 +1,9 @@
+/**
+ * Copyright (c) 2015-present, S10, Inc.
+ *
+ * @providesModule ddp
+ * @flow
+ */
 let React = require('react-native');
 let { AsyncStorage } = React;
 let DDPClient = require("ddp-client");
@@ -83,6 +89,7 @@ ddp.call = function(methodName, params) {
 };
 
 ddp.loginWithToken = function(token) {
+  console.log("will try to login with token " + token);
   return new Promise(function(resolve, reject) {
     ddpClient.call("login", [{ resume: token }], function (err, res) {
       if (res) {
