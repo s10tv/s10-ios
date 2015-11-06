@@ -86,6 +86,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
             reactBridge: bridge
         )
         let token = METAccount.defaultAccount().resumeToken
+        bridge.enqueueJSCall("ddp.initialize", args:[])
         bridge.enqueueJSCall("ddp.loginWithToken", args: [token])
         
         layerClient = Globals.layerService.layerClient
@@ -198,7 +199,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
             // fatalError("Non-simulator build should have valid APS environment")
         }
         do {
-            try layerClient.updateRemoteNotificationDeviceToken(deviceToken)
+            //try layerClient.updateRemoteNotificationDeviceToken(deviceToken)
         } catch let error as NSError {
             Log.error("Unable to update Layer with push token", error)
         }

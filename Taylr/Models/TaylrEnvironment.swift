@@ -24,7 +24,7 @@ class TaylrEnvironment : Environment {
     }
     
     let audience : Audience
-    let serverProtocol = "wss"
+    let serverProtocol = "ws"
     let serverHostName: String
     var serverURL: NSURL {
         return NSURL("\(serverProtocol)://\(serverHostName)/websocket")
@@ -42,7 +42,7 @@ class TaylrEnvironment : Environment {
             case .Dev:
 //                serverHostName = "localhost:3000"
 //                serverHostName = "10.1.1.12:3000"
-                serverHostName = "s10-dev.herokuapp.com"
+                serverHostName = "localhost:3000"
                 segmentWriteKey = "pZimciABfGDaOLvEx9NWAFSoYHyCOg1n"
                 amplitudeKey = "0ef2064f5f59aca8b1224ec4374064d3"
                 mixpanelToken = "9d5d89ba988e52622278165d91ccf937"

@@ -8,7 +8,7 @@ let {
   ScrollView,
   StyleSheet
 } = React;
-let ddp = require('./ddp');
+let ddp = require('../lib/ddp');
 
 let Hashtag = require('./Hashtag');
 
@@ -22,8 +22,11 @@ class HashtagCategory extends React.Component {
   }
  
   componentWillMount() {
-    return ddp.subscribe('hashtag-categories')
+    console.log('hashtagcategory componentwillmount');
+    
+    return ddp.subscribe('hashtag-categories', [])
     .then((res) => {
+      console.log("[QIMING] HashtagCategory subscribing")
       let categoryObserver = ddp.collections.observe(() => {
         let categories = [];
         if (ddp.collections.categories) {
@@ -47,9 +50,9 @@ class HashtagCategory extends React.Component {
         if (ddp.collections.hashtags) {
           myTags = ddp.collections.hashtags.find({ isMine: true });
         }
-        return myTags ;
+        return myTags;
       });
-
+      
       this.setState({ myHashtagObserver: myHashtagObserver });
 
       myHashtagObserver.subscribe((results) => {
@@ -74,29 +77,31 @@ class HashtagCategory extends React.Component {
       return tag.type == category._id
     }).map(hashtag => {
       return (
-        <View style={styles.hashtag}>
+        <View key={hashtag._id} style={styles.hashtagContainer}>
           <Text style={styles.hashtagText}>{hashtag.text}</Text>
         </View>
       )
     });
 
-    let icon = myTagsRendered.length == 0 ? {uri: 'https://s10tv.blob.core.windows.net/s10tv-prod/ic-warning.png'} : 
-      { uri: 'https://s10tv.blob.core.windows.net/s10tv-prod/ic-checkmark.png' };
+    let icon = myTagsRendered.length == 0 ? 
+      <Image source={{ uri: 'https://s10tv.blob.core.windows.net/s10tv-prod/ic-warning.png' }} /> :
+      <Image source={{ uri: 'https://s10tv.blob.core.windows.net/s10tv-prod/ic-checkmark.png' }} />
 
     return (
-      <View key={category._id} style={styles.categoryStyle}>
-        <View style={styles.categoryHeader}>
-          <TouchableHighlight
-            style={styles.categoryName}
-            underlayColor="#ffffff"
-            onPress={(event) => { return this._handleCategoryTouch.bind(this)(category)}}>
-              <Text>{category.displayName}</Text>
+      <View key={category._id}>
+        <TouchableHighlight
+          underlayColor="#ffffff"
+          onPress={(event) => { return this._handleCategoryTouch.bind(this)(category)}}>
+            <View key={category._id} style={styles.category}>
+              <View style={styles.categoryHeader}>
+                <Text style={styles.categoryDisplayName}>{category.displayName}</Text>
+                <Image style={styles.categoryIcon} source={icon} /> 
+              </View>
+              <View style={styles.myHashtags}>
+                { myTagsRendered }
+              </View>
+            </View>
           </TouchableHighlight>
-          <Image style={styles.icon} source={icon} />
-        </View>
-        <View style={styles.myHashtags}>
-          { myTagsRendered }
-        </View>
         <View style={styles.separator} />
       </View>
     ) 
@@ -119,31 +124,32 @@ var styles = StyleSheet.create({
   container: {
     padding:10
   },
+  category: {
+    flex: 1,
+    paddingHorizontal: 10
+  },
   categoryHeader: {
     flexDirection: 'row',
   },
-  categoryName: {
-    flex: 1
+  categoryIcon: {
+    width: 30,
+    height: 30, 
   },
-  icon: {
-    width: 20,
-    height: 20, 
+  categoryDisplayName: {
+    flex: 1,
   },
   myHashtags: {
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'flex-start'
   },
-  hashtag: {
+  hashtagContainer: {
     padding: 15,
     margin: 10,
     backgroundColor: "#4A148C",
   },
   hashtagText: {
     color: "#ffffff"
-  },
-  categoryStyle: {
-    paddingHorizontal: 10
   },
   separator: {
     backgroundColor: "#e0e0e0",
