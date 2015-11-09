@@ -20,11 +20,15 @@ class HashtagCategory extends React.Component {
       categories: []
     };
   }
- 
+
   componentWillMount() {
-    console.log('hashtagcategory componentwillmount');
-    
-    return ddp.subscribe('hashtag-categories', [])
+    ddp.initialize()
+    .then(() => {
+      return ddp.loginWithToken('vU8rq_HWmJm7LNHx78anzipsNu9XUYY26jsWvn8Bfdx') 
+    })
+    .then(() => {
+      return ddp.subscribe('hashtag-categories')
+    })
     .then((res) => {
       console.log("[QIMING] HashtagCategory subscribing")
       let categoryObserver = ddp.collections.observe(() => {
@@ -52,7 +56,7 @@ class HashtagCategory extends React.Component {
         }
         return myTags;
       });
-      
+
       this.setState({ myHashtagObserver: myHashtagObserver });
 
       myHashtagObserver.subscribe((results) => {
@@ -83,9 +87,9 @@ class HashtagCategory extends React.Component {
       )
     });
 
-    let icon = myTagsRendered.length == 0 ? 
-      <Image source={{ uri: 'https://s10tv.blob.core.windows.net/s10tv-prod/ic-warning.png' }} /> :
-      <Image source={{ uri: 'https://s10tv.blob.core.windows.net/s10tv-prod/ic-checkmark.png' }} />
+    let icon = myTagsRendered.length == 0 ?
+      <Image style={styles.categoryIcon} source={{ uri: 'https://s10tv.blob.core.windows.net/s10tv-prod/ic-warning.png' }} /> :
+      <Image style={styles.categoryIcon} source={{ uri: 'https://s10tv.blob.core.windows.net/s10tv-prod/ic-checkmark.png' }} />
 
     return (
       <View key={category._id}>
@@ -95,7 +99,7 @@ class HashtagCategory extends React.Component {
             <View key={category._id} style={styles.category}>
               <View style={styles.categoryHeader}>
                 <Text style={styles.categoryDisplayName}>{category.displayName}</Text>
-                <Image style={styles.categoryIcon} source={icon} /> 
+                {icon}
               </View>
               <View style={styles.myHashtags}>
                 { myTagsRendered }
@@ -104,12 +108,12 @@ class HashtagCategory extends React.Component {
           </TouchableHighlight>
         <View style={styles.separator} />
       </View>
-    ) 
+    )
   }
 
   render() {
     let rows = this.state.categories.map(category => {
-      return this._renderItem.bind(this)(category) 
+      return this._renderItem.bind(this)(category)
     })
 
     return (
@@ -133,7 +137,7 @@ var styles = StyleSheet.create({
   },
   categoryIcon: {
     width: 30,
-    height: 30, 
+    height: 30,
   },
   categoryDisplayName: {
     flex: 1,

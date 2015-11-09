@@ -86,8 +86,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
             reactBridge: bridge
         )
         let token = METAccount.defaultAccount().resumeToken
-        bridge.enqueueJSCall("ddp.initialize", args:[])
-        bridge.enqueueJSCall("ddp.loginWithToken", args: [token])
         
         layerClient = Globals.layerService.layerClient
         Globals.layerService.connectAndKeepUserInSync()

@@ -25,7 +25,7 @@ class HashtagContainer extends React.Component {
   }
 
   componentWillMount() {
-    ddp.subscribe('suggested-hashtags', [this.props.category.type])
+    return ddp.subscribe('suggested-hashtags', [this.props.category.type])
     .then((res) => {
       let hashtagObserver = ddp.collections.observe(() => {
         let hashtags = [];
