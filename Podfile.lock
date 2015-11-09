@@ -1,7 +1,5 @@
 PODS:
-  - Alamofire (3.1.0)
-  - AlamofireImage (2.1.0):
-    - Alamofire (~> 3.1)
+  - Alamofire (3.1.2)
   - Amplitude-iOS (3.2.0):
     - FMDB/standard (~> 2.5)
   - AMPopTip (0.9.12)
@@ -65,9 +63,9 @@ PODS:
   - Nimble (3.0.0)
   - NKRecorder (0.1.0):
     - Alamofire (~> 3.1)
-    - AlamofireImage (~> 2.1)
     - EZAudio (~> 1.1.2)
     - SCRecorder (~> 2.5)
+    - SDWebImage (~> 3.7)
   - NSLogger (1.5.1):
     - NSLogger/Standard (= 1.5.1)
   - NSLogger/Standard (1.5.1)
@@ -148,7 +146,7 @@ DEPENDENCIES:
   - Mixpanel (~> 2.9)
   - MLPAutoCompleteTextField (from `https://github.com/EddyBorja/MLPAutoCompleteTextField.git`)
   - Nimble (~> 3.0)
-  - NKRecorder (from `git@github.com:s10tv/video-maker.git`)
+  - NKRecorder (from `../video-maker`)
   - NSLogger (~> 1.5)
   - ObjectMapper (~> 0.18)
   - OHHTTPStubs (~> 4.3)
@@ -180,7 +178,7 @@ EXTERNAL SOURCES:
   MLPAutoCompleteTextField:
     :git: https://github.com/EddyBorja/MLPAutoCompleteTextField.git
   NKRecorder:
-    :git: git@github.com:s10tv/video-maker.git
+    :path: "../video-maker"
   PKHUD:
     :git: https://github.com/tonyxiao/PKHUD
   SugarRecord:
@@ -200,9 +198,6 @@ CHECKOUT OPTIONS:
   MLPAutoCompleteTextField:
     :commit: b94a7479c476ccbd58b4def608255e492ea13c8a
     :git: https://github.com/EddyBorja/MLPAutoCompleteTextField.git
-  NKRecorder:
-    :commit: 0db737ec7270796aeb84de806bbc8cfaf9596bf7
-    :git: git@github.com:s10tv/video-maker.git
   PKHUD:
     :commit: 456a9a4e95565b7bfdf098cd806aa8bd93e910b2
     :git: https://github.com/tonyxiao/PKHUD
@@ -211,8 +206,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/tonyxiao/SugarRecord
 
 SPEC CHECKSUMS:
-  Alamofire: 415bd7f56197722978759078486689f7ef913dce
-  AlamofireImage: 97e00995920d85b5cb23ee4c3b7f92605f5dc74b
+  Alamofire: 7c16ca65f3c7e681fd925fd7f2dec7747ff96855
   Amplitude-iOS: 6f82e97de436fd145ae9a205933b350fcdfbcddc
   AMPopTip: 3c98a9b38148868366b57765064bd9565f653038
   AnalyticsSwift: 76329ac0b66be9747e9f718076c53d264ed24089
@@ -242,7 +236,7 @@ SPEC CHECKSUMS:
   Mixpanel: 42ae6168effc48481d957f7883dd8514a398738d
   MLPAutoCompleteTextField: 02700789c32dce9b3a7e9991810adf5edb757d80
   Nimble: 4c353d43735b38b545cbb4cb91504588eb5de926
-  NKRecorder: ca252195116969dfb0f4fc45a0053878ac707e3e
+  NKRecorder: f4bce8409adc39321668b5af939173839f5980a2
   NSLogger: 5ed223a2436df96244e033be750656dacdeec034
   ObjectMapper: a88114e5df20f055da63029f25cbc01014847c91
   OHHTTPStubs: 1a95a653b78287a1fdb44eb38364b43257ac3550

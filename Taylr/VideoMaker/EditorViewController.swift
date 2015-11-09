@@ -15,7 +15,7 @@ import Core
 
 protocol EditorDelegate : NSObjectProtocol {
     func editorDidCancel(editor: EditorViewController)
-    func editor(editor: EditorViewController, didEditVideo video: VideoSession)
+    func editor(editor: EditorViewController, didEditVideo video: TSVideoSession)
 }
 
 class EditorViewController : UIViewController {
@@ -58,13 +58,13 @@ class EditorViewController : UIViewController {
     }
     
     // MARK: -
-    func getVideoSession() -> VideoSession {
+    func getVideoSession() -> TSVideoSession {
         UIGraphicsBeginImageContextWithOptions(overlayView.bounds.size, false, 0.0)
         let context = UIGraphicsGetCurrentContext()
         overlayView.layer.renderInContext(context!)
         let image = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return VideoSession(recordSession: recordSession, filter: filterView.selectedFilter, overlayImage: image)
+        return TSVideoSession(recordSession: recordSession, filter: filterView.selectedFilter, overlayImage: image)
     }
     
     // MARK: -

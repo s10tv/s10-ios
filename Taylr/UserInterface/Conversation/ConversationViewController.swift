@@ -35,7 +35,7 @@ class ConversationViewController : UIViewController {
     }
     
     private(set) var chatHistory: ChatHistoryViewController!
-    private(set) var videoMaker: NKRecorderViewController!
+    private(set) var videoMaker: VideoMakerViewController!
     private(set) var videoPlayer: VideoPlayerViewController!
     
     var vm: ConversationViewModel!
@@ -62,8 +62,8 @@ class ConversationViewController : UIViewController {
         chatHistory.delegate = self
         chatHistory.historyDelegate = self
         
-        videoMaker = NKRecorderViewController.mainNavController()
-        videoMaker.recorderDelegate = self
+        videoMaker = VideoMakerViewController.mainController()
+        videoMaker.videoMakerDelegate = self
 //        videoMaker = UIStoryboard(name: "VideoMaker", bundle: nil).instantiateInitialViewController() as! VideoMakerViewController
 //        videoMaker.producerDelegate = self
         
@@ -191,20 +191,21 @@ class ConversationViewController : UIViewController {
 
 // MARK: - Video Producer
 
-extension ConversationViewController : NKRecorderDelegate {
-    func willStartRecording(recorderViewController: NKRecorderViewController) {
+extension ConversationViewController : VideoMakerDelegate {
+    
+    func videoMakerWillStartRecording(videoMaker: VideoMakerViewController) {
         scrollDownHint.hidden = true
         scrollView.scrollEnabled = false
     }
     
-    func didCancelRecording(recorderViewController: NKRecorderViewController) {
+    func videoMakerDidCancelRecording(videoMaker: VideoMakerViewController) {
         scrollDownHint.hidden = false
         scrollView.scrollEnabled = true
     }
     
-    func didProduceVideo(recorderViewController: NKRecorderViewController, videoSession: NKVideoSession) {
+    func videoMaker(videoMaker: VideoMakerViewController, didProduceVideoSession session: VideoSession) {
         PKHUD.showActivity()
-        videoSession.exportWithFirstFrame { url, thumbnail in
+        session.exportWithFirstFrame { url, thumbnail in
             PKHUD.hide(animated: false)
             self.scrollDownHint.hidden = false
             self.scrollView.scrollEnabled = true
