@@ -68,11 +68,9 @@ class HashtagCategory extends React.Component {
 
   _handleCategoryTouch(category) {
     this.props.navigator.push({
+      id: 'hashtag',
       title: category.displayName,
-      component: Hashtag,
-      passProps: {
-        category: category
-      }
+      category: category
     })
   }
 
@@ -126,11 +124,12 @@ class HashtagCategory extends React.Component {
 
 var styles = StyleSheet.create({
   container: {
-    padding:10
+    paddingTop: 64,
   },
   category: {
     flex: 1,
-    paddingHorizontal: 10
+    paddingHorizontal: 10,
+    marginTop: 10,
   },
   categoryHeader: {
     flexDirection: 'row',

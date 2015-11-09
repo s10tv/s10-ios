@@ -14,6 +14,19 @@ let {
 let SearchBar = require('react-native-search-bar');
 let ddp = require('../lib/ddp');
 
+class NavButton extends React.Component {
+  render() {
+    return (
+      <TouchableHighlight
+        style={styles.button}
+        underlayColor="#B5B5B5"
+        onPress={this.props.onPress}>
+        <Text style={styles.buttonText}>{this.props.text}</Text>
+      </TouchableHighlight>
+    );
+  }
+}
+
 class HashtagContainer extends React.Component {
   constructor(props: {}) {
     super(props);
@@ -122,22 +135,11 @@ class HashtagContainer extends React.Component {
 
     return (
       <View style={styles.container}>
-        <ScrollView
-          style={styles.hashtagContainerStyle}
-          contentContainerStyle={styles.hashtagContentContainerStyle}>
-            {hashtags}
-        </ScrollView>
-        <Overlay isVisible={searchSuggestions.length > 0}>
-          <View style={styles.bottomSheet}>
-            { searchSuggestions }
-          </View>
-        </Overlay>
-        <View style={styles.searchBoxContainer}>
-          <SearchBar
-            placeholder={'Search'}
-            hideBackground={true}
-            onChangeText={(text) => this._searchTag.bind(this)(text)} />
-        </View>
+        <NavButton
+          onPress={() => {
+            this.props.navigator.pop();
+          }}
+          text="Exit NavigationBar Example" />
       </View>
     );
   }
@@ -146,6 +148,7 @@ class HashtagContainer extends React.Component {
 var styles = StyleSheet.create({
   container: {
     flex: 1,
+    paddingTop: 100,
   },
   loadingView: {
     flex: 1,

@@ -113,11 +113,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
         // BIG TODO: Should Instantiate different ViewControllers depending on onboarding or main
-//        if !Globals.accountService.hasAccount() {
-//            window?.rootViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateInitialViewController()
-//        } else {
-//            window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
-//        }
+        if !Globals.accountService.hasAccount() {
+            window?.rootViewController = UIStoryboard(name: "Onboarding", bundle: nil).instantiateInitialViewController()
+        } else {
+            window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
+        }
+        window?.makeKeyAndVisible()
 //        let vc = UIViewController()
 //        NSURL *jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle"];
         // For production use, this `NSURL` could instead point to a pre-bundled file on disk:
@@ -133,8 +134,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
 //        RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
 //        moduleName: @"SimpleApp"
 //        launchOptions:nil];
-        window?.rootViewController = HashtagsViewController()
-        window?.makeKeyAndVisible()
+
         
         // Pre-heat the camera if we can
         Async.background {

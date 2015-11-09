@@ -68,7 +68,7 @@ class CreateProfileViewController : UITableViewController {
             segue.animated = true
             segue.replaceStrategy = .Stack
         }
-        if let vc = segue.destinationViewController as? EditHashtagsViewController {
+        if let vc = segue.destinationViewController as? HashtagsViewController {
             // TODO: Instead of overreaching responsibility we should probably have a container view controller
             // for onboarding that contains the EditHastagsViewController but add additional information
             // to help user with first time experience.
