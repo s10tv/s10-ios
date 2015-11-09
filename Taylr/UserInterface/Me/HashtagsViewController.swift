@@ -11,6 +11,7 @@ import React
 
 class HashtagsViewController : UIViewController {
     override func loadView() {
+        self.navigationController?.navigationBar.hidden = true
         self.view = RCTRootView(bridge: Globals.reactBridge, moduleName: "TaylrReact", initialProperties: nil)
     }
 }

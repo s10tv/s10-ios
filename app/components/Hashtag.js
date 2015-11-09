@@ -135,11 +135,22 @@ class HashtagContainer extends React.Component {
 
     return (
       <View style={styles.container}>
-        <NavButton
-          onPress={() => {
-            this.props.navigator.pop();
-          }}
-          text="Exit NavigationBar Example" />
+        <ScrollView
+          style={styles.hashtagContainerStyle}
+          contentContainerStyle={styles.hashtagContentContainerStyle}>
+            {hashtags}
+        </ScrollView>
+        <Overlay isVisible={searchSuggestions.length > 0}>
+          <View style={styles.bottomSheet}>
+            { searchSuggestions }
+          </View>
+        </Overlay>
+        <View style={styles.searchBoxContainer}>
+          <SearchBar
+            placeholder={'Search'}
+            hideBackground={true}
+            onChangeText={(text) => this._searchTag.bind(this)(text)} />
+        </View>
       </View>
     );
   }
@@ -148,12 +159,15 @@ class HashtagContainer extends React.Component {
 var styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 100,
   },
   loadingView: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+  },
+  navbutton: {
+    position: 'absolute',
+    right: 0
   },
   hashtagContainerStyle: {
     paddingTop: 64,
