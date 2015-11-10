@@ -178,7 +178,7 @@ EXTERNAL SOURCES:
   MLPAutoCompleteTextField:
     :git: https://github.com/EddyBorja/MLPAutoCompleteTextField.git
   NKRecorder:
-    :path: "../video-maker"
+    :path: ../video-maker
   PKHUD:
     :git: https://github.com/tonyxiao/PKHUD
   SugarRecord:
