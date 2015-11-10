@@ -48,7 +48,8 @@ target :Core do
         pod 'SDWebImage', '~> 3.7'
         pod 'PKHUD', :git => 'https://github.com/tonyxiao/PKHUD' # Fork is needed to work around xcasset compilation issue inside pod
         pod 'SCRecorder', '2.5.3' # ScaleAspectFill bug
-        pod 'NKRecorder', :path => '../video-maker'
+        # pod 'NKRecorder', :path => '../video-maker'
+        pod 'NKRecorder', :git => 'git@github.com:s10tv/video-maker.git'
 
         # Fork is needed to work around the crash
         pod 'DZNEmptyDataSet', :git => 'https://github.com/dzenbot/DZNEmptyDataSet.git'
