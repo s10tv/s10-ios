@@ -15,8 +15,8 @@ dependencies:
   override:
   pre:
     - brew update
-    - brew upgrade xctool
-    - sudo gem uninstall highline commander --ignore-dependencies -x
+    # - brew upgrade xctool
+    - sudo gem uninstall highline commander --ignore-dependencies -x -a
     - sudo gem install cocoapods -v $(var=$(tail -1 Podfile.lock); echo ${var##COCOAPODS:})
     - sudo gem install cupertino shenzhen sigh xcpretty gym
     - ./scripts/import_credentials.sh

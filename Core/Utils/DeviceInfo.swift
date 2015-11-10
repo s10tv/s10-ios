@@ -13,14 +13,14 @@ extension UIDevice {
     
     // TODO: This is not thread-safe. Make thread-safe
     public func getPersistentIdentifier() -> String {
-        let keychain = A0SimpleKeychain(service: NSBundle.mainBundle().bundleIdentifier)
+        let keychain = A0SimpleKeychain(service: NSBundle.mainBundle().bundleIdentifier!)
         let kDeviceId = "deviceId"
         var identifier = keychain.stringForKey(kDeviceId)
         if identifier == nil {
             identifier = identifierForVendor?.UUIDString ?? "r-\(NSUUID().UUIDString)"
-            keychain.setString(identifier, forKey: kDeviceId)
+            keychain.setString(identifier!, forKey: kDeviceId)
         }
-        return identifier
+        return identifier!
     }
     
 }
