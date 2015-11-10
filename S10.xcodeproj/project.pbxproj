@@ -11,12 +11,12 @@
 		640DB2B4B8DE9B8DDC392B01 /* Pods_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28970C9FC888535D277B71D5 /* Pods_Core.framework */; };
 		C0694BB32891795853D2C3CF /* Pods_Core_TestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F09ED94DDC00446577DFD4 /* Pods_Core_TestApp.framework */; };
 		D6555C3D41C17908B83EB27C /* Pods_Core_Taylr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1D48B38C28B60559AEB8949 /* Pods_Core_Taylr.framework */; };
+		EA057E6F1BE23051004EB649 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA057E6E1BE23051004EB649 /* Images.xcassets */; settings = {ASSET_TAGS = (); }; };
 		EA09898D1BD4CEDC0014F71C /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09897D1BD4CEDC0014F71C /* AudioController.swift */; settings = {ASSET_TAGS = (); }; };
 		EA09898E1BD4CEDC0014F71C /* MuteChecker.caf in Resources */ = {isa = PBXBuildFile; fileRef = EA09897E1BD4CEDC0014F71C /* MuteChecker.caf */; settings = {ASSET_TAGS = (); }; };
 		EA09898F1BD4CEDC0014F71C /* MuteChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0989801BD4CEDC0014F71C /* MuteChecker.m */; settings = {ASSET_TAGS = (); }; };
 		EA0989901BD4CEDC0014F71C /* VideoMaker.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0989821BD4CEDC0014F71C /* VideoMaker.swift */; settings = {ASSET_TAGS = (); }; };
 		EA0989911BD4CEDC0014F71C /* EditorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0989831BD4CEDC0014F71C /* EditorViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		EA0989921BD4CEDC0014F71C /* VideoMakerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0989841BD4CEDC0014F71C /* VideoMakerViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EA0989931BD4CEDC0014F71C /* RecorderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0989851BD4CEDC0014F71C /* RecorderViewController.swift */; settings = {ASSET_TAGS = (); }; };
 		EA0989941BD4CEDC0014F71C /* VideoMaker.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA0989861BD4CEDC0014F71C /* VideoMaker.storyboard */; settings = {ASSET_TAGS = (); }; };
 		EA0989951BD4CEDC0014F71C /* DurationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0989881BD4CEDC0014F71C /* DurationTimer.swift */; settings = {ASSET_TAGS = (); }; };
@@ -258,13 +258,13 @@
 		8E0110CE5A12BB3B852FE247 /* Pods-Core-TestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core-TestApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Core-TestApp/Pods-Core-TestApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A80ED835405D6C980CF3F31B /* Pods-Core-CoreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core-CoreTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Core-CoreTests/Pods-Core-CoreTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C97F216A216ACE06C7336869 /* Pods-Core-Taylr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core-Taylr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Core-Taylr/Pods-Core-Taylr.release.xcconfig"; sourceTree = "<group>"; };
+		EA057E6E1BE23051004EB649 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "../video-maker/NKRecorder/Images.xcassets"; sourceTree = "<group>"; };
 		EA09897D1BD4CEDC0014F71C /* AudioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
 		EA09897E1BD4CEDC0014F71C /* MuteChecker.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MuteChecker.caf; sourceTree = "<group>"; };
 		EA09897F1BD4CEDC0014F71C /* MuteChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MuteChecker.h; sourceTree = "<group>"; };
 		EA0989801BD4CEDC0014F71C /* MuteChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MuteChecker.m; sourceTree = "<group>"; };
 		EA0989821BD4CEDC0014F71C /* VideoMaker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoMaker.swift; sourceTree = "<group>"; };
 		EA0989831BD4CEDC0014F71C /* EditorViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditorViewController.swift; sourceTree = "<group>"; };
-		EA0989841BD4CEDC0014F71C /* VideoMakerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoMakerViewController.swift; sourceTree = "<group>"; };
 		EA0989851BD4CEDC0014F71C /* RecorderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecorderViewController.swift; sourceTree = "<group>"; };
 		EA0989861BD4CEDC0014F71C /* VideoMaker.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = VideoMaker.storyboard; sourceTree = "<group>"; };
 		EA0989881BD4CEDC0014F71C /* DurationTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationTimer.swift; sourceTree = "<group>"; };
@@ -545,6 +545,7 @@
 			isa = PBXGroup;
 			children = (
 				EA78C87F1B323E140016AB73 /* Images.xcassets */,
+				EA057E6E1BE23051004EB649 /* Images.xcassets */,
 				6A2FB1EC7785F957D622CCE4 /* Pods-Core.debug.xcconfig */,
 				F2C759AA125AEB809731B1D6 /* Pods-Core.release.xcconfig */,
 				A80ED835405D6C980CF3F31B /* Pods-Core-CoreTests.debug.xcconfig */,
@@ -574,7 +575,6 @@
 				EA0989871BD4CEDC0014F71C /* Views */,
 				EA0989831BD4CEDC0014F71C /* EditorViewController.swift */,
 				EA0989851BD4CEDC0014F71C /* RecorderViewController.swift */,
-				EA0989841BD4CEDC0014F71C /* VideoMakerViewController.swift */,
 				EA0989821BD4CEDC0014F71C /* VideoMaker.swift */,
 				EA0989861BD4CEDC0014F71C /* VideoMaker.storyboard */,
 			);
@@ -1378,6 +1378,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */,
+				EA057E6F1BE23051004EB649 /* Images.xcassets in Resources */,
 				EA72AE651BD005CD0031D652 /* Profile.storyboard in Resources */,
 				EA7FB0971B5EF9D50052B394 /* Cabin-Medium.ttf in Resources */,
 				EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */,
@@ -1741,7 +1742,6 @@
 				EADE6CBE1BCF8AFC002F1216 /* UserViewModel+ATLParticipant.swift in Sources */,
 				EA7475861BCFFA95009A09BC /* BaseNavigationController.swift in Sources */,
 				EA42D65B1BB7C66600B07526 /* MediaExtension.swift in Sources */,
-				EA0989921BD4CEDC0014F71C /* VideoMakerViewController.swift in Sources */,
 				EA42D65F1BB7C67900B07526 /* DesignableViews.swift in Sources */,
 				EAA576171BB7E5B600661A4F /* LoginViewController.swift in Sources */,
 				EA0989971BD4CEDC0014F71C /* TouchDetector.swift in Sources */,

@@ -20,6 +20,7 @@ import SCRecorder
 import AVFoundation
 import Async
 import Core
+import NKRecorder
 
 // Globally accessible variables and shorthands
 private struct _GlobalsContainer {
@@ -117,16 +118,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         window?.makeKeyAndVisible()
         
         // Pre-heat the camera if we can
-        Async.background {
-            if AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) == .Authorized {
-                let recorder = SCRecorder.sharedRecorder()
-                recorder.captureSessionPreset = AVCaptureSessionPreset640x480
-                recorder.device = .Back
-                recorder.keepMirroringOnWrite = true
-                recorder.startRunning()
-            }
-        }
-        
+//        Async.background {
+//            if AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) == .Authorized {
+//                let recorder = SCRecorder.sharedRecorder()
+//                recorder.captureSessionPreset = AVCaptureSessionPreset640x480
+//                recorder.device = .Back
+//                recorder.keepMirroringOnWrite = true
+//                recorder.startRunning()
+//            }
+//        }
+        VideoMakerViewController.preloadRecorderAsynchronously()
         return true
     }
     

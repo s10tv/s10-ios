@@ -13,7 +13,7 @@ import AssetsLibrary
 import SCRecorder
 import Core
 
-struct VideoSession {
+struct TSVideoSession {
     let recordSession: SCRecordSession
     let filter: SCFilter?
     let overlayImage: UIImage?

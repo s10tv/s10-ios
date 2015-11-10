@@ -1,5 +1,5 @@
 PODS:
-  - Alamofire (3.1.0)
+  - Alamofire (3.1.2)
   - Amplitude-iOS (3.2.0):
     - FMDB/standard (~> 2.5)
   - AMPopTip (0.9.12)
@@ -23,6 +23,12 @@ PODS:
     - DTFoundation/Core
   - DZNEmptyDataSet (1.7.2)
   - EDColor (1.0.0)
+  - EZAudio (1.1.2):
+    - EZAudio/Full (= 1.1.2)
+  - EZAudio/Core (1.1.2)
+  - EZAudio/Full (1.1.2):
+    - EZAudio/Core
+    - TPCircularBuffer (~> 0.0)
   - Fabric (1.5.5):
     - Fabric/Base (= 1.5.5)
   - Fabric/Base (1.5.5)
@@ -55,6 +61,11 @@ PODS:
   - Mixpanel/Mixpanel (2.9.0)
   - MLPAutoCompleteTextField (1.6)
   - Nimble (3.0.0)
+  - NKRecorder (0.1.0):
+    - Alamofire (~> 3.1)
+    - EZAudio (~> 1.1.2)
+    - SCRecorder (~> 2.5)
+    - SDWebImage (~> 3.7)
   - NSLogger (1.5.1):
     - NSLogger/Standard (= 1.5.1)
   - NSLogger/Standard (1.5.1)
@@ -104,6 +115,7 @@ PODS:
     - SugarRecord/Core
   - SwiftyJSON (2.3.1)
   - SwipeView (1.3.2)
+  - TPCircularBuffer (0.0.1)
   - TPKeyboardAvoiding (1.2.10)
   - TwitterCore (1.12.0)
   - UXCam (2.3.2)
@@ -134,6 +146,7 @@ DEPENDENCIES:
   - Mixpanel (~> 2.9)
   - MLPAutoCompleteTextField (from `https://github.com/EddyBorja/MLPAutoCompleteTextField.git`)
   - Nimble (~> 3.0)
+  - NKRecorder (from `git@github.com:s10tv/video-maker.git`)
   - NSLogger (~> 1.5)
   - ObjectMapper (~> 0.18)
   - OHHTTPStubs (~> 4.3)
@@ -164,6 +177,8 @@ EXTERNAL SOURCES:
     :git: https://github.com/tonyxiao/meteor-ios
   MLPAutoCompleteTextField:
     :git: https://github.com/EddyBorja/MLPAutoCompleteTextField.git
+  NKRecorder:
+    :git: git@github.com:s10tv/video-maker.git
   PKHUD:
     :git: https://github.com/tonyxiao/PKHUD
   SugarRecord:
@@ -183,6 +198,9 @@ CHECKOUT OPTIONS:
   MLPAutoCompleteTextField:
     :commit: b94a7479c476ccbd58b4def608255e492ea13c8a
     :git: https://github.com/EddyBorja/MLPAutoCompleteTextField.git
+  NKRecorder:
+    :commit: fce75a60992e8cd3d60ae4d5ea92e8ae7b8ec065
+    :git: git@github.com:s10tv/video-maker.git
   PKHUD:
     :commit: 456a9a4e95565b7bfdf098cd806aa8bd93e910b2
     :git: https://github.com/tonyxiao/PKHUD
@@ -191,7 +209,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/tonyxiao/SugarRecord
 
 SPEC CHECKSUMS:
-  Alamofire: 415bd7f56197722978759078486689f7ef913dce
+  Alamofire: 7c16ca65f3c7e681fd925fd7f2dec7747ff96855
   Amplitude-iOS: 6f82e97de436fd145ae9a205933b350fcdfbcddc
   AMPopTip: 3c98a9b38148868366b57765064bd9565f653038
   AnalyticsSwift: 76329ac0b66be9747e9f718076c53d264ed24089
@@ -206,6 +224,7 @@ SPEC CHECKSUMS:
   DTFoundation: 46e2b2fafe78d67febfd8d1f85fe9845a093f00e
   DZNEmptyDataSet: 0ec00bfc230d7450997b60c127afdd0b9f24f3b6
   EDColor: c83f9a61f9f9b3c23d541f1feb561558e29cb088
+  EZAudio: 01373de2b1257b77be1bf13753fb1c4ea8a9777e
   Fabric: 190bf1a6eb65f7500de1347d027d2e59a7e53db1
   FBSDKCoreKit: 9141b70960a37930850370495fe565f4a27ac141
   FBSDKLoginKit: c11ed3c2833472db3bb4a4aecf27af4a6f69b173
@@ -220,6 +239,7 @@ SPEC CHECKSUMS:
   Mixpanel: 42ae6168effc48481d957f7883dd8514a398738d
   MLPAutoCompleteTextField: 02700789c32dce9b3a7e9991810adf5edb757d80
   Nimble: 4c353d43735b38b545cbb4cb91504588eb5de926
+  NKRecorder: f4bce8409adc39321668b5af939173839f5980a2
   NSLogger: 5ed223a2436df96244e033be750656dacdeec034
   ObjectMapper: a88114e5df20f055da63029f25cbc01014847c91
   OHHTTPStubs: 1a95a653b78287a1fdb44eb38364b43257ac3550
@@ -238,6 +258,7 @@ SPEC CHECKSUMS:
   SugarRecord: 9d55ce666e8161eacdc95c996173eb53eb6d3683
   SwiftyJSON: 592b53bee5ef3dd9b3bebc6b9cb7ee35426ae8c3
   SwipeView: bd67cfaf7760c036438446b3ccb28a3b84fce009
+  TPCircularBuffer: 949e9632b9fb99b7274d7b2296ee22bff5841e35
   TPKeyboardAvoiding: 614ebec846ec28b83d548769297fa5fb56468904
   TwitterCore: a1feadb793512962003ed2bad23e846c8daa4efd
   UXCam: b4914853e5512ac16a3e4a33499cd470230d7a6e
