@@ -6,6 +6,7 @@ let {
   Text,
   Image,
   TouchableOpacity,
+  TouchableHighlight,
   Navigator,
   StyleSheet,
 } = React;
@@ -67,9 +68,17 @@ class Me extends React.Component {
             <View style={[styles.viewButton, styles.button]}>
               <Text style={[styles.buttonText]}>View</Text>
             </View>
-            <View style={[styles.editButton, styles.button]}>
-              <Text style={[styles.buttonText]}>Edit</Text>
-            </View>
+            <TouchableHighlight
+              style={[styles.editButton, styles.button]}
+              onPress={(event) => this.props.navigator.push({
+                id: 'editprofile',
+                title: 'Edit Profile',
+                userId: me._id
+              })}>
+                <View>
+                  <Text style={[styles.buttonText]}>Edit</Text>
+                </View>
+            </TouchableHighlight>
           </View>
 
           <HashtagCategory navigator={this.props.navigator} />

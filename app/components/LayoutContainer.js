@@ -9,6 +9,7 @@ let {
   StyleSheet,
 } = React;
 
+let ddp = require('../lib/ddp');
 let Me = require('./Me');
 let MeEdit = require('./MeEdit');
 let HashtagCategory = require('./HashtagCategory');
@@ -53,9 +54,11 @@ class LayoutContainer extends React.Component {
           style={styles.webView}
           startInLoadingState={true}
           url={route.link} />;
+      case 'editprofile':
+        return <MeEdit navigator={nav} userId={route.userId} />
       default:
         return (
-          <MeEdit navigator={nav} />
+          <Me navigator={nav} />
         );
     }
   }
