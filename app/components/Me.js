@@ -72,8 +72,7 @@ class Me extends React.Component {
             </View>
           </View>
 
-          <HashtagCategory />
-
+          <HashtagCategory navigator={this.props.navigator} />
         </ScrollView>
       )
     }
