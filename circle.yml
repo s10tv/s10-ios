@@ -22,6 +22,7 @@ dependencies:
     - ./scripts/import_credentials.sh
     - |
       cd app
+      brew install node
       npm install
   override:
     - pod update Meteor SugarRecord PKHUD
