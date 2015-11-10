@@ -13,6 +13,8 @@ import Core
 @objc(TaylrAPI)
 class TaylrAPI : NSObject {
     
+    @objc weak var bridge: RCTBridge?
+    
     @objc func getMeteorUser(callback: RCTResponseSenderBlock) {
         if let account = MainContext.meteor.account.value {
             Log.info("Will return meteor account to JS \(account.userID) token \(account.resumeToken)")
@@ -21,5 +23,6 @@ class TaylrAPI : NSObject {
             Log.info("Will return nil meteor account to JS")
             callback([])
         }
+        bridge?.eventDispatcher.sendAppEventWithName("Example", body: ["Example": "Data"])
     }
 }

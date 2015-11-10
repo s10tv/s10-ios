@@ -9,6 +9,7 @@ let TaylrAPI = require('react-native').NativeModules.TaylrAPI;
 let React = require('react-native');
 let {
   AppRegistry,
+  NativeAppEventEmitter,
 } = React;
 
 // polyfill the process functionality needed
@@ -31,3 +32,10 @@ AppRegistry.registerComponent('TaylrReact', () => container);
 // 	  }
 // 	});
 // })
+var subscription = NativeAppEventEmitter.addListener(
+  'Example',
+  (data) => console.log(data)
+);
+// ...
+// // Don't forget to unsubscribe, typically in componentWillUnmount
+// subscription.remove();
