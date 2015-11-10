@@ -199,7 +199,7 @@ var styles = StyleSheet.create({
     position: 'relative',
   },
   hashtagMine: {
-    backgroundColor: "#4A148C",
+    backgroundColor: "#64369C",
   },
   hashtagNotMine: {
     backgroundColor: "#cccccc",

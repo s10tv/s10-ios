@@ -8,6 +8,7 @@ let {
   StyleSheet,
 } = React;
 
+let Me = require('./Me');
 let HashtagCategory = require('./HashtagCategory');
 let Hashtag = require('./Hashtag');
 
@@ -48,9 +49,7 @@ class LayoutContainer extends React.Component {
         return <Hashtag navigator={nav} category={route.category} />;
       default:
         return (
-          <HashtagCategory
-            title='My Hashtags'
-            navigator={nav} />
+          <Me navigator={nav} />
         );
     }
   }
@@ -63,11 +62,7 @@ class LayoutContainer extends React.Component {
         renderScene={this.renderScene}
         configureScene={(route) => Navigator.SceneConfigs.FloatFromRight}
         initialRoute={{
-          title: 'My Hashtags',
-          component: HashtagCategory,
-          passProps: {
-            toggleNavBar: this.toggleNavBar,
-          }
+          title: 'Me',
         }}
         navigationBar={
           <Navigator.NavigationBar
@@ -87,7 +82,7 @@ var styles = StyleSheet.create({
     flex: 1,
   },
   navBar: {
-    backgroundColor: '#4A148C',
+    backgroundColor: '#64369C',
   },
   navBarTitleText: {
     fontSize: 20,

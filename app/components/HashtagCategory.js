@@ -22,15 +22,8 @@ class HashtagCategory extends React.Component {
   }
 
   componentWillMount() {
-    ddp.initialize()
-    .then(() => {
-      return ddp.loginWithToken('vU8rq_HWmJm7LNHx78anzipsNu9XUYY26jsWvn8Bfdx') 
-    })
-    .then(() => {
-      return ddp.subscribe('hashtag-categories')
-    })
+    return ddp.subscribe('hashtag-categories')
     .then((res) => {
-      console.log("[QIMING] HashtagCategory subscribing")
       let categoryObserver = ddp.collections.observe(() => {
         let categories = [];
         if (ddp.collections.categories) {
@@ -115,17 +108,14 @@ class HashtagCategory extends React.Component {
     })
 
     return (
-      <ScrollView style={styles.container}>
+      <View style={styles.container}>
         {rows}
-      </ScrollView>
+      </View>
     );
   }
 }
 
 var styles = StyleSheet.create({
-  container: {
-    paddingTop: 64,
-  },
   category: {
     flex: 1,
     paddingHorizontal: 10,
@@ -149,7 +139,7 @@ var styles = StyleSheet.create({
   hashtagContainer: {
     padding: 15,
     margin: 10,
-    backgroundColor: "#4A148C",
+    backgroundColor: "#64369C",
   },
   hashtagText: {
     color: "#ffffff"
