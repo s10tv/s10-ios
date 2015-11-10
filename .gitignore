@@ -1,5 +1,6 @@
 .env
 node_modules
+npm-debug.log
 # Project Specific Excludes
 
 scripts/env.sh
