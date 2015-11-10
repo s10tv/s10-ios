@@ -205,11 +205,11 @@ extension ConversationViewController : VideoMakerDelegate {
     
     func videoMaker(videoMaker: VideoMakerViewController, didProduceVideoSession session: VideoSession) {
         PKHUD.showActivity()
-        session.exportWithFirstFrame { url, thumbnail in
+        session.exportWithFirstFrame { url, thumbnail, duration in
             PKHUD.hide(animated: false)
             self.scrollDownHint.hidden = false
             self.scrollView.scrollEnabled = true
-            self.vm.sendVideo(url, thumbnail: thumbnail, duration: 5)
+            self.vm.sendVideo(url, thumbnail: thumbnail, duration: duration)
             Analytics.track("Message: Send", ["ConversationName": self.vm.displayName.value])
         }
     }
