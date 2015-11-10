@@ -1,8 +1,11 @@
 let React = require('react-native');
+var Button = require('react-native-button');
+
 let {
   AppRegistry,
   View,
   Text,
+  Image,
   TouchableOpacity,
   Navigator,
   WebView,
@@ -31,6 +34,13 @@ var NavigationBarRouteMapper = {
   },
 
   RightButton: function(route, navigator, index, navState) {
+    return(
+      <View style={styles.navBarRightButton}>
+        <Button onPress={() => { console.log('pressed')}}>
+          <Image style={{ flex: 1, width: 40 }} resizeMode="contain" source={require('image!ic-more-png')} />
+        </Button>
+      </View>
+    )
   },
 
   Title: function(route, navigator, index, navState) {
@@ -94,6 +104,13 @@ var styles = StyleSheet.create({
   nav: {
     flex: 1,
   },
+  moreButton: {
+    width: 200,
+    height: 200,
+    position: 'absolute',
+    top: 0,
+    right: 0
+  },
   navBar: {
     backgroundColor: '#64369C',
   },
@@ -112,6 +129,10 @@ var styles = StyleSheet.create({
     paddingLeft: 10,
   },
   navBarRightButton: {
+    flex: 1,
+    flexDirection: 'row',
+    height: 64,
+    alignItems: 'center',
     paddingRight: 10,
   },
 });
