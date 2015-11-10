@@ -5,17 +5,18 @@ let {
   Text,
   TouchableOpacity,
   Navigator,
+  WebView,
   StyleSheet,
 } = React;
 
 let Me = require('./Me');
+let MeEdit = require('./MeEdit');
 let HashtagCategory = require('./HashtagCategory');
 let Hashtag = require('./Hashtag');
 
 var NavigationBarRouteMapper = {
   LeftButton: function(route, navigator, index, navState) {
-    console.log(route);
-    if (route.id == 'hashtag') {
+    if (route.id) {
       return (
         <TouchableOpacity
           onPress={() => navigator.pop()}
@@ -47,9 +48,14 @@ class LayoutContainer extends React.Component {
     switch (route.id) {
       case 'hashtag':
         return <Hashtag navigator={nav} category={route.category} />;
+      case 'servicelink':
+        return <WebView
+          style={styles.webView}
+          startInLoadingState={true}
+          url={route.link} />;
       default:
         return (
-          <Me navigator={nav} />
+          <MeEdit navigator={nav} />
         );
     }
   }
@@ -77,6 +83,10 @@ var styles = StyleSheet.create({
   navWrap: {
     flex: 1,
     marginTop: 15
+  },
+  webView: {
+    marginTop: 64,
+    paddingTop: 64,
   },
   nav: {
     flex: 1,
