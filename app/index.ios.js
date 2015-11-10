@@ -4,6 +4,8 @@
  */
 'use strict';
 
+let ddp = require('./lib/ddp');
+let TaylrAPI = require('react-native').NativeModules.TaylrAPI;
 let React = require('react-native');
 let {
   AppRegistry,
@@ -21,3 +23,11 @@ let container = React.createClass({
 });
 
 AppRegistry.registerComponent('TaylrReact', () => container);
+
+// ddp.initialize().then((res) => {
+// 	TaylrAPI.getMeteorUser((userId, resumeToken) => {
+// 	  if (resumeToken != null) {
+// 	  	ddp.loginWithToken(resumeToken);
+// 	  }
+// 	});
+// })

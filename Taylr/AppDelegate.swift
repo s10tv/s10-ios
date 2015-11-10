@@ -86,7 +86,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
             layerService: LayerService(layerAppID: env.layerURL, meteor: meteor, existingClient: layerClient),
             reactBridge: bridge
         )
-        let token = METAccount.defaultAccount().resumeToken
+//        let token = METAccount.defaultAccount().resumeToken
+//        bridge.enqueueJSCall("ddp.loginWithToken", args: [token])
+
         
         layerClient = Globals.layerService.layerClient
         Globals.layerService.connectAndKeepUserInSync()

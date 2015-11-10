@@ -1,4 +1,5 @@
 let React = require('react-native');
+let TaylrAPI = require('react-native').NativeModules.TaylrAPI;
 let {
   AppRegistry,
   View,
@@ -25,26 +26,28 @@ class Me extends React.Component {
   }
 
   componentWillMount() {
-    ddp.initialize()
-    .then(() => {
-      return ddp.loginWithToken(token) 
-    })
-    .then(() => {
-      return ddp.subscribe('me');
-    })
-    .then((res) => {
-      let meObserver = ddp.collections.observe(() => {
-        if (ddp.collections.users) {
-          return ddp.collections.users.find({ _id: userId });
-        }
-      });
+    ddp.initialize().then((res) => {
+      TaylrAPI.getMeteorUser((userId, resumeToken) => {
+        if (resumeToken != null) {
+          ddp.loginWithToken(resumeToken).then((res) => {
+            ddp.subscribe('me')
+            .then((res) => {
+              let meObserver = ddp.collections.observe(() => {
+                if (ddp.collections.users) {
+                  return ddp.collections.users.find({ _id: userId });
+                }
+              });
 
-      meObserver.subscribe((results) => {
-        if (results.length == 1) {
-          this.setState({ me: results[0] });
+              meObserver.subscribe((results) => {
+                if (results.length == 1) {
+                  this.setState({ me: results[0] });
+                }
+              });
+            })
+          });
         }
       });
-    })
+    });
   }
 
   render() {

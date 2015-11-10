@@ -185,8 +185,8 @@
 		EAA5763C1BB86A5000661A4F /* UICollectionViewBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA576391BB86A5000661A4F /* UICollectionViewBinding.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA5763D1BB86A5000661A4F /* UITableViewBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA5763A1BB86A5000661A4F /* UITableViewBinding.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA5DABC1BF2A81700BF6B1E /* HashtagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA5DABB1BF2A81700BF6B1E /* HashtagsViewController.swift */; settings = {ASSET_TAGS = (); }; };
-		EAA5DAC01BF2A8E100BF6B1E /* MainViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA5DABD1BF2A8E100BF6B1E /* MainViewManager.m */; settings = {ASSET_TAGS = (); }; };
-		EAA5DAC11BF2A8E100BF6B1E /* MainViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA5DABE1BF2A8E100BF6B1E /* MainViewManager.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA5DAC01BF2A8E100BF6B1E /* TaylrAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA5DABD1BF2A8E100BF6B1E /* TaylrAPI.m */; settings = {ASSET_TAGS = (); }; };
+		EAA5DAC11BF2A8E100BF6B1E /* TaylrAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA5DABE1BF2A8E100BF6B1E /* TaylrAPI.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA5DAC21BF2A8E100BF6B1E /* TSContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA5DABF1BF2A8E100BF6B1E /* TSContainerView.m */; settings = {ASSET_TAGS = (); }; };
 		EAA5DACF1BF2A99100BF6B1E /* libRNOverlay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA5DACB1BF2A98000BF6B1E /* libRNOverlay.a */; };
 		EAA5DAD01BF2A99100BF6B1E /* libRNSearchBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA5DACE1BF2A98000BF6B1E /* libRNSearchBar.a */; };
@@ -441,8 +441,8 @@
 		EAA576391BB86A5000661A4F /* UICollectionViewBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewBinding.swift; sourceTree = "<group>"; };
 		EAA5763A1BB86A5000661A4F /* UITableViewBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewBinding.swift; sourceTree = "<group>"; };
 		EAA5DABB1BF2A81700BF6B1E /* HashtagsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagsViewController.swift; sourceTree = "<group>"; };
-		EAA5DABD1BF2A8E100BF6B1E /* MainViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewManager.m; sourceTree = "<group>"; };
-		EAA5DABE1BF2A8E100BF6B1E /* MainViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewManager.swift; sourceTree = "<group>"; };
+		EAA5DABD1BF2A8E100BF6B1E /* TaylrAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaylrAPI.m; sourceTree = "<group>"; };
+		EAA5DABE1BF2A8E100BF6B1E /* TaylrAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaylrAPI.swift; sourceTree = "<group>"; };
 		EAA5DABF1BF2A8E100BF6B1E /* TSContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSContainerView.m; sourceTree = "<group>"; };
 		EAA5DAC31BF2A98000BF6B1E /* RNSearchBar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNSearchBar.xcodeproj; path = "app/node_modules/react-native-search-bar/RNSearchBar.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		EAA5DAC61BF2A98000BF6B1E /* RNOverlay.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNOverlay.xcodeproj; path = "app/node_modules/react-native-overlay/RNOverlay.xcodeproj"; sourceTree = SOURCE_ROOT; };
@@ -1022,8 +1022,8 @@
 				EABF2AB51AD04659005880E7 /* InfoPlist.strings */,
 				EA9F35621A74CD8800E0C65D /* Taylr-Bridging.h */,
 				EA9F353E1A74CC6900E0C65D /* Taylr-Info.plist */,
-				EAA5DABE1BF2A8E100BF6B1E /* MainViewManager.swift */,
-				EAA5DABD1BF2A8E100BF6B1E /* MainViewManager.m */,
+				EAA5DABE1BF2A8E100BF6B1E /* TaylrAPI.swift */,
+				EAA5DABD1BF2A8E100BF6B1E /* TaylrAPI.m */,
 				EAA5DABF1BF2A8E100BF6B1E /* TSContainerView.m */,
 				49A80BC478B1E012CE6D7406 /* Generated */,
 			);
@@ -1777,7 +1777,7 @@
 				EA0989911BD4CEDC0014F71C /* EditorViewController.swift in Sources */,
 				EA72AE581BD005CD0031D652 /* HistoryViewController.swift in Sources */,
 				EA42D64E1BB7BE5A00B07526 /* StyleKit.swift in Sources */,
-				EAA5DAC01BF2A8E100BF6B1E /* MainViewManager.m in Sources */,
+				EAA5DAC01BF2A8E100BF6B1E /* TaylrAPI.m in Sources */,
 				EAA5760B1BB7E1F700661A4F /* ProfileIconCell.swift in Sources */,
 				EA72AE571BD005CD0031D652 /* DiscoverViewController.swift in Sources */,
 				EAA5760F1BB7E2E000661A4F /* TransitionManager.swift in Sources */,
@@ -1785,7 +1785,7 @@
 				EA72AE5D1BD005CD0031D652 /* IntegrationCell.swift in Sources */,
 				EA72AE621BD005CD0031D652 /* MeViewController.swift in Sources */,
 				EAA5DAC21BF2A8E100BF6B1E /* TSContainerView.m in Sources */,
-				EAA5DAC11BF2A8E100BF6B1E /* MainViewManager.swift in Sources */,
+				EAA5DAC11BF2A8E100BF6B1E /* TaylrAPI.swift in Sources */,
 				EA42D64C1BB7BE4700B07526 /* Errors.swift in Sources */,
 				EAEDF7D91BD2E7B300037BA4 /* ConversationViewController.swift in Sources */,
 				EA0989A01BD4CF3D0014F71C /* VolumeViewModel.swift in Sources */,

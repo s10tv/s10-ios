@@ -1,5 +1,5 @@
 //
-//  MainViewManager.m
+//  TaylrAPI.m
 //  S10
 //
 //  Created by Tony Xiao on 11/2/15.
@@ -9,8 +9,8 @@
 #import <Foundation/Foundation.h>
 #import <React/RCTBridgeModule.h>
 
-@interface RCT_EXTERN_MODULE(MainViewManager, NSObject)
+@interface RCT_EXTERN_MODULE(TaylrAPI, NSObject)
 
-RCT_EXTERN_METHOD(testMethod:(NSString *)string alt:(NSString *)alt)
+RCT_EXTERN_METHOD(getMeteorUser:(RCTResponseSenderBlock *)callback)
 
 @end
