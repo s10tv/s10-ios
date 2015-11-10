@@ -184,6 +184,12 @@
 		EAA5763B1BB86A5000661A4F /* BindableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA576381BB86A5000661A4F /* BindableCell.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA5763C1BB86A5000661A4F /* UICollectionViewBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA576391BB86A5000661A4F /* UICollectionViewBinding.swift */; settings = {ASSET_TAGS = (); }; };
 		EAA5763D1BB86A5000661A4F /* UITableViewBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA5763A1BB86A5000661A4F /* UITableViewBinding.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA5DABC1BF2A81700BF6B1E /* HashtagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA5DABB1BF2A81700BF6B1E /* HashtagsViewController.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA5DAC01BF2A8E100BF6B1E /* MainViewManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA5DABD1BF2A8E100BF6B1E /* MainViewManager.m */; settings = {ASSET_TAGS = (); }; };
+		EAA5DAC11BF2A8E100BF6B1E /* MainViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA5DABE1BF2A8E100BF6B1E /* MainViewManager.swift */; settings = {ASSET_TAGS = (); }; };
+		EAA5DAC21BF2A8E100BF6B1E /* TSContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA5DABF1BF2A8E100BF6B1E /* TSContainerView.m */; settings = {ASSET_TAGS = (); }; };
+		EAA5DACF1BF2A99100BF6B1E /* libRNOverlay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA5DACB1BF2A98000BF6B1E /* libRNOverlay.a */; };
+		EAA5DAD01BF2A99100BF6B1E /* libRNSearchBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA5DACE1BF2A98000BF6B1E /* libRNSearchBar.a */; };
 		EAB31D571BCF76260080DA47 /* LayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB31D561BCF76260080DA47 /* LayerService.swift */; settings = {ASSET_TAGS = (); }; };
 		EABA05461B474FED00154C75 /* test-avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EABA05451B474FED00154C75 /* test-avatar.jpg */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
@@ -206,6 +212,20 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		EAA5DACA1BF2A98000BF6B1E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAA5DAC61BF2A98000BF6B1E /* RNOverlay.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNOverlay;
+		};
+		EAA5DACD1BF2A98000BF6B1E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EAA5DAC31BF2A98000BF6B1E /* RNSearchBar.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RNSearchBar;
+		};
 		EAF81B151B325A6B00EED6DD /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EA9F35321A74CC6900E0C65D /* Project object */;
@@ -420,6 +440,12 @@
 		EAA576381BB86A5000661A4F /* BindableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindableCell.swift; sourceTree = "<group>"; };
 		EAA576391BB86A5000661A4F /* UICollectionViewBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewBinding.swift; sourceTree = "<group>"; };
 		EAA5763A1BB86A5000661A4F /* UITableViewBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewBinding.swift; sourceTree = "<group>"; };
+		EAA5DABB1BF2A81700BF6B1E /* HashtagsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagsViewController.swift; sourceTree = "<group>"; };
+		EAA5DABD1BF2A8E100BF6B1E /* MainViewManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainViewManager.m; sourceTree = "<group>"; };
+		EAA5DABE1BF2A8E100BF6B1E /* MainViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewManager.swift; sourceTree = "<group>"; };
+		EAA5DABF1BF2A8E100BF6B1E /* TSContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSContainerView.m; sourceTree = "<group>"; };
+		EAA5DAC31BF2A98000BF6B1E /* RNSearchBar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNSearchBar.xcodeproj; path = "app/node_modules/react-native-search-bar/RNSearchBar.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		EAA5DAC61BF2A98000BF6B1E /* RNOverlay.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNOverlay.xcodeproj; path = "app/node_modules/react-native-overlay/RNOverlay.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		EAAD921C1ACF342C0014BA25 /* TaylrEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaylrEnvironment.swift; sourceTree = "<group>"; };
 		EAB31D561BCF76260080DA47 /* LayerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerService.swift; sourceTree = "<group>"; };
 		EABA05431B474EC900154C75 /* PhotoUploadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoUploadOperation.swift; sourceTree = "<group>"; };
@@ -490,6 +516,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAA5DACF1BF2A99100BF6B1E /* libRNOverlay.a in Frameworks */,
+				EAA5DAD01BF2A99100BF6B1E /* libRNSearchBar.a in Frameworks */,
 				F95D95DF1A84A1170068F090 /* MediaPlayer.framework in Frameworks */,
 				F996C7261A81F1F200314FF8 /* OpenGLES.framework in Frameworks */,
 				F996C7241A81F1E700314FF8 /* QuartzCore.framework in Frameworks */,
@@ -516,6 +544,8 @@
 		2C9F4D1EF3D7E4C4FBB0AEDB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EAA5DAC31BF2A98000BF6B1E /* RNSearchBar.xcodeproj */,
+				EAA5DAC61BF2A98000BF6B1E /* RNOverlay.xcodeproj */,
 				F95D95DE1A84A1170068F090 /* MediaPlayer.framework */,
 				F996C7251A81F1F200314FF8 /* OpenGLES.framework */,
 				F996C7231A81F1E700314FF8 /* QuartzCore.framework */,
@@ -879,6 +909,7 @@
 				EA72AE3B1BD005CD0031D652 /* MeViewController.swift */,
 				EA72AE331BD005CD0031D652 /* EditProfileViewController.swift */,
 				EA72AE321BD005CD0031D652 /* EditHashtagsViewController.swift */,
+				EAA5DABB1BF2A81700BF6B1E /* HashtagsViewController.swift */,
 				EA72AE341BD005CD0031D652 /* HashtagCell.swift */,
 			);
 			path = Me;
@@ -991,6 +1022,9 @@
 				EABF2AB51AD04659005880E7 /* InfoPlist.strings */,
 				EA9F35621A74CD8800E0C65D /* Taylr-Bridging.h */,
 				EA9F353E1A74CC6900E0C65D /* Taylr-Info.plist */,
+				EAA5DABE1BF2A8E100BF6B1E /* MainViewManager.swift */,
+				EAA5DABD1BF2A8E100BF6B1E /* MainViewManager.m */,
+				EAA5DABF1BF2A8E100BF6B1E /* TSContainerView.m */,
 				49A80BC478B1E012CE6D7406 /* Generated */,
 			);
 			name = "Supporting Files";
@@ -1062,6 +1096,22 @@
 				EA337DFE1BB9067800F09A92 /* UIKitBindings.swift */,
 			);
 			path = Bindings;
+			sourceTree = "<group>";
+		};
+		EAA5DAC41BF2A98000BF6B1E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EAA5DACE1BF2A98000BF6B1E /* libRNSearchBar.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EAA5DAC71BF2A98000BF6B1E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EAA5DACB1BF2A98000BF6B1E /* libRNOverlay.a */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 		EABD43D71AA1D27400B07813 /* Configs */ = {
@@ -1340,6 +1390,16 @@
 			mainGroup = EA9F35311A74CC6900E0C65D;
 			productRefGroup = EA9F353B1A74CC6900E0C65D /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = EAA5DAC71BF2A98000BF6B1E /* Products */;
+					ProjectRef = EAA5DAC61BF2A98000BF6B1E /* RNOverlay.xcodeproj */;
+				},
+				{
+					ProductGroup = EAA5DAC41BF2A98000BF6B1E /* Products */;
+					ProjectRef = EAA5DAC31BF2A98000BF6B1E /* RNSearchBar.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				EA5B74311B3139EA008E5CBC /* Core */,
@@ -1349,6 +1409,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		EAA5DACB1BF2A98000BF6B1E /* libRNOverlay.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNOverlay.a;
+			remoteRef = EAA5DACA1BF2A98000BF6B1E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EAA5DACE1BF2A98000BF6B1E /* libRNSearchBar.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNSearchBar.a;
+			remoteRef = EAA5DACD1BF2A98000BF6B1E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		EA5B74041B30F7BB008E5CBC /* Resources */ = {
@@ -1700,12 +1777,15 @@
 				EA0989911BD4CEDC0014F71C /* EditorViewController.swift in Sources */,
 				EA72AE581BD005CD0031D652 /* HistoryViewController.swift in Sources */,
 				EA42D64E1BB7BE5A00B07526 /* StyleKit.swift in Sources */,
+				EAA5DAC01BF2A8E100BF6B1E /* MainViewManager.m in Sources */,
 				EAA5760B1BB7E1F700661A4F /* ProfileIconCell.swift in Sources */,
 				EA72AE571BD005CD0031D652 /* DiscoverViewController.swift in Sources */,
 				EAA5760F1BB7E2E000661A4F /* TransitionManager.swift in Sources */,
 				EAA576081BB7E04C00661A4F /* BaseViewController.swift in Sources */,
 				EA72AE5D1BD005CD0031D652 /* IntegrationCell.swift in Sources */,
 				EA72AE621BD005CD0031D652 /* MeViewController.swift in Sources */,
+				EAA5DAC21BF2A8E100BF6B1E /* TSContainerView.m in Sources */,
+				EAA5DAC11BF2A8E100BF6B1E /* MainViewManager.swift in Sources */,
 				EA42D64C1BB7BE4700B07526 /* Errors.swift in Sources */,
 				EAEDF7D91BD2E7B300037BA4 /* ConversationViewController.swift in Sources */,
 				EA0989A01BD4CF3D0014F71C /* VolumeViewModel.swift in Sources */,
@@ -1745,6 +1825,7 @@
 				EA42D65F1BB7C67900B07526 /* DesignableViews.swift in Sources */,
 				EAA576171BB7E5B600661A4F /* LoginViewController.swift in Sources */,
 				EA0989971BD4CEDC0014F71C /* TouchDetector.swift in Sources */,
+				EAA5DABC1BF2A81700BF6B1E /* HashtagsViewController.swift in Sources */,
 				EAA575FC1BB7D0F000661A4F /* ThirdPartyBindings.swift in Sources */,
 				EAA576091BB7E0E700661A4F /* PageViewController.swift in Sources */,
 				EA0989901BD4CEDC0014F71C /* VideoMaker.swift in Sources */,

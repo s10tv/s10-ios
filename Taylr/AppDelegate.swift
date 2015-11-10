@@ -19,6 +19,7 @@ import LayerKit
 import SCRecorder
 import AVFoundation
 import Async
+import React
 import Core
 import NKRecorder
 
@@ -75,14 +76,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         // so that account.state is initially correct
         meteor.startup()
 
-        
+        let reactBundleURL = NSURL("http://localhost:8081/index.ios.bundle?platform=ios")
+        let bridge = RCTBridge(bundleURL: reactBundleURL, moduleProvider: nil, launchOptions: nil)
         _GlobalsContainer.instance = GlobalsContainer(env: env,
             meteorService: meteor,
             accountService: AccountService(meteorService: meteor),
             analyticsService: AnalyticsService(env: env, currentUser: meteor.currentUser),
             upgradeService: UpgradeService(env: env, currentUser: meteor.currentUser),
-            layerService: LayerService(layerAppID: env.layerURL, meteor: meteor, existingClient: layerClient)
+            layerService: LayerService(layerAppID: env.layerURL, meteor: meteor, existingClient: layerClient),
+            reactBridge: bridge
         )
+        let token = METAccount.defaultAccount().resumeToken
         
         layerClient = Globals.layerService.layerClient
         Globals.layerService.connectAndKeepUserInSync()
@@ -116,6 +120,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
             window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
         }
         window?.makeKeyAndVisible()
+//        let vc = UIViewController()
+//        NSURL *jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle"];
+        // For production use, this `NSURL` could instead point to a pre-bundled file on disk:
+        //
+        //   NSURL *jsCodeLocation = [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];
+        //
+        // To generate that file, run the curl command and add the output to your main Xcode build target:
+        //
+        //   curl http://localhost:8081/index.ios.bundle -o main.jsbundle
+//        let view = RCTRootView(bundleURL: NSURL("http://localhost:8081/index.ios.bundle?platform=ios"), moduleName: "SimpleApp", initialProperties: nil, launchOptions: nil)
+//        vc.view = view
+//        window?.rootViewController = vc
+//        RCTRootView *rootView = [[RCTRootView alloc] initWithBundleURL:jsCodeLocation
+//        moduleName: @"SimpleApp"
+//        launchOptions:nil];
+
         
         // Pre-heat the camera if we can
 //        Async.background {
@@ -178,7 +198,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
             // fatalError("Non-simulator build should have valid APS environment")
         }
         do {
-            try layerClient.updateRemoteNotificationDeviceToken(deviceToken)
+            //try layerClient.updateRemoteNotificationDeviceToken(deviceToken)
         } catch let error as NSError {
             Log.error("Unable to update Layer with push token", error)
         }

@@ -43,6 +43,14 @@ target :Core do
 
     target :Taylr do
         link_with 'Taylr'
+        pod 'React', :path => 'app/node_modules/react-native', :subspecs => [
+          'Core',
+          'RCTImage',
+          'RCTNetwork',
+          'RCTText',
+          'RCTWebSocket',
+          # Add any other subspecs you want to use in your project
+        ]
 
         pod 'SwipeView', '~> 1.3'
         pod 'SDWebImage', '~> 3.7'

@@ -20,6 +20,9 @@ dependencies:
     - sudo gem install cocoapods -v $(var=$(tail -1 Podfile.lock); echo ${var##COCOAPODS:})
     - sudo gem install cupertino shenzhen sigh xcpretty gym
     - ./scripts/import_credentials.sh
+    - |
+      cd app
+      npm install
   override:
     - pod update Meteor SugarRecord PKHUD
   cache_directories:

@@ -168,11 +168,11 @@ public class LayerService: NSObject {
     }
     
     private func authenticate(userId: String) -> SignalProducer<String, NSError> {
-        if let layerUserId = layerClient.authenticatedUserID where layerUserId == userId {
-            return SignalProducer(value: userId)
-        } else if layerClient.isAuthenticated {
-            return layerClient.deauthenticate().then(authenticate(userId))
-        }
+//        if let layerUserId = layerClient.authenticatedUserID where layerUserId == userId {
+//            return SignalProducer(value: userId)
+//        } else if layerClient.isAuthenticated {
+//            return layerClient.deauthenticate().then(authenticate(userId))
+//        }
         return layerClient.requestAuthenticationNonce().flatMap(.Concat) { nonce in
             self.meteor.layerAuth(nonce).producer
         }.flatMap(.Concat) { identityToken in
