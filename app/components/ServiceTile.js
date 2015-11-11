@@ -30,7 +30,7 @@ class ServiceTile extends React.Component {
       <Image style={[SHEET.icon]} source={require('./img/ic-add.png')} />
 
     let display = service.status == 'linked' ?
-      <Text style={styles.serviceId}>{service.username}</Text> : null;
+      <Text style={[styles.serviceId, SHEET.baseText]}>{service.username}</Text> : null;
 
     return (
       <TappableCard 
@@ -38,7 +38,7 @@ class ServiceTile extends React.Component {
           <View style={styles.service}>
             <Image source={{ uri: service.icon.url }} style={[SHEET.icon]} />
             <View style={styles.serviceDesc}>
-              <Text style={styles.serviceName}>{service.name}</Text>
+              <Text style={[SHEET.subTitle, SHEET.baseText]}>{service.name}</Text>
               { display }
             </View>
             {icon}
@@ -57,10 +57,6 @@ var styles = StyleSheet.create({
   serviceDesc: {
     flex: 1,
     left: 15,
-  },
-  serviceName: {
-    color: '#666666',
-    fontSize: 14
   },
   serviceId: {
     color: '#000000',

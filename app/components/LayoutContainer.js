@@ -18,7 +18,7 @@ let Me = require('./Me');
 let MeEdit = require('./MeEdit');
 let HashtagCategory = require('./HashtagCategory');
 let HashtagListView = require('./HashtagListView');
-var EventEmitter = require('EventEmitter');
+let SHEET = require('./CommonStyles').SHEET;
 
 class LayoutContainer extends React.Component {
 
@@ -27,7 +27,6 @@ class LayoutContainer extends React.Component {
     this.state = {
       modalVisible: false
     }
-    this.eventEmitter = new EventEmitter();
   }
 
   _leftButton(route, navigator, index, navState) {
@@ -58,7 +57,7 @@ class LayoutContainer extends React.Component {
 
   _title (route, navigator, index, navState) {
     return (
-      <Text style={[styles.navBarText, styles.navBarTitleText]}>
+      <Text style={[styles.navBarText, styles.navBarTitleText, SHEET.baseText]}>
         {route.title}
       </Text>
     );

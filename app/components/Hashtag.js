@@ -9,6 +9,7 @@ let {
 
 let Button = require('react-native-button');
 let COLORS = require('./CommonStyles').COLORS;
+let SHEET = require('./CommonStyles').SHEET;
 let ddp = require('../lib/ddp');
 
 class Hashtag extends React.Component {
@@ -28,7 +29,7 @@ class Hashtag extends React.Component {
     let hashtagButton = (
       <View 
         style={[styles.hashtag, { backgroundColor : hashtagColor }]}>
-        <Text style={styles.hashtagText}>{hashtag.text}</Text>
+        <Text style={[styles.hashtagText, SHEET.baseText]}>{hashtag.text}</Text>
       </View>
     );
 
@@ -42,8 +43,8 @@ class Hashtag extends React.Component {
 
 var styles = StyleSheet.create({
   hashtag: {
-    padding: 15,
-    margin: 10,
+    padding: 12,
+    margin: 8,
   },
   hashtagText: {
     color: COLORS.white,

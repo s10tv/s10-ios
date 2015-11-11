@@ -67,14 +67,14 @@ class Me extends React.Component {
             </Image>
             <Image style={styles.avatar} source={{ uri: me.avatar.url }} />
             <View style={styles.headerView}>
-              <Text style={[styles.headerName, styles.headerText]}>{ me.firstName } { me.lastName }</Text> 
+              <Text style={[styles.headerName, styles.headerText, SHEET.baseText]}>{ me.firstName } { me.lastName }</Text> 
             </View>
 
             <View style={[styles.viewButton, styles.buttonContainer]}>
               <Button
                 onPress={(event) => {}}>
                   <View style={styles.button}>
-                    <Text style={[styles.buttonText]}>View</Text>
+                    <Text style={[styles.buttonText, SHEET.baseText]}>View</Text>
                   </View>
               </Button>
             </View>
@@ -87,7 +87,7 @@ class Me extends React.Component {
                   userId: me._id
                 })}>
                   <View style={styles.button}>
-                    <Text style={[styles.buttonText]}>Edit</Text>
+                    <Text style={[styles.buttonText, SHEET.baseText]}>Edit</Text>
                   </View>
               </Button>
             </View>

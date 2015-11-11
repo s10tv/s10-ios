@@ -21,8 +21,12 @@ exports.SHEET = StyleSheet.create({
     backgroundColor: BACKGROUND_COLOR,
   },
 
+  baseText: {
+    fontFamily: 'Cabin-Regular'
+  },
+
   innerContainer: {
-    marginHorizontal: 15,
+    marginHorizontal: 8,
   },
 
   navTop: {
@@ -31,6 +35,11 @@ exports.SHEET = StyleSheet.create({
 
   bottomTile: {
     paddingBottom: 64,
+  },
+
+  subTitle: {
+    color: '#666666',
+    fontSize: 14
   },
 
   icon: {

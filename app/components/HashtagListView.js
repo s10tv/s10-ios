@@ -123,11 +123,12 @@ class HashtagListView extends React.Component {
             onChangeText={(text) => this._searchTag.bind(this)(text)} />
 
           <ScrollView
-            style={[SHEET.bottomTile, { flex: 1 }]}
+            style={[{ flex: 1 }]}
             contentContainerStyle={styles.hashtagContentContainerStyle}>
               {hashtags}
-          </ScrollView>
 
+              <View style={SHEET.bottomTile} />
+          </ScrollView>
 
         </Card>
         <View style={styles.bottomSheet}>

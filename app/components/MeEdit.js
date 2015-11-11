@@ -17,6 +17,7 @@ let {
 let SHEET = require('./CommonStyles').SHEET;
 let TappableCard = require('./Card').TappableCard;
 let Card = require('./Card').Card;
+let SectionTitle = require('./SectionTitle');
 let ServiceTile = require('./ServiceTile');
 let AlertOnPressButton = require('./AlertOnPressButton');
 
@@ -108,9 +109,9 @@ class MeEdit extends React.Component {
     let editSection = editInfo.map((info) => {
       return (
         <Card>
-          <Text style={styles.serviceName}>{info.display}</Text>
+          <Text style={[SHEET.subTitle, SHEET.baseText]}>{info.display}</Text>
           <TextInput
-            style={{ flex: 1, height: 30 }}
+            style={[{ flex: 1, height: 30 }, SHEET.baseText]}
             multiline={info.multiline}
             onChangeText={(text) => {
               let newState = {};
@@ -145,28 +146,24 @@ class MeEdit extends React.Component {
             <AlertOnPressButton title={"Update avatar"} content={"Not ready yet"}>
               <View style={styles.avatarContainer}>
                 <Image style={styles.avatar} source={{ uri: me.avatar.url }} />
-                <Text style={styles.editText}>Edit Avatar</Text>
+                <Text style={[styles.editText, SHEET.baseText]}>Edit Avatar</Text>
               </View>
             </AlertOnPressButton>
 
             <AlertOnPressButton title={"Update cover"} content={"Not ready yet"}>
               <View style={styles.editCoverButtonContainer}>
                 <View style={styles.editCoverButton}>
-                  <Text style={styles.editText}>Edit Cover</Text>
+                  <Text style={[styles.editText, SHEET.baseText]}>Edit Cover</Text>
                 </View>
               </View>
             </AlertOnPressButton>
           </View>
 
           <View style={SHEET.innerContainer}>
-            <View style={styles.titleView}>
-              <Text style={styles.title}>SERVICES</Text>
-            </View>
+            <SectionTitle title={'SERVICES'} />
             {{ services }} 
 
-            <View style={styles.titleView}>
-              <Text style={styles.title}>MY INFO</Text>
-            </View>
+            <SectionTitle title={'MY INFO'} />
             <View style={styles.separator} />
             {editSection}
 
@@ -181,9 +178,6 @@ class MeEdit extends React.Component {
 var COVER_HEIGHT = 170;
 
 var styles = StyleSheet.create({
-  padding: {
-    height: 64
-  },
   avatarContainer: {
     position: 'absolute',
     backgroundColor: 'rgba(0,0,0,0)', 

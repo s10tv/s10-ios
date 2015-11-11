@@ -11,6 +11,7 @@ let {
 
 let ddp = require('../lib/ddp');
 let TappableCard = require('./Card').TappableCard;
+let SectionTitle = require('./SectionTitle');
 let Hashtag = require('./Hashtag');
 let SHEET = require('./CommonStyles').SHEET;
 
@@ -75,8 +76,8 @@ class HashtagCategory extends React.Component {
 
     return (
       <TappableCard onPress={(event) => { return this._handleCategoryTouch.bind(this)(category)}}>
-        <View style={styles.categoryHeader}>
-          <Text style={styles.categoryDisplayName}>{category.displayName}</Text>
+        <View style={[styles.categoryHeader]}>
+          <Text style={[styles.categoryDisplayName, SHEET.subTitle, SHEET.baseText]}>{category.displayName}</Text>
           {icon}
         </View>
         <View style={styles.myHashtags}>
@@ -93,6 +94,7 @@ class HashtagCategory extends React.Component {
 
     return (
       <View style={SHEET.innerContainer}>
+        <SectionTitle title={'MY HASHTAGS'} />
         {rows}
       </View>
     );
@@ -108,6 +110,8 @@ var styles = StyleSheet.create({
     flex: 1,
   },
   myHashtags: {
+    marginHorizontal: -8, // offsets the hashtag.
+    marginVertical: 4,
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'flex-start'
