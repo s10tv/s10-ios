@@ -70,8 +70,8 @@ class HashtagCategory extends React.Component {
     });
 
     let icon = myTagsRendered.length == 0 ?
-      <Image style={styles.categoryIcon} source={require('./img/ic-add.png')} /> :
-      <Image style={styles.categoryIcon} source={require('./img/ic-checkmark.png')} />
+      <Image style={SHEET.icon} source={require('./img/ic-add.png')} /> :
+      <Image style={SHEET.icon} source={require('./img/ic-checkmark.png')} />
 
     return (
       <TappableCard onPress={(event) => { return this._handleCategoryTouch.bind(this)(category)}}>
@@ -103,10 +103,6 @@ var styles = StyleSheet.create({
   categoryHeader: {
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  categoryIcon: {
-    width: 30,
-    height: 30,
   },
   categoryDisplayName: {
     flex: 1,

@@ -1,4 +1,6 @@
 let React = require('react-native');
+let TaylrAPI = require('react-native').NativeModules.TaylrAPI;
+
 let {
   AppRegistry,
   View,
@@ -11,6 +13,12 @@ let {
   StyleSheet,
   AlertIOS,
 } = React;
+
+let SHEET = require('./CommonStyles').SHEET;
+let TappableCard = require('./Card').TappableCard;
+let Card = require('./Card').Card;
+let ServiceTile = require('./ServiceTile');
+let AlertOnPressButton = require('./AlertOnPressButton');
 
 class MeEdit extends React.Component {
 
@@ -77,14 +85,6 @@ class MeEdit extends React.Component {
     })
   }
 
-  _handleServiceTouch(link) {
-    this.props.navigator.push({
-      id: 'servicelink',
-      title: "Link Service",
-      link: link
-    })
-  }
-
   render() {
     if (!this.state.me){
       return (<Text>Loading ...</Text>);
@@ -93,33 +93,7 @@ class MeEdit extends React.Component {
     let me = this.state.me;
 
     let services = this.state.integrations.map((service) => {
-      let icon = service.status == 'linked' ?
-        <Image style={[styles.serviceStatusIcon]} source={require('./img/ic-checkmark.png')} /> :
-        <Image style={[styles.serviceStatusIcon]} source={require('./img/ic-add.png')} />
-
-      let display = service.status == 'linked' ?
-        (<View style={styles.serviceDesc}>
-              <Text style={styles.serviceName}>{service.name}</Text>
-              <Text style={styles.serviceId}>{service.username}</Text>
-            </View>) :
-        (<View style={styles.serviceDesc}>
-              <Text style={styles.serviceName}>{service.name}</Text>
-            </View>)
-
-      return (
-        <TouchableHighlight
-          underlayColor="#ffffff"
-          onPress={(event) => { return this._handleServiceTouch.bind(this)(service.url)}}>
-            <View>
-              <View style={styles.service}>
-                <Image source={{ uri: service.icon.url }} style={[styles.serviceIcon]} />
-                {display}
-                {icon}
-              </View>
-              <View style={styles.separator} />
-            </View>
-        </TouchableHighlight>
-      )
+      return <ServiceTile navigator={this.props.navigator} service={service} />
     });
 
     let editInfo = [
@@ -132,99 +106,72 @@ class MeEdit extends React.Component {
     ];
 
     let editSection = editInfo.map((info) => {
-      let height = info.multiline ? 60 : 30;
-
       return (
-        <View>
-          <View style={[styles.service, { height: height + 30 }]}>
-            <View style={[{flex: 1}]}>
-              <Text style={styles.serviceName}>{info.display} </Text>
-              <TextInput
-                style={{ flex: 1, height: height }}
-                multiline={info.multiline}
-                onChangeText={(text) => {
-                  let newState = {};
-                  newState[info.key] = text;
-                  this.setState(newState);
-                 
-                  // don't send updates right away. Wait till they finish typing. 
-                  if (this.editTimer) {
-                    clearTimeout(this.editTimer);
-                  }
-                  this.editTimer = setTimeout(() => {
-                    ddp.call('me/update', [newState])
-                    .then(() => {
-                      console.log('saved')
-                    })
-                    .catch(err => {
-                      console.trace(err)
-                    });
-                  }, 1000)
-                }}
-                value={this.state[info.key]} />
-            </View>
-          </View>
-          <View style={styles.separator} />  
-        </View>
+        <Card>
+          <Text style={styles.serviceName}>{info.display}</Text>
+          <TextInput
+            style={{ flex: 1, height: 30 }}
+            multiline={info.multiline}
+            onChangeText={(text) => {
+              let newState = {};
+              newState[info.key] = text;
+              this.setState(newState);
+             
+              // don't send updates right away. Wait till they finish typing. 
+              if (this.editTimer) {
+                clearTimeout(this.editTimer);
+              }
+
+              this.editTimer = setTimeout(() => {
+                ddp.call('me/update', [newState])
+                .then(() => {})
+                .catch(err => {
+                  console.trace(err)
+                });
+              }, 1000)
+            }}
+            value={this.state[info.key]} />
+        </Card>
       )
     })
 
     return (
-      <View style={styles.container}>
-        <ScrollView>
+      <View style={SHEET.container}>
+        <ScrollView style={[SHEET.navTop]}>
           <View>
             <Image style={styles.cover} source={{ uri: me.cover.url }}>
               <View style={styles.coverShadow}></View>
             </Image>
-            <TouchableHighlight style={styles.avatarContainer} onPress={() => {
-              AlertIOS.alert(
-                'Update Avatar',
-                'Is Not Supported Yet',
-                [
-                  {text: 'Cancel', onPress: () => console.log('Foo Pressed!')},
-                  {text: 'Okay', onPress: () => console.log('Bar Pressed!')},
-                ]
-              )
-            }}>
-              <View>
+            <AlertOnPressButton title={"Update avatar"} content={"Not ready yet"}>
+              <View style={styles.avatarContainer}>
                 <Image style={styles.avatar} source={{ uri: me.avatar.url }} />
-                <Text style={styles.editProfile}>Edit Avatar</Text>
+                <Text style={styles.editText}>Edit Avatar</Text>
               </View>
-            </TouchableHighlight>
+            </AlertOnPressButton>
 
-
-            <TouchableHighlight style={styles.editCoverButtonContainer} onPress={() => {
-              AlertIOS.alert(
-                'Update Cover',
-                'Is Not Supported Yet =C',
-                [
-                  {text: 'Cancel', onPress: () => console.log('Foo Pressed!')},
-                  {text: 'Okay', onPress: () => console.log('Bar Pressed!')},
-                ]
-              )
-            }}>
-              <View style={styles.editCoverButton}>
-                <Text style={styles.editCover}>Edit Cover</Text>
+            <AlertOnPressButton title={"Update cover"} content={"Not ready yet"}>
+              <View style={styles.editCoverButtonContainer}>
+                <View style={styles.editCoverButton}>
+                  <Text style={styles.editText}>Edit Cover</Text>
+                </View>
               </View>
-            </TouchableHighlight>
+            </AlertOnPressButton>
           </View>
 
-          <View>
+          <View style={SHEET.innerContainer}>
             <View style={styles.titleView}>
               <Text style={styles.title}>SERVICES</Text>
             </View>
-            <View style={styles.separator} />
             {{ services }} 
-          </View>
 
-          <View>
             <View style={styles.titleView}>
               <Text style={styles.title}>MY INFO</Text>
             </View>
             <View style={styles.separator} />
             {editSection}
+
           </View>
-          <View style={styles.padding} />
+          <View style={SHEET.bottomTile} />
         </ScrollView>
       </View>
     )
@@ -234,11 +181,6 @@ class MeEdit extends React.Component {
 var COVER_HEIGHT = 170;
 
 var styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 64,
-    backgroundColor: '#e0e0e0'
-  },
   padding: {
     height: 64
   },
@@ -264,17 +206,11 @@ var styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
   },
-  editProfile: {
+  editText: {
     flex: 1,
-    top: 7,
     color: 'white',
     textAlign: 'center',
     fontSize: 16
-  },
-  editCover: {
-    flex: 1,
-    color: 'white',
-    textAlign: 'center',
   },
   cover: {
     height: COVER_HEIGHT,
@@ -284,59 +220,12 @@ var styles = StyleSheet.create({
     backgroundColor: 'black',
     opacity: 0.5
   },
-  headerView: {
-    position: 'absolute',
-    top: 25,
-    left: 135,
-  },
-  headerText: {
-    color: 'white'
-  },
-  headerName: {
-    fontSize: 24
-  },
   titleView: {
     paddingVertical: 15,
-    marginHorizontal: 25,
   },
   title: {
     fontSize: 16,
     color: '#999999'
-  },
-  service: {
-    flex: 1,
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginHorizontal: 10,
-    paddingHorizontal: 25,
-    height: 60,
-    backgroundColor: 'white',
-  },
-  serviceIcon: {
-    width: 32,
-    height: 32,
-  },
-  serviceDesc: {
-    flex: 1,
-    margin: 10,
-    left: 10,
-  },
-  serviceName: {
-    color: '#666666',
-    fontSize: 14
-  },
-  serviceStatusIcon: {
-    width: 32,
-    height: 32,
-  },
-  serviceId: {
-    color: '#000000',
-    fontSize: 15, 
-  },
-  separator: {
-    marginHorizontal: 10,
-    backgroundColor: "#e0e0e0",
-    height: 1
   },
 });
 

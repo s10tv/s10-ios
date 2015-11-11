@@ -53,18 +53,6 @@ class Me extends React.Component {
     });
   }
 
-  _openBottomSheet() {
-    this.setState({ modalVisible: true });
-  }
-
-  _toggleModal() {
-    this.setState({ modalVisible: false })
-  }
-
-  componentDidMount() {
-    this.props.eventEmitter.addListener('myRightBtnEvent', this._openBottomSheet.bind(this));
-  }
-
   render() {
     if (!this.state.me){
       return (<Text>Loading ...</Text>);
@@ -82,20 +70,27 @@ class Me extends React.Component {
               <Text style={[styles.headerName, styles.headerText]}>{ me.firstName } { me.lastName }</Text> 
             </View>
 
-            <View style={[styles.viewButton, styles.button]}>
-              <Text style={[styles.buttonText]}>View</Text>
+            <View style={[styles.viewButton, styles.buttonContainer]}>
+              <Button
+                onPress={(event) => {}}>
+                  <View style={styles.button}>
+                    <Text style={[styles.buttonText]}>View</Text>
+                  </View>
+              </Button>
             </View>
-            <TouchableHighlight
-              style={[styles.editButton, styles.button]}
-              onPress={(event) => this.props.navigator.push({
-                id: 'editprofile',
-                title: 'Edit Profile',
-                userId: me._id
-              })}>
-                <View>
-                  <Text style={[styles.buttonText]}>Edit</Text>
-                </View>
-            </TouchableHighlight>
+
+            <View style={[styles.editButton, styles.buttonContainer]}>
+              <Button
+                onPress={(event) => this.props.navigator.push({
+                  id: 'editprofile',
+                  title: 'Edit Profile',
+                  userId: me._id
+                })}>
+                  <View style={styles.button}>
+                    <Text style={[styles.buttonText]}>Edit</Text>
+                  </View>
+              </Button>
+            </View>
             <HashtagCategory navigator={this.props.navigator} />
             <View style={SHEET.bottomTile} />
           </ScrollView>
@@ -134,6 +129,14 @@ var styles = StyleSheet.create({
   headerName: {
     fontSize: 24
   },
+  buttonContainer: {
+    position: 'absolute',
+    backgroundColor: 'black',
+    opacity: 0.6,
+    borderWidth: 1,
+    borderColor: 'white',
+    alignItems: 'center',
+  },
   viewButton: {
     top: 75,
     left: 135,
@@ -143,18 +146,13 @@ var styles = StyleSheet.create({
     left: 250,
   },
   button: {
-    position: 'absolute',
-    backgroundColor: 'black',
-    opacity: 0.6,
-    borderWidth: 1,
-    borderColor: 'white',
     width: 100,
-    alignItems: 'center',
-    paddingVertical: 2
   },
   buttonText: {
+    flex: 1,
     fontSize:16,
-    color:'white'
+    color:'white',
+    textAlign: 'center',
   }
 });
 

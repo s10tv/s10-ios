@@ -13,7 +13,7 @@ class BaseCard extends React.Component {
   render() {
 
     let separator = this.props.hideSeparator ?
-      <View /> :
+      null :
       <View style={SHEET.separator} />;
 
     return (

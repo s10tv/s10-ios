@@ -77,7 +77,7 @@ class LayoutContainer extends React.Component {
         return <MeEdit navigator={nav} userId={route.userId} />
       default:
         return (
-          <Me navigator={nav} eventEmitter={this.eventEmitter} />
+          <Me navigator={nav} />
         );
     }
   }

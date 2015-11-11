@@ -33,6 +33,11 @@ exports.SHEET = StyleSheet.create({
     paddingBottom: 64,
   },
 
+  icon: {
+    width: 32,
+    height: 32
+  },
+
   separator: {
     backgroundColor: BACKGROUND_COLOR,
     height: 1
