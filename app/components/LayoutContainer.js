@@ -17,7 +17,7 @@ let ddp = require('../lib/ddp');
 let Me = require('./Me');
 let MeEdit = require('./MeEdit');
 let HashtagCategory = require('./HashtagCategory');
-let Hashtag = require('./Hashtag');
+let HashtagListView = require('./HashtagListView');
 var EventEmitter = require('EventEmitter');
 
 class LayoutContainer extends React.Component {
@@ -67,7 +67,7 @@ class LayoutContainer extends React.Component {
   renderScene(route, nav) {
     switch (route.id) {
       case 'hashtag':
-        return <Hashtag style={{ flex: 1 }} navigator={nav} category={route.category} />;
+        return <HashtagListView style={{ flex: 1 }} navigator={nav} category={route.category} />;
       case 'servicelink':
         return <WebView
           style={styles.webView}

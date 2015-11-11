@@ -94,8 +94,8 @@ class MeEdit extends React.Component {
 
     let services = this.state.integrations.map((service) => {
       let icon = service.status == 'linked' ?
-        <Image style={[styles.serviceStatusIcon]} source={{ uri: 'https://s10tv.blob.core.windows.net/s10tv-prod/ic-checkmark.png' }} /> :
-        <Image style={[styles.serviceStatusIcon]} source={{ uri: 'https://s10tv.blob.core.windows.net/s10tv-prod/ic-warning.png' }} />
+        <Image style={[styles.serviceStatusIcon]} source={require('./img/ic-checkmark.png')} /> :
+        <Image style={[styles.serviceStatusIcon]} source={require('./img/ic-add.png')} />
 
       let display = service.status == 'linked' ?
         (<View style={styles.serviceDesc}>

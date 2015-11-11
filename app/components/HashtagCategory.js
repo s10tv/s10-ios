@@ -8,9 +8,8 @@ let {
   TouchableHighlight,
   StyleSheet
 } = React;
-let ddp = require('../lib/ddp');
 
-let Hashtag = require('./Hashtag');
+let ddp = require('../lib/ddp');
 let TappableCard = require('./Card').TappableCard;
 let SHEET = require('./CommonStyles').SHEET;
 
@@ -33,9 +32,6 @@ class HashtagCategory extends React.Component {
         }
         return categories;
       });
-
-      this.setState({categoryObserver: categoryObserver});
-
       categoryObserver.subscribe((results) => {
         this.setState({ categories: results });
       });
@@ -51,9 +47,6 @@ class HashtagCategory extends React.Component {
         }
         return myTags;
       });
-
-      this.setState({ myHashtagObserver: myHashtagObserver });
-
       myHashtagObserver.subscribe((results) => {
         this.setState({ myTags: results });
       });
@@ -80,8 +73,8 @@ class HashtagCategory extends React.Component {
     });
 
     let icon = myTagsRendered.length == 0 ?
-      <Image style={styles.categoryIcon} source={{ uri: 'https://s10tv.blob.core.windows.net/s10tv-prod/ic-warning.png' }} /> :
-      <Image style={styles.categoryIcon} source={{ uri: 'https://s10tv.blob.core.windows.net/s10tv-prod/ic-checkmark.png' }} />
+      <Image style={styles.categoryIcon} source={require('./img/ic-add.png')} /> :
+      <Image style={styles.categoryIcon} source={require('./img/ic-checkmark.png')} />
 
     return (
       <TappableCard onPress={(event) => { return this._handleCategoryTouch.bind(this)(category)}}>
@@ -112,6 +105,7 @@ class HashtagCategory extends React.Component {
 var styles = StyleSheet.create({
   categoryHeader: {
     flexDirection: 'row',
+    alignItems: 'center',
   },
   categoryIcon: {
     width: 30,

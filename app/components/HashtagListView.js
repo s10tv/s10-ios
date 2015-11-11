@@ -17,20 +17,7 @@ let Card = require('./Card').Card;
 let SearchBar = require('react-native-search-bar');
 let ddp = require('../lib/ddp');
 
-class NavButton extends React.Component {
-  render() {
-    return (
-      <TouchableHighlight
-        style={styles.button}
-        underlayColor="#B5B5B5"
-        onPress={this.props.onPress}>
-        <Text style={styles.buttonText}>{this.props.text}</Text>
-      </TouchableHighlight>
-    );
-  }
-}
-
-class HashtagContainer extends React.Component {
+class HashtagListView extends React.Component {
   constructor(props: {}) {
     super(props);
     this.state = {
@@ -170,10 +157,6 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  navbutton: {
-    position: 'absolute',
-    right: 0
-  },
   hashtagContentContainerStyle: {
     flexDirection: 'row',
     flexWrap: 'wrap',
@@ -187,29 +170,23 @@ var styles = StyleSheet.create({
   },
   hashtagSuggestion: {
     padding: 10,
-    backgroundColor: "#ffffff",
-    borderColor: "#cccccc",
+    backgroundColor: COLORS.white,
+    borderColor: COLORS.emptyHashtag,
     borderTopWidth: 1
-  },
-  searchBoxContainer: {
-    paddingTop: 1,
-    height: 50,
-    bottom: 50,
-    backgroundColor: "#cccccc"
   },
   hashtag: {
     padding: 15,
     margin: 10,
   },
   hashtagMine: {
-    backgroundColor: "#64369C",
+    backgroundColor: COLORS.taylr,
   },
   hashtagNotMine: {
-    backgroundColor: "#cccccc",
+    backgroundColor: COLORS.emptyHashtag,
   },
   hashtagText: {
-    color: 'white',
+    color: COLORS.white,
   }
 });
 
-module.exports = HashtagContainer;
+module.exports = HashtagListView;
