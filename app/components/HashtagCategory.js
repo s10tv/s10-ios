@@ -11,6 +11,7 @@ let {
 
 let ddp = require('../lib/ddp');
 let TappableCard = require('./Card').TappableCard;
+let Hashtag = require('./Hashtag');
 let SHEET = require('./CommonStyles').SHEET;
 
 class HashtagCategory extends React.Component {
@@ -65,11 +66,7 @@ class HashtagCategory extends React.Component {
     let myTagsRendered = this.state.myTags.filter(tag => {
       return tag.type == category._id
     }).map(hashtag => {
-      return (
-        <View key={hashtag._id} style={styles.hashtagContainer}>
-          <Text style={styles.hashtagText}>{hashtag.text}</Text>
-        </View>
-      )
+      return <Hashtag enableTouch={false} hashtag={ hashtag } />
     });
 
     let icon = myTagsRendered.length == 0 ?
@@ -118,18 +115,6 @@ var styles = StyleSheet.create({
     flexDirection: 'row',
     flexWrap: 'wrap',
     alignItems: 'flex-start'
-  },
-  hashtagContainer: {
-    padding: 15,
-    margin: 10,
-    backgroundColor: "#64369C",
-  },
-  hashtagText: {
-    color: "#ffffff"
-  },
-  separator: {
-    backgroundColor: "#e0e0e0",
-    height: 1
   },
 });
 

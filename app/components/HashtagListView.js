@@ -14,6 +14,7 @@ let {
 let SHEET = require('./CommonStyles').SHEET;
 let COLORS = require('./CommonStyles').COLORS;
 let Card = require('./Card').Card;
+let Hashtag = require('./Hashtag');
 let SearchBar = require('react-native-search-bar');
 let ddp = require('../lib/ddp');
 
@@ -59,24 +60,6 @@ class HashtagListView extends React.Component {
     });
   }
 
-  _onHashtagTouch(hashtag) {
-    if (!hashtag.isMine) {
-      return ddp.call('me/hashtag/add', [hashtag.text, hashtag.type])
-    } else {
-      return ddp.call('me/hashtag/remove', [hashtag.text, hashtag.type])
-    }
-  }
-
-  _renderHashtag(hashtag) {
-    let backgroundColor = hashtag.isMine ? styles.hashtagMine : styles.hashtagNotMine;
-
-    return (
-      <View style={[styles.hashtag, backgroundColor]} onTouchEnd={(event) => this._onHashtagTouch.bind(this)(hashtag)}>
-        <Text style={styles.hashtagText}>{hashtag.text}</Text>
-      </View>
-    )
-  }
-
   _searchTag(text) {
     ddp.call('hashtags/search', [text, this.props.category.type])
     .then((tags) => {
@@ -120,7 +103,10 @@ class HashtagListView extends React.Component {
       return this._renderLoadingView()
     }
 
-    let hashtags = this.state.hashtags.map(this._renderHashtag.bind(this));
+    let hashtags = this.state.hashtags.map((hashtag) => {
+      return <Hashtag enableTouch={true} hashtag={ hashtag } />
+    });
+
     let searchSuggestions = this.state.searchSuggestions.map(this._renderSearchSuggestions.bind(this));
 
     return (
@@ -160,7 +146,8 @@ var styles = StyleSheet.create({
   hashtagContentContainerStyle: {
     flexDirection: 'row',
     flexWrap: 'wrap',
-    alignItems: 'flex-start'
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   bottomSheet: {
     position: 'absolute',
