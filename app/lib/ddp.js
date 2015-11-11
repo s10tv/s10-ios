@@ -20,31 +20,19 @@ let ddpClient = new DDPClient({
   // socketConstructor: WebSocket // Another constructor to create new WebSockets
 });
 
-ddpClient.on('message', function (msg) {
-  console.log("ddp message: " + msg);
-});
-
 ddp = {};
 
 ddp.collections = ddpClient.collections;
 
 // Initialize a connection with the server
 ddp.initialize = function () {
-  console.log("[QIMING] initalize]")
   return new Promise(function(resolve, reject) {
     ddpClient.connect(function(error, wasReconnect) {
       // If autoReconnect is true, this back will be invoked each time
       // a server connection is re-established
       if (error) {
-        console.log('[QIMING] connection error!');
         return reject(error);
       }
-
-      if (wasReconnect) {
-        console.log('[QIMING]Reestablishment of a connection.');
-      }
-
-      console.log('[QIMING]connected!');
       resolve(true);
     });
   });
@@ -61,13 +49,8 @@ ddp.subscribe = function(pubName, params) {
   if (params && !_.isArray(params)) {
     console.warn('Params must be passed as an array to ddp.subscribe');
   }
-  console.log("a");
   return new Promise(function(resolve, reject) {
-    console.log("b");
-    console.log(pubName);
-    console.log(params);
     ddpClient.subscribe(pubName, params, function () {
-      console.log("c");
       resolve(true);
     });
   });
@@ -103,15 +86,12 @@ ddp.loginWithToken = function(token) {
   return new Promise(function(resolve, reject) {
     ddpClient.call("login", [{ resume: token }], function (err, res) {
       if (res) {
-        console.log('[QIMING] Logged in with resume token.');
         let obj = {
           loggedIn: true,
           userId: res.id
         };
         resolve(obj);
       } else {
-        console.trace(err);
-        console.log('[QIMING] Failed login');
         let obj = {
           loggedIn: false,
         };

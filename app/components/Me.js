@@ -8,11 +8,13 @@ let {
   Image,
   TouchableOpacity,
   TouchableHighlight,
+  ActionSheetIOS,
   Navigator,
   StyleSheet,
 } = React;
 
 let HashtagCategory = require('./HashtagCategory');
+var Button = require('react-native-button');
 
 var userId = 'KW7Eszw5th6QSeoJv';
 var token = 'vU8rq_HWmJm7LNHx78anzipsNu9XUYY26jsWvn8Bfdx';
@@ -22,6 +24,7 @@ class Me extends React.Component {
   constructor(props: {}) {
     super(props);
     this.state = {
+      modalVisible: false
     }
   }
 
@@ -37,7 +40,6 @@ class Me extends React.Component {
                   return ddp.collections.users.find({ _id: userId });
                 }
               });
-
               meObserver.subscribe((results) => {
                 if (results.length == 1) {
                   this.setState({ me: results[0] });
@@ -50,6 +52,18 @@ class Me extends React.Component {
     });
   }
 
+  _openBottomSheet() {
+    this.setState({ modalVisible: true });
+  }
+
+  _toggleModal() {
+    this.setState({ modalVisible: false })
+  }
+
+  componentDidMount() {
+    this.props.eventEmitter.addListener('myRightBtnEvent', this._openBottomSheet.bind(this));
+  }
+
   render() {
     if (!this.state.me){
       return (<Text>Loading ...</Text>);
@@ -58,7 +72,6 @@ class Me extends React.Component {
 
       return (
         <ScrollView style={styles.container}>
-
           <View>
             <Image style={styles.cover} source={{ uri: me.cover.url }}>
               <View style={styles.coverShadow}></View>

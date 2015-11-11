@@ -53,7 +53,6 @@ class HashtagCategory extends React.Component {
       this.setState({ myHashtagObserver: myHashtagObserver });
 
       myHashtagObserver.subscribe((results) => {
-        console.log(results);
         this.setState({ myTags: results });
       });
     })

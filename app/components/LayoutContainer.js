@@ -17,9 +17,19 @@ let Me = require('./Me');
 let MeEdit = require('./MeEdit');
 let HashtagCategory = require('./HashtagCategory');
 let Hashtag = require('./Hashtag');
+var EventEmitter = require('EventEmitter');
 
-var NavigationBarRouteMapper = {
-  LeftButton: function(route, navigator, index, navState) {
+class LayoutContainer extends React.Component {
+
+  constructor(props: {}) {
+    super(props);
+    this.state = {
+      modalVisible: false
+    }
+    this.eventEmitter = new EventEmitter();
+  }
+
+  _leftButton(route, navigator, index, navState) {
     if (route.id) {
       return (
         <TouchableOpacity
@@ -31,29 +41,27 @@ var NavigationBarRouteMapper = {
         </TouchableOpacity>
       );
     }
-  },
+  }
 
-  RightButton: function(route, navigator, index, navState) {
+  _rightButton(route, navigator, index, navState) {
     return(
       <View style={styles.navBarRightButton}>
-        <Button onPress={() => { console.log('pressed')}}>
-          <Image style={{ flex: 1, width: 40 }} resizeMode="contain" source={require('image!ic-more-png')} />
+        <Button onPress={() => { 
+          console.log('should show action sheet');
+        }}>
+          <Image style={{ flex: 1, width: 40 }} resizeMode="contain" source={require('./img/ic-more-png.png')} />
         </Button>
       </View>
     )
-  },
+  }
 
-  Title: function(route, navigator, index, navState) {
+  _title (route, navigator, index, navState) {
     return (
       <Text style={[styles.navBarText, styles.navBarTitleText]}>
         {route.title}
       </Text>
     );
-  },
-
-};
-
-class LayoutContainer extends React.Component {
+  }
 
   renderScene(route, nav) {
     switch (route.id) {
@@ -68,7 +76,7 @@ class LayoutContainer extends React.Component {
         return <MeEdit navigator={nav} userId={route.userId} />
       default:
         return (
-          <Me navigator={nav} />
+          <Me navigator={nav} eventEmitter={this.eventEmitter} />
         );
     }
   }
@@ -78,16 +86,21 @@ class LayoutContainer extends React.Component {
       <Navigator
         itemWrapperStyle={styles.navWrap}
         style={styles.nav}
-        renderScene={this.renderScene}
+        renderScene={this.renderScene.bind(this)}
         configureScene={(route) => Navigator.SceneConfigs.FloatFromRight}
         initialRoute={{
           title: 'Me',
         }}
         navigationBar={
           <Navigator.NavigationBar
-            routeMapper={NavigationBarRouteMapper}
+            routeMapper={{
+              LeftButton: this._leftButton.bind(this),
+              RightButton: this._rightButton.bind(this),
+              Title: this._title.bind(this)
+            }}
             style={styles.navBar} />
-        } />
+        }>
+      </Navigator>
     )
   }
 }

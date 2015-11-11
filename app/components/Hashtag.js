@@ -98,7 +98,7 @@ class HashtagContainer extends React.Component {
     ddp.call('me/hashtag/add', [hashtag.text, hashtag.type])
     .then((tags) => {
       console.log(hashtag);
-      this.setState({ searchSuggestions: [] })
+      // this.setState({ searchSuggestions: [] })
     })
   }
 
@@ -147,6 +147,7 @@ class HashtagContainer extends React.Component {
         </Overlay>
         <View style={styles.searchBoxContainer}>
           <SearchBar
+            style={{ flex: 1 }}
             placeholder={'Search'}
             hideBackground={true}
             onChangeText={(text) => this._searchTag.bind(this)(text)} />
@@ -179,7 +180,7 @@ var styles = StyleSheet.create({
   },
   bottomSheet: {
     position: 'absolute',
-    bottom: 29,
+    bottom: 100,
     left: 0,
     right: 0,
   },
@@ -191,6 +192,8 @@ var styles = StyleSheet.create({
   },
   searchBoxContainer: {
     paddingTop: 1,
+    height: 50,
+    bottom: 50,
     backgroundColor: "#cccccc"
   },
   hashtag: {
