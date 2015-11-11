@@ -23,8 +23,8 @@ class SectionTitle extends React.Component {
 
 var styles = StyleSheet.create({
   titleView: {
-    paddingBottom: 8,
-    paddingTop: 16,
+    paddingBottom: 4,
+    paddingTop: 24,
   },
   title: {
     fontSize: 14,

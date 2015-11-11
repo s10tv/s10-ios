@@ -44,7 +44,8 @@ exports.SHEET = StyleSheet.create({
 
   icon: {
     width: 32,
-    height: 32
+    height: 32,
+    resizeMode: 'contain',
   },
 
   separator: {

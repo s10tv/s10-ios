@@ -15,10 +15,8 @@ let {
 
 let SHEET = require('./CommonStyles').SHEET;
 let HashtagCategory = require('./HashtagCategory');
-var Button = require('react-native-button');
-
-var userId = 'KW7Eszw5th6QSeoJv';
-var token = 'vU8rq_HWmJm7LNHx78anzipsNu9XUYY26jsWvn8Bfdx';
+let Network = require('./Network')
+let Button = require('react-native-button');
 
 class Me extends React.Component {
 
@@ -91,6 +89,9 @@ class Me extends React.Component {
                   </View>
               </Button>
             </View>
+
+            <Network navigator={this.props.navigator} />
+
             <HashtagCategory navigator={this.props.navigator} />
             <View style={SHEET.bottomTile} />
           </ScrollView>
