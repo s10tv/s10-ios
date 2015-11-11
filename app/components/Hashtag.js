@@ -11,6 +11,9 @@ let {
   ActivityIndicatorIOS,
 } = React;
 
+let SHEET = require('./CommonStyles').SHEET;
+let COLORS = require('./CommonStyles').COLORS;
+let Card = require('./Card').Card;
 let SearchBar = require('react-native-search-bar');
 let ddp = require('../lib/ddp');
 
@@ -134,23 +137,28 @@ class HashtagContainer extends React.Component {
     let searchSuggestions = this.state.searchSuggestions.map(this._renderSearchSuggestions.bind(this));
 
     return (
-      <View style={styles.container}>
-        <ScrollView
-          style={styles.hashtagContainerStyle}
-          contentContainerStyle={styles.hashtagContentContainerStyle}>
-            {hashtags}
-        </ScrollView>
-        <Overlay isVisible={searchSuggestions.length > 0}>
-          <View style={styles.bottomSheet}>
-            { searchSuggestions }
-          </View>
-        </Overlay>
-        <View style={styles.searchBoxContainer}>
+      <View style={SHEET.container}>
+        <Card
+          style={[SHEET.navTop, SHEET.innerContainer, { flex: 1 }]}
+          cardOverride={{ padding: 0 }}
+          hideSeparator={true} >
+
           <SearchBar
-            style={{ flex: 1 }}
+            style={{ height: 50, backgroundColor: COLORS.background }}
             placeholder={'Search'}
             hideBackground={true}
             onChangeText={(text) => this._searchTag.bind(this)(text)} />
+
+          <ScrollView
+            style={[SHEET.bottomTile, { flex: 1 }]}
+            contentContainerStyle={styles.hashtagContentContainerStyle}>
+              {hashtags}
+          </ScrollView>
+
+
+        </Card>
+        <View style={styles.bottomSheet}>
+          { searchSuggestions }
         </View>
       </View>
     );
@@ -158,20 +166,13 @@ class HashtagContainer extends React.Component {
 }
 
 var styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
   loadingView: {
-    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
   },
   navbutton: {
     position: 'absolute',
     right: 0
-  },
-  hashtagContainerStyle: {
-    paddingTop: 64,
   },
   hashtagContentContainerStyle: {
     flexDirection: 'row',
@@ -180,7 +181,7 @@ var styles = StyleSheet.create({
   },
   bottomSheet: {
     position: 'absolute',
-    bottom: 100,
+    bottom: 10,
     left: 0,
     right: 0,
   },
@@ -199,7 +200,6 @@ var styles = StyleSheet.create({
   hashtag: {
     padding: 15,
     margin: 10,
-    position: 'relative',
   },
   hashtagMine: {
     backgroundColor: "#64369C",

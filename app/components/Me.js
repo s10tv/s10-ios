@@ -13,6 +13,7 @@ let {
   StyleSheet,
 } = React;
 
+let SHEET = require('./CommonStyles').SHEET;
 let HashtagCategory = require('./HashtagCategory');
 var Button = require('react-native-button');
 
@@ -71,8 +72,8 @@ class Me extends React.Component {
       let me = this.state.me;
 
       return (
-        <ScrollView style={styles.container}>
-          <View>
+        <View style={SHEET.container}>
+          <ScrollView style={[SHEET.navTop, SHEET.bottomTile, { flex: 1 }]}>
             <Image style={styles.cover} source={{ uri: me.cover.url }}>
               <View style={styles.coverShadow}></View>
             </Image>
@@ -95,20 +96,16 @@ class Me extends React.Component {
                   <Text style={[styles.buttonText]}>Edit</Text>
                 </View>
             </TouchableHighlight>
-          </View>
-
-          <HashtagCategory navigator={this.props.navigator} />
-        </ScrollView>
+            <HashtagCategory navigator={this.props.navigator} />
+            <View style={SHEET.bottomTile} />
+          </ScrollView>
+        </View>
       )
     }
   }
 }
 
 var styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    paddingTop: 64,
-  },
   avatar: {
     position: 'absolute',
     left: 15,
@@ -127,11 +124,12 @@ var styles = StyleSheet.create({
   },
   headerView: {
     position: 'absolute',
+    backgroundColor: 'rgba(0,0,0,0)',
     top: 25,
     left: 135,
   },
   headerText: {
-    color: 'white'
+    color: 'white',
   },
   headerName: {
     fontSize: 24

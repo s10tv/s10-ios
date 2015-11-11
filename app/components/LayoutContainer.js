@@ -12,6 +12,7 @@ let {
   StyleSheet,
 } = React;
 
+let commonStyles = require('./CommonStyles')
 let ddp = require('../lib/ddp');
 let Me = require('./Me');
 let MeEdit = require('./MeEdit');
@@ -66,7 +67,7 @@ class LayoutContainer extends React.Component {
   renderScene(route, nav) {
     switch (route.id) {
       case 'hashtag':
-        return <Hashtag navigator={nav} category={route.category} />;
+        return <Hashtag style={{ flex: 1 }} navigator={nav} category={route.category} />;
       case 'servicelink':
         return <WebView
           style={styles.webView}
@@ -108,7 +109,6 @@ class LayoutContainer extends React.Component {
 var styles = StyleSheet.create({
   navWrap: {
     flex: 1,
-    marginTop: 15
   },
   webView: {
     marginTop: 64,

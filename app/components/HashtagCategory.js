@@ -1,16 +1,18 @@
 let React = require('react-native');
+
 let {
   AppRegistry,
   View,
   Text,
   Image,
   TouchableHighlight,
-  ScrollView,
   StyleSheet
 } = React;
 let ddp = require('../lib/ddp');
 
 let Hashtag = require('./Hashtag');
+let TappableCard = require('./Card').TappableCard;
+let SHEET = require('./CommonStyles').SHEET;
 
 class HashtagCategory extends React.Component {
   constructor(props: {}) {
@@ -82,22 +84,15 @@ class HashtagCategory extends React.Component {
       <Image style={styles.categoryIcon} source={{ uri: 'https://s10tv.blob.core.windows.net/s10tv-prod/ic-checkmark.png' }} />
 
     return (
-      <View key={category._id}>
-        <TouchableHighlight
-          underlayColor="#ffffff"
-          onPress={(event) => { return this._handleCategoryTouch.bind(this)(category)}}>
-            <View key={category._id} style={styles.category}>
-              <View style={styles.categoryHeader}>
-                <Text style={styles.categoryDisplayName}>{category.displayName}</Text>
-                {icon}
-              </View>
-              <View style={styles.myHashtags}>
-                { myTagsRendered }
-              </View>
-            </View>
-          </TouchableHighlight>
-        <View style={styles.separator} />
-      </View>
+      <TappableCard onPress={(event) => { return this._handleCategoryTouch.bind(this)(category)}}>
+        <View style={styles.categoryHeader}>
+          <Text style={styles.categoryDisplayName}>{category.displayName}</Text>
+          {icon}
+        </View>
+        <View style={styles.myHashtags}>
+          { myTagsRendered }
+        </View>
+      </TappableCard>
     )
   }
 
@@ -107,7 +102,7 @@ class HashtagCategory extends React.Component {
     })
 
     return (
-      <View style={styles.container}>
+      <View style={SHEET.innerContainer}>
         {rows}
       </View>
     );
@@ -115,11 +110,6 @@ class HashtagCategory extends React.Component {
 }
 
 var styles = StyleSheet.create({
-  category: {
-    flex: 1,
-    paddingHorizontal: 10,
-    marginTop: 10,
-  },
   categoryHeader: {
     flexDirection: 'row',
   },
@@ -145,8 +135,7 @@ var styles = StyleSheet.create({
   },
   separator: {
     backgroundColor: "#e0e0e0",
-    marginVertical: 10,
-    height: 0.5
+    height: 1
   },
 });
 
