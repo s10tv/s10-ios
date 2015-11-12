@@ -17,6 +17,7 @@ let SHEET = require('./CommonStyles').SHEET;
 let HashtagCategory = require('./HashtagCategory');
 let Network = require('./Network')
 let HeaderBanner = require('./HeaderBanner');
+let ContactUs = require('./ContactUs');
 let Button = require('react-native-button');
 
 class MeButton extends React.Component {
@@ -179,9 +180,13 @@ class Me extends React.Component {
             <HeaderBanner url={me.cover.url} height={170}>
               <MeHeader navigator={this.props.navigator} me={me} />
             </HeaderBanner>
+
             <Network navigator={this.props.navigator} />
 
             <HashtagCategory navigator={this.props.navigator} />
+
+            <ContactUs navigator={this.props.navigator} />
+
             <View style={SHEET.bottomTile} />
           </ScrollView>
         </View>

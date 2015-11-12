@@ -20,7 +20,7 @@ class Network extends React.Component {
 
         <Card cardOverride={styles.networkCard}>
           <Image source={require('./img/ic-ubc.png')} style={SHEET.icon} />
-          <Text style={styles.networkText}>University of British Columbia</Text>
+          <Text style={[styles.networkText, SHEET.baseText]}>University of British Columbia</Text>
         </Card>
       </View>
     )

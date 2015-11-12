@@ -38,12 +38,11 @@ class HeaderBanner extends React.Component {
 var styles = StyleSheet.create({
   cover: {
     flex: 1,
-    resizeMode: 'cover',
   },
   coverShadow: {
     flex: 1,
     backgroundColor: 'black',
-    opacity: 0.5
+    opacity: 0.5,
   }
 });
 

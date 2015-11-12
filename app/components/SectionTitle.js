@@ -12,7 +12,7 @@ let SHEET = require('./CommonStyles').SHEET;
 class SectionTitle extends React.Component {
   render() {
     return (
-      <View style={styles.titleView}>
+      <View style={[styles.titleView, this.props.style]}>
         <Text style={[styles.title, SHEET.baseText]}>
           { this.props.title }
         </Text>
