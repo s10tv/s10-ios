@@ -87,7 +87,8 @@ class LayoutContainer extends React.Component {
         itemWrapperStyle={styles.navWrap}
         style={styles.nav}
         renderScene={this.renderScene.bind(this)}
-        configureScene={(route) => Navigator.SceneConfigs.FloatFromRight}
+        configureScene={(route) =>
+          Navigator.SceneConfigs.HorizontalSwipeJump}
         initialRoute={{
           title: 'Me',
         }}

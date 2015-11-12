@@ -29,7 +29,7 @@ class Hashtag extends React.Component {
     let hashtagButton = (
       <View 
         style={[styles.hashtag, { backgroundColor : hashtagColor }]}>
-        <Text style={[styles.hashtagText, SHEET.baseText]}>{hashtag.text}</Text>
+        <Text style={[styles.hashtagText, SHEET.baseText]}>#{hashtag.text}</Text>
       </View>
     );
 

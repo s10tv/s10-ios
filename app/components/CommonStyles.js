@@ -20,34 +20,32 @@ exports.SHEET = StyleSheet.create({
     flex: 1,
     backgroundColor: BACKGROUND_COLOR,
   },
-
   baseText: {
     fontFamily: 'Cabin-Regular'
   },
-
   innerContainer: {
     marginHorizontal: 8,
   },
-
   navTop: {
     paddingTop: 64,
   },
-
   bottomTile: {
     paddingBottom: 64,
   },
-
   subTitle: {
     color: '#666666',
     fontSize: 14
   },
-
+  smallIcon: {
+    width: 24,
+    height: 24,
+    resizeMode: 'contain',
+  },
   icon: {
     width: 32,
     height: 32,
     resizeMode: 'contain',
   },
-
   separator: {
     backgroundColor: BACKGROUND_COLOR,
     height: 1
