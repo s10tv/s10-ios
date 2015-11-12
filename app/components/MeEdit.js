@@ -25,64 +25,44 @@ class MeEdit extends React.Component {
 
   constructor(props: {}) {
     super(props);
+    let me = props.me;
+
     this.state = {
-      integrations: [],
-      editTimer: null
+      me: me,
+      firstName: me.firstName,
+      lastName: me.lastName,
+      major: me.major,
+      about: me.about,
+      hometown: me.hometown,
+      gradYear: me.gradYear,
+      integrations: props.integrations,
+      editTimer: null,
     }
   }
+
   componentWillMount() {
-    ddp.subscribe('me')
-    .then((res) => {
-      let meObserver = ddp.collections.observe(() => {
-        if (ddp.collections.users) {
-          return ddp.collections.users.find({ _id: this.props.userId });
-        }
-      });
+    let observer = ddp.collections.observe(() => {
+      if (ddp.collections.integrations) {
+        return ddp.collections.integrations.find({});
+      }
+    });
 
-      meObserver.subscribe((results) => {
-        if (results.length == 1) {
-          let me = results[0]
-          this.setState({ 
-            me: me,
-            firstName: me.firstName,
-            lastName: me.lastName,
-            major: me.major,
-            about: me.about,
-            hometown: me.hometown,
-            gradYear: me.gradYear
-          });
-        }
-      });
-    })
-    .then(() => {
-      return ddp.subscribe('integrations');
-    })
-    .then((res) => {
-      let meObserver = ddp.collections.observe(() => {
-        if (ddp.collections.integrations) {
-          return ddp.collections.integrations.find({});
-        }
-      });
-
-      meObserver.subscribe((results) => {
-
-        results.sort((one, two) => {
-          oneLinked = one.status == 'linked'
-          twoLinked = two.status == 'linked'
-
-          if (oneLinked === twoLinked) {
-            return 0 
+    observer.subscribe((results) => {
+      results.sort((one, two) => {
+        oneLinked = one.status == 'linked'
+        twoLinked = two.status == 'linked'
+        if (oneLinked === twoLinked) {
+          return 0 
+        } else {
+          if (oneLinked) {
+            return -1
           } else {
-            if (oneLinked) {
-              return -1
-            } else {
-              return 1;
-            }
+            return 1;
           }
-        })
+        }
+      })
 
-        this.setState({ integrations: results });
-      });
+      this.setState({ integrations: results });
     })
   }
 

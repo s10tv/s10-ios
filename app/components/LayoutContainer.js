@@ -63,6 +63,13 @@ class LayoutContainer extends React.Component {
     );
   }
 
+  _onNavigationStateChange(nav, navState) {
+    console.log(navState.url);
+    if (navState.url.indexOf('taylr-dev://') != -1) {
+      return nav.pop();
+    }
+  }
+
   renderScene(route, nav) {
     switch (route.id) {
       case 'hashtag':
@@ -70,10 +77,11 @@ class LayoutContainer extends React.Component {
       case 'servicelink':
         return <WebView
           style={styles.webView}
+          onNavigationStateChange={(navState) => this._onNavigationStateChange(nav, navState)}
           startInLoadingState={true}
           url={route.link} />;
       case 'editprofile':
-        return <MeEdit navigator={nav} userId={route.userId} />
+        return <MeEdit navigator={nav} me={route.me} integrations={route.integrations} />
       default:
         return (
           <Me navigator={nav} />

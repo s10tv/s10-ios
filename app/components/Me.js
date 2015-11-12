@@ -57,12 +57,50 @@ var buttonStyles = StyleSheet.create({
 });
 
 class MeHeader extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      integrations: props.me.connectedProfiles
+    }
+  }
+
+  componentWillMount() {
+    ddp.subscribe('integrations')
+    .then(() => {
+      let observer = ddp.collections.observe(() => {
+        if (ddp.collections.integrations) {
+          return ddp.collections.integrations.find({});
+        }
+      });
+
+      observer.subscribe((results) => {
+        results.sort((one, two) => {
+          oneLinked = one.status == 'linked'
+          twoLinked = two.status == 'linked'
+          if (oneLinked === twoLinked) {
+            return 0 
+          } else {
+            if (oneLinked) {
+              return -1
+            } else {
+              return 1;
+            }
+          }
+        })
+
+        this.setState({ integrations: results });
+      });
+    })
+  }
+
   render() {
     let me = this.props.me;
-    let serviceIcons = me.connectedProfiles.map((profile) => {
-      return (<Image
-        style={[SHEET.smallIcon, styles.serviceIcon]}
-        source={{ uri: profile.icon.url }} />);
+    let serviceIcons = this.state.integrations.map((integration) => {
+      return integration.status == 'unlinked' ? null :
+        (<Image style={[SHEET.smallIcon, styles.serviceIcon]}
+          source={{ uri: integration.icon.url }} />);
     });
 
     return (
@@ -81,7 +119,9 @@ class MeHeader extends React.Component {
               this.props.navigator.push({
                 id: 'editprofile',
                 title: 'Edit Profile',
-                userId: me._id
+                userId: me._id,
+                me: me,
+                integrations: this.state.integrations
               })}} />
           </View>
         </View>
@@ -124,7 +164,7 @@ class Me extends React.Component {
           this.setState({ me: results[0] });
         }
       });
-    });
+    })
   }
 
   render() {
