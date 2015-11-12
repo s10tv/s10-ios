@@ -205,6 +205,7 @@
 		EAF81B361B33893E00EED6DD /* Taylr.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA9F35491A74CC6900E0C65D /* Taylr.xcassets */; };
 		F94FA0D71BF427E20050D6F1 /* libRNMail.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F94FA0D21BF427D20050D6F1 /* libRNMail.a */; };
 		F95D95DF1A84A1170068F090 /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F95D95DE1A84A1170068F090 /* MediaPlayer.framework */; };
+		F96E6FAF1BF49FC800DEB19A /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = F96E6FAE1BF49FC800DEB19A /* main.jsbundle */; };
 		F996C71E1A81F1D100314FF8 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71D1A81F1D100314FF8 /* CoreMedia.framework */; };
 		F996C7201A81F1D800314FF8 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C71F1A81F1D800314FF8 /* CoreVideo.framework */; };
 		F996C7221A81F1E000314FF8 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F996C7211A81F1E000314FF8 /* AVFoundation.framework */; };
@@ -498,6 +499,7 @@
 		F94FA0CC1BF427D20050D6F1 /* RNMail.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNMail.xcodeproj; path = "app/node_modules/react-native-mail/RNMail.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		F95D95DE1A84A1170068F090 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		F9608B841BAA9B040067E1EF /* JoinNetworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinNetworkViewController.swift; sourceTree = "<group>"; };
+		F96E6FAE1BF49FC800DEB19A /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		F996C71D1A81F1D100314FF8 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		F996C71F1A81F1D800314FF8 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
 		F996C7211A81F1E000314FF8 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
@@ -1043,6 +1045,7 @@
 				EAA5DABE1BF2A8E100BF6B1E /* TaylrAPI.swift */,
 				EAA5DABD1BF2A8E100BF6B1E /* TaylrAPI.m */,
 				EAA5DABF1BF2A8E100BF6B1E /* TSContainerView.m */,
+				F96E6FAE1BF49FC800DEB19A /* main.jsbundle */,
 				49A80BC478B1E012CE6D7406 /* Generated */,
 			);
 			name = "Supporting Files";
@@ -1511,6 +1514,7 @@
 				EA9F354A1A74CC6900E0C65D /* Taylr.xcassets in Resources */,
 				EA72AE561BD005CD0031D652 /* Discover.storyboard in Resources */,
 				EA78C8801B323E140016AB73 /* Images.xcassets in Resources */,
+				F96E6FAF1BF49FC800DEB19A /* main.jsbundle in Resources */,
 				EA7FB0951B5EF9D50052B394 /* Cabin-BoldItalic.ttf in Resources */,
 				EA7FB0941B5EF9D50052B394 /* Cabin-Bold.ttf in Resources */,
 				EA7FB0961B5EF9D50052B394 /* Cabin-Italic.ttf in Resources */,
@@ -2134,7 +2138,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconDev;
 				BUNDLE_BUILD = 0;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "$(CUSTOM_CODE_SIGN_IDENTITY)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2145,7 +2150,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "$(CUSTOM_PROVISIONING_PROFILE)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Taylr/Taylr-Bridging.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -2158,7 +2163,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconDev;
 				BUNDLE_BUILD = 0;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_IDENTITY = "$(CUSTOM_CODE_SIGN_IDENTITY)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2169,7 +2175,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "$(CUSTOM_PROVISIONING_PROFILE)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Taylr/Taylr-Bridging.h";
 			};
 			name = Release;
