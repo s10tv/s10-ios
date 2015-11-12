@@ -115,7 +115,13 @@ class MeHeader extends React.Component {
             { serviceIcons }
           </View>
           <View style={styles.headerContentLineItem}>
-            <MeButton text={'View'} />
+            <MeButton text={'View'} onPress={() => {
+               this.props.navigator.push({
+                id: 'viewprofile',
+                title: 'Profile',
+                me: me,
+              })
+            }} />
             <MeButton style={{ left:10 }} text={'Edit'} onPress={() => {
               this.props.navigator.push({
                 id: 'editprofile',

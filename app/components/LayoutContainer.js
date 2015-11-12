@@ -16,6 +16,7 @@ let commonStyles = require('./CommonStyles')
 let ddp = require('../lib/ddp');
 let Me = require('./Me');
 let MeEdit = require('./MeEdit');
+let Activities = require('./Activities');
 let HashtagCategory = require('./HashtagCategory');
 let HashtagListView = require('./HashtagListView');
 let SHEET = require('./CommonStyles').SHEET;
@@ -35,7 +36,7 @@ class LayoutContainer extends React.Component {
         <TouchableOpacity
           onPress={() => navigator.pop()}
           style={styles.navBarLeftButton}>
-          <Text style={[styles.navBarText, styles.navBarButtonText]}>
+          <Text style={[styles.navBarText, styles.navBarButtonText, SHEET.baseText]}>
             Back
           </Text>
         </TouchableOpacity>
@@ -44,15 +45,7 @@ class LayoutContainer extends React.Component {
   }
 
   _rightButton(route, navigator, index, navState) {
-    return(
-      <View style={styles.navBarRightButton}>
-        <Button onPress={() => { 
-          console.log('should show action sheet');
-        }}>
-          <Image style={{ flex: 1, width: 40 }} resizeMode="contain" source={require('./img/ic-more-png.png')} />
-        </Button>
-      </View>
-    )
+    return null;
   }
 
   _title (route, navigator, index, navState) {
@@ -82,6 +75,8 @@ class LayoutContainer extends React.Component {
           url={route.link} />;
       case 'editprofile':
         return <MeEdit navigator={nav} me={route.me} integrations={route.integrations} />
+      case 'viewprofile':
+        return <Activities navigator={nav} me={route.me} />
       default:
         return (
           <Me navigator={nav} />

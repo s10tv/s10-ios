@@ -28,7 +28,7 @@ class BaseCard extends React.Component {
 class Card extends React.Component {
   render() {
     return (
-      <BaseCard style={this.props.style}>
+      <BaseCard hideSeparator={this.props.hideSeparator} style={this.props.style}>
         <View style={[styles.card, this.props.cardOverride]}>
           { this.props.children}
         </View>
@@ -40,16 +40,17 @@ class Card extends React.Component {
 class TappableCard extends React.Component {
   render() {
     return (
-      <BaseCard style={this.props.style}>
-        <TouchableHighlight
-          style={styles.card}
-          underlayColor="#ffffff"
-          onPress={ this.props.onPress }>
+      <BaseCard hideSeparator={this.props.hideSeparator} 
+        style={this.props.style}>
+          <TouchableHighlight
+            style={styles.card}
+            underlayColor="#ffffff"
+            onPress={ this.props.onPress }>
 
-            <View>
-              { this.props.children }
-            </View>
-        </TouchableHighlight>
+              <View>
+                { this.props.children }
+              </View>
+          </TouchableHighlight>
       </BaseCard>
     )
   }
