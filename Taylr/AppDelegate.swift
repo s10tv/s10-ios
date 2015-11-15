@@ -79,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         //NSBundle.mainBundle().URLForResource("main", withExtension: "jsbundle");
         //NSURL("http://localhost:8081/index.ios.bundle?platform=ios&dev=true")
 
-        let reactBundleURL = NSBundle.mainBundle().URLForResource("main", withExtension: "jsbundle");
+        let reactBundleURL = NSURL("http://localhost:8081/index.ios.bundle?platform=ios&dev=true")
         print(reactBundleURL)
 
         let bridge = RCTBridge(bundleURL: reactBundleURL, moduleProvider: nil, launchOptions: nil)

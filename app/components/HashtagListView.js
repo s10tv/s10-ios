@@ -1,5 +1,4 @@
 let React = require('react-native');
-let Overlay = require('react-native-overlay');
 
 let {
   AppRegistry,

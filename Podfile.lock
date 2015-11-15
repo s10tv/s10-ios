@@ -87,15 +87,15 @@ PODS:
   - PKHUD (2.2.4)
   - PocketSocket (0.6.4)
   - Quick (0.8.0)
-  - React/Core (0.12.0-rc)
-  - React/RCTImage (0.12.0-rc):
+  - React/Core (0.14.2)
+  - React/RCTImage (0.14.2):
     - React/Core
     - React/RCTNetwork
-  - React/RCTNetwork (0.12.0-rc):
+  - React/RCTNetwork (0.14.2):
     - React/Core
-  - React/RCTText (0.12.0-rc):
+  - React/RCTText (0.14.2):
     - React/Core
-  - React/RCTWebSocket (0.12.0-rc):
+  - React/RCTWebSocket (0.14.2):
     - React/Core
   - ReactiveCocoa (4.0.4-alpha-1):
     - ReactiveCocoa/UI (= 4.0.4-alpha-1)
@@ -264,7 +264,7 @@ SPEC CHECKSUMS:
   PKHUD: 35da5a022cba3a9489eb0e11936869aeb6acef61
   PocketSocket: eee7ef375f55b98e7ca79e097d9c61fd688e9494
   Quick: 563d0f6ec5f72e394645adb377708639b7dd38ab
-  React: 973d8f1ae0e4d21ab9684408e7046df91bc9b092
+  React: e0dc1498eee8800999917f437a027223f49d731d
   ReactiveCocoa: 618a2fc13d4ed80e380aa6fa56547cef43c7341d
   Realm: 3ce8448151c571e90b85002d984d7f93f54fc8a3
   RealmSwift: 485599fe54e35461c4a0daa7d01d8fbf11424873

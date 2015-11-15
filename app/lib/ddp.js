@@ -20,6 +20,11 @@ let ddpClient = new DDPClient({
   // socketConstructor: WebSocket // Another constructor to create new WebSockets
 });
 
+// Express mongo docs come with extraneous $oid that is useless.
+ddpClient.EJSON.addType('oid', function fromJSONValue(value) {
+  return value;
+})
+
 ddp = {};
 
 ddp.collections = ddpClient.collections;
