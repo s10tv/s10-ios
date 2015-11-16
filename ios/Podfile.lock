@@ -161,11 +161,11 @@ DEPENDENCIES:
   - Ouralabs (~> 2.6)
   - PKHUD (from `https://github.com/tonyxiao/PKHUD`)
   - Quick (~> 0.6)
-  - React/Core (from `app/node_modules/react-native`)
-  - React/RCTImage (from `app/node_modules/react-native`)
-  - React/RCTNetwork (from `app/node_modules/react-native`)
-  - React/RCTText (from `app/node_modules/react-native`)
-  - React/RCTWebSocket (from `app/node_modules/react-native`)
+  - React/Core (from `../node_modules/react-native`)
+  - React/RCTImage (from `../node_modules/react-native`)
+  - React/RCTNetwork (from `../node_modules/react-native`)
+  - React/RCTText (from `../node_modules/react-native`)
+  - React/RCTWebSocket (from `../node_modules/react-native`)
   - ReactiveCocoa (~> 4.0.2-alpha-1)
   - RealmSwift (~> 0.95)
   - Reveal-iOS-SDK (~> 1.5)
@@ -192,7 +192,7 @@ EXTERNAL SOURCES:
   PKHUD:
     :git: https://github.com/tonyxiao/PKHUD
   React:
-    :path: app/node_modules/react-native
+    :path: "../node_modules/react-native"
   SugarRecord:
     :branch: swift2.0
     :git: https://github.com/tonyxiao/SugarRecord
