@@ -174,23 +174,28 @@ class Activities extends React.Component {
   }
 
   componentWillMount() {
-    return ddp.subscribe('activities', [this.props.me._id])
-    .then(() => {
-      let observer = ddp.collections.observe(() => {
-        if (ddp.collections.activities) {
-          return ddp.collections.activities.find({});
-        }
-      });
+    let subscriptionId = ddp.subscribe('activities', [this.props.me._id])
+    .then((subscriptionId) => {
+      this.setState({ subscriptionId: subscriptionId });
+    })
 
-      observer.subscribe((results) => {
+    let observer = ddp.collections.observe(() => {
+      if (ddp.collections.activities) {
+        return ddp.collections.activities.find({});
+      }
+    }).subscribe((results) => {
+      if (results) {
+        console.log(results.length);
         results.sort((one, two) => {
           return two.timestamp - one.timestamp;
         })
         this.setState({ activities: results });
-      })
-    }).catch(err => {
-      console.log(err);
+      }
     })
+  }
+
+  componentWillUnmount() {
+    ddp.unsubscribe(this.state.subscriptionId);
   }
 
   _switchService(profile) {
@@ -218,6 +223,10 @@ class Activities extends React.Component {
   }
 
   render() {
+    if (!this.state.activities) {
+      return <Text>Loading ... </Text>
+    }
+
     // This is because on the fly grayscale is not ready in RN yet.
     let grayToIconMapping = {
       facebook: 'https://s10tv.blob.core.windows.net/s10tv-prod/ic-facebook-gray.png',

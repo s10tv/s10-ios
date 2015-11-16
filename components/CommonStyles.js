@@ -6,12 +6,14 @@ let {
 
 let BACKGROUND_COLOR = '#e0e0e0';
 let TAYLR_COLOR = '#64369C';
+let MESSGE_BUTTON_COLOR = '#62339D';
 let EMPTY_HASHTAG = '#cccccc';
 let SUBTITLE_COLOR = '#666666';
 
 exports.COLORS = {
   background: BACKGROUND_COLOR,
   taylr: TAYLR_COLOR,
+  button: MESSGE_BUTTON_COLOR,
   emptyHashtag: EMPTY_HASHTAG,
   subtitle: SUBTITLE_COLOR,
   white: 'white'

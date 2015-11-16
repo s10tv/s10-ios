@@ -21,6 +21,7 @@ let MeEdit = require('./MeEdit');
 let Activities = require('./Activities');
 let HashtagCategory = require('./HashtagCategory');
 let HashtagListView = require('./HashtagListView');
+let Discover = require('./Discover');
 let SHEET = require('./CommonStyles').SHEET;
 let ContainerView = require('./ContainerView');
 
@@ -29,7 +30,8 @@ class LayoutContainer extends React.Component {
   constructor(props: {}) {
     super(props);
     this.state = {
-      modalVisible: false
+      modalVisible: false,
+      currentTab: 'discover',
     }
   }
 
@@ -79,6 +81,7 @@ class LayoutContainer extends React.Component {
       case 'editprofile':
         return <MeEdit navigator={nav} me={route.me} integrations={route.integrations} />
       case 'viewprofile':
+        console.log(route.me);
         return <Activities navigator={nav} me={route.me} />
       default:
         return (
@@ -87,12 +90,28 @@ class LayoutContainer extends React.Component {
     }
   }
 
+  renderDiscoverScene(route, nav) {
+    switch (route.id) {
+      case 'viewprofile':
+        return <Activities navigator={nav} me={route.me} />
+      case 'sendMessage':
+        return <ContainerView sbName="Conversation" />
+      default:
+        return (
+          <Discover navigator={nav} />
+        );
+    } 
+  }
+
   render() {
     return (
       <TabBarIOS>
         <TabBarIOS.Item 
           title="Me"
-          selected={true}>
+          onPress={() => {
+            this.setState({currentTab: 'me'});
+          }}
+          selected={this.state.currentTab == 'me'}>
           <Navigator
             itemWrapperStyle={styles.navWrap}
             style={styles.nav}
@@ -115,19 +134,41 @@ class LayoutContainer extends React.Component {
         </TabBarIOS.Item>
         <TabBarIOS.Item 
           title="Discover"
-          selected={false}>
-          <View />
+          onPress={() => {
+            this.setState({currentTab: 'discover'});
+          }}
+          selected={this.state.currentTab == 'discover'}>
+
+          <Navigator
+            itemWrapperStyle={styles.navWrap}
+            style={styles.nav}
+            renderScene={this.renderDiscoverScene.bind(this)}
+            configureScene={(route) =>
+              Navigator.SceneConfigs.HorizontalSwipeJump}
+            initialRoute={{
+              title: 'Discover',
+            }}
+            navigationBar={
+              <Navigator.NavigationBar
+                routeMapper={{
+                  LeftButton: this._leftButton.bind(this),
+                  RightButton: this._rightButton.bind(this),
+                  Title: this._title.bind(this)
+                }}
+                style={styles.navBar} />
+            }>
+          </Navigator>
         </TabBarIOS.Item>
         <TabBarIOS.Item 
           title="Chats"
-          selected={false}>
-          <View />
+          onPress={() => {
+            this.setState({currentTab: 'chats'});
+          }}
+          selected={this.state.currentTab == 'chats'}>
+            <View />
         </TabBarIOS.Item>
       </TabBarIOS>
     )
-// <ContainerView 
-          //   sbName="Conversation" 
-          //   style={styles.navWrap} />
   }
 }
 

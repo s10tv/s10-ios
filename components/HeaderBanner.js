@@ -23,10 +23,12 @@ class HeaderBanner extends React.Component {
   render() {
     let me = this.props.me;
 
+    let shadow = this.props.hideShadow ? null : <View style={styles.coverShadow}></View>;
+
     return (
       <View style={[styles.cover, { height: this.props.height }]}>
         <Image style={styles.cover} source={{ uri: this.props.url }}>
-          <View style={styles.coverShadow}></View>
+          { shadow }
         </Image>
 
         { this.props.children }
