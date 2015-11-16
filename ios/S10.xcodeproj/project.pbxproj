@@ -23,6 +23,7 @@
 		EA26670D1BFA86880054C777 /* MuteChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = EA26670A1BFA86880054C777 /* MuteChecker.m */; };
 		EA26671A1BFA8B460054C777 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2667181BFA8B460054C777 /* Image.swift */; };
 		EA26671B1BFA8B460054C777 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2667191BFA8B460054C777 /* Video.swift */; };
+		EA26671D1BFA8F2C0054C777 /* Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA26671C1BFA8F2C0054C777 /* Segue.swift */; };
 		EA337DFF1BB9067800F09A92 /* UIKitBindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA337DFE1BB9067800F09A92 /* UIKitBindings.swift */; };
 		EA394B0B1B5D9EF4009184EB /* v1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = EA394B071B5D9EF4009184EB /* v1.mp4 */; };
 		EA394B0C1B5D9EF4009184EB /* v2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = EA394B081B5D9EF4009184EB /* v2.mp4 */; };
@@ -80,13 +81,9 @@
 		EA81ADDC1BB6852600F94006 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670921B31FCBE0025D7CF /* DeviceInfo.swift */; };
 		EA81ADDD1BB6852600F94006 /* ProvisioningProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670931B31FCBE0025D7CF /* ProvisioningProfile.swift */; };
 		EA81ADDE1BB6852600F94006 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670961B31FE6A0025D7CF /* Environment.swift */; };
-		EA81ADE21BB686EF00F94006 /* PanInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47570C1B392C19002071D7 /* PanInteractor.swift */; };
-		EA81ADE41BB686EF00F94006 /* Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47570E1B392C19002071D7 /* Segue.swift */; };
-		EA81ADE51BB686EF00F94006 /* Transition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47570F1B392C19002071D7 /* Transition.swift */; };
 		EA81ADE71BB687F700F94006 /* GeometryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670711B31F9450025D7CF /* GeometryExtensions.swift */; };
 		EA81ADE81BB6881200F94006 /* UIKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670721B31F9450025D7CF /* UIKitExtension.swift */; };
 		EA81ADE91BB6883A00F94006 /* AnimationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670701B31F9450025D7CF /* AnimationExtensions.swift */; };
-		EA81ADEA1BB688C700F94006 /* ScrollTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA47570D1B392C19002071D7 /* ScrollTransition.swift */; };
 		EA81ADEB1BB6891F00F94006 /* RealmExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5CA5801B51292300284B04 /* RealmExtensions.swift */; };
 		EA81ADEC1BB6893500F94006 /* MeteorMethod.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAF670571B31F9450025D7CF /* MeteorMethod.swift */; };
 		EA81ADED1BB689FC00F94006 /* MeteorSubscription.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2DC2B81B641F070034434E /* MeteorSubscription.swift */; };
@@ -106,9 +103,6 @@
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
 		EAA575FC1BB7D0F000661A4F /* ThirdPartyBindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBA91B3930B000701F08 /* ThirdPartyBindings.swift */; };
 		EAA5760C1BB7E20800661A4F /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5773491B6C214E00BCF449 /* Appearance.swift */; };
-		EAA5763B1BB86A5000661A4F /* BindableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA576381BB86A5000661A4F /* BindableCell.swift */; };
-		EAA5763C1BB86A5000661A4F /* UICollectionViewBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA576391BB86A5000661A4F /* UICollectionViewBinding.swift */; };
-		EAA5763D1BB86A5000661A4F /* UITableViewBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA5763A1BB86A5000661A4F /* UITableViewBinding.swift */; };
 		EAA5DAC01BF2A8E100BF6B1E /* TaylrAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA5DABD1BF2A8E100BF6B1E /* TaylrAPI.m */; };
 		EAA5DAC11BF2A8E100BF6B1E /* TaylrAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA5DABE1BF2A8E100BF6B1E /* TaylrAPI.swift */; };
 		EAA5DAC21BF2A8E100BF6B1E /* TSContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA5DABF1BF2A8E100BF6B1E /* TSContainerView.m */; };
@@ -224,6 +218,7 @@
 		EA26670A1BFA86880054C777 /* MuteChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MuteChecker.m; sourceTree = "<group>"; };
 		EA2667181BFA8B460054C777 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		EA2667191BFA8B460054C777 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		EA26671C1BFA8F2C0054C777 /* Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segue.swift; sourceTree = "<group>"; };
 		EA2DC2B81B641F070034434E /* MeteorSubscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorSubscription.swift; sourceTree = "<group>"; };
 		EA337DFE1BB9067800F09A92 /* UIKitBindings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitBindings.swift; sourceTree = "<group>"; };
 		EA359AE41B6FFB2B00AF0A65 /* AzureClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AzureClient.swift; sourceTree = "<group>"; };
@@ -235,10 +230,6 @@
 		EA42D65A1BB7C66600B07526 /* MediaExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaExtension.swift; sourceTree = "<group>"; };
 		EA42D65C1BB7C67900B07526 /* BaseViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViews.swift; sourceTree = "<group>"; };
 		EA42D65D1BB7C67900B07526 /* DesignableViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableViews.swift; sourceTree = "<group>"; };
-		EA47570C1B392C19002071D7 /* PanInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanInteractor.swift; sourceTree = "<group>"; };
-		EA47570D1B392C19002071D7 /* ScrollTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollTransition.swift; sourceTree = "<group>"; };
-		EA47570E1B392C19002071D7 /* Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segue.swift; sourceTree = "<group>"; };
-		EA47570F1B392C19002071D7 /* Transition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Transition.swift; sourceTree = "<group>"; };
 		EA49286D1ADF291100118639 /* UpgradeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeService.swift; sourceTree = "<group>"; };
 		EA50220F1B54AC4B00BC92D2 /* TestNSObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestNSObject.m; sourceTree = "<group>"; };
 		EA54FA6B1BD009A000AD7E9A /* ConversationListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListViewModel.swift; sourceTree = "<group>"; };
@@ -297,9 +288,6 @@
 		EA9F35571A74CC6900E0C65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		EA9F35621A74CD8800E0C65D /* Taylr-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Taylr-Bridging.h"; path = "Taylr/Taylr-Bridging.h"; sourceTree = SOURCE_ROOT; };
 		EA9FE6461B67F85E006F8E73 /* ReactiveTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveTests.swift; sourceTree = "<group>"; };
-		EAA576381BB86A5000661A4F /* BindableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindableCell.swift; sourceTree = "<group>"; };
-		EAA576391BB86A5000661A4F /* UICollectionViewBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewBinding.swift; sourceTree = "<group>"; };
-		EAA5763A1BB86A5000661A4F /* UITableViewBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewBinding.swift; sourceTree = "<group>"; };
 		EAA5DABD1BF2A8E100BF6B1E /* TaylrAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaylrAPI.m; sourceTree = "<group>"; };
 		EAA5DABE1BF2A8E100BF6B1E /* TaylrAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaylrAPI.swift; sourceTree = "<group>"; };
 		EAA5DABF1BF2A8E100BF6B1E /* TSContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSContainerView.m; sourceTree = "<group>"; };
@@ -520,17 +508,6 @@
 				EA7FB0931B5EF9D50052B394 /* Cabin-Regular.ttf */,
 			);
 			path = Fonts;
-			sourceTree = "<group>";
-		};
-		EA47570B1B392C19002071D7 /* Transitions */ = {
-			isa = PBXGroup;
-			children = (
-				EA47570C1B392C19002071D7 /* PanInteractor.swift */,
-				EA47570D1B392C19002071D7 /* ScrollTransition.swift */,
-				EA47570E1B392C19002071D7 /* Segue.swift */,
-				EA47570F1B392C19002071D7 /* Transition.swift */,
-			);
-			path = Transitions;
 			sourceTree = "<group>";
 		};
 		EA54FA691BD009A000AD7E9A /* ViewModels */ = {
@@ -769,9 +746,6 @@
 		EAA576371BB86A5000661A4F /* Bindings */ = {
 			isa = PBXGroup;
 			children = (
-				EAA576381BB86A5000661A4F /* BindableCell.swift */,
-				EAA576391BB86A5000661A4F /* UICollectionViewBinding.swift */,
-				EAA5763A1BB86A5000661A4F /* UITableViewBinding.swift */,
 				EA337DFE1BB9067800F09A92 /* UIKitBindings.swift */,
 			);
 			path = Bindings;
@@ -849,8 +823,8 @@
 			isa = PBXGroup;
 			children = (
 				EAA576371BB86A5000661A4F /* Bindings */,
-				EA47570B1B392C19002071D7 /* Transitions */,
 				EAF670701B31F9450025D7CF /* AnimationExtensions.swift */,
+				EA26671C1BFA8F2C0054C777 /* Segue.swift */,
 				EAF670711B31F9450025D7CF /* GeometryExtensions.swift */,
 				EAF670721B31F9450025D7CF /* UIKitExtension.swift */,
 			);
@@ -1344,7 +1318,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA81ADEA1BB688C700F94006 /* ScrollTransition.swift in Sources */,
 				EA81ADEB1BB6891F00F94006 /* RealmExtensions.swift in Sources */,
 				EA0989A71BD5C0FF0014F71C /* LayerExtensions.swift in Sources */,
 				EA8E69481BC1DA30002D4BF1 /* FetchedResultsArray.swift in Sources */,
@@ -1364,6 +1337,7 @@
 				EA81ADDA1BB6839200F94006 /* AlamofireExtension.swift in Sources */,
 				EA81ADBF1BB6679400F94006 /* Logging.swift in Sources */,
 				EA81ADF11BB68CDD00F94006 /* SugarRecordExtension.swift in Sources */,
+				EA26671D1BFA8F2C0054C777 /* Segue.swift in Sources */,
 				EA81ADDB1BB6839200F94006 /* AzureClient.swift in Sources */,
 				EA81ADEC1BB6893500F94006 /* MeteorMethod.swift in Sources */,
 				EA8E694A1BC1DA30002D4BF1 /* TwoWayBindings.swift in Sources */,
@@ -1373,24 +1347,18 @@
 				EA81ADDC1BB6852600F94006 /* DeviceInfo.swift in Sources */,
 				EAB31D571BCF76260080DA47 /* LayerService.swift in Sources */,
 				EA0989AB1BD5C1540014F71C /* LayerHelpers.swift in Sources */,
-				EAA5763C1BB86A5000661A4F /* UICollectionViewBinding.swift in Sources */,
 				EA337DFF1BB9067800F09A92 /* UIKitBindings.swift in Sources */,
 				EA81ADD31BB673B100F94006 /* Future.swift in Sources */,
 				EA81ADE71BB687F700F94006 /* GeometryExtensions.swift in Sources */,
 				EA8E69471BC1DA30002D4BF1 /* DynamicProperties.swift in Sources */,
 				EA0ED05F1BC1F80F00A9EE08 /* MeteorExtensions.swift in Sources */,
-				EAA5763B1BB86A5000661A4F /* BindableCell.swift in Sources */,
-				EA81ADE21BB686EF00F94006 /* PanInteractor.swift in Sources */,
 				EA26671A1BFA8B460054C777 /* Image.swift in Sources */,
-				EA81ADE51BB686EF00F94006 /* Transition.swift in Sources */,
 				EA81ADCE1BB6731200F94006 /* SwiftExtensions.swift in Sources */,
 				EA81ADC21BB6688400F94006 /* Core.m in Sources */,
 				EA81ADD71BB6823F00F94006 /* AsyncOperation.swift in Sources */,
 				EA81ADE81BB6881200F94006 /* UIKitExtension.swift in Sources */,
-				EA81ADE41BB686EF00F94006 /* Segue.swift in Sources */,
 				EA81AE0B1BB6930900F94006 /* CurrentUser.swift in Sources */,
 				EA81ADD41BB6793500F94006 /* ActionExtensions.swift in Sources */,
-				EAA5763D1BB86A5000661A4F /* UITableViewBinding.swift in Sources */,
 				EA81ADF01BB68A7300F94006 /* Meteor+CoreData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
