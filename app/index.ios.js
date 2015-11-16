@@ -23,7 +23,7 @@ let container = React.createClass({
   }
 });
 
-AppRegistry.registerComponent('TaylrReact', () => container);
+AppRegistry.registerComponent('Taylr', () => container);
 
 // ddp.initialize().then((res) => {
 // 	TaylrAPI.getMeteorUser((userId, resumeToken) => {

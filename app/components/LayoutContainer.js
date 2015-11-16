@@ -8,6 +8,8 @@ let {
   Image,
   TouchableOpacity,
   Navigator,
+  NavigatorIOS,
+  TabBarIOS,
   WebView,
   StyleSheet,
 } = React;
@@ -20,6 +22,7 @@ let Activities = require('./Activities');
 let HashtagCategory = require('./HashtagCategory');
 let HashtagListView = require('./HashtagListView');
 let SHEET = require('./CommonStyles').SHEET;
+let ContainerView = require('./ContainerView');
 
 class LayoutContainer extends React.Component {
 
@@ -86,25 +89,45 @@ class LayoutContainer extends React.Component {
 
   render() {
     return (
-      <Navigator
-        itemWrapperStyle={styles.navWrap}
-        style={styles.nav}
-        renderScene={this.renderScene.bind(this)}
-        configureScene={(route) =>
-          Navigator.SceneConfigs.HorizontalSwipeJump}
-        initialRoute={{
-          title: 'Me',
-        }}
-        navigationBar={
-          <Navigator.NavigationBar
-            routeMapper={{
-              LeftButton: this._leftButton.bind(this),
-              RightButton: this._rightButton.bind(this),
-              Title: this._title.bind(this)
+      <TabBarIOS>
+        <TabBarIOS.Item 
+          title="Me"
+          selected={false}>
+          <Navigator
+            itemWrapperStyle={styles.navWrap}
+            style={styles.nav}
+            renderScene={this.renderScene.bind(this)}
+            configureScene={(route) =>
+              Navigator.SceneConfigs.HorizontalSwipeJump}
+            initialRoute={{
+              title: 'Me',
             }}
-            style={styles.navBar} />
-        }>
-      </Navigator>
+            navigationBar={
+              <Navigator.NavigationBar
+                routeMapper={{
+                  LeftButton: this._leftButton.bind(this),
+                  RightButton: this._rightButton.bind(this),
+                  Title: this._title.bind(this)
+                }}
+                style={styles.navBar} />
+            }>
+          </Navigator>
+        </TabBarIOS.Item>
+        <TabBarIOS.Item 
+          title="Discover"
+          selected={true}>
+          <ContainerView 
+            sbName="Discover" 
+            style={styles.navWrap} />
+        </TabBarIOS.Item>
+        <TabBarIOS.Item 
+          title="Chats"
+          selected={false}>
+          <ContainerView 
+            sbName="Conversation" 
+            style={styles.navWrap} />
+        </TabBarIOS.Item>
+      </TabBarIOS>
     )
   }
 }

@@ -69,6 +69,13 @@ RCT_EXPORT_VIEW_PROPERTY(vcIdentifier, NSString)
     }
 }
 
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    if (self.vc.isViewLoaded) {
+        self.vc.view.frame = self.bounds;
+    }
+}
+
 - (void)reactBridgeDidFinishTransaction {
     // Optimistically add, hopefully allowing viewWillAppear: to be invoked
     // NOTE: Unfortunately it's not always guaranteed, so any contained viewController will
