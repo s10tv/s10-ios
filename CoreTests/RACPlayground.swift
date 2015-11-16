@@ -9,7 +9,6 @@
 import Foundation
 import XCTest
 import ReactiveCocoa
-import Async
 import Nimble
 import Core
 

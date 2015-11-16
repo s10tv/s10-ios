@@ -4,7 +4,6 @@ PODS:
     - FMDB/standard (~> 2.5)
   - AMPopTip (0.9.12)
   - AnalyticsSwift (0.2.0)
-  - AsyncSwift (1.6.4)
   - Atlas (1.0.14):
     - LayerKit (>= 0.17.0)
   - Bolts (1.4.0):
@@ -135,7 +134,6 @@ DEPENDENCIES:
   - Amplitude-iOS (~> 3.1)
   - AMPopTip (~> 0.9)
   - AnalyticsSwift (~> 0.2)
-  - AsyncSwift (from `https://github.com/duemunk/Async.git`)
   - Atlas (~> 1.0.13)
   - Cartography (~> 0.6)
   - CHTCollectionViewWaterfallLayout (~> 0.9)
@@ -182,8 +180,6 @@ DEPENDENCIES:
   - UXCam (~> 2.3)
 
 EXTERNAL SOURCES:
-  AsyncSwift:
-    :git: https://github.com/duemunk/Async.git
   DZNEmptyDataSet:
     :git: https://github.com/dzenbot/DZNEmptyDataSet.git
   Meteor:
@@ -202,9 +198,6 @@ EXTERNAL SOURCES:
     :git: https://github.com/tonyxiao/SugarRecord
 
 CHECKOUT OPTIONS:
-  AsyncSwift:
-    :commit: 3c324366ceb02e69d3ff66401ea6fb6e665ec663
-    :git: https://github.com/duemunk/Async.git
   DZNEmptyDataSet:
     :commit: 844f0dccf06887129a0bf763916b03a3efcf7b13
     :git: https://github.com/dzenbot/DZNEmptyDataSet.git
@@ -229,7 +222,6 @@ SPEC CHECKSUMS:
   Amplitude-iOS: 6f82e97de436fd145ae9a205933b350fcdfbcddc
   AMPopTip: 3c98a9b38148868366b57765064bd9565f653038
   AnalyticsSwift: 76329ac0b66be9747e9f718076c53d264ed24089
-  AsyncSwift: 3c90beed237324f1b57e1f1c414dc5501985d208
   Atlas: cd700f467c9bffd1bcb61d77a1feff56def88405
   Bolts: 0e9bce58b9b9f5e8a7a4d47b16d2fabec289072b
   Cartography: 70af183a248547694a8cfaa6b989cb7e04589985

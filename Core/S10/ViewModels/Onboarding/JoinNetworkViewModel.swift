@@ -8,7 +8,6 @@
 
 import Foundation
 import ReactiveCocoa
-import Async
 
 public struct JoinNetworkViewModel {
     let ctx: Context

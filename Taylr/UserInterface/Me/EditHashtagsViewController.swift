@@ -9,7 +9,6 @@
 import UIKit
 import ReactiveCocoa
 import MLPAutoCompleteTextField
-import Async
 import Core
 
 class EditHashtagsViewController : UIViewController {

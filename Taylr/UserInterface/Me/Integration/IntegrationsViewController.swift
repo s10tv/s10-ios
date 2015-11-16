@@ -10,7 +10,6 @@ import Foundation
 import ReactiveCocoa
 import Meteor
 import FBSDKLoginKit
-import Async
 import PKHUD
 import Core
 
@@ -101,7 +100,7 @@ extension IntegrationsViewController : ClientIntegrationDelegate {
                 promise.cancel() // TODO: Check whether or not this is actuallly correct behavior
             } else {
                 Log.debug("Successfulled received token from facebook")
-                Async.main {
+                dispatch_async(dispatch_get_main_queue()) {
                     PKHUD.showActivity()
                     promise.future.deliverOn(UIScheduler()).onComplete { _ in
                         PKHUD.hide(animated: false)

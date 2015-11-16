@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import ReactiveCocoa
 import SCRecorder
-import Async
 import Core
 
 protocol VideoPlayerViewControllerDelegate : class {
@@ -50,7 +49,7 @@ class VideoPlayerViewController : UIViewController {
             // AVPlayer.setItemByUrl ends up being a no-op. I can't explain it but
             // dispatching it again to main thread works around this issue.
             // the temp variable video is needed to avoid compiler crash
-            Async.main { [weak self] in
+            dispatch_async(dispatch_get_main_queue()) { [weak self] in
                 self?.player.setItemByUrl(videoURL)
                 //                Log.debug("set videoURL to \(videoURL)")
             }
@@ -109,7 +108,7 @@ class VideoPlayerViewController : UIViewController {
             delegate?.videoPlayer(self, didPlayVideo: video)
         }
         if vm.seekNextVideo() {
-            Async.main { self.player.play() }
+            dispatch_async(dispatch_get_main_queue()) { self.player.play() }
         } else {
             delegate?.videoPlayerDidFinishPlaylist(self)
         }

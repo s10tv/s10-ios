@@ -9,7 +9,6 @@
 import Foundation
 import ReactiveCocoa
 import EDColor
-import Async
 import Cartography
 import Core
 
@@ -66,7 +65,7 @@ class ProfileCoverCell : UITableViewCell, BindableCell {
         cd += collectionView <~ (vm.selectors, ProfileSelectorCell.self)
         
         // Cell is not available for immediate selection, therefore we'll wait for it to populate first
-        Async.main {
+        dispatch_async(dispatch_get_main_queue()) {
             self.collectionView.selectItemAtIndexPath(NSIndexPath(forItem: 0, inSection: 0),
                         animated: false, scrollPosition: .None)
             

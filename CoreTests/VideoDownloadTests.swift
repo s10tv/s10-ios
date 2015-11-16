@@ -10,7 +10,6 @@ import Foundation
 import XCTest
 import Core
 import Nimble
-import Async
 import RealmSwift
 
 class VideoDownloadTests: AsyncTestCase {

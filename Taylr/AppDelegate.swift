@@ -18,7 +18,6 @@ import RealmSwift
 import LayerKit
 import SCRecorder
 import AVFoundation
-import Async
 import React
 import Core
 import NKRecorder

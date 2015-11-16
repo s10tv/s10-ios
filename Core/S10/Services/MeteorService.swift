@@ -12,7 +12,6 @@ import ReactiveCocoa
 import SugarRecord
 import SwiftyJSON
 import Meteor
-import Async
 
 public class MeteorService : NSObject {
     private let _user = MutableProperty<User?>(nil)
@@ -121,7 +120,8 @@ public class MeteorService : NSObject {
                 self?._user.value = self?.mainContext.objectInCollection("users", documentID: userId) as? User
             }
             // HACK ALERT: Bring back the 0.1 second delay to fix login...
-            Async.main(after: 0.1) {
+            let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(0.1 * Double(NSEC_PER_SEC)))
+            dispatch_after(delayTime, dispatch_get_main_queue()) {
                 promise.success()
             }
         }))
