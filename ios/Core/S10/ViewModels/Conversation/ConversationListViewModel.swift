@@ -14,7 +14,7 @@ import LayerKit
 public class ConversationListViewModel: NSObject {
     
     let ctx: Context
-    var subscriptions: [MeteorSubscription] = []
+//    var subscriptions: [MeteorSubscription] = []
 
     let changedConversationSink: Event<LYRConversation, NoError> -> ()
     public let changedConversations: Signal<LYRConversation, NoError>
