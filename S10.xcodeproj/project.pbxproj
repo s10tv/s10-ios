@@ -187,7 +187,6 @@
 		EAA5DAC01BF2A8E100BF6B1E /* TaylrAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA5DABD1BF2A8E100BF6B1E /* TaylrAPI.m */; };
 		EAA5DAC11BF2A8E100BF6B1E /* TaylrAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA5DABE1BF2A8E100BF6B1E /* TaylrAPI.swift */; };
 		EAA5DAC21BF2A8E100BF6B1E /* TSContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA5DABF1BF2A8E100BF6B1E /* TSContainerView.m */; };
-		EAA5DACF1BF2A99100BF6B1E /* libRNOverlay.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA5DACB1BF2A98000BF6B1E /* libRNOverlay.a */; };
 		EAA5DAD01BF2A99100BF6B1E /* libRNSearchBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EAA5DACE1BF2A98000BF6B1E /* libRNSearchBar.a */; };
 		EAB31D571BCF76260080DA47 /* LayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB31D561BCF76260080DA47 /* LayerService.swift */; };
 		EABA05461B474FED00154C75 /* test-avatar.jpg in Resources */ = {isa = PBXBuildFile; fileRef = EABA05451B474FED00154C75 /* test-avatar.jpg */; };
@@ -213,13 +212,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		EAA5DACA1BF2A98000BF6B1E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = EAA5DAC61BF2A98000BF6B1E /* RNOverlay.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNOverlay;
-		};
 		EAA5DACD1BF2A98000BF6B1E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = EAA5DAC31BF2A98000BF6B1E /* RNSearchBar.xcodeproj */;
@@ -459,7 +451,6 @@
 		EAA5DABE1BF2A8E100BF6B1E /* TaylrAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaylrAPI.swift; sourceTree = "<group>"; };
 		EAA5DABF1BF2A8E100BF6B1E /* TSContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSContainerView.m; sourceTree = "<group>"; };
 		EAA5DAC31BF2A98000BF6B1E /* RNSearchBar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNSearchBar.xcodeproj; path = "app/node_modules/react-native-search-bar/RNSearchBar.xcodeproj"; sourceTree = SOURCE_ROOT; };
-		EAA5DAC61BF2A98000BF6B1E /* RNOverlay.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNOverlay.xcodeproj; path = "app/node_modules/react-native-overlay/RNOverlay.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		EAAD921C1ACF342C0014BA25 /* TaylrEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaylrEnvironment.swift; sourceTree = "<group>"; };
 		EAB31D561BCF76260080DA47 /* LayerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerService.swift; sourceTree = "<group>"; };
 		EABA05431B474EC900154C75 /* PhotoUploadOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoUploadOperation.swift; sourceTree = "<group>"; };
@@ -533,7 +524,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F94FA0D71BF427E20050D6F1 /* libRNMail.a in Frameworks */,
-				EAA5DACF1BF2A99100BF6B1E /* libRNOverlay.a in Frameworks */,
 				EAA5DAD01BF2A99100BF6B1E /* libRNSearchBar.a in Frameworks */,
 				F95D95DF1A84A1170068F090 /* MediaPlayer.framework in Frameworks */,
 				F996C7261A81F1F200314FF8 /* OpenGLES.framework in Frameworks */,
@@ -563,7 +553,6 @@
 			children = (
 				F94FA0CC1BF427D20050D6F1 /* RNMail.xcodeproj */,
 				EAA5DAC31BF2A98000BF6B1E /* RNSearchBar.xcodeproj */,
-				EAA5DAC61BF2A98000BF6B1E /* RNOverlay.xcodeproj */,
 				F95D95DE1A84A1170068F090 /* MediaPlayer.framework */,
 				F996C7251A81F1F200314FF8 /* OpenGLES.framework */,
 				F996C7231A81F1E700314FF8 /* QuartzCore.framework */,
@@ -1124,14 +1113,6 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		EAA5DAC71BF2A98000BF6B1E /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				EAA5DACB1BF2A98000BF6B1E /* libRNOverlay.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		EABD43D71AA1D27400B07813 /* Configs */ = {
 			isa = PBXGroup;
 			children = (
@@ -1423,10 +1404,6 @@
 					ProjectRef = F94FA0CC1BF427D20050D6F1 /* RNMail.xcodeproj */;
 				},
 				{
-					ProductGroup = EAA5DAC71BF2A98000BF6B1E /* Products */;
-					ProjectRef = EAA5DAC61BF2A98000BF6B1E /* RNOverlay.xcodeproj */;
-				},
-				{
 					ProductGroup = EAA5DAC41BF2A98000BF6B1E /* Products */;
 					ProjectRef = EAA5DAC31BF2A98000BF6B1E /* RNSearchBar.xcodeproj */;
 				},
@@ -1442,13 +1419,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		EAA5DACB1BF2A98000BF6B1E /* libRNOverlay.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNOverlay.a;
-			remoteRef = EAA5DACA1BF2A98000BF6B1E /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		EAA5DACE1BF2A98000BF6B1E /* libRNSearchBar.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
