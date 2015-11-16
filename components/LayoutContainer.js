@@ -92,7 +92,7 @@ class LayoutContainer extends React.Component {
       <TabBarIOS>
         <TabBarIOS.Item 
           title="Me"
-          selected={false}>
+          selected={true}>
           <Navigator
             itemWrapperStyle={styles.navWrap}
             style={styles.nav}
@@ -115,10 +115,8 @@ class LayoutContainer extends React.Component {
         </TabBarIOS.Item>
         <TabBarIOS.Item 
           title="Discover"
-          selected={true}>
-          <ContainerView 
-            sbName="Discover" 
-            style={styles.navWrap} />
+          selected={false}>
+          <View />
         </TabBarIOS.Item>
         <TabBarIOS.Item 
           title="Chats"

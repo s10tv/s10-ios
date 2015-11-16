@@ -79,30 +79,9 @@
 		EA5B742C1B30FC9D008E5CBC /* Test.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA5B742B1B30FC9D008E5CBC /* Test.storyboard */; };
 		EA5B74371B3139EA008E5CBC /* Core.h in Headers */ = {isa = PBXBuildFile; fileRef = EA5B74361B3139EA008E5CBC /* Core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EA5B74531B315D8A008E5CBC /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA5B74321B3139EA008E5CBC /* Core.framework */; };
-		EA72AE0F1BD003740031D652 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA72AE0E1BD003740031D652 /* Onboarding.storyboard */; };
-		EA72AE111BD004270031D652 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA72AE101BD004270031D652 /* Main.storyboard */; };
 		EA72AE431BD005CD0031D652 /* Conversation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA72AE131BD005CD0031D652 /* Conversation.storyboard */; };
 		EA72AE441BD005CD0031D652 /* ConversationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE141BD005CD0031D652 /* ConversationListViewController.swift */; };
 		EA72AE451BD005CD0031D652 /* ChatHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE151BD005CD0031D652 /* ChatHistoryViewController.swift */; };
-		EA72AE551BD005CD0031D652 /* CandidateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE2C1BD005CD0031D652 /* CandidateCell.swift */; };
-		EA72AE561BD005CD0031D652 /* Discover.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA72AE2D1BD005CD0031D652 /* Discover.storyboard */; };
-		EA72AE571BD005CD0031D652 /* DiscoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE2E1BD005CD0031D652 /* DiscoverViewController.swift */; };
-		EA72AE581BD005CD0031D652 /* HistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE2F1BD005CD0031D652 /* HistoryViewController.swift */; };
-		EA72AE591BD005CD0031D652 /* TodayCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE301BD005CD0031D652 /* TodayCell.swift */; };
-		EA72AE5A1BD005CD0031D652 /* EditHashtagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE321BD005CD0031D652 /* EditHashtagsViewController.swift */; };
-		EA72AE5B1BD005CD0031D652 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE331BD005CD0031D652 /* EditProfileViewController.swift */; };
-		EA72AE5C1BD005CD0031D652 /* HashtagCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE341BD005CD0031D652 /* HashtagCell.swift */; };
-		EA72AE5D1BD005CD0031D652 /* IntegrationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE361BD005CD0031D652 /* IntegrationCell.swift */; };
-		EA72AE5E1BD005CD0031D652 /* IntegrationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE371BD005CD0031D652 /* IntegrationsViewController.swift */; };
-		EA72AE5F1BD005CD0031D652 /* IntegrationWebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE381BD005CD0031D652 /* IntegrationWebViewController.swift */; };
-		EA72AE611BD005CD0031D652 /* Me.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA72AE3A1BD005CD0031D652 /* Me.storyboard */; };
-		EA72AE621BD005CD0031D652 /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE3B1BD005CD0031D652 /* MeViewController.swift */; };
-		EA72AE631BD005CD0031D652 /* ActivityImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE3D1BD005CD0031D652 /* ActivityImageCell.swift */; };
-		EA72AE641BD005CD0031D652 /* ActivityTextCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE3E1BD005CD0031D652 /* ActivityTextCell.swift */; };
-		EA72AE651BD005CD0031D652 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA72AE3F1BD005CD0031D652 /* Profile.storyboard */; };
-		EA72AE661BD005CD0031D652 /* ProfileCoverCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE401BD005CD0031D652 /* ProfileCoverCell.swift */; };
-		EA72AE671BD005CD0031D652 /* ProfileInfoCells.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE411BD005CD0031D652 /* ProfileInfoCells.swift */; };
-		EA72AE681BD005CD0031D652 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA72AE421BD005CD0031D652 /* ProfileViewController.swift */; };
 		EA7475861BCFFA95009A09BC /* BaseNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7475851BCFFA95009A09BC /* BaseNavigationController.swift */; };
 		EA78C8801B323E140016AB73 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA78C87F1B323E140016AB73 /* Images.xcassets */; };
 		EA7FB0941B5EF9D50052B394 /* Cabin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB08E1B5EF9D50052B394 /* Cabin-Bold.ttf */; };
@@ -164,20 +143,10 @@
 		EAA575FC1BB7D0F000661A4F /* ThirdPartyBindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBA91B3930B000701F08 /* ThirdPartyBindings.swift */; };
 		EAA576081BB7E04C00661A4F /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F871B2B32E500DE3936 /* BaseViewController.swift */; };
 		EAA576091BB7E0E700661A4F /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBA61B39308A00701F08 /* PageViewController.swift */; };
-		EAA5760B1BB7E1F700661A4F /* ProfileIconCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9FE6481B684FA0006F8E73 /* ProfileIconCell.swift */; };
 		EAA5760C1BB7E20800661A4F /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5773491B6C214E00BCF449 /* Appearance.swift */; };
-		EAA5760E1BB7E29900661A4F /* MainTabController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7FB08C1B5EEA070052B394 /* MainTabController.swift */; };
-		EAA5760F1BB7E2E000661A4F /* TransitionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3594181B2FEA1F00E91337 /* TransitionManager.swift */; };
-		EAA576151BB7E57600661A4F /* TutorialContentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BF43101BB07EFC007D30A0 /* TutorialContentViewController.swift */; };
-		EAA576171BB7E5B600661A4F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA56F7F1B2B32E500DE3936 /* LoginViewController.swift */; };
-		EAA576181BB7E6D200661A4F /* CreateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0851B6AA2060007C6CB /* CreateProfileViewController.swift */; };
-		EAA576191BB7E9FB00661A4F /* ConnectServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA89C0871B6AC0410007C6CB /* ConnectServicesViewController.swift */; };
-		EAA5761A1BB7EA2C00661A4F /* JoinNetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9608B841BAA9B040067E1EF /* JoinNetworkViewController.swift */; };
-		EAA5761B1BB7EA6700661A4F /* TutorialPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9BF43121BB0813E007D30A0 /* TutorialPageViewController.swift */; };
 		EAA5763B1BB86A5000661A4F /* BindableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA576381BB86A5000661A4F /* BindableCell.swift */; };
 		EAA5763C1BB86A5000661A4F /* UICollectionViewBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA576391BB86A5000661A4F /* UICollectionViewBinding.swift */; };
 		EAA5763D1BB86A5000661A4F /* UITableViewBinding.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA5763A1BB86A5000661A4F /* UITableViewBinding.swift */; };
-		EAA5DABC1BF2A81700BF6B1E /* HashtagsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA5DABB1BF2A81700BF6B1E /* HashtagsViewController.swift */; };
 		EAA5DAC01BF2A8E100BF6B1E /* TaylrAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA5DABD1BF2A8E100BF6B1E /* TaylrAPI.m */; };
 		EAA5DAC11BF2A8E100BF6B1E /* TaylrAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA5DABE1BF2A8E100BF6B1E /* TaylrAPI.swift */; };
 		EAA5DAC21BF2A8E100BF6B1E /* TSContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA5DABF1BF2A8E100BF6B1E /* TSContainerView.m */; };
@@ -303,7 +272,6 @@
 		EA2DC2931B637FA50034434E /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		EA2DC2B81B641F070034434E /* MeteorSubscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorSubscription.swift; sourceTree = "<group>"; };
 		EA337DFE1BB9067800F09A92 /* UIKitBindings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitBindings.swift; sourceTree = "<group>"; };
-		EA3594181B2FEA1F00E91337 /* TransitionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionManager.swift; sourceTree = "<group>"; };
 		EA359AE41B6FFB2B00AF0A65 /* AzureClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AzureClient.swift; sourceTree = "<group>"; };
 		EA36D2AA1AE71366006FD5D8 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		EA394B071B5D9EF4009184EB /* v1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = v1.mp4; path = ../../../../Documents/Videos/v1.mp4; sourceTree = "<group>"; };
@@ -362,36 +330,14 @@
 		EA6E405C1B6D334D00FF5126 /* Future.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
 		EA6E40611B6D33F500FF5126 /* ActionExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionExtensions.swift; sourceTree = "<group>"; };
 		EA7134111B56E47100B810F6 /* ImagePickerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerExtensions.swift; sourceTree = "<group>"; };
-		EA72AE0E1BD003740031D652 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
-		EA72AE101BD004270031D652 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		EA72AE131BD005CD0031D652 /* Conversation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Conversation.storyboard; sourceTree = "<group>"; };
 		EA72AE141BD005CD0031D652 /* ConversationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListViewController.swift; sourceTree = "<group>"; };
 		EA72AE151BD005CD0031D652 /* ChatHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatHistoryViewController.swift; sourceTree = "<group>"; };
-		EA72AE2C1BD005CD0031D652 /* CandidateCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateCell.swift; sourceTree = "<group>"; };
-		EA72AE2D1BD005CD0031D652 /* Discover.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Discover.storyboard; sourceTree = "<group>"; };
-		EA72AE2E1BD005CD0031D652 /* DiscoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewController.swift; sourceTree = "<group>"; };
-		EA72AE2F1BD005CD0031D652 /* HistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewController.swift; sourceTree = "<group>"; };
-		EA72AE301BD005CD0031D652 /* TodayCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayCell.swift; sourceTree = "<group>"; };
-		EA72AE321BD005CD0031D652 /* EditHashtagsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditHashtagsViewController.swift; sourceTree = "<group>"; };
-		EA72AE331BD005CD0031D652 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
-		EA72AE341BD005CD0031D652 /* HashtagCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagCell.swift; sourceTree = "<group>"; };
-		EA72AE361BD005CD0031D652 /* IntegrationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationCell.swift; sourceTree = "<group>"; };
-		EA72AE371BD005CD0031D652 /* IntegrationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationsViewController.swift; sourceTree = "<group>"; };
-		EA72AE381BD005CD0031D652 /* IntegrationWebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationWebViewController.swift; sourceTree = "<group>"; };
-		EA72AE3A1BD005CD0031D652 /* Me.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Me.storyboard; sourceTree = "<group>"; };
-		EA72AE3B1BD005CD0031D652 /* MeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
-		EA72AE3D1BD005CD0031D652 /* ActivityImageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityImageCell.swift; sourceTree = "<group>"; };
-		EA72AE3E1BD005CD0031D652 /* ActivityTextCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityTextCell.swift; sourceTree = "<group>"; };
-		EA72AE3F1BD005CD0031D652 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
-		EA72AE401BD005CD0031D652 /* ProfileCoverCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileCoverCell.swift; sourceTree = "<group>"; };
-		EA72AE411BD005CD0031D652 /* ProfileInfoCells.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInfoCells.swift; sourceTree = "<group>"; };
-		EA72AE421BD005CD0031D652 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		EA7475851BCFFA95009A09BC /* BaseNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseNavigationController.swift; sourceTree = "<group>"; };
 		EA78C8761B320A2A0016AB73 /* AlamofireExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireExtension.swift; sourceTree = "<group>"; };
 		EA78C87F1B323E140016AB73 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Pods/PKHUD/PKHUD/Images.xcassets; sourceTree = "<group>"; };
 		EA7AA3681AA26597003383BE /* SBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstants.swift; sourceTree = "<group>"; };
 		EA7AA3691AA26597003383BE /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
-		EA7FB08C1B5EEA070052B394 /* MainTabController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabController.swift; sourceTree = "<group>"; };
 		EA7FB08E1B5EF9D50052B394 /* Cabin-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Bold.ttf"; sourceTree = "<group>"; };
 		EA7FB08F1B5EF9D50052B394 /* Cabin-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-BoldItalic.ttf"; sourceTree = "<group>"; };
 		EA7FB0901B5EF9D50052B394 /* Cabin-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Italic.ttf"; sourceTree = "<group>"; };
@@ -401,8 +347,6 @@
 		EA81ADCD1BB6731200F94006 /* SwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftExtensions.swift; sourceTree = "<group>"; };
 		EA81ADD01BB6735800F94006 /* Foundation+RACSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+RACSupport.swift"; sourceTree = "<group>"; };
 		EA82CF961B504FC500A12D94 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
-		EA89C0851B6AA2060007C6CB /* CreateProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileViewController.swift; sourceTree = "<group>"; };
-		EA89C0871B6AC0410007C6CB /* ConnectServicesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectServicesViewController.swift; sourceTree = "<group>"; };
 		EA8A733B1BD3092F006DB6A9 /* VideoPlayerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewModel.swift; sourceTree = "<group>"; };
 		EA8E69411BC1DA30002D4BF1 /* ArrayProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayProperty.swift; sourceTree = "<group>"; };
 		EA8E69421BC1DA30002D4BF1 /* DynamicProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicProperties.swift; sourceTree = "<group>"; };
@@ -426,13 +370,10 @@
 		EA9F35571A74CC6900E0C65D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
 		EA9F35621A74CD8800E0C65D /* Taylr-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Taylr-Bridging.h"; path = "Taylr/Taylr-Bridging.h"; sourceTree = SOURCE_ROOT; };
 		EA9FE6461B67F85E006F8E73 /* ReactiveTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactiveTests.swift; sourceTree = "<group>"; };
-		EA9FE6481B684FA0006F8E73 /* ProfileIconCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileIconCell.swift; sourceTree = "<group>"; };
-		EAA56F7F1B2B32E500DE3936 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		EAA56F871B2B32E500DE3936 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		EAA576381BB86A5000661A4F /* BindableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BindableCell.swift; sourceTree = "<group>"; };
 		EAA576391BB86A5000661A4F /* UICollectionViewBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UICollectionViewBinding.swift; sourceTree = "<group>"; };
 		EAA5763A1BB86A5000661A4F /* UITableViewBinding.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UITableViewBinding.swift; sourceTree = "<group>"; };
-		EAA5DABB1BF2A81700BF6B1E /* HashtagsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagsViewController.swift; sourceTree = "<group>"; };
 		EAA5DABD1BF2A8E100BF6B1E /* TaylrAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaylrAPI.m; sourceTree = "<group>"; };
 		EAA5DABE1BF2A8E100BF6B1E /* TaylrAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaylrAPI.swift; sourceTree = "<group>"; };
 		EAA5DABF1BF2A8E100BF6B1E /* TSContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSContainerView.m; sourceTree = "<group>"; };
@@ -473,7 +414,6 @@
 		F92F687E1B34974B00171FE4 /* CoreTests-bridging-header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreTests-bridging-header.h"; sourceTree = "<group>"; };
 		F94FA0CC1BF427D20050D6F1 /* RNMail.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNMail.xcodeproj; path = "../node_modules/react-native-mail/RNMail.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		F95D95DE1A84A1170068F090 /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
-		F9608B841BAA9B040067E1EF /* JoinNetworkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinNetworkViewController.swift; sourceTree = "<group>"; };
 		F96E6FAE1BF49FC800DEB19A /* main.jsbundle */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = main.jsbundle; sourceTree = "<group>"; };
 		F996C71D1A81F1D100314FF8 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		F996C71F1A81F1D800314FF8 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
@@ -483,8 +423,6 @@
 		F9ABA2CD1B6412A00098B7E4 /* DiscoverIntegrationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverIntegrationTest.swift; sourceTree = "<group>"; };
 		F9ABA2CF1B6412CF0098B7E4 /* IntegrationTestEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationTestEnvironment.swift; sourceTree = "<group>"; };
 		F9ABA2D11B643EF30098B7E4 /* MeIntegrationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeIntegrationTest.swift; sourceTree = "<group>"; };
-		F9BF43101BB07EFC007D30A0 /* TutorialContentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialContentViewController.swift; sourceTree = "<group>"; };
-		F9BF43121BB0813E007D30A0 /* TutorialPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialPageViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -674,14 +612,6 @@
 				EAD16D2D1BCA4AB40040CEB8 /* _Hashtag.swift */,
 			);
 			path = _Models;
-			sourceTree = "<group>";
-		};
-		EA3594171B2FEA1500E91337 /* Transitions */ = {
-			isa = PBXGroup;
-			children = (
-				EA3594181B2FEA1F00E91337 /* TransitionManager.swift */,
-			);
-			path = Transitions;
 			sourceTree = "<group>";
 		};
 		EA35941C1B30CF9900E91337 /* Core */ = {
@@ -890,55 +820,6 @@
 			path = Conversation;
 			sourceTree = "<group>";
 		};
-		EA72AE2B1BD005CD0031D652 /* Discover */ = {
-			isa = PBXGroup;
-			children = (
-				EA72AE2D1BD005CD0031D652 /* Discover.storyboard */,
-				EA72AE2C1BD005CD0031D652 /* CandidateCell.swift */,
-				EA72AE2E1BD005CD0031D652 /* DiscoverViewController.swift */,
-				EA72AE2F1BD005CD0031D652 /* HistoryViewController.swift */,
-				EA72AE301BD005CD0031D652 /* TodayCell.swift */,
-			);
-			path = Discover;
-			sourceTree = "<group>";
-		};
-		EA72AE311BD005CD0031D652 /* Me */ = {
-			isa = PBXGroup;
-			children = (
-				EA72AE351BD005CD0031D652 /* Integration */,
-				EA72AE3A1BD005CD0031D652 /* Me.storyboard */,
-				EA72AE3B1BD005CD0031D652 /* MeViewController.swift */,
-				EA72AE331BD005CD0031D652 /* EditProfileViewController.swift */,
-				EA72AE321BD005CD0031D652 /* EditHashtagsViewController.swift */,
-				EAA5DABB1BF2A81700BF6B1E /* HashtagsViewController.swift */,
-				EA72AE341BD005CD0031D652 /* HashtagCell.swift */,
-			);
-			path = Me;
-			sourceTree = "<group>";
-		};
-		EA72AE351BD005CD0031D652 /* Integration */ = {
-			isa = PBXGroup;
-			children = (
-				EA72AE361BD005CD0031D652 /* IntegrationCell.swift */,
-				EA72AE371BD005CD0031D652 /* IntegrationsViewController.swift */,
-				EA72AE381BD005CD0031D652 /* IntegrationWebViewController.swift */,
-			);
-			path = Integration;
-			sourceTree = "<group>";
-		};
-		EA72AE3C1BD005CD0031D652 /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				EA72AE3F1BD005CD0031D652 /* Profile.storyboard */,
-				EA72AE421BD005CD0031D652 /* ProfileViewController.swift */,
-				EA72AE401BD005CD0031D652 /* ProfileCoverCell.swift */,
-				EA72AE411BD005CD0031D652 /* ProfileInfoCells.swift */,
-				EA72AE3D1BD005CD0031D652 /* ActivityImageCell.swift */,
-				EA72AE3E1BD005CD0031D652 /* ActivityTextCell.swift */,
-			);
-			path = Profile;
-			sourceTree = "<group>";
-		};
 		EA78C8751B320A2A0016AB73 /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -1061,20 +942,6 @@
 			path = Support;
 			sourceTree = "<group>";
 		};
-		EAA56F7D1B2B32E500DE3936 /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-				EA72AE0E1BD003740031D652 /* Onboarding.storyboard */,
-				EAA56F7F1B2B32E500DE3936 /* LoginViewController.swift */,
-				EA89C0851B6AA2060007C6CB /* CreateProfileViewController.swift */,
-				EA89C0871B6AC0410007C6CB /* ConnectServicesViewController.swift */,
-				F9608B841BAA9B040067E1EF /* JoinNetworkViewController.swift */,
-				F9BF43101BB07EFC007D30A0 /* TutorialContentViewController.swift */,
-				F9BF43121BB0813E007D30A0 /* TutorialPageViewController.swift */,
-			);
-			path = Onboarding;
-			sourceTree = "<group>";
-		};
 		EAA56F861B2B32E500DE3936 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -1083,7 +950,6 @@
 				EA7475851BCFFA95009A09BC /* BaseNavigationController.swift */,
 				EAA56F871B2B32E500DE3936 /* BaseViewController.swift */,
 				EA95BBA61B39308A00701F08 /* PageViewController.swift */,
-				EA9FE6481B684FA0006F8E73 /* ProfileIconCell.swift */,
 				EA5773491B6C214E00BCF449 /* Appearance.swift */,
 			);
 			path = Shared;
@@ -1115,14 +981,7 @@
 			isa = PBXGroup;
 			children = (
 				EAA56F861B2B32E500DE3936 /* Shared */,
-				EA3594171B2FEA1500E91337 /* Transitions */,
-				EAA56F7D1B2B32E500DE3936 /* Onboarding */,
 				EA72AE121BD005CD0031D652 /* Conversation */,
-				EA72AE2B1BD005CD0031D652 /* Discover */,
-				EA72AE311BD005CD0031D652 /* Me */,
-				EA72AE3C1BD005CD0031D652 /* Profile */,
-				EA7FB08C1B5EEA070052B394 /* MainTabController.swift */,
-				EA72AE101BD004270031D652 /* Main.storyboard */,
 			);
 			path = UserInterface;
 			sourceTree = "<group>";
@@ -1449,7 +1308,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */,
-				EA72AE651BD005CD0031D652 /* Profile.storyboard in Resources */,
 				EA7FB0971B5EF9D50052B394 /* Cabin-Medium.ttf in Resources */,
 				EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */,
 				EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */,
@@ -1457,16 +1315,12 @@
 				EA7FB0991B5EF9D50052B394 /* Cabin-Regular.ttf in Resources */,
 				EA09898E1BD4CEDC0014F71C /* MuteChecker.caf in Resources */,
 				EA9F354A1A74CC6900E0C65D /* Taylr.xcassets in Resources */,
-				EA72AE561BD005CD0031D652 /* Discover.storyboard in Resources */,
 				EA78C8801B323E140016AB73 /* Images.xcassets in Resources */,
 				F96E6FAF1BF49FC800DEB19A /* main.jsbundle in Resources */,
 				EA7FB0951B5EF9D50052B394 /* Cabin-BoldItalic.ttf in Resources */,
 				EA7FB0941B5EF9D50052B394 /* Cabin-Bold.ttf in Resources */,
 				EA7FB0961B5EF9D50052B394 /* Cabin-Italic.ttf in Resources */,
-				EA72AE0F1BD003740031D652 /* Onboarding.storyboard in Resources */,
-				EA72AE611BD005CD0031D652 /* Me.storyboard in Resources */,
 				EA72AE431BD005CD0031D652 /* Conversation.storyboard in Resources */,
-				EA72AE111BD004270031D652 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1780,66 +1634,40 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAA576151BB7E57600661A4F /* TutorialContentViewController.swift in Sources */,
-				EA72AE581BD005CD0031D652 /* HistoryViewController.swift in Sources */,
 				EA42D64E1BB7BE5A00B07526 /* StyleKit.swift in Sources */,
 				EAA5DAC01BF2A8E100BF6B1E /* TaylrAPI.m in Sources */,
-				EAA5760B1BB7E1F700661A4F /* ProfileIconCell.swift in Sources */,
-				EA72AE571BD005CD0031D652 /* DiscoverViewController.swift in Sources */,
-				EAA5760F1BB7E2E000661A4F /* TransitionManager.swift in Sources */,
 				EAA576081BB7E04C00661A4F /* BaseViewController.swift in Sources */,
-				EA72AE5D1BD005CD0031D652 /* IntegrationCell.swift in Sources */,
-				EA72AE621BD005CD0031D652 /* MeViewController.swift in Sources */,
 				EAA5DAC21BF2A8E100BF6B1E /* TSContainerView.m in Sources */,
 				EAA5DAC11BF2A8E100BF6B1E /* TaylrAPI.swift in Sources */,
 				EA42D64C1BB7BE4700B07526 /* Errors.swift in Sources */,
 				EAEDF7D91BD2E7B300037BA4 /* ConversationViewController.swift in Sources */,
 				EA0989A01BD4CF3D0014F71C /* VolumeViewModel.swift in Sources */,
 				EA09899F1BD4CF3D0014F71C /* VolumeView.swift in Sources */,
-				EA72AE551BD005CD0031D652 /* CandidateCell.swift in Sources */,
-				EAA5761A1BB7EA2C00661A4F /* JoinNetworkViewController.swift in Sources */,
 				EA42D6541BB7C33100B07526 /* UpgradeService.swift in Sources */,
 				EA0989951BD4CEDC0014F71C /* DurationTimer.swift in Sources */,
-				EA72AE671BD005CD0031D652 /* ProfileInfoCells.swift in Sources */,
 				EA42D6531BB7C2C500B07526 /* AnalyticsService.swift in Sources */,
 				EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */,
 				EA42D65E1BB7C67900B07526 /* BaseViews.swift in Sources */,
-				EAA576191BB7E9FB00661A4F /* ConnectServicesViewController.swift in Sources */,
 				EA42D64F1BB7BE5D00B07526 /* SBConstants.swift in Sources */,
 				EA42D6611BB7CC7B00B07526 /* ImagePickerExtensions.swift in Sources */,
-				EA72AE661BD005CD0031D652 /* ProfileCoverCell.swift in Sources */,
 				EA42D6601BB7CBAE00B07526 /* PKHUDExtension.swift in Sources */,
 				EA72AE441BD005CD0031D652 /* ConversationListViewController.swift in Sources */,
 				EAA5760C1BB7E20800661A4F /* Appearance.swift in Sources */,
 				EA42D64D1BB7BE5600B07526 /* R.swift in Sources */,
 				EA42D6561BB7C3B400B07526 /* Globals.swift in Sources */,
-				EA72AE681BD005CD0031D652 /* ProfileViewController.swift in Sources */,
 				EA09898D1BD4CEDC0014F71C /* AudioController.swift in Sources */,
-				EAA576181BB7E6D200661A4F /* CreateProfileViewController.swift in Sources */,
-				EA72AE641BD005CD0031D652 /* ActivityTextCell.swift in Sources */,
 				EA42D6551BB7C35100B07526 /* AccountService.swift in Sources */,
-				EA72AE5A1BD005CD0031D652 /* EditHashtagsViewController.swift in Sources */,
 				EA72AE451BD005CD0031D652 /* ChatHistoryViewController.swift in Sources */,
-				EA72AE5C1BD005CD0031D652 /* HashtagCell.swift in Sources */,
-				EA72AE631BD005CD0031D652 /* ActivityImageCell.swift in Sources */,
 				EA09898F1BD4CEDC0014F71C /* MuteChecker.m in Sources */,
 				EADE6CBE1BCF8AFC002F1216 /* UserViewModel+ATLParticipant.swift in Sources */,
 				EA7475861BCFFA95009A09BC /* BaseNavigationController.swift in Sources */,
 				EA42D65B1BB7C66600B07526 /* MediaExtension.swift in Sources */,
 				EA42D65F1BB7C67900B07526 /* DesignableViews.swift in Sources */,
-				EAA576171BB7E5B600661A4F /* LoginViewController.swift in Sources */,
-				EAA5DABC1BF2A81700BF6B1E /* HashtagsViewController.swift in Sources */,
 				EAA575FC1BB7D0F000661A4F /* ThirdPartyBindings.swift in Sources */,
 				EAA576091BB7E0E700661A4F /* PageViewController.swift in Sources */,
-				EA72AE5E1BD005CD0031D652 /* IntegrationsViewController.swift in Sources */,
 				EA09899E1BD4CF3D0014F71C /* VideoPlayerViewController.swift in Sources */,
-				EA72AE5F1BD005CD0031D652 /* IntegrationWebViewController.swift in Sources */,
-				EAA5761B1BB7EA6700661A4F /* TutorialPageViewController.swift in Sources */,
-				EA72AE5B1BD005CD0031D652 /* EditProfileViewController.swift in Sources */,
-				EA72AE591BD005CD0031D652 /* TodayCell.swift in Sources */,
 				EA42D64B1BB7BE3600B07526 /* TaylrEnvironment.swift in Sources */,
 				EA42D6501BB7BE6100B07526 /* ResourceExtension.swift in Sources */,
-				EAA5760E1BB7E29900661A4F /* MainTabController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

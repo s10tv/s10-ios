@@ -12,7 +12,7 @@ class BaseNavigationController : UINavigationController {
     
     let onboarding = UIStoryboard(name: "Onboarding", bundle: nil)
     let main = UIStoryboard(name: "Main", bundle: nil)
-    var transitionManager : TransitionManager!
+//    var transitionManager : TransitionManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,7 +25,7 @@ class BaseNavigationController : UINavigationController {
             NSForegroundColorAttributeName: StyleKit.textWhite
         ]
         
-        transitionManager = TransitionManager(navigationController: self)
+//        transitionManager = TransitionManager(navigationController: self)
         
         if let t = title where viewControllers.count == 0,
             let vc = UIStoryboard(name: t, bundle: nil).instantiateInitialViewController() {

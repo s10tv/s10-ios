@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9059" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IOB-fW-0oz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IOB-fW-0oz">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9049"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
     </dependencies>
     <customFonts key="customFonts">
         <mutableArray key="Cabin-Italic.ttf">
@@ -207,11 +207,7 @@
                         <constraint firstItem="m34-xv-ufL" firstAttribute="top" secondItem="Vaa-23-fm2" secondAttribute="top" constant="159" id="oon-Kr-EsO"/>
                     </constraints>
                 </view>
-                <tapGestureRecognizer id="HBc-h4-yqZ" userLabel="Tap To View Profile">
-                    <connections>
-                        <segue destination="YOL-w6-TDH" kind="show" identifier="ConversationToProfile" id="QdA-OI-TGO"/>
-                    </connections>
-                </tapGestureRecognizer>
+                <tapGestureRecognizer id="HBc-h4-yqZ" userLabel="Tap To View Profile"/>
                 <tapGestureRecognizer id="ToC-DH-PAN" userLabel="Tap Scroll Down Hint">
                     <connections>
                         <action selector="didTapScrollDownHint:" destination="Cmw-2y-C3I" id="wpU-Fx-ke3"/>
@@ -227,14 +223,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pkP-sN-BdW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="688" y="3433"/>
-        </scene>
-        <!--Profile-->
-        <scene sceneID="6zZ-zY-aab">
-            <objects>
-                <viewControllerPlaceholder storyboardName="Profile" id="YOL-w6-TDH" sceneMemberID="viewController"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VV8-Sf-QoN" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1477" y="2764"/>
         </scene>
         <!--Video Player View Controller-->
         <scene sceneID="TYB-CG-I2j">
