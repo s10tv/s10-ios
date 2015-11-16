@@ -208,7 +208,7 @@ CHECKOUT OPTIONS:
     :commit: b94a7479c476ccbd58b4def608255e492ea13c8a
     :git: https://github.com/EddyBorja/MLPAutoCompleteTextField.git
   NKRecorder:
-    :commit: fce75a60992e8cd3d60ae4d5ea92e8ae7b8ec065
+    :commit: b1de81b5eef533375bedb227c836375cbbcac0fa
     :git: git@github.com:s10tv/video-maker.git
   PKHUD:
     :commit: 456a9a4e95565b7bfdf098cd806aa8bd93e910b2
