@@ -9,7 +9,7 @@ target :Core do
     link_with 'Core'
     # Foundation
     pod 'ReactiveCocoa', '~> 4.0.2-alpha-1'
-    pod 'Async', :git => 'https://github.com/duemunk/Async.git', :commit => 'abe23c18d8d3a708a325b5db10231388e1ca5b88'
+    pod 'AsyncSwift', :git => 'https://github.com/duemunk/Async.git'
     pod 'NSLogger', '~> 1.5', :configuration => ['Debug']
 
     # Data
