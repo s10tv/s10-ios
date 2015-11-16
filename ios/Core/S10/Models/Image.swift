@@ -7,9 +7,8 @@
 //
 
 import Foundation
-import ObjectMapper
 
-public struct Image : Mappable {
+public struct Image {
     public var url: NSURL!
     public var image: UIImage?
     public var width: Int?
@@ -33,17 +32,6 @@ public struct Image : Mappable {
         self.width = Int(image.size.width * image.scale)
         self.height = Int(image.size.height * image.scale)
     }
-    
-    public init?(_ map: Map) {
-    }
-    
-    public mutating func mapping(map: Map) {
-        url <- (map["url"], URLTransform())
-        width <- map["width"]
-        height <- map["height"]
-    }
-    
-    public static let mapper = Mapper<Image>()
 }
 
 extension Image : CustomStringConvertible {

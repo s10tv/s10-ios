@@ -13,13 +13,13 @@ import LayerKit
 public class ConversationViewModel: NSObject {
     
     let ctx: Context
-    let userSubscriptions: [MeteorSubscription]
+//    let userSubscriptions: [MeteorSubscription]
     let uploading: PropertyOf<UInt>
     let downloading: PropertyOf<UInt>
     let lastMessage: PropertyOf<LYRMessage?>
     public let conversation: LYRConversation
-    public let avatar: PropertyOf<Image?>
-    public let cover: PropertyOf<Image?>
+    public let avatar: PropertyOf<NSURL?>
+    public let cover: PropertyOf<NSURL?>
     public let displayName: PropertyOf<String>
     public let displayStatus: PropertyOf<String>
     public let videoPlayerVM: VideoPlayerViewModel
@@ -37,8 +37,8 @@ public class ConversationViewModel: NSObject {
     init(_ ctx: Context, conversation: LYRConversation) {
         self.ctx = ctx
         self.conversation = conversation
-        self.userSubscriptions = conversation.otherUserIds(ctx.currentUserId)
-            .map { ctx.meteor.subscribe("user", $0) }
+//        self.userSubscriptions = conversation.otherUserIds(ctx.currentUserId)
+//            .map { ctx.meteor.subscribe("user", $0) }
         
         let otherParticipant = conversation.otherParticipants(ctx.currentUserId).first
         let avatarURL = conversation.avatarURL ?? otherParticipant?.avatarURL
@@ -49,8 +49,8 @@ public class ConversationViewModel: NSObject {
         lastMessage = ctx.layer.lastMessageOf(conversation)
         
         // Navigation TitleView
-        avatar = PropertyOf(avatarURL.map { Image($0) })
-        cover = PropertyOf(coverURL.map { Image($0) })
+        avatar = PropertyOf(avatarURL)
+        cover = PropertyOf(coverURL)
         displayName = PropertyOf(title ?? "")
         displayStatus = PropertyOf("", combineLatest(
             uploading.producer,
@@ -91,7 +91,7 @@ public class ConversationViewModel: NSObject {
             let metaPart = LYRMessagePart(MIMEType: "application/json+imageSize", data: metadata)
             
             let pushConfig = LYRPushNotificationConfiguration()
-            let senderName = ctx.meteor.user.value?.displayName() ?? "Someone"
+            let senderName = "Someone" //ctx.meteor.user.value?.displayName() ?? "Someone"
             pushConfig.alert = "\(senderName) sent you a new video."
             pushConfig.sound = "layerbell.caf"
             
@@ -158,35 +158,36 @@ public class ConversationViewModel: NSObject {
     }
     
     public func getParticipant(participantIdentifier: String) -> Participant? {
-        if let user = ctx.meteor.mainContext.existingObjectInCollection("users", documentID: participantIdentifier) as? User {
-            return Participant(user: user)
-        }
-        return conversation.participantForId(participantIdentifier)
+//        if let user = ctx.meteor.mainContext.existingObjectInCollection("users", documentID: participantIdentifier) as? User {
+//            return Participant(user: user)
+//        }
+//        return conversation.participantForId(participantIdentifier)
+        return nil
     }
     
     // MARK: - Actions
     
-    func recipientUser() -> User? {
-        if let userId = conversation.otherUserIds(ctx.currentUserId).first where conversation.participants.count == 2 {
-            return ctx.meteor.mainContext.existingObjectInCollection("users", documentID: userId) as? User
-        }
-        return nil
-    }
-    
-    public func reportUser(reason: String) {
-        if let u = recipientUser() {
-            ctx.meteor.reportUser(u, reason: reason)
-        }
-    }
-    
-    public func blockUser() {
-        if let u = recipientUser() {
-            ctx.meteor.blockUser(u)
-        }
-    }
-    
-    public func canNavigateToProfile() -> Bool {
-        return recipientUser() != nil
-    }
+////    func recipientUser() -> User? {
+////        if let userId = conversation.otherUserIds(ctx.currentUserId).first where conversation.participants.count == 2 {
+////            return ctx.meteor.mainContext.existingObjectInCollection("users", documentID: userId) as? User
+////        }
+////        return nil
+////    }
+//    
+//    public func reportUser(reason: String) {
+//        if let u = recipientUser() {
+//            ctx.meteor.reportUser(u, reason: reason)
+//        }
+//    }
+//    
+//    public func blockUser() {
+//        if let u = recipientUser() {
+//            ctx.meteor.blockUser(u)
+//        }
+//    }
+//    
+//    public func canNavigateToProfile() -> Bool {
+//        return recipientUser() != nil
+//    }
     
 }

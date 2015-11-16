@@ -12,13 +12,11 @@ import LayerKit
 
 public class LayerService: NSObject {
     
-    let meteor: MeteorService
     let unreadCount = MutableProperty(UInt(0))
     let unreadQueryController: LYRQueryController?
     public let layerClient: LYRClient
     
-    public init(layerAppID: NSURL, meteor: MeteorService, existingClient: LYRClient? = nil) {
-        self.meteor = meteor
+    public init(layerAppID: NSURL, existingClient: LYRClient? = nil) {
         layerClient = existingClient ?? LayerService.defaultLayerClient(layerAppID)
         let query = LYRQuery(queryableClass: LYRConversation.self)
         query.predicate = LYRPredicate(property: "hasUnreadMessages", predicateOperator: .IsEqualTo, value: true)
@@ -42,22 +40,23 @@ public class LayerService: NSObject {
         }
     }
     
-    func conversationWithUser(user: User) -> LYRConversation {
-        do {
-            // BIG TODO: This is gonna crash if we are offline... Store currentUser info offline in UserDefaults
-            var metadata = Participant(user: meteor.user.value!).asDictionary()
-            for (k, v) in Participant(user: user).asDictionary() {
-                metadata[k] = v // Better dic merge wanted
-            }
-            Log.info("Creating new conversation with metadata \(metadata)")
-            return try layerClient.newConversationWithParticipants(Set([user.documentID!]), options: [
-                LYRConversationOptionsDistinctByParticipantsKey: true,
-                LYRConversationOptionsMetadataKey: metadata
-            ])
-        } catch let error as NSError {
-            return error.userInfo[LYRExistingDistinctConversationKey] as! LYRConversation
-        }
-    }
+//    func conversationWithUser(user: User) -> LYRConversation {
+//        do {
+//            // BIG TODO: This is gonna crash if we are offline... Store currentUser info offline in UserDefaults
+//            var metadata = Participant(user: meteor.user.value!).asDictionary()
+//            for (k, v) in Participant(user: user).asDictionary() {
+//                metadata[k] = v // Better dic merge wanted
+//            }
+//            Log.info("Creating new conversation with metadata \(metadata)")
+//            return try layerClient.newConversationWithParticipants(Set([user.documentID!]), options: [
+//                LYRConversationOptionsDistinctByParticipantsKey: true,
+//                LYRConversationOptionsMetadataKey: metadata
+//            ])
+//        } catch let error as NSError {
+//            return error.userInfo[LYRExistingDistinctConversationKey] as! LYRConversation
+//        }
+//    }
+//    
     
     func findMessage(messageId: String) -> LYRMessage? {
         do {
@@ -147,16 +146,17 @@ public class LayerService: NSObject {
     
     // TODO: Careful this method if not disposed will retain self
     public func connectAndKeepUserInSync() -> Disposable {
-        return combineLatest(
-            layerClient.connect(),
-            meteor.userIdProducer().promoteErrors(NSError)
-            ).flatMap(.Latest) { _, userId in
-                return self.syncWithUser(userId)
-            }.start(Event.sink(error: { error in
-                Log.error("Unable to update user in Layer session", error)
-                }, next: { userId in
-                    Log.info("Updated user in Layer session userId=\(userId)")
-            }))
+        fatalError()
+//        return combineLatest(
+//            layerClient.connect(),
+//            meteor.userIdProducer().promoteErrors(NSError)
+//            ).flatMap(.Latest) { _, userId in
+//                return self.syncWithUser(userId)
+//            }.start(Event.sink(error: { error in
+//                Log.error("Unable to update user in Layer session", error)
+//                }, next: { userId in
+//                    Log.info("Updated user in Layer session userId=\(userId)")
+//            }))
     }
 
     private func syncWithUser(userId: String?) -> SignalProducer<String?, NSError> {
@@ -173,11 +173,12 @@ public class LayerService: NSObject {
 //        } else if layerClient.isAuthenticated {
 //            return layerClient.deauthenticate().then(authenticate(userId))
 //        }
-        return layerClient.requestAuthenticationNonce().flatMap(.Concat) { nonce in
-            self.meteor.layerAuth(nonce).producer
-        }.flatMap(.Concat) { identityToken in
-            self.layerClient.authenticate(identityToken)
-        }
+//        return layerClient.requestAuthenticationNonce().flatMap(.Concat) { nonce in
+//            self.meteor.layerAuth(nonce).producer
+//        }.flatMap(.Concat) { identityToken in
+//            self.layerClient.authenticate(identityToken)
+//        }
+        fatalError()
     }
     
     private func deauthenticate() -> SignalProducer<(), NSError> {
@@ -207,13 +208,13 @@ extension LayerService : LYRQueryControllerDelegate {
 
 extension LayerService : LYRClientDelegate {
     public func layerClient(client: LYRClient!, didReceiveAuthenticationChallengeWithNonce nonce: String!) {
-        meteor.layerAuth(nonce).producer.flatMap(.Concat) { identityToken in
-            self.layerClient.authenticate(identityToken)
-        }.start(Event.sink(error: { error in
-            Log.error("Unable to update user in Layer session", error)
-        }, next: { userId in
-            Log.info("Updated user in Layer session userId=\(userId)")
-        }))
+//        meteor.layerAuth(nonce).producer.flatMap(.Concat) { identityToken in
+//            self.layerClient.authenticate(identityToken)
+//        }.start(Event.sink(error: { error in
+//            Log.error("Unable to update user in Layer session", error)
+//        }, next: { userId in
+//            Log.info("Updated user in Layer session userId=\(userId)")
+//        }))
     }
     
     public func layerClient(client: LYRClient!, objectsDidChange changes: [AnyObject]!) {

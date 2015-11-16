@@ -27,13 +27,13 @@ public class ConversationListViewModel: NSObject {
     }
     
     func firstOtherParticipant(conversation: LYRConversation) -> Participant? {
-        if let p = conversation.otherParticipants(ctx.currentUserId).first {
-            if let u = ctx.meteor.mainContext.existingObjectInCollection("users", documentID: p.userId) as? User {
-                // Prefer meteor.user if such user is available
-                return Participant(user: u)
-            }
-            return p
-        }
+//        if let p = conversation.otherParticipants(ctx.currentUserId).first {
+//            if let u = ctx.meteor.mainContext.existingObjectInCollection("users", documentID: p.userId) as? User {
+//                // Prefer meteor.user if such user is available
+//                return Participant(user: u)
+//            }
+//            return p
+//        }
         return nil
     }
     
@@ -41,23 +41,23 @@ public class ConversationListViewModel: NSObject {
         // MASSIVE HACK: Fix issue where new layer conversation does not sync metadata down to client
         // and therefore contact appears as unknown. Try to subscribe to the user in question and use meteor
         // user to compensate.
-        if conversation.metadata?.count == 0 {
-            for userId in conversation.participants.map({ $0 as! String }) {
-                if userId == ctx.currentUserId {
-                    continue
-                }
-                let sub = ctx.meteor.subscribe("user", userId)
-                if subscriptions.contains({ $0.subscription.identifier == sub.subscription.identifier }) {
-                    continue
-                }
-                sub.ready.onSuccess { [weak self] in
-                    if let sink = self?.changedConversationSink {
-                        sendNext(sink, conversation)
-                    }
-                }
-                subscriptions.append(sub)
-            }
-        }
+//        if conversation.metadata?.count == 0 {
+//            for userId in conversation.participants.map({ $0 as! String }) {
+//                if userId == ctx.currentUserId {
+//                    continue
+//                }
+//                let sub = ctx.meteor.subscribe("user", userId)
+//                if subscriptions.contains({ $0.subscription.identifier == sub.subscription.identifier }) {
+//                    continue
+//                }
+//                sub.ready.onSuccess { [weak self] in
+//                    if let sink = self?.changedConversationSink {
+//                        sendNext(sink, conversation)
+//                    }
+//                }
+//                subscriptions.append(sub)
+//            }
+//        }
         if let title = conversation.title {
             return conversation.participants.count > 2 ? "\(title) (\(conversation.participants.count))" : title
         } else if let p = firstOtherParticipant(conversation) {
@@ -91,12 +91,12 @@ public class ConversationListViewModel: NSObject {
         return conversation.lastMessage?.textPart?.asString() ?? ""
     }
     
-    public func recipientForConversation(conversation: LYRConversation) -> UserViewModel? {
-        if let p = firstOtherParticipant(conversation) {
-            return UserViewModel(participant: p)
-        }
-        return nil
-    }
+//    public func recipientForConversation(conversation: LYRConversation) -> UserViewModel? {
+//        if let p = firstOtherParticipant(conversation) {
+//            return UserViewModel(participant: p)
+//        }
+//        return nil
+//    }
     
     public func conversationVM(conversation: LYRConversation) -> ConversationViewModel {
         return ConversationViewModel(ctx, conversation: conversation)

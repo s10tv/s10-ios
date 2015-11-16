@@ -9,15 +9,13 @@
 import Foundation
 
 public struct Context {
-    public let meteor: MeteorService
     public let layer: LayerService
     
     public var currentUserId: String? {
-        return meteor.currentUser.userId.value
+        return nil
     }
     
-    public init(meteor: MeteorService, layer: LayerService) {
-        self.meteor = meteor
+    public init(layer: LayerService) {
         self.layer = layer
     }
 }

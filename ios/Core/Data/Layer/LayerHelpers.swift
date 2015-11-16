@@ -25,16 +25,16 @@ public class Participant : NSObject {
     public var lastName: String = ""
     public var displayName: String = ""
     
-    init(user: User) {
-        userId = user.documentID!
-        avatarURL = user.avatar?.url
-        coverURL = user.cover?.url
-        firstName = user.firstName ?? ""
-        lastName = user.lastName ?? ""
-        displayName = user.displayName()
-        super.init()
-    }
-    
+//    init(user: User) {
+//        userId = user.documentID!
+//        avatarURL = user.avatar?.url
+//        coverURL = user.cover?.url
+//        firstName = user.firstName ?? ""
+//        lastName = user.lastName ?? ""
+//        displayName = user.displayName()
+//        super.init()
+//    }
+//    
     init(userId: String, inConversation c: LYRConversation) {
         self.userId = userId
         super.init()

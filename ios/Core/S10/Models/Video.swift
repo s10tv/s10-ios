@@ -7,9 +7,8 @@
 //
 
 import Foundation
-import ObjectMapper
 
-public struct Video : Mappable {
+public struct Video {
     public var identifier: String!
     public var url: NSURL!
     public var duration: NSTimeInterval!
@@ -29,18 +28,6 @@ public struct Video : Mappable {
         self.url = url
     }
     
-    public init?(_ map: Map) {
-    }
-    
-    public mutating func mapping(map: Map) {
-        url <- (map["url"], URLTransform())
-        duration <- map["duration"]
-        width <- map["width"]
-        height <- map["height"]
-        thumbnail <- map["thumbnail"]
-    }
-    
-    public static let mapper = Mapper<Video>()
 }
 
 extension Video : CustomStringConvertible {
