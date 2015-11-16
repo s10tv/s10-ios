@@ -3,4 +3,5 @@
 //
 
 #import "MuteChecker.h"
+#import "Core.h"
 #import <UXCam/UXCam.h>

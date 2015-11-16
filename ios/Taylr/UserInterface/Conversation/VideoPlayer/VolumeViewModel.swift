@@ -8,7 +8,6 @@
 
 import Foundation
 import ReactiveCocoa
-import Core
 
 struct VolumeViewModel {
     static let normalIcon = UIImage(named: "ic-speaker")!

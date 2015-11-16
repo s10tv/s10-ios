@@ -19,7 +19,6 @@ import LayerKit
 import SCRecorder
 import AVFoundation
 import React
-import Core
 import NKRecorder
 
 // Globally accessible variables and shorthands

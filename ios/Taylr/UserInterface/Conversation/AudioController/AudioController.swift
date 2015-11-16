@@ -9,7 +9,6 @@
 import Foundation
 import AVFoundation
 import ReactiveCocoa
-import Core
 
 extension AVAudioSession {
     var audioCategory: AudioCategory {

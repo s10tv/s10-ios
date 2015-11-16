@@ -10,7 +10,6 @@ import ReactiveCocoa
 import Foundation
 import XCTest
 import Nimble
-import Core
 
 // MARK: - Async Testing with Futures
 

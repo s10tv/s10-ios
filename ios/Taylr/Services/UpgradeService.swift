@@ -8,7 +8,6 @@
 
 import Foundation
 import ReactiveCocoa
-import Core
 
 class UpgradeService {
     let promptAction: Action<(), (), NoError>

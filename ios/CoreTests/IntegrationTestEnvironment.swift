@@ -14,7 +14,6 @@ import Meteor
 import OHHTTPStubs
 import SwiftyJSON
 import RealmSwift
-import Core
 
 var environment: Environment!
 

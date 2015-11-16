@@ -10,7 +10,6 @@ import XCTest
 import Nimble
 import Foundation
 import ReactiveCocoa
-import Core
 
 class ReactiveTests : XCTestCase {
     

@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 import ReactiveCocoa
 import SCRecorder
-import Core
 
 protocol VideoPlayerViewControllerDelegate : class {
     func videoPlayer(videoPlayer: VideoPlayerViewController, didPlayVideo video: Video)

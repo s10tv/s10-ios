@@ -12,7 +12,6 @@ import Atlas
 import SwipeView
 import NKRecorder
 import PKHUD
-import Core
 
 class ConversationViewController : UIViewController {
     

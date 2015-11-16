@@ -9,7 +9,6 @@
 import Foundation
 import ReactiveCocoa
 import DigitsKit
-import Core
 
 extension Digits {
     func authenticate() -> Future<DGTSession, NSError> {

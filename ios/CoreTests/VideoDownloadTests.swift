@@ -8,7 +8,6 @@
 
 import Foundation
 import XCTest
-import Core
 import Nimble
 import RealmSwift
 

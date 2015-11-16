@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Core
 
 class TaylrEnvironment : Environment {
     enum Audience: String {

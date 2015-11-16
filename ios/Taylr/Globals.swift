@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Core
 import React
 
 struct GlobalsContainer {

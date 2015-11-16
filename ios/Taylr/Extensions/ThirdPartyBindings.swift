@@ -10,7 +10,6 @@ import UIKit
 import ReactiveCocoa
 import SDWebImage
 import JSBadgeView
-import Core
 
 private var kPlaceholderImage: UInt8 = 0
 private var kImage: UInt8 = 0

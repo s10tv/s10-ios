@@ -10,8 +10,7 @@ import Foundation
 import Meteor
 import ReactiveCocoa
 import SwiftyJSON
-@testable import Core
-
+@testable 
 extension MeteorService {
     func clearUserData(userId: String) -> Future<(), NSError> {
         return meteor.call("dev/user/remove", userId)

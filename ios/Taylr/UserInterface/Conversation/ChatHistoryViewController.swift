@@ -9,7 +9,6 @@
 import Foundation
 import ReactiveCocoa
 import Atlas
-import Core
 
 protocol ConversationHistoryDelegate: class {
     func didTapOnCameraButton()

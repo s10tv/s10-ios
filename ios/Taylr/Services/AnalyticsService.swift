@@ -11,7 +11,6 @@ import ReactiveCocoa
 import AnalyticsSwift
 import Amplitude_iOS
 import Mixpanel
-import Core
 
 class AnalyticsService {
     private let env: TaylrEnvironment

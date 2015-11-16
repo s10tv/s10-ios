@@ -8,7 +8,6 @@
 
 import Foundation
 import React
-import Core
 
 @objc(TaylrAPI)
 class TaylrAPI : NSObject {

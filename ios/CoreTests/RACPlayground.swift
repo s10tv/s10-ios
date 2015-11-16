@@ -10,7 +10,6 @@ import Foundation
 import XCTest
 import ReactiveCocoa
 import Nimble
-import Core
 
 class RACPlayground : AsyncTestCase {
     
