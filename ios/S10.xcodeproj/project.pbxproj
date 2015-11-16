@@ -46,29 +46,11 @@
 		EA5022101B54AC4B00BC92D2 /* TestNSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = EA50220F1B54AC4B00BC92D2 /* TestNSObject.m */; };
 		EA54FA931BD009A000AD7E9A /* ConversationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA6B1BD009A000AD7E9A /* ConversationListViewModel.swift */; };
 		EA54FA941BD009A000AD7E9A /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA6C1BD009A000AD7E9A /* ConversationViewModel.swift */; };
-		EA54FA9B1BD009A000AD7E9A /* CandidateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA751BD009A000AD7E9A /* CandidateViewModel.swift */; };
-		EA54FA9C1BD009A000AD7E9A /* DiscoverViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA761BD009A000AD7E9A /* DiscoverViewModel.swift */; };
-		EA54FA9D1BD009A000AD7E9A /* HistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA771BD009A000AD7E9A /* HistoryViewModel.swift */; };
-		EA54FA9E1BD009A000AD7E9A /* TodayViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA781BD009A000AD7E9A /* TodayViewModel.swift */; };
 		EA54FA9F1BD009A000AD7E9A /* AlertableError.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA7A1BD009A000AD7E9A /* AlertableError.swift */; };
 		EA54FAA01BD009A000AD7E9A /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA7B1BD009A000AD7E9A /* Errors.swift */; };
 		EA54FAA11BD009A000AD7E9A /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA7C1BD009A000AD7E9A /* Formatters.swift */; };
 		EA54FAA31BD009A000AD7E9A /* ModelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA7E1BD009A000AD7E9A /* ModelExtensions.swift */; };
 		EA54FAA41BD009A000AD7E9A /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA7F1BD009A000AD7E9A /* UserViewModel.swift */; };
-		EA54FAA51BD009A000AD7E9A /* EditHashtagsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA811BD009A000AD7E9A /* EditHashtagsViewModel.swift */; };
-		EA54FAA61BD009A000AD7E9A /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA821BD009A000AD7E9A /* EditProfileViewModel.swift */; };
-		EA54FAA71BD009A000AD7E9A /* HashtagViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA831BD009A000AD7E9A /* HashtagViewModel.swift */; };
-		EA54FAA81BD009A000AD7E9A /* IntegrationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA851BD009A000AD7E9A /* IntegrationListViewModel.swift */; };
-		EA54FAA91BD009A000AD7E9A /* IntegrationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA861BD009A000AD7E9A /* IntegrationViewModel.swift */; };
-		EA54FAAB1BD009A000AD7E9A /* MeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA881BD009A000AD7E9A /* MeViewModel.swift */; };
-		EA54FAAC1BD009A000AD7E9A /* ConnectServicesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA8A1BD009A000AD7E9A /* ConnectServicesViewModel.swift */; };
-		EA54FAAD1BD009A000AD7E9A /* CreateProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA8B1BD009A000AD7E9A /* CreateProfileViewModel.swift */; };
-		EA54FAAE1BD009A000AD7E9A /* LoginViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA8C1BD009A000AD7E9A /* LoginViewModel.swift */; };
-		EA54FAAF1BD009A000AD7E9A /* JoinNetworkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA8D1BD009A000AD7E9A /* JoinNetworkViewModel.swift */; };
-		EA54FAB01BD009A000AD7E9A /* ActivityViewModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA8F1BD009A000AD7E9A /* ActivityViewModels.swift */; };
-		EA54FAB11BD009A000AD7E9A /* ProfileInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA901BD009A000AD7E9A /* ProfileInfoViewModel.swift */; };
-		EA54FAB21BD009A000AD7E9A /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA911BD009A000AD7E9A /* ProfileViewModel.swift */; };
-		EA54FAB31BD009A000AD7E9A /* MainTabViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA921BD009A000AD7E9A /* MainTabViewModel.swift */; };
 		EA54FAB51BD00A2F00AD7E9A /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FAB41BD00A2F00AD7E9A /* Context.swift */; };
 		EA588DB81B5F1437000962B8 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA588DB71B5F1437000962B8 /* TestViewController.swift */; };
 		EA5B740B1B30F7BB008E5CBC /* TestAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA5B740A1B30F7BB008E5CBC /* TestAppDelegate.swift */; };
@@ -284,29 +266,11 @@
 		EA50220F1B54AC4B00BC92D2 /* TestNSObject.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestNSObject.m; sourceTree = "<group>"; };
 		EA54FA6B1BD009A000AD7E9A /* ConversationListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListViewModel.swift; sourceTree = "<group>"; };
 		EA54FA6C1BD009A000AD7E9A /* ConversationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewModel.swift; sourceTree = "<group>"; };
-		EA54FA751BD009A000AD7E9A /* CandidateViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CandidateViewModel.swift; sourceTree = "<group>"; };
-		EA54FA761BD009A000AD7E9A /* DiscoverViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiscoverViewModel.swift; sourceTree = "<group>"; };
-		EA54FA771BD009A000AD7E9A /* HistoryViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HistoryViewModel.swift; sourceTree = "<group>"; };
-		EA54FA781BD009A000AD7E9A /* TodayViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodayViewModel.swift; sourceTree = "<group>"; };
 		EA54FA7A1BD009A000AD7E9A /* AlertableError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlertableError.swift; sourceTree = "<group>"; };
 		EA54FA7B1BD009A000AD7E9A /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		EA54FA7C1BD009A000AD7E9A /* Formatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		EA54FA7E1BD009A000AD7E9A /* ModelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelExtensions.swift; sourceTree = "<group>"; };
 		EA54FA7F1BD009A000AD7E9A /* UserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
-		EA54FA811BD009A000AD7E9A /* EditHashtagsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditHashtagsViewModel.swift; sourceTree = "<group>"; };
-		EA54FA821BD009A000AD7E9A /* EditProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
-		EA54FA831BD009A000AD7E9A /* HashtagViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HashtagViewModel.swift; sourceTree = "<group>"; };
-		EA54FA851BD009A000AD7E9A /* IntegrationListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationListViewModel.swift; sourceTree = "<group>"; };
-		EA54FA861BD009A000AD7E9A /* IntegrationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntegrationViewModel.swift; sourceTree = "<group>"; };
-		EA54FA881BD009A000AD7E9A /* MeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeViewModel.swift; sourceTree = "<group>"; };
-		EA54FA8A1BD009A000AD7E9A /* ConnectServicesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectServicesViewModel.swift; sourceTree = "<group>"; };
-		EA54FA8B1BD009A000AD7E9A /* CreateProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateProfileViewModel.swift; sourceTree = "<group>"; };
-		EA54FA8C1BD009A000AD7E9A /* LoginViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewModel.swift; sourceTree = "<group>"; };
-		EA54FA8D1BD009A000AD7E9A /* JoinNetworkViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JoinNetworkViewModel.swift; sourceTree = "<group>"; };
-		EA54FA8F1BD009A000AD7E9A /* ActivityViewModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityViewModels.swift; sourceTree = "<group>"; };
-		EA54FA901BD009A000AD7E9A /* ProfileInfoViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileInfoViewModel.swift; sourceTree = "<group>"; };
-		EA54FA911BD009A000AD7E9A /* ProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
-		EA54FA921BD009A000AD7E9A /* MainTabViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainTabViewModel.swift; sourceTree = "<group>"; };
 		EA54FAB41BD00A2F00AD7E9A /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		EA5773491B6C214E00BCF449 /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		EA588DB71B5F1437000962B8 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
@@ -633,12 +597,7 @@
 			isa = PBXGroup;
 			children = (
 				EA54FA791BD009A000AD7E9A /* Helpers */,
-				EA54FA891BD009A000AD7E9A /* Onboarding */,
-				EA54FA741BD009A000AD7E9A /* Discover */,
 				EA54FA6A1BD009A000AD7E9A /* Conversation */,
-				EA54FA801BD009A000AD7E9A /* Me */,
-				EA54FA8E1BD009A000AD7E9A /* Profile */,
-				EA54FA921BD009A000AD7E9A /* MainTabViewModel.swift */,
 				EA54FAB41BD00A2F00AD7E9A /* Context.swift */,
 			);
 			path = ViewModels;
@@ -654,17 +613,6 @@
 			path = Conversation;
 			sourceTree = "<group>";
 		};
-		EA54FA741BD009A000AD7E9A /* Discover */ = {
-			isa = PBXGroup;
-			children = (
-				EA54FA761BD009A000AD7E9A /* DiscoverViewModel.swift */,
-				EA54FA781BD009A000AD7E9A /* TodayViewModel.swift */,
-				EA54FA771BD009A000AD7E9A /* HistoryViewModel.swift */,
-				EA54FA751BD009A000AD7E9A /* CandidateViewModel.swift */,
-			);
-			path = Discover;
-			sourceTree = "<group>";
-		};
 		EA54FA791BD009A000AD7E9A /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -675,48 +623,6 @@
 				EA54FA7F1BD009A000AD7E9A /* UserViewModel.swift */,
 			);
 			path = Helpers;
-			sourceTree = "<group>";
-		};
-		EA54FA801BD009A000AD7E9A /* Me */ = {
-			isa = PBXGroup;
-			children = (
-				EA54FA841BD009A000AD7E9A /* Integration */,
-				EA54FA811BD009A000AD7E9A /* EditHashtagsViewModel.swift */,
-				EA54FA821BD009A000AD7E9A /* EditProfileViewModel.swift */,
-				EA54FA831BD009A000AD7E9A /* HashtagViewModel.swift */,
-				EA54FA881BD009A000AD7E9A /* MeViewModel.swift */,
-			);
-			path = Me;
-			sourceTree = "<group>";
-		};
-		EA54FA841BD009A000AD7E9A /* Integration */ = {
-			isa = PBXGroup;
-			children = (
-				EA54FA851BD009A000AD7E9A /* IntegrationListViewModel.swift */,
-				EA54FA861BD009A000AD7E9A /* IntegrationViewModel.swift */,
-			);
-			path = Integration;
-			sourceTree = "<group>";
-		};
-		EA54FA891BD009A000AD7E9A /* Onboarding */ = {
-			isa = PBXGroup;
-			children = (
-				EA54FA8A1BD009A000AD7E9A /* ConnectServicesViewModel.swift */,
-				EA54FA8B1BD009A000AD7E9A /* CreateProfileViewModel.swift */,
-				EA54FA8C1BD009A000AD7E9A /* LoginViewModel.swift */,
-				EA54FA8D1BD009A000AD7E9A /* JoinNetworkViewModel.swift */,
-			);
-			path = Onboarding;
-			sourceTree = "<group>";
-		};
-		EA54FA8E1BD009A000AD7E9A /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				EA54FA8F1BD009A000AD7E9A /* ActivityViewModels.swift */,
-				EA54FA901BD009A000AD7E9A /* ProfileInfoViewModel.swift */,
-				EA54FA911BD009A000AD7E9A /* ProfileViewModel.swift */,
-			);
-			path = Profile;
 			sourceTree = "<group>";
 		};
 		EA5634DE1A7741FF00F62B52 /* Models */ = {
@@ -1513,37 +1419,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EA54FAA61BD009A000AD7E9A /* EditProfileViewModel.swift in Sources */,
 				EA81ADEA1BB688C700F94006 /* ScrollTransition.swift in Sources */,
 				EA54FA9F1BD009A000AD7E9A /* AlertableError.swift in Sources */,
 				EA81ADEB1BB6891F00F94006 /* RealmExtensions.swift in Sources */,
-				EA54FAAF1BD009A000AD7E9A /* JoinNetworkViewModel.swift in Sources */,
 				EA0989A71BD5C0FF0014F71C /* LayerExtensions.swift in Sources */,
 				EA8E69481BC1DA30002D4BF1 /* FetchedResultsArray.swift in Sources */,
 				EA54FAA41BD009A000AD7E9A /* UserViewModel.swift in Sources */,
 				EA81ADBD1BB65FB800F94006 /* FoundationExtension.swift in Sources */,
-				EA54FAA91BD009A000AD7E9A /* IntegrationViewModel.swift in Sources */,
 				EA81ADDE1BB6852600F94006 /* Environment.swift in Sources */,
 				EA81ADED1BB689FC00F94006 /* MeteorSubscription.swift in Sources */,
-				EA54FAB21BD009A000AD7E9A /* ProfileViewModel.swift in Sources */,
 				EA81ADFD1BB68E2100F94006 /* _Candidate.swift in Sources */,
 				EA81AE001BB68E2100F94006 /* Integration.swift in Sources */,
-				EA54FA9E1BD009A000AD7E9A /* TodayViewModel.swift in Sources */,
-				EA54FAB01BD009A000AD7E9A /* ActivityViewModels.swift in Sources */,
 				EA81ADFC1BB68E2100F94006 /* _User.swift in Sources */,
 				EA81AE0C1BB693B800F94006 /* MeteorService.swift in Sources */,
-				EA54FAAE1BD009A000AD7E9A /* LoginViewModel.swift in Sources */,
 				EA81ADE91BB6883A00F94006 /* AnimationExtensions.swift in Sources */,
 				EA54FA931BD009A000AD7E9A /* ConversationListViewModel.swift in Sources */,
-				EA54FAA81BD009A000AD7E9A /* IntegrationListViewModel.swift in Sources */,
-				EA54FAAC1BD009A000AD7E9A /* ConnectServicesViewModel.swift in Sources */,
 				EA81ADFE1BB68E2100F94006 /* Activity.swift in Sources */,
 				EA54FAA11BD009A000AD7E9A /* Formatters.swift in Sources */,
 				EA81AE071BB68E6700F94006 /* UserDefaults.swift in Sources */,
 				EA81ADDD1BB6852600F94006 /* ProvisioningProfile.swift in Sources */,
 				EA81ADEE1BB68A0500F94006 /* MeteorCollection.swift in Sources */,
 				EA81ADD21BB6735800F94006 /* Foundation+RACSupport.swift in Sources */,
-				EA54FAA51BD009A000AD7E9A /* EditHashtagsViewModel.swift in Sources */,
 				EA81ADF61BB68E0400F94006 /* Models.xcdatamodeld in Sources */,
 				EA8E69461BC1DA30002D4BF1 /* ArrayProperty.swift in Sources */,
 				EA8A733C1BD3092F006DB6A9 /* VideoPlayerViewModel.swift in Sources */,
@@ -1553,7 +1449,6 @@
 				EA81ADF11BB68CDD00F94006 /* SugarRecordExtension.swift in Sources */,
 				EA81AE041BB68E5B00F94006 /* Image.swift in Sources */,
 				EA81ADDB1BB6839200F94006 /* AzureClient.swift in Sources */,
-				EA54FAB11BD009A000AD7E9A /* ProfileInfoViewModel.swift in Sources */,
 				EA81ADEC1BB6893500F94006 /* MeteorMethod.swift in Sources */,
 				EA8E694A1BC1DA30002D4BF1 /* TwoWayBindings.swift in Sources */,
 				EA54FAB51BD00A2F00AD7E9A /* Context.swift in Sources */,
@@ -1561,25 +1456,20 @@
 				EA54FA941BD009A000AD7E9A /* ConversationViewModel.swift in Sources */,
 				EA81ADF81BB68E2100F94006 /* _Activity.swift in Sources */,
 				EA81ADDC1BB6852600F94006 /* DeviceInfo.swift in Sources */,
-				EA54FAB31BD009A000AD7E9A /* MainTabViewModel.swift in Sources */,
 				EAB31D571BCF76260080DA47 /* LayerService.swift in Sources */,
 				EAD16D301BCA4ABE0040CEB8 /* Hashtag.swift in Sources */,
-				EA54FAA71BD009A000AD7E9A /* HashtagViewModel.swift in Sources */,
 				EA0989AB1BD5C1540014F71C /* LayerHelpers.swift in Sources */,
 				EAA5763C1BB86A5000661A4F /* UICollectionViewBinding.swift in Sources */,
 				EA337DFF1BB9067800F09A92 /* UIKitBindings.swift in Sources */,
 				EA81ADD31BB673B100F94006 /* Future.swift in Sources */,
 				EA81ADE71BB687F700F94006 /* GeometryExtensions.swift in Sources */,
 				EA8E69471BC1DA30002D4BF1 /* DynamicProperties.swift in Sources */,
-				EA54FA9C1BD009A000AD7E9A /* DiscoverViewModel.swift in Sources */,
 				EA54FAA31BD009A000AD7E9A /* ModelExtensions.swift in Sources */,
 				EA81AE051BB68E6700F94006 /* Video.swift in Sources */,
 				EA0ED05F1BC1F80F00A9EE08 /* MeteorExtensions.swift in Sources */,
 				EAA5763B1BB86A5000661A4F /* BindableCell.swift in Sources */,
 				EA81ADE21BB686EF00F94006 /* PanInteractor.swift in Sources */,
 				EA81ADE51BB686EF00F94006 /* Transition.swift in Sources */,
-				EA54FAAB1BD009A000AD7E9A /* MeViewModel.swift in Sources */,
-				EA54FA9B1BD009A000AD7E9A /* CandidateViewModel.swift in Sources */,
 				EA81ADCE1BB6731200F94006 /* SwiftExtensions.swift in Sources */,
 				EA54FAA01BD009A000AD7E9A /* Errors.swift in Sources */,
 				EA81ADC21BB6688400F94006 /* Core.m in Sources */,
@@ -1588,8 +1478,6 @@
 				EA81ADFA1BB68E2100F94006 /* _Integration.swift in Sources */,
 				EA81ADE81BB6881200F94006 /* UIKitExtension.swift in Sources */,
 				EA81ADE41BB686EF00F94006 /* Segue.swift in Sources */,
-				EA54FA9D1BD009A000AD7E9A /* HistoryViewModel.swift in Sources */,
-				EA54FAAD1BD009A000AD7E9A /* CreateProfileViewModel.swift in Sources */,
 				EA81AE031BB68E2100F94006 /* Candidate.swift in Sources */,
 				EA81AE0B1BB6930900F94006 /* CurrentUser.swift in Sources */,
 				EA81ADD41BB6793500F94006 /* ActionExtensions.swift in Sources */,

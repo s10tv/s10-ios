@@ -189,10 +189,4 @@ public class ConversationViewModel: NSObject {
         return recipientUser() != nil
     }
     
-    public func profileVM() -> ProfileViewModel? {
-        if let u = recipientUser() {
-            return ProfileViewModel(ctx, user: u)
-        }
-        return nil
-    }
 }

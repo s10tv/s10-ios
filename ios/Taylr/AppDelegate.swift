@@ -84,7 +84,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         let bridge = RCTBridge(bundleURL: reactBundleURL, moduleProvider: nil, launchOptions: nil)
         _GlobalsContainer.instance = GlobalsContainer(env: env,
             meteorService: meteor,
-            accountService: AccountService(meteorService: meteor),
             analyticsService: AnalyticsService(env: env, currentUser: meteor.currentUser),
             upgradeService: UpgradeService(env: env, currentUser: meteor.currentUser),
             layerService: LayerService(layerAppID: env.layerURL, meteor: meteor, existingClient: layerClient),
@@ -113,7 +112,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         Log.info("App Launched")
         Analytics.track("AppOpen")
         
-        Globals.accountService.login()
         Appearance.setupGlobalAppearances()
         
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
