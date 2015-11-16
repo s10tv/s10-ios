@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4AD00249A11FDFD015C379A5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AA6C7823A20B63EB451A15E /* Pods.framework */; };
 		EA09899E1BD4CF3D0014F71C /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09899B1BD4CF3D0014F71C /* VideoPlayerViewController.swift */; };
 		EA09899F1BD4CF3D0014F71C /* VolumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09899C1BD4CF3D0014F71C /* VolumeView.swift */; };
 		EA0989A01BD4CF3D0014F71C /* VolumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09899D1BD4CF3D0014F71C /* VolumeViewModel.swift */; };
@@ -29,7 +30,6 @@
 		EA2667681BFA909B0054C777 /* SwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2667311BFA909B0054C777 /* SwiftExtensions.swift */; };
 		EA2667691BFA909B0054C777 /* AlamofireExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2667331BFA909B0054C777 /* AlamofireExtension.swift */; };
 		EA26676A1BFA909B0054C777 /* AzureClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2667341BFA909B0054C777 /* AzureClient.swift */; };
-		EA26676B1BFA909B0054C777 /* Models.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EA2667391BFA909B0054C777 /* Models.xcdatamodeld */; };
 		EA26676C1BFA909B0054C777 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA26673B1BFA909B0054C777 /* CurrentUser.swift */; };
 		EA26676D1BFA909B0054C777 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA26673C1BFA909B0054C777 /* Image.swift */; };
 		EA26676E1BFA909B0054C777 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA26673D1BFA909B0054C777 /* UserDefaults.swift */; };
@@ -118,6 +118,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7AA6C7823A20B63EB451A15E /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA09899B1BD4CF3D0014F71C /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		EA09899C1BD4CF3D0014F71C /* VolumeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumeView.swift; sourceTree = "<group>"; };
 		EA09899D1BD4CF3D0014F71C /* VolumeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumeViewModel.swift; sourceTree = "<group>"; };
@@ -143,7 +144,6 @@
 		EA2667311BFA909B0054C777 /* SwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftExtensions.swift; sourceTree = "<group>"; };
 		EA2667331BFA909B0054C777 /* AlamofireExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireExtension.swift; sourceTree = "<group>"; };
 		EA2667341BFA909B0054C777 /* AzureClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AzureClient.swift; sourceTree = "<group>"; };
-		EA26673A1BFA909B0054C777 /* Models.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Models.xcdatamodel; sourceTree = "<group>"; };
 		EA26673B1BFA909B0054C777 /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		EA26673C1BFA909B0054C777 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		EA26673D1BFA909B0054C777 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
@@ -225,6 +225,7 @@
 				F996C7221A81F1E000314FF8 /* AVFoundation.framework in Frameworks */,
 				F996C7201A81F1D800314FF8 /* CoreVideo.framework in Frameworks */,
 				F996C71E1A81F1D100314FF8 /* CoreMedia.framework in Frameworks */,
+				4AD00249A11FDFD015C379A5 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -242,6 +243,7 @@
 				F996C7211A81F1E000314FF8 /* AVFoundation.framework */,
 				F996C71F1A81F1D800314FF8 /* CoreVideo.framework */,
 				F996C71D1A81F1D100314FF8 /* CoreMedia.framework */,
+				7AA6C7823A20B63EB451A15E /* Pods.framework */,
 			);
 			name = Frameworks;
 			path = Includes;
@@ -394,29 +396,12 @@
 		EA2667361BFA909B0054C777 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				EA2667371BFA909B0054C777 /* CoreData */,
 				EA26673B1BFA909B0054C777 /* CurrentUser.swift */,
 				EA26673C1BFA909B0054C777 /* Image.swift */,
 				EA26673D1BFA909B0054C777 /* UserDefaults.swift */,
 				EA26673E1BFA909B0054C777 /* Video.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		EA2667371BFA909B0054C777 /* CoreData */ = {
-			isa = PBXGroup;
-			children = (
-				EA2667381BFA909B0054C777 /* _Models */,
-				EA2667391BFA909B0054C777 /* Models.xcdatamodeld */,
-			);
-			path = CoreData;
-			sourceTree = "<group>";
-		};
-		EA2667381BFA909B0054C777 /* _Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = _Models;
 			sourceTree = "<group>";
 		};
 		EA26673F1BFA909B0054C777 /* Operations */ = {
@@ -955,7 +940,6 @@
 				EA26676F1BFA909B0054C777 /* Video.swift in Sources */,
 				EADE6CBE1BCF8AFC002F1216 /* UserViewModel+ATLParticipant.swift in Sources */,
 				EA42D65B1BB7C66600B07526 /* MediaExtension.swift in Sources */,
-				EA26676B1BFA909B0054C777 /* Models.xcdatamodeld in Sources */,
 				EA42D65F1BB7C67900B07526 /* DesignableViews.swift in Sources */,
 				EA26677B1BFA909B0054C777 /* DeviceInfo.swift in Sources */,
 				EA26676D1BFA909B0054C777 /* Image.swift in Sources */,
@@ -1155,19 +1139,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		EA2667391BFA909B0054C777 /* Models.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				EA26673A1BFA909B0054C777 /* Models.xcdatamodel */,
-			);
-			currentVersion = EA26673A1BFA909B0054C777 /* Models.xcdatamodel */;
-			path = Models.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = EA9F35321A74CC6900E0C65D /* Project object */;
 }
