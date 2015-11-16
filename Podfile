@@ -87,6 +87,16 @@ target :Core do
         pod 'Reveal-iOS-SDK', '~> 1.5', :configuration => ['Debug']
 #        pod 'SparkInspector', '~> 1.3', :configuration => ['Debug']
 
+        post_install do |installer|
+            app_plist = "Taylr/Taylr-Info.plist"
+            plist_buddy = "/usr/libexec/PlistBuddy"
+            version = `#{plist_buddy} -c "Print CFBundleShortVersionString" #{app_plist}`.strip
+            puts "Updating CocoaPods' version numbers to #{version}"
+
+            installer.pods_project.targets.each do |target|
+                `#{plist_buddy} -c "Set CFBundleShortVersionString #{version}" "Pods/Target Support Files/#{target}/Info.plist"`
+            end
+        end
     end
 
     target :TestApp do
