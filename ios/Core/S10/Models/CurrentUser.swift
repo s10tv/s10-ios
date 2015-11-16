@@ -23,7 +23,7 @@ public class CurrentUser {
     public let lastName: PropertyOf<String?>
     public let gradYear: PropertyOf<String?>
     
-    init() {
+    public init() {
         _userId = MutableProperty(UD.meteorUserId.value)
         userId = PropertyOf(_userId)
         firstName = PropertyOf(nil)

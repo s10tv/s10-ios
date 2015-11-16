@@ -29,7 +29,7 @@ private struct _GlobalsContainer {
 let Globals = _GlobalsContainer.instance
 
 // Shorthand services because they are used all over the place
-let MainContext = Context(meteor: Globals.meteorService, layer: Globals.layerService)
+let MainContext = Context(layer: Globals.layerService)
 let Analytics = Globals.analyticsService
 
 let AppDidRegisterUserNotificationSettings = "AppDidRegisterUserNotificationSettings"
@@ -70,10 +70,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         
         
         // Setup global services
-        let meteor = MeteorService(serverURL: env.serverURL)
+//        let meteor = MeteorService(serverURL: env.serverURL)
         // WARMING: Startup meteor before initializing accountService
         // so that account.state is initially correct
-        meteor.startup()
+//        meteor.startup()
 
         //NSBundle.mainBundle().URLForResource("main", withExtension: "jsbundle");
         //NSURL("http://localhost:8081/index.ios.bundle?platform=ios&dev=true")
@@ -82,11 +82,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         print(reactBundleURL)
 
         let bridge = RCTBridge(bundleURL: reactBundleURL, moduleProvider: nil, launchOptions: nil)
+        let user = CurrentUser()
         _GlobalsContainer.instance = GlobalsContainer(env: env,
-            meteorService: meteor,
-            analyticsService: AnalyticsService(env: env, currentUser: meteor.currentUser),
-            upgradeService: UpgradeService(env: env, currentUser: meteor.currentUser),
-            layerService: LayerService(layerAppID: env.layerURL, meteor: meteor, existingClient: layerClient),
+            analyticsService: AnalyticsService(env: env, currentUser: user),
+            upgradeService: UpgradeService(env: env, currentUser: user),
+            layerService: LayerService(layerAppID: env.layerURL, existingClient: layerClient),
             reactBridge: bridge
         )
 //        let token = METAccount.defaultAccount().resumeToken
@@ -103,12 +103,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         application.registerForRemoteNotifications()
         
         // Let's launch!
-        meteor.call("connectDevice", env.deviceId, [
-            "appId": env.appId,
-            "version": env.version,
-            "build": env.build
-        ])
-                
+//        meteor.call("connectDevice", env.deviceId, [
+//            "appId": env.appId,
+//            "version": env.version,
+//            "build": env.build
+//        ])
+        
         Log.info("App Launched")
         Analytics.track("AppOpen")
         
@@ -122,7 +122,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
 //            window?.rootViewController = UIStoryboard(name: "Main", bundle: nil).instantiateInitialViewController()
 //        }
         let vc = UIViewController()
-        vc.view = RCTRootView(bridge: Globals.reactBridge, moduleName: "Taylr", initialProperties: nil)
+        vc.view = RCTRootView(bridge: bridge, moduleName: "Taylr", initialProperties: nil)
         window?.rootViewController = vc
         window?.makeKeyAndVisible()
 //        NSURL *jsCodeLocation = [NSURL URLWithString:@"http://localhost:8081/index.ios.bundle"];
@@ -190,7 +190,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         Log.info("Registered for push \(deviceToken)")
         if let apsEnv = Globals.env.apsEnvironment?.rawValue {
-            MainContext.meteor.updateDevicePush(apsEnv, pushToken: deviceToken.hexString() as String)
+//            MainContext.meteor.updateDevicePush(apsEnv, pushToken: deviceToken.hexString() as String)
             Analytics.setUserProperties(["RegisteredPush": true])
         } else if IS_TARGET_IPHONE_SIMULATOR == false {
             Log.error("Non-simulator build should have valid APS environment")

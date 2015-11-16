@@ -43,8 +43,8 @@ class ConversationViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        coverImageView.sd_image <~ vm.cover
-        avatarImageView.sd_image <~ vm.avatar
+//        coverImageView.sd_image <~ vm.cover
+//        avatarImageView.sd_image <~ vm.avatar
         titleLabel.rac_text <~ vm.displayName
         statusLabel.rac_text <~ vm.displayStatus
         spinner.rac_animating <~ vm.isBusy
@@ -123,9 +123,9 @@ class ConversationViewController : UIViewController {
 //            navigationController?.popViewControllerAnimated(true)
 //            return false
 //        }
-        if identifier == SegueIdentifier.ConversationToProfile.rawValue {
-            return vm.canNavigateToProfile()
-        }
+//        if identifier == SegueIdentifier.ConversationToProfile.rawValue {
+//            return vm.canNavigateToProfile()
+//        }
         return super.shouldPerformSegueWithIdentifier(identifier, sender: sender)
     }
     
@@ -143,11 +143,11 @@ class ConversationViewController : UIViewController {
     
     @IBAction func showMoreOptions(sender: AnyObject) {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        if self.vm.canNavigateToProfile() {
-            sheet.addAction(LS(.viewProfile)) { _ in
-                self.performSegue(.ConversationToProfile)
-            }
-        }
+//        if self.vm.canNavigateToProfile() {
+//            sheet.addAction(LS(.viewProfile)) { _ in
+//                self.performSegue(.ConversationToProfile)
+//            }
+//        }
         sheet.addAction(LS(.moreSheetBlock, vm.displayName.value), style: .Destructive) { _ in
             self.blockUser(self)
         }
@@ -165,7 +165,7 @@ class ConversationViewController : UIViewController {
             preferredStyle: .Alert)
         alert.addAction("Cancel", style: .Cancel)
         alert.addAction("Block", style: .Destructive) { _ in
-            self.vm.blockUser()
+//            self.vm.blockUser()
             Analytics.track("User: Block")
             let dialog = UIAlertController(title: "Block User", message: "\(self.vm.displayName.value) will no longer be able to contact you in the future", preferredStyle: .Alert)
             dialog.addAction("Ok", style: .Default)
@@ -182,7 +182,7 @@ class ConversationViewController : UIViewController {
         alert.addAction(LS(.reportAlertConfirm), style: .Destructive) { _ in
             if let reportReason = alert.textFields?[0].text {
                 Analytics.track("User: Report", ["Reason": reportReason])
-                self.vm.reportUser(reportReason)
+//                self.vm.reportUser(reportReason)
             }
         }
         presentViewController(alert)

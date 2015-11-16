@@ -17,10 +17,10 @@ class UpgradeService {
         promptAction = Action {
             SignalProducer { observer, disposable in
                 let buildNumber = Int((env.build as NSString).intValue)
-                let needsHardUpgrade = buildNumber < (currentUser.hardMinBuild.value ?? 0)
-                let needsSoftUpgrade = buildNumber < (currentUser.softMinBuild.value ?? 0)
-                let upgradeURL = currentUser.upgradeURL.value
-                Log.debug("Might prompt upgrade build=\(buildNumber) hardMin=\(currentUser.hardMinBuild) softMin=\(currentUser.softMinBuild)")
+                let needsHardUpgrade = false //buildNumber < (currentUser.hardMinBuild.value ?? 0)
+                let needsSoftUpgrade = false //buildNumber < (currentUser.softMinBuild.value ?? 0)
+                let upgradeURL : NSURL? = NSURL() // currentUser.upgradeURL.value
+//                Log.debug("Might prompt upgrade build=\(buildNumber) hardMin=\(currentUser.hardMinBuild) softMin=\(currentUser.softMinBuild)")
                 
                 // Local builds produced by xcode, disable prompt
                 if env.audience == .Dev {
@@ -56,13 +56,13 @@ class UpgradeService {
                 }
             }.startOn(UIScheduler())
         }
-        combineLatest(
-            currentUser.softMinBuild.producer.skip(1),
-            currentUser.hardMinBuild.producer.skip(1),
-            currentUser.upgradeURL.producer.skip(1)
-        ).startWithNext { [weak self] _ in
-            self?.promptForUpgradeIfNeeded()
-        }
+//        combineLatest(
+//            currentUser.softMinBuild.producer.skip(1),
+//            currentUser.hardMinBuild.producer.skip(1),
+//            currentUser.upgradeURL.producer.skip(1)
+//        ).startWithNext { [weak self] _ in
+//            self?.promptForUpgradeIfNeeded()
+//        }
     }
     
     func promptForUpgradeIfNeeded() {

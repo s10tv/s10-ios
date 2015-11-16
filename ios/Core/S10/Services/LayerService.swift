@@ -146,7 +146,8 @@ public class LayerService: NSObject {
     
     // TODO: Careful this method if not disposed will retain self
     public func connectAndKeepUserInSync() -> Disposable {
-        fatalError()
+        return CompositeDisposable()
+//        fatalError()
 //        return combineLatest(
 //            layerClient.connect(),
 //            meteor.userIdProducer().promoteErrors(NSError)

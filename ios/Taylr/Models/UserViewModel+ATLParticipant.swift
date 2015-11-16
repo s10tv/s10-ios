@@ -10,14 +10,14 @@ import Foundation
 import Core
 import Atlas
 
-extension UserViewModel: ATLParticipant {
-    
-    public var participantIdentifier: String { return userId }
-    public var fullName: String { return displayName }
-    public var avatarImageURL: NSURL? { return avatar?.url }
-    public var avatarImage: UIImage? { return avatar?.image }
-    public var avatarInitials: String? {
-        return "\(firstName.characters.first)\(lastName.characters.first)"
-    }
-    
-}
+//extension UserViewModel: ATLParticipant {
+//    
+//    public var participantIdentifier: String { return userId }
+//    public var fullName: String { return displayName }
+//    public var avatarImageURL: NSURL? { return avatar?.url }
+//    public var avatarImage: UIImage? { return avatar?.image }
+//    public var avatarInitials: String? {
+//        return "\(firstName.characters.first)\(lastName.characters.first)"
+//    }
+//    
+//}

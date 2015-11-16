@@ -121,12 +121,13 @@ class LayoutContainer extends React.Component {
         <TabBarIOS.Item 
           title="Chats"
           selected={false}>
-          <ContainerView 
-            sbName="Conversation" 
-            style={styles.navWrap} />
+          <View />
         </TabBarIOS.Item>
       </TabBarIOS>
     )
+// <ContainerView 
+          //   sbName="Conversation" 
+          //   style={styles.navWrap} />
   }
 }
 
