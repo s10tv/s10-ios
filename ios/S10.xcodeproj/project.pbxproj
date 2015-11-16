@@ -11,9 +11,6 @@
 		640DB2B4B8DE9B8DDC392B01 /* Pods_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28970C9FC888535D277B71D5 /* Pods_Core.framework */; };
 		C0694BB32891795853D2C3CF /* Pods_Core_TestApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 50F09ED94DDC00446577DFD4 /* Pods_Core_TestApp.framework */; };
 		D6555C3D41C17908B83EB27C /* Pods_Core_Taylr.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1D48B38C28B60559AEB8949 /* Pods_Core_Taylr.framework */; };
-		EA09898D1BD4CEDC0014F71C /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09897D1BD4CEDC0014F71C /* AudioController.swift */; };
-		EA09898E1BD4CEDC0014F71C /* MuteChecker.caf in Resources */ = {isa = PBXBuildFile; fileRef = EA09897E1BD4CEDC0014F71C /* MuteChecker.caf */; };
-		EA09898F1BD4CEDC0014F71C /* MuteChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = EA0989801BD4CEDC0014F71C /* MuteChecker.m */; };
 		EA09899E1BD4CF3D0014F71C /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09899B1BD4CF3D0014F71C /* VideoPlayerViewController.swift */; };
 		EA09899F1BD4CF3D0014F71C /* VolumeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09899C1BD4CF3D0014F71C /* VolumeView.swift */; };
 		EA0989A01BD4CF3D0014F71C /* VolumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA09899D1BD4CF3D0014F71C /* VolumeViewModel.swift */; };
@@ -21,6 +18,9 @@
 		EA0989AB1BD5C1540014F71C /* LayerHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0989AA1BD5C1540014F71C /* LayerHelpers.swift */; };
 		EA0ED05F1BC1F80F00A9EE08 /* MeteorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0ED05E1BC1F80F00A9EE08 /* MeteorExtensions.swift */; };
 		EA2667051BFA7F6A0054C777 /* DurationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2667041BFA7F6A0054C777 /* DurationTimer.swift */; };
+		EA26670B1BFA86880054C777 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2667071BFA86880054C777 /* AudioController.swift */; };
+		EA26670C1BFA86880054C777 /* MuteChecker.caf in Resources */ = {isa = PBXBuildFile; fileRef = EA2667081BFA86880054C777 /* MuteChecker.caf */; };
+		EA26670D1BFA86880054C777 /* MuteChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = EA26670A1BFA86880054C777 /* MuteChecker.m */; };
 		EA337DFF1BB9067800F09A92 /* UIKitBindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA337DFE1BB9067800F09A92 /* UIKitBindings.swift */; };
 		EA394B0B1B5D9EF4009184EB /* v1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = EA394B071B5D9EF4009184EB /* v1.mp4 */; };
 		EA394B0C1B5D9EF4009184EB /* v2.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = EA394B081B5D9EF4009184EB /* v2.mp4 */; };
@@ -31,7 +31,6 @@
 		EA42D6361BB7B38100B07526 /* IntegrationTestEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = F9ABA2CF1B6412CF0098B7E4 /* IntegrationTestEnvironment.swift */; };
 		EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
 		EA42D64B1BB7BE3600B07526 /* TaylrEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921C1ACF342C0014BA25 /* TaylrEnvironment.swift */; };
-		EA42D64C1BB7BE4700B07526 /* Errors.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA36D2AA1AE71366006FD5D8 /* Errors.swift */; };
 		EA42D64D1BB7BE5600B07526 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA925C731AD99ED8008E9F41 /* R.swift */; };
 		EA42D64E1BB7BE5A00B07526 /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3691AA26597003383BE /* StyleKit.swift */; };
 		EA42D64F1BB7BE5D00B07526 /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3681AA26597003383BE /* SBConstants.swift */; };
@@ -44,7 +43,6 @@
 		EA42D65E1BB7C67900B07526 /* BaseViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA42D65C1BB7C67900B07526 /* BaseViews.swift */; };
 		EA42D65F1BB7C67900B07526 /* DesignableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA42D65D1BB7C67900B07526 /* DesignableViews.swift */; };
 		EA42D6601BB7CBAE00B07526 /* PKHUDExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBAB1B3930B000701F08 /* PKHUDExtension.swift */; };
-		EA42D6611BB7CC7B00B07526 /* ImagePickerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7134111B56E47100B810F6 /* ImagePickerExtensions.swift */; };
 		EA5022101B54AC4B00BC92D2 /* TestNSObject.m in Sources */ = {isa = PBXBuildFile; fileRef = EA50220F1B54AC4B00BC92D2 /* TestNSObject.m */; };
 		EA54FA931BD009A000AD7E9A /* ConversationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA6B1BD009A000AD7E9A /* ConversationListViewModel.swift */; };
 		EA54FA941BD009A000AD7E9A /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA54FA6C1BD009A000AD7E9A /* ConversationViewModel.swift */; };
@@ -243,10 +241,6 @@
 		8E0110CE5A12BB3B852FE247 /* Pods-Core-TestApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core-TestApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Core-TestApp/Pods-Core-TestApp.debug.xcconfig"; sourceTree = "<group>"; };
 		A80ED835405D6C980CF3F31B /* Pods-Core-CoreTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core-CoreTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Core-CoreTests/Pods-Core-CoreTests.debug.xcconfig"; sourceTree = "<group>"; };
 		C97F216A216ACE06C7336869 /* Pods-Core-Taylr.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core-Taylr.release.xcconfig"; path = "Pods/Target Support Files/Pods-Core-Taylr/Pods-Core-Taylr.release.xcconfig"; sourceTree = "<group>"; };
-		EA09897D1BD4CEDC0014F71C /* AudioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
-		EA09897E1BD4CEDC0014F71C /* MuteChecker.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MuteChecker.caf; sourceTree = "<group>"; };
-		EA09897F1BD4CEDC0014F71C /* MuteChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MuteChecker.h; sourceTree = "<group>"; };
-		EA0989801BD4CEDC0014F71C /* MuteChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MuteChecker.m; sourceTree = "<group>"; };
 		EA09899B1BD4CF3D0014F71C /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		EA09899C1BD4CF3D0014F71C /* VolumeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumeView.swift; sourceTree = "<group>"; };
 		EA09899D1BD4CF3D0014F71C /* VolumeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumeViewModel.swift; sourceTree = "<group>"; };
@@ -259,6 +253,10 @@
 		EA1047331B4E756200B1A76A /* TestExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestExtensions.swift; sourceTree = "<group>"; };
 		EA2406231B5109D8003A73C3 /* VideoDownloadTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoDownloadTests.swift; sourceTree = "<group>"; };
 		EA2667041BFA7F6A0054C777 /* DurationTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationTimer.swift; sourceTree = "<group>"; };
+		EA2667071BFA86880054C777 /* AudioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
+		EA2667081BFA86880054C777 /* MuteChecker.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MuteChecker.caf; sourceTree = "<group>"; };
+		EA2667091BFA86880054C777 /* MuteChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MuteChecker.h; sourceTree = "<group>"; };
+		EA26670A1BFA86880054C777 /* MuteChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MuteChecker.m; sourceTree = "<group>"; };
 		EA2DC2581B6377C00034434E /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		EA2DC2781B637DFE0034434E /* Models.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Models.xcdatamodel; sourceTree = "<group>"; };
 		EA2DC2851B637FA50034434E /* _Activity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = _Activity.swift; sourceTree = "<group>"; };
@@ -270,7 +268,6 @@
 		EA2DC2B81B641F070034434E /* MeteorSubscription.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MeteorSubscription.swift; sourceTree = "<group>"; };
 		EA337DFE1BB9067800F09A92 /* UIKitBindings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitBindings.swift; sourceTree = "<group>"; };
 		EA359AE41B6FFB2B00AF0A65 /* AzureClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AzureClient.swift; sourceTree = "<group>"; };
-		EA36D2AA1AE71366006FD5D8 /* Errors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Errors.swift; sourceTree = "<group>"; };
 		EA394B071B5D9EF4009184EB /* v1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = v1.mp4; path = ../../../../Documents/Videos/v1.mp4; sourceTree = "<group>"; };
 		EA394B081B5D9EF4009184EB /* v2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = v2.mp4; path = ../../../../Documents/Videos/v2.mp4; sourceTree = "<group>"; };
 		EA394B091B5D9EF4009184EB /* v3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = v3.mp4; path = ../../../../Documents/Videos/v3.mp4; sourceTree = "<group>"; };
@@ -326,7 +323,6 @@
 		EA6650EB1AA00A9C001BA40C /* AccountService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		EA6E405C1B6D334D00FF5126 /* Future.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
 		EA6E40611B6D33F500FF5126 /* ActionExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionExtensions.swift; sourceTree = "<group>"; };
-		EA7134111B56E47100B810F6 /* ImagePickerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerExtensions.swift; sourceTree = "<group>"; };
 		EA72AE131BD005CD0031D652 /* Conversation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Conversation.storyboard; sourceTree = "<group>"; };
 		EA72AE141BD005CD0031D652 /* ConversationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListViewController.swift; sourceTree = "<group>"; };
 		EA72AE151BD005CD0031D652 /* ChatHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatHistoryViewController.swift; sourceTree = "<group>"; };
@@ -510,17 +506,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		EA09897C1BD4CEDC0014F71C /* AudioController */ = {
-			isa = PBXGroup;
-			children = (
-				EA09897D1BD4CEDC0014F71C /* AudioController.swift */,
-				EA09897E1BD4CEDC0014F71C /* MuteChecker.caf */,
-				EA09897F1BD4CEDC0014F71C /* MuteChecker.h */,
-				EA0989801BD4CEDC0014F71C /* MuteChecker.m */,
-			);
-			path = AudioController;
-			sourceTree = "<group>";
-		};
 		EA09899A1BD4CF3D0014F71C /* VideoPlayer */ = {
 			isa = PBXGroup;
 			children = (
@@ -565,6 +550,17 @@
 				EA2666FE1BFA622F0054C777 /* libRNSearchBar.a */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		EA2667061BFA86880054C777 /* AudioController */ = {
+			isa = PBXGroup;
+			children = (
+				EA2667071BFA86880054C777 /* AudioController.swift */,
+				EA2667081BFA86880054C777 /* MuteChecker.caf */,
+				EA2667091BFA86880054C777 /* MuteChecker.h */,
+				EA26670A1BFA86880054C777 /* MuteChecker.m */,
+			);
+			path = AudioController;
 			sourceTree = "<group>";
 		};
 		EA2DC26B1B637DFE0034434E /* CoreData */ = {
@@ -727,7 +723,6 @@
 			isa = PBXGroup;
 			children = (
 				EAAD921C1ACF342C0014BA25 /* TaylrEnvironment.swift */,
-				EA36D2AA1AE71366006FD5D8 /* Errors.swift */,
 				EADE6CBD1BCF8AFC002F1216 /* UserViewModel+ATLParticipant.swift */,
 			);
 			path = Models;
@@ -790,11 +785,12 @@
 		EA72AE121BD005CD0031D652 /* Conversation */ = {
 			isa = PBXGroup;
 			children = (
+				EA2667061BFA86880054C777 /* AudioController */,
 				EA09899A1BD4CF3D0014F71C /* VideoPlayer */,
 				EA72AE151BD005CD0031D652 /* ChatHistoryViewController.swift */,
-				EA72AE131BD005CD0031D652 /* Conversation.storyboard */,
 				EA72AE141BD005CD0031D652 /* ConversationListViewController.swift */,
 				EAEDF7D81BD2E7B300037BA4 /* ConversationViewController.swift */,
+				EA72AE131BD005CD0031D652 /* Conversation.storyboard */,
 			);
 			path = Conversation;
 			sourceTree = "<group>";
@@ -826,7 +822,6 @@
 				EA42D65A1BB7C66600B07526 /* MediaExtension.swift */,
 				EA95BBAB1B3930B000701F08 /* PKHUDExtension.swift */,
 				EA95BBAC1B3930B000701F08 /* ResourceExtension.swift */,
-				EA7134111B56E47100B810F6 /* ImagePickerExtensions.swift */,
 				EA95BBA91B3930B000701F08 /* ThirdPartyBindings.swift */,
 			);
 			path = Extensions;
@@ -859,7 +854,6 @@
 		EA9F353C1A74CC6900E0C65D /* Taylr */ = {
 			isa = PBXGroup;
 			children = (
-				EA09897C1BD4CEDC0014F71C /* AudioController */,
 				EA95BBA81B3930B000701F08 /* Extensions */,
 				EA5634DE1A7741FF00F62B52 /* Models */,
 				EA6650E91AA00A9C001BA40C /* Services */,
@@ -1288,7 +1282,7 @@
 				EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */,
 				EA7FB0981B5EF9D50052B394 /* Cabin-MediumItalic.ttf in Resources */,
 				EA7FB0991B5EF9D50052B394 /* Cabin-Regular.ttf in Resources */,
-				EA09898E1BD4CEDC0014F71C /* MuteChecker.caf in Resources */,
+				EA26670C1BFA86880054C777 /* MuteChecker.caf in Resources */,
 				EA9F354A1A74CC6900E0C65D /* Taylr.xcassets in Resources */,
 				EA78C8801B323E140016AB73 /* Images.xcassets in Resources */,
 				F96E6FAF1BF49FC800DEB19A /* main.jsbundle in Resources */,
@@ -1613,25 +1607,23 @@
 				EAA5DAC01BF2A8E100BF6B1E /* TaylrAPI.m in Sources */,
 				EAA5DAC21BF2A8E100BF6B1E /* TSContainerView.m in Sources */,
 				EAA5DAC11BF2A8E100BF6B1E /* TaylrAPI.swift in Sources */,
-				EA42D64C1BB7BE4700B07526 /* Errors.swift in Sources */,
 				EAEDF7D91BD2E7B300037BA4 /* ConversationViewController.swift in Sources */,
 				EA0989A01BD4CF3D0014F71C /* VolumeViewModel.swift in Sources */,
 				EA09899F1BD4CF3D0014F71C /* VolumeView.swift in Sources */,
 				EA42D6541BB7C33100B07526 /* UpgradeService.swift in Sources */,
 				EA42D6531BB7C2C500B07526 /* AnalyticsService.swift in Sources */,
 				EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */,
+				EA26670B1BFA86880054C777 /* AudioController.swift in Sources */,
 				EA42D65E1BB7C67900B07526 /* BaseViews.swift in Sources */,
 				EA42D64F1BB7BE5D00B07526 /* SBConstants.swift in Sources */,
-				EA42D6611BB7CC7B00B07526 /* ImagePickerExtensions.swift in Sources */,
+				EA26670D1BFA86880054C777 /* MuteChecker.m in Sources */,
 				EA42D6601BB7CBAE00B07526 /* PKHUDExtension.swift in Sources */,
 				EA72AE441BD005CD0031D652 /* ConversationListViewController.swift in Sources */,
 				EAA5760C1BB7E20800661A4F /* Appearance.swift in Sources */,
 				EA42D64D1BB7BE5600B07526 /* R.swift in Sources */,
 				EA42D6561BB7C3B400B07526 /* Globals.swift in Sources */,
-				EA09898D1BD4CEDC0014F71C /* AudioController.swift in Sources */,
 				EA42D6551BB7C35100B07526 /* AccountService.swift in Sources */,
 				EA72AE451BD005CD0031D652 /* ChatHistoryViewController.swift in Sources */,
-				EA09898F1BD4CEDC0014F71C /* MuteChecker.m in Sources */,
 				EADE6CBE1BCF8AFC002F1216 /* UserViewModel+ATLParticipant.swift in Sources */,
 				EA42D65B1BB7C66600B07526 /* MediaExtension.swift in Sources */,
 				EA42D65F1BB7C67900B07526 /* DesignableViews.swift in Sources */,
