@@ -16,7 +16,7 @@
                BlueprintIdentifier = "EA9F35391A74CC6900E0C65D"
                BuildableName = "Taylr.app"
                BlueprintName = "Taylr"
-               ReferencedContainer = "container:S10.xcodeproj">
+               ReferencedContainer = "container:Taylr.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,7 +34,7 @@
                BlueprintIdentifier = "EA9F35511A74CC6900E0C65D"
                BuildableName = "CoreTests.xctest"
                BlueprintName = "CoreTests"
-               ReferencedContainer = "container:S10.xcodeproj">
+               ReferencedContainer = "container:Taylr.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -44,7 +44,7 @@
             BlueprintIdentifier = "EA9F35391A74CC6900E0C65D"
             BuildableName = "Taylr.app"
             BlueprintName = "Taylr"
-            ReferencedContainer = "container:S10.xcodeproj">
+            ReferencedContainer = "container:Taylr.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -67,7 +67,7 @@
             BlueprintIdentifier = "EA9F35391A74CC6900E0C65D"
             BuildableName = "Taylr.app"
             BlueprintName = "Taylr"
-            ReferencedContainer = "container:S10.xcodeproj">
+            ReferencedContainer = "container:Taylr.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -91,7 +91,7 @@
             BlueprintIdentifier = "EA9F35391A74CC6900E0C65D"
             BuildableName = "Taylr.app"
             BlueprintName = "Taylr"
-            ReferencedContainer = "container:S10.xcodeproj">
+            ReferencedContainer = "container:Taylr.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

@@ -42,24 +42,3 @@
 }
 
 @end
-
-//@implementation Bugfender (Swift)
-//
-//+ (void)logWithFilename:(NSString *)filename
-//             lineNumber:(int)lineNumber
-//           functionName:(NSString *)functionName
-//                    tag:(NSString *)tag
-//                  level:(BFLogLevel)level
-//                message:(NSString *)message {
-//    __BFLog(lineNumber, functionName, filename, level, tag, message);
-//}
-//
-//@end
-
-//@implementation Crashlytics (Swift)
-//
-//+ (void)logMessage:(NSString *)message {
-//    CLSLog(@"%@", message);
-//}
-//
-//@end

@@ -8,7 +8,6 @@
 
 import Foundation
 import ReactiveCocoa
-import Meteor
 import LayerKit
 
 public class ConversationListViewModel: NSObject {

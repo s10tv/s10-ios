@@ -9,7 +9,7 @@
 import UIKit
 import ReactiveCocoa
 import SDWebImage
-import JSBadgeView
+//import JSBadgeView
 
 private var kPlaceholderImage: UInt8 = 0
 private var kImage: UInt8 = 0
@@ -43,10 +43,10 @@ extension UIImageView {
     }
 }
 
-private var kBadgeText: UInt8 = 0
-
-extension JSBadgeView {
-    public var rac_badgeText: MutableProperty<String> {
-        return associatedProperty(&kBadgeText, setter: { self.badgeText = $0 }, getter: { self.badgeText ?? "" })
-    }
-}
+//private var kBadgeText: UInt8 = 0
+//
+//extension JSBadgeView {
+//    public var rac_badgeText: MutableProperty<String> {
+//        return associatedProperty(&kBadgeText, setter: { self.badgeText = $0 }, getter: { self.badgeText ?? "" })
+//    }
+//}

@@ -8,13 +8,10 @@
 
 import UIKit
 import ReactiveCocoa
-import Meteor
-import SugarRecord
 import Fabric
 import DigitsKit
 import Crashlytics
 import Ouralabs
-import RealmSwift
 import LayerKit
 import SCRecorder
 import AVFoundation
@@ -59,14 +56,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         
 //        Crashlytics.sharedInstance().setObjectValue(env.deviceId, forKey: "DeviceId")
         
-        // Migrate db if needed
-        Realm.Configuration.defaultConfiguration = Realm.Configuration(
-            schemaVersion: 6,
-            migrationBlock: { migration, oldSchemaVersion in
-                // Automatic migration
-            }
-        )
-        
         
         // Setup global services
 //        let meteor = MeteorService(serverURL: env.serverURL)
@@ -94,9 +83,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         
         layerClient = Globals.layerService.layerClient
         Globals.layerService.connectAndKeepUserInSync()
-
-        // Startup the services
-        SugarRecordLogger.currentLevel = SugarRecordLogger.logLevelError
         
         // Should be probably extracted into push service
         application.registerForRemoteNotifications()
@@ -153,7 +139,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
-        SugarRecord.applicationWillEnterForeground()
         Analytics.track("AppOpen")
         Globals.upgradeService.promptForUpgradeIfNeeded()
     }

@@ -8,7 +8,6 @@
 
 import Foundation
 import ReactiveCocoa
-import Meteor
 
 public class CurrentUser {
     public enum AccountStatus : String {

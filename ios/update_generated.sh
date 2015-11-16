@@ -1,15 +1,7 @@
 #!/bin/bash
 
-ROOT=$(dirname "$0")
+cd "Taylr"
 
-# Regenerate CoreData model files
-# TODO: Get paths reference in order...
-cd "Core/S10"
-mogenerator --swift --template-path "../../scripts/motemplates" \
-            -m Models/CoreData/Models.xcdatamodeld/Models.xcdatamodel/ --human-dir Models/CoreData --machine-dir Models/CoreData/_Models
-
-# Regenerate Taylr assets
-cd "../../Taylr"
 # Regenerate storyboard constants
 sbconstants -s ./ -w -d > Generated/SBConstants.swift
 
