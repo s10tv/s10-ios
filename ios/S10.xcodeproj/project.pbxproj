@@ -73,7 +73,6 @@
 		EA81ADCE1BB6731200F94006 /* SwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA81ADCD1BB6731200F94006 /* SwiftExtensions.swift */; };
 		EA81ADD21BB6735800F94006 /* Foundation+RACSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA81ADD01BB6735800F94006 /* Foundation+RACSupport.swift */; };
 		EA81ADD31BB673B100F94006 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E405C1B6D334D00FF5126 /* Future.swift */; };
-		EA81ADD41BB6793500F94006 /* ActionExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6E40611B6D33F500FF5126 /* ActionExtensions.swift */; };
 		EA81ADD71BB6823F00F94006 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9C16651B365BD700371B50 /* AsyncOperation.swift */; };
 		EA81ADDA1BB6839200F94006 /* AlamofireExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA78C8761B320A2A0016AB73 /* AlamofireExtension.swift */; };
 		EA81ADDB1BB6839200F94006 /* AzureClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA359AE41B6FFB2B00AF0A65 /* AzureClient.swift */; };
@@ -88,7 +87,6 @@
 		EA8A733C1BD3092F006DB6A9 /* VideoPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8A733B1BD3092F006DB6A9 /* VideoPlayerViewModel.swift */; };
 		EA8E69461BC1DA30002D4BF1 /* ArrayProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8E69411BC1DA30002D4BF1 /* ArrayProperty.swift */; };
 		EA8E69471BC1DA30002D4BF1 /* DynamicProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8E69421BC1DA30002D4BF1 /* DynamicProperties.swift */; };
-		EA8E69481BC1DA30002D4BF1 /* FetchedResultsArray.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8E69431BC1DA30002D4BF1 /* FetchedResultsArray.swift */; };
 		EA8E69491BC1DA30002D4BF1 /* PropertyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8E69441BC1DA30002D4BF1 /* PropertyExtensions.swift */; };
 		EA8E694A1BC1DA30002D4BF1 /* TwoWayBindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8E69451BC1DA30002D4BF1 /* TwoWayBindings.swift */; };
 		EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA9A6ACE1AAFDE19009EDD6D /* Localizable.strings */; };
@@ -239,7 +237,6 @@
 		EA5B74361B3139EA008E5CBC /* Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
 		EA6650EB1AA00A9C001BA40C /* AccountService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
 		EA6E405C1B6D334D00FF5126 /* Future.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
-		EA6E40611B6D33F500FF5126 /* ActionExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActionExtensions.swift; sourceTree = "<group>"; };
 		EA72AE131BD005CD0031D652 /* Conversation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Conversation.storyboard; sourceTree = "<group>"; };
 		EA72AE141BD005CD0031D652 /* ConversationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListViewController.swift; sourceTree = "<group>"; };
 		EA72AE151BD005CD0031D652 /* ChatHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatHistoryViewController.swift; sourceTree = "<group>"; };
@@ -258,7 +255,6 @@
 		EA8A733B1BD3092F006DB6A9 /* VideoPlayerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewModel.swift; sourceTree = "<group>"; };
 		EA8E69411BC1DA30002D4BF1 /* ArrayProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayProperty.swift; sourceTree = "<group>"; };
 		EA8E69421BC1DA30002D4BF1 /* DynamicProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicProperties.swift; sourceTree = "<group>"; };
-		EA8E69431BC1DA30002D4BF1 /* FetchedResultsArray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FetchedResultsArray.swift; sourceTree = "<group>"; };
 		EA8E69441BC1DA30002D4BF1 /* PropertyExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyExtensions.swift; sourceTree = "<group>"; };
 		EA8E69451BC1DA30002D4BF1 /* TwoWayBindings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoWayBindings.swift; sourceTree = "<group>"; };
 		EA925C731AD99ED8008E9F41 /* R.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.swift; sourceTree = "<group>"; };
@@ -581,7 +577,6 @@
 			children = (
 				EA8E69401BC1DA30002D4BF1 /* Properties */,
 				EA6E405C1B6D334D00FF5126 /* Future.swift */,
-				EA6E40611B6D33F500FF5126 /* ActionExtensions.swift */,
 				EA81ADD01BB6735800F94006 /* Foundation+RACSupport.swift */,
 			);
 			path = RAC;
@@ -613,7 +608,6 @@
 			isa = PBXGroup;
 			children = (
 				EA8E69411BC1DA30002D4BF1 /* ArrayProperty.swift */,
-				EA8E69431BC1DA30002D4BF1 /* FetchedResultsArray.swift */,
 				EA8E69421BC1DA30002D4BF1 /* DynamicProperties.swift */,
 				EA8E69441BC1DA30002D4BF1 /* PropertyExtensions.swift */,
 				EA8E69451BC1DA30002D4BF1 /* TwoWayBindings.swift */,
@@ -1298,7 +1292,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				EA0989A71BD5C0FF0014F71C /* LayerExtensions.swift in Sources */,
-				EA8E69481BC1DA30002D4BF1 /* FetchedResultsArray.swift in Sources */,
 				EA81ADBD1BB65FB800F94006 /* FoundationExtension.swift in Sources */,
 				EA81ADDE1BB6852600F94006 /* Environment.swift in Sources */,
 				EA81ADE91BB6883A00F94006 /* AnimationExtensions.swift in Sources */,
@@ -1331,7 +1324,6 @@
 				EA81ADD71BB6823F00F94006 /* AsyncOperation.swift in Sources */,
 				EA81ADE81BB6881200F94006 /* UIKitExtension.swift in Sources */,
 				EA81AE0B1BB6930900F94006 /* CurrentUser.swift in Sources */,
-				EA81ADD41BB6793500F94006 /* ActionExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
