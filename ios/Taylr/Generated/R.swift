@@ -112,111 +112,15 @@ public enum R {
     public enum TaylrAssets : String {
         /// AppIcon
         case app = "AppIcon"
-        /// AppIconBeta
-        case appBeta = "AppIconBeta"
-        /// AppIconDev
-        case appDev = "AppIconDev"
-        /// bg-record-hint
-        case bgRecordHint = "bg-record-hint"
-        /// bg-sauder
-        case bgSauder = "bg-sauder"
-        /// discover-logo
-        case discoverLogo = "discover-logo"
         /// empty-profile-pic
         case emptyProfilePic = "empty-profile-pic"
-        /// girl-placeholder
-        case girlPlaceholder = "girl-placeholder"
-        /// ic-add
-        case icAdd = "ic-add"
-        /// ic-all
-        case icAll = "ic-all"
-        /// ic-all-gray
-        case icAllGray = "ic-all-gray"
-        /// ic-approved
-        case icApproved = "ic-approved"
         /// ic-back-arrow
         case icBackArrow = "ic-back-arrow"
-        /// ic-camera-switch
-        case icCameraSwitch = "ic-camera-switch"
-        /// ic-cancel-round
-        case icCancelRound = "ic-cancel-round"
-        /// ic-chats
-        case icChats = "ic-chats"
-        /// ic-checkmark
-        case icCheckmark = "ic-checkmark"
-        /// ic-close-cross
-        case icCloseCross = "ic-close-cross"
-        /// ic-compass
-        case icCompass = "ic-compass"
-        /// ic-down-chevron-small
-        case icDownChevronSmall = "ic-down-chevron-small"
-        /// ic-eclipse
-        case icEclipse = "ic-eclipse"
-        /// ic-edit
-        case icEdit = "ic-edit"
-        /// ic-flash
-        case icFlash = "ic-flash"
-        /// ic-house
-        case icHouse = "ic-house"
-        /// ic-left-chevron
-        case icLeftChevron = "ic-left-chevron"
-        /// ic-lock
-        case icLock = "ic-lock"
-        /// ic-me
-        case icMe = "ic-me"
-        /// ic-more
-        case icMore = "ic-more"
-        /// ic-mortar
-        case icMortar = "ic-mortar"
         /// ic-play-medium
         case icPlayMedium = "ic-play-medium"
-        /// ic-play-small
-        case icPlaySmall = "ic-play-small"
-        /// ic-right-arrow
-        case icRightArrow = "ic-right-arrow"
-        /// ic-right-arrow-white
-        case icRightArrowWhite = "ic-right-arrow-white"
-        /// ic-right-chevron
-        case icRightChevron = "ic-right-chevron"
-        /// ic-save-round
-        case icSaveRound = "ic-save-round"
-        /// ic-send-round
-        case icSendRound = "ic-send-round"
         /// ic-speaker
         case icSpeaker = "ic-speaker"
         /// ic-speaker-muted
         case icSpeakerMuted = "ic-speaker-muted"
-        /// ic-start-chat
-        case icStartChat = "ic-start-chat"
-        /// ic-twitter-color
-        case icTwitterColor = "ic-twitter-color"
-        /// ic-ubc
-        case icUbc = "ic-ubc"
-        /// ic-up-chevron
-        case icUpChevron = "ic-up-chevron"
-        /// ic-up-triangle
-        case icUpTriangle = "ic-up-triangle"
-        /// ic-video
-        case icVideo = "ic-video"
-        /// ic-video-small
-        case icVideoSmall = "ic-video-small"
-        /// ic-warning
-        case icWarning = "ic-warning"
-        /// Logo
-        case logo = "Logo"
-        /// onboarding-college1
-        case onboardingCollege1 = "onboarding-college1"
-        /// onboarding-college2
-        case onboardingCollege2 = "onboarding-college2"
-        /// onboarding-college3
-        case onboardingCollege3 = "onboarding-college3"
-        /// onboarding-connections
-        case onboardingConnections = "onboarding-connections"
-        /// onboarding-profile
-        case onboardingProfile = "onboarding-profile"
-        /// onboarding-services
-        case onboardingServices = "onboarding-services"
-        /// sample-photo
-        case samplePhoto = "sample-photo"
     }
 }
