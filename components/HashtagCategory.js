@@ -9,7 +9,6 @@ let {
   StyleSheet
 } = React;
 
-let ddp = require('../lib/ddp');
 let TappableCard = require('./Card').TappableCard;
 let SectionTitle = require('./SectionTitle');
 let Hashtag = require('./Hashtag');
@@ -18,6 +17,7 @@ let SHEET = require('./CommonStyles').SHEET;
 class HashtagCategory extends React.Component {
   constructor(props: {}) {
     super(props);
+    this.ddp = props.ddp;
     this.state = {
       myTags: [],
       categories: []
@@ -25,7 +25,9 @@ class HashtagCategory extends React.Component {
   }
 
   componentWillMount() {
-    return ddp.subscribe('hashtag-categories')
+    let ddp = this.ddp;
+
+    return ddp.subscribe({ pubName: 'hashtag-categories' })
     .then((res) => {
       let categoryObserver = ddp.collections.observe(() => {
         let categories = [];
@@ -39,7 +41,7 @@ class HashtagCategory extends React.Component {
       });
     })
     .then(() => {
-      return ddp.subscribe('my-hashtags')
+      return ddp.subscribe({ pubName: 'my-hashtags' })
     })
     .then((res) => {
       let myHashtagObserver = ddp.collections.observe(() => {
@@ -67,7 +69,7 @@ class HashtagCategory extends React.Component {
     let myTagsRendered = this.state.myTags.filter(tag => {
       return tag.type == category._id
     }).map(hashtag => {
-      return <Hashtag enableTouch={false} hashtag={ hashtag } />
+      return <Hashtag key={hashtag.value} ddp={this.ddp} enableTouch={false} hashtag={ hashtag } />
     });
 
     let icon = myTagsRendered.length == 0 ?
@@ -75,7 +77,7 @@ class HashtagCategory extends React.Component {
       <Image style={SHEET.icon} source={require('./img/ic-checkmark.png')} />
 
     return (
-      <TappableCard onPress={(event) => { return this._handleCategoryTouch.bind(this)(category)}}>
+      <TappableCard key={category.displayName} onPress={(event) => { return this._handleCategoryTouch.bind(this)(category)}}>
         <View style={[styles.categoryHeader]}>
           <Text style={[styles.categoryDisplayName, SHEET.subTitle, SHEET.baseText]}>{category.displayName}</Text>
           {icon}

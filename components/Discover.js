@@ -47,33 +47,29 @@ var iconTextRowStyles = StyleSheet.create({
 class Discover extends React.Component {
   constructor(props: {}) {
     super(props);
-    this.state = {
+    this.ddp = props.ddp;
+
+    this.state = {}
+  }
+
+  componentWillUnmount() {
+    if (this.state.candidateUserObserver) {
+      this.state.candidateUserObserver.dispose();
+    }
+    if (this.state.candidateUserObserver) {
+      this.state.candidateUserObserver.dispose();
     }
   }
 
+
   componentWillMount() {
-    ddp.initialize().then((res) => {
-      return new Promise((resolve, reject) => {
-        TaylrAPI.getMeteorUser((userId, resumeToken) => {
-          if (resumeToken == null) {
-            return reject('Resume Token not found');
-          }
+    let ddp = this.ddp;
 
-          return resolve({ userId: userId, token: resumeToken });
-        });
-      })
-    }).then(loginResult => {
-      this.setState({ userId: loginResult.userId });
-      return ddp.loginWithToken(loginResult.token)
+    return ddp.subscribe({ pubName: 'candidate-discover' })
+    .then(() => {
+      return ddp.subscribe({ pubName: 'settings' })
     })
     .then(() => {
-      return ddp.subscribe('settings');
-    })
-    .then(() => {
-      return ddp.subscribe('candidate-discover');
-    })
-    .then(() => {
-
       ddp.collections.observe(() => {
         if (ddp.collections.settings) {
           return ddp.collections.settings.findOne({ _id: 'nextMatchDate' });
@@ -100,13 +96,14 @@ class Discover extends React.Component {
         this.setState({ timer: setInterval(timerFunction.bind(this), 1000) })
       })
 
-
       // listen for candidate publication
-      ddp.collections.observe(() => {
+      let candidateObserver = ddp.collections.observe(() => {
         if (ddp.collections.candidates) {
           return ddp.collections.candidates.find({});
         }
-      }).subscribe((results) => {
+      });
+
+      candidateObserver.subscribe((results) => {
         this.setState({ 
           candidates: results
         });
@@ -134,11 +131,13 @@ class Discover extends React.Component {
       });
 
       // listen for candidate user publication as well.
-      ddp.collections.observe(() => {
+      let candidateUserObserver = ddp.collections.observe(() => {
         if (ddp.collections.users && this.state.activeCandidate) {
           return ddp.collections.users.find({});
         }
-      }).subscribe((results) => {
+      });
+
+      candidateUserObserver.subscribe((results) => {
         if (results) {
           let activeUser = results.filter((user) => {
             return user._id == this.state.activeCandidate.userId;
@@ -149,6 +148,9 @@ class Discover extends React.Component {
           }
         }
       });
+
+      this.setState({candidateUserObserver: candidateUserObserver});
+      this.setState({candidateObserver: candidateObserver});
     })
   }
 

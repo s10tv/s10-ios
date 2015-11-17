@@ -15,7 +15,7 @@ let {
 } = React;
 
 let commonStyles = require('./CommonStyles')
-let ddp = require('../lib/ddp');
+let TSDDPClient = require('../lib/ddpclient');
 let Me = require('./Me');
 let MeEdit = require('./MeEdit');
 let Activities = require('./Activities');
@@ -29,10 +29,21 @@ class LayoutContainer extends React.Component {
 
   constructor(props: {}) {
     super(props);
+    this.ddp = new TSDDPClient();
+
     this.state = {
       modalVisible: false,
-      currentTab: 'discover',
+      currentTab: 'me',
     }
+  }
+
+  componentWillMount() {
+    this.ddp.initialize('wss://s10-dev.herokuapp.com/websocket')
+    .then(() => {
+      return this.ddp.loginWithToken('_xkXDdHVfM5fj80ciYOC0kVFjEi6ObwHvRq9cdfIBlJ'); 
+    }).then((res) => {
+      this.setState(res);
+    })
   }
 
   _leftButton(route, navigator, index, navState) {
@@ -62,7 +73,6 @@ class LayoutContainer extends React.Component {
   }
 
   _onNavigationStateChange(nav, navState) {
-    console.log(navState.url);
     if (navState.url.indexOf('taylr-dev://') != -1) {
       return nav.pop();
     }
@@ -71,7 +81,11 @@ class LayoutContainer extends React.Component {
   renderScene(route, nav) {
     switch (route.id) {
       case 'hashtag':
-        return <HashtagListView style={{ flex: 1 }} navigator={nav} category={route.category} />;
+        return <HashtagListView
+          style={{ flex: 1 }} 
+          navigator={nav}
+          ddp={this.ddp}
+          category={route.category} />;
       case 'servicelink':
         return <WebView
           style={styles.webView}
@@ -79,13 +93,12 @@ class LayoutContainer extends React.Component {
           startInLoadingState={true}
           url={route.link} />;
       case 'editprofile':
-        return <MeEdit navigator={nav} me={route.me} integrations={route.integrations} />
+        return <MeEdit navigator={nav} me={route.me} ddp={this.ddp} integrations={route.integrations} />
       case 'viewprofile':
-        console.log(route.me);
-        return <Activities navigator={nav} me={route.me} />
+        return <Activities navigator={nav} me={route.me} ddp={this.ddp} />
       default:
         return (
-          <Me navigator={nav} />
+          <Me navigator={nav} ddp={this.ddp} />
         );
     }
   }
@@ -93,12 +106,12 @@ class LayoutContainer extends React.Component {
   renderDiscoverScene(route, nav) {
     switch (route.id) {
       case 'viewprofile':
-        return <Activities navigator={nav} me={route.me} />
+        return <Activities navigator={nav} ddp={this.ddp} me={route.me} />
       case 'sendMessage':
         return <ContainerView sbName="Conversation" />
       default:
         return (
-          <Discover navigator={nav} />
+          <Discover navigator={nav} ddp={this.ddp} />
         );
     } 
   }
@@ -108,6 +121,7 @@ class LayoutContainer extends React.Component {
       <TabBarIOS>
         <TabBarIOS.Item 
           title="Me"
+          icon={require('./img/ic-me.png')}
           onPress={() => {
             this.setState({currentTab: 'me'});
           }}
@@ -134,6 +148,7 @@ class LayoutContainer extends React.Component {
         </TabBarIOS.Item>
         <TabBarIOS.Item 
           title="Discover"
+          icon={require('./img/ic-compass.png')}
           onPress={() => {
             this.setState({currentTab: 'discover'});
           }}
@@ -161,6 +176,7 @@ class LayoutContainer extends React.Component {
         </TabBarIOS.Item>
         <TabBarIOS.Item 
           title="Chats"
+          icon={require('./img/ic-chats.png')}
           onPress={() => {
             this.setState({currentTab: 'chats'});
           }}

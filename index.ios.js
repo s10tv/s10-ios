@@ -4,7 +4,6 @@
  */
 'use strict';
 
-let ddp = require('./lib/ddp');
 let TaylrAPI = require('react-native').NativeModules.TaylrAPI;
 let React = require('react-native');
 let {

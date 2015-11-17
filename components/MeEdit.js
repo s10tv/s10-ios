@@ -25,6 +25,7 @@ class MeEdit extends React.Component {
 
   constructor(props: {}) {
     super(props);
+    this.ddp = props.ddp;
     let me = props.me;
 
     this.state = {
@@ -41,6 +42,8 @@ class MeEdit extends React.Component {
   }
 
   componentWillMount() {
+    let ddp = this.ddp;
+    
     let observer = ddp.collections.observe(() => {
       if (ddp.collections.integrations) {
         return ddp.collections.integrations.find({});

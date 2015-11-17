@@ -61,14 +61,16 @@ class MeHeader extends React.Component {
 
   constructor(props) {
     super(props);
-
+    this.ddp = props.ddp;
     this.state = {
       integrations: props.me.connectedProfiles
     }
   }
 
   componentWillMount() {
-    ddp.subscribe('integrations')
+    let ddp = this.ddp;
+
+    ddp.subscribe({ pubName: 'integrations' })
     .then(() => {
       let observer = ddp.collections.observe(() => {
         if (ddp.collections.integrations) {
@@ -140,30 +142,18 @@ class MeHeader extends React.Component {
 class Me extends React.Component {
   constructor(props: {}) {
     super(props);
+    this.ddp = props.ddp;
     this.state = {}
   }
 
   componentWillMount() {
-    ddp.initialize().then((res) => {
-      return new Promise((resolve, reject) => {
-        TaylrAPI.getMeteorUser((userId, resumeToken) => {
-          if (resumeToken == null) {
-            return reject('Resume Token not found');
-          }
+    let ddp = this.ddp;
 
-          return resolve({ userId: userId, token: resumeToken });
-        });
-      })
-    }).then(loginResult => {
-      this.setState({ userId: loginResult.userId });
-      return ddp.loginWithToken(loginResult.token)
-    }).then((res) => {
-      return ddp.subscribe('me');
-    })
+    return ddp.subscribe({ pubName: 'me' })
     .then(() => {
       let observer = ddp.collections.observe(() => {
         if (ddp.collections.users) {
-          return ddp.collections.users.find({ _id: this.state.userId });
+          return ddp.collections.users.find({ _id: ddp.currentUserId });
         }
       });
       observer.subscribe((results) => {
@@ -184,12 +174,12 @@ class Me extends React.Component {
         <View style={SHEET.container}>
           <ScrollView style={[SHEET.navTop, SHEET.bottomTile, { flex: 1 }]}>
             <HeaderBanner url={me.cover.url} height={170}>
-              <MeHeader navigator={this.props.navigator} me={me} />
+              <MeHeader navigator={this.props.navigator} ddp={this.ddp} me={me} />
             </HeaderBanner>
 
-            <Network navigator={this.props.navigator} />
+            <Network navigator={this.props.navigator} ddp={this.ddp} />
 
-            <HashtagCategory navigator={this.props.navigator} />
+            <HashtagCategory navigator={this.props.navigator} ddp={this.ddp} />
 
             <ContactUs navigator={this.props.navigator} />
 

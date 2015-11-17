@@ -18,7 +18,6 @@ let Card = require('./Card').Card;
 let HeaderBanner = require('./HeaderBanner');
 let COLORS = require('./CommonStyles').COLORS;
 let SHEET = require('./CommonStyles').SHEET;
-let ddp = require('../lib/ddp');
 
 class ActivityHeader extends React.Component {
   render() {
@@ -168,35 +167,47 @@ class ActivityServiceIcon extends React.Component {
 class Activities extends React.Component {
   constructor(props) {
     super(props);
+    this.ddp = props.ddp;
     this.state = {
       activities: [],
     }
   }
 
-  componentWillMount() {
-    let subscriptionId = ddp.subscribe('activities', [this.props.me._id])
-    .then((subscriptionId) => {
-      this.setState({ subscriptionId: subscriptionId });
-    })
-
-    let observer = ddp.collections.observe(() => {
-      if (ddp.collections.activities) {
-        return ddp.collections.activities.find({});
-      }
-    }).subscribe((results) => {
-      if (results) {
-        console.log(results.length);
-        results.sort((one, two) => {
-          return two.timestamp - one.timestamp;
-        })
-        this.setState({ activities: results });
-      }
-    })
-  }
-
   componentWillUnmount() {
-    ddp.unsubscribe(this.state.subscriptionId);
+    if (this.state.subId) {
+      this.ddp.unsubscribe(this.state.subId);
+    }
+    
+    if (this.state.observer) {
+      this.state.observer.dispose();
+    }
   }
+
+  componentWillMount() {
+    let ddp = this.ddp;
+
+    ddp.subscribe({ pubName: 'activities', params: [this.props.me._id] })
+    .then((subId) => {
+      this.setState({ subId: subId });
+
+      let observer = ddp.collections.observe(() => {
+        if (ddp.collections.activities) {
+          return ddp.collections.activities.find({});
+        }
+      })
+
+      this.setState({ observer: observer });
+
+      observer.subscribe((results) => {
+        if (results) {
+          results.sort((one, two) => {
+            return two.timestamp - one.timestamp;
+          })
+          this.setState({ activities: results });
+        }
+      })
+    })
+ }
 
   _switchService(profile) {
     let results = ddp.collections.activities.find({ profileId: profile.id });

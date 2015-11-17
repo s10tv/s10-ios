@@ -10,15 +10,25 @@ let {
 let Button = require('react-native-button');
 let COLORS = require('./CommonStyles').COLORS;
 let SHEET = require('./CommonStyles').SHEET;
-let ddp = require('../lib/ddp');
 
 class Hashtag extends React.Component {
 
+  constructor(props) {
+    super(props);
+    this.ddp = props.ddp;
+  }
+
   _onHashtagTouch(hashtag) {
     if (!hashtag.isMine) {
-      return ddp.call('me/hashtag/add', [hashtag.text, hashtag.type])
+      return this.ddp.call({
+        methodName: 'me/hashtag/add',
+        params: [hashtag.text, hashtag.type]
+      })
     } else {
-      return ddp.call('me/hashtag/remove', [hashtag.text, hashtag.type])
+      return this.ddp.call({
+        methodName: 'me/hashtag/remove', 
+        params: [hashtag.text, hashtag.type]
+      })
     }
   }
 

@@ -14,12 +14,11 @@ let SHEET = require('./CommonStyles').SHEET;
 let COLORS = require('./CommonStyles').COLORS;
 let Card = require('./Card').Card;
 let Hashtag = require('./Hashtag');
-let SearchBar = require('react-native-search-bar');
-let ddp = require('../lib/ddp');
 
 class HashtagListView extends React.Component {
   constructor(props: {}) {
     super(props);
+    this.ddp = props.ddp;
     this.state = {
       loading: true,
       hashtags: [],
@@ -27,10 +26,21 @@ class HashtagListView extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    if (this.state.observer) {
+      this.state.observer.dispose();
+    }
+  }
+
   componentWillMount() {
-    return ddp.subscribe('suggested-hashtags', [this.props.category.type])
+    let ddp = this.ddp;
+
+    return ddp.subscribe({
+      pubName: 'suggested-hashtags',
+      params: [this.props.category.type]
+    })
     .then((res) => {
-      let hashtagObserver = ddp.collections.observe(() => {
+      let observer = ddp.collections.observe(() => {
         let hashtags = [];
         if (ddp.collections.hashtags) {
           hashtags = ddp.collections.hashtags.find({ type: this.props.category.type });
@@ -38,9 +48,9 @@ class HashtagListView extends React.Component {
         return hashtags;
       });
 
-      this.setState({hashtagObserver: hashtagObserver});
+      this.setState({observer: observer});
 
-      hashtagObserver.subscribe((results) => {
+      observer.subscribe((results) => {
         results.sort((x, y) => { 
           if (x.isMine === y.isMine) {
             return 0 
@@ -60,14 +70,20 @@ class HashtagListView extends React.Component {
   }
 
   _searchTag(text) {
-    ddp.call('hashtags/search', [text, this.props.category.type])
+    this.ddp.call({
+      methodName: 'hashtags/search',
+      params: [text, this.props.category.type]
+    })
     .then((tags) => {
       this.setState({ searchSuggestions: tags })
     })
   }
 
   _addSearchSuggestion(hashtag) {
-    ddp.call('me/hashtag/add', [hashtag.text, hashtag.type])
+    this.ddp.call({
+      methodName: 'me/hashtag/add',
+      params: [hashtag.text, hashtag.type]
+    })
     .then((tags) => {
       console.log(hashtag);
       // this.setState({ searchSuggestions: [] })
@@ -103,7 +119,7 @@ class HashtagListView extends React.Component {
     }
 
     let hashtags = this.state.hashtags.map((hashtag) => {
-      return <Hashtag enableTouch={true} hashtag={ hashtag } />
+      return <Hashtag ddp={this.ddp} enableTouch={true} hashtag={ hashtag } />
     });
 
     let searchSuggestions = this.state.searchSuggestions.map(this._renderSearchSuggestions.bind(this));
@@ -114,12 +130,6 @@ class HashtagListView extends React.Component {
           style={[SHEET.navTop, SHEET.innerContainer, { flex: 1 }]}
           cardOverride={{ padding: 0 }}
           hideSeparator={true} >
-
-          <SearchBar
-            style={{ height: 50, backgroundColor: COLORS.background }}
-            placeholder={'Search'}
-            hideBackground={true}
-            onChangeText={(text) => this._searchTag.bind(this)(text)} />
 
           <ScrollView
             style={[{ flex: 1 }]}
