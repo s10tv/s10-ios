@@ -2,21 +2,9 @@ let React = require('react-native');
 let {
   AppRegistry,
   View,
-  ScrollView,
-  Text,
   Image,
-  TouchableOpacity,
-  TouchableHighlight,
-  ActionSheetIOS,
-  Navigator,
   StyleSheet,
 } = React;
-
-let SHEET = require('./CommonStyles').SHEET;
-let HashtagCategory = require('./HashtagCategory');
-let Network = require('./Network')
-let Button = require('react-native-button');
-
 
 class HeaderBanner extends React.Component {
 

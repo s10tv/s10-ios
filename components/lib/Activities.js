@@ -16,8 +16,8 @@ let { width } = Dimensions.get('window');
 
 let Card = require('./Card').Card;
 let HeaderBanner = require('./HeaderBanner');
-let COLORS = require('./CommonStyles').COLORS;
-let SHEET = require('./CommonStyles').SHEET;
+let COLORS = require('../CommonStyles').COLORS;
+let SHEET = require('../CommonStyles').SHEET;
 
 class ActivityHeader extends React.Component {
   render() {
@@ -66,6 +66,11 @@ class Activity extends React.Component {
     let activity = this.props.activity;
     let me = this.props.me;
     let connectedProfiles = this.props.connectedProfiles;
+    let isHidden = this.props.activeProfile.id != activity.profileId;
+
+    if (isHidden) {
+      return null;
+    }
 
     var image = null;
     if (activity.image) {
@@ -140,15 +145,15 @@ class ActivityServiceIcon extends React.Component {
   render() {
     let source = null;
     if (this.props.profile) {
-      let sourceMap = this.props.profile.integrationName == this.props.activeProfile ? 
+      let sourceMap = this.props.profile.integrationName == this.props.activeProfile.integrationName ? 
         this.props.iconMapping :
         this.props.grayToIconMapping;
 
       source = { uri: sourceMap[this.props.profile.integrationName] };
     } else {
-      source = this.props.activeProfile === 'taylr' ? 
-        require('./img/ic-taylr-colored.png') :
-        require('./img/ic-taylr-gray.png');
+      source = this.props.activeProfile.integrationName === 'taylr' ? 
+        require('../img/ic-taylr-colored.png') :
+        require('../img/ic-taylr-gray.png');
     }
 
     return (
@@ -161,64 +166,20 @@ class ActivityServiceIcon extends React.Component {
             source={source} />
       </TouchableOpacity>
     )
-  } 
+  }
 }
 
 class Activities extends React.Component {
   constructor(props) {
     super(props);
-    this.ddp = props.ddp;
     this.state = {
-      activities: [],
-    }
+      activeProfile: { id: 'taylr', integrationName: 'taylr' }
+    };
   }
-
-  componentWillUnmount() {
-    if (this.state.subId) {
-      this.ddp.unsubscribe(this.state.subId);
-    }
-    
-    if (this.state.observer) {
-      this.state.observer.dispose();
-    }
-  }
-
-  componentWillMount() {
-    let ddp = this.ddp;
-
-    ddp.subscribe({ pubName: 'activities', params: [this.props.me._id] })
-    .then((subId) => {
-      this.setState({ subId: subId });
-
-      let observer = ddp.collections.observe(() => {
-        if (ddp.collections.activities) {
-          return ddp.collections.activities.find({});
-        }
-      })
-
-      this.setState({ observer: observer });
-
-      observer.subscribe((results) => {
-        if (results) {
-          results.sort((one, two) => {
-            return two.timestamp - one.timestamp;
-          })
-          this.setState({ activities: results });
-        }
-      })
-    })
- }
 
   _switchService(profile) {
-    let results = ddp.collections.activities.find({ profileId: profile.id });
-    results.sort((one, two) => {
-      return two.timestamp - one.timestamp;
-    });
-
     let newState = {
-      activities: results,
-      activeProfile: profile.integrationName,
-      displayTaylrInfo: false,
+      activeProfile: profile,
     };
 
     this.setState(newState);
@@ -226,18 +187,28 @@ class Activities extends React.Component {
 
   _switchToTaylr() {
     // clear activity cards
-    this.setState({ 
-      activities: [],
-      activeProfile: 'taylr',
-      displayTaylrInfo: true,
+    this.setState({
+      activeProfile: { id:'taylr', integrationName: 'taylr' },
     });
   }
 
-  render() {
-    if (!this.state.activities) {
-      return <Text>Loading ... </Text>
-    }
+  componentWillMount() {
+    let ddp = this.props.ddp;
+    if (this.props.loadActivities) {
+      ddp.subscribe({ pubName: 'activities', params: [this.props.me._id] })
+      .then(() => {
+        ddp.collections.observe(() => {
+          if (ddp.collections.activities) {
+            return ddp.collections.activities.find({ userId: this.props.me._id });
+          }
+        }).subscribe(activities => {
+          this.setState({ activities: activities });
+        }); 
+      })
+    } 
+  }
 
+  render() {
     // This is because on the fly grayscale is not ready in RN yet.
     let grayToIconMapping = {
       facebook: 'https://s10tv.blob.core.windows.net/s10tv-prod/ic-facebook-gray.png',
@@ -255,6 +226,10 @@ class Activities extends React.Component {
 
     let me = this.props.me;
 
+    if (!me) {
+      return <Text>Loading ... </Text>
+    }
+
     let connectedProfiles = {};
     let profiles = me.connectedProfiles.map(profile => {
       connectedProfiles[profile.id] = profile;
@@ -271,15 +246,29 @@ class Activities extends React.Component {
         grayToIconMapping={grayToIconMapping} />
     })
 
-    let activities = this.state.activities.map((activity) => {
+    var activityData = null;
+    if (this.props.activities) {
+      activityData = this.props.activities;
+    } else if (this.state.activities) {
+      activityData = this.state.activities;
+    } else {
+      activityData = [];
+    }
+
+    activityData.sort((one, two) => {
+      return two.timestamp - one.timestamp;
+    })
+
+    let activities = activityData.map((activity) => {
       return <Activity
         me={me}
         connectedProfiles={connectedProfiles}
+        activeProfile={this.state.activeProfile}
         activity={activity} /> 
     })
 
     let taylrInfo = null;
-    if (this.state.displayTaylrInfo) {
+    if (this.state.activeProfile.id == 'taylr') {
       taylrInfo = (
         <Card style={styles.card}>
           <Text style={[SHEET.smallHeading, SHEET.subTitle, SHEET.baseText]}>About Me</Text>
@@ -302,7 +291,7 @@ class Activities extends React.Component {
                 <ActivityServiceIcon 
                   onPress={this._switchToTaylr.bind(this)}
                   activeProfile={this.state.activeProfile}
-                  source={require('./img/ic-taylr-gray.png')} />
+                  source={require('../img/ic-taylr-gray.png')} />
                 {profiles}
             </ScrollView>
           </Card>

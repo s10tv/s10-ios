@@ -13,11 +13,11 @@ let {
   StyleSheet,
 } = React;
 
-let SHEET = require('./CommonStyles').SHEET;
-let HashtagCategory = require('./HashtagCategory');
+let SHEET = require('../CommonStyles').SHEET;
 let Network = require('./Network')
-let HeaderBanner = require('./HeaderBanner');
 let ContactUs = require('./ContactUs');
+let HeaderBanner = require('../lib/HeaderBanner');
+let HashtagCategory = require('../lib/HashtagCategory');
 let Button = require('react-native-button');
 
 class MeButton extends React.Component {
@@ -59,51 +59,11 @@ var buttonStyles = StyleSheet.create({
 
 class MeHeader extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.ddp = props.ddp;
-    this.state = {
-      integrations: props.me.connectedProfiles
-    }
-  }
-
-  componentWillMount() {
-    let ddp = this.ddp;
-
-    ddp.subscribe({ pubName: 'integrations' })
-    .then(() => {
-      let observer = ddp.collections.observe(() => {
-        if (ddp.collections.integrations) {
-          return ddp.collections.integrations.find({});
-        }
-      });
-
-      observer.subscribe((results) => {
-        results.sort((one, two) => {
-          oneLinked = one.status == 'linked'
-          twoLinked = two.status == 'linked'
-          if (oneLinked === twoLinked) {
-            return 0 
-          } else {
-            if (oneLinked) {
-              return -1
-            } else {
-              return 1;
-            }
-          }
-        })
-
-        this.setState({ integrations: results });
-      });
-    })
-  }
-
   render() {
     let me = this.props.me;
-    let serviceIcons = this.state.integrations.map((integration) => {
-      return integration.status == 'unlinked' ? null :
-        (<Image style={[SHEET.smallIcon, styles.serviceIcon]}
-          source={{ uri: integration.icon.url }} />);
+    let serviceIcons = me.connectedProfiles.map((profile) => {
+      return (<Image style={[SHEET.smallIcon, styles.serviceIcon]}
+          source={{ uri: profile.icon.url }} />);
     });
 
     return (
@@ -130,7 +90,6 @@ class MeHeader extends React.Component {
                 title: 'Edit Profile',
                 userId: me._id,
                 me: me,
-                integrations: this.state.integrations
               })}} />
           </View>
         </View>
@@ -140,46 +99,26 @@ class MeHeader extends React.Component {
 }
 
 class Me extends React.Component {
-  constructor(props: {}) {
-    super(props);
-    this.ddp = props.ddp;
-    this.state = {}
-  }
-
-  componentWillMount() {
-    let ddp = this.ddp;
-
-    return ddp.subscribe({ pubName: 'me' })
-    .then(() => {
-      let observer = ddp.collections.observe(() => {
-        if (ddp.collections.users) {
-          return ddp.collections.users.find({ _id: ddp.currentUserId });
-        }
-      });
-      observer.subscribe((results) => {
-        if (results.length == 1) {
-          this.setState({ me: results[0] });
-        }
-      });
-    })
-  }
-
   render() {
-    if (!this.state.me){
+    let ddp = this.props.ddp;
+    let me = this.props.me;
+
+    if (!me){
       return (<Text>Loading ...</Text>);
     } else {
-      let me = this.state.me;
-
       return (
         <View style={SHEET.container}>
           <ScrollView style={[SHEET.navTop, SHEET.bottomTile, { flex: 1 }]}>
             <HeaderBanner url={me.cover.url} height={170}>
-              <MeHeader navigator={this.props.navigator} ddp={this.ddp} me={me} />
+              <MeHeader navigator={this.props.navigator} ddp={ddp} me={me} />
             </HeaderBanner>
 
-            <Network navigator={this.props.navigator} ddp={this.ddp} />
+            <Network navigator={this.props.navigator} ddp={ddp} />
 
-            <HashtagCategory navigator={this.props.navigator} ddp={this.ddp} />
+            <HashtagCategory navigator={this.props.navigator}
+              categories={this.props.categories}
+              myTags={this.props.myTags}
+              ddp={this.ddp} />
 
             <ContactUs navigator={this.props.navigator} />
 

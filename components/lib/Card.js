@@ -7,7 +7,7 @@ let {
   StyleSheet
 } = React;
 
-let SHEET = require('./CommonStyles').SHEET;
+let SHEET = require('../CommonStyles').SHEET;
 
 class BaseCard extends React.Component {
   render() {

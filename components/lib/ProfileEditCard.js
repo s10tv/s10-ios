@@ -10,8 +10,8 @@ let {
 } = React;
 
 let SHEET = require('../CommonStyles').SHEET;
-let TappableCard = require('../Card').TappableCard;
-let Card = require('../Card').Card;
+let TappableCard = require('./Card').TappableCard;
+let Card = require('./Card').Card;
 
 class ProfileEditCard extends React.Component {
 

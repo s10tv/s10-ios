@@ -10,7 +10,7 @@ let {
 } = React;
 
 let SHEET = require('../CommonStyles').SHEET;
-let AlertOnPressButton = require('../AlertOnPressButton');
+let AlertOnPressButton = require('./AlertOnPressButton');
 
 class EditMyPhotoHeader {
 

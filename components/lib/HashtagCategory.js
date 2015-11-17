@@ -9,54 +9,13 @@ let {
   StyleSheet
 } = React;
 
+let SHEET = require('../CommonStyles').SHEET;
+
 let TappableCard = require('./Card').TappableCard;
 let SectionTitle = require('./SectionTitle');
 let Hashtag = require('./Hashtag');
-let SHEET = require('./CommonStyles').SHEET;
 
 class HashtagCategory extends React.Component {
-  constructor(props: {}) {
-    super(props);
-    this.ddp = props.ddp;
-    this.state = {
-      myTags: [],
-      categories: []
-    };
-  }
-
-  componentWillMount() {
-    let ddp = this.ddp;
-
-    return ddp.subscribe({ pubName: 'hashtag-categories' })
-    .then((res) => {
-      let categoryObserver = ddp.collections.observe(() => {
-        let categories = [];
-        if (ddp.collections.categories) {
-          categories = ddp.collections.categories.find({});
-        }
-        return categories;
-      });
-      categoryObserver.subscribe((results) => {
-        this.setState({ categories: results });
-      });
-    })
-    .then(() => {
-      return ddp.subscribe({ pubName: 'my-hashtags' })
-    })
-    .then((res) => {
-      let myHashtagObserver = ddp.collections.observe(() => {
-        let myTags = [];
-        if (ddp.collections.hashtags) {
-          myTags = ddp.collections.hashtags.find({ isMine: true });
-        }
-        return myTags;
-      });
-      myHashtagObserver.subscribe((results) => {
-        this.setState({ myTags: results });
-      });
-    })
-  }
-
   _handleCategoryTouch(category) {
     this.props.navigator.push({
       id: 'hashtag',
@@ -66,15 +25,15 @@ class HashtagCategory extends React.Component {
   }
 
   _renderItem(category) {
-    let myTagsRendered = this.state.myTags.filter(tag => {
+    let myTagsRendered = this.props.myTags.filter(tag => {
       return tag.type == category._id
     }).map(hashtag => {
-      return <Hashtag key={hashtag.value} ddp={this.ddp} enableTouch={false} hashtag={ hashtag } />
+      return <Hashtag key={hashtag.value} ddp={this.props.ddp} enableTouch={false} hashtag={ hashtag } />
     });
 
     let icon = myTagsRendered.length == 0 ?
-      <Image style={SHEET.icon} source={require('./img/ic-add.png')} /> :
-      <Image style={SHEET.icon} source={require('./img/ic-checkmark.png')} />
+      <Image style={SHEET.icon} source={require('../img/ic-add.png')} /> :
+      <Image style={SHEET.icon} source={require('../img/ic-checkmark.png')} />
 
     return (
       <TappableCard key={category.displayName} onPress={(event) => { return this._handleCategoryTouch.bind(this)(category)}}>
@@ -90,7 +49,11 @@ class HashtagCategory extends React.Component {
   }
 
   render() {
-    let rows = this.state.categories.map(category => {
+    if (!this.props.categories) {
+      return <Text>Loading</Text>
+    }
+
+    let rows = this.props.categories.map(category => {
       return this._renderItem.bind(this)(category)
     })
 

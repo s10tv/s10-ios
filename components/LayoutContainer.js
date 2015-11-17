@@ -14,18 +14,13 @@ let {
   StyleSheet,
 } = React;
 
-let commonStyles = require('./CommonStyles')
+let OnboardingNavigator = require('./onboarding/OnboardingNavigator');
+let MeNavigator = require('./me/MeNavigator');
+let DiscoverNavigator = require('./discover/DiscoverNavigator');
+
 let TSDDPClient = require('../lib/ddpclient');
-let Me = require('./Me');
-let MeEdit = require('./MeEdit');
-let Activities = require('./Activities');
-let HashtagCategory = require('./HashtagCategory');
-let HashtagListView = require('./HashtagListView');
-let LinkServiceView = require('./onboarding/LinkServiceView');
-let EditProfileScreen = require('./onboarding/EditProfileScreen');
-let Discover = require('./Discover');
+
 let SHEET = require('./CommonStyles').SHEET;
-let ContainerView = require('./ContainerView');
 
 class LayoutContainer extends React.Component {
 
@@ -36,20 +31,10 @@ class LayoutContainer extends React.Component {
     this.subs = {}
 
     this.state = {
+      needsOnboarding: true,
       modalVisible: false,
-      currentTab: 'me',
+      currentTab: 'discover',
     }
-  }
-
-  __subscribeAndObserve(collectionName) {
-    this.ddp.subscribe({ pubName: collectionName })
-    .then((subId) => {
-      let candidateObserver = ddp.collections.observe(() => {
-        if (ddp.collections[collectionName]) {
-          return ddp.collections[collectionName].find({});
-        }
-      });
-    })
   }
 
   componentWillMount() {
@@ -61,160 +46,156 @@ class LayoutContainer extends React.Component {
     }).then((res) => {
       this.setState(res);
 
-      // settings
-      /*
-      ddp.subscribe({ pubName: 'settings' })
-      ddp.subscribe({ pubName: 'me' })
-      ddp.subscribe({ pubName: 'integrations' })
-      ddp.subscribe({ pubName: 'candidate-discover' })
-      ddp.subscribe({ pubName: 'my-hashtags' })
-      ddp.subscribe({ pubName: 'hashtag-categories' })
-      ddp.subscribe({ pubName: 'activities', params: [this.ddp.currentUserId] })
-      */
+      this.ddp.subscribe({ pubName: 'me' })
+      .then(() => {
+        ddp.collections.observe(() => {
+          if (ddp.collections.users) {
+            return ddp.collections.users.findOne({ _id: ddp.currentUserId });
+          }
+        }).subscribe(currentUser => {
+          this.setState({ me: currentUser });
+        });
+
+        ddp.collections.observe(() => {
+          if (ddp.collections.users) {
+            return ddp.collections.users.find({});
+          }
+        }).subscribe(users => {
+          this.setState({ users: users });
+        });
+      });
+
+      this.ddp.subscribe({ pubName: 'settings' })
+      .then(() => {
+        ddp.collections.observe(() => {
+          if (ddp.collections.settings) {
+            return ddp.collections.settings.find({});
+          }
+        }).subscribe(settings => {
+          indexedSettings =  {};
+          settings.forEach((setting) => {
+            indexedSettings[setting._id] = setting;
+          });
+          this.setState({ settings: indexedSettings });
+        });
+      });
+
+      this.ddp.subscribe({ pubName: 'integrations' })
+      .then(() => {
+        ddp.collections.observe(() => {
+          if (ddp.collections.integrations) {
+            return ddp.collections.integrations.find({});
+          }
+        }).subscribe(integrations=> {
+          this.setState({ integrations: integrations });
+        });
+      });
+
+      this.ddp.subscribe({ pubName: 'hashtag-categories' })
+      .then(() => {
+        ddp.collections.observe(() => {
+          if (ddp.collections.categories) {
+            return ddp.collections.categories.find({});
+          }
+        }).subscribe(categories=> {
+          this.setState({ categories: categories });
+        });
+      });
+
+      this.ddp.subscribe({ pubName: 'my-hashtags' })
+      .then(() => {
+        ddp.collections.observe(() => {
+          if (ddp.collections.hashtags) {
+            return ddp.collections.hashtags.find({ isMine: true });
+          }
+        }).subscribe(myTags=> {
+          this.setState({ myTags: myTags });
+        });
+      });
+
+      this.ddp.subscribe({ pubName: 'candidate-discover' })
+      .then(() => {
+        ddp.collections.observe(() => {
+          if (ddp.collections.candidates) {
+            return ddp.collections.candidates.find({});
+          }
+        }).subscribe(candidates => {
+          let activeCandidates = candidates.filter((candidate) => {
+            return candidate.type == 'active'
+          })
+
+          if (activeCandidates.length > 0) {
+            this.setState({ candidate: activeCandidates[0] })
+          }
+
+          this.setState({ candidates: candidates });
+        });
+      });
+
+      this.ddp.subscribe({ pubName: 'activities', params:[ddp.currentUserId] })
+      .then(() => {
+        ddp.collections.observe(() => {
+          if (ddp.collections.activities) {
+            return ddp.collections.activities.find({ userId: ddp.currentUserId });
+          }
+        }).subscribe(activities => {
+          this.setState({ myActivities: activities });
+        });
+      }); 
     })
   }
 
-  _leftButton(route, navigator, index, navState) {
-    if (route.id) {
-      return (
-        <TouchableOpacity
-          onPress={() => navigator.pop()}
-          style={styles.navBarLeftButton}>
-          <Text style={[styles.navBarText, styles.navBarButtonText, SHEET.baseText]}>
-            Back
-          </Text>
-        </TouchableOpacity>
-      );
-    }
-  }
-
-  _rightButton(route, navigator, index, navState) {
-    return null;
-  }
-
-  _title (route, navigator, index, navState) {
-    return (
-      <Text style={[styles.navBarText, styles.navBarTitleText, SHEET.baseText]}>
-        {route.title}
-      </Text>
-    );
-  }
-
-  _onNavigationStateChange(nav, navState) {
-    if (navState.url.indexOf('taylr-dev://') != -1) {
-      return nav.pop();
-    }
-  }
-
-  renderScene(route, nav) {
-    switch (route.id) {
-      case 'hashtag':
-        return <HashtagListView
-          style={{ flex: 1 }} 
-          navigator={nav}
-          ddp={this.ddp}
-          category={route.category} />;
-      case 'servicelink':
-        return <WebView
-          style={styles.webView}
-          onNavigationStateChange={(navState) => this._onNavigationStateChange(nav, navState)}
-          startInLoadingState={true}
-          url={route.link} />;
-      case 'editprofile':
-        return <MeEdit navigator={nav} me={route.me} ddp={this.ddp} integrations={route.integrations} />
-      case 'viewprofile':
-        return <Activities navigator={nav} me={route.me} ddp={this.ddp} />
-      default:
-        return (
-          <EditProfileScreen navigator={nav} ddp={this.ddp} />
-        );
-    }
-  }
-
-  renderDiscoverScene(route, nav) {
-    switch (route.id) {
-      case 'viewprofile':
-        return <Activities navigator={nav} ddp={this.ddp} me={route.me} />
-      case 'sendMessage':
-        return <ContainerView sbName="Conversation" />
-      default:
-        return (
-          <Discover navigator={nav} ddp={this.ddp} 
-            candidate={this.state.candidate}
-            settings={this.state.settings} />
-        );
-    } 
-  }
-
   render() {
-    return (
-      <TabBarIOS>
-        <TabBarIOS.Item 
-          title="Me"
-          icon={require('./img/ic-me.png')}
-          onPress={() => {
-            this.setState({currentTab: 'me'});
-          }}
-          selected={this.state.currentTab == 'me'}>
-          <Navigator
-            itemWrapperStyle={styles.navWrap}
-            style={styles.nav}
-            renderScene={this.renderScene.bind(this)}
-            configureScene={(route) =>
-              Navigator.SceneConfigs.HorizontalSwipeJump}
-            initialRoute={{
-              title: 'Me',
-            }}
-            navigationBar={
-              <Navigator.NavigationBar
-                routeMapper={{
-                  LeftButton: this._leftButton.bind(this),
-                  RightButton: this._rightButton.bind(this),
-                  Title: this._title.bind(this)
-                }}
-                style={styles.navBar} />
-            }>
-          </Navigator>
-        </TabBarIOS.Item>
-        <TabBarIOS.Item 
-          title="Discover"
-          icon={require('./img/ic-compass.png')}
-          onPress={() => {
-            this.setState({currentTab: 'discover'});
-          }}
-          selected={this.state.currentTab == 'discover'}>
+    if (false) {
+      return (
+        <OnboardingNavigator ddp={this.ddp} />
+      )
+    } else {
+       return (
+          <TabBarIOS>
+            <TabBarIOS.Item 
+              title="Me"
+              icon={require('./img/ic-me.png')}
+              onPress={() => {
+                this.setState({currentTab: 'me'});
+              }}
+              selected={this.state.currentTab == 'me'}>
+              
+              <MeNavigator ddp={this.ddp}
+                me={this.state.me}
+                myActivities={this.state.myActivities}
+                categories={this.state.categories}
+                myTags={this.state.myTags}
+                integrations={this.state.integrations}/>
 
-          <Navigator
-            itemWrapperStyle={styles.navWrap}
-            style={styles.nav}
-            renderScene={this.renderDiscoverScene.bind(this)}
-            configureScene={(route) =>
-              Navigator.SceneConfigs.HorizontalSwipeJump}
-            initialRoute={{
-              title: 'Discover',
-            }}
-            navigationBar={
-              <Navigator.NavigationBar
-                routeMapper={{
-                  LeftButton: this._leftButton.bind(this),
-                  RightButton: this._rightButton.bind(this),
-                  Title: this._title.bind(this)
-                }}
-                style={styles.navBar} />
-            }>
-          </Navigator>
-        </TabBarIOS.Item>
-        <TabBarIOS.Item 
-          title="Chats"
-          icon={require('./img/ic-chats.png')}
-          onPress={() => {
-            this.setState({currentTab: 'chats'});
-          }}
-          selected={this.state.currentTab == 'chats'}>
-            <View />
-        </TabBarIOS.Item>
-      </TabBarIOS>
-    )
+            </TabBarIOS.Item>
+            <TabBarIOS.Item 
+              title="Discover"
+              icon={require('./img/ic-compass.png')}
+              onPress={() => {
+                this.setState({currentTab: 'discover'});
+              }}
+              selected={this.state.currentTab == 'discover'}>
+
+              <DiscoverNavigator ddp={this.ddp}
+                me={this.state.me}
+                candidate={this.state.candidate}
+                settings={this.state.settings}
+                users={this.state.users} />
+
+            </TabBarIOS.Item>
+            <TabBarIOS.Item 
+              title="Chats"
+              icon={require('./img/ic-chats.png')}
+              onPress={() => {
+                this.setState({currentTab: 'chats'});
+              }}
+              selected={this.state.currentTab == 'chats'}>
+                <View />
+            </TabBarIOS.Item>
+          </TabBarIOS>
+      )
+    }
   }
 }
 

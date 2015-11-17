@@ -10,9 +10,9 @@ let {
 } = React;
 
 let Mailer = require('NativeModules').RNMail;
-let SectionTitle = require('./SectionTitle');
-let TappableCard = require('./Card').TappableCard;
-let SHEET = require('./CommonStyles').SHEET;
+let SectionTitle = require('../lib/SectionTitle');
+let TappableCard = require('../lib/Card').TappableCard;
+let SHEET = require('../CommonStyles').SHEET;
 
 class ContactUs extends React.Component {
 

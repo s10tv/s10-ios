@@ -9,7 +9,7 @@ let {
   StyleSheet,
 } = React;
 
-let SHEET = require('./CommonStyles').SHEET;
+let SHEET = require('../CommonStyles').SHEET;
 let TappableCard = require('./Card').TappableCard;
 
 class ServiceTile extends React.Component {
@@ -26,8 +26,8 @@ class ServiceTile extends React.Component {
     let service = this.props.service;
     
     let icon = service.status == 'linked' ?
-      <Image style={[SHEET.icon]} source={require('./img/ic-checkmark.png')} /> :
-      <Image style={[SHEET.icon]} source={require('./img/ic-add.png')} />
+      <Image style={[SHEET.icon]} source={require('../img/ic-checkmark.png')} /> :
+      <Image style={[SHEET.icon]} source={require('../img/ic-add.png')} />
 
     let display = service.status == 'linked' ?
       <Text style={[styles.serviceId, SHEET.baseText]}>{service.username}</Text> : null;

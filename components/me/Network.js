@@ -8,9 +8,9 @@ let {
   StyleSheet,
 } = React;
 
-let SectionTitle = require('./SectionTitle');
-let Card = require('./Card').Card;
-let SHEET = require('./CommonStyles').SHEET;
+let SHEET = require('../CommonStyles').SHEET;
+let SectionTitle = require('../lib/SectionTitle');
+let Card = require('../lib/Card').Card;
 
 class Network extends React.Component {
   render() {
@@ -19,7 +19,7 @@ class Network extends React.Component {
         <SectionTitle title={'MY SCHOOL'} />
 
         <Card cardOverride={styles.networkCard}>
-          <Image source={require('./img/ic-ubc.png')} style={SHEET.icon} />
+          <Image source={require('../img/ic-ubc.png')} style={SHEET.icon} />
           <Text style={[styles.networkText, SHEET.baseText]}>University of British Columbia</Text>
         </Card>
       </View>

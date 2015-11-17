@@ -28,8 +28,9 @@ class LinkServiceView extends React.Component {
 
   componentWillMount() {
     let ddp = this.props.ddp;
+    let userReqired = this.props.userReqired || true;
 
-    ddp.subscribe({ pubName: 'integrations' })
+    ddp.subscribe({ pubName: 'integrations', userReqired: userReqired })
     .then(() => {
       ddp.collections.observe(() => {
         if (ddp.collections.integrations) {

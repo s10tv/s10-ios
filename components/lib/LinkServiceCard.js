@@ -6,7 +6,7 @@ let {
   StyleSheet,
 } = React;
 
-let ServiceTile = require('../ServiceTile');
+let ServiceTile = require('./ServiceTile');
 
 class LinkServiceCard extends React.Component {
 

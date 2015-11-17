@@ -8,8 +8,8 @@ let {
 } = React;
 
 let Button = require('react-native-button');
-let COLORS = require('./CommonStyles').COLORS;
-let SHEET = require('./CommonStyles').SHEET;
+let COLORS = require('../CommonStyles').COLORS;
+let SHEET = require('../CommonStyles').SHEET;
 
 class Hashtag extends React.Component {
 

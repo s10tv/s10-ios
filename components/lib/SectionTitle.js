@@ -7,7 +7,7 @@ let {
   StyleSheet,
 } = React;
 
-let SHEET = require('./CommonStyles').SHEET;
+let SHEET = require('../CommonStyles').SHEET;
 
 class SectionTitle extends React.Component {
   render() {

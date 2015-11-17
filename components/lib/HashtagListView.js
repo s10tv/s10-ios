@@ -10,8 +10,8 @@ let {
   ActivityIndicatorIOS,
 } = React;
 
-let SHEET = require('./CommonStyles').SHEET;
-let COLORS = require('./CommonStyles').COLORS;
+let SHEET = require('../CommonStyles').SHEET;
+let COLORS = require('../CommonStyles').COLORS;
 let Card = require('./Card').Card;
 let Hashtag = require('./Hashtag');
 
