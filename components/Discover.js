@@ -65,13 +65,11 @@ class Discover extends React.Component {
   componentWillMount() {
     let ddp = this.ddp;
 
-    console.log('aaa');
     Promise.all([
       ddp.subscribe({ pubName: 'candidate-discover'}),
       ddp.subscribe({ pubName: 'settings' })
     ])
     .then(() => {
-      console.log('subscribed');
       ddp.collections.observe(() => {
         if (ddp.collections.settings) {
           return ddp.collections.settings.findOne({ _id: 'nextMatchDate' });

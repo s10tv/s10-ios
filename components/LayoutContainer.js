@@ -21,6 +21,8 @@ let MeEdit = require('./MeEdit');
 let Activities = require('./Activities');
 let HashtagCategory = require('./HashtagCategory');
 let HashtagListView = require('./HashtagListView');
+let LinkServiceView = require('./onboarding/LinkServiceView');
+let EditProfileScreen = require('./onboarding/EditProfileScreen');
 let Discover = require('./Discover');
 let SHEET = require('./CommonStyles').SHEET;
 let ContainerView = require('./ContainerView');
@@ -35,7 +37,7 @@ class LayoutContainer extends React.Component {
 
     this.state = {
       modalVisible: false,
-      currentTab: 'discover',
+      currentTab: 'me',
     }
   }
 
@@ -124,7 +126,7 @@ class LayoutContainer extends React.Component {
         return <Activities navigator={nav} me={route.me} ddp={this.ddp} />
       default:
         return (
-          <Me navigator={nav} ddp={this.ddp} />
+          <EditProfileScreen navigator={nav} ddp={this.ddp} />
         );
     }
   }

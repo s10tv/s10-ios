@@ -24,7 +24,7 @@ class ServiceTile extends React.Component {
 
   render() {
     let service = this.props.service;
-
+    
     let icon = service.status == 'linked' ?
       <Image style={[SHEET.icon]} source={require('./img/ic-checkmark.png')} /> :
       <Image style={[SHEET.icon]} source={require('./img/ic-add.png')} />
