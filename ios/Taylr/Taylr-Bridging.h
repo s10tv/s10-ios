@@ -3,5 +3,5 @@
 //
 
 #import "MuteChecker.h"
-#import "Core.h"
+#import "NSLogger.h"
 #import <UXCam/UXCam.h>

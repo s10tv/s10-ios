@@ -1,5 +1,5 @@
 //
-//  Core.m
+//  NSLogger.m
 //  S10
 //
 //  Created by Tony Xiao on 6/17/15.
@@ -9,7 +9,7 @@
 #ifdef DEBUG
 #import <NSLogger/LoggerClient.h>
 #endif
-#import "Core.h"
+#import "NSLogger.h"
 
 @implementation NSLogger
 

@@ -17,7 +17,7 @@
 		EA26670B1BFA86880054C777 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2667071BFA86880054C777 /* AudioController.swift */; };
 		EA26670C1BFA86880054C777 /* MuteChecker.caf in Resources */ = {isa = PBXBuildFile; fileRef = EA2667081BFA86880054C777 /* MuteChecker.caf */; };
 		EA26670D1BFA86880054C777 /* MuteChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = EA26670A1BFA86880054C777 /* MuteChecker.m */; };
-		EA26675C1BFA909B0054C777 /* Core.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2667201BFA909B0054C777 /* Core.m */; };
+		EA26675C1BFA909B0054C777 /* NSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA2667201BFA909B0054C777 /* NSLogger.m */; };
 		EA26675D1BFA909B0054C777 /* LayerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2667231BFA909B0054C777 /* LayerExtensions.swift */; };
 		EA26675E1BFA909B0054C777 /* LayerHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2667241BFA909B0054C777 /* LayerHelpers.swift */; };
 		EA26675F1BFA909B0054C777 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2667261BFA909B0054C777 /* AsyncOperation.swift */; };
@@ -122,8 +122,8 @@
 		EA2667081BFA86880054C777 /* MuteChecker.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MuteChecker.caf; sourceTree = "<group>"; };
 		EA2667091BFA86880054C777 /* MuteChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MuteChecker.h; sourceTree = "<group>"; };
 		EA26670A1BFA86880054C777 /* MuteChecker.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MuteChecker.m; sourceTree = "<group>"; };
-		EA26671F1BFA909B0054C777 /* Core.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
-		EA2667201BFA909B0054C777 /* Core.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Core.m; sourceTree = "<group>"; };
+		EA26671F1BFA909B0054C777 /* NSLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSLogger.h; sourceTree = "<group>"; };
+		EA2667201BFA909B0054C777 /* NSLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSLogger.m; sourceTree = "<group>"; };
 		EA2667231BFA909B0054C777 /* LayerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerExtensions.swift; sourceTree = "<group>"; };
 		EA2667241BFA909B0054C777 /* LayerHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerHelpers.swift; sourceTree = "<group>"; };
 		EA2667261BFA909B0054C777 /* AsyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
@@ -289,8 +289,8 @@
 		EA26671E1BFA909B0054C777 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				EA26671F1BFA909B0054C777 /* Core.h */,
-				EA2667201BFA909B0054C777 /* Core.m */,
+				EA26671F1BFA909B0054C777 /* NSLogger.h */,
+				EA2667201BFA909B0054C777 /* NSLogger.m */,
 				EA2667211BFA909B0054C777 /* Data */,
 				EA2667251BFA909B0054C777 /* Foundation */,
 				EA2667321BFA909B0054C777 /* Networking */,
@@ -909,7 +909,7 @@
 				EA42D64D1BB7BE5600B07526 /* R.swift in Sources */,
 				EA42D6561BB7C3B400B07526 /* Globals.swift in Sources */,
 				EA42D6551BB7C35100B07526 /* AccountService.swift in Sources */,
-				EA26675C1BFA909B0054C777 /* Core.m in Sources */,
+				EA26675C1BFA909B0054C777 /* NSLogger.m in Sources */,
 				EA2667771BFA909B0054C777 /* UIKitBindings.swift in Sources */,
 				EA72AE451BD005CD0031D652 /* ChatHistoryViewController.swift in Sources */,
 				EA2667641BFA909B0054C777 /* ArrayProperty.swift in Sources */,
