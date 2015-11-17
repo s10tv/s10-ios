@@ -1074,7 +1074,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EA2667801BFA93BA0054C777 /* Pods.debug.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconDev;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_BUILD = 0;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1098,7 +1098,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EA2667811BFA93BA0054C777 /* Pods.release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = AppIconDev;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUNDLE_BUILD = 0;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
