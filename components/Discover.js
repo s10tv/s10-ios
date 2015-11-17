@@ -65,35 +65,41 @@ class Discover extends React.Component {
   componentWillMount() {
     let ddp = this.ddp;
 
-    return ddp.subscribe({ pubName: 'candidate-discover' })
+    console.log('aaa');
+    Promise.all([
+      ddp.subscribe({ pubName: 'candidate-discover'}),
+      ddp.subscribe({ pubName: 'settings' })
+    ])
     .then(() => {
-      return ddp.subscribe({ pubName: 'settings' })
-    })
-    .then(() => {
+      console.log('subscribed');
       ddp.collections.observe(() => {
         if (ddp.collections.settings) {
           return ddp.collections.settings.findOne({ _id: 'nextMatchDate' });
         }
       }).subscribe(result => {
-        let nextMatchDate = Math.floor(result.value.getTime() / 1000);
-        this.setState({ nextMatchDate: nextMatchDate });
 
-        let format = function(num) {
-          return ("0" + num).slice(-2);
+        // timer
+        if (result) {
+          let nextMatchDate = Math.floor(result.value.getTime() / 1000);
+          this.setState({ nextMatchDate: nextMatchDate });
+
+          let format = function(num) {
+            return ("0" + num).slice(-2);
+          }
+
+          let timerFunction = function() {
+            let now = Math.floor(new Date().getTime() / 1000);
+
+            let interval = Math.max(nextMatchDate - now, 0)
+            let hours = Math.floor(interval / 3600);
+            let minutes = Math.floor((interval - hours * 3600) / 60);
+            let seconds = Math.floor((interval - hours * 3600) - minutes * 60);
+
+            this.setState({ countdown: `${format(hours)}:${format(minutes)}:${format(seconds)}`});
+          }
+
+          this.setState({ timer: setInterval(timerFunction.bind(this), 1000) })
         }
-
-        let timerFunction = function() {
-          let now = Math.floor(new Date().getTime() / 1000);
-
-          let interval = Math.max(nextMatchDate - now, 0)
-          let hours = Math.floor(interval / 3600);
-          let minutes = Math.floor((interval - hours * 3600) / 60);
-          let seconds = Math.floor((interval - hours * 3600) - minutes * 60);
-
-          this.setState({ countdown: `${format(hours)}:${format(minutes)}:${format(seconds)}`});
-        }
-
-        this.setState({ timer: setInterval(timerFunction.bind(this), 1000) })
       })
 
       // listen for candidate publication
@@ -104,29 +110,31 @@ class Discover extends React.Component {
       });
 
       candidateObserver.subscribe((results) => {
-        this.setState({ 
-          candidates: results
-        });
-
-        let activeCandidates = this.state.candidates.filter(candidate => {
-          return candidate.type == 'active' 
-        });
-
-        if (activeCandidates.length > 0) {
-          let candidate = activeCandidates[0];
-          this.setState({
-            activeCandidate: candidate,
+        if (results) {
+          this.setState({ 
+            candidates: results
           });
 
-          let activeUser = ddp.collections.users.find({ _id: candidate.userId });
-          if (activeUser.length > 0) {
-            this.setState({ candidateUser: activeUser[0] })
+          let activeCandidates = results.filter(candidate => {
+            return candidate.type == 'active' 
+          });
+
+          if (activeCandidates.length > 0) {
+            let candidate = activeCandidates[0];
+            this.setState({
+              activeCandidate: candidate,
+            });
+
+            let activeUser = ddp.collections.users.find({ _id: candidate.userId });
+            if (activeUser.length > 0) {
+              this.setState({ candidateUser: activeUser[0] })
+            }
+          } else {
+            this.setState({
+              activeCandidate: undefined,
+              candidateUser: undefined,
+            });
           }
-        } else {
-          this.setState({
-            activeCandidate: undefined,
-            candidateUser: undefined,
-          });
         }
       });
 
@@ -155,6 +163,7 @@ class Discover extends React.Component {
   }
 
   render() {
+    console.log(this.state.activeCandidate);
     if (!this.state.activeCandidate || !this.state.candidateUser || !this.state.countdown){
       return (<Text>Loading ...</Text>);
     } else {

@@ -31,18 +31,44 @@ class LayoutContainer extends React.Component {
     super(props);
     this.ddp = new TSDDPClient();
 
+    this.subs = {}
+
     this.state = {
       modalVisible: false,
-      currentTab: 'me',
+      currentTab: 'discover',
     }
   }
 
+  __subscribeAndObserve(collectionName) {
+    this.ddp.subscribe({ pubName: collectionName })
+    .then((subId) => {
+      let candidateObserver = ddp.collections.observe(() => {
+        if (ddp.collections[collectionName]) {
+          return ddp.collections[collectionName].find({});
+        }
+      });
+    })
+  }
+
   componentWillMount() {
-    this.ddp.initialize('wss://s10-dev.herokuapp.com/websocket')
+    let ddp = this.ddp;
+
+    ddp.initialize('wss://s10-dev.herokuapp.com/websocket')
     .then(() => {
-      return this.ddp.loginWithToken('_xkXDdHVfM5fj80ciYOC0kVFjEi6ObwHvRq9cdfIBlJ'); 
+      return ddp.loginWithToken('ys_3fCYOsxO7TPDxa4tMfssWJ057al55JhnJKKfzPnW'); 
     }).then((res) => {
       this.setState(res);
+
+      // settings
+      /*
+      ddp.subscribe({ pubName: 'settings' })
+      ddp.subscribe({ pubName: 'me' })
+      ddp.subscribe({ pubName: 'integrations' })
+      ddp.subscribe({ pubName: 'candidate-discover' })
+      ddp.subscribe({ pubName: 'my-hashtags' })
+      ddp.subscribe({ pubName: 'hashtag-categories' })
+      ddp.subscribe({ pubName: 'activities', params: [this.ddp.currentUserId] })
+      */
     })
   }
 
@@ -111,7 +137,9 @@ class LayoutContainer extends React.Component {
         return <ContainerView sbName="Conversation" />
       default:
         return (
-          <Discover navigator={nav} ddp={this.ddp} />
+          <Discover navigator={nav} ddp={this.ddp} 
+            candidate={this.state.candidate}
+            settings={this.state.settings} />
         );
     } 
   }
