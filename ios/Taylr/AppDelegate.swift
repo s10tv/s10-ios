@@ -14,7 +14,6 @@ import Crashlytics
 import Ouralabs
 import LayerKit
 import SCRecorder
-import AVFoundation
 import React
 import NKRecorder
 
@@ -125,15 +124,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
 
         
         // Pre-heat the camera if we can
-//        Async.background {
-//            if AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo) == .Authorized {
-//                let recorder = SCRecorder.sharedRecorder()
-//                recorder.captureSessionPreset = AVCaptureSessionPreset640x480
-//                recorder.device = .Back
-//                recorder.keepMirroringOnWrite = true
-//                recorder.startRunning()
-//            }
-//        }
         VideoMakerViewController.preloadRecorderAsynchronously()
         return true
     }
