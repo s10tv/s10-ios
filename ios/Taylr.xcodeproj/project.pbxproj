@@ -53,7 +53,6 @@
 		EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
 		EA42D64B1BB7BE3600B07526 /* TaylrEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAD921C1ACF342C0014BA25 /* TaylrEnvironment.swift */; };
 		EA42D64D1BB7BE5600B07526 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA925C731AD99ED8008E9F41 /* R.swift */; };
-		EA42D64E1BB7BE5A00B07526 /* StyleKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3691AA26597003383BE /* StyleKit.swift */; };
 		EA42D64F1BB7BE5D00B07526 /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7AA3681AA26597003383BE /* SBConstants.swift */; };
 		EA42D6501BB7BE6100B07526 /* ResourceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95BBAC1B3930B000701F08 /* ResourceExtension.swift */; };
 		EA42D6531BB7C2C500B07526 /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FED441ADE5BC500FC6FCB /* AnalyticsService.swift */; };
@@ -169,7 +168,6 @@
 		EA72AE151BD005CD0031D652 /* ChatHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatHistoryViewController.swift; sourceTree = "<group>"; };
 		EA78C87F1B323E140016AB73 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Pods/PKHUD/PKHUD/Images.xcassets; sourceTree = "<group>"; };
 		EA7AA3681AA26597003383BE /* SBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstants.swift; sourceTree = "<group>"; };
-		EA7AA3691AA26597003383BE /* StyleKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StyleKit.swift; sourceTree = "<group>"; };
 		EA7FB08E1B5EF9D50052B394 /* Cabin-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Bold.ttf"; sourceTree = "<group>"; };
 		EA7FB08F1B5EF9D50052B394 /* Cabin-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-BoldItalic.ttf"; sourceTree = "<group>"; };
 		EA7FB0901B5EF9D50052B394 /* Cabin-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Italic.ttf"; sourceTree = "<group>"; };
@@ -231,7 +229,6 @@
 			isa = PBXGroup;
 			children = (
 				EA7AA3681AA26597003383BE /* SBConstants.swift */,
-				EA7AA3691AA26597003383BE /* StyleKit.swift */,
 				EA925C731AD99ED8008E9F41 /* R.swift */,
 			);
 			path = Generated;
@@ -875,7 +872,6 @@
 			files = (
 				EA2667711BFA909B0054C777 /* Context.swift in Sources */,
 				EA2667601BFA909B0054C777 /* FoundationExtension.swift in Sources */,
-				EA42D64E1BB7BE5A00B07526 /* StyleKit.swift in Sources */,
 				EA26676C1BFA909B0054C777 /* CurrentUser.swift in Sources */,
 				EA26675F1BFA909B0054C777 /* AsyncOperation.swift in Sources */,
 				EA2667781BFA909B0054C777 /* GeometryExtensions.swift in Sources */,
