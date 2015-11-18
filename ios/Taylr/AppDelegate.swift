@@ -7,8 +7,10 @@
 //
 
 import UIKit
-import NKRecorder
 import CocoaLumberjack
+import NKRecorder
+import FBSDKCoreKit
+
 
 var Analytics: AnalyticsService!
 
@@ -34,6 +36,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         
         application.registerForRemoteNotifications()
 //        Globals.layerService.connectAndKeepUserInSync()
+        
+        FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
         // Pre-heat the camera if we can
         VideoMakerViewController.preloadRecorderAsynchronously()
@@ -48,10 +52,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
 //        Analytics.track("AppClose")
 //    }
 //    
-//    func applicationDidBecomeActive(application: UIApplication) {
-//        application.applicationIconBadgeNumber = 0 // Clear notification first
-//    }
-//    
+    func applicationDidBecomeActive(application: UIApplication) {
+        application.applicationIconBadgeNumber = 0 // Clear notification first
+        FBSDKAppEvents.activateApp()
+    }
+//
 //    func applicationWillResignActive(application: UIApplication) {
 //        // For some reason this causes a deadlock, so let's not do it
 ////        SugarRecord.applicationWillResignActive()
@@ -61,10 +66,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
 ////        SugarRecord.applicationWillTerminate()
 //    }
 //    
-//    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-//        return false
-//    }
-//    
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
+    }
+//
 //    // MARK: - Push Handling
 //    
 //    func application(application: UIApplication, didRegisterUserNotificationSettings notificationSettings: UIUserNotificationSettings) {
