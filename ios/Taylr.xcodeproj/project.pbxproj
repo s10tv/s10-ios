@@ -72,6 +72,8 @@
 		EA197A6E1BFC4D2600DF7B58 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A321BFC4D2600DF7B58 /* Video.swift */; };
 		EA197A801BFCE09F00DF7B58 /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A7F1BFCE09F00DF7B58 /* AnalyticsService.swift */; };
 		EA197A821BFCE1A100DF7B58 /* TSAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = EA197A811BFCE1A100DF7B58 /* TSAnalytics.m */; };
+		EA197A841BFCEDB500DF7B58 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A831BFCEDB500DF7B58 /* AppDependencies.swift */; };
+		EA197A861BFCFC3800DF7B58 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A851BFCFC3800DF7B58 /* RootViewController.swift */; };
 		EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
 		EA78C8801B323E140016AB73 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA78C87F1B323E140016AB73 /* Images.xcassets */; };
 		EA7FB0941B5EF9D50052B394 /* Cabin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB08E1B5EF9D50052B394 /* Cabin-Bold.ttf */; };
@@ -175,6 +177,8 @@
 		EA197A321BFC4D2600DF7B58 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		EA197A7F1BFCE09F00DF7B58 /* AnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
 		EA197A811BFCE1A100DF7B58 /* TSAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSAnalytics.m; sourceTree = "<group>"; };
+		EA197A831BFCEDB500DF7B58 /* AppDependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
+		EA197A851BFCFC3800DF7B58 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		EA2667801BFA93BA0054C777 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EA2667811BFA93BA0054C777 /* Pods.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		EA78C87F1B323E140016AB73 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Pods/PKHUD/PKHUD/Images.xcassets; sourceTree = "<group>"; };
@@ -476,6 +480,8 @@
 				EA1979E61BFC4D2600DF7B58 /* Components */,
 				EA9F353D1A74CC6900E0C65D /* Supporting Files */,
 				EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */,
+				EA197A831BFCEDB500DF7B58 /* AppDependencies.swift */,
+				EA197A851BFCFC3800DF7B58 /* RootViewController.swift */,
 			);
 			path = Taylr;
 			sourceTree = "<group>";
@@ -745,11 +751,13 @@
 				EA197A391BFC4D2600DF7B58 /* ConversationViewController.swift in Sources */,
 				EA197A611BFC4D2600DF7B58 /* LayerService.swift in Sources */,
 				EA197A411BFC4D2600DF7B58 /* ConversationListViewController.swift in Sources */,
+				EA197A841BFCEDB500DF7B58 /* AppDependencies.swift in Sources */,
 				EA197A671BFC4D2600DF7B58 /* Context.swift in Sources */,
 				EA197A5B1BFC4D2600DF7B58 /* ProvisioningProfile.swift in Sources */,
 				EA197A3E1BFC4D2600DF7B58 /* VideoPlayerViewModel.swift in Sources */,
 				EA197A4A1BFC4D2600DF7B58 /* Foundation+RACSupport.swift in Sources */,
 				EA197A4F1BFC4D2600DF7B58 /* TwoWayBindings.swift in Sources */,
+				EA197A861BFCFC3800DF7B58 /* RootViewController.swift in Sources */,
 				EA197A601BFC4D2600DF7B58 /* LayerHelpers.swift in Sources */,
 				EA197A571BFC4D2600DF7B58 /* BaseViews.swift in Sources */,
 				EA197A631BFC4D2600DF7B58 /* NSLogger.m in Sources */,
