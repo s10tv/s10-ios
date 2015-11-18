@@ -66,12 +66,12 @@
 		EA197A681BFC4D2600DF7B58 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A2C1BFC4D2600DF7B58 /* CurrentUser.swift */; };
 		EA197A691BFC4D2600DF7B58 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A2D1BFC4D2600DF7B58 /* Formatters.swift */; };
 		EA197A6B1BFC4D2600DF7B58 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A2F1BFC4D2600DF7B58 /* Image.swift */; };
-		EA197A6C1BFC4D2600DF7B58 /* TaylrEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A301BFC4D2600DF7B58 /* TaylrEnvironment.swift */; };
 		EA197A6E1BFC4D2600DF7B58 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A321BFC4D2600DF7B58 /* Video.swift */; };
 		EA197A801BFCE09F00DF7B58 /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A7F1BFCE09F00DF7B58 /* AnalyticsService.swift */; };
 		EA197A821BFCE1A100DF7B58 /* TSAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = EA197A811BFCE1A100DF7B58 /* TSAnalytics.m */; };
 		EA197A841BFCEDB500DF7B58 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A831BFCEDB500DF7B58 /* AppDependencies.swift */; };
 		EA197A861BFCFC3800DF7B58 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A851BFCFC3800DF7B58 /* RootViewController.swift */; };
+		EA197A8D1BFCFF0F00DF7B58 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A8C1BFCFF0F00DF7B58 /* AppConfig.swift */; };
 		EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
 		EA78C8801B323E140016AB73 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA78C87F1B323E140016AB73 /* Images.xcassets */; };
 		EA7FB0941B5EF9D50052B394 /* Cabin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB08E1B5EF9D50052B394 /* Cabin-Bold.ttf */; };
@@ -169,12 +169,12 @@
 		EA197A2C1BFC4D2600DF7B58 /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		EA197A2D1BFC4D2600DF7B58 /* Formatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		EA197A2F1BFC4D2600DF7B58 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
-		EA197A301BFC4D2600DF7B58 /* TaylrEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaylrEnvironment.swift; sourceTree = "<group>"; };
 		EA197A321BFC4D2600DF7B58 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		EA197A7F1BFCE09F00DF7B58 /* AnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
 		EA197A811BFCE1A100DF7B58 /* TSAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSAnalytics.m; sourceTree = "<group>"; };
 		EA197A831BFCEDB500DF7B58 /* AppDependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
 		EA197A851BFCFC3800DF7B58 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		EA197A8C1BFCFF0F00DF7B58 /* AppConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		EA2667801BFA93BA0054C777 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EA2667811BFA93BA0054C777 /* Pods.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		EA78C87F1B323E140016AB73 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Pods/PKHUD/PKHUD/Images.xcassets; sourceTree = "<group>"; };
@@ -398,7 +398,6 @@
 			isa = PBXGroup;
 			children = (
 				EA197A2B1BFC4D2600DF7B58 /* Context.swift */,
-				EA197A301BFC4D2600DF7B58 /* TaylrEnvironment.swift */,
 				EA197A2C1BFC4D2600DF7B58 /* CurrentUser.swift */,
 				EA197A2D1BFC4D2600DF7B58 /* Formatters.swift */,
 				EA197A2F1BFC4D2600DF7B58 /* Image.swift */,
@@ -475,6 +474,7 @@
 				EA9F353D1A74CC6900E0C65D /* Supporting Files */,
 				EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */,
 				EA197A831BFCEDB500DF7B58 /* AppDependencies.swift */,
+				EA197A8C1BFCFF0F00DF7B58 /* AppConfig.swift */,
 				EA197A851BFCFC3800DF7B58 /* RootViewController.swift */,
 			);
 			path = Taylr;
@@ -755,7 +755,6 @@
 				EA197A601BFC4D2600DF7B58 /* LayerHelpers.swift in Sources */,
 				EA197A571BFC4D2600DF7B58 /* BaseViews.swift in Sources */,
 				EA197A631BFC4D2600DF7B58 /* NSLogger.m in Sources */,
-				EA197A6C1BFC4D2600DF7B58 /* TaylrEnvironment.swift in Sources */,
 				EA197A511BFC4D2600DF7B58 /* SwiftExtensions.swift in Sources */,
 				EA197A341BFC4D2600DF7B58 /* AudioController.swift in Sources */,
 				EA197A421BFC4D2600DF7B58 /* ConversationListViewModel.swift in Sources */,
@@ -774,6 +773,7 @@
 				EA197A681BFC4D2600DF7B58 /* CurrentUser.swift in Sources */,
 				EA197A4E1BFC4D2600DF7B58 /* PropertyExtensions.swift in Sources */,
 				EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */,
+				EA197A8D1BFCFF0F00DF7B58 /* AppConfig.swift in Sources */,
 				EA197A451BFC4D2600DF7B58 /* AnimationExtensions.swift in Sources */,
 				EA197A5C1BFC4D2600DF7B58 /* Segue.swift in Sources */,
 				EA197A561BFC4D2600DF7B58 /* AzureClient.swift in Sources */,

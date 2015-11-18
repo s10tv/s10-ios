@@ -15,7 +15,8 @@ import Ouralabs
 import LayerKit
 
 class AppDependencies : NSObject {
-    let env: TaylrEnvironment
+    let env: Environment
+    let config: AppConfig
     
     // Lazily initialized modules
     lazy private(set) var bridge: RCTBridge = {
@@ -23,18 +24,19 @@ class AppDependencies : NSObject {
     }()
     lazy private(set) var analytics: AnalyticsService = {
         let user = CurrentUser()
-        return AnalyticsService(env: self.env, currentUser: user)
+        return AnalyticsService(config: self.config, env: self.env, currentUser: user)
     }()
     lazy private(set) var layer: LayerService = {
-        return LayerService(layerAppID: self.env.layerURL, existingClient: nil)
+        return LayerService(layerAppID: self.config.layerURL, existingClient: nil)
     }()
     
     override init() {
-        env = TaylrEnvironment.configureFromEmbeddedProvisioningProfile()
+        env = Environment()
+        config = AppConfig(env: env)
         super.init()
         Fabric.with([Digits(), Crashlytics()])
         Crashlytics.sharedInstance().delegate = self
-        Ouralabs.initWithKey(env.ouralabsKey)
+        Ouralabs.initWithKey(config.ouralabsKey)
         Appearance.setupGlobalAppearances()
     }
 }

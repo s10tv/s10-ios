@@ -38,14 +38,21 @@ public class Environment {
         return .Production
     }
     
-    public init(provisioningProfile: ProvisioningProfile?) {
-        self.provisioningProfile = provisioningProfile
-    }
-    
-    public class func isRunningTestFlightBeta() -> Bool {
+    public var isRunningTestFlightBeta: Bool {
         if let fileName = NSBundle.mainBundle().appStoreReceiptURL?.lastPathComponent {
             return fileName == "sandboxReceipt"
         }
         return false
     }
+    
+    // MARK: - 
+    
+    public init(provisioningProfile: ProvisioningProfile?) {
+        self.provisioningProfile = provisioningProfile
+    }
+    
+    public convenience init() {
+        self.init(provisioningProfile: ProvisioningProfile.embeddedProfile())
+    }
+    
 }

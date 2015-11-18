@@ -13,7 +13,7 @@ import Amplitude_iOS
 import Mixpanel
 
 class AnalyticsService : NSObject {
-    private let env: TaylrEnvironment
+    private let env: Environment
     private let currentUser: CurrentUser
     private let segment: AnalyticsSwift.Analytics
     private let amplitude: Amplitude
@@ -21,17 +21,17 @@ class AnalyticsService : NSObject {
 
     private let cd = CompositeDisposable()
 
-    init(env: TaylrEnvironment, currentUser: CurrentUser) {
+    init(config: AppConfig, env: Environment, currentUser: CurrentUser) {
         self.env = env
         self.currentUser = currentUser
-        segment = AnalyticsSwift.Analytics.create(env.segmentWriteKey)
+        segment = AnalyticsSwift.Analytics.create(config.segmentWriteKey)
         amplitude = Amplitude.instance()
         amplitude.trackingSessionEvents = true
-        amplitude.initializeApiKey(env.amplitudeKey)
-        mixpanel = Mixpanel.sharedInstanceWithToken(env.mixpanelToken)
+        amplitude.initializeApiKey(config.amplitudeKey)
+        mixpanel = Mixpanel.sharedInstanceWithToken(config.mixpanelToken)
         super.init()
         if env.build != "0" {
-            UXCam.startWithKey(env.uxcamKey)
+            UXCam.startWithKey(config.uxcamKey)
         }
         
         cd += currentUser.userId.producer.startWithNext { [weak self] userId in
@@ -49,8 +49,8 @@ class AnalyticsService : NSObject {
                 }
             }
         }
-        setUserProperties(["TestFlightBeta": Environment.isRunningTestFlightBeta()])
-        setUserProperties(["Audience": env.audience.rawValue])
+        setUserProperties(["TestFlightBeta": env.isRunningTestFlightBeta])
+        setUserProperties(["Audience": config.audience.rawValue])
         
     }
 
