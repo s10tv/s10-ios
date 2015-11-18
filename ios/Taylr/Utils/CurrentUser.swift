@@ -16,15 +16,13 @@ public class CurrentUser {
     }
     
     // CurrentUser
-    let _userId: MutableProperty<String?>
     public let userId: PropertyOf<String?>
     public let firstName: PropertyOf<String?>
     public let lastName: PropertyOf<String?>
     public let gradYear: PropertyOf<String?>
     
     public init() {
-        _userId = MutableProperty(UD.meteorUserId.value)
-        userId = PropertyOf(_userId)
+        userId = PropertyOf(nil)
         firstName = PropertyOf(nil)
         lastName = PropertyOf(nil)
         gradYear = PropertyOf(nil)
