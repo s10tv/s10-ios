@@ -17,6 +17,7 @@ let {
 let OnboardingNavigator = require('./onboarding/OnboardingNavigator');
 let MeNavigator = require('./me/MeNavigator');
 let DiscoverNavigator = require('./discover/DiscoverNavigator');
+let Loader = require('./lib/Loader');
 
 let TSDDPClient = require('../lib/ddpclient');
 
@@ -150,7 +151,7 @@ class LayoutContainer extends React.Component {
 
   render() {
     if (!this.state.settings) {
-      return <Text>Loading ... </Text>
+      return <Loader />
     }
     let status = this.state.settings.accountStatus.value;
     if (status != 'active') {

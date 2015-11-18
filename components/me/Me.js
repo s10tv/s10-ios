@@ -19,6 +19,7 @@ let ContactUs = require('./ContactUs');
 let SectionTitle = require('../lib/SectionTitle');
 let HeaderBanner = require('../lib/HeaderBanner');
 let HashtagCategory = require('../lib/HashtagCategory');
+let Loader = require("../lib/Loader");
 let Button = require('react-native-button');
 
 class MeButton extends React.Component {
@@ -105,31 +106,38 @@ class Me extends React.Component {
     let me = this.props.me;
 
     if (!me){
-      return (<Text>Loading ...</Text>);
-    } else {
-      return (
-        <View style={SHEET.container}>
-          <ScrollView style={[SHEET.navTop, SHEET.bottomTile]}>
+      return <Loader />
+    }
+    return (
+      <View style={SHEET.container}>
+        <ScrollView style={[SHEET.navTop, SHEET.bottomTile]}>
+          <TouchableOpacity onPress={() => {
+              this.props.navigator.push({
+                id: 'viewprofile',
+                title: 'Profile',
+                me: me,
+              })
+            }}>
             <HeaderBanner url={me.cover.url} height={170}>
               <MeHeader navigator={this.props.navigator} ddp={ddp} me={me} />
             </HeaderBanner>
+          </TouchableOpacity>
 
-            <Network navigator={this.props.navigator} ddp={ddp} />
+          <Network navigator={this.props.navigator} ddp={ddp} />
 
-            <SectionTitle title={'MY HASHTAGS'} />
-            <HashtagCategory navigator={this.props.navigator}
-              style={SHEET.innerContainer}
-              categories={this.props.categories}
-              myTags={this.props.myTags}
-              ddp={this.ddp} />
+          <SectionTitle title={'MY HASHTAGS'} />
+          <HashtagCategory navigator={this.props.navigator}
+            style={SHEET.innerContainer}
+            categories={this.props.categories}
+            myTags={this.props.myTags}
+            ddp={this.ddp} />
 
-            <ContactUs navigator={this.props.navigator} />
+          <ContactUs navigator={this.props.navigator} />
 
-            <View style={SHEET.bottomTile} />
-          </ScrollView>
-        </View>
-      )
-    }
+          <View style={SHEET.bottomTile} />
+        </ScrollView>
+      </View>
+    )
   }
 }
 

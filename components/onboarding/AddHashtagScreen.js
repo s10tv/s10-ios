@@ -11,13 +11,14 @@ let {
 let SHEET = require('../CommonStyles').SHEET;
 let COLORS = require('../CommonStyles').COLORS;
 let HashtagCategory = require('../lib/HashtagCategory');
+let Loader = require('../lib/Loader');
 
 class AddHashtagScreen extends React.Component {
 
   render() {
     let me = this.props.me;
     if (!me) {
-      return <Text>Loading</Text>
+      return <Loader />
     }
 
     return (

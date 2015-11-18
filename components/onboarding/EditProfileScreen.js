@@ -12,13 +12,14 @@ let SHEET = require('../CommonStyles').SHEET;
 let COLORS = require('../CommonStyles').COLORS;
 let ProfileEditCard = require('../lib/ProfileEditCard');
 let EditMyPhotoHeader = require('../lib/EditMyPhotoHeader');
+let Loader = require('../lib/Loader');
 
 class EditProfileScreen extends React.Component {
 
   render() {
     let me = this.props.me;
     if (!me) {
-      return <Text>Loading</Text>
+      return <Loader />
     }
 
     return (

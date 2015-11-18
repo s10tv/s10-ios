@@ -14,6 +14,7 @@ let SHEET = require('../CommonStyles').SHEET;
 let COLORS = require('../CommonStyles').COLORS;
 let Card = require('./Card').Card;
 let Hashtag = require('./Hashtag');
+let Loader = require('./Loader');
 
 class HashtagListView extends React.Component {
   constructor(props: {}) {
@@ -64,7 +65,6 @@ class HashtagListView extends React.Component {
         });
 
         this.setState({ hashtags: results });
-        this.setState({ loading: false });
       });
     });
   }
@@ -102,20 +102,9 @@ class HashtagListView extends React.Component {
     )
   }
 
-  _renderLoadingView() {
-    return (
-      <View style={styles.loadingView}>
-        <ActivityIndicatorIOS
-          size="large"
-          animating={true}
-          style={styles.spinner} />
-      </View>
-    )
-  }
-
   render() {
-    if (this.state.loading) {
-      return this._renderLoadingView()
+    if (this.state.hashtags.length == 0) {
+      return <Loader />
     }
 
     let hashtags = this.state.hashtags.map((hashtag) => {
@@ -149,10 +138,6 @@ class HashtagListView extends React.Component {
 }
 
 var styles = StyleSheet.create({
-  loadingView: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
   hashtagContentContainerStyle: {
     flexDirection: 'row',
     flexWrap: 'wrap',

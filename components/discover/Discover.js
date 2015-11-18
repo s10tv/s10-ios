@@ -21,6 +21,7 @@ let SHEET = require('../CommonStyles').SHEET;
 let COLORS = require('../CommonStyles').COLORS;
 let HeaderBanner = require('../lib/HeaderBanner');
 let Card = require('../lib/Card').Card;
+let Loader = require('../lib/Loader');
 
 class IconTextRow extends React.Component {
   render() {
@@ -106,7 +107,7 @@ class Discover extends React.Component {
     let settings = this.props.settings;
 
     if (!candidate || !settings) {
-      return <Text>Loading ...</Text>;
+      return <Loader />;
     }
 
     let candidateUsers = this.props.users.filter((user) => {
@@ -114,7 +115,7 @@ class Discover extends React.Component {
     });
 
     if (candidateUsers.length == 0) {
-      return (<Text>Loading ...</Text>); 
+      return <Loader />;
     }
 
     let candidateUser = candidateUsers[0];

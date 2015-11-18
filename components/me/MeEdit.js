@@ -15,14 +15,11 @@ let {
 } = React;
 
 let SHEET = require('../CommonStyles').SHEET;
-let TappableCard = require('../lib/Card').TappableCard;
-let Card = require('../lib/Card').Card;
 let EditMyPhotoHeader = require('../lib/EditMyPhotoHeader');
 let SectionTitle = require('../lib/SectionTitle');
-let ServiceTile = require('../lib/ServiceTile');
 let ProfileEditCard = require('../lib/ProfileEditCard');
 let LinkServiceCard = require('../lib/LinkServiceCard');
-let AlertOnPressButton = require('../lib/AlertOnPressButton');
+let Loader = require('../lib/Loader');
 
 class MeEdit extends React.Component {
 
@@ -31,7 +28,7 @@ class MeEdit extends React.Component {
     let integrations = this.props.integrations;
 
     if (!me || !integrations){
-      return (<Text>Loading ...</Text>);
+      return <Loader />
     } 
 
     return (

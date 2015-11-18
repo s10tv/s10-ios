@@ -13,6 +13,7 @@ let SHEET = require('../CommonStyles').SHEET;
 
 let TappableCard = require('./Card').TappableCard;
 let Hashtag = require('./Hashtag');
+let Loader = require('./Loader');
 
 class HashtagCategory extends React.Component {
   _handleCategoryTouch(category) {
@@ -49,7 +50,7 @@ class HashtagCategory extends React.Component {
 
   render() {
     if (!this.props.categories) {
-      return <Text>Loading</Text>
+      return <Loader />;
     }
 
     let rows = this.props.categories.map(category => {
@@ -57,7 +58,7 @@ class HashtagCategory extends React.Component {
     })
 
     return (
-      <View>
+      <View style={this.props.style}>
         {rows}
       </View>
     );

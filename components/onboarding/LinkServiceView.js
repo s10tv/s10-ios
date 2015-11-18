@@ -11,13 +11,14 @@ let {
 let SHEET = require('../CommonStyles').SHEET;
 let COLORS = require('../CommonStyles').COLORS;
 let LinkServiceCard = require('../lib/LinkServiceCard');
+let Loader = require('../lib/Loader');
 
 class LinkServiceView extends React.Component {
   render() {
     let integrations = this.props.integrations;
 
     if (!integrations) {
-      return <Text>Loading link service ... </Text>
+      return <Loader />
     }
 
     return (

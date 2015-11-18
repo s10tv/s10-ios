@@ -18,6 +18,7 @@ let Card = require('./Card').Card;
 let HeaderBanner = require('./HeaderBanner');
 let COLORS = require('../CommonStyles').COLORS;
 let SHEET = require('../CommonStyles').SHEET;
+let Loader = require('../lib/Loader');
 
 class ActivityHeader extends React.Component {
   render() {
@@ -227,7 +228,7 @@ class Activities extends React.Component {
     let me = this.props.me;
 
     if (!me) {
-      return <Text>Loading ... </Text>
+      return <Loader />
     }
 
     let connectedProfiles = {};
