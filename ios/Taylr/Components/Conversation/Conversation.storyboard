@@ -44,7 +44,7 @@
                         <viewControllerLayoutGuide type="top" id="gsD-Mk-vrT"/>
                         <viewControllerLayoutGuide type="bottom" id="4Sv-ge-O9s"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="3qq-bH-WYT">
+                    <view key="view" contentMode="scaleToFill" id="3qq-bH-WYT" customClass="ConversationView" customModule="Taylr" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -171,7 +171,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m34-xv-ufL" userLabel="Scroll Down Hint">
                             <rect key="frame" x="221" y="159" width="159" height="30"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="scroll down to text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="80" translatesAutoresizingMaskIntoConstraints="NO" id="lfn-tw-Cq9">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="scroll down to text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="80" translatesAutoresizingMaskIntoConstraints="NO" id="lfn-tw-Cq9">
                                     <rect key="frame" x="34" y="7" width="110" height="18"/>
                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
