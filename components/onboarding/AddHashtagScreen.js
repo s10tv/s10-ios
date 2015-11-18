@@ -23,7 +23,10 @@ class AddHashtagScreen extends React.Component {
 
     return (
       <View style={SHEET.container}>
-        <ScrollView style={[SHEET.innerContainer, SHEET.navTop]}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          style={[SHEET.innerContainer, SHEET.navTop]}>
+          
           <View style={styles.instructions}>
             <Text style={[styles.instructionItem, SHEET.baseText]}>
               Tell us a bit more about yourself, so we can find the

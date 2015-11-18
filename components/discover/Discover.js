@@ -126,7 +126,10 @@ class Discover extends React.Component {
 
     return (
       <View style={SHEET.container}>
-        <ScrollView style={[SHEET.navTop, { flex: 1 }]}>
+        <ScrollView
+          style={[SHEET.navTop, { flex: 1 }]}
+          showsVerticalScrollIndicator={false}>
+          
           <Card style={[{marginTop: 10, paddingBottom: 10}, SHEET.innerContainer]}
             cardOverride={{ padding: 0 }}>
 

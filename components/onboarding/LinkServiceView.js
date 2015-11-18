@@ -23,7 +23,10 @@ class LinkServiceView extends React.Component {
 
     return (
       <View style={SHEET.container}>
-        <ScrollView style={[SHEET.innerContainer, SHEET.navTop]}>
+        <ScrollView 
+          showsVerticalScrollIndicator={false} 
+          style={[SHEET.innerContainer, SHEET.navTop]}>
+          
           <View style={styles.instructions}>
             <Text style={[styles.instructionItem, SHEET.baseText]}>
               Control how you want to appear to your classmates. 

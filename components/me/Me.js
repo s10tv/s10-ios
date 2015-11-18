@@ -110,7 +110,10 @@ class Me extends React.Component {
     }
     return (
       <View style={SHEET.container}>
-        <ScrollView style={[SHEET.navTop, SHEET.bottomTile]}>
+        <ScrollView 
+          showsVerticalScrollIndicator={false}
+          style={[SHEET.navTop, SHEET.bottomTile]}>
+          
           <TouchableOpacity onPress={() => {
               this.props.navigator.push({
                 id: 'viewprofile',

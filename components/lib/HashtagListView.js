@@ -121,12 +121,13 @@ class HashtagListView extends React.Component {
           hideSeparator={true} >
 
           <ScrollView
+            showsVerticalScrollIndicator={false}
             style={[{ flex: 1 }]}
             contentContainerStyle={styles.hashtagContentContainerStyle}>
               {hashtags}
 
-              <View style={SHEET.bottomTile} />
           </ScrollView>
+          <View style={SHEET.bottomTile} />
 
         </Card>
         <View style={styles.bottomSheet}>

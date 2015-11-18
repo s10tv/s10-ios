@@ -24,7 +24,10 @@ class EditProfileScreen extends React.Component {
 
     return (
       <View style={SHEET.container}>
-        <ScrollView style={[SHEET.navTop]}>
+        <ScrollView
+          showsVerticalScrollIndicator={false}
+          style={[SHEET.navTop]}>
+          
           <EditMyPhotoHeader me={me} height={200} />
 
           <ProfileEditCard me={me}

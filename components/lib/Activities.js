@@ -280,7 +280,7 @@ class Activities extends React.Component {
 
     return (
       <View style={SHEET.container}>
-        <ScrollView style={[SHEET.navTop, SHEET.bottomTilex]}>
+        <ScrollView style={[SHEET.navTop]} showsVerticalScrollIndicator={false}>
           <ActivityHeader me={me} />
 
           <Card
@@ -288,6 +288,7 @@ class Activities extends React.Component {
             cardOverride={{ padding: 10 }}
             hideSeparator={true}>
             <ScrollView
+              showsHorizontalScrollIndicator={false}
               horizontal={true}>
                 <ActivityServiceIcon 
                   onPress={this._switchToTaylr.bind(this)}
