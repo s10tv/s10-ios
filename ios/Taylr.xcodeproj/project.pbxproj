@@ -75,6 +75,8 @@
 		EA197A981BFD0FB900DF7B58 /* TSLayerService.m in Sources */ = {isa = PBXBuildFile; fileRef = EA197A971BFD0FB900DF7B58 /* TSLayerService.m */; };
 		EA197A9A1BFD116200DF7B58 /* ConversationViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A991BFD116200DF7B58 /* ConversationViewManager.swift */; };
 		EA197A9C1BFD166B00DF7B58 /* ConversationListViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A9B1BFD166B00DF7B58 /* ConversationListViewManager.swift */; };
+		EA3713921BFD288700E51980 /* libRCTFBSDKCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3713911BFD288700E51980 /* libRCTFBSDKCore.a */; };
+		EA3713AA1BFD28EF00E51980 /* libRCTFBSDKLogin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3713A91BFD28EF00E51980 /* libRCTFBSDKLogin.a */; };
 		EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
 		EA78C8801B323E140016AB73 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA78C87F1B323E140016AB73 /* Images.xcassets */; };
 		EA7FB0941B5EF9D50052B394 /* Cabin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB08E1B5EF9D50052B394 /* Cabin-Bold.ttf */; };
@@ -89,6 +91,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		EA2421621BFD283D00AF16C4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA24215C1BFD282C00AF16C4 /* RCTFBSDKCore.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RCTFBSDKCore;
+		};
 		EA2666F61BFA62230054C777 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = F94FA0CC1BF427D20050D6F1 /* RNMail.xcodeproj */;
@@ -109,6 +118,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RNSearchBar;
+		};
+		EA3713A01BFD28D700E51980 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = EA3713931BFD28C200E51980 /* RCTFBSDKLogin.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 134814201AA4EA6300B7C361;
+			remoteInfo = RCTFBSDKLogin;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -181,8 +197,12 @@
 		EA197A971BFD0FB900DF7B58 /* TSLayerService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSLayerService.m; sourceTree = "<group>"; };
 		EA197A991BFD116200DF7B58 /* ConversationViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewManager.swift; sourceTree = "<group>"; };
 		EA197A9B1BFD166B00DF7B58 /* ConversationListViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListViewManager.swift; sourceTree = "<group>"; };
+		EA24215C1BFD282C00AF16C4 /* RCTFBSDKCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDKCore.xcodeproj; path = "../node_modules/react-native-fbsdkcore/RCTFBSDKCore.xcodeproj"; sourceTree = "<group>"; };
 		EA2667801BFA93BA0054C777 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EA2667811BFA93BA0054C777 /* Pods.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		EA3713911BFD288700E51980 /* libRCTFBSDKCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRCTFBSDKCore.a; path = "../../node_modules/react-native-fbsdkcore/build/Debug-iphoneos/libRCTFBSDKCore.a"; sourceTree = "<group>"; };
+		EA3713931BFD28C200E51980 /* RCTFBSDKLogin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDKLogin.xcodeproj; path = "../node_modules/react-native-fbsdklogin/RCTFBSDKLogin.xcodeproj"; sourceTree = "<group>"; };
+		EA3713A91BFD28EF00E51980 /* libRCTFBSDKLogin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRCTFBSDKLogin.a; path = "../../node_modules/react-native-fbsdklogin/build/Debug-iphoneos/libRCTFBSDKLogin.a"; sourceTree = "<group>"; };
 		EA78C87F1B323E140016AB73 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Pods/PKHUD/PKHUD/Images.xcassets; sourceTree = "<group>"; };
 		EA7FB08E1B5EF9D50052B394 /* Cabin-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Bold.ttf"; sourceTree = "<group>"; };
 		EA7FB08F1B5EF9D50052B394 /* Cabin-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -211,6 +231,8 @@
 			files = (
 				EA19793F1BFAAB7C00DF7B58 /* libRNMail.a in Frameworks */,
 				EA1979401BFAAB7C00DF7B58 /* libRNSearchBar.a in Frameworks */,
+				EA3713921BFD288700E51980 /* libRCTFBSDKCore.a in Frameworks */,
+				EA3713AA1BFD28EF00E51980 /* libRCTFBSDKLogin.a in Frameworks */,
 				4AD00249A11FDFD015C379A5 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -221,9 +243,13 @@
 		2C9F4D1EF3D7E4C4FBB0AEDB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EA24215C1BFD282C00AF16C4 /* RCTFBSDKCore.xcodeproj */,
+				EA3713931BFD28C200E51980 /* RCTFBSDKLogin.xcodeproj */,
 				F94FA0CC1BF427D20050D6F1 /* RNMail.xcodeproj */,
 				EAA5DAC31BF2A98000BF6B1E /* RNSearchBar.xcodeproj */,
 				7AA6C7823A20B63EB451A15E /* Pods.framework */,
+				EA3713A91BFD28EF00E51980 /* libRCTFBSDKLogin.a */,
+				EA3713911BFD288700E51980 /* libRCTFBSDKCore.a */,
 			);
 			name = Frameworks;
 			path = Includes;
@@ -424,6 +450,14 @@
 			path = ContainerView;
 			sourceTree = "<group>";
 		};
+		EA24215F1BFD283D00AF16C4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EA2421631BFD283D00AF16C4 /* libRCTFBSDKCore.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		EA2666F21BFA62230054C777 /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -437,6 +471,14 @@
 			isa = PBXGroup;
 			children = (
 				EA2666FE1BFA622F0054C777 /* libRNSearchBar.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EA37139D1BFD28D700E51980 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EA3713A11BFD28D700E51980 /* libRCTFBSDKLogin.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -597,6 +639,14 @@
 			projectDirPath = "";
 			projectReferences = (
 				{
+					ProductGroup = EA24215F1BFD283D00AF16C4 /* Products */;
+					ProjectRef = EA24215C1BFD282C00AF16C4 /* RCTFBSDKCore.xcodeproj */;
+				},
+				{
+					ProductGroup = EA37139D1BFD28D700E51980 /* Products */;
+					ProjectRef = EA3713931BFD28C200E51980 /* RCTFBSDKLogin.xcodeproj */;
+				},
+				{
 					ProductGroup = EA2666F21BFA62230054C777 /* Products */;
 					ProjectRef = F94FA0CC1BF427D20050D6F1 /* RNMail.xcodeproj */;
 				},
@@ -613,6 +663,13 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
+		EA2421631BFD283D00AF16C4 /* libRCTFBSDKCore.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTFBSDKCore.a;
+			remoteRef = EA2421621BFD283D00AF16C4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		EA2666F71BFA62230054C777 /* libRNMail.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -632,6 +689,13 @@
 			fileType = archive.ar;
 			path = libRNSearchBar.a;
 			remoteRef = EA2666FD1BFA622F0054C777 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		EA3713A11BFD28D700E51980 /* libRCTFBSDKLogin.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRCTFBSDKLogin.a;
+			remoteRef = EA3713A01BFD28D700E51980 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */
