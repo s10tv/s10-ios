@@ -19,8 +19,6 @@ class Hashtag extends React.Component {
   }
 
   _onHashtagTouch(hashtag) {
-    console.log(hashtag);
-    
     if (!hashtag.isMine) {
       return this.ddp.call({
         methodName: 'me/hashtag/add',
@@ -41,7 +39,7 @@ class Hashtag extends React.Component {
     let hashtagButton = (
       <View 
         style={[styles.hashtag, { backgroundColor : hashtagColor }]}>
-        <Text style={[styles.hashtagText, SHEET.baseText]}>#{hashtag.text}</Text>
+        <Text style={[styles.hashtagText, SHEET.baseText]}>{hashtag.text}</Text>
       </View>
     );
 

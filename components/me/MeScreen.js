@@ -101,7 +101,7 @@ class Me extends React.Component {
     let ddp = this.props.ddp;
     let me = this.props.me;
 
-    if (!me){
+    if (!me) {
       return <Loader />
     }
     return (

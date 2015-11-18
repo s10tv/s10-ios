@@ -21,7 +21,7 @@ class MeEdit extends React.Component {
     let me = this.props.me;
     let integrations = this.props.integrations;
 
-    if (!me || !integrations){
+    if (!me || !integrations) {
       return <Loader />
     } 
 
