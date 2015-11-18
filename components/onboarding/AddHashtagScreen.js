@@ -10,14 +10,14 @@ let {
 
 let SHEET = require('../CommonStyles').SHEET;
 let COLORS = require('../CommonStyles').COLORS;
-let LinkServiceCard = require('../lib/LinkServiceCard');
+let HashtagCategory = require('../lib/HashtagCategory');
 
-class LinkServiceView extends React.Component {
+class AddHashtagScreen extends React.Component {
+
   render() {
-    let integrations = this.props.integrations;
-
-    if (!integrations) {
-      return <Text>Loading link service ... </Text>
+    let me = this.props.me;
+    if (!me) {
+      return <Text>Loading</Text>
     }
 
     return (
@@ -25,14 +25,18 @@ class LinkServiceView extends React.Component {
         <ScrollView style={[SHEET.innerContainer, SHEET.navTop]}>
           <View style={styles.instructions}>
             <Text style={[styles.instructionItem, SHEET.baseText]}>
-              Control how you want to appear to your classmates. 
-            </Text>
-            <Text style={[styles.instructionItem, SHEET.baseText]}>
-              We use data from networks to tell story about you and help match 
-              you with interesting people.
+              Tell us a bit more about yourself, so we can find the
+              best introductions for you. 
             </Text>
           </View>
-          <LinkServiceCard navigator={this.props.navigator} services={integrations} />
+
+          <HashtagCategory
+            categories={this.props.categories}
+            myTags={this.props.myTags}
+            ddp={this.props.ddp}
+            navigator={this.props.navigator} />
+
+          <View style={SHEET.bottomTile} />
         </ScrollView>
       </View>
     ) 
@@ -48,4 +52,4 @@ var styles = StyleSheet.create({
   }
 });
 
-module.exports = LinkServiceView;
+module.exports = AddHashtagScreen;

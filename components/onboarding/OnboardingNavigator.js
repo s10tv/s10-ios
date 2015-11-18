@@ -7,34 +7,16 @@ let {
   Text,
   TouchableOpacity,
   StyleSheet,
+  WebView,
 } = React;
 
+let BaseTaylrNavigator = require('../lib/BaseTaylrNavigator');
 let SHEET = require('../CommonStyles').SHEET;
 let LinkServiceView = require('./LinkServiceView');
-
-class BaseTaylrNavigator extends React.Component {
-
-  _title(route, navigator, index, navState) {
-    return (
-      <Text style={[styles.navBarText, styles.navBarTitleText, SHEET.baseText]}>
-        {route.title}
-      </Text>
-    );
-  }
-
-  _onNavigationStateChange(nav, navState) {
-    if (navState.url.indexOf('taylr-dev://') != -1) {
-      return nav.pop();
-    }
-  }
-}
+let EditProfileScreen = require('./EditProfileScreen');
+let AddHashtagScreen = require('./AddHashtagScreen');
 
 class OnboardingNavigator extends BaseTaylrNavigator {
-
-  constructor(props) {
-    super(props);
-    this.ddp = props.ddp;
-  }
 
   _leftButton(route, navigator, index, navState) {
     if (route.id) {
@@ -42,7 +24,7 @@ class OnboardingNavigator extends BaseTaylrNavigator {
         <TouchableOpacity
           onPress={() => navigator.pop()}
           style={styles.navBarLeftButton}>
-          <Text style={[styles.navBarText, styles.navBarButtonText, SHEET.baseText]}>
+          <Text style={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText]}>
             Back
           </Text>
         </TouchableOpacity>
@@ -51,28 +33,83 @@ class OnboardingNavigator extends BaseTaylrNavigator {
   }
 
   _rightButton(route, navigator, index, navState) {
-    switch(route.id) {
-      default:
-        return (
-          <TouchableOpacity
-            onPress={() => navigator.pop()}
-            style={styles.navBarRightButton}>
-            <Text style={[styles.navBarText, styles.navBarButtonText, SHEET.baseText]}>
-              Next
-            </Text>
-          </TouchableOpacity>
-        );
+    let me = this.props.me;
+    let myTags = this.props.myTags;
+
+    var buttonText = 'Next';
+    var action = null;
+    switch (route.id) {
+      case 'linkservices':
+        if (me && me.connectedProfiles.length > 0) {
+          action = () => {
+            navigator.push({
+              id: 'editprofile',
+              title: 'Edit Profile',
+              me: me,
+            })
+          }
+        }
+        break;
+
+      case 'editprofile':
+        if (me && me.firstName && me.lastName && me.hometown && me.major &&
+            me.gradYear && me.about) {
+          action = () => {
+            navigator.push({
+              id: 'hashtags',
+              title: 'Add Hashtags',
+              me: me,
+            })
+          }
+        }
+        break;
+
+      case 'hashtags':
+        buttonText = 'Done';
+        if (myTags && myTags.length > 0) {
+          action = () => {
+            this.props.ddp.call({ methodName: 'confirmRegistration' });
+          }
+        }
+        break;
     }
 
-    return null;
+    return (
+      <TouchableOpacity
+        onPress={action}
+        style={styles.navBarRightButton}>
+        <Text style={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText]}>
+          {buttonText} 
+        </Text>
+      </TouchableOpacity>
+    );
   }
 
   renderScene(route, nav) {
     switch (route.id) {
-      default:
+      case 'linkservices':
         return (
-          <LinkServiceView navigator={nav} ddp={this.ddp} />
+          <LinkServiceView navigator={nav}
+            integrations={this.props.integrations}
+            ddp={this.props.ddp} />
         );
+
+      case 'editprofile':
+        return <EditProfileScreen me={this.props.me} />
+
+      case 'servicelink':
+        return <WebView
+          style={styles.webView}
+          onNavigationStateChange={(navState) => this._onNavigationStateChange(nav, navState)}
+          startInLoadingState={true}
+          url={route.link} />;
+
+      case 'hashtags':
+        return <AddHashtagScreen navigator={nav}
+          me={this.props.me}
+          categories={this.props.categories}
+          myTags={this.props.myTags}
+          ddp={this.props.ddp} />
     } 
   }
 
@@ -85,7 +122,8 @@ class OnboardingNavigator extends BaseTaylrNavigator {
         configureScene={(route) =>
           Navigator.SceneConfigs.HorizontalSwipeJump}
         initialRoute={{
-          title: 'Me',
+          id: 'linkservices',
+          title: 'Link Services',
         }}
         navigationBar={
           <Navigator.NavigationBar

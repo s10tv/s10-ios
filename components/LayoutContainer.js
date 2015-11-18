@@ -33,7 +33,7 @@ class LayoutContainer extends React.Component {
     this.state = {
       needsOnboarding: true,
       modalVisible: false,
-      currentTab: 'discover',
+      currentTab: 'me',
     }
   }
 
@@ -45,6 +45,21 @@ class LayoutContainer extends React.Component {
       return ddp.loginWithToken('ys_3fCYOsxO7TPDxa4tMfssWJ057al55JhnJKKfzPnW'); 
     }).then((res) => {
       this.setState(res);
+
+      this.ddp.subscribe({ pubName: 'settings' })
+      .then(() => {
+        ddp.collections.observe(() => {
+          if (ddp.collections.settings) {
+            return ddp.collections.settings.find({});
+          }
+        }).subscribe(settings => {
+          indexedSettings =  {};
+          settings.forEach((setting) => {
+            indexedSettings[setting._id] = setting;
+          });
+          this.setState({ settings: indexedSettings });
+        });
+      });
 
       this.ddp.subscribe({ pubName: 'me' })
       .then(() => {
@@ -65,21 +80,6 @@ class LayoutContainer extends React.Component {
         });
       });
 
-      this.ddp.subscribe({ pubName: 'settings' })
-      .then(() => {
-        ddp.collections.observe(() => {
-          if (ddp.collections.settings) {
-            return ddp.collections.settings.find({});
-          }
-        }).subscribe(settings => {
-          indexedSettings =  {};
-          settings.forEach((setting) => {
-            indexedSettings[setting._id] = setting;
-          });
-          this.setState({ settings: indexedSettings });
-        });
-      });
-
       this.ddp.subscribe({ pubName: 'integrations' })
       .then(() => {
         ddp.collections.observe(() => {
@@ -87,6 +87,9 @@ class LayoutContainer extends React.Component {
             return ddp.collections.integrations.find({});
           }
         }).subscribe(integrations=> {
+          integrations.sort((one, two) => {
+            return one.status == 'linked' ? -1 : 1;
+          })
           this.setState({ integrations: integrations });
         });
       });
@@ -146,10 +149,17 @@ class LayoutContainer extends React.Component {
   }
 
   render() {
-    if (false) {
-      return (
-        <OnboardingNavigator ddp={this.ddp} />
-      )
+    if (!this.state.settings) {
+      return <Text>Loading ... </Text>
+    }
+    let status = this.state.settings.accountStatus.value;
+    if (status != 'active') {
+      return <OnboardingNavigator
+        me={this.state.me} 
+        integrations={this.state.integrations}
+        categories={this.state.categories}
+        myTags={this.state.myTags}
+        ddp={this.ddp} />
     } else {
        return (
           <TabBarIOS>

@@ -79,4 +79,25 @@ exports.SHEET = StyleSheet.create({
     backgroundColor: BACKGROUND_COLOR,
     height: 1
   },
+  navBarLeftButton: {
+    paddingLeft: 10,
+  },
+  navBarRightButton: {
+    flex: 1,
+    flexDirection: 'row',
+    height: 64,
+    alignItems: 'center',
+    paddingRight: 10,
+  },
+  navBarTitleText: {
+    fontSize: 20,
+    color:  'white',
+    fontWeight: '500',
+    marginVertical: 9,
+  },
+  navBarText: {
+    color: 'white',
+    fontSize: 16,
+    marginVertical: 10,
+  },
 });

@@ -12,7 +12,6 @@ let {
 let SHEET = require('../CommonStyles').SHEET;
 
 let TappableCard = require('./Card').TappableCard;
-let SectionTitle = require('./SectionTitle');
 let Hashtag = require('./Hashtag');
 
 class HashtagCategory extends React.Component {
@@ -58,8 +57,7 @@ class HashtagCategory extends React.Component {
     })
 
     return (
-      <View style={SHEET.innerContainer}>
-        <SectionTitle title={'MY HASHTAGS'} />
+      <View>
         {rows}
       </View>
     );

@@ -15,37 +15,18 @@ let EditMyPhotoHeader = require('../lib/EditMyPhotoHeader');
 
 class EditProfileScreen extends React.Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
-  componentWillMount() {
-    let ddp = this.props.ddp;
-
-    ddp.subscribe({ pubName: 'me' })
-    .then(() => {
-      ddp.collections.observe(() => {
-        if (ddp.collections.users) {
-          return ddp.collections.users.findOne({ _id: ddp.currentUserId });
-        }
-      }).subscribe(currentUser => {
-        this.setState({ me: currentUser })
-      })
-    })
-  }
-
   render() {
-    if (!this.state.me) {
+    let me = this.props.me;
+    if (!me) {
       return <Text>Loading</Text>
     }
 
     return (
       <View style={SHEET.container}>
         <ScrollView style={[SHEET.navTop]}>
-          <EditMyPhotoHeader me={this.state.me} height={200} />
+          <EditMyPhotoHeader me={me} height={200} />
 
-          <ProfileEditCard me={this.state.me}
+          <ProfileEditCard me={me}
             style={SHEET.innerContainer}
             ddp={this.props.ddp} />
 

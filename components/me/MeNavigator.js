@@ -9,13 +9,14 @@ let {
   StyleSheet,
 } = React;
 
+let BaseTaylrNavigator = require('../lib/BaseTaylrNavigator');
 let SHEET = require('../CommonStyles').SHEET;
 let Me = require('./Me');
 let MeEdit = require('./MeEdit');
 let Activities = require('../lib/Activities');
 let HashtagListView =require('../lib/HashtagListView');
 
-class MeNavigator extends React.Component {
+class MeNavigator extends BaseTaylrNavigator {
   constructor(props) {
     super(props);
     this.ddp = props.ddp;
@@ -26,8 +27,8 @@ class MeNavigator extends React.Component {
       return (
         <TouchableOpacity
           onPress={() => navigator.pop()}
-          style={styles.navBarLeftButton}>
-          <Text style={[styles.navBarText, styles.navBarButtonText, SHEET.baseText]}>
+          style={SHEET.navBarLeftButton}>
+          <Text style={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText]}>
             Back
           </Text>
         </TouchableOpacity>
@@ -37,20 +38,6 @@ class MeNavigator extends React.Component {
 
   _rightButton(route, navigator, index, navState) {
     return null;
-  }
-
-  _title(route, navigator, index, navState) {
-    return (
-      <Text style={[styles.navBarText, styles.navBarTitleText, SHEET.baseText]}>
-        {route.title}
-      </Text>
-    );
-  }
-
-  _onNavigationStateChange(nav, navState) {
-    if (navState.url.indexOf('taylr-dev://') != -1) {
-      return nav.pop();
-    }
   }
 
   renderScene(route, nav) {
@@ -127,27 +114,6 @@ var styles = StyleSheet.create({
   },
   navBar: {
     backgroundColor: '#64369C',
-  },
-  navBarTitleText: {
-    fontSize: 20,
-    color:  'white',
-    fontWeight: '500',
-    marginVertical: 9,
-  },
-  navBarText: {
-    color: 'white',
-    fontSize: 16,
-    marginVertical: 10,
-  },
-  navBarLeftButton: {
-    paddingLeft: 10,
-  },
-  navBarRightButton: {
-    flex: 1,
-    flexDirection: 'row',
-    height: 64,
-    alignItems: 'center',
-    paddingRight: 10,
   },
 });
 

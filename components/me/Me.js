@@ -16,6 +16,7 @@ let {
 let SHEET = require('../CommonStyles').SHEET;
 let Network = require('./Network')
 let ContactUs = require('./ContactUs');
+let SectionTitle = require('../lib/SectionTitle');
 let HeaderBanner = require('../lib/HeaderBanner');
 let HashtagCategory = require('../lib/HashtagCategory');
 let Button = require('react-native-button');
@@ -108,14 +109,16 @@ class Me extends React.Component {
     } else {
       return (
         <View style={SHEET.container}>
-          <ScrollView style={[SHEET.navTop, SHEET.bottomTile, { flex: 1 }]}>
+          <ScrollView style={[SHEET.navTop, SHEET.bottomTile]}>
             <HeaderBanner url={me.cover.url} height={170}>
               <MeHeader navigator={this.props.navigator} ddp={ddp} me={me} />
             </HeaderBanner>
 
             <Network navigator={this.props.navigator} ddp={ddp} />
 
+            <SectionTitle title={'MY HASHTAGS'} />
             <HashtagCategory navigator={this.props.navigator}
+              style={SHEET.innerContainer}
               categories={this.props.categories}
               myTags={this.props.myTags}
               ddp={this.ddp} />
