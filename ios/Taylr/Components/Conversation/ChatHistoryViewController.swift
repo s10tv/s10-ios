@@ -21,6 +21,7 @@ class ChatHistoryViewController : ATLConversationViewController {
     var vm: ConversationViewModel! {
         didSet { conversation = vm.conversation }
     }
+    var ctx: Context!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,7 +89,7 @@ extension ConversationViewModel : ATLConversationViewControllerDataSource {
     }
     
     public func conversationViewController(conversationViewController: ATLConversationViewController!, attributedStringForDisplayOfRecipientStatus recipientStatus: [NSObject : AnyObject]!) -> NSAttributedString! {
-        return Formatters.attributedStringForDisplayOfRecipientStatus(recipientStatus, ctx: MainContext)
+        return Formatters.attributedStringForDisplayOfRecipientStatus(recipientStatus, ctx: ctx)
     }
     
 }

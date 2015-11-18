@@ -13,7 +13,7 @@ import Atlas
 class ConversationListViewController : ATLConversationListViewController {
     
     var selectedConversation: LYRConversation?
-    let vm = ConversationListViewModel(MainContext)
+    var vm: ConversationListViewModel!
     
     override func viewDidLoad() {
         displaysAvatarItem = true
@@ -25,8 +25,10 @@ class ConversationListViewController : ATLConversationListViewController {
         // self.title also changes navigationItem.title
         title = nil
         navigationItem.title = "Connections"
-        
-        layerClient = MainContext.layer.layerClient
+
+        // TODO: FIX ME FOR REAL
+        fatalError("layerClient is not set")
+//        layerClient = MainContext.layer.layerClient
         dataSource = vm
         delegate = self
         

@@ -55,7 +55,8 @@ class ConversationViewController : UIViewController {
         videoPlayer.delegate = self
         
         chatHistory = sb.instantiateViewControllerWithIdentifier("ChatHistory") as! ChatHistoryViewController
-        chatHistory.layerClient = MainContext.layer.layerClient
+        fatalError("Need to set layerClient")
+//        chatHistory.layerClient = // MainContext.layer.layerClient
         chatHistory.marksMessagesAsRead = false
         chatHistory.vm = vm
         chatHistory.delegate = self

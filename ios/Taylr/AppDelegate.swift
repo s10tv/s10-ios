@@ -9,8 +9,6 @@
 import UIKit
 import NKRecorder
 
-// Shorthand services because they are used all over the place
-var MainContext: Context!
 var Analytics: AnalyticsService!
 
 @UIApplicationMain
@@ -22,7 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
     
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         Analytics = dependencies.analytics
-        MainContext = Context(layer: dependencies.layer)
         
         Log.info("App Launched")
         Analytics.track("AppOpen")
