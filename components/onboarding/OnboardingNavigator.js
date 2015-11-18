@@ -131,8 +131,10 @@ class OnboardingNavigator extends BaseTaylrNavigator {
         itemWrapperStyle={styles.navWrap}
         style={styles.nav}
         renderScene={this.renderScene.bind(this)}
-        configureScene={(route) =>
-          Navigator.SceneConfigs.HorizontalSwipeJump}
+        configureScene={(route) => ({
+          ...Navigator.SceneConfigs.HorizontalSwipeJump,
+          gestures: {}, // or null
+        })}
         initialRoute={{
           id: 'linkservices',
           title: 'Link Services',

@@ -1,5 +1,4 @@
 let React = require('react-native');
-let TaylrAPI = require('react-native').NativeModules.TaylrAPI;
 
 let {
   AppRegistry,
@@ -18,6 +17,7 @@ let Card = require('./Card').Card;
 let HeaderBanner = require('./HeaderBanner');
 let COLORS = require('../CommonStyles').COLORS;
 let SHEET = require('../CommonStyles').SHEET;
+let IconTextRow = require('../lib/IconTextRow');
 let Loader = require('../lib/Loader');
 
 class ActivityHeader extends React.Component {
@@ -88,6 +88,15 @@ class Activity extends React.Component {
       )
     }
 
+    var text = null;
+    if (activity.text) {
+      text = (
+        <View style={styles.activityElement}>
+          <Text style={SHEET.baseText}>{activity.text}</Text>
+        </View>
+      )
+    }
+
     var source = null;
     var header = null;
     let profile = connectedProfiles[activity.profileId]
@@ -125,9 +134,7 @@ class Activity extends React.Component {
           {header}
           {image}
           {caption}
-          <View style={styles.activityElement}>
-            <Text style={SHEET.baseText}>{activity.text}</Text>
-          </View>
+          {text} 
           {source}
       </Card>
     )
@@ -268,13 +275,65 @@ class Activities extends React.Component {
         activity={activity} /> 
     })
 
-    let taylrInfo = null;
+    let infoCard = null;
     if (this.state.activeProfile.id == 'taylr') {
-      taylrInfo = (
+      infoCard = (
         <Card style={styles.card}>
-          <Text style={[SHEET.smallHeading, SHEET.subTitle, SHEET.baseText]}>About Me</Text>
-          <Text>{me.about}</Text>
+          <View style={{ marginBottom: 10 }}>
+            <IconTextRow
+              style={{ paddingVertical: 5 }}
+              icon={require('../img/ic-mortar.png')}
+              text={me.major} />
+            <IconTextRow
+              style={{ paddingVertical: 5 }}
+              icon={require('../img/ic-house.png')}
+              text={me.hometown} />
+          </View>
+          <View style={SHEET.separator} />
+
+          <View style={{ marginTop: 10 }}>
+            <Text style={[SHEET.smallHeading, SHEET.subTitle, SHEET.baseText]}>About Me</Text>
+            <Text>{me.about}</Text>
+          </View>
         </Card> 
+      ) 
+    } else {
+      profile = connectedProfiles[this.state.activeProfile.id]
+      console.log(profile);
+
+      attributes = null
+      if (profile.attributes) {
+        attributes = profile.attributes.map((attribute) => {
+          return (
+            <View style={styles.attributeBox}>
+              <Text style={[SHEET.baseText, styles.attributeText]}>{attribute.value}</Text>
+              <Text style={[SHEET.baseText, styles.attributeText]}>{attribute.label}</Text>
+            </View>
+          )
+        });
+      }
+
+      infoCard = (
+        <Card style={styles.card}>
+          <View style={styles.horizontal}>
+            <Image style={styles.infoAvatar} source={{ uri: profile.avatar.url }} />
+            <View style={{flex: 1, left: 10, top: 5}}>
+              <Text style={[SHEET.baseText, SHEET.smallHeading]}>{ `${me.firstName} ${ me.lastName}`}</Text>
+              <Text style={[SHEET.baseText, SHEET.subTitle]}>{ profile.displayName }</Text>
+            </View>
+            <TouchableOpacity style={[styles.openButton]}
+              onPress={() => this.props.navigator.push({
+                id: 'openwebview',
+                url: profile.url,
+              })}>
+                <Text style={[{fontSize: 18, color: COLORS.white }, SHEET.baseText]}>Open</Text>
+            </TouchableOpacity>
+          </View>
+          <View style={SHEET.separator} />
+          <ScrollView horizontal={true} style={{ marginHorizontal: 10 }}>
+            { attributes }
+          </ScrollView>
+        </Card>
       ) 
     }
 
@@ -299,7 +358,7 @@ class Activities extends React.Component {
           </Card>
 
           <View style={SHEET.innerContainer}>
-            { taylrInfo }
+            { infoCard }
             { activities }
             <View style={SHEET.bottomTile} />
           </View>
@@ -339,6 +398,37 @@ var styles = StyleSheet.create({
   card: {
     flex: 1, 
     marginTop: 8,
+  },
+  horizontal: {
+    flex: 1,
+    flexDirection: 'row',
+    paddingBottom: 10,
+  },
+  infoAvatar: {
+    width: 64,
+    height: 64,
+    borderRadius: 32,
+  },
+  openButton: {
+    marginTop: 10,
+    width: 60,
+    height: 36,
+    borderRadius: 3,
+    paddingBottom: 3,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#327BEE',
+  },
+  attributeBox: {
+    marginHorizontal: 15,
+    paddingHorizontal: 10,
+    paddingTop: 10,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  attributeText: {
+    fontSize: 20,
+    color: COLORS.attributes,
   },
   caption: {
     marginTop: 10,

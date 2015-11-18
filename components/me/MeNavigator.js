@@ -6,6 +6,7 @@ let {
   Navigator,
   Text,
   TouchableOpacity,
+  WebView,
   StyleSheet,
 } = React;
 
@@ -42,6 +43,19 @@ class MeNavigator extends BaseTaylrNavigator {
 
   renderScene(route, nav) {
     switch (route.id) {
+      case 'viewme':
+        return (
+          <MeScreen me={this.props.me} 
+            categories={this.props.categories}
+            myTags={this.props.myTags}
+            navigator={nav}
+            ddp={this.props.ddp} />
+        );
+      case 'editme':
+        return <MeEditScreen navigator={nav}
+          ddp={this.props.ddp} 
+          me={this.props.me}
+          integrations={this.props.integrations} />
       case 'hashtag':
         return <HashtagListView
           style={{ flex: 1 }} 
@@ -55,24 +69,17 @@ class MeNavigator extends BaseTaylrNavigator {
           onNavigationStateChange={(navState) => this._onNavigationStateChange(nav, navState)}
           startInLoadingState={true}
           url={route.link} />;
-      case 'editprofile':
-        return <MeEditScreen navigator={nav}
-          ddp={this.props.ddp} 
+      case 'viewactivities':
+        return <Activities
+          navigator={nav} 
           me={this.props.me}
-          integrations={this.props.integrations} />
-      case 'viewprofile':
-        return <Activities navigator={nav} 
-          me={route.me}
           activities={this.props.myActivities}
           ddp={this.props.ddp} />
-      default:
-        return (
-          <MeScreen me={this.props.me} 
-            categories={this.props.categories}
-            myTags={this.props.myTags}
-            navigator={nav}
-            ddp={this.props.ddp} />
-        );
+      case 'openwebview':
+        return <WebView
+          style={styles.webView}
+          startInLoadingState={true}
+          url={route.url} />;
     }
   }
 
@@ -82,9 +89,12 @@ class MeNavigator extends BaseTaylrNavigator {
         itemWrapperStyle={styles.navWrap}
         style={styles.nav}
         renderScene={this.renderScene.bind(this)}
-        configureScene={(route) =>
-          Navigator.SceneConfigs.HorizontalSwipeJump}
+        configureScene={(route) => ({
+          ...Navigator.SceneConfigs.HorizontalSwipeJump,
+          gestures: {}, // or null
+        })}
         initialRoute={{
+          id: 'viewme',
           title: 'Me',
         }}
         navigationBar={

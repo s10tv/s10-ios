@@ -62,8 +62,10 @@ class DiscoverNavigator extends BaseTaylrNavigator {
         itemWrapperStyle={styles.navWrap}
         style={styles.nav}
         renderScene={this.renderDiscoverScene.bind(this)}
-        configureScene={(route) =>
-          Navigator.SceneConfigs.HorizontalSwipeJump}
+        configureScene={(route) => ({
+          ...Navigator.SceneConfigs.HorizontalSwipeJump,
+          gestures: {}, // or null
+        })}
         initialRoute={{
           title: 'Discover',
         }}

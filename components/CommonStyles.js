@@ -9,6 +9,7 @@ let TAYLR_COLOR = '#64369C';
 let MESSGE_BUTTON_COLOR = '#62339D';
 let EMPTY_HASHTAG = '#cccccc';
 let SUBTITLE_COLOR = '#666666';
+let ATTRIBUTE_COLOR = '#999999';
 
 exports.COLORS = {
   background: BACKGROUND_COLOR,
@@ -16,6 +17,7 @@ exports.COLORS = {
   button: MESSGE_BUTTON_COLOR,
   emptyHashtag: EMPTY_HASHTAG,
   subtitle: SUBTITLE_COLOR,
+  attributes: ATTRIBUTE_COLOR,
   white: 'white'
 };
 

@@ -77,14 +77,14 @@ class MeHeader extends React.Component {
           <View style={styles.headerContentLineItem}>
             <MeButton text={'View'} onPress={() => {
                this.props.navigator.push({
-                id: 'viewprofile',
+                id: 'viewactivities',
                 title: 'Profile',
                 me: me,
               })
             }} />
             <MeButton style={{ left:10 }} text={'Edit'} onPress={() => {
               this.props.navigator.push({
-                id: 'editprofile',
+                id: 'editme',
                 title: 'Edit Profile',
                 userId: me._id,
                 me: me,

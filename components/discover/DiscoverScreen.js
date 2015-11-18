@@ -17,29 +17,11 @@ let { width, height } = Dimensions.get('window');
 let SHEET = require('../CommonStyles').SHEET;
 let COLORS = require('../CommonStyles').COLORS;
 let HeaderBanner = require('../lib/HeaderBanner');
+let IconTextRow = require('../lib/IconTextRow');
 let Card = require('../lib/Card').Card;
 let Loader = require('../lib/Loader');
 
-class IconTextRow extends React.Component {
-  render() {
-    return (
-      <View style={iconTextRowStyles.row}>
-        <Image source={this.props.icon} />
-        <Text style={[iconTextRowStyles.text, SHEET.baseText]}>{this.props.text}</Text>
-      </View>
-    )
-  }
-}
 
-var iconTextRowStyles = StyleSheet.create({
-  row: {
-    flexDirection: 'row',
-    padding: 5,
-  },
-  text: {
-    marginLeft: 10, 
-  }
-});
 
 class CountdownTimer extends React.Component {
   constructor(props) {
@@ -153,9 +135,13 @@ class Discover extends React.Component {
               </HeaderBanner>
             </TouchableOpacity>
             <View style={[styles.infoSection, SHEET.innerContainer]}>
-              <IconTextRow icon={require('../img/ic-mortar.png')}
+              <IconTextRow
+                style={{ padding: 5 }}
+                icon={require('../img/ic-mortar.png')}
                 text={candidateUser.major} />
-              <IconTextRow icon={require('../img/ic-house.png')}
+              <IconTextRow
+                style={{ padding: 5 }}
+                icon={require('../img/ic-house.png')}
                 text={candidateUser.hometown} />
             </View>
             <View style={[{ marginHorizontal: 10 }, SHEET.separator]} />

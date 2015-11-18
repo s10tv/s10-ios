@@ -1,5 +1,4 @@
 let React = require('react-native');
-var Button = require('react-native-button');
 
 let {
   AppRegistry,
