@@ -6,7 +6,7 @@ inhibit_all_warnings!
 use_frameworks!
 
 # Core
-pod 'React', :path => ‘../node_modules/react-native', :subspecs => [
+pod 'React', :path => '../node_modules/react-native', :subspecs => [
   'Core',
   'RCTImage',
   'RCTNetwork',
@@ -16,7 +16,7 @@ pod 'React', :path => ‘../node_modules/react-native', :subspecs => [
 ]
 pod 'ReactiveCocoa', '~> 4.0.2-alpha-1'
 pod 'LayerKit', '~> 0.17'
-pod 'Atlas', '~> 1.0.13'
+pod 'Atlas', '~> 1.0.15'
 pod 'SCRecorder', '2.5.3' # ScaleAspectFill bug
 # pod 'NKRecorder', :path => '../video-maker'
 pod 'NKRecorder', :git => 'git@github.com:s10tv/video-maker.git'
@@ -35,22 +35,22 @@ pod 'AMPopTip', '~> 0.9'
 
 # SDKs
 pod 'FBSDKLoginKit', '~> 4.8'
-pod 'Fabric', '~> 1.5'
-pod 'TwitterCore', '~> 1.11'
-pod 'Digits', '~> 1.11'
+pod 'Fabric', '~> 1.6'
+pod 'TwitterCore', '~> 1.13'
+pod 'Digits', '~> 1.13'
 
 # Logging & analytics
-pod 'Crashlytics', '~> 3.3'
+pod 'Crashlytics', '~> 3.4'
 pod 'Ouralabs', '~> 2.6'
 
 pod 'AnalyticsSwift', '~> 0.2'
 pod 'Mixpanel', '~> 2.9'
-pod 'Amplitude-iOS', '~> 3.1'
-pod 'UXCam', '~> 2.3'
+pod 'Amplitude-iOS', '~> 3.2'
+pod 'UXCam', '~> 2.4'
 
 # Debug only
 pod 'NSLogger', '~> 1.5', :configuration => ['Debug']
-pod 'Reveal-iOS-SDK', '~> 1.5', :configuration => ['Debug']
+pod 'Reveal-iOS-SDK', '~> 1.6', :configuration => ['Debug']
 
 # To Be Deprecated
 pod 'DateTools', '~> 1.7'

@@ -1,11 +1,11 @@
 PODS:
   - Alamofire (3.1.2)
-  - Amplitude-iOS (3.2.0):
+  - Amplitude-iOS (3.2.1):
     - FMDB/standard (~> 2.5)
   - AMPopTip (0.9.13)
   - AnalyticsSwift (0.2.0)
-  - Atlas (1.0.14):
-    - LayerKit (>= 0.17.0)
+  - Atlas (1.0.15):
+    - LayerKit (>= 0.17.1)
   - Bolts (1.5.0):
     - Bolts/AppLinks (= 1.5.0)
     - Bolts/Tasks (= 1.5.0)
@@ -13,9 +13,11 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.5.0)
   - Cartography (0.6.0)
-  - Crashlytics (3.3.4)
+  - Crashlytics (3.4.0):
+    - Fabric (~> 1.6.0)
   - DateTools (1.7.0)
-  - Digits (1.12.0)
+  - Digits (1.13.1):
+    - TwitterCore (= 1.13.1)
   - DTFoundation/Core (1.7.8)
   - DTFoundation/DTASN1 (1.7.8):
     - DTFoundation/Core
@@ -26,9 +28,9 @@ PODS:
   - EZAudio/Full (1.1.2):
     - EZAudio/Core
     - TPCircularBuffer (~> 0.0)
-  - Fabric (1.5.5):
-    - Fabric/Base (= 1.5.5)
-  - Fabric/Base (1.5.5)
+  - Fabric (1.6.0):
+    - Fabric/Base (= 1.6.0)
+  - Fabric/Base (1.6.0)
   - FBSDKCoreKit (4.8.0):
     - Bolts (~> 1.1)
     - FBSDKCoreKit/arc (= 4.8.0)
@@ -44,7 +46,7 @@ PODS:
   - FMDB/standard (2.5):
     - FMDB/common
   - FormatterKit/TimeIntervalFormatter (1.8.0)
-  - LayerKit (0.17.0)
+  - LayerKit (0.17.2)
   - Mixpanel (2.9.0):
     - Mixpanel/Mixpanel (= 2.9.0)
   - Mixpanel/Mixpanel (2.9.0)
@@ -79,8 +81,8 @@ PODS:
   - ReactiveCocoa/UI (4.0.4-alpha-1):
     - ReactiveCocoa/Core
     - Result (~> 0.6-beta.1)
-  - Result (0.6.0-beta.5)
-  - Reveal-iOS-SDK (1.6.1)
+  - Result (0.6.0-beta.6)
+  - Reveal-iOS-SDK (1.6.2)
   - SCRecorder (2.5.3)
   - SDWebImage (3.7.3):
     - SDWebImage/Core (= 3.7.3)
@@ -88,22 +90,23 @@ PODS:
   - SimpleKeychain (0.6.1)
   - SwipeView (1.3.2)
   - TPCircularBuffer (0.0.1)
-  - TwitterCore (1.12.0)
-  - UXCam (2.3.2)
+  - TwitterCore (1.13.1):
+    - Fabric
+  - UXCam (2.4.1)
 
 DEPENDENCIES:
   - Alamofire (~> 3.1)
-  - Amplitude-iOS (~> 3.1)
+  - Amplitude-iOS (~> 3.2)
   - AMPopTip (~> 0.9)
   - AnalyticsSwift (~> 0.2)
-  - Atlas (~> 1.0.13)
+  - Atlas (~> 1.0.15)
   - Cartography (~> 0.6)
-  - Crashlytics (~> 3.3)
+  - Crashlytics (~> 3.4)
   - DateTools (~> 1.7)
-  - Digits (~> 1.11)
+  - Digits (~> 1.13)
   - DTFoundation/DTASN1 (~> 1.7)
   - EDColor (~> 1.0)
-  - Fabric (~> 1.5)
+  - Fabric (~> 1.6)
   - FBSDKLoginKit (~> 4.8)
   - FormatterKit/TimeIntervalFormatter (~> 1.8)
   - LayerKit (~> 0.17)
@@ -118,13 +121,13 @@ DEPENDENCIES:
   - React/RCTText (from `../node_modules/react-native`)
   - React/RCTWebSocket (from `../node_modules/react-native`)
   - ReactiveCocoa (~> 4.0.2-alpha-1)
-  - Reveal-iOS-SDK (~> 1.5)
+  - Reveal-iOS-SDK (~> 1.6)
   - SCRecorder (= 2.5.3)
   - SDWebImage (~> 3.7)
   - SimpleKeychain (~> 0.4)
   - SwipeView (~> 1.3)
-  - TwitterCore (~> 1.11)
-  - UXCam (~> 2.3)
+  - TwitterCore (~> 1.13)
+  - UXCam (~> 2.4)
 
 EXTERNAL SOURCES:
   NKRecorder:
@@ -144,24 +147,24 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: 7c16ca65f3c7e681fd925fd7f2dec7747ff96855
-  Amplitude-iOS: 6f82e97de436fd145ae9a205933b350fcdfbcddc
+  Amplitude-iOS: d4217c0912e3ef7bddb8f5abeb4acffa57d8dfc5
   AMPopTip: 17c0fc2bffc9d81314228073f63ea0320f204b11
   AnalyticsSwift: 76329ac0b66be9747e9f718076c53d264ed24089
-  Atlas: cd700f467c9bffd1bcb61d77a1feff56def88405
+  Atlas: bd66c5b17719857a6b9e22299f76527245e06e88
   Bolts: 722ab9a4f8b50fc4ed1b9998a5a7a2b3f16d80b4
   Cartography: 70af183a248547694a8cfaa6b989cb7e04589985
-  Crashlytics: 41c082440d2e14da444186fff65e79c0b4b35d4c
+  Crashlytics: 1ee87895c37472eb3f01f409ea1654a464d2f8d4
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
-  Digits: b443a43657c6cbaa6b31fedddc0e8c15133a978f
+  Digits: e8d62251f6b461996a829ed2e84a91f6bf14ff34
   DTFoundation: 46e2b2fafe78d67febfd8d1f85fe9845a093f00e
   EDColor: c83f9a61f9f9b3c23d541f1feb561558e29cb088
   EZAudio: 01373de2b1257b77be1bf13753fb1c4ea8a9777e
-  Fabric: 190bf1a6eb65f7500de1347d027d2e59a7e53db1
+  Fabric: d737eda3a26ac940a5430230eedb35f16b226131
   FBSDKCoreKit: 66a935d17b6e00b6b64e604f2eb9b72c9ab7deb8
   FBSDKLoginKit: d893fcbb98d854496925e9ff73c67b896982d3c4
   FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
   FormatterKit: bddde83e054edf9d9ee14f9de3b3a5103db256f4
-  LayerKit: 81d635966427859230deb8ede88dbc710dcac8fd
+  LayerKit: 60f1f23923e2718992eba22c6e9a8ef92b6344bc
   Mixpanel: 42ae6168effc48481d957f7883dd8514a398738d
   NKRecorder: f4bce8409adc39321668b5af939173839f5980a2
   NSLogger: 5ed223a2436df96244e033be750656dacdeec034
@@ -169,14 +172,14 @@ SPEC CHECKSUMS:
   PKHUD: 35da5a022cba3a9489eb0e11936869aeb6acef61
   React: e0dc1498eee8800999917f437a027223f49d731d
   ReactiveCocoa: 618a2fc13d4ed80e380aa6fa56547cef43c7341d
-  Result: 8ae33a29ed1e147514b9536de523a978d7faba1f
-  Reveal-iOS-SDK: ceae964076cebe3efe63e5e9abe3152efce46aa8
+  Result: dc390d0b58f9ec43fcd536f1ebdd130803cc6cbc
+  Reveal-iOS-SDK: e2250b3c155bcfac53ae223ddc1f76d08f206c33
   SCRecorder: a8b1deff74c4e03f4f3cfbfceb8fbc4877d166e4
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   SimpleKeychain: 150d76f3b9200de58f033228f6e976c6241a221c
   SwipeView: bd67cfaf7760c036438446b3ccb28a3b84fce009
   TPCircularBuffer: 949e9632b9fb99b7274d7b2296ee22bff5841e35
-  TwitterCore: a1feadb793512962003ed2bad23e846c8daa4efd
-  UXCam: b4914853e5512ac16a3e4a33499cd470230d7a6e
+  TwitterCore: 4f6fbd413f6d574d38bfbeeeb5cd75738caf567e
+  UXCam: 87a22c280e5ba094720e91561514f9d4b1a01033
 
 COCOAPODS: 0.39.0

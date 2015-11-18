@@ -381,8 +381,8 @@
 			isa = PBXGroup;
 			children = (
 				EA197A7E1BFCE09F00DF7B58 /* Analytics */,
-				EA197A1E1BFC4D2600DF7B58 /* Layer */,
 				EA197A221BFC4D2600DF7B58 /* Logging */,
+				EA197A1E1BFC4D2600DF7B58 /* Layer */,
 			);
 			path = Modules;
 			sourceTree = "<group>";

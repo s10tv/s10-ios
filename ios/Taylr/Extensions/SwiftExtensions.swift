@@ -6,6 +6,8 @@
 //  Copyright (c) 2015 S10. All rights reserved.
 //
 
+import Foundation
+import UIKit
 
 public func += <T>(inout array: [T], element: T) {
     array.append(element)
