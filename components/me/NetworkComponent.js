@@ -15,14 +15,10 @@ let Card = require('../lib/Card').Card;
 class Network extends React.Component {
   render() {
     return (
-      <View style={SHEET.innerContainer}>
-        <SectionTitle title={'MY SCHOOL'} />
-
-        <Card cardOverride={styles.networkCard}>
-          <Image source={require('../img/ic-ubc.png')} style={SHEET.icon} />
-          <Text style={[styles.networkText, SHEET.baseText]}>University of British Columbia</Text>
-        </Card>
-      </View>
+      <Card cardOverride={styles.networkCard}>
+        <Image source={require('../img/ic-ubc.png')} style={SHEET.icon} />
+        <Text style={[styles.networkText, SHEET.baseText]}>University of British Columbia</Text>
+      </Card>
     )
   }
 }

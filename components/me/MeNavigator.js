@@ -11,8 +11,8 @@ let {
 
 let BaseTaylrNavigator = require('../lib/BaseTaylrNavigator');
 let SHEET = require('../CommonStyles').SHEET;
-let Me = require('./Me');
-let MeEdit = require('./MeEdit');
+let MeScreen = require('./MeScreen');
+let MeEditScreen = require('./MeEditScreen');
 let Activities = require('../lib/Activities');
 let HashtagListView =require('../lib/HashtagListView');
 
@@ -55,7 +55,7 @@ class MeNavigator extends BaseTaylrNavigator {
           startInLoadingState={true}
           url={route.link} />;
       case 'editprofile':
-        return <MeEdit navigator={nav}
+        return <MeEditScreen navigator={nav}
           ddp={this.props.ddp} 
           me={this.props.me}
           integrations={this.props.integrations} />
@@ -66,7 +66,7 @@ class MeNavigator extends BaseTaylrNavigator {
           ddp={this.props.ddp} />
       default:
         return (
-          <Me me={this.props.me} 
+          <MeScreen me={this.props.me} 
             categories={this.props.categories}
             myTags={this.props.myTags}
             navigator={nav}

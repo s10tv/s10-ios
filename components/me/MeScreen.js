@@ -1,5 +1,4 @@
 let React = require('react-native');
-let TaylrAPI = require('react-native').NativeModules.TaylrAPI;
 let {
   AppRegistry,
   View,
@@ -7,15 +6,12 @@ let {
   Text,
   Image,
   TouchableOpacity,
-  TouchableHighlight,
-  ActionSheetIOS,
-  Navigator,
   StyleSheet,
 } = React;
 
 let SHEET = require('../CommonStyles').SHEET;
-let Network = require('./Network')
-let ContactUs = require('./ContactUs');
+let NetworkComponent = require('./NetworkComponent')
+let MoreComponent = require('./MoreComponent');
 let SectionTitle = require('../lib/SectionTitle');
 let HeaderBanner = require('../lib/HeaderBanner');
 let HashtagCategory = require('../lib/HashtagCategory');
@@ -126,16 +122,19 @@ class Me extends React.Component {
             </HeaderBanner>
           </TouchableOpacity>
 
-          <Network navigator={this.props.navigator} ddp={ddp} />
+          <View style={SHEET.innerContainer}>
+            <SectionTitle title={'MY SCHOOL'} />
+            <NetworkComponent navigator={this.props.navigator} ddp={ddp} />
 
-          <SectionTitle title={'MY HASHTAGS'} />
-          <HashtagCategory navigator={this.props.navigator}
-            style={SHEET.innerContainer}
-            categories={this.props.categories}
-            myTags={this.props.myTags}
-            ddp={this.ddp} />
+            <SectionTitle title={'MY HASHTAGS'} />
+            <HashtagCategory navigator={this.props.navigator}
+              categories={this.props.categories}
+              myTags={this.props.myTags}
+              ddp={this.ddp} />
 
-          <ContactUs navigator={this.props.navigator} />
+            <SectionTitle title={'MORE'} />
+            <MoreComponent navigator={this.props.navigator} />
+          </View>
 
           <View style={SHEET.bottomTile} />
         </ScrollView>

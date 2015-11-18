@@ -4,14 +4,7 @@ var Button = require('react-native-button');
 let {
   AppRegistry,
   View,
-  Text,
-  Image,
-  TouchableOpacity,
-  Navigator,
-  NavigatorIOS,
   TabBarIOS,
-  WebView,
-  StyleSheet,
 } = React;
 
 let OnboardingNavigator = require('./onboarding/OnboardingNavigator');
@@ -209,49 +202,5 @@ class LayoutContainer extends React.Component {
     }
   }
 }
-
-var styles = StyleSheet.create({
-  navWrap: {
-    flex: 1,
-  },
-  webView: {
-    marginTop: 64,
-    paddingTop: 64,
-  },
-  nav: {
-    flex: 1,
-  },
-  moreButton: {
-    width: 200,
-    height: 200,
-    position: 'absolute',
-    top: 0,
-    right: 0
-  },
-  navBar: {
-    backgroundColor: '#64369C',
-  },
-  navBarTitleText: {
-    fontSize: 20,
-    color:  'white',
-    fontWeight: '500',
-    marginVertical: 9,
-  },
-  navBarText: {
-    color: 'white',
-    fontSize: 16,
-    marginVertical: 10,
-  },
-  navBarLeftButton: {
-    paddingLeft: 10,
-  },
-  navBarRightButton: {
-    flex: 1,
-    flexDirection: 'row',
-    height: 64,
-    alignItems: 'center',
-    paddingRight: 10,
-  },
-});
 
 module.exports = LayoutContainer;

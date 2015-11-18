@@ -12,7 +12,7 @@ let {
 
 let BaseTaylrNavigator = require('../lib/BaseTaylrNavigator');
 let SHEET = require('../CommonStyles').SHEET;
-let LinkServiceView = require('./LinkServiceView');
+let LinkServiceScreen = require('./LinkServiceScreen');
 let EditProfileScreen = require('./EditProfileScreen');
 let AddHashtagScreen = require('./AddHashtagScreen');
 
@@ -89,7 +89,7 @@ class OnboardingNavigator extends BaseTaylrNavigator {
     switch (route.id) {
       case 'linkservices':
         return (
-          <LinkServiceView navigator={nav}
+          <LinkServiceScreen navigator={nav}
             integrations={this.props.integrations}
             ddp={this.props.ddp} />
         );

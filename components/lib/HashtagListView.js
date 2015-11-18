@@ -5,9 +5,8 @@ let {
   View,
   Text,
   ScrollView,
-  StyleSheet,
   TouchableHighlight,
-  ActivityIndicatorIOS,
+  StyleSheet,
 } = React;
 
 let SHEET = require('../CommonStyles').SHEET;

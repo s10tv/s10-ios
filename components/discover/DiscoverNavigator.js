@@ -10,7 +10,7 @@ let {
 } = React;
 
 let BaseTaylrNavigator = require('../lib/BaseTaylrNavigator');
-let Discover = require('./Discover');
+let DiscoverScreen = require('./DiscoverScreen');
 let Activities = require('../lib/Activities');
 let SHEET = require('../CommonStyles').SHEET;
 
@@ -48,7 +48,7 @@ class DiscoverNavigator extends BaseTaylrNavigator {
         return <ContainerView sbName="Conversation" />
       default:
         return (
-          <Discover navigator={nav} ddp={this.ddp} 
+          <DiscoverScreen navigator={nav} ddp={this.ddp} 
             candidate={this.props.candidate}
             users={this.props.users}
             settings={this.props.settings} />

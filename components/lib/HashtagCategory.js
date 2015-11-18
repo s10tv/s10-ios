@@ -5,7 +5,6 @@ let {
   View,
   Text,
   Image,
-  TouchableHighlight,
   StyleSheet
 } = React;
 

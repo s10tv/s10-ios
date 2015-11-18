@@ -4,7 +4,6 @@ let {
   AppRegistry,
   View,
   AlertIOS,
-  Image,
   Text,
   StyleSheet,
 } = React;
@@ -25,8 +24,7 @@ class ContactUs extends React.Component {
 
   render() {
     return (
-      <View style={SHEET.innerContainer}>
-        <SectionTitle title={'MORE'} />
+      <View>
         <TappableCard style={styles.card} onPress={this.contactUs}>
           <Text style={[SHEET.baseText]}>Contact Us</Text>
         </TappableCard>

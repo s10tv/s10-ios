@@ -8,9 +8,6 @@ let {
   Text,
   Image,
   TouchableOpacity,
-  TouchableHighlight,
-  ActionSheetIOS,
-  Navigator,
   StyleSheet,
 } = React;
 
@@ -129,7 +126,7 @@ class Discover extends React.Component {
         <ScrollView
           style={[SHEET.navTop, { flex: 1 }]}
           showsVerticalScrollIndicator={false}>
-          
+
           <Card style={[{marginTop: 10, paddingBottom: 10}, SHEET.innerContainer]}
             cardOverride={{ padding: 0 }}>
 

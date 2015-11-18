@@ -5,13 +5,7 @@ let {
   AppRegistry,
   View,
   ScrollView,
-  Text,
-  TextInput,
-  Image,
-  Navigator,
-  TouchableHighlight,
   StyleSheet,
-  AlertIOS,
 } = React;
 
 let SHEET = require('../CommonStyles').SHEET;
