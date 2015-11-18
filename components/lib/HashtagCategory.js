@@ -27,7 +27,11 @@ class HashtagCategory extends React.Component {
     let myTagsRendered = this.props.myTags.filter(tag => {
       return tag.type == category._id
     }).map(hashtag => {
-      return <Hashtag key={hashtag.value} ddp={this.props.ddp} enableTouch={false} hashtag={ hashtag } />
+      return <Hashtag 
+        key={hashtag._id}
+        ddp={this.props.ddp}
+        enableTouch={false}
+        hashtag={ hashtag } />
     });
 
     let icon = myTagsRendered.length == 0 ?

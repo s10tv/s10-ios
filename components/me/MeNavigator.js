@@ -47,6 +47,7 @@ class MeNavigator extends BaseTaylrNavigator {
           style={{ flex: 1 }} 
           navigator={nav}
           ddp={this.props.ddp}
+          myTags={this.props.myTags}
           category={route.category} />;
       case 'servicelink':
         return <WebView

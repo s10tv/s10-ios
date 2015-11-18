@@ -12,6 +12,7 @@ let {
 
 let BaseTaylrNavigator = require('../lib/BaseTaylrNavigator');
 let SHEET = require('../CommonStyles').SHEET;
+let HashtagListView = require('../lib/HashtagListView');
 let LinkServiceScreen = require('./LinkServiceScreen');
 let EditProfileScreen = require('./EditProfileScreen');
 let AddHashtagScreen = require('./AddHashtagScreen');
@@ -72,6 +73,9 @@ class OnboardingNavigator extends BaseTaylrNavigator {
           }
         }
         break;
+
+      case 'hashtag':
+        return null;
     }
 
     return (
@@ -110,6 +114,14 @@ class OnboardingNavigator extends BaseTaylrNavigator {
           categories={this.props.categories}
           myTags={this.props.myTags}
           ddp={this.props.ddp} />
+
+      case 'hashtag':
+        return <HashtagListView
+          style={{ flex: 1 }} 
+          navigator={nav}
+          removeBottomPadding={true}x
+          ddp={this.props.ddp}
+          category={route.category} />;
     } 
   }
 

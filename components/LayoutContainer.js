@@ -20,7 +20,7 @@ class LayoutContainer extends React.Component {
 
   constructor(props: {}) {
     super(props);
-    this.ddp = new TSDDPClient();
+    this.ddp = new TSDDPClient(props.wsurl);
 
     this.subs = {}
 
@@ -34,7 +34,7 @@ class LayoutContainer extends React.Component {
   componentWillMount() {
     let ddp = this.ddp;
 
-    ddp.initialize('wss://s10-dev.herokuapp.com/websocket')
+    ddp.initialize()
     .then(() => {
       return ddp.loginWithToken('ys_3fCYOsxO7TPDxa4tMfssWJ057al55JhnJKKfzPnW'); 
     }).then((res) => {
@@ -99,14 +99,17 @@ class LayoutContainer extends React.Component {
         });
       });
 
-      this.ddp.subscribe({ pubName: 'my-hashtags' })
+      this.ddp.subscribe({ pubName: 'my-tags' })
       .then(() => {
         ddp.collections.observe(() => {
-          if (ddp.collections.hashtags) {
-            return ddp.collections.hashtags.find({ isMine: true });
+          if (ddp.collections.mytags) {
+            return ddp.collections.mytags.findOne({});
           }
-        }).subscribe(myTags=> {
-          this.setState({ myTags: myTags });
+        }).subscribe(user => {
+          user.tags.forEach((tag) => {
+            tag.isMine = true;
+          })
+          this.setState({ myTags: user.tags });
         });
       });
 

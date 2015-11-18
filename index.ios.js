@@ -18,7 +18,7 @@ let LayoutContainer = require('./components/LayoutContainer');
 
 let container = React.createClass({
   render: function() {
-    return <LayoutContainer />;
+    return <LayoutContainer wsurl={'ws://localhost:3000/websocket'} />;
   }
 });
 
