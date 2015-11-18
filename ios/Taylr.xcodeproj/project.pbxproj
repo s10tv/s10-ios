@@ -51,7 +51,6 @@
 		EA197A561BFC4D2600DF7B58 /* AzureClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A141BFC4D2600DF7B58 /* AzureClient.swift */; };
 		EA197A571BFC4D2600DF7B58 /* BaseViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A151BFC4D2600DF7B58 /* BaseViews.swift */; };
 		EA197A581BFC4D2600DF7B58 /* DesignableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A161BFC4D2600DF7B58 /* DesignableViews.swift */; };
-		EA197A591BFC4D2600DF7B58 /* DeviceInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A171BFC4D2600DF7B58 /* DeviceInfo.swift */; };
 		EA197A5A1BFC4D2600DF7B58 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A181BFC4D2600DF7B58 /* Environment.swift */; };
 		EA197A5B1BFC4D2600DF7B58 /* ProvisioningProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A191BFC4D2600DF7B58 /* ProvisioningProfile.swift */; };
 		EA197A5C1BFC4D2600DF7B58 /* Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A1A1BFC4D2600DF7B58 /* Segue.swift */; };
@@ -153,7 +152,6 @@
 		EA197A141BFC4D2600DF7B58 /* AzureClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AzureClient.swift; sourceTree = "<group>"; };
 		EA197A151BFC4D2600DF7B58 /* BaseViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViews.swift; sourceTree = "<group>"; };
 		EA197A161BFC4D2600DF7B58 /* DesignableViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableViews.swift; sourceTree = "<group>"; };
-		EA197A171BFC4D2600DF7B58 /* DeviceInfo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeviceInfo.swift; sourceTree = "<group>"; };
 		EA197A181BFC4D2600DF7B58 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		EA197A191BFC4D2600DF7B58 /* ProvisioningProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvisioningProfile.swift; sourceTree = "<group>"; };
 		EA197A1A1BFC4D2600DF7B58 /* Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segue.swift; sourceTree = "<group>"; };
@@ -342,11 +340,10 @@
 		EA197A121BFC4D2600DF7B58 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				EA197A161BFC4D2600DF7B58 /* DesignableViews.swift */,
+				EA197A151BFC4D2600DF7B58 /* BaseViews.swift */,
 				EA197A131BFC4D2600DF7B58 /* AsyncOperation.swift */,
 				EA197A141BFC4D2600DF7B58 /* AzureClient.swift */,
-				EA197A151BFC4D2600DF7B58 /* BaseViews.swift */,
-				EA197A161BFC4D2600DF7B58 /* DesignableViews.swift */,
-				EA197A171BFC4D2600DF7B58 /* DeviceInfo.swift */,
 				EA197A181BFC4D2600DF7B58 /* Environment.swift */,
 				EA197A191BFC4D2600DF7B58 /* ProvisioningProfile.swift */,
 				EA197A1A1BFC4D2600DF7B58 /* Segue.swift */,
@@ -790,7 +787,6 @@
 				EA197A3A1BFC4D2600DF7B58 /* ConversationViewModel.swift in Sources */,
 				EA197A551BFC4D2600DF7B58 /* AsyncOperation.swift in Sources */,
 				EA197A331BFC4D2600DF7B58 /* Appearance.swift in Sources */,
-				EA197A591BFC4D2600DF7B58 /* DeviceInfo.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

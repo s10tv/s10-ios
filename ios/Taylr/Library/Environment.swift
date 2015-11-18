@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SimpleKeychain
 
 public let IS_TARGET_IPHONE_SIMULATOR = (TARGET_IPHONE_SIMULATOR == 1)
 
@@ -22,7 +23,14 @@ public class Environment {
         return NSBundle.mainBundle().objectForInfoDictionaryKey(kCFBundleVersionKey as String) as! String
     }
     public var deviceId: String {
-        return UIDevice.currentDevice().getPersistentIdentifier()
+        let keychain = A0SimpleKeychain(service: appId)
+        let kDeviceId = "deviceId"
+        var identifier = keychain.stringForKey(kDeviceId)
+        if identifier == nil {
+            identifier = UIDevice.currentDevice().identifierForVendor?.UUIDString ?? "r-\(NSUUID().UUIDString)"
+            keychain.setString(identifier!, forKey: kDeviceId)
+        }
+        return identifier!
     }
     
     public var apsEnvironment: ApsEnvironment? {
