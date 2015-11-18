@@ -50,7 +50,7 @@ class VideoPlayerViewController : UIViewController {
             // the temp variable video is needed to avoid compiler crash
             dispatch_async(dispatch_get_main_queue()) { [weak self] in
                 self?.player.setItemByUrl(videoURL)
-                //                Log.debug("set videoURL to \(videoURL)")
+                //                DDLogDebug("set videoURL to \(videoURL)")
             }
         }
         

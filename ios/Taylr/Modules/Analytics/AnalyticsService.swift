@@ -12,6 +12,7 @@ import AnalyticsSwift
 import Amplitude_iOS
 import Mixpanel
 import UXCam
+import CocoaLumberjack
 
 public class CurrentUser {
     public enum AccountStatus : String {
@@ -91,7 +92,7 @@ class AnalyticsService : NSObject {
 //            amplitude.setUserId(nil) // Setting this to nil leads to Perma crash. So let's not set to nil
             // Also we probably would benefit from less reactivity and more just simple logic
         }
-        Log.verbose("[analytics] identify \(userId)")
+        DDLogVerbose("[analytics] identify \(userId)")
         flush()
     }
 
@@ -103,7 +104,7 @@ class AnalyticsService : NSObject {
             segment.enqueue(msg.anonymousId(env.deviceId))
         }
         amplitude.setUserProperties(properties, replace: true)
-        Log.verbose("[analytics] setUserProperties: \(properties)")
+        DDLogVerbose("[analytics] setUserProperties: \(properties)")
         // Only track properties to mixpanel post-digits login
         if let userId = currentUser.userId.value where userId == mixpanel.distinctId {
             var props = properties
@@ -126,7 +127,7 @@ class AnalyticsService : NSObject {
         if let userId = currentUser.userId.value where userId == mixpanel.distinctId {
             mixpanel.track(event, properties: properties)
         }
-        Log.verbose("[analytics] track '\(event)' properties: \(properties)")
+        DDLogVerbose("[analytics] track '\(event)' properties: \(properties)")
         flush()
     }
 

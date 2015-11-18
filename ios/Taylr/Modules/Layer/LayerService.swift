@@ -10,6 +10,7 @@ import Foundation
 import ReactiveCocoa
 import LayerKit
 import React
+import CocoaLumberjack
 
 @objc(TSLayerService)
 public class LayerService: NSObject {
@@ -51,7 +52,7 @@ public class LayerService: NSObject {
 //            for (k, v) in Participant(user: user).asDictionary() {
 //                metadata[k] = v // Better dic merge wanted
 //            }
-//            Log.info("Creating new conversation with metadata \(metadata)")
+//            DDLogInfo("Creating new conversation with metadata \(metadata)")
 //            return try layerClient.newConversationWithParticipants(Set([user.documentID!]), options: [
 //                LYRConversationOptionsDistinctByParticipantsKey: true,
 //                LYRConversationOptionsMetadataKey: metadata
@@ -68,7 +69,7 @@ public class LayerService: NSObject {
             query.predicate = LYRPredicate(property: "identifier", predicateOperator: .IsEqualTo, value: NSURL(messageId))
             return try layerClient.executeQuery(query).firstObject as? LYRMessage
         } catch let error as NSError {
-            Log.error("Unable to find message with id \(messageId)", error)
+            DDLogError("Unable to find message with id \(messageId) \(error)")
         }
         return nil
     }
@@ -94,7 +95,7 @@ public class LayerService: NSObject {
         do {
             return try layerClient.executeQuery(query).map { $0 as! LYRMessage }
         } catch let error as NSError {
-            Log.error("Unable to find video messages", error)
+            DDLogError("Unable to find video messages \(error)")
             return []
         }
     }
@@ -115,7 +116,7 @@ public class LayerService: NSObject {
         do {
             return try layerClient.countForQuery(LYRQuery.uploadingMessages(conversation))
         } catch let error as NSError {
-            Log.error("Unable to count uploads messages", error)
+            DDLogError("Unable to count uploads messages \(error)")
         }
         return 0
     }
@@ -125,7 +126,7 @@ public class LayerService: NSObject {
         do {
             return try layerClient.countForQuery(LYRQuery.downloadingMessages(conversation))
         } catch let error as NSError {
-            Log.error("Unable to count downloads messages", error)
+            DDLogError("Unable to count downloads messages \(error)")
         }
         return 0
     }
@@ -158,9 +159,9 @@ public class LayerService: NSObject {
 //            ).flatMap(.Latest) { _, userId in
 //                return self.syncWithUser(userId)
 //            }.start(Event.sink(error: { error in
-//                Log.error("Unable to update user in Layer session", error)
+//                DDLogError("Unable to update user in Layer session", error)
 //                }, next: { userId in
-//                    Log.info("Updated user in Layer session userId=\(userId)")
+//                    DDLogInfo("Updated user in Layer session userId=\(userId)")
 //            }))
     }
 
@@ -216,26 +217,26 @@ extension LayerService : LYRClientDelegate {
 //        meteor.layerAuth(nonce).producer.flatMap(.Concat) { identityToken in
 //            self.layerClient.authenticate(identityToken)
 //        }.start(Event.sink(error: { error in
-//            Log.error("Unable to update user in Layer session", error)
+//            DDLogError("Unable to update user in Layer session", error)
 //        }, next: { userId in
-//            Log.info("Updated user in Layer session userId=\(userId)")
+//            DDLogInfo("Updated user in Layer session userId=\(userId)")
 //        }))
     }
     
     public func layerClient(client: LYRClient!, objectsDidChange changes: [AnyObject]!) {
-        Log.debug("Layer objects did change \(changes)")
+        DDLogDebug("Layer objects did change \(changes)")
     }
     
     public func layerClient(client: LYRClient!, willBeginContentTransfer contentTransferType: LYRContentTransferType, ofObject object: AnyObject!, withProgress progress: LYRProgress!) {
-        Log.debug("Will begin \(contentTransferType) \(object)")
+        DDLogDebug("Will begin \(contentTransferType) \(object)")
     }
     
     public func layerClient(client: LYRClient!, didFinishContentTransfer contentTransferType: LYRContentTransferType, ofObject object: AnyObject!) {
-        Log.debug("did finish \(contentTransferType) \(object)")
+        DDLogDebug("did finish \(contentTransferType) \(object)")
     }
     
     public func layerClient(client: LYRClient!, didFailOperationWithError error: NSError!) {
-        Log.error("Layer failed to perform operation", error)
+        DDLogError("Layer failed to perform operation \(error)")
     }
 }
 

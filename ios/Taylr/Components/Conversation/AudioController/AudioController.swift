@@ -9,6 +9,7 @@
 import Foundation
 import AVFoundation
 import ReactiveCocoa
+import CocoaLumberjack
 
 extension AVAudioSession {
     var audioCategory: AudioCategory {
@@ -68,7 +69,7 @@ class AudioController {
         audioCategory = MutableProperty(audioSession.audioCategory)
         audioCategory <~ nc.rac_notifications(AVAudioSessionRouteChangeNotification, object: nil)
            .map { note -> AudioCategory? in
-                Log.debug("Did receive audio route change notification \(note.userInfo)")
+                DDLogDebug("Did receive audio route change notification \(note.userInfo)")
                 if let reason = (note.userInfo?[AVAudioSessionRouteChangeReasonKey]?.intValue)
                     .flatMap({ AVAudioSessionRouteChangeReason(rawValue: UInt($0)) }),
                     let session = note.object as? AVAudioSession
@@ -116,7 +117,7 @@ class AudioController {
                     try audioSession.setCategory(category.string)
                 }
             } catch let error as NSError {
-                Log.error("Failed to set audioSession category", error)
+                DDLogError("Failed to set audioSession category \(error)")
             }
             assert(audioSession.audioCategory == category, "Failed to set audio category")
         }

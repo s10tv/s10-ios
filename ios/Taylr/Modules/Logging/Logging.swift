@@ -7,9 +7,7 @@
 //
 
 import Foundation
-//import CrashlyticsFramework
-
-public let Log = Logger()
+import CocoaLumberjack
 
 public class Logger {
     public enum LogLevel : Int, CustomStringConvertible {

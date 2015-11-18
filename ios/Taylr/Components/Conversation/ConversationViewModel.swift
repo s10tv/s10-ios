@@ -9,6 +9,7 @@
 import Foundation
 import ReactiveCocoa
 import LayerKit
+import CocoaLumberjack
 
 public class ConversationViewModel: NSObject {
     
@@ -100,7 +101,7 @@ public class ConversationViewModel: NSObject {
             ])
             try conversation.sendMessage(message)
         } catch let error as NSError {
-            Log.error("Unable to send video", error)
+            DDLogError("Unable to send video \(error)")
         }
     }
     
@@ -127,14 +128,14 @@ public class ConversationViewModel: NSObject {
                 _ = try? thumbnailPart.purgeContent()
                 try thumbnailPart.downloadContent()
             } catch let error as NSError {
-                Log.error("Unable to re-download thumbnail content", error)
+                DDLogError("Unable to re-download thumbnail content \(error)")
             }
         }
         if let videoPart = message.videoPart where videoPart.fileURL == nil {
             do {
                 try videoPart.downloadContent()
             } catch let error as NSError {
-                Log.error("Unable to download video content", error)
+                DDLogError("Unable to download video content \(error)")
             }
         }
     }
@@ -153,7 +154,7 @@ public class ConversationViewModel: NSObject {
             let messages = try ctx.layer.layerClient.executeQuery(query).map { $0 as! LYRMessage }
             try ctx.layer.layerClient.markMessagesAsRead(Set(messages))
         } catch let error as NSError {
-            Log.error("Unable to find unread non-video messages", error)
+            DDLogError("Unable to find unread non-video messages \(error)")
         }
     }
     

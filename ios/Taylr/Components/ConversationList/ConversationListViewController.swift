@@ -9,6 +9,7 @@
 import Foundation
 import ReactiveCocoa
 import Atlas
+import CocoaLumberjack
 
 class ConversationListViewController : ATLConversationListViewController {
     
@@ -33,7 +34,7 @@ class ConversationListViewController : ATLConversationListViewController {
         delegate = self
         
         vm.changedConversations.observeOn(UIScheduler()).observeNext { [weak self] in
-            Log.debug("Reloading conversation cell \($0)")
+            DDLogDebug("Reloading conversation cell \($0)")
             self?.reloadCellForConversation($0)
         }
     }

@@ -13,6 +13,13 @@ PODS:
     - Bolts/Tasks
   - Bolts/Tasks (1.5.0)
   - Cartography (0.6.0)
+  - CocoaLumberjack/Core (2.2.0)
+  - CocoaLumberjack/Default (2.2.0):
+    - CocoaLumberjack/Core
+  - CocoaLumberjack/Extensions (2.2.0):
+    - CocoaLumberjack/Default
+  - CocoaLumberjack/Swift (2.2.0):
+    - CocoaLumberjack/Extensions
   - Crashlytics (3.4.0):
     - Fabric (~> 1.6.0)
   - DateTools (1.7.0)
@@ -101,6 +108,7 @@ DEPENDENCIES:
   - AnalyticsSwift (~> 0.2)
   - Atlas (~> 1.0.15)
   - Cartography (~> 0.6)
+  - CocoaLumberjack/Swift (~> 2.2)
   - Crashlytics (~> 3.4)
   - DateTools (~> 1.7)
   - Digits (~> 1.13)
@@ -153,6 +161,7 @@ SPEC CHECKSUMS:
   Atlas: bd66c5b17719857a6b9e22299f76527245e06e88
   Bolts: 722ab9a4f8b50fc4ed1b9998a5a7a2b3f16d80b4
   Cartography: 70af183a248547694a8cfaa6b989cb7e04589985
+  CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
   Crashlytics: 1ee87895c37472eb3f01f409ea1654a464d2f8d4
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
   Digits: e8d62251f6b461996a829ed2e84a91f6bf14ff34

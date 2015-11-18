@@ -9,6 +9,7 @@
 import UIKit
 import ReactiveCocoa
 import SDWebImage
+import CocoaLumberjack
 //import JSBadgeView
 
 private var kPlaceholderImage: UInt8 = 0
@@ -31,7 +32,7 @@ extension UIImageView {
                 } else if let url = image?.url {
                     self?.sd_setImageWithURL(url, placeholderImage: self?.sd_placeholderImage) { image, error, cacheType, url in
                         if let error = error {
-                            Log.warn("Unable to load image at \(url) \(error)")
+                            DDLogWarn("Unable to load image at \(url) \(error)")
                         }
                     }
                 } else {

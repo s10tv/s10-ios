@@ -8,6 +8,7 @@
 
 import UIKit
 import NKRecorder
+import CocoaLumberjack
 
 var Analytics: AnalyticsService!
 
@@ -21,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         Analytics = dependencies.analytics
         
-        Log.info("App Launched")
+        DDLogInfo("App Launched")
         Analytics.track("AppOpen")
         return true
     }
@@ -70,28 +71,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
 //    }
 //    
 //    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
-//        Log.info("Registered for push \(deviceToken)")
+//        DDLogInfo("Registered for push \(deviceToken)")
 //        if let apsEnv = Globals.env.apsEnvironment?.rawValue {
 ////            MainContext.meteor.updateDevicePush(apsEnv, pushToken: deviceToken.hexString() as String)
 //            Analytics.setUserProperties(["RegisteredPush": true])
 //        } else if IS_TARGET_IPHONE_SIMULATOR == false {
-//            Log.error("Non-simulator build should have valid APS environment")
+//            DDLogError("Non-simulator build should have valid APS environment")
 //            // fatalError("Non-simulator build should have valid APS environment")
 //        }
 //        do {
 //            try layerClient.updateRemoteNotificationDeviceToken(deviceToken)
 //        } catch let error as NSError {
-//            Log.error("Unable to update Layer with push token", error)
+//            DDLogError("Unable to update Layer with push token", error)
 //        }
 //    }
 //    
 //    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
-//        Log.warn("Faild to register for push \(error)")
+//        DDLogWarn("Faild to register for push \(error)")
 //        Analytics.setUserProperties(["RegisteredPush": false])
 //    }
 //    
 //    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
-//        Log.debug("Did receive notification \(userInfo)")
+//        DDLogDebug("Did receive notification \(userInfo)")
 //        // This is needed to handle remote notification while app is in the background
 //        // and therefore didFinishLaunching is never invoked.
 //        // TODO: LayerClient cannot be recreated, need to do again
@@ -101,11 +102,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
 //        }
 //        let handled = layerClient.synchronizeWithRemoteNotification(userInfo) { changes, error in
 //            if let error = error {
-//                Log.error("Failed to synchronize remote notification with layer", error)
+//                DDLogError("Failed to synchronize remote notification with layer", error)
 //                completionHandler(.Failed)
 //            } else {
 //                let changes = changes ?? []
-//                Log.info("Synchronized layer remote notification with \(changes.count) changes")
+//                DDLogInfo("Synchronized layer remote notification with \(changes.count) changes")
 //                if changes.count > 0 {
 //                    completionHandler(.NewData)
 //                } else {
@@ -128,9 +129,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
 //        }
 //        layerClient.handleBackgroundContentTransfersForSession(identifier) { changes, error in
 //            if let error = error {
-//                Log.error("Failed to handle layer background transfer", error)
+//                DDLogError("Failed to handle layer background transfer", error)
 //            } else {
-//                Log.info("Handled layer background transfer with \(changes?.count) changes")
+//                DDLogInfo("Handled layer background transfer with \(changes?.count) changes")
 //            }
 //            completionHandler()
 //        }
