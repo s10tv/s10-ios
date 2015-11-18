@@ -3,8 +3,7 @@
  * https://github.com/facebook/react-native
  */
 'use strict';
-
-let TaylrAPI = require('react-native').NativeModules.TaylrAPI;
+let Analytics = require('react-native').NativeModules.TSAnalytics;
 let React = require('react-native');
 let {
   AppRegistry,
@@ -24,17 +23,4 @@ let container = React.createClass({
 
 AppRegistry.registerComponent('Taylr', () => container);
 
-// ddp.initialize().then((res) => {
-// 	TaylrAPI.getMeteorUser((userId, resumeToken) => {
-// 	  if (resumeToken != null) {
-// 	  	ddp.loginWithToken(resumeToken);
-// 	  }
-// 	});
-// })
-var subscription = NativeAppEventEmitter.addListener(
-  'Example',
-  (data) => console.log(data)
-);
-// ...
-// // Don't forget to unsubscribe, typically in componentWillUnmount
-// subscription.remove();
+Analytics.track('JS App Launched', null);

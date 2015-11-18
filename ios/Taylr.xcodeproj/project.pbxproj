@@ -58,8 +58,6 @@
 		EA197A611BFC4D2600DF7B58 /* LayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A211BFC4D2600DF7B58 /* LayerService.swift */; };
 		EA197A621BFC4D2600DF7B58 /* Logging.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A231BFC4D2600DF7B58 /* Logging.swift */; };
 		EA197A631BFC4D2600DF7B58 /* NSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA197A251BFC4D2600DF7B58 /* NSLogger.m */; };
-		EA197A641BFC4D2600DF7B58 /* TaylrAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EA197A271BFC4D2600DF7B58 /* TaylrAPI.m */; };
-		EA197A651BFC4D2600DF7B58 /* TaylrAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A281BFC4D2600DF7B58 /* TaylrAPI.swift */; };
 		EA197A671BFC4D2600DF7B58 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A2B1BFC4D2600DF7B58 /* Context.swift */; };
 		EA197A691BFC4D2600DF7B58 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A2D1BFC4D2600DF7B58 /* Formatters.swift */; };
 		EA197A6B1BFC4D2600DF7B58 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A2F1BFC4D2600DF7B58 /* Image.swift */; };
@@ -180,8 +178,6 @@
 		EA197A231BFC4D2600DF7B58 /* Logging.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logging.swift; sourceTree = "<group>"; };
 		EA197A241BFC4D2600DF7B58 /* NSLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSLogger.h; sourceTree = "<group>"; };
 		EA197A251BFC4D2600DF7B58 /* NSLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSLogger.m; sourceTree = "<group>"; };
-		EA197A271BFC4D2600DF7B58 /* TaylrAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaylrAPI.m; sourceTree = "<group>"; };
-		EA197A281BFC4D2600DF7B58 /* TaylrAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaylrAPI.swift; sourceTree = "<group>"; };
 		EA197A2B1BFC4D2600DF7B58 /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		EA197A2D1BFC4D2600DF7B58 /* Formatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		EA197A2F1BFC4D2600DF7B58 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
@@ -387,7 +383,6 @@
 				EA197A7E1BFCE09F00DF7B58 /* Analytics */,
 				EA197A1E1BFC4D2600DF7B58 /* Layer */,
 				EA197A221BFC4D2600DF7B58 /* Logging */,
-				EA197A261BFC4D2600DF7B58 /* TaylrAPI */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -411,15 +406,6 @@
 				EA197A251BFC4D2600DF7B58 /* NSLogger.m */,
 			);
 			path = Logging;
-			sourceTree = "<group>";
-		};
-		EA197A261BFC4D2600DF7B58 /* TaylrAPI */ = {
-			isa = PBXGroup;
-			children = (
-				EA197A271BFC4D2600DF7B58 /* TaylrAPI.m */,
-				EA197A281BFC4D2600DF7B58 /* TaylrAPI.swift */,
-			);
-			path = TaylrAPI;
 			sourceTree = "<group>";
 		};
 		EA197A2A1BFC4D2600DF7B58 /* Utils */ = {
@@ -835,7 +821,6 @@
 				EA197A541BFC4D2600DF7B58 /* UIKitExtension.swift in Sources */,
 				EA197A621BFC4D2600DF7B58 /* Logging.swift in Sources */,
 				EA197A501BFC4D2600DF7B58 /* ResourceExtension.swift in Sources */,
-				EA197A641BFC4D2600DF7B58 /* TaylrAPI.m in Sources */,
 				EA197A441BFC4D2600DF7B58 /* AlamofireExtension.swift in Sources */,
 				EA197A4B1BFC4D2600DF7B58 /* Future.swift in Sources */,
 				EA197A581BFC4D2600DF7B58 /* DesignableViews.swift in Sources */,
@@ -858,7 +843,6 @@
 				EA197A9A1BFD116200DF7B58 /* ConversationViewManager.swift in Sources */,
 				EA197A3C1BFC4D2600DF7B58 /* DurationTimer.swift in Sources */,
 				EA197A3B1BFC4D2600DF7B58 /* UserViewModel+ATLParticipant.swift in Sources */,
-				EA197A651BFC4D2600DF7B58 /* TaylrAPI.swift in Sources */,
 				EA197A801BFCE09F00DF7B58 /* AnalyticsService.swift in Sources */,
 				EA197A4C1BFC4D2600DF7B58 /* ArrayProperty.swift in Sources */,
 				EA197A3D1BFC4D2600DF7B58 /* VideoPlayerViewController.swift in Sources */,
