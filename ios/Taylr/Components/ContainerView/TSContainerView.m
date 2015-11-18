@@ -10,7 +10,6 @@
 #import <React/RCTViewManager.h>
 #import <React/RCTView.h>
 #import <React/UIView+React.h>
-#import "Taylr-Swift.h"
 
 @interface TSContainerViewManager : RCTViewManager
 @end

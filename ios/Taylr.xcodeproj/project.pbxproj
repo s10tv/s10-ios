@@ -29,7 +29,6 @@
 		EA197A401BFC4D2600DF7B58 /* VolumeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1979F81BFC4D2600DF7B58 /* VolumeViewModel.swift */; };
 		EA197A411BFC4D2600DF7B58 /* ConversationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1979FA1BFC4D2600DF7B58 /* ConversationListViewController.swift */; };
 		EA197A421BFC4D2600DF7B58 /* ConversationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1979FB1BFC4D2600DF7B58 /* ConversationListViewModel.swift */; };
-		EA197A431BFC4D2600DF7B58 /* TSContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA1979FD1BFC4D2600DF7B58 /* TSContainerView.m */; };
 		EA197A441BFC4D2600DF7B58 /* AlamofireExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1979FF1BFC4D2600DF7B58 /* AlamofireExtension.swift */; };
 		EA197A451BFC4D2600DF7B58 /* AnimationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A001BFC4D2600DF7B58 /* AnimationExtensions.swift */; };
 		EA197A461BFC4D2600DF7B58 /* FoundationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A011BFC4D2600DF7B58 /* FoundationExtension.swift */; };
@@ -71,6 +70,9 @@
 		EA197A841BFCEDB500DF7B58 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A831BFCEDB500DF7B58 /* AppDependencies.swift */; };
 		EA197A861BFCFC3800DF7B58 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A851BFCFC3800DF7B58 /* RootViewController.swift */; };
 		EA197A8D1BFCFF0F00DF7B58 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A8C1BFCFF0F00DF7B58 /* AppConfig.swift */; };
+		EA197A8F1BFD0AF700DF7B58 /* TSConversationView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA197A8E1BFD0AF700DF7B58 /* TSConversationView.m */; };
+		EA197A931BFD0E2900DF7B58 /* TSConversationListView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA197A921BFD0E2900DF7B58 /* TSConversationListView.m */; };
+		EA197A961BFD0EAB00DF7B58 /* TSContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA197A951BFD0EAB00DF7B58 /* TSContainerView.m */; };
 		EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
 		EA78C8801B323E140016AB73 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA78C87F1B323E140016AB73 /* Images.xcassets */; };
 		EA7FB0941B5EF9D50052B394 /* Cabin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB08E1B5EF9D50052B394 /* Cabin-Bold.ttf */; };
@@ -130,7 +132,6 @@
 		EA1979F81BFC4D2600DF7B58 /* VolumeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VolumeViewModel.swift; sourceTree = "<group>"; };
 		EA1979FA1BFC4D2600DF7B58 /* ConversationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListViewController.swift; sourceTree = "<group>"; };
 		EA1979FB1BFC4D2600DF7B58 /* ConversationListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListViewModel.swift; sourceTree = "<group>"; };
-		EA1979FD1BFC4D2600DF7B58 /* TSContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSContainerView.m; sourceTree = "<group>"; };
 		EA1979FF1BFC4D2600DF7B58 /* AlamofireExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireExtension.swift; sourceTree = "<group>"; };
 		EA197A001BFC4D2600DF7B58 /* AnimationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationExtensions.swift; sourceTree = "<group>"; };
 		EA197A011BFC4D2600DF7B58 /* FoundationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationExtension.swift; sourceTree = "<group>"; };
@@ -173,6 +174,11 @@
 		EA197A831BFCEDB500DF7B58 /* AppDependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
 		EA197A851BFCFC3800DF7B58 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		EA197A8C1BFCFF0F00DF7B58 /* AppConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
+		EA197A8E1BFD0AF700DF7B58 /* TSConversationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSConversationView.m; sourceTree = "<group>"; };
+		EA197A901BFD0C5F00DF7B58 /* TSConversationView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSConversationView.h; sourceTree = "<group>"; };
+		EA197A911BFD0E1A00DF7B58 /* TSConversationListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSConversationListView.h; sourceTree = "<group>"; };
+		EA197A921BFD0E2900DF7B58 /* TSConversationListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSConversationListView.m; sourceTree = "<group>"; };
+		EA197A951BFD0EAB00DF7B58 /* TSContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSContainerView.m; sourceTree = "<group>"; };
 		EA2667801BFA93BA0054C777 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EA2667811BFA93BA0054C777 /* Pods.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		EA78C87F1B323E140016AB73 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Pods/PKHUD/PKHUD/Images.xcassets; sourceTree = "<group>"; };
@@ -235,9 +241,9 @@
 		EA1979E61BFC4D2600DF7B58 /* Components */ = {
 			isa = PBXGroup;
 			children = (
+				EA197A941BFD0EAB00DF7B58 /* ContainerView */,
 				EA1979E71BFC4D2600DF7B58 /* Conversation */,
 				EA1979F91BFC4D2600DF7B58 /* ConversationList */,
-				EA1979FC1BFC4D2600DF7B58 /* TSContainerView */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -245,14 +251,16 @@
 		EA1979E71BFC4D2600DF7B58 /* Conversation */ = {
 			isa = PBXGroup;
 			children = (
-				EA1979E81BFC4D2600DF7B58 /* Appearance.swift */,
 				EA1979E91BFC4D2600DF7B58 /* AudioController */,
+				EA1979F31BFC4D2600DF7B58 /* VideoPlayer */,
+				EA1979E81BFC4D2600DF7B58 /* Appearance.swift */,
 				EA1979EE1BFC4D2600DF7B58 /* ChatHistoryViewController.swift */,
 				EA1979EF1BFC4D2600DF7B58 /* Conversation.storyboard */,
 				EA1979F01BFC4D2600DF7B58 /* ConversationViewController.swift */,
 				EA1979F11BFC4D2600DF7B58 /* ConversationViewModel.swift */,
 				EA1979F21BFC4D2600DF7B58 /* UserViewModel+ATLParticipant.swift */,
-				EA1979F31BFC4D2600DF7B58 /* VideoPlayer */,
+				EA197A901BFD0C5F00DF7B58 /* TSConversationView.h */,
+				EA197A8E1BFD0AF700DF7B58 /* TSConversationView.m */,
 			);
 			path = Conversation;
 			sourceTree = "<group>";
@@ -285,16 +293,10 @@
 			children = (
 				EA1979FA1BFC4D2600DF7B58 /* ConversationListViewController.swift */,
 				EA1979FB1BFC4D2600DF7B58 /* ConversationListViewModel.swift */,
+				EA197A911BFD0E1A00DF7B58 /* TSConversationListView.h */,
+				EA197A921BFD0E2900DF7B58 /* TSConversationListView.m */,
 			);
 			path = ConversationList;
-			sourceTree = "<group>";
-		};
-		EA1979FC1BFC4D2600DF7B58 /* TSContainerView */ = {
-			isa = PBXGroup;
-			children = (
-				EA1979FD1BFC4D2600DF7B58 /* TSContainerView.m */,
-			);
-			path = TSContainerView;
 			sourceTree = "<group>";
 		};
 		EA1979FE1BFC4D2600DF7B58 /* Extensions */ = {
@@ -410,6 +412,14 @@
 				EA197A811BFCE1A100DF7B58 /* TSAnalytics.m */,
 			);
 			path = Analytics;
+			sourceTree = "<group>";
+		};
+		EA197A941BFD0EAB00DF7B58 /* ContainerView */ = {
+			isa = PBXGroup;
+			children = (
+				EA197A951BFD0EAB00DF7B58 /* TSContainerView.m */,
+			);
+			path = ContainerView;
 			sourceTree = "<group>";
 		};
 		EA2666F21BFA62230054C777 /* Products */ = {
@@ -732,10 +742,11 @@
 				EA197A491BFC4D2600DF7B58 /* PKHUDExtension.swift in Sources */,
 				EA197A6E1BFC4D2600DF7B58 /* Video.swift in Sources */,
 				EA197A3F1BFC4D2600DF7B58 /* VolumeView.swift in Sources */,
-				EA197A431BFC4D2600DF7B58 /* TSContainerView.m in Sources */,
 				EA197A531BFC4D2600DF7B58 /* UIKitBindings.swift in Sources */,
 				EA197A481BFC4D2600DF7B58 /* MediaExtension.swift in Sources */,
 				EA197A371BFC4D2600DF7B58 /* ChatHistoryViewController.swift in Sources */,
+				EA197A961BFD0EAB00DF7B58 /* TSContainerView.m in Sources */,
+				EA197A8F1BFD0AF700DF7B58 /* TSConversationView.m in Sources */,
 				EA197A401BFC4D2600DF7B58 /* VolumeViewModel.swift in Sources */,
 				EA197A361BFC4D2600DF7B58 /* MuteChecker.m in Sources */,
 				EA197A521BFC4D2600DF7B58 /* ThirdPartyBindings.swift in Sources */,
@@ -770,6 +781,7 @@
 				EA197A681BFC4D2600DF7B58 /* CurrentUser.swift in Sources */,
 				EA197A4E1BFC4D2600DF7B58 /* PropertyExtensions.swift in Sources */,
 				EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */,
+				EA197A931BFD0E2900DF7B58 /* TSConversationListView.m in Sources */,
 				EA197A8D1BFCFF0F00DF7B58 /* AppConfig.swift in Sources */,
 				EA197A451BFC4D2600DF7B58 /* AnimationExtensions.swift in Sources */,
 				EA197A5C1BFC4D2600DF7B58 /* Segue.swift in Sources */,

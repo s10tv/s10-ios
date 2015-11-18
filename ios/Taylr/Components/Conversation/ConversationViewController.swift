@@ -38,6 +38,7 @@ class ConversationViewController : UIViewController {
     private(set) var videoPlayer: VideoPlayerViewController!
     
     var vm: ConversationViewModel!
+    var layerClient: LYRClient!
     
     override func viewDidLoad() {
         super.viewDidLoad()
