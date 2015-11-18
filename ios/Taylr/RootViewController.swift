@@ -11,18 +11,18 @@ import React
 
 class RootViewController : UIViewController {
     
-    let bridge: RCTBridge
+    private(set) var bridge: RCTBridge!
     
-    init(bridge: RCTBridge) {
+    convenience init(bridge: RCTBridge) {
+        self.init(nibName: nil, bundle: nil)
         self.bridge = bridge
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
     
     override func loadView() {
         view = RCTRootView(bridge: bridge, moduleName: "Taylr", initialProperties: nil)
+    }
+    
+    override func preferredStatusBarStyle() -> UIStatusBarStyle {
+        return .LightContent
     }
 }
