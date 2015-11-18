@@ -34,9 +34,9 @@ class AppDependencies : NSObject {
         env = Environment()
         config = AppConfig(env: env)
         super.init()
-        Fabric.with([Digits(), Crashlytics()])
-        Crashlytics.sharedInstance().delegate = self
         Ouralabs.initWithKey(config.ouralabsKey)
+        Crashlytics.sharedInstance().delegate = self
+        Fabric.with([Digits(), Crashlytics()])
         Appearance.setupGlobalAppearances()
     }
 }
