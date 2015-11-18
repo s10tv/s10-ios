@@ -12,7 +12,7 @@ import AnalyticsSwift
 import Amplitude_iOS
 import Mixpanel
 
-class AnalyticsService {
+class AnalyticsService : NSObject {
     private let env: TaylrEnvironment
     private let currentUser: CurrentUser
     private let segment: AnalyticsSwift.Analytics
@@ -29,6 +29,7 @@ class AnalyticsService {
         amplitude.trackingSessionEvents = true
         amplitude.initializeApiKey(env.amplitudeKey)
         mixpanel = Mixpanel.sharedInstanceWithToken(env.mixpanelToken)
+        super.init()
         if env.build != "0" {
             UXCam.startWithKey(env.uxcamKey)
         }
@@ -50,6 +51,7 @@ class AnalyticsService {
         }
         setUserProperties(["TestFlightBeta": Environment.isRunningTestFlightBeta()])
         setUserProperties(["Audience": env.audience.rawValue])
+        
     }
 
     deinit {
