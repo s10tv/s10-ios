@@ -15,8 +15,4 @@ public struct Context {
         return nil
     }
     
-    public init(layer: LayerService) {
-        self.layer = layer
-    }
-//    static let sharedInstance = Context()
 }

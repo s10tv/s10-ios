@@ -23,8 +23,7 @@ class AppDependencies : NSObject {
         return RCTBridge(delegate: self, launchOptions: nil)
     }()
     lazy private(set) var analytics: AnalyticsService = {
-        let user = CurrentUser()
-        return AnalyticsService(config: self.config, env: self.env, currentUser: user)
+        return AnalyticsService(config: self.config, env: self.env)
     }()
     lazy private(set) var layer: LayerService = {
         return LayerService(layerAppID: self.config.layerURL, existingClient: nil)

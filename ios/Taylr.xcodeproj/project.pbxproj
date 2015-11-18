@@ -61,7 +61,6 @@
 		EA197A641BFC4D2600DF7B58 /* TaylrAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EA197A271BFC4D2600DF7B58 /* TaylrAPI.m */; };
 		EA197A651BFC4D2600DF7B58 /* TaylrAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A281BFC4D2600DF7B58 /* TaylrAPI.swift */; };
 		EA197A671BFC4D2600DF7B58 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A2B1BFC4D2600DF7B58 /* Context.swift */; };
-		EA197A681BFC4D2600DF7B58 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A2C1BFC4D2600DF7B58 /* CurrentUser.swift */; };
 		EA197A691BFC4D2600DF7B58 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A2D1BFC4D2600DF7B58 /* Formatters.swift */; };
 		EA197A6B1BFC4D2600DF7B58 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A2F1BFC4D2600DF7B58 /* Image.swift */; };
 		EA197A6E1BFC4D2600DF7B58 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A321BFC4D2600DF7B58 /* Video.swift */; };
@@ -168,7 +167,6 @@
 		EA197A271BFC4D2600DF7B58 /* TaylrAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaylrAPI.m; sourceTree = "<group>"; };
 		EA197A281BFC4D2600DF7B58 /* TaylrAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaylrAPI.swift; sourceTree = "<group>"; };
 		EA197A2B1BFC4D2600DF7B58 /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
-		EA197A2C1BFC4D2600DF7B58 /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		EA197A2D1BFC4D2600DF7B58 /* Formatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		EA197A2F1BFC4D2600DF7B58 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		EA197A321BFC4D2600DF7B58 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
@@ -402,7 +400,6 @@
 			isa = PBXGroup;
 			children = (
 				EA197A2B1BFC4D2600DF7B58 /* Context.swift */,
-				EA197A2C1BFC4D2600DF7B58 /* CurrentUser.swift */,
 				EA197A2D1BFC4D2600DF7B58 /* Formatters.swift */,
 				EA197A2F1BFC4D2600DF7B58 /* Image.swift */,
 				EA197A321BFC4D2600DF7B58 /* Video.swift */,
@@ -783,7 +780,6 @@
 				EA197A821BFCE1A100DF7B58 /* TSAnalytics.m in Sources */,
 				EA197A691BFC4D2600DF7B58 /* Formatters.swift in Sources */,
 				EA197A5F1BFC4D2600DF7B58 /* LayerExtensions.swift in Sources */,
-				EA197A681BFC4D2600DF7B58 /* CurrentUser.swift in Sources */,
 				EA197A4E1BFC4D2600DF7B58 /* PropertyExtensions.swift in Sources */,
 				EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */,
 				EA197A931BFD0E2900DF7B58 /* TSConversationListView.m in Sources */,

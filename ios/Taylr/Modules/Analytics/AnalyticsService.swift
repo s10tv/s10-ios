@@ -12,6 +12,26 @@ import AnalyticsSwift
 import Amplitude_iOS
 import Mixpanel
 
+public class CurrentUser {
+    public enum AccountStatus : String {
+        case Pending = "pending"
+        case Active = "active"
+    }
+    
+    // CurrentUser
+    public let userId: PropertyOf<String?>
+    public let firstName: PropertyOf<String?>
+    public let lastName: PropertyOf<String?>
+    public let gradYear: PropertyOf<String?>
+    
+    public init() {
+        userId = PropertyOf(nil)
+        firstName = PropertyOf(nil)
+        lastName = PropertyOf(nil)
+        gradYear = PropertyOf(nil)
+    }
+}
+
 @objc(TSAnalytics)
 class AnalyticsService : NSObject {
     private let env: Environment
@@ -22,9 +42,9 @@ class AnalyticsService : NSObject {
 
     private let cd = CompositeDisposable()
 
-    init(config: AppConfig, env: Environment, currentUser: CurrentUser) {
+    init(config: AppConfig, env: Environment) {
         self.env = env
-        self.currentUser = currentUser
+        self.currentUser = CurrentUser()
         segment = AnalyticsSwift.Analytics.create(config.segmentWriteKey)
         amplitude = Amplitude.instance()
         amplitude.trackingSessionEvents = true
