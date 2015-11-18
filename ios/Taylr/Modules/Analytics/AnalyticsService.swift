@@ -12,6 +12,7 @@ import AnalyticsSwift
 import Amplitude_iOS
 import Mixpanel
 
+@objc(TSAnalytics)
 class AnalyticsService : NSObject {
     private let env: Environment
     private let currentUser: CurrentUser
@@ -91,8 +92,8 @@ class AnalyticsService : NSObject {
         }
         flush()
     }
-
-    func track(event: String, _ properties: [String: AnyObject]? = nil) {
+    
+    @objc func track(event: String, properties: [String: AnyObject]? = nil) {
         let msg = TrackMessageBuilder(event: event).properties(properties ?? [:])
         if let userId = currentUser.userId.value {
             segment.enqueue(msg.userId(userId))

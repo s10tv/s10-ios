@@ -8,18 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <React/RCTBridgeModule.h>
-#import "Taylr-Swift.h"
 
-@interface TSAnalytics : NSObject <RCTBridgeModule>
+@interface RCT_EXTERN_MODULE(TSAnalytics, NSObject)
 
-@end
-
-@implementation TSAnalytics
-
-RCT_EXPORT_MODULE();
-
-RCT_EXPORT_METHOD(track:(NSString *)event properties:(NSString *)properties) {
-    RCTLogInfo(@"Track event %@ properties %@", event, properties);
-}
+RCT_EXTERN_METHOD(track:(NSString *)event properties:(NSDictionary *)properties)
 
 @end

@@ -52,6 +52,7 @@ extension AppDependencies : RCTBridgeDelegate {
             ConversationListViewManager(layerClient: layer.layerClient),
             ConversationViewManager(layerClient: layer.layerClient),
             layer,
+            analytics
         ]
     }
 }

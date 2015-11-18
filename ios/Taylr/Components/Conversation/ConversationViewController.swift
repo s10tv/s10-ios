@@ -182,7 +182,7 @@ class ConversationViewController : UIViewController {
         alert.addAction(LS(.reportAlertCancel), style: .Cancel)
         alert.addAction(LS(.reportAlertConfirm), style: .Destructive) { _ in
             if let reportReason = alert.textFields?[0].text {
-                Analytics.track("User: Report", ["Reason": reportReason])
+                Analytics.track("User: Report", properties: ["Reason": reportReason])
 //                self.vm.reportUser(reportReason)
             }
         }
@@ -211,7 +211,7 @@ extension ConversationViewController : VideoMakerDelegate {
             self.scrollDownHint.hidden = false
             self.scrollView.scrollEnabled = true
             self.vm.sendVideo(url, thumbnail: thumbnail, duration: duration)
-            Analytics.track("Message: Send", ["ConversationName": self.vm.displayName.value])
+            Analytics.track("Message: Send", properties: ["ConversationName": self.vm.displayName.value])
         }
     }
 }
@@ -249,7 +249,7 @@ extension ConversationViewController : ConversationHistoryDelegate {
 extension ConversationViewController : VideoPlayerViewControllerDelegate {
     func videoPlayer(videoPlayer: VideoPlayerViewController, didPlayVideo video: Video) {
         vm.markMessageAsRead(video.identifier)
-        Analytics.track("Message: Open", [
+        Analytics.track("Message: Open", properties: [
             "MessageId": video.identifier
         ])
     }
