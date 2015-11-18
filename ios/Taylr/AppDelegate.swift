@@ -72,7 +72,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
         let user = CurrentUser()
         _GlobalsContainer.instance = GlobalsContainer(env: env,
             analyticsService: AnalyticsService(env: env, currentUser: user),
-            upgradeService: UpgradeService(env: env, currentUser: user),
             layerService: LayerService(layerAppID: env.layerURL, existingClient: layerClient),
             reactBridge: bridge
         )
@@ -130,7 +129,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
     
     func applicationWillEnterForeground(application: UIApplication) {
         Analytics.track("AppOpen")
-        Globals.upgradeService.promptForUpgradeIfNeeded()
     }
     
     func applicationDidEnterBackground(application: UIApplication) {

@@ -12,7 +12,6 @@ import React
 struct GlobalsContainer {
     let env: TaylrEnvironment
     let analyticsService : AnalyticsService
-    let upgradeService: UpgradeService
     let layerService: LayerService
     let reactBridge: RCTBridge
 }

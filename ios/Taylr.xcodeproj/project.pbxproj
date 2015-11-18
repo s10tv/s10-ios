@@ -55,8 +55,6 @@
 		EA197A5A1BFC4D2600DF7B58 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A181BFC4D2600DF7B58 /* Environment.swift */; };
 		EA197A5B1BFC4D2600DF7B58 /* ProvisioningProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A191BFC4D2600DF7B58 /* ProvisioningProfile.swift */; };
 		EA197A5C1BFC4D2600DF7B58 /* Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A1A1BFC4D2600DF7B58 /* Segue.swift */; };
-		EA197A5D1BFC4D2600DF7B58 /* AccountService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A1C1BFC4D2600DF7B58 /* AccountService.swift */; };
-		EA197A5E1BFC4D2600DF7B58 /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A1D1BFC4D2600DF7B58 /* AnalyticsService.swift */; };
 		EA197A5F1BFC4D2600DF7B58 /* LayerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A1F1BFC4D2600DF7B58 /* LayerExtensions.swift */; };
 		EA197A601BFC4D2600DF7B58 /* LayerHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A201BFC4D2600DF7B58 /* LayerHelpers.swift */; };
 		EA197A611BFC4D2600DF7B58 /* LayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A211BFC4D2600DF7B58 /* LayerService.swift */; };
@@ -64,7 +62,6 @@
 		EA197A631BFC4D2600DF7B58 /* NSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA197A251BFC4D2600DF7B58 /* NSLogger.m */; };
 		EA197A641BFC4D2600DF7B58 /* TaylrAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = EA197A271BFC4D2600DF7B58 /* TaylrAPI.m */; };
 		EA197A651BFC4D2600DF7B58 /* TaylrAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A281BFC4D2600DF7B58 /* TaylrAPI.swift */; };
-		EA197A661BFC4D2600DF7B58 /* UpgradeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A291BFC4D2600DF7B58 /* UpgradeService.swift */; };
 		EA197A671BFC4D2600DF7B58 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A2B1BFC4D2600DF7B58 /* Context.swift */; };
 		EA197A681BFC4D2600DF7B58 /* CurrentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A2C1BFC4D2600DF7B58 /* CurrentUser.swift */; };
 		EA197A691BFC4D2600DF7B58 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A2D1BFC4D2600DF7B58 /* Formatters.swift */; };
@@ -73,6 +70,7 @@
 		EA197A6C1BFC4D2600DF7B58 /* TaylrEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A301BFC4D2600DF7B58 /* TaylrEnvironment.swift */; };
 		EA197A6D1BFC4D2600DF7B58 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A311BFC4D2600DF7B58 /* UserDefaults.swift */; };
 		EA197A6E1BFC4D2600DF7B58 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A321BFC4D2600DF7B58 /* Video.swift */; };
+		EA197A801BFCE09F00DF7B58 /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A7F1BFCE09F00DF7B58 /* AnalyticsService.swift */; };
 		EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
 		EA78C8801B323E140016AB73 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA78C87F1B323E140016AB73 /* Images.xcassets */; };
 		EA7FB0941B5EF9D50052B394 /* Cabin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB08E1B5EF9D50052B394 /* Cabin-Bold.ttf */; };
@@ -158,8 +156,6 @@
 		EA197A181BFC4D2600DF7B58 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		EA197A191BFC4D2600DF7B58 /* ProvisioningProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvisioningProfile.swift; sourceTree = "<group>"; };
 		EA197A1A1BFC4D2600DF7B58 /* Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segue.swift; sourceTree = "<group>"; };
-		EA197A1C1BFC4D2600DF7B58 /* AccountService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccountService.swift; sourceTree = "<group>"; };
-		EA197A1D1BFC4D2600DF7B58 /* AnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
 		EA197A1F1BFC4D2600DF7B58 /* LayerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerExtensions.swift; sourceTree = "<group>"; };
 		EA197A201BFC4D2600DF7B58 /* LayerHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerHelpers.swift; sourceTree = "<group>"; };
 		EA197A211BFC4D2600DF7B58 /* LayerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerService.swift; sourceTree = "<group>"; };
@@ -168,7 +164,6 @@
 		EA197A251BFC4D2600DF7B58 /* NSLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSLogger.m; sourceTree = "<group>"; };
 		EA197A271BFC4D2600DF7B58 /* TaylrAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaylrAPI.m; sourceTree = "<group>"; };
 		EA197A281BFC4D2600DF7B58 /* TaylrAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaylrAPI.swift; sourceTree = "<group>"; };
-		EA197A291BFC4D2600DF7B58 /* UpgradeService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpgradeService.swift; sourceTree = "<group>"; };
 		EA197A2B1BFC4D2600DF7B58 /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
 		EA197A2C1BFC4D2600DF7B58 /* CurrentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrentUser.swift; sourceTree = "<group>"; };
 		EA197A2D1BFC4D2600DF7B58 /* Formatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
@@ -177,6 +172,7 @@
 		EA197A301BFC4D2600DF7B58 /* TaylrEnvironment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaylrEnvironment.swift; sourceTree = "<group>"; };
 		EA197A311BFC4D2600DF7B58 /* UserDefaults.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		EA197A321BFC4D2600DF7B58 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
+		EA197A7F1BFCE09F00DF7B58 /* AnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
 		EA2667801BFA93BA0054C777 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EA2667811BFA93BA0054C777 /* Pods.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		EA78C87F1B323E140016AB73 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Pods/PKHUD/PKHUD/Images.xcassets; sourceTree = "<group>"; };
@@ -359,12 +355,10 @@
 		EA197A1B1BFC4D2600DF7B58 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
-				EA197A1C1BFC4D2600DF7B58 /* AccountService.swift */,
-				EA197A1D1BFC4D2600DF7B58 /* AnalyticsService.swift */,
+				EA197A7E1BFCE09F00DF7B58 /* Analytics */,
 				EA197A1E1BFC4D2600DF7B58 /* Layer */,
 				EA197A221BFC4D2600DF7B58 /* Logging */,
 				EA197A261BFC4D2600DF7B58 /* TaylrAPI */,
-				EA197A291BFC4D2600DF7B58 /* UpgradeService.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -403,14 +397,22 @@
 			children = (
 				EA197A2B1BFC4D2600DF7B58 /* Context.swift */,
 				EA197A2C1BFC4D2600DF7B58 /* CurrentUser.swift */,
-				EA197A2D1BFC4D2600DF7B58 /* Formatters.swift */,
 				EA197A2E1BFC4D2600DF7B58 /* Globals.swift */,
+				EA197A2D1BFC4D2600DF7B58 /* Formatters.swift */,
 				EA197A2F1BFC4D2600DF7B58 /* Image.swift */,
 				EA197A301BFC4D2600DF7B58 /* TaylrEnvironment.swift */,
 				EA197A311BFC4D2600DF7B58 /* UserDefaults.swift */,
 				EA197A321BFC4D2600DF7B58 /* Video.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		EA197A7E1BFCE09F00DF7B58 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				EA197A7F1BFCE09F00DF7B58 /* AnalyticsService.swift */,
+			);
+			path = Analytics;
 			sourceTree = "<group>";
 		};
 		EA2666F21BFA62230054C777 /* Products */ = {
@@ -739,9 +741,7 @@
 				EA197A521BFC4D2600DF7B58 /* ThirdPartyBindings.swift in Sources */,
 				EA197A391BFC4D2600DF7B58 /* ConversationViewController.swift in Sources */,
 				EA197A611BFC4D2600DF7B58 /* LayerService.swift in Sources */,
-				EA197A5E1BFC4D2600DF7B58 /* AnalyticsService.swift in Sources */,
 				EA197A411BFC4D2600DF7B58 /* ConversationListViewController.swift in Sources */,
-				EA197A661BFC4D2600DF7B58 /* UpgradeService.swift in Sources */,
 				EA197A671BFC4D2600DF7B58 /* Context.swift in Sources */,
 				EA197A5B1BFC4D2600DF7B58 /* ProvisioningProfile.swift in Sources */,
 				EA197A3E1BFC4D2600DF7B58 /* VideoPlayerViewModel.swift in Sources */,
@@ -778,13 +778,13 @@
 				EA197A3C1BFC4D2600DF7B58 /* DurationTimer.swift in Sources */,
 				EA197A3B1BFC4D2600DF7B58 /* UserViewModel+ATLParticipant.swift in Sources */,
 				EA197A651BFC4D2600DF7B58 /* TaylrAPI.swift in Sources */,
+				EA197A801BFCE09F00DF7B58 /* AnalyticsService.swift in Sources */,
 				EA197A4C1BFC4D2600DF7B58 /* ArrayProperty.swift in Sources */,
 				EA197A3D1BFC4D2600DF7B58 /* VideoPlayerViewController.swift in Sources */,
 				EA197A5A1BFC4D2600DF7B58 /* Environment.swift in Sources */,
 				EA197A3A1BFC4D2600DF7B58 /* ConversationViewModel.swift in Sources */,
 				EA197A551BFC4D2600DF7B58 /* AsyncOperation.swift in Sources */,
 				EA197A6D1BFC4D2600DF7B58 /* UserDefaults.swift in Sources */,
-				EA197A5D1BFC4D2600DF7B58 /* AccountService.swift in Sources */,
 				EA197A331BFC4D2600DF7B58 /* Appearance.swift in Sources */,
 				EA197A591BFC4D2600DF7B58 /* DeviceInfo.swift in Sources */,
 			);
