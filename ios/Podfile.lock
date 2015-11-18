@@ -6,12 +6,12 @@ PODS:
   - AnalyticsSwift (0.2.0)
   - Atlas (1.0.14):
     - LayerKit (>= 0.17.0)
-  - Bolts (1.4.0):
-    - Bolts/AppLinks (= 1.4.0)
-    - Bolts/Tasks (= 1.4.0)
-  - Bolts/AppLinks (1.4.0):
+  - Bolts (1.5.0):
+    - Bolts/AppLinks (= 1.5.0)
+    - Bolts/Tasks (= 1.5.0)
+  - Bolts/AppLinks (1.5.0):
     - Bolts/Tasks
-  - Bolts/Tasks (1.4.0)
+  - Bolts/Tasks (1.5.0)
   - Cartography (0.6.0)
   - Crashlytics (3.3.4)
   - DateTools (1.7.0)
@@ -29,16 +29,16 @@ PODS:
   - Fabric (1.5.5):
     - Fabric/Base (= 1.5.5)
   - Fabric/Base (1.5.5)
-  - FBSDKCoreKit (4.7.1):
+  - FBSDKCoreKit (4.8.0):
     - Bolts (~> 1.1)
-    - FBSDKCoreKit/arc (= 4.7.1)
-    - FBSDKCoreKit/no-arc (= 4.7.1)
-  - FBSDKCoreKit/arc (4.7.1):
+    - FBSDKCoreKit/arc (= 4.8.0)
+    - FBSDKCoreKit/no-arc (= 4.8.0)
+  - FBSDKCoreKit/arc (4.8.0):
     - Bolts (~> 1.1)
-  - FBSDKCoreKit/no-arc (4.7.1):
+  - FBSDKCoreKit/no-arc (4.8.0):
     - Bolts (~> 1.1)
     - FBSDKCoreKit/arc
-  - FBSDKLoginKit (4.7.1):
+  - FBSDKLoginKit (4.8.0):
     - FBSDKCoreKit
   - FMDB/common (2.5)
   - FMDB/standard (2.5):
@@ -104,7 +104,7 @@ DEPENDENCIES:
   - DTFoundation/DTASN1 (~> 1.7)
   - EDColor (~> 1.0)
   - Fabric (~> 1.5)
-  - FBSDKLoginKit (~> 4.6)
+  - FBSDKLoginKit (~> 4.8)
   - FormatterKit/TimeIntervalFormatter (~> 1.8)
   - LayerKit (~> 0.17)
   - Mixpanel (~> 2.9)
@@ -148,7 +148,7 @@ SPEC CHECKSUMS:
   AMPopTip: 17c0fc2bffc9d81314228073f63ea0320f204b11
   AnalyticsSwift: 76329ac0b66be9747e9f718076c53d264ed24089
   Atlas: cd700f467c9bffd1bcb61d77a1feff56def88405
-  Bolts: 0e9bce58b9b9f5e8a7a4d47b16d2fabec289072b
+  Bolts: 722ab9a4f8b50fc4ed1b9998a5a7a2b3f16d80b4
   Cartography: 70af183a248547694a8cfaa6b989cb7e04589985
   Crashlytics: 41c082440d2e14da444186fff65e79c0b4b35d4c
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
@@ -157,8 +157,8 @@ SPEC CHECKSUMS:
   EDColor: c83f9a61f9f9b3c23d541f1feb561558e29cb088
   EZAudio: 01373de2b1257b77be1bf13753fb1c4ea8a9777e
   Fabric: 190bf1a6eb65f7500de1347d027d2e59a7e53db1
-  FBSDKCoreKit: 9141b70960a37930850370495fe565f4a27ac141
-  FBSDKLoginKit: c11ed3c2833472db3bb4a4aecf27af4a6f69b173
+  FBSDKCoreKit: 66a935d17b6e00b6b64e604f2eb9b72c9ab7deb8
+  FBSDKLoginKit: d893fcbb98d854496925e9ff73c67b896982d3c4
   FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
   FormatterKit: bddde83e054edf9d9ee14f9de3b3a5103db256f4
   LayerKit: 81d635966427859230deb8ede88dbc710dcac8fd
