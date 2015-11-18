@@ -9,8 +9,12 @@
 import Foundation
 import ReactiveCocoa
 import LayerKit
+import React
 
+@objc(TSLayerService)
 public class LayerService: NSObject {
+    
+    @objc weak var bridge: RCTBridge?
     
     let unreadCount = MutableProperty(UInt(0))
     let unreadQueryController: LYRQueryController?
@@ -232,5 +236,13 @@ extension LayerService : LYRClientDelegate {
     
     public func layerClient(client: LYRClient!, didFailOperationWithError error: NSError!) {
         Log.error("Layer failed to perform operation", error)
+    }
+}
+
+// MARK: - 
+
+extension LayerService {
+    @objc func getUnreadCount(callback: RCTResponseSenderBlock) {
+        callback([unreadCount.value])
     }
 }

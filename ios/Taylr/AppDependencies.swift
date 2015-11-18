@@ -50,7 +50,8 @@ extension AppDependencies : RCTBridgeDelegate {
     func extraModulesForBridge(bridge: RCTBridge!) -> [AnyObject]! {
         return [
             TSConversationListViewManager(layerClient: layer.layerClient),
-            TSConversationViewManager(layerClient: layer.layerClient)
+            TSConversationViewManager(layerClient: layer.layerClient),
+            layer,
         ]
     }
 }

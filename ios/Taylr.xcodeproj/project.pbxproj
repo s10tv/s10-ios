@@ -73,6 +73,7 @@
 		EA197A8F1BFD0AF700DF7B58 /* TSConversationView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA197A8E1BFD0AF700DF7B58 /* TSConversationView.m */; };
 		EA197A931BFD0E2900DF7B58 /* TSConversationListView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA197A921BFD0E2900DF7B58 /* TSConversationListView.m */; };
 		EA197A961BFD0EAB00DF7B58 /* TSContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA197A951BFD0EAB00DF7B58 /* TSContainerView.m */; };
+		EA197A981BFD0FB900DF7B58 /* TSLayerService.m in Sources */ = {isa = PBXBuildFile; fileRef = EA197A971BFD0FB900DF7B58 /* TSLayerService.m */; };
 		EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
 		EA78C8801B323E140016AB73 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA78C87F1B323E140016AB73 /* Images.xcassets */; };
 		EA7FB0941B5EF9D50052B394 /* Cabin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB08E1B5EF9D50052B394 /* Cabin-Bold.ttf */; };
@@ -179,6 +180,7 @@
 		EA197A911BFD0E1A00DF7B58 /* TSConversationListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TSConversationListView.h; sourceTree = "<group>"; };
 		EA197A921BFD0E2900DF7B58 /* TSConversationListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSConversationListView.m; sourceTree = "<group>"; };
 		EA197A951BFD0EAB00DF7B58 /* TSContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSContainerView.m; sourceTree = "<group>"; };
+		EA197A971BFD0FB900DF7B58 /* TSLayerService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSLayerService.m; sourceTree = "<group>"; };
 		EA2667801BFA93BA0054C777 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EA2667811BFA93BA0054C777 /* Pods.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		EA78C87F1B323E140016AB73 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Pods/PKHUD/PKHUD/Images.xcassets; sourceTree = "<group>"; };
@@ -370,6 +372,7 @@
 				EA197A1F1BFC4D2600DF7B58 /* LayerExtensions.swift */,
 				EA197A201BFC4D2600DF7B58 /* LayerHelpers.swift */,
 				EA197A211BFC4D2600DF7B58 /* LayerService.swift */,
+				EA197A971BFD0FB900DF7B58 /* TSLayerService.m */,
 			);
 			path = Layer;
 			sourceTree = "<group>";
@@ -788,6 +791,7 @@
 				EA197A561BFC4D2600DF7B58 /* AzureClient.swift in Sources */,
 				EA197A461BFC4D2600DF7B58 /* FoundationExtension.swift in Sources */,
 				EA1979E31BFC4CD800DF7B58 /* SBConstants.swift in Sources */,
+				EA197A981BFD0FB900DF7B58 /* TSLayerService.m in Sources */,
 				EA1979E21BFC4CD800DF7B58 /* R.swift in Sources */,
 				EA197A3C1BFC4D2600DF7B58 /* DurationTimer.swift in Sources */,
 				EA197A3B1BFC4D2600DF7B58 /* UserViewModel+ATLParticipant.swift in Sources */,
