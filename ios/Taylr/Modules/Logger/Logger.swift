@@ -12,10 +12,12 @@ import CocoaLumberjack
 @objc(TSLogger)
 public class Logger : NSObject {
     
-    override init() {
+    init(config: AppConfig) {
         super.init()
         DDLog.addLogger(DDTTYLogger.sharedInstance()) // TTY = Xcode console
         DDLog.addLogger(DDASLLogger.sharedInstance()) // ASL = Apple System Logs
+        DDLog.addLogger(DDOuralabsLogger(apiKey: config.ouralabsKey))
+        
         DDLogInfo("Logger initialized")
     }
 

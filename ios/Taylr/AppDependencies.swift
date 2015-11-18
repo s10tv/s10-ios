@@ -11,12 +11,12 @@ import React
 import Fabric
 import DigitsKit
 import Crashlytics
-import Ouralabs
 import LayerKit
 
 class AppDependencies : NSObject {
     let env: Environment
     let config: AppConfig
+    let logger: Logger
     
     // Lazily initialized modules
     lazy private(set) var bridge: RCTBridge = {
@@ -32,8 +32,9 @@ class AppDependencies : NSObject {
     override init() {
         env = Environment()
         config = AppConfig(env: env)
+        logger = Logger(config: config)
+        
         super.init()
-        Ouralabs.initWithKey(config.ouralabsKey)
         Crashlytics.sharedInstance().delegate = self
         Fabric.with([Digits(), Crashlytics()])
         Appearance.setupGlobalAppearances()
@@ -51,7 +52,8 @@ extension AppDependencies : RCTBridgeDelegate {
             ConversationListViewManager(layerClient: layer.layerClient),
             ConversationViewManager(layerClient: layer.layerClient),
             layer,
-            analytics
+            analytics,
+            logger,
         ]
     }
 }

@@ -76,6 +76,7 @@
 		EA3713C21BFD3A9C00E51980 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3713BF1BFD3A9C00E51980 /* Logger.swift */; };
 		EA3713C31BFD3A9C00E51980 /* NSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3713C11BFD3A9C00E51980 /* NSLogger.m */; };
 		EA3713C51BFD3E1B00E51980 /* TSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3713C41BFD3E1B00E51980 /* TSLogger.m */; };
+		EA3713C71BFD434300E51980 /* DDOuralabsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3713C61BFD434300E51980 /* DDOuralabsLogger.swift */; };
 		EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
 		EA78C8801B323E140016AB73 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA78C87F1B323E140016AB73 /* Images.xcassets */; };
 		EA7FB0941B5EF9D50052B394 /* Cabin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB08E1B5EF9D50052B394 /* Cabin-Bold.ttf */; };
@@ -201,6 +202,7 @@
 		EA3713C01BFD3A9C00E51980 /* NSLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSLogger.h; sourceTree = "<group>"; };
 		EA3713C11BFD3A9C00E51980 /* NSLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSLogger.m; sourceTree = "<group>"; };
 		EA3713C41BFD3E1B00E51980 /* TSLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSLogger.m; sourceTree = "<group>"; };
+		EA3713C61BFD434300E51980 /* DDOuralabsLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDOuralabsLogger.swift; sourceTree = "<group>"; };
 		EA78C87F1B323E140016AB73 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Pods/PKHUD/PKHUD/Images.xcassets; sourceTree = "<group>"; };
 		EA7FB08E1B5EF9D50052B394 /* Cabin-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Bold.ttf"; sourceTree = "<group>"; };
 		EA7FB08F1B5EF9D50052B394 /* Cabin-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -465,6 +467,7 @@
 			isa = PBXGroup;
 			children = (
 				EA3713BF1BFD3A9C00E51980 /* Logger.swift */,
+				EA3713C61BFD434300E51980 /* DDOuralabsLogger.swift */,
 				EA3713C41BFD3E1B00E51980 /* TSLogger.m */,
 				EA3713C01BFD3A9C00E51980 /* NSLogger.h */,
 				EA3713C11BFD3A9C00E51980 /* NSLogger.m */,
@@ -820,6 +823,7 @@
 				EA197A511BFC4D2600DF7B58 /* SwiftExtensions.swift in Sources */,
 				EA197A341BFC4D2600DF7B58 /* AudioController.swift in Sources */,
 				EA197A421BFC4D2600DF7B58 /* ConversationListViewModel.swift in Sources */,
+				EA3713C71BFD434300E51980 /* DDOuralabsLogger.swift in Sources */,
 				EA197A541BFC4D2600DF7B58 /* UIKitExtension.swift in Sources */,
 				EA197A501BFC4D2600DF7B58 /* ResourceExtension.swift in Sources */,
 				EA197A441BFC4D2600DF7B58 /* AlamofireExtension.swift in Sources */,
