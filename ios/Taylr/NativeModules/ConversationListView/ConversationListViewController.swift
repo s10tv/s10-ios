@@ -52,18 +52,6 @@ class ConversationListViewController : ATLConversationListViewController {
         super.viewDidDisappear(animated)
         DDLogDebug("ConversationList - viewDidDisappear")
     }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        tableView.contentInset = UIEdgeInsets(top: topLayoutGuide.length, left: 0,
-            bottom: bottomLayoutGuide.length, right: 0)
-    }
-    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if let vc = segue.destinationViewController as? ConversationViewController {
-//            vc.vm = vm.conversationVM(selectedConversation!)
-//        }
-//    }
 }
 
 extension ConversationListViewController : ATLConversationListViewControllerDelegate {

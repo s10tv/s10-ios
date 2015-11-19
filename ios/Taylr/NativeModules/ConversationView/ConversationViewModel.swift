@@ -39,8 +39,6 @@ public class ConversationViewModel: NSObject {
         self.layer = layer
         self.currentUser = currentUser
         self.conversation = conversation
-//        self.userSubscriptions = conversation.otherUserIds(ctx.currentUserId)
-//            .map { ctx.meteor.subscribe("user", $0) }
         
         let otherParticipant = conversation.otherParticipants(currentUser.userId).first
         let avatarURL = conversation.avatarURL ?? otherParticipant?.avatarURL

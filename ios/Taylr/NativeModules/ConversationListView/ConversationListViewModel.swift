@@ -57,9 +57,4 @@ public class ConversationListViewModel: NSObject {
         }
         return conversation.lastMessage?.textPart?.asString() ?? ""
     }
-    
-//    public func conversationVM(conversation: LYRConversation) -> ConversationViewModel {
-//        return ConversationViewModel(ctx, conversation: conversation)
-//    }
-    
 }
