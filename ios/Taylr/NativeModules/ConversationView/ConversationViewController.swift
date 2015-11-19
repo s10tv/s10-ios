@@ -7,11 +7,12 @@
 //
 
 import UIKit
-import ReactiveCocoa
+import CocoaLumberjack
 import ARAnalytics
-import Atlas
-import SwipeView
+import ReactiveCocoa
 import NKRecorder
+import SwipeView
+import Atlas
 import PKHUD
 
 class ConversationViewController : UIViewController {
@@ -65,8 +66,6 @@ class ConversationViewController : UIViewController {
         
         videoMaker = VideoMakerViewController.mainController()
         videoMaker.videoMakerDelegate = self
-//        videoMaker = UIStoryboard(name: "VideoMaker", bundle: nil).instantiateInitialViewController() as! VideoMakerViewController
-//        videoMaker.producerDelegate = self
         
         addChildViewController(chatHistory)
         chatHistoryContainer.addSubview(chatHistory.view)
@@ -98,6 +97,7 @@ class ConversationViewController : UIViewController {
         if vm.hasUnplayedVideo {
             presentViewController(videoPlayer, animated: false, completion: nil)
         }
+        DDLogDebug("viewDidLoad")
     }
     
     override func viewDidLayoutSubviews() {
@@ -112,11 +112,23 @@ class ConversationViewController : UIViewController {
         if let view = navigationBar.topItem?.titleView {
             view.bounds.size = view.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
         }
+        DDLogDebug("Conversation -  viewWillAppear")
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        DDLogDebug("Conversation -  viewDidAppear")
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         navigationBar.setBackgroundColor(nil)
+        DDLogDebug("Conversation - viewWillDisappear")
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        DDLogDebug("Conversation - viewDidDisappear")
     }
     
     // MARK: -

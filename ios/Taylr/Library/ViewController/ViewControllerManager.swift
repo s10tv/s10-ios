@@ -7,43 +7,49 @@
 //
 
 import Foundation
+import CocoaLumberjack
 import React
 
 @objc(TSViewController)
 class ViewControllerManager : RCTViewManager {
     
-    func viewControllerWithTag(reactTag: Int, block: (UIViewController) -> ()) {
+    func viewControllerWithTag(reactTag: Int, block: (UIView, UIViewController) -> ()) {
         bridge?.uiManager.addUIBlock { _, registry in
-            if let vc = (registry[reactTag] as? UIView)?.tsViewController {
-                block(vc)
+            if let view = registry[reactTag] as? UIView, let vc = view.tsViewController {
+                block(view, vc)
             }
         }
     }
     
     @objc func componentWillMount(reactTag: Int) {
+        // At this point we can't find view by reactTag just yet...
 //        viewControllerWithTag(reactTag) { vc in
 //            vc.beginAppearanceTransition(true, animated: false)
 //        }
     }
     
     @objc func componentDidMount(reactTag: Int) {
-        viewControllerWithTag(reactTag) { vc in
+        viewControllerWithTag(reactTag) { view, vc in
+            DDLogDebug("\(vc) componentDidMount")
             vc.beginAppearanceTransition(true, animated: false)
+//            view.reactAddControllerToClosestParent(vc)
+            if let rootVC = UIApplication.sharedApplication().delegate?.window??.rootViewController {
+                rootVC.addChildViewController(vc)
+                vc.didMoveToParentViewController(rootVC)
+            }
+            assert(vc.parentViewController != nil)
             vc.endAppearanceTransition()
         }
     }
     
     @objc func componentWillUnmount(reactTag: Int) {
-        viewControllerWithTag(reactTag) { vc in
+        viewControllerWithTag(reactTag) { view, vc in
+            DDLogDebug("\(vc) componentWillUnmount")
             vc.beginAppearanceTransition(false, animated: false)
+            vc.willMoveToParentViewController(nil)
+            vc.removeFromParentViewController()
             vc.endAppearanceTransition()
         }
-    }
-    
-    @objc func componentDidUnmount(reactTag: Int) {
-//        viewControllerWithTag(reactTag) { vc in
-//            vc.endAppearanceTransition()
-//        }
     }
     
     func pushRoute(route: String, properties: [String: AnyObject]) {
