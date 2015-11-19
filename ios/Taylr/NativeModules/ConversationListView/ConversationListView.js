@@ -23,7 +23,7 @@ class ConversationListView extends React.Component {
     ViewControllerManager.componentDidMount(React.findNodeHandle(this))
   }
   componentWillUnmount() {
-    ViewControllerManager.componentDidMount(React.findNodeHandle(this))
+    ViewControllerManager.componentWillUnmount(React.findNodeHandle(this))
     this.state.routeListener.remove();
   }
   render() {

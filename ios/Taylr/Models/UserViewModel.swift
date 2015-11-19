@@ -32,13 +32,14 @@ class UserViewModel : NSObject {
 
 extension RCTConvert {
     @objc class func userViewModel(json: AnyObject?) -> UserViewModel? {
-        if let json = json as? [String: AnyObject], let userId = json["userId"] as? String {
+        if let json = json as? Foundation.NSDictionary, let userId = json["userId"] as? String {
+            json.valueForKeyPath("firstName")
             let user = UserViewModel(userId: userId)
             user.firstName = json["firstName"] as? String ?? ""
             user.lastName = json["lastName"] as? String ?? ""
             user.displayName = json["displayName"] as? String ?? ""
-            user.avatarURL = RCTConvert.NSURL(json["avatarUrl"])
-            user.avatarURL = RCTConvert.NSURL(json["coverUrl"])
+            user.avatarURL = RCTConvert.NSURL(json.valueForKeyPath("avatarUrl"))
+            user.coverURL = RCTConvert.NSURL(json.valueForKeyPath("coverUrl"))
             return user
         }
         return nil

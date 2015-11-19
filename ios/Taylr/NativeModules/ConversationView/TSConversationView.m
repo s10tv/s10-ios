@@ -12,6 +12,7 @@
 
 RCT_EXPORT_VIEW_PROPERTY(currentUser, userViewModel)
 RCT_EXPORT_VIEW_PROPERTY(conversationId, NSString)
+RCT_EXPORT_VIEW_PROPERTY(recipientUser, userViewModel)
 
 @end
 

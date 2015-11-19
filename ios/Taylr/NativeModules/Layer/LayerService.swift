@@ -18,7 +18,6 @@ class LayerService: NSObject {
     
     let layerClient: LYRClient
     let unreadQueryController: LYRQueryController?
-    var currentUser: UserViewModel?
     
     init(layerAppID: NSURL) {
         layerClient = LYRClient(appID: layerAppID)
@@ -53,20 +52,16 @@ class LayerService: NSObject {
         }
     }
     
-    func getOrCreateConversation(user: UserViewModel) throws -> LYRConversation {
+    func getOrCreateConversation(users: [UserViewModel]) throws -> LYRConversation {
         do {
-            // BIG TODO: Make sure we store currentUser info offline in UserDefaults
-            guard let currentUser = currentUser else {
-                throw NSError(domain: "Layer", code: 0, userInfo: [
-                    NSLocalizedFailureReasonErrorKey: "Cannot get conversation when currentUser is nil"
-                ])
-            }
-            var metadata = currentUser.asDictionary()
-            for (k, v) in user.asDictionary() {
-                metadata[k] = v // Better dic merge wanted
+            var metadata: [String: String] = [:]
+            for user in users {
+                for (k, v) in user.asDictionary() {
+                    metadata[k] = v // Better dic merge wanted
+                }
             }
             DDLogInfo("Creating new conversation with metadata \(metadata)")
-            return try layerClient.newConversationWithParticipants(Set([user.userId]), options: [
+            return try layerClient.newConversationWithParticipants(Set(users.map { $0.userId }), options: [
                 LYRConversationOptionsDistinctByParticipantsKey: true,
                 LYRConversationOptionsMetadataKey: metadata
             ])

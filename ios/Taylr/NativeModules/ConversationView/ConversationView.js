@@ -23,7 +23,7 @@ class ConversationView extends React.Component {
     ViewControllerManager.componentDidMount(React.findNodeHandle(this))
   }
   componentWillUnmount() {
-    ViewControllerManager.componentDidMount(React.findNodeHandle(this))
+    ViewControllerManager.componentWillUnmount(React.findNodeHandle(this))
     this.state.routeListener.remove();
   }
   render() {
@@ -32,8 +32,9 @@ class ConversationView extends React.Component {
 }
 
 ConversationView.propTypes = {
-  currentUser: UserSchema,
-  conversationId: React.PropTypes.string.isRequired,
+  currentUser: UserSchema.isRequired,
+  conversationId: React.PropTypes.string,
+  recipientUser: UserSchema,
 }
 
 var TSConversationView = React.requireNativeComponent('TSConversationView', ConversationView);
