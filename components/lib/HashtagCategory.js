@@ -31,7 +31,7 @@ class HashtagCategory extends React.Component {
         return tag.type == category._id
       }).map(hashtag => {
         return <Hashtag 
-          key={hashtag._id}
+          key={hashtag.text}
           ddp={this.props.ddp}
           enableTouch={false}
           hashtag={ hashtag } />

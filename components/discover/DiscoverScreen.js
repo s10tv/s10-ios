@@ -101,8 +101,8 @@ class Discover extends React.Component {
 
     let candidateUser = candidateUsers[0];
     let serviceIcons = candidateUser.connectedProfiles.map((profile) => {
-      return  (<Image style={[SHEET.smallIcon, styles.serviceIcon]}
-          source={{ uri: profile.icon.url }} />);
+      return <Image key={profile.id} style={[SHEET.smallIcon, styles.serviceIcon]}
+          source={{ uri: profile.icon.url }} />
     });
 
     return (

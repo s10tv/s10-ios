@@ -44,7 +44,7 @@ class ProfileEditCard extends React.Component {
 
     let editSection = editInfo.map((info) => {
       return (
-        <Card>
+        <Card key={info.key}>
           <Text style={[SHEET.subTitle, SHEET.baseText]}>{info.display}</Text>
           <TextInput
             style={[{ flex: 1, height: 30 }, SHEET.baseText]}
@@ -74,7 +74,7 @@ class ProfileEditCard extends React.Component {
 
     return(
       <View style={[styles.cards, this.props.style]}>
-        {{ editSection }} 
+        { editSection }
       </View>
     )
   }

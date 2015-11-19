@@ -92,6 +92,7 @@ class HashtagListView extends React.Component {
   _renderSearchSuggestions(hashtag) {
     return (
       <TouchableHighlight
+          key={hashtag.text}
           underlayColor={COLORS.taylr}
           onPress={(event) => { return this._addSearchSuggestion.bind(this)(hashtag)}}>
         <View style={styles.hashtagSuggestion}>
@@ -114,7 +115,7 @@ class HashtagListView extends React.Component {
         return tag.type == this.props.category.type
       }).map(hashtag => {
         return <Hashtag 
-          key={hashtag._id}
+          key={hashtag.text}
           ddp={this.props.ddp}
           enableTouch={true}
           hashtag={ hashtag } />
@@ -132,7 +133,7 @@ class HashtagListView extends React.Component {
       return myTagIds.indexOf(hashtag._id) < 0;
     })
     .map((hashtag) => {
-      return <Hashtag ddp={this.ddp} enableTouch={true} hashtag={ hashtag } />
+      return <Hashtag key={hashtag.text} ddp={this.ddp} enableTouch={true} hashtag={ hashtag } />
     });
 
     let searchSuggestions = this.state.searchSuggestions.map(this._renderSearchSuggestions.bind(this));

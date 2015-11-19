@@ -37,14 +37,15 @@ class Hashtag extends React.Component {
     let hashtagColor = hashtag.isMine ? COLORS.taylr : COLORS.emptyHashtag;
 
     let hashtagButton = (
-      <View 
+      <View
+        key={this.props.key}
         style={[styles.hashtag, { backgroundColor : hashtagColor }]}>
         <Text style={[styles.hashtagText, SHEET.baseText]}>{hashtag.text}</Text>
       </View>
     );
 
     return this.props.enableTouch ? (
-        <Button onPress={() => this._onHashtagTouch.bind(this)(hashtag)}>
+        <Button onPress={() => this._onHashtagTouch.bind(this)(hashtag)} key={this.props.key}>
           { hashtagButton }                  
         </Button>
     ) : hashtagButton;

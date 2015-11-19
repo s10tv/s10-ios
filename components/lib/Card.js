@@ -17,7 +17,7 @@ class BaseCard extends React.Component {
       <View style={SHEET.separator} />;
 
     return (
-      <View style={[this.props.style, styles.cardContainer]}>
+      <View {...this.props} style={[this.props.style, styles.cardContainer]}>
         { separator } 
         { this.props.children }
       </View>
@@ -28,7 +28,7 @@ class BaseCard extends React.Component {
 class Card extends React.Component {
   render() {
     return (
-      <BaseCard hideSeparator={this.props.hideSeparator} style={this.props.style}>
+      <BaseCard hideSeparator={this.props.hideSeparator} {...this.props}>
         <View style={[styles.card, this.props.cardOverride]}>
           { this.props.children}
         </View>
@@ -40,8 +40,8 @@ class Card extends React.Component {
 class TappableCard extends React.Component {
   render() {
     return (
-      <BaseCard hideSeparator={this.props.hideSeparator} 
-        style={this.props.style}>
+      <BaseCard hideSeparator={this.props.hideSeparator}
+        {...this.props}>
           <TouchableHighlight
             style={styles.card}
             underlayColor="#ffffff"

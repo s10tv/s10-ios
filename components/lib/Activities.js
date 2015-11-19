@@ -135,6 +135,7 @@ class Activity extends React.Component {
 
     return (
       <Card
+        key={activity._id}
         style={styles.card}
         cardOverride={{ padding: 0 }}>
           {header}
@@ -171,7 +172,9 @@ class ActivityServiceIcon extends React.Component {
     }
 
     return (
-      <TouchableOpacity onPress={() => {
+      <TouchableOpacity
+      {...this.props}
+      onPress={() => {
         this.setState({ color: !this.state.color })
         this.props.onPress(this.props.profile)}
       }>
@@ -252,7 +255,8 @@ class Activities extends React.Component {
         iconMapping[profile.integrationName] :
         grayToIconMapping[profile.integrationName];
 
-      return <ActivityServiceIcon 
+      return <ActivityServiceIcon
+        key={profile.id}
         onPress={this._switchService.bind(this)}
         activeProfile={this.state.activeProfile}
         profile={profile}
@@ -275,6 +279,7 @@ class Activities extends React.Component {
 
     let activities = activityData.map((activity) => {
       return <Activity
+        key={activity._id}
         me={me}
         connectedProfiles={connectedProfiles}
         activeProfile={this.state.activeProfile}
@@ -306,10 +311,10 @@ class Activities extends React.Component {
     } else {
       profile = connectedProfiles[this.state.activeProfile.id]
       attributes = null
-      if (profile.attributes) {
+      if (profile && profile.attributes) {
         attributes = profile.attributes.map((attribute) => {
           return (
-            <View style={styles.attributeBox}>
+            <View key={attribute.label} style={styles.attributeBox}>
               <Text style={[SHEET.baseText, styles.attributeText]}>{attribute.value}</Text>
               <Text style={[SHEET.baseText, styles.attributeText]}>{attribute.label}</Text>
             </View>

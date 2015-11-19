@@ -33,7 +33,8 @@ class ServiceTile extends React.Component {
       <Text style={[styles.serviceId, SHEET.baseText]}>{service.username}</Text> : null;
 
     return (
-      <TappableCard 
+      <TappableCard
+        {...this.props}
         onPress={(event) => { return this._handleServiceTouch.bind(this)(service.url)}}>
           <View style={styles.service}>
             <Image source={{ uri: service.icon.url }} style={[SHEET.icon]} />
