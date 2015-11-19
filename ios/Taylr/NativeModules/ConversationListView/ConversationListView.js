@@ -1,6 +1,7 @@
 'use strict';
 
 let React = require('react-native');
+let ViewControllerManager = React.NativeModules.TSViewController;
 
 let UserSchema = React.PropTypes.shape({
     userId: React.PropTypes.string.isRequired,
@@ -12,15 +13,17 @@ let UserSchema = React.PropTypes.shape({
 })
 
 class ConversationListView extends React.Component {
-  componentWillMount() {
+  componentDidMount() {
     this.setState({
       routeListener: React.NativeAppEventEmitter.addListener(
         'ViewController.pushRoute',
         (properties) => console.log('Pushing route ', properties)
       )
     });
+    ViewControllerManager.componentDidMount(React.findNodeHandle(this))
   }
-  componentDidUnmount() {
+  componentWillUnmount() {
+    ViewControllerManager.componentDidMount(React.findNodeHandle(this))
     this.state.routeListener.remove();
   }
   render() {

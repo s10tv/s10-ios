@@ -21,13 +21,14 @@ class ViewControllerManager : RCTViewManager {
     }
     
     @objc func componentWillMount(reactTag: Int) {
-        viewControllerWithTag(reactTag) { vc in
-            vc.beginAppearanceTransition(true, animated: false)
-        }
+//        viewControllerWithTag(reactTag) { vc in
+//            vc.beginAppearanceTransition(true, animated: false)
+//        }
     }
     
     @objc func componentDidMount(reactTag: Int) {
         viewControllerWithTag(reactTag) { vc in
+            vc.beginAppearanceTransition(true, animated: false)
             vc.endAppearanceTransition()
         }
     }
@@ -35,13 +36,14 @@ class ViewControllerManager : RCTViewManager {
     @objc func componentWillUnmount(reactTag: Int) {
         viewControllerWithTag(reactTag) { vc in
             vc.beginAppearanceTransition(false, animated: false)
+            vc.endAppearanceTransition()
         }
     }
     
     @objc func componentDidUnmount(reactTag: Int) {
-        viewControllerWithTag(reactTag) { vc in
-            vc.endAppearanceTransition()
-        }
+//        viewControllerWithTag(reactTag) { vc in
+//            vc.endAppearanceTransition()
+//        }
     }
     
     func pushRoute(route: String, properties: [String: AnyObject]) {
