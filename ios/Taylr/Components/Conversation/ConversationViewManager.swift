@@ -8,10 +8,9 @@
 
 import Foundation
 import LayerKit
-import React
 
 @objc(TSConversationViewManager)
-class ConversationViewManager : RCTViewManager {
+class ConversationViewManager : ViewControllerManager {
     let layerClient: LYRClient
     
     init(layerClient: LYRClient) {

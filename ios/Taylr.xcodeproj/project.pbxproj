@@ -86,6 +86,8 @@
 		EA7FB0981B5EF9D50052B394 /* Cabin-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB0921B5EF9D50052B394 /* Cabin-MediumItalic.ttf */; };
 		EA7FB0991B5EF9D50052B394 /* Cabin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB0931B5EF9D50052B394 /* Cabin-Regular.ttf */; };
 		EA95165E1BFD7620000F5338 /* LoggingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95165D1BFD7620000F5338 /* LoggingProvider.swift */; };
+		EA9516791BFD8924000F5338 /* TSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9516771BFD8924000F5338 /* TSViewController.m */; };
+		EA95167A1BFD8924000F5338 /* ViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9516781BFD8924000F5338 /* ViewControllerManager.swift */; };
 		EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA9A6ACE1AAFDE19009EDD6D /* Localizable.strings */; };
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
@@ -219,6 +221,8 @@
 		EA7FB0921B5EF9D50052B394 /* Cabin-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-MediumItalic.ttf"; sourceTree = "<group>"; };
 		EA7FB0931B5EF9D50052B394 /* Cabin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Regular.ttf"; sourceTree = "<group>"; };
 		EA95165D1BFD7620000F5338 /* LoggingProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingProvider.swift; sourceTree = "<group>"; };
+		EA9516771BFD8924000F5338 /* TSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSViewController.m; sourceTree = "<group>"; };
+		EA9516781BFD8924000F5338 /* ViewControllerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerManager.swift; sourceTree = "<group>"; };
 		EA9A6ACF1AAFDFA2009EDD6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA9F353A1A74CC6900E0C65D /* Taylr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taylr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9F353E1A74CC6900E0C65D /* Taylr-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Taylr-Info.plist"; sourceTree = "<group>"; };
@@ -333,8 +337,8 @@
 		EA1979F91BFC4D2600DF7B58 /* ConversationList */ = {
 			isa = PBXGroup;
 			children = (
-				EA1979FA1BFC4D2600DF7B58 /* ConversationListViewController.swift */,
 				EA1979FB1BFC4D2600DF7B58 /* ConversationListViewModel.swift */,
+				EA1979FA1BFC4D2600DF7B58 /* ConversationListViewController.swift */,
 				EA197A9B1BFD166B00DF7B58 /* ConversationListViewManager.swift */,
 				EA197A921BFD0E2900DF7B58 /* TSConversationListView.m */,
 			);
@@ -384,6 +388,7 @@
 		EA197A121BFC4D2600DF7B58 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				EA9516761BFD8924000F5338 /* ViewController */,
 				EA197A161BFC4D2600DF7B58 /* DesignableViews.swift */,
 				EA197A151BFC4D2600DF7B58 /* BaseViews.swift */,
 				EA197A131BFC4D2600DF7B58 /* AsyncOperation.swift */,
@@ -500,6 +505,15 @@
 				EA7FB0931B5EF9D50052B394 /* Cabin-Regular.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		EA9516761BFD8924000F5338 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				EA9516781BFD8924000F5338 /* ViewControllerManager.swift */,
+				EA9516771BFD8924000F5338 /* TSViewController.m */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		EA9F35311A74CC6900E0C65D = {
@@ -834,6 +848,7 @@
 				EA95165E1BFD7620000F5338 /* LoggingProvider.swift in Sources */,
 				EA197A6E1BFC4D2600DF7B58 /* Video.swift in Sources */,
 				EA197A3F1BFC4D2600DF7B58 /* VolumeView.swift in Sources */,
+				EA9516791BFD8924000F5338 /* TSViewController.m in Sources */,
 				EA197A531BFC4D2600DF7B58 /* UIKitBindings.swift in Sources */,
 				EA197A481BFC4D2600DF7B58 /* MediaExtension.swift in Sources */,
 				EA197A371BFC4D2600DF7B58 /* ChatHistoryViewController.swift in Sources */,
@@ -886,6 +901,7 @@
 				EA3713C91BFD455600E51980 /* DDNSLogger.swift in Sources */,
 				EA3713C51BFD3E1B00E51980 /* TSLogger.m in Sources */,
 				EA197A4C1BFC4D2600DF7B58 /* ArrayProperty.swift in Sources */,
+				EA95167A1BFD8924000F5338 /* ViewControllerManager.swift in Sources */,
 				EA197A3D1BFC4D2600DF7B58 /* VideoPlayerViewController.swift in Sources */,
 				EA197A9C1BFD166B00DF7B58 /* ConversationListViewManager.swift in Sources */,
 				EA3713C21BFD3A9C00E51980 /* Logger.swift in Sources */,
