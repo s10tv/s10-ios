@@ -30,26 +30,11 @@ extension UIView {
 }
 
 extension UIViewController {
-    public func presentViewController(viewControllerToPresent: UIViewController, animated: Bool = true) -> Future<(), NoError> {
-        let promise = Promise<(), NoError>()
-        presentViewController(viewControllerToPresent, animated: animated) {
-            promise.success()
-        }
-        return promise.future
-    }
-    
-    public func dismissViewController(animated animated: Bool = true) -> Future<(), NoError> {
-        let promise = Promise<(), NoError>()
-        dismissViewControllerAnimated(animated) {
-            promise.success()
-        }
-        return promise.future
-    }
     
     public func showAlert(title: String?, message: String?) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
         alert.addAction("Ok", style: .Cancel)
-        presentViewController(alert)
+        presentViewController(alert, animated: true, completion: nil)
     }
     
     public class func topMostViewController() -> UIViewController? {

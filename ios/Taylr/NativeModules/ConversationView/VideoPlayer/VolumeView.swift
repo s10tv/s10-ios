@@ -50,9 +50,9 @@ class VolumeView : BaseView {
             assert(NSThread.isMainThread(), "Must update on main")
             self?.valueTrack.strokeEnd = CGFloat(v)
             self?.alpha = 1
-            UIView.animateSpring(0.5, delay: 1) { [weak self] in
+            UIView.animateWithDuration(0.5, delay: 1, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.7, options: [], animations: { [weak self] in
                 self?.alpha = self?.vm.alpha ?? 1
-            }
+            }, completion: nil)
         }
     }
     

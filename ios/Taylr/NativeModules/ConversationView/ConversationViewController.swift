@@ -95,7 +95,7 @@ class ConversationViewController : UIViewController {
         swipeView.layoutIfNeeded()
         
         if vm.hasUnplayedVideo {
-            presentViewController(videoPlayer, animated: false)
+            presentViewController(videoPlayer, animated: false, completion: nil)
         }
     }
     
@@ -155,7 +155,7 @@ class ConversationViewController : UIViewController {
             self.reportUser(self)
         }
         sheet.addAction(LS(.moreSheetCancel), style: .Cancel)
-        presentViewController(sheet)
+        presentViewController(sheet, animated: true, completion: nil)
     }
     
     // TODO: FIX CODE DUPLICATION WITH ProfileViewController
@@ -169,10 +169,10 @@ class ConversationViewController : UIViewController {
             ARAnalytics.event("User: Block")
             let dialog = UIAlertController(title: "Block User", message: "\(self.vm.displayName.value) will no longer be able to contact you in the future", preferredStyle: .Alert)
             dialog.addAction("Ok", style: .Default)
-            self.presentViewController(dialog)
+            self.presentViewController(dialog, animated: true, completion: nil)
             
         }
-        presentViewController(alert)
+        presentViewController(alert, animated: true, completion: nil)
     }
     
     @IBAction func reportUser(sender: AnyObject) {
@@ -185,7 +185,7 @@ class ConversationViewController : UIViewController {
 //                self.vm.reportUser(reportReason)
             }
         }
-        presentViewController(alert)
+        presentViewController(alert, animated: true, completion: nil)
     }
 }
 
@@ -222,7 +222,7 @@ extension ConversationViewController : ATLConversationViewControllerDelegate {
         vm.ensureMessageAvailable(message)
         if let video = vm.videoForMessage(message) {
             videoPlayer.vm.playlist.array = [video]
-            presentViewController(videoPlayer, animated: false)
+            presentViewController(videoPlayer, animated: false, completion: nil)
         } else if message.videoPart != nil {
             ARAnalytics.event("Conversation: TappedUnavailableVideo")
             showAlert("Video Downloading",
@@ -254,7 +254,7 @@ extension ConversationViewController : VideoPlayerViewControllerDelegate {
     }
     func videoPlayerDidFinishPlaylist(videoPlayer: VideoPlayerViewController) {
         // TODO: This semantic is not correct for non-text based messages
-        videoPlayer.dismissViewController(animated: false)
+        videoPlayer.dismissViewControllerAnimated(false, completion: nil)
     }
 }
 

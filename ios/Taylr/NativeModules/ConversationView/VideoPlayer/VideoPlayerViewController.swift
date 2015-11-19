@@ -61,9 +61,9 @@ class VideoPlayerViewController : UIViewController {
         // Slight hack to get around the issue that playback momentarily stops when switching video
         vm.isPlaying.producer.startWithNext { [weak self] in
             let isPlaying = $0
-            UIView.animate(0.25, options: [], delay: 0.25, animations: { [weak self] in
+            UIView.animateWithDuration(0.25, delay: 0.25, options: [], animations: { [weak self] in
                 self?.overlay.alpha = isPlaying ? 0 : 1
-            })
+            }, completion: nil)
         }
     }
     

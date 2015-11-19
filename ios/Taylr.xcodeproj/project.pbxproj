@@ -13,13 +13,11 @@
 		EA1979E21BFC4CD800DF7B58 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1979E01BFC4CD800DF7B58 /* R.swift */; };
 		EA1979E31BFC4CD800DF7B58 /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1979E11BFC4CD800DF7B58 /* SBConstants.swift */; };
 		EA1979E51BFC4CF300DF7B58 /* Taylr.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA1979E41BFC4CF300DF7B58 /* Taylr.xcassets */; };
-		EA197A451BFC4D2600DF7B58 /* AnimationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A001BFC4D2600DF7B58 /* AnimationExtensions.swift */; };
 		EA197A461BFC4D2600DF7B58 /* FoundationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A011BFC4D2600DF7B58 /* FoundationExtension.swift */; };
 		EA197A471BFC4D2600DF7B58 /* GeometryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A021BFC4D2600DF7B58 /* GeometryExtensions.swift */; };
 		EA197A481BFC4D2600DF7B58 /* MediaExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A031BFC4D2600DF7B58 /* MediaExtension.swift */; };
 		EA197A491BFC4D2600DF7B58 /* PKHUDExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A041BFC4D2600DF7B58 /* PKHUDExtension.swift */; };
 		EA197A4A1BFC4D2600DF7B58 /* Foundation+RACSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A061BFC4D2600DF7B58 /* Foundation+RACSupport.swift */; };
-		EA197A4B1BFC4D2600DF7B58 /* Future.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A071BFC4D2600DF7B58 /* Future.swift */; };
 		EA197A4C1BFC4D2600DF7B58 /* ArrayProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A091BFC4D2600DF7B58 /* ArrayProperty.swift */; };
 		EA197A4D1BFC4D2600DF7B58 /* DynamicProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A0A1BFC4D2600DF7B58 /* DynamicProperties.swift */; };
 		EA197A4E1BFC4D2600DF7B58 /* PropertyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A0B1BFC4D2600DF7B58 /* PropertyExtensions.swift */; };
@@ -147,13 +145,11 @@
 		EA1979E01BFC4CD800DF7B58 /* R.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.swift; sourceTree = "<group>"; };
 		EA1979E11BFC4CD800DF7B58 /* SBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstants.swift; sourceTree = "<group>"; };
 		EA1979E41BFC4CF300DF7B58 /* Taylr.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Taylr.xcassets; sourceTree = "<group>"; };
-		EA197A001BFC4D2600DF7B58 /* AnimationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationExtensions.swift; sourceTree = "<group>"; };
 		EA197A011BFC4D2600DF7B58 /* FoundationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationExtension.swift; sourceTree = "<group>"; };
 		EA197A021BFC4D2600DF7B58 /* GeometryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometryExtensions.swift; sourceTree = "<group>"; };
 		EA197A031BFC4D2600DF7B58 /* MediaExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaExtension.swift; sourceTree = "<group>"; };
 		EA197A041BFC4D2600DF7B58 /* PKHUDExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKHUDExtension.swift; sourceTree = "<group>"; };
 		EA197A061BFC4D2600DF7B58 /* Foundation+RACSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+RACSupport.swift"; sourceTree = "<group>"; };
-		EA197A071BFC4D2600DF7B58 /* Future.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Future.swift; sourceTree = "<group>"; };
 		EA197A091BFC4D2600DF7B58 /* ArrayProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayProperty.swift; sourceTree = "<group>"; };
 		EA197A0A1BFC4D2600DF7B58 /* DynamicProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicProperties.swift; sourceTree = "<group>"; };
 		EA197A0B1BFC4D2600DF7B58 /* PropertyExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyExtensions.swift; sourceTree = "<group>"; };
@@ -291,7 +287,6 @@
 			isa = PBXGroup;
 			children = (
 				EA197A051BFC4D2600DF7B58 /* RAC */,
-				EA197A001BFC4D2600DF7B58 /* AnimationExtensions.swift */,
 				EA197A011BFC4D2600DF7B58 /* FoundationExtension.swift */,
 				EA197A021BFC4D2600DF7B58 /* GeometryExtensions.swift */,
 				EA197A031BFC4D2600DF7B58 /* MediaExtension.swift */,
@@ -309,7 +304,6 @@
 			isa = PBXGroup;
 			children = (
 				EA197A061BFC4D2600DF7B58 /* Foundation+RACSupport.swift */,
-				EA197A071BFC4D2600DF7B58 /* Future.swift */,
 				EA197A081BFC4D2600DF7B58 /* Properties */,
 			);
 			path = RAC;
@@ -889,13 +883,11 @@
 				EA3225FC1BFDAEEB00FF5074 /* ChatHistoryViewController.swift in Sources */,
 				EA197A501BFC4D2600DF7B58 /* ResourceExtension.swift in Sources */,
 				EA32260B1BFDAEEB00FF5074 /* ConversationListView.swift in Sources */,
-				EA197A4B1BFC4D2600DF7B58 /* Future.swift in Sources */,
 				EA197A581BFC4D2600DF7B58 /* DesignableViews.swift in Sources */,
 				EA197A471BFC4D2600DF7B58 /* GeometryExtensions.swift in Sources */,
 				EA3225BB1BFDAE8A00FF5074 /* AppConfig.swift in Sources */,
 				EA197A4E1BFC4D2600DF7B58 /* PropertyExtensions.swift in Sources */,
 				EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */,
-				EA197A451BFC4D2600DF7B58 /* AnimationExtensions.swift in Sources */,
 				EA3226011BFDAEEB00FF5074 /* TSConversationView.m in Sources */,
 				EA3225DD1BFDAE8A00FF5074 /* DDNSLogger.swift in Sources */,
 				EA32260E1BFDAEEB00FF5074 /* TSConversationListView.m in Sources */,
