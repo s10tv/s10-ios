@@ -36,6 +36,13 @@ class LayerService: NSObject {
     
     // MARK: -
     
+    func findConversation(conversationId: String) -> LYRConversation? {
+        let query = LYRQuery(queryableClass: LYRConversation.self)
+        query.predicate = LYRPredicate(property: "identifier", predicateOperator: .IsEqualTo, value: conversationId)
+        query.limit = 1
+        return (try? layerClient.executeQuery(query).firstObject) as? LYRConversation
+    }
+    
     func findConversationsWithUserId(userId: String) -> [LYRConversation] {
         do {
             let query = LYRQuery(queryableClass: LYRConversation.self)

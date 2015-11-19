@@ -12,10 +12,10 @@ import React
 
 @objc(TSConversationListViewManager)
 class ConversationListViewManager : ViewControllerManager {
-    let layerClient: LYRClient
+    let layer: LayerService
     
-    init(layerClient: LYRClient) {
-        self.layerClient = layerClient
+    init(layer: LayerService) {
+        self.layer = layer
     }
     
     override func viewWithProps(props: [NSObject : AnyObject]!) -> UIView! {
@@ -23,7 +23,7 @@ class ConversationListViewManager : ViewControllerManager {
             return nil
         }
         let vc = UIStoryboard(name: "Conversation", bundle: nil).instantiateViewControllerWithIdentifier("ConversationList") as! ConversationListViewController
-        vc.vm = ConversationListViewModel(layerClient: layerClient, currentUser: currentUser)
+        vc.vm = ConversationListViewModel(layerClient: layer.layerClient, currentUser: currentUser)
         let view = vc.view as! ConversationListView
         view.tsViewController = vc
         view.currentUser = currentUser

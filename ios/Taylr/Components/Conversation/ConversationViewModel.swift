@@ -13,8 +13,8 @@ import CocoaLumberjack
 
 public class ConversationViewModel: NSObject {
     
-    let ctx: Context
-//    let userSubscriptions: [MeteorSubscription]
+    let layer: LayerService
+    let currentUser: UserViewModel
     let uploading: PropertyOf<UInt>
     let downloading: PropertyOf<UInt>
     let lastMessage: PropertyOf<LYRMessage?>
@@ -31,23 +31,24 @@ public class ConversationViewModel: NSObject {
     }
     
     public var hasUnreadText: Bool {
-        let query = ctx.layer.unreadTextMessagesQuery(conversation)
-        return ctx.layer.layerClient.countForQuery(query, error: nil) > 0
+        let query = layer.unreadTextMessagesQuery(conversation)
+        return layer.layerClient.countForQuery(query, error: nil) > 0
     }
     
-    init(_ ctx: Context, conversation: LYRConversation) {
-        self.ctx = ctx
+    init(layer: LayerService, currentUser: UserViewModel, conversation: LYRConversation) {
+        self.layer = layer
+        self.currentUser = currentUser
         self.conversation = conversation
 //        self.userSubscriptions = conversation.otherUserIds(ctx.currentUserId)
 //            .map { ctx.meteor.subscribe("user", $0) }
         
-        let otherParticipant = conversation.otherParticipants(ctx.currentUserId).first
+        let otherParticipant = conversation.otherParticipants(currentUser.userId).first
         let avatarURL = conversation.avatarURL ?? otherParticipant?.avatarURL
         let coverURL = conversation.coverURL ?? otherParticipant?.coverURL
         let title = conversation.title ?? otherParticipant?.displayName
-        uploading = ctx.layer.countOfUploads(conversation)
-        downloading = ctx.layer.countOfDownloads(conversation)
-        lastMessage = ctx.layer.lastMessageOf(conversation)
+        uploading = layer.countOfUploads(conversation)
+        downloading = layer.countOfDownloads(conversation)
+        lastMessage = layer.lastMessageOf(conversation)
         
         // Navigation TitleView
         avatar = PropertyOf(avatarURL)
@@ -60,9 +61,8 @@ public class ConversationViewModel: NSObject {
         ).map { uploading, downloading, lastMessage in
             if uploading > 0 { return "Sending..." }
             if downloading > 0 { return "Receiving" }
-            if let uid = ctx.currentUserId,
-                let msg = lastMessage,
-                let status = Formatters.readableStatusWithDate(msg, currentUserId: uid) {
+            if let msg = lastMessage,
+                let status = Formatters.readableStatusWithDate(msg, currentUserId: currentUser.userId) {
                     return status
             }
             return ""
@@ -73,7 +73,7 @@ public class ConversationViewModel: NSObject {
         ).map { ($0 + $1) > 0 })
         
         // VideoPlayer
-        videoPlayerVM = VideoPlayerViewModel(ctx)
+        videoPlayerVM = VideoPlayerViewModel()
         super.init()
         videoPlayerVM.playlist.array = unplayedVideos()
     }
@@ -96,7 +96,7 @@ public class ConversationViewModel: NSObject {
             pushConfig.alert = "\(senderName) sent you a new video."
             pushConfig.sound = "layerbell.caf"
             
-            let message = try ctx.layer.layerClient.newMessageWithParts([videoPart, thumbPart, metaPart], options: [
+            let message = try layer.layerClient.newMessageWithParts([videoPart, thumbPart, metaPart], options: [
                 LYRMessageOptionsPushNotificationConfigurationKey: pushConfig
             ])
             try conversation.sendMessage(message)
@@ -107,7 +107,7 @@ public class ConversationViewModel: NSObject {
     
     public func unplayedVideos() -> [Video] {
         // TODO: We're blatantly ignoring video right now
-        return ctx.layer.unplayedVideoMessages(conversation)
+        return layer.unplayedVideoMessages(conversation)
             .map { videoForMessage($0) }.filter { $0 != nil }.map { $0! }
     }
     
@@ -145,14 +145,14 @@ public class ConversationViewModel: NSObject {
     }
     
     public func markMessageAsRead(messageId: String) {
-        _ = try? ctx.layer.findMessage(messageId)?.markAsRead()
+        _ = try? layer.findMessage(messageId)?.markAsRead()
     }
     
     public func markAllNonVideoMessagesAsRead() {
         do {
-            let query = ctx.layer.unreadTextMessagesQuery(conversation)
-            let messages = try ctx.layer.layerClient.executeQuery(query).map { $0 as! LYRMessage }
-            try ctx.layer.layerClient.markMessagesAsRead(Set(messages))
+            let query = layer.unreadTextMessagesQuery(conversation)
+            let messages = try layer.layerClient.executeQuery(query).map { $0 as! LYRMessage }
+            try layer.layerClient.markMessagesAsRead(Set(messages))
         } catch let error as NSError {
             DDLogError("Unable to find unread non-video messages \(error)")
         }

@@ -11,7 +11,6 @@ import LayerKit
 import ReactiveCocoa
 
 public class VideoPlayerViewModel {
-    private let ctx: Context
     
     public let playlist: ArrayProperty<Video>
     public let totalDurationLeft: PropertyOf<String>
@@ -20,8 +19,7 @@ public class VideoPlayerViewModel {
     public let currentVideoPosition = MutableProperty<NSTimeInterval>(0)
     public let isPlaying = MutableProperty(false)
     
-    init(_ ctx: Context, videos: [Video]? = nil) {
-        self.ctx = ctx
+    init(videos: [Video]? = nil) {
         playlist = ArrayProperty(videos ?? [])
         currentVideo = PropertyOf(nil, playlist.producer.map { $0.first }
             .skipRepeats { $0?.identifier == $1?.identifier })

@@ -66,7 +66,7 @@
 		EA197A931BFD0E2900DF7B58 /* TSConversationListView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA197A921BFD0E2900DF7B58 /* TSConversationListView.m */; };
 		EA197A961BFD0EAB00DF7B58 /* TSContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA197A951BFD0EAB00DF7B58 /* TSContainerView.m */; };
 		EA197A981BFD0FB900DF7B58 /* TSLayerService.m in Sources */ = {isa = PBXBuildFile; fileRef = EA197A971BFD0FB900DF7B58 /* TSLayerService.m */; };
-		EA197A9A1BFD116200DF7B58 /* ConversationViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A991BFD116200DF7B58 /* ConversationViewManager.swift */; };
+		EA197A9A1BFD116200DF7B58 /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A991BFD116200DF7B58 /* ConversationView.swift */; };
 		EA197A9C1BFD166B00DF7B58 /* ConversationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A9B1BFD166B00DF7B58 /* ConversationListView.swift */; };
 		EA3713921BFD288700E51980 /* libRCTFBSDKCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3713911BFD288700E51980 /* libRCTFBSDKCore.a */; };
 		EA3713AA1BFD28EF00E51980 /* libRCTFBSDKLogin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3713A91BFD28EF00E51980 /* libRCTFBSDKLogin.a */; };
@@ -198,7 +198,7 @@
 		EA197A921BFD0E2900DF7B58 /* TSConversationListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSConversationListView.m; sourceTree = "<group>"; };
 		EA197A951BFD0EAB00DF7B58 /* TSContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSContainerView.m; sourceTree = "<group>"; };
 		EA197A971BFD0FB900DF7B58 /* TSLayerService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSLayerService.m; sourceTree = "<group>"; };
-		EA197A991BFD116200DF7B58 /* ConversationViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewManager.swift; sourceTree = "<group>"; };
+		EA197A991BFD116200DF7B58 /* ConversationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
 		EA197A9B1BFD166B00DF7B58 /* ConversationListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListView.swift; sourceTree = "<group>"; };
 		EA24215C1BFD282C00AF16C4 /* RCTFBSDKCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDKCore.xcodeproj; path = "../node_modules/react-native-fbsdkcore/RCTFBSDKCore.xcodeproj"; sourceTree = "<group>"; };
 		EA2667801BFA93BA0054C777 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -304,7 +304,7 @@
 				EA1979EE1BFC4D2600DF7B58 /* ChatHistoryViewController.swift */,
 				EA1979F01BFC4D2600DF7B58 /* ConversationViewController.swift */,
 				EA1979F11BFC4D2600DF7B58 /* ConversationViewModel.swift */,
-				EA197A991BFD116200DF7B58 /* ConversationViewManager.swift */,
+				EA197A991BFD116200DF7B58 /* ConversationView.swift */,
 				EA197A8E1BFD0AF700DF7B58 /* TSConversationView.m */,
 			);
 			path = Conversation;
@@ -895,7 +895,7 @@
 				EA1979E31BFC4CD800DF7B58 /* SBConstants.swift in Sources */,
 				EA197A981BFD0FB900DF7B58 /* TSLayerService.m in Sources */,
 				EA1979E21BFC4CD800DF7B58 /* R.swift in Sources */,
-				EA197A9A1BFD116200DF7B58 /* ConversationViewManager.swift in Sources */,
+				EA197A9A1BFD116200DF7B58 /* ConversationView.swift in Sources */,
 				EA197A3C1BFC4D2600DF7B58 /* DurationTimer.swift in Sources */,
 				EA95167E1BFD8D93000F5338 /* LayerQueries.swift in Sources */,
 				EA3713C91BFD455600E51980 /* DDNSLogger.swift in Sources */,

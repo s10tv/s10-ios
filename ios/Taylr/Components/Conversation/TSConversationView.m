@@ -10,6 +10,7 @@
 
 @interface RCT_EXTERN_MODULE(TSConversationViewManager, RCTViewManager)
 
-RCT_EXPORT_VIEW_PROPERTY(userId, NSString)
+RCT_EXPORT_VIEW_PROPERTY(currentUser, userViewModel)
+RCT_EXPORT_VIEW_PROPERTY(conversationId, NSString)
 
 @end
