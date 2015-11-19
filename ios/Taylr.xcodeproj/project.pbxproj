@@ -64,7 +64,6 @@
 		EA197A8D1BFCFF0F00DF7B58 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A8C1BFCFF0F00DF7B58 /* AppConfig.swift */; };
 		EA197A8F1BFD0AF700DF7B58 /* TSConversationView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA197A8E1BFD0AF700DF7B58 /* TSConversationView.m */; };
 		EA197A931BFD0E2900DF7B58 /* TSConversationListView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA197A921BFD0E2900DF7B58 /* TSConversationListView.m */; };
-		EA197A961BFD0EAB00DF7B58 /* TSContainerView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA197A951BFD0EAB00DF7B58 /* TSContainerView.m */; };
 		EA197A981BFD0FB900DF7B58 /* TSLayerService.m in Sources */ = {isa = PBXBuildFile; fileRef = EA197A971BFD0FB900DF7B58 /* TSLayerService.m */; };
 		EA197A9A1BFD116200DF7B58 /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A991BFD116200DF7B58 /* ConversationView.swift */; };
 		EA197A9C1BFD166B00DF7B58 /* ConversationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A9B1BFD166B00DF7B58 /* ConversationListView.swift */; };
@@ -196,7 +195,6 @@
 		EA197A8C1BFCFF0F00DF7B58 /* AppConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		EA197A8E1BFD0AF700DF7B58 /* TSConversationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSConversationView.m; sourceTree = "<group>"; };
 		EA197A921BFD0E2900DF7B58 /* TSConversationListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSConversationListView.m; sourceTree = "<group>"; };
-		EA197A951BFD0EAB00DF7B58 /* TSContainerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSContainerView.m; sourceTree = "<group>"; };
 		EA197A971BFD0FB900DF7B58 /* TSLayerService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSLayerService.m; sourceTree = "<group>"; };
 		EA197A991BFD116200DF7B58 /* ConversationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
 		EA197A9B1BFD166B00DF7B58 /* ConversationListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListView.swift; sourceTree = "<group>"; };
@@ -287,7 +285,6 @@
 		EA1979E61BFC4D2600DF7B58 /* Components */ = {
 			isa = PBXGroup;
 			children = (
-				EA197A941BFD0EAB00DF7B58 /* ContainerView */,
 				EA1979E71BFC4D2600DF7B58 /* Conversation */,
 				EA1979F91BFC4D2600DF7B58 /* ConversationList */,
 			);
@@ -440,14 +437,6 @@
 				EA197A811BFCE1A100DF7B58 /* TSAnalytics.m */,
 			);
 			path = Analytics;
-			sourceTree = "<group>";
-		};
-		EA197A941BFD0EAB00DF7B58 /* ContainerView */ = {
-			isa = PBXGroup;
-			children = (
-				EA197A951BFD0EAB00DF7B58 /* TSContainerView.m */,
-			);
-			path = ContainerView;
 			sourceTree = "<group>";
 		};
 		EA24215F1BFD283D00AF16C4 /* Products */ = {
@@ -852,7 +841,6 @@
 				EA197A531BFC4D2600DF7B58 /* UIKitBindings.swift in Sources */,
 				EA197A481BFC4D2600DF7B58 /* MediaExtension.swift in Sources */,
 				EA197A371BFC4D2600DF7B58 /* ChatHistoryViewController.swift in Sources */,
-				EA197A961BFD0EAB00DF7B58 /* TSContainerView.m in Sources */,
 				EA197A8F1BFD0AF700DF7B58 /* TSConversationView.m in Sources */,
 				EA197A401BFC4D2600DF7B58 /* VolumeViewModel.swift in Sources */,
 				EA197A361BFC4D2600DF7B58 /* MuteChecker.m in Sources */,
