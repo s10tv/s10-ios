@@ -14,6 +14,7 @@ let Loader = require('./lib/Loader');
 
 let TSDDPClient = require('../lib/ddpclient');
 let ConversationListView = require('../ios/Taylr/NativeModules/ConversationListView/ConversationListView');
+let TSLayerService = React.NativeModules.TSLayerService;
 
 let SHEET = require('./CommonStyles').SHEET;
 
@@ -33,7 +34,9 @@ class LayoutContainer extends React.Component {
   }
 
   onLogout() {
-    this.setState({ loggedIn: false });
+    TSLayerService.deauthenticate((err, res) => {
+      this.setState({ loggedIn: false });
+    })
   }
 
   onLogin(options) {
@@ -47,12 +50,13 @@ class LayoutContainer extends React.Component {
     let multiSetValues = [
       ['userId', userId],
       ['loginToken', token],
-      ['tokenExpires', tokenExpires],
     ];
 
     AsyncStorage.multiSet(multiSetValues)
     .then(() => {
       let ddp = this.ddp;
+
+      this.__layerLogin()
 
       this.ddp.subscribe({ pubName: 'settings' })
       .then(() => {
@@ -159,7 +163,43 @@ class LayoutContainer extends React.Component {
         });
       });
     })
-    
+  }
+
+  __layerLogin() {
+    console.log('calling __layerLogin');
+    TSLayerService.isAuthenticated((err, isAuthenticated) => {
+      if (err) {
+        console.log('layer cannot login');
+        console.trace(err);
+        return;
+      }
+
+      if (isAuthenticated) {
+        console.log('layer is already authenticated');
+        return;
+      } else {
+        return new Promise((resolve, reject) => {
+          TSLayerService.requestAuthenticationNonce((err, nonce) => {
+            if (err) {
+              return reject(err);
+            }
+            return resolve(nonce);
+          })
+        })
+        .then((nonce) => {
+          return this.ddp.call({ methodName: 'layer/auth', params: [nonce]});
+        })
+        .then((sessionId) => {
+          TSLayerService.authenticate(sessionId, (err, res) => {
+            console.log('layer authenticated');
+          });
+        })
+        .catch(err => {
+          console.log('layer cannot login due to error');
+          console.err(err);
+        })
+      }
+    })
   }
 
   componentWillMount() {
@@ -239,7 +279,7 @@ class LayoutContainer extends React.Component {
                 this.setState({currentTab: 'chats'});
               }}
               selected={this.state.currentTab == 'chats'}>
-                <ConversationListView style={{flex: 1}} currentUser={{userId: 'MyUserId'}} />
+              <View />
             </TabBarIOS.Item>
           </TabBarIOS>
       )

@@ -46,9 +46,8 @@ class DiscoverNavigator extends BaseTaylrNavigator {
           me={route.candidateUser} 
           loadActivities={true} />
       case 'sendMessage':
-        return <ConversationView 
-           currentUser={route.me}
-           conversationId={'layer://'} />
+        return <ConversationView style={{flex: 1}}
+          currentUser={{userId: this.props.me._id}} />
       default:
         return (
           <DiscoverScreen navigator={nav} ddp={this.ddp} 

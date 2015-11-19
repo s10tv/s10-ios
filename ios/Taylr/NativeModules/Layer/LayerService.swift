@@ -25,6 +25,7 @@ class LayerService: NSObject {
         layerClient.backgroundContentTransferEnabled = true
         layerClient.diskCapacity = 300 * 1024 * 1024 // 300mb
         layerClient.autodownloadMIMETypes = nil // Download all automatically
+        layerClient.connect().start()
         unreadQueryController = try? layerClient.queryControllerWithQuery(LYRQuery.unreadConversations(), error: ())
         super.init()
         layerClient.delegate = self

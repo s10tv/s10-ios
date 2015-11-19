@@ -63,7 +63,6 @@ class CountdownTimer extends React.Component {
         onPress={() => {
           this.props.navigator.push({
             id: 'sendMessage',
-            me: this.props.me,
           })
         }}>
         <View style={styles.messageButton}>
