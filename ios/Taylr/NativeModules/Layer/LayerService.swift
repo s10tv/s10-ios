@@ -201,11 +201,13 @@ extension LayerService : LYRQueryControllerDelegate {
 
 extension LayerService {
     
-    @objc func requestAuthenticationNonce() {
+    @objc func requestAuthenticationNonce(callback: RCTResponseSenderBlock) {
         layerClient.requestAuthenticationNonce().start(Event.sink(error: { error in
             DDLogError("Unable to get authentication nonce \(error)")
+            callback([error, NSNull()])
         }, next: { nonce in
             DDLogInfo("Did receive authentication nonce \(nonce)")
+            callback([NSNull(), nonce])
         }))
     }
     
