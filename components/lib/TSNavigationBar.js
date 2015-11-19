@@ -12,8 +12,6 @@ class TSNavigationBar extends Navigator.NavigationBar {
     let omitRoutes = this.props.omitRoutes || [];
     let routes = this.props.navState.routeStack;
 
-    console.log(_.keys(this.props));
-
     if (routes.length) {
       var route = routes[routes.length - 1];
 

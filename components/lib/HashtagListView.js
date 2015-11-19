@@ -107,6 +107,7 @@ class HashtagListView extends React.Component {
     }
 
     let myTags = this.props.myTags;
+
     var myTagsRendered = null;
     if (myTags) {
       myTagsRendered = myTags.filter(tag => {
@@ -120,7 +121,17 @@ class HashtagListView extends React.Component {
       });
     }
 
-    let hashtags = this.state.suggestions.map((hashtag) => {
+    let myTagIds = [];
+    if (myTags) {
+      myTagIds = myTags.map(tag => {
+        return tag.text;
+      })
+    }
+
+    let hashtags = this.state.suggestions.filter((hashtag) => {
+      return myTagIds.indexOf(hashtag._id) < 0;
+    })
+    .map((hashtag) => {
       return <Hashtag ddp={this.ddp} enableTouch={true} hashtag={ hashtag } />
     });
 

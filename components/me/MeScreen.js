@@ -62,10 +62,15 @@ class MeHeader extends React.Component {
 
   render() {
     let me = this.props.me;
-    let serviceIcons = me.connectedProfiles.map((profile) => {
-      return (<Image style={[SHEET.smallIcon, styles.serviceIcon]}
-          source={{ uri: profile.icon.url }} />);
-    });
+
+    var serviceIcons = null;
+    var name = null;
+    if (me.connectedProfiles) {
+      serviceIcons = me.connectedProfiles.map((profile) => {
+        return (<Image style={[SHEET.smallIcon, styles.serviceIcon]}
+            source={{ uri: profile.icon.url }} />);
+      });
+    }
 
     return (
       <View style={styles.meHeader}>
@@ -73,7 +78,7 @@ class MeHeader extends React.Component {
         <View style={styles.headerContent}>
           <Text style={[styles.headerText, SHEET.baseText]}>
             {me.firstName} {me.lastName} {me.gradYear}
-          </Text>
+          </Text> 
           <View style={styles.headerContentLineItem}>
             { serviceIcons }
           </View>
