@@ -196,29 +196,37 @@ extension LayerService : LYRQueryControllerDelegate {
 
 extension LayerService {
     
-    @objc func requestAuthenticationNonce(callback: RCTResponseSenderBlock) {
+    @objc func isAuthenticated(block: RCTResponseSenderBlock) {
+        block([NSNull(), layerClient.isAuthenticated])
+    }
+    
+    @objc func requestAuthenticationNonce(block: RCTResponseSenderBlock) {
         layerClient.requestAuthenticationNonce().start(Event.sink(error: { error in
             DDLogError("Unable to get authentication nonce \(error)")
-            callback([error, NSNull()])
+            block([error, NSNull()])
         }, next: { nonce in
             DDLogInfo("Did receive authentication nonce \(nonce)")
-            callback([NSNull(), nonce])
+            block([NSNull(), nonce])
         }))
     }
     
-    @objc func authenticate(identityToken: String) {
+    @objc func authenticate(identityToken: String, block: RCTResponseSenderBlock) {
         layerClient.authenticate(identityToken).start(Event.sink(error: { error in
             DDLogError("Unable to update user in Layer session \(error)")
+            block([error, NSNull()])
         }, next: { userId in
             DDLogInfo("Updated user in Layer session userId=\(userId)")
+            block([NSNull(), userId])
         }))
     }
     
-    @objc func deauthenticate() {
+    @objc func deauthenticate(block: RCTResponseSenderBlock) {
         layerClient.deauthenticate().start(Event.sink(error: { error in
             DDLogError("Unable to deauthenticate \(error)")
+            block([error, NSNull()])
         }, completed: {
             DDLogInfo("Successfully deauthenticated from layer")
+            block([NSNull(), NSNull()])
         }))
     }
 }
