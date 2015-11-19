@@ -6,22 +6,31 @@
 //  Copyright © 2015 S10. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import LayerKit
+import React
 
 @objc(TSConversationListViewManager)
 class ConversationListViewManager : ViewControllerManager {
     let layerClient: LYRClient
-    var currentUser: UserViewModel?
     
     init(layerClient: LYRClient) {
         self.layerClient = layerClient
     }
     
-    override func view() -> UIView! {
+    override func viewWithProps(props: [NSObject : AnyObject]!) -> UIView! {
+        guard let currentUser = RCTConvert.userViewModel(props["currentUser"]) else {
+            return nil
+        }
         let vc = UIStoryboard(name: "Conversation", bundle: nil).instantiateViewControllerWithIdentifier("ConversationList") as! ConversationListViewController
         vc.vm = ConversationListViewModel(layerClient: layerClient, currentUser: currentUser)
-        vc.view.tsViewController = vc
-        return vc.view
+        let view = vc.view as! ConversationListView
+        view.tsViewController = vc
+        view.currentUser = currentUser
+        return view
     }
+}
+
+class ConversationListView : UITableView {
+    var currentUser: UserViewModel!
 }

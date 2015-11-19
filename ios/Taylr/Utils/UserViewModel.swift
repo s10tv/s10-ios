@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import React
 
 struct Context {
     let layer: LayerService
@@ -26,5 +27,20 @@ class UserViewModel : NSObject {
     
     init(userId: String) {
         self.userId = userId
+    }
+}
+
+extension RCTConvert {
+    @objc class func userViewModel(json: AnyObject?) -> UserViewModel? {
+        if let json = json as? [String: AnyObject], let userId = json["userId"] as? String {
+            let user = UserViewModel(userId: userId)
+            user.firstName = json["firstName"] as? String ?? ""
+            user.lastName = json["lastName"] as? String ?? ""
+            user.displayName = json["displayName"] as? String ?? ""
+            user.avatarURL = RCTConvert.NSURL(json["avatarUrl"])
+            user.avatarURL = RCTConvert.NSURL(json["coverUrl"])
+            return user
+        }
+        return nil
     }
 }
