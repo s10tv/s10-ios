@@ -13,7 +13,6 @@
 		EA1979E21BFC4CD800DF7B58 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1979E01BFC4CD800DF7B58 /* R.swift */; };
 		EA1979E31BFC4CD800DF7B58 /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1979E11BFC4CD800DF7B58 /* SBConstants.swift */; };
 		EA1979E51BFC4CF300DF7B58 /* Taylr.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA1979E41BFC4CF300DF7B58 /* Taylr.xcassets */; };
-		EA197A441BFC4D2600DF7B58 /* AlamofireExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1979FF1BFC4D2600DF7B58 /* AlamofireExtension.swift */; };
 		EA197A451BFC4D2600DF7B58 /* AnimationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A001BFC4D2600DF7B58 /* AnimationExtensions.swift */; };
 		EA197A461BFC4D2600DF7B58 /* FoundationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A011BFC4D2600DF7B58 /* FoundationExtension.swift */; };
 		EA197A471BFC4D2600DF7B58 /* GeometryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A021BFC4D2600DF7B58 /* GeometryExtensions.swift */; };
@@ -24,19 +23,15 @@
 		EA197A4C1BFC4D2600DF7B58 /* ArrayProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A091BFC4D2600DF7B58 /* ArrayProperty.swift */; };
 		EA197A4D1BFC4D2600DF7B58 /* DynamicProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A0A1BFC4D2600DF7B58 /* DynamicProperties.swift */; };
 		EA197A4E1BFC4D2600DF7B58 /* PropertyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A0B1BFC4D2600DF7B58 /* PropertyExtensions.swift */; };
-		EA197A4F1BFC4D2600DF7B58 /* TwoWayBindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A0C1BFC4D2600DF7B58 /* TwoWayBindings.swift */; };
 		EA197A501BFC4D2600DF7B58 /* ResourceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A0D1BFC4D2600DF7B58 /* ResourceExtension.swift */; };
 		EA197A511BFC4D2600DF7B58 /* SwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A0E1BFC4D2600DF7B58 /* SwiftExtensions.swift */; };
 		EA197A521BFC4D2600DF7B58 /* ThirdPartyBindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A0F1BFC4D2600DF7B58 /* ThirdPartyBindings.swift */; };
 		EA197A531BFC4D2600DF7B58 /* UIKitBindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A101BFC4D2600DF7B58 /* UIKitBindings.swift */; };
 		EA197A541BFC4D2600DF7B58 /* UIKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A111BFC4D2600DF7B58 /* UIKitExtension.swift */; };
-		EA197A551BFC4D2600DF7B58 /* AsyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A131BFC4D2600DF7B58 /* AsyncOperation.swift */; };
-		EA197A561BFC4D2600DF7B58 /* AzureClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A141BFC4D2600DF7B58 /* AzureClient.swift */; };
 		EA197A571BFC4D2600DF7B58 /* BaseViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A151BFC4D2600DF7B58 /* BaseViews.swift */; };
 		EA197A581BFC4D2600DF7B58 /* DesignableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A161BFC4D2600DF7B58 /* DesignableViews.swift */; };
 		EA197A5A1BFC4D2600DF7B58 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A181BFC4D2600DF7B58 /* Environment.swift */; };
 		EA197A5B1BFC4D2600DF7B58 /* ProvisioningProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A191BFC4D2600DF7B58 /* ProvisioningProfile.swift */; };
-		EA197A5C1BFC4D2600DF7B58 /* Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A1A1BFC4D2600DF7B58 /* Segue.swift */; };
 		EA197A861BFCFC3800DF7B58 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A851BFCFC3800DF7B58 /* RootViewController.swift */; };
 		EA3225BB1BFDAE8A00FF5074 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA32258B1BFDAE8A00FF5074 /* AppConfig.swift */; };
 		EA3225BC1BFDAE8A00FF5074 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA32258C1BFDAE8A00FF5074 /* AppDependencies.swift */; };
@@ -152,7 +147,6 @@
 		EA1979E01BFC4CD800DF7B58 /* R.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.swift; sourceTree = "<group>"; };
 		EA1979E11BFC4CD800DF7B58 /* SBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstants.swift; sourceTree = "<group>"; };
 		EA1979E41BFC4CF300DF7B58 /* Taylr.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Taylr.xcassets; sourceTree = "<group>"; };
-		EA1979FF1BFC4D2600DF7B58 /* AlamofireExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireExtension.swift; sourceTree = "<group>"; };
 		EA197A001BFC4D2600DF7B58 /* AnimationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimationExtensions.swift; sourceTree = "<group>"; };
 		EA197A011BFC4D2600DF7B58 /* FoundationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationExtension.swift; sourceTree = "<group>"; };
 		EA197A021BFC4D2600DF7B58 /* GeometryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometryExtensions.swift; sourceTree = "<group>"; };
@@ -163,19 +157,15 @@
 		EA197A091BFC4D2600DF7B58 /* ArrayProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayProperty.swift; sourceTree = "<group>"; };
 		EA197A0A1BFC4D2600DF7B58 /* DynamicProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicProperties.swift; sourceTree = "<group>"; };
 		EA197A0B1BFC4D2600DF7B58 /* PropertyExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyExtensions.swift; sourceTree = "<group>"; };
-		EA197A0C1BFC4D2600DF7B58 /* TwoWayBindings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TwoWayBindings.swift; sourceTree = "<group>"; };
 		EA197A0D1BFC4D2600DF7B58 /* ResourceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceExtension.swift; sourceTree = "<group>"; };
 		EA197A0E1BFC4D2600DF7B58 /* SwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftExtensions.swift; sourceTree = "<group>"; };
 		EA197A0F1BFC4D2600DF7B58 /* ThirdPartyBindings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdPartyBindings.swift; sourceTree = "<group>"; };
 		EA197A101BFC4D2600DF7B58 /* UIKitBindings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitBindings.swift; sourceTree = "<group>"; };
 		EA197A111BFC4D2600DF7B58 /* UIKitExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
-		EA197A131BFC4D2600DF7B58 /* AsyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AsyncOperation.swift; sourceTree = "<group>"; };
-		EA197A141BFC4D2600DF7B58 /* AzureClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AzureClient.swift; sourceTree = "<group>"; };
 		EA197A151BFC4D2600DF7B58 /* BaseViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViews.swift; sourceTree = "<group>"; };
 		EA197A161BFC4D2600DF7B58 /* DesignableViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableViews.swift; sourceTree = "<group>"; };
 		EA197A181BFC4D2600DF7B58 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		EA197A191BFC4D2600DF7B58 /* ProvisioningProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvisioningProfile.swift; sourceTree = "<group>"; };
-		EA197A1A1BFC4D2600DF7B58 /* Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segue.swift; sourceTree = "<group>"; };
 		EA197A851BFCFC3800DF7B58 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		EA24215C1BFD282C00AF16C4 /* RCTFBSDKCore.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDKCore.xcodeproj; path = "../node_modules/react-native-fbsdkcore/RCTFBSDKCore.xcodeproj"; sourceTree = "<group>"; };
 		EA2667801BFA93BA0054C777 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -301,7 +291,6 @@
 			isa = PBXGroup;
 			children = (
 				EA197A051BFC4D2600DF7B58 /* RAC */,
-				EA1979FF1BFC4D2600DF7B58 /* AlamofireExtension.swift */,
 				EA197A001BFC4D2600DF7B58 /* AnimationExtensions.swift */,
 				EA197A011BFC4D2600DF7B58 /* FoundationExtension.swift */,
 				EA197A021BFC4D2600DF7B58 /* GeometryExtensions.swift */,
@@ -332,7 +321,6 @@
 				EA197A091BFC4D2600DF7B58 /* ArrayProperty.swift */,
 				EA197A0A1BFC4D2600DF7B58 /* DynamicProperties.swift */,
 				EA197A0B1BFC4D2600DF7B58 /* PropertyExtensions.swift */,
-				EA197A0C1BFC4D2600DF7B58 /* TwoWayBindings.swift */,
 			);
 			path = Properties;
 			sourceTree = "<group>";
@@ -343,11 +331,8 @@
 				EA9516761BFD8924000F5338 /* ViewController */,
 				EA197A161BFC4D2600DF7B58 /* DesignableViews.swift */,
 				EA197A151BFC4D2600DF7B58 /* BaseViews.swift */,
-				EA197A131BFC4D2600DF7B58 /* AsyncOperation.swift */,
-				EA197A141BFC4D2600DF7B58 /* AzureClient.swift */,
 				EA197A181BFC4D2600DF7B58 /* Environment.swift */,
 				EA197A191BFC4D2600DF7B58 /* ProvisioningProfile.swift */,
-				EA197A1A1BFC4D2600DF7B58 /* Segue.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -889,7 +874,6 @@
 				EA3226051BFDAEEB00FF5074 /* DurationTimer.swift in Sources */,
 				EA3225DA1BFDAE8A00FF5074 /* LayerQueries.swift in Sources */,
 				EA197A4A1BFC4D2600DF7B58 /* Foundation+RACSupport.swift in Sources */,
-				EA197A4F1BFC4D2600DF7B58 /* TwoWayBindings.swift in Sources */,
 				EA197A861BFCFC3800DF7B58 /* RootViewController.swift in Sources */,
 				EA197A571BFC4D2600DF7B58 /* BaseViews.swift in Sources */,
 				EA3226081BFDAEEB00FF5074 /* VolumeView.swift in Sources */,
@@ -904,7 +888,6 @@
 				EA3225D91BFDAE8A00FF5074 /* LayerHelpers.swift in Sources */,
 				EA3225FC1BFDAEEB00FF5074 /* ChatHistoryViewController.swift in Sources */,
 				EA197A501BFC4D2600DF7B58 /* ResourceExtension.swift in Sources */,
-				EA197A441BFC4D2600DF7B58 /* AlamofireExtension.swift in Sources */,
 				EA32260B1BFDAEEB00FF5074 /* ConversationListView.swift in Sources */,
 				EA197A4B1BFC4D2600DF7B58 /* Future.swift in Sources */,
 				EA197A581BFC4D2600DF7B58 /* DesignableViews.swift in Sources */,
@@ -913,8 +896,6 @@
 				EA197A4E1BFC4D2600DF7B58 /* PropertyExtensions.swift in Sources */,
 				EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */,
 				EA197A451BFC4D2600DF7B58 /* AnimationExtensions.swift in Sources */,
-				EA197A5C1BFC4D2600DF7B58 /* Segue.swift in Sources */,
-				EA197A561BFC4D2600DF7B58 /* AzureClient.swift in Sources */,
 				EA3226011BFDAEEB00FF5074 /* TSConversationView.m in Sources */,
 				EA3225DD1BFDAE8A00FF5074 /* DDNSLogger.swift in Sources */,
 				EA32260E1BFDAEEB00FF5074 /* TSConversationListView.m in Sources */,
@@ -931,7 +912,6 @@
 				EA95167A1BFD8924000F5338 /* ViewControllerManager.swift in Sources */,
 				EA197A5A1BFC4D2600DF7B58 /* Environment.swift in Sources */,
 				EA3225BF1BFDAE8A00FF5074 /* UserViewModel.swift in Sources */,
-				EA197A551BFC4D2600DF7B58 /* AsyncOperation.swift in Sources */,
 				EA3225D81BFDAE8A00FF5074 /* LayerExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
