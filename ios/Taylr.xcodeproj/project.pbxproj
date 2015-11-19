@@ -202,6 +202,8 @@
 		EA3225F91BFDAEEB00FF5074 /* ConversationListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListViewModel.swift; sourceTree = "<group>"; };
 		EA3225FA1BFDAEEB00FF5074 /* TSConversationListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSConversationListView.m; sourceTree = "<group>"; };
 		EA3226361BFDB9C000FF5074 /* RACBindings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACBindings.swift; sourceTree = "<group>"; };
+		EA3226411BFDBB7900FF5074 /* ConversationListView.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = ConversationListView.js; sourceTree = "<group>"; };
+		EA3226431BFDBEE400FF5074 /* ConversationView.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = ConversationView.js; sourceTree = "<group>"; };
 		EA3713911BFD288700E51980 /* libRCTFBSDKCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRCTFBSDKCore.a; path = "../../node_modules/react-native-fbsdkcore/build/Debug-iphoneos/libRCTFBSDKCore.a"; sourceTree = "<group>"; };
 		EA3713931BFD28C200E51980 /* RCTFBSDKLogin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDKLogin.xcodeproj; path = "../node_modules/react-native-fbsdklogin/RCTFBSDKLogin.xcodeproj"; sourceTree = "<group>"; };
 		EA3713A91BFD28EF00E51980 /* libRCTFBSDKLogin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRCTFBSDKLogin.a; path = "../../node_modules/react-native-fbsdklogin/build/Debug-iphoneos/libRCTFBSDKLogin.a"; sourceTree = "<group>"; };
@@ -260,8 +262,8 @@
 				EA3713931BFD28C200E51980 /* RCTFBSDKLogin.xcodeproj */,
 				F94FA0CC1BF427D20050D6F1 /* RNMail.xcodeproj */,
 				EAA5DAC31BF2A98000BF6B1E /* RNSearchBar.xcodeproj */,
-				F9DDF6441BFD434600D7A2FC /* libRNFabricDigits.a */,
 				7AA6C7823A20B63EB451A15E /* Pods.framework */,
+				F9DDF6441BFD434600D7A2FC /* libRNFabricDigits.a */,
 				EA3713A91BFD28EF00E51980 /* libRCTFBSDKLogin.a */,
 				EA3713911BFD288700E51980 /* libRCTFBSDKCore.a */,
 				F9DDF6A91BFDB2A400D7A2FC /* libRCTVideo.a */,
@@ -420,6 +422,7 @@
 				EA3225E71BFDAEEB00FF5074 /* ConversationViewController.swift */,
 				EA3225E81BFDAEEB00FF5074 /* ConversationViewModel.swift */,
 				EA3225E61BFDAEEB00FF5074 /* ConversationView.swift */,
+				EA3226431BFDBEE400FF5074 /* ConversationView.js */,
 				EA3225E91BFDAEEB00FF5074 /* TSConversationView.m */,
 			);
 			path = ConversationView;
@@ -464,6 +467,7 @@
 				EA3225F81BFDAEEB00FF5074 /* ConversationListViewController.swift */,
 				EA3225F91BFDAEEB00FF5074 /* ConversationListViewModel.swift */,
 				EA3225F71BFDAEEB00FF5074 /* ConversationListView.swift */,
+				EA3226411BFDBB7900FF5074 /* ConversationListView.js */,
 				EA3225FA1BFDAEEB00FF5074 /* TSConversationListView.m */,
 			);
 			path = ConversationListView;
