@@ -45,7 +45,9 @@ class ViewControllerManager : RCTViewManager {
     }
     
     func pushRoute(route: String, properties: [String: AnyObject]) {
-        bridge?.eventDispatcher.sendAppEventWithName("ViewController.pushRoute", body: properties)
+        var body = properties
+        body["route"] = route
+        bridge?.eventDispatcher.sendAppEventWithName("ViewController.pushRoute", body: body)
     }
 }
 

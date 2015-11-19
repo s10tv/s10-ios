@@ -12,6 +12,17 @@ let UserSchema = React.PropTypes.shape({
 })
 
 class ConversationListView extends React.Component {
+  componentWillMount() {
+    this.setState({
+      routeListener: React.NativeAppEventEmitter.addListener(
+        'ViewController.pushRoute',
+        (properties) => console.log('Pushing route ', properties)
+      )
+    });
+  }
+  componentDidUnmount() {
+    this.state.routeListener.remove();
+  }
   render() {
     return <TSConversationListView {...this.props} />;
   }
@@ -24,3 +35,4 @@ ConversationListView.propTypes = {
 var TSConversationListView = React.requireNativeComponent('TSConversationListView', ConversationListView);
 
 module.exports = ConversationListView
+
