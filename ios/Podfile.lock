@@ -113,7 +113,7 @@ PODS:
   - TRVSDictionaryWithCaseInsensitivity (0.0.2)
   - TwitterCore (1.13.1):
     - Fabric
-  - UXCam (2.4.1)
+  - UXCam (2.4.2)
 
 DEPENDENCIES:
   - AMPopTip (~> 0.9)
@@ -204,6 +204,6 @@ SPEC CHECKSUMS:
   TPCircularBuffer: 949e9632b9fb99b7274d7b2296ee22bff5841e35
   TRVSDictionaryWithCaseInsensitivity: 51d2ccf52c6d645d27b63467a98fa02c556e01b0
   TwitterCore: 4f6fbd413f6d574d38bfbeeeb5cd75738caf567e
-  UXCam: 87a22c280e5ba094720e91561514f9d4b1a01033
+  UXCam: bb8b26b017b1149a4d92cf0b0bc1e568e5e752af
 
 COCOAPODS: 0.39.0

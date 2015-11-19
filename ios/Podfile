@@ -61,12 +61,14 @@ pod 'FormatterKit/TimeIntervalFormatter', '~> 1.8'
 pod 'PKHUD', :git => 'https://github.com/tonyxiao/PKHUD' # Fork is needed to work around xcasset compilation issue inside pod
 
 post_install do |installer|
-    app_plist = "Taylr/Support/Taylr-Info.plist"
     plist_buddy = "/usr/libexec/PlistBuddy"
-    version = `#{plist_buddy} -c "Print CFBundleShortVersionString" #{app_plist}`.strip
-    puts "Updating CocoaPods' version numbers to #{version}"
-
     installer.pods_project.targets.each do |target|
-        `#{plist_buddy} -c "Set CFBundleShortVersionString #{version}" "Pods/Target Support Files/#{target}/Info.plist"`
+        plist = "Pods/Target Support Files/#{target}/Info.plist"
+        original_version = `#{plist_buddy} -c "Print CFBundleShortVersionString" "#{plist}"`.strip
+        changed_version = original_version[/(\d+\.){1,2}(\d+)?/]
+        unless original_version == changed_version
+            puts "Fix version of Pod #{target}: #{original_version} => #{changed_version}"
+            `#{plist_buddy} -c "Set CFBundleShortVersionString #{changed_version}" "Pods/Target Support Files/#{target}/Info.plist"`
+        end
     end
 end
