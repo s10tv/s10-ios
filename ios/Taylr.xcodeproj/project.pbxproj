@@ -56,7 +56,6 @@
 		EA3225DE1BFDAE8A00FF5074 /* DDOuralabsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225B81BFDAE8A00FF5074 /* DDOuralabsLogger.swift */; };
 		EA3225DF1BFDAE8A00FF5074 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225B91BFDAE8A00FF5074 /* Logger.swift */; };
 		EA3225E01BFDAE8A00FF5074 /* TSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3225BA1BFDAE8A00FF5074 /* TSLogger.m */; };
-		EA3225FB1BFDAEEB00FF5074 /* Appearance.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225E21BFDAEEB00FF5074 /* Appearance.swift */; };
 		EA3225FC1BFDAEEB00FF5074 /* ChatHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225E41BFDAEEB00FF5074 /* ChatHistoryViewController.swift */; };
 		EA3225FD1BFDAEEB00FF5074 /* Conversation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA3225E51BFDAEEB00FF5074 /* Conversation.storyboard */; };
 		EA3225FE1BFDAEEB00FF5074 /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225E61BFDAEEB00FF5074 /* ConversationView.swift */; };
@@ -190,7 +189,6 @@
 		EA3225B81BFDAE8A00FF5074 /* DDOuralabsLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDOuralabsLogger.swift; sourceTree = "<group>"; };
 		EA3225B91BFDAE8A00FF5074 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		EA3225BA1BFDAE8A00FF5074 /* TSLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSLogger.m; sourceTree = "<group>"; };
-		EA3225E21BFDAEEB00FF5074 /* Appearance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Appearance.swift; sourceTree = "<group>"; };
 		EA3225E41BFDAEEB00FF5074 /* ChatHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatHistoryViewController.swift; sourceTree = "<group>"; };
 		EA3225E51BFDAEEB00FF5074 /* Conversation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Conversation.storyboard; sourceTree = "<group>"; };
 		EA3225E61BFDAEEB00FF5074 /* ConversationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
@@ -432,7 +430,6 @@
 				EA3225E81BFDAEEB00FF5074 /* ConversationViewModel.swift */,
 				EA3225E61BFDAEEB00FF5074 /* ConversationView.swift */,
 				EA3225E91BFDAEEB00FF5074 /* TSConversationView.m */,
-				EA3225E21BFDAEEB00FF5074 /* Appearance.swift */,
 			);
 			path = ConversationView;
 			sourceTree = "<group>";
@@ -862,7 +859,6 @@
 				EA3226081BFDAEEB00FF5074 /* VolumeView.swift in Sources */,
 				EA32260C1BFDAEEB00FF5074 /* ConversationListViewController.swift in Sources */,
 				EA3225BE1BFDAE8A00FF5074 /* Image.swift in Sources */,
-				EA3225FB1BFDAEEB00FF5074 /* Appearance.swift in Sources */,
 				EA197A511BFC4D2600DF7B58 /* SwiftExtensions.swift in Sources */,
 				EA3225DB1BFDAE8A00FF5074 /* LayerService.swift in Sources */,
 				EA32260D1BFDAEEB00FF5074 /* ConversationListViewModel.swift in Sources */,

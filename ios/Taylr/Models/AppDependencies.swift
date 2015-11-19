@@ -37,7 +37,6 @@ class AppDependencies : NSObject {
         super.init()
         Crashlytics.sharedInstance().delegate = self
         Fabric.with([Digits(), Crashlytics()])
-        Appearance.setupGlobalAppearances()
     }
 }
 
