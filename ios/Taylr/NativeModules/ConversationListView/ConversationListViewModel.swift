@@ -9,6 +9,7 @@
 import Foundation
 import ReactiveCocoa
 import LayerKit
+import React
 
 public class ConversationListViewModel: NSObject {
     

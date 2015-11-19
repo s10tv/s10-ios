@@ -12,9 +12,8 @@ import ReactiveCocoa
 import Atlas
 
 class ConversationListViewController : ATLConversationListViewController {
-    
-    var selectedConversation: LYRConversation?
     var vm: ConversationListViewModel!
+    var manager: ViewControllerManager!
     
     override func viewDidLoad() {
         displaysAvatarItem = true
@@ -57,8 +56,10 @@ class ConversationListViewController : ATLConversationListViewController {
 extension ConversationListViewController : ATLConversationListViewControllerDelegate {
     
     func conversationListViewController(conversationListViewController: ATLConversationListViewController!, didSelectConversation conversation: LYRConversation!) {
-        selectedConversation = conversation
-        print("Selected conversation id \(conversation.identifier.absoluteString)")
+        DDLogDebug("Selected conversation id \(conversation.identifier.absoluteString)")
+        manager.pushRoute("conversation", properties: [
+            "conversationId": conversation.identifier.absoluteString
+        ])
     }
 }
 

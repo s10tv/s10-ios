@@ -25,6 +25,7 @@ class ConversationListViewManager : ViewControllerManager {
         }
         let vc = sb.instantiateInitialViewController() as! ConversationListViewController
         vc.vm = ConversationListViewModel(layerClient: layer.layerClient, currentUser: currentUser)
+        vc.manager = self
         let view = vc.view as! ConversationListView
         view.tsViewController = vc
         view.currentUser = currentUser

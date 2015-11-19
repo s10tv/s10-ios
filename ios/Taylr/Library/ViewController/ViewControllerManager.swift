@@ -43,6 +43,10 @@ class ViewControllerManager : RCTViewManager {
             vc.endAppearanceTransition()
         }
     }
+    
+    func pushRoute(route: String, properties: [String: AnyObject]) {
+        bridge?.eventDispatcher.sendAppEventWithName("ViewController.pushRoute", body: properties)
+    }
 }
 
 // MARK: UIView + NativeView

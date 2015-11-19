@@ -16,3 +16,6 @@ RCT_EXTERN_METHOD(componentWillUnmount:(int)reactTag)
 RCT_EXTERN_METHOD(componentDidUnmount:(int)reactTag)
 
 @end
+
+// App events:
+// ViewController.pushRoute -> [String: AnyObject]
