@@ -17,8 +17,9 @@ public class Logger : NSObject {
         DDLog.addLogger(DDTTYLogger.sharedInstance()) // TTY = Xcode console
         DDLog.addLogger(DDASLLogger.sharedInstance()) // ASL = Apple System Logs
         DDLog.addLogger(DDOuralabsLogger(apiKey: config.ouralabsKey))
+        DDLog.addLogger(DDNSLogger())
         
-        DDLogInfo("Logger initialized")
+        DDLogInfo("Loggers initialized")
     }
 
     @objc

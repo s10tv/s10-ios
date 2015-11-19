@@ -74,9 +74,9 @@
 		EA3713921BFD288700E51980 /* libRCTFBSDKCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3713911BFD288700E51980 /* libRCTFBSDKCore.a */; };
 		EA3713AA1BFD28EF00E51980 /* libRCTFBSDKLogin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3713A91BFD28EF00E51980 /* libRCTFBSDKLogin.a */; };
 		EA3713C21BFD3A9C00E51980 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3713BF1BFD3A9C00E51980 /* Logger.swift */; };
-		EA3713C31BFD3A9C00E51980 /* NSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3713C11BFD3A9C00E51980 /* NSLogger.m */; };
 		EA3713C51BFD3E1B00E51980 /* TSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3713C41BFD3E1B00E51980 /* TSLogger.m */; };
 		EA3713C71BFD434300E51980 /* DDOuralabsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3713C61BFD434300E51980 /* DDOuralabsLogger.swift */; };
+		EA3713C91BFD455600E51980 /* DDNSLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3713C81BFD455600E51980 /* DDNSLogger.swift */; };
 		EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
 		EA78C8801B323E140016AB73 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA78C87F1B323E140016AB73 /* Images.xcassets */; };
 		EA7FB0941B5EF9D50052B394 /* Cabin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB08E1B5EF9D50052B394 /* Cabin-Bold.ttf */; };
@@ -199,10 +199,9 @@
 		EA3713931BFD28C200E51980 /* RCTFBSDKLogin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDKLogin.xcodeproj; path = "../node_modules/react-native-fbsdklogin/RCTFBSDKLogin.xcodeproj"; sourceTree = "<group>"; };
 		EA3713A91BFD28EF00E51980 /* libRCTFBSDKLogin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRCTFBSDKLogin.a; path = "../../node_modules/react-native-fbsdklogin/build/Debug-iphoneos/libRCTFBSDKLogin.a"; sourceTree = "<group>"; };
 		EA3713BF1BFD3A9C00E51980 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		EA3713C01BFD3A9C00E51980 /* NSLogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSLogger.h; sourceTree = "<group>"; };
-		EA3713C11BFD3A9C00E51980 /* NSLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSLogger.m; sourceTree = "<group>"; };
 		EA3713C41BFD3E1B00E51980 /* TSLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSLogger.m; sourceTree = "<group>"; };
 		EA3713C61BFD434300E51980 /* DDOuralabsLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDOuralabsLogger.swift; sourceTree = "<group>"; };
+		EA3713C81BFD455600E51980 /* DDNSLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDNSLogger.swift; sourceTree = "<group>"; };
 		EA78C87F1B323E140016AB73 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Pods/PKHUD/PKHUD/Images.xcassets; sourceTree = "<group>"; };
 		EA7FB08E1B5EF9D50052B394 /* Cabin-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Bold.ttf"; sourceTree = "<group>"; };
 		EA7FB08F1B5EF9D50052B394 /* Cabin-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -466,11 +465,10 @@
 		EA3713BE1BFD3A9C00E51980 /* Logger */ = {
 			isa = PBXGroup;
 			children = (
-				EA3713BF1BFD3A9C00E51980 /* Logger.swift */,
 				EA3713C61BFD434300E51980 /* DDOuralabsLogger.swift */,
+				EA3713C81BFD455600E51980 /* DDNSLogger.swift */,
+				EA3713BF1BFD3A9C00E51980 /* Logger.swift */,
 				EA3713C41BFD3E1B00E51980 /* TSLogger.m */,
-				EA3713C01BFD3A9C00E51980 /* NSLogger.h */,
-				EA3713C11BFD3A9C00E51980 /* NSLogger.m */,
 			);
 			path = Logger;
 			sourceTree = "<group>";
@@ -848,10 +846,10 @@
 				EA197A9A1BFD116200DF7B58 /* ConversationViewManager.swift in Sources */,
 				EA197A3C1BFC4D2600DF7B58 /* DurationTimer.swift in Sources */,
 				EA197A3B1BFC4D2600DF7B58 /* UserViewModel+ATLParticipant.swift in Sources */,
+				EA3713C91BFD455600E51980 /* DDNSLogger.swift in Sources */,
 				EA197A801BFCE09F00DF7B58 /* AnalyticsService.swift in Sources */,
 				EA3713C51BFD3E1B00E51980 /* TSLogger.m in Sources */,
 				EA197A4C1BFC4D2600DF7B58 /* ArrayProperty.swift in Sources */,
-				EA3713C31BFD3A9C00E51980 /* NSLogger.m in Sources */,
 				EA197A3D1BFC4D2600DF7B58 /* VideoPlayerViewController.swift in Sources */,
 				EA197A9C1BFD166B00DF7B58 /* ConversationListViewManager.swift in Sources */,
 				EA3713C21BFD3A9C00E51980 /* Logger.swift in Sources */,
@@ -919,6 +917,7 @@
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
+					DEV,
 				);
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
