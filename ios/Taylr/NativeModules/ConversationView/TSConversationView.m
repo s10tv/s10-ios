@@ -14,3 +14,6 @@ RCT_EXPORT_VIEW_PROPERTY(currentUser, userViewModel)
 RCT_EXPORT_VIEW_PROPERTY(conversationId, NSString)
 
 @end
+
+// MARK: - App Events
+// ViewController.pushRoute -> [route: 'Profile', userId: String]

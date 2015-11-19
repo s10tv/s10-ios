@@ -17,7 +17,7 @@ RCT_EXTERN_METHOD(deauthenticate)
 
 @end
 
-// App events:
+// MARK: - App Events
 // Layer.didReceiveNonce -> String
 // Layer.unreadCountUpdate -> Int
 
