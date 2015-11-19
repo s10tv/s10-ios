@@ -88,6 +88,7 @@
 		EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA9A6ACE1AAFDE19009EDD6D /* Localizable.strings */; };
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
+		F9DDF6451BFD434600D7A2FC /* libRNFabricDigits.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9DDF6441BFD434600D7A2FC /* libRNFabricDigits.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -125,6 +126,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RCTFBSDKLogin;
+		};
+		F9F337C71BFD431800ACA98C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F9F337BE1BFD42F600ACA98C /* RNFabricDigits.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 4D8BECAE1BDFF0FB000A1462;
+			remoteInfo = RNFabricDigits;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -221,6 +229,8 @@
 		EABD43DA1AA1D29C00B07813 /* Prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
 		EABF2AB41AD04659005880E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F94FA0CC1BF427D20050D6F1 /* RNMail.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNMail.xcodeproj; path = "../node_modules/react-native-mail/RNMail.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		F9DDF6441BFD434600D7A2FC /* libRNFabricDigits.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRNFabricDigits.a; path = "../../node_modules/react-native-fabric-digits/ios/build/Debug-iphoneos/libRNFabricDigits.a"; sourceTree = "<group>"; };
+		F9F337BE1BFD42F600ACA98C /* RNFabricDigits.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNFabricDigits.xcodeproj; path = "../node_modules/react-native-fabric-digits/ios/RNFabricDigits.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -232,6 +242,7 @@
 				EA1979401BFAAB7C00DF7B58 /* libRNSearchBar.a in Frameworks */,
 				EA3713921BFD288700E51980 /* libRCTFBSDKCore.a in Frameworks */,
 				EA3713AA1BFD28EF00E51980 /* libRCTFBSDKLogin.a in Frameworks */,
+				F9DDF6451BFD434600D7A2FC /* libRNFabricDigits.a in Frameworks */,
 				4AD00249A11FDFD015C379A5 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -242,6 +253,8 @@
 		2C9F4D1EF3D7E4C4FBB0AEDB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F9DDF6441BFD434600D7A2FC /* libRNFabricDigits.a */,
+				F9F337BE1BFD42F600ACA98C /* RNFabricDigits.xcodeproj */,
 				EA24215C1BFD282C00AF16C4 /* RCTFBSDKCore.xcodeproj */,
 				EA3713931BFD28C200E51980 /* RCTFBSDKLogin.xcodeproj */,
 				F94FA0CC1BF427D20050D6F1 /* RNMail.xcodeproj */,
@@ -548,6 +561,14 @@
 			path = Configs;
 			sourceTree = "<group>";
 		};
+		F9F337C41BFD431800ACA98C /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F9F337C81BFD431800ACA98C /* libRNFabricDigits.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -637,6 +658,10 @@
 					ProjectRef = EA3713931BFD28C200E51980 /* RCTFBSDKLogin.xcodeproj */;
 				},
 				{
+					ProductGroup = F9F337C41BFD431800ACA98C /* Products */;
+					ProjectRef = F9F337BE1BFD42F600ACA98C /* RNFabricDigits.xcodeproj */;
+				},
+				{
 					ProductGroup = EA2666F21BFA62230054C777 /* Products */;
 					ProjectRef = F94FA0CC1BF427D20050D6F1 /* RNMail.xcodeproj */;
 				},
@@ -686,6 +711,13 @@
 			fileType = archive.ar;
 			path = libRCTFBSDKLogin.a;
 			remoteRef = EA3713A01BFD28D700E51980 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		F9F337C81BFD431800ACA98C /* libRNFabricDigits.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libRNFabricDigits.a;
+			remoteRef = F9F337C71BFD431800ACA98C /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

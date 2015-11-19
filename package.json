@@ -10,6 +10,7 @@
     "lodash": "^3.6.0",
     "react-native": "^0.14.2",
     "react-native-button": "^1.2.1",
+    "react-native-fabric-digits": "^1.0.6",
     "react-native-fbsdkcore": "0.0.7",
     "react-native-fbsdklogin": "0.0.7",
     "react-native-mail": "^0.2.4",

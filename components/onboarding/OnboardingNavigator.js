@@ -13,6 +13,7 @@ let {
 let BaseTaylrNavigator = require('../lib/BaseTaylrNavigator');
 let SHEET = require('../CommonStyles').SHEET;
 let HashtagListView = require('../lib/HashtagListView');
+let FacebookLoginScreen = require('./FacebookLoginScreen');
 let LinkServiceScreen = require('./LinkServiceScreen');
 let EditProfileScreen = require('./EditProfileScreen');
 let AddHashtagScreen = require('./AddHashtagScreen');
@@ -20,16 +21,20 @@ let AddHashtagScreen = require('./AddHashtagScreen');
 class OnboardingNavigator extends BaseTaylrNavigator {
 
   _leftButton(route, navigator, index, navState) {
-    if (route.id) {
-      return (
-        <TouchableOpacity
-          onPress={() => navigator.pop()}
-          style={styles.navBarLeftButton}>
-          <Text style={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText]}>
-            Back
-          </Text>
-        </TouchableOpacity>
-      );
+    switch (route.id) {
+      case 'login':
+        return null;
+
+      default:
+        return (
+          <TouchableOpacity
+            onPress={() => navigator.pop()}
+            style={styles.navBarLeftButton}>
+            <Text style={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText]}>
+              Back
+            </Text>
+          </TouchableOpacity>
+        );
     }
   }
 
@@ -75,6 +80,7 @@ class OnboardingNavigator extends BaseTaylrNavigator {
         break;
 
       case 'hashtag':
+      case 'login': // fallthrough intentional
         return null;
     }
 
@@ -91,10 +97,18 @@ class OnboardingNavigator extends BaseTaylrNavigator {
 
   renderScene(route, nav) {
     switch (route.id) {
+      case 'login':
+        return (
+          <FacebookLoginScreen navigator={nav}
+            onLogin={this.props.onLogin}
+            ddp={this.props.ddp} />
+        );
+
       case 'linkservices':
         return (
           <LinkServiceScreen navigator={nav}
             integrations={this.props.integrations}
+            me={this.props.me} // TEMP
             ddp={this.props.ddp} />
         );
 
@@ -126,6 +140,16 @@ class OnboardingNavigator extends BaseTaylrNavigator {
   }
 
   render() {
+    var initialRoute = {
+      id: 'linkservices',
+      title: 'Link Services',
+    };
+    if (!this.props.loggedIn) {
+      initialRoute = {
+        id: 'login',
+      };
+    }
+
     return (
       <Navigator
         itemWrapperStyle={styles.navWrap}
@@ -135,10 +159,7 @@ class OnboardingNavigator extends BaseTaylrNavigator {
           ...Navigator.SceneConfigs.HorizontalSwipeJump,
           gestures: {}, // or null
         })}
-        initialRoute={{
-          id: 'linkservices',
-          title: 'Link Services',
-        }}
+        initialRoute={ initialRoute }
         navigationBar={
           <Navigator.NavigationBar
             routeMapper={{

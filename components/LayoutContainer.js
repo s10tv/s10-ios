@@ -30,128 +30,150 @@ class LayoutContainer extends React.Component {
     }
   }
 
+  onLogin() {
+    let ddp = this.ddp;
+    this.setState({ loggedIn: true });
+
+    console.log('onlogin called .. ');
+
+    this.ddp.subscribe({ pubName: 'settings' })
+    .then(() => {
+      ddp.collections.observe(() => {
+        if (ddp.collections.settings) {
+          return ddp.collections.settings.find({});
+        }
+      }).subscribe(settings => {
+        indexedSettings =  {};
+        settings.forEach((setting) => {
+          indexedSettings[setting._id] = setting;
+        });
+        this.setState({ settings: indexedSettings });
+      });
+    });
+
+    this.ddp.subscribe({ pubName: 'me' })
+    .then(() => {
+      ddp.collections.observe(() => {
+        if (ddp.collections.users) {
+          return ddp.collections.users.findOne({ _id: ddp.currentUserId });
+        }
+      }).subscribe(currentUser => {
+        this.setState({ me: currentUser });
+      });
+
+      ddp.collections.observe(() => {
+        if (ddp.collections.users) {
+          return ddp.collections.users.find({});
+        }
+      }).subscribe(users => {
+        this.setState({ users: users });
+      });
+    });
+
+    this.ddp.subscribe({ pubName: 'integrations' })
+    .then(() => {
+      ddp.collections.observe(() => {
+        if (ddp.collections.integrations) {
+          return ddp.collections.integrations.find({});
+        }
+      }).subscribe(integrations=> {
+        integrations.sort((one, two) => {
+          return one.status == 'linked' ? -1 : 1;
+        })
+        this.setState({ integrations: integrations });
+      });
+    });
+
+    this.ddp.subscribe({ pubName: 'hashtag-categories' })
+    .then(() => {
+      ddp.collections.observe(() => {
+        if (ddp.collections.categories) {
+          return ddp.collections.categories.find({});
+        }
+      }).subscribe(categories=> {
+        this.setState({ categories: categories });
+      });
+    });
+
+    this.ddp.subscribe({ pubName: 'my-tags' })
+    .then(() => {
+      ddp.collections.observe(() => {
+        if (ddp.collections.mytags) {
+          return ddp.collections.mytags.findOne({});
+        }
+      }).subscribe(user => {
+        user.tags.forEach((tag) => {
+          tag.isMine = true;
+        })
+        this.setState({ myTags: user.tags });
+      });
+    });
+
+    this.ddp.subscribe({ pubName: 'candidate-discover' })
+    .then(() => {
+      ddp.collections.observe(() => {
+        if (ddp.collections.candidates) {
+          return ddp.collections.candidates.find({});
+        }
+      }).subscribe(candidates => {
+        let activeCandidates = candidates.filter((candidate) => {
+          return candidate.type == 'active'
+        })
+
+        if (activeCandidates.length > 0) {
+          this.setState({ candidate: activeCandidates[0] })
+        }
+
+        this.setState({ candidates: candidates });
+      });
+    });
+
+    this.ddp.subscribe({ pubName: 'activities', params:[ddp.currentUserId] })
+    .then(() => {
+      ddp.collections.observe(() => {
+        if (ddp.collections.activities) {
+          return ddp.collections.activities.find({ userId: ddp.currentUserId });
+        }
+      }).subscribe(activities => {
+        this.setState({ myActivities: activities });
+      });
+    });
+  }
+
   componentWillMount() {
     let ddp = this.ddp;
 
     ddp.initialize()
     .then(() => {
-      return ddp.loginWithToken('ys_3fCYOsxO7TPDxa4tMfssWJ057al55JhnJKKfzPnW'); 
+      return ddp.loginWithToken(); 
     }).then((res) => {
       this.setState(res);
-
-      this.ddp.subscribe({ pubName: 'settings' })
-      .then(() => {
-        ddp.collections.observe(() => {
-          if (ddp.collections.settings) {
-            return ddp.collections.settings.find({});
-          }
-        }).subscribe(settings => {
-          indexedSettings =  {};
-          settings.forEach((setting) => {
-            indexedSettings[setting._id] = setting;
-          });
-          this.setState({ settings: indexedSettings });
-        });
-      });
-
-      this.ddp.subscribe({ pubName: 'me' })
-      .then(() => {
-        ddp.collections.observe(() => {
-          if (ddp.collections.users) {
-            return ddp.collections.users.findOne({ _id: ddp.currentUserId });
-          }
-        }).subscribe(currentUser => {
-          this.setState({ me: currentUser });
-        });
-
-        ddp.collections.observe(() => {
-          if (ddp.collections.users) {
-            return ddp.collections.users.find({});
-          }
-        }).subscribe(users => {
-          this.setState({ users: users });
-        });
-      });
-
-      this.ddp.subscribe({ pubName: 'integrations' })
-      .then(() => {
-        ddp.collections.observe(() => {
-          if (ddp.collections.integrations) {
-            return ddp.collections.integrations.find({});
-          }
-        }).subscribe(integrations=> {
-          integrations.sort((one, two) => {
-            return one.status == 'linked' ? -1 : 1;
-          })
-          this.setState({ integrations: integrations });
-        });
-      });
-
-      this.ddp.subscribe({ pubName: 'hashtag-categories' })
-      .then(() => {
-        ddp.collections.observe(() => {
-          if (ddp.collections.categories) {
-            return ddp.collections.categories.find({});
-          }
-        }).subscribe(categories=> {
-          this.setState({ categories: categories });
-        });
-      });
-
-      this.ddp.subscribe({ pubName: 'my-tags' })
-      .then(() => {
-        ddp.collections.observe(() => {
-          if (ddp.collections.mytags) {
-            return ddp.collections.mytags.findOne({});
-          }
-        }).subscribe(user => {
-          user.tags.forEach((tag) => {
-            tag.isMine = true;
-          })
-          this.setState({ myTags: user.tags });
-        });
-      });
-
-      this.ddp.subscribe({ pubName: 'candidate-discover' })
-      .then(() => {
-        ddp.collections.observe(() => {
-          if (ddp.collections.candidates) {
-            return ddp.collections.candidates.find({});
-          }
-        }).subscribe(candidates => {
-          let activeCandidates = candidates.filter((candidate) => {
-            return candidate.type == 'active'
-          })
-
-          if (activeCandidates.length > 0) {
-            this.setState({ candidate: activeCandidates[0] })
-          }
-
-          this.setState({ candidates: candidates });
-        });
-      });
-
-      this.ddp.subscribe({ pubName: 'activities', params:[ddp.currentUserId] })
-      .then(() => {
-        ddp.collections.observe(() => {
-          if (ddp.collections.activities) {
-            return ddp.collections.activities.find({ userId: ddp.currentUserId });
-          }
-        }).subscribe(activities => {
-          this.setState({ myActivities: activities });
-        });
-      }); 
+      if (res.loggedIn) {
+        this.onLogin();
+      }
     })
   }
 
   render() {
+    if (!this.state.loggedIn) {
+      return <OnboardingNavigator
+        loggedIn={this.state.loggedIn}
+        onLogin={this.onLogin.bind(this)}
+        ddp={this.ddp} /> 
+    }
+
+    console.log('logged in is true?');
+
     if (!this.state.settings) {
       return <Loader />
     }
     let status = this.state.settings.accountStatus.value;
+
+    console.log(status);
     if (status != 'active') {
       return <OnboardingNavigator
         me={this.state.me} 
+        loggedIn={this.state.loggedIn}
         integrations={this.state.integrations}
         categories={this.state.categories}
         myTags={this.state.myTags}
