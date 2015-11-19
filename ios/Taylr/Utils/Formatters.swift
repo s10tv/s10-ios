@@ -214,7 +214,7 @@ public struct Formatters {
         return attrString
     }
     
-    public static func stringForDisplayOfRecipientStatus(recipientStatus: [NSObject: AnyObject], ctx: Context) -> String {
+    static func stringForDisplayOfRecipientStatus(recipientStatus: [NSObject: AnyObject], ctx: Context) -> String {
         let statuses = recipientStatus
             .filter { key, _ in key != ctx.currentUserId }
             .map { ($0 as! String, LYRRecipientStatus(rawValue: $1 as! Int)!) }
@@ -255,7 +255,7 @@ public struct Formatters {
         return statusString
     }
     
-    public static func attributedStringForDisplayOfRecipientStatus(recipientStatus: [NSObject: AnyObject], ctx: Context) -> NSAttributedString {
+    static func attributedStringForDisplayOfRecipientStatus(recipientStatus: [NSObject: AnyObject], ctx: Context) -> NSAttributedString {
         return NSAttributedString(string: stringForDisplayOfRecipientStatus(recipientStatus, ctx: ctx), attributes: [
             NSForegroundColorAttributeName: UIColor.whiteColor(),
             NSFontAttributeName: CabinBold11

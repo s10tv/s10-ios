@@ -8,11 +8,10 @@
 
 import Foundation
 
-public struct Context {
-    public let layer: LayerService
+struct Context {
+    let layer: LayerService
     
-    public var currentUserId: String? {
+    var currentUserId: String? {
         return nil
     }
-    
 }

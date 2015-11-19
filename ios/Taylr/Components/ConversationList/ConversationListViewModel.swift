@@ -18,7 +18,7 @@ public class ConversationListViewModel: NSObject {
     let changedConversationSink: Event<LYRConversation, NoError> -> ()
     public let changedConversations: Signal<LYRConversation, NoError>
     
-    public init(_ ctx: Context) {
+    init(_ ctx: Context) {
         self.ctx = ctx
         let (signal, sink) = Signal<LYRConversation, NoError>.pipe()
         changedConversations = signal.observeOn(UIScheduler())

@@ -11,6 +11,13 @@
 
 @interface RCT_EXTERN_MODULE(TSLayerService, NSObject)
 
-RCT_EXTERN_METHOD(getUnreadCount:(RCTResponseSenderBlock *)callback)
+RCT_EXTERN_METHOD(requestAuthenticationNonce)
+RCT_EXTERN_METHOD(authenticate:(NSString *)identityToken)
+RCT_EXTERN_METHOD(deauthenticate)
 
 @end
+
+// App events:
+// Layer.didReceiveNonce -> String
+// Layer.unreadCountUpdate -> Int
+

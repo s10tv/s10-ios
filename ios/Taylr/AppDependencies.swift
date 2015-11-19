@@ -25,7 +25,7 @@ class AppDependencies : NSObject {
     }()
 
     lazy private(set) var layer: LayerService = {
-        return LayerService(layerAppID: self.config.layerURL, existingClient: nil)
+        return LayerService(layerAppID: self.config.layerURL)
     }()
     
     override init() {

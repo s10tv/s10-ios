@@ -92,6 +92,12 @@ extension LYRConversation {
 // MARK: - Conversation Messages
 
 extension LYRQuery {
+    static func unreadConversations() -> LYRQuery {
+        let query = LYRQuery(queryableClass: LYRConversation.self)
+        query.predicate = LYRPredicate(property: "hasUnreadMessages", predicateOperator: .IsEqualTo, value: true)
+        return query
+    }
+    
     static func transferingMessages(conversation: LYRConversation? = nil) -> LYRQuery {
         let query = LYRQuery(queryableClass: LYRMessage.self)
         let statuses: [LYRContentTransferStatus] = [.AwaitingUpload, .Uploading, .Downloading]

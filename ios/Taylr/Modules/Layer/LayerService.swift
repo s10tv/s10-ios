@@ -7,30 +7,30 @@
 //
 
 import Foundation
+import CocoaLumberjack
 import ReactiveCocoa
 import LayerKit
 import React
-import CocoaLumberjack
 
 @objc(TSLayerService)
-public class LayerService: NSObject {
-    
+class LayerService: NSObject {
     @objc weak var bridge: RCTBridge?
     
-    let unreadCount = MutableProperty(UInt(0))
+    let layerClient: LYRClient
     let unreadQueryController: LYRQueryController?
-    public let layerClient: LYRClient
     
-    public init(layerAppID: NSURL, existingClient: LYRClient? = nil) {
-        layerClient = existingClient ?? LayerService.defaultLayerClient(layerAppID)
-        let query = LYRQuery(queryableClass: LYRConversation.self)
-        query.predicate = LYRPredicate(property: "hasUnreadMessages", predicateOperator: .IsEqualTo, value: true)
-        unreadQueryController = try? layerClient.queryControllerWithQuery(query, error: ())
+    init(layerAppID: NSURL) {
+        layerClient = LYRClient(appID: layerAppID)
+        layerClient.autodownloadMaximumContentSize = 50 * 1024 * 1024 // 50mb
+        layerClient.backgroundContentTransferEnabled = true
+        layerClient.diskCapacity = 300 * 1024 * 1024 // 300mb
+        layerClient.autodownloadMIMETypes = nil // Download all automatically
+        unreadQueryController = try? layerClient.queryControllerWithQuery(LYRQuery.unreadConversations(), error: ())
         super.init()
         layerClient.delegate = self
         unreadQueryController?.delegate = self
         _ = try? unreadQueryController?.execute()
-        unreadCount.value = UInt(unreadQueryController?.count() ?? 0)
+        queryControllerDidChangeContent(unreadQueryController) // Force trigger
     }
     
     // MARK: -
@@ -61,7 +61,6 @@ public class LayerService: NSObject {
 //            return error.userInfo[LYRExistingDistinctConversationKey] as! LYRConversation
 //        }
 //    }
-//    
     
     func findMessage(messageId: String) -> LYRMessage? {
         do {
@@ -120,7 +119,6 @@ public class LayerService: NSObject {
         }
         return 0
     }
-
     
     private func countDownloads(conversation: LYRConversation? = nil) -> UInt {
         do {
@@ -146,104 +144,67 @@ public class LayerService: NSObject {
                 return .empty
             })
     }
-    
-    // MARK: - Authentication
-    
-    // TODO: Careful this method if not disposed will retain self
-    public func connectAndKeepUserInSync() -> Disposable {
-        return CompositeDisposable()
-//        fatalError()
-//        return combineLatest(
-//            layerClient.connect(),
-//            meteor.userIdProducer().promoteErrors(NSError)
-//            ).flatMap(.Latest) { _, userId in
-//                return self.syncWithUser(userId)
-//            }.start(Event.sink(error: { error in
-//                DDLogError("Unable to update user in Layer session", error)
-//                }, next: { userId in
-//                    DDLogInfo("Updated user in Layer session userId=\(userId)")
-//            }))
-    }
-
-    private func syncWithUser(userId: String?) -> SignalProducer<String?, NSError> {
-        if let userId = userId {
-            return self.authenticate(userId).map { $0 }
-        } else {
-            return self.deauthenticate().map { _ in nil }
-        }
-    }
-    
-    private func authenticate(userId: String) -> SignalProducer<String, NSError> {
-//        if let layerUserId = layerClient.authenticatedUserID where layerUserId == userId {
-//            return SignalProducer(value: userId)
-//        } else if layerClient.isAuthenticated {
-//            return layerClient.deauthenticate().then(authenticate(userId))
-//        }
-//        return layerClient.requestAuthenticationNonce().flatMap(.Concat) { nonce in
-//            self.meteor.layerAuth(nonce).producer
-//        }.flatMap(.Concat) { identityToken in
-//            self.layerClient.authenticate(identityToken)
-//        }
-        fatalError()
-    }
-    
-    private func deauthenticate() -> SignalProducer<(), NSError> {
-        if !layerClient.isAuthenticated {
-            return SignalProducer(value: ())
-        }
-        return layerClient.deauthenticate()
-    }
-    
-    // MARK: -
-    
-    public static func defaultLayerClient(layerAppID: NSURL) -> LYRClient {
-        let layerClient = LYRClient(appID: layerAppID)
-        layerClient.autodownloadMaximumContentSize = 50 * 1024 * 1024 // 50mb
-        layerClient.backgroundContentTransferEnabled = true
-        layerClient.diskCapacity = 300 * 1024 * 1024 // 300mb
-        layerClient.autodownloadMIMETypes = nil // Download all automatically
-        return layerClient
-    }
 }
 
-extension LayerService : LYRQueryControllerDelegate {
-    public func queryControllerDidChangeContent(queryController: LYRQueryController!) {
-        unreadCount.value = queryController.count()
-    }
-}
+// MARK: - LYRClientDelegate
 
 extension LayerService : LYRClientDelegate {
-    public func layerClient(client: LYRClient!, didReceiveAuthenticationChallengeWithNonce nonce: String!) {
-//        meteor.layerAuth(nonce).producer.flatMap(.Concat) { identityToken in
-//            self.layerClient.authenticate(identityToken)
-//        }.start(Event.sink(error: { error in
-//            DDLogError("Unable to update user in Layer session", error)
-//        }, next: { userId in
-//            DDLogInfo("Updated user in Layer session userId=\(userId)")
-//        }))
-    }
     
-    public func layerClient(client: LYRClient!, objectsDidChange changes: [AnyObject]!) {
+    func layerClient(client: LYRClient!, objectsDidChange changes: [AnyObject]!) {
         DDLogDebug("Layer objects did change \(changes)")
     }
     
-    public func layerClient(client: LYRClient!, willBeginContentTransfer contentTransferType: LYRContentTransferType, ofObject object: AnyObject!, withProgress progress: LYRProgress!) {
+    func layerClient(client: LYRClient!, willBeginContentTransfer contentTransferType: LYRContentTransferType, ofObject object: AnyObject!, withProgress progress: LYRProgress!) {
         DDLogDebug("Will begin \(contentTransferType) \(object)")
     }
     
-    public func layerClient(client: LYRClient!, didFinishContentTransfer contentTransferType: LYRContentTransferType, ofObject object: AnyObject!) {
+    func layerClient(client: LYRClient!, didFinishContentTransfer contentTransferType: LYRContentTransferType, ofObject object: AnyObject!) {
         DDLogDebug("did finish \(contentTransferType) \(object)")
     }
     
-    public func layerClient(client: LYRClient!, didFailOperationWithError error: NSError!) {
+    func layerClient(client: LYRClient!, didFailOperationWithError error: NSError!) {
         DDLogError("Layer failed to perform operation \(error)")
+    }
+
+    func layerClient(client: LYRClient!, didReceiveAuthenticationChallengeWithNonce nonce: String!) {
+        assert(bridge != nil, "Bridge should not be nil")
+        bridge?.eventDispatcher.sendAppEventWithName("Layer.didReceiveNonce", body: nonce)
+        // Expect JavaScript side to then call LayerService.authenticate to proceed
     }
 }
 
-// MARK: - 
+// MARK: - LYRQueryControllerDelegate
+
+extension LayerService : LYRQueryControllerDelegate {
+    func queryControllerDidChangeContent(queryController: LYRQueryController!) {
+        bridge?.eventDispatcher.sendAppEventWithName("Layer.unreadCountUpdate", body: queryController.count())
+    }
+}
+
+// MARK: - NativeModule API
 
 extension LayerService {
-    @objc func getUnreadCount(callback: RCTResponseSenderBlock) {
-        callback([unreadCount.value])
+    @objc func requestAuthenticationNonce() {
+        layerClient.requestAuthenticationNonce().start(Event.sink(error: { error in
+            DDLogError("Unable to get authentication nonce \(error)")
+        }, next: { nonce in
+            DDLogInfo("Did receive authentication nonce \(nonce)")
+        }))
+    }
+    
+    @objc func authenticate(identityToken: String) {
+        layerClient.authenticate(identityToken).start(Event.sink(error: { error in
+            DDLogError("Unable to update user in Layer session \(error)")
+        }, next: { userId in
+            DDLogInfo("Updated user in Layer session userId=\(userId)")
+        }))
+    }
+    
+    @objc func deauthenticate() {
+        layerClient.deauthenticate().start(Event.sink(error: { error in
+            DDLogError("Unable to deauthenticate \(error)")
+        }, completed: {
+            DDLogInfo("Successfully deauthenticated from layer")
+        }))
     }
 }
