@@ -13,20 +13,14 @@ import LayerKit
 public class ConversationListViewModel: NSObject {
     
     let layerClient: LYRClient
-    let currentUser: UserViewModel?
+    let currentUser: UserViewModel
     
-    init(layerClient: LYRClient, currentUser: UserViewModel?) {
+    init(layerClient: LYRClient, currentUser: UserViewModel) {
         self.layerClient = layerClient
         self.currentUser = currentUser
     }
     
     func firstOtherParticipant(conversation: LYRConversation) -> UserViewModel? {
-        guard let currentUser = currentUser else {
-            if let uid = conversation.participants.first as? String {
-                return UserViewModel(userId: uid, inConversation: conversation)
-            }
-            return nil
-        }
         return conversation.otherParticipants(currentUser.userId).first
     }
     
@@ -49,9 +43,6 @@ public class ConversationListViewModel: NSObject {
     }
     
     func lastMessageTextForConversation(conversation: LYRConversation) -> String {
-        guard let currentUser = currentUser else {
-            return ""
-        }
         if let msg = conversation.lastMessage where msg.videoPart != nil {
             let sentBySelf = msg.sender.userID == currentUser.userId
             if sentBySelf {
