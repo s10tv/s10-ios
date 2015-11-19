@@ -19,7 +19,10 @@ class ChatHistoryViewController : ATLConversationViewController {
     weak var historyDelegate: ConversationHistoryDelegate?
     
     var vm: ConversationViewModel! {
-        didSet { conversation = vm.conversation }
+        didSet {
+            layerClient = vm.layer.layerClient
+            conversation = vm.conversation
+        }
     }
     var ctx: Context!
     
@@ -81,8 +84,7 @@ extension ConversationViewModel : ATLConversationViewControllerDataSource {
     }
     
     public func conversationViewController(conversationViewController: ATLConversationViewController!, attributedStringForDisplayOfRecipientStatus recipientStatus: [NSObject : AnyObject]!) -> NSAttributedString! {
-        return nil
-//        return Formatters.attributedStringForDisplayOfRecipientStatus(recipientStatus, currentUser: ctx)
+        return Formatters.attributedStringForDisplayOfRecipientStatus(recipientStatus, currentUser: currentUser)
     }
     
 }

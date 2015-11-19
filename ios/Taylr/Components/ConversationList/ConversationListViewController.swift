@@ -70,7 +70,7 @@ extension ConversationListViewController : ATLConversationListViewControllerDele
     
     func conversationListViewController(conversationListViewController: ATLConversationListViewController!, didSelectConversation conversation: LYRConversation!) {
         selectedConversation = conversation
-        performSegue(.ConversationListToConversation)
+        print("Selected conversation id \(conversation.identifier.absoluteString)")
     }
 }
 

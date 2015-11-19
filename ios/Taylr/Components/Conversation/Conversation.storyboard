@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="IOB-fW-0oz">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9060" systemVersion="14F1021" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Cmw-2y-C3I">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9051"/>
@@ -14,28 +14,6 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Connections-->
-        <scene sceneID="8gE-i0-YdG">
-            <objects>
-                <tableViewController storyboardIdentifier="ConversationList" title="Connections" id="IOB-fW-0oz" customClass="ConversationListViewController" customModule="Taylr" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="zkv-gd-NDB" customClass="ConversationListView" customModule="Taylr" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.94886761900000005" green="0.94878417250000002" blue="0.96522957089999994" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <connections>
-                            <outlet property="dataSource" destination="IOB-fW-0oz" id="fb2-bd-AKg"/>
-                            <outlet property="delegate" destination="IOB-fW-0oz" id="d5u-7V-CJ2"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" title="Connections" id="ako-zB-edL"/>
-                    <connections>
-                        <segue destination="Cmw-2y-C3I" kind="show" identifier="ConversationListToConversation" id="HgE-eA-GUL"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Ypg-6a-J9B" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="388" y="2764"/>
-        </scene>
         <!--Conversation View Controller-->
         <scene sceneID="mKC-vm-aIf">
             <objects>
