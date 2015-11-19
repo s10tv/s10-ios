@@ -21,8 +21,6 @@ let IconTextRow = require('../lib/IconTextRow');
 let Card = require('../lib/Card').Card;
 let Loader = require('../lib/Loader');
 
-
-
 class CountdownTimer extends React.Component {
   constructor(props) {
     super(props); 
@@ -62,7 +60,12 @@ class CountdownTimer extends React.Component {
 
     return (
       <Button
-        onPress={() => console.log('message')}>
+        onPress={() => {
+          this.props.navigator.push({
+            id: 'sendMessage',
+            me: this.props.me,
+          })
+        }}>
         <View style={styles.messageButton}>
           <Image source={require('../img/ic-start-chat.png')} />
           <Text style={[styles.messageButtonText, SHEET.buttonText]}>
@@ -151,7 +154,10 @@ class Discover extends React.Component {
               </Text>
             </View>
 
-            <CountdownTimer settings={this.props.settings} />
+            <CountdownTimer
+              navigator={this.props.navigator}
+              me={this.props.me}
+              settings={this.props.settings} />
           </Card>
 
           <View style={SHEET.bottomTile} />

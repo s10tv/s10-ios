@@ -11,6 +11,7 @@ let {
 
 let BaseTaylrNavigator = require('../lib/BaseTaylrNavigator');
 let DiscoverScreen = require('./DiscoverScreen');
+let ConversationView = require('../../ios/Taylr/NativeModules/ConversationView/ConversationView');
 let Activities = require('../lib/Activities');
 let SHEET = require('../CommonStyles').SHEET;
 
@@ -45,7 +46,9 @@ class DiscoverNavigator extends BaseTaylrNavigator {
           me={route.candidateUser} 
           loadActivities={true} />
       case 'sendMessage':
-        return <ContainerView sbName="Conversation" />
+        return <ConversationView 
+           currentUser={route.me}
+           conversationId={'layer://'} />
       default:
         return (
           <DiscoverScreen navigator={nav} ddp={this.ddp} 

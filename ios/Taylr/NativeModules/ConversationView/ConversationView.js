@@ -1,6 +1,7 @@
 'use strict';
 
 let React = require('react-native');
+let ViewControllerManager = React.NativeModules.TSViewController;
 
 let UserSchema = React.PropTypes.shape({
     userId: React.PropTypes.string.isRequired,
