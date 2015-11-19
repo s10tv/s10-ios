@@ -9,7 +9,6 @@
 import UIKit
 import ReactiveCocoa
 import Cartography
-import EDColor
 
 extension UIView {
     public func parentViewOfType<T: UIView>(type: T.Type) -> T? {
@@ -148,12 +147,6 @@ extension UIAlertController {
         let action = UIAlertAction(title: title, style: style, handler: handler)
         addAction(action)
         return action
-    }
-}
-
-extension UIColor {
-    public convenience init(_ hexCode: UInt32) {
-        self.init(hex: hexCode)
     }
 }
 

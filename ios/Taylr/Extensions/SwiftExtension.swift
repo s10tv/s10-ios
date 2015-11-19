@@ -6,23 +6,8 @@
 //  Copyright (c) 2015 S10. All rights reserved.
 //
 
-import Foundation
-import UIKit
-
 public func += <T>(inout array: [T], element: T) {
     array.append(element)
-}
-
-extension Int {
-    public var f: CGFloat { return CGFloat(self) }
-}
-
-extension Float {
-    public var f: CGFloat { return CGFloat(self) }
-}
-
-extension Double {
-    public var f: CGFloat { return CGFloat(self) }
 }
 
 extension String {

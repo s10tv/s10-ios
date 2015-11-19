@@ -23,7 +23,6 @@
 		EA197A4E1BFC4D2600DF7B58 /* PropertyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A0B1BFC4D2600DF7B58 /* PropertyExtensions.swift */; };
 		EA197A501BFC4D2600DF7B58 /* ResourceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A0D1BFC4D2600DF7B58 /* ResourceExtension.swift */; };
 		EA197A511BFC4D2600DF7B58 /* SwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A0E1BFC4D2600DF7B58 /* SwiftExtension.swift */; };
-		EA197A531BFC4D2600DF7B58 /* UIKitBindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A101BFC4D2600DF7B58 /* UIKitBindings.swift */; };
 		EA197A541BFC4D2600DF7B58 /* UIKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A111BFC4D2600DF7B58 /* UIKitExtension.swift */; };
 		EA197A571BFC4D2600DF7B58 /* BaseViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A151BFC4D2600DF7B58 /* BaseViews.swift */; };
 		EA197A581BFC4D2600DF7B58 /* DesignableViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A161BFC4D2600DF7B58 /* DesignableViews.swift */; };
@@ -67,6 +66,7 @@
 		EA32260C1BFDAEEB00FF5074 /* ConversationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225F81BFDAEEB00FF5074 /* ConversationListViewController.swift */; };
 		EA32260D1BFDAEEB00FF5074 /* ConversationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225F91BFDAEEB00FF5074 /* ConversationListViewModel.swift */; };
 		EA32260E1BFDAEEB00FF5074 /* TSConversationListView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3225FA1BFDAEEB00FF5074 /* TSConversationListView.m */; };
+		EA3226371BFDB9C000FF5074 /* RACBindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3226361BFDB9C000FF5074 /* RACBindings.swift */; };
 		EA3713921BFD288700E51980 /* libRCTFBSDKCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3713911BFD288700E51980 /* libRCTFBSDKCore.a */; };
 		EA3713AA1BFD28EF00E51980 /* libRCTFBSDKLogin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3713A91BFD28EF00E51980 /* libRCTFBSDKLogin.a */; };
 		EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
@@ -154,7 +154,6 @@
 		EA197A0B1BFC4D2600DF7B58 /* PropertyExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyExtensions.swift; sourceTree = "<group>"; };
 		EA197A0D1BFC4D2600DF7B58 /* ResourceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceExtension.swift; sourceTree = "<group>"; };
 		EA197A0E1BFC4D2600DF7B58 /* SwiftExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftExtension.swift; sourceTree = "<group>"; };
-		EA197A101BFC4D2600DF7B58 /* UIKitBindings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitBindings.swift; sourceTree = "<group>"; };
 		EA197A111BFC4D2600DF7B58 /* UIKitExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
 		EA197A151BFC4D2600DF7B58 /* BaseViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViews.swift; sourceTree = "<group>"; };
 		EA197A161BFC4D2600DF7B58 /* DesignableViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesignableViews.swift; sourceTree = "<group>"; };
@@ -202,6 +201,7 @@
 		EA3225F81BFDAEEB00FF5074 /* ConversationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListViewController.swift; sourceTree = "<group>"; };
 		EA3225F91BFDAEEB00FF5074 /* ConversationListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListViewModel.swift; sourceTree = "<group>"; };
 		EA3225FA1BFDAEEB00FF5074 /* TSConversationListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSConversationListView.m; sourceTree = "<group>"; };
+		EA3226361BFDB9C000FF5074 /* RACBindings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACBindings.swift; sourceTree = "<group>"; };
 		EA3713911BFD288700E51980 /* libRCTFBSDKCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRCTFBSDKCore.a; path = "../../node_modules/react-native-fbsdkcore/build/Debug-iphoneos/libRCTFBSDKCore.a"; sourceTree = "<group>"; };
 		EA3713931BFD28C200E51980 /* RCTFBSDKLogin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDKLogin.xcodeproj; path = "../node_modules/react-native-fbsdklogin/RCTFBSDKLogin.xcodeproj"; sourceTree = "<group>"; };
 		EA3713A91BFD28EF00E51980 /* libRCTFBSDKLogin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRCTFBSDKLogin.a; path = "../../node_modules/react-native-fbsdklogin/build/Debug-iphoneos/libRCTFBSDKLogin.a"; sourceTree = "<group>"; };
@@ -292,7 +292,6 @@
 				EA197A0D1BFC4D2600DF7B58 /* ResourceExtension.swift */,
 				EA197A0E1BFC4D2600DF7B58 /* SwiftExtension.swift */,
 				EA197A111BFC4D2600DF7B58 /* UIKitExtension.swift */,
-				EA197A101BFC4D2600DF7B58 /* UIKitBindings.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -300,6 +299,7 @@
 		EA197A051BFC4D2600DF7B58 /* RAC */ = {
 			isa = PBXGroup;
 			children = (
+				EA3226361BFDB9C000FF5074 /* RACBindings.swift */,
 				EA197A061BFC4D2600DF7B58 /* Foundation+RACSupport.swift */,
 				EA197A081BFC4D2600DF7B58 /* Properties */,
 			);
@@ -849,7 +849,6 @@
 				EA197A4D1BFC4D2600DF7B58 /* DynamicProperties.swift in Sources */,
 				EA197A491BFC4D2600DF7B58 /* PKHUDExtension.swift in Sources */,
 				EA9516791BFD8924000F5338 /* TSViewController.m in Sources */,
-				EA197A531BFC4D2600DF7B58 /* UIKitBindings.swift in Sources */,
 				EA3225DF1BFDAE8A00FF5074 /* Logger.swift in Sources */,
 				EA197A481BFC4D2600DF7B58 /* MediaExtension.swift in Sources */,
 				EA3226041BFDAEEB00FF5074 /* MuteChecker.m in Sources */,
@@ -878,6 +877,7 @@
 				EA3225D91BFDAE8A00FF5074 /* LayerHelpers.swift in Sources */,
 				EA3225FC1BFDAEEB00FF5074 /* ChatHistoryViewController.swift in Sources */,
 				EA197A501BFC4D2600DF7B58 /* ResourceExtension.swift in Sources */,
+				EA3226371BFDB9C000FF5074 /* RACBindings.swift in Sources */,
 				EA32260B1BFDAEEB00FF5074 /* ConversationListView.swift in Sources */,
 				EA197A581BFC4D2600DF7B58 /* DesignableViews.swift in Sources */,
 				EA197A471BFC4D2600DF7B58 /* GeometryExtensions.swift in Sources */,

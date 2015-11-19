@@ -10,6 +10,7 @@ import UIKit
 import AMPopTip
 import Atlas
 import React
+import EDColor
 
 class RootViewController : UIViewController {
     
