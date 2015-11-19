@@ -10,10 +10,10 @@ let {
 let OnboardingNavigator = require('./onboarding/OnboardingNavigator');
 let MeNavigator = require('./me/MeNavigator');
 let DiscoverNavigator = require('./discover/DiscoverNavigator');
+let ChatNavigator = require('./chat/ChatNavigator');
 let Loader = require('./lib/Loader');
 
 let TSDDPClient = require('../lib/ddpclient');
-let ConversationListView = require('../ios/Taylr/NativeModules/ConversationListView/ConversationListView');
 let TSLayerService = React.NativeModules.TSLayerService;
 
 let SHEET = require('./CommonStyles').SHEET;
@@ -279,7 +279,11 @@ class LayoutContainer extends React.Component {
                 this.setState({currentTab: 'chats'});
               }}
               selected={this.state.currentTab == 'chats'}>
-              <View />
+
+              <ChatNavigator
+                ddp={this.ddp}
+                me={this.state.me} />
+                
             </TabBarIOS.Item>
           </TabBarIOS>
       )

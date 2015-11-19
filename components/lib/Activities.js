@@ -339,7 +339,9 @@ class Activities extends React.Component {
             </TouchableOpacity>
           </View>
           <View style={SHEET.separator} />
-          <ScrollView horizontal={true} style={{ marginHorizontal: 10 }}>
+          <ScrollView horizontal={true} 
+            showsHorizontalScrollIndicator={false}
+            style={{ marginHorizontal: 10 }}>
             { attributes }
           </ScrollView>
         </Card>
