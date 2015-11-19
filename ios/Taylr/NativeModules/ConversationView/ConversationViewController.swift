@@ -118,36 +118,27 @@ class ConversationViewController : UIViewController {
         navigationController?.navigationBar.setBackgroundColor(nil)
     }
     
-    override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
-//        if navigationController?.lastViewController is ProfileViewController {
-//            navigationController?.popViewControllerAnimated(true)
-//            return false
-//        }
-//        if identifier == SegueIdentifier.ConversationToProfile.rawValue {
-//            return vm.canNavigateToProfile()
-//        }
-        return super.shouldPerformSegueWithIdentifier(identifier, sender: sender)
-    }
-    
-//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-//        if let vc = segue.destinationViewController as? ProfileViewController {
-//            vc.vm = vm.profileVM()
-//        }
-//    }
-    
     // MARK: -
     
     @IBAction func didTapScrollDownHint(sender: AnyObject) {
         swipeView.scrollToPage(Page.ChatHistory.rawValue, duration: 0.4)
     }
     
+    @IBAction func didTapProfileView(sender: AnyObject) {
+        if let user = vm.recipientUser()  {
+            manager.pushRoute("profile", properties: [
+                "userId": user.userId
+            ])
+        }
+    }
+    
     @IBAction func showMoreOptions(sender: AnyObject) {
         let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-//        if self.vm.canNavigateToProfile() {
-//            sheet.addAction(LS(.viewProfile)) { _ in
-//                self.performSegue(.ConversationToProfile)
-//            }
-//        }
+        if self.vm.canNavigateToProfile() {
+            sheet.addAction(LS(.viewProfile)) { _ in
+                self.didTapProfileView(self)
+            }
+        }
         sheet.addAction(LS(.moreSheetBlock, vm.displayName.value), style: .Destructive) { _ in
             self.blockUser(self)
         }

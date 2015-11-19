@@ -157,22 +157,22 @@ public class ConversationViewModel: NSObject {
     }
     
     func getParticipant(participantIdentifier: String) -> UserViewModel? {
-//        if let user = ctx.meteor.mainContext.existingObjectInCollection("users", documentID: participantIdentifier) as? User {
-//            return Participant(user: user)
-//        }
-//        return conversation.participantForId(participantIdentifier)
-        return nil
+        return conversation.participantForId(participantIdentifier)
     }
     
     // MARK: - Actions
     
-////    func recipientUser() -> User? {
-////        if let userId = conversation.otherUserIds(ctx.currentUserId).first where conversation.participants.count == 2 {
-////            return ctx.meteor.mainContext.existingObjectInCollection("users", documentID: userId) as? User
-////        }
-////        return nil
-////    }
-//    
+    public func canNavigateToProfile() -> Bool {
+        return recipientUser() != nil
+    }
+    
+    func recipientUser() -> UserViewModel? {
+        if conversation.participants.count == 2 {
+            return conversation.otherParticipants(currentUser.userId).first
+        }
+        return nil
+    }
+//
 //    public func reportUser(reason: String) {
 //        if let u = recipientUser() {
 //            ctx.meteor.reportUser(u, reason: reason)
@@ -185,8 +185,6 @@ public class ConversationViewModel: NSObject {
 //        }
 //    }
 //    
-//    public func canNavigateToProfile() -> Bool {
-//        return recipientUser() != nil
-//    }
+
     
 }

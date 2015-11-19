@@ -262,11 +262,11 @@
 				EA3713931BFD28C200E51980 /* RCTFBSDKLogin.xcodeproj */,
 				F94FA0CC1BF427D20050D6F1 /* RNMail.xcodeproj */,
 				EAA5DAC31BF2A98000BF6B1E /* RNSearchBar.xcodeproj */,
-				7AA6C7823A20B63EB451A15E /* Pods.framework */,
 				F9DDF6441BFD434600D7A2FC /* libRNFabricDigits.a */,
 				EA3713A91BFD28EF00E51980 /* libRCTFBSDKLogin.a */,
 				EA3713911BFD288700E51980 /* libRCTFBSDKCore.a */,
 				F9DDF6A91BFDB2A400D7A2FC /* libRCTVideo.a */,
+				7AA6C7823A20B63EB451A15E /* Pods.framework */,
 			);
 			name = Frameworks;
 			path = Includes;

@@ -185,7 +185,11 @@
                         <constraint firstItem="m34-xv-ufL" firstAttribute="top" secondItem="Vaa-23-fm2" secondAttribute="top" constant="159" id="oon-Kr-EsO"/>
                     </constraints>
                 </view>
-                <tapGestureRecognizer id="HBc-h4-yqZ" userLabel="Tap To View Profile"/>
+                <tapGestureRecognizer id="HBc-h4-yqZ" userLabel="Tap To View Profile">
+                    <connections>
+                        <action selector="didTapProfileView:" destination="Cmw-2y-C3I" id="xhw-K3-N4Z"/>
+                    </connections>
+                </tapGestureRecognizer>
                 <tapGestureRecognizer id="ToC-DH-PAN" userLabel="Tap Scroll Down Hint">
                     <connections>
                         <action selector="didTapScrollDownHint:" destination="Cmw-2y-C3I" id="wpU-Fx-ke3"/>
