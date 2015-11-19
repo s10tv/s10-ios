@@ -29,87 +29,98 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J9N-g4-ZBf" customClass="SwipeView">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                             </view>
+                            <navigationBar contentMode="scaleToFill" barStyle="black" translatesAutoresizingMaskIntoConstraints="NO" id="AYr-SE-CcY">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="74"/>
+                                <items>
+                                    <navigationItem prompt="" id="64q-iY-76a">
+                                        <nil key="title"/>
+                                        <barButtonItem key="leftBarButtonItem" image="ic-back-arrow" id="M8V-FG-7EW" userLabel="Back">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="goBack:" destination="Blv-WO-ctj" id="JSD-j7-cPh"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <view key="titleView" contentMode="scaleToFill" id="8Oi-oO-eac" userLabel="Title View">
+                                            <rect key="frame" x="205" y="35" width="190" height="34"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-profile-pic" translatesAutoresizingMaskIntoConstraints="NO" id="vhE-2P-KGX">
+                                                    <rect key="frame" x="28" y="0.0" width="34" height="34"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="34" id="927-JX-NhL"/>
+                                                        <constraint firstAttribute="width" constant="34" id="ZM9-Ap-DxV"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                            <integer key="value" value="17"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                    </userDefinedRuntimeAttributes>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="251" text="Taylor Swift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGy-LP-rew">
+                                                    <rect key="frame" x="70" y="0.0" width="80" height="20"/>
+                                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Received just now" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nUT-z4-szJ">
+                                                    <rect key="frame" x="74" y="21" width="71" height="13"/>
+                                                    <fontDescription key="fontDescription" name="Cabin-Italic" family="Cabin" pointSize="10"/>
+                                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Rkv-V8-BYy">
+                                                    <rect key="frame" x="170" y="7" width="20" height="20"/>
+                                                </activityIndicatorView>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <gestureRecognizers/>
+                                            <constraints>
+                                                <constraint firstItem="vhE-2P-KGX" firstAttribute="leading" secondItem="8Oi-oO-eac" secondAttribute="leading" priority="749" constant="28" id="0ft-N0-xRR"/>
+                                                <constraint firstItem="Rkv-V8-BYy" firstAttribute="leading" secondItem="yGy-LP-rew" secondAttribute="trailing" priority="249" constant="8" symbolic="YES" id="2nG-sO-jHb"/>
+                                                <constraint firstAttribute="centerY" secondItem="Rkv-V8-BYy" secondAttribute="centerY" id="5cS-8C-RHd"/>
+                                                <constraint firstItem="nUT-z4-szJ" firstAttribute="centerX" secondItem="yGy-LP-rew" secondAttribute="centerX" priority="748" id="AOV-Tj-fa7"/>
+                                                <constraint firstAttribute="trailing" secondItem="Rkv-V8-BYy" secondAttribute="trailing" id="B5T-Aq-n71"/>
+                                                <constraint firstItem="Rkv-V8-BYy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yGy-LP-rew" secondAttribute="trailing" constant="8" symbolic="YES" id="C3O-zq-b8W"/>
+                                                <constraint firstItem="nUT-z4-szJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yGy-LP-rew" secondAttribute="leading" id="QLM-Q7-wvs"/>
+                                                <constraint firstItem="Rkv-V8-BYy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nUT-z4-szJ" secondAttribute="trailing" priority="749" constant="8" symbolic="YES" id="W3d-bg-glk"/>
+                                                <constraint firstItem="vhE-2P-KGX" firstAttribute="top" secondItem="8Oi-oO-eac" secondAttribute="top" id="egT-Cn-vu4"/>
+                                                <constraint firstAttribute="bottom" secondItem="nUT-z4-szJ" secondAttribute="bottom" id="tWR-lf-2YC"/>
+                                                <constraint firstAttribute="bottom" secondItem="vhE-2P-KGX" secondAttribute="bottom" id="x40-AE-AQY"/>
+                                                <constraint firstItem="yGy-LP-rew" firstAttribute="top" secondItem="8Oi-oO-eac" secondAttribute="top" id="yNj-Cd-P5s"/>
+                                                <constraint firstItem="yGy-LP-rew" firstAttribute="leading" secondItem="vhE-2P-KGX" secondAttribute="trailing" constant="8" symbolic="YES" id="ybl-I2-nNS"/>
+                                            </constraints>
+                                            <connections>
+                                                <outletCollection property="gestureRecognizers" destination="HBc-h4-yqZ" appends="YES" id="xaK-Ix-qNq"/>
+                                            </connections>
+                                        </view>
+                                        <barButtonItem key="rightBarButtonItem" image="ic-more" id="1ts-uu-DJD" userLabel="More">
+                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <connections>
+                                                <action selector="showMoreOptions:" destination="Cmw-2y-C3I" id="rj1-EJ-Hhn"/>
+                                            </connections>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstAttribute="top" secondItem="J9N-g4-ZBf" secondAttribute="top" id="FWU-q5-FU2"/>
+                            <constraint firstItem="AYr-SE-CcY" firstAttribute="leading" secondItem="3qq-bH-WYT" secondAttribute="leading" id="Ihi-8f-2g2"/>
+                            <constraint firstAttribute="trailing" secondItem="AYr-SE-CcY" secondAttribute="trailing" id="Qkh-BT-Fpa"/>
                             <constraint firstItem="J9N-g4-ZBf" firstAttribute="leading" secondItem="3qq-bH-WYT" secondAttribute="leading" id="Veh-BS-teO"/>
+                            <constraint firstAttribute="top" secondItem="AYr-SE-CcY" secondAttribute="top" id="a9C-UB-thf"/>
                             <constraint firstAttribute="bottom" secondItem="J9N-g4-ZBf" secondAttribute="bottom" id="ahz-JK-eAp"/>
                             <constraint firstAttribute="trailing" secondItem="J9N-g4-ZBf" secondAttribute="trailing" id="pL0-d2-D1t"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="Gu7-lQ-4Uy">
-                        <nil key="title"/>
-                        <barButtonItem key="leftBarButtonItem" image="ic-back-arrow" id="M8V-FG-7EW" userLabel="Back">
-                            <connections>
-                                <action selector="goBack:" destination="Blv-WO-ctj" id="JSD-j7-cPh"/>
-                            </connections>
-                        </barButtonItem>
-                        <view key="titleView" contentMode="scaleToFill" id="8Oi-oO-eac" userLabel="Title View">
-                            <rect key="frame" x="205" y="5" width="190" height="34"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <subviews>
-                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty-profile-pic" translatesAutoresizingMaskIntoConstraints="NO" id="vhE-2P-KGX">
-                                    <rect key="frame" x="28" y="0.0" width="34" height="34"/>
-                                    <constraints>
-                                        <constraint firstAttribute="height" constant="34" id="927-JX-NhL"/>
-                                        <constraint firstAttribute="width" constant="34" id="ZM9-Ap-DxV"/>
-                                    </constraints>
-                                    <userDefinedRuntimeAttributes>
-                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                            <integer key="value" value="17"/>
-                                        </userDefinedRuntimeAttribute>
-                                    </userDefinedRuntimeAttributes>
-                                </imageView>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="751" verticalHuggingPriority="251" text="Taylor Swift" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yGy-LP-rew">
-                                    <rect key="frame" x="70" y="0.0" width="80" height="20"/>
-                                    <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="16"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Received just now" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nUT-z4-szJ">
-                                    <rect key="frame" x="74" y="21" width="71" height="13"/>
-                                    <fontDescription key="fontDescription" name="Cabin-Italic" family="Cabin" pointSize="10"/>
-                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="Rkv-V8-BYy">
-                                    <rect key="frame" x="170" y="7" width="20" height="20"/>
-                                </activityIndicatorView>
-                            </subviews>
-                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            <gestureRecognizers/>
-                            <constraints>
-                                <constraint firstItem="vhE-2P-KGX" firstAttribute="leading" secondItem="8Oi-oO-eac" secondAttribute="leading" priority="749" constant="28" id="0ft-N0-xRR"/>
-                                <constraint firstItem="Rkv-V8-BYy" firstAttribute="leading" secondItem="yGy-LP-rew" secondAttribute="trailing" priority="249" constant="8" symbolic="YES" id="2nG-sO-jHb"/>
-                                <constraint firstAttribute="centerY" secondItem="Rkv-V8-BYy" secondAttribute="centerY" id="5cS-8C-RHd"/>
-                                <constraint firstItem="nUT-z4-szJ" firstAttribute="centerX" secondItem="yGy-LP-rew" secondAttribute="centerX" priority="748" id="AOV-Tj-fa7"/>
-                                <constraint firstAttribute="trailing" secondItem="Rkv-V8-BYy" secondAttribute="trailing" id="B5T-Aq-n71"/>
-                                <constraint firstItem="Rkv-V8-BYy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yGy-LP-rew" secondAttribute="trailing" constant="8" symbolic="YES" id="C3O-zq-b8W"/>
-                                <constraint firstItem="nUT-z4-szJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="yGy-LP-rew" secondAttribute="leading" id="QLM-Q7-wvs"/>
-                                <constraint firstItem="Rkv-V8-BYy" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="nUT-z4-szJ" secondAttribute="trailing" priority="749" constant="8" symbolic="YES" id="W3d-bg-glk"/>
-                                <constraint firstItem="vhE-2P-KGX" firstAttribute="top" secondItem="8Oi-oO-eac" secondAttribute="top" id="egT-Cn-vu4"/>
-                                <constraint firstAttribute="bottom" secondItem="nUT-z4-szJ" secondAttribute="bottom" id="tWR-lf-2YC"/>
-                                <constraint firstAttribute="bottom" secondItem="vhE-2P-KGX" secondAttribute="bottom" id="x40-AE-AQY"/>
-                                <constraint firstItem="yGy-LP-rew" firstAttribute="top" secondItem="8Oi-oO-eac" secondAttribute="top" id="yNj-Cd-P5s"/>
-                                <constraint firstItem="yGy-LP-rew" firstAttribute="leading" secondItem="vhE-2P-KGX" secondAttribute="trailing" constant="8" symbolic="YES" id="ybl-I2-nNS"/>
-                            </constraints>
-                            <connections>
-                                <outletCollection property="gestureRecognizers" destination="HBc-h4-yqZ" appends="YES" id="xaK-Ix-qNq"/>
-                            </connections>
-                        </view>
-                        <barButtonItem key="rightBarButtonItem" image="ic-more" id="1ts-uu-DJD" userLabel="More">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="showMoreOptions:" destination="Cmw-2y-C3I" id="rj1-EJ-Hhn"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="avatarImageView" destination="vhE-2P-KGX" id="5f5-qe-4S0"/>
                         <outlet property="chatHistoryContainer" destination="vCJ-rY-C3m" id="FNC-4T-c66"/>
                         <outlet property="coverImageView" destination="TJc-dA-VpJ" id="R6V-9o-ReH"/>
+                        <outlet property="navigationBar" destination="AYr-SE-CcY" id="BR5-AN-CrQ"/>
                         <outlet property="producerContainer" destination="Vaa-23-fm2" id="vwv-4L-x9S"/>
                         <outlet property="scrollDownHint" destination="m34-xv-ufL" id="f6G-ZZ-WyQ"/>
                         <outlet property="spinner" destination="Rkv-V8-BYy" id="CPg-Zo-qIp"/>
@@ -149,7 +160,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="m34-xv-ufL" userLabel="Scroll Down Hint">
                             <rect key="frame" x="221" y="159" width="159" height="30"/>
                             <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="scroll down to text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="80" translatesAutoresizingMaskIntoConstraints="NO" id="lfn-tw-Cq9">
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="scroll down to text" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="80" translatesAutoresizingMaskIntoConstraints="NO" id="lfn-tw-Cq9">
                                     <rect key="frame" x="34" y="7" width="110" height="18"/>
                                     <fontDescription key="fontDescription" name="Cabin-Regular" family="Cabin" pointSize="14"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>

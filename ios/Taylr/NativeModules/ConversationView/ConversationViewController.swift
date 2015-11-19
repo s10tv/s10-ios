@@ -20,6 +20,7 @@ class ConversationViewController : UIViewController {
         case ChatHistory = 0, Producer = 1
     }
 
+    @IBOutlet weak var navigationBar: UINavigationBar!
     @IBOutlet weak var coverImageView: UIImageView!
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
@@ -107,15 +108,15 @@ class ConversationViewController : UIViewController {
 
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.setBackgroundColor(UIColor(white: 0.5, alpha: 0.4))
-        if let view = navigationItem.titleView {
+        navigationBar.setBackgroundColor(UIColor(white: 0.5, alpha: 0.4))
+        if let view = navigationBar.topItem?.titleView {
             view.bounds.size = view.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
         }
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        navigationController?.navigationBar.setBackgroundColor(nil)
+        navigationBar.setBackgroundColor(nil)
     }
     
     // MARK: -
