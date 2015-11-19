@@ -30,18 +30,16 @@ security import "certs/apple_developer_relations.cer"   -k $KEYCHAIN_PATH -T $CO
 security import "keys/development.p12" -k $KEYCHAIN_PATH -T $CODE_SIGN -P $DEV_P12_PASS
 security import "keys/distribution.p12" -k $KEYCHAIN_PATH -T $CODE_SIGN -P $DIST_P12_PASS
 
-
-
 ## Provisioning Profiles
 
 mkdir -p "$PROFILE_DIR"
+cp profiles/*.* "$PROFILE_DIR"
 
-# Temporary fix for cupertino gem being broken by apple updates
-# cp profiles/*.* "$PROFILE_DIR"
-cd "$PROFILE_DIR"
-for profileType in development distribution; do
-    echo "Will download $profileType profiles from team with id $APPSTORE_TEAM_ID"
-    ios profiles:download:all --type $profileType --team $APPSTORE_TEAM_ID -u $APPLE_ID -p $APPLE_ID_PASSWORD --trace
-done
+# TODO: Use fastlane tools to manage this stuff
+# cd "$PROFILE_DIR"
+# for profileType in development distribution; do
+#     echo "Will download $profileType profiles from team with id $APPSTORE_TEAM_ID"
+#     ios profiles:download:all --type $profileType --team $APPSTORE_TEAM_ID -u $APPLE_ID -p $APPLE_ID_PASSWORD --trace
+# done
 
 mv $APPSTORE_PROFILE_NAME $APPSTORE_PROFILE_PATH

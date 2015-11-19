@@ -20,7 +20,7 @@ dependencies:
     # - brew upgrade xctool
     # - sudo gem uninstall highline commander --ignore-dependencies -x -a
     - sudo gem install cocoapods -v $(var=$(tail -1 ios/Podfile.lock); echo ${var##COCOAPODS:})
-    # - sudo gem install cupertino shenzhen sigh xcpretty gym
+    # - sudo gem install cupertino shenzhen # sigh xcpretty gym
     - ./scripts/import_credentials.sh
   override:
     - "cd ios && pod install"
