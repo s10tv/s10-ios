@@ -17,11 +17,26 @@ class EditMyPhotoHeader {
   render() {
     let me = this.props.me;
 
+    let shadow = <View style={[{ height: this.props.height }, styles.coverShadow]}></View>;
+
+    var cover = null
+    if (me && me.cover && me.cover.url) {
+      cover = (
+        <Image style={[{ height: this.props.height }, styles.cover]} source={{ uri: me.cover.url }}>
+          { shadow } 
+        </Image>
+      )
+    } else {
+      cover = (
+        <Image style={[{ height: this.props.height }, styles.cover]} source={require('../img/defaultbg.jpg')}>
+          { shadow }
+        </Image>
+      )
+    }
+
     return ( 
       <View>
-        <Image style={{ height: this.props.height }} source={{ uri: me.cover.url }}>
-          <View style={[{ height: this.props.height }, styles.coverShadow]}></View>
-        </Image>
+        { cover }
         <AlertOnPressButton title={"Update avatar"} content={"Not ready yet"}>
           <View style={styles.avatarContainer}>
             <Image style={styles.avatar} source={{ uri: me.avatar.url }} />
@@ -69,6 +84,9 @@ var styles = StyleSheet.create({
     color: 'white',
     textAlign: 'center',
     fontSize: 16
+  },
+  cover: {
+    resizeMode: 'cover',
   },
   coverShadow: {
     backgroundColor: 'black',

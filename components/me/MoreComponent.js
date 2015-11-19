@@ -29,15 +29,7 @@ class ContactUs extends React.Component {
           <Text style={[SHEET.baseText]}>Contact Us</Text>
         </TappableCard>
         <TappableCard style={styles.card}
-          onPress={() => {
-            AlertIOS.alert(
-              'Logout',
-              'Would redirect to Native',
-              [
-                {text: 'Cancel', onPress: () => console.log('cancelled')},
-                {text: 'Okay', onPress: () => console.log('okayed')},
-              ]
-            )}}>
+          onPress={() => { this.props.ddp.logout().then(() => { this.props.onLogout()}) }}>
           <Text style={[SHEET.baseText]}>Logout</Text>
         </TappableCard>
       </View>

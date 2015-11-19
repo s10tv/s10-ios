@@ -17,8 +17,14 @@ let FacebookLoginScreen = require('./FacebookLoginScreen');
 let LinkServiceScreen = require('./LinkServiceScreen');
 let EditProfileScreen = require('./EditProfileScreen');
 let AddHashtagScreen = require('./AddHashtagScreen');
+let TSNavigationBar = require('../lib/TSNavigationBar');
 
 class OnboardingNavigator extends BaseTaylrNavigator {
+
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
   _leftButton(route, navigator, index, navState) {
     switch (route.id) {
@@ -95,6 +101,10 @@ class OnboardingNavigator extends BaseTaylrNavigator {
     );
   }
 
+  hideNavBar() {
+    this.setState({ navStyleOverride: { backgroundColor: 'rbga:(0,0,0,0)' }});
+  }
+
   renderScene(route, nav) {
     switch (route.id) {
       case 'login':
@@ -113,7 +123,9 @@ class OnboardingNavigator extends BaseTaylrNavigator {
         );
 
       case 'editprofile':
-        return <EditProfileScreen me={this.props.me} />
+        return <EditProfileScreen 
+          ddp={this.props.ddp}
+          me={this.props.me} />
 
       case 'servicelink':
         return <WebView
@@ -135,6 +147,7 @@ class OnboardingNavigator extends BaseTaylrNavigator {
           navigator={nav}
           removeBottomPadding={true}x
           ddp={this.props.ddp}
+          myTags={this.props.myTags}
           category={route.category} />;
     } 
   }
@@ -144,6 +157,7 @@ class OnboardingNavigator extends BaseTaylrNavigator {
       id: 'linkservices',
       title: 'Link Services',
     };
+    
     if (!this.props.loggedIn) {
       initialRoute = {
         id: 'login',
@@ -161,7 +175,8 @@ class OnboardingNavigator extends BaseTaylrNavigator {
         })}
         initialRoute={ initialRoute }
         navigationBar={
-          <Navigator.NavigationBar
+          <TSNavigationBar
+            omitRoutes={['login']}
             routeMapper={{
               LeftButton: this._leftButton.bind(this),
               RightButton: this._rightButton.bind(this),

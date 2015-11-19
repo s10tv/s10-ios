@@ -30,7 +30,6 @@ class ProfileEditCard extends React.Component {
       integrations: props.integrations,
       editTimer: null,
     }
-    this.ddp = props.ddp;
   }
 
   render() {
@@ -61,7 +60,7 @@ class ProfileEditCard extends React.Component {
               }
 
               this.editTimer = setTimeout(() => {
-                ddp.call('me/update', [newState])
+                this.props.ddp.call({ methodName: 'me/update', params: [newState] })
                 .then(() => {})
                 .catch(err => {
                   console.trace(err)

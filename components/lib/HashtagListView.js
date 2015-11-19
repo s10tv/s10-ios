@@ -136,13 +136,15 @@ class HashtagListView extends React.Component {
           cardOverride={{ padding: 0 }}
           hideSeparator={true} >
 
+          <View style={{ backgroundColor: COLORS.background }}>
           <SearchBar
             ref='searchBar'
             text={this.state.searchText}
-            style={{ height: 50, backgroundColor: COLORS.background }}
+            style={{ height: 50 }}
             placeholder={'Search'}
             hideBackground={true}
             onChangeText={(text) => this._searchTag.bind(this)(text)} />
+          </View>
 
           <ScrollView
             showsVerticalScrollIndicator={false}
@@ -152,7 +154,7 @@ class HashtagListView extends React.Component {
               {hashtags}
 
           </ScrollView>
-          {bottomPadding}
+          {bottomPadding} 
         </Card>
         <View style={styles.bottomSheet}>
           { searchSuggestions }

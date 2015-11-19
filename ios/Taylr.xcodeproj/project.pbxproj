@@ -234,6 +234,7 @@
 		EABF2AB41AD04659005880E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F94FA0CC1BF427D20050D6F1 /* RNMail.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNMail.xcodeproj; path = "../node_modules/react-native-mail/RNMail.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		F9DDF6441BFD434600D7A2FC /* libRNFabricDigits.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRNFabricDigits.a; path = "../../node_modules/react-native-fabric-digits/ios/build/Debug-iphoneos/libRNFabricDigits.a"; sourceTree = "<group>"; };
+		F9DDF68F1BFDB14A00D7A2FC /* background.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = background.mp4; path = Taylr/background.mp4; sourceTree = SOURCE_ROOT; };
 		F9F337BE1BFD42F600ACA98C /* RNFabricDigits.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNFabricDigits.xcodeproj; path = "../node_modules/react-native-fabric-digits/ios/RNFabricDigits.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -534,6 +535,7 @@
 				EA32258A1BFDAE8A00FF5074 /* Models */,
 				EA3225911BFDAE8A00FF5074 /* NativeModules */,
 				EA9F353D1A74CC6900E0C65D /* Supporting Files */,
+				F9DDF68F1BFDB14A00D7A2FC /* background.mp4 */,
 				EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */,
 				EA197A851BFCFC3800DF7B58 /* RootViewController.swift */,
 			);

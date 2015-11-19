@@ -2,6 +2,7 @@ let React = require('react-native');
 
 let {
   AppRegistry,
+  AsyncStorage,
   View,
   TabBarIOS,
 } = React;
@@ -30,114 +31,134 @@ class LayoutContainer extends React.Component {
     }
   }
 
-  onLogin() {
-    let ddp = this.ddp;
+  onLogout() {
+    this.setState({ loggedIn: false });
+  }
+
+  onLogin(options) {
+    let { token, userId, tokenExpires } = options;
+    if (!token) {
+      console.error('OnLogin called with invalid Token');
+    }
+
     this.setState({ loggedIn: true });
 
-    console.log('onlogin called .. ');
+    let multiSetValues = [
+      ['userId', userId],
+      ['loginToken', token],
+      ['tokenExpires', tokenExpires],
+    ];
 
-    this.ddp.subscribe({ pubName: 'settings' })
+    AsyncStorage.multiSet(multiSetValues)
     .then(() => {
-      ddp.collections.observe(() => {
-        if (ddp.collections.settings) {
-          return ddp.collections.settings.find({});
-        }
-      }).subscribe(settings => {
-        indexedSettings =  {};
-        settings.forEach((setting) => {
-          indexedSettings[setting._id] = setting;
+      let ddp = this.ddp;
+
+      this.ddp.subscribe({ pubName: 'settings' })
+      .then(() => {
+        ddp.collections.observe(() => {
+          if (ddp.collections.settings) {
+            return ddp.collections.settings.find({});
+          }
+        }).subscribe(settings => {
+          indexedSettings =  {};
+          settings.forEach((setting) => {
+            indexedSettings[setting._id] = setting;
+          });
+          this.setState({ settings: indexedSettings });
         });
-        this.setState({ settings: indexedSettings });
-      });
-    });
-
-    this.ddp.subscribe({ pubName: 'me' })
-    .then(() => {
-      ddp.collections.observe(() => {
-        if (ddp.collections.users) {
-          return ddp.collections.users.findOne({ _id: ddp.currentUserId });
-        }
-      }).subscribe(currentUser => {
-        this.setState({ me: currentUser });
       });
 
-      ddp.collections.observe(() => {
-        if (ddp.collections.users) {
-          return ddp.collections.users.find({});
-        }
-      }).subscribe(users => {
-        this.setState({ users: users });
+      this.ddp.subscribe({ pubName: 'me' })
+      .then(() => {
+        ddp.collections.observe(() => {
+          if (ddp.collections.users) {
+            return ddp.collections.users.findOne({ _id: ddp.currentUserId });
+          }
+        }).subscribe(currentUser => {
+          this.setState({ me: currentUser });
+        });
+
+        ddp.collections.observe(() => {
+          if (ddp.collections.users) {
+            return ddp.collections.users.find({});
+          }
+        }).subscribe(users => {
+          this.setState({ users: users });
+        });
       });
-    });
 
-    this.ddp.subscribe({ pubName: 'integrations' })
-    .then(() => {
-      ddp.collections.observe(() => {
-        if (ddp.collections.integrations) {
-          return ddp.collections.integrations.find({});
-        }
-      }).subscribe(integrations=> {
-        integrations.sort((one, two) => {
-          return one.status == 'linked' ? -1 : 1;
-        })
-        this.setState({ integrations: integrations });
+      this.ddp.subscribe({ pubName: 'integrations' })
+      .then(() => {
+        ddp.collections.observe(() => {
+          if (ddp.collections.integrations) {
+            return ddp.collections.integrations.find({});
+          }
+        }).subscribe(integrations=> {
+          integrations.sort((one, two) => {
+            return one.status == 'linked' ? -1 : 1;
+          })
+          this.setState({ integrations: integrations });
+        });
       });
-    });
 
-    this.ddp.subscribe({ pubName: 'hashtag-categories' })
-    .then(() => {
-      ddp.collections.observe(() => {
-        if (ddp.collections.categories) {
-          return ddp.collections.categories.find({});
-        }
-      }).subscribe(categories=> {
-        this.setState({ categories: categories });
+      this.ddp.subscribe({ pubName: 'hashtag-categories' })
+      .then(() => {
+        ddp.collections.observe(() => {
+          if (ddp.collections.categories) {
+            return ddp.collections.categories.find({});
+          }
+        }).subscribe(categories=> {
+          this.setState({ categories: categories });
+        });
       });
-    });
 
-    this.ddp.subscribe({ pubName: 'my-tags' })
-    .then(() => {
-      ddp.collections.observe(() => {
-        if (ddp.collections.mytags) {
-          return ddp.collections.mytags.findOne({});
-        }
-      }).subscribe(user => {
-        user.tags.forEach((tag) => {
-          tag.isMine = true;
-        })
-        this.setState({ myTags: user.tags });
+      this.ddp.subscribe({ pubName: 'my-tags' })
+      .then(() => {
+        ddp.collections.observe(() => {
+          if (ddp.collections.mytags) {
+            return ddp.collections.mytags.findOne({});
+          }
+        }).subscribe(user => {
+          if (user) {
+            user.tags.forEach((tag) => {
+              tag.isMine = true;
+            })
+            this.setState({ myTags: user.tags });
+          }
+        });
       });
-    });
 
-    this.ddp.subscribe({ pubName: 'candidate-discover' })
-    .then(() => {
-      ddp.collections.observe(() => {
-        if (ddp.collections.candidates) {
-          return ddp.collections.candidates.find({});
-        }
-      }).subscribe(candidates => {
-        let activeCandidates = candidates.filter((candidate) => {
-          return candidate.type == 'active'
-        })
+      this.ddp.subscribe({ pubName: 'candidate-discover' })
+      .then(() => {
+        ddp.collections.observe(() => {
+          if (ddp.collections.candidates) {
+            return ddp.collections.candidates.find({});
+          }
+        }).subscribe(candidates => {
+          let activeCandidates = candidates.filter((candidate) => {
+            return candidate.type == 'active'
+          })
 
-        if (activeCandidates.length > 0) {
-          this.setState({ candidate: activeCandidates[0] })
-        }
+          if (activeCandidates.length > 0) {
+            this.setState({ candidate: activeCandidates[0] })
+          }
 
-        this.setState({ candidates: candidates });
+          this.setState({ candidates: candidates });
+        });
       });
-    });
 
-    this.ddp.subscribe({ pubName: 'activities', params:[ddp.currentUserId] })
-    .then(() => {
-      ddp.collections.observe(() => {
-        if (ddp.collections.activities) {
-          return ddp.collections.activities.find({ userId: ddp.currentUserId });
-        }
-      }).subscribe(activities => {
-        this.setState({ myActivities: activities });
+      this.ddp.subscribe({ pubName: 'activities', params:[ddp.currentUserId] })
+      .then(() => {
+        ddp.collections.observe(() => {
+          if (ddp.collections.activities) {
+            return ddp.collections.activities.find({ userId: ddp.currentUserId });
+          }
+        }).subscribe(activities => {
+          this.setState({ myActivities: activities });
+        });
       });
-    });
+    })
+    
   }
 
   componentWillMount() {
@@ -149,7 +170,7 @@ class LayoutContainer extends React.Component {
     }).then((res) => {
       this.setState(res);
       if (res.loggedIn) {
-        this.onLogin();
+        this.onLogin(res);
       }
     })
   }
@@ -162,14 +183,11 @@ class LayoutContainer extends React.Component {
         ddp={this.ddp} /> 
     }
 
-    console.log('logged in is true?');
-
-    if (!this.state.settings) {
+    if (!this.state.settings || !this.state.settings.accountStatus) {
       return <Loader />
     }
-    let status = this.state.settings.accountStatus.value;
 
-    console.log(status);
+    let status = this.state.settings.accountStatus.value;
     if (status != 'active') {
       return <OnboardingNavigator
         me={this.state.me} 
@@ -190,6 +208,7 @@ class LayoutContainer extends React.Component {
               selected={this.state.currentTab == 'me'}>
               
               <MeNavigator ddp={this.ddp}
+                onLogout={this.onLogout.bind(this)}
                 me={this.state.me}
                 myActivities={this.state.myActivities}
                 categories={this.state.categories}

@@ -11,7 +11,7 @@ let {
 } = React;
 
 let Dimensions = require('Dimensions');
-let { width } = Dimensions.get('window');
+let { height, width } = Dimensions.get('window');
 
 let Card = require('./Card').Card;
 let HeaderBanner = require('./HeaderBanner');
@@ -23,8 +23,14 @@ let Loader = require('../lib/Loader');
 class ActivityHeader extends React.Component {
   render() {
     let me = this.props.me;
+
+    let coverUrl = 'https://s10tv.blob.core.windows.net/s10tv-prod/defaultbg.jpg';
+    if (me && me.cover && me.cover.url) {
+      coverUrl = me.cover.url;
+    }
+
     return (
-      <HeaderBanner url={me.cover.url} height={200}>
+      <HeaderBanner url={ coverUrl } height={200}>
         <View style={styles.activityUser}>
           <Image source={{ uri: me.avatar.url }} style={SHEET.bigIconCircle} />
           <Text style={styles.activityUserTitle}>
@@ -299,8 +305,6 @@ class Activities extends React.Component {
       ) 
     } else {
       profile = connectedProfiles[this.state.activeProfile.id]
-      console.log(profile);
-
       attributes = null
       if (profile.attributes) {
         attributes = profile.attributes.map((attribute) => {
@@ -405,9 +409,9 @@ var styles = StyleSheet.create({
     paddingBottom: 10,
   },
   infoAvatar: {
-    width: 64,
-    height: 64,
-    borderRadius: 32,
+    width: width / 4,
+    height: width / 4,
+    borderRadius: width / 8,
   },
   openButton: {
     marginTop: 10,

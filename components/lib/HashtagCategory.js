@@ -24,15 +24,19 @@ class HashtagCategory extends React.Component {
   }
 
   _renderItem(category) {
-    let myTagsRendered = this.props.myTags.filter(tag => {
-      return tag.type == category._id
-    }).map(hashtag => {
-      return <Hashtag 
-        key={hashtag._id}
-        ddp={this.props.ddp}
-        enableTouch={false}
-        hashtag={ hashtag } />
-    });
+
+    var myTagsRendered = [];
+    if (this.props.myTags) {
+      myTagsRendered = this.props.myTags.filter(tag => {
+        return tag.type == category._id
+      }).map(hashtag => {
+        return <Hashtag 
+          key={hashtag._id}
+          ddp={this.props.ddp}
+          enableTouch={false}
+          hashtag={ hashtag } />
+      });
+    }
 
     let icon = myTagsRendered.length == 0 ?
       <Image style={SHEET.icon} source={require('../img/ic-add.png')} /> :

@@ -9,6 +9,9 @@ let {
   StyleSheet,
 } = React;
 
+let Dimensions = require('Dimensions');
+let { width, height } = Dimensions.get('window');
+
 let SHEET = require('../CommonStyles').SHEET;
 let NetworkComponent = require('./NetworkComponent')
 let MoreComponent = require('./MoreComponent');
@@ -44,7 +47,7 @@ var buttonStyles = StyleSheet.create({
     borderRadius: 2,
   },
   button: {
-    width: 100,
+    width: width / 4,
   },
   buttonText: {
     flex: 1,
@@ -104,6 +107,12 @@ class Me extends React.Component {
     if (!me) {
       return <Loader />
     }
+
+    let coverUrl = 'https://s10tv.blob.core.windows.net/s10tv-prod/defaultbg.jpg';
+    if (me && me.cover && me.cover.url) {
+      coverUrl = me.cover.url;
+    }
+
     return (
       <View style={SHEET.container}>
         <ScrollView 
@@ -112,12 +121,12 @@ class Me extends React.Component {
           
           <TouchableOpacity onPress={() => {
               this.props.navigator.push({
-                id: 'viewprofile',
+                id: 'viewactivities',
                 title: 'Profile',
                 me: me,
               })
             }}>
-            <HeaderBanner url={me.cover.url} height={170}>
+            <HeaderBanner url={coverUrl} height={ height / 4 }>
               <MeHeader navigator={this.props.navigator} ddp={ddp} me={me} />
             </HeaderBanner>
           </TouchableOpacity>
@@ -133,7 +142,10 @@ class Me extends React.Component {
               ddp={this.ddp} />
 
             <SectionTitle title={'MORE'} />
-            <MoreComponent navigator={this.props.navigator} />
+            <MoreComponent 
+              navigator={this.props.navigator}
+              onLogout={this.props.onLogout}
+              ddp={this.props.ddp} />
           </View>
 
           <View style={SHEET.bottomTile} />
@@ -145,9 +157,9 @@ class Me extends React.Component {
 
 var styles = StyleSheet.create({
   avatar: {
-    borderRadius: 52.5,
-    height: 105,
-    width: 105,
+    borderRadius: width / 8,
+    height: width / 4,
+    width: width / 4,
   },
   meHeader: {
     position: 'absolute',
@@ -156,7 +168,7 @@ var styles = StyleSheet.create({
     left: 0,
     alignItems: 'center',
     flexDirection: 'row',
-    height: 170,
+    height: height / 4,
     marginHorizontal: 15,
   },
   headerContent: {

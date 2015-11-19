@@ -15,7 +15,8 @@ let SHEET = require('../CommonStyles').SHEET;
 let MeScreen = require('./MeScreen');
 let MeEditScreen = require('./MeEditScreen');
 let Activities = require('../lib/Activities');
-let HashtagListView =require('../lib/HashtagListView');
+let HashtagListView = require('../lib/HashtagListView');
+let TSNavigationBar = require('../lib/TSNavigationBar');
 
 class MeNavigator extends BaseTaylrNavigator {
   constructor(props) {
@@ -46,6 +47,7 @@ class MeNavigator extends BaseTaylrNavigator {
       case 'viewme':
         return (
           <MeScreen me={this.props.me} 
+            onLogout={this.props.onLogout}
             categories={this.props.categories}
             myTags={this.props.myTags}
             navigator={nav}
@@ -98,7 +100,8 @@ class MeNavigator extends BaseTaylrNavigator {
           title: 'Me',
         }}
         navigationBar={
-          <Navigator.NavigationBar
+          <TSNavigationBar
+            ref='navbar'
             routeMapper={{
               LeftButton: this._leftButton.bind(this),
               RightButton: this._rightButton.bind(this),
