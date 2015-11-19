@@ -21,7 +21,6 @@
 		EA197A381BFC4D2600DF7B58 /* Conversation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA1979EF1BFC4D2600DF7B58 /* Conversation.storyboard */; };
 		EA197A391BFC4D2600DF7B58 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1979F01BFC4D2600DF7B58 /* ConversationViewController.swift */; };
 		EA197A3A1BFC4D2600DF7B58 /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1979F11BFC4D2600DF7B58 /* ConversationViewModel.swift */; };
-		EA197A3B1BFC4D2600DF7B58 /* UserViewModel+ATLParticipant.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1979F21BFC4D2600DF7B58 /* UserViewModel+ATLParticipant.swift */; };
 		EA197A3C1BFC4D2600DF7B58 /* DurationTimer.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1979F41BFC4D2600DF7B58 /* DurationTimer.swift */; };
 		EA197A3D1BFC4D2600DF7B58 /* VideoPlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1979F51BFC4D2600DF7B58 /* VideoPlayerViewController.swift */; };
 		EA197A3E1BFC4D2600DF7B58 /* VideoPlayerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1979F61BFC4D2600DF7B58 /* VideoPlayerViewModel.swift */; };
@@ -54,9 +53,8 @@
 		EA197A5B1BFC4D2600DF7B58 /* ProvisioningProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A191BFC4D2600DF7B58 /* ProvisioningProfile.swift */; };
 		EA197A5C1BFC4D2600DF7B58 /* Segue.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A1A1BFC4D2600DF7B58 /* Segue.swift */; };
 		EA197A5F1BFC4D2600DF7B58 /* LayerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A1F1BFC4D2600DF7B58 /* LayerExtensions.swift */; };
-		EA197A601BFC4D2600DF7B58 /* LayerHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A201BFC4D2600DF7B58 /* LayerHelpers.swift */; };
 		EA197A611BFC4D2600DF7B58 /* LayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A211BFC4D2600DF7B58 /* LayerService.swift */; };
-		EA197A671BFC4D2600DF7B58 /* Context.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A2B1BFC4D2600DF7B58 /* Context.swift */; };
+		EA197A671BFC4D2600DF7B58 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A2B1BFC4D2600DF7B58 /* UserViewModel.swift */; };
 		EA197A691BFC4D2600DF7B58 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A2D1BFC4D2600DF7B58 /* Formatters.swift */; };
 		EA197A6B1BFC4D2600DF7B58 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A2F1BFC4D2600DF7B58 /* Image.swift */; };
 		EA197A6E1BFC4D2600DF7B58 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A321BFC4D2600DF7B58 /* Video.swift */; };
@@ -88,6 +86,8 @@
 		EA95165E1BFD7620000F5338 /* LoggingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95165D1BFD7620000F5338 /* LoggingProvider.swift */; };
 		EA9516791BFD8924000F5338 /* TSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9516771BFD8924000F5338 /* TSViewController.m */; };
 		EA95167A1BFD8924000F5338 /* ViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9516781BFD8924000F5338 /* ViewControllerManager.swift */; };
+		EA95167C1BFD8D5D000F5338 /* LayerHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95167B1BFD8D5D000F5338 /* LayerHelpers.swift */; };
+		EA95167E1BFD8D93000F5338 /* LayerQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95167D1BFD8D93000F5338 /* LayerQueries.swift */; };
 		EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA9A6ACE1AAFDE19009EDD6D /* Localizable.strings */; };
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
@@ -153,7 +153,6 @@
 		EA1979EF1BFC4D2600DF7B58 /* Conversation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Conversation.storyboard; sourceTree = "<group>"; };
 		EA1979F01BFC4D2600DF7B58 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		EA1979F11BFC4D2600DF7B58 /* ConversationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewModel.swift; sourceTree = "<group>"; };
-		EA1979F21BFC4D2600DF7B58 /* UserViewModel+ATLParticipant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UserViewModel+ATLParticipant.swift"; sourceTree = "<group>"; };
 		EA1979F41BFC4D2600DF7B58 /* DurationTimer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DurationTimer.swift; sourceTree = "<group>"; };
 		EA1979F51BFC4D2600DF7B58 /* VideoPlayerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewController.swift; sourceTree = "<group>"; };
 		EA1979F61BFC4D2600DF7B58 /* VideoPlayerViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewModel.swift; sourceTree = "<group>"; };
@@ -186,9 +185,8 @@
 		EA197A191BFC4D2600DF7B58 /* ProvisioningProfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProvisioningProfile.swift; sourceTree = "<group>"; };
 		EA197A1A1BFC4D2600DF7B58 /* Segue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Segue.swift; sourceTree = "<group>"; };
 		EA197A1F1BFC4D2600DF7B58 /* LayerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerExtensions.swift; sourceTree = "<group>"; };
-		EA197A201BFC4D2600DF7B58 /* LayerHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerHelpers.swift; sourceTree = "<group>"; };
 		EA197A211BFC4D2600DF7B58 /* LayerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerService.swift; sourceTree = "<group>"; };
-		EA197A2B1BFC4D2600DF7B58 /* Context.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Context.swift; sourceTree = "<group>"; };
+		EA197A2B1BFC4D2600DF7B58 /* UserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		EA197A2D1BFC4D2600DF7B58 /* Formatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		EA197A2F1BFC4D2600DF7B58 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		EA197A321BFC4D2600DF7B58 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
@@ -223,6 +221,8 @@
 		EA95165D1BFD7620000F5338 /* LoggingProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingProvider.swift; sourceTree = "<group>"; };
 		EA9516771BFD8924000F5338 /* TSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSViewController.m; sourceTree = "<group>"; };
 		EA9516781BFD8924000F5338 /* ViewControllerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerManager.swift; sourceTree = "<group>"; };
+		EA95167B1BFD8D5D000F5338 /* LayerHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerHelpers.swift; sourceTree = "<group>"; };
+		EA95167D1BFD8D93000F5338 /* LayerQueries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerQueries.swift; sourceTree = "<group>"; };
 		EA9A6ACF1AAFDFA2009EDD6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA9F353A1A74CC6900E0C65D /* Taylr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taylr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9F353E1A74CC6900E0C65D /* Taylr-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Taylr-Info.plist"; sourceTree = "<group>"; };
@@ -304,7 +304,6 @@
 				EA1979EF1BFC4D2600DF7B58 /* Conversation.storyboard */,
 				EA1979F01BFC4D2600DF7B58 /* ConversationViewController.swift */,
 				EA1979F11BFC4D2600DF7B58 /* ConversationViewModel.swift */,
-				EA1979F21BFC4D2600DF7B58 /* UserViewModel+ATLParticipant.swift */,
 				EA197A991BFD116200DF7B58 /* ConversationViewManager.swift */,
 				EA197A8E1BFD0AF700DF7B58 /* TSConversationView.m */,
 			);
@@ -414,7 +413,8 @@
 			isa = PBXGroup;
 			children = (
 				EA197A1F1BFC4D2600DF7B58 /* LayerExtensions.swift */,
-				EA197A201BFC4D2600DF7B58 /* LayerHelpers.swift */,
+				EA95167B1BFD8D5D000F5338 /* LayerHelpers.swift */,
+				EA95167D1BFD8D93000F5338 /* LayerQueries.swift */,
 				EA197A211BFC4D2600DF7B58 /* LayerService.swift */,
 				EA197A971BFD0FB900DF7B58 /* TSLayerService.m */,
 			);
@@ -424,7 +424,7 @@
 		EA197A2A1BFC4D2600DF7B58 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				EA197A2B1BFC4D2600DF7B58 /* Context.swift */,
+				EA197A2B1BFC4D2600DF7B58 /* UserViewModel.swift */,
 				EA197A2D1BFC4D2600DF7B58 /* Formatters.swift */,
 				EA197A2F1BFC4D2600DF7B58 /* Image.swift */,
 				EA197A321BFC4D2600DF7B58 /* Video.swift */,
@@ -861,14 +861,14 @@
 				EA197A611BFC4D2600DF7B58 /* LayerService.swift in Sources */,
 				EA197A411BFC4D2600DF7B58 /* ConversationListViewController.swift in Sources */,
 				EA197A841BFCEDB500DF7B58 /* AppDependencies.swift in Sources */,
-				EA197A671BFC4D2600DF7B58 /* Context.swift in Sources */,
+				EA197A671BFC4D2600DF7B58 /* UserViewModel.swift in Sources */,
 				EA197A5B1BFC4D2600DF7B58 /* ProvisioningProfile.swift in Sources */,
+				EA95167C1BFD8D5D000F5338 /* LayerHelpers.swift in Sources */,
 				EA3713CF1BFD687E00E51980 /* Analytics.swift in Sources */,
 				EA197A3E1BFC4D2600DF7B58 /* VideoPlayerViewModel.swift in Sources */,
 				EA197A4A1BFC4D2600DF7B58 /* Foundation+RACSupport.swift in Sources */,
 				EA197A4F1BFC4D2600DF7B58 /* TwoWayBindings.swift in Sources */,
 				EA197A861BFCFC3800DF7B58 /* RootViewController.swift in Sources */,
-				EA197A601BFC4D2600DF7B58 /* LayerHelpers.swift in Sources */,
 				EA197A571BFC4D2600DF7B58 /* BaseViews.swift in Sources */,
 				EA197A511BFC4D2600DF7B58 /* SwiftExtensions.swift in Sources */,
 				EA197A341BFC4D2600DF7B58 /* AudioController.swift in Sources */,
@@ -897,7 +897,7 @@
 				EA1979E21BFC4CD800DF7B58 /* R.swift in Sources */,
 				EA197A9A1BFD116200DF7B58 /* ConversationViewManager.swift in Sources */,
 				EA197A3C1BFC4D2600DF7B58 /* DurationTimer.swift in Sources */,
-				EA197A3B1BFC4D2600DF7B58 /* UserViewModel+ATLParticipant.swift in Sources */,
+				EA95167E1BFD8D93000F5338 /* LayerQueries.swift in Sources */,
 				EA3713C91BFD455600E51980 /* DDNSLogger.swift in Sources */,
 				EA3713C51BFD3E1B00E51980 /* TSLogger.m in Sources */,
 				EA197A4C1BFC4D2600DF7B58 /* ArrayProperty.swift in Sources */,

@@ -1,4 +1,4 @@
-//
+
 //  ConversationListViewController.swift
 //  S10
 //
@@ -7,9 +7,9 @@
 //
 
 import Foundation
+import CocoaLumberjack
 import ReactiveCocoa
 import Atlas
-import CocoaLumberjack
 
 class ConversationListViewController : ATLConversationListViewController {
     
@@ -27,20 +27,30 @@ class ConversationListViewController : ATLConversationListViewController {
         title = nil
         navigationItem.title = "Connections"
 
-        // TODO: FIX ME FOR REAL
-        fatalError("layerClient is not set")
-//        layerClient = MainContext.layer.layerClient
+        layerClient = vm.layerClient
         dataSource = vm
         delegate = self
-        
-        vm.changedConversations.observeOn(UIScheduler()).observeNext { [weak self] in
-            DDLogDebug("Reloading conversation cell \($0)")
-            self?.reloadCellForConversation($0)
-        }
+        DDLogDebug("ConversationList - viewDidLoad")
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
+        DDLogDebug("ConversationList - viewWillAppear")
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        DDLogDebug("ConversationList - viewDidAppear")
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        DDLogDebug("ConversationList - viewWillDisappear")
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        DDLogDebug("ConversationList - viewDidDisappear")
     }
     
     override func viewDidLayoutSubviews() {
@@ -49,11 +59,11 @@ class ConversationListViewController : ATLConversationListViewController {
             bottom: bottomLayoutGuide.length, right: 0)
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let vc = segue.destinationViewController as? ConversationViewController {
-            vc.vm = vm.conversationVM(selectedConversation!)
-        }
-    }
+//    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+//        if let vc = segue.destinationViewController as? ConversationViewController {
+//            vc.vm = vm.conversationVM(selectedConversation!)
+//        }
+//    }
 }
 
 extension ConversationListViewController : ATLConversationListViewControllerDelegate {

@@ -18,6 +18,7 @@ class LayerService: NSObject {
     
     let layerClient: LYRClient
     let unreadQueryController: LYRQueryController?
+    var currentUser: UserViewModel?
     
     init(layerAppID: NSURL) {
         layerClient = LYRClient(appID: layerAppID)
@@ -45,22 +46,30 @@ class LayerService: NSObject {
         }
     }
     
-//    func conversationWithUser(user: User) -> LYRConversation {
-//        do {
-//            // BIG TODO: This is gonna crash if we are offline... Store currentUser info offline in UserDefaults
-//            var metadata = Participant(user: meteor.user.value!).asDictionary()
-//            for (k, v) in Participant(user: user).asDictionary() {
-//                metadata[k] = v // Better dic merge wanted
-//            }
-//            DDLogInfo("Creating new conversation with metadata \(metadata)")
-//            return try layerClient.newConversationWithParticipants(Set([user.documentID!]), options: [
-//                LYRConversationOptionsDistinctByParticipantsKey: true,
-//                LYRConversationOptionsMetadataKey: metadata
-//            ])
-//        } catch let error as NSError {
-//            return error.userInfo[LYRExistingDistinctConversationKey] as! LYRConversation
-//        }
-//    }
+    func getOrCreateConversation(user: UserViewModel) throws -> LYRConversation {
+        do {
+            // BIG TODO: Make sure we store currentUser info offline in UserDefaults
+            guard let currentUser = currentUser else {
+                throw NSError(domain: "Layer", code: 0, userInfo: [
+                    NSLocalizedFailureReasonErrorKey: "Cannot get conversation when currentUser is nil"
+                ])
+            }
+            var metadata = currentUser.asDictionary()
+            for (k, v) in user.asDictionary() {
+                metadata[k] = v // Better dic merge wanted
+            }
+            DDLogInfo("Creating new conversation with metadata \(metadata)")
+            return try layerClient.newConversationWithParticipants(Set([user.userId]), options: [
+                LYRConversationOptionsDistinctByParticipantsKey: true,
+                LYRConversationOptionsMetadataKey: metadata
+            ])
+        } catch let error as NSError {
+            if let c = error.userInfo[LYRExistingDistinctConversationKey] as? LYRConversation {
+                return c
+            }
+            throw error
+        }
+    }
     
     func findMessage(messageId: String) -> LYRMessage? {
         do {
@@ -184,6 +193,7 @@ extension LayerService : LYRQueryControllerDelegate {
 // MARK: - NativeModule API
 
 extension LayerService {
+    
     @objc func requestAuthenticationNonce() {
         layerClient.requestAuthenticationNonce().start(Event.sink(error: { error in
             DDLogError("Unable to get authentication nonce \(error)")

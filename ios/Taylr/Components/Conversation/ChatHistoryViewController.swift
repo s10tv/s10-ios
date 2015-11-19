@@ -70,14 +70,6 @@ class ChatHistoryViewController : ATLConversationViewController {
 
 // MARK: - ATLConversationViewControllerDataSource
 
-extension Participant : ATLParticipant {
-    public var fullName: String! { return displayName }
-    public var participantIdentifier: String! { return userId }
-    public var avatarImageURL: NSURL! { return avatarURL }
-    public var avatarImage: UIImage! { return nil }
-    public var avatarInitials: String! { return nil }
-}
-
 extension ConversationViewModel : ATLConversationViewControllerDataSource {
     
     public func conversationViewController(conversationViewController: ATLConversationViewController!, participantForIdentifier participantIdentifier: String!) -> ATLParticipant! {
@@ -89,7 +81,8 @@ extension ConversationViewModel : ATLConversationViewControllerDataSource {
     }
     
     public func conversationViewController(conversationViewController: ATLConversationViewController!, attributedStringForDisplayOfRecipientStatus recipientStatus: [NSObject : AnyObject]!) -> NSAttributedString! {
-        return Formatters.attributedStringForDisplayOfRecipientStatus(recipientStatus, ctx: ctx)
+        return nil
+//        return Formatters.attributedStringForDisplayOfRecipientStatus(recipientStatus, currentUser: ctx)
     }
     
 }
