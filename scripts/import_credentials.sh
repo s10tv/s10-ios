@@ -42,4 +42,4 @@ cp profiles/*.* "$PROFILE_DIR"
 #     ios profiles:download:all --type $profileType --team $APPSTORE_TEAM_ID -u $APPLE_ID -p $APPLE_ID_PASSWORD --trace
 # done
 
-mv $APPSTORE_PROFILE_NAME $APPSTORE_PROFILE_PATH
+# mv $APPSTORE_PROFILE_NAME $APPSTORE_PROFILE_PATH
