@@ -10,7 +10,6 @@ import Foundation
 import CocoaLumberjack
 import Ouralabs
 
-
 class DDOuralabsLogger : DDAbstractLogger {
     init(apiKey: String) {
         Ouralabs.initWithKey(apiKey)

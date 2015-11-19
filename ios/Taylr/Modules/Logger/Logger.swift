@@ -22,8 +22,7 @@ public class Logger : NSObject {
         DDLogInfo("Loggers initialized")
     }
 
-    @objc
-    func log(logText: String, level: String, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) {
+    @objc func log(logText: String, level: String, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) {
         let lvl: DDLogLevel
         let flg: DDLogFlag
         switch level {

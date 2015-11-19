@@ -60,7 +60,6 @@
 		EA197A691BFC4D2600DF7B58 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A2D1BFC4D2600DF7B58 /* Formatters.swift */; };
 		EA197A6B1BFC4D2600DF7B58 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A2F1BFC4D2600DF7B58 /* Image.swift */; };
 		EA197A6E1BFC4D2600DF7B58 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A321BFC4D2600DF7B58 /* Video.swift */; };
-		EA197A801BFCE09F00DF7B58 /* AnalyticsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A7F1BFCE09F00DF7B58 /* AnalyticsService.swift */; };
 		EA197A821BFCE1A100DF7B58 /* TSAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = EA197A811BFCE1A100DF7B58 /* TSAnalytics.m */; };
 		EA197A841BFCEDB500DF7B58 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A831BFCEDB500DF7B58 /* AppDependencies.swift */; };
 		EA197A861BFCFC3800DF7B58 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A851BFCFC3800DF7B58 /* RootViewController.swift */; };
@@ -77,6 +76,7 @@
 		EA3713C51BFD3E1B00E51980 /* TSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3713C41BFD3E1B00E51980 /* TSLogger.m */; };
 		EA3713C71BFD434300E51980 /* DDOuralabsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3713C61BFD434300E51980 /* DDOuralabsLogger.swift */; };
 		EA3713C91BFD455600E51980 /* DDNSLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3713C81BFD455600E51980 /* DDNSLogger.swift */; };
+		EA3713CF1BFD687E00E51980 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3713CE1BFD687E00E51980 /* Analytics.swift */; };
 		EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
 		EA78C8801B323E140016AB73 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA78C87F1B323E140016AB73 /* Images.xcassets */; };
 		EA7FB0941B5EF9D50052B394 /* Cabin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB08E1B5EF9D50052B394 /* Cabin-Bold.ttf */; };
@@ -85,6 +85,7 @@
 		EA7FB0971B5EF9D50052B394 /* Cabin-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB0911B5EF9D50052B394 /* Cabin-Medium.ttf */; };
 		EA7FB0981B5EF9D50052B394 /* Cabin-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB0921B5EF9D50052B394 /* Cabin-MediumItalic.ttf */; };
 		EA7FB0991B5EF9D50052B394 /* Cabin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB0931B5EF9D50052B394 /* Cabin-Regular.ttf */; };
+		EA95165E1BFD7620000F5338 /* LoggingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95165D1BFD7620000F5338 /* LoggingProvider.swift */; };
 		EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA9A6ACE1AAFDE19009EDD6D /* Localizable.strings */; };
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
@@ -189,7 +190,6 @@
 		EA197A2D1BFC4D2600DF7B58 /* Formatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		EA197A2F1BFC4D2600DF7B58 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		EA197A321BFC4D2600DF7B58 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
-		EA197A7F1BFCE09F00DF7B58 /* AnalyticsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsService.swift; sourceTree = "<group>"; };
 		EA197A811BFCE1A100DF7B58 /* TSAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSAnalytics.m; sourceTree = "<group>"; };
 		EA197A831BFCEDB500DF7B58 /* AppDependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
 		EA197A851BFCFC3800DF7B58 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -210,6 +210,7 @@
 		EA3713C41BFD3E1B00E51980 /* TSLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSLogger.m; sourceTree = "<group>"; };
 		EA3713C61BFD434300E51980 /* DDOuralabsLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDOuralabsLogger.swift; sourceTree = "<group>"; };
 		EA3713C81BFD455600E51980 /* DDNSLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDNSLogger.swift; sourceTree = "<group>"; };
+		EA3713CE1BFD687E00E51980 /* Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 		EA78C87F1B323E140016AB73 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Pods/PKHUD/PKHUD/Images.xcassets; sourceTree = "<group>"; };
 		EA7FB08E1B5EF9D50052B394 /* Cabin-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Bold.ttf"; sourceTree = "<group>"; };
 		EA7FB08F1B5EF9D50052B394 /* Cabin-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -217,6 +218,7 @@
 		EA7FB0911B5EF9D50052B394 /* Cabin-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Medium.ttf"; sourceTree = "<group>"; };
 		EA7FB0921B5EF9D50052B394 /* Cabin-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-MediumItalic.ttf"; sourceTree = "<group>"; };
 		EA7FB0931B5EF9D50052B394 /* Cabin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Regular.ttf"; sourceTree = "<group>"; };
+		EA95165D1BFD7620000F5338 /* LoggingProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingProvider.swift; sourceTree = "<group>"; };
 		EA9A6ACF1AAFDFA2009EDD6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA9F353A1A74CC6900E0C65D /* Taylr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taylr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9F353E1A74CC6900E0C65D /* Taylr-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Taylr-Info.plist"; sourceTree = "<group>"; };
@@ -428,7 +430,8 @@
 		EA197A7E1BFCE09F00DF7B58 /* Analytics */ = {
 			isa = PBXGroup;
 			children = (
-				EA197A7F1BFCE09F00DF7B58 /* AnalyticsService.swift */,
+				EA95165D1BFD7620000F5338 /* LoggingProvider.swift */,
+				EA3713CE1BFD687E00E51980 /* Analytics.swift */,
 				EA197A811BFCE1A100DF7B58 /* TSAnalytics.m */,
 			);
 			path = Analytics;
@@ -828,6 +831,7 @@
 			files = (
 				EA197A4D1BFC4D2600DF7B58 /* DynamicProperties.swift in Sources */,
 				EA197A491BFC4D2600DF7B58 /* PKHUDExtension.swift in Sources */,
+				EA95165E1BFD7620000F5338 /* LoggingProvider.swift in Sources */,
 				EA197A6E1BFC4D2600DF7B58 /* Video.swift in Sources */,
 				EA197A3F1BFC4D2600DF7B58 /* VolumeView.swift in Sources */,
 				EA197A531BFC4D2600DF7B58 /* UIKitBindings.swift in Sources */,
@@ -844,6 +848,7 @@
 				EA197A841BFCEDB500DF7B58 /* AppDependencies.swift in Sources */,
 				EA197A671BFC4D2600DF7B58 /* Context.swift in Sources */,
 				EA197A5B1BFC4D2600DF7B58 /* ProvisioningProfile.swift in Sources */,
+				EA3713CF1BFD687E00E51980 /* Analytics.swift in Sources */,
 				EA197A3E1BFC4D2600DF7B58 /* VideoPlayerViewModel.swift in Sources */,
 				EA197A4A1BFC4D2600DF7B58 /* Foundation+RACSupport.swift in Sources */,
 				EA197A4F1BFC4D2600DF7B58 /* TwoWayBindings.swift in Sources */,
@@ -879,7 +884,6 @@
 				EA197A3C1BFC4D2600DF7B58 /* DurationTimer.swift in Sources */,
 				EA197A3B1BFC4D2600DF7B58 /* UserViewModel+ATLParticipant.swift in Sources */,
 				EA3713C91BFD455600E51980 /* DDNSLogger.swift in Sources */,
-				EA197A801BFCE09F00DF7B58 /* AnalyticsService.swift in Sources */,
 				EA3713C51BFD3E1B00E51980 /* TSLogger.m in Sources */,
 				EA197A4C1BFC4D2600DF7B58 /* ArrayProperty.swift in Sources */,
 				EA197A3D1BFC4D2600DF7B58 /* VideoPlayerViewController.swift in Sources */,

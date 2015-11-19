@@ -40,17 +40,20 @@ pod 'TwitterCore', '~> 1.13'
 pod 'Digits', '~> 1.13'
 pod 'Crashlytics', '~> 3.4'
 
-# Logging & analytics
+# Logging
 pod 'CocoaLumberjack/Swift', '~> 2.2'
 pod 'Ouralabs', '~> 2.6'
+pod 'NSLogger', '~> 1.5', :configuration => ['Debug']
 
-pod 'AnalyticsSwift', '~> 0.2'
-pod 'Mixpanel', '~> 2.9'
-pod 'Amplitude-iOS', '~> 3.2'
+# Analytics
+pod 'ARAnalytics', :subspecs => [
+    'Mixpanel',
+    'Amplitude',
+    'Segmentio',
+]
 pod 'UXCam', '~> 2.4'
 
-# Debug only
-pod 'NSLogger', '~> 1.5', :configuration => ['Debug']
+# Debugging
 pod 'Reveal-iOS-SDK', '~> 1.6', :configuration => ['Debug']
 
 # To Be Deprecated

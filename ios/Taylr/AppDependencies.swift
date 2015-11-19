@@ -17,14 +17,13 @@ class AppDependencies : NSObject {
     let env: Environment
     let config: AppConfig
     let logger: Logger
+    let analytics: Analytics
     
     // Lazily initialized modules
     lazy private(set) var bridge: RCTBridge = {
         return RCTBridge(delegate: self, launchOptions: nil)
     }()
-    lazy private(set) var analytics: AnalyticsService = {
-        return AnalyticsService(config: self.config, env: self.env)
-    }()
+
     lazy private(set) var layer: LayerService = {
         return LayerService(layerAppID: self.config.layerURL, existingClient: nil)
     }()
@@ -33,6 +32,7 @@ class AppDependencies : NSObject {
         env = Environment()
         config = AppConfig(env: env)
         logger = Logger(config: config)
+        analytics = Analytics(config: config)
         
         super.init()
         Crashlytics.sharedInstance().delegate = self

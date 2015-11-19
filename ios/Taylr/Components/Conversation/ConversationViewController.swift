@@ -8,6 +8,7 @@
 
 import UIKit
 import ReactiveCocoa
+import ARAnalytics
 import Atlas
 import SwipeView
 import NKRecorder
@@ -167,7 +168,7 @@ class ConversationViewController : UIViewController {
         alert.addAction("Cancel", style: .Cancel)
         alert.addAction("Block", style: .Destructive) { _ in
 //            self.vm.blockUser()
-            Analytics.track("User: Block")
+            ARAnalytics.event("User: Block")
             let dialog = UIAlertController(title: "Block User", message: "\(self.vm.displayName.value) will no longer be able to contact you in the future", preferredStyle: .Alert)
             dialog.addAction("Ok", style: .Default)
             self.presentViewController(dialog)
@@ -182,7 +183,7 @@ class ConversationViewController : UIViewController {
         alert.addAction(LS(.reportAlertCancel), style: .Cancel)
         alert.addAction(LS(.reportAlertConfirm), style: .Destructive) { _ in
             if let reportReason = alert.textFields?[0].text {
-                Analytics.track("User: Report", properties: ["Reason": reportReason])
+                ARAnalytics.event("User: Report", withProperties: ["Reason": reportReason])
 //                self.vm.reportUser(reportReason)
             }
         }
@@ -211,7 +212,7 @@ extension ConversationViewController : VideoMakerDelegate {
             self.scrollDownHint.hidden = false
             self.scrollView.scrollEnabled = true
             self.vm.sendVideo(url, thumbnail: thumbnail, duration: duration)
-            Analytics.track("Message: Send", properties: ["ConversationName": self.vm.displayName.value])
+            ARAnalytics.event("Message: Send", withProperties: ["ConversationName": self.vm.displayName.value])
         }
     }
 }
@@ -225,7 +226,7 @@ extension ConversationViewController : ATLConversationViewControllerDelegate {
             videoPlayer.vm.playlist.array = [video]
             presentViewController(videoPlayer, animated: false)
         } else if message.videoPart != nil {
-            Analytics.track("Conversation: TappedUnavailableVideo")
+            ARAnalytics.event("Conversation: TappedUnavailableVideo")
             showAlert("Video Downloading",
                 message: "The video you requested is still downloading. Please try again later :(")
         }
@@ -249,7 +250,7 @@ extension ConversationViewController : ConversationHistoryDelegate {
 extension ConversationViewController : VideoPlayerViewControllerDelegate {
     func videoPlayer(videoPlayer: VideoPlayerViewController, didPlayVideo video: Video) {
         vm.markMessageAsRead(video.identifier)
-        Analytics.track("Message: Open", properties: [
+        ARAnalytics.event("Message: Open", withProperties: [
             "MessageId": video.identifier
         ])
     }

@@ -8,11 +8,9 @@
 
 import UIKit
 import CocoaLumberjack
-import NKRecorder
+import ARAnalytics
 import FBSDKCoreKit
-
-
-var Analytics: AnalyticsService!
+import NKRecorder
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */ {
@@ -22,10 +20,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
     let dependencies = AppDependencies()
     
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
-        Analytics = dependencies.analytics
         
         DDLogInfo("App Launched")
-        Analytics.track("AppOpen")
+        ARAnalytics.event("AppOpen")
         return true
     }
     
@@ -45,11 +42,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
     }
 //    
 //    func applicationWillEnterForeground(application: UIApplication) {
-//        Analytics.track("AppOpen")
+//        ARAnalytics.event("AppOpen")
 //    }
 //    
 //    func applicationDidEnterBackground(application: UIApplication) {
-//        Analytics.track("AppClose")
+//        ARAnalytics.event("AppClose")
 //    }
 //    
     func applicationDidBecomeActive(application: UIApplication) {
