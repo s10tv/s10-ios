@@ -31,24 +31,24 @@ class ViewControllerManager : RCTViewManager {
     @objc func componentDidMount(reactTag: Int) {
         viewControllerWithTag(reactTag) { view, vc in
             DDLogDebug("\(vc) componentDidMount")
-            vc.beginAppearanceTransition(true, animated: false)
-//            view.reactAddControllerToClosestParent(vc)
-            if let rootVC = UIApplication.sharedApplication().delegate?.window??.rootViewController {
-                rootVC.addChildViewController(vc)
-                vc.didMoveToParentViewController(rootVC)
-            }
-            assert(vc.parentViewController != nil)
-            vc.endAppearanceTransition()
+//            vc.beginAppearanceTransition(true, animated: false)
+            view.reactAddControllerToClosestParent(vc)
+//            if let rootVC = UIApplication.sharedApplication().delegate?.window??.rootViewController {
+//                rootVC.addChildViewController(vc)
+//                vc.didMoveToParentViewController(rootVC)
+//            }
+//            assert(vc.parentViewController != nil)
+//            vc.endAppearanceTransition()
         }
     }
     
     @objc func componentWillUnmount(reactTag: Int) {
         viewControllerWithTag(reactTag) { view, vc in
             DDLogDebug("\(vc) componentWillUnmount")
-            vc.beginAppearanceTransition(false, animated: false)
+//            vc.beginAppearanceTransition(false, animated: false)
             vc.willMoveToParentViewController(nil)
             vc.removeFromParentViewController()
-            vc.endAppearanceTransition()
+//            vc.endAppearanceTransition()
         }
     }
     
