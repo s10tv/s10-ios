@@ -7,13 +7,16 @@
 //
 
 import Foundation
+import CocoaLumberjack
 import ReactiveCocoa
+import SDWebImage
 
 private var kText: UInt8 = 0
 private var kImage: UInt8 = 0
 private var kTitle: UInt8 = 0
 private var kHidden: UInt8 = 0
 private var kAnimating: UInt8 = 0
+private var kImageURL: UInt8 = 0
 
 extension UIView {
     public var rac_hidden: MutableProperty<Bool> {
@@ -87,6 +90,23 @@ extension UIActivityIndicatorView {
                     self?.startAnimating()
                 } else {
                     self?.stopAnimating()
+                }
+            }
+            return property
+        }
+    }
+}
+
+extension UIImageView {
+    public var rac_imageURL: MutableProperty<NSURL?> {
+        return associatedObject(&kImageURL) { [weak self] in
+            let property = MutableProperty<NSURL?>(nil)
+            property.producer.startWithNext { [weak self] url in
+                self?.sd_cancelCurrentImageLoad()
+                self?.sd_setImageWithURL(url, placeholderImage: nil) { image, error, cacheType, url in
+                    if let error = error {
+                        DDLogWarn("Unable to load image at \(url) \(error)")
+                    }
                 }
             }
             return property

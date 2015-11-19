@@ -22,8 +22,7 @@
 		EA197A4D1BFC4D2600DF7B58 /* DynamicProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A0A1BFC4D2600DF7B58 /* DynamicProperties.swift */; };
 		EA197A4E1BFC4D2600DF7B58 /* PropertyExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A0B1BFC4D2600DF7B58 /* PropertyExtensions.swift */; };
 		EA197A501BFC4D2600DF7B58 /* ResourceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A0D1BFC4D2600DF7B58 /* ResourceExtension.swift */; };
-		EA197A511BFC4D2600DF7B58 /* SwiftExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A0E1BFC4D2600DF7B58 /* SwiftExtensions.swift */; };
-		EA197A521BFC4D2600DF7B58 /* ThirdPartyBindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A0F1BFC4D2600DF7B58 /* ThirdPartyBindings.swift */; };
+		EA197A511BFC4D2600DF7B58 /* SwiftExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A0E1BFC4D2600DF7B58 /* SwiftExtension.swift */; };
 		EA197A531BFC4D2600DF7B58 /* UIKitBindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A101BFC4D2600DF7B58 /* UIKitBindings.swift */; };
 		EA197A541BFC4D2600DF7B58 /* UIKitExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A111BFC4D2600DF7B58 /* UIKitExtension.swift */; };
 		EA197A571BFC4D2600DF7B58 /* BaseViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A151BFC4D2600DF7B58 /* BaseViews.swift */; };
@@ -154,8 +153,7 @@
 		EA197A0A1BFC4D2600DF7B58 /* DynamicProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicProperties.swift; sourceTree = "<group>"; };
 		EA197A0B1BFC4D2600DF7B58 /* PropertyExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropertyExtensions.swift; sourceTree = "<group>"; };
 		EA197A0D1BFC4D2600DF7B58 /* ResourceExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResourceExtension.swift; sourceTree = "<group>"; };
-		EA197A0E1BFC4D2600DF7B58 /* SwiftExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftExtensions.swift; sourceTree = "<group>"; };
-		EA197A0F1BFC4D2600DF7B58 /* ThirdPartyBindings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThirdPartyBindings.swift; sourceTree = "<group>"; };
+		EA197A0E1BFC4D2600DF7B58 /* SwiftExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftExtension.swift; sourceTree = "<group>"; };
 		EA197A101BFC4D2600DF7B58 /* UIKitBindings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitBindings.swift; sourceTree = "<group>"; };
 		EA197A111BFC4D2600DF7B58 /* UIKitExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitExtension.swift; sourceTree = "<group>"; };
 		EA197A151BFC4D2600DF7B58 /* BaseViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViews.swift; sourceTree = "<group>"; };
@@ -292,10 +290,9 @@
 				EA197A031BFC4D2600DF7B58 /* MediaExtension.swift */,
 				EA197A041BFC4D2600DF7B58 /* PKHUDExtension.swift */,
 				EA197A0D1BFC4D2600DF7B58 /* ResourceExtension.swift */,
-				EA197A0E1BFC4D2600DF7B58 /* SwiftExtensions.swift */,
-				EA197A0F1BFC4D2600DF7B58 /* ThirdPartyBindings.swift */,
-				EA197A101BFC4D2600DF7B58 /* UIKitBindings.swift */,
+				EA197A0E1BFC4D2600DF7B58 /* SwiftExtension.swift */,
 				EA197A111BFC4D2600DF7B58 /* UIKitExtension.swift */,
+				EA197A101BFC4D2600DF7B58 /* UIKitBindings.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -855,7 +852,6 @@
 				EA197A531BFC4D2600DF7B58 /* UIKitBindings.swift in Sources */,
 				EA3225DF1BFDAE8A00FF5074 /* Logger.swift in Sources */,
 				EA197A481BFC4D2600DF7B58 /* MediaExtension.swift in Sources */,
-				EA197A521BFC4D2600DF7B58 /* ThirdPartyBindings.swift in Sources */,
 				EA3226041BFDAEEB00FF5074 /* MuteChecker.m in Sources */,
 				EA3226061BFDAEEB00FF5074 /* VideoPlayerViewController.swift in Sources */,
 				EA3225C21BFDAE8A00FF5074 /* LoggingProvider.swift in Sources */,
@@ -873,7 +869,7 @@
 				EA3226081BFDAEEB00FF5074 /* VolumeView.swift in Sources */,
 				EA32260C1BFDAEEB00FF5074 /* ConversationListViewController.swift in Sources */,
 				EA3225BE1BFDAE8A00FF5074 /* Image.swift in Sources */,
-				EA197A511BFC4D2600DF7B58 /* SwiftExtensions.swift in Sources */,
+				EA197A511BFC4D2600DF7B58 /* SwiftExtension.swift in Sources */,
 				EA3225DB1BFDAE8A00FF5074 /* LayerService.swift in Sources */,
 				EA32260D1BFDAEEB00FF5074 /* ConversationListViewModel.swift in Sources */,
 				EA3225C01BFDAE8A00FF5074 /* Video.swift in Sources */,

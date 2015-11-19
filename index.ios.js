@@ -4,6 +4,7 @@
  */
 'use strict';
 let Analytics = require('react-native').NativeModules.TSAnalytics;
+let Logger = require('react-native').NativeModules.TSLogger;
 let React = require('react-native');
 let {
   AppRegistry,
@@ -24,3 +25,4 @@ let container = React.createClass({
 AppRegistry.registerComponent('Taylr', () => container);
 
 Analytics.track('JS App Launched', null);
+Logger.log('My Log Statement', 'info', 'root', 'index.ios.js', 232);

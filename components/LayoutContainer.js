@@ -15,6 +15,13 @@ let Loader = require('./lib/Loader');
 let TSDDPClient = require('../lib/ddpclient');
 
 let SHEET = require('./CommonStyles').SHEET;
+let ConversationListView = React.requireNativeComponent('TSConversationListView', null);
+let ConversationView = React.requireNativeComponent('TSConversationView', null);
+
+var FBSDKLogin = require('react-native-fbsdklogin');
+var {
+  FBSDKLoginButton,
+} = FBSDKLogin;
 
 class LayoutContainer extends React.Component {
 
@@ -176,14 +183,34 @@ class LayoutContainer extends React.Component {
   }
 
   render() {
-    if (!this.state.loggedIn) {
-      return <OnboardingNavigator
-        loggedIn={this.state.loggedIn}
-        onLogin={this.onLogin.bind(this)}
-        ddp={this.ddp} /> 
-    }
 
-    if (!this.state.settings || !this.state.settings.accountStatus) {
+    // return (
+    //  <View>
+    //     <FBSDKLoginButton
+    //       onLoginFinished={(error, result) => {
+    //         if (error) {
+    //           alert('Error logging in.');
+    //         } else {
+    //           if (result.isCancelled) {
+    //             alert('Login cancelled.');
+    //           } else {
+    //             alert('Logged in.');
+    //           }
+    //         }
+    //       }}
+    //       onLogoutFinished={() => alert('Logged out.')}
+    //       readPermissions={[]}
+    //       publishPermissions={['publish_actions']}/>
+    //   </View>
+    //   )
+
+    // return <ConversationListView style={{flex: 1}} currentUser={{userId: 'MyUserId'}} />
+    return <ConversationView style={{flex: 1}} 
+      conversationId='layer:///conversations/593f8d0e-f658-41f6-be5a-8a5c8e4347a1'
+      currentUser={{userId: 'MyUserId'}} />
+    
+
+    if (!this.state.settings) {
       return <Loader />
     }
 

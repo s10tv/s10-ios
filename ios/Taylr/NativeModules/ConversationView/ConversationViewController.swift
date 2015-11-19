@@ -44,8 +44,8 @@ class ConversationViewController : UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        coverImageView.sd_image <~ vm.cover
-//        avatarImageView.sd_image <~ vm.avatar
+        coverImageView.rac_imageURL <~ vm.cover
+        avatarImageView.rac_imageURL <~ vm.avatar
         titleLabel.rac_text <~ vm.displayName
         statusLabel.rac_text <~ vm.displayStatus
         spinner.rac_animating <~ vm.isBusy
