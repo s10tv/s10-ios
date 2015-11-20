@@ -14,19 +14,10 @@ let UserSchema = React.PropTypes.shape({
 
 class ConversationView extends React.Component {
   componentDidMount() {
-    this.setState({
-      routeListener: React.NativeAppEventEmitter.addListener(
-        'Navigation.pop',
-        (properties) => {
-            this.props.navigator.pop()
-        }
-      )
-    });
     BridgeManager.componentDidMount(React.findNodeHandle(this))
   }
   componentWillUnmount() {
     BridgeManager.componentWillUnmount(React.findNodeHandle(this))
-    this.state.routeListener.remove();
   }
   render() {
     return <TSConversationView {...this.props} />;

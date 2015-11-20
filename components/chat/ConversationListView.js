@@ -14,24 +14,10 @@ let UserSchema = React.PropTypes.shape({
 
 class ConversationListView extends React.Component {
   componentDidMount() {
-    this.setState({
-      routeListener: React.NativeAppEventEmitter.addListener(
-        'Navigation.push',
-        (properties) => {
-          if (properties && properties.routeId == 'conversation') {
-            this.props.navigator.push({
-              id: 'conversation',
-              conversationId: properties.args.conversationId,
-            })
-          }
-        }
-      )
-    });
     BridgeManager.componentDidMount(React.findNodeHandle(this))
   }
   componentWillUnmount() {
     BridgeManager.componentWillUnmount(React.findNodeHandle(this))
-    this.state.routeListener.remove();
   }
   render() {
     return <TSConversationListView {...this.props} />;

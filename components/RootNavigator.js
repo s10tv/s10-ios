@@ -9,6 +9,7 @@ let {
   TouchableOpacity,
   WebView,
   StyleSheet,
+  NativeAppEventEmitter,
 } = React;
 
 // Common
@@ -43,6 +44,40 @@ class RootNavigator extends BaseTaylrNavigator {
     this.state = {
       currentTab: 'me'
     }
+  }
+
+  componentWillMount() {
+    this.setState({
+      popListener: NativeAppEventEmitter.addListener('Navigation.pop', (properties) => {
+        this.refs['nav'].pop()
+      }.bind(this)),
+      pushListener: NativeAppEventEmitter.addListener('Navigation.push', (properties) => {
+        switch (properties.routeId) {
+          case 'conversation':
+            this.refs['nav'].push({
+              id: 'conversation',
+              conversationId: properties.args.conversationId,
+            })
+            break;
+          case 'profile':
+            // TODO: Implement me correctly
+            // this.push({
+            //   id: 'viewprofile',
+            //   conversationId: properties.args.conversationId,
+            // })
+            break;
+        }
+      }.bind(this))
+    });
+  }
+
+  componentWillUnmount() {
+    this.state.popListener.remove();
+    this.state.pushListener.remove();
+    this.setState({
+      popListener: null,
+      pushListener: null
+    });
   }
 
   _leftButton(route, navigator, index, navState) {
@@ -183,6 +218,7 @@ class RootNavigator extends BaseTaylrNavigator {
   render() {
     return (
       <Navigator
+        ref='nav'
         itemWrapperStyle={styles.navWrap}
         style={styles.nav}
         renderScene={this.renderScene.bind(this)}
