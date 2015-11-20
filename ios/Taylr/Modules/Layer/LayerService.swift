@@ -18,6 +18,7 @@ class LayerService: NSObject {
     
     let layerClient: LYRClient
     let unreadQueryController: LYRQueryController?
+    let allConversationsQueryController: LYRQueryController?
     
     init(layerAppID: NSURL) {
         layerClient = LYRClient(appID: layerAppID)
@@ -26,16 +27,20 @@ class LayerService: NSObject {
         layerClient.diskCapacity = 300 * 1024 * 1024 // 300mb
         layerClient.autodownloadMIMETypes = nil // Download all automatically
         unreadQueryController = try? layerClient.queryControllerWithQuery(LYRQuery.unreadConversations(), error: ())
+        allConversationsQueryController = try? layerClient.queryControllerWithQuery(
+            LYRQuery(queryableClass: LYRConversation.self), error: ())
         super.init()
         layerClient.delegate = self
-        unreadQueryController?.delegate = self
-        _ = try? unreadQueryController?.execute()
-        queryControllerDidChangeContent(unreadQueryController) // Force trigger
         layerClient.connect().start(Event.sink(error: { error in
             DDLogError("Unable to connect to layer \(error)")
         }, completed: {
             DDLogInfo("Successfully connected to Layer")
         }))
+        for qc in [unreadQueryController, allConversationsQueryController] {
+            qc?.delegate = self
+            _ = try? qc?.execute()
+            queryControllerDidChangeContent(qc) // Force trigger
+        }
     }
     
     // MARK: -
@@ -190,15 +195,17 @@ extension LayerService : LYRClientDelegate {
     }
 }
 
-// MARK: - LYRQueryControllerDelegate
+// MARK: - NativeModule API
 
 extension LayerService : LYRQueryControllerDelegate {
     func queryControllerDidChangeContent(queryController: LYRQueryController!) {
-        bridge?.eventDispatcher.sendAppEventWithName("Layer.unreadCountUpdate", body: queryController.count())
+        if queryController == unreadQueryController {
+            bridge?.eventDispatcher.sendAppEventWithName("Layer.unreadConversationsCountUpdate", body: queryController.count())
+        } else if queryController == allConversationsQueryController {
+            bridge?.eventDispatcher.sendAppEventWithName("Layer.allConversationsCountUpdate", body: queryController.count())
+        }
     }
 }
-
-// MARK: - NativeModule API
 
 extension LayerService {
     
