@@ -36,22 +36,22 @@
 		EA3225C01BFDAE8A00FF5074 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225901BFDAE8A00FF5074 /* Video.swift */; };
 		EA3225C11BFDAE8A00FF5074 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225931BFDAE8A00FF5074 /* Analytics.swift */; };
 		EA3225C21BFDAE8A00FF5074 /* LoggingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225941BFDAE8A00FF5074 /* LoggingProvider.swift */; };
-		EA3225C31BFDAE8A00FF5074 /* TSAnalytics.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3225951BFDAE8A00FF5074 /* TSAnalytics.m */; };
+		EA3225C31BFDAE8A00FF5074 /* Analytics.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3225951BFDAE8A00FF5074 /* Analytics.m */; };
 		EA3225D81BFDAE8A00FF5074 /* LayerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225B11BFDAE8A00FF5074 /* LayerExtensions.swift */; };
 		EA3225D91BFDAE8A00FF5074 /* LayerHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225B21BFDAE8A00FF5074 /* LayerHelpers.swift */; };
 		EA3225DA1BFDAE8A00FF5074 /* LayerQueries.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225B31BFDAE8A00FF5074 /* LayerQueries.swift */; };
 		EA3225DB1BFDAE8A00FF5074 /* LayerService.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225B41BFDAE8A00FF5074 /* LayerService.swift */; };
-		EA3225DC1BFDAE8A00FF5074 /* TSLayerService.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3225B51BFDAE8A00FF5074 /* TSLayerService.m */; };
+		EA3225DC1BFDAE8A00FF5074 /* LayerService.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3225B51BFDAE8A00FF5074 /* LayerService.m */; };
 		EA3225DD1BFDAE8A00FF5074 /* DDNSLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225B71BFDAE8A00FF5074 /* DDNSLogger.swift */; };
 		EA3225DE1BFDAE8A00FF5074 /* DDOuralabsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225B81BFDAE8A00FF5074 /* DDOuralabsLogger.swift */; };
 		EA3225DF1BFDAE8A00FF5074 /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225B91BFDAE8A00FF5074 /* Logger.swift */; };
-		EA3225E01BFDAE8A00FF5074 /* TSLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3225BA1BFDAE8A00FF5074 /* TSLogger.m */; };
+		EA3225E01BFDAE8A00FF5074 /* Logger.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3225BA1BFDAE8A00FF5074 /* Logger.m */; };
 		EA3225FC1BFDAEEB00FF5074 /* ChatHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225E41BFDAEEB00FF5074 /* ChatHistoryViewController.swift */; };
 		EA3225FD1BFDAEEB00FF5074 /* Conversation.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA3225E51BFDAEEB00FF5074 /* Conversation.storyboard */; };
 		EA3225FE1BFDAEEB00FF5074 /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225E61BFDAEEB00FF5074 /* ConversationView.swift */; };
 		EA3225FF1BFDAEEB00FF5074 /* ConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225E71BFDAEEB00FF5074 /* ConversationViewController.swift */; };
 		EA3226001BFDAEEB00FF5074 /* ConversationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225E81BFDAEEB00FF5074 /* ConversationViewModel.swift */; };
-		EA3226011BFDAEEB00FF5074 /* TSConversationView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3225E91BFDAEEB00FF5074 /* TSConversationView.m */; };
+		EA3226011BFDAEEB00FF5074 /* ConversationView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3225E91BFDAEEB00FF5074 /* ConversationView.m */; };
 		EA3226021BFDAEEB00FF5074 /* AudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225EC1BFDAEEB00FF5074 /* AudioController.swift */; };
 		EA3226031BFDAEEB00FF5074 /* MuteChecker.caf in Resources */ = {isa = PBXBuildFile; fileRef = EA3225ED1BFDAEEB00FF5074 /* MuteChecker.caf */; };
 		EA3226041BFDAEEB00FF5074 /* MuteChecker.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3225EF1BFDAEEB00FF5074 /* MuteChecker.m */; };
@@ -64,7 +64,7 @@
 		EA32260B1BFDAEEB00FF5074 /* ConversationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225F71BFDAEEB00FF5074 /* ConversationListView.swift */; };
 		EA32260C1BFDAEEB00FF5074 /* ConversationListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225F81BFDAEEB00FF5074 /* ConversationListViewController.swift */; };
 		EA32260D1BFDAEEB00FF5074 /* ConversationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225F91BFDAEEB00FF5074 /* ConversationListViewModel.swift */; };
-		EA32260E1BFDAEEB00FF5074 /* TSConversationListView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3225FA1BFDAEEB00FF5074 /* TSConversationListView.m */; };
+		EA32260E1BFDAEEB00FF5074 /* ConversationListView.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3225FA1BFDAEEB00FF5074 /* ConversationListView.m */; };
 		EA3226371BFDB9C000FF5074 /* RACBindings.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3226361BFDB9C000FF5074 /* RACBindings.swift */; };
 		EA3713921BFD288700E51980 /* libRCTFBSDKCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3713911BFD288700E51980 /* libRCTFBSDKCore.a */; };
 		EA3713AA1BFD28EF00E51980 /* libRCTFBSDKLogin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3713A91BFD28EF00E51980 /* libRCTFBSDKLogin.a */; };
@@ -75,10 +75,10 @@
 		EA7FB0971B5EF9D50052B394 /* Cabin-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB0911B5EF9D50052B394 /* Cabin-Medium.ttf */; };
 		EA7FB0981B5EF9D50052B394 /* Cabin-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB0921B5EF9D50052B394 /* Cabin-MediumItalic.ttf */; };
 		EA7FB0991B5EF9D50052B394 /* Cabin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB0931B5EF9D50052B394 /* Cabin-Regular.ttf */; };
-		EA9516791BFD8924000F5338 /* TSViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EA9516771BFD8924000F5338 /* TSViewController.m */; };
-		EA95167A1BFD8924000F5338 /* ViewControllerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9516781BFD8924000F5338 /* ViewControllerManager.swift */; };
 		EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA9A6ACE1AAFDE19009EDD6D /* Localizable.strings */; };
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
+		EAA5E8DE1BFEAEE4009DE994 /* BridgeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA5E8DC1BFEAEE4009DE994 /* BridgeManager.m */; };
+		EAA5E8DF1BFEAEE4009DE994 /* BridgeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA5E8DD1BFEAEE4009DE994 /* BridgeManager.swift */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
 		F9DDF6451BFD434600D7A2FC /* libRNFabricDigits.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9DDF6441BFD434600D7A2FC /* libRNFabricDigits.a */; };
 		F9DDF6AA1BFDB2A400D7A2FC /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9DDF6A91BFDB2A400D7A2FC /* libRCTVideo.a */; };
@@ -168,22 +168,22 @@
 		EA3225901BFDAE8A00FF5074 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		EA3225931BFDAE8A00FF5074 /* Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
 		EA3225941BFDAE8A00FF5074 /* LoggingProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingProvider.swift; sourceTree = "<group>"; };
-		EA3225951BFDAE8A00FF5074 /* TSAnalytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSAnalytics.m; sourceTree = "<group>"; };
+		EA3225951BFDAE8A00FF5074 /* Analytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Analytics.m; sourceTree = "<group>"; };
 		EA3225B11BFDAE8A00FF5074 /* LayerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerExtensions.swift; sourceTree = "<group>"; };
 		EA3225B21BFDAE8A00FF5074 /* LayerHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerHelpers.swift; sourceTree = "<group>"; };
 		EA3225B31BFDAE8A00FF5074 /* LayerQueries.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerQueries.swift; sourceTree = "<group>"; };
 		EA3225B41BFDAE8A00FF5074 /* LayerService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerService.swift; sourceTree = "<group>"; };
-		EA3225B51BFDAE8A00FF5074 /* TSLayerService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSLayerService.m; sourceTree = "<group>"; };
+		EA3225B51BFDAE8A00FF5074 /* LayerService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LayerService.m; sourceTree = "<group>"; };
 		EA3225B71BFDAE8A00FF5074 /* DDNSLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDNSLogger.swift; sourceTree = "<group>"; };
 		EA3225B81BFDAE8A00FF5074 /* DDOuralabsLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDOuralabsLogger.swift; sourceTree = "<group>"; };
 		EA3225B91BFDAE8A00FF5074 /* Logger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
-		EA3225BA1BFDAE8A00FF5074 /* TSLogger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSLogger.m; sourceTree = "<group>"; };
+		EA3225BA1BFDAE8A00FF5074 /* Logger.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Logger.m; sourceTree = "<group>"; };
 		EA3225E41BFDAEEB00FF5074 /* ChatHistoryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatHistoryViewController.swift; sourceTree = "<group>"; };
 		EA3225E51BFDAEEB00FF5074 /* Conversation.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Conversation.storyboard; sourceTree = "<group>"; };
 		EA3225E61BFDAEEB00FF5074 /* ConversationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
 		EA3225E71BFDAEEB00FF5074 /* ConversationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewController.swift; sourceTree = "<group>"; };
 		EA3225E81BFDAEEB00FF5074 /* ConversationViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationViewModel.swift; sourceTree = "<group>"; };
-		EA3225E91BFDAEEB00FF5074 /* TSConversationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSConversationView.m; sourceTree = "<group>"; };
+		EA3225E91BFDAEEB00FF5074 /* ConversationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationView.m; sourceTree = "<group>"; };
 		EA3225EC1BFDAEEB00FF5074 /* AudioController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioController.swift; sourceTree = "<group>"; };
 		EA3225ED1BFDAEEB00FF5074 /* MuteChecker.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MuteChecker.caf; sourceTree = "<group>"; };
 		EA3225EE1BFDAEEB00FF5074 /* MuteChecker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MuteChecker.h; sourceTree = "<group>"; };
@@ -197,7 +197,7 @@
 		EA3225F71BFDAEEB00FF5074 /* ConversationListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListView.swift; sourceTree = "<group>"; };
 		EA3225F81BFDAEEB00FF5074 /* ConversationListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListViewController.swift; sourceTree = "<group>"; };
 		EA3225F91BFDAEEB00FF5074 /* ConversationListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListViewModel.swift; sourceTree = "<group>"; };
-		EA3225FA1BFDAEEB00FF5074 /* TSConversationListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSConversationListView.m; sourceTree = "<group>"; };
+		EA3225FA1BFDAEEB00FF5074 /* ConversationListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationListView.m; sourceTree = "<group>"; };
 		EA3226361BFDB9C000FF5074 /* RACBindings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACBindings.swift; sourceTree = "<group>"; };
 		EA3713911BFD288700E51980 /* libRCTFBSDKCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRCTFBSDKCore.a; path = "../../node_modules/react-native-fbsdkcore/build/Debug-iphoneos/libRCTFBSDKCore.a"; sourceTree = "<group>"; };
 		EA3713931BFD28C200E51980 /* RCTFBSDKLogin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDKLogin.xcodeproj; path = "../node_modules/react-native-fbsdklogin/RCTFBSDKLogin.xcodeproj"; sourceTree = "<group>"; };
@@ -208,8 +208,6 @@
 		EA7FB0911B5EF9D50052B394 /* Cabin-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Medium.ttf"; sourceTree = "<group>"; };
 		EA7FB0921B5EF9D50052B394 /* Cabin-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-MediumItalic.ttf"; sourceTree = "<group>"; };
 		EA7FB0931B5EF9D50052B394 /* Cabin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Regular.ttf"; sourceTree = "<group>"; };
-		EA9516771BFD8924000F5338 /* TSViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSViewController.m; sourceTree = "<group>"; };
-		EA9516781BFD8924000F5338 /* ViewControllerManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerManager.swift; sourceTree = "<group>"; };
 		EA9A6ACF1AAFDFA2009EDD6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA9F353A1A74CC6900E0C65D /* Taylr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taylr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9F353E1A74CC6900E0C65D /* Taylr-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Taylr-Info.plist"; sourceTree = "<group>"; };
@@ -217,6 +215,8 @@
 		EA9F354C1A74CC6900E0C65D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		EA9F35621A74CD8800E0C65D /* Taylr-Bridging.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = "Taylr-Bridging.h"; path = "Taylr/Support/Taylr-Bridging.h"; sourceTree = SOURCE_ROOT; };
 		EAA5DAC31BF2A98000BF6B1E /* RNSearchBar.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNSearchBar.xcodeproj; path = "../node_modules/react-native-search-bar/RNSearchBar.xcodeproj"; sourceTree = SOURCE_ROOT; };
+		EAA5E8DC1BFEAEE4009DE994 /* BridgeManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BridgeManager.m; sourceTree = "<group>"; };
+		EAA5E8DD1BFEAEE4009DE994 /* BridgeManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BridgeManager.swift; sourceTree = "<group>"; };
 		EABD43D81AA1D28700B07813 /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
 		EABD43D91AA1D29C00B07813 /* Beta.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
 		EABD43DA1AA1D29C00B07813 /* Prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
@@ -313,7 +313,6 @@
 		EA197A121BFC4D2600DF7B58 /* Library */ = {
 			isa = PBXGroup;
 			children = (
-				EA9516761BFD8924000F5338 /* ViewController */,
 				EA197A161BFC4D2600DF7B58 /* DesignableViews.swift */,
 				EA197A151BFC4D2600DF7B58 /* BaseViews.swift */,
 				EA197A181BFC4D2600DF7B58 /* Environment.swift */,
@@ -363,6 +362,7 @@
 		EA3225911BFDAE8A00FF5074 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				EAA5E8DB1BFEAEE4009DE994 /* BridgeManager */,
 				EA3225B61BFDAE8A00FF5074 /* Logger */,
 				EA3225921BFDAE8A00FF5074 /* Analytics */,
 				EA3225B01BFDAE8A00FF5074 /* Layer */,
@@ -373,9 +373,9 @@
 		EA3225921BFDAE8A00FF5074 /* Analytics */ = {
 			isa = PBXGroup;
 			children = (
-				EA3225931BFDAE8A00FF5074 /* Analytics.swift */,
 				EA3225941BFDAE8A00FF5074 /* LoggingProvider.swift */,
-				EA3225951BFDAE8A00FF5074 /* TSAnalytics.m */,
+				EA3225931BFDAE8A00FF5074 /* Analytics.swift */,
+				EA3225951BFDAE8A00FF5074 /* Analytics.m */,
 			);
 			path = Analytics;
 			sourceTree = "<group>";
@@ -387,7 +387,7 @@
 				EA3225B21BFDAE8A00FF5074 /* LayerHelpers.swift */,
 				EA3225B31BFDAE8A00FF5074 /* LayerQueries.swift */,
 				EA3225B41BFDAE8A00FF5074 /* LayerService.swift */,
-				EA3225B51BFDAE8A00FF5074 /* TSLayerService.m */,
+				EA3225B51BFDAE8A00FF5074 /* LayerService.m */,
 			);
 			path = Layer;
 			sourceTree = "<group>";
@@ -398,7 +398,7 @@
 				EA3225B71BFDAE8A00FF5074 /* DDNSLogger.swift */,
 				EA3225B81BFDAE8A00FF5074 /* DDOuralabsLogger.swift */,
 				EA3225B91BFDAE8A00FF5074 /* Logger.swift */,
-				EA3225BA1BFDAE8A00FF5074 /* TSLogger.m */,
+				EA3225BA1BFDAE8A00FF5074 /* Logger.m */,
 			);
 			path = Logger;
 			sourceTree = "<group>";
@@ -412,7 +412,7 @@
 				EA3225E71BFDAEEB00FF5074 /* ConversationViewController.swift */,
 				EA3225E81BFDAEEB00FF5074 /* ConversationViewModel.swift */,
 				EA3225E61BFDAEEB00FF5074 /* ConversationView.swift */,
-				EA3225E91BFDAEEB00FF5074 /* TSConversationView.m */,
+				EA3225E91BFDAEEB00FF5074 /* ConversationView.m */,
 			);
 			path = ConversationView;
 			sourceTree = "<group>";
@@ -456,7 +456,7 @@
 				EA3225F81BFDAEEB00FF5074 /* ConversationListViewController.swift */,
 				EA3225F91BFDAEEB00FF5074 /* ConversationListViewModel.swift */,
 				EA3225F71BFDAEEB00FF5074 /* ConversationListView.swift */,
-				EA3225FA1BFDAEEB00FF5074 /* TSConversationListView.m */,
+				EA3225FA1BFDAEEB00FF5074 /* ConversationListView.m */,
 			);
 			path = ConversationListView;
 			sourceTree = "<group>";
@@ -480,15 +480,6 @@
 				EA7FB0931B5EF9D50052B394 /* Cabin-Regular.ttf */,
 			);
 			path = Fonts;
-			sourceTree = "<group>";
-		};
-		EA9516761BFD8924000F5338 /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				EA9516781BFD8924000F5338 /* ViewControllerManager.swift */,
-				EA9516771BFD8924000F5338 /* TSViewController.m */,
-			);
-			path = ViewController;
 			sourceTree = "<group>";
 		};
 		EA9F35311A74CC6900E0C65D = {
@@ -549,6 +540,15 @@
 				EA3225E11BFDAEEB00FF5074 /* ConversationView */,
 			);
 			path = Components;
+			sourceTree = "<group>";
+		};
+		EAA5E8DB1BFEAEE4009DE994 /* BridgeManager */ = {
+			isa = PBXGroup;
+			children = (
+				EAA5E8DD1BFEAEE4009DE994 /* BridgeManager.swift */,
+				EAA5E8DC1BFEAEE4009DE994 /* BridgeManager.m */,
+			);
+			path = BridgeManager;
 			sourceTree = "<group>";
 		};
 		EABD43D71AA1D27400B07813 /* Configs */ = {
@@ -848,7 +848,6 @@
 			files = (
 				EA3226021BFDAEEB00FF5074 /* AudioController.swift in Sources */,
 				EA197A4D1BFC4D2600DF7B58 /* DynamicProperties.swift in Sources */,
-				EA9516791BFD8924000F5338 /* TSViewController.m in Sources */,
 				EA3225DF1BFDAE8A00FF5074 /* Logger.swift in Sources */,
 				EA197A481BFC4D2600DF7B58 /* MediaExtension.swift in Sources */,
 				EA3226041BFDAEEB00FF5074 /* MuteChecker.m in Sources */,
@@ -856,10 +855,10 @@
 				EA3225C21BFDAE8A00FF5074 /* LoggingProvider.swift in Sources */,
 				EA3226091BFDAEEB00FF5074 /* VolumeViewModel.swift in Sources */,
 				EA197A5B1BFC4D2600DF7B58 /* ProvisioningProfile.swift in Sources */,
-				EA3225DC1BFDAE8A00FF5074 /* TSLayerService.m in Sources */,
-				EA3225E01BFDAE8A00FF5074 /* TSLogger.m in Sources */,
+				EA3225DC1BFDAE8A00FF5074 /* LayerService.m in Sources */,
+				EA3225E01BFDAE8A00FF5074 /* Logger.m in Sources */,
 				EA3225FE1BFDAEEB00FF5074 /* ConversationView.swift in Sources */,
-				EA3225C31BFDAE8A00FF5074 /* TSAnalytics.m in Sources */,
+				EA3225C31BFDAE8A00FF5074 /* Analytics.m in Sources */,
 				EA3226051BFDAEEB00FF5074 /* DurationTimer.swift in Sources */,
 				EA3225DA1BFDAE8A00FF5074 /* LayerQueries.swift in Sources */,
 				EA197A4A1BFC4D2600DF7B58 /* Foundation+RACSupport.swift in Sources */,
@@ -884,20 +883,21 @@
 				EA3225BB1BFDAE8A00FF5074 /* AppConfig.swift in Sources */,
 				EA197A4E1BFC4D2600DF7B58 /* PropertyExtensions.swift in Sources */,
 				EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */,
-				EA3226011BFDAEEB00FF5074 /* TSConversationView.m in Sources */,
+				EAA5E8DE1BFEAEE4009DE994 /* BridgeManager.m in Sources */,
+				EA3226011BFDAEEB00FF5074 /* ConversationView.m in Sources */,
 				EA3225DD1BFDAE8A00FF5074 /* DDNSLogger.swift in Sources */,
-				EA32260E1BFDAEEB00FF5074 /* TSConversationListView.m in Sources */,
+				EA32260E1BFDAEEB00FF5074 /* ConversationListView.m in Sources */,
 				EA3225BD1BFDAE8A00FF5074 /* Formatters.swift in Sources */,
 				EA3225BC1BFDAE8A00FF5074 /* AppDependencies.swift in Sources */,
 				EA3225C11BFDAE8A00FF5074 /* Analytics.swift in Sources */,
 				EA3226001BFDAEEB00FF5074 /* ConversationViewModel.swift in Sources */,
 				EA3225FF1BFDAEEB00FF5074 /* ConversationViewController.swift in Sources */,
 				EA197A461BFC4D2600DF7B58 /* FoundationExtension.swift in Sources */,
+				EAA5E8DF1BFEAEE4009DE994 /* BridgeManager.swift in Sources */,
 				EA3226071BFDAEEB00FF5074 /* VideoPlayerViewModel.swift in Sources */,
 				EA1979E31BFC4CD800DF7B58 /* SBConstants.swift in Sources */,
 				EA1979E21BFC4CD800DF7B58 /* R.swift in Sources */,
 				EA197A4C1BFC4D2600DF7B58 /* ArrayProperty.swift in Sources */,
-				EA95167A1BFD8924000F5338 /* ViewControllerManager.swift in Sources */,
 				EA197A5A1BFC4D2600DF7B58 /* Environment.swift in Sources */,
 				EA3225BF1BFDAE8A00FF5074 /* UserViewModel.swift in Sources */,
 				EA3225D81BFDAE8A00FF5074 /* LayerExtensions.swift in Sources */,

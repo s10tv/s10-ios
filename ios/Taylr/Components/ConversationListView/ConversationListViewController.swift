@@ -13,7 +13,6 @@ import Atlas
 
 class ConversationListViewController : ATLConversationListViewController {
     var vm: ConversationListViewModel!
-    var manager: ViewControllerManager!
     
     override func viewDidLoad() {
         displaysAvatarItem = true
@@ -57,7 +56,7 @@ extension ConversationListViewController : ATLConversationListViewControllerDele
     
     func conversationListViewController(conversationListViewController: ATLConversationListViewController!, didSelectConversation conversation: LYRConversation!) {
         DDLogDebug("Selected conversation id \(conversation.identifier.absoluteString)")
-        manager.pushRoute("conversation", properties: [
+        rnNavigationPush(.Conversation, args: [
             "conversationId": conversation.identifier.absoluteString
         ])
     }

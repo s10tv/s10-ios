@@ -1,7 +1,7 @@
 'use strict';
 
 let React = require('react-native');
-let ViewControllerManager = React.NativeModules.TSViewController;
+let BridgeManager = React.NativeModules.TSBridgeManager;
 
 let UserSchema = React.PropTypes.shape({
     userId: React.PropTypes.string.isRequired,
@@ -16,21 +16,21 @@ class ConversationListView extends React.Component {
   componentDidMount() {
     this.setState({
       routeListener: React.NativeAppEventEmitter.addListener(
-        'ViewController.pushRoute',
+        'Navigation.push',
         (properties) => {
-          if (properties && properties.route == 'conversation') {
+          if (properties && properties.routeId == 'conversation') {
             this.props.navigator.push({
               id: 'conversation',
-              conversationId: properties.conversationId,
+              conversationId: properties.args.conversationId,
             })
           }
         }
       )
     });
-    ViewControllerManager.componentDidMount(React.findNodeHandle(this))
+    BridgeManager.componentDidMount(React.findNodeHandle(this))
   }
   componentWillUnmount() {
-    ViewControllerManager.componentWillUnmount(React.findNodeHandle(this))
+    BridgeManager.componentWillUnmount(React.findNodeHandle(this))
     this.state.routeListener.remove();
   }
   render() {

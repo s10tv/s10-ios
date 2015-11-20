@@ -12,7 +12,7 @@ import LayerKit
 import React
 
 @objc(TSConversationViewManager)
-class ConversationViewManager : ViewControllerManager {
+class ConversationViewManager : RCTViewManager {
     let sb = UIStoryboard(name: "Conversation", bundle: nil)
     let layer: LayerService
     
@@ -42,7 +42,6 @@ class ConversationViewManager : ViewControllerManager {
         
         let vc = sb.instantiateInitialViewController() as! ConversationViewController
         vc.vm = ConversationViewModel(layer: layer, currentUser: currentUser, conversation: conversation)
-        vc.manager = self
         let view = vc.view as! ConversationView
         view.tsViewController = vc
         view.currentUser = currentUser

@@ -41,7 +41,6 @@ class ConversationViewController : UIViewController {
     private(set) var videoPlayer: VideoPlayerViewController!
     
     var vm: ConversationViewModel!
-    var manager: ViewControllerManager!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -134,7 +133,7 @@ class ConversationViewController : UIViewController {
     // MARK: -
 
     @IBAction func didTapBackButton(sender: AnyObject) {
-        manager.pushRoute("$back", properties: [:])
+        rnNavigationPop()
     }
     
     @IBAction func didTapScrollDownHint(sender: AnyObject) {
@@ -143,7 +142,7 @@ class ConversationViewController : UIViewController {
     
     @IBAction func didTapProfileView(sender: AnyObject) {
         if let user = vm.recipientUser()  {
-            manager.pushRoute("profile", properties: [
+            rnNavigationPush(.Profile, args: [
                 "userId": user.userId
             ])
         }
