@@ -40,12 +40,12 @@ let HashtagListView = require('./lib/HashtagListView');
 let TSNavigationBar = require('./lib/TSNavigationBar');
 
 
-class RootNavigator extends BaseTaylrNavigator {
+class RootNavigator extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
-      currentTab: 'me'
+      currentTab: 'Me'
     }
   }
 
@@ -83,17 +83,39 @@ class RootNavigator extends BaseTaylrNavigator {
     });
   }
 
+  _title(route, navigator, index, navState) {
+    switch (route.id) {
+      case 'root':
+        return <Text style={[styles.navBarText, styles.navBarTitleText, SHEET.baseText]}>
+          { this.state.currentTab }
+        </Text>;
+
+      default:
+        return null;
+    }
+
+    return (
+      <Text style={[styles.navBarText, styles.navBarTitleText, SHEET.baseText]}>
+        {route.title}
+      </Text>
+    );
+  }
+
   _leftButton(route, navigator, index, navState) {
-    if (route.id) {
-      return (
-        <TouchableOpacity
-          onPress={() => navigator.pop()}
-          style={SHEET.navBarLeftButton}>
-          <Text style={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText]}>
-            Back
-          </Text>
-        </TouchableOpacity>
-      );
+    switch (route.id) {
+      case 'root':
+        return null;
+
+      default:
+        return (
+          <TouchableOpacity
+            onPress={() => navigator.pop()}
+            style={SHEET.navBarLeftButton}>
+            <Text style={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText]}>
+              Back
+            </Text>
+          </TouchableOpacity>
+        );
     }
   }
 
@@ -167,14 +189,12 @@ class RootNavigator extends BaseTaylrNavigator {
           currentUser={user} />
 
       case 'root':
-        console.log('root');
-        console.log(this.state.currentTab);
         return (
           <Tabbar 
               style={{ backgroundColor: '#cccccc' }}
               selected={this.state.currentTab}
               onTabItemPress={(name) => { this.setState({ currentTab: name })}}>
-            <Item name="me">
+            <Item name="Me">
               <Item.Content>
                 <MeScreen me={this.props.me} 
                     onLogout={this.props.onLogout}
@@ -187,7 +207,7 @@ class RootNavigator extends BaseTaylrNavigator {
                 <Image source={require('./img/ic-me.png')} />
               </Item.Icon>
             </Item>
-            <Item name="discover">
+            <Item name="Today">
               <Item.Content>
                 <DiscoverScreen navigator={nav} ddp={this.ddp} 
                   candidate={this.props.candidate}
@@ -198,7 +218,7 @@ class RootNavigator extends BaseTaylrNavigator {
                 <Image source={require('./img/ic-compass.png')} />
               </Item.Icon>
             </Item>
-            <Item name="chats">
+            <Item name="Chats">
               <Item.Content>
                 <ConversationListView
                   navigator={nav}
@@ -258,6 +278,17 @@ let styles = StyleSheet.create({
   },
   navBar: {
     backgroundColor: '#64369C',
+  },
+  navBarTitleText: {
+    fontSize: 20,
+    color:  'white',
+    fontWeight: '500',
+    marginVertical: 9,
+  },
+  navBarText: {
+    color: 'white',
+    fontSize: 16,
+    marginVertical: 10,
   },
 });
 

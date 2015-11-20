@@ -14,8 +14,6 @@ let SHEET = require('../CommonStyles').SHEET;
 class BaseTaylrNavigator extends React.Component {
 
   _title(route, navigator, index, navState) {
-    return null;
-    
     return (
       <Text style={[styles.navBarText, styles.navBarTitleText, SHEET.baseText]}>
         {route.title}
