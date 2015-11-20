@@ -207,16 +207,18 @@ extension LayerService {
     }
     
     @objc func requestAuthenticationNonce(block: RCTResponseSenderBlock) {
+        DDLogDebug("Will request authentication nonce")
         layerClient.requestAuthenticationNonce().start(Event.sink(error: { error in
             DDLogError("Unable to get authentication nonce \(error)")
             block([error, NSNull()])
         }, next: { nonce in
-            DDLogInfo("Did receive requested authentication nonce \(nonce)")
+            DDLogDebug("Did receive requested authentication nonce \(nonce)")
             block([NSNull(), nonce])
         }))
     }
     
     @objc func authenticate(identityToken: String, block: RCTResponseSenderBlock) {
+        DDLogDebug("Will authenticate with layer \(identityToken)")
         layerClient.authenticate(identityToken).start(Event.sink(error: { error in
             DDLogError("Unable to update user in Layer session \(error)")
             block([error, NSNull()])
@@ -227,6 +229,7 @@ extension LayerService {
     }
     
     @objc func deauthenticate(block: RCTResponseSenderBlock) {
+        DDLogDebug("Will deauthenticate from layer")
         layerClient.deauthenticate().start(Event.sink(error: { error in
             DDLogError("Unable to deauthenticate \(error)")
             block([error, NSNull()])
