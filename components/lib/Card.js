@@ -43,7 +43,7 @@ class TappableCard extends React.Component {
       <BaseCard hideSeparator={this.props.hideSeparator}
         {...this.props}>
           <TouchableHighlight
-            style={styles.card}
+            style={[styles.card, this.props.cardOverride]}
             underlayColor="#ffffff"
             onPress={ this.props.onPress }>
 

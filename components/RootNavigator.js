@@ -27,6 +27,7 @@ let MeEditScreen = require('./me/MeEditScreen');
 
 // Discover
 let DiscoverScreen = require('./discover/DiscoverScreen');
+let HistoryScreen = require('./discover/HistoryScreen');
 
 // Chats
 let ConversationView = require('./chat/ConversationView');
@@ -45,7 +46,7 @@ class RootNavigator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentTab: 'Me'
+      currentTab: 'Today'
     }
   }
 
@@ -89,9 +90,6 @@ class RootNavigator extends React.Component {
         return <Text style={[styles.navBarText, styles.navBarTitleText, SHEET.baseText]}>
           { this.state.currentTab }
         </Text>;
-
-      default:
-        return null;
     }
 
     return (
@@ -120,6 +118,21 @@ class RootNavigator extends React.Component {
   }
 
   _rightButton(route, navigator, index, navState) {
+    switch (route.id) {
+      case 'root':
+        if (this.state.currentTab == 'Today') {
+          return <TouchableOpacity
+            onPress={() => navigator.push({
+              id: 'history',
+              title: 'History'
+            })}
+            style={SHEET.navBarRightButton}>
+            <Text style={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText]}>
+              History
+            </Text>
+          </TouchableOpacity>
+        }
+    }
     return null;
   }
 
@@ -160,6 +173,11 @@ class RootNavigator extends React.Component {
           onNavigationStateChange={(navState) => this._onNavigationStateChange(nav, navState)}
           startInLoadingState={true}
           url={route.link} />;
+
+      case 'history':
+        return <HistoryScreen navigator={nav}
+          history={this.props.history}
+          ddp={this.props.ddp}/>
       
       case 'viewprofile':
         return <Activities

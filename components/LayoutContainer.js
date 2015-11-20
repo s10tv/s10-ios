@@ -142,11 +142,15 @@ class LayoutContainer extends React.Component {
             return candidate.type == 'active'
           })
 
+          let historyCandidates = candidates.filter((candidate) => {
+            return candidate.type == 'expired'
+          })
+
           if (activeCandidates.length > 0) {
             this.setState({ candidate: activeCandidates[0] })
           }
 
-          this.setState({ candidates: candidates });
+          this.setState({ history: historyCandidates });
         });
       });
 
@@ -245,6 +249,7 @@ class LayoutContainer extends React.Component {
         onLogout={this.onLogout.bind(this)}
         onLogin={this.onLogin.bind(this)}
         candidate={this.state.candidate}
+        history={this.state.history}
         users={this.state.users}
         settings={this.state.settings}
         ddp={this.ddp} />
