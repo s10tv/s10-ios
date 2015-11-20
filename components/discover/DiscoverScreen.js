@@ -29,6 +29,10 @@ class CountdownTimer extends React.Component {
     }
   }
 
+  componentWillUnmount() {
+    clearTimeout(this.state.timer);
+  }
+
   componentWillMount() {
     let format = function(num) {
       return ("0" + num).slice(-2);
