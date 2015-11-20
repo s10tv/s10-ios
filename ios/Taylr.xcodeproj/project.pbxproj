@@ -203,6 +203,7 @@
 		EA3336721BFEC39000BF9A87 /* ConversationListView.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = ConversationListView.js; path = ../../../../components/chat/ConversationListView.js; sourceTree = "<group>"; };
 		EA3336761BFEC39900BF9A87 /* ConversationView.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = ConversationView.js; path = ../../../../components/chat/ConversationView.js; sourceTree = "<group>"; };
 		EA3336861BFF062800BF9A87 /* Conversation.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Conversation.xcassets; sourceTree = "<group>"; };
+		EA33368B1BFF0E6100BF9A87 /* LayerService.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = LayerService.js; path = ../../../../lib/LayerService.js; sourceTree = "<group>"; };
 		EA3713911BFD288700E51980 /* libRCTFBSDKCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRCTFBSDKCore.a; path = "../../node_modules/react-native-fbsdkcore/build/Debug-iphoneos/libRCTFBSDKCore.a"; sourceTree = "<group>"; };
 		EA3713931BFD28C200E51980 /* RCTFBSDKLogin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDKLogin.xcodeproj; path = "../node_modules/react-native-fbsdklogin/RCTFBSDKLogin.xcodeproj"; sourceTree = "<group>"; };
 		EA3713A91BFD28EF00E51980 /* libRCTFBSDKLogin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRCTFBSDKLogin.a; path = "../../node_modules/react-native-fbsdklogin/build/Debug-iphoneos/libRCTFBSDKLogin.a"; sourceTree = "<group>"; };
@@ -392,6 +393,7 @@
 				EA3225B31BFDAE8A00FF5074 /* LayerQueries.swift */,
 				EA3225B41BFDAE8A00FF5074 /* LayerService.swift */,
 				EA3225B51BFDAE8A00FF5074 /* LayerService.m */,
+				EA33368B1BFF0E6100BF9A87 /* LayerService.js */,
 			);
 			path = Layer;
 			sourceTree = "<group>";
