@@ -13,7 +13,7 @@ import ReactiveCocoa
 import NKRecorder
 import SwipeView
 import Atlas
-import PKHUD
+import SVProgressHUD
 
 class ConversationViewController : UIViewController {
     
@@ -212,9 +212,9 @@ extension ConversationViewController : VideoMakerDelegate {
     }
     
     func videoMaker(videoMaker: VideoMakerViewController, didProduceVideoSession session: VideoSession) {
-        PKHUD.showActivity()
+        SVProgressHUD.show()
         session.exportWithFirstFrame { url, thumbnail, duration in
-            PKHUD.hide(animated: false)
+            SVProgressHUD.dismiss()
             self.scrollDownHint.hidden = false
             self.scrollView.scrollEnabled = true
             self.vm.sendVideo(url, thumbnail: thumbnail, duration: duration)

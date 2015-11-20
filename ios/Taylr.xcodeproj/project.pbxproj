@@ -16,7 +16,6 @@
 		EA197A461BFC4D2600DF7B58 /* FoundationExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A011BFC4D2600DF7B58 /* FoundationExtension.swift */; };
 		EA197A471BFC4D2600DF7B58 /* GeometryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A021BFC4D2600DF7B58 /* GeometryExtensions.swift */; };
 		EA197A481BFC4D2600DF7B58 /* MediaExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A031BFC4D2600DF7B58 /* MediaExtension.swift */; };
-		EA197A491BFC4D2600DF7B58 /* PKHUDExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A041BFC4D2600DF7B58 /* PKHUDExtension.swift */; };
 		EA197A4A1BFC4D2600DF7B58 /* Foundation+RACSupport.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A061BFC4D2600DF7B58 /* Foundation+RACSupport.swift */; };
 		EA197A4C1BFC4D2600DF7B58 /* ArrayProperty.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A091BFC4D2600DF7B58 /* ArrayProperty.swift */; };
 		EA197A4D1BFC4D2600DF7B58 /* DynamicProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A0A1BFC4D2600DF7B58 /* DynamicProperties.swift */; };
@@ -70,7 +69,6 @@
 		EA3713921BFD288700E51980 /* libRCTFBSDKCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3713911BFD288700E51980 /* libRCTFBSDKCore.a */; };
 		EA3713AA1BFD28EF00E51980 /* libRCTFBSDKLogin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3713A91BFD28EF00E51980 /* libRCTFBSDKLogin.a */; };
 		EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
-		EA78C8801B323E140016AB73 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA78C87F1B323E140016AB73 /* Images.xcassets */; };
 		EA7FB0941B5EF9D50052B394 /* Cabin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB08E1B5EF9D50052B394 /* Cabin-Bold.ttf */; };
 		EA7FB0951B5EF9D50052B394 /* Cabin-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB08F1B5EF9D50052B394 /* Cabin-BoldItalic.ttf */; };
 		EA7FB0961B5EF9D50052B394 /* Cabin-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB0901B5EF9D50052B394 /* Cabin-Italic.ttf */; };
@@ -147,7 +145,6 @@
 		EA197A011BFC4D2600DF7B58 /* FoundationExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoundationExtension.swift; sourceTree = "<group>"; };
 		EA197A021BFC4D2600DF7B58 /* GeometryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GeometryExtensions.swift; sourceTree = "<group>"; };
 		EA197A031BFC4D2600DF7B58 /* MediaExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaExtension.swift; sourceTree = "<group>"; };
-		EA197A041BFC4D2600DF7B58 /* PKHUDExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PKHUDExtension.swift; sourceTree = "<group>"; };
 		EA197A061BFC4D2600DF7B58 /* Foundation+RACSupport.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Foundation+RACSupport.swift"; sourceTree = "<group>"; };
 		EA197A091BFC4D2600DF7B58 /* ArrayProperty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArrayProperty.swift; sourceTree = "<group>"; };
 		EA197A0A1BFC4D2600DF7B58 /* DynamicProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DynamicProperties.swift; sourceTree = "<group>"; };
@@ -207,7 +204,6 @@
 		EA3713911BFD288700E51980 /* libRCTFBSDKCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRCTFBSDKCore.a; path = "../../node_modules/react-native-fbsdkcore/build/Debug-iphoneos/libRCTFBSDKCore.a"; sourceTree = "<group>"; };
 		EA3713931BFD28C200E51980 /* RCTFBSDKLogin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDKLogin.xcodeproj; path = "../node_modules/react-native-fbsdklogin/RCTFBSDKLogin.xcodeproj"; sourceTree = "<group>"; };
 		EA3713A91BFD28EF00E51980 /* libRCTFBSDKLogin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRCTFBSDKLogin.a; path = "../../node_modules/react-native-fbsdklogin/build/Debug-iphoneos/libRCTFBSDKLogin.a"; sourceTree = "<group>"; };
-		EA78C87F1B323E140016AB73 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = Pods/PKHUD/PKHUD/Images.xcassets; sourceTree = "<group>"; };
 		EA7FB08E1B5EF9D50052B394 /* Cabin-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Bold.ttf"; sourceTree = "<group>"; };
 		EA7FB08F1B5EF9D50052B394 /* Cabin-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-BoldItalic.ttf"; sourceTree = "<group>"; };
 		EA7FB0901B5EF9D50052B394 /* Cabin-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Italic.ttf"; sourceTree = "<group>"; };
@@ -276,7 +272,6 @@
 			isa = PBXGroup;
 			children = (
 				EABD43D71AA1D27400B07813 /* Configs */,
-				EA78C87F1B323E140016AB73 /* Images.xcassets */,
 				EA2667801BFA93BA0054C777 /* Pods.debug.xcconfig */,
 				EA2667811BFA93BA0054C777 /* Pods.release.xcconfig */,
 			);
@@ -290,7 +285,6 @@
 				EA197A011BFC4D2600DF7B58 /* FoundationExtension.swift */,
 				EA197A021BFC4D2600DF7B58 /* GeometryExtensions.swift */,
 				EA197A031BFC4D2600DF7B58 /* MediaExtension.swift */,
-				EA197A041BFC4D2600DF7B58 /* PKHUDExtension.swift */,
 				EA197A0D1BFC4D2600DF7B58 /* ResourceExtension.swift */,
 				EA197A0E1BFC4D2600DF7B58 /* SwiftExtension.swift */,
 				EA197A111BFC4D2600DF7B58 /* UIKitExtension.swift */,
@@ -758,7 +752,6 @@
 				EA7FB0981B5EF9D50052B394 /* Cabin-MediumItalic.ttf in Resources */,
 				EA3226031BFDAEEB00FF5074 /* MuteChecker.caf in Resources */,
 				EA7FB0991B5EF9D50052B394 /* Cabin-Regular.ttf in Resources */,
-				EA78C8801B323E140016AB73 /* Images.xcassets in Resources */,
 				EA7FB0951B5EF9D50052B394 /* Cabin-BoldItalic.ttf in Resources */,
 				EA3225FD1BFDAEEB00FF5074 /* Conversation.storyboard in Resources */,
 				EA7FB0941B5EF9D50052B394 /* Cabin-Bold.ttf in Resources */,
@@ -851,7 +844,6 @@
 			files = (
 				EA3226021BFDAEEB00FF5074 /* AudioController.swift in Sources */,
 				EA197A4D1BFC4D2600DF7B58 /* DynamicProperties.swift in Sources */,
-				EA197A491BFC4D2600DF7B58 /* PKHUDExtension.swift in Sources */,
 				EA9516791BFD8924000F5338 /* TSViewController.m in Sources */,
 				EA3225DF1BFDAE8A00FF5074 /* Logger.swift in Sources */,
 				EA197A481BFC4D2600DF7B58 /* MediaExtension.swift in Sources */,

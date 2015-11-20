@@ -79,7 +79,6 @@ PODS:
     - NSLogger/Standard (= 1.5.1)
   - NSLogger/Standard (1.5.1)
   - Ouralabs (2.7.0)
-  - PKHUD (2.2.4)
   - React/Core (0.14.2)
   - React/RCTImage (0.14.2):
     - React/Core
@@ -108,6 +107,7 @@ PODS:
     - SDWebImage/Core (= 3.7.3)
   - SDWebImage/Core (3.7.3)
   - SimpleKeychain (0.6.1)
+  - SVProgressHUD (2.0-beta)
   - SwipeView (1.3.2)
   - TPCircularBuffer (0.0.1)
   - TRVSDictionaryWithCaseInsensitivity (0.0.2)
@@ -135,7 +135,6 @@ DEPENDENCIES:
   - NKRecorder (from `git@github.com:s10tv/video-maker.git`)
   - NSLogger (~> 1.5)
   - Ouralabs (~> 2.6)
-  - PKHUD (from `https://github.com/tonyxiao/PKHUD`)
   - React/Core (from `../node_modules/react-native`)
   - React/RCTImage (from `../node_modules/react-native`)
   - React/RCTNetwork (from `../node_modules/react-native`)
@@ -146,6 +145,7 @@ DEPENDENCIES:
   - SCRecorder (= 2.5.3)
   - SDWebImage (~> 3.7)
   - SimpleKeychain (~> 0.4)
+  - SVProgressHUD (~> 2.0-beta)
   - SwipeView (~> 1.3)
   - TwitterCore (~> 1.13)
   - UXCam (~> 2.4)
@@ -153,8 +153,6 @@ DEPENDENCIES:
 EXTERNAL SOURCES:
   NKRecorder:
     :git: git@github.com:s10tv/video-maker.git
-  PKHUD:
-    :git: https://github.com/tonyxiao/PKHUD
   React:
     :path: "../node_modules/react-native"
 
@@ -162,9 +160,6 @@ CHECKOUT OPTIONS:
   NKRecorder:
     :commit: b1de81b5eef533375bedb227c836375cbbcac0fa
     :git: git@github.com:s10tv/video-maker.git
-  PKHUD:
-    :commit: 456a9a4e95565b7bfdf098cd806aa8bd93e910b2
-    :git: https://github.com/tonyxiao/PKHUD
 
 SPEC CHECKSUMS:
   Alamofire: 7c16ca65f3c7e681fd925fd7f2dec7747ff96855
@@ -192,7 +187,6 @@ SPEC CHECKSUMS:
   NKRecorder: f4bce8409adc39321668b5af939173839f5980a2
   NSLogger: 5ed223a2436df96244e033be750656dacdeec034
   Ouralabs: f76d5c1a96f5d63fcc3bb8520c41721cf9469080
-  PKHUD: 35da5a022cba3a9489eb0e11936869aeb6acef61
   React: e0dc1498eee8800999917f437a027223f49d731d
   ReactiveCocoa: 618a2fc13d4ed80e380aa6fa56547cef43c7341d
   Result: dc390d0b58f9ec43fcd536f1ebdd130803cc6cbc
@@ -200,6 +194,7 @@ SPEC CHECKSUMS:
   SCRecorder: a8b1deff74c4e03f4f3cfbfceb8fbc4877d166e4
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   SimpleKeychain: 150d76f3b9200de58f033228f6e976c6241a221c
+  SVProgressHUD: c83337f10ed32d701c423d519059a249973c8662
   SwipeView: bd67cfaf7760c036438446b3ccb28a3b84fce009
   TPCircularBuffer: 949e9632b9fb99b7274d7b2296ee22bff5841e35
   TRVSDictionaryWithCaseInsensitivity: 51d2ccf52c6d645d27b63467a98fa02c556e01b0
