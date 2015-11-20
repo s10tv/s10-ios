@@ -4,6 +4,7 @@ let TaylrAPI = require('react-native').NativeModules.TaylrAPI;
 let {
   AppRegistry,
   View,
+  Text,
   ScrollView,
   StyleSheet,
 } = React;
@@ -33,8 +34,8 @@ class MeEdit extends React.Component {
         <ScrollView
           showsVerticalScrollIndicator={false}
           style={[SHEET.navTop]}>
-          
-          <EditMyPhotoHeader me={me} height={ height / 3 } />
+
+          <EditMyPhotoHeader me={me} height={ height / 3 } ddp={this.props.ddp} />
 
           <View style={SHEET.innerContainer}>
             <SectionTitle title={'SERVICES'} />
@@ -45,7 +46,8 @@ class MeEdit extends React.Component {
             <ProfileEditCard me={me} ddp={this.props.ddp} />
 
           </View>
-          <View style={SHEET.bottomTile} />
+          <View style={
+            SHEET.bottomTile} />
         </ScrollView>
       </View>
     )

@@ -10,6 +10,6 @@
 
 @interface RCT_EXTERN_MODULE(TSBridgeManager, NSObject)
 
-RCT_EXTERN_METHOD(uploadToAzure:(NSURL *)remoteURL localURL(NSURL *):localURL contentType:(NSString *)contentType block:(RCTResponseSenderBlock)block)
+RCT_EXTERN_METHOD(uploadToAzure:(NSURL *)remoteURL localURL:(NSURL *)localURL contentType:(NSString *)contentType block:(RCTResponseSenderBlock)block)
 
 @end

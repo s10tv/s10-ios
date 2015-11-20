@@ -46,7 +46,7 @@ class RootNavigator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentTab: 'Today'
+      currentTab: 'Me'
     }
   }
 
