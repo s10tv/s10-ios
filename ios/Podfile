@@ -51,7 +51,8 @@ pod 'ARAnalytics', :subspecs => [
     'Amplitude',
     'Segmentio',
 ]
-pod 'UXCam', '~> 2.4'
+# Disabling UXCam for dev builds until motion detection interference is fixed
+pod 'UXCam', '~> 2.4', :configuration => ['Release']
 
 # Debugging
 pod 'Reveal-iOS-SDK', '~> 1.6', :configuration => ['Debug']

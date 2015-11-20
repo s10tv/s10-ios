@@ -9,7 +9,9 @@
 import Foundation
 import ARAnalytics
 import Amplitude_iOS
+#if ReleaseConfig
 import UXCam
+#endif
 
 @objc(TSAnalytics)
 public class Analytics : NSObject {
@@ -21,9 +23,11 @@ public class Analytics : NSObject {
         ARAnalytics.setupAmplitudeWithAPIKey(config.amplitudeKey)
         ARAnalytics.setupSegmentioWithWriteKey(config.segmentWriteKey)
         ARAnalytics.setupProvider(LoggingProvider())
+        #if ReleaseConfig
         if config.audience != .Dev {
             UXCam.startWithKey(config.uxcamKey)
         }
+        #endif
     }
     
     @objc func identify(userId: String) {
