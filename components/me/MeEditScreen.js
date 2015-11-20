@@ -8,6 +8,9 @@ let {
   StyleSheet,
 } = React;
 
+let Dimensions = require('Dimensions');
+let { width, height } = Dimensions.get('window');
+
 let SHEET = require('../CommonStyles').SHEET;
 let EditMyPhotoHeader = require('../lib/EditMyPhotoHeader');
 let SectionTitle = require('../lib/SectionTitle');
@@ -31,7 +34,7 @@ class MeEdit extends React.Component {
           showsVerticalScrollIndicator={false}
           style={[SHEET.navTop]}>
           
-          <EditMyPhotoHeader me={me} height={200} />
+          <EditMyPhotoHeader me={me} height={ height / 3 } />
 
           <View style={SHEET.innerContainer}>
             <SectionTitle title={'SERVICES'} />

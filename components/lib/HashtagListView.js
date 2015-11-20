@@ -96,7 +96,7 @@ class HashtagListView extends React.Component {
           underlayColor={COLORS.taylr}
           onPress={(event) => { return this._addSearchSuggestion.bind(this)(hashtag)}}>
         <View style={styles.hashtagSuggestion}>
-          <Text style={SHEET.textBase}>{ hashtag.text }</Text>
+          <Text style={SHEET.baseText}>{ hashtag.text }</Text>
         </View>
       </TouchableHighlight>
     )

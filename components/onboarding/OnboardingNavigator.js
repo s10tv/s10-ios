@@ -51,7 +51,7 @@ class OnboardingNavigator extends BaseTaylrNavigator {
     var buttonText = 'Next';
     var action = null;
     switch (route.id) {
-      case 'linkservices':
+      case 'linkservicecontainer':
         if (me && me.connectedProfiles.length > 0) {
           action = () => {
             navigator.push({
@@ -85,6 +85,7 @@ class OnboardingNavigator extends BaseTaylrNavigator {
         }
         break;
 
+      case 'openwebview':
       case 'hashtag':
       case 'login': // fallthrough intentional
         return null;
@@ -114,7 +115,7 @@ class OnboardingNavigator extends BaseTaylrNavigator {
             ddp={this.props.ddp} />
         );
 
-      case 'linkservices':
+      case 'linkservicecontainer':
         return (
           <LinkServiceScreen navigator={nav}
             integrations={this.props.integrations}
@@ -127,7 +128,7 @@ class OnboardingNavigator extends BaseTaylrNavigator {
           ddp={this.props.ddp}
           me={this.props.me} />
 
-      case 'servicelink':
+      case 'linkservice':
         return <WebView
           style={styles.webView}
           onNavigationStateChange={(navState) => this._onNavigationStateChange(nav, navState)}
@@ -141,7 +142,7 @@ class OnboardingNavigator extends BaseTaylrNavigator {
           myTags={this.props.myTags}
           ddp={this.props.ddp} />
 
-      case 'hashtag':
+      case 'addhashtag':
         return <HashtagListView
           style={{ flex: 1 }} 
           navigator={nav}
@@ -149,12 +150,19 @@ class OnboardingNavigator extends BaseTaylrNavigator {
           ddp={this.props.ddp}
           myTags={this.props.myTags}
           category={route.category} />;
+
+      case 'openwebview':
+        console.log(route.url);
+        return <WebView
+          style={styles.webView}
+          startInLoadingState={true}
+          url={route.url} />;
     } 
   }
 
   render() {
     var initialRoute = {
-      id: 'linkservices',
+      id: 'linkservicecontainer',
       title: 'Link Services',
     };
     

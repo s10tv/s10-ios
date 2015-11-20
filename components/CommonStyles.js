@@ -40,6 +40,9 @@ exports.SHEET = StyleSheet.create({
   navTop: {
     marginTop: 64,
   },
+  navTopTab: {
+    marginTop: 44,
+  },
   bottomTile: {
     paddingBottom: 64,
   },

@@ -130,7 +130,7 @@ class FacebookLoginScreen extends React.Component {
                 alert('Error logging in.');
               } else {
                 if (result.isCancelled) {
-                  alert('Login cancelled.');
+                  console.log('login cancelled');
                 } else {
                   FBSDKAccessToken.getCurrentAccessToken((accessToken) => {
                     if (accessToken && accessToken.tokenString) {
@@ -192,8 +192,18 @@ class FacebookLoginScreen extends React.Component {
         </View>
         <View style={styles.bottomSheet}>
           <View style={{ flexDirection: 'row' }}>
-          <Text style={styles.link}>Privacy</Text>
-          <Text style={styles.link}>Terms</Text>
+          <Text style={[styles.link, SHEET.baseText]} onPress={() => {
+            this.props.navigator.push({
+              id: 'openwebview',
+              url: 'https://taylrapp.com/privacy'
+            })
+          }}>Privacy</Text>
+          <Text style={[styles.link, SHEET.baseText]} onPress={() => {
+            this.props.navigator.push({
+              id: 'openwebview',
+              url: 'https://taylrapp.com/terms'
+            })
+          }}>Terms</Text>
           </View>
         </View>
       </View>
@@ -242,12 +252,7 @@ var styles = StyleSheet.create({
     width: width * 0.75,
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  loginText: {
-    flex: 1,
-    fontSize: 18,
-    color: 'white',
-    textAlign: 'center'
+    fontSize: 24,
   },
   bottomSheet: {
     position: 'absolute',
@@ -258,7 +263,7 @@ var styles = StyleSheet.create({
   },
   link: {
     backgroundColor: 'rgba:(0,0,0,0)',
-    fontSize: 10,  
+    fontSize: 14,  
     color: COLORS.white,
     padding: 2,
     textDecorationLine: 'underline',

@@ -122,11 +122,11 @@ class Me extends React.Component {
       <View style={SHEET.container}>
         <ScrollView 
           showsVerticalScrollIndicator={false}
-          style={[SHEET.navTop, SHEET.bottomTile]}>
+          style={[SHEET.navTopTab]}>
           
           <TouchableOpacity onPress={() => {
               this.props.navigator.push({
-                id: 'viewactivities',
+                id: 'viewprofile',
                 title: 'Profile',
                 me: me,
               })

@@ -30,10 +30,10 @@ class ActivityHeader extends React.Component {
     }
 
     return (
-      <HeaderBanner url={ coverUrl } height={200}>
-        <View style={styles.activityUser}>
-          <Image source={{ uri: me.avatar.url }} style={SHEET.bigIconCircle} />
-          <Text style={styles.activityUserTitle}>
+      <HeaderBanner url={ coverUrl } height={ height / 4 }>
+        <View style={[ { height: height / 4}, styles.activityUser]}>
+          <Image source={{ uri: me.avatar.url }} style={{ width: height / 6, height: height / 6, borderRadius: height / 12 }} />
+          <Text style={[{ marginTop: height / 96}, styles.activityUserTitle, SHEET.baseText]}>
             {me.firstName} {me.lastName} {me.gradYear}
           </Text>
         </View>
@@ -110,7 +110,7 @@ class Activity extends React.Component {
       source = (
         <View style={[{ paddingBottom: 10 }, styles.activityElement]}>
           <Text style={[SHEET.baseText]}>
-            via <Text style={{fontWeight: 'bold', color: profile.themeColor }}>
+            via <Text style={[{fontWeight: 'bold', color: profile.themeColor }, SHEET.baseText]}>
               {profile.integrationName}
             </Text>
           </Text>
@@ -125,7 +125,7 @@ class Activity extends React.Component {
             <Text style={SHEET.baseText}>{profile.displayId}</Text>
           </View>
           <View style={{ width: 32 }}>
-            <Text style={ SHEET.subTitle }>
+            <Text style={ [SHEET.subTitle, SHEET.baseText] }>
               { this._timeDifference(new Date(), activity.timestamp) }
             </Text>
           </View>
@@ -304,7 +304,7 @@ class Activities extends React.Component {
 
           <View style={{ marginTop: 10 }}>
             <Text style={[SHEET.smallHeading, SHEET.subTitle, SHEET.baseText]}>About Me</Text>
-            <Text>{me.about}</Text>
+            <Text stlye={[SHEET.baseText]}>{me.about}</Text>
           </View>
         </Card> 
       ) 
@@ -393,11 +393,9 @@ var styles = StyleSheet.create({
     backgroundColor: 'rgba(0,0,0,0)',
     top: 0,
     left: 0,
-    height: 200,
     width: width,
   },
   activityUserTitle: {
-    paddingTop: 10,
     fontSize: 22,
     color: COLORS.white,
   },
@@ -416,9 +414,9 @@ var styles = StyleSheet.create({
     paddingBottom: 10,
   },
   infoAvatar: {
-    width: width / 4,
-    height: width / 4,
-    borderRadius: width / 8,
+    width: 60,
+    height: 60,
+    borderRadius: 30, 
   },
   openButton: {
     marginTop: 10,

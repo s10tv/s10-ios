@@ -67,7 +67,7 @@ class CountdownTimer extends React.Component {
         }}>
         <View style={styles.messageButton}>
           <Image source={require('../img/ic-start-chat.png')} />
-          <Text style={[styles.messageButtonText, SHEET.buttonText]}>
+          <Text style={[styles.messageButtonText, SHEET.baseText]}>
             { this.state.countdown }
           </Text>
         </View>
@@ -108,7 +108,7 @@ class Discover extends React.Component {
     return (
       <View style={SHEET.container}>
         <ScrollView
-          style={[SHEET.navTop, { flex: 1 }]}
+          style={[SHEET.navTopTab, { flex: 1 }]}
           showsVerticalScrollIndicator={false}>
 
           <Card style={[{marginTop: 10, paddingBottom: 10}, SHEET.innerContainer]}
