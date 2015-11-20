@@ -42,6 +42,10 @@ class ConversationViewController : UIViewController {
     
     var vm: ConversationViewModel!
     
+    deinit {
+        DDLogDebug("ConversationVC deinit")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         

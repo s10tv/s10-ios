@@ -27,7 +27,6 @@ class ConversationListViewManager : RCTViewManager {
         let vc = sb.instantiateInitialViewController() as! ConversationListViewController
         vc.vm = ConversationListViewModel(layerClient: layer.layerClient, currentUser: currentUser)
         let view = vc.view as! ConversationListView
-        view.strongVC = vc
         view.vc = vc
         view.currentUser = currentUser
         return view
@@ -37,57 +36,35 @@ class ConversationListViewManager : RCTViewManager {
 class ConversationListView : UITableView {
     var currentUser: UserViewModel!
     
-    var strongVC: ConversationListViewController?
     weak var vc: ConversationListViewController?
     
     deinit {
-        DDLogVerbose("ConversationListView deinit")
+        DDLogVerbose("deinit")
     }
     
     override func willMoveToWindow(newWindow: UIWindow?) {
         super.willMoveToWindow(newWindow)
-        if vc?.parentViewController == nil {
-            DDLogVerbose("Will move to window \(newWindow)")
-//            vc?.viewWillAppear(false)
-            vc?.beginAppearanceTransition(newWindow != nil, animated: false)
+        guard let vc = vc where vc.presentedViewController == nil else {
+            return
         }
+        if let parent = newWindow?.rootViewController {
+            parent.addChildViewController(vc)
+        } else {
+            vc.willMoveToParentViewController(nil)
+        }
+        DDLogVerbose("willMoveToWindow \(newWindow) \(vc.parentViewController)")
     }
     
     override func didMoveToWindow() {
         super.didMoveToWindow()
-        DDLogVerbose("Did move to window \(window)")
-        if vc?.parentViewController == nil {
-//            vc?.viewDidAppear(false)
-            vc?.endAppearanceTransition()
+        guard let vc = vc where vc.presentedViewController == nil else {
+            return
         }
-        // viewDidAppear will unfortunately be called twice. But in practice it doesn't seem to harm anything
-        // because ConversationListViewController's viewDidAppear is a no-op
-        
-        if window == nil && superview == nil {
-            DDLogVerbose("both window & superview are nil, will remove vc from parent")
-            vc?.willMoveToParentViewController(nil)
-            vc?.removeFromParentViewController()
+        if let parent = window?.rootViewController {
+            vc.didMoveToParentViewController(parent)
+        } else {
+            vc.removeFromParentViewController()
         }
-    }
-    
-    override func didMoveToSuperview() {
-        super.didMoveToSuperview()
-        DDLogVerbose("Did move to superview \(superview)")
-        if window == nil && superview == nil {
-            DDLogVerbose("both window & superview are nil, will remove vc from parent")
-            vc?.willMoveToParentViewController(nil)
-            vc?.removeFromParentViewController()
-        }
-    }
-    
-    override func reactBridgeDidFinishTransaction() {
-        if let vc = strongVC where vc.parentViewController == nil {
-            reactAddControllerToClosestParent(vc)
-            DDLogVerbose("react bridge did finish transation, added vc to parent \(vc.parentViewController)")
-            if vc.parentViewController != nil {
-                DDLogVerbose("Will Remove reference to strongVC from view")
-                strongVC = nil
-            }
-        }
+        DDLogVerbose("didMoveToWindow \(window) \(vc.parentViewController)")
     }
 }

@@ -58,30 +58,38 @@ class ConversationView : UIView {
     
     weak var vc: ConversationViewController?
     
-//    override var frame: CGRect {
-//        get { return super.frame }
-//        set {
-//            DDLogInfo("Set frame current \(frame) to \(newValue)")
-//            super.frame = newValue
-//        }
-//    }
-//    
-//    override var bounds: CGRect {
-//        get { return super.bounds }
-//        set {
-//            DDLogInfo("Set bounds current \(bounds) to \(newValue)")
-//            super.bounds = newValue
-//        }
-//    }
-//    
-//    override func layoutSubviews() {
-//        super.layoutSubviews()
-//        DDLogInfo("My frame is \(frame) bounds \(bounds)")
-//    }
-//    
+    deinit {
+        DDLogVerbose("deinit")
+    }
+    
+    override func willMoveToWindow(newWindow: UIWindow?) {
+        super.willMoveToWindow(newWindow)
+        guard let vc = vc where vc.presentedViewController == nil else {
+            return
+        }
+        if let parent = newWindow?.rootViewController {
+            parent.addChildViewController(vc)
+        } else {
+            vc.willMoveToParentViewController(nil)
+        }
+        DDLogVerbose("willMoveToWindow \(newWindow) \(vc.parentViewController)")
+    }
+    
+    override func didMoveToWindow() {
+        super.didMoveToWindow()
+        guard let vc = vc where vc.presentedViewController == nil else {
+            return
+        }
+        if let parent = window?.rootViewController {
+            vc.didMoveToParentViewController(parent)
+        } else {
+            vc.removeFromParentViewController()
+        }
+        DDLogVerbose("didMoveToWindow \(window) \(vc.parentViewController)")
+    }
+    
     override func willMoveToSuperview(newSuperview: UIView?) {
         if let _ = superview {
-//            DDLogInfo("Current translate = \(translatesAutoresizingMaskIntoConstraints)")
             translatesAutoresizingMaskIntoConstraints = false
         }
     }
@@ -90,19 +98,6 @@ class ConversationView : UIView {
         super.didMoveToSuperview()
         if let superview = superview {
             makeEdgesEqualTo(superview)
-        }
-    }
-    
-    deinit {
-        DDLogVerbose("deinit will remove from parent vc \(vc?.parentViewController)")
-        vc?.willMoveToParentViewController(nil)
-        vc?.removeFromParentViewController()
-    }
-    
-    override func reactBridgeDidFinishTransaction() {
-        if let vc = vc where vc.parentViewController == nil {
-            reactAddControllerToClosestParent(vc)
-            DDLogVerbose("react bridge did finish transation, added vc to parent \(vc.parentViewController)")
         }
     }
 }
