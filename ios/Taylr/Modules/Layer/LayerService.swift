@@ -25,13 +25,17 @@ class LayerService: NSObject {
         layerClient.backgroundContentTransferEnabled = true
         layerClient.diskCapacity = 300 * 1024 * 1024 // 300mb
         layerClient.autodownloadMIMETypes = nil // Download all automatically
-        layerClient.connect().start()
         unreadQueryController = try? layerClient.queryControllerWithQuery(LYRQuery.unreadConversations(), error: ())
         super.init()
         layerClient.delegate = self
         unreadQueryController?.delegate = self
         _ = try? unreadQueryController?.execute()
         queryControllerDidChangeContent(unreadQueryController) // Force trigger
+        layerClient.connect().start(Event.sink(error: { error in
+            DDLogError("Unable to connect to layer \(error)")
+        }, completed: {
+            DDLogInfo("Successfully connected to Layer")
+        }))
     }
     
     // MARK: -
@@ -163,25 +167,26 @@ class LayerService: NSObject {
 extension LayerService : LYRClientDelegate {
     
     func layerClient(client: LYRClient!, objectsDidChange changes: [AnyObject]!) {
-        DDLogDebug("Layer objects did change \(changes)")
+        DDLogVerbose("Layer objects did change \(changes)")
     }
     
     func layerClient(client: LYRClient!, willBeginContentTransfer contentTransferType: LYRContentTransferType, ofObject object: AnyObject!, withProgress progress: LYRProgress!) {
-        DDLogDebug("Will begin \(contentTransferType) \(object)")
+        DDLogVerbose("Will begin \(contentTransferType) \(object)")
     }
     
     func layerClient(client: LYRClient!, didFinishContentTransfer contentTransferType: LYRContentTransferType, ofObject object: AnyObject!) {
-        DDLogDebug("did finish \(contentTransferType) \(object)")
+        DDLogVerbose("did finish \(contentTransferType) \(object)")
     }
     
     func layerClient(client: LYRClient!, didFailOperationWithError error: NSError!) {
         DDLogError("Layer failed to perform operation \(error)")
     }
 
+    // TODO: Implement JavaScript get identity token then call LayerService.authenticate
     func layerClient(client: LYRClient!, didReceiveAuthenticationChallengeWithNonce nonce: String!) {
         assert(bridge != nil, "Bridge should not be nil")
+        DDLogInfo("Received authentication nonce in delegate \(nonce)")
         bridge?.eventDispatcher.sendAppEventWithName("Layer.didReceiveNonce", body: nonce)
-        // Expect JavaScript side to then call LayerService.authenticate to proceed
     }
 }
 
@@ -206,7 +211,7 @@ extension LayerService {
             DDLogError("Unable to get authentication nonce \(error)")
             block([error, NSNull()])
         }, next: { nonce in
-            DDLogInfo("Did receive authentication nonce \(nonce)")
+            DDLogInfo("Did receive requested authentication nonce \(nonce)")
             block([NSNull(), nonce])
         }))
     }
