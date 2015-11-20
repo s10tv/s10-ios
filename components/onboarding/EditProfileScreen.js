@@ -28,7 +28,7 @@ class EditProfileScreen extends React.Component {
           showsVerticalScrollIndicator={false}
           style={[SHEET.navTop]}>
           
-          <EditMyPhotoHeader me={me} height={200} />
+          <EditMyPhotoHeader me={me} height={200} ddp={this.props.ddp} />
 
           <ProfileEditCard me={me}
             style={SHEET.innerContainer}
