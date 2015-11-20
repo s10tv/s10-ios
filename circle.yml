@@ -17,6 +17,7 @@ dependencies:
     - brew update
     - brew install node
     - npm install
+    - npm install -g react-native-cli # Technically should use the one installed above, but temp workaround
     # - brew upgrade xctool
     # - sudo gem uninstall highline commander --ignore-dependencies -x -a
     - sudo gem install cocoapods -v $(var=$(tail -1 ios/Podfile.lock); echo ${var##COCOAPODS:})
