@@ -7,6 +7,24 @@
 
 
 public enum R {
+    public enum ConversationAssets : String {
+        /// empty-profile-pic
+        case emptyProfilePic = "empty-profile-pic"
+        /// ic-back-arrow
+        case icBackArrow = "ic-back-arrow"
+        /// ic-down-chevron-small
+        case icDownChevronSmall = "ic-down-chevron-small"
+        /// ic-more
+        case icMore = "ic-more"
+        /// ic-play-medium
+        case icPlayMedium = "ic-play-medium"
+        /// ic-speaker
+        case icSpeaker = "ic-speaker"
+        /// ic-speaker-muted
+        case icSpeakerMuted = "ic-speaker-muted"
+        /// sample-photo
+        case samplePhoto = "sample-photo"
+    }
     public enum Fonts : String {
         /// Cabin-Bold
         case cabinBold = "Cabin-Bold"
@@ -22,46 +40,6 @@ public enum R {
         case cabinRegular = "Cabin-Regular"
     }
     public enum Strings : String {
-        /// This is where the messages you have sent or replied to appear.
-        case emptyContactsMessage = "emptyContactsMessage"
-        /// Loading...
-        case emptyDiscoverMessage = "emptyDiscoverMessage"
-        /// People you have been introduced to before will show up here.
-        case emptyHistoryMessage = "emptyHistoryMessage"
-        /// Unexpected Error
-        case errDefault = "errDefault"
-        /// Ooops, something unexpected has happened. Please close the app and try again later.
-        case errDefaultRecovery = "errDefaultRecovery"
-        /// Network Unavailable
-        case errNetworkUnreachable = "errNetworkUnreachable"
-        /// Seems like we don't have any network connection right now, try again later.
-        case errNetworkUnreachableRecovery = "errNetworkUnreachableRecovery"
-        /// Sorry we're not able to add this service at the moment. Please try again later :(
-        case errUnableToAddServiceMessage = "errUnableToAddServiceMessage"
-        /// Unable to add service
-        case errUnableToAddServiceTitle = "errUnableToAddServiceTitle"
-        /// Sorry we're not able to log you in at the moment. Please try again later :(
-        case errUnableToLoginMessage = "errUnableToLoginMessage"
-        /// Unable to login
-        case errUnableToLoginTitle = "errUnableToLoginTitle"
-        /// We are not able to log you in. Please try again.
-        case fbPermDeniedAlertMessage = "FBPermDeniedAlertMessage"
-        /// Permission Denied
-        case fbPermDeniedAlertTitle = "FBPermDeniedAlertTitle"
-        /// You won't be able to continue using the app until you upgrade. Please upgrade to the latest version
-        case hardUpgradeAlertMessage = "HardUpgradeAlertMessage"
-        /// Upgrade
-        case hardUpgradeAlertOk = "HardUpgradeAlertOk"
-        /// Your version is no longer supported
-        case hardUpgradeAlertTitle = "HardUpgradeAlertTitle"
-        /// Cancel
-        case meCancelTitle = "MeCancelTitle"
-        /// Link New Service
-        case meLinkNewSerivceTitle = "MeLinkNewSerivceTitle"
-        /// Remove
-        case meRemoveServiceConfirm = "MeRemoveServiceConfirm"
-        /// Are you sure you want to remove %@ account %@? You can always add it back later
-        case meRemoveServiceTitle = "MeRemoveServiceTitle"
         /// Block %@
         case moreSheetBlock = "MoreSheetBlock"
         /// Cancel
@@ -78,49 +56,13 @@ public enum R {
         case reportAlertMessage = "ReportAlertMessage"
         /// Thank you for your feedback
         case reportAlertTitle = "ReportAlertTitle"
-        /// Cancel
-        case settingsDeleteAccountCancel = "SettingsDeleteAccountCancel"
-        /// Confirm
-        case settingsDeleteAccountConfirm = "SettingsDeleteAccountConfirm"
-        /// You'll lose all your matches, messages, and photos. Are you sure you want to do this?
-        case settingsDeleteAccountMessage = "SettingsDeleteAccountMessage"
-        /// If sure, type 'delete' to confirm.
-        case settingsDeleteAccountPlaceholder = "SettingsDeleteAccountPlaceholder"
-        /// Delete Account
-        case settingsDeleteAccountTitle = "SettingsDeleteAccountTitle"
-        /// Give Feedback
-        case settingsFeedbackTitle = "SettingsFeedbackTitle"
-        /// Cancel
-        case settingsLogoutCancel = "SettingsLogoutCancel"
-        /// Delete my account
-        case settingsLogoutDeleteAccount = "SettingsLogoutDeleteAccount"
-        /// Logout
-        case settingsLogoutTitle = "SettingsLogoutTitle"
-        /// What would you like to do?
-        case settingsMoreTitle = "SettingsMoreTitle"
-        /// Later
-        case softUpgradeAlertCancel = "SoftUpgradeAlertCancel"
-        /// Please upgrade to the latest version.
-        case softUpgradeAlertMessage = "SoftUpgradeAlertMessage"
-        /// Upgrade
-        case softUpgradeAlertOk = "SoftUpgradeAlertOk"
-        /// New version is available
-        case softUpgradeAlertTitle = "SoftUpgradeAlertTitle"
         /// View Profile
         case viewProfile = "ViewProfile"
     }
     public enum TaylrAssets : String {
         /// AppIcon
         case app = "AppIcon"
-        /// empty-profile-pic
-        case emptyProfilePic = "empty-profile-pic"
-        /// ic-back-arrow
-        case icBackArrow = "ic-back-arrow"
-        /// ic-play-medium
-        case icPlayMedium = "ic-play-medium"
-        /// ic-speaker
-        case icSpeaker = "ic-speaker"
-        /// ic-speaker-muted
-        case icSpeakerMuted = "ic-speaker-muted"
+        /// Logo
+        case logo = "Logo"
     }
 }
