@@ -43,7 +43,11 @@ class AppDependencies : NSObject {
 extension AppDependencies : RCTBridgeDelegate {
     
     func sourceURLForBridge(bridge: RCTBridge!) -> NSURL! {
-        return NSURL("http://localhost:8081/index.ios.bundle?platform=ios&dev=true")
+        if env.build == "0" {
+            return NSURL("http://localhost:8081/index.ios.bundle?platform=ios&dev=true")
+        } else {
+            return NSBundle.mainBundle().URLForResource("main", withExtension: "jsbundle")
+        }
     }
     
     func extraModulesForBridge(bridge: RCTBridge!) -> [AnyObject]! {
