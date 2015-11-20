@@ -8,6 +8,7 @@
 
 import Foundation
 import CocoaLumberjack
+import ReactiveCocoa
 import React
 
 private let kRNSendAppEventNotificationName = "rnSendAppEvent"
@@ -25,6 +26,7 @@ extension NSObject {
 class BridgeManager : NSObject {
     
     weak var bridge: RCTBridge?
+    let azure = AzureClient()
     
     override init() {
         super.init()
@@ -40,6 +42,18 @@ class BridgeManager : NSObject {
 }
 
 // MARK: - BridgeManager JS API
+
+extension BridgeManager {
+    @objc func uploadToAzure(remoteURL: NSURL, localURL: NSURL, contentType: String, block: RCTResponseSenderBlock) {
+        azure.put(remoteURL, file: localURL, contentType: contentType).start(Event.sink(error: { error in
+            DDLogError("Unable to upload to azure \(remoteURL) \(error)")
+            block([error, NSNull()])
+        }, completed: {
+            DDLogDebug("Successfully uploaded to azure \(remoteURL)")
+            block([NSNull(), NSNull()])
+        }))
+    }
+}
 
 enum NativeAppEvent : String {
     case RegisteredPushToken = "RegisteredPushToken"

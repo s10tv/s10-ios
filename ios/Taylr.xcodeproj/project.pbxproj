@@ -70,6 +70,8 @@
 		EA3713921BFD288700E51980 /* libRCTFBSDKCore.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3713911BFD288700E51980 /* libRCTFBSDKCore.a */; };
 		EA3713AA1BFD28EF00E51980 /* libRCTFBSDKLogin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA3713A91BFD28EF00E51980 /* libRCTFBSDKLogin.a */; };
 		EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */; };
+		EA7DFB2E1BFFA3550045A5ED /* AzureClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7DFB2C1BFFA3550045A5ED /* AzureClient.swift */; };
+		EA7DFB331BFFA40B0045A5ED /* AlamofireExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7DFB321BFFA40B0045A5ED /* AlamofireExtension.swift */; };
 		EA7FB0941B5EF9D50052B394 /* Cabin-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB08E1B5EF9D50052B394 /* Cabin-Bold.ttf */; };
 		EA7FB0951B5EF9D50052B394 /* Cabin-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB08F1B5EF9D50052B394 /* Cabin-BoldItalic.ttf */; };
 		EA7FB0961B5EF9D50052B394 /* Cabin-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB0901B5EF9D50052B394 /* Cabin-Italic.ttf */; };
@@ -207,6 +209,8 @@
 		EA3713911BFD288700E51980 /* libRCTFBSDKCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRCTFBSDKCore.a; path = "../../node_modules/react-native-fbsdkcore/build/Debug-iphoneos/libRCTFBSDKCore.a"; sourceTree = "<group>"; };
 		EA3713931BFD28C200E51980 /* RCTFBSDKLogin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDKLogin.xcodeproj; path = "../node_modules/react-native-fbsdklogin/RCTFBSDKLogin.xcodeproj"; sourceTree = "<group>"; };
 		EA3713A91BFD28EF00E51980 /* libRCTFBSDKLogin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRCTFBSDKLogin.a; path = "../../node_modules/react-native-fbsdklogin/build/Debug-iphoneos/libRCTFBSDKLogin.a"; sourceTree = "<group>"; };
+		EA7DFB2C1BFFA3550045A5ED /* AzureClient.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AzureClient.swift; sourceTree = "<group>"; };
+		EA7DFB321BFFA40B0045A5ED /* AlamofireExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlamofireExtension.swift; sourceTree = "<group>"; };
 		EA7FB08E1B5EF9D50052B394 /* Cabin-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Bold.ttf"; sourceTree = "<group>"; };
 		EA7FB08F1B5EF9D50052B394 /* Cabin-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-BoldItalic.ttf"; sourceTree = "<group>"; };
 		EA7FB0901B5EF9D50052B394 /* Cabin-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Italic.ttf"; sourceTree = "<group>"; };
@@ -291,6 +295,7 @@
 				EA197A0D1BFC4D2600DF7B58 /* ResourceExtension.swift */,
 				EA197A0E1BFC4D2600DF7B58 /* SwiftExtension.swift */,
 				EA197A111BFC4D2600DF7B58 /* UIKitExtension.swift */,
+				EA7DFB321BFFA40B0045A5ED /* AlamofireExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -318,6 +323,7 @@
 		EA197A121BFC4D2600DF7B58 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				EA7DFB2C1BFFA3550045A5ED /* AzureClient.swift */,
 				EA197A161BFC4D2600DF7B58 /* DesignableViews.swift */,
 				EA197A151BFC4D2600DF7B58 /* BaseViews.swift */,
 				EA197A181BFC4D2600DF7B58 /* Environment.swift */,
@@ -866,6 +872,7 @@
 				EA3226091BFDAEEB00FF5074 /* VolumeViewModel.swift in Sources */,
 				EA197A5B1BFC4D2600DF7B58 /* ProvisioningProfile.swift in Sources */,
 				EA3225DC1BFDAE8A00FF5074 /* LayerService.m in Sources */,
+				EA7DFB331BFFA40B0045A5ED /* AlamofireExtension.swift in Sources */,
 				EA3225E01BFDAE8A00FF5074 /* Logger.m in Sources */,
 				EA3225FE1BFDAEEB00FF5074 /* ConversationView.swift in Sources */,
 				EA3225C31BFDAE8A00FF5074 /* Analytics.m in Sources */,
@@ -877,6 +884,7 @@
 				EA3226081BFDAEEB00FF5074 /* VolumeView.swift in Sources */,
 				EA32260C1BFDAEEB00FF5074 /* ConversationListViewController.swift in Sources */,
 				EA3225BE1BFDAE8A00FF5074 /* Image.swift in Sources */,
+				EA7DFB2E1BFFA3550045A5ED /* AzureClient.swift in Sources */,
 				EA197A511BFC4D2600DF7B58 /* SwiftExtension.swift in Sources */,
 				EA3225DB1BFDAE8A00FF5074 /* LayerService.swift in Sources */,
 				EA32260D1BFDAEEB00FF5074 /* ConversationListViewModel.swift in Sources */,
