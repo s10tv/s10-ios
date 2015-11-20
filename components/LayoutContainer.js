@@ -29,7 +29,7 @@ class LayoutContainer extends React.Component {
     this.state = {
       needsOnboarding: true,
       modalVisible: false,
-      currentTab: 'me',
+      currentTab: 'chats',
     }
   }
 

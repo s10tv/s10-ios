@@ -132,6 +132,10 @@ class ConversationViewController : UIViewController {
     }
     
     // MARK: -
+
+    @IBAction func didTapBackButton(sender: AnyObject) {
+        manager.pushRoute("$back", properties: [:])
+    }
     
     @IBAction func didTapScrollDownHint(sender: AnyObject) {
         swipeView.scrollToPage(Page.ChatHistory.rawValue, duration: 0.4)

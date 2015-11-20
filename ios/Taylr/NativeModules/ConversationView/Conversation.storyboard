@@ -37,7 +37,7 @@
                                         <barButtonItem key="leftBarButtonItem" image="ic-back-arrow" id="M8V-FG-7EW" userLabel="Back">
                                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <connections>
-                                                <action selector="goBack:" destination="Blv-WO-ctj" id="JSD-j7-cPh"/>
+                                                <action selector="didTapBackButton:" destination="Cmw-2y-C3I" id="Pwz-iF-nin"/>
                                             </connections>
                                         </barButtonItem>
                                         <view key="titleView" contentMode="scaleToFill" id="8Oi-oO-eac" userLabel="Title View">

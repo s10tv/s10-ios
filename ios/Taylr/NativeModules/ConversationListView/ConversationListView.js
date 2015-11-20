@@ -17,7 +17,14 @@ class ConversationListView extends React.Component {
     this.setState({
       routeListener: React.NativeAppEventEmitter.addListener(
         'ViewController.pushRoute',
-        (properties) => console.log('Pushing route ', properties)
+        (properties) => {
+          if (properties && properties.route == 'conversation') {
+            this.props.navigator.push({
+              id: 'conversation',
+              conversationId: properties.conversationId,
+            })
+          }
+        }
       )
     });
     ViewControllerManager.componentDidMount(React.findNodeHandle(this))
