@@ -18,6 +18,7 @@ class ConversationView extends React.Component {
       routeListener: React.NativeAppEventEmitter.addListener(
         'ViewController.pushRoute',
         (properties) => {
+          console.log(properties);
           if (properties.route == '$back') {
             //console.log(this.props.navigator.getCurrentRoutes());
             this.props.navigator.pop()

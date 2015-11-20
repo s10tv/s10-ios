@@ -17,7 +17,7 @@ let Loader = require('./Loader');
 class HashtagCategory extends React.Component {
   _handleCategoryTouch(category) {
     this.props.navigator.push({
-      id: 'hashtag',
+      id: 'addhashtag',
       title: category.displayName,
       category: category
     })

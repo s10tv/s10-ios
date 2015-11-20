@@ -8,9 +8,7 @@ let {
 } = React;
 
 let OnboardingNavigator = require('./onboarding/OnboardingNavigator');
-let MeNavigator = require('./me/MeNavigator');
-let DiscoverNavigator = require('./discover/DiscoverNavigator');
-let ChatNavigator = require('./chat/ChatNavigator');
+let RootNavigator = require('./RootNavigator');
 let Loader = require('./lib/Loader');
 
 let TSDDPClient = require('../lib/ddpclient');
@@ -238,55 +236,18 @@ class LayoutContainer extends React.Component {
         myTags={this.state.myTags}
         ddp={this.ddp} />
     } else {
-       return (
-          <TabBarIOS>
-            <TabBarIOS.Item 
-              title="Me"
-              icon={require('./img/ic-me.png')}
-              onPress={() => {
-                this.setState({currentTab: 'me'});
-              }}
-              selected={this.state.currentTab == 'me'}>
-              
-              <MeNavigator ddp={this.ddp}
-                onLogout={this.onLogout.bind(this)}
-                me={this.state.me}
-                myActivities={this.state.myActivities}
-                categories={this.state.categories}
-                myTags={this.state.myTags}
-                integrations={this.state.integrations}/>
-
-            </TabBarIOS.Item>
-            <TabBarIOS.Item 
-              title="Discover"
-              icon={require('./img/ic-compass.png')}
-              onPress={() => {
-                this.setState({currentTab: 'discover'});
-              }}
-              selected={this.state.currentTab == 'discover'}>
-
-              <DiscoverNavigator ddp={this.ddp}
-                me={this.state.me}
-                candidate={this.state.candidate}
-                settings={this.state.settings}
-                users={this.state.users} />
-
-            </TabBarIOS.Item>
-            <TabBarIOS.Item 
-              title="Chats"
-              icon={require('./img/ic-chats.png')}
-              onPress={() => {
-                this.setState({currentTab: 'chats'});
-              }}
-              selected={this.state.currentTab == 'chats'}>
-
-              <ChatNavigator
-                ddp={this.ddp}
-                me={this.state.me} />
-                
-            </TabBarIOS.Item>
-          </TabBarIOS>
-      )
+      return <RootNavigator
+        me={this.state.me}
+        integrations={this.state.integrations}
+        categories={this.state.categories}
+        myTags={this.state.myTags}
+        loggedIn={this.state.loggedIn}
+        onLogout={this.onLogout.bind(this)}
+        onLogin={this.onLogin.bind(this)}
+        candidate={this.state.candidate}
+        users={this.state.users}
+        settings={this.state.settings}
+        ddp={this.ddp} />
     }
   }
 }

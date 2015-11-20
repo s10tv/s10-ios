@@ -118,8 +118,7 @@ class Discover extends React.Component {
               this.props.navigator.push({
                 id: 'viewprofile',
                 title: candidateUser.firstName,
-                candidateUser: candidateUser,
-                activities: this.state.candidateActivities
+                me: candidateUser,
               })
             }}>
               <HeaderBanner url={candidateUser.cover.url} height={height / 2.5}>

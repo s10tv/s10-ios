@@ -38,7 +38,7 @@ exports.SHEET = StyleSheet.create({
     marginHorizontal: 8,
   },
   navTop: {
-    paddingTop: 64,
+    marginTop: 64,
   },
   bottomTile: {
     paddingBottom: 64,
