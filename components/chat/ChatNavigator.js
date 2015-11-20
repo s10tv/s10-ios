@@ -15,8 +15,8 @@ let BaseTaylrNavigator = require('../lib/BaseTaylrNavigator');
 let Activities = require('../lib/Activities');
 let Loader = require('../lib/Loader');
 let TSNavigationBar = require('../lib/TSNavigationBar');
-let ConversationView = require('../../ios/Taylr/NativeModules/ConversationView/ConversationView');
-let ConversationListView = require('../../ios/Taylr/NativeModules/ConversationListView/ConversationListView');
+let ConversationView = require('./ConversationView');
+let ConversationListView = require('./ConversationListView');
 
 class ChatNavigator extends BaseTaylrNavigator {
   _leftButton(route, navigator, index, navState) {

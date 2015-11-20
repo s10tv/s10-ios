@@ -11,7 +11,7 @@ let {
 
 let BaseTaylrNavigator = require('../lib/BaseTaylrNavigator');
 let DiscoverScreen = require('./DiscoverScreen');
-let ConversationView = require('../../ios/Taylr/NativeModules/ConversationView/ConversationView');
+let ConversationView = require('../chat/ConversationView');
 let Activities = require('../lib/Activities');
 let SHEET = require('../CommonStyles').SHEET;
 

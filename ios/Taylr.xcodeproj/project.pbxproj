@@ -199,8 +199,6 @@
 		EA3225F91BFDAEEB00FF5074 /* ConversationListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListViewModel.swift; sourceTree = "<group>"; };
 		EA3225FA1BFDAEEB00FF5074 /* TSConversationListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TSConversationListView.m; sourceTree = "<group>"; };
 		EA3226361BFDB9C000FF5074 /* RACBindings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACBindings.swift; sourceTree = "<group>"; };
-		EA3226411BFDBB7900FF5074 /* ConversationListView.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = ConversationListView.js; sourceTree = "<group>"; };
-		EA3226431BFDBEE400FF5074 /* ConversationView.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = ConversationView.js; sourceTree = "<group>"; };
 		EA3713911BFD288700E51980 /* libRCTFBSDKCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRCTFBSDKCore.a; path = "../../node_modules/react-native-fbsdkcore/build/Debug-iphoneos/libRCTFBSDKCore.a"; sourceTree = "<group>"; };
 		EA3713931BFD28C200E51980 /* RCTFBSDKLogin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDKLogin.xcodeproj; path = "../node_modules/react-native-fbsdklogin/RCTFBSDKLogin.xcodeproj"; sourceTree = "<group>"; };
 		EA3713A91BFD28EF00E51980 /* libRCTFBSDKLogin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRCTFBSDKLogin.a; path = "../../node_modules/react-native-fbsdklogin/build/Debug-iphoneos/libRCTFBSDKLogin.a"; sourceTree = "<group>"; };
@@ -362,16 +360,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
-		EA3225911BFDAE8A00FF5074 /* NativeModules */ = {
+		EA3225911BFDAE8A00FF5074 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
 				EA3225B61BFDAE8A00FF5074 /* Logger */,
 				EA3225921BFDAE8A00FF5074 /* Analytics */,
 				EA3225B01BFDAE8A00FF5074 /* Layer */,
-				EA3225F51BFDAEEB00FF5074 /* ConversationListView */,
-				EA3225E11BFDAEEB00FF5074 /* ConversationView */,
 			);
-			path = NativeModules;
+			path = Modules;
 			sourceTree = "<group>";
 		};
 		EA3225921BFDAE8A00FF5074 /* Analytics */ = {
@@ -416,7 +412,6 @@
 				EA3225E71BFDAEEB00FF5074 /* ConversationViewController.swift */,
 				EA3225E81BFDAEEB00FF5074 /* ConversationViewModel.swift */,
 				EA3225E61BFDAEEB00FF5074 /* ConversationView.swift */,
-				EA3226431BFDBEE400FF5074 /* ConversationView.js */,
 				EA3225E91BFDAEEB00FF5074 /* TSConversationView.m */,
 			);
 			path = ConversationView;
@@ -461,7 +456,6 @@
 				EA3225F81BFDAEEB00FF5074 /* ConversationListViewController.swift */,
 				EA3225F91BFDAEEB00FF5074 /* ConversationListViewModel.swift */,
 				EA3225F71BFDAEEB00FF5074 /* ConversationListView.swift */,
-				EA3226411BFDBB7900FF5074 /* ConversationListView.js */,
 				EA3225FA1BFDAEEB00FF5074 /* TSConversationListView.m */,
 			);
 			path = ConversationListView;
@@ -521,7 +515,8 @@
 				EA1979FE1BFC4D2600DF7B58 /* Extensions */,
 				EA197A121BFC4D2600DF7B58 /* Library */,
 				EA32258A1BFDAE8A00FF5074 /* Models */,
-				EA3225911BFDAE8A00FF5074 /* NativeModules */,
+				EA3225911BFDAE8A00FF5074 /* Modules */,
+				EAA5E8DA1BFEABA8009DE994 /* Components */,
 				EA9F353D1A74CC6900E0C65D /* Supporting Files */,
 				EA9F353F1A74CC6900E0C65D /* AppDelegate.swift */,
 				EA197A851BFCFC3800DF7B58 /* RootViewController.swift */,
@@ -545,6 +540,15 @@
 			);
 			name = "Supporting Files";
 			path = Support;
+			sourceTree = "<group>";
+		};
+		EAA5E8DA1BFEABA8009DE994 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				EA3225F51BFDAEEB00FF5074 /* ConversationListView */,
+				EA3225E11BFDAEEB00FF5074 /* ConversationView */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 		EABD43D71AA1D27400B07813 /* Configs */ = {
