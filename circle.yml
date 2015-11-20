@@ -46,43 +46,33 @@ test:
     - zip -FSr $CIRCLE_ARTIFACTS/Pods.zip ios/Pods/
 
 deployment:
- Taylr Dev:
-   branch: master
-   commands:
+  Taylr Dev:
+    branch: master
+    commands:
+      - |
+        source ./scripts/circle_env.sh
+        ./scripts/deploy_crashlytics.sh
+        cd scripts
+        npm install
+        node deploy_dev.js
+
+  Taylr:
+    branch: prod
+    commands:
      - |
        source ./scripts/circle_env.sh
        ./scripts/deploy_crashlytics.sh
-       cd scripts
-       npm install
-       node deploy_dev.js
-
- # Taylr Beta:
- #   branch: beta
- #   commands:
- #     - |
- #       source ./scripts/circle_env.sh
- #       ./scripts/deploy_crashlytics.sh
- #       cd scripts
- #       brew install node
- #       npm install
- #       node deploy_beta.js
-
- # Taylr:
- #   branch: prod
- #   commands:
- #     - |
- #       source ./scripts/circle_env.sh
- #       ./scripts/deploy_crashlytics.sh
- #     - |
- #       source ./scripts/circle_env.sh
- #       gym build --scheme Taylr \
- #                 --xcconfig Configs/${XCCONFIG_NAME}.xcconfig \
- #                 --xcargs BUNDLE_BUILD=$BN \
- #                 --export_method "app-store" \
- #                 --buildlog_path $CIRCLE_ARTIFACTS \
- #                 --output_directory $CIRCLE_ARTIFACTS \
- #                 --output_name ${BN}_appstore.ipa \
- #                 --provisioning_profile_path scripts/profiles/54d025b0-0a94-4834-b795-8d5234608e52.mobileprovision
- #       cd $CIRCLE_ARTIFACTS
- #       ipa distribute:itunesconnect --apple-id 1015154738 --file "${BN}_appstore.ipa" --upload \
- #        --warnings --errors --account "$APPLE_ID" --password "$APPLE_ID_PASSWORD" --verbose
+     - |
+       source ./scripts/circle_env.sh
+       cd ios
+       gym build --scheme Taylr \
+                 --xcconfig Configs/${XCCONFIG_NAME}.xcconfig \
+                 --xcargs BUNDLE_BUILD=$BN \
+                 --export_method "app-store" \
+                 --buildlog_path $CIRCLE_ARTIFACTS \
+                 --output_directory $CIRCLE_ARTIFACTS \
+                 --output_name ${BN}_appstore.ipa \
+                 --provisioning_profile_path scripts/profiles/54d025b0-0a94-4834-b795-8d5234608e52.mobileprovision
+       cd $CIRCLE_ARTIFACTS
+       ipa distribute:itunesconnect --apple-id 1015154738 --file "${BN}_appstore.ipa" --upload \
+        --warnings --errors --account "$APPLE_ID" --password "$APPLE_ID_PASSWORD" --verbose
