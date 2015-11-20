@@ -42,6 +42,7 @@ class BridgeManager : NSObject {
 // MARK: - BridgeManager JS API
 
 enum NativeAppEvent : String {
+    case RegisteredPushToken = "RegisteredPushToken"
     case NavigationPush = "Navigation.push"
     case NavigationPop = "Navigation.pop"
 }
