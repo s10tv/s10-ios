@@ -8,12 +8,12 @@ let {
   TouchableOpacity,
   WebView,
   Image,
+  View,
   StyleSheet,
   NativeAppEventEmitter,
 } = React;
 
-var Tabbar = require('react-native-tabbar');
-var Item = Tabbar.Item;
+var { TabBarIOS, } = require('react-native-icons');
 
 // Common
 let BaseTaylrNavigator = require('./lib/BaseTaylrNavigator');
@@ -170,46 +170,53 @@ class RootNavigator extends BaseTaylrNavigator {
         console.log('root');
         console.log(this.state.currentTab);
         return (
-          <Tabbar 
-              style={{ backgroundColor: '#cccccc' }}
-              selected={this.state.currentTab}
-              onTabItemPress={(name) => { this.setState({ currentTab: name })}}>
-            <Item name="me">
-              <Item.Content>
-                <MeScreen me={this.props.me} 
-                    onLogout={this.props.onLogout}
-                    categories={this.props.categories}
-                    myTags={this.props.myTags}
-                    navigator={nav}
-                    ddp={this.props.ddp} />
-              </Item.Content>
-              <Item.Icon>
-                <Image source={require('./img/ic-me.png')} />
-              </Item.Icon>
-            </Item>
-            <Item name="discover">
-              <Item.Content>
-                <DiscoverScreen navigator={nav} ddp={this.ddp} 
-                  candidate={this.props.candidate}
-                  users={this.props.users}
-                  settings={this.props.settings} />
-              </Item.Content>
-              <Item.Icon>
-                <Image source={require('./img/ic-compass.png')} />
-              </Item.Icon>
-            </Item>
-            <Item name="chats">
-              <Item.Content>
-                <ConversationListView
-                  navigator={nav}
-                  style={{backgroundColor: COLORS.background, flex: 1, marginTop: 64}}
-                  currentUser={user} />
-              </Item.Content>
-              <Item.Icon>
-                <Image source={require('./img/ic-chats.png')} />
-              </Item.Icon>
-            </Item>
-          </Tabbar>
+          <TabBarIOS tintColor={COLORS.taylr}>
+            <TabBarIOS.Item 
+              title="Me"
+              iconName={'ion|ios-person'}
+              onPress={() => {
+                this.setState({currentTab: 'me'});
+              }}
+              selected={this.state.currentTab == 'me'}>
+              
+              <MeScreen me={this.props.me} 
+                onLogout={this.props.onLogout}
+                categories={this.props.categories}
+                myTags={this.props.myTags}
+                navigator={nav}
+                ddp={this.props.ddp} />
+
+            </TabBarIOS.Item>
+            <TabBarIOS.Item 
+              title="Discover"
+              iconName={'ion|compass'}
+              onPress={() => {
+                this.setState({currentTab: 'discover'});
+              }}
+              selected={this.state.currentTab == 'discover'}>
+
+              <DiscoverScreen navigator={nav} ddp={this.ddp} 
+                candidate={this.props.candidate}
+                users={this.props.users}
+                settings={this.props.settings} />
+
+            </TabBarIOS.Item>
+            <TabBarIOS.Item 
+              title="Chats"
+              iconName={'ion|chatbubbles'}
+              onPress={() => {
+                this.setState({currentTab: 'chats'});
+              }}
+              selected={this.state.currentTab == 'chats'}>
+              
+              <ConversationListView
+                navigator={nav}
+                style={{backgroundColor: COLORS.background, flex: 1, marginTop: 64}}
+                currentUser={user} />
+                
+            </TabBarIOS.Item>
+          </TabBarIOS>
+          
         );
     }
   }

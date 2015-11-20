@@ -84,6 +84,9 @@
 		F9DDF6451BFD434600D7A2FC /* libRNFabricDigits.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9DDF6441BFD434600D7A2FC /* libRNFabricDigits.a */; };
 		F9DDF6AA1BFDB2A400D7A2FC /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9DDF6A91BFDB2A400D7A2FC /* libRCTVideo.a */; };
 		F9DDF6B11BFDB3C700D7A2FC /* background.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F9DDF6B01BFDB3C700D7A2FC /* background.mp4 */; };
+		F9DDF6FB1BFF10F500D7A2FC /* libReactNativeIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9DDF6FA1BFF10F500D7A2FC /* libReactNativeIcons.a */; };
+		F9DDF7071BFF151000D7A2FC /* ionicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F9DDF7051BFF151000D7A2FC /* ionicons.ttf */; };
+		F9DDF7081BFF151000D7A2FC /* ion.json in Resources */ = {isa = PBXBuildFile; fileRef = F9DDF7061BFF151000D7A2FC /* ion.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +131,13 @@
 			proxyType = 2;
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RCTVideo;
+		};
+		F9DDF6F11BFF10D100D7A2FC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F9DDF6E81BFF10BB00D7A2FC /* ReactNativeIcons.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 2F5A3EB81ACDBF8000439386;
+			remoteInfo = ReactNativeIcons;
 		};
 		F9F337C71BFD431800ACA98C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -231,6 +241,10 @@
 		F9DDF6981BFDB27700D7A2FC /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVideo.xcodeproj; path = "../node_modules/react-native-video/RCTVideo.xcodeproj"; sourceTree = "<group>"; };
 		F9DDF6A91BFDB2A400D7A2FC /* libRCTVideo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRCTVideo.a; path = "../../node_modules/react-native-video/build/Debug-iphoneos/libRCTVideo.a"; sourceTree = "<group>"; };
 		F9DDF6B01BFDB3C700D7A2FC /* background.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = background.mp4; sourceTree = "<group>"; };
+		F9DDF6E81BFF10BB00D7A2FC /* ReactNativeIcons.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeIcons.xcodeproj; path = "../node_modules/react-native-icons/ios/ReactNativeIcons.xcodeproj"; sourceTree = "<group>"; };
+		F9DDF6FA1BFF10F500D7A2FC /* libReactNativeIcons.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libReactNativeIcons.a; path = "../../node_modules/react-native-icons/ios/build/Debug-iphoneos/libReactNativeIcons.a"; sourceTree = "<group>"; };
+		F9DDF7051BFF151000D7A2FC /* ionicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = ionicons.ttf; sourceTree = "<group>"; };
+		F9DDF7061BFF151000D7A2FC /* ion.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = ion.json; sourceTree = "<group>"; };
 		F9F337BE1BFD42F600ACA98C /* RNFabricDigits.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNFabricDigits.xcodeproj; path = "../node_modules/react-native-fabric-digits/ios/RNFabricDigits.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -242,6 +256,7 @@
 				F9DDF6AA1BFDB2A400D7A2FC /* libRCTVideo.a in Frameworks */,
 				EA19793F1BFAAB7C00DF7B58 /* libRNMail.a in Frameworks */,
 				EA1979401BFAAB7C00DF7B58 /* libRNSearchBar.a in Frameworks */,
+				F9DDF6FB1BFF10F500D7A2FC /* libReactNativeIcons.a in Frameworks */,
 				EA3713921BFD288700E51980 /* libRCTFBSDKCore.a in Frameworks */,
 				EA3713AA1BFD28EF00E51980 /* libRCTFBSDKLogin.a in Frameworks */,
 				F9DDF6451BFD434600D7A2FC /* libRNFabricDigits.a in Frameworks */,
@@ -255,6 +270,7 @@
 		2C9F4D1EF3D7E4C4FBB0AEDB /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F9DDF6E81BFF10BB00D7A2FC /* ReactNativeIcons.xcodeproj */,
 				F9DDF6981BFDB27700D7A2FC /* RCTVideo.xcodeproj */,
 				F9F337BE1BFD42F600ACA98C /* RNFabricDigits.xcodeproj */,
 				EA24215C1BFD282C00AF16C4 /* RCTFBSDKCore.xcodeproj */,
@@ -265,6 +281,7 @@
 				EA3713A91BFD28EF00E51980 /* libRCTFBSDKLogin.a */,
 				EA3713911BFD288700E51980 /* libRCTFBSDKCore.a */,
 				F9DDF6A91BFDB2A400D7A2FC /* libRCTVideo.a */,
+				F9DDF6FA1BFF10F500D7A2FC /* libReactNativeIcons.a */,
 				7AA6C7823A20B63EB451A15E /* Pods.framework */,
 			);
 			name = Frameworks;
@@ -481,6 +498,8 @@
 		EA37776C1A966E380055DE99 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
+				F9DDF7051BFF151000D7A2FC /* ionicons.ttf */,
+				F9DDF7061BFF151000D7A2FC /* ion.json */,
 				EA7FB08E1B5EF9D50052B394 /* Cabin-Bold.ttf */,
 				EA7FB08F1B5EF9D50052B394 /* Cabin-BoldItalic.ttf */,
 				EA7FB0901B5EF9D50052B394 /* Cabin-Italic.ttf */,
@@ -574,6 +593,14 @@
 			isa = PBXGroup;
 			children = (
 				F9DDF6A21BFDB29100D7A2FC /* libRCTVideo.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F9DDF6EE1BFF10D100D7A2FC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F9DDF6F21BFF10D100D7A2FC /* libReactNativeIcons.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -679,6 +706,10 @@
 					ProjectRef = F9DDF6981BFDB27700D7A2FC /* RCTVideo.xcodeproj */;
 				},
 				{
+					ProductGroup = F9DDF6EE1BFF10D100D7A2FC /* Products */;
+					ProjectRef = F9DDF6E81BFF10BB00D7A2FC /* ReactNativeIcons.xcodeproj */;
+				},
+				{
 					ProductGroup = F9F337C41BFD431800ACA98C /* Products */;
 					ProjectRef = F9F337BE1BFD42F600ACA98C /* RNFabricDigits.xcodeproj */;
 				},
@@ -741,6 +772,13 @@
 			remoteRef = F9DDF6A11BFDB29100D7A2FC /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		F9DDF6F21BFF10D100D7A2FC /* libReactNativeIcons.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libReactNativeIcons.a;
+			remoteRef = F9DDF6F11BFF10D100D7A2FC /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		F9F337C81BFD431800ACA98C /* libRNFabricDigits.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -765,10 +803,12 @@
 				EA7FB0981B5EF9D50052B394 /* Cabin-MediumItalic.ttf in Resources */,
 				EA3226031BFDAEEB00FF5074 /* MuteChecker.caf in Resources */,
 				EA7FB0991B5EF9D50052B394 /* Cabin-Regular.ttf in Resources */,
+				F9DDF7071BFF151000D7A2FC /* ionicons.ttf in Resources */,
 				EA7FB0951B5EF9D50052B394 /* Cabin-BoldItalic.ttf in Resources */,
 				EA3336871BFF062800BF9A87 /* Conversation.xcassets in Resources */,
 				EA3225FD1BFDAEEB00FF5074 /* Conversation.storyboard in Resources */,
 				EA7FB0941B5EF9D50052B394 /* Cabin-Bold.ttf in Resources */,
+				F9DDF7081BFF151000D7A2FC /* ion.json in Resources */,
 				EA7FB0961B5EF9D50052B394 /* Cabin-Italic.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
