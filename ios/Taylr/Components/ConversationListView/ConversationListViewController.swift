@@ -14,6 +14,10 @@ import Atlas
 class ConversationListViewController : ATLConversationListViewController {
     var vm: ConversationListViewModel!
     
+    deinit {
+        DDLogVerbose("ConversationList - Deinit")
+    }
+    
     override func viewDidLoad() {
         displaysAvatarItem = true
         shouldDisplaySearchController = false
@@ -28,34 +32,34 @@ class ConversationListViewController : ATLConversationListViewController {
         layerClient = vm.layerClient
         dataSource = vm
         delegate = self
-        DDLogDebug("ConversationList - viewDidLoad")
+        DDLogVerbose("ConversationList - viewDidLoad")
     }
     
     override func viewWillAppear(animated: Bool) {
         super.viewWillAppear(animated)
-        DDLogDebug("ConversationList - viewWillAppear")
+        DDLogVerbose("ConversationList - viewWillAppear")
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        DDLogDebug("ConversationList - viewDidAppear")
+        DDLogVerbose("ConversationList - viewDidAppear")
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        DDLogDebug("ConversationList - viewWillDisappear")
+        DDLogVerbose("ConversationList - viewWillDisappear")
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        DDLogDebug("ConversationList - viewDidDisappear")
+        DDLogVerbose("ConversationList - viewDidDisappear")
     }
 }
 
 extension ConversationListViewController : ATLConversationListViewControllerDelegate {
     
     func conversationListViewController(conversationListViewController: ATLConversationListViewController!, didSelectConversation conversation: LYRConversation!) {
-        DDLogDebug("Selected conversation id \(conversation.identifier.absoluteString)")
+        DDLogVerbose("Selected conversation id \(conversation.identifier.absoluteString)")
         rnNavigationPush(.Conversation, args: [
             "conversationId": conversation.identifier.absoluteString
         ])

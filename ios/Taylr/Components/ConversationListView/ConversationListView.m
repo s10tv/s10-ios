@@ -13,6 +13,3 @@
 RCT_EXPORT_VIEW_PROPERTY(currentUser, userViewModel)
 
 @end
-
-// MARK: - App Events
-// ViewController.pushRoute -> [route: 'Conversation', conversationId: String]

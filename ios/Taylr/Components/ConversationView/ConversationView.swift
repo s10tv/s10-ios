@@ -43,10 +43,10 @@ class ConversationViewManager : RCTViewManager {
         let vc = sb.instantiateInitialViewController() as! ConversationViewController
         vc.vm = ConversationViewModel(layer: layer, currentUser: currentUser, conversation: conversation)
         let view = vc.view as! ConversationView
-        view.tsViewController = vc
         view.currentUser = currentUser
         view.conversationId = conversationId
         view.recipientUser = recipientUser
+        view.vc = vc
         return view
     }
 }
@@ -55,4 +55,54 @@ class ConversationView : UIView {
     var currentUser: UserViewModel!
     var conversationId: String?
     var recipientUser: UserViewModel?
+    
+    weak var vc: ConversationViewController?
+    
+//    override var frame: CGRect {
+//        get { return super.frame }
+//        set {
+//            DDLogInfo("Set frame current \(frame) to \(newValue)")
+//            super.frame = newValue
+//        }
+//    }
+//    
+//    override var bounds: CGRect {
+//        get { return super.bounds }
+//        set {
+//            DDLogInfo("Set bounds current \(bounds) to \(newValue)")
+//            super.bounds = newValue
+//        }
+//    }
+//    
+//    override func layoutSubviews() {
+//        super.layoutSubviews()
+//        DDLogInfo("My frame is \(frame) bounds \(bounds)")
+//    }
+//    
+    override func willMoveToSuperview(newSuperview: UIView?) {
+        if let _ = superview {
+//            DDLogInfo("Current translate = \(translatesAutoresizingMaskIntoConstraints)")
+            translatesAutoresizingMaskIntoConstraints = false
+        }
+    }
+    
+    override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        if let superview = superview {
+            makeEdgesEqualTo(superview)
+        }
+    }
+    
+    deinit {
+        DDLogVerbose("deinit will remove from parent vc \(vc?.parentViewController)")
+        vc?.willMoveToParentViewController(nil)
+        vc?.removeFromParentViewController()
+    }
+    
+    override func reactBridgeDidFinishTransaction() {
+        if let vc = vc where vc.parentViewController == nil {
+            reactAddControllerToClosestParent(vc)
+            DDLogVerbose("react bridge did finish transation, added vc to parent \(vc.parentViewController)")
+        }
+    }
 }

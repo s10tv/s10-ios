@@ -84,11 +84,14 @@ class ConversationViewController : UIViewController {
         swipeView.vertical = true
         swipeView.bounces = false
         // Need to set currentItemIndex before dataSource
-        if vm.hasUnreadText {
+//        if vm.hasUnreadText {
+        // NOTE: we're not able to start on the video producer page without causing screen glitch
+        // TODO: Fix me, either change the UI or view controller hierarchy such that
+        // camera view can be the first view that shows up
             swipeView.currentItemIndex = Page.ChatHistory.rawValue
-        } else {
-            swipeView.currentItemIndex = Page.Producer.rawValue
-        }
+//        } else {
+//            swipeView.currentItemIndex = Page.Producer.rawValue
+//        }
         swipeView.dataSource = self
         swipeView.delegate = self
         swipeView.layoutIfNeeded()
@@ -96,13 +99,7 @@ class ConversationViewController : UIViewController {
         if vm.hasUnplayedVideo {
             presentViewController(videoPlayer, animated: false, completion: nil)
         }
-        DDLogDebug("viewDidLoad")
-    }
-    
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        // #temp hack till we figure out better way
-        scrollView.contentInset.top = 0
+        DDLogVerbose("Conversation - viewDidLoad")
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -111,23 +108,23 @@ class ConversationViewController : UIViewController {
         if let view = navigationBar.topItem?.titleView {
             view.bounds.size = view.systemLayoutSizeFittingSize(UILayoutFittingCompressedSize)
         }
-        DDLogDebug("Conversation -  viewWillAppear")
+        DDLogVerbose("Conversation - viewWillAppear")
     }
     
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        DDLogDebug("Conversation -  viewDidAppear")
+        DDLogVerbose("Conversation - viewDidAppear")
     }
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         navigationBar.setBackgroundColor(nil)
-        DDLogDebug("Conversation - viewWillDisappear")
+        DDLogVerbose("Conversation - viewWillDisappear")
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        DDLogDebug("Conversation - viewDidDisappear")
+        DDLogVerbose("Conversation - viewDidDisappear")
     }
     
     // MARK: -
@@ -280,5 +277,6 @@ extension ConversationViewController : SwipeViewDataSource {
 extension ConversationViewController : SwipeViewDelegate {
     
     func swipeViewCurrentItemIndexDidChange(swipeView: SwipeView!) {
+        DDLogVerbose("SwipeView index changed index=\(swipeView.currentItemIndex)")
     }
 }

@@ -45,7 +45,7 @@ class DDNSLogger : DDAbstractLogger {
             (logMessage.fileName as NSString).UTF8String,
             Int32(logMessage.line),
             (logMessage.function as NSString).UTF8String,
-            nil, // Domain
+            logMessage.fileName, // Domain
             level,
             logMessage.message
         )

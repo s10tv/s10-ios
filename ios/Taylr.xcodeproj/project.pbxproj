@@ -199,6 +199,8 @@
 		EA3225F91BFDAEEB00FF5074 /* ConversationListViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationListViewModel.swift; sourceTree = "<group>"; };
 		EA3225FA1BFDAEEB00FF5074 /* ConversationListView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConversationListView.m; sourceTree = "<group>"; };
 		EA3226361BFDB9C000FF5074 /* RACBindings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RACBindings.swift; sourceTree = "<group>"; };
+		EA3336721BFEC39000BF9A87 /* ConversationListView.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = ConversationListView.js; path = ../../../../components/chat/ConversationListView.js; sourceTree = "<group>"; };
+		EA3336761BFEC39900BF9A87 /* ConversationView.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; name = ConversationView.js; path = ../../../../components/chat/ConversationView.js; sourceTree = "<group>"; };
 		EA3713911BFD288700E51980 /* libRCTFBSDKCore.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRCTFBSDKCore.a; path = "../../node_modules/react-native-fbsdkcore/build/Debug-iphoneos/libRCTFBSDKCore.a"; sourceTree = "<group>"; };
 		EA3713931BFD28C200E51980 /* RCTFBSDKLogin.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTFBSDKLogin.xcodeproj; path = "../node_modules/react-native-fbsdklogin/RCTFBSDKLogin.xcodeproj"; sourceTree = "<group>"; };
 		EA3713A91BFD28EF00E51980 /* libRCTFBSDKLogin.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRCTFBSDKLogin.a; path = "../../node_modules/react-native-fbsdklogin/build/Debug-iphoneos/libRCTFBSDKLogin.a"; sourceTree = "<group>"; };
@@ -413,6 +415,7 @@
 				EA3225E81BFDAEEB00FF5074 /* ConversationViewModel.swift */,
 				EA3225E61BFDAEEB00FF5074 /* ConversationView.swift */,
 				EA3225E91BFDAEEB00FF5074 /* ConversationView.m */,
+				EA3336761BFEC39900BF9A87 /* ConversationView.js */,
 			);
 			path = ConversationView;
 			sourceTree = "<group>";
@@ -457,6 +460,7 @@
 				EA3225F91BFDAEEB00FF5074 /* ConversationListViewModel.swift */,
 				EA3225F71BFDAEEB00FF5074 /* ConversationListView.swift */,
 				EA3225FA1BFDAEEB00FF5074 /* ConversationListView.m */,
+				EA3336721BFEC39000BF9A87 /* ConversationListView.js */,
 			);
 			path = ConversationListView;
 			sourceTree = "<group>";

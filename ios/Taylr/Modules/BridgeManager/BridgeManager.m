@@ -10,8 +10,4 @@
 
 @interface RCT_EXTERN_MODULE(TSBridgeManager, NSObject)
 
-RCT_EXTERN_METHOD(componentWillMount:(int)reactTag)
-RCT_EXTERN_METHOD(componentDidMount:(int)reactTag)
-RCT_EXTERN_METHOD(componentWillUnmount:(int)reactTag)
-
 @end
