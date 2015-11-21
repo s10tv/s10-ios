@@ -110,6 +110,7 @@ class Me extends React.Component {
     let me = this.props.me;
 
     if (!me) {
+      console.log('me is undefined');
       return <Loader />
     }
 

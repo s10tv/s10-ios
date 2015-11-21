@@ -25,6 +25,7 @@ class LayoutContainer extends React.Component {
     this.subs = {}
 
     this.state = {
+      loggedIn: true,
       needsOnboarding: true,
       modalVisible: false,
       currentTab: 'chats',
@@ -39,6 +40,7 @@ class LayoutContainer extends React.Component {
 
   onLogin(options) {
     let { token, userId, tokenExpires } = options;
+
     if (!token) {
       console.error('OnLogin called with invalid Token');
     }
@@ -168,16 +170,13 @@ class LayoutContainer extends React.Component {
   }
 
   __layerLogin() {
-    console.log('calling __layerLogin');
     TSLayerService.isAuthenticated((err, isAuthenticated) => {
       if (err) {
-        console.log('layer cannot login');
         console.trace(err);
         return;
       }
 
       if (isAuthenticated) {
-        console.log('layer is already authenticated');
         return;
       } else {
         return new Promise((resolve, reject) => {
@@ -209,11 +208,19 @@ class LayoutContainer extends React.Component {
 
     ddp.initialize()
     .then(() => {
-      return ddp.loginWithToken(); 
+      return ddp.isLoggedIn()
+    })
+    .then((res) => {
+      if (res.token) {
+        ddp.loginWithToken(res.token);
+      }
+
+      return Promise.resolve(res);
     }).then((res) => {
-      this.setState(res);
-      if (res.loggedIn) {
+      if (res.token) {
         this.onLogin(res);
+      } else {
+        this.setState({ loggedIn: false });
       }
     })
   }
@@ -231,6 +238,7 @@ class LayoutContainer extends React.Component {
     }
 
     let status = this.state.settings.accountStatus.value;
+
     if (status != 'active') {
       return <OnboardingNavigator
         me={this.state.me} 
