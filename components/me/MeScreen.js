@@ -163,6 +163,8 @@ class Me extends React.Component {
 
 var styles = StyleSheet.create({
   avatar: {
+    borderWidth: 2.5,
+    borderColor: 'white',
     borderRadius: width / 8,
     height: width / 4,
     width: width / 4,

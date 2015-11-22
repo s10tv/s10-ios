@@ -51,7 +51,7 @@
                                                         <constraint firstAttribute="width" constant="34" id="ZM9-Ap-DxV"/>
                                                     </constraints>
                                                     <userDefinedRuntimeAttributes>
-                                                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="ts_cornerRadius">
                                                             <integer key="value" value="17"/>
                                                         </userDefinedRuntimeAttribute>
                                                     </userDefinedRuntimeAttributes>
@@ -181,7 +181,7 @@
                                 <constraint firstAttribute="trailing" secondItem="lfn-tw-Cq9" secondAttribute="trailing" constant="15" id="hYW-3D-gdl"/>
                             </constraints>
                             <userDefinedRuntimeAttributes>
-                                <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                <userDefinedRuntimeAttribute type="number" keyPath="ts_cornerRadius">
                                     <real key="value" value="3"/>
                                 </userDefinedRuntimeAttribute>
                             </userDefinedRuntimeAttributes>

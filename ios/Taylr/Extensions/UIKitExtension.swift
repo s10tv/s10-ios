@@ -11,6 +11,51 @@ import ReactiveCocoa
 import Cartography
 
 extension UIView {
+    @IBInspectable public var ts_cornerRadius: CGFloat {
+        get { return layer.cornerRadius }
+        set {
+            layer.cornerRadius = newValue
+            layer.masksToBounds = newValue > 0
+        }
+    }
+    
+    @IBInspectable public var ts_borderWidth: CGFloat {
+        get { return layer.borderWidth }
+        set { layer.borderWidth = newValue }
+    }
+    
+    @IBInspectable public var ts_borderColor: UIColor? {
+        get { return layer.borderColor.flatMap { UIColor(CGColor: $0) } }
+        set { layer.borderColor = newValue?.CGColor }
+    }
+    
+    @IBInspectable public var ts_shadowColor: UIColor? {
+        get { return layer.shadowColor.flatMap { UIColor(CGColor: $0) } }
+        set { layer.shadowColor = newValue?.CGColor }
+    }
+    
+    @IBInspectable public var ts_shadowOffset: CGSize {
+        get { return layer.shadowOffset }
+        set { layer.shadowOffset = newValue }
+    }
+    
+    @IBInspectable public var ts_shadowRadius: CGFloat {
+        get { return layer.shadowRadius }
+        set { layer.shadowRadius = newValue }
+    }
+    
+    @IBInspectable public var ts_shadowOpacity: Float {
+        get { return layer.shadowOpacity }
+        set { layer.shadowOpacity = newValue }
+    }
+    
+    @IBInspectable public var ts_masksToBounds: Bool {
+        get { return layer.masksToBounds }
+        set { layer.masksToBounds = newValue }
+    }
+}
+
+extension UIView {
     public func parentViewOfType<T: UIView>(type: T.Type) -> T? {
         if let superview = superview as? T {
             return superview

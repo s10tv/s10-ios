@@ -173,6 +173,8 @@ let avatarRadius = height / 4.5;
 
 var styles = StyleSheet.create({
   avatar: {
+    borderWidth: 2.5,
+    borderColor: 'white',
     borderRadius: avatarRadius / 2,
     height: avatarRadius,
     width: avatarRadius,

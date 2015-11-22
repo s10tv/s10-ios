@@ -8,51 +8,6 @@
 
 import UIKit
 
-extension UIView {
-    @IBInspectable public var cornerRadius: CGFloat {
-        get { return layer.cornerRadius }
-        set {
-            layer.cornerRadius = newValue
-            layer.masksToBounds = newValue > 0
-        }
-    }
-    
-    @IBInspectable public var borderWidth: CGFloat {
-        get { return layer.borderWidth }
-        set { layer.borderWidth = newValue }
-    }
-    
-    @IBInspectable public var borderColor: UIColor? {
-        get { return layer.borderColor.flatMap { UIColor(CGColor: $0) } }
-        set { layer.borderColor = newValue?.CGColor }
-    }
-    
-    @IBInspectable public var shadowColor: UIColor? {
-        get { return layer.shadowColor.flatMap { UIColor(CGColor: $0) } }
-        set { layer.shadowColor = newValue?.CGColor }
-    }
-    
-    @IBInspectable public var shadowOffset: CGSize {
-        get { return layer.shadowOffset }
-        set { layer.shadowOffset = newValue }
-    }
-    
-    @IBInspectable public var shadowRadius: CGFloat {
-        get { return layer.shadowRadius }
-        set { layer.shadowRadius = newValue }
-    }
-    
-    @IBInspectable public var shadowOpacity: Float {
-        get { return layer.shadowOpacity }
-        set { layer.shadowOpacity = newValue }
-    }
-    
-    @IBInspectable public var masksToBounds: Bool {
-        get { return layer.masksToBounds }
-        set { layer.masksToBounds = newValue }
-    }
-}
-
 public class BaseView : UIView {
 
     public convenience init() {
@@ -142,5 +97,75 @@ public class OneDScrollView : UIScrollView {
 public extension UIScrollView {
     public func scrollToTop(animated animated: Bool) {
         setContentOffset(CGPointMake(0, -contentInset.top), animated: animated)
+    }
+}
+
+@IBDesignable public class NibDesignableView : BaseView {
+    
+    override public func commonInit() {
+        let bundle = NSBundle(forClass: self.dynamicType)
+        let nib = UINib(nibName: self.nibName(), bundle: bundle)
+        let view = nib.instantiateWithOwner(self, options: nil)[0] as! UIView
+        insertSubview(view, atIndex: 0)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.makeEdgesEqualTo(self)
+    }
+    
+    func nibName() -> String {
+        return self.dynamicType.description().componentsSeparatedByString(".").last!
+    }
+}
+
+
+@IBDesignable public class DesignableLabel : UILabel {
+    
+    @IBInspectable public var fontSize: CGFloat = 13.0
+    @IBInspectable public var fontName: String = "Cabin-Regular"
+    @IBInspectable public var fontKern: CGFloat = 0
+    
+    public var rawText : String? {
+        get { return attributedText?.string }
+        set { attributedText = attributedText?.replace(text: newValue ?? "") }
+    }
+    
+    public override func awakeFromNib() {
+        super.awakeFromNib()
+        let font = UIFont(name: fontName, size: fontSize)!
+        attributedText = attributedText?.replace(font: font, kern: fontKern)
+    }
+}
+
+@IBDesignable public class DesignableButton : UIButton {
+    @IBInspectable public var fontSize: CGFloat = 13.0
+    @IBInspectable public var fontName: String = "Cabin-Regular"
+    @IBInspectable public var fontKern: CGFloat = 0
+    
+    public var attributedText : NSAttributedString? {
+        get { return attributedTitleForState(.Normal) }
+        set { setAttributedTitle(newValue, forState: .Normal) }
+    }
+    
+    public var rawText : String? {
+        get { return attributedText?.string }
+        set { attributedText = attributedText?.replace(text: newValue ?? "") }
+    }
+    
+    public var text : String? {
+        get { return titleForState(.Normal) }
+        set { setTitle(newValue, forState: .Normal) }
+    }
+    
+    public override func awakeFromNib() {
+        super.awakeFromNib()
+        let font = UIFont(name: fontName, size: fontSize)!
+        attributedText = attributedText?.replace(font: font, kern: fontKern)
+    }
+    
+    public override func intrinsicContentSize() -> CGSize {
+        let s = super.intrinsicContentSize()
+        return CGSize(
+            width: s.width + titleEdgeInsets.left + titleEdgeInsets.right,
+            height: s.height + titleEdgeInsets.top + titleEdgeInsets.bottom
+        )
     }
 }
