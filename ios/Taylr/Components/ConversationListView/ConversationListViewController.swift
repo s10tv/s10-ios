@@ -54,6 +54,12 @@ class ConversationListViewController : ATLConversationListViewController {
         super.viewDidDisappear(animated)
         DDLogVerbose("ConversationList - viewDidDisappear")
     }
+    
+    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = super.tableView(tableView, cellForRowAtIndexPath: indexPath)
+        cell.selectionStyle = .None
+        return cell
+    }
 }
 
 extension ConversationListViewController : ATLConversationListViewControllerDelegate {
