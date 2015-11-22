@@ -35,6 +35,7 @@ class AppConfig {
     let mixpanelToken: String
     let amplitudeKey: String
     let layerURL: NSURL
+    let appHubApplicationId: String
     
     init(audience: Audience) {
         self.audience = audience
@@ -47,12 +48,14 @@ class AppConfig {
             amplitudeKey = "0ef2064f5f59aca8b1224ec4374064d3"
             mixpanelToken = "9d5d89ba988e52622278165d91ccf937"
             layerURL = NSURL("layer:///apps/staging/49574578-72bb-11e5-9a72-a4a211002a87")
+            appHubApplicationId = "uCG85kfu67WewOZVEQBk"
         case .Beta, .AppStore:
             serverHostName = "taylr-prod.herokuapp.com"
             segmentWriteKey = "DwMJMhxsvn6EDrO33gANHBjvg3FUsfPJ"
             amplitudeKey = "ff96d68f3ff2efd39284b33a78dbbf2c"
             mixpanelToken = "39194eed490fa8abcc026256631a4230"
             layerURL = NSURL("layer:///apps/production/49574ba4-72bb-11e5-89fc-a4a211002a87")
+            appHubApplicationId = "lH6tVwRvGz1DuxBTJ3i4"
         }
     }
     

@@ -37,6 +37,7 @@ class AppDependencies : NSObject {
         super.init()
         Crashlytics.sharedInstance().delegate = self
         Fabric.with([Digits(), Crashlytics()])
+        AppHub.setApplicationID(config.appHubApplicationId)
     }
 }
 
@@ -46,7 +47,8 @@ extension AppDependencies : RCTBridgeDelegate {
         if env.build == "0" {
             return NSURL("http://localhost:8081/index.ios.bundle?platform=ios&dev=true")
         } else {
-            return NSBundle.mainBundle().URLForResource("main", withExtension: "jsbundle")
+            let build = AppHub.buildManager().currentBuild
+            return build.bundle.URLForResource("main", withExtension: "jsbundle")
         }
     }
     
