@@ -15,14 +15,6 @@ let {
 // polyfill the process functionality needed
 global.process = require("./lib/process.polyfill");
 
-TSLayerService.connect((err) => {
-	if (err != null) {
-		console.log('Unable to connect to Layer', err);
-	} else {
-		console.log('Successfully connected to Layer');
-	}
-});
-
 let LayoutContainer = require('./components/LayoutContainer');
 
 let container = React.createClass({

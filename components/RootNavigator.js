@@ -240,6 +240,7 @@ class RootNavigator extends React.Component {
               <Item.Content>
                 <ConversationListView
                   navigator={nav}
+                  numTotalConversations={this.props.numTotalConversations}
                   style={{backgroundColor: COLORS.background, flex: 1, marginTop: 64}}
                   currentUser={user} />
               </Item.Content>

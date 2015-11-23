@@ -3,6 +3,7 @@ let React = require('react-native');
 let {
   AppRegistry,
   AsyncStorage,
+  NativeAppEventEmitter,
   View,
   TabBarIOS,
 } = React;
@@ -176,36 +177,47 @@ class LayoutContainer extends React.Component {
   }
 
   __layerLogin() {
-    TSLayerService.isAuthenticated((err, isAuthenticated) => {
+    NativeAppEventEmitter.addListener('Layer.allConversationsCountUpdate', (count) => {
+      this.setState({ numTotalConversations: count })
+    }.bind(this))
+
+    TSLayerService.connect((err) => {
       if (err) {
         console.trace(err);
         return;
       }
 
-      if (isAuthenticated) {
-        return;
-      } else {
-        return new Promise((resolve, reject) => {
-          TSLayerService.requestAuthenticationNonce((err, nonce) => {
-            if (err) {
-              return reject(err);
-            }
-            return resolve(nonce);
+      TSLayerService.isAuthenticated((err, isAuthenticated) => {
+        if (err) {
+          console.trace(err);
+          return;
+        }
+
+        if (isAuthenticated) {
+          return;
+        } else {
+          return new Promise((resolve, reject) => {
+            TSLayerService.requestAuthenticationNonce((err, nonce) => {
+              if (err) {
+                return reject(err);
+              }
+              return resolve(nonce);
+            })
           })
-        })
-        .then((nonce) => {
-          return this.ddp.call({ methodName: 'layer/auth', params: [nonce]});
-        })
-        .then((sessionId) => {
-          TSLayerService.authenticate(sessionId, (err, res) => {
-            console.log('layer authenticated');
-          });
-        })
-        .catch(err => {
-          console.log('layer cannot login due to error');
-          console.err(err);
-        })
-      }
+          .then((nonce) => {
+            return this.ddp.call({ methodName: 'layer/auth', params: [nonce]});
+          })
+          .then((sessionId) => {
+            TSLayerService.authenticate(sessionId, (err, res) => {
+              console.log('layer authenticated');
+            });
+          })
+          .catch(err => {
+            console.log('layer cannot login due to error');
+            console.err(err);
+          })
+        }
+      })
     })
   }
 
@@ -256,6 +268,7 @@ class LayoutContainer extends React.Component {
       history={this.state.history}
       users={this.state.users}
       settings={this.state.settings}
+      numTotalConversations={this.state.numTotalConversations}
       ddp={this.ddp} />
   }
 }
