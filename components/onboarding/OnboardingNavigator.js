@@ -85,6 +85,7 @@ class OnboardingNavigator extends BaseTaylrNavigator {
         }
         break;
 
+      case 'linkservice':
       case 'openwebview':
       case 'hashtag':
       case 'login': // fallthrough intentional
@@ -110,7 +111,10 @@ class OnboardingNavigator extends BaseTaylrNavigator {
     switch (route.id) {
       case 'login':
         return (
-          <FacebookLoginScreen navigator={nav}
+          <FacebookLoginScreen
+            navigator={nav}
+            me={this.props.me}
+            loggedIn={this.props.loggedIn}
             onLogin={this.props.onLogin}
             ddp={this.props.ddp} />
         );
@@ -161,16 +165,9 @@ class OnboardingNavigator extends BaseTaylrNavigator {
   }
 
   render() {
-    var initialRoute = {
-      id: 'linkservicecontainer',
-      title: 'Link Services',
+    let initialRoute = {
+      id: 'login',
     };
-    
-    if (!this.props.loggedIn) {
-      initialRoute = {
-        id: 'login',
-      };
-    }
 
     return (
       <Navigator

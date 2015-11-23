@@ -46,7 +46,7 @@ class RootNavigator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentTab: 'Me'
+      currentTab: 'Today'
     }
   }
 
@@ -236,7 +236,7 @@ class RootNavigator extends React.Component {
                 <Image source={require('./img/ic-compass.png')} />
               </Item.Icon>
             </Item>
-            <Item name="Chats">
+            <Item name="Connections">
               <Item.Content>
                 <ConversationListView
                   navigator={nav}

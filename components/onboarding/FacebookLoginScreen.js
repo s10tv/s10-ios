@@ -2,6 +2,7 @@ let React = require('react-native');
 
 let {
   AppRegistry,
+  ActivityIndicatorIOS,
   View,
   Text,
   Image,
@@ -31,6 +32,7 @@ var Digits = require('react-native-fabric-digits');
 var { DigitsLoginButton, DigitsLogoutButton } = Digits;
 
 var Video = require('react-native-video');
+var Button = require('react-native-button');
 
 let SHEET = require('../CommonStyles').SHEET;
 let COLORS = require('../CommonStyles').COLORS;
@@ -92,36 +94,36 @@ class FacebookLoginScreen extends React.Component {
   }
 
   render() {
-    return (
-      <View style={SHEET.container}>
-        <Video source={{uri: "background"}} // Can be a URL or a local file.
-           rate={1.0}                   // 0 is paused, 1 is normal.
-           volume={1.0}                 // 0 is muted, 1 is normal.
-           muted={false}                // Mutes the audio entirely.
-           paused={false}               // Pauses playback entirely.
-           resizeMode="cover"           // Fill the whole screen at aspect ratio.
-           repeat={true}                // Repeat forever.
-           onLoadStart={this.loadStart} // Callback when video starts to load
-           onLoad={this.setDuration}    // Callback when video loads
-           onProgress={this.setTime}    // Callback every ~250ms with currentTime
-           onEnd={this.onEnd}           // Callback when playback finishes
-           onError={this.videoError}    // Callback when video cannot be loaded
-           style={styles.backgroundVideo} />
 
-        <View style={[styles.backgroundVideo, { backgroundColor: 'black', opacity: 0.5}]} />
+    let loginComponent = null;
+    let me = this.props.me;
 
-        <View style={styles.content}>
-          <Image source={require('../img/logo.png')} style={styles.logo} />
+    if (this.props.loggedIn && me) {
 
-          <View style={styles.description}>
-            <Text style={[styles.descText, SHEET.baseText]}>
-              Branch out.
-            </Text>
-            <Text style={[styles.descText, SHEET.baseText]}>
-              Expand your social and professional networks.
-            </Text>
-          </View>
+      let buttonText = 'Continue';
+      if (me.firstName || me.lastName) {
+        buttonText = `Continue as ${me.firstName} ${me.lastName}`
+      }
+
+      loginComponent = (
+        <View style={styles.loginSheet}>
+          <Button
+            onPress={() => {
+              this.props.navigator.push({
+                id: 'linkservicecontainer',
+                title: 'Link Service'
+              });
+            }}>
+              <View style={{ padding:10, borderColor: 'white', borderWidth: 1}}>
+                <Text style={[SHEET.baseText, {fontSize: 18, color: 'white'}]}>
+                  {buttonText} 
+                </Text>
+              </View>
+          </Button>
         </View>
+      )
+    } else if (this.props.loggedIn == false) {
+      loginComponent = (
         <View style={styles.loginSheet}>
           <FBSDKLoginButton
             style={styles.fbButton}
@@ -190,6 +192,51 @@ class FacebookLoginScreen extends React.Component {
               text="Login with Phone" />
           </View>
         </View>
+      );
+    } else {
+      loginComponent = (
+        <View style={styles.loginSheet}>
+          <ActivityIndicatorIOS
+            animating={true}
+            style={{ justifyContent: 'center' }}
+            size="small" />
+        </View>
+      )
+    }
+
+    return (
+      <View style={SHEET.container}>
+        <Video source={{uri: "background"}} // Can be a URL or a local file.
+           rate={1.0}                   // 0 is paused, 1 is normal.
+           volume={1.0}                 // 0 is muted, 1 is normal.
+           muted={false}                // Mutes the audio entirely.
+           paused={false}               // Pauses playback entirely.
+           resizeMode="cover"           // Fill the whole screen at aspect ratio.
+           repeat={true}                // Repeat forever.
+           onLoadStart={this.loadStart} // Callback when video starts to load
+           onLoad={this.setDuration}    // Callback when video loads
+           onProgress={this.setTime}    // Callback every ~250ms with currentTime
+           onEnd={this.onEnd}           // Callback when playback finishes
+           onError={this.videoError}    // Callback when video cannot be loaded
+           style={styles.backgroundVideo} />
+
+        <View style={[styles.backgroundVideo, { backgroundColor: 'black', opacity: 0.5}]} />
+
+        <View style={styles.content}>
+          <Image source={require('../img/logo.png')} style={styles.logo} />
+
+          <View style={styles.description}>
+            <Text style={[styles.descText, SHEET.baseText]}>
+              Branch out.
+            </Text>
+            <Text style={[styles.descText, SHEET.baseText]}>
+              Expand your social and professional networks.
+            </Text>
+          </View>
+        </View>
+        
+        {loginComponent}
+
         <View style={styles.bottomSheet}>
           <View style={{ flexDirection: 'row' }}>
           <Text style={[styles.link, SHEET.baseText]} onPress={() => {

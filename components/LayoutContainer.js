@@ -25,7 +25,6 @@ class LayoutContainer extends React.Component {
     this.subs = {}
 
     this.state = {
-      loggedIn: true,
       needsOnboarding: true,
       modalVisible: false,
       currentTab: 'chats',
@@ -69,7 +68,14 @@ class LayoutContainer extends React.Component {
           settings.forEach((setting) => {
             indexedSettings[setting._id] = setting;
           });
+
           this.setState({ settings: indexedSettings });
+
+          if (indexedSettings.accountStatus) {
+            this.setState ({
+              isActive: indexedSettings.accountStatus.value == 'active'
+            })
+          }
         });
       });
 
@@ -226,42 +232,31 @@ class LayoutContainer extends React.Component {
   }
 
   render() {
-    if (!this.state.loggedIn) {
+    if (!this.state.loggedIn || !this.state.isActive) {
       return <OnboardingNavigator
         loggedIn={this.state.loggedIn}
+        isActive={this.state.isActive}
+        integrations={this.state.integrations}
+        me={this.state.me} 
+        categories={this.state.categories}
+        myTags={this.state.myTags}
         onLogin={this.onLogin.bind(this)}
         ddp={this.ddp} /> 
     }
 
-    if (!this.state.settings || !this.state.settings.accountStatus) {
-      return <Loader />
-    }
-
-    let status = this.state.settings.accountStatus.value;
-
-    if (status != 'active') {
-      return <OnboardingNavigator
-        me={this.state.me} 
-        loggedIn={this.state.loggedIn}
-        integrations={this.state.integrations}
-        categories={this.state.categories}
-        myTags={this.state.myTags}
-        ddp={this.ddp} />
-    } else {
-      return <RootNavigator
-        me={this.state.me}
-        integrations={this.state.integrations}
-        categories={this.state.categories}
-        myTags={this.state.myTags}
-        loggedIn={this.state.loggedIn}
-        onLogout={this.onLogout.bind(this)}
-        onLogin={this.onLogin.bind(this)}
-        candidate={this.state.candidate}
-        history={this.state.history}
-        users={this.state.users}
-        settings={this.state.settings}
-        ddp={this.ddp} />
-    }
+    return <RootNavigator
+      me={this.state.me}
+      integrations={this.state.integrations}
+      categories={this.state.categories}
+      myTags={this.state.myTags}
+      loggedIn={this.state.loggedIn}
+      onLogout={this.onLogout.bind(this)}
+      onLogin={this.onLogin.bind(this)}
+      candidate={this.state.candidate}
+      history={this.state.history}
+      users={this.state.users}
+      settings={this.state.settings}
+      ddp={this.ddp} />
   }
 }
 
