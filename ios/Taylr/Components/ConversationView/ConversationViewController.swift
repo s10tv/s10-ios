@@ -67,6 +67,9 @@ class ConversationViewController : UIViewController {
         chatHistory.delegate = self
         chatHistory.historyDelegate = self
         
+        VideoMakerViewController.regularWeightFontName = R.Fonts.cabinRegular.rawValue
+        VideoMakerViewController.mediumWeightFontName = R.Fonts.cabinMedium.rawValue
+        VideoMakerViewController.boldWeightFontName = R.Fonts.cabinBold.rawValue
         videoMaker = VideoMakerViewController.mainController()
         videoMaker.videoMakerDelegate = self
         videoMaker.topOffset = 64.0
