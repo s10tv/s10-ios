@@ -58,6 +58,8 @@ extension AppDependencies : RCTBridgeDelegate {
 //        return NSURL("http://192.168.0.252:8081/index.ios.bundle?platform=ios&dev=true")
         if env.isRunningInSimulator {
             return NSURL("http://localhost:8081/index.ios.bundle?platform=ios&dev=true")
+        } else if env.build == "0" {
+            return NSBundle.mainBundle().URLForResource("main", withExtension: "jsbundle")
         } else {
             let build = AppHub.buildManager().currentBuild
             return build.bundle.URLForResource("main", withExtension: "jsbundle")

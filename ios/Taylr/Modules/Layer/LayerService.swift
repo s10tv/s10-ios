@@ -202,6 +202,10 @@ extension LayerService : LYRQueryControllerDelegate {
 extension LayerService {
     
     @objc func connect(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+        for qc in [unreadQueryController, allConversationsQueryController] {
+            _ = try? qc?.execute()
+            queryControllerDidChangeContent(qc) // Force trigger
+        }
         guard layerClient.isConnected == false else {
             resolve(nil)
             return
@@ -212,10 +216,6 @@ extension LayerService {
         }, completed: {
             DDLogInfo("Successfully connected to Layer")
         }))
-        for qc in [unreadQueryController, allConversationsQueryController] {
-            _ = try? qc?.execute()
-            queryControllerDidChangeContent(qc) // Force trigger
-        }
     }
     
     @objc func isAuthenticated(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
