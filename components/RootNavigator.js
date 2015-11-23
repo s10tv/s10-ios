@@ -46,7 +46,7 @@ class RootNavigator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentTab: 'Today'
+      currentTab: 'Me'
     }
   }
 
@@ -196,7 +196,7 @@ class RootNavigator extends React.Component {
         return <ConversationView 
           navigator={nav}
           style={{flex: 1}}
-          recipientId={route.recipientId}
+          recipientUser={route.recipientUser}
           currentUser={user} />
 
       case 'conversation':
@@ -230,6 +230,7 @@ class RootNavigator extends React.Component {
                 <DiscoverScreen navigator={nav} ddp={this.ddp} 
                   candidate={this.props.candidate}
                   users={this.props.users}
+                  me={this.props.me}
                   settings={this.props.settings} />
               </Item.Content>
               <Item.Icon>

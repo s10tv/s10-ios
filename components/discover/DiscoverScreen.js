@@ -29,6 +29,17 @@ class CountdownTimer extends React.Component {
     }
   }
 
+  formatUser(candidateUser) {
+    return {
+      userId: candidateUser._id,
+      avatarUrl: candidateUser.avatar.url,
+      coverUrl: candidateUser.avatar.url,
+      firstName: candidateUser.firstName,
+      userId: candidateUser.lastName,
+      displayName: candidateUser.firstName,
+    }
+  }
+
   componentWillUnmount() {
     clearTimeout(this.state.timer);
   }
@@ -61,12 +72,16 @@ class CountdownTimer extends React.Component {
 
   render() {
     let settings = this.props.settings;
-
     return (
       <Button
         onPress={() => {
+          let user = this.formatUser(this.props.candidateUser);
+          let currentUser = this.formatUser(this.props.me);
+
           this.props.navigator.push({
             id: 'sendMessage',
+            currentUser: currentUser,
+            recipientUser: user,
           })
         }}>
         <View style={styles.messageButton}>
@@ -158,6 +173,7 @@ class Discover extends React.Component {
 
             <CountdownTimer
               navigator={this.props.navigator}
+              candidateUser={candidateUser}
               me={this.props.me}
               settings={this.props.settings} />
           </Card>
