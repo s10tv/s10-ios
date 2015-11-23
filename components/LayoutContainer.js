@@ -130,7 +130,7 @@ class LayoutContainer extends React.Component {
             return ddp.collections.mytags.findOne({});
           }
         }).subscribe(user => {
-          if (user) {
+          if (user && user.tags) {
             user.tags.forEach((tag) => {
               tag.isMine = true;
             })

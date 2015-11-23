@@ -3,33 +3,62 @@ let React = require('react-native');
 let {
   AppRegistry,
   View,
+  DeviceEventEmitter,
   Text,
   TextInput,
   Image,
   StyleSheet,
 } = React;
 
+let FloatLabelTextInput = require('./FloatLabelTextField');
 let SHEET = require('../CommonStyles').SHEET;
 let TappableCard = require('./Card').TappableCard;
 let Card = require('./Card').Card;
 
+class ProfileTextInput extends React.Component {
+  constructor(props = {}) {
+    super(props);
+    this.state = {
+      text: props.text,
+    }
+  }
+
+  render() {
+    return (
+      <FloatLabelTextInput
+          placeHolder={this.props.display}
+          multiline={this.props.multiline}
+          value={this.props.text}
+          onBlur={() => {
+            let myInfo = {};
+            myInfo[this.props.infoKey] = this.state.text;
+            this.props.ddp.call({ methodName: 'me/update', params: [myInfo] })
+          }} />
+    )
+  }
+}
+
 class ProfileEditCard extends React.Component {
 
-  constructor(props) {
-    super(props);
-
-    let me = props.me;
+  constructor (props) {
+    super(props)
     this.state = {
-      me: me,
-      firstName: me.firstName,
-      lastName: me.lastName,
-      major: me.major,
-      about: me.about,
-      hometown: me.hometown,
-      gradYear: me.gradYear,
-      integrations: props.integrations,
-      editTimer: null,
+      paddingBottom: 0,
     }
+  } 
+
+  keyboardWillShow (e) {
+    let newSize = e.endCoordinates.height
+    this.setState({paddingBottom: newSize})
+  }
+
+  keyboardWillHide (e) {
+    this.setState({paddingBottom: 0})
+  }
+
+  componentWillMount () {
+    DeviceEventEmitter.addListener('keyboardWillShow', this.keyboardWillShow.bind(this))
+    DeviceEventEmitter.addListener('keyboardWillHide', this.keyboardWillHide.bind(this))
   }
 
   render() {
@@ -44,36 +73,22 @@ class ProfileEditCard extends React.Component {
 
     let editSection = editInfo.map((info) => {
       return (
-        <Card key={info.key}>
-          <Text style={[SHEET.subTitle, SHEET.baseText]}>{info.display}</Text>
-          <TextInput
-            style={[{ flex: 1, height: 30 }, SHEET.baseText]}
-            multiline={info.multiline}
-            onChangeText={(text) => {
-              let newState = {};
-              newState[info.key] = text;
-              this.setState(newState);
-             
-              // don't send updates right away. Wait till they finish typing. 
-              if (this.editTimer) {
-                clearTimeout(this.editTimer);
-              }
-
-              this.editTimer = setTimeout(() => {
-                this.props.ddp.call({ methodName: 'me/update', params: [newState] })
-                .then(() => {})
-                .catch(err => {
-                  console.trace(err)
-                });
-              }, 1000)
-            }}
-            value={this.state[info.key]} />
+        <Card 
+          key={info.key}
+          cardOverride={{padding: 5}}>
+          <ProfileTextInput
+            ref={info.key}
+            text={this.props.me[info.key]}
+            display={info.display}
+            ddp={this.props.ddp}
+            infoKey={info.key}
+            multiline={info.multiline} />
         </Card>
       )
     })
 
     return(
-      <View style={[styles.cards, this.props.style]}>
+      <View style={[{ paddingBottom: this.state.paddingBottom }, styles.cards, this.props.style]}>
         { editSection }
       </View>
     )

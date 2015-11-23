@@ -44,6 +44,10 @@ class OnboardingNavigator extends BaseTaylrNavigator {
     }
   }
 
+  displayError(title, message) {
+    alert(message);
+  }
+
   _rightButton(route, navigator, index, navState) {
     let me = this.props.me;
     let myTags = this.props.myTags;
@@ -64,15 +68,28 @@ class OnboardingNavigator extends BaseTaylrNavigator {
         break;
 
       case 'editprofile':
-        if (me && me.firstName && me.lastName && me.hometown && me.major &&
-            me.gradYear && me.about) {
-          action = () => {
-            navigator.push({
-              id: 'hashtags',
-              title: 'Add Hashtags',
-              me: me,
-            })
+        action = () => {
+          if (!me.firstName) {
+            this.displayError('Error', 'FirstName not specified')
+          } else if (!me.lastName) {
+            this.displayError('Error', 'last name not specified')
+          } else  if (!me.hometown) {
+            this.displayError('Error', 'hometown not specified')
+          } else if (!me.major) {
+            this.displayError('Error', 'major not specified')
+          } else if (!me.gradYear) {
+            this.displayError('Error', 'gradyear not specified')
           }
+
+          if (me && me.firstName && me.lastName && me.hometown && me.major &&
+            me.gradYear) {
+              navigator.push({
+                id: 'hashtags',
+                title: 'Add Hashtags',
+                me: me,
+              })
+          }
+          
         }
         break;
 
@@ -85,6 +102,7 @@ class OnboardingNavigator extends BaseTaylrNavigator {
         }
         break;
 
+      case 'addhashtag':
       case 'linkservice':
       case 'openwebview':
       case 'hashtag':
