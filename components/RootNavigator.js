@@ -46,7 +46,7 @@ class RootNavigator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentTab: 'Me'
+      currentTab: 'Today'
     }
   }
 
@@ -64,11 +64,10 @@ class RootNavigator extends React.Component {
             })
             break;
           case 'profile':
-            // TODO: Implement me correctly
-            // this.push({
-            //   id: 'viewprofile',
-            //   conversationId: properties.args.conversationId,
-            // })
+            this.refs['nav'].push({
+              id: 'viewprofile',
+              me: this.props.ddp.collections.users.findOne({ _id: properties.args.userId })
+            })
             break;
         }
       }.bind(this))
