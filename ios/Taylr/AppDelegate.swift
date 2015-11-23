@@ -73,7 +73,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
                 "deviceToken": deviceToken.hexString()
             ])
             ARAnalytics.setUserProperty("RegisteredPush", toValue: "on")
-        } else if IS_TARGET_IPHONE_SIMULATOR == false {
+        } else if !dependencies.env.isRunningInSimulator {
             DDLogError("Non-simulator build should have valid APS environment")
             // fatalError("Non-simulator build should have valid APS environment")
         }

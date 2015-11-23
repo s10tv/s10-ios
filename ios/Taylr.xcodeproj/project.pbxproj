@@ -841,7 +841,7 @@
 		};
 		EA2666CC1BFA57B70054C777 /* Bundle React Native code and images */ = {
 			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 8;
+			buildActionMask = 12;
 			files = (
 			);
 			inputPaths = (
@@ -849,7 +849,7 @@
 			name = "Bundle React Native code and images";
 			outputPaths = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NVM_DIR=$HOME/.nvm\n[[ -s $HOME/.nvm/nvm.sh ]] && source $HOME/.nvm/nvm.sh\n[[ -s $(brew --prefix nvm)/nvm.sh ]] && source $(brew --prefix nvm)/nvm.sh\n../node_modules/react-native/packager/react-native-xcode.sh\n\n";
 		};

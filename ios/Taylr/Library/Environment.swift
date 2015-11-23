@@ -9,8 +9,6 @@
 import Foundation
 import SimpleKeychain
 
-public let IS_TARGET_IPHONE_SIMULATOR = (TARGET_IPHONE_SIMULATOR == 1)
-
 public class Environment {
     public let provisioningProfile : ProvisioningProfile?
     public var appId: String {
@@ -35,7 +33,7 @@ public class Environment {
     
     public var apsEnvironment: ApsEnvironment? {
         // Simulator
-        if IS_TARGET_IPHONE_SIMULATOR {
+        if isRunningInSimulator {
             return nil
         }
          // Local / Crashlytics
@@ -44,6 +42,10 @@ public class Environment {
         }
         // App Store / TestFlight
         return .Production
+    }
+    
+    public var isRunningInSimulator: Bool {
+        return TARGET_IPHONE_SIMULATOR == 1
     }
     
     public var isRunningTestFlightBeta: Bool {

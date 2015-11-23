@@ -44,7 +44,9 @@ class AppDependencies : NSObject {
 extension AppDependencies : RCTBridgeDelegate {
     
     func sourceURLForBridge(bridge: RCTBridge!) -> NSURL! {
-        if env.build == "0" {
+        // Tony's Computer, uncomment for live, on-device development
+//        return NSURL("http://192.168.0.252:8081/index.ios.bundle?platform=ios&dev=true")
+        if env.isRunningInSimulator {
             return NSURL("http://localhost:8081/index.ios.bundle?platform=ios&dev=true")
         } else {
             let build = AppHub.buildManager().currentBuild
