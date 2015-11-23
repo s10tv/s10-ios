@@ -44,12 +44,14 @@ class HashtagCategory extends React.Component {
 
     return (
       <TappableCard key={category.displayName} onPress={(event) => { return this._handleCategoryTouch.bind(this)(category)}}>
-        <View style={[styles.categoryHeader]}>
-          <Text style={[styles.categoryDisplayName, SHEET.subTitle, SHEET.baseText]}>{category.displayName}</Text>
-          {icon}
-        </View>
-        <View style={styles.myHashtags}>
-          { myTagsRendered }
+        <View>
+          <View style={[styles.categoryHeader]}>
+            <Text style={[styles.categoryDisplayName, SHEET.subTitle, SHEET.baseText]}>{category.displayName}</Text>
+            {icon}
+          </View>
+          <View style={styles.myHashtags}>
+            { myTagsRendered }
+          </View>
         </View>
       </TappableCard>
     )

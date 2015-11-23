@@ -12,7 +12,6 @@ let {
 
 let FloatLabelTextInput = require('./FloatLabelTextField');
 let SHEET = require('../CommonStyles').SHEET;
-let TappableCard = require('./Card').TappableCard;
 let Card = require('./Card').Card;
 
 class ProfileTextInput extends React.Component {

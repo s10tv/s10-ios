@@ -137,9 +137,6 @@ class HashtagListView extends React.Component {
     });
 
     let searchSuggestions = this.state.searchSuggestions.map(this._renderSearchSuggestions.bind(this));
-    let bottomPadding = this.props.removeBottomPadding ? 
-      null :
-      <View style={SHEET.bottomTile} />;
 
     return (
       <View style={SHEET.container}>
@@ -166,7 +163,6 @@ class HashtagListView extends React.Component {
               {hashtags}
 
           </ScrollView>
-          {bottomPadding} 
         </Card>
         <View style={styles.bottomSheet}>
           { searchSuggestions }

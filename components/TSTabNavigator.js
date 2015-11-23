@@ -186,6 +186,7 @@ class TSTabNavigator extends React.Component {
 
       case 'history':
         return <HistoryScreen navigator={nav}
+          parentNavigator={this.props.navigator}
           history={this.props.history}
           ddp={this.props.ddp}/>
 

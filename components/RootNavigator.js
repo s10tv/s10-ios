@@ -159,7 +159,7 @@ class RootNavigator extends React.Component {
                 ]
               )
             }}>
-              <Text style={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText, { color: '#7E57C2' }]}>
+              <Text style={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText, { color: 'white' }]}>
                 Report 
               </Text>
         </TouchableOpacity> 

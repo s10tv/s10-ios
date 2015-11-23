@@ -46,10 +46,7 @@ class TappableCard extends React.Component {
             style={[styles.card, this.props.cardOverride]}
             underlayColor="#ffffff"
             onPress={ this.props.onPress }>
-
-              <View>
                 { this.props.children }
-              </View>
           </TouchableHighlight>
       </BaseCard>
     )
