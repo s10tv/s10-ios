@@ -74,28 +74,52 @@ class HistoryScreen extends React.Component {
   }
 
   render() {
-    console.log('rendering');
-
     let history = this.props.history;
-    console.log(history);
-
     if (!history) {
       return <Loader />
     }
 
-    history.sort((one, two) => { return  two.date - one.date })
+    let historyView = null;
+    if (history.length == 0) {
+      historyView = (
+        <View style={styles.emptyStateContainer}>
+          <Text style={[styles.emptyStateText, SHEET.baseText]}>
+            You will see previous intros here.
+          </Text>
+        </View>
+      )
+    } else {
+      history.sort((one, two) => { return  two.date - one.date })
+      historyView = (
+        <GridView
+          items={history}
+          itemsPerRow={2}
+          renderItem={this.renderHistory.bind(this)} />
+      )
+    }
 
     return (
       <View style={SHEET.container}>
         <View style={[SHEET.innerContainer, SHEET.navTop]}>
-          <GridView
-            items={history}
-            itemsPerRow={2}
-            renderItem={this.renderHistory.bind(this)} />
+          {historyView}
         </View>
       </View>
     )
   }
 }
+
+var styles = StyleSheet.create({
+  emptyStateContainer: {
+    flex: 1,
+    height: height,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
+  emptyStateText: {
+    fontSize: 20,
+    marginHorizontal: width / 8,
+    color: COLORS.attributes,
+  }
+});
 
 module.exports = HistoryScreen;
