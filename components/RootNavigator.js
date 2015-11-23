@@ -137,28 +137,34 @@ class RootNavigator extends React.Component {
         break;
 
       case 'viewprofile':
-        return <TouchableOpacity
-          style={SHEET.navBarRightButton}
-          onPress={() => {
-            AlertIOS.alert(
-              `Report ${route.me.firstName}?`,
-              "",
-              [
-                {text: 'Cancel', onPress: () => console.log('Bar Pressed!')},
-                {text: 'Report', onPress: () => {
-                  return this.props.ddp.call({ methodName: 'user/report', params: [route.me._id, 'Reported'] })
-                  .then(() => {
-                    AlertIOS.alert(`Reported ${route.me.firstName}`, 
-                      'Thanks for your input. We will look into this shortly.');
-                  })
-                }},
-              ]
-            )
-          }}>
-            <Text style={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText, { color: '#7E57C2' }]}>
-              Report 
-            </Text>
-      </TouchableOpacity> 
+        if (this.props.me && route.me && route.me._id == this.props.me._id) {
+          return null;
+        }
+
+        return (
+          <TouchableOpacity
+            style={SHEET.navBarRightButton}
+            onPress={() => {
+              AlertIOS.alert(
+                `Report ${route.me.firstName}?`,
+                "",
+                [
+                  {text: 'Cancel', onPress: () => console.log('Bar Pressed!')},
+                  {text: 'Report', onPress: () => {
+                    return this.props.ddp.call({ methodName: 'user/report', params: [route.me._id, 'Reported'] })
+                    .then(() => {
+                      AlertIOS.alert(`Reported ${route.me.firstName}`, 
+                        'Thanks for your input. We will look into this shortly.');
+                    })
+                  }},
+                ]
+              )
+            }}>
+              <Text style={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText, { color: '#7E57C2' }]}>
+                Report 
+              </Text>
+        </TouchableOpacity> 
+      )
     }
     return null;
   }
