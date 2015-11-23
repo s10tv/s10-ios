@@ -11,11 +11,16 @@
 
 @interface RCT_EXTERN_MODULE(TSLayerService, NSObject)
 
-RCT_EXTERN_METHOD(connect:(RCTResponseSenderBlock)block)
-RCT_EXTERN_METHOD(isAuthenticated:(RCTResponseSenderBlock)block)
-RCT_EXTERN_METHOD(requestAuthenticationNonce:(RCTResponseSenderBlock)block)
-RCT_EXTERN_METHOD(authenticate:(NSString *)identityToken block:(RCTResponseSenderBlock)block)
-RCT_EXTERN_METHOD(deauthenticate:(RCTResponseSenderBlock)block)
+RCT_EXTERN_REMAP_METHOD(connectAsync,
+                        connect:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXTERN_REMAP_METHOD(isAuthenticatedAsync,
+                        isAuthenticated:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXTERN_REMAP_METHOD(requestAuthenticationNonceAsync,
+                        requestAuthenticationNonce:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXTERN_REMAP_METHOD(authenticateAsync,
+                        authenticate:(NSString *)identityToken resolve:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXTERN_REMAP_METHOD(deauthenticateAsync,
+                        deauthenticate:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 
 @end
 

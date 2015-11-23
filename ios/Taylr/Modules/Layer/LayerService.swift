@@ -201,13 +201,18 @@ extension LayerService : LYRQueryControllerDelegate {
 
 extension LayerService {
     
-    @objc func connect(block: RCTResponseSenderBlock) {
+    @objc func connect(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+        guard layerClient.isConnected == false else {
+            resolve(nil)
+            return
+        }
+        DDLogDebug("Will connect to layer")
         layerClient.connect().start(Event.sink(error: { error in
             DDLogError("Unable to connect to layer \(error)")
-            block([error, NSNull()])
+            reject(error)
         }, completed: {
             DDLogInfo("Successfully connected to Layer")
-            block([NSNull(), NSNull()])
+            resolve(nil)
         }))
         for qc in [unreadQueryController, allConversationsQueryController] {
             _ = try? qc?.execute()
@@ -215,40 +220,44 @@ extension LayerService {
         }
     }
     
-    @objc func isAuthenticated(block: RCTResponseSenderBlock) {
-        block([NSNull(), layerClient.isAuthenticated])
+    @objc func isAuthenticated(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+        resolve(layerClient.isAuthenticated)
     }
     
-    @objc func requestAuthenticationNonce(block: RCTResponseSenderBlock) {
+    @objc func requestAuthenticationNonce(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
         DDLogDebug("Will request authentication nonce")
         layerClient.requestAuthenticationNonce().start(Event.sink(error: { error in
             DDLogError("Unable to get authentication nonce \(error)")
-            block([error, NSNull()])
+            reject(error)
         }, next: { nonce in
             DDLogDebug("Did receive requested authentication nonce \(nonce)")
-            block([NSNull(), nonce])
+            resolve(nonce)
         }))
     }
     
-    @objc func authenticate(identityToken: String, block: RCTResponseSenderBlock) {
+    @objc func authenticate(identityToken: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
         DDLogDebug("Will authenticate with layer \(identityToken)")
         layerClient.authenticate(identityToken).start(Event.sink(error: { error in
             DDLogError("Unable to update user in Layer session \(error)")
-            block([error, NSNull()])
+            reject(error)
         }, next: { userId in
             DDLogInfo("Updated user in Layer session userId=\(userId)")
-            block([NSNull(), userId])
+            resolve(userId)
         }))
     }
     
-    @objc func deauthenticate(block: RCTResponseSenderBlock) {
+    @objc func deauthenticate(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+        guard layerClient.isConnected else {
+            resolve(nil)
+            return
+        }
         DDLogDebug("Will deauthenticate from layer")
         layerClient.deauthenticate().start(Event.sink(error: { error in
             DDLogError("Unable to deauthenticate \(error)")
-            block([error, NSNull()])
+            reject(error)
         }, completed: {
             DDLogInfo("Successfully deauthenticated from layer")
-            block([NSNull(), NSNull()])
+            resolve(nil)
         }))
     }
 }

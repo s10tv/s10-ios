@@ -181,44 +181,21 @@ class LayoutContainer extends React.Component {
       this.setState({ numTotalConversations: count })
     }.bind(this))
 
-    TSLayerService.connect((err) => {
-      if (err) {
-        console.trace(err);
-        return;
+    TSLayerService.connectAsync().then(() => {
+      return TSLayerService.isAuthenticatedAsync();
+    }).then(isAuthenticated => {
+      if (isAuthenticated) { 
+        return Promise.resolve(true);
+      } else {
+        return TSLayerService.requestAuthenticationNonceAsync().then(nonce => {
+          return this.ddp.call({ methodName: 'layer/auth', params: [nonce]});
+        }).then(sessionId => {
+          return TSLayerService.authenticateAsync(sessionId)
+        });
       }
-
-      TSLayerService.isAuthenticated((err, isAuthenticated) => {
-        if (err) {
-          console.trace(err);
-          return;
-        }
-
-        if (isAuthenticated) {
-          return;
-        } else {
-          return new Promise((resolve, reject) => {
-            TSLayerService.requestAuthenticationNonce((err, nonce) => {
-              if (err) {
-                return reject(err);
-              }
-              return resolve(nonce);
-            })
-          })
-          .then((nonce) => {
-            return this.ddp.call({ methodName: 'layer/auth', params: [nonce]});
-          })
-          .then((sessionId) => {
-            TSLayerService.authenticate(sessionId, (err, res) => {
-              console.log('layer authenticated');
-            });
-          })
-          .catch(err => {
-            console.log('layer cannot login due to error');
-            console.err(err);
-          })
-        }
-      })
-    })
+    }).catch(error => {
+      console.error('Unable to complete layer flow', error);
+    });
   }
 
   componentWillMount() {
