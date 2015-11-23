@@ -35,7 +35,6 @@ class CountdownTimer extends React.Component {
       avatarUrl: candidateUser.avatar.url,
       coverUrl: candidateUser.avatar.url,
       firstName: candidateUser.firstName,
-      userId: candidateUser.lastName,
       displayName: candidateUser.firstName,
     }
   }
