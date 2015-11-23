@@ -12,6 +12,8 @@ let {
   NativeAppEventEmitter,
 } = React;
 
+var TabNavigator = require('react-native-tab-navigator');
+
 var Tabbar = require('react-native-tabbar');
 var Item = Tabbar.Item;
 
@@ -46,7 +48,7 @@ class RootNavigator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentTab: 'Today'
+      currentTab: 'discover'
     }
   }
 
@@ -207,48 +209,54 @@ class RootNavigator extends React.Component {
 
       case 'root':
         return (
-          <Tabbar 
-              style={{ backgroundColor: '#cccccc' }}
-              selected={this.state.currentTab}
-              onTabItemPress={(name) => { this.setState({ currentTab: name })}}>
-            <Item name="Me">
-              <Item.Content>
-                <MeScreen me={this.props.me} 
-                    onLogout={this.props.onLogout}
-                    categories={this.props.categories}
-                    myTags={this.props.myTags}
-                    navigator={nav}
-                    ddp={this.props.ddp} />
-              </Item.Content>
-              <Item.Icon>
-                <Image source={require('./img/ic-me.png')} />
-              </Item.Icon>
-            </Item>
-            <Item name="Today">
-              <Item.Content>
-                <DiscoverScreen navigator={nav} ddp={this.ddp} 
-                  candidate={this.props.candidate}
-                  users={this.props.users}
-                  me={this.props.me}
-                  settings={this.props.settings} />
-              </Item.Content>
-              <Item.Icon>
-                <Image source={require('./img/ic-compass.png')} />
-              </Item.Icon>
-            </Item>
-            <Item name="Connections">
-              <Item.Content>
-                <ConversationListView
+          <TabNavigator>
+            <TabNavigator.Item 
+              title="Me"
+              renderIcon={() => <Image source={require('./img/ic-me.png')}/>}
+              onPress={() => {
+                this.setState({currentTab: 'me'});
+              }}
+              selected={this.state.currentTab == 'me'}>
+              
+              <MeScreen me={this.props.me} 
+                  onLogout={this.props.onLogout}
+                  categories={this.props.categories}
+                  myTags={this.props.myTags}
                   navigator={nav}
-                  numTotalConversations={this.props.numTotalConversations}
-                  style={{backgroundColor: COLORS.background, flex: 1, marginTop: 64}}
-                  currentUser={user} />
-              </Item.Content>
-              <Item.Icon>
-                <Image source={require('./img/ic-chats.png')} />
-              </Item.Icon>
-            </Item>
-          </Tabbar>
+                  ddp={this.props.ddp} />
+
+            </TabNavigator.Item>
+            <TabNavigator.Item 
+              title="Today"
+              renderIcon={() => <Image source={require('./img/ic-compass.png')}/>}
+              onPress={() => {
+                this.setState({currentTab: 'discover'});
+              }}
+              selected={this.state.currentTab == 'discover'}>
+
+              <DiscoverScreen navigator={nav} ddp={this.ddp} 
+                candidate={this.props.candidate}
+                users={this.props.users}
+                me={this.props.me}
+                settings={this.props.settings} />
+
+            </TabNavigator.Item>
+            <TabNavigator.Item 
+              title="Chats"
+              renderIcon={() => <Image source={require('./img/ic-chats.png')}/>}
+              onPress={() => {
+                this.setState({currentTab: 'chats'});
+              }}
+              selected={this.state.currentTab == 'chats'}>
+              
+             <ConversationListView
+                navigator={nav}
+                numTotalConversations={this.props.numTotalConversations}
+                style={{backgroundColor: COLORS.background, flex: 1, marginTop: 64}}
+                currentUser={user} />
+                
+            </TabNavigator.Item>
+          </TabNavigator>
         );
     }
   }

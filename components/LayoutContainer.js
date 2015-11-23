@@ -178,6 +178,7 @@ class LayoutContainer extends React.Component {
 
   __layerLogin() {
     NativeAppEventEmitter.addListener('Layer.allConversationsCountUpdate', (count) => {
+      console.log('all convos ' + count);
       this.setState({ numTotalConversations: count })
     }.bind(this))
 
