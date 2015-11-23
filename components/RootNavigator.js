@@ -209,10 +209,12 @@ class RootNavigator extends React.Component {
 
       case 'root':
         return (
-          <TabNavigator>
+          <TabNavigator style={{ color: '#64369C' }}>
             <TabNavigator.Item 
               title="Me"
               renderIcon={() => <Image source={require('./img/ic-me.png')}/>}
+              renderSelectedIcon={() => <Image style={styles.selected} source={require('./img/ic-me.png')}/>}
+              selectedTitleStyle={styles.selectedText}
               onPress={() => {
                 this.setState({currentTab: 'me'});
               }}
@@ -229,6 +231,8 @@ class RootNavigator extends React.Component {
             <TabNavigator.Item 
               title="Today"
               renderIcon={() => <Image source={require('./img/ic-compass.png')}/>}
+              renderSelectedIcon={() => <Image style={styles.selected} source={require('./img/ic-compass.png')}/>}
+              selectedTitleStyle={styles.selectedText}
               onPress={() => {
                 this.setState({currentTab: 'discover'});
               }}
@@ -243,7 +247,10 @@ class RootNavigator extends React.Component {
             </TabNavigator.Item>
             <TabNavigator.Item 
               title="Chats"
+              badgeText={this.props.numUnreadConversations}
               renderIcon={() => <Image source={require('./img/ic-chats.png')}/>}
+              renderSelectedIcon={() => <Image style={styles.selected} source={require('./img/ic-chats.png')}/>}
+              selectedTitleStyle={styles.selectedText}
               onPress={() => {
                 this.setState({currentTab: 'chats'});
               }}
@@ -317,6 +324,12 @@ let styles = StyleSheet.create({
     fontSize: 16,
     marginVertical: 10,
   },
+  selected: {
+    tintColor: '#64369C',
+  },
+  selectedText: {
+    color: '#64369C',
+  }
 });
 
 module.exports = RootNavigator;
