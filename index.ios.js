@@ -5,6 +5,7 @@
 'use strict';
 let Analytics = require('react-native').NativeModules.TSAnalytics;
 let Logger = require('react-native').NativeModules.TSLogger;
+let TSLayerService = require('react-native').NativeModules.TSLayerService;
 let React = require('react-native');
 let {
   AppRegistry,
@@ -12,7 +13,15 @@ let {
 } = React;
 
 // polyfill the process functionality needed
-global.process = require("./lib/process.polyfill")
+global.process = require("./lib/process.polyfill");
+
+TSLayerService.connect((err) => {
+	if (err != null) {
+		console.log('Unable to connect to Layer', err);
+	} else {
+		console.log('Successfully connected to Layer');
+	}
+});
 
 let LayoutContainer = require('./components/LayoutContainer');
 

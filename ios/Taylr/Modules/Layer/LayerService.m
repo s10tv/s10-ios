@@ -11,6 +11,7 @@
 
 @interface RCT_EXTERN_MODULE(TSLayerService, NSObject)
 
+RCT_EXTERN_METHOD(connect:(RCTResponseSenderBlock)block)
 RCT_EXTERN_METHOD(isAuthenticated:(RCTResponseSenderBlock)block)
 RCT_EXTERN_METHOD(requestAuthenticationNonce:(RCTResponseSenderBlock)block)
 RCT_EXTERN_METHOD(authenticate:(NSString *)identityToken block:(RCTResponseSenderBlock)block)

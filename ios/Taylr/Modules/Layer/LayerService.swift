@@ -31,16 +31,8 @@ class LayerService: NSObject {
             LYRQuery(queryableClass: LYRConversation.self), error: ())
         super.init()
         layerClient.delegate = self
-        layerClient.connect().start(Event.sink(error: { error in
-            DDLogError("Unable to connect to layer \(error)")
-        }, completed: {
-            DDLogInfo("Successfully connected to Layer")
-        }))
-        for qc in [unreadQueryController, allConversationsQueryController] {
-            qc?.delegate = self
-            _ = try? qc?.execute()
-            queryControllerDidChangeContent(qc) // Force trigger
-        }
+        unreadQueryController?.delegate = self
+        allConversationsQueryController?.delegate = self
     }
     
     // MARK: -
@@ -208,6 +200,20 @@ extension LayerService : LYRQueryControllerDelegate {
 }
 
 extension LayerService {
+    
+    @objc func connect(block: RCTResponseSenderBlock) {
+        layerClient.connect().start(Event.sink(error: { error in
+            DDLogError("Unable to connect to layer \(error)")
+            block([error, NSNull()])
+        }, completed: {
+            DDLogInfo("Successfully connected to Layer")
+            block([NSNull(), NSNull()])
+        }))
+        for qc in [unreadQueryController, allConversationsQueryController] {
+            _ = try? qc?.execute()
+            queryControllerDidChangeContent(qc) // Force trigger
+        }
+    }
     
     @objc func isAuthenticated(block: RCTResponseSenderBlock) {
         block([NSNull(), layerClient.isAuthenticated])
