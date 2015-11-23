@@ -19,8 +19,6 @@ var Tabbar = require('react-native-tabbar');
 var Item = Tabbar.Item;
 
 // Common
-let TSTabNavigator = require('./TSTabNavigator');
-
 let BaseTaylrNavigator = require('./lib/BaseTaylrNavigator');
 let SHEET = require('./CommonStyles').SHEET;
 let COLORS = require('./CommonStyles').COLORS;
@@ -46,30 +44,13 @@ let HashtagListView = require('./lib/HashtagListView');
 let TSNavigationBar = require('./lib/TSNavigationBar');
 
 
-class RootNavigator extends React.Component {
+class TSTabNavigator extends React.Component {
 
-  componentWillMount() {
-    this.setState({
-      popListener: NativeAppEventEmitter.addListener('Navigation.pop', (properties) => {
-        this.refs['nav'].pop()
-      }.bind(this)),
-      pushListener: NativeAppEventEmitter.addListener('Navigation.push', (properties) => {
-        switch (properties.routeId) {
-          case 'conversation':
-            this.refs['nav'].push({
-              id: 'conversation',
-              conversationId: properties.args.conversationId,
-            })
-            break;
-          case 'profile':
-            this.refs['nav'].push({
-              id: 'viewprofile',
-              me: this.props.ddp.collections.users.findOne({ _id: properties.args.userId })
-            })
-            break;
-        }
-      }.bind(this))
-    });
+  constructor(props) {
+    super(props);
+    this.state = {
+      currentTab: 'Today'
+    }
   }
 
   componentWillUnmount() {
@@ -98,7 +79,7 @@ class RootNavigator extends React.Component {
 
   _leftButton(route, navigator, index, navState) {
     switch (route.id) {
-      case 'sendMessage':
+      case 'conversation':
       case 'root':
         return null;
 
@@ -182,47 +163,93 @@ class RootNavigator extends React.Component {
     }
 
     switch (route.id) {
-      case 'viewprofile':
-        return <Activities
-          navigator={nav} 
-          me={route.me}
-          loadActivities={true}
-          ddp={this.props.ddp} />
+      case 'edit':
+        return <MeEditScreen navigator={nav}
+          ddp={this.props.ddp} 
+          me={this.props.me}
+          integrations={this.props.integrations} />
       
-      case 'openwebview':
+      case 'addhashtag':
+        return <HashtagListView
+          style={{ flex: 1 }} 
+          navigator={nav}
+          ddp={this.props.ddp}
+          myTags={this.props.myTags}
+          category={route.category} />;
+      
+      case 'linkservice':
         return <WebView
           style={styles.webView}
+          onNavigationStateChange={(navState) => this._onNavigationStateChange(nav, navState)}
           startInLoadingState={true}
-          url={route.url} />;
+          url={route.link} />;
 
-      case 'sendMessage':
-        return <ConversationView 
-          navigator={nav}
-          style={{flex: 1}}
-          recipientUser={route.recipientUser}
-          currentUser={user} />
-
-      case 'conversation':
-        return <ConversationView
-          navigator={nav}
-          style={{flex: 1}}
-          conversationId={route.conversationId}
-          currentUser={user} />
-
-      case 'base':
-        return <TSTabNavigator
-          navigator={nav}
+      case 'history':
+        return <HistoryScreen navigator={nav}
           history={this.props.history}
-          me={this.props.me}
-          onLogout={this.props.onLogout}
-          categories={this.props.categories}
-          myTags={this.props.myTags}
-          candidate={this.props.candidate}
-          users={this.props.users}
-          numTotalConversations={this.props.numTotalConversations}
-          numUnreadConversations={this.props.numUnreadConversations}
-          settings={this.props.settings}
-          ddp={this.props.ddp} />
+          ddp={this.props.ddp}/>
+
+      case 'root':
+        return (
+          <TabNavigator>
+            <TabNavigator.Item 
+              title="Me"
+              renderIcon={() => <Image source={require('./img/ic-me.png')}/>}
+              renderSelectedIcon={() => <Image style={styles.selected} source={require('./img/ic-me.png')}/>}
+              selectedTitleStyle={styles.selectedText}
+              onPress={() => {
+                this.setState({currentTab: 'Me'});
+              }}
+              selected={this.state.currentTab == 'Me'}>
+              
+              <MeScreen me={this.props.me} 
+                  onLogout={this.props.onLogout}
+                  categories={this.props.categories}
+                  myTags={this.props.myTags}
+                  navigator={nav}
+                  ddp={this.props.ddp} />
+
+            </TabNavigator.Item>
+            <TabNavigator.Item 
+              title="Today"
+              renderIcon={() => <Image source={require('./img/ic-compass.png')}/>}
+              renderSelectedIcon={() => <Image style={styles.selected} source={require('./img/ic-compass.png')}/>}
+              selectedTitleStyle={styles.selectedText}
+              onPress={() => {
+                this.setState({currentTab: 'Today'});
+              }}
+              selected={this.state.currentTab == 'Today'}>
+
+              <DiscoverScreen
+                parentNavigator={this.props.navigator}
+                navigator={nav}
+                ddp={this.ddp} 
+                candidate={this.props.candidate}
+                users={this.props.users}
+                me={this.props.me}
+                settings={this.props.settings} />
+
+            </TabNavigator.Item>
+            <TabNavigator.Item 
+              title="Conversations"
+              badgeText={this.props.numUnreadConversations}
+              renderIcon={() => <Image source={require('./img/ic-chats.png')}/>}
+              renderSelectedIcon={() => <Image style={styles.selected} source={require('./img/ic-chats.png')}/>}
+              selectedTitleStyle={styles.selectedText}
+              onPress={() => {
+                this.setState({currentTab: 'Conversations'});
+              }}
+              selected={this.state.currentTab == 'Conversations'}>
+              
+             <ConversationListView
+                navigator={nav}
+                numTotalConversations={this.props.numTotalConversations}
+                style={{backgroundColor: COLORS.background, flex: 1, marginTop: 64}}
+                currentUser={user} />
+                
+            </TabNavigator.Item>
+          </TabNavigator>
+        );
     }
   }
 
@@ -238,16 +265,16 @@ class RootNavigator extends React.Component {
           gestures: {}, // or null
         })}
         initialRoute={{
-          id: 'base',
+          id: 'root',
         }}
         navigationBar={
-          <TSNavigationBar
-            omitRoutes={['sendMessage']}
+          <Navigator.NavigationBar
             routeMapper={{
               LeftButton: this._leftButton.bind(this),
               RightButton: this._rightButton.bind(this),
               Title: this._title.bind(this)
-            }} />
+            }}
+            style={styles.navBar} />
         }>
       </Navigator>
     )
@@ -266,7 +293,7 @@ let styles = StyleSheet.create({
     flex: 1,
   },
   navBar: {
-    backgroundColor: 'rgba: (0,0,0,0)',
+    backgroundColor: '#64369C',
   },
   navBarTitleText: {
     fontSize: 20,
@@ -287,4 +314,4 @@ let styles = StyleSheet.create({
   }
 });
 
-module.exports = RootNavigator;
+module.exports = TSTabNavigator;

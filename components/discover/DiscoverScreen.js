@@ -77,7 +77,7 @@ class CountdownTimer extends React.Component {
           let user = this.formatUser(this.props.candidateUser);
           let currentUser = this.formatUser(this.props.me);
 
-          this.props.navigator.push({
+          this.props.parentNavigator.push({
             id: 'sendMessage',
             currentUser: currentUser,
             recipientUser: user,
@@ -133,7 +133,7 @@ class Discover extends React.Component {
             cardOverride={{ padding: 0 }}>
 
             <TouchableOpacity onPress={() => {
-              this.props.navigator.push({
+              this.props.parentNavigator.push({
                 id: 'viewprofile',
                 title: candidateUser.firstName,
                 me: candidateUser,
@@ -171,6 +171,7 @@ class Discover extends React.Component {
             </View>
 
             <CountdownTimer
+              parentNavigator={this.props.parentNavigator}
               navigator={this.props.navigator}
               candidateUser={candidateUser}
               me={this.props.me}
