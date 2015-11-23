@@ -12,12 +12,14 @@ import Fabric
 import DigitsKit
 import Crashlytics
 import LayerKit
+import Branch
 
 class AppDependencies : NSObject {
     let env: Environment
     let config: AppConfig
     let logger: Logger
     let analytics: Analytics
+    let branch: Branch
     
     // Lazily initialized modules
     lazy private(set) var bridge: RCTBridge = {
@@ -33,6 +35,7 @@ class AppDependencies : NSObject {
         config = AppConfig(env: env)
         logger = Logger(config: config)
         analytics = Analytics(config: config)
+        branch = Branch.getInstance(config.branchKey)
         
         super.init()
         Crashlytics.sharedInstance().delegate = self

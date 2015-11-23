@@ -59,6 +59,7 @@ enum NativeAppEvent : String {
     case RegisteredPushToken = "RegisteredPushToken"
     case NavigationPush = "Navigation.push"
     case NavigationPop = "Navigation.pop"
+    case BranchInitialized = "Branch.initialized"
 }
 
 enum RouteId : String {

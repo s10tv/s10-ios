@@ -9,6 +9,7 @@
 import UIKit
 import CocoaLumberjack
 import ARAnalytics
+import Branch
 import FBSDKCoreKit
 import NKRecorder
 
@@ -20,24 +21,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
     let dependencies = AppDependencies()
     
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
-        
-        DDLogInfo("App Launched")
         ARAnalytics.event("AppOpen")
+        DDLogInfo("App Will Launch")
         return true
     }
     
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         window = UIWindow(frame: UIScreen.mainScreen().bounds)
-        window?.rootViewController = RootViewController(bridge: dependencies.bridge)
-        window?.makeKeyAndVisible()
+        self.window?.rootViewController = RootViewController(bridge: self.dependencies.bridge)
+        self.window?.makeKeyAndVisible()
+        
+        dependencies.branch.initSessionWithLaunchOptions(launchOptions) { params, error in
+            DDLogInfo("Initialized branch session params=\(params) error=\(error)")
+            self.rnSendAppEvent(.BranchInitialized, body: params)
+        }
         
         application.registerForRemoteNotifications()
-//        Globals.layerService.connectAndKeepUserInSync()
         
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
         // Pre-heat the camera if we can
         VideoMakerViewController.preloadRecorderAsynchronously()
+        DDLogInfo("App Did Launch")
         return true
     }
     

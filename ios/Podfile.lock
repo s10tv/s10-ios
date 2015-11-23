@@ -25,6 +25,7 @@ PODS:
   - Bolts/AppLinks (1.5.0):
     - Bolts/Tasks
   - Bolts/Tasks (1.5.0)
+  - Branch (0.11.11)
   - Cartography (0.6.0)
   - CocoaLumberjack/Core (2.2.0)
   - CocoaLumberjack/Default (2.2.0):
@@ -122,6 +123,7 @@ DEPENDENCIES:
   - ARAnalytics/Mixpanel
   - ARAnalytics/Segmentio
   - Atlas (~> 1.0.15)
+  - Branch (~> 0.11)
   - Cartography (~> 0.6)
   - CocoaLumberjack/Swift (~> 2.2)
   - Crashlytics (~> 3.4)
@@ -171,6 +173,7 @@ SPEC CHECKSUMS:
   ARAnalytics: 5468652928cee7100dd0e6b5162631409da37106
   Atlas: bd66c5b17719857a6b9e22299f76527245e06e88
   Bolts: 722ab9a4f8b50fc4ed1b9998a5a7a2b3f16d80b4
+  Branch: 71b1180c49d75e0d849e2611ecf3016de7572eac
   Cartography: 70af183a248547694a8cfaa6b989cb7e04589985
   CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
   Crashlytics: 1ee87895c37472eb3f01f409ea1654a464d2f8d4
