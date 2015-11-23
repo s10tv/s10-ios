@@ -84,7 +84,7 @@ class MeHeader extends React.Component {
           </View>
           <View style={styles.headerContentLineItem}>
             <MeButton text={'View'} onPress={() => {
-               this.props.navigator.push({
+               this.props.parentNavigator.push({
                 id: 'viewprofile',
                 title: 'Profile',
                 me: me,
@@ -126,14 +126,17 @@ class Me extends React.Component {
           style={[SHEET.navTopTab]}>
           
           <TouchableOpacity onPress={() => {
-              this.props.navigator.push({
+              this.props.parentNavigator.push({
                 id: 'viewprofile',
                 title: 'Profile',
                 me: me,
               })
             }}>
             <HeaderBanner url={coverUrl} height={ height / 4 }>
-              <MeHeader navigator={this.props.navigator} ddp={ddp} me={me} />
+              <MeHeader
+                parentNavigator={this.props.parentNavigator}
+                navigator={this.props.navigator}
+                ddp={ddp} me={me} />
             </HeaderBanner>
           </TouchableOpacity>
 

@@ -202,12 +202,13 @@ class TSTabNavigator extends React.Component {
               }}
               selected={this.state.currentTab == 'Me'}>
               
-              <MeScreen me={this.props.me} 
-                  onLogout={this.props.onLogout}
-                  categories={this.props.categories}
-                  myTags={this.props.myTags}
-                  navigator={nav}
-                  ddp={this.props.ddp} />
+              <MeScreen me={this.props.me}
+                parentNavigator={this.props.navigator}
+                onLogout={this.props.onLogout}
+                categories={this.props.categories}
+                myTags={this.props.myTags}
+                navigator={nav}
+                ddp={this.props.ddp} />
 
             </TabNavigator.Item>
             <TabNavigator.Item 

@@ -83,7 +83,10 @@ class RootNavigator extends React.Component {
 
   _title(route, navigator, index, navState) {
     switch (route.id) {
-      case 'root':
+      case 'viewprofile':
+        return null;
+        
+      case 'base':
         return <Text style={[styles.navBarText, styles.navBarTitleText, SHEET.baseText]}>
           { this.state.currentTab }
         </Text>;
@@ -99,7 +102,7 @@ class RootNavigator extends React.Component {
   _leftButton(route, navigator, index, navState) {
     switch (route.id) {
       case 'sendMessage':
-      case 'root':
+      case 'base':
         return null;
 
       default:
@@ -117,7 +120,7 @@ class RootNavigator extends React.Component {
 
   _rightButton(route, navigator, index, navState) {
     switch (route.id) {
-      case 'root':
+      case 'base':
         if (this.state.currentTab == 'Today') {
           return <TouchableOpacity
             onPress={() => navigator.push({
@@ -242,7 +245,7 @@ class RootNavigator extends React.Component {
         }}
         navigationBar={
           <TSNavigationBar
-            omitRoutes={['sendMessage']}
+            omitRoutes={['base', 'sendMessage', 'conversation']}
             routeMapper={{
               LeftButton: this._leftButton.bind(this),
               RightButton: this._rightButton.bind(this),

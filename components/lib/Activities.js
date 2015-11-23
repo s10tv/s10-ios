@@ -30,8 +30,8 @@ class ActivityHeader extends React.Component {
     }
 
     return (
-      <HeaderBanner url={ coverUrl } height={ height / 4 }>
-        <View style={[ { height: height / 4}, styles.activityUser]}>
+      <HeaderBanner url={ coverUrl } height={ height / 3 }>
+        <View style={[ { height: height / 3, top: height / 12 }, styles.activityUser]}>
           <Image source={{ uri: me.avatar.url }} style={{ width: height / 6, height: height / 6, borderRadius: height / 12, borderColor: 'white', borderWidth: 2.5 }} />
           <Text style={[{ marginTop: height / 96}, styles.activityUserTitle, SHEET.baseText]}>
             {me.firstName} {me.lastName} {me.gradYear}
@@ -350,7 +350,7 @@ class Activities extends React.Component {
 
     return (
       <View style={SHEET.container}>
-        <ScrollView style={[SHEET.navTop]} showsVerticalScrollIndicator={false}>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <ActivityHeader me={me} />
 
           <Card
@@ -388,10 +388,8 @@ var styles = StyleSheet.create({
   activityUser: {
     flex: 1,
     position: 'absolute',    
-    justifyContent: 'center',
     alignItems: 'center',
     backgroundColor: 'rgba(0,0,0,0)',
-    top: 0,
     left: 0,
     width: width,
   },
