@@ -63,11 +63,11 @@ class ProfileEditCard extends React.Component {
 
   render() {
     let editInfo = [
-      { key: 'firstName', display: 'First Name', multiline: false } ,
-      { key: 'lastName', display: 'Last Name', multiline: false },
-      { key: 'hometown', display: 'Hometown', multiline: false },
-      { key: 'major', display: 'Major', multiline: false },
-      { key: 'gradYear', display: 'Grad Year', multiline: false },
+      { key: 'firstName', display: 'First Name *', multiline: false } ,
+      { key: 'lastName', display: 'Last Name *', multiline: false },
+      { key: 'hometown', display: 'Hometown *', multiline: false },
+      { key: 'major', display: 'Major *', multiline: false },
+      { key: 'gradYear', display: 'Grad Year *', multiline: false },
       { key: 'about', display: 'About Me', multiline: true },
     ];
 
