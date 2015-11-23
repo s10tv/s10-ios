@@ -11,14 +11,15 @@ let {
 
 let SHEET = require('../CommonStyles').SHEET;
 let TappableCard = require('./Card').TappableCard;
+let Card = require('./Card').Card;
 
 class ServiceTile extends React.Component {
 
-  _handleServiceTouch(link) {
+  _handleServiceTouch(service) {
     this.props.navigator.push({
       id: 'linkservice',
       title: "Link Service",
-      link: link
+      link: service.link
     })
   }
 
@@ -32,20 +33,28 @@ class ServiceTile extends React.Component {
     let display = service.status == 'linked' ?
       <Text style={[styles.serviceId, SHEET.baseText]}>{service.username}</Text> : null;
 
-    return (
-      <TappableCard
-        {...this.props}
-        onPress={(event) => { return this._handleServiceTouch.bind(this)(service.url)}}>
-          <View style={styles.service}>
-            <Image source={{ uri: service.icon.url }} style={[SHEET.icon]} />
-            <View style={styles.serviceDesc}>
-              <Text style={[SHEET.subTitle, SHEET.baseText]}>{service.name}</Text>
-              { display }
-            </View>
-            {icon}
-          </View>
-      </TappableCard>
+    let cardInfo = (
+      <View style={styles.service}>
+        <Image source={{ uri: service.icon.url }} style={[SHEET.icon]} />
+        <View style={styles.serviceDesc}>
+          <Text style={[SHEET.subTitle, SHEET.baseText]}>{service.name}</Text>
+          { display }
+        </View>
+        {icon}
+      </View>
     )
+
+    if (service.name === 'facebook') {
+      return <Card>{ cardInfo }</Card>
+    } else {
+      return (
+        <TappableCard
+          {...this.props}
+          onPress={(event) => { return this._handleServiceTouch.bind(this)(service)}}>
+          { cardInfo }
+        </TappableCard>
+      )
+    }
   }
 }
 
