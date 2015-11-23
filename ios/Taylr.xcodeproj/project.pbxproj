@@ -851,7 +851,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NVM_DIR=$HOME/.nvm\n[[ -s $HOME/.nvm/nvm.sh ]] && source $HOME/.nvm/nvm.sh\n[[ -s $(brew --prefix nvm)/nvm.sh ]] && source $(brew --prefix nvm)/nvm.sh\n../node_modules/react-native/packager/react-native-xcode.sh\n\n";
+			shellScript = "if [ \"${ARCHS}\" = \"x86_64\" ]; then\n    echo 'Buidling for simulator only. Assume loading code bundle from react-native localhost server. Will skip react native xcode packing'\n    exit 0\nfi\n\nexport NVM_DIR=$HOME/.nvm\n[[ -s $HOME/.nvm/nvm.sh ]] && source $HOME/.nvm/nvm.sh\n[[ -s $(brew --prefix nvm)/nvm.sh ]] && source $(brew --prefix nvm)/nvm.sh\n../node_modules/react-native/packager/react-native-xcode.sh\n\n";
 		};
 		EA42164B1B3E211E00613EFA /* Fabric Script */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -1065,6 +1065,7 @@
 				INFOPLIST_FILE = "Taylr/Support/Taylr-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Taylr/Support/Taylr-Bridging.h";
