@@ -3,6 +3,7 @@ var Button = require('react-native-button');
 
 let {
   AppRegistry,
+  AlertIOS,
   Navigator,
   Text,
   TouchableOpacity,
@@ -48,7 +49,7 @@ class RootNavigator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentTab: 'discover'
+      currentTab: 'Today'
     }
   }
 
@@ -133,6 +134,31 @@ class RootNavigator extends React.Component {
             </Text>
           </TouchableOpacity>
         }
+        break;
+
+      case 'viewprofile':
+        return <TouchableOpacity
+          style={SHEET.navBarRightButton}
+          onPress={() => {
+            AlertIOS.alert(
+              `Report ${route.me.firstName}?`,
+              "",
+              [
+                {text: 'Cancel', onPress: () => console.log('Bar Pressed!')},
+                {text: 'Report', onPress: () => {
+                  return this.props.ddp.call({ methodName: 'user/report', params: [route.me._id, 'Reported'] })
+                  .then(() => {
+                    AlertIOS.alert(`Reported ${route.me.firstName}`, 
+                      'Thanks for your input. We will look into this shortly.');
+                  })
+                }},
+              ]
+            )
+          }}>
+            <Text style={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText, { color: '#7E57C2' }]}>
+              Report 
+            </Text>
+      </TouchableOpacity> 
     }
     return null;
   }
@@ -209,16 +235,16 @@ class RootNavigator extends React.Component {
 
       case 'root':
         return (
-          <TabNavigator style={{ color: '#64369C' }}>
+          <TabNavigator>
             <TabNavigator.Item 
               title="Me"
               renderIcon={() => <Image source={require('./img/ic-me.png')}/>}
               renderSelectedIcon={() => <Image style={styles.selected} source={require('./img/ic-me.png')}/>}
               selectedTitleStyle={styles.selectedText}
               onPress={() => {
-                this.setState({currentTab: 'me'});
+                this.setState({currentTab: 'Me'});
               }}
-              selected={this.state.currentTab == 'me'}>
+              selected={this.state.currentTab == 'Me'}>
               
               <MeScreen me={this.props.me} 
                   onLogout={this.props.onLogout}
@@ -234,9 +260,9 @@ class RootNavigator extends React.Component {
               renderSelectedIcon={() => <Image style={styles.selected} source={require('./img/ic-compass.png')}/>}
               selectedTitleStyle={styles.selectedText}
               onPress={() => {
-                this.setState({currentTab: 'discover'});
+                this.setState({currentTab: 'Today'});
               }}
-              selected={this.state.currentTab == 'discover'}>
+              selected={this.state.currentTab == 'Today'}>
 
               <DiscoverScreen navigator={nav} ddp={this.ddp} 
                 candidate={this.props.candidate}
@@ -246,15 +272,15 @@ class RootNavigator extends React.Component {
 
             </TabNavigator.Item>
             <TabNavigator.Item 
-              title="Chats"
+              title="Conversations"
               badgeText={this.props.numUnreadConversations}
               renderIcon={() => <Image source={require('./img/ic-chats.png')}/>}
               renderSelectedIcon={() => <Image style={styles.selected} source={require('./img/ic-chats.png')}/>}
               selectedTitleStyle={styles.selectedText}
               onPress={() => {
-                this.setState({currentTab: 'chats'});
+                this.setState({currentTab: 'Conversations'});
               }}
-              selected={this.state.currentTab == 'chats'}>
+              selected={this.state.currentTab == 'Conversations'}>
               
              <ConversationListView
                 navigator={nav}
