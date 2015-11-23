@@ -64,6 +64,15 @@ class ChatHistoryViewController : ATLConversationViewController {
         vm.markAllNonVideoMessagesAsRead()
     }
     
+    override func sendLocationMessage() {
+        let alert = UIAlertController(title: "Share Location", message: "Please confirm that you would like to share your location.", preferredStyle: .Alert)
+        alert.addAction("Cancel", style: .Cancel)
+        alert.addAction("Send", style: .Default) { _ in
+            super.sendLocationMessage()
+        }
+        presentViewController(alert, animated: true, completion: nil)
+    }
+    
     // override (superclass implement this, but not visible to subclass because)
     // it's not declared in the header file
     func messageInputToolbar(messageInputToolbar: ATLMessageInputToolbar!, didTapLeftAccessoryButton leftAccessoryButton: UIButton!) {
