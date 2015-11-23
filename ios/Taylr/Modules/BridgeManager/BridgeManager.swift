@@ -13,6 +13,14 @@ import React
 
 private let kRNSendAppEventNotificationName = "rnSendAppEvent"
 
+enum NativeAppEvent : String {
+    case RegisteredPushToken = "RegisteredPushToken"
+    case NavigationPush = "Navigation.push"
+    case NavigationPop = "Navigation.pop"
+    case BranchInitialized = "Branch.initialized"
+    case ProfileShowMoreOptions = "Profile.showMoreOptions"
+}
+
 extension NSObject {
     func rnSendAppEvent(name: NativeAppEvent, body: AnyObject?) {
         var userInfo: [String: AnyObject] = ["name": name.rawValue]
@@ -53,13 +61,6 @@ extension BridgeManager {
             block([NSNull(), NSNull()])
         }))
     }
-}
-
-enum NativeAppEvent : String {
-    case RegisteredPushToken = "RegisteredPushToken"
-    case NavigationPush = "Navigation.push"
-    case NavigationPop = "Navigation.pop"
-    case BranchInitialized = "Branch.initialized"
 }
 
 enum RouteId : String {

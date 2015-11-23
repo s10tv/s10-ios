@@ -150,50 +150,7 @@ class ConversationViewController : UIViewController {
     }
     
     @IBAction func showMoreOptions(sender: AnyObject) {
-        let sheet = UIAlertController(title: nil, message: nil, preferredStyle: .ActionSheet)
-        if self.vm.canNavigateToProfile() {
-            sheet.addAction(LS(.viewProfile)) { _ in
-                self.didTapProfileView(self)
-            }
-        }
-        sheet.addAction(LS(.moreSheetBlock, vm.displayName.value), style: .Destructive) { _ in
-            self.blockUser(self)
-        }
-        sheet.addAction(LS(.moreSheetReport, vm.displayName.value), style: .Destructive) { _ in
-            self.reportUser(self)
-        }
-        sheet.addAction(LS(.moreSheetCancel), style: .Cancel)
-        presentViewController(sheet, animated: true, completion: nil)
-    }
-    
-    // TODO: FIX CODE DUPLICATION WITH ProfileViewController
-    @IBAction func blockUser(sender: AnyObject) {
-        let alert = UIAlertController(title: "Block User",
-            message: "Are you sure you want to block \(vm.displayName.value)?",
-            preferredStyle: .Alert)
-        alert.addAction("Cancel", style: .Cancel)
-        alert.addAction("Block", style: .Destructive) { _ in
-//            self.vm.blockUser()
-            ARAnalytics.event("User: Block")
-            let dialog = UIAlertController(title: "Block User", message: "\(self.vm.displayName.value) will no longer be able to contact you in the future", preferredStyle: .Alert)
-            dialog.addAction("Ok", style: .Default)
-            self.presentViewController(dialog, animated: true, completion: nil)
-            
-        }
-        presentViewController(alert, animated: true, completion: nil)
-    }
-    
-    @IBAction func reportUser(sender: AnyObject) {
-        let alert = UIAlertController(title: LS(.reportAlertTitle), message: LS(.reportAlertMessage), preferredStyle: .Alert)
-        alert.addTextFieldWithConfigurationHandler(nil)
-        alert.addAction(LS(.reportAlertCancel), style: .Cancel)
-        alert.addAction(LS(.reportAlertConfirm), style: .Destructive) { _ in
-            if let reportReason = alert.textFields?[0].text {
-                ARAnalytics.event("User: Report", withProperties: ["Reason": reportReason])
-//                self.vm.reportUser(reportReason)
-            }
-        }
-        presentViewController(alert, animated: true, completion: nil)
+        rnSendAppEvent(.ProfileShowMoreOptions, body: vm.recipientUser()?.userId)
     }
 }
 
