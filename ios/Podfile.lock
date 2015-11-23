@@ -66,6 +66,7 @@ PODS:
   - FMDB/standard (2.5):
     - FMDB/common
   - FormatterKit/TimeIntervalFormatter (1.8.0)
+  - Intercom (2.3.15)
   - LayerKit (0.17.2)
   - Mixpanel (2.9.0):
     - Mixpanel/Mixpanel (= 2.9.0)
@@ -131,6 +132,7 @@ DEPENDENCIES:
   - Fabric (~> 1.6)
   - FBSDKLoginKit (~> 4.8)
   - FormatterKit/TimeIntervalFormatter (~> 1.8)
+  - Intercom (~> 2.3)
   - LayerKit (~> 0.17)
   - NKRecorder (from `git@github.com:s10tv/video-maker.git`)
   - NSLogger (~> 1.5)
@@ -182,6 +184,7 @@ SPEC CHECKSUMS:
   FBSDKLoginKit: d893fcbb98d854496925e9ff73c67b896982d3c4
   FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
   FormatterKit: bddde83e054edf9d9ee14f9de3b3a5103db256f4
+  Intercom: 49dfec2dadadba595705e43b30f1148ed799fbc3
   LayerKit: 60f1f23923e2718992eba22c6e9a8ef92b6344bc
   Mixpanel: 42ae6168effc48481d957f7883dd8514a398738d
   NKRecorder: f4bce8409adc39321668b5af939173839f5980a2

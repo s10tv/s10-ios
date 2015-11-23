@@ -36,6 +36,10 @@ class AppConfig {
     let amplitudeKey: String
     let layerURL: NSURL
     let appHubApplicationId: String
+    let intercom: (appId: String, apiKey: String) = (
+        appId: "q6ihw9uw",
+        apiKey: "ios_sdk-d849f0f2673a478473e25615616acf139b0e28a9"
+    )
     
     init(audience: Audience) {
         self.audience = audience

@@ -50,7 +50,11 @@ pod 'ARAnalytics', :subspecs => [
     'Mixpanel',
     'Amplitude',
     'Segmentio',
+  # Cause error -> The 'Pods' target has transitive dependencies that include static binaries
+  # Therefore use the intercom pod directly
+  # 'Intercom'
 ]
+pod 'Intercom', '~> 2.3'
 # Disabling UXCam for dev builds until motion detection interference is fixed
 pod 'UXCam', '~> 2.4', :configuration => ['Release']
 

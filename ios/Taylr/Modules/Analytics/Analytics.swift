@@ -9,6 +9,7 @@
 import Foundation
 import ARAnalytics
 import Amplitude_iOS
+import Intercom
 #if ReleaseConfig
 import UXCam
 #endif
@@ -22,6 +23,7 @@ public class Analytics : NSObject {
         ARAnalytics.setupMixpanelWithToken(config.mixpanelToken)
         ARAnalytics.setupAmplitudeWithAPIKey(config.amplitudeKey)
         ARAnalytics.setupSegmentioWithWriteKey(config.segmentWriteKey)
+        ARAnalytics.setupProvider(IntercomProvider(appId: config.intercom.appId, apiKey: config.intercom.apiKey))
         ARAnalytics.setupProvider(LoggingProvider())
         #if ReleaseConfig
         if config.audience != .Dev {
@@ -44,5 +46,17 @@ public class Analytics : NSObject {
     
     @objc func incrementUserProperty(name: String, amount: Int) {
         ARAnalytics.incrementUserProperty(name, byInt: amount)
+    }
+    
+    @objc func intercomPresentMessageComposer() {
+        dispatch_async(dispatch_get_main_queue()) {
+            Intercom.presentMessageComposer()
+        }
+    }
+    
+    @objc func intercomPresentConversationList() {
+        dispatch_async(dispatch_get_main_queue()) {
+            Intercom.presentConversationList()
+        }
     }
 }

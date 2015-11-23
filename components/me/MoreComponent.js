@@ -8,7 +8,7 @@ let {
   StyleSheet,
 } = React;
 
-let Mailer = require('NativeModules').RNMail;
+let Analytics = require('NativeModules').TSAnalytics;
 let SectionTitle = require('../lib/SectionTitle');
 let TappableCard = require('../lib/Card').TappableCard;
 let SHEET = require('../CommonStyles').SHEET;
@@ -16,10 +16,7 @@ let SHEET = require('../CommonStyles').SHEET;
 class ContactUs extends React.Component {
 
   contactUs() {
-    Mailer.mail({
-      subject: 'need help',
-    }, (error, event) => {
-    });
+    Analytics.intercomPresentConversationList();
   }
 
   render() {

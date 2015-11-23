@@ -15,5 +15,7 @@ RCT_EXTERN_METHOD(identify:(NSString *)userId)
 RCT_EXTERN_METHOD(track:(NSString *)event properties:(NSDictionary *)properties)
 RCT_EXTERN_METHOD(setUserProperty:(NSString *)name value:(NSString *)value)
 RCT_EXTERN_METHOD(incrementUserProperty:(NSString *)name amount:(int)amount)
+RCT_EXTERN_METHOD(intercomPresentMessageComposer)
+RCT_EXTERN_METHOD(intercomPresentConversationList)
 
 @end

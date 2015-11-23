@@ -23,6 +23,6 @@ let container = React.createClass({
 });
 
 AppRegistry.registerComponent('Taylr', () => container);
-
+Analytics.identify('TestUserId');
 Analytics.track('JS App Launched', null);
 Logger.log('My Log Statement', 'info', 'root', 'index.ios.js', 232);
