@@ -150,6 +150,8 @@ var styles = StyleSheet.create({
   },
   avatar: {
     flex: 1,
+    borderColor: 'white',
+    borderWidth: 2.5,
     height: width / 4,
     borderRadius: width / 8,
   },

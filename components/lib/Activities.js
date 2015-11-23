@@ -32,7 +32,7 @@ class ActivityHeader extends React.Component {
     return (
       <HeaderBanner url={ coverUrl } height={ height / 4 }>
         <View style={[ { height: height / 4}, styles.activityUser]}>
-          <Image source={{ uri: me.avatar.url }} style={{ width: height / 6, height: height / 6, borderRadius: height / 12 }} />
+          <Image source={{ uri: me.avatar.url }} style={{ width: height / 6, height: height / 6, borderRadius: height / 12, borderColor: 'white', borderWidth: 2.5 }} />
           <Text style={[{ marginTop: height / 96}, styles.activityUserTitle, SHEET.baseText]}>
             {me.firstName} {me.lastName} {me.gradYear}
           </Text>
