@@ -162,7 +162,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   NKRecorder:
-    :commit: b1de81b5eef533375bedb227c836375cbbcac0fa
+    :commit: c6a0ade8f03e4b59535d3ba044f143b467577a7f
     :git: git@github.com:s10tv/video-maker.git
 
 SPEC CHECKSUMS:
