@@ -177,8 +177,11 @@ class LayoutContainer extends React.Component {
   }
 
   __layerLogin() {
+    NativeAppEventEmitter.addListener('Layer.unreadConversationsCountUpdate', (count) => {
+      this.setState({ numUnreadConversations: count })
+    }.bind(this))
+
     NativeAppEventEmitter.addListener('Layer.allConversationsCountUpdate', (count) => {
-      console.log('all convos ' + count);
       this.setState({ numTotalConversations: count })
     }.bind(this))
 
@@ -247,6 +250,7 @@ class LayoutContainer extends React.Component {
       users={this.state.users}
       settings={this.state.settings}
       numTotalConversations={this.state.numTotalConversations}
+      numUnreadConversations={this.state.numUnreadConversations}
       ddp={this.ddp} />
   }
 }
