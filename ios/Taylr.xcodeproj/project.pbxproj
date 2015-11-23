@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		4AD00249A11FDFD015C379A5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AA6C7823A20B63EB451A15E /* Pods.framework */; };
-		EA19793F1BFAAB7C00DF7B58 /* libRNMail.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA2666F71BFA62230054C777 /* libRNMail.a */; };
 		EA1979401BFAAB7C00DF7B58 /* libRNSearchBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA2666FE1BFA622F0054C777 /* libRNSearchBar.a */; };
 		EA1979E21BFC4CD800DF7B58 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1979E01BFC4CD800DF7B58 /* R.swift */; };
 		EA1979E31BFC4CD800DF7B58 /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1979E11BFC4CD800DF7B58 /* SBConstants.swift */; };
@@ -100,20 +99,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RCTFBSDKCore;
-		};
-		EA2666F61BFA62230054C777 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F94FA0CC1BF427D20050D6F1 /* RNMail.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 46FEDE7F1AFF192F00D3261C;
-			remoteInfo = RNMail;
-		};
-		EA2666F81BFA62230054C777 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F94FA0CC1BF427D20050D6F1 /* RNMail.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 46FEDE8A1AFF192F00D3261C;
-			remoteInfo = RNMailTests;
 		};
 		EA2666FD1BFA622F0054C777 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -245,7 +230,6 @@
 		EABD43DA1AA1D29C00B07813 /* Prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
 		EABE4BDC1C0285D6001557A1 /* IntercomProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntercomProvider.swift; sourceTree = "<group>"; };
 		EABF2AB41AD04659005880E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		F94FA0CC1BF427D20050D6F1 /* RNMail.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RNMail.xcodeproj; path = "../node_modules/react-native-mail/RNMail.xcodeproj"; sourceTree = SOURCE_ROOT; };
 		F9DDF6441BFD434600D7A2FC /* libRNFabricDigits.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRNFabricDigits.a; path = "../../node_modules/react-native-fabric-digits/ios/build/Debug-iphoneos/libRNFabricDigits.a"; sourceTree = "<group>"; };
 		F9DDF6981BFDB27700D7A2FC /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVideo.xcodeproj; path = "../node_modules/react-native-video/RCTVideo.xcodeproj"; sourceTree = "<group>"; };
 		F9DDF6A91BFDB2A400D7A2FC /* libRCTVideo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRCTVideo.a; path = "../../node_modules/react-native-video/build/Debug-iphoneos/libRCTVideo.a"; sourceTree = "<group>"; };
@@ -266,7 +250,6 @@
 				EA7DFB421C0256620045A5ED /* SystemConfiguration.framework in Frameworks */,
 				F9DDF6AA1BFDB2A400D7A2FC /* libRCTVideo.a in Frameworks */,
 				F9DDF73C1BFFACC400D7A2FC /* libRNOverlay.a in Frameworks */,
-				EA19793F1BFAAB7C00DF7B58 /* libRNMail.a in Frameworks */,
 				EA1979401BFAAB7C00DF7B58 /* libRNSearchBar.a in Frameworks */,
 				EA3713921BFD288700E51980 /* libRCTFBSDKCore.a in Frameworks */,
 				EA3713AA1BFD28EF00E51980 /* libRCTFBSDKLogin.a in Frameworks */,
@@ -290,7 +273,6 @@
 				F9F337BE1BFD42F600ACA98C /* RNFabricDigits.xcodeproj */,
 				EA24215C1BFD282C00AF16C4 /* RCTFBSDKCore.xcodeproj */,
 				EA3713931BFD28C200E51980 /* RCTFBSDKLogin.xcodeproj */,
-				F94FA0CC1BF427D20050D6F1 /* RNMail.xcodeproj */,
 				EAA5DAC31BF2A98000BF6B1E /* RNSearchBar.xcodeproj */,
 				F9DDF6441BFD434600D7A2FC /* libRNFabricDigits.a */,
 				F9DDF73B1BFFACC400D7A2FC /* libRNOverlay.a */,
@@ -363,15 +345,6 @@
 			isa = PBXGroup;
 			children = (
 				EA2421631BFD283D00AF16C4 /* libRCTFBSDKCore.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		EA2666F21BFA62230054C777 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				EA2666F71BFA62230054C777 /* libRNMail.a */,
-				EA2666F91BFA62230054C777 /* RNMailTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -735,10 +708,6 @@
 					ProjectRef = F9F337BE1BFD42F600ACA98C /* RNFabricDigits.xcodeproj */;
 				},
 				{
-					ProductGroup = EA2666F21BFA62230054C777 /* Products */;
-					ProjectRef = F94FA0CC1BF427D20050D6F1 /* RNMail.xcodeproj */;
-				},
-				{
 					ProductGroup = F9DDF72F1BFFAC9F00D7A2FC /* Products */;
 					ProjectRef = F9DDF7291BFFAC8900D7A2FC /* RNOverlay.xcodeproj */;
 				},
@@ -760,20 +729,6 @@
 			fileType = archive.ar;
 			path = libRCTFBSDKCore.a;
 			remoteRef = EA2421621BFD283D00AF16C4 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		EA2666F71BFA62230054C777 /* libRNMail.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNMail.a;
-			remoteRef = EA2666F61BFA62230054C777 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		EA2666F91BFA62230054C777 /* RNMailTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = RNMailTests.xctest;
-			remoteRef = EA2666F81BFA62230054C777 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		EA2666FE1BFA622F0054C777 /* libRNSearchBar.a */ = {
