@@ -69,6 +69,7 @@ class ConversationViewController : UIViewController {
         
         videoMaker = VideoMakerViewController.mainController()
         videoMaker.videoMakerDelegate = self
+        videoMaker.topOffset = 64.0
         
         addChildViewController(chatHistory)
         chatHistoryContainer.addSubview(chatHistory.view)
