@@ -176,30 +176,22 @@ class LayoutContainer extends React.Component {
     })
   }
 
-  __layerLogin() {
-    NativeAppEventEmitter.addListener('Layer.unreadConversationsCountUpdate', (count) => {
-      this.setState({ numUnreadConversations: count })
-    }.bind(this))
-
+  async __layerLogin() {
     NativeAppEventEmitter.addListener('Layer.allConversationsCountUpdate', (count) => {
       this.setState({ numTotalConversations: count })
     }.bind(this))
-
-    TSLayerService.connectAsync().then(() => {
-      return TSLayerService.isAuthenticatedAsync();
-    }).then(isAuthenticated => {
-      if (isAuthenticated) { 
-        return Promise.resolve(true);
-      } else {
-        return TSLayerService.requestAuthenticationNonceAsync().then(nonce => {
-          return this.ddp.call({ methodName: 'layer/auth', params: [nonce]});
-        }).then(sessionId => {
-          return TSLayerService.authenticateAsync(sessionId)
-        });
+    try {
+      await TSLayerService.connectAsync();
+      const isAuthenticated = await TSLayerService.isAuthenticatedAsync();
+      if (isAuthenticated) {
+        return;
       }
-    }).catch(error => {
+      const nonce = await TSLayerService.requestAuthenticationNonceAsync();
+      const sessionId = await this.ddp.call({ methodName: 'layer/auth', params: [nonce]});
+      await TSLayerService.authenticateAsync(sessionId);
+    } catch (error) {
       console.error('Unable to complete layer flow', error);
-    });
+    }
   }
 
   componentWillMount() {

@@ -22,6 +22,7 @@
     "react-native-tab-navigator": "^0.2.11",
     "react-native-tabbar": "^0.1.1",
     "react-native-video": "^0.6.1",
+    "regenerator": "^0.8.42",
     "s10-common": "git+https://github.com/s10tv/s10-common.git",
     "underscore": "^1.8.3"
   }
