@@ -35,9 +35,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
             DDLogInfo("Initialized branch session params=\(params) error=\(error)")
             self.rnSendAppEvent(.BranchInitialized, body: params)
         }
-        
+        AppHub.buildManager().fetchBuildWithCompletionHandler { build, error in
+            DDLogInfo("Fetched new build from app hub id=\(build.identifier) name=\(build.name) desc=\(build.buildDescription) date=\(build.creationDate)")
+//            for version in build.compatibleIOSVersions { // Crashes right now...
+//                DDLogDebug("\(build.name): Compat Version - \(version)")
+//            }
+        }
         application.registerForRemoteNotifications()
-        
+    
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
 
         // Pre-heat the camera if we can

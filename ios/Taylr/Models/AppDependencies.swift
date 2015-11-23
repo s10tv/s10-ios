@@ -41,6 +41,13 @@ class AppDependencies : NSObject {
         Crashlytics.sharedInstance().delegate = self
         Fabric.with([Digits(), Crashlytics()])
         AppHub.setApplicationID(config.appHubApplicationId)
+        AppHub.buildManager().cellularDownloadsEnabled = true
+        switch config.audience {
+        case .AppStore:
+            AppHub.buildManager().debugBuildsEnabled = false
+        default:
+            AppHub.buildManager().debugBuildsEnabled = true
+        }
     }
 }
 
