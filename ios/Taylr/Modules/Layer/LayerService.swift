@@ -207,12 +207,10 @@ extension LayerService {
             return
         }
         DDLogDebug("Will connect to layer")
-        layerClient.connect().start(Event.sink(error: { error in
+        layerClient.connect().promise(resolve, reject).start(Event.sink(error: { error in
             DDLogError("Unable to connect to layer \(error)")
-            reject(error)
         }, completed: {
             DDLogInfo("Successfully connected to Layer")
-            resolve(nil)
         }))
         for qc in [unreadQueryController, allConversationsQueryController] {
             _ = try? qc?.execute()
@@ -226,23 +224,19 @@ extension LayerService {
     
     @objc func requestAuthenticationNonce(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
         DDLogDebug("Will request authentication nonce")
-        layerClient.requestAuthenticationNonce().start(Event.sink(error: { error in
+        layerClient.requestAuthenticationNonce().promise(resolve, reject).start(Event.sink(error: { error in
             DDLogError("Unable to get authentication nonce \(error)")
-            reject(error)
         }, next: { nonce in
             DDLogDebug("Did receive requested authentication nonce \(nonce)")
-            resolve(nonce)
         }))
     }
     
     @objc func authenticate(identityToken: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
         DDLogDebug("Will authenticate with layer \(identityToken)")
-        layerClient.authenticate(identityToken).start(Event.sink(error: { error in
+        layerClient.authenticate(identityToken).promise(resolve, reject).start(Event.sink(error: { error in
             DDLogError("Unable to update user in Layer session \(error)")
-            reject(error)
         }, next: { userId in
             DDLogInfo("Updated user in Layer session userId=\(userId)")
-            resolve(userId)
         }))
     }
     
@@ -252,12 +246,10 @@ extension LayerService {
             return
         }
         DDLogDebug("Will deauthenticate from layer")
-        layerClient.deauthenticate().start(Event.sink(error: { error in
+        layerClient.deauthenticate().promise(resolve, reject).start(Event.sink(error: { error in
             DDLogError("Unable to deauthenticate \(error)")
-            reject(error)
         }, completed: {
             DDLogInfo("Successfully deauthenticated from layer")
-            resolve(nil)
         }))
     }
 }

@@ -84,6 +84,7 @@
 		EAA5E8DE1BFEAEE4009DE994 /* BridgeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA5E8DC1BFEAEE4009DE994 /* BridgeManager.m */; };
 		EAA5E8DF1BFEAEE4009DE994 /* BridgeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA5E8DD1BFEAEE4009DE994 /* BridgeManager.swift */; };
 		EABE4BDD1C0285D6001557A1 /* IntercomProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE4BDC1C0285D6001557A1 /* IntercomProvider.swift */; };
+		EABE4BF51C03279C001557A1 /* ReactExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE4BF41C03279C001557A1 /* ReactExtensions.swift */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
 		F9DDF6451BFD434600D7A2FC /* libRNFabricDigits.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9DDF6441BFD434600D7A2FC /* libRNFabricDigits.a */; };
 		F9DDF6AA1BFDB2A400D7A2FC /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9DDF6A91BFDB2A400D7A2FC /* libRCTVideo.a */; };
@@ -229,6 +230,7 @@
 		EABD43D91AA1D29C00B07813 /* Beta.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
 		EABD43DA1AA1D29C00B07813 /* Prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
 		EABE4BDC1C0285D6001557A1 /* IntercomProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntercomProvider.swift; sourceTree = "<group>"; };
+		EABE4BF41C03279C001557A1 /* ReactExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactExtensions.swift; sourceTree = "<group>"; };
 		EABF2AB41AD04659005880E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F9DDF6441BFD434600D7A2FC /* libRNFabricDigits.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRNFabricDigits.a; path = "../../node_modules/react-native-fabric-digits/ios/build/Debug-iphoneos/libRNFabricDigits.a"; sourceTree = "<group>"; };
 		F9DDF6981BFDB27700D7A2FC /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVideo.xcodeproj; path = "../node_modules/react-native-video/RCTVideo.xcodeproj"; sourceTree = "<group>"; };
@@ -306,6 +308,7 @@
 				EA197A0E1BFC4D2600DF7B58 /* SwiftExtension.swift */,
 				EA197A111BFC4D2600DF7B58 /* UIKitExtension.swift */,
 				EA7DFB321BFFA40B0045A5ED /* AlamofireExtension.swift */,
+				EABE4BF41C03279C001557A1 /* ReactExtensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -877,6 +880,7 @@
 				F9DDF7161BFFA18300D7A2FC /* UIImagePickerManager.m in Sources */,
 				EA3226021BFDAEEB00FF5074 /* AudioController.swift in Sources */,
 				EA197A4D1BFC4D2600DF7B58 /* DynamicProperties.swift in Sources */,
+				EABE4BF51C03279C001557A1 /* ReactExtensions.swift in Sources */,
 				EA3225DF1BFDAE8A00FF5074 /* Logger.swift in Sources */,
 				EA197A481BFC4D2600DF7B58 /* MediaExtension.swift in Sources */,
 				EA3226041BFDAEEB00FF5074 /* MuteChecker.m in Sources */,
