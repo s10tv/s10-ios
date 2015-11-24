@@ -9,6 +9,7 @@
 import Foundation
 import Intercom
 
+@objc(TSIntercomProvider)
 public class IntercomProvider : NSObject, AnalyticsProvider {
     
     init(appId: String, apiKey: String) {
@@ -30,5 +31,17 @@ public class IntercomProvider : NSObject, AnalyticsProvider {
     
     func setUserProperties(properties: [String : AnyObject]) {
         Intercom.updateUserWithAttributes(["custom_attributes": properties])
+    }
+    
+    @objc func presentMessageComposer() {
+        dispatch_async(dispatch_get_main_queue()) {
+            Intercom.presentMessageComposer()
+        }
+    }
+    
+    @objc func presentConversationList() {
+        dispatch_async(dispatch_get_main_queue()) {
+            Intercom.presentConversationList()
+        }
     }
 }

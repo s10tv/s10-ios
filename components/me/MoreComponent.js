@@ -8,7 +8,7 @@ let {
   StyleSheet,
 } = React;
 
-let Analytics = require('NativeModules').TSAnalytics;
+let Intercom = require('NativeModules').TSIntercomProvider;
 let SectionTitle = require('../lib/SectionTitle');
 let TappableCard = require('../lib/Card').TappableCard;
 let SHEET = require('../CommonStyles').SHEET;
@@ -16,7 +16,7 @@ let SHEET = require('../CommonStyles').SHEET;
 class ContactUs extends React.Component {
 
   contactUs() {
-    Analytics.intercomPresentConversationList();
+    Intercom.presentConversationList();
   }
 
   render() {

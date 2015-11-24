@@ -78,6 +78,7 @@
 		EA7FB0971B5EF9D50052B394 /* Cabin-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB0911B5EF9D50052B394 /* Cabin-Medium.ttf */; };
 		EA7FB0981B5EF9D50052B394 /* Cabin-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB0921B5EF9D50052B394 /* Cabin-MediumItalic.ttf */; };
 		EA7FB0991B5EF9D50052B394 /* Cabin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB0931B5EF9D50052B394 /* Cabin-Regular.ttf */; };
+		EA8A510A1C045229004660E1 /* IntercomProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8A51091C045229004660E1 /* IntercomProvider.m */; };
 		EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA9A6ACE1AAFDE19009EDD6D /* Localizable.strings */; };
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
 		EAA5E8DE1BFEAEE4009DE994 /* BridgeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA5E8DC1BFEAEE4009DE994 /* BridgeManager.m */; };
@@ -220,6 +221,7 @@
 		EA7FB0911B5EF9D50052B394 /* Cabin-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Medium.ttf"; sourceTree = "<group>"; };
 		EA7FB0921B5EF9D50052B394 /* Cabin-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-MediumItalic.ttf"; sourceTree = "<group>"; };
 		EA7FB0931B5EF9D50052B394 /* Cabin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Regular.ttf"; sourceTree = "<group>"; };
+		EA8A51091C045229004660E1 /* IntercomProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntercomProvider.m; sourceTree = "<group>"; };
 		EA9A6ACF1AAFDFA2009EDD6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA9F353A1A74CC6900E0C65D /* Taylr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taylr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9F353E1A74CC6900E0C65D /* Taylr-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Taylr-Info.plist"; sourceTree = "<group>"; };
@@ -597,6 +599,7 @@
 				EABE4C671C03C45A001557A1 /* SegmentProvider.swift */,
 				EABE4C681C03C45A001557A1 /* UXCamProvider.swift */,
 				EABE4C621C03C3BF001557A1 /* IntercomProvider.swift */,
+				EA8A51091C045229004660E1 /* IntercomProvider.m */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -954,6 +957,7 @@
 				EA197A461BFC4D2600DF7B58 /* FoundationExtension.swift in Sources */,
 				EAA5E8DF1BFEAEE4009DE994 /* BridgeManager.swift in Sources */,
 				EA3226071BFDAEEB00FF5074 /* VideoPlayerViewModel.swift in Sources */,
+				EA8A510A1C045229004660E1 /* IntercomProvider.m in Sources */,
 				EA1979E31BFC4CD800DF7B58 /* SBConstants.swift in Sources */,
 				EA1979E21BFC4CD800DF7B58 /* R.swift in Sources */,
 				EA197A4C1BFC4D2600DF7B58 /* ArrayProperty.swift in Sources */,

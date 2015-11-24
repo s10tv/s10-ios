@@ -89,6 +89,7 @@ extension AppDependencies : RCTBridgeDelegate {
             Analytics,
             Logger,
             layer,
+            intercom,
         ]
     }
 }

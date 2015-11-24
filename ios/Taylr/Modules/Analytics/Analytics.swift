@@ -8,7 +8,6 @@
 
 import Foundation
 import CocoaLumberjack
-import Intercom
 
 public let Analytics = TSAnalytics()
 
@@ -47,15 +46,5 @@ public class TSAnalytics : NSObject {
         DDLogDebug("Increment user property name=\(propertyName) amount=\(amount)")
     }
     
-    @objc func intercomPresentMessageComposer() {
-        dispatch_async(dispatch_get_main_queue()) {
-            Intercom.presentMessageComposer()
-        }
-    }
-    
-    @objc func intercomPresentConversationList() {
-        dispatch_async(dispatch_get_main_queue()) {
-            Intercom.presentConversationList()
-        }
-    }
+
 }
