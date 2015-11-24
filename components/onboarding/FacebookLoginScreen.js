@@ -59,8 +59,8 @@ class FacebookLoginScreen extends React.Component {
       this.props.ddp.__onLogin.bind(this.props.ddp)(result);
       this.props.onLogin({
         userId: result.id,
-        token: result.token,
-        tokenExpires: result.tokenExpires,
+        resumeToken: result.token,
+        expiryDate: result.tokenExpires.getTime(),
       });
     })
     .catch((err) => {
@@ -116,8 +116,8 @@ class FacebookLoginScreen extends React.Component {
                         this.props.ddp.__onLogin.bind(this.props.ddp)(result);
                         this.props.onLogin({
                           userId: result.id,
-                          token: result.token,
-                          tokenExpires: result.tokenExpires,
+                          resumeToken: result.token,
+                          expiryDate: result.tokenExpires.getTime(),
                         });
                       })
                       .catch(err => {

@@ -2,11 +2,12 @@ let React = require('react-native');
 
 let {
   AppRegistry,
-  AsyncStorage,
   NativeAppEventEmitter,
   View,
   TabBarIOS,
 } = React;
+
+let BridgeManager = require('../modules/BridgeManager');
 
 let OnboardingNavigator = require('./onboarding/OnboardingNavigator');
 let RootNavigator = require('./RootNavigator');
@@ -17,6 +18,12 @@ let TSLayerService = React.NativeModules.TSLayerService;
 
 let SHEET = require('./CommonStyles').SHEET;
 let Logger = require('../lib/Logger');
+
+let Digits = require('react-native-fabric-digits');
+let { DigitsAuthenticateManager } = Digits;
+
+let FBSDKLogin = require('react-native-fbsdklogin');
+let { FBSDKLoginManager } = FBSDKLogin;
 
 class LayoutContainer extends React.Component {
 
@@ -32,156 +39,147 @@ class LayoutContainer extends React.Component {
     this.logger = new Logger(this);
   }
 
-  onLogout() {
-    TSLayerService.deauthenticate((err, res) => {
-      this.setState({ loggedIn: false });
-    })
+  async onLogout() {
+    await TSLayerService.deauthenticateAsync();
+    DigitsAuthenticateManager.logout();
+    FBSDKLoginManager.logOut();
+
+    await this.ddp.logout()
+    this.setState({ loggedIn: false });
   }
 
-  onLogin(options) {
-    let { token, userId, tokenExpires } = options;
-
-    if (!token) {
-      logger.error('OnLogin called with invalid Token');
-      return;
-    }
+  /** 
+   * account: { userID, resumeToken }
+   */
+  async onLogin(account) {
+    const ddp = this.ddp;
+    await BridgeManager.setDefaultAccount(account)
 
     this.setState({ loggedIn: true });
+    this.__layerLogin()
 
-    let multiSetValues = [
-      ['userId', userId],
-      ['loginToken', token],
-    ];
-
-    AsyncStorage.multiSet(multiSetValues)
+    this.ddp.subscribe({ pubName: 'settings' })
     .then(() => {
-      let ddp = this.ddp;
-
-      this.__layerLogin()
-
-      this.ddp.subscribe({ pubName: 'settings' })
-      .then(() => {
-        ddp.collections.observe(() => {
-          if (ddp.collections.settings) {
-            return ddp.collections.settings.find({});
-          }
-        }).subscribe(settings => {
-          indexedSettings =  {};
-          settings.forEach((setting) => {
-            indexedSettings[setting._id] = setting;
-          });
-
-          this.setState({ settings: indexedSettings });
-
-          if (indexedSettings.accountStatus) {
-            this.setState ({
-              isActive: indexedSettings.accountStatus.value == 'active'
-            })
-          }
-        });
-      })
-      .catch(err => { this.logger.error(JSON.stringify(err)) })
-
-      this.ddp.subscribe({ pubName: 'me' })
-      .then(() => {
-        ddp.collections.observe(() => {
-          if (ddp.collections.users) {
-            return ddp.collections.users.findOne({ _id: ddp.currentUserId });
-          }
-        }).subscribe(currentUser => {
-          this.setState({ me: currentUser });
+      ddp.collections.observe(() => {
+        if (ddp.collections.settings) {
+          return ddp.collections.settings.find({});
+        }
+      }).subscribe(settings => {
+        indexedSettings =  {};
+        settings.forEach((setting) => {
+          indexedSettings[setting._id] = setting;
         });
 
-        ddp.collections.observe(() => {
-          if (ddp.collections.users) {
-            return ddp.collections.users.find({});
-          }
-        }).subscribe(users => {
-          this.setState({ users: users });
-        });
-      })
-      .catch(err => { this.logger.error(JSON.stringify(err)) });
+        this.setState({ settings: indexedSettings });
 
-      this.ddp.subscribe({ pubName: 'integrations' })
-      .then(() => {
-        ddp.collections.observe(() => {
-          if (ddp.collections.integrations) {
-            return ddp.collections.integrations.find({});
-          }
-        }).subscribe(integrations=> {
-          integrations.sort((one, two) => {
-            return one.status == 'linked' ? -1 : 1;
+        if (indexedSettings.accountStatus) {
+          this.setState ({
+            isActive: indexedSettings.accountStatus.value == 'active'
           })
-          this.setState({ integrations: integrations });
-        });
-      })
-      .catch(err => { this.logger.error(JSON.stringify(err)) });
-
-      this.ddp.subscribe({ pubName: 'hashtag-categories' })
-      .then(() => {
-        ddp.collections.observe(() => {
-          if (ddp.collections.categories) {
-            return ddp.collections.categories.find({});
-          }
-        }).subscribe(categories=> {
-          this.setState({ categories: categories });
-        });
-      })
-      .catch(err => { this.logger.error(JSON.stringify(err)) });
-
-      this.ddp.subscribe({ pubName: 'my-tags' })
-      .then(() => {
-        ddp.collections.observe(() => {
-          if (ddp.collections.mytags) {
-            return ddp.collections.mytags.findOne({});
-          }
-        }).subscribe(user => {
-          if (user && user.tags) {
-            user.tags.forEach((tag) => {
-              tag.isMine = true;
-            })
-            this.setState({ myTags: user.tags });
-          }
-        });
-      })
-      .catch(err => { this.logger.error(JSON.stringify(err)) });
-
-      this.ddp.subscribe({ pubName: 'candidate-discover' })
-      .then(() => {
-        ddp.collections.observe(() => {
-          if (ddp.collections.candidates) {
-            return ddp.collections.candidates.find({});
-          }
-        }).subscribe(candidates => {
-          let activeCandidates = candidates.filter((candidate) => {
-            return candidate.type == 'active'
-          })
-
-          let historyCandidates = candidates.filter((candidate) => {
-            return candidate.type == 'expired'
-          })
-
-          if (activeCandidates.length > 0) {
-            this.setState({ candidate: activeCandidates[0] })
-          }
-
-          this.setState({ history: historyCandidates });
-        });
-      })
-      .catch(err => { this.logger.error(JSON.stringify(err)) });
-
-      this.ddp.subscribe({ pubName: 'activities', params:[ddp.currentUserId] })
-      .then(() => {
-        ddp.collections.observe(() => {
-          if (ddp.collections.activities) {
-            return ddp.collections.activities.find({ userId: ddp.currentUserId });
-          }
-        }).subscribe(activities => {
-          this.setState({ myActivities: activities });
-        });
-      })
-      .catch(err => { this.logger.error(JSON.stringify(err)) });
+        }
+      });
     })
+    .catch(err => { this.logger.error(JSON.stringify(err)) })
+
+    this.ddp.subscribe({ pubName: 'me' })
+    .then(() => {
+      ddp.collections.observe(() => {
+        if (ddp.collections.users) {
+          return ddp.collections.users.findOne({ _id: ddp.currentUserId });
+        }
+      }).subscribe(currentUser => {
+        this.setState({ me: currentUser });
+      });
+
+      ddp.collections.observe(() => {
+        if (ddp.collections.users) {
+          return ddp.collections.users.find({});
+        }
+      }).subscribe(users => {
+        this.setState({ users: users });
+      });
+    })
+    .catch(err => { this.logger.error(JSON.stringify(err)) });
+
+    this.ddp.subscribe({ pubName: 'integrations' })
+    .then(() => {
+      ddp.collections.observe(() => {
+        if (ddp.collections.integrations) {
+          return ddp.collections.integrations.find({});
+        }
+      }).subscribe(integrations=> {
+        integrations.sort((one, two) => {
+          return one.status == 'linked' ? -1 : 1;
+        })
+        this.setState({ integrations: integrations });
+      });
+    })
+    .catch(err => { this.logger.error(JSON.stringify(err)) });
+
+    this.ddp.subscribe({ pubName: 'hashtag-categories' })
+    .then(() => {
+      ddp.collections.observe(() => {
+        if (ddp.collections.categories) {
+          return ddp.collections.categories.find({});
+        }
+      }).subscribe(categories=> {
+        this.setState({ categories: categories });
+      });
+    })
+    .catch(err => { this.logger.error(JSON.stringify(err)) });
+
+    this.ddp.subscribe({ pubName: 'my-tags' })
+    .then(() => {
+      ddp.collections.observe(() => {
+        if (ddp.collections.mytags) {
+          return ddp.collections.mytags.findOne({});
+        }
+      }).subscribe(user => {
+        if (user && user.tags) {
+          user.tags.forEach((tag) => {
+            tag.isMine = true;
+          })
+          this.setState({ myTags: user.tags });
+        }
+      });
+    })
+    .catch(err => { this.logger.error(JSON.stringify(err)) });
+
+    this.ddp.subscribe({ pubName: 'candidate-discover' })
+    .then(() => {
+      ddp.collections.observe(() => {
+        if (ddp.collections.candidates) {
+          return ddp.collections.candidates.find({});
+        }
+      }).subscribe(candidates => {
+        let activeCandidates = candidates.filter((candidate) => {
+          return candidate.type == 'active'
+        })
+
+        let historyCandidates = candidates.filter((candidate) => {
+          return candidate.type == 'expired'
+        })
+
+        if (activeCandidates.length > 0) {
+          this.setState({ candidate: activeCandidates[0] })
+        }
+
+        this.setState({ history: historyCandidates });
+      });
+    })
+    .catch(err => { this.logger.error(JSON.stringify(err)) });
+
+    this.ddp.subscribe({ pubName: 'activities', params:[ddp.currentUserId] })
+    .then(() => {
+      ddp.collections.observe(() => {
+        if (ddp.collections.activities) {
+          return ddp.collections.activities.find({ userId: ddp.currentUserId });
+        }
+      }).subscribe(activities => {
+        this.setState({ myActivities: activities });
+      });
+    })
+    .catch(err => { this.logger.error(JSON.stringify(err)) });
   }
 
   async __layerLogin() {
@@ -202,26 +200,29 @@ class LayoutContainer extends React.Component {
     }
   }
 
-  componentWillMount() {
+  async _ddpLogin() {
     let ddp = this.ddp;
 
-    ddp.initialize()
-    .then(() => {
-      return ddp.isLoggedIn()
-    })
-    .then((res) => {
-      if (res.token) {
-        return ddp.loginWithToken(res.token);
-      }
+    await ddp.initialize()
+    const defaultAccount = await BridgeManager.getDefaultAccountAsync()
 
-      return Promise.resolve(res);
-    }).then((res) => {
-      if (res.token) {
-        this.onLogin(res);
+    if (defaultAccount) {
+      const { resumeToken } = defaultAccount;
+      let loginResult = await ddp.loginWithToken(resumeToken)
+
+      if (loginResult.token) {
+        this.onLogin(defaultAccount);
       } else {
         this.setState({ loggedIn: false });
       }
-    })
+
+    } else {
+      this.setState({ loggedIn: false });
+    }
+  }
+
+  componentWillMount() {
+    this._ddpLogin()
   }
 
   render() {

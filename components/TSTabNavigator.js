@@ -48,15 +48,6 @@ class TSTabNavigator extends React.Component {
     }
   }
 
-  componentWillUnmount() {
-    this.state.popListener.remove();
-    this.state.pushListener.remove();
-    this.setState({
-      popListener: null,
-      pushListener: null
-    });
-  }
-
   _title(route, navigator, index, navState) {
     switch (route.id) {
       case 'root':
