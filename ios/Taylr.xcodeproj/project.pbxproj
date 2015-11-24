@@ -79,6 +79,7 @@
 		EA7FB0991B5EF9D50052B394 /* Cabin-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = EA7FB0931B5EF9D50052B394 /* Cabin-Regular.ttf */; };
 		EA8A510A1C045229004660E1 /* IntercomProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8A51091C045229004660E1 /* IntercomProvider.m */; };
 		EA8A510F1C0460B8004660E1 /* BranchProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8A510E1C0460B8004660E1 /* BranchProvider.swift */; };
+		EA8A51171C04D96D004660E1 /* METAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8A51161C04D96D004660E1 /* METAccount.m */; };
 		EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA9A6ACE1AAFDE19009EDD6D /* Localizable.strings */; };
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
 		EAA5E8DE1BFEAEE4009DE994 /* BridgeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA5E8DC1BFEAEE4009DE994 /* BridgeManager.m */; };
@@ -222,6 +223,8 @@
 		EA7FB0931B5EF9D50052B394 /* Cabin-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Cabin-Regular.ttf"; sourceTree = "<group>"; };
 		EA8A51091C045229004660E1 /* IntercomProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntercomProvider.m; sourceTree = "<group>"; };
 		EA8A510E1C0460B8004660E1 /* BranchProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BranchProvider.swift; sourceTree = "<group>"; };
+		EA8A51161C04D96D004660E1 /* METAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = METAccount.m; sourceTree = "<group>"; };
+		EA8A51191C04D97F004660E1 /* METAccount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = METAccount.h; sourceTree = "<group>"; };
 		EA9A6ACF1AAFDFA2009EDD6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA9F353A1A74CC6900E0C65D /* Taylr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taylr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9F353E1A74CC6900E0C65D /* Taylr-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Taylr-Info.plist"; sourceTree = "<group>"; };
@@ -576,6 +579,8 @@
 			children = (
 				EAA5E8DD1BFEAEE4009DE994 /* BridgeManager.swift */,
 				EAA5E8DC1BFEAEE4009DE994 /* BridgeManager.m */,
+				EA8A51191C04D97F004660E1 /* METAccount.h */,
+				EA8A51161C04D96D004660E1 /* METAccount.m */,
 			);
 			path = BridgeManager;
 			sourceTree = "<group>";
@@ -933,6 +938,7 @@
 				EA32260D1BFDAEEB00FF5074 /* ConversationListViewModel.swift in Sources */,
 				EABE4C591C03BBAD001557A1 /* AnalyticsProvider.swift in Sources */,
 				EA3225C01BFDAE8A00FF5074 /* Video.swift in Sources */,
+				EA8A51171C04D96D004660E1 /* METAccount.m in Sources */,
 				EA197A541BFC4D2600DF7B58 /* UIKitExtension.swift in Sources */,
 				EA3225DE1BFDAE8A00FF5074 /* DDOuralabsLogger.swift in Sources */,
 				EA3225D91BFDAE8A00FF5074 /* LayerHelpers.swift in Sources */,

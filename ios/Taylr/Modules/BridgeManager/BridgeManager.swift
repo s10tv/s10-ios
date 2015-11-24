@@ -53,6 +53,7 @@ class BridgeManager : NSObject {
 
 extension BridgeManager {
     @objc func uploadToAzure(remoteURL: NSURL, localURL: NSURL, contentType: String, block: RCTResponseSenderBlock) {
+        METAccount.defaultAccount()
         azure.put(remoteURL, file: localURL, contentType: contentType).start(Event.sink(error: { error in
             DDLogError("Unable to upload to azure \(remoteURL) \(error)")
             block([error, NSNull()])
@@ -60,6 +61,14 @@ extension BridgeManager {
             DDLogDebug("Successfully uploaded to azure \(remoteURL)")
             block([NSNull(), NSNull()])
         }))
+    }
+    
+    @objc func getDefaultAccount(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+        resolve(METAccount.defaultAccount()?.toJson())
+    }
+    
+    @objc func setDefaultAccount(account: METAccount?) {
+        METAccount.setDefaultAccount(account)
     }
 }
 
@@ -75,5 +84,33 @@ extension UIViewController {
     
     func rnNavigationPop() {
         rnSendAppEvent(.NavigationPop, body: nil)
+    }
+}
+
+extension METAccount {
+    func toJson() -> NSDictionary {
+        return [
+            "userId": userID,
+            "resumeToken": resumeToken,
+            "expiryDate": expiryDate?.timeIntervalSince1970 ?? NSNull()
+        ]
+    }
+    
+    class func fromJson(json: NSDictionary) -> METAccount? {
+        guard let userID = json["userId"] as? String,
+            let resumeToken = json["resumeToken"] as? String else {
+                return nil
+        }
+        let expiryDate = RCTConvert.NSDate(json["expiryDate"])
+        return Taylr.METAccount(userID: userID, resumeToken: resumeToken, expiryDate: expiryDate)
+    }
+}
+
+extension RCTConvert {
+    @objc class func METAccount(json: AnyObject?) -> Taylr.METAccount? {
+        guard let json = json as? Foundation.NSDictionary else {
+            return nil
+        }
+        return Taylr.METAccount.fromJson(json)
     }
 }

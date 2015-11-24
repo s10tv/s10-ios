@@ -12,4 +12,8 @@
 
 RCT_EXTERN_METHOD(uploadToAzure:(NSURL *)remoteURL localURL:(NSURL *)localURL contentType:(NSString *)contentType block:(RCTResponseSenderBlock)block)
 
+RCT_EXTERN_REMAP_METHOD(getDefaultAccountAsync,
+                        getDefaultAccount:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
+RCT_EXTERN_METHOD(setDefaultAccount:(METAccount *)account)
+
 @end
