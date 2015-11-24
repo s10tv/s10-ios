@@ -43,7 +43,8 @@ class HashtagCategory extends React.Component {
       <Image style={SHEET.icon} source={require('../img/ic-checkmark.png')} />
 
     return (
-      <TappableCard key={category.displayName} onPress={(event) => { return this._handleCategoryTouch.bind(this)(category)}}>
+      <TappableCard key={category.displayName} onPress={(event) => { 
+          return this._handleCategoryTouch.bind(this)(category)}}>
         <View>
           <View style={[styles.categoryHeader]}>
             <Text style={[styles.categoryDisplayName, SHEET.subTitle, SHEET.baseText]}>{category.displayName}</Text>

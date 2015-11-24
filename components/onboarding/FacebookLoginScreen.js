@@ -17,27 +17,34 @@ let {
 let Dimensions = require('Dimensions');
 let { width, height } = Dimensions.get('window');
 
-var FBSDKLogin = require('react-native-fbsdklogin');
-var {
+let FBSDKLogin = require('react-native-fbsdklogin');
+let {
   FBSDKLoginButton,
   FBSDKLoginManager,
 } = FBSDKLogin;
 
-var FBSDKCore = require('react-native-fbsdkcore');
-var {
+let FBSDKCore = require('react-native-fbsdkcore');
+let {
   FBSDKAccessToken,
 } = FBSDKCore;
 
-var Digits = require('react-native-fabric-digits');
-var { DigitsLoginButton, DigitsLogoutButton } = Digits;
+let Digits = require('react-native-fabric-digits');
+let { DigitsLoginButton, DigitsLogoutButton } = Digits;
 
-var Video = require('react-native-video');
-var Button = require('react-native-button');
+let Video = require('react-native-video');
+let Button = require('react-native-button');
 
 let SHEET = require('../CommonStyles').SHEET;
 let COLORS = require('../CommonStyles').COLORS;
 
+let Logger = require('../../lib/Logger');
+
 class FacebookLoginScreen extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.logger = new Logger(this);
+  }
 
   login(error, response) {
     if (error) {
@@ -57,44 +64,11 @@ class FacebookLoginScreen extends React.Component {
       });
     })
     .catch((err) => {
-      console.error(err); 
+      this.logger.error(JSON.stringify(err)); 
     })
   }
 
-  __facebookLogin() {
-    FBSDKLoginManager.logInWithReadPermissions([], (error, result) => {
-      if (error) {
-        console.log(error);
-        alert('Error logging you in. Please try again later');
-      } else {
-        if (result.isCancelled) {
-          console.log('cancelled login');
-        } else {
-          FBSDKAccessToken.getCurrentAccessToken((accessToken) => {
-            if (accessToken && accessToken.tokenString) {
-              this.props.ddp.call({
-                methodName: 'login',
-                params: [{ facebook: { accessToken: accessToken.tokenString }}]})
-              .then((result) => {
-                this.props.ddp.__onLogin.bind(this.props.ddp)(result);
-                this.props.onLogin({
-                  userId: result.id,
-                  token: result.token,
-                  tokenExpires: result.tokenExpires,
-                });
-              })
-              .catch(err => {
-                console.error(err);
-              })
-            }
-          });
-        }
-      }
-    });
-  }
-
   render() {
-
     let loginComponent = null;
     let me = this.props.me;
 
@@ -129,11 +103,10 @@ class FacebookLoginScreen extends React.Component {
             style={styles.fbButton}
             onLoginFinished={(error, result) => {
               if (error) {
-                alert('Error logging in.');
+                this.logger.error(`Error logging in with Facebook ${error.toString()}`);
+                alert('Error logging you in :C Please try again later.');
               } else {
-                if (result.isCancelled) {
-                  console.log('login cancelled');
-                } else {
+                if (!result.isCancelled) {
                   FBSDKAccessToken.getCurrentAccessToken((accessToken) => {
                     if (accessToken && accessToken.tokenString) {
                       this.props.ddp.call({
@@ -148,14 +121,14 @@ class FacebookLoginScreen extends React.Component {
                         });
                       })
                       .catch(err => {
-                        console.error(err);
+                        this.logger.error(JSON.stringify(error));
                       })
                     }
                   });
                 }
               }
             }}
-            onLogoutFinished={() => console.log('logged out')}
+            onLogoutFinished={() => this.props.onLogout }
             readPermissions={[]}
             publishPermissions={[]}/>
 

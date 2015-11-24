@@ -16,20 +16,20 @@ let TSDDPClient = require('../lib/ddpclient');
 let TSLayerService = React.NativeModules.TSLayerService;
 
 let SHEET = require('./CommonStyles').SHEET;
+let Logger = require('../lib/Logger');
 
 class LayoutContainer extends React.Component {
 
   constructor(props: {}) {
     super(props);
     this.ddp = new TSDDPClient(props.wsurl);
-
-    this.subs = {}
-
     this.state = {
       needsOnboarding: true,
       modalVisible: false,
       currentTab: 'chats',
     }
+
+    this.logger = new Logger(this);
   }
 
   onLogout() {
@@ -42,7 +42,8 @@ class LayoutContainer extends React.Component {
     let { token, userId, tokenExpires } = options;
 
     if (!token) {
-      console.error('OnLogin called with invalid Token');
+      logger.error('OnLogin called with invalid Token');
+      return;
     }
 
     this.setState({ loggedIn: true });
@@ -78,7 +79,8 @@ class LayoutContainer extends React.Component {
             })
           }
         });
-      });
+      })
+      .catch(err => { this.logger.error(JSON.stringify(err)) })
 
       this.ddp.subscribe({ pubName: 'me' })
       .then(() => {
@@ -97,7 +99,8 @@ class LayoutContainer extends React.Component {
         }).subscribe(users => {
           this.setState({ users: users });
         });
-      });
+      })
+      .catch(err => { this.logger.error(JSON.stringify(err)) });
 
       this.ddp.subscribe({ pubName: 'integrations' })
       .then(() => {
@@ -111,7 +114,8 @@ class LayoutContainer extends React.Component {
           })
           this.setState({ integrations: integrations });
         });
-      });
+      })
+      .catch(err => { this.logger.error(JSON.stringify(err)) });
 
       this.ddp.subscribe({ pubName: 'hashtag-categories' })
       .then(() => {
@@ -122,7 +126,8 @@ class LayoutContainer extends React.Component {
         }).subscribe(categories=> {
           this.setState({ categories: categories });
         });
-      });
+      })
+      .catch(err => { this.logger.error(JSON.stringify(err)) });
 
       this.ddp.subscribe({ pubName: 'my-tags' })
       .then(() => {
@@ -138,7 +143,8 @@ class LayoutContainer extends React.Component {
             this.setState({ myTags: user.tags });
           }
         });
-      });
+      })
+      .catch(err => { this.logger.error(JSON.stringify(err)) });
 
       this.ddp.subscribe({ pubName: 'candidate-discover' })
       .then(() => {
@@ -161,7 +167,8 @@ class LayoutContainer extends React.Component {
 
           this.setState({ history: historyCandidates });
         });
-      });
+      })
+      .catch(err => { this.logger.error(JSON.stringify(err)) });
 
       this.ddp.subscribe({ pubName: 'activities', params:[ddp.currentUserId] })
       .then(() => {
@@ -172,7 +179,8 @@ class LayoutContainer extends React.Component {
         }).subscribe(activities => {
           this.setState({ myActivities: activities });
         });
-      });
+      })
+      .catch(err => { this.logger.error(JSON.stringify(err)) });
     })
   }
 
@@ -190,7 +198,7 @@ class LayoutContainer extends React.Component {
       const sessionId = await this.ddp.call({ methodName: 'layer/auth', params: [nonce]});
       await TSLayerService.authenticateAsync(sessionId);
     } catch (error) {
-      console.error('Unable to complete layer flow', error);
+      this.logger.error(`Unable to complete layer flow: ${error.toString()}`)
     }
   }
 

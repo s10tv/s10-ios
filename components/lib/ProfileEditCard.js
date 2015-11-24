@@ -14,6 +14,7 @@ let {
 let FloatLabelTextInput = require('./FloatLabelTextField');
 let SHEET = require('../CommonStyles').SHEET;
 let Card = require('./Card').Card;
+let Logger = require('../../lib/Logger');
 
 class ProfileEditCard extends React.Component {
 
@@ -22,6 +23,7 @@ class ProfileEditCard extends React.Component {
     this.state = {
       paddingBottom: 0,
     }
+    this.logger = new Logger(this);
   } 
 
   keyboardWillShow (e) {
@@ -71,6 +73,7 @@ class ProfileEditCard extends React.Component {
               myInfo[info.key] = text;
               this.props.ddp.call({ methodName: 'me/update', params: [myInfo] })
               .catch(err => {
+                this.logger.error(JSON.stringify(err));
                 AlertIOS.alert('Error', err.reason);
               })
             }} />

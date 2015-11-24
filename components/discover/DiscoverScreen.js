@@ -103,7 +103,6 @@ class Discover extends React.Component {
     this.state = {
       pan: new Animated.ValueXY()
     };
-
   }
 
   componentWillMount() {
@@ -130,7 +129,6 @@ class Discover extends React.Component {
         }).start();
       }
     });
-
   }
 
   componentWillUnmount() {
@@ -145,20 +143,22 @@ class Discover extends React.Component {
         { translateY: this.state.pan.y },
       ]},
       {
-        opacity: this.state.pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: [0.5, 1, 0.5]})
+        opacity: this.state.pan.x.interpolate({
+          inputRange: [-200, 0, 200],
+          outputRange: [0.5, 1, 0.5]})
       }
     ];
   }
 
   render() {
-    let candidate = this.props.candidate;
-    let settings = this.props.settings;
+    const candidate = this.props.candidate;
+    const settings = this.props.settings;
 
     if (!candidate || !settings) {
       return <Loader />;
     }
 
-    let candidateUsers = this.props.users.filter((user) => {
+    const candidateUsers = this.props.users.filter((user) => {
       return user._id == candidate.userId;
     });
 
@@ -166,10 +166,15 @@ class Discover extends React.Component {
       return <Loader />;
     }
 
-    let candidateUser = candidateUsers[0];
+    const [candidateUser] = candidateUsers;
+    let { firstName, lastName, gradYear, cover, connectedProfiles,
+      avatar, major, hometown } = candidateUser;
 
-    let serviceIcons = [<Image source={require('../img/ic-ubc.png')} style={[SHEET.smallIcon, styles.serviceIcon]} />];
-    serviceIcons = serviceIcons.concat(candidateUser.connectedProfiles.map((profile) => {
+    let serviceIcons = [<Image
+      key="ubc"
+      source={require('../img/ic-ubc.png')}
+      style={[SHEET.smallIcon, styles.serviceIcon]} />];
+    serviceIcons = serviceIcons.concat(connectedProfiles.map((profile) => {
       return <Image key={profile.id} style={[SHEET.smallIcon, styles.serviceIcon]}
           source={{ uri: profile.icon.url }} />
     }));
@@ -177,56 +182,54 @@ class Discover extends React.Component {
     return (
       <View style={SHEET.container}>
         <Animated.View style={this.getStyle()} {...this._panResponder.panHandlers}>
-        <Card style={[{flex: 1, marginBottom: 10}, SHEET.innerContainer]}
-          cardOverride={[{ flex: 1, padding: 0 }]}>
-            <TouchableOpacity onPress={() => {
-              this.props.parentNavigator.push({
-                id: 'viewprofile',
-                title: candidateUser.firstName,
-                me: candidateUser,
-              })
-            }}>
-              <HeaderBanner url={candidateUser.cover.url} height={height / 2.5}>
-                <View style={styles.header}>
-                  <Image source={{ uri: candidateUser.avatar.url }} style={styles.avatar} />
-                </View>
-                <View style={styles.userInfo}>
-                  <Text style={[styles.userNameText, SHEET.baseText]}>
-                  { candidateUser.firstName } { candidateUser.lastName } { candidateUser.gradYear }
-                </Text>
-                </View>
-                <View style={styles.serviceInfo}>
-                  { serviceIcons }
-                </View>
-              </HeaderBanner>
-            </TouchableOpacity>
+          <Card style={[{flex: 1, marginBottom: 10}, SHEET.innerContainer]}
+            cardOverride={[{ flex: 1, padding: 0 }]}>
+              <TouchableOpacity onPress={() => {
+                this.props.parentNavigator.push({
+                  id: 'viewprofile',
+                  me: candidateUser,
+                })
+              }}>
+                <HeaderBanner url={cover.url} height={height / 2.5}>
+                  <View style={styles.header}>
+                    <Image source={{ uri: avatar.url }} style={styles.avatar} />
+                  </View>
+                  <View style={styles.userInfo}>
+                    <Text style={[styles.userNameText, SHEET.baseText]}>
+                    { firstName } { lastName } { gradYear }
+                  </Text>
+                  </View>
+                  <View style={styles.serviceInfo}>
+                    { serviceIcons }
+                  </View>
+                </HeaderBanner>
+              </TouchableOpacity>
 
+            <View style={[styles.infoSection, SHEET.innerContainer]}>
+              <IconTextRow
+                style={{ padding: 5 }}
+                icon={require('../img/ic-mortar.png')}
+                text={major} />
+              <IconTextRow
+                style={{ padding: 5 }}
+                icon={require('../img/ic-house.png')}
+                text={hometown} />
+            </View>
 
-          <View style={[styles.infoSection, SHEET.innerContainer]}>
-            <IconTextRow
-              style={{ padding: 5 }}
-              icon={require('../img/ic-mortar.png')}
-              text={candidateUser.major} />
-            <IconTextRow
-              style={{ padding: 5 }}
-              icon={require('../img/ic-house.png')}
-              text={candidateUser.hometown} />
-          </View>
+            <View style={[{ marginHorizontal: 10 }, SHEET.separator]} />
+            
+            <View style={[{ flex: 1}, styles.infoSection, SHEET.innerContainer]}>
+              <Text style={[SHEET.baseText]}>
+                { candidate.reason }
+              </Text>
+            </View>
 
-
-          <View style={[{ marginHorizontal: 10 }, SHEET.separator]} />
-          <View style={[{ flex: 1}, styles.infoSection, SHEET.innerContainer]}>
-            <Text style={[SHEET.baseText]}>
-              { candidate.reason }
-            </Text>
-          </View>
-
-          <CountdownTimer
-            parentNavigator={this.props.parentNavigator}
-            navigator={this.props.navigator}
-            candidateUser={candidateUser}
-            me={this.props.me}
-            settings={this.props.settings} />
+            <CountdownTimer
+              parentNavigator={this.props.parentNavigator}
+              navigator={this.props.navigator}
+              candidateUser={candidateUser}
+              me={this.props.me}
+              settings={this.props.settings} />
           </Card>
         </Animated.View>
       </View>

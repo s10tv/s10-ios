@@ -10,12 +10,14 @@ let {
 let Button = require('react-native-button');
 let COLORS = require('../CommonStyles').COLORS;
 let SHEET = require('../CommonStyles').SHEET;
+let Logger = require('../../lib/Logger');
 
 class Hashtag extends React.Component {
 
   constructor(props) {
     super(props);
     this.ddp = props.ddp;
+    this.logger = new Logger(this);
   }
 
   _onHashtagTouch(hashtag) {
@@ -24,10 +26,16 @@ class Hashtag extends React.Component {
         methodName: 'me/hashtag/add',
         params: [hashtag.text, hashtag.type]
       })
+      .catch(err => {
+        this.logger.error(`Error adding hashtag ${hashtag.text}: ${JSON.stringify(err)}`);
+      })
     } else {
       return this.ddp.call({
         methodName: 'me/hashtag/remove', 
         params: [hashtag.text, hashtag.type]
+      })
+      .catch(err => {
+        this.logger.error(`Error removing hashtag ${hashtag.text}: ${JSON.stringify(err)}`);
       })
     }
   }

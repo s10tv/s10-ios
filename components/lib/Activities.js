@@ -32,7 +32,8 @@ class ActivityHeader extends React.Component {
     return (
       <HeaderBanner url={ coverUrl } height={ height / 3 }>
         <View style={[ { height: height / 3, top: height / 12 }, styles.activityUser]}>
-          <Image source={{ uri: me.avatar.url }} style={{ width: height / 6, height: height / 6, borderRadius: height / 12, borderColor: 'white', borderWidth: 2.5 }} />
+          <Image source={{ uri: me.avatar.url }} style={{ width: height / 6, height: height / 6,
+              borderRadius: height / 12, borderColor: 'white', borderWidth: 2.5 }} />
           <Text style={[{ marginTop: height / 96}, styles.activityUserTitle, SHEET.baseText]}>
             {me.firstName} {me.lastName} {me.gradYear}
           </Text>
@@ -159,6 +160,8 @@ class ActivityServiceIcon extends React.Component {
 
   render() {
     let source = null;
+
+    // TODO: Can use tint color here.
     if (this.props.profile) {
       let sourceMap = this.props.profile.integrationName == this.props.activeProfile.integrationName ? 
         this.props.iconMapping :

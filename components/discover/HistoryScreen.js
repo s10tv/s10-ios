@@ -29,7 +29,6 @@ class HistoryProfile extends React.Component {
     };
   }
 
-
   render() {
     let candidate = this.props.candidate;
     let user = this.props.user;
@@ -46,9 +45,12 @@ class HistoryProfile extends React.Component {
         }) }}>
           <View style={[styles.imgContainer, {height: height} ]}>
             <Image style={{ flex: 1, resizeMode: 'cover' }} source={{ uri: user.avatar.url }}>
-              <View style={{ width: width / 2 - 10, height: 35, backgroundColor: 'black', opacity: 0.60, position:'absolute', bottom: 0}}>
+              <View style={{ width: width / 2 - 10, height: 35, backgroundColor: 'black',
+                  opacity: 0.60, position:'absolute', bottom: 0}}>
                 <View style={{flex: 1, flexDirection: 'row', margin: 10}}>
-                  <Text style={[SHEET.baseText, { flex: 1, color: 'white', }]}>{user.firstName} {user.gradYear}</Text>
+                  <Text style={[SHEET.baseText, { flex: 1, color: 'white', }]}>
+                    {user.firstName} {user.gradYear}
+                  </Text>
                 </View>
               </View>
             </Image>
@@ -60,7 +62,6 @@ class HistoryProfile extends React.Component {
 }
 
 class HistoryScreen extends React.Component {
-
 
   // TODO: COPY/PASTE alert. From Activities
   _timeDifference(current, previous) {

@@ -79,17 +79,13 @@ class OnboardingNavigator extends BaseTaylrNavigator {
             this.displayError('Error', 'major not specified')
           } else if (!me.gradYear) {
             this.displayError('Error', 'gradyear not specified')
+          } else {
+            navigator.push({
+              id: 'hashtags',
+              title: 'Add Hashtags',
+              me: me,
+            })
           }
-
-          if (me && me.firstName && me.lastName && me.hometown && me.major &&
-            me.gradYear) {
-              navigator.push({
-                id: 'hashtags',
-                title: 'Add Hashtags',
-                me: me,
-              })
-          }
-          
         }
         break;
 
@@ -174,7 +170,6 @@ class OnboardingNavigator extends BaseTaylrNavigator {
           category={route.category} />;
 
       case 'openwebview':
-        console.log(route.url);
         return <WebView
           style={styles.webView}
           startInLoadingState={true}

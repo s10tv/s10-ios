@@ -18,21 +18,12 @@ var TabNavigator = require('react-native-tab-navigator');
 var Tabbar = require('react-native-tabbar');
 var Item = Tabbar.Item;
 
-// Common
 let TSTabNavigator = require('./TSTabNavigator');
+let TSNavigationBar = require('./lib/TSNavigationBar');
 
-let BaseTaylrNavigator = require('./lib/BaseTaylrNavigator');
 let SHEET = require('./CommonStyles').SHEET;
 let COLORS = require('./CommonStyles').COLORS;
 let Loader = require('./lib/Loader');
-
-// Me
-let MeScreen = require('./me/MeScreen');
-let MeEditScreen = require('./me/MeEditScreen');
-
-// Discover
-let DiscoverScreen = require('./discover/DiscoverScreen');
-let HistoryScreen = require('./discover/HistoryScreen');
 
 // Chats
 let ConversationView = require('./chat/ConversationView');
@@ -40,11 +31,6 @@ let ConversationListView = require('./chat/ConversationListView');
 
 // Supporting
 let Activities = require('./lib/Activities');
-
-// Libraries
-let HashtagListView = require('./lib/HashtagListView');
-let TSNavigationBar = require('./lib/TSNavigationBar');
-
 
 class RootNavigator extends React.Component {
 
@@ -153,7 +139,7 @@ class RootNavigator extends React.Component {
                 `Report ${route.me.firstName}?`,
                 "",
                 [
-                  {text: 'Cancel', onPress: () => console.log('Bar Pressed!')},
+                  {text: 'Cancel', onPress: () => null },
                   {text: 'Report', onPress: () => {
                     return this.props.ddp.call({ methodName: 'user/report', params: [route.me._id, 'Reported'] })
                     .then(() => {

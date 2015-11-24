@@ -63,8 +63,9 @@ class MeHeader extends React.Component {
   render() {
     let me = this.props.me;
 
-    var serviceIcons = [<Image source={require('../img/ic-ubc.png')} style={[SHEET.smallIcon, styles.serviceIcon]} />];
-    var name = null;
+    var serviceIcons = [<Image key="ubc" source={require('../img/ic-ubc.png')}
+      style={[SHEET.smallIcon, styles.serviceIcon]} />];
+
     if (me.connectedProfiles) {
       let moreIcons = me.connectedProfiles.map((profile) => {
         return <Image key={profile.id} style={[SHEET.smallIcon, styles.serviceIcon]}
@@ -87,7 +88,6 @@ class MeHeader extends React.Component {
             <MeButton text={'View'} onPress={() => {
                this.props.parentNavigator.push({
                 id: 'viewprofile',
-                title: 'Profile',
                 me: me,
               })
             }} />
@@ -95,7 +95,6 @@ class MeHeader extends React.Component {
               this.props.navigator.push({
                 id: 'edit',
                 title: 'Edit Profile',
-                userId: me._id,
                 me: me,
               })}} />
           </View>
@@ -111,7 +110,6 @@ class Me extends React.Component {
     let me = this.props.me;
 
     if (!me) {
-      console.log('me is undefined');
       return <Loader />
     }
 
