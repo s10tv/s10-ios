@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CocoaLumberjack
 import React
 import Fabric
 import DigitsKit
@@ -17,9 +18,12 @@ import Branch
 class AppDependencies : NSObject {
     let env: Environment
     let config: AppConfig
-    let logger: Logger
-    let analytics: TSAnalytics
     let branch: Branch
+    let amplitude: AmplitudeProvider
+    let mixpanel: MixpanelProvider
+    let intercom: IntercomProvider
+    let segment: SegmentProvider
+    let uxcam: UXCamProvider
     
     // Lazily initialized modules
     lazy private(set) var bridge: RCTBridge = {
@@ -33,10 +37,21 @@ class AppDependencies : NSObject {
     override init() {
         env = Environment()
         config = AppConfig(env: env)
-        logger = Logger(config: config)
+        
+        // Setup Logging
+        Logger.addLogger(DDTTYLogger.sharedInstance()) // TTY = Xcode console
+        Logger.addLogger(DDASLLogger.sharedInstance()) // ASL = Apple System Logs
+        Logger.addLogger(DDOuralabsLogger(apiKey: config.ouralabsKey))
+        Logger.addLogger(DDNSLogger())
+        
+        // Setup Analytics
         branch = Branch.getInstance(config.branchKey)
-        analytics = Analytics
-        analytics.setup(config, launchOptions: nil) // Add launch options
+        amplitude = AmplitudeProvider(apiKey: config.amplitudeKey)
+        mixpanel = MixpanelProvider(apiToken: config.mixpanelToken, launchOptions: nil) // TODO: Add launchOptions
+        intercom = IntercomProvider(appId: config.intercom.appId, apiKey: config.intercom.apiKey)
+        segment = SegmentProvider(writeKey: config.segmentWriteKey)
+        uxcam = UXCamProvider(apiKey: config.uxcamKey)
+        Analytics.providers = [amplitude, mixpanel, intercom, segment, uxcam]
         
         super.init()
         Crashlytics.sharedInstance().delegate = self
@@ -71,9 +86,9 @@ extension AppDependencies : RCTBridgeDelegate {
         return [
             ConversationListViewManager(layer: layer),
             ConversationViewManager(layer: layer),
+            Analytics,
+            Logger,
             layer,
-            analytics,
-            logger,
         ]
     }
 }

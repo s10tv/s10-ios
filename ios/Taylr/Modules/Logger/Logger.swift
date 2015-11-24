@@ -9,17 +9,13 @@
 import Foundation
 import CocoaLumberjack
 
+let Logger = TSLogger()
+
 @objc(TSLogger)
-public class Logger : NSObject {
+public class TSLogger : NSObject {
     
-    init(config: AppConfig) {
-        super.init()
-        DDLog.addLogger(DDTTYLogger.sharedInstance()) // TTY = Xcode console
-        DDLog.addLogger(DDASLLogger.sharedInstance()) // ASL = Apple System Logs
-        DDLog.addLogger(DDOuralabsLogger(apiKey: config.ouralabsKey))
-        DDLog.addLogger(DDNSLogger())
-        
-        DDLogInfo("Loggers initialized")
+    func addLogger(logger: DDLogger) {
+        DDLog.addLogger(logger)
     }
 
     @objc func log(logText: String, level: String, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) {

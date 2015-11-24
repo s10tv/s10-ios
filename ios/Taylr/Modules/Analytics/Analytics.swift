@@ -16,17 +16,6 @@ public let Analytics = TSAnalytics()
 public class TSAnalytics : NSObject {
     var providers: [AnalyticsProvider] = []
     
-    func setup(config: AppConfig, launchOptions: [NSObject: AnyObject]?) {
-        providers = [
-            AmplitudeProvider(apiKey: config.amplitudeKey),
-            MixpanelProvider(apiToken: config.mixpanelToken, launchOptions: launchOptions),
-            IntercomProvider(appId: config.intercom.appId, apiKey: config.intercom.apiKey),
-            SegmentProvider(writeKey: config.segmentWriteKey),
-            UXCamProvider(apiKey: config.uxcamKey),
-        ]
-        DDLogInfo("Did setup providers with config \(config) launchOptions \(launchOptions)")
-    }
-    
     @objc func identify(userId: String) {
         for provider in providers {
             provider.identifyUser(userId)
