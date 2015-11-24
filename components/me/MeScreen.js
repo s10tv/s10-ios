@@ -179,11 +179,11 @@ var styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     height: height / 4,
-    marginHorizontal: 15,
+    marginHorizontal: width / 32,
   },
   headerContent: {
     flexDirection: 'column',
-    left: 15,
+    left: width / 32,
   },
   headerContentLineItem: {
     flex: 1,
