@@ -63,14 +63,7 @@ class EditMyPhotoHeader extends React.Component {
           height: response.height,
         }]})
         .then((res) => {
-          return new Promise((resolve, reject) => {
-            TSBridgeManager.uploadToAzure(res.url, source.uri, 'image/jpeg', (err, res) => {
-              if (err) {
-                return reject(err);
-              }
-              return resolve(true);
-            })
-          })
+          return TSBridgeManager.uploadToAzureAsync(res.url, source.uri, 'image/jpeg');
         })
         .then(() => {
           return this.props.ddp.call({ methodName: 'finishTask', params: [taskId] });

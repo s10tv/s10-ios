@@ -52,14 +52,11 @@ class BridgeManager : NSObject {
 // MARK: - BridgeManager JS API
 
 extension BridgeManager {
-    @objc func uploadToAzure(remoteURL: NSURL, localURL: NSURL, contentType: String, block: RCTResponseSenderBlock) {
-        METAccount.defaultAccount()
-        azure.put(remoteURL, file: localURL, contentType: contentType).start(Event.sink(error: { error in
+    @objc func uploadToAzure(remoteURL: NSURL, localURL: NSURL, contentType: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+        azure.put(remoteURL, file: localURL, contentType: contentType).promise(resolve, reject).start(Event.sink(error: { error in
             DDLogError("Unable to upload to azure \(remoteURL) \(error)")
-            block([error, NSNull()])
         }, completed: {
             DDLogDebug("Successfully uploaded to azure \(remoteURL)")
-            block([NSNull(), NSNull()])
         }))
     }
     
