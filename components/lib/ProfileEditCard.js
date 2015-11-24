@@ -2,6 +2,7 @@ let React = require('react-native');
 
 let {
   AppRegistry,
+  AlertIOS,
   View,
   DeviceEventEmitter,
   Text,
@@ -69,6 +70,9 @@ class ProfileEditCard extends React.Component {
               let myInfo = {};
               myInfo[info.key] = text;
               this.props.ddp.call({ methodName: 'me/update', params: [myInfo] })
+              .catch(err => {
+                AlertIOS.alert('Error', err.reason);
+              })
             }} />
         </Card>
       )
