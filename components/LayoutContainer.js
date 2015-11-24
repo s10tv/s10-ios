@@ -203,7 +203,7 @@ class LayoutContainer extends React.Component {
     })
     .then((res) => {
       if (res.token) {
-        ddp.loginWithToken(res.token);
+        return ddp.loginWithToken(res.token);
       }
 
       return Promise.resolve(res);
