@@ -1,0 +1,13 @@
+# fastlane specific
+report.xml
+
+# deliver temporary files
+Preview.html
+
+# snapshot generated screenshots
+screenshots/**/*.png
+screenshots/**/*.jpg
+screenshots/screenshots.html
+
+# scan temporary files
+test_output
