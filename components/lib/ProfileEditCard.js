@@ -14,29 +14,6 @@ let FloatLabelTextInput = require('./FloatLabelTextField');
 let SHEET = require('../CommonStyles').SHEET;
 let Card = require('./Card').Card;
 
-class ProfileTextInput extends React.Component {
-  constructor(props = {}) {
-    super(props);
-    this.state = {
-      text: props.text,
-    }
-  }
-
-  render() {
-    return (
-      <FloatLabelTextInput
-          placeHolder={this.props.display}
-          multiline={this.props.multiline}
-          value={this.props.text}
-          onBlur={() => {
-            let myInfo = {};
-            myInfo[this.props.infoKey] = this.state.text;
-            this.props.ddp.call({ methodName: 'me/update', params: [myInfo] })
-          }} />
-    )
-  }
-}
-
 class ProfileEditCard extends React.Component {
 
   constructor (props) {
@@ -56,8 +33,15 @@ class ProfileEditCard extends React.Component {
   }
 
   componentWillMount () {
-    DeviceEventEmitter.addListener('keyboardWillShow', this.keyboardWillShow.bind(this))
-    DeviceEventEmitter.addListener('keyboardWillHide', this.keyboardWillHide.bind(this))
+    this.setState({
+      keyboardShowListener: DeviceEventEmitter.addListener('keyboardWillShow', this.keyboardWillShow.bind(this)),
+      keyboardHideListener: DeviceEventEmitter.addListener('keyboardWillHide', this.keyboardWillHide.bind(this)),
+    })
+  }
+
+  componentWillUnmount() {
+    this.state.keyboardShowListener.remove();
+    this.state.keyboardHideListener.remove();
   }
 
   render() {
@@ -75,13 +59,17 @@ class ProfileEditCard extends React.Component {
         <Card 
           key={info.key}
           cardOverride={{padding: 5}}>
-          <ProfileTextInput
+          <FloatLabelTextInput
             ref={info.key}
-            text={this.props.me[info.key]}
-            display={info.display}
+            value={this.props.me[info.key]}
+            placeHolder={info.display}
             ddp={this.props.ddp}
-            infoKey={info.key}
-            multiline={info.multiline} />
+            multiline={info.multiline}
+            onBlur={(text) => {
+              let myInfo = {};
+              myInfo[info.key] = text;
+              this.props.ddp.call({ methodName: 'me/update', params: [myInfo] })
+            }} />
         </Card>
       )
     })

@@ -120,7 +120,7 @@ class FloatLabelTextField extends React.Component {
       focussed: false
     });
     try {
-      return this.props.onBlur();
+      return this.props.onBlur(this.state.text);
     } catch (_error) {}
   }
 
