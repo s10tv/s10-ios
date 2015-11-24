@@ -68,6 +68,9 @@ class RootNavigator extends React.Component {
             })
             break;
         }
+      }.bind(this)),
+      pushTokenListener: NativeAppEventEmitter.addListener('RegisteredPushToken', (properties) => {
+        console.log(properties);
       }.bind(this))
     });
   }
@@ -75,9 +78,11 @@ class RootNavigator extends React.Component {
   componentWillUnmount() {
     this.state.popListener.remove();
     this.state.pushListener.remove();
+    this.state.pushTokenListener.remove();
     this.setState({
       popListener: null,
-      pushListener: null
+      pushListener: null,
+      pushTokenListener: null,
     });
   }
 
@@ -263,8 +268,6 @@ let styles = StyleSheet.create({
     flex: 1,
   },
   webView: {
-    marginTop: 64,
-    paddingTop: 64,
   },
   nav: {
     flex: 1,
