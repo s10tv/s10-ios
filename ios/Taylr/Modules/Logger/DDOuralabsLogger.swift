@@ -36,3 +36,17 @@ class DDOuralabsLogger : DDAbstractLogger {
         Ouralabs.log(level, tag: tag, message: logMessage.message, error: nil)
     }
 }
+
+extension DDOuralabsLogger : AnalyticsProvider {
+    func identifyDevice(deviceId: String) {
+        Ouralabs.setAttributes(["deviceId": deviceId])
+    }
+    
+    func identifyUser(userId: String) {
+        Ouralabs.setAttributes(["userId": userId])
+    }
+    
+    func setUserProperties(properties: [String : AnyObject]) {
+        Ouralabs.setAttributes(properties)
+    }
+}

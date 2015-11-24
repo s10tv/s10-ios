@@ -24,7 +24,8 @@ class AppDelegate : UIResponder {
     
     var env: Environment!
     var config: AppConfig!
-    var branch: Branch!
+    var ouralabs: DDOuralabsLogger!
+    var branch: BranchProvider!
     var amplitude: AmplitudeProvider!
     var mixpanel: MixpanelProvider!
     var intercom: IntercomProvider!
@@ -42,19 +43,20 @@ class AppDelegate : UIResponder {
         config = AppConfig(env: env)
         
         // Setup Logging
+        ouralabs = DDOuralabsLogger(apiKey: config.ouralabsKey)
         Logger.addLogger(DDTTYLogger.sharedInstance()) // TTY = Xcode console
         Logger.addLogger(DDASLLogger.sharedInstance()) // ASL = Apple System Logs
-        Logger.addLogger(DDOuralabsLogger(apiKey: config.ouralabsKey))
         Logger.addLogger(DDNSLogger())
+        Logger.addLogger(ouralabs)
         
         // Setup Analytics
-        branch = Branch.getInstance(config.branchKey)
+        branch = BranchProvider(branchKey: config.branchKey)
         amplitude = AmplitudeProvider(apiKey: config.amplitudeKey)
         mixpanel = MixpanelProvider(apiToken: config.mixpanelToken, launchOptions: launchOptions) // TODO: Add launchOptions
         intercom = IntercomProvider(appId: config.intercom.appId, apiKey: config.intercom.apiKey)
         segment = SegmentProvider(writeKey: config.segmentWriteKey)
         uxcam = UXCamProvider(apiKey: config.uxcamKey)
-        Analytics.providers = [amplitude, mixpanel, intercom, segment, uxcam]
+        Analytics.providers = [branch, amplitude, mixpanel, intercom, segment, uxcam, ouralabs]
         
         // Setup Layer
         layer = LayerService(layerAppID: config.layerURL)
@@ -82,7 +84,7 @@ extension AppDelegate : UIApplicationDelegate {
         window?.rootViewController = RootViewController(bridge: bridge)
         window?.makeKeyAndVisible()
         
-        branch.initSessionWithLaunchOptions(launchOptions) { params, error in
+        branch.branch.initSessionWithLaunchOptions(launchOptions) { params, error in
             DDLogInfo("Initialized branch session params=\(params) error=\(error)")
             self.rnSendAppEvent(.BranchInitialized, body: params)
         }

@@ -17,14 +17,14 @@ public class TSAnalytics : NSObject {
     
     @objc func identify(userId: String) {
         for provider in providers {
-            provider.identifyUser(userId)
+            provider.identifyUser?(userId)
         }
         DDLogInfo("Identify userId=\(userId)")
     }
     
     @objc func track(event: String, properties: [String: AnyObject]? = nil) {
         for provider in providers {
-            provider.track(event, properties: properties)
+            provider.track?(event, properties: properties)
         }
         DDLogDebug("Track event=\(event) properties=\(properties)")
     }
