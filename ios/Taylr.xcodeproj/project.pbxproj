@@ -33,7 +33,6 @@
 		EA3225BF1BFDAE8A00FF5074 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA32258F1BFDAE8A00FF5074 /* UserViewModel.swift */; };
 		EA3225C01BFDAE8A00FF5074 /* Video.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225901BFDAE8A00FF5074 /* Video.swift */; };
 		EA3225C11BFDAE8A00FF5074 /* Analytics.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225931BFDAE8A00FF5074 /* Analytics.swift */; };
-		EA3225C21BFDAE8A00FF5074 /* LoggingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225941BFDAE8A00FF5074 /* LoggingProvider.swift */; };
 		EA3225C31BFDAE8A00FF5074 /* Analytics.m in Sources */ = {isa = PBXBuildFile; fileRef = EA3225951BFDAE8A00FF5074 /* Analytics.m */; };
 		EA3225D81BFDAE8A00FF5074 /* LayerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225B11BFDAE8A00FF5074 /* LayerExtensions.swift */; };
 		EA3225D91BFDAE8A00FF5074 /* LayerHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3225B21BFDAE8A00FF5074 /* LayerHelpers.swift */; };
@@ -83,8 +82,13 @@
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
 		EAA5E8DE1BFEAEE4009DE994 /* BridgeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA5E8DC1BFEAEE4009DE994 /* BridgeManager.m */; };
 		EAA5E8DF1BFEAEE4009DE994 /* BridgeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA5E8DD1BFEAEE4009DE994 /* BridgeManager.swift */; };
-		EABE4BDD1C0285D6001557A1 /* IntercomProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE4BDC1C0285D6001557A1 /* IntercomProvider.swift */; };
 		EABE4BF51C03279C001557A1 /* ReactExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE4BF41C03279C001557A1 /* ReactExtensions.swift */; };
+		EABE4C591C03BBAD001557A1 /* AnalyticsProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE4C581C03BBAD001557A1 /* AnalyticsProvider.swift */; };
+		EABE4C631C03C3BF001557A1 /* IntercomProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE4C621C03C3BF001557A1 /* IntercomProvider.swift */; };
+		EABE4C691C03C45A001557A1 /* AmplitudeProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE4C651C03C45A001557A1 /* AmplitudeProvider.swift */; };
+		EABE4C6A1C03C45A001557A1 /* MixpanelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE4C661C03C45A001557A1 /* MixpanelProvider.swift */; };
+		EABE4C6B1C03C45A001557A1 /* SegmentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE4C671C03C45A001557A1 /* SegmentProvider.swift */; };
+		EABE4C6C1C03C45A001557A1 /* UXCamProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE4C681C03C45A001557A1 /* UXCamProvider.swift */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
 		F9DDF6451BFD434600D7A2FC /* libRNFabricDigits.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9DDF6441BFD434600D7A2FC /* libRNFabricDigits.a */; };
 		F9DDF6AA1BFDB2A400D7A2FC /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9DDF6A91BFDB2A400D7A2FC /* libRCTVideo.a */; };
@@ -167,7 +171,6 @@
 		EA32258F1BFDAE8A00FF5074 /* UserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		EA3225901BFDAE8A00FF5074 /* Video.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Video.swift; sourceTree = "<group>"; };
 		EA3225931BFDAE8A00FF5074 /* Analytics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Analytics.swift; sourceTree = "<group>"; };
-		EA3225941BFDAE8A00FF5074 /* LoggingProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoggingProvider.swift; sourceTree = "<group>"; };
 		EA3225951BFDAE8A00FF5074 /* Analytics.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Analytics.m; sourceTree = "<group>"; };
 		EA3225B11BFDAE8A00FF5074 /* LayerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerExtensions.swift; sourceTree = "<group>"; };
 		EA3225B21BFDAE8A00FF5074 /* LayerHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LayerHelpers.swift; sourceTree = "<group>"; };
@@ -229,8 +232,13 @@
 		EABD43D81AA1D28700B07813 /* Dev.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Dev.xcconfig; sourceTree = "<group>"; };
 		EABD43D91AA1D29C00B07813 /* Beta.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Beta.xcconfig; sourceTree = "<group>"; };
 		EABD43DA1AA1D29C00B07813 /* Prod.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; path = Prod.xcconfig; sourceTree = "<group>"; };
-		EABE4BDC1C0285D6001557A1 /* IntercomProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntercomProvider.swift; sourceTree = "<group>"; };
 		EABE4BF41C03279C001557A1 /* ReactExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReactExtensions.swift; sourceTree = "<group>"; };
+		EABE4C581C03BBAD001557A1 /* AnalyticsProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnalyticsProvider.swift; sourceTree = "<group>"; };
+		EABE4C621C03C3BF001557A1 /* IntercomProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntercomProvider.swift; sourceTree = "<group>"; };
+		EABE4C651C03C45A001557A1 /* AmplitudeProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AmplitudeProvider.swift; sourceTree = "<group>"; };
+		EABE4C661C03C45A001557A1 /* MixpanelProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MixpanelProvider.swift; sourceTree = "<group>"; };
+		EABE4C671C03C45A001557A1 /* SegmentProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentProvider.swift; sourceTree = "<group>"; };
+		EABE4C681C03C45A001557A1 /* UXCamProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UXCamProvider.swift; sourceTree = "<group>"; };
 		EABF2AB41AD04659005880E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F9DDF6441BFD434600D7A2FC /* libRNFabricDigits.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRNFabricDigits.a; path = "../../node_modules/react-native-fabric-digits/ios/build/Debug-iphoneos/libRNFabricDigits.a"; sourceTree = "<group>"; };
 		F9DDF6981BFDB27700D7A2FC /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVideo.xcodeproj; path = "../node_modules/react-native-video/RCTVideo.xcodeproj"; sourceTree = "<group>"; };
@@ -388,8 +396,8 @@
 		EA3225921BFDAE8A00FF5074 /* Analytics */ = {
 			isa = PBXGroup;
 			children = (
-				EA3225941BFDAE8A00FF5074 /* LoggingProvider.swift */,
-				EABE4BDC1C0285D6001557A1 /* IntercomProvider.swift */,
+				EABE4C611C03C3BF001557A1 /* Providers */,
+				EABE4C581C03BBAD001557A1 /* AnalyticsProvider.swift */,
 				EA3225931BFDAE8A00FF5074 /* Analytics.swift */,
 				EA3225951BFDAE8A00FF5074 /* Analytics.m */,
 			);
@@ -579,6 +587,18 @@
 				EABD43DA1AA1D29C00B07813 /* Prod.xcconfig */,
 			);
 			path = Configs;
+			sourceTree = "<group>";
+		};
+		EABE4C611C03C3BF001557A1 /* Providers */ = {
+			isa = PBXGroup;
+			children = (
+				EABE4C651C03C45A001557A1 /* AmplitudeProvider.swift */,
+				EABE4C661C03C45A001557A1 /* MixpanelProvider.swift */,
+				EABE4C671C03C45A001557A1 /* SegmentProvider.swift */,
+				EABE4C681C03C45A001557A1 /* UXCamProvider.swift */,
+				EABE4C621C03C3BF001557A1 /* IntercomProvider.swift */,
+			);
+			path = Providers;
 			sourceTree = "<group>";
 		};
 		F9DDF69E1BFDB29100D7A2FC /* Products */ = {
@@ -882,10 +902,10 @@
 				EA197A4D1BFC4D2600DF7B58 /* DynamicProperties.swift in Sources */,
 				EABE4BF51C03279C001557A1 /* ReactExtensions.swift in Sources */,
 				EA3225DF1BFDAE8A00FF5074 /* Logger.swift in Sources */,
+				EABE4C6C1C03C45A001557A1 /* UXCamProvider.swift in Sources */,
 				EA197A481BFC4D2600DF7B58 /* MediaExtension.swift in Sources */,
 				EA3226041BFDAEEB00FF5074 /* MuteChecker.m in Sources */,
 				EA3226061BFDAEEB00FF5074 /* VideoPlayerViewController.swift in Sources */,
-				EA3225C21BFDAE8A00FF5074 /* LoggingProvider.swift in Sources */,
 				EA3226091BFDAEEB00FF5074 /* VolumeViewModel.swift in Sources */,
 				EA197A5B1BFC4D2600DF7B58 /* ProvisioningProfile.swift in Sources */,
 				EA3225DC1BFDAE8A00FF5074 /* LayerService.m in Sources */,
@@ -895,17 +915,19 @@
 				EA3225C31BFDAE8A00FF5074 /* Analytics.m in Sources */,
 				EA3226051BFDAEEB00FF5074 /* DurationTimer.swift in Sources */,
 				EA3225DA1BFDAE8A00FF5074 /* LayerQueries.swift in Sources */,
-				EABE4BDD1C0285D6001557A1 /* IntercomProvider.swift in Sources */,
 				EA197A4A1BFC4D2600DF7B58 /* Foundation+RACSupport.swift in Sources */,
 				EA197A861BFCFC3800DF7B58 /* RootViewController.swift in Sources */,
 				EA197A571BFC4D2600DF7B58 /* BaseViews.swift in Sources */,
+				EABE4C631C03C3BF001557A1 /* IntercomProvider.swift in Sources */,
 				EA3226081BFDAEEB00FF5074 /* VolumeView.swift in Sources */,
+				EABE4C6B1C03C45A001557A1 /* SegmentProvider.swift in Sources */,
 				EA32260C1BFDAEEB00FF5074 /* ConversationListViewController.swift in Sources */,
 				EA3225BE1BFDAE8A00FF5074 /* Image.swift in Sources */,
 				EA7DFB2E1BFFA3550045A5ED /* AzureClient.swift in Sources */,
 				EA197A511BFC4D2600DF7B58 /* SwiftExtension.swift in Sources */,
 				EA3225DB1BFDAE8A00FF5074 /* LayerService.swift in Sources */,
 				EA32260D1BFDAEEB00FF5074 /* ConversationListViewModel.swift in Sources */,
+				EABE4C591C03BBAD001557A1 /* AnalyticsProvider.swift in Sources */,
 				EA3225C01BFDAE8A00FF5074 /* Video.swift in Sources */,
 				EA197A541BFC4D2600DF7B58 /* UIKitExtension.swift in Sources */,
 				EA3225DE1BFDAE8A00FF5074 /* DDOuralabsLogger.swift in Sources */,
@@ -915,6 +937,7 @@
 				EA3226371BFDB9C000FF5074 /* RACBindings.swift in Sources */,
 				EA32260B1BFDAEEB00FF5074 /* ConversationListView.swift in Sources */,
 				EA197A471BFC4D2600DF7B58 /* GeometryExtensions.swift in Sources */,
+				EABE4C691C03C45A001557A1 /* AmplitudeProvider.swift in Sources */,
 				EA3225BB1BFDAE8A00FF5074 /* AppConfig.swift in Sources */,
 				EA197A4E1BFC4D2600DF7B58 /* PropertyExtensions.swift in Sources */,
 				EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */,
@@ -922,6 +945,7 @@
 				EA3226011BFDAEEB00FF5074 /* ConversationView.m in Sources */,
 				EA3225DD1BFDAE8A00FF5074 /* DDNSLogger.swift in Sources */,
 				EA32260E1BFDAEEB00FF5074 /* ConversationListView.m in Sources */,
+				EABE4C6A1C03C45A001557A1 /* MixpanelProvider.swift in Sources */,
 				EA3225BD1BFDAE8A00FF5074 /* Formatters.swift in Sources */,
 				EA3225BC1BFDAE8A00FF5074 /* AppDependencies.swift in Sources */,
 				EA3225C11BFDAE8A00FF5074 /* Analytics.swift in Sources */,

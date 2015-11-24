@@ -8,7 +8,6 @@
 
 import UIKit
 import CocoaLumberjack
-import ARAnalytics
 import Branch
 import FBSDKCoreKit
 import NKRecorder
@@ -21,7 +20,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
     let dependencies = AppDependencies()
     
     func application(application: UIApplication, willFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
-        ARAnalytics.event("AppOpen")
+        Analytics.track("AppOpen")
         DDLogInfo("App Will Launch")
         return true
     }
@@ -52,11 +51,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
-        ARAnalytics.event("AppOpen")
+        Analytics.track("AppOpen")
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
-        ARAnalytics.event("AppClose")
+        Analytics.track("AppClose")
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
@@ -82,7 +81,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
                 "apsEnv": apsEnv,
                 "deviceToken": deviceToken.hexString()
             ])
-            ARAnalytics.setUserProperty("RegisteredPush", toValue: "on")
+            Analytics.setUserProperties(["RegisteredPush": true])
         } else if !dependencies.env.isRunningInSimulator {
             DDLogError("Non-simulator build should have valid APS environment")
             // fatalError("Non-simulator build should have valid APS environment")
@@ -96,7 +95,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate /* CrashlyticsDelegate, */
 
     func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         DDLogWarn("Faild to register for push \(error)")
-        ARAnalytics.setUserProperty("RegisteredPush", toValue: "off")
+        Analytics.setUserProperties(["RegisteredPush": false])
     }
 
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {

@@ -18,7 +18,7 @@ class AppDependencies : NSObject {
     let env: Environment
     let config: AppConfig
     let logger: Logger
-    let analytics: Analytics
+    let analytics: TSAnalytics
     let branch: Branch
     
     // Lazily initialized modules
@@ -34,8 +34,9 @@ class AppDependencies : NSObject {
         env = Environment()
         config = AppConfig(env: env)
         logger = Logger(config: config)
-        analytics = Analytics(config: config)
         branch = Branch.getInstance(config.branchKey)
+        analytics = Analytics
+        analytics.setup(config, launchOptions: nil) // Add launch options
         
         super.init()
         Crashlytics.sharedInstance().delegate = self

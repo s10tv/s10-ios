@@ -7,45 +7,55 @@
 //
 
 import Foundation
-import ARAnalytics
-import Amplitude_iOS
+import CocoaLumberjack
 import Intercom
-#if ReleaseConfig
-import UXCam
-#endif
+
+public let Analytics = TSAnalytics()
 
 @objc(TSAnalytics)
-public class Analytics : NSObject {
+public class TSAnalytics : NSObject {
+    var providers: [AnalyticsProvider] = []
     
-    init(config: AppConfig) {
-        super.init()
-        Amplitude.instance().trackingSessionEvents = true
-        ARAnalytics.setupMixpanelWithToken(config.mixpanelToken)
-        ARAnalytics.setupAmplitudeWithAPIKey(config.amplitudeKey)
-        ARAnalytics.setupSegmentioWithWriteKey(config.segmentWriteKey)
-        ARAnalytics.setupProvider(IntercomProvider(appId: config.intercom.appId, apiKey: config.intercom.apiKey))
-        ARAnalytics.setupProvider(LoggingProvider())
-        #if ReleaseConfig
-        if config.audience != .Dev {
-            UXCam.startWithKey(config.uxcamKey)
-        }
-        #endif
+    func setup(config: AppConfig, launchOptions: [NSObject: AnyObject]?) {
+        providers = [
+            AmplitudeProvider(apiKey: config.amplitudeKey),
+            MixpanelProvider(apiToken: config.mixpanelToken, launchOptions: launchOptions),
+            IntercomProvider(appId: config.intercom.appId, apiKey: config.intercom.apiKey),
+            SegmentProvider(writeKey: config.segmentWriteKey),
+            UXCamProvider(apiKey: config.uxcamKey),
+        ]
+        DDLogInfo("Did setup providers with config \(config) launchOptions \(launchOptions)")
     }
     
     @objc func identify(userId: String) {
-        ARAnalytics.identifyUserWithID(userId, andEmailAddress: nil)
+        for provider in providers {
+            provider.identifyUser(userId)
+        }
+        DDLogInfo("Identify userId=\(userId)")
     }
     
     @objc func track(event: String, properties: [String: AnyObject]? = nil) {
-        ARAnalytics.event(event, withProperties: properties)
+        for provider in providers {
+            provider.track(event, properties: properties)
+        }
+        DDLogDebug("Track event=\(event) properties=\(properties)")
     }
     
-    @objc func setUserProperty(name: String, value: String?) {
-        ARAnalytics.setUserProperty(name, toValue: value)
+    @objc func setUserProperties(properties: [String: AnyObject]? = nil) {
+        guard let properties = properties else {
+            return
+        }
+        for provider in providers {
+            provider.setUserProperties?(properties)
+        }
+        DDLogDebug("Set user properties=\(properties)")
     }
     
-    @objc func incrementUserProperty(name: String, amount: Int) {
-        ARAnalytics.incrementUserProperty(name, byInt: amount)
+    @objc func incrementUserProperty(propertyName: String, amount: NSNumber) {
+        for provider in providers {
+            provider.incrementUserProperty?(propertyName, amount: amount)
+        }
+        DDLogDebug("Increment user property name=\(propertyName) amount=\(amount)")
     }
     
     @objc func intercomPresentMessageComposer() {

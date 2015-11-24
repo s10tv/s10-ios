@@ -46,14 +46,9 @@ pod 'Ouralabs', '~> 2.6'
 pod 'NSLogger', '~> 1.5', :configuration => ['Debug']
 
 # Analytics
-pod 'ARAnalytics', :subspecs => [
-    'Mixpanel',
-    'Amplitude',
-    'Segmentio',
-  # Cause error -> The 'Pods' target has transitive dependencies that include static binaries
-  # Therefore use the intercom pod directly
-  # 'Intercom'
-]
+pod 'Mixpanel', '~> 2.9'
+pod 'Amplitude-iOS', '~> 3.2'
+pod 'AnalyticsSwift', '~> 0.2' # SegmentIO
 pod 'Intercom', '~> 2.3'
 pod 'Branch', '~> 0.11'
 # Disabling UXCam for dev builds until motion detection interference is fixed
