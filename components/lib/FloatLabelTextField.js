@@ -55,16 +55,34 @@ var TextFieldHolder = React.createClass({
   }
 });
 
-var FloatLabelTextField = React.createClass({
-  getInitialState: function() {
-    return {
+class FloatLabelTextField extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
       focussed: false,
-      text: this.props.value
+      text: this.props.value,
+      height: 20,
     };
-  },
-  render: function() {
+  }
+
+  onHiddenLayout(event) {
+    if (event.nativeEvent.layout.height != this.state.height) {
+      this.setState({ height: event.nativeEvent.layout.height })
+    }
+  }
+
+  render() {
+    let textInputExtra = this.props.multiline ? { height: this.state.height + 5 } : null;
+    let containerExtra = this.props.multiline? { height: this.state.height + 35 } : null;
+
     return(
-      <View style={styles.container}>
+      <View style={[styles.container, containerExtra]}>
+        <Text
+         ref="hidden"
+         onLayout={this.onHiddenLayout.bind(this)}
+         style={styles.hidden}>
+          {this.state.text}
+        </Text>
         <View style={styles.viewContainer}>
           <View style={styles.paddingView}></View>
           <View style={styles.fieldContainer}>
@@ -74,65 +92,65 @@ var FloatLabelTextField = React.createClass({
             <TextFieldHolder withValue={this.state.text}>
               <TextInput
                 placeholder={this.props.placeHolder}
-                style={[styles.valueText]}
+                style={[styles.valueText, textInputExtra]}
                 value={this.state.text}
                 multiline={this.props.multiline}
-                onFocus={this.setFocus}
-                onBlur={this.unsetFocus}
-                onChangeText={this.setText}
-                secureTextEntry={this.props.secureTextEntry}
-              />
+                onFocus={this.setFocus.bind(this)}
+                onBlur={this.unsetFocus.bind(this)}
+                onChangeText={this.setText.bind(this)}
+                secureTextEntry={this.props.secureTextEntry} />
             </TextFieldHolder>
           </View>
         </View>
       </View>
     );
-  },
-  setFocus: function() {
+  }
+
+  setFocus() {
     this.setState({
       focussed: true
     });
     try {
       return this.props.onFocus();
     } catch (_error) {}
-  },
+  }
 
-  unsetFocus: function() {
+  unsetFocus() {
     this.setState({
       focussed: false
     });
     try {
       return this.props.onBlur();
     } catch (_error) {}
-  },
+  }
 
-  labelStyle: function() {
+  labelStyle() {
     if (this.state.focussed) {
       return styles.focussed;
     }
-  },
+  }
 
-  placeHolderValue: function() {
+  placeHolderValue() {
     if (this.state.text) {
       return this.props.placeHolder;
     }
-  },
+  }
 
-  setText: function(value) {
+  setText(value) {
     this.setState({
       text: value
     });
     try {
       return this.props.onChangeText(value);
     } catch (_error) {}
-  },
+  }
 
-  withMargin: function() {
+  withMargin() {
     if (this.state.text) {
       return styles.withMargin;
     }
   }
-});
+}
 
 var styles = StyleSheet.create({
   container: {
@@ -140,6 +158,15 @@ var styles = StyleSheet.create({
     height: 55,
     backgroundColor: 'white',
     justifyContent: 'center'
+  },
+  hidden: {
+    position: 'absolute',
+    fontSize: 16,
+    paddingLeft: 20,
+    paddingRight: 5,
+    backgroundColor: 'transparent',
+    top: 10000,
+    left: 10000,
   },
   viewContainer: {
     flex: 1,

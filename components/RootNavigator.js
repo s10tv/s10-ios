@@ -218,6 +218,7 @@ class RootNavigator extends React.Component {
           history={this.props.history}
           me={this.props.me}
           onLogout={this.props.onLogout}
+          integrations={this.props.integrations}
           categories={this.props.categories}
           myTags={this.props.myTags}
           candidate={this.props.candidate}
