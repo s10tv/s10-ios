@@ -125,13 +125,9 @@ class Discover extends React.Component {
 
     return (
       <View style={SHEET.container}>
-        <ScrollView
-          style={[SHEET.navTopTab, { flex: 1 }]}
-          showsVerticalScrollIndicator={false}>
-
-          <Card style={[{marginTop: 10, paddingBottom: 10}, SHEET.innerContainer]}
-            cardOverride={{ padding: 0 }}>
-
+        <Card style={[{flex: 1, marginTop: 74, marginBottom: 10}, SHEET.innerContainer]}
+          cardOverride={[{ flex: 1, padding: 0 }]}>
+          
             <TouchableOpacity onPress={() => {
               this.props.parentNavigator.push({
                 id: 'viewprofile',
@@ -153,33 +149,34 @@ class Discover extends React.Component {
                 </View>
               </HeaderBanner>
             </TouchableOpacity>
-            <View style={[styles.infoSection, SHEET.innerContainer]}>
-              <IconTextRow
-                style={{ padding: 5 }}
-                icon={require('../img/ic-mortar.png')}
-                text={candidateUser.major} />
-              <IconTextRow
-                style={{ padding: 5 }}
-                icon={require('../img/ic-house.png')}
-                text={candidateUser.hometown} />
-            </View>
-            <View style={[{ marginHorizontal: 10 }, SHEET.separator]} />
-            <View style={[styles.infoSection, SHEET.innerContainer]}>
-              <Text style={[SHEET.baseText]}>
-                { candidate.reason }
-              </Text>
-            </View>
 
-            <CountdownTimer
-              parentNavigator={this.props.parentNavigator}
-              navigator={this.props.navigator}
-              candidateUser={candidateUser}
-              me={this.props.me}
-              settings={this.props.settings} />
-          </Card>
 
-          <View style={SHEET.bottomTile} />
-        </ScrollView>
+          <View style={[styles.infoSection, SHEET.innerContainer]}>
+            <IconTextRow
+              style={{ padding: 5 }}
+              icon={require('../img/ic-mortar.png')}
+              text={candidateUser.major} />
+            <IconTextRow
+              style={{ padding: 5 }}
+              icon={require('../img/ic-house.png')}
+              text={candidateUser.hometown} />
+          </View>
+
+
+          <View style={[{ marginHorizontal: 10 }, SHEET.separator]} />
+          <View style={[{ flex: 1}, styles.infoSection, SHEET.innerContainer]}>
+            <Text style={[SHEET.baseText]}>
+              { candidate.reason }
+            </Text>
+          </View>
+
+          <CountdownTimer
+            parentNavigator={this.props.parentNavigator}
+            navigator={this.props.navigator}
+            candidateUser={candidateUser}
+            me={this.props.me}
+            settings={this.props.settings} />
+        </Card>
       </View>
     )
   }
@@ -229,12 +226,13 @@ var styles = StyleSheet.create({
     paddingVertical: 10,
   },
   messageButton: {
+    height: 40,
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
     marginHorizontal: 10,
-    paddingVertical: 10,
     backgroundColor: COLORS.button,
+    marginBottom: 10,
     borderRadius : 3,
   },
   messageButtonText: {
