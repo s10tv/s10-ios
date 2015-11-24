@@ -3,10 +3,12 @@ let Button = require('react-native-button');
 
 let {
   AppRegistry,
+  Animated,
   View,
   ScrollView,
   Text,
   Image,
+  PanResponder,
   TouchableOpacity,
   StyleSheet,
 } = React;
@@ -98,7 +100,53 @@ class Discover extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      pan: new Animated.ValueXY()
+    };
+
+  }
+
+  componentWillMount() {
+    this._animatedValueY = 0; 
+
+    this.state.pan.y.addListener((value) => {
+      this._animatedValueY = value.value
+    });
+
+    this._panResponder = PanResponder.create({
+      onMoveShouldSetResponderCapture: () => true, //Tell iOS that we are allowing the movement
+      onMoveShouldSetPanResponderCapture: () => true, // Same here, tell iOS that we allow dragging
+      onPanResponderGrant: (e, gestureState) => {
+        this.state.pan.setOffset({x: 0, y: this._animatedValueY});
+        this.state.pan.setValue({x: 0, y: 0}); //Initial value
+      },
+      onPanResponderMove: Animated.event([
+        null, {dx: this.state.pan.x, dy: this.state.pan.y}
+      ]), // Creates a function to handle the movement and set offsets
+      onPanResponderRelease: () => {
+        Animated.spring(this.state.pan, {
+          toValue: 0
+        }).start();
+      }
+    });
+
+  }
+
+  componentWillUnmount() {
+    this.state.pan.x.removeAllListeners();  
+    this.state.pan.y.removeAllListeners();
+  }
+
+  getStyle() {
+    return [
+      {flex: 1}, 
+      { transform: [
+        { translateY: this.state.pan.y },
+      ]},
+      {
+        opacity: this.state.pan.x.interpolate({inputRange: [-200, 0, 200], outputRange: [0.5, 1, 0.5]})
+      }
+    ];
   }
 
   render() {
@@ -125,9 +173,9 @@ class Discover extends React.Component {
 
     return (
       <View style={SHEET.container}>
+        <Animated.View style={this.getStyle()} {...this._panResponder.panHandlers}>
         <Card style={[{flex: 1, marginTop: 74, marginBottom: 10}, SHEET.innerContainer]}
           cardOverride={[{ flex: 1, padding: 0 }]}>
-          
             <TouchableOpacity onPress={() => {
               this.props.parentNavigator.push({
                 id: 'viewprofile',
@@ -176,7 +224,8 @@ class Discover extends React.Component {
             candidateUser={candidateUser}
             me={this.props.me}
             settings={this.props.settings} />
-        </Card>
+          </Card>
+        </Animated.View>
       </View>
     )
   }
