@@ -63,13 +63,14 @@ class MeHeader extends React.Component {
   render() {
     let me = this.props.me;
 
-    var serviceIcons = null;
+    var serviceIcons = [<Image source={require('../img/ic-ubc.png')} style={[SHEET.smallIcon, styles.serviceIcon]} />];
     var name = null;
     if (me.connectedProfiles) {
-      serviceIcons = me.connectedProfiles.map((profile) => {
+      let moreIcons = me.connectedProfiles.map((profile) => {
         return <Image key={profile.id} style={[SHEET.smallIcon, styles.serviceIcon]}
             source={{ uri: profile.icon.url }} />
       });
+      serviceIcons = serviceIcons.concat(moreIcons);
     }
 
     return (

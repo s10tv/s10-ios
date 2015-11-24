@@ -126,8 +126,7 @@ class Discover extends React.Component {
       onPanResponderRelease: () => {
         Animated.spring(this.state.pan, {
           toValue: 0,
-          tension: 100,
-          friction: 5,
+          tension: 15,
         }).start();
       }
     });
@@ -168,12 +167,12 @@ class Discover extends React.Component {
     }
 
     let candidateUser = candidateUsers[0];
-    let serviceIcons = candidateUser.connectedProfiles.map((profile) => {
+
+    let serviceIcons = [<Image source={require('../img/ic-ubc.png')} style={[SHEET.smallIcon, styles.serviceIcon]} />];
+    serviceIcons = serviceIcons.concat(candidateUser.connectedProfiles.map((profile) => {
       return <Image key={profile.id} style={[SHEET.smallIcon, styles.serviceIcon]}
           source={{ uri: profile.icon.url }} />
-    });
-
-    serviceIcons.push(<Image source={require('../img/ic-ubc.png')} style={[SHEET.smallIcon, styles.serviceIcon]} />)
+    }));
 
     return (
       <View style={SHEET.container}>
