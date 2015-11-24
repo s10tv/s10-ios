@@ -27,7 +27,6 @@
 		EA197A5B1BFC4D2600DF7B58 /* ProvisioningProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A191BFC4D2600DF7B58 /* ProvisioningProfile.swift */; };
 		EA197A861BFCFC3800DF7B58 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA197A851BFCFC3800DF7B58 /* RootViewController.swift */; };
 		EA3225BB1BFDAE8A00FF5074 /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA32258B1BFDAE8A00FF5074 /* AppConfig.swift */; };
-		EA3225BC1BFDAE8A00FF5074 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA32258C1BFDAE8A00FF5074 /* AppDependencies.swift */; };
 		EA3225BD1BFDAE8A00FF5074 /* Formatters.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA32258D1BFDAE8A00FF5074 /* Formatters.swift */; };
 		EA3225BE1BFDAE8A00FF5074 /* Image.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA32258E1BFDAE8A00FF5074 /* Image.swift */; };
 		EA3225BF1BFDAE8A00FF5074 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA32258F1BFDAE8A00FF5074 /* UserViewModel.swift */; };
@@ -166,7 +165,6 @@
 		EA2667801BFA93BA0054C777 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		EA2667811BFA93BA0054C777 /* Pods.release.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		EA32258B1BFDAE8A00FF5074 /* AppConfig.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
-		EA32258C1BFDAE8A00FF5074 /* AppDependencies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDependencies.swift; sourceTree = "<group>"; };
 		EA32258D1BFDAE8A00FF5074 /* Formatters.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Formatters.swift; sourceTree = "<group>"; };
 		EA32258E1BFDAE8A00FF5074 /* Image.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Image.swift; sourceTree = "<group>"; };
 		EA32258F1BFDAE8A00FF5074 /* UserViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
@@ -374,7 +372,6 @@
 			isa = PBXGroup;
 			children = (
 				EA32258B1BFDAE8A00FF5074 /* AppConfig.swift */,
-				EA32258C1BFDAE8A00FF5074 /* AppDependencies.swift */,
 				EA32258F1BFDAE8A00FF5074 /* UserViewModel.swift */,
 				EA3225901BFDAE8A00FF5074 /* Video.swift */,
 				EA32258E1BFDAE8A00FF5074 /* Image.swift */,
@@ -950,7 +947,6 @@
 				EA32260E1BFDAEEB00FF5074 /* ConversationListView.m in Sources */,
 				EABE4C6A1C03C45A001557A1 /* MixpanelProvider.swift in Sources */,
 				EA3225BD1BFDAE8A00FF5074 /* Formatters.swift in Sources */,
-				EA3225BC1BFDAE8A00FF5074 /* AppDependencies.swift in Sources */,
 				EA3225C11BFDAE8A00FF5074 /* Analytics.swift in Sources */,
 				EA3226001BFDAEEB00FF5074 /* ConversationViewModel.swift in Sources */,
 				EA3225FF1BFDAEEB00FF5074 /* ConversationViewController.swift in Sources */,
