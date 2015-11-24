@@ -125,7 +125,9 @@ class Discover extends React.Component {
       ]), // Creates a function to handle the movement and set offsets
       onPanResponderRelease: () => {
         Animated.spring(this.state.pan, {
-          toValue: 0
+          toValue: 0,
+          tension: 100,
+          friction: 5,
         }).start();
       }
     });
@@ -139,7 +141,7 @@ class Discover extends React.Component {
 
   getStyle() {
     return [
-      {flex: 1}, 
+      {flex: 1, paddingTop: 74}, 
       { transform: [
         { translateY: this.state.pan.y },
       ]},
@@ -171,10 +173,12 @@ class Discover extends React.Component {
           source={{ uri: profile.icon.url }} />
     });
 
+    serviceIcons.push(<Image source={require('../img/ic-ubc.png')} style={[SHEET.smallIcon, styles.serviceIcon]} />)
+
     return (
       <View style={SHEET.container}>
         <Animated.View style={this.getStyle()} {...this._panResponder.panHandlers}>
-        <Card style={[{flex: 1, marginTop: 74, marginBottom: 10}, SHEET.innerContainer]}
+        <Card style={[{flex: 1, marginBottom: 10}, SHEET.innerContainer]}
           cardOverride={[{ flex: 1, padding: 0 }]}>
             <TouchableOpacity onPress={() => {
               this.props.parentNavigator.push({
