@@ -52,13 +52,16 @@ class BridgeManager : NSObject {
 // MARK: - BridgeManager JS API
 
 extension BridgeManager {
-    @objc func uploadToAzure(remoteURL: NSURL, localURL: NSURL, contentType: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
-        azure.put(remoteURL, file: localURL, contentType: contentType).promise(resolve, reject).start(Event.sink(error: { error in
-            DDLogError("Unable to upload to azure \(remoteURL) \(error)")
+     @objc func uploadToAzure(remoteURL: NSURL, localURL: NSURL, contentType: String, resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
+        // For some reason if we use SignalProducer.promise here it breaks build...
+        azure.put(remoteURL, file: localURL, contentType: contentType).start(Event.sink(error: { error in
+            reject(error)
+            DDLogError("Unable to upload to azure error=\(error)")
         }, completed: {
-            DDLogDebug("Successfully uploaded to azure \(remoteURL)")
+            resolve(nil)
+            DDLogDebug("Successfully uploaded to azure")
         }))
-    }
+     }
     
     @objc func getDefaultAccount(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
         resolve(METAccount.defaultAccount()?.toJson())

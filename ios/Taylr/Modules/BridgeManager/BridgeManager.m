@@ -6,7 +6,8 @@
 //  Copyright © 2015 S10. All rights reserved.
 //
 
-#import <React/RCTViewManager.h>
+#import <Foundation/Foundation.h>
+#import <React/RCTBridgeModule.h>
 
 @interface RCT_EXTERN_MODULE(TSBridgeManager, NSObject)
 
