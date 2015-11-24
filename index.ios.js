@@ -6,6 +6,7 @@
 let Analytics = require('react-native').NativeModules.TSAnalytics;
 let Logger = require('react-native').NativeModules.TSLogger;
 let TSLayerService = require('react-native').NativeModules.TSLayerService;
+let BridgeManager = require('./modules/BridgeManager');
 let React = require('react-native');
 let {
   AppRegistry,
@@ -27,3 +28,7 @@ AppRegistry.registerComponent('Taylr', () => container);
 Analytics.identify('TestUserId');
 Analytics.track('JS App Launched', null);
 Logger.log('My Log Statement', 'info', 'root', 'index.ios.js', 232);
+
+BridgeManager.getDefaultAccountAsync().then((account) => {
+	console.log('default account is', account);
+});
