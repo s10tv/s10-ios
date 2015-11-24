@@ -47,7 +47,7 @@ var buttonStyles = StyleSheet.create({
     borderRadius: 2,
   },
   button: {
-    width: width / 4,
+    width: 5 * width / 16,
   },
   buttonText: {
     flex: 1,
