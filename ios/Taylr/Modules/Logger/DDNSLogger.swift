@@ -41,11 +41,12 @@ class DDNSLogger : DDAbstractLogger {
         default:
             return
         }
+        let domain = (logMessage.tag as? String) ?? logMessage.fileName
         LogMessageRawToF(logger,
             (logMessage.fileName as NSString).UTF8String,
             Int32(logMessage.line),
             (logMessage.function as NSString).UTF8String,
-            logMessage.fileName, // Domain
+            domain,
             level,
             logMessage.message
         )

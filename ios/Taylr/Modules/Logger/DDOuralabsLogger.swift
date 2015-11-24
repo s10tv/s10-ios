@@ -32,6 +32,7 @@ class DDOuralabsLogger : DDAbstractLogger {
         default:
             return
         }
-        Ouralabs.log(level, tag: nil, message: logMessage.message, error: nil)
+        let tag = (logMessage.tag as? String) ?? logMessage.fileName
+        Ouralabs.log(level, tag: tag, message: logMessage.message, error: nil)
     }
 }

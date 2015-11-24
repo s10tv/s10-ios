@@ -29,8 +29,8 @@ class AppConfig {
     var serverURL: NSURL {
         return NSURL("\(serverProtocol)://\(serverHostName)/websocket")
     }
-    let ouralabsKey = "5994e77086c6fcabc4bd5d5fe6c3e556"
     let uxcamKey = "2c0f24d77c8cdc6"
+    let ouralabsKey: String
     let segmentWriteKey: String
     let mixpanelToken: String
     let amplitudeKey: String
@@ -54,6 +54,7 @@ class AppConfig {
             mixpanelToken = "9d5d89ba988e52622278165d91ccf937"
             layerURL = NSURL("layer:///apps/staging/49574578-72bb-11e5-9a72-a4a211002a87")
             branchKey = "key_test_nmeOiHF7jxXUcZPa8UdDbaacBxdYkU1J"
+            ouralabsKey = "2207bb0177c84bd22085cb4e9018246f"
         case .Beta, .AppStore:
             serverHostName = "taylr-prod.herokuapp.com"
             segmentWriteKey = "DwMJMhxsvn6EDrO33gANHBjvg3FUsfPJ"
@@ -61,6 +62,7 @@ class AppConfig {
             mixpanelToken = "39194eed490fa8abcc026256631a4230"
             layerURL = NSURL("layer:///apps/production/49574ba4-72bb-11e5-89fc-a4a211002a87")
             branchKey = "key_live_clkHkRr6mC5Ok8Np3LeBbldcqAj8eUY4"
+            ouralabsKey = "96128c67ffeb9632f665febb71914dc5"
         }
     }
     
