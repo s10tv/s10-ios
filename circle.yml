@@ -16,15 +16,15 @@ dependencies:
   pre:
     - brew update
     - brew install node
-    - npm install
-    - npm install -g react-native-cli # Technically should use the one installed above, but temp workaround
-    # - brew upgrade xctool
-    # - sudo gem uninstall highline commander --ignore-dependencies -x -a
     - sudo gem install cocoapods -v $(var=$(tail -1 ios/Podfile.lock); echo ${var##COCOAPODS:})
+    - sudo gem update gym
     # - sudo gem install cupertino shenzhen # sigh xcpretty gym
-    - ./scripts/import_credentials.sh
   override:
+    - npm install
     - "cd ios && pod install"
+  post:
+    - npm install -g react-native-cli # Technically should use the one installed above, but temp workaround
+    - ./scripts/import_credentials.sh
   cache_directories:
     - "node_modules"
     - "ios/Pods"
@@ -47,7 +47,7 @@ test:
     - zip -FSr $CIRCLE_ARTIFACTS/Pods.zip ios/Pods/
 
 deployment:
-  Taylr Dev:
+  alpha:
     branch: master
     commands:
       - |
@@ -57,7 +57,7 @@ deployment:
         npm install
         node deploy_dev.js
 
-  Taylr:
+  testflight:
     branch: prod
     commands:
      - |
