@@ -7,7 +7,7 @@ dependencies:
   pre:
     - brew update
     - brew install node
-    - sudo gem update fastlane
+    - sudo gem update fastlane gym
     - sudo gem install cocoapods -v $(var=$(tail -1 ios/Podfile.lock); echo ${var##COCOAPODS:})
   override:
     - npm install
