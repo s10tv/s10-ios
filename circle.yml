@@ -35,6 +35,6 @@ deployment:
      - fastlane deploy_prod
 
   other:
-    branch: /*/
+    branch: /.*/
     commands:
      - fastlane deploy_other
