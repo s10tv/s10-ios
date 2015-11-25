@@ -98,7 +98,7 @@ platform :ios do
     if ENV['CIRCLE_ARTIFACTS']
       sh 'zip -FSr $CIRCLE_ARTIFACTS/Pods.zip ios/Pods/'
     end
-    notification(message: "Successfully archived variant:#{variant} build_number:#{build_number}")
+    notification(message: "Successfully archived #{options}")
   end
 
   desc 'Generate automatic release notes from current git status and environment'
