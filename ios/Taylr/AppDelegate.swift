@@ -46,8 +46,10 @@ class AppDelegate : UIResponder {
         ouralabs = DDOuralabsLogger(apiKey: config.ouralabsKey)
         Logger.addLogger(DDTTYLogger.sharedInstance()) // TTY = Xcode console
         Logger.addLogger(DDASLLogger.sharedInstance()) // ASL = Apple System Logs
-        Logger.addLogger(DDNSLogger())
         Logger.addLogger(ouralabs)
+        #if Debug
+        Logger.addLogger(DDNSLogger())
+        #endif
         
         // Setup Analytics
         branch = BranchProvider(branchKey: config.branchKey)

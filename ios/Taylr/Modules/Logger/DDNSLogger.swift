@@ -8,11 +8,12 @@
 
 import Foundation
 import CocoaLumberjack
-//#if DEV
+#if Debug
 import NSLogger
-//#endif
+#endif
 
 class DDNSLogger : DDAbstractLogger {
+    #if Debug
     let logger = LoggerInit()
     
     override init() {
@@ -51,4 +52,5 @@ class DDNSLogger : DDAbstractLogger {
             logMessage.message
         )
     }
+    #endif
 }
