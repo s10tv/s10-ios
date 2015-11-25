@@ -1,23 +1,19 @@
 machine:
   xcode:
     version: "7.1"
-  environment:
-    # Avoid Circle having to infer itself
-    XCODE_WORKSPACE: ios/Taylr.xcworkspace 
-    XCODE_SCHEME: Taylr
 
 dependencies:
   override:
   pre:
     - brew update
     - brew install node
+    - sudo gem update fastlane
     - sudo gem install cocoapods -v $(var=$(tail -1 ios/Podfile.lock); echo ${var##COCOAPODS:})
-    - sudo gem update gym
   override:
     - npm install
+    - npm install -g react-native-cli # Technically should use the one installed above, but temp workaround
     - fastlane pod_install
   post:
-    - npm install -g react-native-cli # Technically should use the one installed above, but temp workaround
     - fastlane import_certs
   cache_directories:
     - "node_modules"
