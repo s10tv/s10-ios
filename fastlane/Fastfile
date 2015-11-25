@@ -25,11 +25,17 @@ platform :ios do
   end
 
   after_all do |lane|
-    notification(title: "fastlane: [#{lane.to_s}]", message: "Success")
+    desktop_notification(title: "fastlane: [#{lane.to_s}]", message: "Success")
   end
 
   error do |lane, exception|
-    notification(title: "fastlane: [#{lane.to_s}]", message: "Error #{exception}")
+    desktop_notification(title: "fastlane: [#{lane.to_s}]", message: "Error #{exception}")
+  end
+
+  private_lane :desktop_notification do |options|
+    if !is_ci
+      notification(**options)
+    end
   end
 
   desc 'Import certificates into taylr keychain'
@@ -96,7 +102,7 @@ platform :ios do
     if ENV['CIRCLE_ARTIFACTS']
       sh 'zip -FSr $CIRCLE_ARTIFACTS/Pods.zip ../ios/Pods/'
     end
-    notification(message: "Successfully archived #{options}")
+    desktop_notification(message: "Successfully archived #{options}")
   end
 
   desc 'Generate automatic release notes from current git status and environment'
