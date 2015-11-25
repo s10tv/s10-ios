@@ -21,20 +21,15 @@ dependencies:
 
 test:
   override:
-    - fastlane test
+    - fastlane circle_archive
 
 deployment:
   master:
     branch: master
     commands:
-      - fastlane deploy_master
+      - fastlane upload_crashlytics
 
   prod:
     branch: prod
     commands:
-     - fastlane deploy_prod
-
-  other:
-    branch: /.*/
-    commands:
-     - fastlane deploy_other
+      - fastlane upload_itunesconnect

@@ -10,17 +10,21 @@ default_platform :ios
 
 platform :ios do
   before_all do
-    # Handle build number logic on circle
+    # Handle Circle specific logic
     circle_build_number = ENV['CIRCLE_BUILD_NUM']
     if circle_build_number
+      circle_artifacts = ENV['CIRCLE_ARTIFACTS']
       case ENV['CIRCLE_BRANCH']
       when 'master'
-        ENV['BUILD_NUMBER'] = "#{circle_build_number}d"
+        build_number = "#{circle_build_number}d"
       when 'prod'
-        ENV['BUILD_NUMBER'] = circle_build_number
+        build_number = "#{circle_build_number}"
       else
-        ENV['BUILD_NUMBER'] = "#{circle_build_number}*"
+        build_number = "#{circle_build_number}*"
       end
+      ENV['BUILD_NUMBER'] = build_number
+      ENV['OUTPUT_DIR'] = circle_artifacts
+      ENV['IPA_PATH'] = "#{circle_artifacts}/#{build_number}.ipa"
     end
   end
 
@@ -95,19 +99,19 @@ platform :ios do
       configuration: configuration,
       xcargs: "BUILD_NUMBER=#{build_number}",
       export_method: export_method,
-      buildlog_path: ENV['CIRCLE_ARTIFACTS'],
-      output_directory: ENV['CIRCLE_ARTIFACTS'],
+      buildlog_path: ENV['OUTPUT_DIR'],
+      output_directory: ENV['OUTPUT_DIR'],
       output_name: "#{build_number}.ipa"
     )
-    if ENV['CIRCLE_ARTIFACTS']
-      sh 'zip -FSr $CIRCLE_ARTIFACTS/Pods.zip ../ios/Pods/'
+    if ENV['OUTPUT_DIR']
+      sh 'zip -FSr $OUTPUT_DIR/Pods.zip ../ios/Pods/'
     end
     desktop_notification(message: "Successfully archived #{options}")
   end
 
   desc 'Generate automatic release notes from current git status and environment'
   lane :release_notes do |options|
-    commit_message = sh 'git log -n 1 --pretty=format:%s $CIRCLE_SHA1'
+    commit_message = sh 'git log -n 1 --pretty=format:%s head'
     date = sh 'date'
     branch = git_branch
     commit_hash = sh 'git rev-parse HEAD'
@@ -123,6 +127,7 @@ platform :ios do
   desc 'Upload an existing build to crashlytics. Pass in :ipa_file to specify exact file'
   lane :upload_crashlytics do |options|
     notes = release_notes
+    options[:ipa_file] ||= ENV['IPA_PATH']
     crashlytics(
       crashlytics_path: 'ios/Pods/Crashlytics/Crashlytics.framework',
       api_token: '67f7b1cc77f3e88b8e5b17a5bbc2ca6cb6f7ae53',
@@ -134,32 +139,23 @@ platform :ios do
     )
   end
 
-  desc 'Upload an existing build to iTunesConnect TestFlight. Pass in :ipa to specify exact file'
-  lane :upload_testflight do |options|
+  desc 'Upload an existing build to iTunesConnect/TestFlight. Pass in :ipa to specify exact file'
+  lane :upload_itunesconnect do |options|
     notes = release_notes
-    pilot(skip_submission: true, changelog: notes **options)
+    options[:ipa] ||= ENV['IPA_PATH']
+    pilot(skip_submission: true, changelog: notes, **options)
   end
 
-  ## End-to-end lanes used by circle CI
-
-  desc 'Make a new dev build and keep ipa in Circle'
-  lane :deploy_other do
-    download_profiles(dev: true)
-    archive(variant: 'dev')
+  desc 'Archive build according to current $CIRCLE_BRANCH'
+  lane :circle_archive do
+    case ENV['CIRCLE_BRANCH']
+      when 'prod'
+        download_profiles(appstore: true)
+        archive(variant: 'appstore')
+      else
+        download_profiles(dev: true)
+        archive(variant: 'dev')
+    end
   end  
-
-  desc 'Make a new dev build and upload to Crashlytics'
-  lane :deploy_master do
-    download_profiles(dev: true)
-    archive(variant: 'dev')
-    upload_crashlytics
-  end
-
-  desc 'Make a new release build and upload to TestFlight'
-  lane :deploy_prod do
-    download_profiles(appstore: true)
-    archive(variant: 'appstore')
-    upload_testflight
-  end
 
 end
