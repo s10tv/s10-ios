@@ -11,3 +11,6 @@ screenshots/screenshots.html
 
 # scan temporary files
 test_output
+
+# Env files
+.env
