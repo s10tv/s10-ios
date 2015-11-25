@@ -140,6 +140,12 @@ platform :ios do
 
   ## End-to-end lanes used by circle CI
 
+  desc 'Make a new dev build and keep ipa in Circle'
+  lane :deploy_other do
+    download_profiles(dev: true)
+    archive(variant: 'dev')
+  end  
+
   desc 'Make a new dev build and upload to Crashlytics'
   lane :deploy_master do
     download_profiles(dev: true)

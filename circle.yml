@@ -33,3 +33,8 @@ deployment:
     branch: prod
     commands:
      - fastlane deploy_prod
+
+  other:
+    branch: /*/
+    commands:
+     - fastlane deploy_other
