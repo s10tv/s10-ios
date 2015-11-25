@@ -63,8 +63,6 @@ platform :ios do
   desc 'Runs all available iOS tests (none so far)'
   lane :test do |options|
     puts 'TODO: Add some tests please'
-    notes = release_notes
-    puts notes
   end
 
   desc 'Build a new ipa file :variant defaults to nil, :build_number optional'
@@ -96,7 +94,7 @@ platform :ios do
       output_name: "#{build_number}.ipa"
     )
     if ENV['CIRCLE_ARTIFACTS']
-      sh 'zip -FSr $CIRCLE_ARTIFACTS/Pods.zip ios/Pods/'
+      sh 'zip -FSr $CIRCLE_ARTIFACTS/Pods.zip ../ios/Pods/'
     end
     notification(message: "Successfully archived #{options}")
   end
