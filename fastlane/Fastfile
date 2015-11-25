@@ -103,9 +103,6 @@ platform :ios do
       output_directory: ENV['OUTPUT_DIR'],
       output_name: "#{build_number}.ipa"
     )
-    if ENV['OUTPUT_DIR']
-      sh 'zip -FSr $OUTPUT_DIR/Pods.zip ../ios/Pods/'
-    end
     desktop_notification(message: "Successfully archived #{options}")
   end
 
@@ -156,6 +153,9 @@ platform :ios do
         download_profiles(dev: true)
         archive(variant: 'dev')
     end
+    sh 'zip -FSr $CIRCLE_ARTIFACTS/Pods.zip ../ios/Pods/'
+    # TODO: Figure out path to xcarchive and backup the archive along with the Pods
+    # backup_xcarchive(destination: ENV['CIRCLE_ARTIFACTS'])
   end  
 
 end
