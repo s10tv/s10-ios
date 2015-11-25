@@ -97,6 +97,9 @@ platform :ios do
       output_directory: ENV['CIRCLE_ARTIFACTS'],
       output_name: "#{build_number}.ipa"
     )
+    if ENV['CIRCLE_ARTIFACTS']
+      sh 'zip -FSr $CIRCLE_ARTIFACTS/Pods.zip ios/Pods/'
+    end
     notification(message: "Successfully archived variant:#{variant} build_number:#{build_number}")
   end
 
@@ -124,7 +127,7 @@ platform :ios do
       build_secret: '1406e03532dd866d616ac19642903e2db44a36d93de980165c1e2e01fc17b215',
       groups: 'team',
       notifications: false,
-      notes: notes
+      notes: notes,
       **options
     )
   end
@@ -139,13 +142,14 @@ platform :ios do
 
   desc 'Make a new dev build and upload to Crashlytics'
   lane :deploy_master do
+    download_profiles(dev: true)
     archive(variant: 'dev')
     upload_crashlytics
   end
 
   desc 'Make a new release build and upload to TestFlight'
   lane :deploy_prod do
-    # TODO: Make archive build also and upload to app store
+    download_profiles(appstore: true)
     archive(variant: 'appstore')
     upload_testflight
   end
