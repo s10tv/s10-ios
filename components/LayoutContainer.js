@@ -2,6 +2,7 @@ let React = require('react-native');
 
 let {
   AppRegistry,
+  AlertIOS,
   NativeAppEventEmitter,
   View,
   TabBarIOS,
@@ -221,8 +222,48 @@ class LayoutContainer extends React.Component {
     }
   }
 
+  reportUser(user) {
+    
+
+    let message = "Report?"
+    let reportedMessage = "Reported."
+    if (user) {
+      message = `Report ${user.firstName}?`
+      reportedMessage = `Reported ${user.firstName}`;
+    }
+
+    AlertIOS.alert(
+      message,
+      "",
+      [
+        {text: 'Cancel', onPress: () => null },
+        {text: 'Report', onPress: () => {
+          return this.props.ddp.call({ methodName: 'user/report', params: [userId, 'Reported'] })
+          .then(() => {
+            AlertIOS.alert(reportedMessage, 
+              'Thanks for your input. We will look into this shortly.');
+          })
+        }},
+      ]
+    )
+  }
+
   componentWillMount() {
     this._ddpLogin()
+
+    this.setState({
+      showMoreOptionsListener: NativeAppEventEmitter.addListener('Profile.showMoreOptions', (userId) => {
+        let user = this.ddp.collections.users.findOne({ _id: userId });
+        this.reportUser(user)
+      }.bind(this)),
+    })
+  }
+
+  componentWillUnmount() {
+    this.state.showMoreOptionsListener.remove()
+    this.setState({
+      showMoreOptionsListener: null
+    })
   }
 
   render() {
@@ -244,6 +285,7 @@ class LayoutContainer extends React.Component {
       categories={this.state.categories}
       myTags={this.state.myTags}
       loggedIn={this.state.loggedIn}
+      reportUser={this.reportUser.bind(this)}
       onLogout={this.onLogout.bind(this)}
       onLogin={this.onLogin.bind(this)}
       candidate={this.state.candidate}

@@ -3,7 +3,6 @@ var Button = require('react-native-button');
 
 let {
   AppRegistry,
-  AlertIOS,
   Navigator,
   Text,
   TouchableOpacity,
@@ -135,20 +134,7 @@ class RootNavigator extends React.Component {
           <TouchableOpacity
             style={SHEET.navBarRightButton}
             onPress={() => {
-              AlertIOS.alert(
-                `Report ${route.me.firstName}?`,
-                "",
-                [
-                  {text: 'Cancel', onPress: () => null },
-                  {text: 'Report', onPress: () => {
-                    return this.props.ddp.call({ methodName: 'user/report', params: [route.me._id, 'Reported'] })
-                    .then(() => {
-                      AlertIOS.alert(`Reported ${route.me.firstName}`, 
-                        'Thanks for your input. We will look into this shortly.');
-                    })
-                  }},
-                ]
-              )
+              this.props.reportUser(route.me)
             }}>
               <Text style={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText, { color: 'white' }]}>
                 Report 
