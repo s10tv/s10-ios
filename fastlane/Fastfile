@@ -70,10 +70,7 @@ platform :ios do
   desc 'Build a new ipa file :variant defaults to nil, :build_number optional'
   lane :archive do |options|
     # Configure Build number if needed
-    build_number = options[:build_number] || ENV['BUILD_NUMBER']
-    if build_number
-      increment_build_number(xcodeproj: 'ios/Taylr.xcodeproj', build_number: build_number)
-    end
+    build_number = options[:build_number] || ENV['BUILD_NUMBER'] || '0'
 
     # Other build configuration
     case options[:variant]
@@ -91,7 +88,8 @@ platform :ios do
     gym(
       workspace: 'ios/Taylr.xcworkspace',
       scheme: 'Taylr',
-      configuration: configuration, 
+      configuration: configuration,
+      xcargs: "BUILD_NUMBER=#{build_number}",
       export_method: export_method,
       buildlog_path: ENV['CIRCLE_ARTIFACTS'],
       output_directory: ENV['CIRCLE_ARTIFACTS'],
