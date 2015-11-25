@@ -84,8 +84,8 @@ class FacebookLoginScreen extends React.Component {
           <Button
             onPress={() => {
               this.props.navigator.push({
-                id: 'linkservicecontainer',
-                title: 'Link Service'
+                id: 'joinnetwork',
+                title: 'UBC'
               });
             }}>
               <View style={{ padding:10, borderColor: 'white', borderWidth: 1}}>

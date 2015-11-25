@@ -92,6 +92,7 @@
 		EABE4C6B1C03C45A001557A1 /* SegmentProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE4C671C03C45A001557A1 /* SegmentProvider.swift */; };
 		EABE4C6C1C03C45A001557A1 /* UXCamProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EABE4C681C03C45A001557A1 /* UXCamProvider.swift */; };
 		EABF2AB31AD04659005880E7 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EABF2AB51AD04659005880E7 /* InfoPlist.strings */; };
+		F98F2FE61C057F1400793ECA /* RNCookieManagerIOS.m in Sources */ = {isa = PBXBuildFile; fileRef = F98F2FE51C057F1400793ECA /* RNCookieManagerIOS.m */; };
 		F9DDF6451BFD434600D7A2FC /* libRNFabricDigits.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9DDF6441BFD434600D7A2FC /* libRNFabricDigits.a */; };
 		F9DDF6AA1BFDB2A400D7A2FC /* libRCTVideo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F9DDF6A91BFDB2A400D7A2FC /* libRCTVideo.a */; };
 		F9DDF6B11BFDB3C700D7A2FC /* background.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = F9DDF6B01BFDB3C700D7A2FC /* background.mp4 */; };
@@ -245,6 +246,8 @@
 		EABE4C671C03C45A001557A1 /* SegmentProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SegmentProvider.swift; sourceTree = "<group>"; };
 		EABE4C681C03C45A001557A1 /* UXCamProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UXCamProvider.swift; sourceTree = "<group>"; };
 		EABF2AB41AD04659005880E7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F98F2FE41C057F1400793ECA /* RNCookieManagerIOS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNCookieManagerIOS.h; sourceTree = "<group>"; };
+		F98F2FE51C057F1400793ECA /* RNCookieManagerIOS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNCookieManagerIOS.m; sourceTree = "<group>"; };
 		F9DDF6441BFD434600D7A2FC /* libRNFabricDigits.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRNFabricDigits.a; path = "../../node_modules/react-native-fabric-digits/ios/build/Debug-iphoneos/libRNFabricDigits.a"; sourceTree = "<group>"; };
 		F9DDF6981BFDB27700D7A2FC /* RCTVideo.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVideo.xcodeproj; path = "../node_modules/react-native-video/RCTVideo.xcodeproj"; sourceTree = "<group>"; };
 		F9DDF6A91BFDB2A400D7A2FC /* libRCTVideo.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libRCTVideo.a; path = "../../node_modules/react-native-video/build/Debug-iphoneos/libRCTVideo.a"; sourceTree = "<group>"; };
@@ -388,6 +391,7 @@
 		EA3225911BFDAE8A00FF5074 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				F98F2FE31C057F1400793ECA /* RNCookieManagerIOS */,
 				F9DDF7131BFFA18300D7A2FC /* UIImagePickerManager */,
 				EAA5E8DB1BFEAEE4009DE994 /* BridgeManager */,
 				EA3225B61BFDAE8A00FF5074 /* Logger */,
@@ -607,6 +611,15 @@
 				EA8A51091C045229004660E1 /* IntercomProvider.m */,
 			);
 			path = Providers;
+			sourceTree = "<group>";
+		};
+		F98F2FE31C057F1400793ECA /* RNCookieManagerIOS */ = {
+			isa = PBXGroup;
+			children = (
+				F98F2FE41C057F1400793ECA /* RNCookieManagerIOS.h */,
+				F98F2FE51C057F1400793ECA /* RNCookieManagerIOS.m */,
+			);
+			path = RNCookieManagerIOS;
 			sourceTree = "<group>";
 		};
 		F9DDF69E1BFDB29100D7A2FC /* Products */ = {
@@ -912,6 +925,7 @@
 				EA3225DF1BFDAE8A00FF5074 /* Logger.swift in Sources */,
 				EABE4C6C1C03C45A001557A1 /* UXCamProvider.swift in Sources */,
 				EA197A481BFC4D2600DF7B58 /* MediaExtension.swift in Sources */,
+				F98F2FE61C057F1400793ECA /* RNCookieManagerIOS.m in Sources */,
 				EA3226041BFDAEEB00FF5074 /* MuteChecker.m in Sources */,
 				EA8A510F1C0460B8004660E1 /* BranchProvider.swift in Sources */,
 				EA3226061BFDAEEB00FF5074 /* VideoPlayerViewController.swift in Sources */,

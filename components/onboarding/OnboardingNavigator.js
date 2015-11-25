@@ -10,6 +10,8 @@ let {
   WebView,
 } = React;
 
+let CookieManager = require('react-native-cookies');
+
 let BaseTaylrNavigator = require('../lib/BaseTaylrNavigator');
 let SHEET = require('../CommonStyles').SHEET;
 let HashtagListView = require('../lib/HashtagListView');
@@ -17,6 +19,7 @@ let FacebookLoginScreen = require('./FacebookLoginScreen');
 let LinkServiceScreen = require('./LinkServiceScreen');
 let EditProfileScreen = require('./EditProfileScreen');
 let AddHashtagScreen = require('./AddHashtagScreen');
+let JoinNetworkScreen = require('./JoinNetworkScreen');
 let TSNavigationBar = require('../lib/TSNavigationBar');
 
 class OnboardingNavigator extends BaseTaylrNavigator {
@@ -89,6 +92,19 @@ class OnboardingNavigator extends BaseTaylrNavigator {
         }
         break;
 
+      case 'campuswidelogin':
+        if (!this.state.cwl) {
+          return null;
+        }
+
+        action = () => {
+          navigator.push({
+            id: 'linkservicecontainer',
+            title: 'Link Service',
+          })
+        }
+        break;
+
       case 'hashtags':
         buttonText = 'Done';
         if (myTags && myTags.length > 0) {
@@ -98,6 +114,7 @@ class OnboardingNavigator extends BaseTaylrNavigator {
         }
         break;
 
+      case 'joinnetwork':
       case 'addhashtag':
       case 'linkservice':
       case 'openwebview':
@@ -119,6 +136,19 @@ class OnboardingNavigator extends BaseTaylrNavigator {
 
   hideNavBar() {
     this.setState({ navStyleOverride: { backgroundColor: 'rbga:(0,0,0,0)' }});
+  }
+
+  proceedIfLoginTokenPresent(nav) {
+    // list cookies
+    return new Promise((resolve) => {
+      CookieManager.getAll((cookies, res) => {
+        if (cookies && cookies.CASTGC) {
+          this.setState({ cwl: true })
+        }
+        return resolve(true)
+      });
+    })
+
   }
 
   renderScene(route, nav) {
@@ -145,6 +175,31 @@ class OnboardingNavigator extends BaseTaylrNavigator {
         return <EditProfileScreen 
           ddp={this.props.ddp}
           me={this.props.me} />
+
+      case 'joinnetwork': 
+        return <JoinNetworkScreen
+          navigator={nav}
+          startInLoadingState={true} />
+
+      case 'campuswidelogin':
+        return <WebView
+          style={styles.webView}
+          onNavigationStateChange={(navState) => {
+            console.log(navState);
+            if (!navState.loading && navState.title) {
+              this.proceedIfLoginTokenPresent(nav)
+              .then(() => {
+                if (this.state.cwl) {
+                  nav.push({
+                    id: 'linkservicecontainer',
+                    title: 'Link Service',
+                  });
+                }
+              })
+            }
+          }}
+          startInLoadingState={true}
+          url={'https://cas.id.ubc.ca/ubc-cas/login'} />;
 
       case 'linkservice':
         return <WebView
@@ -212,8 +267,8 @@ var styles = StyleSheet.create({
     flex: 1,
   },
   webView: {
-    marginTop: 64,
-    paddingTop: 64,
+    marginTop: 60,
+    paddingTop: 60,
   },
   nav: {
     flex: 1,
