@@ -46,6 +46,7 @@ class LayoutContainer extends React.Component {
     FBSDKLoginManager.logOut();
 
     await this.ddp.logout()
+    await BridgeManager.setDefaultAccount(null)
     this.setState({ loggedIn: false });
   }
 
@@ -223,8 +224,6 @@ class LayoutContainer extends React.Component {
   }
 
   reportUser(user) {
-    
-
     let message = "Report?"
     let reportedMessage = "Reported."
     if (user) {
