@@ -22,6 +22,7 @@ class ProfileEditCard extends React.Component {
     super(props)
     this.state = {
       paddingBottom: 0,
+      isFocused: false,
     }
     this.logger = new Logger(this);
   } 
@@ -35,6 +36,18 @@ class ProfileEditCard extends React.Component {
     this.setState({paddingBottom: 0})
   }
 
+  updateMeteor(key, value) {
+    this.logger.info(`Updating meteor with ${key} >> ${value}`);
+
+    let myInfo = {};
+    myInfo[key] = value;
+    return this.props.ddp.call({ methodName: 'me/update', params: [myInfo] })
+    .catch(err => {
+      this.logger.error(JSON.stringify(err));
+      AlertIOS.alert('Error', err.reason);
+    })
+  }
+
   componentWillMount () {
     this.setState({
       keyboardShowListener: DeviceEventEmitter.addListener('keyboardWillShow', this.keyboardWillShow.bind(this)),
@@ -43,6 +56,10 @@ class ProfileEditCard extends React.Component {
   }
 
   componentWillUnmount() {
+    let { isFocused, activeKey, activeText } = this.state;
+    if (isFocused && activeText && activeKey) {
+      this.updateMeteor(activeKey, activeText);
+    }
     this.state.keyboardShowListener.remove();
     this.state.keyboardHideListener.remove();
   }
@@ -68,14 +85,22 @@ class ProfileEditCard extends React.Component {
             placeHolder={info.display}
             ddp={this.props.ddp}
             multiline={info.multiline}
-            onBlur={(text) => {
-              let myInfo = {};
-              myInfo[info.key] = text;
-              this.props.ddp.call({ methodName: 'me/update', params: [myInfo] })
-              .catch(err => {
-                this.logger.error(JSON.stringify(err));
-                AlertIOS.alert('Error', err.reason);
+            onChangeText={(text) => {
+              this.setState({ activeText: text })
+            }}
+            onFocus={(text) => {
+              this.setState({
+                isFocused: true,
+                activeKey: info.key,
               })
+            }}
+            onBlur={(text) => {
+              this.setState({
+                isFocused: false,
+                activeKey: null,
+                activeText: null,
+              })
+              this.updateMeteor(info.key, text);
             }} />
         </Card>
       )
