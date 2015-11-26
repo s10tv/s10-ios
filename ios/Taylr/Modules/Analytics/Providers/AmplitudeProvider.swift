@@ -18,15 +18,27 @@ public class AmplitudeProvider : NSObject, AnalyticsProvider {
         amplitude.trackingSessionEvents = true
     }
     
+    func identifyDevice(deviceId: String) {
+        amplitude.setDeviceId(deviceId)
+    }
+    
     func identifyUser(userId: String) {
         amplitude.setUserId(userId)
     }
     
-    func track(event: String!, properties: [NSObject : AnyObject]?) {
-        amplitude.logEvent(event, withEventProperties: properties)
+    func setUserEmail(email: String) {
+        amplitude.setUserProperties(["Email": email])
+    }
+    
+    func setUserFullname(fullname: String) {
+        amplitude.setUserProperties(["Full Name": fullname])
     }
     
     func setUserProperties(properties: [String : AnyObject]) {
         amplitude.setUserProperties(properties)
+    }
+    
+    func track(event: String!, properties: [NSObject : AnyObject]?) {
+        amplitude.logEvent(event, withEventProperties: properties)
     }
 }
