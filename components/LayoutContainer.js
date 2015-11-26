@@ -324,6 +324,7 @@ class LayoutContainer extends React.Component {
         categories={this.state.categories}
         myTags={this.state.myTags}
         onLogin={this.onLogin.bind(this)}
+        settings={this.state.settings}
         isCWLRequired={this.state.isCWLRequired}
         updateProfile={this.updateProfile.bind(this)}
         ddp={this.ddp} /> 

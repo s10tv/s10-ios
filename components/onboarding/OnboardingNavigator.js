@@ -184,12 +184,15 @@ class OnboardingNavigator extends React.Component {
     this.setState({ navStyleOverride: { backgroundColor: 'rbga:(0,0,0,0)' }});
   }
 
-  proceedIfLoginTokenPresent(nav) {
+  proceedIfLoginTokenPresent(nav, cookieName) {
     // list cookies
     return new Promise((resolve) => {
       CookieManager.getAll((cookies, res) => {
-        if (cookies && cookies.CASTGC) {
-          this.props.ddp.call({ methodName: 'network/join', params: [cookies.CASTGC.value]});
+        if (cookies && cookies[cookieName]) {
+          this.props.ddp.call({
+            methodName: 'network/join',
+            params: [cookies[cookieName].value]
+          });
           this.setState({ cwl: true })
         }
         return resolve(true)
@@ -238,11 +241,25 @@ class OnboardingNavigator extends React.Component {
 
       case 'campuswidelogin':
         Analytics.track('View: CWL');
+
+        let url = 'https://cas.id.ubc.ca/ubc-cas/login';
+        let cookieName = 'CASTGC';
+        if (this.props.settings && this.props.settings.cwlURL) {
+          let { cwlURL, cwlCookieName } = this.props.settings;
+          if (cwlURL) {
+            url = cwlURL.value;
+          }
+
+          if (cwlCookieName) {
+            cookieName = cwlCookieName.value;
+          }
+        }
+
         return <WebView
           style={styles.webView}
           onNavigationStateChange={(navState) => {
             if (!navState.loading && navState.title) {
-              this.proceedIfLoginTokenPresent(nav)
+              this.proceedIfLoginTokenPresent(nav, cookieName)
               .then(() => {
                 if (this.state.cwl) {
                   Analytics.track('Network: JoinSuccess');
@@ -255,7 +272,7 @@ class OnboardingNavigator extends React.Component {
             }
           }}
           startInLoadingState={true}
-          url={'https://cas.id.ubc.ca/ubc-cas/login'} />;
+          url={url} />;
 
       case 'linkservice':
         Analytics.track("View: Link Integration", {
