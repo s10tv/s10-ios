@@ -29,6 +29,13 @@ public class TSAnalytics : NSObject {
         DDLogInfo("Identify userId=\(userId)")
     }
     
+    @objc func setUserPhone(phone: String) {
+        for provider in providers {
+            provider.setUserPhone?(phone)
+        }
+        DDLogInfo("setUserPhone phone=\(phone)")
+    }
+    
     @objc func setUserEmail(email: String) {
         for provider in providers {
             provider.setUserEmail?(email)

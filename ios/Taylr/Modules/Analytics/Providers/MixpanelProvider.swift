@@ -25,6 +25,19 @@ public class MixpanelProvider : NSObject, AnalyticsProvider {
         mixpanel.track(event, properties: properties)
     }
     
+    func setUserPhone(phone: String) {
+        mixpanel.people.set(["$phone": phone])
+    }
+    
+    func setUserEmail(email: String) {
+        mixpanel.people.set(["$email": email])
+    }
+    
+    func setUserFullname(fullname: String) {
+        mixpanel.nameTag = fullname
+        mixpanel.people.set(["$name": fullname])
+    }
+    
     func setUserProperties(properties: [String : AnyObject]) {
         mixpanel.people.set(properties)
     }

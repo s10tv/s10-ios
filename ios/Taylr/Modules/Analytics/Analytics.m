@@ -13,6 +13,7 @@
 
 RCT_EXTERN_METHOD(identifyDevice:(NSString *)deviceId)
 RCT_EXTERN_METHOD(identifyUser:(NSString *)userId)
+RCT_EXTERN_METHOD(setUserPhone:(NSString *)phone)
 RCT_EXTERN_METHOD(setUserEmail:(NSString *)email)
 RCT_EXTERN_METHOD(setUserFullname:(NSString *)fullname)
 RCT_EXTERN_METHOD(track:(NSString *)event properties:(NSDictionary *)properties)
