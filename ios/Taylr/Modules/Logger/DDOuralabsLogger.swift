@@ -25,22 +25,27 @@ class DDOuralabsLogger : DDAbstractLogger {
     
     override func logMessage(logMessage: DDLogMessage!) {
         let level: OULogLevel
-        switch logMessage.level {
-        case .Verbose:
+        switch logMessage.flag {
+        case DDLogFlag.Verbose:
             level = .Trace
-        case .Debug:
+        case DDLogFlag.Debug:
             level = .Debug
-        case .Info:
+        case DDLogFlag.Info:
             level = .Info
-        case .Warning:
+        case DDLogFlag.Warning:
             level = .Warn
-        case .Error:
+        case DDLogFlag.Error:
             level = .Error
         default:
             return
         }
-        let tag = (logMessage.tag as? String) ?? logMessage.fileName
-        Ouralabs.log(level, tag: tag, message: logMessage.message, error: nil)
+        // We're constructing KVP 3 times, any perf issue?
+        let tag = logMessage.domain
+        if let error = logMessage.error {
+            Ouralabs.log(level, tag: tag, message: logMessage.message, error: error)
+        } else {
+            Ouralabs.log(level, tag: tag, message: logMessage.message, kvp: logMessage.kvp)
+        }
     }
 }
 

@@ -28,26 +28,25 @@ class DDNSLogger : DDAbstractLogger {
     
     override func logMessage(logMessage: DDLogMessage!) {
         let level: Int32
-        switch logMessage.level {
-        case .Verbose:
+        switch logMessage.flag {
+        case DDLogFlag.Verbose:
             level = 4
-        case .Debug:
+        case DDLogFlag.Debug:
             level = 3
-        case .Info:
+        case DDLogFlag.Info:
             level = 2
-        case .Warning:
+        case DDLogFlag.Warning:
             level = 1
-        case .Error:
+        case DDLogFlag.Error:
             level = 0
         default:
             return
         }
-        let domain = (logMessage.tag as? String) ?? logMessage.fileName
         LogMessageRawToF(logger,
             (logMessage.fileName as NSString).UTF8String,
             Int32(logMessage.line),
             (logMessage.function as NSString).UTF8String,
-            domain,
+            logMessage.domain,
             level,
             logMessage.message
         )

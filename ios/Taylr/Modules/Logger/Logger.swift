@@ -49,3 +49,27 @@ public class TSLogger : NSObject {
         }
     }
 }
+
+extension DDLogMessage {
+    var domain: String? {
+        return (tag as? String) ?? (kvp?["tag"] as? String) ?? fileName
+    }
+    
+    var kvp: [NSObject: AnyObject]? {
+        if let dict = tag as? [NSObject: AnyObject] {
+            return dict
+        }
+        if let optionalDict = tag as? [NSObject: AnyObject?] {
+            var dict: [NSObject: AnyObject] = [:]
+            for (k, v) in optionalDict {
+                dict[k] = v
+            }
+            return dict
+        }
+        return nil
+    }
+    
+    var error: NSError? {
+        return (tag as? NSError) ?? (kvp?["error"] as? NSError)
+    }
+}
