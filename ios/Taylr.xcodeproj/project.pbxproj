@@ -80,6 +80,7 @@
 		EA8A510A1C045229004660E1 /* IntercomProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8A51091C045229004660E1 /* IntercomProvider.m */; };
 		EA8A510F1C0460B8004660E1 /* BranchProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA8A510E1C0460B8004660E1 /* BranchProvider.swift */; };
 		EA8A51171C04D96D004660E1 /* METAccount.m in Sources */ = {isa = PBXBuildFile; fileRef = EA8A51161C04D96D004660E1 /* METAccount.m */; };
+		EA988BFA1C06EF84002A80D1 /* DDCrashlyticsLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA988BF91C06EF84002A80D1 /* DDCrashlyticsLogger.swift */; };
 		EA9A6ACC1AAFDE19009EDD6D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA9A6ACE1AAFDE19009EDD6D /* Localizable.strings */; };
 		EA9F354D1A74CC6900E0C65D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = EA9F354B1A74CC6900E0C65D /* LaunchScreen.xib */; };
 		EAA5E8DE1BFEAEE4009DE994 /* BridgeManager.m in Sources */ = {isa = PBXBuildFile; fileRef = EAA5E8DC1BFEAEE4009DE994 /* BridgeManager.m */; };
@@ -226,6 +227,7 @@
 		EA8A510E1C0460B8004660E1 /* BranchProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BranchProvider.swift; sourceTree = "<group>"; };
 		EA8A51161C04D96D004660E1 /* METAccount.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = METAccount.m; sourceTree = "<group>"; };
 		EA8A51191C04D97F004660E1 /* METAccount.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = METAccount.h; sourceTree = "<group>"; };
+		EA988BF91C06EF84002A80D1 /* DDCrashlyticsLogger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DDCrashlyticsLogger.swift; sourceTree = "<group>"; };
 		EA9A6ACF1AAFDFA2009EDD6D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		EA9F353A1A74CC6900E0C65D /* Taylr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Taylr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA9F353E1A74CC6900E0C65D /* Taylr-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Taylr-Info.plist"; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 		EA3225B61BFDAE8A00FF5074 /* Logger */ = {
 			isa = PBXGroup;
 			children = (
+				EA988BF91C06EF84002A80D1 /* DDCrashlyticsLogger.swift */,
 				EA3225B71BFDAE8A00FF5074 /* DDNSLogger.swift */,
 				EA3225B81BFDAE8A00FF5074 /* DDOuralabsLogger.swift */,
 				EA3225B91BFDAE8A00FF5074 /* Logger.swift */,
@@ -939,6 +942,7 @@
 				EA3226051BFDAEEB00FF5074 /* DurationTimer.swift in Sources */,
 				EA3225DA1BFDAE8A00FF5074 /* LayerQueries.swift in Sources */,
 				EA197A4A1BFC4D2600DF7B58 /* Foundation+RACSupport.swift in Sources */,
+				EA988BFA1C06EF84002A80D1 /* DDCrashlyticsLogger.swift in Sources */,
 				EA197A861BFCFC3800DF7B58 /* RootViewController.swift in Sources */,
 				EA197A571BFC4D2600DF7B58 /* BaseViews.swift in Sources */,
 				EABE4C631C03C3BF001557A1 /* IntercomProvider.swift in Sources */,

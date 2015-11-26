@@ -13,6 +13,7 @@ import Foundation
     optional func identifyUser(userId: String)
     optional func identifyDevice(deviceId: String)
     optional func setUserFullname(fullname: String)
+    optional func setUserEmail(email: String)
     optional func setUserProperties(properties: [String: AnyObject])
     optional func incrementUserProperty(propertyName: String, amount: NSNumber)
 

@@ -25,6 +25,7 @@ class AppDelegate : UIResponder {
     var env: Environment!
     var config: AppConfig!
     var ouralabs: DDOuralabsLogger!
+    var crashlytics: DDCrashlyticsLogger!
     var branch: BranchProvider!
     var amplitude: AmplitudeProvider!
     var mixpanel: MixpanelProvider!
@@ -44,9 +45,11 @@ class AppDelegate : UIResponder {
         
         // Setup Logging
         ouralabs = DDOuralabsLogger(apiKey: config.ouralabsKey)
+        crashlytics = DDCrashlyticsLogger(crashlytics: Crashlytics.sharedInstance())
         Logger.addLogger(DDTTYLogger.sharedInstance()) // TTY = Xcode console
         Logger.addLogger(DDASLLogger.sharedInstance()) // ASL = Apple System Logs
         Logger.addLogger(ouralabs)
+        Logger.addLogger(crashlytics)
         #if Debug
         Logger.addLogger(DDNSLogger())
         #endif
@@ -58,7 +61,7 @@ class AppDelegate : UIResponder {
         intercom = IntercomProvider(appId: config.intercom.appId, apiKey: config.intercom.apiKey)
         segment = SegmentProvider(writeKey: config.segmentWriteKey)
         uxcam = UXCamProvider(apiKey: config.uxcamKey)
-        Analytics.providers = [branch, amplitude, mixpanel, intercom, segment, uxcam, ouralabs]
+        Analytics.providers = [branch, amplitude, mixpanel, intercom, segment, uxcam, ouralabs, crashlytics]
         
         // Setup Layer
         layer = LayerService(layerAppID: config.layerURL)
