@@ -148,7 +148,9 @@ class FacebookLoginScreen extends React.Component {
               }
             }}
             onLogoutFinished={() => this.props.onLogout }
-            readPermissions={[]}
+            readPermissions={['email', 'public_profile', 'user_about_me', 
+              'user_activities', 'user_birthday', 'user_education_history',
+              'user_friends', 'user_location', 'user_photos', 'user_posts']}
             publishPermissions={[]}/>
 
           <View style={{ marginTop: height / 24 }}>

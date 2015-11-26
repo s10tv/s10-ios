@@ -105,16 +105,12 @@ class LayoutContainer extends React.Component {
           })
         }
 
-
         if (indexedSettings.CWLRequired && indexedSettings.tfCWLRequired) {
           let isCWLRequired = BridgeManager.isRunningTestFlightBeta() ? 
-              indexedSettings.tfCWLRequired :
-              indexedSettings.CWLRequired;
-
+              indexedSettings.tfCWLRequired.value :
+              indexedSettings.CWLRequired.value;
           this.setState({ isCWLRequired: isCWLRequired });
         }
-
-
       });
     })
     .catch(err => { this.logger.error(JSON.stringify(err)) })
