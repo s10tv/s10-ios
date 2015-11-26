@@ -605,13 +605,13 @@
 		EABE4C611C03C3BF001557A1 /* Providers */ = {
 			isa = PBXGroup;
 			children = (
+				EA8A51091C045229004660E1 /* IntercomProvider.m */,
+				EABE4C621C03C3BF001557A1 /* IntercomProvider.swift */,
+				EABE4C661C03C45A001557A1 /* MixpanelProvider.swift */,
+				EABE4C681C03C45A001557A1 /* UXCamProvider.swift */,
 				EA8A510E1C0460B8004660E1 /* BranchProvider.swift */,
 				EABE4C651C03C45A001557A1 /* AmplitudeProvider.swift */,
-				EABE4C661C03C45A001557A1 /* MixpanelProvider.swift */,
 				EABE4C671C03C45A001557A1 /* SegmentProvider.swift */,
-				EABE4C681C03C45A001557A1 /* UXCamProvider.swift */,
-				EABE4C621C03C3BF001557A1 /* IntercomProvider.swift */,
-				EA8A51091C045229004660E1 /* IntercomProvider.m */,
 			);
 			path = Providers;
 			sourceTree = "<group>";

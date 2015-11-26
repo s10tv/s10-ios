@@ -39,14 +39,6 @@ public class SegmentProvider : NSObject, AnalyticsProvider {
         segment.enqueue(msg)
     }
     
-    func setUserEmail(email: String) {
-        setUserProperties(["Email": email])
-    }
-    
-    func setUserFullname(fullname: String) {
-        setUserProperties(["Full Name": fullname])
-    }
-    
     func setUserProperties(properties: [String : AnyObject]) {
         segment.enqueue(IdentifyMessageBuilder().traits(properties))
     }

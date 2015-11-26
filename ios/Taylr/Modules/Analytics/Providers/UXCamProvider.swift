@@ -20,9 +20,9 @@ public class UXCamProvider : NSObject, AnalyticsProvider {
     }
     
 //    #if Release
-    func identifyDevice(deviceId: String) {
-        UXCam.tagUsersName(deviceId)
-    }
+//    func identifyDevice(deviceId: String) {
+//        UXCam.tagUsersName(deviceId)
+//    }
     
     func identifyUser(userId: String) {
         UXCam.tagUsersName(userId)

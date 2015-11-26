@@ -17,6 +17,10 @@ public class MixpanelProvider : NSObject, AnalyticsProvider {
         mixpanel = Mixpanel.sharedInstanceWithToken(apiToken, launchOptions: launchOptions)
     }
     
+    func identifyDevice(deviceId: String) {
+        mixpanel.identify(deviceId)
+    }
+    
     func identifyUser(userId: String) {
         mixpanel.identify(userId)
     }

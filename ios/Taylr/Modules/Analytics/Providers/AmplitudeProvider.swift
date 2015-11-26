@@ -26,14 +26,6 @@ public class AmplitudeProvider : NSObject, AnalyticsProvider {
         amplitude.setUserId(userId)
     }
     
-    func setUserEmail(email: String) {
-        amplitude.setUserProperties(["Email": email])
-    }
-    
-    func setUserFullname(fullname: String) {
-        amplitude.setUserProperties(["Full Name": fullname])
-    }
-    
     func setUserProperties(properties: [String : AnyObject]) {
         amplitude.setUserProperties(properties)
     }

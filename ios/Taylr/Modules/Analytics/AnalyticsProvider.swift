@@ -30,3 +30,15 @@ import Foundation
     optional func reset()
     optional func flush()
 }
+
+extension AnalyticsProvider {
+    func setUserPhone(phone: String) {
+        setUserProperties?(["Phone": phone])
+    }
+    func setUserEmail(email: String) {
+        setUserProperties?(["Email": email])
+    }
+    func setUserFullname(fullname: String) {
+        setUserProperties?(["Full Name": fullname])
+    }
+}
