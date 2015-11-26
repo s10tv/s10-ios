@@ -14,12 +14,26 @@ public let Analytics = TSAnalytics()
 @objc(TSAnalytics)
 public class TSAnalytics : NSObject {
     var providers: [AnalyticsProvider] = []
+
+    @objc func identifyDevice(deviceId: String) {
+        for provider in providers {
+            provider.identifyDevice?(deviceId)
+        }
+        DDLogInfo("Identify deviceId=\(deviceId)")
+    }
     
-    @objc func identify(userId: String) {
+    @objc func identifyUser(userId: String) {
         for provider in providers {
             provider.identifyUser?(userId)
         }
         DDLogInfo("Identify userId=\(userId)")
+    }
+    
+    @objc func setUserFullname(fullname: String) {
+        for provider in providers {
+            provider.setUserFullname?(fullname)
+        }
+        DDLogInfo("setUserFullName fullname=\(fullname)")
     }
     
     @objc func track(event: String, properties: [String: AnyObject]? = nil) {
