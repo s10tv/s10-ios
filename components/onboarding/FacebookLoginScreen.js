@@ -74,8 +74,10 @@ class FacebookLoginScreen extends React.Component {
   }
 
   render() {
-    let loginComponent = null;
     let me = this.props.me;
+
+    let logoutComponent = null;
+    let loginComponent = null;
 
     if (this.props.loggedIn && me) {
 
@@ -108,6 +110,12 @@ class FacebookLoginScreen extends React.Component {
               </View>
           </Button>
         </View>
+      )
+
+      logoutComponent = (
+        <Text style={[styles.link, SHEET.baseText]} onPress={() => {
+          this.props.onLogout()
+        }}>Logout</Text>
       )
     } else if (this.props.loggedIn == false) {
       loginComponent = (
@@ -250,6 +258,7 @@ class FacebookLoginScreen extends React.Component {
               url: 'https://taylrapp.com/terms'
             })
           }}>Terms</Text>
+          {logoutComponent}
           </View>
         </View>
       </View>

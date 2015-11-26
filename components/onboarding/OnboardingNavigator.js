@@ -210,6 +210,7 @@ class OnboardingNavigator extends React.Component {
             me={this.props.me}
             loggedIn={this.props.loggedIn}
             onLogin={this.props.onLogin}
+            onLogout={this.props.onLogout}
             isCWLRequired={this.props.isCWLRequired}
             ddp={this.props.ddp} />
         );
