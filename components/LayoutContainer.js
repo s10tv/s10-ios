@@ -15,7 +15,6 @@ let OnboardingNavigator = require('./onboarding/OnboardingNavigator');
 let RootNavigator = require('./RootNavigator');
 let Loader = require('./lib/Loader');
 
-let TSDDPClient = require('../lib/ddpclient');
 let TSLayerService = React.NativeModules.TSLayerService;
 
 let SHEET = require('./CommonStyles').SHEET;
@@ -31,7 +30,7 @@ class LayoutContainer extends React.Component {
 
   constructor(props: {}) {
     super(props);
-    this.ddp = new TSDDPClient(props.wsurl);
+    this.ddp = props.ddp;
     this.state = {
       needsOnboarding: true,
       modalVisible: false,

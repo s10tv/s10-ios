@@ -56,9 +56,6 @@ class RootNavigator extends React.Component {
             break;
         }
       }.bind(this)),
-      pushTokenListener: NativeAppEventEmitter.addListener('RegisteredPushToken', (properties) => {
-        console.log(properties);
-      }.bind(this))
     });
   }
 
