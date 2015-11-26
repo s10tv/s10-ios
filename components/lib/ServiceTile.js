@@ -18,8 +18,8 @@ class ServiceTile extends React.Component {
   _handleServiceTouch(service) {
     this.props.navigator.push({
       id: 'linkservice',
-      title: "Link Service",
-      link: service.link,
+      title: "Add Integration",
+      link: service.url,
       integration: service,
     })
   }

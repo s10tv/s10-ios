@@ -3,6 +3,8 @@
 var React = require('react-native');
 var { StyleSheet, Text, View, TextInput, Animated } = React;
 
+let SHEET = require('../CommonStyles').SHEET;
+
 var FloatingLabel = React.createClass({
   getInitialState: function() {
     return {
@@ -72,7 +74,7 @@ class FloatLabelTextField extends React.Component {
   }
 
   render() {
-    let textInputExtra = this.props.multiline ? { height: this.state.height + 5 } : null;
+    let textInputExtra = this.props.multiline ? { height: this.state.height + 10 } : null;
     let containerExtra = this.props.multiline? { height: this.state.height + 35 } : null;
 
     return(
@@ -80,14 +82,16 @@ class FloatLabelTextField extends React.Component {
         <Text
          ref="hidden"
          onLayout={this.onHiddenLayout.bind(this)}
-         style={styles.hidden}>
+         style={[styles.hidden, SHEET.baseText]}>
           {this.state.text}
         </Text>
         <View style={styles.viewContainer}>
           <View style={styles.paddingView}></View>
           <View style={styles.fieldContainer}>
             <FloatingLabel visible={this.state.text}>
-              <Text style={[styles.fieldLabel, this.labelStyle()]}>{this.placeHolderValue()}</Text>
+              <Text style={[styles.fieldLabel, this.labelStyle(), SHEET.baseText]}>
+                {this.placeHolderValue()}
+              </Text>
             </FloatingLabel>
             <TextFieldHolder withValue={this.state.text}>
               <TextInput
@@ -161,7 +165,7 @@ var styles = StyleSheet.create({
   },
   hidden: {
     position: 'absolute',
-    fontSize: 16,
+    fontSize: 18,
     paddingLeft: 20,
     paddingRight: 5,
     backgroundColor: 'transparent',

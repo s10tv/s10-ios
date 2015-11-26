@@ -30,11 +30,11 @@ class LinkServiceView extends React.Component {
           
           <View style={styles.instructions}>
             <Text style={[styles.instructionItem, SHEET.baseText]}>
-              Control how you want to appear to your classmates. 
+              Showcase your hobbies and passions!
             </Text>
             <Text style={[styles.instructionItem, SHEET.baseText]}>
-              We use data from networks to tell story about you and help match 
-              you with interesting people.
+              We use data from networks to tell a story about you and help introduce 
+              you to interesting people.
             </Text>
           </View>
           <LinkServiceCard navigator={this.props.navigator} services={integrations} />

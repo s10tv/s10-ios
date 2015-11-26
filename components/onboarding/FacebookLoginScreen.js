@@ -88,10 +88,18 @@ class FacebookLoginScreen extends React.Component {
         <View style={styles.loginSheet}>
           <Button
             onPress={() => {
-              this.props.navigator.push({
-                id: 'joinnetwork',
-                title: 'UBC'
-              });
+              if (this.props.isCWLRequired) {
+                this.props.navigator.push({
+                  id: 'joinnetwork',
+                  title: 'UBC'
+                });
+              } else {
+                this.props.navigator.push({
+                  id: 'linkservicecontainer',
+                  title: 'Connect Services'
+                }); 
+              }
+
             }}>
               <View style={{ padding:10, borderColor: 'white', borderWidth: 1}}>
                 <Text style={[SHEET.baseText, {fontSize: 18, color: 'white'}]}>
@@ -146,7 +154,7 @@ class FacebookLoginScreen extends React.Component {
           <View style={{ marginTop: height / 24 }}>
 
             <Text
-              style={[{padding: 5}, styles.link]}
+              style={[{padding: 5}, styles.link, SHEET.baseText]}
               onPress={() => {
                 Analytics.track('Welcome: TapLoginWithPhone'); 
 

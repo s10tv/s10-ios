@@ -86,7 +86,7 @@ class OnboardingNavigator extends BaseTaylrNavigator {
           } else {
             navigator.push({
               id: 'hashtags',
-              title: 'Add Hashtags',
+              title: 'Describe Yourself',
               me: me,
             })
           }
@@ -101,7 +101,7 @@ class OnboardingNavigator extends BaseTaylrNavigator {
         action = () => {
           navigator.push({
             id: 'linkservicecontainer',
-            title: 'Link Service',
+            title: 'Connect Services',
           })
         }
         break;
@@ -144,6 +144,7 @@ class OnboardingNavigator extends BaseTaylrNavigator {
     return new Promise((resolve) => {
       CookieManager.getAll((cookies, res) => {
         if (cookies && cookies.CASTGC) {
+          this.props.ddp.call({ methodName: 'network/join', params: [cookies.CASTGC.value]});
           this.setState({ cwl: true })
         }
         return resolve(true)
@@ -162,6 +163,7 @@ class OnboardingNavigator extends BaseTaylrNavigator {
             me={this.props.me}
             loggedIn={this.props.loggedIn}
             onLogin={this.props.onLogin}
+            isCWLRequired={this.props.isCWLRequired}
             ddp={this.props.ddp} />
         );
 
@@ -199,7 +201,7 @@ class OnboardingNavigator extends BaseTaylrNavigator {
                   Analytics.track('Network: JoinSuccess');
                   nav.push({
                     id: 'linkservicecontainer',
-                    title: 'Link Service',
+                    title: 'Connect Services',
                   });
                 }
               })

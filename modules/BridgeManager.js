@@ -12,6 +12,15 @@ const {
 
 
 class BridgeManager {
+
+  static isRunningInSimulator() {
+    return TSBridgeManager.isRunningInSimulator;
+  }
+
+  static isRunningTestFlightBeta() {
+    return TSBridgeManager.isRunningTestFlightBeta;
+  }
+
   static async getDefaultAccountAsync() {
     return TSBridgeManager.getDefaultAccountAsync();
   }

@@ -41,6 +41,30 @@ class LayoutContainer extends React.Component {
     this.logger = new Logger(this);
   }
 
+  formatUser(user) {
+    if (!user) {
+      return user;
+    }
+
+    let {firstName, lastName, gradYear} = user;
+
+    const generateDisplayName = (length) => {
+      let displayName = firstName;
+      if (lastName && displayName.length + lastName.length < length) {
+        displayName += ` ${lastName}`;
+      }
+
+      if (gradYear && displayName.length + gradYear.length < length) {
+        displayName += ` ${gradYear}`;
+      }
+      return displayName;
+    }
+
+    user.shortDisplayName = generateDisplayName(20);
+    user.longDisplayName = generateDisplayName(30);
+    return user;
+  }
+
   async onLogout() {
     await TSLayerService.deauthenticateAsync();
     DigitsAuthenticateManager.logout();
@@ -80,6 +104,17 @@ class LayoutContainer extends React.Component {
             isActive: indexedSettings.accountStatus.value == 'active'
           })
         }
+
+
+        if (indexedSettings.CWLRequired && indexedSettings.tfCWLRequired) {
+          let isCWLRequired = BridgeManager.isRunningTestFlightBeta() ? 
+              indexedSettings.tfCWLRequired :
+              indexedSettings.CWLRequired;
+
+          this.setState({ isCWLRequired: isCWLRequired });
+        }
+
+
       });
     })
     .catch(err => { this.logger.error(JSON.stringify(err)) })
@@ -93,7 +128,7 @@ class LayoutContainer extends React.Component {
       }).subscribe(currentUser => {
         if (currentUser) {
           Analytics.identify(currentUser._id) 
-          this.setState({ me: currentUser });
+          this.setState({ me: this.formatUser(currentUser) });
         }
       });
 
@@ -102,7 +137,12 @@ class LayoutContainer extends React.Component {
           return ddp.collections.users.find({});
         }
       }).subscribe(users => {
-        this.setState({ users: users });
+        if (users) {
+          let formattedUsers = users.map(user => {
+            return this.formatUser(user);
+          })
+          this.setState({ users: formattedUsers });
+        }
       });
     })
     .catch(err => { this.logger.error(JSON.stringify(err)) });
@@ -228,31 +268,25 @@ class LayoutContainer extends React.Component {
   }
 
   reportUser(user) {
-    let message = "Report?"
-    let reportedMessage = "Reported."
     if (user) {
       Analytics.track("User: View Block", { userId: user._id })
-      message = `Report ${user.firstName}?`
-      reportedMessage = `Reported ${user.firstName}`;
-    } else {
-      Analytics.track("User: View Block")
-    }
 
-    AlertIOS.alert(
-      message,
-      "",
-      [
-        {text: 'Cancel', onPress: () => null },
-        {text: 'Report', onPress: () => {
-          return this.props.ddp.call({ methodName: 'user/report', params: [userId, 'Reported'] })
-          .then(() => {
-            Analytics.track("User: Confirmed Block")
-            AlertIOS.alert(reportedMessage, 
-              'Thanks for your input. We will look into this shortly.');
-          })
-        }},
-      ]
-    )
+      AlertIOS.alert(
+        `Report ${user.firstName}?`,
+        "",
+        [
+          {text: 'Cancel', onPress: () => null },
+          {text: 'Report', onPress: () => {
+            return this.ddp.call({ methodName: 'user/report', params: [user._id, 'Reported'] })
+            .then(() => {
+              Analytics.track("User: Confirmed Block")
+              AlertIOS.alert(`Reported ${user.firstName}`, 
+                'Thanks for your input. We will look into this shortly.');
+            })
+          }},
+        ]
+      )
+    }
   }
 
   componentWillMount() {
@@ -283,6 +317,7 @@ class LayoutContainer extends React.Component {
         categories={this.state.categories}
         myTags={this.state.myTags}
         onLogin={this.onLogin.bind(this)}
+        isCWLRequired={this.state.isCWLRequired}
         ddp={this.ddp} /> 
     }
 

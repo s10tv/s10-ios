@@ -7,7 +7,7 @@
   },
   "dependencies": {
     "apphub": "^0.2.2",
-    "ddp-client": "^0.1.1",
+    "ddp-client": "git+https://github.com/s10tv/node-ddp-client.git",
     "lodash": "^3.6.0",
     "react-native": "^0.14.2",
     "react-native-button": "^1.2.1",

@@ -172,7 +172,11 @@ class TSTabNavigator extends React.Component {
         })
         return <WebView
           style={styles.webView}
-          onNavigationStateChange={(navState) => this._onNavigationStateChange(nav, navState)}
+          onNavigationStateChange={(navState) => {
+            if (navState.url.indexOf('taylr-dev://') != -1) {
+              nav.pop();
+            }
+          }}
           startInLoadingState={true}
           url={route.link} />;
 

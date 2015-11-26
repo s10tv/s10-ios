@@ -55,7 +55,7 @@ class HistoryProfile extends React.Component {
                 </View>
               </View>
             </Image>
-            <Text style={{ padding: 10 }}>{candidate.reason}</Text>
+            <Text style={[{ padding: 10 }, SHEET.baseText]}>{candidate.reason}</Text>
           </View>
       </TappableCard>
     );

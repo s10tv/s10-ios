@@ -22,10 +22,13 @@ class CountdownTimer extends React.Component {
   }
 
   formatUser(candidateUser) {
+    let coverUrl = candidateUser.cover ? candidateUser.cover.url : 
+      candidateUser.avatar.url;
+
     return {
       userId: candidateUser._id,
       avatarUrl: candidateUser.avatar.url,
-      coverUrl: candidateUser.avatar.url,
+      coverUrl: coverUrl, 
       firstName: candidateUser.firstName,
       displayName: candidateUser.firstName,
     }

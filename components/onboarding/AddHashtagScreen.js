@@ -29,8 +29,9 @@ class AddHashtagScreen extends React.Component {
           
           <View style={styles.instructions}>
             <Text style={[styles.instructionItem, SHEET.baseText]}>
-              Tell us a bit more about yourself, so we can find the
-              best introductions for you. 
+              Almost done! Tell us some final bits about yourself.
+              This will help us introduce you to the most relevant
+              people on campus.
             </Text>
           </View>
 

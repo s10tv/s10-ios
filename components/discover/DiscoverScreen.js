@@ -98,7 +98,7 @@ class Discover extends React.Component {
 
     const [candidateUser] = candidateUsers;
     let { firstName, lastName, gradYear, cover, connectedProfiles,
-      avatar, major, hometown } = candidateUser;
+      avatar, major, hometown, shortDisplayName } = candidateUser;
 
     let serviceIcons = [<Image
       key="ubc"
@@ -127,13 +127,19 @@ class Discover extends React.Component {
                   <View style={styles.header}>
                     <Image source={{ uri: avatar.url }} style={styles.avatar} />
                   </View>
-                  <View style={styles.userInfo}>
-                    <Text style={[styles.userNameText, SHEET.baseText]}>
-                    { firstName } { lastName } { gradYear }
-                  </Text>
-                  </View>
-                  <View style={styles.serviceInfo}>
-                    { serviceIcons }
+
+                  <View style={styles.bottomInfo}>
+                    <View style={styles.userInfo}>
+                      <Text style={[styles.userNameText, SHEET.baseText]}>
+                      { shortDisplayName }
+                    </Text>
+                    </View>
+                    <View style={{ right: 10 }}>
+                      <View style={{ flex: 1 }}></View>
+                      <View style={styles.serviceInfo}>
+                        { serviceIcons }
+                      </View>
+                    </View>
                   </View>
                 </HeaderBanner>
               </TouchableOpacity>
@@ -191,18 +197,21 @@ var styles = StyleSheet.create({
     height: height / 2.5,
   },
   userInfo: {
-    position: 'absolute',
-    backgroundColor: 'rgba(0,0,0,0)',
-    bottom: 0,
-    padding: 10,
+    flex: 1,
   },
   serviceInfo: {
-    position: 'absolute',
-    backgroundColor: 'rgba(0,0,0,0)',
+    height: 32,
+    justifyContent: 'center',
     flexDirection: 'row',
+  },
+  bottomInfo: {
+    position: 'absolute',
     bottom: 0,
-    right: 0,
-    padding: 10,
+    width: width,
+    flexDirection: 'row',
+    backgroundColor: 'transparent',
+    paddingHorizontal: 10,
+    paddingVertical: 5,
   },
   userNameText: {
     color: 'white',

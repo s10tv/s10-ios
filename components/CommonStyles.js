@@ -67,7 +67,7 @@ exports.SHEET = StyleSheet.create({
   icon: {
     width: 32,
     height: 32,
-    resizeMode: 'contain',
+    resizeMode: 'stretch',
   },
   iconCircle: {
     width: 32,
