@@ -102,7 +102,7 @@ extension AppDelegate : UIApplicationDelegate {
 
         // Pre-heat the camera if we can
         VideoMakerViewController.preloadRecorderAsynchronously()
-        DDLogInfo("App Did Launch")
+        DDLogInfo("App Launched", tag: ["deviceId": env.deviceId, "deviceName": env.deviceName])
         return true
     }
     

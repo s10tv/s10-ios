@@ -30,6 +30,9 @@ public class Environment {
         }
         return identifier!
     }
+    public var deviceName: String {
+        return UIDevice.currentDevice().name
+    }
     
     public var apsEnvironment: ApsEnvironment? {
         // Simulator

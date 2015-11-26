@@ -8,23 +8,25 @@
 
 import Foundation
 import Intercom
-#if Release
+//#if Release
     import UXCam
-#endif
+//#endif
 
 public class UXCamProvider : NSObject, AnalyticsProvider {
     
     init(apiKey: String) {
-        #if Release
-            UXCam.startWithKey(apiKey)
-        #endif
+        UXCam.startWithKey(apiKey)
+//        #endif
     }
     
-    #if Release
+//    #if Release
+    func identifyDevice(deviceId: String) {
+        UXCam.tagUsersName(deviceId)
+    }
+    
     func identifyUser(userId: String) {
+        UXCam.tagUsersName(userId)
     }
     
-    func track(event: String!, properties: [NSObject : AnyObject]?) {
-    }
-    #endif
+//    #endif
 }
