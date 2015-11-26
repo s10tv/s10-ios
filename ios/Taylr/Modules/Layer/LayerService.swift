@@ -17,8 +17,8 @@ class LayerService: NSObject {
     @objc weak var bridge: RCTBridge?
     
     let layerClient: LYRClient
-    let unreadQueryController: LYRQueryController?
-    let allConversationsQueryController: LYRQueryController?
+    var unreadQueryController: LYRQueryController?
+    var allConversationsQueryController: LYRQueryController?
     
     init(layerAppID: NSURL) {
         layerClient = LYRClient(appID: layerAppID)
@@ -26,13 +26,28 @@ class LayerService: NSObject {
         layerClient.backgroundContentTransferEnabled = true
         layerClient.diskCapacity = 300 * 1024 * 1024 // 300mb
         layerClient.autodownloadMIMETypes = nil // Download all automatically
-        unreadQueryController = try? layerClient.queryControllerWithQuery(LYRQuery.unreadConversations(), error: ())
-        allConversationsQueryController = try? layerClient.queryControllerWithQuery(
-            LYRQuery(queryableClass: LYRConversation.self), error: ())
         super.init()
         layerClient.delegate = self
-        unreadQueryController?.delegate = self
-        allConversationsQueryController?.delegate = self
+        if layerClient.isAuthenticated {
+            setupQueries()
+        }
+    }
+    
+    func setupQueries() {
+        do {
+            unreadQueryController = try layerClient.queryControllerWithQuery(LYRQuery.unreadConversations(), error: ())
+            unreadQueryController?.delegate = self
+            try unreadQueryController?.execute()
+            queryControllerDidChangeContent(unreadQueryController!)
+            
+            allConversationsQueryController = try layerClient.queryControllerWithQuery(
+                LYRQuery(queryableClass: LYRConversation.self), error: ())
+            allConversationsQueryController?.delegate = self
+            try allConversationsQueryController?.execute()
+            queryControllerDidChangeContent(allConversationsQueryController!)
+        } catch let error as NSError {
+            DDLogError("Unable to setup queries \(error)")
+        }
     }
     
     // MARK: -
@@ -202,10 +217,6 @@ extension LayerService : LYRQueryControllerDelegate {
 extension LayerService {
     
     @objc func connect(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
-        for qc in [unreadQueryController, allConversationsQueryController] {
-            _ = try? qc?.execute()
-            queryControllerDidChangeContent(qc) // Force trigger
-        }
         guard layerClient.isConnected == false else {
             resolve(nil)
             return
@@ -214,7 +225,7 @@ extension LayerService {
         layerClient.connect().promise(resolve, reject).start(Event.sink(error: { error in
             DDLogError("Unable to connect to layer \(error)")
         }, completed: {
-            DDLogInfo("Successfully connected to Layer")
+            DDLogInfo("Successfully connected to Layer authenticated:\(self.layerClient.isAuthenticated)")
         }))
     }
     
@@ -237,6 +248,7 @@ extension LayerService {
             DDLogError("Unable to update user in Layer session \(error)")
         }, next: { userId in
             DDLogInfo("Updated user in Layer session userId=\(userId)")
+            self.setupQueries()
         }))
     }
     
