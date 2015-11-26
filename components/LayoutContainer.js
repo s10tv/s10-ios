@@ -8,6 +8,7 @@ let {
   TabBarIOS,
 } = React;
 
+let Analytics = require('../modules/Analytics');
 let BridgeManager = require('../modules/BridgeManager');
 
 let OnboardingNavigator = require('./onboarding/OnboardingNavigator');
@@ -90,7 +91,10 @@ class LayoutContainer extends React.Component {
           return ddp.collections.users.findOne({ _id: ddp.currentUserId });
         }
       }).subscribe(currentUser => {
-        this.setState({ me: currentUser });
+        if (currentUser) {
+          Analytics.identify(currentUser._id) 
+          this.setState({ me: currentUser });
+        }
       });
 
       ddp.collections.observe(() => {
