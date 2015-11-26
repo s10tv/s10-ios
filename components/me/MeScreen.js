@@ -80,7 +80,7 @@ class MeHeader extends React.Component {
         <Image style={styles.avatar} source={{ uri: me.avatar.url }} />
         <View style={styles.headerContent}>
           <Text style={[styles.headerText, SHEET.baseText]}>
-            {me.firstName} {me.lastName} {me.gradYear}
+            {me.shortDisplayName}
           </Text> 
           <View style={styles.headerContentLineItem}>
             { serviceIcons }

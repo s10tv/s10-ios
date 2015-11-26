@@ -97,7 +97,11 @@ class RootNavigator extends React.Component {
       default:
         return (
           <TouchableOpacity
-            onPress={() => navigator.pop()}
+            onPress={() => {
+
+
+              navigator.pop()
+            }}
             style={SHEET.navBarLeftButton}>
             <Text style={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText]}>
               Back
@@ -214,6 +218,7 @@ class RootNavigator extends React.Component {
           numTotalConversations={this.props.numTotalConversations}
           numUnreadConversations={this.props.numUnreadConversations}
           settings={this.props.settings}
+          updateProfile={this.props.updateProfile}
           ddp={this.props.ddp} />
     }
   }

@@ -43,7 +43,13 @@ class MeEdit extends React.Component {
 
             <SectionTitle title={'MY INFO'} />
             <View style={SHEET.separator} />
-            <ProfileEditCard me={me} ddp={this.props.ddp} />
+            <ProfileEditCard 
+              onEditProfileChange={this.props.onEditProfileChange}
+              onEditProfileFocus={this.props.onEditProfileFocus}
+              onEditProfileBlur={this.props.onEditProfileBlur}
+              updateProfile={this.props.updateProfile}
+              me={me}
+              ddp={this.props.ddp} />
 
           </View>
           <View style={

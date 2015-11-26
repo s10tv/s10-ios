@@ -45,8 +45,24 @@ class TSTabNavigator extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentTab: 'Today'
+      currentTab: 'Today',
+      editProfileCurrentlyFocused: false,
     }
+  }
+
+  onEditProfileChange(activeText) {
+    this.setState({ activeText: activeText });
+  }
+
+  onEditProfileFocus(key) {
+    this.setState({
+      editProfileCurrentlyFocused: true,
+      editProfileKey: key,
+    }) 
+  }
+
+  onEditProfileBlur() {
+    this.setState({ editProfileCurrentlyFocused: false }) 
   }
 
   _title(route, navigator, index, navState) {
@@ -73,7 +89,18 @@ class TSTabNavigator extends React.Component {
       default:
         return (
           <TouchableOpacity
-            onPress={() => navigator.pop()}
+            onPress={() => {
+              let saveActiveEditing = this.state.editProfileCurrentlyFocused ?
+                this.props.updateProfile(this.state.editProfileKey, this.state.activeText) :
+                Promise.resolve(true);
+
+              saveActiveEditing.then(() => {
+                navigator.pop()
+              })
+              .catch(err => {
+                AlertIOS.alert("Uh oh", err.reason);
+              })
+            }}
             style={SHEET.navBarLeftButton}>
             <Text style={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText]}>
               Back
@@ -154,6 +181,10 @@ class TSTabNavigator extends React.Component {
         Analytics.track("View: EditProfile");
         return <MeEditScreen navigator={nav}
           ddp={this.props.ddp} 
+          updateProfile={this.props.updateProfile}
+          onEditProfileChange={this.onEditProfileChange.bind(this)}
+          onEditProfileFocus={this.onEditProfileFocus.bind(this)}
+          onEditProfileBlur={this.onEditProfileBlur.bind(this)}
           me={this.props.me}
           integrations={this.props.integrations} />
       

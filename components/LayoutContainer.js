@@ -66,12 +66,18 @@ class LayoutContainer extends React.Component {
 
   async onLogout() {
     await TSLayerService.deauthenticateAsync();
+    console.log('a');
     DigitsAuthenticateManager.logout();
+    console.log('b');
     FBSDKLoginManager.logOut();
+    console.log('c');
 
     await this.ddp.logout()
+    console.log('d');
     await BridgeManager.setDefaultAccount(null)
+    console.log('e');
     this.setState({ loggedIn: false });
+    console.log('f');
   }
 
   /** 
@@ -284,6 +290,20 @@ class LayoutContainer extends React.Component {
     }
   }
 
+  updateProfile(key, value) {
+    let myInfo = {};
+    myInfo[key] = value;
+
+    Analytics.track('EditProfile: Save', myInfo);
+    this.logger.info(`Updating meteor with ${key} >> ${value}`);
+
+    return this.props.ddp.call({ methodName: 'me/update', params: [myInfo] })
+    .catch(err => {
+      this.logger.error(JSON.stringify(err));
+      AlertIOS.alert('Missing Some Info!', err.reason);
+    })
+  }
+
   componentWillMount() {
     this._ddpLogin()
 
@@ -313,6 +333,7 @@ class LayoutContainer extends React.Component {
         myTags={this.state.myTags}
         onLogin={this.onLogin.bind(this)}
         isCWLRequired={this.state.isCWLRequired}
+        updateProfile={this.updateProfile.bind(this)}
         ddp={this.ddp} /> 
     }
 
@@ -331,6 +352,7 @@ class LayoutContainer extends React.Component {
       settings={this.state.settings}
       numTotalConversations={this.state.numTotalConversations}
       numUnreadConversations={this.state.numUnreadConversations}
+      updateProfile={this.updateProfile.bind(this)}
       ddp={this.ddp} />
   }
 }

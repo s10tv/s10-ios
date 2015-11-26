@@ -36,6 +36,10 @@ class EditProfileScreen extends React.Component {
           <EditMyPhotoHeader me={me} height={200} ddp={this.props.ddp} />
 
           <ProfileEditCard me={me}
+            onEditProfileChange={this.props.onEditProfileChange}
+            onEditProfileFocus={this.props.onEditProfileFocus}
+            onEditProfileBlur={this.props.onEditProfileBlur}
+            updateProfile={this.props.updateProfile}
             style={SHEET.innerContainer}
             ddp={this.props.ddp} />
 

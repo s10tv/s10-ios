@@ -3,6 +3,7 @@ var Button = require('react-native-button');
 
 let {
   AppRegistry,
+  AlertIOS,
   Navigator,
   Text,
   TouchableOpacity,
@@ -27,7 +28,9 @@ class OnboardingNavigator extends BaseTaylrNavigator {
 
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      editProfileCurrentlyFocused: false,
+    };
   }
 
   _leftButton(route, navigator, index, navState) {
@@ -48,8 +51,23 @@ class OnboardingNavigator extends BaseTaylrNavigator {
     }
   }
 
-  displayError(title, message) {
-    alert(message);
+  onEditProfileChange(activeText) {
+    this.setState({ activeText: activeText });
+  }
+
+  onEditProfileFocus(key) {
+    this.setState({
+      editProfileCurrentlyFocused: true,
+      editProfileKey: key,
+    }) 
+  }
+
+  onEditProfileBlur() {
+    this.setState({ editProfileCurrentlyFocused: false }) 
+  }
+
+  displayError(message) {
+    AlertIOS.alert('Missing Some Info', message);
   }
 
   _rightButton(route, navigator, index, navState) {
@@ -74,20 +92,32 @@ class OnboardingNavigator extends BaseTaylrNavigator {
       case 'editprofile':
         action = () => {
           if (!me.firstName) {
-            this.displayError('Error', 'FirstName not specified')
+            this.displayError('Please fill in a first name.')
           } else if (!me.lastName) {
-            this.displayError('Error', 'last name not specified')
+            this.displayError('What happened to your last name?')
           } else  if (!me.hometown) {
-            this.displayError('Error', 'hometown not specified')
+            this.displayError('Where are you from? Please fill in a hometown.')
           } else if (!me.major) {
-            this.displayError('Error', 'major not specified')
+            this.displayError('What are you studying? Fill in a major.')
           } else if (!me.gradYear) {
-            this.displayError('Error', 'gradyear not specified')
+            this.displayError('When are you graduating? Please fill in a grad year. (i.e. \'19 or 2019)');
           } else {
-            navigator.push({
-              id: 'hashtags',
-              title: 'Describe Yourself',
-              me: me,
+            let saveActiveEditing = this.state.editProfileCurrentlyFocused ?
+              this.props.updateProfile(this.state.editProfileKey, this.state.activeText) :
+              Promise.resolve(true);
+
+            saveActiveEditing.then(() => {
+              return this.props.ddp.call({ methodName: 'completeProfile' })
+            })
+            .then(() => {
+              navigator.push({
+                id: 'hashtags',
+                title: 'Describe Yourself',
+                me: me,
+              })
+            })
+            .catch(err => {
+              this.displayError(err.reason)
             })
           }
         }
@@ -108,9 +138,11 @@ class OnboardingNavigator extends BaseTaylrNavigator {
 
       case 'hashtags':
         buttonText = 'Done';
-        if (myTags && myTags.length > 0) {
-          action = () => {
+        action = () => {
+          if (myTags && myTags.length > 0) {
             this.props.ddp.call({ methodName: 'confirmRegistration' });
+          } else {
+            this.displayError('You\'re so close! Please add at least one tag.')
           }
         }
         break;
@@ -179,6 +211,10 @@ class OnboardingNavigator extends BaseTaylrNavigator {
       case 'editprofile':
         Analytics.track('View: CreateProfile');
         return <EditProfileScreen 
+          onEditProfileChange={this.onEditProfileChange.bind(this)}
+          onEditProfileFocus={this.onEditProfileFocus.bind(this)}
+          onEditProfileBlur={this.onEditProfileBlur.bind(this)}
+          updateProfile={this.props.updateProfile}
           ddp={this.props.ddp}
           me={this.props.me} />
 
