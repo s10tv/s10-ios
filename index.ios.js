@@ -4,8 +4,6 @@
  */
 'use strict';
 let Analytics = require('react-native').NativeModules.TSAnalytics;
-let Logger = require('react-native').NativeModules.TSLogger;
-let TSLayerService = require('react-native').NativeModules.TSLayerService;
 let TSDDPClient = require('./lib/ddpclient');
 let BridgeManager = require('./modules/BridgeManager');
 let React = require('react-native');
@@ -30,10 +28,7 @@ let container = React.createClass({
 });
 
 AppRegistry.registerComponent('Taylr', () => container);
-
-//Analytics.identify('TestUserId');
-// Analytics.track('JS App Launched', null);
-Logger.log('My Log Statement', 'info', 'root', 'index.ios.js', 232);
+Analytics.track('JS App Launched', null);
 
 BridgeManager.getDefaultAccountAsync().then((account) => {
 	console.log('default account is', account);

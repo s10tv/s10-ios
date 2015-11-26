@@ -15,8 +15,6 @@ let Loader = require('../lib/Loader');
 
 class LinkServiceView extends React.Component {
   render() {
-    console.log(this.props.integrations);
-
     let integrations = this.props.integrations;
     if (!integrations) {
       return <Loader />

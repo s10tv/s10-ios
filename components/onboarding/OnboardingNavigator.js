@@ -14,7 +14,6 @@ let {
 let CookieManager = require('react-native-cookies');
 
 let Analytics = require('../../modules/Analytics');
-let BaseTaylrNavigator = require('../lib/BaseTaylrNavigator');
 let SHEET = require('../CommonStyles').SHEET;
 let HashtagListView = require('../lib/HashtagListView');
 let FacebookLoginScreen = require('./FacebookLoginScreen');
@@ -24,31 +23,13 @@ let AddHashtagScreen = require('./AddHashtagScreen');
 let JoinNetworkScreen = require('./JoinNetworkScreen');
 let TSNavigationBar = require('../lib/TSNavigationBar');
 
-class OnboardingNavigator extends BaseTaylrNavigator {
+class OnboardingNavigator extends React.Component {
 
   constructor(props) {
     super(props);
     this.state = {
       editProfileCurrentlyFocused: false,
     };
-  }
-
-  _leftButton(route, navigator, index, navState) {
-    switch (route.id) {
-      case 'login':
-        return null;
-
-      default:
-        return (
-          <TouchableOpacity
-            onPress={() => navigator.pop()}
-            style={styles.navBarLeftButton}>
-            <Text style={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText]}>
-              Back
-            </Text>
-          </TouchableOpacity>
-        );
-    }
   }
 
   onEditProfileChange(activeText) {
@@ -68,6 +49,38 @@ class OnboardingNavigator extends BaseTaylrNavigator {
 
   displayError(message) {
     AlertIOS.alert('Missing Some Info', message);
+  }
+
+  _title(route, navigator, index, navState) {
+    return (
+      <Text style={[styles.navBarText, styles.navBarTitleText, SHEET.baseText]}>
+        {route.title}
+      </Text>
+    );
+  }
+
+  _onNavigationStateChange(nav, navState) {
+    if (navState.url.indexOf('taylr-dev://') != -1) {
+      return nav.pop();
+    }
+  }
+
+  _leftButton(route, navigator, index, navState) {
+    switch (route.id) {
+      case 'login':
+        return null;
+
+      default:
+        return (
+          <TouchableOpacity
+            onPress={() => navigator.pop()}
+            style={styles.navBarLeftButton}>
+            <Text style={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText]}>
+              Back
+            </Text>
+          </TouchableOpacity>
+        );
+    }
   }
 
   _rightButton(route, navigator, index, navState) {
@@ -182,7 +195,6 @@ class OnboardingNavigator extends BaseTaylrNavigator {
         return resolve(true)
       });
     })
-
   }
 
   renderScene(route, nav) {
@@ -229,7 +241,6 @@ class OnboardingNavigator extends BaseTaylrNavigator {
         return <WebView
           style={styles.webView}
           onNavigationStateChange={(navState) => {
-            console.log(navState);
             if (!navState.loading && navState.title) {
               this.proceedIfLoginTokenPresent(nav)
               .then(() => {

@@ -12,7 +12,6 @@ let {
   NativeAppEventEmitter,
 } = React;
 
-
 var TabNavigator = require('react-native-tab-navigator');
 var Tabbar = require('react-native-tabbar');
 var Item = Tabbar.Item;
@@ -23,7 +22,6 @@ let TSTabNavigator = require('./TSTabNavigator');
 let TSNavigationBar = require('./lib/TSNavigationBar');
 
 let SHEET = require('./CommonStyles').SHEET;
-let COLORS = require('./CommonStyles').COLORS;
 let Loader = require('./lib/Loader');
 
 // Chats
@@ -95,11 +93,7 @@ class RootNavigator extends React.Component {
       default:
         return (
           <TouchableOpacity
-            onPress={() => {
-
-
-              navigator.pop()
-            }}
+            onPress={() => navigator.pop() }
             style={SHEET.navBarLeftButton}>
             <Text style={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText]}>
               Back

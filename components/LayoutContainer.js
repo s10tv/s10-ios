@@ -34,7 +34,6 @@ class LayoutContainer extends React.Component {
     this.state = {
       needsOnboarding: true,
       modalVisible: false,
-      currentTab: 'chats',
     }
 
     this.logger = new Logger(this);
@@ -66,18 +65,11 @@ class LayoutContainer extends React.Component {
 
   async onLogout() {
     await TSLayerService.deauthenticateAsync();
-    console.log('a');
     DigitsAuthenticateManager.logout();
-    console.log('b');
     FBSDKLoginManager.logOut();
-    console.log('c');
-
     await this.ddp.logout()
-    console.log('d');
     await BridgeManager.setDefaultAccount(null)
-    console.log('e');
     this.setState({ loggedIn: false });
-    console.log('f');
   }
 
   /** 
