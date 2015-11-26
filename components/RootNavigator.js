@@ -62,11 +62,9 @@ class RootNavigator extends React.Component {
   componentWillUnmount() {
     this.state.popListener.remove();
     this.state.pushListener.remove();
-    this.state.pushTokenListener.remove();
     this.setState({
       popListener: null,
       pushListener: null,
-      pushTokenListener: null,
     });
   }
 
