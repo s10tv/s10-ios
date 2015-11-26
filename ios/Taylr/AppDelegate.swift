@@ -214,6 +214,7 @@ extension AppDelegate : RCTBridgeDelegate {
         return [
             ConversationListViewManager(layer: layer),
             ConversationViewManager(layer: layer),
+            BridgeManager(env: env),
             Analytics,
             Logger,
             layer,

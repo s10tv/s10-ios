@@ -35,8 +35,10 @@ class BridgeManager : NSObject {
     
     weak var bridge: RCTBridge?
     let azure = AzureClient()
+    let env: Environment
     
-    override init() {
+    init(env: Environment) {
+        self.env = env
         super.init()
         listenForNotification(kRNSendAppEventNotificationName).startWithNext { [weak self] note in
             if let dispatcher = self?.bridge?.eventDispatcher,
@@ -70,6 +72,14 @@ extension BridgeManager {
     @objc func setDefaultAccount(account: METAccount?) {
         METAccount.setDefaultAccount(account)
     }
+    
+    @objc func constantsToExport() -> NSDictionary {
+        return [
+            "isRunningInSimulator": env.isRunningInSimulator,
+            "isRunningTestFlightBeta": env.isRunningTestFlightBeta
+        ]
+    }
+    
 }
 
 enum RouteId : String {
