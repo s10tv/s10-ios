@@ -7,6 +7,7 @@ let {
   StyleSheet,
 } = React;
 
+let Analytics = require('../../modules/Analytics');
 let COLORS = require('../CommonStyles').COLORS;
 let SHEET = require('../CommonStyles').SHEET;
 let Dimensions = require('Dimensions');
@@ -15,6 +16,11 @@ let { width, height } = Dimensions.get('window');
 let TSConversationListView = React.requireNativeComponent('TSConversationListView', ConversationListView);
 
 class ConversationListView extends React.Component {
+
+  componentWillMount() {
+    Analytics.track("View: Connections"); 
+  }
+
   render() {
     // verbose but more readable IMO
     if (this.props.numTotalConversations && this.props.numTotalConversations > 0) {

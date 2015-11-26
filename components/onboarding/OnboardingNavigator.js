@@ -12,6 +12,7 @@ let {
 
 let CookieManager = require('react-native-cookies');
 
+let Analytics = require('../../modules/Analytics');
 let BaseTaylrNavigator = require('../lib/BaseTaylrNavigator');
 let SHEET = require('../CommonStyles').SHEET;
 let HashtagListView = require('../lib/HashtagListView');
@@ -154,6 +155,7 @@ class OnboardingNavigator extends BaseTaylrNavigator {
   renderScene(route, nav) {
     switch (route.id) {
       case 'login':
+        Analytics.track('View: Welcome');
         return (
           <FacebookLoginScreen
             navigator={nav}
@@ -164,6 +166,7 @@ class OnboardingNavigator extends BaseTaylrNavigator {
         );
 
       case 'linkservicecontainer':
+        Analytics.track('View: ConnectServices');
         return (
           <LinkServiceScreen navigator={nav}
             integrations={this.props.integrations}
@@ -172,16 +175,19 @@ class OnboardingNavigator extends BaseTaylrNavigator {
         );
 
       case 'editprofile':
+        Analytics.track('View: CreateProfile');
         return <EditProfileScreen 
           ddp={this.props.ddp}
           me={this.props.me} />
 
-      case 'joinnetwork': 
+      case 'joinnetwork':
+        Analytics.track('View: JoinNetwork');
         return <JoinNetworkScreen
           navigator={nav}
           startInLoadingState={true} />
 
       case 'campuswidelogin':
+        Analytics.track('View: CWL');
         return <WebView
           style={styles.webView}
           onNavigationStateChange={(navState) => {
@@ -190,6 +196,7 @@ class OnboardingNavigator extends BaseTaylrNavigator {
               this.proceedIfLoginTokenPresent(nav)
               .then(() => {
                 if (this.state.cwl) {
+                  Analytics.track('Network: JoinSuccess');
                   nav.push({
                     id: 'linkservicecontainer',
                     title: 'Link Service',
@@ -202,6 +209,9 @@ class OnboardingNavigator extends BaseTaylrNavigator {
           url={'https://cas.id.ubc.ca/ubc-cas/login'} />;
 
       case 'linkservice':
+        Analytics.track("View: Link Integration", {
+            "Name" : route.integration.name
+        })
         return <WebView
           style={styles.webView}
           onNavigationStateChange={(navState) => this._onNavigationStateChange(nav, navState)}
@@ -216,6 +226,7 @@ class OnboardingNavigator extends BaseTaylrNavigator {
           ddp={this.props.ddp} />
 
       case 'addhashtag':
+        Analytics.track("EditHashtags");
         return <HashtagListView
           style={{ flex: 1 }} 
           navigator={nav}
@@ -225,10 +236,23 @@ class OnboardingNavigator extends BaseTaylrNavigator {
           category={route.category} />;
 
       case 'openwebview':
+        Analytics.track("View: Website", {
+          "URL" : route.url
+        })
         return <WebView
           style={styles.webView}
           startInLoadingState={true}
           url={route.url} />;
+
+      case 'viewintegration':
+        Analytics.track("View: Integration", {
+          "Name" : route.integration.name
+        })
+        return <WebView
+          style={styles.webView}
+          startInLoadingState={true}
+          url={route.url} />;
+
     } 
   }
 

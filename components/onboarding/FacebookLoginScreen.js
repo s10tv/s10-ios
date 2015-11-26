@@ -29,11 +29,12 @@ let {
 } = FBSDKCore;
 
 let Digits = require('react-native-fabric-digits');
-let { DigitsLoginButton, DigitsLogoutButton } = Digits;
+let { DigitsAuthenticateManager } = Digits;
 
 let Video = require('react-native-video');
 let Button = require('react-native-button');
 
+let Analytics = require('../../modules/Analytics');
 let SHEET = require('../CommonStyles').SHEET;
 let COLORS = require('../CommonStyles').COLORS;
 
@@ -46,10 +47,14 @@ class FacebookLoginScreen extends React.Component {
     this.logger = new Logger(this);
   }
 
-  login(error, response) {
+  digitsLogin(error, response) {
     if (error) {
+      Analytics.track('Welcome: Cancelled phone verification');
+      this.logger.warning(JSON.stringify(error))
       return;
     }
+
+    Analytics.track('Welcome: Verify Phone');
 
     // we convert userId to id on the server, so the userId better be set.
     response.userId = response.userID;
@@ -102,11 +107,15 @@ class FacebookLoginScreen extends React.Component {
           <FBSDKLoginButton
             style={styles.fbButton}
             onLoginFinished={(error, result) => {
+              // we don't get an event handler with FB so this is the best we can do.
+              Analytics.track('Welcome: TapLoginWithFB'); 
+
               if (error) {
                 this.logger.error(`Error logging in with Facebook ${error.toString()}`);
                 alert('Error logging you in :C Please try again later.');
               } else {
                 if (!result.isCancelled) {
+                  Analytics.track('Welcome: Verify FB');
                   FBSDKAccessToken.getCurrentAccessToken((accessToken) => {
                     if (accessToken && accessToken.tokenString) {
                       this.props.ddp.call({
@@ -123,6 +132,8 @@ class FacebookLoginScreen extends React.Component {
                       .catch(err => {
                         this.logger.error(JSON.stringify(error));
                       })
+                    } else {
+                      Analytics.track('Welcome: Cancelled FB Verification'); 
                     }
                   });
                 }
@@ -133,36 +144,41 @@ class FacebookLoginScreen extends React.Component {
             publishPermissions={[]}/>
 
           <View style={{ marginTop: height / 24 }}>
-            <DigitsLoginButton
-              options={{
-                title: "Taylr",
-                appearance: {
-                  backgroundColor: {
-                    hex: "#ffffff",
-                    alpha: 1.0
-                  },
-                  accentColor: {
-                    hex: COLORS.taylr,
-                    alpha: 1,
-                  },
-                  headerFont: {
-                    name: "Arial",
-                    size: 16
-                  },
-                  labelFont: {
-                    name: "Helvetica",
-                    size: 18
-                  },
-                  bodyFont: {
-                    name: "Helvetica",
-                    size: 16
+
+            <Text
+              style={[{padding: 5}, styles.link]}
+              onPress={() => {
+                Analytics.track('Welcome: TapLoginWithPhone'); 
+
+                let options = {
+                  title: "Taylr",
+                  appearance: {
+                    backgroundColor: {
+                      hex: "#ffffff",
+                      alpha: 1.0
+                    },
+                    accentColor: {
+                      hex: COLORS.taylr,
+                      alpha: 1,
+                    },
+                    headerFont: {
+                      name: "Arial",
+                      size: 16
+                    },
+                    labelFont: {
+                      name: "Helvetica",
+                      size: 18
+                    },
+                    bodyFont: {
+                      name: "Helvetica",
+                      size: 16
+                    }
                   }
                 }
-              }}
-              buttonStyle={{ backgroundColor : 'rgba:(0,0,0,0)'}}
-              textStyle={[{padding: 5}, styles.link]}
-              completion={this.login.bind(this)}
-              text="Login with Phone" />
+
+                DigitsAuthenticateManager
+                  .authenticateDigitsWithOptions(options, this.digitsLogin.bind(this));
+            }}>Login with Phone</Text>
           </View>
         </View>
       );

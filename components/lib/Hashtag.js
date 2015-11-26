@@ -7,6 +7,7 @@ let {
   StyleSheet,
 } = React;
 
+let Analytics = require('../../modules/Analytics');
 let Button = require('react-native-button');
 let COLORS = require('../CommonStyles').COLORS;
 let SHEET = require('../CommonStyles').SHEET;
@@ -22,6 +23,7 @@ class Hashtag extends React.Component {
 
   _onHashtagTouch(hashtag) {
     if (!hashtag.isMine) {
+      Analytics.track("Hashtag: Add", {"Text": hashtag.text, "Type": hashtag.type})
       return this.ddp.call({
         methodName: 'me/hashtag/add',
         params: [hashtag.text, hashtag.type]
@@ -30,6 +32,7 @@ class Hashtag extends React.Component {
         this.logger.error(`Error adding hashtag ${hashtag.text}: ${JSON.stringify(err)}`);
       })
     } else {
+      Analytics.track("Hashtag: Remove", {"Text": hashtag.text, "Type": hashtag.type})
       return this.ddp.call({
         methodName: 'me/hashtag/remove', 
         params: [hashtag.text, hashtag.type]

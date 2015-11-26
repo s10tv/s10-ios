@@ -14,6 +14,7 @@ let Dimensions = require('Dimensions');
 let { width, height } = Dimensions.get('window');
 
 let Button = require('react-native-button')
+
 let SHEET = require('../CommonStyles').SHEET;
 let COLORS = require('../CommonStyles').COLORS;
 let ProfileEditCard = require('../lib/ProfileEditCard');

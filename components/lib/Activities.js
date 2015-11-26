@@ -13,12 +13,14 @@ let {
 let Dimensions = require('Dimensions');
 let { height, width } = Dimensions.get('window');
 
+let Analytics = require('../../modules/Analytics');
 let Card = require('./Card').Card;
 let HeaderBanner = require('./HeaderBanner');
 let COLORS = require('../CommonStyles').COLORS;
 let SHEET = require('../CommonStyles').SHEET;
 let IconTextRow = require('../lib/IconTextRow');
 let Loader = require('../lib/Loader');
+let CountdownTimer = require('../lib/CountdownTimer');
 
 class ActivityHeader extends React.Component {
   render() {
@@ -198,6 +200,10 @@ class Activities extends React.Component {
   }
 
   _switchService(profile) {
+    Analytics.track('Profile: Switch', {
+      name: profile.integrationName
+    });
+
     let newState = {
       activeProfile: profile,
     };
@@ -206,9 +212,13 @@ class Activities extends React.Component {
   }
 
   _switchToTaylr() {
+    Analytics.track('Profile: Switch', {
+      name: 'taylr' 
+    });
+
     // clear activity cards
     this.setState({
-      activeProfile: { id:'taylr', integrationName: 'taylr' },
+      activeProfile: { id: 'taylr', integrationName: 'taylr' },
     });
   }
 
@@ -335,8 +345,9 @@ class Activities extends React.Component {
             </View>
             <TouchableOpacity style={[styles.openButton]}
               onPress={() => this.props.navigator.push({
-                id: 'openwebview',
+                id: 'viewintegration',
                 url: profile.url,
+                integration: profile,
               })}>
                 <Text style={[{fontSize: 18, color: COLORS.white }, SHEET.baseText]}>Open</Text>
             </TouchableOpacity>
@@ -349,6 +360,22 @@ class Activities extends React.Component {
           </ScrollView>
         </Card>
       ) 
+    }
+
+    let messageButton = null;
+    if (this.props.isCurrentCandidate && this.props.currentUser && 
+        this.props.candidateUser) {
+      messageButton = (
+        <CountdownTimer
+          style={styles.messageButton}
+          track={() => {
+            Analytics.track('Profile: TapMessage')
+          }}
+          navigator={this.props.navigator}
+          candidateUser={this.props.candidateUser}
+          me={this.props.me}
+          settings={this.props.settings} />
+      )
     }
 
     return (
@@ -377,6 +404,8 @@ class Activities extends React.Component {
             <View style={SHEET.bottomTile} />
           </View>
         </ScrollView>
+
+        { messageButton }
       </View>
     )
   }
@@ -451,6 +480,14 @@ var styles = StyleSheet.create({
     flex: 1,
     resizeMode: 'cover',
   },
+  messageButton: {
+    position: 'absolute',
+    bottom: 0,
+    width: width,
+    height: 50,
+    marginHorizontal: 0,
+    borderRadius : 0,
+  }
 });
 
 module.exports = Activities;

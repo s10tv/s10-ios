@@ -12,10 +12,12 @@ let {
   NativeAppEventEmitter,
 } = React;
 
-var TabNavigator = require('react-native-tab-navigator');
 
+var TabNavigator = require('react-native-tab-navigator');
 var Tabbar = require('react-native-tabbar');
 var Item = Tabbar.Item;
+
+let Analytics = require('../modules/Analytics');
 
 let TSTabNavigator = require('./TSTabNavigator');
 let TSNavigationBar = require('./lib/TSNavigationBar');
@@ -163,13 +165,22 @@ class RootNavigator extends React.Component {
 
     switch (route.id) {
       case 'viewprofile':
+        let properties = route.me ? { id: route.me._id } : undefined;
+        Analytics.track("View: Profile", properties)
         return <Activities
           navigator={nav} 
           me={route.me}
+          isCurrentCandidate={route.isCurrentCandidate}
+          candidateUser={route.candidateUser}
+          currentUser={this.props.me}
+          settings={this.props.settings}
           loadActivities={true}
           ddp={this.props.ddp} />
       
-      case 'openwebview':
+      case 'viewintegration':
+        Analytics.track("View: Integration Details", {
+          "Name" : route.integration.name
+        })
         return <WebView
           style={styles.webView}
           startInLoadingState={true}
@@ -183,6 +194,9 @@ class RootNavigator extends React.Component {
           currentUser={user} />
 
       case 'conversation':
+        Analytics.track("View: Conversation", {
+          conversationId: route.conversationId
+        }); 
         return <ConversationView
           navigator={nav}
           style={{flex: 1}}

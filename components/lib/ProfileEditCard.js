@@ -11,6 +11,7 @@ let {
   StyleSheet,
 } = React;
 
+let Analytics = require('../../modules/Analytics');
 let FloatLabelTextInput = require('./FloatLabelTextField');
 let SHEET = require('../CommonStyles').SHEET;
 let Card = require('./Card').Card;
@@ -37,10 +38,12 @@ class ProfileEditCard extends React.Component {
   }
 
   updateMeteor(key, value) {
-    this.logger.info(`Updating meteor with ${key} >> ${value}`);
-
     let myInfo = {};
     myInfo[key] = value;
+
+    Analytics.track('EditProfile: Save', myInfo);
+    this.logger.info(`Updating meteor with ${key} >> ${value}`);
+
     return this.props.ddp.call({ methodName: 'me/update', params: [myInfo] })
     .catch(err => {
       this.logger.error(JSON.stringify(err));

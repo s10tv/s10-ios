@@ -227,8 +227,11 @@ class LayoutContainer extends React.Component {
     let message = "Report?"
     let reportedMessage = "Reported."
     if (user) {
+      Analytics.track("User: View Block", { userId: user._id })
       message = `Report ${user.firstName}?`
       reportedMessage = `Reported ${user.firstName}`;
+    } else {
+      Analytics.track("User: View Block")
     }
 
     AlertIOS.alert(
@@ -239,6 +242,7 @@ class LayoutContainer extends React.Component {
         {text: 'Report', onPress: () => {
           return this.props.ddp.call({ methodName: 'user/report', params: [userId, 'Reported'] })
           .then(() => {
+            Analytics.track("User: Confirmed Block")
             AlertIOS.alert(reportedMessage, 
               'Thanks for your input. We will look into this shortly.');
           })

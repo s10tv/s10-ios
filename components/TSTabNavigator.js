@@ -22,6 +22,7 @@ var Item = Tabbar.Item;
 let SHEET = require('./CommonStyles').SHEET;
 let COLORS = require('./CommonStyles').COLORS;
 let Loader = require('./lib/Loader');
+let Analytics = require('../modules/Analytics');
 
 // Me
 let MeScreen = require('./me/MeScreen');
@@ -150,12 +151,14 @@ class TSTabNavigator extends React.Component {
 
     switch (route.id) {
       case 'edit':
+        Analytics.track("View: EditProfile");
         return <MeEditScreen navigator={nav}
           ddp={this.props.ddp} 
           me={this.props.me}
           integrations={this.props.integrations} />
       
       case 'addhashtag':
+        Analytics.track("View: EditHashtags");
         return <HashtagListView
           style={{ flex: 1 }} 
           navigator={nav}
@@ -164,6 +167,9 @@ class TSTabNavigator extends React.Component {
           category={route.category} />;
       
       case 'linkservice':
+        Analytics.track("View: Link Integration", {
+          "Name" : route.integration.name
+        })
         return <WebView
           style={styles.webView}
           onNavigationStateChange={(navState) => this._onNavigationStateChange(nav, navState)}
@@ -171,6 +177,7 @@ class TSTabNavigator extends React.Component {
           url={route.link} />;
 
       case 'history':
+        Analytics.track("View: History");
         return <HistoryScreen navigator={nav}
           parentNavigator={this.props.navigator}
           history={this.props.history}
@@ -229,7 +236,7 @@ class TSTabNavigator extends React.Component {
               }}
               selected={this.state.currentTab == 'Conversations'}>
               
-             <ConversationListView
+              <ConversationListView
                 navigator={nav}
                 numTotalConversations={this.props.numTotalConversations}
                 style={{backgroundColor: COLORS.background, flex: 1, marginTop: 64}}

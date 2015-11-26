@@ -19,7 +19,8 @@ class ServiceTile extends React.Component {
     this.props.navigator.push({
       id: 'linkservice',
       title: "Link Service",
-      link: service.link
+      link: service.link,
+      integration: service,
     })
   }
 

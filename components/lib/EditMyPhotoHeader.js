@@ -13,8 +13,9 @@ let {
 let Logger = require('../../lib/Logger');
 let Dimensions = require('Dimensions');
 let { width, height } = Dimensions.get('window');
-
 let Button = require('react-native-button');
+
+let Analytics = require('../../modules/Analytics');
 let SHEET = require('../CommonStyles').SHEET;
 let UIImagePickerManager = require('NativeModules').UIImagePickerManager;
 
@@ -30,6 +31,12 @@ class EditMyPhotoHeader extends React.Component {
 
   __selectAndUploadImage(options) {
     let { type, stateKey } = options;
+
+    if (type === 'PROFILE_PIC') {
+      Analytics.track('EditProfile: UpdateAvatar');
+    } else if (type == 'COVER_PIC') {
+      Analytics.track('EditProfile: UpdateCover');
+    }
 
     var options = {
       title: 'Select', // specify null or empty string to remove the title

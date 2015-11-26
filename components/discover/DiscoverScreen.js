@@ -16,85 +16,14 @@ let {
 let Dimensions = require('Dimensions');
 let { width, height } = Dimensions.get('window');
 
+let Analytics = require('../../modules/Analytics');
 let SHEET = require('../CommonStyles').SHEET;
 let COLORS = require('../CommonStyles').COLORS;
 let HeaderBanner = require('../lib/HeaderBanner');
 let IconTextRow = require('../lib/IconTextRow');
+let CountdownTimer = require('../lib/CountdownTimer');
 let Card = require('../lib/Card').Card;
 let Loader = require('../lib/Loader');
-
-class CountdownTimer extends React.Component {
-  constructor(props) {
-    super(props); 
-    this.state = {
-      countdown: '...'
-    }
-  }
-
-  formatUser(candidateUser) {
-    return {
-      userId: candidateUser._id,
-      avatarUrl: candidateUser.avatar.url,
-      coverUrl: candidateUser.avatar.url,
-      firstName: candidateUser.firstName,
-      displayName: candidateUser.firstName,
-    }
-  }
-
-  componentWillUnmount() {
-    clearTimeout(this.state.timer);
-  }
-
-  componentWillMount() {
-    let format = function(num) {
-      return ("0" + num).slice(-2);
-    }
-
-    let timerFunction = function() {
-      let settings = this.props.settings;
-      if (!settings || !settings.nextMatchDate) {
-        return;
-      }
-
-      let nextMatchDate = Math.floor(settings.nextMatchDate.value.getTime() / 1000);
-      let now = Math.floor(new Date().getTime() / 1000);
-
-      let interval = Math.max(nextMatchDate - now, 0)
-      let hours = Math.floor(interval / 3600);
-      let minutes = Math.floor((interval - hours * 3600) / 60);
-      let seconds = Math.floor((interval - hours * 3600) - minutes * 60);
-
-      this.setState({ countdown: `${format(hours)}:${format(minutes)}:${format(seconds)}`});
-    }
-
-    timerFunction.bind(this)();
-    this.setState({ timer: setInterval(timerFunction.bind(this), 1000) })
-  }
-
-  render() {
-    let settings = this.props.settings;
-    return (
-      <Button
-        onPress={() => {
-          let user = this.formatUser(this.props.candidateUser);
-          let currentUser = this.formatUser(this.props.me);
-
-          this.props.parentNavigator.push({
-            id: 'sendMessage',
-            currentUser: currentUser,
-            recipientUser: user,
-          })
-        }}>
-        <View style={styles.messageButton}>
-          <Image source={require('../img/ic-start-chat.png')} />
-          <Text style={[styles.messageButtonText, SHEET.baseText]}>
-            { this.state.countdown }
-          </Text>
-        </View>
-      </Button>
-    )
-  }
-}
 
 class Discover extends React.Component {
 
@@ -106,6 +35,7 @@ class Discover extends React.Component {
   }
 
   componentWillMount() {
+    Analytics.track("View: Today"); 
     this._animatedValueY = 0; 
 
     this.state.pan.y.addListener((value) => {
@@ -185,9 +115,12 @@ class Discover extends React.Component {
           <Card style={[{flex: 1, marginBottom: 10}, SHEET.innerContainer]}
             cardOverride={[{ flex: 1, padding: 0 }]}>
               <TouchableOpacity onPress={() => {
+                Analytics.track("Today: TapProfile")
                 this.props.parentNavigator.push({
                   id: 'viewprofile',
                   me: candidateUser,
+                  candidateUser: candidateUser,
+                  isCurrentCandidate: true,
                 })
               }}>
                 <HeaderBanner url={cover.url} height={height / 2.5}>
@@ -225,8 +158,7 @@ class Discover extends React.Component {
             </View>
 
             <CountdownTimer
-              parentNavigator={this.props.parentNavigator}
-              navigator={this.props.navigator}
+              navigator={this.props.parentNavigator}
               candidateUser={candidateUser}
               me={this.props.me}
               settings={this.props.settings} />

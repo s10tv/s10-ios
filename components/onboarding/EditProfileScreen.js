@@ -8,6 +8,7 @@ let {
   StyleSheet,
 } = React;
 
+let Analytics = require('../../modules/Analytics');
 let SHEET = require('../CommonStyles').SHEET;
 let COLORS = require('../CommonStyles').COLORS;
 let ProfileEditCard = require('../lib/ProfileEditCard');
@@ -15,6 +16,10 @@ let EditMyPhotoHeader = require('../lib/EditMyPhotoHeader');
 let Loader = require('../lib/Loader');
 
 class EditProfileScreen extends React.Component {
+
+  componentWillMount() {
+    Analytics.track('View: CreateProfile');
+  }
 
   render() {
     let me = this.props.me;
