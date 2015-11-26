@@ -52,7 +52,7 @@ pod 'AnalyticsSwift', '~> 0.2' # SegmentIO
 pod 'Intercom', '~> 2.3'
 pod 'Branch', '~> 0.11'
 # Disabling UXCam for dev builds until motion detection interference is fixed
-pod 'UXCam', '~> 2.4', :configuration => ['Release']
+pod 'UXCam', '~> 2.4' #, :configuration => ['Release']
 
 # Debugging
 pod 'Reveal-iOS-SDK', '~> 1.6', :configuration => ['Debug']

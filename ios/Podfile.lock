@@ -21,11 +21,11 @@ PODS:
     - CocoaLumberjack/Default
   - CocoaLumberjack/Swift (2.2.0):
     - CocoaLumberjack/Extensions
-  - Crashlytics (3.4.0):
+  - Crashlytics (3.4.1):
     - Fabric (~> 1.6.0)
   - DateTools (1.7.0)
-  - Digits (1.13.1):
-    - TwitterCore (= 1.13.1)
+  - Digits (1.14.1):
+    - TwitterCore (= 1.14.1)
   - DTFoundation/Core (1.7.8)
   - DTFoundation/DTASN1 (1.7.8):
     - DTFoundation/Core
@@ -36,9 +36,7 @@ PODS:
   - EZAudio/Full (1.1.2):
     - EZAudio/Core
     - TPCircularBuffer (~> 0.0)
-  - Fabric (1.6.0):
-    - Fabric/Base (= 1.6.0)
-  - Fabric/Base (1.6.0)
+  - Fabric (1.6.1)
   - FBSDKCoreKit (4.8.0):
     - Bolts (~> 1.1)
     - FBSDKCoreKit/arc (= 4.8.0)
@@ -55,7 +53,7 @@ PODS:
     - FMDB/common
   - FormatterKit/TimeIntervalFormatter (1.8.0)
   - Intercom (2.3.15)
-  - LayerKit (0.17.2)
+  - LayerKit (0.17.3)
   - Mixpanel (2.9.0):
     - Mixpanel/Mixpanel (= 2.9.0)
   - Mixpanel/Mixpanel (2.9.0)
@@ -99,7 +97,7 @@ PODS:
   - SVProgressHUD (2.0-beta)
   - SwipeView (1.3.2)
   - TPCircularBuffer (0.0.1)
-  - TwitterCore (1.13.1):
+  - TwitterCore (1.14.1):
     - Fabric
   - UXCam (2.4.2)
 
@@ -148,7 +146,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   NKRecorder:
-    :commit: c6a0ade8f03e4b59535d3ba044f143b467577a7f
+    :commit: fdd8caad07f2c1da4e76bba4f9d742f78f555d1d
     :git: git@github.com:s10tv/video-maker.git
 
 SPEC CHECKSUMS:
@@ -161,19 +159,19 @@ SPEC CHECKSUMS:
   Branch: 71b1180c49d75e0d849e2611ecf3016de7572eac
   Cartography: 70af183a248547694a8cfaa6b989cb7e04589985
   CocoaLumberjack: 17fe8581f84914d5d7e6360f7c70022b173c3ae0
-  Crashlytics: 1ee87895c37472eb3f01f409ea1654a464d2f8d4
+  Crashlytics: 41574a245bc6ae10c55d57f385ebd2004e5bee05
   DateTools: 53288ee8b905fdc75897a1e6b5cc0144b14cba60
-  Digits: e8d62251f6b461996a829ed2e84a91f6bf14ff34
+  Digits: c5aa6ac14020c5b16acd3f7c275530b6b50d3a08
   DTFoundation: 46e2b2fafe78d67febfd8d1f85fe9845a093f00e
   EDColor: c83f9a61f9f9b3c23d541f1feb561558e29cb088
   EZAudio: 01373de2b1257b77be1bf13753fb1c4ea8a9777e
-  Fabric: d737eda3a26ac940a5430230eedb35f16b226131
+  Fabric: bf0ceb04e7c924090efc5f8c55e4fbcca189e0a0
   FBSDKCoreKit: 66a935d17b6e00b6b64e604f2eb9b72c9ab7deb8
   FBSDKLoginKit: d893fcbb98d854496925e9ff73c67b896982d3c4
   FMDB: 96e8f1bcc1329e269330f99770ad4285d9003e52
   FormatterKit: bddde83e054edf9d9ee14f9de3b3a5103db256f4
   Intercom: 49dfec2dadadba595705e43b30f1148ed799fbc3
-  LayerKit: 60f1f23923e2718992eba22c6e9a8ef92b6344bc
+  LayerKit: 92d150935d9b25c7ede0d6b47de5ddd237b1ee85
   Mixpanel: 42ae6168effc48481d957f7883dd8514a398738d
   NKRecorder: f4bce8409adc39321668b5af939173839f5980a2
   NSLogger: 5ed223a2436df96244e033be750656dacdeec034
@@ -188,7 +186,7 @@ SPEC CHECKSUMS:
   SVProgressHUD: c83337f10ed32d701c423d519059a249973c8662
   SwipeView: bd67cfaf7760c036438446b3ccb28a3b84fce009
   TPCircularBuffer: 949e9632b9fb99b7274d7b2296ee22bff5841e35
-  TwitterCore: 4f6fbd413f6d574d38bfbeeeb5cd75738caf567e
+  TwitterCore: 5c02651e664d715fda64a8870a4a2f6754705a2d
   UXCam: bb8b26b017b1149a4d92cf0b0bc1e568e5e752af
 
 COCOAPODS: 0.39.0
