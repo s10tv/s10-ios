@@ -10,39 +10,84 @@ import Foundation
 import Mixpanel
 
 public class MixpanelProvider : NSObject, AnalyticsProvider {
+    var context: AnalyticsContext!
     
     let mixpanel: Mixpanel
+    var people: MixpanelPeople? {
+        return mixpanel.people // People Records for all for now
+//        return context.userId != nil ? mixpanel.people : nil
+    }
     
     init(apiToken: String, launchOptions: [NSObject: AnyObject]?) {
         mixpanel = Mixpanel.sharedInstanceWithToken(apiToken, launchOptions: launchOptions)
     }
     
-    func identifyDevice(deviceId: String) {
-        mixpanel.identify(deviceId)
+    func appInstall() {
+        mixpanel.identify(context.deviceId)
+        mixpanel.nameTag = context.deviceName
+        people?.set("DeviceName", to: context.deviceName)
+        track("App Install", properties: nil)
     }
     
-    func identifyUser(userId: String) {
-        mixpanel.identify(userId)
+    func appOpen() {
+        mixpanel.track("App Open")
     }
     
-    func track(event: String!, properties: [NSObject : AnyObject]?) {
+    func appClose() {
+        mixpanel.track("App Close")
+    }
+    
+    func login(isNewUser: Bool) {
+        mixpanel.identify(context.userId)
+        if isNewUser {
+            mixpanel.createAlias(context.userId, forDistinctID: context.deviceId)
+        }
+        track("Login", properties: ["New User": isNewUser])
+        updateUsername()
+        updateEmail()
+        updateFullname()
+        updatePhone()
+    }
+    
+    func logout() {
+        track("Logout", properties: nil)
+        mixpanel.identify(context.deviceId)
+    }
+    
+    func updatePhone() {
+        people?.set("$phone", to: context.email)
+    }
+    
+    func updateEmail() {
+        people?.set("$email", to: context.email)
+    }
+    
+    func updateFullname() {
+        mixpanel.nameTag = context.fullname
+        people?.set("$name", to: context.fullname)
+    }
+    
+    func setUserProperties(properties: [NSObject : AnyObject]) {
+        people?.set(properties)
+    }
+    
+    func track(event: String, properties: [NSObject : AnyObject]?) {
         mixpanel.track(event, properties: properties)
     }
     
-    func setUserPhone(phone: String) {
-        mixpanel.people.set(["$phone": phone])
+    func screen(name: String, properties: [NSObject : AnyObject]?) {
+        mixpanel.track("Screen: \(name)", properties: properties)
     }
     
-    func setUserEmail(email: String) {
-        mixpanel.people.set(["$email": email])
+    func registerPushToken(pushToken: NSData) {
+        people?.addPushDeviceToken(pushToken)
     }
     
-    func setUserFullname(fullname: String) {
-        mixpanel.nameTag = fullname
-        mixpanel.people.set(["$name": fullname])
+    func trackPushNotification(userInfo: [NSObject : AnyObject]) {
+        mixpanel.trackPushNotification(userInfo)
     }
     
-    func setUserProperties(properties: [String : AnyObject]) {
-        mixpanel.people.set(properties)
+    func flush() {
+        mixpanel.flush()
     }
 }

@@ -22,6 +22,7 @@ pod 'SCRecorder', '2.5.3' # ScaleAspectFill bug
 pod 'NKRecorder', :git => 'git@github.com:s10tv/video-maker.git'
 
 # Utils
+pod 'SwiftyUserDefaults', '~> 2.0'
 pod 'SimpleKeychain', '~> 0.4'
 pod 'DTFoundation/DTASN1', '~> 1.7'
 pod 'SDWebImage', '~> 3.7'

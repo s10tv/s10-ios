@@ -10,6 +10,7 @@ import Foundation
 import Branch
 
 public class BranchProvider : NSObject, AnalyticsProvider {
+    var context: AnalyticsContext!
     
     let branch: Branch
     
@@ -17,8 +18,12 @@ public class BranchProvider : NSObject, AnalyticsProvider {
         branch = Branch.getInstance(branchKey)
     }
     
-    func identifyUser(userId: String) {
-        branch.setIdentity(userId)
+    func login(isNewUser: Bool) {
+        branch.setIdentity(context.userId)
+    }
+    
+    func logout() {
+        branch.setIdentity(nil)
     }
     
     func reset() {

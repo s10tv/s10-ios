@@ -9,7 +9,9 @@
 import Foundation
 import AnalyticsSwift
 
+
 public class SegmentProvider : NSObject, AnalyticsProvider {
+    var context: AnalyticsContext!
     
     let segment: AnalyticsSwift.Analytics
     
@@ -17,29 +19,50 @@ public class SegmentProvider : NSObject, AnalyticsProvider {
         segment = AnalyticsSwift.Analytics.create(writeKey)
     }
     
-    func identifyUser(userId: String) {
+    // MARK: -
+    
+    func appInstall() {
+        segment.enqueue(IdentifyMessageBuilder().anonymousId(context.deviceId))
+    }
+    
+    func appOpen() {
+        track("App: Open", properties: nil)
+    }
+    
+    func appClose() {
+        track("App: Close", properties: nil)
+    }
+    
+    func login(isNewUser: Bool) {
+        guard let userId = context.userId else { return }
         segment.enqueue(IdentifyMessageBuilder().userId(userId))
+        updateUsername()
+        updateEmail()
+        updateFullname()
+        updatePhone()
+        track("Login", properties: ["New User": isNewUser])
     }
     
-    func identifyDevice(deviceId: String) {
-        segment.enqueue(IdentifyMessageBuilder().anonymousId(deviceId))
+    func logout() {
+        track("Logout", properties: nil)
+        segment.enqueue(IdentifyMessageBuilder().anonymousId(context.deviceId))
     }
     
-    func track(event: String!, properties: [NSObject : AnyObject]?) {
-        var msg = TrackMessageBuilder(event: event)
-        if let properties = properties {
-            var props : [String: AnyObject] = [:]
-            for (k, v) in properties {
-                if let k = k as? String {
-                    props[k] = v
-                }
-            }
-            msg = msg.properties(props)
-        }
+    func track(event: String, properties: [NSObject : AnyObject]?) {
+        var msg = TrackMessageBuilder(event: event).properties(convertProperties(properties))
+        msg = context.userId.map { msg.userId($0) } ?? msg.anonymousId(context.deviceId)
         segment.enqueue(msg)
     }
     
-    func setUserProperties(properties: [String : AnyObject]) {
-        segment.enqueue(IdentifyMessageBuilder().traits(properties))
+    func screen(name: String, properties: [NSObject : AnyObject]?) {
+        var msg = ScreenMessageBuilder(name: name).properties(convertProperties(properties))
+        msg = context.userId.map { msg.userId($0) } ?? msg.anonymousId(context.deviceId)
+        segment.enqueue(msg)
+    }
+    
+    func setUserProperties(properties: [NSObject : AnyObject]) {
+        var msg = IdentifyMessageBuilder().traits(convertProperties(properties))
+        msg = context.userId.map { msg.userId($0) } ?? msg.anonymousId(context.deviceId)
+        segment.enqueue(msg)
     }
 }

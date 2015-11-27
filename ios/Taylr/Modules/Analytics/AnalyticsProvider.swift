@@ -8,37 +8,70 @@
 
 import Foundation
 
-@objc protocol AnalyticsProvider : class {
-    // Identity Management
-    optional func identifyUser(userId: String)
-    optional func identifyDevice(deviceId: String)
-    optional func setUserPhone(phone: String)
-    optional func setUserEmail(email: String)
-    optional func setUserFullname(fullname: String)
-    optional func setUserProperties(properties: [String: AnyObject])
-    optional func incrementUserProperty(propertyName: String, amount: NSNumber)
+@objc protocol AnalyticsContext : class {
+    var isNewInstall: Bool { get }
+    var deviceId: String { get }
+    var deviceName: String { get }
+    var userId: String? { get }
+    var username: String? { get }
+    var phone: String? { get }
+    var email: String? { get }
+    var fullname: String? { get }
+}
 
-    // Event management
-    optional func track(event: String!, properties: [NSObject : AnyObject]?)
-    optional func registerSuperproperties(properties: [String: AnyObject])
+@objc protocol AnalyticsProvider : class {
+    var context: AnalyticsContext! { get set }
     
-    // Push Notification
-    optional func addPushDeviceToken(deviceToken: NSData)
+    optional func appInstall()
+    optional func appOpen()
+    optional func appClose()
+    
+    func login(isNewUser: Bool)
+    func logout()
+    
+    // Only gets called after user is authenticated
+    optional func updateUsername()
+    optional func updatePhone()
+    optional func updateEmail()
+    optional func updateFullname()
+    
+    optional func setUserProperties(properties: [NSObject : AnyObject])
+    optional func track(event: String, properties: [NSObject : AnyObject]?)
+    optional func screen(name: String, properties: [NSObject : AnyObject]?)
+    
+    optional func registerPushToken(pushToken: NSData)
     optional func trackPushNotification(userInfo: [NSObject : AnyObject])
     
     // Utils
-    optional func reset()
     optional func flush()
 }
 
 extension AnalyticsProvider {
-    func setUserPhone(phone: String) {
-        setUserProperties?(["Phone": phone])
+    func updateUsername() {
+        setUserProperties?(["Username": context.username ?? NSNull()])
     }
-    func setUserEmail(email: String) {
-        setUserProperties?(["Email": email])
+    func updatePhone() {
+        setUserProperties?(["Phone": context.phone ?? NSNull()])
     }
-    func setUserFullname(fullname: String) {
-        setUserProperties?(["Full Name": fullname])
+    func updateEmail() {
+        setUserProperties?(["Email": context.email ?? NSNull()])
+    }
+    func updateFullname() {
+        setUserProperties?(["Fullname": context.fullname ?? NSNull()])
+    }
+    
+    // Helper
+    func convertProperties(properties: [NSObject : AnyObject]?) -> [String: AnyObject] {
+        if let properties = properties {
+            var props : [String: AnyObject] = [:]
+            for (k, v) in properties {
+                if let k = k as? String {
+                    props[k] = v
+                }
+            }
+            return props
+        }
+        return [:]
     }
 }
+

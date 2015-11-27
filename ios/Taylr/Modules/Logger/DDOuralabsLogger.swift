@@ -11,6 +11,8 @@ import CocoaLumberjack
 import Ouralabs
 
 class DDOuralabsLogger : DDAbstractLogger {
+    var context: AnalyticsContext!
+    
     init(apiKey: String) {
         Ouralabs.initWithKey(apiKey)
         super.init()
@@ -50,15 +52,21 @@ class DDOuralabsLogger : DDAbstractLogger {
 }
 
 extension DDOuralabsLogger : AnalyticsProvider {
-    func identifyDevice(deviceId: String) {
-        setAttribute(OUAttr1, value: deviceId)
+    
+    func appInstall() {
+        setAttribute(OUAttr1, value: context.deviceName)
     }
     
-    func identifyUser(userId: String) {
-        setAttribute(OUAttr2, value: userId)
+    func login(isNewUser: Bool) {
+        setAttribute(OUAttr2, value: context.userId)
     }
     
-    func setUserFullname(fullname: String) {
-        setAttribute(OUAttr3, value: fullname)
+    func logout() {
+        setAttribute(OUAttr2, value: nil)
+        setAttribute(OUAttr3, value: nil)
+    }
+    
+    func updateFullname() {
+        setAttribute(OUAttr3, value: context.fullname)
     }
 }

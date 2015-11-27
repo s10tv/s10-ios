@@ -11,13 +11,15 @@
 
 @interface RCT_EXTERN_MODULE(TSAnalytics, NSObject)
 
-RCT_EXTERN_METHOD(identifyDevice:(NSString *)deviceId)
-RCT_EXTERN_METHOD(identifyUser:(NSString *)userId)
+RCT_EXTERN_METHOD(userDidLogin:(NSString *)userId isNewUser:(BOOL)isNewUser)
+RCT_EXTERN_METHOD(userDidLogout)
+RCT_EXTERN_METHOD(setUserUsername:(NSString *)username)
 RCT_EXTERN_METHOD(setUserPhone:(NSString *)phone)
 RCT_EXTERN_METHOD(setUserEmail:(NSString *)email)
 RCT_EXTERN_METHOD(setUserFullname:(NSString *)fullname)
 RCT_EXTERN_METHOD(track:(NSString *)event properties:(NSDictionary *)properties)
+RCT_EXTERN_METHOD(screen:(NSString *)name properties:(NSDictionary *)properties)
 RCT_EXTERN_METHOD(setUserProperty:(NSString *)name value:(NSString *)value)
-RCT_EXTERN_METHOD(incrementUserProperty:(NSString *)name amount:(int)amount)
+RCT_EXTERN_METHOD(flush)
 
 @end

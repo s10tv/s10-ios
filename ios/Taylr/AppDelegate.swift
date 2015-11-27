@@ -61,7 +61,7 @@ class AppDelegate : UIResponder {
         intercom = IntercomProvider(appId: config.intercom.appId, apiKey: config.intercom.apiKey)
         segment = SegmentProvider(writeKey: config.segmentWriteKey)
         uxcam = UXCamProvider(apiKey: config.uxcamKey)
-        Analytics.providers = [branch, amplitude, mixpanel, intercom, segment, uxcam, ouralabs, crashlytics]
+        Analytics.addProviders([branch, amplitude, mixpanel, intercom, segment, uxcam, ouralabs, crashlytics])
         
         // Setup Layer
         layer = LayerService(layerAppID: config.layerURL)

@@ -95,6 +95,7 @@ PODS:
   - SDWebImage/Core (3.7.3)
   - SimpleKeychain (0.6.1)
   - SVProgressHUD (2.0-beta)
+  - SwiftyUserDefaults (2.0.0)
   - SwipeView (1.3.2)
   - TPCircularBuffer (0.0.1)
   - TwitterCore (1.14.1):
@@ -134,6 +135,7 @@ DEPENDENCIES:
   - SDWebImage (~> 3.7)
   - SimpleKeychain (~> 0.4)
   - SVProgressHUD (~> 2.0-beta)
+  - SwiftyUserDefaults (~> 2.0)
   - SwipeView (~> 1.3)
   - TwitterCore (~> 1.13)
   - UXCam (~> 2.4)
@@ -184,6 +186,7 @@ SPEC CHECKSUMS:
   SDWebImage: 1d2b1a1efda1ade1b00b6f8498865f8ddedc8a84
   SimpleKeychain: 150d76f3b9200de58f033228f6e976c6241a221c
   SVProgressHUD: c83337f10ed32d701c423d519059a249973c8662
+  SwiftyUserDefaults: 1266e9734c68bcfbac8294ee84173dc8ba6db312
   SwipeView: bd67cfaf7760c036438446b3ccb28a3b84fce009
   TPCircularBuffer: 949e9632b9fb99b7274d7b2296ee22bff5841e35
   TwitterCore: 5c02651e664d715fda64a8870a4a2f6754705a2d
