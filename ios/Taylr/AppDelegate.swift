@@ -57,8 +57,8 @@ class AppDelegate : UIResponder {
         // Setup Analytics
         branch = BranchProvider(branchKey: config.branchKey)
         amplitude = AmplitudeProvider(apiKey: config.amplitudeKey)
-        mixpanel = MixpanelProvider(apiToken: config.mixpanelToken, launchOptions: launchOptions) // TODO: Add launchOptions
-        intercom = IntercomProvider(appId: config.intercom.appId, apiKey: config.intercom.apiKey)
+        mixpanel = MixpanelProvider(apiToken: config.mixpanel.token, launchOptions: launchOptions)
+        intercom = IntercomProvider(config: config)
         segment = SegmentProvider(writeKey: config.segmentWriteKey)
         uxcam = UXCamProvider(apiKey: config.uxcamKey)
         Analytics.addProviders([branch, amplitude, mixpanel, intercom, segment, uxcam, ouralabs, crashlytics])

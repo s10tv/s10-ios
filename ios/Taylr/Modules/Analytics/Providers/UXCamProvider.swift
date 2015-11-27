@@ -19,6 +19,15 @@ public class UXCamProvider : NSObject, AnalyticsProvider {
         UXCam.startWithKey(apiKey)
     }
     
+    func appLaunch() {
+        if let userId = context.userId {
+            UXCam.tagUsersName(userId)
+        }
+        if context.isNewInstall {
+            UXCam.markSessionAsFavorite()
+        }
+    }
+    
     func login(isNewUser: Bool) {
         UXCam.tagUsersName(context.userId)
         UXCam.markSessionAsFavorite()

@@ -9,7 +9,7 @@
 import Foundation
 import Intercom
 import CocoaLumberjack
-
+import UXCam
 
 // TODO: Add more information to Intercom
 // https://doc.intercom.io/api/#user-model
@@ -25,35 +25,46 @@ import CocoaLumberjack
 @objc(TSIntercomProvider)
 public class IntercomProvider : NSObject, AnalyticsProvider {
     var context: AnalyticsContext!
+
+    let config: AppConfig
     
-    init(appId: String, apiKey: String) {
-        Intercom.setApiKey(apiKey, forAppId: appId)
+    init(config: AppConfig) {
+        self.config = config
+        Intercom.setApiKey(config.intercom.apiKey, forAppId: config.intercom.appId)
         Intercom.setPreviewPosition(.BottomRight)
     }
     
-    func appLaunch() {
+    private func registerUser() {
         if let userId = context.userId {
             if let email = context.email {
                 Intercom.registerUserWithUserId(userId, email: email)
             } else {
                 Intercom.registerUserWithUserId(userId)
             }
+            setUserProperties(["Taylr URL": "https://\(config.serverHostName)/admin/users/\(userId)"])
         } else {
             Intercom.registerUnidentifiedUser()
         }
-        setUserProperties(["Device Name": context.deviceName])
+        setUserProperties([
+            "Device ID": context.deviceId,
+            "Device Name": context.deviceName,
+            "Mixpanel URL": "https://mixpanel.com/report/\(config.mixpanel.projectId)/explore/#user?distinct_id=\(context.deviceId)",
+        ])
+    }
+    
+    func appLaunch() {
+        registerUser()
+    }
+    
+    func appClose() {
+        if let url = UXCam.urlForCurrentUser() {
+            setUserProperties(["UXCam URL": "http://\(url)"])
+        }
     }
     
     func login(isNewUser: Bool) {
-        guard let userId = context.userId else {
-            DDLogError("Cannot call Intercom.login without userId")
-            return
-        }
-        if let email = context.email {
-            Intercom.registerUserWithUserId(userId, email: email)
-        } else {
-            Intercom.registerUserWithUserId(userId)
-        }
+        assert(context.userId != nil)
+        registerUser()
         track("Login", properties: ["New User": isNewUser])
     }
     
