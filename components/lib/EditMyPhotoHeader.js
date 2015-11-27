@@ -114,7 +114,11 @@ class EditMyPhotoHeader extends React.Component {
     let loader = this.state.uploading ? <OverlayLoader /> : null;
 
     return ( 
-      <View>
+      <TouchableOpacity onPress={() => {
+        return this.__selectAndUploadImage.bind(this)({
+          type: 'COVER_PIC', stateKey: 'coverSource'
+        })
+      }}>
         { loader }
         { cover }
         <Button onPress={() => { return this.__selectAndUploadImage.bind(this)({
@@ -135,7 +139,7 @@ class EditMyPhotoHeader extends React.Component {
               </View>
           </Button>
         </View>
-      </View>
+      </TouchableOpacity>
     )
   }
 }
