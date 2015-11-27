@@ -89,7 +89,9 @@ class HistoryScreen extends React.Component {
       let cardHeight = candidate.height ? candidate.height : _.sample(heights)
 
       return (
-        <View stlye={{ flex: 1}}>
+        <View
+          key={candidate._id}
+          stlye={{ flex: 1}}>
           <Text style={[{ paddingTop: 12, paddingBottom: 3 }, SHEET.baseText]}>
               {this._timeDifference(new Date(), candidate.date)}
           </Text>
