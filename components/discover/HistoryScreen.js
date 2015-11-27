@@ -49,7 +49,7 @@ class HistoryProfile extends React.Component {
                   opacity: 0.60, position:'absolute', bottom: 0}}>
                 <View style={{flex: 1, flexDirection: 'row', margin: 10}}>
                   <Text style={[SHEET.baseText, { flex: 1, color: 'white', }]}>
-                    {user.firstName} {user.gradYear}
+                    {user.shortDisplayName}
                   </Text>
                 </View>
               </View>
@@ -82,7 +82,7 @@ class HistoryScreen extends React.Component {
   }
 
   createProfiles(candidates) {
-    var heights = [325, 300, 250, 200, 175];
+    var heights = [250];
 
     return candidates.map((candidate) => {
       let user = this.props.ddp.collections.users.findOne({ _id: candidate.userId });
@@ -122,24 +122,30 @@ class HistoryScreen extends React.Component {
     } else {
       history.sort((one, two) => { return  two.date - one.date })
 
-      let firstList = history.filter((elem, idx) => {
-        return idx % 2 == 0 
-      })
+      let [first, second, ...rest] = history;
 
-      const [ first ] = firstList;
-      if (first) {
-        first.height = 300;
+      let firstList = [];
+      let secondList = [];
+      if (rest) {
+
+        // secondList.length >= firstList.length
+        firstList = rest.filter((elem, idx) => {
+          return idx % 2 == 1
+        })
+
+        secondList = rest.filter((elem, idx) => {
+          return idx % 2 == 0
+        })
       }
 
-      let secondList = history.filter((elem, idx) => {
-        return idx % 2 == 1
-      })
+      // first is guaranteed to exist
+      first.height = 300;
+      firstList = [first].concat(firstList)
 
-      const [ second ] = secondList;
       if (second) {
-        second.height = 225;
+        second.height = 200;
+        secondList = [second].concat(secondList)
       }
-
 
       historyView = (
         <ScrollView showsVerticalScrollIndicator={false} style={styles.scroll}>
