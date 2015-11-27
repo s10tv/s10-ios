@@ -49,12 +49,10 @@ class FacebookLoginScreen extends React.Component {
 
   digitsLogin(error, response) {
     if (error) {
-      Analytics.track('Welcome: Cancelled phone verification');
+      // warning here because when you click 'cancel' that also results in an error.
       this.logger.warning(JSON.stringify(error))
       return;
     }
-
-    Analytics.track('Welcome: Verify Phone');
 
     // we convert userId to id on the server, so the userId better be set.
     response.userId = response.userID;
@@ -70,6 +68,7 @@ class FacebookLoginScreen extends React.Component {
       });
 
       if (result.isNewUser) {
+        Analytics.track('Signup: Start');
         this.transitionToNextScene();
       }
     })
@@ -131,15 +130,11 @@ class FacebookLoginScreen extends React.Component {
           <FBSDKLoginButton
             style={styles.fbButton}
             onLoginFinished={(error, result) => {
-              // we don't get an event handler with FB so this is the best we can do.
-              Analytics.track('Welcome: TapLoginWithFB'); 
-
               if (error) {
                 this.logger.error(`Error logging in with Facebook ${error.toString()}`);
                 alert('Error logging you in :C Please try again later.');
               } else {
                 if (!result.isCancelled) {
-                  Analytics.track('Welcome: Verify FB');
                   FBSDKAccessToken.getCurrentAccessToken((accessToken) => {
                     if (accessToken && accessToken.tokenString) {
                       this.props.ddp.call({
@@ -155,6 +150,7 @@ class FacebookLoginScreen extends React.Component {
                         });
 
                         if (result.isNewUser) {
+                          Analytics.track('Signup: Start');
                           this.transitionToNextScene();
                         }
                       })
@@ -162,7 +158,7 @@ class FacebookLoginScreen extends React.Component {
                         this.logger.error(JSON.stringify(error));
                       })
                     } else {
-                      Analytics.track('Welcome: Cancelled FB Verification'); 
+                      this.logger.info('Welcome: Cancelled FB Verification'); 
                     }
                   });
                 }
@@ -179,8 +175,6 @@ class FacebookLoginScreen extends React.Component {
             <Text
               style={[{padding: 5}, styles.link, SHEET.baseText]}
               onPress={() => {
-                Analytics.track('Welcome: TapLoginWithPhone'); 
-
                 let options = {
                   title: "Taylr",
                   appearance: {

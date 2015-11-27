@@ -159,7 +159,7 @@ class RootNavigator extends React.Component {
     switch (route.id) {
       case 'viewprofile':
         let properties = route.me ? { id: route.me._id } : undefined;
-        Analytics.track("View: Profile", properties)
+        Analytics.screen("Profile", properties)
         return <Activities
           navigator={nav} 
           me={route.me}
@@ -171,7 +171,7 @@ class RootNavigator extends React.Component {
           ddp={this.props.ddp} />
       
       case 'viewintegration':
-        Analytics.track("View: Integration Details", {
+        Analytics.screen("Integration Details", {
           "Name" : route.integration.name
         })
         return <WebView
@@ -180,6 +180,9 @@ class RootNavigator extends React.Component {
           url={route.url} />;
 
       case 'sendMessage':
+        Analytics.screen("New Conversation", {
+          recipientId: route.recipientUser._id 
+        });
         return <ConversationView 
           navigator={nav}
           style={{flex: 1}}
@@ -187,7 +190,7 @@ class RootNavigator extends React.Component {
           currentUser={user} />
 
       case 'conversation':
-        Analytics.track("View: Conversation", {
+        Analytics.screen("Conversation", {
           conversationId: route.conversationId
         }); 
         return <ConversationView

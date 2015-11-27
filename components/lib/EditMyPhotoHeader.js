@@ -33,9 +33,9 @@ class EditMyPhotoHeader extends React.Component {
     let { type, stateKey } = options;
 
     if (type === 'PROFILE_PIC') {
-      Analytics.track('EditProfile: UpdateAvatar');
+      Analytics.track('Me: UpdateAvatar');
     } else if (type == 'COVER_PIC') {
-      Analytics.track('EditProfile: UpdateCover');
+      Analytics.track('Me: UpdateCover');
     }
 
     var options = {

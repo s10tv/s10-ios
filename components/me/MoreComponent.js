@@ -29,9 +29,7 @@ class ContactUs extends React.Component {
           <Text style={[SHEET.baseText]}>Contact Us</Text>
         </TappableCard>
         <TappableCard style={styles.card}
-          onPress={() => {
-            Analytics.track('Me: Logout');
-            this.props.onLogout() }}>
+          onPress={() => { this.props.onLogout() }}>
           <Text style={[SHEET.baseText]}>Logout</Text>
         </TappableCard>
       </View>

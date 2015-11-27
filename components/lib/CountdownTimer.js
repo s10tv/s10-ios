@@ -11,6 +11,7 @@ let {
 
 let SHEET = require('../CommonStyles').SHEET;
 let COLORS = require('../CommonStyles').COLORS;
+let Analytics = require('../../modules/Analytics');
 
 class CountdownTimer extends React.Component {
   constructor(props) {
@@ -68,10 +69,7 @@ class CountdownTimer extends React.Component {
     return (
       <Button
         onPress={() => {
-          // analytics
-          if (this.props.track) {
-            this.props.track();
-          }
+          Analytics.track('Today: Tap Message');
 
           let user = this.formatUser(this.props.candidateUser);
           let currentUser = this.formatUser(this.props.me);

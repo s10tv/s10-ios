@@ -12,10 +12,20 @@ let {
 let SHEET = require('../CommonStyles').SHEET;
 let TappableCard = require('./Card').TappableCard;
 let Card = require('./Card').Card;
+let Analytics = require('../../modules/Analytics');
 
 class ServiceTile extends React.Component {
 
   _handleServiceTouch(service) {
+    if (service.status == 'linked') {
+      Analytics.track('Remove Integration', {
+        name: service.name
+      })
+    } else if (service.status == 'unlinked') {
+      Analytics.track('Add Integration', {
+        name: service.name
+      })
+    }
     this.props.navigator.push({
       id: 'linkservice',
       title: "Add Integration",

@@ -93,6 +93,7 @@ class OnboardingNavigator extends React.Component {
       case 'linkservicecontainer':
         if (me && me.connectedProfiles.length > 0) {
           action = () => {
+            Analytics.track('Signup: Add Integrations');
             navigator.push({
               id: 'editprofile',
               title: 'Edit Profile',
@@ -123,6 +124,7 @@ class OnboardingNavigator extends React.Component {
               return this.props.ddp.call({ methodName: 'completeProfile' })
             })
             .then(() => {
+              Analytics.track('Signup: Create Profile');
               navigator.push({
                 id: 'hashtags',
                 title: 'Describe Yourself',
@@ -142,6 +144,7 @@ class OnboardingNavigator extends React.Component {
         }
 
         action = () => {
+          Analytics.track('Signup: Verify CWL');
           navigator.push({
             id: 'linkservicecontainer',
             title: 'Connect Services',
@@ -152,8 +155,12 @@ class OnboardingNavigator extends React.Component {
       case 'hashtags':
         buttonText = 'Done';
         action = () => {
+          Analytics.track('Signup: Add Hashtags');
           if (myTags && myTags.length > 0) {
-            this.props.ddp.call({ methodName: 'confirmRegistration' });
+            this.props.ddp.call({ methodName: 'confirmRegistration' })
+            .then(() => {
+              Analytics.track('Signup: Done');
+            })
           } else {
             this.displayError('You\'re so close! Please add at least one tag.')
           }
@@ -196,14 +203,14 @@ class OnboardingNavigator extends React.Component {
           this.setState({ cwl: true })
         }
         return resolve(true)
-      });
+     });
     })
   }
 
   renderScene(route, nav) {
     switch (route.id) {
       case 'login':
-        Analytics.track('View: Welcome');
+        Analytics.screen('Welcome');
         return (
           <FacebookLoginScreen
             navigator={nav}
@@ -216,7 +223,7 @@ class OnboardingNavigator extends React.Component {
         );
 
       case 'linkservicecontainer':
-        Analytics.track('View: ConnectServices');
+        Analytics.screen('ConnectServices');
         return (
           <LinkServiceScreen navigator={nav}
             integrations={this.props.integrations}
@@ -225,7 +232,7 @@ class OnboardingNavigator extends React.Component {
         );
 
       case 'editprofile':
-        Analytics.track('View: CreateProfile');
+        Analytics.screen('CreateProfile');
         return <EditProfileScreen 
           onEditProfileChange={this.onEditProfileChange.bind(this)}
           onEditProfileFocus={this.onEditProfileFocus.bind(this)}
@@ -235,13 +242,13 @@ class OnboardingNavigator extends React.Component {
           me={this.props.me} />
 
       case 'joinnetwork':
-        Analytics.track('View: JoinNetwork');
+        Analytics.screen('JoinNetwork');
         return <JoinNetworkScreen
           navigator={nav}
           startInLoadingState={true} />
 
       case 'campuswidelogin':
-        Analytics.track('View: CWL');
+        Analytics.screen('CWL');
 
         let url = 'https://cas.id.ubc.ca/ubc-cas/login';
         let cookieName = 'CASTGC';
@@ -263,7 +270,7 @@ class OnboardingNavigator extends React.Component {
               this.proceedIfLoginTokenPresent(nav, cookieName)
               .then(() => {
                 if (this.state.cwl) {
-                  Analytics.track('Network: JoinSuccess');
+                  Analytics.track('Signup: Verify CWL');
                   nav.push({
                     id: 'linkservicecontainer',
                     title: 'Connect Services',
@@ -276,7 +283,7 @@ class OnboardingNavigator extends React.Component {
           url={url} />;
 
       case 'linkservice':
-        Analytics.track("View: Link Integration", {
+        Analytics.screen("Link Integration", {
             "Name" : route.integration.name
         })
         return <WebView
@@ -286,6 +293,7 @@ class OnboardingNavigator extends React.Component {
           url={route.link} />;
 
       case 'hashtags':
+        Analytics.screen("All Hashtag Categories")
         return <AddHashtagScreen navigator={nav}
           me={this.props.me}
           categories={this.props.categories}
@@ -293,7 +301,9 @@ class OnboardingNavigator extends React.Component {
           ddp={this.props.ddp} />
 
       case 'addhashtag':
-        Analytics.track("EditHashtags");
+        Analytics.screen("Edit Hashtag By Category", {
+          category: route.category
+        });
         return <HashtagListView
           style={{ flex: 1 }} 
           navigator={nav}
@@ -303,7 +313,7 @@ class OnboardingNavigator extends React.Component {
           category={route.category} />;
 
       case 'openwebview':
-        Analytics.track("View: Website", {
+        Analytics.screen("Website", {
           "URL" : route.url
         })
         return <WebView
@@ -312,7 +322,7 @@ class OnboardingNavigator extends React.Component {
           url={route.url} />;
 
       case 'viewintegration':
-        Analytics.track("View: Integration", {
+        Analytics.screen("Integration Details", {
           "Name" : route.integration.name
         })
         return <WebView

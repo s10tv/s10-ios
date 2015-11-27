@@ -83,23 +83,18 @@ class TSTabNavigator extends React.Component {
   _leftButton(route, navigator, index, navState) {
     let buttonText = 'Back';
 
+    var action = () => {
+      navigator.pop()
+    };
+
     switch (route.id) {
       case 'conversation':
       case 'root':
         return null;
 
       case 'edit':
-        buttonText = 'Save';
-        break;
-
-      case 'addhashtag':
-        buttonText = 'Done';
-        break;
-    }
-    
-    return (
-      <TouchableOpacity
-        onPress={() => {
+        action = () => {
+          Analytics.track("Me: Edit Profile");
           let saveActiveEditing = this.state.editProfileCurrentlyFocused ?
             this.props.updateProfile(this.state.editProfileKey, this.state.activeText) :
             Promise.resolve(true);
@@ -110,7 +105,17 @@ class TSTabNavigator extends React.Component {
           .catch(err => {
             AlertIOS.alert("Uh oh", err.reason);
           })
-        }}
+        };
+        break;
+
+      case 'addhashtag':
+        buttonText = 'Done';
+        break;
+    }
+    
+    return (
+      <TouchableOpacity
+        onPress={action}
         style={SHEET.navBarLeftButton}>
         <Text style={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText]}>
           {buttonText}
@@ -187,7 +192,7 @@ class TSTabNavigator extends React.Component {
 
     switch (route.id) {
       case 'edit':
-        Analytics.track("View: EditProfile");
+        Analytics.screen("EditProfile");
         return <MeEditScreen navigator={nav}
           ddp={this.props.ddp} 
           updateProfile={this.props.updateProfile}
@@ -198,7 +203,7 @@ class TSTabNavigator extends React.Component {
           integrations={this.props.integrations} />
       
       case 'addhashtag':
-        Analytics.track("View: EditHashtags");
+        Analytics.screen("EditHashtags");
         return <HashtagListView
           style={{ flex: 1 }} 
           navigator={nav}
@@ -207,7 +212,7 @@ class TSTabNavigator extends React.Component {
           category={route.category} />;
       
       case 'linkservice':
-        Analytics.track("View: Link Integration", {
+        Analytics.screen("Link Integration", {
           "Name" : route.integration.name
         })
         return <WebView
@@ -221,13 +226,18 @@ class TSTabNavigator extends React.Component {
           url={route.link} />;
 
       case 'history':
-        Analytics.track("View: History");
+        Analytics.screen("History");
         return <HistoryScreen navigator={nav}
           parentNavigator={this.props.navigator}
           history={this.props.history}
           ddp={this.props.ddp}/>
 
       case 'root':
+        if (this.state.currentTab == 'Today') {
+          Analytics.track('Today: View');
+        }
+        Analytics.screen(this.setState.currentTab);
+
         return (
           <TabNavigator>
             <TabNavigator.Item 
@@ -235,7 +245,6 @@ class TSTabNavigator extends React.Component {
               renderSelectedIcon={() => <Image style={styles.selected} source={require('./img/ic-me.png')}/>}
               selectedTitleStyle={styles.selectedText}
               onPress={() => {
-                Analytics.track("View: Me"); 
                 this.setState({currentTab: 'Me'});
               }}
               selected={this.state.currentTab == 'Me'}>
@@ -254,7 +263,6 @@ class TSTabNavigator extends React.Component {
               renderSelectedIcon={() => <Image style={styles.selected} source={require('./img/ic-compass.png')}/>}
               selectedTitleStyle={styles.selectedText}
               onPress={() => {
-                Analytics.track("View: Today"); 
                 this.setState({currentTab: 'Today'});
               }}
               selected={this.state.currentTab == 'Today'}>
@@ -275,7 +283,6 @@ class TSTabNavigator extends React.Component {
               renderSelectedIcon={() => <Image style={styles.selected} source={require('./img/ic-chats.png')}/>}
               selectedTitleStyle={styles.selectedText}
               onPress={() => {
-                Analytics.track("View: Connections"); 
                 this.setState({currentTab: 'Conversations'});
               }}
               selected={this.state.currentTab == 'Conversations'}>

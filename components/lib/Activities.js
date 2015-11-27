@@ -200,10 +200,6 @@ class Activities extends React.Component {
   }
 
   _switchService(profile) {
-    Analytics.track('Profile: Switch', {
-      name: profile.integrationName
-    });
-
     let newState = {
       activeProfile: profile,
     };
@@ -212,10 +208,6 @@ class Activities extends React.Component {
   }
 
   _switchToTaylr() {
-    Analytics.track('Profile: Switch', {
-      name: 'taylr' 
-    });
-
     // clear activity cards
     this.setState({
       activeProfile: { id: 'taylr', integrationName: 'taylr' },
@@ -372,9 +364,6 @@ class Activities extends React.Component {
       messageButton = (
         <CountdownTimer
           style={styles.messageButton}
-          track={() => {
-            Analytics.track('Profile: TapMessage')
-          }}
           navigator={this.props.navigator}
           candidateUser={this.props.candidateUser}
           me={this.props.me}

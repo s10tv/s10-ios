@@ -13,9 +13,13 @@ let SHEET = require('../CommonStyles').SHEET;
 let TappableCard = require('./Card').TappableCard;
 let Hashtag = require('./Hashtag');
 let Loader = require('./Loader');
+let Analytics = require('../../modules/Analytics');
 
 class HashtagCategory extends React.Component {
   _handleCategoryTouch(category) {
+    Analytics.track('Edit Hashtags', {
+      category: category.displayName
+    });
     this.props.navigator.push({
       id: 'addhashtag',
       title: category.displayName,
