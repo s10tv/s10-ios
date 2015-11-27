@@ -36,9 +36,11 @@ class BridgeManager : NSObject {
     weak var bridge: RCTBridge?
     let azure = AzureClient()
     let env: Environment
+    let config: AppConfig
     
-    init(env: Environment) {
+    init(env: Environment, config: AppConfig) {
         self.env = env
+        self.config = config
         super.init()
         listenForNotification(kRNSendAppEventNotificationName).startWithNext { [weak self] note in
             if let dispatcher = self?.bridge?.eventDispatcher,
@@ -76,7 +78,15 @@ extension BridgeManager {
     @objc func constantsToExport() -> NSDictionary {
         return [
             "isRunningInSimulator": env.isRunningInSimulator,
-            "isRunningTestFlightBeta": env.isRunningTestFlightBeta
+            "isRunningTestFlightBeta": env.isRunningTestFlightBeta,
+            "serverUrl": config.serverURL.absoluteString,
+            "bundleUrlScheme": config.audience.urlScheme,
+            "audience": config.audience.rawValue,
+            "appId": env.appId,
+            "version": env.version,
+            "build": env.build,
+            "deviceId": env.deviceId,
+            "deviceName": env.deviceName,
         ]
     }
     
