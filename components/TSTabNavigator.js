@@ -227,7 +227,6 @@ class TSTabNavigator extends React.Component {
         return (
           <TabNavigator>
             <TabNavigator.Item 
-              title="Me"
               renderIcon={() => <Image source={require('./img/ic-me.png')}/>}
               renderSelectedIcon={() => <Image style={styles.selected} source={require('./img/ic-me.png')}/>}
               selectedTitleStyle={styles.selectedText}
@@ -247,7 +246,6 @@ class TSTabNavigator extends React.Component {
 
             </TabNavigator.Item>
             <TabNavigator.Item 
-              title="Today"
               renderIcon={() => <Image source={require('./img/ic-compass.png')}/>}
               renderSelectedIcon={() => <Image style={styles.selected} source={require('./img/ic-compass.png')}/>}
               selectedTitleStyle={styles.selectedText}
@@ -268,7 +266,6 @@ class TSTabNavigator extends React.Component {
 
             </TabNavigator.Item>
             <TabNavigator.Item 
-              title="Conversations"
               badgeText={this.props.numUnreadConversations}
               renderIcon={() => <Image source={require('./img/ic-chats.png')}/>}
               renderSelectedIcon={() => <Image style={styles.selected} source={require('./img/ic-chats.png')}/>}
