@@ -13,10 +13,10 @@ let {
   NativeAppEventEmitter,
 } = React;
 
-var TabNavigator = require('react-native-tab-navigator');
+let TabNavigator = require('react-native-tab-navigator');
 
-var Tabbar = require('react-native-tabbar');
-var Item = Tabbar.Item;
+// Native
+let BridgeManager = require('../modules/BridgeManager');
 
 // Common
 let SHEET = require('./CommonStyles').SHEET;
@@ -218,7 +218,7 @@ class TSTabNavigator extends React.Component {
         return <WebView
           style={styles.webView}
           onNavigationStateChange={(navState) => {
-            if (navState.url.indexOf('taylr-dev://') != -1) {
+            if (navState.url.indexOf(BridgeManager.bundleUrlScheme()) != -1) {
               nav.pop();
             }
           }}

@@ -13,7 +13,10 @@ let {
 
 let CookieManager = require('react-native-cookies');
 
+// Native
+let BridgeManager = require('../../modules/BridgeManager');
 let Analytics = require('../../modules/Analytics');
+
 let SHEET = require('../CommonStyles').SHEET;
 let HashtagListView = require('../lib/HashtagListView');
 let FacebookLoginScreen = require('./FacebookLoginScreen');
@@ -60,7 +63,7 @@ class OnboardingNavigator extends React.Component {
   }
 
   _onNavigationStateChange(nav, navState) {
-    if (navState.url.indexOf('taylr-dev://') != -1) {
+    if (navState.url.indexOf(BridgeManager.bundleUrlScheme()) != -1) {
       return nav.pop();
     }
   }

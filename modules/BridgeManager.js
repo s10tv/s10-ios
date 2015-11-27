@@ -21,6 +21,38 @@ class BridgeManager {
     return TSBridgeManager.isRunningTestFlightBeta;
   }
 
+  static serverUrl() {
+    return TSBridgeManager.serverUrl;
+  }
+
+  static bundleUrlScheme() {
+    return TSBridgeManager.bundleUrlScheme;
+  }
+
+  static audience() {
+    return TSBridgeManager.audience;
+  }
+
+  static appId() {
+    return TSBridgeManager.appId;
+  }
+
+  static version() {
+    return TSBridgeManager.version;
+  }
+
+  static build() {
+    return TSBridgeManager.build;
+  }
+
+  static deviceId() {
+    return TSBridgeManager.deviceId;
+  }
+
+  static deviceName() {
+    return TSBridgeManager.deviceName;
+  }
+
   static async getDefaultAccountAsync() {
     return TSBridgeManager.getDefaultAccountAsync();
   }

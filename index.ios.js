@@ -18,14 +18,28 @@ let LayoutContainer = require('./components/LayoutContainer');
 global.process = require("./lib/process.polyfill");
 
 TSLogger.log('JS App Launched', 'debug', 'index.io.js', '', 0);
-let ddp = new TSDDPClient(
-  'wss://s10-dev.herokuapp.com/websocket'
-);
+console.log('bundle url', BridgeManager.bundleUrlScheme());
+
+let ddp = new TSDDPClient(BridgeManager.serverUrl());
 
 NativeAppEventEmitter.addListener('RegisteredPushToken', (tokenInfo) => {
+  if (!tokenInfo) {
+    TSLogger.log('Register push token called with no token', 'warning', 'index.io.js', '', 0);
+    return;
+  }
+
+  tokenInfo.appId = BridgeManager.appId();
+  tokenInfo.version = BridgeManager.version();
+  tokenInfo.build = BridgeManager.build();
+  tokenInfo.deviceId = BridgeManager.deviceId();
+  tokenInfo.deviceName = BridgeManager.deviceName();
+
   ddp.call({ methodName: 'device/update/push', params: tokenInfo })
   .then(() => {
     TSLogger.log('Registered push token', 'debug', 'index.io.js', '', 0);
+  })
+  .catch(err => {
+    TSLogger.log(JSON.stringify(err), 'error', 'index.io.js', '', 0);
   })
 });
 
