@@ -66,11 +66,30 @@ class FacebookLoginScreen extends React.Component {
         userId: result.id,
         resumeToken: result.token,
         expiryDate: result.tokenExpires.getTime(),
+        isNewUser: result.isNewUser,
       });
+
+      if (result.isNewUser) {
+        this.transitionToNextScene();
+      }
     })
     .catch((err) => {
       this.logger.error(JSON.stringify(err)); 
     })
+  }
+
+  transitionToNextScene() {
+    if (this.props.isCWLRequired) {
+      this.props.navigator.push({
+        id: 'joinnetwork',
+        title: 'UBC'
+      });
+    } else {
+      this.props.navigator.push({
+        id: 'linkservicecontainer',
+        title: 'Connect Services'
+      }); 
+    }
   }
 
   render() {
@@ -90,18 +109,7 @@ class FacebookLoginScreen extends React.Component {
         <View style={styles.loginSheet}>
           <Button
             onPress={() => {
-              if (this.props.isCWLRequired) {
-                this.props.navigator.push({
-                  id: 'joinnetwork',
-                  title: 'UBC'
-                });
-              } else {
-                this.props.navigator.push({
-                  id: 'linkservicecontainer',
-                  title: 'Connect Services'
-                }); 
-              }
-
+              this.transitionToNextScene() 
             }}>
               <View style={{ padding:10, borderColor: 'white', borderWidth: 1}}>
                 <Text style={[SHEET.baseText, {fontSize: 18, color: 'white'}]}>
@@ -143,7 +151,12 @@ class FacebookLoginScreen extends React.Component {
                           userId: result.id,
                           resumeToken: result.token,
                           expiryDate: result.tokenExpires.getTime(),
+                          isNewUser: result.isNewUser,
                         });
+
+                        if (result.isNewUser) {
+                          this.transitionToNextScene();
+                        }
                       })
                       .catch(err => {
                         this.logger.error(JSON.stringify(error));

@@ -32,6 +32,7 @@ class LayoutContainer extends React.Component {
     super(props);
     this.ddp = props.ddp;
     this.state = {
+      isNewUser: false,
       needsOnboarding: true,
       modalVisible: false,
       layerAllCountListener: NativeAppEventEmitter
@@ -90,9 +91,16 @@ class LayoutContainer extends React.Component {
   }
 
   /** 
-   * account: { userID, resumeToken }
+   * account: { userId, resumeToken, expiryDate, isNewUser }
    */
   async onLogin(account) {
+    if (account.isNewUser) {
+      // might be useful for showing first time user tutorials.
+      this.setState({
+        isNewUser: true
+      })
+    }
+
     const ddp = this.ddp;
     await BridgeManager.setDefaultAccount(account)
 
@@ -263,8 +271,8 @@ class LayoutContainer extends React.Component {
       const { resumeToken } = defaultAccount;
       let loginResult = await ddp.loginWithToken(resumeToken)
 
-      if (loginResult.token) {
-        this.onLogin(defaultAccount);
+      if (loginResult.resumeToken) {
+        this.onLogin(loginResult);
       } else {
         this.setState({ loggedIn: false });
       }
