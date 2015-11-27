@@ -109,6 +109,10 @@ public class IntercomProvider : BaseAnalyticsProvider {
 
 extension Intercom {
     
+    @objc func setHMAC(hmac: String, data: String) {
+        Intercom.setHMAC(hmac, data: data)
+    }
+    
     @objc func presentMessageComposer() {
         dispatch_async(dispatch_get_main_queue()) {
             Intercom.presentMessageComposer()

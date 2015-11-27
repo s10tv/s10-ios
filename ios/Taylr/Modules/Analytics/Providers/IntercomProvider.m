@@ -11,6 +11,7 @@
 
 @interface RCT_EXTERN_MODULE(TSIntercomProvider, NSObject)
 
+RCT_EXTERN_METHOD(setHMAC:(NSString*)hmac data:(NSString *)data)
 RCT_EXTERN_METHOD(presentMessageComposer)
 RCT_EXTERN_METHOD(presentConversationList)
 
