@@ -47,19 +47,6 @@ import Foundation
 }
 
 extension AnalyticsProvider {
-    // TODO: Make this a superclass in addition to protocol
-//    func updateUsername() {
-//        setUserProperties?(["Username": context.username ?? NSNull()])
-//    }
-//    func updatePhone() {
-//        setUserProperties?(["Phone": context.phone ?? NSNull()])
-//    }
-//    func updateEmail() {
-//        setUserProperties?(["Email": context.email ?? NSNull()])
-//    }
-//    func updateFullname() {
-//        setUserProperties?(["Fullname": context.fullname ?? NSNull()])
-//    }
     
     // Helper
     func convertProperties(properties: [NSObject : AnyObject]?) -> [String: AnyObject] {
@@ -76,3 +63,67 @@ extension AnalyticsProvider {
     }
 }
 
+// MARK: - BaseAnalyticsProvider
+
+public class BaseAnalyticsProvider : NSObject {
+    var context: AnalyticsContext!
+    
+    func updateIdentity() {
+        // To be overwridden by subclass, called at appLaunch, login and logout
+    }
+}
+
+extension BaseAnalyticsProvider : AnalyticsProvider {
+    
+    func appLaunch() {
+        updateIdentity()
+        if context.isNewInstall {
+            track("App: Install")
+        }
+    }
+    
+    func appOpen() {
+        track("App: Open")
+    }
+    
+    func appClose() {
+        track("App: Close")
+    }
+    
+    func login(isNewUser: Bool) {
+        assert(context.userId != nil, "userId should not be nil after login")
+        updateIdentity()
+        track("Login", properties: ["New User": isNewUser])
+    }
+    
+    func logout() {
+        assert(context.userId == nil, "userId should be nil after logout")
+        track("Logout")
+        updateIdentity()
+    }
+    
+    func updateUsername() {
+        setUserProperties(["Username": context.username ?? NSNull()])
+    }
+    func updatePhone() {
+        setUserProperties(["Phone": context.phone ?? NSNull()])
+    }
+    func updateEmail() {
+        setUserProperties(["Email": context.email ?? NSNull()])
+    }
+    func updateFullname() {
+        setUserProperties(["Full Name": context.fullname ?? NSNull()])
+    }
+    
+    func setUserProperties(properties: [NSObject : AnyObject]) {
+        // To be implemented by subclass
+    }
+    
+    func track(event: String, properties: [NSObject : AnyObject]? = nil) {
+        // To be implemented by subclass
+    }
+    
+    func screen(name: String, properties: [NSObject : AnyObject]? = nil) {
+        track("Screen: \(name)", properties: properties)
+    }
+}

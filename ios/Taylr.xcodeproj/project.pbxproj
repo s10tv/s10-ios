@@ -430,8 +430,8 @@
 		EA3225B61BFDAE8A00FF5074 /* Logger */ = {
 			isa = PBXGroup;
 			children = (
-				EA988BF91C06EF84002A80D1 /* DDCrashlyticsLogger.swift */,
 				EA3225B71BFDAE8A00FF5074 /* DDNSLogger.swift */,
+				EA988BF91C06EF84002A80D1 /* DDCrashlyticsLogger.swift */,
 				EA3225B81BFDAE8A00FF5074 /* DDOuralabsLogger.swift */,
 				EA3225B91BFDAE8A00FF5074 /* Logger.swift */,
 				EA3225BA1BFDAE8A00FF5074 /* Logger.m */,
@@ -608,10 +608,10 @@
 				EA8A51091C045229004660E1 /* IntercomProvider.m */,
 				EABE4C621C03C3BF001557A1 /* IntercomProvider.swift */,
 				EABE4C661C03C45A001557A1 /* MixpanelProvider.swift */,
-				EABE4C681C03C45A001557A1 /* UXCamProvider.swift */,
-				EA8A510E1C0460B8004660E1 /* BranchProvider.swift */,
 				EABE4C651C03C45A001557A1 /* AmplitudeProvider.swift */,
 				EABE4C671C03C45A001557A1 /* SegmentProvider.swift */,
+				EABE4C681C03C45A001557A1 /* UXCamProvider.swift */,
+				EA8A510E1C0460B8004660E1 /* BranchProvider.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";

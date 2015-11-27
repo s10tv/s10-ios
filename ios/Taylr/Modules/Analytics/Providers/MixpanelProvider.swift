@@ -9,8 +9,7 @@
 import Foundation
 import Mixpanel
 
-public class MixpanelProvider : NSObject, AnalyticsProvider {
-    var context: AnalyticsContext!
+public class MixpanelProvider : BaseAnalyticsProvider {
     
     let mixpanel: Mixpanel
     var people: MixpanelPeople? {
@@ -22,7 +21,7 @@ public class MixpanelProvider : NSObject, AnalyticsProvider {
         mixpanel = Mixpanel.sharedInstanceWithToken(apiToken, launchOptions: launchOptions)
     }
     
-    func appLaunch() {
+    override func updateIdentity() {
         if let userId = context.userId {
             mixpanel.identify(userId)
         } else {
@@ -39,15 +38,7 @@ public class MixpanelProvider : NSObject, AnalyticsProvider {
         people?.set("Device Name", to: context.deviceName)
     }
     
-    func appOpen() {
-        mixpanel.track("App: Open")
-    }
-    
-    func appClose() {
-        mixpanel.track("App: Close")
-    }
-    
-    func login(isNewUser: Bool) {
+    override func login(isNewUser: Bool) {
         mixpanel.identify(context.userId)
         if isNewUser {
             mixpanel.createAlias(context.userId, forDistinctID: context.deviceId)
@@ -55,34 +46,30 @@ public class MixpanelProvider : NSObject, AnalyticsProvider {
         track("Login", properties: ["New User": isNewUser])
     }
     
-    func logout() {
-        track("Logout", properties: nil)
+    override func logout() {
+        track("Logout")
         mixpanel.identify(context.deviceId)
     }
     
-    func updatePhone() {
+    override func updatePhone() {
         people?.set("$phone", to: context.phone ?? "")
     }
     
-    func updateEmail() {
+    override func updateEmail() {
         people?.set("$email", to: context.email ?? "")
     }
     
-    func updateFullname() {
+    override func updateFullname() {
         mixpanel.nameTag = context.fullname
         people?.set("$name", to: context.fullname ?? "")
     }
     
-    func setUserProperties(properties: [NSObject : AnyObject]) {
+    override func setUserProperties(properties: [NSObject : AnyObject]) {
         people?.set(properties)
     }
     
-    func track(event: String, properties: [NSObject : AnyObject]?) {
+    override func track(event: String, properties: [NSObject : AnyObject]? = nil) {
         mixpanel.track(event, properties: properties)
-    }
-    
-    func screen(name: String, properties: [NSObject : AnyObject]?) {
-        mixpanel.track("Screen: \(name)", properties: properties)
     }
     
     func registerPushToken(pushToken: NSData) {

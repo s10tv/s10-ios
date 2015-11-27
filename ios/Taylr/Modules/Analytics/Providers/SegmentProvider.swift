@@ -10,8 +10,7 @@ import Foundation
 import AnalyticsSwift
 
 
-public class SegmentProvider : NSObject, AnalyticsProvider {
-    var context: AnalyticsContext!
+public class SegmentProvider : BaseAnalyticsProvider {
     
     let segment: AnalyticsSwift.Analytics
     
@@ -21,50 +20,28 @@ public class SegmentProvider : NSObject, AnalyticsProvider {
     
     // MARK: -
     
-    func appLaunch() {
+    override func updateIdentity() {
         if let userId = context.userId {
             segment.enqueue(IdentifyMessageBuilder().anonymousId(userId))
         } else {
             segment.enqueue(IdentifyMessageBuilder().anonymousId(context.deviceId))
         }
         setUserProperties(["Device Name": context.deviceName])
-        if context.isNewInstall {
-            track("App: Install", properties: nil)
-        }
     }
     
-    func appOpen() {
-        track("App: Open", properties: nil)
-    }
-    
-    func appClose() {
-        track("App: Close", properties: nil)
-    }
-    
-    func login(isNewUser: Bool) {
-        guard let userId = context.userId else { return }
-        segment.enqueue(IdentifyMessageBuilder().userId(userId))
-        track("Login", properties: ["New User": isNewUser])
-    }
-    
-    func logout() {
-        track("Logout", properties: nil)
-        segment.enqueue(IdentifyMessageBuilder().anonymousId(context.deviceId))
-    }
-    
-    func track(event: String, properties: [NSObject : AnyObject]?) {
+    override func track(event: String, properties: [NSObject : AnyObject]?) {
         var msg = TrackMessageBuilder(event: event).properties(convertProperties(properties))
         msg = context.userId.map { msg.userId($0) } ?? msg.anonymousId(context.deviceId)
         segment.enqueue(msg)
     }
     
-    func screen(name: String, properties: [NSObject : AnyObject]?) {
+    override func screen(name: String, properties: [NSObject : AnyObject]?) {
         var msg = ScreenMessageBuilder(name: name).properties(convertProperties(properties))
         msg = context.userId.map { msg.userId($0) } ?? msg.anonymousId(context.deviceId)
         segment.enqueue(msg)
     }
     
-    func setUserProperties(properties: [NSObject : AnyObject]) {
+    override func setUserProperties(properties: [NSObject : AnyObject]) {
         var msg = IdentifyMessageBuilder().traits(convertProperties(properties))
         msg = context.userId.map { msg.userId($0) } ?? msg.anonymousId(context.deviceId)
         segment.enqueue(msg)

@@ -20,18 +20,16 @@ import UXCam
 // Segment URL?
 
 @objc(TSIntercomProvider)
-public class IntercomProvider : NSObject, AnalyticsProvider {
-    var context: AnalyticsContext!
+public class IntercomProvider : BaseAnalyticsProvider {
 
     let config: AppConfig
     
     init(config: AppConfig) {
         self.config = config
         Intercom.setApiKey(config.intercom.apiKey, forAppId: config.intercom.appId)
-        Intercom.setPreviewPosition(.BottomRight)
     }
     
-    private func registerUser() {
+    override func updateIdentity() {
         if let userId = context.userId {
             if let email = context.email {
                 Intercom.registerUserWithUserId(userId, email: email)
@@ -42,56 +40,59 @@ public class IntercomProvider : NSObject, AnalyticsProvider {
         } else {
             Intercom.registerUnidentifiedUser()
         }
-        let amplitudeId = context.userId ?? context.deviceId
         setUserProperties([
             "Device ID": context.deviceId,
             "Device Name": context.deviceName,
             "Mixpanel URL": "https://mixpanel.com/report/\(config.mixpanel.projectId)/explore/#user?distinct_id=\(context.deviceId)",
-            "Amplitude URL": "https://amplitude.com/app/\(config.amplitude.appId)/activity/search?userId=\(amplitudeId)"
+            "Amplitude URL": "https://amplitude.com/app/\(config.amplitude.appId)/activity/search?userId=\(context.userId ?? context.deviceId)"
         ])
     }
     
-    func appLaunch() {
-        registerUser()
+    override func appLaunch() {
+        updateIdentity()
     }
     
-    func appClose() {
+    override func appOpen() { }
+    
+    override func appClose() {
         if let url = UXCam.urlForCurrentUser() {
             setUserProperties(["UXCam URL": "http://\(url)"])
         }
     }
     
-    func login(isNewUser: Bool) {
-        assert(context.userId != nil)
-        registerUser()
+    override func login(isNewUser: Bool) {
+        updateIdentity()
         track("Login", properties: ["New User": isNewUser])
     }
     
-    func logout() {
-        track("Logout", properties: nil)
+    override func logout() {
+        track("Logout")
         Intercom.reset()
-        Intercom.registerUnidentifiedUser()
-        setUserProperties(["Device Name": context.deviceName])
+        updateIdentity()
     }
     
-    func updateEmail() {
+    override func updateEmail() {
         Intercom.updateUserWithAttributes(["email": context.email ?? NSNull()])
     }
     
-    func updateFullname() {
+    override func updateFullname() {
         Intercom.updateUserWithAttributes(["name": context.fullname ?? NSNull()])
     }
     
-    func setUserProperties(properties: [NSObject : AnyObject]) {
+    override func setUserProperties(properties: [NSObject : AnyObject]) {
         Intercom.updateUserWithAttributes(["custom_attributes": properties])
     }
     
-    func track(event: String, properties: [NSObject : AnyObject]?) {
+    override func track(event: String, properties: [NSObject : AnyObject]? = nil) {
         if let properties = properties {
             Intercom.logEventWithName(event, metaData: properties)
         } else {
             Intercom.logEventWithName(event)
         }
+    }
+    
+    override func screen(name: String, properties: [NSObject : AnyObject]? = nil) {
+        // Intentionally nil, do not track screens in Intercom
     }
     
     func registerPushToken(pushToken: NSData) {

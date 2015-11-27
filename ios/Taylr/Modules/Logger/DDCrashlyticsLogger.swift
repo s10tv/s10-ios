@@ -74,7 +74,7 @@ extension DDCrashlyticsLogger : AnalyticsProvider {
     }
     
     func screen(name: String, properties: [NSObject : AnyObject]?) {
-        Answers.logCustomEventWithName(name, customAttributes: convertProperties(properties))
+        Answers.logCustomEventWithName("Screen: \(name)", customAttributes: convertProperties(properties))
     }
     
     func setUserProperties(properties: [NSObject : AnyObject]) {

@@ -9,8 +9,7 @@
 import Foundation
 import Amplitude_iOS
 
-public class AmplitudeProvider : NSObject, AnalyticsProvider {
-    var context: AnalyticsContext!
+public class AmplitudeProvider : BaseAnalyticsProvider {
     
     let amplitude = Amplitude.instance()
     
@@ -19,42 +18,17 @@ public class AmplitudeProvider : NSObject, AnalyticsProvider {
         amplitude.trackingSessionEvents = true
     }
     
-    func appLaunch() {
+    override func updateIdentity() {
         amplitude.setUserId(context.userId)
         amplitude.setDeviceId(context.deviceId)
         setUserProperties(["Device Name": context.deviceName])
-        if context.isNewInstall {
-            track("App: Install", properties: nil)
-        }
     }
     
-    func appOpen() {
-        track("App: Open", properties: nil)
-    }
-    
-    func appClose() {
-        track("App: Close", properties: nil)
-    }
-    
-    func login(isNewUser: Bool) {
-        amplitude.setUserId(context.userId)
-        track("Login", properties: ["New User": isNewUser])
-    }
-    
-    func logout() {
-        track("Logout", properties: nil)
-        amplitude.setUserId(nil)
-    }
-    
-    func setUserProperties(properties: [NSObject : AnyObject]) {
+    override func setUserProperties(properties: [NSObject : AnyObject]) {
         amplitude.setUserProperties(properties)
     }
     
-    func track(event: String, properties: [NSObject : AnyObject]?) {
+    override func track(event: String, properties: [NSObject : AnyObject]? = nil) {
         amplitude.logEvent(event, withEventProperties: properties)
-    }
-    
-    func screen(name: String, properties: [NSObject : AnyObject]?) {
-        amplitude.logEvent("Screen: \(name)", withEventProperties: properties)
     }
 }
