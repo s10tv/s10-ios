@@ -209,7 +209,7 @@ var styles = StyleSheet.create({
     width: width,
     flexDirection: 'row',
     backgroundColor: 'transparent',
-    paddingHorizontal: 10,
+    paddingHorizontal: width / 32,
     paddingVertical: 5,
   },
   userNameText: {
@@ -217,7 +217,7 @@ var styles = StyleSheet.create({
     fontSize: 24,
   },
   infoSection: {
-    paddingHorizontal: 5,
+    paddingHorizontal: width / 64,
     paddingVertical: 10,
   },
   messageButton: {
@@ -225,13 +225,13 @@ var styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     flexDirection: 'row',
-    marginHorizontal: 10,
+    marginHorizontal: width / 32,
     backgroundColor: COLORS.button,
     marginBottom: 10,
     borderRadius : 3,
   },
   messageButtonText: {
-    paddingLeft: 5,
+    paddingLeft: width / 64,
     fontSize: 18,
     color: COLORS.white,
   },
