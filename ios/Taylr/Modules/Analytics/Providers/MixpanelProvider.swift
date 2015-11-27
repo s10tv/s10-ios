@@ -8,6 +8,7 @@
 
 import Foundation
 import Mixpanel
+import CocoaLumberjack
 
 public class MixpanelProvider : BaseAnalyticsProvider {
     
@@ -21,34 +22,36 @@ public class MixpanelProvider : BaseAnalyticsProvider {
         mixpanel = Mixpanel.sharedInstanceWithToken(apiToken, launchOptions: launchOptions)
     }
     
-    override func updateIdentity() {
-        if let userId = context.userId {
-            mixpanel.identify(userId)
-        } else {
-            mixpanel.identify(context.deviceId)
-        }
-        if let fullname = context.fullname {
-            mixpanel.nameTag = fullname
-        } else {
-            mixpanel.nameTag = context.deviceName
-        }
+    override func appLaunch() {
         if context.isNewInstall {
-            track("App: Install", properties: nil)
+            mixpanel.identify(context.deviceId)
+            mixpanel.nameTag = context.deviceName
+            mixpanel.registerSuperProperties(["Device ID": context.deviceId])
+            people?.set("Device Name", to: context.deviceName)
+            track("App: Install")
         }
-        people?.set("Device Name", to: context.deviceName)
     }
     
     override func login(isNewUser: Bool) {
-        mixpanel.identify(context.userId)
         if isNewUser {
             mixpanel.createAlias(context.userId, forDistinctID: context.deviceId)
+            DDLogInfo("Mixpanel createAlias userI=\(context.userId!) deviceId=\(context.deviceId)")
         }
+        // Intentionally set User ID before new identify, so it shows for repeat logins
+        mixpanel.registerSuperProperties(["User ID": context.userId!])
+        people?.set("User ID", to: context.userId)
+        mixpanel.identify(context.userId)
         track("Login", properties: ["New User": isNewUser])
     }
     
     override func logout() {
         track("Logout")
+        flush()
+        mixpanel.reset()
         mixpanel.identify(context.deviceId)
+        mixpanel.nameTag = context.deviceName
+        mixpanel.registerSuperProperties(["Device ID": context.deviceId])
+        people?.set("Device Name", to: context.deviceName)
     }
     
     override func updatePhone() {
