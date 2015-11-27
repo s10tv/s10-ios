@@ -335,6 +335,10 @@ class Activities extends React.Component {
         });
       }
 
+      let separator = (attributes && attributes.length > 0) ?
+        <View style={SHEET.separator} /> :
+        null;
+
       infoCard = (
         <Card style={styles.card}>
           <View style={styles.horizontal}>
@@ -352,7 +356,7 @@ class Activities extends React.Component {
                 <Text style={[{fontSize: 18, color: COLORS.white }, SHEET.baseText]}>Open</Text>
             </TouchableOpacity>
           </View>
-          <View style={SHEET.separator} />
+          { separator }
           <ScrollView horizontal={true} 
             showsHorizontalScrollIndicator={false}
             style={{ marginHorizontal: 10 }}>
