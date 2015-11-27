@@ -233,10 +233,11 @@ class TSTabNavigator extends React.Component {
           ddp={this.props.ddp}/>
 
       case 'root':
-        if (this.state.currentTab == 'Today') {
-          Analytics.track('Today: View');
+        if (this.state.currentTab) {
+          if (this.state.currentTab == 'Today') {
+            Analytics.track('Today: View')
+          }
         }
-        Analytics.screen(this.setState.currentTab);
 
         return (
           <TabNavigator>
