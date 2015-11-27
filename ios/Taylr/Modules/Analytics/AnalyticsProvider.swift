@@ -22,7 +22,7 @@ import Foundation
 @objc protocol AnalyticsProvider : class {
     var context: AnalyticsContext! { get set }
     
-    optional func appInstall()
+    optional func appLaunch()
     optional func appOpen()
     optional func appClose()
     

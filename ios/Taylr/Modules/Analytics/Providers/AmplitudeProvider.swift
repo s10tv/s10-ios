@@ -19,10 +19,13 @@ public class AmplitudeProvider : NSObject, AnalyticsProvider {
         amplitude.trackingSessionEvents = true
     }
     
-    func appInstall() {
+    func appLaunch() {
+        amplitude.setUserId(context.userId)
         amplitude.setDeviceId(context.deviceId)
         setUserProperties(["Device Name": context.deviceName])
-        track("App: Install", properties: nil)
+        if context.isNewInstall {
+            track("App: Install", properties: nil)
+        }
     }
     
     func appOpen() {

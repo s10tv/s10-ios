@@ -21,9 +21,16 @@ public class SegmentProvider : NSObject, AnalyticsProvider {
     
     // MARK: -
     
-    func appInstall() {
-        segment.enqueue(IdentifyMessageBuilder().anonymousId(context.deviceId))
+    func appLaunch() {
+        if let userId = context.userId {
+            segment.enqueue(IdentifyMessageBuilder().anonymousId(userId))
+        } else {
+            segment.enqueue(IdentifyMessageBuilder().anonymousId(context.deviceId))
+        }
         setUserProperties(["Device Name": context.deviceName])
+        if context.isNewInstall {
+            track("App: Install", properties: nil)
+        }
     }
     
     func appOpen() {

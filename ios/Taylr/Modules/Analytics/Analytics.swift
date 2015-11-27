@@ -85,9 +85,7 @@ extension TSAnalytics : AnalyticsContext {
 extension TSAnalytics {
     
     func appDidLaunch(launchOptions: [NSObject: AnyObject]?) {
-        if isNewInstall {
-            eachProvider { $0.appInstall?() }
-        }
+        eachProvider { $0.appLaunch?() }
         eachProvider { $0.appOpen?() }
     }
     

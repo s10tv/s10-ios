@@ -40,7 +40,10 @@ class DDCrashlyticsLogger : DDAbstractLogger {
 
 extension DDCrashlyticsLogger : AnalyticsProvider {
     
-    func appInstall() {
+    func appLaunch() {
+        if let userId = context.userId {
+            crashlytics.setUserIdentifier(userId)
+        }
         crashlytics.setObjectValue(context.deviceId, forKey: "Device Id")
         crashlytics.setObjectValue(context.deviceName, forKey: "Device Name")
     }

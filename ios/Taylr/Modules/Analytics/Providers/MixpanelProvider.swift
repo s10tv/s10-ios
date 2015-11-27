@@ -22,11 +22,21 @@ public class MixpanelProvider : NSObject, AnalyticsProvider {
         mixpanel = Mixpanel.sharedInstanceWithToken(apiToken, launchOptions: launchOptions)
     }
     
-    func appInstall() {
-        mixpanel.identify(context.deviceId)
-        mixpanel.nameTag = context.deviceName
-        people?.set("DeviceName", to: context.deviceName)
-        track("App: Install", properties: nil)
+    func appLaunch() {
+        if let userId = context.userId {
+            mixpanel.identify(userId)
+        } else {
+            mixpanel.identify(context.deviceId)
+        }
+        if let fullname = context.fullname {
+            mixpanel.nameTag = fullname
+        } else {
+            mixpanel.nameTag = context.deviceName
+        }
+        if context.isNewInstall {
+            track("App: Install", properties: nil)
+        }
+        people?.set("Device Name", to: context.deviceName)
     }
     
     func appOpen() {
@@ -43,10 +53,6 @@ public class MixpanelProvider : NSObject, AnalyticsProvider {
             mixpanel.createAlias(context.userId, forDistinctID: context.deviceId)
         }
         track("Login", properties: ["New User": isNewUser])
-        updateUsername()
-        updateEmail()
-        updateFullname()
-        updatePhone()
     }
     
     func logout() {
@@ -55,16 +61,16 @@ public class MixpanelProvider : NSObject, AnalyticsProvider {
     }
     
     func updatePhone() {
-        people?.set("$phone", to: context.email)
+        people?.set("$phone", to: context.phone ?? "")
     }
     
     func updateEmail() {
-        people?.set("$email", to: context.email)
+        people?.set("$email", to: context.email ?? "")
     }
     
     func updateFullname() {
         mixpanel.nameTag = context.fullname
-        people?.set("$name", to: context.fullname)
+        people?.set("$name", to: context.fullname ?? "")
     }
     
     func setUserProperties(properties: [NSObject : AnyObject]) {

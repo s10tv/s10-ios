@@ -13,8 +13,6 @@ import CocoaLumberjack
 
 // TODO: Add more information to Intercom
 // https://doc.intercom.io/api/#user-model
-// Built in: Avatar
-// Built in: Social profiles
 // Mixpanel Url
 // Taylr Api url
 // UXCam URL
@@ -33,8 +31,16 @@ public class IntercomProvider : NSObject, AnalyticsProvider {
         Intercom.setPreviewPosition(.BottomRight)
     }
     
-    func appInstall() {
-        Intercom.registerUnidentifiedUser()
+    func appLaunch() {
+        if let userId = context.userId {
+            if let email = context.email {
+                Intercom.registerUserWithUserId(userId, email: email)
+            } else {
+                Intercom.registerUserWithUserId(userId)
+            }
+        } else {
+            Intercom.registerUnidentifiedUser()
+        }
         setUserProperties(["Device Name": context.deviceName])
     }
     
@@ -81,6 +87,11 @@ public class IntercomProvider : NSObject, AnalyticsProvider {
     func registerPushToken(pushToken: NSData) {
         Intercom.setDeviceToken(pushToken)
     }
+}
+
+// MARK: - JS API
+
+extension Intercom {
     
     @objc func presentMessageComposer() {
         dispatch_async(dispatch_get_main_queue()) {

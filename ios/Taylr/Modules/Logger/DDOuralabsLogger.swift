@@ -53,7 +53,7 @@ class DDOuralabsLogger : DDAbstractLogger {
 
 extension DDOuralabsLogger : AnalyticsProvider {
     
-    func appInstall() {
+    func appLaunch() {
         setAttribute(OUAttr1, value: context.deviceName)
     }
     
