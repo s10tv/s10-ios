@@ -56,7 +56,7 @@ class AppDelegate : UIResponder {
         
         // Setup Analytics
         branch = BranchProvider(branchKey: config.branchKey)
-        amplitude = AmplitudeProvider(apiKey: config.amplitudeKey)
+        amplitude = AmplitudeProvider(apiKey: config.amplitude.apiKey)
         mixpanel = MixpanelProvider(apiToken: config.mixpanel.token, launchOptions: launchOptions)
         intercom = IntercomProvider(config: config)
         segment = SegmentProvider(writeKey: config.segmentWriteKey)

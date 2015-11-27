@@ -13,11 +13,8 @@ import UXCam
 
 // TODO: Add more information to Intercom
 // https://doc.intercom.io/api/#user-model
-// Mixpanel Url
-// Taylr Api url
-// UXCam URL
-// Ouralabs URL
 // Ampiltude URL
+// Ouralabs URL (damn it...)
 // Crashlytics URL?
 // Branch URL?
 // Segment URL?
@@ -45,10 +42,12 @@ public class IntercomProvider : NSObject, AnalyticsProvider {
         } else {
             Intercom.registerUnidentifiedUser()
         }
+        let amplitudeId = context.userId ?? context.deviceId
         setUserProperties([
             "Device ID": context.deviceId,
             "Device Name": context.deviceName,
             "Mixpanel URL": "https://mixpanel.com/report/\(config.mixpanel.projectId)/explore/#user?distinct_id=\(context.deviceId)",
+            "Amplitude URL": "https://amplitude.com/app/\(config.amplitude.appId)/activity/search?userId=\(amplitudeId)"
         ])
     }
     
@@ -80,7 +79,6 @@ public class IntercomProvider : NSObject, AnalyticsProvider {
     }
     
     func updateFullname() {
-        Intercom.updateUserWithAttributes(["email": "tonyx.ca@gmail.com"])
         Intercom.updateUserWithAttributes(["name": context.fullname ?? NSNull()])
     }
     

@@ -35,7 +35,7 @@ class AppConfig {
     let ouralabsKey: String
     let branchKey: String
     let segmentWriteKey: String
-    let amplitudeKey: String
+    let amplitude: (appId: String, apiKey: String)
     let mixpanel: (projectId: String, token: String)
     let intercom: (appId: String, apiKey: String)
     
@@ -49,7 +49,7 @@ class AppConfig {
             ouralabsKey = "2207bb0177c84bd22085cb4e9018246f"
             branchKey = "key_test_nmeOiHF7jxXUcZPa8UdDbaacBxdYkU1J"
             segmentWriteKey = "pZimciABfGDaOLvEx9NWAFSoYHyCOg1n"
-            amplitudeKey = "0ef2064f5f59aca8b1224ec4374064d3"
+            amplitude = (appId: "137713", apiKey: "0ef2064f5f59aca8b1224ec4374064d3")
             mixpanel = (projectId: "773277", token: "9d5d89ba988e52622278165d91ccf937")
             intercom = (
                 appId: "q6ihw9uw",
@@ -61,7 +61,7 @@ class AppConfig {
             ouralabsKey = "96128c67ffeb9632f665febb71914dc5"
             branchKey = "key_live_clkHkRr6mC5Ok8Np3LeBbldcqAj8eUY4"
             segmentWriteKey = "DwMJMhxsvn6EDrO33gANHBjvg3FUsfPJ"
-            amplitudeKey = "ff96d68f3ff2efd39284b33a78dbbf2c"
+            amplitude = (appId: "137712", apiKey: "ff96d68f3ff2efd39284b33a78dbbf2c")
             mixpanel = (projectId: "671741", token: "39194eed490fa8abcc026256631a4230")
             intercom = (
                 appId: "nlh15x8h",

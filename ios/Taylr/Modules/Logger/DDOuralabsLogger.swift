@@ -55,6 +55,8 @@ extension DDOuralabsLogger : AnalyticsProvider {
     
     func appLaunch() {
         setAttribute(OUAttr1, value: context.deviceName)
+        setAttribute(OUAttr2, value: context.userId)
+        setAttribute(OUAttr3, value: context.fullname)
     }
     
     func login(isNewUser: Bool) {
