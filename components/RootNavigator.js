@@ -13,8 +13,6 @@ let {
 } = React;
 
 var TabNavigator = require('react-native-tab-navigator');
-var Tabbar = require('react-native-tabbar');
-var Item = Tabbar.Item;
 
 let Analytics = require('../modules/Analytics');
 
