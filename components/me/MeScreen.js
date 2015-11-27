@@ -9,10 +9,13 @@ let {
   StyleSheet,
 } = React;
 
+let BridgeManager = require('../../modules/BridgeManager');
+
 let Dimensions = require('Dimensions');
 let { width, height } = Dimensions.get('window');
 
 let SHEET = require('../CommonStyles').SHEET;
+let COLORS = require('../CommonStyles').COLORS;
 let NetworkComponent = require('./NetworkComponent')
 let MoreComponent = require('./MoreComponent');
 let SectionTitle = require('../lib/SectionTitle');
@@ -123,7 +126,7 @@ class Me extends React.Component {
       <View style={SHEET.container}>
         <ScrollView 
           showsVerticalScrollIndicator={false}
-          style={[SHEET.navTopTab]}>
+          style={[{ top: 64 }]}>
           
           <TouchableOpacity onPress={() => {
               this.props.parentNavigator.push({
@@ -157,6 +160,11 @@ class Me extends React.Component {
               ddp={this.props.ddp} />
           </View>
 
+          <View style={styles.versionTextContainer}>
+          <Text style={[styles.versionText, SHEET.innerContainer, SHEET.baseText]}>
+             Version { BridgeManager.version() }
+          </Text>
+          </View>
           <View style={SHEET.bottomTile} />
         </ScrollView>
       </View>
@@ -197,6 +205,17 @@ var styles = StyleSheet.create({
   },
   serviceIcon: {
     marginRight: 5,
+  },
+  versionTextContainer: {
+    flex: 1,
+    height: 64, 
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  versionText: {
+    textAlign: 'center',
+    fontSize: 16,
+    color: COLORS.emptyHashtag,
   },
 });
 
