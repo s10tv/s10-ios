@@ -110,6 +110,14 @@ class Discover extends React.Component {
 
     return (
       <View style={SHEET.container}>
+        <View style={styles.background}>
+          <Image
+            source={require('../img/bg-compass.png')}
+            style={{ width: width / 1.5, height: width / 1.5, resizeMode: 'contain' }} />
+          <Text style={[styles.backgroundQuoteText, SHEET.baseText]}>
+            Every good friend was once a stranger.
+          </Text>
+        </View>
         <Animated.View style={this.getStyle()} {...this._panResponder.panHandlers}>
           <Card style={[{flex: 1, marginBottom: 10}, SHEET.innerContainer]}
             cardOverride={[{ flex: 1, padding: 0 }]}>
@@ -177,6 +185,22 @@ class Discover extends React.Component {
 let avatarRadius = height / 4.5;
 
 var styles = StyleSheet.create({
+  background: {
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    width: width,
+    height: height,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  backgroundQuoteText: {
+    paddingTop: 15,
+    fontSize: 20,
+    color: COLORS.attributes,
+    textAlign: 'center',
+    marginHorizontal: width / 32,
+  },
   avatar: {
     borderWidth: 2.5,
     borderColor: 'white',
