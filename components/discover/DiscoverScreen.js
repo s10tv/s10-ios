@@ -35,7 +35,6 @@ class Discover extends React.Component {
   }
 
   componentWillMount() {
-    Analytics.track("View: Today"); 
     this._animatedValueY = 0; 
 
     this.state.pan.y.addListener((value) => {

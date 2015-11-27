@@ -9,7 +9,6 @@ let {
   StyleSheet,
 } = React;
 
-let Analytics = require('../../modules/Analytics');
 let SHEET = require('../CommonStyles').SHEET;
 let COLORS = require('../CommonStyles').COLORS;
 let Card = require('./Card').Card;
@@ -38,7 +37,6 @@ class HashtagListView extends React.Component {
   }
 
   componentWillMount() {
-    Analytics.track("View: EditHashtags", {"Category": this.props.category.type});
     let ddp = this.ddp;
 
     return ddp.subscribe({

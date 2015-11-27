@@ -227,6 +227,7 @@ class TSTabNavigator extends React.Component {
               renderSelectedIcon={() => <Image style={styles.selected} source={require('./img/ic-me.png')}/>}
               selectedTitleStyle={styles.selectedText}
               onPress={() => {
+                Analytics.track("View: Me"); 
                 this.setState({currentTab: 'Me'});
               }}
               selected={this.state.currentTab == 'Me'}>
@@ -246,6 +247,7 @@ class TSTabNavigator extends React.Component {
               renderSelectedIcon={() => <Image style={styles.selected} source={require('./img/ic-compass.png')}/>}
               selectedTitleStyle={styles.selectedText}
               onPress={() => {
+                Analytics.track("View: Today"); 
                 this.setState({currentTab: 'Today'});
               }}
               selected={this.state.currentTab == 'Today'}>
@@ -267,6 +269,7 @@ class TSTabNavigator extends React.Component {
               renderSelectedIcon={() => <Image style={styles.selected} source={require('./img/ic-chats.png')}/>}
               selectedTitleStyle={styles.selectedText}
               onPress={() => {
+                Analytics.track("View: Connections"); 
                 this.setState({currentTab: 'Conversations'});
               }}
               selected={this.state.currentTab == 'Conversations'}>

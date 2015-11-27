@@ -11,7 +11,6 @@ let {
   StyleSheet,
 } = React;
 
-let Analytics = require('../../modules/Analytics');
 let FloatLabelTextInput = require('./FloatLabelTextField');
 let SHEET = require('../CommonStyles').SHEET;
 let Card = require('./Card').Card;

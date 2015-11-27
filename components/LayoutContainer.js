@@ -262,7 +262,7 @@ class LayoutContainer extends React.Component {
 
   reportUser(user) {
     if (user) {
-      Analytics.track("User: View Block", { userId: user._id })
+      Analytics.track("User: Block", { userId: user._id })
 
       AlertIOS.alert(
         `Report ${user.firstName}?`,

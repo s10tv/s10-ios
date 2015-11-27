@@ -15,7 +15,6 @@ let {
 let Dimensions = require('Dimensions');
 let { width, height } = Dimensions.get('window');
 
-let Analytics = require('../../modules/Analytics');
 let SHEET = require('../CommonStyles').SHEET;
 let COLORS = require('../CommonStyles').COLORS;
 

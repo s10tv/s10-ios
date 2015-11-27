@@ -12,7 +12,6 @@ let {
 let Dimensions = require('Dimensions');
 let { width, height } = Dimensions.get('window');
 
-let Analytics = require('../../modules/Analytics');
 let SHEET = require('../CommonStyles').SHEET;
 let NetworkComponent = require('./NetworkComponent')
 let MoreComponent = require('./MoreComponent');
@@ -106,10 +105,6 @@ class MeHeader extends React.Component {
 }
 
 class Me extends React.Component {
-
-  componentDidMount() {
-    Analytics.track("View: Me"); 
-  }
 
   render() {
     let ddp = this.props.ddp;

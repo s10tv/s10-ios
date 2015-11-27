@@ -9,7 +9,6 @@ let {
   StyleSheet,
 } = React;
 
-let Analytics = require('../../modules/Analytics');
 let SHEET = require('../CommonStyles').SHEET;
 let COLORS = require('../CommonStyles').COLORS;
 
