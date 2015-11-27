@@ -10,13 +10,46 @@ const {
   },
 } = React;
 
-
 class Analytics {
+  
   /**
    * userId: String
+   * isNewUser: Bool
    */
-  static async identify(userId) {
-    return TSAnalytics.identify(userId);
+  static async userDidLogin(userId, isNewUser) {
+    return TSAnalytics.userDidLogin(userId, isNewUser);
+  }
+
+  static async userDidLogout() {
+    return TSAnalytics.userDidLogout(); 
+  }
+
+  /**
+   * username: String
+   */
+  static async setUserUsername(username) {
+    return TSAnalytics.setUserUsername(username);
+  }
+
+  /**
+   * phone: String
+   */
+  static async setUserPhone(phone) {
+    return TSAnalytics.setUserPhone(phone)
+  }
+
+  /**
+   * email: String
+   */
+  static async setUserEmail(email) {
+    return TSAnalytics.setUserEmail(email);
+  }
+
+  /**
+   * fullname: String
+   */
+  static async setUserFullname(fullname) {
+     return TSAnalytics.setUserFullname(fullname);
   }
 
   /**
@@ -37,10 +70,10 @@ class Analytics {
 
   /**
    * name: String
-   * amount: number
+   * properties: {}}
    */
-  static async incrementUserProperty(name, amount) {
-    return TSAnalytics.incrementUserProperty(name, amount);
+  static async screen(name, properties) {
+    return TSAnalytics.screen(name, properties);
   }
 }
 

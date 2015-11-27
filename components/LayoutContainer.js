@@ -82,6 +82,8 @@ class LayoutContainer extends React.Component {
   }
 
   async onLogout() {
+    Analytics.userDidLogout();
+
     await TSLayerService.deauthenticateAsync();
     DigitsAuthenticateManager.logout();
     FBSDKLoginManager.logOut();
@@ -94,6 +96,19 @@ class LayoutContainer extends React.Component {
    * account: { userId, resumeToken, expiryDate, isNewUser }
    */
   async onLogin(account) {
+    if (!account) {
+      this.logger.warning('invalid account for onLogin');
+      return;
+    }
+
+    let { userId, resumeToken, expiryDate, isNewUser } = account;
+    if (!userId || !resumeToken || !expiryDate || (isNewUser == undefined)) {
+      this.logger.warning('invalid info provided to onLogin');
+      return
+    }
+
+    Analytics.userDidLogin(userId, isNewUser);
+
     if (account.isNewUser) {
       // might be useful for showing first time user tutorials.
       this.setState({
@@ -145,7 +160,6 @@ class LayoutContainer extends React.Component {
         }
       }).subscribe(currentUser => {
         if (currentUser) {
-          Analytics.identify(currentUser._id) 
           this.setState({ me: this.formatUser(currentUser) });
         }
       });
@@ -284,8 +298,6 @@ class LayoutContainer extends React.Component {
 
   reportUser(user) {
     if (user) {
-      Analytics.track("User: Block", { userId: user._id })
-
       AlertIOS.alert(
         `Report ${user.firstName}?`,
         "",
@@ -307,10 +319,6 @@ class LayoutContainer extends React.Component {
   updateProfile(key, value) {
     let myInfo = {};
     myInfo[key] = value;
-
-    Analytics.track('EditProfile: Save', myInfo);
-    this.logger.info(`Updating meteor with ${key} >> ${value}`);
-
     return this.props.ddp.call({ methodName: 'me/update', params: [myInfo] })
     .catch(err => {
       this.logger.error(JSON.stringify(err));
