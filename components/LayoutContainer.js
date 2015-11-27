@@ -92,6 +92,43 @@ class LayoutContainer extends React.Component {
     this.setState({ loggedIn: false });
   }
 
+  subscribeSettings(userRequired = true) {
+    let ddp = this.ddp;
+    console.log('subscribing settings', userRequired);
+
+    ddp.subscribe({ pubName: 'settings', userRequired: userRequired })
+    .then(() => {
+      ddp.collections.observe(() => {
+        if (ddp.collections.settings) {
+          return ddp.collections.settings.find({});
+        }
+      }).subscribe(settings => {
+        console.log('got settings', settings);
+        indexedSettings =  {};
+        settings.forEach((setting) => {
+          indexedSettings[setting._id] = setting;
+        });
+
+        this.setState({ settings: indexedSettings });
+
+        if (indexedSettings.accountStatus) {
+          this.setState ({
+            isActive: indexedSettings.accountStatus.value == 'active'
+          })
+        }
+
+        if (indexedSettings.CWLRequired !== undefined && 
+            indexedSettings.tfCWLRequired !== undefined) {
+          let isCWLRequired = BridgeManager.isRunningTestFlightBeta() ? 
+              indexedSettings.tfCWLRequired.value :
+              indexedSettings.CWLRequired.value;
+          this.setState({ isCWLRequired: isCWLRequired });
+        }
+      });
+    })
+    .catch(err => { this.logger.error(JSON.stringify(err)) })
+  }
+
   /** 
    * account: { userId, resumeToken, expiryDate, isNewUser }
    */
@@ -122,35 +159,7 @@ class LayoutContainer extends React.Component {
     this.setState({ loggedIn: true });
     this.__layerLogin()
 
-    this.ddp.subscribe({ pubName: 'settings' })
-    .then(() => {
-      ddp.collections.observe(() => {
-        if (ddp.collections.settings) {
-          return ddp.collections.settings.find({});
-        }
-      }).subscribe(settings => {
-        indexedSettings =  {};
-        settings.forEach((setting) => {
-          indexedSettings[setting._id] = setting;
-        });
-
-        this.setState({ settings: indexedSettings });
-
-        if (indexedSettings.accountStatus) {
-          this.setState ({
-            isActive: indexedSettings.accountStatus.value == 'active'
-          })
-        }
-
-        if (indexedSettings.CWLRequired && indexedSettings.tfCWLRequired) {
-          let isCWLRequired = BridgeManager.isRunningTestFlightBeta() ? 
-              indexedSettings.tfCWLRequired.value :
-              indexedSettings.CWLRequired.value;
-          this.setState({ isCWLRequired: isCWLRequired });
-        }
-      });
-    })
-    .catch(err => { this.logger.error(JSON.stringify(err)) })
+    this.subscribeSettings()
 
     this.ddp.subscribe({ pubName: 'me' })
     .then(() => {
@@ -293,10 +302,12 @@ class LayoutContainer extends React.Component {
         this.onLogin(loginResult);
       } else {
         this.setState({ loggedIn: false });
+        this.subscribeSettings(false);
       }
 
     } else {
       this.setState({ loggedIn: false });
+      this.subscribeSettings(false);
     }
   }
 
