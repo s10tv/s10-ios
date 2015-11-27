@@ -316,7 +316,7 @@ class Activities extends React.Component {
           <View style={SHEET.separator} />
 
           <View style={{ marginTop: 10 }}>
-            <Text style={[SHEET.smallHeading, SHEET.subTitle, SHEET.baseText]}>About Me</Text>
+            <Text style={[SHEET.smallHeading, SHEET.subTitle, SHEET.baseText]}>About {me.firstName}</Text>
             <Text stlye={[SHEET.baseText]}>{me.about}</Text>
           </View>
         </Card> 
