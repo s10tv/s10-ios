@@ -46,6 +46,9 @@ public class IntercomProvider : BaseAnalyticsProvider {
             "Mixpanel URL": "https://mixpanel.com/report/\(config.mixpanel.projectId)/explore/#user?distinct_id=\(context.deviceId)",
             "Amplitude URL": "https://amplitude.com/app/\(config.amplitude.appId)/activity/search?userId=\(context.userId ?? context.deviceId)"
         ])
+        OneSignal.defaultClient().IdsAvailable { [weak self] userId, _ in
+            self?.setUserProperties(["OneSignal UserID": userId])
+        }
     }
     
     override func appLaunch() {

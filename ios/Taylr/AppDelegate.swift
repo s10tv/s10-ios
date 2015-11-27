@@ -26,6 +26,7 @@ class AppDelegate : UIResponder {
     var config: AppConfig!
     var ouralabs: DDOuralabsLogger!
     var crashlytics: DDCrashlyticsLogger!
+    var oneSignal: OneSingalProvider!
     var branch: BranchProvider!
     var amplitude: AmplitudeProvider!
     var mixpanel: MixpanelProvider!
@@ -55,13 +56,14 @@ class AppDelegate : UIResponder {
         #endif
         
         // Setup Analytics
+        oneSignal = OneSingalProvider(appId: config.oneSignalAppId, launchOptions: launchOptions)
         branch = BranchProvider(branchKey: config.branchKey)
         amplitude = AmplitudeProvider(apiKey: config.amplitude.apiKey)
         mixpanel = MixpanelProvider(apiToken: config.mixpanel.token, launchOptions: launchOptions)
         intercom = IntercomProvider(config: config)
         segment = SegmentProvider(writeKey: config.segmentWriteKey)
         uxcam = UXCamProvider(apiKey: config.uxcamKey)
-        Analytics.addProviders([branch, amplitude, mixpanel, intercom, segment, uxcam, ouralabs, crashlytics])
+        Analytics.addProviders([oneSignal, branch, amplitude, mixpanel, intercom, segment, uxcam, ouralabs, crashlytics])
         
         // TODO: Refactor this lifecycle management stuff outside of Analytics
         // Do not persist meteor user account across app installs, make it harder to test and is unexpected

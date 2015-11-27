@@ -32,6 +32,7 @@ class AppConfig {
     let uxcamKey = "2c0f24d77c8cdc6"
     let appHubApplicationId = "uCG85kfu67WewOZVEQBk"
     let layerURL: NSURL
+    let oneSignalAppId: String
     let ouralabsKey: String
     let branchKey: String
     let segmentWriteKey: String
@@ -46,6 +47,7 @@ class AppConfig {
 //            serverHostName = "localhost:3000"
             serverHostName = "s10-dev.herokuapp.com"
             layerURL = NSURL("layer:///apps/staging/49574578-72bb-11e5-9a72-a4a211002a87")
+            oneSignalAppId = "1fe37e84-77a0-11e5-ace7-2baf094fe5d2"
             ouralabsKey = "2207bb0177c84bd22085cb4e9018246f"
             branchKey = "key_test_nmeOiHF7jxXUcZPa8UdDbaacBxdYkU1J"
             segmentWriteKey = "pZimciABfGDaOLvEx9NWAFSoYHyCOg1n"
@@ -58,6 +60,7 @@ class AppConfig {
         case .Beta, .AppStore:
             serverHostName = "taylr-prod.herokuapp.com"
             layerURL = NSURL("layer:///apps/production/49574ba4-72bb-11e5-89fc-a4a211002a87")
+            oneSignalAppId = "82ee7482-77a2-11e5-8563-5bcba87018a1"
             ouralabsKey = "96128c67ffeb9632f665febb71914dc5"
             branchKey = "key_live_clkHkRr6mC5Ok8Np3LeBbldcqAj8eUY4"
             segmentWriteKey = "DwMJMhxsvn6EDrO33gANHBjvg3FUsfPJ"

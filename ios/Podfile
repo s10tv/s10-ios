@@ -40,6 +40,7 @@ pod 'Fabric', '~> 1.6'
 pod 'TwitterCore', '~> 1.13'
 pod 'Digits', '~> 1.13'
 pod 'Crashlytics', '~> 3.4'
+pod 'OneSignal', '~> 1.10'
 
 # Logging
 pod 'CocoaLumberjack/Swift', '~> 2.2'

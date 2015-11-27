@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4AD00249A11FDFD015C379A5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AA6C7823A20B63EB451A15E /* Pods.framework */; };
+		EA08BDF51C091BF300040D56 /* OneSingalProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA08BDF41C091BF300040D56 /* OneSingalProvider.swift */; };
 		EA1979401BFAAB7C00DF7B58 /* libRNSearchBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA2666FE1BFA622F0054C777 /* libRNSearchBar.a */; };
 		EA1979E21BFC4CD800DF7B58 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1979E01BFC4CD800DF7B58 /* R.swift */; };
 		EA1979E31BFC4CD800DF7B58 /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1979E11BFC4CD800DF7B58 /* SBConstants.swift */; };
@@ -148,6 +149,7 @@
 
 /* Begin PBXFileReference section */
 		7AA6C7823A20B63EB451A15E /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA08BDF41C091BF300040D56 /* OneSingalProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneSingalProvider.swift; sourceTree = "<group>"; };
 		EA1979E01BFC4CD800DF7B58 /* R.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.swift; sourceTree = "<group>"; };
 		EA1979E11BFC4CD800DF7B58 /* SBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstants.swift; sourceTree = "<group>"; };
 		EA1979E41BFC4CF300DF7B58 /* Taylr.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Taylr.xcassets; sourceTree = "<group>"; };
@@ -612,6 +614,7 @@
 				EABE4C671C03C45A001557A1 /* SegmentProvider.swift */,
 				EABE4C681C03C45A001557A1 /* UXCamProvider.swift */,
 				EA8A510E1C0460B8004660E1 /* BranchProvider.swift */,
+				EA08BDF41C091BF300040D56 /* OneSingalProvider.swift */,
 			);
 			path = Providers;
 			sourceTree = "<group>";
@@ -974,6 +977,7 @@
 				EA3225DD1BFDAE8A00FF5074 /* DDNSLogger.swift in Sources */,
 				EA32260E1BFDAEEB00FF5074 /* ConversationListView.m in Sources */,
 				EABE4C6A1C03C45A001557A1 /* MixpanelProvider.swift in Sources */,
+				EA08BDF51C091BF300040D56 /* OneSingalProvider.swift in Sources */,
 				EA3225BD1BFDAE8A00FF5074 /* Formatters.swift in Sources */,
 				EA3225C11BFDAE8A00FF5074 /* Analytics.swift in Sources */,
 				EA3226001BFDAEEB00FF5074 /* ConversationViewModel.swift in Sources */,

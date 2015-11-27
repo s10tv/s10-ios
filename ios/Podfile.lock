@@ -65,6 +65,7 @@ PODS:
   - NSLogger (1.5.1):
     - NSLogger/Standard (= 1.5.1)
   - NSLogger/Standard (1.5.1)
+  - OneSignal (1.10.5)
   - Ouralabs (2.7.0)
   - React/Core (0.14.2)
   - React/RCTImage (0.14.2):
@@ -123,6 +124,7 @@ DEPENDENCIES:
   - Mixpanel (~> 2.9)
   - NKRecorder (from `git@github.com:s10tv/video-maker.git`)
   - NSLogger (~> 1.5)
+  - OneSignal (~> 1.10)
   - Ouralabs (~> 2.6)
   - React/Core (from `../node_modules/react-native`)
   - React/RCTImage (from `../node_modules/react-native`)
@@ -177,6 +179,7 @@ SPEC CHECKSUMS:
   Mixpanel: 42ae6168effc48481d957f7883dd8514a398738d
   NKRecorder: f4bce8409adc39321668b5af939173839f5980a2
   NSLogger: 5ed223a2436df96244e033be750656dacdeec034
+  OneSignal: eebefa7b7a94440fe5749defcb16b80f97a457ff
   Ouralabs: f76d5c1a96f5d63fcc3bb8520c41721cf9469080
   React: e0dc1498eee8800999917f437a027223f49d731d
   ReactiveCocoa: 618a2fc13d4ed80e380aa6fa56547cef43c7341d
