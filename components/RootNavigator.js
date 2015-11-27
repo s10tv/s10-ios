@@ -15,6 +15,7 @@ let {
 var TabNavigator = require('react-native-tab-navigator');
 
 let Analytics = require('../modules/Analytics');
+let BridgeManager = require('../modules/BridgeManager');
 
 let TSTabNavigator = require('./TSTabNavigator');
 let TSNavigationBar = require('./lib/TSNavigationBar');
@@ -32,6 +33,7 @@ let Activities = require('./lib/Activities');
 class RootNavigator extends React.Component {
 
   componentWillMount() {
+    BridgeManager.registerForPushNotifications();
     this.setState({
       popListener: NativeAppEventEmitter.addListener('Navigation.pop', (properties) => {
         this.refs['nav'].pop()

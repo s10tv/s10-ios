@@ -62,6 +62,10 @@ class BridgeManager {
   static setDefaultAccount(account) {
     TSBridgeManager.setDefaultAccount(account);
   }
+
+  static registerForPushNotifications() {
+    TSBridgeManager.registerForPushNotifications();
+  }
 }
 
 module.exports = BridgeManager;

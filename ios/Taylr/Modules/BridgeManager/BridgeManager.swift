@@ -75,6 +75,11 @@ extension BridgeManager {
         METAccount.setDefaultAccount(account)
     }
     
+    @objc func registerForPushNotifications() {
+        // Explicit dependency please, maybe custom module for OneSignal as well
+        OneSignal.defaultClient().registerForPushNotifications()
+    }
+    
     @objc func constantsToExport() -> NSDictionary {
         return [
             "isRunningInSimulator": env.isRunningInSimulator,

@@ -20,8 +20,6 @@ class OneSingalProvider : NSObject, AnalyticsProvider {
     }
 
     func login(isNewUser: Bool) {
-        // TODO: We should register AFTER the user finishes signup
-        oneSignal.registerForPushNotifications()
     }
     
     func logout() {

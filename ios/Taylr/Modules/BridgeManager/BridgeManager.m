@@ -16,5 +16,6 @@ RCT_EXTERN_REMAP_METHOD(uploadToAzureAsync,
 RCT_EXTERN_REMAP_METHOD(getDefaultAccountAsync,
                         getDefaultAccount:(RCTPromiseResolveBlock)resolve reject:(RCTPromiseRejectBlock)reject)
 RCT_EXTERN_METHOD(setDefaultAccount:(METAccount *)account)
+RCT_EXTERN_METHOD(registerForPushNotifications)
 
 @end
