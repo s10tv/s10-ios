@@ -160,6 +160,10 @@ class LayoutContainer extends React.Component {
         }
       }).subscribe(currentUser => {
         if (currentUser) {
+          if (currentUser.firstName && currentUser.lastName) {
+            Analytics.setUserFullname(`${currentUser.firstName} ${currentUser.lastName}`);
+          }
+
           this.setState({ me: this.formatUser(currentUser) });
         }
       });
