@@ -47,8 +47,8 @@ class HashtagCategory extends React.Component {
           return this._handleCategoryTouch.bind(this)(category)}}>
         <View>
           <View style={[styles.categoryHeader]}>
-            <Text style={[styles.categoryDisplayName, SHEET.subTitle, SHEET.baseText]}>{category.displayName}</Text>
             {icon}
+            <Text style={[styles.categoryDisplayName, SHEET.subTitle, SHEET.baseText]}>{category.displayName}</Text>
           </View>
           <View style={styles.myHashtags}>
             { myTagsRendered }
@@ -82,6 +82,7 @@ var styles = StyleSheet.create({
   },
   categoryDisplayName: {
     flex: 1,
+    marginLeft: 10,
   },
   myHashtags: {
     marginHorizontal: -8, // offsets the hashtag.
