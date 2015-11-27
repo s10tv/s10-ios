@@ -90,29 +90,33 @@ class TSTabNavigator extends React.Component {
 
       case 'edit':
         buttonText = 'Save';
+        break;
 
-      default:
-        return (
-          <TouchableOpacity
-            onPress={() => {
-              let saveActiveEditing = this.state.editProfileCurrentlyFocused ?
-                this.props.updateProfile(this.state.editProfileKey, this.state.activeText) :
-                Promise.resolve(true);
-
-              saveActiveEditing.then(() => {
-                navigator.pop()
-              })
-              .catch(err => {
-                AlertIOS.alert("Uh oh", err.reason);
-              })
-            }}
-            style={SHEET.navBarLeftButton}>
-            <Text style={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText]}>
-              {buttonText}
-            </Text>
-          </TouchableOpacity>
-        );
+      case 'addhashtag':
+        buttonText = 'Done';
+        break;
     }
+    
+    return (
+      <TouchableOpacity
+        onPress={() => {
+          let saveActiveEditing = this.state.editProfileCurrentlyFocused ?
+            this.props.updateProfile(this.state.editProfileKey, this.state.activeText) :
+            Promise.resolve(true);
+
+          saveActiveEditing.then(() => {
+            navigator.pop()
+          })
+          .catch(err => {
+            AlertIOS.alert("Uh oh", err.reason);
+          })
+        }}
+        style={SHEET.navBarLeftButton}>
+        <Text style={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText]}>
+          {buttonText}
+        </Text>
+      </TouchableOpacity>
+    );
   }
 
   _rightButton(route, navigator, index, navState) {
