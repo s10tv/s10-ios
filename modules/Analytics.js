@@ -73,7 +73,12 @@ class Analytics {
    * properties: {}}
    */
   static async screen(name, properties) {
-    return TSAnalytics.screen(name, properties);
+    // TODO: Screen as it is currently implemented gets called every 
+    // time a page renders. This could happen once per state change.
+    // Too noisy.
+    // 
+    // return TSAnalytics.screen(name, properties);
+    return Promise.resolve(true);
   }
 }
 
