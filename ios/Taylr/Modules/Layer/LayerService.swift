@@ -28,9 +28,6 @@ class LayerService: NSObject {
         layerClient.autodownloadMIMETypes = nil // Download all automatically
         super.init()
         layerClient.delegate = self
-        if layerClient.isAuthenticated {
-            setupQueries()
-        }
     }
     
     func setupQueries() {
@@ -218,14 +215,17 @@ extension LayerService {
     
     @objc func connect(resolve: RCTPromiseResolveBlock, reject: RCTPromiseRejectBlock) {
         guard layerClient.isConnected == false else {
+            self.setupQueries()
             resolve(nil)
             return
         }
+
         DDLogDebug("Will connect to layer")
         layerClient.connect().promise(resolve, reject).start(Event.sink(error: { error in
             DDLogError("Unable to connect to layer \(error)")
         }, completed: {
             DDLogInfo("Successfully connected to Layer authenticated:\(self.layerClient.isAuthenticated)")
+            self.setupQueries()
         }))
     }
     

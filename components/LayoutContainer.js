@@ -34,9 +34,26 @@ class LayoutContainer extends React.Component {
     this.state = {
       needsOnboarding: true,
       modalVisible: false,
+      layerAllCountListener: NativeAppEventEmitter
+        .addListener('Layer.allConversationsCountUpdate', (count) => {
+          this.setState({ numTotalConversations: count })
+        }),
+      layerUnreadCountListener: NativeAppEventEmitter
+        .addListener('Layer.unreadConversationsCountUpdate', (count) => {
+          this.setState({ numUnreadConversations: count })
+        }),
     }
 
     this.logger = new Logger(this);
+  }
+
+  componentWillUnmount() {
+    this.state.layerListener.remove();
+    this.state.layerUnreadCountListener.remove();
+    this.setState({
+      layerListener: null,
+      layerUnreadCountListener: null,
+    });
   }
 
   formatUser(user) {
@@ -222,9 +239,6 @@ class LayoutContainer extends React.Component {
   }
 
   async __layerLogin() {
-    NativeAppEventEmitter.addListener('Layer.allConversationsCountUpdate', (count) => {
-      this.setState({ numTotalConversations: count })
-    }.bind(this))
     try {
       await TSLayerService.connectAsync();
       const isAuthenticated = await TSLayerService.isAuthenticatedAsync();
