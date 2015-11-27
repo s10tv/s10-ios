@@ -44,7 +44,7 @@ exports.SHEET = StyleSheet.create({
     marginTop: 64,
   },
   bottomTile: {
-    paddingBottom: 64,
+    paddingBottom: 16,
   },
   subTitle: {
     color: SUBTITLE_COLOR,

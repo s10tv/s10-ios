@@ -52,8 +52,7 @@ class MeEdit extends React.Component {
               ddp={this.props.ddp} />
 
           </View>
-          <View style={
-            SHEET.bottomTile} />
+          <View style={ SHEET.bottomTile } />
         </ScrollView>
       </View>
     )
