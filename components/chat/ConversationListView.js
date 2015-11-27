@@ -4,6 +4,7 @@ let React = require('react-native');
 let {
   View,
   Text,
+  Image,
   StyleSheet,
 } = React;
 
@@ -23,10 +24,13 @@ class ConversationListView extends React.Component {
     }
 
     return (
-      <View style={styles.emptyStateContainer}>
-        <Text style={[styles.emptyStateText, SHEET.baseText]}>
-          Your conversations will be here :)
-        </Text>
+      <View style={[SHEET.container]}>
+        <View style={styles.emptyStateContainer}>
+          <Image source={require('../img/message.png')} style={styles.emptyStateImage} />
+          <Text style={[styles.emptyStateText, SHEET.baseText]}>
+            Your conversations will be here :)
+          </Text>
+        </View>
       </View>
     )
   }
@@ -51,11 +55,18 @@ var styles = StyleSheet.create({
     height: height,
     justifyContent: 'center',
     alignItems: 'center',
+    marginHorizontal: width / 8,
+  },
+  emptyStateImage: {
+    width: width / 4,
+    height: width / 4,
+    resizeMode: 'contain',
   },
   emptyStateText: {
+    paddingTop: 10,
     fontSize: 20,
-    marginHorizontal: width / 8,
     color: COLORS.attributes,
+    textAlign: 'center',
   }
 });
 

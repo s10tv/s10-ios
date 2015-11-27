@@ -113,8 +113,9 @@ class HistoryScreen extends React.Component {
     if (history.length == 0) {
       historyView = (
         <View style={styles.emptyStateContainer}>
+          <Image source={require('../img/band.png')} style={styles.emptyStateImage} />
           <Text style={[styles.emptyStateText, SHEET.baseText]}>
-            You will see previous intros here.
+            You will find your previous introductions here.
           </Text>
         </View>
       )
@@ -194,11 +195,17 @@ var styles = StyleSheet.create({
     height: height,
     justifyContent: 'center',
     alignItems: 'center',
+    marginHorizontal: width / 8,
+  },
+  emptyStateImage: {
+    width: width / 2,
+    height: height / 4,
+    resizeMode: 'contain',
   },
   emptyStateText: {
     fontSize: 20,
-    marginHorizontal: width / 8,
     color: COLORS.attributes,
+    textAlign: 'center',
   }
 });
 
