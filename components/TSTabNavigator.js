@@ -81,10 +81,15 @@ class TSTabNavigator extends React.Component {
   }
 
   _leftButton(route, navigator, index, navState) {
+    let buttonText = 'Back';
+
     switch (route.id) {
       case 'conversation':
       case 'root':
         return null;
+
+      case 'edit':
+        buttonText = 'Save';
 
       default:
         return (
@@ -103,7 +108,7 @@ class TSTabNavigator extends React.Component {
             }}
             style={SHEET.navBarLeftButton}>
             <Text style={[SHEET.navBarText, SHEET.navBarButtonText, SHEET.baseText]}>
-              Back
+              {buttonText}
             </Text>
           </TouchableOpacity>
         );
