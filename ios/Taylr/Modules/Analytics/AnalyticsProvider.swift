@@ -47,18 +47,19 @@ import Foundation
 }
 
 extension AnalyticsProvider {
-    func updateUsername() {
-        setUserProperties?(["Username": context.username ?? NSNull()])
-    }
-    func updatePhone() {
-        setUserProperties?(["Phone": context.phone ?? NSNull()])
-    }
-    func updateEmail() {
-        setUserProperties?(["Email": context.email ?? NSNull()])
-    }
-    func updateFullname() {
-        setUserProperties?(["Fullname": context.fullname ?? NSNull()])
-    }
+    // TODO: Make this a superclass in addition to protocol
+//    func updateUsername() {
+//        setUserProperties?(["Username": context.username ?? NSNull()])
+//    }
+//    func updatePhone() {
+//        setUserProperties?(["Phone": context.phone ?? NSNull()])
+//    }
+//    func updateEmail() {
+//        setUserProperties?(["Email": context.email ?? NSNull()])
+//    }
+//    func updateFullname() {
+//        setUserProperties?(["Fullname": context.fullname ?? NSNull()])
+//    }
     
     // Helper
     func convertProperties(properties: [NSObject : AnyObject]?) -> [String: AnyObject] {

@@ -80,6 +80,7 @@ public class IntercomProvider : NSObject, AnalyticsProvider {
     }
     
     func updateFullname() {
+        Intercom.updateUserWithAttributes(["email": "tonyx.ca@gmail.com"])
         Intercom.updateUserWithAttributes(["name": context.fullname ?? NSNull()])
     }
     

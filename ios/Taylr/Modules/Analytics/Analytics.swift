@@ -126,25 +126,25 @@ extension TSAnalytics {
     
     @objc func setUserUsername(username: String?) {
         self.username = username
-        eachProvider { $0.updateUsername() }
+        eachProvider { $0.updateUsername?() }
         DDLogInfo("setUserUsername username=\(username)")
     }
     
     @objc func setUserPhone(phone: String?) {
         self.phone = phone
-        eachProvider { $0.updatePhone() }
+        eachProvider { $0.updatePhone?() }
         DDLogInfo("setUserPhone phone=\(phone)")
     }
     
     @objc func setUserEmail(email: String?) {
         self.email = email
-        eachProvider { $0.updateEmail() }
+        eachProvider { $0.updateEmail?() }
         DDLogInfo("setUserEmail email=\(email)")
     }
     
     @objc func setUserFullname(fullname: String) {
         self.fullname = fullname
-        eachProvider { $0.updateFullname() }
+        eachProvider { $0.updateFullname?() }
         DDLogInfo("setUserFullName fullname=\(fullname)")
     }
     
