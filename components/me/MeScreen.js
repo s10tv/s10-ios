@@ -91,7 +91,7 @@ class MeHeader extends React.Component {
                 me: me,
               })
             }} />
-            <MeButton style={{ left:10 }} text={'Edit'} onPress={() => {
+            <MeButton style={{ left: width / 32 }} text={'Edit'} onPress={() => {
               this.props.navigator.push({
                 id: 'edit',
                 title: 'Edit Profile',
