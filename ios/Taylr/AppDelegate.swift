@@ -63,6 +63,12 @@ class AppDelegate : UIResponder {
         uxcam = UXCamProvider(apiKey: config.uxcamKey)
         Analytics.addProviders([branch, amplitude, mixpanel, intercom, segment, uxcam, ouralabs, crashlytics])
         
+        // TODO: Refactor this lifecycle management stuff outside of Analytics
+        // Do not persist meteor user account across app installs, make it harder to test and is unexpected
+        if Analytics.isNewInstall {
+            METAccount.setDefaultAccount(nil)
+        }
+        
         // Setup Layer
         layer = LayerService(layerAppID: config.layerURL)
         
