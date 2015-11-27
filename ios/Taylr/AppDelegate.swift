@@ -74,7 +74,6 @@ class AppDelegate : UIResponder {
         
         // Start React Native App
         bridge = RCTBridge(delegate: self, launchOptions: launchOptions)
-        
     }
 }
 
@@ -102,6 +101,7 @@ extension AppDelegate : UIApplicationDelegate {
         application.registerForRemoteNotifications()
     
         FBSDKApplicationDelegate.sharedInstance().application(application, didFinishLaunchingWithOptions: launchOptions)
+        Analytics.appDidLaunch(launchOptions)
 
         // Pre-heat the camera if we can
         VideoMakerViewController.preloadRecorderAsynchronously()
@@ -110,11 +110,11 @@ extension AppDelegate : UIApplicationDelegate {
     }
     
     func applicationWillEnterForeground(application: UIApplication) {
-        Analytics.track("AppOpen")
+        Analytics.appWillEnterForeground()
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
-        Analytics.track("AppClose")
+        Analytics.appDidEnterBackground()
     }
     
     func applicationDidBecomeActive(application: UIApplication) {
@@ -123,6 +123,7 @@ extension AppDelegate : UIApplicationDelegate {
     }
 
     func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+        branch.branch.handleDeepLink(url)
         return FBSDKApplicationDelegate.sharedInstance().application(application, openURL: url, sourceApplication: sourceApplication, annotation: annotation)
     }
 
@@ -134,6 +135,7 @@ extension AppDelegate : UIApplicationDelegate {
 
     func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
         DDLogInfo("Registered for push \(deviceToken)")
+        Analytics.appDidRegisterForPushToken(deviceToken)
         if let apsEnv = env.apsEnvironment?.rawValue {
             // TODO: Handle push notification registration in JS
             rnSendAppEvent(.RegisteredPushToken, body: [
@@ -158,6 +160,7 @@ extension AppDelegate : UIApplicationDelegate {
     }
 
     func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+        Analytics.appDidReceivePushNotification(userInfo)
         DDLogDebug("Did receive notification \(userInfo)")
         assert(layer != nil)
         let handled = layer.layerClient.synchronizeWithRemoteNotification(userInfo) { changes, error in

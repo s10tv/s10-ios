@@ -23,7 +23,7 @@ public class TSAnalytics : NSObject {
     override init() {
         isNewInstall = (Defaults[.appDidInstall] == false)
         Defaults[.appDidInstall] = true
-        let env = Environment()
+        let env = Environment() // How do we dependency inject this? If at all
         deviceId = env.deviceId
         deviceName = env.deviceName
     }
@@ -84,14 +84,14 @@ extension TSAnalytics : AnalyticsContext {
 
 extension TSAnalytics {
     
-    func appDidLaunch(launchOptions: [NSObject: AnyObject]) {
+    func appDidLaunch(launchOptions: [NSObject: AnyObject]?) {
         if isNewInstall {
             eachProvider { $0.appInstall?() }
         }
         eachProvider { $0.appOpen?() }
     }
     
-    func appDidBecomeActive() {
+    func appWillEnterForeground() {
         eachProvider { $0.appOpen?() }
     }
     

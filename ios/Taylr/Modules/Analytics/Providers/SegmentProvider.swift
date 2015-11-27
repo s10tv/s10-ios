@@ -23,6 +23,7 @@ public class SegmentProvider : NSObject, AnalyticsProvider {
     
     func appInstall() {
         segment.enqueue(IdentifyMessageBuilder().anonymousId(context.deviceId))
+        setUserProperties(["Device Name": context.deviceName])
     }
     
     func appOpen() {
@@ -36,10 +37,6 @@ public class SegmentProvider : NSObject, AnalyticsProvider {
     func login(isNewUser: Bool) {
         guard let userId = context.userId else { return }
         segment.enqueue(IdentifyMessageBuilder().userId(userId))
-        updateUsername()
-        updateEmail()
-        updateFullname()
-        updatePhone()
         track("Login", properties: ["New User": isNewUser])
     }
     

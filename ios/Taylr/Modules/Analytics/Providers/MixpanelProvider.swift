@@ -26,15 +26,15 @@ public class MixpanelProvider : NSObject, AnalyticsProvider {
         mixpanel.identify(context.deviceId)
         mixpanel.nameTag = context.deviceName
         people?.set("DeviceName", to: context.deviceName)
-        track("App Install", properties: nil)
+        track("App: Install", properties: nil)
     }
     
     func appOpen() {
-        mixpanel.track("App Open")
+        mixpanel.track("App: Open")
     }
     
     func appClose() {
-        mixpanel.track("App Close")
+        mixpanel.track("App: Close")
     }
     
     func login(isNewUser: Bool) {

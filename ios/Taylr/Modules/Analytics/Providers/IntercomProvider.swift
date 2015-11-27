@@ -48,9 +48,11 @@ public class IntercomProvider : NSObject, AnalyticsProvider {
         } else {
             Intercom.registerUserWithUserId(userId)
         }
+        track("Login", properties: ["New User": isNewUser])
     }
     
     func logout() {
+        track("Logout", properties: nil)
         Intercom.reset()
         Intercom.registerUnidentifiedUser()
         setUserProperties(["Device Name": context.deviceName])

@@ -21,9 +21,19 @@ public class UXCamProvider : NSObject, AnalyticsProvider {
     
     func login(isNewUser: Bool) {
         UXCam.tagUsersName(context.userId)
+        UXCam.markSessionAsFavorite()
     }
     
     func logout() {
+        UXCam.markSessionAsFavorite()
         UXCam.tagUsersName(nil)
+    }
+    
+    func track(event: String, properties: [NSObject : AnyObject]?) {
+        UXCam.addTag(event)
+    }
+    
+    func screen(name: String, properties: [NSObject : AnyObject]?) {
+        UXCam.tagScreenName(name)
     }
 }

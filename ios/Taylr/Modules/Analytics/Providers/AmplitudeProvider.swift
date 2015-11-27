@@ -22,19 +22,24 @@ public class AmplitudeProvider : NSObject, AnalyticsProvider {
     func appInstall() {
         amplitude.setDeviceId(context.deviceId)
         setUserProperties(["Device Name": context.deviceName])
+        track("App: Install", properties: nil)
+    }
+    
+    func appOpen() {
+        track("App: Open", properties: nil)
+    }
+    
+    func appClose() {
+        track("App: Close", properties: nil)
     }
     
     func login(isNewUser: Bool) {
         amplitude.setUserId(context.userId)
         track("Login", properties: ["New User": isNewUser])
-        updateUsername()
-        updateEmail()
-        updateFullname()
-        updatePhone()
     }
     
     func logout() {
-        amplitude.logEvent("Logout")
+        track("Logout", properties: nil)
         amplitude.setUserId(nil)
     }
     
@@ -47,8 +52,6 @@ public class AmplitudeProvider : NSObject, AnalyticsProvider {
     }
     
     func screen(name: String, properties: [NSObject : AnyObject]?) {
-        amplitude.logEvent(name, withEventProperties: properties)
+        amplitude.logEvent("Screen: \(name)", withEventProperties: properties)
     }
-    
-    
 }

@@ -23,10 +23,12 @@ public class BranchProvider : NSObject, AnalyticsProvider {
     }
     
     func logout() {
-        branch.setIdentity(nil)
+        branch.logout()
+        // Should we calso call resetUserSession() ?
     }
     
-    func reset() {
-        branch.logout()
+    func track(event: String, properties: [NSObject : AnyObject]?) {
+        branch.userCompletedAction(event, withState: properties)
     }
+    
 }
