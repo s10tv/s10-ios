@@ -14,32 +14,30 @@ let Logger = TSLogger()
 @objc(TSLogger)
 public class TSLogger : NSObject {
     
+    override init() {
+        defaultDebugLevel = .Verbose
+    }
+    
     func addLogger(logger: DDLogger) {
         DDLog.addLogger(logger)
     }
 
     @objc func log(logText: String, level: String, function: String = __FUNCTION__, file: String = __FILE__, line: Int = __LINE__) {
-        let lvl: DDLogLevel
+        let lvl = defaultDebugLevel
         let flg: DDLogFlag
         switch level {
         case "verbose":
-            lvl = .Verbose
             flg = .Verbose
         case "debug":
-            lvl = .Debug
             flg = .Debug
         case "info":
-            lvl = .Info
             flg = .Info
         case "warn":
-            lvl = .Warning
             flg = .Warning
         case "error":
-            lvl = .Error
             flg = .Error
         default:
             // Unrecognized logging level defaults to warning
-            lvl = .Warning
             flg = .Warning
         }
         
