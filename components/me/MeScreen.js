@@ -30,6 +30,7 @@ class MeButton extends React.Component {
       <View style={[buttonStyles.container, this.props.style]}>
         <Button
           onPress={this.props.onPress}>
+            <View style={[buttonStyles.button, buttonStyles.buttonContainer]} />
             <View style={buttonStyles.button}>
               <Text style={[buttonStyles.buttonText, SHEET.baseText]}>
                 { this.props.text }
@@ -42,22 +43,25 @@ class MeButton extends React.Component {
 }
 var buttonStyles = StyleSheet.create({
   container: {
-    backgroundColor: 'black',
-    opacity: 0.6,
     borderWidth: 1,
     borderColor: 'white',
     alignItems: 'center',
     borderRadius: 2,
   },
+  buttonContainer: {
+    position:'absolute',
+    backgroundColor: 'black',
+    opacity: 0.6,
+  },
   button: {
     width: 5 * width / 16,
+    height: height / 24,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   buttonText: {
-    flex: 1,
-    paddingVertical: 5,
     fontSize:16,
     color:'white',
-    textAlign: 'center',
   }
 });
 
