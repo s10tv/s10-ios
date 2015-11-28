@@ -106,7 +106,7 @@ extension AppDelegate : UIApplicationDelegate {
             self.rnSendAppEvent(.BranchInitialized, body: params)
         }
         appHubBuild.fetchBuildWithCompletionHandler { build, error in
-            DDLogInfo("Fetched new build from app hub id=\(build.identifier) name=\(build.name) desc=\(build.buildDescription) date=\(build.creationDate)")
+//            DDLogInfo("Fetched new build from app hub id=\(build.identifier) name=\(build.name) desc=\(build.buildDescription) date=\(build.creationDate)")
 //            for version in build.compatibleIOSVersions { // Crashes right now...
 //                DDLogDebug("\(build.name): Compat Version - \(version)")
 //            }
