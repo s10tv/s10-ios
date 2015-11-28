@@ -47,6 +47,7 @@ public class IntercomProvider : BaseAnalyticsProvider {
         setUserProperties([
             "Device ID": context.deviceId,
             "Device Name": context.deviceName,
+            "iOS App Build": Environment().build, // TODO: Explicit depenency needed
             "Taylr URL": "https://\(config.serverHostName)/admin/users/\(userId)",
             "Mixpanel URL": "https://mixpanel.com/report/\(config.mixpanel.projectId)/explore/#user?distinct_id=\(context.deviceId)",
             "Amplitude URL": "https://amplitude.com/app/\(config.amplitude.appId)/activity/search?userId=\(userId)",
