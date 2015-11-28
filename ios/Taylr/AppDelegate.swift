@@ -50,7 +50,7 @@ class AppDelegate : UIResponder {
         crashlytics.logFormatter = TagLogFormatter()
         DDTTYLogger.sharedInstance().logFormatter = TagLogFormatter()
         DDASLLogger.sharedInstance().logFormatter = TagLogFormatter()
-        Logger.addLogger(DDTTYLogger.sharedInstance()) // TTY = Xcode console
+//        Logger.addLogger(DDTTYLogger.sharedInstance()) // TTY = Xcode console
         Logger.addLogger(DDASLLogger.sharedInstance()) // ASL = Apple System Logs
         Logger.addLogger(ouralabs)
         Logger.addLogger(crashlytics)
