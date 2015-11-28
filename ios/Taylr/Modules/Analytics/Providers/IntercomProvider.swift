@@ -27,10 +27,12 @@ public class IntercomProvider : BaseAnalyticsProvider {
     init(config: AppConfig) {
         self.config = config
         Intercom.setApiKey(config.intercom.apiKey, forAppId: config.intercom.appId)
+//        Intercom.enableLogging()
     }
     
     override func updateIdentity() {
         if let userId = context.userId {
+            DDLogDebug("registerUser userId=\(userId)")
             if let email = context.email {
                 Intercom.registerUserWithUserId(userId, email: email)
             } else {
@@ -38,6 +40,7 @@ public class IntercomProvider : BaseAnalyticsProvider {
             }
             setUserProperties(["Taylr URL": "https://\(config.serverHostName)/admin/users/\(userId)"])
         } else {
+            DDLogDebug("registerUnidentifiedUser")
             Intercom.registerUnidentifiedUser()
         }
         setUserProperties([
@@ -110,6 +113,7 @@ public class IntercomProvider : BaseAnalyticsProvider {
 extension IntercomProvider {
     
     @objc func setHMAC(hmac: String, data: String) {
+        DDLogInfo("setHMAC data=\(data)")
         Intercom.setHMAC(hmac, data: data)
     }
     

@@ -68,7 +68,7 @@ class AppConfig {
             mixpanel = (projectId: "671741", token: "39194eed490fa8abcc026256631a4230")
             intercom = (
                 appId: "q6ihw9uw",
-                apiKey: "ios_sdk-d849f0f2673a478473e25615616acf139b0e28a9"
+                apiKey: "ios_sdk-2f6aefd7197daa0cf771aacf5545a0a8aba70955"
             )
         }
     }
