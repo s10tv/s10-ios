@@ -13,8 +13,25 @@ let SHEET = require('../CommonStyles').SHEET;
 let TappableCard = require('./Card').TappableCard;
 let Card = require('./Card').Card;
 let Analytics = require('../../modules/Analytics');
+let Logger = require('../../lib/Logger');
+
+let FBSDKLogin = require('react-native-fbsdklogin');
+let {
+  FBSDKLoginManager,
+} = FBSDKLogin;
+
+let FBSDKCore = require('react-native-fbsdkcore');
+let {
+  FBSDKAccessToken,
+} = FBSDKCore;
 
 class ServiceTile extends React.Component {
+
+  constructor(props) {
+    super(props);
+
+    this.logger = new Logger(this);
+  }
 
   _handleServiceTouch(service) {
     if (service.status == 'linked') {
@@ -55,8 +72,49 @@ class ServiceTile extends React.Component {
       </View>
     )
 
-    if (service.name === 'facebook' && service.status === 'linked') {
-      return <Card>{ cardInfo }</Card>
+    if (service.name === 'facebook') {
+      if (service.status == 'unlinked') {
+        return (
+          <TappableCard
+            {...this.props}
+            onPress={(event) => {
+
+              // TODO: clean up duplicated code. This is ridiculous.
+              // https://app.asana.com/0/34520227311296/69377281916556
+              let permissions = ['email', 'public_profile', 'user_about_me', 
+              'user_birthday', 'user_education_history',
+              'user_friends', 'user_location', 'user_photos', 'user_posts']
+
+
+              FBSDKLoginManager.logInWithReadPermissions(permissions, (error, result) => {
+                if (error) {
+                  this.logger.error(`Error logging in with Facebook ${JSON.stringify(error)}`);
+                  alert('Error logging you in :C Please try again later.');
+                } else {
+                  if (!result.isCancelled) {
+                    FBSDKAccessToken.getCurrentAccessToken((accessToken) => {
+                      if (accessToken && accessToken.tokenString) {
+                        this.props.ddp.call({
+                          methodName: 'me/service/add',
+                          params: ['facebook', accessToken.tokenString]
+                        })
+                        .catch(err => {
+                          this.logger.error(JSON.stringify(error));
+                       })
+                      }
+                    });
+                  } else {
+                    this.logger.info('Welcome: Cancelled FB Verification'); 
+                  }
+                }
+              });
+            }}>
+            { cardInfo }
+          </TappableCard>
+        )
+      } else {
+        return <Card>{ cardInfo }</Card>
+      }
     } else {
       return (
         <TappableCard

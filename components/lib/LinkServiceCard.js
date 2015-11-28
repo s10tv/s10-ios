@@ -14,6 +14,7 @@ class LinkServiceCard extends React.Component {
     let services = this.props.services.map((service) => {
       return <ServiceTile key={service._id} 
         navigator={this.props.navigator}
+        ddp={this.props.ddp}
         service={service} />
     });
 

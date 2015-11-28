@@ -35,7 +35,10 @@ class LinkServiceView extends React.Component {
               you to interesting people.
             </Text>
           </View>
-          <LinkServiceCard navigator={this.props.navigator} services={integrations} />
+          <LinkServiceCard 
+            ddp={this.props.ddp}
+            navigator={this.props.navigator}
+            services={integrations} />
         </ScrollView>
       </View>
     ) 

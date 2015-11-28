@@ -39,7 +39,10 @@ class MeEdit extends React.Component {
 
           <View style={SHEET.innerContainer}>
             <SectionTitle title={'SERVICES'} />
-            <LinkServiceCard navigator={this.props.navigator} services={integrations} />
+            <LinkServiceCard 
+              ddp={this.props.ddp}
+              navigator={this.props.navigator}
+              services={integrations} />
 
             <SectionTitle title={'MY INFO'} />
             <View style={SHEET.separator} />
