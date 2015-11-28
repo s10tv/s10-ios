@@ -65,6 +65,11 @@ class FacebookLoginScreen extends React.Component {
         resumeToken: result.token,
         expiryDate: result.tokenExpires.getTime(),
         isNewUser: result.isNewUser,
+        userTriggered: true,
+        intercom: {
+          hmac: result.intercomHash,
+          data: result.id,
+        },
       });
 
       if (result.isNewUser) {
@@ -147,6 +152,11 @@ class FacebookLoginScreen extends React.Component {
                           resumeToken: result.token,
                           expiryDate: result.tokenExpires.getTime(),
                           isNewUser: result.isNewUser,
+                          intercom: {
+                            hmac: result.intercomHash,
+                            data: result.id,
+                          },
+                          userTriggered: true,
                         });
 
                         if (result.isNewUser) {

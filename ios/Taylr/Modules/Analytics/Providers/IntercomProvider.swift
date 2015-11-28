@@ -30,15 +30,9 @@ public class IntercomProvider : BaseAnalyticsProvider {
 //        Intercom.enableLogging()
     }
     
-    override func appLaunch() { }
-    
-    override func appOpen() { }
-    
-    override func appClose() { }
-    
     override func login(isNewUser: Bool) {
         guard let userId = context.userId else { return }
-        DDLogDebug("registerUser userId=\(userId)")
+        DDLogInfo("Will registerUser userId=\(userId)")
         if let email = context.email {
             Intercom.registerUserWithUserId(userId, email: email)
         } else {
@@ -63,23 +57,26 @@ public class IntercomProvider : BaseAnalyticsProvider {
     override func logout() {
         track("Logout")
         Intercom.reset()
-        DDLogInfo("Logout from Intercom")
+        DDLogInfo("Did logout from Intercom")
     }
     
     override func updateEmail() {
+        DDLogDebug("Will update user attribute email=\(context.email)")
         Intercom.updateUserWithAttributes(["email": context.email ?? NSNull()])
     }
     
     override func updateFullname() {
+        DDLogDebug("Will update user attribute fullname=\(context.fullname)")
         Intercom.updateUserWithAttributes(["name": context.fullname ?? NSNull()])
     }
     
     override func setUserProperties(properties: [NSObject : AnyObject]) {
-        DDLogDebug("setUserProperties properties=\(properties)")
+        DDLogDebug("Will update custom attributes", tag: properties)
         Intercom.updateUserWithAttributes(["custom_attributes": properties])
     }
     
     override func track(event: String, properties: [NSObject : AnyObject]? = nil) {
+        DDLogVerbose("Will logEvent name=\(event)", tag: properties)
         if let properties = properties {
             Intercom.logEventWithName(event, metaData: properties)
         } else {
@@ -92,6 +89,7 @@ public class IntercomProvider : BaseAnalyticsProvider {
     }
     
     func registerPushToken(pushToken: NSData) {
+        DDLogVerbose("Will set deviceToken")
         Intercom.setDeviceToken(pushToken)
     }
 }
@@ -101,7 +99,7 @@ public class IntercomProvider : BaseAnalyticsProvider {
 extension IntercomProvider {
     
     @objc func setHMAC(hmac: String, data: String) {
-        DDLogInfo("setHMAC data=\(data)")
+        DDLogInfo("Will setHMAC hmacLength=\(hmac.length) data=\(data)")
         Intercom.setHMAC(hmac, data: data)
     }
     

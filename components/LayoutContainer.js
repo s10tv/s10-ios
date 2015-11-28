@@ -149,24 +149,32 @@ class LayoutContainer extends React.Component {
       return;
     }
 
-    let { userId, resumeToken, expiryDate, isNewUser, hash } = account;
+    const { userId, resumeToken, expiryDate, isNewUser, intercom, userTriggered } = account;
     if (!userId || !resumeToken || !expiryDate || (isNewUser == undefined)) {
       this.logger.warning('invalid info provided to onLogin');
       return
     }
 
-    if (hash) {
-      Intercom.setHMAC(result.hash, result.identifier);
+    this.logger.debug(`onLogin intercom=${JSON.stringify(intercom)} newUser=${isNewUser} userTriggered=${userTriggered}`);
+    if (userTriggered == true) {
+      if (intercom != null) {
+        Intercom.setHMAC(intercom.hmac, intercom.data);
+      }
+      Analytics.userDidLogin(userId, isNewUser);
     }
-    
-    Analytics.userDidLogin(userId, isNewUser);
+
+    if (account.isNewUser) {
+      // might be useful for showing first time user tutorials.
+      this.setState({
+        isNewUser: true
+      })
+    }
 
     const ddp = this.ddp;
     await BridgeManager.setDefaultAccount(account)
 
     this.setState({ loggedIn: true });
     this.__layerLogin()
-
     this.subscribeSettings()
 
     this.ddp.subscribe({ pubName: 'me' })
