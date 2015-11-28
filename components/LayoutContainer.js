@@ -32,10 +32,9 @@ class LayoutContainer extends React.Component {
   constructor(props: {}) {
     super(props);
     this.ddp = props.ddp;
+    this.logger = new Logger(this);
+
     this.state = {
-      isNewUser: false,
-      needsOnboarding: true,
-      modalVisible: false,
       layerAllCountListener: NativeAppEventEmitter
         .addListener('Layer.allConversationsCountUpdate', (count) => {
           this.setState({ numTotalConversations: count })
@@ -45,8 +44,6 @@ class LayoutContainer extends React.Component {
           this.setState({ numUnreadConversations: count })
         }),
     }
-
-    this.logger = new Logger(this);
   }
 
   componentWillUnmount() {
@@ -90,12 +87,25 @@ class LayoutContainer extends React.Component {
     FBSDKLoginManager.logOut();
     await this.ddp.logout()
     await BridgeManager.setDefaultAccount(null)
-    this.setState({ loggedIn: false });
+    this.setState({ 
+      loggedIn: false,
+      isActive: false,
+      me: null,
+      users: null,
+      integrations: null,
+      categories: null,
+      myTags: null,
+      history: null,
+      candidate: null,
+      settings: null,
+      numTotalConversations: null,
+      numUnreadConversations: null,
+      isCWLRequired: null,
+    });
   }
 
   subscribeSettings(userRequired = true) {
     let ddp = this.ddp;
-    this.logger.debug('subscribing settings', userRequired);
 
     ddp.subscribe({ pubName: 'settings', userRequired: userRequired })
     .then(() => {
@@ -131,7 +141,7 @@ class LayoutContainer extends React.Component {
   }
 
   /** 
-   * account: { userId, resumeToken, expiryDate, isNewUser }
+   * account: { userId, resumeToken, expiryDate, isNewUser, hash }
    */
   async onLogin(account) {
     if (!account) {
@@ -139,28 +149,23 @@ class LayoutContainer extends React.Component {
       return;
     }
 
-    let { userId, resumeToken, expiryDate, isNewUser } = account;
+    let { userId, resumeToken, expiryDate, isNewUser, hash } = account;
     if (!userId || !resumeToken || !expiryDate || (isNewUser == undefined)) {
       this.logger.warning('invalid info provided to onLogin');
       return
     }
 
-    Analytics.userDidLogin(userId, isNewUser);
-
-
-    if (account.isNewUser) {
-      // might be useful for showing first time user tutorials.
-      this.setState({
-        isNewUser: true
-      })
+    if (hash) {
+      Intercom.setHMAC(result.hash, result.identifier);
     }
+    
+    Analytics.userDidLogin(userId, isNewUser);
 
     const ddp = this.ddp;
     await BridgeManager.setDefaultAccount(account)
 
     this.setState({ loggedIn: true });
     this.__layerLogin()
-    this.__intercomLogin(userId);
 
     this.subscribeSettings()
 
@@ -274,15 +279,6 @@ class LayoutContainer extends React.Component {
       });
     })
     .catch(err => { this.logger.error(JSON.stringify(err)) });
-  }
-
-  async __intercomLogin(userId) {
-    try {
-      let result = await this.ddp.call({ methodName: 'intercom/auth', params: [userId]})
-      Intercom.setHMAC(result.hash, result.identifier);
-    } catch (err) {
-      this.logger.error(`Unable to login to Intercom: ${err.toString()}`);
-    }
   }
 
   async __layerLogin() {
