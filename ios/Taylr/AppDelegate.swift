@@ -47,6 +47,9 @@ class AppDelegate : UIResponder {
         // Setup Logging
         ouralabs = DDOuralabsLogger(apiKey: config.ouralabsKey)
         crashlytics = DDCrashlyticsLogger(crashlytics: Crashlytics.sharedInstance())
+        crashlytics.logFormatter = TagLogFormatter()
+        DDTTYLogger.sharedInstance().logFormatter = TagLogFormatter()
+        DDASLLogger.sharedInstance().logFormatter = TagLogFormatter()
         Logger.addLogger(DDTTYLogger.sharedInstance()) // TTY = Xcode console
         Logger.addLogger(DDASLLogger.sharedInstance()) // ASL = Apple System Logs
         Logger.addLogger(ouralabs)

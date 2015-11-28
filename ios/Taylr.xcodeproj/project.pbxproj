@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4AD00249A11FDFD015C379A5 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7AA6C7823A20B63EB451A15E /* Pods.framework */; };
 		EA08BDF51C091BF300040D56 /* OneSingalProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA08BDF41C091BF300040D56 /* OneSingalProvider.swift */; };
+		EA08BE011C092E8500040D56 /* Taylr-Bridging.m in Sources */ = {isa = PBXBuildFile; fileRef = EA08BE001C092E8500040D56 /* Taylr-Bridging.m */; };
 		EA1979401BFAAB7C00DF7B58 /* libRNSearchBar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA2666FE1BFA622F0054C777 /* libRNSearchBar.a */; };
 		EA1979E21BFC4CD800DF7B58 /* R.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1979E01BFC4CD800DF7B58 /* R.swift */; };
 		EA1979E31BFC4CD800DF7B58 /* SBConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1979E11BFC4CD800DF7B58 /* SBConstants.swift */; };
@@ -150,6 +151,7 @@
 /* Begin PBXFileReference section */
 		7AA6C7823A20B63EB451A15E /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA08BDF41C091BF300040D56 /* OneSingalProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneSingalProvider.swift; sourceTree = "<group>"; };
+		EA08BE001C092E8500040D56 /* Taylr-Bridging.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Taylr-Bridging.m"; sourceTree = "<group>"; };
 		EA1979E01BFC4CD800DF7B58 /* R.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.swift; sourceTree = "<group>"; };
 		EA1979E11BFC4CD800DF7B58 /* SBConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SBConstants.swift; sourceTree = "<group>"; };
 		EA1979E41BFC4CF300DF7B58 /* Taylr.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Taylr.xcassets; sourceTree = "<group>"; };
@@ -566,6 +568,7 @@
 				EABF2AB51AD04659005880E7 /* InfoPlist.strings */,
 				EA9F353E1A74CC6900E0C65D /* Taylr-Info.plist */,
 				EA9F35621A74CD8800E0C65D /* Taylr-Bridging.h */,
+				EA08BE001C092E8500040D56 /* Taylr-Bridging.m */,
 				EA1979E01BFC4CD800DF7B58 /* R.swift */,
 				EA1979E11BFC4CD800DF7B58 /* SBConstants.swift */,
 				F9DDF6B01BFDB3C700D7A2FC /* background.mp4 */,
@@ -970,6 +973,7 @@
 				EA197A471BFC4D2600DF7B58 /* GeometryExtensions.swift in Sources */,
 				EABE4C691C03C45A001557A1 /* AmplitudeProvider.swift in Sources */,
 				EA3225BB1BFDAE8A00FF5074 /* AppConfig.swift in Sources */,
+				EA08BE011C092E8500040D56 /* Taylr-Bridging.m in Sources */,
 				EA197A4E1BFC4D2600DF7B58 /* PropertyExtensions.swift in Sources */,
 				EA42D63F1BB7B9AC00B07526 /* AppDelegate.swift in Sources */,
 				EAA5E8DE1BFEAEE4009DE994 /* BridgeManager.m in Sources */,
