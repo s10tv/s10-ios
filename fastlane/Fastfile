@@ -121,10 +121,10 @@ platform :ios do
     }.gsub(/^\s+/, "").strip
   end
 
-  desc 'Upload an existing build to crashlytics. Pass in :ipa_file to specify exact file'
+  desc 'Upload an existing build to crashlytics. Pass in :ipa_path to specify exact file'
   lane :upload_crashlytics do |options|
     notes = release_notes
-    options[:ipa_file] ||= ENV['IPA_PATH']
+    options[:ipa_path] ||= ENV['IPA_PATH']
     crashlytics(
       crashlytics_path: 'ios/Pods/Crashlytics/Crashlytics.framework',
       api_token: '67f7b1cc77f3e88b8e5b17a5bbc2ca6cb6f7ae53',
